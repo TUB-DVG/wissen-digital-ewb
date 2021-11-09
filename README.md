@@ -9,4 +9,4 @@ web interface with data base system of project infromation of the "Begrleitforsc
 - IP: http://134.94.130.147/
 - SSH: Falk
 
-main devloper: Firas, Falk
+main developer: Firas, Falk
