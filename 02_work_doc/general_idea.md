@@ -35,8 +35,13 @@ documented in the table
 - [ ] insert Link to the table
 
 
-The idea: table of the data base are related to the sources of the data; dont
+Idea 1: table of the data base are related to the sources of the data; dont
 mix the data
+
+Idea 2: Source is code into the name of the feature
+
+note: the unit can be stored with the feature, there is a "data type" called "Numeric with Unit"
+
 
 # Tests
 
@@ -44,3 +49,11 @@ mix the data
 1. add a new column to the db via django models
 2. add a data set to this column
     - csv with fkz and content for this new column
+# Open questions / raw ideas
+## ERD
+Must be the feature name equal to the primary key of the connected table?
+How can I include data types, descriptions and units (where to put?)
+we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
+## models django
+How to add discriptions and units of the attributes aka features?
+## store only strings?
