@@ -8,68 +8,75 @@ cd djangodemo
 git init
 ```
 
-Activate the `django` Python environment and start the Django project `mysite`.
+Activate the `venv` Python environment and start the Django project `mysite`.
 
 ```
-activate django
+
+source venv/bin/activate                                                                    
 django-admin startproject mysite
 ```
 
 Alternatively, clone `mysite` from git. In this case, create a new environment with
 ```
-conda create -n mysiteenv python=3.5
+conda create -n mysiteenv python=3.X
+or: python3 -m mysiteenv
 activate mysiteenv
+or: source mysiteenv/bin/activate
 pip install django 
 ```
 
+run Server
+```
+cd mysite
+python3 manage.py runserver
+```
 This creates the folder structure `djangodemo/mysite/mysite`. The [Django Tutorial](https://docs.djangoproject.com/en/1.10/intro/tutorial01/#creating-the-polls-app) installs an app in the `djangodemo/mysite` directory at the level of the `manage.py` file, ...
 > ...so that it can be imported as its own top-level module, rather than a submodule of mysite.
 
 Therefore, go to `djangodemo/mysite` and start the `myapp` app
 ```
-cd mysite
-python manage.py startapp myapp
+python3 manage.py startapp pages
 ```
 
 Thus, `djangodemo/mysite` now contains both a `mysite` and a `myapp` folder.
 
 ## Create a Hello World view
-
-Add the Hello World text to `myapp/views.py`:
-
-```Python
-from django.http import HttpResponse
-
-
-def index(request):
-    return HttpResponse("Hello, world. You're at the index.")
+### put link to the Application definition
+- add following to INSTALLED_APPS in webcentral_app/settings.py
 ```
-
-Then, create a new file for the urlconfs of this app at `myapp/urls.py` and enter
-
-```Python
-from django.conf.urls import url
+    'pages.apps.PagesConfig',
+```
+### add urls.py in pages folder
+add the following text to the urls.py
+```
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    path('', views.index, name='index')
 ]
 ```
+### add function to views.py (define whats happened, when index is surfed)
+```
+from django.http import HttpResponse
 
-Finally, point the top-level urlconf at `mysite/urls.py` to the app's urlconfs at `myapp/urls.py` (both are in the top-level `mysite` folder):
+def index(request):
+    return HttpResponse('<h1>Hello World</h1>')
 
-```Python
-from django.conf.urls import include, url
-from django.contrib import admin
+```
+### to make the new page name known put a reference to webcentral_app/urls.py
+add the following to urlpatterns
+
+```
+from django.urls import path, include
 
 urlpatterns = [
-    url(r'^myapp/', include('myapp.urls')),
-    url(r'^admin/', admin.site.urls),
+    path('',include('pages.urls')),
+    path('admin/', admin.site.urls),
 ]
-```
 
-Go to the top `mysite` folder, activate the Django Python environment and run the test server with `python manage.py runserver`. The Hello World view is rendered at http://localhost:8000/myapp/.
+```
 
 ## Set up the Postgres database (on Windows)
 
