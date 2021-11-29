@@ -107,6 +107,32 @@ def about(request):
     return render(request, 'pages/about.html')
 
 ```
+### setup base template
+- create file base.html in template folder
+- put here the basic stuff:
+```
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Datenbank M4</title>
+    </head>
+    <body>
+        {% block content %} {% endblock %}
+    </body>
+</html>
+
+```
+- {% %} is [jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)) syntax, own, kind of php language 
+### adapte index.html
+- change the code in index.html using base.html
+```
+{% extends 'base.html' %} {% block content%}
+<h1>home</h1>
+{% endblock %}
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
