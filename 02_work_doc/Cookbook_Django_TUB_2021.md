@@ -135,6 +135,41 @@ def about(request):
 <h1>home</h1>
 {% endblock %}
 ```
+
+### bootstrap template (static)
+- build up a static bootstrap page or use bootstrap page 
+- here i copy the static page from my udemy course https://www.udemy.com/share/101WqE3@FyjsaFOyT0m5_Q4t9JOL9H9tw7nB-pl75FYbae56vt-6vqLpMogdG3CeDAxR6l7Z/
+#### make folder
+- mkdir static in webcentral_app
+#### copy need stuff: css, fonts, pics, static html page
+- cp -r
+  ~/Nextcloud/01_Digital_Falk/04_DjangoUdemy/btre_resources/btre_resources/btre_theme/dist/assets/css
+  static
+- cp -r
+  ~/Nextcloud/01_Digital_Falk/04_DjangoUdemy/btre_resources/btre_resources/btre_theme/dist/assets/js
+  static
+- cp -r
+  ~/Nextcloud/01_Digital_Falk/04_DjangoUdemy/btre_resources/btre_resources/btre_theme/dist/assets/webfonts
+  static
+- cp -r ~/Nextcloud/01_Digital_Falk/04_DjangoUdemy/btre_resources/btre_resources/btre_theme/dist/assets/img/lightbox
+   img
+- copy of TUB, ECDF, BMWi
+#### integrate static stuff
+- edit webcentral_app/settings.py
+```
+STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES = [
+    Path.joinpath(BASE_DIR, 'webcentral_app/static')
+]
+
+```
+- run collection the developing static stuff to our official staic stuff in
+root of the project
+```
+ python3 manage.py collectstatic
+```
+
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
