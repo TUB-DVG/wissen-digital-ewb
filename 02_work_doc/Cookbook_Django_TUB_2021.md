@@ -286,7 +286,24 @@ copy the footer at the end of the body, before the JavaScript stuff
         </footer>
 
 ```
+### make partails of the base.html
+- mkdir  templates/partials
+- make files: _footer.html, _navbar.html, _topbar
+- cut from base.html and past to the files respectively
 
+- base.html connect to the partial files
+```
+        <!-- Top Bar -->
+        {% include 'partials/_topbar.html' %}
+        <!-- Nav Bar -->
+        {% include 'partials/_navbar.html' %}
+        <!-- Main Content -->
+        {% block content %} {% endblock %}
+
+        <!-- Footer -->
+        {% include 'partials/_footer.html' %}
+
+```
 
 ## Set up the Postgres database (on Windows)
 
