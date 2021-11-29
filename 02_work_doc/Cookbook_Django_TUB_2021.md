@@ -140,7 +140,7 @@ def about(request):
 - build up a static bootstrap page or use bootstrap page 
 - here i copy the static page from my udemy course https://www.udemy.com/share/101WqE3@FyjsaFOyT0m5_Q4t9JOL9H9tw7nB-pl75FYbae56vt-6vqLpMogdG3CeDAxR6l7Z/
 #### make folder
-- mkdir static in webcentral_app
+- mkdir static in webcentral_app in webcentral_app
 #### copy need stuff: css, fonts, pics, static html page
 - cp -r
   ~/Nextcloud/01_Digital_Falk/04_DjangoUdemy/btre_resources/btre_resources/btre_theme/dist/assets/css
@@ -159,7 +159,7 @@ def about(request):
 ```
 STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES = [
+STATICFILES_DIRS= [
     Path.joinpath(BASE_DIR, 'webcentral_app/static')
 ]
 

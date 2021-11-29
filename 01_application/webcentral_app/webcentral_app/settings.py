@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES = [
+STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, 'webcentral_app/static')
 ]
 # Default primary key field type
