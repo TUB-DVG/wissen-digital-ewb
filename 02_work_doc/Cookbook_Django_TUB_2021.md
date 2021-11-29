@@ -304,6 +304,18 @@ copy the footer at the end of the body, before the JavaScript stuff
         {% include 'partials/_footer.html' %}
 
 ```
+## set up pic from static
+- here for the navbar
+- add to _navbar.html
+```
+{% load static %} // new
+ <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+  // adapted                  <img src="{% static 'img/TU_Logo_lang_RGB_rot.svg' %}" class="logo" alt="">
+                </a>
+```
 
 ## Set up the Postgres database (on Windows)
 
