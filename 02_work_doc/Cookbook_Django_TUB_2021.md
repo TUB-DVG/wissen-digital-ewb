@@ -129,7 +129,9 @@ def about(request):
 ### adapte index.html
 - change the code in index.html using base.html
 ```
-{% extends 'base.html' %} {% block content%}
+{% extends 'base.html' %} 
+
+{% block content%}
 <h1>home</h1>
 {% endblock %}
 ```
