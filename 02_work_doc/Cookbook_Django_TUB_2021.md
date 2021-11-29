@@ -169,6 +169,36 @@ root of the project
 ```
  python3 manage.py collectstatic
 ```
+## bring bootrap stuff to live
+- edit base.html
+```
+{% load static %}
+```
+- copy stuff from bootrap index.html in to the base.html, here form the udemy
+  tutorial
+
+- after meta
+```
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{% static '/css/all.css' %}">
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+        <!-- Custom -->
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
+        <!-- Ligthbox -->
+        <link rel="stylesheet" href="{% static '/css/lightbox.min.css' %}">
+```
+- end of body
+```
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/lightbox.min.js' %}"></script>
+<script src="{% static 'js/main.js' %} "></script>
+
+```
+- remaining some error, which will corrected later
+
+
 
 ## Set up the Postgres database (on Windows)
 
