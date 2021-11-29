@@ -170,6 +170,8 @@ root of the project
  python3 manage.py collectstatic
 ```
 ## bring bootrap stuff to live
+
+### connect bootrap stuff to the base.html
 - edit base.html
 ```
 {% load static %}
@@ -198,6 +200,92 @@ root of the project
 ```
 - remaining some error, which will corrected later
 
+### add footer, navbar and topbar
+topbar und navbar copy at the top of the body
+```
+  <!-- Top Bar -->
+  <section id="top-bar" class="p-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <i class="fas fa-phone"></i> (617)-555-5555
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-envelope-open"></i> contact@btrealestate.co
+        </div>
+        <div class="col-md-4">
+          <div class="social text-right">
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-pinterest"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/img/logo.png" class="logo" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          <li class="nav-item active mr-3">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="listings.html">Featured Listings</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="register.html">
+              <i class="fas fa-user-plus"></i> Register</a>
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="login.html">
+              <i class="fas fa-sign-in-alt"></i>
+
+              Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+```
+copy the footer at the end of the body, before the JavaScript stuff
+
+```
+       <!-- Footer -->
+        <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+            Copyright &copy;
+            <span class="year"></span> TU Berlin, DVG 
+        </footer>
+
+```
 
 
 ## Set up the Postgres database (on Windows)
