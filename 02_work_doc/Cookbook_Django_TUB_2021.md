@@ -77,7 +77,36 @@ urlpatterns = [
 ]
 
 ```
+## create template pages & Base Layout
+### folder of templates (where to look for templates)
+- add to webcentral_app/settings.py 
 
+```
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [Path.joinpath(BASE_DIR, 'templates')],
+```
+- create folder in webcentral_app named templates
+- create in templates a folder named pages
+- create in pages 2 files:
+    - index.html
+    - about.html
+- names are not strict, but good to use
+- put some content to the .html-file, like <h1>home</h1>
+
+### make the about-page known
+- add to pages/urls.py : 
+    path('about', views.about, name='about'),
+- add and adjust methods to the views.py
+```
+def index(request):
+    return render(request, 'pages/index.html')
+
+def about(request):
+    return render(request, 'pages/about.html')
+
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
