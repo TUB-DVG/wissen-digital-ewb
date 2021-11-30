@@ -59,4 +59,4 @@ How to add discriptions and units of the attributes aka features?
 ## store only strings?
 
 #Done Tests
-add a new column to the db via django models
+add a new column to the db via django models ( a default value must be given, since the addition can happen even with filled datasets)
