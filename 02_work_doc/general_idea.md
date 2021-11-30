@@ -46,7 +46,7 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 # Tests
 
 ## Add column to a table at the data base
-1. add a new column to the db via django models
+
 2. add a data set to this column
     - csv with fkz and content for this new column
 # Open questions / raw ideas
@@ -57,3 +57,6 @@ we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
 ## models django
 How to add discriptions and units of the attributes aka features?
 ## store only strings?
+
+#Done Tests
+add a new column to the db via django models
