@@ -57,7 +57,8 @@ we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
 How to add discriptions and units of the attributes aka features?
 ## store only strings?
 
-#Done Tests
+# Done Tests
+
 add a new column to the db via django models ( a default value must be given, since the addition can happen even with filled datasets)
  add a data set to this column
     - csv with fkz and content for this new column
