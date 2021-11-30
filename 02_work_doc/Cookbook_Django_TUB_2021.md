@@ -316,7 +316,15 @@ copy the footer at the end of the body, before the JavaScript stuff
   // adapted                  <img src="{% static 'img/TU_Logo_lang_RGB_rot.svg' %}" class="logo" alt="">
                 </a>
 ```
-
+## Adaptation of the static content
+### phone number and email at topbar
+- in _topbar.html
+- search for the content and change
+### colors of the navbar
+- Info: used bootstrap template use sass, lightbox is for handling the fic
+  showing
+- https://www.youtube.com/watch?v=pB7EwxwSfVk
+- https://www.youtube.com/watch?v=4sosXZsdy-s&t=186s
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
