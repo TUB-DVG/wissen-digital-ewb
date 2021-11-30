@@ -47,8 +47,7 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 
 ## Add column to a table at the data base
 
-2. add a data set to this column
-    - csv with fkz and content for this new column
+
 # Open questions / raw ideas
 ## ERD
 Must be the feature name equal to the primary key of the connected table?
@@ -60,3 +59,5 @@ How to add discriptions and units of the attributes aka features?
 
 #Done Tests
 add a new column to the db via django models ( a default value must be given, since the addition can happen even with filled datasets)
+ add a data set to this column
+    - csv with fkz and content for this new column
