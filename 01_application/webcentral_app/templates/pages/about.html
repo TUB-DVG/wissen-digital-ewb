@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content%}
   <section id="showcase-inner" class="py-5 text-white">
     <div class="container">
@@ -33,7 +35,7 @@
         <div class="col-md-8">
           <h2>Wir speichern die relvanten Informationen für die Arbeit des Moduls Digitalisierung der Wisschschaftlichen Begleitforschung </h2>
           <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
-          <img src="assets/img/about.jpg" alt="">
+          <img src="{% static '/img/ER_Diagramm_Draft6-SourceByTabels.png' %}" alt="">
           <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
             neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
             commodi id libero eveniet harum perferendis laborum molestias quia.</p>

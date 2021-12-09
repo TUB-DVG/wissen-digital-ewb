@@ -440,6 +440,15 @@ copy the footer at the end of the body, before the JavaScript stuff
 ```
  python3 manage.py collectstatic 
 ```
+- add and adjust code in about.html
+- add after "extends" 
+```
+{% load static %}
+```
+- adjust the link of the figure
+```
+<img src="{% static '/img/ER_Diagramm_Draft6-SourceByTabels.png' %}" alt="">
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
