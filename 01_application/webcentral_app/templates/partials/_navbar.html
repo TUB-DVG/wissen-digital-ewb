@@ -2,7 +2,7 @@
 <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{% url 'index' %}">
                     <img src="{% static 'img/TU_Logo_lang_RGB_rot.svg' %}" class="logo" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
@@ -11,13 +11,13 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul class="navbar-nav">
                         <li class="nav-item active mr-3">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
                         <li class="nav-item mr-3">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
                         </li>
                         <li class="nav-item mr-3">
-                            <a class="nav-link" href="listings.html">Featured Listings</a>
+                            <a class="nav-link" href="{% url 'index' %}">Featured Listings</a>
                         </li>
                     </ul>
 

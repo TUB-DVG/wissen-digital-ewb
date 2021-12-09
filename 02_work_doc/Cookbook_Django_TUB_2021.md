@@ -449,6 +449,14 @@ copy the footer at the end of the body, before the JavaScript stuff
 ```
 <img src="{% static '/img/ER_Diagramm_Draft6-SourceByTabels.png' %}" alt="">
 ```
+#### Linking
+- replace links to .html with jinja references in the following kind
+- these keys are defined in pages/urls.html
+```
+<a class="navbar-brand" href="index.html">
+to
+<a class="navbar-brand" href="{% url 'index' %}">
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
