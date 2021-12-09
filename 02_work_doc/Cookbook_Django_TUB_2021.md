@@ -457,6 +457,22 @@ copy the footer at the end of the body, before the JavaScript stuff
 to
 <a class="navbar-brand" href="{% url 'index' %}">
 ```
+#### highlighting the name of the active page
+- it is done by if statements checking the path of the page
+- for example for the index page 
+- it is done in the _navbar.html
+```
+   <li class="nav-item active mr-3">
+   to
+   <li
+   {% if '/' == request.path %}
+   class="nav-item active mr-3"
+  {% else %}
+  class="nav-item mr-3"
+  {% endif %}
+  >
+```
+- for about 'about' in instate of '/' ==  
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
