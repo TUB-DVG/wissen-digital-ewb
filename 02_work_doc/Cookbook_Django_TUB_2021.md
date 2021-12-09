@@ -286,7 +286,7 @@ copy the footer at the end of the body, before the JavaScript stuff
         </footer>
 
 ```
-### make partails of the base.html
+### make partials of the base.html
 - mkdir  templates/partials
 - make files: _footer.html, _navbar.html, _topbar
 - cut from base.html and past to the files respectively
@@ -325,6 +325,115 @@ copy the footer at the end of the body, before the JavaScript stuff
   showing
 - https://www.youtube.com/watch?v=pB7EwxwSfVk
 - https://www.youtube.com/watch?v=4sosXZsdy-s&t=186s
+## setup the about page
+### put the main structure in
+- use the structure from the tutorial
+- replace <h1>about</h1> by the following 
+```
+ <section id="showcase-inner" class="py-5 text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">Über WebCentral BF M4</h1>
+          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.html">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item active"> About</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Wir speichern die relvanten Informationen für die Arbeit des Moduls Digitalisierung der Wisschschaftlichen Begleitforschung </h2>
+          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+          <img src="assets/img/about.jpg" alt="">
+          <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
+            neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
+            commodi id libero eveniet harum perferendis laborum molestias quia.</p>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Ansprechpartner">
+            <div class="card-body">
+              <h5 class="card-title">Ansprechpartner</h5>
+              <h6 class="text-secondary">Max Mustermann</h6>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt amet, illo itaque similique repellat.
+                content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">Wir helfen euch</h2>
+    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
+    <hr>
+    <a href="listings.html" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="py-5">
+    <div class="container">
+      <h2 class="text-center">Unser Team</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <img src="assets/img/realtors/kyle.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Kyle Brown</h4>
+          <p class="text-success">
+            <i class="fas fa-award text-success mb-3"></i> Realtor</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (555)-555-5555</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> kyle@btrealestate.co</p>
+        </div>
+
+        <div class="col-md-4">
+          <img src="assets/img/realtors/mark.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Mark Hudson</h4>
+          <p class="text-success">Realtor</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (444)-444-4444</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> mark@btrealestate.co</p>
+        </div>
+
+        <div class="col-md-4">
+          <img src="assets/img/realtors/jenny.jpg" alt="" class="rounded-circle mb-3">
+          <h4>Jenny Johnson</h4>
+          <p class="text-success">Realtor</p>
+          <hr>
+          <p>
+            <i class="fas fa-phone"></i> (333)-333-3333</p>
+          <p>
+            <i class="fas fa-envelope-open"></i> jenny@btrealestate.co</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
