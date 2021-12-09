@@ -434,6 +434,12 @@ copy the footer at the end of the body, before the JavaScript stuff
   </section>
 
 ```
+#### add figure
+- copy figure into the folder 01_application/webcentral_app/static 
+- to collect the static file run
+```
+ python3 manage.py collectstatic 
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
