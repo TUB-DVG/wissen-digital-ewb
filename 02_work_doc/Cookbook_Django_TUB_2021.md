@@ -473,6 +473,72 @@ to
   >
 ```
 - for about 'about' in instate of '/' ==  
+### Create a listing app 
+- we will us this for the overall project view
+- create new app
+```
+python3 manage.py startapp project_listing
+```
+- creates new folder
+
+#### connect the new app project_listing to the django project
+- new folder in pages/templetes project_listings
+- here the related html templetes should be stored
+- create:
+    - project_list.html
+    - project_view.html
+    - search.html
+- create a separate url.py in project_listing
+- put similar content then pages/urls.py , but some adjustments
+```
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='project_listing'),
+    path('<int:FKZ>', views.project_view, name='project_view'),  # regarding
+    the FKZ, content will shown
+    path('search', views.search, name='search'),
+]
+
+```
+- make a link into the main url.py in webcentral_app folder
+- add following:
+```
+path('project_listing',include('project_listing.urls')),
+```
+- add the new app to the settings.py in webcentral_app folder into the section INSTALLED_APPS
+```
+'project_listing.apps.ProjectListingConfig',
+```  
+
+#### create view methods for the 3 htmls (project_list, project_view, search)
+- edit project_listing/views.py
+```
+def index(request):
+    """
+    shows the list of all projects including some key features
+    """
+    return render(request, 'project_listing/project_list.html')
+
+def project_view(request):
+    """
+    shows of the key features one project
+    """
+    return render(request, 'project_listing/project_view.html')
+
+def search(request):
+    """
+    search page
+    """
+    return render(request, 'project_listing/search.html')
+```
+- put simple content to the 
+    - project_list.html
+    - project_view.html
+    - search.html
+
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
@@ -676,3 +742,11 @@ Add templates like `myapp/templates/myapp/index.html`:
 ## Use generic views
 
 [Continue here](https://docs.djangoproject.com/en/1.10/intro/tutorial04/#use-generic-views-less-code-is-better)
+
+
+# Useful infos and links
+## Structure
+- https://django-project-skeleton.readthedocs.io/en/latest/index.html
+- https://djangobook.com/mdj2-django-structure/
+- https://www.jamesbeith.co.uk/blog/how-to-structure-django-projects/
+- 
