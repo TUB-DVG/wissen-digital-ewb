@@ -553,6 +553,20 @@ def search(request):
     - call the html pages in the templates folder
     - e.g. return render(request, 'project_listing/search.html')
     
+### extend the base.html to the app html pages
+- include to 
+    - project_list.html
+    - project_view.html
+    - search.html
+    the following:
+```
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>XXXXX </h1>
+{% endblock %}
+
+```
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
