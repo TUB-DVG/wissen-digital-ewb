@@ -661,10 +661,10 @@ DATABASES = {
 }
 ```
 
-While at it, the [Django tutorial](https://docs.djangoproject.com/en/1.10/intro/tutorial02/#database-setup) recommends to set the time zone to the local one, i.e. `TIME_ZONE = 'Europe/Berlin'`
-
+### migrate data to the database
+Stopp server.
 Then, migrate the default `INSTALLED_APPS` to the database with `python manage.py migrate`.
-
+start the server again
 
 ## Add the first models
 
