@@ -572,6 +572,20 @@ def search(request):
 
 - include bootrap code from the tutorial
 - code is static in the first step
+- adapted the links of the template html code for the django project
+- adjust the links and highlighting at the navabr at _navabr.html
+```
+ <li
+                            {% if 'project_list' in request.path %}
+                            class="nav-item active mr-3"
+                            {% else %}
+                            class="nav-item mr-3"
+                            {% endif %}
+                        >
+                            <a class="nav-link" href="{% url 'project_list' %}">Projektliste</a>
+                        </li>
+
+```
 
 ## Set up the Postgres database (on Windows)
 
