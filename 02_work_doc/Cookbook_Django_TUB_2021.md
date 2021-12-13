@@ -587,25 +587,76 @@ def search(request):
 
 ```
 
-## Set up the Postgres database (on Windows)
+## Set up the Postgres database 
+### Install postgres on system
+- *macOS* https://postgresapp.com/
+- *windows* https://www.postgresql.org/download/windows/
+- *Linux* https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+    - includes also the setup of the postgres DB
+### pgAdmin
+- grafical User Interface for PostgreSQL-DB
+- https://www.pgadmin.org/
 
-[This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
+Make sure *psycopg2* (`pip install psycopg2` and `pip install pscopy2-binary`) 
+and of course Postgres are installed.
 
-Make sure *psycopg2* (`pip install psycopg2`) and of course Postgres are installed.
+### Postgres Database & User Setup (via terminal)
 
-In *PGAdmin*'s `Login/Group roles` create a user `dbuser` with all priviledges granted. Then, create a database `djangodemo` and set `dbuser` as owner. Connect the database by clicking on it in the tree-view.
+```
+# sudo -u postgres psql
+```
+
+You should now be logged into the pg shell
+
+#### Create a database
+
+```
+CREATE DATABASE data_M4;
+```
+
+#### Create user
+
+```
+CREATE USER dbadmint WITH PASSWORD 'abc123!';
+```
+
+#### Set default encoding, tansaction isolation scheme (Recommended from Django)
+
+```
+ALTER ROLE dbadmint SET client_encoding TO 'utf8';
+ALTER ROLE dbadmint SET default_transaction_isolation TO 'read committed';
+ALTER ROLE dbadmint SET timezone TO 'UTC';
+```
+
+#### Give User access to database
+
+```
+GRANT ALL PRIVILEGES ON DATABASE btre_prod TO dbadmint;
+```
+
+#### Quit out of Postgres
+
+```
+\q
+```
+### Postgres Database & User Setup (via pgAdmin) 
+In *PGAdmin*'s `Login/Group roles` create a user `dbuser` with all priviledges
+granted. Then, create a database `djangodemo` and set `dbuser` as owner.
+Connect the database by clicking on it in the tree-view.
+
+### setupt postgresql in django
 
 In `mysite/settings.py`, replace the `DATABASES` part with
-
+Attention: only lower case for the database name
 ```Python
 DATABASES = {  
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangodemo',
-        'USER': 'dbuser',
-        'PASSWORD': '<password>',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'data_m4',
+        'USER': 'dbadmint',
+        'PASSWORD': 'abc123',
         'HOST': 'localhost',
-        'PORT': '5432',
+#        'PORT': '5432',
     }
 }
 ```

@@ -77,10 +77,14 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'data_m4',
+        'USER': 'dbadmint',
+        'PASSWORD': 'abc123',
+        'HOST': 'localhost',
     }
 }
+
 
 
 # Password validation
