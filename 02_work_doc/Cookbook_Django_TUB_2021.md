@@ -538,7 +538,21 @@ def search(request):
     - project_list.html
     - project_view.html
     - search.html
-
+#### general structure / references of urls
+- Top level: webcentral_app/urls.py
+    - includes in urlpatterns mostly references to other urls.py files
+    - mostly no connection to view-methods included
+    - connects the apps (project_listing) and the path extension (project_list)
+    - e.g. path('project_list', include('project_listing/urls.py'))
+- Mid level: project_listing/urls.py
+    - includes the link to the views of this app
+    - connect view-methode (e.g. views.search) and path extension (e.g. search)
+    - e.g. path('search', views.search, name='search')
+- Bottom level: project_listing/views.py 
+    - view methodes
+    - call the html pages in the templates folder
+    - e.g. return render(request, 'project_listing/search.html')
+    
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
