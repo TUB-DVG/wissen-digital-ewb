@@ -567,6 +567,12 @@ def search(request):
 {% endblock %}
 
 ```
+
+### add project list to the html page
+
+- include bootrap code from the tutorial
+- code is static in the first step
+
 ## Set up the Postgres database (on Windows)
 
 [This tutorial](http://gregblogs.com/tlt-setting-up-postgres-with-django-on-windows/) is quite helpful.
