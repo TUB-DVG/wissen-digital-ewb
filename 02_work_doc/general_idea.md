@@ -76,4 +76,4 @@ How to add descriptions and units of the attributes aka features?
 https://docs.djangoproject.com/en/dev/ref/models/fields/#help-text
 
 help_text is a variable that we can add when defining fields in models.py:
-Exp:myfield = models.CharField(max_length=100, help_text="This is the grey text")
+Exp: myfield = models.CharField(max_length=100, help_text="This is the grey text")
