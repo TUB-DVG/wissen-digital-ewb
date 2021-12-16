@@ -611,7 +611,7 @@ You should now be logged into the pg shell
 #### Create a database
 
 ```
-CREATE DATABASE data_M4;
+CREATE DATABASE M4_data;
 ```
 
 #### Create user
@@ -631,7 +631,7 @@ ALTER ROLE dbadmint SET timezone TO 'UTC';
 #### Give User access to database
 
 ```
-GRANT ALL PRIVILEGES ON DATABASE btre_prod TO dbadmint;
+GRANT ALL PRIVILEGES ON DATABASE M4_data TO dbadmint;
 ```
 
 #### Quit out of Postgres
@@ -666,9 +666,57 @@ Stopp server.
 Then, migrate the default `INSTALLED_APPS` to the database with `python manage.py migrate`.
 start the server again
 
-## Add the first models
+### planing structure of the database
+- drawio is a good tool to do this
+- for this project see ER_Diagramm_Draft6.drawio in folder 02_work_doc
 
-In `myapp/models.py`, add the first model definitions. Don't forget to add the `str` representations. And note that it is also possible to add custom methods:
+
+## Add the first models
+- infos: https://docs.djangoproject.com/en/3.2/topics/db/models/#
+- possible fields: https://docs.djangoproject.com/en/4.0/ref/models/fields/
+- in the first step, here I build a simple structure
+
+### make model for the app project_listing
+- edit models.py in folder project_listing
+- problem: consistent structure for database and html-pages
+    - 
+- add model teilprojekt (German names, but snake_case style for variables, Upper case 1st letter for clases/tables)
+```
+class Teilprojekt(models.Model):
+    fkz = models.CharField(max_length=10, primary_key=True)
+    # when  there is a problem try related_name
+    enargus_daten = models.ForeignKey('Enargus', on_delete=models.DO_NOTHING)
+    # return as name, when class is called
+    def __str__(self):
+        return self.fkz  # maybe change to the shortname of the project
+
+
+class Enargus(models.Model):
+    enargus_id = models.AutoField(primary_key=True)
+    laufzeitbeginn = models.DateTimeField(blank=True)
+    laufzeitende = models.DateTimeField(blank=True)
+    thema = models.CharField(max_length=500, blank=True)
+    forschung = models.ForeignKey('Forschung', on_delete=models.DO_NOTHING, default='created')
+
+
+class Forschung(models.Model):
+    forschung_id = models.AutoField(primary_key=True)
+    bundesministerium = models.CharField(max_length=10, blank=True)
+
+```
+
+- python3 command
+```
+python3 manage.py makemigrations
+
+python3 manage.py migrate
+```
+- check in pgAdmin for the tables and variables (right mouse, View/Edit data, all rows)
+
+
+### extra information
+In `myapp/models.py`, add the first model definitions. Don't forget to add the
+`str` representations. And note that it is also possible to add custom methods:
 
 ```Python
 from django.utils import timezone
@@ -694,7 +742,8 @@ class Choice(models.Model):
         return self.choice_text
 ```
 
-The app's model file needs to be activated by registering it in the `settings.py` file:
+The app's model file needs to be activated by registering it in the
+`settings.py` file:
 
 ```Python
 INSTALLED_APPS = [
