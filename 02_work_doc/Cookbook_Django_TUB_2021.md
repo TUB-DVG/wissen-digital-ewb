@@ -768,7 +768,10 @@ python manage.py migrate
 
 Run `python manage.py createsuperuser` to create the `admin` login.
 
-To make the models visible in the Admin page, add them in `myapp/admin.py`, e.g.:
+- advice while testing: cudok, abc123
+
+
+To make the models visible in the Admin page, add them in `project_listing/admin.py`, e.g.:
 
 ```Python
 from .models import Choice, Question
@@ -776,7 +779,12 @@ from .models import Choice, Question
 admin.site.register(Question)
 admin.site.register(Choice)
 ```
+#### more Background regarding Django and build up models
+- https://www.youtube.com/watch?v=mOu9fpfzyUg&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=5
+- https://www.youtube.com/watch?v=wIPHER2UBB4&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=6
 
+#### reset migrations
+- https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
 ## Build real views using templates
 
 More views can be added to `myapp/views.py`:
