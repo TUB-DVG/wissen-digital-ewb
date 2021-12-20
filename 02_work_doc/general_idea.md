@@ -47,8 +47,11 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 
 ## Add column to a table at the data base
 1. add a new column to the db via django models
+- it works
 2. add a data set to this column
     - csv with fkz and content for this new column
+    - I'm not shure how it works to bring, the data in to data base when
+      ForeignKeys are used
 # Open questions / raw ideas
 ## ERD
 Must be the feature name equal to the primary key of the connected table?
@@ -56,4 +59,5 @@ How can I include data types, descriptions and units (where to put?)
 we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
 ## models django
 How to add discriptions and units of the attributes aka features?
+- by using the help_text argument
 ## store only strings?
