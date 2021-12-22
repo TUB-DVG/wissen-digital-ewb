@@ -797,6 +797,25 @@ admin.site.register(Enargus)
 
 #### reset migrations
 - https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+## testing developing tools/advices
+### django shell
+- simple
+- included in django
+- python3 manage.py shell
+
+### django shell_plus
+- more advanced than django shell
+- included in django-extensions
+- pip install django-extensions
+- https://django-extensions.readthedocs.io/en/latest/installation_instructions.html
+- needs ipython to use ipython
+- needs add 'django_extensions' to Installed_apps in webcentral_app/settings.py
+- ./manage.py shell_plus --ipython
+### reload modules in ipython
+- https://switowski.com/blog/ipython-autoreload
+- %load_ext autoreload
+- %autoreload 2
+
 ## Build real views using templates
 
 More views can be added to `myapp/views.py`:
