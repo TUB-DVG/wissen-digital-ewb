@@ -61,3 +61,7 @@ we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
 How to add discriptions and units of the attributes aka features?
 - by using the help_text argument
 ## store only strings?
+
+## enargus format not straight
+- column ´thema´ sometimes without ´ ¨ ´
+- [ ] check the xml file 
