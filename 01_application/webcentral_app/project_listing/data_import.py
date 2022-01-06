@@ -31,10 +31,12 @@ def get_or_create_enargus(row, header):
     laufzeitbeginn = row[header.index('Laufzeitbeginn')]
     laufzeitende = row[header.index('Laufzeitende')]
     thema = row[header.index('Thema')]
+    verbundbezeichnung = row[header.index('Verbundbezeichung')]
     obj, created = Enargus.objects.get_or_create(
         laufzeitbeginn=laufzeitbeginn,
         laufzeitende=laufzeitende,
         thema=thema,
+        verbundbezeichnung = verbundbezeichnung,
         forschung_id = forschung_id
     )
     return obj, created
