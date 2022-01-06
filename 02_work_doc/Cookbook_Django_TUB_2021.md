@@ -784,11 +784,11 @@ To make the models visible in the Admin page, add them in `project_listing/admin
 ```Python
 from django.contrib import admin
 
-from .models import Teilprojekt
-from .models import Teilprojekt, Enargus
+from .models import Teilprojekt, Enargus, Forschung
 
 admin.site.register(Teilprojekt)
 admin.site.register(Enargus)
+admin.site.register(Forschung)
 
 ```
 #### more Background regarding Django and build up models
@@ -797,6 +797,18 @@ admin.site.register(Enargus)
 
 #### reset migrations
 - https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+
+## automatic implementation of data via scripts
+### overview video
+- fits not perfect, but helps
+- https://www.youtube.com/watch?v=t3BdM6JlAmY
+
+- https://dev.to/guin/writing-a-django-data-migration-with-real-world-example-40m
+### practical done
+- new py-file in /project_list/ data_import.py 
+- important django function ´get_or_create´
+- script run in django shell_plus (see below)
+- ipython-shell: %run project_listing/data_import
 ## testing developing tools/advices
 ### django shell
 - simple
