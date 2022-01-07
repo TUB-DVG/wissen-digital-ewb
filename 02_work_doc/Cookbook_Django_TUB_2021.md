@@ -828,6 +828,51 @@ admin.site.register(Forschung)
 - %load_ext autoreload
 - %autoreload 2
 
+## Views
+- views are pages for public outside of the admin area
+- for this we use templates
+- in views.py templates and models are called (here in folder project_listing)
+  - import the needed models
+  - load content of the models
+  - put content to a variable (here context)
+  - make the content available in the html template
+```Python
+from .models import Teilprojekt # maybe I need also the other models
+
+# Create your views here.
+
+def index(request):
+    """
+    shows the list of all projects including some key features
+    """
+    projects = Teilprojekt.objects.all() # reads all data from table Teilprojekt
+
+    context = {
+        'projects': projects
+    }
+
+    return render(request, 'project_listing/project_list.html', context)
+
+```
+- in the template (here project_list.html), bring content in
+- make the page dynamic via the data of the content by loops
+- general structure:
+```Python
+{% if projects %}
+  {% for project in projects %}
+     # html code including content from the db
+  {% endfor %}
+{% else %}
+    <div class="col-md-12">
+       <p>No prject in the DB</p>
+    </div>
+{% endif %}
+
+```
+- dynamic content
+```Python
+{{ project.fkz }} # {{ loopvariable.model_variable }}
+```
 ## Build real views using templates
 
 More views can be added to `myapp/views.py`:
