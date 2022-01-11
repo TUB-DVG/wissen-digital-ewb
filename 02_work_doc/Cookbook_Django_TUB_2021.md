@@ -871,8 +871,17 @@ def index(request):
 ```
 - dynamic content
 ```Python
+
 {{ project.fkz }} # {{ loopvariable.model_variable }}
+{{ project.enargus_daten.laufzeitbeginn }} # {{ loopvariable.foreign_keyName.model_variable }}
 ```
+
+### django queries including foreign key query
+- overview video youtube:
+   - https://www.youtube.com/watch?v=PD3YnPSHC-c
+   - https://www.youtube.com/watch?v=HhjnQIpXqPc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9
+   - https://www.youtube.com/watch?v=7a23TbUXfWE&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9  - https://www.youtube.com/watch?v=HhjnQIpXqPc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9
+   - https://docs.djangoproject.com/en/4.0/topics/db/queries/
 ## Build real views using templates
 
 More views can be added to `myapp/views.py`:
