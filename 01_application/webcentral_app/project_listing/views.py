@@ -16,7 +16,7 @@ def index(request):
 
     return render(request, 'project_listing/project_list.html', context)
 
-def project_view(request):
+def project_view(request, fkz):
     """
     shows of the key features one project
     """
