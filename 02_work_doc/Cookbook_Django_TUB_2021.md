@@ -915,6 +915,13 @@ content will be implemented as following example
  </div>
 
 ```
+## Button to switch to a page with content of one projet
+- pass the page and the id (here the fkz)
+- button at the project_list.html
+```html
+<a href="{% url 'project_view' project.fkz %}" class="btn btn-primary btn-block">More Info</a>
+```
+- template tag: {% url 'project_view' project.fkz %} #{% url 'name_of_url_in_urls.py' variabel_to_pass %} 
 
 ## Build real views using templates
 
