@@ -882,6 +882,40 @@ def index(request):
    - https://www.youtube.com/watch?v=HhjnQIpXqPc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9
    - https://www.youtube.com/watch?v=7a23TbUXfWE&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9  - https://www.youtube.com/watch?v=HhjnQIpXqPc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=9
    - https://docs.djangoproject.com/en/4.0/topics/db/queries/
+
+## build page for one project in detail
+- fkz is the key, which will passed to the page
+- regarding fkz data will be load
+- in urls.py '<str:fkz>' must passed, here str instead of int needs to be used,
+  because it is a string ;)
+- in views.py of the project_listing app the the data is loaded
+```Python
+def project_view(request, fkz):
+    """
+    shows of the key features one project
+    """
+    projekt = get_object_or_404(Teilprojekt, pk= fkz)
+    context = {
+        'projekt': projekt
+    }
+
+    return render(request, 'project_listing/project_view.html', context)
+
+```
+- in the html template project_view in templates/project_listing the dynamic
+content will be implemented as following example
+- replace static content by {{ context_variabel }}
+- for foreign key connected table use following 
+{{ project.enargus_daten.laufzeitbeginn }} # {{ context_variabel.foreign_keyName.model_variable }}
+```html
+ <div class="col-md-12">
+          <h1 class="display-4">{{ projekt.fkz }}</h1>
+          <p class="lead">
+            <i class="fas fa-map-marker"></i>{{ projekt.enargus_daten.laufzeitbeginn }}</p>
+ </div>
+
+```
+
 ## Build real views using templates
 
 More views can be added to `myapp/views.py`:
