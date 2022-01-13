@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Teilprojekt # maybe I need also the other models
 
@@ -20,7 +20,12 @@ def project_view(request, fkz):
     """
     shows of the key features one project
     """
-    return render(request, 'project_listing/project_view.html')
+    projekt = get_object_or_404(Teilprojekt, pk= fkz)
+    context = {
+        'projekt': projekt
+    }
+
+    return render(request, 'project_listing/project_view.html', context)
 
 def search(request):
     """
