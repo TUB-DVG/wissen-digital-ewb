@@ -256,7 +256,9 @@ You could manually install each one as well
 
 ```
 # pip install -r requirements.txt
+# pip install psycopg2-binary
 ```
+- psycopg2-binary is important, otherwise figures will not shown
 
 # Local Settings Setup
 
@@ -329,6 +331,8 @@ Add to requirements.txt
 ```
 # pip freeze > requirements.txt
 ```
+
+
 
 ### Test Gunicorn serve
 
@@ -527,4 +531,44 @@ server {
 ```
 
 ```
+# sudo reboot
 ```
+# problems
+## no figures at the server webcentral
+
+- figures not found ?
+- here not works for jpg, png, svg
+- local maschine it works
+- for test_page works for <img src="/static/img/logo.png" class="logo" alt="">
+and <img src=" /static/img/about.jpg" alt=""> 
+- main_app/settings.py
+  - webcentral:  Path.joinpath(BASE_DIR, 'webcentral_app/static')
+  - test_page: os.path.join(BASE_DIR, 'btre/static')
+- https://stackoverflow.com/questions/41078582/images-not-being-served-with-django-nginx
+### try no static at project level
+- remove from git repo
+- but figures not show up
+### copy not working file from server to local maschine
+- working and not working figure no difference at local
+- both figure are readable
+### try copy file from test_page project and use it
+- it figure is shown also in the webcentral project
+
+### try copy pic from webcentral to test_page project
+- also the pic copy is working
+- and when copy the pic back to the webcentral project. where it was not
+  working before it works
+### try copy pic via scp to the webcentral project and use it
+- not show up
+### test pics via source code at browser
+- all figure of the lightbox folder are working
+### test all figure from webcentral in testpage
+- copy all figs from webcentral into testpage project
+- all works, except .eps
+
+### solution!!!!!
+- pip install psycopg2-binary
+
+
+# infos
+- https://medium.com/analytics-vidhya/dajngo-with-nginx-gunicorn-aaf8431dc9e0
