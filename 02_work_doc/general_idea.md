@@ -53,15 +53,31 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
     - I'm not shure how it works to bring, the data in to data base when
       ForeignKeys are used
 # Open questions / raw ideas
+
+## Authentication ( User Groups):
+This youtube series explains User Registration, Login Authentication and User Role Based Permissions very thoroughly.
+https://www.youtube.com/watch?v=tUqUdu0Sjyc&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO&index=14
+
+The implementation of these features need to be discussed: How far do we want to add user authentication? (Front-End: Do we have pages that we want to restrict?)
 ## ERD
+
 Must be the feature name equal to the primary key of the connected table?
 How can I include data types, descriptions and units (where to put?)
 we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
-## models django
-How to add discriptions and units of the attributes aka features?
-- by using the help_text argument
+
 ## store only strings?
 
-## enargus format not straight
-- column ´thema´ sometimes without ´ ¨ ´
-- [ ] check the xml file 
+# Done Tests
+## Add column to a table at the data base
+add a new column to the db via django models ( a default value must be given, since the addition can happen even with filled datasets)
+ add a data set to this column
+    - csv with fkz and content for this new column
+
+
+#Solved Questions
+## models django
+How to add descriptions and units of the attributes aka features?
+https://docs.djangoproject.com/en/dev/ref/models/fields/#help-text
+
+help_text is a variable that we can add when defining fields in models.py:
+Exp: myfield = models.CharField(max_length=100, help_text="This is the grey text")
