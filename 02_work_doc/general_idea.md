@@ -45,9 +45,13 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 
 # Tests
 
-
-
-
+## Add column to a table at the data base
+1. add a new column to the db via django models
+- it works
+2. add a data set to this column
+    - csv with fkz and content for this new column
+    - I'm not shure how it works to bring, the data in to data base when
+      ForeignKeys are used
 # Open questions / raw ideas
 
 ## Authentication ( User Groups):

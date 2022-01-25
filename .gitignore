@@ -12,3 +12,5 @@ db.sqlite3-journal
 /media
 venv
 /static
+*csv#
+/01_application/webcentral_app/static
