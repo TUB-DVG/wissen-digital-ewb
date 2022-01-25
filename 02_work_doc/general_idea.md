@@ -69,15 +69,20 @@ we use the [Martin-Notation](https://de.wikipedia.org/wiki/Martin-Notation)
 
 # Done Tests
 ## Add column to a table at the data base
-add a new column to the db via django models ( a default value must be given, since the addition can happen even with filled datasets)
- add a data set to this column
+add a new column to the db via django models ( a default value must be given,
+ since the addition can happen even with filled datasets) add a data set to
+ this column
     - csv with fkz and content for this new column
 
 
-#Solved Questions
+# Solved Questions
 ## models django
 How to add descriptions and units of the attributes aka features?
 https://docs.djangoproject.com/en/dev/ref/models/fields/#help-text
 
 help_text is a variable that we can add when defining fields in models.py:
 Exp: myfield = models.CharField(max_length=100, help_text="This is the grey text")
+
+## enargus format not straight
+- column ´thema´ sometimes without ´ ¨ ´
+- [ ] check the xml file 
