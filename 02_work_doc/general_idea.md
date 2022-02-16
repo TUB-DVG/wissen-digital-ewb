@@ -42,7 +42,35 @@ Idea 2: Source is code into the name of the feature
 
 note: the unit can be stored with the feature, there is a "data type" called "Numeric with Unit"
 
-
+# design
+## bootstrap theme 
+- challenge: color schema and suitable page arrangement 
+- related to the EWB-color-schema
+- needed page types:
+  - external:
+   - Start page
+   - About page
+   - Tables with search and Download function
+   - Graphs with choice possibilities
+   - Contact page with data upload
+   - Overview content/publication
+   - Interactive plots/graphs (nice to have)
+   - Interactive calculator, like https://hri-pira.github.io/
+   - Survey tool / banchmarking
+   - Tags activate and deactivate to move through the structured tree (iöw und udK)
+  - internal
+   - Tables with search function (tables editable, downloadable)
+   - Graphs with choice function
+   
+- "wir nutzen Bootstrap als moderenes Frontend-Framework. Es liefert
+  standardiseirte Bausteine für ein User-Interface."
+- "we use bootstrap as modern frontend framework. It provides standarized
+  objects(bricks) for the user interface"
+- getbootstrap.com
+  - https://around.createx.studio/
+  - https://themes.getbootstrap.com/preview/?theme_id=103332
+    - tool with figures
+  - https://themes.getbootstrap.com/preview/?theme_id=7340
 # Tests
 
 ## Add column to a table at the data base
