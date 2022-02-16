@@ -30,9 +30,3 @@ path_xml = "../../../../../../Nextcloud/Shared/Digitale_Vernetzung/Assis/03_Proj
 df = asw.read_xml_enargus(path_xml, xml2csv, list_spalten)
 
 asw.write_df2csv(df, 'enargus_csv_20220216.csv', new=True)
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()
