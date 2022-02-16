@@ -24,9 +24,10 @@ sys.path.append(path_modules)
 import auswertung as asw
 
 # load parameter files
-list_spalten = '02_parameter_files/col_xml2csv.csv'
+list_col = '02_parameter_files/col_xml2csv.csv'
 xml2csv = '02_parameter_files/col_dict_xml2csv.csv'
+
 path_xml = "../../../../../../Nextcloud/Shared/Digitale_Vernetzung/Assis/03_Projekte/DVG0001_BMWi_Wende/12_Daten/01_Enargus/Daten_von_Bosch_2022_02_01/enargus.xml"
-df = asw.read_xml_enargus(path_xml, xml2csv, list_spalten)
+df = asw.read_xml_enargus(path_xml, xml2csv, list_col)
 
 asw.write_df2csv(df, 'enargus_csv_20220216.csv', new=True)
