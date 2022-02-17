@@ -88,6 +88,6 @@ def read_print_csv(path):
 # Script area (here you find examples to use the functions ahead)
 
 # print('jupp')
-path_csv='../../02_work_doc/BF_M4_DB_60rows.csv'
+path_csv='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
 header, data = csv2m4db(path_csv)
 # data_2 = data[2]
