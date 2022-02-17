@@ -18,6 +18,7 @@ file pushed/migrated into the data base with python tools.
 The data can edit manually at "admin pages".
 
 # Structure of the data base
+- [ ] update the figures of the data base structure, changes in kind of the relations
 ## actual structure and sources of the csv-DB
 see [figure](./sources2db-csv-db.png)
 [drawio](./sources2db.drawio)
@@ -41,7 +42,30 @@ mix the data
 Idea 2: Source is code into the name of the feature
 
 note: the unit can be stored with the feature, there is a "data type" called "Numeric with Unit"
-
+### completed db structure (done by Firas)
+- [ ] local test, load and mirgrate to a new db
+- [ ] merge to the main branch 
+# implement real working data
+## pre processing
+- in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
+### EnArgus
+- script: pre_enargus.py
+- need parameter files in 02_parameter_files
+  - col_dic_xml2csv.csv
+  - col_xml2csv.csv
+- [x] resulting csv file checked
+- [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
+- [ ] resulting csv file read to db including all columns (firas updated)
+- [ ] resulting csv file read to updated db on ik10-Server
+- [ ]
+### modul assignment ("Modulzuordnung")
+- script: pre_modul.py
+- [x] resulting csv file checked
+- [ ] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
+- [ ] resulting csv file read to db including all columns (firas updated)
+- [ ] resulting csv file read to updated db on ik10-Server
+- [ ]
+#
 # design
 ## bootstrap theme 
 - challenge: color schema and suitable page arrangement 
