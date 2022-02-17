@@ -42,6 +42,9 @@ mix the data
 Idea 2: Source is code into the name of the feature
 
 note: the unit can be stored with the feature, there is a "data type" called "Numeric with Unit"
+### completed db structure (done by Firas)
+- [ ] local test, load and mirgrate to a new db
+- [ ] merge to the main branch 
 # implement real working data
 ## pre processing
 - in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
