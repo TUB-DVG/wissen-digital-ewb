@@ -48,12 +48,15 @@ def add_or_update_row_teilprojekt(row, header):
     # fill table enargus or/and get the enargus_id
     obj, created = get_or_create_enargus(row, header)
     enargus_id = obj.enargus_id
+    fkz_string = row[header.index('FKZ')]
+    # breakpoint()
     try:
         Teilprojekt.objects.create(fkz=row[header.index('FKZ')],
                                     enargus_daten_id= enargus_id)
+        print('added: %s' %fkz_string)
     except IntegrityError:
-        answ = input("FKZ ist vorhanden. Sollen die alten Elemente mit \
-        den neuen Werten ueberschrieben werden (y/n): ")
+        answ = input("%s found in db. Update this part project? (y/n): "
+                     %fkz_string)
         if answ == 'y':
             Teilprojekt.objects.filter(pk=row[header.index('FKZ')]).update(
                 enargus_daten_id= enargus_id)
