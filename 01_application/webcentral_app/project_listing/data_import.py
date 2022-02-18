@@ -27,17 +27,19 @@ def get_or_create_enargus(row, header):
     # fill table forschung or/and get the forschung_id
     obj, created = get_or_create_forschung(row, header)
     forschung_id = obj.forschung_id
-
+    # breakpoint()
     laufzeitbeginn = row[header.index('Laufzeitbeginn')]
     laufzeitende = row[header.index('Laufzeitende')]
     thema = row[header.index('Thema')]
     verbundbezeichnung = row[header.index('Verbundbezeichung')]
+    foerdersumme = float(row[header.index('Foerdersumme_EUR')])
     obj, created = Enargus.objects.get_or_create(
         laufzeitbeginn=laufzeitbeginn,
         laufzeitende=laufzeitende,
         thema=thema,
         verbundbezeichnung = verbundbezeichnung,
-        forschung_id = forschung_id
+        forschung_id = forschung_id,
+        foerdersumme = foerdersumme
     )
     return obj, created
 
@@ -55,6 +57,7 @@ def add_or_update_row_teilprojekt(row, header):
                                     enargus_daten_id= enargus_id)
         print('added: %s' %fkz_string)
     except IntegrityError:
+        # breakpoint()
         answ = input("%s found in db. Update this part project? (y/n): "
                      %fkz_string)
         if answ == 'y':
