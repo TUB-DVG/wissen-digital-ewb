@@ -45,9 +45,36 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 ### completed db structure (done by Firas)
 - [ ] local test, load and mirgrate to a new db
 - [ ] merge to the main branch 
+- [x] put the models.py and admin.py into dev_falk
+#### double fkz? - no 
+- run data_import.py
+  - doubles:
+    - 03EWR020J, 03EWR020A, 03EN3044A, 03ET1080A, 03ET1636A, 03EGB0015A, 03ET1308A, 03ET1111A, 
+      - but not in the cli output, strange
+      - press update: y
+      - check csv file: all the fkz only once included, as expected
+      - data (output auf the function) includes the fkz above only once as expected
+      - in table listing_teilprojekt (via pgAdmin) includes not fkzs above
+      - run data_import.py again with new db: the same behaviour
+      - assumption: enargus data completely the same 
+        - possible reason: only some connection to table, so there are not much possiblities vor differences
+        - [x] make some connections working and check this behaviour
+        - is working, no doubles in enargus items, with foerdersumme, it is biuninque
+#### not filled features
+- add following fieds to the data_import.py script
+- [ ] Projektleiter
+- [ ] Datenbank
+- [ ] Kurzbeschreibungen de
+- [ ] Kurzbeschreibungen en
+- [x] Foerdersumme
+- and more
+#### Questions at Firas
+- what about: from sqlalchemy import null, true?
+  - Falk: maybe, there is no null and true? what is special about this?
+- where is the ERM including one to many relations
 # implement real working data
 ## pre processing
-- in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
+- [ ] in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
 ### EnArgus
 - script: pre_enargus.py
 - need parameter files in 02_parameter_files
