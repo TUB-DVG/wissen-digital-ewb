@@ -16,3 +16,4 @@ venv
 /01_application/webcentral_app/static
 02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv
 02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220216.csv
+01_application/webcentral_app/project_listing/migrations
