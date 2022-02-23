@@ -91,7 +91,7 @@ class Enargus(models.Model):
     zuwendsempfanger=models.ForeignKey("Zuwendungsempfaenger", null =true,
                                        on_delete=models.SET_NULL,blank=True)
     foerdersumme = models.DecimalField(help_text='Foerdersumme in EUR',
-                                       null=True,blank=True, max_digits=8,
+                                       null=True,blank=True, max_digits=10,
                                        decimal_places=2)
 
     # return as name, when class is called, eg. tables in admin page
