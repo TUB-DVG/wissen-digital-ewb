@@ -25,8 +25,8 @@ def get_or_create_enargus(row, header):
     # content = row[number of the columns of the row]
 
     # fill table forschung or/and get the forschung_id
-    obj, created = get_or_create_forschung(row, header)
-    forschung_id = obj.forschung_id
+    obj_for, created_for = get_or_create_forschung(row, header)
+    forschung_id = obj_for.forschung_id
 
     laufzeitbeginn = row[header.index('Laufzeitbeginn')]
     laufzeitende = row[header.index('Laufzeitende')]
@@ -37,8 +37,11 @@ def get_or_create_enargus(row, header):
         laufzeitbeginn=laufzeitbeginn,
         laufzeitende=laufzeitende,
         thema=thema,
-        verbundbezeichnung = verbundbezeichnung,
+        # instead of using only the name of the feature in case
+        # of foreigne keys use the name+_id, I dont know why
+        projektleiter_id = person_id,
         forschung_id = forschung_id,
+        verbundbezeichnung = verbundbezeichnung,
         foerdersumme = foerdersumme
     )
     return obj, created
