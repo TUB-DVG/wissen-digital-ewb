@@ -6,12 +6,14 @@ from django.forms import CharField
 
 from sqlalchemy import null, true
 class Teilprojekt(models.Model):
-    fkz = models.CharField(max_length=10, primary_key=True)
+    fkz = models.CharField(
+        max_length=10,
+        primary_key=True,
+        help_text= 'Förderkennzeichen')
     # when  there is a problem try related_name
-    enargus_daten = models.OneToOneField('Enargus', null=True,
-                                      on_delete=models.CASCADE)
-
-
+    enargus_daten = models.OneToOneField('Enargus',
+                                         null=True,
+                                         on_delete=models.CASCADE)
     #projektlandkarte
 
     zuordnung=models.ForeignKey("Modulen_zuordnung_ptj",null=true,on_delete=models.SET_NULL,blank=True)
@@ -82,7 +84,7 @@ class Enargus(models.Model):
                                          default=null)
     kurzbeschreibung_en=models.TextField(help_text="Englische Kurzbeschreibung",
                                          default=null)
-    leistrungsplan_Systematik=models.ForeignKey("Leistrungsplan_Systematik",
+    leistungsplan_systematik=models.ForeignKey("Leistung_sys",
                                                 null=True,
                                                 on_delete=models.SET_NULL,
                                                 blank=True)

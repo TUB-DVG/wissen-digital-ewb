@@ -10,7 +10,7 @@ admin.site.register(Schlagwortregister_erstsichtung)
 
 
 admin.site.register(Modulen_zuordnung_ptj)
-admin.site.register(Leistrungsplan_Systematik)
+admin.site.register(Leistung_sys)
 admin.site.register(Zuwendungsempfaenger)
 
 
