@@ -129,7 +129,7 @@ class Zuwendungsempfaenger(models.Model):
 
 class Person (models.Model):
     person_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    name=models.CharField(max_length=10,help_text="Name der Person")
+    name=models.CharField(max_length=50,help_text="Name der Person")
     vorname=models.CharField(max_length=50,help_text="Vorname der Person")
     titel=models.CharField(max_length=50, help_text="Titel der Person")
     email=models.EmailField(help_text="Email_Adresse der Person")
