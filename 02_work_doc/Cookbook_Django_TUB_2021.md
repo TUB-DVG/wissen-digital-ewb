@@ -639,7 +639,26 @@ GRANT ALL PRIVILEGES ON DATABASE M4_data TO dbadmint;
 ```
 \q
 ```
+
+#### Delate Database
+- see  https://www.postgresqltutorial.com/postgresql-drop-database/
+
+Drop, if open connection
+```
+SELECT *
+FROM pg_stat_activity
+WHERE datname = '<database_name>';
+
+SELECT	pg_terminate_backend (pid)
+FROM	pg_stat_activity
+WHERE	pg_stat_activity.datname = '<database_name>';
+
+
+DROP DATABASE <database_name>;
+```
+
 ### Postgres Database & User Setup (via pgAdmin) 
+
 In *PGAdmin*'s `Login/Group roles` create a user `dbuser` with all priviledges
 granted. Then, create a database `djangodemo` and set `dbuser` as owner.
 Connect the database by clicking on it in the tree-view.
