@@ -110,9 +110,12 @@ class Forschung(models.Model):
 
 
 
-class Leistrungsplan_Systematik(models.Model):
-    leistrungsplansystematik_nr=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    leistrungsplansystematik_Text=models.CharField(max_length=150)
+class Leistung_sys(models.Model):
+    leistungsplansystematik_nr=models.CharField(
+        primary_key=True,
+        max_length= 6,
+        help_text="Leistungsplansystematiknummer")
+    leistungsplansystematik_text=models.CharField(max_length=150)
 
 
 
