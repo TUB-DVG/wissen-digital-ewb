@@ -75,7 +75,7 @@ class Enargus(models.Model):
                                           True)
     forschung = models.ForeignKey('Forschung', null=True,
                                   on_delete=models.SET_NULL,blank=True)
-    projektleiter =models.ForeignKey("Person", null = True,
+    projektleiter =models.ForeignKey('Person', null = True,
                                      on_delete=models.SET_NULL,blank=True)
     datenbank= models.CharField(max_length=15,
                                 help_text="Datenbank Information/Enargus Intern",
@@ -127,7 +127,7 @@ class Zuwendungsempfaenger(models.Model):
 
 
 
-class Person (models.Model):
+class Person(models.Model):
     person_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
     name=models.CharField(max_length=100,help_text="Name der Person")
     vorname=models.CharField(max_length=50,help_text="Vorname der Person")
