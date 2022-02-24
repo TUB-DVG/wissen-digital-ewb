@@ -34,7 +34,7 @@ class Fragebogen_21(models.Model):
 
 
 class Schlagwortregister_erstsichtung(models.Model):
-    schlagwortregister_erstsichtung_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
+    schlagwortregister_erstsichtung_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
     schlagwort_1=models.ForeignKey("Schlagwort",related_name='schlagwort_1',null=True,on_delete=models.SET_NULL,blank=True)
     schlagwort_2=models.ForeignKey("Schlagwort",related_name='schlagwort_2',null=True,on_delete=models.SET_NULL,blank=True)
     schlagwort_3=models.ForeignKey("Schlagwort",related_name='schlagwort_3',null=True,on_delete=models.SET_NULL,blank=True)
@@ -48,7 +48,7 @@ class Schlagwortregister_erstsichtung(models.Model):
 
 
 class Schlagwort (models.Model):
-    schlagwort_ID= models.CharField(max_length=200,help_text="Name des Schlagwortes")
+    schlagwort_id= models.CharField(max_length=200,help_text="Name des Schlagwortes")
     schlagwort_definition=models.CharField(max_length=1500,help_text="Definition des Schlagwortes")
     literatur=models.CharField(max_length=1500,help_text="Literaturquellen zum Schlagwort")
 
@@ -121,7 +121,7 @@ class Leistung_sys(models.Model):
 
 
 class Zuwendungsempfaenger(models.Model):
-    zuwendungsempfaenger_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
+    zuwendungsempfaenger_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
     name=models.CharField(max_length=50)
     anschrift=models.ForeignKey("Anschrift",null= true,on_delete=models.SET_NULL,blank=True)
 
@@ -138,7 +138,7 @@ class Person(models.Model):
 
 
 class Anschrift(models.Model):
-    anschrift_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
+    anschrift_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
     plz=models.CharField(max_length=5)
     ort=models.CharField(max_length=50)
     land=models.CharField(max_length=50)
