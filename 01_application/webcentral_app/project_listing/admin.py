@@ -12,7 +12,7 @@ admin.site.register(Schlagwortregister_erstsichtung)
 admin.site.register(Modulen_zuordnung_ptj)
 admin.site.register(Leistung_sys)
 admin.site.register(Zuwendungsempfaenger)
-
+admin.site.register(Ausfuehrende_stelle)
 
 admin.site.register(Person)
 admin.site.register(Anschrift)
