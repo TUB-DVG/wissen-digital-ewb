@@ -36,12 +36,32 @@ def get_or_create_person(row, header):
     )
     return obj, created
 
+def get_or_create_leistung_sys(row, header):
+    """
+    add entry into table leistung_sys or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    leistungsplansystematik_text = row[header.index('Leistungsplan_Sys_Text')]
+    leistungsplansystematik_nr = row[header.index('Leistungsplan_Sys_Nr')]
+
+    obj, created = Leistung_sys.objects.get_or_create(
+        leistungsplansystematik_nr =  leistungsplansystematik_nr,
+        leistungsplansystematik_text = leistungsplansystematik_text
+    )
+    return obj, created
+
 def get_or_create_enargus(row, header):
     """
     add entry into table enargus or/and return entry key
     """
     # content = row[number of the columns of the row]
     # print(forschung_id)
+
+    # fill table leistung_sys or/and get the leistungsplansystematik_nr
+    obj_lps, created_lps = get_or_create_leistung_sys(row, header)
+    lps_nr = obj_lps.leistungsplansystematik_nr
+
+    # fill table person or/and get the person_id
     obj_per, created_per = get_or_create_person(row, header)
     person_id = obj_per.person_id
 
