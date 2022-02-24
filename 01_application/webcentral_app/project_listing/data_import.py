@@ -97,6 +97,7 @@ def get_or_create_enargus(row, header):
         # of foreigne keys use the name+_id, I dont know why
         projektleiter_id = person_id,
         forschung_id = forschung_id,
+        leistungsplan_systematik_id = lps_nr,
         zuwendsempfanger_id = zwe_id,
         verbundbezeichnung = verbundbezeichnung,
         foerdersumme = foerdersumme
