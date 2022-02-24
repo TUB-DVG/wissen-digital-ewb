@@ -96,6 +96,23 @@ def get_or_create_zuwendungsempfaenger(row, header):
     )
     return obj, created
 
+def get_or_create_ausfuehrende_stelle(row, header):
+    """
+    add entry into table ausfuehrende_stelle or/and return entry key
+    """
+   # fill table anschrift in case of ausfuehrende_stelle
+    # or/and get the anschrift_id
+    obj_ans_as, created_ans_as = get_or_create_anschrift(row, header, 'as')
+    as_ans_id = obj_ans_as.anschrift_id
+
+    # content = row[number of the columns of the row]
+    name = row[header.index('Name_AS')]
+    obj, created = Ausfuehrende_stelle.objects.get_or_create(
+        name = name,
+        anschrift_id = as_ans_id
+    )
+    return obj, created
+
 def get_or_create_enargus(row, header):
     """
     add entry into table enargus or/and return entry key
@@ -106,6 +123,10 @@ def get_or_create_enargus(row, header):
     # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
     obj_zwe, created_zwe = get_or_create_zuwendungsempfaenger(row, header)
     zwe_id = obj_zwe.zuwendungsempfaenger_id
+
+    # fill table ausfuehrende_stelle or/and get the ausfuehrende_stelle_id
+    obj_as, created_as = get_or_create_ausfuehrende_stelle(row, header)
+    as_id = obj_as.ausfuehrende_stelle_id
 
     # fill table leistung_sys or/and get the leistungsplansystematik_nr
     obj_lps, created_lps = get_or_create_leistung_sys(row, header)
@@ -134,6 +155,7 @@ def get_or_create_enargus(row, header):
         forschung_id = forschung_id,
         leistungsplan_systematik_id = lps_nr,
         zuwendsempfanger_id = zwe_id,
+        ausfuehrende_stelle_id = as_id,
         verbundbezeichnung = verbundbezeichnung,
         foerdersumme = foerdersumme
     )
