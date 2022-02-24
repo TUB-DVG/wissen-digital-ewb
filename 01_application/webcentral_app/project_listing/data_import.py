@@ -50,12 +50,27 @@ def get_or_create_leistung_sys(row, header):
     )
     return obj, created
 
+def get_or_create_zuwendungsempfaenger(row, header):
+    """
+    add entry into table zuwendungsempfaenger or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    name = row[header.index('Name_ZWE')]
+    obj, created = Zuwendungsempfaenger.objects.get_or_create(
+        name = name
+    )
+    return obj, created
+
 def get_or_create_enargus(row, header):
     """
     add entry into table enargus or/and return entry key
     """
     # content = row[number of the columns of the row]
     # print(forschung_id)
+
+    # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
+    obj_zwe, created_zwe = get_or_create_zuwendungsempfaenger(row, header)
+    zwe_id = obj_zwe.zuwendungsempfaenger_id
 
     # fill table leistung_sys or/and get the leistungsplansystematik_nr
     obj_lps, created_lps = get_or_create_leistung_sys(row, header)
@@ -82,6 +97,7 @@ def get_or_create_enargus(row, header):
         # of foreigne keys use the name+_id, I dont know why
         projektleiter_id = person_id,
         forschung_id = forschung_id,
+        zuwendsempfanger_id = zwe_id,
         verbundbezeichnung = verbundbezeichnung,
         foerdersumme = foerdersumme
     )
