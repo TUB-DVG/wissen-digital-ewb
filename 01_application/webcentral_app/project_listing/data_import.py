@@ -145,6 +145,9 @@ def get_or_create_enargus(row, header):
     thema = row[header.index('Thema')]
     verbundbezeichnung = row[header.index('Verbundbezeichung')]
     foerdersumme = float(row[header.index('Foerdersumme_EUR')])
+    kurzbeschreibung_de = row[header.index('Kurzbeschreibung_de')]
+    kurzbeschreibung_en = row[header.index('Kurzbeschreibung_en')]
+    datenbank = row[header.index('Datenbank')]
     obj, created = Enargus.objects.get_or_create(
         laufzeitbeginn=laufzeitbeginn,
         laufzeitende=laufzeitende,
@@ -157,7 +160,10 @@ def get_or_create_enargus(row, header):
         zuwendsempfanger_id = zwe_id,
         ausfuehrende_stelle_id = as_id,
         verbundbezeichnung = verbundbezeichnung,
-        foerdersumme = foerdersumme
+        foerdersumme = foerdersumme,
+        kurzbeschreibung_de = kurzbeschreibung_de,
+        kurzbeschreibung_en = kurzbeschreibung_en,
+        datenbank = datenbank
     )
     return obj, created
 
