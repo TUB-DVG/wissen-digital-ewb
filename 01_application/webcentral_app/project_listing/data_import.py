@@ -26,9 +26,13 @@ def get_or_create_person(row, header):
     # decision kind of persion, where should the data read from, maybe later needed
     name = row[header.index('Name_pl')]
     vorname = row[header.index('Vorname_pl')]
+    titel = row[header.index('Titel_pl')]
+    email = row[header.index('Email_pl')]
     obj, created = Person.objects.get_or_create(
         name = name,
-        vorname = vorname
+        vorname = vorname,
+        titel = titel,
+        email = email
     )
     return obj, created
 
