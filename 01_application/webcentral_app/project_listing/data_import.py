@@ -18,11 +18,28 @@ def get_or_create_forschung(row, header):
     )
     return obj, created
 
+def get_or_create_person(row, header):
+    """
+    add entry into table person or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    # decision kind of persion, where should the data read from, maybe later needed
+    name = row[header.index('Name_pl')]
+    vorname = row[header.index('Vorname_pl')]
+    obj, created = Person.objects.get_or_create(
+        name = name,
+        vorname = vorname
+    )
+    return obj, created
+
 def get_or_create_enargus(row, header):
     """
     add entry into table enargus or/and return entry key
     """
     # content = row[number of the columns of the row]
+    # print(forschung_id)
+    obj_per, created_per = get_or_create_person(row, header)
+    person_id = obj_per.person_id
 
     # fill table forschung or/and get the forschung_id
     obj_for, created_for = get_or_create_forschung(row, header)
