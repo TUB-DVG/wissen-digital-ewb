@@ -122,7 +122,7 @@ class Leistung_sys(models.Model):
 
 class Zuwendungsempfaenger(models.Model):
     zuwendungsempfaenger_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    name=models.CharField(max_length=50)
+    name=models.CharField(max_length=250)
     anschrift=models.ForeignKey("Anschrift",null= true,on_delete=models.SET_NULL,blank=True)
 
 
