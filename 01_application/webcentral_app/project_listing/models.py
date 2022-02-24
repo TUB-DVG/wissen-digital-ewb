@@ -133,9 +133,6 @@ class Person(models.Model):
     vorname=models.CharField(max_length=50,help_text="Vorname der Person")
     titel=models.CharField(max_length=50, help_text="Titel der Person")
     email=models.EmailField(help_text="Email_Adresse der Person")
-    anschrift=models.ForeignKey("Anschrift",null= true,on_delete=models.SET_NULL,blank=True)
-
-
 
 class Anschrift(models.Model):
     anschrift_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
