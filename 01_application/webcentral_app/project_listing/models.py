@@ -88,8 +88,14 @@ class Enargus(models.Model):
                                                 null=True,
                                                 on_delete=models.SET_NULL,
                                                 blank=True)
-    zuwendsempfanger=models.ForeignKey("Zuwendungsempfaenger", null =true,
+    zuwendsempfanger = models.ForeignKey("Zuwendungsempfaenger", null =true,
                                        on_delete=models.SET_NULL,blank=True)
+    ausfuehrende_stelle = models.ForeignKey("Ausfuehrende_stelle",
+                                            null =true,
+                                            on_delete=models.SET_NULL,
+                                            blank=True
+                                            )
+
     foerdersumme = models.DecimalField(help_text='Foerdersumme in EUR',
                                        null=True,blank=True, max_digits=10,
                                        decimal_places=2)
@@ -118,6 +124,10 @@ class Leistung_sys(models.Model):
     leistungsplansystematik_text=models.CharField(max_length=150)
 
 
+class Ausfuehrende_stelle(models.Model):
+    ausfuehrende_stelle_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
+    name=models.CharField(max_length=250)
+    anschrift=models.ForeignKey("Anschrift",null= true,on_delete=models.SET_NULL,blank=True)
 
 
 class Zuwendungsempfaenger(models.Model):
