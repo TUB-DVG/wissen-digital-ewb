@@ -18,6 +18,35 @@ def get_or_create_forschung(row, header):
     )
     return obj, created
 
+def get_or_create_anschrift(row, header, who):
+    """
+    add entry into table anschrift or/and return entry key
+
+    who options:
+    - 'zwe' : zuwendungsempfaenger
+    - 'as' : ausfehrende Stelle
+    """
+    # content = row[number of the columns of the row]
+    # decision kind of persion, where should the data read from, maybe later needed
+    if who == 'zwe':
+        plz = row[header.index('PLZ_ZWE')]
+        ort = row[header.index('Ort_ZWE')]
+        land = row[header.index('Land_ZWE')]
+        adresse = row[header.index('Adress_ZWE')]
+    elif who == 'as':
+        plz = row[header.index('PLZ_AS')]
+        ort = row[header.index('Ort_AS')]
+        land = row[header.index('Land_AS')]
+        adresse = row[header.index('Adress_AS')]
+
+    obj, created = Anschrift.objects.get_or_create(
+        plz = plz,
+        ort = ort,
+        land = land,
+        adresse = adresse
+    )
+    return obj, created
+
 def get_or_create_person(row, header):
     """
     add entry into table person or/and return entry key
@@ -54,10 +83,16 @@ def get_or_create_zuwendungsempfaenger(row, header):
     """
     add entry into table zuwendungsempfaenger or/and return entry key
     """
+   # fill table anschrift in case of zuwendungsempfaenger
+    # or/and get the anschrift_id
+    obj_ans_zwe, created_ans_zwe = get_or_create_anschrift(row, header, 'zwe')
+    zwe_ans_id = obj_ans_zwe.anschrift_id
+
     # content = row[number of the columns of the row]
     name = row[header.index('Name_ZWE')]
     obj, created = Zuwendungsempfaenger.objects.get_or_create(
-        name = name
+        name = name,
+        anschrift_id = zwe_ans_id
     )
     return obj, created
 
