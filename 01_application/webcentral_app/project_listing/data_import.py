@@ -167,14 +167,19 @@ def get_or_create_enargus(row, header):
     )
     return obj, created
 
-def add_or_update_row_teilprojekt(row, header):
+def add_or_update_row_teilprojekt(row, header, source):
     """add or update one row of the database, but without foreign key connections
+
+    source cases:
+    - 'enargus' : read data from enargus xml via csv file (here csv will loaded)
+    - 'modul' : read data from 'verteiler xlsx' via csv file (here csv will loaded)
 
     """
     # fill table enargus or/and get the enargus_id
-    obj, created = get_or_create_enargus(row, header)
-    enargus_id = obj.enargus_id
-    fkz = row[header.index('FKZ')]
+    if source == 'enargus':
+        obj, created = get_or_create_enargus(row, header)
+        enargus_id = obj.enargus_id
+        fkz = row[header.index('FKZ')]
     # breakpoint()
     try:
         Teilprojekt.objects.create(fkz=fkz,
@@ -187,7 +192,7 @@ def add_or_update_row_teilprojekt(row, header):
             Teilprojekt.objects.filter(pk=fkz).update(
                 enargus_daten_id= enargus_id)
 
-def csv2m4db(path):
+def csv2m4db_enargus(path):
     """EnArgus csv-file into BF M4 Django database, hard coded"""
     with open(path) as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -195,7 +200,7 @@ def csv2m4db(path):
         data = []
         for row in reader:
             data.append(row)
-            add_or_update_row_teilprojekt(row, header)
+            add_or_update_row_teilprojekt(row, header, 'enargus')
             # print(row[header.index('FKZ')])
     return header, data
 
