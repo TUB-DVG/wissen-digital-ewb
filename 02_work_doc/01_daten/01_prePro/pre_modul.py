@@ -32,7 +32,7 @@ df_modul = df_xlsx[["Förderkenz. (0010)", "Modulzuordnung PtJ - 1 aktuell"
                     , "Modulzuordnung PtJ - 2 aktuell", "Modulzuordnung PtJ - 3 aktuell"
                     , "Modulzuordnung PtJ - 4 aktuell"]]
 # rename columns
-df_modul = df_modul.rename(columns={"Förderkenz. (0010)": "fkz",
+df_modul = df_modul.rename(columns={"Förderkenz. (0010)": "FKZ",
                                      "Modulzuordnung PtJ - 1 aktuell" : 'modulzuordnung_ptj_1',
                                      "Modulzuordnung PtJ - 2 aktuell" : 'modulzuordnung_ptj_2',
                                      "Modulzuordnung PtJ - 3 aktuell" : 'modulzuordnung_ptj_3',
