@@ -56,11 +56,14 @@ class Schlagwort (models.Model):
 
 
 class Modulen_zuordnung_ptj(models.Model):
-    mode_ID=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    priority_1=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 1")
-    priority_2=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 2")
-    priority_3=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 3")
-
+    mod_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
+    priority_1=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 1, ag: ausgelaufen")
+    priority_2=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 2, ag: ausgelaufen")
+    priority_3=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 3, ag: ausgelaufen")
+    priority_4=models.CharField(max_length=2,
+                 help_text="Projektzuordnung mit der Prioritat 4, ag: ausgelaufen",
+                 null=True, blank=True
+                                )
 
 
 
