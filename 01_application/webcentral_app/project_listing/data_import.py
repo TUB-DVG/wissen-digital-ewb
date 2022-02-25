@@ -167,6 +167,24 @@ def get_or_create_enargus(row, header):
     )
     return obj, created
 
+def get_or_create_modulen_zuordnung(row, header):
+    """
+    add entry into table modulen_zuordnung_ptj or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+
+    priority_1 = row[header.index('modulzuordnung_ptj_1')]
+    priority_2 = row[header.index('modulzuordnung_ptj_2')]
+    priority_3 = row[header.index('modulzuordnung_ptj_3')]
+    priority_4 = row[header.index('modulzuordnung_ptj_4')]
+    obj, created = Modulen_zuordnung_ptj.objects.get_or_create(
+        priority_1 = priority_1,
+        priority_2 = priority_2,
+        priority_3 = priority_3,
+        priority_4 = priority_4
+    )
+    return obj, created
+
 def add_or_update_row_teilprojekt(row, header, source):
     """add or update one row of the database, but without foreign key connections
 
@@ -180,17 +198,32 @@ def add_or_update_row_teilprojekt(row, header, source):
         obj, created = get_or_create_enargus(row, header)
         enargus_id = obj.enargus_id
         fkz = row[header.index('FKZ')]
+
     # breakpoint()
-    try:
-        Teilprojekt.objects.create(fkz=fkz,
+        try:
+            Teilprojekt.objects.create(fkz=fkz,
                                     enargus_daten_id= enargus_id)
-        print('added: %s' %fkz)
-    except IntegrityError:
-        answ = input("%s found in db. Update this part project? (y/n): "
+            print('added: %s' %fkz)
+        except IntegrityError:
+            answ = input("%s found in db. Update this part project? (y/n): "
                      %fkz)
-        if answ == 'y':
-            Teilprojekt.objects.filter(pk=fkz).update(
-                enargus_daten_id= enargus_id)
+            if answ == 'y':
+                Teilprojekt.objects.filter(pk=fkz).update(
+                    enargus_daten_id= enargus_id)
+    elif source == 'modul':
+        obj, created = get_or_create_modulen_zuordnung(row, header)
+        mod_id = obj.mod_id
+        fkz = row[header.index('FKZ')]
+        try:
+            Teilprojekt.objects.create(fkz=fkz,
+                                    zuordnung_id= mod_id)
+            print('added: %s' %fkz)
+        except IntegrityError:
+            answ = input("%s found in db. Update this part project? (y/n): "
+                     %fkz)
+            if answ == 'y':
+                Teilprojekt.objects.filter(pk=fkz).update(
+                    zuordnung_id= mod_id)
 
 def csv2m4db_enargus(path):
     """EnArgus csv-file into BF M4 Django database, hard coded"""
@@ -201,7 +234,18 @@ def csv2m4db_enargus(path):
         for row in reader:
             data.append(row)
             add_or_update_row_teilprojekt(row, header, 'enargus')
-            # print(row[header.index('FKZ')])
+    return header, data
+
+def csv2m4db_modul(path):
+    """Modul csv-file into BF M4 Django database, hard coded"""
+    with open(path) as csv_file:
+        reader = csv.reader(csv_file, delimiter=';')
+        header = next(reader)
+        data = []
+        for row in reader:
+            print(row[header.index('FKZ')])
+            data.append(row)
+            add_or_update_row_teilprojekt(row, header, 'modul')
     return header, data
 
 def read_print_csv(path):
@@ -218,7 +262,10 @@ def read_print_csv(path):
 
 # Script area (here you find examples to use the functions ahead)
 
-# print('jupp')
-path_csv='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
-header, data = csv2m4db(path_csv)
-# data_2 = data[2]
+## Example add/update Enargus data
+# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
+# header, data = csv2m4db_enargus(path_csv_enargus)
+
+## Example add/update Modul-Zuordnung data
+path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220216.csv'
+header, data = csv2m4db_modul(path_csv_modul)
