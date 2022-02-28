@@ -219,11 +219,12 @@ def add_or_update_row_teilprojekt(row, header, source):
                                     zuordnung_id= mod_id)
             print('added: %s' %fkz)
         except IntegrityError:
-            answ = input("%s found in db. Update this part project? (y/n): "
-                     %fkz)
+            answ = input("%s found in db. Update this part project? (Y/n): "
+                     %fkz) or 'y'
             if answ == 'y':
                 Teilprojekt.objects.filter(pk=fkz).update(
                     zuordnung_id= mod_id)
+                print('updated: %s' %fkz)
 
 def csv2m4db_enargus(path):
     """EnArgus csv-file into BF M4 Django database, hard coded"""
@@ -243,7 +244,7 @@ def csv2m4db_modul(path):
         header = next(reader)
         data = []
         for row in reader:
-            print(row[header.index('FKZ')])
+            # print(row[header.index('FKZ')])
             data.append(row)
             add_or_update_row_teilprojekt(row, header, 'modul')
     return header, data
@@ -267,5 +268,5 @@ def read_print_csv(path):
 # header, data = csv2m4db_enargus(path_csv_enargus)
 
 ## Example add/update Modul-Zuordnung data
-path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220216.csv'
+path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
 header, data = csv2m4db_modul(path_csv_modul)
