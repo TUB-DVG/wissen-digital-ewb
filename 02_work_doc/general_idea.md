@@ -62,10 +62,10 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
         - is working, no doubles in enargus items, with foerdersumme, it is biuninque
 #### not filled features
 - add following fieds to the data_import.py script
-- [ ] Projektleiter
-- [ ] Datenbank
-- [ ] Kurzbeschreibungen de
-- [ ] Kurzbeschreibungen en
+- [x] Projektleiter
+- [x] Datenbank
+- [x] Kurzbeschreibungen de
+- [x] Kurzbeschreibungen en
 - [x] Foerdersumme
 - and more
 #### Questions at Firas
@@ -74,7 +74,7 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 - where is the ERM including one to many relations
 # implement real working data
 ## pre processing
-- [ ] in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
+- [x] in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
 ### EnArgus
 - script: pre_enargus.py
 - need parameter files in 02_parameter_files
@@ -82,7 +82,7 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
   - col_xml2csv.csv
 - [x] resulting csv file checked
 - [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
-- [ ] resulting csv file read to db including all columns (firas updated)
+- [x] resulting csv file read to db including all columns (firas updated)
 - [ ] resulting csv file read to updated db on ik10-Server
 - [x] add Ausführende Stelle to:
   - [x] col_xml2csv.csv
@@ -92,8 +92,8 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 ### modul assignment ("Modulzuordnung")
 - script: pre_modul.py
 - [x] resulting csv file checked
-- [ ] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
-- [ ] resulting csv file read to db including all columns (firas updated)
+- [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
+- [x] resulting csv file read to db including all columns (firas updated)
 - [ ] resulting csv file read to updated db on ik10-Server
 - [ ]
 #
