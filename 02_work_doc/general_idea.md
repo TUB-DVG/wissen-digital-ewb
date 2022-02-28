@@ -95,6 +95,12 @@ note: the unit can be stored with the feature, there is a "data type" called "Nu
 - [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
 - [x] resulting csv file read to db including all columns (firas updated)
 - [ ] resulting csv file read to updated db on ik10-Server
+  - [ ] pull repo at ik10 server
+  - [ ] switch to dev_falk branch
+  - [ ] test web server
+  - [ ] make migrations and migrate the new data structure
+  - [ ] maybe delete and create new db
+  - [ ] test web server 
 - [ ]
 #
 # design
