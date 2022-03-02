@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'webcentral',
         'USER': 'postgres',
-        'PASSWORD': 'Anthem2018',
+        'PASSWORD': 'abc123',
         'HOST': 'localhost',
     }
 }
