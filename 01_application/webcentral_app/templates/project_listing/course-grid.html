@@ -230,7 +230,7 @@ Page content START -->
 			
 			<!-- Course Grid START -->
 			<div class="row g-4">
-				{% for project in page.object_list %}
+				{% for tool in page.object_list %}
 				<!-- Card item START -->
 				<div class="col-sm-6 col-xl-4">
 					<div class="card shadow h-100">
@@ -239,15 +239,15 @@ Page content START -->
 						<div class="card-body pb-0">
 							
 							<!-- Title -->
-							<h5 class="card-title"><a href="#">{{ project.fkz }}</a></h5>
-							<p class="text-truncate-2 mb-2">Thema: {{ project.enargus_daten.thema   }}</p>
+							<h5 class="card-title"><a href="{%url 'tool_view' tool.id %}">{{ tool.bezeichnung }}</a></h5>
+							<p class="text-truncate-2 mb-2">{{ tool.kurzbeschreibung }}</p>
 						
 						</div>
 						<!-- Card footer -->
 						<div class="card-footer pt-0 pb-3">
 							<hr>
 							<div class="d-flex justify-content-between">
-								<span class="h6 fw-light mb-0">ProjektLeiter: {{ project.enargus_daten.projektleiter.name }}</span>
+								<span class="h6 fw-light mb-0">Kategorie: {{ tool.kategorie }}</span>
 								
 							</div>
 						</div>
@@ -263,12 +263,12 @@ Page content START -->
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
 					<ul class="pagination pagination-primary-soft rounded mb-0">
 						{% if page.has_previous %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'project_list' %}?page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
 						{% else %}
 						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
 						{% endif %}
 						{% if page.has_next %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'project_list' %}?page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
 						{% else %}
 						<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>
 						{% endif %}
