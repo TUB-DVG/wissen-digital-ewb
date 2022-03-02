@@ -32,11 +32,21 @@ df_modul = df_xlsx[["Förderkenz. (0010)", "Modulzuordnung PtJ - 1 aktuell"
                     , "Modulzuordnung PtJ - 2 aktuell", "Modulzuordnung PtJ - 3 aktuell"
                     , "Modulzuordnung PtJ - 4 aktuell"]]
 # rename columns
-df_modul = df_modul.rename(columns={"Förderkenz. (0010)": "fkz",
+df_modul = df_modul.rename(columns={"Förderkenz. (0010)": "FKZ",
                                      "Modulzuordnung PtJ - 1 aktuell" : 'modulzuordnung_ptj_1',
                                      "Modulzuordnung PtJ - 2 aktuell" : 'modulzuordnung_ptj_2',
                                      "Modulzuordnung PtJ - 3 aktuell" : 'modulzuordnung_ptj_3',
                                      "Modulzuordnung PtJ - 4 aktuell" : 'modulzuordnung_ptj_4'
                     })
+# clean up , dirty, could be done nicer
+# see https://stackoverflow.com/questions/41476150/removing-space-from-columns-in-pandas
+df_modul['modulzuordnung_ptj_1'] = df_modul['modulzuordnung_ptj_1'].str.lstrip()
+df_modul['modulzuordnung_ptj_2'] = df_modul['modulzuordnung_ptj_2'].str.lstrip()
+df_modul['modulzuordnung_ptj_3'] = df_modul['modulzuordnung_ptj_3'].str.lstrip()
+df_modul['modulzuordnung_ptj_4'] = df_modul['modulzuordnung_ptj_4'].str.lstrip()
 
-asw.write_df2csv(df_modul, 'modulzuordnung_csv_20220216.csv', new=True)
+
+df_modul['modulzuordnung_ptj_2'] = df_modul['modulzuordnung_ptj_2'].str.replace('M2 BF', 'M2')
+df_modul['modulzuordnung_ptj_1'] = df_modul['modulzuordnung_ptj_1'].str.replace('ausgelaufen', 'ag')
+
+asw.write_df2csv(df_modul, 'modulzuordnung_csv_20220225.csv', new=True)

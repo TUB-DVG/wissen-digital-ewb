@@ -18,6 +18,7 @@ file pushed/migrated into the data base with python tools.
 The data can edit manually at "admin pages".
 
 # Structure of the data base
+- [ ] update the figures of the data base structure, changes in kind of the relations
 ## actual structure and sources of the csv-DB
 see [figure](./sources2db-csv-db.png)
 [drawio](./sources2db.drawio)
@@ -41,7 +42,67 @@ mix the data
 Idea 2: Source is code into the name of the feature
 
 note: the unit can be stored with the feature, there is a "data type" called "Numeric with Unit"
-
+### completed db structure (done by Firas)
+- [ ] local test, load and mirgrate to a new db
+- [ ] merge to the main branch 
+- [x] put the models.py and admin.py into dev_falk
+#### double fkz? - no 
+- run data_import.py
+  - doubles:
+    - 03EWR020J, 03EWR020A, 03EN3044A, 03ET1080A, 03ET1636A, 03EGB0015A, 03ET1308A, 03ET1111A, 
+      - but not in the cli output, strange
+      - press update: y
+      - check csv file: all the fkz only once included, as expected
+      - data (output auf the function) includes the fkz above only once as expected
+      - in table listing_teilprojekt (via pgAdmin) includes not fkzs above
+      - run data_import.py again with new db: the same behaviour
+      - assumption: enargus data completely the same 
+        - possible reason: only some connection to table, so there are not much possiblities vor differences
+        - [x] make some connections working and check this behaviour
+        - is working, no doubles in enargus items, with foerdersumme, it is biuninque
+#### not filled features
+- add following fieds to the data_import.py script
+- [x] Projektleiter
+- [x] Datenbank
+- [x] Kurzbeschreibungen de
+- [x] Kurzbeschreibungen en
+- [x] Foerdersumme
+- and more
+#### Questions at Firas
+- what about: from sqlalchemy import null, true?
+  - Falk: maybe, there is no null and true? what is special about this?
+- where is the ERM including one to many relations
+# implement real working data
+## pre processing
+- [x] in the folder /02_work_doc/01_data/01_prePro are scripts read source file and write to csv file
+### EnArgus
+- script: pre_enargus.py
+- need parameter files in 02_parameter_files
+  - col_dic_xml2csv.csv
+  - col_xml2csv.csv
+- [x] resulting csv file checked
+- [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
+- [x] resulting csv file read to db including all columns (firas updated)
+- [ ] resulting csv file read to updated db on ik10-Server
+- [x] add Ausführende Stelle to:
+  - [x] col_xml2csv.csv
+  - [x] adapt drawio
+  - [x] to data_import.py
+  - [x] models.py
+### modul assignment ("Modulzuordnung")
+- script: pre_modul.py
+- [x] resulting csv file checked
+- [x] resulting csv file read in to the test db (not all columns in the db), by dataimport script (/home/cudok/Documents/GitHub/webcentral/project_listing/data_import.py)
+- [x] resulting csv file read to db including all columns (firas updated)
+- [ ] resulting csv file read to updated db on ik10-Server
+  - [ ] pull repo at ik10 server
+  - [ ] switch to dev_falk branch
+  - [ ] test web server
+  - [ ] make migrations and migrate the new data structure
+  - [ ] maybe delete and create new db
+  - [ ] test web server 
+- [ ]
+#
 # design
 ## bootstrap theme 
 - challenge: color schema and suitable page arrangement 
