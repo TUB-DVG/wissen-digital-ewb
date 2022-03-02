@@ -185,16 +185,21 @@ Page intro START -->
 	<div class="container">
 		<div class="row py-5">
 			<div class="col-lg-8">
+				<!-- Badges -->
+				<h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">{{tool.kategorie}}</h6>
 				<!-- Title -->
 				<h1>{{tool.bezeichnung}}</h1>
-				<p>{{tool.kurzbeschreibung}}</p>
 				<!-- Content -->
-				<ul class="list-inline mb-0">
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>4.5/5.0</li>
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate text-orange me-2"></i>12k Enrolled</li>
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-signal text-success me-2"></i>All levels</li>
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="bi bi-patch-exclamation-fill text-danger me-2"></i>Last updated 09/2021</li>
-					<li class="list-inline-item h6 mb-0"><i class="fas fa-globe text-info me-2"></i>English</li>
+				<ul class="list-inline mb-0">	
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.nutzerbewertungen}}/10.0</li>
+					{% if tool.letztes_update %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fas fa-sync text-success me-2"></i>{{tool.letztes_update}}</li>
+
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="bi bi-patch-exclamation-fill text-danger me-2"></i>Letztes Update: {{tool.letztes_update}}</li>	
+					{% else %}
+					{% endif %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fas fa-user-alt text-info me-2"></i>{{tool.zielgruppe}}</li>
+					<li class="list-inline-item h6 mb-0"><i class="fas fa-bars text-info me-2"></i>{{tool.kategorie}}</li>
 				</ul>
 			</div>
 		</div>
@@ -244,29 +249,29 @@ Page content START -->
 							<!-- Content START -->
 							<div class="tab-pane fade show active" id="course-pills-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
 								<!-- Course detail START -->
-								<h5 class="mb-3">Course Description</h5>
-								<p class="mb-3">Welcome to the <strong> Digital Marketing Ultimate Course Bundle - 12 Courses in 1 (Over 36 hours of content)</strong></p>
-								<p class="mb-3">In this practical hands-on training, you’re going to learn to become a digital marketing expert with this <strong> ultimate course bundle that includes 12 digital marketing courses in 1!</strong></p>
-								<p class="mb-3">If you wish to find out the skills that should be covered in a basic digital marketing course syllabus in India or anywhere around the world, then reading this blog will help. Before we delve into the advanced <strong><a href="#" class="text-reset text-decoration-underline">digital marketing course</a></strong> syllabus, let’s look at the scope of digital marketing and what the future holds.</p>
-								<p class="mb-0">We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn’t going to get the job done so that’s why this course is packed with practical hands-on examples that you can follow step by step.</p>
+								<h5 class="mb-3">Was ist {{tool.bezeichnung}}?</h5>
+								<p class="mb-0">{{tool.kurzbeschreibung}}</p>
 								
-								<!-- List content -->
-								<h5 class="mt-4">What you’ll learn</h5>
-								<ul class="list-group list-group-borderless mb-3">
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Digital marketing course introduction</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Customer Life cycle</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>What is Search engine optimization(SEO)</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Facebook ADS</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Facebook Messenger Chatbot</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Search engine optimization tools</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Why SEO</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>URL Structure</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Featured Snippet</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>SEO tips and tricks</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0"><i class="fas fa-check-circle text-success me-2"></i>Google tag manager</li>
-								</ul>
+								<h5 class="mt-4">Anwendungsbereich</h5>
+								<p class="mb-0">{{tool.anwendungsbereich}}</p>
+								
+								<h5 class="mt-4">Weitere Informationen</h5>
+								<p class="mb-0">{{tool.weitere_informationen}}</p>
+								
+								<h5 class="mt-4">Alternativen</h5>
+								<p class="mb-0">{{tool.alternativen}}</p>
+								
+								<h5 class="mt-4">Lebenszyklusphase</h5>
+								<p class="mb-0">{{tool.lebenszyklusphase}}</p>
 
-								<p class="mb-0">As it so contrasted oh estimating instrument. Size like body someone had. Are conduct viewing boy minutes warrant the expense? Tolerably behavior may admit daughters offending her ask own. Praise effect wishes change way and any wanted. Lively use looked latter regard had. Do he it part more last in. </p>
+								<h5 class="mt-4">Lizenz</h5>
+								<p class="mb-0">{{tool.lizenz}}</p>
+
+								<h5 class="mt-4">Nutzerschnittstelle</h5>
+								<p class="mb-0">{{tool.nutzerschnittstelle}}</p>
+
+								<h5 class="mt-4">konkrete Anwendung</h5>
+								<p class="mb-0">{{tool.konk_anwendung}}</p>
 								<!-- Course detail END -->
 
 							</div>
