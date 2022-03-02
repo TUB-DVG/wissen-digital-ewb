@@ -1,0 +1,179 @@
+// 
+// utilities.scss
+// Extended from Bootstrap
+// 
+
+
+$utilities: ();
+
+$utilities: map-merge(
+  (
+    // Sizing utilities
+    "min-width": (
+      property: min-width,
+      class: min-w,
+      values: (
+        auto: auto
+      )
+    ),
+
+    // Sizing utilities
+    "viewport-height": (
+      property: height,
+      class: vh,
+      responsive: true,
+      values: (
+        100: 100vh
+      )
+    ),
+
+    // Height pixels
+    "height-px": (
+      property: height,
+      class: h,
+      responsive: true,
+      values: (
+        20px: 20px,
+        30px: 30px,
+        40px: 40px,
+        50px: 50px,
+        60px: 60px,
+        70px: 70px,
+        100px: 100px,
+        200px: 200px,
+        300px: 300px,
+        350px: 350px,
+        400px: 400px,
+        500px: 500px,
+        600px: 600px,
+        700px: 700px
+      )
+    ),
+
+    // Width pixels
+    "width-px": (
+      property: width,
+      class: w,
+      responsive: true,
+      values: (
+        40px: 40px,
+        50px: 50px,
+        60px: 60px,
+        70px: 70px,
+        80px: 80px,
+        100px: 100px,
+        200px: 200px,
+        280px: 280px,
+        400px: 400px
+      )
+    ),
+
+    // Background opacity
+    "bg-opacity": (
+      css-var: true,
+      class: bg-opacity,
+      values: (
+        15: .15
+      )
+    ),
+    
+    // Fill color for SVG
+    "fill-color": (
+    property: fill,
+    class: fill,
+    values: map-merge($theme-colors, 
+      (
+        "white": $white,
+        "body": $body-bg
+        )
+      )
+    ),
+
+    // z index
+    "z-index": (
+      property: z-index,
+      class: z-index,
+      values: (
+        0: 0,
+        1: 1,
+        9: 9,
+        99: 99,
+        n1: -1,
+        n9: -9
+      )
+    ),
+
+    // Rotate
+    "rotate": (
+      property: transform,
+      class: rotate,
+      values: (
+        10: rotate(10deg),
+        74: rotate(74deg),
+        130: rotate(130deg),
+        180: rotate(180deg),
+        186: rotate(186deg),
+        193: rotate(193deg)
+      )
+    ),
+
+    // Border dashed
+    "border-dashed": (
+      property: border-style,
+      class: border-dashed,
+      values: (
+        null: dashed
+      )
+    ),
+
+    "rounded": (
+      property: border-radius,
+      class: rounded,
+      values: (
+        4: $border-radius-lg * 2
+      )
+    ),
+
+    "rounded-top": (
+      property: border-top-left-radius border-top-right-radius,
+      class: rounded-top-4,
+      values: (null: $border-radius-lg * 2)
+    ),
+
+    "rounded-bottom": (
+      property: border-bottom-left-radius border-bottom-right-radius,
+      class: rounded-bottom-4,
+      values: (null: $border-radius-lg * 2)
+    ),
+
+    //line height
+    "line-height": (
+      property: line-height,
+      class: lh,
+      values: (
+        0: 0
+      )
+    ),
+
+    // Opacity
+    "opacity": (
+      property: opacity,
+      class: opacity,
+      values: (
+        0: 0,
+        1: 0.1,
+        2: 0.2,
+        3: 0.3,
+        4: 0.4,
+        5: 0.5,
+        6: 0.6,
+        7: 0.7,
+        8: 0.8,
+        9: 0.9
+      )
+    ),
+
+
+  ),
+  $utilities
+);

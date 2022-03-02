@@ -264,8 +264,8 @@ def read_print_csv(path):
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
-# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
-# header, data = csv2m4db_enargus(path_csv_enargus)
+path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
+header, data = csv2m4db_enargus(path_csv_enargus)
 
 ## Example add/update Modul-Zuordnung data
 path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'

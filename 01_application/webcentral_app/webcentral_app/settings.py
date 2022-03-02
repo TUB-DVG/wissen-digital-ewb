@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'm4_data',
-        'USER': 'dbadmint',
-        'PASSWORD': 'abc123',
+        'NAME': 'webcentral',
+        'USER': 'postgres',
+        'PASSWORD': 'Anthem2018',
         'HOST': 'localhost',
     }
 }

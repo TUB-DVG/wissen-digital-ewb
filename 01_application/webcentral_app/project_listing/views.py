@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.core.paginator import Paginator
 from .models import Teilprojekt # maybe I need also the other models
 
 # Create your views here.
@@ -10,11 +10,16 @@ def index(request):
     """
     projects = Teilprojekt.objects.all() # reads all data from table Teilprojekt
 
+    project_paginator= Paginator (projects,9)
+
+    page_num= request.GET.get('page')
+    page=project_paginator.get_page(page_num)
+
     context = {
-        'projects': projects
+        'page': page
     }
 
-    return render(request, 'project_listing/project_list.html', context)
+    return render(request, 'project_listing/course-grid.html', context)
 
 def project_view(request, fkz):
     """

@@ -1,0 +1,54 @@
+// Bootstrap variables
+@import "../vendor/bootstrap/scss/functions";
+@import "../vendor/bootstrap/scss/variables";
+
+// Theme variables
+@import "variables";
+
+// Theme variables dark
+@import "dark/variables-dark";
+
+// User variables
+// @import "user-variables";
+
+// Bootstrap core
+@import "../vendor/bootstrap/scss/bootstrap";
+
+// Extended bootstrap utilities
+@import "custom/utilities";
+@import "../vendor/bootstrap/scss/utilities/api";
+
+// Extended bootstrap components
+@import "custom/accordion";
+@import "custom/breadcrumb";
+@import "custom/buttons";
+@import "custom/card";
+@import "custom/dropdowns";
+@import "custom/list-group";
+@import "custom/nav";
+@import "custom/navbar";
+@import "custom/pagination";
+@import "custom/progress";
+@import "custom/reboot";
+@import "custom/tables";
+@import "custom/type";
+@import "custom/forms/form-check";
+@import "custom/forms/form-control";
+@import "custom/forms/input-group";
+@import "custom/helper/text-truncation";
+
+// Theme components 
+@import "components/general";
+@import "components/avatar";
+@import "components/dark-mode-switch";
+@import "components/utilities";
+@import "components/sidebar-admin";
+@import "components/vendor/choices";
+@import "components/vendor/tiny-slider";
+@import "components/vendor/apexchart";
+@import "components/vendor/stepper";
+@import "components/vendor/video-plyr";
+@import "components/vendor/quill";
+
+// In this scss you can write your scss/css
+// @import "user";
