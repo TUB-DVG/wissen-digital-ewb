@@ -185,6 +185,44 @@ def get_or_create_modulen_zuordnung(row, header):
     )
     return obj, created
 
+def get_or_create_tools(row, header):
+    """
+    add entry into table tools or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+
+    bezeichung = row[header.index('Tool')]
+    kurzbe = row[header.index('Kurzbeschreibung')]
+    anwend_bereich = row[header.index('Anwendungsbereich')]
+    kategorie = row[header.index('Kategorie')]
+    lebenszy = row[header.index('Lebenszyklusphase')]
+    nutzersch = row[header.index('Nutzerschnittstelle')]
+    zielgruppe = row[header.index('Zielgruppe')]
+    letztes_update= row[header.index('letztes Update')]
+    lizenz = row[header.index('Lizenz')]
+    weitere_infos = row[header.index('weitere Informationen')]
+    alternativen = row[header.index('Alternativen')]
+    konk_anw_ewb = row[header.index('konkrete Anwendung in EWB Projekten')]
+    nutzerbewertung = row[header.index('Nutzerbewertungen')]
+
+
+    obj, created = Tools.objects.get_or_create(
+        bezeichnung = bezeichung,
+        kurzbeschreibung = kurzbe,
+        anwendungsbereich = anwend_bereich,
+        kategorie = kategorie,
+        lebenszyklusphase = lebenszy,
+        nutzerschnittstelle = nutzersch,
+        zielgruppe = zielgruppe,
+        letztes_update = letztes_update,
+        lizenz = lizenz,
+        weitere_informationen = weitere_infos,
+        alternativen = alternativen,
+        konk_anwendung = konk_anw_ewb,
+        # nutzerbewertungen = nutzerbewertung
+    )
+    return obj, created
+
 def add_or_update_row_teilprojekt(row, header, source):
     """add or update one row of the database, but without foreign key connections
 
@@ -260,6 +298,19 @@ def read_print_csv(path):
             # print(row[header.index('FKZ')])
     return header, data
 
+def csv2m4db_tools(path):
+    """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
+    with open(path) as csv_file:
+        reader = csv.reader(csv_file, delimiter=';')
+        header = next(reader)
+        data = []
+        for row in reader:
+            print(row[header.index('Tool')])
+            data.append(row)
+            # breakpoint()
+            get_or_create_tools(row, header)
+    return header, data
+
 
 # Script area (here you find examples to use the functions ahead)
 
@@ -268,5 +319,13 @@ path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
 header, data = csv2m4db_enargus(path_csv_enargus)
 
 ## Example add/update Modul-Zuordnung data
-path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
-header, data = csv2m4db_modul(path_csv_modul)
+# path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
+# header, data = csv2m4db_modul(path_csv_modul)
+
+## Example add/update Tool Uebersichts table
+path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+header, data = csv2m4db_tools(path_csv_tools)
+
+
+ #
+ #
