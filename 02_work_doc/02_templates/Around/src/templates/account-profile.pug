@@ -1,0 +1,111 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Account - Profile'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title + Delete link
+            .d-sm-flex.align-items-center.justify-content-between.pb-4.text-center.text-sm-start
+              h1.h3.mb-2.text-nowrap Profile info
+              a(href='#').btn.btn-link.text-danger.fw-medium.btn-sm.mb-2
+                i.ai-trash-2.fs-base.me-2
+                | Delete account                        
+
+            // Content
+            .bg-secondary.rounded-3.p-4.mb-4
+              .d-block.d-sm-flex.align-items-center
+                img(src='img/dashboard/avatar/main.jpg' alt='Amanda Wilson' width='110').d-block.rounded-circle.mx-sm-0.mx-auto.mb-3.mb-sm-0
+                .ps-sm-3.text-center.text-sm-start
+                  button(type='button').btn.btn-light.shadow.btn-sm.mb-2
+                    i.ai-refresh-cw.me-2
+                    | Change avatar
+                  .p.mb-0.fs-ms.text-muted Upload JPG, GIF or PNG image. 300 x 300 required.
+            .row
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-fn').form-label.px-0 First Name
+                  input(type='text' id='account-fn' value='Amanda').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-ln').form-label.px-0 Last Name
+                  input(type='text' id='account-ln' value='Wilson').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-email').form-label.px-0 Email address
+                  input(type='text' id='account-email' value='a.wilson@example.com').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-username').form-label.px-0 Username
+                  .input-group
+                    span.input-group-text @
+                    input(type='text' id='account-username' value='amanda_w').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-country').form-label.px-0 Country
+                  select(id='account-country' class='form-select')
+                    option(value) Select country
+                    option(value='Argentina') Argentina
+                    option(value='Belgium') Belgium
+                    option(value='France') France
+                    option(value='Germany') Germany
+                    option(value='Madagascar') Madagascar
+                    option(value='Spain') Spain
+                    option(value='UK') United Kingdom
+                    option(value='USA' selected) USA
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-city').form-label.px-0 City
+                  input(type='text' id='account-city' value='New York').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-address').form-label.px-0 Address Line
+                  input(type='text' id='account-address' value='Some Cool Street, 22/1').form-control
+              .col-sm-6
+                .mb-3.pb-1
+                  label(for='account-zip').form-label.px-0 ZIP Code
+                  input(type='text' id='account-zip').form-control
+              .col-12
+                hr.mt-2.mb-4
+                .d-flex.flex-wrap.justify-content-between.align-items-center
+                  .form-check.d-block
+                    input(type='checkbox' id='show-email' checked).form-check-input
+                    label(for='show-email').form-check-label Show my email to registered users
+                  button(type='button').btn.btn-primary.mt-3.mt-sm-0
+                    i.ai-save.fs-lg.me-2
+                    | Save changes
+
+
+//- Footer
+block footer
+  include partials/footer-simple

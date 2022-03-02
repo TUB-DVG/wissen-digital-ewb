@@ -1,0 +1,268 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'jarallax/dist/jarallax.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Mobile App Showcase'
+  - var isNavbarButtonLight = true
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-light
+
+//- Page Content
+block content
+
+  // Hero with parallax, curved background and device carousel
+  section.position-relative.pt-7
+
+    // Background
+    .position-absolute.jarallax.bg-gradient.w-100(style='top: 0; left: 0; height: 667px;' data-jarallax data-speed='0.25')
+      span.position-absolute.top-0.start-0.w-100.h-100.bg-gradient(style='opacity: .85;')
+      .jarallax-img(style='background-image: url(img/demo/mobile-app/hero-bg.jpg);')
+      .shape.shape-bottom.shape-curve-side.bg-body
+        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+          path(fill='currentColor' d='M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z')
+
+    // Content
+    .container.position-relative.zindex-5.pt-lg-7
+      .row.pt-4
+
+        // Intro text
+        .col-xl-5.col-md-6.ps-lg-4.pb-4.pt-md-5.py-lg-0.text-center.text-md-start
+          h1.text-light.pb-1.line-height-h3 Passionate about music? Try Around Premium
+          p.text-light.opacity-80.pb-2.pb-md-4 Listen to the songs you love and millions more.
+          .d-sm-flex.justify-content-center.justify-content-md-start
+            .me-sm-3.mb-3
+              a(href='#' role='button').btn-market.btn-apple
+                span.btn-market-subtitle Download on the
+                span.btn-market-title App Store
+            .mb-3
+              a(href='#' role='button').btn-market.btn-google
+                span.btn-market-subtitle Download on the
+                span.btn-market-title Google Play
+
+        .col-xl-4.col-lg-5.col-md-6.offset-xl-3.offset-lg-1.pt-lg-7
+
+          // Device
+          .tns-carousel-wrapper.pt-lg-2.mt-lg-5
+            .frame-phone.mx-auto
+              .frame-phone-status-bar.text-light
+                span.text-nowrap 9:41 AM
+                span.text-nowrap.text-end
+                  i.ai-wifi.me-2
+                  i.ai-battery-charging
+              .frame-phone-body
+                .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "controls": false, "nav": false, "autoplay": true, "autoplayTimeout": 6000}')
+                  img(src='img/demo/mobile-app/device/01.jpg' alt='App screen')
+                  img(src='img/demo/mobile-app/device/02.jpg' alt='App screen')
+                  img(src='img/demo/mobile-app/device/03.jpg' alt='App screen')
+            .tns-carousel-pager.text-nowrap.text-center
+              button(data-nav data-goto="1").active
+              button(data-nav data-goto="2")
+              button(data-nav data-goto="3")
+
+  
+  // Features
+  section.container.pt-lg-6
+    .d-none.d-lg-block(style='margin-top: -430px;')
+    .row.mt-0.mt-md-n4.pt-5.pt-md-0
+      .col-xl-8.col-lg-7
+        .d-none.d-lg-block
+        h2.mt-lg-5.mt-0.mb-4.mb-sm-5.text-center.text-md-start Why Around?
+        .row.text-center.text-sm-start
+          .col-sm-6.mb-sm-4
+            h3.h4 Favorite music in your pocket
+            p.fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+          .col-sm-6.mb-sm-4
+            h3.h4 No internet? Listen offline
+            p.fs-sm Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+          .col-sm-6.mb-sm-4
+            h3.h4 Create your collection
+            p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+          .col-sm-6.mb-sm-4
+            h3.h4 Share with friends
+            p.fs-sm Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis voluptas.
+
+  
+  // Available devices
+  section.bg-secondary.py-6.py-sm-7.mt-5.mt-xl-3
+    .container
+      .row.justify-content-center.align-items-center
+        .col-lg-5.col-md-7.col-sm-9.pb-3.mb-4.pb-lg-0.mb-lg-0
+          .d-flex.align-items-center.justify-content-between
+            .me-4
+              img(src='img/demo/mobile-app/icons/01.svg' alt='Device')
+            .me-4
+              img(src='img/demo/mobile-app/icons/02.svg' alt='Device')
+            .me-4
+              img(src='img/demo/mobile-app/icons/03.svg' alt='Device')
+            div
+              img(src='img/demo/mobile-app/icons/04.svg' alt='Device')
+        .col-xl-5.col-lg-6.offset-lg-1.text-center.text-lg-start
+          h2 Available on all your devices
+          p.mb-0 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+  
+
+  // Pricing
+  section.container.my-2.pt-5.my-md-0.pt-md-6.pt-lg-7.pb-4.pb-md-6
+    h2.text-center.pt-2.pb-4 Choose your plan
+    .pricing-wrap
+      .price-switch.justify-content-center.justify-content-sm-end.pb-2.mb-4
+        span.price-label.me-2 Monthly
+        .form-check.form-switch
+          input(type='checkbox' id='priceSwitch').form-check-input
+          label(for='priceSwitch').form-check-label
+        span.price-label.ms-1 Annual
+      .row
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.w-100
+            .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+              h3.text-body.mb-0 Free
+            .card-body.px-grid-gutter.py-grid-gutter
+              .d-flex.align-items-end.py-2.px-4.mb-4
+                span.h2.fw-normal.text-muted.mb-1.me-2 $
+                span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='0' data-new-price='0') 0
+                span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+              ul.list-unstyled.py-2.mb-4
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 20 millions tracks
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Shuffle play
+                li.d-flex.align-items-center.mb-3
+                  i.ai-x.fs-xl.text-muted.me-2
+                  span.text-muted No ads
+                li.d-flex.align-items-center.mb-3
+                  i.ai-x.fs-xl.text-muted.me-2
+                  span.text-muted Get unlimited skips
+                li.d-flex.align-items-center.mb-3
+                  i.ai-x.fs-xl.text-muted.me-2
+                  span.text-muted Offline mode
+                li.d-flex.align-items-center.mb-3
+                  i.ai-x.fs-xl.text-muted.me-2
+                  span.text-muted 7 profiles
+              .text-center.mb-2
+                a(href='#').btn.btn-outline-primary Get started
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .card.card-active.w-100
+            .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+              h3.text-light.mb-0 Premium
+            .card-body.px-grid-gutter.py-grid-gutter
+              .d-flex.align-items-end.py-2.px-4.mb-4
+                span.h2.fw-normal.text-muted.mb-1.me-2 $
+                span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='10' data-new-price='8') 10
+                span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+              ul.list-unstyled.py-2.mb-4
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 20 millions tracks
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Shuffle play
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span No ads
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Get unlimited skips
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Offline mode
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 7 profiles
+              .text-center.mb-2
+                a(href='#').btn.btn-primary Get started
+        .col-lg-4.col-sm-12.mb-grid-gutter
+          .card.border-0.shadow.w-100
+            .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+              h3.text-body.mb-0 Family
+            .card-body.px-grid-gutter.py-grid-gutter
+              .d-flex.align-items-end.py-2.px-4.mb-4
+                span.h2.fw-normal.text-muted.mb-1.me-2 $
+                span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='15' data-new-price='12') 15
+                span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+              ul.list-unstyled.py-2.mb-4
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 20 millions tracks
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Shuffle play
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span No ads
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Get unlimited skips
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Offline mode
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 7 profiles
+              .text-center.mb-2
+                a(href='#').btn.btn-outline-primary Get started
+  
+
+  // FAQ
+  section.container.pb-5.mb-3.pb-md-6.pb-lg-7
+    h2.text-center.mb-5 Frequent questions
+    .row.align-items-center
+      .col-md-6.mb-5.mb-md-0
+        #faq.accordion
+
+          .accordion-item.shadow
+            h2#faq-heading-1.accordion-header
+              button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-1' aria-expanded='true' aria-controls='faq-content-1').accordion-button How do I create a playlist?
+            #faq-content-1.accordion-collapse.collapse.show(aria-labelledby='faq-heading-1' data-bs-parent='#faq')
+              .accordion-body
+                .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+          .accordion-item.shadow
+            h2#faq-heading-2.accordion-header
+              button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-2' aria-expanded='false' aria-controls='faq-content-2').accordion-button.collapsed Is it only possible to shuffle play music?
+            #faq-content-2.accordion-collapse.collapse(aria-labelledby='faq-heading-2' data-bs-parent='#faq')
+              .accordion-body
+                .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+          .accordion-item.shadow
+            h2#faq-heading-3.accordion-header
+              button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-3' aria-expanded='false' aria-controls='faq-content-3').accordion-button.collapsed Where can I find Podcasts?
+            #faq-content-3.accordion-collapse.collapse(aria-labelledby='faq-heading-3' data-bs-parent='#faq')
+              .accordion-body
+                .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+          .accordion-item.shadow
+            h2#faq-heading-4.accordion-header
+              button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-4' aria-expanded='false' aria-controls='faq-content-4').accordion-button.collapsed How do I activate Data Saver mode?
+            #faq-content-4.accordion-collapse.collapse(aria-labelledby='faq-heading-4' data-bs-parent='#faq')
+              .accordion-body
+                .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+      .col-md-6
+        img(src='img/demo/mobile-app/faq-illustration.svg' alt='Illustration').d-block.mx-auto
+  
+
+  // CTA
+  section.bg-gradient.py-5.pt-md-7.pb-md-6
+    .container.text-center.pt-3.pb-2.pt-md-0.pb-md-0
+      h2.text-light.mb-5 Love music like we do? Try Around Premium
+      .d-sm-flex.justify-content-center
+        .me-sm-3.mb-3
+          a(href='#' role='button').btn-market.btn-apple
+            span.btn-market-subtitle Download on the
+            span.btn-market-title App Store
+        .mb-3
+          a(href='#' role='button').btn-market.btn-google
+            span.btn-market-subtitle Download on the
+            span.btn-market-title Google Play
+
+
+//- Footer
+block footer
+  include partials/footer-default

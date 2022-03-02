@@ -1,0 +1,21 @@
+//
+// Popover
+// --------------------------------------------------
+
+
+.popover {
+
+  &.bs-popover-bottom .arrow::after {
+    border-bottom-color: $popover-header-bg;
+  }
+
+  .popover-arrow { margin: 0; }
+}
+
+.popover-header {
+  @include font-size($popover-header-font-size);
+}
+
+.popover-body {
+  @include font-size($popover-body-font-size);
+}

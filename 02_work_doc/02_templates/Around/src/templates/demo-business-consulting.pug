@@ -1,0 +1,362 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Business Consulting'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero
+  section.container-fluid.px-0.pb-5.pb-md-6
+    .row.g-0.align-items-xl-center
+      .col-lg-6.col-md-7.text-end.order-md-2
+        img(src='img/demo/business-consulting/hero-img.jpg' alt='Business people' width='945').d-inline-block
+      .col-lg-6.col-md-5.pt-5.pb-3.py-md-5
+        .mx-auto.me-md-5.me-xl-7.ps-3.py-md-3.order-md-1(style='max-width: 516px;')
+          h1.mb-grid-gutter.pb-1 Fast way to achieve your goals in business
+          p.callout.d-block.d-md-none.d-lg-block.fs-lg.text-muted.mb-grid-gutter Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+          .pt-2
+            a(href='https://www.youtube.com/watch?v=hTu0a4o97dU' data-sub-html='<h6 class="fs-sm text-light">Around Consulting</h6>').btn-video.btn-video-primary.btn-video-sm.me-3
+            span.fs-sm Get to know us better
+  
+
+  // CTA
+  section.bg-secondary.bg-size-cover.py-5.py-md-6(style='background-image: url(img/demo/business-consulting/cta-bg.png);')
+    .container.py-3.py-md-0
+      .row.align-items-center
+        .col-lg-5.col-md-6.text-center.text-md-start
+          h2.mb-4.pb-3.pb-md-0.mb-md-0 Get a free consultation
+        .col-lg-7.col-md-6
+          form(novalidate).row.needs-validation
+            .col-sm-7.col-md-12.col-lg-7.mb-3.mb-lg-0
+              input(type='email' placeholder='Your email' required).form-control
+              .invalid-feedback Please provide a valid email address!
+            .col-sm-5.col-md-12.col-lg-5
+              button(type='submit').btn.btn-primary.d-block.w-100 Book a Consultation
+          .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-4.pt-sm-2.pt-md-4
+            i.ai-phone.fs-xl.me-2
+            span.me-2 Or call us
+            a(href='tel:+15262200459').nav-link-style + 1 526 220 0459
+
+
+  // Services
+  section.container.py-5.py-md-6.py-lg-7.my-3
+    .row.align-items-center
+      .col-lg-4.col-md-5.text-center.text-md-start.mb-5.mb-md-0
+        h2.mb-3 Our services
+        p.text-muted.mb-4.pb-2 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint doloremque.
+        a(href='#').btn.btn-primary See all services
+      .col-lg-8.col-md-7.bg-position-center.bg-repeat-0(style='background-image: url(img/demo/business-consulting/services/bg-shape.svg);')
+        .mx-auto(style='max-width: 610px;')
+          .row.align-items-center
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/business-consulting/services/01.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Strategy &amp; Innovation
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/business-consulting/services/02.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 HR &amp; Talent
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/business-consulting/services/03.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Training &amp; Cetrification
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/business-consulting/services/04.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Advanced Analytics
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/business-consulting/services/05.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Sales &amp; Marketing
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+
+  // Industries
+  section.bg-secondary.py-5.py-md-6.mt-n4
+    .container.py-2
+      .row.justify-content-center
+        .col-lg-6.col-md-8.col-sm-10.text-center
+          h2 Industries
+          p.text-muted.mb-5.pb-2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae
+      .row
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/01.jpg' alt='Life Science').card-img-top
+            .card-body
+              h3.h5.mb-0 Life Science
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/02.jpg' alt='Technology').card-img-top
+            .card-body
+              h3.h5.mb-0 Technology
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/03.jpg' alt='Healthcare').card-img-top
+            .card-body
+              h3.h5.mb-0 Healthcare
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/04.jpg' alt='Natural Resources').card-img-top
+            .card-body
+              h3.h5.mb-0 Natural Resources
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/05.jpg' alt='Freight & Logistics').card-img-top
+            .card-body
+              h3.h5.mb-0 Freight &amp; Logistics
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/business-consulting/industries/06.jpg' alt='Retail').card-img-top
+            .card-body
+              h3.h5.mb-0 Retail
+      .pt-3.text-center
+        a(href='#').btn.btn-primary See all industries
+
+
+  // Testimonials
+  section.container.my-2.py-5.py-md-6.py-lg-7
+    h2.text-center.mb-5 What our clients say about us
+    .row.justify-content-center
+      .col-xl-11
+        .tns-carousel-wrapper
+          .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "nav": false}')
+
+            // Item
+            div
+              .pb-3.pb-md-0.ps-md-7.ms-md-3
+                .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(img/demo/business-consulting/testimonials/01.jpg);')
+                  .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-start
+                    .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                      blockquote.blockquote
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+                    a(href='https://www.youtube.com/watch?v=YwIQnTkP060' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                .d-md-none.mt-n6.px-3.scale-up
+                  .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                    blockquote.blockquote
+                      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                      footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+
+            // Item
+            div
+              .pb-3.pb-md-0.ps-md-7.ms-md-3
+                .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(img/demo/business-consulting/testimonials/02.jpg);')
+                  .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-start
+                    .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                      blockquote.blockquote
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+                    a(href='https://www.youtube.com/watch?v=PjNJfOrKT3I' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                .d-md-none.mt-n6.px-3.scale-up
+                  .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                    blockquote.blockquote
+                      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                      footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+
+
+  // Clients
+  section.container.pt-2.pt-md-0.pb-5.pb-md-6.pb-lg-7
+    h2.text-center.mb-5 Trusted by great companies
+    .row
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/01_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/01_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/02_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/02_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/03_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/03_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/04_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/04_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/05_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/05_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/06_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/06_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/07_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/07_gray.png' alt='Logo' width='176').swap-from
+      .col-md-3.col-sm-4.col-6.text-center
+        a(href='#').swap-image.mb-grid-gutter
+          img(src='img/demo/event-landing/partners/08_color.png' alt='Logo' width='176').swap-to
+          img(src='img/demo/event-landing/partners/08_gray.png' alt='Logo' width='176').swap-from
+  
+
+  // News
+  .position-relative.bg-secondary(style='height: 420px;')
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+  section.container.position-relative.zindex-5.pt-5.pt-md-6(style='margin-top: -420px;')
+    h2.text-center.pt-3.pt-md-2.mb-5 Latest news &amp; insights
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16},"850":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success New
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Consulting
+              h3.h4.nav-heading.mb-4
+                a(href='#') 5 Questions Every Business Consultant Must Ask During a Sales Call
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').flex-shrink-0.rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sanomi Smith
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Feb 12
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Business
+              h3.h4.nav-heading.mb-4
+                a(href='#') How to Start a Consulting Business: Step-by-step
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').flex-shrink-0.rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Tim Brooks
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 27
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Investment
+              h3.h4.nav-heading.mb-4
+                a(href='#') Income Streams You Can Create in the Corporate Consulting Space
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').flex-shrink-0.rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Charlie Welch
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 15
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Technology
+              h3.h4.nav-heading.mb-4
+                a(href='#') How technological advancements affect our decisions
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/07.jpg' alt='Sarah Palson' width='42').flex-shrink-0.rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sarah Palson
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Dec 19
+
+
+  // Split Careers + Subscription
+  section.container.py-5.py-md-6.py-lg-7
+    .row.g-0.py-3.py-md-0
+      .col-md-6.mb-4.mb-md-0
+        .d-flex.flex-column.position-relative.h-100.rounded-start.bg-position-start-center.bg-repeat-0.py-6(style='background-image: url(img/demo/business-consulting/careers-bg.jpg); background-color: #f4f4f6;')
+          span.d-sm-none.d-md-block.d-lg-none.position-absolute.top-0.start-0.w-100.h-100.rounded-start.bg-secondary(style='opacity: 1;')
+          .text-center.mx-auto.me-sm-5.me-md-0.me-md-auto.me-lg-5.pe-lg-3.position-relative.zindex-5(style='max-width: 240px;')
+            h2.mb-4.pb-2 Our job offers
+            a(href='#').btn.btn-primary Join Us
+      .col-md-6
+        .d-flex.flex-column.h-100.rounded-end.bg-dark.px-4.py-5
+          .py-2.mx-auto.text-center(style='max-width: 450px;')
+            h2.text-light Subscribe to newsletter
+            p.text-light.mb-4 Our monthly critical issues
+            form.input-group.pt-2
+              input(type='email' placeholder='Your email' required).form-control
+              button(type='submit').btn.btn-success: i.ai-send.fs-xl.me-1
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.container
+    .row
+      .col-xl-6.col-lg-5.col-md-4.mb-5.text-center.text-md-start
+        h2.mb-4 Talk to us
+        a(href='#').btn.btn-danger.mb-4
+          i.ai-message-square.fs-lg.me-2
+          | Chat now
+        .pt-2
+          a(href='#').btn-social.bs-outline.bs-lg.bs-facebook.me-2.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-outline.bs-lg.bs-twitter.me-2.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-outline.bs-lg.bs-instagram.me-2.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-outline.bs-lg.bs-google.me-2.mb-2
+            i.ai-google
+      .col-xl-6.col-lg-7.col-md-8.mb-5
+        .row
+          .col-6.col-sm-4
+            .widget
+              h4.widget-title Company
+              ul
+                li: a(href='#').widget-link About
+                li: a(href='#').widget-link Jobs
+                li: a(href='#').widget-link Contacts
+          .col-6.col-sm-4
+            .widget
+              h4.widget-title Services
+              ul
+                li: a(href='#').widget-link Strategy
+                li: a(href='#').widget-link HR &amp; Talent
+                li: a(href='#').widget-link Training
+                li: a(href='#').widget-link Analytics
+                li: a(href='#').widget-link Sales &amp; Marketing
+          .d-none.d-sm-block.col-sm-4
+            .widget
+              h4.widget-title Our news
+              ul
+                li: a(href='#').widget-link Latest news
+                li: a(href='#').widget-link Insights
+                li: a(href='#').widget-link Campaigns
+                li: a(href='#').widget-link Events
+    .border-top.py-4
+      .d-md-flex.align-items-center.justify-content-between.py-2.text-center.text-md-start
+        ul.list-inline.fs-sm.mb-3.mb-md-0.order-md-2
+          li.list-inline-item.my-1: a(href='#').nav-link-style Support
+          li.list-inline-item.my-1: a(href='#').nav-link-style Contacts
+          li.list-inline-item.my-1: a(href='#').nav-link-style Terms &amp; Conditions
+        p.fs-sm.mb-0.me-3.order-md-1
+          span.text-muted.me-1 © All rights reserved. Made by
+          a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.fw-normal Createx Studio

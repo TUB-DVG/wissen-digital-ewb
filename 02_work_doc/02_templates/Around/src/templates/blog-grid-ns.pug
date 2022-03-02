@@ -1,0 +1,271 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Blog Grid No Sidebar'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid-shadow
+
+//- Page Content
+block content
+  .container.py-4.mb-2.mb-sm-0.pb-sm-5
+    +breadcrumb([{'title': 'Blog', 'link': '#'}, {'title': 'Grid no sidebar'}]).py-1.my-2
+    h1.mb-5 Blog
+
+    // Blog grid
+    .masonry-grid.overflow-hidden(data-columns='4')
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/01.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Digital design
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Designers should always keep their users in mind
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/01.jpg' alt='Emma Brown' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Emma Brown
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;6
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Feb 19
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Brand strategy
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Simple steps to an effective brand strategy. Real life examples
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/02.jpg' alt='Charlie Welch' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Charlie Welch
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;8
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Feb 15
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/02.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Technology
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') How technological advancements affect our decisions
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/03.jpg' alt='Jessica Miller' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Jessica Miller
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;3
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Feb 4
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/03.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Business
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Open space - new trend in office design
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/05.jpg' alt='Daniel Adams' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Daniel Adams
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;12
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Jan 10
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Project management
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') What you can learn about managing projects
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/04.jpg' alt='Sanomi Smith' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Sanomi Smith
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;17
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Jan 23
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/07.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Travel &amp; Vacation
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Escape to mountains with only one backpack
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/01.jpg' alt='Emma Brown' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Emma Brown
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;31
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Dec 25
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/05.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Technology
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Payments made easy. How new Tech will affect E-Commerce industry?
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/06.jpg' alt='Barbara Palson' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Barbara Palson
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;4
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Dec 12
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Digital design
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Top 5 Secrets of Making Successful Corporate Identity Design
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/02.jpg' alt='Charlie Welch' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Charlie Welch
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;22
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Dec 18
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Project management
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') 3 things everyone knows about Management that you don't
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/05.jpg' alt='Daniel Adams' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Daniel Adams
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;29
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Nov 27
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          a(href='blog-single-rs.html').card-img-top
+            img(src='img/blog/06.jpg' alt='Post thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Business
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Business offices of Fortune 500 companies
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/06.jpg' alt='Barbara Palson' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Barbara Palson
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;5
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Nov 20
+
+      // Post
+      .masonry-grid-item
+        article.card.card-hover
+          .card-body
+            a(href='#').meta-link.fs-sm.mb-2 Travel &amp; Vacation
+            h2.h5.nav-heading.mb-4
+              a(href='blog-single-rs.html') Global travel on a tight budget. Tips &amp; tricks
+            a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+              img(src='img/blog/avatar/03.jpg' alt='Jessica Miller' width='36').rounded-circle
+              .ps-2.ms-1.mt-n1
+                | by
+                span.fw-semibold.ms-1 Jessica Miller
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1.mt-n1.align-middle
+                | &nbsp;16
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1.align-middle
+                | &nbsp;Nov 13
+
+    //- Pagination
+    //- partials/pagination-blog.pug
+    include partials/pagination-blog
+
+//- Footer
+block footer
+  include partials/footer-blog

@@ -1,0 +1,220 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['cleave.js/dist/cleave.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Checkout'
+
+//- Navbar
+block navbar
+
+  // Coupon code modal
+  #modal-coupon.modal.fade(tabindex='-1')
+    .modal-dialog.modal-dialog-centered(role='document')
+      .modal-content
+        .modal-header
+          h4.modal-title Coupon code
+          button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+        form(novalidate).modal-body.needs-validation
+          .input-group
+            input(type='text' placeholder='Your coupon code' required).form-control
+            button(type='submit').btn.btn-primary Apply code
+
+  //- navbar-shop.pug template
+  include partials/navbar-shop
+
+//- Page Content
+block content
+  form(novalidate).sidebar-enabled.sidebar-end.needs-validation
+    .container
+      .row
+
+        // Content
+        .col-lg-8.content.py-4
+          +breadcrumb([{'title': 'Shop', 'link': 'shop-ls.html'}, {'title': 'Checkout'}]).py-1.my-2
+          h1.mb-3.pb-4 Checkout
+          .alert.d-flex.alert-info.fs-md.mb-5(role='alert')
+            i.ai-alert-circle.fs-xl.me-3
+            div Have a coupon code? <a href='#modal-coupon' data-bs-toggle='modal' class='alert-link'>Click here to enter your code</a>
+          h2.h3.pb-3 Billing details
+          .row.mb-4
+            .col-sm-6.mb-3.pb-1
+              label(for='ch-fn').form-label
+                | First name
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-fn' required).form-control
+            .col-sm-6.mb-3.pb-1
+              label(for='ch-ln').form-label
+                | Last names
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-ln' required).form-control
+            .col-12.mb-3.pb-1
+              label(for='ch-company').form-label Company name
+              input(type='text' id='ch-company').form-control
+            .col-12.mb-3.pb-1
+              label(for='ch-country').form-label
+                | Country
+                sup.text-danger.ms-1 *
+              select(id='ch-country' required).form-select
+                option(value='' selected disabled hidden) Choose country
+                option(value='Australia') Australia
+                option(value='Canada') Canada
+                option(value='Francee') France
+                option(value='Germany') Germany
+                option(value='Switzerland') Switzerland
+                option(value='USA') USA
+            .col-12.mb-3.pb-1
+              label(for='ch-address').form-label
+                | Street address
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-address' placeholder='House number and street name' required).form-control
+            .col-12.mb-3.pb-1
+              input(type='text' placeholder='Apartment, suite, unit, etc. (optional)').form-control
+            .col-12.mb-3.pb-1
+              label(for='ch-city').form-label
+                | Town / City
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-city' required).form-control
+            .col-12.mb-3.pb-1
+              label(for='ch-county').form-label County
+              input(type='text' id='ch-county').form-control
+            .col-12.mb-3.pb-1
+              label(for='ch-postcode').form-label
+                | Postcode
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-postcode' required).form-control
+            .col-sm-6.mb-3.pb-1
+              label(for='ch-phone').form-label
+                | Phone
+                sup.text-danger.ms-1 *
+              input(type='text' id='ch-phone' required).form-control
+            .col-sm-6.mb-3.pb-1
+              label(for='ch-email').form-label
+                | Email address
+                sup.text-danger.ms-1 *
+              input(type='email' id='ch-email' required).form-control
+          h2.h3.pb-3 Additional information
+          .mb-3.pb-1.pb-3.pb-lg-5
+            label(for='ch-order-notes').form-label Order notes
+            textarea(id='ch-order-notes' rows='5' placeholder='Notes about your order, e.g. special notes for delivery.').form-control
+              
+
+        // Sidebar
+        .col-lg-4.sidebar.bg-secondary.pt-5.ps-lg-4.pb-md-2
+          .ps-lg-4.mb-3.pb-5
+            h2.h4.pb-3 Your cart
+            .d-flex.align-items-center.mb-4
+              a(href='shop-single.html').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/05.jpg' alt='Product' width='60').rounded
+              .w-100.ps-2.ms-1
+                .d-flex.align-items-center.justify-content-between
+                  .me-3
+                    h4.nav-heading.fs-md.mb-1
+                      a(href='shop-single.html').fw-medium
+                        | Smart Watch Series 5
+                    .d-flex.align-items-center.fs-sm
+                      span.me-2 $364.99
+                      span.me-2 x
+                      input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                  .ps-3.border-start
+                    a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                      i.ai-x-circle
+            .d-flex.align-items-center.mb-4
+              a(href='shop-single.html').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/02.jpg' alt='Product' width='60').rounded
+              .w-100.ps-2.ms-1
+                .d-flex.align-items-center.justify-content-between
+                  .me-3
+                    h4.nav-heading.fs-md.mb-1
+                      a(href='shop-single.html').fw-medium
+                        | Running Sneakers, Collection
+                    .d-flex.align-items-center.fs-sm
+                      span.me-2 $145.00
+                      span.me-2 x
+                      input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                  .ps-3.border-start
+                    a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                      i.ai-x-circle
+            .d-flex.align-items-center.mb-4
+              a(href='shop-single.html').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/06.jpg' alt='Product' width='60').rounded
+              .w-100.ps-2.ms-1
+                .d-flex.align-items-center.justify-content-between
+                  .me-3
+                    h4.nav-heading.fs-md.mb-1
+                      a(href='shop-single.html').fw-medium
+                        | Wireless Bluetooth Headset
+                    .d-flex.align-items-center.fs-sm
+                      span.me-2 $258.00
+                      span.me-2 x
+                      input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                  .ps-3.border-start
+                    a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                      i.ai-x-circle
+            hr.mt-0.mb-4
+            .d-flex.justify-content-between.mb-3
+              span.h6.mb-0 Subtotal:
+              span.text-nav $776.99
+            .d-flex.justify-content-between.mb-3
+              span.h6.mb-0 Tax:
+              span.text-nav &mdash;
+            .d-flex.justify-content-between.mb-3
+              span.h6.mb-0 Shipping:
+              span.text-nav $12.35
+            .d-flex.justify-content-between.mb-3
+              span.h6.mb-0 Total:
+              span.h6.mb-0 $789.34
+            #payment-methods.accordion.pt-4.mb-grid-gutter
+
+              .accordion-item.bg-white.shadow
+                h2#heading-1.accordion-header
+                  button(type='button').accordion-button.no-indicator
+                    .form-check.w-100( data-bs-toggle='collapse' data-bs-target='#credit-card' aria-expanded='true' aria-controls='credit-card')
+                      input(type='radio' id='credit-card-radio' name='payment_method' checked).form-check-input
+                      label(for='credit-card-radio').form-check-label.d-flex.align-items-center.fs-base.text-heading.mb-0.mt-1
+                        span Credit Card
+                        img(src='img/shop/cards.png' alt='Accepted cards' width='130').ms-3
+                #credit-card.accordion-collapse.collapse.show(aria-labelledby='heading-1' data-bs-parent='#payment-methods')
+                  .accordion-body
+                    .mb-3.pb-1
+                      label(for='cc-number').form-label Card number
+                      input(type='text' id='cc-number' data-format='card' placeholder='0000 0000 0000 0000').form-control.bg-none
+                    .row.g-0
+                      .col-7.px-2
+                        label(for='cc-expiry').form-label Expiry date
+                        input(type='text' id='cc-expiry' data-format='date' placeholder='mm/yy').form-control.bg-none
+                      .col-5.px-2
+                        label(for='cc-cvc').form-label CVC
+                        input(type='text' id='cc-cvc' data-format='cvc' placeholder='000').form-control.bg-none
+
+              .accordion-item.bg-white.shadow
+                h2#heading-2.accordion-header
+                  button(type='button').accordion-button.no-indicator
+                    .form-check.w-100(data-bs-toggle='collapse' data-bs-target='#paypal' aria-expanded='false' aria-controls='paypal')
+                      input(type='radio' id='paypal-radio' name='payment_method').form-check-input
+                      label(for='paypal-radio').form-check-label.d-flex.align-items-center.fs-base.text-heading.mb-0.mt-1
+                        span PayPal
+                        img(src='img/shop/paypal.png' alt='PayPal' width='20').ms-3
+                #paypal.accordion-collapse.collapse(aria-labelledby='heading-2' data-bs-parent='#payment-methods')
+                  .accordion-body
+                    p.fs-ms By clicking on the button below you will be redirected to your PayPal account to complete the payment.
+                    a(href='#').d-inline-block
+                      img(src='img/shop/paypal-button.png' alt='PayPal' width='200').d-block
+
+              .accordion-item.bg-white.shadow
+                h2#heading-3.accordion-header
+                  button(type='button').accordion-button.no-indicator.collapsed
+                    .form-check.w-100(data-bs-toggle='collapse' data-bs-target='#cash' aria-expanded='false' aria-controls='cash')
+                      input(type='radio' id='cash-radio' name='payment_method').form-check-input
+                      label(for='cash-radio').form-check-label.d-flex.align-items-center.fs-base.text-heading.mb-0.mt-1
+                        | Cash on delivery
+                #cash.accordion-collapse.collapse(aria-labelledby='heading-3' data-bs-parent='#payment-methods')
+                  .accordion-body
+                    p.fs-ms.mb-0 You have selected to pay with cash upon delivery.
+
+            button(type='submit').btn.btn-primary.d-block.w-100 Place order
+
+//- Footer
+block footer
+  include partials/footer-shop

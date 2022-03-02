@@ -1,0 +1,25 @@
+extends ../partials/layout-docs
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Global colors'
+  - var isNestedFile = true
+  
+//- Page Content
+block content
+  .pb-5
+    p 
+      span.fw-medium: u There are 2 options to customize Around global colors:
+    ol
+      li Customize global colors via Sass variables
+      li Replace global colors in CSS
+
+    h2.h4.pt-3 Customize global colors via Sass variables
+    p In case you want to create your own color scheme - the fastest and painless way to do that is via Sass variables.
+    p Simply copy necessary variable from <code>Around/src/scss/helpers/_variables.scss</code> file and paste to <code>Around/src/scss/_user-variables.scss</code>, then compile new <code>theme.min.css</code> file either using <span class='fs-medium'>Prepros</span> or <span class='fs-medium'>Gulp</span>. Check <a href='using-preprocessors.html' class='fw-medium'>Using Preprocessors</a> and <a href='working-with-gulp.html' class='fw-medium'>Working with Gulp</a> sections for instructions.
+    p.mb-5
+      u Blelow is the screenshot of the part of Sass variables file responsible for global colors:
+    img(src='../img/docs/sass-variables.png' alt='Sass Variables').d-block.img-thumbnail.mb-5
+
+    h2.h4 Replace global colors in CSS
+    p This is the hardest way to do things done. I don't recommend it but if you prefer vanilla CSS you can replace all color hex values inside <code>Around/dist/css/theme.min.css</code> with your own using "find and replace" panel of you code editor. Refer to the image above as a guidance.

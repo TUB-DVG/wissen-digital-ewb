@@ -1,0 +1,34 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+  - var pageTitle = '404 Error'
+  - var isPageFullHeight = true
+
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+
+//- Page Content
+block content
+  .container.d-flex.flex-column.justify-content-center.pt-5.mt-n6(style='flex: 1 0 auto;')
+    .pt-7.pb-5
+      .text-center.mb-2.pb-4
+        h1.mb-5
+          img(src='img/pages/404/404-text.svg' alt='Error 404').d-inline-block
+          span.visually-hidden Error 404
+        h2 Page not found!
+        p.pb-2 It seems we can’t find the page you are looking for.
+        a(href='index.html').btn.btn-translucent-primary.me-3 Go to homepage
+        span Or try
+      .input-group.mx-auto(style='max-width: 390px;')
+        i.ai-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+        input(type='text' placeholder='Search' required).form-control.rounded
+
+
+//- Footer
+block footer
+  include partials/footer-simple

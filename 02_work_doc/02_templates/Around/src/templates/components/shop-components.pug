@@ -1,0 +1,676 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'tiny-slider/dist/min/tiny-slider.js']
+  - var pageTitle = 'Shop components'
+  - var pageSubtitle = 'Components that are related to the e-commerce section of the website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Product card', 'link': '#product-card'}, {'title': 'Wishlist item', 'link': '#wishlist-item'}, {'title': 'Category card', 'link': '#category-card'}, {'title': 'Product gallery', 'link': '#product-gallery'}, {'title': 'Promo banner', 'link': '#promo-banner'}, {'title': 'Active filters', 'link': '#active-filters'}, {'title': 'Related products carousel', 'link': '#products-carousel'}]
+  
+//- Page Content
+block content
+
+  // Product card
+  section#product-card.pb-5.mb-md-2
+    h2.h4.mb-3 Product card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .card.card-product.card-hover.mx-0(style='max-width: 18rem;')
+              span.badge.badge-floating.rounded-pill.rounded-start-0.bg-danger Sale
+              a(href='#').card-img-top
+                img(src='../img/shop/catalog/02.jpg' alt='Product thumbnail')
+              .card-body
+                a(href='#').meta-link.fs-xs.mb-1 Electronics
+                h3.fs-md.fw-medium.mb-2
+                  a(href='#').meta-link Wireless Headphones
+                del.fs-sm.text-muted.me-1 $165.00
+                span.text-heading.fw-semibold $139.00
+              .card-footer
+                +star-rating(4)
+                .d-flex.align-items-center
+                  a(href='#').btn-wishlist
+                    i.ai-heart
+                    span.btn-tooltip Wishlist
+                  span.btn-divider
+                  a(href='#').btn-addtocart
+                    i.ai-shopping-cart
+                    span.btn-tooltip To Cart
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Product card --&gt;
+                &lt;div class=&quot;card card-product card-hover&quot;&gt;
+                  &lt;span class=&quot;badge badge-floating rounded-pill rounded-start-0 bg-danger&quot;&gt;Sale&lt;/span&gt;
+                  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Electronics&lt;/a&gt;
+                    &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+                      &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Wireless Headphones&lt;/a&gt;
+                    &lt;/h3&gt;
+                    &lt;del class=&quot;fs-sm text-muted me-1&quot;&gt;$165.00&lt;/del&gt;
+                    &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$139.00&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-footer&quot;&gt;
+                    &lt;div class=&quot;star-rating&quot;&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                      &lt;a class=&quot;btn-wishlist&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-heart&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;btn-tooltip&quot;&gt;Wishlist&lt;/span&gt;
+                      &lt;/a&gt;
+                      &lt;span class=&quot;btn-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Product card
+                .card.card-product.card-hover
+                  span.badge.badge-floating.rounded-pill.rounded-start-0.bg-danger Sale
+                  a(href=&quot;#&quot;).card-img-top
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+                  .card-body
+                    a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+                      | Electronics
+                    h3.fs-md.fw-medium.mb-2
+                      a(href=&quot;#&quot;).meta-link
+                        | Wireless Headphones
+                    del.fs-sm.text-muted.me-1 $165.00
+                    span.text-heading.fw-semibold $139.00
+                  .card-footer
+                    +star-rating(4)
+                    .d-flex.align-items-center
+                      a(href=&quot;#&quot;).btn-wishlist
+                        i.ai-heart
+                        span.btn-tooltip Wishlist
+                      span.btn-divider
+                      a(href=&quot;#&quot;).btn-addtocart
+                        i.ai-shopping-cart
+                        span.btn-tooltip To Cart
+
+  // Wishlist item
+  section#wishlist-item.pb-5.mb-md-2
+    h2.h4.mb-3 Wishlist item
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .card.card-product.card-hover.mx-0(style='max-width: 18rem;')
+              a(href='#').btn-remove
+                i.ai-trash-2
+                span.btn-tooltip Remove
+              a(href='#').card-img-top
+                img(src='../img/shop/catalog/09.jpg' alt='Product thumbnail')
+              .card-body
+                a(href='#').meta-link.fs-xs.mb-1 Women's shoes
+                h3.fs-md.fw-medium.mb-2
+                  a(href='#').meta-link Women Colorblock Sneakers
+                span.text-heading.fw-semibold $154.00
+              .card-footer
+                +star-rating(3)
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Wishlist item --&gt;
+                &lt;div class=&quot;card card-product card-hover&quot;&gt;
+                  &lt;a class=&quot;btn-remove&quot; href=&quot;#&quot;&gt;
+                    &lt;i class=&quot;ai-trash-2&quot;&gt;&lt;/i&gt;
+                    &lt;span class=&quot;btn-tooltip&quot;&gt;Remove&lt;/span&gt;
+                  &lt;/a&gt;
+                  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Women's shoes&lt;/a&gt;
+                    &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+                      &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Women Colorblock Sneakers&lt;/a&gt;
+                    &lt;/h3&gt;
+                    &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$154.00&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-footer&quot;&gt;
+                    &lt;div class=&quot;star-rating&quot;&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+                      &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Wishlist item
+                .card.card-product.card-hover
+                  a(href=&quot;#&quot;).btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href=&quot;#&quot;).card-img-top
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+                  .card-body
+                    a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+                      | Women's shoes
+                    h3.fs-md.fw-medium.mb-2
+                      a(href=&quot;#&quot;).meta-link
+                        | Women Colorblock Sneakers
+                    span.text-heading.fw-semibold $154.00
+                  .card-footer
+                    +star-rating(3)
+                    a(href=&quot;#&quot;).btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+  // Category card
+  section#category-card.pb-5.mb-md-2
+    h2.h4.mb-3 Category card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            a(href='#' style='max-width: 24rem;').card.card-category.shadow
+              span.badge.badge-lg.badge-floating.badge-floating-end.bg-success
+                | From $8.99
+              img(src='../img/shop/categories/01.jpg' alt='Clothing').card-img-top
+              .card-body
+                h4.card-title Clothing
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Category card --&gt;
+                &lt;div class=&quot;card card-category shadow&quot;&gt;
+                  &lt;span class=&quot;badge badge-lg badge-floating badge-floating-end bg-success&quot;&gt;
+                    From $8.99
+                  &lt;/span&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;card-img-top&quot; alt=&quot;Clothing&quot;/&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h4 class=&quot;card-title&quot;&gt;Clothing&lt;/h4&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Category card
+                a(href=&quot;#&quot;).card.card-category.shadow
+                  span.badge.badge-lg.badge-floating.badge-floating-end.bg-success
+                    | From $8.99
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Clothing&quot;).card-img-top
+                  .card-body
+                    h4.card-title Clothing
+
+  // Product gallery
+  section#product-gallery.pb-5.mb-md-2
+    h2.h4.mb-3 Product gallery
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .product-gallery(style='max-width: 42rem;')
+              .product-gallery-preview.order-sm-2
+                #first.product-gallery-preview-item.active
+                  img(src='../img/shop/single/gallery/01.jpg' alt='Product preview')
+                #second.product-gallery-preview-item
+                  img(src='../img/shop/single/gallery/02.jpg' alt='Product preview')
+                #third.product-gallery-preview-item
+                  img(src='../img/shop/single/gallery/03.jpg' alt='Product preview')
+                #fourth.product-gallery-preview-item
+                  img(src='../img/shop/single/gallery/04.jpg' alt='Product preview')
+              .product-gallery-thumblist.order-sm-1
+                a(href='#first').product-gallery-thumblist-item.active
+                  img(src='../img/shop/single/gallery/th01.jpg' alt='Product thumb')
+                a(href='#second').product-gallery-thumblist-item
+                  img(src='../img/shop/single/gallery/th02.jpg' alt='Product thumb')
+                a(href='#third').product-gallery-thumblist-item
+                  img(src='../img/shop/single/gallery/th03.jpg' alt='Product thumb')
+                a(href='#fourth').product-gallery-thumblist-item
+                  img(src='../img/shop/single/gallery/th04.jpg' alt='Product thumb')
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Product gallery --&gt;
+                &lt;div class=&quot;product-gallery&quot;&gt;
+
+                  &lt;!-- Preview image --&gt;
+                  &lt;div class=&quot;product-gallery-preview order-sm-2&quot;&gt;
+                    &lt;div class=&quot;product-gallery-preview-item active&quot; id=&quot;first&quot;&gt;
+                      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;second&quot;&gt;
+                      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;third&quot;&gt;
+                      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;fourth&quot;&gt;
+                      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Thumbnails --&gt;
+                  &lt;div class=&quot;product-gallery-thumblist order-sm-1&quot;&gt;
+                    &lt;a class=&quot;product-gallery-thumblist-item active&quot; href=&quot;#first&quot;&gt;
+                      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#second&quot;&gt;
+                      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#third&quot;&gt;
+                      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#fourth&quot;&gt;
+                      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Product gallery
+                .product-gallery
+
+                  // Preview image
+                  .product-gallery-preview.order-sm-2
+                    #first.product-gallery-preview-item.active
+                      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+                    #second.product-gallery-preview-item
+                      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+                    #third.product-gallery-preview-item
+                      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+                    #fourth.product-gallery-preview-item
+                      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+
+                  // Thumbnails
+                  .product-gallery-thumblist.order-sm-1
+                    a(href=&quot;#first&quot;).product-gallery-thumblist-item.active
+                      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+                    a(href=&quot;#second&quot;).product-gallery-thumblist-item
+                      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+                    a(href=&quot;#third&quot;).product-gallery-thumblist-item
+                      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+                    a(href=&quot;#fourth&quot;).product-gallery-thumblist-item
+                      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+
+  // Promo banner
+  section#promo-banner.pb-5.mb-md-2
+    h2.h4.mb-3 Promo banner
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .bg-secondary.rounded-3.pt-5.px-3.ps-sm-5.pe-sm-2(style='max-width: 810px;')
+              .d-sm-flex.align-items-end.text-center.text-sm-start.ps-2
+                .me-sm-n6.pb-5
+                  h2.h1.text-sm-nowrap Virtual Reality
+                  p.pb-2.mx-auto.mx-sm-0(style='max-width: 14rem;') Gadgets from top brands at discounted price
+                  .d-inline-block.bg-faded-danger.text-danger.fs-sm.fw-medium.rounded-1.px-3.py-2
+                    | Limited time offer
+                  .countdown.pt-3.h4.justify-content-center.justify-content-sm-start(data-countdown='10/01/2021 07:00:00 PM')
+                    .countdown-days
+                      span.countdown-value 0
+                      span.countdown-label.fs-xs.text-muted Days
+                    .countdown-hours
+                      span.countdown-value 0
+                      span.countdown-label.fs-xs.text-muted Hours
+                    .countdown-minutes
+                      span.countdown-value 0
+                      span.countdown-label.fs-xs.text-muted Mins
+                  a(href='#').btn.btn-primary Get one now
+                div
+                  img(src='../img/demo/shop-homepage/banner.png' alt='Promo banner')
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Promo banner with countdown --&gt;
+                &lt;div class=&quot;bg-secondary rounded-3 pt-5 px-3 ps-sm-5 pe-sm-2&quot;&gt;
+                  &lt;div class=&quot;d-sm-flex align-items-end text-center text-sm-start ps-2&quot;&gt;
+                    &lt;div class=&quot;me-sm-n6 pb-5&quot;&gt;
+                      &lt;h2 class=&quot;h1 text-sm-nowrap&quot;&gt;Virtual Reality&lt;/h2&gt;
+                      &lt;p class=&quot;pb-2 mx-auto mx-sm-0&quot; style=&quot;max-width: 14rem;&quot;&gt;
+                        Gadgets from top brands at discounted price
+                      &lt;/p&gt;
+                      &lt;div class=&quot;d-inline-block bg-faded-danger text-danger fs-sm fw-medium rounded-1 px-3 py-2&quot;&gt;
+                        Limited time offer
+                      &lt;/div&gt;
+                      &lt;div class=&quot;countdown pt-3 h4 justify-content-center justify-content-sm-start&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                        &lt;div class=&quot;countdown-days&quot;&gt;
+                          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Days&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;countdown-hours&quot;&gt;
+                          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Hours&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;countdown-minutes&quot;&gt;
+                          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Mins&lt;/span&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;a class=&quot;btn btn-primary&quot; href=&quot;#&quot;&gt;Get one now&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;&lt;img src=&quot;path-to-image&quot; alt=&quot;Promo banner&quot;/&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Promo banner with countdown
+                .bg-secondary.rounded-3.pt-5.px-3.ps-sm-5.pe-sm-2
+                  .d-sm-flex.align-items-end.text-center.text-sm-start.ps-2
+                    .me-sm-n6.pb-5
+                      h2.h1.text-sm-nowrap Virtual Reality
+                      p.pb-2.mx-auto.mx-sm-0(style=&quot;max-width: 14rem;&quot;) Gadgets from top brands at discounted price
+                      .d-inline-block.bg-faded-danger.text-danger.fs-sm.fw-medium.rounded-1.px-3.py-2
+                        | Limited time offer
+                      .countdown.pt-3.h4.justify-content-center.justify-content-sm-start(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                        .countdown-days
+                          span.countdown-value 0
+                          span.countdown-label.fs-xs.text-muted Days
+                        .countdown-hours
+                          span.countdown-value 0
+                          span.countdown-label.fs-xs.text-muted Hours
+                        .countdown-minutes
+                          span.countdown-value 0
+                          span.countdown-label.fs-xs.text-muted Mins
+                      a(href=&quot;#&quot;).btn.btn-primary
+                        | Get one now
+                    div
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Promo banner&quot;)
+
+  // Active filters
+  section#active-filters.pb-5.mb-md-2
+    h2.h4.mb-3 Active filters
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.align-items-center
+              label.form-label.me-3.mt-1.mb-2 Your selection:
+              a(href='#').active-filter.me-2.my-2 Clothing
+              a(href='#').active-filter.me-2.my-2 Shirts &amp; Tops
+              a(href='#').active-filter.me-2.my-2 Brand name
+              a(href='#').active-filter.my-2 Size
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Active filter --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;active-filter&quot;&gt;
+                  Active filter
+                &lt;/a&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Active filter
+                a(href=&quot;#&quot;).active-filter
+                  | Active filter
+
+  // Related products carousel
+  section#products-carousel.pb-5.mb-md-2
+    h2.h4.mb-3 Related products carousel
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper
+              .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "nav": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16}, "780":{"items":3, "gutter": 16}, "1700":{"items":4, "gutter": 23}}}')
+
+                // Item
+                .pb-2
+                  .card.card-product.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/shop/catalog/01.jpg' alt='Product thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-xs.mb-1 Men's clothing
+                      h3.fs-md.fw-medium.mb-2
+                        a(href='#').meta-link Simple Gray Cotton T-shirt
+                      span.text-heading.fw-semibold $19.00
+                    .card-footer
+                      +star-rating(3)
+                      .d-flex.align-items-center
+                        a(href='#').btn-wishlist
+                          i.ai-heart
+                          span.btn-tooltip Wishlist
+                        span.btn-divider
+                        a(href='#').btn-addtocart
+                          i.ai-shopping-cart
+                          span.btn-tooltip To Cart
+
+                // Item
+                .pb-2
+                  .card.card-product.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/shop/catalog/03.jpg' alt='Product thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-xs.mb-1 Accessories
+                      h3.fs-md.fw-medium.mb-2
+                        a(href='#').meta-link Military Cotton Cap
+                      span.text-heading.fw-semibold $28.00
+                    .card-footer
+                      +star-rating(0)
+                      .d-flex.align-items-center
+                        a(href='#').btn-wishlist
+                          i.ai-heart
+                          span.btn-tooltip Wishlist
+                        span.btn-divider
+                        a(href='#').btn-addtocart
+                          i.ai-shopping-cart
+                          span.btn-tooltip To Cart
+
+                // Item
+                .pb-2
+                  .card.card-product.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/shop/catalog/04.jpg' alt='Product thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-xs.mb-1 Electronics
+                      h3.fs-md.fw-medium.mb-2
+                        a(href='#').meta-link 360 Degree Camera
+                      span.text-heading.fw-semibold $98.75
+                    .card-footer
+                      +star-rating(4)
+                      .d-flex.align-items-center
+                        a(href='#').btn-wishlist
+                          i.ai-heart
+                          span.btn-tooltip Wishlist
+                        span.btn-divider
+                        a(href='#').btn-addtocart
+                          i.ai-shopping-cart
+                          span.btn-tooltip To Cart
+
+                // Item
+                .pb-2
+                  .card.card-product.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/shop/catalog/06.jpg' alt='Product thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-xs.mb-1 Backpacks
+                      h3.fs-md.fw-medium.mb-2
+                        a(href='#').meta-link Vintage Travel Backpack
+                      span.text-heading.fw-semibold $82.00
+                    .card-footer
+                      +star-rating(5)
+                      .d-flex.align-items-center
+                        a(href='#').btn-wishlist
+                          i.ai-heart
+                          span.btn-tooltip Wishlist
+                        span.btn-divider
+                        a(href='#').btn-addtocart
+                          i.ai-shopping-cart
+                          span.btn-tooltip To Cart
+
+                // Item
+                .pb-2
+                  .card.card-product.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/shop/catalog/07.jpg' alt='Product thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-xs.mb-1 Accessories
+                      h3.fs-md.fw-medium.mb-2
+                        a(href='#').meta-link 3-Color Sun Stash Hat
+                      span.text-heading.fw-semibold $25.99
+                    .card-footer
+                      +star-rating(3)
+                      .d-flex.align-items-center
+                        a(href='#').btn-wishlist
+                          i.ai-heart
+                          span.btn-tooltip Wishlist
+                        span.btn-divider
+                        a(href='#').btn-addtocart
+                          i.ai-shopping-cart
+                          span.btn-tooltip To Cart
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Products carousel --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1700&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}'&gt;
+                    
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;pb-2&quot;&gt;
+                      &lt;div class=&quot;card card-product card-hover mx-1&quot;&gt;
+                        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Men's clothing&lt;/a&gt;
+                          &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+                            &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Simple Gray Cotton T-shirt&lt;/a&gt;
+                          &lt;/h3&gt;
+                          &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$19.00&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;card-footer&quot;&gt;
+                          &lt;div class=&quot;star-rating&quot;&gt;
+                            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                            &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                            &lt;a class=&quot;btn-wishlist&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-heart&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;btn-tooltip&quot;&gt;Wishlist&lt;/span&gt;
+                            &lt;/a&gt;
+                            &lt;span class=&quot;btn-divider&quot;&gt;&lt;/span&gt;
+                            &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                   &lt;!-- Add as many items as you need --&gt;
+
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Products carousel
+                .tns-carousel-wrapper
+                  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1700&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}')
+
+                    // Item
+                    .pb-2
+                      .card.card-product.card-hover.mx-1
+                        a(href=&quot;#&quot;).card-img-top
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+                        .card-body
+                          a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+                            | Men&quot;s clothing
+                          h3.fs-md.fw-medium.mb-2
+                            a(href=&quot;#&quot;).meta-link
+                              | Simple Gray Cotton T-shirt
+                          span.text-heading.fw-semibold $19.00
+                        .card-footer
+                          +star-rating(3)
+                          .d-flex.align-items-center
+                            a(href=&quot;#&quot;).btn-wishlist
+                              i.ai-heart
+                              span.btn-tooltip Wishlist
+                            span.btn-divider
+                            a(href=&quot;#&quot;).btn-addtocart
+                              i.ai-shopping-cart
+                              span.btn-tooltip To Cart
+                    
+                    // Add as many items as you need

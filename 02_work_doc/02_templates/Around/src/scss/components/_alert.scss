@@ -1,0 +1,57 @@
+//
+// Alert
+// --------------------------------------------------
+
+
+// Alert theme colors
+
+.alert-secondary {
+  border-color: $border-color;
+  background-color: $secondary;
+}
+
+.alert-secondary,
+.alert-light {
+  color: $body-color;
+
+  .alert-link { color: $gray-800; }
+}
+
+.alert-dark {
+  border-color: $dark;
+  background-color: $dark;
+  color: $white;
+
+  .alert-link { color: $white; }
+}
+
+
+// Dismissible alerts
+
+.alert-dismissible {
+  padding-right: $alert-padding-x * 2.5;
+
+  .btn-close {
+    padding: $alert-padding-y * 1.45 $alert-padding-x;
+  }
+}
+
+
+// Alert link
+
+.alert-link {
+  text-decoration: $alert-link-decoration;
+
+  &:hover {
+    text-decoration: $alert-link-hover-decoration;
+  }
+}
+
+
+// Alert with icon
+
+.alert {
+  [class^='ai-'], [class*=' ai-'] {
+    margin-top: .125rem;
+  }
+}

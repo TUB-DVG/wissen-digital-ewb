@@ -1,0 +1,81 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Sign In - Illustration'
+  - var isPageFullHeight = true
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-dark
+
+//- Page Content
+block content
+
+  section.container.d-flex.justify-content-center.align-items-center.pt-7.pb-4(style='flex: 1 0 auto;')
+    .signin-form.mt-3
+      .signin-form-inner
+
+        // Sign in view
+        #signin-view.view.show
+          h1.h2.text-center Sign in
+          p.fs-ms.text-muted.mb-4.text-center Sign in to your account using email and password provided during registration.
+          form(novalidate).needs-validation
+            .input-group.mb-3
+              i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              input(type='email' placeholder='Email' required).form-control.rounded
+            .input-group.mb-3
+              i.ai-lock.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              .password-toggle.w-100
+                input(type='password' placeholder='Password' required).form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type='checkbox').password-toggle-check
+                  span.password-toggle-indicator
+            .d-flex.justify-content-between.align-items-center.mb-3.pb-1
+              .form-check
+                input(type='checkbox' id='keep-signed-2').form-check-input
+                label(for='keep-signed-2').form-check-label Keep me signed in
+              a(href='password-recovery.html').nav-link-style.fs-ms Forgot password?
+            button(type='submit').btn.btn-primary.d-block.w-100 Sign in
+            p.fs-sm.pt-3.mb-0.text-center Don't have an account? <a href='#' class='fw-medium' data-view='#signup-view'>Sign up</a>
+
+        // Sign up view
+        #signup-view.view
+          h1.h2.text-center Sign up
+          p.fs-ms.text-muted.mb-4.text-center Registration takes less than a minute but gives you full control over your orders.
+          form(novalidate).needs-validation
+            .mb-3
+              input(type='text' placeholder='Full name' required).form-control
+            .mb-3
+              input(type='text' placeholder='Email' required).form-control
+            .input-group.mb-3
+              .password-toggle.w-100
+                input(type='password' placeholder='Password' required).form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type='checkbox').password-toggle-check
+                  span.password-toggle-indicator
+            .input-group.mb-3
+              .password-toggle.w-100
+                input(type='password' placeholder='Confirm password' required).form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type='checkbox').password-toggle-check
+                  span.password-toggle-indicator
+            button(type='submit').btn.btn-primary.d-block.w-100 Sign up
+            p.fs-sm.pt-3.mb-0.text-center Already have an account? <a href='#' class='fw-medium' data-view='#signin-view'>Sign in</a>
+        .border-top.text-center.mt-4.pt-4
+          p.fs-sm.fw-medium.text-heading Or sign in with
+          a(href='#').btn-social.bs-facebook.bs-outline.bs-lg.mx-1.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-twitter.bs-outline.bs-lg.mx-1.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-instagram.bs-outline.bs-lg.mx-1.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-google.bs-outline.bs-lg.mx-1.mb-2
+            i.ai-google
+
+
+//- Footer
+block footer
+  include partials/footer-simple

@@ -1,0 +1,589 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Shop Homepage'
+
+//- Navbar
+block navbar
+  include partials/navbar-shop
+
+//- Page Content
+block content
+
+  // Hero - Featured Products (tabs)
+  section.position-relative.bg-gradient.pt-5.pt-lg-6.pb-7.mb-7
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    
+    // Tabs
+    .container.pb-7
+      .row.align-items-center.pb-7
+        .col-lg-3
+          ul(role='tablist').nav.nav-tabs.media-tabs.media-tabs-light.justify-content-center.justify-content-lg-start.pb-3.mb-4.pb-lg-0.mb-lg-0
+            li.nav-item.me-3.mb-3
+              a(href='#camera' class='nav-link active' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/shop-homepage/thumbnails/01.jpg' alt='Product' width='60').flex-shrink-0.rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Outdoor HD Cloud Security Camera
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.me-3.mb-3
+              a(href='#sneakers' class='nav-link' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/shop-homepage/thumbnails/02.jpg' alt='Product' width='60').flex-shrink-0.rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Running Sneakers Sports Collection
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.me-3.mb-3
+              a(href='#vr' class='nav-link' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/shop-homepage/thumbnails/03.jpg' alt='Product' width='60').flex-shrink-0.rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Wireless Virtual Reality Headset
+                      i.ai-chevron-right.lead.ms-2.me-1
+
+        .col-lg-9
+          .tab-content
+            #camera.tab-pane.fade.show.active
+              .row.align-items-center
+                .col-lg-6.order-lg-2.pb-1.mb-4.pb-lg-0.mb-lg-0
+                  .mx-auto(style='max-width: 443px;')
+                    img(src='img/demo/shop-homepage/hero/01.png' alt='Security Camera')
+                .col-lg-6.order-lg-1.text-center.text-lg-start
+                  .ps-xl-5
+                    h2.h1.text-light Outdoor HD Cloud Security Camera
+                    p.fs-lg.text-light.mb-lg-5 Stay connected 24/7. Free trial for 30 days
+                    a(href='#').btn.btn-translucent-light Get now - $45.00
+            #sneakers.tab-pane.fade
+              .row.align-items-center
+                .col-lg-6.order-lg-2.pb-1.mb-4.pb-lg-0.mb-lg-0
+                  .mx-auto(style='max-width: 443px;')
+                    img(src='img/demo/shop-homepage/hero/02.png' alt='Running Sneakers')
+                .col-lg-6.order-lg-1.text-center.text-lg-start
+                  .ps-xl-5
+                    h2.h1.text-light Running Sneakers Sports Collection
+                    p.fs-lg.text-light.mb-lg-5 Run like never before. Money back guarantee
+                    a(href='#').btn.btn-translucent-light Get now - $99.00
+            #vr.tab-pane.fade
+              .row.align-items-center
+                .col-lg-6.order-lg-2.pb-1.mb-4.pb-lg-0.mb-lg-0
+                  .mx-auto(style='max-width: 443px;')
+                    img(src='img/demo/shop-homepage/hero/03.png' alt='VR Headset')
+                .col-lg-6.order-lg-1.text-center.text-lg-start
+                  .ps-xl-5
+                    h2.h1.text-light Wireless Virtual Reality Headset
+                    p.fs-lg.text-light.mb-lg-5 Run like never before. Money back guarantee
+                    a(href='#').btn.btn-translucent-light Get now - $180.00
+
+
+  // Categories (carousel)
+  section.container.position-relative.zindex-5(style='margin-top: -290px;')
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options = '{"items": 3, "controls": false, "gutter": 24, "responsive": {"0":{"items":1},"560":{"items":2},"850":{"items":3}}}')
+
+        // Category
+        .pb-2
+          a(href='#').card.card-category.shadow.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success
+              | From $8.99
+            img(src='img/shop/categories/01.jpg' alt='Clothing').card-img-top
+            .card-body
+              h4.card-title Clothing
+
+        // Category
+        .pb-2
+          a(href='#').card.card-category.shadow.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-info
+              | From $14.99
+            img(src='img/shop/categories/02.jpg' alt='Electronics').card-img-top
+            .card-body
+              h4.card-title Electronics
+
+        // Category
+        .pb-2
+          a(href='#').card.card-category.shadow.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-danger
+              | From $5.99
+            img(src='img/shop/categories/03.jpg' alt='Accessories').card-img-top
+            .card-body
+              h4.card-title Accessories
+
+        // Category
+        .pb-2
+          a(href='#').card.card-category.shadow.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-warning
+              | From $7.99
+            img(src='img/shop/categories/04.jpg' alt='Kids').card-img-top
+            .card-body
+              h4.card-title Kids
+  
+
+  // Trending products (grid)
+  section.container.pt-5.mt-5.mt-md-0.pt-md-6.pt-lg-7
+    h2.text-center.mb-5 Trending products
+    .row.pb-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/01.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Men's clothing
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Simple Cotton Gray T-shirt
+            span.text-heading.fw-semibold $19.00
+          .card-footer
+            +star-rating(3)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/02.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Electronics
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Wireless Headphones
+            span.text-heading.fw-semibold $165.00
+          .card-footer
+            +star-rating(4)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          span.badge.badge-floating.rounded-pill.bg-success New
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/03.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Accessories
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Military Cotton Cap
+            span.text-heading.fw-semibold $28.00
+          .card-footer
+            +star-rating(0)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/09.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Women's shoes
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Women Colorblock Sneakers
+            span.text-heading.fw-semibold $154.00
+          .card-footer
+            +star-rating(4)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          span.badge.badge-floating.rounded-pill.bg-danger Sale
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/04.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Electronics
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link 360 Degrees Camera
+            del.fs-sm.text-muted.me-1 $120.40
+            span.text-heading.fw-semibold $98.75
+          .card-footer
+            +star-rating(4)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/07.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Accessories
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link 3-Color Sun Stash Hat
+            span.text-heading.fw-semibold $25.99
+          .card-footer
+            +star-rating(3)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          span.badge.badge-floating.rounded-pill.bg-warning Top rated
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/06.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Backpacks
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Vintage Travel Backpack
+            span.text-heading.fw-semibold $82.00
+          .card-footer
+            +star-rating(5)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/08.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Electronics
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Speaker with Voice Control
+            span.text-heading.fw-semibold $49.99
+          .card-footer
+            +star-rating(4)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.d-none.d-md-block.d-lg-none.mb-grid-gutter
+        .card.card-product.card-hover
+          a(href='shop-single.html').card-img-top
+            img(src='img/shop/catalog/05.jpg' alt='Product thumbnail')
+          .card-body
+            a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+            h3.fs-md.fw-medium.mb-2
+              a(href='shop-single.html').meta-link Sport Running Sneakers
+            span.text-heading.fw-semibold $140.00
+          .card-footer
+            +star-rating(4)
+            .d-flex.align-items-center
+              a(href='#').btn-wishlist
+                i.ai-heart
+                span.btn-tooltip Wishlist
+              span.btn-divider
+              a(href='#').btn-addtocart
+                i.ai-shopping-cart
+                span.btn-tooltip To Cart
+
+    .text-center
+      a(href='shop-ls.html').btn.btn-outline-primary More products
+  
+
+  // New arrivals (widget) + Promo banner
+  section.container.pt-5.mt-3.mt-md-0.pt-md-6.pt-lg-7
+    .row
+      .col-lg-4.d-none.d-lg-block
+        .card.h-100.p-4
+          .p-2
+            .d-flex.justify-content-between.align-items-center.mb-4.pb-1
+              h3.fs-xl.mb-0 New arrivals
+              a(href='shop-ls.html').fs-sm.fw-medium.me-n2
+                | View more
+                i.ai-chevron-right.fs-lg.ms-1.align-middle
+            .d-flex.align-items-center.pb-2.mb-1
+              a(href='#').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/04.jpg' alt='Product' width='60').rounded
+              .ps-2.ms-1
+                h4.fs-md.nav-heading.mb-1
+                  a(href='#').fw-medium
+                    | Block-colored Hooded Top
+                p.fs-sm.mb-0 $27.50
+            .d-flex.align-items-center.pb-2.mb-1
+              a(href='#').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/05.jpg' alt='Product' width='60').rounded
+              .ps-2.ms-1
+                h4.fs-md.nav-heading.mb-1
+                  a(href='#').fw-medium
+                    | Smart Watch Series 5
+                p.fs-sm.mb-0 $364.99
+            .d-flex.align-items-center.pb-2.mb-1
+              a(href='#').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/02.jpg' alt='Product' width='60').rounded
+              .ps-2.ms-1
+                h4.fs-md.nav-heading.mb-1
+                  a(href='#').fw-medium
+                    | Running Sneakers, Collection
+                p.fs-sm.mb-0 $145.00
+            .d-flex.align-items-center
+              a(href='#').d-block.flex-shrink-0
+                img(src='img/demo/shop-homepage/thumbnails/06.jpg' alt='Product' width='60').rounded
+              .ps-2.ms-1
+                h4.fs-md.nav-heading.mb-1
+                  a(href='#').fw-medium
+                    | Bluetooth Headset
+                p.fs-sm.mb-0 $258.00
+      .col-lg-8
+        .bg-secondary.rounded-3.pt-5.px-3.ps-sm-5.pe-sm-2
+          .d-sm-flex.align-items-end.text-center.text-sm-start.ps-2
+            .me-sm-n6.pb-5
+              h2.h1.text-sm-nowrap Virtual Reality
+              p.pb-2.mx-auto.mx-sm-0(style='max-width: 14rem;') Gadgets from top brands at discounted price
+              .d-inline-block.bg-faded-danger.text-danger.fs-sm.fw-medium.rounded-1.px-3.py-2
+                | Limited time offer
+              .countdown.pt-3.h4.justify-content-center.justify-content-sm-start(data-countdown='10/01/2021 07:00:00 PM')
+                .countdown-days
+                  span.countdown-value 0
+                  span.countdown-label.fs-xs.text-muted Days
+                .countdown-hours
+                  span.countdown-value 0
+                  span.countdown-label.fs-xs.text-muted Hours
+                .countdown-minutes
+                  span.countdown-value 0
+                  span.countdown-label.fs-xs.text-muted Mins
+              a(href='#').btn.btn-primary Get one now
+            div
+              img(src='img/demo/shop-homepage/banner.png' alt='Promo banner')
+  
+
+  // Brands
+  section.container.pt-5.mt-3.mt-md-0.pt-md-6.pt-lg-7.pb-md-4
+    h2.mb-5.text-center Shop by brand
+    .row
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/01_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/01_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/02_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/02_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/03_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/03_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/04_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/04_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/05_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/05_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/06_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/06_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/07_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/07_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/08_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/08_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/09_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/09_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/10_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/10_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/11_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/11_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/12_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/12_gray.png' alt='Brand logo' width='150').swap-from
+  
+
+  // Reviews
+  section.bg-secondary.py-5.py-md-6.mt-4.mt-md-5
+    .container-fluid.py-3.py-md-0
+      h2.mb-5.text-center Trusted reviews
+      .tns-carousel-wrapper
+        .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "responsive": {"0":{"items":1, "gutter": 16}, "520":{"items":2, "gutter": 12}, "860":{"items":3, "gutter": 23}, "1080":{"items":4, "gutter": 23}, "1380":{"items":5, "gutter": 23}, "1600":{"items":6, "gutter": 23}}}')
+
+          // Review Card
+          .py-2
+            .card.h-100.border-0.shadow.mx-1
+              .card-body
+                a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                  img(src='img/demo/shop-homepage/thumbnails/01.jpg' alt='Product thumb' width='60')
+                  .fs-md.fw-medium.ps-2.ms-1 Outdoor HD Cloud Security Camera
+                +star-rating(4).mb-2.pb-1
+                p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.
+              footer.fs-sm.px-4.pb-4
+                .d-flex.align-items-center.border-top.mb-n2.pt-3
+                  img(src='img/testimonials/01.jpg' alt='Emma Brown' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | Emma Brown
+
+          // From Instagram
+          .py-2
+            a(href='#').card.h-100.border-0.shadow.mx-1
+              span.card-floating-icon: i.ai-instagram
+              img(src='img/demo/shop-homepage/instagram/01.jpg' alt='Image').card-img-top
+              footer.fs-sm.mt-auto.py-2.px-4
+                .d-flex.align-items-center.py-2
+                  img(src='img/testimonials/02.jpg' alt='@morni.janeffel' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | @morni.janeffel
+
+          // Review Card
+          .py-2
+            .card.h-100.border-0.shadow.mx-1
+              .card-body
+                a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                  img(src='img/demo/shop-homepage/thumbnails/02.jpg' alt='Product thumb' width='60')
+                  .fs-md.fw-medium.ps-2.ms-1 Running Sneakers, Sports Collection
+                +star-rating(5).mb-2.pb-1
+                p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.
+              footer.fs-sm.px-4.pb-4
+                .d-flex.align-items-center.border-top.mb-n2.pt-3
+                  img(src='img/testimonials/06.jpg' alt='Edward Chew' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | Edward Chew
+
+          // From Instagram
+          .py-2
+            a(href='#').card.h-100.border-0.shadow.mx-1
+              span.card-floating-icon: i.ai-instagram
+              img(src='img/demo/shop-homepage/instagram/02.jpg' alt='Image').card-img-top
+              footer.fs-sm.mt-auto.py-2.px-4
+                .d-flex.align-items-center.py-2
+                  img(src='img/testimonials/09.jpg' alt='@jane.palson' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | @jane.palson
+
+          // Review Card
+          .py-2
+            .card.h-100.border-0.shadow.mx-1
+              .card-body
+                a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                  img(src='img/demo/shop-homepage/thumbnails/06.jpg' alt='Product thumb' width='60')
+                  .fs-md.fw-medium.ps-2.ms-1 Wireless Bluetooth Headset
+                +star-rating(4).mb-2.pb-1
+                p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.
+              footer.fs-sm.px-4.pb-4
+                .d-flex.align-items-center.border-top.mb-n2.pt-3
+                  img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | Tim Brooks
+
+          // From Instagram
+          .py-2
+            a(href='#').card.h-100.border-0.shadow.mx-1
+              span.card-floating-icon: i.ai-instagram
+              img(src='img/demo/shop-homepage/instagram/03.jpg' alt='Image').card-img-top
+              footer.fs-sm.mt-auto.py-2.px-4
+                .d-flex.align-items-center.py-2
+                  img(src='img/testimonials/05.jpg' alt='@sarah.cole' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | @sarah.cole
+
+          // Review Card
+          .py-2
+            .card.h-100.border-0.shadow.mx-1
+              .card-body
+                a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                  img(src='img/demo/shop-homepage/thumbnails/04.jpg' alt='Product thumb' width='60')
+                  .fs-md.fw-medium.ps-2.ms-1 Block-colored Hooded Top
+                +star-rating(4).mb-2.pb-1
+                p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.
+              footer.fs-sm.px-4.pb-4
+                .d-flex.align-items-center.border-top.mb-n2.pt-3
+                  img(src='img/testimonials/04.jpg' alt='Michael Smith' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | Michael Smith
+
+          // From Instagram
+          .py-2
+            a(href='#').card.h-100.border-0.shadow.mx-1
+              span.card-floating-icon: i.ai-instagram
+              img(src='img/demo/shop-homepage/instagram/04.jpg' alt='Image').card-img-top
+              footer.fs-sm.mt-auto.py-2.px-4
+                .d-flex.align-items-center.py-2
+                  img(src='img/testimonials/02.jpg' alt='@morni.janeffel' width='42').rounded-circle
+                  .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                    | @morni.janeffel
+
+
+//- Footer
+block footer
+  include partials/footer-shop

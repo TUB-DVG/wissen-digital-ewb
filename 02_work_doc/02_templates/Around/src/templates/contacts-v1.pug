@@ -1,0 +1,109 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js', 'jarallax/dist/jarallax.min.js', 'cleave.js/dist/cleave.min.js']
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Contacts v.1'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Page title
+  section.jarallax.bg-gradient.pt-5.pb-7.pt-md-7(data-jarallax data-speed='0.25')
+    span.position-absolute.top-0.start-0.w-100.h-100.bg-gradient.opacity-80
+    .jarallax-img(style='background-image: url(img/pages/contacts/page-title-bg.jpg);')
+    .shape.shape-bottom.shape-slant.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+    .container.position-relative.zindex-5.pt-3.pb-7.pt-md-0
+      .row.justify-content-center.pb-7
+        .col-lg-10
+          h1.text-light Contacts
+          p.text-light Get in touch with by completing the below form or call us now
+
+
+  // Contact form + details
+  section.container.position-relative.zindex-5.pb-5
+    .row
+      .col-lg-6.col-md-7.offset-lg-1.pb-2.mb-5(style='margin-top: -260px;')
+        .card.border-0.shadow-lg
+          form(novalidate).card-body.needs-validation.p-5
+            .mb-3.pb-1
+              label(for='cont-fn').form-label
+                | Full name
+                sup.text-danger.ms-1 *
+              input(type='text' id='cont-fn' placeholder='John Doe' required).form-control
+              .invalid-feedback Please enter your full name!
+            .mb-3.pb-1
+              label(for='cont-email').form-label
+                | Email address
+                sup.text-danger.ms-1 *
+              input(type='email' id='cont-email' placeholder='j.doe@example.com' required).form-control
+              .invalid-feedback Please enter a valid email address!
+            .mb-3.pb-1
+              label(for='cont-phone').form-label Phone number
+              input(type='text' id='cont-phone' data-format='custom' data-delimiter='-' data-blocks='2 4 2 2' placeholder='00-0000-00-00').form-control.bg-image-0
+            .mb-3.pb-1
+              label(for='cont-company').form-label Company
+              input(type='text' id='cont-company' placeholder='Your company').form-control.bg-image-0
+            .mb-3.pb-1
+              label(for='cont-subject').form-label
+                | Subject
+                sup.text-danger.ms-1 *
+              input(type='text' id='cont-subject' placeholder='Title of your message' required).form-control
+              .invalid-feedback Please enter a subject!
+            .mb-3.pb-1
+              label(for='cont-message').form-label
+                | Message
+                sup.text-danger.ms-1 *
+              textarea(id='cont-message' rows='5' placeholder='Write your message here' required).form-control
+              .invalid-feedback Please write a message!
+            .text-center.pt-2
+              button(type='submit').btn.btn-primary Send Message
+      .col-lg-4.col-md-4.offset-md-1
+        h2.h4.pb-3 Contact details
+        h3.h6.pb-2 North America - New York, NY
+        ul.list-unstyled.fs-sm.pb-3
+          li.d-flex.align-items-top.mb-3
+            i.ai-map-pin.fs-xl.text-muted.mt-1.me-2.pe-1
+            div
+              | 396 Lillian Blvd, Holbrook,<br>NY 11741, USA<br>
+              a(href='#map' data-scroll).fancy-link See on the map
+          li.d-flex.align-items-center.mb-3
+            i.ai-mail.fs-xl.text-muted.me-2.pe-1
+            div new.york@example.com
+          li.d-flex.align-items-center.mb-3
+            i.ai-phone.fs-xl.text-muted.me-2.pe-1
+            div + 1 526 220 0459
+        h3.h6.pb-2 Europe - Berlin, Germany
+        ul.list-unstyled.fs-sm
+          li.d-flex.align-items-top.mb-3
+            i.ai-map-pin.fs-xl.text-muted.mt-1.me-2.pe-1
+            div Mohrenstrasse 37 10117,<br>Berlin, Germany<br>
+          li.d-flex.align-items-center.mb-3
+            i.ai-mail.fs-xl.text-muted.me-2.pe-1
+            div berlin@example.com
+          li.d-flex.align-items-center.mb-3
+            i.ai-phone.fs-xl.text-muted.me-2.pe-1
+            div 030 778 345 26
+            
+
+  // Map
+  section#map.gallery
+    a(href='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91476818218!2d-74.11976253858133!3d40.69740344296443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sua!4v1568574342685!5m2!1sen!2sua' data-iframe='true' data-sub-html='<h6 class="fs-sm text-light">396 Lillian Blvd, Holbrook, NY 11741</h6>' style='background-image: url(img/pages/contacts/map01.jpg);').gallery-item.map-popup.bg-position-center.bg-no-repeat.py-7.text-center
+      span.gallery-caption
+        i.ai-maximize-2.fs-xl.mt-n1.me-2
+        | Expand the map
+      .d-inline-block.py-4.py-md-6
+        img(src='img/pages/contacts/marker.png' alt='Map marker' width='48')
+
+
+//- Footer
+block footer
+  include partials/footer-default

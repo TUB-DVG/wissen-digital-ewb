@@ -1,0 +1,706 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Around utilities'
+  - var pageSubtitle = 'Custom Around classes with a purpose to reduce the frequency of highly repetitive declarations.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Faded background colors', 'link': '#bg-faded'}, {'title': 'Gradient background', 'link': '#bg-gradient'}, {'title': 'Background shapes', 'link': '#bg-shapes'}, {'title': 'Translucent image overlay', 'link': '#image-overlay'}, {'title': 'Opacity', 'link': '#opacity'}, {'title': 'Image swap on hover', 'link': '#image-swap'}, {'title': 'Fancy link', 'link': '#fancy-link'}, {'title': 'Text shadow', 'link': '#text-shadow'}]
+  
+//- Page Content
+block content
+
+  // Faded background colors
+  section#bg-faded.pb-5.mb-md-2
+    h2.h4.mb-3 Faded background colors
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .bg-faded-primary.p-4.text-center.mb-4
+              h5.text-primary.mb-0.py-2 Primary faded background
+            .bg-secondary.p-4.text-center.mb-4
+              h5.mb-0.py-2 Secondary background
+            .bg-faded-info.p-4.text-center.mb-4
+              h5.text-info.mb-0.py-2 Info faded background
+            .bg-faded-success.p-4.text-center.mb-4
+              h5.text-success.mb-0.py-2 Success faded background
+            .bg-faded-warning.p-4.text-center.mb-4
+              h5.text-warning.mb-0.py-2 Warning faded background
+            .bg-faded-danger.p-4.text-center.mb-4
+              h5.text-danger.mb-0.py-2 Danger faded background
+            .bg-faded-dark.p-4.text-center
+              h5.text-dark.mb-0.py-2 Dark faded background
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary faded background --&gt;
+                &lt;div class=&quot;bg-faded-primary&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Secondary background --&gt;
+                &lt;div class=&quot;bg-secondary&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Info faded background --&gt;
+                &lt;div class=&quot;bg-faded-info&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Success faded background --&gt;
+                &lt;div class=&quot;bg-faded-success&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Warning faded background --&gt;
+                &lt;div class=&quot;bg-faded-warning&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Danger faded background --&gt;
+                &lt;div class=&quot;bg-faded-danger&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Dark faded background --&gt;
+                &lt;div class=&quot;bg-faded-dark&quot;&gt;...&lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary faded background
+                .bg-faded-primary
+                  | ...
+                
+                // Secondary background
+                .bg-secondary
+                  | ...
+                
+                // Info faded background
+                .bg-faded-info
+                  | ...
+                
+                // Success faded background
+                .bg-faded-success
+                  | ...
+                
+                // Warning faded background
+                .bg-faded-warning
+                  | ...
+                
+                // Danger faded background
+                .bg-faded-danger
+                  | ...
+                
+                // Dark faded background
+                .bg-faded-dark
+                  | ...
+
+  // Gradient background
+  section#bg-gradient.pb-5.mb-md-2
+    h2.h4.mb-3 Gradient background
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .bg-gradient.p-4.text-center
+              h5.text-light.mb-0.py-2 Gradient background
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Gradient background --&gt;
+                &lt;div class=&quot;bg-gradient&quot;&gt;...&lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Gradient background
+                .bg-gradient
+                  | ...
+
+  // Background shapes
+  section#bg-shapes.pb-5.mb-md-2
+    h2.h4.mb-3 Background shapes
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .bg-dark.position-relative.py-7.mt-3.mb-5
+              .shape.shape-bottom.shape-slant.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+                  polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+              h5.text-light.text-center.pb-4 Slant bottom right
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-bottom.shape-slant.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+                  polygon(fill='currentColor' points='0,0 0,260 3000,260 3000,255')
+              h5.text-light.text-center.pb-4 Slant bottom left
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-top.shape-slant.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+                  polygon(fill='currentColor' points='0,0 0,2.4 3000,260 3000,0')
+              h5.text-light.text-center.mt-2.mb-0.pt-4 Slant top right
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-top.shape-slant.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+                  polygon(fill='currentColor' points='0,0 0,260 3000,2.9 3000,0')
+              h5.text-light.text-center.mt-2.mb-0.pt-4 Slant top left
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-bottom.shape-curve.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+                  path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+              h5.text-light.text-center.pt-3.pb-2 Curve bottom center
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-top.shape-curve.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+                  path(fill='currentColor' d='M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z')
+              h5.text-light.text-center.pt-4.pb-1 Curve top center
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-bottom.shape-curve-side.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+                  path(fill='currentColor' d='M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z')
+              h5.text-light.text-center.pt-3.pb-2 Curve bottom right
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-bottom.shape-curve-side.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+                  path(fill='currentColor' d='M0,0l0,250h3000v-51c-572.7,34.3-1125.3,34.3-1657.8,0C809.7,164.8,362.3,98.4,0,0z')
+              h5.text-light.text-center.pt-3.pb-2 Curve bottom left
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-top.shape-curve-side.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+                  path(fill='currentColor' d='M3000,250V0H0v51c572.7-34.3,1125.3-34.3,1657.8,0C2190.3,85.2,2637.7,151.6,3000,250z')
+              h5.text-light.text-center.pt-4.pb-1 Curve top right
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-top.shape-curve-side.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+                  path(fill='currentColor' d='M0,250L0,0l3000,0v51c-572.7-34.3-1125.3-34.3-1657.8,0C809.7,85.2,362.3,151.6,0,250z')
+              h5.text-light.text-center.pt-4.pb-1 Curve top left
+            
+            .bg-dark.position-relative.py-7.mb-5
+              .shape.shape-right.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 228.4 2500')
+                  path(fill='currentColor' d='M228.4,0v2500H0c134.9-413.7,202.4-830.4,202.4-1250S134.9,413.7,0,0H228.4z')
+              .position-relative.zindex-2.py-4
+                h5.text-light.text-center.mb-0 Curve right
+            
+            .bg-dark.position-relative.py-7
+              .shape.shape-left.bg-body
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 228.4 2500')
+                  path(fill='currentColor' d='M0,0l0,2500h228.4C93.5,2086.3,26.1,1669.6,26.1,1250S93.5,413.7,228.4,0L0,0z')
+              .position-relative.zindex-2.py-4
+                h5.text-light.text-center.mb-0 Curve left
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Slant bottom right --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-bottom shape-slant bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 260&quot;&gt;
+                      &lt;polygon fill=&quot;currentColor&quot; points=&quot;0,257 0,260 3000,260 3000,0&quot;&gt;&lt;/polygon&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Slant bottom left --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-bottom shape-slant bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 260&quot;&gt;
+                      &lt;polygon fill=&quot;currentColor&quot; points=&quot;0,0 0,260 3000,260 3000,255&quot;&gt;&lt;/polygon&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Slant top right --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-top shape-slant bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 260&quot;&gt;
+                      &lt;polygon fill=&quot;currentColor&quot; points=&quot;0,0 0,2.4 3000,260 3000,0&quot;&gt;&lt;/polygon&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Slant top left --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-top shape-slant bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 260&quot;&gt;
+                      &lt;polygon fill=&quot;currentColor&quot; points=&quot;0,0 0,260 3000,2.9 3000,0&quot;&gt;&lt;/polygon&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve bottom center --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-bottom shape-curve bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 185.4&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve top center --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-top shape-curve bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 185.4&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve bottom right --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-bottom shape-curve-side bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 250&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve bottom left --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-bottom shape-curve-side bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 250&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M0,0l0,250h3000v-51c-572.7,34.3-1125.3,34.3-1657.8,0C809.7,164.8,362.3,98.4,0,0z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve top right --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-top shape-curve-side bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 250&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M3000,250V0H0v51c572.7-34.3,1125.3-34.3,1657.8,0C2190.3,85.2,2637.7,151.6,3000,250z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve top left --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;!-- Content goes here --&gt;
+                  &lt;div class=&quot;shape shape-top shape-curve-side bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 3000 250&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M0,250L0,0l3000,0v51c-572.7-34.3-1125.3-34.3-1657.8,0C809.7,85.2,362.3,151.6,0,250z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve right --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;div class=&quot;position-relative zindex-2&quot;&gt;
+                    &lt;!-- Content goes here --&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;shape shape-right bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 228.4 2500&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M228.4,0v2500H0c134.9-413.7,202.4-830.4,202.4-1250S134.9,413.7,0,0H228.4z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Curve left --&gt;
+                &lt;div class=&quot;bg-dark position-relative py-7&quot;&gt;
+                  &lt;div class=&quot;position-relative zindex-2&quot;&gt;
+                    &lt;!-- Content goes here --&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;shape shape-left bg-body&quot;&gt;
+                    &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 228.4 2500&quot;&gt;
+                      &lt;path fill=&quot;currentColor&quot; d=&quot;M0,0l0,2500h228.4C93.5,2086.3,26.1,1669.6,26.1,1250S93.5,413.7,228.4,0L0,0z&quot;&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Slant bottom right
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-bottom.shape-slant.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 260&quot;)
+                      polygon(fill=&quot;currentColor&quot;, points=&quot;0,257 0,260 3000,260 3000,0&quot;)
+               
+                // Slant bottom left
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-bottom.shape-slant.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 260&quot;)
+                      polygon(fill=&quot;currentColor&quot;, points=&quot;0,0 0,260 3000,260 3000,255&quot;)
+
+                // Slant top right
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-top.shape-slant.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 260&quot;)
+                      polygon(fill=&quot;currentColor&quot;, points=&quot;0,0 0,2.4 3000,260 3000,0&quot;)
+                
+                // Slant top left
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-top.shape-slant.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 260&quot;)
+                      polygon(fill=&quot;currentColor&quot;, points=&quot;0,0 0,260 3000,2.9 3000,0&quot;)
+                
+                // Curve bottom center
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-bottom.shape-curve.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 185.4&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z&quot;)
+                
+                // Curve top center
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-top.shape-curve.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 185.4&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z&quot;)
+
+                // Curve bottom right
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-bottom.shape-curve-side.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 250&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z&quot;)
+
+                // Curve bottom left
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-bottom.shape-curve-side.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 250&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M0,0l0,250h3000v-51c-572.7,34.3-1125.3,34.3-1657.8,0C809.7,164.8,362.3,98.4,0,0z&quot;)
+                
+                // Curve top right
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-top.shape-curve-side.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 250&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M3000,250V0H0v51c572.7-34.3,1125.3-34.3,1657.8,0C2190.3,85.2,2637.7,151.6,3000,250z&quot;)
+                
+                // Curve top left
+                .bg-dark.position-relative.py-7
+                  //- Content goes here
+                  .shape.shape-top.shape-curve-side.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 3000 250&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M0,250L0,0l3000,0v51c-572.7-34.3-1125.3-34.3-1657.8,0C809.7,85.2,362.3,151.6,0,250z&quot;)
+                
+                // Curve right
+                .bg-dark.position-relative.py-7
+                  .position-relative.zindex-2
+                    //- Content goes here
+                  .shape.shape-right.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 228.4 2500&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M228.4,0v2500H0c134.9-413.7,202.4-830.4,202.4-1250S134.9,413.7,0,0H228.4z&quot;)
+                
+                // Curve left
+                .bg-dark.position-relative.py-7
+                  .position-relative.zindex-2
+                    //- Content goes here
+                  .shape.shape-left.bg-body
+                    svg(xmlns=&quot;http://www.w3.org/2000/svg&quot;, viewBox=&quot;0 0 228.4 2500&quot;)
+                      path(fill=&quot;currentColor&quot;, d=&quot;M0,0l0,2500h228.4C93.5,2086.3,26.1,1669.6,26.1,1250S93.5,413.7,228.4,0L0,0z&quot;)
+
+  // Translucent image overlay
+  section#image-overlay.pb-5.mb-md-2
+    h2.h4.mb-3 Translucent image overlay
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .row.g-3
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-black.opacity-50
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Black overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-primary.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Primary overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-success.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Success overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-warning.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Warning overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-danger.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Danger overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-info.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Info overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/demo/mobile-app/hero-bg.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-white.opacity-70
+                  .position-relative.fw-medium.text-center.zindex-2.py-5 White overlay
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Black overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Black overlay&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Primary overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Primary overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Success overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-success opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Success overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Warning overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Warning overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Danger overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Danger overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Info overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-info opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-2 py-5&quot;&gt;Info overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- White overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-white opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-center zindex-2 py-5&quot;&gt;White overlay&lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Black overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-black.opacity-50
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Black overlay
+
+                // Primary overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-primary.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Primary overlay
+                
+                // Success overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-success.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Success overlay
+
+                // Warning overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-warning.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Warning overlay
+                
+                // Danger overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-danger.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Danger overlay
+                
+                // Info overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-info.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-2.py-5 Info overlay
+
+                // White overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-white.opacity-70
+                  .position-relative.fw-medium.text-center.zindex-2.py-5 White overlay
+
+  // Opacity
+  section#opacity.pb-5.mb-md-2
+    h2.h4.mb-3 Opacity
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.pt-2
+              span.text-dark.opacity-25.mb-3.me-4 Opacity 25%
+              span.text-dark.opacity-50.mb-3.me-4 Opacity 50%
+              span.text-dark.opacity-60.mb-3.me-4 Opacity 60%
+              span.text-dark.opacity-70.mb-3.me-4 Opacity 70%
+              span.text-dark.opacity-75.mb-3.me-4 Opacity 75%
+              span.text-dark.opacity-80.mb-3.me-4 Opacity 80%
+              span.text-dark.opacity-90.mb-3.me-4 Opacity 90%
+              span.text-dark.opacity-100.mb-3 Opacity 100%
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Opacity --&gt;
+                &lt;div class=&quot;opacity-25&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-50&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-60&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-70&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-75&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-80&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-90&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-100&quot;&gt;&lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Opacity
+                .opacity-25
+                .opacity-50
+                .opacity-60
+                .opacity-70
+                .opacity-75
+                .opacity-80
+                .opacity-90
+                .opacity-100
+
+  // Image swap on hover
+  section#image-swap.pb-5.mb-md-2
+    h2.h4.mb-3 Image swap on hover
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex.align-items-center.pt-4
+              a(href='#').swap-image.mb-grid-gutter.me-sm-4
+                img(src='../img/demo/event-landing/partners/01_color.png' alt='Logo' width='176').swap-to
+                img(src='../img/demo/event-landing/partners/01_gray.png' alt='Logo' width='176').swap-from
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='../img/demo/event-landing/partners/02_color.png' alt='Logo' width='176').swap-to
+                img(src='../img/demo/event-landing/partners/02_gray.png' alt='Logo' width='176').swap-from
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Image swap on hover --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;swap-image&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;swap-to&quot; width=&quot;176&quot; alt=&quot;Alt text&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;swap-from&quot; width=&quot;176&quot; alt=&quot;Alt text&quot;&gt;
+                &lt;/a&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Image swap on hover
+                a(href=&quot;#&quot;).swap-image
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Alt text&quot;, width=&quot;176&quot;).swap-to
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Alt text&quot;, width=&quot;176&quot;).swap-from
+
+  // Fancy link
+  section#fancy-link.pb-5.mb-md-2
+    h2.h4.mb-3 Fancy link
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            .py-3
+              a(href='#').fancy-link.me-4.mb-4 I'm a fancy link
+              .d-inline-block.bg-dark.p-4
+                a(href='#').fancy-link.text-light Light fancy link
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Default fancy link --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;fancy-link&quot;&gt;I'm a fancy link&lt;/a&gt;
+
+                &lt;!-- Light fancy link --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;fancy-link text-light&quot;&gt;Light fancy link&lt;/a&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                //  Default fancy link
+                a(href=&quot;#&quot;).fancy-link
+                  | I'm a fancy link
+
+                //  Light fancy link
+                a(href=&quot;#&quot;).fancy-link.text-light
+                  | Light fancy link
+
+  // Text shadow
+  section#text-shadow.pb-5.mb-md-2
+    h2.h5.mb-3 Text shadow
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result8' data-bs-toggle='tab' role='tab' aria-controls='result8' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html8' data-bs-toggle='tab' role='tab' aria-controls='html8' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug8' data-bs-toggle='tab' role='tab' aria-controls='pug8' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result8.tab-pane.fade.show.active(role='tabpanel')
+            h2.text-white.text-shadow Text shadow
+          #html8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Text shadow --&gt;
+                &lt;h2 class=&quot;text-white text-shadow&quot;&gt;Text shadow&lt;/h2&gt;
+          #pug8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Text shadow
+                h2.text-white.text-shadow Text shadow

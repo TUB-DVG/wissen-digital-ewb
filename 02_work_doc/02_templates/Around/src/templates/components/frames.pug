@@ -1,0 +1,210 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'tiny-slider/dist/min/tiny-slider.js']
+  - var pageTitle = 'Frames'
+  - var pageSubtitle = "Devices' shapes that outline any type of content but most commonly images."
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Phone', 'link': '#frame-phone'}, {'title': 'Browser', 'link': '#frame-browser'}, {'title': 'Carousel example', 'link': '#frame-carousel'}]
+  
+//- Page Content
+block content
+
+  // Phone
+  section#frame-phone.pb-5.mb-md-2
+    h2.h4.mb-3 Phone
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .frame-phone
+              .frame-phone-status-bar.text-light
+                span.text-nowrap 9:41 AM
+                span.text-nowrap.text-end
+                  i.ai-wifi.me-2
+                  i.ai-battery-charging
+              .frame-phone-body
+                img(src='../img/demo/mobile-app/device/01.jpg' alt='App screen')
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Phone frame --&gt;
+                &lt;div class=&quot;frame-phone&quot;&gt;
+                  &lt;div class=&quot;frame-phone-status-bar text-light&quot;&gt;
+                    &lt;span class=&quot;text-nowrap&quot;&gt;9:41 AM&lt;/span&gt;
+                    &lt;span class=&quot;text-nowrap text-end&quot;&gt;
+                      &lt;i class=&quot;ai-wifi me-2&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;ai-battery-charging&quot;&gt;&lt;/i&gt;
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;frame-phone-body&quot;&gt;
+                    &lt;img src=&quot;path-to-app-screenshot&quot; alt=&quot;App screen&quot; /&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Phone frame
+                .frame-phone
+                  .frame-phone-status-bar.text-light
+                    span.text-nowrap 9:41 AM
+                    span.text-nowrap.text-end
+                      i.ai-wifi.me-2
+                      i.ai-battery-charging
+                  .frame-phone-body
+                    img(src=&quot;path-to-app-screenshot&quot;, alt=&quot;App screen&quot;)
+
+  // Browser
+  section#frame-browser.pb-5.mb-md-2
+    h2.h4.mb-3 Browser
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .frame-browser(style='max-width: 915px;')
+              .frame-browser-toolbar
+                .text-nowrap.me-3
+                  span.frame-browser-button.bg-danger
+                  span.frame-browser-button.bg-warning
+                  span.frame-browser-button.bg-success
+                span.fs-sm https://example.com
+              .frame-browser-body
+                img(src='../img/demo/web-studio/slider/02.jpg' alt='Screenshot')
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Browser frame --&gt;
+                &lt;div class=&quot;frame-browser&quot;&gt;
+                  &lt;div class=&quot;frame-browser-toolbar&quot;&gt;
+                    &lt;div class=&quot;text-nowrap me-3&quot;&gt;
+                      &lt;span class=&quot;frame-browser-button bg-danger&quot;&gt;&lt;/span&gt;
+                      &lt;span class=&quot;frame-browser-button bg-warning&quot;&gt;&lt;/span&gt;
+                      &lt;span class=&quot;frame-browser-button bg-success&quot;&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;span class=&quot;fs-sm&quot;&gt;https://example.com&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;frame-browser-body&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Screenshot&quot;/&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Browser frame
+                .frame-browser
+                  .frame-browser-toolbar
+                    .text-nowrap.me-3
+                      span.frame-browser-button.bg-danger
+                      span.frame-browser-button.bg-warning
+                      span.frame-browser-button.bg-success
+                    span.fs-sm https://example.com
+                  .frame-browser-body
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Screenshot&quot;)
+
+  // Carousel example
+  section#frame-carousel.pb-5.mb-md-2
+    h2.h4.mb-3 Carousel example
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .frame-browser.tns-carousel-wrapper(style='max-width: 915px;')
+              .frame-browser-toolbar
+                .text-nowrap.me-3
+                  span.frame-browser-button.bg-danger
+                  span.frame-browser-button.bg-warning
+                  span.frame-browser-button.bg-success
+                span.tns-carousel-label.fs-sm https://mobileapp.com
+              .frame-browser-body
+                .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "controls": false, "nav": false}')
+                  div(data-carousel-label='https://mobileapp.com')
+                    img(src='../img/demo/web-studio/slider/01.jpg' alt='Screenshot').rounded
+                  div(data-carousel-label='https://bookingapp.com')
+                    img(src='../img/demo/web-studio/slider/02.jpg' alt='Screenshot').rounded
+                  div(data-carousel-label='https://creativeagency.com')
+                    img(src='../img/demo/web-studio/slider/03.jpg' alt='Screenshot').rounded
+              .tns-carousel-pager.pt-4.text-nowrap.text-center.mt-2.mb-n2
+                button(data-nav data-goto='1').active
+                button(data-nav data-goto='2')
+                button(data-nav data-goto='3')
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Carousel inside browser frame --&gt;
+                &lt;div class=&quot;frame-browser tns-carousel-wrapper&quot;&gt;
+                  &lt;div class=&quot;frame-browser-toolbar&quot;&gt;
+                    &lt;div class=&quot;text-nowrap me-3&quot;&gt;
+                      &lt;span class=&quot;frame-browser-button bg-danger&quot;&gt;&lt;/span&gt;
+                      &lt;span class=&quot;frame-browser-button bg-warning&quot;&gt;&lt;/span&gt;
+                      &lt;span class=&quot;frame-browser-button bg-success&quot;&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;span class=&quot;tns-carousel-label fs-sm&quot;&gt;https://mobileapp.com&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;frame-browser-body&quot;&gt;
+                    &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;mode&quot;: &quot;gallery&quot;, &quot;controls&quot;: false, &quot;nav&quot;: false}'&gt;
+                      &lt;div data-carousel-label=&quot;https://mobileapp.com&quot;&gt;
+                        &lt;img src=&quot;path-to-first-image&quot; class=&quot;rounded&quot; alt=&quot;Screenshot&quot;/&gt;
+                      &lt;/div&gt;
+                      &lt;div data-carousel-label=&quot;https://bookingapp.com&quot;&gt;
+                        &lt;img src=&quot;path-to-second-image&quot; class=&quot;rounded&quot; alt=&quot;Screenshot&quot;/&gt;
+                      &lt;/div&gt;
+                      &lt;div data-carousel-label=&quot;https://creativeagency.com&quot;&gt;
+                        &lt;img src=&quot;path-to-third-image&quot; class=&quot;rounded&quot; alt=&quot;Screenshot&quot;/&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;tns-carousel-pager pt-4 text-nowrap text-center mt-2 mb-n2&quot;&gt;
+                    &lt;button class=&quot;active&quot; data-nav data-goto=&quot;1&quot;&gt;&lt;/button&gt;
+                    &lt;button data-nav data-goto=&quot;2&quot;&gt;&lt;/button&gt;
+                    &lt;button data-nav data-goto=&quot;3&quot;&gt;&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Carousel inside browser frame
+                .frame-browser.tns-carousel-wrapper
+                  .frame-browser-toolbar
+                    .text-nowrap.me-3
+                      span.frame-browser-button.bg-danger
+                      span.frame-browser-button.bg-warning
+                      span.frame-browser-button.bg-success
+                    span.tns-carousel-label.fs-sm https://mobileapp.com
+                  .frame-browser-body
+                    .tns-carousel-inner(data-carousel-options=&quot;{"mode": "gallery", "controls": false, "nav": false}&quot;)
+                      div(data-carousel-label=&quot;https://mobileapp.com&quot;)
+                        img(src=&quot;path-to-first-image&quot;, alt=&quot;Screenshot&quot;).rounded
+                      div(data-carousel-label=&quot;https://bookingapp.com&quot;)
+                        img(src=&quot;path-to-second-image&quot;, alt=&quot;Screenshot&quot;).rounded
+                      div(data-carousel-label=&quot;https://creativeagency.com&quot;)
+                        img(src=&quot;path-to-third-image&quot;, alt=&quot;Screenshot&quot;).rounded
+                  .tns-carousel-pager.pt-4.text-nowrap.text-center.mt-2.mb-n2
+                    button(data-nav data-goto=&quot;1&quot;).active
+                    button(data-nav data-goto=&quot;2&quot;)
+                    button(data-nav data-goto=&quot;3&quot;)

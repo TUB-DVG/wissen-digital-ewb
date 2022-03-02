@@ -1,0 +1,424 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Dashboard - Orders'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title + Filters
+            .d-sm-flex.align-items-center.justify-content-between.pb-2
+              h1.h3.mb-3.text-center.text-sm-start Orders history
+              .d-flex.align-items-center.mb-3
+                label.form-label.text-nowrap.pe-1.me-2.mb-0 Sort orders
+                select.form-select.form-select-sm
+                  option All
+                  option In progress
+                  option Delivered
+                  option Canceled
+            
+            // Accordion with orders
+            #orders-accordion.accordion
+
+              // Order
+              .accordion-item
+                h2#order-header-1.accordion-header
+                  button(data-bs-toggle='collapse' data-bs-target='#order-collapse-1' aria-expanded='true' aria-controls='order-collapse-1').accordion-button.no-indicator.d-flex.flex-wrap.align-items-center.justify-content-between.pe-4
+                    .fs-sm.fw-medium.text-nowrap.my-1.me-2
+                      i.ai-hash.fs-base.me-1
+                      span.d-inline-block.align-middle 34VB5540K83
+                    .text-nowrap.text-body.fs-sm.fw-normal.my-1.me-2
+                      i.ai-clock.text-muted.me-1
+                      | Aug 04, 2020
+                    .bg-faded-info.text-info.fs-xs.fw-medium.py-1.px-3.rounded-1.my-1.me-2 In progress
+                    .text-body.fs-sm.fw-medium.my-1 $187.65
+                #order-collapse-1.accordion-collapse.collapse.show(aria-labelledby='order-header-1' data-bs-parent='#orders-accordion')
+                  .accordion-body.pt-4.bg-secondary.rounded-top-0.rounded-3
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/01.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Mom High Waist Shorts
+                          div
+                            span.text-muted.me-1 Size:
+                            | XS
+                          div
+                            span.text-muted.me-1 Color:
+                            | Blue
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $49.50
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/02.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Cotton T-shirt with Print
+                          div
+                            span.text-muted.me-1 Size:
+                            | XS
+                          div
+                            span.text-muted.me-1 Color:
+                            | Black / Printed
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $17.99
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/03.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Floral Printed Sneakers
+                          div
+                            span.text-muted.me-1 Size:
+                            | 8.5
+                          div
+                            span.text-muted.me-1 Color:
+                            | Floral print
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $86.00
+                    .d-flex.flex-wrap.align-items-center.justify-content-between.pt-3.border-top
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Subtotal:
+                        span.fw-medium $153.49
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Shipping:
+                        span.fw-medium $27.31
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Tax:
+                        span.fw-medium $6.85
+                      .fs-sm.my-2
+                        span.text-muted.me-1 Total:
+                        span.fw-medium $187.65
+
+              // Order
+              .accordion-item
+                h2#order-header-2.accordion-header
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#order-collapse-2' aria-expanded='false' aria-controls='order-collapse-2').accordion-button.collapsed.accordion-button.no-indicator.d-flex.flex-wrap.align-items-center.justify-content-between.pe-4
+                    .fs-sm.fw-medium.text-nowrap.my-1.me-2
+                      i.ai-hash.fs-base.me-1
+                      span.d-inline-block.align-middle 47H76G09F33
+                    .text-nowrap.text-body.fs-sm.fw-normal.my-1.me-2
+                      i.ai-clock.text-muted.me-1
+                      | Jul 30, 2020
+                    .bg-faded-info.text-info.fs-xs.fw-medium.py-1.px-3.rounded-1.my-1.me-2 In progress
+                    .text-body.fs-sm.fw-medium.my-1 $789.34
+                #order-collapse-2.accordion-collapse.collapse(aria-labelledby='order-header-2' data-bs-parent='#orders-accordion')
+                  .accordion-body.pt-4.bg-secondary.rounded-top-0.rounded-3
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/04.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Smart Watch Series 5
+                          div
+                            span.text-muted.me-1 Screen:
+                            | 42"
+                          div
+                            span.text-muted.me-1 Band color:
+                            | White
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $49.50
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/05.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Sport Running Sneakers
+                          div
+                            span.text-muted.me-1 Size:
+                            | 10.5
+                          div
+                            span.text-muted.me-1 Color:
+                            | White / Orange
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $145.00
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/06.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Wireless Bluetooth Headset
+                          div
+                            span.text-muted.me-1 Brand:
+                            | Beats
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $258.00
+                    .d-flex.flex-wrap.align-items-center.justify-content-between.pt-3.border-top
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Subtotal:
+                        span.fw-medium $776.99
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Shipping:
+                        span.fw-medium $12.35
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Tax:
+                        span.fw-medium &mdash;
+                      .fs-sm.my-2
+                        span.text-muted.me-1 Total:
+                        span.fw-medium $789.34
+
+              // Order
+              .accordion-item
+                h2#order-header-3.accordion-header
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#order-collapse-3' aria-expanded='false' aria-controls='order-collapse-3').accordion-button.collapsed.accordion-button.no-indicator.d-flex.flex-wrap.align-items-center.justify-content-between.pe-4
+                    .fs-sm.fw-medium.text-nowrap.my-1.me-2
+                      i.ai-hash.fs-base.me-1
+                      span.d-inline-block.align-middle 78A6431D409
+                    .text-nowrap.text-body.fs-sm.fw-normal.my-1.me-2
+                      i.ai-clock.text-muted.me-1
+                      | Jul 16, 2020
+                    .bg-faded-danger.text-danger.fs-xs.fw-medium.py-1.px-3.rounded-1.my-1.me-2 Canceled
+                    .text-body.fs-sm.fw-medium.my-1 $215.40
+                #order-collapse-3.accordion-collapse.collapse(aria-labelledby='order-header-3' data-bs-parent='#orders-accordion')
+                  .accordion-body.pt-4.bg-secondary.rounded-top-0.rounded-3
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/07.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') 360 Degrees Camera
+                          div
+                            span.text-muted.me-1 Category:
+                            | Electronics
+                          div
+                            span.text-muted.me-1 Color:
+                            | White
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $110.00
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/08.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Vintage Travel Backpack
+                          div
+                            span.text-muted.me-1 Color:
+                            | Green / Brown
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $81.45
+                    .d-flex.flex-wrap.align-items-center.justify-content-between.pt-3.border-top
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Subtotal:
+                        span.fw-medium $191.45
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Shipping:
+                        span.fw-medium $15.20
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Tax:
+                        span.fw-medium $8.75
+                      .fs-sm.my-2
+                        span.text-muted.me-1 Total:
+                        span.fw-medium $215.40
+
+              // Order
+              .accordion-item
+                h2#order-header-4.accordion-header
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#order-collapse-4' aria-expanded='false' aria-controls='order-collapse-4').accordion-button.collapsed.accordion-button.no-indicator.d-flex.flex-wrap.align-items-center.justify-content-between.pe-4
+                    .fs-sm.fw-medium.text-nowrap.my-1.me-2
+                      i.ai-hash.fs-base.me-1
+                      span.d-inline-block.align-middle 112P45A90V2
+                    .text-nowrap.text-body.fs-sm.fw-normal.my-1.me-2
+                      i.ai-clock.text-muted.me-1
+                      | May 28, 2020
+                    .bg-faded-success.text-success.fs-xs.fw-medium.py-1.px-3.rounded-1.my-1.me-2 Delivered
+                    .text-body.fs-sm.fw-medium.my-1 $94.75
+                #order-collapse-4.accordion-collapse.collapse(aria-labelledby='order-header-4' data-bs-parent='#orders-accordion')
+                  .accordion-body.pt-4.bg-secondary.rounded-top-0.rounded-3
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/09.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Sport Running Sneakers
+                          div
+                            span.text-muted.me-1 Size:
+                            | 11
+                          div
+                            span.text-muted.me-1 Color:
+                            | Gray
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $82.00
+                    .d-flex.flex-wrap.align-items-center.justify-content-between.pt-3.border-top
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Subtotal:
+                        span.fw-medium $82.00
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Shipping:
+                        span.fw-medium $9.00
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Tax:
+                        span.fw-medium $3.75
+                      .fs-sm.my-2
+                        span.text-muted.me-1 Total:
+                        span.fw-medium $94.75
+
+              // Order
+              .accordion-item
+                h2#order-header-5.accordion-header
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#order-collapse-5' aria-expanded='false' aria-controls='order-collapse-5').accordion-button.collapsed.accordion-button.no-indicator.d-flex.flex-wrap.align-items-center.justify-content-between.pe-4
+                    .fs-sm.fw-medium.text-nowrap.my-1.me-2
+                      i.ai-hash.fs-base.me-1
+                      span.d-inline-block.align-middle 502TR872W2
+                    .text-nowrap.text-body.fs-sm.fw-normal.my-1.me-2
+                      i.ai-clock.text-muted.me-1
+                      | Apr 05, 2020
+                    .bg-faded-success.text-success.fs-xs.fw-medium.py-1.px-3.rounded-1.my-1.me-2 Delivered
+                    .text-body.fs-sm.fw-medium.my-1 $128.00
+                #order-collapse-5.accordion-collapse.collapse(aria-labelledby='order-header-5' data-bs-parent='#orders-accordion')
+                  .accordion-body.pt-4.bg-secondary.rounded-top-0.rounded-3
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/10.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Military Cotton Cap
+                          div
+                            span.text-muted.me-1 Category:
+                            | Accessories
+                          div
+                            span.text-muted.me-1 Color:
+                            | Military
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $16.00
+
+                    // Item
+                    .d-sm-flex.justify-content-between.mb-3.pb-1
+                      .order-item.d-block.d-sm-flex.me-sm-3
+                        a(href='#').d-table.mx-sm-0.mx-auto.flex-shrink-0
+                          img(src='img/dashboard/orders/11.jpg' alt='Thumbnail' width='105').d-block.rounded
+                        .fs-sm.pt-2.ps-sm-3.text-center.text-sm-start
+                          h5.nav-heading.fs-sm.mb-2
+                            a(href='#') Women Colorblock Sneakers
+                          div
+                            span.text-muted.me-1 Size:
+                            | 8.5
+                      .fs-sm.text-center.pt-2.me-sm-3
+                        .text-muted Quantity:
+                        .fw-medium 1
+                      .fs-sm.text-center.pt-2
+                        .text-muted Subtotal:
+                        .fw-medium $102.00
+                    .d-flex.flex-wrap.align-items-center.justify-content-between.pt-3.border-top
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Subtotal:
+                        span.fw-medium $118.00
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Shipping:
+                        span.fw-medium $7.50
+                      .fs-sm.my-2.me-2
+                        span.text-muted.me-1 Tax:
+                        span.fw-medium $2.50
+                      .fs-sm.my-2
+                        span.text-muted.me-1 Total:
+                        span.fw-medium $128.00
+            
+            // Pagination
+            nav.d-md-flex.justify-content-between.align-items-center.text-center.text-md-start.pt-grid-gutter
+              .d-md-flex.align-items-center.w-100
+                span.fs-sm.text-muted.me-md-3 Showing 5 of 13 orders
+                .progress.w-100.my-3.mx-auto.mx-md-0(style='max-width: 10rem; height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 38%;' aria-valuenow='38' aria-valuemin='0' aria-valuemax='100')
+              button(type='button').btn.btn-outline-primary.btn-sm Load more orders
+
+
+//- Footer
+block footer
+  include partials/footer-simple

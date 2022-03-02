@@ -1,0 +1,77 @@
+// 
+// Dark mode switch
+// Theme Component
+
+.modeswitch-wrap {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  .modeswitch-item {
+    width: 42px;
+    height: 12px;
+    background: $gray-600;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    margin: 0 16px;
+    transition: all 1s;
+    .modeswitch-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(-14%);
+      height: 26px;
+      width: 26px;
+      background: #d8831b;
+      border: 2px solid $white;
+      border-radius: 50%;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+      font-size: 14px;
+      color: $white;
+      transition: all 1s;
+
+      &:before {
+        content: "\f185";
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        border: none;
+        height: 26px;
+        width: 26px;
+        line-height: 26px;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+}
+
+html[data-theme='dark'] .modeswitch-item {
+  .modeswitch-icon {
+    transform: translateX(18px) rotate(1turn);
+    background: $dark;
+    &:before {
+      content: "\f186";
+    }
+  }
+  background: $gray-400;
+}
+
+.navbar-dark{
+  .modeswitch-item{
+    background: $gray-500;
+  }
+}
+
+// Dark mode item hide and show
+.dark-mode-item{
+  display: none !important;
+}
+
+html[data-theme='dark']{
+  .dark-mode-item{
+    display: block !important;
+  }
+  .light-mode-item{
+    display: none !important;
+  }
+}

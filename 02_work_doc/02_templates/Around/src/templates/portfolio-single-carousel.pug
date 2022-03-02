@@ -1,0 +1,137 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = [ 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Project Carousel'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-dark
+
+//- Page Content
+block content
+
+  // Project title
+  section.container.pt-7
+    h1.h2.pt-4.pt-md-5.mt-2 Toothbrush Product Design (3D)
+    .d-sm-flex.align-items-center.pt-3.fs-sm
+      .d-flex.align-items-center.mb-3
+        .text-nowrap.text-muted.me-3
+          i.ai-calendar.me-1
+          span Aug 28, 2020
+        .text-nowrap.text-muted
+          i.ai-tag.me-1
+          span 3D Modelling
+
+  .container
+
+    // Project gallery (carousel)
+    section.pt-4.mt-lg-2.pb-lg-4
+      .tns-carousel-wrapper.tns-controls-inside.tns-controls-onhover.mb-4.mb-lg-0
+        .tns-carousel-inner(data-carousel-options='{"items": 1, "controls": true, "nav": true, "gutter": 30}')
+          div
+            img(src='img/portfolio/single/slider/01.jpg' alt='Project image').d-block.w-100.rounded-3
+          div
+            img(src='img/portfolio/single/slider/02.jpg' alt='Project image').d-block.w-100.rounded-3
+          div
+            img(src='img/portfolio/single/slider/03.jpg' alt='Project image').d-block.w-100.rounded-3
+          div
+            img(src='img/portfolio/single/slider/04.jpg' alt='Project image').d-block.w-100.rounded-3
+          div
+            img(src='img/portfolio/single/slider/05.jpg' alt='Project image').d-block.w-100.rounded-3
+    
+    
+    // Project description
+    section.py-5
+      .row.pb-md-2
+        .col-md-5
+          h3.h5 Client
+          ul.list-unstyled.fs-md.mb-4.pb-2
+            li.mb-2
+              | Name:
+              span.fw-medium.text-nav.ms-2 International Company Ltd.
+            li.mb-2
+              | Services:
+              span.fw-medium.text-nav.ms-2 3D Modelling, Product Design
+            li
+              | Website:
+              a(href='#').nav-link-style.ms-2 https://example.com
+          h3.h5 Objective
+          p.fs-sm.mb-4.pb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+          h3.h5 Tools &amp; Technologies
+          p.fs-sm.mb-4.pb-2 Cinema 4D, Adobe Photoshop
+          h3.h5 Share
+          a(href='#').btn-social.bs-outline.bs-facebook.me-2.my-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-outline.bs-twitter.me-2.my-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-outline.bs-google.me-2.my-2
+            i.ai-google
+          a(href='#').btn-social.bs-outline.bs-pinterest.my-2
+            i.ai-pinterest
+        .col-md-7.pt-4.pt-md-0.mb-lg-4.pb-lg-2
+          h3.h5 Challenge
+          p.fs-sm Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur non numquam eius modi tempora incidunt.
+          p.fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+          p.fs-sm.mb-0 Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+  
+  
+  // Related projects (Carousel)
+  section.border-top.py-5.py-lg-6
+    .container.py-3.py-md-0
+      h2.h3.text-center.mb-5 Related projects
+      .tns-carousel-wrapper
+        .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "nav": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16}, "780":{"items":3, "gutter": 16}, "1000":{"items":4, "gutter": 23}}}')
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/10.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Promo Flyer Design
+                  p.fs-sm.text-muted.mb-1 in Stationery
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/15.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Cosmetics Packaging
+                  p.fs-sm.text-muted.mb-1 in Package Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/16.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Hand Cream Bottle
+                  p.fs-sm.text-muted.mb-1 in Package Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/17.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Package Branding
+                  p.fs-sm.text-muted.mb-1 in Identity Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/18.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Company Branding
+                  p.fs-sm.text-muted.mb-1 in Identity Design
+
+
+//- Footer
+block footer
+  include partials/footer-default

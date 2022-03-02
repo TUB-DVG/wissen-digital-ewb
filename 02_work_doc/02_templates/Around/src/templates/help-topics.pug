@@ -1,0 +1,134 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['jarallax/dist/jarallax.min.js']
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Help Topics'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero
+  section.jarallax.bg-gradient.py-7(data-jarallax data-speed='0.25')
+    span.position-absolute.top-0.start-0.w-100.h-100.bg-gradient(style='opacity: .85;')
+    .jarallax-img(style='background-image: url(img/pages/help-center/hero-bg.jpg);')
+    .container.position-relative.zindex-5
+      .row.justify-content-center.py-md-5
+        .col-lg-6.col-md-8.text-center
+          h1.text-light How can we help?
+          p.fs-lg.text-light.pb-3 Ask questions. Browse topics. Find answers
+          form.input-group.mb-3
+            i.ai-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Ask your question...').form-control.rounded
+          .fs-sm.text-start
+            span.text-light.opacity-70.me-3 Suggestions:
+            a(href='#').fancy-link.text-light.me-3 Dashboard
+            a(href='#').fancy-link.text-light.me-3 Payment
+            a(href='#').fancy-link.text-light.me-3 Refunds
+            a(href='#').fancy-link.text-light Delivery
+  
+
+  // Topics grid
+  section.container.mt-4.pt-5.mt-md-0.pt-md-7.pb-5
+    h2.mb-5.text-center Select a topic
+    .row
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-user-check.h2.text-primary.mt-2.mb-4
+            h3.h5 Managing account
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-settings.h2.text-primary.mt-2.mb-4
+            h3.h5 Managing account
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-credit-card.h2.text-primary.mt-2.mb-4
+            h3.h5 Payment options
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-truck.h2.text-primary.mt-2.mb-4
+            h3.h5 Delivery information
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-refresh-cw.h2.text-primary.mt-2.mb-4
+            h3.h5 Refund policy
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        a(href='help-single-topic.html').card.h-100.border-0.shadow.card-hover
+          .card-body.ps-grid-gutter.pe-grid-gutter.text-center
+            i.ai-share-2.h2.text-primary.mt-2.mb-4
+            h3.h5 Affiliate program
+            p.fs-sm.text-body Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan, totam rem aperiam, eaque ipsa quae.
+            .btn.btn-translucent-primary.btn-sm.mb-2 Learn more
+  
+
+  // FAQ
+  section.container.pt-md-4.mb-2.pb-5.pb-md-6.mb-md-0
+    h2.mb-5.text-center F.A.Q
+    .row
+      .col-sm-6
+        ul.list-unstyled
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style How long will delivery take?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style What payment methods do you accept?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style Do you ship internationally?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style Do I need an account to place an order?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style How can I track my order?
+      .col-sm-6
+        ul.list-unstyled
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style What are the product refund conditions?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style Do you have discounts for returning customers?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style How do your referral program work?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style Where I can view and download invoices for my orders?
+          li.d-flex.align-items-center.border-bottom.pb-3.mb-3
+            i.ai-book.text-muted.me-2
+            a(href='#').nav-link-style Do you provide technical support after the purchase?
+  
+
+  // Submit request
+  section.bg-secondary.py-6
+    .container.text-center
+      h2.h3.pb-2.mb-4 Haven't found the answer? We can help.
+      i.ai-life-buoy.d-block.h2.pb-2.mb-4.text-primary
+      a(href='help-submit-request.html').btn.btn-primary.mb-4 Submit a request
+      p.fs-sm.mb-0 Contact us and we’ll get back to you as soon as possible.
+
+//- Footer
+block footer
+  include partials/footer-default

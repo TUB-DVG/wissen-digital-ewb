@@ -1,0 +1,35 @@
+// Pagination
+.d-md-flex.justify-content-between.align-items-center.pt-3.pb-2
+  .d-flex.justify-content-center.align-items-center.mb-4
+    label.pe-1.me-2 Show
+    select.form-select.me-2(style='width: 5rem;')
+      option(value='10') 10
+      option(value='20') 20
+      option(value='30') 30
+      option(value='40') 40
+      option(value='50') 50
+    .fs-sm.text-nowrap.ps-1.mb-1 posts per page
+  nav(aria-label='Page navigation').mb-4
+    ul.pagination.justify-content-center
+      li.page-item
+        a(href='#' aria-label='Previous').page-link
+          i.ai-chevron-left
+      li.page-item.d-sm-none
+        span.page-link.page-link-static 2 / 10
+      li.page-item.d-none.d-sm-block
+        a(href='#').page-link 1
+      li.page-item.active.d-none.d-sm-block(aria-current='page')
+        span.page-link
+          | 2
+          span.visually-hidden (current)
+      li.page-item.d-none.d-sm-block
+        a(href='#').page-link 3
+      li.page-item.d-none.d-sm-block
+        a(href='#').page-link 4
+      li.page-item.d-none.d-sm-block
+        | ...
+      li.page-item.d-none.d-sm-block
+        a(href='#').page-link 10
+      li.page-item
+        a(href='#' aria-label='Next').page-link
+          i.ai-chevron-right

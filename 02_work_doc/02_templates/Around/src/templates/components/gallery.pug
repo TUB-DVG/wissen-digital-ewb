@@ -1,0 +1,420 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var pageTitle = 'Gallery'
+  - var pageSubtitle = 'JavaScript based lightbox component for presenting various types of media.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Media: Image', 'link': '#gallery-image'}, {'title': 'Media: Video', 'link': '#gallery-video'}, {'title': 'Media: Iframe (Google map)', 'link': '#gallery-iframe'}, {'title': 'Grid with gutters', 'link': '#gallery-grid-gutters'}, {'title': 'Grid no gutters', 'link': '#gallery-grid-nogutters'}, {'title': 'Inside card', 'link': '#gallery-card'}, {'title': 'Inside carousel', 'link': '#gallery-carousel'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.mb-5(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      div.text-break
+        p.fs-md Gallery component relies on 3rd party plugin. Make sure to link to <strong>Light Gallery css and js</strong> files in your document: <strong>vendor/lightgallery.js/dist/css/lightgallery.min.css</strong> and <strong>lightgallery.js/dist/js/lightgallery.min.js</strong>. If you need extra features like zooming, fullscreen view or video you need to include additional plugins: 
+        ul.fw-bold
+          li vendor/lg-fullscreen.js/dist/lg-fullscreen.min.js
+          li vendor/lg-zoom.js/dist/lg-zoom.min.js
+          li vendor/lg-video.js/dist/lg-video.min.js
+        p.mb-0 Use this page as a reference.
+
+  // Media: Image
+  section#gallery-image.pb-5.mb-md-2
+    h2.h4.mb-3 Media: Image
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .gallery(style='max-width: 420px;')
+              a(href='../img/components/gallery/01.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption</h6>').gallery-item.rounded-3
+                img(src='../img/components/gallery/th01.jpg' alt='Gallery thumbnail')
+                span.gallery-caption Gallery image caption
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Image gallery --&gt;
+                &lt;div class=&quot;gallery&quot;&gt;
+                  &lt;a href=&quot;path-to-large-image&quot; class=&quot;gallery-item rounded-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;'&gt;
+                    &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                    &lt;span class=&quot;gallery-caption&quot;&gt;Gallery image caption&lt;/span&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Image gallery
+                .gallery
+                  a(href=&quot;path-to-large-image&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;').gallery-item.rounded-3
+                    img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                    span.gallery-caption Gallery image caption
+
+  // Media: Video
+  section#gallery-video.pb-5.mb-md-2
+    h2.h4.mb-3 Media: Video
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .gallery(style='max-width: 420px;')
+              a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery video caption</h6>').gallery-item.gallery-video.rounded-3
+                img(src='../img/components/gallery/th02.jpg' alt='Gallery thumbnail')
+                span.gallery-caption Gallery video caption
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Video gallery --&gt;
+                &lt;div class=&quot;gallery&quot;&gt;
+                  &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;gallery-item gallery-video rounded-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery video caption&lt;/h6&gt;'&gt;
+                    &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                    &lt;span class=&quot;gallery-caption&quot;&gt;Gallery video caption&lt;/span&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Video gallery
+                .gallery
+                  a(href=&quot;link-to-youtube/vimeo-video&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery video caption&lt;/h6&gt;').gallery-item.video-item.rounded-3
+                    img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                    span.gallery-caption Gallery video caption
+
+  // Media: Iframe (Google map)
+  section#gallery-iframe.pb-5.mb-md-2
+    h2.h4.mb-3 Media: Iframe (Google map)
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .gallery(style='max-width: 420px;')
+              a(href='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91476818218!2d-74.11976253858133!3d40.69740344296443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sua!4v1568574342685!5m2!1sen!2sua' data-iframe='true' data-sub-html='<h6 class="fs-sm text-light">Google map embed</h6>').gallery-item.rounded-3
+                img(src='../img/components/gallery/th07.jpg' alt='Map preview')
+                span.gallery-caption Google map embed
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Iframe (Google map) --&gt;
+                &lt;div class=&quot;gallery&quot;&gt;
+                  &lt;a href=&quot;link-to-google-map-embed&quot; class=&quot;gallery-item rounded-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Google map embed&lt;/h6&gt;'&gt;
+                    &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                    &lt;span class=&quot;gallery-caption&quot;&gt;Google map embed&lt;/span&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Iframe (Google map)
+                .gallery
+                  a(href=&quot;link-to-google-map-embed&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Google map embed&lt;/h6&gt;').gallery-item.rounded-3
+                    img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                    span.gallery-caption Google map embed
+
+  // Grid with gutters
+  section#gallery-grid-gutters.pb-5.mb-md-2
+    h2.h4.mb-3 Grid with gutters
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .row.gallery
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='../img/components/gallery/03.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #1</h6>').gallery-item.rounded-3
+                  img(src='../img/components/gallery/th03.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #1
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='../img/components/gallery/04.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #2</h6>').gallery-item.rounded-3
+                  img(src='../img/components/gallery/th04.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #2
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #3</h6>').gallery-item.gallery-video.rounded-3
+                  img(src='../img/components/gallery/th02.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #3
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='../img/components/gallery/05.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #4</h6>').gallery-item.rounded-3
+                  img(src='../img/components/gallery/th05.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #4
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #5</h6>').gallery-item.gallery-video.rounded-3
+                  img(src='../img/components/gallery/th01.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #5
+              .col-xl-4.col-sm-6.mb-grid-gutter
+                a(href='../img/components/gallery/06.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #6</h6>').gallery-item.rounded-3
+                  img(src='../img/components/gallery/th06.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #6
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Gallery grid with gutters --&gt;
+                &lt;div class=&quot;row gallery&quot;&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;col-xl-4 col-sm-6 mb-grid-gutter&quot;&gt;
+                    &lt;a href=&quot;path-to-large-image&quot; class=&quot;gallery-item rounded-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;'&gt;
+                      &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                      &lt;span class=&quot;gallery-caption&quot;&gt;Gallery image caption&lt;/span&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;col-xl-4 col-sm-6 mb-grid-gutter&quot;&gt;
+                    ....
+                  &lt;/div&gt;
+
+                  &lt;!-- Add as many columns with gallery item inside as you need --&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Gallery grid with gutters
+                .row.gallery
+
+                  //- Item
+                  .col-xl-4.col-sm-6.mb-grid-gutter
+                    a(href=&quot;path-to-large-image&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;').gallery-item.rounded-3
+                      img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                      span.gallery-caption Gallery image caption
+                  
+                  //- Item
+                  .col-xl-4.col-sm-6.mb-grid-gutter
+                    ...
+
+                  //- Add as many columns with gallery item inside as you need
+
+  // Grid no gutters
+  section#gallery-grid-nogutters.pb-5.mb-md-2
+    h2.h4.mb-3 Grid no gutters
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .row.gallery.g-0
+              .col-xl-4.col-sm-6
+                a(href='../img/components/gallery/03.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #1</h6>').gallery-item
+                  img(src='../img/components/gallery/th03.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #1
+              .col-xl-4.col-sm-6
+                a(href='../img/components/gallery/04.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #2</h6>').gallery-item
+                  img(src='../img/components/gallery/th04.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #2
+              .col-xl-4.col-sm-6
+                a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #3</h6>').gallery-item.gallery-video
+                  img(src='../img/components/gallery/th02.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #3
+              .col-xl-4.col-sm-6
+                a(href='../img/components/gallery/05.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #4</h6>').gallery-item
+                  img(src='../img/components/gallery/th05.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #4
+              .col-xl-4.col-sm-6
+                a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #5</h6>').gallery-item.gallery-video
+                  img(src='../img/components/gallery/th01.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #5
+              .col-xl-4.col-sm-6
+                a(href='../img/components/gallery/06.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #6</h6>').gallery-item
+                  img(src='../img/components/gallery/th06.jpg' alt='Gallery thumbnail')
+                  span.gallery-caption Gallery image caption #6
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Gallery grid no gutters --&gt;
+                &lt;div class=&quot;row gallery g-0&quot;&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;col-xl-4 col-sm-6&quot;&gt;
+                    &lt;a href=&quot;path-to-large-image&quot; class=&quot;gallery-item&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;'&gt;
+                      &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                      &lt;span class=&quot;gallery-caption&quot;&gt;Gallery image caption&lt;/span&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;col-xl-4 col-sm-6&quot;&gt;
+                    ....
+                  &lt;/div&gt;
+                  
+                  &lt;!-- Add as many columns with gallery item inside as you need --&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Gallery grid no gutters
+                .row.gallery.g-0
+
+                  //- Item
+                  .col-xl-4.col-sm-6
+                    a(href=&quot;path-to-large-image&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;').gallery-item
+                      img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                      span.gallery-caption Gallery image caption
+                  
+                  //- Item
+                  .col-xl-4.col-sm-6
+                    ...
+
+                  //- Add as many columns with gallery item inside as you need
+
+  // Inside card
+  section#gallery-card.pb-5.mb-md-2
+    h2.h4.mb-3 Inside card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .card.gallery(style='max-width: 25rem;')
+              a(href='../img/components/gallery/01.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption</h6>').gallery-item.card-img-top
+                img(src='../img/components/gallery/th01.jpg' alt='Gallery thumbnail')
+              .card-body
+                h5.card-title Card with gallery thumbnail
+                p.card-text.fs-sm Some quick example text to build on the card title and make up the bulk of the card's content.
+                a(href='#').btn.btn-sm.btn-primary Go somewhere
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Gallery inside card --&gt;
+                &lt;div class=&quot;card gallery&quot;&gt;
+                  &lt;a href=&quot;path-to-large-image&quot; class=&quot;gallery-item card-img-top&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;'&gt;
+                    &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h5 class=&quot;card-title&quot;&gt;Card with gallery thumbnail&lt;/h5&gt;
+                    &lt;p class=&quot;card-text fs-sm&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card's content.&lt;/p&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;btn btn-sm btn-primary&quot;&gt;Go somewhere&lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Gallery inside card
+                .card.gallery
+                  a(href=&quot;path-to-large-image&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;').gallery-item.rounded-3
+                    img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                  .card-body
+                    h5.card-title
+                      | Card with gallery thumbnail
+                    p.card-text.fs-sm
+                      | Some quick example text to build on the card title and make up the bulk of the card's content.
+                    a.btn.btn-sm.btn-primary(href=&quot;#&quot;) Go somewhere
+
+  // Inside carousel
+  section#gallery-carousel.pb-5.mb-md-2
+    h2.h4.mb-3 Inside carousel
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper.tns-controls-center.gallery
+              .tns-carousel-inner(data-carousel-options='{"nav": false, "responsive": {"0":{"items":1},"576":{"items":2, "gutter": 20},"1200":{"items":3, "gutter": 30}}}')
+                div
+                  a(href='../img/components/gallery/03.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #1</h6>').gallery-item.rounded-3
+                    img(src='../img/components/gallery/th03.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #1
+                div
+                  a(href='../img/components/gallery/04.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #2</h6>').gallery-item.rounded-3
+                    img(src='../img/components/gallery/th04.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #2
+                div
+                  a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #3</h6>').gallery-item.gallery-video.rounded-3
+                    img(src='../img/components/gallery/th02.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #3
+                div
+                  a(href='../img/components/gallery/05.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #4</h6>').gallery-item.rounded-3
+                    img(src='../img/components/gallery/th05.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #4
+                div
+                  a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #5</h6>').gallery-item.gallery-video.rounded-3
+                    img(src='../img/components/gallery/th01.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #5
+                div
+                  a(href='../img/components/gallery/06.jpg' data-sub-html='<h6 class="fs-sm text-light">Gallery image caption #6</h6>').gallery-item.rounded-3
+                    img(src='../img/components/gallery/th06.jpg' alt='Gallery thumbnail')
+                    span.gallery-caption Gallery image caption #6
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Gallery inside carousel  --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper tns-controls-center gallery&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;1200&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}'&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div&gt;
+                      &lt;a href=&quot;path-to-large-image&quot; class=&quot;gallery-item&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;'&gt;
+                        &lt;img src=&quot;path-to-thumbnail-image&quot; alt=&quot;Gallery thumbnail&quot;&gt;
+                        &lt;span class=&quot;gallery-caption&quot;&gt;Gallery image caption&lt;/span&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+
+                     &lt;!-- Add as many gallery items wrapped in divs as you need --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Gallery inside carousel
+                .tns-carousel-wrapper.tns-controls-center.gallery
+                  .tns-carousel-inner(data-carousel-options='{&quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;1200&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}')
+
+                    //- Item
+                    div
+                      a(href=&quot;path-to-large-image&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Gallery image caption&lt;/h6&gt;').gallery-item.rounded-3
+                        img(src=&quot;path-to-thumbnail-image&quot;, alt=&quot;Gallery thumbnail&quot;)
+                        span.gallery-caption Gallery image caption
+                    
+                    //- Add as many gallery items wrapped in divs as you need

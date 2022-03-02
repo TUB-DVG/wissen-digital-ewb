@@ -1,0 +1,622 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Contacts card'
+  - var pageSubtitle = 'Contacts details like address, phone, email inside card. Can be mixed with image or map.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Basic example', 'link': '#contacts-card-basic'}, {'title': 'Alternative layout', 'link': '#contacts-card-alt-layout'}, {'title': 'With image', 'link': '#contacts-card-image'}, {'title': 'With map', 'link': '#contacts-card-map'}]
+  
+//- Page Content
+block content
+
+  // Basic example
+  section#contacts-card-basic.pb-5.mb-md-2
+    h2.h4.mb-3 Basic example
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.flex-sm-nowrap.pt-2
+              .card.me-sm-4.mb-4(style='max-width: 20rem;')
+                .card-body
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+184725276533').d-block.nav-link-style.fs-sm +1 (847) 252 765 33
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:email@example.com').d-block.nav-link-style.fs-sm email@example.com
+              .card.border-0.shadow.mb-4(style='max-width: 20rem;')
+                .card-body
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+184725276533').d-block.nav-link-style.fs-sm +1 (847) 252 765 33
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:email@example.com').d-block.nav-link-style.fs-sm email@example.com
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Contacts card: Border --&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+184725276533&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;mailto:email@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;email@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Contacts card: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+184725276533&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;mailto:email@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;email@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Contacts card: Border
+                .card
+                  .card-body
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 769, Industrial Dr, West Chicago, IL 60185, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+184725276533&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (847) 252 765 33
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:email@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | email@example.com
+
+                // Contacts card: Shadow
+                .card.border-0.shadow
+                  .card-body
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 769, Industrial Dr, West Chicago, IL 60185, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+184725276533&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (847) 252 765 33
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:email@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | email@example.com
+
+  // Alternative layout
+  section#contacts-card-alt-layout.pb-5.mb-md-2
+    h2.h4.mb-3 Alternative layout
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .col-xl-11.pt-2
+              .row
+                .col-sm-6
+                  .card.mb-4
+                    .card-body.text-center
+                      i.ai-map-pin.h2.mt-2.mb-4.text-primary
+                      h3.h6.mb-2 Main store address
+                      p.fs-sm 396 Lillian Blvd, Holbrook, NY 11741, USA
+                      a(href='#').fancy-link.fs-sm
+                        | See on the map
+                .col-sm-6
+                  .card.border-0.shadow.mb-4
+                    .card-body.text-center
+                      i.ai-phone.h2.mt-2.mb-4.text-primary
+                      h3.h6.mb-3 Phone numbers
+                      ul.list-unstyled.fs-sm.mb-0
+                        li
+                          span.me-1 Customer service:
+                          a(href='tel:+108044357260').nav-link-style +1 (080) 44 357 260
+                        li
+                          span.me-1 Tech support:
+                          a(href='tel:+100331697720').nav-link-style +1 00 33 169 7720
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Contacts card: Border --&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                  &lt;div class=&quot;card-body text-center&quot;&gt;
+                    &lt;i class=&quot;ai-map-pin h2 mt-2 mb-4 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;h3 class=&quot;h6 mb-2&quot;&gt;Main store address&lt;/h3&gt;
+                    &lt;p class=&quot;fs-sm&quot;&gt;396 Lillian Blvd, Holbrook, NY 11741, USA&lt;/p&gt;
+                    &lt;a class=&quot;fancy-link fs-sm&quot; href=&quot;#&quot;&gt;
+                      See on the map
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Contacts card: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-body text-center&quot;&gt;
+                    &lt;i class=&quot;ai-phone h2 mt-2 mb-4 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;h3 class=&quot;h6 mb-3&quot;&gt;Phone numbers&lt;/h3&gt;
+                    &lt;ul class=&quot;list-unstyled fs-sm mb-0&quot;&gt;
+                      &lt;li&gt;
+                        &lt;span class=&quot;me-1&quot;&gt;Customer service:&lt;/span&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:+108044357260&quot;&gt;+1 (080) 44 357 260&lt;/a&gt;
+                      &lt;/li&gt;
+                      &lt;li&gt;
+                        &lt;span class=&quot;me-1&quot;&gt;Tech support:&lt;/span&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:+100331697720&quot;&gt;+1 00 33 169 7720&lt;/a&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Contacts card: Border
+                .card
+                  .card-body.text-center
+                    i.ai-map-pin.h2.mt-2.mb-4.text-primary
+                    h3.h6.mb-2 Main store address
+                    p.fs-sm 396 Lillian Blvd, Holbrook, NY 11741, USA
+                    a(href=&quot;#&quot;).fancy-link.fs-sm
+                      | See on the map
+
+                // Contacts card: Shadow
+                .card.border-0.shadow
+                  .card-body.text-center
+                    i.ai-phone.h2.mt-2.mb-4.text-primary
+                    h3.h6.mb-3 Phone numbers
+                    ul.list-unstyled.fs-sm.mb-0
+                      li
+                        span.me-1 Customer service:
+                        a.nav-link-style(href=&quot;tel:+108044357260&quot;) +1 (080) 44 357 260
+                      li
+                        span.me-1 Tech support:
+                        a.nav-link-style(href=&quot;tel:+100331697720&quot;) +1 00 33 169 7720
+
+  // With image
+  section#contacts-card-image.pb-5.mb-md-2
+    h2.h4.mb-3 With image
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.flex-sm-nowrap.pt-2
+              .card.me-sm-4.mb-4(style='max-width: 21rem;')
+                img(src='../img/pages/contacts/chicago.jpg' alt='Chicago').card-img-top
+                .card-body
+                  h5 Chicago, USA
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+184725276533').d-block.nav-link-style.fs-sm +1 (847) 252 765 33
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:chicago@example.com').d-block.nav-link-style.fs-sm chicago@example.com
+              .card.border-0.shadow.mb-4(style='max-width: 21rem;')
+                img(src='../img/pages/contacts/newyork.jpg' alt='New York').card-img-top
+                .card-body
+                  h5 New York, USA
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 396 Lillian Blvd, Holbrook, NY 11741, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+1212477690000').d-block.nav-link-style.fs-sm +1 (212) 477 690 000
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:newyork@example.com').d-block.nav-link-style.fs-sm newyork@example.com
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Contacts card: Border --&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;card-img-top&quot; alt=&quot;Chicago&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h5&gt;Chicago, USA&lt;/h5&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+184725276533&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2m&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;mailto:chicago@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;chicago@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Contacts card: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;card-img-top&quot; alt=&quot;Chicago&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h5&gt;New York, USA&lt;/h5&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+1212477690000&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (212) 477 690 000&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2m&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;newyork:email@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;newyork@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Contacts card: Border
+                .card
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Chicago&quot;).card-img-top
+                  .card-body
+                    h5 Chicago, USA
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 769, Industrial Dr, West Chicago, IL 60185, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+184725276533&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (847) 252 765 33
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:chicago@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | chicago@example.com
+
+                // Contacts card: Shadow
+                .card.border-0.shadow
+                  img(src=&quot;path-to-image&quot;, alt=&quot;New York&quot;).card-img-top
+                  .card-body
+                    h5 New York, USA
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 396 Lillian Blvd, Holbrook, NY 11741, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+1212477690000&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (212) 477 690 000
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:newyork@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | newyork@example.com
+
+  // With map
+  section#contacts-card-map.pb-5.mb-md-2
+    h2.h4.mb-3 With map
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.flex-sm-nowrap.pt-2
+              .card.me-sm-4.mb-4(style='max-width: 21rem;')
+                .card-img-top.overflow-hidden
+                  iframe(width='600' height='200' src='https://maps.google.com/maps?q=769%2C%20Industrial%20Dr%2C%20West%20Chicago%2C%20IL%2060185%2C%20USA&t=&z=7&ie=UTF8&iwloc=&output=embed')
+                .card-body
+                  h6 Chicago, USA
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+184725276533').d-block.nav-link-style.fs-sm +1 (847) 252 765 33
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:chicago@example.com').d-block.nav-link-style.fs-sm chicago@example.com
+              .card.border-0.shadow.mb-4(style='max-width: 21rem;')
+                .card-img-top.overflow-hidden
+                  iframe(width='600' height='200' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d985265.6834686119!2d-73.53312098675273!3d41.40372595831977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e8483b8bffed93%3A0x53467ceb834b7397!2s396%20Lillian%20Blvd%2C%20Holbrook%2C%20NY%2011741%2C%20USA!5e0!3m2!1sen!2sua!4v1569318858921!5m2!1sen!2sua')
+                .card-body
+                  h6 New York, USA
+                  ul.list-unstyled.mb-0
+                    li.d-flex.pb-3.border-bottom
+                      i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a(href='#').d-block.nav-link-style.fs-sm 396 Lillian Blvd, Holbrook, NY 11741, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a(href='tel:+1212477690000').d-block.nav-link-style.fs-sm +1 (212) 477 690 000
+                    li.d-flex.pt-2
+                      i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a(href='mailto:newyork@example.com').d-block.nav-link-style.fs-sm newyork@example.com
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Contacts card: Border --&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                  &lt;div class=&quot;card-img-top overflow-hidden&quot;&gt;
+                    &lt;!-- Google map embed iframe goes here --&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h5&gt;Chicago, USA&lt;/h5&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+184725276533&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2m&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;mailto:chicago@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;chicago@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Contacts card: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-img-top overflow-hidden&quot;&gt;
+                    &lt;!-- Google map embed iframe goes here --&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h5&gt;New York, USA&lt;/h5&gt;
+                    &lt;ul class=&quot;list-unstyled mb-0&quot;&gt;
+                      &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                          &lt;a href=&quot;#&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                        &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                          &lt;a href=&quot;tel:+1212477690000&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;+1 (212) 477 690 000&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex pt-2m&quot;&gt;
+                        &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                          &lt;a href=&quot;newyork:email@example.com&quot; class=&quot;d-block nav-link-style fs-sm&quot;&gt;newyork@example.com&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Contacts card: Border
+                .card
+                  .card-img-top.overflow-hidden
+                    // Google map embed iframe goes here
+                  .card-body
+                    h5 Chicago, USA
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 769, Industrial Dr, West Chicago, IL 60185, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+184725276533&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (847) 252 765 33
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:chicago@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | chicago@example.com
+
+                // Contacts card: Shadow
+                .card.border-0.shadow
+                  .card-img-top.overflow-hidden
+                    // Google map embed iframe goes here
+                  .card-body
+                    h5 New York, USA
+                    ul.list-unstyled.mb-0
+                      li.d-flex.pb-3.border-bottom
+                        i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Find us
+                          a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                            | 396 Lillian Blvd, Holbrook, NY 11741, USA
+                      li.d-flex.pt-2.pb-3.border-bottom
+                        i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Call us
+                          a(href=&quot;tel:+1212477690000&quot;).d-block.nav-link-style.fs-sm
+                            | +1 (212) 477 690 000
+                      li.d-flex.pt-2
+                        i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                        .ps-3
+                          span.fs-ms.text-muted Write us
+                          a(href=&quot;mailto:newyork@example.com&quot;).d-block.nav-link-style.fs-sm
+                            | newyork@example.com

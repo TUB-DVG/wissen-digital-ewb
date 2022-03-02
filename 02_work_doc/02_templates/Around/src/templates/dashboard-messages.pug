@@ -1,0 +1,253 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Dashboard - Messages'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title + Compose button
+            .d-sm-flex.align-items-center.justify-content-between.pb-2.text-center.text-sm-start
+              h1.h3.mb-3.text-nowrap
+                | Your messages
+                span.d-inline-block.align-middle.bg-faded-success.text-success.fs-ms.fw-medium.rounded-1.py-1.px-2.ms-2 1
+              .mb-3
+                a(href='#message-compose' data-bs-toggle='collapse').btn.btn-translucent-primary
+                  i.ai-plus.me-2
+                  | Compose
+            
+            // Message compose form
+            #message-compose.collapse
+              form(novalidate).needs-validation.shadow.rounded.mb-4
+                .d-flex.align-items-center.justify-content-between.bg-dark.rounded-top.py-3.px-4
+                  h3.fs-base.text-light.mb-0 New message
+                  a(href='#message-compose' data-bs-toggle='collapse').btn-close.btn-close-white
+                .p-4
+                  .mb-3.pb-1
+                    input(type='text' placeholder='To' required).form-control
+                    .invalid-feedback Please provide recipient(s) of your message!
+                  .mb-3.pb-1
+                    input(type='text' placeholder='Subject').form-control.bg-image-0
+                  .mb-3.pb-1
+                    textarea(rows='5' required).form-control
+                    .invalid-feedback Please write your message!
+                  button(type='submit').btn.btn-primary
+                    i.ai-send.fs-lg.me-2
+                    | Send
+            
+            // Toolbar
+            .d-flex.align-items-center.justify-content-between.bg-secondary.py-2.px-3
+              .py-1
+                .form-check
+                  input(type='checkbox' id='select-all' data-master-checkbox-for='#message-list').form-check-input
+                  label(for='select-all').form-check-label Select all
+              .py-1
+                .btn-group.dropdown
+                  button(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false').dropdown-toggle.btn.btn-light.btn-sm
+                    | Actions
+                  .dropdown-menu.dropdown-menu-end.my-1
+                    a(href='#').dropdown-item
+                      i.ai-eye-off.me-2.align-middle.mt-n1
+                      | Mark unread
+                    a(href='#').dropdown-item
+                      i.ai-corner-up-left.me-2.align-middle.mt-n1
+                      | Reply
+                    a(href='#').dropdown-item
+                      i.ai-corner-up-right.me-2.align-middle.mt-n1
+                      | Forward
+                    .dropdown-divider
+                    a(href='#').dropdown-item.text-danger
+                      i.ai-trash-2.me-2.align-middle.mt-n1
+                      | Delete
+            
+            // Message list (table)
+            table.table.table-hover.border-bottom
+              tbody#message-list
+                // Message
+                tr#item-message-1
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-1' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-1').form-check-input
+                      label(for='message-1').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/01.jpg' alt='Edward Johnson' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate.fw-semibold(style='max-width: 10rem;') Edward Johnson
+                            span.nav-indicator
+                          .ms-sm-auto.text-muted.fs-xs Aug 13,2020
+                        .pt-1.text-heading
+                          | At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium...
+                // Message
+                tr#item-message-2
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-2' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-2').form-check-input
+                      label(for='message-2').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/02.jpg' alt='Emilia Young' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Emilia Young
+                          .ms-sm-auto.text-muted.fs-xs Aug 05,2020
+                        .pt-1.text-body
+                          | Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque...
+                // Message
+                tr#item-message-3
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-3' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-3').form-check-input
+                      label(for='message-3').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/03.jpg' alt='The Art Studio Inc.' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') The Art Studio Inc.
+                          .ms-sm-auto.text-muted.fs-xs Jul 18,2020
+                        .pt-1.text-body
+                          | Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae...
+                // Message
+                tr#item-message-4.bg-faded-primary
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-4' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-4' checked).form-check-input
+                      label(for='message-4').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/04.jpg' alt='Felicity Coleman' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Felicity Coleman
+                          .ms-sm-auto.text-muted.fs-xs Jul 10,2020
+                        .pt-1.text-body
+                          | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit...
+                // Message
+                tr#item-message-5
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-5' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-5').form-check-input
+                      label(for='message-5').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/05.jpg' alt='Mike Rogers' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Mike Rogers
+                          .ms-sm-auto.text-muted.fs-xs Jun 30,2020
+                        .pt-1.text-body
+                          | Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus...
+                // Message
+                tr#item-message-6
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-6' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-6').form-check-input
+                      label(for='message-6').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/06.jpg' alt='Jeffrey Henderson' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Jeffrey Henderson
+                          .ms-sm-auto.text-muted.fs-xs Jun 26,2020
+                        .pt-1.text-body
+                          | Et harum quidem rerum facilis est et expedita distinctio deleniti atque corrupti quos...
+                // Message
+                tr#item-message-7
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-7' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-7').form-check-input
+                      label(for='message-7').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/07.jpg' alt='Maria Sanchez' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Maria Sanchez
+                          .ms-sm-auto.text-muted.fs-xs Jun 14,2020
+                        .pt-1.text-body
+                          | Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus...
+                // Message
+                tr#item-message-8
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-8' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-8').form-check-input
+                      label(for='message-8').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/08.jpg' alt='Best Ever Company Ltd.' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Best Ever Company Ltd.
+                          .ms-sm-auto.text-muted.fs-xs Jun 08,2020
+                        .pt-1.text-body
+                          | Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit aliquid...
+                // Message
+                tr#item-message-9
+                  td(style='width: 2.5rem;').py-3.align-middle.ps-2.pe-0
+                    .form-check.ms-2.me-0
+                      input(type='checkbox' id='message-9' data-checkbox-toggle-class='bg-faded-primary' data-bs-target='#item-message-9').form-check-input
+                      label(for='message-9').form-check-label
+                  td.py-3.align-middle
+                    a(href='#').d-block.d-sm-flex.align-items-center.text-decoration-none
+                      img(src='img/dashboard/messages/09.jpg' alt='Daniel Adams' width='42').rounded-circle.mb-2.mb-sm-0
+                      .fs-sm.ps-sm-3
+                        .d-sm-flex.text-heading.align-items-center
+                          .d-flex.align-items-center
+                            .text-truncate(style='max-width: 10rem;') Daniel Adams
+                          .ms-sm-auto.text-muted.fs-xs May 23,2020
+                        .pt-1.text-body
+                          | Reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores...
+            
+            // Pagination
+            nav.d-md-flex.justify-content-between.align-items-center.text-center.text-md-start.pt-3
+              .d-md-flex.align-items-center.w-100
+                span.fs-sm.text-muted.me-md-3 Showing 9 of 84 messages
+                .progress.w-100.my-3.mx-auto.mx-md-0(style='max-width: 10rem; height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 12%;' aria-valuenow='12' aria-valuemin='0' aria-valuemax='100')
+              button(type='button').btn.btn-outline-primary.btn-sm Load older messages
+
+
+
+//- Footer
+block footer
+  include partials/footer-simple

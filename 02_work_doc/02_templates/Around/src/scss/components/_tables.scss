@@ -1,0 +1,22 @@
+//
+// Tables
+// --------------------------------------------------
+
+
+.table-dark td {
+  color: $table-dark-color;
+}
+
+.table-secondary,
+.table-secondary > th,
+.table-secondary > td {
+  background-color: $secondary;
+}
+
+.table>:not(:last-child)>:last-child>* {
+  border-bottom-color: darken($table-border-color, 15%);
+}
+
+.table.table-dark>:not(:last-child)>:last-child>* {
+  border-bottom-color: rgba($white, .5);
+}

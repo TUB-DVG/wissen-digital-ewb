@@ -1,0 +1,1228 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'nouislider/dist/nouislider.min.css', 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'nouislider/dist/nouislider.min.js', 'tiny-slider/dist/min/tiny-slider.js']
+  - var pageTitle = 'Widgets'
+  - var pageSubtitle = 'Collection of tiny components to use inside sidebar area.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Links', 'link': '#widget-links'}, {'title': 'Categories', 'link': '#widget-categories'}, {'title': 'Range slider', 'link': '#widget-range-slider'}, {'title': 'Featured entries: List', 'link': '#widget-featured-list'}, {'title': 'Featured entries: Carousel', 'link': '#widget-featured-carousel'}, {'title': 'Shopping cart', 'link': '#widget-cart'}, {'title': 'Tag cloud', 'link': '#widget-tags'}, {'title': 'Filter (checkboxes)', 'link': '#widget-checkboxes'}, {'title': 'Subscription (MailChimp Ajax)', 'link': '#widget-subscription'}, {'title': 'Contact details', 'link': '#widget-contacts'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.mb-5(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      p.text-break.fs-md.mb-0 <strong>Range slider</strong> widget depends on <strong>noUISlider plugin</strong>. Make sure to link to <strong>noUISlider css and js</strong> files in your document: <strong>vendor/nouislider/dist/nouislider.min.css</strong> and <strong>vendor/nouislider/dist/nouislider.min.js</strong>. Use this page as a reference.
+
+  // Links
+  section#widget-links.pb-5.mb-md-2
+    h2.h4.mb-3 Links
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 16rem;')
+              h3.widget-title Company
+              ul
+                li.d-flex.align-items-center.active
+                  a(href='#').widget-link About us
+                  small.text-muted.ms-2 Active link
+                li: a(href='#').widget-link Our philosophy
+                li: a(href='#').widget-link Success stories
+                li: a(href='#').widget-link Careers
+                li: a(href='#').widget-link Help center
+                li: a(href='#').widget-link Contacts
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Links --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Company&lt;/h3&gt;
+                  &lt;ul&gt;
+                    &lt;li class=&quot;active&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;About us&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;Our philosophy&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;Success stories&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;Careers&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;Help center&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-link&quot;&gt;Contacts&lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Links
+                .widget
+                  h3.widget-title Company
+                  ul
+                    li.active
+                      a.widget-link(href=&quot;#&quot;) About us
+                    li
+                      a.widget-link(href=&quot;#&quot;) Our philosophy
+                    li
+                      a.widget-link(href=&quot;#&quot;) Success stories
+                    li
+                      a.widget-link(href=&quot;#&quot;) Careers
+                    li
+                      a.widget-link(href=&quot;#&quot;) Help center
+                    li
+                      a.widget-link(href=&quot;#&quot;) Contacts
+
+  // Categories
+  section#widget-categories.pb-5.mb-md-2
+    h2.h4.mb-3 Categories
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-sm-6.mb-sm-0.mb-4
+                .widget.widget-categories(style='max-width: 20rem;')
+                  h3.widget-title Collapsible categories
+                  ul#categories
+                    li
+                      a(href='#clothing' data-bs-toggle='collapse').widget-link
+                        | Clothing
+                        small.text-muted.ps-1.ms-2 235
+                      ul#clothing.collapse.show(data-bs-parent='#categories')
+                        li: a(href='#').widget-link Blazers &amp; Suits
+                        li: a(href='#').widget-link Cardigans
+                        li: a(href='#').widget-link Dresses
+                        li: a(href='#').widget-link Hoodie &amp; Sweatshirts
+                        li: a(href='#').widget-link Jackets &amp; Coats
+                        li: a(href='#').widget-link Jeans
+                        li: a(href='#').widget-link Lingerie
+                        li: a(href='#').widget-link Nightwear
+                        li: a(href='#').widget-link Shorts
+                        li: a(href='#').widget-link Sportswear
+                        li: a(href='#').widget-link Swimwear
+                        li: a(href='#').widget-link T-shirts &amp; Vests
+                        li: a(href='#').widget-link Trousers
+                        li: a(href='#').widget-link Underwear
+                    li
+                      a(href='#shoes' data-bs-toggle='collapse').widget-link.collapsed
+                        | Shoes
+                        small.text-muted.ps-1.ms-2 210
+                      ul#shoes.collapse(data-bs-parent='#categories')
+                        li: a(href='#').widget-link Athletic shoes
+                        li: a(href='#').widget-link Balerinas &amp; Flats
+                        li: a(href='#').widget-link Boots
+                        li: a(href='#').widget-link Clogs &amp; Mules
+                        li: a(href='#').widget-link Flip Flops
+                        li: a(href='#').widget-link Loafers
+                        li: a(href='#').widget-link Sandals
+                        li: a(href='#').widget-link Sneakers
+                    li
+                      a(href='#electronics' data-bs-toggle='collapse').widget-link.collapsed
+                        | Electronics
+                        small.text-muted.ps-1.ms-2 197
+                      ul#electronics.collapse(data-bs-parent='#categories')
+                        li: a(href='#').widget-link Computers &amp; Accessories
+                        li: a(href='#').widget-link TV, Video &amp; Audio
+                        li: a(href='#').widget-link Smartphones &amp; Tablets
+                        li: a(href='#').widget-link Cameras, Photo &amp; Video
+                        li: a(href='#').widget-link Headphones
+                        li: a(href='#').widget-link Wearable Electronics
+                        li: a(href='#').widget-link Printers &amp; Ink
+                        li: a(href='#').widget-link Video Games
+                    li
+                      a(href='#accessories' data-bs-toggle='collapse').widget-link.collapsed
+                        | Accessories
+                        small.text-muted.ps-1.ms-2 124
+                      ul#accessories.collapse(data-bs-parent='#categories')
+                        li: a(href='#').widget-link Bags
+                        li: a(href='#').widget-link Belts
+                        li: a(href='#').widget-link Hats
+                        li: a(href='#').widget-link Jewelry
+                        li: a(href='#').widget-link Cosmetics
+              .col-sm-6
+                .widget.widget-categories(style='max-width: 20rem;')
+                  h3.widget-title Static categories
+                  ul
+                    li
+                      a(href='#').widget-link
+                        | Clothing
+                        small.text-muted.ps-1.ms-2 235
+                    li
+                      a(href='#').widget-link
+                        | Shoes
+                        small.text-muted.ps-1.ms-2 210
+                    li
+                      a(href='#').widget-link
+                        | Electronics
+                        small.text-muted.ps-1.ms-2 197
+                      ul
+                        li
+                          a(href='#').widget-link Computers &amp; Accessories
+                          ul
+                            li: a(href='#').widget-link Laptops &amp; Tablets
+                            li: a(href='#').widget-link Desktop Computers
+                            li: a(href='#').widget-link Computer Accessories
+                        li: a(href='#').widget-link TV, Video &amp; Audio
+                        li: a(href='#').widget-link Cameras, Photo &amp; Video
+                        li
+                          a(href='#').widget-link Headphones
+                          ul
+                            li: a(href='#').widget-link Earbuds
+                            li: a(href='#').widget-link Over-Ear
+                            li: a(href='#').widget-link Bluetooth
+                        li: a(href='#').widget-link Wearable Electronics
+                        li: a(href='#').widget-link Printers &amp; Ink
+                    li
+                      a(href='#').widget-link
+                        | Accessories
+                        small.text-muted.ps-1.ms-2 124
+                    li
+                      a(href='#').widget-link
+                        | Entertainment
+                        small.text-muted.ps-1.ms-2 86
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Collapsible categories --&gt;
+                &lt;div class=&quot;widget widget-categories&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Collapsible categories&lt;/h3&gt;
+                  &lt;ul id=&quot;categories&quot;&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#clothing&quot; data-bs-toggle=&quot;collapse&quot;&gt;
+                        Clothing
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;235&lt;/small&gt;
+                      &lt;/a&gt;
+                      &lt;ul class=&quot;collapse show&quot; id=&quot;clothing&quot; data-bs-parent=&quot;#categories&quot;&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Blazers &amp; Suits&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Cardigans&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Dresses&lt;/a&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link collapsed&quot; href=&quot;#shoes&quot; data-bs-toggle=&quot;collapse&quot;&gt;
+                        Shoes
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;210&lt;/small&gt;
+                      &lt;/a&gt;
+                      &lt;ul class=&quot;collapse&quot; id=&quot;shoes&quot; data-bs-parent=&quot;#categories&quot;&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Athletic shoes&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Balerinas &amp; Flats&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Boots&lt;/a&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link collapsed&quot; href=&quot;#electronics&quot; data-bs-toggle=&quot;collapse&quot;&gt;
+                        Electronics
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;197&lt;/small&gt;
+                      &lt;/a&gt;
+                      &lt;ul class=&quot;collapse&quot; id=&quot;electronics&quot; data-bs-parent=&quot;#categories&quot;&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Computers &amp; Accessories&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;TV, Video &amp; Audio&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Smartphones &amp; Tablets&lt;/a&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link collapsed&quot; href=&quot;#accessories&quot; data-bs-toggle=&quot;collapse&quot;&gt;
+                        Accessories
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;124&lt;/small&gt;
+                      &lt;/a&gt;
+                      &lt;ul class=&quot;collapse&quot; id=&quot;accessories&quot; data-bs-parent=&quot;#categories&quot;&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Bags&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Belts&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Hats&lt;/a&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Widget: Static categories --&gt;
+                &lt;div class=&quot;widget widget-categories&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Static categories&lt;/h3&gt;
+                  &lt;ul&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;
+                        Clothing
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;235&lt;/small&gt;
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;
+                        Shoes
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;210&lt;/small&gt;
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;
+                        Electronics
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;197&lt;/small&gt;
+                      &lt;/a&gt;
+                      &lt;ul&gt;
+                        &lt;li&gt;
+                          &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Computers &amp; Accessories&lt;/a&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Laptops &amp; Tablets&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Desktop Computers&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Computer Accessories&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;TV, Video &amp; Audio&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Cameras, Photo &amp; Video&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Headphones&lt;/a&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Earbuds&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Over-Ear&lt;/a&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Bluetooth&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Wearable Electronics&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;Printers &amp; Ink&lt;/a&gt;&lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;
+                        Accessories
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;124&lt;/small&gt;
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                      &lt;a class=&quot;widget-link&quot; href=&quot;#&quot;&gt;
+                        Entertainment
+                        &lt;small class=&quot;text-muted ps-1 ms-2&quot;&gt;86&lt;/small&gt;
+                      &lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Collapsible categories
+                .widget.widget-categories
+                  h3.widget-title Collapsible categories
+                  ul#categories
+                    li
+                      a(href=&quot;#clothing&quot;, data-bs-toggle=&quot;collapse&quot;).widget-link
+                        | Clothing
+                        small.text-muted.ps-1.ms-2 235
+                      ul#clothing.collapse.show(data-bs-parent=&quot;#categories&quot;)
+                        li
+                          a.widget-link(href=&quot;#&quot;) Blazers &amp;amp; Suits
+                        li
+                          a.widget-link(href=&quot;#&quot;) Cardigans
+                        li
+                          a.widget-link(href=&quot;#&quot;) Dresses
+                    li
+                      a(href=&quot;#shoes&quot;, data-bs-toggle=&quot;collapse&quot;).widget-link.collapsed
+                        | Shoes
+                        small.text-muted.ps-1.ms-2 210
+                      ul#shoes.collapse(data-bs-parent=&quot;#categories&quot;)
+                        li
+                          a.widget-link(href=&quot;#&quot;) Athletic shoes
+                        li
+                          a.widget-link(href=&quot;#&quot;) Balerinas &amp;amp; Flats
+                        li
+                          a.widget-link(href=&quot;#&quot;) Boots
+                    li
+                      a(href=&quot;#electronics&quot;, data-bs-toggle=&quot;collapse&quot;).widget-link.collapsed
+                        | Electronics
+                        small.text-muted.ps-1.ms-2 197
+                      ul#electronics.collapse(data-bs-parent=&quot;#categories&quot;)
+                        li
+                          a.widget-link(href=&quot;#&quot;) Computers &amp;amp; Accessories
+                        li
+                          a.widget-link(href=&quot;#&quot;) TV, Video &amp;amp; Audio
+                        li
+                          a.widget-link(href=&quot;#&quot;) Smartphones &amp;amp; Tablets
+                    li
+                      a(href=&quot;#accessories&quot;, data-bs-toggle=&quot;collapse&quot;).widget-link.collapsed
+                        | Accessories
+                        small.text-muted.ps-1.ms-2 124
+                      ul#accessories.collapse(data-bs-parent=&quot;#categories&quot;)
+                        li
+                          a.widget-link(href=&quot;#&quot;) Bags
+                        li
+                          a.widget-link(href=&quot;#&quot;) Belts
+                        li
+                          a.widget-link(href=&quot;#&quot;) Hats
+                
+                // Widget: Static categories
+                .widget.widget-categories
+                  h3.widget-title Static categories
+                  ul
+                    li
+                      a(href=&quot;#&quot;).widget-link
+                        | Clothing
+                        small.text-muted.ps-1.ms-2 235
+                    li
+                      a(href=&quot;#&quot;).widget-link
+                        | Shoes
+                        small.text-muted.ps-1.ms-2 210
+                    li
+                      a(href=&quot;#&quot;).widget-link
+                        | Electronics
+                        small.text-muted.ps-1.ms-2 197
+                      ul
+                        li
+                          a.widget-link(href=&quot;#&quot;) Computers &amp;amp; Accessories
+                          ul
+                            li
+                              a.widget-link(href=&quot;#&quot;) Laptops &amp;amp; Tablets
+                            li
+                              a.widget-link(href=&quot;#&quot;) Desktop Computers
+                            li
+                              a.widget-link(href=&quot;#&quot;) Computer Accessories
+                        li
+                          a.widget-link(href=&quot;#&quot;) TV, Video &amp;amp; Audio
+                        li
+                          a.widget-link(href=&quot;#&quot;) Cameras, Photo &amp;amp; Video
+                        li
+                          a.widget-link(href=&quot;#&quot;) Headphones
+                          ul
+                            li
+                              a.widget-link(href=&quot;#&quot;) Earbuds
+                            li
+                              a.widget-link(href=&quot;#&quot;) Over-Ear
+                            li
+                              a.widget-link(href=&quot;#&quot;) Bluetooth
+                        li
+                          a.widget-link(href=&quot;#&quot;) Wearable Electronics
+                        li
+                          a.widget-link(href=&quot;#&quot;) Printers &amp;amp; Ink
+                    li
+                      a.widget-link(href=&quot;#&quot;)
+                        | Accessories
+                        small.text-muted.ps-1.ms-2 124
+                    li
+                      a.widget-link(href=&quot;#&quot;)
+                        | Entertainment
+                        small.text-muted.ps-1.ms-2 86
+
+  // Range slider
+  section#widget-range-slider.pb-5.mb-md-2
+    h2.h4.mb-3 Range slider
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 20rem;')
+              h3.widget-title Price range
+              .range-slider(data-start-min='250' data-start-max='680' data-min='0' data-max='1000' data-step='1')
+                .range-slider-ui
+                .d-flex
+                  .w-50.pe-2.me-2
+                    .input-group.input-group-sm
+                      span.input-group-text $
+                      input(type='text').form-control.range-slider-value-min
+                  .w-50.ps-2
+                    .input-group.input-group-sm
+                      span.input-group-text $
+                      input(type='text').form-control.range-slider-value-max
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Range slider --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Price range&lt;/h3&gt;
+                  &lt;div class=&quot;range-slider&quot; data-start-min=&quot;250&quot; data-start-max=&quot;680&quot; data-min=&quot;0&quot; data-max=&quot;1000&quot; data-step=&quot;1&quot;&gt;
+                    &lt;div class=&quot;range-slider-ui&quot;&gt;&lt;/div&gt;
+                    &lt;div class=&quot;d-flex&quot;&gt;
+                      &lt;div class=&quot;w-50 pe-2 me-2&quot;&gt;
+                        &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                          &lt;span class=&quot;input-group-text&quot;&gt;$&lt;/span&gt;
+                          &lt;input class=&quot;form-control range-slider-value-min&quot; type=&quot;text&quot;&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;w-50 ps-2&quot;&gt;
+                        &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                          &lt;span class=&quot;input-group-text&quot;&gt;$&lt;/span&gt;
+                          &lt;input class=&quot;form-control range-slider-value-max&quot; type=&quot;text&quot;&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Range slider
+                .widget
+                  h3.widget-title Price range
+                  .range-slider(data-start-min=&quot;250&quot;, data-start-max=&quot;680&quot;, data-min=&quot;0&quot;, data-max=&quot;1000&quot;, data-step=&quot;1&quot;)
+                    .range-slider-ui
+                    .d-flex
+                      .w-50.pe-2.me-2
+                        .input-group.input-group-sm
+                          span.input-group-text $
+                          input(type=&quot;text&quot;).form-control.range-slider-value-min
+                      .w-50.ps-2
+                        .input-group.input-group-sm
+                          span.input-group-text $
+                          input(type=&quot;text&quot;).form-control.range-slider-value-max
+
+  // Featured entries: List
+  section#widget-featured-list.pb-5.mb-md-2
+    h2.h4.mb-3 Featured entries: List
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 18rem;')
+              .d-flex.flex-wrap.justify-content-between.mb-4
+                h3.widget-title.mb-0.me-3 New arrivals
+                a(href='#').fs-sm.fw-medium
+                  | View more
+                  i.ai-chevron-right.fs-lg.align-middle
+              .d-flex.align-items-center.pb-2.mb-1
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/04.jpg' alt='Product' width='60').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Block-colored Hooded Top
+                  p.fs-sm.mb-0 $27.50
+              .d-flex.align-items-center.pb-2.mb-1
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/05.jpg' alt='Product' width='60').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Smart Watch Series 5
+                  p.fs-sm.mb-0 $364.99
+              .d-flex.align-items-center.pb-2.mb-1
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/02.jpg' alt='Product' width='60').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Running Sneakers, Collection
+                  p.fs-sm.mb-0 $145.00
+              .d-flex.align-items-center.pb-2.mb-1
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/06.jpg' alt='Product' width='60').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Bluetooth Headset
+                  p.fs-sm.mb-0 $258.00
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Featured entries: List --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+
+                  &lt;!-- Title --&gt;
+                  &lt;div class=&quot;d-flex flex-wrap justify-content-between mb-4&quot;&gt;
+                    &lt;h3 class=&quot;widget-title mb-0 me-3&quot;&gt;New arrivals&lt;/h3&gt;
+                    &lt;a class=&quot;fs-sm fw-medium&quot; href=&quot;#&quot;&gt;
+                      View more
+                      &lt;i class=&quot;ai-chevron-right fs-lg align-middle&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center pb-2 mb-1&quot;&gt;
+                    &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded&quot; width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                      &lt;h4 class=&quot;fs-md nav-heading mb-1&quot;&gt;
+                        &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;Block-colored Hooded Top&lt;/a&gt;
+                      &lt;/h4&gt;
+                      &lt;p class=&quot;fs-sm mb-0&quot;&gt;$27.50&lt;/p&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center pb-2 mb-1&quot;&gt;
+                    &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded&quot; width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                      &lt;h4 class=&quot;fs-md nav-heading mb-1&quot;&gt;
+                        &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;Smart Watch Series 5&lt;/a&gt;
+                      &lt;/h4&gt;
+                      &lt;p class=&quot;fs-sm mb-0&quot;&gt;$364.99&lt;/p&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Add as many items as you need --&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Featured entries: List
+                .widget
+
+                  // Title
+                  .d-flex.flex-wrap.justify-content-between.mb-4
+                    h3.widget-title.mb-0.me-3 New arrivals
+                    a(href=&quot;#&quot;).fs-sm.fw-medium
+                      | View more
+                      i.ai-chevron-right.fs-lg.align-middle
+
+                  // Item
+                  .d-flex.align-items-center.pb-2.mb-1
+                    a(href=&quot;#&quot;).d-block.flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product&quot;, width=&quot;60&quot;).rounded
+                    .ps-2.ms-1
+                      h4.fs-md.nav-heading.mb-1
+                        a(href=&quot;#&quot;).fw-medium
+                          | Block-colored Hooded Top
+                      p.fs-sm.mb-0 $27.50
+
+                  // Item
+                  .d-flex.align-items-center.pb-2.mb-1
+                    a(href=&quot;#&quot;).d-block.flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product&quot;, width=&quot;60&quot;).rounded
+                    .ps-2.ms-1
+                      h4.fs-md.nav-heading.mb-1
+                        a(href=&quot;#&quot;).fw-medium
+                          | Smart Watch Series 5
+                      p.fs-sm.mb-0 $364.99
+
+                  // Add as many items as you need
+
+  // Featured entries: Carousel
+  section#widget-featured-carousel.pb-5.mb-md-2
+    h2.h4.mb-3 Featured entries: Carousel
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .widget.pb-2(style='max-width: 18rem;')
+              h3.widget-title Trending posts
+              .tns-carousel-wrapper.pt-1
+                .tns-carousel-inner(data-carousel-options='{"controls": false, "gutter": 20}')
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').d-block.flex-shrink-0
+                        img(src='../img/blog/th01.jpg' alt='Post' width='64').rounded
+                      .ps-2.ms-1
+                        h4.fs-md.nav-heading.mb-1
+                          a(href='#').fw-medium
+                            | Virtual Reality - game changing technology
+                        p.fs-xs.text-muted.mb-0 by John Doe
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').d-block.flex-shrink-0
+                        img(src='../img/blog/th02.jpg' alt='Post' width='64').rounded
+                      .ps-2.ms-1
+                        h4.fs-md.nav-heading.mb-1
+                          a(href='#').fw-medium
+                            | New trends in suburban fashion
+                        p.fs-xs.text-muted.mb-0 by Susan Mayer
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').d-block.flex-shrink-0
+                        img(src='../img/blog/th03.jpg' alt='Post' width='64').rounded
+                      .ps-2.ms-1
+                        h4.fs-md.nav-heading.mb-1
+                          a(href='#').fw-medium
+                            | Millenials is the top market for companies
+                        p.fs-xs.text-muted.mb-0 by Daniel Adams
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Featured entries: Carousel --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Trending posts&lt;/h3&gt;
+                  &lt;div class=&quot;tns-carousel-wrapper pt-1&quot;&gt;
+                    &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;controls&quot;: false, &quot;gutter&quot;: 20}'&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded&quot; width=&quot;64&quot; src=&quot;path-to-image&quot; alt=&quot;Post&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                            &lt;h4 class=&quot;fs-md nav-heading mb-1&quot;&gt;
+                              &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;Virtual Reality - game changing technology&lt;/a&gt;
+                            &lt;/h4&gt;
+                            &lt;p class=&quot;fs-xs text-muted mb-0&quot;&gt;by John Doe&lt;/p&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded&quot; width=&quot;64&quot; src=&quot;path-to-image&quot; alt=&quot;Post&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                            &lt;h4 class=&quot;fs-md nav-heading mb-1&quot;&gt;
+                              &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;New trends in suburban fashion&lt;/a&gt;
+                            &lt;/h4&gt;
+                            &lt;p class=&quot;fs-xs text-muted mb-0&quot;&gt;by Susan Mayer&lt;/p&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+
+                      &lt;!-- Add as many items as you need --&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Featured entries: Carousel
+                .widget
+                  h3.widget-title Trending posts
+                  .tns-carousel-wrapper.pt-1
+                    .tns-carousel-inner(data-carousel-options='{&quot;controls&quot;: false, &quot;gutter&quot;: 20}')
+
+                      // Items
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).d-block.flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;, width=&quot;64&quot;).rounded
+                          .ps-2.ms-1
+                            h4.fs-md.nav-heading.mb-1
+                              a(href=&quot;#&quot;).fw-medium
+                                | Virtual Reality - game changing technology
+                            p.fs-xs.text-muted.mb-0 by John Doe
+                      
+                      // Item
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).d-block.flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;, width=&quot;64&quot;).rounded
+                          .ps-2.ms-1
+                            h4.fs-md.nav-heading.mb-1
+                              a(href=&quot;#&quot;).fw-medium
+                                | New trends in suburban fashion
+                            p.fs-xs.text-muted.mb-0 by Susan Mayer
+                      
+                      // Add as many items as you need
+
+  // Shopping cart
+  section#widget-cart.pb-5.mb-md-2
+    h2.h4.mb-3 Shopping cart
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 21.5rem;')
+              h3.widget-title.pb-1 Your cart
+              .d-flex.align-items-center.mb-4
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/05.jpg' alt='Product' width='60').rounded
+                .w-100.ps-2.ms-1
+                  .d-flex.align-items-center.justify-content-between
+                    .me-3
+                      h4.nav-heading.fs-md.mb-1
+                        a(href='#').fw-medium
+                          | Smart Watch Series 5
+                      .d-flex.align-items-center.fs-sm
+                        span.me-2 $364.99
+                        span.me-2 x
+                        input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                    .ps-3.border-start
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                        i.ai-x-circle
+              .d-flex.align-items-center.mb-4
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/02.jpg' alt='Product' width='60').rounded
+                .w-100.ps-2.ms-1
+                  .d-flex.align-items-center.justify-content-between
+                    .me-3
+                      h4.nav-heading.fs-md.mb-1
+                        a(href='#').fw-medium
+                          | Running Sneakers, Collection
+                      .d-flex.align-items-center.fs-sm
+                        span.me-2 $145.00
+                        span.me-2 x
+                        input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                    .ps-3.border-start
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                        i.ai-x-circle
+              .d-flex.align-items-center.mb-4
+                a(href='#').d-block.flex-shrink-0
+                  img(src='../img/demo/shop-homepage/thumbnails/06.jpg' alt='Product' width='60').rounded
+                .w-100.ps-2.ms-1
+                  .d-flex.align-items-center.justify-content-between
+                    .me-3
+                      h4.nav-heading.fs-md.mb-1
+                        a(href='#').fw-medium
+                          | Wireless Bluethoothe Headset
+                      .d-flex.align-items-center.fs-sm
+                        span.me-2 $258.00
+                        span.me-2 x
+                        input(type='number' style='max-width: 3.5rem;' min='1' value='1').form-control.form-control-sm.px-2
+                    .ps-3.border-start
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').d-block.text-danger.text-decoration-none.fs-xl
+                        i.ai-x-circle
+              hr.mb-4
+              .d-flex.justify-content-between.mb-4
+                span Total:
+                span.h6.mb-0 $776.99
+              a(href='#').btn.btn-primary.btn-sm.d-block.w-100
+                i.ai-credit-card.fs-base.me-2
+                | Checkout
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Shopping cart --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title pb-1&quot;&gt;Your cart&lt;/h3&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center mb-4&quot;&gt;
+                    &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded&quot; width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;w-100 ps-2 ms-1&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center justify-content-between&quot;&gt;
+                        &lt;div class=&quot;me-3&quot;&gt;
+                          &lt;h4 class=&quot;nav-heading fs-md mb-1&quot;&gt;
+                            &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;Smart Watch Series 5&lt;/a&gt;
+                          &lt;/h4&gt;
+                          &lt;div class=&quot;d-flex align-items-center fs-sm&quot;&gt;
+                            &lt;span class=&quot;me-2&quot;&gt;$364.99&lt;/span&gt;
+                            &lt;span class=&quot;me-2&quot;&gt;x&lt;/span&gt;
+                            &lt;input class=&quot;form-control form-control-sm px-2&quot; type=&quot;number&quot; style=&quot;max-width: 3.5rem;&quot; value=&quot;1&quot;&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;ps-3 border-start&quot;&gt;
+                          &lt;a class=&quot;d-block text-danger text-decoration-none fs-xl&quot; href=&quot;#&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Remove&quot;&gt;
+                            &lt;i class=&quot;ai-x-circle&quot;&gt;&lt;/i&gt;
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center mb-4&quot;&gt;
+                    &lt;a class=&quot;d-block flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded&quot; width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;w-100 ps-2 ms-1&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center justify-content-between&quot;&gt;
+                        &lt;div class=&quot;me-3&quot;&gt;
+                          &lt;h4 class=&quot;nav-heading fs-md mb-1&quot;&gt;
+                            &lt;a class=&quot;fw-medium&quot; href=&quot;#&quot;&gt;Running Sneakers, Collection&lt;/a&gt;
+                          &lt;/h4&gt;
+                          &lt;div class=&quot;d-flex align-items-center fs-sm&quot;&gt;
+                            &lt;span class=&quot;me-2&quot;&gt;$145.00&lt;/span&gt;
+                            &lt;span class=&quot;me-2&quot;&gt;x&lt;/span&gt;
+                            &lt;input class=&quot;form-control form-control-sm px-2&quot; type=&quot;number&quot; style=&quot;max-width: 3.5rem;&quot; value=&quot;1&quot;&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;ps-3 border-start&quot;&gt;
+                          &lt;a class=&quot;d-block text-danger text-decoration-none fs-xl&quot; href=&quot;#&quot; data-bs-toggle=&quot;tooltip&quot; title=&quot;Remove&quot;&gt;
+                            &lt;i class=&quot;ai-x-circle&quot;&gt;&lt;/i&gt;
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Totals --&gt;
+                  &lt;hr class=&quot;mb-4&quot;/&gt;
+                  &lt;div class=&quot;d-flex justify-content-between mb-4&quot;&gt;
+                    &lt;span&gt;Total:&lt;/span&gt;
+                    &lt;span class=&quot;h6 mb-0&quot;&gt;$776.99&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn btn-primary btn-sm d-block w-100&quot;&gt;
+                    &lt;i class=&quot;ai-credit-card fs-base me-2&quot;&gt;&lt;/i&gt;
+                    Checkout
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Shopping cart
+                .widget
+                  h3.widget-title.pb-1 Your cart
+
+                  // Item
+                  .d-flex.align-items-center.mb-4
+                    a(href=&quot;#&quot;).d-block.flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product&quot;, width=&quot;60&quot;).rounded
+                    .w-100.ps-2.ms-1
+                      .d-flex.align-items-center.justify-content-between
+                        .me-3
+                          h4.nav-heading.fs-md.mb-1
+                            a(href=&quot;#&quot;).fw-medium
+                              | Smart Watch Series 5
+                          .d-flex.align-items-center.fs-sm
+                            span.me-2 $364.99
+                            span.me-2 x
+                            input(type=&quot;number&quot;, style=&quot;max-width: 3.5rem;&quot;, value=&quot;1&quot;).form-control.form-control-sm.px-2
+                        .ps-3.border-start
+                          a(href=&quot;#&quot;, data-bs-toggle=&quot;tooltip&quot;, title=&quot;Remove&quot;).d-block.text-danger.text-decoration-none.fs-xl
+                            i.ai-x-circle
+
+                  // Item
+                  .d-flex.align-items-center.mb-4
+                    a(href=&quot;#&quot;).d-block.flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product&quot;, width=&quot;60&quot;).rounded
+                    .w-100.ps-2.ms-1
+                      .d-flex.align-items-center.justify-content-between
+                        .me-3
+                          h4.nav-heading.fs-md.mb-1
+                            a(href=&quot;#&quot;).fw-medium
+                              | Running Sneakers, Collection
+                          .d-flex.align-items-center.fs-sm
+                            span.me-2 $145.00
+                            span.me-2 x
+                            input(type=&quot;number&quot;, style=&quot;max-width: 3.5rem;&quot;, value=&quot;1&quot;).form-control.form-control-sm.px-2
+                        .ps-3.border-start
+                          a(href=&quot;#&quot;, data-bs-toggle=&quot;tooltip&quot;, title=&quot;Remove&quot;).d-block.text-danger.text-decoration-none.fs-xl
+                            i.ai-x-circle
+                  
+                  // Totals
+                  hr.mb-4
+                  .d-flex.justify-content-between.mb-4
+                    span Total:
+                    span.h6.mb-0 $776.99
+                  a(href=&quot;#&quot;).btn.btn-primary.btn-sm.d-block.w-100
+                    i.ai-credit-card.fs-base.me-2
+                    | Checkout
+
+  // Tag cloud
+  section#widget-tags.pb-5.mb-md-2
+    h2.h4.mb-3 Tag cloud
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            a(href='#').btn-tag.me-2.mb-2 #business
+            a(href='#').btn-tag.me-2.mb-2 #online shopping
+            a(href='#').btn-tag.me-2.mb-2 #gadgets
+            a(href='#').btn-tag.me-2.mb-2 #travel
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Tag link --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;btn-tag&quot;&gt;#business&lt;/a&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Tag link
+                a(href=&quot;#&quot;).btn-tag
+                  | #business
+  
+  // Filter (checkboxes)
+  section#widget-checkboxes.pb-5.mb-md-2
+    h2.h4.mb-3 Filter (checkboxes)
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result8' data-bs-toggle='tab' role='tab' aria-controls='result8' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html8' data-bs-toggle='tab' role='tab' aria-controls='html8' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug8' data-bs-toggle='tab' role='tab' aria-controls='pug8' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result8.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 18rem;')
+              h3.widget-title Brand
+              .form-check.mb-2
+                input(type='checkbox' id='adidas' checked).form-check-input
+                label(for='adidas').form-check-label.text-nav
+                  | Adidas
+                  span.fs-xs.text-muted.ms-2 425
+              .form-check.mb-2
+                input(type='checkbox' id='bilabong').form-check-input
+                label(for='bilabong').form-check-label.text-nav
+                  | Bilabong
+                  span.fs-xs.text-muted.ms-2 27
+              .form-check.mb-2
+                input(type='checkbox' id='klein').form-check-input
+                label(for='klein').form-check-label.text-nav
+                  | Calvin Klein
+                  span.fs-xs.text-muted.ms-2 365
+              .form-check.mb-2
+                input(type='checkbox' id='electrolux').form-check-input
+                label(for='electrolux').form-check-label.text-nav
+                  | Electrolux
+                  span.fs-xs.text-muted.ms-2 56
+              .form-check.mb-2
+                input(type='checkbox' id='motorolla').form-check-input
+                label(for='motorolla').form-check-label.text-nav
+                  | Motorolla
+                  span.fs-xs.text-muted.ms-2 104
+              .form-check.mb-2
+                input(type='checkbox' id='nb').form-check-input
+                label(for='nb').form-check-label.text-nav
+                  | New Balance
+                  span.fs-xs.text-muted.ms-2 197
+          #html8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Filter (checkboxes) --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Brand&lt;/h3&gt;
+                  &lt;div class=&quot;form-check mb-2&quot;&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;adidas&quot; checked&gt;
+                    &lt;label class=&quot;form-check-label text-nav&quot; for=&quot;adidas&quot;&gt;
+                      Adidas
+                      &lt;span class=&quot;fs-xs text-muted ms-2&quot;&gt;425&lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;form-check mb-2&quot;&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;bilabong&quot;&gt;
+                    &lt;label class=&quot;form-check-label text-nav&quot; for=&quot;bilabong&quot;&gt;
+                      Bilabong
+                      &lt;span class=&quot;fs-xs text-muted ms-2&quot;&gt;27&lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;form-check mb-2&quot;&gt;
+                    &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; id=&quot;klein&quot;&gt;
+                    &lt;label class=&quot;form-check-label text-nav&quot; for=&quot;klein&quot;&gt;
+                      Calvin Klein
+                      &lt;span class=&quot;fs-xs text-muted ms-2&quot;&gt;365&lt;/span&gt;
+                    &lt;/label&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Filter (checkboxes)
+                .widget
+                  h3.widget-title Brand
+                  .form-check.mb-2
+                    input(type=&quot;checkbox&quot;, id=&quot;adidas&quot;, checked).form-check-input
+                    label(for=&quot;adidas&quot;).form-check-label.text-nav
+                      | Adidas
+                      span.fs-xs.text-muted.ms-2 425
+                  .form-check.mb-2
+                    input(type=&quot;checkbox&quot;, id=&quot;bilabong&quot;).form-check-input
+                    label(for=&quot;bilabong&quot;).form-check-label.text-nav
+                      | Bilabong
+                      span.fs-xs.text-muted.ms-2 27
+                  .form-check.mb-2
+                    input(type=&quot;checkbox&quot;, id=&quot;klein&quot;).form-check-input
+                    label(for=&quot;klein&quot;).form-check-label.text-nav
+                      | Calvin Klein
+                      span.fs-xs.text-muted.ms-2 365
+
+  // Subscription (MailChimp Ajax)
+  section#widget-subscription.pb-5.mb-md-2
+    h2.h4.mb-3 Subscription (MailChimp Ajax)
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result9' data-bs-toggle='tab' role='tab' aria-controls='result9' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html9' data-bs-toggle='tab' role='tab' aria-controls='html9' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug9' data-bs-toggle='tab' role='tab' aria-controls='pug9' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result9.tab-pane.fade.show.active(role='tabpanel')
+            .widget.pb-2(style='max-width: 24rem;')
+              h3.widget-title Subscribe
+              form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+                .input-group.flex-nowrap
+                  i.ai-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                  input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+                  button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+                // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                  input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+                .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                .subscription-status
+          #html9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Subscription (MailChimp Ajax)
+                        Instructions how to get MailChimp action link:
+                        1. Log in to your MailChimp Dashboard / Audience / Manage Audience / Signup forms / Embedded forms
+                        2. In the provided code find form action link and copy it
+                        3. Paste it to the form action attribute below
+                        4. Also in the form code provided by MailChimp find antispam input and copy it name attribute contents
+                        5. Paste what you have copied from name attribute to the name attribute of input with class &quot;subscription-form-antispam&quot;
+                --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Subscribe&lt;/h3&gt;
+                  &lt;form class=&quot;subscription-form validate&quot; action=&quot;mailchimp-embedded-form-atcion-link&quot; method=&quot;post&quot; name=&quot;mc-embedded-subscribe-form&quot; target=&quot;_blank&quot; novalidate&gt;
+                    &lt;div class=&quot;input-group flex-nowrap&quot;&gt;
+                      &lt;i class=&quot;ai-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3&quot;&gt;&lt;/i&gt;
+                      &lt;input class=&quot;form-control rounded-start&quot; type=&quot;email&quot; name=&quot;EMAIL&quot; placeholder=&quot;Your email&quot; required&gt;
+                      &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot; name=&quot;subscribe&quot;&gt;Subscribe*&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--&gt;
+                    &lt;div style=&quot;position: absolute; left: -5000px;&quot; aria-hidden=&quot;true&quot;&gt;
+                      &lt;input type=&quot;text&quot; class=&quot;subscription-form-antispam&quot; name=&quot;mailchimp-embedded-form-antispam-name-attribute&quot; tabindex=&quot;-1&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-text&quot;&gt;*Subscribe to our newsletter to receive early discount offers, updates and new products info.&lt;/div&gt;
+                    &lt;div class=&quot;subscription-status&quot;&gt;&lt;/div&gt;
+                  &lt;/form&gt;
+                &lt;/div&gt;
+          #pug9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Subscription (MailChimp Ajax)
+                // Instructions how to get MailChimp action link:
+                // 1. Log in to your MailChimp Dashboard / Audience / Manage Audience / Signup forms / Embedded forms
+                // 2. In the provided code find form action link and copy it
+                // 3. Paste it to the form action attribute below
+                // 4. Also in the form code provided by MailChimp find antispam input and copy it name attribute contents
+                // 5. Paste what you have copied from name attribute to the name attribute of input with class &quot;subscription-form-antispam&quot;
+                form(action=&quot;mailchimp-embedded-form-atcion-link&quot;, method=&quot;post&quot;, name=&quot;mc-embedded-subscribe-form&quot;, target=&quot;_blank&quot;, novalidate).subscription-form.validate
+                  .input-group.flex-nowrap
+                    i.ai-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                    input(type=&quot;email&quot;, name=&quot;EMAIL&quot;, placeholder=&quot;Your email&quot;, required).form-control.rounded-start
+                    button(type=&quot;submit&quot;, name=&quot;subscribe&quot;).btn.btn-primary Subscribe*
+                  // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                  div(style=&quot;position: absolute; left: -5000px;&quot; aria-hidden=&quot;true&quot;)
+                    input(type=&quot;text&quot;, name=&quot;mailchimp-embedded-form-antispam-name-attribute&quot;, tabindex=&quot;-1&quot;).subscription-form-antispam
+                  .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                  .subscription-status
+
+  // Contact details
+  section#widget-contacts.pb-5.mb-md-2
+    h2.h4.mb-3 Contact details
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result10' data-bs-toggle='tab' role='tab' aria-controls='result10' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html10' data-bs-toggle='tab' role='tab' aria-controls='html10' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug10' data-bs-toggle='tab' role='tab' aria-controls='pug10' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result10.tab-pane.fade.show.active(role='tabpanel')
+            .widget.pb-2(style='max-width: 18rem;')
+              h3.widget-title Contact details
+              .d-flex.pb-3.border-bottom
+                i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Find us
+                  a(href='#').d-block.nav-link-style.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+              .d-flex.pt-2.pb-3.border-bottom
+                i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Call us
+                  a(href='tel:+184725276533').d-block.nav-link-style.fs-sm +1 (847) 252 765 33
+              .d-flex.pt-2
+                i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Write us
+                  a(href='mailto:email@example.com').d-block.nav-link-style.fs-sm email@example.com
+          #html10.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Contact details --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Contact details&lt;/h3&gt;
+                  &lt;div class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                    &lt;i class=&quot;ai-map-pin fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;div class=&quot;ps-3&quot;&gt;
+                      &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                      &lt;a class=&quot;d-block nav-link-style fs-sm&quot; href=&quot;#&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                    &lt;i class=&quot;ai-phone fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;div class=&quot;ps-3&quot;&gt;
+                      &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                      &lt;a class=&quot;d-block nav-link-style fs-sm&quot; href=&quot;tel:+184725276533&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;d-flex pt-2&quot;&gt;
+                    &lt;i class=&quot;ai-mail fs-lg mt-2 mb-0 text-primary&quot;&gt;&lt;/i&gt;
+                    &lt;div class=&quot;ps-3&quot;&gt;
+                      &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                      &lt;a class=&quot;d-block nav-link-style fs-sm&quot; href=&quot;mailto:email@example.com&quot;&gt;email@example.com&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug10.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Contact details
+                .widget
+                  h3.widget-title Contact details
+                  .d-flex.pb-3.border-bottom
+                    i.ai-map-pin.fs-lg.mt-2.mb-0.text-primary
+                    .ps-3
+                      span.fs-ms.text-muted Find us
+                      a(href=&quot;#&quot;).d-block.nav-link-style.fs-sm
+                        | 769, Industrial Dr, West Chicago, IL 60185, USA
+                  .d-flex.pt-2.pb-3.border-bottom
+                    i.ai-phone.fs-lg.mt-2.mb-0.text-primary
+                    .ps-3
+                      span.fs-ms.text-muted Call us
+                      a(href=&quot;tel:+184725276533&quot;).d-block.nav-link-style.fs-sm
+                        | +1 (847) 252 765 33
+                  .d-flex.pt-2
+                    i.ai-mail.fs-lg.mt-2.mb-0.text-primary
+                    .ps-3
+                      span.fs-ms.text-muted Write us
+                      a(href=&quot;mailto:email@example.com&quot;).d-block.nav-link-style.fs-sm
+                        | email@example.com

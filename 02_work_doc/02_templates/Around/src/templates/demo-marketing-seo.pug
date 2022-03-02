@@ -1,0 +1,509 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js', 'parallax-js/dist/parallax.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Digital Marketing & SEO'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero with parallax effect
+  section.position-relative
+    .position-absolute.top-0.start-0.w-100.h-100.bg-primary.opacity-65
+    .position-relative.zindex-5.container-fluid
+      .row.align-items-center
+        .col-lg-7.col-md-7.order-md-2.overflow-hidden
+          .parallax.me-n7.me-md-0(style='max-width: 1030px;')
+            img(src='img/demo/marketing-seo/hero/lines.png' alt='Lines').d-block
+            .parallax-layer(style='z-index: 2;' data-depth='0.13')
+              img(src='img/demo/marketing-seo/hero/image.png' alt='Image')
+            .parallax-layer(style='z-index: 3;' data-depth='0.25')
+              img(src='img/demo/marketing-seo/hero/shape-1.png' alt='Badge')
+            .parallax-layer(data-depth='0.2')
+              img(src='img/demo/marketing-seo/hero/shape-2.png' alt='Shape')
+            .parallax-layer(style='z-index: 3;' data-depth='0.5')
+              img(src='img/demo/marketing-seo/hero/shape-3.png' alt='Badge')
+            .parallax-layer(style='z-index: 3;' data-depth='0.45')
+              img(src='img/demo/marketing-seo/hero/shape-4.png' alt='Badge')
+
+        .col-lg-5.col-md-5.pt-4.pb-5.py-md-5
+          .mx-auto.me-lg-4.ps-xl-3.order-md-1.text-center.text-md-start(style='max-width: 420px;')
+            h1.text-light.mb-3 Get more sales, traffic with us!
+            p.text-light.fs-lg We offer flexible marketing strategies
+            .d-flex.align-items-center.justify-content-center.justify-content-md-start.pb-3.pb-xl-5.mb-5
+              a(href='#').btn.btn-primary.me-4 Start Now
+              .d-flex.align-items-center
+                i.ai-phone.fs-xl.text-light.me-2
+                a(href='tel:+15262200459').text-light.text-decoration-none + 1 526 220 0459
+            .d-flex.align-items-center.justify-content-center.justify-content-md-start
+              h2.h4.text-light.mb-0.me-4 Our<br>Awards
+              .bg-light.opacity-50.me-4(style='width: 1px; height: 72px;')
+              .me-4
+                img(src='img/demo/marketing-seo/hero/award-1.png' alt='Award' width='102')
+              div
+                img(src='img/demo/marketing-seo/hero/award-2.png' alt='Award' width='72')
+
+
+
+  // Clients (carousel)
+  section.bg-secondary.py-5
+    .container
+      .row
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/01_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/01_gray.png' alt='Logo' width='180').swap-from
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/02_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/02_gray.png' alt='Logo' width='180').swap-from
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/03_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/03_gray.png' alt='Logo' width='180').swap-from
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/04_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/04_gray.png' alt='Logo' width='180').swap-from
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/05_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/05_gray.png' alt='Logo' width='180').swap-from
+        .col-lg-2.col-md-4.col-6
+          a(href='#').swap-image
+            img(src='img/demo/marketing-seo/clients/06_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/marketing-seo/clients/06_gray.png' alt='Logo' width='180').swap-from
+
+
+  // Services
+  section.container.py-5.py-md-6.py-lg-7
+    .row.align-items-center.mt-3.mt-md-0
+      .col-lg-4.col-md-5.order-md-2.text-center.text-md-start.mb-5.mb-md-0
+        h2.mb-3 Our services
+        p.text-muted.mb-4.pb-2 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint doloremque.
+        a(href='#').btn.btn-primary See all services
+      .col-lg-8.col-md-7.order-md-1.bg-position-start-bottom.bg-repeat-0(style='background-image: url(img/demo/marketing-seo/services/bg-shape.svg);')
+        .mx-auto.mx-md-0.ms-xl-7(style='max-width: 600px;')
+          .row.align-items-center
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/marketing-seo/services/01.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 SEO Website Audit
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/marketing-seo/services/02.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Email Marketing
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        .mx-auto.mx-md-0(style='max-width: 600px;')
+          .row.align-items-center
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/marketing-seo/services/03.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Content Marketing
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            .col-sm-6
+              .bg-light.shadow-lg.rounded-3.p-4.mb-grid-gutter.text-center.text-sm-start
+                img(src='img/demo/marketing-seo/services/04.svg' alt='Icon' width='100').d-inline-block.mb-4.mt-2
+                h3.h5.mb-2 Link Building
+                p.fs-sm Find aute irure dolor in reprehend in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+
+
+  // About
+  section.bg-secondary
+    .container
+      .row.align-items-center
+        .col-md-4.mt-3.mt-md-0.py-5.py-md-0
+          h2.text-lg-nowrap.pb-2.text-center.text-md-start Respect For Your Business
+          p.pb-2.text-center.text-md-start Our values ind aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.
+          ul.list-unstyled.fs-sm.pb-1.d-table.mx-auto.mx-md-0
+            li.d-flex.mb-2
+              i.ai-check-circle.text-success.fs-lg.me-3
+              span Excepteur sint
+            li.d-flex.mb-2
+              i.ai-check-circle.text-success.fs-lg.me-3
+              span Quam lacus suspendisse
+            li.d-flex.mb-2
+              i.ai-check-circle.text-success.fs-lg.me-3
+              span Elementum pulvinar etiam
+          .text-center.text-md-start
+            a(href='#').fw-medium
+              | Learn more
+              i.ai-chevron-right.fs-xl.ms-1.mt-n1.align-middle
+        .col-md-8
+          .parallax.ms-auto(style='max-width: 757px;')
+            img(src='img/demo/marketing-seo/about-img/lines.png' alt='Lines').d-block
+            .parallax-layer(style='z-index: 2;' data-depth='0.15')
+              img(src='img/demo/marketing-seo/about-img/image.png' alt='Image')
+            .parallax-layer(style='z-index: 3;' data-depth='0.3')
+              img(src='img/demo/marketing-seo/about-img/badge.png' alt='Badge')
+            .parallax-layer(data-depth='0.25')
+              img(src='img/demo/marketing-seo/about-img/shape.png' alt='Shape')
+
+
+
+  // Pricing
+  section.container.mb-3.mt-4.pt-5.pb-4.my-md-0.pt-md-7.pb-md-6
+    h2.text-center.mb-5 Pricing
+    .row
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow.w-100
+          .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+            h3.text-body.mb-0 Standard
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 99
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Link Building
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Keyword Research
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Social Media Marketing
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span SEO Audit
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted PPC
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted Email Marketing
+            .text-center.mb-2
+              a(href='#').btn.btn-outline-primary Get started
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.card-active.w-100
+          .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+            h3.text-light.mb-0 Economy
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 199
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Link Building
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Keyword Research
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Social Media Marketing
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span SEO Audit
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span PPC
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted Email Marketing
+            .text-center.mb-2
+              a(href='#').btn.btn-primary Get started
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow.w-100
+          .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+            h3.text-body.mb-0 Executive
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 299
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Link Building
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Keyword Research
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Social Media Marketing
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span SEO Audit
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span PPC
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Email Marketing
+            .text-center.mb-2
+              a(href='#').btn.btn-outline-primary Get started
+
+
+  // Case Studies
+  section.bg-secondary.py-5.py-md-6
+    .container.py-2
+      h2.text-center Our Case Studies
+      p.text-center.text-muted.mb-5.pb-1 Click any project below to see the results!
+      .row
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/marketing-seo/case-studies/01.jpg' alt='Corogy').card-img-top
+            .card-body
+              h3.h5.mb-0 Corogy
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/marketing-seo/case-studies/02.jpg' alt='SoapBar').card-img-top
+            .card-body
+              h3.h5.mb-0 SoapBar
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          a(href='#' style='max-width: 400px;').card.card-hover.border-0.shadow.mx-auto
+            img(src='img/demo/marketing-seo/case-studies/03.jpg' alt='WAKA Coffee').card-img-top
+            .card-body
+              h3.h5.mb-0 WAKA Coffee
+      .pt-3.text-center
+        a(href='#').btn.btn-primary See all Case Studies
+
+
+  // Team
+  section.container.pt-5.pb-4.pb-md-5.pb-lg-6.pt-md-6.pt-lg-7
+    h2.text-center.pt-2.pt-md-0.mb-5 Our Team
+    .row.pb-3.pb-md-0
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/01.jpg' alt='Sarah Cole')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sarah Cole
+            p.fs-xs.text-body.mb-0 Social media strategist
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/02.jpg' alt='Charlie Welch')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Charlie Welch
+            p.fs-xs.text-body.mb-0 Instagram expert
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/03.jpg' alt='Emma Brown')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Emma Brown
+            p.fs-xs.text-body.mb-0 Content creator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/04.jpg' alt='Rosalie Lyons')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Rosalie Lyons
+            p.fs-xs.text-body.mb-0 Social media educator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/05.jpg' alt='Jane Tanaka')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Jane Tanaka
+            p.fs-xs.text-body.mb-0 Social media strategist
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/06.jpg' alt='Sanomi Smith')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sanomi Smith
+            p.fs-xs.text-body.mb-0 Model and influencer
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/07.jpg' alt='Olivia Jones')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Olivia Jones
+            p.fs-xs.text-body.mb-0 Content creator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon.fs-base: i.ai-linkedin
+          .card-img-top.card-img-gradient
+            img(src='img/team/08.jpg' alt='Richard Davis')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Richard Davis
+            p.fs-xs.text-body.mb-0 Travel content creator
+
+
+  // Testimonials
+  section.bg-secondary.py-5.py-md-6.py-lg-7
+    .container
+      h2.text-center.mb-5 What our clients say about us
+      .row.justify-content-center
+        .col-xl-11
+          .tns-carousel-wrapper
+            .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "nav": false}')
+
+              // Item
+              div
+                .pb-3.pb-md-0.ps-md-7.ms-md-3
+                  .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(img/demo/business-consulting/testimonials/02.jpg);')
+                    .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-start
+                      .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                        blockquote.blockquote
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                          footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+                      a(href='https://www.youtube.com/watch?v=PjNJfOrKT3I' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                  .d-md-none.mt-n6.px-3.scale-up
+                    .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                      blockquote.blockquote
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+
+              // Item
+              div
+                .pb-3.pb-md-0.ps-md-7.ms-md-3
+                  .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(img/demo/business-consulting/testimonials/01.jpg);')
+                    .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-start
+                      .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                        blockquote.blockquote
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                          footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+                      a(href='https://www.youtube.com/watch?v=YwIQnTkP060' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                  .d-md-none.mt-n6.px-3.scale-up
+                    .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                      blockquote.blockquote
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+
+
+  // Blog
+  section.container.py-5.py-md-6.py-lg-7.mb-4.mb-md-0
+    h2.mb-5.mt-3.mt-md-0.text-center From the blog
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16},"850":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success New
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Marketing
+              h3.h4.nav-heading.mb-4
+                a(href='#') Top 5 SEO Tips to Increase Your Website's Traffic
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sanomi Smith
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Feb 12
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 CMS
+              h3.h4.nav-heading.mb-4
+                a(href='#') List of Excellent Learning Management Systems
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Tim Brooks
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 27
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Web development
+              h3.h4.nav-heading.mb-4
+                a(href='#') Build Complete Websites in a Fraction of Time With This Handy Tool
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Charlie Welch
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 15
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Project management
+              h3.h4.nav-heading.mb-4
+                a(href='#') What You Can Learn About Managing Projects
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/07.jpg' alt='Sarah Palson' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sarah Palson
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Dec 19
+
+
+  // Contact form + Details
+  section.bg-dark.py-5.py-sm-6.py-md-7
+    .container.py-3.py-sm-0
+      .row
+        form(novalidate).col-xl-6.col-lg-7.col-md-7.needs-validation.mb-5.mb-md-0
+          h2.text-light.pb-4 Ready for changes? Contact us
+          .input-group.mb-3
+            i.ai-user.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Name' required).form-control.rounded
+          .input-group.mb-3
+            i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='email' placeholder='Email' required).form-control.rounded
+          .mb-3.pb-1
+            textarea(rows='6' placeholder='Project description' required).form-control
+          .row.pt-2
+            .col-lg-6.col-md-8
+              button(type='submit').btn.btn-primary.d-block.w-100 Send Request
+        .col-xl-3.col-lg-4.offset-xl-3.offset-lg-1.col-md-5
+          h2.text-light.pb-2 Contacts
+          ul.list-unstyled.fs-sm.mb-4.pb-2
+            li: a(href='mailto:contact@example.com').nav-link-style.nav-link-light contact@example.com
+            li: a(href='tel:+15262200459').nav-link-style.nav-link-light + 1 526 220 0459
+          h3.h6.pb-2.text-light Or connect with us on:
+          a(href='#').btn-social.bs-facebook.bs-light.bs-lg.me-2.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-twitter.bs-light.bs-lg.me-2.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-instagram.bs-light.bs-lg.me-2.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-linkedin.bs-light.bs-lg.me-2.mb-2
+            i.ai-linkedin
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.bg-darker.py-4
+    .container.d-md-flex.align-items-center.justify-content-between.py-2.text-center.text-md-start
+      ul.list-inline.fs-sm.mb-3.mb-md-0.order-md-2
+        li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Support
+        li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Contacts
+        li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Terms &amp; Conditions
+      p.fs-sm.mb-0.me-3.order-md-1
+        span.text-light.opacity-50.me-1 © All rights reserved. Made by
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

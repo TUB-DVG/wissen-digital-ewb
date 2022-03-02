@@ -1,0 +1,50 @@
+extends ../partials/layout-docs
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Project structure'
+  - var isNestedFile = true
+  
+//- Page Content
+block content
+  .pb-5
+    .table-responsive
+      table.table.table-bordered.table-striped
+        thead
+          tr
+            th.w-25 Folder / File name
+            th.w-75 Description
+        tbody
+          tr
+            td.w-25: span.fw-medium Around
+            td.w-75 Folder contains all template source and production files.
+          tr
+            td.w-25: span.fw-medium Around / src
+            td.w-75 This folder holds all template source files like .pug, .scss, .js that are then processed (compiled / minified) to <code>dist</code> folder.
+          tr
+            td.w-25: span.fw-medium Around / dist
+            td.w-75 Folder contains all template distribution files like .html, .css, .js that have been processed (compiled / minified) from <code>src</code> folder using Node.js and Gulp.
+          tr
+            td.w-25: span.fw-medium Around / dist / vendor
+            td.w-75 This folder contains all vendor plugins' <code>.js / .css</code> files.
+          tr
+            td.w-25: span.fw-medium Around / package.json
+            td.w-75 File contains meta data about your app or module. Most importantly, it includes the list of dependencies to install from npm when running <kbd>npm install</kbd>.
+          tr
+            td.w-25: span.fw-medium Around / gulpfile.js
+            td.w-75 Configuration file for Gulp library. It contains all tasks you want to perform with Gulp. Learn more about it from <a href='working-with-gulp.html'>Working with Gulp</a> section or <a href='https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md' target='_blank'>official Gulp documentation</a>.
+          tr
+            td.w-25: span.fw-medium Around / src / js
+            td.w-75 This folder contains main <code>theme.js</code> and <code>components</code> subfolder with all modules. <code>theme.js</code> is processed (compiled / minified) into 2 files:  <code>dist/js/theme.js</code> and <code>dist/js/theme.min.js</code>. The latter is linked to all <code>.html</code> documents.
+          tr
+            td.w-25: span.fw-medium Around / src / scss
+            td.w-75 This folder contains all project <code>sass</code> files that are compiled and minified to styles in <code>dist/css/</code> folder.
+          tr
+            td.w-25: span.fw-medium Around / src / templates
+            td.w-75 This folder contains all <code>pug</code> files that are compiled into HTML in <code>dist</code>, <code>dist/components</code> and <code>dist/docs</code> folders.
+
+    .alert.d-flex.alert-info.mb-4(role='alert')
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      p.fs-md.mb-0 <span class='fw-semibold'>Note:</span> if you do not use Pro Front-End setup with Node.js and Gulp and want directly edit html / css / js files you should be looking into <span class='fw-semibold'>dist</span> folder.
+    
+    p Whether you work with Node.js and Gulp or not you can still take advantage of preprocessors for HTML and CSS.<br>In this case you might want to learn <a href='using-preprocessors.html' class='fw-medium'>how to use Pug and Sass</a>.

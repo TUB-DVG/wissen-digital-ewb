@@ -1,0 +1,1039 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Navbar'
+  - var pageSubtitle = 'Responsive navigation header that includes support for branding, navigation, and more.'
+  - var pageTitleLink = {'title': 'Bootstrap docs', 'link': 'https://getbootstrap.com/docs/5.1/components/navbar/'}
+  - var anchorNav = [{'title': 'Basic example', 'link': '#navbar-basic'}, {'title': 'Color schemes', 'link': '#navbar-color-schemes'}, {'title': 'Topbar', 'link': '#navbar-topbar'}, {'title': 'Topbar + Navbar', 'link': '#navbar-twolevel'}, {'title': 'Offcanvas mobile menu', 'link': '#navbar-offcanvas'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.mb-5(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      p.text-break.fs-md.mb-0 Add class <strong>navbar-sticky</strong> to <strong>navbar</strong> to make it stick to the top of the page when scrolling.
+
+  // Basic example
+  section#navbar-basic.pb-5.mb-md-2
+    h2.h4.mb-3 Basic example
+    .card.border-0.shadow-lg(style='z-index: 10;')
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            header.navbar.navbar-expand-lg.navbar-light.bg-light.rounded.navbar-shadow.mb-4
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse1').navbar-toggler
+                  span.navbar-toggler-icon
+                a(href='#').btn.btn-primary.d-none.d-sm-inline-block.ms-3 Sign up
+              #navbarCollapse1.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item.dropdown
+                    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Dropdown
+                    ul.dropdown-menu
+                      li: a(href='#').dropdown-item Action link
+                      li.dropdown
+                        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dropdown
+                        ul.dropdown-menu
+                          li: a(href='#').dropdown-item Action link
+                          li: a(href='#').dropdown-item Another action
+                          li: a(href='#').dropdown-item Something else here
+                          li: a(href='#').dropdown-item Yet another link
+                      li: a(href='#').dropdown-item Another action
+                      li.dropdown-divider 
+                      li: a(href='#').dropdown-item Something else here
+                  li.nav-item
+                    a(href='#' tabindex='-1' aria-disabled='true').nav-link.disabled Disabled
+
+            header.navbar.navbar-expand-lg.navbar-light.bg-light.rounded.navbar-shadow.mb-4
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse2').navbar-toggler
+                  span.navbar-toggler-icon
+                .navbar-tool
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-search
+                .navbar-tool.d-none.d-sm-flex
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-user
+                div(style='height: 30px;').border-start.me-2
+                .navbar-tool.me-2
+                  a(href='#').navbar-tool-icon-box
+                    i.ai-shopping-cart
+                    span.navbar-tool-badge 3
+              #navbarCollapse2.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item.dropdown
+                    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Dropdown
+                    ul.dropdown-menu
+                      li: a(href='#').dropdown-item Action link
+                      li.dropdown
+                        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dropdown
+                        ul.dropdown-menu
+                          li: a(href='#').dropdown-item Action link
+                          li: a(href='#').dropdown-item Another action
+                          li: a(href='#').dropdown-item Something else here
+                          li: a(href='#').dropdown-item Yet another link
+                      li: a(href='#').dropdown-item Another action
+                      li.dropdown-divider 
+                      li: a(href='#').dropdown-item Something else here
+                  li.nav-item
+                    a(href='#' tabindex='-1' aria-disabled='true').nav-link.disabled Disabled
+
+            header.navbar.navbar-expand-lg.navbar-light.bg-light.rounded.navbar-shadow
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse3').navbar-toggler.me-2
+                  span.navbar-toggler-icon
+                .navbar-tool.dropdown
+                  a(href='#').navbar-tool-icon-box
+                    img(src='../img/dashboard/avatar/main-sm.jpg' alt='Avatar').navbar-tool-icon-box-img
+                  a(href='#').navbar-tool-label.dropdown-toggle
+                    small Hello,
+                    | Amanda
+                  ul.dropdown-menu.dropdown-menu-end(style='width: 15rem;')
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-shopping-bag.fs-base.opacity-60.me-2
+                        | Orders
+                        span.nav-indicator
+                        span.ms-auto.fs-xs.text-muted 2
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-dollar-sign.fs-base.opacity-60.me-2
+                        | Sales
+                        span.ms-auto.fs-xs.text-muted $735.00
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-message-square.fs-base.opacity-60.me-2
+                        | Messages
+                        span.nav-indicator
+                        span.ms-auto.fs-xs.text-muted 1
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-users.fs-base.opacity-60.me-2
+                        | Followers
+                        span.ms-auto.fs-xs.text-muted 146
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-star.fs-base.opacity-60.me-2
+                        | Reviews
+                        span.ms-auto.fs-xs.text-muted 15
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-heart.fs-base.opacity-60.me-2
+                        | Favorites
+                        span.ms-auto.fs-xs.text-muted 6
+                    li.dropdown-divider
+                    li
+                      a(href='#').dropdown-item.d-flex.align-items-center
+                        i.ai-log-out.fs-base.opacity-60.me-2
+                        | Sign out
+              #navbarCollapse3.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item.dropdown
+                    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Dropdown
+                    ul.dropdown-menu
+                      li: a(href='#').dropdown-item Action link
+                      li.dropdown
+                        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dropdown
+                        ul.dropdown-menu
+                          li: a(href='#').dropdown-item Action link
+                          li: a(href='#').dropdown-item Another action
+                          li: a(href='#').dropdown-item Something else here
+                          li: a(href='#').dropdown-item Yet another link
+                      li: a(href='#').dropdown-item Another action
+                      li.dropdown-divider 
+                      li: a(href='#').dropdown-item Something else here
+                  li.nav-item
+                    a(href='#' tabindex='-1' aria-disabled='true').nav-link.disabled Disabled
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Basic navbar: Button (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-light bg-light navbar-shadow&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    &lt;a class=&quot;navbar-brand order-lg-1 me-0 pe-lg-2 me-lg-4&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;d-none d-lg-block&quot; width=&quot;153&quot; src=&quot;path-to-dsktop-logo&quot; alt=&quot;Around&quot;/&gt;
+                      &lt;img class=&quot;d-lg-none&quot; width=&quot;58&quot; src=&quot;path-to-mobile-logo&quot; alt=&quot;Around&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;d-flex align-items-center order-lg-3&quot;&gt;
+                      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse1&quot;&gt;
+                        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;a class=&quot;btn btn-primary d-none d-sm-inline-block ms-3&quot; href=&quot;#&quot;&gt;Sign up&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;collapse navbar-collapse order-lg-2&quot; id=&quot;navbarCollapse1&quot;&gt;
+                      &lt;ul class=&quot;navbar-nav me-auto&quot;&gt;
+                        &lt;li class=&quot;nav-item active&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                          &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                          &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;dropdown&quot;&gt;&lt;a class=&quot;dropdown-item dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                              &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Yet another link&lt;/a&gt;&lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                          &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot; tabindex=&quot;-1&quot; aria-disabled=&quot;true&quot;&gt;Disabled&lt;/a&gt;
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+
+                &lt;!-- Basic navbar: Toolbar (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-light bg-light navbar-shadow&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    &lt;a class=&quot;navbar-brand order-lg-1 me-0 pe-lg-2 me-lg-4&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;d-none d-lg-block&quot; width=&quot;153&quot; src=&quot;path-to-desktop-logo&quot; alt=&quot;Around&quot;/&gt;
+                      &lt;img class=&quot;d-lg-none&quot; width=&quot;58&quot; src=&quot;path-to-mobile-logo&quot; alt=&quot;Around&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;d-flex align-items-center order-lg-3&quot;&gt;
+                      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse2&quot;&gt;
+                        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;navbar-tool&quot;&gt;
+                        &lt;a class=&quot;navbar-tool-icon-box me-2&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ai-search&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;navbar-tool d-none d-sm-flex&quot;&gt;
+                        &lt;a class=&quot;navbar-tool-icon-box me-2&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ai-user&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;border-start me-2&quot; style=&quot;height: 30px;&quot;&gt;&lt;/div&gt;
+                      &lt;div class=&quot;navbar-tool me-2&quot;&gt;
+                        &lt;a class=&quot;navbar-tool-icon-box&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+                          &lt;span class=&quot;navbar-tool-badge&quot;&gt;3&lt;/span&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;collapse navbar-collapse order-lg-2&quot; id=&quot;navbarCollapse2&quot;&gt;
+                      &lt;!-- Site menu goes here. See example above --&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+                
+                &lt;!-- Basic navbar: Logged in user (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-light bg-light navbar-shadow&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    &lt;a class=&quot;navbar-brand order-lg-1 me-0 pe-lg-2 me-lg-4&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;d-none d-lg-block&quot; width=&quot;153&quot; src=&quot;path-to-desktop-logo&quot; alt=&quot;Around&quot;/&gt;
+                      &lt;img class=&quot;d-lg-none&quot; width=&quot;58&quot; src=&quot;path-to-mobile-logo&quot; alt=&quot;Around&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;d-flex align-items-center order-lg-3&quot;&gt;
+                      &lt;button class=&quot;navbar-toggler me-2&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse3&quot;&gt;
+                        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;navbar-tool dropdown&quot;&gt;
+                        &lt;a class=&quot;navbar-tool-icon-box&quot; href=&quot;#&quot;&gt;
+                          &lt;img class=&quot;navbar-tool-icon-box-img&quot; src=&quot;path-to-image&quot; alt=&quot;Avatar&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;a class=&quot;navbar-tool-label dropdown-toggle&quot; href=&quot;#&quot;&gt;&lt;small&gt;Hello,&lt;/small&gt;Amanda&lt;/a&gt;
+                        &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot; style=&quot;width: 15rem;&quot;&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-shopping-bag fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Orders
+                              &lt;span class=&quot;nav-indicator&quot;&gt;&lt;/span&gt;
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;2&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-dollar-sign fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Sales
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;$735.00&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-message-square fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Messages
+                              &lt;span class=&quot;nav-indicator&quot;&gt;&lt;/span&gt;
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;1&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-users fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Followers
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;146&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-star fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Reviews
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;15&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-heart fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Favorites
+                              &lt;span class=&quot;ms-auto fs-xs text-muted&quot;&gt;6&lt;/span&gt;
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item d-flex align-items-center&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-log-out fs-base opacity-60 me-2&quot;&gt;&lt;/i&gt;
+                              Sign out
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;collapse navbar-collapse order-lg-2&quot; id=&quot;navbarCollapse3&quot;&gt;
+                      &lt;!-- Site menu goes here. See example above --&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Basic navbar: Button (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow
+                  .container.px-0.px-xl-3
+                    a(href=&quot;#&quot;).navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                      img(src=&quot;path-to-desktop-logo&quot;, alt=&quot;Around&quot;, width=&quot;153&quot;).d-none.d-lg-block
+                      img(src=&quot;path-to-mobile-logo&quot;, alt=&quot;Around&quot;, width=&quot;58&quot;).d-lg-none
+                    .d-flex.align-items-center.order-lg-3
+                      button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse1&quot;).navbar-toggler
+                        span.navbar-toggler-icon
+                      a(href=&quot;#&quot;).btn.btn-primary.d-none.d-sm-inline-block.ms-3
+                        | Sign up
+                    #navbarCollapse1.collapse.navbar-collapse.order-lg-2
+                      ul.navbar-nav.me-auto
+                        li.nav-item.active
+                          a(href=&quot;#&quot;).nav-link
+                            | Home
+                        li.nav-item
+                          a(href=&quot;#&quot;).nav-link
+                            | Link
+                        li.nav-item.dropdown
+                          a(href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;).nav-link.dropdown-toggle
+                            | Dropdown
+                          ul.dropdown-menu
+                            li
+                              a(href=&quot;#&quot;).dropdown-item
+                                | Action link
+                            li.dropdown
+                              a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).dropdown-item.dropdown-toggle
+                                | Dropdown
+                              ul.dropdown-menu
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    | Action link
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    | Another action
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    | Something else here
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    | Yet another link
+                            li
+                              a(href=&quot;#&quot;).dropdown-item
+                                | Another action
+                            li.dropdown-divider 
+                            li
+                              a(href=&quot;#&quot;).dropdown-item
+                                | Something else here
+                        li.nav-item
+                          a(href=&quot;#&quot;, tabindex=&quot;-1&quot;, aria-disabled=&quot;true&quot;).nav-link.disabled
+                            | Disabled
+
+                // Basic navbar: Toolbar (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow
+                  .container.px-0.px-xl-3
+                    a(href=&quot;#&quot;).navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                      img(src=&quot;path-to-desktop-logo&quot;, alt=&quot;Around&quot;, width=&quot;153&quot;).d-none.d-lg-block
+                      img(src=&quot;path-to-mobile-logo&quot;, alt=&quot;Around&quot;, width=&quot;58&quot;).d-lg-none
+                    .d-flex.align-items-center.order-lg-3
+                      button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse2&quot;).navbar-toggler
+                        span.navbar-toggler-icon
+                      .navbar-tool
+                        a(href=&quot;#&quot;).navbar-tool-icon-box.me-2
+                          i.ai-search
+                      .navbar-tool.d-none.d-sm-flex
+                        a(href=&quot;#&quot;).navbar-tool-icon-box.me-2
+                          i.ai-user
+                      div(style=&quot;height: 30px;&quot;).border-start.me-2
+                      .navbar-tool.me-2
+                        a(href=&quot;#&quot;).navbar-tool-icon-box
+                          i.ai-shopping-cart
+                          span.navbar-tool-badge 3
+                    #navbarCollapse2.collapse.navbar-collapse.order-lg-2
+                      // Site menu goes here. See example above
+
+                // Basic navbar: Logged in user (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow
+                  .container.px-0.px-xl-3
+                    a(href=&quot;#&quot;).navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                      img(src=&quot;path-to-desktop-logo&quot;, alt=&quot;Around&quot;, width=&quot;153&quot;).d-none.d-lg-block
+                      img(src=&quot;path-to-mobile-logo&quot;, alt=&quot;Around&quot;, width=&quot;58&quot;).d-lg-none
+                    .d-flex.align-items-center.order-lg-3
+                      button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse3&quot;).navbar-toggler.me-2
+                        span.navbar-toggler-icon
+                      .navbar-tool.dropdown
+                        a(href=&quot;#&quot;).navbar-tool-icon-box
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Avatar&quot;).navbar-tool-icon-box-img
+                        a(href=&quot;#&quot;).navbar-tool-label.dropdown-toggle
+                          small Hello,
+                          | Amanda
+                        ul(style=&quot;width: 15rem;&quot;).dropdown-menu.dropdown-menu-end
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-shopping-bag.fs-base.opacity-60.me-2
+                              | Orders
+                              span.nav-indicator
+                              span.ms-auto.fs-xs.text-muted 2
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-dollar-sign.fs-base.opacity-60.me-2
+                              | Sales
+                              span.ms-auto.fs-xs.text-muted $735.00
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-message-square.fs-base.opacity-60.me-2
+                              | Messages
+                              span.nav-indicator
+                              span.ms-auto.fs-xs.text-muted 1
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-users.fs-base.opacity-60.me-2
+                              | Followers
+                              span.ms-auto.fs-xs.text-muted 146
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-star.fs-base.opacity-60.me-2
+                              | Reviews
+                              span.ms-auto.fs-xs.text-muted 15
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-heart.fs-base.opacity-60.me-2
+                              | Favorites
+                              span.ms-auto.fs-xs.text-muted 6
+                          li.dropdown-divider
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.d-flex.align-items-center
+                              i.ai-log-out.fs-base.opacity-60.me-2
+                              | Sign out
+                    #navbarCollapse3.collapse.navbar-collapse.order-lg-2
+                      // Site menu goes here. See example above
+
+  // Color schemes
+  section#navbar-color-schemes.pb-5.mb-md-2
+    h2.h4.mb-3 Color schemes
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            header.navbar.navbar-expand-lg.navbar-dark.bg-dark.rounded.mb-4
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-light.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse4').navbar-toggler
+                  span.navbar-toggler-icon
+                .navbar-tool
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-search
+                .navbar-tool.d-none.d-sm-flex
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-user
+                div(style='height: 30px;').border-start.border-light.me-2
+                .navbar-tool.me-2
+                  a(href='#').navbar-tool-icon-box
+                    i.ai-shopping-cart
+                    span.navbar-tool-badge 3
+              #navbarCollapse4.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item
+                    a(href='#').nav-link About
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+                    
+            header.navbar.navbar-expand-lg.navbar-dark.bg-primary.rounded.mb-4
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-light.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse5').navbar-toggler
+                  span.navbar-toggler-icon
+                .navbar-tool
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-search
+                .navbar-tool.d-none.d-sm-flex
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-user
+                div(style='height: 30px;').border-start.border-light.me-2
+                .navbar-tool.me-2
+                  a(href='#').navbar-tool-icon-box
+                    i.ai-shopping-cart
+                    span.navbar-tool-badge 3
+              #navbarCollapse5.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item
+                    a(href='#').nav-link About
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+                    
+            header.navbar.navbar-expand-lg.navbar-light.bg-secondary.rounded
+              a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                img(src='../img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+                img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+              .d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse6').navbar-toggler
+                  span.navbar-toggler-icon
+                .navbar-tool
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-search
+                .navbar-tool.d-none.d-sm-flex
+                  a(href='#').navbar-tool-icon-box.me-2
+                    i.ai-user
+                div(style='height: 30px;').border-start.me-2
+                .navbar-tool.me-2
+                  a(href='#').navbar-tool-icon-box
+                    i.ai-shopping-cart
+                    span.navbar-tool-badge 3
+              #navbarCollapse6.collapse.navbar-collapse.order-lg-2
+                ul.navbar-nav.me-auto
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item
+                    a(href='#').nav-link About
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Dark navbar (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    ...
+                  &lt;/div&gt;
+                &lt;/header&gt;
+
+                &lt;!-- Primary navbar (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-dark bg-primary&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    ...
+                  &lt;/div&gt;
+                &lt;/header&gt;
+
+                &lt;!-- Gray navbar (change to .container-fluid for full width navbar) --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-dark bg-secondary&quot;&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    ...
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Dark navbar (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-dark.bg-dark
+                  .container.px-0.px-xl-3
+                    // ...
+
+                // Primary navbar (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-dark.bg-primary
+                  .container.px-0.px-xl-3
+                    // ...
+
+                // Gray navbar (change to .container-fluid for full width navbar)
+                header.navbar.navbar-expand-lg.navbar-dark.bg-secondary
+                  .container.px-0.px-xl-3
+                    // ...
+
+  // Topbar
+  section#navbar-topbar.pb-5.mb-md-2
+    h2.h4.mb-3 Topbar
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .topbar.topbar-light.bg-secondary.rounded-1.mb-4
+              .d-md-flex.align-items-center
+                .d-none.d-md-block.text-nowrap.me-3
+                  i.ai-phone.fs-base.text-muted.me-1
+                  span.text-muted.me-2 Support
+                  a(href='tel:9107848015').topbar-link.me-1 910-784-8015
+                .d-flex.text-end.ms-auto
+                  a(href='#').d-none.d-sm-inline-block.topbar-link.pe-2.me-4
+                    i.ai-map-pin.fs-base.opacity-60.me-1
+                    | Track your order
+                  .dropdown.ms-0.ms-sm-auto.ms-md-0.me-3
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      img(src='../img/flags/en.png' alt='English' width='20').me-2
+                      | Eng
+                    .dropdown-menu.dropdown-menu-end
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/fr.png' alt='Français' width='20').me-2
+                        | Français
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/de.png' alt='Deutsch' width='20').me-2
+                        | Deutsch
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/it.png' alt='Italiano' width='20').mt-n1.me-2
+                        | Italiano
+                  .dropdown.ms-auto.ms-sm-0
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      | $ Dollar (US)
+                    .dropdown-menu.dropdown-menu-end
+                      a(href='#').dropdown-item
+                        | € Euro (EU)
+                      a(href='#').dropdown-item
+                        | £ Pound (UK)
+                      a(href='#').dropdown-item
+                        | ¥ Yen (JP)
+            .topbar.topbar-dark.bg-dark.rounded-1
+              .d-md-flex.align-items-center
+                .d-none.d-md-block.text-nowrap.me-3
+                  i.ai-phone.fs-base.text-muted.me-1
+                  span.text-muted.me-2 Support
+                  a(href='tel:9107848015').topbar-link.me-1 910-784-8015
+                .d-flex.text-end.ms-auto
+                  a(href='#').d-none.d-sm-inline-block.topbar-link.pe-2.me-4
+                    i.ai-map-pin.fs-base.opacity-60.me-1
+                    | Track your order
+                  .dropdown.ms-0.ms-sm-auto.ms-md-0.me-3
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      img(src='../img/flags/en.png' alt='English' width='20').me-2
+                      | Eng
+                    .dropdown-menu.dropdown-menu-end
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/fr.png' alt='Français' width='20').me-2
+                        | Français
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/de.png' alt='Deutsch' width='20').me-2
+                        | Deutsch
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/it.png' alt='Italiano' width='20').mt-n1.me-2
+                        | Italiano
+                  .dropdown.ms-auto.ms-sm-0
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      | $ Dollar (US)
+                    .dropdown-menu.dropdown-menu-end
+                      a(href='#').dropdown-item
+                        | € Euro (EU)
+                      a(href='#').dropdown-item
+                        | £ Pound (UK)
+                      a(href='#').dropdown-item
+                        | ¥ Yen (JP)
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Light topbar --&gt;
+                &lt;div class=&quot;topbar topbar-light bg-secondary&quot;&gt;
+                  &lt;div class=&quot;container d-md-flex align-items-center px-0 px-xl-3&quot;&gt;
+                    &lt;div class=&quot;d-none d-md-block text-nowrap me-3&quot;&gt;
+                      &lt;i class=&quot;ai-phone fs-base text-muted me-1&quot;&gt;&lt;/i&gt;
+                      &lt;span class=&quot;text-muted me-2&quot;&gt;Support&lt;/span&gt;
+                      &lt;a class=&quot;topbar-link me-1&quot; href=&quot;tel:9107848015&quot;&gt;910-784-8015&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;d-flex text-end ms-auto&quot;&gt;
+                      &lt;a class=&quot;d-none d-sm-inline-block topbar-link pe-2 me-4&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-map-pin fs-base opacity-60 me-1&quot;&gt;&lt;/i&gt;Track your order
+                      &lt;/a&gt;
+                      &lt;div class=&quot;dropdown ms-0 ms-sm-auto ms-md-0 me-3&quot;&gt;
+                        &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                          &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;Eng
+                        &lt;/a&gt;
+                        &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                            Français
+                          &lt;/a&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                            Deutsch
+                          &lt;/a&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;mt-n1 me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                            Italiano
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;dropdown ms-auto ms-sm-0&quot;&gt;
+                        &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;$ Dollar (US)&lt;/a&gt;
+                        &lt;div class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;€ Euro (EU)&lt;/a&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;£ Pound (UK)&lt;/a&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;¥ Yen (JP)&lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Dark topbar --&gt;
+                &lt;div class=&quot;topbar topbar-dark bg-dark&quot;&gt;
+                  &lt;div class=&quot;container d-md-flex align-items-center px-0 px-xl-3&quot;&gt;
+                    ...
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Light topbar
+                .topbar.topbar-light.bg-secondary
+                  .container.d-md-flex.align-items-center.px-0.px-xl-3
+                    .d-none.d-md-block.text-nowrap.me-3
+                      i.ai-phone.fs-base.text-muted.me-1
+                      span.text-muted.me-2 Support
+                      a(href=&quot;tel:9107848015&quot;).topbar-link.me-1
+                        | 910-784-8015
+                    .d-flex.text-end.ms-auto
+                      a(href=&quot;#&quot;).d-none.d-sm-inline-block.topbar-link.pe-2.me-4
+                        i.ai-map-pin.fs-base.opacity-60.me-1
+                        | Track your order
+                      .dropdown.ms-0.ms-sm-auto.ms-md-0.me-3
+                        a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                          img(src=&quot;path-to-image&quot;, alt=&quot;English&quot;, width=&quot;20&quot;).me-2
+                          | Eng
+                        .dropdown-menu.dropdown-menu-end
+                          a(href=&quot;#&quot;).dropdown-item
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Français&quot;, width=&quot;20&quot;).me-2
+                            | Français
+                          a(href=&quot;#&quot;).dropdown-item
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Deutsch&quot;, width=&quot;20&quot;).me-2
+                            | Deutsch
+                          a(href=&quot;#&quot;).dropdown-item
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Italiano&quot;, width=&quot;20&quot;).mt-n1.me-2
+                            | Italiano
+                      .dropdown.ms-auto.ms-sm-0
+                        a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                          | $ Dollar (US)
+                        .dropdown-menu.dropdown-menu-end
+                          a(href=&quot;#&quot;).dropdown-item
+                            | € Euro (EU)
+                          a(href=&quot;#&quot;).dropdown-item
+                            | £ Pound (UK)
+                          a(href=&quot;#&quot;).dropdown-item
+                            | ¥ Yen (JP)
+
+                // Dark topbar
+                .topbar.topbar-dark.bg-dark
+                  .container.d-md-flex.align-items-center.px-0.px-xl-3
+                    | ...
+
+  // Topbar + Navbar
+  section#navbar-twolevel.pb-5.mb-md-2
+    h2.h4.mb-3 Topbar + Navbar
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            header
+              .topbar.topbar-dark.bg-dark.rounded-top
+                .d-md-flex.align-items-center
+                  .d-none.d-md-block.text-nowrap.me-3
+                    i.ai-phone.fs-base.text-muted.me-1
+                    span.text-muted.me-2 Support
+                    a(href='tel:9107848015').topbar-link.me-1 910-784-8015
+                  .d-flex.text-end.ms-auto
+                    a(href='#').d-none.d-sm-inline-block.topbar-link.pe-2.me-4
+                      i.ai-map-pin.fs-base.opacity-60.me-1
+                      | Track your order
+                    .dropdown.ms-0.ms-sm-auto.ms-md-0.me-3
+                      a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                        img(src='../img/flags/en.png' alt='English' width='20').me-2
+                        | Eng
+                      .dropdown-menu.dropdown-menu-end
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/fr.png' alt='Français' width='20').me-2
+                          | Français
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/de.png' alt='Deutsch' width='20').me-2
+                          | Deutsch
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/it.png' alt='Italiano' width='20').mt-n1.me-2
+                          | Italiano
+                    .dropdown.ms-auto.ms-sm-0
+                      a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                        | $ Dollar (US)
+                      .dropdown-menu.dropdown-menu-end
+                        a(href='#').dropdown-item
+                          | € Euro (EU)
+                        a(href='#').dropdown-item
+                          | £ Pound (UK)
+                        a(href='#').dropdown-item
+                          | ¥ Yen (JP)
+              .navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow.rounded-bottom
+                a(href='#').navbar-brand.order-lg-1.me-0.pe-lg-2.me-lg-4
+                  img(src='../img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+                  img(src='../img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+                .d-flex.align-items-center.order-lg-3
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse7').navbar-toggler
+                    span.navbar-toggler-icon
+                  .navbar-tool
+                    a(href='#').navbar-tool-icon-box.me-2
+                      i.ai-search
+                  .navbar-tool.d-none.d-sm-flex
+                    a(href='#').navbar-tool-icon-box.me-2
+                      i.ai-user
+                  div(style='height: 30px;').border-start.me-2
+                  .navbar-tool.me-2
+                    a(href='#').navbar-tool-icon-box
+                      i.ai-shopping-cart
+                      span.navbar-tool-badge 3
+                #navbarCollapse7.collapse.navbar-collapse.order-lg-2
+                  ul.navbar-nav.me-auto
+                    li.nav-item.active
+                      a(href='#').nav-link Home
+                    li.nav-item
+                      a(href='#').nav-link Link
+                    li.nav-item
+                      a(href='#').nav-link About
+                    li.nav-item
+                      a(href='#').nav-link Pricing
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- 2-level header: Topbar + Navbar --&gt;
+                &lt;header&gt;
+
+                  &lt;!-- Topbar --&gt;
+                  &lt;div class=&quot;topbar topbar-dark bg-dark&quot;&gt;
+                    &lt;div class=&quot;container d-md-flex align-items-center px-0 px-xl-3&quot;&gt;
+                      ...
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Navbar --&gt;
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-light bg-light navbar-shadow&quot;&gt;
+                    &lt;div class=&quot;container d-md-flex align-items-center px-0 px-xl-3&quot;&gt;
+                      ...
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // 2-level header: Topbar + Navbar
+                header
+
+                  // Topbar
+                  .topbar.topbar-dark.bg-dark
+                    .container.d-md-flex.align-items-center.px-0.px-xl-3
+                      | ...
+
+                  // Navbar
+                  .navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow
+                    .container.d-md-flex.align-items-center.px-0.px-xl-3
+                      | ...
+
+  // Offcanvas mobile menu
+  section#navbar-offcanvas.pb-5.mb-md-2
+    h2.h4.mb-3 Offcanvas mobile menu
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            iframe.w-100.shadow.mt-2(src='navbar-offcanvas.html' height='500' style='max-width: 360px;')
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Offcanvas mobile menu example --&gt;
+                &lt;header class=&quot;header navbar navbar-expand-lg navbar-light bg-light navbar-shadow navbar-sticky&quot; data-scroll-header data-fixed-element&gt;
+                  &lt;div class=&quot;container px-0 px-xl-3&quot;&gt;
+                    &lt;a class=&quot;navbar-brand flex-shrink-0 pe-lg-2 me-lg-4&quot; href=&quot;index.html&quot;&gt;
+                      &lt;img src=&quot;path-to-logo-image&quot; width=&quot;logo-width-in-pixels&quot; alt=&quot;Logo&quot;&gt;
+                    &lt;/a&gt;
+                    &lt;button class=&quot;navbar-toggler me-n2 me-2&quot; type=&quot;button&quot; data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#primaryMenu&quot;&gt;
+                      &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;div class=&quot;offcanvas offcanvas-collapse offcanvas-end&quot; id=&quot;primaryMenu&quot;&gt;
+                      &lt;div class=&quot;offcanvas-header navbar-shadow&quot;&gt;
+                        &lt;h5 class=&quot;mt-1 mb-0&quot;&gt;Menu&lt;/h5&gt;
+                        &lt;button class=&quot;btn-close lead&quot; type=&quot;button&quot; data-bs-dismiss=&quot;offcanvas&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;offcanvas-body&quot;&gt;
+                        &lt;ul class=&quot;navbar-nav&quot;&gt;
+                          &lt;li class=&quot;nav-item active&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                            &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                              &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                              &lt;li class=&quot;dropdown&quot;&gt;
+                                &lt;a class=&quot;dropdown-item dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                                &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                                  &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                                  &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                                  &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                                  &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Yet another link&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/li&gt;
+                              &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                              &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                              &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;
+                            &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot; tabindex=&quot;-1&quot; aria-disabled=&quot;true&quot;&gt;Disabled&lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Offcanvas mobile menu example
+                header.header.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow.navbar-sticky(data-scroll-header, data-fixed-element)
+                  .container.px-0.px-xl-3
+                    a(href=&quot;#&quot;).navbar-brand.flex-shrink-0.pe-lg-2.me-lg-4
+                      img(src=&quot;path-to-logo-image&quot; width=&quot;logo-width-in-pixels&quot; alt=&quot;Logo&quot;)
+                    button(type=&quot;button&quot;, data-bs-toggle=&quot;offcanvas&quot;, data-bs-target=&quot;#primaryMenu&quot;).navbar-toggler.me-n2.me-2
+                      span.navbar-toggler-icon
+                    #primaryMenu.offcanvas.offcanvas-collapse.offcanvas-end
+                      .offcanvas-header.navbar-shadow
+                        h5.mt-1.mb-0 Menu
+                        button(type=&quot;button&quot;, data-bs-dismiss=&quot;offcanvas&quot;, aria-label=&quot;Close&quot;).btn-close.lead
+                      .offcanvas-body
+                        ul.navbar-nav
+                          li.nav-item.active
+                            a(href=&quot;#&quot;).nav-link
+                              | Home
+                          li.nav-item
+                            a(href=&quot;#&quot;).nav-link
+                              | Link
+                          li.nav-item.dropdown
+                            a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).nav-link.dropdown-toggle
+                              | Dropdown
+                            ul.dropdown-menu
+                              li
+                                a(href=&quot;#&quot;).dropdown-item
+                                  | Action link
+                              li.dropdown
+                                a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).dropdown-item.dropdown-toggle
+                                  | Dropdown
+                                ul.dropdown-menu
+                                  li
+                                    a(href=&quot;#&quot;).dropdown-item
+                                      | Action link
+                                  li
+                                    a(href=&quot;#&quot;).dropdown-item
+                                      | Another action
+                                  li
+                                    a(href=&quot;#&quot;).dropdown-item
+                                      | Something else here
+                                  li
+                                    a(href=&quot;#&quot;).dropdown-item
+                                      | Yet another link
+                              li
+                                a(href=&quot;#&quot;).dropdown-item
+                                  | Another action
+                              li.dropdown-divider 
+                              li
+                                a(href=&quot;#&quot;).dropdown-item
+                                  | Something else here
+                          li.nav-item
+                            a(href=&quot;#&quot;, tabindex=&quot;-1&quot;, aria-disabled=&quot;true&quot;).nav-link.disabled
+                              | Disabled

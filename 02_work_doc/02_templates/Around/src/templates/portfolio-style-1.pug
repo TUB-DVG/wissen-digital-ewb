@@ -1,0 +1,84 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Portfolio Grid Style 1'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-light
+
+//- Page Content
+block content
+
+  // Page title
+  section.position-relative.bg-dark.pt-7.pb-5.pb-md-7.bg-size-cover.bg-attachment-fixed(style='background-image: url(img/demo/web-studio/cubes-bg.jpg);')
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    .container.position-relative.zindex-5.text-center.pt-md-6.pt-lg-7.py-5.my-lg-3
+      h1.text-light.mb-0
+        | Portfolio Grid
+        span.h2.d-inline-block.bg-faded-primary.text-primary.px-3.py-2.rounded-3.ms-3 Style 1
+  
+
+  // Portfolio grid
+  section.container.overflow-hidden.py-5.py-md-6.py-lg-7
+    .masonry-filterable.pt-3.pt-md-0
+      ul.masonry-filters.nav.nav-tabs.justify-content-center.pb-4
+        li.nav-item
+          a(href='#' data-group='all').nav-link.active All
+        li.nav-item
+          a(href='#' data-group='web').nav-link Web
+        li.nav-item
+          a(href='#' data-group='mobile').nav-link Mobile
+        li.nav-item
+          a(href='#' data-group='identity').nav-link Identity
+      .masonry-grid(data-columns='3')
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/01.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Landing Page Design
+              p.fs-sm.text-muted.mb-2 UI / UX Design, Web Development
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/02.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Corporate Website Design
+              p.fs-sm.text-muted.mb-2 Web Design
+        .masonry-grid-item(data-groups='["identity"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/03.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Surfing Portal Logo Design
+              p.fs-sm.text-muted.mb-2 Identity Design
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/04.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Cartzilla - Fashion Store
+              p.fs-sm.text-muted.mb-2 E-commerce Development
+        .masonry-grid-item(data-groups='["mobile"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/05.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Mobile App Icon Design
+              p.fs-sm.text-muted.mb-2 Mobile App Design
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/06.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Auto Reseller Website
+              p.fs-sm.text-muted.mb-2 UI / UX Design, Web Development
+    .text-center.py-3.pb-md-0
+      a(href='#').btn.btn-primary
+        i.ai-refresh-ccw.me-2
+        | Load More
+
+
+//- Footer
+block footer
+  include partials/footer-default

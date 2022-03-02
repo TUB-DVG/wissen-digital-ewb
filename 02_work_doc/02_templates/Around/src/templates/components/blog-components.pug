@@ -1,0 +1,768 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'tiny-slider/dist/min/tiny-slider.js']
+  - var pageTitle = 'Blog components'
+  - var pageSubtitle = 'Components that are related to the blog / news section of the website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Post preview (Grid)', 'link': '#blog-grid'}, {'title': 'Post preview (List)', 'link': '#blog-list'}, {'title': 'Related posts carousel', 'link': '#blog-carousel'}, {'title': 'Post comments', 'link': '#blog-comments'}]
+  
+//- Page Content
+block content
+
+  // Post preview (Grid)
+  section#blog-grid.pb-5.mb-md-2
+    h2.h4.mb-3 Post preview (Grid)
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex.align-items-start
+              article.card.card-hover.me-4.mb-4(style='max-width: 20rem;')
+                a(href='#').card-img-top
+                  img(src='../img/blog/01.jpg' alt='Post thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-sm.mb-2 Digital design
+                  h2.h5.nav-heading.mb-4
+                    a(href='#') Designers should always keep their users in mind
+                  a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                    img(src='../img/blog/avatar/01.jpg' alt='Emma Brown' width='36').rounded-circle
+                    .ps-2.ms-1.mt-n1
+                      | by
+                      span.fw-semibold.ms-1 Emma Brown
+                  .mt-3.text-end.text-nowrap
+                    a(href='#').meta-link.fs-xs
+                      i.ai-message-square.me-1
+                      | &nbsp;6
+                    span.meta-divider
+                    a(href='#').meta-link.fs-xs
+                      i.ai-calendar.me-1.mt-n1
+                      | &nbsp;Feb 19
+              article.card.card-hover.me-4.mb-4(style='max-width: 20rem;')
+                .card-body
+                  a(href='#').meta-link.fs-sm.mb-2 Brand strategy
+                  h2.h5.nav-heading.mb-4
+                    a(href='#') Simple steps to an effective brand strategy. Real life examples
+                  a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                    img(src='../img/blog/avatar/02.jpg' alt='Charlie Welch' width='36').rounded-circle
+                    .ps-2.ms-1.mt-n1
+                      | by
+                      span.fw-semibold.ms-1 Charlie Welch
+                  .mt-3.text-end.text-nowrap
+                    a(href='#').meta-link.fs-xs
+                      i.ai-message-square.me-1
+                      | &nbsp;8
+                    span.meta-divider
+                    a(href='#').meta-link.fs-xs
+                      i.ai-calendar.me-1.mt-n1
+                      | &nbsp;Feb 15
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post preview (Grid) with image --&gt;
+                &lt;article class=&quot;card card-hover&quot;&gt;
+                  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Digital design&lt;/a&gt;
+                    &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Designers should always keep their users in mind&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Emma Brown&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                        by
+                        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Emma Brown&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;6
+                      &lt;/a&gt;
+                      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;Feb 19
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+
+                &lt;!-- Post preview (Grid) no image --&gt;
+                &lt;article class=&quot;card card-hover&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Brand strategy&lt;/a&gt;
+                    &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Simple steps to an effective brand strategy. Real life examples&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Charlie Welch&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                        by
+                        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Charlie Welch&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;8
+                      &lt;/a&gt;
+                      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;Feb 15
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post preview (Grid) with image
+                article.card.card-hover
+                  a(href=&quot;#&quot;).card-img-top
+                    img(src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;)
+                  .card-body
+                    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Digital design
+                    h2.h5.nav-heading.mb-4
+                      a(href=&quot;#&quot;) Designers should always keep their users in mind
+                    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Emma Brown&quot;, width=&quot;36&quot;).rounded-circle
+                      .ps-2.ms-1.mt-n1
+                        | by
+                        span.fw-semibold.ms-1 Emma Brown
+                    .mt-3.text-end.text-nowrap
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-message-square.me-1
+                        | &amp;nbsp;6
+                      span.meta-divider
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-calendar.me-1.mt-n1
+                        | &amp;nbsp;Feb 19
+
+                // Post preview (Grid) no image
+                article.card.card-hover
+                  .card-body
+                    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Brand strategy
+                    h2.h5.nav-heading.mb-4
+                      a(href=&quot;#&quot;) Simple steps to an effective brand strategy. Real life examples
+                    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;, width=&quot;36&quot;).rounded-circle
+                      .ps-2.ms-1.mt-n1
+                        | by
+                        span.fw-semibold.ms-1 Charlie Welch
+                    .mt-3.text-end.text-nowrap
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-message-square.me-1
+                        | &amp;nbsp;8
+                      span.meta-divider
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-calendar.me-1.mt-n1
+                        | &amp;nbsp;Feb 15
+
+  
+  // Post preview (List)
+  section#blog-list.pb-5.mb-md-2
+    h2.h4.mb-3 Post preview (List)
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            article.card.card-horizontal.card-hover.mb-grid-gutter(style='max-width: 52rem;')
+              a(href='#' style='background-image: url(../img/blog/05.jpg);').card-img-top
+              .card-body
+                a(href='#').meta-link.fs-sm.mb-2 Technology
+                h2.h4.nav-heading.mb-4
+                  a(href='#') Payments made easy. How new Tech will affect E-Commerce industry?
+                a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                  img(src='../img/blog/avatar/06.jpg' width='36' alt='Barbara Palson').rounded-circle
+                  .ps-2.ms-1.mt-n1
+                    | by
+                    span.fw-semibold.ms-1 Barbara Palson
+                .mt-3.text-right.text-nowrap
+                  a(href='#').meta-link.fs-xs
+                    i.ai-message-square.me-1
+                    | &nbsp;4
+                  span.meta-divider
+                  a(href='#').meta-link.fs-xs
+                    i.ai-calendar.me-1.mt-n1
+                    | &nbsp;Feb 12
+            article.card.card-horizontal.card-hover(style='max-width: 52rem;')
+              a(href='#' style='background-image: url(../img/blog/04.jpg);').card-img-top.order-sm-2
+              .card-body.order-sm-1
+                a(href='#').meta-link.fs-sm.mb-2 Travel &amp; Vacation
+                h2.h4.nav-heading.mb-4
+                  a(href='#') Escape to mountains with only one backpack
+                a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                  img(src='../img/blog/avatar/01.jpg' width='36' alt='Emma Brown').rounded-circle
+                  .ps-2.ms-1.mt-n1
+                    | by
+                    span.fw-semibold.ms-1 Emma Brown
+                .mt-3.text-right.text-nowrap
+                  a(href='#').meta-link.fs-xs
+                    i.ai-message-square.me-1
+                    | &nbsp;31
+                  span.meta-divider
+                  a(href='#').meta-link.fs-xs
+                    i.ai-calendar.me-1.mt-n1
+                    | &nbsp;Dec 25
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post preview (List): Image on the left --&gt;
+                &lt;article class=&quot;card card-horizontal card-hover&quot;&gt;
+                  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot; style=&quot;background-image: url(path-to-image);&quot;&gt;&lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+                    &lt;h2 class=&quot;h4 nav-heading mb-4&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Payments made easy. How new Tech will affect E-Commerce industry?&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                        by
+                        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Barbara Palson&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mt-3 text-right text-nowrap&quot;&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;4
+                      &lt;/a&gt;
+                      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;Feb 12
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+
+                &lt;!-- Post preview (List): Image on the right --&gt;
+                &lt;article class=&quot;card card-horizontal card-hover&quot;&gt;
+                  &lt;a class=&quot;card-img-top order-sm-2&quot; href=&quot;#&quot; style=&quot;background-image: url(path-to-image);&quot;&gt;&lt;/a&gt;
+                  &lt;div class=&quot;card-body order-sm-1&quot;&gt;
+                    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Travel &amp; Vacation&lt;/a&gt;
+                    &lt;h2 class=&quot;h4 nav-heading mb-4&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Escape to mountains with only one backpack&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Emma Brown&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                        by
+                        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Emma Brown&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mt-3 text-right text-nowrap&quot;&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;31
+                      &lt;/a&gt;
+                      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                        &amp;nbsp;Dec 25
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post preview (List): Image on the left
+                article.card.card-horizontal.card-hover
+                  a(href=&quot;#&quot;, style=&quot;background-image: url(path-to-image);&quot;).card-img-top
+                  .card-body
+                    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+                    h2.h4.nav-heading.mb-4
+                      a(href=&quot;#&quot;) Payments made easy. How new Tech will affect E-Commerce industry?
+                    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                      +image(&quot;path-to-image&quot;, &quot;Barbara Palson&quot;)(width=&quot;36&quot;).rounded-circle
+                      .ps-2.ms-1.mt-n1
+                        | by
+                        span.fw-semibold.ms-1 Barbara Palson
+                    .mt-3.text-right.text-nowrap
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-message-square.me-1
+                        | &amp;nbsp;4
+                      span.meta-divider
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-calendar.me-1.mt-n1
+                        | &amp;nbsp;Feb 12
+
+                // Post preview (List): Image on the right
+                article.card.card-horizontal.card-hover
+                  a(href=&quot;#&quot;, style=&quot;background-image: url(path-to-image);&quot;).card-img-top.order-sm-2
+                  .card-body.order-sm-1
+                    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Travel &amp;amp; Vacation
+                    h2.h4.nav-heading.mb-4
+                      a(href=&quot;#&quot;) Escape to mountains with only one backpack
+                    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                      +image(&quot;path-to-image&quot;, &quot;Emma Brown&quot;)(width=&quot;36&quot;).rounded-circle
+                      .ps-2.ms-1.mt-n1
+                        | by
+                        span.fw-semibold.ms-1 Emma Brown
+                    .mt-3.text-right.text-nowrap
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-message-square.me-1
+                        | &amp;nbsp;31
+                      span.meta-divider
+                      a(href=&quot;#&quot;).meta-link.fs-xs
+                        i.ai-calendar.me-1.mt-n1
+                        | &amp;nbsp;Dec 25
+  
+  // Related posts carousel
+  section#blog-carousel.pb-5.mb-md-2
+    h2.h4.mb-3 Related posts carousel
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper
+              .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16},"850":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+              
+                // Article
+                .pb-2
+                  article.card.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/blog/02.jpg' alt='Post thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-sm.mb-2 Technology
+                      h2.h5.nav-heading.mb-4
+                        a(href='#') How technology affect our decisions
+                      a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                        img(src='../img/blog/avatar/03.jpg' alt='Jessica Miller' width='36').rounded-circle
+                        .ps-2.ms-1.mt-n1
+                          | by
+                          span.fw-semibold.ms-1 Jessica Miller
+                      .mt-3.text-end.text-nowrap
+                        a(href='#').meta-link.fs-xs
+                          i.ai-message-square.me-1
+                          | &nbsp;3
+                        span.meta-divider
+                        a(href='#').meta-link.fs-xs
+                          i.ai-calendar.me-1.mt-n1
+                          | &nbsp;Feb 4
+              
+                // Article
+                .pb-2
+                  article.card.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/blog/03.jpg' alt='Post thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-sm.mb-2 Business
+                      h2.h5.nav-heading.mb-4
+                        a(href='#') Open space - new trend in office design
+                      a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                        img(src='../img/blog/avatar/05.jpg' alt='Daniel Adams' width='36').rounded-circle
+                        .ps-2.ms-1.mt-n1
+                          | by
+                          span.fw-semibold.ms-1 Daniel Adams
+                      .mt-3.text-end.text-nowrap
+                        a(href='#').meta-link.fs-xs
+                          i.ai-message-square.me-1
+                          | &nbsp;12
+                        span.meta-divider
+                        a(href='#').meta-link.fs-xs
+                          i.ai-calendar.me-1.mt-n1
+                          | &nbsp;Jan 10
+              
+                // Article
+                .pb-2
+                  article.card.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/blog/06.jpg' alt='Post thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-sm.mb-2 Business
+                      h2.h5.nav-heading.mb-4
+                        a(href='#') Business offices of Fortune 500 companies
+                      a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                        img(src='../img/blog/avatar/06.jpg' alt='Barbara Palson' width='36').rounded-circle
+                        .ps-2.ms-1.mt-n1
+                          | by
+                          span.fw-semibold.ms-1 Barbara Palson
+                      .mt-3.text-end.text-nowrap
+                        a(href='#').meta-link.fs-xs
+                          i.ai-message-square.me-1
+                          | &nbsp;5
+                        span.meta-divider
+                        a(href='#').meta-link.fs-xs
+                          i.ai-calendar.me-1.mt-n1
+                          | &nbsp;Nov 20
+              
+                // Article
+                .pb-2
+                  article.card.card-hover.mx-1
+                    a(href='#').card-img-top
+                      img(src='../img/blog/05.jpg' alt='Post thumbnail')
+                    .card-body
+                      a(href='#').meta-link.fs-sm.mb-2 Technology
+                      h2.h5.nav-heading.mb-4
+                        a(href='#') Payments made easy. How new Tech will affect E-Commerce?
+                      a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-3
+                        img(src='../img/blog/avatar/02.jpg' alt='Charlie Welch' width='36').rounded-circle
+                        .ps-2.ms-1.mt-n1
+                          | by
+                          span.fw-semibold.ms-1 Charlie Welch
+                      .mt-3.text-end.text-nowrap
+                        a(href='#').meta-link.fs-xs
+                          i.ai-message-square.me-1
+                          | &nbsp;17
+                        span.meta-divider
+                        a(href='#').meta-link.fs-xs
+                          i.ai-calendar.me-1.mt-n1
+                          | &nbsp;Nov 08
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Related posts carousel --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}'&gt;
+
+                    &lt;!-- Article--&gt;
+                    &lt;div class=&quot;pb-2&quot;&gt;
+                      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+                        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+                          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                            &lt;a href=&quot;#&quot;&gt;How technology affect our decisions&lt;/a&gt;
+                          &lt;/h2&gt;
+                          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Jessica Miller&quot;/&gt;
+                            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;by&lt;span class=&quot;fw-semibold ms-1&quot;&gt;Jessica Miller&lt;/span&gt;&lt;/div&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;3
+                            &lt;/a&gt;
+                            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;Feb 4
+                            &lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/article&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Article--&gt;
+                    &lt;div class=&quot;pb-2&quot;&gt;
+                      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+                        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Business&lt;/a&gt;
+                          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                            &lt;a href=&quot;#&quot;&gt;Open space - new trend in office design&lt;/a&gt;
+                          &lt;/h2&gt;
+                          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Daniel Adams&quot;/&gt;
+                            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                              by
+                              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Daniel Adams&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;12
+                            &lt;/a&gt;
+                            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;Jan 10
+                            &lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/article&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Article--&gt;
+                    &lt;div class=&quot;pb-2&quot;&gt;
+                      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+                        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Business&lt;/a&gt;
+                          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                            &lt;a href=&quot;#&quot;&gt;Business offices of Fortune 500 companies&lt;/a&gt;
+                          &lt;/h2&gt;
+                          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                              by
+                              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Barbara Palson&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;5
+                            &lt;/a&gt;
+                            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;Nov 20
+                            &lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/article&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Article--&gt;
+                    &lt;div class=&quot;pb-2&quot;&gt;
+                      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+                        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+                          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+                            &lt;a href=&quot;#&quot;&gt;Payments made easy. How new Tech will affect E-Commerce?&lt;/a&gt;
+                          &lt;/h2&gt;
+                          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Charlie Welch&quot;/&gt;
+                            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+                              by
+                              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Charlie Welch&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;17
+                            &lt;/a&gt;
+                            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+                            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+                              &amp;nbsp;Nov 08
+                            &lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/article&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Related posts carousel
+                .tns-carousel-wrapper
+                  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}')
+                  
+                    // Article
+                    .pb-2
+                      article.card.card-hover.mx-1
+                        a(href=&quot;#&quot;).card-img-top
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+                        .card-body
+                          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+                          h2.h5.nav-heading.mb-4
+                            a(href=&quot;#&quot;) How technology affect our decisions
+                          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                            img(src=&quot;path-to-image&quot;, alt&quot;Jessica Miller&quot;, width=&quot;36&quot;).rounded-circle
+                            .ps-2.ms-1.mt-n1
+                              | by
+                              span.fw-semibold.ms-1 Jessica Miller
+                          .mt-3.text-end.text-nowrap
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-message-square.me-1
+                              | &amp;nbsp;3
+                            span.meta-divider
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-calendar.me-1.mt-n1
+                              | &amp;nbsp;Feb 4
+                  
+                    // Article
+                    .pb-2
+                      article.card.card-hover.mx-1
+                        a(href=&quot;#&quot;).card-img-top
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+                        .card-body
+                          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Business
+                          h2.h5.nav-heading.mb-4
+                            a(href=&quot;#&quot;) Open space - new trend in office design
+                          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Daniel Adams&quot;, width=&quot;36&quot;).rounded-circle
+                            .ps-2.ms-1.mt-n1
+                              | by
+                              span.fw-semibold.ms-1 Daniel Adams
+                          .mt-3.text-end.text-nowrap
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-message-square.me-1
+                              | &amp;nbsp;12
+                            span.meta-divider
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-calendar.me-1.mt-n1
+                              | &amp;nbsp;Jan 10
+                  
+                    // Article
+                    .pb-2
+                      article.card.card-hover.mx-1
+                        a(href=&quot;#&quot;).card-img-top
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+                        .card-body
+                          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Business
+                          h2.h5.nav-heading.mb-4
+                            a(href=&quot;#&quot;) Business offices of Fortune 500 companies
+                          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;36&quot;).rounded-circle
+                            .ps-2.ms-1.mt-n1
+                              | by
+                              span.fw-semibold.ms-1 Barbara Palson
+                          .mt-3.text-end.text-nowrap
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-message-square.me-1
+                              | &amp;nbsp;5
+                            span.meta-divider
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-calendar.me-1.mt-n1
+                              | &amp;nbsp;Nov 20
+                  
+                    // Article
+                    .pb-2
+                      article.card.card-hover.mx-1
+                        a(href=&quot;#&quot;).card-img-top
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+                        .card-body
+                          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+                          h2.h5.nav-heading.mb-4
+                            a(href=&quot;#&quot;) Payments made easy. How new Tech will affect E-Commerce?
+                          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;, width=&quot;36&quot;).rounded-circle
+                            .ps-2.ms-1.mt-n1
+                              | by
+                              span.fw-semibold.ms-1 Charlie Welch
+                          .mt-3.text-end.text-nowrap
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-message-square.me-1
+                              | &amp;nbsp;17
+                            span.meta-divider
+                            a(href=&quot;#&quot;).meta-link.fs-xs
+                              i.ai-calendar.me-1.mt-n1
+                              | &amp;nbsp;Nov 08
+
+  
+  // Post comments
+  section#blog-comments.pb-5.mb-md-2
+    h2.h4.mb-3 Post comments
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .comment(style='max-width: 57rem;')
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+              .d-flex.justify-content-between.align-items-center
+                .d-flex.align-items-center
+                  img(src='../img/blog/comments/01.jpg' alt='Barbara Palson' width='42').rounded-circle
+                  .ps-2.ms-1
+                    h4.fs-sm.mb-0 Barbara Palson
+                    span.fs-xs.text-muted 3 days ago
+                a(href='#').btn.btn-outline-primary.btn-sm
+                  i.ai-corner-up-left.fs-base.me-2.ms-n1
+                  | Reply
+              .comment
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+                .d-flex.align-items-center
+                  img(src='../img/blog/comments/02.jpg' alt='Daniel Adams' width='42').rounded-circle
+                  .ps-2.ms-1
+                    h4.fs-sm.mb-0 Daniel Adams
+                    span.fs-xs.text-muted 2 days ago
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post comments --&gt;
+                &lt;div class=&quot;comment&quot;&gt;
+                  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.&lt;/p&gt;
+                  &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                        &lt;h4 class=&quot;fs-sm mb-0&quot;&gt;Barbara Palson&lt;/h4&gt;
+                        &lt;span class=&quot;fs-xs text-muted&quot;&gt;3 days ago&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;a class=&quot;btn btn-outline-primary btn-sm&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-corner-up-left fs-base me-2 ms-n1&quot;&gt;&lt;/i&gt;
+                      Reply
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Comment reply --&gt;
+                  &lt;div class=&quot;comment&quot;&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.&lt;/p&gt;
+                    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Daniel Adams&quot;/&gt;
+                      &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                        &lt;h4 class=&quot;fs-sm mb-0&quot;&gt;Daniel Adams&lt;/h4&gt;
+                        &lt;span class=&quot;fs-xs text-muted&quot;&gt;2 days ago&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post comments
+                .comment
+                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+                  .d-flex.justify-content-between.align-items-center
+                    .d-flex.align-items-center
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;42&quot;).rounded-circle
+                      .ps-2.ms-1
+                        h4.fs-sm.mb-0 Barbara Palson
+                        span.fs-xs.text-muted 3 days ago
+                    a(href=&quot;#&quot;).btn.btn-outline-primary.btn-sm
+                      i.ai-corner-up-left.fs-base.me-2.ms-n1
+                      | Reply
+
+                  // Comment reply
+                  .comment
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+                    .d-flex.align-items-center
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Daniel Adams&quot;, width=&quot;42&quot;).rounded-circle
+                      .ps-2.ms-1
+                        h4.fs-sm.mb-0 Daniel Adams
+                        span.fs-xs.text-muted 2 days ago

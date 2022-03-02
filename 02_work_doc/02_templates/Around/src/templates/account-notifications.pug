@@ -1,0 +1,79 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Account - Notifications'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title
+            h1.h3.mb-3.pb-2.text-center.text-sm-start Notifications
+
+            // Notification settings
+            #notification-settings
+              .bg-secondary.rounded-3.p-4.fs-sm.text-heading
+                | Use the master switch on the left hand side (Accoun menu) to 
+                span.fw-medium Enable / disable all notifications
+              .border-bottom.py-4.p-sm-4
+                .form-check.form-switch
+                  input(type='checkbox' id='nf-product-sold' checked).form-check-input
+                  label(for='nf-product-sold').form-check-label.fs-sm.text-heading Product sold notifications
+                small.form-text Send an email when someone purchased one of my products
+              .border-bottom.py-4.p-sm-4
+                .form-check.form-switch
+                  input(type='checkbox' id='nf-product-updated' checked).form-check-input
+                  label(for='nf-product-updated').form-check-label.fs-sm.text-heading Product update notifications
+                small.form-text Send an email when a product I've purchased is updated
+              .border-bottom.py-4.p-sm-4
+                .form-check.form-switch
+                  input(type='checkbox' id='nf-product-comment').form-check-input
+                  label(for='nf-product-comment').form-check-label.fs-sm.text-heading Product comment notifications
+                small.form-text Send an email when someone comments on one of my products
+              .border-bottom.py-4.p-sm-4
+                .form-check.form-switch
+                  input(type='checkbox' id='nf-product-review' checked).form-check-input
+                  label(for='nf-product-review').form-check-label.fs-sm.text-heading Product review notification
+                small.form-text Send an email when someone leaves a review with their rating
+              .border-bottom.py-4.p-sm-4
+                .form-check.form-switch
+                  input(type='checkbox' id='nf-daily-summary').form-check-input
+                  label(for='nf-daily-summary').form-check-label.fs-sm.text-heading Daily summary emails
+                small.form-text Send me a daily summary of all products sold, commented or reviewed
+              .text-center.text-sm-end.mt-4.pt-2
+                button(type='button').btn.btn-primary
+                  i.ai-save.fs-lg.me-2
+                  | Save changes
+            
+
+//- Footer
+block footer
+  include partials/footer-simple

@@ -1,0 +1,52 @@
+//- Account sidebar
+.bg-light.rounded-3.shadow-lg
+  .px-4.py-4.mb-1.text-center
+    img(src='img/dashboard/avatar/main.jpg' at='Amanda Wilson' width='110').d-block.rounded-circle.mx-auto.my-2
+    h6.mb-0.pt-1 Amanda Wilson
+    span.text-muted.fs-sm @amanda_w
+  .d-lg-none.px-4.pb-4.text-center
+    a(href='#account-menu' data-bs-toggle='collapse').btn.btn-primary.px-5.mb-2
+      i.ai-menu.me-2
+      | Account menu
+  #account-menu.d-lg-block.collapse.pb-2
+    h3.d-block.bg-secondary.fs-sm.fw-semibold.text-muted.mb-0.px-4.py-3 Dashboard
+    a(href='dashboard-orders.html')&attributes(pageTitle === 'Dashboard - Orders' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3'})
+      i.ai-shopping-bag.fs-lg.opacity-60.me-2
+      | Orders
+      span.nav-indicator
+      span.text-muted.fs-sm.fw-normal.ms-auto 2
+    a(href='dashboard-sales.html')&attributes(pageTitle === 'Dashboard - Sales' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'})
+      i.ai-dollar-sign.fs-lg.opacity-60.me-2
+      | Sales
+      span.text-muted.fs-sm.fw-normal.ms-auto $735.00
+    a(href='dashboard-messages.html')&attributes(pageTitle === 'Dashboard - Messages' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'})
+      i.ai-message-square.fs-lg.opacity-60.me-2
+      | Messages
+      span.nav-indicator
+      span.text-muted.fs-sm.fw-normal.ms-auto 1
+    a(href='dashboard-followers.html')&attributes(pageTitle === 'Dashboard - Followers' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'})
+      i.ai-users.fs-lg.opacity-60.me-2
+      | Followers
+      span.text-muted.fs-sm.fw-normal.ms-auto 34
+    a(href='dashboard-reviews.html')&attributes(pageTitle === 'Dashboard - Reviews' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'})
+      i.ai-star.fs-lg.opacity-60.me-2
+      | Reviews
+      span.text-muted.fs-sm.fw-normal.ms-auto 15
+    a(href='dashboard-favorites.html')&attributes(pageTitle === 'Dashboard - Favorites' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'})
+      i.ai-heart.fs-lg.opacity-60.me-2
+      | Favorites
+      span.text-muted.fs-sm.fw-normal.ms-auto 6
+    h3.d-block.bg-secondary.fs-sm.fw-semibold.text-muted.mb-0.px-4.py-3 Account settings
+    a(href='account-profile.html')&attributes(pageTitle === 'Account - Profile' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3'}) Profile info
+    a(href='account-payment.html')&attributes(pageTitle === 'Account - Payment Methods' ? {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top active'} : {'class': 'd-flex align-items-center nav-link-style px-4 py-3 border-top'}) Payment methods
+    .d-flex.align-items-center.border-top
+      a(href='account-notifications.html')&attributes(pageTitle === 'Account - Notifications' ? {'class': 'd-block w-100 nav-link-style px-4 py-3 active'} : {'class': 'd-block w-100 nav-link-style px-4 py-3'})
+        | Notifications
+      .ms-auto.px-3
+        .form-check.form-switch
+          input(type='checkbox' id='notifications-switch' data-master-checkbox-for='#notification-settings' checked).form-check-input
+          label(for='notifications-switch').form-check-label
+    a(href='signin-illustration.html').d-flex.align-items-center.nav-link-style.px-4.py-3.border-top
+      i.ai-log-out.fs-lg.opacity-60.me-2
+      | Sign out
+

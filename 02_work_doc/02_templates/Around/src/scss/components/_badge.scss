@@ -1,0 +1,68 @@
+//
+// Badge
+// --------------------------------------------------
+
+
+// Badge colors fix
+
+.badge {
+  color: $white !important;
+
+  &.bg-secondary,
+  &.bg-light {
+    color: $headings-color !important;
+  }
+}
+
+
+// Floating badge
+
+.badge-floating {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  z-index: 5;
+  
+  .card:not(.border-0):not(.card-category) & {
+    left: -$card-border-width;
+  }
+
+  &:not(.badge-floating-end) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+  &.badge-floating-end {
+    left: auto !important;
+    right: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    .card:not(.border-0):not(.card-category) & {
+      right: -$card-border-width;
+    }
+  }
+}
+
+
+// Large badge
+
+.badge-lg {
+  padding: {
+    top: .625rem;
+    right: .625rem;
+    bottom: .625rem;
+    left: 1rem;
+  }
+  @include font-size($font-size-base);
+  font-weight: $font-weight-medium;
+
+  &:not(.badge-floating-end) {
+    border-top-right-radius: $border-radius-sm;
+    border-bottom-right-radius: $border-radius-sm;
+  }
+  &.badge-floating-end {
+    border-top-left-radius: $border-radius-sm;
+    border-bottom-left-radius: $border-radius-sm;
+  }
+}

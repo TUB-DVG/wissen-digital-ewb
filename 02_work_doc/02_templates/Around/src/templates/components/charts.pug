@@ -1,0 +1,234 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'chartist/dist/chartist.min.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'chartist/dist/chartist.min.js']
+  - var pageTitle = 'Charts'
+  - var pageSubtitle = 'Customizable responsive charts, including: Line chart, Bar chart and Pie chart.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Line chart', 'link': '#chart-line'}, {'title': 'Bar chart', 'link': '#chart-bar'}, {'title': 'Pie chart', 'link': '#chart-pie'}]
+  
+//- Page Content
+block content
+  .alert.alert-info.mb-4(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      p.text-break.fs-md.mb-0 Make sure to link to <strong>Chartist css and js</strong> files in your document: <strong>vendor/chartist/dist/chartist.min.css</strong> and <strong>vendor/chartist/dist/chartist.min.js</strong>. Use this page as a reference.
+  .bg-secondary.rounded-3.p-4.mb-5
+    h6.fs-sm.mb-2 Data attributes API
+    p.fs-sm.mb-1 Around added extra layer of data attributes to access the core features of the plugin right in HTML document. <u>There are 3 main attributes:</u>
+    code
+      | data-line-chart | data-bar-chart | data-pie-chart 
+    span.fs-sm  - to pass in data in JSON format to be displayed in line, bar or pie chart format respectively.
+    br
+    code
+      | data-options
+    span.fs-sm  - to pass in additional options in JSON format.
+    br
+    code
+      | data-series-color
+    span.fs-sm  - to assign individual color to each data set. Data passed in JSON format.
+    p.fs-sm.pt-2 Check the code examples below.
+    h6.pt-1.fs-sm.mb-2 For more features / options visit plugin website:
+    a(href='http://gionkunz.github.io/chartist-js/index.html' target='_blank' rel='noopener').fs-sm http://gionkunz.github.io/chartist-js/index.html
+
+  // Line chart
+  section#chart-line.pb-5.mb-md-2
+    h2.h4.mb-3 Line chart
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .pt-2(style='max-width: 33rem;')
+              .d-flex.flex-wrap.justify-content-center.fs-sm
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #4e54c8;')
+                  span.d-inline-block.align-middle Company 1
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #ff9d50;')
+                  span.d-inline-block.align-middle Company 2
+                .border.rounded-1.py-1.px-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #f74f78;')
+                  span.d-inline-block.align-middle Company 3
+              .ct-chart.ct-perfect-fourth(data-line-chart='{"labels": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9"], "series": [[12, 9, 7, 8, 6, 4, 3, 2, 0], [2, 1, 3, 7, 9, 8, 7.7, 4, 7], [1, 3, 4, 5, 6, 8, 9, 10, 11]]}' data-options='{"axisY": {"onlyInteger": true}}' data-series-color='{"colors": ["#4e54c8", "#ff9d50", "#f74f78"]}')
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Line chart: Multiple lines of different color + Legend --&gt;
+
+                &lt;!-- Legend --&gt;
+                &lt;div class=&quot;d-flex flex-wrap justify-content-center fs-sm&quot;&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #4e54c8;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 1&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #ff9d50;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 2&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 3&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Chart --&gt;
+                &lt;div class=&quot;ct-chart ct-perfect-fourth&quot; data-line-chart='{&quot;labels&quot;: [&quot;W1&quot;, &quot;W2&quot;, &quot;W3&quot;, &quot;W4&quot;, &quot;W5&quot;, &quot;W6&quot;, &quot;W7&quot;, &quot;W8&quot;, &quot;W9&quot;], &quot;series&quot;: [[12, 9, 7, 8, 6, 4, 3, 2, 0], [2, 1, 3, 7, 9, 8, 7.7, 4, 7], [1, 3, 4, 5, 6, 8, 9, 10, 11]]}' data-options='{&quot;axisY&quot;: {&quot;onlyInteger&quot;: true}}' data-series-color='{&quot;colors&quot;: [&quot;#4e54c8&quot;, &quot;#ff9d50&quot;, &quot;#f74f78&quot;]}'&gt;&lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Line chart: Multiple lines of different color + Legend
+
+                // Legend
+                .d-flex.flex-wrap.justify-content-center.fs-sm
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #4e54c8;&quot;)
+                    span.d-inline-block.align-middle Company 1
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #ff9d50;&quot;)
+                    span.d-inline-block.align-middle Company 2
+                  .border.rounded-1.py-1.px-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;)
+                    span.d-inline-block.align-middle Company 3
+
+                // Chart
+                .ct-chart.ct-perfect-fourth(data-line-chart='{&quot;labels&quot;: [&quot;W1&quot;, &quot;W2&quot;, &quot;W3&quot;, &quot;W4&quot;, &quot;W5&quot;, &quot;W6&quot;, &quot;W7&quot;, &quot;W8&quot;, &quot;W9&quot;], &quot;series&quot;: [[12, 9, 7, 8, 6, 4, 3, 2, 0], [2, 1, 3, 7, 9, 8, 7.7, 4, 7], [1, 3, 4, 5, 6, 8, 9, 10, 11]]}', data-options='{&quot;axisY&quot;: {&quot;onlyInteger&quot;: true}}', data-series-color='{&quot;colors&quot;: [&quot;#4e54c8&quot;, &quot;#ff9d50&quot;, &quot;#f74f78&quot;]}')
+
+  // Bar chart
+  section#chart-bar.pb-5.mb-md-2
+    h2.h4.mb-3 Bar chart
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .pt-2(style='max-width: 33rem;')
+              .d-flex.flex-wrap.justify-content-center.fs-sm
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #f74f78;')
+                  span.d-inline-block.align-middle Company 1
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #ff9d50;')
+                  span.d-inline-block.align-middle Company 2
+              .ct-chart.ct-perfect-fourth(data-bar-chart='{"labels": ["2015", "2016", "2017", "2018", "2019", "2020"], "series": [[12000, 9000, 7000, 8000, 11000, 6000], [3500, 5000, 8750, 1300, 3000, 8750]]}' data-series-color='{"colors": ["#f74f78", "#ff9d50"]}')
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Bar chart: Multiple bars of different color + Legend --&gt;
+
+                &lt;!-- Legend --&gt;
+                &lt;div class=&quot;d-flex flex-wrap justify-content-center fs-sm&quot;&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 1&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #ff9d50;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 2&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Chart --&gt;
+                &lt;div class=&quot;ct-chart ct-perfect-fourth&quot; data-bar-chart='{&quot;labels&quot;: [&quot;2015&quot;, &quot;2016&quot;, &quot;2017&quot;, &quot;2018&quot;, &quot;2019&quot;, &quot;2020&quot;], &quot;series&quot;: [[12000, 9000, 7000, 8000, 11000, 6000], [3500, 5000, 8750, 1300, 3000, 8750]]}', data-series-color='{&quot;colors&quot;: [&quot;#f74f78&quot;, &quot;#ff9d50&quot;]}'&gt;&lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Bar chart: Multiple bars of different color + Legend
+
+                // Legend
+                .d-flex.flex-wrap.justify-content-center.fs-sm
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;)
+                    span.d-inline-block.align-middle Company 1
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #ff9d50;&quot;)
+                    span.d-inline-block.align-middle Company 2
+
+                // Chart
+                .ct-chart.ct-perfect-fourth(data-bar-chart='{&quot;labels&quot;: [&quot;2015&quot;, &quot;2016&quot;, &quot;2017&quot;, &quot;2018&quot;, &quot;2019&quot;, &quot;2020&quot;], &quot;series&quot;: [[12000, 9000, 7000, 8000, 11000, 6000], [3500, 5000, 8750, 1300, 3000, 8750]]}', data-series-color='{&quot;colors&quot;: [&quot;#f74f78&quot;, &quot;#ff9d50&quot;]}')
+
+  // Pie chart
+  section#chart-pie.pb-5.mb-md-2
+    h2.h4.mb-3 Pie chart
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .pt-2(style='max-width: 33rem;')
+              .d-flex.flex-wrap.justify-content-center.fs-sm
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #6a9bf4;')
+                  span.d-inline-block.align-middle Company 1
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #16c995;')
+                  span.d-inline-block.align-middle Company 2
+                .border.rounded-1.py-1.px-2.me-2.mb-2
+                  .d-inline-block.align-middle.me-1(style='width: .75rem; height: .75rem; background-color: #f74f78;')
+                  span.d-inline-block.align-middle Company 3
+              .ct-chart.ct-perfect-fourth(data-pie-chart='{"series": [5, 3, 4]}' data-series-color='{"colors": ["#6a9bf4", "#16c995", "#f74f78"]}')
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Pie chart: Multiple slices of different color + Legend --&gt;
+
+                &lt;!-- Legend --&gt;
+                &lt;div class=&quot;d-flex flex-wrap justify-content-center fs-sm&quot;&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #6a9bf4;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 1&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #16c995;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 2&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;border rounded-1 py-1 px-2 me-2 mb-2&quot;&gt;
+                    &lt;div class=&quot;d-inline-block align-middle me-1&quot; style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;&gt;&lt;/div&gt;
+                    &lt;span class=&quot;d-inline-block align-middle&quot;&gt;Company 3&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Chart --&gt;
+                &lt;div class=&quot;ct-chart ct-perfect-fourth&quot; data-pie-chart='{&quot;series&quot;: [5, 3, 4]}', data-series-color='{&quot;colors&quot;: [&quot;#6a9bf4&quot;, &quot;#16c995&quot;, &quot;#f74f78&quot;]}'&gt;&lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Pie chart: Multiple slices of different color + Legend
+
+                // Legend
+                .d-flex.flex-wrap.justify-content-center.fs-sm
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #6a9bf4;&quot;)
+                    span.d-inline-block.align-middle Company 1
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #16c995;&quot;)
+                    span.d-inline-block.align-middle Company 2
+                  .border.rounded-1.py-1.px-2.me-2.mb-2
+                    .d-inline-block.align-middle.me-1(style=&quot;width: .75rem; height: .75rem; background-color: #f74f78;&quot;)
+                    span.d-inline-block.align-middle Company 3
+
+                // Chart
+                .ct-chart.ct-perfect-fourth(data-pie-chart='{&quot;series&quot;: [5, 3, 4]}', data-series-color='{&quot;colors&quot;: [&quot;#6a9bf4&quot;, &quot;#16c995&quot;, &quot;#f74f78&quot;]}')

@@ -1,0 +1,89 @@
+//- partials/modal-signin.pug
+include modal-signin
+
+//- partials/offcanvas-cart.pug
+include offcanvas-cart
+
+// Navbar (Solid background + shadow)
+// Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+header.header
+  .topbar.topbar-dark.bg-dark
+    .container.d-md-flex.align-items-center.px-0.px-xl-3
+      .d-none.d-md-block.text-nowrap.me-3
+        i.ai-phone.fs-base.text-muted.me-1.align-middle
+        span.text-muted.me-2 Support
+        a(href='tel:9107848015').topbar-link.me-1 910-784-8015
+      .d-flex.text-md-end.ms-md-auto
+        a(href='order-tracking.html').topbar-link.pe-2.me-4
+          i.ai-map-pin.fs-base.opacity-60.me-1.align-middle
+          | Track <span class='d-none d-sm-inline'>your order</span>
+        .dropdown.ms-auto.ms-md-0.me-3
+          a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+            img(src='img/flags/en.png' alt='English' width='20').me-2
+            | Eng
+          .dropdown-menu.dropdown-menu-end
+            a(href='#').dropdown-item
+              img(src='img/flags/fr.png' alt='Français' width='20').me-2
+              | Français
+            a(href='#').dropdown-item
+              img(src='img/flags/de.png' alt='Deutsch' width='20').me-2
+              | Deutsch
+            a(href='#').dropdown-item
+              img(src='img/flags/it.png' alt='Italiano' width='20').mt-n1.me-2
+              | Italiano
+        .dropdown
+          a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+            | $ Dollar (US)
+          .dropdown-menu.dropdown-menu-end
+            a(href='#').dropdown-item
+              | € Euro (EU)
+            a(href='#').dropdown-item
+              | £ Pound (UK)
+            a(href='#').dropdown-item
+              | ¥ Yen (JP)
+  .navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow.navbar-sticky(data-scroll-header data-fixed-element)
+    .navbar-search.bg-light
+      .container.d-flex.flex-nowrap.align-items-center
+        i.ai-search.fs-xl
+        input(type='text' placeholder='Search site').form-control.form-control-xl.navbar-search-field
+        .d-none.d-sm-block.flex-shrink-0.ps-2.me-4.border-start.border-end(style='width: 10rem;')
+          select.form-select.ps-2.pe-0
+            option(value='all') All categories
+            option(value='clothing') Clothing
+            option(value='shoes') Shoes
+            option(value='electronics') Electronics
+            option(value='accessoriies') Accessories
+            option(value='software') Software
+            option(value='automotive') Automotive
+        .d-flex.align-items-center
+          span.text-muted.fs-xs.d-none.d-sm-inline Close
+          button(type='button' data-bs-toggle='search').btn-close.p-2
+    .container.px-0.px-xl-3
+      button(type='button' data-bs-toggle='offcanvas' data-bs-target='#primaryMenu').navbar-toggler.ms-n2.me-4
+        span.navbar-toggler-icon
+      a(href='index.html').navbar-brand.flex-shrink-0.order-lg-1.mx-auto.ms-lg-0.pe-lg-2.me-lg-4
+        img(src='img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+        img(src='img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+      .d-flex.align-items-center.order-lg-3.ms-lg-auto
+        .navbar-tool
+          a(href='#' data-bs-toggle='search').navbar-tool-icon-box.me-2
+            i.ai-search
+        .navbar-tool.d-none.d-sm-flex
+          a(href='#modal-signin' data-bs-toggle='modal' data-view='#modal-signin-view').navbar-tool-icon-box.me-2
+            i.ai-user
+        div(style='height: 30px;').border-start.me-2
+        .navbar-tool.me-2
+          a(href='#' data-bs-toggle='offcanvas' data-bs-target='#shoppingCart').navbar-tool-icon-box
+            i.ai-shopping-cart
+            span.navbar-tool-badge 3
+      #primaryMenu.offcanvas.offcanvas-collapse.order-lg-2
+        .offcanvas-header.navbar-shadow
+          h5.mt-1.mb-0 Menu
+          button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+        .offcanvas-body
+          //- partial/menu-primary
+          include menu-primary
+        .offcanvas-footer.border-top
+          a(href='#modal-signin' data-bs-toggle='modal' data-view='#modal-signin-view').btn.btn-translucent-primary.d-block.w-100
+            i.ai-user.fs-lg.me-2
+            | Sign in

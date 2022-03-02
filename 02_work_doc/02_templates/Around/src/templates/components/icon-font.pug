@@ -1,0 +1,904 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Icon font'
+  - var pageSubtitle = 'Collection of vector icons in the format of font. To add icon simply apply css class listed under each icon to <code>&lt;i&gt;</code> or <code>&lt;span&gt;</code> tag.'
+  - var isPageTitleBadge = true
+  
+//- Page Content
+block content
+  section.pb-5.mb-md-2
+    .card.border-0.shadow
+      .card-body.text-center
+        .row
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-activity
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-activity
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-airplay
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-airplay
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-alert-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-alert-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-alert-octagon
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-alert-octagon
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-alert-triangle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-alert-triangle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-align-center
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-align-center
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-align-justify
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-align-justify
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-align-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-align-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-align-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-align-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-anchor
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-anchor
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-aperture
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-aperture
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-archive
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-archive
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-down-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-down-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-down-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-down-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-down-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-down-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-left-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-left-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-right-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-right-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-up-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-up-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-up-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-up-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-up-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-up-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-arrow-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-arrow-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-at-sign
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-at-sign
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-award
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-award
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bar-chart-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bar-chart-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bar-chart
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bar-chart
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-battery-charging
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-battery-charging
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-battery
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-battery
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-behance
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-behance
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bell-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bell-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bell
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bell
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bluetooth
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bluetooth
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bold
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bold
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-book-open
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-book-open
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-book
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-book
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-bookmark
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-bookmark
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-box
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-box
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-briefcase
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-briefcase
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-calendar
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-calendar
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-camera-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-camera-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-camera
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-camera
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cast
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cast
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-check-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-check-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-check-square
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-check-square
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-check
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-check
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevron-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevron-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevron-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevron-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevron-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevron-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevron-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevron-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevron-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevron-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevrons-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevrons-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevrons-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevrons-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chevrons-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chevrons-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-chrome
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-chrome
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-clipboard
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-clipboard
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-clock
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-clock
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud-drizzle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud-drizzle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud-lightning
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud-lightning
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud-rain
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud-rain
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud-snow
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud-snow
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cloud
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cloud
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-code
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-code
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-codepen
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-codepen
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-codesandbox
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-codesandbox
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-coffee
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-coffee
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-columns
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-columns
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-command
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-command
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-compass
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-compass
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-copy
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-copy
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-down-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-down-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-down-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-down-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-left-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-left-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-left-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-left-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-right-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-right-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-right-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-right-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-up-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-up-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-corner-up-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-corner-up-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-cpu
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-cpu
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-credit-card
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-credit-card
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-crop
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-crop
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-crosshair
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-crosshair
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-database
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-database
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-delete
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-delete
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-disc
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-disc
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-dollar-sign
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-dollar-sign
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-download-cloud
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-download-cloud
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-download
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-download
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-dribbble
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-dribbble
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-droplet
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-droplet
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-edit-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-edit-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-edit-3
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-edit-3
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-edit
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-edit
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-external-link
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-external-link
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-eye-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-eye-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-eye
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-eye
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-facebook
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-facebook
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-fast-forward
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-fast-forward
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-feather
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-feather
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-figma
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-figma
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-file-minus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-file-minus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-file-plus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-file-plus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-file-text
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-file-text
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-file
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-file
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-film
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-film
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-filter-alt
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-filter-alt
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-filter
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-filter
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-flag
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-flag
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-folder-minus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-folder-minus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-folder-plus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-folder-plus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-folder
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-folder
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-framer
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-framer
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-frown
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-frown
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-gift
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-gift
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-git-branch
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-git-branch
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-git-commit
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-git-commit
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-git-merge
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-git-merge
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-git-pull-request
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-git-pull-request
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-github
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-github
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-gitlab
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-gitlab
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-globe
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-globe
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-google
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-google
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-grid
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-grid
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-hangouts
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-hangouts
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-hard-drive
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-hard-drive
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-hash
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-hash
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-headphones
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-headphones
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-heart
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-heart
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-help-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-help-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-hexagon
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-hexagon
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-home
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-home
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-image
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-image
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-inbox
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-inbox
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-info
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-info
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-instagram
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-instagram
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-italic
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-italic
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-key
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-key
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-layers
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-layers
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-layout
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-layout
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-liai-buoy
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-liai-buoy
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-link-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-link-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-link
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-link
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-linkedin
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-linkedin
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-list
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-list
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-loader
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-loader
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-lock
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-lock
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-log-in
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-log-in
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-log-out
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-log-out
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-mail
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-mail
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-map-pin
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-map-pin
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-map
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-map
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-maximize-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-maximize-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-maximize
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-maximize
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-meh
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-meh
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-menu
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-menu
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-message-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-message-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-message-square
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-message-square
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-messenger
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-messenger
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-mic-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-mic-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-mic
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-mic
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-minimize-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-minimize-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-minimize
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-minimize
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-minus-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-minus-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-minus-square
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-minus-square
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-minus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-minus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-monitor
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-monitor
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-moon
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-moon
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-more-horizontal
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-more-horizontal
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-more-vertical
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-more-vertical
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-mouse-pointer
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-mouse-pointer
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-move
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-move
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-music
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-music
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-navigation-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-navigation-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-navigation
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-navigation
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-octagon
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-octagon
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-odnoklassniki
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-odnoklassniki
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-package
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-package
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-paperclip
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-paperclip
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pause-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pause-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pause
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pause
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-paypal
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-paypal
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pen-tool
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pen-tool
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-percent
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-percent
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-call
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-call
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-forwarded
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-forwarded
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-incoming
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-incoming
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-missed
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-missed
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone-outgoing
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone-outgoing
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-phone
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-phone
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pie-chart
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pie-chart
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pinterest
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pinterest
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-play-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-play-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-play
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-play
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-plus-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-plus-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-plus-square
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-plus-square
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-plus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-plus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-pocket
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-pocket
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-power
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-power
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-printer
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-printer
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-quotes
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-quotes
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-radio
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-radio
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-refresh-ccw
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-refresh-ccw
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-refresh-cw
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-refresh-cw
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-repeat
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-repeat
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-rewind
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-rewind
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-rotate-ccw
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-rotate-ccw
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-rotate-cw
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-rotate-cw
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-rss
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-rss
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-save
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-save
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-scissors
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-scissors
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-search
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-search
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-send
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-send
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-server
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-server
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-settings
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-settings
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-share-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-share-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-share
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-share
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-shield-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-shield-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-shield
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-shield
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-shopping-bag
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-shopping-bag
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-shopping-cart
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-shopping-cart
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-shuffle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-shuffle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-sidebar
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-sidebar
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-skip-back
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-skip-back
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-skip-forward
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-skip-forward
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-skype
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-skype
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-slack
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-slack
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-slash
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-slash
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-sliders
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-sliders
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-smartphone
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-smartphone
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-smile
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-smile
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-speaker
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-speaker
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-star
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-star
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-stop-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-stop-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-sun
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-sun
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-sunrise
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-sunrise
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-sunset
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-sunset
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-tablet
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-tablet
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-tag
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-tag
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-target
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-target
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-telegram
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-telegram
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-terminal
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-terminal
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-thermometer
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-thermometer
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-thumbs-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-thumbs-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-thumbs-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-thumbs-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-toggle-left
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-toggle-left
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-toggle-right
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-toggle-right
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-tool
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-tool
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-trash-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-trash-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-trash
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-trash
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-trello
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-trello
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-trending-down
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-trending-down
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-trending-up
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-trending-up
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-truck
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-truck
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-tumblr
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-tumblr
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-tv
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-tv
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-twitch
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-twitch
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-twitter
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-twitter
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-type
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-type
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-umbrella
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-umbrella
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-underline
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-underline
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-unlock
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-unlock
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-upload-cloud
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-upload-cloud
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-upload
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-upload
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-user-check
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-user-check
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-user-minus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-user-minus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-user-plus
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-user-plus
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-user-x
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-user-x
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-user
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-user
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-users
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-users
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-viber
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-viber
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-video-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-video-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-video
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-video
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-vimeo
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-vimeo
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-vk
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-vk
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-voicemail
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-voicemail
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-volume-1
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-volume-1
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-volume-2
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-volume-2
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-volume-x
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-volume-x
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-volume
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-volume
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-watch
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-watch
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-wechat
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-wechat
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-wifi-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-wifi-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-wifi
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-wifi
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-wind
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-wind
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-x-circle
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-x-circle
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-x-octagon
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-x-octagon
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-x-square
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-x-square
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-x
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-x
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-youtube
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-youtube
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-zap-off
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-zap-off
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-zap
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-zap
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-zoom-in
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-zoom-in
+          .col-md-3.col-sm-4.col-6.mb-4
+            i.h2.text-nav.ai-zoom-out
+            .border-top.border-bottom.mt-1.py-1.fs-sm ai-zoom-out

@@ -1,0 +1,505 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Countdown'
+  - var pageSubtitle = 'Timer that counts down in seconds, minutes, hours and days to any date.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Basic example + Alignment', 'link': '#coundown-basic'}, {'title': 'Sizing', 'link': '#coundown-sizing'}, {'title': 'Colors', 'link': '#coundown-colors'}, {'title': 'Cards example', 'link': '#coundown-cards'}]
+  
+//- Page Content
+block content
+  .bg-secondary.rounded-3.p-4.mb-5
+    h6.fs-sm Date / time format to use inside data attribute:
+    code data-countdown='MM/DD/YYYY HH:mm:ss AM/PM'
+    p.fs-sm.mb-0.py-2: u Example:
+    code data-countdown='10/01/2021 07:00:00 PM'
+
+  // Basic example + Alignment
+  section#coundown-basic.pb-5.mb-md-2
+    h2.h4.mb-3 Basic example + Alignment
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .countdown.py-2.h4(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.justify-content-center.py-2.h4(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.justify-content-end.py-2.h4(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Left aligned countdown (default) --&gt;
+                &lt;div class=&quot;countdown h4&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  &lt;div class=&quot;countdown-days&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Days&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-hours&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Hours&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-minutes&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Mins&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-seconds&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Secs&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Center aligned countdown --&gt;
+                &lt;div class=&quot;countdown h4 justify-content-center&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;!-- Right aligned countdown --&gt;
+                &lt;div class=&quot;countdown h4 justify-content-end&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Left aligned countdown (default)
+                .countdown.h4(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  .countdown-days
+                    span.countdown-value 0
+                    span.countdown-label.text-body Days
+                  .countdown-hours
+                    span.countdown-value 0
+                    span.countdown-label.text-body Hours
+                  .countdown-minutes
+                    span.countdown-value 0
+                    span.countdown-label.text-body Mins
+                  .countdown-seconds
+                    span.countdown-value 0
+                    span.countdown-label.text-body Secs
+
+                // Center aligned countdown
+                .countdown.h4.justify-content-center(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+
+                // Right aligned countdown
+                .countdown.h4.justify-content-end(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+
+  // Sizing
+  section#coundown-sizing.pb-5.mb-md-2
+    h2.h4.mb-3 Sizing
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .countdown.py-1.h1(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.py-1.h2(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.py-1.h3(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.py-1.h4(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.py-1.h5(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.pt-1.h6.mb-0(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Alter countdown sizing using h1-h6, display1-display4 classes --&gt;
+                &lt;div class=&quot;countdown h1&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;div class=&quot;countdown h2&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;div class=&quot;countdown h3&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;div class=&quot;countdown h4&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;div class=&quot;countdown h5&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+
+                &lt;div class=&quot;countdown h6&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  ...
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Alter countdown sizing using h1-h6, display1-display4 classes
+                .countdown.h1(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+                
+                .countdown.h2(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+                
+                .countdown.h3(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+                
+                .countdown.h4(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+                
+                .countdown.h5(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+                
+                .countdown.h6(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  ...
+
+  // Colors
+  section#coundown-colors.pb-5.mb-md-2
+    h2.h4.mb-3 Colors
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .countdown.py-1.h4(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days.text-primary
+                span.countdown-value 0
+                span.countdown-label.opacity-60 Days
+              .countdown-hours.text-warning
+                span.countdown-value 0
+                span.countdown-label.opacity-60 Hours
+              .countdown-minutes.text-success
+                span.countdown-value 0
+                span.countdown-label.opacity-60 Mins
+              .countdown-seconds.text-danger
+                span.countdown-value 0
+                span.countdown-label.opacity-60 Secs
+            .bg-dark.pt-4.px-4.pb-2
+              .countdown.py-1.h4.text-light(data-countdown='10/01/2021 07:00:00 PM')
+                .countdown-days
+                  span.countdown-value 0
+                  span.countdown-label.opacity-60 Days
+                .countdown-hours
+                  span.countdown-value 0
+                  span.countdown-label.opacity-60 Hours
+                .countdown-minutes
+                  span.countdown-value 0
+                  span.countdown-label.opacity-60 Mins
+                .countdown-seconds
+                  span.countdown-value 0
+                  span.countdown-label.opacity-60 Secs
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Multicolor --&gt;
+                &lt;div class=&quot;countdown h4&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  &lt;div class=&quot;countdown-days text-primary&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Days&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-hours text-warning&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Hours&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-minutes text-success&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Mins&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-seconds text-danger&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Secs&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Light version (white text on dark background) --&gt;
+                &lt;div class=&quot;countdown h4 text-light&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  &lt;div class=&quot;countdown-days&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Days&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-hours&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Hours&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-minutes&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Mins&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-seconds&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label opacity-60&quot;&gt;Secs&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Multicolor
+                .countdown.h4(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  .countdown-days.text-primary
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Days
+                  .countdown-hours.text-warning
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Hours
+                  .countdown-minutes.text-success
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Mins
+                  .countdown-seconds.text-danger
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Secs
+
+                // Light version (white text on dark background)
+                .countdown.h4.text-light(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  .countdown-days
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Days
+                  .countdown-hours
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Hours
+                  .countdown-minutes
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Mins
+                  .countdown-seconds
+                    span.countdown-value 0
+                    span.countdown-label.opacity-60 Secs
+
+  // Cards example
+  section#coundown-cards.pb-5.mb-md-2
+    h2.h4.mb-3 Cards example
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .countdown.pt-2.h5(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days.border.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours.border.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes.border.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds.border.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+            .countdown.pt-2.h5(data-countdown='10/01/2021 07:00:00 PM')
+              .countdown-days.shadow.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Days
+              .countdown-hours.shadow.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Hours
+              .countdown-minutes.shadow.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Mins
+              .countdown-seconds.shadow.rounded.py-2.px-3
+                span.countdown-value 0
+                span.countdown-label.text-body Secs
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Border version --&gt;
+                &lt;div class=&quot;countdown h5&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  &lt;div class=&quot;countdown-days border rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Days&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-hours border rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Hours&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-minutes border rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Mins&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-seconds border rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Secs&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Shadow version --&gt;
+                &lt;div class=&quot;countdown h5&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+                  &lt;div class=&quot;countdown-days shadow rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Days&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-hours shadow rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Hours&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-minutes shadow rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Mins&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;countdown-seconds shadow rounded py-2 px-3&quot;&gt;
+                    &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;countdown-label text-body&quot;&gt;Secs&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Border version
+                .countdown.h5(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  .countdown-days.border.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Days
+                  .countdown-hours.border.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Hours
+                  .countdown-minutes.border.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Mins
+                  .countdown-seconds.border.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Secs
+
+                // Shadow version
+                .countdown.h5(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+                  .countdown-days.shadow.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Days
+                  .countdown-hours.shadow.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Hours
+                  .countdown-minutes.shadow.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Mins
+                  .countdown-seconds.shadow.rounded.py-2.px-3
+                    span.countdown-value 0
+                    span.countdown-label.text-body Secs

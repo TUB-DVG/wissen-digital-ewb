@@ -1,0 +1,64 @@
+//
+// Video button
+// --------------------------------------------------
+
+
+// Default button
+
+.btn-video {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: $btn-video-size;
+  height: $btn-video-size;
+  padding-left: .125rem;
+  transition: $btn-video-transition;
+  border-radius: 50%;
+  background-color: $btn-video-bg;
+  color: $btn-video-color;
+  font-size: $btn-video-font-size;
+  text: {
+    align: center;
+    decoration: none;
+  }
+  box-shadow: $btn-video-box-shadow;
+  vertical-align: middle;
+
+  &::before {
+    font-family: $icons-font-family;
+    line-height: $btn-video-size;
+    content: $ai-play;
+  }
+
+  &:hover {
+    color: $btn-video-hover-color;
+    text-decoration: none;
+    box-shadow: $btn-video-hover-box-shadow;
+  }
+}
+
+
+// Primary button
+
+.btn-video-primary {
+  background-color: $btn-video-primary-bg;
+  color: $btn-video-primary-color;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: $btn-video-hover-primary-bg;
+    color: $btn-video-primary-color;
+  }
+}
+
+
+// Sizing
+
+.btn-video-sm {
+  width: $btn-video-size-sm;
+  height: $btn-video-size-sm;
+  font-size: $btn-video-font-size-sm;
+
+  &::before {
+    line-height: $btn-video-size-sm;
+  }
+}

@@ -1,0 +1,113 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js']
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Contacts v.3'
+  - var isNavbarButtonLight = true
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-light
+
+//- Page Content
+block content
+
+  // Background shape
+  section.position-relative.bg-gradient(style='height: 590px;')
+    .shape.shape-bottom.shape-curve-side.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 250')
+        g: path(fill='currentColor' d='M3000,0v250H0v-51c572.7,34.3,1125.3,34.3,1657.8,0C2190.3,164.8,2637.7,98.4,3000,0z')
+  
+  // Contact details + Form
+  section.container.position-relative.zindex-5.pt-7(style='margin-top: -590px;')
+    .row.pt-md-4.pt-lg-5.mt-3
+      .col-lg-4.col-md-5.offset-lg-1
+        h1.text-light.mb-3.pb-4.pt-sm-3 Contacts
+        .d-flex.align-items-start.mb-4
+          i.ai-map-pin.h3.mb-0.text-light
+          .ps-3
+            p.text-light.mb-2 396 Lillian Blvd, Holbrook,<br>NY 11741, USA
+            a(href='#map' data-scroll).fancy-link.text-light.fs-sm See on the map
+        .d-flex.align-items-start.mb-4
+          i.ai-mail.h3.mt-n1.mb-0.text-light
+          .ps-3
+            a(href='mailto:contact@example.com').d-inline-block.text-light.text-decoration-none.mb-2 contact@example.com
+        .d-flex.align-items-start.mb-4
+          i.ai-phone.h3.mt-n1.mb-0.text-light
+          .ps-3
+            a(href='tel:+15262200459').d-inline-block.text-light.text-decoration-none.mb-2 +1 526 220 0459
+
+      .col-xl-6.col-md-7
+        .card.border-0.shadow-lg
+          .card-body.py-5.px-3.px-sm-4
+            h2.h3.text-center Drop us a line
+            p.fs-sm.text-muted.text-center We normally respond within 2 business days
+            form(novalidate).needs-validation.pt-2.px-md-3
+              .row
+                .col-md-6.mb-3.pb-1
+                  label(for='cont-fn').form-label
+                    | Full name
+                    sup.text-danger.ms-1 *
+                  input(type='text' id='cont-fn' placeholder='John Doe' required).form-control
+                  .invalid-feedback Please enter your full name!
+                .col-md-6.mb-3.pb-1
+                  label(for='cont-email').form-label
+                    | Email address
+                    sup.text-danger.ms-1 *
+                  input(type='email' id='cont-email' placeholder='j.doe@example.com' required).form-control
+                  .invalid-feedback Please enter a valid email address!
+              .mb-3.pb-1
+                label(for='cont-subject').form-label
+                  | Subject
+                  sup.text-danger.ms-1 *
+                input(type='text' id='cont-subject' placeholder='Title of your message' required).form-control
+                .invalid-feedback Please enter a subject!
+              .mb-3.pb-1
+                label(for='cont-message').form-label
+                  | Message
+                  sup.text-danger.ms-1 *
+                textarea(id='cont-message' rows='5' placeholder='Write your message here' required).form-control
+                .invalid-feedback Please write a message!
+              .text-center.pt-2
+                button(type='submit').btn.btn-primary Send Message
+
+
+  // Map + Directions
+  section.container.py-5.py-md-6.py-lg-7
+    .row.py-sm-3
+      .col-md-7
+        #map.gallery
+          a(href='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91476818218!2d-74.11976253858133!3d40.69740344296443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sua!4v1568574342685!5m2!1sen!2sua' data-iframe='true' data-sub-html='<h6 class="fs-sm text-light">396 Lillian Blvd, Holbrook, NY 11741</h6>' style='background-image: url(img/pages/contacts/map03.png);').gallery-item.map-popup.bg-position-center.bg-no-repeat.py-7.text-center.border.rounded-3
+            span.gallery-caption
+              i.ai-maximize-2.fs-xl.mt-n1.me-2
+              | Expand the map
+            .d-inline-block.py-4.py-sm-7
+              img(src='img/pages/contacts/marker.png' alt='Map marker' width='48')
+      .col-md-4.offset-md-1.pt-4
+        h2.h4.pb-3 How to get there
+        h3.h5 Subway
+        ul.list-unstyled.fs-sm
+          li 5 mins south 66 St. Lincoln Center
+          li 10 mins west 59 St. Columbus Circus
+        h3.h5 Busses
+        ul.list-unstyled.fs-sm.mb-4.pb-2
+          li Public busses #43 and #38
+        h2.h4.pb-2 Working hours
+        ul.list-unstyled.fs-sm
+          li
+            span.text-heading.fs-base.me-1 Mon - Fri:
+            | 9AM - 8PM
+          li
+            span.text-heading.fs-base.me-1 Sat:
+            | 10AM - 5PM
+          li
+            span.text-heading.fs-base.me-1 Sun:
+            span.text-danger Closed
+
+
+//- Footer
+block footer
+  include partials/footer-default

@@ -1,0 +1,332 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['nouislider/dist/nouislider.min.css']
+  - var vendorScripts = ['nouislider/dist/nouislider.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Shop Grid Right Sidebar'
+  - var isSidebar = true
+
+//- Navbar
+block navbar
+  include partials/navbar-shop
+
+//- Page Content
+block content
+  .sidebar-enabled.sidebar-end
+    .container
+      .row
+
+        .col-lg-9.content.py-4.mb-2.mb-sm-0.pb-sm-5
+          +breadcrumb([{'title': 'Shop grid', 'link': '#'}, {'title': 'Right sidebar'}]).py-1.my-2
+
+          // Active filters
+          .d-flex.flex-wrap.align-items-center.mb-2
+            label.me-3.mt-1.mb-2.fs-sm.text-dark Your selection:
+            a(href='#').active-filter.me-2.my-2 Clothing
+            a(href='#').active-filter.me-2.my-2 Shirts &amp; Tops
+            a(href='#').active-filter.me-2.my-2 Brand name
+            a(href='#').active-filter.my-2 Size
+
+          // Sorting + Pager
+          .d-flex.justify-content-between.align-items-center.py-3.mb-3
+            .d-flex.justify-content-center.align-items-center
+              select.form-select.me-2(style='width: 15.25rem;')
+                option(value='popularity') Sort by popularity
+                option(value='rating') Sort by average rating
+                option(value='newness') Sort by newness
+                option(value='price: low to high') Sort by price: low to high
+                option(value='price: high to low') Sort by price: high to low
+              .d-none.d-sm-block.fs-sm.text-nowrap.ps-1.mb-1 of 135 products
+            .d-none.d-lg-flex.justify-content-center.align-items-center
+              label.pe-1.me-2.mb-0.form-label.px-0 Show
+              select.form-select.me-2(style='width: 5rem;')
+                option(value='12') 12
+                option(value='24') 24
+                option(value='36') 36
+                option(value='48') 48
+                option(value='60') 60
+              .fs-sm.text-nowrap.ps-1.mb-1 products per page
+
+          // Shop grid
+          .row
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/01.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Men's clothing
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Simple Cotton Gray T-shirt
+                  span.text-heading.fw-semibold $19.00
+                .card-footer
+                  +star-rating(3)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/02.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Electronics
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Wireless Headphones
+                  span.text-heading.fw-semibold $165.00
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                span.badge.badge-floating.badge-pill.bg-success New
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/03.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Accessories
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Military Cotton Cap
+                  span.text-heading.fw-semibold $28.00
+                .card-footer
+                  +star-rating(0)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                span.badge.badge-floating.badge-pill.bg-danger Sale
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/04.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Electronics
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link 360 Degrees Camera
+                  del.fs-sm.text-muted.me-1 $120.40
+                  span.text-heading.fw-semibold $98.75
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/05.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Sport Running Sneakers
+                  span.text-heading.fw-semibold $140.00
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/06.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Backpacks
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Vintage Travel Backpack
+                  span.text-heading.fw-semibold $82.00
+                .card-footer
+                  +star-rating(5)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/07.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Accessories
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link 3-Color Sun Stash Hat
+                  span.text-heading.fw-semibold $25.99
+                .card-footer
+                  +star-rating(3)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/08.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Electronics
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Speaker with Voice Control
+                  span.text-heading.fw-semibold $49.99
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/09.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Women's shoes
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Women Colorblock Sneakers
+                  span.text-heading.fw-semibold $154.00
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/10.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Accessories
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Polarized Sunglasses
+                  span.text-heading.fw-semibold Out of stock
+                .card-footer
+                  +star-rating(4)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='shop-single.html').btn-details
+                      i.ai-arrow-right
+                      span.btn-tooltip Details
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/11.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Sport Running Shoes
+                  span.text-heading.fw-semibold $127.00
+                .card-footer
+                  +star-rating(5)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+            // Item
+            .col-md-4.col-sm-6.mb-grid-gutter
+              .card.card-product.card-hover
+                a(href='shop-single.html').card-img-top
+                  img(src='img/shop/catalog/12.jpg' alt='Product thumbnail')
+                .card-body
+                  a(href='#').meta-link.fs-xs.mb-1 Electronics
+                  h3.fs-md.fw-medium.mb-2
+                    a(href='shop-single.html').meta-link Smart Watch Series 5
+                  span.text-heading.fw-semibold $349.99
+                .card-footer
+                  +star-rating(3)
+                  .d-flex.align-items-center
+                    a(href='#').btn-wishlist
+                      i.ai-heart
+                      span.btn-tooltip Wishlist
+                    span.btn-divider
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+          //- Pagination
+          //- partials/pagination-shop.pug
+          include partials/pagination-shop
+
+        // Sidebar
+        .sidebar.col-lg-3.pt-lg-5
+          #shop-sidebar.offcanvas.offcanvas-end.offcanvas-collapse
+            .offcanvas-header.navbar-shadow.px-4.mb-3
+              h5.mt-1.mb-0 Refine your selection
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+            .offcanvas-body.px-4.pt-3.pt-lg-0.pe-lg-0.ps-lg-2.ps-xl-4(data-simplebar)
+              //- partials/sidebar-shop.pug
+              include partials/sidebar-shop
+
+
+//- Footer
+block footer
+  include partials/footer-shop
+
+  // Sidebar toggle button
+  button(type='button' data-bs-toggle='offcanvas' data-bs-target='#shop-sidebar').btn.btn-primary.btn-sm.sidebar-toggle
+    i.ai-filter.fs-base.me-2
+    | Filters

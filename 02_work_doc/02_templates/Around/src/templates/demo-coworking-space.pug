@@ -1,0 +1,400 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css', 'flatpickr/dist/flatpickr.min.css']
+  - var vendorScripts = ['jarallax/dist/jarallax.min.js', 'tiny-slider/dist/min/tiny-slider.js','lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js', 'imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js', 'flatpickr/dist/flatpickr.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Coworking Space'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero
+  section.jarallax.bg-dark.py-6.py-md-7(data-jarallax data-type='scale-opacity' data-speed='0.09')
+    .jarallax-img(style='background-image: url(img/demo/coworking/hero-bg.jpg);')
+    .container.py-md-3
+      .row
+        .col-xl-7.col-lg-8.col-md-10
+          .bg-light.rounded-3.shadow-lg.py-5.px-4
+            form.py-sm-2.px-sm-3
+              h1.text-center.mb-4 Reserve your spot
+              .row
+                .col-sm-6.mb-3.pb-1
+                  label(for='rf-space').form-label Space
+                  select#rf-space.form-select
+                    option(value='Coworking main room') Coworking main room
+                    option(value='Coworking terrace') Coworking terrace
+                    option(value='Skype room 1' selected) Skype room 1
+                    option(value='Skype room 2') Skype room 2
+                    option(value='Meeting room 1') Meeting room 1
+                    option(value='Meeting room 2') Meeting room 2
+                    option(value='Gaming room') Gaming room
+                .col-sm-6.mb-3.pb-1
+                  label(for='rf-date').form-label Date and time
+                  .input-group
+                    input(type='text' placeholder='Choose date / time' data-datepicker-options='{"enableTime": true, "altInput": true, "altFormat": "F j, Y H:i", "dateFormat": "Y-m-d H:i", "minDate": "today"}')#rf-date.form-control.appended-form-control.date-picker.rounded
+                    i.ai-calendar.position-absolute.top-50.end-0.translate-middle-y.me-3
+                .col-sm-6.mb-3.pb-1
+                  label(for='rf-company-size').form-label Company size
+                  input(type='number' min='1' value='1' placeholder='How many people')#rf-company-size.form-control
+                .col-sm-6.mb-3.pb-1
+                  label(for='rf-email').form-label Email address
+                  input(type='email' placeholder='Your email')#rf-email.form-control
+              .row.align-items-center.pt-2
+                .col-sm-6.mb-4.mb-sm-0
+                  a(href='tel:+15262200459')
+                    i.ai-phone.fs-xl.me-2
+                    | + 1 526 220 0459
+                .col-sm-6
+                  button(type='submit').btn.btn-primary.d-block.w-100 Reserve
+  
+
+  // About (Services)
+  section.container.mt-4.pt-5.mt-md-2.pt-md-7.pb-6
+    h2.text-center.mb-3 About Around
+    .row.justify-content-center.mb-5.pb-2
+      .col-xl-6.col-lg-7
+        p.text-center.mb-0 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options = '{"items": 5, "controls": false, "gutter": 15, "responsive": {"0":{"items":2}, "410":{"items":3}, "580":{"items":4}, "740":{"items":5}}}')
+        .text-center
+          img(src='img/demo/coworking/icons/cube.svg' alt='Total Area' width='54').mb-3
+          .text-muted(style='font-size: 2.25rem;') 362
+          h3.h5 Total Area
+        .text-center
+          img(src='img/demo/coworking/icons/shower.svg' alt='Showers' width='54').mb-3
+          .text-muted(style='font-size: 2.25rem;') 5
+          h3.h5 Showers
+        .text-center
+          img(src='img/demo/coworking/icons/24-hours.svg' alt='24/7 Access' width='54').mb-3
+          .text-muted(style='font-size: 2.25rem;') 24/7
+          h3.h5 Access
+        .text-center
+          img(src='img/demo/coworking/icons/building.svg' alt='3 Full Floors' width='54').mb-3
+          .text-muted(style='font-size: 2.25rem;') 3
+          h3.h5 Full Floors
+        .text-center
+          img(src='img/demo/coworking/icons/parking.svg' alt='Parking' width='54').mb-3
+          .text-muted(style='font-size: 2.25rem;') 2
+          h3.h5 Car Parking
+
+  
+  // Virtual tour
+  section.jarallax.bg-dark.py-7(data-jarallax data-speed='0.25')
+    .jarallax-img(style='background-image: url(img/demo/coworking/virtual-tour-bg.jpg);')
+    .container.text-center.py-md-5
+      a(href='#').d-inline-block.bg-primary.rounded-circle
+        img(src='img/demo/coworking/icons/360-tour.svg' alt='360 VR Tour' width='195')
+  
+ 
+  // Pricing
+  section.container.mb-3.mt-4.py-5.my-md-0.pt-md-7.pb-md-6
+    h2.text-center.mb-5 Pricing
+    .d-flex.align-items-center.justify-content-between.border.rounded.mx-auto.mb-5.py-3.px-5(style='max-width: 730px;')
+      i.ai-clock.lead.text-primary.p-2
+      h5.p-2.mb-0 2 hours - $6
+      h5.p-2.mb-0 4 hours - $10
+      h5.p-2.mb-0 1 day - $18
+    .row
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow.w-100
+          .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+            h3.text-body.mb-0 Starter
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 35
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span 24/7 Premises access
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span High speeed WiFi
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Car parking lot
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Lounge room access
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted 3 events / workshops per month
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted Breakfasts
+            .text-center.mb-2
+              a(href='#').btn.btn-outline-primary Get started
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.card-active.w-100
+          .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+            h3.text-light.mb-0 Freelancer
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 99
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span 24/7 Premises access
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span High speeed WiFi
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Car parking lot
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Lounge room access
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span 3 events / workshops per month
+              li.d-flex.align-items-center.mb-3
+                i.ai-x.fs-xl.text-muted.me-2
+                span.text-muted Breakfasts
+            .text-center.mb-2
+              a(href='#').btn.btn-primary Get started
+      .col-lg-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow.w-100
+          .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+            h3.text-body.mb-0 Resident Full
+          .card-body.px-grid-gutter.py-grid-gutter
+            .d-flex.align-items-end.py-2.px-4.mb-4
+              span.h2.fw-normal.text-muted.mb-1.me-2 $
+              span.price.display-2.fw-normal.text-primary.px-1.me-2 124
+              span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+            ul.list-unstyled.py-2.mb-4
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span 24/7 Premises access
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span High speeed WiFi
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Car parking lot
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Lounge room access
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span 3 events / workshops per month
+              li.d-flex.align-items-center.mb-3
+                i.ai-check.fs-xl.text-primary.me-2
+                span Breakfasts
+            .text-center.mb-2
+              a(href='#').btn.btn-outline-primary Get started
+  
+ 
+  // Gallery
+  section.bg-secondary.py-5.py-md-6
+    .container.mt-4.mb-2.mt-md-2.mb-md-0
+      h2.text-center.mb-4.pb-2 Our space
+      .masonry-filterable
+        ul.masonry-filters.nav.nav-tabs.justify-content-center.pb-4
+          li.nav-item
+            a(href='#' data-group='all').nav-link.active All
+          li.nav-item
+            a(href='#' data-group='open-space').nav-link Open space
+          li.nav-item
+            a(href='#' data-group='lounge').nav-link Lounge zone
+          li.nav-item
+            a(href='#' data-group='kitchen').nav-link Kitchen
+        .masonry-grid.gallery.overflow-hidden(data-columns='3')
+          .masonry-grid-item(data-groups='["lounge"]')
+            a(href='img/demo/coworking/gallery/01.jpg' data-sub-html='<h6 class="fs-sm text-light">Lounge room</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th01.jpg' alt='Lounge room')
+              span.gallery-caption Lounge room
+          .masonry-grid-item(data-groups='["open-space"]')
+            a(href='img/demo/coworking/gallery/02.jpg' data-sub-html='<h6 class="fs-sm text-light">Open space</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th02.jpg' alt='Open space')
+              span.gallery-caption Open space
+          .masonry-grid-item(data-groups='["open-space"]')
+            a(href='img/demo/coworking/gallery/03.jpg' data-sub-html='<h6 class="fs-sm text-light">Open space</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th03.jpg' alt='Open space')
+              span.gallery-caption Open space
+          .masonry-grid-item(data-groups='["kitchen"]')
+            a(href='img/demo/coworking/gallery/04.jpg' data-sub-html='<h6 class="fs-sm text-light">Kitchen</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th04.jpg' alt='Kitchen')
+              span.gallery-caption Kitchen
+          .masonry-grid-item(data-groups='["kitchen"]')
+            a(href='img/demo/coworking/gallery/05.jpg' data-sub-html='<h6 class="fs-sm text-light">Kitchen</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th05.jpg' alt='Kitchen')
+              span.gallery-caption Kitchen
+          .masonry-grid-item(data-groups='["open-space"]')
+            a(href='img/demo/coworking/gallery/06.jpg' data-sub-html='<h6 class="fs-sm text-light">Open space</h6>').gallery-item.rounded-3
+              img(src='img/demo/coworking/gallery/th06.jpg' alt='Open space')
+              span.gallery-caption Open space
+
+  
+  // Benefits
+  section.container.pb-5.pt-6.mb-md-2.py-md-7
+    .row.align-items-center
+      .col-md-6
+        img(src='img/demo/coworking/illustration01.svg' alt='Illustration').d-block.mx-auto
+      .col-md-6.col-lg-5.offset-lg-1.pt-4.pt-md-0
+        h2.mt-4.mb-5.text-center.text-md-start Our benefits
+        .row
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/tv.svg' alt='Free computer' width='46').mb-2
+            h5.h6 Free computer
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/sandwich.svg' alt='Coffee and snacks' width='46').mb-2
+            h5.h6 Coffee and snacks
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/table-tennis.svg' alt='Relax zone' width='46').mb-2
+            h5.h6 Relax zone
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/living-room.svg' alt='Private meeting room' width='46').mb-2
+            h5.h6 Private meeting room
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/router.svg' alt='High-speed internet' width='46').mb-2
+            h5.h6 High-speed internet
+          .col-6.col-sm-4.text-center.mb-grid-gutter
+            img(src='img/demo/coworking/icons/open-book.svg' alt='Educational programs' width='46').mb-2
+            h5.h6 Educational programs
+
+  
+  // Testimonials
+  section.container.pb-5.mb-md-4.pb-md-7
+    .row.align-items-center
+      .col-md-6.offset-lg-1.order-md-2
+        img(src='img/demo/coworking/illustration02.svg' alt='Illustration').d-block.mx-auto
+      .col-md-6.col-lg-5.order-md-1.pt-4.pt-md-0
+        h2.mt-4.mb-5.text-center.text-md-start What people say about us
+        .tns-carousel-wrapper
+          .tns-carousel-inner(data-carousel-options = '{"nav": false, "gutter": 20}')
+            .pt-3
+              blockquote.blockquote.mx-1
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida commodo consequat.
+                footer.blockquote-footer Miguel Sánchez
+            .pt-3
+              blockquote.blockquote.mx-1
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida commodo consequat.
+                footer.blockquote-footer Sarah Paulson
+            .pt-3
+              blockquote.blockquote.mx-1
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida commodo consequat.
+                footer.blockquote-footer Tim Brooks
+  
+
+  // Events
+  section.position-relative.bg-gradient.pt-6.pb-7(style='z-index: 2;')
+    .container.pb-5
+      h2.text-light.text-center.pb-1.mb-5 Upcoming events
+  .position-relative.zindex-5.container(style='margin-top: -150px;')
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options = '{"items": 2, "nav": false, "gutter": 23, "responsive": {"0":{"items":1},"800":{"items":2}}}')
+        .pb-2
+          .card.h-100.border-0.shadow.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success New
+            .card-body.py-5.px-4
+              .d-sm-flex.py-sm-4.px-lg-3
+                .text-sm-center.mt-0.mt-sm-n3
+                  span.d-sm-block.text-primary.me-2.me-sm-0.mb-n3(style='font-size: 3.75rem;') 06
+                  span.fs-xl.text-muted.text-uppercase Aug
+                .ps-sm-4.ps-lg-5
+                  a(href='#').meta-link.fs-sm.mb-2 Open lecture
+                  h3.h4.nav-heading.mb-4
+                    a(href='#') The Single Most Important Thing You Need to Know About
+                  a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-2
+                    img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                    .ps-2.ms-1.mt-n1
+                      | by
+                      span.fw-semibold.ms-1 Sanomi Smith
+        .pb-2
+          .card.h-100.border-0.shadow.mx-1
+            .card-body.py-5.px-4
+              .d-sm-flex.py-sm-4.px-lg-3
+                .text-sm-center.mt-0.mt-sm-n3
+                  span.d-sm-block.text-primary.me-2.me-sm-0.mb-n3(style='font-size: 3.75rem;') 24
+                  span.fs-xl.text-muted.text-uppercase Jul
+                .ps-sm-4.ps-lg-5
+                  a(href='#').meta-link.fs-sm.mb-2 Worksop
+                  h3.h4.nav-heading.mb-4
+                    a(href='#') Learn Exactly How I Improved Personal Finance in 2 Days
+                  a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-2
+                    img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                    .ps-2.ms-1.mt-n1
+                      | by
+                      span.fw-semibold.ms-1 Charlie Welch
+        .pb-2
+          .card.h-100.border-0.shadow.mx-1
+            .card-body.py-5.px-4
+              .d-sm-flex.py-sm-4.px-lg-3
+                .text-sm-center.mt-0.mt-sm-n3
+                  span.d-sm-block.text-primary.me-2.me-sm-0.mb-n3(style='font-size: 3.75rem;') 15
+                  span.fs-xl.text-muted.text-uppercase Jun
+                .ps-sm-4.ps-lg-5
+                  a(href='#').meta-link.fs-sm.mb-2 Open discussion
+                  h3.h4.nav-heading.mb-4
+                    a(href='#') How technological advancements affect our decisions
+                  a(href='#').d-flex.meta-link.fs-sm.align-items-center.pt-2
+                    img(src='img/testimonials/09.jpg' alt='Jessica Miller' width='42').rounded-circle
+                    .ps-2.ms-1.mt-n1
+                      | by
+                      span.fw-semibold.ms-1 Jessica Miller
+  
+
+  // Contacts
+  section.bg-secondary(style='margin-top: -300px; padding-top: 300px;')
+    .container.pt-5.pb-6.py-md-7
+      h2.text-center.mb-5 Contacts
+      .row
+        .col-md-6.mb-5.mb-md-0
+          form(novalidate).needs-validation.mb-4.pb-2
+            .input-group.mb-3
+              i.ai-user.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              input(type='text' placeholder='Name' required).form-control.rounded
+            .input-group.mb-3
+              i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              input(type='email' placeholder='Email' required).form-control.rounded
+            .mb-3.pb-1
+              textarea(rows='4' placeholder='Message' required).form-control
+            .row.pt-2
+              .col-sm-6
+                button(type='submit').btn.btn-primary.d-block.w-100 Send Request
+          .row
+            .col-sm-6
+              h5 Around office
+              ul.list-unstyled.mb-0
+                li.mb-0 396 Lillian Blvd, Holbrook
+                li.mb-0 New York, USA
+            .col-sm-6
+              h5 Collaboration
+              ul.list-unstyled.mb-0
+                li.mb-0 + 1 526 220 0459
+                li.mb-0 contact@example.com
+        .col-md-6.col-xl-5.offset-xl-1.gallery
+          a(href='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.91476818218!2d-74.11976253858133!3d40.69740344296443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sua!4v1568574342685!5m2!1sen!2sua' data-iframe='true' data-sub-html='<h6 class="fs-sm text-light">396 Lillian Blvd, Holbrook, NY 11741</h6>').gallery-item.map-popup.border.rounded-3
+            img(src='img/demo/coworking/map.jpg' alt='Maps')
+            span.gallery-caption
+              i.ai-maximize-2.fs-xl.mt-n1.me-2
+              | Expand the map
+            .position-absolute(style='width: 48px; top: 50%; left: 50%; margin-top: -24px; margin-left: -24px;')
+              img(src='img/pages/contacts/marker.png' alt='Map marker')
+
+
+//- Footer
+block footer
+  footer.site-footer.bg-dark.py-5
+    .container.d-sm-flex.justify-content-between.align-items-center.text-center
+      .mb-4.mb-sm-0.ms-sm-4.order-sm-2
+        a(href='#').btn-social.bs-outline.bs-light.bs-facebook
+          i.ai-facebook
+        a(href='#').btn-social.bs-outline.bs-light.bs-twitter.ms-2
+          i.ai-twitter
+        a(href='#').btn-social.bs-outline.bs-light.bs-instagram.ms-2
+          i.ai-instagram
+        a(href='#').btn-social.bs-outline.bs-light.bs-google.ms-2
+          i.ai-google
+      p.fs-sm.mb-0.order-sm-1
+        span.text-light.opacity-50.me-1 © All rights reserved. Made by
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

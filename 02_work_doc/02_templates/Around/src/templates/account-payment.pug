@@ -1,0 +1,136 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['cleave.js/dist/cleave.min.js']
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Account - Payment Methods'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar + Modal
+block navbar
+  include partials/modal-payment
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title
+            h1.h3.mb-3.pb-2.text-center.text-sm-start Payment methods
+
+            // Alert
+            .alert.alert-info.fs-sm.mb-4(role='alert')
+              i.ai-alert-circle.fs-lg.mt-n1.me-2
+              | Primary payment method is used by default
+
+            // Payment methods (table)
+            .table-responsive.fs-md
+              table.table.table-hover.mb-0
+                thead
+                  tr
+                    th Your credit / debit cards
+                    th Name on card
+                    th Expires on
+                    th
+                tbody
+                  tr
+                    td.py-3.align-middle
+                      .d-flex.align-items-center
+                        img(src='img/account/cards/card-visa.png' alt='Visa' width='39').me-2
+                        div
+                          span.fw-medium.text-heading.me-1 Visa
+                          | ending in 4999
+                          span.align-middle.badge.bg-info.ms-2 Primary
+                    td.py-3.align-middle Amanda Wilson
+                    td.py-3.align-middle 08 / 2023
+                    td.py-3.align-middle
+                      a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                        i.ai-edit
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                        .ai-trash-2
+                  tr
+                    td.py-3.align-middle
+                      .d-flex.align-items-center
+                        img(src='img/account/cards/card-master.png' alt='MasterCard' width='39').me-2
+                        div
+                          span.fw-medium.text-heading.me-1 MasterCard
+                          | ending in 0015
+                    td.py-3.align-middle Amanda Wilson
+                    td.py-3.align-middle 11 / 2024
+                    td.py-3.align-middle
+                      a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                        i.ai-edit
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                        .ai-trash-2
+                  tr
+                    td.py-3.align-middle
+                      .d-flex.align-items-center
+                        img(src='img/account/cards/card-paypal.png' alt='PayPal' width='39').me-2
+                        div
+                          span.fw-medium.text-heading.me-1 PayPal
+                          | a.wilson@example.com
+                    td.py-3.align-middle &mdash;
+                    td.py-3.align-middle &mdash;
+                    td.py-3.align-middle
+                      a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                        i.ai-edit
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                        .ai-trash-2
+                  tr
+                    td.py-3.align-middle
+                      .d-flex.align-items-center
+                        img(src='img/account/cards/card-visa.png' alt='Visa' width='39').me-2
+                        div
+                          span.fw-medium.text-heading.me-1 Visa
+                          | ending in 6073
+                    td.py-3.align-middle Amanda Wilson
+                    td.py-3.align-middle 09 / 2025
+                    td.py-3.align-middle
+                      a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                        i.ai-edit
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                        .ai-trash-2
+                  tr
+                    td.py-3.align-middle
+                      .d-flex.align-items-center
+                        img(src='img/account/cards/card-visa.png' alt='Visa' width='39').me-2
+                        div
+                          span.fw-medium.text-heading.me-1 Visa
+                          | ending in 9791
+                    td.py-3.align-middle Amanda Wilson
+                    td.py-3.align-middle 05 / 2025
+                    td.py-3.align-middle
+                      a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                        i.ai-edit
+                      a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                        .ai-trash-2
+            hr.mt-0.mb-4
+            .text-sm-end
+              a(href='#add-payment' class='btn btn-primary' data-bs-toggle='modal') Add payment method
+            
+
+//- Footer
+block footer
+  include partials/footer-simple

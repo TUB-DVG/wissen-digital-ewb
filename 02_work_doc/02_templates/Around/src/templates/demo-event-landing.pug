@@ -1,0 +1,537 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['jarallax/dist/jarallax.min.js', 'jarallax/dist/jarallax-element.min.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Event Landing'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero
+  section.bg-size-cover.overflow-hidden.pt-5.pt-md-6.pt-lg-7(style='max-height: 750px; background-image: url(img/demo/event-landing/hero-bg.jpg);')
+    .container.position-relative.zindex-5.pt-2.pb-4.pb-md-2
+      .row.justify-content-center
+        .col-xl-6.col-lg-7.col-md-8.text-center
+          h1.display-4.text-light.mb-4 Instagram Marketing Conference 2020
+          .d-inline-flex.align-items-center.mx-1.px-3.mb-4
+            i.ai-calendar.h2.mb-0.me-2.text-light
+            span.text-light September 11-13, 2020
+          .d-inline-flex.align-items-center.mx-1.px-3.mb-4
+            i.ai-map-pin.h2.mb-0.me-2.text-light
+            span.text-light Hotel Oranfe, Los Angeles
+          .pt-2
+            a(href='#tickets' data-scroll).btn.btn-success Buy Tickets
+    div(data-jarallax-element='50' data-disable-parallax-down='md')
+      img(src='img/demo/event-landing/people.png' alt='People').d-block.mx-auto
+  
+
+  // Countdown
+  section.bg-secondary.py-5.py-md-6
+    .container.py-2.py-md-0
+      .row.align-items-center
+        .col-xl-4.text-center.text-xl-start
+          h2.mb-4.mb-xl-0 Conference will start in:
+        .col-xl-8
+          .countdown.h2.display-2.justify-content-center.justify-content-xl-start(data-countdown='10/01/2021 07:00:00 PM')
+            .countdown-days.mb-0.mt-3.me-0.px-4.border-end
+              span.countdown-value.fw-normal.px-4 0
+              span.countdown-label.fs-lg.text-body Days
+            .countdown-hours.mb-0.mt-3.me-0.px-4.border-end
+              span.countdown-value.fw-normal.px-4 0
+              span.countdown-label.fs-lg.text-body Hours
+            .countdown-minutes.mb-0.mt-3.me-0.px-4.border-end
+              span.countdown-value.fw-normal.px-4 0
+              span.countdown-label.fs-lg.text-body Mins
+            .countdown-seconds.mb-0.mt-3.me-0.px-4
+              span.countdown-value.fw-normal.px-4 0
+              span.countdown-label.fs-lg.text-body Secs
+  
+
+  // Speakers
+  section.container.pt-5.pb-4.pb-md-5.pb-lg-6.pt-md-6.pt-lg-7
+    h2.text-center.pt-2.pt-md-0.mb-5 Speakers
+    .row.pb-3.pb-md-0
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/01.jpg' alt='Sarah Cole')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sarah Cole
+            p.fs-xs.text-body.mb-0 Social media strategist
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/02.jpg' alt='Charlie Welch')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Charlie Welch
+            p.fs-xs.text-body.mb-0 Instagram expert
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/03.jpg' alt='Emma Brown')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Emma Brown
+            p.fs-xs.text-body.mb-0 Content creator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/04.jpg' alt='Rosalie Lyons')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Rosalie Lyons
+            p.fs-xs.text-body.mb-0 Social media educator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/05.jpg' alt='Jane Tanaka')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Jane Tanaka
+            p.fs-xs.text-body.mb-0 Social media strategist
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/06.jpg' alt='Sanomi Smith')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sanomi Smith
+            p.fs-xs.text-body.mb-0 Model and influencer
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/07.jpg' alt='Olivia Jones')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Olivia Jones
+            p.fs-xs.text-body.mb-0 Content creator
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 20rem;')
+          a(href='#').card-floating-icon: i.ai-instagram
+          .card-img-top.card-img-gradient
+            img(src='img/team/08.jpg' alt='Richard Davis')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Richard Davis
+            p.fs-xs.text-body.mb-0 Travel content creator
+
+  
+  // Split section (Video popup)
+  section.bg-secondary
+    .row.g-0
+      .col-md-6.jarallax.py-7(data-jarallax data-speed='0.3')
+        span.position-absolute.top-0.start-0.w-100.h-100.bg-black(style='opacity: 40%;')
+        .jarallax-img(style='background-image: url(img/demo/event-landing/video-bg.jpg);')
+        .position-relative.zindex-5.d-flex.flex-column.align-items-center.justify-content-center.h-100.px-3.py-4.py-lg-7
+          a(href='https://www.youtube.com/watch?v=zpmRmIFnO6c' data-sub-html='<h6 class="fs-sm text-light">Instagram Marketing Conference 2020</h6>').btn-video.mb-3
+          span.fw-medium.text-light Click me to watch video!
+      .col-md-6.px-3.pe-xl-0.ps-lg-5.ps-xl-6.py-2.py-lg-4
+        .ms-sm-4.py-5.my-sm-0.py-md-6.py-lg-7(style='max-width: 520px;')
+          h2.mb-5 Why you should join the event?
+          .d-flex.align-items-start.mb-grid-gutter
+            img(src='img/demo/event-landing/icons/01.svg' alt='Icon' width='43').d-block.mt-1
+            .ps-4.ms-2
+              h3.h5.mb-1 Latest technology &amp; Content
+              p.fs-sm.mb-0 Nam libero tempore, cum soluta nobis est eligendi optio cumque.
+          .d-flex.align-items-start.mb-grid-gutter
+            img(src='img/demo/event-landing/icons/02.svg' alt='Icon' width='43').d-block.mt-1
+            .ps-4.ms-2
+              h3.h5.mb-1 Creativity &amp; Storytelling
+              p.fs-sm.mb-0 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia occaecati cupiditate non provident.
+          .d-flex.align-items-start
+            img(src='img/demo/event-landing/icons/03.svg' alt='Icon' width='43').d-block.mt-1
+            .ps-4.ms-2
+              h3.h5.mb-1 Monetization &amp; Commerce
+              p.fs-sm.mb-0 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+  
+  // Statistics (Digits)
+  section.container.py-4.pt-md-6.pt-lg-7.pb-md-5
+    .row.pb-lg-4.pt-3
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 3
+        p.text-muted.fs-lg.mb-0 Days
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 10
+        p.text-muted.fs-lg.mb-0 Daily<br>workshops
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 6+
+        p.text-muted.fs-lg.mb-0 Group<br>discussions
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 8
+        p.text-muted.fs-lg.mb-0 Speakers
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 5
+        p.text-muted.fs-lg.mb-0 Countries
+      .col-lg-2.col-md-3.col-sm-4.col-6.text-center.mb-grid-gutter
+        h3.display-2.fw-normal.mb-0 900
+        p.text-muted.fs-lg.mb-0 Guests
+
+  
+  // Schedule
+  section.bg-secondary.pt-5.pb-3.pt-md-6.pb-md-4.pt-lg-7.pb-lg-5
+    .container.pt-3.pt-md-0
+      h2.text-center.mb-5 Schedule
+
+      // Nav tabs
+      ul(class='nav nav-tabs fancy-tabs mb-5 mx-auto' style='max-width: 50rem;' role='tablist')
+        li.nav-item
+          a(href='#day-1' class='nav-link' data-bs-toggle='tab' role='tab')
+            span.fancy-tab-text.h1.fw-normal 10/11
+            span.fancy-tab-shape
+        li.nav-item
+          a(href='#day-2' class='nav-link active' data-bs-toggle='tab' role='tab')
+            span.fancy-tab-text.h1.fw-normal 10/12
+            span.fancy-tab-shape
+        li.nav-item
+          a(href='#day-3' class='nav-link' data-bs-toggle='tab' role='tab')
+            span.fancy-tab-text.h1.fw-normal 10/13
+            span.fancy-tab-shape
+      
+      // Tabs content
+      .tab-content
+
+        // Day 1
+        #day-1.tab-pane.fade(role='tabpanel')
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 10:00 - 10:50
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Registartion
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 11:00 - 12:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/05.jpg' alt='Tim Brooks' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Tim Brooks
+                    p.fs-sm.mb-2 Excepteur sint occaecat cupidatat non proident
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Improve your profile visibility. Tips &amp; tricks from the field expert.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 13:00 - 14:00
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Lunch break
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 14:30 - 15:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/03.jpg' alt='Jane Tanaka' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Jane Tanaka
+                    p.fs-sm.mb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Instagram marketing for E-commerce
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 16:00 - 17:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/01.jpg' alt='Sanomi Smith' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Sanomi Smith
+                    p.fs-sm.mb-2 Nemo enim ipsam voluptatem quia voluptas
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') How to drive your brand awareness on Instagram.
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/02.jpg' alt='Richard Davis' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Richard Davis
+                    p.fs-sm.mb-2 At vero eos et accusamus et iusto odio dignissimos ducimus
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Increase traffic and sales with effective Instagram marketing strategies.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 18:00 - 19:30
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Dinner
+
+        // Day 2
+        #day-2.tab-pane.fade.show.active(role='tabpanel')
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 10:00 - 10:50
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Registartion
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 11:00 - 12:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/01.jpg' alt='Sanomi Smith' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Sanomi Smith
+                    p.fs-sm.mb-2 Nemo enim ipsam voluptatem quia voluptas
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') How to drive your brand awareness on Instagram.
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/02.jpg' alt='Richard Davis' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Richard Davis
+                    p.fs-sm.mb-2 At vero eos et accusamus et iusto odio dignissimos ducimus
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Increase traffic and sales with effective Instagram marketing strategies.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 13:00 - 14:00
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Lunch break
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 14:30 - 15:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/03.jpg' alt='Jane Tanaka' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Jane Tanaka
+                    p.fs-sm.mb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Improve your profile visibility. Tips &amp; tricks from the field expert.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 16:00 - 17:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/04.jpg' alt='Sarah Cole' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Sarah Cole
+                    p.fs-sm.mb-2 Excepteur sint occaecat cupidatat non proident
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Instagram marketing for E-commerce
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 18:00 - 19:30
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Dinner
+        
+        // Day 3
+        #day-3.tab-pane.fade(role='tabpanel')
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 10:00 - 10:50
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Registartion
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 11:00 - 12:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/04.jpg' alt='Sarah Cole' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Sarah Cole
+                    p.fs-sm.mb-2 Excepteur sint occaecat cupidatat non proident
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Instagram marketing for E-commerce
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 13:00 - 14:00
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Lunch break
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 14:30 - 15:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/03.jpg' alt='Jane Tanaka' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Jane Tanaka
+                    p.fs-sm.mb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Improve your profile visibility. Tips &amp; tricks from the field expert.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 16:00 - 17:45
+              .col-lg-10.col-sm-9
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/01.jpg' alt='Sanomi Smith' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Sanomi Smith
+                    p.fs-sm.mb-2 Nemo enim ipsam voluptatem quia voluptas
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') How to drive your brand awareness on Instagram.
+                .d-flex.align-items-start.py-3.mb-2
+                  img(src='img/demo/event-landing/speakers/02.jpg' alt='Richard Davis' width='75').rounded-circle
+                  .ms-4(style='max-width: 420px;')
+                    .h6.text-body.mb-2 Richard Davis
+                    p.fs-sm.mb-2 At vero eos et accusamus et iusto odio dignissimos ducimus
+                    h3.h4.nav-heading.mb-0
+                      a(href='#') Increase traffic and sales with effective Instagram marketing strategies.
+          .border-top.py-4
+            .row.py-md-2
+              .col-lg-2.col-sm-3
+                .h6.text-body.mb-0.py-3 18:00 - 19:30
+              .col-sm-9.offset-lg-1
+                .h6.text-body.mb-0.py-3 Gala dinner
+
+  
+  // Contacts + Gallery
+  section.container.py-5.py-md-6.py-lg-7
+    .row.py-3
+      .col-lg-4.col-md-5.mb-5.mb-md-0
+        h2.mb-3 Location
+        p.fs-sm.mb-5 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        h3.h6 Hotel Oranfe
+        ul.list-unstyled.mb-5
+          li.mb-0 2703  Evergreen Lane
+          li.mb-0 Los Angeles, California
+        ul.list-unstyled.mb-5
+          li.d-flex.align-items-center.mb-2
+            i.ai-check-square.fs-xl.me-2
+            span.fw-semibold.ps-1 Parking for free
+          li.d-flex.align-items-center.mb-2
+            i.ai-check-square.fs-xl.me-2
+            span.fw-semibold.ps-1 Cafe and restaurant
+          li.d-flex.align-items-center
+            i.ai-check-square.fs-xl.me-2
+            span.fw-semibold.ps-1 Book room
+        .gallery
+          a(href='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26435.920790306365!2d-118.41704346384354!3d34.08258320225705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd081ed1!2sBeverly%20Hills%2C%20CA%2C%20USA!5e0!3m2!1sen!2sua!4v1589884573291!5m2!1sen!2sua' data-iframe='true' data-sub-html='<h6 class="fs-sm text-light">2703  Evergreen Lane, Los Angeles, CA</h6>' style='max-width: 312px;').gallery-item.map-popup.rounded-circle.text-center
+            img(src='img/demo/event-landing/map.png' alt='Map')
+            span.gallery-caption
+              i.ai-maximize-2.fs-xl.mt-n1.me-2
+              | Expand the map
+      .col-xl-6.col-md-7.offset-xl-2.offset-lg-1.px-sm-3
+        .row.mx-n2.mx-sm-n3.gallery
+          .col-6.px-2.px-md-3
+            a(href='img/demo/event-landing/gallery/01.jpg' data-sub-html='<h6 class="fs-sm text-light">Conference restaurant</h6>').gallery-item.rounded-3.mb-3.mb-md-0
+              img(src='img/demo/event-landing/gallery/th01.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Conference restaurant
+            .d-none.d-md-block.mb-grid-gutter
+            a(href='img/demo/event-landing/gallery/03.jpg' data-sub-html='<h6 class="fs-sm text-light">Confernce cafe</h6>').gallery-item.rounded-3
+              img(src='img/demo/event-landing/gallery/th03.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Confernce cafe
+          .col-6.px-2.px-md-3.pt-md-6
+            a(href='img/demo/event-landing/gallery/02.jpg' data-sub-html='<h6 class="fs-sm text-light">Main auditorium</h6>').gallery-item.rounded-3.mb-3.mb-md-0
+              img(src='img/demo/event-landing/gallery/th02.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Main auditorium
+            .d-none.d-md-block.mb-grid-gutter
+            a(href='img/demo/event-landing/gallery/04.jpg' data-sub-html='<h6 class="fs-sm text-light">Meeting room</h6>').gallery-item.rounded-3
+              img(src='img/demo/event-landing/gallery/th04.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Meeting room
+
+  
+  // Tickets
+  section#tickets.container.position-relative.zindex-5.mt-2.mt-md-5
+    .row.justify-content-center
+      .col-lg-10.col-md-11
+        .bg-gradient.rounded-3.pt-5.px-4.pb-4.p-sm-5
+          .px-md-4
+            h2.text-light.text-center.pb-4 Buy tickets
+            .d-sm-flex.justify-content-between.align-items-center.bg-light.rounded-3.px-3.py-4.p-sm-4.mb-grid-gutter.text-center.text-sm-start
+              .me-sm-3.mb-4.mb-sm-0
+                h3.h6.mb-2 Full conference pass
+                p.mb-0 3 days full access + Lunch + Gifts
+              a(href='#').btn.btn-primary Buy Now
+            .d-sm-flex.justify-content-between.align-items-center.bg-light.rounded-3.px-3.py-4.p-sm-4.mb-grid-gutter.text-center.text-sm-start
+              .me-sm-3.mb-4.mb-sm-0
+                h3.h6.mb-2 1 day pass
+                p.mb-0 1 day full access + Lunch + Gifts
+              a(href='#').btn.btn-primary Buy Now
+  
+
+  // Partners (logos)
+  section.position-relative.bg-secondary.pt-5.pb-4.pb-md-5.pt-md-6.pt-lg-7(style='margin-top: -260px;')
+    div(style='height: 260px;')
+    .shape.shape-top.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z')
+    .container.pt-3.pt-md-0.pb-md-2
+      .row.justify-content-center
+        .col-lg-8
+          .row
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/01_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/01_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/02_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/02_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/03_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/03_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/04_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/04_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/05_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/05_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/06_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/06_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/07_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/07_gray.png' alt='Logo' width='176').swap-from
+            .col-md-3.col-sm-4.col-6.text-center
+              a(href='#').swap-image.mb-grid-gutter
+                img(src='img/demo/event-landing/partners/08_color.png' alt='Logo' width='176').swap-to
+                img(src='img/demo/event-landing/partners/08_gray.png' alt='Logo' width='176').swap-from
+
+
+//- Footer
+block footer
+  
+  // Footer
+  footer.footer.bg-dark.pt-5.pb-4
+    .container.pb-2.text-center.text-md-start
+      .row.pt-md-3.pb-3
+        .col-lg-3.col-md-2
+          a(href='index.html' style='width: 70px;').d-block.mx-auto.mb-4
+            img(src='img/logo/logo-icon-footer.png' alt='Around')
+        .col-lg-3.col-md-4.pb-4
+          .widget.widget-light
+            h4.widget-title.mb-3 Contacts
+            ul
+              li: a(href='mailto:contact@example.com').widget-link contact@example.com
+        .col-md-3.pb-4
+          .widget.widget-light
+            h4.widget-title.mb-3 Collaboration
+            ul
+              li: a(href='tel:9107848015').widget-link 910-784-8015
+        .col-md-3.pb-4
+          .widget.widget-light
+            h4.widget-title.mb-3 Follow
+            a(href='#').btn-social.bs-outline.bs-light.bs-facebook.bs-lg.me-2.mb-2
+              i.ai-facebook
+            a(href='#').btn-social.bs-outline.bs-light.bs-twitter.bs-lg.me-2.mb-2
+              i.ai-twitter
+            a(href='#').btn-social.bs-outline.bs-light.bs-instagram.bs-lg.me-2.mb-2
+              i.ai-instagram
+            a(href='#').btn-social.bs-outline.bs-light.bs-google.bs-lg.mb-2
+              i.ai-google
+      p.fs-sm.text-center.mb-0
+        span.text-light.opacity-50 © All rights reserved. Made by 
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

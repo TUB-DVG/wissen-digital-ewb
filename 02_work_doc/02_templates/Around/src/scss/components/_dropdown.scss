@@ -1,0 +1,147 @@
+//
+// Dropdown
+// --------------------------------------------------
+
+
+// Caret
+
+.dropdown-toggle {
+  &::after,
+  &::before {
+    display: inline-block;
+    font: {
+      family: $icons-font-family;
+      weight: normal;
+    }
+    vertical-align: middle;
+  }
+  &::after {
+    margin-left: .25rem;
+    content: $ai-chevron-down;
+  }
+  &::before { margin-right: .25rem; }
+}
+.dropdown-toggle:not(.dropdown-toggle-split) {
+  &::before { margin-left: -.25rem; }
+  &::after { margin-right: -.25rem; }
+}
+.dropdown .dropdown-toggle,
+.dropup .dropdown-toggle,
+.dropend .dropdown-toggle {
+  &::before { display: none; }
+}
+.dropup .dropdown-toggle::after {
+  content: $ai-chevron-up;
+}
+.dropend .dropdown-toggle::after {
+  content: $ai-chevron-right;
+  vertical-align: bottom;
+}
+.dropstart .dropdown-toggle {
+  &::before {
+    content: $ai-chevron-left;
+    vertical-align: bottom;
+  }
+  &::after { display: none; }
+}
+
+
+// Dropdown menu
+
+.dropdown-menu {
+  @include box-shadow($dropdown-box-shadow);
+  @if $enable-shadows {
+    border: 0;
+  }
+  li {
+    margin-bottom: 0;
+    &:hover > .dropdown-item {
+      color: $dropdown-link-hover-color;
+    }
+  }
+  .active > .dropdown-item {
+    color: $dropdown-link-active-color;
+  }
+  &.dropdown-menu-dark {
+    border-width: 0;
+    box-shadow: $dropdown-dark-box-shadow;
+    li:hover > .dropdown-item {
+      color: $dropdown-dark-link-hover-color;
+    }
+    .active > .dropdown-item {
+      color: $dropdown-dark-link-active-color;
+    }
+  }
+}
+
+
+// Dropdown header
+
+.dropdown-header {
+  margin-bottom: .25rem;
+  padding: {
+    top: $dropdown-item-padding-y;
+    bottom: $dropdown-item-padding-y * 2;
+  }
+  border-bottom: $dropdown-border-width solid $dropdown-border-color;
+  @include font-size($dropdown-header-font-size);
+  font-weight: $headings-font-weight;
+}
+.dropdown-menu-dark .dropdown-header {
+  border-bottom-color: $dropdown-dark-divider-bg;
+}
+
+
+// Dropdown divider
+
+.dropdown-divider { margin: .25rem 0; }
+
+
+// Dropdown item
+
+.dropdown-item {
+  position: relative;
+  width: 100%;
+  transition: $dropdown-link-transition;
+  font: {
+    size: $dropdown-item-font-size;
+    weight: $nav-link-font-weight;
+  }
+  &.active {
+    pointer-events: none;
+    cursor: default;
+  }
+  > i, .badge { vertical-align: middle; }
+}
+
+
+// Dropdown menu animation
+
+.dropdown-menu.show {
+  animation: fade-in .25s ease-in-out;
+}
+
+
+// Split button dropdown fix
+
+.dropdown-toggle-split::after {
+  margin-left: -.0625rem !important;
+}
+
+
+// Dropdown component animations
+
+@keyframes fade-in  {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes zoom-in {
+  from {
+    transform: scale(.85rem);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

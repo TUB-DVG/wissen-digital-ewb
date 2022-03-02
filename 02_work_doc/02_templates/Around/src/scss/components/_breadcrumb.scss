@@ -1,0 +1,55 @@
+//
+// Breadcrumb
+// --------------------------------------------------
+
+
+// Base
+
+.breadcrumb-item {
+  font-weight: $nav-link-font-weight;
+
+  &::before {
+    margin-top: -.0625rem;
+    font: {
+      family: $icons-font-family;
+      size: $breadcrumb-divider-font-size;
+      weight: normal;
+    }
+    vertical-align: middle;
+  }
+
+  > a {
+    transition: $nav-link-transition;
+    color: $breadcrumb-dark-item-link-color;
+
+    &:hover {
+      color: $breadcrumb-dark-item-link-hover-color;
+      text-decoration: none;
+    }
+
+    > i {
+      margin: {
+        top: -.0625rem;
+        right: .325rem;
+      }
+      @include font-size(1.05em);
+      vertical-align: middle;
+    }
+  }
+
+  &.active { cursor: default; }
+}
+
+
+// Light version
+
+.breadcrumb-light .breadcrumb-item  {
+  &::before { color: $breadcrumb-light-divider-color; }
+  > a {
+    color: $breadcrumb-light-item-link-color;
+    &:hover {
+      color: $breadcrumb-light-item-link-hover-color;
+    }
+  }
+  &.active { color: $breadcrumb-light-active-color; }
+}

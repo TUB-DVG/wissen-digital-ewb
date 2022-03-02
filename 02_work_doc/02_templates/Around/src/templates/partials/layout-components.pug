@@ -1,0 +1,212 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+
+//- Override default config variables
+append config
+  - var isPageLoading = false
+  - var isNestedFile = true
+
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body
+    
+    main.container-fluid
+
+      // Main content
+      section.offcanvas-enabled-start.row.pb-3.pb-md-4
+        .col-xxl-9
+
+          // Navbar
+          header(data-scroll-header data-fixed-element).navbar.navbar-expand-lg.navbar-light.fixed-top.navbar-shadow.bg-light.px-3.px-lg-4
+            a(href='typography.html' style='min-width: 7rem;').navbar-brand.d-lg-none
+              img(src='../img/logo/logo-icon.png' alt='Around' width='58')
+            ul.navbar-nav.ms-auto.d-none.d-lg-flex
+              li.nav-item
+                a(href='../index.html').nav-link
+                  i.ai-eye.align-middle.mt-n1.me-2
+                  | Live preview
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+              li.nav-item
+                a(href='../docs/dev-setup.html').nav-link
+                  i.ai-file-text.align-middle.mt-n1.me-2
+                  | Documentation
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+            button(type='button' data-bs-toggle='offcanvas' data-bs-target='#componentsNav').navbar-toggler.d-block.d-lg-none.ms-auto
+              span.navbar-toggler-icon
+            a(href='https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary.btn-shadow.ms-3
+              i.ai-shopping-cart.me-2.d-none.d-sm-inline-block
+              | Buy now
+          
+          // Side navigation (Off-canvas)
+          aside#componentsNav.offcanvas.offcanvas-expand.bg-dark
+            .offcanvas-header.bg-darker.d-none.d-lg-block.py-2
+              a(href='typography.html').navbar-brand.py-1
+                img(src='../img/logo/logo-light.png' alt='Around' width='153')
+              span.badge.bg-danger UI Kit
+            .offcanvas-header.bg-darker.d-flex.d-lg-none.align-items-center
+              .d-flex.align-items-center.mt-1
+                h5.text-light.mb-0.me-3 Menu
+                span.badge.bg-danger UI Kit
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.btn-close-white
+            .d-flex.d-lg-none.align-items-center.py-4.px-3.border-bottom.border-light
+              a(href='../index.html').btn.btn-outline-light.w-100.btn-sm.me-2
+                i.ai-eye.me-2
+                | Preview
+              a(href='../docs/dev-setup.html').btn.btn-outline-light.w-100.btn-sm.mt-0
+                i.ai-file-text.me-2
+                | Docs
+            .offcanvas-body.pt-4.pb-grid-gutter(data-simplebar data-simplebar-inverse)
+              h6.text-light.pt-2.pb-2.border-bottom.border-light Content
+              nav.widget-nav.nav.nav-light.flex-column
+                a(href='typography.html')&attributes(pageTitle === 'Typography' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Typography
+                a(href='icon-font.html')&attributes(pageTitle === 'Icon font' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Icon font
+                a(href='code.html')&attributes(pageTitle === 'Code' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Code
+                a(href='images.html')&attributes(pageTitle === 'Images & figures' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Images &amp; figures
+                a(href='tables.html')&attributes(pageTitle === 'Tables' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Tables
+              h6.text-light.pt-3.pb-2.border-bottom.border-light Components
+              nav.widget-nav.nav.nav-light.flex-column
+                a(href='accordion.html')&attributes(pageTitle === 'Accordion' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Accordion
+                a(href='alerts.html')&attributes(pageTitle === 'Alerts' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Alerts
+                a(href='badge.html')&attributes(pageTitle === 'Badges' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Badges
+                a(href='blog-components.html')&attributes(pageTitle === 'Blog components' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Blog components
+                a(href='breadcrumb.html')&attributes(pageTitle === 'Breadcrumb' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Breadcrumb
+                a(href='buttons.html')&attributes(pageTitle === 'Buttons' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Buttons
+                a(href='button-group.html')&attributes(pageTitle === 'Button group' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Button group
+                a(href='cards.html')&attributes(pageTitle === 'Cards' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Cards
+                a(href='carousel.html')&attributes(pageTitle === 'Carousel' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Carousel
+                a(href='charts.html')&attributes(pageTitle === 'Charts' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Charts
+                a(href='collapse.html')&attributes(pageTitle === 'Collapse' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Collapse
+                a(href='countdown.html')&attributes(pageTitle === 'Countdown' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Countdown
+                a(href='contacts-card.html')&attributes(pageTitle === 'Contacts card' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Contacts card
+                a(href='date-picker.html')&attributes(pageTitle === 'Date / time picker' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Date / time picker
+                a(href='dropdowns.html')&attributes(pageTitle === 'Dropdowns' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Dropdowns
+                a(href='forms.html')&attributes(pageTitle === 'Forms' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Forms
+                a(href='frames.html')&attributes(pageTitle === 'Frames' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Frames
+                a(href='gallery.html')&attributes(pageTitle === 'Gallery' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Gallery
+                a(href='hotspots.html')&attributes(pageTitle === 'Hotspots' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Hotspots
+                a(href='input-group.html')&attributes(pageTitle === 'Input group' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Input group
+                a(href='list-group.html')&attributes(pageTitle === 'List group' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | List group
+                a(href='modal.html')&attributes(pageTitle === 'Modal' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Modal
+                a(href='navbar.html')&attributes(pageTitle === 'Navbar' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Navbar
+                a(href='offcanvas.html')&attributes(pageTitle === 'Offcanvas' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Offcanvas
+                a(href='pagination.html')&attributes(pageTitle === 'Pagination' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Pagination
+                a(href='parallax.html')&attributes(pageTitle === 'Parallax' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Parallax
+                a(href='pills.html')&attributes(pageTitle === 'Pills' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Pills
+                a(href='placeholders.html')&attributes(pageTitle === 'Placeholders' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Placeholders
+                a(href='popovers.html')&attributes(pageTitle === 'Popovers' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Popovers
+                a(href='portfolio-components.html')&attributes(pageTitle === 'Portfolio components' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Portfolio components
+                a(href='pricing.html')&attributes(pageTitle === 'Pricing' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Pricing
+                a(href='progress.html')&attributes(pageTitle === 'Progress' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Progress
+                a(href='shop-components.html')&attributes(pageTitle === 'Shop components' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Shop components
+                a(href='social-buttons.html')&attributes(pageTitle === 'Social buttons' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Social buttons
+                a(href='spinners.html')&attributes(pageTitle === 'Spinners' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Spinners
+                a(href='tabs.html')&attributes(pageTitle === 'Tabs' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Tabs
+                a(href='team.html')&attributes(pageTitle === 'Team' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Team
+                a(href='testimonials.html')&attributes(pageTitle === 'Testimonials / reviews' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Testimonials / reviews
+                a(href='toasts.html')&attributes(pageTitle === 'Toasts' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Toasts
+                a(href='tooltips.html')&attributes(pageTitle === 'Tooltips' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Tooltips
+                a(href='btn-video.html')&attributes(pageTitle === 'Video popup' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Video button
+                a(href='widgets.html')&attributes(pageTitle === 'Widgets' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Widgets
+              h6.text-light.pt-3.pb-2.border-bottom.border-light Utilities
+              nav.widget-nav.nav.nav-light.flex-column
+                a(href='https://getbootstrap.com/docs/5.1/utilities/borders/' target='_blank' rel='noopener')&attributes(pageTitle === 'Alerts' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Bootstrap
+                a(href='utilities.html')&attributes(pageTitle === 'Around utilities' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Around
+
+
+          // Page title
+          .border-bottom.pt-5.pb-2.mt-2.mb-5
+            h1.mt-lg-4.pt-5 !{pageTitle}
+            .d-flex.flex-wrap.flex-md-nowrap.justify-content-between
+              p.text-muted !{pageSubtitle}
+              if Object.keys(pageTitleLink).length
+                p.fs-sm.fw-medium.ps-md-4
+                  a()&attributes({'href': pageTitleLink.link, 'class': 'text-nowrap', 'target': '_blank', 'rel': 'noopener'})= pageTitleLink.title
+                    i.ai-chevron-right.fs-base.align-middle.me-1
+              if isPageTitleBadge
+                .ps-md-4.mb-3
+                  span.badge.bg-danger Around component
+
+          
+          block content
+
+        
+        if anchorNav.length
+          // Quick (anchor) navigation
+          .col-xxl-3.d-none.d-xxl-block.ps-5
+            aside.sticky-top.pt-5
+              .pt-5.mt-5
+                .ps-4.border-start
+                  h3.h5 Jump to
+                  each item in anchorNav
+                    - var linkatts = {'href': item.link}
+                    a(class='nav-link fs-sm mb-2 p-0', 'data-scroll')&attributes(linkatts)= item.title
+
+
+    // Back to top button
+    a(href='#top' data-scroll data-fixed-element).btn-scroll-top
+      span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+      i.btn-scroll-top-icon.ai-arrow-up    
+    
+    // Vendor scrits: js libraries and plugins
+    +vendor-scripts
+
+    // Main theme script
+    script()&attributes(isNestedFile ? {'src': '../js/theme.min.js'} : {'src': 'js/theme.min.js'})

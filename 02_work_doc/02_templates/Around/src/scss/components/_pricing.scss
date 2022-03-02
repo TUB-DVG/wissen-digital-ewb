@@ -1,0 +1,30 @@
+//
+// Pricing
+// --------------------------------------------------
+
+
+// Price switcher
+
+.price-switch {
+  display: flex;
+  align-items: center;
+}
+
+.price-label {
+  transition: $price-switch-label-transition;
+  color: $price-switch-label-color;
+  @include font-size($price-switch-label-font-size);
+  font-weight: $price-switch-label-font-weight;
+
+  &:first-of-type {
+    color: $price-switch-label-active-color;
+  }
+}
+.price-switch-on {
+  .price-label:first-of-type {
+    color: $price-switch-label-color;
+  }
+  .price-label:last-of-type {
+    color: $price-switch-label-active-color;
+  }
+}

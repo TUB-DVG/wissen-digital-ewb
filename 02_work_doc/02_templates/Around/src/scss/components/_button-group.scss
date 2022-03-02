@@ -1,0 +1,34 @@
+//
+// Button group
+// --------------------------------------------------
+
+
+// Fix secondary outline button inside button group
+
+.btn-group .btn-outline-secondary {
+  &:hover, &:active, &.active {
+    border-color: $border-color !important;
+  }
+}
+
+
+// Override button group toggle for primary outline buttons
+
+.btn-group-toggle {
+  .btn.btn-outline-primary {
+    &.active,
+    &:hover, &:focus {
+      border-color: transparent;
+      background-color: rgba($primary, .08);
+      color: $primary;
+    }
+  }
+  .btn.btn-outline-light {
+    &.active,
+    &:hover, &:focus {
+      border-color: transparent;
+      background-color: rgba($light, .08);
+      color: $light;
+    }
+  }
+}

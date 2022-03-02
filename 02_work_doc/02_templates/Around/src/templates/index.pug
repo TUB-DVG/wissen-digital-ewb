@@ -1,0 +1,515 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['parallax-js/dist/parallax.min.js']
+  - var parentMenu = 'Home'
+  - var pageTitle = 'Multipurpose Bootstrap Template'
+
+//- Navbar
+block navbar
+  include partials/navbar-index
+
+//- Page Content
+block content
+
+  // Intro
+  section.d-flex.align-items-center.position-relative.bg-dark.bg-size-cover.bg-position-center.min-vh-100.overflow-hidden.pt-6.pb-lg-5(style='background-image: url(img/demo/presentation/intro/bg.jpg);')
+    .container-fluid.pt-4.pb-5.py-lg-5
+      .row.align-items-center.py-3
+        .col-xl-6.col-lg-5.d-flex.justify-content-end
+          .pt-2.mx-auto.mb-5.mb-lg-0.ms-lg-0.me-xl-7.text-center.text-lg-start(style='max-width: 495px;')
+            h1.display-4.text-light.pb-2
+              span.fw-light Have a look 
+              | Around!
+            p.h4.fw-light.text-light.opacity-70.line-height-base And you will find everything you need to build a great looking website.
+            a(href='#demos' data-scroll).d-inline-flex.align-items-center.text-decoration-none.pt-2.mt-4.mb-5
+              span.btn.btn-icon.rounded-circle.border-light.flex-shrink-0.px-3
+                i.ai-arrow-down.h4.text-light.my-1
+              span.ms-3.text-light.fw-medium View Demos
+            hr.hr-light.mt-0.mb-5
+            .row
+              .col-sm-4.mb-4.mb-sm-0
+                .h1.text-light.mb-1 14
+                .h5.text-light.fw-normal.opacity-70.mb-2 Demo Homepages
+                span.badge.rounded-pill.bg-success More coming
+              .col-sm-4.mb-4.mb-sm-0
+                .h1.text-light.mb-1 50+
+                .h5.text-light.fw-normal.opacity-70.mb-1 Flexible Components
+              .col-sm-4
+                .h1.text-light.mb-1 47
+                .h5.text-light.fw-normal.opacity-70.mb-1 Inner Page Templates
+        .col-xl-6.col-lg-7
+          .parallax.ms-lg-n5(style='max-width: 920px;')
+            .parallax-layer.position-relative(data-depth='0.1')
+              img(src='img/demo/presentation/intro/layer01.png' alt='Layer')
+            .parallax-layer(style='z-index: 2;' data-depth='0.3')
+              img(src='img/demo/presentation/intro/layer02.png' alt='Layer')
+            .parallax-layer(data-depth='0.2')
+              img(src='img/demo/presentation/intro/layer03.png' alt='Layer')
+            .parallax-layer(style='z-index: 3;' data-depth='0.1')
+              img(src='img/demo/presentation/intro/layer04.png' alt='Layer')
+            .parallax-layer(data-depth='0.15')
+              img(src='img/demo/presentation/intro/layer05.png' alt='Layer')
+            .parallax-layer(style='z-index: 4;' data-depth='0.25')
+              img(src='img/demo/presentation/intro/layer06.png' alt='Layer')
+            .parallax-layer(data-depth='0.3')
+              img(src='img/demo/presentation/intro/layer07.png' alt='Layer')
+            .parallax-layer(data-depth='0.4')
+              img(src='img/demo/presentation/intro/layer08.png' alt='Layer')
+            .parallax-layer(data-depth='0.35')
+              img(src='img/demo/presentation/intro/layer09.png' alt='Layer')
+
+
+  // Demos
+  section#demos.bg-secondary
+    .container.pt-5.pb-4.py-md-6.py-lg-7
+      .text-center.mb-5.pt-3.pt-lg-4
+        h2.h1.mb-4 Homepage <span class='bg-faded-primary rounded text-primary px-3 py-2'>Demos</span>
+        p.text-muted Choose from pre-built layouts of our unique homepage demos
+      .row
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-business-consulting.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/business-consulting.jpg' alt='Business Consulting').card-img
+            h3.h5.nav-heading-title.mb-0 Business Consulting
+            span.fs-sm.fw-normal.text-muted Corporate, Business, Agency
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-shop-homepage.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/shop-homepage.jpg' alt='Shop Homepage').card-img
+            h3.h5.nav-heading-title.mb-0 Shop Homepage
+            span.fs-sm.fw-normal.text-muted E-Commerce, Retail, Electronics, Fashion
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-booking-directory.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/booking.jpg' alt='Booking &amp; Directory').card-img
+            h3.h5.nav-heading-title.mb-0 Booking / Directory
+            span.fs-sm.fw-normal.text-muted Listings, Flights, Destinations
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-creative-agency.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/creative-agency.jpg' alt='Creative Agency').card-img
+            h3.h5.nav-heading-title.mb-0 Creative Agency
+            span.fs-sm.fw-normal.text-muted Creative Business, Portfolio, Agency
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-web-studio.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/web-studio.jpg' alt='Web Studio').card-img
+            h3.h5.nav-heading-title.mb-0 Web Studio
+            span.fs-sm.fw-normal.text-muted Web Design, Portfolio, Agency
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-product-software.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/software-landing.jpg' alt='Product Landing - Software').card-img
+            h3.h5.nav-heading-title.mb-0 Product Landing - Software
+            span.fs-sm.fw-normal.text-muted Software, Showcase, Landing Page
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-product-gadget.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/gadget-landing.jpg' alt='Product Landing - Gadget').card-img
+            h3.h5.nav-heading-title.mb-0 Product Landing - Gadget
+            span.fs-sm.fw-normal.text-muted Gadget, Showcase, Landing Page
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-mobile-app.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/mobile-app.jpg' alt='Mobile App Showcase').card-img
+            h3.h5.nav-heading-title.mb-0 Mobile App Showcase
+            span.fs-sm.fw-normal.text-muted Mobile App, Showcase, Landing
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-coworking-space.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/coworking.jpg' alt='Coworkin Space').card-img
+            h3.h5.nav-heading-title.mb-0 Coworking Space
+            span.fs-sm.fw-normal.text-muted Coworking Space Landing Page
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-event-landing.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/event-landing.jpg' alt='Event Landing').card-img
+            h3.h5.nav-heading-title.mb-0 Event Landing
+            span.fs-sm.fw-normal.text-muted Landing Page, Event, Countdown, Tickets
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='index.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/template-presentation.jpg' alt='Web Template Presentation').card-img
+            h3.h5.nav-heading-title.mb-0 Web Template Presentation
+            span.fs-sm.fw-normal.text-muted Showcase your Web Template features beautifully
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-marketing-seo.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/marketing-seo.jpg' alt='Digital Marketing & SEO').card-img
+            h3.h5.nav-heading-title.mb-0 Digital Marketing &amp; SEO
+            span.fs-sm.fw-normal.text-muted Marketing services, Agency, Portfolio
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-food-blog.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/food-blog.jpg' alt='Food Blog').card-img
+            h3.h5.nav-heading-title.mb-0 Food Blog
+            span.fs-sm.fw-normal.text-muted Cooking, Recipes, Personal Blog
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          a(href='demo-personal-portfolio.html').d-block.nav-heading.text-center
+            .card.card-hover.border-0.shadow-lg.mb-4
+              img(src='img/demo/presentation/demos/personal-portfolio.jpg' alt='Personal Portfolio').card-img
+            h3.h5.nav-heading-title.mb-0 Personal Portfolio
+            span.fs-sm.fw-normal.text-muted Cooking, Recipes, Personal Blog
+        .col-lg-4.col-sm-6.mb-grid-gutter.pb-3
+          img(src='img/demo/presentation/demos/coming.png' alt='Coming').d-block.mb-4
+          h3.h5.text-center.mb-0 Coming Soon
+
+
+  // Components
+  section.bg-gradient.py-5.py-md-6.py-lg-7
+    .container-fluid.py-3.py-lg-4.overflow-hidden
+      .row.align-items-center
+        .col-xl-6.col-lg-5.d-flex.justify-content-end.mb-5.mb-lg-0
+          .mx-auto.ms-lg-0.me-xl-7.text-center.text-lg-start(style='max-width: 495px;')
+            h2.h1.text-light.mb-4 Flexible <span class='bg-faded-light rounded px-3 py-2'>Components</span>
+            p.text-light.opacity-70.mb-5 The complete UI Kit with over 50 modular and highly customizable components: Bootstrap + Around unique elements.
+            .row.mb-2.mx-n2
+              .col-6.px-2.mb-3
+                a(href='components/carousel.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/carousel.svg' alt='Sliders & Carousels' width='68').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Sliders &amp; Carousels
+              .col-6.px-2.mb-3
+                a(href='components/gallery.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/gallery.svg' alt='Image / Video Gallery' width='45').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Image / Video Gallery
+              .col-6.px-2.mb-3
+                a(href='components/charts.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/chart.svg' alt='Line, Bar & Pie Charts' width='39').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Line, Bar &amp; Pie Charts
+              .col-6.px-2.mb-3
+                a(href='components/video-popup.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/play.svg' alt='Video Popup & Embed' width='44').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Video Popup &amp; Embed
+              .col-6.px-2.mb-3
+                a(href='components/forms.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/forms.svg' alt='Form Controls' width='42').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Form Controls
+              .col-6.px-2.mb-3
+                a(href='components/testimonials.html').d-block.border.border-light.rounded-3.pt-3.pb-4.px-3.text-center.text-decoration-none
+                  img(src='img/demo/presentation/icons/review.svg' alt='Testimonials & Reviews' width='46').d-inline-block.opacity-60.mb-3
+                  h3.h6.text-light.mb-0 Testimonials &amp; Reviews
+            a(href='components/typography.html').btn.btn-success View All Components
+        .col-xl-6.col-lg-7.d-flex.justify-content-end.pe-0
+          a(href='components/hotspots.html').d-block.me-n3
+            img(src='img/demo/presentation/macbook.png' alt='Components').d-block
+
+
+  // Inner Pages
+  section.py-5.py-md-6.py-lg-7
+    .container.pb-3.pt-4.pb-lg-2
+      .row.justify-content-center.mb-4.pb-2
+        .col-xl-6.col-lg-7.col-md-8
+          h2.h1.mb-4.text-center Handcrafted <span class='bg-faded-primary rounded text-primary px-3 py-2'>Inner Pages</span>
+          p.text-muted.text-center Big collection of thoroughly designed inner page templates from User Account/Dashboard to Specialty pages like 404 and Coming Soon
+      .row
+        .col-lg-6
+          ul(role='tablist').nav.nav-tabs.media-tabs.justify-content-center.justify-content-lg-start
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#account' class='nav-link me-2 active' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/user.svg' alt='User Account' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 User Account &amp; Dashboard
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#portfolio' class='nav-link me-2' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/portfolio.svg' alt='Portfolio' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Portfolio
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#ecommerce' class='nav-link me-2' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/shopping-cart.svg' alt='E-Commerce' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 E-Commerce
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#pages' class='nav-link me-2' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/web-page.svg' alt='Secondary Pages' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Secondary Pages
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#blog' class='nav-link me-2' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/blog.svg' alt='Blog & News' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Blog &amp; News
+                      i.ai-chevron-right.lead.ms-2.me-1
+            li.nav-item.mb-3(style='width: 16.5rem;')
+              a(href='#specialty' class='nav-link me-2' data-bs-toggle='tab' role='tab')
+                .d-flex.align-items-center
+                  img(src='img/demo/presentation/icons/error-404.svg' alt='Specialty Pages' width='60').rounded
+                  .w-100.ps-2.ms-1
+                    .d-flex.justify-content-between.align-items-center
+                      .fs-sm.pe-1 Specialty Pages
+                      i.ai-chevron-right.lead.ms-2.me-1
+        .col-lg-6
+          .tab-content
+            #account.tab-pane.fade.show.active
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 User Account
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='account-profile.html').fw-medium.text-decoration-none Profile Info
+                    li.mb-3
+                      a(href='account-payment.html').fw-medium.text-decoration-none Payment Methods
+                    li.mb-3
+                      a(href='account-notifications.html').fw-medium.text-decoration-none Notifications
+                    li.mb-3
+                      a(href='signin-illustration.html').fw-medium.text-decoration-none Sign In - Illustration
+                    li.mb-3
+                      a(href='signin-image.html').fw-medium.text-decoration-none Sign In - Image
+                    li.mb-3
+                      a(href='signin-signup.html').fw-medium.text-decoration-none Sign In - Sign Up
+                    li.mb-3
+                      a(href='password-recovery.html').fw-medium.text-decoration-none Password Recovery
+                .col-sm-6
+                  h3.h5.mb-4 Dashboard
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='dashboard-orders.html').fw-medium.text-decoration-none Orders
+                    li.mb-3
+                      a(href='dashboard-sales.html').fw-medium.text-decoration-none Sales
+                    li.mb-3
+                      a(href='dashboard-messages.html').fw-medium.text-decoration-none Messages
+                    li.mb-3
+                      a(href='dashboard-followers.html').fw-medium.text-decoration-none Followers
+                    li.mb-3
+                      a(href='dashboard-reviews.html').fw-medium.text-decoration-none Reviews
+                    li.mb-3
+                      a(href='dashboard-favorites.html').fw-medium.text-decoration-none Favorites
+            #portfolio.tab-pane.fade
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 Portfolio Grid
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='portfolio-style-1.html').fw-medium.text-decoration-none Grid Style 1
+                    li.mb-3
+                      a(href='portfolio-style-2.html').fw-medium.text-decoration-none Grid Style 2
+                    li.mb-3
+                      a(href='portfolio-style-3.html').fw-medium.text-decoration-none Grid Style 3
+                .col-sm-6
+                  h3.h5.mb-4 Single Project
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='portfolio-single-side-gallery-grid.html').fw-medium.text-decoration-none Project Side Gallery (Grid)
+                    li.mb-3
+                      a(href='portfolio-single-side-gallery-list.html').fw-medium.text-decoration-none Project Side Gallery (List)
+                    li.mb-3
+                      a(href='portfolio-single-carousel.html').fw-medium.text-decoration-none Project Carousel
+                    li.mb-3
+                      a(href='portfolio-single-wide-gallery.html').fw-medium.text-decoration-none Project Wide Gallery
+            #ecommerce.tab-pane.fade
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 Shop Layouts
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='shop-ls.html').fw-medium.text-decoration-none Grid Left Sidebar
+                    li.mb-3
+                      a(href='shop-rs.html').fw-medium.text-decoration-noneGrid Right Sidebar
+                    li.mb-3
+                      a(href='shop-ns.html').fw-medium.text-decoration-none Grid No Sidebar
+                .col-sm-6
+                  h3.h5.mb-4 Shop Pages
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='shop-single.html').fw-medium.text-decoration-none Single Product
+                    li.mb-3
+                      a(href='checkout.html').fw-medium.text-decoration-none Cart &amp; Checkout
+                    li.mb-3
+                      a(href='order-tracking.html').fw-medium.text-decoration-none Order Tracking
+            #pages.tab-pane.fade
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 Inner Pages
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='about.html').fw-medium.text-decoration-none About
+                    li.mb-3
+                      a(href='contacts-v1.html').fw-medium.text-decoration-noneGrid Contacts v.1
+                    li.mb-3
+                      a(href='contacts-v2.html').fw-medium.text-decoration-none Contacts v.2
+                    li.mb-3
+                      a(href='contacts-v3.html').fw-medium.text-decoration-none Contacts v.3
+                .col-sm-6
+                  h3.h5.mb-4 Help Center
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='help-topics.html').fw-medium.text-decoration-none Help Topics
+                    li.mb-3
+                      a(href='help-single-topic.html').fw-medium.text-decoration-none Single Topic
+                    li.mb-3
+                      a(href='help-submit-request.html').fw-medium.text-decoration-none Submit a Request
+            #blog.tab-pane.fade
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 Blog Layouts
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='blog-grid-rs.html').fw-medium.text-decoration-none Grid Right Sidebar
+                    li.mb-3
+                      a(href='blog-grid-ls.html').fw-medium.text-decoration-noneGrid Grid Left Sidebar
+                    li.mb-3
+                      a(href='blog-grid-ns.html').fw-medium.text-decoration-none Grid No Sidebar
+                    li.mb-3
+                      a(href='blog-list-rs.html').fw-medium.text-decoration-none List Right Sidebar
+                    li.mb-3
+                      a(href='blog-list-ls.html').fw-medium.text-decoration-none List Left Sidebar
+                    li.mb-3
+                      a(href='blog-list-ns.html').fw-medium.text-decoration-none List No Sidebar
+                .col-sm-6
+                  h3.h5.mb-4 Single Post
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='blog-single-rs.html').fw-medium.text-decoration-none Right Sidebar
+                    li.mb-3
+                      a(href='blog-single-ls.html').fw-medium.text-decoration-none Left Sidebar
+                    li.mb-3
+                      a(href='blog-single-ns.html').fw-medium.text-decoration-none No Sidebar
+            #specialty.tab-pane.fade
+              .row.text-center.text-sm-start
+                .col-sm-6.mb-3.mb-sm-0
+                  h3.h5.mb-4 404 Error
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='404-simple.html').fw-medium.text-decoration-none Simple Text
+                    li.mb-3
+                      a(href='404-illustration.html').fw-medium.text-decoration-noneGrid Illustration
+                .col-sm-6
+                  h3.h5.mb-4 Coming Soon
+                  ul.list-unstyled
+                    li.mb-3
+                      a(href='coming-soon-image.html').fw-medium.text-decoration-none Image
+                    li.mb-3
+                      a(href='coming-soon-illustration.html').fw-medium.text-decoration-none Illustration
+
+
+  // Mobile Interface
+  section.bg-secondary.py-5.py-md-6.py-lg-7
+    .container.py-3.py-lg-4
+      .row.align-items-center
+        .col-md-6.mb-5.mb-md-0
+          .mx-auto.mx-md-0(style='max-width: 525px;')
+            img(src='img/demo/presentation/mobile-screens.jpg' alt='Mobile screens').d-block
+        .col-md-6.text-center.text-md-start
+          h2.h1.mb-4 <span class='bg-faded-primary rounded text-primary px-3 py-2'>Mobile Friendly</span> Interface
+          p.text-muted.mb-5 Around based on advanced fully responsive Bootstrap grid. It looks great at any screen resolution and optimized for small touch screens. Around features 2 types of navigation for handeld devices and off-canvas sidebars that are easily accessible. All sliders used in the template have swipe support.
+          .d-flex.align-items-center.justify-content-center.justify-content-md-start
+            img(src='img/demo/presentation/qrcode.png' alt='QR Code' width='120')
+            .ps-3.ps-sm-4
+              .text-nav.text-start(style='max-width: 175px;') Scan QR code to test on your device
+  
+
+  // Features
+  section.container.py-5.py-md-6.py-lg-7
+    .text-center.mb-5.pt-3.pt-lg-4
+      h2.h1 Around <span class='bg-faded-primary rounded text-primary px-3 py-2'>Feature Highlights</span>
+    .row.pt-3.pt-lg-4
+      .col-md-6
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Kick-start Your Development
+            p.fs-md.mb-0 Start your development process fast and easy with Node.js and Gulp setup. Configuration files are included in download package. Full tasks automation.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Easy to Customize with Sass
+            p.fs-md.mb-0 Around is built using Sass. Easily change colors, typography and much more. It is the most mature, stable, and powerful CSS extension language in the world.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Pug - Node Templating Engine
+            p.fs-md.mb-0 No need to write huge amount of HTML, if you don’t want to. Pug provides features not available in plain HTML like variables, includes, mixins, functions…
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Built With Latest Bootstrap
+            p.fs-md.mb-0 Around is the powerful e-commerce front-end solution based on Bootstrap 5 - the world's most popular responsive, mobile-first front-end component library.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 50+ Flexible Components
+            p.fs-md.mb-0 Besides styling all default Bootstrap 5 components Around introduces lots of new flexible, customizable and reusable elements you can use across the website.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Mobile Friendly Interface
+            p.fs-md.mb-0 It's not a surprise that nowadays over 70% of users surf the inernet and shop online using their mobile devices. Around is 100% responsive and optimized for small touch screens.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Google Fonts
+            p.fs-md.mb-0 Around uses Google fonts which are free, fast to load and of very high quality. Currently Google fonts library includes 900+ font families to choose from.
+      .col-md-6
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Touch-enabled Sliders
+            p.fs-md.mb-0 In the era of touch screens it's important to ensure great user experience on handheld devices, especially when it comes to such frequently used interface component as slider.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Vector Based HD Ready Icons
+            p.fs-md.mb-0 Around is equiped with font-based icon pack and svg icons to ensure that infographics and interface icons look sharp on any device with any screen resolution and pixel density.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 W3C Valid HTML Code
+            p.fs-md.mb-0 All HTML files are checked via W3C validator to ensure 100% valid code. As you probably know invalid HTML limits innovation, but Around is innovative at its core.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Future-proof JavaScript
+            p.fs-md.mb-0 Around core scripts as well as all dependencies are written in vanilla JS. The only component that requires jQuery is Bootstrap itself. But that will change soon. And whent this happens we will drop jQuery altogether.
+        .d-flex.mb-4.pb-2
+          i.ai-check-circle.h4.text-success
+          .ps-3
+            h3.h5 Detailed Documentation
+            p.fs-md.mb-0 Download package includes links to online documentation. It covers all crucial information about how to get started, customize template and components usage.
+        h3.h5 ...and much more
+
+
+//- Footer
+block footer
+  footer.footer.bg-dark.pt-5.pt-md-6.pt-lg-7
+    .container.pt-3.pt-md-0
+      .pb-md-4.text-center
+        h3.text-light.fw-light.mb-3 Still not convinced?
+        h2.text-light.mb-5 Add premium support and lifetime updates to this.
+        a(href='https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary
+          i.ai-shopping-cart.fs-lg.me-2
+          | Buy Around
+      hr.hr-light.my-5
+      .row.justify-content-center
+        .col-lg-6.col-md-7.pb-md-4.text-center
+          h4.text-light.mb-grid-gutter Subscribe to Newsletter
+          form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+            .input-group.flex-nowrap
+              i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.text-muted.ms-3
+              input(type='email' name='EMAIL' placeholder='Your email').form-control.rounded-start
+              button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+            // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            div(style='position: absolute; left: -5000px;' aria-hidden='true')
+              input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+            div.form-text.text-light.opacity-50 *Subscribe to our newsletter to receive early discount offers and new templates info.
+            .subscription-status
+      hr.hr-light.my-5
+      p.fs-sm.text-center.mb-0.pb-5
+        span.text-light.opacity-50.me-1 © All rights reserved. Made by
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio
+        

@@ -1,0 +1,22 @@
+// 
+// tables.scss
+// Extended from Bootstrap
+// 
+
+// 
+// Additional styles for theme
+// 
+
+.table.table-dark-gray {
+  thead{
+  background-color: $dark-gray !important;
+  color:$white;
+  }
+  tbody{
+    border-top: none;
+  }
+}
+
+.table td, .table th {
+  white-space: nowrap;
+}

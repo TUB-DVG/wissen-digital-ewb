@@ -1,0 +1,106 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Portfolio Grid Style 3'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-light
+
+//- Page Content
+block content
+
+  // Page title
+  section.position-relative.bg-dark.pt-7.pb-5.pb-md-7.bg-size-cover.bg-attachment-fixed(style='background-image: url(img/demo/web-studio/cubes-bg.jpg);')
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    .container.position-relative.zindex-5.text-center.pt-md-6.pt-lg-7.py-5.my-lg-3
+      h1.text-light.mb-0
+        | Portfolio Grid
+        span.h2.d-inline-block.bg-faded-primary.text-primary.px-3.py-2.rounded-3.ms-3 Style 3
+  
+
+  // Portfolio grid
+  section.container.overflow-hidden.py-5.py-md-6.py-lg-7
+    .masonry-filterable
+      ul.masonry-filters.nav.nav-tabs.justify-content-center.mt-2.pb-4
+        li.nav-item
+          a(href='#' data-group='all').nav-link.active All
+        li.nav-item
+          a(href='#' data-group='branding').nav-link Branding
+        li.nav-item
+          a(href='#' data-group='stationery').nav-link Stationery
+        li.nav-item
+          a(href='#' data-group='packaging').nav-link Packaging
+        li.nav-item
+          a(href='#' data-group='3d').nav-link 3D modelling
+      .masonry-grid(data-columns='4')
+        .masonry-grid-item(data-groups='["3d"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/07.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Toothbrush Render
+                p.fs-sm.text-muted.mb-1 in 3D Modelling
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/08.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Hand Cream Bottle
+                p.fs-sm.text-muted.mb-1 in Package Design
+        .masonry-grid-item(data-groups='["3d"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/09.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Clay Glass Render
+                p.fs-sm.text-muted.mb-1 in 3D Modelling
+        .masonry-grid-item(data-groups='["stationery", "branding"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/10.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Promo Flyer Design
+                p.fs-sm.text-muted.mb-1 in Stationery
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/12.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Cosmetics Packaging
+                p.fs-sm.text-muted.mb-1 in Package Design
+        .masonry-grid-item(data-groups='["branding"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/14.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Package Branding
+                p.fs-sm.text-muted.mb-1 in Identity Design
+        .masonry-grid-item(data-groups='["branding"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/13.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Company Branding
+                p.fs-sm.text-muted.mb-1 in Identity Design
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-curved-body.shadow.card-slide
+            .card-slide-inner
+              img(src='img/portfolio/11.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-list.html').card-body.text-center
+                h3.h5.nav-heading.mt-1.mb-2 Tonik Bottle Design
+                p.fs-sm.text-muted.mb-1 in Package Design
+    .text-center.py-3.pb-md-0
+      a(href='#').btn.btn-primary
+        i.ai-refresh-ccw.me-2
+        | Load More
+
+
+//- Footer
+block footer
+  include partials/footer-default

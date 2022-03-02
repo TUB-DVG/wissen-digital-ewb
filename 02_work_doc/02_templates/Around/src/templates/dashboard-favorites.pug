@@ -1,0 +1,180 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Dashboard - Favorites'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .py-2.p-md-3
+
+            // Title + Delete button
+            .d-sm-flex.align-items-center.justify-content-between.pb-4.text-center.text-sm-start
+              h1.h3.mb-3.text-nowrap
+                | Favorites
+                span.d-inline-block.align-middle.bg-faded-dark.fs-ms.fs-medium.rounded-1.py-1.px-2.ms-2 6
+              button(type='button').btn.btn-translucent-danger.btn-sm.mb-3
+                i.ai-trash-2.fs-base.me-2.align-middle.mt-n1
+                | Delete all                        
+
+            // Item grid
+            .row.no-gutters.mx-n2.mb-4
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/01.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Men's clothing
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link Simple Cotton T-shirt
+                    span.text-heading.fs-semibold $19.00
+                  .card-footer
+                    +star-rating(3)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/02.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Electronics
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link Wireless Headphones
+                    span.text-heading.fs-semibold $165.00
+                  .card-footer
+                    +star-rating(4)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/03.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Accessories
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link Military Cotton Cap
+                    span.text-heading.fs-semibold $28.00
+                  .card-footer
+                    +star-rating(0)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/04.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Electronics
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link 360 Degrees Camera
+                    span.text-heading.fs-semibold $120.40
+                  .card-footer
+                    +star-rating(4)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/05.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link Sport Running Sneakers
+                    span.text-heading.fs-semibold $140.00
+                  .card-footer
+                    +star-rating(3)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+
+              // Item
+              .col-md-4.col-sm-6.px-2.mb-3
+                .card.card-product.card-hover
+                  a(href='#').btn-remove
+                    i.ai-trash-2
+                    span.btn-tooltip Remove
+                  a(href='#').card-img-top
+                    img(src='img/shop/catalog/06.jpg' alt='Product thumbnail')
+                  .card-body
+                    a(href='#').meta-link.fs-xs.mb-1 Backpacks
+                    h3.fs-md.fs-medium.mb-2
+                      a(href='#').meta-link Vintage Travel Backpack
+                    span.text-heading.fs-semibold $82.00
+                  .card-footer
+                    +star-rating(5)
+                    a(href='#').btn-addtocart
+                      i.ai-shopping-cart
+                      span.btn-tooltip To Cart
+            
+            
+            // Sharing
+            .d-sm-flex.align-items-center.text-center.text-sm-start
+              h6.text-nowrap.my-2.me-3 Share this list:
+              a(href='#').btn-social.bs-facebook.me-2.my-2
+                i.ai-facebook
+              a(href='#').btn-social.bs-twitter.me-2.my-2
+                i.ai-twitter
+              a(href='#').btn-social.bs-google.me-2.my-2
+                i.ai-google
+              a(href='#').btn-social.bs-email.me-2.my-2
+                i.ai-mail
+
+
+//- Footer
+block footer
+  include partials/footer-simple

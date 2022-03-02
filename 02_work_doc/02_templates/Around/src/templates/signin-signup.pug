@@ -1,0 +1,91 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Sign In / Sign Up'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+  .container.py-5.py-md-7
+    .row.align-items-center.pt-2
+      .col-md-6.col-lg-5.mb-5.mb-md-0
+        .bg-secondary.px-4.py-5.p-sm-5.rounded-3
+          h1.h3.pt-1 Sign in
+          p.fs-ms.text-muted Sign in to your account using email and password provided during registration.
+          form(novalidate).needs-validation
+            .input-group.mb-3
+              i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              input(type='email' placeholder='Email' required).form-control.rounded
+            .input-group.mb-3
+              i.ai-lock.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              .password-toggle.w-100
+                input(type='password' placeholder='Password' required).form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type='checkbox').password-toggle-check
+                  span.password-toggle-indicator
+            .d-flex.justify-content-between.align-items-center.mb-3.pb-1
+              .form-check
+                input(type='checkbox' id='keep-signed-2').form-check-input
+                label(for='keep-signed-2').form-check-label.fs-sm Keep me signed in
+              a(href='password-recovery.html').nav-link-style.fs-ms Forgot password?
+            button(type='submit').btn.btn-primary.d-block.w-100 Sign in
+            .border-top.text-center.mt-4.pt-4
+              p.fs-sm.fw-medium.text-heading Or sign in with
+              a(href='#').btn-social.bs-facebook.bs-outline.bs-lg.mx-1.mb-2
+                i.ai-facebook
+              a(href='#').btn-social.bs-twitter.bs-outline.bs-lg.mx-1.mb-2
+                i.ai-twitter
+              a(href='#').btn-social.bs-instagram.bs-outline.bs-lg.mx-1.mb-2
+                i.ai-instagram
+              a(href='#').btn-social.bs-google.bs-outline.bs-lg.mx-1.mb-2
+                i.ai-google
+
+      .col-md-6.offset-lg-1
+        h2.h3 No account? Sign up
+        p.fs-ms.text-muted Registration takes less than a minute but gives you full control over your orders.
+        form(novalidate).row.needs-validation
+          .col-sm-6.mb-3
+            label(for='reg-fn').form-label
+              | First name
+              sup.text-danger.ms-1 *
+            input(type='text' required)#reg-fn.form-control
+            .invalid-feedback Please enter you first name!
+          .col-sm-6.mb-3
+            label(for='reg-ln').form-label
+              | Last name
+              sup.text-danger.ms-1 *
+            input(type='text' required)#reg-ln.form-control
+            .invalid-feedback Please enter you last name!
+          .col-sm-6.mb-3
+            label(for='reg-email').form-label
+              | Email address
+              sup.text-danger.ms-1 *
+            input(type='email' required)#reg-email.form-control
+            .invalid-feedback Please enter a valid email address!
+          .col-sm-6.mb-3
+            label(for='reg-phone').form-label Phone number
+            input(type='text')#reg-phone.form-control.bg-image-0
+          .col-sm-6.mb-3
+            label(for='reg-password').form-label
+              | Password
+              sup.text-danger.ms-1 *
+            input(type='password' required)#reg-password.form-control
+            .invalid-feedback Please provide password!
+          .col-sm-6.mb-3
+            label(for='reg-confirm-password').form-label
+              | Confirm password
+              sup.text-danger.ms-1 *
+            input(type='password' required)#reg-confirm-password.form-control
+            .invalid-feedback Password doesn't match!
+          .col-sm-6.pt-2
+            button(type='submit').btn.btn-primary.d-block.w-100 Sign up
+
+
+//- Footer
+block footer
+  include partials/footer-simple

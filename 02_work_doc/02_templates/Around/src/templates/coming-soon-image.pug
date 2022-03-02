@@ -1,0 +1,66 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Coming Soon - Image'
+  - var isPageFullHeight = true
+
+
+//- Page Content
+block content
+
+  .row.g-0.d-lg-flex.min-vh-100(style='flex: 1 0 auto;')
+
+    // Left half: Background image + Counter + Footer
+    .col-lg-6.d-flex.flex-column.pt-4.pb-3.px-4.position-relative.bg-size-cover.bg-size-cover(style='flex: 1 0 auto; background-image: url(img/pages/coming-soon/bg-image.jpg);')
+      span.position-absolute.top-0.start-0.w-100.h-100.bg-gradient.opacity-90
+      .position-relative.zindex-5.text-center.mb-4.mb-lg-0
+        a(href='index.html').d-inline-block
+          img(src='img/logo/logo-light.png' alt='Around' width='153')
+      .position-relative.zindex-5.mx-auto.my-auto.text-center(style='max-width: 500px;')
+        h1.mb-3.text-light Coming soon...
+        p.mb-grid-gutter.text-light We are working hard to deliver best possible experience. The website is currently under construction. <u>It goes live in:</u>
+        .countdown.h2.text-light.justify-content-center(data-countdown='10/01/2021 07:00:00 PM')
+          .countdown-days.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.opacity-70.fs-sm Days
+          .countdown-hours.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.opacity-70.fs-sm Hours
+          .countdown-minutes.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.opacity-70.fs-sm Mins
+          .countdown-seconds
+            span.countdown-value 0
+            span.countdown-label.opacity-70.fs-sm Secs
+      .position-relative.zindex-5.text-center.py-4.py-lg-0
+        a(href='tel:+15262200459').nav-link-style.nav-link-light.mb-2 + 1 526 220 0459
+        br
+        a(href='mailto:contact@example.com').nav-link-style.nav-link-light.mb-2 contact@example.com
+        .pt-4.pb-3
+          a(href='#').btn-social.bs-light.bs-facebook.mx-2.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-light.bs-twitter.mx-2.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-light.bs-instagram.mx-2.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-light.bs-google.mx-2.mb-2
+            i.ai-google
+      .shape.shape-right.bg-body.d-none.d-lg-block
+        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 228.4 2500')
+          path(fill='currentColor' d='M228.4,0v2500H0c134.9-413.7,202.4-830.4,202.4-1250S134.9,413.7,0,0H228.4z')
+      .shape.shape-bottom.shape-curve.bg-body.d-lg-none
+        svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+          path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    
+    // Right half: Notification form
+    .col-lg-6.py-5.pb-lg-6.px-4.align-self-center
+      .mx-auto.text-center.py-2.py-lg-0.mt-lg-n6(style='max-width: 500px;')
+        h2.h1.mb-3 Notify me!
+        p.mb-grid-gutter Let me know when your website is live and I can start order goods. Here is my email address:
+        form(novalidate).d-flex.align-items-start.needs-validation
+          .me-2.me-sm-3.w-100
+            input(type='email' placeholder='Email address' required).form-control
+            .invalid-tooltip Please provide a valid email address!
+          button(type='submit').btn.btn-primary Notify Me

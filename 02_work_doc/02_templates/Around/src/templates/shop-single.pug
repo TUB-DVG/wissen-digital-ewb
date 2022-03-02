@@ -1,0 +1,525 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css', 'tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js', 'tiny-slider/dist/min/tiny-slider.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Shop Single Product'
+
+//- Navbar
+block navbar
+
+  //- modal-sizes.pug template
+  include partials/modal-sizes
+
+  //- navbar-shop.pug template
+  include partials/navbar-shop
+
+//- Page Content
+block content
+
+  // Product gallery + info
+  section.sidebar-enabled.sidebar-end.border-bottom.mb-5.mb-md-6
+    .container
+      .row
+        .col-lg-8.content.py-4
+          +breadcrumb([{'title': 'Shop', 'link': '#'}, {'title': 'Single product'}]).py-1.my-2
+          h1.mb-3.pb-4 Sport Running Sneakers
+
+          // Product gallery
+          .product-gallery
+            .product-gallery-preview.order-sm-2
+              #first.product-gallery-preview-item.active
+                img(src='img/shop/single/gallery/01.jpg' alt='Product preview')
+              #second.product-gallery-preview-item
+                img(src='img/shop/single/gallery/02.jpg' alt='Product preview')
+              #third.product-gallery-preview-item
+                img(src='img/shop/single/gallery/03.jpg' alt='Product preview')
+              #fourth.product-gallery-preview-item
+                img(src='img/shop/single/gallery/04.jpg' alt='Product preview')
+            .product-gallery-thumblist.order-sm-1
+              a(href='#first').product-gallery-thumblist-item.active
+                img(src='img/shop/single/gallery/th01.jpg' alt='Product thumb')
+              a(href='#second').product-gallery-thumblist-item
+                img(src='img/shop/single/gallery/th02.jpg' alt='Product thumb')
+              a(href='#third').product-gallery-thumblist-item
+                img(src='img/shop/single/gallery/th03.jpg' alt='Product thumb')
+              a(href='#fourth').product-gallery-thumblist-item
+                img(src='img/shop/single/gallery/th04.jpg' alt='Product thumb')
+          
+          // Sharing
+          .d-flex.align-items-center.justify-content-center.justify-content-md-end.py-4.pt-md-0.pt-lg-5
+            h6.text-nowrap.my-2.me-3 Share product:
+            a(href='#').btn-social.bs-outline.bs-facebook.ms-2.my-2
+              i.ai-facebook
+            a(href='#').btn-social.bs-outline.bs-twitter.ms-2.my-2
+              i.ai-twitter
+            a(href='#').btn-social.bs-outline.bs-google.ms-2.my-2
+              i.ai-google
+            a(href='#').btn-social.bs-outline.bs-email.ms-2.my-2
+              i.ai-mail
+            
+        
+        // Product info
+        .col-lg-4.sidebar.bg-secondary.pt-5.ps-lg-4.pb-md-2
+          .ps-lg-4.pb-5
+            a(href='#reviews' data-scroll).d-inline-block.text-decoration-none
+              +star-rating(4).star-rating-lg.mt-n1.me-2
+              span.text-body.fs-sm (4.2) based on 15 reviews
+            .py-4
+              del.text-muted.me-2 $140.00
+              span.h4.mb-0 $85.00
+            .fs-sm.pb-1.mb-2
+              span.fw-medium.text-heading Choose color - 
+              span#colorOptionText.ms-1 Gray
+            .d-inline-block.bg-light.rounded.px-3.mb-4
+              .form-check.form-option.form-option-color.form-check-inline.mt-2
+                input(type='radio' name='color' id='gray' value='Gray' data-label='colorOptionText' checked).form-check-input
+                label(for='gray').form-option-label.rounded-circle
+                  span(style='background-color: #707175;').form-option-color-indicator.rounded-circle
+              .form-check.form-option.form-option-color.form-check-inline.mt-2
+                input(type='radio' name='color' id='blue' value='Blue' data-label='colorOptionText').form-check-input
+                label(for='blue').form-option-label.rounded-circle
+                  span(style='background-color: #0a66cc;').form-option-color-indicator.rounded-circle
+              .form-check.form-option.form-option-color.form-check-inline.mt-2
+                input(type='radio' name='color' id='brown' value='Brown' data-label='colorOptionText').form-check-input
+                label(for='brown').form-option-label.rounded-circle
+                  span(style='background-color: #987875;').form-option-color-indicator.rounded-circle
+              .form-check.form-option.form-option-color.form-check-inline.mt-2
+                input(type='radio' name='color' id='white' value='White' data-label='colorOptionText').form-check-input
+                label(for='white').form-option-label.rounded-circle
+                  span(style='background-color: #e8e6e2;').form-option-color-indicator.rounded-circle
+              .form-check.form-option.form-option-color.form-check-inline.mt-2
+                input(type='radio' name='color' id='purple' value='Purple' data-label='colorOptionText').form-check-input
+                label(for='purple').form-option-label.rounded-circle
+                  span(style='background-color: #846ba6;').form-option-color-indicator.rounded-circle
+            .d-flex.align-items-center.justify-content-between.mb-3
+              label.mb-0 Choose size
+              a(href='#sizeChart' data-bs-toggle='modal').nav-link-style.fs-sm
+                i.ai-bar-chart-2.fs-xl.mt-n1.me-1
+                | Size chart
+            .me-lg-n2
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s6_5' disabled).form-check-input
+                label.form-option-label(for='s6_5') 6.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s7' disabled).form-check-input
+                label.form-option-label(for='s7') 7
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s7_5').form-check-input
+                label.form-option-label(for='s7_5') 7.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s8').form-check-input
+                label.form-option-label(for='s8') 8
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s8_5').form-check-input
+                label.form-option-label(for='s8_5') 8.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s9').form-check-input
+                label.form-option-label(for='s9') 9
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s9_5').form-check-input
+                label.form-option-label(for='s9_5') 9.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s10').form-check-input
+                label.form-option-label(for='s10') 10
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s10_5').form-check-input
+                label.form-option-label(for='s10_5') 10.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s11' checked).form-check-input
+                label.form-option-label(for='s11') 11
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s11_5').form-check-input
+                label.form-option-label(for='s11_5') 11.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s12').form-check-input
+                label.form-option-label(for='s12') 12
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s12_5').form-check-input
+                label.form-option-label(for='s12_5') 12.5
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s13' disabled).form-check-input
+                label.form-option-label(for='s13') 13
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s14' disabled).form-check-input
+                label.form-option-label(for='s14') 14
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s15' disabled).form-check-input
+                label.form-option-label(for='s15') 15
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s16' disabled).form-check-input
+                label.form-option-label(for='s16') 16
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s17' disabled).form-check-input
+                label.form-option-label(for='s17') 17
+              .form-check.form-option.form-option-size.form-check-inline.mb-2
+                input(type='radio' name='size' id='s18' disabled).form-check-input
+                label.form-option-label(for='s18') 18
+            .d-flex.mt-4.mb-3
+              input(type='number' style='width: 5rem;' min='1' value='1').form-control.me-3
+              button(type='button').btn.btn-primary.d-block.w-100 Add to Cart
+            button(type='button').btn.btn-outline-secondary.d-block.w-100.mb-grid-gutter
+              i.ai-heart.fs-lg.me-2
+              | Add to Wishlist
+            p.fs-sm.mb-2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.
+            a(href='#more-info' data-scroll).fancy-link.fs-sm Read more
+            hr.my-4
+            ul.list-unstyled.fs-sm
+              li
+                span.text-heading.fw-medium.me-2 SKU:
+                | HB125CAE78
+              li
+                span.text-heading.fw-medium.me-2 Category:
+                a(href='#').text-body.text-decoration-none Men's shoes
+
+  
+  // Product description
+  section#more-info.mt-1.pt-3.pt-md-0.pb-5.pb-md-6.mb-5.mb-md-6.border-bottom
+    .container
+      .row.align-items-center.pb-3.mb-5
+        .col-lg-5.col-md-6.offset-lg-1.order-md-2.pb-2.mb-4.pb-md-0.mb-md-0
+          .bg-secondary.bg-size-cover.bg-position-center.rounded-3.py-7.px-4.text-center(style='background-image: url(img/shop/single/video.jpg);')
+            a(href='https://www.youtube.com/watch?v=d1qnvK3ID_w').btn-video.btn-video-sm.my-4
+        .col-lg-4.col-md-6.offset-lg-1.order-md-1
+          h2.h3.mb-4 High quality materials
+          p.fs-sm Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore.
+      .row.align-items-center
+        .col-lg-3.col-md-4.offset-lg-2
+          img(src='img/shop/single/map.png' alt='Map' width='290').d-block.mx-auto.mb-4.mb-md-0
+        .col-lg-4.col-md-6.offset-lg-2.offset-md-1
+          h2.h3.mb-4 Where is it made?
+          h6.mb-3 Apparel Manufacturer, Ltd.
+          p.fs-sm.pb-2 ​Sam Tower, 6 Road No 32, Dhaka 1875, Bangladesh
+          .d-flex.mb-2
+            .me-4.pe-2.text-center
+              h4.h2.text-primary.mb-1 3268
+              p.text-heading Workers
+            .me-4.pe-2.text-center
+              h4.h2.text-primary.mb-1 43%
+              p.text-heading Female
+            .text-center
+              h4.h2.text-primary.mb-1 57%
+              p.text-heading Male
+          h6.mb-3 Factory information
+          p.fs-sm ​Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+  
+ 
+  // Reviews
+  section#reviews.pb-5.pt-2.pt-md-0.mb-5.mb-sm-6.border-bottom
+    .container.pb-3
+      .row.pb-3
+        .col-lg-4.col-md-5
+          h2.h3.mb-4 15 Reviews
+          +star-rating(4).star-rating-lg.mt-n1.me-2
+          span.text-heading 4.2 Overall rating
+          p.pt-3.fs-sm.text-muted
+            | 12 out of 15 (80%)
+            br
+            | Customers recommended this product
+        .col-lg-8.col-md-7
+          .d-flex.align-items-center.mb-2
+            .text-nowrap.me-3
+              span.d-inline-block.align-middle 5
+              i.ai-star.fs-sm.ms-1
+            .w-100
+              .progress(style='height: 4px;')
+                .progress-bar.bg-success(role='progressbar' style='width: 47%;' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100')
+            span.ms-3 7
+          .d-flex.align-items-center.mb-2
+            .text-nowrap.me-3
+              span.d-inline-block.align-middle 4
+              i.ai-star.fs-sm.ms-1
+            .w-100
+              .progress(style='height: 4px;')
+                .progress-bar(role='progressbar' style='width: 20%; background-color: #a7e453;' aria-valuenow='27' aria-valuemin='0' aria-valuemax='100')
+            span.ms-3 3
+          .d-flex.align-items-center.mb-2
+            .text-nowrap.me-3
+              span.d-inline-block.align-middle 3
+              i.ai-star.fs-sm.ms-1
+            .w-100
+              .progress(style='height: 4px;')
+                .progress-bar(role='progressbar' style='width: 14%; background-color: #ffda75;' aria-valuenow='17' aria-valuemin='0' aria-valuemax='100')
+            span.ms-3 2
+          .d-flex.align-items-center.mb-2
+            .text-nowrap.me-3
+              span.d-inline-block.align-middle 2
+              i.ai-star.fs-sm.ms-1
+            .w-100
+              .progress(style='height: 4px;')
+                .progress-bar.bg-warning(role='progressbar' style='width: 14%;' aria-valuenow='9' aria-valuemin='0' aria-valuemax='100')
+            span.ms-3 2
+          .d-flex.align-items-center
+            .text-nowrap.me-3
+              span.d-inline-block.align-middle 1
+              i.ai-star.fs-sm.ms-1
+            .w-100
+              .progress(style='height: 4px;')
+                .progress-bar.bg-danger(role='progressbar' style='width: 7%;' aria-valuenow='4' aria-valuemin='0' aria-valuemax='100')
+            span.ms-3 1
+      hr.my-5
+      .row
+
+        // Reviews list
+        .col-md-7
+          .d-flex.justify-content-end.pb-4.mb-2
+            .d-flex.align-items-center
+              label(for='sort-reviews').form-label.px-0.mb-0.text-nowrap.me-2.d-none.d-sm-block Sort by:
+              select#sort-reviews.form-select.form-select-sm
+                option Newest
+                option Oldest
+                option Popular
+                option High rating
+                option Low rating
+
+          // Review
+          .pb-grid-gutter.border-bottom
+            .d-flex.align-items-center.mb-2.pb-1
+              +star-rating(5).star-rating-lg.me-2
+              span.fs-sm.text-muted 83% of users found this review helpful
+            p.fs-md Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus.
+            .d-flex.align-items-center.justify-content-between
+              .d-flex.align-items-center.me-3
+                img(src='img/testimonials/07.jpg' alt='Barbara Palson' width='42').rounded-circle
+                .ps-2.ms-1
+                  h6.fs-sm.mb-n1 Barbara Palson
+                  span.fs-xs.text-muted 3 days ago
+              .text-nowrap
+                button(type='button').btn-like 15
+                button(type='button').btn-dislike 3
+
+          // Review
+          .pt-grid-gutter.pb-grid-gutter.border-bottom
+            .d-flex.align-items-center.mb-2.pb-1
+              +star-rating(4).star-rating-lg.me-2
+              span.fs-sm.text-muted 76% of users found this review helpful
+            p.fs-md Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+            .d-flex.align-items-center.justify-content-between
+              .d-flex.align-items-center.me-3
+                img(src='img/testimonials/08.jpg' alt='Daniel Adams' width='42').rounded-circle
+                .ps-2.ms-1
+                  h6.fs-sm.mb-n1 Daniel Adams
+                  span.fs-xs.text-muted 1 week ago
+              .text-nowrap
+                button(type='button').btn-like 22
+                button(type='button').btn-dislike 17
+
+          // Review
+          .pt-grid-gutter.pb-grid-gutter.border-bottom
+            .d-flex.align-items-center.mb-2.pb-1
+              +star-rating(5).star-rating-lg.me-2
+              span.fs-sm.text-muted 90% of users found this review helpful
+            p.fs-md At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+            .d-flex.align-items-center.justify-content-between
+              .d-flex.align-items-center.me-3
+                img(src='img/testimonials/06.jpg' alt='Tim Brooks' width='42').rounded-circle
+                .ps-2.ms-1
+                  h6.fs-sm.mb-n1 Tim Brooks
+                  span.fs-xs.text-muted 2 weeks ago
+              .text-nowrap
+                button(type='button').btn-like 9
+                button(type='button').btn-dislike 1
+
+          // Review
+          .pt-grid-gutter.pb-grid-gutter.border-bottom
+            .d-flex.align-items-center.mb-2.pb-1
+              +star-rating(3).star-rating-lg.me-2
+              span.fs-sm.text-muted 64% of users found this review helpful
+            p.fs-md Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.
+            .d-flex.align-items-center.justify-content-between
+              .d-flex.align-items-center.me-3
+                img(src='img/testimonials/05.jpg' alt='Emili Parker' width='42').rounded-circle
+                .ps-2.ms-1
+                  h6.fs-sm.mb-n1 Emili Parker
+                  span.fs-xs.text-muted 1 month ago
+              .text-nowrap
+                button(type='button').btn-like 34
+                button(type='button').btn-dislike 22
+
+          // Review
+          .pt-grid-gutter.pb-grid-gutter.border-bottom
+            .d-flex.align-items-center.mb-2.pb-1
+              +star-rating(4).star-rating-lg.me-2
+              span.fs-sm.text-muted 87% of users found this review helpful
+            p.fs-md Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
+            .d-flex.align-items-center.justify-content-between
+              .d-flex.align-items-center.me-3
+                img(src='img/testimonials/09.jpg' alt='Jessica Miller' width='42').rounded-circle
+                .ps-2.ms-1
+                  h6.fs-sm.mb-n1 Jessica Miller
+                  span.fs-xs.text-muted 1 month ago
+              .text-nowrap
+                button(type='button').btn-like 26
+                button(type='button').btn-dislike 5
+          
+          // Pagination
+          nav.d-lg-flex.justify-content-between.align-items-center.text-center.text-lg-start.pt-grid-gutter.pb-3
+            .d-lg-flex.align-items-center.w-100
+              span.fs-sm.text-muted.me-lg-3 Showing 5 of 15 reviews
+              .progress.w-100.my-3.mx-auto.mx-lg-0(style='max-width: 10rem; height: 4px;')
+                .progress-bar(role='progressbar' style='width: 33%;' aria-valuenow='18' aria-valuemin='0' aria-valuemax='100')
+            button(type='button').btn.btn-outline-primary.btn-sm Show older reviews
+
+        // Review form
+        .col-md-5.mt-2.pt-4.mt-md-0.pt-md-0
+          .bg-secondary.py-5.px-4.rounded-3
+            .px-xl-3
+              h3.h4.pb-2 Write a review
+              form(method='post' novalidate).needs-validation
+                .mb-3.pb-1
+                  label.form-label.px-0(for='review-name')
+                    | Your name
+                    span.text-danger *
+                  input(type='text' required)#review-name.form-control
+                  .invalid-feedback Please enter your name!
+                  small.form-text.text-muted Will be displayed on the comment.
+                .mb-3.pb-1
+                  label.form-label.px-0(for='review-email')
+                    | Your email
+                    span.text-danger *
+                  input(type='email' required)#review-email.form-control
+                  .invalid-feedback Please provide valid email address!
+                  small.form-text.text-muted Authentication only - we won't spam you.
+                .mb-3.pb-1
+                  label.form-label.px-0(for='review-rating')
+                    | Rating
+                    span.text-danger *
+                  select(required)#review-rating.form-select
+                    option(value='') Choose rating
+                    option(value='5') 5 stars
+                    option(value='4') 4 stars
+                    option(value='3') 3 stars
+                    option(value='2') 2 stars
+                    option(value='1') 1 star
+                  .invalid-feedback Please choose rating!
+                .mb-3.pb-1
+                  labe.form-label.px-0l(for='review-text')
+                    | Review
+                    span.text-danger *
+                  textarea(rows='6' required)#review-text.form-control
+                  .invalid-feedback Please write a review!
+                  small.form-text.text-muted Your review must be at least 50 characters.
+                button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100
+                  | Submit a Review
+  
+ 
+  // Related products (carousel)
+  section.container.pt-3.pb-5.mb-3.mb-sm-0.pt-sm-0.pb-sm-6
+    h2.h3.text-center.mb-5 You may also like
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "nav": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16}, "780":{"items":3, "gutter": 16}, "1000":{"items":4, "gutter": 23}}}')
+
+        // Item
+        .pb-2
+          .card.card-product.card-hover.mx-1
+            a(href='#').card-img-top
+              img(src='img/shop/catalog/13.jpg' alt='Product thumbnail')
+            .card-body
+              a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+              h3.fs-md.fw-medium.mb-2
+                a(href='#').meta-link Sport Running Sneakers
+              span.text-heading.fw-semibold $154.00
+            .card-footer
+              +star-rating(4)
+              .d-flex.align-items-center
+                a(href='#').btn-wishlist
+                  i.ai-heart
+                  span.btn-tooltip Wishlist
+                span.btn-divider
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+
+        // Item
+        .pb-2
+          .card.card-product.card-hover.mx-1
+            span.badge.badge-floating.badge-pill.badge-danger Sale
+            a(href='#').card-img-top
+              img(src='img/shop/catalog/14.jpg' alt='Product thumbnail')
+            .card-body
+              a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+              h3.fs-md.fw-medium.mb-2
+                a(href='#').meta-link Sport Running Sneakers
+              del.fs-sm.text-muted.me-1 $130.00
+              span.text-heading.fw-semibold $98.00
+            .card-footer
+              +star-rating(3)
+              .d-flex.align-items-center
+                a(href='#').btn-wishlist
+                  i.ai-heart
+                  span.btn-tooltip Wishlist
+                span.btn-divider
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+
+        // Item
+        .pb-2
+          .card.card-product.card-hover.mx-1
+            a(href='#').card-img-top
+              img(src='img/shop/catalog/15.jpg' alt='Product thumbnail')
+            .card-body
+              a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+              h3.fs-md.fw-medium.mb-2
+                a(href='#').meta-link Sport Running Sneakers
+              span.text-heading.fw-semibold $127.00
+            .card-footer
+              +star-rating(5)
+              .d-flex.align-items-center
+                a(href='#').btn-wishlist
+                  i.ai-heart
+                  span.btn-tooltip Wishlist
+                span.btn-divider
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+
+        // Item
+        .pb-2
+          .card.card-product.card-hover.mx-1
+            a(href='#').card-img-top
+              img(src='img/shop/catalog/16.jpg' alt='Product thumbnail')
+            .card-body
+              a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+              h3.fs-md.fw-medium.mb-2
+                a(href='#').meta-link Sport Running Sneakers
+              span.text-heading.fw-semibold $135.00
+            .card-footer
+              +star-rating(4)
+              .d-flex.align-items-center
+                a(href='#').btn-wishlist
+                  i.ai-heart
+                  span.btn-tooltip Wishlist
+                span.btn-divider
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+
+        // Item
+        .pb-2
+          .card.card-product.card-hover.mx-1
+            span.badge.badge-floating.badge-pill.badge-danger Sale
+            a(href='#').card-img-top
+              img(src='img/shop/catalog/17.jpg' alt='Product thumbnail')
+            .card-body
+              a(href='#').meta-link.fs-xs.mb-1 Men's shoes
+              h3.fs-md.fw-medium.mb-2
+                a(href='#').meta-link Sport Running Sneakers
+              del.fs-sm.text-muted.me-1 $140.00
+              span.text-heading.fw-semibold $85.00
+            .card-footer
+              +star-rating(4)
+              .d-flex.align-items-center
+                a(href='#').btn-wishlist
+                  i.ai-heart
+                  span.btn-tooltip Wishlist
+                span.btn-divider
+                a(href='#').btn-addtocart
+                  i.ai-shopping-cart
+                  span.btn-tooltip To Cart
+
+//- Footer
+block footer
+  include partials/footer-shop

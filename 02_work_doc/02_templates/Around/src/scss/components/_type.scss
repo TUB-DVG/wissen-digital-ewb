@@ -1,0 +1,89 @@
+//
+// Typography
+// --------------------------------------------------
+
+
+// Headings: customize default Bootstrap h1-h6 headings
+
+h1, .h1 { line-height: $h1-line-height; }
+h2, .h2 { line-height: $h2-line-height; }
+h3, .h3 { line-height: $h3-line-height; }
+h4, .h4 { line-height: $h4-line-height; }
+h5, .h5 { line-height: $h5-line-height; }
+h6, .h6 { line-height: $h6-line-height; }
+
+
+// Lists
+
+ul li, ol li { margin-bottom: $spacer * .333; }
+.list-inline-item:not(:last-child) {
+  margin-right: $spacer * 1.25;
+}
+dt {
+  color: $headings-color;
+  margin-bottom: $spacer * .25;
+  font-weight: $headings-font-weight;
+}
+dd {
+  @include font-size($font-size-sm);
+  margin-bottom: $spacer;
+}
+
+
+// Blockquote
+
+.blockquote {
+  position: relative;
+  padding-left: $blockquote-mark-font-size + 1.875rem;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: -.75rem;
+    left: 0;
+    color: $blockquote-mark-color;
+    font: {
+      family: $icons-font-family;
+      size: $blockquote-mark-font-size;
+      weight: normal;
+    }
+    line-height: 1;
+    content: $blockquote-mark;
+  }
+
+  &.text-center,
+  .text-center & {
+    padding: {
+      top: $blockquote-mark-font-size + $spacer;
+      left: 0;
+    }
+    &::before {
+      top: 0;
+      left: 50%;
+      margin-left: -($blockquote-mark-font-size * .5);
+    }
+  }
+  &.text-end,
+  .text-end & {
+    padding: {
+      right: $blockquote-mark-font-size + 1.875rem;
+      left: 0;
+    }
+    &::before {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+.blockquote-footer {
+  margin-top: 0;
+  font-weight: $blockquote-footer-font-weight;
+}
+
+
+// Callout
+
+.callout {
+  padding-left: 1.5rem;
+  border-left: .25rem solid $primary;
+}

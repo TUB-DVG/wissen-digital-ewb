@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Around | Shop components</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="../safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/themes/prism.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/toolbar/prism-toolbar.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/tiny-slider/dist/tiny-slider.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+  </head>
+  <!-- Body-->
+  <body>
+    <main class="container-fluid">
+      <!-- Main content-->
+      <section class="offcanvas-enabled-start row pb-3 pb-md-4">
+        <div class="col-xxl-9">
+          <!-- Navbar-->
+          <header class="navbar navbar-expand-lg navbar-light fixed-top navbar-shadow bg-light px-3 px-lg-4" data-scroll-header data-fixed-element><a class="navbar-brand d-lg-none" href="typography.html" style="min-width: 7rem;"><img src="../img/logo/logo-icon.png" alt="Around" width="58"></a>
+            <ul class="navbar-nav ms-auto d-none d-lg-flex">
+              <li class="nav-item"><a class="nav-link" href="../index.html"><i class="ai-eye align-middle mt-n1 me-2"></i>Live preview</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="../docs/dev-setup.html"><i class="ai-file-text align-middle mt-n1 me-2"></i>Documentation</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+            </ul>
+            <button class="navbar-toggler d-block d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#componentsNav"><span class="navbar-toggler-icon"></span></button><a class="btn btn-primary btn-shadow ms-3" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-shopping-cart me-2 d-none d-sm-inline-block"></i>Buy now</a>
+          </header>
+          <!-- Side navigation (Off-canvas)-->
+          <aside class="offcanvas offcanvas-expand bg-dark" id="componentsNav">
+            <div class="offcanvas-header bg-darker d-none d-lg-block py-2"><a class="navbar-brand py-1" href="typography.html"><img src="../img/logo/logo-light.png" alt="Around" width="153"></a><span class="badge bg-danger">UI Kit</span></div>
+            <div class="offcanvas-header bg-darker d-flex d-lg-none align-items-center">
+              <div class="d-flex align-items-center mt-1">
+                <h5 class="text-light mb-0 me-3">Menu</h5><span class="badge bg-danger">UI Kit</span>
+              </div>
+              <button class="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light"><a class="btn btn-outline-light w-100 btn-sm me-2" href="../index.html"><i class="ai-eye me-2"></i>Preview</a><a class="btn btn-outline-light w-100 btn-sm mt-0" href="../docs/dev-setup.html"><i class="ai-file-text me-2"></i>Docs</a></div>
+            <div class="offcanvas-body pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
+              <h6 class="text-light pt-2 pb-2 border-bottom border-light">Content</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="typography.html">Typography</a><a class="nav-link fs-sm" href="icon-font.html">Icon font</a><a class="nav-link fs-sm" href="code.html">Code</a><a class="nav-link fs-sm" href="images.html">Images &amp; figures</a><a class="nav-link fs-sm" href="tables.html">Tables</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Components</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="accordion.html">Accordion</a><a class="nav-link fs-sm" href="alerts.html">Alerts</a><a class="nav-link fs-sm" href="badge.html">Badges</a><a class="nav-link fs-sm" href="blog-components.html">Blog components</a><a class="nav-link fs-sm" href="breadcrumb.html">Breadcrumb</a><a class="nav-link fs-sm" href="buttons.html">Buttons</a><a class="nav-link fs-sm" href="button-group.html">Button group</a><a class="nav-link fs-sm" href="cards.html">Cards</a><a class="nav-link fs-sm" href="carousel.html">Carousel</a><a class="nav-link fs-sm" href="charts.html">Charts</a><a class="nav-link fs-sm" href="collapse.html">Collapse</a><a class="nav-link fs-sm" href="countdown.html">Countdown</a><a class="nav-link fs-sm" href="contacts-card.html">Contacts card</a><a class="nav-link fs-sm" href="date-picker.html">Date / time picker</a><a class="nav-link fs-sm" href="dropdowns.html">Dropdowns</a><a class="nav-link fs-sm" href="forms.html">Forms</a><a class="nav-link fs-sm" href="frames.html">Frames</a><a class="nav-link fs-sm" href="gallery.html">Gallery</a><a class="nav-link fs-sm" href="hotspots.html">Hotspots</a><a class="nav-link fs-sm" href="input-group.html">Input group</a><a class="nav-link fs-sm" href="list-group.html">List group</a><a class="nav-link fs-sm" href="modal.html">Modal</a><a class="nav-link fs-sm" href="navbar.html">Navbar</a><a class="nav-link fs-sm" href="offcanvas.html">Offcanvas</a><a class="nav-link fs-sm" href="pagination.html">Pagination</a><a class="nav-link fs-sm" href="parallax.html">Parallax</a><a class="nav-link fs-sm" href="pills.html">Pills</a><a class="nav-link fs-sm" href="placeholders.html">Placeholders</a><a class="nav-link fs-sm" href="popovers.html">Popovers</a><a class="nav-link fs-sm" href="portfolio-components.html">Portfolio components</a><a class="nav-link fs-sm" href="pricing.html">Pricing</a><a class="nav-link fs-sm" href="progress.html">Progress</a><a class="nav-link fs-sm active" href="shop-components.html">Shop components</a><a class="nav-link fs-sm" href="social-buttons.html">Social buttons</a><a class="nav-link fs-sm" href="spinners.html">Spinners</a><a class="nav-link fs-sm" href="tabs.html">Tabs</a><a class="nav-link fs-sm" href="team.html">Team</a><a class="nav-link fs-sm" href="testimonials.html">Testimonials / reviews</a><a class="nav-link fs-sm" href="toasts.html">Toasts</a><a class="nav-link fs-sm" href="tooltips.html">Tooltips</a><a class="nav-link fs-sm" href="btn-video.html">Video button</a><a class="nav-link fs-sm" href="widgets.html">Widgets</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Utilities</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="https://getbootstrap.com/docs/5.1/utilities/borders/" target="_blank" rel="noopener">Bootstrap</a><a class="nav-link fs-sm" href="utilities.html">Around</a></nav>
+            </div>
+          </aside>
+          <!-- Page title-->
+          <div class="border-bottom pt-5 pb-2 mt-2 mb-5">
+            <h1 class="mt-lg-4 pt-5">Shop components</h1>
+            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+              <p class="text-muted">Components that are related to the e-commerce section of the website.</p>
+              <div class="ps-md-4 mb-3"><span class="badge bg-danger">Around component</span></div>
+            </div>
+          </div>
+          <!-- Product card-->
+          <section class="pb-5 mb-md-2" id="product-card">
+            <h2 class="h4 mb-3">Product card</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result1" data-bs-toggle="tab" role="tab" aria-controls="result1" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html1" data-bs-toggle="tab" role="tab" aria-controls="html1" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug1" data-bs-toggle="tab" role="tab" aria-controls="pug1" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result1" role="tabpanel">
+                    <div class="card card-product card-hover mx-0" style="max-width: 18rem;"><span class="badge badge-floating rounded-pill rounded-start-0 bg-danger">Sale</span><a class="card-img-top" href="#"><img src="../img/shop/catalog/02.jpg" alt="Product thumbnail"></a>
+                      <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Electronics</a>
+                        <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">Wireless Headphones</a></h3>
+                        <del class="fs-sm text-muted me-1">$165.00</del><span class="text-heading fw-semibold">$139.00</span>
+                      </div>
+                      <div class="card-footer">
+                        <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star"></i>
+                        </div>
+                        <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Product card --&gt;
+&lt;div class=&quot;card card-product card-hover&quot;&gt;
+  &lt;span class=&quot;badge badge-floating rounded-pill rounded-start-0 bg-danger&quot;&gt;Sale&lt;/span&gt;
+  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+    &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+  &lt;/a&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Electronics&lt;/a&gt;
+    &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+      &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Wireless Headphones&lt;/a&gt;
+    &lt;/h3&gt;
+    &lt;del class=&quot;fs-sm text-muted me-1&quot;&gt;$165.00&lt;/del&gt;
+    &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$139.00&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-footer&quot;&gt;
+    &lt;div class=&quot;star-rating&quot;&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+      &lt;a class=&quot;btn-wishlist&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-heart&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;btn-tooltip&quot;&gt;Wishlist&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;span class=&quot;btn-divider&quot;&gt;&lt;/span&gt;
+      &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+        &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Product card
+.card.card-product.card-hover
+  span.badge.badge-floating.rounded-pill.rounded-start-0.bg-danger Sale
+  a(href=&quot;#&quot;).card-img-top
+    img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+  .card-body
+    a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+      | Electronics
+    h3.fs-md.fw-medium.mb-2
+      a(href=&quot;#&quot;).meta-link
+        | Wireless Headphones
+    del.fs-sm.text-muted.me-1 $165.00
+    span.text-heading.fw-semibold $139.00
+  .card-footer
+    +star-rating(4)
+    .d-flex.align-items-center
+      a(href=&quot;#&quot;).btn-wishlist
+        i.ai-heart
+        span.btn-tooltip Wishlist
+      span.btn-divider
+      a(href=&quot;#&quot;).btn-addtocart
+        i.ai-shopping-cart
+        span.btn-tooltip To Cart
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Wishlist item-->
+          <section class="pb-5 mb-md-2" id="wishlist-item">
+            <h2 class="h4 mb-3">Wishlist item</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result2" data-bs-toggle="tab" role="tab" aria-controls="result2" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html2" data-bs-toggle="tab" role="tab" aria-controls="html2" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug2" data-bs-toggle="tab" role="tab" aria-controls="pug2" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result2" role="tabpanel">
+                    <div class="card card-product card-hover mx-0" style="max-width: 18rem;"><a class="btn-remove" href="#"><i class="ai-trash-2"></i><span class="btn-tooltip">Remove</span></a><a class="card-img-top" href="#"><img src="../img/shop/catalog/09.jpg" alt="Product thumbnail"></a>
+                      <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Women's shoes</a>
+                        <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">Women Colorblock Sneakers</a></h3><span class="text-heading fw-semibold">$154.00</span>
+                      </div>
+                      <div class="card-footer">
+                        <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i>
+                        </div><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Wishlist item --&gt;
+&lt;div class=&quot;card card-product card-hover&quot;&gt;
+  &lt;a class=&quot;btn-remove&quot; href=&quot;#&quot;&gt;
+    &lt;i class=&quot;ai-trash-2&quot;&gt;&lt;/i&gt;
+    &lt;span class=&quot;btn-tooltip&quot;&gt;Remove&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+    &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+  &lt;/a&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Women's shoes&lt;/a&gt;
+    &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+      &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Women Colorblock Sneakers&lt;/a&gt;
+    &lt;/h3&gt;
+    &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$154.00&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-footer&quot;&gt;
+    &lt;div class=&quot;star-rating&quot;&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+      &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+      &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Wishlist item
+.card.card-product.card-hover
+  a(href=&quot;#&quot;).btn-remove
+    i.ai-trash-2
+    span.btn-tooltip Remove
+  a(href=&quot;#&quot;).card-img-top
+    img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+  .card-body
+    a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+      | Women's shoes
+    h3.fs-md.fw-medium.mb-2
+      a(href=&quot;#&quot;).meta-link
+        | Women Colorblock Sneakers
+    span.text-heading.fw-semibold $154.00
+  .card-footer
+    +star-rating(3)
+    a(href=&quot;#&quot;).btn-addtocart
+      i.ai-shopping-cart
+      span.btn-tooltip To Cart
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Category card-->
+          <section class="pb-5 mb-md-2" id="category-card">
+            <h2 class="h4 mb-3">Category card</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result3" data-bs-toggle="tab" role="tab" aria-controls="result3" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html3" data-bs-toggle="tab" role="tab" aria-controls="html3" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug3" data-bs-toggle="tab" role="tab" aria-controls="pug3" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result3" role="tabpanel"><a class="card card-category shadow" href="#" style="max-width: 24rem;"><span class="badge badge-lg badge-floating badge-floating-end bg-success">From $8.99</span><img class="card-img-top" src="../img/shop/categories/01.jpg" alt="Clothing">
+                      <div class="card-body">
+                        <h4 class="card-title">Clothing</h4>
+                      </div></a></div>
+                  <div class="tab-pane fade" id="html3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Category card --&gt;
+&lt;div class=&quot;card card-category shadow&quot;&gt;
+  &lt;span class=&quot;badge badge-lg badge-floating badge-floating-end bg-success&quot;&gt;
+    From $8.99
+  &lt;/span&gt;
+  &lt;img src=&quot;path-to-image&quot; class=&quot;card-img-top&quot; alt=&quot;Clothing&quot;/&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;h4 class=&quot;card-title&quot;&gt;Clothing&lt;/h4&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Category card
+a(href=&quot;#&quot;).card.card-category.shadow
+  span.badge.badge-lg.badge-floating.badge-floating-end.bg-success
+    | From $8.99
+  img(src=&quot;path-to-image&quot;, alt=&quot;Clothing&quot;).card-img-top
+  .card-body
+    h4.card-title Clothing
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Product gallery-->
+          <section class="pb-5 mb-md-2" id="product-gallery">
+            <h2 class="h4 mb-3">Product gallery</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result4" data-bs-toggle="tab" role="tab" aria-controls="result4" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html4" data-bs-toggle="tab" role="tab" aria-controls="html4" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug4" data-bs-toggle="tab" role="tab" aria-controls="pug4" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result4" role="tabpanel">
+                    <div class="product-gallery" style="max-width: 42rem;">
+                      <div class="product-gallery-preview order-sm-2">
+                        <div class="product-gallery-preview-item active" id="first"><img src="../img/shop/single/gallery/01.jpg" alt="Product preview"></div>
+                        <div class="product-gallery-preview-item" id="second"><img src="../img/shop/single/gallery/02.jpg" alt="Product preview"></div>
+                        <div class="product-gallery-preview-item" id="third"><img src="../img/shop/single/gallery/03.jpg" alt="Product preview"></div>
+                        <div class="product-gallery-preview-item" id="fourth"><img src="../img/shop/single/gallery/04.jpg" alt="Product preview"></div>
+                      </div>
+                      <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="../img/shop/single/gallery/th01.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="../img/shop/single/gallery/th02.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="../img/shop/single/gallery/th03.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="../img/shop/single/gallery/th04.jpg" alt="Product thumb"></a></div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Product gallery --&gt;
+&lt;div class=&quot;product-gallery&quot;&gt;
+
+  &lt;!-- Preview image --&gt;
+  &lt;div class=&quot;product-gallery-preview order-sm-2&quot;&gt;
+    &lt;div class=&quot;product-gallery-preview-item active&quot; id=&quot;first&quot;&gt;
+      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;second&quot;&gt;
+      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;third&quot;&gt;
+      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;product-gallery-preview-item&quot; id=&quot;fourth&quot;&gt;
+      &lt;img src=&quot;path-to-preview-image&quot; alt=&quot;Product preview&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Thumbnails --&gt;
+  &lt;div class=&quot;product-gallery-thumblist order-sm-1&quot;&gt;
+    &lt;a class=&quot;product-gallery-thumblist-item active&quot; href=&quot;#first&quot;&gt;
+      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#second&quot;&gt;
+      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#third&quot;&gt;
+      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+    &lt;/a&gt;
+    &lt;a class=&quot;product-gallery-thumblist-item&quot; href=&quot;#fourth&quot;&gt;
+      &lt;img src=&quot;path-to-thumbnail&quot; alt=&quot;Product thumb&quot;/&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Product gallery
+.product-gallery
+
+  // Preview image
+  .product-gallery-preview.order-sm-2
+    #first.product-gallery-preview-item.active
+      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+    #second.product-gallery-preview-item
+      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+    #third.product-gallery-preview-item
+      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+    #fourth.product-gallery-preview-item
+      img(src=&quot;path-to-preview-image&quot;, alt=&quot;Product preview&quot;)
+
+  // Thumbnails
+  .product-gallery-thumblist.order-sm-1
+    a(href=&quot;#first&quot;).product-gallery-thumblist-item.active
+      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+    a(href=&quot;#second&quot;).product-gallery-thumblist-item
+      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+    a(href=&quot;#third&quot;).product-gallery-thumblist-item
+      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+    a(href=&quot;#fourth&quot;).product-gallery-thumblist-item
+      img(src=&quot;path-to-thumbnail&quot;, alt=&quot;Product thumb&quot;)
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Promo banner-->
+          <section class="pb-5 mb-md-2" id="promo-banner">
+            <h2 class="h4 mb-3">Promo banner</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result5" data-bs-toggle="tab" role="tab" aria-controls="result5" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html5" data-bs-toggle="tab" role="tab" aria-controls="html5" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug5" data-bs-toggle="tab" role="tab" aria-controls="pug5" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result5" role="tabpanel">
+                    <div class="bg-secondary rounded-3 pt-5 px-3 ps-sm-5 pe-sm-2" style="max-width: 810px;">
+                      <div class="d-sm-flex align-items-end text-center text-sm-start ps-2">
+                        <div class="me-sm-n6 pb-5">
+                          <h2 class="h1 text-sm-nowrap">Virtual Reality</h2>
+                          <p class="pb-2 mx-auto mx-sm-0" style="max-width: 14rem;">Gadgets from top brands at discounted price</p>
+                          <div class="d-inline-block bg-faded-danger text-danger fs-sm fw-medium rounded-1 px-3 py-2">Limited time offer</div>
+                          <div class="countdown pt-3 h4 justify-content-center justify-content-sm-start" data-countdown="10/01/2021 07:00:00 PM">
+                            <div class="countdown-days"><span class="countdown-value">0</span><span class="countdown-label fs-xs text-muted">Days</span></div>
+                            <div class="countdown-hours"><span class="countdown-value">0</span><span class="countdown-label fs-xs text-muted">Hours</span></div>
+                            <div class="countdown-minutes"><span class="countdown-value">0</span><span class="countdown-label fs-xs text-muted">Mins</span></div>
+                          </div><a class="btn btn-primary" href="#">Get one now</a>
+                        </div>
+                        <div><img src="../img/demo/shop-homepage/banner.png" alt="Promo banner"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html5" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Promo banner with countdown --&gt;
+&lt;div class=&quot;bg-secondary rounded-3 pt-5 px-3 ps-sm-5 pe-sm-2&quot;&gt;
+  &lt;div class=&quot;d-sm-flex align-items-end text-center text-sm-start ps-2&quot;&gt;
+    &lt;div class=&quot;me-sm-n6 pb-5&quot;&gt;
+      &lt;h2 class=&quot;h1 text-sm-nowrap&quot;&gt;Virtual Reality&lt;/h2&gt;
+      &lt;p class=&quot;pb-2 mx-auto mx-sm-0&quot; style=&quot;max-width: 14rem;&quot;&gt;
+        Gadgets from top brands at discounted price
+      &lt;/p&gt;
+      &lt;div class=&quot;d-inline-block bg-faded-danger text-danger fs-sm fw-medium rounded-1 px-3 py-2&quot;&gt;
+        Limited time offer
+      &lt;/div&gt;
+      &lt;div class=&quot;countdown pt-3 h4 justify-content-center justify-content-sm-start&quot; data-countdown=&quot;10/01/2021 07:00:00 PM&quot;&gt;
+        &lt;div class=&quot;countdown-days&quot;&gt;
+          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Days&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;countdown-hours&quot;&gt;
+          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Hours&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;countdown-minutes&quot;&gt;
+          &lt;span class=&quot;countdown-value&quot;&gt;0&lt;/span&gt;
+          &lt;span class=&quot;countdown-label fs-xs text-muted&quot;&gt;Mins&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;a class=&quot;btn btn-primary&quot; href=&quot;#&quot;&gt;Get one now&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div&gt;&lt;img src=&quot;path-to-image&quot; alt=&quot;Promo banner&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug5" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Promo banner with countdown
+.bg-secondary.rounded-3.pt-5.px-3.ps-sm-5.pe-sm-2
+  .d-sm-flex.align-items-end.text-center.text-sm-start.ps-2
+    .me-sm-n6.pb-5
+      h2.h1.text-sm-nowrap Virtual Reality
+      p.pb-2.mx-auto.mx-sm-0(style=&quot;max-width: 14rem;&quot;) Gadgets from top brands at discounted price
+      .d-inline-block.bg-faded-danger.text-danger.fs-sm.fw-medium.rounded-1.px-3.py-2
+        | Limited time offer
+      .countdown.pt-3.h4.justify-content-center.justify-content-sm-start(data-countdown=&quot;10/01/2021 07:00:00 PM&quot;)
+        .countdown-days
+          span.countdown-value 0
+          span.countdown-label.fs-xs.text-muted Days
+        .countdown-hours
+          span.countdown-value 0
+          span.countdown-label.fs-xs.text-muted Hours
+        .countdown-minutes
+          span.countdown-value 0
+          span.countdown-label.fs-xs.text-muted Mins
+      a(href=&quot;#&quot;).btn.btn-primary
+        | Get one now
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Promo banner&quot;)
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Active filters-->
+          <section class="pb-5 mb-md-2" id="active-filters">
+            <h2 class="h4 mb-3">Active filters</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result6" data-bs-toggle="tab" role="tab" aria-controls="result6" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html6" data-bs-toggle="tab" role="tab" aria-controls="html6" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug6" data-bs-toggle="tab" role="tab" aria-controls="pug6" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result6" role="tabpanel">
+                    <div class="d-flex flex-wrap align-items-center">
+                      <label class="form-label me-3 mt-1 mb-2">Your selection:</label><a class="active-filter me-2 my-2" href="#">Clothing</a><a class="active-filter me-2 my-2" href="#">Shirts &amp; Tops</a><a class="active-filter me-2 my-2" href="#">Brand name</a><a class="active-filter my-2" href="#">Size</a>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html6" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Active filter --&gt;
+&lt;a href=&quot;#&quot; class=&quot;active-filter&quot;&gt;
+  Active filter
+&lt;/a&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug6" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Active filter
+a(href=&quot;#&quot;).active-filter
+  | Active filter
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Related products carousel-->
+          <section class="pb-5 mb-md-2" id="products-carousel">
+            <h2 class="h4 mb-3">Related products carousel</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result7" data-bs-toggle="tab" role="tab" aria-controls="result7" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html7" data-bs-toggle="tab" role="tab" aria-controls="html7" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug7" data-bs-toggle="tab" role="tab" aria-controls="pug7" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result7" role="tabpanel">
+                    <div class="tns-carousel-wrapper">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1700&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}">
+                        <!-- Item-->
+                        <div class="pb-2">
+                          <div class="card card-product card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/shop/catalog/01.jpg" alt="Product thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Men's clothing</a>
+                              <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">Simple Gray Cotton T-shirt</a></h3><span class="text-heading fw-semibold">$19.00</span>
+                            </div>
+                            <div class="card-footer">
+                              <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i>
+                              </div>
+                              <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Item-->
+                        <div class="pb-2">
+                          <div class="card card-product card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/shop/catalog/03.jpg" alt="Product thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Accessories</a>
+                              <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">Military Cotton Cap</a></h3><span class="text-heading fw-semibold">$28.00</span>
+                            </div>
+                            <div class="card-footer">
+                              <div class="star-rating mt-n1"><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i>
+                              </div>
+                              <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Item-->
+                        <div class="pb-2">
+                          <div class="card card-product card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/shop/catalog/04.jpg" alt="Product thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Electronics</a>
+                              <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">360 Degree Camera</a></h3><span class="text-heading fw-semibold">$98.75</span>
+                            </div>
+                            <div class="card-footer">
+                              <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star"></i>
+                              </div>
+                              <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Item-->
+                        <div class="pb-2">
+                          <div class="card card-product card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/shop/catalog/06.jpg" alt="Product thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Backpacks</a>
+                              <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">Vintage Travel Backpack</a></h3><span class="text-heading fw-semibold">$82.00</span>
+                            </div>
+                            <div class="card-footer">
+                              <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i>
+                              </div>
+                              <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Item-->
+                        <div class="pb-2">
+                          <div class="card card-product card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/shop/catalog/07.jpg" alt="Product thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-xs mb-1" href="#">Accessories</a>
+                              <h3 class="fs-md fw-medium mb-2"><a class="meta-link" href="#">3-Color Sun Stash Hat</a></h3><span class="text-heading fw-semibold">$25.99</span>
+                            </div>
+                            <div class="card-footer">
+                              <div class="star-rating mt-n1"><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star-filled active"></i><i class="sr-star ai-star"></i><i class="sr-star ai-star"></i>
+                              </div>
+                              <div class="d-flex align-items-center"><a class="btn-wishlist" href="#"><i class="ai-heart"></i><span class="btn-tooltip">Wishlist</span></a><span class="btn-divider"></span><a class="btn-addtocart" href="#"><i class="ai-shopping-cart"></i><span class="btn-tooltip">To Cart</span></a></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html7" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Products carousel --&gt;
+&lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1700&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}'&gt;
+    
+    &lt;!-- Item --&gt;
+    &lt;div class=&quot;pb-2&quot;&gt;
+      &lt;div class=&quot;card card-product card-hover mx-1&quot;&gt;
+        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+          &lt;img src=&quot;path-to-image&quot; alt=&quot;Product thumbnail&quot;/&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;a class=&quot;meta-link fs-xs mb-1&quot; href=&quot;#&quot;&gt;Men's clothing&lt;/a&gt;
+          &lt;h3 class=&quot;fs-md fw-medium mb-2&quot;&gt;
+            &lt;a class=&quot;meta-link&quot; href=&quot;#&quot;&gt;Simple Gray Cotton T-shirt&lt;/a&gt;
+          &lt;/h3&gt;
+          &lt;span class=&quot;text-heading fw-semibold&quot;&gt;$19.00&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card-footer&quot;&gt;
+          &lt;div class=&quot;star-rating&quot;&gt;
+            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+            &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+            &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+            &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+            &lt;a class=&quot;btn-wishlist&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-heart&quot;&gt;&lt;/i&gt;
+              &lt;span class=&quot;btn-tooltip&quot;&gt;Wishlist&lt;/span&gt;
+            &lt;/a&gt;
+            &lt;span class=&quot;btn-divider&quot;&gt;&lt;/span&gt;
+            &lt;a class=&quot;btn-addtocart&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-shopping-cart&quot;&gt;&lt;/i&gt;
+              &lt;span class=&quot;btn-tooltip&quot;&gt;To Cart&lt;/span&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+   &lt;!-- Add as many items as you need --&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug7" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Products carousel
+.tns-carousel-wrapper
+  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16}, &quot;780&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1700&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 23}}}')
+
+    // Item
+    .pb-2
+      .card.card-product.card-hover.mx-1
+        a(href=&quot;#&quot;).card-img-top
+          img(src=&quot;path-to-image&quot;, alt=&quot;Product thumbnail&quot;)
+        .card-body
+          a(href=&quot;#&quot;).meta-link.fs-xs.mb-1
+            | Men&quot;s clothing
+          h3.fs-md.fw-medium.mb-2
+            a(href=&quot;#&quot;).meta-link
+              | Simple Gray Cotton T-shirt
+          span.text-heading.fw-semibold $19.00
+        .card-footer
+          +star-rating(3)
+          .d-flex.align-items-center
+            a(href=&quot;#&quot;).btn-wishlist
+              i.ai-heart
+              span.btn-tooltip Wishlist
+            span.btn-divider
+            a(href=&quot;#&quot;).btn-addtocart
+              i.ai-shopping-cart
+              span.btn-tooltip To Cart
+    
+    // Add as many items as you need</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Quick (anchor) navigation-->
+        <div class="col-xxl-3 d-none d-xxl-block ps-5">
+          <aside class="sticky-top pt-5">
+            <div class="pt-5 mt-5">
+              <div class="ps-4 border-start">
+                <h3 class="h5">Jump to</h3><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#product-card">Product card</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#wishlist-item">Wishlist item</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#category-card">Category card</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#product-gallery">Product gallery</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#promo-banner">Promo banner</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#active-filters">Active filters</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#products-carousel">Related products carousel</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-core.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-markup.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-clike.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-javascript.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-pug.min.js"></script>
+    <script src="../vendor/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="../vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="../vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <!-- Main theme script-->
+    <script src="../js/theme.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,547 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js', 'parallax-js/dist/parallax.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Creative Agency'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Hero
+  section.position-relative.bg-secondary.pt-5.pt-lg-7.pb-7.overflow-hidden
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    
+    // Content
+    .container.pt-3.pb-4.pt-lg-0
+      .row.align-items-center
+        .col-lg-5.mt-lg-n7.pb-5.mb-sm-3.mb-lg-0.pb-lg-0.text-center.text-lg-start
+          h1.display-4 Creativity beyond imagination
+          p.pb-2 We will help to bring your wildest ideas to life.
+          a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-primary.me-3
+          span.fs-sm.text-muted Watch who, how and where
+        .col-lg-7
+          .parallax.mx-auto(style='max-width: 705px;')
+            .parallax-layer.position-relative(data-depth='0.1')
+              img(src='img/demo/creative-agency/parallax/layer01.svg' alt='Layer')
+            .parallax-layer(data-depth='0.35')
+              img(src='img/demo/creative-agency/parallax/layer02.svg' alt='Layer')
+            .parallax-layer(data-depth='0.2')
+              img(src='img/demo/creative-agency/parallax/layer03.svg' alt='Layer')
+            .parallax-layer(data-depth='0.5')
+              img(src='img/demo/creative-agency/parallax/layer04.svg' alt='Layer')
+            .parallax-layer(data-depth='0.6')
+              img(src='img/demo/creative-agency/parallax/layer05.svg' alt='Layer')
+            .parallax-layer(data-depth='0.4')
+              img(src='img/demo/creative-agency/parallax/layer06.svg' alt='Layer')
+            .parallax-layer(data-depth='0.25')
+              img(src='img/demo/creative-agency/parallax/layer07.svg' alt='Layer')
+            .parallax-layer(data-depth='0.35')
+              img(src='img/demo/creative-agency/parallax/layer08.svg' alt='Layer')
+            .parallax-layer(data-depth='0.6')
+              img(src='img/demo/creative-agency/parallax/layer09.svg' alt='Layer')
+            .parallax-layer(data-depth='0.45')
+              img(src='img/demo/creative-agency/parallax/layer10.svg' alt='Layer')
+            .parallax-layer(data-depth='0.7')
+              img(src='img/demo/creative-agency/parallax/layer11.svg' alt='Layer')
+            .parallax-layer(data-depth='0.3')
+              img(src='img/demo/creative-agency/parallax/layer12.svg' alt='Layer')
+            .parallax-layer(data-depth='0.15')
+              img(src='img/demo/creative-agency/parallax/layer13.png' alt='Layer')
+            .parallax-layer(data-depth='0.9')
+              img(src='img/demo/creative-agency/parallax/layer14.svg' alt='Layer')
+
+
+  // About
+  section.container.position-relative.zindex-5(style='margin-top: -175px;')
+    .bg-light.rounded-3.shadow.py-5.py-md-6.px-4.px-md-0
+      .row.align-items-center.py-3.py-md-0
+        .col-xl-6.col-lg-5.col-md-4.text-center
+          h2.pb-3.pb-md-0
+            span.d-block.text-body.opacity-25 Something
+            | About Us
+        .col-xl-5.col-lg-6.col-md-7.text-center.text-md-start
+          p Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum beatae vitae dicta sunt explicabo.
+          p.mb-0 Ornare aenean euismod elementum nisi quis. Et ultrices neque ornare aenean euismod elementum nisi.
+  
+
+  // Portfolio
+  section.container.pt-5.pt-md-6.pt-lg-7
+    h2.text-center.pt-3.pt-md-2.pb-4 Our Work
+    .masonry-filterable.mb-3
+      ul.masonry-filters.nav.nav-tabs.justify-content-center.mt-2.pb-4
+        li.nav-item
+          a(href='#' data-group='all').nav-link.active All
+        li.nav-item
+          a(href='#' data-group='branding').nav-link Branding
+        li.nav-item
+          a(href='#' data-group='stationery').nav-link Stationery
+        li.nav-item
+          a(href='#' data-group='packaging').nav-link Packaging
+        li.nav-item
+          a(href='#' data-group='3d').nav-link 3D modelling
+      .masonry-grid(data-columns='4')
+        .masonry-grid-item(data-groups='["3d"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/07.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Toothbrush Render
+                    p.fs-sm.text-muted in 3D Modelling
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/08.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Hand Cream Bottle
+                    p.fs-sm.text-muted in Package Design
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["3d"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/09.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Clay Glass Render
+                    p.fs-sm.text-muted in 3D Modelling
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["stationery", "branding"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/10.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Promo Flyer Design
+                    p.fs-sm.text-muted in Stationery
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/12.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Cosmetics Packaging
+                    p.fs-sm.text-muted in Package Design
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["branding"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/14.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Package Branding
+                    p.fs-sm.text-muted in Identity Design
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["branding"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/13.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Company Branding
+                    p.fs-sm.text-muted in Identity Design
+                    span.btn.btn-primary.btn-sm View project
+        .masonry-grid-item(data-groups='["packaging"]')
+          .card.card-flip
+            .card-flip-inner
+              .card-flip-front
+                img(src='img/portfolio/11.jpg' alt='Portfolio thumb').card-img
+              a(href='portfolio-single-side-gallery-grid.html').card-flip-back
+                .card-body
+                  .card-body-inner
+                    h3.h5.card-title.mb-2 Tonik Bottle Design
+                    p.fs-sm.text-muted in Package Design
+                    span.btn.btn-primary.btn-sm View project
+    .text-center
+      a(href='#').btn.btn-primary See More Projects
+  
+
+  // Services
+  section.container.pt-5.pb-4.py-md-6.pt-lg-7
+    h2.text-center.pt-3 Services
+    p.d-block.fs-sm.text-muted.text-center.mx-auto.pb-4.mb-5(style='max-width: 400px;') Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eum modi, adipisci facilis.
+    .row
+      .col-lg-2.offset-lg-1.col-sm-3.col-6.mb-grid-gutter.text-center.text-sm-start
+        img(src='img/demo/creative-agency/services/01.svg' alt='Strategy' width='74').d-inline-block.mb-3
+        h3.h5 Strategy
+        ul.list-unstyled
+          li.mb-0 Brand Architecture
+          li.mb-0 Key Messaging
+          li.mb-0 User Personas
+      .col-lg-2.offset-lg-1.col-sm-3.col-6.mb-grid-gutter.text-center.text-sm-start
+        img(src='img/demo/creative-agency/services/02.svg' alt='Digital' width='85').d-inline-block.mb-3
+        h3.h5 Digital
+        ul.list-unstyled
+          li.mb-0 UI/UX
+          li.mb-0 Web/Mobile Apps
+          li.mb-0 Websites
+          li.mb-0 Design Systems
+          li.mb-0 Front-End
+          li.mb-0 Back-End
+      .col-lg-2.offset-lg-1.col-sm-3.col-6.mb-grid-gutter.text-center.text-sm-start
+        img(src='img/demo/creative-agency/services/03.svg' alt='Visual Identity' width='78').d-inline-block.mb-3
+        h3.h5 Visual Identity
+        ul.list-unstyled
+          li.mb-0 Logo Design
+          li.mb-0 Visual Identity
+          li.mb-0 Brand Guidelines
+          li.mb-0 Illustration
+      .col-lg-2.offset-lg-1.col-sm-3.col-6.mb-grid-gutter.text-center.text-sm-start
+        img(src='img/demo/creative-agency/services/04.svg' alt='Motion' width='83').d-inline-block.mb-3
+        h3.h5 Motion
+        ul.list-unstyled
+          li.mb-0 Promo Videos
+          li.mb-0 Motion graphics
+  
+
+  // Team
+  section.bg-secondary.pt-5.pb-4.pt-md-6.pb-md-5
+    .container.py-3.pt-md-2
+      h2.text-center.mb-5 Our Team
+      .row
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/09.jpg' alt='Sarah Paulson')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Sarah Paulson
+              p.fs-xs.text-light.mb-0 CEO, Co-Founder
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/10.jpg' alt='Tim Brooks')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Tim Brooks
+              p.fs-xs.text-light.mb-0 Lead Developer
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/11.jpg' alt='Emma Brown')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Emma Brown
+              p.fs-xs.text-light.mb-0 Lead Designer
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/12.jpg' alt='Lisa Clarks')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Lisa Clarks
+              p.fs-xs.text-light.mb-0 Marketing Director
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/13.jpg' alt='Jessica Chew')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Jessica Chew
+              p.fs-xs.text-light.mb-0 Marketing Specialist
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/14.jpg' alt='Sanomi Smith')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Sanomi Smith
+              p.fs-xs.text-light.mb-0 UI/UX Designer
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/15.jpg' alt='Barbara Edwards')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Barbara Edwards
+              p.fs-xs.text-light.mb-0 Content Manager
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+          .card.border-0.shadow.mx-auto(style='max-width: 20rem;')
+            .card-img
+              img(src='img/team/16.jpg' alt='Daniel Adams')
+            .card-img-overlay.justify-content-end.text-center
+              h3.h6.text-light.mb-1 Daniel Adams
+              p.fs-xs.text-light.mb-0 Front-End Developer
+              .d-flex.justify-content-center.align-items-center
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-facebook
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-twitter
+                a(href='#').text-light.text-decoration-none.p-1.mx-2
+                  i.ai-instagram
+  
+
+  // Testimonials
+  section.container.py-5.py-md-6.py-lg-7
+    .row.align-items-center.tns-carousel-wrapper.py-4.py-md-2
+      .col-md-8
+        h2.pb-2.mb-4.text-center.text-md-start What people say about us
+        .tns-carousel-inner(data-carousel-options = '{"nav": false, "gutter": 20}')
+          blockquote.blockquote.mt-3.mb-0
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+            p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+            footer.d-flex.align-items-center
+              img(src='img/testimonials/01.jpg' alt='Emma Brown' width='42').rounded-circle
+              .text-heading.fs-md.fw-medium.ps-2.ms-1
+                | Emma Brown
+          blockquote.blockquote.mt-3.mb-0
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+            p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+            footer.d-flex.align-items-center
+              img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+              .text-heading.fs-md.fw-medium.ps-2.ms-1
+                | Tim Brooks
+          blockquote.blockquote.mt-3.mb-0
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+            p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+            footer.d-flex.align-items-center
+              img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+              .text-heading.fs-md.fw-medium.ps-2.ms-1
+                | Sanomi Smith
+          blockquote.blockquote.mt-3.mb-0
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+            p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+            footer.d-flex.align-items-center
+              img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+              .text-heading.fs-md.fw-medium.ps-2.ms-1
+                | Charlie Welch
+          blockquote.blockquote.mt-3.mb-0
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+            p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+            footer.d-flex.align-items-center
+              img(src='img/testimonials/05.jpg' alt='Sarah Palson' width='42').rounded-circle
+              .text-heading.fs-md.fw-medium.ps-2.ms-1
+                | Sarah Palson
+      .col-lg-3.col-md-4.offset-lg-1
+        .tns-carousel-pager.d-flex.flex-wrap.flex-md-column.justify-content-center.align-items-center.align-items-md-start.border-start.pt-4.mt-4.ps-md-3.pt-md-0.mt-md-0
+          a(href='#' data-goto='1').swap-image.active.mx-4.my-3.my-md-4
+            img(src='img/demo/gadget-landing/logos/01_color.png' alt='Logo' width='136').swap-to
+            img(src='img/demo/gadget-landing/logos/01_gray.png' alt='Logo' width='136').swap-from
+          a(href='#' data-goto='2').swap-image.mx-4.my-3.my-md-4
+            img(src='img/demo/gadget-landing/logos/02_color.png' alt='Logo' width='130').swap-to
+            img(src='img/demo/gadget-landing/logos/02_gray.png' alt='Logo' width='130').swap-from
+          a(href='#' data-goto='3').swap-image.mx-4.my-3.my-md-4
+            img(src='img/demo/gadget-landing/logos/05_color.png' alt='Logo' width='114').swap-to
+            img(src='img/demo/gadget-landing/logos/05_gray.png' alt='Logo' width='114').swap-from
+          a(href='#' data-goto='4').swap-image.mx-4.my-3.my-md-4
+            img(src='img/demo/gadget-landing/logos/03_color.png' alt='Logo' width='103').swap-to
+            img(src='img/demo/gadget-landing/logos/03_gray.png' alt='Logo' width='103').swap-from
+          a(href='#' data-goto='5').swap-image.mx-4.my-3.my-md-4
+            img(src='img/demo/gadget-landing/logos/04_color.png' alt='Logo' width='143').swap-to
+            img(src='img/demo/gadget-landing/logos/04_gray.png' alt='Logo' width='143').swap-from
+  
+
+  // Blog
+  .position-relative.bg-gradient(style='height: 420px;')
+    .shape.shape-bottom.shape-curve.bg-secondary
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+  section.container.position-relative.zindex-5.pt-5.pt-md-6(style='margin-top: -420px;')
+    h2.text-light.text-center.pt-3.pt-md-2.mb-5 Our Blog
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16},"850":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success New
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Identity design
+              h3.h4.nav-heading.mb-4
+                a(href='#') Top 5 Secrets of Making Successful Corporate Identity Design
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sanomi Smith
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Feb 12
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Project management
+              h3.h4.nav-heading.mb-4
+                a(href='#') What You Can Learn About Managing Projects
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Tim Brooks
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 27
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Brand strategy
+              h3.h4.nav-heading.mb-4
+                a(href='#') Simple Steps to an Effective Brand Strategy. Real Life Examples
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Charlie Welch
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 15
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.border-0.shadow.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Web development
+              h3.h4.nav-heading.mb-4
+                a(href='#') Build Complete Websites in a Fraction of Time With This Handy Tool
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/07.jpg' alt='Sarah Palson' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sarah Palson
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Dec 19
+
+
+  //- To connect gradient and gray sections
+  .bg-secondary(style='margin-top: -300px; padding-top: 300px;')
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.bg-secondary.pt-5.pt-md-6.pt-lg-7
+    .container.py-3.pt-md-0
+      .row.pb-2.pb-md-5
+        form(novalidate).col-xl-6.col-lg-7.col-md-7.needs-validation.mb-5
+          h2.pb-4 What project are you looking for?
+          h3.h6.pb-2 Services
+          .btn-group-toggle.pb-3.mb-3(data-bs-toggle='buttons')
+            label.btn.btn-outline-primary.me-2.mb-2.active
+              input(type='radio' name='services' id='branding' checked).visually-hidden
+              | Branding
+            label.btn.btn-outline-primary.me-2.mb-2
+              input(type='radio' name='services' id='ux').visually-hidden
+              | UI/UX
+            label.btn.btn-outline-primary.me-2.mb-2
+              input(type='radio' name='services' id='illustration').visually-hidden
+              | Illustration
+            label.btn.btn-outline-primary.mb-2
+              input(type='radio' name='services' id='motion').visually-hidden
+              | Motion
+          .input-group.mb-3
+            i.ai-user.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Name' required).form-control.rounded
+          .input-group.mb-3
+            i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='email' placeholder='Email' required).form-control.rounded
+          .mb-3.pb-1
+            textarea(rows='4' placeholder='Project description' required).form-control
+          .row.pt-2
+            .col-lg-6.col-md-8
+              button(type='submit').btn.btn-primary.btn-block Send Request
+        .col-xl-3.col-lg-4.offset-xl-3.offset-lg-1.col-md-5.mb-5
+          h2.pb-2 Contacts
+          ul.list-unstyled.fs-sm.mb-4.pb-2
+            li: a(href='mailto:contact@example.com').nav-link-style contact@example.com
+            li: a(href='tel:+15262200459').nav-link-style + 1 526 220 0459
+          h3.h6.pb-2 Or connect with us on:
+          a(href='#').btn-social.bs-outline.bs-facebook.bs-lg.me-2.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-outline.bs-twitter.bs-lg.me-2.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-outline.bs-instagram.bs-lg.me-2.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-outline.bs-dribbble.bs-lg.me-2.mb-2
+            i.ai-dribbble
+          a(href='#').btn-social.bs-outline.bs-behance.bs-lg.me-2.mb-2
+            i.ai-behance
+    .bg-dark.pt-5.pb-4
+      .container.d-md-flex.justify-content-between.align-items-center.text-center
+        ul.list-inline.fs-sm.mb-3.order-md-2
+          li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Support
+          li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Contacts
+          li.list-inline-item.my-1: a(href='#').nav-link-style.nav-link-light Terms &amp; Conditions
+        p.fs-sm.mb-3.order-md-1
+          span.text-light.opacity-50.me-1 © All rights reserved. Made by
+          a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

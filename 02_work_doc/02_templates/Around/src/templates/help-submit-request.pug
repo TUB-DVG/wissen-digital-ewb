@@ -1,0 +1,99 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Help Single Topic'
+  - var isSidebar = true
+
+//- Navbar
+block navbar
+  include partials/navbar-solid-shadow
+
+//- Page Content
+block content
+  .sidebar-enabled
+    .container
+      .row
+
+        // Sidebar
+        .sidebar.col-lg-3.pt-lg-5
+          #help-sidebar.offcanvas.offcanvas-collapse
+            .offcanvas-header.navbar-shadow.mb-3
+              h5.mt-1.mb-0 Sidebar
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+            .offcanvas-body.pt-3.pt-lg-0.ps-lg-0.pe-lg-2.pe-xl-4(data-simplebar)
+              //- partials/sidebar-help.pug
+              include partials/sidebar-help
+
+
+        .col-lg-9.content.pt-4.pb-6.pb-md-7
+          
+          // Page title + breadcrumbs
+          +breadcrumb([{'title': 'Help center', 'link': 'help-topics.html'}, {'title': 'Submit request'}]).py-1.my-2
+          h1.pb-4 Submit a request
+
+          .alert.d-flex.alert-info.fs-md.mb-4(role='alert')
+            i.ai-alert-circle.fs-xl.me-3
+            div Our friendly Support team is always here to help you. Begin by selecting a topic we can help you with.
+          
+          // Request form
+          form(novalidate).row.needs-validation.pt-3
+            .col-sm-6.mb-3.pb-1
+              label(for='request-topic').form-label
+                | Select a topic
+                sup.text-danger.ms-1 *
+              select(id='request-topic' required).form-select
+                option(value='' selected disabled hidden) &mdash;
+                option(value='Managing Account') Managing Account
+                option(value='Working with Dashboard') Working with Dashboard
+                option(value='Payment Methods') Payment Methods
+                option(value='Delivery Information') Delivery Information
+                option(value='Refund Policy') Refund Policy
+                option(value='Affiliate Program') Affiliate Program
+              .invalid-feedback Please choose a topic!
+            .col-sm-6.mb-3.pb-1
+              label(for='request-subject').form-label Subject
+              input(type='text' id='request-subject').form-control
+            .col-12.mb-3.pb-1
+              label(for='request-message').form-label
+                | Message
+                sup.text-danger.ms-1 *
+              textarea(rows='6' id='request-message' required).form-control
+              .invalid-feedback Please provide a detailed description of your problem!
+            .col-sm-6.mb-3.pb-1
+              label(for='request-name').form-label
+                | Your name
+                sup.text-danger.ms-1 *
+              input(type='text' id='request-name' required).form-control
+              .invalid-feedback Please enter your name!
+            .col-sm-6.mb-3.pb-1
+              label(for='request-email').form-label
+                | Email address
+                sup.text-danger.ms-1 *
+              input(type='email' id='request-email' required).form-control
+              .invalid-feedback Please enter valid email address!
+            .col-12.mb-3.pb-1
+              label(for='request-url').form-label Include relvant URL
+              input(type='text' id='request-url').form-control
+            .col-12.mb-3.pb-1.pt-3
+              .file-drop-area
+                .file-drop-icon.ai-upload
+                span.file-drop-message Drag and drop here to upload
+                input(type='file').file-drop-input
+                button(type='button').file-drop-btn.btn.btn-translucent-primary.btn-sm Or select file
+            .col-12.mb-3.pb-1.pb-1.pt-3
+              .form-check
+                input(type='checkbox' id='request-terms' required).form-check-input
+                label(for='request-terms').form-check-label.fs-sm Read and agree with <a href='#' class='nav-link-style'>Terms and conditions</a>
+            .col-12
+              button(type='submit').btn.btn-primary Submit a request
+
+//- Footer
+block footer
+  include partials/footer-default
+
+  // Sidebar toggle button
+  button(type='button' data-bs-toggle='offcanvas' data-bs-target='#help-sidebar').btn.btn-primary.btn-sm.sidebar-toggle
+    i.ai-sidebar.fs-base.me-2
+    | Sidebar

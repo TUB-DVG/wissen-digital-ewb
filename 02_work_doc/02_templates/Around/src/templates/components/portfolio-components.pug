@@ -1,0 +1,417 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js']
+  - var pageTitle = 'Portfolio components'
+  - var pageSubtitle = 'Components that are related to the portfolio section of the website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Basic card', 'link': '#portfolio-basic'}, {'title': 'Hover effect: Flip', 'link': '#portfolio-flip-hover'}, {'title': 'Hover effect: Slide up', 'link': '#portfolio-slide-hover'}, {'title': 'Masonry grid with filters', 'link': '#portfolio-filter-grid'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.mb-5(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      p.text-break.fs-md.mb-0 Make sure to link to <strong>Shuffle plugin js</strong> file in your document for masonry grid and filtering to work: <strong>vendor/shuffle/dist/shuffle.min.js</strong> . Use this page as a reference.
+
+  // Basic card
+  section#portfolio-basic.pb-5.mb-md-2
+    h2.h4.mb-3 Basic card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            a(href='#' style='max-width: 390px;').card.card-hover.border-0.shadow
+              img(src='../img/portfolio/05.jpg' alt='Portfolio thumb').card-img-top
+              .card-body.text-center
+                h3.h5.nav-heading.mb-2 Mobile App Icon Design
+                p.fs-sm.text-muted.mb-2 Mobile App Design
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Basic portfolio card --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;card card-hover border-0 shadow&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;card-img-top&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                  &lt;div class=&quot;card-body text-center&quot;&gt;
+                    &lt;h3 class=&quot;h5 nav-heading mb-2&quot;&gt;Mobile App Icon Design&lt;/h3&gt;
+                    &lt;p class=&quot;fs-sm text-muted mb-2&quot;&gt;Mobile App Design&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Basic portfolio card
+                a(href=&quot;#&quot;).card.card-hover.border-0.shadow
+                  img(src=&quot;path-to-image&quot;, alt&quot;Portfolio thumb&quot;).card-img-top
+                  .card-body.text-center
+                    h3.h5.nav-heading.mb-2 Mobile App Icon Design
+                    p.fs-sm.text-muted.mb-2 Mobile App Design
+
+  // Hover effect: Flip
+  section#portfolio-flip-hover.pb-5.mb-md-2
+    h2.h4.mb-3 Hover effect: Flip
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .card.card-flip(style='max-width: 285px;')
+              .card-flip-inner
+                .card-flip-front
+                  img(src='../img/portfolio/07.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-flip-back
+                  .card-body
+                    .card-body-inner
+                      h3.h5.card-title.mb-2 Smart Toothbrush
+                      p.fs-sm.text-muted in Product Design
+                      span.btn.btn-primary.btn-sm View project
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Flip hover effect --&gt;
+                &lt;div class=&quot;card card-flip&quot;&gt;
+                  &lt;div class=&quot;card-flip-inner&quot;&gt;
+                    &lt;div class=&quot;card-flip-front&quot;&gt;
+                      &lt;img class=&quot;card-img&quot; src=&quot;path-to-image&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;a class=&quot;card-flip-back&quot; href=&quot;#&quot;&gt;
+                      &lt;div class=&quot;card-body&quot;&gt;
+                        &lt;div class=&quot;card-body-inner&quot;&gt;
+                          &lt;h3 class=&quot;h5 card-title mb-2&quot;&gt;Smart Toothbrush&lt;/h3&gt;
+                          &lt;p class=&quot;fs-sm text-muted&quot;&gt;in Product Design&lt;/p&gt;
+                          &lt;span class=&quot;btn btn-primary btn-sm&quot;&gt;View project&lt;/span&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Flip hover effect
+                .card.card-flip
+                  .card-flip-inner
+                    .card-flip-front
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Portfolio thumb&quot;).card-img
+                    a(href=&quot;#&quot;).card-flip-back
+                      .card-body
+                        .card-body-inner
+                          h3.h5.card-title.mb-2 Smart Toothbrush
+                          p.fs-sm.text-muted in Product Design
+                          span.btn.btn-primary.btn-sm View project
+
+  // Hover effect: Slide up
+  section#portfolio-slide-hover.pb-5.mb-md-2
+    h2.h4.mb-3 Hover effect: Slide up
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .card.card-curved-body.shadow.card-slide(style='max-width: 285px;')
+              .card-slide-inner
+                img(src='../img/portfolio/12.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Cosmetics Packaging
+                  p.fs-sm.text-muted.mb-1 in Package Design
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Slide up hover effect --&gt;
+                &lt;div class=&quot;card card-curved-body shadow card-slide&quot;&gt;
+                  &lt;div class=&quot;card-slide-inner&quot;&gt;
+                    &lt;img class=&quot;card-img&quot; src=&quot;path-to-image&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                    &lt;a class=&quot;card-body text-center&quot; href=&quot;#&quot;&gt;
+                      &lt;h3 class=&quot;h5 nav-heading mt-1 mb-2&quot;&gt;Cosmetics Packaging&lt;/h3&gt;
+                      &lt;p class=&quot;fs-sm text-muted mb-1&quot;&gt;in Package Design&lt;/p&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Slide up hover effect
+                .card.card-curved-body.shadow.card-slide
+                  .card-slide-inner
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Portfolio thumb&quot;).card-img
+                    a(href=&quot;#&quot;).card-body.text-center
+                      h3.h5.nav-heading.mt-1.mb-2 Cosmetics Packaging
+                      p.fs-sm.text-muted.mb-1 in Package Design
+
+  // Masonry grid with filters
+  section#portfolio-filter-grid.pb-5.mb-md-2
+    h2.h4.mb-3 Masonry grid with filters
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content.py-1
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .masonry-filterable
+              ul.masonry-filters.nav.nav-tabs.justify-content-center.mt-2.pb-4
+                li.nav-item
+                  a(href='#' data-group='all').nav-link.active All
+                li.nav-item
+                  a(href='#' data-group='branding').nav-link Branding
+                li.nav-item
+                  a(href='#' data-group='stationery').nav-link Stationery
+                li.nav-item
+                  a(href='#' data-group='packaging').nav-link Packaging
+                li.nav-item
+                  a(href='#' data-group='3d').nav-link 3D modelling
+              .masonry-grid(data-columns='3' style='max-width: 945px;')
+                .masonry-grid-item(data-groups='["packaging"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/08.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Hand Cream Bottle
+                            p.fs-sm.text-muted in Package Design
+                            span.btn.btn-primary.btn-sm View project
+                .masonry-grid-item(data-groups='["3d"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/09.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Clay Glass Render
+                            p.fs-sm.text-muted in 3D Modelling
+                            span.btn.btn-primary.btn-sm View project
+                .masonry-grid-item(data-groups='["stationery", "branding"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/10.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Promo Flyer Design
+                            p.fs-sm.text-muted in Stationery
+                            span.btn.btn-primary.btn-sm View project
+                .masonry-grid-item(data-groups='["packaging"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/12.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Cosmetics Packaging
+                            p.fs-sm.text-muted in Package Design
+                            span.btn.btn-primary.btn-sm View project
+                .masonry-grid-item(data-groups='["branding"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/14.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Package Branding
+                            p.fs-sm.text-muted in Identity Design
+                            span.btn.btn-primary.btn-sm View project
+                .masonry-grid-item(data-groups='["branding"]')
+                  .card.card-flip
+                    .card-flip-inner
+                      .card-flip-front
+                        img(src='../img/portfolio/13.jpg' alt='Portfolio thumb').card-img
+                      a(href='#').card-flip-back
+                        .card-body
+                          .card-body-inner
+                            h3.h5.card-title.mb-2 Company Branding
+                            p.fs-sm.text-muted in Identity Design
+                            span.btn.btn-primary.btn-sm View project
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Masonry grid with filters --&gt;
+                &lt;div class=&quot;masonry-filterable&quot;&gt;
+
+                  &lt;!-- Filters --&gt;
+                  &lt;ul class=&quot;masonry-filters nav nav-tabs justify-content-center pb-4&quot;&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                      &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot; data-group=&quot;all&quot;&gt;All&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-group=&quot;branding&quot;&gt;Branding&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-group=&quot;stationery&quot;&gt;Stationery&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-group=&quot;packaging&quot;&gt;Packaging&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;nav-item&quot;&gt;
+                      &lt;a class=&quot;nav-link&quot; href=&quot;#&quot; data-group=&quot;3d&quot;&gt;3D modelling&lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+
+                  &lt;!-- Grid --&gt;
+                  &lt;div class=&quot;masonry-grid&quot; data-columns=&quot;3&quot;&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;masonry-grid-item&quot; data-groups='[&quot;packaging&quot;]'&gt;
+                      &lt;div class=&quot;card card-flip&quot;&gt;
+                        &lt;div class=&quot;card-flip-inner&quot;&gt;
+                          &lt;div class=&quot;card-flip-front&quot;&gt;
+                            &lt;img class=&quot;card-img&quot; src=&quot;path-to-image&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                          &lt;/div&gt;
+                          &lt;a class=&quot;card-flip-back&quot; href=&quot;#&quot;&gt;
+                            &lt;div class=&quot;card-body&quot;&gt;
+                              &lt;div class=&quot;card-body-inner&quot;&gt;
+                                &lt;h3 class=&quot;h5 card-title mb-2&quot;&gt;Hand Cream Bottle&lt;/h3&gt;
+                                &lt;p class=&quot;fs-sm text-muted&quot;&gt;in Package Design&lt;/p&gt;
+                                &lt;span class=&quot;btn btn-primary btn-sm&quot;&gt;View project&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;masonry-grid-item&quot; data-groups='[&quot;3d&quot;]'&gt;
+                      &lt;div class=&quot;card card-flip&quot;&gt;
+                        &lt;div class=&quot;card-flip-inner&quot;&gt;
+                          &lt;div class=&quot;card-flip-front&quot;&gt;
+                            &lt;img class=&quot;card-img&quot; src=&quot;path-to-image&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                          &lt;/div&gt;
+                          &lt;a class=&quot;card-flip-back&quot; href=&quot;#&quot;&gt;
+                            &lt;div class=&quot;card-body&quot;&gt;
+                              &lt;div class=&quot;card-body-inner&quot;&gt;
+                                &lt;h3 class=&quot;h5 card-title mb-2&quot;&gt;Clay Glass Render&lt;/h3&gt;
+                                &lt;p class=&quot;fs-sm text-muted&quot;&gt;in 3D Modelling&lt;/p&gt;
+                                &lt;span class=&quot;btn btn-primary btn-sm&quot;&gt;View project&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;masonry-grid-item&quot; data-groups='[&quot;stationery&quot;, &quot;branding&quot;]'&gt;
+                      &lt;div class=&quot;card card-flip&quot;&gt;
+                        &lt;div class=&quot;card-flip-inner&quot;&gt;
+                          &lt;div class=&quot;card-flip-front&quot;&gt;
+                            &lt;img class=&quot;card-img&quot; src=&quot;path-to-image&quot; alt=&quot;Portfolio thumb&quot;/&gt;
+                          &lt;/div&gt;
+                          &lt;a class=&quot;card-flip-back&quot; href=&quot;#&quot;&gt;
+                            &lt;div class=&quot;card-body&quot;&gt;
+                              &lt;div class=&quot;card-body-inner&quot;&gt;
+                                &lt;h3 class=&quot;h5 card-title mb-2&quot;&gt;Promo Flyer Design&lt;/h3&gt;
+                                &lt;p class=&quot;fs-sm text-muted&quot;&gt;in Stationery&lt;/p&gt;
+                                &lt;span class=&quot;btn btn-primary btn-sm&quot;&gt;View project&lt;/span&gt;
+                              &lt;/div&gt;
+                            &lt;/div&gt;
+                          &lt;/a&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- More items... --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Masonry grid with filters
+                .masonry-filterable
+
+                  // Filters
+                  ul.masonry-filters.nav.nav-tabs.justify-content-center.pb-4
+                    li.nav-item
+                      a(href=&quot;#&quot;, data-group=&quot;all&quot;).nav-link.active
+                        | All
+                    li.nav-item
+                      a(href=&quot;#&quot;, data-group=&quot;branding&quot;).nav-link
+                        | Branding
+                    li.nav-item
+                      a(href=&quot;#&quot;, data-group=&quot;stationery&quot;).nav-link
+                        | Stationery
+                    li.nav-item
+                      a(href=&quot;#&quot;, data-group=&quot;packaging&quot;).nav-link
+                        | Packaging
+                    li.nav-item
+                      a(href=&quot;#&quot;, data-group=&quot;3d&quot;).nav-link
+                        | 3D modelling
+
+                  // Grid
+                  .masonry-grid(data-columns='3')
+
+                    // Item
+                    .masonry-grid-item(data-groups='[&quot;packaging&quot;]')
+                      .card.card-flip
+                        .card-flip-inner
+                          .card-flip-front
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Portfolio thumb&quot;).card-img
+                          a(href=&quot;#&quot;).card-flip-back
+                            .card-body
+                              .card-body-inner
+                                h3.h5.card-title.mb-2 Hand Cream Bottle
+                                p.fs-sm.text-muted in Package Design
+                                span.btn.btn-primary.btn-sm View project
+
+                    // Item
+                    .masonry-grid-item(data-groups='[&quot;3d&quot;]')
+                      .card.card-flip
+                        .card-flip-inner
+                          .card-flip-front
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Portfolio thumb&quot;).card-img
+                          a(href=&quot;#&quot;).card-flip-back
+                            .card-body
+                              .card-body-inner
+                                h3.h5.card-title.mb-2 Clay Glass Render
+                                p.fs-sm.text-muted in 3D Modelling
+                                span.btn.btn-primary.btn-sm View project
+
+                    // Item
+                    .masonry-grid-item(data-groups='[&quot;stationery&quot;, &quot;branding&quot;]')
+                      .card.card-flip
+                        .card-flip-inner
+                          .card-flip-front
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Portfolio thumb&quot;).card-img
+                          a(href=&quot;#&quot;).card-flip-back
+                            .card-body
+                              .card-body-inner
+                                h3.h5.card-title.mb-2 Promo Flyer Design
+                                p.fs-sm.text-muted in Stationery
+                                span.btn.btn-primary.btn-sm View project
+
+                    // More items...

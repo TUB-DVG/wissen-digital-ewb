@@ -1,0 +1,86 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Help Single Topic'
+  - var isSidebar = true
+
+//- Navbar
+block navbar
+  include partials/navbar-solid-shadow
+
+//- Page Content
+block content
+  .sidebar-enabled
+    .container
+      .row
+
+        // Sidebar
+        .sidebar.col-lg-3.pt-lg-5
+          #help-sidebar.offcanvas.offcanvas-collapse
+            .offcanvas-header.navbar-shadow.mb-3
+              h5.mt-1.mb-0 Sidebar
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+            .offcanvas-body.pt-3.pt-lg-0.ps-lg-0.pe-lg-2.pe-xl-4(data-simplebar)
+              //- partials/sidebar-help.pug
+              include partials/sidebar-help
+
+
+        .col-lg-9.content.py-4
+          +breadcrumb([{'title': 'Help center', 'link': 'help-topics.html'}, {'title': 'Single topic'}]).py-1.my-2
+
+          // Page title
+          .d-md-flex.justify-content-between.pb-2.mb-4
+            h1.me-3(style='max-width: 38rem;') What are the benefits of creating account?
+            span.fs-sm.text-muted.text-md-nowrap.pt-2 Posted on May 13, 2020
+          
+          // Content
+          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+          p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem.
+          .row.align-items-center.pt-4.pb-md-3
+            .col-md-7.mb-4
+              img(src='img/pages/help-center/help-single-img.jpg' alt='Image').d-block.rounded-3
+            .col-md-5.pt-2.pt-md-0.mb-4
+              h2.h5.mb-3 Pros of having an account
+              ul.list-unstyled.mb-0
+                li.d-flex.mb-2
+                  i.ai-check-circle.fs-lg.text-success.mt-1.me-2
+                  span Excepteur sint occaecat cupidatat
+                li.d-flex.mb-2
+                  i.ai-check-circle.fs-lg.text-success.mt-1.me-2
+                  span Neque porro quisquam est, qui dolorem
+                li.d-flex.mb-2
+                  i.ai-check-circle.fs-lg.text-success.mt-1.me-2
+                  span Sed ut perspiciatis unde omnis
+                li.d-flex.mb-2
+                  i.ai-check-circle.fs-lg.text-success.mt-1.me-2
+                  span At vero eos et accusamus et iusto
+                li.d-flex.mb-2
+                  i.ai-check-circle.fs-lg.text-success.mt-1.me-2
+                  span Nemo enim ipsam voluptatem
+          p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+
+          // Rate article
+          .d-flex.align-items-center.border-top.border-bottom.mt-5.py-4
+            h3.h5.my-2.pe-sm-2.me-4 Did you find this article helpful?
+            .text-nowrap
+              button(type='button').btn-like 28
+              button(type='button').btn-dislike 3
+
+          // Submit request
+          .text-center.pt-6.pb-5.pb-md-6
+            h2.h3.pb-2.mb-4 Haven't found the answer? We can help.
+            i.ai-life-buoy.d-block.h2.pb-2.mb-4.text-primary
+            a(href='help-submit-request.html').btn.btn-primary.mb-4 Submit a request
+            p.fs-sm.mb-0 Contact us and we’ll get back to you as soon as possible.
+
+
+//- Footer
+block footer
+  include partials/footer-default
+
+  // Sidebar toggle button
+  button(type='button' data-bs-toggle='offcanvas' data-bs-target='#help-sidebar').btn.btn-primary.btn-sm.sidebar-toggle
+    i.ai-sidebar.fs-base.me-2
+    | Sidebar

@@ -1,0 +1,66 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'Coming Soon - Illustration'
+  - var isPageFullHeight = true
+
+
+//- Navbar
+block navbar
+
+  // Navbar
+  header.header.navbar
+    .container.pt-2.px-0.px-xl-3
+      a(href='index.html').navbar-brand.mx-auto.ms-md-0
+        img(src='img/logo/logo-dark.png' alt='Around' width='153')
+        
+
+//- Page Content
+block content
+  .container.d-flex.flex-column.justify-content-center.py-5(style='flex: 1 0 auto;')
+    .row.align-items-center.pb-2
+      .col-xl-5.col-md-6.text-center.text-md-start.mb-5.mb-md-0
+        h1.mb-3 Coming soon...
+        p.mb-grid-gutter We are working hard to deliver best possible experience. The website is currently under construction. <u>It goes live in:</u>
+        .countdown.h2.justify-content-center.justify-content-md-start(data-countdown='10/01/2021 07:00:00 PM')
+          .countdown-days.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.text-body.fs-sm Days
+          .countdown-hours.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.text-body.fs-sm Hours
+          .countdown-minutes.me-grid-gutter
+            span.countdown-value 0
+            span.countdown-label.text-body.fs-sm Mins
+          .countdown-seconds
+            span.countdown-value 0
+            span.countdown-label.text-body.fs-sm Secs
+        p.pt-4 Let me know when your website is live.
+        form(novalidate).d-flex.align-items-start.needs-validation
+          .me-2.me-sm-3.w-100
+            input(type='email' placeholder='Email address' required).form-control
+            .invalid-tooltip Please provide a valid email address!
+          button(type='submit').btn.btn-primary Notify Me
+      .col-md-6.offset-xl-1
+        img(src='img/pages/coming-soon/illustration.svg' alt='Illustration').d-block.mx-auto
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.container.text-center.pb-4
+    a(href='tel:+15262200459').nav-link-style.mb-2 + 1 526 220 0459
+    br
+    a(href='mailto:contact@example.com').nav-link-style.mb-2 contact@example.com
+    .pt-4.pb-3
+      a(href='#').btn-social.bs-outline.bs-facebook.mx-2.mb-2
+        i.ai-facebook
+      a(href='#').btn-social.bs-outline.bs-twitter.mx-2.mb-2
+        i.ai-twitter
+      a(href='#').btn-social.bs-outline.bs-instagram.mx-2.mb-2
+        i.ai-instagram
+      a(href='#').btn-social.bs-outline.bs-google.mx-2.mb-2
+        i.ai-google

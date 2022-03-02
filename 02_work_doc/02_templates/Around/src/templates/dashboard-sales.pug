@@ -1,0 +1,114 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['chartist/dist/chartist.min.css']
+  - var vendorScripts = ['chartist/dist/chartist.min.js']
+  - var parentMenu = 'Account'
+  - var pageTitle = 'Dashboard - Sales'
+  - var bodyBgColor = '#f7f7fc'
+
+//- Navbar
+block navbar
+  include partials/navbar-dashboard
+
+//- Page Content
+block content
+
+  // Slanted background
+  .position-relative.bg-gradient(style='height: 480px;')
+    .shape.shape-bottom.shape-slant.bg-secondary.d-none.d-lg-block
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 260')
+        polygon(fill='currentColor' points='0,257 0,260 3000,260 3000,0')
+
+
+  // Page content
+  .container.position-relative.zindex-5.pb-4.mb-md-3(style='margin-top: -350px;')
+    .row
+
+      // Sidebar
+      .col-lg-4.mb-4.mb-lg-0
+        //- Include sidebar-account.pug partial
+        include partials/sidebar-account
+
+
+      // Content
+      .col-lg-8
+        .d-flex.flex-column.h-100.bg-light.rounded-3.shadow-lg.p-4
+          .pt-2.p-md-3
+
+            // Title
+            h1.h3.mb-3.pb-2.text-center.text-sm-start Your sales / earnings
+            
+            // Stats
+            .row.mx-n2.py-2
+              .col-md-4.col-sm-6.px-2.mb-3
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.fw-medium.text-body Earnings (before taxes)
+                  p.h2.mb-2 $842.00
+                  p.fs-ms.text-muted.mb-0 Sales 8/1/2019 - 8/15/2019
+              .col-md-4.col-sm-6.px-2.mb-3
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.fw-medium.text-body Your balance
+                  p.h2.mb-2 $735.00
+                  p.fs-ms.text-muted.mb-0 To be paid on 8/15/2019
+              .col-md-4.col-sm-12.px-2.mb-3
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.fw-medium.text-body Lifetime earnings
+                  p.h2.mb-2 $9,156.74
+                  p.fs-ms.text-muted.mb-0 Based on list price
+            
+            // Charts
+            .row.mx-n2.pt-2
+              .col-lg-8.px-2
+                .card.mb-4
+                  .card-body
+                    h3.fs-sm.pb-3.mb-3.border-bottom
+                      | Sales value, USD 
+                      span.fw-normal.fs-xs.text-muted (Past 2 weeks)
+                    .ct-chart.ct-perfect-fourth(data-line-chart='{"labels": ["22 Jul", "", "24 Jul", "", "26 Jul", "", "28 Jul", "", "30 Jul", "", "01 Aug", "", "03 Aug", "", "05 Aug"], "series": [[0, 100, 200, 150, 50, 0, 0, 50, 0, 50, 50, 50, 0, 100, 0]]}')
+                .card.mb-4.mb-lg-2
+                  .card-body
+                    h3.fs-sm.pb-3.mb-3.border-bottom
+                      | Order count 
+                      span.fw-normal.fs-xs.text-muted (Past 2 weeks)
+                    .ct-chart.ct-perfect-fourth(data-line-chart='{"labels": ["22 Jul", "", "24 Jul", "", "26 Jul", "", "28 Jul", "", "30 Jul", "", "01 Aug", "", "03 Aug", "", "05 Aug"], "series": [[0, 2, 4, 3, 1, 0, 0, 1, 0, 1, 1, 1, 0, 2, 0]]}' data-options='{"axisY": {"onlyInteger": true}}')
+                    
+              .col-lg-4.px-2
+                .card
+                  .card-body
+                    h3.fs-sm.pb-3.mb-0.border-bottom Your top countries
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/usa.png' alt='USA' width='20')
+                        .ps-1 United States
+                      span $352
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/sweden.png' alt='Sweden' width='20')
+                        .ps-1 Sweden
+                      span $218
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/india.png' alt='Indi' width='20')
+                        .ps-1 India
+                      span $97
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/france.png' alt='France' width='20')
+                        .ps-1 France
+                      span $40
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/argentina.png' alt='Argentina' width='20')
+                        .ps-1 Argentina
+                      span $16
+                    .d-flex.justify-content-between.align-items-center.fs-sm.pt-2
+                      .d-flex.align-items-start.py-1
+                        img(src='img/dashboard/flags/south-africa.png' alt='South Africa' width='20')
+                        .ps-1 South Africa
+                      span $14
+
+//- Footer
+block footer
+  include partials/footer-simple

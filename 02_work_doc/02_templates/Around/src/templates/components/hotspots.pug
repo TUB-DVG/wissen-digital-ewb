@@ -1,0 +1,242 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Hotspots'
+  - var pageSubtitle = 'Create an image with interactive hotspots that show hidden description on hover.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Basic example', 'link': '#hotspots-basic'}, {'title': 'Combine with color switcher', 'link': '#hotspots-color-switcher'}]
+  
+//- Page Content
+block content
+
+  // Basic example
+  section#hotspots-basic.pb-5.mb-md-2
+    h2.h4.mb-3 Basic example
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            #hotspots-container-1.hotspots(style='max-width: 45rem;')
+              img(src='../img/components/hotspots/image.jpg' alt='Image with hotspots').rounded-3
+              span(style='top: 56%; right: 34%;' data-bs-container='#hotspots-container-1' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' title='Soft foam base' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+              span(style='top: 15%; left: 40%;' data-bs-container='#hotspots-container-1' data-bs-toggle='popover' data-bs-placement='bottom' data-bs-trigger='hover' title='Durable materials' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+              span(style='top: 56%; left: 21%;' data-bs-container='#hotspots-container-1' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' title='Top-notch ergonomics' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Hotspots --&gt;
+                &lt;div id=&quot;hotspots-container-1&quot; class=&quot;hotspots&quot;&gt;
+
+                  &lt;!-- Image --&gt;
+                  &lt;img src=&quot;path-to-image&quot; alt=&quot;Image with hotspots&quot;/&gt;
+
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 56%; right: 34%;&quot; data-bs-container=&quot;#hotspots-container-1&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;top&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Soft foam base&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 15%; left: 40%;&quot; data-bs-container=&quot;#hotspots-container-1&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;bottom&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Durable materials&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 56%; left: 21%;&quot; data-bs-container=&quot;#hotspots-container-1&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;top&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Top-notch ergonomics&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Hotspots
+                #hotspots-container-1.hotspots
+
+                  // Image
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Image with hotspots&quot;).rounded-3
+
+                  // Hotspot
+                  span(style=&quot;top: 56%; right: 34%;&quot;, data-bs-container=&quot;#hotspots-container-1&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;top&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Soft foam base&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                  // Hotspot
+                  span(style=&quot;top: 15%; left: 40%;&quot;, data-bs-container=&quot;#hotspots-container-1&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;bottom&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Durable materials&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                  // Hotspot
+                  span(style=&quot;top: 56%; left: 21%;&quot;, data-bs-container=&quot;#hotspots-container-1&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;top&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Top-notch ergonomics&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+  // Combine with color switcher
+  section#hotspots-color-switcher.pb-5.mb-md-2
+    h2.h4.mb-3 Combine with color switcher
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .bg-secondary.px-4.py-6.m-n4
+              #hotspots-container-2.hotspots.mx-auto(style='max-width: 45rem;')
+                #pink.radio-tab-pane.active(role='tabpanel')
+                  img(src='../img/demo/gadget-landing/hotspots/01_pink.png' alt='Image')
+                #blue.radio-tab-pane(role='tabpanel')
+                  img(src='../img/demo/gadget-landing/hotspots/02_blue.png' alt='Image')
+                #orange.radio-tab-pane(role='tabpanel')
+                  img(src='../img/demo/gadget-landing/hotspots/03_orange.png' alt='Image')
+                #green.radio-tab-pane(role='tabpanel')
+                  img(src='../img/demo/gadget-landing/hotspots/04_green.png' alt='Image')
+                span(style='top: 58%; right: 50%;' data-bs-container='#hotspots-container-2' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' title='Soft anti-slip grip' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+                span(style='top: 22%; right: 38%;' data-bs-container='#hotspots-container-2' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' title='Power button with 3 modes' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+                span(style='top: 17%; right: 17%;' data-bs-container='#hotspots-container-2' data-bs-toggle='popover' data-bs-placement='bottom' data-bs-trigger='hover' title='Interchangeable head' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+                span(style='top: 77%; left: 8%;' data-bs-container='#hotspots-container-2' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' title='Powerful Li-ion battery' data-bs-content='Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.').hotspot
+              .text-center.pt-grid-gutter
+                .d-inline-flex.bg-light.rounded.py-2.px-3
+                  .form-check.form-option.form-option-color.form-check-inline.mx-1.mb-n2
+                    input(type='radio' name='color' id='c-pink' value='Pink' checked).form-check-input
+                    label(for='c-pink' data-bs-toggle='radioTab' data-bs-target='#pink' data-bs-parent='#hotspots-container-2').form-option-label.rounded-circle
+                      span(style='background-color: #ff3dbe;').form-option-color-indicator.rounded-circle
+                  .form-check.form-option.form-option-color.form-check-inline.mx-1.mb-n2
+                    input(type='radio' name='color' id='c-blue' value='Blue').form-check-input
+                    label(for='c-blue' data-bs-toggle='radioTab' data-bs-target='#blue' data-bs-parent='#hotspots-container-2').form-option-label.rounded-circle
+                      span(style='background-color: #00a1f0;').form-option-color-indicator.rounded-circle
+                  .form-check.form-option.form-option-color.form-check-inline.mx-1.mb-n2
+                    input(type='radio' name='color' id='c-orange' value='Orange').form-check-input
+                    label(for='c-orange' data-bs-toggle='radioTab' data-bs-target='#orange' data-bs-parent='#hotspots-container-2').form-option-label.rounded-circle
+                      span(style='background-color: #fa6000;').form-option-color-indicator.rounded-circle
+                  .form-check.form-option.form-option-color.form-check-inline.mx-1.mb-n2
+                    input(type='radio' name='color' id='c-green' value='Green').form-check-input
+                    label(for='c-green' data-bs-toggle='radioTab' data-bs-target='#green' data-bs-parent='#hotspots-container-2').form-option-label.rounded-circle
+                      span(style='background-color: #00b22c;').form-option-color-indicator.rounded-circle
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Combine hotspots with color switcher --&gt;
+                &lt;div class=&quot;hotspots&quot; id=&quot;hotspots-container-2&quot;&gt;
+
+                  &lt;!-- Image (radio) tabs --&gt;
+                  &lt;div class=&quot;radio-tab-pane active&quot; id=&quot;pink&quot; role=&quot;tabpanel&quot;&gt;
+                    &lt;img src=&quot;path-to-first-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;radio-tab-pane&quot; id=&quot;blue&quot; role=&quot;tabpanel&quot;&gt;
+                    &lt;img src=&quot;.path-to-second-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;radio-tab-pane&quot; id=&quot;orange&quot; role=&quot;tabpanel&quot;&gt;
+                    &lt;img src=&quot;path-to-third-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;radio-tab-pane&quot; id=&quot;green&quot; role=&quot;tabpanel&quot;&gt;
+                    &lt;img src=&quot;path-to-fourth-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;/div&gt;
+                  
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 58%; right: 50%;&quot; data-bs-container=&quot;#hotspots-container-2&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;top&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Soft anti-slip grip&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+                  
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 22%; right: 38%;&quot; data-bs-container=&quot;#hotspots-container-2&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;top&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Power button with 3 modes&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+                  
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 17%; right: 17%;&quot; data-bs-container=&quot;#hotspots-container-2&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;bottom&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Interchangeable head&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+                  
+                  &lt;!-- Hotspot --&gt;
+                  &lt;span class=&quot;hotspot&quot; style=&quot;top: 77%; left: 8%;&quot; data-bs-container=&quot;#hotspots-container-2&quot; data-bs-toggle=&quot;popover&quot; data-bs-placement=&quot;top&quot; data-bs-trigger=&quot;hover&quot; title=&quot;Powerful Li-ion battery&quot; data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;&gt;&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Color radio buttons --&gt;
+                &lt;div class=&quot;text-center pt-grid-gutter&quot;&gt;
+                  &lt;div class=&quot;d-inline-flex bg-light rounded py-2 px-3&quot;&gt;
+
+                    &lt;!-- Radio --&gt;
+                    &lt;div class=&quot;form-check form-option form-option-color form-check-inline mx-1&quot;&gt;
+                      &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;color&quot; id=&quot;c-pink&quot; value=&quot;Pink&quot; checked&gt;
+                      &lt;label class=&quot;form-option-label rounded-circle&quot; for=&quot;c-pink&quot; data-bs-toggle=&quot;radioTab&quot; data-bs-target=&quot;#pink&quot; data-bs-parent=&quot;#hotspots-container-2&quot;&gt;
+                        &lt;span class=&quot;form-option-color-indicator rounded-circle&quot; style=&quot;background-color: #ff3dbe;&quot;&gt;&lt;/span&gt;
+                      &lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Radio --&gt;
+                    &lt;div class=&quot;form-check form-option form-option-color form-check-inline mx-1&quot;&gt;
+                      &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;color&quot; id=&quot;c-blue&quot; value=&quot;Blue&quot;&gt;
+                      &lt;label class=&quot;form-option-label rounded-circle&quot; for=&quot;c-blue&quot; data-bs-toggle=&quot;radioTab&quot; data-bs-target=&quot;#blue&quot; data-bs-parent=&quot;#hotspots-container-2&quot;&gt;
+                        &lt;span class=&quot;form-option-color-indicator rounded-circle&quot; style=&quot;background-color: #00a1f0;&quot;&gt;&lt;/span&gt;
+                      &lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Radio --&gt;
+                    &lt;div class=&quot;form-check form-option form-option-color form-check-inline mx-1&quot;&gt;
+                      &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;color&quot; id=&quot;c-orange&quot; value=&quot;Orange&quot;&gt;
+                      &lt;label class=&quot;form-option-label rounded-circle&quot; for=&quot;c-orange&quot; data-bs-toggle=&quot;radioTab&quot; data-bs-target=&quot;#orange&quot; data-bs-parent=&quot;#hotspots-container-2&quot;&gt;
+                        &lt;span class=&quot;form-option-color-indicator rounded-circle&quot; style=&quot;background-color: #fa6000;&quot;&gt;&lt;/span&gt;
+                      &lt;/label&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Radio --&gt;
+                    &lt;div class=&quot;form-check form-option form-option-color form-check-inline mx-1&quot;&gt;
+                      &lt;input class=&quot;form-check-input&quot; type=&quot;radio&quot; name=&quot;color&quot; id=&quot;c-green&quot; value=&quot;Green&quot;&gt;
+                      &lt;label class=&quot;form-option-label rounded-circle&quot; for=&quot;c-green&quot; data-bs-toggle=&quot;radioTab&quot; data-bs-target=&quot;#green&quot; data-bs-parent=&quot;#hotspots-container-2&quot;&gt;
+                        &lt;span class=&quot;form-option-color-indicator rounded-circle&quot; style=&quot;background-color: #00b22c;&quot;&gt;&lt;/span&gt;
+                      &lt;/label&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Combine hotspots with color switcher
+                #hotspots-container-2.hotspots
+
+                  // Image (radio) tabs
+                  #pink.radio-tab-pane.active(role=&quot;tabpanel&quot;)
+                    img(src=&quot;path-to-first-image&quot;, alt=&quot;Image&quot;)
+                  #blue.radio-tab-pane(role=&quot;tabpanel&quot;)
+                    img(src=&quot;path-to-second-image&quot;, alt=&quot;Image&quot;)
+                  #orange.radio-tab-pane(role=&quot;tabpanel&quot;)
+                    img(src=&quot;path-to-third-image&quot;, alt=&quot;Image&quot;)
+                  #green.radio-tab-pane(role=&quot;tabpanel&quot;)
+                    img(src=&quot;path-to-fourth-image&quot;, alt=&quot;Image&quot;)
+                  
+                  // Hotspot
+                  span(style=&quot;top: 58%; right: 50%;&quot;, data-bs-container=&quot;#hotspots-container-2&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;top&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Soft anti-slip grip&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                  // Hotspot
+                  span(style=&quot;top: 22%; right: 38%;&quot;, data-bs-container=&quot;#hotspots-container-2&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;top&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Power button with 3 modes&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                  // Hotspot
+                  span(style=&quot;top: 17%; right: 17%;&quot;, data-bs-container=&quot;#hotspots-container-2&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;bottom&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Interchangeable head&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                  // Hotspot
+                  span(style=&quot;top: 77%; left: 8%;&quot;, data-bs-container=&quot;#hotspots-container-2&quot;, data-bs-toggle=&quot;popover&quot;, data-bs-placement=&quot;top&quot;, data-bs-trigger=&quot;hover&quot;, title=&quot;Powerful Li-ion battery&quot;, data-bs-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus ornare sem.&quot;).hotspot
+
+                // Color radio buttons
+                .text-center.pt-grid-gutter
+                  .d-inline-flex.bg-light.rounded.py-2.px-3
+
+                    // Radio
+                    .form-check.form-option.form-option-color.form-check-inline.mx-1
+                      input(type=&quot;radio&quot;, name=&quot;color&quot;, id=&quot;c-pink&quot;, value=&quot;Pink&quot;, checked).
+                      label(for=&quot;c-pink&quot;, data-bs-toggle=&quot;radioTab&quot;, data-bs-target=&quot;#pink&quot;, data-bs-parent=&quot;#hotspots-container-2&quot;).form-option-label.rounded-circle
+                        span(style=&quot;background-color: #ff3dbe;&quot;).form-option-color-indicator.rounded-circle
+                    
+                    // Radio
+                    .form-check.form-option.form-option-color.form-check-inline.mx-1
+                      input(type=&quot;radio&quot;, name=&quot;color&quot;, id=&quot;c-blue&quot;, value=&quot;Blue&quot;)
+                      label(for=&quot;c-blue&quot;, data-bs-toggle=&quot;radioTab&quot;, data-bs-target=&quot;#blue&quot;, data-bs-parent=&quot;#hotspots-container-2&quot;).form-option-label.rounded-circle
+                        span(style=&quot;background-color: #00a1f0;&quot;).form-option-color-indicator.rounded-circle
+                    
+                    // Radio
+                    .form-check.form-option.form-option-color.form-check-inline.mx-1
+                      input(type=&quot;radio&quot;, name=&quot;color&quot;, id=&quot;c-orange&quot;, value=&quot;Orange&quot;)
+                      label(for=&quot;c-orange&quot;, data-bs-toggle=&quot;radioTab&quot;, data-bs-target=&quot;#orange&quot;, data-bs-parent=&quot;#hotspots-container-2&quot;).form-option-label.rounded-circle
+                        span(style=&quot;background-color: #fa6000;&quot;).form-option-color-indicator.rounded-circle
+
+                    // Radio
+                    .form-check.form-option.form-option-color.form-check-inline.mx-1
+                      input(type=&quot;radio&quot;, name=&quot;color&quot;, id=&quot;c-green&quot;, value=&quot;Green&quot;)
+                      label(for=&quot;c-green&quot;, data-bs-toggle=&quot;radioTab&quot;, data-bs-target=&quot;#green&quot;, data-bs-parent=&quot;#hotspots-container-2&quot;).form-option-label.rounded-circle
+                        span(style=&quot;background-color: #00b22c;&quot;).form-option-color-indicator.rounded-circle

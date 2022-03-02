@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Around | Blog components</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="../safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/themes/prism.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/toolbar/prism-toolbar.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/tiny-slider/dist/tiny-slider.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+  </head>
+  <!-- Body-->
+  <body>
+    <main class="container-fluid">
+      <!-- Main content-->
+      <section class="offcanvas-enabled-start row pb-3 pb-md-4">
+        <div class="col-xxl-9">
+          <!-- Navbar-->
+          <header class="navbar navbar-expand-lg navbar-light fixed-top navbar-shadow bg-light px-3 px-lg-4" data-scroll-header data-fixed-element><a class="navbar-brand d-lg-none" href="typography.html" style="min-width: 7rem;"><img src="../img/logo/logo-icon.png" alt="Around" width="58"></a>
+            <ul class="navbar-nav ms-auto d-none d-lg-flex">
+              <li class="nav-item"><a class="nav-link" href="../index.html"><i class="ai-eye align-middle mt-n1 me-2"></i>Live preview</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="../docs/dev-setup.html"><i class="ai-file-text align-middle mt-n1 me-2"></i>Documentation</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+            </ul>
+            <button class="navbar-toggler d-block d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#componentsNav"><span class="navbar-toggler-icon"></span></button><a class="btn btn-primary btn-shadow ms-3" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-shopping-cart me-2 d-none d-sm-inline-block"></i>Buy now</a>
+          </header>
+          <!-- Side navigation (Off-canvas)-->
+          <aside class="offcanvas offcanvas-expand bg-dark" id="componentsNav">
+            <div class="offcanvas-header bg-darker d-none d-lg-block py-2"><a class="navbar-brand py-1" href="typography.html"><img src="../img/logo/logo-light.png" alt="Around" width="153"></a><span class="badge bg-danger">UI Kit</span></div>
+            <div class="offcanvas-header bg-darker d-flex d-lg-none align-items-center">
+              <div class="d-flex align-items-center mt-1">
+                <h5 class="text-light mb-0 me-3">Menu</h5><span class="badge bg-danger">UI Kit</span>
+              </div>
+              <button class="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light"><a class="btn btn-outline-light w-100 btn-sm me-2" href="../index.html"><i class="ai-eye me-2"></i>Preview</a><a class="btn btn-outline-light w-100 btn-sm mt-0" href="../docs/dev-setup.html"><i class="ai-file-text me-2"></i>Docs</a></div>
+            <div class="offcanvas-body pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
+              <h6 class="text-light pt-2 pb-2 border-bottom border-light">Content</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="typography.html">Typography</a><a class="nav-link fs-sm" href="icon-font.html">Icon font</a><a class="nav-link fs-sm" href="code.html">Code</a><a class="nav-link fs-sm" href="images.html">Images &amp; figures</a><a class="nav-link fs-sm" href="tables.html">Tables</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Components</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="accordion.html">Accordion</a><a class="nav-link fs-sm" href="alerts.html">Alerts</a><a class="nav-link fs-sm" href="badge.html">Badges</a><a class="nav-link fs-sm active" href="blog-components.html">Blog components</a><a class="nav-link fs-sm" href="breadcrumb.html">Breadcrumb</a><a class="nav-link fs-sm" href="buttons.html">Buttons</a><a class="nav-link fs-sm" href="button-group.html">Button group</a><a class="nav-link fs-sm" href="cards.html">Cards</a><a class="nav-link fs-sm" href="carousel.html">Carousel</a><a class="nav-link fs-sm" href="charts.html">Charts</a><a class="nav-link fs-sm" href="collapse.html">Collapse</a><a class="nav-link fs-sm" href="countdown.html">Countdown</a><a class="nav-link fs-sm" href="contacts-card.html">Contacts card</a><a class="nav-link fs-sm" href="date-picker.html">Date / time picker</a><a class="nav-link fs-sm" href="dropdowns.html">Dropdowns</a><a class="nav-link fs-sm" href="forms.html">Forms</a><a class="nav-link fs-sm" href="frames.html">Frames</a><a class="nav-link fs-sm" href="gallery.html">Gallery</a><a class="nav-link fs-sm" href="hotspots.html">Hotspots</a><a class="nav-link fs-sm" href="input-group.html">Input group</a><a class="nav-link fs-sm" href="list-group.html">List group</a><a class="nav-link fs-sm" href="modal.html">Modal</a><a class="nav-link fs-sm" href="navbar.html">Navbar</a><a class="nav-link fs-sm" href="offcanvas.html">Offcanvas</a><a class="nav-link fs-sm" href="pagination.html">Pagination</a><a class="nav-link fs-sm" href="parallax.html">Parallax</a><a class="nav-link fs-sm" href="pills.html">Pills</a><a class="nav-link fs-sm" href="placeholders.html">Placeholders</a><a class="nav-link fs-sm" href="popovers.html">Popovers</a><a class="nav-link fs-sm" href="portfolio-components.html">Portfolio components</a><a class="nav-link fs-sm" href="pricing.html">Pricing</a><a class="nav-link fs-sm" href="progress.html">Progress</a><a class="nav-link fs-sm" href="shop-components.html">Shop components</a><a class="nav-link fs-sm" href="social-buttons.html">Social buttons</a><a class="nav-link fs-sm" href="spinners.html">Spinners</a><a class="nav-link fs-sm" href="tabs.html">Tabs</a><a class="nav-link fs-sm" href="team.html">Team</a><a class="nav-link fs-sm" href="testimonials.html">Testimonials / reviews</a><a class="nav-link fs-sm" href="toasts.html">Toasts</a><a class="nav-link fs-sm" href="tooltips.html">Tooltips</a><a class="nav-link fs-sm" href="btn-video.html">Video button</a><a class="nav-link fs-sm" href="widgets.html">Widgets</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Utilities</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="https://getbootstrap.com/docs/5.1/utilities/borders/" target="_blank" rel="noopener">Bootstrap</a><a class="nav-link fs-sm" href="utilities.html">Around</a></nav>
+            </div>
+          </aside>
+          <!-- Page title-->
+          <div class="border-bottom pt-5 pb-2 mt-2 mb-5">
+            <h1 class="mt-lg-4 pt-5">Blog components</h1>
+            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+              <p class="text-muted">Components that are related to the blog / news section of the website.</p>
+              <div class="ps-md-4 mb-3"><span class="badge bg-danger">Around component</span></div>
+            </div>
+          </div>
+          <!-- Post preview (Grid)-->
+          <section class="pb-5 mb-md-2" id="blog-grid">
+            <h2 class="h4 mb-3">Post preview (Grid)</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result1" data-bs-toggle="tab" role="tab" aria-controls="result1" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html1" data-bs-toggle="tab" role="tab" aria-controls="html1" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug1" data-bs-toggle="tab" role="tab" aria-controls="pug1" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result1" role="tabpanel">
+                    <div class="d-sm-flex align-items-start">
+                      <article class="card card-hover me-4 mb-4" style="max-width: 20rem;"><a class="card-img-top" href="#"><img src="../img/blog/01.jpg" alt="Post thumbnail"></a>
+                        <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Digital design</a>
+                          <h2 class="h5 nav-heading mb-4"><a href="#">Designers should always keep their users in mind</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/01.jpg" alt="Emma Brown" width="36">
+                            <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Emma Brown</span></div></a>
+                          <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;6</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Feb 19</a></div>
+                        </div>
+                      </article>
+                      <article class="card card-hover me-4 mb-4" style="max-width: 20rem;">
+                        <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Brand strategy</a>
+                          <h2 class="h5 nav-heading mb-4"><a href="#">Simple steps to an effective brand strategy. Real life examples</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/02.jpg" alt="Charlie Welch" width="36">
+                            <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Charlie Welch</span></div></a>
+                          <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;8</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Feb 15</a></div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Post preview (Grid) with image --&gt;
+&lt;article class=&quot;card card-hover&quot;&gt;
+  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+    &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+  &lt;/a&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Digital design&lt;/a&gt;
+    &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Designers should always keep their users in mind&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Emma Brown&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+        by
+        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Emma Brown&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;6
+      &lt;/a&gt;
+      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;Feb 19
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;!-- Post preview (Grid) no image --&gt;
+&lt;article class=&quot;card card-hover&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Brand strategy&lt;/a&gt;
+    &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Simple steps to an effective brand strategy. Real life examples&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Charlie Welch&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+        by
+        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Charlie Welch&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;8
+      &lt;/a&gt;
+      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;Feb 15
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Post preview (Grid) with image
+article.card.card-hover
+  a(href=&quot;#&quot;).card-img-top
+    img(src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;)
+  .card-body
+    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Digital design
+    h2.h5.nav-heading.mb-4
+      a(href=&quot;#&quot;) Designers should always keep their users in mind
+    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+      img(src=&quot;path-to-image&quot;, alt=&quot;Emma Brown&quot;, width=&quot;36&quot;).rounded-circle
+      .ps-2.ms-1.mt-n1
+        | by
+        span.fw-semibold.ms-1 Emma Brown
+    .mt-3.text-end.text-nowrap
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-message-square.me-1
+        | &amp;nbsp;6
+      span.meta-divider
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-calendar.me-1.mt-n1
+        | &amp;nbsp;Feb 19
+
+// Post preview (Grid) no image
+article.card.card-hover
+  .card-body
+    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Brand strategy
+    h2.h5.nav-heading.mb-4
+      a(href=&quot;#&quot;) Simple steps to an effective brand strategy. Real life examples
+    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+      img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;, width=&quot;36&quot;).rounded-circle
+      .ps-2.ms-1.mt-n1
+        | by
+        span.fw-semibold.ms-1 Charlie Welch
+    .mt-3.text-end.text-nowrap
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-message-square.me-1
+        | &amp;nbsp;8
+      span.meta-divider
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-calendar.me-1.mt-n1
+        | &amp;nbsp;Feb 15
+
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Post preview (List)-->
+          <section class="pb-5 mb-md-2" id="blog-list">
+            <h2 class="h4 mb-3">Post preview (List)</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result2" data-bs-toggle="tab" role="tab" aria-controls="result2" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html2" data-bs-toggle="tab" role="tab" aria-controls="html2" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug2" data-bs-toggle="tab" role="tab" aria-controls="pug2" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result2" role="tabpanel">
+                    <article class="card card-horizontal card-hover mb-grid-gutter" style="max-width: 52rem;"><a class="card-img-top" href="#" style="background-image: url(../img/blog/05.jpg);"></a>
+                      <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Technology</a>
+                        <h2 class="h4 nav-heading mb-4"><a href="#">Payments made easy. How new Tech will affect E-Commerce industry?</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/06.jpg" width="36" alt="Barbara Palson">
+                          <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Barbara Palson</span></div></a>
+                        <div class="mt-3 text-right text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;4</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Feb 12</a></div>
+                      </div>
+                    </article>
+                    <article class="card card-horizontal card-hover" style="max-width: 52rem;"><a class="card-img-top order-sm-2" href="#" style="background-image: url(../img/blog/04.jpg);"></a>
+                      <div class="card-body order-sm-1"><a class="meta-link fs-sm mb-2" href="#">Travel &amp; Vacation</a>
+                        <h2 class="h4 nav-heading mb-4"><a href="#">Escape to mountains with only one backpack</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/01.jpg" width="36" alt="Emma Brown">
+                          <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Emma Brown</span></div></a>
+                        <div class="mt-3 text-right text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;31</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Dec 25</a></div>
+                      </div>
+                    </article>
+                  </div>
+                  <div class="tab-pane fade" id="html2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Post preview (List): Image on the left --&gt;
+&lt;article class=&quot;card card-horizontal card-hover&quot;&gt;
+  &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot; style=&quot;background-image: url(path-to-image);&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+    &lt;h2 class=&quot;h4 nav-heading mb-4&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Payments made easy. How new Tech will affect E-Commerce industry?&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+        by
+        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Barbara Palson&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class=&quot;mt-3 text-right text-nowrap&quot;&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;4
+      &lt;/a&gt;
+      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;Feb 12
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;
+
+&lt;!-- Post preview (List): Image on the right --&gt;
+&lt;article class=&quot;card card-horizontal card-hover&quot;&gt;
+  &lt;a class=&quot;card-img-top order-sm-2&quot; href=&quot;#&quot; style=&quot;background-image: url(path-to-image);&quot;&gt;&lt;/a&gt;
+  &lt;div class=&quot;card-body order-sm-1&quot;&gt;
+    &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Travel &amp; Vacation&lt;/a&gt;
+    &lt;h2 class=&quot;h4 nav-heading mb-4&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Escape to mountains with only one backpack&lt;/a&gt;
+    &lt;/h2&gt;
+    &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Emma Brown&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+        by
+        &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Emma Brown&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;
+    &lt;div class=&quot;mt-3 text-right text-nowrap&quot;&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;31
+      &lt;/a&gt;
+      &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+      &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+        &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+        &amp;nbsp;Dec 25
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Post preview (List): Image on the left
+article.card.card-horizontal.card-hover
+  a(href=&quot;#&quot;, style=&quot;background-image: url(path-to-image);&quot;).card-img-top
+  .card-body
+    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+    h2.h4.nav-heading.mb-4
+      a(href=&quot;#&quot;) Payments made easy. How new Tech will affect E-Commerce industry?
+    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+      +image(&quot;path-to-image&quot;, &quot;Barbara Palson&quot;)(width=&quot;36&quot;).rounded-circle
+      .ps-2.ms-1.mt-n1
+        | by
+        span.fw-semibold.ms-1 Barbara Palson
+    .mt-3.text-right.text-nowrap
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-message-square.me-1
+        | &amp;nbsp;4
+      span.meta-divider
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-calendar.me-1.mt-n1
+        | &amp;nbsp;Feb 12
+
+// Post preview (List): Image on the right
+article.card.card-horizontal.card-hover
+  a(href=&quot;#&quot;, style=&quot;background-image: url(path-to-image);&quot;).card-img-top.order-sm-2
+  .card-body.order-sm-1
+    a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Travel &amp;amp; Vacation
+    h2.h4.nav-heading.mb-4
+      a(href=&quot;#&quot;) Escape to mountains with only one backpack
+    a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+      +image(&quot;path-to-image&quot;, &quot;Emma Brown&quot;)(width=&quot;36&quot;).rounded-circle
+      .ps-2.ms-1.mt-n1
+        | by
+        span.fw-semibold.ms-1 Emma Brown
+    .mt-3.text-right.text-nowrap
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-message-square.me-1
+        | &amp;nbsp;31
+      span.meta-divider
+      a(href=&quot;#&quot;).meta-link.fs-xs
+        i.ai-calendar.me-1.mt-n1
+        | &amp;nbsp;Dec 25
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Related posts carousel-->
+          <section class="pb-5 mb-md-2" id="blog-carousel">
+            <h2 class="h4 mb-3">Related posts carousel</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result3" data-bs-toggle="tab" role="tab" aria-controls="result3" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html3" data-bs-toggle="tab" role="tab" aria-controls="html3" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug3" data-bs-toggle="tab" role="tab" aria-controls="pug3" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result3" role="tabpanel">
+                    <div class="tns-carousel-wrapper">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;850&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}">
+                        <!-- Article-->
+                        <div class="pb-2">
+                          <article class="card card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/blog/02.jpg" alt="Post thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Technology</a>
+                              <h2 class="h5 nav-heading mb-4"><a href="#">How technology affect our decisions</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/03.jpg" alt="Jessica Miller" width="36">
+                                <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Jessica Miller</span></div></a>
+                              <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;3</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Feb 4</a></div>
+                            </div>
+                          </article>
+                        </div>
+                        <!-- Article-->
+                        <div class="pb-2">
+                          <article class="card card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/blog/03.jpg" alt="Post thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Business</a>
+                              <h2 class="h5 nav-heading mb-4"><a href="#">Open space - new trend in office design</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/05.jpg" alt="Daniel Adams" width="36">
+                                <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Daniel Adams</span></div></a>
+                              <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;12</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Jan 10</a></div>
+                            </div>
+                          </article>
+                        </div>
+                        <!-- Article-->
+                        <div class="pb-2">
+                          <article class="card card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/blog/06.jpg" alt="Post thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Business</a>
+                              <h2 class="h5 nav-heading mb-4"><a href="#">Business offices of Fortune 500 companies</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/06.jpg" alt="Barbara Palson" width="36">
+                                <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Barbara Palson</span></div></a>
+                              <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;5</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Nov 20</a></div>
+                            </div>
+                          </article>
+                        </div>
+                        <!-- Article-->
+                        <div class="pb-2">
+                          <article class="card card-hover mx-1"><a class="card-img-top" href="#"><img src="../img/blog/05.jpg" alt="Post thumbnail"></a>
+                            <div class="card-body"><a class="meta-link fs-sm mb-2" href="#">Technology</a>
+                              <h2 class="h5 nav-heading mb-4"><a href="#">Payments made easy. How new Tech will affect E-Commerce?</a></h2><a class="d-flex meta-link fs-sm align-items-center pt-3" href="#"><img class="rounded-circle" src="../img/blog/avatar/02.jpg" alt="Charlie Welch" width="36">
+                                <div class="ps-2 ms-1 mt-n1">by<span class="fw-semibold ms-1">Charlie Welch</span></div></a>
+                              <div class="mt-3 text-end text-nowrap"><a class="meta-link fs-xs" href="#"><i class="ai-message-square me-1"></i>&nbsp;17</a><span class="meta-divider"></span><a class="meta-link fs-xs" href="#"><i class="ai-calendar me-1 mt-n1"></i>&nbsp;Nov 08</a></div>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Related posts carousel --&gt;
+&lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}'&gt;
+
+    &lt;!-- Article--&gt;
+    &lt;div class=&quot;pb-2&quot;&gt;
+      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;How technology affect our decisions&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Jessica Miller&quot;/&gt;
+            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;by&lt;span class=&quot;fw-semibold ms-1&quot;&gt;Jessica Miller&lt;/span&gt;&lt;/div&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;3
+            &lt;/a&gt;
+            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;Feb 4
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Article--&gt;
+    &lt;div class=&quot;pb-2&quot;&gt;
+      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Business&lt;/a&gt;
+          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Open space - new trend in office design&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Daniel Adams&quot;/&gt;
+            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+              by
+              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Daniel Adams&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;12
+            &lt;/a&gt;
+            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;Jan 10
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Article--&gt;
+    &lt;div class=&quot;pb-2&quot;&gt;
+      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Business&lt;/a&gt;
+          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Business offices of Fortune 500 companies&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+              by
+              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Barbara Palson&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;5
+            &lt;/a&gt;
+            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;Nov 20
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Article--&gt;
+    &lt;div class=&quot;pb-2&quot;&gt;
+      &lt;article class=&quot;card card-hover mx-1&quot;&gt;
+        &lt;a class=&quot;card-img-top&quot; href=&quot;#&quot;&gt;
+          &lt;img src=&quot;path-to-image&quot; alt=&quot;Post thumbnail&quot;/&gt;
+        &lt;/a&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;a class=&quot;meta-link fs-sm mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+          &lt;h2 class=&quot;h5 nav-heading mb-4&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Payments made easy. How new Tech will affect E-Commerce?&lt;/a&gt;
+          &lt;/h2&gt;
+          &lt;a class=&quot;d-flex meta-link fs-sm align-items-center pt-3&quot; href=&quot;#&quot;&gt;
+            &lt;img class=&quot;rounded-circle&quot; width=&quot;36&quot; src=&quot;path-to-image&quot; alt=&quot;Charlie Welch&quot;/&gt;
+            &lt;div class=&quot;ps-2 ms-1 mt-n1&quot;&gt;
+              by
+              &lt;span class=&quot;fw-semibold ms-1&quot;&gt;Charlie Welch&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/a&gt;
+          &lt;div class=&quot;mt-3 text-end text-nowrap&quot;&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-message-square me-1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;17
+            &lt;/a&gt;
+            &lt;span class=&quot;meta-divider&quot;&gt;&lt;/span&gt;
+            &lt;a class=&quot;meta-link fs-xs&quot; href=&quot;#&quot;&gt;
+              &lt;i class=&quot;ai-calendar me-1 mt-n1&quot;&gt;&lt;/i&gt;
+              &amp;nbsp;Nov 08
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Related posts carousel
+.tns-carousel-wrapper
+  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}')
+  
+    // Article
+    .pb-2
+      article.card.card-hover.mx-1
+        a(href=&quot;#&quot;).card-img-top
+          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+        .card-body
+          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+          h2.h5.nav-heading.mb-4
+            a(href=&quot;#&quot;) How technology affect our decisions
+          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+            img(src=&quot;path-to-image&quot;, alt&quot;Jessica Miller&quot;, width=&quot;36&quot;).rounded-circle
+            .ps-2.ms-1.mt-n1
+              | by
+              span.fw-semibold.ms-1 Jessica Miller
+          .mt-3.text-end.text-nowrap
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-message-square.me-1
+              | &amp;nbsp;3
+            span.meta-divider
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-calendar.me-1.mt-n1
+              | &amp;nbsp;Feb 4
+  
+    // Article
+    .pb-2
+      article.card.card-hover.mx-1
+        a(href=&quot;#&quot;).card-img-top
+          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+        .card-body
+          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Business
+          h2.h5.nav-heading.mb-4
+            a(href=&quot;#&quot;) Open space - new trend in office design
+          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+            img(src=&quot;path-to-image&quot;, alt=&quot;Daniel Adams&quot;, width=&quot;36&quot;).rounded-circle
+            .ps-2.ms-1.mt-n1
+              | by
+              span.fw-semibold.ms-1 Daniel Adams
+          .mt-3.text-end.text-nowrap
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-message-square.me-1
+              | &amp;nbsp;12
+            span.meta-divider
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-calendar.me-1.mt-n1
+              | &amp;nbsp;Jan 10
+  
+    // Article
+    .pb-2
+      article.card.card-hover.mx-1
+        a(href=&quot;#&quot;).card-img-top
+          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+        .card-body
+          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Business
+          h2.h5.nav-heading.mb-4
+            a(href=&quot;#&quot;) Business offices of Fortune 500 companies
+          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+            img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;36&quot;).rounded-circle
+            .ps-2.ms-1.mt-n1
+              | by
+              span.fw-semibold.ms-1 Barbara Palson
+          .mt-3.text-end.text-nowrap
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-message-square.me-1
+              | &amp;nbsp;5
+            span.meta-divider
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-calendar.me-1.mt-n1
+              | &amp;nbsp;Nov 20
+  
+    // Article
+    .pb-2
+      article.card.card-hover.mx-1
+        a(href=&quot;#&quot;).card-img-top
+          img(src=&quot;path-to-image&quot;, alt=&quot;Post thumbnail&quot;)
+        .card-body
+          a(href=&quot;#&quot;).meta-link.fs-sm.mb-2 Technology
+          h2.h5.nav-heading.mb-4
+            a(href=&quot;#&quot;) Payments made easy. How new Tech will affect E-Commerce?
+          a(href=&quot;#&quot;).d-flex.meta-link.fs-sm.align-items-center.pt-3
+            img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;, width=&quot;36&quot;).rounded-circle
+            .ps-2.ms-1.mt-n1
+              | by
+              span.fw-semibold.ms-1 Charlie Welch
+          .mt-3.text-end.text-nowrap
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-message-square.me-1
+              | &amp;nbsp;17
+            span.meta-divider
+            a(href=&quot;#&quot;).meta-link.fs-xs
+              i.ai-calendar.me-1.mt-n1
+              | &amp;nbsp;Nov 08
+
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Post comments-->
+          <section class="pb-5 mb-md-2" id="blog-comments">
+            <h2 class="h4 mb-3">Post comments</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result4" data-bs-toggle="tab" role="tab" aria-controls="result4" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html4" data-bs-toggle="tab" role="tab" aria-controls="html4" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug4" data-bs-toggle="tab" role="tab" aria-controls="pug4" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result4" role="tabpanel">
+                    <div class="comment" style="max-width: 57rem;">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center"><img class="rounded-circle" src="../img/blog/comments/01.jpg" alt="Barbara Palson" width="42">
+                          <div class="ps-2 ms-1">
+                            <h4 class="fs-sm mb-0">Barbara Palson</h4><span class="fs-xs text-muted">3 days ago</span>
+                          </div>
+                        </div><a class="btn btn-outline-primary btn-sm" href="#"><i class="ai-corner-up-left fs-base me-2 ms-n1"></i>Reply</a>
+                      </div>
+                      <div class="comment">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.</p>
+                        <div class="d-flex align-items-center"><img class="rounded-circle" src="../img/blog/comments/02.jpg" alt="Daniel Adams" width="42">
+                          <div class="ps-2 ms-1">
+                            <h4 class="fs-sm mb-0">Daniel Adams</h4><span class="fs-xs text-muted">2 days ago</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Post comments --&gt;
+&lt;div class=&quot;comment&quot;&gt;
+  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.&lt;/p&gt;
+  &lt;div class=&quot;d-flex justify-content-between align-items-center&quot;&gt;
+    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+        &lt;h4 class=&quot;fs-sm mb-0&quot;&gt;Barbara Palson&lt;/h4&gt;
+        &lt;span class=&quot;fs-xs text-muted&quot;&gt;3 days ago&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;a class=&quot;btn btn-outline-primary btn-sm&quot; href=&quot;#&quot;&gt;
+      &lt;i class=&quot;ai-corner-up-left fs-base me-2 ms-n1&quot;&gt;&lt;/i&gt;
+      Reply
+    &lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Comment reply --&gt;
+  &lt;div class=&quot;comment&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.&lt;/p&gt;
+    &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Daniel Adams&quot;/&gt;
+      &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+        &lt;h4 class=&quot;fs-sm mb-0&quot;&gt;Daniel Adams&lt;/h4&gt;
+        &lt;span class=&quot;fs-xs text-muted&quot;&gt;2 days ago&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Post comments
+.comment
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+  .d-flex.justify-content-between.align-items-center
+    .d-flex.align-items-center
+      img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;42&quot;).rounded-circle
+      .ps-2.ms-1
+        h4.fs-sm.mb-0 Barbara Palson
+        span.fs-xs.text-muted 3 days ago
+    a(href=&quot;#&quot;).btn.btn-outline-primary.btn-sm
+      i.ai-corner-up-left.fs-base.me-2.ms-n1
+      | Reply
+
+  // Comment reply
+  .comment
+    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus. Duis aute irure dolor in reprehenderit in voluptate.
+    .d-flex.align-items-center
+      img(src=&quot;path-to-image&quot;, alt=&quot;Daniel Adams&quot;, width=&quot;42&quot;).rounded-circle
+      .ps-2.ms-1
+        h4.fs-sm.mb-0 Daniel Adams
+        span.fs-xs.text-muted 2 days ago</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Quick (anchor) navigation-->
+        <div class="col-xxl-3 d-none d-xxl-block ps-5">
+          <aside class="sticky-top pt-5">
+            <div class="pt-5 mt-5">
+              <div class="ps-4 border-start">
+                <h3 class="h5">Jump to</h3><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#blog-grid">Post preview (Grid)</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#blog-list">Post preview (List)</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#blog-carousel">Related posts carousel</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#blog-comments">Post comments</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-core.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-markup.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-clike.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-javascript.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-pug.min.js"></script>
+    <script src="../vendor/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="../vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="../vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <!-- Main theme script-->
+    <script src="../js/theme.min.js"></script>
+  </body>
+</html>

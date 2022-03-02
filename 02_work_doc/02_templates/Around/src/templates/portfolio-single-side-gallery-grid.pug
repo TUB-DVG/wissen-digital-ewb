@@ -1,0 +1,139 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = [ 'tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js']
+  - var parentMenu = 'Templates'
+  - var pageTitle = 'Project Side Gallery (Grid)'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-dark
+
+//- Page Content
+block content
+  section.sidebar-enabled.sidebar-end
+    .container
+      .row
+
+        // Project description
+        .col-lg-4.sidebar.pt-5.pt-lg-7.order-lg-2
+          .px-sm-4.pt-6.py-lg-6.position-relative.zindex-5
+            h1.h2 Toothbrush Product Design (3D)
+            .d-sm-flex.align-items-center.pt-3.pb-2.mb-5.border-bottom.fs-sm
+              .d-flex.align-items-center.mb-3
+                .text-nowrap.text-muted.me-3
+                  i.ai-calendar.me-1
+                  span Aug 28, 2020
+                .text-nowrap.text-muted
+                  i.ai-tag.me-1
+                  span 3D Modelling
+              a(href='#gallery' data-scroll).btn.btn-translucent-primary.btn-sm.ms-auto.mb-3.d-inline-block.d-lg-none Project Gallery
+            h3.h5 Client
+            ul.list-unstyled.fs-md.mb-4.pb-2
+              li.mb-2
+                | Name:
+                span.fw-medium.text-nav.ms-2 International Company Ltd.
+              li.mb-2
+                | Services:
+                span.fw-medium.text-nav.ms-2 3D Modelling, Product Design
+              li
+                | Website:
+                a(href='#').nav-link-style.ms-2 https://example.com
+            h3.h5 Objective
+            p.fs-sm.mb-4.pb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.
+            h3.h5 Tools &amp; Technologies
+            p.fs-sm.mb-4.pb-2 Cinema 4D, Adobe Photoshop
+            h3.h5 Challenge
+            p.fs-sm.mb-4.pb-2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.
+            h3.h5 Share
+            a(href='#').btn-social.bs-outline.bs-facebook.me-2.my-2
+              i.ai-facebook
+            a(href='#').btn-social.bs-outline.bs-twitter.me-2.my-2
+              i.ai-twitter
+            a(href='#').btn-social.bs-outline.bs-google.me-2.my-2
+              i.ai-google
+            a(href='#').btn-social.bs-outline.bs-pinterest.my-2
+              i.ai-pinterest
+        
+
+        // Project gallery (Grid)
+        #gallery.col-lg-8.content.pt-2.pt-lg-7.pb-lg-4.order-lg-1
+          .gallery.row.pt-5.pb-4.py-lg-5
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/01.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th01.jpg' alt='Gallery thumbnail')
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/02.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th02.jpg' alt='Gallery thumbnail')
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/03.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th03.jpg' alt='Gallery thumbnail')
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/04.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th04.jpg' alt='Gallery thumbnail')
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/05.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th05.jpg' alt='Gallery thumbnail')
+            .col-sm-6.mb-grid-gutter
+              a(href='img/portfolio/single/06.jpg').gallery-item.rounded-3
+                img(src='img/portfolio/single/th06.jpg' alt='Gallery thumbnail')
+  
+  
+  // Related projects (Carousel)
+  section.border-top.py-5.py-lg-6
+    .container.py-3.py-md-0
+      h2.h3.text-center.mb-5 Related projects
+      .tns-carousel-wrapper
+        .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "nav": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16}, "780":{"items":3, "gutter": 16}, "1000":{"items":4, "gutter": 23}}}')
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/10.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Promo Flyer Design
+                  p.fs-sm.text-muted.mb-1 in Stationery
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/15.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Cosmetics Packaging
+                  p.fs-sm.text-muted.mb-1 in Package Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/16.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Hand Cream Bottle
+                  p.fs-sm.text-muted.mb-1 in Package Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/17.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Package Branding
+                  p.fs-sm.text-muted.mb-1 in Identity Design
+
+          // Item
+          .pb-2
+            .card.card-curved-body.shadow.card-slide.mx-1
+              .card-slide-inner
+                img(src='img/portfolio/18.jpg' alt='Portfolio thumb').card-img
+                a(href='#').card-body.text-center
+                  h3.h5.nav-heading.mt-1.mb-2 Company Branding
+                  p.fs-sm.text-muted.mb-1 in Identity Design
+
+
+//- Footer
+block footer
+  include partials/footer-default

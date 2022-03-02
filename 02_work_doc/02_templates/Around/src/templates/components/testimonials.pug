@@ -1,0 +1,972 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var pageTitle = 'Testimonials / reviews'
+  - var pageSubtitle = 'Component is designed to showcase testimonials from satisfied clients or reviews of the products on your website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Default style', 'link': '#testimonial-default'}, {'title': 'Inside card', 'link': '#testimonial-card'}, {'title': 'From Instagram', 'link': '#testimonial-instagram'}, {'title': 'Inside carousel: Style 1', 'link': '#testimonial-carousel1'}, {'title': 'Inside carousel: Style 2', 'link': '#testimonial-carousel2'}, {'title': 'Inside carousel: Style 3', 'link': '#testimonial-carousel3'}, {'title': 'Inside carousel: Style 4', 'link': '#testimonial-carousel4'}, {'title': 'Product review: Default', 'link': '#product-rview-default'}, {'title': 'Product review: Card', 'link': '#product-rview-card'}]
+  
+//- Page Content
+block content
+
+  // Default style
+  section#testimonial-default.pb-5.mb-md-2
+    h2.h4.mb-3 Default style
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            blockquote.blockquote.mt-3
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              footer.d-flex.align-items-center
+                img(src='../img/testimonials/01.jpg' alt='Emma Brown' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Emma Brown
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Default testimonial --&gt;
+                &lt;blockquote class=&quot;blockquote&quot;&gt;
+                  &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                  &lt;footer class=&quot;d-flex align-items-center&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Emma Brown&quot;/&gt;
+                    &lt;div class=&quot;text-heading fs-md fw-medium ps-2 ms-1&quot;&gt;Emma Brown&lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/blockquote&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Default testimonial
+                blockquote.blockquote
+                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  footer.d-flex.align-items-center
+                    img(src=&quot;path-to-image&quot;, &quot;Emma Brown&quot;, width=&quot;42&quot;).rounded-circle
+                    .text-heading.fs-md.fw-medium.ps-2.ms-1
+                      | Emma Brown
+
+  // Inside card
+  section#testimonial-card.pb-5.mb-md-2
+    h2.h4.mb-3 Inside card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              .card.me-sm-4.mb-4(style='max-width: 20rem;')
+                .card-body
+                  blockquote.blockquote.fs-sm
+                    p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+                footer.fs-sm.px-4.pb-4
+                  .d-flex.align-items-center.border-top.mb-n2.pt-3
+                    img(src='../img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | Tim Brooks
+              .card.border-0.shadow.mb-4(style='max-width: 20rem;')
+                .card-body
+                  blockquote.blockquote.fs-sm
+                    p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus...
+                footer.fs-sm.px-4.pb-4
+                  .d-flex.align-items-center.border-top.mb-n2.pt-3
+                    img(src='../img/testimonials/05.jpg' alt='Sarah Cole' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | Sarah Cole
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonial inside card: Border --&gt;
+                &lt;div class=&quot;card me-sm-4&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;blockquote class=&quot;blockquote fs-sm&quot;&gt;
+                      &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                  &lt;/div&gt;
+                  &lt;footer class=&quot;fs-sm px-4 pb-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center border-top mb-n2 pt-3&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Tim Brooks&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;Tim Brooks&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Testimonial inside card: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;blockquote class=&quot;blockquote fs-sm&quot;&gt;
+                      &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                  &lt;/div&gt;
+                  &lt;footer class=&quot;fs-sm px-4 pb-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center border-top mb-n2 pt-3&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Sarah Cole&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;Sarah Cole&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonial inside card: Border
+                .card
+                  .card-body
+                    blockquote.blockquote.fs-sm
+                      p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  footer.fs-sm.px-4.pb-4
+                    .d-flex.align-items-center.border-top.mb-n2.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Tim Brooks&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | Tim Brooks
+
+                // Testimonial inside card: Shadow
+                .card.border-0.shadow
+                  .card-body
+                    blockquote.blockquote.fs-sm
+                      p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  footer.fs-sm.px-4.pb-4
+                    .d-flex.align-items-center.border-top.mb-n2.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Sarah Cole&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | Sarah Cole
+
+  // From Instagram
+  section#testimonial-instagram.pb-5.mb-md-2
+    h2.h4.mb-3 From Instagram
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              a(href='#' style='max-width: 20rem;').card.mb-4.me-sm-4
+                span.card-floating-icon: i.ai-instagram
+                img(src='../img/demo/shop-homepage/instagram/03.jpg' alt='Image').card-img-top
+                footer.fs-sm.mt-auto.py-2.px-4
+                  .d-flex.align-items-center.py-2
+                    img(src='../img/testimonials/05.jpg' alt='@sarah.cole' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | @sarah.cole
+              a(href='#' style='max-width: 20rem;').card.border-0.shadow.mb-4
+                span.card-floating-icon: i.ai-instagram
+                img(src='../img/demo/shop-homepage/instagram/02.jpg' alt='Image').card-img-top
+                footer.fs-sm.mt-auto.py-2.px-4
+                  .d-flex.align-items-center.py-2
+                    img(src='../img/testimonials/02.jpg' alt='@morni.janeffel' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | @morni.janeffel
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- From Instagram: Card border --&gt;
+                &lt;a class=&quot;card&quot; href=&quot;#&quot;&gt;
+                  &lt;span class=&quot;card-floating-icon&quot;&gt;
+                    &lt;i class=&quot;ai-instagram&quot;&gt;&lt;/i&gt;
+                  &lt;/span&gt;
+                  &lt;img class=&quot;card-img-top&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;footer class=&quot;fs-sm mt-auto py-2 px-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center py-2&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;@sarah.cole&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;@sarah.cole&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/a&gt;
+
+                &lt;!-- From Instagram: Card shadow --&gt;
+                &lt;a class=&quot;card border-0 shadow&quot; href=&quot;#&quot;&gt;
+                  &lt;span class=&quot;card-floating-icon&quot;&gt;
+                    &lt;i class=&quot;ai-instagram&quot;&gt;&lt;/i&gt;
+                  &lt;/span&gt;
+                  &lt;img class=&quot;card-img-top&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+                  &lt;footer class=&quot;fs-sm mt-auto py-2 px-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center py-2&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;@morni.janeffel&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;@morni.janeffel&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/a&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // From Instagram: Card border
+                a(href=&quot;#&quot;).card
+                  span.card-floating-icon
+                    i.ai-instagram
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).card-img-top
+                  footer.fs-sm.mt-auto.py-2.px-4
+                    .d-flex.align-items-center.py-2
+                      img(src=&quot;path-to-image&quot;, alt=&quot;@sarah.cole&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | @sarah.cole
+                
+                // From Instagram: Card shadow
+                a(href=&quot;#&quot;).card.border-0.shadow
+                  span.card-floating-icon
+                    i.ai-instagram
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).card-img-top
+                  footer.fs-sm.mt-auto.py-2.px-4
+                    .d-flex.align-items-center.py-2
+                      img(src=&quot;path-to-image&quot;, alt=&quot;@morni.janeffel&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | @morni.janeffel
+
+  // Inside carousel: Style 1
+  section#testimonial-carousel1.pb-5.mb-md-2
+    h2.h4.mb-3 Inside carousel: Style 1
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper.px-md-3
+              .tns-carousel-inner(data-carousel-options = '{"nav": false, "controls": false, "gutter": 20}')
+                blockquote.blockquote.text-center
+                  p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident sunt in culpa.
+                blockquote.blockquote.text-center
+                  p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident sunt in culpa.
+                blockquote.blockquote.text-center
+                  p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident sunt in culpa.
+                blockquote.blockquote.text-center
+                  p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident sunt in culpa.
+              .tns-carousel-pager.d-flex.flex-wrap.justify-content-center.align-items-center.pb-2
+                a(href='#' data-goto='1').swap-image.active.mx-4.my-3
+                  img(src='../img/demo/gadget-landing/logos/01_color.png' alt='Logo' width='136').swap-to
+                  img(src='../img/demo/gadget-landing/logos/01_gray.png' alt='Logo' width='136').swap-from
+                a(href='#' data-goto='2').swap-image.mx-4.my-3
+                  img(src='../img/demo/gadget-landing/logos/02_color.png' alt='Logo' width='130').swap-to
+                  img(src='../img/demo/gadget-landing/logos/02_gray.png' alt='Logo' width='130').swap-from
+                a(href='#' data-goto='3').swap-image.mx-4.my-3
+                  img(src='../img/demo/gadget-landing/logos/03_color.png' alt='Logo' width='103').swap-to
+                  img(src='../img/demo/gadget-landing/logos/03_gray.png' alt='Logo' width='103').swap-from
+                a(href='#' data-goto='4').swap-image.mx-4.my-3
+                  img(src='../img/demo/gadget-landing/logos/04_color.png' alt='Logo' width='143').swap-to
+                  img(src='../img/demo/gadget-landing/logos/04_gray.png' alt='Logo' width='143').swap-from
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonials carousel: Style 1 --&gt;
+                &lt;div class=&quot;tns-carousel&quot;&gt;
+
+                  &lt;!-- Actual carousel --&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;nav&quot;: false, &quot;controls&quot;: false, &quot;gutter&quot;: 20}'&gt;
+                    &lt;blockquote class=&quot;blockquote text-center&quot;&gt;
+                      &lt;p class=&quot;lead text-heading fw-medium&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                    &lt;blockquote class=&quot;blockquote text-center&quot;&gt;
+                      &lt;p class=&quot;lead text-heading fw-medium&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                    &lt;blockquote class=&quot;blockquote text-center&quot;&gt;
+                      &lt;p class=&quot;lead text-heading fw-medium&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                    &lt;blockquote class=&quot;blockquote text-center&quot;&gt;
+                      &lt;p class=&quot;lead text-heading fw-medium&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                    &lt;/blockquote&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Custom pager --&gt;
+                  &lt;div class=&quot;tns-carousel-pager d-flex flex-wrap justify-content-center align-items-center&quot;&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;swap-image active mx-4 my-3&quot; data-goto=&quot;1&quot;&gt;
+                      &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3&quot; data-goto=&quot;2&quot;&gt;
+                      &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3&quot; data-goto=&quot;3&quot;&gt;
+                      &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3&quot; data-goto=&quot;4&quot;&gt;
+                      &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonials carousel: Style 1
+                .tns-carousel
+
+                  // Actual carousel
+                  .tns-carousel-inner(data-carousel-options = '{&quot;nav&quot;: false, &quot;controls&quot;: false, &quot;gutter&quot;: 20}')
+                    blockquote.blockquote.text-center
+                      p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet...
+                    blockquote.blockquote.text-center
+                      p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet...
+                    blockquote.blockquote.text-center
+                      p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet...
+                    blockquote.blockquote.text-center
+                      p.lead.text-heading.fw-medium Lorem ipsum dolor sit amet...
+
+                  // Custom pager
+                  .tns-carousel-pager.d-flex.flex-wrap.justify-content-center.align-items-center
+                    a(href=&quot;#&quot; data-goto=&quot;1&quot;).swap-image.active.mx-4.my-3
+                      img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                      img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                    a(href=&quot;#&quot; data-goto=&quot;2&quot;).swap-image.mx-4.my-3
+                      img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                      img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                    a(href=&quot;#&quot; data-goto=&quot;3&quot;).swap-image.mx-4.my-3
+                      img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                      img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                    a(href=&quot;#&quot; data-goto=&quot;4&quot;).swap-image.mx-4.my-3
+                      img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                      img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+
+  // Inside carousel: Style 2
+  section#testimonial-carousel2.pb-5.mb-md-2
+    h2.h4.mb-3 Inside carousel: Style 2
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper.row
+              .col-md-8
+                .tns-carousel-inner(data-carousel-options = '{"nav": false, "gutter": 20}')
+                  blockquote.blockquote.mt-3.mb-0
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+                    p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+                    footer.d-flex.align-items-center
+                      img(src='../img/testimonials/01.jpg' alt='Emma Brown' width='42').rounded-circle
+                      .text-heading.fs-md.fw-medium.ps-2.ms-1
+                        | Emma Brown
+                  blockquote.blockquote.mt-3.mb-0
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+                    p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+                    footer.d-flex.align-items-center
+                      img(src='../img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                      .text-heading.fs-md.fw-medium.ps-2.ms-1
+                        | Tim Brooks
+                  blockquote.blockquote.mt-3.mb-0
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+                    p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+                    footer.d-flex.align-items-center
+                      img(src='../img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                      .text-heading.fs-md.fw-medium.ps-2.ms-1
+                        | Sanomi Smith
+                  blockquote.blockquote.mt-3.mb-0
+                    p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+                    p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+                    footer.d-flex.align-items-center
+                      img(src='../img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                      .text-heading.fs-md.fw-medium.ps-2.ms-1
+                        | Charlie Welch
+              .col-md-4
+                .tns-carousel-pager.d-flex.flex-wrap.flex-md-column.justify-content-center.align-items-center.align-items-md-start.border-start.pt-4.mt-4.ps-md-3.pt-md-0.mt-md-0
+                  a(href='#' data-goto='1').swap-image.active.mx-4.my-3.my-md-4
+                    img(src='../img/demo/gadget-landing/logos/01_color.png' alt='Logo' width='136').swap-to
+                    img(src='../img/demo/gadget-landing/logos/01_gray.png' alt='Logo' width='136').swap-from
+                  a(href='#' data-goto='2').swap-image.mx-4.my-3.my-md-4
+                    img(src='../img/demo/gadget-landing/logos/02_color.png' alt='Logo' width='130').swap-to
+                    img(src='../img/demo/gadget-landing/logos/02_gray.png' alt='Logo' width='130').swap-from
+                  a(href='#' data-goto='3').swap-image.mx-4.my-3.my-md-4
+                    img(src='../img/demo/gadget-landing/logos/03_color.png' alt='Logo' width='103').swap-to
+                    img(src='../img/demo/gadget-landing/logos/03_gray.png' alt='Logo' width='103').swap-from
+                  a(href='#' data-goto='4').swap-image.mx-4.my-3.my-md-4
+                    img(src='../img/demo/gadget-landing/logos/04_color.png' alt='Logo' width='143').swap-to
+                    img(src='../img/demo/gadget-landing/logos/04_gray.png' alt='Logo' width='143').swap-from
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonials carousel: Style 2 --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper row&quot;&gt;
+
+                  &lt;!-- Actual carousel --&gt;
+                  &lt;div class=&quot;col-md-8&quot;&gt;
+                    &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;nav&quot;: false, &quot;gutter&quot;: 20}'&gt;
+                      &lt;blockquote class=&quot;blockquote mt-3 mb-0&quot;&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                        &lt;footer class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Emma Brown&quot;/&gt;
+                          &lt;div class=&quot;text-heading fs-md fw-medium ps-2 ms-1&quot;&gt;Emma Brown&lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/blockquote&gt;
+                      &lt;blockquote class=&quot;blockquote mt-3 mb-0&quot;&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                        &lt;footer class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Tim Brooks&quot;/&gt;
+                          &lt;div class=&quot;text-heading fs-md fw-medium ps-2 ms-1&quot;&gt;Tim Brooks&lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/blockquote&gt;
+                      &lt;blockquote class=&quot;blockquote mt-3 mb-0&quot;&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                        &lt;footer class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Sanomi Smith&quot;/&gt;
+                          &lt;div class=&quot;text-heading fs-md fw-medium ps-2 ms-1&quot;&gt;Sanomi Smith&lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/blockquote&gt;
+                      &lt;blockquote class=&quot;blockquote mt-3 mb-0&quot;&gt;
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                        &lt;footer class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Charlie Welch&quot;/&gt;
+                          &lt;div class=&quot;text-heading fs-md fw-medium ps-2 ms-1&quot;&gt;Charlie Welch&lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/blockquote&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Custom pager --&gt;
+                  &lt;div class=&quot;col-md-4&quot;&gt;
+                    &lt;div class=&quot;tns-carousel-pager d-flex flex-wrap flex-md-column justify-content-center align-items-center align-items-md-start border-start pt-4 mt-4 ps-md-3 pt-md-0 mt-md-0&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;swap-image active mx-4 my-3 my-md-4&quot; data-goto=&quot;1&quot;&gt;
+                        &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                        &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3 my-md-4&quot; data-goto=&quot;2&quot;&gt;
+                        &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                        &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3 my-md-4&quot; data-goto=&quot;3&quot;&gt;
+                        &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                        &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;swap-image mx-4 my-3 my-md-4&quot; data-goto=&quot;4&quot;&gt;
+                        &lt;img src=&quot;path-to-color-image&quot; class=&quot;swap-to&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                        &lt;img src=&quot;path-to-grayscale-image&quot; class=&quot;swap-from&quot; width=&quot;100&quot; alt=&quot;Logo&quot;/&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonials carousel: Style 2
+                .tns-carousel-wrapper.row
+                  
+                  // Actual carousel
+                  .col-md-8
+                    .tns-carousel-inner(data-carousel-options = '{&quot;nav&quot;: false, &quot;gutter&quot;: 20}')
+                      blockquote.blockquote.mt-3.mb-0
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        footer.d-flex.align-items-center
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Emma Brown&quot;, width=&quot;42&quot;).rounded-circle
+                          .text-heading.fs-md.fw-medium.ps-2.ms-1
+                            | Emma Brown
+                      blockquote.blockquote.mt-3.mb-0
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        footer.d-flex.align-items-center
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Tim Brooks&quot;, width=&quot;42&quot;).rounded-circle
+                          .text-heading.fs-md.fw-medium.ps-2.ms-1
+                            | Tim Brooks
+                      blockquote.blockquote.mt-3.mb-0
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        footer.d-flex.align-items-center
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Sanomi Smith&quot;, width=&quot;42&quot;).rounded-circle
+                          .text-heading.fs-md.fw-medium.ps-2.ms-1
+                            | Sanomi Smith
+                      blockquote.blockquote.mt-3.mb-0
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        footer.d-flex.align-items-center
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;, width=&quot;42&quot;).rounded-circle
+                          .text-heading.fs-md.fw-medium.ps-2.ms-1
+                            | Charlie Welch
+                  
+                  // Custom pager
+                  .col-md-4
+                    .tns-carousel-pager.d-flex.flex-wrap.flex-md-column.justify-content-center.align-items-center.align-items-md-start.border-start.pt-4.mt-4.ps-md-3.pt-md-0.mt-md-0
+                      a(href=&quot;#&quot; data-goto=&quot;1&quot;).swap-image.active.mx-4.my-3.my-md-4
+                        img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                        img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                      a(href=&quot;#&quot; data-goto=&quot;2&quot;).swap-image.mx-4.my-3.my-md-4
+                        img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                        img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                      a(href=&quot;#&quot; data-goto=&quot;3&quot;).swap-image.mx-4.my-3.my-md-4
+                        img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                        img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+                      a(href=&quot;#&quot; data-goto=&quot;4&quot;).swap-image.mx-4.my-3.my-md-4
+                        img(src=&quot;path-to-color-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-to
+                        img(src=&quot;path-to-grayscale-image&quot;, alt=&quot;Logo&quot;, width=&quot;100&quot;).swap-from
+
+  // Inside carousel: Style 3
+  section#testimonial-carousel3.pb-5.mb-md-2
+    h2.h4.mb-3 Inside carousel: Style 3
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper
+              .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "responsive": {"0":{"items":1, "gutter": 16},"576":{"items":2, "gutter": 16},"900":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+
+                // Testimonial: Card
+                .py-2
+                  .card.h-100.border-0.shadow.mx-1
+                    .card-body
+                      blockquote.blockquote.fs-sm
+                        p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus...
+                    footer.fs-sm.px-4.pb-4
+                      .d-flex.align-items-center.border-top.mb-n2.pt-3
+                        img(src='../img/testimonials/05.jpg' alt='Sarah Cole' width='42').rounded-circle
+                        .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                          | Sarah Cole
+
+                // From Instagram
+                .py-2
+                  a(href='#').card.h-100.border-0.shadow.mx-1
+                    span.card-floating-icon: i.ai-instagram
+                    img(src='../img/demo/gadget-landing/instagram/02.jpg' alt='Image').card-img-top
+                    footer.fs-sm.mt-auto.py-2.px-4
+                      .d-flex.align-items-center.py-2
+                        img(src='../img/testimonials/02.jpg' alt='@morni.janeffel' width='42').rounded-circle
+                        .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                          | @morni.janeffel
+
+                // Testimonial: Card
+                .py-2
+                  .card.h-100.border-0.shadow.mx-1
+                    .card-body
+                      blockquote.blockquote.fs-sm
+                        p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.
+                    footer.fs-sm.px-4.pb-4
+                      .d-flex.align-items-center.border-top.mb-n2.pt-3
+                        img(src='../img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                        .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                          | Charlie Welch
+
+                // From Instagram
+                .py-2
+                  a(href='#').card.h-100.border-0.shadow.mx-1
+                    span.card-floating-icon: i.ai-instagram
+                    img(src='../img/demo/shop-homepage/instagram/02.jpg' alt='Image').card-img-top
+                    footer.fs-sm.mt-auto.py-2.px-4
+                      .d-flex.align-items-center.py-2
+                        img(src='../img/testimonials/01.jpg' alt='@emma.brown' width='42').rounded-circle
+                        .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                          | @emma.brown
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonials carousel: Style 3 --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}'&gt;
+
+                    &lt;!-- Testimonial: Card--&gt;
+                    &lt;div class=&quot;py-2&quot;&gt;
+                      &lt;div class=&quot;card h-100 border-0 shadow mx-1&quot;&gt;
+                        &lt;div class=&quot;card-body&quot;&gt;
+                          &lt;blockquote class=&quot;blockquote fs-sm&quot;&gt;
+                            &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                          &lt;/blockquote&gt;
+                        &lt;/div&gt;
+                        &lt;footer class=&quot;fs-sm px-4 pb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex align-items-center border-top mb-n2 pt-3&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Sarah Cole&quot;/&gt;
+                            &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;Sarah Cole&lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- From Instagram--&gt;
+                    &lt;div class=&quot;py-2&quot;&gt;
+                      &lt;a class=&quot;card h-100 border-0 shadow mx-1&quot; href=&quot;#&quot;&gt;
+                        &lt;span class=&quot;card-floating-icon&quot;&gt;
+                          &lt;i class=&quot;ai-instagram&quot;&gt;&lt;/i&gt;
+                        &lt;/span&gt;
+                        &lt;img class=&quot;card-img-top&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+                        &lt;footer class=&quot;fs-sm mt-auto py-2 px-4&quot;&gt;
+                          &lt;div class=&quot;d-flex align-items-center py-2&quot;&gt;
+                            &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;@morni.janeffel&quot;/&gt;
+                            &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;@morni.janeffel&lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/footer&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Add as many testimonials as you need--&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonials carousel: Style 3
+                .tns-carousel-wrapper
+                  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;576&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 23}}}')
+
+                    // Testimonial: Card
+                    .py-2
+                      .card.h-100.border-0.shadow.mx-1
+                        .card-body
+                          blockquote.blockquote.fs-sm
+                            p.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                        footer.fs-sm.px-4.pb-4
+                          .d-flex.align-items-center.border-top.mb-n2.pt-3
+                            img(src=&quot;path-to-image&quot;, alt=&quot;Sarah Cole&quot;, width=&quot;42&quot;).rounded-circle
+                            .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                              | Sarah Cole
+
+                    // From Instagram
+                    .py-2
+                      a(href=&quot;#&quot;).card.h-100.border-0.shadow.mx-1
+                        span.card-floating-icon
+                          i.ai-instagram
+                        img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).card-img-top
+                        footer.fs-sm.mt-auto.py-2.px-4
+                          .d-flex.align-items-center.py-2
+                            img(src=&quot;path-to-image&quot;, alt=&quot;@morni.janeffel&quot;, width=&quot;42&quot;).rounded-circle
+                            .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                              | @morni.janeffel
+
+                    // Add as many testimonials as you need
+
+  // Inside carousel: Style 4
+  section#testimonial-carousel4.pb-5.mb-md-2
+    h2.h4.mb-3 Inside carousel: Style 4
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.dotab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel-wrapper
+              .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "nav": false}')
+
+                // Item
+                div
+                  .pb-3.pb-md-0.ps-md-7.ms-md-3
+                    .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(../img/demo/business-consulting/testimonials/01.jpg);')
+                      .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-left
+                        .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                          blockquote.blockquote
+                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                            footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+                        a(href='https://www.youtube.com/watch?v=YwIQnTkP060' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                    .d-md-none.mt-n6.px-3.scale-up
+                      .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                        blockquote.blockquote
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                          footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+
+                // Item
+                div
+                  .pb-3.pb-md-0.ps-md-7.ms-md-3
+                    .bg-size-cover.bg-position-center.rounded-3.py-7(style='background-image: url(../img/demo/business-consulting/testimonials/02.jpg);')
+                      .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-left
+                        .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style='max-width: 28rem;')
+                          blockquote.blockquote
+                            p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                            footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+                        a(href='https://www.youtube.com/watch?v=PjNJfOrKT3I' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-sm.my-4
+                    .d-md-none.mt-n6.px-3.scale-up
+                      .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style='max-width: 28rem;')
+                        blockquote.blockquote
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                          footer.blockquote-footer Miguel Sánchez, CEO Company Ltd.
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonials carousel: Style 4 --&gt;
+                &lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}'&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div&gt;
+                      &lt;div class=&quot;pb-3 pb-md-0 ps-md-7 ms-md-3&quot;&gt;
+                        &lt;div class=&quot;bg-size-cover bg-position-center rounded-3 py-7&quot; style=&quot;background-image: url(path-to-background-image);&quot;&gt;
+                          &lt;div class=&quot;d-md-flex align-items-center ms-md-n7 text-center text-md-left&quot;&gt;
+                            &lt;div class=&quot;card card-body d-none d-md-flex py-grid-gutter px-grid-gutter border-0 shadow-lg me-6 scale-up&quot;&gt;
+                              &lt;blockquote class=&quot;blockquote&quot;&gt;
+                                &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                                &lt;footer class=&quot;blockquote-footer&quot;&gt;Paul Anderson, CEO Company Ltd.&lt;/footer&gt;
+                              &lt;/blockquote&gt;
+                            &lt;/div&gt;
+                            &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;btn-video btn-video-sm my-4&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;'&gt;&lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;d-md-none mt-n6 px-3 scale-up&quot;&gt;
+                          &lt;div class=&quot;card card-body py-grid-gutter px-grid-gutter border-0 shadow mx-auto&quot;&gt;
+                            &lt;blockquote class=&quot;blockquote&quot;&gt;
+                              &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                              &lt;footer class=&quot;blockquote-footer&quot;&gt;Paul Anderson, CEO Company Ltd.&lt;/footer&gt;
+                            &lt;/blockquote&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Add as many items as you need --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonials carousel: Style 4
+                .tns-carousel-wrapper
+                  .tns-carousel-inner(data-carousel-options='{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}')
+
+                    // Item
+                    div
+                      .pb-3.pb-md-0.ps-md-7.ms-md-3
+                        .bg-size-cover.bg-position-center.rounded-3.py-7(style=&quot;background-image: url(path-to-background-image);&quot;)
+                          .d-md-flex.align-items-center.ms-md-n7.text-center.text-md-left
+                            .card.card-body.d-none.d-md-flex.py-grid-gutter.px-grid-gutter.border-0.shadow-lg.me-6.scale-up(style&quot;max-width: 28rem;&quot;)
+                              blockquote.blockquote
+                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                                footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+                            a(href=&quot;link-to-youtube/vimeo-video&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;').btn-video.btn-video-sm.my-4
+                        .d-md-none.mt-n6.px-3.scale-up
+                          .card.card-body.py-grid-gutter.px-grid-gutter.border-0.shadow.mx-auto(style=&quot;max-width: 28rem;&quot;)
+                            blockquote.blockquote
+                              p Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                              footer.blockquote-footer Paul Anderson, CEO Company Ltd.
+
+                    // Add as many items as you need
+
+  // Product review: Default
+  section#product-rview-default.pb-5.mb-md-2
+    h2.h4.mb-3 Product review: Default
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result8' data-bs-toggle='tab' role='tab' aria-controls='result8' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html8' data-bs-toggle='tab' role='tab' aria-controls='html8' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug8' data-bs-toggle='tab' role='tab' aria-controls='pug8' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result8.tab-pane.fade.show.active(role='tabpanel')
+            .py-2(style='max-width: 45rem;')
+              .d-flex.align-items-center.mb-2.pb-1
+                +star-rating(4).star-rating-lg.me-2
+                span.fs-sm.text-muted 76% of users found this review helpful
+              p.fs-md Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cumque nihil impedit quo minus.
+              .d-flex.align-items-center.justify-content-between
+                .d-flex.align-items-center.me-3
+                  img(src='../img/testimonials/07.jpg' alt='Barbara Palson' width='42').rounded-circle
+                  .ps-2.ms-1
+                    h6.fs-sm.mb-n1 Barbara Palson
+                    span.fs-xs.text-muted 3 days ago
+                .text-nowrap
+                  button(type='button').btn-like 15
+                  button(type='button').btn-dislike 3
+          #html8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Product review: Default --&gt;
+                &lt;div class=&quot;d-flex align-items-center mb-2 pb-1&quot;&gt;
+                  &lt;div class=&quot;star-rating star-rating-lg me-2&quot;&gt;
+                    &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                    &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                    &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                    &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                    &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                  &lt;/div&gt;
+                  &lt;span class=&quot;fs-sm text-muted&quot;&gt;76% of users found this review helpful&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;p class=&quot;fs-md&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt;
+                &lt;div class=&quot;d-flex align-items-center justify-content-between&quot;&gt;
+                  &lt;div class=&quot;d-flex d-flex align-items-center me-3&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; class=&quot;rounded-circle&quot; width=&quot;42&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                    &lt;div class=&quot;ps-2 ms-1&quot;&gt;
+                      &lt;h6 class=&quot;fs-sm mb-n1&quot;&gt;Barbara Palson&lt;/h6&gt;
+                      &lt;span class=&quot;fs-xs text-muted&quot;&gt;3 days ago&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;text-nowrap&quot;&gt;
+                    &lt;button class=&quot;btn-like&quot; type=&quot;button&quot;&gt;15&lt;/button&gt;
+                    &lt;button class=&quot;btn-dislike&quot; type=&quot;button&quot;&gt;3&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Product review: Default
+                .d-flex.align-items-center.mb-2.pb-1
+                  +star-rating(4).star-rating-lg.me-2
+                  span.fs-sm.text-muted 76% of users found this review helpful
+                p.fs-md Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                .d-flex.align-items-center.justify-content-between
+                  .align-items-center.me-3
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;42&quot;).rounded-circle
+                    .ps-2.ms-1
+                      h6.fs-sm.mb-n1 Barbara Palson
+                      span.fs-xs.text-muted 3 days ago
+                  .text-nowrap
+                    button.btn-like(type=&quot;button&quot;) 15
+                    button.btn-dislike(type=&quot;button&quot;) 3
+
+  // Product review: Card
+  section#product-rview-card.pb-5.mb-md-2
+    h2.h4.mb-3 Product review: Card
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result9' data-bs-toggle='tab' role='tab' aria-controls='result9' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html9' data-bs-toggle='tab' role='tab' aria-controls='html9' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug9' data-bs-toggle='tab' role='tab' aria-controls='pug9' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result9.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              .card.me-sm-4.mb-4(style='max-width: 19rem;')
+                .card-body
+                  a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                    img(src='../img/demo/shop-homepage/thumbnails/02.jpg' alt='Product thumb' width='60')
+                    .fs-md.fw-medium.ps-2.ms-1 Running Sneakers, Sports Collection
+                  +star-rating(5).mb-2.pb-1
+                  p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+                footer.fs-sm.px-4.pb-4
+                  .d-flex.align-items-center.border-top.mb-n2.pt-3
+                    img(src='../img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | Tim Brooks
+              .card.border-0.shadow.mb-4(style='max-width: 19rem;')
+                .card-body
+                  a(href='#').d-flex.align-items-center.nav-heading.mb-3
+                    img(src='../img/demo/shop-homepage/thumbnails/06.jpg' alt='Product thumb' width='60')
+                    .fs-md.fw-medium.ps-2.ms-1 Wireless Bluetooth Headset
+                  +star-rating(4).mb-2.pb-1
+                  p.fs-sm.mb-0 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.
+                footer.fs-sm.px-4.pb-4
+                  .d-flex.align-items-center.border-top.mb-n2.pt-3
+                    img(src='../img/testimonials/05.jpg' alt='Sarah Cole' width='42').rounded-circle
+                    .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                      | Sarah Cole
+          #html9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Product review: Card border --&gt;
+                &lt;div class=&quot;card&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;d-flex align-items-center nav-heading mb-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product thumb&quot;/&gt;
+                      &lt;div class=&quot;fs-md fw-medium ps-2 ms-1&quot;&gt;
+                        Running Sneakers, Sports Collection
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mb-2 pb-1 star-rating&quot;&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;fs-sm mb-0&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                  &lt;/div&gt;
+                  &lt;footer class=&quot;fs-sm px-4 pb-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center border-top mb-n2 pt-3&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Tim Brooks&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;
+                        Tim Brooks
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Product review: Card shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;a class=&quot;d-flex align-items-center nav-heading mb-3&quot; href=&quot;#&quot;&gt;
+                      &lt;img width=&quot;60&quot; src=&quot;path-to-image&quot; alt=&quot;Product thumb&quot;/&gt;
+                      &lt;div class=&quot;fs-md fw-medium ps-2 ms-1&quot;&gt;
+                        Wireless Bluetooth Headset
+                      &lt;/div&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;mb-2 pb-1 star-rating&quot;&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star-filled active&quot;&gt;&lt;/i&gt;
+                      &lt;i class=&quot;sr-star ai-star&quot;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;fs-sm mb-0&quot;&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+                  &lt;/div&gt;
+                  &lt;footer class=&quot;fs-sm px-4 pb-4&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center border-top mb-n2 pt-3&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;42&quot; src=&quot;path-to-image&quot; alt=&quot;Sarah Cole&quot;/&gt;
+                      &lt;div class=&quot;text-heading fw-medium ps-2 ms-1 mt-n1&quot;&gt;
+                        Sarah Cole
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/div&gt;
+          #pug9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Product review: Card border
+                .card
+                  .card-body
+                    a(href=&quot;#&quot;).d-flex.align-items-center.nav-heading.mb-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product thumb&quot;, width=&quot;60&quot;)
+                      .fs-md.fw-medium.ps-2.ms-1
+                        | Running Sneakers, Sports Collection
+                    +star-rating(5).mb-2.pb-1
+                    p.fs-sm.mb-0 Lorem ipsum dolor sit amet...
+                  footer.fs-sm.px-4.pb-4
+                    .d-flex.align-items-center.border-top.mb-n2.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Tim Brooks&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | Tim Brooks
+
+                // Product review: Card shadow
+                .card.border-0.shadow
+                  .card-body
+                    a(href=&quot;#&quot;).d-flex.align-items-center.nav-heading.mb-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Product thumb&quot;, width=&quot;60&quot;)
+                      .fs-md.fw-medium.ps-2.ms-1
+                        | Wireless Bluetooth Headset
+                    +star-rating(4).mb-2.pb-1
+                    p.fs-sm.mb-0 Lorem ipsum dolor sit amet...
+                  footer.fs-sm.px-4.pb-4
+                    .d-flex.align-items-center.border-top.mb-n2.pt-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Sarah Cole&quot;, width=&quot;42&quot;).rounded-circle
+                      .text-heading.fw-medium.ps-2.ms-1.mt-n1
+                        | Sarah Cole

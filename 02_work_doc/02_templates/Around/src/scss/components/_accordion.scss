@@ -1,0 +1,31 @@
+//
+// Accordion
+// --------------------------------------------------
+
+
+.accordion-button {
+  font-size: $accordion-button-font-size;
+  font-weight: $accordion-button-font-weight;
+  &:not(.collapsed) {
+    box-shadow: none;
+  }
+
+  &:hover { color: $accordion-button-active-color; }
+  &.no-indicator::after { display: none; }
+}
+
+.accordion:not(.accordion-flush) {
+  .accordion-item {
+    margin-bottom: $spacer * .75;
+    @include border-radius($accordion-border-radius);
+    border: $border-width solid $accordion-border-color;
+  }
+  
+  .accordion-button { border: 0; }
+  .accordion-collapse { border: 0; }
+  .accordion-body { padding-top: 0; }
+}
+
+.accordion-flush .accordion-body {
+  padding-top: 0;
+}

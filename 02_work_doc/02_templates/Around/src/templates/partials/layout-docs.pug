@@ -1,0 +1,117 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+
+//- Override default config variables
+append config
+  - var isPageLoading = false
+  - var isNestedFile = true
+
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body
+    
+    main.container-fluid
+
+      // Main content
+      section.offcanvas-enabled-start.row.pb-3.pb-md-4
+        .col-xxl-9
+
+          // Navbar
+          header(data-scroll-header data-fixed-element).navbar.navbar-expand-lg.navbar-light.fixed-top.navbar-shadow.bg-light.px-3.px-lg-4
+            a(href='dev-setup.html').navbar-brand.d-lg-none.flex-shrink-0
+              img(src='../img/logo/logo-icon.png' alt='Around' width='58')
+            button(type='button' data-bs-toggle='offcanvas' data-bs-target='#docsNav').navbar-toggler.d-block.d-lg-none.ms-auto
+              span.navbar-toggler-icon
+            ul.navbar-nav.ms-auto.d-none.d-lg-flex
+              li.nav-item
+                a(href='../index.html').nav-link
+                  i.ai-eye.align-middle.mt-n1.me-2
+                  | Live preview
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+              li.nav-item
+                a(href='../components/typography.html').nav-link
+                  i.ai-layers.align-middle.mt-n1.me-2
+                  | Components
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+            a(href='https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary.btn-shadow.ms-lg-4
+              i.ai-shopping-cart.me-2.d-none.d-sm-inline-block
+              | Buy now
+          
+          // Side navigation (Off-canvas)
+          aside#docsNav.offcanvas.offcanvas-expand.bg-dark
+            .offcanvas-header.bg-darker.d-none.d-lg-block.py-2
+              a(href='dev-setup.html').navbar-brand.py-1.flex-shrink-0
+                img(src='../img/logo/logo-light.png' alt='Around' width='153')
+              span.badge.bg-info Docs
+            .offcanvas-header.bg-darker.d-flex.d-lg-none
+              .d-flex.align-items-center.mt-1
+                h5.text-light.mb-0.me-3 Menu
+                span.badge.bg-info Docs
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.btn-close-white
+            .d-flex.d-lg-none.align-items-center.py-4.px-3.border-bottom.border-light
+              a(href='../index.html').btn.btn-outline-light.w-100.btn-sm.me-2
+                i.ai-eye.me-2
+                | Preview
+              a(href='../components/typography.html').btn.btn-outline-light.w-100.btn-sm.mt-0
+                i.ai-layers.me-2
+                | Components
+            .offcanvas-body.pt-4.pb-grid-gutter(data-simplebar data-simplebar-inverse)
+              h6.text-light.pt-2.pb-2.border-bottom.border-light Contents
+              nav.widget-nav.nav.nav-light.flex-column
+                a(href='dev-setup.html')&attributes(pageTitle === 'Dev environment setup' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Dev environment setup
+                a(href='working-with-gulp.html')&attributes(pageTitle === 'Working with Gulp' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Working with Gulp
+                a(href='project-structure.html')&attributes(pageTitle === 'Project structure' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Project structure
+                a(href='install-vendor-plugin.html')&attributes(pageTitle === 'Installing Vendor plugins with npm and Gulp' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Installing Vendor plugins with npm and Gulp
+                a(href='using-preprocessors.html')&attributes(pageTitle === 'Using Pug & Sass' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Using Pug &amp; Sass
+                a(href='autoprefixer.html')&attributes(pageTitle === 'Browser support' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Browser support
+                a(href='global-colors.html')&attributes(pageTitle === 'Global colors' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Global colors
+                a(href='components.html')&attributes(pageTitle === 'Components' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Components
+                a(href='navbar-footer.html')&attributes(pageTitle === 'Navbar and Footer templates (Pug)' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Navbar / Footer variants (Pug)
+                a(href='utilities.html')&attributes(pageTitle === 'Utility classes' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Utility classes
+                a(href='ui-icons.html')&attributes(pageTitle === 'UI icons (Icon font)' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | UI icons (Icon font)
+                a(href='mailchimp.html')&attributes(pageTitle === 'Mailchimp subscription form' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Mailchimp subscription form
+                a(href='credits.html')&attributes(pageTitle === 'Sources and credits' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Sources and credits
+                a(href='changelog.html')&attributes(pageTitle === 'Changelog' ? {'class': 'nav-link fs-sm active'} : {'class': 'nav-link fs-sm'})
+                  | Changelog
+
+
+          // Page title
+          .border-bottom.pt-5.pb-2.mt-2.mb-5
+            h1.mt-lg-4.pt-5 !{pageTitle}
+
+          
+          block content
+
+
+    // Back to top button
+    a(href='#top' data-scroll data-fixed-element).btn-scroll-top
+      span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+      i.btn-scroll-top-icon.ai-arrow-up    
+    
+    // Vendor scrits: js libraries and plugins
+    +vendor-scripts
+
+    // Main theme script
+    script()&attributes(isNestedFile ? {'src': '../js/theme.min.js'} : {'src': 'js/theme.min.js'})

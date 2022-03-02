@@ -1,0 +1,244 @@
+//
+// Widgets
+// --------------------------------------------------
+
+
+// Widget title
+
+.widget-title {
+  margin-bottom: $widget-title-margin-bottom;
+  @include font-size($widget-title-font-size);
+}
+
+
+// Global lists styles inside widget
+
+.widget {
+  ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li {
+      display: block;
+      margin-bottom: .375rem;
+
+      &:last-child { margin-bottom: 0; }
+
+      ul, ol {
+        padding: .25rem 0 .25rem 1.375rem;
+        > li {
+          position: relative;
+          margin-bottom: 0;
+          border-left: $border-width * 2 solid $border-color;
+          > a {
+            padding-left: 1.125rem !important;
+            &::after {
+              position: absolute;
+              left: 0;
+              top: 50%;
+              width: .75rem;
+              height: $border-width;
+              background-color: darken($border-color, 6%);
+              content: '';
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// Global links styles inside widget
+
+.widget-link {
+  display: block;
+  position: relative;
+  padding: $widget-link-padding;
+  transition: $widget-link-transition;
+  color: $widget-link-color;
+  font-weight: $widget-link-font-weight;
+  text-decoration: none;
+
+  &:hover {
+    color: $widget-link-hover-color;
+    text-decoration: none;
+  }
+
+  &.active,
+  .active > & {
+    color: $widget-link-active-color;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  > small {
+    display: inline-block;
+    font: {
+      size: 75%;
+      weight: normal;
+    }
+  }
+
+  & + ul > li > .widget-link {
+    font-size: 87.5%;
+  }
+}
+
+
+// Light skin
+
+.widget-light {
+  .widget-title { color: $white; }
+
+  .widget-link {
+    color: $widget-link-light-color;
+    font-weight: normal;
+
+    &:hover {
+      color: $widget-link-light-hover-color;
+    }
+
+    &.active,
+    .active > & {
+      color: $widget-link-light-active-color;
+    }
+  }
+}
+
+
+// Categories widget
+
+.widget-categories {
+  .widget-link {
+    padding-left: 1.25rem;
+
+    &::before {
+      position: absolute;
+      top: .0625rem;
+      left: -.1875rem;
+      transition: transform .25s ease-in-out, opacity .15s ease-in-out;
+      font: {
+        family: $icons-font-family;
+        size: 1.25em;
+      }
+      content: $ai-chevron-right;
+      opacity: .5;
+    }
+
+    &:hover::before,
+    &.active::before {
+      opacity: 1;
+    }
+    & + ul > li > .widget-link {
+      padding-left: inherit;
+      &::before { display: none; }
+    }
+  }
+  .active > .widget-link::before {
+    opacity: 1;
+  }
+
+  [data-bs-toggle='collapse'] {
+    color: $widget-link-active-color;
+
+    &::before {
+      transform: rotate(90deg);
+      opacity: 1;
+    }
+
+    &.collapsed {
+      color: $widget-link-color;
+
+      &::before {
+        transform: none;
+        opacity: .5;
+      }
+
+      &:hover {
+        color: $widget-link-hover-color;
+        &::before { opacity: 1; }
+      }
+    }
+  }
+}
+
+
+// Range slider
+
+.range-slider-ui {
+  height: $range-slider-height;
+  margin: 3.5rem 0;
+  border: 0;
+  background-color: $range-slider-bg;
+  box-shadow: none;
+
+  .noUi-connect {
+    background-color: $range-slider-connect-bg;
+  }
+
+  .noUi-handle {
+    top: 50%;
+    width: $range-slider-handle-size;
+    height: $range-slider-handle-size;
+    margin-top: -($range-slider-handle-size * .5);
+    border: $range-slider-handle-border;
+    border-radius: 50%;
+    box-shadow: $range-slider-handle-box-shadow;
+    &::before, &::after { display: none; }
+    &:focus { outline: none; }
+  }
+
+  .noUi-marker-normal { display: none; }
+  .noUi-marker-horizontal {
+    &.noUi-marker {
+      width: $border-width;
+      background-color: darken($border-color, 6%);
+    }
+    &.noUi-marker-large { height: .75rem; }
+  }
+  .noUi-value {
+    padding-top: .125rem;
+    color: $body-color;
+    font-size: $font-size-ms;
+  }
+
+  .noUi-tooltip {
+    padding: $tooltip-padding-y $tooltip-padding-x;
+    border: 0;
+    background-color: $range-slider-tooltip-bg;
+    color: $range-slider-tooltip-color;
+    font-size: $range-slider-tooltip-font-size;
+    line-height: 1.2;
+    @include border-radius($tooltip-border-radius);
+  }
+}
+html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
+  right: -($range-slider-handle-size * .5);
+}
+
+
+// btn-tags
+
+.btn-tag {
+  display: inline-block;
+  padding: $btn-tag-padding-y $btn-tag-padding-x;
+  transition: $btn-tag-transition;
+  border: $btn-tag-border-width solid $btn-tag-border-color;
+  @include border-radius($btn-tag-border-radius);
+  background-color: $btn-tag-bg;
+  color: $btn-tag-color;
+  font: {
+    size: $btn-tag-font-size;
+    weight: $btn-tag-font-weight;
+  }
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: $btn-tag-hover-border-color;
+    color: $btn-tag-hover-color;
+    text-decoration: none;
+  }
+}

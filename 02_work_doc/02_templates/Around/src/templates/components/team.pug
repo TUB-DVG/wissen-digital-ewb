@@ -1,0 +1,575 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Team'
+  - var pageSubtitle = 'Component designed to showcase team members. Comes in different styles.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Style 1', 'link': '#team-style-1'}, {'title': 'Style 2', 'link': '#team-style-2'}, {'title': 'Style 3', 'link': '#team-style-3'}, {'title': 'Style 4', 'link': '#team-style-4'}, {'title': 'Style 5', 'link': '#team-style-5'}]
+  
+//- Page Content
+block content
+
+  // Style 1
+  section#team-style-1.pb-5.mb-md-2
+    h2.h4.mb-3 Style 1
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              a(href='#' style='max-width: 18rem;').card.card-curved-body.card-hover.me-4.mb-4
+                .card-floating-icon: i.ai-instagram
+                .card-img-top.card-img-gradient
+                  img(src='../img/team/01.jpg' alt='Sarah Cole')
+                .card-body.text-center
+                  h3.h6.card-title.mb-2 Sarah Cole
+                  p.fs-xs.text-body.mb-0 Social d-flex strategist
+              .card.card-curved-body.card-hover.border-0.shadow.mb-4(style='max-width: 18rem;')
+                a(href='#').card-floating-icon: i.ai-mail
+                .card-img-top.card-img-gradient
+                  img(src='../img/team/02.jpg' alt='Charlie Welch')
+                .card-body.text-center
+                  h3.h6.card-title.mb-2 Charlie Welch
+                  p.fs-xs.text-body.mb-0 Financial director
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 1: Border + whole card is a link --&gt;
+                &lt;a class=&quot;card card-curved-body card-hover&quot; href=&quot;#&quot;&gt;
+                  &lt;div class=&quot;card-floating-icon&quot;&gt;
+                    &lt;i class=&quot;ai-instagram&quot;&gt;&lt;/i&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-img-top card-img-gradient&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Sarah Cole&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body text-center&quot;&gt;
+                    &lt;h3 class=&quot;h6 card-title mb-2&quot;&gt;Sarah Cole&lt;/h3&gt;
+                    &lt;p class=&quot;fs-xs text-body mb-0&quot;&gt;Social d-flex strategist&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/a&gt;
+
+                &lt;!-- Team Style 1: Shadow + only icon is a link --&gt;
+                &lt;div class=&quot;card card-curved-body card-hover border-0 shadow&quot;&gt;
+                  &lt;a class=&quot;card-floating-icon&quot; href=&quot;#&quot;&gt;
+                    &lt;i class=&quot;ai-mail&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-img-top card-img-gradient&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Charlie Welch&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body text-center&quot;&gt;
+                    &lt;h3 class=&quot;h6 card-title mb-2&quot;&gt;Charlie Welch&lt;/h3&gt;
+                    &lt;p class=&quot;fs-xs text-body mb-0&quot;&gt;Financial director&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 1: Border + whole card is a link
+                a(href=&quot;#&quot;).card.card-curved-body.card-hover
+                  .card-floating-icon
+                    i.ai-instagram
+                  .card-img-top.card-img-gradient
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Sarah Cole&quot;)
+                  .card-body.text-center
+                    h3.h6.card-title.mb-2 Sarah Cole
+                    p.fs-xs.text-body.mb-0 Social d-flex strategist
+
+                // Team Style 1: Shadow + only icon is a link
+                .card.card-curved-body.card-hover.border-0.shadow
+                  a(href=&quot;#&quot;).card-floating-icon
+                    i.ai-mail
+                  .card-img-top.card-img-gradient
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Charlie Welch&quot;)
+                  .card-body.text-center
+                    h3.h6.card-title.mb-2 Charlie Welch
+                    p.fs-xs.text-body.mb-0 Financial director
+
+  // Style 2
+  section#team-style-2.pb-5.mb-md-2
+    h2.h4.mb-3 Style 2
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .card.border-0.shadow(style='max-width: 18rem;')
+              .card-img
+                img(src='../img/team/11.jpg' alt='Emma Brown')
+              .card-img-overlay.justify-content-end.text-center
+                h3.h6.text-light.mb-1 Emma Brown
+                p.fs-xs.text-light.mb-1 Content creator
+                .d-flex.justify-content-center.align-items-center
+                  a(href='#').text-light.text-decoration-none.p-1.mx-2
+                    i.ai-facebook
+                  a(href='#').text-light.text-decoration-none.p-1.mx-2
+                    i.ai-twitter
+                  a(href='#').text-light.text-decoration-none.p-1.mx-2
+                    i.ai-instagram
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 2 --&gt;
+                &lt;div class=&quot;card border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-img&quot;&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Emma Brown&quot;/&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-img-overlay justify-content-end text-center&quot;&gt;
+                    &lt;h3 class=&quot;h6 text-light mb-1&quot;&gt;Emma Brown&lt;/h3&gt;
+                    &lt;p class=&quot;fs-xs text-light mb-1&quot;&gt;Content creator&lt;/p&gt;
+                    &lt;div class=&quot;d-flex justify-content-center align-items-center&quot;&gt;
+                      &lt;a class=&quot;text-light text-decoration-none p-1 mx-2&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-facebook&quot;&gt;&lt;/i&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;text-light text-decoration-none p-1 mx-2&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;text-light text-decoration-none p-1 mx-2&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ai-instagram&quot;&gt;&lt;/i&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 2
+                .card.border-0.shadow
+                  .card-img
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Emma Brown&quot;)
+                  .card-img-overlay.justify-content-end.text-center
+                    h3.h6.text-light.mb-1 Emma Brown
+                    p.fs-xs.text-light.mb-1 Content creator
+                    .d-flex.justify-content-center.align-items-center
+                      a(href=&quot;#&quot;).text-light.text-decoration-none.p-1.mx-2
+                        i.ai-facebook
+                      a(href=&quot;#&quot;).text-light.text-decoration-none.p-1.mx-2
+                        i.ai-twitter
+                      a(href=&quot;#&quot;).text-light.text-decoration-none.p-1.mx-2
+                        i.ai-instagram
+
+  // Style 3
+  section#team-style-3.pb-5.mb-md-2
+    h2.h4.mb-3 Style 3
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-xl-10
+                .row
+                  .col-sm-6
+                    .mb-4.mb-sm-0.pt-1
+                      img(src='../img/team/17.jpg' alt='William Smith' width='96').d-inline-block.rounded.mb-3
+                      h3.h6.pt-1.mb-1 William Smith
+                      p.fs-ms.text-muted CEO, Co-founder at Company Ltd.
+                      a(href='#').btn-social.bs-facebook.bs-sm.me-2.mb-2
+                        i.ai-facebook
+                      a(href='#').btn-social.bs-twitter.bs-sm.me-2.mb-2
+                        i.ai-twitter
+                      a(href='#').btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                        i.ai-linkedin
+                      a(href='#').btn-social.bs-google.bs-sm.me-2.mb-2
+                        i.ai-google
+                  .col-sm-6
+                    .mb-4.mb-sm-0.pt-1.text-center
+                      img(src='../img/team/20.jpg' alt='Amanda Gallaher' width='96').d-inline-block.rounded-circle.mb-3
+                      h3.h6.pt-1.mb-1 Amanda Gallaher
+                      p.fs-ms.text-muted Chief of Marketing at Company Ltd.
+                      a(href='#').btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                        i.ai-twitter
+                      a(href='#').btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                        i.ai-messenger
+                      a(href='#').btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                        i.ai-pinterest
+                      a(href='#').btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                        i.ai-linkedin
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 3: Left aligned + rounded picture + solid socials --&gt;
+                &lt;div class=&quot;text-start&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;d-inline-block rounded mb-3&quot; width=&quot;96&quot; alt=&quot;William Smith&quot;&gt;
+                  &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;William Smith&lt;/h3&gt;
+                  &lt;p class=&quot;fs-ms text-muted&quot;&gt;CEO, Co-founder at Company Ltd.&lt;/p&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-facebook bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-facebook&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-twitter bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-linkedin bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-google bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-google&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Team Style 3: Center aligned + round picture + outline socials --&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;d-inline-block rounded-circle mb-3&quot; width=&quot;96&quot; alt=&quot;Amanda Gallaher&quot;&gt;
+                  &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;Amanda Gallaher&lt;/h3&gt;
+                  &lt;p class=&quot;fs-ms text-muted&quot;&gt;Chief of Marketing at Company Ltd.&lt;/p&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-twitter bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-messenger bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-messenger&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-pinterest bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-pinterest&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-linkedin bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 3: Left aligned + rounded picture + solid socials
+                .text-start
+                  img(src=&quot;path-to-image&quot;, alt=&quot;William Smith&quot; width=&quot;96&quot;).d-inline-block.rounded.mb-3
+                  h3.h6.pt-1.mb-1 William Smith
+                  p.fs-ms.text-muted CEO, Co-founder at Company Ltd.
+                  a(href=&quot;#&quot;).btn-social.bs-facebook.bs-sm.me-2.mb-2
+                    i.ai-facebook
+                  a(href=&quot;#&quot;).btn-social.bs-twitter.bs-sm.me-2.mb-2
+                    i.ai-twitter
+                  a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                    i.ai-linkedin
+                  a(href=&quot;#&quot;).btn-social.bs-google.bs-sm.me-2.mb-2
+                    i.ai-google
+
+                // Team Style 3: Center aligned + round picture + outline socials
+                .text-center
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Amanda Gallaher&quot; width=&quot;96&quot;).d-inline-block.rounded-circle.mb-3
+                  h3.h6.pt-1.mb-1 Amanda Gallaher
+                  p.fs-ms.text-muted Chief of Marketing at Company Ltd.
+                  a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-twitter
+                  a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-messenger
+                  a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-pinterest
+                  a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-linkedin
+
+  // Style 4
+  section#team-style-4.pb-5.mb-md-2
+    h2.h4.mb-3 Style 4
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-xl-11
+                .row
+                  .col-md-6
+                    .d-flex.align-items-start.pt-1.mb-4.mb-md-0
+                      img(src='../img/team/19.jpg' alt='Jonathan Doe' width='96').rounded
+                      .ps-3
+                        h3.h6.pt-1.mb-1 Jonathan Doe
+                        p.fs-ms.text-muted CEO, Co-founder at Company Ltd.
+                        a(href='#').btn-social.bs-facebook.bs-round.bs-sm.me-2.mb-2
+                          i.ai-facebook
+                        a(href='#').btn-social.bs-twitter.bs-round.bs-sm.me-2.mb-2
+                          i.ai-twitter
+                        a(href='#').btn-social.bs-linkedin.bs-round.bs-sm.me-2.mb-2
+                          i.ai-linkedin
+                        a(href='#').btn-social.bs-google.bs-round.bs-sm.me-2.mb-2
+                          i.ai-google
+                  .col-md-6
+                    .d-flex.align-items-start.pt-1.mb-4.mb-md-0
+                      .text-end.pe-3
+                        h3.h6.pt-1.mb-1 Barbara Palson
+                        p.fs-ms.text-muted Chief of Marketing at Company Ltd.
+                        a(href='#').btn-social.bs-twitter.bs-outline.bs-round.bs-sm.me-2.mb-2
+                          i.ai-twitter
+                        a(href='#').btn-social.bs-messenger.bs-outline.bs-round.bs-sm.me-2.mb-2
+                          i.ai-messenger
+                        a(href='#').btn-social.bs-pinterest.bs-outline.bs-round.bs-sm.me-2.mb-2
+                          i.ai-pinterest
+                        a(href='#').btn-social.bs-linkedin.bs-outline.bs-round.bs-sm.me-2.mb-2
+                          i.ai-linkedin
+                      img(src='../img/team/21.jpg' alt='Barbara Palson' width='96').rounded-circle
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 4: Picture on the left + rounded picture + solid round socials --&gt;
+                &lt;div class=&quot;d-flex align-items-start&quot;&gt;
+                  &lt;img class=&quot;rounded&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Jonathan Doe&quot;/&gt;
+                  &lt;div class=&quot;ps-3&quot;&gt;
+                    &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;Jonathan Doe&lt;/h3&gt;
+                    &lt;p class=&quot;fs-ms text-muted&quot;&gt;CEO, Co-founder at Company Ltd.&lt;/p&gt;
+                    &lt;a class=&quot;btn-social bs-facebook bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-facebook&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-google bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-google&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Team Style 4: Picture on the right + round picture + outline round socials --&gt;
+                &lt;div class=&quot;d-flex align-items-start&quot;&gt;
+                  &lt;div class=&quot;text-end pe-3&quot;&gt;
+                    &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;Barbara Palson&lt;/h3&gt;
+                    &lt;p class=&quot;fs-ms text-muted&quot;&gt;Chief of Marketing at Company Ltd.&lt;/p&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-outline bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-messenger bs-outline bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-messenger&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-pinterest bs-outline bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-pinterest&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-outline bs-round bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;img class=&quot;rounded-circle&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 4: Picture on the left + rounded picture + solid round socials
+                .d-flex.align-items-start
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Jonathan Doe&quot;, width=&quot;96&quot;).rounded
+                  .ps-3
+                    h3.h6.pt-1.mb-1 Jonathan Doe
+                    p.fs-ms.text-muted CEO, Co-founder at Company Ltd.
+                    a(href=&quot;#&quot;).btn-social.bs-facebook.bs-round.bs-sm.me-2.mb-2
+                      i.ai-facebook
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-round.bs-sm.me-2.mb-2
+                      i.ai-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-round.bs-sm.me-2.mb-2
+                      i.ai-linkedin
+                    a(href=&quot;#&quot;).btn-social.bs-google.bs-round.bs-sm.me-2.mb-2
+                      i.ai-google
+
+                // Team Style 4: Picture on the right + round picture + outline round socials
+                .d-flex.align-items-start
+                  .text-end.pe-3
+                    h3.h6.pt-1.mb-1 Barbara Palson
+                    p.fs-ms.text-muted Chief of Marketing at Company Ltd.
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.bs-round.bs-sm.me-2.mb-2
+                      i.ai-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.bs-round.bs-sm.me-2.mb-2
+                      i.ai-messenger
+                    a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.bs-round.bs-sm.me-2.mb-2
+                      i.ai-pinterest
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.bs-round.bs-sm.me-2.mb-2
+                      i.ai-linkedin
+                  img(src=&quot;path-to-image&quot;, alt=&quot;Barbara Palson&quot;, width=&quot;96&quot;).rounded-circle
+
+  // Style 5
+  section#team-style-5.pb-5.mb-md-2
+    h2.h4.mb-3 Style 5
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              .card.text-center.w-100.mb-4.me-4(style='max-width: 19rem;')
+                .card-body
+                  img(src='../img/team/18.jpg' alt='Jane Tanaka' width='96').d-inline-block.rounded.mb-3
+                  h3.h6.pt-1.mb-1 Jane Tanaka
+                  p.fs-ms.text-muted Lead Accountant at Company Ltd.
+                  ul.fs-sm.list-unstyled.mb-4
+                    li
+                      i.ai-phone.me-2
+                      a(href='tel:00331697720').nav-link-style 00 33 169 7720
+                    li.mb-0
+                      i.ai-mail.me-2
+                      a(href='mailto:ben.miller@example.com').nav-link-style j.tanaka@example.com
+                  a(href='#').btn-social.bs-facebook.bs-sm.me-2.mb-2
+                    i.ai-facebook
+                  a(href='#').btn-social.bs-twitter.bs-sm.me-2.mb-2
+                    i.ai-twitter
+                  a(href='#').btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                    i.ai-linkedin
+                  a(href='#').btn-social.bs-google.bs-sm.me-2.mb-2
+                    i.ai-google
+              .card.border-0.shadow.text-center.w-100.mb-4(style='max-width: 19rem;')
+                .card-body
+                  img(src='../img/team/22.jpg' alt='Sanomi Smith' width='96').d-inline-block.rounded-circle.mb-3
+                  h3.h6.pt-1.mb-1 Sanomi Smith
+                  p.fs-ms.text-muted Lead Accountant at Company Ltd.
+                  ul.fs-sm.list-unstyled.mb-4
+                    li
+                      i.ai-phone.me-2
+                      a(href='tel:00331697720').nav-link-style 00 33 169 7720
+                    li.mb-0
+                      i.ai-mail.me-2
+                      a(href='mailto:ben.miller@example.com').nav-link-style s.smith@example.com
+                  a(href='#').btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-twitter
+                  a(href='#').btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-messenger
+                  a(href='#').btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-pinterest
+                  a(href='#').btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                    i.ai-linkedin
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 5: Card border + rounded picture + solid socials --&gt;
+                &lt;div class=&quot;card text-center&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;img class=&quot;d-inline-block rounded mb-3&quot;, width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Jane Tanaka&quot;/&gt;
+                    &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;Jane Tanaka&lt;/h3&gt;
+                    &lt;p class=&quot;fs-ms text-muted&quot;&gt;Lead Accountant at Company Ltd.&lt;/p&gt;
+                    &lt;ul class=&quot;fs-sm list-unstyled mb-4&quot;&gt;
+                      &lt;li&gt;
+                        &lt;i class=&quot;ai-phone me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:00331697720&quot;&gt;00 33 169 7720&lt;/a&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ai-mail me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;mailto:ben.miller@example.com&quot;&gt;j.tanaka@example.com&lt;/a&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;a class=&quot;btn-social bs-facebook bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-facebook&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-google bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-google&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Team Style 5: Card shadow + round picture + outline socials --&gt;
+                &lt;div class=&quot;card border-0 shadow text-center&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;img class=&quot;d-inline-block rounded-circle mb-3&quot;, width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Sanomi Smith&quot;/&gt;
+                    &lt;h3 class=&quot;h6 pt-1 mb-1&quot;&gt;Sanomi Smith&lt;/h3&gt;
+                    &lt;p class=&quot;fs-ms text-muted&quot;&gt;Lead Accountant at Company Ltd.&lt;/p&gt;
+                    &lt;ul class=&quot;fs-sm list-unstyled mb-4&quot;&gt;
+                      &lt;li&gt;
+                        &lt;i class=&quot;ai-phone me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:00331697720&quot;&gt;00 33 169 7720&lt;/a&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ai-mail me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;mailto:ben.miller@example.com&quot;&gt;s.smith@example.com&lt;/a&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-messenger bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-messenger&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-pinterest bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-pinterest&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ai-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 5: Card border + rounded picture + solid socials
+                .card.text-center
+                  .card-body
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Jane Tanaka&quot;, width=&quot;96&quot;).d-inline-block.rounded.mb-3
+                    h3.h6.pt-1.mb-1 Jane Tanaka
+                    p.fs-ms.text-muted Lead Accountant at Company Ltd.
+                    ul.fs-sm.list-unstyled.mb-4
+                      li
+                        i.ai-phone.me-2
+                        a(href=&quot;tel:00331697720&quot;).nav-link-style
+                          | 00 33 169 7720
+                      li.mb-0
+                        i.ai-mail.me-2
+                        a(href=&quot;mailto:ben.miller@example.com&quot;).nav-link-style
+                          | j.tanaka@example.com
+                    a(href=&quot;#&quot;).btn-social.bs-facebook.bs-sm.me-2.mb-2
+                      i.ai-facebook
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-sm.me-2.mb-2
+                      i.ai-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                      i.ai-linkedin
+                    a(href=&quot;#&quot;).btn-social.bs-google.bs-sm.me-2.mb-2
+                      i.ai-google
+
+                // Team Style 5: Card shadow + round picture + outline socials
+                .card.border-0.shadow.text-center
+                  .card-body
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Sanomi Smith&quot;, width=&quot;96&quot;).d-inline-block.rounded-circle.mb-3
+                    h3.h6.pt-1.mb-1 Sanomi Smith
+                    p.fs-ms.text-muted Lead Accountant at Company Ltd.
+                    ul.fs-sm.list-unstyled.mb-4
+                      li
+                        i.ai-phone.me-2
+                        a(href=&quot;tel:00331697720&quot;).nav-link-style
+                          | 00 33 169 7720
+                      li.mb-0
+                        i.ai-mail.me-2
+                        a(href=&quot;mailto:ben.miller@example.com&quot;).nav-link-style
+                          | s.smith@example.com
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                      i.ai-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                      i.ai-messenger
+                    a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                      i.ai-pinterest
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                      i.ai-linkedin

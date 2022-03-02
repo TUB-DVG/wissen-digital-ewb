@@ -1,0 +1,225 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var parentMenu = 'Pages'
+  - var pageTitle = 'About'
+
+//- Navbar
+block navbar
+  include partials/navbar-solid
+
+//- Page Content
+block content
+
+  // Intro
+  section.container.my-lg-2.pt-5.pb-lg-7
+    .row.align-items-center
+      .col-lg-5.py-3.py-lg-0
+        h1 Our goals. Our mission.
+        h2.h3 How we help other companies to grow.
+        .py-4
+          p.callout Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+        a(href='https://www.youtube.com/watch?v=hTu0a4o97dU').btn-video.btn-video-primary.btn-video-sm.me-3
+        span.fs-sm.text-muted Get to know us better
+      .col-xl-6.col-lg-7.offset-xl-1.position-relative
+        .py-5(style='min-height: 543px;')
+          .d-none.d-lg-block.position-absolute.bg-no-repeat.bg-position-center.h-100(style='top: 0; left: -45px; width: 646px; background-image: url(img/pages/about/bg-shape.svg);')
+          .row.g-0.mx-n2.pt-lg-4
+            .col-sm-4.px-2.mb-3
+              a(href='#').card.h-100.card-body.py-5.justify-content-center.border-0.shadow-lg.text-center
+                i.ai-zap.text-primary.h1.mb-3
+                h3.h5.mb-0 Boost
+            .col-sm-4.px-2.mb-3
+              a(href='#').card.card-body.py-5.border-0.shadow-lg.text-center.mb-3
+                i.ai-pie-chart.text-danger.h1.mb-3
+                h3.h5.mb-0 Analize
+              a(href='#').card.card-body.py-5.border-0.shadow-lg.text-center
+                i.ai-refresh-ccw.text-info.h1.mb-3
+                h3.h5.mb-0 Automate
+            .col-sm-4.px-2.mb-3
+              a(href='#').card.card-body.py-5.border-0.shadow-lg.text-center.mb-3
+                i.ai-folder-plus.text-success.h1.mb-3
+                h3.h5.mb-0 Create
+              a(href='#').card.card-body.py-5.border-0.shadow-lg.text-center
+                i.ai-share.text-warning.h1.mb-3
+                h3.h5.mb-0 Share
+
+
+  // Statistics
+  section.bg-secondary.py-5.mt-n4.mb-6.mt-lg-0.mb-lg-7
+    .container.py-3
+      .row
+        .col-md-3.col-sm-6.text-center.py-3
+          h3.display-4 15
+          p.text-muted.mb-0 Years of experience
+        .col-md-3.col-sm-6.text-center.py-3
+          h3.display-4 2k+
+          p.text-muted.mb-0 Employees worldwide
+        .col-md-3.col-sm-6.text-center.py-3
+          h3.display-4 90%
+          p.text-muted.mb-0 Positive feedback
+        .col-md-3.col-sm-6.text-center.py-3
+          h3.display-4 100
+          p.text-muted.mb-0 Successfully completed projects
+  
+
+  // Team
+  section.container.mb-5.pb-3.pb-lg-0.mb-lg-7
+    h2.pb-4.mb-4.text-center People behind our success
+    .row.mb-3
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:sarah.cole@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/01.jpg' alt='Sarah Cole')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sarah Cole
+            p.fs-xs.text-body.mb-0 CEO, Co-Founder
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:charlie.welch@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/02.jpg' alt='Charlie Welch')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Charlie Welch
+            p.fs-xs.text-body.mb-0 CTO, Co-Founder
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:emma.brown@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/03.jpg' alt='Emma Brown')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Emma Brown
+            p.fs-xs.text-body.mb-0 Director of Marketing
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:rosalie.lyons@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/04.jpg' alt='Rosalie Lyons')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Rosalie Lyons
+            p.fs-xs.text-body.mb-0 Financial Director
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:jane.tanaka@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/05.jpg' alt='Jane Tanaka')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Jane Tanaka
+            p.fs-xs.text-body.mb-0 Lead PR Strategist
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:sanomi.smith@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/06.jpg' alt='Sanomi Smith')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Sanomi Smith
+            p.fs-xs.text-body.mb-0 Director of Human Resources
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:olivia.jones@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/07.jpg' alt='Olivia Jones')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Olivia Jones
+            p.fs-xs.text-body.mb-0 Content Manager
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.card-curved-body.card-hover.border-0.shadow.mx-auto(style='max-width: 21rem;')
+          a(href='mailto:richard.davis@example.com').card-floating-icon: i.ai-mail
+          .card-img-top.card-img-gradient
+            img(src='img/team/08.jpg' alt='Richard Davis')
+          .card-body.text-center
+            h3.h6.card-title.mb-2 Richard Davis
+            p.fs-xs.text-body.mb-0 Lead Accountant
+    .card.card-body.py-5.text-center.text-md-end
+      .d-md-flex.justify-content-center.align-items-center
+        .mb-4.mb-md-0.me-md-5.me-lg-6.me-xl-7
+          h3 Want to be part of our team? We are hiring
+          p.text-muted.mb-0 Check our current opennings and submit your application
+        a(href='#').btn.btn-gradient Submit your application
+  
+
+  // Clients
+  section.container.pb-5.pb-lg-6
+    h2.mb-5.text-center We work with world’s top companies
+    .row
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/01_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/01_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/02_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/02_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/03_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/03_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/04_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/04_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/05_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/05_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/06_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/06_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/07_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/07_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/08_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/08_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/09_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/09_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/10_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/10_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/11_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/11_gray.png' alt='Brand logo' width='150').swap-from
+      .col-md-3.col-sm-4.col-6.mb-grid-gutter
+        a(href='#').card.border-0.shadow.card-hover.py-3.py-sm-4
+          .card-body.px-1.py-0.text-center
+            .swap-image
+              img(src='img/shop/brands/12_color.png' alt='Brand logo' width='150').swap-to
+              img(src='img/shop/brands/12_gray.png' alt='Brand logo' width='150').swap-from
+
+
+//- Footer
+block footer
+  include partials/footer-default

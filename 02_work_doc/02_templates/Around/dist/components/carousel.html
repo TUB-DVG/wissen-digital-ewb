@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Around | Carousel</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="../safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/themes/prism.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/toolbar/prism-toolbar.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.css"/>
+    <link rel="stylesheet" media="screen" href="../vendor/tiny-slider/dist/tiny-slider.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+  </head>
+  <!-- Body-->
+  <body>
+    <main class="container-fluid">
+      <!-- Main content-->
+      <section class="offcanvas-enabled-start row pb-3 pb-md-4">
+        <div class="col-xxl-9">
+          <!-- Navbar-->
+          <header class="navbar navbar-expand-lg navbar-light fixed-top navbar-shadow bg-light px-3 px-lg-4" data-scroll-header data-fixed-element><a class="navbar-brand d-lg-none" href="typography.html" style="min-width: 7rem;"><img src="../img/logo/logo-icon.png" alt="Around" width="58"></a>
+            <ul class="navbar-nav ms-auto d-none d-lg-flex">
+              <li class="nav-item"><a class="nav-link" href="../index.html"><i class="ai-eye align-middle mt-n1 me-2"></i>Live preview</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="../docs/dev-setup.html"><i class="ai-file-text align-middle mt-n1 me-2"></i>Documentation</a></li>
+              <li class="nav-item">
+                <div class="nav-link disabled text-border px-1">|</div>
+              </li>
+            </ul>
+            <button class="navbar-toggler d-block d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#componentsNav"><span class="navbar-toggler-icon"></span></button><a class="btn btn-primary btn-shadow ms-3" href="https://themes.getbootstrap.com/product/around-multipurpose-template-ui-kit/" target="_blank" rel="noopener"><i class="ai-shopping-cart me-2 d-none d-sm-inline-block"></i>Buy now</a>
+          </header>
+          <!-- Side navigation (Off-canvas)-->
+          <aside class="offcanvas offcanvas-expand bg-dark" id="componentsNav">
+            <div class="offcanvas-header bg-darker d-none d-lg-block py-2"><a class="navbar-brand py-1" href="typography.html"><img src="../img/logo/logo-light.png" alt="Around" width="153"></a><span class="badge bg-danger">UI Kit</span></div>
+            <div class="offcanvas-header bg-darker d-flex d-lg-none align-items-center">
+              <div class="d-flex align-items-center mt-1">
+                <h5 class="text-light mb-0 me-3">Menu</h5><span class="badge bg-danger">UI Kit</span>
+              </div>
+              <button class="btn-close btn-close-white" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="d-flex d-lg-none align-items-center py-4 px-3 border-bottom border-light"><a class="btn btn-outline-light w-100 btn-sm me-2" href="../index.html"><i class="ai-eye me-2"></i>Preview</a><a class="btn btn-outline-light w-100 btn-sm mt-0" href="../docs/dev-setup.html"><i class="ai-file-text me-2"></i>Docs</a></div>
+            <div class="offcanvas-body pt-4 pb-grid-gutter" data-simplebar data-simplebar-inverse>
+              <h6 class="text-light pt-2 pb-2 border-bottom border-light">Content</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="typography.html">Typography</a><a class="nav-link fs-sm" href="icon-font.html">Icon font</a><a class="nav-link fs-sm" href="code.html">Code</a><a class="nav-link fs-sm" href="images.html">Images &amp; figures</a><a class="nav-link fs-sm" href="tables.html">Tables</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Components</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="accordion.html">Accordion</a><a class="nav-link fs-sm" href="alerts.html">Alerts</a><a class="nav-link fs-sm" href="badge.html">Badges</a><a class="nav-link fs-sm" href="blog-components.html">Blog components</a><a class="nav-link fs-sm" href="breadcrumb.html">Breadcrumb</a><a class="nav-link fs-sm" href="buttons.html">Buttons</a><a class="nav-link fs-sm" href="button-group.html">Button group</a><a class="nav-link fs-sm" href="cards.html">Cards</a><a class="nav-link fs-sm active" href="carousel.html">Carousel</a><a class="nav-link fs-sm" href="charts.html">Charts</a><a class="nav-link fs-sm" href="collapse.html">Collapse</a><a class="nav-link fs-sm" href="countdown.html">Countdown</a><a class="nav-link fs-sm" href="contacts-card.html">Contacts card</a><a class="nav-link fs-sm" href="date-picker.html">Date / time picker</a><a class="nav-link fs-sm" href="dropdowns.html">Dropdowns</a><a class="nav-link fs-sm" href="forms.html">Forms</a><a class="nav-link fs-sm" href="frames.html">Frames</a><a class="nav-link fs-sm" href="gallery.html">Gallery</a><a class="nav-link fs-sm" href="hotspots.html">Hotspots</a><a class="nav-link fs-sm" href="input-group.html">Input group</a><a class="nav-link fs-sm" href="list-group.html">List group</a><a class="nav-link fs-sm" href="modal.html">Modal</a><a class="nav-link fs-sm" href="navbar.html">Navbar</a><a class="nav-link fs-sm" href="offcanvas.html">Offcanvas</a><a class="nav-link fs-sm" href="pagination.html">Pagination</a><a class="nav-link fs-sm" href="parallax.html">Parallax</a><a class="nav-link fs-sm" href="pills.html">Pills</a><a class="nav-link fs-sm" href="placeholders.html">Placeholders</a><a class="nav-link fs-sm" href="popovers.html">Popovers</a><a class="nav-link fs-sm" href="portfolio-components.html">Portfolio components</a><a class="nav-link fs-sm" href="pricing.html">Pricing</a><a class="nav-link fs-sm" href="progress.html">Progress</a><a class="nav-link fs-sm" href="shop-components.html">Shop components</a><a class="nav-link fs-sm" href="social-buttons.html">Social buttons</a><a class="nav-link fs-sm" href="spinners.html">Spinners</a><a class="nav-link fs-sm" href="tabs.html">Tabs</a><a class="nav-link fs-sm" href="team.html">Team</a><a class="nav-link fs-sm" href="testimonials.html">Testimonials / reviews</a><a class="nav-link fs-sm" href="toasts.html">Toasts</a><a class="nav-link fs-sm" href="tooltips.html">Tooltips</a><a class="nav-link fs-sm" href="btn-video.html">Video button</a><a class="nav-link fs-sm" href="widgets.html">Widgets</a></nav>
+              <h6 class="text-light pt-3 pb-2 border-bottom border-light">Utilities</h6>
+              <nav class="widget-nav nav nav-light flex-column"><a class="nav-link fs-sm" href="https://getbootstrap.com/docs/5.1/utilities/borders/" target="_blank" rel="noopener">Bootstrap</a><a class="nav-link fs-sm" href="utilities.html">Around</a></nav>
+            </div>
+          </aside>
+          <!-- Page title-->
+          <div class="border-bottom pt-5 pb-2 mt-2 mb-5">
+            <h1 class="mt-lg-4 pt-5">Carousel</h1>
+            <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+              <p class="text-muted">A slideshow component for cycling through elements (images or slides of text) like a carousel.</p>
+              <div class="ps-md-4 mb-3"><span class="badge bg-danger">Around component</span></div>
+            </div>
+          </div>
+          <div class="alert alert-info mb-4" role="alert">
+            <div class="d-flex py-2"><i class="ai-alert-circle fs-xl me-2 me-sm-3"></i>
+              <p class="text-break fs-md mb-0">Make sure to link to <strong>Tiny Slider css and js</strong> files in your document: <strong>vendor/tiny-slider/dist/tiny-slider.css</strong> and <strong>vendor/tiny-slider/dist/min/tiny-slider.js</strong>. Use this page as a reference.</p>
+            </div>
+          </div>
+          <style>
+            .example-code {
+              padding-top: 0 !important;
+            }
+            div.code-toolbar > .toolbar {
+              display: none;
+            }
+          </style>
+          <div class="bg-secondary rounded-3 p-4 mb-5">
+            <p class="fs-sm">You can alter carousel look and behaviour via modifier CSS classes and flexible data API.</p>
+            <h6 class="fs-sm">Basic HTML structure:</h6>
+            <pre class="example-code"><code class="lang-html">&lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{}'&gt;
+    &lt;!-- Carousel slides here --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h6 class="fs-sm">Modifier classes:</h6>
+            <ul class="list-unstyled fs-sm">
+              <li><code>tns-controls-center</code><span>&nbsp;- Center align controls (prev/next buttons).</span></li>
+              <li><code>tns-controls-left</code><span>&nbsp;- Left align controls (prev/next buttons).</span></li>
+              <li><code>tns-controls-inside</code><span>&nbsp;- Position controls (prev/next buttons) absolutely on top of the carousel content (on sides). Will not work with the above positioning classes.</span></li>
+              <li><code>tns-controls-onhover</code><span>&nbsp;- Show controls (prev/next buttons) only when user hovers over the carousel. Works only with <code>tns-controls-inside</code></span></li>
+              <li><code>tns-nav-inside</code><span>&nbsp;- Position dots absolutely on top of the carousel content.</span></li>
+              <li><code>tns-nav-light</code><span>&nbsp;- Switch dots skin to light version.</span></li>
+            </ul>
+            <h6 class="fs-sm">Data API:</h6><code class="fs-sm">data-carousel-options = '{}'</code>:
+            <ul class="list-unstyled fs-sm">
+              <li><code>"mode": "carousel" | "gallery"</code><span>&nbsp;- With carousel everything slides to the side, while gallery uses fade animations and changes all slides at once.</span></li>
+              <li><code>"axis": "horizontal" | "vertical"</code><span>&nbsp;- The axis of the slider.</span></li>
+              <li><code>"items": 1</code><span>&nbsp;- How many items to display</span></li>
+              <li><code>"nav": true/false</code><span>&nbsp;- Enable/disable dots control</span></li>
+              <li><code>"controls": true/false</code><span>&nbsp;- Enable/disable prev / next arrow buttons</span></li>
+              <li><code>"loop": true/false</code><span>&nbsp;- Enable/disable infinite loop</span></li>
+              <li><code>"speed": 300</code><span>&nbsp;- Speed of the slide animation (in "ms")</span></li>
+              <li><code>"autoplay": true/false</code><span>&nbsp;- Toggles the automatic change of slides</span></li>
+              <li><code>"autoplayTimeout": 5000</code><span>&nbsp;- Timeou between transition. Value in ms | 1000ms = 1s</span></li>
+              <li><code>"gutter": 0</code><span>&nbsp;- Space between carousel items (in px)</span></li>
+              <li><code>"autoHeight": true/false</code><span>&nbsp;- Height of slider container changes according to each slide's height.</span></li>
+              <li><code>"responsive": {"0": {"items": 1}, "768": {"items": 2}, ...}</code><span>&nbsp;- How many items to display on each screen size. Options are not limited to number of items. You can change any option based on screen size.</span></li>
+              <li class="fw-medium pt-3">For more options please visit<a class="ms-2" href="https://github.com/ganlanyuan/tiny-slider#options" target="_blank" rel="noopener">https://github.com/ganlanyuan/tiny-slider#options</a></li>
+            </ul>
+            <h6 class="fs-sm">Layer animation classes:</h6>
+            <ul class="list-unstyled fs-sm mb-0">
+              <li><code>from-top</code></li>
+              <li><code>from-bottom</code></li>
+              <li><code>from-left</code></li>
+              <li><code>from-right</code></li>
+              <li><code>scale-up</code></li>
+              <li><code>scale-down</code></li>
+              <li><code>fade-in</code></li>
+              <li><code>delay-1</code></li>
+              <li><code>delay-2</code></li>
+              <li><code>delay-3</code></li>
+              <li><code>delay-4</code></li>
+            </ul>
+          </div>
+          <!-- All controls: Dots + Arrows + Progress-->
+          <section class="pb-5 mb-md-2" id="carousel-all-controls">
+            <h2 class="h4 mb-3">All controls: Dots + Arrows + Progress</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result1" data-bs-toggle="tab" role="tab" aria-controls="result1" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html1" data-bs-toggle="tab" role="tab" aria-controls="html1" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug1" data-bs-toggle="tab" role="tab" aria-controls="pug1" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result1" role="tabpanel">
+                    <div class="tns-carousel-wrapper tns-nav-inside tns-nav-light" style="max-width: 50rem;">
+                      <div class="tns-carousel-progress ms-auto mb-3">
+                        <div class="text-sm text-muted text-center mb-2"><span class="tns-current-slide me-1"></span>of<span class="tns-total-slides ms-1"></span></div>
+                        <div class="progress">
+                          <div class="progress-bar bg-primary" role="progressbar"></div>
+                        </div>
+                      </div>
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;loop&quot;: false, &quot;gutter&quot;: 15}">
+                        <div><img class="rounded-3" src="../img/components/carousel/01.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/02.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/03.jpg" alt="Image"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- All controls: Dots + Arrows + Progress --&gt;
+&lt;div class=&quot;tns-carousel-wrapper tns-nav-inside tns-nav-light&quot;&gt;
+  &lt;div class=&quot;tns-carousel-progress ms-auto mb-3&quot;&gt;
+    &lt;div class=&quot;text-sm text-muted text-center mb-2&quot;&gt;
+      &lt;span class=&quot;tns-current-slide me-1&quot;&gt;&lt;/span&gt;
+      of
+      &lt;span class=&quot;tns-total-slides ms-1&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;progress&quot;&gt;
+      &lt;div class=&quot;progress-bar bg-primary&quot; role=&quot;progressbar&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;loop&quot;: false, &quot;gutter&quot;: 15}'&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug1" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// All controls: Dots + Arrows + Progress
+.tns-carousel-wrapper.tns-nav-inside.tns-nav-light
+  .tns-carousel-progress.ms-auto.mb-3
+    .text-sm.text-muted.text-center.mb-2
+      span.tns-current-slide.me-1
+      | of
+      span.tns-total-slides.ms-1
+    .progress
+      .progress-bar.bg-primary(role=&quot;progressbar&quot;)
+  .tns-carousel-inner(data-carousel-options = '{&quot;loop&quot;: false, &quot;gutter&quot;: 15}')
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Controls position: Dots outside + Arrows inside-->
+          <section class="pb-5 mb-md-2" id="carousel-controls-position">
+            <h2 class="h4 mb-3">Controls position: Dots outside + Arrows inside</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result2" data-bs-toggle="tab" role="tab" aria-controls="result2" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html2" data-bs-toggle="tab" role="tab" aria-controls="html2" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug2" data-bs-toggle="tab" role="tab" aria-controls="pug2" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result2" role="tabpanel">
+                    <div class="tns-carousel-wrapper tns-controls-inside" style="max-width: 50rem;">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;gutter&quot;: 15}">
+                        <div><img class="rounded-3" src="../img/components/carousel/04.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/01.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/03.jpg" alt="Image"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Controls position: Dots outside + Arrows inside --&gt;
+&lt;div class=&quot;tns-carousel-wrapper tns-controls-inside&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;gutter&quot;: 15}'&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug2" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Controls position: Dots outside + Arrows inside
+.tns-carousel-wrapper.tns-controls-inside
+  .tns-carousel-inner(data-carousel-options = '{&quot;gutter&quot;: 15}')
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Fade transition + Layer animations-->
+          <section class="pb-5 mb-md-2" id="carousel-fade-animations">
+            <h2 class="h4 mb-3">Fade transition + Layer animations</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result3" data-bs-toggle="tab" role="tab" aria-controls="result3" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html3" data-bs-toggle="tab" role="tab" aria-controls="html3" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug3" data-bs-toggle="tab" role="tab" aria-controls="pug3" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result3" role="tabpanel">
+                    <div class="tns-carousel-wrapper tns-controls-center" style="max-width: 50rem;">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}">
+                        <div>
+                          <div class="rounded-3 bg-faded-primary text-center py-6 px-3">
+                            <h3 class="from-top">From top to bottom</h3>
+                            <p class="fs-lg mb-4 pb-3 from-bottom delay-1">From bottom to top</p>
+                            <button class="btn btn-primary scale-down delay-2" type="button">Scale down</button>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="rounded-3 bg-faded-success text-center py-6 px-3">
+                            <h3 class="from-left">From left to right</h3>
+                            <p class="fs-lg mb-4 pb-3 from-right">From right to left</p>
+                            <button class="btn btn-success scale-up delay-2" type="button">Scale up</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Fade transition + Layer animations --&gt;
+&lt;div class=&quot;tns-carousel-wrapper tns-controls-center&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}'&gt;
+    &lt;div&gt;
+      &lt;div class=&quot;rounded-3 bg-faded-primary text-center py-6 px-3&quot;&gt;
+        &lt;h3 class=&quot;from-top&quot;&gt;From top to bottom&lt;/h3&gt;
+        &lt;p class=&quot;fs-lg mb-4 pb-3 from-bottom delay-1&quot;&gt;From bottom to top&lt;/p&gt;
+        &lt;button class=&quot;btn btn-primary scale-down delay-2&quot; type=&quot;button&quot;&gt;Scale down&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class=&quot;rounded-3 bg-faded-success text-center py-6 px-3&quot;&gt;
+        &lt;h3 class=&quot;from-left&quot;&gt;From left to right&lt;/h3&gt;
+        &lt;p class=&quot;fs-lg mb-4 pb-3 from-right&quot;&gt;From right to left&lt;/p&gt;
+        &lt;button class=&quot;btn btn-success scale-up delay-2&quot; type=&quot;button&quot;&gt;Scale up&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug3" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Fade transition + Layer animations
+.tns-carousel-wrapper.tns-controls-center
+  .tns-carousel-inner(data-carousel-options = '{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}')
+    div
+      .rounded-3.bg-faded-primary.text-center.py-6.px-3
+        h3.from-top From top to bottom
+        p.fs-lg.mb-4.pb-3.from-bottom.delay-1 From bottom to top
+        button(type=&quot;button&quot;).btn.btn-primary.scale-down.delay-2
+          | Scale down
+    div
+      .rounded-3.bg-faded-success.text-center.py-6.px-3
+        h3.from-left From left to right
+        p.fs-lg.mb-4.pb-3.from-right From right to left
+        button(type=&quot;button&quot;).btn.btn-success.scale-up.delay-2
+          | Scale up
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Vertical carousel + Arrows visible on hover-->
+          <section class="pb-5 mb-md-2" id="carousel-vertical">
+            <h2 class="h4 mb-3">Vertical carousel + Arrows visible on hover</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result4" data-bs-toggle="tab" role="tab" aria-controls="result4" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html4" data-bs-toggle="tab" role="tab" aria-controls="html4" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug4" data-bs-toggle="tab" role="tab" aria-controls="pug4" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result4" role="tabpanel">
+                    <div class="tns-carousel-wrapper tns-nav-inside tns-nav-light tns-controls-inside tns-controls-onhover" style="max-width: 50rem;">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;axis&quot;: &quot;vertical&quot;, &quot;gutter&quot;: 15}">
+                        <div><img class="rounded-3" src="../img/components/carousel/03.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/02.jpg" alt="Image"></div>
+                        <div><img class="rounded-3" src="../img/components/carousel/01.jpg" alt="Image"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Vertical carousel + Arrows visible on hover --&gt;
+&lt;div class=&quot;tns-carousel-wrapper tns-nav-inside tns-nav-light tns-controls-inside tns-controls-onhover&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;axis&quot;: &quot;vertical&quot;, &quot;gutter&quot;: 15}'&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded-3&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug4" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Vertical carousel + Arrows visible on hover
+.tns-carousel-wrapper.tns-nav-inside.tns-nav-light.tns-controls-inside.tns-controls-onhover
+  .tns-carousel-inner(data-carousel-options = '{&quot;axis&quot;: &quot;vertical&quot;, &quot;gutter&quot;: 15}')
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded-3
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Responsive carousel with multiple items-->
+          <section class="pb-5 mb-md-2" id="carousel-multiple">
+            <h2 class="h4 mb-3">Responsive carousel with multiple items</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result5" data-bs-toggle="tab" role="tab" aria-controls="result5" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html5" data-bs-toggle="tab" role="tab" aria-controls="html5" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug5" data-bs-toggle="tab" role="tab" aria-controls="pug5" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result5" role="tabpanel">
+                    <div class="tns-carousel-wrapper">
+                      <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 3, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 18}, &quot;1100&quot;:{&quot;gutter&quot;: 24}}}">
+                        <div><img class="rounded" src="../img/components/carousel/01.jpg" alt="Image"></div>
+                        <div><img class="rounded" src="../img/components/carousel/02.jpg" alt="Image"></div>
+                        <div><img class="rounded" src="../img/components/carousel/03.jpg" alt="Image"></div>
+                        <div><img class="rounded" src="../img/components/carousel/04.jpg" alt="Image"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html5" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Responsive carousel with multiple items --&gt;
+&lt;div class=&quot;tns-carousel-wrapper&quot;&gt;
+  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 3, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},"768":{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;gutter&quot;: 24}}}'&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;img class=&quot;rounded&quot; src=&quot;path-to-image&quot; alt=&quot;Image&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug5" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Responsive carousel with multiple items
+.tns-carousel-wrapper
+  .tns-carousel-inner(data-carousel-options = '{&quot;items&quot;: 3, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1, &quot;gutter&quot;: 16},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 16},"768":{&quot;items&quot;:3, &quot;gutter&quot;: 16}, &quot;1100&quot;:{&quot;gutter&quot;: 24}}}')
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded
+    div
+      img(src=&quot;path-to-image&quot;, alt=&quot;Image&quot;).rounded
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Default Bootstrap carousel-->
+          <section class="pb-5 mb-md-2" id="carousel-default-bs">
+            <h2 class="h4 mb-3">Default Bootstrap carousel</h2>
+            <div class="card border-0 shadow-lg">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#result6" data-bs-toggle="tab" role="tab" aria-controls="result6" aria-selected="true">Result</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#html6" data-bs-toggle="tab" role="tab" aria-controls="html6" aria-selected="false">HTML</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#pug6" data-bs-toggle="tab" role="tab" aria-controls="pug6" aria-selected="false">Pug</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="result6" role="tabpanel">
+                    <div class="carousel slide" id="carouselExample" data-bs-ride="carousel" style="max-width: 50rem;">
+                      <ol class="carousel-indicators">
+                        <li class="active" data-bs-target="#carouselExample" data-bs-slide-to="0"></li>
+                        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active"><img src="../img/components/carousel/04.jpg" alt="Image"></div>
+                        <div class="carousel-item"><img src="../img/components/carousel/01.jpg" alt="Image"></div>
+                        <div class="carousel-item"><img src="../img/components/carousel/03.jpg" alt="Image"></div>
+                      </div><a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></a>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="html6" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-html">&lt;!-- Default Bootstrap carousel --&gt;
+&lt;div id=&quot;carouselExample&quot; class=&quot;carousel slide&quot; data-bs-ride=&quot;carousel&quot;&gt;
+  &lt;ol class=&quot;carousel-indicators&quot;&gt;
+    &lt;li data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+    &lt;li data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+    &lt;li data-bs-target=&quot;#carouselExample&quot; data-bs-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+  &lt;/ol&gt;
+  &lt;div class=&quot;carousel-inner&quot;&gt;
+    &lt;div class=&quot;carousel-item active&quot;&gt;
+      &lt;img src=&quot;path-to-image&quot; alt=&quot;Image&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;img src=&quot;path-to-image&quot; alt=&quot;Image&quot;&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;carousel-item&quot;&gt;
+      &lt;img src=&quot;path-to-image&quot; alt=&quot;Image&quot;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a class=&quot;carousel-control-prev&quot; href=&quot;#carouselExample&quot; role=&quot;button&quot; data-bs-slide=&quot;prev&quot;&gt;
+    &lt;span class=&quot;carousel-control-prev-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;visually-hidden&quot;&gt;Previous&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a class=&quot;carousel-control-next&quot; href=&quot;#carouselExample&quot; role=&quot;button&quot; data-bs-slide=&quot;next&quot;&gt;
+    &lt;span class=&quot;carousel-control-next-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;visually-hidden&quot;&gt;Next&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                  <div class="tab-pane fade" id="pug6" role="tabpanel">
+                    <pre class="line-numbers"><code class="lang-pug">// Default Bootstrap carousel
+#carouselExample.carousel.slide(data-bs-ride=&quot;carousel&quot;)
+  ol.carousel-indicators
+    li(data-bs-target=&quot;#carouselExample&quot;, data-bs-slide-to=&quot;0&quot;).active
+    li(data-bs-target=&quot;#carouselExample&quot;, data-bs-slide-to=&quot;1&quot;)
+    li(data-bs-target=&quot;#carouselExample&quot;, data-bs-slide-to=&quot;2&quot;)
+  .carousel-inner
+    .carousel-item.active
+      +image(&quot;path-to-image&quot;, &quot;Image&quot;)
+    .carousel-item
+      +image(&quot;path-to-image&quot;, &quot;Image&quot;)
+    .carousel-item
+      +image(&quot;path-to-image&quot;, &quot;Image&quot;)
+  a(href=&quot;#carouselExample&quot;, role=&quot;button&quot;, data-bs-slide=&quot;prev&quot;).carousel-control-prev
+    span(aria-hidden=&quot;true&quot;).carousel-control-prev-icon
+    span.visually-hidden Previous
+  a(href=&quot;#carouselExample&quot;, role=&quot;button&quot;, data-bs-slide=&quot;next&quot;).carousel-control-next
+    span(aria-hidden=&quot;true&quot;).carousel-control-next-icon
+    span.visually-hidden Next</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- Quick (anchor) navigation-->
+        <div class="col-xxl-3 d-none d-xxl-block ps-5">
+          <aside class="sticky-top pt-5">
+            <div class="pt-5 mt-5">
+              <div class="ps-4 border-start">
+                <h3 class="h5">Jump to</h3><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-all-controls">All controls: Dots + Arrows + Progress</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-controls-position">Controls position: Dots outside + Arrows inside</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-fade-animations">Fade transition + Layer animations</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-vertical">Vertical carousel + Arrows visible on hover</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-multiple">Responsive carousel with multiple items</a><a class="nav-link fs-sm mb-2 p-0" data-scroll href="#carousel-default-bs">Default Bootstrap carousel</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-core.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-markup.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-clike.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-javascript.min.js"></script>
+    <script src="../vendor/prismjs/components/prism-pug.min.js"></script>
+    <script src="../vendor/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="../vendor/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="../vendor/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="../vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <!-- Main theme script-->
+    <script src="../js/theme.min.js"></script>
+  </body>
+</html>

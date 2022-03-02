@@ -1,0 +1,328 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Product Landing - Software'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-dark
+
+//- Page Content
+block content
+
+  // Hero
+  section.position-relative.bg-faded-primary.pt-7.pb-5.pb-md-6.pb-lg-7.overflow-hidden
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    .container.pt-4.pt-md-5.pt-lg-0
+      .row.align-items-center
+        .col-lg-4.text-center.text-lg-start
+          h1.mb-3 New way to work with your team!
+          p.fs-lg.text-muted.mb-4 Collaboration on the project is fast and easy with our task management app.
+          form.d-flex.pt-4.mx-auto.mx-lg-0(style='max-width: 460px;')
+            input(type='email' placeholder='Type your email...' required).form-control.me-3
+            button(type='submit').btn.btn-success Start free trial
+        .col-xl-7.col-lg-8.offset-xl-1.pt-lg-3
+          .tns-carousel-wrapper.bg-size-cover.mx-auto.pt-6.pb-2(style='max-width: 705px; background-image: url(img/demo/software-landing/slider/shape.png);')
+            .position-relative
+              .frame-browser-label
+                .tns-carousel-label
+                  i.ai-calendar
+                  span Team Scheduling
+              .frame-browser-body
+                .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "controls": false, "nav": false, "autoplay": true, "autoplayTimeout": 6000}')
+                  div(data-carousel-label='<i class="ai-calendar"></i><span>Team Scheduling</span>')
+                    img(src='img/demo/software-landing/slider/slide01.png' alt='Screenshot').rounded
+                  div(data-carousel-label='<i class="ai-user"></i><span>Account Management</span>')
+                    img(src='img/demo/software-landing/slider/slide02.png' alt='Screenshot').rounded
+                  div(data-carousel-label='<i class="ai-mail"></i><span>Built-in Messages</span>')
+                    img(src='img/demo/software-landing/slider/slide03.png' alt='Screenshot').rounded
+            .tns-carousel-pager.pt-4.text-nowrap.text-center.mt-4
+              button(data-nav data-goto='1').active
+              button(data-nav data-goto='2')
+              button(data-nav data-goto='3')
+
+
+  // Features section #1
+  section.container.py-5.py-md-6.py-lg-7
+    .row.pt-2
+      .col-sm-4.mb-grid-gutter.pb-1
+        .mx-auto.text-center(style='max-width: 278px;')
+          img(src='img/demo/software-landing/icons/01.svg' alt='Simple' width='56').d-inline-block.mb-3
+          h3.h5 Simple
+          p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      .col-sm-4.mb-grid-gutter.pb-1
+        .mx-auto.text-center(style='max-width: 278px;')
+          img(src='img/demo/software-landing/icons/02.svg' alt='Fast' width='56').d-inline-block.mb-3
+          h3.h5 Fast
+          p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      .col-sm-4.mb-grid-gutter.pb-1
+        .mx-auto.text-center(style='max-width: 278px;')
+          img(src='img/demo/software-landing/icons/03.svg' alt='Organized' width='67').d-inline-block.mb-3
+          h3.h5 Organized
+          p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+
+  // Split section (Video popup)
+  section.bg-secondary
+    .row.g-0
+      .col-md-6.py-7.position-relative.bg-size-cover.order-md-2.overflow-hidden(style='background-image: url(img/demo/software-landing/video-bg.jpg);')
+        span.position-absolute.top-0.start-0.w-100.h-100.bg-black(style='opacity: 35%;')
+        .position-relative.zindex-5.d-flex.flex-column.align-items-center.justify-content-center.h-100.px-3.py-4.py-lg-7
+          a(href='https://www.youtube.com/watch?v=YW8VAy85oUE' data-sub-html='<h6 class="fs-sm text-light">Instagram Marketing Conference 2020</h6>').btn-video
+        .shape.shape-left.bg-secondary.d-none.d-md-block
+          svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 264.8 670')
+            path(fill='currentColor' d='M264.8,669.8v0.2H0V0h7.5C5.7,23.7,4.8,47.8,4.8,72.1C4.8,332,110.3,557.6,264.8,669.8z')
+      .col-md-6.px-3.ps-xl-0.pe-lg-5.pe-xl-7.py-2.py-lg-4.order-md-1
+        .ms-md-auto.me-sm-7.py-5.my-sm-0.py-md-6.py-lg-7(style='max-width: 400px;')
+          h2.mb-3.pb-1 How it works
+          p Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.
+          ul.list-unstyled.fs-sm
+            li.d-flex.align-items-center
+              i.ai-check-circle.fs-lg.me-2
+              span Excepteur sint
+            li.d-flex.align-items-center
+              i.ai-check-circle.fs-lg.me-2
+              span Quam lacus suspendisse
+            li.d-flex.align-items-center
+              i.ai-check-circle.fs-lg.me-2
+              span Elementum pulvinar etiam
+
+  
+  // Features section #2
+  section.container.py-5.py-md-6.py-lg-7
+    .row.align-items-center.pt-3.pt-md-0
+      .col-md-7
+        img(src='img/demo/software-landing/features.jpg' alt='Features' width='705').d-block.mx-auto
+      .col-xl-4.col-md-5.offset-xl-1.pt-5.pt-md-0
+        h2.mb-3.text-center.text-md-start Organize your work anywhere
+        p.text-center.text-md-start Aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        .row.pt-5
+          .col-6.pb-1.mb-grid-gutter
+            img(src='img/demo/software-landing/icons/04.svg' alt='Easy to edit' width='29').d-block.mb-3
+            h3.h6 Easy to edit
+            p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in volatekal
+          .col-6.pb-1.mb-grid-gutter
+            img(src='img/demo/software-landing/icons/05.svg' alt='Upload files' width='28').d-block.mb-3
+            h3.h6 Upload files
+            p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in volatekal
+          .col-6.pb-1.mb-grid-gutter
+            img(src='img/demo/software-landing/icons/06.svg' alt='Control schedule' width='26').d-block.mb-3
+            h3.h6 Control schedule
+            p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in volatekal
+          .col-6.pb-1.mb-grid-gutter
+            img(src='img/demo/software-landing/icons/07.svg' alt='Mark tasks' width='36').d-block.mb-3
+            h3.h6 Mark tasks
+            p.fs-sm.mb-0 Find aute irure dolor in reprehenderit in volatekal
+
+
+  
+  // Pricing
+  section.pt-lg-3
+    h2.d-block.bg-gradient.text-light.text-center.py-5.px-3.mb-5 Pricing plans
+    .container.pt-2
+      .d-sm-flex.align-items-center.justify-content-center.text-center.text-sm-start
+        h3.mb-4.mb-sm-2.me-sm-4.pe-sm-2 Work efficiently with your team
+        a(href='#').btn.btn-success.mb-sm-2 Sign up for free
+      .row.justify-content-center.pt-5
+        .col-lg-10
+          .bg-light.shadow-lg.rounded-3.pt-3.px-4
+            .pricing-wrap.pt-3.px-3
+              .price-switch.justify-content-end
+                span.price-label.me-2 Monthly
+                .form-check.form-switch
+                  input(type='checkbox' id='priceSwitch').form-check-input
+                  label(for='priceSwitch').form-check-label
+                span.price-label.ms-1 Annual
+              .d-md-flex.align-items-start.border-bottom.py-4.py-sm-5
+                .ms-4.ms-sm-0.py-2.w-100(style='max-width: 15rem;')
+                  h3.mb-2 Free
+                  .fs-xs(style='max-width: 10rem;') Find aute irure dolor in reprehenderit in volatek
+                .d-flex.w-100.align-items-end.py-3.py-sm-2.px-4(style='max-width: 20rem;')
+                  span.h2.fw-normal.text-muted.mb-1.me-2 $
+                  span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='0' data-new-price='0') 0
+                  span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                ul.list-unstyled.py-2.mb-0
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Up to 3 projects for each member
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span 2 team members allowed
+              .d-md-flex.align-items-start.py-4.py-sm-5
+                .ms-4.ms-sm-0.py-2.w-100(style='max-width: 15rem;')
+                  h3.mb-2 Standard
+                  .fs-xs(style='max-width: 10rem;') Find aute irure dolor in reprehenderit in volatek
+                .d-flex.w-100.align-items-end.py-3.py-sm-2.px-4(style='max-width: 20rem;')
+                  span.h2.fw-normal.text-muted.mb-1.me-2 $
+                  span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='15' data-new-price='12') 0
+                  span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                ul.list-unstyled.py-2.mb-0
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Unlimited number of projects
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Up to 5 team members
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span 24/7 support
+                  li.d-flex.align-items-center.text-nowrap.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Up to 30GB storage space
+
+  
+  // Clients (logos)
+  section.container.pt-5
+    .row.justify-content-center.pt-2.pt-md-4
+      .col-lg-10
+        h2.h3.pb-4.text-center.text-md-start Trusted by great companies
+        .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-md-start
+          a(href='#').swap-image.mb-4.me-4.pe-3
+            img(src='img/demo/software-landing/clients/01_color.png' alt='Logo' width='180').swap-to
+            img(src='img/demo/software-landing/clients/01_gray.png' alt='Logo' width='180').swap-from
+          a(href='#').swap-image.mb-4.me-4.pe-3
+            img(src='img/demo/software-landing/clients/02_color.png' alt='Logo' width='114').swap-to
+            img(src='img/demo/software-landing/clients/02_gray.png' alt='Logo' width='114').swap-from
+          a(href='#').swap-image.mb-4.me-4.pe-3
+            img(src='img/demo/software-landing/clients/03_color.png' alt='Logo' width='130').swap-to
+            img(src='img/demo/software-landing/clients/03_gray.png' alt='Logo' width='130').swap-from
+          a(href='#').swap-image.mb-4.me-4.pe-3
+            img(src='img/demo/software-landing/clients/04_color.png' alt='Logo' width='103').swap-to
+            img(src='img/demo/software-landing/clients/04_gray.png' alt='Logo' width='103').swap-from
+          a(href='#').swap-image.mb-4.me-4.pe-3
+            img(src='img/demo/software-landing/clients/05_color.png' alt='Logo' width='143').swap-to
+            img(src='img/demo/software-landing/clients/05_gray.png' alt='Logo' width='143').swap-from
+          a(href='#').swap-image.mb-4
+            img(src='img/demo/software-landing/clients/06_color.png' alt='Logo' width='136').swap-to
+            img(src='img/demo/software-landing/clients/06_gray.png' alt='Logo' width='136').swap-from
+
+  
+  // Solutions
+  section.container.position-relative.zindex-5.pt-5.pt-md-6.pt-lg-7
+    h2.text-center.pt-3.pt-md-0.mb-5 More solutions for you
+    .row
+      .col-sm-6.mb-grid-gutter
+        .bg-light.shadow.rounded-3.py-5.px-4
+          .d-block.d-xl-flex.align-items-center.px-lg-3.py-xl-2.text-center.text-sm-start
+            img(src='img/demo/software-landing/team.png' alt='Team' width='140').d-inline-block.mb-3.mb-xl-0
+            .ps-xl-3.ms-xl-3
+              h3.h4.text-primary.pb-1 For Teams
+              p Aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur sed quia consequuntur.
+              a(href='#').nav-link-style
+                | Read more
+                i.ai-chevron-right.fs-xl.ms-1.align-middle
+      .col-sm-6.mb-grid-gutter
+        .bg-light.shadow.rounded-3.py-5.px-4
+          .d-block.d-xl-flex.align-items-center.px-lg-3.py-xl-2.text-center.text-sm-start
+            img(src='img/demo/software-landing/freelancer.png' alt='Freelancer' width='140').d-inline-block.mb-3.mb-xl-0
+            .ps-xl-3.ms-xl-3
+              h3.h4.text-primary.pb-1 For Freelancers
+              p Aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur sed quia consequuntur.
+              a(href='#').nav-link-style
+                | Read more
+                i.ai-chevron-right.fs-xl.ms-1.align-middle
+
+
+  // Q&A
+  section.position-relative.bg-secondary.py-5.py-md-6.py-lg-7(style='margin-top: -200px;')
+    div(style='height: 200px;')
+    .shape.shape-top.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z')
+    .container.mt-n4.py-3.py-md-2
+      h2.text-center.mb-5 Questions &amp; Answers
+      .row.justify-content-center
+        .col-lg-8.col-md-9
+          #faq.accordion
+
+            .accordion-item.bg-white.shadow
+              h2#faq-heading-1.accordion-header
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-1' aria-expanded='true' aria-controls='faq-content-1').accordion-button Can I import my projects from Teamwork?
+              #faq-content-1.accordion-collapse.collapse.show(aria-labelledby='faq-heading-1' data-bs-parent='#faq')
+                .accordion-body
+                  .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+            .accordion-item.bg-white.shadow
+              h2#faq-heading-2.accordion-header
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-2' aria-expanded='false' aria-controls='faq-content-2').accordion-button.collapsed What are correct file permissions?
+              #faq-content-2.accordion-collapse.collapse(aria-labelledby='faq-heading-2' data-bs-parent='#faq')
+                .accordion-body
+                  .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+            .accordion-item.bg-white.shadow
+              h2#faq-heading-3.accordion-header
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-3' aria-expanded='false' aria-controls='faq-content-3').accordion-button.collapsed How to set default projects for new users?
+              #faq-content-3.accordion-collapse.collapse(aria-labelledby='faq-heading-3' data-bs-parent='#faq')
+                .accordion-body
+                  .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+            .accordion-item.bg-white.shadow
+              h2#faq-heading-4.accordion-header
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#faq-content-4' aria-expanded='false' aria-controls='faq-content-4').accordion-button.collapsed Is it possible to upload files from Google Drive?
+              #faq-content-4.accordion-collapse.collapse(aria-labelledby='faq-heading-4' data-bs-parent='#faq')
+                .accordion-body
+                  .fs-sm At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+
+
+  // CTA
+  section.bg-gradient.py-5
+    .container.py-2.py-sm-4
+      .row.align-items-center
+        .col-xl-6.col-md-7.mb-5.mb-md-0
+          h2.text-light.text-center.text-md-start Empower  your team. Try Around
+          p.text-light.mb-grid-gutter.text-center.text-md-start Everything you need from A to Z
+          form.row
+            .col-lg-8.col-md-7.col-sm-8.mb-3.mb-sm-0
+              input(type='email' placeholder='Type your email...' required).form-control
+            .col-lg-4.col-md-5.col-sm-4
+              button(type='submit').btn.btn-success.d-block.w-100 Start free trial
+
+        .col-md-5.offset-xl-1
+          img(src='img/demo/software-landing/cta-illustration.svg' alt='Illustration' width='437').d-block.mx-auto
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.bg-dark.pt-5.pb-4
+    .container.pb-2.text-center.text-md-start
+      .row.pt-md-2.pb-3
+        .col-lg-3.col-md-4.pb-4
+          a(href='index.html' style='width: 153px;').d-inline-block.mb-3
+            img(src='img/logo/logo-footer-alt.png' alt='Around')
+          p.fs-sm.text-light.opacity-50.mb-0 Team collaboration made easy!
+        .col-md-5.pt-2.pb-4
+          .widget.widget-light
+            h4.widget-title.mb-3 Support
+            .d-lg-flex
+              ul.me-lg-5
+                li
+                  a(href='mailto:support@example.com').widget-link
+                    i.ai-mail.fs-lg.me-2
+                    | support@example.com
+              ul
+                li
+                  a(href='tel:9107848015').widget-link
+                    i.ai-phone.fs-lg.me-2
+                    | 910-784-8015
+        .col-md-3.pt-2.pb-4
+          .widget.widget-light
+            h4.widget-title.mb-3 Follow
+            a(href='#').btn-social.bs-outline.bs-light.bs-facebook.bs-lg.me-2.mb-2
+              i.ai-facebook
+            a(href='#').btn-social.bs-outline.bs-light.bs-twitter.bs-lg.me-2.mb-2
+              i.ai-twitter
+            a(href='#').btn-social.bs-outline.bs-light.bs-instagram.bs-lg.me-2.mb-2
+              i.ai-instagram
+            a(href='#').btn-social.bs-outline.bs-light.bs-google.bs-lg.mb-2
+              i.ai-google
+      p.fs-sm.text-center.mb-0
+        span.text-light.opacity-50 © All rights reserved. Made by 
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

@@ -1,0 +1,143 @@
+// Menu
+ul.navbar-nav
+  li()&attributes(parentMenu === 'Demos' ? {'class': 'nav-item dropdown dropdown-mega active'} : {'class': 'nav-item dropdown dropdown-mega'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Demos
+    .dropdown-menu
+      a(href='index.html' style='background-image: url(img/demo/menu-banner.jpg);').dropdown-column.dropdown-column-img.bg-secondary
+      .dropdown-column
+        a(href='index.html').dropdown-item Web Template Presentation
+        a(href='demo-business-consulting.html').dropdown-item Business Consulting
+        a(href='demo-shop-homepage.html').dropdown-item Shop Homepage
+        a(href='demo-booking-directory.html').dropdown-item Booking / Directory
+        a(href='demo-creative-agency.html').dropdown-item Creative Agency
+        a(href='demo-web-studio.html').dropdown-item Web Studio
+        a(href='demo-product-software.html').dropdown-item Product Landing - Software
+      .dropdown-column
+        a(href='demo-product-gadget.html').dropdown-item Product Landing - Gadget
+        a(href='demo-mobile-app.html').dropdown-item Mobile App Showcase
+        a(href='demo-coworking-space.html').dropdown-item Coworking Space
+        a(href='demo-event-landing.html').dropdown-item Event Landing
+        a(href='demo-marketing-seo.html').dropdown-item Digital Marketing &amp; SEO
+        a(href='demo-food-blog.html').dropdown-item Food Blog
+        a(href='demo-personal-portfolio.html').dropdown-item Personal Portfolio
+  li()&attributes(parentMenu === 'Templates' ? {'class': 'nav-item dropdown dropdown-mega active'} : {'class': 'nav-item dropdown dropdown-mega'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Templates
+    .dropdown-menu
+      .dropdown-column.mb-2.mb-lg-0
+        h5.dropdown-header Blog
+        a(href='blog-grid-rs.html').dropdown-item Grid Right Sidebar
+        a(href='blog-grid-ls.html').dropdown-item Grid Left Sidebar
+        a(href='blog-grid-ns.html').dropdown-item Grid No Sidebar
+        a(href='blog-list-rs.html').dropdown-item List Right Sidebar
+        a(href='blog-list-ls.html').dropdown-item List Left Sidebar
+        a(href='blog-list-ns.html').dropdown-item List No Sidebar
+        a(href='blog-single-rs.html').dropdown-item Single Post Right Sidebar
+        a(href='blog-single-ls.html').dropdown-item Single Post Left Sidebar
+        a(href='blog-single-ns.html').dropdown-item Single Post No Sidebar
+      .dropdown-column.mb-2.mb-lg-0
+        h5.dropdown-header Portfolio
+        a(href='portfolio-style-1.html').dropdown-item Grid Style 1
+        a(href='portfolio-style-2.html').dropdown-item Grid Style 2
+        a(href='portfolio-style-3.html').dropdown-item Grid Style 3
+        a(href='portfolio-single-side-gallery-grid.html').dropdown-item Project Side Gallery (Grid)
+        a(href='portfolio-single-side-gallery-list.html').dropdown-item Project Side Gallery (List)
+        a(href='portfolio-single-carousel.html').dropdown-item Project Carousel
+        a(href='portfolio-single-wide-gallery.html').dropdown-item Project Wide Gallery
+      .dropdown-column.mb-2.mb-lg-0
+        h5.dropdown-header Shop
+        a(href='shop-ls.html').dropdown-item Grid Left Sidebar
+        a(href='shop-rs.html').dropdown-item Grid Right Sidebar
+        a(href='shop-ns.html').dropdown-item Grid No Sidebar
+        a(href='shop-single.html').dropdown-item Single Product
+        a(href='checkout.html').dropdown-item Cart &amp; Checkout
+        a(href='order-tracking.html').dropdown-item Order Tracking
+  li()&attributes(parentMenu === 'Account' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Account
+    ul.dropdown-menu
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dashboard
+        ul.dropdown-menu
+          li: a(href='dashboard-orders.html').dropdown-item Orders
+          li: a(href='dashboard-sales.html').dropdown-item Sales
+          li: a(href='dashboard-messages.html').dropdown-item Messages
+          li: a(href='dashboard-followers.html').dropdown-item Followers
+          li: a(href='dashboard-reviews.html').dropdown-item Reviews
+          li: a(href='dashboard-favorites.html').dropdown-item Favorites
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Account Settings
+        ul.dropdown-menu
+          li: a(href='account-profile.html').dropdown-item Profile Info
+          li: a(href='account-payment.html').dropdown-item Payment Methods
+          li: a(href='account-notifications.html').dropdown-item Notifications
+      li: a(href='signin-illustration.html').dropdown-item Sign In - Illustration
+      li: a(href='signin-image.html').dropdown-item Sign In - Image
+      li: a(href='signin-signup.html').dropdown-item Sign In - Sign Up
+      li: a(href='password-recovery.html').dropdown-item Password Recovery
+  li()&attributes(parentMenu === 'Pages' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Pages
+    ul.dropdown-menu
+      li: a(href='about.html').dropdown-item About
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Contacts
+        ul.dropdown-menu
+          li: a(href='contacts-v1.html').dropdown-item Contacts v.1
+          li: a(href='contacts-v2.html').dropdown-item Contacts v.2
+          li: a(href='contacts-v3.html').dropdown-item Contacts v.3
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Help Center
+        ul.dropdown-menu
+          li: a(href='help-topics.html').dropdown-item Help Topics
+          li: a(href='help-single-topic.html').dropdown-item Single Topic
+          li: a(href='help-submit-request.html').dropdown-item Submit a Request
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle 404 Not Found
+        ul.dropdown-menu
+          li: a(href='404-simple.html').dropdown-item Simple Text
+          li: a(href='404-illustration.html').dropdown-item Illustration
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Coming Soon
+        ul.dropdown-menu
+          li: a(href='coming-soon-image.html').dropdown-item Image
+          li: a(href='coming-soon-illustration.html').dropdown-item Illustration
+  li.nav-item.dropdown
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Docs / UI Kit
+    ul.dropdown-menu
+      li
+        a(href='docs/dev-setup.html').dropdown-item
+          .d-flex.align-items-center
+            .fs-xl.text-muted
+              i.ai-file-text
+            .ps-3
+              span.d-block.text-heading Documentation
+              small.d-block.text-muted Kick-start customization
+      li.dropdown-divider
+      li
+        a(href='components/typography.html').dropdown-item
+          .d-flex.align-items-center
+            .fs-xl.text-muted
+              i.ai-layers
+            .ps-3
+              span.d-block.text-heading
+                | UI Kit
+                span.badge.bg-danger.ms-2 50+
+              small.d-block.text-muted Flexible components
+      li.dropdown-divider
+      li
+        a(href='docs/changelog.html').dropdown-item
+          .d-flex.align-items-center
+            .fs-xl.text-muted
+              i.ai-edit
+            .ps-3
+              span.d-block.text-heading
+                | Changelog
+                span.badge.bg-success.ms-2 v2.4.0
+              small.d-block.text-muted Regular updates
+      li.dropdown-divider
+      li
+        a(href='mailto:support@createx.studio').dropdown-item
+          .d-flex.align-items-center
+            .fs-xl.text-muted
+              i.ai-life-buoy
+            .ps-3
+              span.d-block.text-heading Support
+              small.d-block.text-muted support@createx.studio

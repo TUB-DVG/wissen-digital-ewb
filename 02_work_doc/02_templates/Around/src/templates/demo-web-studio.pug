@@ -1,0 +1,385 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'jarallax/dist/jarallax.min.js', 'imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Web Studio'
+
+//- Navbar
+block navbar
+  include partials/navbar-floating-light
+
+//- Page Content
+block content
+
+  // Hero
+  section.jarallax.bg-dark.pt-5.pt-lg-7.pb-7(data-jarallax data-speed='0.3')
+    .jarallax-img(style='background-image: url(img/demo/web-studio/cubes-bg.jpg);')
+    .shape.shape-bottom.shape-curve.bg-body
+      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3000 185.4')
+        path(fill='currentColor' d='M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z')
+    
+    // Text
+    .container.position-relative.zindex-5.text-center.pt-6.pt-lg-7
+      h2.fs-xl.fw-normal.text-light Award winning web design agency
+      h1.text-light Get your website done
+
+    .d-block.d-sm-none(style='height: 100px;')
+    .d-none.d-sm-block.d-lg-none(style='height: 300px;')
+    .d-none.d-lg-block(style='height: 400px;')
+
+
+  // Featured Projects (carousel)
+  section.container.position-relative.zindex-5
+    .d-block.d-sm-none(style='margin-top: -160px;')
+    .d-none.d-sm-block.d-lg-none(style='margin-top: -360px;')
+    .d-none.d-lg-block(style='margin-top: -450px;')
+    .frame-browser.border-light.tns-carousel-wrapper.mx-auto(style='max-width: 915px;')
+      .frame-browser-toolbar
+        .text-nowrap.me-3
+          span.frame-browser-button.bg-danger
+          span.frame-browser-button.bg-warning
+          span.frame-browser-button.bg-success
+        span.tns-carousel-label.fs-sm.text-light.opacity-75 https://mobileapp.com
+      .frame-browser-body
+        .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "controls": false, "nav": false, "autoplay": true, "autoplayTimeout": 6000}')
+          div(data-carousel-label='https://mobileapp.com')
+            img(src='img/demo/web-studio/slider/01.jpg' alt='Screenshot').rounded
+          div(data-carousel-label='https://bookingapp.com')
+            img(src='img/demo/web-studio/slider/02.jpg' alt='Screenshot').rounded
+          div(data-carousel-label='https://creativeagency.com')
+            img(src='img/demo/web-studio/slider/03.jpg' alt='Screenshot').rounded
+      .tns-carousel-pager.pt-4.text-nowrap.text-center.mt-2.mb-n2
+        button(data-nav data-goto='1').active
+        button(data-nav data-goto='2')
+        button(data-nav data-goto='3')
+
+
+  // Services
+  section.container.pt-5.pt-lg-6
+    h2.text-center What we offer
+    p.text-center.text-muted.mb-0 We provide wide range of services in web design and development
+
+    // RWD Service
+    .row.align-items-center.border-bottom.py-5
+      .col-md-6.py-3
+        img(src='img/demo/web-studio/services/01.svg' alt='Responsive Web Design').d-block.mx-auto
+      .col-xl-4.col-lg-5.col-md-6.offset-lg-1.py-3
+        h3.h4.mb-4 Responsive Web Design
+        ul.list-unstyled
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Gathering user data, creating user flow chart, building wireframes
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Website UI / UX design for desktop and handheld devices
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Converting design mockups into responsive HTML based websites
+        h4.h6.pt-2.mb-1 Tools and technologies:
+        p.pb-1 Sketch, Figma, Photoshop, HTML, CSS, JS
+        a(href='#').fw-medium
+          | Get a quote
+          i.ai-chevron-right.fs-xl.ms-1.align-middle
+
+    // Web Dev Service
+    .row.align-items-center.border-bottom.py-5
+      .col-md-6.offset-lg-1.py-3.order-md-2
+        img(src='img/demo/web-studio/services/02.svg' alt='Web Development').d-block.mx-auto
+      .col-xl-4.col-lg-5.col-md-6.offset-xl-1.py-3.order-md-1
+        h3.h4.mb-4 Web Development (Software)
+        ul.list-unstyled
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Building dynamic webstise and web applications with latest technologies
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Front-end and Back-end development
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Integration with popular CMS (WordPress, Drupal, Joomla)
+        h4.h6.pt-2.mb-1 Tools and technologies:
+        p.pb-1 PHP, Node.js, SQL, React.js, Vue.js, GraphQL
+        a(href='#').fw-medium
+          | Get a quote
+          i.ai-chevron-right.fs-xl.ms-1.align-middle
+
+    // Mobile Dev Service
+    .row.align-items-center.border-bottom.py-5
+      .col-md-6.py-3
+        img(src='img/demo/web-studio/services/03.svg' alt='Mobile Apps Development').d-block.mx-auto
+      .col-xl-4.col-lg-5.col-md-6.offset-lg-1.py-3
+        h3.h4.mb-4 Mobile Apps Development
+        ul.list-unstyled
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Mobile apps UI design
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Hybrid mobile apps development
+          li.d-flex.mb-2.pb-1
+            i.ai-check-circle.text-success.fs-xl.mt-1.me-3
+            span Native mobile apps development
+        h4.h6.pt-2.mb-1 Tools and technologies:
+        p.pb-1 React native, Flutter, Java, Swift
+        a(href='#').fw-medium
+          | Get a quote
+          i.ai-chevron-right.fs-xl.ms-1.align-middle
+
+
+  // Portfolio
+  section.container.overflow-hidden.pt-5.pt-md-6.pt-lg-7.pb-4.pb-md-2
+    h2.text-center.pt-4.pt-md-0 Our work
+    p.text-center.text-muted.pb-4 Most recent projects we have completed
+    .masonry-filterable.mb-3
+
+      // Portfolio nav (Filters)
+      ul.masonry-filters.nav.nav-tabs.justify-content-center.pb-4
+        li.nav-item
+          a(href='#' data-group='all').nav-link.active All
+        li.nav-item
+          a(href='#' data-group='web').nav-link Web
+        li.nav-item
+          a(href='#' data-group='mobile').nav-link Mobile
+        li.nav-item
+          a(href='#' data-group='identity').nav-link Identity
+
+      // Portfolio grid
+      .masonry-grid(data-columns='3')
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/01.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Landing Page Design
+              p.fs-sm.text-muted.mb-2 UI / UX Design, Web Development
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/02.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Corporate Website Design
+              p.fs-sm.text-muted.mb-2 Web Design
+        .masonry-grid-item(data-groups='["identity"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/03.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Surfing Portal Logo Design
+              p.fs-sm.text-muted.mb-2 Identity Design
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/04.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Cartzilla - Fashion Store
+              p.fs-sm.text-muted.mb-2 E-commerce Development
+        .masonry-grid-item(data-groups='["mobile"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/05.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Mobile App Icon Design
+              p.fs-sm.text-muted.mb-2 Mobile App Design
+        .masonry-grid-item(data-groups='["web"]')
+          a(href='portfolio-single-carousel.html').card.card-hover.border-0.shadow
+            img(src='img/portfolio/06.jpg' alt='Portfolio thumb').card-img-top
+            .card-body.text-center
+              h3.h5.nav-heading.mb-2 Auto Reseller Website
+              p.fs-sm.text-muted.mb-2 UI / UX Design, Web Development
+    .text-center
+      a(href='#').btn.btn-primary See More Projects
+
+
+  // Testimonials
+  section.bg-secondary.mt-5.mt-md-6.mt-lg-7
+    .container.py-5.py-md-6.py-lg-7
+      .row.tns-carousel-wrapper.py-3.py-md-0
+        .col-md-8
+          h2.pb-2.mb-4.text-center.text-md-start Testimonials
+          .tns-carousel-inner(data-carousel-options = '{"nav": false, "gutter": 20}')
+            blockquote.blockquote.mt-3.mb-0
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+              p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+              footer.d-flex.align-items-center
+                img(src='img/testimonials/01.jpg' alt='Emma Brown' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Emma Brown
+            blockquote.blockquote.mt-3.mb-0
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+              p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+              footer.d-flex.align-items-center
+                img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Tim Brooks
+            blockquote.blockquote.mt-3.mb-0
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+              p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+              footer.d-flex.align-items-center
+                img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Sanomi Smith
+            blockquote.blockquote.mt-3.mb-0
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+              p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+              footer.d-flex.align-items-center
+                img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Charlie Welch
+            blockquote.blockquote.mt-3.mb-0
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida dignissimos ducimus qui blanditiis praesentium voluptatum.
+              p Mattis enim ut tellus elementum sagittis vitae et leo duis.
+              footer.d-flex.align-items-center
+                img(src='img/testimonials/05.jpg' alt='Sarah Palson' width='42').rounded-circle
+                .text-heading.fs-md.fw-medium.ps-2.ms-1
+                  | Sarah Palson
+        .col-lg-3.col-md-4.offset-lg-1
+          .tns-carousel-pager.d-flex.flex-wrap.flex-md-column.justify-content-center.align-items-center.align-items-md-start.border-start.pt-4.mt-4.ps-md-3.pt-md-0.mt-md-0
+            a(href='#' data-goto='1').swap-image.active.mx-4.my-3.my-md-4
+              img(src='img/demo/gadget-landing/logos/01_color.png' alt='Logo' width='136').swap-to
+              img(src='img/demo/gadget-landing/logos/01_gray.png' alt='Logo' width='136').swap-from
+            a(href='#' data-goto='2').swap-image.mx-4.my-3.my-md-4
+              img(src='img/demo/gadget-landing/logos/02_color.png' alt='Logo' width='130').swap-to
+              img(src='img/demo/gadget-landing/logos/02_gray.png' alt='Logo' width='130').swap-from
+            a(href='#' data-goto='3').swap-image.mx-4.my-3.my-md-4
+              img(src='img/demo/gadget-landing/logos/05_color.png' alt='Logo' width='114').swap-to
+              img(src='img/demo/gadget-landing/logos/05_gray.png' alt='Logo' width='114').swap-from
+            a(href='#' data-goto='4').swap-image.mx-4.my-3.my-md-4
+              img(src='img/demo/gadget-landing/logos/03_color.png' alt='Logo' width='103').swap-to
+              img(src='img/demo/gadget-landing/logos/03_gray.png' alt='Logo' width='103').swap-from
+            a(href='#' data-goto='5').swap-image.mx-4.my-3.my-md-4
+              img(src='img/demo/gadget-landing/logos/04_color.png' alt='Logo' width='143').swap-to
+              img(src='img/demo/gadget-landing/logos/04_gray.png' alt='Logo' width='143').swap-from
+
+
+  // Blog
+  section.container.py-5.py-md-6.py-lg-7.mb-4.mb-md-0
+    h2.mb-5.mt-3.mt-md-0.text-center From the blog
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1, "gutter": 16},"500":{"items":2, "gutter": 16},"850":{"items":3, "gutter": 16}, "1100":{"items":3, "gutter": 23}}}')
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success New
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Identity design
+              h3.h4.nav-heading.mb-4
+                a(href='#') Top 5 Secrets of Making Successful Corporate Identity Design
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/02.jpg' alt='Sanomi Smith' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sanomi Smith
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Feb 12
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 CMS
+              h3.h4.nav-heading.mb-4
+                a(href='#') List of Excellent Learning Management Systems
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/03.jpg' alt='Tim Brooks' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Tim Brooks
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 27
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Web development
+              h3.h4.nav-heading.mb-4
+                a(href='#') Build Complete Websites in a Fraction of Time With This Handy Tool
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/04.jpg' alt='Charlie Welch' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Charlie Welch
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Jan 15
+      
+        // Article
+        .pb-2
+          article.card.card-hover.h-100.pt-4.pb-5.mx-1
+            .card-body.pt-5.px-4.px-xl-5
+              a(href='#').meta-link.fs-sm.mb-2 Project management
+              h3.h4.nav-heading.mb-4
+                a(href='#') What You Can Learn About Managing Projects
+            .px-4.px-xl-5.pt-2
+              a(href='#').d-flex.meta-link.fs-sm.align-items-center
+                img(src='img/testimonials/07.jpg' alt='Sarah Palson' width='42').rounded-circle
+                .ps-2.ms-1.mt-n1
+                  | by
+                  span.fw-semibold.ms-1 Sarah Palson
+              .mt-3.text-end.text-nowrap
+                a(href='#').meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Dec 19
+
+
+//- Footer
+block footer
+  // Footer
+  footer.footer.jarallax.bg-dark.pt-5.pt-md-6.pt-lg-7(data-jarallax data-speed='0.3')
+    .jarallax-img(style='background-image: url(img/demo/web-studio/cubes-bg.jpg);')
+    .container.pt-3.pt-md-0
+      .row.pb-2
+        form(novalidate).col-xl-6.col-lg-7.col-md-7.needs-validation.mb-5
+          h2.text-light.pb-4 What project are you looking for?
+          h3.h6.pb-2.text-light Services
+          .btn-group-toggle.pb-3.mb-3(data-bs-toggle='buttons')
+            label.btn.btn-outline-light.me-2.mb-2.active
+              input(type='radio' name='services' id='branding' checked).visually-hidden
+              | Branding
+            label.btn.btn-outline-light.me-2.mb-2
+              input(type='radio' name='services' id='ux').visually-hidden
+              | UI/UX
+            label.btn.btn-outline-light.me-2.mb-2
+              input(type='radio' name='services' id='web').visually-hidden
+              | Web
+            label.btn.btn-outline-light.mb-2
+              input(type='radio' name='services' id='mobile').visually-hidden
+              | Mobile
+          .input-group.mb-3
+            i.ai-user.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Name' required).form-control.rounded
+          .input-group.mb-3
+            i.ai-mail.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='email' placeholder='Email' required).form-control.rounded
+          .mb-3.pb-1
+            textarea(rows='4' placeholder='Project description' required).form-control
+          .row.pt-2
+            .col-lg-6.col-md-8
+              button(type='submit').btn.btn-primary.d-block.w-100 Send Request
+        .col-xl-3.col-lg-4.offset-xl-3.offset-lg-1.col-md-5.mb-5
+          h2.text-light.pb-2 Contacts
+          ul.list-unstyled.fs-sm.mb-4.pb-2
+            li: a(href='mailto:contact@example.com').nav-link-style.nav-link-light contact@example.com
+            li: a(href='tel:+15262200459').nav-link-style.nav-link-light + 1 526 220 0459
+          h3.h6.pb-2.text-light Or connect with us on:
+          a(href='#').btn-social.bs-facebook.bs-light.bs-lg.me-2.mb-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-twitter.bs-light.bs-lg.me-2.mb-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-instagram.bs-light.bs-lg.me-2.mb-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-dribbble.bs-light.bs-lg.me-2.mb-2
+            i.ai-dribbble
+          a(href='#').btn-social.bs-behance.bs-light.bs-lg.me-2.mb-2
+            i.ai-behance
+    
+      p.fs-sm.text-center.pb-4.mt-n1.mb-0
+        span.text-light.opacity-50.me-1 © All rights reserved. Made by
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio

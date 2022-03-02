@@ -1,0 +1,239 @@
+//
+// Utilities
+// Extends default Bootstrap utility classes
+// Classes with a purpose to reduce the frequency of 
+// highly repetitive declarations
+// --------------------------------------------------
+
+@import '../../dist/vendor/bootstrap/scss/functions';
+@import '../../dist/vendor/bootstrap/scss/variables';
+@import '../../dist/vendor/bootstrap/scss/mixins';
+@import '../../dist/vendor/bootstrap/scss/utilities';
+
+$utilities: map-merge(
+  $utilities,
+  (
+
+    // Border colors
+    'border-color': (
+      property: border-color,
+      class: border,
+      values: $border-colors
+    ),
+    
+    // Background colors
+    'background-color': map-merge(
+      map-get($utilities, 'background-color'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'background-color'), 'values'),
+          (
+            'secondary': $gray-100,
+            'darker':    darken($gray-900, 5%),
+            'black':     $black
+          )
+        )
+      )
+    ),
+
+    // Disable background
+    'background': (
+      property: background,
+      class: bg,
+      values: none
+    ),
+
+    // Rounded top: 0
+    'rounded-top': map-merge(
+      map-get($utilities, 'rounded-top'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'rounded-top'), 'values'),
+          (
+            0: 0
+          )
+        )
+      )
+    ),
+
+    // Rounded end: 0
+    'rounded-end': map-merge(
+      map-get($utilities, 'rounded-end'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'rounded-end'), 'values'),
+          (
+            0: 0
+          )
+        )
+      )
+    ),
+
+    // Rounded bottom: 0
+    'rounded-bottom': map-merge(
+      map-get($utilities, 'rounded-bottom'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'rounded-bottom'), 'values'),
+          (
+            0: 0
+          )
+        )
+      )
+    ),
+
+    // Rounded start: 0
+    'rounded-start': map-merge(
+      map-get($utilities, 'rounded-start'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'rounded-start'), 'values'),
+          (
+            0: 0
+          )
+        )
+      )
+    ),
+    
+    // Background faded colors
+    'background-faded-color': (
+      property: background-color,
+      class: bg-faded,
+      values: $theme-faded-colors
+    ),
+
+    // Background size
+    'background-size': (
+      property: background-size,
+      class: bg-size,
+      values: (
+        cover: cover,
+        contain: contain
+      )
+    ),
+
+    // Background position
+    'background-position': (
+      property: background-position,
+      class: bg-position,
+      values: (
+        'center': center,
+        'center-y': left center,
+        'center-x': center top,
+        'top-end': top right,
+        'top-start': top left,
+        'center-end': center right,
+        'center-start': center left,
+        'center-bottom': center bottom,
+        'bottom-end': bottom right,
+        'bottom-start': bottom left,
+        'bottom-center': bottom center
+      )
+    ),
+
+    // Background repeat
+    'background-repeat': (
+      property: background-repeat,
+      class: bg-repeat,
+      values: (
+        0: no-repeat,
+        x: repeat-x,
+        y: repeat-y
+      )
+    ),
+
+    // Background attachment
+    'background-attachment': (
+      property: background-attachment,
+      class: bg-attachment,
+      values: fixed scroll
+    ),
+
+    // Font weight
+    'font-weight': map-merge(
+      map-get($utilities, 'font-weight'),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, 'font-weight'), 'values'),
+          (
+            medium: $font-weight-medium,
+            semibold: $font-weight-semibold
+          )
+        )
+      )
+    ),
+
+    // Opacity
+    'opacity': (
+      property: opacity,
+      class: opacity,
+      values: (
+        25: .25,
+        50: .5,
+        60: .6,
+        65: .65,
+        70: .7,
+        75: .75,
+        80: .8,
+        90: .9,
+        100: 1
+      )
+    ),
+
+    // Text color
+    'color': (
+      property: color,
+      class: text,
+      values: map-merge(
+        $theme-colors,
+        (
+          'white': $white,
+          'body': $body-color,
+          'muted': $text-muted,
+          'heading': $headings-color,
+          'nav': $nav-link-color,
+          'border': $border-color,
+          'reset': inherit
+        )
+      )
+    ),
+
+    // Text wrap (white-space)
+    'white-space': (
+      property: white-space,
+      class: text,
+      responsive: true,
+      values: (
+        wrap: normal,
+        nowrap: nowrap,
+      )
+    ),
+
+    // Text shadow
+    'text-shadow': (
+      property: text-shadow,
+      values: (
+        null: $text-shadow
+      )
+    ),
+
+    // Table layout
+    'table-layout': (
+      property: table-layout,
+      values: fixed
+    ),
+
+    // Disable animation
+    'animation': (
+      property: animation,
+      values: none
+    ),
+
+    // Z-index
+    'z-index': (
+      property: z-index,
+      class: zindex,
+      values: 1 2 3 4 5
+    ),
+  )
+);

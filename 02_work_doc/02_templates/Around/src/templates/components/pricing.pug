@@ -1,0 +1,894 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Pricing'
+  - var pageSubtitle = 'Quickly build pricing plans for subscription based pricing model.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Vertical pricing plan', 'link': '#pricing-plan-v'}, {'title': 'Horizontal pricing plans', 'link': '#pricing-plan-h'}, {'title': 'Featured pricing plan', 'link': '#pricing-plan-featured'}, {'title': 'Price switcher', 'link': '#pricing-price-switcher'}]
+  
+//- Page Content
+block content
+
+  // Vertical pricing plan
+  section#pricing-plan-v.pb-5.mb-md-2
+    h2.h4.mb-3 Vertical pricing plan
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .d-sm-flex
+              .card.w-100.me-sm-4.mb-4(style='max-width: 24rem;')
+                .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                  h3.text-body.mb-0 Free
+                .card-body.px-grid-gutter.py-grid-gutter
+                  .d-flex.align-items-end.py-2.px-4.mb-4
+                    span.h2.fw-normal.text-muted.mb-1.me-2 $
+                    span.price.display-2.fw-normal.text-primary.px-1.me-2 0
+                    span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                  ul.list-unstyled.py-2.mb-4
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span 20 millions tracks
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Shuffle play
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-x.fs-xl.text-muted.me-2
+                      span.text-muted No ads
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-x.fs-xl.text-muted.me-2
+                      span.text-muted Get unlimited skips
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-x.fs-xl.text-muted.me-2
+                      span.text-muted Offline mode
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-x.fs-xl.text-muted.me-2
+                      span.text-muted 7 profiles
+                  .text-center.mb-2
+                    a(href='#').btn.btn-outline-primary Get started
+              .card.border-0.shadow.w-100.mb-4(style='max-width: 24rem;')
+                .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                  h3.text-body.mb-0 Family
+                .card-body.px-grid-gutter.py-grid-gutter
+                  .d-flex.align-items-end.py-2.px-4.mb-4
+                    span.h2.fw-normal.text-muted.mb-1.me-2 $
+                    span.price.display-2.fw-normal.text-primary.px-1.me-2 15
+                    span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                  ul.list-unstyled.py-2.mb-4
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span 20 millions tracks
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Shuffle play
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span No ads
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Get unlimited skips
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Offline mode
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span 7 profiles
+                  .text-center.mb-2
+                    a(href='#').btn.btn-outline-primary Get started
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Vertical pricing plan: Border --&gt;
+                &lt;div class=&quot;card w-100&quot;&gt;
+                  &lt;div class=&quot;card-img-top bg-secondary text-center py-5 px-grid-gutter&quot;&gt;
+                    &lt;h3 class=&quot;text-body mb-0&quot;&gt;Free&lt;/h3&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                      &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                      &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot;&gt;0&lt;/span&gt;
+                      &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;20 millions tracks&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Shuffle play&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted&quot;&gt;No ads&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted&quot;&gt;Get unlimited skips&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted&quot;&gt;Offline mode&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted&quot;&gt;7 profiles&lt;/span&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;div class=&quot;text-center mb-2&quot;&gt;
+                      &lt;a class=&quot;btn btn-outline-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Vertical pricing plan: Shadow --&gt;
+                &lt;div class=&quot;card border-0 shadow w-100&quot;&gt;
+                  &lt;div class=&quot;card-img-top bg-secondary text-center py-5 px-grid-gutter&quot;&gt;
+                    &lt;h3 class=&quot;text-body mb-0&quot;&gt;Family&lt;/h3&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                      &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                      &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot;&gt;15&lt;/span&gt;
+                      &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;20 millions tracks&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Shuffle play&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;No ads&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Get unlimited skips&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Offline mode&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;7 profiles&lt;/span&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;div class=&quot;text-center mb-2&quot;&gt;
+                      &lt;a class=&quot;btn btn-outline-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Vertical pricing plan: Border
+                .card.w-100
+                  .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                    h3.text-body.mb-0 Free
+                  .card-body.px-grid-gutter.py-grid-gutter
+                    .d-flex.align-items-end.py-2.px-4.mb-4
+                      span.h2.fw-normal.text-muted.mb-1.me-2 $
+                      span.price.display-2.fw-normal.text-primary.px-1.me-2 0
+                      span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                    ul.list-unstyled.py-2.mb-4
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span 20 millions tracks
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Shuffle play
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-x.fs-xl.text-muted.me-2
+                        span.text-muted No ads
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-x.fs-xl.text-muted.me-2
+                        span.text-muted Get unlimited skips
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-x.fs-xl.text-muted.me-2
+                        span.text-muted Offline mode
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-x.fs-xl.text-muted.me-2
+                        span.text-muted 7 profiles
+                    .text-center.mb-2
+                      a.btn.btn-outline-primary(href=&quot;#&quot;) Get started
+
+                // Vertical pricing plan: Shadow
+                .card.border-0.shadow.w-100
+                  .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                    h3.text-body.mb-0 Family
+                  .card-body.px-grid-gutter.py-grid-gutter
+                    .d-flex.align-items-end.py-2.px-4.mb-4
+                      span.h2.fw-normal.text-muted.mb-1.me-2 $
+                      span.price.display-2.fw-normal.text-primary.px-1.me-2 15
+                      span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                    ul.list-unstyled.py-2.mb-4
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span 20 millions tracks
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Shuffle play
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span No ads
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Get unlimited skips
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Offline mode
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span 7 profiles
+                    .text-center.mb-2
+                      a.btn.btn-outline-primary(href=&quot;#&quot;) Get started
+
+  // Horizontal pricing plans
+  section#pricing-plan-h.pb-5.mb-md-2
+    h2.h4.mb-3 Horizontal pricing plans
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.my-n3.fade.show.active(role='tabpanel')
+            .d-sm-flex.align-items-start.justify-content-between.border-bottom.py-4.py-sm-5(style='max-width: 50rem;')
+              .ms-4.ms-sm-0.py-2(style='width: 10rem;')
+                h3.mb-2 Free
+                .fs-xs Find aute irure dolor in reprehenderit in volatek
+              .d-flex.align-items-end.py-3.py-sm-2.px-4
+                span.h2.fw-normal.text-muted.mb-1.me-2 $
+                span.price.display-2.fw-normal.text-primary.px-1.me-2 0
+                span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+              ul.list-unstyled.py-2.mb-0
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Up to 3 projects for each member
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 2 team members allowed
+            .d-sm-flex.align-items-start.justify-content-between.py-4.py-sm-5(style='max-width: 50rem;')
+              .ms-4.ms-sm-0.py-2(style='width: 10rem;')
+                h3.mb-2 Standard
+                .fs-xs Find aute irure dolor in reprehenderit in volatek
+              .d-flex.align-items-end.py-3.py-sm-2.px-4
+                span.h2.fw-normal.text-muted.mb-1.me-2 $
+                span.price.display-2.fw-normal.text-primary.px-1.me-2 15
+                span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+              ul.list-unstyled.py-2.mb-0
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Unlimited number of projects
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Up to 5 team members
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span 24/7 support
+                li.d-flex.align-items-center.mb-3
+                  i.ai-check.fs-xl.text-primary.me-2
+                  span Up to 30GB storage space
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Horizontal pricing plans --&gt;
+
+                &lt;!-- Pricing --&gt;
+                &lt;div class=&quot;d-sm-flex align-items-start justify-content-between border-bottom py-4 py-sm-5&quot;&gt;
+                  &lt;div class=&quot;ms-4 ms-sm-0 py-2&quot; style=&quot;width: 10rem;&quot;&gt;
+                    &lt;h3 class=&quot;mb-2&quot;&gt;Free&lt;/h3&gt;
+                    &lt;div class=&quot;fs-xs&quot;&gt;Find aute irure dolor in reprehenderit in volatek&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;d-flex align-items-end py-3 py-sm-2 px-4&quot;&gt;
+                    &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                    &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot;&gt;0&lt;/span&gt;
+                    &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;ul class=&quot;list-unstyled py-2 mb-0&quot;&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;Up to 3 projects for each member&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;2 team members allowed&lt;/span&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Pricing --&gt;
+                &lt;div class=&quot;d-sm-flex align-items-start justify-content-between py-4 py-sm-5&quot;&gt;
+                  &lt;div class=&quot;ms-4 ms-sm-0 py-2&quot; style=&quot;width: 10rem;&quot;&gt;
+                    &lt;h3 class=&quot;mb-2&quot;&gt;Standard&lt;/h3&gt;
+                    &lt;div class=&quot;fs-xs&quot;&gt;Find aute irure dolor in reprehenderit in volatek&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;d-flex align-items-end py-3 py-sm-2 px-4&quot;&gt;
+                    &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                    &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot;&gt;15&lt;/span&gt;
+                    &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;ul class=&quot;list-unstyled py-2 mb-0&quot;&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;Unlimited number of projects&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;Up to 5 team members&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;24/7 support&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                      &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                      &lt;span&gt;Up to 30GB storage space&lt;/span&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Horizontal pricing plans
+
+                // Pricing
+                .d-sm-flex.align-items-start.justify-content-between.border-bottom.py-4.py-sm-5
+                  .ms-4.ms-sm-0.py-2(style=&quot;width: 10rem;&quot;)
+                    h3.mb-2 Free
+                    .fs-xs Find aute irure dolor in reprehenderit in volatek
+                  .d-flex.align-items-end.py-3.py-sm-2.px-4
+                    span.h2.fw-normal.text-muted.mb-1.me-2 $
+                    span.price.display-2.fw-normal.text-primary.px-1.me-2 0
+                    span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                  ul.list-unstyled.py-2.mb-0
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Up to 3 projects for each member
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span 2 team members allowed
+                
+                // Pricing
+                .d-sm-flex.align-items-start.justify-content-between.py-4.py-sm-5
+                  .ms-4.ms-sm-0.py-2(style=&quot;width: 10rem;&quot;)
+                    h3.mb-2 Standard
+                    .fs-xs Find aute irure dolor in reprehenderit in volatek
+                  .d-flex.align-items-end.py-3.py-sm-2.px-4
+                    span.h2.fw-normal.text-muted.mb-1.me-2 $
+                    span.price.display-2.fw-normal.text-primary.px-1.me-2 15
+                    span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                  ul.list-unstyled.py-2.mb-0
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Unlimited number of projects
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Up to 5 team members
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span 24/7 support
+                    li.d-flex.align-items-center.mb-3
+                      i.ai-check.fs-xl.text-primary.me-2
+                      span Up to 30GB storage space
+
+  // Featured pricing plan
+  section#pricing-plan-featured.pb-5.mb-md-2
+    h2.h4.mb-3 Featured pricing plan
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .card.card-active.w-100.mb-4(style='max-width: 24rem;')
+              .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+                h3.text-light.mb-0 Premium
+              .card-body.px-grid-gutter.py-grid-gutter
+                .d-flex.align-items-end.py-2.px-4.mb-4
+                  span.h2.fw-normal.text-muted.mb-1.me-2 $
+                  span.price.display-2.fw-normal.text-primary.px-1.me-2 10
+                  span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                ul.list-unstyled.py-2.mb-4
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span 20 millions tracks
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Shuffle play
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span No ads
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Get unlimited skips
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span Offline mode
+                  li.d-flex.align-items-center.mb-3
+                    i.ai-check.fs-xl.text-primary.me-2
+                    span 7 profiles
+                .text-center.mb-2
+                  a(href='#').btn.btn-primary Get started
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Featured pricing plan --&gt;
+                &lt;div class=&quot;card card-active w-100&quot;&gt;
+                  &lt;div class=&quot;card-img-top bg-gradient text-center py-5 px-grid-gutter&quot;&gt;
+                    &lt;h3 class=&quot;text-light mb-0&quot;&gt;Premium&lt;/h3&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                      &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                      &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot;&gt;10&lt;/span&gt;
+                      &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;20 millions tracks&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Shuffle play&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;No ads&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Get unlimited skips&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;Offline mode&lt;/span&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                        &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                        &lt;span&gt;7 profiles&lt;/span&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;div class=&quot;text-center mb-2&quot;&gt;
+                      &lt;a class=&quot;btn btn-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Featured pricing plan
+                .card.card-active.w-100
+                  .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+                    h3.text-light.mb-0 Premium
+                  .card-body.px-grid-gutter.py-grid-gutter
+                    .d-flex.align-items-end.py-2.px-4.mb-4
+                      span.h2.fw-normal.text-muted.mb-1.me-2 $
+                      span.price.display-2.fw-normal.text-primary.px-1.me-2 10
+                      span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                    ul.list-unstyled.py-2.mb-4
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span 20 millions tracks
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Shuffle play
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span No ads
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Get unlimited skips
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span Offline mode
+                      li.d-flex.align-items-center.mb-3
+                        i.ai-check.fs-xl.text-primary.me-2
+                        span 7 profiles
+                    .text-center.mb-2
+                      a.btn.btn-primary(href=&quot;#&quot;) Get started
+
+  // Price switcher
+  section#pricing-price-switcher.pb-5.mb-md-2
+    h2.h4.mb-3 Price switcher
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .pricing-wrap
+              .price-switch.justify-content-end.pb-2.mb-4
+                span.price-label.me-2 Monthly
+                .form-check.form-switch.mb-1
+                  input(type='checkbox' id='priceSwitch').form-check-input
+                  label(for='priceSwitch').form-check-label
+                span.price-label.ms-1 Annual
+              .row
+                .col-lg-4.col-sm-6.mb-grid-gutter
+                  .card.border-0.shadow.w-100
+                    .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                      h3.text-body.mb-0 Free
+                    .card-body.px-grid-gutter.py-grid-gutter
+                      .d-flex.align-items-end.py-2.px-4.mb-4
+                        span.h2.fw-normal.text-muted.mb-1.me-2 $
+                        span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='0' data-new-price='0') 0
+                        span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                      ul.list-unstyled.py-2.mb-4
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span 20 millions tracks
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Shuffle play
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-x.fs-xl.text-muted.me-2
+                          span.text-muted No ads
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-x.fs-xl.text-muted.me-2
+                          span.text-muted Get unlimited skips
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-x.fs-xl.text-muted.me-2
+                          span.text-muted Offline mode
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-x.fs-xl.text-muted.me-2
+                          span.text-muted 7 profiles
+                      .text-center.mb-2
+                        a(href='#').btn.btn-outline-primary Get started
+                .col-lg-4.col-sm-6.mb-grid-gutter
+                  .card.card-active.w-100
+                    .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+                      h3.text-light.mb-0 Premium
+                    .card-body.px-grid-gutter.py-grid-gutter
+                      .d-flex.align-items-end.py-2.px-4.mb-4
+                        span.h2.fw-normal.text-muted.mb-1.me-2 $
+                        span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='10' data-new-price='8') 10
+                        span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                      ul.list-unstyled.py-2.mb-4
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span 20 millions tracks
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Shuffle play
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span No ads
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Get unlimited skips
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Offline mode
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span 7 profiles
+                      .text-center.mb-2
+                        a(href='#').btn.btn-primary Get started
+                .col-lg-4.col-sm-6.mb-grid-gutter
+                  .card.border-0.shadow.w-100
+                    .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                      h3.text-body.mb-0 Family
+                    .card-body.px-grid-gutter.py-grid-gutter
+                      .d-flex.align-items-end.py-2.px-4.mb-4
+                        span.h2.fw-normal.text-muted.mb-1.me-2 $
+                        span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price='15' data-new-price='12') 15
+                        span.h3.fs-lg.fw-medium.text-muted.mb-2 per<br>month
+                      ul.list-unstyled.py-2.mb-4
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span 20 millions tracks
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Shuffle play
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span No ads
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Get unlimited skips
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span Offline mode
+                        li.d-flex.align-items-center.mb-3
+                          i.ai-check.fs-xl.text-primary.me-2
+                          span 7 profiles
+                      .text-center.mb-2
+                        a(href='#').btn.btn-outline-primary Get started
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Price switcher --&gt;
+                &lt;div class=&quot;pricing-wrap&quot;&gt;
+
+                  &lt;!-- Switcher --&gt;
+                  &lt;div class=&quot;price-switch justify-content-end pb-2 mb-4&quot;&gt;
+                    &lt;span class=&quot;price-label me-2&quot;&gt;Monthly&lt;/span&gt;
+                    &lt;div class=&quot;custom-control custom-switch&quot;&gt;
+                      &lt;input class=&quot;custom-control-input&quot; type=&quot;checkbox&quot; id=&quot;priceSwitch&quot;&gt;
+                      &lt;label class=&quot;custom-control-label&quot; for=&quot;priceSwitch&quot;&gt;&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;span class=&quot;price-label ms-1&quot;&gt;Annual&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;row&quot;&gt;
+
+                    &lt;!-- Plan --&gt;
+                    &lt;div class=&quot;col-lg-4 col-sm-6 mb-grid-gutter&quot;&gt;
+                      &lt;div class=&quot;card border-0 shadow w-100&quot;&gt;
+                        &lt;div class=&quot;card-img-top bg-secondary text-center py-5 px-grid-gutter&quot;&gt;
+                          &lt;h3 class=&quot;text-body mb-0&quot;&gt;Free&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                          &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                            &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                            &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot; data-current-price=&quot;0&quot; data-new-price=&quot;0&quot;&gt;0&lt;/span&gt;
+                            &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;20 millions tracks&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Shuffle play&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;text-muted&quot;&gt;No ads&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;text-muted&quot;&gt;Get unlimited skips&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;text-muted&quot;&gt;Offline mode&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-x fs-xl text-muted me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span class=&quot;text-muted&quot;&gt;7 profiles&lt;/span&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                          &lt;div class=&quot;text-center mb-2&quot;&gt;
+                            &lt;a class=&quot;btn btn-outline-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Featured plan --&gt;
+                    &lt;div class=&quot;col-lg-4 col-sm-6 mb-grid-gutter&quot;&gt;
+                      &lt;div class=&quot;card card-active w-100&quot;&gt;
+                        &lt;div class=&quot;card-img-top bg-gradient text-center py-5 px-grid-gutter&quot;&gt;
+                          &lt;h3 class=&quot;text-light mb-0&quot;&gt;Premium&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                          &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                            &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                            &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot; data-current-price=&quot;10&quot; data-new-price=&quot;8&quot;&gt;10&lt;/span&gt;
+                            &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;20 millions tracks&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Shuffle play&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;No ads&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Get unlimited skips&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Offline mode&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;7 profiles&lt;/span&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                          &lt;div class=&quot;text-center mb-2&quot;&gt;
+                            &lt;a class=&quot;btn btn-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Plan --&gt;
+                    &lt;div class=&quot;col-lg-4 col-sm-6 mb-grid-gutter&quot;&gt;
+                      &lt;div class=&quot;card border-0 shadow w-100&quot;&gt;
+                        &lt;div class=&quot;card-img-top bg-secondary text-center py-5 px-grid-gutter&quot;&gt;
+                          &lt;h3 class=&quot;text-body mb-0&quot;&gt;Family&lt;/h3&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;card-body px-grid-gutter py-grid-gutter&quot;&gt;
+                          &lt;div class=&quot;d-flex align-items-end py-2 px-4 mb-4&quot;&gt;
+                            &lt;span class=&quot;h2 fw-normal text-muted mb-1 me-2&quot;&gt;$&lt;/span&gt;
+                            &lt;span class=&quot;price display-2 fw-normal text-primary px-1 me-2&quot; data-current-price=&quot;15&quot; data-new-price=&quot;12&quot;&gt;15&lt;/span&gt;
+                            &lt;span class=&quot;h3 fs-lg fw-medium text-muted mb-2&quot;&gt;per&lt;br&gt;month&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;ul class=&quot;list-unstyled py-2 mb-4&quot;&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;20 millions tracks&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Shuffle play&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;No ads&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Get unlimited skips&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;Offline mode&lt;/span&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;d-flex align-items-center mb-3&quot;&gt;
+                              &lt;i class=&quot;ai-check fs-xl text-primary me-2&quot;&gt;&lt;/i&gt;
+                              &lt;span&gt;7 profiles&lt;/span&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                          &lt;div class=&quot;text-center mb-2&quot;&gt;
+                            &lt;a class=&quot;btn btn-outline-primary&quot; href=&quot;#&quot;&gt;Get started&lt;/a&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Price switcher
+                .pricing-wrap
+
+                  // Switcher
+                  .price-switch.justify-content-end.pb-2.mb-4
+                    span.price-label.me-2 Monthly
+                    .custom-control.custom-switch
+                      input(type=&quot;checkbox&quot;, id=&quot;priceSwitch&quot;).custom-control-input
+                      label(for=&quot;priceSwitch&quot;).custom-control-label
+                    span.price-label.ms-1 Annual
+                  .row
+
+                    // Plan
+                    .col-lg-4.col-sm-6.mb-grid-gutter
+                      .card.border-0.shadow.w-100
+                        .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                          h3.text-body.mb-0 Free
+                        .card-body.px-grid-gutter.py-grid-gutter
+                          .d-flex.align-items-end.py-2.px-4.mb-4
+                            span.h2.fw-normal.text-muted.mb-1.me-2 $
+                            span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price=&quot;0&quot;, data-new-price=&quot;0&quot;) 0
+                            span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                          ul.list-unstyled.py-2.mb-4
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span 20 millions tracks
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Shuffle play
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-x.fs-xl.text-muted.me-2
+                              span.text-muted No ads
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-x.fs-xl.text-muted.me-2
+                              span.text-muted Get unlimited skips
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-x.fs-xl.text-muted.me-2
+                              span.text-muted Offline mode
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-x.fs-xl.text-muted.me-2
+                              span.text-muted 7 profiles
+                          .text-center.mb-2
+                            a(href=&quot;#&quot;).btn.btn-outline-primary Get started
+                    
+                    // Featured plan
+                    .col-lg-4.col-sm-6.mb-grid-gutter
+                      .card.card-active.w-100
+                        .card-img-top.bg-gradient.text-center.py-5.px-grid-gutter
+                          h3.text-light.mb-0 Premium
+                        .card-body.px-grid-gutter.py-grid-gutter
+                          .d-flex.align-items-end.py-2.px-4.mb-4
+                            span.h2.fw-normal.text-muted.mb-1.me-2 $
+                            span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price=&quot;10&quot;, data-new-price=&quot;8&quot;) 10
+                            span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                          ul.list-unstyled.py-2.mb-4
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span 20 millions tracks
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Shuffle play
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span No ads
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Get unlimited skips
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Offline mode
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span 7 profiles
+                          .text-center.mb-2
+                            a(href=&quot;#&quot;).btn.btn-primary Get started
+
+                    // Plan
+                    .col-lg-4.col-sm-6.mb-grid-gutter
+                      .card.border-0.shadow.w-100
+                        .card-img-top.bg-secondary.text-center.py-5.px-grid-gutter
+                          h3.text-body.mb-0 Family
+                        .card-body.px-grid-gutter.py-grid-gutter
+                          .d-flex.align-items-end.py-2.px-4.mb-4
+                            span.h2.fw-normal.text-muted.mb-1.me-2 $
+                            span.price.display-2.fw-normal.text-primary.px-1.me-2(data-current-price=&quot;15&quot;, data-new-price=&quot;12&quot;) 15
+                            span.h3.fs-lg.fw-medium.text-muted.mb-2 per&lt;br&gt;month
+                          ul.list-unstyled.py-2.mb-4
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span 20 millions tracks
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Shuffle play
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span No ads
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Get unlimited skips
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span Offline mode
+                            li.d-flex.align-items-center.mb-3
+                              i.ai-check.fs-xl.text-primary.me-2
+                              span 7 profiles
+                          .text-center.mb-2
+                            a(href=&quot;#&quot;).btn.btn-outline-primary Get started

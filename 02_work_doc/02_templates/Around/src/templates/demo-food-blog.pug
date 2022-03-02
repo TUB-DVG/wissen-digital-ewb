@@ -1,0 +1,640 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['tiny-slider/dist/tiny-slider.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['tiny-slider/dist/min/tiny-slider.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var parentMenu = 'Demos'
+  - var pageTitle = 'Food Blog'
+  - var isSidebar = true
+
+
+//- Navbar
+block navbar
+  // Navbar (Solid background + shadow)
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  header.header.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-shadow.navbar-sticky(data-scroll-header)
+    .navbar-search.bg-light
+      .container.d-flex.flex-nowrap.align-items-center
+        i.ai-search.fs-xl
+        input(type='text' placeholder='Search site').form-control.form-control-xl.navbar-search-field
+        .d-flex.align-items-center
+          span.text-muted.fs-xs.d-none.d-sm-inline Close
+          button(type='button' data-bs-toggle='search').btn-close.p-2
+    .container.px-0.px-xl-3
+      button(type='button' data-bs-toggle='offcanvas' data-bs-target='#primaryMenu').navbar-toggler.ms-n2.me-4
+        span.navbar-toggler-icon
+      a(href='index.html').navbar-brand.flex-shrink-0.order-lg-1.mx-auto.ms-lg-0.pe-lg-2.me-lg-4
+        img(src='img/logo/logo-dark.png' alt='Around' width='153').d-none.d-lg-block
+        img(src='img/logo/logo-icon.png' alt='Around' width='58').d-lg-none
+      .d-flex.align-items-center.order-lg-3.ms-lg-auto
+        .navbar-tool
+          a(href='#' data-bs-toggle='search').navbar-tool-icon-box.me-lg-2
+            i.ai-search
+        div(style='height: 30px;').d-lg-block.d-none.border-start.me-4
+        .d-lg-block.d-none.text-nowrap
+          a(href='#').btn-social.bs-outline.bs-facebook.me-2
+            i.ai-facebook
+          a(href='#').btn-social.bs-outline.bs-twitter.me-2
+            i.ai-twitter
+          a(href='#').btn-social.bs-outline.bs-instagram.me-2
+            i.ai-instagram
+          a(href='#').btn-social.bs-outline.bs-pinterest
+            i.ai-pinterest
+      #primaryMenu.offcanvas.offcanvas-collapse.order-lg-2
+        .offcanvas-header.navbar-shadow
+          h5.mt-1.mb-0 Menu
+          button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+        .offcanvas-body
+          //- partial/menu-primary
+          include partials/menu-primary
+        .offcanvas-footer.justify-content-center.border-top
+          a(href='#').btn-social.bs-lg.bs-outline.bs-facebook.me-3
+            i.ai-facebook
+          a(href='#').btn-social.bs-lg.bs-outline.bs-twitter.me-3
+            i.ai-twitter
+          a(href='#').btn-social.bs-lg.bs-outline.bs-instagram.me-3
+            i.ai-instagram
+          a(href='#').btn-social.bs-lg.bs-outline.bs-pinterest
+            i.ai-pinterest
+
+
+//- Page Content
+block content
+
+  // Hero
+  section(style='background-image: url(img/demo/food-blog/hero/bg.jpg);').d-md-block.d-none.py-7.position-relative.bg-no-repeat.bg-position-center
+    img(src='img/demo/food-blog/hero/bg-shape.png' alt='Shape' style='bottom: 0; left: 0;' data-jarallax-element='25' data-disable-parallax-down='md').d-lg-block.d-none.position-absolute.mb-n5
+    .container.py-lg-7.py-md-6.py-5
+      .row
+        .col-xl-6.col-md-8.col-sm-10
+          h1.display-4.mb-4.pb-3 Enjoy the new cookbook by Amelie Mayer
+          a(href='#book' data-scroll).btn.btn-primary Get the book
+
+
+  // Hero mobile
+  section.container.d-md-none.d-block.px-0
+    img(src='img/demo/food-blog/hero/bg-m.jpg' alt='Amelie Mayer').d-block.mx-auto.mb-grid-gutter
+    div(style='max-width: 500px;').mx-auto.px-3.text-center
+      h1.display-4.mb-4 Enjoy the new cookbook by Amelie Mayer
+      a(href='#book' data-scroll).btn.btn-primary Get the book
+
+
+  // Featured recipes
+  section.container.pt-5.mt-4.mt-sm-0.pt-sm-6.pt-md-7.pb-lg-7
+    h2.h1.text-center Featured recipes
+
+    // Carousel
+    .tns-carousel-wrapper
+
+      // Carousel progress
+      .tns-carousel-progress.ms-auto.mb-3
+        .text-sm.text-muted.text-center.mb-2
+          span.tns-current-slide.me-1
+          | of
+          span.tns-total-slides.ms-1
+        .progress
+          .progress-bar.bg-primary(role="progressbar")
+      .tns-carousel-inner(data-carousel-options = '{"nav": false, "responsive": {"0":{"items":1, "gutter": 16, "controls": false},"500":{"items":2, "gutter": 16},"768":{"items":3, "gutter": 16},"991":{"controls": true}}}')
+
+        // Carousel item
+        article.pb-2
+          a(href='#').card.h-100.border-0.shadow.card-hover.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-success Vegetarian
+            .card-img-top.card-img-gradient
+              img(src='img/demo/food-blog/featured-recipes/01.jpg' alt='Vegan Raw Seasoning Appetizers')
+              span.card-floating-text.text-light.fw-medium
+                | Discover this recipe
+                i.ai-chevron-right.fs-lg.ms-1.mt-n1.align-middle
+            .card-body
+              .mb-3.text-nowrap
+                span.meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Oct 8
+                span.meta-divider
+                span.meta-link.fs-xs
+                  i.ai-message-square.me-1
+                  | &nbsp;3
+              h3.h5.pt-1.mb-3 Vegan Raw Seasoning Appetizers
+              p.fs-sm.text-muted.mb-2 10 min — 2-4 portions
+        
+        // Carousel item
+        article.pb-2
+          a(href='#').card.h-100.border-0.shadow.card-hover.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-info Soups
+            .card-img-top.card-img-gradient
+              img(src='img/demo/food-blog/featured-recipes/02.jpg' alt='Shrimp Soup With Chili')
+              span.card-floating-text.text-light.fw-medium
+                | Discover this recipe
+                i.ai-chevron-right.fs-lg.ms-1.mt-n1.align-middle
+            .card-body
+              .mb-3.text-nowrap
+                span.meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Sep 29
+                span.meta-divider
+                span.meta-link.fs-xs
+                  i.ai-message-square.me-1
+                  | &nbsp;1
+              h3.h5.pt-1.mb-3 Shrimp Soup With Chili
+              p.fs-sm.text-muted.mb-2 35 min — 2-4 portions
+
+        // Carousel item
+        article.pb-2
+          a(href='#').card.h-100.border-0.shadow.card-hover.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-warning Desserts
+            .card-img-top.card-img-gradient
+              img(src='img/demo/food-blog/featured-recipes/03.jpg' alt='Healthy Dessert With Nuts &amp; Berries')
+              span.card-floating-text.text-light.fw-medium
+                | Discover this recipe
+                i.ai-chevron-right.fs-lg.ms-1.mt-n1.align-middle
+            .card-body
+              .mb-3.text-nowrap
+                span.meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Sep 12
+                span.meta-divider
+                span.meta-link.fs-xs
+                  i.ai-message-square.me-1
+                  | &nbsp;4
+              h3.h5.pt-1.mb-3 Healthy Dessert With Nuts &amp; Berries
+              p.fs-sm.text-muted.mb-2 15 min — 6-8 portions
+
+        // Carousel item
+        article.pb-2
+          a(href='#').card.h-100.border-0.shadow.card-hover.mx-1
+            span.badge.badge-lg.badge-floating.badge-floating-end.bg-warning Desserts
+            .card-img-top.card-img-gradient
+              img(src='img/demo/food-blog/featured-recipes/04.jpg' alt='Fluffy American pancakes')
+              span.card-floating-text.text-light.fw-medium
+                | Discover this recipe
+                i.ai-chevron-right.fs-lg.ms-1.mt-n1.align-middle
+            .card-body
+              .mb-3.text-nowrap
+                span.meta-link.fs-xs
+                  i.ai-calendar.me-1.mt-n1
+                  | &nbsp;Nov 4
+                span.meta-divider
+                span.meta-link.fs-xs
+                  i.ai-message-square.me-1
+                  | &nbsp;2
+              h3.h5.pt-1.mb-3 Fluffy American pancakes
+              p.fs-sm.text-muted.mb-2 10 min — 3-6 portions
+
+
+  // Book
+  section#book.container
+    .row.mx-0.rounded-3.overflow-hidden(style='background-color: #f3f3f9;')
+      div(style='background-color: #f4f4f6;').col-lg-6
+        .d-flex.align-items-start.flex-sm-row.flex-column.py-lg-2.py-5.px-sm-5.px-4
+          img(src='img/demo/food-blog/book.png' alt='New recipes book').me-sm-5.ms-sm-0.mx-auto.mb-sm-0.mb-4
+          .align-self-center.ps-2.text-sm-start.text-center
+            h2.mb-4 The new vegan recipes book!
+            a(href='#').btn.btn-primary
+              i.ai-download.me-1
+              | Download book
+
+      div.col-lg-6.d-flex.align-items-center.bg-faded-primary
+        .w-100.py-lg-2.py-5.px-sm-5.px-4
+          h2.mb-2.text-center Subscribe our newsletter
+          h6.mb-4.pb-2.fw-normal.text-center Never miss a post!
+
+          // Form subscribe
+          form(style='max-width: 600px;').input-group.mx-auto
+            input(type='email' placeholder='Enter your email' required).form-control
+            button.btn.btn-success(type='submit')
+              i.ai-send.fs-xl
+
+
+  // Categories
+  section.container.py-5.my-4.my-sm-0.py-sm-6.py-md-7
+    h2.h1.mb-4.pb-3.text-center Popular categories
+
+    .pb-4(data-simplebar data-simplebar-auto-hide='false')
+      .d-flex.justify-content-between
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/01.svg' alt='Healthy' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Healthy
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/02.svg' alt='Desserts' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Desserts
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/03.svg' alt='Vegetarian' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Vegetarian
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/04.svg' alt='Seafood' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Seafood
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/05.svg' alt='Bakery' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Bakery
+        a(href='#' style='min-width: 120px;').nav-link-style
+          img(src='img/demo/food-blog/categories/06.svg' alt='Soups' style='max-width: 80px;').d-block.mx-auto.mb-4
+          p.mb-0.text-center Soups
+
+
+  // Posts with sidebar right
+  section.container
+    .row
+
+      // Content
+      .col-lg-9
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          a(href='#' style='background-image: url(img/demo/food-blog/posts/01.jpg);').card-img-top
+            span(style='background-color: #f74f78;').badge.badge-lg.badge-floating.text-white Seafood
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-clock.fs-base.me-2.mt-n1
+              | 10 min — 6-8 portions
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Asian chilli garlic shrimps
+            p.mb-0.fs-sm.text-muted Dignissim suspendisse in est ante in nibh mauris cursus mattis. Tempor id eu nisl nunc mi. Scelerisque eu ultrices vitae auctor. Ut faucibus pulvinar elementum integer. Sed vulputate mi sit amet mauris commodo. In eu mi bibendum neque…
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Oct 29
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;4
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          div(style='background-image: url(img/demo/food-blog/posts/02.jpg);').card-img-top.d-flex.align-items-center.justify-content-center
+            span.badge.badge-lg.badge-floating.bg-warning Desserts
+            a(href='https://www.youtube.com/watch?v=JzJsUW4xV7k&ab_channel=HealthNutNutrition').btn-video.btn-video-sm
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-video.fs-base.me-2.mt-n1
+              | 12:49
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Belgian Waffles with Triple Berry Sauce
+            p.mb-0.fs-sm.text-muted At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa…
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Oct 17
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;2
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          a(href='#' style='background-image: url(img/demo/food-blog/posts/03.jpg);').card-img-top
+            span.badge.badge-lg.badge-floating.bg-success Vegetarian
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-clock.fs-base.me-2.mt-n1
+              | 17 min — 4-6 portions
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Vegan Bowl with Avocado, Cabbage and Quinoa
+            p.mb-0.fs-sm.text-muted Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Et harum quidem rerum facilis est et expedita distinctio. 
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Oct 9
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;3
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          a(href='#' style='background-image: url(img/demo/food-blog/posts/04.jpg);').card-img-top
+            span.badge.badge-lg.badge-floating.bg-primary Healthy
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-clock.fs-base.me-2.mt-n1
+              | 10 min — 2-4 portions
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Toast in a Bowl
+            p.mb-0.fs-sm.text-muted Dui ut ornare lectus sit amet est placerat. Diam sit amet nisl suscipit adipiscing bibendum est ultricies integer. Nunc mattis enim ut tellus elementum sagittis vitae. Gravida dictum fusce ut placerat. Sit amet consectetur adipiscing elit duis…
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Oct 2
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;1
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          a(href='#' style='background-image: url(img/demo/food-blog/posts/05.jpg);').card-img-top
+            span.badge.badge-lg.badge-floating.bg-success Vegetarian
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-clock.fs-base.me-2.mt-n1
+              | 15 min — 2-4 portions
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Vegan Stir Fry with Rice Vermicelli
+            p.mb-0.fs-sm.text-muted Non nisi est sit amet. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Mi bibendum neque egestas congue quisque egestas diam in. Donec adipiscing tristique risus nec similique sunt in culpa…
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Sep 15
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;4
+
+        // Post
+        article.card.card-horizontal.card-hover.mb-grid-gutter
+          div(style='background-image: url(img/demo/food-blog/posts/06.jpg);').card-img-top.d-flex.align-items-center.justify-content-center
+            span.badge.badge-lg.badge-floating.bg-info Soups
+            a(href='https://www.youtube.com/watch?v=JzJsUW4xV7k&ab_channel=HealthNutNutrition').btn-video.btn-video-sm
+          .card-body
+            span.d-inline-block.mb-2.pb-1.fs-sm.text-muted
+              i.ai-video.fs-base.me-2.mt-n1
+              | 20:15
+            h2.h4.nav-heading.text-capitalize.mb-3
+              a(href='#') Spicy Chicken Soup
+            p.mb-0.fs-sm.text-muted Nulla aliquet enim tortor at auctor. Diam vel quam elementum pulvinar etiam. Non diam phasellus vestibulum lorem sed risus ultricies tristique. Et tortor consequat id porta nibh venenatis cras. Pellentesque id nibh tortor id aliquet lectus…
+            .mt-3.text-end.text-nowrap
+              a(href='#').meta-link.fs-xs
+                i.ai-calendar.me-1.mt-n1
+                | &nbsp;Sep 8
+              span.meta-divider
+              a(href='#').meta-link.fs-xs
+                i.ai-message-square.me-1
+                | &nbsp;1
+
+        // Pagination
+        .d-md-flex.justify-content-between.align-items-center.pt-3.pb-sm-2
+          .d-flex.justify-content-center.align-items-center.mb-4
+            label.pe-1.me-2.mt-n1.fs-sm Show
+            select.form-select.me-2(style='width: 5rem;')
+              option(value='6') 6
+              option(value='12') 12
+              option(value='20') 20
+              option(value='30') 30
+              option(value='40') 40
+            .fs-sm.text-nowrap.ps-1.mb-1 posts per page
+          nav(aria-label='Page navigation').mb-4
+            ul.pagination.justify-content-center
+              li.page-item
+                a(href='#' aria-label='Previous').page-link
+                  i.ai-chevron-left
+              li.page-item.d-sm-none
+                span.page-link.page-link-static 2 / 10
+              li.page-item.d-none.d-sm-block
+                a(href='#').page-link 1
+              li.page-item.active.d-none.d-sm-block(aria-current='page')
+                span.page-link
+                  | 2
+                  span.visually-hidden (current)
+              li.page-item.d-none.d-sm-block
+                a(href='#').page-link 3
+              li.page-item.d-none.d-sm-block
+                a(href='#').page-link 4
+              li.page-item.d-none.d-sm-block
+                | ...
+              li.page-item.d-none.d-sm-block
+                a(href='#').page-link 10
+              li.page-item
+                a(href='#' aria-label='Next').page-link
+                  i.ai-chevron-right
+
+
+      // Sidebar
+      aside.col-lg-3
+        #blog-sidebar.offcanvas.offcanvas-collapse.offcanvas-end
+          .offcanvas-header.navbar-shadow.px-4.mb-3
+            h5.mt-1.mb-0 Sidebar
+            button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.lead
+          .offcanvas-body.px-4.pt-3.pt-lg-0.pe-lg-0.ps-lg-2.ps-xl-4(data-simplebar)
+            // Categories
+            .widget.widget-categories.mb-5
+              h3.widget-title Ingredients
+              ul
+                li
+                  a(href='#').widget-link
+                    | Apple
+                    small.text-muted.ps-1.ms-2 23
+                li
+                  a(href='#').widget-link
+                    | Banana
+                    small.text-muted.ps-1.ms-2 14
+                li
+                  a(href='#').widget-link
+                    | Berries
+                    small.text-muted.ps-1.ms-2 7
+                li
+                  a(href='#').widget-link
+                    | Cabbage
+                    small.text-muted.ps-1.ms-2 19
+                li
+                  a(href='#').widget-link
+                    | Citrus
+                    small.text-muted.ps-1.ms-2 26
+                li
+                  a(href='#').widget-link
+                    | Corn
+                    small.text-muted.ps-1.ms-2 8
+                li
+                  a(href='#').widget-link
+                    | Cucumber
+                    small.text-muted.ps-1.ms-2 25
+                li
+                  a(href='#').widget-link
+                    | Egg
+                    small.text-muted.ps-1.ms-2 14
+                li
+                  a(href='#').widget-link
+                    | Herbs
+                    small.text-muted.ps-1.ms-2 27
+                li
+                  a(href='#').widget-link
+                    | Potato
+                    small.text-muted.ps-1.ms-2 29
+                li
+                  a(href='#').widget-link
+                    | Tomatoes
+                    small.text-muted.ps-1.ms-2 32
+                li
+                  a(href='#').widget-link
+                    | Watermelon
+                    small.text-muted.ps-1.ms-2 4
+
+            // Featured posts
+            .widget.mt-n1.mb-5
+              h3.widget-title.pb-1 Popular recipes
+              .d-flex.align-items-start.pb-1.mb-3
+                a(href='#').d-block.flex-shrink-0
+                  img(src='img/demo/food-blog/posts/th/01.jpg' alt='Post' width='64').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Sweet Cream Cupcake
+                  p.fs-xs.text-muted.mb-0 by Amelie Mayer
+              .d-flex.align-items-start.pb-1.mb-3
+                a(href='#').d-block.flex-shrink-0
+                  img(src='img/demo/food-blog/posts/th/02.jpg' alt='Post' width='64').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Keto Paleo Carb-Free Breakfast
+                  p.fs-xs.text-muted.mb-0 by Amelie Mayer
+              .d-flex.align-items-start.pb-1.mb-3
+                a(href='#').d-block.flex-shrink-0
+                  img(src='img/demo/food-blog/posts/th/03.jpg' alt='Post' width='64').rounded
+                .ps-2.ms-1
+                  h4.fs-md.nav-heading.mb-1
+                    a(href='#').fw-medium
+                      | Sugar-Free Coconut Yogurt with Mango
+                  p.fs-xs.text-muted.mb-0 by Amelie Mayer
+
+            // Tag cloud
+            .widget.mb-5
+              h3.widget-title.pb-1 Popular tags
+              a(href='#').btn-tag.me-2.mb-2 #bakery
+              a(href='#').btn-tag.me-2.mb-2 #cookbook
+              a(href='#').btn-tag.me-2.mb-2 #cuisine
+              a(href='#').btn-tag.me-2.mb-2 #asian food
+              a(href='#').btn-tag.me-2.mb-2 #tips
+              a(href='#').btn-tag.me-2.mb-2 #recipe
+              a(href='#').btn-tag.me-2.mb-2 #chef
+              a(href='#').btn-tag.me-2.mb-2 #vegetarian
+
+            // Socials
+            .mb-5
+              h3.widget-title.pb-1 Follow me
+              a(href='#').btn-social.bs-outline.bs-facebook.me-2.mb-2
+                i.ai-facebook
+              a(href='#').btn-social.bs-outline.bs-twitter.me-2.mb-2
+                i.ai-twitter
+              a(href='#').btn-social.bs-outline.bs-instagram.me-2.mb-2
+                i.ai-instagram
+              a(href='#').btn-social.bs-outline.bs-pinterest.me-2.mb-2
+                i.ai-pinterest
+
+
+  // Videos
+  section.container.py-5.mb-4.my-sm-0.py-sm-6.py-md-7
+    h2.h1.text-center New video recipes every Sunday
+    p(style='max-width: 600px;').mx-auto.mb-5.text-muted.text-center Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae
+
+    // Carousel
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options = '{"navAsThumbnails": true, "controls": false, "responsive": {"0":{"items":1, "gutter": 16},"768":{"items":2, "gutter": 30}}}')
+
+        // Carousel item
+        div
+          .gallery
+            a(href='https://www.youtube.com/watch?v=JzJsUW4xV7k&ab_channel=HealthNutNutrition' data-sub-html='<h6 class="fs-sm text-light">Gallery video caption</h6>').gallery-item.gallery-video.rounded-3
+              img(src='img/demo/food-blog/videos/01.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Gallery video caption
+        
+        // Carousel item
+        div
+          .gallery
+            a(href='https://www.youtube.com/watch?v=JzJsUW4xV7k&ab_channel=HealthNutNutrition' data-sub-html='<h6 class="fs-sm text-light">Gallery video caption</h6>').gallery-item.gallery-video.rounded-3
+              img(src='img/demo/food-blog/videos/02.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Gallery video caption
+
+        // Carousel item
+        div
+          .gallery
+            a(href='https://www.youtube.com/watch?v=JzJsUW4xV7k&ab_channel=HealthNutNutrition' data-sub-html='<h6 class="fs-sm text-light">Gallery video caption</h6>').gallery-item.gallery-video.rounded-3
+              img(src='img/demo/food-blog/videos/03.jpg' alt='Gallery thumbnail')
+              span.gallery-caption Gallery video caption
+
+
+  // About
+  section.container
+    .row.align-items-center
+      .col-md-5.mb-md-0.mb-grid-gutter
+        img(src='img/demo/food-blog/author.jpg' alt='Amelie').rounded-3
+      .col-lg-6.offset-lg-1.col-md-7
+        h2.mb-2 Hi! I am Amelie
+        h3.h6.mb-3.text-muted Amateur chef and creator of this blog
+        p.mb-4.pb-2.text-muted At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        a(href='#').btn.btn-primary Get to know me better
+
+
+  // Instagram
+  section.container-fluid.py-5.my-4.my-sm-0.pt-sm-6.pt-md-7
+    h2.mb-5.text-center Follow <a href='#' class='d-inline-block p-2 bg-faded-primary rounded text-primary text-decoration-none'>@amelie_chef</a> on Instagram
+
+    // Carousel
+    .tns-carousel-wrapper
+      .tns-carousel-inner(data-carousel-options = '{"navAsThumbnails": true, "controls": false, "responsive": {"0":{"items":2, "gutter": 15}, "576":{"items":3}, "768":{"items":4, "gutter": 30}, "992":{"items":5}, "1200":{"items":6}}}')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/01.jpg' alt='01')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/02.jpg' alt='02')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/03.jpg' alt='03')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/04.jpg' alt='04')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/05.jpg' alt='05')
+
+        // Carousel item
+        div
+          img(src='img/demo/food-blog/instagram/06.jpg' alt='06')
+
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.footer.bg-dark.pt-5.pt-md-6
+    .container.pt-3.pb-0.pt-md-0.pb-md-3
+      .row.mb-4
+        .col-md-4
+          .widget.widget-light.pb-2.mb-4
+            h4.widget-title Contacts
+            ul
+              li: a(href='mailto:support@example.com').widget-link
+                i.ai-mail.fs-lg.me-2
+                | amelie.chef@example.com
+              li: a(href='tel:9107848015').widget-link
+                i.ai-phone.fs-lg.me-2
+                | 910-784-8015
+        .col-md-4
+          .widget.widget-light.pb-2.mb-4
+            h4.widget-title Follow
+            a(href='#').btn-social.bs-outline.bs-lg.bs-light.bs-facebook.me-2
+              i.ai-facebook
+            a(href='#').btn-social.bs-outline.bs-lg.bs-light.bs-twitter.me-2
+              i.ai-twitter
+            a(href='#').btn-social.bs-outline.bs-lg.bs-light.bs-instagram.me-2
+              i.ai-instagram
+            a(href='#').btn-social.bs-outline.bs-lg.bs-light.bs-pinterest
+              i.ai-pinterest
+        .col-md-4
+          .widget.widget-light.pb-3.mb-4
+            h4.widget-title Subscribe and never miss a post!
+            form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+              .input-group.flex-nowrap
+                i.ai-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+                button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+              // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+              div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+              .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+              .subscription-status
+      p.fs-sm.mb-3.order-md-1
+        span.text-light.opacity-50.me-1 &copy; All rights reserved. Made by
+        a(href='https://createx.studio/' target='_blank' rel='noopener').nav-link-style.nav-link-light Createx Studio
+
+  
+  // Sidebar toggle button
+  button(type='button' data-bs-toggle='offcanvas' data-bs-target='#blog-sidebar').btn.btn-primary.btn-sm.sidebar-toggle
+    i.ai-filter.fs-base.me-2
+    | Filters

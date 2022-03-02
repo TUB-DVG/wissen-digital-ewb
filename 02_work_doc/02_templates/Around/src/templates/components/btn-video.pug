@@ -1,0 +1,155 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var pageTitle = 'Video popup'
+  - var pageSubtitle = 'Responsive YouTube and Vimeo video players inside lightbox triggered by specially styled button.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Play button: Style 1', 'link': '#video-button-style1'}, {'title': 'Play button: Style 2', 'link': '#video-button-style2'}, {'title': 'Sizing', 'link': '#video-button-sizing'}, {'title': 'On top of the image', 'link': '#video-button-image'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.mb-5(role='alert')
+    .d-flex.py-2
+      i.ai-alert-circle.fs-xl.me-2.me-sm-3
+      div.text-break
+        p.fs-md Gallery component relies on 3rd party plugin. Make sure to link to <strong>Light Gallery css and js</strong> files in your document: <strong>vendor/lightgallery.js/dist/css/lightgallery.min.css</strong> and <strong>lightgallery.js/dist/js/lightgallery.min.js</strong>. To display Vimeo or YouTube video in lightbox you need to include additional plugin: 
+        ul.fw-bold
+          li vendor/lg-video.js/dist/lg-video.min.js
+        p.mb-0 Use this page as a reference.
+
+  // Play button: Style 1
+  section#video-button-style1.pb-5.mb-md-2
+    h2.h4.mb-3 Play button: Style 1
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.me-3
+            span.fs-sm.text-muted Click me to watch video!
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Play button: Style 1 with label --&gt;
+                &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;btn-video me-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;'&gt;&lt;/a&gt;
+                &lt;span class=&quot;fs-sm text-muted&quot;&gt;Click me to watch video!&lt;/span&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Play button: Style 1 with label
+                a(href=&quot;link-to-youtube/vimeo-video&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;').btn-video.me-3
+                span.fs-sm.text-muted Click me to watch video!
+
+  // Play button: Style 2
+  section#video-button-style2.pb-5.mb-md-2
+    h2.h4.mb-3 Play button: Style 2
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.btn-video-primary.me-3
+            span.fs-sm.text-muted Click me to watch video!
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Play button: Style 2 with label --&gt;
+                &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;btn-video btn-video-primary me-3&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;'&gt;&lt;/a&gt;
+                &lt;span class=&quot;fs-sm text-muted&quot;&gt;Click me to watch video!&lt;/span&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Play button: Style 2 with label
+                a(href=&quot;link-to-youtube/vimeo-video&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;').btn-video.btn-video-primary.me-3
+                span.fs-sm.text-muted Click me to watch video!
+
+  // Sizing
+  section#video-button-sizing.pb-5.mb-md-2
+    h2.h4.mb-3 Sizing
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            a(href='https://vimeo.com/93641234').btn-video.me-4
+            a(href='https://vimeo.com/93641234').btn-video.btn-video-sm.me-4
+            a(href='https://vimeo.com/93641234').btn-video.btn-video-primary.me-4
+            a(href='https://vimeo.com/93641234').btn-video.btn-video-primary.btn-video-sm
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Default button size --&gt;
+                &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;btn-video&quot;&gt;&lt;/a&gt;
+                
+                &lt;!-- Small button size --&gt;
+                &lt;a href=&quot;link-to-youtube/vimeo-video&quot; class=&quot;btn-video btn-video-sm&quot;&gt;&lt;/a&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Default button size
+                a(href=&quot;link-to-youtube/vimeo-video&quot;).btn-video
+
+                // Small button size
+                a(href=&quot;link-to-youtube/vimeo-video&quot;).btn-video.btn-video-sm
+
+  // On top of the image
+  section#video-button-image.pb-5.mb-md-2
+    h2.h4.mb-3 On top of the image
+    .card.border-0.shadow-lg
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .rounded-3.bg-size-cover.bg-position-center.bg-no-repeat.text-center.py-7.mb-0(style='background-image: url(../img/components/jumbotron/jumbotron-bg.jpg);')
+              a(href='https://vimeo.com/93641234' data-sub-html='<h6 class="fs-sm text-light">Video caption</h6>').btn-video.my-2
+              br
+              span.fs-sm.text-light Click me to watch video!
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!--  Video button on top of the image --&gt;
+                &lt;div class=&quot;bg-size-cover bg-position-center bg-no-repeat text-center py-7 mb-0&quot; style=&quot;background-image: url(path-to-background-image);&quot;&gt;
+                  &lt;a class=&quot;btn-video my-2&quot; href=&quot;link-to-youtube/vimeo-video&quot; data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;'&gt;&lt;/a&gt;
+                  &lt;br&gt;
+                  &lt;span class=&quot;fs-sm text-light&quot;&gt;Click me to watch video!&lt;/span&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                //  Video button on top of the image
+                .rounded-3.bg-size-cover.bg-position-center.bg-no-repeat.text-center.py-7.mb-0(style=&quot;background-image: url(path-to-background-image);&quot;)
+                  a(href=&quot;link-to-youtube/vimeo-video&quot;, data-sub-html='&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Video caption&lt;/h6&gt;').btn-video.my-2
+                  br
+                  span.fs-sm.text-light Click me to watch video!
