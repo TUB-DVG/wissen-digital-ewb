@@ -699,7 +699,7 @@ start the server again
 - edit models.py in folder project_listing
 - problem: consistent structure for database and html-pages
     - 
-- add model teilprojekt (German names, but snake_case style for variables, Upper case 1st letter for clases/tables)
+- add model teilprojekt (German names, but snake_case style for variables, Upper case 1st letter for classes/tables)
 ```
 from django.db import models
 
@@ -789,7 +789,7 @@ Then, make the migrations and migrate:
 ```
 python manage.py makemigrations myapp
 python manage.py migrate
-```
+``` 
 
 ## Set up the Django admin
 
@@ -1051,6 +1051,58 @@ Add templates like `myapp/templates/myapp/index.html`:
 
 <a href="{% url 'myapp:detail' question.id %}">Vote again?</a>
 ```
+
+## add new app base on hard coded templates
+
+- here at the example 'tools overview'
+
+### create new app
+
+```
+python3 manage.py startapp tools_over
+```
+### add model (class) to models.py of the new app
+- and delete the class form form the models.py, when moving class from one app to another
+- ATTENTION: the table and data from the former app will wiped from the data base by doing the migration 
+
+### activate models of the new app 
+- in settings.py of the main 
+```Python
+INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
+    'project_listing.apps.ProjectListingConfig',
+    'tools_over.apps.ToolsOverConfig',
+    'django.contrib.humanize',
+    'django.contrib.a```
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_extensions',
+]
+
+```
+### migrate the new models / tables to the data base
+```
+python manage.py makemigrations myapp
+python manage.py migrate
+``` 
+
+### make the new table visible at the admin area
+add them in `tools_over/admin.py`, e.g.:
+
+```Python
+from django.contrib import admin
+
+from .models import *
+
+admin.site.register(Tools)
+
+```
+
+
+
 
 ## Use generic views
 
