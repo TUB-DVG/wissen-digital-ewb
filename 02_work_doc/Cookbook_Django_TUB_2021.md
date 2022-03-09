@@ -1061,6 +1061,24 @@ Add templates like `myapp/templates/myapp/index.html`:
 ```
 python3 manage.py startapp tools_over
 ```
+### add model (class) to models.py of the new app
+
+### activate models of the new app 
+- in settings.py of the main 
+```Python
+INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
+    'project_listing.apps.ProjectListingConfig',
+    'tools_over.apps.ToolsOverConfig',
+    'django.contrib.humanize',
+    'django.contrib.a```
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django_extensions',
+]
 ## Use generic views
 
 [Continue here](https://docs.djangoproject.com/en/1.10/intro/tutorial04/#use-generic-views-less-code-is-better)
