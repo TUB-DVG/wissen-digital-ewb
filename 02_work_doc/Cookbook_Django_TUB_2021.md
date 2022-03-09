@@ -699,7 +699,7 @@ start the server again
 - edit models.py in folder project_listing
 - problem: consistent structure for database and html-pages
     - 
-- add model teilprojekt (German names, but snake_case style for variables, Upper case 1st letter for clases/tables)
+- add model teilprojekt (German names, but snake_case style for variables, Upper case 1st letter for classes/tables)
 ```
 from django.db import models
 
@@ -789,7 +789,7 @@ Then, make the migrations and migrate:
 ```
 python manage.py makemigrations myapp
 python manage.py migrate
-```
+``` 
 
 ## Set up the Django admin
 
