@@ -1062,6 +1062,8 @@ Add templates like `myapp/templates/myapp/index.html`:
 python3 manage.py startapp tools_over
 ```
 ### add model (class) to models.py of the new app
+- and delete the class form form the models.py, when moving class from one app to another
+- ATTENTION: the table and data from the former app will wiped from the data base by doing the migration 
 
 ### activate models of the new app 
 - in settings.py of the main 
@@ -1079,6 +1081,29 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
 ]
+
+```
+### migrate the new models / tables to the data base
+```
+python manage.py makemigrations myapp
+python manage.py migrate
+``` 
+
+### make the new table visible at the admin area
+add them in `tools_over/admin.py`, e.g.:
+
+```Python
+from django.contrib import admin
+
+from .models import *
+
+admin.site.register(Tools)
+
+```
+
+
+
+
 ## Use generic views
 
 [Continue here](https://docs.djangoproject.com/en/1.10/intro/tutorial04/#use-generic-views-less-code-is-better)
