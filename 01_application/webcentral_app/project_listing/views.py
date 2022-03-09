@@ -43,19 +43,22 @@ def tool_view(request, id):
     kategorien = tool.kategorie.split(", ")
     laufende_updates = tool.letztes_update
     
-    #keine infos zu updates
+    #changing labels and icon
     update_class = 'bi bi-patch-exclamation-fill'
-    update_text='letztes Update'
+    update_label = 'letztes Update'
+    update_color_class = 'text-danger'
     if (tool.letztes_update == 'laufend'):
         update_class  = 'fas fa-sync'
-        update_text = 'Updates'
+        update_label = 'Updates'
+        update_color_class = 'text-success'
 
 
     context = {
         'tool': tool,
         'kategorien': kategorien,
         'letztes_update_class': update_class,
-        'letztes_update_text': update_text,
+        'letztes_update_label': update_label,
+        'letztes_update_color': update_color_class
     }
 
     return render(request, 'project_listing/tool-detail.html', context)
