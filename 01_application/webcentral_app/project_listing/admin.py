@@ -18,4 +18,6 @@ admin.site.register(Person)
 admin.site.register(Anschrift)
 
 admin.site.register(Schlagwort)
+
+
 admin.site.register(Tools)
