@@ -1052,6 +1052,15 @@ Add templates like `myapp/templates/myapp/index.html`:
 <a href="{% url 'myapp:detail' question.id %}">Vote again?</a>
 ```
 
+## add new app base on hard coded templates
+
+- here at the example 'tools overview'
+
+### create new app
+
+```
+python3 manage.py startapp tools_over
+```
 ## Use generic views
 
 [Continue here](https://docs.djangoproject.com/en/1.10/intro/tutorial04/#use-generic-views-less-code-is-better)
