@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+
+<!-- =======================
+Page Banner START -->
+<section class="py-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="bg-light p-4 text-center rounded-3">
+					<h1 class="m-0">Tool Listings</h1>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+Page content START -->
+<section class="pt-0">
+	<div class="container">
+
+		<!-- Filter bar START -->
+		<form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
+			<div class="row g-3">
+				<!-- Input -->
+				<div class="col-xl-3">
+					<input class="form-control me-1" type="search" placeholder="Enter keyword">
+				</div>
+
+				<!-- Select item -->
+				<div class="col-xl-7">
+					<div class="row g-3">
+						<!-- Select items -->
+					 <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+						<form  method="GET">
+							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="1">
+								
+								<option value="">Categories</option>
+								
+								<option value="Datenverwaltung">Datenverwaltung</option>
+								<option value="Anzeige und Gestaltung">Anzeige und Gestaltung</option>
+								<option value="Modellbildung">Modellbildung</option>
+								<option value="Cloud-basiertes Echtzeit Monitoring">Cloud-basiertes Echtzeit Monitoring</option>
+								<option value="Programmiersprache" >Programmiersprache</option>
+								<option value="Konstruktion">Konstruktion</option>
+								<option value="Cloud Anwendung">Cloud Anwendung</option>
+								<option value="Analyse">Analyse</option>
+								<option value="Modellierung">Modellierung</option>
+								<option value="Simulation">Simulation</option>
+								<option value="Energiemanagement">Energiemanagement</option>
+								<option value="Betriebsoptimierung">Betriebsoptimierung</option>
+								<option value="Datenbankmanagement">Datenbankmanagement</option>
+								<option value="Berechnung">Berechnung</option>
+								<option value="Programmierumgebung">Programmierumgebung</option>
+								<option value="visialisierung">Visialisierung</option>
+								<option value="Modellanalyse">Modellanalyse</option>
+								<option value="Machine Learning">MachineLearning</option>
+
+							</select>
+							
+						</div>
+
+						<!-- Search item -->
+						<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+							
+							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="2">
+								
+								<option value="">Lizenz</option>
+								<option value="kostenpflichtig">Kostenpflichtig</option>
+								<option value="Open-Source">Open-Source</option>
+								<option value="kostenfrei">Kostenfrei</option>
+							</select>
+						</div>
+
+						<!-- Search item -->
+						<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+							
+							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="3">
+								<option value="">Lebenszyklusphase</option>
+								<option value="Planung">Planung</option>
+								<option value="Vorplanung">Vorplanung</option>
+								<option value="Betrieb">Betrieb</option>
+								<option value="Umsetzung">Umsetzung</option>
+							</select>
+						</div>
+
+						<!-- Search item -->
+						
+					</div> <!-- Row END -->
+				</div>
+				<!-- Clear -->
+				<div class="col-xl-1">
+					
+                	
+					<button class="btn btn-primary mb-0 rounded z-index-1 w-100" href="{% url 'tool_list' %}">Alle</button>
+				</div>
+				<!-- Button -->
+				<div class="col-xl-1">
+					
+                	
+					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" href=""><i class="fas fa-search"></i></button>
+				</div>
+			</form>
+			</div> <!-- Row END -->
+		</form>
+		<!-- Filter bar END -->
+
+		<div class="row mt-3">
+			<!-- Main content START -->
+			<div class="col-12">
+
+				<!-- Course Grid START -->
+				<div class="row g-4">
+					{% for tool in page.object_list %}	
+					<!-- Card item START -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<!-- Image -->
+							{%if tool.image %}
+							<img src=" {{ tool.image.url }}" class="card-img-top" alt="course image">
+							{% else %}
+							<img src=" {%static 'Tool_Images/Default.webp' %}" class="card-img-top" alt="course image">
+							{% endif %}
+							<!-- Card body -->
+							<div class="card-body pb-0">
+						
+								<!-- Title -->
+								<h5 class="card-title"><a href="{%url 'tool_view' tool.id %}"> {{ tool.bezeichnung   }}</a></h5>
+								<p class="mb-2 text-truncate-2">Nutzerschnittstelle: {{ tool.nutzerschnittstelle   }}</p>
+							</div>
+							<!-- Card footer -->
+							<div class="card-footer pt-0 pb-3">
+								<hr>
+								<div class="d-flex justify-content-between">
+									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>Letztes_Update: {{ tool.letztes_update }} </span>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+					{% endfor %}
+					
+				</div>
+				<!-- Course Grid END -->
+
+				<!-- Pagination START -->
+			<div class="col-12">
+				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+					<ul class="pagination pagination-primary-soft rounded mb-0">
+						{% if page.has_previous %}
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						{% else %}
+						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						{% endif %}
+						{% if page.has_next %}
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
+						{% else %}
+						<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>
+						{% endif %}
+					</ul>
+				</nav>
+			</div>
+			<!-- Pagination END -->
+			</div>
+			<!-- Main content END -->
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+
+
+{% endblock %}
