@@ -39,70 +39,73 @@ Page content START -->
 
 				<!-- Select item -->
 				<div class="col-xl-7">
-					<div class="row g-3">
-						<!-- Select items -->
-					 <div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-						<form  method="GET">
-							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="1">
-								
-								<option value="">Kategorien</option>
-								
-								<option value="Datenverwaltung">Datenverwaltung</option>
-								<option value="Anzeige und Gestaltung">Anzeige und Gestaltung</option>
-								<option value="Modellbildung">Modellbildung</option>
-								<option value="Cloud-basiertes Echtzeit Monitoring">Cloud-basiertes Echtzeit Monitoring</option>
-								<option value="Programmiersprache" >Programmiersprache</option>
-								<option value="Konstruktion">Konstruktion</option>
-								<option value="Cloud Anwendung">Cloud Anwendung</option>
-								<option value="Analyse">Analyse</option>
-								<option value="Modellierung">Modellierung</option>
-								<option value="Simulation">Simulation</option>
-								<option value="Energiemanagement">Energiemanagement</option>
-								<option value="Betriebsoptimierung">Betriebsoptimierung</option>
-								<option value="Datenbankmanagement">Datenbankmanagement</option>
-								<option value="Berechnung">Berechnung</option>
-								<option value="Programmierumgebung">Programmierumgebung</option>
-								<option value="visialisierung">Visualisierung</option>
-								<option value="Modellanalyse">Modellanalyse</option>
-								<option value="Machine Learning">MachineLearning</option>
-
-							</select>
+					<form  method="GET">
+						<div class="form-row g-3">
 							
-						</div>
+							<!-- Select items -->
+						<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1">
+									
+									<option value="">Kategorien</option>
+									
+									<option value="Datenverwaltung">Datenverwaltung</option>
+									<option value="Anzeige und Gestaltung">Anzeige und Gestaltung</option>
+									<option value="Modellbildung">Modellbildung</option>
+									<option value="Cloud-basiertes Echtzeit Monitoring">Cloud-basiertes Echtzeit Monitoring</option>
+									<option value="Programmiersprache" >Programmiersprache</option>
+									<option value="Konstruktion">Konstruktion</option>
+									<option value="Cloud Anwendung">Cloud Anwendung</option>
+									<option value="Analyse">Analyse</option>
+									<option value="Modellierung">Modellierung</option>
+									<option value="Simulation">Simulation</option>
+									<option value="Energiemanagement">Energiemanagement</option>
+									<option value="Betriebsoptimierung">Betriebsoptimierung</option>
+									<option value="Datenbankmanagement">Datenbankmanagement</option>
+									<option value="Berechnung">Berechnung</option>
+									<option value="Programmierumgebung">Programmierumgebung</option>
+									<option value="visialisierung">Visualisierung</option>
+									<option value="Modellanalyse">Modellanalyse</option>
+									<option value="Machine Learning">MachineLearning</option>
 
-						<!-- Search item -->
-						<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
-							
-							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="2">
+								</select>
 								
-								<option value="">Lizenz</option>
-								<option value="kostenpflichtig">Kostenpflichtig</option>
-								<option value="Open-Source">Open-Source</option>
-								<option value="kostenfrei">Kostenfrei</option>
-							</select>
-						</div>
+							</div>
 
-						<!-- Search item -->
-						<div class="col-sm-6 col-md-3 pb-2 pb-md-0">
+							<!-- Search item -->
+							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+								
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="2">
+									
+									<option value="">Lizenz</option>
+									<option value="kostenpflichtig">Kostenpflichtig</option>
+									<option value="Open-Source">Open-Source</option>
+									<option value="kostenfrei">Kostenfrei</option>
+								</select>
+							</div>
+
+							<!-- Search item -->
+							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+								
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="3">
+									<option value="">Lebenszyklusphase</option>
+									<option value="Planung">Planung</option>
+									<option value="Vorplanung">Vorplanung</option>
+									<option value="Betrieb">Betrieb</option>
+									<option value="Umsetzung">Umsetzung</option>
+								</select>
+							</div>
+
+							<!-- Search item -->
 							
-							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="3">
-								<option value="">Lebenszyklusphase</option>
-								<option value="Planung">Planung</option>
-								<option value="Vorplanung">Vorplanung</option>
-								<option value="Betrieb">Betrieb</option>
-								<option value="Umsetzung">Umsetzung</option>
-							</select>
-						</div>
+						</div> <!-- Row END -->
+					</form>
 
-						<!-- Search item -->
-						
-					</div> <!-- Row END -->
 				</div>
 				<!-- Clear -->
 				<div class="col-xl-1">
 					
-                	
-					<button class="btn btn-primary mb-0 rounded z-index-1 w-100" href="{% url 'tool_list' %}">Alle</button>
+                	<a href="{% url 'tool_list' %}"> <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">Alle</h6></a>
+					<!--<button class="btn btn-primary mb-0 rounded z-index-1 w-100" href="{% url 'tool_list' %}">Alle</button>-->
 				</div>
 				<!-- Button -->
 				<div class="col-xl-1">
