@@ -1,8 +1,8 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-                   <head>
-        <title>Projektlisting</title>
+    <head>
+        <title>Datenbank M4 {% block title %} {% endblock %}</title>
         <style>
             img {width: auto; /*set the width or max-width*/
             height: 100px; /*this makes sure to maintain the aspect ratio*/}
@@ -11,8 +11,8 @@
         <!-- Meta Tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Webestica.com">
-        <meta name="description" content="Eduport- LMS, Education and Course Theme">
+        <meta name="author" content="Webestica.com"><!-- TODO -->
+        <meta name="description" content="Eduport- LMS, Education and Course Theme"><!-- TODO -->
 
 
         <!-- Google Font -->
@@ -34,7 +34,8 @@
     <body>
         <!-- Top Bar -->
         {% include 'partials/_topbar.html' %}
-      
+        <!-- Nav Bar -->
+        {% include 'partials/_navbar.html' %}
         <!-- Main Content -->
         {% block content %} {% endblock %}
 

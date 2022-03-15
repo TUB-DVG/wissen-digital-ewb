@@ -2,6 +2,8 @@ import csv
 from project_listing.models import *
 from tools_over.models import *
 
+# -*- coding: utf-8 -*-
+
 def get_or_create_forschung(row, header):
     """
     add entry into table forschung or/and return entry key
@@ -301,7 +303,7 @@ def read_print_csv(path):
 
 def csv2m4db_tools(path):
     """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
-    with open(path) as csv_file:
+    with open(path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
         header = next(reader)
         data = []
