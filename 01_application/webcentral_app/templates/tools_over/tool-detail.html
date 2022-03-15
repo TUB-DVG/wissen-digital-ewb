@@ -20,9 +20,9 @@ Page intro START -->
 				{% if tool.lizenz %}
 				<a href="/tool_list/?1=&2={{tool.lizenz}}&3="> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-fw fa-book-open text-white me-2"></i>{{tool.lizenz}}</h6></a>
 				{% endif %}
-				{% if tool.lebenszyklusphase %}
-				<a href="/tool_list/?1=&2=&3={{tool.lebenszyklusphase}}"> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-fw fa-history text-white me-2"></i>{{tool.lebenszyklusphase}}</h6></a> 
-				{% endif %}
+				{% for lebenszyklusphase in lebenszyklusphasen %}	
+				<a href="/tool_list/?1=&2=&3={{lebenszyklusphase}}"> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-fw fa-history text-white me-2"></i>{{lebenszyklusphase}}</h6></a> 
+				{% endfor %}
 
 				<!-- Title -->
 				<h1>{{tool.bezeichnung}}</h1>
@@ -424,9 +424,9 @@ Page content START -->
 								{% if tool.lizenz %}
 								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2={{tool.lizenz}}&3=">{{tool.lizenz}}</a> </li>
 								{% endif %}
-								{% if tool.lebenszyklusphase %}
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{tool.lebenszyklusphase}}">{{tool.lebenszyklusphase}}</a> </li>
-								{% endif %}
+								{% for lebenszyklusphase in lebenszyklusphasen %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+								{% endfor %}
 							</ul>
 						</div>	
 						<!-- Tags END -->

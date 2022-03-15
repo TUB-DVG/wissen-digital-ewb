@@ -42,3 +42,7 @@ class Tools(models.Model):
                                             help_text = "Bewertung der Anwendung durch Nutzende \
                                             (geplant max. 10 mit einer Kommastelle, max. 10.0)",
                                             blank = True, null = True)
+    image = models.ImageField(default="Default.webp", null=True)  #You need to install pillow
+    def __str__(self):
+        return self.bezeichnung
+

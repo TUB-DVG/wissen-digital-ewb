@@ -52,6 +52,7 @@ def tool_view(request, id):
     """
     tool = get_object_or_404(Tools, pk= id)
     kategorien = tool.kategorie.split(", ")
+    lebenszyklusphasen = tool.lebenszyklusphase.split(", ")
     laufende_updates = tool.letztes_update
     
     letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
@@ -66,6 +67,7 @@ def tool_view(request, id):
     context = {
         'tool': tool,
         'kategorien': kategorien,
+        'lebenszyklusphasen': lebenszyklusphasen,
         'letztes_update': update_properties,
         'letztes_update_class': update_properties.class_name,
         'letztes_update_color': update_properties.color_class,
