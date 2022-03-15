@@ -572,3 +572,42 @@ and <img src=" /static/img/about.jpg" alt="">
 
 # infos
 - https://medium.com/analytics-vidhya/dajngo-with-nginx-gunicorn-aaf8431dc9e0
+## data migration not working
+### error in detail
+- try to write data via get_or_create (in data_import.py) following error:
+ProgrammingError: relation "project_listing_tools" does not exist
+LINE 1: ... "project_listing_tools"."nutzerbewertungen" FROM "project_l...
+- 
+### suggestion: migration not fully worked
+- models in models.py fits not to the actual structure of the data base
+### solution
+- delete all migration files (from app_folder/migration ), but not __init__.py
+- python3 manage.py makemigrations
+- python3 manage.py migrate --fake-initial
+  - new initial migration
+- when like here tables of the data base not fit to the models.py > adapte generated migration file to fit to actual structure of the data base, here delete the table entry for tool in the migration file
+- python3 manage.py makemigrations 
+- python3 manage.py migrate
+
+#### try 1 
+- https://riptutorial.com/django/example/15978/fake-migrations
+  - not working
+
+#### try 2
+- https://www.youtube.com/watch?v=iKuwQPWIazc
+  - python3 manage.py showmigrations
+  - python3 manage.py migrate --fake project_listing zero
+  - rm project_listing/migrations/0001_initial.py
+  - python3 manage.py showmigrations
+  - python3 manage.py makemigrations
+  - python3 manage.py migrate --fake-initial
+    - here not working
+  - python3 manage.py migrate --fake
+    - not working
+### about fake
+- https://startcodingnow.com/caution-fake-django-migrations/
+- 
+### check data base 
+- python3 manage.py dbshell
+  - \d 
+  - \q
