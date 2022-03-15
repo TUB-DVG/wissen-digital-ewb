@@ -1,4 +1,18 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
+
+class Rating (models.Model):
+    rating_from = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='rating_from')
+    rating_for = models.ForeignKey("Tools", on_delete=models.SET_NULL, null=True, related_name='rating_for')
+    score=models.IntegerField  ( default=0,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0)
+        ]
+     )
+    def __str__(self):
+        return self.rating_for.bezeichnung
 
 class Tools(models.Model):
     bezeichnung = models.CharField(max_length = 150,
@@ -42,3 +56,23 @@ class Tools(models.Model):
                                             help_text = "Bewertung der Anwendung durch Nutzende \
                                             (geplant max. 10 mit einer Kommastelle, max. 10.0)",
                                             blank = True, null = True)
+    image=models.ImageField(default="Default.webp", null=True,blank = True)  #You need to install pillow
+
+
+
+    def average_rating(self):
+        counter = 0
+        total_ratings = 0
+        for item in Rating.objects.filter(rating_for=self):
+            counter += 1
+            total_ratings += item.score
+        if counter>0:#
+                
+            return  round((total_ratings / counter) * 2) / 2  
+        else:
+            return 0
+
+    
+
+    def __str__(self):
+        return self.bezeichnung

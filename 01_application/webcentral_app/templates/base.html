@@ -1,35 +1,57 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="{% static 'css/all.css' %}">
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-        <!-- Custom -->
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <!-- Ligthbox -->
-        <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+                   <head>
+        <title>Projektlisting</title>
+        <style>
+            img {width: auto; /*set the width or max-width*/
+            height: 100px; /*this makes sure to maintain the aspect ratio*/}
 
-        <title>Datenbank M4</title>
+        </style>
+        <!-- Meta Tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Webestica.com">
+        <meta name="description" content="Eduport- LMS, Education and Course Theme">
+
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/font-awesome/css/all.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/choices/css/choices.min.css' %}">
+
+        <!-- Theme CSS -->
+        <link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %} ">
+        
+
+    
     </head>
     <body>
         <!-- Top Bar -->
         {% include 'partials/_topbar.html' %}
-        <!-- Nav Bar -->
-        {% include 'partials/_navbar.html' %}
+      
         <!-- Main Content -->
         {% block content %} {% endblock %}
 
         <!-- Footer -->
         {% include 'partials/_footer.html' %}
-        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'js/lightbox.min.js' %}"></script>
-        <script src="{% static 'js/main.js' %} "></script>
+ 
+        <!-- Back to top -->
+    <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Vendors -->
+    <script src="{% static 'assets/vendor/choices/js/choices.min.js' %}"></script>
+
+    <!-- Template Functions -->
+    <script src="{% static ' assets/js/functions.js' %}"></script>
 
     </body>
 </html>

@@ -1,0 +1,256 @@
+//
+// accordion.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides
+//
+.accordion .accordion-button{
+  text-align: left;
+}
+
+//
+// Additional style for theme
+// 
+
+// Accordion collapse plus/minus icon
+.accordion{
+  &.accordion-icon{
+    .accordion-header{
+      position: relative;
+      .accordion-button{
+        background:transparent;
+        font-size: inherit;
+        border: none;
+        &:after {
+          content:"";
+          background: $dark-gray !important;
+          width: 10px;
+          height: 2px;
+          display: block;
+          position: absolute;
+          top: 47%;
+          right: 20px;
+          transform: translateY(-50%);
+          transition: $transition-base;
+          transform: rotateZ(0deg);
+          z-index: 9;
+        }
+        &:before {
+          content:"";
+          background: $dark-gray !important;
+          width: 10px;
+          height: 2px;
+          display: block;
+          position: absolute;
+          top: 47%;
+          right: 20px;
+          transform: translateY(-50%);
+          transition: $transition-base;
+          transform: rotateZ(0deg);
+          z-index: 9;
+        }
+        &[aria-expanded=false]:after {
+          transform: rotateZ(90deg);
+        }
+        &[aria-expanded=true]:before {
+          transform: rotateZ(0deg);
+        }
+      }
+    }
+    .accordion-collapse{
+      border: none;
+    }
+    .accordion-body {
+      padding: 0.2rem 0.5rem 0.5rem 1rem;
+    }
+  }
+}
+
+
+// Accordion circle
+.accordion{
+  &.accordion-circle{
+    .accordion-item {
+      border-radius: $border-radius !important;
+        border: 1px solid rgba($secondary, $soft-alpha + 0.1);
+    
+      &:not(:first-of-type) {
+        border-top: 1px solid rgba($secondary, $soft-alpha + 0.1);
+      }
+    }
+    .accordion-header{
+      position: relative;
+      .accordion-button{
+        background:transparent;
+        color: $dark-gray;
+        border: none;
+        font-size: inherit;
+        padding-left: 2.7rem;
+        background-color:transparent !important;
+        &:after {
+          content:"";
+          background: $primary;
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          display: block;
+          position: absolute;
+          top: 47%;
+          left: 17px;
+          transform: translateY(-50%);
+          transition: $transition-base;
+          z-index: 9;
+        }
+        &:before {
+          content:"";
+          background: $white;
+          box-shadow: 0 .125rem .25rem rgba(29, 58, 83, .4);
+          width: 18px;
+          height: 18px;
+          border-radius: 100%;
+          display: block;
+          position: absolute;
+          top: 47%;
+          left: 14px;
+          transform: translateY(-50%);
+          transition: $transition-base;
+          z-index: 9;
+        }
+        // Show hide dots on active
+        &[aria-expanded=true]:after{
+          visibility: visible;
+        }
+        &[aria-expanded=false]:after{
+          visibility: hidden !important;
+        }
+        &:not(.collapsed) {
+          box-shadow: none !important;
+        }
+      }
+      
+    }
+    .accordion-collapse{
+      border: none;
+    }
+    .accordion-body {
+      padding: 0.5rem 2rem 1.5rem 2rem;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .accordion-circle .accordion-body {
+    padding: 0.6rem 1.5rem 0.5rem 1.5rem !important;
+  }
+  .accordion-circle .accordion-header .accordion-button {
+    padding-left: 2.5rem !important;
+  }
+}
+
+// Accordion icon bg light
+.accordion.accordion-bg-light {
+  .accordion-item {
+    border: none;
+    background-color: transparent;
+  }
+  .accordion-button {
+    background-color:rgba($light-gray, $soft-alpha)!important;
+    color:$dark-gray !important;
+   &:after {
+    background: $dark !important;
+    }
+    &:before {
+      background: $dark !important;
+      }
+    &:not(.collapsed) {
+      box-shadow: none !important;
+    }
+  }
+}
+
+// Accordion shadow
+.accordion.accordion-shadow {
+  .accordion-item {
+    border: none;
+  }
+  .accordion-button {
+    background-color: $body-bg!important;
+    color:$dark-gray !important;
+    box-shadow: $box-shadow-sm;
+   &:after {
+    background: $dark !important;
+    }
+    &:before {
+      background: $dark !important;
+      }
+    &:not(.collapsed) {
+      box-shadow: $box-shadow-sm;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .accordion-icon .accordion-body {
+    padding: 0.6rem 0.5rem 0.5rem 0.5rem !important;
+  }
+  .accordion-header .accordion-button {
+    padding-left: 1.3rem !important;
+  }
+}
+
+// Accordion flush
+.accordion-flush .accordion-item{
+  background-color: transparent;
+}
+.accordion-flush .accordion-button{
+  padding: 1rem 0rem;
+  background-color: transparent;
+}
+.accordion-flush .accordion-button:after{
+  background-size: 0.825rem;
+  width: 0.825rem;
+  height: 0.825rem;
+}
+.accordion-flush .accordion-button:not(.collapsed) {
+  color: $dark-gray;
+  background-color: transparent;
+}
+
+.accordion.accordion-flush {
+  .accordion-header .accordion-button:not(.collapsed) {
+      box-shadow: none !important;
+    }
+  &.accordion-body {
+    padding: 0.5rem 1.5rem;
+  }
+}
+.accordion-flush .accordion-button[aria-expanded=true]::after {
+  background-image: escape-svg($accordion-button-icon);
+  transform: rotate(-180deg);
+}
+
+@include media-breakpoint-up(md){
+  .accordion.accordion-flush .accordion-body {
+    padding: 0.825rem 2rem;
+  }
+}
+
+// accordion-flush-light
+.accordion.accordion-flush-light .accordion-item{
+  background-color: transparent;
+  border-bottom:1px solid rgba($secondary, $soft-alpha);
+}
+.accordion.accordion-flush-light .accordion-header .accordion-button {
+  background: transparent;
+  padding: 15px;
+  border: none;
+  color: $dark-gray;
+}
+.accordion.accordion-flush-light .accordion-button[aria-expanded=true] {
+  background-color:rgba($light-gray, $soft-alpha);
+  color: $dark-gray;
+  box-shadow: none;
+  border-radius: $border-radius;
+}

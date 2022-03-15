@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'm4_data',
-        'USER': 'dbadmint',
-        'PASSWORD': 'abc123',
+        'NAME': 'Tools_over',
+        'USER': 'postgres',
+        'PASSWORD': 'Anthem2018',
         'HOST': 'localhost',
     }
 }
@@ -131,6 +131,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, 'webcentral_app/static')
 ]
+
+MEDIA_ROOT=Path.joinpath(BASE_DIR,'webcentral_app/static/Tool_Images')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
