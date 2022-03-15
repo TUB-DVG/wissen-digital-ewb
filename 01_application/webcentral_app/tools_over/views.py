@@ -4,9 +4,9 @@ from turtle import up
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 from .models import Tools # maybe I need also the other models
-
-# Create your views here.
 
 class UpdateProperties:
     def __init__(self, class_name, label, color_class):
@@ -14,27 +14,29 @@ class UpdateProperties:
         self.label = label
         self.color_class = color_class
 
+@login_required(login_url='login')
 def index(request):
     """
     shows the list of all projects including some key features
     """
     tools = Tools.objects.all() # reads all data from table Teilprojekt
 
-    project_paginator= Paginator (tools,12)
+    tools_paginator= Paginator (tools,12)
 
     page_num= request.GET.get('page',None)
-    page=project_paginator.get_page(page_num)
+    page=tools_paginator.get_page(page_num)
 
     filtered_by = [None]*3
+
     if (request.method=='GET' and ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None)) ):
         
         Kategorie=request.GET.get('1')
         Lizenz=request.GET.get('2')
         Lebenszyklusphase=request.GET.get('3')
         results=Tools.objects.filter(kategorie__contains=Kategorie,lebenszyklusphase__contains=Lebenszyklusphase,lizenz__contains=Lizenz)
-        project_paginator= Paginator (results,12)
+        tools_paginator= Paginator (results,12)
         page_num= request.GET.get('page')
-        page=project_paginator.get_page(page_num)
+        page=tools_paginator.get_page(page_num)
         filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
        
     context = {
@@ -42,10 +44,13 @@ def index(request):
         'kategorie': filtered_by[0],
         'lizenz': filtered_by[1],
         'lebenszyklusphase': filtered_by[2]
+        
     }
+
     return render(request, 'tools_over/tool-listings.html', context)
+    
 
-
+   
 def tool_view(request, id):
     """
     shows of the key features one project
@@ -75,3 +80,4 @@ def tool_view(request, id):
     }
 
     return render(request, 'tools_over/tool-detail.html', context)
+ 

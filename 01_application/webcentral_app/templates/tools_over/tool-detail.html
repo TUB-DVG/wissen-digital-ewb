@@ -27,8 +27,10 @@ Page intro START -->
 				<!-- Title -->
 				<h1>{{tool.bezeichnung}}</h1>
 				<!-- Content -->
-				<ul class="list-inline mb-0">	
-					<!--<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.nutzerbewertungen}}/10.0</li>-->
+				<ul class="list-inline mb-0">
+					{% if  tool.average_rating != 0 %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.average_rating}}/5.0</li>
+					{% endif %}
 					{% if tool.letztes_update %}
 						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{ letztes_update_label }}: {{tool.letztes_update}}</li>
 					{% endif %}

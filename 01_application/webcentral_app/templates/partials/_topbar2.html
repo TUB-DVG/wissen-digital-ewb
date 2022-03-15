@@ -1,4 +1,5 @@
-{% load static %}
+{% load static %}  
+
 
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
@@ -6,8 +7,8 @@
 	<nav class="navbar navbar-expand-xl">
 		<div class="container">
 			<!-- Logo START -->
-			<a class="navbar-brand" href="{% url 'index' %}">
-				<img class="light-mode-item navbar-brand-item" src="{% static 'img/TU_Logo_lang_RGB_rot.svg' %}" alt="logo">
+			<a class="navbar-brand" href=#>
+				<img  width="200" src="{% static 'img/TU_Logo_lang_RGB_rot.svg' %}" alt="logo">
 			</a>
 			<!-- Logo END -->
 
@@ -30,7 +31,6 @@
 					<!-- Nav item 4 Component-->
 					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'tool_list' %}">Tools</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'project_list' %}">Projektliste</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
 
 					
@@ -51,10 +51,12 @@
 			<!-- Main navbar END -->
 
 			<!-- Profile START -->
+			
 			<div class="dropdown ms-1 ms-lg-0">
+				{% if user.is_authenticated %}
 				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					<img class="avatar-img rounded-circle" src="{% static '/assets/images/avatar/01.jpg' %}" alt="avatar">
 					
+					<img class="avatar-img rounded-circle" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
 				</a>
 				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 					<!-- Profile info -->
@@ -62,11 +64,11 @@
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="{% static '/assets/images/avatar/01.jpg' %}" alt="avatar">
+								<img class="avatar-img rounded-circle shadow" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
 							</div>
 							<div>
-								<a class="h6" href="#">Lori Ferguson</a>
-								<p class="small m-0">example@gmail.com</p>
+								<p class="h6" href="#">{{ request.user }}</p>
+								<p class="small m-0">{{ request.email}}</p>
 							</div>
 						</div>
 						<hr>
@@ -75,9 +77,9 @@
 					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+					<li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
 					<li> <hr class="dropdown-divider"></li>
-					<!-- Dark mode switch START -->
+					<!-- Dark mode switch START
 					<li>
 						<div class="modeswitch-wrap" id="darkModeSwitch">
 							<div class="modeswitch-item">
@@ -86,8 +88,14 @@
 							<span>Dark mode</span>
 						</div>
 					</li> 
-          <!-- Dark mode switch END -->
+					-->
+          <!-- Dark mode switch END --> 
 				</ul>
+				{% else %}
+				<a class="avatar avatar-sm p-0" href="{% url 'login' %}" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+					<img class="avatar-img rounded-circle" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
+				</a>
+				{% endif %}	
 			</div>
 			<!-- Profile START -->
 		</div>
