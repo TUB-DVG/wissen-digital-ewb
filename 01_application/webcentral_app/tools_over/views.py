@@ -19,25 +19,28 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    tools = Tools.objects.all() # reads all data from table Teilprojekt
+
+    filtered_by = [None]*3
+
+    if request.method =='GET' and (request.GET.get("searched")!= None):
+        searched=request.GET.get('searched')
+        tools=Tools.objects.filter(bezeichnung__icontains=searched)
+
+    elif (request.method=='GET' and ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None)) ):
+        
+        Kategorie=request.GET.get('1')
+        Lizenz=request.GET.get('2')
+        Lebenszyklusphase=request.GET.get('3')
+        tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz)
+        filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
+    else :
+        tools = Tools.objects.all() # reads all data from table Teilprojekt
 
     tools_paginator= Paginator (tools,12)
 
     page_num= request.GET.get('page',None)
     page=tools_paginator.get_page(page_num)
 
-    filtered_by = [None]*3
-
-    if (request.method=='GET' and ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None)) ):
-        
-        Kategorie=request.GET.get('1')
-        Lizenz=request.GET.get('2')
-        Lebenszyklusphase=request.GET.get('3')
-        results=Tools.objects.filter(kategorie__contains=Kategorie,lebenszyklusphase__contains=Lebenszyklusphase,lizenz__contains=Lizenz)
-        tools_paginator= Paginator (results,12)
-        page_num= request.GET.get('page')
-        page=tools_paginator.get_page(page_num)
-        filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
        
     context = {
         'page': page,

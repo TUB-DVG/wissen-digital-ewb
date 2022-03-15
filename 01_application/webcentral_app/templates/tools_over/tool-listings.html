@@ -18,7 +18,7 @@ Page Banner START -->
 		<div class="row">
 			<div class="col-12">
 				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Tool Listings</h1>
+					<h1 class="m-0">Überblick über die Tools</h1>
 					
 				</div>
 			</div>
@@ -38,13 +38,13 @@ Page content START -->
 			<div class="row g-3">
 				<!-- Input -->
 				<div class="col-xl-3">
-					<input class="form-control me-1" type="search" placeholder="Enter keyword">
+					<input class="form-control me-1" type="search" placeholder="Enter keyword" name="searched">
 				</div>
 
 				<!-- Select item -->
 				<div class="col-xl-7">
 					<form  method="GET">
-						<div class="form-row g-3">
+						<div class="row g-3">
 							
 							<!-- Select items -->
 						<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
@@ -67,9 +67,9 @@ Page content START -->
 									<option value="Datenbankmanagement">Datenbankmanagement</option>
 									<option value="Berechnung">Berechnung</option>
 									<option value="Programmierumgebung">Programmierumgebung</option>
-									<option value="visialisierung">Visualisierung</option>
+									<option value="Visualisierung">Visualisierung</option>
 									<option value="Modellanalyse">Modellanalyse</option>
-									<option value="Machine Learning">MachineLearning</option>
+									<option value="Machine Learning">Machine Learning</option>
 
 								</select>
 								
@@ -121,6 +121,19 @@ Page content START -->
 			</div> <!-- Row END -->
 		</form>
 		<!-- Filter bar END -->
+
+		<ul class="list-inline mb-0">
+			{% if kategorie %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
+			{% endif %}	
+			{% if lizenz %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2={{lizenz}}&3=">{{lizenz}}</a> </li>
+			{% endif %}
+			{% if lebenszyklusphase %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+			{% endif %}
+		</ul>
+
 
 
 		<div class="row mt-3">
