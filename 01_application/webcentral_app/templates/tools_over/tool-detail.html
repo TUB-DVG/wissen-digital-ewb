@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} {{ tool.bezeichnung }} {% endblock %}
+
 {% load static %}
 
 {% block content%}
@@ -13,14 +15,20 @@ Page intro START -->
 			<div class="col-lg-8">
 				<!-- Badges -->
 				{% for kategorie in kategorien %}	
-				<a href="/tool_list/?1={{kategorie}}&2=&3="> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">{{kategorie}}</h6></a>
+				<a href="/tool_list/?1={{kategorie}}&2=&3="> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-bars text-white me-2"></i>{{kategorie}}</h6></a>
 				{% endfor %}
+				{% if tool.lizenz %}
+				<a href="/tool_list/?1=&2={{tool.lizenz}}&3="> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-fw fa-book-open text-white me-2"></i>{{tool.lizenz}}</h6></a>
+				{% endif %}
+				{% if tool.lebenszyklusphase %}
+				<a href="/tool_list/?1=&2=&3={{tool.lebenszyklusphase}}"> <h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block"><i class="fas fa-fw fa-history text-white me-2"></i>{{tool.lebenszyklusphase}}</h6></a> 
+				{% endif %}
 
 				<!-- Title -->
 				<h1>{{tool.bezeichnung}}</h1>
 				<!-- Content -->
 				<ul class="list-inline mb-0">	
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.nutzerbewertungen}}/10.0</li>
+					<!--<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.nutzerbewertungen}}/10.0</li>-->
 					{% if tool.letztes_update %}
 						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{ letztes_update_label }}: {{tool.letztes_update}}</li>
 					{% endif %}
@@ -64,26 +72,34 @@ Page content START -->
 							<!-- Content START -->
 							<div class="tab-pane fade show active" id="course-pills-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
 								<!-- Course detail START -->
+								{% if tool.bezeichnung %}
 								<h5 class="mb-3">Was ist {{tool.bezeichnung}}?</h5>
 								<p class="mb-0">{{tool.kurzbeschreibung}}</p>
-								
+								{% endif %}
+								{% if tool.anwendungsbereich %}
 								<h5 class="mt-4">Anwendungsbereich</h5>
 								<p class="mb-0">{{tool.anwendungsbereich}}</p>
-								
+								{% endif %}
+								{% if tool.weitere_informationen %}
 								<h5 class="mt-4">Weitere Informationen</h5>
 								<p class="mb-0">{{tool.weitere_informationen}}</p>
-								
+								{% endif %}
+								{% if tool.alternativen %}
 								<h5 class="mt-4">Alternativen</h5>
 								<p class="mb-0">{{tool.alternativen}}</p>
-
+								{% endif %}
+								{% if tool.nutzerschnittstelle %}
 								<h5 class="mt-4">Nutzerschnittstelle</h5>
 								<p class="mb-0">{{tool.nutzerschnittstelle}}</p>
-
+								{% endif %}
+								{% if tool.konk_anwendung %}
 								<h5 class="mt-4">konkrete Anwendung</h5>
 								<p class="mb-0">{{tool.konk_anwendung}}</p>
-
+								{% endif %}
+								{% if tool.zielgruppe %}
 								<h5 class="mt-4">Zielgruppe</h5>
 								<p class="mb-0">{{tool.zielgruppe}}</p>
+								{% endif %}
 								<!-- Course detail END -->
 
 							</div>
@@ -400,11 +416,17 @@ Page content START -->
 
 						<!-- Tags START -->
 						<div class="card card-body shadow p-4">
-							<h4 class="mb-3">Kategorien</h4>
+							<h4 class="mb-3">Tags</h4>
 							<ul class="list-inline mb-0">
 								{% for kategorie in kategorien %}	
 								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
 								{% endfor %}
+								{% if tool.lizenz %}
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2={{tool.lizenz}}&3=">{{tool.lizenz}}</a> </li>
+								{% endif %}
+								{% if tool.lebenszyklusphase %}
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{tool.lebenszyklusphase}}">{{tool.lebenszyklusphase}}</a> </li>
+								{% endif %}
 							</ul>
 						</div>	
 						<!-- Tags END -->

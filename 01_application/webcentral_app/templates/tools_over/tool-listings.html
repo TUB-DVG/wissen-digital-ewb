@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} Tools {% endblock %}
+
 {% load static %}
 
 {% block content%}
@@ -12,7 +14,7 @@ Page Banner START -->
 		<div class="row">
 			<div class="col-12">
 				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Tool Listings</h1>
+					<h1 class="m-0">Überblick über die Tools</h1>
 					
 				</div>
 			</div>
@@ -43,7 +45,7 @@ Page content START -->
 						<form  method="GET">
 							<select class="form-select form-select-sm js-choice" aria-label=".form-select-sm example" name="1">
 								
-								<option value="">Categories</option>
+								<option value="">Kategorien</option>
 								
 								<option value="Datenverwaltung">Datenverwaltung</option>
 								<option value="Anzeige und Gestaltung">Anzeige und Gestaltung</option>
@@ -60,7 +62,7 @@ Page content START -->
 								<option value="Datenbankmanagement">Datenbankmanagement</option>
 								<option value="Berechnung">Berechnung</option>
 								<option value="Programmierumgebung">Programmierumgebung</option>
-								<option value="visialisierung">Visialisierung</option>
+								<option value="visialisierung">Visualisierung</option>
 								<option value="Modellanalyse">Modellanalyse</option>
 								<option value="Machine Learning">MachineLearning</option>
 
@@ -112,6 +114,19 @@ Page content START -->
 			</div> <!-- Row END -->
 		</form>
 		<!-- Filter bar END -->
+
+		<ul class="list-inline mb-0">
+			{% if kategorie %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
+			{% endif %}	
+			{% if lizenz %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2={{lizenz}}&3=">{{lizenz}}</a> </li>
+			{% endif %}
+			{% if lebenszyklusphase %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+			{% endif %}
+		</ul>
+
 
 		<div class="row mt-3">
 			<!-- Main content START -->

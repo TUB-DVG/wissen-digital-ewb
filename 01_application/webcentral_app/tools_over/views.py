@@ -1,3 +1,4 @@
+from contextlib import nullcontext
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
 from turtle import up
 from django.http import HttpResponse
@@ -13,10 +14,6 @@ class UpdateProperties:
         self.label = label
         self.color_class = color_class
 
-
-letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-laufende_updates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
-
 def index(request):
     """
     shows the list of all projects including some key features
@@ -28,20 +25,23 @@ def index(request):
     page_num= request.GET.get('page',None)
     page=project_paginator.get_page(page_num)
 
-    #category_view=Tools.objects.filter(kategorie_contains=)
+    filtered_by = [None]*3
     if (request.method=='GET' and ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None)) ):
         
-        Category=request.GET.get('1')
+        Kategorie=request.GET.get('1')
         Lizenz=request.GET.get('2')
         Lebenszyklusphase=request.GET.get('3')
-        results=Tools.objects.filter(kategorie__contains=Category,lebenszyklusphase__contains=Lebenszyklusphase,lizenz__contains=Lizenz)
+        results=Tools.objects.filter(kategorie__contains=Kategorie,lebenszyklusphase__contains=Lebenszyklusphase,lizenz__contains=Lizenz)
         project_paginator= Paginator (results,12)
         page_num= request.GET.get('page')
         page=project_paginator.get_page(page_num)
+        filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
        
     context = {
         'page': page,
-   
+        'kategorie': filtered_by[0],
+        'lizenz': filtered_by[1],
+        'lebenszyklusphase': filtered_by[2]
     }
     return render(request, 'tools_over/tool-listings.html', context)
 
@@ -53,6 +53,9 @@ def tool_view(request, id):
     tool = get_object_or_404(Tools, pk= id)
     kategorien = tool.kategorie.split(", ")
     laufende_updates = tool.letztes_update
+    
+    letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
+    laufende_updates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
 
     #changing labels and icon
     update_properties = letztes_update
@@ -70,11 +73,3 @@ def tool_view(request, id):
     }
 
     return render(request, 'tools_over/tool-detail.html', context)
-
-
-#def search(request):
-#    if request.method=='POST':
-#        searched=request.POST['searched']
-#        results=Teilprojekt.objects.filter(fkz__contains=searched)
-#    return render(request,'tools_over/search.html',{'searched':searched,'data':results})
-   
