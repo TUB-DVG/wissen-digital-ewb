@@ -83,8 +83,6 @@ def tool_view(request, id):
 
     return render(request, 'tools_over/tool-detail.html', context)
 
-from tools_over.forms import ReviewForm
-
 def Post_Review(request,id):
     if request.method=="POST":
         User=request.user

@@ -253,13 +253,16 @@ Page content START -->
 							
 							</div>
 							<!-- Card footer -->
+							{% if tool.letztes_update %}
 							<div class="card-footer pt-0 pb-3">
 								<hr>
 								<div class="d-flex justify-content-between">
-									<span class="h6 fw-light mb-0"><i class="far fa-clock text-danger me-2"></i>Letztes_Update: {{ tool.letztes_update }} </span>
+									<span class="h6 fw-light mb-0">
+										<i class="far fa-clock text-danger me-2"></i>Letztes_Update: {{ tool.letztes_update }} </span>
 									
 								</div>
 							</div>
+							{% endif %}
 						</div>
 					</div>
 					<!-- Card item END -->
