@@ -57,7 +57,8 @@ class Tools(models.Model):
                                             help_text = "Bewertung der Anwendung durch Nutzende \
                                             (geplant max. 10 mit einer Kommastelle, max. 10.0)",
                                             blank = True, null = True)
-    image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
+    #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
+    image=models.ImageField(default="Default.webp", null=True,blank = True)  #You need to install pillow
 
 
 
