@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
+{% block title %}
 
+{% endblock%}
 {% block content %}
 {% load static %}
-<!DOCTYPE html>
+<title></title>
 
-</head>
+
 
 <body>
 
@@ -37,8 +39,8 @@ Page content START -->
 		<form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
 			<div class="row g-3">
 				<!-- Input -->
-				<div class="col-xl-3">
-					<input class="form-control me-1" type="search" placeholder="Enter keyword" name="searched">
+				<div class="col-xl-3" title="Suchen in den Anwendungsnamen">
+					<input class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
 				</div>
 
 				<!-- Select item -->
@@ -48,7 +50,7 @@ Page content START -->
 							
 							<!-- Select items -->
 						<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1" title="Filtern nach der Kategorie der Anwendung"> 
 									
 									<option value="">Kategorien</option>
 									
@@ -78,7 +80,7 @@ Page content START -->
 							<!-- Search item -->
 							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
 								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="2">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="2" title="Filtern nach der Lizenz der Anwendung">
 									
 									<option value="">Lizenz</option>
 									<option value="kostenpflichtig">Kostenpflichtig</option>
@@ -90,7 +92,7 @@ Page content START -->
 							<!-- Search item -->
 							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
 								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="3">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="3" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
 									<option value="">Lebenszyklusphase</option>
 									<option value="Planung">Planung</option>
 									<option value="Vorplanung">Vorplanung</option>
@@ -113,8 +115,6 @@ Page content START -->
 				</div>
 				<!-- Button -->
 				<div class="col-xl-1">
-					
-                	
 					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" href=""><i class="fas fa-search"></i></button>
 				</div>
 			</form>
@@ -123,14 +123,17 @@ Page content START -->
 		<!-- Filter bar END -->
 
 		<ul class="list-inline mb-0">
+			{% if search %}
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched={{search}}&1=&2=&3=">Searched:{{search}}</a> </li>
+			{% endif %}	
 			{% if kategorie %}
-			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
 			{% endif %}	
 			{% if lizenz %}
-			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2={{lizenz}}&3=">{{lizenz}}</a> </li>
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1=&2={{lizenz}}&3=">{{lizenz}}</a> </li>
 			{% endif %}
 			{% if lebenszyklusphase %}
-			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+			<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
 			{% endif %}
 		</ul>
 
@@ -150,7 +153,7 @@ Page content START -->
 							{%if tool.image %}
 							<img src=" {{ tool.image.url }}" class="card-img-top" alt="course image">
 							{% else %}
-							<img src=" {%static 'Tool_Images/Default.webp' %}" class="card-img-top" alt="course image">
+							<img src=" {%static 'tools_over/Media/Default.webp' %}" class="card-img-top" alt="course image">
 							{% endif %}
 							<!-- Card body -->
 							<div class="card-body pb-0">

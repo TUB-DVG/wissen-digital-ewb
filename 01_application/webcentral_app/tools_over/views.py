@@ -5,8 +5,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
-from .models import Tools # maybe I need also the other models
+
+from .models import Tools, Rating # maybe I need also the other models
 
 class UpdateProperties:
     def __init__(self, class_name, label, color_class):
@@ -19,22 +19,20 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-
+    tools = Tools.objects.all() # reads all data from table Teilprojekt
     filtered_by = [None]*3
+    searched=None
 
-    if request.method =='GET' and (request.GET.get("searched")!= None):
-        searched=request.GET.get('searched')
-        tools=Tools.objects.filter(bezeichnung__icontains=searched)
 
-    elif (request.method=='GET' and ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None)) ):
-        
+ 
+    if ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None) |(request.GET.get("searched") != None)):
         Kategorie=request.GET.get('1')
         Lizenz=request.GET.get('2')
         Lebenszyklusphase=request.GET.get('3')
-        tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz)
+        searched=request.GET.get('searched')
+        tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz,bezeichnung__icontains=searched)
         filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
-    else :
-        tools = Tools.objects.all() # reads all data from table Teilprojekt
+              
 
     tools_paginator= Paginator (tools,12)
 
@@ -44,6 +42,7 @@ def index(request):
        
     context = {
         'page': page,
+        'search':searched,
         'kategorie': filtered_by[0],
         'lizenz': filtered_by[1],
         'lebenszyklusphase': filtered_by[2]
@@ -83,4 +82,18 @@ def tool_view(request, id):
     }
 
     return render(request, 'tools_over/tool-detail.html', context)
+
+from tools_over.forms import ReviewForm
+
+def Post_Review(request,id):
+    if request.method=="POST":
+        User=request.user
+        tool=tool = get_object_or_404(Tools, pk= id)
+        comment=request.POST['comment']
+        score=request.POST['score']
+        rating=Rating.objects.create(rating_from=User,rating_for=tool,score=score,comment=comment)
+
+        return  tool_view(request,id)
+
+        
  

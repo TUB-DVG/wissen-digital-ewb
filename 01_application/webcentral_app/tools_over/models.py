@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Rating (models.Model):
     rating_from = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='rating_from')
     rating_for = models.ForeignKey("Tools", on_delete=models.SET_NULL, null=True, related_name='rating_for')
+    comment=models.CharField(max_length=1000,blank=True)
     score=models.IntegerField  ( default=0,
         validators=[
             MaxValueValidator(5),
@@ -56,7 +57,7 @@ class Tools(models.Model):
                                             help_text = "Bewertung der Anwendung durch Nutzende \
                                             (geplant max. 10 mit einer Kommastelle, max. 10.0)",
                                             blank = True, null = True)
-    image=models.ImageField(default="Default.webp", null=True,blank = True)  #You need to install pillow
+    image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
 
 
 
@@ -76,3 +77,6 @@ class Tools(models.Model):
 
     def __str__(self):
         return self.bezeichnung
+
+
+
