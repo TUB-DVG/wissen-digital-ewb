@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} About {% endblock %}
+{% block title %} Über uns {% endblock %}
 
 {% load static %}
 
@@ -9,12 +9,12 @@
   <!-- =======================
 Page Banner START -->
 <section class="py-4">
-	<div class="container">
+  <div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Über WebCentral BF M</h1>
-					
+					<h1 class="m-0">Modul Digitalisierung</h1>
+					<h3 class="m-0">Begleitforschung Energiewendebauen</h3>
 				</div>
 			</div>
 		</div>
@@ -28,27 +28,64 @@ Page Banner END -->
   <section id="about" class="py-4">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
-          <h2>Wir speichern die relvanten Informationen für die Arbeit des Moduls Digitalisierung der Wissenschaftlichen Begleitforschung </h2>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
-          <img src="{% static '/img/ER_Diagramm_Draft6-SourceByTabels.png' %}" alt="">
-          <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia repudiandae ad saepe ex, amet
-            neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem at quaerat
-            commodi id libero eveniet harum perferendis laborum molestias quia.</p>
+        <div class="col-md-9">
+          <p class="lead">Die Wissensplattform wird durch das Modul Digitalisierung der 
+            wissenschaftlichen Begleitforschung der Forschungsinitiative 
+            <a href="https://www.energiewendebauen.de">Energiewendebauen</a> entwickelt 
+            und bereitgestellt.</p>
+
+          <p class="lead">Die wissenschaftliche Begleitforschung der Forschungsinitiative 
+            Energiewendebauen wertet Arbeitsprogramme und Ergebnisse der Forschungs- und 
+            Demonstrationsvorhaben aus und bereitet dieses auf, um die Erkenntnisse in die 
+            Planungs- und Entscheidungspraxis nachhaltig einfließen zu lassen. </p>
+            
+          <p class="lead">Querauswertungen der Forschungsprojekte, die Bereitstellung von 
+            Fachinformationen, der Transfer von Forschungsergebnissen in die Praxis und die 
+            Kommunikation von Lösungsansätzen in die Breite sind zentrale Bausteine zur 
+            Erreichung der Ziele im Verbrauchssektor Gebäude und Quartiere. Diese Leistungen 
+            werden durch das wissenschaftliche Begleitforschungsvorhaben Energiewendebauen erbracht.</p>
+            
+          <p class="lead">Insgesamt vier Module werten die inhaltlichen Schwerpunkte der 
+            Forschungsinitiative Energiewendebauen aus, vernetzen diese und
+            entwickeln sie weiter 
+            (Modul 1: Monitoring und Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4: Digitalisierung).</p>
+            
+            <p class="lead">Das Modul 4 (Digitalisierung) wird von der TU Berlin mit der 
+              <a href="https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future">Einstein Center Digital Future Professur</a> für die digitale Vernetzung von Gebäuden, 
+              Energieversorgungsanlagen und Nutzenden zusammen mit der <a href="https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW">Universität der Künste Berlin 
+              und der Einstein Center Digital Future Professur Digitale Selbstbestimmung</a> und 
+              dem <a href="https://ewb.innoecos.com/Group/IOeW/">Institut für ökologische Wirtschaftsforschung</a> bearbeitet.</p>
+            
+          
         </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Ansprechpartner">
-            <div class="card-body">
-              <h5 class="card-title">Ansprechpartner</h5>
-              <h6 class="text-secondary">Max Mustermann</h6>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nesciunt amet, illo itaque similique repellat.
-                content.
-              </p>
-            </div>
-          </div>
+        <div class="col-md-3">
+          <a href="https://www.energiewendebauen.de"><img src="{% static '/img/Energiewendebauen.png' %}"  alt=""></a>
         </div>
       </div>
+      <!--<div class="row mt-lg-6 mb-lg-4">
+        <div class="col-lg-9">
+          
+        </div>
+      </div>-->
+      <div class="row mt-lg-4 mb-lg-4">
+        <div class="col-lg-12 d-lg-flex flex-lg-row justify-content-between" style="height: 120px;">
+          <a href="https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future"  class="align-self-center" style="height: 100%;">
+            <img src="{% static '/img/ECDF.png' %}" class="my-auto" style="max-width:100%; max-height: 100%; vertical-align: middle;" alt="">
+          </a>
+          <a href="https://www.tu.berlin" class="align-self-center">
+            <img src="{% static '/img/tu-berlin-logo.svg' %}" class="my-auto" style="max-width:100%; height: 90px; max-height: 100%;" alt="">
+          </a>
+          <a href="https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW"  class="align-self-center">
+            <img src="{% static '/img/UdK.png' %}" class="my-auto" style="max-width:100%; max-height: 100%" alt="">
+          </a>
+          <a href="https://ewb.innoecos.com/Group/IOeW/"  class="align-self-center" style="height: 100%;">
+            <img src="{% static '/img/ioew.png' %}" class="my-auto" style="max-width:100%; max-height: 100%;" alt="">
+          </a>
+        </div>
+      </div>
+
+      
+      {% include '../partials/_gefoerdert_bmwk.html' %}
     </div>
   </section>
 
