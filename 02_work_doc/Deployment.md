@@ -445,13 +445,14 @@ server {
     }
 }
 ```
-
+- make sure staic folder and also the media file is in your project at this position 
 ### Enable the file by linking to the sites-enabled dir
 
 ```
 # sudo ln -s /etc/nginx/sites-available/btre_project /etc/nginx/sites-enabled
 ```
-
+- another enabled site cause trouble, better delete the other symblic link
+- in my case default makes no trouble 
 ### Test NGINX config
 
 ```
@@ -569,6 +570,12 @@ and <img src=" /static/img/about.jpg" alt="">
 ### solution!!!!!
 - pip install psycopg2-binary
 
+## modul tkinter not found
+- not found on the server (ubuntu 20.04 LTS)
+- at my local machine it is installed by default
+- pip install tkinter >> not found 
+### solution
+- sudo apt install python3-tk
 
 # infos
 - https://medium.com/analytics-vidhya/dajngo-with-nginx-gunicorn-aaf8431dc9e0
@@ -611,3 +618,12 @@ LINE 1: ... "project_listing_tools"."nutzerbewertungen" FROM "project_l...
 - python3 manage.py dbshell
   - \d 
   - \q
+
+# trouble shooting
+
+Tips and tricks for trouble shooting at the server.
+
+## Logs nginx
+
+By default, NGINX writes its events in two types of logs – the error log and the access log. In most of the popular Linux distro like Ubuntu, CentOS or Debian, both the access and error log can be found in /var/log/nginx, assuming you have already enabled the access and error logs in the core NGINX configuration file.
+- source: https://www.journaldev.com/26756/nginx-access-logs-error-logs
