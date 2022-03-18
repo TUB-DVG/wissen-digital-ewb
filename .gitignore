@@ -20,3 +20,4 @@ venv
 #/01_application/webcentral_app/settings.py
 /01_application/webcentral_app/tools_over/migrations
 /01_application/webcentral_app/tools_over/Media
+/01_application/webcentral_app/media
