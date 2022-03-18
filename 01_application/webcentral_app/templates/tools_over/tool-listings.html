@@ -151,9 +151,9 @@ Page content START -->
 						<div class="card shadow h-100">
 							<!-- Image -->
 							{%if tool.image %}
-							<img src=" {{ tool.image.url }}" class="card-img-top" alt="course image">
+							<img src=" {{ tool.image.url }}" class="card-img-top" alt="tool image (if=db)">
 							{% else %}
-							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="course image">
+							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="tool image (else)">
 							{% endif %}
 							<!-- Card body -->
 							<div class="card-body pb-0">
