@@ -57,3 +57,13 @@ date: march 2022
   - [ ] Inplementieren
   - [ ] Testen
   - [ ] Dokumentieren (am Besten paralell machen)
+
+# Wetterdaten Anbieter Display
+- Name des Anbieters
+- Kurzbeschreibung der Art von Daten
+- Datenkategorien als Tags ? (Wind, Wasserqualität, Temperatur, ...)
+- Link zur Homepage
+- Bild/Logo
+- Woher die Daten? (open data, Messungen eines Instituts, ...)
+- Plot
+- Start (und Ende) der Datenaufnahme (je nach Kategorie, generell)
