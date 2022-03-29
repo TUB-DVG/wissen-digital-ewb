@@ -38,7 +38,6 @@ def index(request):
 
     page_num= request.GET.get('page',None)
     page=tools_paginator.get_page(page_num)
-
        
     context = {
         'page': page,
@@ -46,7 +45,6 @@ def index(request):
         'kategorie': filtered_by[0],
         'lizenz': filtered_by[1],
         'lebenszyklusphase': filtered_by[2]
-        
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
