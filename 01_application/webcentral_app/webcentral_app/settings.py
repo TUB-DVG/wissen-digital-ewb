@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'embed_video',
+    'einleitung_wp'
+    
 ]
 
 MIDDLEWARE = [
@@ -83,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'webcentral',
         'USER': 'postgres',
-        'PASSWORD': 'abc123',
+        'PASSWORD': 'Anthem2018',
         'HOST': 'localhost',
     }
 }

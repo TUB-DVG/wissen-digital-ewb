@@ -5,9 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from  einleitung_wp.models import video
 
 def index(request):
-    return render(request, 'pages/index.html')
+	videos=video.objects.get(title="Test Video")
+	return render(request, 'pages/index.html',context={'videos':videos})
 
 def about(request):
     return render(request, 'pages/about.html')
