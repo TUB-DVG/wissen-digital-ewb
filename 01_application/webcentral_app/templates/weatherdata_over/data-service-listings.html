@@ -47,16 +47,17 @@ Page content START -->
 						<div class="card shadow h-100">
 							<!-- Image -->
 							{%if weatherdata.image_url %}
-							<img src=" {{ weatherdata.image_url }}" class="card-img-top" alt="tool image (if=db)">
+							<img src=" {{ weatherdata.image_url }}" class="card-img-top" alt="weatherdata image (if=db)">
 							{% else %}
-							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="tool image (else)">
+							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="weatherdata image (else)">
 							{% endif %}
 							<!-- Card body -->
 							<div class="card-body pb-0">
 						
 								<!-- Title -->
-								<h5 class="card-title"> {{ weatherdata.data_service   }}</h5>
-								<p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider   }}</p>
+								<h5 class="card-title"><a href="{%url 'weatherdata_view' weatherdata.id %}"> {{ weatherdata.data_service   }}</a></h5>
+								<p class="mb-2 text-truncate-2">{{ weatherdata.category }}</p>
+								<p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
 								
 							
 							</div>
