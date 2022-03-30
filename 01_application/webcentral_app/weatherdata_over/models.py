@@ -29,4 +29,3 @@ class Weatherdata(models.Model):
     license = models.CharField(max_length = 200,
                               help_text = "Lizenz der Anwendung",
                               blank = True)
-    image=models.ImageField(null=True,blank = True)
