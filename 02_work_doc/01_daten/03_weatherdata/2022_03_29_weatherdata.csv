@@ -1,0 +1,4 @@
+data_service;short_description;provider;further_information;data_url;logo_url;applications;last_update;license
+DWD Open Data;;Deutscher Wetterdienst;https://www.dwd.de/DE/leistungen/opendata/hilfe.html;;;;;Open Data
+TRY;"The BBSR provides data for test reference years TRY. The TRY provide climate data for the evaluation of thermal behvaviour of buildings. The data can be downloaded for free, but an user account is necessary from this webpage. ";Bundesinstitut für Bau-, Stadt- und Raumforschung;"https://www.bbsr.bund.de/BBSR/DE/forschung/programme/zb/Auftragsforschung/5EnergieKlimaBauen/2013/testreferenzjahre/01-start.html;";;;;;
+Climate Consultant;;DOE;;;;;;

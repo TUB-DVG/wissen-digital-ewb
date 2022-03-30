@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}Überblick über die Wetterdaten-Services{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+</head>
+
+<body>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Page Banner START -->
+<section class="py-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="bg-light p-4 text-center rounded-3">
+					<h1 class="m-0">Überblick über die Wetterdaten-Services</h1>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+
+
+<!-- =======================
+Page content START -->
+<section class="pt-0">
+	<div class="container">
+
+		<div class="row mt-3">
+			<!-- Main content START -->
+			<div class="col-12">
+
+				<!-- Course Grid START -->
+				<div class="row g-4">
+					{% for weatherdata in page.object_list %}	
+					<!-- Card item START -->
+					<div class="col-sm-6 col-lg-4 col-xl-3">
+						<div class="card shadow h-100">
+							<!-- Image -->
+							{%if weatherdata.image_url %}
+							<img src=" {{ weatherdata.image_url }}" class="card-img-top" alt="tool image (if=db)">
+							{% else %}
+							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="tool image (else)">
+							{% endif %}
+							<!-- Card body -->
+							<div class="card-body pb-0">
+						
+								<!-- Title -->
+								<h5 class="card-title"> {{ weatherdata.data_service   }}</h5>
+								<p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider   }}</p>
+								
+							
+							</div>
+							<!-- Card footer -->
+							<div class="card-footer pt-0 pb-3">
+								{% if weatherdata.last_update %}
+								<hr>
+								<div class="d-flex justify-content-between">
+									<span class="h6 fw-light mb-0">
+										<i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ weatherdata.last_update }} </span>
+									
+								</div>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+					<!-- Card item END -->
+					{% endfor %}
+					
+				</div>
+				<!-- Course Grid END -->
+
+				<!-- Pagination START -->
+			<div class="col-12">
+				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+					<ul class="pagination pagination-primary-soft rounded mb-0">
+						{% if page.has_previous %}
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						{% else %}
+						<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						{% endif %}
+						{% if page.has_next %}
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'weatherdata_list' %}?page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
+						{% else %}
+						<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>
+						{% endif %}
+					</ul>
+				</nav>
+			</div>
+			<!-- Pagination END -->
+			</div>
+			<!-- Main content END -->
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+
+{% endblock %}
+
+
+
+
+
