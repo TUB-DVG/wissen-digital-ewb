@@ -7,7 +7,8 @@ class Weatherdata(models.Model):
                                    help_text="Name der Anwendung",
                                    blank = True)
     short_description = models.CharField(max_length = 1000,
-                                   help_text = "Kurzbeschreibung des DatenService")
+                                   help_text = "Kurzbeschreibung des DatenService",
+                                   blank = True)
     provider = models.CharField(max_length = 150,
                                          help_text = "Provider des DatenService",
                                          blank=True)
@@ -32,3 +33,6 @@ class Weatherdata(models.Model):
     category = models.CharField(max_length = 150,
                                 help_text = "Kategorie des DatenServices (Datensatz, Anwendung, ...)",
                                 blank = True)
+    long_description = models.CharField(max_length = 10000,
+                                   help_text = "Beschreibung des DatenService",
+                                   blank = True)

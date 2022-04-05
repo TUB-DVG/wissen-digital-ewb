@@ -243,6 +243,7 @@ def get_or_create_weatherdata(row, header):
     last_update= row[header.index('last_update')]
     license = row[header.index('license')]
     category = row[header.index('category')]
+    long_description = row[header.index('long_description')]
 
     obj, created = Weatherdata.objects.get_or_create(
         data_service = data_service,
@@ -255,6 +256,7 @@ def get_or_create_weatherdata(row, header):
         last_update = last_update,
         license = license,
         category = category,
+        long_description = long_description
     )
     return obj, created
 
@@ -371,11 +373,11 @@ def csv2m4db_weatherdata(path):
 # header, data = csv2m4db_modul(path_csv_modul)
 
 ## Example add/update Tool Uebersichts table
-path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-header, data = csv2m4db_tools(path_csv_tools)
+# path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+# header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
-# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_29_weatherdata.csv'
+# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
 # header, data = csv2m4db_weatherdata(path_csv_weatherdata)
  #
  #

@@ -27,7 +27,7 @@ Page intro START -->
 						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{weatherdata.license}}</li>
 					{% endif %}
 					{% if weatherdata.category %}
-					<li class="list-inline-item h6 mb-0"><i class="fas fa-bars text-info me-2"></i>{{weatherdata.category}}</li>
+					<li class="list-inline-item h6 mb-0"><i class="{{category_icon}} text-info me-2"></i>{{weatherdata.category}}</li>
 					{% endif %}
 				</ul>
 			</div>
