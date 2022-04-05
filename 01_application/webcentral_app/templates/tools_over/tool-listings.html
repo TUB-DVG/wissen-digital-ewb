@@ -181,9 +181,9 @@ Page content START -->
 						<div class="card shadow h-100">
 							<!-- Image -->
 							{%if tool.image %}
-							<img src=" {{ tool.image.url }}" class="card-img-top" alt="tool image (if=db)">
+							<img src=" {{ tool.image.url }}" class="card-img-top px-4" alt="tool image (if=db)">
 							{% else %}
-							<img src=" {%static 'img/Default.webp' %}" class="card-img-top" alt="tool image (else)">
+							<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4" alt="tool image (else)">
 							{% endif %}
 							<!-- Card body -->
 							<div class="card-body pb-0">
@@ -288,8 +288,11 @@ Page content START -->
 								<hr>
 								<div class="d-flex justify-content-between">
 									<span class="h6 fw-light mb-0">
-										<i class="far fa-clock text-danger me-2"></i>Letztes_Update: {{ tool.letztes_update }} </span>
-									
+										{% if tool.letztes_update == 'laufend' %}
+										<i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.letztes_update }}
+										{% else %}
+										<i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.letztes_update }}
+										{% endif %}
 								</div>
 								{% endif %}
 							</div>

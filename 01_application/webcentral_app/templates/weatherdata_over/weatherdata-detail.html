@@ -19,15 +19,14 @@ Page intro START -->
 				<h1>{{weatherdata.data_service}}</h1>
 				<!-- Content -->
 				<ul class="list-inline mb-0">
-					{% if weatherdata.last_update %}
-						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{weatherdata.last_update}}</li>
-					{% endif %}
-					
-					{% if weatherdata.license %}
-						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{weatherdata.license}}</li>
-					{% endif %}
 					{% if weatherdata.category %}
 					<li class="list-inline-item h6 mb-0"><i class="{{category_icon}} text-info me-2"></i>{{weatherdata.category}}</li>
+					{% endif %}
+					{% if weatherdata.last_update %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{weatherdata.last_update}}</li>
+					{% endif %}
+					{% if weatherdata.license %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{weatherdata.license}}</li>
 					{% endif %}
 				</ul>
 			</div>
@@ -62,9 +61,14 @@ Page content START -->
 						<!-- Content START -->
 						<div class="tab-pane container active" id="course-pills-1" >
 							<!-- Course detail START -->
-							{% if weatherdata.data_service %}
+							{% if weatherdata.short_description %}
+							{% if weatherdata.category == 'Anwendung' %}
 							<h5 class="mb-3">Was ist {{weatherdata.data_service}}?</h5>
-							<p class="mb-0">{{weatherdata.short_description}}</p>
+							{% elif weatherdata.category == 'Datensätze'%}
+							<h5 class="mb-3">Welche Daten bietet {{weatherdata.data_service}}?</h5>
+							{% endif %}
+							<p class="mb-1">{{weatherdata.short_description}}.</p>
+							<p class="mb-0">{{weatherdata.long_description}}</p>
 							{% endif %}
 							{% if weatherdata.provider %}
 							<h5 class="mt-4">Provider</h5>
@@ -96,11 +100,11 @@ Page content START -->
 					<div class="col-md-6 col-lg-12">
 						<!-- Video START -->
 						<div class="card shadow p-2 mb-4 z-index-9">
-							<div class="overflow-hidden rounded-3">
-								{%if weatherdata.image_url %}
-								<img src=" {{ weatherdata.image_url }}" class="card-img" alt="course image">
+							<div class="overflow-hidden rounded-3 text-center">
+								{%if weatherdata.image %}
+								<img src=" {{ weatherdata.image.url }}" class="p-4" style="max-height: 150px;" alt="weatherdata image">
 								{% else %}
-								<img src=" {%static 'Tool_Images/Default.webp' %}" class="card-img" alt="course image">
+								<img src=" {%static 'img/Default.webp' %}" class="p-4" style="max-height: 150px;" alt="weatherdata image (else)">
 								{% endif %}
 								<!-- Overlay -->
 								

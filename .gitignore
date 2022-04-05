@@ -21,4 +21,5 @@ venv
 /01_application/webcentral_app/tools_over/migrations
 /01_application/webcentral_app/weatherdata_over/migrations
 /01_application/webcentral_app/tools_over/Media
+/01_application/webcentral_app/weatherdata_over/Media
 /01_application/webcentral_app/media

@@ -36,3 +36,4 @@ class Weatherdata(models.Model):
     long_description = models.CharField(max_length = 10000,
                                    help_text = "Beschreibung des DatenService",
                                    blank = True)
+    image=models.ImageField(null=True,blank = True)  #You need to install pillow

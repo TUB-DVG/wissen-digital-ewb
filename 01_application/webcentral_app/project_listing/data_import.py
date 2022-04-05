@@ -377,7 +377,7 @@ def csv2m4db_weatherdata(path):
 # header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
-# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-# header, data = csv2m4db_weatherdata(path_csv_weatherdata)
+path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
+header, data = csv2m4db_weatherdata(path_csv_weatherdata)
  #
  #

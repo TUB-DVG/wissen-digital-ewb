@@ -153,11 +153,11 @@ Page content START -->
 					<div class="col-md-6 col-lg-12">
 						<!-- Video START -->
 						<div class="card shadow p-2 mb-4 z-index-9">
-							<div class="overflow-hidden rounded-3">
+							<div class="overflow-hidden rounded-3 text-center">
 								{%if tool.image %}
-								<img src=" {{ tool.image.url }}" class="card-img" alt="course image">
+								<img src=" {{ tool.image.url }}" class="" style="max-height: 150px;" alt="tool image">
 								{% else %}
-								<img src=" {%static 'Tool_Images/Default.webp' %}" class="card-img" alt="course image">
+								<img src=" {%static 'img/Default.webp' %}" class="" style="max-height: 150px;" alt="tool image (else)">
 								{% endif %}
 								<!-- Overlay -->
 								
