@@ -12,9 +12,11 @@ def index(request):
 def Datenschutzhinweis(request):
 	return render(request, 'pages/Datenschutzhinweis.html')
 
-
 def about(request):
     return render(request, 'pages/about.html')
+	
+def coming(request):
+    return render(request, 'pages/coming.html')
 
 
 from django.contrib.auth.models import User
