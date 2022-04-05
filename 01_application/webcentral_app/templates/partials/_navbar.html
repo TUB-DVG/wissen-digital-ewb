@@ -32,7 +32,7 @@
 					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Start</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'tool_list' %}">Digitale Werkzeuge</a></li>
 					<li class="dropdown nav-item">
-						<a class="nav-link" href="#" id="dataDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
 							Daten
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
@@ -40,7 +40,7 @@
 						</ul>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
-					<li class="dropdown nav-item"><a class="nav-link" href="{% url 'about' %}">Über uns</a>
+					<li class="dropdown nav-item"><a class="nav-link dropdown-toggle" href="{% url 'about' %}">Über uns</a>
 					
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
