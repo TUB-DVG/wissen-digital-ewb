@@ -17,6 +17,16 @@ def index(request):
     shows the list of all projects including some key features
     """
     weatherdata = Weatherdata.objects.all() # reads all data from table Teilprojekt       
+    filtered_by = [None]*2
+    searched=None
+
+    if ((request.GET.get("1") != None) |(request.GET.get("2") != None) |(request.GET.get("searched") != None)):
+        Kategorie=request.GET.get('1')
+        Lizenz=request.GET.get('2')
+        searched=request.GET.get('searched')
+        weatherdata=Weatherdata.objects.filter(category__icontains=Kategorie,license__icontains=Lizenz,data_service__icontains=searched)
+        filtered_by = [Kategorie, Lizenz]
+         
 
     weatherdata_paginator= Paginator (weatherdata,12)
 
@@ -25,8 +35,10 @@ def index(request):
 
        
     context = {
-        'page': page
-        
+        'page': page,
+        'search': searched,
+        'kategorie': filtered_by[0],
+        'lizenz': filtered_by[1],
     }
 
     return render(request, 'weatherdata_over/data-service-listings.html', context)
@@ -38,7 +50,7 @@ def weatherdata_view(request, id):
     """
 
     category_icons = {
-        'window': 'bi bi-window',
+#        'window': 'bi bi-window',
         'Anwendung': 'bi bi-terminal fa-lg',
         'Datensätze': 'fas fa-database',
         'default': 'fas fa-bars'

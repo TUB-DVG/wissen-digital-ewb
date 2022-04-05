@@ -54,7 +54,7 @@ Page content START -->
 						<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1" title="Filtern nach der Kategorie der Anwendung"> 
 									
-									<option value="">Kategorien</option>
+									<option value="">Kategorie</option>
 									
 									<option value="Datenverwaltung" {% if kategorie == "Datenverwaltung" %} selected="selected" {% endif %}>Datenverwaltung</option>
 									<option value="Anzeige und Gestaltung" {% if kategorie == "Anzeige und Gestaltung" %} selected="selected" {% endif %}>Anzeige und Gestaltung</option>
@@ -128,7 +128,7 @@ Page content START -->
 			{% if search %}
 			<li class="list-inline-item"> 
 				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched={{search}}&1=&2=&3=">Searched:{{search}}</a>
+					<a href="/tool_list/?searched={{search}}&1=&2=&3=">Suchbegriff: {{search}}</a>
 					<a href="/tool_list/?searched=&1={% if kategorie %}{{kategorie}}{% endif %}&2={% if lizenz %}{{lizenz}}{% endif %}&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
 						<i class="bi bi-x fa-lg close-icon"></i>
 					</a>
