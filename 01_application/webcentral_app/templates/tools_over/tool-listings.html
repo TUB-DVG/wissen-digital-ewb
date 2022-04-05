@@ -180,11 +180,13 @@ Page content START -->
 					<div class="col-sm-6 col-lg-4 col-xl-3">
 						<div class="card shadow h-100">
 							<!-- Image -->
-							{%if tool.image %}
-							<img src=" {{ tool.image.url }}" class="card-img-top px-4" alt="tool image (if=db)">
-							{% else %}
-							<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4" alt="tool image (else)">
-							{% endif %}
+							<div class="image-container d-flex" style="height: 150px;">
+								{%if tool.image %}
+								<img src="{{ tool.image.url }}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
+								{% else %}
+								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
+								{% endif %}
+							</div>
 							<!-- Card body -->
 							<div class="card-body pb-0">
 						

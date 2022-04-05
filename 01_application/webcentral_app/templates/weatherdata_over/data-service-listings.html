@@ -153,11 +153,13 @@ Page content START -->
 								</p>
 							</div>
 							<!-- Image -->
-							{%if weatherdata.image %}
-							<img src="{{ weatherdata.image.url }}" class="card-img-top px-4" alt="weatherdata image (if=db)">
-							{% else %}
-							<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4" alt="weatherdata image (else)">
-							{% endif %}
+							<div class="image-container d-flex" style="height: 150px;">
+								{%if weatherdata.image %}
+								<img src="{{ weatherdata.image.url }}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
+								{% else %}
+								<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
+								{% endif %}
+							</div>
 							<!-- Card body -->
 							<div class="card-body pb-0">
 						
