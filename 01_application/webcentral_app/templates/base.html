@@ -37,6 +37,8 @@
     
         <!-- Custom CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'assets/css/expanded.css' %} ">
+        <!-- cookies -->
+        <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
 
     </head>
     <body>
@@ -47,7 +49,17 @@
 
         <!-- Footer -->
         {% include 'partials/_footer.html' %}
- 
+        <div class="cookie-container">
+            <p>
+              We use cookies in this website to give you the best experience on our
+              site. To find out more, read our
+              <a style ="color:rgb(154, 154, 255);"href="{% url 'Datenschutzhinweis' %}">privacy policy</a>.
+            </p>
+      
+            <button class="cookie-btn">
+              Okay
+            </button>
+        </div>
         <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
@@ -59,8 +71,9 @@
     <script src="{% static 'assets/vendor/glightbox/js/glightbox.js' %}"></script>
    
 
-    <!-- Template Functions -->
-    <script src="{% static ' assets/js/functions.js' %}"></script>
+
+    <!-- cookies -->
+    <script src="{% static 'js/cookies.js' %}"></script>
 
     </body>
 </html>
