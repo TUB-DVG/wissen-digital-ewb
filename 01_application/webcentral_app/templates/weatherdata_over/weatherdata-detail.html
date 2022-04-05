@@ -74,6 +74,10 @@ Page content START -->
 							<h5 class="mt-4">Provider</h5>
 							<p class="mb-0">{{weatherdata.provider}}</p>
 							{% endif %}
+							{% if weatherdata.provider %}
+							<h5 class="mt-4">Anwendungen</h5>
+							<p class="mb-0">{{weatherdata.applications}}</p>
+							{% endif %}
 							{% if weatherdata.further_information %}
 							<h5 class="mt-4">Weitere Informationen</h5>
 							<p class="mb-0"><a href="{{weatherdata.further_information}}">{{weatherdata.further_information}}</a></p>
