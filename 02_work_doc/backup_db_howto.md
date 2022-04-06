@@ -46,6 +46,8 @@ author: Falk
 ### tools (only open source)
 #### pg_dump
   - https://www.postgresql.org/docs/12/app-pgdump.html
+  - command for a local dump: pg_dump -U dbadmint -W -F p m4_data > ~/Desktop/m4_data_test5.sql
+ 
   - How To Fix - FATAL: Peer authentication failed for user "postgres" Error 
     - sudo vim /etc/postgresql/13/main/pg_hba.conf  ## 13 is the version number dump of
       - exchange peer to md5 im /etc/postgresql/13/main/pg_hba.con
@@ -64,10 +66,22 @@ author: Falk
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
-  - 
+  - howto restore see [#### psql (restore .sql)](restore .sql)
 #### postgres_dumpall
   - https://www.postgresql.org/docs/12/app-pg-dumpall.html
 - both part of postgres installation
-
+#### pg_restore
+- cant used for plain dump files (.sql)
+#### psql (restore .sql)
+- the psql is a general postgres tool 
+- restore at local maschine:
+  1. create database via psql:
+    1. start postgres terminal: 
+    sudo -u postgres psql 
+    2. command to create a database:
+    postgres=# CREATE DATABASE m4_data2;
+  2. command for restoring .sql-file:
+  sudo -s psql -U dbadmint m4_data2 < ~/Desktop/m4_data_test5.sql
+- Attention: Database and Django project have to be on the same status
 ## mixture 
 - often used
