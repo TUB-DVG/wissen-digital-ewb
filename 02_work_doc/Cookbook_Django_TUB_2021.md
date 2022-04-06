@@ -640,7 +640,7 @@ GRANT ALL PRIVILEGES ON DATABASE M4_data TO dbadmint;
 \q
 ```
 
-#### Delate Database
+#### Delete Database
 - see  https://www.postgresqltutorial.com/postgresql-drop-database/
 
 Drop, if open connection
