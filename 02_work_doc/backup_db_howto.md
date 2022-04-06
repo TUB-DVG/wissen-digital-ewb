@@ -66,7 +66,7 @@ author: Falk
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
-  - howto restore see [#### psql (restore .sql)](restore .sql)
+  - howto restore see [restore .sql](#### psql (restore .sql))
 #### postgres_dumpall
   - https://www.postgresql.org/docs/12/app-pg-dumpall.html
 - both part of postgres installation
