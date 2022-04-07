@@ -12,7 +12,7 @@ Page intro START -->
 <section class="bg-light py-0 py-sm-5">
 	<div class="container">
 		<div class="row py-5">
-			<div class="col-lg-8">
+			<div class="col-lg-12">
 				
 
 				<!-- Title -->
@@ -69,7 +69,7 @@ Page content START -->
 					<!-- Tabs END -->
 
 					<!-- Tab contents START -->
-					<div class="tab-content card-body p-4 ">
+					<div class="tab-content card-body p-4 detail-card-body">
 						
 							<!-- Content START -->
 							<div class="tab-pane container active" id="course-pills-1" >
@@ -148,16 +148,16 @@ Page content START -->
 			<!-- Main content END -->
 
 			<!-- Right sidebar START -->
-			<div class="col-lg-4 pt-5 pt-lg-0">
+			<div class="col-lg-4">
 				<div class="row mb-5 mb-lg-0">
 					<div class="col-md-6 col-lg-12">
 						<!-- Video START -->
 						<div class="card shadow p-2 mb-4 z-index-9">
-							<div class="overflow-hidden rounded-3">
+							<div class="overflow-hidden rounded-3 text-center">
 								{%if tool.image %}
-								<img src=" {{ tool.image.url }}" class="card-img" alt="course image">
+								<img src=" {{ tool.image.url }}" class="" style="max-height: 150px;" alt="tool image">
 								{% else %}
-								<img src=" {%static 'Tool_Images/Default.webp' %}" class="card-img" alt="course image">
+								<img src=" {%static 'img/Default.webp' %}" class="" style="max-height: 150px;" alt="tool image (else)">
 								{% endif %}
 								<!-- Overlay -->
 								

@@ -640,7 +640,7 @@ GRANT ALL PRIVILEGES ON DATABASE M4_data TO dbadmint;
 \q
 ```
 
-#### Delate Database
+#### Delete Database
 - see  https://www.postgresqltutorial.com/postgresql-drop-database/
 
 Drop, if open connection
@@ -1115,3 +1115,7 @@ admin.site.register(Tools)
 - https://djangobook.com/mdj2-django-structure/
 - https://www.jamesbeith.co.uk/blog/how-to-structure-django-projects/
 - 
+## templates
+- https://www.geeksforgeeks.org/django-templates/
+  - howto use templates
+  

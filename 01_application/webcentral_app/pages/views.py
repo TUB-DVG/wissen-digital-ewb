@@ -9,8 +9,14 @@ from django.contrib import messages
 def index(request):
     return render(request, 'pages/index.html')
 
+def Datenschutzhinweis(request):
+	return render(request, 'pages/Datenschutzhinweis.html')
+
 def about(request):
     return render(request, 'pages/about.html')
+	
+def coming(request):
+    return render(request, 'pages/coming.html')
 
 
 from django.contrib.auth.models import User

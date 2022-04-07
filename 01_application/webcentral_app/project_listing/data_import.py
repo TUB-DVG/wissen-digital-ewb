@@ -1,6 +1,7 @@
 import csv
 from project_listing.models import *
 from tools_over.models import *
+from weatherdata_over.models import *
 
 # -*- coding: utf-8 -*-
 
@@ -190,7 +191,7 @@ def get_or_create_modulen_zuordnung(row, header):
 
 def get_or_create_tools(row, header):
     """
-    add entry into table tools or/and return entry key
+    add entry into table Tools or/and return entry key
     """
     # content = row[number of the columns of the row]
 
@@ -223,6 +224,39 @@ def get_or_create_tools(row, header):
         alternativen = alternativen,
         konk_anwendung = konk_anw_ewb,
         # nutzerbewertungen = nutzerbewertung
+    )
+    return obj, created
+
+def get_or_create_weatherdata(row, header):
+    """
+    add entry into table Weatherdata or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+
+    data_service = row[header.index('data_service')]
+    short_description = row[header.index('short_description')]
+    provider = row[header.index('provider')]
+    further_infos = row[header.index('further_information')]
+    data_url = row[header.index('data_url')]
+    logo_url = row[header.index('logo_url')]
+    applications = row[header.index('applications')]
+    last_update= row[header.index('last_update')]
+    license = row[header.index('license')]
+    category = row[header.index('category')]
+    long_description = row[header.index('long_description')]
+
+    obj, created = Weatherdata.objects.get_or_create(
+        data_service = data_service,
+        short_description = short_description,
+        provider = provider,
+        further_information = further_infos,
+        data_url = data_url,
+        logo_url = logo_url,
+        applications = applications,
+        last_update = last_update,
+        license = license,
+        category = category,
+        long_description = long_description
     )
     return obj, created
 
@@ -314,6 +348,19 @@ def csv2m4db_tools(path):
             get_or_create_tools(row, header)
     return header, data
 
+def csv2m4db_weatherdata(path):
+    """Weatherdata csv-file into BF M4 Django database, hard coded"""
+    with open(path, encoding='utf-8') as csv_file:
+        reader = csv.reader(csv_file, delimiter=';')
+        header = next(reader)
+        data = []
+        for row in reader:
+            print(row[header.index('data_service')])
+            data.append(row)
+            # breakpoint()
+            get_or_create_weatherdata(row, header)
+    return header, data
+
 
 # Script area (here you find examples to use the functions ahead)
 
@@ -326,9 +373,11 @@ def csv2m4db_tools(path):
 # header, data = csv2m4db_modul(path_csv_modul)
 
 ## Example add/update Tool Uebersichts table
-path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-header, data = csv2m4db_tools(path_csv_tools)
+# path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+# header, data = csv2m4db_tools(path_csv_tools)
 
-
+## Example add/update Weatherdata table
+path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
+header, data = csv2m4db_weatherdata(path_csv_weatherdata)
  #
  #

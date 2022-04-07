@@ -1,6 +1,6 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         <title>{% block title %} {% endblock %}</title>
         <style>
@@ -10,7 +10,8 @@
         </style>
         <!-- Meta Tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
         <meta name="author" content="Webestica.com"><!-- TODO -->
         <meta name="description" content="Eduport- LMS, Education and Course Theme"><!-- TODO -->
 
@@ -28,13 +29,19 @@
 
         <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/tiny-slider/tiny-slider.css' %}">
 	    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/glightbox/css/glightbox.css' %}">
+
         <!-- Theme CSS -->
         <link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %} ">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
     
+        <!-- Custom CSS -->
+        <link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'assets/css/expanded.css' %}?{% now 'U' %} ">
+        <link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'assets/css/responsive.css' %}?{% now 'U' %} ">
+
+        <!-- cookies -->
+        <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
     </head>
     <body>
         <!-- Nav Bar -->
@@ -44,7 +51,17 @@
 
         <!-- Footer -->
         {% include 'partials/_footer.html' %}
- 
+        <div class="cookie-container">
+            <p>
+              We use cookies in this website to give you the best experience on our
+              site. To find out more, read our
+              <a style ="color:rgb(154, 154, 255);"href="{% url 'Datenschutzhinweis' %}">privacy policy</a>.
+            </p>
+      
+            <button class="cookie-btn">
+              Okay
+            </button>
+        </div>
         <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
 
@@ -56,8 +73,9 @@
     <script src="{% static 'assets/vendor/glightbox/js/glightbox.js' %}"></script>
    
 
-    <!-- Template Functions -->
-    <script src="{% static ' assets/js/functions.js' %}"></script>
+
+    <!-- cookies -->
+    <script src="{% static 'js/cookies.js' %}"></script>
 
     </body>
 </html>

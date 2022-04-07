@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ weatherdata.data_service }} {% endblock %}
+
+{% load static %}
+
+{% block content%}
+
+<!-- =======================
+Page intro START -->
+
+<section class="bg-light py-0 py-sm-5">
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-lg-12">
+				
+
+				<!-- Title -->
+				<h1>{{weatherdata.data_service}}</h1>
+				<!-- Content -->
+				<ul class="list-inline mb-0">
+					{% if weatherdata.category %}
+					<li class="list-inline-item h6 mb-0"><i class="{{category_icon}} text-info me-2"></i>{{weatherdata.category}}</li>
+					{% endif %}
+					{% if weatherdata.last_update %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{weatherdata.last_update}}</li>
+					{% endif %}
+					{% if weatherdata.license %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{weatherdata.license}}</li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page intro END -->
+
+<!-- =======================
+Page content START -->
+<section class="pb-0 py-lg-5">
+	<div class="container">
+		<div class="row">
+			<!-- Main content START -->
+			<div class="col-lg-8 mb-4">
+				<div class="card shadow rounded-2 p-0">
+					<!-- Tabs START -->
+					<div class="card-header border-bottom px-4 py-3">
+						<ul class="  nav nav-pills nav-tabs-line py-0">
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" >
+								<a class="nav-link active mb-2 mb-md-0" data-toggle="tab" href="#course-pills-1"  >Overview</a>
+							</li>
+						</ul>
+					</div>
+					<!-- Tabs END -->
+
+					<!-- Tab contents START -->
+					<div class="tab-content card-body p-4 detail-card-body">
+						
+						<!-- Content START -->
+						<div class="tab-pane container active" id="course-pills-1" >
+							<!-- Course detail START -->
+							{% if weatherdata.short_description %}
+							{% if weatherdata.category == 'Anwendung' %}
+							<h5 class="mb-3">Was ist {{weatherdata.data_service}}?</h5>
+							{% elif weatherdata.category == 'Datensätze'%}
+							<h5 class="mb-3">Welche Daten bietet {{weatherdata.data_service}}?</h5>
+							{% endif %}
+							<p class="mb-1">{{weatherdata.short_description}}.</p>
+							<p class="mb-0">{{weatherdata.long_description}}</p>
+							{% endif %}
+							{% if weatherdata.provider %}
+							<h5 class="mt-4">Provider</h5>
+							<p class="mb-0">{{weatherdata.provider}}</p>
+							{% endif %}
+							{% if weatherdata.provider %}
+							<h5 class="mt-4">Anwendungen</h5>
+							<p class="mb-0">{{weatherdata.applications}}</p>
+							{% endif %}
+							{% if weatherdata.further_information %}
+							<h5 class="mt-4">Weitere Informationen</h5>
+							<p class="mb-0"><a href="{{weatherdata.further_information}}">{{weatherdata.further_information}}</a></p>
+							{% endif %}
+							{% if weatherdata.data_url %}
+							<h5 class="mt-4">Link zum Datensatz</h5>
+							<p class="mb-0"><a href="{{weatherdata.data_url}}">{{weatherdata.data_url}}</a></p>
+							{% endif %}
+							<!-- Course detail END -->
+
+						</div>
+						<!-- Content END -->
+
+						
+					</div>
+					<!-- Tab contents END -->
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			<div class="col-lg-4">
+				<div class="row mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-12">
+						<!-- Video START -->
+						<div class="card shadow p-2 mb-4 z-index-9">
+							<div class="overflow-hidden rounded-3 text-center">
+								{%if weatherdata.image %}
+								<img src=" {{ weatherdata.image.url }}" class="p-4" style="max-height: 200px;" alt="weatherdata image">
+								{% else %}
+								<img src=" {%static 'img/Default.webp' %}" class="p-4" style="max-height: 200px;" alt="weatherdata image (else)">
+								{% endif %}
+								<!-- Overlay -->
+								
+							</div>
+						</div>
+						<!-- Video END -->
+
+						<!-- Course info START -->
+						<div class="card card-body shadow p-4 mb-4">
+							<!-- Title -->
+							<h4 class="mb-3">Kurzinformationen</h4>
+							<ul class="list-group list-group-borderless">
+								{% if weatherdata.category %}
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="{{category_icon}} text-primary"></i>Kategorie</span>
+									<span>{{ weatherdata.category }}</span>
+								</li>
+								{% endif %}
+								{% if weatherdata.license %}
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Lizenz</span>
+									<span>{{ weatherdata.license }}</span>
+								</li>
+								{% endif %}
+								{% if weatherdata.last_update %}
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="{{ letztes_update_class }} fa-fw text-primary"></i>{{ letztes_update_label }}</span>
+									<span>{{ weatherdata.last_update }}</span>
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+						<!-- Course info END -->
+					</div>
+
+					<div class="col-md-6 col-lg-12">
+
+						<!-- Tags START -->
+						<div class="card card-body shadow p-4">
+							<h4 class="mb-3">Tags</h4>
+							<ul class="list-inline mb-0">
+								{% if weatherdata.category %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/weatherdata_list/?searched=&1={{weatherdata.category}}&2=">{{weatherdata.category}}</a> </li>
+								{% endif %}
+								{% if weatherdata.license %}
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/weatherdata_list/?searched=&1=&2={{weatherdata.license}}">{{weatherdata.license}}</a> </li>
+								{% endif %}
+							</ul>
+						</div>	
+						<!-- Tags END -->
+					</div>
+				</div><!-- Row End -->
+			</div>
+			<!-- Right sidebar END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+{% endblock %}

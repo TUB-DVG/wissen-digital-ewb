@@ -38,17 +38,46 @@ Page Banner END -->
         	<div class="col-lg-12">
 				<p class="lead">Die wissenschaftliche Begleitforschung der Forschungsinitiative Energiewendebauen
 					stellt mit der Wissensplattform - Digitalisierung Energiewendebauen einen 
-					Zugang zu den Forschngsergebnissen und den erstellten Hilfsmitteln aus den
+					Zugang zu den Forschungsergebnissen und den erstellten Hilfsmitteln aus den
 					Forschungsprojekten im Bereich Digitalisierung im Bausektor dar.</br>
 					Diese Plattform richtet sich an die interessierte Fachallgemeinheit 
 					und auch an die Forschungsprojekte der Forschungsinitative Energiewendebauen.</p>
 			</div>
 		</div>
-		<div class="row mt-lg-6 mb-lg-6">
+		<div class="row my-lg-4">
 			<div class="col-lg-12">
-				<img src="{% static '/img/Schema_Wissensplattform.png' %}" class="mx-auto d-block img-fluid" style="max-width: 100%">
+				<!--<img src="{% static '/img/Schema_Wissensplattform.png' %}" class="mx-auto d-block img-fluid" style="max-width: 90%">-->
+			
+		
+				<div id="upvideo396671" data-videourl="https://www.youtube.com/embed/N_WP7Llytis?controls=0?rel=0&amp;showinfo=0&amp;autoplay=1"  style="margin-top:50px;text-align: center;">
+					
+						<img  src="{% static '/img/Video_Image.png' %}" style="width:854px; max-height:480px;">
+					
+				</div>
+				<div class="mx-auto" style="width: 854px;">
+					<p class="text-center">
+			
+					Bitte beachten Sie: Sobald Sie sich das Video ansehen, werden Informationen darüber an Youtube/Google übermittelt. Weitere Informationen
+							dazu finden Sie unter <a target="_blank" href="https://policies.google.com/privacy?hl=de">Google Privacy</a>.
+				</p>
+				</div>
+				<script>
+					upvideo396671 = document.getElementById("upvideo396671");
+					upvideo396671.addEventListener("click", function () {
+					var iframe396671 = document.createElement("iframe");
+					iframe396671.setAttribute("frameborder", "0");
+					iframe396671.setAttribute("allowfullscreen", "");
+					iframe396671.setAttribute("src", this.dataset.videourl);
+					iframe396671.setAttribute("width","854")
+					iframe396671.setAttribute("height","480")
+					this.innerHTML = "";
+					this.appendChild(iframe396671);
+					});
+				</script>
 			</div>
+        
         </div>
+		
 		
         {% include '../partials/_gefoerdert_bmwk.html' %}
       </div>
