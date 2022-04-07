@@ -69,6 +69,8 @@ author: Falk
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
   - howto restore see [restore .sql](#psql-(restore-.sql))
+  - list existing databases:
+    - sudo -u postgres psql > \l
 #### postgres_dumpall
   - https://www.postgresql.org/docs/12/app-pg-dumpall.html
 - both part of postgres installation
