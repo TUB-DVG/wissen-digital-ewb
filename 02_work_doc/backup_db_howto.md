@@ -46,8 +46,10 @@ author: Falk
 ### tools (only open source)
 #### pg_dump
   - https://www.postgresql.org/docs/12/app-pgdump.html
-  - command for a local dump: pg_dump -U dbadmint -W -F p m4_data > ~/Desktop/m4_data_test5.sql
- 
+  - command for a local dump: pg_dump -E UTF8 -U dbadmint -W -F p m4_data > ~/Desktop/m4_data_test7.sql
+  - problem:
+    - wrong encoding: especially when transfer database crossplattform
+    
   - How To Fix - FATAL: Peer authentication failed for user "postgres" Error 
     - sudo vim /etc/postgresql/13/main/pg_hba.conf  ## 13 is the version number dump of
       - exchange peer to md5 im /etc/postgresql/13/main/pg_hba.con
