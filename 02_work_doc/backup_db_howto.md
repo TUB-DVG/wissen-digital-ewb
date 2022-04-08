@@ -68,6 +68,7 @@ author: Falk
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
+  - sudo systemctl restart postgresql.service
   - howto restore see [restore .sql](#psql-(restore-.sql))
   - list existing databases:
     - sudo -u postgres psql > \l
