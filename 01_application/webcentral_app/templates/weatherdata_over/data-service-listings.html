@@ -155,9 +155,9 @@ Page content START -->
 							<!-- Image -->
 							<div class="image-container d-flex" style="height: 150px;">
 								{%if weatherdata.image %}
-								<img src="{{ weatherdata.image.url }}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
+								<img src="{{ weatherdata.image.url }}" class="card-img-top px-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
 								{% else %}
-								<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
+								<img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
 								{% endif %}
 							</div>
 							<!-- Card body -->

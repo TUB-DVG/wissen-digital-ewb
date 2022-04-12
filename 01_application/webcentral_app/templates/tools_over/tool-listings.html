@@ -182,9 +182,9 @@ Page content START -->
 							<!-- Image -->
 							<div class="image-container d-flex" style="height: 150px;">
 								{%if tool.image %}
-								<img src="{{ tool.image.url }}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
+								<img src="{{ tool.image.url }}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
 								{% else %}
-								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
+								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
 								{% endif %}
 							</div>
 							<!-- Card body -->
