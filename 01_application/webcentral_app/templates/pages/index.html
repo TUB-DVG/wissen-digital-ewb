@@ -68,7 +68,13 @@ Page Banner END -->
 					iframe396671.setAttribute("frameborder", "0");
 					iframe396671.setAttribute("allowfullscreen", "");
 					iframe396671.setAttribute("src", this.dataset.videourl);
-					
+					if (window.innerWidth>854) {	
+							iframe396671.setAttribute("width","854");
+							iframe396671.setAttribute("height","480");
+						} else {
+							iframe396671.setAttribute('width', window.innerWidth-30);
+							iframe396671.setAttribute("height", 480/854*(window.innerWidth)-30);
+						}
 					$(document).ready(function() {
 						initalize();
 						updatesSize();
@@ -80,7 +86,7 @@ Page Banner END -->
 							iframe396671.setAttribute("height","480");
 						} else {
 							iframe396671.setAttribute('width', window.innerWidth);
-							iframe396671.setAttribute("height", "auto");
+							iframe396671.setAttribute("height", 480/854*window.innerWidth);
 						}
 					}
 					this.innerHTML = "";
