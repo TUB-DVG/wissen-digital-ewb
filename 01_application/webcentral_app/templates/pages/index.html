@@ -68,12 +68,12 @@ Page Banner END -->
 					iframe396671.setAttribute("frameborder", "0");
 					iframe396671.setAttribute("allowfullscreen", "");
 					iframe396671.setAttribute("src", this.dataset.videourl);
-					if (window.innerWidth>854) {	
+					if (window.innerWidth>938) {	
 							iframe396671.setAttribute("width","854");
 							iframe396671.setAttribute("height","480");
 						} else {
 							iframe396671.setAttribute('width', window.innerWidth-30);
-							iframe396671.setAttribute("height", 480/854*(window.innerWidth)-30);
+							iframe396671.setAttribute("height", 480/854*(window.innerWidth-30));
 						}
 					$(document).ready(function() {
 						initalize();
@@ -81,12 +81,15 @@ Page Banner END -->
 					})
 					$(window).resize(updatesSize);
 					function updatesSize() {
-						if (window.innerWidth>854) {	
+						if (window.innerWidth>938) {	
 							iframe396671.setAttribute("width","854");
 							iframe396671.setAttribute("height","480");
+						} else if (window.innerWidth>576) {
+							iframe396671.setAttribute('width', window.innerWidth-84);
+							iframe396671.setAttribute("height", 480/854*(window.innerWidth-84));
 						} else {
-							iframe396671.setAttribute('width', window.innerWidth);
-							iframe396671.setAttribute("height", 480/854*window.innerWidth);
+							iframe396671.setAttribute('width', window.innerWidth-30);
+							iframe396671.setAttribute("height", 480/854*(window.innerWidth-30));
 						}
 					}
 					this.innerHTML = "";
