@@ -191,7 +191,7 @@ def get_or_create_modulen_zuordnung(row, header):
 
 def get_or_create_tools(row, header):
     """
-    add entry into table tools or/and return entry key
+    add entry into table Tools or/and return entry key
     """
     # content = row[number of the columns of the row]
 
@@ -229,7 +229,7 @@ def get_or_create_tools(row, header):
 
 def get_or_create_weatherdata(row, header):
     """
-    add entry into table tools or/and return entry key
+    add entry into table Weatherdata or/and return entry key
     """
     # content = row[number of the columns of the row]
 
