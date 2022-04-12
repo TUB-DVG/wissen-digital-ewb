@@ -362,83 +362,6 @@ def csv2m4db_weatherdata(path):
             get_or_create_weatherdata(row, header)
     return header, data
 
-import re
-
-def csv2m4db_keywords(path):
-    with open(path, encoding='utf-8') as csv_file:
-        reader = csv.reader(csv_file, delimiter=';')
-        header = next(reader)
-        data = []
-        for row in reader:
-            data.append(row)
-
-    toWriteAkronym = [
-        ['Förderkennzeichen (0010)', 'Schlagwort1', 'Schlagwort2', 'Schlagwort3', 'Schlagwort4', 'Schlagwort5', 'Schlagwort6', 'Schlagwort'],
-    ] 
-
-    toWriteFkzOver = [
-        ['Förderkennzeichen (0010)', 'Schlagwort1', 'Schlagwort2', 'Schlagwort3', 'Schlagwort4', 'Schlagwort5', 'Schlagwort6', 'Schlagwort'],
-    ] 
-
-    akronym_schlagwoerter_liste = {}
-    fkz_over_schlagwoerter_liste = {}
-
-    for row in data: 
-        akronym = re.sub('[^a-zA-Z0-9]', '', row[header.index('Akronym')]).lower()
-        if not akronym in akronym_schlagwoerter_liste:
-            akronym_schlagwoerter_liste[akronym] = {
-                'Schlagwort1': row[header.index('Schlagwort1')],
-                'Schlagwort2': row[header.index('Schlagwort2')],
-                'Schlagwort3': row[header.index('Schlagwort3')],
-                'Schlagwort4': row[header.index('Schlagwort4')],
-                'Schlagwort5': row[header.index('Schlagwort5')],
-                'Schlagwort6': row[header.index('Schlagwort6')],
-                'Schlagwort':  row[header.index('Schlagwort')]
-            }
-        toWriteAkronym.append([row[header.index('Förderkennzeichen (0010)')], akronym_schlagwoerter_liste[akronym]['Schlagwort1'], akronym_schlagwoerter_liste[akronym]['Schlagwort2'], akronym_schlagwoerter_liste[akronym]['Schlagwort3'], akronym_schlagwoerter_liste[akronym]['Schlagwort4'], akronym_schlagwoerter_liste[akronym]['Schlagwort5'], akronym_schlagwoerter_liste[akronym]['Schlagwort6'], akronym_schlagwoerter_liste[akronym]['Schlagwort']])
-
-    for row in data:
-        fkz = row[header.index('Förderkennzeichen (0010)')]
-        fkz_over = fkz
-        if (fkz[-1].isalpha()):
-            fkz_over = fkz[:-1]
-        if not fkz_over in fkz_over_schlagwoerter_liste:
-            fkz_over_schlagwoerter_liste[fkz_over] = {
-                'Schlagwort1': row[header.index('Schlagwort1')],
-                'Schlagwort2': row[header.index('Schlagwort2')],
-                'Schlagwort3': row[header.index('Schlagwort3')],
-                'Schlagwort4': row[header.index('Schlagwort4')],
-                'Schlagwort5': row[header.index('Schlagwort5')],
-                'Schlagwort6': row[header.index('Schlagwort6')],
-                'Schlagwort':  row[header.index('Schlagwort')]
-            }
-        toWriteFkzOver.append([row[header.index('Förderkennzeichen (0010)')], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort1'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort2'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort3'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort4'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort5'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort6'], fkz_over_schlagwoerter_liste[fkz_over]['Schlagwort']])
-
-    schlagwoerter_csv_akronym = open('../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_akronym.csv', 'w+', encoding='utf-8') 
-    schlagwoerter_csv_fkz_over = open('../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over.csv', 'w+', encoding='utf-8') 
-
-    with schlagwoerter_csv_akronym:
-        writer = csv.writer(schlagwoerter_csv_akronym)
-        for row in toWriteAkronym:
-            writer.writerow(row)
-
-    with schlagwoerter_csv_fkz_over:
-        writer = csv.writer(schlagwoerter_csv_fkz_over)
-        for row in toWriteFkzOver:
-            writer.writerow(row)
-
-    with open('../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_akronym.csv', 'r') as csv1, open('../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over.csv', 'r') as csv2:  # Import CSV files
-        import1 = csv1.readlines()
-        import2 = csv2.readlines()
-
-    with open('../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_diff.csv', 'w') as outFile:         # Create CSV file with differences
-        for row in import2:
-            if row not in import1:
-                outFile.write(row)
-
-    return header, data
-
-
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
@@ -454,12 +377,7 @@ def csv2m4db_keywords(path):
 # header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
-# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-# header, data = csv2m4db_weatherdata(path_csv_weatherdata)
-
-## Example schlagwoerter
-path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/ZE_fuer_BF_enargus_ergaenzt_Auswahl_rst_fc.csv'
-header, data = csv2m4db_keywords(path_csv_schlagwoerter)
-
+path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
+header, data = csv2m4db_weatherdata(path_csv_weatherdata)
 
 
