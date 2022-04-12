@@ -41,7 +41,9 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
 					<li class="dropdown nav-item"><a class="nav-link dropdown-toggle" href="{% url 'about' %}">Über uns</a>
-					
+						<ul class="dropdown-menu shadow pt-3" aria-labelledby="dataDropdown">
+							<li><a class="dropdown-item" href="{% url 'about' %}">Über uns</a></li>
+						</ul>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
 						</ul></li>

@@ -51,10 +51,10 @@ Page Banner END -->
 		
 				<div id="upvideo396671" data-videourl="https://www.youtube.com/embed/N_WP7Llytis?controls=0?rel=0&amp;showinfo=0&amp;autoplay=1"  style="margin-top:50px;text-align: center;">
 					
-						<img  src="{% static '/img/Video_Image.png' %}" style="width:854px; max-height:480px;">
+						<img class="video-home" src="{% static '/img/Video_Image.png' %}" style="max-height:480px;">
 					
 				</div>
-				<div class="mx-auto" style="width: 854px;">
+				<div class="mx-auto video-text">
 					<p class="text-center">
 			
 					Bitte beachten Sie: Sobald Sie sich das Video ansehen, werden Informationen darüber an Youtube/Google übermittelt. Weitere Informationen
@@ -68,11 +68,25 @@ Page Banner END -->
 					iframe396671.setAttribute("frameborder", "0");
 					iframe396671.setAttribute("allowfullscreen", "");
 					iframe396671.setAttribute("src", this.dataset.videourl);
-					iframe396671.setAttribute("width","854")
-					iframe396671.setAttribute("height","480")
+					
+					$(document).ready(function() {
+						initalize();
+						updatesSize();
+					})
+					$(window).resize(updatesSize);
+					function updatesSize() {
+						if (window.innerWidth>854) {	
+							iframe396671.setAttribute("width","854");
+							iframe396671.setAttribute("height","480");
+						} else {
+							iframe396671.setAttribute('width', window.innerWidth);
+							iframe396671.setAttribute("height", "auto");
+						}
+					}
 					this.innerHTML = "";
 					this.appendChild(iframe396671);
 					});
+
 				</script>
 			</div>
         

@@ -1,3 +1,24 @@
+@media (max-width: 854px) {
+    
+    .video-home {
+        width: 100%;
+    }
+
+    .video-text {
+        width: 100%;
+    }
+}
+
+@media (min-width: 855px) {
+    .video-home {
+        width: 854px;
+    }
+    
+    .video-text {
+        width: 854px;
+    }
+}
+
 @media (max-width: 991px) {
     .about-logos {
         display: flex;
@@ -5,6 +26,7 @@
         align-items: center;
         height: auto;
     }
+
     .about-logos a {
         padding: 2em;
     }
@@ -20,6 +42,13 @@
     .detail-card-body .container{
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .dropdown-menu.shadow {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        padding: 0 !important
     }
 }
 
@@ -43,3 +72,4 @@
     margin-left: auto;
     margin-right: auto;
 }
+
