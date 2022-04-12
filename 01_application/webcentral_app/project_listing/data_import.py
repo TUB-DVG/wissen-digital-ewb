@@ -362,6 +362,8 @@ def csv2m4db_weatherdata(path):
             get_or_create_weatherdata(row, header)
     return header, data
 
+import re
+
 def csv2m4db_keywords(path):
     with open(path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -381,8 +383,8 @@ def csv2m4db_keywords(path):
     akronym_schlagwoerter_liste = {}
     fkz_over_schlagwoerter_liste = {}
 
-    for row in data:
-        akronym = row[header.index('Akronym')].lower().strip().replace(":","").replace("-","")
+    for row in data: 
+        akronym = re.sub('[^a-zA-Z0-9]', '', row[header.index('Akronym')]).lower()
         if not akronym in akronym_schlagwoerter_liste:
             akronym_schlagwoerter_liste[akronym] = {
                 'Schlagwort1': row[header.index('Schlagwort1')],
