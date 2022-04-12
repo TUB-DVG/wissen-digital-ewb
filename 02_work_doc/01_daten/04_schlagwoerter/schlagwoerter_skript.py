@@ -45,7 +45,7 @@ def csv2m4db_keywords(path):
     return header, data
 
 
-## Example schlagwoerter
+## Example schlagwoerter Path "/WenDE/12_Daten/03_Gesamt_BF_Daten/Leistungsplansystematik/"
 path_csv_schlagwoerter='ZE_fuer_BF_enargus_ergaenzt_Auswahl_rst_fc.csv'
 header, data = csv2m4db_keywords(path_csv_schlagwoerter)
 
