@@ -47,7 +47,7 @@ def registerPage(request):
 def loginPage(request):
 	"""
 	if not User.objects.filter(username="ptj").exists():
-		user=User.objects.create_user(username="ptj",password="BF_Ptf_2022")
+		user=User.objects.create_user(username="ptj",password="BF_Ptj_2022")
 	"""
 	if request.user.is_authenticated:
 		return redirect('index')
