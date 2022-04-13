@@ -32,6 +32,13 @@ author: Falk
 - not possible to recover specific features or tables
 - offline or online backups
 - WAL = write-ahead log
+
+
+- backup media folder local at the server:
+```
+rsync -rtp pyapps/webcentral/01_application/webcentral_app/media back_up_Media/
+
+```
 ### tools (only open source)
 #### Barman
   - https://pgbarman.org/
@@ -53,6 +60,7 @@ author: Falk
   - How To Fix - FATAL: Peer authentication failed for user "postgres" Error 
     - sudo vim /etc/postgresql/13/main/pg_hba.conf  ## 13 is the version number dump of
       - exchange peer to md5 im /etc/postgresql/13/main/pg_hba.con
+```
       # Database administrative login by Unix domain socket
       local   all             postgres                                peer 
 
@@ -68,7 +76,8 @@ author: Falk
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
-  - howto restore see [restore .sql](#psql-(restore-.sql))
+```
+- howto restore see [restore .sql](#psql-(restore-.sql))
   - list existing databases:
     - sudo -u postgres psql > \l
 #### postgres_dumpall
