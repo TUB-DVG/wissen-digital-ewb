@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 def index(request):
-    return render(request, 'pages/index.html')
+	
+	return render(request, 'pages/index.html')
 
 def Datenschutzhinweis(request):
 	return render(request, 'pages/Datenschutzhinweis.html')
@@ -44,6 +45,10 @@ def registerPage(request):
 		return render(request, 'pages/register.html', context)
 
 def loginPage(request):
+	"""
+	if not User.objects.filter(username="ptj").exists():
+		user=User.objects.create_user(username="ptj",password="BF_Ptj_2022")
+	"""
 	if request.user.is_authenticated:
 		return redirect('index')
 	else:

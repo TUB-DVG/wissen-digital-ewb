@@ -40,8 +40,10 @@
 						</ul>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
-					<li class="dropdown nav-item"><a class="nav-link dropdown-toggle" href="{% url 'about' %}">Über uns</a>
-					
+					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
+						<a class="dropdown-toggle dropdown-toggle-split pl-0">
+							<span class="visually-hidden">Toggle Dropdown</span>
+						</a></span>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
 						</ul></li>

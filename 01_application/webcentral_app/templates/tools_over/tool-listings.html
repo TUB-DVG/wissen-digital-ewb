@@ -51,7 +51,7 @@ Page content START -->
 						<div class="row g-3">
 							
 							<!-- Select items -->
-						<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+						<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1" title="Filtern nach der Kategorie der Anwendung"> 
 									
 									<option value="">Kategorie</option>
@@ -80,7 +80,7 @@ Page content START -->
 							</div>
 
 							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="2" title="Filtern nach der Lizenz der Anwendung">
 									
@@ -92,7 +92,7 @@ Page content START -->
 							</div>
 
 							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-2 pb-md-0">
+							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="3" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
 									<option value="">Lebenszyklusphase</option>
@@ -182,9 +182,9 @@ Page content START -->
 							<!-- Image -->
 							<div class="image-container d-flex" style="height: 150px;">
 								{%if tool.image %}
-								<img src="{{ tool.image.url }}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
+								<img src="{{ tool.image.url }}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
 								{% else %}
-								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
+								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
 								{% endif %}
 							</div>
 							<!-- Card body -->
