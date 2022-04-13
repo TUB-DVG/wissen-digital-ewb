@@ -18,7 +18,6 @@ class Teilprojekt(models.Model):
 
     zuordnung=models.ForeignKey("Modulen_zuordnung_ptj",null=true,on_delete=models.SET_NULL,blank=True)
 
-    schlagwoerter_erstsichtung=models.ForeignKey("Schlagwortregister_erstsichtung",null=true,on_delete=models.SET_NULL,blank=True)
     fragebogen_21=models.ForeignKey("Fragebogen_21",null=true,on_delete=models.SET_NULL,blank=True)
 
 
@@ -30,29 +29,6 @@ class Teilprojekt(models.Model):
 
 class Fragebogen_21(models.Model):
         Fragebogen_21=models.AutoField(primary_key=True ,help_text="auto generiert ID")
-
-
-
-class Schlagwortregister_erstsichtung(models.Model):
-    schlagwortregister_erstsichtung_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    schlagwort_1=models.ForeignKey("Schlagwort",related_name='schlagwort_1',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_2=models.ForeignKey("Schlagwort",related_name='schlagwort_2',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_3=models.ForeignKey("Schlagwort",related_name='schlagwort_3',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_4=models.ForeignKey("Schlagwort",related_name='schlagwort_4',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_5=models.ForeignKey("Schlagwort",related_name='schlagwort_5',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_6=models.ForeignKey("Schlagwort",related_name='schlagwort_6',null=True,on_delete=models.SET_NULL,blank=True)
-    schlagwort_7=models.ForeignKey("Schlagwort",related_name='schlagwort_7',null=True,on_delete=models.SET_NULL,blank=True)
-
-
-
-
-
-class Schlagwort (models.Model):
-    schlagwort_id= models.CharField(max_length=200,help_text="Name des Schlagwortes")
-    schlagwort_definition=models.CharField(max_length=1500,help_text="Definition des Schlagwortes")
-    literatur=models.CharField(max_length=1500,help_text="Literaturquellen zum Schlagwort")
-
-
 
 
 class Modulen_zuordnung_ptj(models.Model):
