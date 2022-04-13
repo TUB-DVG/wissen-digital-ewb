@@ -16,13 +16,13 @@ class Weatherdata(models.Model):
                                         help_text = "weitere Informationen zum DatenService",
                                         blank = True)
     data_url = models.CharField(max_length = 300,
-                                         help_text = "Url zu Datensatz",
+                                         help_text = "Url zum Datensatz",
                                          blank = True)
     logo_url = models.CharField(max_length = 300,
-                                           help_text = "Logo url",
+                                           help_text = "Url zum Logo",
                                            blank = True)
     applications = models.CharField(max_length = 500,
-                                     help_text = "Anwendung in EWB Projekten",
+                                     help_text = "konkrete Anwendung der Datensätze bzw. der Werkzeuge",
                                      blank = True)
     last_update = models.CharField(max_length = 100,
                                       help_text = "letztes Update des DatenServices",

@@ -277,8 +277,26 @@ Create a file called **local_settings.py** on your server along side of settings
 * ALLOWED_HOSTS
 * DATABASES
 * DEBUG
-* EMAIL_\*
+* EMAIL
+```
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-hcvu8ijedfasdfgewc55^%4_f%8p$gvif(nlu5doa2n-wo!&tt'
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['134.94.130.147']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db_webcentral',
+        'USER': 'user',
+        'PASSWORD': 'pw',
+        'HOST': 'localhost'
+    }
+
+```
 ## Run Migrations
 
 ```

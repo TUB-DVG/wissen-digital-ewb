@@ -32,6 +32,13 @@ author: Falk
 - not possible to recover specific features or tables
 - offline or online backups
 - WAL = write-ahead log
+
+
+- backup media folder local at the server:
+```
+rsync -rtp pyapps/webcentral/01_application/webcentral_app/media back_up_Media/
+
+```
 ### tools (only open source)
 #### Barman
   - https://pgbarman.org/
@@ -46,11 +53,14 @@ author: Falk
 ### tools (only open source)
 #### pg_dump
   - https://www.postgresql.org/docs/12/app-pgdump.html
-  - command for a local dump: pg_dump -U dbadmint -W -F p m4_data > ~/Desktop/m4_data_test5.sql
- 
+  - command for a local dump: pg_dump -E UTF8 -U dbadmint -W -F p m4_data > ~/Desktop/m4_data_test7.sql
+  - problem:
+    - wrong encoding: especially when transfer database crossplattform
+    
   - How To Fix - FATAL: Peer authentication failed for user "postgres" Error 
     - sudo vim /etc/postgresql/13/main/pg_hba.conf  ## 13 is the version number dump of
       - exchange peer to md5 im /etc/postgresql/13/main/pg_hba.con
+```
       # Database administrative login by Unix domain socket
       local   all             postgres                                peer 
 
@@ -66,7 +76,17 @@ author: Falk
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
+<<<<<<< 02_work_doc/backup_db_howto.md
+```
+- sudo systemctl restart postgresql.service
+- howto restore see [restore .sql](#psql-(restore-.sql))
+
+=======
+  - sudo systemctl restart postgresql.service
   - howto restore see [restore .sql](#psql-(restore-.sql))
+>>>>>>> 02_work_doc/backup_db_howto.md
+  - list existing databases:
+    - sudo -u postgres psql > \l
 #### postgres_dumpall
   - https://www.postgresql.org/docs/12/app-pg-dumpall.html
 - both part of postgres installation

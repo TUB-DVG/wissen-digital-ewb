@@ -1115,3 +1115,7 @@ admin.site.register(Tools)
 - https://djangobook.com/mdj2-django-structure/
 - https://www.jamesbeith.co.uk/blog/how-to-structure-django-projects/
 - 
+## templates
+- https://www.geeksforgeeks.org/django-templates/
+  - howto use templates
+  
