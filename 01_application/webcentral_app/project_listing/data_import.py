@@ -277,42 +277,27 @@ def get_or_create_schlagwortregister(row, header):
     """
     add entry into table Weatherdata or/and return entry key
     """
-    # content = row[number of the columns of the row]WW
-
-    # schlagwort_1 = row[header.index('schlagwort_1')]
-    # schlagwort_2 = row[header.index('Schlagwort_2')]
-    # schlagwort_3 = row[header.index('Schlagwort_3')]
-    # schlagwort_4 = row[header.index('Schlagwort_4')]
-    # schlagwort_5 = row[header.index('Schlagwort_5')]
-    # schlagwort_6 = row[header.index('Schlagwort_6')]
-    # schlagwort = row[header.index('Schlagwort')]
+    # content = row[number of the columns of the row]
     
     obj_schlagwort_1, created_schlagwort_1 = get_or_create_schlagwort(row, header, 'Schlagwort1')
-    #schlagwort_1_id = obj_schlagwort_1.schlagwort_id
     schlagwort_1 = obj_schlagwort_1.schlagwort
 
     obj_schlagwort_2, created_schlagwort_2 = get_or_create_schlagwort(row, header, 'Schlagwort2')
-    #schlagwort_2_id = obj_schlagwort_2.schlagwort_id
     schlagwort_2 = obj_schlagwort_2.schlagwort
 
     obj_schlagwort_3, created_schlagwort_3 = get_or_create_schlagwort(row, header, 'Schlagwort3')
-    #schlagwort_3_id = obj_schlagwort_3.schlagwort_id
     schlagwort_3 = obj_schlagwort_3.schlagwort
 
     obj_schlagwort_4, created_schlagwort_4 = get_or_create_schlagwort(row, header, 'Schlagwort4')
-    #schlagwort_4_id = obj_schlagwort_4.schlagwort_id
     schlagwort_4 = obj_schlagwort_4.schlagwort
     
     obj_schlagwort_5, created_schlagwort_5 = get_or_create_schlagwort(row, header, 'Schlagwort5')
-    #schlagwort_5_id = obj_schlagwort_5.schlagwort_id
     schlagwort_5 = obj_schlagwort_5.schlagwort
     
     obj_schlagwort_6, created_schlagwort_6 = get_or_create_schlagwort(row, header, 'Schlagwort6')
-    #schlagwort_6_id = obj_schlagwort_6.schlagwort_id
     schlagwort_6 = obj_schlagwort_6.schlagwort
     
     obj_schlagwort_7, created_schlagwort_7 = get_or_create_schlagwort(row, header, 'Schlagwort')
-    #schlagwort_id = obj_schlagwort.schlagwort_id
     schlagwort_7 = obj_schlagwort_7.schlagwort
     
 
