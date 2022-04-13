@@ -76,8 +76,15 @@ rsync -rtp pyapps/webcentral/01_application/webcentral_app/media back_up_Media/
       # replication privilege.
       local   replication     all                                     peer
       host    replication     all             127.0.0.1/32            md5
+<<<<<<< 02_work_doc/backup_db_howto.md
 ```
+- sudo systemctl restart postgresql.service
 - howto restore see [restore .sql](#psql-(restore-.sql))
+
+=======
+  - sudo systemctl restart postgresql.service
+  - howto restore see [restore .sql](#psql-(restore-.sql))
+>>>>>>> 02_work_doc/backup_db_howto.md
   - list existing databases:
     - sudo -u postgres psql > \l
 #### postgres_dumpall
