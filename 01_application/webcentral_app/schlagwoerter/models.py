@@ -25,7 +25,7 @@ class Schlagwortregister_erstsichtung(models.Model):
     schlagwort_7 = models.CharField(max_length = 200,
                                    help_text="Schlagwort, Erstsichtung der Projekte über die Kurzbeschreibung (Ende 2020)",
                                    blank = True)
-    
+
 class Schlagwort(models.Model):
     schlagwort_id = models.AutoField(primary_key=True,help_text="Auto.generiert ID")
     schlagwort = models.CharField(max_length = 200,
@@ -37,3 +37,7 @@ class Schlagwort(models.Model):
     literatur = models.CharField(max_length = 1500,
                                    help_text="Literaturquellen zum Schlagwort",
                                    blank = True)
+    
+    # return as name, when class is called, eg. tables in admin page
+    def __str__(self):
+        return self.schlagwort  
