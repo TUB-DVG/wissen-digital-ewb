@@ -40,6 +40,7 @@ print('Hello world')
 #+END_SRC
 
 #+RESULTS:
+
 *** read local database one table
 #+BEGIN_SRC python :session py_wc :results output
 
