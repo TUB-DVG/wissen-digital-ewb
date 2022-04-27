@@ -34,7 +34,7 @@ print('Hello world')
 
 *** Test code
 **** set python environment (for org mode)
-- terminal: source ...
+- terminal: source path/to/bin/active
 #+BEGIN_SRC emacs-lisp :session py_wc
 (pyvenv-activate "/home/cudok/pyVenvs/db_ana")
 #+END_SRC
