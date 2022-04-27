@@ -1,0 +1,127 @@
+In this file first steps how to do requests to the database of the django
+project webcentral. The blocks could put into a file and run as python script.
+
+autor: falk
+date: March 2020
+
+* Test org-python
+
+#+BEGIN_SRC emacs-lisp :session python
+(pyvenv-activate "/home/cudok/pyVenvs/ve_wc")
+#+END_SRC
+
+#+RESULTS:
+
+
+#+NAME: Hello world org-python
+#+BEGIN_SRC python :session python :results output
+import pillow
+print('Hello world')
+
+#+END_SRC
+
+#+RESULTS: Hello world org-python
+
+#+RESULTS:
+: Hello world
+
+* Recherche
+** https://www.youtube.com/watch?v=neW9Y9xh4jc
+** https://www.geeksforgeeks.org/how-to-write-pandas-dataframe-to-postgresql-table/
+** https://docs.sqlalchemy.org/en/14/core/engines.html
+** SQL Abfragen: https://www.youtube.com/watch?v=phdWpI5VUWk
+** https://pythontic.com/pandas/serialization/postgresql
+
+*** Test code
+**** set python environment (for org mode)
+- terminal: source ...
+#+BEGIN_SRC emacs-lisp :session py_wc
+(pyvenv-activate "/home/cudok/pyVenvs/db_ana")
+#+END_SRC
+
+#+RESULTS:
+*** read local database one table
+#+BEGIN_SRC python :session py_wc :results output
+
+# Example python program to read data from a PostgreSQL table
+# and load into a pandas DataFrame
+import psycopg2
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Create an engine instance
+conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+alchemeyEngine = create_engine(conn_string)
+
+# connect to PostgreSQL server
+conn = alchemeyEngine.connect()
+
+# Read data from PostgreSQL database table and load into a DataFrame instance
+df = pd.read_sql_table("weatherdata_over_weatherdata", conn)
+df.info()
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8 entries, 0 to 7
+Data columns (total 13 columns):
+ #   Column               Non-Null Count  Dtype
+---  ------               --------------  -----
+ 0   id                   8 non-null      int64
+ 1   data_service         8 non-null      object
+ 2   short_description    8 non-null      object
+ 3   provider             8 non-null      object
+ 4   further_information  8 non-null      object
+ 5   data_url             8 non-null      object
+ 6   logo_url             8 non-null      object
+ 7   applications         8 non-null      object
+ 8   last_update          8 non-null      object
+ 9   license              8 non-null      object
+ 10  category             8 non-null      object
+ 11  image                8 non-null      object
+ 12  long_description     8 non-null      object
+dtypes: int64(1), object(12)
+memory usage: 960.0+ bytes
+#+end_example
+
+*** read local database query
+#+BEGIN_SRC python :session py_wc :results output
+
+# Example python program to read data from a PostgreSQL table
+# and load into a pandas DataFrame
+import psycopg2
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Create an engine instance
+conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+alchemeyEngine = create_engine(conn_string)
+
+# connect to PostgreSQL server
+conn = alchemeyEngine.connect()
+
+# Read data from PostgreSQL database table and load into a DataFrame instance
+## test the sql code and find the specific name of the tables, use pgadmin
+## as wildcard use '%%xxx%%' instead of '%xxx%'
+df = pd.read_sql_query(
+   """
+   SELECT id, data_service
+   FROM weatherdata_over_weatherdata
+   WHERE data_service LIKE '%%Open%%'
+   """
+   , conn)
+print(df)
+
+#+END_SRC
+
+#+RESULTS:
+:    id   data_service
+: 0   1  Open Data DWD
+
+
+* ORM - object relation mapping
+- Attention there is another usage of this acronym: object role modeling
+  https://en.wikipedia.org/wiki/Object-role_modeling
+- wiki: https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping
