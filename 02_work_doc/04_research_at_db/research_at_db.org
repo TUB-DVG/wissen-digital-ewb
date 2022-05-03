@@ -51,7 +51,8 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Create an engine instance
-conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+#conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+conn_string = 'postgresql://dbadmint:abc123@127.0.0.1:5432/m4_data3'
 alchemeyEngine = create_engine(conn_string)
 
 # connect to PostgreSQL server
@@ -60,7 +61,8 @@ conn = alchemeyEngine.connect()
 # Read data from PostgreSQL database table and load into a DataFrame instance
 df = pd.read_sql_table("weatherdata_over_weatherdata", conn)
 df.info()
-
+conn.close()
+alchemeyEngine.dispose()
 #+END_SRC
 
 #+RESULTS:
@@ -98,7 +100,9 @@ from sqlalchemy import create_engine
 
 # Create an engine instance
 conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+#conn_string = 'postgresql://adm_webcentral:M4_rocks_EWB@134.94.130.147:5432/db_webcentral3'
 alchemeyEngine = create_engine(conn_string)
+
 
 # connect to PostgreSQL server
 conn = alchemeyEngine.connect()
@@ -120,6 +124,69 @@ print(df)
 #+RESULTS:
 :    id   data_service
 : 0   1  Open Data DWD
+
+*** read local database query include joins
+
+- joins one table: https://www.w3schools.com/sql/sql_join.asp
+- joins multiple table: https://www.sqlshack.com/learn-sql-join-multiple-tables/
+#+BEGIN_SRC python :session py_wc :results output
+
+# Example python program to read data from a PostgreSQL table
+# and load into a pandas DataFrame
+import psycopg2
+import pandas as pd
+from sqlalchemy import create_engine
+
+# Create an engine instance
+#conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+conn_string = 'postgresql://adm_webcentral:M4_rocks_EWB@134.94.130.147:5432/db_webcentral3'
+alchemeyEngine = create_engine(conn_string)
+
+
+# connect to PostgreSQL server
+conn = alchemeyEngine.connect()
+
+# Read data from PostgreSQL database table and load into a DataFrame instance
+## test the sql code and find the specific name of the tables, use pgadmin
+df = pd.read_sql_query(
+   """
+   SELECT project_listing_teilprojekt.fkz, project_listing_enargus.thema, project_listing_forschung.forschungsprogramm
+   FROM project_listing_teilprojekt
+   INNER JOIN project_listing_enargus
+   ON project_listing_enargus.enargus_id = project_listing_teilprojekt.enargus_daten_id
+   INNER JOIN project_listing_forschung ON  project_listing_forschung.forschung_id = project_listing_enargus.forschung_id
+   WHERE kurzbeschreibung_de like '%%BIM%%'
+   """
+   , conn)
+# df = pd.read_sql_query(
+#    """
+#    SELECT project_listing_teilprojekt.fkz, project_listing_enargus.thema
+#    FROM project_listing_teilprojekt
+#    INNER JOIN project_listing_enargus ON project_listing_enargus.enargus_id = project_listing_teilprojekt.enargus_daten_id
+#    WHERE fkz like '03ETS002B'
+#    """
+#    , conn)
+print(df)
+
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+          fkz                                              thema          forschungsprogramm
+0   03ET1374C  EnOB: SOMAK: Solare magnetische Klimatisierung...  Energietechnologien (BMWi)
+1   03ETW017F  Verbundprojekt: TABSOLAR III - Wirtschaftliche...        Erneuerbare Energien
+2   03ET1290B  EnOB: Verbundvorhaben: SolConPro: Ganzheitlich...  Energietechnologien (BMWi)
+3   03SBE111B  Verbundvorhaben EnStadt: ENaQ - Energetisches ...  Energietechnologien (BMWi)
+4   03SBE114G  Verbundvorhaben: EnStadt: ZED: Zwickauer Energ...  Energietechnologien (BMWi)
+..        ...                                                ...                         ...
+64  03ET1466D  BIM-basierte Integrale Planung - Teilvorhaben:...  Energietechnologien (BMWi)
+65  03EN1050C  Verbundvorhaben: EnOB: BIM2Praxis - Integratio...  Energietechnologien (BMWi)
+66  03EN1004A  EnOB: EnergieeffBaeder - Energieeffizienz und ...  Energietechnologien (BMWi)
+67  03ET1592B  EnEff:Wärme: InnoA2-UP: Umsetzungsplanung für ...  Energietechnologien (BMWi)
+68  03ET1592C  EnEff:Wärme: InnoA2-UP: Umsetzungsplanung für ...  Energietechnologien (BMWi)
+
+[69 rows x 3 columns]
+#+end_example
 
 
 * ORM - object relation mapping
