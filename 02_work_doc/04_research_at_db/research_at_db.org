@@ -139,6 +139,7 @@ from sqlalchemy import create_engine
 
 # Create an engine instance
 #conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+## remote access after config the server see [[remote_postgresql.org]
 conn_string = 'postgresql://adm_webcentral:M4_rocks_EWB@134.94.130.147:5432/db_webcentral3'
 alchemeyEngine = create_engine(conn_string)
 
@@ -172,22 +173,21 @@ print(df)
 
 #+RESULTS:
 #+begin_example
-          fkz                                              thema          forschungsprogramm
-0   03ET1374C  EnOB: SOMAK: Solare magnetische Klimatisierung...  Energietechnologien (BMWi)
-1   03ETW017F  Verbundprojekt: TABSOLAR III - Wirtschaftliche...        Erneuerbare Energien
-2   03ET1290B  EnOB: Verbundvorhaben: SolConPro: Ganzheitlich...  Energietechnologien (BMWi)
-3   03SBE111B  Verbundvorhaben EnStadt: ENaQ - Energetisches ...  Energietechnologien (BMWi)
-4   03SBE114G  Verbundvorhaben: EnStadt: ZED: Zwickauer Energ...  Energietechnologien (BMWi)
-..        ...                                                ...                         ...
-64  03ET1466D  BIM-basierte Integrale Planung - Teilvorhaben:...  Energietechnologien (BMWi)
-65  03EN1050C  Verbundvorhaben: EnOB: BIM2Praxis - Integratio...  Energietechnologien (BMWi)
-66  03EN1004A  EnOB: EnergieeffBaeder - Energieeffizienz und ...  Energietechnologien (BMWi)
-67  03ET1592B  EnEff:Wärme: InnoA2-UP: Umsetzungsplanung für ...  Energietechnologien (BMWi)
-68  03ET1592C  EnEff:Wärme: InnoA2-UP: Umsetzungsplanung für ...  Energietechnologien (BMWi)
+          fkz  ...          forschungsprogramm
+0   03ET1374C  ...  Energietechnologien (BMWi)
+1   03ETW017F  ...        Erneuerbare Energien
+2   03ET1290B  ...  Energietechnologien (BMWi)
+3   03ET1592C  ...  Energietechnologien (BMWi)
+4   03ET1592B  ...  Energietechnologien (BMWi)
+..        ...  ...                         ...
+64  03ET1413C  ...  Energietechnologien (BMWi)
+65  03ET1413B  ...  Energietechnologien (BMWi)
+66  03ET1466C  ...  Energietechnologien (BMWi)
+67  03EN1050C  ...  Energietechnologien (BMWi)
+68  03EN1004A  ...  Energietechnologien (BMWi)
 
 [69 rows x 3 columns]
 #+end_example
-
 
 * ORM - object relation mapping
 - Attention there is another usage of this acronym: object role modeling
