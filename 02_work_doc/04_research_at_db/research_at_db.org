@@ -188,6 +188,9 @@ print(df)
 
 [69 rows x 3 columns]
 #+end_example
+** Achtung Inner joins
+- wenn der Eintrag des Primary key des Inner Joins 'null' ist, dann wird der Eintrag nicht betrachtet
+- wir müssen dafür eine Lösung finden
 
 * ORM - object relation mapping
 - Attention there is another usage of this acronym: object role modeling
