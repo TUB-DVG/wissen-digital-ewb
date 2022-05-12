@@ -188,9 +188,10 @@ print(df)
 
 [69 rows x 3 columns]
 #+end_example
-** Achtung Inner joins
+* Achtung Inner joins
 - wenn der Eintrag des Primary key des Inner Joins 'null' ist, dann wird der Eintrag nicht betrachtet
-- wir müssen dafür eine Lösung finden
+- Verwendung von Full Join statt Inner Join behebt diese Problem
+
 
 * Examples Project selection
 ** set python environment (for org mode)
@@ -391,10 +392,6 @@ Folgende Projekte sind gehören nur zur Auswahl ohne Inner Join:
 
 [9 rows x 4 columns]
 #+end_example
-
-*** Achtung Inner joins
-- wenn der Eintrag des Primary key des Inner Joins 'null' ist, dann wird der Eintrag nicht betrachtet
-- Verwendung von Full Join statt Inner Join behebt diese Problem
 
 *** select projects via 1st Sichtung mit Inner Join
 - Attention: no new projects are included
