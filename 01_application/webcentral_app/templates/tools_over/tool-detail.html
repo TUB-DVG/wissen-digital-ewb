@@ -324,13 +324,13 @@ Page content START -->
 							<h4 class="mb-3">Tags</h4>
 							<ul class="list-inline mb-0">
 								{% for kategorie in kategorien %}	
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1={{kategorie}}&2=&3=">{{kategorie}}</a> </li>
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k={{kategorie}}&l=&lzp=">{{kategorie}}</a> </li>
 								{% endfor %}
 								{% if tool.lizenz %}
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1=&2={{tool.lizenz}}&3=">{{tool.lizenz}}</a> </li>
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l={{tool.lizenz}}&lzp=">{{tool.lizenz}}</a> </li>
 								{% endif %}
 								{% for lebenszyklusphase in lebenszyklusphasen %}	
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l=&lzp={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
 								{% endfor %}
 							</ul>
 						</div>	

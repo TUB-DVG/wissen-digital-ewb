@@ -42,7 +42,7 @@ Page content START -->
 			<div class="row g-3">
 				<!-- Input -->
 				<div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-					<input class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
+					<input id="search-input-tools" class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
 				</div>
 
 				<!-- Select item -->
@@ -52,7 +52,7 @@ Page content START -->
 							
 							<!-- Select items -->
 						<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="1" title="Filtern nach der Kategorie der Anwendung"> 
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="k" id="kategorie-input-tools" title="Filtern nach der Kategorie der Anwendung"> 
 									
 									<option value="">Kategorie</option>
 									
@@ -82,7 +82,7 @@ Page content START -->
 							<!-- Search item -->
 							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="2" title="Filtern nach der Lizenz der Anwendung">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="l" id="lizenz-input-tools" title="Filtern nach der Lizenz der Anwendung">
 									
 									<option value="">Lizenz</option>
 									<option value="kostenpflichtig" {% if lizenz == "kostenpflichtig" %} selected="selected" {% endif %}>Kostenpflichtig</option>
@@ -94,7 +94,7 @@ Page content START -->
 							<!-- Search item -->
 							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="3" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="lzp" id="lzp-input-tools" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
 									<option value="">Lebenszyklusphase</option>
 									<option value="Planung" {% if lebenszyklusphase == "Planung" %} selected="selected" {% endif %}>Planung</option>
 									<option value="Vorplanung" {% if lebenszyklusphase == "Vorplanung" %} selected="selected" {% endif %}>Vorplanung</option>
@@ -117,7 +117,7 @@ Page content START -->
 				</div>
 				<!-- Button -->
 				<div class="col-xl-1">
-					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" href=""><i class="fas fa-search"></i></button>
+					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" id="search-submit-tools" href=""><i class="fas fa-search"></i></button>
 				</div>
 			</form>
 			</div> <!-- Row END -->
@@ -128,8 +128,8 @@ Page content START -->
 			{% if search %}
 			<li class="list-inline-item"> 
 				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched={{search}}&1=&2=&3=">Suchbegriff: {{search}}</a>
-					<a href="/tool_list/?searched=&1={% if kategorie %}{{kategorie}}{% endif %}&2={% if lizenz %}{{lizenz}}{% endif %}&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
+					<a href="/tool_list/?searched={{search}}&k=&l=&lzp=">Suchbegriff: {{search}}</a>
+					<a href="/tool_list/?searched=&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}&lzp={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
 						<i class="bi bi-x fa-lg close-icon"></i>
 					</a>
 				</div>
@@ -138,8 +138,8 @@ Page content START -->
 			{% if kategorie %}
 			<li class="list-inline-item">
 				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&1={{kategorie}}&2=&3=">{{kategorie}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&1=&2={% if lizenz %}{{lizenz}}{% endif %}&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
+					<a href="/tool_list/?searched=&k={{kategorie}}&l=&lzp=">{{kategorie}}</a>
+					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&k=&l={% if lizenz %}{{lizenz}}{% endif %}&lzp={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
 						<i class="bi bi-x fa-lg close-icon"></i>
 					</a>
 				</div>
@@ -148,8 +148,8 @@ Page content START -->
 			{% if lizenz %}
 			<li class="list-inline-item">
 				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&1=&2={{lizenz}}&3=">{{lizenz}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&1={% if kategorie %}{{kategorie}}{% endif %}&2=&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
+					<a href="/tool_list/?searched=&k=&l={{lizenz}}&lzp=">{{lizenz}}</a>
+					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&k={% if kategorie %}{{kategorie}}{% endif %}&l=&lzp={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}">
 						<i class="bi bi-x fa-lg close-icon"></i>
 					</a>
 				</div>
@@ -158,8 +158,8 @@ Page content START -->
 			{% if lebenszyklusphase %}
 			<li class="list-inline-item">
 				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&1=&2=&3={{lebenszyklusphase}}">{{lebenszyklusphase}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&1={% if kategorie %}{{kategorie}}{% endif %}&2={% if lizenz %}{{lizenz}}{% endif %}&3=">
+					<a href="/tool_list/?searched=&k=&l=&lzp={{lebenszyklusphase}}">{{lebenszyklusphase}}</a>
+					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}&lzp=">
 						<i class="bi bi-x-lg close-icon"></i>
 					</a>
 				</div>
@@ -174,52 +174,9 @@ Page content START -->
 			<div class="col-12">
 
 				<!-- Course Grid START -->
-				<div class="row g-4">
-					{% for tool in page.object_list %}	
-					<!-- Card item START -->
-					<div class="col-sm-6 col-lg-4 col-xl-3">
-						<div class="card shadow h-100">
-							<!-- Image -->
-							<div class="image-container d-flex" style="height: 150px;">
-								{%if tool.image %}
-								<img src="{{ tool.image.url }}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (if=db)">
-								{% else %}
-								<img src="{%static 'img/Default.webp' %}" class="card-img-top px-4 pt-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="tool image (else)">
-								{% endif %}
-							</div>
-							<!-- Card body -->
-							<div class="card-body pb-0">
-						
-								<!-- Title -->
-								<h5 class="card-title"><a href="{%url 'tool_view' tool.id %}"> {{ tool.bezeichnung   }}</a></h5>
-								<p class="mb-2 text-truncate-2">Nutzerschnittstelle: {{ tool.nutzerschnittstelle   }}</p>
-								<!-- Rating star -->
-							
-								
-								{% include 'partials/_stars_score.html' with score=tool.average_rating class_small='small' %}
+				<div class="row g-4" id="tool-listing-results">
+					{% include '../tools_over/tool-listings-results.html' %}
 
-
-
-							
-							</div>
-							<!-- Card footer -->
-							<div class="card-footer pt-0 pb-3">
-								{% if tool.letztes_update %}
-								<hr>
-								<div class="d-flex justify-content-between">
-									<span class="h6 fw-light mb-0">
-										{% if tool.letztes_update == 'laufend' %}
-										<i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.letztes_update }}
-										{% else %}
-										<i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.letztes_update }}
-										{% endif %}
-								</div>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-					<!-- Card item END -->
-					{% endfor %}
 					
 				</div>
 				<!-- Course Grid END -->
@@ -229,12 +186,12 @@ Page content START -->
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
 					<ul class="pagination pagination-primary-soft rounded mb-0">
 						{% if page.has_previous %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&1={% if kategorie %}{{kategorie}}{% endif %}&2={% if lizenz %}{{lizenz}}{% endif %}&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}&page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}&lzp={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}&page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
 						{% else %}
 						<!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
 						{% endif %}
 						{% if page.has_next %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&1={% if kategorie %}{{kategorie}}{% endif %}&2={% if lizenz %}{{lizenz}}{% endif %}&3={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}&page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
+						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}&lzp={% if lebenszyklusphase %}{{lebenszyklusphase}}{% endif %}&page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
 						{% else %}
 						<!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
 						{% endif %}

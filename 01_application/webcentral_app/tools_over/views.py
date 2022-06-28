@@ -1,6 +1,8 @@
 from contextlib import nullcontext
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
 from turtle import up
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
@@ -25,10 +27,10 @@ def index(request):
 
 
  
-    if ((request.GET.get("1") != None) |(request.GET.get("2") != None)| (request.GET.get("3") != None) |(request.GET.get("searched") != None)):
-        Kategorie=request.GET.get('1')
-        Lizenz=request.GET.get('2')
-        Lebenszyklusphase=request.GET.get('3')
+    if ((request.GET.get("k") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
+        Kategorie=request.GET.get('k')
+        Lizenz=request.GET.get('l')
+        Lebenszyklusphase=request.GET.get('lzp')
         searched=request.GET.get('searched')
         tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz,bezeichnung__icontains=searched)
         filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
@@ -38,6 +40,28 @@ def index(request):
 
     page_num= request.GET.get('page',None)
     page=tools_paginator.get_page(page_num)
+
+    #is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
+    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
+    
+
+    if is_ajax_request:
+        html = render_to_string(
+            template_name="tools_over/tool-listings-results.html", 
+            context = {
+                'page': page,
+                'search':searched,
+                'kategorie': filtered_by[0],
+                'lizenz': filtered_by[1],
+                'lebenszyklusphase': filtered_by[2]
+            }
+
+        )
+
+        data_dict = {"html_from_view": html}
+
+        return JsonResponse(data=data_dict, safe=False)
+
        
     context = {
         'page': page,
