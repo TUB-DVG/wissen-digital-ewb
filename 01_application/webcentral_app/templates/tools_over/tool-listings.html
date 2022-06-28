@@ -196,91 +196,9 @@ Page content START -->
 								<!-- Rating star -->
 							
 								
-								<ul class="list-inline mb-0">
-									{% if  tool.average_rating == 0 %}
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
+								{% include 'partials/_stars_score.html' with score=tool.average_rating class_small='small' %}
 
-									{% if  tool.average_rating == 1 %}
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 1.5 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-								
-									<li class="list-inline-item me-0 small"><i class="far fa-star-half-alt text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 2 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 2.5 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 3 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 3.5 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 4 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 4.5 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
-									
-									{% endif %}
-									{% if  tool.average_rating == 5 %}
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
-									
-									{% endif %}
-									
-								</ul>
+
 
 							
 							</div>
