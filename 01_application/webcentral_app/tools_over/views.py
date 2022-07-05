@@ -33,6 +33,7 @@ def index(request):
         tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz,bezeichnung__icontains=searched)
         filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
               
+    tools = list(sorted(tools, key=lambda obj:obj.bezeichnung))
 
     tools_paginator= Paginator (tools,12)
 
