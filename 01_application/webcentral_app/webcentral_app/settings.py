@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'channels',
+    'channels_redis'
 ]
 
 MIDDLEWARE = [
@@ -83,9 +86,9 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'webcentral',
+        'NAME': 'Empty_database',
         'USER': 'postgres',
-        'PASSWORD': 'abc123',
+        'PASSWORD': 'Anthem2018',
         'HOST': 'localhost',
     }
 }
@@ -123,6 +126,22 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+ASGI_APPLICATION='webcentral_app.routing.application'
+"""
+CHANNEL_LAYERS={
+    'default':{
+        'BACKEND':'channels_redis.core.RdisChannelLayer',
+        'CONFIG':{
+            'hosts': [('127.0.0.1',6379),], # This might need to be implemented when working on the server
+        }
+    }
+}
+"""
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+
+
 {% load static %}
 {% block title %} Wissensplattform - Digitalisierung Energiewendebauen{% endblock %}
 
@@ -108,5 +110,8 @@ Page Banner END -->
         {% include '../partials/_gefoerdert_bmwk.html' %}
       </div>
     </div>
+
+	<a href="{% url 'other' %}">Plotly Dash Test</a>
+
   </section>
 {% endblock %}
