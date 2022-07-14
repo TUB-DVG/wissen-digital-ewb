@@ -1,7 +1,9 @@
 import csv
+from encodings import utf_8
 from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
+from schlagwoerter.models import *
 
 # -*- coding: utf-8 -*-
 
@@ -260,6 +262,54 @@ def get_or_create_weatherdata(row, header):
     )
     return obj, created
 
+def get_or_create_schlagwort(row, header, schlagwort_key):
+    """
+    add entry into table forschung or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    schlagwort = row[header.index(schlagwort_key)]
+    obj, created = Schlagwort.objects.get_or_create(
+        schlagwort = schlagwort
+    )
+    return obj, created
+
+def get_or_create_schlagwortregister(row, header):
+    """
+    add entry into table Weatherdata or/and return entry key
+    """
+    obj_schlagwort_1, created_schlagwort_1 = get_or_create_schlagwort(row, header, 'Schlagwort1')
+    schlagwort_1_id = obj_schlagwort_1.schlagwort_id
+
+    obj_schlagwort_2, created_schlagwort_2 = get_or_create_schlagwort(row, header, 'Schlagwort2')
+    schlagwort_2_id = obj_schlagwort_2.schlagwort_id
+
+    obj_schlagwort_3, created_schlagwort_3 = get_or_create_schlagwort(row, header, 'Schlagwort3')
+    schlagwort_3_id = obj_schlagwort_3.schlagwort_id
+
+    obj_schlagwort_4, created_schlagwort_4 = get_or_create_schlagwort(row, header, 'Schlagwort4')
+    schlagwort_4_id = obj_schlagwort_4.schlagwort_id
+    
+    obj_schlagwort_5, created_schlagwort_5 = get_or_create_schlagwort(row, header, 'Schlagwort5')
+    schlagwort_5_id = obj_schlagwort_5.schlagwort_id
+    
+    obj_schlagwort_6, created_schlagwort_6 = get_or_create_schlagwort(row, header, 'Schlagwort6')
+    schlagwort_6_id = obj_schlagwort_6.schlagwort_id
+    
+    obj_schlagwort_7, created_schlagwort_7 = get_or_create_schlagwort(row, header, 'Schlagwort')
+    schlagwort_7_id = obj_schlagwort_7.schlagwort_id
+    
+
+    obj, created = Schlagwortregister_erstsichtung.objects.get_or_create(
+        schlagwort_1_id = schlagwort_1_id,
+        schlagwort_2_id = schlagwort_2_id,
+        schlagwort_3_id = schlagwort_3_id,
+        schlagwort_4_id = schlagwort_4_id,
+        schlagwort_5_id = schlagwort_5_id,
+        schlagwort_6_id = schlagwort_6_id,
+        schlagwort_7_id = schlagwort_7_id
+    )
+    return obj, created
+
 def add_or_update_row_teilprojekt(row, header, source):
     """add or update one row of the database, but without foreign key connections
 
@@ -299,6 +349,21 @@ def add_or_update_row_teilprojekt(row, header, source):
             if answ == 'y':
                 Teilprojekt.objects.filter(pk=fkz).update(
                     zuordnung_id= mod_id)
+                print('updated: %s' %fkz)
+    elif source == 'schlagwortregister':
+        obj, created = get_or_create_schlagwortregister(row, header)
+        schlagwortregister_id = obj.schlagwortregister_id
+        fkz = row[header.index('Förderkennzeichen (0010)')]
+        try:
+            Teilprojekt.objects.create(fkz=fkz,
+                                    schlagwortregister_erstsichtung_id = schlagwortregister_id)
+            print('added: %s' %fkz)
+        except IntegrityError:
+            answ = input("%s found in db. Update this part project? (Y/n): "
+                     %fkz) or 'y'
+            if answ == 'y':
+                Teilprojekt.objects.filter(pk=fkz).update(
+                    schlagwortregister_erstsichtung_id= schlagwortregister_id)
                 print('updated: %s' %fkz)
 
 def csv2m4db_enargus(path):
@@ -362,6 +427,20 @@ def csv2m4db_weatherdata(path):
     return header, data
 
 
+def csv2m4db_schlagwortregister_erstsichtung(path):
+    """Weatherdata csv-file into BF M4 Django database, hard coded"""
+    with open(path, encoding='utf-8') as csv_file:
+        reader = csv.reader(csv_file, delimiter=';')
+        header = next(reader)
+        data = []
+        for row in reader:
+            print(row[header.index('Förderkennzeichen (0010)')])
+            data.append(row)
+            # breakpoint()
+            # get_or_create_schlagwortregister(row, header)
+            add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
+    return header, data
+
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
@@ -377,7 +456,9 @@ def csv2m4db_weatherdata(path):
 # header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
-path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-header, data = csv2m4db_weatherdata(path_csv_weatherdata)
- #
- #
+# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
+# header, data = csv2m4db_weatherdata(path_csv_weatherdata)
+
+## Example add/update Schlagwoerter table
+path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
+header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
