@@ -26,7 +26,9 @@ def index(request):
         searched=request.GET.get('searched')
         weatherdata=Weatherdata.objects.filter(category__icontains=Kategorie,license__icontains=Lizenz,data_service__icontains=searched)
         filtered_by = [Kategorie, Lizenz]
-         
+        
+    
+    weatherdata = list(sorted(weatherdata, key=lambda obj:obj.data_service))
 
     weatherdata_paginator= Paginator (weatherdata,12)
 
