@@ -462,3 +462,4 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
 ## Example add/update Schlagwoerter table
 path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
 header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
+ 
