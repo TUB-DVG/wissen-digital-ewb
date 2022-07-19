@@ -31,3 +31,6 @@ nice to have:
 - managed vserver
 - https://www.webgo.de/managed-server/managed-ssd-vserver/
 - green
+3. strato
+- Rita eine eine Internetseite für eine Projekt bei Strato
+ - alle Datenschutzrechtlichen Dokument per Klick runterladbar
