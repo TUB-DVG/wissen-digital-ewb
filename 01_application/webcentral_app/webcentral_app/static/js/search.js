@@ -11,8 +11,8 @@ let scheduled_function = false
 const user_input_weatherdata = $("#search-input-weatherdata")
 const kat_input_weatherdata = $("#kategorie-input-weatherdata")
 const liz_input_weatherdata = $("#lizenz-input-weatherdata")
-const search_icon_weatherdata = $('#search-submit-tools')
-const weatherdata_listing_results_grid = $('#tool-listing-results')
+const search_icon_weatherdata = $('#search-submit-weatherdata')
+const weatherdata_listing_results_grid = $('#weatherdata-listing-results')
 const endpoint_weatherdata = '/weatherdata_list/'
 
 let ajax_call_tools = function (endpoint, request_parameters) {
