@@ -1,5 +1,10 @@
 from django.shortcuts import render
-
+from contextlib import nullcontext
+from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
+from turtle import up
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Weatherdata 
@@ -20,13 +25,12 @@ def index(request):
     filtered_by = [None]*2
     searched=None
 
-    if ((request.GET.get("1") != None) |(request.GET.get("2") != None) |(request.GET.get("searched") != None)):
-        Kategorie=request.GET.get('1')
-        Lizenz=request.GET.get('2')
+    if ((request.GET.get("k") != None) |(request.GET.get("l") != None) |(request.GET.get("searched") != None)):
+        Kategorie=request.GET.get('k')
+        Lizenz=request.GET.get('l')
         searched=request.GET.get('searched')
         weatherdata=Weatherdata.objects.filter(category__icontains=Kategorie,license__icontains=Lizenz,data_service__icontains=searched)
         filtered_by = [Kategorie, Lizenz]
-        
     
     weatherdata = list(sorted(weatherdata, key=lambda obj:obj.data_service))
 
@@ -35,6 +39,24 @@ def index(request):
     page_num= request.GET.get('page',None)
     page=weatherdata_paginator.get_page(page_num)
 
+    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
+    
+    
+    if is_ajax_request:
+        html = render_to_string(
+            template_name="weatherdata_over/weatherdata-listings-results.html", 
+            context = {
+                'page': page,
+                'search':searched,
+                'kategorie': filtered_by[0],
+                'lizenz': filtered_by[1],
+            }
+
+        )
+
+        data_dict = {"html_from_view": html}
+
+        return JsonResponse(data=data_dict, safe=False)
        
     context = {
         'page': page,
