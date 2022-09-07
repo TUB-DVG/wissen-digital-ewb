@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import * 
 
 
-admin.site.register(Enargus)
+
 admin.site.register(Forschung)
 admin.site.register(Fragebogen_21)
 
@@ -20,3 +20,8 @@ class TeilprojektAdmin(admin.ModelAdmin):
 
     search_fields = ['fkz',]
 admin.site.register(Teilprojekt,TeilprojektAdmin)
+
+class EnargusAdmin(admin.ModelAdmin):
+
+    search_fields = ['enargus_id',]
+admin.site.register(Enargus,EnargusAdmin)
