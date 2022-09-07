@@ -87,6 +87,10 @@ Page content START -->
 							<p class="mb-0"><a href="{{weatherdata.data_url}}">{{weatherdata.data_url}}</a></p>
 							{% endif %}
 							<!-- Course detail END -->
+							{% if weatherdata.data_service == 'Wetterdienst' %}
+							<h5 class="mt-4"><a href="weatherdata_over/wetterdienst(example).html">Beispielanwendung</a></h5>
+							{% endif %}
+							
 
 						</div>
 						<!-- Content END -->
