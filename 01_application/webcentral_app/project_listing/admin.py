@@ -6,7 +6,7 @@ from .models import *
 
 admin.site.register(Fragebogen_21)
 
-admin.site.register(Modulen_zuordnung_ptj)
+
 
 admin.site.register(Zuwendungsempfaenger)
 
@@ -53,3 +53,11 @@ class ForschungAdmin(admin.ModelAdmin):
 
     search_fields = ['bundesministerium ','projekttraeger','forschungsprogramm','foerderprogramm',]
 admin.site.register(Forschung,ForschungAdmin)
+
+
+
+
+class Modulen_zuordnung_ptjAdmin(admin.ModelAdmin):
+
+    search_fields = ['mod_id ',]
+admin.site.register(Modulen_zuordnung_ptj,Modulen_zuordnung_ptjAdmin)
