@@ -13,8 +13,6 @@ admin.site.register(Zuwendungsempfaenger)
 
 
 
-admin.site.register(Anschrift)
-
 # admin.site.Teilprojekt(Tools) not need here, because it is moved to tools_over
 class TeilprojektAdmin(admin.ModelAdmin):
 
@@ -44,3 +42,10 @@ class Ausfuehrende_stelleAdmin(admin.ModelAdmin):
 
     search_fields = ['name',]
 admin.site.register(Ausfuehrende_stelle,Ausfuehrende_stelleAdmin)
+
+
+
+class AnschriftAdmin(admin.ModelAdmin):
+
+    search_fields = ['plz ',]
+admin.site.register(Anschrift,AnschriftAdmin)
