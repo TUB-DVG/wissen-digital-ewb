@@ -4,7 +4,6 @@ from .models import *
 
 
 
-admin.site.register(Forschung)
 admin.site.register(Fragebogen_21)
 
 admin.site.register(Modulen_zuordnung_ptj)
@@ -49,3 +48,8 @@ class AnschriftAdmin(admin.ModelAdmin):
 
     search_fields = ['plz ',]
 admin.site.register(Anschrift,AnschriftAdmin)
+
+class ForschungAdmin(admin.ModelAdmin):
+
+    search_fields = ['bundesministerium ','projekttraeger','forschungsprogramm','foerderprogramm',]
+admin.site.register(Forschung,ForschungAdmin)
