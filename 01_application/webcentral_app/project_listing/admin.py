@@ -4,11 +4,8 @@ from .models import *
 
 
 
-admin.site.register(Fragebogen_21)
 
 
-
-admin.site.register(Zuwendungsempfaenger)
 
 
 
@@ -67,3 +64,10 @@ admin.site.register(Modulen_zuordnung_ptj,Modulen_zuordnung_ptjAdmin)
 class Fragebogen_21Admin(admin.ModelAdmin): 
     search_fields = ['Fragebogen_21 ',]
 admin.site.register(Fragebogen_21,Fragebogen_21Admin)
+
+
+
+class ZuwendungsempfaengerAdmin(admin.ModelAdmin):
+
+    search_fields = ['name ',]
+admin.site.register(Zuwendungsempfaenger,ZuwendungsempfaengerAdmin)
