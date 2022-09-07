@@ -8,7 +8,7 @@ admin.site.register(Forschung)
 admin.site.register(Fragebogen_21)
 
 admin.site.register(Modulen_zuordnung_ptj)
-admin.site.register(Leistung_sys)
+
 admin.site.register(Zuwendungsempfaenger)
 admin.site.register(Ausfuehrende_stelle)
 
@@ -32,3 +32,8 @@ class PersonAdmin(admin.ModelAdmin):
 
     search_fields = ['name',]
 admin.site.register(Person,PersonAdmin)
+
+class Leistung_sysAdmin(admin.ModelAdmin):
+
+    search_fields = ['leistungsplansystematik_nr',]
+admin.site.register(Leistung_sys,Leistung_sysAdmin)
