@@ -12,7 +12,7 @@ admin.site.register(Leistung_sys)
 admin.site.register(Zuwendungsempfaenger)
 admin.site.register(Ausfuehrende_stelle)
 
-admin.site.register(Person)
+
 admin.site.register(Anschrift)
 
 # admin.site.Teilprojekt(Tools) not need here, because it is moved to tools_over
@@ -25,3 +25,10 @@ class EnargusAdmin(admin.ModelAdmin):
 
     search_fields = ['enargus_id',]
 admin.site.register(Enargus,EnargusAdmin)
+
+
+
+class PersonAdmin(admin.ModelAdmin):
+
+    search_fields = ['name',]
+admin.site.register(Person,PersonAdmin)
