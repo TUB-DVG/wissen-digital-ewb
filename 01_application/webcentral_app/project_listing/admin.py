@@ -10,7 +10,7 @@ admin.site.register(Fragebogen_21)
 admin.site.register(Modulen_zuordnung_ptj)
 
 admin.site.register(Zuwendungsempfaenger)
-admin.site.register(Ausfuehrende_stelle)
+
 
 
 admin.site.register(Anschrift)
@@ -37,3 +37,10 @@ class Leistung_sysAdmin(admin.ModelAdmin):
 
     search_fields = ['leistungsplansystematik_nr',]
 admin.site.register(Leistung_sys,Leistung_sysAdmin)
+
+
+
+class Ausfuehrende_stelleAdmin(admin.ModelAdmin):
+
+    search_fields = ['name',]
+admin.site.register(Ausfuehrende_stelle,Ausfuehrende_stelleAdmin)
