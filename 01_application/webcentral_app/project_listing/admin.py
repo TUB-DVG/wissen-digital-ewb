@@ -61,3 +61,9 @@ class Modulen_zuordnung_ptjAdmin(admin.ModelAdmin):
 
     search_fields = ['mod_id ',]
 admin.site.register(Modulen_zuordnung_ptj,Modulen_zuordnung_ptjAdmin)
+
+
+
+class Fragebogen_21Admin(admin.ModelAdmin): 
+    search_fields = ['Fragebogen_21 ',]
+admin.site.register(Fragebogen_21,Fragebogen_21Admin)
