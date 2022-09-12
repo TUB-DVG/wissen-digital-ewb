@@ -43,12 +43,12 @@ admin.site.register(Ausfuehrende_stelle,Ausfuehrende_stelleAdmin)
 
 class AnschriftAdmin(admin.ModelAdmin):
 
-    search_fields = ['plz ',]
+    search_fields = ['plz',]
 admin.site.register(Anschrift,AnschriftAdmin)
 
 class ForschungAdmin(admin.ModelAdmin):
 
-    search_fields = ['bundesministerium ','projekttraeger','forschungsprogramm','foerderprogramm',]
+    search_fields = ['bundesministerium','projekttraeger','forschungsprogramm','foerderprogramm',]
 admin.site.register(Forschung,ForschungAdmin)
 
 
@@ -56,18 +56,18 @@ admin.site.register(Forschung,ForschungAdmin)
 
 class Modulen_zuordnung_ptjAdmin(admin.ModelAdmin):
 
-    search_fields = ['mod_id ',]
+    search_fields = ['mod_id',]
 admin.site.register(Modulen_zuordnung_ptj,Modulen_zuordnung_ptjAdmin)
 
 
 
 class Fragebogen_21Admin(admin.ModelAdmin): 
-    search_fields = ['Fragebogen_21 ',]
+    search_fields = ['Fragebogen_21',]
 admin.site.register(Fragebogen_21,Fragebogen_21Admin)
 
 
 
 class ZuwendungsempfaengerAdmin(admin.ModelAdmin):
 
-    search_fields = ['name ',]
+    search_fields = ['name',]
 admin.site.register(Zuwendungsempfaenger,ZuwendungsempfaengerAdmin)
