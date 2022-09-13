@@ -1,28 +1,70 @@
-from django.contrib import admin
-
+from django.contrib import admin   
 from import_export import fields,resources
 from import_export.widgets import *
+
+
+#Needed for overwriting the Import_Export app
 from import_export.admin import ImportExportModelAdmin , ImportMixin
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template.response import TemplateResponse
-from .models import * 
 from django.shortcuts import redirect
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
+
+
+
+from .models import * 
+
 #chars = ascii_lowercase + digits
 
 #lst = [''.join(choice(chars) for _ in range(2)) for _ in range(100)]
 
 admin.site.register(Forschung)
 admin.site.register(Fragebogen_21)
+
 admin.site.register(Modulen_zuordnung_ptj)  
-admin.site.register(Zuwendungsempfaenger)
-admin.site.register(Ausfuehrende_stelle)
+
+#admin.site.register(Zuwendungsempfaenger)
+#admin.site.register(Ausfuehrende_stelle)
+
 admin.site.register(Person)
-admin.site.register(Anschrift)
+#admin.site.register(Anschrift)
+class anschriftSearch(admin.ModelAdmin):
+    search_fields= ['ort']
+admin.site.register(Anschrift,anschriftSearch)
+class Lssad(admin.ModelAdmin ):
+     search_fields = ['leistungsplansystematik_nr', ]
+
+admin.site.register(Leistung_sys,Lssad)
+
+class zuwendsearch(admin.ModelAdmin):
+    search_fields=['name',]
+    
+admin.site.register(Zuwendungsempfaenger,zuwendsearch)
+
+class ausfuhsearch (admin.ModelAdmin):
+    search_fields=['name',]
+
+admin.site.register(Ausfuehrende_stelle,ausfuhsearch)
+# admin.site.register(Tools) not need here, because it is moved to tools_over
+class EnargusAdminResource(resources.ModelResource):
+
+    class Meta:
+        model   =   Enargus
+        import_id_fields = ['enargus_id']
+        skip_unchanged = True
+        report_skipped = False
+    
+
+class EnargusAdmin( ImportExportModelAdmin ):
+    search_fields = ['enargus_id', ]
+    resource_class = EnargusAdminResource
+        
+
+admin.site.register(Enargus,EnargusAdmin)
 
 
-admin.site.register(Enargus)
+
 
 class TeilProjektResource(resources.ModelResource,ImportMixin):
     
@@ -592,6 +634,7 @@ class TeilprojektsAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
             return TemplateResponse(request, [self.import_template_name],
                                     context)
 
+    search_fields = ['fkz', ]
     resource_class = TeilProjektResource
         
 
