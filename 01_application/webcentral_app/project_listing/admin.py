@@ -240,6 +240,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
 
         """
         if not self._meta.skip_unchanged or self._meta.skip_diff:
+            print(true)
             return False
         for field in self.get_import_fields():
             #print(field)
@@ -250,10 +251,9 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
                     print('true')
                     return False
             except AttributeError:
-                # if (field.get_value(instance) != field.get_value(original)) and (field.column_name!='Foerdersumme_EUR'):
-                if (field.get_value(instance) != field.get_value(original)) :
-                    print('True')
-                    print(field.column_name)
+                if ((field.get_value(instance)) != field.get_value(original)) and (field.column_name!='PLZ_AS'):
+
+                #if (field.get_value(instance) != field.get_value(original)) :  
                     if(field.column_name=='Foerdersumme_EUR'):
                         #print(field.get_value(instance))
                         print(field.get_value(original))
@@ -288,7 +288,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
             self.fields['projektleiter_name'].attribute='enargus_ten'
             self.fields['projektleiter_vname'].attribute='en'
             self.fields['projektleiter_email'].attribute='enars_ten'
-            self.fields['Ausfuehrende_st_plz'].attribute='eno'
+            self.fields['Ausfuehrende_st_plz'].attribute='needstochange'
             self.fields['Ausfuehrende_st_land'].attribute='ena'
             self.fields['Ausfuehrende_st_ort'].attribute='enb'
             self.fields['Ausfuehrende_st_name'].attribute='enc'
@@ -327,7 +327,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
                 set=False
 
             if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.ausfuehrende_stelle):
-                self.fields['Ausfuehrende_st_plz'].attribute='eno'
+                self.fields['Ausfuehrende_st_plz'].attribute='noooo'
                 self.fields['Ausfuehrende_st_land'].attribute='ena'
                 self.fields['Ausfuehrende_st_ort'].attribute='enb'
                 self.fields['Ausfuehrende_st_name'].attribute='enc'
