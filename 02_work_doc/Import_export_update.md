@@ -1,10 +1,16 @@
 # Notes:
- - There seems to be an issue with decimal fíelds when using the import_export django app, decimal fields always get the update status even when no changes are to be made.
+ - There seems to be an issue with decimal fíelds when using the import_export django app, decimal fields always get the update status even when no changes are to be made. (FIXED)
  - It seems to be very important to initialize your model fields with "null=True" 
  - When dealing with foreign key objects without using the foreignKey widget, if the object does not exist, a comparison cannot be made and this causes an issue . A solution found would be to change the attribute for each field in your model resource in the before_import_row function ( they could be changed to none but then no comparison would be made and the GUI would not display anything, another way is to change the attributes to random string : compare to no existing field).
  - Deleting rows from an xlsx or csv  file manually causes the functionality to crash, instead creating a new xlsx file and copying all the data except the row to deleted seems to be a solution.
  - It is recommended to not import large files in one import action(rows exceeding 1000), it would be advised to limit every xlsx or csv file to 500 rows.
  - The import id field must match with the column name (including lower and upper cases).
+ # USAGE NOTES:
+ 1- When opening the csv with libre office use only semicolon.
+2- make sure to change the type of the column: fkz, PLZ_AS, PLZ_ZWE from standard to text before clicking next
+3- after the csv is opened change the FKZ to fkz and save as xlsx.
+
+Use the xlsx file for import
 
 # Admin page layout:
 ## General.
@@ -87,3 +93,7 @@ If such field is not present in the import file, the import funcionality must be
 The import workflow can be found here: https://django-import-export.readthedocs.io/en/latest/import_workflow.html
 
 One possibility would be to override some of the import functions using the get_or_create django command to update or create new objects for your different models.
+
+# Bugs to be fixed
+- When file reading bug occurs a restart of the server is necessary .
+- CSV reading :Invalid Dimensions
