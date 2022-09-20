@@ -15,7 +15,7 @@ from django.utils.translation import gettext as _
 
 admin.site.register(Forschung)
 admin.site.register(Fragebogen_21)
-admin.site.register(Modulen_zuordnung_ptj)  
+
 admin.site.register(Zuwendungsempfaenger)
 admin.site.register(Ausfuehrende_stelle)
 admin.site.register(Person)
@@ -206,6 +206,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
     class Meta:
         model   =   Teilprojekt
         import_id_fields = ['fkz']
+        
         skip_unchanged = True
         report_skipped=False
        
@@ -593,7 +594,123 @@ class TeilprojektsAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
                                     context)
 
     resource_class = TeilProjektResource
+    search_fields=['fkz',]
         
 
 admin.site.register(Teilprojekt,TeilprojektsAdmin)
 #class EnargusAdmin( ImportExportModelAdmin ):
+
+
+##############################################
+
+
+class Modulen_zuordnung_Resource(resources.ModelResource,ImportMixin):
+
+
+
+
+
+
+
+    def skip_row(self, instance, original):
+        """
+        Returns ``True`` if ``row`` importing should be skipped.
+
+        Default implementation returns ``False`` unless skip_unchanged == True
+        and skip_diff == False.
+
+        If skip_diff is True, then no comparisons can be made because ``original``
+        will be None.
+
+        When left unspecified, skip_diff and skip_unchanged both default to ``False``, 
+        and rows are never skipped. 
+
+        Override this method to handle skipping rows meeting certain
+        conditions.
+
+        Use ``super`` if you want to preserve default handling while overriding
+        ::
+            class YourResource(ModelResource):
+                def skip_row(self, instance, original):
+                    # Add code here
+                    return super(YourResource, self).skip_row(instance, original)
+
+        """
+        if not self._meta.skip_unchanged or self._meta.skip_diff:
+
+            return False
+        for field in self.get_import_fields():
+            #print(field)
+            try:
+                # For fields that are models.fields.related.ManyRelatedManager
+                # we need to compare the results
+                if list(field.get_value(instance).all()) != list(field.get_value(original).all()):
+                    
+                    return False
+            except AttributeError:
+               
+
+                if (field.get_value(instance) != field.get_value(original)) :  
+
+                    print(field.get_value(instance))
+                    print(field.get_value(original))
+
+                    return False
+        return True
+        
+
+    priority_1=fields.Field(
+
+        column_name='modulzuordnung_ptj_1',
+        widget=CharWidget()  
+    )
+    priority_2=fields.Field(
+        
+        column_name='modulzuordnung_ptj_2',
+        widget=CharWidget()  
+    )
+    priority_3=fields.Field(
+        
+        column_name='modulzuordnung_ptj_3',
+        widget=CharWidget()  
+    )
+    priority_4=fields.Field(
+        
+        column_name='modulzuordnung_ptj_4',
+        widget=CharWidget()  
+    )
+
+        
+    class Meta:
+        model   =   Teilprojekt
+        fields=('fkz,')
+        import_id_fields = ['fkz']
+        
+        skip_unchanged = True
+        report_skipped=False
+
+    def before_import_row(self, row, row_number=None, **kwargs):
+            self.data=row
+
+            if (not Teilprojekt.objects.filter(fkz=row['fkz']).exists()) or (not Teilprojekt.objects.get(fkz=row['fkz']).zuordnung):
+
+                self.fields['priority_4'].attribute='ebbbb'
+                self.fields['priority_3'].attribute='epppp'
+                self.fields['priority_2'].attribute='enarten'
+                self.fields['priority_1'].attribute='enaen'
+                
+            else:
+                self.fields['priority_4'].attribute='zuordnung__priority_4'
+                self.fields['priority_3'].attribute='zuordnung__priority_3'
+                self.fields['priority_2'].attribute='zuordnung__priority_2'
+                self.fields['priority_1'].attribute='zuordnung__priority_1'
+
+    def after_save_instance(self, instance, new, row_number=None, **kwargs):
+        obj, created = Teilprojekt.objects.get_or_create(fkz=self.data['fkz'])
+        obj.zuordnung,created=Modulen_zuordnung_ptj.objects.get_or_create(priority_1=self.data['modulzuordnung_ptj_1'],priority_2=self.data['modulzuordnung_ptj_2'],priority_3=self.data['modulzuordnung_ptj_3'],priority_4=self.data['modulzuordnung_ptj_4'])
+        obj.save(update_fields=['zuordnung'])   
+
+class ModulZuordnungAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
+    resource_class = Modulen_zuordnung_Resource
+               
+admin.site.register(Modulen_zuordnung_ptj,ModulZuordnungAdmin  )  

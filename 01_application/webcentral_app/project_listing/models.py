@@ -17,7 +17,7 @@ class Teilprojekt(models.Model):
                                          on_delete=models.CASCADE) # Set to cascade since this is a one to one relation.
     #projektlandkarte
 
-    zuordnung=models.ForeignKey("Modulen_zuordnung_ptj",null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
+    zuordnung=models.ForeignKey('Modulen_zuordnung_ptj',null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
     schlagwortregister_erstsichtung=models.ForeignKey("schlagwoerter.Schlagwortregister_erstsichtung", null=true, on_delete=models.SET_NULL,blank=True) # One to many behaviour
     fragebogen_21=models.ForeignKey("Fragebogen_21",null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
 
@@ -36,9 +36,9 @@ class Fragebogen_21(models.Model):
 
 class Modulen_zuordnung_ptj(models.Model):
     mod_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
-    priority_1=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 1, ag: ausgelaufen")
-    priority_2=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 2, ag: ausgelaufen")
-    priority_3=models.CharField(max_length=2,help_text="Projektzuordnung mit der Prioritat 3, ag: ausgelaufen")
+    priority_1=models.CharField(max_length=2,null=True, blank=True,help_text="Projektzuordnung mit der Prioritat 1, ag: ausgelaufen")
+    priority_2=models.CharField(max_length=2,null=True, blank=True,help_text="Projektzuordnung mit der Prioritat 2, ag: ausgelaufen")
+    priority_3=models.CharField(max_length=2,null=True, blank=True,help_text="Projektzuordnung mit der Prioritat 3, ag: ausgelaufen")
     priority_4=models.CharField(max_length=2,
                  help_text="Projektzuordnung mit der Prioritat 4, ag: ausgelaufen",
                  null=True, blank=True
