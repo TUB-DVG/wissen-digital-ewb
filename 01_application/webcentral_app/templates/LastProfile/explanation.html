@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Überblick über die Last Profi Approximation{% endblock %}
+{% block content %}
+{% load static %}
+
+
+<section class="py-4">
+	<div class="container">
+        <div class="row collapseInfoContainer" id="collapseInfoContainerWeatherdata">
+            
+            
+            <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoWeatherdata">
+                <p>
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>  
+                <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+                    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                </p>
+                <p> Die Schnittstelle hat 3 Parameter:
+                </p>
+                <ul>
+                    <li class="lead"><b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen?</li>
+                    <li class="lead"><b>Energy bedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs in kWh/a :Je nach Wahl entweder Strombedarf oder Wärmebedarf
+                    </li>
+                    <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
+                </ul>
+            </div>
+            <div class="col-lg-12 lead mt-3">
+                <a role="button" class="collapsed text-truncation-btn" data-toggle="collapse" href="#collapseInfoWeatherdata" aria-expanded="false" aria-controls="collapseInfoWeatherdata"></a>
+            </div>
+
+            <img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt=""> 
+
+            <a href="{% url 'LastProfile_strom_display' %}">
+                <img src="{% static '/img/Lastprofil/strom.jpg' %}" style="max-height:30px;" >
+                StromlastApproximation
+            </a>
+            
+	        <a href="{% url 'LastProfile_warme_display' %}">
+                <img src="{% static '/img/Lastprofil/heat.png' %}"style="max-height:30px;">
+                WarmelastApproximation
+                
+            </a>
+            
+
+        </div>
+    </div>
+</section>
+{% endblock %}
