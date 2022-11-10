@@ -32,6 +32,3 @@ def search(request):
     search page
     """
     return render(request, 'project_listing/search.html')
-
-def wetter(request):
-    return render (request, 'pages/wetterdienst.html')
