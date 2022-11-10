@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
     'schlagwoerter.apps.SchlagwoerterConfig',
+    'LastProfile.apps.LastprofileConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,10 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
+    #'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
-    'channels_redis'
+    #'channels_redis'
 ]
 
 MIDDLEWARE = [
