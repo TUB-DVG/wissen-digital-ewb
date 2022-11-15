@@ -44,14 +44,14 @@ print(lastgang2)
 
 """
 
-def Stromapproximation(Anwendung,Strombedarf):
+def Stromapproximation(application:int,power_requirement:int):
     import pandas as pd
     import math
 
 
     df = pd.read_csv('Strom_Approximation.csv')
     try:    
-        Summe=float(df['Summe'][Anwendung+1])
+        Summe=float(df['Summe'][application+1])
     except:
         Summe =0
 
@@ -61,14 +61,14 @@ def Stromapproximation(Anwendung,Strombedarf):
     #print(df.iloc[:,Anwendung])
     for i in range(3,8763):
         try:
-            lastgang.append(float(df.iloc[:,Anwendung][i]) *(Strombedarf/Summe))
+            lastgang.append(float(df.iloc[:,application][i]) *(power_requirement/Summe))
             
         except:
             lastgang.append(0)
     sum=math.fsum(lastgang)
     lastgang2=[]
     for i in range (0, len(lastgang)):
-        lastgang2.append( lastgang[i]*(Strombedarf/sum))
+        lastgang2.append( lastgang[i]*(power_requirement/sum))
 
     return lastgang2
 
