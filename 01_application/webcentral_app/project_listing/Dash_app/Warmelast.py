@@ -76,7 +76,7 @@ app.layout = html.Div([
         id='application'
         ),
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id="Heat_reqruirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
+    dcc.Input(id="Heat_requirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
@@ -84,7 +84,6 @@ app.layout = html.Div([
     display_format='DD/MM/YYYY',
     start_date_placeholder_text='Start Datum',
     end_date_placeholder_text='End Datum',
-    #end_date=datetime.date(2022, 6, 1),    # Add last date coressponding tochosen station
     id='date_picker'),
     # List of available display months for the chosen data range
     dcc.RadioItems(
@@ -108,10 +107,10 @@ app.layout = html.Div([
         inline=True
     ),
     html.Button('Approximation starten', id='Approximation_Start'),
-        # Graph
+    # Graph
     dcc.Graph(id='Heat_graph', figure={}),
 
-        
+    #Display the missing number of missing values from the station data
     html.P('Es gibt kein Eingabe ',id='container'),
             
 
@@ -159,17 +158,17 @@ def display_months(start_date:str,end_date:str)-> list:
     Output(component_id='container', component_property='children'),
     Input('application','value'),
     Input('Station','value'),
-    Input('Heat_reqruirement','value'),
+    Input('Heat_requirement','value'),
     Input('Display_month','value'),
     Input('date_picker','start_date'),
     Input('date_picker','end_date'),Input('Approximation_Start', 'n_clicks'),prevent_initial_call=True)
 # This function calculates the approximations and displays it
-def update_Heat_graph(application:str,Station_id:int,Heat_reqruirement:int,Display_month:str,start_date:str,end_date:str,Approximation_Start:int):
+def update_Heat_graph(application:str,Station_id:int,Heat_requirement:int,Display_month:str,start_date:str,end_date:str,Approximation_Start:int):
     print(type(Approximation_Start))
     if Approximation_Start is None:
         raise PreventUpdate
     else:
-        Heat=Warmelast(int(application),Heat_reqruirement,Station_id,start_date,end_date)
+        Heat=Warmelast(int(application),Heat_requirement,Station_id,start_date,end_date)
         Heat_approximation=Heat[1]
         fehlende_werte=Heat[0]
         WW_Heat_approximation=Heat[2]
