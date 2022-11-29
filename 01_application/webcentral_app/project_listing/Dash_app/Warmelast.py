@@ -43,9 +43,17 @@ stations = DwdObservationRequest(
 # App layout
 app.layout = html.Div([
     # Title
-    html.H1("WarmeLast Approximation", style={'text-align': 'center'}),
+    html.H1("Wärmelast Approximation", style={'text-align': 'center'}),
     # Dropdown for the application options
-    dcc.Dropdown(
+   
+    # Dropdown for State options for the Wetterdienst station choice
+    dcc.Dropdown(stations.all( ).df['state'].unique(),placeholder="Auswahl der Bundesland",
+        id='State'
+        ),
+      # Dropdown for the available wetterdienst stations in the chosen State
+    dcc.Dropdown(placeholder="Auswahl der Station",id='Station'
+        ),
+     dcc.Dropdown(
         options=[
                 {'label': 'EFH ', 'value': '2'},
                 {'label': 'MFH ', 'value': '3'},
@@ -66,13 +74,6 @@ app.layout = html.Div([
 
         placeholder="Auswahl der Anwendung",
         id='application'
-        ),
-    # Dropdown for State options for the Wetterdienst station choice
-    dcc.Dropdown(stations.all( ).df['state'].unique(),placeholder="Auswahl der Bundesland",
-        id='State'
-        ),
-      # Dropdown for the available wetterdienst stations in the chosen State
-    dcc.Dropdown(placeholder="Auswahl der Station",id='Station'
         ),
     # Input field for the heat_demand in kWh/a      
     dcc.Input(id="Heat_reqruirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
@@ -121,17 +122,17 @@ app.layout = html.Div([
 # Connect the Plotly graphs with Dash Components
 #Selection of station
 @app.callback(Output('Station', 'options'), Input('State', 'value'),prevent_initial_call=True)
+#The following funtion provides the list of available stations in the chosen Bundesland
 def station_selection(State:str) -> list:
-    #print(value)
-    #list=stations.all( ).df['name'].where(stations.all( ).df['state']==State).unique().tolist()
-    #print('list')
+
     return [{"label":row['name'] , "value": row['station_id']} for index,row in stations.all( ).df.iterrows() if row['state']==State]
 
 #Setting of the available date frame
 @app.callback(Output('date_picker', 'min_date_allowed'),Output('date_picker', 'max_date_allowed'), Input('Station', 'value'),prevent_initial_call=True)
+# The following function returns the data range provided by the chosen station
 def date_range_picker (station_id:int) -> tuple[str,str]:
     data= stations.filter_by_station_id(station_id=station_id)
-    station_data = data.values.all().df.tail(8760)
+    station_data = data.values.all().df
     min_date=(min(station_data['date'])).date()
     max_date=(max(station_data['date'])).date()
 
@@ -139,14 +140,15 @@ def date_range_picker (station_id:int) -> tuple[str,str]:
 
 #Setting Diplay Month
 @app.callback(Output('Display_month','options'),Input('date_picker', 'start_date'),Input('date_picker', 'end_date'),prevent_initial_call=True)
+# The following function  a list of available months in the data range selected
 def display_months(start_date:str,end_date:str)-> list:
     Months=pd.date_range(start_date,end_date,freq='W').strftime("%b").unique().tolist()
    
-    #print(type(Months[0]))
+    # Setting the months in the right format for plotly dash
     display_months=[{"label":index , "value": datetime.datetime.strptime(index, "%b").month} for index in Months ]
     display_months.append ({"label":'All' , "value": 'All'})
 
-    #print(display_months)
+
     return display_months
 
 
@@ -161,7 +163,7 @@ def display_months(start_date:str,end_date:str)-> list:
     Input('Display_month','value'),
     Input('date_picker','start_date'),
     Input('date_picker','end_date'),Input('Approximation_Start', 'n_clicks'),prevent_initial_call=True)
-    
+# This function calculates the approximations and displays it
 def update_Heat_graph(application:str,Station_id:int,Heat_reqruirement:int,Display_month:str,start_date:str,end_date:str,Approximation_Start:int):
     print(type(Approximation_Start))
     if Approximation_Start is None:
