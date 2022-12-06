@@ -47,8 +47,6 @@ print(lastgang2)
 def Stromapproximation(application:int,power_requirement:int):
     import pandas as pd
     import math
-
-
     df = pd.read_csv('Strom_Approximation.csv')
     try:    
         Summe=float(df['Summe'][application+1])

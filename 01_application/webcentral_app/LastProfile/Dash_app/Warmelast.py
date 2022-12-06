@@ -2,20 +2,13 @@ from cmath import nan
 from turtle import title
 import pandas as pd
 import datetime
-from collections import OrderedDict
-
-
 import os
 
-os.chdir(r'C:\Users\Drass\plotly dash\webcentral\01_application\webcentral_app\project_listing\Dash_app')
-
-
-
-
-from .Warmelastapproximation_csv import Warmelast
+os.chdir(r'C:\Users\Drass\plotly dash\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
+from .Warmelastapproximation_csv import warmelast
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from django_plotly_dash import DjangoDash
-import plotly.express as px  # (version 4.7.0 or higher)
+
 import pandas as pd
 from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
@@ -76,7 +69,7 @@ app.layout = html.Div([
         id='application'
         ),
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id="Heat_requirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
+    dcc.Input(id="heat_requirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
@@ -103,12 +96,12 @@ app.layout = html.Div([
                 {'label': 'All', 'value': 'All'},
             ],
         value='All',
-        id='Display_month',
+        id='display_month',
         inline=True
     ),
-    html.Button('Approximation starten', id='Approximation_Start'),
+    html.Button('Approximation starten', id='approximation_start'),
     # Graph
-    dcc.Graph(id='Heat_graph', figure={}),
+    dcc.Graph(id='heat_graph', figure={}),
 
     #Display the missing number of missing values from the station data
     html.P('Es gibt kein Eingabe ',id='container'),
@@ -138,7 +131,7 @@ def date_range_picker (station_id:int) -> tuple[str,str]:
     return min_date, max_date
 
 #Setting Diplay Month
-@app.callback(Output('Display_month','options'),Input('date_picker', 'start_date'),Input('date_picker', 'end_date'),prevent_initial_call=True)
+@app.callback(Output('display_month','options'),Input('date_picker', 'start_date'),Input('date_picker', 'end_date'),prevent_initial_call=True)
 # The following function  a list of available months in the data range selected
 def display_months(start_date:str,end_date:str)-> list:
     Months=pd.date_range(start_date,end_date,freq='W').strftime("%b").unique().tolist()
@@ -150,58 +143,55 @@ def display_months(start_date:str,end_date:str)-> list:
 
     return display_months
 
-
-
 #Warme Approximation
 @app.callback(
-    Output(component_id='Heat_graph', component_property='figure'),
+    Output(component_id='heat_graph', component_property='figure'),
     Output(component_id='container', component_property='children'),
     Input('application','value'),
     Input('Station','value'),
-    Input('Heat_requirement','value'),
-    Input('Display_month','value'),
+    Input('heat_requirement','value'),
+    Input('display_month','value'),
     Input('date_picker','start_date'),
-    Input('date_picker','end_date'),Input('Approximation_Start', 'n_clicks'),prevent_initial_call=True)
+    Input('date_picker','end_date'),Input('approximation_start', 'n_clicks'),prevent_initial_call=True)
 # This function calculates the approximations and displays it
-def update_Heat_graph(application:str,Station_id:int,Heat_requirement:int,Display_month:str,start_date:str,end_date:str,Approximation_Start:int):
-    print(type(Approximation_Start))
-    if Approximation_Start is None:
+def update_heat_graph(application:str,Station_id:int,heat_requirement:int,display_month:str,start_date:str,end_date:str,approximation_start:int):
+    #print(type(Approximation_Start))
+    if approximation_start is None:
         raise PreventUpdate
     else:
-        Heat=Warmelast(int(application),Heat_requirement,Station_id,start_date,end_date)
-        Heat_approximation=Heat[1]
-        fehlende_werte=Heat[0]
-        WW_Heat_approximation=Heat[2]
-        if Display_month=='All':
-            result=Heat_approximation
-            result2=WW_Heat_approximation
+        heat=warmelast(int(application),heat_requirement,Station_id,start_date,end_date)
+        heat_approximation=heat[1]
+        fehlende_werte=heat[0]
+        ww_heat_approximation=heat[2]
+        if display_month=='All':
+            result=heat_approximation
+            result2=ww_heat_approximation
         else:
-            result=pd.DataFrame({'Last':(Heat_approximation.groupby(Heat_approximation.Time.dt.month).get_group(int(Display_month)))['Last'],'Time':(Heat_approximation.groupby(Heat_approximation.Time.dt.month).get_group(int(Display_month)))['Time'],'fehlend':Heat_approximation['fehlend']})
-            result2=pd.DataFrame({'Last':(WW_Heat_approximation.groupby(WW_Heat_approximation.Time.dt.month).get_group(int(Display_month)))['Last'],'Time':(WW_Heat_approximation.groupby(WW_Heat_approximation.Time.dt.month).get_group(int(Display_month)))['Time'],'fehlend':WW_Heat_approximation['fehlend']})
+            result=pd.DataFrame({'Last':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],'Time':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Time'],'fehlend':heat_approximation['fehlend']})
+            result2=pd.DataFrame({'Last':(ww_heat_approximation.groupby(ww_heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],'Time':(ww_heat_approximation.groupby(ww_heat_approximation.Time.dt.month).get_group(int(display_month)))['Time'],'fehlend':ww_heat_approximation['fehlend']})
         from plotly.subplots import make_subplots
         fig = make_subplots(specs=[[{"secondary_y": True}]])
 
         fig.add_trace(go.Scatter(name='Wärme-lastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")),secondary_y=False)
         fig.add_trace(go.Scatter(name='Fehlende Eingaben',x=result['Time'], y=result['Last'].where(result['fehlend']=='True'),mode='lines', line=dict(color="red")),secondary_y=False)
-
         fig.add_trace(go.Scatter(name='Trink-WW-Lastgang in kW',x=result2['Time'], y=result2['Last'],mode='lines', line=dict(color="#f700ff")),secondary_y=True)
 
         fig.update_xaxes(
         tickangle = 90,
         title_text = "Datum",
-        title_font = {"size": 20},
+        title_font = {"size": 20}
        )
 
         fig.update_yaxes(
         title_text = "Wärme-lastgang in kW",
-        title_standoff = 25)
+        title_standoff = 25
+        )
         fig.update_yaxes(
         title_text="Trink-WW-Lastgang in kW", 
-        secondary_y=True)
+        secondary_y=True
+        )
         return fig, 'Für die ausgewählte Station gibt es '+ str(fehlende_werte)+' fehlende Werte, die in der Grafik rot markiert sind. ' 
     
-
-
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
