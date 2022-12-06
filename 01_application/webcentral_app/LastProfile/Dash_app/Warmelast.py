@@ -2,9 +2,8 @@ from cmath import nan
 from turtle import title
 import pandas as pd
 import datetime
-import os
 
-os.chdir(r'C:\Users\Drass\plotly dash\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
+
 from .Warmelastapproximation_csv import warmelast
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from django_plotly_dash import DjangoDash

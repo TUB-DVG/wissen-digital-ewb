@@ -2,19 +2,14 @@
 import pandas as pd
 from .Stromlastapproximation_Csv import Stromapproximation
 from django_plotly_dash import DjangoDash
-import plotly.express as px  # (version 4.7.0 or higher)
+
 from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
 from project_listing.models import *
 import os
 import plotly.graph_objects as go
-
-os.chdir(r'C:\Users\Drass\plotly dash\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
-
+os.chdir(r'./LastProfile/Dash_app')
 df_haupt=pd.read_csv('Hauptblatt2.csv')
 data=[]
-
-
-
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 
 
@@ -22,9 +17,7 @@ app = DjangoDash('Stromlast')   # replaces dash.Dash
 app.layout = html.Div([
     #Title
     html.H1("Stromlast Approximation", style={'text-align': 'center'}),
-    #Download data as csv
-    html.Button("Download Csv", id="btn-download-csv"),
-    dcc.Download(id="download-csv"),
+ 
     # Dropdown for the available applications
     dcc.Dropdown(
         options=[
@@ -44,7 +37,7 @@ app.layout = html.Div([
         id='application'
         ),
         # Input Field for the 
-    dcc.Input(id="power_requirement", type="number", placeholder="Jahresstrombedarfs in kWh/a", debounce=True),
+    dcc.Input(id="power_requirement", type="number", placeholder="Jahresstrombedarfs in kWh/a",  debounce=True,style={'width':'200px'}),
     
     dcc.RadioItems(
         options=[
@@ -117,19 +110,7 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
         return fig
     else:
         return {}
-# The download csv Funcionality
-@app.callback(
-    Output("download-csv", "data"),
-    Input("btn-download-csv", "n_clicks"),
-    prevent_initial_call=True,
-)
 
-def download_as_csv(n_clicks):
-    if not n_clicks:
-        raise PreventUpdate
-    else:
-        #print (d)
-        return dcc.send_data_frame(d.to_csv,'Stromdata.csv')
 # ------------------------------------------------------------------------------
 # Connect the Plotly power_graphs with Dash Components
 

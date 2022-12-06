@@ -1,8 +1,6 @@
 from tracemalloc import start
 import pandas as pd
-import wetterdienst
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
-import plotly.express as px
 import math
 import plotly.graph_objects as go
 def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str)-> tuple[int, pd.DataFrame,pd.DataFrame]:
