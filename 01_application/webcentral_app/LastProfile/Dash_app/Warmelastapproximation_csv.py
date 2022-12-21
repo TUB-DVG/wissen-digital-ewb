@@ -3,7 +3,12 @@ import pandas as pd
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 import math
 import plotly.graph_objects as go
-def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str)-> tuple[int, pd.DataFrame,pd.DataFrame]:
+
+from typing import Tuple
+
+
+# That type of type check only works with python 3.9+ 
+def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str)-> Tuple[int, pd.DataFrame,pd.DataFrame]:
 
 
     #Setting up the resolution for data filtering

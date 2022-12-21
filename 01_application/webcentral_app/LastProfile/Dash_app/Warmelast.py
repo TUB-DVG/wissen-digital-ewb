@@ -2,11 +2,13 @@ from cmath import nan
 from turtle import title
 import pandas as pd
 import datetime
+from typing import Tuple
 
 
 from .Warmelastapproximation_csv import warmelast
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from django_plotly_dash import DjangoDash
+
 
 import pandas as pd
 from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
@@ -121,7 +123,7 @@ def station_selection(State:str) -> list:
 #Setting of the available date frame
 @app.callback(Output('date_picker', 'min_date_allowed'),Output('date_picker', 'max_date_allowed'), Input('Station', 'value'),prevent_initial_call=True)
 # The following function returns the data range provided by the chosen station
-def date_range_picker (station_id:int) -> tuple[str,str]:
+def date_range_picker(station_id:int) -> Tuple[str,str]:
     data= stations.filter_by_station_id(station_id=station_id)
     station_data = data.values.all().df
     min_date=(min(station_data['date'])).date()

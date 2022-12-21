@@ -1,3 +1,4 @@
+import pathlib
 
 import pandas as pd
 from .Stromlastapproximation_Csv import Stromapproximation
@@ -7,7 +8,11 @@ from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or
 from project_listing.models import *
 import os
 import plotly.graph_objects as go
-os.chdir(r'./LastProfile/Dash_app')
+
+# FileNotFoundError: [WinError 3] The system cannot find the path specified: './LastProfile/Dash_app' 
+PATH = os.chdir(r'./LastProfile/Dash_app')
+#PATH =  pathlib.Path().resolve()
+#PATH_COEFFICENTS = os.path.join(PATH  , 'Hauptblatt2.csv')
 df_haupt=pd.read_csv('Hauptblatt2.csv')
 data=[]
 app = DjangoDash('Stromlast')   # replaces dash.Dash
