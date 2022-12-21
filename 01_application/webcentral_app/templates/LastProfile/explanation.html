@@ -10,15 +10,14 @@
             
             
             <div class="col-lg-12 " id="collapseInfoWeatherdata">
-                <p>
-                    Der Interface ermöglicht die Approximation   des Wärme- und Stromverbrauchs basierend auf einer ausgewählten Anwendung (definiert durch eine Reihe von Faktoren) und einem gegebenen Jahresbedarf.
-                    <br>
-                    * Für die Wärmeapproximation wird zusätzlich die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
+                <p class="lead"> 
+                    Das Interface ermöglicht die Approximation des Wärme- und Stromverbrauchs basierend auf einer ausgewählten Anwendung (definiert durch eine Reihe von Faktoren) und einem gegebenen Jahresbedarf. Für die Wärmeapproximation wird zusätzlich die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.<br>
+                    
                 </p>  
 
       
                 <ul>
-                    Der Interface für Stromapproximation hat 3 Parameter:
+                     <p class="lead"> Das Interface für die Stromapproximation hat 3 Parameter: </p> 
                     <li class="lead"><b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
                     <li class="lead"><b>Jahresstrombedarfs</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs in kWh/a </li>
                     <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
@@ -31,20 +30,20 @@
 
             <a href="{% url 'LastProfile_strom_display' %}">
                 <img src="{% static '/img/Lastprofil/strom.jpg' %}" style="max-height:30px;" >
-                StromlastApproximation
+                Approximation der Stromlast
             </a>
 
        
 
             <p></p>
-            <p> 
+            <p class="lead"> 
                 Wie oben erwähnt, wird für die Wärmeapproximation die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
                 Die Umgebungstemperatur wird vom Wetterdienst Server über 2 Parameter (unten definiert) abgerufen, die angeben, welche Wetterstation Temperaturdaten verwendet werden sollen.
                
                 
             </p>
             <ul>
-                Der Interface für Wärmeapproximation hat 6 Parameter:
+                <p class="lead"> Das Interface für Wärmeapproximation hat 6 Parameter:</p> 
                 <li class="lead"><b>Auswahl der Bundesland</b>&nbsp;&ndash; Nach welcher Bundesland, soll der Stationwahl folgen</li>
                 <li class="lead"><b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach gewähltem Bundesland, verwendet werden soll.</li>
                 <li class="lead"><b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
@@ -58,7 +57,7 @@
         <img src="{% static '/img/Lastprofil/HeatApproximation.png' %}" alt=""> 
 	        <a href="{% url 'LastProfile_warme_display' %}">
                 <img src="{% static '/img/Lastprofil/heat.png' %}"style="max-height:30px;">
-                WarmelastApproximation
+                Approximation der Wärmelast 
                 
             </a>
             
