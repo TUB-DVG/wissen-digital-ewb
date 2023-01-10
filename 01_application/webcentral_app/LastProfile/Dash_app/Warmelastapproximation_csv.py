@@ -239,12 +239,12 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
     start=station_data.index[station_data.date == pd.Timestamp(start_date+" 00:00:00+00:00")].tolist()[0]
     end=station_data.index[station_data.date == pd.Timestamp(end_date+" 23:00:00+00:00")].tolist()[0] +1
 
-    heat_approximation_df = pd.DataFrame({'Last':Q[start:end],'Time':station_data['date'][start:end],'fehlend':station_data['fehlend'][start:end]})
-    WW_heat_approximation=pd.DataFrame({'Last':Q_WW[start:end],'Time':station_data['date'][start:end],'fehlend':station_data['fehlend'][start:end]})
+    heat_approximation_df = pd.DataFrame({'Time':station_data['date'][start:end],'Last':Q[start:end],'WW_Last':Q_WW[start:end],'fehlend':station_data['fehlend'][start:end]})
+
     
   
 
-    return Fehlende_werte,heat_approximation_df,WW_heat_approximation
+    return Fehlende_werte,heat_approximation_df
 
 
 
