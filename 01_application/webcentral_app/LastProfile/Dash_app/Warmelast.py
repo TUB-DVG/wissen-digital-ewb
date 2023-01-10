@@ -1,18 +1,22 @@
 from cmath import nan
+import json
 from turtle import title
 import pandas as pd
 import datetime
 import os
 
-os.chdir(r'C:\Users\Drass\plotly dash\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
+os.chdir(r'C:\Users\Drass\Vba_Interface_Dev\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
 from .Warmelastapproximation_csv import warmelast
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from django_plotly_dash import DjangoDash
 
 import pandas as pd
-from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
+from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
+
+
+
 app = DjangoDash('Warmelast')   
 #Setting up the resolution for data filtering
 Resolution='HOURLY'
@@ -100,11 +104,16 @@ app.layout = html.Div([
         inline=True
     ),
     html.Button('Approximation starten', id='approximation_start'),
+
+    #Download data as csv
+    html.Button("Download Csv", id="btn-download-csv"),
+    dcc.Download(id="download-csv"),
     # Graph
     dcc.Graph(id='heat_graph', figure={}),
 
     #Display the missing number of missing values from the station data
     html.P('Es gibt kein Eingabe ',id='container'),
+    dcc.Store(id='heat_approximationStoring')
             
 
 
@@ -146,7 +155,8 @@ def display_months(start_date:str,end_date:str)-> list:
 #Warme Approximation
 @app.callback(
     Output(component_id='heat_graph', component_property='figure'),
-    Output(component_id='container', component_property='children'),
+    Output('container','children'),
+    Output('heat_approximationStoring','data'),
     Input('application','value'),
     Input('Station','value'),
     Input('heat_requirement','value'),
@@ -160,21 +170,21 @@ def update_heat_graph(application:str,Station_id:int,heat_requirement:int,displa
         raise PreventUpdate
     else:
         heat=warmelast(int(application),heat_requirement,Station_id,start_date,end_date)
+        #global heat_approximation
         heat_approximation=heat[1]
         fehlende_werte=heat[0]
-        ww_heat_approximation=heat[2]
+
         if display_month=='All':
             result=heat_approximation
-            result2=ww_heat_approximation
+
         else:
-            result=pd.DataFrame({'Last':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],'Time':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Time'],'fehlend':heat_approximation['fehlend']})
-            result2=pd.DataFrame({'Last':(ww_heat_approximation.groupby(ww_heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],'Time':(ww_heat_approximation.groupby(ww_heat_approximation.Time.dt.month).get_group(int(display_month)))['Time'],'fehlend':ww_heat_approximation['fehlend']})
+            result=pd.DataFrame({'Last':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],'WW_Last':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['WW_Last'],'Time':(heat_approximation.groupby(heat_approximation.Time.dt.month).get_group(int(display_month)))['Time'],'fehlend':heat_approximation['fehlend']})
         from plotly.subplots import make_subplots
         fig = make_subplots(specs=[[{"secondary_y": True}]])
 
         fig.add_trace(go.Scatter(name='Wärme-lastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")),secondary_y=False)
         fig.add_trace(go.Scatter(name='Fehlende Eingaben',x=result['Time'], y=result['Last'].where(result['fehlend']=='True'),mode='lines', line=dict(color="red")),secondary_y=False)
-        fig.add_trace(go.Scatter(name='Trink-WW-Lastgang in kW',x=result2['Time'], y=result2['Last'],mode='lines', line=dict(color="#f700ff")),secondary_y=True)
+        fig.add_trace(go.Scatter(name='Trink-WW-Lastgang in kW',x=result['Time'], y=result['WW_Last'],mode='lines', line=dict(color="#f700ff")),secondary_y=True)
 
         fig.update_xaxes(
         tickangle = 90,
@@ -190,8 +200,42 @@ def update_heat_graph(application:str,Station_id:int,heat_requirement:int,displa
         title_text="Trink-WW-Lastgang in kW", 
         secondary_y=True
         )
-        return fig, 'Für die ausgewählte Station gibt es '+ str(fehlende_werte)+' fehlende Werte, die in der Grafik rot markiert sind. ' 
-    
+ 
+        return fig, 'Für die ausgewählte Station gibt es '+ str(fehlende_werte)+' fehlende Werte, die in der Grafik rot markiert sind. ' ,pd.DataFrame.to_dict(heat_approximation)
+
+# The download csv Funcionality
+@app.callback(
+    Output("download-csv", "data"),
+    Input("btn-download-csv", "n_clicks"),
+    Input('heat_approximationStoring','data'),
+    Input('application','value'),
+    Input('heat_requirement','value'),
+    Input('date_picker', 'start_date'),
+    Input('date_picker', 'end_date'),
+    Input('State', 'value'),
+    Input('Station','value'),
+    State('Station',"options"),
+    State("application","options"),
+
+    prevent_initial_call=True,
+)
+
+def download_as_csv(n_clicks,jsonified_heat_approximation:pd.DataFrame,application:str,heat_requirement:int,start_date:str,end_date:str,State:str,Station:str,labels_station,labels_application):
+    if not n_clicks:
+        raise PreventUpdate
+    else:
+        #heat_approximation=json.loads(jsonified_heat_approximation)
+        #print(heat_approximation)
+        heat_approximation = pd.DataFrame.from_dict(jsonified_heat_approximation)
+        #print(labels_station)
+        #print(labels_application)
+        label_station = [x['label'] for x in labels_station if x['value'] == Station]
+        #print(label_station)
+        label_application = [x['label'] for x in labels_application if x['value'] == application]
+        #print(label_application)
+        heat_approximation.columns = [['Jahreswärmebedarfs in kWh/a :'+str(heat_requirement),'','',''  ],['Anwendung:'+label_application[0],'','',''],['Zeitraum : Von '+start_date+' Bis '+end_date,'','',''],['Bundesland:'+State + ' Station:' + label_station[0] ,'','',''],['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW','FehlendeWerte(Angepasst)']]    
+
+        return dcc.send_data_frame(heat_approximation.to_csv,'WarmeData.csv',index=False,encoding='utf-8')
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
