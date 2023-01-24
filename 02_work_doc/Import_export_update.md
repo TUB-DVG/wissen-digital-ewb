@@ -95,5 +95,7 @@ The import workflow can be found here: https://django-import-export.readthedocs.
 One possibility would be to override some of the import functions using the get_or_create django command to update or create new objects for your different models.
 
 # Bugs to be fixed
-- When file reading bug occurs a restart of the server is necessary .
-- CSV reading :Invalid Dimensions
+- When file reading bug occurs a restart of the server is necessary.
+#Bugs fixed or workaround found:
+- CSV reading (Invalid Dimensions): Error undestood, the csv file must be comma seperated.
+In some cases CSV files can be semicolon seperated which will cause the webframework to return an error, the import export seems to only accept comma seperation.
