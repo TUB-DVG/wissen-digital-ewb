@@ -47,6 +47,8 @@
       <p>
         {% trans "This importer will import the following fields: " %}
         <code>{{ fields|join:", " }}</code>
+        <br>
+        {% trans "Note: This feature has been tested witl xlsx and csv file types. For csv files, they have to be comma seperated ." %}
       </p>
 
       <fieldset class="module aligned">
