@@ -1,4 +1,4 @@
-docker-compose up &
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up &
 sleep 5
 docker-compose exec webcentralcontainer python3 01_application/webcentral_app/manage.py makemigrations
 sleep 2
