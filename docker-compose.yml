@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+    database:
+        image: postgres
+        ports:
+            - 5001:5432
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        env_file:
+          - .env
+    webcentralcontainer:
+        build:
+            context: ${PATH_WEBCENTRAL_SRC}
+            dockerfile: Dockerfile
+            target: base
+            args:
+                PATH_WEBCENTRAL_SRC: ${PATH_WEBCENTRAL_SRC}
+        #command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
+        ports:
+            - 8000:8000
+        depends_on:
+            - database
+        env_file:
+          - .env
+volumes:
+    pgdata:

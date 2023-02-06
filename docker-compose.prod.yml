@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+    webcentralcontainer:
+        build:
+            context: ${PATH_WEBCENTRAL_SRC}
+            dockerfile: Dockerfile
+            target: prod
+        command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000

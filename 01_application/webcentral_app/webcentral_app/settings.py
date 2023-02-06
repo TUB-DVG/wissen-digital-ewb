@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'Empty_database',
         'USER': 'postgres',
         'PASSWORD': 'Anthem2018',
-        'HOST': 'localhost',
+        'HOST': 'database',
     }
 }
 
