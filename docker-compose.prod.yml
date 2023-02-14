@@ -1,8 +1,34 @@
 version: "3.9"
 services:
-    webcentralcontainer:
+    webcentral:
         build:
             context: ${PATH_WEBCENTRAL_SRC}
             dockerfile: Dockerfile
             target: prod
-        command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
+        command: >
+            sh -c "python 01_application/webcentral_app/manage.py migrate &&
+            python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000"
+            #python 01_application/webcentral_app/manage.py wait_for_db &&
+            #python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
+
+        volumes:
+            - static-data:/vol/webcentral
+
+    proxy:
+        build:
+            context: ./proxy
+        #restart: always
+        depends_on:
+            - webcentral
+        ports:
+            - ${LISTEN_PORT}:8000
+            # data communication on port 80 on the host
+            # gets mapped to port 8000 inside the proxy container
+
+        volumes:
+            - static-data:/vol/static
+            # the proxy can directly serve the static data, without bothering
+            # the django app
+
+volumes:
+    static-data:

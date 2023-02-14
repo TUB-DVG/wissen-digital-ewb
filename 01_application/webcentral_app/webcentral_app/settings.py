@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -20,13 +21,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l6nvsp#y_3o8--2^h5@903kz%_yx_0=l+i%(2kllzhb=@3+ar('
+SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        os.environ.get("ALLOWED_HOSTS", '').split(','),
+    )
+)
 
 # Application definition
 
@@ -83,9 +89,9 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Empty_database',
-        'USER': 'postgres',
-        'PASSWORD': 'Anthem2018',
+        'NAME': os.environ["POSTGRES_DB"],
+        'USER': os.environ["POSTGRES_USER"],
+        'PASSWORD': os.environ["POSTGRES_PASSWORD"],
         'HOST': 'database',
     }
 }
@@ -128,14 +134,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+#STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
+STATIC_ROOT = "/vol/webcentral/static"
+STATIC_URL = '/static/static/'
 STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, 'webcentral_app/static')
 ]
 # Media folder settings
-MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
+MEDIA_ROOT = "/vol/webcentral/media"
+MEDIA_URL = '/static/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
