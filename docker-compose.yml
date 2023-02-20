@@ -3,7 +3,7 @@ services:
     database:
         image: postgres
         ports:
-            - 5001:5432
+            - ${DATABASE_OUTSIDE_PORT}:${DATABASE_INSIDE_PORT}
         volumes:
             - pgdata:/var/lib/postgresql/data
         env_file:
@@ -17,10 +17,12 @@ services:
                 PATH_WEBCENTRAL_SRC: ${PATH_WEBCENTRAL_SRC}
         #command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
         ports:
-            - 8000:8000
+            - ${WEBCENTRAL_OUTSIDE_PORT}:${WEBCENTRAL_INSIDE_PORT}
         depends_on:
             - database
         env_file:
           - .env
+        environment:
+            - WEBCENTRAL_LISTEN_PORT
 volumes:
     pgdata:
