@@ -12,24 +12,28 @@ WORKDIR /src
 # RUN chown appuser:appuser -R /src
 
 COPY 01_application/requirements.txt .
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 # RUN pip install -r requirements.txt
 
-RUN python -m venv /py && \
-    /py/bin/pip install --upgrade pip && \
-    /py/bin/pip install -r requirements.txt && \
-    adduser --disabled-password --no-create-home appuser && \
-    mkdir -p /vol/webcentral/static && \
-    mkdir -p /vol/webcentral/media && \
-    chown -R appuser:appuser /vol && \
-    chmod -R 755 /vol
+# RUN python -m venv /py && \
+#     /py/bin/pip install --upgrade pip && \
+#     /py/bin/pip install -r requirements.txt && \
+#     adduser --disabled-password --no-create-home appuser && \
+#     mkdir -p /vol/webcentral/static && \
+#     mkdir -p /vol/webcentral/media && \
+#     chown -R appuser:appuser /vol && \
+#     chmod -R 755 /vol
 
 # make scripts and venv executables accessible, through path
-ENV PATH="/scripts:/py/bin:$PATH"
+#ENV PATH="/scripts:/py/bin:$PATH"
 
 # second build stage for production
 
 FROM base AS prod
-USER appuser
-COPY --chown=appuser . /src
+#USER appuser
+#ENV PATH="/scripts:/py/bin:$PATH"
+#COPY --chown=appuser . /src
+COPY . /src
 #chmod -R +x /scripts
-CMD ["run.sh"]
+#CMD ["run.sh"]
