@@ -5,23 +5,24 @@ services:
             context: ${PATH_WEBCENTRAL_SRC}
             dockerfile: Dockerfile
             target: prod
-        command: >
-            sh -c "python 01_application/webcentral_app/manage.py migrate &&
-            python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000"
-            #python 01_application/webcentral_app/manage.py wait_for_db &&
-            #python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
-
+            
         volumes:
             - static-data:/vol/webcentral
+        command: >
+            sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
+                    python /src/01_application/webcentral_app/manage.py migrate && \
+            uwsgi --socket :9000 --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi"
+
 
     proxy:
         build:
             context: ./proxy
-        #restart: always
+        restart: always
         depends_on:
             - webcentral
         ports:
-            - ${LISTEN_PORT}:8000
+            - 8070:8080
+            #- ${LISTEN_PORT}:8080
             # data communication on port 80 on the host
             # gets mapped to port 8000 inside the proxy container
 

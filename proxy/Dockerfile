@@ -1,4 +1,4 @@
-FROM nginxinc/nginx-unprivileged:1-alpine
+FROM nginx
 # pull the nginx-unprivileged image from docker-hub.
 # this image runs nginx from an unprivileged user
 
@@ -9,22 +9,21 @@ COPY ./run.sh /run.sh
 
 # we set default values for the environmental variables
 # these env-vars are also set in the .env file
-ENV LISTEN_PORT=8000
+ENV LISTEN_PORT=8080
 ENV APP_HOST=webcentral
 ENV APP_PORT=9000
 
-USER root
+#USER root
 
 RUN mkdir -p /vol/static && \
     chmod 755 /vol/static && \
     touch /etc/nginx/conf.d/default.conf && \
-    chown nginx:nginx /etc/nginx/conf.d/default.conf && \
     chmod +x /run.sh
 
 # optional
 VOLUME /vol/static
 
 # switch back from root-user to unprivileged user
-USER nginx
+#USER nginx
 
 CMD ["./run.sh"]
