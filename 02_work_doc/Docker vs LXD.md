@@ -1,6 +1,13 @@
 https://www.educba.com/lxd-vs-docker/
 https://ubuntu.com/blog/lxd-vs-docker
 
+# Containers:
+https://www.cio.com/article/247005/what-are-containers-and-why-do-you-need-them.html
+https://www.youtube.com/watch?v=FWpnbGnzk08
+
+Containers are lightweight packages of your application code together with dependencies such as specific versions of programming language runtimes and libraries required to run your software services.
+
+Containers are a solution to the problem of how to get software to run reliably when moved from one computing environment to another. This could be from a developer’s laptop to a test environment, from a staging environment into production, and perhaps from a physical machine in a data center to a virtual machine in a private or public cloud.
 # Docker vs LXD:
 
 ## Docker :
@@ -38,9 +45,20 @@ In my opinion, I believe docker is the better fit for our needs. The ability to 
 
 
 ### Resources:
+
 https://www.educba.com/lxd-vs-docker/
 https://ubuntu.com/blog/lxd-vs-docker
+https://earthly.dev/blog/lxc-vs-docker/
 https://www.youtube.com/watch?v=Q5J9N67z_SM&ab_channel=Scotti-BYTEEnterpriseConsultingServices
 
-https://earthly.dev/blog/lxc-vs-docker/
+#### How to use Docker and migrate your existing Apps to your Linux Server? 
+https://www.youtube.com/watch?v=y0GGQ2F2tvs  
+
+#### ways to move Docker container to another host
+https://bobcares.com/blog/move-docker-container-to-another-host/
+
+
+
+
+
 
