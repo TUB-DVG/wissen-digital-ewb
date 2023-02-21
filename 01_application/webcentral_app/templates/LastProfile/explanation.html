@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Last Profi Approximation{% endblock %}
+{% block title %}Überblick über die Lastprofil Approximation{% endblock %}
 {% block content %}
 {% load static %}
+
 
 
 <section class="py-4">
@@ -16,10 +17,11 @@
                 </p>  
 
       
-                <ul>
-                     <p class="lead"> Das Interface für die Stromapproximation hat 3 Parameter: </p> 
+                <ul > 
+                
+                     <p class="lead"> Das Interface für die Stromapproximation hat drei Parameter: </p> 
                     <li class="lead"><b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
-                    <li class="lead"><b>Jahresstrombedarfs</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs in kWh/a </li>
+                    <li class="lead"><b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarf in kWh/a </li>
                     <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
                 </ul>
             </div>
@@ -38,12 +40,12 @@
             <p></p>
             <p class="lead"> 
                 Wie oben erwähnt, wird für die Wärmeapproximation die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
-                Die Umgebungstemperatur wird vom Wetterdienst Server über 2 Parameter (unten definiert) abgerufen, die angeben, welche Wetterstation Temperaturdaten verwendet werden sollen.
+                Die Umgebungstemperatur wird vom Wetterdienst Server über zwei Parameter (unten definiert) abgerufen, die angeben, welche Wetterstation Temperaturdaten verwendet werden sollen.
                
                 
             </p>
             <ul>
-                <p class="lead"> Das Interface für Wärmeapproximation hat 6 Parameter:</p> 
+                <p class="lead"> Das Interface für Wärmeapproximation hat sechs Parameter:</p> 
                 <li class="lead"><b>Auswahl der Bundesland</b>&nbsp;&ndash; Nach welcher Bundesland, soll der Stationwahl folgen</li>
                 <li class="lead"><b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach gewähltem Bundesland, verwendet werden soll.</li>
                 <li class="lead"><b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
@@ -51,6 +53,8 @@
                 <li class="lead"><b>Datumsbereich</b>&nbsp;&ndash; Bereich, auf dem die Approximation berechnet werden soll  </li>
                 <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
             </ul>
+
+            
         </div>
 
 
@@ -61,8 +65,23 @@
                 
             </a>
             
+            <div></div><p></p>
+
+            <ul>
+                <p class="lead"> Für die Berechnungen, Daten und Annahmen werden die folgenden Quellen genutzt: </p> 
+                <li class="lead"><b>Wärmelast</b>&nbsp;&ndash; Nutzung der Dissertation von Marcus Hellwig, 2003, "Entwicklung und Anwendung parametrisierter Standard-Lastprofile"</li> <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf">Download der Disseration.</a>
+                <li class="lead"><b>Wetterdaten</b>&nbsp;&ndash; Nutzung der Wetterdienst Bibliothek</li> <a href="https://github.com/earthobservations/wetterdienst">Wetterdienst</a>
+                <li class="lead"><b>Stromlast</b>&nbsp;&ndash; Nutzung der Standard-Lastprofile </li> <a href="https://www.bdew.de/energie/standardlastprofile-strom/">Standard-Lastprofile beim BDEW</a>
+            </ul>
+        </div>
 
         </div>
+
+        
+        
     </div>
 </section>
+
+
+
 {% endblock %}
