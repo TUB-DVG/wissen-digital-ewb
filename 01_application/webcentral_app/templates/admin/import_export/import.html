@@ -48,7 +48,9 @@
         {% trans "This importer will import the following fields: " %}
         <code>{{ fields|join:", " }}</code>
         <br>
-        {% trans "Note: This feature has been tested witl xlsx and csv file types. For csv files, they have to be comma seperated ." %}
+        {% trans "Note: This feature has been tested with xlsx and csv file types. For csv files, they have to be comma seperated ." %}
+      <br>
+        {% trans "PLZ columns must be type string (in xlsx : General) so that leading zeros will not deleted. " %}
       </p>
 
       <fieldset class="module aligned">
