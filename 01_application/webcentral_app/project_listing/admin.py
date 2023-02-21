@@ -253,7 +253,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
                 if ((field.get_value(instance)) != field.get_value(original)):
                     try:
                         if (field.get_value(instance).date()==field.get_value(original)):
-                            return True
+                            continue
                     except:
                         pass
 
