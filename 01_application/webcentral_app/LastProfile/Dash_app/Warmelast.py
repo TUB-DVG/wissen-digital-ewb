@@ -66,7 +66,7 @@ app.layout = html.Div([
 
             ],
 
-        placeholder="Auswahl der Anwendung",
+        placeholder="Auswahl des Typs",
         id='application'
         ),
     # Input field for the heat_demand in kWh/a      
