@@ -1,6 +1,11 @@
-FROM nginx
+#FROM nginx:stable
+
 # pull the nginx-unprivileged image from docker-hub.
 # this image runs nginx from an unprivileged user
+FROM nginxinc/nginx-unprivileged
+
+
+
 
 # copy configuration- and script files to the docker image
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
@@ -13,7 +18,7 @@ ENV LISTEN_PORT=8080
 ENV APP_HOST=webcentral
 ENV APP_PORT=9000
 
-#USER root
+USER root
 
 RUN mkdir -p /vol/static && \
     chmod 755 /vol/static && \
@@ -23,7 +28,8 @@ RUN mkdir -p /vol/static && \
 # optional
 VOLUME /vol/static
 
-# switch back from root-user to unprivileged user
+# siwtch to non-root user
 #USER nginx
 
+# script starts nginx in the foreground of the container
 CMD ["./run.sh"]

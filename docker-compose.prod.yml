@@ -8,10 +8,20 @@ services:
             
         volumes:
             - static-data:/vol/webcentral
+        depends_on:
+            - database
+            #condition: service_healthy
+        environment:
+            - UWSGI_LISTEN_PORT
+            - UWSGI_NUM_WORKERS
+            - SECRET_KEY
+            - DEBUG
+            - ALLOWED_HOSTS
         command: >
             sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
-                    python /src/01_application/webcentral_app/manage.py migrate && \
-            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi"
+                                python /src/01_application/webcentral_app/manage.py migrate && \
+            uwsgi --socket :9000 --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
+
 
 
     proxy:
@@ -21,8 +31,9 @@ services:
         depends_on:
             - webcentral
         ports:
-            - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
+            #- ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
             #- ${LISTEN_PORT}:8080
+            - 8070:8080
             # data communication on port 80 on the host
             # gets mapped to port 8000 inside the proxy container
         environment:
