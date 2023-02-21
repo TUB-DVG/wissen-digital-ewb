@@ -241,7 +241,6 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
 
         """
         if not self._meta.skip_unchanged or self._meta.skip_diff:
-            print(true)
             return False
         for field in self.get_import_fields():
             #print(field)
@@ -249,17 +248,15 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
                 # For fields that are models.fields.related.ManyRelatedManager
                 # we need to compare the results
                 if list(field.get_value(instance).all()) != list(field.get_value(original).all()):
-                    print('true')
                     return False
             except AttributeError:
-                if ((field.get_value(instance)) != field.get_value(original)) and (field.column_name!='PLZ_AS'):
+                if ((field.get_value(instance)) != field.get_value(original)):
+                    try:
+                        if (field.get_value(instance).date()==field.get_value(original)):
+                            return True
+                    except:
+                        pass
 
-                #if (field.get_value(instance) != field.get_value(original)) :  
-                    if(field.column_name=='Foerdersumme_EUR'):
-                        #print(field.get_value(instance))
-                        print(field.get_value(original))
-                        #print(original)
-                        #print(field.__dict__)
                     return False
         return True
         
@@ -310,7 +307,7 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
             #self.fields['Ausfuehrende_st_address'].attribute='enarg'
             
             set=False
-            #print('1')
+
         else:
             if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.projektleiter):
                 self.fields['projektleiter_titel'].attribute='enargus_dn'
@@ -341,26 +338,13 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
                 set=False
         
         if set ==True:
-            #self.fields['datenbank'].attribute='enargus_daten__datenbank'
-            #print(self.get_export_order())
+
             i=0
-            #print(self.list_attrb[i])
+
             for f in self.get_export_order():
                 self.fields[f].attribute=self.list_attrb[i]
                 i=i+1
-        #print(self.fields['datenbank'].attribute)
-
-        #obj=Teilprojekt.objects.get(fkz=row['fkz'])
-        #print(obj.enargus_daten.datenbank)
-        #obj.enargus_daten.datenbank=row['db']
-        #print (obj.enargus_daten.datenbank)
-        #obj.enargus_daten.save(update_fields=['datenbank'])
-        #obj2=Teilprojekt.objects.get(fkz=row['fkz'])
-        #print (obj2.enargus_daten.datenbank)
-    #def after_import_row(self, row, row_result, **kwargs):
-     #   self.fields=self.backup
-      #  print(self.data)
-       # print(self.backup['datenbank'].attribute)
+ 
 
      
     
