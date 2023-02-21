@@ -21,13 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-print(os.environ.get("SECRET_KEY"))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = bool(int(os.environ.get("DEBUG", 0)))
-
-DEBUG=True
+# tries to read the DEBUG env-var and converts it to int. 
+# If it cant convert to int, DEBUG is set to 0, which is converted to false.
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS.extend(
@@ -152,7 +151,9 @@ MEDIA_URL = '/static/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+useDotENV = bool(int(os.environ.get("USE_DOT_ENV", 0)))
+if not useDotENV: 
+    try:
+        from webcentral_app.local_settings import *
+    except ImportError:
+        pass
