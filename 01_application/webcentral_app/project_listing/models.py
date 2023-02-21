@@ -3,6 +3,7 @@ from typing import ValuesView
 from django.db import models
 from django.db import IntegrityError
 from django.forms import CharField
+from schlagwoerter.models import *
 
 from sqlalchemy import null, true
 class Teilprojekt(models.Model):
@@ -17,7 +18,7 @@ class Teilprojekt(models.Model):
     #projektlandkarte
 
     zuordnung=models.ForeignKey("Modulen_zuordnung_ptj",null=true,on_delete=models.SET_NULL,blank=True)
-
+    schlagwortregister_erstsichtung=models.ForeignKey("schlagwoerter.Schlagwortregister_erstsichtung", null=true, on_delete=models.SET_NULL,blank=True)
     fragebogen_21=models.ForeignKey("Fragebogen_21",null=true,on_delete=models.SET_NULL,blank=True)
 
 

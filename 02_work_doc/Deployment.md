@@ -10,6 +10,11 @@ Any commands with "$" at the beginning run on your local machine and any "#" run
 
 Use [this link](https://m.do.co/c/5424d440c63a) and get $10 free. Just select the $5 plan unless this a production app.
 
+# Server Services
+A root server or a vserver is needed
+
+see [server for Wissensplattfrom](./infos_server_choice_WP.md) 
+
 # Security & Access
 
 ### Creating SSH keys (Optional)

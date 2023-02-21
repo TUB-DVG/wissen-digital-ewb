@@ -277,38 +277,36 @@ def get_or_create_schlagwortregister(row, header):
     """
     add entry into table Weatherdata or/and return entry key
     """
-    # content = row[number of the columns of the row]
-    
     obj_schlagwort_1, created_schlagwort_1 = get_or_create_schlagwort(row, header, 'Schlagwort1')
-    schlagwort_1 = obj_schlagwort_1.schlagwort
+    schlagwort_1_id = obj_schlagwort_1.schlagwort_id
 
     obj_schlagwort_2, created_schlagwort_2 = get_or_create_schlagwort(row, header, 'Schlagwort2')
-    schlagwort_2 = obj_schlagwort_2.schlagwort
+    schlagwort_2_id = obj_schlagwort_2.schlagwort_id
 
     obj_schlagwort_3, created_schlagwort_3 = get_or_create_schlagwort(row, header, 'Schlagwort3')
-    schlagwort_3 = obj_schlagwort_3.schlagwort
+    schlagwort_3_id = obj_schlagwort_3.schlagwort_id
 
     obj_schlagwort_4, created_schlagwort_4 = get_or_create_schlagwort(row, header, 'Schlagwort4')
-    schlagwort_4 = obj_schlagwort_4.schlagwort
+    schlagwort_4_id = obj_schlagwort_4.schlagwort_id
     
     obj_schlagwort_5, created_schlagwort_5 = get_or_create_schlagwort(row, header, 'Schlagwort5')
-    schlagwort_5 = obj_schlagwort_5.schlagwort
+    schlagwort_5_id = obj_schlagwort_5.schlagwort_id
     
     obj_schlagwort_6, created_schlagwort_6 = get_or_create_schlagwort(row, header, 'Schlagwort6')
-    schlagwort_6 = obj_schlagwort_6.schlagwort
+    schlagwort_6_id = obj_schlagwort_6.schlagwort_id
     
     obj_schlagwort_7, created_schlagwort_7 = get_or_create_schlagwort(row, header, 'Schlagwort')
-    schlagwort_7 = obj_schlagwort_7.schlagwort
+    schlagwort_7_id = obj_schlagwort_7.schlagwort_id
     
 
     obj, created = Schlagwortregister_erstsichtung.objects.get_or_create(
-        schlagwort_1 = schlagwort_1,
-        schlagwort_2 = schlagwort_2,
-        schlagwort_3 = schlagwort_3,
-        schlagwort_4 = schlagwort_4,
-        schlagwort_5 = schlagwort_5,
-        schlagwort_6 = schlagwort_6,
-        schlagwort_7 = schlagwort_7
+        schlagwort_1_id = schlagwort_1_id,
+        schlagwort_2_id = schlagwort_2_id,
+        schlagwort_3_id = schlagwort_3_id,
+        schlagwort_4_id = schlagwort_4_id,
+        schlagwort_5_id = schlagwort_5_id,
+        schlagwort_6_id = schlagwort_6_id,
+        schlagwort_7_id = schlagwort_7_id
     )
     return obj, created
 
@@ -351,6 +349,21 @@ def add_or_update_row_teilprojekt(row, header, source):
             if answ == 'y':
                 Teilprojekt.objects.filter(pk=fkz).update(
                     zuordnung_id= mod_id)
+                print('updated: %s' %fkz)
+    elif source == 'schlagwortregister':
+        obj, created = get_or_create_schlagwortregister(row, header)
+        schlagwortregister_id = obj.schlagwortregister_id
+        fkz = row[header.index('Förderkennzeichen (0010)')]
+        try:
+            Teilprojekt.objects.create(fkz=fkz,
+                                    schlagwortregister_erstsichtung_id = schlagwortregister_id)
+            print('added: %s' %fkz)
+        except IntegrityError:
+            answ = input("%s found in db. Update this part project? (Y/n): "
+                     %fkz) or 'y'
+            if answ == 'y':
+                Teilprojekt.objects.filter(pk=fkz).update(
+                    schlagwortregister_erstsichtung_id= schlagwortregister_id)
                 print('updated: %s' %fkz)
 
 def csv2m4db_enargus(path):
@@ -424,7 +437,8 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
             print(row[header.index('Förderkennzeichen (0010)')])
             data.append(row)
             # breakpoint()
-            get_or_create_schlagwortregister(row, header)
+            # get_or_create_schlagwortregister(row, header)
+            add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
     return header, data
 
 # Script area (here you find examples to use the functions ahead)
@@ -445,7 +459,6 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
 # path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
 # header, data = csv2m4db_weatherdata(path_csv_weatherdata)
 
-## Example add/update Weatherdata table
+## Example add/update Schlagwoerter table
 path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
 header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
-
