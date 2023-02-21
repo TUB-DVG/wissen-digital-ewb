@@ -1,21 +1,18 @@
 FROM python:3.10 AS base
+MAINTAINER "DVG"
 
+# ensures, that all python logs are directly 
+# send to STDOUT or STDERR and arnt kept in
+# buffer.
 ENV PYTHONUNBUFFERED 1
 
-# RUN useradd --create-home appuser
-# # add a env variable user, because some apps read this variable
-# ENV USER="appuser"
-# USER appuser
-
+# creates a directory src and cd's into it
 WORKDIR /src
-# make sure the ssrc directory is owned by the appuser
-# RUN chown appuser:appuser -R /src
 
 COPY 01_application/requirements.txt .
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip 
 RUN pip install -r requirements.txt
-# RUN pip install -r requirements.txt
-
+# create a venv, upgrade pip, install packages, ...
 # RUN python -m venv /py && \
 #     /py/bin/pip install --upgrade pip && \
 #     /py/bin/pip install -r requirements.txt && \
@@ -28,12 +25,23 @@ RUN pip install -r requirements.txt
 # make scripts and venv executables accessible, through path
 #ENV PATH="/scripts:/py/bin:$PATH"
 
+
 # second build stage for production
 
 FROM base AS prod
+
+# change user to non-root appuser
 #USER appuser
+
+# activate venv
 #ENV PATH="/scripts:/py/bin:$PATH"
+
+# copy the source code into /src and 
+# change the ownership to the non-root
+# user
 #COPY --chown=appuser . /src
 COPY . /src
-#chmod -R +x /scripts
-#CMD ["run.sh"]
+
+# execute scripts/run.sh, which 
+# executes collectstatic and migrate
+#CMD ["sh", "run.sh"]
