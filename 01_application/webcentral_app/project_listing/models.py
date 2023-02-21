@@ -3,7 +3,7 @@ from typing import ValuesView
 from django.db import models
 from django.db import IntegrityError
 from django.forms import CharField
-from schlagwoerter.models import *
+from schlagwoerter.models import Schlagwort, Schlagwortregister_erstsichtung
 
 from sqlalchemy import null, true
 class Teilprojekt(models.Model):

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
     'schlagwoerter.apps.SchlagwoerterConfig',
+    'LastProfile.apps.LastprofileConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
+    #'django_extensions',
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'channels',
+    #'channels_redis'
 ]
 
 MIDDLEWARE = [
@@ -123,6 +127,22 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+CRISPY_TEMPLATE_PACK='bootstrap4'
+
+ASGI_APPLICATION='webcentral_app.routing.application'
+"""
+CHANNEL_LAYERS={
+    'default':{
+        'BACKEND':'channels_redis.core.RdisChannelLayer',
+        'CONFIG':{
+            'hosts': [('127.0.0.1',6379),], # This might need to be implemented when working on the server
+        }
+    }
+}
+"""
 
 
 # Static files (CSS, JavaScript, Images)
