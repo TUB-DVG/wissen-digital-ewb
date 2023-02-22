@@ -8,7 +8,7 @@ This file is a work document.
 * how should the test be done
 - from a specific test file enargus_csv_20220902_test1.xlsx the input to the data base will compare the original
   data from the test file
-- the test is run by a python script test_web_import.p
+- the test is run by a python script test_web_import.py
   1. import xlsx file
   2. import data from data base
   3. compare some entries of the following features (feature of different formates)
@@ -19,3 +19,13 @@ This file is a work document.
      - Fördersumme (decimal)
      - the first feature
      - and the last feature
+* what I doing right now
+** [ ] make an virtal environment called 'test_import_export'
+- base on the requirement.txt
+** [ ] the script up to use this virtal environment
+* open questions
+** Should all libs used for testing also include in the requirements.txt?
+- I think it is a goot idea
+-
+** Should the task of making an new environment also part of the test script?
+*** can python setup a test environment and activate this environment?
