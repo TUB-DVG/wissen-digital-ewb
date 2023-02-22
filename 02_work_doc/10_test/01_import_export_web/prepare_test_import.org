@@ -1,0 +1,21 @@
+#+title: Prepare_test_import
+In this file the preparation of the import test is documented.
+This file is a work document.
+
+* what should be tested
+- It should be tested the input to the data base via the import function in the
+  admin area of the django project.
+* how should the test be done
+- from a specific test file enargus_csv_20220902_test1.xlsx the input to the data base will compare the original
+  data from the test file
+- the test is run by a python script test_web_import.p
+  1. import xlsx file
+  2. import data from data base
+  3. compare some entries of the following features (feature of different formates)
+     - Datum (date)
+     - Kurzbeschreibung (character)
+     - Anschrift (character)
+     - PLZ (character)
+     - Fördersumme (decimal)
+     - the first feature
+     - and the last feature
