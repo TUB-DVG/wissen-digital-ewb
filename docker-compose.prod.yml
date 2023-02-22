@@ -20,7 +20,8 @@ services:
         command: >
             sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
                                 python /src/01_application/webcentral_app/manage.py migrate && \
-            uwsgi --socket :9000 --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
+                                python /src/01_application/webcentral_app/manage.py createsuperuser --noinput && \
+            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
 
 
 
