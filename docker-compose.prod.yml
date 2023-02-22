@@ -31,9 +31,9 @@ services:
         depends_on:
             - webcentral
         ports:
-            #- ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
+            - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
             #- ${LISTEN_PORT}:8080
-            - 8070:8080
+            #- 8070:8080
             # data communication on port 80 on the host
             # gets mapped to port 8000 inside the proxy container
         environment:
