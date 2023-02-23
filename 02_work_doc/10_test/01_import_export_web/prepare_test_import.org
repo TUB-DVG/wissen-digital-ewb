@@ -16,10 +16,9 @@ This file is a work document.
        - cell seperator: ";"
   2. import data from data base
   3. compare some entries of the following features (feature of different formates)
-     - [ ] Laufzeitbeginn (date)
-       - [ ] Formate anpassen, sind durch den Pandas-import wahrscheinlich
+     - [X] Laufzeitbeginn (date)
+       - [X] Formate anpassen, sind durch den Pandas-import wahrscheinlich
          ungleich
-       - [ ]
      - [ ] Kurzbeschreibung (character)
      - [ ] Anschrift (character)
      - [ ] PLZ (character)
