@@ -10,22 +10,32 @@ This file is a work document.
   data from the test file
 - the test is run by a python script test_web_import.py
   1. import xlsx file
+     - this file is build from a csv-file
+     - for the import following is needed to be set
+       - PLZ: string
+       - cell seperator: ";"
   2. import data from data base
   3. compare some entries of the following features (feature of different formates)
-     - Datum (date)
-     - Kurzbeschreibung (character)
-     - Anschrift (character)
-     - PLZ (character)
-     - Fördersumme (decimal)
+     - [ ] Laufzeitbeginn (date)
+       - [ ] Formate anpassen, sind durch den Pandas-import wahrscheinlich
+         ungleich
+       - [ ]
+     - [ ] Kurzbeschreibung (character)
+     - [ ] Anschrift (character)
+     - [ ] PLZ (character)
+     - [ ] Fördersumme (decimal)
      - the first feature
      - and the last feature
 * what I doing right now
-** [ ] make an virtal environment called 'test_import_export'
-- base on the requirement.txt
-** [ ] the script up to use this virtal environment
+** [X] make an virtual environment called 'test_import_export'
+- based on the requirement.txt
+- python -m venv venv
+- venv\Scripts\activate
+- https://realpython.com/python-virtual-environments-a-primer/
+** [X] check it is the right db
 * open questions
 ** Should all libs used for testing also include in the requirements.txt?
-- I think it is a goot idea
+- I think it is a good idea
 -
 ** Should the task of making an new environment also part of the test script?
 *** can python setup a test environment and activate this environment?
