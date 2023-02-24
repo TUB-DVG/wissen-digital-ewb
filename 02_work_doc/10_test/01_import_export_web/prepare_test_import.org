@@ -19,10 +19,9 @@ This file is a work document.
      - [X] Laufzeitbeginn (date)
        - [X] Formate anpassen, sind durch den Pandas-import wahrscheinlich
          ungleich
-     - [ ] Kurzbeschreibung (character)
-     - [ ] Anschrift (character)
-     - [ ] PLZ (character)
-     - [ ] Fördersumme (decimal)
+     - [X] Kurzbeschreibung (character)
+     - [X] PLZ_zwe (character)
+     - [X] Fördersumme (decimal)
      - the first feature
      - and the last feature
 * what I doing right now
