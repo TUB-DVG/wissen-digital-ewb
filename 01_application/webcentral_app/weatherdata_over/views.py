@@ -104,3 +104,7 @@ def weatherdata_view(request, id):
     }
 
     return render(request, 'weatherdata_over/weatherdata-detail.html', context)
+
+def wetterdienst(request):
+    return render(request,'weatherdata_over/wetterdienst(example).html')
+
