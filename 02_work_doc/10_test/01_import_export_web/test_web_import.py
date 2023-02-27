@@ -88,7 +88,7 @@ for fkz in fkz_test:
     # data from the data base
     print(' ')
     print('Vergleich für Projekt {}'.format(fkz))
-    # comparison "Laufzeitbeginn" (date formate)
+    # comparison "Laufzeitbeginn" (date format)
     db_laufzeitbeginn = df_db[df_db['fkz'] == fkz]['laufzeitbeginn']
     db_laufzeitbeginn = pd.to_datetime(db_laufzeitbeginn.values[0]).strftime('%Y-%m-%d')
     xlsx_laufzeitbeginn = df_xlsx[df_xlsx['fkz'] == str(fkz)]['Laufzeitbeginn']
@@ -105,8 +105,8 @@ for fkz in fkz_test:
         print(' -- Datenbank: {}   \n --      xlxs: {}'.format(
                    db_laufzeitbeginn, xlsx_laufzeitbeginn))
 
-    print('## Vergleich Kurzbeschreibung bzw. character formate')
-    # comparison "Kurzbeschreibung" (character formate)
+    print('## Vergleich Kurzbeschreibung bzw. character format')
+    # comparison "Kurzbeschreibung" (character format)
     db_kurzbeschreibung = df_db[df_db['fkz'] == fkz]['kurzbeschreibung_de']
     db_kurzbeschreibung = db_kurzbeschreibung.values[0]
     xlsx_kurzbeschreibung = df_xlsx[df_xlsx['fkz'] == str(fkz)]['Kurzbeschreibung_de']
@@ -120,8 +120,8 @@ for fkz in fkz_test:
         print(' -- Datenbank: {}   \n --      xlxs: {}'.format(
                    db_kurzbeschreibung[0:20], xlsx_kurzbeschreibung[0:20]))
 
-    print('## Vergleich PLZ_zwe bzw. character formate, oft fehlt die erste Null')
-    # comparison "PLZ_zwe" (character formate, often first zero removed)
+    print('## Vergleich PLZ_zwe bzw. character format, oft fehlt die erste Null')
+    # comparison "PLZ_zwe" (character format, often first zero removed)
     db_PLZ_ZWE = df_db[df_db['fkz'] == fkz]['zwe_plz']
     db_PLZ_ZWE = str(db_PLZ_ZWE.values[0])
     xlsx_PLZ_ZWE = df_xlsx[df_xlsx['fkz'] == str(fkz)]['PLZ_ZWE']
@@ -136,8 +136,8 @@ for fkz in fkz_test:
         print(' -- Datenbank: {}   \n --      xlxs: {}'.format(
                    db_PLZ_ZWE, xlsx_PLZ_ZWE))
 
-    print('## Vergleich Foerdersumme bzw. decimal formate')
-    # comparison "Foerdersumme" (decimal formate)
+    print('## Vergleich Foerdersumme bzw. decimal format')
+    # comparison "Foerdersumme" (decimal format)
     db_Foerdersumme = df_db[df_db['fkz'] == fkz]['foerdersumme']
     db_Foerdersumme = str(db_Foerdersumme.values[0])
     xlsx_Foerdersumme = df_xlsx[df_xlsx['fkz'] == str(fkz)]['Foerdersumme_EUR']
