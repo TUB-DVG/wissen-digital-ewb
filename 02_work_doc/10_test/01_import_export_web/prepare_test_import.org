@@ -1,0 +1,51 @@
+#+title: Prepare_test_import
+In this file the preparation of the import test is documented.
+This file is a work document.
+
+* what should be tested
+- It should be tested the input to the data base via the import function in the
+  admin area of the django project.
+* how should the test be done
+- from a specific test file enargus_csv_20220902_test1.xlsx the input to the data base will compare the original
+  data from the test file
+- the test is run by a python script test_web_import.py
+  1. import xlsx file
+     - this file is build from a csv-file
+     - for the import following is needed to be set
+       - PLZ: string
+       - cell seperator: ";"
+  2. import data from data base
+  3. compare some entries of the following features (feature of different formates)
+     - [X] Laufzeitbeginn (date)
+       - [X] Formate anpassen, sind durch den Pandas-import wahrscheinlich
+         ungleich
+     - [X] Kurzbeschreibung (character)
+     - [X] PLZ_zwe (character)
+     - [X] Fördersumme (decimal)
+     - the first feature
+     - and the last feature
+* what I doing right now
+** [X] make an virtual environment called 'test_import_export'
+- based on the requirement.txt
+- python -m venv venv
+- venv\Scripts\activate
+- https://realpython.com/python-virtual-environments-a-primer/
+** [X] check it is the right db
+* Test before/while merge into main
+** [X] in import_export branch
+*** [X] test import (only xlsx)
+*** [X] export
+*** [X] run server
+*** [X] sides
+** [X] in main_temp_imp_exp
+*** [X] run server
+*** [X] export
+**** only include main table, the relate content is not included, like the name of the "Projektleiter"
+*** [X] sides
+*** [X] test import (only xlsx)
+* open questions
+** Should all libs used for testing also include in the requirements.txt?
+- I think it is a good idea
+-
+** Should the task of making an new environment also part of the test script?
+*** can python setup a test environment and activate this environment?
