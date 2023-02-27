@@ -43,6 +43,12 @@ This file is a work document.
 **** only include main table, the relate content is not included, like the name of the "Projektleiter"
 *** [X] sides
 *** [X] test import (only xlsx)
+** [X] in main
+*** [X] run server
+*** [X] export
+**** only include main table, the relate content is not included, like the name of the "Projektleiter"
+*** [X] sides
+*** [X] test import (only xlsx)
 * open questions
 ** Should all libs used for testing also include in the requirements.txt?
 - I think it is a good idea
