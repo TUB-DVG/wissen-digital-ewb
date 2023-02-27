@@ -33,10 +33,16 @@ This file is a work document.
 ** [X] check it is the right db
 * Test before/while merge into main
 ** [X] in import_export branch
-*** [X] test import
+*** [X] test import (only xlsx)
 *** [X] export
 *** [X] run server
 *** [X] sides
+** [X] in main_temp_imp_exp
+*** [X] run server
+*** [X] export
+**** only include main table, the relate content is not included, like the name of the "Projektleiter"
+*** [X] sides
+*** [X] test import (only xlsx)
 * open questions
 ** Should all libs used for testing also include in the requirements.txt?
 - I think it is a good idea
