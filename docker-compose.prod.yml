@@ -20,12 +20,13 @@ services:
         command: >
             sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
                                 python /src/01_application/webcentral_app/manage.py migrate && \
-                                if [ -z "$DJANGO_SUPERUSER_USERNAME" ]; then
-                                    echo 'No superuser was created!'
-                                else
-                                python /src/01_application/webcentral_app/manage.py createsuperuser --noinput
-                                fi  && \
             uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
+
+        #if [ -z "$DJANGO_SUPERUSER_USERNAME" ]; then
+            #echo 'No superuser was created!'
+        #else
+        #python /src/01_application/webcentral_app/manage.py createsuperuser --noinput
+        #fi  && \
 
 
 
