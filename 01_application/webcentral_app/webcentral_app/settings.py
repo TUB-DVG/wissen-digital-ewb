@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -20,13 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l6nvsp#y_3o8--2^h5@903kz%_yx_0=l+i%(2kllzhb=@3+ar('
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# tries to read the DEBUG env-var and converts it to int. 
+# If it cant convert to int, DEBUG is set to 0, which is converted to false.
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        os.environ.get("ALLOWED_HOSTS", '').split(','),
+    )
+)
 
 # Application definition
 
@@ -84,10 +92,10 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Empty_database',
-        'USER': 'postgres',
-        'PASSWORD': 'Anthem2018',
-        'HOST': 'localhost',
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': 'database',
     }
 }
 
@@ -129,20 +137,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+#STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
+STATIC_ROOT = "/vol/webcentral/static"
+STATIC_URL = '/static/static/'
 STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, 'webcentral_app/static')
 ]
 # Media folder settings
-MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
+MEDIA_ROOT = "/vol/webcentral/media"
+MEDIA_URL = '/static/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+useDotENV = bool(int(os.environ.get("USE_DOT_ENV", 0)))
+if not useDotENV: 
+    try:
+        from webcentral_app.local_settings import *
+    except ImportError:
+        pass
