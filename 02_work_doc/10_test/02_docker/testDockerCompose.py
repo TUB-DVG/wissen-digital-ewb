@@ -33,20 +33,16 @@ class TestLogin(TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def testIfSuperuserIsPresent(self):
-        """
+
+    def _loginAsSuperUser(self):
+        """This protected method is used internally to login as superuser in the different testcases.
 
         """
 
-        #pdb.set_trace()
-
-        self.assertTrue("Wissensplattform" in self.browser.title)
-
-        print("Trying to log-in with superuser-credentials from .env-file...")
         self.browser.get(self.localAdress + "/admin")
-        
+
         time.sleep(1)
-        
+
         usernameField = self.browser.find_element("xpath", '//input[@name="username"]')
         usernameField.send_keys(os.environ.get("DJANGO_SUPERUSER_USERNAME"))
 
@@ -57,12 +53,35 @@ class TestLogin(TestCase):
         submitButton.click()
 
         time.sleep(1)
+
+    def testIfSuperuserIsPresent(self):
+        """This Testcase checks if it is possible to login with the superuser-credentials
+        from the .env-file.
+
+        """
+
         #pdb.set_trace()
+
+        self.assertTrue("Wissensplattform" in self.browser.title)
+
+        print("Trying to log-in with superuser-credentials from .env-file...")
+        
+        self._loginAsSuperUser()
 
         self.assertFalse(
             self.browser.title == "Log in | Django site admin", 
             "Couldnt log-in as superuser. Check if automated superuser creation was successful.",
         )
+
+        #self.browser.get(self.localAdress)
+
+    def testDatabaseDumpIsLoaded(self):
+        """This Testcase checks, if the database is filled, by going to the "Digitale Werkzeuge"-site 
+        and checking if the list is empty.
+
+        """
+        print("Checking, if Digitale Werkzeuge is populated...")
+        self._loginAsSuperUser()
 
         self.browser.get(self.localAdress)
 
@@ -73,27 +92,6 @@ class TestLogin(TestCase):
 
         listOfCards = self.browser.find_elements("xpath", '//div[@class="card-body pb-0"]')
         self.assertNotEqual(len(listOfCards), 0, "Es sind keine Elemente in der Liste der digitalen Werkzeuge!")
-
-    # def testPopulateDB(self):
-    #     """this testcase tests if an empty db can be populated 
-    #     from outside the mult-container app using a shell-script.
-    #     Therefore it checks, if the site 'Digitale Werkzeuge' is accessible.
-    #     On an empty db instance the ptjuser is not present and the site cant be
-    #     accessed. In this case, the database is populated.
-
-    #     """
-
-        #pdb.set_trace()
-
-
-        # if "Login" in self.browser.title:
-        #     os.system("bash postgres/restoreDB.sh")
-
-        #     time.sleep(3)
-        #     self.browser.find_element("xpath", '//input[@type="submit"]').click()
-
-        #     time.sleep(1)
-        #     pdb.set_trace()
 
 
 if __name__ == "__main__":
