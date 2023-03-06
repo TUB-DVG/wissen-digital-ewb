@@ -33,5 +33,6 @@ services:
           - .env
         environment:
             - WEBCENTRAL_LISTEN_PORT
+        container_name: webcentral
 volumes:
     pgdata:
