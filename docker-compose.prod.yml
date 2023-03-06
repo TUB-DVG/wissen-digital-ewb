@@ -17,6 +17,7 @@ services:
             - SECRET_KEY
             - DEBUG
             - ALLOWED_HOSTS
+            - MODE=production
         command: >
             sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
                                 python /src/01_application/webcentral_app/manage.py migrate && \
