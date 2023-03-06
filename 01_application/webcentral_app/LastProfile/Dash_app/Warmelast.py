@@ -41,7 +41,7 @@ app.layout = html.Div([
     # Dropdown for the application options
    
     # Dropdown for State options for the Wetterdienst station choice
-    dcc.Dropdown(stations.all( ).df['state'].unique(),placeholder="Auswahl der Bundesland",
+    dcc.Dropdown(stations.all( ).df['state'].unique(),placeholder="Auswahl des Bundeslands",
         id='State'
         ),
       # Dropdown for the available wetterdienst stations in the chosen State
@@ -49,9 +49,9 @@ app.layout = html.Div([
         ),
      dcc.Dropdown(
         options=[
-                {'label': 'EFH ', 'value': '2'},
-                {'label': 'MFH ', 'value': '3'},
-                {'label': 'Gebietskörpersch', 'value': '4'},
+                {'label': 'Einfamlienhaus ', 'value': '2'},
+                {'label': 'Mehrfamilienhaus ', 'value': '3'},
+                {'label': 'Gebietskörperschaft', 'value': '4'},
                 {'label': 'Einzelhandel, Großhandel', 'value': '5'},
                 {'label': 'Metall, Kfz', 'value': '6'},
                 {'label': 'sonst. betr. Dienstleistungen  ', 'value': '7'},
@@ -70,7 +70,7 @@ app.layout = html.Div([
         id='application'
         ),
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id="heat_requirement", type="number",placeholder="Jahreswärmebedarfs in kWh/a", debounce=True,style={'width':'200px'}),
+    dcc.Input(id="heat_requirement", type="number",placeholder="Jahreswärmebedarf in kWh/a", debounce=True,style={'width':'200px'}),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
@@ -82,19 +82,19 @@ app.layout = html.Div([
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options=[
-                {'label': 'Jan', 'value': '1'},
-                {'label': 'Feb', 'value': '2'},
-                {'label': 'Mar', 'value': '3'},
-                {'label': 'Apr', 'value': '4'},
+                {'label': 'Januar', 'value': '1'},
+                {'label': 'Februar', 'value': '2'},
+                {'label': 'März', 'value': '3'},
+                {'label': 'April', 'value': '4'},
                 {'label': 'Mai', 'value': '5'},
-                {'label': 'Jun', 'value': '6'},
-                {'label': 'Jul', 'value': '7'},
-                {'label': 'Aug', 'value': '8'},
-                {'label': 'Sep', 'value': '9'},
-                {'label': 'Oct', 'value': '10'},
-                {'label': 'Nov', 'value': '11'},
-                {'label': 'Dec', 'value': '12'},
-                {'label': 'All', 'value': 'All'},
+                {'label': 'Juni', 'value': '6'},
+                {'label': 'Juli', 'value': '7'},
+                {'label': 'August', 'value': '8'},
+                {'label': 'Sepember', 'value': '9'},
+                {'label': 'Oktober', 'value': '10'},
+                {'label': 'November', 'value': '11'},
+                {'label': 'Dezember', 'value': '12'},
+                {'label': 'Alle', 'value': 'All'},
             ],
         value='All',
         id='display_month',
@@ -173,9 +173,9 @@ def update_heat_graph(application:str,Station_id:int,heat_requirement:int,displa
         from plotly.subplots import make_subplots
         fig = make_subplots(specs=[[{"secondary_y": True}]])
 
-        fig.add_trace(go.Scatter(name='Wärme-lastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")),secondary_y=False)
+        fig.add_trace(go.Scatter(name='Wärmelastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")),secondary_y=False)
         fig.add_trace(go.Scatter(name='Fehlende Eingaben',x=result['Time'], y=result['Last'].where(result['fehlend']=='True'),mode='lines', line=dict(color="red")),secondary_y=False)
-        fig.add_trace(go.Scatter(name='Trink-WW-Lastgang in kW',x=result2['Time'], y=result2['Last'],mode='lines', line=dict(color="#f700ff")),secondary_y=True)
+        fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',x=result2['Time'], y=result2['Last'],mode='lines', line=dict(color="#f700ff")),secondary_y=True)
 
         fig.update_xaxes(
         tickangle = 90,
@@ -184,11 +184,11 @@ def update_heat_graph(application:str,Station_id:int,heat_requirement:int,displa
        )
 
         fig.update_yaxes(
-        title_text = "Wärme-lastgang in kW",
+        title_text = "Wärmelastgang in kW",
         title_standoff = 25
         )
         fig.update_yaxes(
-        title_text="Trink-WW-Lastgang in kW", 
+        title_text="Trinkwarmwasser-Lastgang in kW", 
         secondary_y=True
         )
         return fig, 'Für die ausgewählte Station gibt es '+ str(fehlende_werte)+' fehlende Werte, die in der Grafik rot markiert sind. ' 
