@@ -1,3 +1,59 @@
+# Database backup strategies
+Various strategies for backing up and migrating the database are described below.
+## Stratgie 1: Sicherung über textuelle/binäre Sicherungsdatei
+### Create the backup
+Using the Postgres client, an image of the database can be saved in binary or as text in a file.
+The command to create the image is:
+```
+pg_dump dbname > dumpfile
+```
+Where `dbname` is the name of the database to be backed up and `dumpfile` is the filename to which the image is written.
+The image consists of sql commands that set a database to the state of `dbname` at the time `pd_dump` is executed.
+Depending on what environment the Webcentral web application was in, a separate way of backing up the database is required:
+*docker-compose-production-environment*:
+In the root directory of the Webcentral repository (where the .env file is located), the following commands must be executed:
+```
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+```
+This will start the webcentral multi-container app in production mode. The following commands must then be executed in a new terminal:
+```
+source .env
+docker container exec database pg_dump -U $POSTGRES_USER $POSTGRES_DB > dump.sql
+```
+Dies speichert das Datenbank-Abbild in der Datei `dump.sql`.
+Der `docker container exec`-Befehl führt ein Kommando in dem laufenden Container `database` aus. Bei dem ausgeführten Befehl handelt es sich um den
+`pg_dump`-Befehl, welcher mit der `-U`-Option aufgerufen wird, um den Datenbank-Nutzer zu spezifizieren. Ist dieser nicht angegeben verwendet postgres den
+Standart-User `postgres` mit dem es mit Unter nicht möglich ist, auf die Dtaen zuzugreifen. `pg_dump` schreibt die Ausgabe nach STDOUT, welche über den `>`
+in die Datei `dump.sql` umgeleitet wird.
+Zum Backup der statischen Daten müssen die durch Benutzer hochgeladene Dateien gesichert werden. Diese Dateien befinden sich im Docker-Volumen `static-data`,
+```
+docker cp webcentral:/vol/webcentral/media ../mediaBACKUP
+```
+This copies the media files to a folder `mediaBACKUP`-which is located in the parent directory of the current directory.
+*Docker-Compose Development-Environment*
+To create the database image, the same procedure can be followed as for the Production environment.
+The static media files are stored under `01_application/webcental_app/media` and can be copied manually.
+### Importing the backup
+To import the database image, the created `.sql` file must be moved to the `postgres/` folder, which is located in the git root directory. Furthermore, in the `.env` file
+the environment variable `DATABASE_PLAIN_SQL_FILE=db_webcentral_Backup_20220714.sql` must be updated to the sql filename. Furthermore the backed up
+media files must be copied to the folder `01_application/webcentral_app/media`.
+
+The import of the image is then performed by running the `restoreDB.sh` script:
+```
+    bash postgres/restoreDB.sh
+```
+It is important that the script is executed from the project root directory, otherwise the `.env` file cannot be loaded.
+In this way, both the database and the static data was brought up to the state of the backup.
+## Strategie 2: Direktes Kopieren der Docker-Volumes
+The Docker volume `pgdata`, which contains the postgres database, or `static-data`, which contains the static data, can be copied directly. They are located in the `/var/lib/docker/volumes` folder.
+For the copy operation, the script `scripts/migrateDockerVolumes.sh` exists, which migrates a Docker volume from the machine `SOURCE_HOST_ADDRESS` with the user `SOURCE_HOST_USER` to the machine `TARGET_HOST_ADDRESS` with the user `TARGET_HOST_USER`. These environment variables are set in the `.env` file for the current working machine as the source machine and the VServer as the target machine. During the copy process the user of the source machine as well as the user of the target machine will be asked several times for the password. FURTHER, it should be noted that the user on the target machine must be in the docker user group for the script to run without errors. The script must be run from the root of the git repo and the name of the volume to be copied must be specified as the first argument:
+```
+    bash scripts/migrateDockerVolumes.sh src_pgdata
+```
+This command copies the src_pgdata volume to the target computer.
+
+*Translated to german on 07.03.2023*
+
 # Datenbank-Backup Strategien
 Im Folgenden werden verschiedene Strategien zum sichern und migrieren der Datenbank beschrieben.
 ## Stratgie 1: Sicherung über textuelle/binäre Sicherungsdatei
