@@ -92,6 +92,27 @@ class TestLogin(TestCase):
 
         listOfCards = self.browser.find_elements("xpath", '//div[@class="card-body pb-0"]')
         self.assertNotEqual(len(listOfCards), 0, "Es sind keine Elemente in der Liste der digitalen Werkzeuge!")
+    
+    #def testImagesInToolList(self):
+        #"""This TestCase tests if the images of the Tools are present on the Tab Digitale Werkzeuge
+
+        #"""
+        #print("Checking if images are present in the Tool List...")
+        #self._loginAsSuperUser()
+
+        #self.browser.get(self.localAdress)
+
+        #linkToToolList = self.browser.find_element("xpath", '//a[@href="/tool_list/"]')
+        #linkToToolList.click()
+
+        #time.sleep(1)
+
+        #listOfCardImg = self.browser.find_elements("xpath", '//img[@alt="tool image (if=db)"]')
+
+        
+        #for cardItemElement in listOfCardImg:
+            #self.assertTrue(cardItemElement.is_displayed())
+        ##self.assertFalse("tool image (if=db)" in self.browser.page_source, "Image alt-text is displayed")
 
 
 if __name__ == "__main__":

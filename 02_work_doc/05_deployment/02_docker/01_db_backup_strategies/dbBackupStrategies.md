@@ -35,7 +35,7 @@ Zum Erstellen des Datenbank-Abbilds kann genauso wie für die Production-Umgebun
 Die statischen Media-Dateien werden unter `01_application/webcental_app/media` gespeichert und können manuell kopiert werden.
 
 ### Einspielen der Sicherung
-Zum Einspielen des Datenbank-Abbildes muss die erstellte `.sql`-Datei in den `postgres/`-Ordner verschoben werden. Weiterhin muss in der `.env`-Datei
+Zum Einspielen des Datenbank-Abbildes muss die erstellte `.sql`-Datei in den `postgres/`-Ordner verschoben werden, welcher sich im git-Wurzelverzeichnis befindet. Weiterhin muss in der `.env`-Datei
 die Umgebungsvariable `DATABASE_PLAIN_SQL_FILE=db_webcentral_Backup_20220714.sql` auf den sql-Dateinamen aktualisiert werden. Weiterhin müssen die gesicherten
 Media-Dateien in den Ordner `01_application/webcentral_app/media` kopiert werden.
 
@@ -48,6 +48,9 @@ Auf diese Weise wurde sowohl die Datenbank-, als auch die statischen-Daten auf S
 
 ## Strategie 2: Direktes Kopieren der Docker-Volumes
 Das Docker-Volume `pgdata`, welches die postgres-Datenbank enthält, bzw. `static-data`, welches die statischen Daten enthält, können direkt kopiert werden. Sie befinden sich im Ordner `/var/lib/docker/volumes`.
-Für das Kopieren sind root-Rechte nötig.
-
+Für den Kopiervorgang existiert das Skript `scripts/migrateDockerVolumes.sh`, welches von der Maschine `SOURCE_HOST_ADDRESS` mit dem Benutzer `SOURCE_HOST_USER` ein Docker Volume auf die Maschine `TARGET_HOST_ADDRESS` mit dem Benutzer `TARGET_HOST_USER` migriert. Diese Umgebungsvariablen sind im `.env`-File für die momentane Arbeitsmaschine als Quellrechner und den VServer als Zielrechner gesetzt. Während des Kopiervorgangs wird mehrmals nach dem Passwort, sowohl vom Benutzer der Quellmaschine, als auch vom Benutzer des Zielrechner gefragt. WEiterhin sollte beachtet werden, dass der Benutzer auf dem Zielrechner in der docker-Benutzergruppe sein muss, damit das Skript ohne Fehler abläuft. Das Skript muss aus dem Wurzelverzeichnis des git-Repos ausgeführt werden und der Name des zu kopierenden Volumes muss als erstes Argument spezifiziert werden:
+```
+    bash scripts/migrateDockerVolumes.sh src_pgdata
+```
+Dieser Befehl kopiert das src_pgdata Volume auf den Zielrechner.
 
