@@ -29,9 +29,6 @@ services:
             uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
 
 
-
-
-
     proxy:
         build:
             context: ./proxy
