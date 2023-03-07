@@ -1,6 +1,6 @@
 # Database backup strategies
 Various strategies for backing up and migrating the database are described below.
-## Stratgie 1: Sicherung über textuelle/binäre Sicherungsdatei
+## Stratgy 1: Backup via textual/binary backup file
 ### Create the backup
 Using the Postgres client, an image of the database can be saved in binary or as text in a file.
 The command to create the image is:
@@ -20,12 +20,12 @@ This will start the webcentral multi-container app in production mode. The follo
 source .env
 docker container exec database pg_dump -U $POSTGRES_USER $POSTGRES_DB > dump.sql
 ```
-Dies speichert das Datenbank-Abbild in der Datei `dump.sql`.
-Der `docker container exec`-Befehl führt ein Kommando in dem laufenden Container `database` aus. Bei dem ausgeführten Befehl handelt es sich um den
-`pg_dump`-Befehl, welcher mit der `-U`-Option aufgerufen wird, um den Datenbank-Nutzer zu spezifizieren. Ist dieser nicht angegeben verwendet postgres den
-Standart-User `postgres` mit dem es mit Unter nicht möglich ist, auf die Dtaen zuzugreifen. `pg_dump` schreibt die Ausgabe nach STDOUT, welche über den `>`
-in die Datei `dump.sql` umgeleitet wird.
-Zum Backup der statischen Daten müssen die durch Benutzer hochgeladene Dateien gesichert werden. Diese Dateien befinden sich im Docker-Volumen `static-data`,
+This saves the database image in the `dump.sql` file.
+The `docker container exec` command executes a command in the running `database` container. The command that is executed is the
+`pg_dump` command, which is called with the `-U` option to specify the database user. If this is not specified postgres uses the
+default user `postgres` with which it is not possible to access the dtaen with sub. `pg_dump` writes the output to STDOUT, which is dumped via the `>`
+to the file `dump.sql`.
+To backup the static data, the files uploaded by users must be backed up. These files are located in the Docker volume `static-data`,
 ```
 docker cp webcentral:/vol/webcentral/media ../mediaBACKUP
 ```
@@ -44,7 +44,7 @@ The import of the image is then performed by running the `restoreDB.sh` script:
 ```
 It is important that the script is executed from the project root directory, otherwise the `.env` file cannot be loaded.
 In this way, both the database and the static data was brought up to the state of the backup.
-## Strategie 2: Direktes Kopieren der Docker-Volumes
+## Strategy 2: Direct copying of Docker volumes
 The Docker volume `pgdata`, which contains the postgres database, or `static-data`, which contains the static data, can be copied directly. They are located in the `/var/lib/docker/volumes` folder.
 For the copy operation, the script `scripts/migrateDockerVolumes.sh` exists, which migrates a Docker volume from the machine `SOURCE_HOST_ADDRESS` with the user `SOURCE_HOST_USER` to the machine `TARGET_HOST_ADDRESS` with the user `TARGET_HOST_USER`. These environment variables are set in the `.env` file for the current working machine as the source machine and the VServer as the target machine. During the copy process the user of the source machine as well as the user of the target machine will be asked several times for the password. FURTHER, it should be noted that the user on the target machine must be in the docker user group for the script to run without errors. The script must be run from the root of the git repo and the name of the volume to be copied must be specified as the first argument:
 ```
