@@ -10,7 +10,7 @@ services:
         ports:
             - ${DATABASE_OUTSIDE_PORT}:${DATABASE_INSIDE_PORT}
         volumes:
-            - ./postgres/${DATABASE_PLAIN_SQL_FILE}:/docker-entrypoint-initdb.d/${DATABASE_PLAIN_SQL_FILE}
+            #- ./postgres/${DATABASE_PLAIN_SQL_FILE}:/docker-entrypoint-initdb.d/${DATABASE_PLAIN_SQL_FILE}
             - pgdata:/var/lib/postgresql/data
         env_file:
           - .env
