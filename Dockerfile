@@ -34,7 +34,7 @@ FROM base AS prod
 #USER appuser
 
 # activate venv
-#ENV PATH="/scripts:/py/bin:$PATH"
+#ENV PATH="/scripts:$PATH"
 
 # copy the source code into /src and 
 # change the ownership to the non-root
@@ -44,4 +44,4 @@ COPY . /src
 
 # execute scripts/run.sh, which 
 # executes collectstatic and migrate
-#CMD ["sh", "run.sh"]
+#CMD["./run.sh"]
