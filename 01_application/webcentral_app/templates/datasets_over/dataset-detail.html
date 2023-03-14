@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ tool.bezeichnung }} {% endblock %}
+
+{% load static %}
+
+{% block content%}
+
+<!-- =======================
+Page intro START -->
+
+<section class="bg-light py-0 py-sm-5">
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-lg-12">
+				
+
+				<!-- Title -->
+				<h1>{{tool.bezeichnung}}</h1>
+				<!-- Content -->
+				<ul class="list-inline mb-0">
+					{% if  tool.average_rating != 0 %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.average_rating}}/5.0</li>
+					{% endif %}
+					{% if tool.letztes_update %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{tool.letztes_update}}</li>
+					{% endif %}
+					
+					{% if tool.lizenz %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{tool.lizenz}}</li>
+					{% endif %}
+
+					{% if tool.lebenszyklusphase %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-history text-info me-2"></i>{{tool.lebenszyklusphase}}</li>
+					{% endif %}
+
+
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-alt text-info me-2"></i>{{tool.zielgruppe}}</li>
+					<li class="list-inline-item h6 mb-0"><i class="fas fa-bars text-info me-2"></i>{{tool.kategorie}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page intro END -->
+
+<!-- =======================
+Page content START -->
+<section class="pb-0 pt-4 py-lg-5">
+	<div class="container">
+		<div class="row">
+			<!-- Main content START -->
+			<div class="col-lg-8">
+				<div class="card shadow rounded-2 p-0">
+					<!-- Tabs START -->
+					<div class="card-header border-bottom px-4 py-3">
+						<ul class="  nav nav-pills nav-tabs-line py-0">
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" >
+								<a class="nav-link active mb-2 mb-md-0" data-toggle="tab" href="#course-pills-1"  >Overview</a>
+							</li>
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" >
+								<a class="nav-link mb-2 mb-md-0 " data-toggle="tab" href="#course-pills-2"   >Reviews</a>
+							</li>
+						</ul>
+					</div>
+					<!-- Tabs END -->
+
+					<!-- Tab contents START -->
+					<div class="tab-content card-body p-4 detail-card-body">
+						
+							<!-- Content START -->
+							<div class="tab-pane container active" id="course-pills-1" >
+								<!-- Course detail START -->
+								{% if tool.bezeichnung %}
+								<h5 class="mb-3">Was ist {{tool.bezeichnung}}?</h5>
+								<p class="mb-0">{{tool.kurzbeschreibung}}</p>
+								{% endif %}
+								{% if tool.anwendungsbereich %}
+								<h5 class="mt-4">Anwendungsbereich</h5>
+								<p class="mb-0">{{tool.anwendungsbereich}}</p>
+								{% endif %}
+								{% if tool.weitere_informationen %}
+								<h5 class="mt-4">Weitere Informationen</h5>
+								<p class="mb-0">{{tool.weitere_informationen}}</p>
+								{% endif %}
+								{% if tool.alternativen %}
+								<h5 class="mt-4">Alternativen</h5>
+								<p class="mb-0">{{tool.alternativen}}</p>
+								{% endif %}
+								{% if tool.nutzerschnittstelle %}
+								<h5 class="mt-4">Nutzerschnittstelle</h5>
+								<p class="mb-0">{{tool.nutzerschnittstelle}}</p>
+								{% endif %}
+								{% if tool.konk_anwendung %}
+								<h5 class="mt-4">konkrete Anwendung</h5>
+								<p class="mb-0">{{tool.konk_anwendung}}</p>
+								{% endif %}
+								{% if tool.zielgruppe %}
+								<h5 class="mt-4">Zielgruppe</h5>
+								<p class="mb-0">{{tool.zielgruppe}}</p>
+								{% endif %}
+								<!-- Course detail END -->
+
+							</div>
+							<!-- Content END -->
+
+							<!-- Content START --> <!--REVIEWS TAB-->
+							<div  class="tab-pane container fade" id="course-pills-2" >
+								<div class="mt-2">
+									
+									<div class="row mb-4">
+										<h5 class="mb-4">Reviews</h5>
+										
+										<div class="col-md-4 mb-3 mb-md-0">
+											<div class="text-center">
+												<!-- Info -->
+												<h2 class="mb-0">{{tool.average_rating}}</h2>
+												<!-- Star -->
+												
+												{% include 'partials/_stars_score.html' with score=tool.average_rating class_small='' %}
+											
+											</div>
+										</div>
+										<div class="col-md-8">
+											<div class="row align-items-center">
+												<!-- Progress bar and Rating -->
+												<div class="col-6 col-sm-8">
+													<!-- Progress item -->
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_5}}%" aria-valuenow="{{ rating_perc_5 }}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</div>
+
+												<div class="col-6 col-sm-4">
+													<!-- Star item -->
+													
+													{% include 'partials/_stars_score.html' with score=5 class_small='small' %}
+													
+												</div>
+
+												<div class="col-6 col-sm-8">
+													<!-- Progress item -->
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ rating_perc_4 }}%" aria-valuenow="{{ rating_perc_4 }}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</div>
+
+												<div class="col-6 col-sm-4">
+													<!-- Star item -->
+													
+													{% include 'partials/_stars_score.html' with score=4 class_small='small' %}
+													
+												</div>
+
+												<div class="col-6 col-sm-8">
+													<!-- Progress item -->
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_3}}%" aria-valuenow="{{rating_perc_3}}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</div>
+
+												<div class="col-6 col-sm-4">
+													<!-- Star item -->
+													
+													{% include 'partials/_stars_score.html' with score=3 class_small='small' %}
+													
+												</div>
+
+												<div class="col-6 col-sm-8">
+													<!-- Progress item -->
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_2}}%" aria-valuenow="{{rating_perc_2}}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</div>
+
+												<div class="col-6 col-sm-4">
+													<!-- Star item -->
+													
+													{% include 'partials/_stars_score.html' with score=2 class_small='small' %}
+													
+												</div>
+
+												<div class="col-6 col-sm-8">
+													<!-- Progress item -->
+													<div class="progress progress-sm bg-warning bg-opacity-15">
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_1}}%" aria-valuenow="{{rating_perc_1}}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+												</div>
+
+												<div class="col-6 col-sm-4">
+													<!-- Star item -->
+													{% include 'partials/_stars_score.html' with score=1 class_small='small' %}
+													
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+
+										
+										{% for  rating in ratings_with_comment %}
+										<div class="d-md-flex my-4">
+											<!-- Avatar -->
+											<div class="avatar avatar-xl me-4 flex-shrink-0">
+												<img class="avatar-img rounded-circle" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
+											</div>
+											<!-- Text -->
+											<div>
+												<div class="d-sm-flex mt-1 mt-md-0 align-items-center">
+													<h5 class="me-3 mb-0">{{rating.rating_from}}</h5>
+													<!-- Review star -->
+													{% include 'partials/_stars_score.html' with score=rating.score class_small='' %}
+												</div>
+												<!-- Info -->
+												<p class="mb-2">{{rating.comment}}</p>
+												<!-- Like and dislike button -->
+												<!--<div class="btn-group" role="group" aria-label="Basic radio toggle button group">-->
+													<!-- Like button -->
+													<!--<input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+													<label class="btn btn-outline-light btn-sm mb-0" for="btnradio1"><i class="far fa-thumbs-up me-1"></i>25</label>-->
+													<!-- Dislike button -->
+													<!--<input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+													<label class="btn btn-outline-light btn-sm mb-0" for="btnradio2"> <i class="far fa-thumbs-down me-1"></i>2</label>
+												</div>-->
+											</div>
+										</div>
+
+										
+										<hr>
+										{% endfor %}
+										<!-- Review item END -->
+
+									</div>
+								</div>
+								<!-- Leave Review START -->
+								<div class="mt-2" >
+									<h5 class="mb-4">Leave a Review</h5>
+									<form class="row g-3"  action="/tool_list/Post_Review/{{tool.id}} " method="post">
+										{% csrf_token %}
+										<!-- Rating -->
+										<div class="col-12 bg-light-input">
+											<select id="inputState2" name='score' class="form-select js-choice">
+												<option selected=""value="5">★★★★★ (5/5)</option>
+												<option value="4">★★★★☆ (4/5)</option>
+												<option value="3">★★★☆☆ (3/5)</option>
+												<option value="2">★★☆☆☆ (2/5)</option>
+												<option value="1">★☆☆☆☆ (1/5)</option>
+											</select>
+										</div>
+										<!-- Message -->
+										{% csrf_token %}
+										<div class="col-12 bg-light-input">
+											<textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your Comment" rows="3" name='comment'></textarea>
+										</div>
+										<!-- Button -->
+										<div class="col-12">
+											<button type="submit" class="btn btn-primary mb-0" href="" >Post Review</button>
+										</div>
+									</form>
+								</div>
+								<!-- Leave Review END -->
+
+							</div>
+							<!-- Content END -->
+
+
+						
+					</div>
+					<!-- Tab contents END -->
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			<div class="col-lg-4">
+				<div class="row mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-12">
+						<!-- Video START -->
+						<div class="card shadow p-2 mb-4 z-index-9">
+							<div class="overflow-hidden rounded-3 text-center">
+								{%if tool.image %}
+								<img src=" {{ tool.image.url }}" class="" style="max-height: 150px;" alt="tool image">
+								{% else %}
+								<img src=" {%static 'img/Default.webp' %}" class="" style="max-height: 150px;" alt="tool image (else)">
+								{% endif %}
+								<!-- Overlay -->
+								
+							</div>
+						</div>
+						<!-- Video END -->
+
+						<!-- Course info START -->
+						<div class="card card-body shadow p-4 mb-4">
+							<!-- Title -->
+							<h4 class="mb-3">Kurzinformationen</h4>
+							<ul class="list-group list-group-borderless">
+								{% if tool.letztes_update %}
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="{{ letztes_update_class }} fa-fw text-primary"></i>{{ letztes_update_label }}</span>
+									<span>{{ tool.letztes_update }}</span>
+								</li>
+								{% endif %}
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Lizenz</span>
+									<span>{{ tool.lizenz }}</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-history text-primary"></i>Lebenszyklusphase</span>
+									<span>{{ tool.lebenszyklusphase }}</span>
+								</li>
+							</ul>
+						</div>
+						<!-- Course info END -->
+					</div>
+
+					<div class="col-md-6 col-lg-12">
+
+						<!-- Tags START -->
+						<div class="card card-body shadow p-4">
+							<h4 class="mb-3">Tags</h4>
+							<ul class="list-inline mb-0">
+								{% for kategorie in kategorien %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k={{kategorie}}&l=&lzp=">{{kategorie}}</a> </li>
+								{% endfor %}
+								{% if tool.lizenz %}
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l={{tool.lizenz}}&lzp=">{{tool.lizenz}}</a> </li>
+								{% endif %}
+								{% for lebenszyklusphase in lebenszyklusphasen %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l=&lzp={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+								{% endfor %}
+							</ul>
+						</div>	
+						<!-- Tags END -->
+					</div>
+				</div><!-- Row End -->
+			</div>
+			<!-- Right sidebar END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+{% endblock %}
