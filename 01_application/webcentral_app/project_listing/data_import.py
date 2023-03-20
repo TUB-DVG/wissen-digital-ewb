@@ -444,20 +444,20 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
-#path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
-#header, data = csv2m4db_enargus(path_csv_enargus)
+# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
+# header, data = csv2m4db_enargus(path_csv_enargus)
 
 ## Example add/update Modul-Zuordnung data
-#path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
-#header, data = csv2m4db_modul(path_csv_modul)
+# path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
+# header, data = csv2m4db_modul(path_csv_modul)
 
 ## Example add/update Tool Uebersichts table
-#path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-#header, data = csv2m4db_tools(path_csv_tools)
+# path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+# header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
-#path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-#header, data = csv2m4db_weatherdata(path_csv_weatherdata)
+# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
+# header, data = csv2m4db_weatherdata(path_csv_weatherdata)
 
 ## Example add/update Schlagwoerter table
 path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
