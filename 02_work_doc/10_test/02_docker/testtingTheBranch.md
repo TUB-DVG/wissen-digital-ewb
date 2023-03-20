@@ -1,4 +1,6 @@
 # Testing the merged Branch
+Hint: The docker-compose project was developed under the docker-compose version 2.15. If you are using 
+an older docker-compose version make sure to upgrade your Docker-compose to a version newer or equal to 2.15.
 ## Preparation of the Project:
 First, the `.env`-file has to be edited. The `.env.example`-file should be copied into 
 a file called `.env`-file:
