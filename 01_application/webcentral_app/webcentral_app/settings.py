@@ -138,15 +138,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 #STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
-STATIC_ROOT = "/vol/webcentral/static"
-STATIC_URL = '/static/static/'
-STATICFILES_DIRS = [
-    Path.joinpath(BASE_DIR, 'webcentral_app/static')
-]
-# Media folder settings
-# MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-MEDIA_ROOT = "/vol/webcentral/media"
-MEDIA_URL = '/static/media/'
+if os.environ.get("MODE") == "production":
+    STATIC_ROOT = "/vol/webcentral/static"
+    STATIC_URL = '/static/static/'
+    STATICFILES_DIRS = [
+        Path.joinpath(BASE_DIR, 'webcentral_app/static')
+    ]
+    # Media folder settings
+    # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
+    MEDIA_ROOT = "/vol/webcentral/media"
+    MEDIA_URL = '/media/'
+else:
+    STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = [
+        Path.joinpath(BASE_DIR, 'webcentral_app/static')
+    ]
+    # Media folder settings
+    MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
+    MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
