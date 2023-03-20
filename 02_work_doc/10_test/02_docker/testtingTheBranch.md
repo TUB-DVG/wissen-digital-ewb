@@ -81,8 +81,22 @@ For that a file called `local_settings.py` needs to be placed inside `01_applica
     MEDIA_URL = '/media/'
 ```
 
-When the local_settings.py is present, start the django-development server from the git-root-directory. (First activate your virtual python environment!)
+When the local_settings.py is present, start the django-development server from the git-root-directory. 
+The python-dependencies need to be present for the application to work. For that, a python virtual environment needs to
+be created. For that, in a Directory of choice the following command has to be executed:
 ```
-    python3 01_application/webcentral_app/manage.py runserver 
+    python3 -m venv venv
+```
+This creates a virtual environment with the name `venv`. Activate the environment by
+```
+    . venv/bin/activate
+```
+Navigate to the webcentral-folder and change directory into `01_application`. There, the python dependecies have to be installed in the virtul environment with the command:
+```
+    pip install -r requirements.txt
+```
+Now, the django application can be executed with the command: 
+```
+    python3 webcentral_app/manage.py runserver 
 ```
 Now the app should be accessible over http://127.0.0.1:8000
