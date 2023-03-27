@@ -4,16 +4,15 @@
 
 import csv
 import pdb
-import tkinter as tk
-from tkinter import ttk
 
+from django.core.management.base import BaseCommand
 from encodings import utf_8
 from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
 
-class ExecuteImport:
+class Command(BaseCommand):
     """
     
     """
@@ -82,9 +81,3 @@ class ExecuteImport:
                     if len(Teilprojekt.objects.filter(fkz=fkz, schlagwortregister_erstsichtung_id=currentSchlagwortregisterId)) == 0:
                         assert False, f"Teilprojekt with Förderkennziffer {fkz} and SchlagwortregisterId {currentSchlagwortregisterId} doesn't exist!"                    
 
-
-
-
-executeimportChangesObj = ExecuteImport("schlagwort_register_diff.csv")
-executeimportChangesObj.executeChanges()
-executeimportChangesObj.testIfChangesAreExecuted()

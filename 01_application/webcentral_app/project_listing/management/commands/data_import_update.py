@@ -8,15 +8,16 @@ import csv
 import pdb
 import tkinter as tk
 from tkinter import ttk
-
 from encodings import utf_8
+
+from django.core.management.base import BaseCommand, CommandError
 from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
 
 # -*- coding: utf-8 -*-
-class DataImport:
+class Command(BaseCommand):
     """
     
     """
@@ -404,13 +405,13 @@ class DataImport:
                 treeOfTablesCurrent = treelib.Tree()
                 treeOfTablesPending = treelib.Tree()
 
-                unvisited.append(["enargus_daten", currentObj, obj])
+                unvisited.append(["Enargus", currentObj, obj, "Teilprojekt"])
 
                 #parentNode = anytree.Node("Teilprojekt")
                 
                 parentName = None
 
-
+                #pdb.set_trace()
 
                 #currentForeignTableObj = currentTeilprojektObj
                 
@@ -418,11 +419,14 @@ class DataImport:
                 diffPendingObjDict = {}
 
                 while len(unvisited) > 0:
-                    depth += 1
+                    #depth += 1
+                    
                     currentEntryInUnvisited = unvisited.pop()
+                    
                     currentForeignTableName = currentEntryInUnvisited[0]
                     currentTableObj = currentEntryInUnvisited[1]
                     pendingTableObj = currentEntryInUnvisited[2]
+                    parentTableName = currentEntryInUnvisited[3]
                     #currentObj.__getattribute__(currentForeignTableName)
                     # if parentName != None:
                     #     treeOfTablesCurrent.create_node(currentForeignTableName, currentForeignTableName, parent=parentName, data=currentObj.__getattribute__(currentForeignTableName))
@@ -432,36 +436,48 @@ class DataImport:
                     #     treeOfTablesPending.create_node(unvisited[0], unvisited[0], data=obj)
                     
                     visited.append(currentEntryInUnvisited)
-                    visitedNames.append(currentForeignTableName)
+                    if currentForeignTableName != "anschrift":
+                        visitedNames.append(currentForeignTableName)
                     #currentTableObj = treeOfTablesCurrent.get_node(currentForeignTableName).data
                     listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                     
                     if currentForeignTableName not in diffCurrentObjDict.keys():
-                        diffCurrentObjDict[currentForeignTableName] = ""
-                        diffPendingObjDict[currentForeignTableName] = ""
+                        diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
+                        diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
 
                     for teilprojektField in listOfFieldsInCurrentTable:
                         currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
                         if teilprojektField.is_relation and currentForeignTableStr not in visitedNames and not teilprojektField.one_to_many:
                             #pdb.set_trace()
                             try:
-                                unvisited.append([currentForeignTableStr, currentTableObj.__getattribute__(currentForeignTableStr), pendingTableObj.__getattribute__(currentForeignTableStr)])
+                                #pdb.set_trace()
+                                #parentTableName = currentTableObj.__doc__.split("(")[0]
+                                unvisited.append([currentForeignTableStr, currentTableObj.__getattribute__(currentForeignTableStr), pendingTableObj.__getattribute__(currentForeignTableStr), currentForeignTableName])
                             except:
                                 pdb.set_trace()
                         elif not teilprojektField.is_relation:
                             #pdb.set_trace()
                             #currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
                             try:
+                                #pdb.set_trace()
                                 if pendingTableObj.__getattribute__(currentForeignTableStr) != currentTableObj.__getattribute__(currentForeignTableStr):
-                                    diffCurrentObjDict[currentForeignTableName] = diffCurrentObjDict[currentForeignTableName] + f"{currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
-                                    diffPendingObjDict[currentForeignTableName] = diffPendingObjDict[currentForeignTableName] + f"{currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
+                                    diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
+                                    diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
                             except:
                                 pdb.set_trace()
+                    
+                    if diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] == "":
+                        diffCurrentObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
+                        diffPendingObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
 
 
                 with open(self.dbDiffLogCSV, "a") as f:
-                    f.write(f"{str(diffCurrentObjDict)}\n")
-                    f.write(f"{str(diffPendingObjDict)}\n")
+                    for numberOfWrittenTableDiffs, currentTableEntry in enumerate(diffCurrentObjDict.keys()):
+                            f.write(f"  {currentTableEntry}\n")
+                            f.write(f"      {diffCurrentObjDict[currentTableEntry]}\n")
+                            f.write(f"      {diffPendingObjDict[currentTableEntry]}\n")
+                    f.write(f"Current: 10\n")
+                    f.write(f"Pending: 10\n")
                 #pdb.set_trace()
                     
 
@@ -717,12 +733,23 @@ class DataImport:
                 # get_or_create_schlagwortregister(row, header)
                 self.add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
         return header, data
+    
+    def handle(self, *args, **options):
+        """
+        
+        """
+        #pdb.set_trace()
+        path_csv_enargus=options["pathCSV"][0]
+        header, data = self.csv2m4db_enargus(path_csv_enargus)
+    
+    def add_arguments(self, parser):
+        parser.add_argument('pathCSV', nargs='+', type=str) 
 
 # Script area (here you find examples to use the functions ahead)
-classObj = DataImport()
+#classObj = DataImport()
 # ## Example add/update Enargus data
-path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220902.csv'
-header, data = classObj.csv2m4db_enargus(path_csv_enargus)
+# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220902.csv'
+# header, data = classObj.csv2m4db_enargus(path_csv_enargus)
 
 # ## Example add/update Modul-Zuordnung data
 # path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220829.csv'
@@ -740,106 +767,106 @@ header, data = classObj.csv2m4db_enargus(path_csv_enargus)
 # path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/ZE_fuer_BF_enargus_ergaenzt_Auswahl_rst_fc.csv'
 # header, data = classObj.csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
 
-window = tk.Tk()
-window.attributes('-zoomed', True)
-table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-table.heading("fkz", text="FKZ")
-table.heading("current", text="Current enargus id")
-table.heading("pending", text="Pending Update enargus id")
-table.pack(fill="both")
+# window = tk.Tk()
+# window.attributes('-zoomed', True)
+# table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
+# table.heading("fkz", text="FKZ")
+# table.heading("current", text="Current enargus id")
+# table.heading("pending", text="Pending Update enargus id")
+# table.pack(fill="both")
 
-# def updatePending()
+# # def updatePending()
 
-for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedEnargus):
-    table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
+# for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedEnargus):
+#     table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
 
-# def itemSelect(_):
-#     for i in table.selection():
-#         table.item(i)
+# # def itemSelect(_):
+# #     for i in table.selection():
+# #         table.item(i)
 
-#table.bind("<<TreeViewSelect>>", itemSelect)
+# #table.bind("<<TreeViewSelect>>", itemSelect)
 
-def deleteItems(_):
-    for item in table.selection():
-        table.delete(item)
+# def deleteItems(_):
+#     for item in table.selection():
+#         table.delete(item)
 
-def updatePending(_):
+# def updatePending(_):
 
-    for item in table.selection():
-        Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-                                zuordnung_id_daten_id=table.item(item)['values'][2])  
-        table.delete(item)   
+#     for item in table.selection():
+#         Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
+#                                 zuordnung_id_daten_id=table.item(item)['values'][2])  
+#         table.delete(item)   
 
-table.bind("<Delete>", deleteItems)
-table.bind("<Return>", updatePending)
-window.mainloop()
+# table.bind("<Delete>", deleteItems)
+# table.bind("<Return>", updatePending)
+# window.mainloop()
 
-if len(classObj.dataToBeComparedModul) > 0: 
-    window = tk.Tk()
-    window.attributes('-zoomed', True)
-    table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-    table.heading("fkz", text="FKZ")
-    table.heading("current", text="Current zuordnung id")
-    table.heading("pending", text="Pending Update zuordnung id")
-    table.pack(fill="both")
+# if len(classObj.dataToBeComparedModul) > 0: 
+#     window = tk.Tk()
+#     window.attributes('-zoomed', True)
+#     table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
+#     table.heading("fkz", text="FKZ")
+#     table.heading("current", text="Current zuordnung id")
+#     table.heading("pending", text="Pending Update zuordnung id")
+#     table.pack(fill="both")
 
-    # def updatePending()
+#     # def updatePending()
 
-    for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedModul):
-        table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
+#     for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedModul):
+#         table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
 
-    # def itemSelect(_):
-    #     for i in table.selection():
-    #         table.item(i)
+#     # def itemSelect(_):
+#     #     for i in table.selection():
+#     #         table.item(i)
 
-    #table.bind("<<TreeViewSelect>>", itemSelect)
+#     #table.bind("<<TreeViewSelect>>", itemSelect)
 
-    def deleteItems(_):
-        for item in table.selection():
-            table.delete(item)
+#     def deleteItems(_):
+#         for item in table.selection():
+#             table.delete(item)
 
-    def updatePending(_):
+#     def updatePending(_):
 
-        for item in table.selection():
-            Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-                                    enargus_daten_id=table.item(item)['values'][2])  
-            table.delete(item)   
+#         for item in table.selection():
+#             Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
+#                                     enargus_daten_id=table.item(item)['values'][2])  
+#             table.delete(item)   
 
-    table.bind("<Delete>", deleteItems)
-    table.bind("<Return>", updatePending)
-    window.mainloop()    
-#pdb.set_trace()
-if len(classObj.dataToBeComparedSchlagwort) > 0:
-    window = tk.Tk()
-    window.attributes('-zoomed', True)
-    table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-    table.heading("fkz", text="FKZ")
-    table.heading("current", text="Current zuordnung id")
-    table.heading("pending", text="Pending Update zuordnung id")
-    table.pack(fill="both")
+#     table.bind("<Delete>", deleteItems)
+#     table.bind("<Return>", updatePending)
+#     window.mainloop()    
+# #pdb.set_trace()
+# if len(classObj.dataToBeComparedSchlagwort) > 0:
+#     window = tk.Tk()
+#     window.attributes('-zoomed', True)
+#     table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
+#     table.heading("fkz", text="FKZ")
+#     table.heading("current", text="Current zuordnung id")
+#     table.heading("pending", text="Pending Update zuordnung id")
+#     table.pack(fill="both")
 
-    # def updatePending()
+#     # def updatePending()
 
-    for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedSchlagwort):
-        table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
+#     for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedSchlagwort):
+#         table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
 
-    # def itemSelect(_):
-    #     for i in table.selection():
-    #         table.item(i)
+#     # def itemSelect(_):
+#     #     for i in table.selection():
+#     #         table.item(i)
 
-    #table.bind("<<TreeViewSelect>>", itemSelect)
+#     #table.bind("<<TreeViewSelect>>", itemSelect)
 
-    def deleteItems(_):
-        for item in table.selection():
-            table.delete(item)
+#     def deleteItems(_):
+#         for item in table.selection():
+#             table.delete(item)
 
-    def updatePending(_):
+#     def updatePending(_):
 
-        for item in table.selection():
-            Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-                                    enargus_daten_id=table.item(item)['values'][2])  
-            table.delete(item)   
+#         for item in table.selection():
+#             Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
+#                                     enargus_daten_id=table.item(item)['values'][2])  
+#             table.delete(item)   
 
-    table.bind("<Delete>", deleteItems)
-    table.bind("<Return>", updatePending)
-    window.mainloop()
+#     table.bind("<Delete>", deleteItems)
+#     table.bind("<Return>", updatePending)
+#     window.mainloop()
