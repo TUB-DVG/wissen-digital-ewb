@@ -34,6 +34,7 @@ class DataImport:
         self.dictOfUsedClassInstances = {
             "Teilprojekt": Teilprojekt,
         }
+        self.visited = []
 
 
     def get_or_create_forschung(self, row, header):
@@ -370,32 +371,137 @@ class DataImport:
                 
 
                 # get list of foreign fields:
-                listOfFieldsInTeilprojekt = Teilprojekt._meta.get_fields()
+                listOfFieldsInTeilprojekt = obj._meta.get_fields()
                 listOfForeignFieldsInTeilprojekt = []
 
                 for teilprojektField in listOfFieldsInTeilprojekt:
                     if teilprojektField.is_relation:
                         listOfForeignFieldsInTeilprojekt.append(teilprojektField)
                 
-                pdb.set_trace()
+                #pdb.set_trace()
 
                 currentStateDict = {}
                 newStateDict = {}
 
-                newStateDict["zuordnung_id"] = mod_id
+                newStateDict["enargus_daten_id"] = enargus_id
                 newStateDict["child"] = {}
-                currentTeilprojektObj = Teilprojekt.objects.filter(fkz=fkz)[0]
+                currentObj = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
 
-                for foreignKey in listOfForeignFieldsInTeilprojekt:
-                    foreignKeyStr = foreignKey.__str__().split(".")[-1]
-                    # get the instance of the modelclass from which the foreign-keys are taken
-                    currentModel = self.dictOfUsedClassInstances[foreignKey.__str__().split(".")[1]]
-                    
-                    # switch into foreign key table
-                    currentForeignTable = currentModel.__getattribute__(foreignKeyStr)
+                visitedTables = ["teilprojekt"]
 
-                    # get fields, which are no foreign-key fields in the foreign-key table:
+                objDescending = obj
+
+                visited = []
+                visitedNames = []
+                unvisited = []
+                visitedNames.append("teilprojekt")
+                mapTableToindex = {}
+                mapTableToindex
+                #adjacencyList = []
+                depth = 0
+                import treelib
+
+                treeOfTablesCurrent = treelib.Tree()
+                treeOfTablesPending = treelib.Tree()
+
+                unvisited.append(["enargus_daten", currentObj, obj])
+
+                #parentNode = anytree.Node("Teilprojekt")
+                
+                parentName = None
+
+
+
+                #currentForeignTableObj = currentTeilprojektObj
+                
+                diffCurrentObjDict = {}
+                diffPendingObjDict = {}
+
+                while len(unvisited) > 0:
+                    depth += 1
+                    currentEntryInUnvisited = unvisited.pop()
+                    currentForeignTableName = currentEntryInUnvisited[0]
+                    currentTableObj = currentEntryInUnvisited[1]
+                    pendingTableObj = currentEntryInUnvisited[2]
+                    #currentObj.__getattribute__(currentForeignTableName)
+                    # if parentName != None:
+                    #     treeOfTablesCurrent.create_node(currentForeignTableName, currentForeignTableName, parent=parentName, data=currentObj.__getattribute__(currentForeignTableName))
+                    #     treeOfTablesPending.create_node(currentForeignTableName, currentForeignTableName, data=obj) 
+                    # else:
+                    #     treeOfTablesCurrent.create_node(unvisited[0], unvisited[0], data=currentObj.__getattribute__(unvisited[0]))
+                    #     treeOfTablesPending.create_node(unvisited[0], unvisited[0], data=obj)
                     
+                    visited.append(currentEntryInUnvisited)
+                    visitedNames.append(currentForeignTableName)
+                    #currentTableObj = treeOfTablesCurrent.get_node(currentForeignTableName).data
+                    listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
+                    
+                    if currentForeignTableName not in diffCurrentObjDict.keys():
+                        diffCurrentObjDict[currentForeignTableName] = ""
+                        diffPendingObjDict[currentForeignTableName] = ""
+
+                    for teilprojektField in listOfFieldsInCurrentTable:
+                        currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
+                        if teilprojektField.is_relation and currentForeignTableStr not in visitedNames and not teilprojektField.one_to_many:
+                            #pdb.set_trace()
+                            try:
+                                unvisited.append([currentForeignTableStr, currentTableObj.__getattribute__(currentForeignTableStr), pendingTableObj.__getattribute__(currentForeignTableStr)])
+                            except:
+                                pdb.set_trace()
+                        elif not teilprojektField.is_relation:
+                            #pdb.set_trace()
+                            #currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
+                            try:
+                                if pendingTableObj.__getattribute__(currentForeignTableStr) != currentTableObj.__getattribute__(currentForeignTableStr):
+                                    diffCurrentObjDict[currentForeignTableName] = diffCurrentObjDict[currentForeignTableName] + f"{currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
+                                    diffPendingObjDict[currentForeignTableName] = diffPendingObjDict[currentForeignTableName] + f"{currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
+                            except:
+                                pdb.set_trace()
+
+
+                with open(self.dbDiffLogCSV, "a") as f:
+                    f.write(f"{str(diffCurrentObjDict)}\n")
+                    f.write(f"{str(diffPendingObjDict)}\n")
+                #pdb.set_trace()
+                    
+
+                    #mapNameToIndex[currentForeignTableName] = len(mapNameToIndex.keys())
+                    #treeOfTablesCurrent
+
+                    # adjacencyList[mapNameToIndex[currentForeignTableName]] = []
+                    
+                    # adjacencyList[mapNameToIndex[currentForeignTableName]].append(currentForeignTableObj.__getattribute__(currentForeignTableName))
+
+                    
+                    #currentDataSet = 
+
+
+
+                # for foreignKey in listOfForeignFieldsInTeilprojekt:
+                #     foreignKeyStr = foreignKey.__str__().split(".")[-1]
+                #     foreignKeyStr = foreignKeyStr.strip(">")
+                    
+                #     if foreignKeyStr not in visitedTables:
+                #         # get the instance of the modelclass from which the foreign-keys are taken
+                #         pdb.set_trace()
+                #         #currentModel = self.dictOfUsedClassInstances[foreignKey.__str__().split(".")[1]]
+                        
+                #         # switch into foreign key table
+                #         #currentForeignTable = currentModel.__getattribute__(foreignKeyStr)
+                #         currentStateInForeignTable = currentTeilprojektObjEnargusDaten.__getattribute__(foreignKeyStr)
+                #         pendingStateInForeignTable = obj.__getattribute__(foreignKeyStr)
+
+                    
+
+
+                    # fieldsInCurrentForeignKeyTable = currentForeignTable._meta.get_fields()
+                    
+                    # objDescending.__getattribute__()
+
+                    # for currentFieldInForeignKeyTable in fieldsInCurrentForeignKeyTable:
+                    #     currentFieldStr = currentFieldInForeignKeyTable.__str__().split(".")[-1]
+                    #     if currentTeilprojektObjEnargusDaten.__getattribute__(currentFieldStr) != 
+
 
 
 
@@ -488,6 +594,54 @@ class DataImport:
                 #     Teilprojekt.objects.filter(pk=fkz).update(
                 #         schlagwortregister_erstsichtung_id= schlagwortregister_id)
                 #     print('updated: %s' %fkz)
+
+    def _depthFirstSearch(self, foreignTableName, visited):
+        """
+        
+        """
+
+        visited.append(foreignTableName)
+
+        
+    def _getRelationalFields(self, currentDatasetInForeignTable):
+        """
+        
+        """
+
+
+    
+    def _getNonRelatingFields(self, currentDatasetInForeignTable):
+        """
+        
+        """
+        listOfNonrelationalFields = []
+        for currentField in currentDatasetInForeignTable._meta.get_fields():
+            if not currentField.is_relational:
+                listOfNonrelationalFields.append(currentField)
+
+        return listOfNonrelationalFields
+
+
+
+    def _checkDifference(self, currentDatasetInForeignTable, pendingDatasetInForeignTable):
+        """
+        
+        """
+        nameOfCurrentTable = currentDatasetInForeignTable.__str__().split(".")[1]
+
+        nonRelationalFields = self._getNonRelatingFields(currentDatasetInForeignTable)
+        dictOfCurrentState = {}
+        dictOfPendingState = {}
+
+        dictOfCurrentState[nameOfCurrentTable] = {}
+        dictOfPendingState[nameOfCurrentTable] = {}
+
+        for field in nonRelationalFields:
+            if currentDatasetInForeignTable.__getattribute__(field) != pendingDatasetInForeignTable.__getattribute__(field):
+                dictOfCurrentState[field] = currentDatasetInForeignTable.__getattribute__(field)
+                dictOfPendingState[field] = pendingDatasetInForeignTable.__getattribute__(field)
+        
+        return dictOfCurrentState, dictOfPendingState
 
     def csv2m4db_enargus(self, path):
         """EnArgus csv-file into BF M4 Django database, hard coded"""
