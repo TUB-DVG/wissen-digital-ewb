@@ -25,11 +25,11 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         #pdb.set_trace()
         # at first at a dataset to the empty database, which will be modified later:
-        management.call_command('data_import_update', "../../02_work_doc/01_daten/01_prePro/testOneDataSet.csv")
-        management.call_command('data_import_update', "../../02_work_doc/01_daten/01_prePro/testModifiedDataSet.csv")
+        management.call_command('data_import', "../../02_work_doc/01_daten/01_prePro/enargusTestOneDataSet.csv")
+        management.call_command('data_import', "../../02_work_doc/01_daten/01_prePro/enargusTestModifiedDataSet.csv")
 
-        with open("dbDiffs.csv", "r") as f:
-            pdb.set_trace()
+        # with open("dbDiffs.csv", "r") as f:
+        #     pdb.set_trace()
 
 
 
