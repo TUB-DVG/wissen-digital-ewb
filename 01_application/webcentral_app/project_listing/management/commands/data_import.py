@@ -16,6 +16,7 @@ from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
+import numpy as np
 
 # -*- coding: utf-8 -*-
 class Command(BaseCommand):
@@ -64,7 +65,6 @@ class Command(BaseCommand):
         # content = row[number of the columns of the row]
         # decision kind of persion, where should the data read from, maybe later needed
         if who == 'zwe':
-            pdb.set_trace()
             plz = row[header.index('PLZ_ZWE')]
             ort = row[header.index('Ort_ZWE')]
             land = row[header.index('Land_ZWE')]
@@ -370,7 +370,7 @@ class Command(BaseCommand):
                 visitedNames.append("teilprojekt")
                 unvisited.append(["Enargus", currentStateTable, obj, "Teilprojekt"])
 
-                self.compareForeignTables(unvisited, visitedNames)
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, Thema: {currentStateTable.thema}")
 
         elif source == 'modul':
             obj, created = self.get_or_create_modulen_zuordnung(row, header)
@@ -388,42 +388,7 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append(["zuordnung", currentTeilprojektObj, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames)
-
-                # #pdb.set_trace()
-                # currentStateDict = {}
-                # newStateDict = {}
-                # #newModId = mod_id
-
-                # newStateDict["zuordnung_id"] = mod_id
-                # newStateDict["child"] = {}
-
-                # currentTeilprojektObj = Teilprojekt.objects.filter(fkz=fkz)[0]
-                # if currentTeilprojektObj.zuordnung_id is not None:
-                #     for currentPriority in range(1, 5):
-                #         if obj.__getattribute__(f"priority_{currentPriority}") != currentTeilprojektObj.zulassung.__getattribute__(f"priority_{currentPriority}"):
-                #             currentStateDict["child"][f"priority_{currentPriority}"] = currentTeilprojektObj.zulassung.__getattribute__(f"priority_{currentPriority}")
-                #             newStateDict["child"][f"priority_{currentPriority}"] = obj.__getattribute__(f"priority_{currentPriority}")
-                # else:
-                #     currentStateDict["zuordnung_id"] = None
-                #     currentStateDict["child"] = None
-                #     newStateDict["child"] = {
-                #         "priority_1": obj.__getattribute__(f"priority_1"),
-                #         "priority_2": obj.__getattribute__(f"priority_2"),
-                #         "priority_3": obj.__getattribute__(f"priority_3"),
-                #         "priority_4": obj.__getattribute__(f"priority_4"),
-                #     }
-                
-                # with open(self.dbDiffLogCSV, "a") as f:
-                #     f.write(f"Current State: {str(currentStateDict)} |10\n")
-                #     f.write(f"New State {str(newStateDict)} |10\n")
-                #self.dataToBeComparedModul.append(((fkz, Teilprojekt.objects.get(fkz=fkz).zuordnung_id), (fkz, mod_id)))
-                # answ = input("%s found in db. Update this part project? (Y/n): "
-                #         %fkz) or 'y'
-                # if answ == 'y':
-                #     Teilprojekt.objects.filter(pk=fkz).update(
-                #         zuordnung_id= mod_id)
-                #     print('updated: %s' %fkz)
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, {currentTeilprojektObj.thema}")
         elif source == 'schlagwortregister':
             obj, created = self.get_or_create_schlagwortregister(row, header)
             schlagwortregister_id = obj.schlagwortregister_id
@@ -434,33 +399,13 @@ class Command(BaseCommand):
                                             schlagwortregister_erstsichtung_id = schlagwortregister_id)
                     print('added: %s' %fkz)
             except IntegrityError:
+                currentObjSchlagwortregisterErstsichtung = Teilprojekt.objects.filter(fkz=fkz)[0].schlagwortregister_erstsichtung
+                unvisited = []
+                visitedNames = []
+                visitedNames.append("teilprojekt")
+                unvisited.append(["schlagwortregister_erstsichtung", currentObjSchlagwortregisterErstsichtung, obj, "Teilprojekt"])
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, Thema: {currentObjSchlagwortregisterErstsichtung.thema}")
 
-                pdb.set_trace()
-
-                # #
-                # currentSchlagwortRegisterId = Teilprojekt.objects.get(fkz=fkz).schlagwortregister_erstsichtung_id
-                # currentSchlagwortregisterRow = Schlagwortregister_erstsichtung.objects.get(schlagwortregister_id=currentSchlagwortRegisterId)
-                # #differenceList = []
-                # currentStateDict = {}
-                # newStateDict = {}
-                # for schlagwortNumber in range(1, 8):
-                #     currStr = currentSchlagwortregisterRow.__getattribute__(f"schlagwort_{schlagwortNumber}").schlagwort
-                #     newStr = obj.__getattribute__(f"schlagwort_{schlagwortNumber}").schlagwort
-                #     if currStr != newStr:
-                #         currentStateDict[f"schlagwort_{schlagwortNumber}"] = currStr
-                #         newStateDict[f"schlagwort_{schlagwortNumber}"] = newStr
-                #         #differenceList.append(currStr + " -> " + newStr)
-                # with open(self.dbDiffLogCSV, "a") as f:
-                #     f.write(f"Current State: {str(currentStateDict)} |{fkz}|{currentSchlagwortRegisterId}|10\n")
-                #     f.write(f"New State {str(newStateDict)} |{fkz}|{schlagwortregister_id}|10\n")
-                    #f.write(f"Difference for Förderkennzeichen {fkz}. Schlagwortregister_id was {currentSchlagwortRegisterId}. Should Schlagwortregister_id for {fkz} be changed to {schlagwortregister_id}? Differences in Schlagwortregister Rows: {str(differenceList)} |{fkz}|{currentSchlagwortRegisterId}|{schlagwortregister_id}|K\n")
-                #self.dataToBeComparedSchlagwort.append(((fkz, Teilprojekt.objects.get(fkz=fkz).schlagwortregister_erstsichtung_id), (fkz, schlagwortregister_id)))
-                # answ = input("%s found in db. Update this part project? (Y/n): "
-                #         %fkz) or 'y'
-                # if answ == 'y':
-                #     Teilprojekt.objects.filter(pk=fkz).update(
-                #         schlagwortregister_erstsichtung_id= schlagwortregister_id)
-                #     print('updated: %s' %fkz)
 
     def _depthFirstSearch(self, foreignTableName, visited):
         """
@@ -472,7 +417,7 @@ class Command(BaseCommand):
         
 
 
-    def compareForeignTables(self, unvisited, visitedNames):
+    def compareForeignTables(self, unvisited: list, visitedNames: list, identifer: str):
         """
         
         """
@@ -480,6 +425,10 @@ class Command(BaseCommand):
         
         diffCurrentObjDict = {}
         diffPendingObjDict = {}
+
+        with open(self.dbDiffLogCSV, "a") as f:
+            f.write(f"Conflict found for: {identifer}\n")
+
 
         while len(unvisited) > 0:
             #depth += 1
@@ -498,45 +447,55 @@ class Command(BaseCommand):
             #     treeOfTablesCurrent.create_node(unvisited[0], unvisited[0], data=currentObj.__getattribute__(unvisited[0]))
             #     treeOfTablesPending.create_node(unvisited[0], unvisited[0], data=obj)
             
-            visited.append(currentEntryInUnvisited)
-            if currentForeignTableName != "anschrift":
-                visitedNames.append(currentForeignTableName)
+            #visited.append(f"{parentTableName}.{currentEntryInUnvisited}")
+            # if currentForeignTableName != "anschrift":
+            visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
             #currentTableObj = treeOfTablesCurrent.get_node(currentForeignTableName).data
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
                 for columnName in pendingTableObj._meta.get_fields():
                     if not columnName.is_relation:
-                       #pdb.set_trace()
-                       diffPendingObjDict[currentForeignTableName] = diffPendingObjDict[currentForeignTableName] + f" {columnName.name}: {str(pendingTableObj.__getattribute__(columnName.name))}"
+                       
+                       diffPendingObjDict[currentForeignTableName] = diffPendingObjDict[currentForeignTableName] + "|" + f" {columnName.name}: {str(pendingTableObj.__getattribute__(columnName.name))}"
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 
-                if currentForeignTableName not in diffCurrentObjDict.keys():
+                if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
                     diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
                     diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
 
                 for teilprojektField in listOfFieldsInCurrentTable:
                     currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
-                    if teilprojektField.is_relation and currentForeignTableStr not in visitedNames and not teilprojektField.one_to_many:
+                    if teilprojektField.is_relation and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames and not teilprojektField.one_to_many:
                         #pdb.set_trace()
                         try:
                             #pdb.set_trace()
                             #parentTableName = currentTableObj.__doc__.split("(")[0]
                             unvisited.append([currentForeignTableStr, currentTableObj.__getattribute__(currentForeignTableStr), pendingTableObj.__getattribute__(currentForeignTableStr), currentForeignTableName])
                         except:
-
-                            pdb.set_trace()
+                            pass
                     elif not teilprojektField.is_relation:
                         #pdb.set_trace()
                         #currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
                         try:
                             #pdb.set_trace()
-                            if pendingTableObj.__getattribute__(currentForeignTableStr) != currentTableObj.__getattribute__(currentForeignTableStr):
-                                diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
-                                diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
+                            if str(pendingTableObj.__getattribute__(currentForeignTableStr)) != str(currentTableObj.__getattribute__(currentForeignTableStr)):
+                                #pdb.set_trace()
+                                strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
+                                strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
+                                lengthOfStr = np.array([len(strCurrent), len(strPending)])
+                                posOfMaxLengthStr = np.argmin(lengthOfStr)
+                                numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
+                                if posOfMaxLengthStr == 0:
+                                    strCurrent += numberOfCharacterDifference*" "
+                                else:
+                                    strPending += numberOfCharacterDifference*" "
+                            
+                                diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strCurrent
+                                diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strPending
                         except:
-                            pdb.set_trace()
+                            pass
                 
                 if diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] == "":
                     diffCurrentObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
@@ -675,6 +634,8 @@ class Command(BaseCommand):
             header, data = self.csv2m4db_enargus(pathCSV)
         elif "Tools" in filename:
             header, data = self.csv2m4db_tools(pathCSV)
+        elif "schlagwoerter" in filename:
+            header, data = self.csv2m4db_schlagwortregister_erstsichtung(pathCSV)
         elif "weatherdata" in filename:
             header, data = self.csv2m4db_weatherdata(pathCSV)
         else:
