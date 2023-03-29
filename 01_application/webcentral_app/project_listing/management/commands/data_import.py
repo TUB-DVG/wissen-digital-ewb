@@ -370,7 +370,7 @@ class Command(BaseCommand):
                 visitedNames.append("teilprojekt")
                 unvisited.append(["Enargus", currentStateTable, obj, "Teilprojekt"])
 
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, Thema: {currentStateTable.thema}")
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} Thema: {currentStateTable.thema}")
 
         elif source == 'modul':
             obj, created = self.get_or_create_modulen_zuordnung(row, header)
@@ -388,7 +388,7 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append(["zuordnung", currentTeilprojektObj, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, {currentTeilprojektObj.thema}")
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} {currentTeilprojektObj.thema}")
         elif source == 'schlagwortregister':
             obj, created = self.get_or_create_schlagwortregister(row, header)
             schlagwortregister_id = obj.schlagwortregister_id
@@ -404,7 +404,7 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append(["schlagwortregister_erstsichtung", currentObjSchlagwortregisterErstsichtung, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz}, Thema: {currentObjSchlagwortregisterErstsichtung.thema}")
+                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} Thema: {currentObjSchlagwortregisterErstsichtung.thema}")
 
 
     def _depthFirstSearch(self, foreignTableName, visited):
