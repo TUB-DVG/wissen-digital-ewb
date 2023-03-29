@@ -21,7 +21,12 @@ class Command(BaseCommand):
         
         """
         pathDiffFile = options["pathDiffFile"][0]
-        self.parseFile(pathDiffFile)
+        listOfParsedConflicts = self.parseFile(pathDiffFile)
+
+        for listOfNeededDBObjects in listOfParsedConflicts:
+            if listOfNeededDBObjects is not None:
+                self.executeAction(listOfNeededDBObjects)
+                pdb.set_trace()
 
     def add_arguments(self, parser):
         """
@@ -30,7 +35,7 @@ class Command(BaseCommand):
         parser.add_argument('pathDiffFile', nargs='+', type=str) 
 
     
-    def executeDiff(self, lineList):
+    def parseConflict(self, lineList):
         """This method parses a list of strings, which represents one difference 
         from the database-difference-logfile, and keeps the user-specified state,
         while discarding the other one.
@@ -53,7 +58,9 @@ class Command(BaseCommand):
 
         
 
-        identiferForConflictingObj = lineList[0].split("Conflict found for:")[1].strip().split(":")
+        identiferForConflictingObj = lineList[0].split("Conflict found for:")[1].split("Thema")[0].strip().split(":")
+        #identiferForConflictingObj
+
 
         if "10" in optionPending or "10" in optionCurrent:
             print("Detected default-value (10). No changes in the DB will be made for current Difference!")
@@ -64,36 +71,60 @@ class Command(BaseCommand):
                 tableName = lineList[1].split(".")[1].lower().strip()
                 parentTable = lineList[1].split(".")[0].strip()
                 currentStateRow = lineList[2].strip().split("|")
+                idOfCurrentState = int(currentStateRow[1].split(":")[1])
                 pendingStateRow = lineList[3].strip().split("|")
                 idAttributeStr = tableName + "_id"
                 for cellInRow in pendingStateRow:
                     
                     if idAttributeStr in cellInRow:
+                        #pdb.set_trace()
                         idOfPendingState = int(cellInRow.split(":")[1].strip())
                         nameOfIdColumn = cellInRow.split(":")[0].strip()
-                        pendingObj = globals()[tableName[0].upper() + tableName[1:].lower()].objects.filter(**{nameOfIdColumn: idOfPendingState})[0]
+                        try:
+                            pendingObj = globals()[tableName[0].upper() + tableName[1:].lower()].objects.filter(**{nameOfIdColumn: idOfPendingState})[0]
+                        except:
+                            print("Cant find pending Object with the specified ID. Do you already executed an action for the current conflict?")
+                            return None
+                        currentStateObj = globals()[parentTable].objects.filter(**{identiferForConflictingObj[0]: identiferForConflictingObj[1].strip()})[0]
                         #pdb.set_trace()
-                        if optionCurrent == "1":
-                            
-                            pendingObj.delete()
-                        else:
-                            currentStateObj = globals()[parentTable].objects.filter(**{identiferForConflictingObj[0]: identiferForConflictingObj[1].strip()})[0]
-                            
-                            tableNameUpper = tableName[0].upper() + tableName[1:].lower()
-                            nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(globals()[parentTable], globals()[tableNameUpper])
-                            currentStateRow = currentStateObj.__getattribute__(nameOfFieldRelatesToTable.name)
-                            pdb.set_trace()
-                            
-                            currentStateObj.__setattr__(nameOfFieldRelatesToTable.name, pendingObj)
-                            currentStateObj.save()
-                             
-                            #globals()[parentTable].objects.filter
-                            currentStateRow.delete()
+                        tableNameUpper = tableName[0].upper() + tableName[1:].lower()
+                        nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(globals()[parentTable], globals()[tableNameUpper])
+                        currentStateRowObj = currentStateObj.__getattribute__(nameOfFieldRelatesToTable.name)
+                        # if optionCurrent == "0" and currentStateRowObj.pk == idOfPendingState:
+                        #     print("Changes for the current Conflict were already made! Did you re-execute an already executed dbDiff-file? No Changes made for current Conflict!")
+                        #     r
+                        if currentStateRowObj.pk != idOfCurrentState or pendingObj.pk != idOfPendingState:
+                            print("Conflict doesn't represent the current Database State. Did you already execute an action for the current conflict or do you have multiple conflicts for the same fkz? No actions are made for the current conflict!")
+                            return None
+                        return [optionCurrent, currentStateObj, pendingObj, currentStateRowObj, nameOfFieldRelatesToTable]
 
-                                #globals()[parentTable].objects.filter(**identiferForConflictingObj[0]=identiferForConflictingObj[1].strip(), cellInRow[0]=int(idOfPendingState))
-                            
+        return None        
 
-                
+    def executeAction(self, listOfDatabaseObjs: list):
+        """This method executes an valid user-specified Action from the database Difference Logfile. Therefore it gets 
+        a list with all needed objects, which where extracted by the parseConflict method. Depending on the specified action
+        the current state is kept and the pending state deleted from the database (optionCurrent == 1) or 
+        the pending state is set as the new dataset, while the old dataset is deleted from the database (else-branch)
+
+        listOfDatabaseObj:  list(obj)
+            list of different objects, which are needed to solve the database conflict.
+        
+        """
+
+        optionCurrent = listOfDatabaseObjs[0]  
+        currentStateObj = listOfDatabaseObjs[1]
+        pendingObj = listOfDatabaseObjs[2]   
+        currentStateRow = listOfDatabaseObjs[3]
+        nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
+        
+        if optionCurrent == "1":
+            pendingObj.delete()
+        
+        else:
+            currentStateObj.__setattr__(nameOfFieldRelatesToTable.name, pendingObj)
+            currentStateObj.save()
+
+            currentStateRow.delete()
 
 
     def findFieldNameRelatingToForeignTable(self, parentTable, tableObj):
@@ -111,7 +142,7 @@ class Command(BaseCommand):
         """
         
         """
-
+        listOfParsedConflicts = []
         with open(filename, "r") as f:
             lines = f.readlines()
             currentDiffList = []
@@ -120,34 +151,11 @@ class Command(BaseCommand):
                     currentDiffList.append(line)
                 else:
                     currentDiffList.append(line)
-                    self.executeDiff(currentDiffList)
-                    currentDiffList = []
-            #reader = csv.reader(f, delimiter='|')
-            
-            # for row in reader:
-            #     #pdb.set_trace()
-            #     fkz = row[1] 
-            #     currentSchlagwortregisterId = int(row[2])
-            #     newSchlagwortregisterId = int(row[3])
-            #     if row[4] == "U":
+                    
+                    rtndObj = self.parseConflict(currentDiffList)
+                    listOfParsedConflicts.append(rtndObj)
 
-            #         Teilprojekt.objects.filter(
-            #             fkz=fkz, 
-            #             schlagwortregister_erstsichtung_id=currentSchlagwortregisterId,
-            #         ).update(schlagwortregister_erstsichtung_id=newSchlagwortregisterId)
-
-            #         # check if currentSchlagwortregisterId is used by other fkz and deletes it, if not:
-            #         if len(Teilprojekt.objects.filter(schlagwortregister_erstsichtung_id=currentSchlagwortregisterId)) == 0:
-            #             Schlagwortregister_erstsichtung.objects.filter(schlagwortregister_id=currentSchlagwortregisterId).delete()
-
-            #     if row[4] == "K":
-            #         listOfNotUpdatedSchlagwortregisterIDs.append(newSchlagwortregisterId)
-            
-            # for notUpdatedSchlagwortRegisterId in listOfNotUpdatedSchlagwortregisterIDs:
-            #     queryForNotUpdatedID = Teilprojekt.objects.filter(schlagwortregister_erstsichtung_id=notUpdatedSchlagwortRegisterId)
-
-            #     if len(queryForNotUpdatedID) == 0:
-            #         Schlagwortregister_erstsichtung.objects.filter(schlagwortregister_id=notUpdatedSchlagwortRegisterId).delete()
+        return listOfParsedConflicts
 
 
     def testIfChangesAreExecuted(self):
