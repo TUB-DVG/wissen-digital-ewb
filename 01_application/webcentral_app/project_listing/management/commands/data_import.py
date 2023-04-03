@@ -6,21 +6,19 @@ It uses the .csv import-functionality.
 
 import csv
 import pdb
-#import tkinter as tk
-#from tkinter import ttk
 from encodings import utf_8
 import os
 import datetime
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
+import numpy as np
+
 from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
-import numpy as np
-import yaml
+from project_listing.DatabaseDifference import DatabaseDifference
 
-# -*- coding: utf-8 -*-
 class Command(BaseCommand):
     """
     
@@ -36,11 +34,15 @@ class Command(BaseCommand):
         self.dataToBeComparedSchlagwort = []
         
         currentTimestamp = datetime.datetime.now()
-        self.DBdifferenceFileName = str(currentTimestamp.date()) + str(currentTimestamp.time().hour) + str(currentTimestamp.time().minute) + str(currentTimestamp.time().second) + ".yaml"
+        self.DBdifferenceFileName = (str(currentTimestamp.date()) 
+            + str(currentTimestamp.time().hour) 
+            + str(currentTimestamp.time().minute) 
+            + str(currentTimestamp.time().second) 
+            + ".yaml")
 
 
 
-    def get_or_create_forschung(self, row, header):
+    def getOrCreateForschung(self, row, header):
         """
         add entry into table forschung or/and return entry key
         """
@@ -53,11 +55,11 @@ class Command(BaseCommand):
             bundesministerium=bundesministerium,
             projekttraeger=projekttraeger,
             forschungsprogramm=forschungsprogramm,
-            foerderprogramm=foerderprogramm
+            foerderprogramm=foerderprogramm,
         )
         return obj, created
 
-    def get_or_create_anschrift(self, row, header, who):
+    def getOrCreateAnschrift(self, row, header, who):
         """
         add entry into table anschrift or/and return entry key
 
@@ -66,7 +68,8 @@ class Command(BaseCommand):
         - 'as' : ausfehrende Stelle
         """
         # content = row[number of the columns of the row]
-        # decision kind of persion, where should the data read from, maybe later needed
+        # decision kind of persion, where should the data read from, 
+        # maybe later needed
         if who == 'zwe':
             plz = row[header.index('PLZ_ZWE')]
             ort = row[header.index('Ort_ZWE')]
@@ -86,12 +89,13 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def get_or_create_person(self, row, header):
+    def getOrCreatePerson(self, row, header):
         """
         add entry into table person or/and return entry key
         """
         # content = row[number of the columns of the row]
-        # decision kind of persion, where should the data read from, maybe later needed
+        # decision kind of persion, where should the data read from, 
+        # maybe later needed
         name = row[header.index('Name_pl')]
         vorname = row[header.index('Vorname_pl')]
         titel = row[header.index('Titel_pl')]
@@ -100,59 +104,63 @@ class Command(BaseCommand):
             name = name,
             vorname = vorname,
             titel = titel,
-            email = email
+            email = email,
         )
         return obj, created
 
-    def get_or_create_leistung_sys(self, row, header):
+    def getOrCreateLeistungSys(self, row, header):
         """
         add entry into table leistung_sys or/and return entry key
         """
         # content = row[number of the columns of the row]
-        leistungsplansystematik_text = row[header.index('Leistungsplan_Sys_Text')]
-        leistungsplansystematik_nr = row[header.index('Leistungsplan_Sys_Nr')]
+        leistungsplansystematikText = row[header.index('Leistungsplan_Sys_Text')]
+        leistungsplansystematikNr = row[header.index('Leistungsplan_Sys_Nr')]
 
         obj, created = Leistung_sys.objects.get_or_create(
-            leistungsplansystematik_nr =  leistungsplansystematik_nr,
-            leistungsplansystematik_text = leistungsplansystematik_text
+            leistungsplansystematik_nr =  leistungsplansystematikNr,
+            leistungsplansystematik_text = leistungsplansystematikText
         )
         return obj, created
 
-    def get_or_create_zuwendungsempfaenger(self, row, header):
+    def getOrCreateZuwendungsempfaenger(self, row, header):
         """
         add entry into table zuwendungsempfaenger or/and return entry key
         """
     # fill table anschrift in case of zuwendungsempfaenger
         # or/and get the anschrift_id
-        obj_ans_zwe, created_ans_zwe = self.get_or_create_anschrift(row, header, 'zwe')
-        zwe_ans_id = obj_ans_zwe.anschrift_id
+        objAnsZwe, _ = self.getOrCreateAnschrift(
+            row, 
+            header, 
+            'zwe',
+        )
+        zweAnsId = objAnsZwe.anschrift_id
 
         # content = row[number of the columns of the row]
         name = row[header.index('Name_ZWE')]
         obj, created = Zuwendungsempfaenger.objects.get_or_create(
             name = name,
-            anschrift_id = zwe_ans_id
+            anschrift_id = zweAnsId
         )
         return obj, created
 
-    def get_or_create_ausfuehrende_stelle(self, row, header):
+    def getOrCreateAusfuehrendeStelle(self, row, header):
         """
         add entry into table ausfuehrende_stelle or/and return entry key
         """
     # fill table anschrift in case of ausfuehrende_stelle
         # or/and get the anschrift_id
-        obj_ans_as, created_ans_as = self.get_or_create_anschrift(row, header, 'as')
-        as_ans_id = obj_ans_as.anschrift_id
+        objAnsAs, _ = self.getOrCreateAnschrift(row, header, 'as')
+        asNsId = objAnsAs.anschrift_id
 
         # content = row[number of the columns of the row]
         name = row[header.index('Name_AS')]
         obj, created = Ausfuehrende_stelle.objects.get_or_create(
             name = name,
-            anschrift_id = as_ans_id
+            anschrift_id = asNsId
         )
         return obj, created
 
-    def get_or_create_enargus(self, row, header):
+    def getOrCreateEnargus(self, row, header):
         """
         add entry into table enargus or/and return entry key
         """
@@ -160,24 +168,24 @@ class Command(BaseCommand):
         # print(forschung_id)
 
         # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
-        obj_zwe, created_zwe = self.get_or_create_zuwendungsempfaenger(row, header)
-        zwe_id = obj_zwe.zuwendungsempfaenger_id
+        objZwe, _ = self.getOrCreateZuwendungsempfaenger(row, header)
+        zwe_id = objZwe.zuwendungsempfaenger_id
 
         # fill table ausfuehrende_stelle or/and get the ausfuehrende_stelle_id
-        obj_as, created_as = self.get_or_create_ausfuehrende_stelle(row, header)
-        as_id = obj_as.ausfuehrende_stelle_id
+        objAs, _ = self.getOrCreateAusfuehrendeStelle(row, header)
+        asId = objAs.ausfuehrende_stelle_id
 
         # fill table leistung_sys or/and get the leistungsplansystematik_nr
-        obj_lps, created_lps = self.get_or_create_leistung_sys(row, header)
-        lps_nr = obj_lps.leistungsplansystematik_nr
+        objLps, _ = self.getOrCreateLeistungSys(row, header)
+        lpsNr = objLps.leistungsplansystematik_nr
 
         # fill table person or/and get the person_id
-        obj_per, created_per = self.get_or_create_person(row, header)
-        person_id = obj_per.person_id
+        objPer, createdPer = self.getOrCreatePerson(row, header)
+        personId = objPer.person_id
 
         # fill table forschung or/and get the forschung_id
-        obj_for, created_for = self.get_or_create_forschung(row, header)
-        forschung_id = obj_for.forschung_id
+        objFor, _ = self.getOrCreateForschung(row, header)
+        forschungId = objFor.forschung_id
 
         laufzeitbeginn = row[header.index('Laufzeitbeginn')]
         laufzeitende = row[header.index('Laufzeitende')]
@@ -193,38 +201,38 @@ class Command(BaseCommand):
             thema=thema,
             # instead of using only the name of the feature in case
             # of foreigne keys use the name+_id, I dont know why
-            projektleiter_id = person_id,
-            forschung_id = forschung_id,
-            leistungsplan_systematik_id = lps_nr,
+            projektleiter_id = personId,
+            forschung_id = forschungId,
+            leistungsplan_systematik_id = lpsNr,
             zuwendsempfanger_id = zwe_id,
-            ausfuehrende_stelle_id = as_id,
+            ausfuehrende_stelle_id = asId,
             verbundbezeichnung = verbundbezeichnung,
             foerdersumme = foerdersumme,
             kurzbeschreibung_de = kurzbeschreibung_de,
             kurzbeschreibung_en = kurzbeschreibung_en,
-            datenbank = datenbank
+            datenbank = datenbank,
         )
         return obj, created
 
-    def get_or_create_modulen_zuordnung(self, row, header):
+    def getOrCreateModulenZuordnung(self, row, header):
         """
         add entry into table modulen_zuordnung_ptj or/and return entry key
         """
         # content = row[number of the columns of the row]
 
-        priority_1 = row[header.index('modulzuordnung_ptj_1')]
-        priority_2 = row[header.index('modulzuordnung_ptj_2')]
-        priority_3 = row[header.index('modulzuordnung_ptj_3')]
-        priority_4 = row[header.index('modulzuordnung_ptj_4')]
+        priority1 = row[header.index('modulzuordnung_ptj_1')]
+        priority2 = row[header.index('modulzuordnung_ptj_2')]
+        priority3 = row[header.index('modulzuordnung_ptj_3')]
+        priority4 = row[header.index('modulzuordnung_ptj_4')]
         obj, created = Modulen_zuordnung_ptj.objects.get_or_create(
-            priority_1 = priority_1,
-            priority_2 = priority_2,
-            priority_3 = priority_3,
-            priority_4 = priority_4
+            priority_1 = priority1,
+            priority_2 = priority2,
+            priority_3 = priority3,
+            priority_4 = priority4
         )
         return obj, created
 
-    def get_or_create_tools(self, row, header):
+    def getOrCreateTools(self, row, header):
         """
         add entry into table Tools or/and return entry key
         """
@@ -232,121 +240,149 @@ class Command(BaseCommand):
 
         bezeichung = row[header.index('Tool')]
         kurzbe = row[header.index('Kurzbeschreibung')]
-        anwend_bereich = row[header.index('Anwendungsbereich')]
+        anwendBereich = row[header.index('Anwendungsbereich')]
         kategorie = row[header.index('Kategorie')]
         lebenszy = row[header.index('Lebenszyklusphase')]
         nutzersch = row[header.index('Nutzerschnittstelle')]
         zielgruppe = row[header.index('Zielgruppe')]
-        letztes_update= row[header.index('letztes Update')]
-        lizenz = row[header.index('Lizenz')]
-        weitere_infos = row[header.index('weitere Informationen')]
+        lastUpdate= row[header.index('letztes Update')]
+        license = row[header.index('Lizenz')]
+        weitereInfos = row[header.index('weitere Informationen')]
         alternativen = row[header.index('Alternativen')]
-        konk_anw_ewb = row[header.index('konkrete Anwendung in EWB Projekten')]
+        konkAnwEwb = row[header.index('konkrete Anwendung in EWB Projekten')]
         nutzerbewertung = row[header.index('Nutzerbewertungen')]
 
 
         obj, created = Tools.objects.get_or_create(
             bezeichnung = bezeichung,
             kurzbeschreibung = kurzbe,
-            anwendungsbereich = anwend_bereich,
+            anwendungsbereich = anwendBereich,
             kategorie = kategorie,
             lebenszyklusphase = lebenszy,
             nutzerschnittstelle = nutzersch,
             zielgruppe = zielgruppe,
-            letztes_update = letztes_update,
-            lizenz = lizenz,
-            weitere_informationen = weitere_infos,
+            letztes_update = letztesUpdate,
+            lizenz = license,
+            weitere_informationen = weitereInfos,
             alternativen = alternativen,
-            konk_anwendung = konk_anw_ewb,
+            konk_anwendung = konkAnwEwb,
             # nutzerbewertungen = nutzerbewertung
         )
         return obj, created
 
-    def get_or_create_weatherdata(self, row, header):
+    def getOrCreateWeatherdata(self, row, header):
         """
         add entry into table Weatherdata or/and return entry key
         """
         # content = row[number of the columns of the row]
 
-        data_service = row[header.index('data_service')]
-        short_description = row[header.index('short_description')]
+        dataService = row[header.index('data_service')]
+        shortDescription = row[header.index('short_description')]
         provider = row[header.index('provider')]
-        further_infos = row[header.index('further_information')]
-        data_url = row[header.index('data_url')]
-        logo_url = row[header.index('logo_url')]
+        furtherInfos = row[header.index('further_information')]
+        dataUrl = row[header.index('data_url')]
+        logoUrl = row[header.index('logo_url')]
         applications = row[header.index('applications')]
-        last_update= row[header.index('last_update')]
+        lastUpdate= row[header.index('last_update')]
         license = row[header.index('license')]
         category = row[header.index('category')]
-        long_description = row[header.index('long_description')]
+        longDescription = row[header.index('long_description')]
 
         obj, created = Weatherdata.objects.get_or_create(
-            data_service = data_service,
-            short_description = short_description,
+            data_service = dataService,
+            short_description = shortDescription,
             provider = provider,
-            further_information = further_infos,
-            data_url = data_url,
-            logo_url = logo_url,
+            further_information = furtherInfos,
+            data_url = dataUrl,
+            logo_url = logoUrl,
             applications = applications,
-            last_update = last_update,
+            last_update = lastUpdate,
             license = license,
             category = category,
-            long_description = long_description
+            long_description = longDescription
         )
         return obj, created
 
-    def get_or_create_schlagwort(self, row, header, schlagwort_key):
+    def getOrCreateSchlagwort(self, row, header, schlagwortKey):
         """
         add entry into table schlagwort or/and return entry key
         """
         # content = row[number of the columns of the row]
-        schlagwort = row[header.index(schlagwort_key)]
+        schlagwort = row[header.index(schlagwortKey)]
         obj, created = Schlagwort.objects.get_or_create(
             schlagwort = schlagwort
         )
         return obj, created
 
-    def get_or_create_schlagwortregister(self, row, header):
+    def getOrCreateSchlagwortregister(self, row, header):
         """
         add entry into table Weatherdata or/and return entry key
         """
         
-        obj_schlagwort_1, created_schlagwort_1 = self.get_or_create_schlagwort(row, header, 'Schlagwort1')
-        schlagwort_1_id = obj_schlagwort_1.schlagwort_id
+        objSchlagwort1, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort1',
+        )
+        schlagwort1Id = objSchlagwort1.schlagwort_id
 
-        obj_schlagwort_2, created_schlagwort_2 = self.get_or_create_schlagwort(row, header, 'Schlagwort2')
-        schlagwort_2_id = obj_schlagwort_2.schlagwort_id
+        objSchlagwort2, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort2',
+        )
+        schlagwort2Id = objSchlagwort2.schlagwort_id
 
-        obj_schlagwort_3, created_schlagwort_3 = self.get_or_create_schlagwort(row, header, 'Schlagwort3')
-        schlagwort_3_id = obj_schlagwort_3.schlagwort_id
+        objSchlagwort3, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort3',
+        )
+        schlagwort3Id = objSchlagwort3.schlagwort_id
 
-        obj_schlagwort_4, created_schlagwort_4 = self.get_or_create_schlagwort(row, header, 'Schlagwort4')
-        schlagwort_4_id = obj_schlagwort_4.schlagwort_id
+        objSchlagwort4, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort4',
+        )
+        schlagwort4Id = objSchlagwort4.schlagwort_id
         
-        obj_schlagwort_5, created_schlagwort_5 = self.get_or_create_schlagwort(row, header, 'Schlagwort5')
-        schlagwort_5_id = obj_schlagwort_5.schlagwort_id
+        objSchlagwort5, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort5',
+        )
+        schlagwort5Id = objSchlagwort5.schlagwort_id
         
-        obj_schlagwort_6, created_schlagwort_6 = self.get_or_create_schlagwort(row, header, 'Schlagwort6')
-        schlagwort_6_id = obj_schlagwort_6.schlagwort_id
+        objSchlagwort6, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort6',
+        )
+        schlagwort6Id = objSchlagwort6.schlagwort_id
         
-        obj_schlagwort_7, created_schlagwort_7 = self.get_or_create_schlagwort(row, header, 'Schlagwort')
-        schlagwort_7_id = obj_schlagwort_7.schlagwort_id
+        objSchlagwort7, _ = self.getOrCreateSchlagwort(
+            row, 
+            header, 
+            'Schlagwort',
+        )
+        schlagwort7Id = objSchlagwort7.schlagwort_id
         
 
         obj, created = Schlagwortregister_erstsichtung.objects.get_or_create(
-            schlagwort_1_id = schlagwort_1_id,
-            schlagwort_2_id = schlagwort_2_id,
-            schlagwort_3_id = schlagwort_3_id,
-            schlagwort_4_id = schlagwort_4_id,
-            schlagwort_5_id = schlagwort_5_id,
-            schlagwort_6_id = schlagwort_6_id,
-            schlagwort_7_id = schlagwort_7_id
+            schlagwort_1_id = schlagwort1Id,
+            schlagwort_2_id = schlagwort2Id,
+            schlagwort_3_id = schlagwort3Id,
+            schlagwort_4_id = schlagwort4Id,
+            schlagwort_5_id = schlagwort5Id,
+            schlagwort_6_id = schlagwort6Id,
+            schlagwort_7_id = schlagwort7Id,
         )
-        #pdb.set_trace()
         return obj, created
 
-    def add_or_update_row_teilprojekt(self, row, header, source):
-        """add or update one row of the database, but without foreign key connections
+    def addOrUpdateRowTeilprojekt(self, row, header, source):
+        """add or update one row of the database, but without foreign key 
+        connections
 
         source cases:
         - 'enargus' : read data from enargus xml via csv file (here csv will loaded)
@@ -373,7 +409,7 @@ class Command(BaseCommand):
                 visitedNames.append("teilprojekt")
                 unvisited.append(["Enargus", currentStateTable, obj, "Teilprojekt"])
 
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} Thema: {currentStateTable.thema}")
+                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentStateTable.thema)
 
         elif source == 'modul':
             obj, created = self.get_or_create_modulen_zuordnung(row, header)
@@ -391,7 +427,7 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append(["zuordnung", currentTeilprojektObj, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} {currentTeilprojektObj.thema}")
+                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentTeilprojektObj.thema)
         elif source == 'schlagwortregister':
             obj, created = self.get_or_create_schlagwortregister(row, header)
             schlagwortregister_id = obj.schlagwortregister_id
@@ -407,18 +443,9 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append(["schlagwortregister_erstsichtung", currentObjSchlagwortregisterErstsichtung, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} Thema: {currentObjSchlagwortregisterErstsichtung.thema}")
-
-
-    # def _depthFirstSearch(self, foreignTableName, visited):
-    #     """
+                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentObjSchlagwortregisterErstsichtung.thema)
         
-    #     """
-
-    #     visited.append(foreignTableName)
-
-        
-    def compareForeignTables(self, unvisited: list, visitedNames: list, identifer: str):
+    def compareForeignTables(self, unvisited: list, visitedNames: list, identifer: dict, theme: str):
         """
         
         """
@@ -426,13 +453,13 @@ class Command(BaseCommand):
         
         diffCurrentObjDict = {}
         diffPendingObjDict = {}
-        with open(self.DBdifferenceFileName, 'a') as stream:
-            yaml.dump(f"Conflict found for: {identifer}", stream)
+        # with open(self.DBdifferenceFileName, 'a') as stream:
+        #     yaml.dump(f"Conflict found for: {identifer}", stream)
 
-        with open("hallo.csv", "a") as f:
-            f.write(f"Conflict found for: {identifer}\n")
+        # with open("hallo.csv", "a") as f:
+        #     f.write(f"Conflict found for: {identifer}\n")
 
-        currentDBDifferenceObj = DatabaseDifference(identifer)
+        currentDBDifferenceObj = DatabaseDifference(identifer, theme)
         while len(unvisited) > 0:
             #depth += 1
             
@@ -506,18 +533,18 @@ class Command(BaseCommand):
                         except:
                             pass
                 
-                if diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] == "":
-                    diffCurrentObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
-                    diffPendingObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
+                # if diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] == "":
+                #     diffCurrentObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
+                #     diffPendingObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
 
 
-        with open("hallo.csv", "a") as f:
-            for numberOfWrittenTableDiffs, currentTableEntry in enumerate(diffCurrentObjDict.keys()):
-                    f.write(f"  {currentTableEntry}\n")
-                    f.write(f"      {diffCurrentObjDict[currentTableEntry]}\n")
-                    f.write(f"      {diffPendingObjDict[currentTableEntry]}\n")
-            f.write(f"Current: 10\n")
-            f.write(f"Pending: 10\n")
+        # with open("hallo.csv", "a") as f:
+        #     for numberOfWrittenTableDiffs, currentTableEntry in enumerate(diffCurrentObjDict.keys()):
+        #             f.write(f"  {currentTableEntry}\n")
+        #             f.write(f"      {diffCurrentObjDict[currentTableEntry]}\n")
+        #             f.write(f"      {diffPendingObjDict[currentTableEntry]}\n")
+        #     f.write(f"Current: 10\n")
+        #     f.write(f"Pending: 10\n")
         
         currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
         # with open(self.DBdifferenceFileName, 'a') as stream:
@@ -654,74 +681,6 @@ class Command(BaseCommand):
     
     def add_arguments(self, parser):
         parser.add_argument('pathCSV', nargs='+', type=str) 
-
-
-class DatabaseDifference:
-    """This class holds data for one database-Difference
-    
-    """
-
-    def __init__(self, identifer):
-        """Constructor of DatabaseDifference-class
-        
-        """
-        self.identifer = identifer
-        self.differencesSortedByTable = {}
-        self.keepCurrentState = None
-        self.keepPendingState = None
-    
-    # def __repr__(self) -> str:
-    #     return f"Conflict found for: {self.identifer} \n{self.differencesSortedByTable}"
-    
-    def addTable(self, tableName) -> None:
-        """Creates a new Table-Entry, in which the Differences are stored
-        
-        tableName:  str
-            Name of the Table, in which a difference is detected.
-        """
-        self.differencesSortedByTable[tableName] = {}
-        self.differencesSortedByTable[tableName]["currentState"] = {}
-        self.differencesSortedByTable[tableName]["pendingState"] = {}
-
-    def addDifference(self, tableName, currentState, pendingState) -> None:
-        """Adds a Difference to a table, which is already present in the data-strucutre.
-
-        tableName:  str
-            Name of the table, which is already present in the DifferenceSortedByTable Attribute-Dict.
-        
-        currentState: dict
-            Dictionary containing as key the name of the fieldname and as value the value of the field. 
-            Of the current State of the Database.
-
-        pendingState:   dict
-            Dictionary containing as key the name of the fieldname and as value the value of the field. 
-            Of the pending State of the Database.
-        
-        """
-        self.differencesSortedByTable[tableName]["currentState"].update(currentState)
-        self.differencesSortedByTable[tableName]["pendingState"].update(pendingState)
-    
-    def writeToYAML(self, yamlFileName):
-        """Prepares the Attributes to be written out to yaml. 
-        It removes all entries of the self.differencesSortedByTable dict, so that only 
-        Table Differences are shown.
-        
-        yamlFileName:   str
-            file name of the yaml-file, in which the Database Difference Object is 
-            serialized to.
-        """
-        keysToBeDeleted = []
-        for tableNameKey in self.differencesSortedByTable:
-            if len(self.differencesSortedByTable[tableNameKey]["currentState"].keys()) == 0:
-                 keysToBeDeleted.append(tableNameKey)
-        
-        for keyToBeDeleted in keysToBeDeleted:
-                 self.differencesSortedByTable.pop(keyToBeDeleted)
-        with open(yamlFileName, "a") as stream:
-            yaml.dump(self, stream)
-
-
-
 
 
 # Script area (here you find examples to use the functions ahead)
