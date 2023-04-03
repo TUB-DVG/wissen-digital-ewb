@@ -6,10 +6,11 @@ It uses the .csv import-functionality.
 
 import csv
 import pdb
-import tkinter as tk
-from tkinter import ttk
+#import tkinter as tk
+#from tkinter import ttk
 from encodings import utf_8
 import os
+import datetime
 
 from django.core.management.base import BaseCommand, CommandError
 from project_listing.models import *
@@ -17,6 +18,7 @@ from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
 import numpy as np
+import yaml
 
 # -*- coding: utf-8 -*-
 class Command(BaseCommand):
@@ -32,8 +34,9 @@ class Command(BaseCommand):
         self.dataToBeComparedEnargus = []
         self.dataToBeComparedModul = []
         self.dataToBeComparedSchlagwort = []
-
-        self.dbDiffLogCSV = "dbDiffs.csv"
+        
+        currentTimestamp = datetime.datetime.now()
+        self.DBdifferenceFileName = str(currentTimestamp.date()) + str(currentTimestamp.time().hour) + str(currentTimestamp.time().minute) + str(currentTimestamp.time().second) + ".yaml"
 
 
 
@@ -407,16 +410,14 @@ class Command(BaseCommand):
                 self.compareForeignTables(unvisited, visitedNames, f"fkz: {fkz} Thema: {currentObjSchlagwortregisterErstsichtung.thema}")
 
 
-    def _depthFirstSearch(self, foreignTableName, visited):
-        """
+    # def _depthFirstSearch(self, foreignTableName, visited):
+    #     """
         
-        """
+    #     """
 
-        visited.append(foreignTableName)
+    #     visited.append(foreignTableName)
 
         
-
-
     def compareForeignTables(self, unvisited: list, visitedNames: list, identifer: str):
         """
         
@@ -425,11 +426,13 @@ class Command(BaseCommand):
         
         diffCurrentObjDict = {}
         diffPendingObjDict = {}
+        with open(self.DBdifferenceFileName, 'a') as stream:
+            yaml.dump(f"Conflict found for: {identifer}", stream)
 
-        with open(self.dbDiffLogCSV, "a") as f:
+        with open("hallo.csv", "a") as f:
             f.write(f"Conflict found for: {identifer}\n")
 
-
+        currentDBDifferenceObj = DatabaseDifference(identifer)
         while len(unvisited) > 0:
             #depth += 1
             
@@ -462,6 +465,9 @@ class Command(BaseCommand):
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
+                    # new code fragment
+                    currentDBDifferenceObj.addTable(f"{parentTableName}.{currentForeignTableName}")
+                    # end of new code fragment
                     diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
                     diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
 
@@ -494,6 +500,9 @@ class Command(BaseCommand):
                             
                                 diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strCurrent
                                 diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strPending
+                                # new code fragment
+                                currentDBDifferenceObj.addDifference(f"{parentTableName}.{currentForeignTableName}", {currentForeignTableStr: str(currentTableObj.__getattribute__(currentForeignTableStr))}, {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))})   
+                                # end of new codefragment         
                         except:
                             pass
                 
@@ -502,17 +511,19 @@ class Command(BaseCommand):
                     diffPendingObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
 
 
-        with open(self.dbDiffLogCSV, "a") as f:
+        with open("hallo.csv", "a") as f:
             for numberOfWrittenTableDiffs, currentTableEntry in enumerate(diffCurrentObjDict.keys()):
                     f.write(f"  {currentTableEntry}\n")
                     f.write(f"      {diffCurrentObjDict[currentTableEntry]}\n")
                     f.write(f"      {diffPendingObjDict[currentTableEntry]}\n")
             f.write(f"Current: 10\n")
             f.write(f"Pending: 10\n")
+        
+        currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
+        # with open(self.DBdifferenceFileName, 'a') as stream:
+        #     yaml.dump(currentDBDifferenceObj, stream)
 
 
-
-    
     def _getNonRelatingFields(self, currentDatasetInForeignTable):
         """
         
@@ -644,6 +655,75 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('pathCSV', nargs='+', type=str) 
 
+
+class DatabaseDifference:
+    """This class holds data for one database-Difference
+    
+    """
+
+    def __init__(self, identifer):
+        """Constructor of DatabaseDifference-class
+        
+        """
+        self.identifer = identifer
+        self.differencesSortedByTable = {}
+        self.keepCurrentState = None
+        self.keepPendingState = None
+    
+    # def __repr__(self) -> str:
+    #     return f"Conflict found for: {self.identifer} \n{self.differencesSortedByTable}"
+    
+    def addTable(self, tableName) -> None:
+        """Creates a new Table-Entry, in which the Differences are stored
+        
+        tableName:  str
+            Name of the Table, in which a difference is detected.
+        """
+        self.differencesSortedByTable[tableName] = {}
+        self.differencesSortedByTable[tableName]["currentState"] = {}
+        self.differencesSortedByTable[tableName]["pendingState"] = {}
+
+    def addDifference(self, tableName, currentState, pendingState) -> None:
+        """Adds a Difference to a table, which is already present in the data-strucutre.
+
+        tableName:  str
+            Name of the table, which is already present in the DifferenceSortedByTable Attribute-Dict.
+        
+        currentState: dict
+            Dictionary containing as key the name of the fieldname and as value the value of the field. 
+            Of the current State of the Database.
+
+        pendingState:   dict
+            Dictionary containing as key the name of the fieldname and as value the value of the field. 
+            Of the pending State of the Database.
+        
+        """
+        self.differencesSortedByTable[tableName]["currentState"].update(currentState)
+        self.differencesSortedByTable[tableName]["pendingState"].update(pendingState)
+    
+    def writeToYAML(self, yamlFileName):
+        """Prepares the Attributes to be written out to yaml. 
+        It removes all entries of the self.differencesSortedByTable dict, so that only 
+        Table Differences are shown.
+        
+        yamlFileName:   str
+            file name of the yaml-file, in which the Database Difference Object is 
+            serialized to.
+        """
+        keysToBeDeleted = []
+        for tableNameKey in self.differencesSortedByTable:
+            if len(self.differencesSortedByTable[tableNameKey]["currentState"].keys()) == 0:
+                 keysToBeDeleted.append(tableNameKey)
+        
+        for keyToBeDeleted in keysToBeDeleted:
+                 self.differencesSortedByTable.pop(keyToBeDeleted)
+        with open(yamlFileName, "a") as stream:
+            yaml.dump(self, stream)
+
+
+
+
+
 # Script area (here you find examples to use the functions ahead)
 #classObj = DataImport()
 # ## Example add/update Enargus data
@@ -665,107 +745,3 @@ class Command(BaseCommand):
 ## Example add/update Schlagwoerter table
 # path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/ZE_fuer_BF_enargus_ergaenzt_Auswahl_rst_fc.csv'
 # header, data = classObj.csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
-
-# window = tk.Tk()
-# window.attributes('-zoomed', True)
-# table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-# table.heading("fkz", text="FKZ")
-# table.heading("current", text="Current enargus id")
-# table.heading("pending", text="Pending Update enargus id")
-# table.pack(fill="both")
-
-# # def updatePending()
-
-# for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedEnargus):
-#     table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
-
-# # def itemSelect(_):
-# #     for i in table.selection():
-# #         table.item(i)
-
-# #table.bind("<<TreeViewSelect>>", itemSelect)
-
-# def deleteItems(_):
-#     for item in table.selection():
-#         table.delete(item)
-
-# def updatePending(_):
-
-#     for item in table.selection():
-#         Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-#                                 zuordnung_id_daten_id=table.item(item)['values'][2])  
-#         table.delete(item)   
-
-# table.bind("<Delete>", deleteItems)
-# table.bind("<Return>", updatePending)
-# window.mainloop()
-
-# if len(classObj.dataToBeComparedModul) > 0: 
-#     window = tk.Tk()
-#     window.attributes('-zoomed', True)
-#     table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-#     table.heading("fkz", text="FKZ")
-#     table.heading("current", text="Current zuordnung id")
-#     table.heading("pending", text="Pending Update zuordnung id")
-#     table.pack(fill="both")
-
-#     # def updatePending()
-
-#     for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedModul):
-#         table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
-
-#     # def itemSelect(_):
-#     #     for i in table.selection():
-#     #         table.item(i)
-
-#     #table.bind("<<TreeViewSelect>>", itemSelect)
-
-#     def deleteItems(_):
-#         for item in table.selection():
-#             table.delete(item)
-
-#     def updatePending(_):
-
-#         for item in table.selection():
-#             Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-#                                     enargus_daten_id=table.item(item)['values'][2])  
-#             table.delete(item)   
-
-#     table.bind("<Delete>", deleteItems)
-#     table.bind("<Return>", updatePending)
-#     window.mainloop()    
-# #pdb.set_trace()
-# if len(classObj.dataToBeComparedSchlagwort) > 0:
-#     window = tk.Tk()
-#     window.attributes('-zoomed', True)
-#     table = ttk.Treeview(window, columns = ("fkz", "current", "pending"), show="headings")
-#     table.heading("fkz", text="FKZ")
-#     table.heading("current", text="Current zuordnung id")
-#     table.heading("pending", text="Pending Update zuordnung id")
-#     table.pack(fill="both")
-
-#     # def updatePending()
-
-#     for indexInData, currentDataInList in enumerate(classObj.dataToBeComparedSchlagwort):
-#         table.insert(parent="", index=0, values=(currentDataInList[0][0], currentDataInList[0][1], currentDataInList[1][1]))
-
-#     # def itemSelect(_):
-#     #     for i in table.selection():
-#     #         table.item(i)
-
-#     #table.bind("<<TreeViewSelect>>", itemSelect)
-
-#     def deleteItems(_):
-#         for item in table.selection():
-#             table.delete(item)
-
-#     def updatePending(_):
-
-#         for item in table.selection():
-#             Teilprojekt.objects.filter(pk=table.item(item)['values'][0]).update(
-#                                     enargus_daten_id=table.item(item)['values'][2])  
-#             table.delete(item)   
-
-#     table.bind("<Delete>", deleteItems)
-#     table.bind("<Return>", updatePending)
-#     window.mainloop()
