@@ -1,76 +1,77 @@
 from django.contrib import admin
 from .models import * 
-from import_export.admin import ImportExportModelAdmin , ImportMixin
+from import_export.admin import ImportExportModelAdmin 
 from import_export import fields,resources
 from import_export.widgets import *
 
 
 
-class collectedDatasetsResource(resources.ModelResource,ImportMixin):
+class collectedDatasetsResource(resources.ModelResource):
+
+    nameDataset=fields.Field(
+        column_name='Name des Datasets',
+        widget=CharWidget()  
+    ),
     useCaseCategory=fields.Field(
-        attribute='useCaseCategory',
-        column_name='Kateogrie Anwendungsfall',
+        column_name='UseCaseKategorie',
         widget=CharWidget()  
     ),
     categoryDataset=fields.Field(
-        attribute='categoryDataset',
-        column_name='Kategorie Datensatz',
+        column_name='Kategorie',
         widget=CharWidget()  
     ),
+    
     reference=fields.Field(
-        attribute='reference',
         column_name='Quelle',
         widget=CharWidget()  
     ),
     referenceLink=fields.Field(
-        attribute='referenceLink',
         column_name='Link',
         widget=CharWidget()  
     ),
     availability=fields.Field(
-        attribute='availability',
         column_name='Verfügbarkeit',
         widget=CharWidget()  
     ),
     coverage=fields.Field(
         attribute='coverage',
-        column_name='Geographische Abdeckung',
+        column_name='Coverage (GEO)',
         widget=CharWidget()  
     ),
     resolution=fields.Field(  
         attribute='resolution',
-        column_name='Auflösung',
+        column_name='Resolution',
         widget=CharWidget()  
     ),
     comment=fields.Field(  
         attribute='comment',
-        column_name='Kommentar',
+        column_name='Comment (Resolution, Quality,..)',
         widget=CharWidget()  
     ),
     dataSources=fields.Field(  
         attribute='dataSources',
-        column_name='Referenz der Anwendung',
+        column_name='Datenquellen',
         widget=CharWidget()  
     ),
     shortDesciption=fields.Field(  
         attribute='shortDesciption',
-        column_name='Beschreibung',
+        column_name='Kurzbeschreibung',
         widget=CharWidget()  
     ),
     includesNonResidential=fields.Field(  
         attribute='includesNonResidential',
-        column_name='Enthält Nichtwohngebäude',
+        column_name='Includes Non-Residential',
         widget=CharWidget()  
     ),
-
+    
 
     class Meta:
         model   =   collectedDatasets
-        import_id_fields = ['useCaseCategory']
+        import_id_fields = ['nameDataset',]
         skip_unchanged = True
-        report_skipped=False
+        report_skipped = True
 
-class collectedDatasetsAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
+class collectedDatasetsAdmin( ImportExportModelAdmin):
     
     resource_class = collectedDatasetsResource
 
