@@ -81,8 +81,11 @@ def dataset_view(request, id):
     shows of the key features one project
     """
     dataset = get_object_or_404(collectedDatasets, pk= id)
+    nameDataset=dataset.nameDataset.split(", ")
     useCaseCategory = dataset.useCaseCategory.split(", ")
     categoryDataset = dataset.categoryDataset.split(", ")
+    print(useCaseCategory)
+    print(categoryDataset)
     """
     laufende_updates = dataset.letztes_update
     
@@ -109,9 +112,10 @@ def dataset_view(request, id):
     ratings_with_comment = ratings.exclude(comment__exact = '')
     """
     context = {
-        'tool': dataset,
+        'dataset': dataset,
         'useCaseCategory': useCaseCategory,
         'categoryDataset': categoryDataset,
+        'name':nameDataset,
         #'letztes_update': update_properties,
         #'letztes_update_class': update_properties.class_name,
         #'letztes_update_color': update_properties.color_class,
