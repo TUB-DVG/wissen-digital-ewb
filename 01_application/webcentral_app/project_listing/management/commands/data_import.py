@@ -20,19 +20,29 @@ from schlagwoerter.models import *
 from project_listing.DatabaseDifference import DatabaseDifference
 
 class Command(BaseCommand):
-    """
-    
+    """This class acts as a Django-Admin command. It can be executed with
+    the manage.py by specifing the name of the modul (at the moment
+    `data_import`). Furthermore a parameter needs to be present, which is
+    the relative-path to a .csv-file, which holds datasets, which should
+    be imported into the database.
+    An execution could look like this:
+    ```
+        python3 manage.py data_import 
+        ../../02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv
+    ```
+    At the moment, the .csv-files need to be named acording to the data.
+    they hold. (TODO: This has to be changed)
+
+    enargus-data needs to have "enargus" in its filename.
+    modulzurodnung-data needs to have "modul" in its filename.
+    wheaterdata needs to have "wheaterdata" in its filename.
+    schlagwoerter-data needs to have "schlagwoerter" in its filename.
     """
 
     def __init__(self):
         """
         
-        """
-
-        self.dataToBeComparedEnargus = []
-        self.dataToBeComparedModul = []
-        self.dataToBeComparedSchlagwort = []
-        
+        """        
         currentTimestamp = datetime.datetime.now()
         self.DBdifferenceFileName = (str(currentTimestamp.date()) 
             + str(currentTimestamp.time().hour) 
@@ -47,15 +57,15 @@ class Command(BaseCommand):
         add entry into table forschung or/and return entry key
         """
         # content = row[number of the columns of the row]
-        bundesministerium = row[header.index('Bundesministerium')]
-        projekttraeger = row[header.index('Projekttraeger')]
-        foerderprogramm = row[header.index('Foerderprogramm')]
-        forschungsprogramm = row[header.index('Forschungsprogramm')]
+        federalMinistry = row[header.index('Bundesministerium')]
+        projectBody = row[header.index('Projekttraeger')]
+        supportProgram = row[header.index('Foerderprogramm')]
+        researchProgram = row[header.index('Forschungsprogramm')]
         obj, created = Forschung.objects.get_or_create(
-            bundesministerium=bundesministerium,
-            projekttraeger=projekttraeger,
-            forschungsprogramm=forschungsprogramm,
-            foerderprogramm=foerderprogramm,
+            bundesministerium=federalMinistry,
+            projekttraeger=projectBody,
+            forschungsprogramm=researchProgram,
+            foerderprogramm=supportProgram,
         )
         return obj, created
 
@@ -71,21 +81,21 @@ class Command(BaseCommand):
         # decision kind of persion, where should the data read from, 
         # maybe later needed
         if who == 'zwe':
-            plz = row[header.index('PLZ_ZWE')]
-            ort = row[header.index('Ort_ZWE')]
-            land = row[header.index('Land_ZWE')]
-            adresse = row[header.index('Adress_ZWE')]
+            postalCode = row[header.index('PLZ_ZWE')]
+            location = row[header.index('Ort_ZWE')]
+            country = row[header.index('Land_ZWE')]
+            adress = row[header.index('Adress_ZWE')]
         elif who == 'as':
-            plz = row[header.index('PLZ_AS')]
-            ort = row[header.index('Ort_AS')]
-            land = row[header.index('Land_AS')]
-            adresse = row[header.index('Adress_AS')]
+            postalCode = row[header.index('PLZ_AS')]
+            location = row[header.index('Ort_AS')]
+            country = row[header.index('Land_AS')]
+            adress = row[header.index('Adress_AS')]
 
         obj, created = Anschrift.objects.get_or_create(
-            plz = plz,
-            ort = ort,
-            land = land,
-            adresse = adresse
+            plz = postalCode,
+            ort = location,
+            land = country,
+            adresse = adress,
         )
         return obj, created
 
@@ -97,12 +107,12 @@ class Command(BaseCommand):
         # decision kind of persion, where should the data read from, 
         # maybe later needed
         name = row[header.index('Name_pl')]
-        vorname = row[header.index('Vorname_pl')]
+        surname = row[header.index('Vorname_pl')]
         titel = row[header.index('Titel_pl')]
         email = row[header.index('Email_pl')]
         obj, created = Person.objects.get_or_create(
             name = name,
-            vorname = vorname,
+            vorname = surname,
             titel = titel,
             email = email,
         )
@@ -113,12 +123,12 @@ class Command(BaseCommand):
         add entry into table leistung_sys or/and return entry key
         """
         # content = row[number of the columns of the row]
-        leistungsplansystematikText = row[header.index('Leistungsplan_Sys_Text')]
-        leistungsplansystematikNr = row[header.index('Leistungsplan_Sys_Nr')]
+        benefitPlanSystematicText = row[header.index('Leistungsplan_Sys_Text')]
+        benefitPlanSystematicNr = row[header.index('Leistungsplan_Sys_Nr')]
 
         obj, created = Leistung_sys.objects.get_or_create(
-            leistungsplansystematik_nr =  leistungsplansystematikNr,
-            leistungsplansystematik_text = leistungsplansystematikText
+            leistungsplansystematik_nr =  benefitPlanSystematicNr,
+            leistungsplansystematik_text = benefitPlanSystematicText
         )
         return obj, created
 
@@ -133,13 +143,13 @@ class Command(BaseCommand):
             header, 
             'zwe',
         )
-        zweAnsId = objAnsZwe.anschrift_id
+        doneeAdressId = objAnsZwe.anschrift_id
 
         # content = row[number of the columns of the row]
         name = row[header.index('Name_ZWE')]
         obj, created = Zuwendungsempfaenger.objects.get_or_create(
             name = name,
-            anschrift_id = zweAnsId
+            anschrift_id = doneeAdressId,
         )
         return obj, created
 
@@ -150,13 +160,13 @@ class Command(BaseCommand):
     # fill table anschrift in case of ausfuehrende_stelle
         # or/and get the anschrift_id
         objAnsAs, _ = self.getOrCreateAnschrift(row, header, 'as')
-        asNsId = objAnsAs.anschrift_id
+        addressId = objAnsAs.anschrift_id
 
         # content = row[number of the columns of the row]
         name = row[header.index('Name_AS')]
         obj, created = Ausfuehrende_stelle.objects.get_or_create(
             name = name,
-            anschrift_id = asNsId
+            anschrift_id = addressId,
         )
         return obj, created
 
@@ -180,25 +190,25 @@ class Command(BaseCommand):
         lpsNr = objLps.leistungsplansystematik_nr
 
         # fill table person or/and get the person_id
-        objPer, createdPer = self.getOrCreatePerson(row, header)
+        objPer, _ = self.getOrCreatePerson(row, header)
         personId = objPer.person_id
 
         # fill table forschung or/and get the forschung_id
         objFor, _ = self.getOrCreateForschung(row, header)
         forschungId = objFor.forschung_id
 
-        laufzeitbeginn = row[header.index('Laufzeitbeginn')]
-        laufzeitende = row[header.index('Laufzeitende')]
-        thema = row[header.index('Thema')]
-        verbundbezeichnung = row[header.index('Verbundbezeichung')]
-        foerdersumme = float(row[header.index('Foerdersumme_EUR')])
-        kurzbeschreibung_de = row[header.index('Kurzbeschreibung_de')]
-        kurzbeschreibung_en = row[header.index('Kurzbeschreibung_en')]
-        datenbank = row[header.index('Datenbank')]
+        durationBegin = row[header.index('Laufzeitbeginn')]
+        durationEnd = row[header.index('Laufzeitende')]
+        theme = row[header.index('Thema')]
+        clusterName = row[header.index('Verbundbezeichung')]
+        fundingSum = float(row[header.index('Foerdersumme_EUR')])
+        shortDescriptionDe = row[header.index('Kurzbeschreibung_de')]
+        shortDescriptionEn = row[header.index('Kurzbeschreibung_en')]
+        database = row[header.index('Datenbank')]
         obj, created = Enargus.objects.get_or_create(
-            laufzeitbeginn=laufzeitbeginn,
-            laufzeitende=laufzeitende,
-            thema=thema,
+            laufzeitbeginn=durationBegin,
+            laufzeitende=durationEnd,
+            thema=theme,
             # instead of using only the name of the feature in case
             # of foreigne keys use the name+_id, I dont know why
             projektleiter_id = personId,
@@ -206,15 +216,15 @@ class Command(BaseCommand):
             leistungsplan_systematik_id = lpsNr,
             zuwendsempfanger_id = zwe_id,
             ausfuehrende_stelle_id = asId,
-            verbundbezeichnung = verbundbezeichnung,
-            foerdersumme = foerdersumme,
-            kurzbeschreibung_de = kurzbeschreibung_de,
-            kurzbeschreibung_en = kurzbeschreibung_en,
-            datenbank = datenbank,
+            verbundbezeichnung = clusterName,
+            foerdersumme = fundingSum,
+            kurzbeschreibung_de = shortDescriptionDe,
+            kurzbeschreibung_en = shortDescriptionEn,
+            datenbank = database,
         )
         return obj, created
 
-    def getOrCreateModulenZuordnung(self, row, header):
+    def getOrCreateModulenZuordnung(self, row, header) -> tuple:
         """
         add entry into table modulen_zuordnung_ptj or/and return entry key
         """
@@ -232,41 +242,39 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateTools(self, row, header):
+    def getOrCreateTools(self, row, header) -> tuple:
         """
         add entry into table Tools or/and return entry key
         """
-        # content = row[number of the columns of the row]
 
-        bezeichung = row[header.index('Tool')]
-        kurzbe = row[header.index('Kurzbeschreibung')]
-        anwendBereich = row[header.index('Anwendungsbereich')]
-        kategorie = row[header.index('Kategorie')]
-        lebenszy = row[header.index('Lebenszyklusphase')]
-        nutzersch = row[header.index('Nutzerschnittstelle')]
-        zielgruppe = row[header.index('Zielgruppe')]
+        description = row[header.index('Tool')]
+        shortDesciption = row[header.index('Kurzbeschreibung')]
+        applicationArea = row[header.index('Anwendungsbereich')]
+        category = row[header.index('Kategorie')]
+        lifeCyclePhase = row[header.index('Lebenszyklusphase')]
+        userInterface = row[header.index('Nutzerschnittstelle')]
+        targetGroup = row[header.index('Zielgruppe')]
         lastUpdate= row[header.index('letztes Update')]
         license = row[header.index('Lizenz')]
-        weitereInfos = row[header.index('weitere Informationen')]
-        alternativen = row[header.index('Alternativen')]
-        konkAnwEwb = row[header.index('konkrete Anwendung in EWB Projekten')]
-        nutzerbewertung = row[header.index('Nutzerbewertungen')]
-
+        furtherInfos = row[header.index('weitere Informationen')]
+        alternatives = row[header.index('Alternativen')]
+        concreteApplication = row[
+            header.index('konkrete Anwendung in EWB Projekten')
+        ]
 
         obj, created = Tools.objects.get_or_create(
-            bezeichnung = bezeichung,
-            kurzbeschreibung = kurzbe,
-            anwendungsbereich = anwendBereich,
-            kategorie = kategorie,
-            lebenszyklusphase = lebenszy,
-            nutzerschnittstelle = nutzersch,
-            zielgruppe = zielgruppe,
-            letztes_update = letztesUpdate,
+            bezeichnung = description,
+            kurzbeschreibung = shortDesciption,
+            anwendungsbereich = applicationArea,
+            kategorie = category,
+            lebenszyklusphase = lifeCyclePhase,
+            nutzerschnittstelle = userInterface,
+            zielgruppe = targetGroup,
+            letztes_update = lastUpdate,
             lizenz = license,
-            weitere_informationen = weitereInfos,
-            alternativen = alternativen,
-            konk_anwendung = konkAnwEwb,
-            # nutzerbewertungen = nutzerbewertung
+            weitere_informationen = furtherInfos,
+            alternativen = alternatives,
+            konk_anwendung = concreteApplication,
         )
         return obj, created
 
@@ -385,20 +393,25 @@ class Command(BaseCommand):
         connections
 
         source cases:
-        - 'enargus' : read data from enargus xml via csv file (here csv will loaded)
-        - 'modul' : read data from 'verteiler xlsx' via csv file (here csv will loaded)
+        - 'enargus' : read data from enargus xml via csv file 
+        (here csv will loaded)
+        - 'modul' : read data from 'verteiler xlsx' via csv file 
+        (here csv will loaded)
 
         """
         # fill table enargus or/and get the enargus_id
         if source == 'enargus':
-            obj, created = self.get_or_create_enargus(row, header)
+            obj, created = self.getOrCreateEnargus(row, header)
             enargus_id = obj.enargus_id
             fkz = row[header.index('FKZ')]
 
         # breakpoint()
             
             try:
-                if len(Teilprojekt.objects.filter(fkz=fkz, enargus_daten_id= enargus_id)) == 0:
+                if len(Teilprojekt.objects.filter(
+                    fkz=fkz, 
+                    enargus_daten_id=enargus_id
+                )) == 0:
                     Teilprojekt.objects.create(fkz=fkz,
                                             enargus_daten_id= enargus_id)
                     print('added: %s' %fkz)
@@ -407,18 +420,33 @@ class Command(BaseCommand):
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
-                unvisited.append(["Enargus", currentStateTable, obj, "Teilprojekt"])
+                unvisited.append([
+                    "Enargus", 
+                    currentStateTable, 
+                    obj, 
+                    "Teilprojekt",
+                ])
 
-                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentStateTable.thema)
+                self.compareForeignTables(
+                    unvisited, 
+                    visitedNames, 
+                    {"fkz": fkz}, 
+                    currentStateTable.verbundbezeichnung,
+                )
 
         elif source == 'modul':
-            obj, created = self.get_or_create_modulen_zuordnung(row, header)
-            mod_id = obj.mod_id
+            obj, created = self.getOrCreateModulenZuordnung(row, header)
+            modId = obj.mod_id
             fkz = row[header.index('FKZ')].strip()
             try:
-                if len(Teilprojekt.objects.filter(fkz=fkz, zuordnung_id=mod_id)) == 0:
-                    Teilprojekt.objects.create(fkz=fkz,
-                                            zuordnung_id= mod_id)
+                if len(Teilprojekt.objects.filter(
+                    fkz=fkz, 
+                    zuordnung_id=modId
+                )) == 0:
+                    Teilprojekt.objects.create(
+                        fkz=fkz,
+                        zuordnung_id= modId
+                    )
                     print('added: %s' %fkz)
             except IntegrityError:
                 
@@ -426,38 +454,78 @@ class Command(BaseCommand):
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
-                unvisited.append(["zuordnung", currentTeilprojektObj, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentTeilprojektObj.thema)
+                unvisited.append([
+                    "zuordnung", 
+                    currentTeilprojektObj, 
+                    obj, 
+                    "Teilprojekt",
+                ])
+                self.compareForeignTables(
+                    unvisited, 
+                    visitedNames, 
+                    {"fkz": fkz}, 
+                    currentTeilprojektObj.verbundbezeichnung,
+                )
         elif source == 'schlagwortregister':
-            obj, created = self.get_or_create_schlagwortregister(row, header)
-            schlagwortregister_id = obj.schlagwortregister_id
+            obj, _ = self.getOrCreateSchlagwortregister(row, header)
+            tagRegisterId = obj.schlagwortregister_id
             fkz = row[header.index('Förderkennzeichen (0010)')]
             try:
-                if len(Teilprojekt.objects.filter(fkz=fkz, schlagwortregister_erstsichtung_id = schlagwortregister_id)) == 0:
-                    Teilprojekt.objects.create(fkz=fkz,
-                                            schlagwortregister_erstsichtung_id = schlagwortregister_id)
+                if len(Teilprojekt.objects.filter(
+                    fkz=fkz, 
+                    schlagwortregister_erstsichtung_id = tagRegisterId,
+                )) == 0:
+                    Teilprojekt.objects.create(
+                        fkz=fkz,
+                        schlagwortregister_erstsichtung_id = tagRegisterId,
+                    )
                     print('added: %s' %fkz)
             except IntegrityError:
-                currentObjSchlagwortregisterErstsichtung = Teilprojekt.objects.filter(fkz=fkz)[0].schlagwortregister_erstsichtung
+                currentObjTagRegisterFirstLook = Teilprojekt.objects.filter(
+                    fkz=fkz,
+                )[0].schlagwortregister_erstsichtung
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
-                unvisited.append(["schlagwortregister_erstsichtung", currentObjSchlagwortregisterErstsichtung, obj, "Teilprojekt"])
-                self.compareForeignTables(unvisited, visitedNames, {"fkz": fkz}, currentObjSchlagwortregisterErstsichtung.thema)
+                unvisited.append([
+                    "schlagwortregister_erstsichtung", 
+                    currentObjTagRegisterFirstLook, 
+                    obj, 
+                    "Teilprojekt",
+                ])
+                self.compareForeignTables(
+                    unvisited, 
+                    visitedNames, 
+                    {"fkz": fkz}, 
+                    currentObjTagRegisterFirstLook.verbundbezeichnung,
+                )
         
-    def compareForeignTables(self, unvisited: list, visitedNames: list, identifer: dict, theme: str):
-        """
+    def compareForeignTables(
+            self, 
+            unvisited: list, 
+            visitedNames: list, 
+            identifer: dict, 
+            theme: str,
+        ) -> None:
+        """Starting from a Database-Conflict the method walks through 
+        all foreign-tables and compares the values of the two conflicting 
+        datasets. If the values are different for a attribute, they
+        are saved inside an instance of the DatabaseDifference-class.
         
+        At the moment the central table of the database is the 
+        `Teilprojekt`-Table. New loaded Datasets can update values 
+        of one Teilprojekt-Tuple, which is represented by a 
+        `Förderkennzeichen`. If 
+
+        unvisited:  list
+            list of tables, which were not visited yet. As a first 
+            entry it contains the name of the table, 
+            where the datasets are located, which produce a database
+            conflict. The second entry holds a object  
         """
-        visited = []
         
         diffCurrentObjDict = {}
         diffPendingObjDict = {}
-        # with open(self.DBdifferenceFileName, 'a') as stream:
-        #     yaml.dump(f"Conflict found for: {identifer}", stream)
-
-        # with open("hallo.csv", "a") as f:
-        #     f.write(f"Conflict found for: {identifer}\n")
 
         currentDBDifferenceObj = DatabaseDifference(identifer, theme)
         while len(unvisited) > 0:
@@ -469,18 +537,7 @@ class Command(BaseCommand):
             currentTableObj = currentEntryInUnvisited[1]
             pendingTableObj = currentEntryInUnvisited[2]
             parentTableName = currentEntryInUnvisited[3]
-            #currentObj.__getattribute__(currentForeignTableName)
-            # if parentName != None:
-            #     treeOfTablesCurrent.create_node(currentForeignTableName, currentForeignTableName, parent=parentName, data=currentObj.__getattribute__(currentForeignTableName))
-            #     treeOfTablesPending.create_node(currentForeignTableName, currentForeignTableName, data=obj) 
-            # else:
-            #     treeOfTablesCurrent.create_node(unvisited[0], unvisited[0], data=currentObj.__getattribute__(unvisited[0]))
-            #     treeOfTablesPending.create_node(unvisited[0], unvisited[0], data=obj)
-            
-            #visited.append(f"{parentTableName}.{currentEntryInUnvisited}")
-            # if currentForeignTableName != "anschrift":
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
-            #currentTableObj = treeOfTablesCurrent.get_node(currentForeignTableName).data
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
@@ -551,40 +608,40 @@ class Command(BaseCommand):
         #     yaml.dump(currentDBDifferenceObj, stream)
 
 
-    def _getNonRelatingFields(self, currentDatasetInForeignTable):
-        """
+    # def _getNonRelatingFields(self, currentDatasetInForeignTable):
+    #     """
         
-        """
-        listOfNonrelationalFields = []
-        for currentField in currentDatasetInForeignTable._meta.get_fields():
-            if not currentField.is_relational:
-                listOfNonrelationalFields.append(currentField)
+    #     """
+    #     listOfNonrelationalFields = []
+    #     for currentField in currentDatasetInForeignTable._meta.get_fields():
+    #         if not currentField.is_relational:
+    #             listOfNonrelationalFields.append(currentField)
 
-        return listOfNonrelationalFields
+    #     return listOfNonrelationalFields
 
 
 
-    def _checkDifference(self, currentDatasetInForeignTable, pendingDatasetInForeignTable):
-        """
+    # def _checkDifference(self, currentDatasetInForeignTable, pendingDatasetInForeignTable):
+    #     """
         
-        """
-        nameOfCurrentTable = currentDatasetInForeignTable.__str__().split(".")[1]
+    #     """
+    #     nameOfCurrentTable = currentDatasetInForeignTable.__str__().split(".")[1]
 
-        nonRelationalFields = self._getNonRelatingFields(currentDatasetInForeignTable)
-        dictOfCurrentState = {}
-        dictOfPendingState = {}
+    #     nonRelationalFields = self._getNonRelatingFields(currentDatasetInForeignTable)
+    #     dictOfCurrentState = {}
+    #     dictOfPendingState = {}
 
-        dictOfCurrentState[nameOfCurrentTable] = {}
-        dictOfPendingState[nameOfCurrentTable] = {}
+    #     dictOfCurrentState[nameOfCurrentTable] = {}
+    #     dictOfPendingState[nameOfCurrentTable] = {}
 
-        for field in nonRelationalFields:
-            if currentDatasetInForeignTable.__getattribute__(field) != pendingDatasetInForeignTable.__getattribute__(field):
-                dictOfCurrentState[field] = currentDatasetInForeignTable.__getattribute__(field)
-                dictOfPendingState[field] = pendingDatasetInForeignTable.__getattribute__(field)
+    #     for field in nonRelationalFields:
+    #         if currentDatasetInForeignTable.__getattribute__(field) != pendingDatasetInForeignTable.__getattribute__(field):
+    #             dictOfCurrentState[field] = currentDatasetInForeignTable.__getattribute__(field)
+    #             dictOfPendingState[field] = pendingDatasetInForeignTable.__getattribute__(field)
         
-        return dictOfCurrentState, dictOfPendingState
+    #     return dictOfCurrentState, dictOfPendingState
 
-    def csv2m4db_enargus(self, path):
+    def csv2m4dbEnargus(self, path):
         """EnArgus csv-file into BF M4 Django database, hard coded"""
         with open(path) as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -592,10 +649,10 @@ class Command(BaseCommand):
             data = []
             for row in reader:
                 data.append(row)
-                self.add_or_update_row_teilprojekt(row, header, 'enargus')
+                self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
         return header, data
 
-    def csv2m4db_modul(self, path):
+    def csv2m4dbModul(self, path):
         """Modul csv-file into BF M4 Django database, hard coded"""
         with open(path) as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -604,10 +661,10 @@ class Command(BaseCommand):
             for row in reader:
                 # print(row[header.index('FKZ')])
                 data.append(row)
-                self.add_or_update_row_teilprojekt(row, header, 'modul')
+                self.addOrUpdateRowTeilprojekt(row, header, 'modul')
         return header, data
 
-    def read_print_csv(self, path):
+    def readPrintCSV(self, path):
         """Test function EnArgus csv-file into BF M4 Django database, hard coded"""
         with open(path) as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -618,7 +675,7 @@ class Command(BaseCommand):
                 # print(row[header.index('FKZ')])
         return header, data
 
-    def csv2m4db_tools(self, path):
+    def csv2m4dbTools(self, path):
         """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
         with open(path, encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -628,10 +685,10 @@ class Command(BaseCommand):
                 print(row[header.index('Tool')])
                 data.append(row)
                 # breakpoint()
-                self.get_or_create_tools(row, header)
+                self.getOrCreateTools(row, header)
         return header, data
 
-    def csv2m4db_weatherdata(self, path):
+    def csv2m4dbWeatherdata(self, path):
         """Weatherdata csv-file into BF M4 Django database, hard coded"""
         with open(path, encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -641,11 +698,11 @@ class Command(BaseCommand):
                 print(row[header.index('data_service')])
                 data.append(row)
                 # breakpoint()
-                self.get_or_create_weatherdata(row, header)
+                self.getOrCreateWeatherdata(row, header)
         return header, data
 
 
-    def csv2m4db_schlagwortregister_erstsichtung(self, path):
+    def csv2m4dbKeywordRegisterFirstView(self, path):
         """Weatherdata csv-file into BF M4 Django database, hard coded"""
         with open(path, encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
@@ -656,7 +713,7 @@ class Command(BaseCommand):
                 data.append(row)
                 # breakpoint()
                 # get_or_create_schlagwortregister(row, header)
-                self.add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
+                self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
         return header, data
     
     def handle(self, *args, **options):
@@ -667,15 +724,15 @@ class Command(BaseCommand):
         pathCSV=options["pathCSV"][0]
         pathStr, filename = os.path.split(pathCSV)
         if "modulzuordnung" in filename:
-            header, data = self.csv2m4db_modul(pathCSV)
+            header, data = self.csv2m4dbModul(pathCSV)
         elif "enargus" in filename:
-            header, data = self.csv2m4db_enargus(pathCSV)
+            header, data = self.csv2m4dbEnargus(pathCSV)
         elif "Tools" in filename:
-            header, data = self.csv2m4db_tools(pathCSV)
+            header, data = self.csv2m4dbTools(pathCSV)
         elif "schlagwoerter" in filename:
-            header, data = self.csv2m4db_schlagwortregister_erstsichtung(pathCSV)
+            header, data = self.csv2m4dbKeywordRegisterFirstView(pathCSV)
         elif "weatherdata" in filename:
-            header, data = self.csv2m4db_weatherdata(pathCSV)
+            header, data = self.csv2m4dbWeatherdata(pathCSV)
         else:
             print(f"Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible.")
     
