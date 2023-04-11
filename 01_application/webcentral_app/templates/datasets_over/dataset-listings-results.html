@@ -1,7 +1,19 @@
 {% load static %}
 {% for dataset in page.object_list %}	
 <!-- Card item START -->
+<style>
+   a { 
+transition: all .2s ease-in-out; 
+}
+
+a:hover { 
+transform: scale(1.1); 
+}
+  </style>
+
+
 <div class="col-sm-6 col-lg-4 col-xl-3">
+    <a href="{%url 'dataset_view' dataset.id %}">
     <div class="card shadow h-100">
         <!-- Image at top discarded for NOW
 
@@ -20,6 +32,7 @@
 
         -->
         <!-- Image -->
+        
         <div class="image-container d-flex" style="height: 150px;">
             {%if dataset.image %}
             <img src="{{ dataset.image.url }}" class="card-img-top px-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
@@ -28,6 +41,7 @@
             {% endif %}
         </div>
         <!-- Card body -->
+        
         <div class="card-body pb-0">
     
             <!-- Title -->
@@ -37,6 +51,7 @@
             -->
         
         </div>
+        
         <!-- Card footer -->
         <div class="card-footer pt-0 pb-3">
             {% if dataset.coverage %}
@@ -51,6 +66,8 @@
             {% endif %}
         </div>
     </div>
+    </a>
 </div>
+
 <!-- Card item END -->
 {% endfor %}
