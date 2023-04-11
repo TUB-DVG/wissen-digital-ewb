@@ -15,7 +15,7 @@ class UpdateProperties:
         self.label = label
         self.color_class = color_class
 
-#@login_required(login_url='login')
+@login_required(login_url='login')
 def index(request):
     """
     shows the list of all projects including some key features
