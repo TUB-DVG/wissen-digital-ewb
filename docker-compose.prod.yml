@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+    webcentral:
+        build:
+            context: ${PATH_WEBCENTRAL_SRC}
+            dockerfile: Dockerfile
+            target: prod
+            
+        volumes:
+            - static-data:/vol/webcentral
+        depends_on:
+            - database
+            #condition: service_healthy
+        environment:
+            - UWSGI_LISTEN_PORT
+            - UWSGI_NUM_WORKERS
+            - SECRET_KEY
+            - DEBUG
+            - ALLOWED_HOSTS
+            - MODE=production
+        command: >
+            sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
+            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
+
+
+    proxy:
+        build:
+            context: ./proxy
+        restart: always
+        depends_on:
+            - webcentral
+        ports:
+            - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
+            #- ${LISTEN_PORT}:8080
+            #- 8070:8080
+            # data communication on port 80 on the host
+            # gets mapped to port 8000 inside the proxy container
+        environment:
+            - NGINX_LISTEN_PORT
+            - UWSGI_LISTEN_PORT
+        volumes:
+            - static-data:/vol/static
+            # the proxy can directly serve the static data, without bothering
+            # the django app
+
+volumes:
+    static-data:

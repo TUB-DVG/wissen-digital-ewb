@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+    database:
+        image: postgres
+        #build:
+            #context: ${PATH_WEBCENTRAL_SRC}/postgres
+            #dockerfile: Dockerfile
+        #command: >
+            #bash -c "psql --username ${POSTGRES_USER} ${POSTGRES_DB} < /tmp/dump.sql"
+        ports:
+            - ${DATABASE_OUTSIDE_PORT}:${DATABASE_INSIDE_PORT}
+        volumes:
+            #- ./postgres/${DATABASE_PLAIN_SQL_FILE}:/docker-entrypoint-initdb.d/${DATABASE_PLAIN_SQL_FILE}
+            - pgdata:/var/lib/postgresql/data
+        env_file:
+          - .env
+        healthcheck:
+            test: pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+            interval: 10s
+            start_period: 3s
+        container_name: database
+    webcentral:
+        build:
+            context: ${PATH_WEBCENTRAL_SRC}
+            dockerfile: Dockerfile
+            target: base
+            args:
+                PATH_WEBCENTRAL_SRC: ${PATH_WEBCENTRAL_SRC}
+        ports:
+            - ${WEBCENTRAL_OUTSIDE_PORT}:${WEBCENTRAL_INSIDE_PORT}
+        depends_on:
+            - database
+        env_file:
+          - .env
+        environment:
+            - WEBCENTRAL_LISTEN_PORT
+        container_name: webcentral
+volumes:
+    pgdata:
