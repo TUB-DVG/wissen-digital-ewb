@@ -25,7 +25,7 @@ import auswertung as asw
 
 import pandas as pd
 
-path_excel = '../../../../../../Nextcloud/Shared/WenDE/12_Daten/03_Gesamt_BF_Daten/20220207_Verteiler_EWB_Projekte.xlsx'
+path_excel = '../../../../../../Nextcloud/Shared/WenDE/12_Daten/03_Gesamt_BF_Daten/20220829_Verteiler_EWB_Projekte.xlsx'
 df_xlsx = pd.read_excel(path_excel, sheet_name='Projektverteiler', dtype="str")
 
 df_modul = df_xlsx[["Förderkenz. (0010)", "Modulzuordnung PtJ - 1 aktuell"
@@ -49,4 +49,4 @@ df_modul['modulzuordnung_ptj_4'] = df_modul['modulzuordnung_ptj_4'].str.lstrip()
 df_modul['modulzuordnung_ptj_2'] = df_modul['modulzuordnung_ptj_2'].str.replace('M2 BF', 'M2')
 df_modul['modulzuordnung_ptj_1'] = df_modul['modulzuordnung_ptj_1'].str.replace('ausgelaufen', 'ag')
 
-asw.write_df2csv(df_modul, 'modulzuordnung_csv_20220225.csv', new=True)
+asw.write_df2csv(df_modul, 'modulzuordnung_csv_20220829.csv', new=True)

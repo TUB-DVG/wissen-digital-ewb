@@ -25,3 +25,6 @@ venv
 /01_application/webcentral_app/weatherdata_over/Media
 /01_application/webcentral_app/media
 #/01_application/webcentral_app/schlagwoerter/migrations
+
+# exclude the .env file from git, since it holds secrets
+.env
