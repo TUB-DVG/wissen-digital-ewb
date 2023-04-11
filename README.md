@@ -5,7 +5,7 @@ web interface with data base system of project infromation of the "Begrleitforsc
 - web application: Django
 - data base system: PostgreSQL
 
-# Hosed at Server of IK-10
+# Hosted at Server of IK-10
 - IP: http://134.94.130.147/
 - SSH: Falk
 
