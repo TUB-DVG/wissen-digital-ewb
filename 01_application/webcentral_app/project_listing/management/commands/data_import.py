@@ -641,102 +641,144 @@ class Command(BaseCommand):
         
     #     return dictOfCurrentState, dictOfPendingState
 
-    def csv2m4dbEnargus(self, path):
-        """EnArgus csv-file into BF M4 Django database, hard coded"""
-        with open(path) as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                data.append(row)
-                self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
-        return header, data
+    # def csv2m4dbEnargus(self, path):
+    #     """EnArgus csv-file into BF M4 Django database, hard coded"""
+    #     with open(path) as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             data.append(row)
+    #             self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
+    #     return header, data
 
-    def csv2m4dbModul(self, path):
-        """Modul csv-file into BF M4 Django database, hard coded"""
-        with open(path) as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                # print(row[header.index('FKZ')])
-                data.append(row)
-                self.addOrUpdateRowTeilprojekt(row, header, 'modul')
-        return header, data
+    # def csv2m4dbModul(self, path):
+    #     """Modul csv-file into BF M4 Django database, hard coded"""
+    #     with open(path) as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             # print(row[header.index('FKZ')])
+    #             data.append(row)
+    #             self.addOrUpdateRowTeilprojekt(row, header, 'modul')
+    #     return header, data
 
-    def readPrintCSV(self, path):
-        """Test function EnArgus csv-file into BF M4 Django database, hard coded"""
-        with open(path) as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                data.append(row)
-                # print(row[header.index('FKZ')])
-        return header, data
+    # def readPrintCSV(self, path):
+    #     """Test function EnArgus csv-file into BF M4 Django database, hard coded"""
+    #     with open(path) as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             data.append(row)
+    #             # print(row[header.index('FKZ')])
+    #     return header, data
 
-    def csv2m4dbTools(self, path):
-        """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
-        with open(path, encoding='utf-8') as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                print(row[header.index('Tool')])
-                data.append(row)
-                # breakpoint()
-                self.getOrCreateTools(row, header)
-        return header, data
+    # def csv2m4dbTools(self, path):
+    #     """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
+    #     with open(path, encoding='utf-8') as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             print(row[header.index('Tool')])
+    #             data.append(row)
+    #             # breakpoint()
+    #             self.getOrCreateTools(row, header)
+    #     return header, data
 
-    def csv2m4dbWeatherdata(self, path):
-        """Weatherdata csv-file into BF M4 Django database, hard coded"""
-        with open(path, encoding='utf-8') as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                print(row[header.index('data_service')])
-                data.append(row)
-                # breakpoint()
-                self.getOrCreateWeatherdata(row, header)
-        return header, data
+    # def csv2m4dbWeatherdata(self, path):
+    #     """Weatherdata csv-file into BF M4 Django database, hard coded"""
+    #     with open(path, encoding='utf-8') as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             print(row[header.index('data_service')])
+    #             data.append(row)
+    #             # breakpoint()
+    #             self.getOrCreateWeatherdata(row, header)
+    #     return header, data
 
 
-    def csv2m4dbKeywordRegisterFirstView(self, path):
-        """Weatherdata csv-file into BF M4 Django database, hard coded"""
-        with open(path, encoding='utf-8') as csv_file:
-            reader = csv.reader(csv_file, delimiter=';')
-            header = next(reader)
-            data = []
-            for row in reader:
-                print(row[header.index('Förderkennzeichen (0010)')])
-                data.append(row)
-                # breakpoint()
-                # get_or_create_schlagwortregister(row, header)
-                self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
-        return header, data
+    # def csv2m4dbKeywordRegisterFirstView(self, path):
+    #     """Weatherdata csv-file into BF M4 Django database, hard coded"""
+    #     with open(path, encoding='utf-8') as csv_file:
+    #         reader = csv.reader(csv_file, delimiter=';')
+    #         header = next(reader)
+    #         data = []
+    #         for row in reader:
+    #             print(row[header.index('Förderkennzeichen (0010)')])
+    #             data.append(row)
+    #             # breakpoint()
+    #             # get_or_create_schlagwortregister(row, header)
+    #             self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
+    #     return header, data
     
-    def handle(self, *args, **options):
+
+    def readCSV(self, path: str):
+        """This method reads the csv-file, and loads the content into 
+        the two variables header and data. 
+
+        Parameters:
+        path:   str
+
+        Returns:
+        header: list
+            List of headers from the csv-file.
+        data:   list
+        list, containing the rows from the csv-file.
+
         """
+        with open(path, encoding='utf-8') as csv_file:
+            reader = csv.reader(csv_file, delimiter=';')
+            header = next(reader)
+            data = []
+            for row in reader:
+                data.append(row)
+        return header, data
+
+    def handle(self, *args, **options):
+        """This method is called from the manage.py when the 'data_import'
+        command is called together with the manage.py.
         
         """
         #pdb.set_trace()
         pathCSV=options["pathCSV"][0]
         pathStr, filename = os.path.split(pathCSV)
-        if "modulzuordnung" in filename:
-            header, data = self.csv2m4dbModul(pathCSV)
-        elif "enargus" in filename:
-            header, data = self.csv2m4dbEnargus(pathCSV)
-        elif "Tools" in filename:
-            header, data = self.csv2m4dbTools(pathCSV)
-        elif "schlagwoerter" in filename:
-            header, data = self.csv2m4dbKeywordRegisterFirstView(pathCSV)
-        elif "weatherdata" in filename:
-            header, data = self.csv2m4dbWeatherdata(pathCSV)
-        else:
-            print(f"Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible.")
+
+        header, data = self.readCSV(pathCSV)
+        for row in data:
+
+            if "modulzuordnung" in filename:
+                self.addOrUpdateRowTeilprojekt(row, header, 'modul')
+            elif "enargus" in filename:
+                self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
+            elif "Tools" in filename:
+                self.getOrCreateTools(row, header)
+            elif "schlagwoerter" in filename:
+                print(row[header.index('Förderkennzeichen (0010)')])
+                self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
+            elif "weatherdata" in filename:
+                print(row[header.index('data_service')])
+                self.getOrCreateWeatherdata(row, header)
+            else:
+                print(f"Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible.")
+                return None
     
     def add_arguments(self, parser):
+        """This method parses the arguments, which where given when 
+        calling the data_import-command together with the manage.py.
+        The Arguments are then given to the handle-method, and can
+        be accessed as python-variables.
+
+        Parameters:
+        parser: django.parser
+        Django parser object, which handles the parsing of the command
+        and arguments.
+        
+        """
         parser.add_argument('pathCSV', nargs='+', type=str) 
 
 
