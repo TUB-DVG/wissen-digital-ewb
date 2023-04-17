@@ -30,7 +30,7 @@ class Command(BaseCommand):
                 tupleOrNone = databaseDiffObj.checkIfConflictIsConsistentWithDatabase()
                 if tupleOrNone is not None:
                     self.executeAction(tupleOrNone)
-                    self.testIfChangesAreExecuted(databaseDiffObj, tupleOrNone)
+                    #self.testIfChangesAreExecuted(databaseDiffObj, tupleOrNone)
 
 
     def add_arguments(self, parser):
@@ -86,7 +86,6 @@ class Command(BaseCommand):
         with open(filename, "r") as stream:
             for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
                 databaseDifferenceObj.postprocessAfterReadIn()
-                pdb.set_trace()
                 listOfParsedConflicts.append(databaseDifferenceObj)
 
         return listOfParsedConflicts
