@@ -19,6 +19,13 @@ from weatherdata_over.models import *
 from schlagwoerter.models import *
 from project_listing.DatabaseDifference import DatabaseDifference
 
+class MultipleFKZDatasets(Exception):
+    """Custom Exception, which is thrown when multiple changes for one 
+    Förderkennzeichen are written to .yaml-file.
+    
+    """
+
+
 class Command(BaseCommand):
     """This class acts as a Django-Admin command. It can be executed with
     the manage.py by specifing the name of the modul (at the moment
@@ -49,6 +56,7 @@ class Command(BaseCommand):
             + str(currentTimestamp.time().minute) 
             + str(currentTimestamp.time().second) 
             + ".yaml")
+        self.fkzWrittenToYAML = []
 
 
 
@@ -527,6 +535,18 @@ class Command(BaseCommand):
         diffCurrentObjDict = {}
         diffPendingObjDict = {}
 
+        if identifer in self.fkzWrittenToYAML:
+            raise MultipleFKZDatasets(f"""In the .csv-file are multiple datasets 
+            with the same fkz {identifer} present. That can lead to problems 
+            with tracking the database state and is therefore not supported. 
+            Please find the rows in the .csv-file, and decide manually, which 
+            dataset should be loaded into the database. The other dataset needs 
+            to be deleted from the .csv-file. The data_import script can be 
+            reexecuted after these steps.
+            """)
+        else:
+            self.fkzWrittenToYAML.append(identifer)
+
         currentDBDifferenceObj = DatabaseDifference(identifer, theme)
         while len(unvisited) > 0:
             #depth += 1
@@ -562,7 +582,12 @@ class Command(BaseCommand):
                         try:
                             #pdb.set_trace()
                             #parentTableName = currentTableObj.__doc__.split("(")[0]
-                            unvisited.append([currentForeignTableStr, currentTableObj.__getattribute__(currentForeignTableStr), pendingTableObj.__getattribute__(currentForeignTableStr), currentForeignTableName])
+                            unvisited.append([
+                                currentForeignTableStr, 
+                                currentTableObj.__getattribute__(currentForeignTableStr), 
+                                pendingTableObj.__getattribute__(currentForeignTableStr), 
+                                currentForeignTableName,
+                            ])
                         except:
                             pass
                     elif not teilprojektField.is_relation:
@@ -606,116 +631,6 @@ class Command(BaseCommand):
         currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
         # with open(self.DBdifferenceFileName, 'a') as stream:
         #     yaml.dump(currentDBDifferenceObj, stream)
-
-
-    # def _getNonRelatingFields(self, currentDatasetInForeignTable):
-    #     """
-        
-    #     """
-    #     listOfNonrelationalFields = []
-    #     for currentField in currentDatasetInForeignTable._meta.get_fields():
-    #         if not currentField.is_relational:
-    #             listOfNonrelationalFields.append(currentField)
-
-    #     return listOfNonrelationalFields
-
-
-
-    # def _checkDifference(self, currentDatasetInForeignTable, pendingDatasetInForeignTable):
-    #     """
-        
-    #     """
-    #     nameOfCurrentTable = currentDatasetInForeignTable.__str__().split(".")[1]
-
-    #     nonRelationalFields = self._getNonRelatingFields(currentDatasetInForeignTable)
-    #     dictOfCurrentState = {}
-    #     dictOfPendingState = {}
-
-    #     dictOfCurrentState[nameOfCurrentTable] = {}
-    #     dictOfPendingState[nameOfCurrentTable] = {}
-
-    #     for field in nonRelationalFields:
-    #         if currentDatasetInForeignTable.__getattribute__(field) != pendingDatasetInForeignTable.__getattribute__(field):
-    #             dictOfCurrentState[field] = currentDatasetInForeignTable.__getattribute__(field)
-    #             dictOfPendingState[field] = pendingDatasetInForeignTable.__getattribute__(field)
-        
-    #     return dictOfCurrentState, dictOfPendingState
-
-    # def csv2m4dbEnargus(self, path):
-    #     """EnArgus csv-file into BF M4 Django database, hard coded"""
-    #     with open(path) as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             data.append(row)
-    #             self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
-    #     return header, data
-
-    # def csv2m4dbModul(self, path):
-    #     """Modul csv-file into BF M4 Django database, hard coded"""
-    #     with open(path) as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             # print(row[header.index('FKZ')])
-    #             data.append(row)
-    #             self.addOrUpdateRowTeilprojekt(row, header, 'modul')
-    #     return header, data
-
-    # def readPrintCSV(self, path):
-    #     """Test function EnArgus csv-file into BF M4 Django database, hard coded"""
-    #     with open(path) as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             data.append(row)
-    #             # print(row[header.index('FKZ')])
-    #     return header, data
-
-    # def csv2m4dbTools(self, path):
-    #     """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
-    #     with open(path, encoding='utf-8') as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             print(row[header.index('Tool')])
-    #             data.append(row)
-    #             # breakpoint()
-    #             self.getOrCreateTools(row, header)
-    #     return header, data
-
-    # def csv2m4dbWeatherdata(self, path):
-    #     """Weatherdata csv-file into BF M4 Django database, hard coded"""
-    #     with open(path, encoding='utf-8') as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             print(row[header.index('data_service')])
-    #             data.append(row)
-    #             # breakpoint()
-    #             self.getOrCreateWeatherdata(row, header)
-    #     return header, data
-
-
-    # def csv2m4dbKeywordRegisterFirstView(self, path):
-    #     """Weatherdata csv-file into BF M4 Django database, hard coded"""
-    #     with open(path, encoding='utf-8') as csv_file:
-    #         reader = csv.reader(csv_file, delimiter=';')
-    #         header = next(reader)
-    #         data = []
-    #         for row in reader:
-    #             print(row[header.index('Förderkennzeichen (0010)')])
-    #             data.append(row)
-    #             # breakpoint()
-    #             # get_or_create_schlagwortregister(row, header)
-    #             self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
-    #     return header, data
-    
 
     def readCSV(self, path: str):
         """This method reads the csv-file, and loads the content into 
@@ -780,6 +695,7 @@ class Command(BaseCommand):
         
         """
         parser.add_argument('pathCSV', nargs='+', type=str) 
+
 
 
 # Script area (here you find examples to use the functions ahead)
