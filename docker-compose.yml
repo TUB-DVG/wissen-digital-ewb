@@ -33,6 +33,7 @@ services:
         env_file:
           - .env
         environment:
+            - TZ=Europe/Berlin
             - WEBCENTRAL_LISTEN_PORT
         container_name: webcentral
 volumes:

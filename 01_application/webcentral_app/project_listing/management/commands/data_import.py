@@ -564,24 +564,27 @@ class Command(BaseCommand):
                 for columnName in pendingTableObj._meta.get_fields():
                     if not columnName.is_relation:
                        
-                       diffPendingObjDict[currentForeignTableName] = diffPendingObjDict[currentForeignTableName] + "|" + f" {columnName.name}: {str(pendingTableObj.__getattribute__(columnName.name))}"
+                       diffPendingObjDict[currentForeignTableName] = (
+                           diffPendingObjDict[currentForeignTableName] 
+                           + "|" 
+                           + f" {columnName.name}: {str(pendingTableObj.__getattribute__(columnName.name))}"
+                        )
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
-                    # new code fragment
                     currentDBDifferenceObj.addTable(f"{parentTableName}.{currentForeignTableName}")
-                    # end of new code fragment
                     diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
                     diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
 
                 for teilprojektField in listOfFieldsInCurrentTable:
                     currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
-                    if teilprojektField.is_relation and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames and not teilprojektField.one_to_many:
-                        #pdb.set_trace()
+                    if (
+                        teilprojektField.is_relation 
+                        and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
+                        and not teilprojektField.one_to_many
+                    ):
                         try:
-                            #pdb.set_trace()
-                            #parentTableName = currentTableObj.__doc__.split("(")[0]
                             unvisited.append([
                                 currentForeignTableStr, 
                                 currentTableObj.__getattribute__(currentForeignTableStr), 
@@ -591,12 +594,11 @@ class Command(BaseCommand):
                         except:
                             pass
                     elif not teilprojektField.is_relation:
-                        #pdb.set_trace()
-                        #currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
                         try:
-                            #pdb.set_trace()
-                            if str(pendingTableObj.__getattribute__(currentForeignTableStr)) != str(currentTableObj.__getattribute__(currentForeignTableStr)):
-                                #pdb.set_trace()
+                            if (
+                                str(pendingTableObj.__getattribute__(currentForeignTableStr)) 
+                                != str(currentTableObj.__getattribute__(currentForeignTableStr))
+                                ):
                                 strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
                                 strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
                                 lengthOfStr = np.array([len(strCurrent), len(strPending)])
@@ -609,28 +611,16 @@ class Command(BaseCommand):
                             
                                 diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strCurrent
                                 diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strPending
-                                # new code fragment
-                                currentDBDifferenceObj.addDifference(f"{parentTableName}.{currentForeignTableName}", {currentForeignTableStr: str(currentTableObj.__getattribute__(currentForeignTableStr))}, {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))})   
-                                # end of new codefragment         
+                                currentDBDifferenceObj.addDifference(
+                                    f"{parentTableName}.{currentForeignTableName}", 
+                                    {currentForeignTableStr: str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
+                                    {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))},
+                                )   
                         except:
                             pass
                 
-                # if diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] == "":
-                #     diffCurrentObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
-                #     diffPendingObjDict.pop(f"{parentTableName}.{currentForeignTableName}")
-
-
-        # with open("hallo.csv", "a") as f:
-        #     for numberOfWrittenTableDiffs, currentTableEntry in enumerate(diffCurrentObjDict.keys()):
-        #             f.write(f"  {currentTableEntry}\n")
-        #             f.write(f"      {diffCurrentObjDict[currentTableEntry]}\n")
-        #             f.write(f"      {diffPendingObjDict[currentTableEntry]}\n")
-        #     f.write(f"Current: 10\n")
-        #     f.write(f"Pending: 10\n")
-        
         currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
-        # with open(self.DBdifferenceFileName, 'a') as stream:
-        #     yaml.dump(currentDBDifferenceObj, stream)
+
 
     def readCSV(self, path: str):
         """This method reads the csv-file, and loads the content into 
@@ -679,7 +669,10 @@ class Command(BaseCommand):
                 print(row[header.index('data_service')])
                 self.getOrCreateWeatherdata(row, header)
             else:
-                print(f"Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible.")
+                print(f"Cant detect type of data. Please add 'modulzuordnung', \
+                    'enargus', 'Tools' or 'weatherdata' to Filename to make \
+                    detection possible."
+                )
                 return None
     
     def add_arguments(self, parser):

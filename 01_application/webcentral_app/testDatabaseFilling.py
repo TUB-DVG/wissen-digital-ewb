@@ -9,10 +9,14 @@ import datetime
 
 from django.test import TransactionTestCase
 from django.core import management
+from django.db.utils import IntegrityError
 import yaml
 
-from project_listing.models import Teilprojekt, Enargus
-from project_listing.management.commands.data_import import Command, MultipleFKZDatasets
+from project_listing.models import Teilprojekt
+from project_listing.management.commands.data_import import (
+    Command, 
+    MultipleFKZDatasets,
+)
 
 class checkDifferencesInDatabase(TransactionTestCase):
     """
@@ -66,17 +70,24 @@ class checkDifferencesInDatabase(TransactionTestCase):
         self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
 
     def testSameFKZTwoTimesInCSV(self):
-        """This method tests the behaviour of the `data_import` if the same
-        FKZ is present multiple times in the .csv-file and every 
-        dataset is different.
+        """Tests, if MultipleFKZDatasets-Exception is raised.
+        
+        This method tests the behaviour of the `data_import` if the same
+        FKZ (Förderkennzeichen) is present multiple times in the 
+        .csv-file and every dataset is different. Such a case could
+        lead to a wrong representation of the Database by the 
+        .yaml-file and therefore raises the User defined 
+        MultipleFKZDatasets-Exception.
         """
 
         csvFileToBeLoaded = "testData/enargus_testMultipleTimesSameDataset.csv"
-
-        self.assertRaises(
-            MultipleFKZDatasets, 
+        try:
             management.call_command('data_import', csvFileToBeLoaded)
-        )
+        except MultipleFKZDatasets:
+            return
+        
+        self.assertTrue(False)
+
     
     def testIfYAMLRepresentsDBState(self) -> None:
         """This method tests if the Database State-Differences, which are 
@@ -95,25 +106,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         fileNameModifiedTestData = "testData/enargus_testDatabaseFileModified.csv"
         management.call_command('data_import', fileNameModifiedTestData)
         
-        fileContents = os.listdir()
-        newest = 0
-        newestFileName = ""
-        for currentFilename in fileContents:
-            if ".yaml" in currentFilename:
-                fileWithoutExtension = currentFilename[0:-5].replace("-", "")
-                if int(fileWithoutExtension) > int(newest):
-                    newest = fileWithoutExtension
-                    newestFileName = currentFilename
-        
-        # check, if the timestamp of the newly created file, lies in the last
-        # 5 minutes:
-        currentTimeStamp = datetime.datetime.now()
-        currentTimeInt = str(currentTimeStamp).replace("-", "").replace(":", "").replace(" ", "").split(".")[0]
-        
-        self.assertTrue(
-            int(newest) + 2*60 > int(currentTimeInt), 
-            "Newest .YAML-File has an too old Timestamp!",
-        )
+        newestFileName = self._getNewestYAML()
 
         listOfDBDifferenceObjs = []
 
@@ -132,11 +125,94 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 dictMappingToTable
             )
 
+    def testExecuteDatabaseChangeskeepCurrent(self):
+        """Tests`execute_db_changes`, whereby `keepCurrentState` set to True
+ 
+        
+        """
+
+        loadInitialStateOfDB = "testData/enargus_load10Datasets.csv"
+        management.call_command('data_import', loadInitialStateOfDB)
+
+        updateDatasetInDB = "testData/enargus_testExecuteDBchanges.csv"
+        management.call_command('data_import', updateDatasetInDB)
+
+        newestYAMLFileName = self._getNewestYAML()
+
+        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
+
+        with open(newestYAMLFileName, "r") as file:
+            for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+                databaseDifferenceObj.postprocessAfterReadIn()
+
+                databaseDifferenceObj.keepCurrentState = True
+                databaseDifferenceObj.keepPendingState = False
+                databaseDifferenceObj.writeToYAML(nameYAMLFileAfterUserInput)
+
+        
+        management.call_command(
+            'execute_db_changes', 
+            nameYAMLFileAfterUserInput,
+        )
+
+        with open(nameYAMLFileAfterUserInput, "r") as file:
+            for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+                currentDifferenceObj.postprocessAfterReadIn()
+                #pdb.set_trace()
+                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                self._checkIfDifferencesFromYAMLAreInDB(
+                    differencesStruct,
+                    self._getTablesFromDiffDataStructure(differencesStruct),
+                    currentDifferenceObj.keepCurrentState,
+                    currentDifferenceObj.keepPendingState,
+                )
+
+    def testExecuteDatabaseChangeskeepCSV(self):
+        """Tests`execute_db_changes`, whereby `keepPendingState` set to True 
+        
+        """
+        loadInitialStateOfDB = "testData/enargus_load10Datasets.csv"
+        management.call_command('data_import', loadInitialStateOfDB)
+
+        updateDatasetInDB = "testData/enargus_testExecuteDBchanges.csv"
+        management.call_command('data_import', updateDatasetInDB)
+
+        newestYAMLFileName = self._getNewestYAML()
+
+        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "CSV.yml"
+
+        with open(newestYAMLFileName, "r") as file:
+            for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+                databaseDifferenceObj.postprocessAfterReadIn()
+
+                databaseDifferenceObj.keepCurrentState = False
+                databaseDifferenceObj.keepPendingState = True
+                databaseDifferenceObj.writeToYAML(nameYAMLFileAfterUserInput)
+
+        
+        management.call_command(
+            'execute_db_changes', 
+            nameYAMLFileAfterUserInput,
+        )
+
+        with open(nameYAMLFileAfterUserInput, "r") as file:
+            for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+                currentDifferenceObj.postprocessAfterReadIn()
+                #pdb.set_trace()
+                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                self._checkIfDifferencesFromYAMLAreInDB(
+                    differencesStruct,
+                    self._getTablesFromDiffDataStructure(differencesStruct),
+                    currentDifferenceObj.keepCurrentState,
+                    currentDifferenceObj.keepPendingState,
+                )             
 
     def _checkIfDifferencesFromYAMLAreInDB(
             self, 
             nestedDictContainingDiffs: dict, 
-            dictMappingToTable: list,
+            dictMappingToTable: dict,
+            keepCurrentState=None,
+            keepPendingState=None,
     ) -> None:
         """This method tests, if the two Database-states descried in the
         .yaml file are acutally present in the Database.
@@ -163,13 +239,82 @@ class checkDifferencesInDatabase(TransactionTestCase):
             # check if both states are present in the DB, 
             # like they are shown in the .yaml-file:
             currentTableModel = allModels.__getattribute__(tableName) 
-            self.assertTrue(
-                len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1
-            )
-            self.assertTrue(
-                len(currentTableModel.objects.filter(**CSVState)) == 1
-            )
+            if keepCurrentState == None and keepPendingState == None:
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
+                )
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**CSVState)) == 1,
+                )
+            
+            elif keepCurrentState == True and keepPendingState == False:
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
+                    "User specified to keep current-state of Database, \
+                    but current state is not present in database anymore!",
+                )
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**CSVState)) == 0,
+                    "User specified to keep current state, \
+                    but csv-state was not removed from Database!",
+                )
+            elif keepCurrentState == False and keepPendingState == True:
+                self.assertTrue(
+                    len(
+                    currentTableModel.objects.filter(**currentDBStateInTable)) == 0,
+                    "User specified to remove current state from DB, \
+                    but current state is still present!",
+                )
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**CSVState)) == 1,
+                    "User specified to keep csv-state, \
+                    but csv-state is not present in Database!",
+                )
+            else:
+                self.assertTrue(
+                    keepCurrentState ^ keepPendingState,
+                    "One state must be kept and one state must be discarded",    
+                )                                   
 
+
+    def _getNewestYAML(self) -> str:
+        """This method is a helper function for the Testcases. It iterates 
+        through all .yaml files in the current directory and searches for 
+        the one, which has the newest timestamp. If the timestamp of the 
+        newest .yaml file is older than 2 minutes, the assert staatement 
+        raises and error.
+
+        Returns: 
+        newestFileName: str
+            string, which represents the name of the newest .yaml file.
+        """
+
+        fileContents = os.listdir()
+        newest = 0
+        newestFileName = ""
+        for currentFilename in fileContents:
+            if ".yaml" in currentFilename:
+                fileWithoutExtension = currentFilename[0:-5].replace("-", "")
+                try:
+                    int(fileWithoutExtension) > int(newest)
+                except:
+                    pdb.set_trace()
+                if int(fileWithoutExtension) > int(newest):
+                    newest = fileWithoutExtension
+                    newestFileName = currentFilename
+        
+        # check, if the timestamp of the newly created file, lies in the last
+        # 5 minutes:
+        currentTimeStamp = datetime.datetime.now()
+        currentTimeInt = str(currentTimeStamp).replace("-", "")\
+            .replace(":", "").replace(" ", "").split(".")[0]
+        
+        self.assertTrue(
+            int(newest) + 2*60 > int(currentTimeInt), 
+            "Newest .YAML-File has an too old Timestamp!",
+        )
+
+        return newestFileName
 
     def _getTablesFromDiffDataStructure(
             self, 
