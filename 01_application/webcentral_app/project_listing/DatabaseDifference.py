@@ -176,12 +176,9 @@ class DatabaseDifference(yaml.YAMLObject):
             )
 
             for diffAttribute in list(self.differencesSortedByTable[tableNameKey]["currentState"].keys()):
-                current = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute]
-                current = current.rstrip()
-                pending = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute]
-                pending = pending.rstrip()
-                # self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute].rstrip()
-                # self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute].rstrip()
+                self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute].rstrip()
+                self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute].rstrip()
+
 
 
 
