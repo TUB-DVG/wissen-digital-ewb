@@ -51,11 +51,13 @@ class Command(BaseCommand):
         
         """        
         currentTimestamp = datetime.datetime.now()
-        self.DBdifferenceFileName = (str(currentTimestamp.date()) 
-            + str(currentTimestamp.time().hour) 
-            + str(currentTimestamp.time().minute) 
-            + str(currentTimestamp.time().second) 
-            + ".yaml")
+        #pdb.set_trace()
+        self.DBdifferenceFileName = str(int(currentTimestamp.timestamp())) + ".yaml"
+        # self.DBdifferenceFileName = (str(currentTimestamp.date()) 
+        #     + str(currentTimestamp.time().hour) 
+        #     + str(currentTimestamp.time().minute) 
+        #     + str(currentTimestamp.time().second) 
+        #     + ".yaml")
         self.fkzWrittenToYAML = []
 
 
@@ -286,11 +288,10 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateWeatherdata(self, row, header):
+    def getOrCreateWeatherdata(self, row, header) -> tuple:
         """
         add entry into table Weatherdata or/and return entry key
         """
-        # content = row[number of the columns of the row]
 
         dataService = row[header.index('data_service')]
         shortDescription = row[header.index('short_description')]
@@ -299,7 +300,7 @@ class Command(BaseCommand):
         dataUrl = row[header.index('data_url')]
         logoUrl = row[header.index('logo_url')]
         applications = row[header.index('applications')]
-        lastUpdate= row[header.index('last_update')]
+        lastUpdate = row[header.index('last_update')]
         license = row[header.index('license')]
         category = row[header.index('category')]
         longDescription = row[header.index('long_description')]
@@ -319,7 +320,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateSchlagwort(self, row, header, schlagwortKey):
+    def getOrCreateSchlagwort(self, row, header, schlagwortKey) -> tuple:
         """
         add entry into table schlagwort or/and return entry key
         """
@@ -330,7 +331,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateSchlagwortregister(self, row, header):
+    def getOrCreateSchlagwortregister(self, row, header) -> tuple:
         """
         add entry into table Weatherdata or/and return entry key
         """
@@ -396,7 +397,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def addOrUpdateRowTeilprojekt(self, row, header, source):
+    def addOrUpdateRowTeilprojekt(self, row, header, source) -> tuple:
         """add or update one row of the database, but without foreign key 
         connections
 
@@ -411,10 +412,7 @@ class Command(BaseCommand):
         if source == 'enargus':
             obj, created = self.getOrCreateEnargus(row, header)
             enargus_id = obj.enargus_id
-            fkz = row[header.index('FKZ')]
-
-        # breakpoint()
-            
+            fkz = row[header.index('FKZ')]            
             try:
                 if len(Teilprojekt.objects.filter(
                     fkz=fkz, 
@@ -424,7 +422,8 @@ class Command(BaseCommand):
                                             enargus_daten_id= enargus_id)
                     print('added: %s' %fkz)
             except IntegrityError:
-                currentStateTable = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
+                currentStateTable = Teilprojekt.objects.filter(fkz=fkz)[0].\
+                    enargus_daten
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
@@ -457,22 +456,26 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                
-                currentTeilprojektObj = Teilprojekt.objects.filter(fkz=fkz)[0].zuordnung
+                enargusDaten = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
+                zuordnungObj = Teilprojekt.objects.filter(fkz=fkz)[0].zuordnung
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append([
                     "zuordnung", 
-                    currentTeilprojektObj, 
+                    zuordnungObj, 
                     obj, 
                     "Teilprojekt",
                 ])
+                if enargusDaten is None:
+                    verbundbezeichung = None
+                else:
+                    verbundbezeichung = enargusDaten.verbundbezeichnung
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
                     {"fkz": fkz}, 
-                    currentTeilprojektObj.verbundbezeichnung,
+                    verbundbezeichung,
                 )
         elif source == 'schlagwortregister':
             obj, _ = self.getOrCreateSchlagwortregister(row, header)
@@ -489,6 +492,7 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
+                currentPartEnargus = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
                 currentObjTagRegisterFirstLook = Teilprojekt.objects.filter(
                     fkz=fkz,
                 )[0].schlagwortregister_erstsichtung
@@ -501,11 +505,15 @@ class Command(BaseCommand):
                     obj, 
                     "Teilprojekt",
                 ])
+                if currentPartEnargus is None:
+                    verbundbezeichnung = None
+                else:
+                    verbundbezeichnung = currentPartEnargus.verbundbezeichnung
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
                     {"fkz": fkz}, 
-                    currentObjTagRegisterFirstLook.verbundbezeichnung,
+                    verbundbezeichnung,
                 )
         
     def compareForeignTables(
@@ -622,7 +630,7 @@ class Command(BaseCommand):
         currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
 
 
-    def readCSV(self, path: str):
+    def readCSV(self, path: str) -> tuple:
         """This method reads the csv-file, and loads the content into 
         the two variables header and data. 
 
