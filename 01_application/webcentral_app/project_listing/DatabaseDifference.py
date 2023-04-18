@@ -95,9 +95,12 @@ class DatabaseDifference(yaml.YAMLObject):
                 idOfConflictingPendingObj = int(
                     self.differencesSortedByTable[rootTableName]["pendingState"][rootTableFieldName]
                 )
-                #pdb.set_trace()
                 currentStateInRootTable = globals()[parentTableName].objects.filter(
                     **{list(self.identifer.keys())[0]: self.identifer[list(self.identifer.keys())[0]]}
+                )
+                tableWhereConflictingObjsAreLocated = (
+                    tableWhereConflictingObjsAreLocated[0].upper() 
+                    + tableWhereConflictingObjsAreLocated[1:]
                 )
                 querySetForPendingObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
@@ -108,7 +111,6 @@ class DatabaseDifference(yaml.YAMLObject):
                 if (len(querySetForPendingObj) > 0 
                     and len(querySetForCurrentObj) > 0 
                     and len(currentStateInRootTable) > 0):
-                    #pdb.set_trace()
                     nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(
                         globals()[parentTableName], 
                         globals()[tableWhereConflictingObjsAreLocated],
