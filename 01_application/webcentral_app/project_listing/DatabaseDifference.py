@@ -9,11 +9,15 @@ import yaml
 import numpy as np
 
 class DatabaseDifference(yaml.YAMLObject):
-    """This class holds data for one database-Difference
+    """Class of 
     
     """
 
-    def __init__(self, identifer: dict, verbundbezeichnung: str):
+    def __init__(
+            self, 
+            identifer: dict, 
+            verbundbezeichnung: str,
+        ):
         """Constructor of DatabaseDifference-class
 
             identifier: dict
@@ -35,7 +39,12 @@ class DatabaseDifference(yaml.YAMLObject):
         self.differencesSortedByTable[tableName]["currentState"] = {}
         self.differencesSortedByTable[tableName]["pendingState"] = {}
 
-    def addDifference(self, tableName, currentState, pendingState) -> None:
+    def addDifference(
+            self, 
+            tableName, 
+            currentState, 
+            pendingState,
+        ) -> None:
         """Adds a Difference to a table, which is already present in 
         the data-strucutre.
 
@@ -90,10 +99,12 @@ class DatabaseDifference(yaml.YAMLObject):
         for rootTableFieldName in dictofRootTable:
              if "_id" in rootTableFieldName:
                 idOfConflictingCurrentObj = int(
-                    self.differencesSortedByTable[rootTableName]["currentState"][rootTableFieldName]
+                    self.differencesSortedByTable[rootTableName]\
+                        ["currentState"][rootTableFieldName]
                 )
                 idOfConflictingPendingObj = int(
-                    self.differencesSortedByTable[rootTableName]["pendingState"][rootTableFieldName]
+                    self.differencesSortedByTable[rootTableName]\
+                        ["pendingState"][rootTableFieldName]
                 )
                 currentStateInRootTable = globals()[parentTableName].objects.filter(
                     **{list(self.identifer.keys())[0]: self.identifer[list(self.identifer.keys())[0]]}
@@ -178,8 +189,10 @@ class DatabaseDifference(yaml.YAMLObject):
             )
 
             for diffAttribute in list(self.differencesSortedByTable[tableNameKey]["currentState"].keys()):
-                self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute].rstrip()
-                self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute] = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute].rstrip()
+                self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute] \
+                    = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute].rstrip()
+                self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute] \
+                    = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute].rstrip()
 
 
 

@@ -22,7 +22,6 @@ from project_listing.DatabaseDifference import DatabaseDifference
 class MultipleFKZDatasets(Exception):
     """Custom Exception, which is thrown when multiple changes for one 
     Förderkennzeichen are written to .yaml-file.
-    
     """
 
 
@@ -38,7 +37,7 @@ class Command(BaseCommand):
         ../../02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv
     ```
     At the moment, the .csv-files need to be named acording to the data.
-    they hold. (TODO: This has to be changed)
+    it holds. (TODO: This has to be changed)
 
     enargus-data needs to have "enargus" in its filename.
     modulzurodnung-data needs to have "modul" in its filename.
@@ -46,27 +45,54 @@ class Command(BaseCommand):
     schlagwoerter-data needs to have "schlagwoerter" in its filename.
     """
 
-    def __init__(self):
-        """
+    def __init__(self) -> None:
+        """Constructor of `data_import`-command
         
+        This method serves as constructor for the Command-Class.
+        It is used to create the Filename of the .YAML-File, 
+        which is a timestamp of the current datetime. Furthermore
+        fkzWrittenToYAML is initialized as empty list, 
+        in which later every Förderkennzeichen(fkz) is saved, 
+        which produced an conflict with a dataset inside the database.
+
+        Returns:
+        None
         """        
         currentTimestamp = datetime.datetime.now()
-        #pdb.set_trace()
-        self.DBdifferenceFileName = str(int(currentTimestamp.timestamp())) + ".yaml"
-        # self.DBdifferenceFileName = (str(currentTimestamp.date()) 
-        #     + str(currentTimestamp.time().hour) 
-        #     + str(currentTimestamp.time().minute) 
-        #     + str(currentTimestamp.time().second) 
-        #     + ".yaml")
+        self.DBdifferenceFileName = (str(int(currentTimestamp.timestamp())) 
+                                    + ".yaml"
+        )
+
         self.fkzWrittenToYAML = []
 
 
 
-    def getOrCreateForschung(self, row, header):
+    def getOrCreateForschung(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates Forschung-Object according to row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Forschung according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned. 
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Forschung
+            Forschung-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Forschung-object was created or not.
         """
-        add entry into table forschung or/and return entry key
-        """
-        # content = row[number of the columns of the row]
         federalMinistry = row[header.index('Bundesministerium')]
         projectBody = row[header.index('Projekttraeger')]
         supportProgram = row[header.index('Foerderprogramm')]
@@ -79,13 +105,35 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateAnschrift(self, row, header, who):
-        """
-        add entry into table anschrift or/and return entry key
+    def getOrCreateAnschrift(
+            self, 
+            row: list, 
+            header: list,
+            who: str,
+        ) -> tuple:
+        """Gets or Creates an object of type Anschrift from the data in row
 
-        who options:
-        - 'zwe' : zuwendungsempfaenger
-        - 'as' : ausfehrende Stelle
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Anschrift according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+        who:    str
+            indicates the type of Adress. It can have the values `zwe`
+            for zuwendungsempfaenger or `as` for ausfehrende Stelle.
+
+        Returns:
+        obj:    Forschung
+            Anschrift-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Forschung-object was created or not.
         """
         # content = row[number of the columns of the row]
         # decision kind of persion, where should the data read from, 
@@ -109,9 +157,31 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreatePerson(self, row, header):
-        """
-        add entry into table person or/and return entry key
+    def getOrCreatePerson(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Person from the data in row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Person according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Forschung
+            Anschrift-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Forschung-object was created or not.
         """
         # content = row[number of the columns of the row]
         # decision kind of persion, where should the data read from, 
@@ -456,8 +526,15 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                enargusDaten = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
-                zuordnungObj = Teilprojekt.objects.filter(fkz=fkz)[0].zuordnung
+
+                enargusDaten = Teilprojekt.objects.filter(
+                    fkz=fkz,
+                )[0].enargus_daten
+
+                zuordnungObj = Teilprojekt.objects.filter(
+                    fkz=fkz,
+                )[0].zuordnung
+
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
@@ -492,7 +569,11 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                currentPartEnargus = Teilprojekt.objects.filter(fkz=fkz)[0].enargus_daten
+                
+                currentPartEnargus = Teilprojekt.objects.filter(
+                    fkz=fkz,
+                )[0].enargus_daten
+
                 currentObjTagRegisterFirstLook = Teilprojekt.objects.filter(
                     fkz=fkz,
                 )[0].schlagwortregister_erstsichtung
@@ -571,17 +652,19 @@ class Command(BaseCommand):
                 diffPendingObjDict[currentForeignTableName] = ""
                 for columnName in pendingTableObj._meta.get_fields():
                     if not columnName.is_relation:
-                       
+                       penTab = pendingTableObj.__getattribute__(columnName.name)
                        diffPendingObjDict[currentForeignTableName] = (
                            diffPendingObjDict[currentForeignTableName] 
                            + "|" 
-                           + f" {columnName.name}: {str(pendingTableObj.__getattribute__(columnName.name))}"
+                           + f" {columnName.name}: {str(penTab)}"
                         )
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
-                    currentDBDifferenceObj.addTable(f"{parentTableName}.{currentForeignTableName}")
+                    currentDBDifferenceObj.addTable(
+                        f"{parentTableName}.{currentForeignTableName}",
+                    )
                     diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
                     diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = ""
 
@@ -604,8 +687,10 @@ class Command(BaseCommand):
                     elif not teilprojektField.is_relation:
                         try:
                             if (
-                                str(pendingTableObj.__getattribute__(currentForeignTableStr)) 
-                                != str(currentTableObj.__getattribute__(currentForeignTableStr))
+                                str(pendingTableObj\
+                                    .__getattribute__(currentForeignTableStr)) 
+                                != str(currentTableObj\
+                                       .__getattribute__(currentForeignTableStr))
                                 ):
                                 strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
                                 strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
@@ -617,12 +702,24 @@ class Command(BaseCommand):
                                 else:
                                     strPending += numberOfCharacterDifference*" "
                             
-                                diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strCurrent
-                                diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] = diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] + "|" + strPending
+                                diffCurrentObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                    + "|" 
+                                    + strCurrent
+                                )
+                                diffPendingObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                     + "|" 
+                                     + strPending
+                                )
                                 currentDBDifferenceObj.addDifference(
                                     f"{parentTableName}.{currentForeignTableName}", 
-                                    {currentForeignTableStr: str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
-                                    {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))},
+                                    {currentForeignTableStr: 
+                                     str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
+                                    {currentForeignTableStr: 
+                                     str(pendingTableObj.__getattribute__(currentForeignTableStr))},
                                 )   
                         except:
                             pass
@@ -630,7 +727,10 @@ class Command(BaseCommand):
         currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
 
 
-    def readCSV(self, path: str) -> tuple:
+    def readCSV(
+            self, 
+            path: str,
+        ) -> tuple:
         """This method reads the csv-file, and loads the content into 
         the two variables header and data. 
 
@@ -652,12 +752,24 @@ class Command(BaseCommand):
                 data.append(row)
         return header, data
 
-    def handle(self, *args, **options):
+    def handle(
+            self, 
+            *args: tuple, 
+            **options: dict,
+        ) -> None:
         """This method is called from the manage.py when the 'data_import'
         command is called together with the manage.py.
+
+        Parameters:
+        *args:  tuple
+            Tuple of arguments, which get unpacked.
+        **options:  dict
+            Dictionary, contains the parsed argument, given at the CLI
+            when calling `python manage.py data_import`
         
+        Returns:
+        None
         """
-        #pdb.set_trace()
         pathCSV=options["pathCSV"][0]
         pathStr, filename = os.path.split(pathCSV)
 
@@ -683,7 +795,10 @@ class Command(BaseCommand):
                 )
                 return None
     
-    def add_arguments(self, parser):
+    def add_arguments(
+            self, 
+            parser,
+        ) -> None:
         """This method parses the arguments, which where given when 
         calling the data_import-command together with the manage.py.
         The Arguments are then given to the handle-method, and can
@@ -694,29 +809,7 @@ class Command(BaseCommand):
         Django parser object, which handles the parsing of the command
         and arguments.
         
+        Returns:
+        None
         """
         parser.add_argument('pathCSV', nargs='+', type=str) 
-
-
-
-# Script area (here you find examples to use the functions ahead)
-#classObj = DataImport()
-# ## Example add/update Enargus data
-# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220902.csv'
-# header, data = classObj.csv2m4db_enargus(path_csv_enargus)
-
-# ## Example add/update Modul-Zuordnung data
-# path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220829.csv'
-# header, data = classObj.csv2m4db_modul(path_csv_modul)
-# #pdb.set_trace()
-# ## Example add/update Tool Uebersichts table
-# path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-# header, data = classObj.csv2m4db_tools(path_csv_tools)
-# #pdb.set_trace()
-# ## Example add/update Weatherdata table
-# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-# header, data = classObj.csv2m4db_weatherdata(path_csv_weatherdata)
-#pdb.set_trace()
-## Example add/update Schlagwoerter table
-# path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/ZE_fuer_BF_enargus_ergaenzt_Auswahl_rst_fc.csv'
-# header, data = classObj.csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
