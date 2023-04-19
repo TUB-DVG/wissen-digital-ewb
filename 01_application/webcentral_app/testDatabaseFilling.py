@@ -38,6 +38,25 @@ class checkDifferencesInDatabase(TransactionTestCase):
     an .yaml-file in which the conflicts are shown. The user then 
     needs to decide, which state should be kept, and which discarded.
     """
+    # documentation on fixtures: 
+    # https://docs.djangoproject.com/en/4.2/howto/initial-data/ 
+    # TODO: Does not work, because migrate is applied before fixture is loaded!
+    # further info: https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.TransactionTestCase.fixtures
+    fixtures = ["fixture_of_20220714_dump.json"]
+    # @classmethod
+    # def setUpClass(cls):
+    #     """Class is called once on creation of the Testclass
+
+    #     This method is called once before the execution of the 
+    #     tests. It is used to call the restoreDB.sh, to load the
+    #     production-datasbase backup into the test-database. That 
+    #     set ups a level 2 database test: The data is loaded 
+    #     against an already filled database.
+    #     """
+    #     currentDir = os.getcwd()
+        
+    #     os.chdir("../../")
+    #     os.system(f"cat postgres/{os.environ["DATABASE_PLAIN_SQL_FILE"] | }")
 
     def testLoadingTwoTimesTheSameDataset(self):
         """This method tests what happens, if 2 times the same dataset 
@@ -46,7 +65,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
         and checks each time if only one dataset is present in the 
         datasbe and that its the one, represented by the first dataset
         inside the .csv-file.
-        
         """
 
         fileNameContainingTestData = "testData/enargus_testDatabaseFile.csv"
@@ -233,7 +251,8 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         """
 
-        simpleModulzurodnungDatasets = "testData/modulzuordnung_simpleLoading.csv"
+        simpleModulzurodnungDatasets = \
+            "testData/modulzuordnung_simpleLoading.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
 
         simpleModulzurodnungDatasets = "testData/modulzuordnung_simpleEdits.csv"
@@ -251,41 +270,37 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 )                           
 
         time.sleep(1)
-    
-    # def testLoadingAndUpdatingTools(self):
-    #     """ Loads and updates Tools
-        
-    #     """
-    #     simpleModulzurodnungDatasets = "testData/Tools_simpleDatasets.csv"
-    #     management.call_command("data_import", simpleModulzurodnungDatasets)
 
-    #     simpleModulzurodnungDatasets = "testData/Tools_simpleDatasetsModified.csv"
-    #     management.call_command("data_import", simpleModulzurodnungDatasets)
-
-    #     newestYAMLFile = self._getNewestYAML()
-
-    #     with open(newestYAMLFile, "r") as file:
-    #         for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
-    #             currentDifferenceObj.postprocessAfterReadIn()
-    #             differencesStruct = currentDifferenceObj.differencesSortedByTable
-    #             self._checkIfDifferencesFromYAMLAreInDB(
-    #                 differencesStruct,
-    #                 self._getTablesFromDiffDataStructure(differencesStruct),
-    #             )                           
-
-    #     time.sleep(1)
-
-    def testLoadingAndUpdatingTags(self):
+    def testLoadingAndUpdatingTags(self) -> None:
         """ Loads and updates Schlagwörter
+
+        This method tests, if a .YAML-file is created, when two .csv-
+        files with the same Förderkennzeichen but differences in the 
+        datasets are loaded. It then tests, if the .YAML-File 
+        represents the state in the Database (if current and pending
+        dataset are present in the database like they are written in 
+        the .YAML-File). 
+        After that, a new .YAML-File is created, and the 
+        Database-Differences from the previous .YAML-File 
+        are written there, but the Flag to keep the current-state is
+        updated. The .YAML-File is then given to the `excute_db_changes`.
+        This should delete all datasets, which were present in the YAML
+        File and were marked as pending. 
+        After that, it is tested if the curretn state is still prsesent
+        and the pending state is deleted.
+        The same procedure is done, but now the pending state is marked
+        to be kept and the current state is marked to be deleted. After
+        execution of `execute_db_changes` it is tested, if the commits
+        are present in the database.
         
         """
 
-        #management.call_command("migrate")
-
-        simpleModulzurodnungDatasets = "testData/schlagwoerter_simpleTestData.csv"
+        simpleModulzurodnungDatasets = \
+            "testData/schlagwoerter_simpleTestData.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
 
-        simpleModulzurodnungDatasets = "testData/schlagwoerter_simpleTestDataModified.csv"
+        simpleModulzurodnungDatasets = \
+            "testData/schlagwoerter_simpleTestDataModified.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
         newestYAMLFile = self._getNewestYAML()
 
@@ -327,7 +342,8 @@ class checkDifferencesInDatabase(TransactionTestCase):
         time.sleep(1)
 
         # load again the csv-state, but discard now the current-state:
-        simpleModulzurodnungDatasets = "testData/schlagwoerter_simpleTestDataModified.csv"
+        simpleModulzurodnungDatasets = \
+            "testData/schlagwoerter_simpleTestDataModified.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
         newestYAMLFile = self._getNewestYAML()
 
@@ -355,8 +371,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 ) 
         
         time.sleep(1)
-
-
 
     def _checkIfDifferencesFromYAMLAreInDB(
             self, 
@@ -388,13 +402,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
             CSVState = dictOfDifferences["pendingState"]
             
             if "schlagwortregister_erstsichtung" in tableDictKey.split(".")[1]:
-                schlagwortregisterIDcurrent =  nestedDictContainingDiffs[tableDictKey]["currentState"]["schlagwortregister_id"]
+                schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
+                    [tableDictKey]["currentState"]["schlagwortregister_id"]
             # check if both states are present in the DB, 
             # like they are shown in the .yaml-file:
             currentTableModel = allModels.__getattribute__(tableName) 
             if keepCurrentState == None and keepPendingState == None:
-                if len(currentTableModel.objects.filter(**currentDBStateInTable)) != 1 or len(currentTableModel.objects.filter(**CSVState)) != 1:
-                    pdb.set_trace()
                 self.assertTrue(
                     len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
                 )
@@ -416,24 +429,29 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 )
             elif keepCurrentState == False and keepPendingState == True:
                 
-                if "Schlagwort" in str(currentTableModel) and not "Schlagwortregister_erstsichtung" in str(currentTableModel):
-                    #pdb.set_trace()
+                if ("Schlagwort" in str(currentTableModel) 
+                    and not "Schlagwortregister_erstsichtung" in str(currentTableModel)
+                ):
                     tagToBeChecked = currentDBStateInTable["schlagwort_id"]
                     for numberPosition in range(1, 7):
-                        dictCurrTagNum = {f"schlagwort_{numberPosition}_id": tagToBeChecked}
-                        queryForCurrTag = Schlagwortregister_erstsichtung.objects.filter(**dictCurrTagNum)
+                        dictCurrTagNum = {
+                            f"schlagwort_{numberPosition}_id": tagToBeChecked
+                        }
+                        queryForCurrTag = Schlagwortregister_erstsichtung\
+                            .objects.filter(**dictCurrTagNum)
                         for query in queryForCurrTag:
-                            if query.schlagwortregister_id == int(schlagwortregisterIDcurrent):
+                            if (query.schlagwortregister_id 
+                                == int(schlagwortregisterIDcurrent)):
                                 self.assertTrue(False)
                     
                 else:               
                     self.assertTrue(
-                        len(currentTableModel.objects.filter(**currentDBStateInTable)) == 0,
+                        len(
+                        currentTableModel.objects.filter(**currentDBStateInTable)
+                        ) == 0,
                         "User specified to remove current state from DB, \
                     but current state is still present!",
                     )               
-                if len(currentTableModel.objects.filter(**currentDBStateInTable)) != 0 or len(currentTableModel.objects.filter(**CSVState)) != 1:
-                    pdb.set_trace()
 
                 self.assertTrue(
                     len(currentTableModel.objects.filter(**CSVState)) == 1,
@@ -460,7 +478,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
 
         fileContents = os.listdir()
-        #newest = datetime.datetime(year=2000, month=1, day=1, hour=12, minute=0)
         newest = 0
         newestFileName = ""
         for currentFilename in fileContents:
@@ -477,7 +494,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
         # 2 minutes:
         currentTime = datetime.datetime.now()
         
-        #pdb.set_trace()
         self.assertTrue(
             newest + 2*60 > currentTime.timestamp(), 
             "Newest .YAML-File has an too old Timestamp!",
