@@ -569,7 +569,7 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                
+                #pdb.set_trace()
                 currentPartEnargus = Teilprojekt.objects.filter(
                     fkz=fkz,
                 )[0].enargus_daten
@@ -590,6 +590,8 @@ class Command(BaseCommand):
                     verbundbezeichnung = None
                 else:
                     verbundbezeichnung = currentPartEnargus.verbundbezeichnung
+                
+                
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
@@ -647,17 +649,24 @@ class Command(BaseCommand):
             pendingTableObj = currentEntryInUnvisited[2]
             parentTableName = currentEntryInUnvisited[3]
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
+            #pdb.set_trace()
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
+                currentDBDifferenceObj.addTable(
+                    f"{parentTableName}.{currentForeignTableName}",
+                )
                 for columnName in pendingTableObj._meta.get_fields():
+                    currentForeignTableStr = columnName.__str__().strip(">").split(".")[-1]
                     if not columnName.is_relation:
-                       penTab = pendingTableObj.__getattribute__(columnName.name)
-                       diffPendingObjDict[currentForeignTableName] = (
+                        penTab = pendingTableObj.__getattribute__(columnName.name)
+                        diffPendingObjDict[currentForeignTableName] = (
                            diffPendingObjDict[currentForeignTableName] 
                            + "|" 
                            + f" {columnName.name}: {str(penTab)}"
                         )
+
+                        currentDBDifferenceObj.addDifference(f"{parentTableName}.{currentForeignTableName}", {currentForeignTableStr: None}, {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))},)
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 

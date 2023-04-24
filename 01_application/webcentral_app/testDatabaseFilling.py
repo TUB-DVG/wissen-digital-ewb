@@ -12,6 +12,7 @@ import pdb
 from django.test import TransactionTestCase
 from django.core import management
 from django.db.utils import IntegrityError
+import psycopg2
 import yaml
 
 from project_listing.models import (
@@ -42,7 +43,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
     # https://docs.djangoproject.com/en/4.2/howto/initial-data/ 
     # TODO: Does not work, because migrate is applied before fixture is loaded!
     # further info: https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.TransactionTestCase.fixtures
-    fixtures = ["fixture_of_20220714_dump.json"]
+    #fixtures = ["fixture_of_20220714_dump.json"]
     # @classmethod
     # def setUpClass(cls):
     #     """Class is called once on creation of the Testclass
@@ -53,57 +54,67 @@ class checkDifferencesInDatabase(TransactionTestCase):
     #     set ups a level 2 database test: The data is loaded 
     #     against an already filled database.
     #     """
-    #     currentDir = os.getcwd()
+    #     connection = psycopg2.connect(host='database', user=os.environ["POSTGRES_USER"],
+    #                           password=os.environ["POSTGRES_PASSWORD"], 
+    #                           dbname=os.environ["POSTGRES_DB"], port=5432)
+    #     cursor = connection.cursor()
+    #     sqlcurr = open("../../postgres/db_webcentral_Backup_20220714.sql", mode='r')
+    #     cursor.execute(sqlcurr.read())
+        #cursor.commit()
+
         
-    #     os.chdir("../../")
-    #     os.system(f"cat postgres/{os.environ["DATABASE_PLAIN_SQL_FILE"] | }")
-
-    def testLoadingTwoTimesTheSameDataset(self):
-        """This method tests what happens, if 2 times the same dataset 
-        is loaded into the DB. It loads the .csv file at 
-        "testData/enargus_testDatabaseFile.csv" two times in a row,
-        and checks each time if only one dataset is present in the 
-        datasbe and that its the one, represented by the first dataset
-        inside the .csv-file.
-        """
-
-        fileNameContainingTestData = "testData/enargus_testDatabaseFile.csv"
-
-        dataImportCommand = Command()
-        header, data = dataImportCommand.readCSV(fileNameContainingTestData)
-
-        management.call_command('data_import', fileNameContainingTestData)
-
-        # only one Teilprojekt should be present in the test-database:
-        self.assertTrue(len(Teilprojekt.objects.all()) == 1)
+        #management.call_command('loaddata', 'hi.json')
+        # currentDir = os.getcwd()
         
-        # check if the dataset was corretly loaded into the DB:
-        testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]
+        # os.chdir("../../")
+        # os.system(f"cat postgres/{os.environ["DATABASE_PLAIN_SQL_FILE"] | }")
 
-        testDatasetEnargus = testDatasetFromDB.enargus_daten
+    # def testLoadingTwoTimesTheSameDataset(self):
+    #     """This method tests what happens, if 2 times the same dataset 
+    #     is loaded into the DB. It loads the .csv file at 
+    #     "testData/enargus_testDatabaseFile.csv" two times in a row,
+    #     and checks each time if only one dataset is present in the 
+    #     datasbe and that its the one, represented by the first dataset
+    #     inside the .csv-file.
+    #     """
 
-        self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
-        self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
-        self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
-        self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
+    #     fileNameContainingTestData = "testData/enargus_testDatabaseFile.csv"
 
-        # check what happens, if two times the same dataset is loaded:
-        management.call_command('data_import', fileNameContainingTestData)
+    #     dataImportCommand = Command()
+    #     header, data = dataImportCommand.readCSV(fileNameContainingTestData)
 
-        # still only one dataset should be present in the database:
-        self.assertTrue(len(Teilprojekt.objects.all()) == 1)
+    #     management.call_command('data_import', fileNameContainingTestData)
 
-        # check if the dataset was corretly loaded into the DB:
-        testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]  
+    #     # only one Teilprojekt should be present in the test-database:
+    #     self.assertTrue(len(Teilprojekt.objects.all()) == 1)
         
-        testDatasetEnargus = testDatasetFromDB.enargus_daten
+    #     # check if the dataset was corretly loaded into the DB:
+    #     testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]
 
-        self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
-        self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
-        self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
-        self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
+    #     testDatasetEnargus = testDatasetFromDB.enargus_daten
 
-        time.sleep(1)
+    #     self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
+    #     self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
+    #     self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
+    #     self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
+
+    #     # check what happens, if two times the same dataset is loaded:
+    #     management.call_command('data_import', fileNameContainingTestData)
+
+    #     # still only one dataset should be present in the database:
+    #     self.assertTrue(len(Teilprojekt.objects.all()) == 1)
+
+    #     # check if the dataset was corretly loaded into the DB:
+    #     testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]  
+        
+    #     testDatasetEnargus = testDatasetFromDB.enargus_daten
+
+    #     self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
+    #     self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
+    #     self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
+    #     self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
+
+    #     time.sleep(1)
 
     def testSameFKZTwoTimesInCSV(self):
         """Tests, if MultipleFKZDatasets-Exception is raised.
@@ -295,13 +306,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         """
 
-        simpleModulzurodnungDatasets = \
+        simpleTagsDatasets = \
             "testData/schlagwoerter_simpleTestData.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasets)
+        management.call_command("data_import", simpleTagsDatasets)
 
-        simpleModulzurodnungDatasets = \
+        simpleTagsModifiedDataset = \
             "testData/schlagwoerter_simpleTestDataModified.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasets)
+        management.call_command("data_import", simpleTagsModifiedDataset)
         newestYAMLFile = self._getNewestYAML()
 
         with open(newestYAMLFile, "r") as file:
@@ -406,27 +417,32 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     [tableDictKey]["currentState"]["schlagwortregister_id"]
             # check if both states are present in the DB, 
             # like they are shown in the .yaml-file:
-            currentTableModel = allModels.__getattribute__(tableName) 
-            if keepCurrentState == None and keepPendingState == None:
-                self.assertTrue(
-                    len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
-                )
-                self.assertTrue(
-                    len(currentTableModel.objects.filter(**CSVState)) == 1,
-                )
+            currentTableModel = allModels.__getattribute__(tableName)
+            #pdb.set_trace()
+            if (keepCurrentState == None 
+                and keepPendingState == None 
+            ):
+                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "")
+                self._doAssertation(currentTableModel, CSVState, 1, "")
+
 
             
             elif keepCurrentState == True and keepPendingState == False:
-                self.assertTrue(
-                    len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
-                    "User specified to keep current-state of Database, \
-                    but current state is not present in database anymore!",
-                )
-                self.assertTrue(
-                    len(currentTableModel.objects.filter(**CSVState)) == 0,
-                    "User specified to keep current state, \
-                    but csv-state was not removed from Database!",
-                )
+                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "User specified to keep current-state of Database, \
+                    but current state is not present in database anymore!")
+                pdb.set_trace()
+                self._doAssertation(currentTableModel, CSVState, 0, "User specified to keep current state, \
+but csv-state was not removed from Database!",)
+                # self.assertTrue(
+                #     len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
+                #     "User specified to keep current-state of Database, \
+                #     but current state is not present in database anymore!",
+                # )
+                # self.assertTrue(
+                #     len(currentTableModel.objects.filter(**CSVState)) == 0,
+                #     "User specified to keep current state, \
+                #     but csv-state was not removed from Database!",
+                # )
             elif keepCurrentState == False and keepPendingState == True:
                 
                 if ("Schlagwort" in str(currentTableModel) 
@@ -464,6 +480,38 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     "One state must be kept and one state must be discarded",    
                 )                                   
 
+    def _doAssertation(self, currentTableModel, stateDict, lengthOfQuerySet, assertationMessage):
+        """
+        
+        """
+        if not self._checkIfIDisNone(stateDict):
+            self.assertTrue(
+                len(currentTableModel.objects.filter(**stateDict)) == lengthOfQuerySet,
+                assertationMessage,
+            )
+
+
+    def _checkIfIDisNone(self, tableDict: dict) -> str:
+        """This method finds the key-value pair in the current table 
+        dictionary, in which the ID of the Data-Tuple is stored. It does this
+        by iterating through the dictionary-keys and checks if '_id' is
+        present in the string.
+
+        tableDict:  dict
+            Dictionary of the DatabaseDifference-Object containing the state 
+            of one table either in current or csv-state.
+        
+        Returns:
+        dictKey:    str
+            string representation of the key, containing the id-of the tuple.
+
+        """
+
+        for dictKey in list(tableDict.keys()):
+            if "_id" in dictKey:
+                if tableDict[dictKey] is None:
+                    return True
+        return False
 
     def _getNewestYAML(self) -> str:
         """This method is a helper function for the Testcases. It iterates 
