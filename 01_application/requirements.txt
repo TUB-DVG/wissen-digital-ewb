@@ -17,6 +17,7 @@ Jinja2==3.1.2
 MarkupSafe==2.1.2
 packaging==23.1
 plotly==5.14.1
+psycopg2==2.9.6
 pytz==2023.3
 SQLAlchemy==2.0.10
 sqlparse==0.4.4
