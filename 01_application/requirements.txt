@@ -52,6 +52,7 @@ odfpy==1.4.1
 openpyxl==3.1.2
 packaging==23.1
 pandas==1.5.3
+Pillow==9.5.0
 Pint==0.17
 platformdirs==2.6.2
 plotly==5.14.1
