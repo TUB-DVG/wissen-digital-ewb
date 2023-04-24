@@ -9,8 +9,9 @@ from project_listing.models import *
 import os
 import plotly.graph_objects as go
 
-PATH = os.chdir(r'./LastProfile/Dash_app')
-df_haupt=pd.read_csv('Hauptblatt2.csv')
+PATH = pathlib.Path(__file__).parent.resolve() 
+DATA_PATH = os.path.join(PATH , 'Hauptblatt2.csv') 
+df_haupt=pd.read_csv(DATA_PATH)
 data=[]
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 
