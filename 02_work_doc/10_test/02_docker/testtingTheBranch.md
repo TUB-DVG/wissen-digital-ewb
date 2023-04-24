@@ -7,6 +7,11 @@ a file called `.env`-file:
 ```
     cp .env.example .env 
 ``` 
+
+In case you use windows: 
+```
+    copy .env.example .env 
+``` 
 Open the `.env`-file with a editor of your choice and edit the `PATH_WEBCENTRAL_SRC` to the absolute path of the root-directory of webcentral-repo.
 Furthermore, copy the `.sql`-file, which holds the dump of the database you want to import,
 into `postgres/` and specify the filename of the `.sql` as `DATABASE_PLAIN_SQL_FILE`.
