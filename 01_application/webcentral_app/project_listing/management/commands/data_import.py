@@ -67,12 +67,12 @@ class Command(BaseCommand):
 
 
 
-    def getOrCreateForschung(
+    def getOrCreateResearch(
             self, 
             row: list, 
             header: list,
         ) -> tuple:
-        """Gets or Creates Forschung-Object according to row
+        """Gets or Creates Research-Object according to row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
@@ -105,7 +105,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateAnschrift(
+    def getOrCreateAdress(
             self, 
             row: list, 
             header: list,
@@ -133,7 +133,7 @@ class Command(BaseCommand):
             Anschrift-object, represent the created or in database
             present Forschung-Dataset with the data from row.
         created:    bool
-            Indicates, if the Forschung-object was created or not.
+            Indicates, if the Anschrift-object was created or not.
         """
         # content = row[number of the columns of the row]
         # decision kind of persion, where should the data read from, 
@@ -178,10 +178,10 @@ class Command(BaseCommand):
 
         Returns:
         obj:    Forschung
-            Anschrift-object, represent the created or in database
+            Person-object, represent the created or in database
             present Forschung-Dataset with the data from row.
         created:    bool
-            Indicates, if the Forschung-object was created or not.
+            Indicates, if the Person-object was created or not.
         """
         # content = row[number of the columns of the row]
         # decision kind of persion, where should the data read from, 
@@ -198,9 +198,31 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateLeistungSys(self, row, header):
-        """
-        add entry into table leistung_sys or/and return entry key
+    def getOrCreateLeistungSys(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Leistung_sys from the data in row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Leistung_sys according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Forschung
+            Leistung_sys-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Leistung_sys-object was created or not.
         """
         # content = row[number of the columns of the row]
         benefitPlanSystematicText = row[header.index('Leistungsplan_Sys_Text')]
@@ -212,13 +234,33 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateZuwendungsempfaenger(self, row, header):
+    def getOrCreateGrantee(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Zuwendungsempfaenger from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Zuwendungsempfaenger according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Zuwendungsempfaenger
+            Zuwendungsempfaenger-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Leistung_sys-object was created or not.
         """
-        add entry into table zuwendungsempfaenger or/and return entry key
-        """
-    # fill table anschrift in case of zuwendungsempfaenger
-        # or/and get the anschrift_id
-        objAnsZwe, _ = self.getOrCreateAnschrift(
+        objAnsZwe, _ = self.getOrCreateAdress(
             row, 
             header, 
             'zwe',
@@ -233,13 +275,31 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateAusfuehrendeStelle(self, row, header):
-        """
-        add entry into table ausfuehrende_stelle or/and return entry key
+    def getOrCreateExecutive(self, row, header):
+        """Gets or Creates an object of type Ausfuehrende_stelle from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Ausfuehrende_stelle according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Ausfuehrende_stelle
+            Ausfuehrende_stelle-object, represent the created or in database
+            present Forschung-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Ausfuehrende_stelle-object was created or not.
         """
     # fill table anschrift in case of ausfuehrende_stelle
         # or/and get the anschrift_id
-        objAnsAs, _ = self.getOrCreateAnschrift(row, header, 'as')
+        objAnsAs, _ = self.getOrCreateAdress(row, header, 'as')
         addressId = objAnsAs.anschrift_id
 
         # content = row[number of the columns of the row]
@@ -250,19 +310,41 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateEnargus(self, row, header):
-        """
-        add entry into table enargus or/and return entry key
+    def getOrCreateEnargus(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Enargus from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Enargus according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Enargus
+            Enargus-object, represent the created or in database
+            present Enargus-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Enargus-object was created or not.
         """
         # content = row[number of the columns of the row]
         # print(forschung_id)
 
         # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
-        objZwe, _ = self.getOrCreateZuwendungsempfaenger(row, header)
+        objZwe, _ = self.getOrCreateGrantee(row, header)
         zwe_id = objZwe.zuwendungsempfaenger_id
 
         # fill table ausfuehrende_stelle or/and get the ausfuehrende_stelle_id
-        objAs, _ = self.getOrCreateAusfuehrendeStelle(row, header)
+        objAs, _ = self.getOrCreateExecutive(row, header)
         asId = objAs.ausfuehrende_stelle_id
 
         # fill table leistung_sys or/and get the leistungsplansystematik_nr
@@ -274,7 +356,7 @@ class Command(BaseCommand):
         personId = objPer.person_id
 
         # fill table forschung or/and get the forschung_id
-        objFor, _ = self.getOrCreateForschung(row, header)
+        objFor, _ = self.getOrCreateResearch(row, header)
         forschungId = objFor.forschung_id
 
         durationBegin = row[header.index('Laufzeitbeginn')]
@@ -304,11 +386,32 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateModulenZuordnung(self, row, header) -> tuple:
+    def getOrCreateModulesMapping(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Modulen_zuordnung_ptj from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Modulen_zuordnung_ptj according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Modulen_zuordnung_ptj
+            Modulen_zuordnung_ptj-object, represent the created or in database
+            present Modulen_zuordnung_ptj-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Modulen_zuordnung_ptj-object was created or not.
         """
-        add entry into table modulen_zuordnung_ptj or/and return entry key
-        """
-        # content = row[number of the columns of the row]
 
         priority1 = row[header.index('modulzuordnung_ptj_1')]
         priority2 = row[header.index('modulzuordnung_ptj_2')]
@@ -322,9 +425,31 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateTools(self, row, header) -> tuple:
-        """
-        add entry into table Tools or/and return entry key
+    def getOrCreateTools(
+            self, 
+            row: list,
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Tools from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Tools according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Tools
+            Tools-object, represent the created or in database
+            present Tools-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Tools-object was created or not.
         """
 
         description = row[header.index('Tool')]
@@ -358,9 +483,31 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateWeatherdata(self, row, header) -> tuple:
-        """
-        add entry into table Weatherdata or/and return entry key
+    def getOrCreateWeatherdata(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates an object of type Weatherdata from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Weatherdata according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Weatherdata
+            Weatherdata-object, represent the created or in database
+            present Weatherdata-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Weatherdata-object was created or not.
         """
 
         dataService = row[header.index('data_service')]
@@ -390,12 +537,17 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateSchlagwort(self, row, header, schlagwortKey) -> tuple:
+    def getOrCreateCatchphrase(
+            self, 
+            row: list, 
+            header: list, 
+            catchphraseKey: str,
+        ) -> tuple:
         """
         add entry into table schlagwort or/and return entry key
         """
         # content = row[number of the columns of the row]
-        schlagwort = row[header.index(schlagwortKey)]
+        schlagwort = row[header.index(catchphraseKey)]
         obj, created = Schlagwort.objects.get_or_create(
             schlagwort = schlagwort
         )
@@ -406,49 +558,49 @@ class Command(BaseCommand):
         add entry into table Weatherdata or/and return entry key
         """
         
-        objSchlagwort1, _ = self.getOrCreateSchlagwort(
+        objSchlagwort1, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort1',
         )
         schlagwort1Id = objSchlagwort1.schlagwort_id
 
-        objSchlagwort2, _ = self.getOrCreateSchlagwort(
+        objSchlagwort2, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort2',
         )
         schlagwort2Id = objSchlagwort2.schlagwort_id
 
-        objSchlagwort3, _ = self.getOrCreateSchlagwort(
+        objSchlagwort3, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort3',
         )
         schlagwort3Id = objSchlagwort3.schlagwort_id
 
-        objSchlagwort4, _ = self.getOrCreateSchlagwort(
+        objSchlagwort4, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort4',
         )
         schlagwort4Id = objSchlagwort4.schlagwort_id
         
-        objSchlagwort5, _ = self.getOrCreateSchlagwort(
+        objSchlagwort5, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort5',
         )
         schlagwort5Id = objSchlagwort5.schlagwort_id
         
-        objSchlagwort6, _ = self.getOrCreateSchlagwort(
+        objSchlagwort6, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort6',
         )
         schlagwort6Id = objSchlagwort6.schlagwort_id
         
-        objSchlagwort7, _ = self.getOrCreateSchlagwort(
+        objSchlagwort7, _ = self.getOrCreateCatchphrase(
             row, 
             header, 
             'Schlagwort',
@@ -467,7 +619,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def addOrUpdateRowTeilprojekt(self, row, header, source) -> tuple:
+    def addOrUpdateRowPartProject(self, row, header, source) -> tuple:
         """add or update one row of the database, but without foreign key 
         connections
 
@@ -663,10 +815,16 @@ class Command(BaseCommand):
                            + f" {columnName.name}: {str(penTab)}"
                         )
 
-                        currentDBDifferenceObj.addDifference(f"{parentTableName}.{currentForeignTableName}", {currentForeignTableStr: None}, {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))},)
+                        currentDBDifferenceObj.addDifference(
+                            f"{parentTableName}.{currentForeignTableName}", 
+                            {currentForeignTableStr: None}, 
+                            {currentForeignTableStr: 
+                             str(pendingTableObj.__getattribute__(currentForeignTableStr))},
+                             )
                         listOfFieldsInCurrentTable = pendingTableObj._meta.get_fields()
                         for teilprojektField in listOfFieldsInCurrentTable:
-                            currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
+                            currentForeignTableStr = teilprojektField.__str__()\
+                                .strip(">").split(".")[-1]
                             if (
                                 teilprojektField.is_relation 
                                 and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
