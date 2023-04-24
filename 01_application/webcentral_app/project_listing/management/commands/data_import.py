@@ -526,7 +526,6 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-
                 enargusDaten = Teilprojekt.objects.filter(
                     fkz=fkz,
                 )[0].enargus_daten
@@ -569,7 +568,6 @@ class Command(BaseCommand):
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                #pdb.set_trace()
                 currentPartEnargus = Teilprojekt.objects.filter(
                     fkz=fkz,
                 )[0].enargus_daten
@@ -649,7 +647,6 @@ class Command(BaseCommand):
             pendingTableObj = currentEntryInUnvisited[2]
             parentTableName = currentEntryInUnvisited[3]
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
-            #pdb.set_trace()
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
@@ -667,6 +664,20 @@ class Command(BaseCommand):
                         )
 
                         currentDBDifferenceObj.addDifference(f"{parentTableName}.{currentForeignTableName}", {currentForeignTableStr: None}, {currentForeignTableStr: str(pendingTableObj.__getattribute__(currentForeignTableStr))},)
+                        listOfFieldsInCurrentTable = pendingTableObj._meta.get_fields()
+                        for teilprojektField in listOfFieldsInCurrentTable:
+                            currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
+                            if (
+                                teilprojektField.is_relation 
+                                and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
+                                and not teilprojektField.one_to_many
+                            ):
+                                unvisited.append([
+                                    currentForeignTableStr, 
+                                    None, 
+                                    pendingTableObj.__getattribute__(currentForeignTableStr), 
+                                    currentForeignTableName,
+                                ])                        
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 

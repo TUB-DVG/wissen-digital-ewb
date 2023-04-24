@@ -6,13 +6,12 @@ import importlib
 import time
 import os
 import pdb
-
+import random
 
 
 from django.test import TransactionTestCase
 from django.core import management
 from django.db.utils import IntegrityError
-import psycopg2
 import yaml
 
 from project_listing.models import (
@@ -261,17 +260,21 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """Load Modulzuordnung-Data, Test if .YAML file is created on conflict.
         
         """
+        
+        choiceKeepDBOrCSV = [(True, False), (False, True)]
+        choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
         simpleModulzurodnungDatasets = \
             "testData/modulzuordnung_simpleLoading.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
+        time.sleep(1)
+        simpleModulzurodnungDatasetsModified = "testData/modulzuordnung_simpleEdits.csv"
+        management.call_command("data_import", simpleModulzurodnungDatasetsModified)
 
-        simpleModulzurodnungDatasets = "testData/modulzuordnung_simpleEdits.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasets)
+        newestYAMLFileName = self._getNewestYAML()
+        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
-        newestYAMLFile = self._getNewestYAML()
-
-        with open(newestYAMLFile, "r") as file:
+        with open(newestYAMLFileName, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
@@ -279,8 +282,30 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
                 )                           
+                currentDifferenceObj.keepCurrentState = choiceToBeKept[0]
+                currentDifferenceObj.keepPendingState = choiceToBeKept[1]
+                currentDifferenceObj.writeToYAML(nameYAMLFileAfterUserInput)
 
+        management.call_command(
+            'execute_db_changes', 
+            nameYAMLFileAfterUserInput,
+        )
+
+        with open(nameYAMLFileAfterUserInput, "r") as file:
+            for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+                currentDifferenceObj.postprocessAfterReadIn()
+                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                self._checkIfDifferencesFromYAMLAreInDB(
+                    differencesStruct,
+                    self._getTablesFromDiffDataStructure(differencesStruct),
+                    currentDifferenceObj.keepCurrentState,
+                    currentDifferenceObj.keepPendingState,
+                )  
+        
         time.sleep(1)
+
+
+
 
     def testLoadingAndUpdatingTags(self) -> None:
         """ Loads and updates Schlagwörter
@@ -404,7 +429,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         None
         """
         allModels = importlib.import_module("project_listing.models")
-
+        schlagwortregisterIDcurrent = None
         for tableDictKey in list(nestedDictContainingDiffs.keys()):
 
             tableName = dictMappingToTable[tableDictKey]
@@ -413,82 +438,81 @@ class checkDifferencesInDatabase(TransactionTestCase):
             CSVState = dictOfDifferences["pendingState"]
             
             if "schlagwortregister_erstsichtung" in tableDictKey.split(".")[1]:
-                schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
-                    [tableDictKey]["currentState"]["schlagwortregister_id"]
+                if not keepCurrentState and keepCurrentState is not None:
+                    schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
+                        [tableDictKey]["currentState"]["schlagwortregister_id"]
+                elif not keepPendingState and keepPendingState is not None:
+                    schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
+                        [tableDictKey]["pendingState"]["schlagwortregister_id"]
+                    
             # check if both states are present in the DB, 
             # like they are shown in the .yaml-file:
             currentTableModel = allModels.__getattribute__(tableName)
-            #pdb.set_trace()
             if (keepCurrentState == None 
                 and keepPendingState == None 
             ):
-                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "")
-                self._doAssertation(currentTableModel, CSVState, 1, "")
+                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "", schlagwortregisterIDcurrent)
+                self._doAssertation(currentTableModel, CSVState, 1, "", schlagwortregisterIDcurrent)
 
-
-            
             elif keepCurrentState == True and keepPendingState == False:
                 self._doAssertation(currentTableModel, currentDBStateInTable, 1, "User specified to keep current-state of Database, \
-                    but current state is not present in database anymore!")
-                pdb.set_trace()
-                self._doAssertation(currentTableModel, CSVState, 0, "User specified to keep current state, \
-but csv-state was not removed from Database!",)
-                # self.assertTrue(
-                #     len(currentTableModel.objects.filter(**currentDBStateInTable)) == 1,
-                #     "User specified to keep current-state of Database, \
-                #     but current state is not present in database anymore!",
-                # )
-                # self.assertTrue(
-                #     len(currentTableModel.objects.filter(**CSVState)) == 0,
-                #     "User specified to keep current state, \
-                #     but csv-state was not removed from Database!",
-                # )
-            elif keepCurrentState == False and keepPendingState == True:
+                    but current state is not present in database anymore!", schlagwortregisterIDcurrent)
                 
-                if ("Schlagwort" in str(currentTableModel) 
-                    and not "Schlagwortregister_erstsichtung" in str(currentTableModel)
-                ):
-                    tagToBeChecked = currentDBStateInTable["schlagwort_id"]
-                    for numberPosition in range(1, 7):
-                        dictCurrTagNum = {
-                            f"schlagwort_{numberPosition}_id": tagToBeChecked
-                        }
-                        queryForCurrTag = Schlagwortregister_erstsichtung\
-                            .objects.filter(**dictCurrTagNum)
-                        for query in queryForCurrTag:
-                            if (query.schlagwortregister_id 
-                                == int(schlagwortregisterIDcurrent)):
-                                self.assertTrue(False)
-                    
-                else:               
-                    self.assertTrue(
-                        len(
-                        currentTableModel.objects.filter(**currentDBStateInTable)
-                        ) == 0,
-                        "User specified to remove current state from DB, \
-                    but current state is still present!",
-                    )               
+                self._doAssertation(currentTableModel, CSVState, 0, "User specified to keep current state, \
+but csv-state was not removed from Database!", schlagwortregisterIDcurrent)
 
-                self.assertTrue(
-                    len(currentTableModel.objects.filter(**CSVState)) == 1,
-                    "User specified to keep csv-state, \
-                    but csv-state is not present in Database!",
-                )
+            elif keepCurrentState == False and keepPendingState == True:
+                       
+                self._doAssertation(currentTableModel, currentDBStateInTable, 0,                         "User specified to remove current state from DB, \
+                    but current state is still present!", schlagwortregisterIDcurrent)
+                self._doAssertation(currentTableModel, CSVState, 1,                     "User specified to keep csv-state, \
+                    but csv-state is not present in Database!", schlagwortregisterIDcurrent)                       
             else:
                 self.assertTrue(
                     keepCurrentState ^ keepPendingState,
                     "One state must be kept and one state must be discarded",    
                 )                                   
 
-    def _doAssertation(self, currentTableModel, stateDict, lengthOfQuerySet, assertationMessage):
+    def _doAssertation(
+            self, 
+            currentTableModel, 
+            stateDict, 
+            lengthOfQuerySet, 
+            assertationMessage, 
+            schlagwortregisterIDcurrent
+        ):
         """
         
         """
+        
         if not self._checkIfIDisNone(stateDict):
-            self.assertTrue(
-                len(currentTableModel.objects.filter(**stateDict)) == lengthOfQuerySet,
-                assertationMessage,
-            )
+            if not ("Schlagwort" in str(currentTableModel)
+                    and not "Schlagwortregister_erstsichtung" in str(currentTableModel)
+                ):
+
+                self.assertTrue(
+                    len(currentTableModel.objects.filter(**stateDict)) == lengthOfQuerySet,
+                    assertationMessage,
+                )
+            elif (
+                ("Schlagwort" in str(currentTableModel) 
+                and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
+                and lengthOfQuerySet == 0 
+                and schlagwortregisterIDcurrent is not None
+            ):
+                tagToBeChecked = stateDict["schlagwort_id"]
+                #pdb.set_trace()
+                for numberPosition in range(1, 7):
+                    dictCurrTagNum = {
+                        f"schlagwort_{numberPosition}_id": tagToBeChecked
+                    }
+                    queryForCurrTag = Schlagwortregister_erstsichtung\
+                        .objects.filter(**dictCurrTagNum)
+                    for query in queryForCurrTag:
+                        #pdb.set_trace()
+                        if (query.schlagwortregister_id 
+                            == int(schlagwortregisterIDcurrent)):
+                            self.assertTrue(False)              
 
 
     def _checkIfIDisNone(self, tableDict: dict) -> str:
@@ -509,7 +533,7 @@ but csv-state was not removed from Database!",)
 
         for dictKey in list(tableDict.keys()):
             if "_id" in dictKey:
-                if tableDict[dictKey] is None:
+                if tableDict[dictKey] == "None" or tableDict[dictKey] is None:
                     return True
         return False
 

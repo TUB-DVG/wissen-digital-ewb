@@ -1,5 +1,6 @@
 import ast
 import pdb
+import importlib
 
 from project_listing.models import *
 from tools_over.models import *
@@ -82,6 +83,19 @@ class DatabaseDifference(yaml.YAMLObject):
              else:
                   return False
     
+
+    def _findModelNameForKey(self, allModels, curentTableFromKey):
+        """
+        
+        """
+
+        currNameWithUpperLetter = curentTableFromKey[0].upper() + curentTableFromKey[1:]
+
+        for model in dir(allModels):
+            if currNameWithUpperLetter in model or curentTableFromKey in model:
+                return model
+        
+
     def checkIfConflictIsConsistentWithDatabase(self):
         """Checks if, the conflict is consistent with the current state
         of the database. This should secure from error, which are 
@@ -90,16 +104,17 @@ class DatabaseDifference(yaml.YAMLObject):
 
         """
         rootTableName = self.getStartingPoint()
-        
+        allModels = importlib.import_module("project_listing.models")
         tableWhereConflictingObjsAreLocated = rootTableName.split(".")[1]
         parentTableName = rootTableName.split(".")[0]
         dictofRootTable = list(
             self.differencesSortedByTable[rootTableName]["currentState"].keys()
         )
         for rootTableFieldName in dictofRootTable:
+             classNameOfTable = self._findModelNameForKey(allModels, tableWhereConflictingObjsAreLocated)
              if "_id" in rootTableFieldName:
                 if self.differencesSortedByTable[rootTableName]["currentState"][rootTableFieldName] is not None:
-
+                    
                     idOfConflictingCurrentObj = int(
                         self.differencesSortedByTable[rootTableName]\
                             ["currentState"][rootTableFieldName]
@@ -115,16 +130,14 @@ class DatabaseDifference(yaml.YAMLObject):
                         list(self.identifer.keys())[0]
                     ]}
                 )
-                tableWhereConflictingObjsAreLocated = (
-                    tableWhereConflictingObjsAreLocated[0].upper() 
-                    + tableWhereConflictingObjsAreLocated[1:]
-                )
-                querySetForPendingObj = globals()[
-                    tableWhereConflictingObjsAreLocated
-                ].objects.filter(
+                # tableWhereConflictingObjsAreLocated = (
+                #     tableWhereConflictingObjsAreLocated[0].upper() 
+                #     + tableWhereConflictingObjsAreLocated[1:]
+                # )
+                querySetForPendingObj = globals()[classNameOfTable]\
+                .objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
                 )
-                #pdb.set_trace()
                 querySetForCurrentObj = globals()[parentTableName].objects.filter(**self.identifer)
                 # querySetForCurrentObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
                 #         **{rootTableFieldName: idOfConflictingCurrentObj}
@@ -134,7 +147,7 @@ class DatabaseDifference(yaml.YAMLObject):
                     and len(currentStateInRootTable) > 0):
                     nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(
                         globals()[parentTableName], 
-                        globals()[tableWhereConflictingObjsAreLocated],
+                        globals()[classNameOfTable],
                     )
                     
                     currentStateRowObj = currentStateInRootTable[0].__getattribute__(
@@ -216,6 +229,12 @@ class DatabaseDifference(yaml.YAMLObject):
                     [diffAttribute] = self.differencesSortedByTable\
                         [tableNameKey]["pendingState"][diffAttribute].rstrip()
 
+                if self.differencesSortedByTable[tableNameKey]["currentState"]\
+                        [diffAttribute] == "None":
+                    self.differencesSortedByTable[tableNameKey]["currentState"]\
+                        [diffAttribute] = None
+
+
 
 
 
@@ -236,23 +255,25 @@ class DatabaseDifference(yaml.YAMLObject):
             for currentDiffAttribute in list(
                 self.differencesSortedByTable[tableNameKey]["currentState"].keys()
             ):
+                
                 valueCurrent = self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute]
                 #strCurrent = f"{currentDifferenceAttribute}:{valueCurrent}"
                 
                 valuePending = self.differencesSortedByTable[tableNameKey]["pendingState"][currentDiffAttribute]
                 #strPending = f"{currentDifferenceAttribute}:{valuePending}"
+
                 if valueCurrent is None:
                     lengthOfCurrent = 4
+                    self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute] = "None"
                 else:
                     lengthOfCurrent = len(valueCurrent)
                 lengthOfStr = np.array([lengthOfCurrent, len(valuePending)])
                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                 numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
                 if posOfMaxLengthStr == 0:
-                   self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute] += numberOfCharacterDifference * " "
+                   self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute] = str(self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute]) + numberOfCharacterDifference * " "
                 else:
                     self.differencesSortedByTable[tableNameKey]["pendingState"][currentDiffAttribute] += numberOfCharacterDifference * " "                
-
             self.differencesSortedByTable[tableNameKey]["currentState"] = str(
                 self.differencesSortedByTable[tableNameKey]["currentState"]
             )

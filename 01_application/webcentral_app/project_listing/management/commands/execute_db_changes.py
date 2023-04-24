@@ -103,7 +103,6 @@ class Command(BaseCommand):
         pendingObj = listOfDatabaseObjs[2]   
         currentStateRow = listOfDatabaseObjs[3]
         nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
-        diffDataStructure
         if optionCurrent:
             for currentTable in list(diffDataStructure.keys()):
                 if "Teilprojekt" in currentTable:
@@ -164,7 +163,8 @@ class Command(BaseCommand):
                                 .objects.filter(
                                 schlagwort_id=diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
                                 )
-                            query[0].delete()
+                            if len(query) > 0:
+                                query[0].delete()
 
             
 
