@@ -38,82 +38,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
     an .yaml-file in which the conflicts are shown. The user then 
     needs to decide, which state should be kept, and which discarded.
     """
-    # documentation on fixtures: 
-    # https://docs.djangoproject.com/en/4.2/howto/initial-data/ 
-    # TODO: Does not work, because migrate is applied before fixture is loaded!
-    # further info: https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.TransactionTestCase.fixtures
-    #fixtures = ["fixture_of_20220714_dump.json"]
-    # @classmethod
-    # def setUpClass(cls):
-    #     """Class is called once on creation of the Testclass
-
-    #     This method is called once before the execution of the 
-    #     tests. It is used to call the restoreDB.sh, to load the
-    #     production-datasbase backup into the test-database. That 
-    #     set ups a level 2 database test: The data is loaded 
-    #     against an already filled database.
-    #     """
-    #     connection = psycopg2.connect(host='database', user=os.environ["POSTGRES_USER"],
-    #                           password=os.environ["POSTGRES_PASSWORD"], 
-    #                           dbname=os.environ["POSTGRES_DB"], port=5432)
-    #     cursor = connection.cursor()
-    #     sqlcurr = open("../../postgres/db_webcentral_Backup_20220714.sql", mode='r')
-    #     cursor.execute(sqlcurr.read())
-        #cursor.commit()
-
-        
-        #management.call_command('loaddata', 'hi.json')
-        # currentDir = os.getcwd()
-        
-        # os.chdir("../../")
-        # os.system(f"cat postgres/{os.environ["DATABASE_PLAIN_SQL_FILE"] | }")
-
-    # def testLoadingTwoTimesTheSameDataset(self):
-    #     """This method tests what happens, if 2 times the same dataset 
-    #     is loaded into the DB. It loads the .csv file at 
-    #     "testData/enargus_testDatabaseFile.csv" two times in a row,
-    #     and checks each time if only one dataset is present in the 
-    #     datasbe and that its the one, represented by the first dataset
-    #     inside the .csv-file.
-    #     """
-
-    #     fileNameContainingTestData = "testData/enargus_testDatabaseFile.csv"
-
-    #     dataImportCommand = Command()
-    #     header, data = dataImportCommand.readCSV(fileNameContainingTestData)
-
-    #     management.call_command('data_import', fileNameContainingTestData)
-
-    #     # only one Teilprojekt should be present in the test-database:
-    #     self.assertTrue(len(Teilprojekt.objects.all()) == 1)
-        
-    #     # check if the dataset was corretly loaded into the DB:
-    #     testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]
-
-    #     testDatasetEnargus = testDatasetFromDB.enargus_daten
-
-    #     self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
-    #     self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
-    #     self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
-    #     self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
-
-    #     # check what happens, if two times the same dataset is loaded:
-    #     management.call_command('data_import', fileNameContainingTestData)
-
-    #     # still only one dataset should be present in the database:
-    #     self.assertTrue(len(Teilprojekt.objects.all()) == 1)
-
-    #     # check if the dataset was corretly loaded into the DB:
-    #     testDatasetFromDB = Teilprojekt.objects.filter(fkz=data[0][0])[0]  
-        
-    #     testDatasetEnargus = testDatasetFromDB.enargus_daten
-
-    #     self.assertTrue(str(testDatasetEnargus.laufzeitbeginn) == data[0][1])
-    #     self.assertTrue(str(testDatasetEnargus.laufzeitende) == data[0][2])
-    #     self.assertTrue(str(testDatasetEnargus.datenbank) == data[0][3])
-    #     self.assertTrue(str(testDatasetEnargus.thema) == data[0][4])
-
-    #     time.sleep(1)
 
     def testSameFKZTwoTimesInCSV(self):
         """Tests, if MultipleFKZDatasets-Exception is raised.
@@ -330,6 +254,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         are present in the database.
         
         """
+        
+        choiceKeepDBOrCSV = [(True, False), (False, True)]
+        choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
         simpleTagsDatasets = \
             "testData/schlagwoerter_simpleTestData.csv"
@@ -358,44 +285,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
-                currentDifferenceObj.keepCurrentState = True
-                currentDifferenceObj.keepPendingState = False
+                currentDifferenceObj.keepCurrentState = choiceToBeKept[0]
+                currentDifferenceObj.keepPendingState = choiceToBeKept[1]
                 currentDifferenceObj.writeToYAML(exportFileKeepCurrent)
 
         # keep the current state for all Diffs and delete the CSV-state:
         management.call_command("execute_db_changes", exportFileKeepCurrent)
         with open(exportFileKeepCurrent, "r") as file:
-            for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
-                currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
-                self._checkIfDifferencesFromYAMLAreInDB(
-                    differencesStruct,
-                    self._getTablesFromDiffDataStructure(differencesStruct),
-                    currentDifferenceObj.keepCurrentState,
-                    currentDifferenceObj.keepPendingState,
-                ) 
-        
-        time.sleep(1)
-
-        # load again the csv-state, but discard now the current-state:
-        simpleModulzurodnungDatasets = \
-            "testData/schlagwoerter_simpleTestDataModified.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasets)
-        newestYAMLFile = self._getNewestYAML()
-
-        exportFileKeepCSV = newestYAMLFile[:-5] + "keepCSV.yml"
-
-        # change each DifferenceObject to keep-Current-DB-State
-        with open(newestYAMLFile, "r") as file:
-            for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
-                currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
-                currentDifferenceObj.keepCurrentState = False
-                currentDifferenceObj.keepPendingState = True
-                currentDifferenceObj.writeToYAML(exportFileKeepCSV)
-
-        management.call_command("execute_db_changes", exportFileKeepCSV)
-        with open(exportFileKeepCSV, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
@@ -451,22 +347,58 @@ class checkDifferencesInDatabase(TransactionTestCase):
             if (keepCurrentState == None 
                 and keepPendingState == None 
             ):
-                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "", schlagwortregisterIDcurrent)
-                self._doAssertation(currentTableModel, CSVState, 1, "", schlagwortregisterIDcurrent)
+                self._doAssertation(
+                    currentTableModel, 
+                    currentDBStateInTable, 
+                    1, 
+                    "", 
+                    schlagwortregisterIDcurrent
+                )
+                self._doAssertation(
+                    currentTableModel, 
+                    CSVState, 
+                    1, 
+                    "", 
+                    schlagwortregisterIDcurrent,
+                )
 
             elif keepCurrentState == True and keepPendingState == False:
-                self._doAssertation(currentTableModel, currentDBStateInTable, 1, "User specified to keep current-state of Database, \
-                    but current state is not present in database anymore!", schlagwortregisterIDcurrent)
+                self._doAssertation(
+                    currentTableModel, 
+                    currentDBStateInTable, 
+                    1, 
+                    "User specified to keep current-state of Database, \
+                    but current state is not present in database anymore!", 
+                    schlagwortregisterIDcurrent,
+                )
                 
-                self._doAssertation(currentTableModel, CSVState, 0, "User specified to keep current state, \
-but csv-state was not removed from Database!", schlagwortregisterIDcurrent)
+                self._doAssertation(
+                    currentTableModel, 
+                    CSVState, 
+                    0, 
+                    "User specified to keep current state, \
+but csv-state was not removed from Database!",
+                    schlagwortregisterIDcurrent,
+                )
 
             elif keepCurrentState == False and keepPendingState == True:
                        
-                self._doAssertation(currentTableModel, currentDBStateInTable, 0,                         "User specified to remove current state from DB, \
-                    but current state is still present!", schlagwortregisterIDcurrent)
-                self._doAssertation(currentTableModel, CSVState, 1,                     "User specified to keep csv-state, \
-                    but csv-state is not present in Database!", schlagwortregisterIDcurrent)                       
+                self._doAssertation(
+                    currentTableModel, 
+                    currentDBStateInTable, 
+                    0,                         
+                    "User specified to remove current state from DB, \
+                    but current state is still present!", 
+                    schlagwortregisterIDcurrent,
+                )
+                self._doAssertation(
+                    currentTableModel, 
+                    CSVState, 
+                    1,                     
+                    "User specified to keep csv-state, \
+                    but csv-state is not present in Database!", 
+                    schlagwortregisterIDcurrent,
+                )                       
             else:
                 self.assertTrue(
                     keepCurrentState ^ keepPendingState,
@@ -487,11 +419,15 @@ but csv-state was not removed from Database!", schlagwortregisterIDcurrent)
         
         if not self._checkIfIDisNone(stateDict):
             if not ("Schlagwort" in str(currentTableModel)
-                    and not "Schlagwortregister_erstsichtung" in str(currentTableModel)
+                    and not "Schlagwortregister_erstsichtung" in str(
+                currentTableModel
+                )
                 ):
 
                 self.assertTrue(
-                    len(currentTableModel.objects.filter(**stateDict)) == lengthOfQuerySet,
+                    len(
+                    currentTableModel.objects.filter(**stateDict)
+                    ) == lengthOfQuerySet,
                     assertationMessage,
                 )
             elif (
