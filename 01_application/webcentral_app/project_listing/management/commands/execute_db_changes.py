@@ -140,31 +140,31 @@ class Command(BaseCommand):
             )
             currentStateObj.save()
 
-            currentStateRow.delete()
+            if currentStateRow is not None:
+                currentStateRow.delete()
             for currentTable in list(diffDataStructure.keys()):
                 if "Teilprojekt" in currentTable:
                     parent = currentTable.split(".")[1]
-                else:
-                    if parent in currentTable.split(".")[0]:
-                        deleteSchlagwort = True
-                        if parent == "schlagwortregister_erstsichtung":
-                            for tagNumber in range(1, 7):
-                                dictForFilter = {
-                                    f"schlagwort_{tagNumber}_id": 
-                                    diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
-                                }
-                                #pdb.set_trace()
-                                if len(
-                                    Schlagwortregister_erstsichtung.objects.filter(**dictForFilter)
-                                    ) > 1:
-                                    deleteSchlagwort = False
-                            if deleteSchlagwort:
-                                
-                                query = Schlagwort\
-                                    .objects.filter(
-                                    schlagwort_id=diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
-                                    )
-                                query[0].delete()
+            for currentTable in list(diffDataStructure.keys()):
+                if parent in currentTable.split(".")[0]:
+                    deleteSchlagwort = True
+                    if parent == "schlagwortregister_erstsichtung":
+                        for tagNumber in range(1, 7):
+                            dictForFilter = {
+                                f"schlagwort_{tagNumber}_id": 
+                                diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
+                            }
+                            if len(
+                                Schlagwortregister_erstsichtung.objects.filter(**dictForFilter)
+                                ) > 1:
+                                deleteSchlagwort = False
+                        if deleteSchlagwort:
+                            
+                            query = Schlagwort\
+                                .objects.filter(
+                                schlagwort_id=diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
+                                )
+                            query[0].delete()
 
             
 

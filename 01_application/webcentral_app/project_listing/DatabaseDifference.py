@@ -98,29 +98,39 @@ class DatabaseDifference(yaml.YAMLObject):
         )
         for rootTableFieldName in dictofRootTable:
              if "_id" in rootTableFieldName:
-                idOfConflictingCurrentObj = int(
-                    self.differencesSortedByTable[rootTableName]\
-                        ["currentState"][rootTableFieldName]
-                )
+                if self.differencesSortedByTable[rootTableName]["currentState"][rootTableFieldName] is not None:
+
+                    idOfConflictingCurrentObj = int(
+                        self.differencesSortedByTable[rootTableName]\
+                            ["currentState"][rootTableFieldName]
+                    )
+                else:
+                    idOfConflictingCurrentObj = None
                 idOfConflictingPendingObj = int(
                     self.differencesSortedByTable[rootTableName]\
                         ["pendingState"][rootTableFieldName]
                 )
                 currentStateInRootTable = globals()[parentTableName].objects.filter(
-                    **{list(self.identifer.keys())[0]: self.identifer[list(self.identifer.keys())[0]]}
+                    **{list(self.identifer.keys())[0]: self.identifer[
+                        list(self.identifer.keys())[0]
+                    ]}
                 )
                 tableWhereConflictingObjsAreLocated = (
                     tableWhereConflictingObjsAreLocated[0].upper() 
                     + tableWhereConflictingObjsAreLocated[1:]
                 )
-                querySetForPendingObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
+                querySetForPendingObj = globals()[
+                    tableWhereConflictingObjsAreLocated
+                ].objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
                 )
-                querySetForCurrentObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
-                    **{rootTableFieldName: idOfConflictingCurrentObj}
-                )
+                #pdb.set_trace()
+                querySetForCurrentObj = globals()[parentTableName].objects.filter(**self.identifer)
+                # querySetForCurrentObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
+                #         **{rootTableFieldName: idOfConflictingCurrentObj}
+                #)
                 if (len(querySetForPendingObj) > 0 
-                    and len(querySetForCurrentObj) > 0 
+                    and (len(querySetForCurrentObj) > 0 or idOfConflictingCurrentObj is None)
                     and len(currentStateInRootTable) > 0):
                     nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(
                         globals()[parentTableName], 
@@ -130,6 +140,10 @@ class DatabaseDifference(yaml.YAMLObject):
                     currentStateRowObj = currentStateInRootTable[0].__getattribute__(
                         nameOfFieldRelatesToTable.name,
                     )
+                    # if idOfConflictingCurrentObj is None:
+                    #     currObj = None
+                    # else:
+                    #     currObj = querySetForCurrentObj[0]
                     return (
                         self.keepCurrentState, 
                         querySetForCurrentObj[0], 
@@ -140,6 +154,7 @@ class DatabaseDifference(yaml.YAMLObject):
                     )                
         return None
     
+
 
     def getStartingPoint(self) -> str:
         """Returns a string with the starting point in the Dictionary
@@ -157,8 +172,10 @@ class DatabaseDifference(yaml.YAMLObject):
             if "Teilprojekt" in tableName:
                 rootTableName = tableName
                 break
-        
-        return rootTableName
+        try:
+            return rootTableName
+        except:
+            pdb.set_trace()
 
     def findFieldNameRelatingToForeignTable(self, parentTable, tableObj):
         """Finds the 
@@ -188,11 +205,16 @@ class DatabaseDifference(yaml.YAMLObject):
                 self.differencesSortedByTable[tableNameKey]["pendingState"]
             )
 
-            for diffAttribute in list(self.differencesSortedByTable[tableNameKey]["currentState"].keys()):
-                self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute] \
-                    = self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute].rstrip()
-                self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute] \
-                    = self.differencesSortedByTable[tableNameKey]["pendingState"][diffAttribute].rstrip()
+            for diffAttribute in list(
+                self.differencesSortedByTable[tableNameKey]["currentState"].keys()
+            ):
+                if isinstance(self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute], str):
+                    self.differencesSortedByTable[tableNameKey]["currentState"]\
+                        [diffAttribute] = self.differencesSortedByTable\
+                            [tableNameKey]["currentState"][diffAttribute].rstrip()
+                self.differencesSortedByTable[tableNameKey]["pendingState"]\
+                    [diffAttribute] = self.differencesSortedByTable\
+                        [tableNameKey]["pendingState"][diffAttribute].rstrip()
 
 
 
@@ -219,7 +241,11 @@ class DatabaseDifference(yaml.YAMLObject):
                 
                 valuePending = self.differencesSortedByTable[tableNameKey]["pendingState"][currentDiffAttribute]
                 #strPending = f"{currentDifferenceAttribute}:{valuePending}"
-                lengthOfStr = np.array([len(valueCurrent), len(valuePending)])
+                if valueCurrent is None:
+                    lengthOfCurrent = 4
+                else:
+                    lengthOfCurrent = len(valueCurrent)
+                lengthOfStr = np.array([lengthOfCurrent, len(valuePending)])
                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                 numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
                 if posOfMaxLengthStr == 0:
