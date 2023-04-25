@@ -1,8 +1,50 @@
 """Loads different types of Data into the Django-Database.
 
 This module loads different types of Data into the Postgres-Database
-via the Django-Application. Therefore it gets 
-
+via the Django-Application. Therefore it gets a .csv-file, which holds 
+the datasets. 
+`data_import` allows to load different kind of datasets
+into the Database. The data-kind needs to be specified in the filename
+of the .csv-file:
+`enargus`: Enargus-Data
+`modulzuordnung`: Modul-Data
+`Tools`: Tools-Data
+`schlagwoerter`: Schlagwörter-Data
+`weatherdata`: Wheaterdata
+If none of these sub-strings is present in the filename, the data can 
+not be processed and an error is printed. 
+The relational model of the database is composed of multiple tables,
+which are connected via foreign-keys. The central table, which connects
+the different parts together is the `Teilprojekt`-table. It holds all the
+foreign-keys, which point to the Enagus-Table, the 
+Schlagwörter_erstichtung-table and so on. If a dataset inside the to be
+loaded .csv-file contains a Förderkennzeichen (fkz), which is already 
+present in the Teilprojekt-table, but has differences in the other 
+columns, an IntegrityError is thrown, because the data cannot be 
+connected with the fkz. In this situation, the `compareForeignTables`-
+method is called, which wlaks though all tables and builds an 
+DatabaseDifference-Object, which holds the differences between
+the currentState (dataset, which is currently connected to the 
+fkz inside the database.) and the pendingState (dataset, which can 
+not connected to the fkz, because the currentState is already 
+connected to it.). 
+At the moment, all DatabaseDifference-Objects are serialized
+and written to a.YAML-File. The .yaml-file is named as the current
+timestamp.
+The `data_import`-Script can be started as a Django-Command. For
+that, the current directory needs to be changed to the folder
+containing the Django `manage.py`. From there, te following 
+command needs to be run:
+```
+    python3 manage.py data_import enargus_01.csv
+```
+This command loads the enargus_01.csv into the database. For
+eventually upcoming Conflicts, a .yaml-file is created. 
+The .yaml-file can then be modified to decide, if the currentState
+should be kept while the pendingState is deleted, or 
+the pendingState should be kept and the currentState should be
+deleted. The modified file can then be used as an input for the
+`execute_db_changes` command.
 """
 
 import csv
