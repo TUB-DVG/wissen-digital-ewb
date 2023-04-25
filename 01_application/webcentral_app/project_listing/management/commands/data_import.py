@@ -1,6 +1,7 @@
-"""This Module should serve as an 
-update for the `data_import.py` file. 
-It uses the .csv import-functionality. 
+"""Loads different types of Data into the Django-Database.
+
+This module loads different types of Data into the Postgres-Database
+via the Django-Application. Therefore it gets 
 
 """
 
@@ -543,8 +544,26 @@ class Command(BaseCommand):
             header: list, 
             catchphraseKey: str,
         ) -> tuple:
-        """
-        add entry into table schlagwort or/and return entry key
+        """Gets or Creates an object of type Schlagwort from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        Schlagwort according to the fed-data. Either this object 
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.  
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Schlagwort
+            Schlagwort-object, represent the created or in database
+            present Schlagwort-Dataset with the data from row.
+        created:    bool
+            Indicates, if the Schlagwort-object was created or not.
         """
         # content = row[number of the columns of the row]
         schlagwort = row[header.index(catchphraseKey)]
@@ -553,9 +572,34 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateSchlagwortregister(self, row, header) -> tuple:
-        """
-        add entry into table Weatherdata or/and return entry key
+    def getOrCreateSchlagwortregister(
+            self, 
+            row: list, 
+            header: list,
+        ) -> tuple:
+        """Gets or Creates Schlagwortregister_erstsichtung from Row
+
+        This method feeds the data present in row into 
+        `getOrCreateCatchphrase`, which returns either an object 
+        which corresponds to a newly created Dataset inside the
+        Database or to an already existed Schlagwort. The returned
+        Schlagwort-objects are then used to get or create a 
+        Schlagwortregister_erstsichtung-object.
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    Schlagwortregister_erstsichtung
+            Schlagwortregister_erstsichtung-object, represent 
+            the created or in database present Schlagwort-Dataset 
+            with the data from row.
+        created:    bool
+            Indicates, if the Schlagwortregister_erstsichtung-object 
+            was created or not.
         """
         
         objSchlagwort1, _ = self.getOrCreateCatchphrase(
@@ -619,16 +663,36 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def addOrUpdateRowPartProject(self, row, header, source) -> tuple:
-        """add or update one row of the database, but without foreign key 
-        connections
+    def addOrUpdateRowPartProject(
+            self, 
+            row: list, 
+            header: list, 
+            source: str,
+        ) -> tuple:
+        """Gets or Creates Teilprojekt-object from `row`
 
-        source cases:
-        - 'enargus' : read data from enargus xml via csv file 
-        (here csv will loaded)
-        - 'modul' : read data from 'verteiler xlsx' via csv file 
-        (here csv will loaded)
+        This method adds a Teilprojekt-object to the database, if it is 
+        not already present. If it is present, a `IntegrityError` is 
+        thrown by Django and is solved by calling `compareForeignTables`-
+        which finds all the differencies in all Tables.
 
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+        source: str
+            String, which specifies the Source of the data. Possible 
+            values are 'enargus', 'modul' or 'schlagwortregister'.
+
+        Returns:
+        obj:    Schlagwortregister_erstsichtung
+            Schlagwortregister_erstsichtung-object, represent 
+            the created or in database present Schlagwort-Dataset 
+            with the data from row.
+        created:    bool
+            Indicates, if the Schlagwortregister_erstsichtung-object 
+            was created or not.
         """
         # fill table enargus or/and get the enargus_id
         if source == 'enargus':
@@ -756,11 +820,12 @@ class Command(BaseCommand):
             identifer: dict, 
             theme: str,
         ) -> None:
-        """Starting from a Database-Conflict the method walks through 
+        """Finds all Differences for all Datasets, which point to the same fkz
+        
+        Starting from a Database-Conflict the method walks through 
         all foreign-tables and compares the values of the two conflicting 
         datasets. If the values are different for a attribute, they
         are saved inside an instance of the DatabaseDifference-class.
-        
         At the moment the central table of the database is the 
         `Teilprojekt`-Table. New loaded Datasets can update values 
         of one Teilprojekt-Tuple, which is represented by a 
@@ -768,9 +833,25 @@ class Command(BaseCommand):
 
         unvisited:  list
             list of tables, which were not visited yet. As a first 
-            entry it contains the name of the table, 
+            entry it contains the name of the Foreign-Table-Column, 
             where the datasets are located, which produce a database
-            conflict. The second entry holds a object  
+            conflict. The second entry holds the Dataset, which is 
+            currently connected to the fkz, the third entry the 
+            CSV-state, which is a pending update. The 4th entry 
+            contains the Name of the parent table, this is most 
+            likly always `Teilprojekt`
+        visitedNames:   list
+            List of Tablename, which should not be visited again
+        identifer:  dict
+            Key-Value-Pair, which identifes the Förderkennzeichen,
+            for which two different foreign-Datasets are present.
+        theme:
+            String, which shortly describes the Förderkennzeichen.
+            The String is taken from `enargus.verbundbezeichnung`
+            and can also be `None`
+        
+        Returns:
+        None
         """
         
         diffCurrentObjDict = {}
@@ -790,7 +871,6 @@ class Command(BaseCommand):
 
         currentDBDifferenceObj = DatabaseDifference(identifer, theme)
         while len(unvisited) > 0:
-            #depth += 1
             
             currentEntryInUnvisited = unvisited.pop()
             
@@ -806,7 +886,8 @@ class Command(BaseCommand):
                     f"{parentTableName}.{currentForeignTableName}",
                 )
                 for columnName in pendingTableObj._meta.get_fields():
-                    currentForeignTableStr = columnName.__str__().strip(">").split(".")[-1]
+                    currentForeignTableStr = columnName.__str__().strip(">").\
+                        split(".")[-1]
                     if not columnName.is_relation:
                         penTab = pendingTableObj.__getattribute__(columnName.name)
                         diffPendingObjDict[currentForeignTableName] = (
@@ -920,7 +1001,6 @@ class Command(BaseCommand):
             List of headers from the csv-file.
         data:   list
         list, containing the rows from the csv-file.
-
         """
         with open(path, encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=';')
