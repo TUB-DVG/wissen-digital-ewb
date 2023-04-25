@@ -1,11 +1,16 @@
+import pathlib
+import os 
 from tracemalloc import start
 import pandas as pd
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 import math
 import plotly.graph_objects as go
 
+
 from typing import Tuple
 
+PATH = pathlib.Path(__file__).parent.resolve() 
+DATA_PATH = os.path.join(PATH , 'Wärme_Strom.csv') 
 
 # That type of type check only works with python 3.9+ 
 def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str)-> Tuple[int, pd.DataFrame,pd.DataFrame]:
@@ -49,8 +54,7 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
             station_data['fehlend'][i]='True'
 
     # Prepare csv file to read factors
-    df_warme = pd.read_csv('Wärme_Strom.csv')
-
+    df_warme = pd.read_csv(DATA_PATH)
 
     #Load regression coefficients
     A=float(df_warme.iloc[:,9][Application+4])
