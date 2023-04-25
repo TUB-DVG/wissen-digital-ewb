@@ -1,12 +1,16 @@
-
 #Stromlastapproximation über Standardlastprofile (NRW)
 
+import pathlib
+import os.path 
 
+
+PATH = pathlib.Path(__file__).parent.resolve() 
+DATA_PATH = os.path.join(PATH , 'Strom_Approximation.csv') 
 
 def Stromapproximation(application:int,power_requirement:int):
     import pandas as pd
     import math
-    df = pd.read_csv('Strom_Approximation.csv')
+    df = pd.read_csv(DATA_PATH)
     try:    
         Summe=float(df['Summe'][application+1])
     except:

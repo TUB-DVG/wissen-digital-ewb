@@ -1,5 +1,5 @@
 import pathlib
-import os 
+import os.path 
 from tracemalloc import start
 import pandas as pd
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
