@@ -1,6 +1,36 @@
-"""This file executes the user specified changes in 
-'schlagwort_register_diff.md' file.
+"""Executes Changes from User-edited .YAML-DatabaseDifference-File.
 
+This module solves Database-Conflicts by executing User specified 
+actions on a Database-Conflict. A conflict is present, if two different
+Datasets are pointing to the same Förderkennziffer (fkz). This can 
+happen, if a dataset was updated in the .csv/.xml-file. 
+The user-specified action is done, by setting boolean-values for 
+`keepPendingState` and `keepCurrentState` in the .yaml-file. These
+values have to be set consistent: Only one Dataset can be kept, the
+other one should be deleted. Consistent States are:
+keepCurrent = true
+keepPending = false
+or
+keepCurrent = false
+keepPending = true
+Only if a consistent user-input is present, it is executed by
+`execute_db_changes`.
+The `execute_db_changes`-Script can be executed as a user-defined
+Django-Admin Command. First, the Directory needs to be changed to 
+where the Django manage.py is located. After that the following 
+line needs to be executed:
+```
+    python3 manage.py execute_db_changes pathToYAML.yaml
+```
+`pathToYAML.yaml` is a placeholder for the relative/absolute path 
+to a .yaml-file with consistent user-specified actions. 
+If it is specified to keep the current Database state 
+(keepCurrent = true) and delete the CSV-State from the database 
+(keepPending = false) only the CSV-Dataset is deleted from the 
+database. If the oposite case is present, the current Dataset 
+connected to the fkz is deleted (keepCurrent = false) and the 
+foreign-key of the CSV-Dataset is set for the fkz 
+(keepPending = true).
 """
 import pdb
 
@@ -9,22 +39,40 @@ from encodings import utf_8
 import yaml
 
 # from project_listing.DatabaseDifference import DatabaseDifference
-from project_listing.models import *
-from tools_over.models import *
-from weatherdata_over.models import *
-from schlagwoerter.models import *
+from project_listing.models import (
+    Schlagwortregister_erstsichtung,
+    Schlagwort,
+)
+# from tools_over.models import *
+# from weatherdata_over.models import *
+# from schlagwoerter.models import *
 
 class Command(BaseCommand):
+    """Defines Django user-defined Command.
+
+    This Class defines a user-defined Django-Admin Command, which can 
+    be executed with the Django `manage.py`. On execution, the 
+    `manage.py` calls the `handle`-method of this class and passes 
+    the as argument specified path to the .yaml-file inside the 
+    options-dict into the method.
+    Inside the .yaml-file serialiazed python objects of type 
+    `DatabaseDifference` are located. The pyyaml-package constructs
+    a list of `DatabaseDifference`-objects from the yaml-file.
+    On each object, the executeAction-method is called, which executes
+    the user-specified action on the database-conflict, if it is 
+    consitent.
     """
-    
-    """
-    def handle(self, *args, **options):
+    def handle(
+            self, 
+            *args: tuple, 
+            **options: dict,
+        ) -> None:
         """Called from Django, when executing Class as Django-Command.
 
         This method gets called by the manage.py, when executing the 
         Django-Admin-Command:
         ```
-            python3 manage.py execute_db_changes pathToYAMLFile
+            python3 manage.py execute_db_changes pathToYAMLFile.yaml
         ```
 
         Parameters: tuple
@@ -48,7 +96,10 @@ class Command(BaseCommand):
                     )
 
 
-    def add_arguments(self, parser) -> None:
+    def add_arguments(
+            self, 
+            parser,
+        ) -> None:
         """Called by Django, when parsing the CLI-Call 
 
         This method gets called by Django, when it parses the command-
@@ -115,7 +166,8 @@ class Command(BaseCommand):
                             for tagNumber in range(1, 7):
                                 dictForFilter = {
                                     f"schlagwort_{tagNumber}_id": 
-                                    diffDataStructure[currentTable]["pendingState"]["schlagwort_id"]
+                                    diffDataStructure[currentTable]\
+                                        ["pendingState"]["schlagwort_id"]
                                 }
                                 
                                 if len(
@@ -127,7 +179,8 @@ class Command(BaseCommand):
                                 
                                 query = Schlagwort\
                                     .objects.filter(
-                                    schlagwort_id=diffDataStructure[currentTable]["pendingState"]["schlagwort_id"]
+                                    schlagwort_id=diffDataStructure[currentTable]\
+                                        ["pendingState"]["schlagwort_id"]
                                     )
                                 query[0].delete()
             pendingObj.delete()
@@ -151,27 +204,29 @@ class Command(BaseCommand):
                         for tagNumber in range(1, 7):
                             dictForFilter = {
                                 f"schlagwort_{tagNumber}_id": 
-                                diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
+                                diffDataStructure[currentTable]["currentState"]\
+                                    ["schlagwort_id"]
                             }
                             if len(
-                                Schlagwortregister_erstsichtung.objects.filter(**dictForFilter)
+                                Schlagwortregister_erstsichtung.objects.filter(
+                                **dictForFilter,
+                                )
                                 ) > 1:
                                 deleteSchlagwort = False
                         if deleteSchlagwort:
                             
                             query = Schlagwort\
                                 .objects.filter(
-                                schlagwort_id=diffDataStructure[currentTable]["currentState"]["schlagwort_id"]
+                                schlagwort_id=diffDataStructure[currentTable]\
+                                    ["currentState"]["schlagwort_id"]
                                 )
                             if len(query) > 0:
                                 query[0].delete()
 
-            
-
-
-
-
-    def parseFile(self, filename):
+    def parseFile(
+            self, 
+            filename: str,
+        ) -> list:
         """Parses the given .YAML-file to a list of DatabaseDifference-objects.
 
         Parameters:
