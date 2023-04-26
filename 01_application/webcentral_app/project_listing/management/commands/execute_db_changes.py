@@ -157,9 +157,9 @@ class Command(BaseCommand):
         if optionCurrent:
             for currentTable in list(diffDataStructure.keys()):
                 if "Teilprojekt" in currentTable:
-                    #pass
                     parent = currentTable.split(".")[1]
-                else:
+            for currentTable in list(diffDataStructure.keys()):
+                if "Teilprojekt" not in currentTable:
                     if parent in currentTable.split(".")[0]:
                         deleteSchlagwort = True
                         if parent == "schlagwortregister_erstsichtung":
@@ -183,6 +183,7 @@ class Command(BaseCommand):
                                         ["pendingState"]["schlagwort_id"]
                                     )
                                 query[0].delete()
+
             pendingObj.delete()
         
         else:
