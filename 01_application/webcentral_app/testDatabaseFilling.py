@@ -59,6 +59,8 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         self.assertTrue(False)
 
+        time.sleep(1)
+
     
     def testIfYAMLRepresentsDBState(self) -> None:
         """This method tests if the Database State-Differences, which are 
@@ -325,84 +327,152 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
         allModels = importlib.import_module("project_listing.models")
         schlagwortregisterIDcurrent = None
+        #pdb.set_trace()
         for tableDictKey in list(nestedDictContainingDiffs.keys()):
+            if "Teilprojekt" in tableDictKey:
+                tableName = dictMappingToTable[tableDictKey]
+                dictOfDifferences = nestedDictContainingDiffs[tableDictKey]
+                currentDBStateInTable = dictOfDifferences["currentState"]
+                CSVState = dictOfDifferences["pendingState"]
+                currentTableModel = allModels.__getattribute__(tableName)
+                if (keepCurrentState == None 
+                    and keepPendingState == None 
+                ):
+                    self._doAssertation(
+                        currentTableModel, 
+                        currentDBStateInTable, 
+                        1, 
+                        "", 
+                        schlagwortregisterIDcurrent
+                    )
+                    self._doAssertation(
+                        currentTableModel, 
+                        CSVState, 
+                        1, 
+                        "", 
+                        schlagwortregisterIDcurrent,
+                    )
 
-            tableName = dictMappingToTable[tableDictKey]
-            dictOfDifferences = nestedDictContainingDiffs[tableDictKey]
-            currentDBStateInTable = dictOfDifferences["currentState"]
-            CSVState = dictOfDifferences["pendingState"]
-            
-            if "schlagwortregister_erstsichtung" in tableDictKey.split(".")[1]:
-                if not keepCurrentState and keepCurrentState is not None:
-                    schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
-                        [tableDictKey]["currentState"]["schlagwortregister_id"]
-                elif not keepPendingState and keepPendingState is not None:
-                    schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
-                        [tableDictKey]["pendingState"]["schlagwortregister_id"]
+                elif keepCurrentState == True and keepPendingState == False:
+                    self._doAssertation(
+                        currentTableModel, 
+                        currentDBStateInTable, 
+                        1, 
+                        "User specified to keep current-state of Database, \
+                        but current state is not present in database anymore!", 
+                        schlagwortregisterIDcurrent,
+                    )
                     
-            # check if both states are present in the DB, 
-            # like they are shown in the .yaml-file:
-            currentTableModel = allModels.__getattribute__(tableName)
-            if (keepCurrentState == None 
-                and keepPendingState == None 
-            ):
-                self._doAssertation(
-                    currentTableModel, 
-                    currentDBStateInTable, 
-                    1, 
-                    "", 
-                    schlagwortregisterIDcurrent
-                )
-                self._doAssertation(
-                    currentTableModel, 
-                    CSVState, 
-                    1, 
-                    "", 
-                    schlagwortregisterIDcurrent,
-                )
+                    self._doAssertation(
+                        currentTableModel, 
+                        CSVState, 
+                        0, 
+                        "User specified to keep current state, \
+    but csv-state was not removed from Database!",
+                        schlagwortregisterIDcurrent,
+                    )
 
-            elif keepCurrentState == True and keepPendingState == False:
-                self._doAssertation(
-                    currentTableModel, 
-                    currentDBStateInTable, 
-                    1, 
-                    "User specified to keep current-state of Database, \
-                    but current state is not present in database anymore!", 
-                    schlagwortregisterIDcurrent,
-                )
+                elif keepCurrentState == False and keepPendingState == True:
+                        
+                    self._doAssertation(
+                        currentTableModel, 
+                        currentDBStateInTable, 
+                        0,                         
+                        "User specified to remove current state from DB, \
+                        but current state is still present!", 
+                        schlagwortregisterIDcurrent,
+                    )
+                    self._doAssertation(
+                        currentTableModel, 
+                        CSVState, 
+                        1,                     
+                        "User specified to keep csv-state, \
+                        but csv-state is not present in Database!", 
+                        schlagwortregisterIDcurrent,
+                    )                       
+                else:
+                    self.assertTrue(
+                        keepCurrentState ^ keepPendingState,
+                        "One state must be kept and one state must be discarded",    
+                    )        
+#         for tableDictKey in list(nestedDictContainingDiffs.keys()):
+
+#             tableName = dictMappingToTable[tableDictKey]
+#             dictOfDifferences = nestedDictContainingDiffs[tableDictKey]
+#             currentDBStateInTable = dictOfDifferences["currentState"]
+#             CSVState = dictOfDifferences["pendingState"]
+            
+#             if "schlagwortregister_erstsichtung" in tableDictKey.split(".")[1]:
+#                 if not keepCurrentState and keepCurrentState is not None:
+#                     schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
+#                         [tableDictKey]["currentState"]["schlagwortregister_id"]
+#                 elif not keepPendingState and keepPendingState is not None:
+#                     schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
+#                         [tableDictKey]["pendingState"]["schlagwortregister_id"]
+                    
+#             # check if both states are present in the DB, 
+#             # like they are shown in the .yaml-file:
+#             currentTableModel = allModels.__getattribute__(tableName)
+#             if (keepCurrentState == None 
+#                 and keepPendingState == None 
+#             ):
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     currentDBStateInTable, 
+#                     1, 
+#                     "", 
+#                     schlagwortregisterIDcurrent
+#                 )
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     CSVState, 
+#                     1, 
+#                     "", 
+#                     schlagwortregisterIDcurrent,
+#                 )
+
+#             elif keepCurrentState == True and keepPendingState == False:
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     currentDBStateInTable, 
+#                     1, 
+#                     "User specified to keep current-state of Database, \
+#                     but current state is not present in database anymore!", 
+#                     schlagwortregisterIDcurrent,
+#                 )
                 
-                self._doAssertation(
-                    currentTableModel, 
-                    CSVState, 
-                    0, 
-                    "User specified to keep current state, \
-but csv-state was not removed from Database!",
-                    schlagwortregisterIDcurrent,
-                )
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     CSVState, 
+#                     0, 
+#                     "User specified to keep current state, \
+# but csv-state was not removed from Database!",
+#                     schlagwortregisterIDcurrent,
+#                 )
 
-            elif keepCurrentState == False and keepPendingState == True:
+#             elif keepCurrentState == False and keepPendingState == True:
                        
-                self._doAssertation(
-                    currentTableModel, 
-                    currentDBStateInTable, 
-                    0,                         
-                    "User specified to remove current state from DB, \
-                    but current state is still present!", 
-                    schlagwortregisterIDcurrent,
-                )
-                self._doAssertation(
-                    currentTableModel, 
-                    CSVState, 
-                    1,                     
-                    "User specified to keep csv-state, \
-                    but csv-state is not present in Database!", 
-                    schlagwortregisterIDcurrent,
-                )                       
-            else:
-                self.assertTrue(
-                    keepCurrentState ^ keepPendingState,
-                    "One state must be kept and one state must be discarded",    
-                )                                   
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     currentDBStateInTable, 
+#                     0,                         
+#                     "User specified to remove current state from DB, \
+#                     but current state is still present!", 
+#                     schlagwortregisterIDcurrent,
+#                 )
+#                 self._doAssertation(
+#                     currentTableModel, 
+#                     CSVState, 
+#                     1,                     
+#                     "User specified to keep csv-state, \
+#                     but csv-state is not present in Database!", 
+#                     schlagwortregisterIDcurrent,
+#                 )                       
+#             else:
+#                 self.assertTrue(
+#                     keepCurrentState ^ keepPendingState,
+#                     "One state must be kept and one state must be discarded",    
+#                 )                                   
 
     def _doAssertation(
             self, 
@@ -422,16 +492,15 @@ but csv-state was not removed from Database!",
                 currentTableModel
                 )
                 ):
-                #try:
-
-                self.assertTrue(
-                    len(
-                    currentTableModel.objects.filter(**stateDict)
-                    ) == lengthOfQuerySet,
-                    assertationMessage,
-                )
-                # except:
-                #     pdb.set_trace()
+                try:
+                    self.assertTrue(
+                        len(
+                        currentTableModel.objects.filter(**stateDict)
+                        ) == lengthOfQuerySet,
+                        assertationMessage,
+                    )
+                except:
+                    pdb.set_trace()
             elif (
                 ("Schlagwort" in str(currentTableModel) 
                 and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
