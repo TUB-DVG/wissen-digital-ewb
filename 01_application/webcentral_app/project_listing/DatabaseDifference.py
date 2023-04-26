@@ -2,15 +2,42 @@ import ast
 import pdb
 import importlib
 
-from project_listing.models import *
-from tools_over.models import *
-from weatherdata_over.models import *
-from schlagwoerter.models import *
+from project_listing.models import (
+    Teilprojekt,
+    Modulen_zuordnung_ptj,
+    Schlagwortregister_erstsichtung,
+    Enargus,
+)
 import yaml
 import numpy as np
 
 class DatabaseDifference(yaml.YAMLObject):
-    """Class of 
+    """Class of one Database Difference
+
+    This class holds the Differences, which appear, when loading a 
+    .csv-file and a Förderkennzeichen-Dataset is present in the .csv-
+    file and the Database and the two Datasets differ. The differences
+    are sorted by Database-table and safed inside of 
+    `differencesSortedByTable`. With the `addTable`- and the 
+    `addDifference`-methods, the `differencesSortedByTable` can be filled.
+    Furthermore the class holds methods for writing the object to a file
+    (`writeToYAML`-method) and postprocess the datastructure after read 
+    it back in from file (`postprocessAfterReadIn`-method).
+
+    Attributes:
+    identifer:  dict
+        Key-Value-Pair, which represents the column-name and value of
+        the dataset, where the conflict appeared. Typically it will have
+        the form {fkz: "GE64775"}.
+    verbundbezeichnung: str
+        Short describtion, whcih helps to understand, which fkz is ment.
+    differencesSortedByTable:   dict
+        nested-Dictionary, containing all differences between Database-
+        state (currentState) and CSV-state (pendingState).
+    keepCurrentState: bool
+        Boolean, specifies, if the Database-State (currentState) is kept.
+    keepCurrentState: bool
+        Boolean, specifies, if the csv-State (pendingState) is kept.
     
     """
 
@@ -111,9 +138,13 @@ class DatabaseDifference(yaml.YAMLObject):
             self.differencesSortedByTable[rootTableName]["currentState"].keys()
         )
         for rootTableFieldName in dictofRootTable:
-             classNameOfTable = self._findModelNameForKey(allModels, tableWhereConflictingObjsAreLocated)
+             classNameOfTable = self._findModelNameForKey(
+                 allModels, 
+                 tableWhereConflictingObjsAreLocated,
+            )
              if "_id" in rootTableFieldName:
-                if self.differencesSortedByTable[rootTableName]["currentState"][rootTableFieldName] is not None:
+                if self.differencesSortedByTable[rootTableName]\
+                    ["currentState"][rootTableFieldName] is not None:
                     
                     idOfConflictingCurrentObj = int(
                         self.differencesSortedByTable[rootTableName]\
@@ -130,18 +161,14 @@ class DatabaseDifference(yaml.YAMLObject):
                         list(self.identifer.keys())[0]
                     ]}
                 )
-                # tableWhereConflictingObjsAreLocated = (
-                #     tableWhereConflictingObjsAreLocated[0].upper() 
-                #     + tableWhereConflictingObjsAreLocated[1:]
-                # )
                 querySetForPendingObj = globals()[classNameOfTable]\
                 .objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
                 )
-                querySetForCurrentObj = globals()[parentTableName].objects.filter(**self.identifer)
-                # querySetForCurrentObj = globals()[tableWhereConflictingObjsAreLocated].objects.filter(
-                #         **{rootTableFieldName: idOfConflictingCurrentObj}
-                #)
+                querySetForCurrentObj = globals()[parentTableName].objects.filter(
+                    **self.identifer,
+                )
+
                 if (len(querySetForPendingObj) > 0 
                     and (len(querySetForCurrentObj) > 0 or idOfConflictingCurrentObj is None)
                     and len(currentStateInRootTable) > 0):
@@ -153,10 +180,6 @@ class DatabaseDifference(yaml.YAMLObject):
                     currentStateRowObj = currentStateInRootTable[0].__getattribute__(
                         nameOfFieldRelatesToTable.name,
                     )
-                    # if idOfConflictingCurrentObj is None:
-                    #     currObj = None
-                    # else:
-                    #     currObj = querySetForCurrentObj[0]
                     return (
                         self.keepCurrentState, 
                         querySetForCurrentObj[0], 
@@ -166,8 +189,6 @@ class DatabaseDifference(yaml.YAMLObject):
                         currentStateInRootTable[0],
                     )                
         return None
-    
-
 
     def getStartingPoint(self) -> str:
         """Returns a string with the starting point in the Dictionary
@@ -221,7 +242,10 @@ class DatabaseDifference(yaml.YAMLObject):
             for diffAttribute in list(
                 self.differencesSortedByTable[tableNameKey]["currentState"].keys()
             ):
-                if isinstance(self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute], str):
+                if isinstance(
+                    self.differencesSortedByTable[tableNameKey]["currentState"][diffAttribute], 
+                    str,
+                ):
                     self.differencesSortedByTable[tableNameKey]["currentState"]\
                         [diffAttribute] = self.differencesSortedByTable\
                             [tableNameKey]["currentState"][diffAttribute].rstrip()
@@ -256,24 +280,30 @@ class DatabaseDifference(yaml.YAMLObject):
                 self.differencesSortedByTable[tableNameKey]["currentState"].keys()
             ):
                 
-                valueCurrent = self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute]
-                #strCurrent = f"{currentDifferenceAttribute}:{valueCurrent}"
+                valueCurrent = self.differencesSortedByTable[tableNameKey]\
+                    ["currentState"][currentDiffAttribute]
                 
-                valuePending = self.differencesSortedByTable[tableNameKey]["pendingState"][currentDiffAttribute]
-                #strPending = f"{currentDifferenceAttribute}:{valuePending}"
+                valuePending = self.differencesSortedByTable[tableNameKey]\
+                    ["pendingState"][currentDiffAttribute]
 
                 if valueCurrent is None:
                     lengthOfCurrent = 4
-                    self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute] = "None"
+                    self.differencesSortedByTable[tableNameKey]["currentState"]\
+                        [currentDiffAttribute] = "None"
                 else:
                     lengthOfCurrent = len(valueCurrent)
                 lengthOfStr = np.array([lengthOfCurrent, len(valuePending)])
                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                 numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
                 if posOfMaxLengthStr == 0:
-                   self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute] = str(self.differencesSortedByTable[tableNameKey]["currentState"][currentDiffAttribute]) + numberOfCharacterDifference * " "
+                   self.differencesSortedByTable[tableNameKey]["currentState"]\
+                    [currentDiffAttribute] = str(
+                       self.differencesSortedByTable[tableNameKey]["currentState"]\
+                        [currentDiffAttribute]) 
+                   + numberOfCharacterDifference * " "
                 else:
-                    self.differencesSortedByTable[tableNameKey]["pendingState"][currentDiffAttribute] += numberOfCharacterDifference * " "                
+                    self.differencesSortedByTable[tableNameKey]["pendingState"]\
+                        [currentDiffAttribute] += numberOfCharacterDifference * " "                
             self.differencesSortedByTable[tableNameKey]["currentState"] = str(
                 self.differencesSortedByTable[tableNameKey]["currentState"]
             )

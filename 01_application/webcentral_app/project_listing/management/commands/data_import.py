@@ -56,10 +56,20 @@ import datetime
 from django.core.management.base import BaseCommand
 import numpy as np
 
-from project_listing.models import *
-from tools_over.models import *
-from weatherdata_over.models import *
-from schlagwoerter.models import *
+from project_listing.models import (
+    Teilprojekt,
+    Modulen_zuordnung_ptj,
+    Schlagwortregister_erstsichtung,
+    Enargus,
+    Anschrift,
+    Zuwendungsempfaenger,
+    Ausfuehrende_stelle,
+    Leistung_sys,
+    Person,
+    Forschung,
+    Schlagwort,
+    IntegrityError,
+)
 from project_listing.DatabaseDifference import DatabaseDifference
 
 class MultipleFKZDatasets(Exception):
@@ -178,9 +188,7 @@ class Command(BaseCommand):
         created:    bool
             Indicates, if the Anschrift-object was created or not.
         """
-        # content = row[number of the columns of the row]
-        # decision kind of persion, where should the data read from, 
-        # maybe later needed
+
         if who == 'zwe':
             postalCode = row[header.index('PLZ_ZWE')]
             location = row[header.index('Ort_ZWE')]
@@ -379,8 +387,6 @@ class Command(BaseCommand):
         created:    bool
             Indicates, if the Enargus-object was created or not.
         """
-        # content = row[number of the columns of the row]
-        # print(forschung_id)
 
         # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
         objZwe, _ = self.getOrCreateGrantee(row, header)
@@ -770,7 +776,7 @@ class Command(BaseCommand):
                 )
 
         elif source == 'modul':
-            obj, created = self.getOrCreateModulenZuordnung(row, header)
+            obj, created = self.getOrCreateModulesMapping(row, header)
             modId = obj.mod_id
             fkz = row[header.index('FKZ')].strip()
             try:
@@ -1077,14 +1083,14 @@ class Command(BaseCommand):
         for row in data:
 
             if "modulzuordnung" in filename:
-                self.addOrUpdateRowTeilprojekt(row, header, 'modul')
+                self.addOrUpdateRowPartProject(row, header, 'modul')
             elif "enargus" in filename:
-                self.addOrUpdateRowTeilprojekt(row, header, 'enargus')
+                self.addOrUpdateRowPartProject(row, header, 'enargus')
             elif "Tools" in filename:
                 self.getOrCreateTools(row, header)
             elif "schlagwoerter" in filename:
                 print(row[header.index('Förderkennzeichen (0010)')])
-                self.addOrUpdateRowTeilprojekt(row, header, 'schlagwortregister')
+                self.addOrUpdateRowPartProject(row, header, 'schlagwortregister')
             elif "weatherdata" in filename:
                 print(row[header.index('data_service')])
                 self.getOrCreateWeatherdata(row, header)
