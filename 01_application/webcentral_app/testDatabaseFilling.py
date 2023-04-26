@@ -50,7 +50,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         MultipleFKZDatasets-Exception.
         """
 
-        csvFileToBeLoaded = "testData/enargus_testMultipleTimesSameDataset.csv"
+        csvFileToBeLoaded = "../../02_work_doc/10_test/04_testData/enargus_testMultipleTimesSameDataset.csv"
         try:
             management.call_command('data_import', csvFileToBeLoaded)
         except MultipleFKZDatasets:
@@ -71,10 +71,10 @@ class checkDifferencesInDatabase(TransactionTestCase):
         None
         """
 
-        fileNameContainingTestData = "testData/enargus_testDatabaseFile.csv"
+        fileNameContainingTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFile.csv"
         management.call_command('data_import', fileNameContainingTestData)
 
-        fileNameModifiedTestData = "testData/enargus_testDatabaseFileModified.csv"
+        fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
         management.call_command('data_import', fileNameModifiedTestData)
         
         newestFileName = self._getNewestYAML()
@@ -101,13 +101,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
     def testExecuteDatabaseChangeskeepCurrent(self):
         """Tests`execute_db_changes`, whereby `keepCurrentState` set to True
  
-        
         """
 
-        loadInitialStateOfDB = "testData/enargus_load10Datasets.csv"
+        loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
         management.call_command('data_import', loadInitialStateOfDB)
 
-        updateDatasetInDB = "testData/enargus_testExecuteDBchanges.csv"
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         management.call_command('data_import', updateDatasetInDB)
 
         newestYAMLFileName = self._getNewestYAML()
@@ -144,10 +143,10 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """Tests`execute_db_changes`, whereby `keepPendingState` set to True 
         
         """
-        loadInitialStateOfDB = "testData/enargus_load10Datasets.csv"
+        loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
         management.call_command('data_import', loadInitialStateOfDB)
 
-        updateDatasetInDB = "testData/enargus_testExecuteDBchanges.csv"
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         management.call_command('data_import', updateDatasetInDB)
 
         newestYAMLFileName = self._getNewestYAML()
@@ -189,10 +188,10 @@ class checkDifferencesInDatabase(TransactionTestCase):
         choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
         simpleModulzurodnungDatasets = \
-            "testData/modulzuordnung_simpleLoading.csv"
+            "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleLoading.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
         time.sleep(1)
-        simpleModulzurodnungDatasetsModified = "testData/modulzuordnung_simpleEdits.csv"
+        simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
         management.call_command("data_import", simpleModulzurodnungDatasetsModified)
 
         newestYAMLFileName = self._getNewestYAML()
@@ -259,11 +258,11 @@ class checkDifferencesInDatabase(TransactionTestCase):
         choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
         simpleTagsDatasets = \
-            "testData/schlagwoerter_simpleTestData.csv"
+            "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestData.csv"
         management.call_command("data_import", simpleTagsDatasets)
 
         simpleTagsModifiedDataset = \
-            "testData/schlagwoerter_simpleTestDataModified.csv"
+            "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
         management.call_command("data_import", simpleTagsModifiedDataset)
         newestYAMLFile = self._getNewestYAML()
 
@@ -423,6 +422,7 @@ but csv-state was not removed from Database!",
                 currentTableModel
                 )
                 ):
+                #try:
 
                 self.assertTrue(
                     len(
@@ -430,6 +430,8 @@ but csv-state was not removed from Database!",
                     ) == lengthOfQuerySet,
                     assertationMessage,
                 )
+                # except:
+                #     pdb.set_trace()
             elif (
                 ("Schlagwort" in str(currentTableModel) 
                 and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
@@ -437,7 +439,6 @@ but csv-state was not removed from Database!",
                 and schlagwortregisterIDcurrent is not None
             ):
                 tagToBeChecked = stateDict["schlagwort_id"]
-                #pdb.set_trace()
                 for numberPosition in range(1, 7):
                     dictCurrTagNum = {
                         f"schlagwort_{numberPosition}_id": tagToBeChecked
@@ -445,7 +446,6 @@ but csv-state was not removed from Database!",
                     queryForCurrTag = Schlagwortregister_erstsichtung\
                         .objects.filter(**dictCurrTagNum)
                     for query in queryForCurrTag:
-                        #pdb.set_trace()
                         if (query.schlagwortregister_id 
                             == int(schlagwortregisterIDcurrent)):
                             self.assertTrue(False)              
