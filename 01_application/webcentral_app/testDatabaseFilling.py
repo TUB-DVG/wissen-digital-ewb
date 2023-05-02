@@ -1,5 +1,13 @@
-"""
+"""This module tests the data-import into the database. 
 
+Therefore it uses the Django-Testrunner. It loads different testdatasets
+located in `02_work_doc/10_test/04_testData` with the `data_import`- 
+Command into the Django ORM, and tests resolving conflicts with the 
+`execute_db_changes`-command. The Test can be executed via the 
+`manage.py`:
+```
+    python3 manage.py test testDatabaseFilling
+```
 """
 import datetime
 import importlib
@@ -77,7 +85,10 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command('data_import', fileNameContainingTestData)
 
         newestFileName = self._getNewestYAML()
-        if newestFileName == "" or int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        if (
+            newestFileName == "" 
+            or int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            ):
             fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
             management.call_command('data_import', fileNameModifiedTestData)
             newestFileName = self._getNewestYAML()
@@ -111,7 +122,10 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFileName = self._getNewestYAML()
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        if (
+            newestYAMLFileName == "" 
+            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            ):
             management.call_command('data_import', updateDatasetInDB)
             newestYAMLFileName = self._getNewestYAML()            
         # else:
@@ -139,7 +153,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
-                #pdb.set_trace()
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -158,17 +171,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFileName = self._getNewestYAML()
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        if (
+            newestYAMLFileName == "" 
+            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            ):
             management.call_command('data_import', updateDatasetInDB)
             newestYAMLFileName = self._getNewestYAML()
-        # else:
-        #     pdb.set_trace()
-        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-        #         management.call_command('data_import', updateDatasetInDB)
-        #         newestYAMLFileName = self._getNewestYAML()
 
-
-        #if newestYAMLFileName[:]
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "CSV.yml"
 
         with open(newestYAMLFileName, "r") as file:
@@ -278,7 +287,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
         are present in the database.
         
         """
-        
         choiceKeepDBOrCSV = [(True, False), (False, True)]
         choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
@@ -292,10 +300,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         if newestYAMLFile == "" or int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
             management.call_command("data_import", simpleTagsModifiedDataset)
             newestYAMLFile = self._getNewestYAML()
-        # else:
-        #     if int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
-        #         management.call_command("data_import", simpleTagsModifiedDataset)
-        #         newestYAMLFile = self._getNewestYAML()
+
 
         with open(newestYAMLFile, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):

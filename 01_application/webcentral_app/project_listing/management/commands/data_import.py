@@ -70,6 +70,7 @@ from project_listing.models import (
     Schlagwort,
     IntegrityError,
 )
+from tools_over.models import Tools
 from project_listing.DatabaseDifference import DatabaseDifference
 
 class MultipleFKZDatasets(Exception):
@@ -767,13 +768,17 @@ class Command(BaseCommand):
                     obj, 
                     "Teilprojekt",
                 ])
-
+                if currentStateTable is None:
+                    verbundbezeichungStr = None
+                else:
+                    verbundbezeichungStr = currentStateTable.verbundbezeichnung
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
                     {"fkz": fkz}, 
-                    currentStateTable.verbundbezeichnung,
+                    verbundbezeichungStr,
                 )
+
 
         elif source == 'modul':
             obj, created = self.getOrCreateModulesMapping(row, header)
@@ -925,6 +930,8 @@ class Command(BaseCommand):
             currentForeignTableName = currentEntryInUnvisited[0]
             currentTableObj = currentEntryInUnvisited[1]
             pendingTableObj = currentEntryInUnvisited[2]
+            if pendingTableObj is None:
+                continue
             parentTableName = currentEntryInUnvisited[3]
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
             if currentTableObj is None:
@@ -959,12 +966,17 @@ class Command(BaseCommand):
                                 and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
                                 and not teilprojektField.one_to_many
                             ):
+                                try: 
+                                    pendingField = pendingTableObj.__getattribute__(currentForeignTableStr)
+                                except:
+                                    pendingField = None
                                 unvisited.append([
                                     currentForeignTableStr, 
                                     None, 
-                                    pendingTableObj.__getattribute__(currentForeignTableStr), 
+                                    pendingField, 
                                     currentForeignTableName,
-                                ])                        
+                                ])     
+                  
             else:
                 listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 

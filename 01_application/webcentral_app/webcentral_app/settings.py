@@ -99,7 +99,7 @@ DATABASES = {
         'TEST': {
             'MIRROR': "default",
         },
-    },
+    },   
 }
 
 
