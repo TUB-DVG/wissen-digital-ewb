@@ -77,7 +77,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command('data_import', fileNameContainingTestData)
 
         newestFileName = self._getNewestYAML()
-        if int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        if newestFileName == "" or int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
             fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
             management.call_command('data_import', fileNameModifiedTestData)
             newestFileName = self._getNewestYAML()
@@ -110,10 +110,14 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command('data_import', loadInitialStateOfDB)
 
         newestYAMLFileName = self._getNewestYAML()
-        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
             management.call_command('data_import', updateDatasetInDB)
-            newestYAMLFileName = self._getNewestYAML()
+            newestYAMLFileName = self._getNewestYAML()            
+        # else:
+        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        #         management.call_command('data_import', updateDatasetInDB)
+        #         newestYAMLFileName = self._getNewestYAML()
 
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
@@ -153,11 +157,15 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command('data_import', loadInitialStateOfDB)
 
         newestYAMLFileName = self._getNewestYAML()
-
-        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
             management.call_command('data_import', updateDatasetInDB)
             newestYAMLFileName = self._getNewestYAML()
+        # else:
+        #     pdb.set_trace()
+        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        #         management.call_command('data_import', updateDatasetInDB)
+        #         newestYAMLFileName = self._getNewestYAML()
 
 
         #if newestYAMLFileName[:]
@@ -203,10 +211,14 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command("data_import", simpleModulzurodnungDatasets)
 
         newestYAMLFileName = self._getNewestYAML()
-        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
+        simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
+        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
             management.call_command("data_import", simpleModulzurodnungDatasetsModified)
-            newestYAMLFileName = self._getNewestYAML()
+            newestYAMLFileName = self._getNewestYAML()            
+        # else:
+        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        #         management.call_command("data_import", simpleModulzurodnungDatasetsModified)
+        #         newestYAMLFileName = self._getNewestYAML()
 
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
@@ -275,11 +287,15 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command("data_import", simpleTagsDatasets)
         
         newestYAMLFile = self._getNewestYAML()
-        if int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            simpleTagsModifiedDataset = \
-                "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
+        simpleTagsModifiedDataset = \
+    "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
+        if newestYAMLFile == "" or int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
             management.call_command("data_import", simpleTagsModifiedDataset)
             newestYAMLFile = self._getNewestYAML()
+        # else:
+        #     if int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        #         management.call_command("data_import", simpleTagsModifiedDataset)
+        #         newestYAMLFile = self._getNewestYAML()
 
         with open(newestYAMLFile, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
