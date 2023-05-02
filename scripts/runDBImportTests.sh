@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo "Start Test of docker-dev environment..."
+echo "Deleting current Volumes..."
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
+
+# start docker-env:
+echo "Start Docker Dev-Environemnt..."
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up &
+sleep 5
+
+echo "Restore the Database State to the Dump-State, which lies in postgres/ ..."
+bash postgres/restoreDB.sh
+sleep 2
+
+echo "Executing Tests..."
+docker exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling
+
+echo "Delete the created yaml- and yml-files..."
+rm -f 01_application/webcentral_app/*.yaml
+rm -f /src/01_application/webcentral_app/*.yml
+
+echo "Delete the Docker Volumes..."
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
+
+echo "Start Docker-Compose Production Environment..."
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up &
+sleep 10
+
+echo "Restore Database state of Production-Environment..."
+bash postgres/restoreDB.sh
+sleep 2
+
+echo "Execute Tests in Production Environment..."
+docker container exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling
+
+echo "Delete .yaml- and .yml-files in webcentral-container..."
+docker container exec webcentral rm -f /src/01_application/webcentral_app/*.yaml
+docker container exec webcentral rm -f /src/01_application/webcentral_app/*.yml
+
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --volumes 

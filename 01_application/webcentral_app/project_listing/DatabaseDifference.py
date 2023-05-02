@@ -292,15 +292,13 @@ class DatabaseDifference(yaml.YAMLObject):
                         [currentDiffAttribute] = "None"
                 else:
                     lengthOfCurrent = len(valueCurrent)
+                
                 lengthOfStr = np.array([lengthOfCurrent, len(valuePending)])
                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                 numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
                 if posOfMaxLengthStr == 0:
                    self.differencesSortedByTable[tableNameKey]["currentState"]\
-                    [currentDiffAttribute] = str(
-                       self.differencesSortedByTable[tableNameKey]["currentState"]\
-                        [currentDiffAttribute]) 
-                   + numberOfCharacterDifference * " "
+                    [currentDiffAttribute] += numberOfCharacterDifference * " "
                 else:
                     self.differencesSortedByTable[tableNameKey]["pendingState"]\
                         [currentDiffAttribute] += numberOfCharacterDifference * " "                
