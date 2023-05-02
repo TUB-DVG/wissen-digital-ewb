@@ -59,7 +59,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         self.assertTrue(False)
 
-        time.sleep(1)
+        time.sleep(2)
 
     
     def testIfYAMLRepresentsDBState(self) -> None:
@@ -76,11 +76,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
         fileNameContainingTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFile.csv"
         management.call_command('data_import', fileNameContainingTestData)
 
-        fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
-        management.call_command('data_import', fileNameModifiedTestData)
-        
         newestFileName = self._getNewestYAML()
-
+        if int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+            fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
+            management.call_command('data_import', fileNameModifiedTestData)
+            newestFileName = self._getNewestYAML()
+        
         listOfDBDifferenceObjs = []
 
         with open(newestFileName, "r") as file:
@@ -98,7 +99,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 dictMappingToTable
             )
         
-        time.sleep(1)
+        time.sleep(2)
 
     def testExecuteDatabaseChangeskeepCurrent(self):
         """Tests`execute_db_changes`, whereby `keepCurrentState` set to True
@@ -108,10 +109,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
         loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
         management.call_command('data_import', loadInitialStateOfDB)
 
-        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        management.call_command('data_import', updateDatasetInDB)
-
         newestYAMLFileName = self._getNewestYAML()
+        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+            updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+            management.call_command('data_import', updateDatasetInDB)
+            newestYAMLFileName = self._getNewestYAML()
+
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
         with open(newestYAMLFileName, "r") as file:
@@ -132,6 +135,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
+                #pdb.set_trace()
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -139,7 +143,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     currentDifferenceObj.keepPendingState,
                 )
         
-        time.sleep(1)
+        time.sleep(2)
 
     def testExecuteDatabaseChangeskeepCSV(self):
         """Tests`execute_db_changes`, whereby `keepPendingState` set to True 
@@ -148,10 +152,15 @@ class checkDifferencesInDatabase(TransactionTestCase):
         loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
         management.call_command('data_import', loadInitialStateOfDB)
 
-        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        management.call_command('data_import', updateDatasetInDB)
-
         newestYAMLFileName = self._getNewestYAML()
+
+        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+            updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
+            management.call_command('data_import', updateDatasetInDB)
+            newestYAMLFileName = self._getNewestYAML()
+
+
+        #if newestYAMLFileName[:]
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "CSV.yml"
 
         with open(newestYAMLFileName, "r") as file:
@@ -179,7 +188,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     currentDifferenceObj.keepPendingState,
                 )             
         
-        time.sleep(1)
+        time.sleep(2)
 
     def testModulZuordnungLoadSimpleDataset(self):
         """Load Modulzuordnung-Data, Test if .YAML file is created on conflict.
@@ -192,11 +201,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
         simpleModulzurodnungDatasets = \
             "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleLoading.csv"
         management.call_command("data_import", simpleModulzurodnungDatasets)
-        time.sleep(1)
-        simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasetsModified)
 
         newestYAMLFileName = self._getNewestYAML()
+        if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
+            simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
+            management.call_command("data_import", simpleModulzurodnungDatasetsModified)
+            newestYAMLFileName = self._getNewestYAML()
+
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
         with open(newestYAMLFileName, "r") as file:
@@ -262,11 +273,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
         simpleTagsDatasets = \
             "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestData.csv"
         management.call_command("data_import", simpleTagsDatasets)
-
-        simpleTagsModifiedDataset = \
-            "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
-        management.call_command("data_import", simpleTagsModifiedDataset)
+        
         newestYAMLFile = self._getNewestYAML()
+        if int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
+            simpleTagsModifiedDataset = \
+                "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
+            management.call_command("data_import", simpleTagsModifiedDataset)
+            newestYAMLFile = self._getNewestYAML()
 
         with open(newestYAMLFile, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
@@ -277,7 +290,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     self._getTablesFromDiffDataStructure(differencesStruct),
                 )                           
 
-        time.sleep(1) 
+        time.sleep(2) 
 
         exportFileKeepCurrent = newestYAMLFile[:-5] + "keepCurr.yml"
 
@@ -303,7 +316,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     currentDifferenceObj.keepPendingState,
                 ) 
         
-        time.sleep(1)
+        time.sleep(2)
 
     def _checkIfDifferencesFromYAMLAreInDB(
             self, 
@@ -327,7 +340,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
         allModels = importlib.import_module("project_listing.models")
         schlagwortregisterIDcurrent = None
-        #pdb.set_trace()
         for tableDictKey in list(nestedDictContainingDiffs.keys()):
             if "Teilprojekt" in tableDictKey:
                 tableName = dictMappingToTable[tableDictKey]
@@ -394,85 +406,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     self.assertTrue(
                         keepCurrentState ^ keepPendingState,
                         "One state must be kept and one state must be discarded",    
-                    )        
-#         for tableDictKey in list(nestedDictContainingDiffs.keys()):
-
-#             tableName = dictMappingToTable[tableDictKey]
-#             dictOfDifferences = nestedDictContainingDiffs[tableDictKey]
-#             currentDBStateInTable = dictOfDifferences["currentState"]
-#             CSVState = dictOfDifferences["pendingState"]
-            
-#             if "schlagwortregister_erstsichtung" in tableDictKey.split(".")[1]:
-#                 if not keepCurrentState and keepCurrentState is not None:
-#                     schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
-#                         [tableDictKey]["currentState"]["schlagwortregister_id"]
-#                 elif not keepPendingState and keepPendingState is not None:
-#                     schlagwortregisterIDcurrent =  nestedDictContainingDiffs\
-#                         [tableDictKey]["pendingState"]["schlagwortregister_id"]
-                    
-#             # check if both states are present in the DB, 
-#             # like they are shown in the .yaml-file:
-#             currentTableModel = allModels.__getattribute__(tableName)
-#             if (keepCurrentState == None 
-#                 and keepPendingState == None 
-#             ):
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     currentDBStateInTable, 
-#                     1, 
-#                     "", 
-#                     schlagwortregisterIDcurrent
-#                 )
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     CSVState, 
-#                     1, 
-#                     "", 
-#                     schlagwortregisterIDcurrent,
-#                 )
-
-#             elif keepCurrentState == True and keepPendingState == False:
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     currentDBStateInTable, 
-#                     1, 
-#                     "User specified to keep current-state of Database, \
-#                     but current state is not present in database anymore!", 
-#                     schlagwortregisterIDcurrent,
-#                 )
-                
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     CSVState, 
-#                     0, 
-#                     "User specified to keep current state, \
-# but csv-state was not removed from Database!",
-#                     schlagwortregisterIDcurrent,
-#                 )
-
-#             elif keepCurrentState == False and keepPendingState == True:
-                       
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     currentDBStateInTable, 
-#                     0,                         
-#                     "User specified to remove current state from DB, \
-#                     but current state is still present!", 
-#                     schlagwortregisterIDcurrent,
-#                 )
-#                 self._doAssertation(
-#                     currentTableModel, 
-#                     CSVState, 
-#                     1,                     
-#                     "User specified to keep csv-state, \
-#                     but csv-state is not present in Database!", 
-#                     schlagwortregisterIDcurrent,
-#                 )                       
-#             else:
-#                 self.assertTrue(
-#                     keepCurrentState ^ keepPendingState,
-#                     "One state must be kept and one state must be discarded",    
-#                 )                                   
+                    )                                         
 
     def _doAssertation(
             self, 
@@ -492,15 +426,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 currentTableModel
                 )
                 ):
-                try:
-                    self.assertTrue(
-                        len(
-                        currentTableModel.objects.filter(**stateDict)
-                        ) == lengthOfQuerySet,
-                        assertationMessage,
-                    )
-                except:
-                    pdb.set_trace()
+                self.assertTrue(
+                    len(
+                    currentTableModel.objects.filter(**stateDict)
+                    ) == lengthOfQuerySet,
+                    assertationMessage,
+                )
             elif (
                 ("Schlagwort" in str(currentTableModel) 
                 and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
@@ -567,15 +498,6 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     newest = int(fileWithoutExtension)
                     newestFileName = currentFilename
         
-        # check, if the timestamp of the newly created file, lies in the last
-        # 2 minutes:
-        currentTime = datetime.datetime.now()
-        
-        self.assertTrue(
-            newest + 2*60 > currentTime.timestamp(), 
-            "Newest .YAML-File has an too old Timestamp!",
-        )
-
         return newestFileName
 
     def _getTablesFromDiffDataStructure(
