@@ -32,4 +32,4 @@ VOLUME /vol/static
 #USER nginx
 
 # script starts nginx in the foreground of the container
-CMD ["./run.sh"]
+#CMD ["./run.sh"]

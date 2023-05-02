@@ -42,6 +42,9 @@ services:
             - static-data:/vol/static
             # the proxy can directly serve the static data, without bothering
             # the django app
+        command: >
+            sh -c "envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf && \
+            nginx -g 'daemon off;'"
 
 volumes:
     static-data:
