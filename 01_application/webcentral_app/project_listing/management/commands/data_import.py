@@ -71,6 +71,7 @@ from project_listing.models import (
     IntegrityError,
 )
 from tools_over.models import Tools
+from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
 
 class MultipleFKZDatasets(Exception):
