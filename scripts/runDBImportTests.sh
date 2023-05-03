@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Build Dev-Environment..."
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
+
 echo "Start Test of docker-dev environment..."
 echo "Deleting current Volumes..."
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
@@ -18,10 +21,14 @@ docker exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py 
 
 echo "Delete the created yaml- and yml-files..."
 rm -f 01_application/webcentral_app/*.yaml
-rm -f /src/01_application/webcentral_app/*.yml
+rm -f 01_application/webcentral_app/*.yml
+sleep 1
 
 echo "Delete the Docker Volumes..."
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
+
+echo "Build Prod-Environment..."
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache
 
 echo "Start Docker-Compose Production Environment..."
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up &

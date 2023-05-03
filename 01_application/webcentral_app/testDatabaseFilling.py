@@ -221,13 +221,14 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFileName = self._getNewestYAML()
         simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
-        if newestYAMLFileName == "" or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            management.call_command("data_import", simpleModulzurodnungDatasetsModified)
+        if (newestYAMLFileName == "" 
+            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            ):
+            management.call_command(
+                "data_import", 
+                simpleModulzurodnungDatasetsModified,
+            )
             newestYAMLFileName = self._getNewestYAML()            
-        # else:
-        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-        #         management.call_command("data_import", simpleModulzurodnungDatasetsModified)
-        #         newestYAMLFileName = self._getNewestYAML()
 
         nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
 
