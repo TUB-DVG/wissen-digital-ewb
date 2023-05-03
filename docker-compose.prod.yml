@@ -10,7 +10,7 @@ services:
             - static-data:/vol/webcentral
         depends_on:
             - database
-            #condition: service_healthy
+        restart: always
         environment:
             - UWSGI_LISTEN_PORT
             - UWSGI_NUM_WORKERS
