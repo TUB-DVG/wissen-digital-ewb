@@ -25,6 +25,8 @@ import yaml
 from project_listing.models import (
     Teilprojekt,
     Schlagwortregister_erstsichtung,
+    Modulen_zuordnung_ptj,
+    Enargus,
 )
 from project_listing.management.commands.data_import import (
     Command, 
@@ -448,12 +450,40 @@ class checkDifferencesInDatabase(TransactionTestCase):
                 currentTableModel
                 )
                 ):
-                self.assertTrue(
-                    len(
-                    currentTableModel.objects.filter(**stateDict)
-                    ) == lengthOfQuerySet,
-                    assertationMessage,
-                )
+                if str(currentTableModel) == "<class 'schlagwoerter.models.Schlagwortregister_erstsichtung'>":
+                    schlagwortregisterQuery = currentTableModel.objects.filter(**stateDict)
+                    if len(schlagwortregisterQuery) > 0:
+                        schlagwortregisterObj = schlagwortregisterQuery[0]
+                        if len(schlagwortregisterObj.teilprojekt_set.all()) == 0:
+                            self.assertTrue(
+                                len(
+                                currentTableModel.objects.filter(**stateDict)
+                                ) == lengthOfQuerySet,
+                                assertationMessage,
+                            )
+                elif str(currentTableModel) == "<class 'project_listing.models.Modulen_zuordnung_ptj'>":
+                    moduleQuery = currentTableModel.objects.filter(**stateDict)
+                    if len(moduleQuery) > 0:
+                        modulObj = moduleQuery[0]
+                        if len(modulObj.teilprojekt_set.all()) == 0:
+                            self.assertTrue(
+                                len(
+                                currentTableModel.objects.filter(**stateDict)
+                                ) == lengthOfQuerySet,
+                                assertationMessage,
+                            )                   
+                else:
+                    try:
+                        self.assertTrue(
+                            len(
+                            currentTableModel.objects.filter(**stateDict)
+                            ) == lengthOfQuerySet,
+                            assertationMessage,
+                        )
+                    except:
+                        pdb.set_trace()
+
+
             elif (
                 ("Schlagwort" in str(currentTableModel) 
                 and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
@@ -471,6 +501,42 @@ class checkDifferencesInDatabase(TransactionTestCase):
                         if (query.schlagwortregister_id 
                             == int(schlagwortregisterIDcurrent)):
                             self.assertTrue(False)              
+
+    
+    def testIfNotUsedTupleWereDeleted(self):
+        """
+        
+        """
+        
+        listOfSchlagwoerterTuplesTrash = []
+        listOfModuleTuplesTrash = []
+        listOfEnargusTupleTrash = []
+
+        queryOfAllSchlagwoertregisterTuples = Schlagwortregister_erstsichtung.objects.all()
+        for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
+            if len(schlagwortregisterTuple.teilprojekt_set.all()) == 0:
+                listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)
+        self.assertEqual(
+            len(listOfSchlagwoerterTuplesTrash),
+            0,
+        )
+
+        queryOfAllModulZuordnungTuples = Modulen_zuordnung_ptj.objects.all()
+        for modulTuple in queryOfAllModulZuordnungTuples:
+            if len(modulTuple.teilprojekt_set.all()) == 0:
+                listOfModuleTuplesTrash.append(modulTuple)
+        self.assertEqual(
+            len(listOfModuleTuplesTrash),
+            0,
+        )
+
+        allEnargusTuples = Enargus.objects.all()
+        for enargusTuple in allEnargusTuples:
+            try:
+                enargusTuple.teilprojekt
+            except:
+                listOfEnargusTupleTrash.append(enargusTuple)
+        self.assertEqual(len(listOfEnargusTupleTrash), 0)
 
 
     def _checkIfIDisNone(self, tableDict: dict) -> str:
