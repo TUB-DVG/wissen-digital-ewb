@@ -1,6 +1,8 @@
 Intendation: Tabs, 1 Tab = 4 Whitespaces
 
 * CamelCase, möglichst keine Zahlen, die nicht als Wort ausgeschrieben sind in den Identifiern (Variablen, Funktionen, Klassen)
+  * Variable und Klassen: CamelCase
+  * Funktion: camelCase (kleiner Buchstabe am Wortbeginn)
 * Konstanen: SNAKE_CASE in Großbuchstaben
 * trailing_underscore\_ für Namen, die genauso heißen sollen wie Python-Keywords
 * Identifier NUR in englischer Sprache: Generell gilt: Funktionalität immer in Englisch, Inhalt in deutscher Sprache. Auch Dateinamen sollen in englischer Sprache verfasst werden. Tabellenspalten oder ähnliches, welche in deutsch voliegen, müssen im docstring übersetzt und erklärt werden.
