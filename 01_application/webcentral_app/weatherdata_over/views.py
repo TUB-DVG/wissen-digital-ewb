@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Weatherdata 
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 class UpdateProperties:
@@ -16,7 +18,7 @@ class UpdateProperties:
         self.label = label
         self.color_class = color_class
 
-
+@login_required(login_url='login')
 def index(request):
     """
     shows the list of all projects including some key features
