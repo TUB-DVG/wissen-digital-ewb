@@ -651,7 +651,11 @@ class TestDatabaseConcistency(TransactionTestCase):
     """
 
     def testIfLastYAMLFileRepresentsDatabaseState(self):
-        """
+        """Test checks, if DB-state specified by .YAML-file represents DB.
+
+        This method checks if the user-edited-.YAML-file represents the
+        state in the Database. Before execution, the filename variable
+        needs to be set to the name of the .yaml-file. 
         
         """
 
@@ -691,8 +695,14 @@ class TestDatabaseConcistency(TransactionTestCase):
             self.assertEqual(len(Teilprojekt.objects.filter(**filterDict)), 1)
 
     def testIfNotUsedTupleWereDeleted(self):
-        """
-        
+        """Checks, if Tuple are present, which are not connected to Teilprojekt.
+
+        This method checks if Enargus-, Modulen_zuordnung_ptj-, or 
+        Schlagwortregister_erstsichtung-Tuples are present in the database,
+        which are not conntected via ForeignKey-Relations to a 
+        Teilprojekt-Tuple. That can happen, when after executing the user
+        defined DB changes, the other dataset, which is set to be discarded,
+        is not discarded by the system.
         """
         
         listOfSchlagwoerterTuplesTrash = []
@@ -726,7 +736,7 @@ class TestDatabaseConcistency(TransactionTestCase):
         self.assertEqual(len(listOfEnargusTupleTrash), 0)
 
     def _loadYAMLFile(self, filename, onlyLoadObjWithSetKeepAttr=False):
-        """
+        """Helper-Function to load the .YAML-File.
         
         """
         listOfDBDiffs = []
