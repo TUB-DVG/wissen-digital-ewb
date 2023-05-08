@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Please execute the script as sudo, otherwise the .yaml-files wont be deleted!
 echo "Build Dev-Environment..."
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
 
@@ -17,11 +17,11 @@ bash postgres/restoreDB.sh
 sleep 2
 
 echo "Executing Tests..."
-docker exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling
+docker exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling.checkDifferencesInDatabase
 
 echo "Delete the created yaml- and yml-files..."
-rm -f 01_application/webcentral_app/*.yaml
-rm -f 01_application/webcentral_app/*.yml
+sudo rm -f 01_application/webcentral_app/testFiles/*.yaml
+sudo rm -f 01_application/webcentral_app/testFiles/*.yml
 sleep 1
 
 echo "Delete the Docker Volumes..."
@@ -39,10 +39,10 @@ bash postgres/restoreDB.sh
 sleep 2
 
 echo "Execute Tests in Production Environment..."
-docker container exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling
+docker container exec -w /src/01_application/webcentral_app/ webcentral python3 manage.py test testDatabaseFilling.checkDifferencesInDatabase
 
 echo "Delete .yaml- and .yml-files in webcentral-container..."
-docker container exec webcentral rm -f /src/01_application/webcentral_app/*.yaml
-docker container exec webcentral rm -f /src/01_application/webcentral_app/*.yml
+docker container exec webcentral rm -f /src/01_application/webcentral_app/testFiles*.yaml
+docker container exec webcentral rm -f /src/01_application/webcentral_app/testFiles*.yml
 
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --volumes 
