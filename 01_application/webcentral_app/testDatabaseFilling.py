@@ -62,7 +62,11 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         csvFileToBeLoaded = "../../02_work_doc/10_test/04_testData/enargus_testMultipleTimesSameDataset.csv"
         try:
-            management.call_command('data_import', csvFileToBeLoaded)
+            management.call_command(
+                'data_import', 
+                csvFileToBeLoaded,
+                "testFiles/",
+            )
         except MultipleFKZDatasets:
             time.sleep(1)
             return
@@ -84,20 +88,30 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
 
         fileNameContainingTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFile.csv"
-        management.call_command('data_import', fileNameContainingTestData)
+        management.call_command(
+            'data_import', 
+            fileNameContainingTestData,
+            "testFiles/",    
+        )
 
-        newestFileName = self._getNewestYAML()
+        newestFilePath = self._getNewestYAML()
+        head, newestFileName = os.path.split(newestFilePath)
         if (
             newestFileName == "" 
             or int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
             ):
             fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
-            management.call_command('data_import', fileNameModifiedTestData)
-            newestFileName = self._getNewestYAML()
+            management.call_command(
+                'data_import', 
+                fileNameModifiedTestData,
+                "testFiles/",    
+            )
+            newestFilePath = self._getNewestYAML()
+            head, newestFileName = os.path.split(newestFilePath)
         
         listOfDBDifferenceObjs = []
 
-        with open(newestFileName, "r") as file:
+        with open(newestFilePath, "r") as file:
             for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 databaseDifferenceObj.postprocessAfterReadIn()
                 listOfDBDifferenceObjs.append(databaseDifferenceObj)
@@ -120,24 +134,33 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
 
         loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
-        management.call_command('data_import', loadInitialStateOfDB)
+        management.call_command(
+            'data_import', 
+            loadInitialStateOfDB,
+            "testFiles/",    
+        )
 
-        newestYAMLFileName = self._getNewestYAML()
+        newestYAMLFilePath = self._getNewestYAML()
+        head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if (
             newestYAMLFileName == "" 
             or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
             ):
-            management.call_command('data_import', updateDatasetInDB)
-            newestYAMLFileName = self._getNewestYAML()            
-        # else:
-        #     if int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp():
-        #         management.call_command('data_import', updateDatasetInDB)
-        #         newestYAMLFileName = self._getNewestYAML()
+            management.call_command(
+                'data_import', 
+                updateDatasetInDB,
+                "testFiles/",
+            )
+            newestYAMLFilePath = self._getNewestYAML()
+            head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
-        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
+        nameYAMLFileAfterUserInput = os.path.join(
+            "testFiles/", 
+            newestYAMLFileName[0:-5] + "Curr.yml",
+        )
 
-        with open(newestYAMLFileName, "r") as file:
+        with open(newestYAMLFilePath, "r") as file:
             for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 databaseDifferenceObj.postprocessAfterReadIn()
 
@@ -169,20 +192,32 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         """
         loadInitialStateOfDB = "../../02_work_doc/10_test/04_testData/enargus_load10Datasets.csv"
-        management.call_command('data_import', loadInitialStateOfDB)
+        management.call_command(
+            'data_import', 
+            loadInitialStateOfDB,
+            "testFiles/",
+        )
 
-        newestYAMLFileName = self._getNewestYAML()
+        newestYAMLFilePath = self._getNewestYAML()
+        head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if (
             newestYAMLFileName == "" 
             or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
             ):
-            management.call_command('data_import', updateDatasetInDB)
-            newestYAMLFileName = self._getNewestYAML()
+            management.call_command(
+                'data_import', 
+                updateDatasetInDB,
+                "testFiles/",
+            )
+            newestYAMLFilePath = self._getNewestYAML()
+            head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
-        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "CSV.yml"
-
-        with open(newestYAMLFileName, "r") as file:
+        nameYAMLFileAfterUserInput = os.path.join(
+            "testFiles/", 
+            newestYAMLFileName[0:-5] + "CSV.yml",
+        )
+        with open(newestYAMLFilePath, "r") as file:
             for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 databaseDifferenceObj.postprocessAfterReadIn()
 
@@ -219,9 +254,14 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         simpleModulzurodnungDatasets = \
             "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleLoading.csv"
-        management.call_command("data_import", simpleModulzurodnungDatasets)
+        management.call_command(
+            "data_import", 
+            simpleModulzurodnungDatasets,
+            "testFiles/",
+        )
 
-        newestYAMLFileName = self._getNewestYAML()
+        newestYAMLFilePath = self._getNewestYAML()
+        head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
         simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
         if (newestYAMLFileName == "" 
             or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
@@ -229,12 +269,16 @@ class checkDifferencesInDatabase(TransactionTestCase):
             management.call_command(
                 "data_import", 
                 simpleModulzurodnungDatasetsModified,
+                "testFiles/",
             )
-            newestYAMLFileName = self._getNewestYAML()            
+            newestYAMLFilePath = self._getNewestYAML()
+            head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
-        nameYAMLFileAfterUserInput = newestYAMLFileName[0:-5] + "Curr.yml"
-
-        with open(newestYAMLFileName, "r") as file:
+        nameYAMLFileAfterUserInput = os.path.join(
+            "testFiles/", 
+            newestYAMLFileName[0:-5] + "_edited.yml",
+        )
+        with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
@@ -295,17 +339,27 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         simpleTagsDatasets = \
             "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestData.csv"
-        management.call_command("data_import", simpleTagsDatasets)
+        management.call_command(
+            "data_import", 
+            simpleTagsDatasets,
+            "testFiles/",
+        )
         
-        newestYAMLFile = self._getNewestYAML()
+        newestYAMLFilePath = self._getNewestYAML()
+        head, newestYAMLFile = os.path.split(newestYAMLFilePath)
         simpleTagsModifiedDataset = \
     "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
         if newestYAMLFile == "" or int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
-            management.call_command("data_import", simpleTagsModifiedDataset)
-            newestYAMLFile = self._getNewestYAML()
+            management.call_command(
+                "data_import", 
+                simpleTagsModifiedDataset, 
+                "testFiles/",
+            )
+            newestYAMLFilePath = self._getNewestYAML()
+            head, newestYAMLFile = os.path.split(newestYAMLFilePath)
 
 
-        with open(newestYAMLFile, "r") as file:
+        with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
@@ -316,10 +370,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         time.sleep(2) 
 
-        exportFileKeepCurrent = newestYAMLFile[:-5] + "keepCurr.yml"
-
+        exportFileKeepCurrent = os.path.join(
+            "testFiles/", 
+            newestYAMLFile[:-5] + "keepCurr.yml",
+        )
         # change each DifferenceObject to keep-Current-DB-State
-        with open(newestYAMLFile, "r") as file:
+        with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
                 differencesStruct = currentDifferenceObj.differencesSortedByTable
@@ -502,41 +558,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                             == int(schlagwortregisterIDcurrent)):
                             self.assertTrue(False)              
 
-    
-    def testIfNotUsedTupleWereDeleted(self):
-        """
-        
-        """
-        
-        listOfSchlagwoerterTuplesTrash = []
-        listOfModuleTuplesTrash = []
-        listOfEnargusTupleTrash = []
 
-        queryOfAllSchlagwoertregisterTuples = Schlagwortregister_erstsichtung.objects.all()
-        for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
-            if len(schlagwortregisterTuple.teilprojekt_set.all()) == 0:
-                listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)
-        self.assertEqual(
-            len(listOfSchlagwoerterTuplesTrash),
-            0,
-        )
-
-        queryOfAllModulZuordnungTuples = Modulen_zuordnung_ptj.objects.all()
-        for modulTuple in queryOfAllModulZuordnungTuples:
-            if len(modulTuple.teilprojekt_set.all()) == 0:
-                listOfModuleTuplesTrash.append(modulTuple)
-        self.assertEqual(
-            len(listOfModuleTuplesTrash),
-            0,
-        )
-
-        allEnargusTuples = Enargus.objects.all()
-        for enargusTuple in allEnargusTuples:
-            try:
-                enargusTuple.teilprojekt
-            except:
-                listOfEnargusTupleTrash.append(enargusTuple)
-        self.assertEqual(len(listOfEnargusTupleTrash), 0)
 
 
     def _checkIfIDisNone(self, tableDict: dict) -> str:
@@ -572,21 +594,21 @@ class checkDifferencesInDatabase(TransactionTestCase):
         newestFileName: str
             string, which represents the name of the newest .yaml file.
         """
-
-        fileContents = os.listdir()
+        if not os.path.exists("testFiles"):
+            os.mkdir("testFiles")
+        #os.chdir("testFiles")
+        fileContents = os.listdir(path="testFiles/")
         newest = 0
         newestFileName = ""
         for currentFilename in fileContents:
             if ".yaml" in currentFilename:
-
-
                 fileWithoutExtension = currentFilename[0:-5]
 
                 if int(fileWithoutExtension) > newest:
                     newest = int(fileWithoutExtension)
                     newestFileName = currentFilename
         
-        return newestFileName
+        return os.path.join("testFiles/", newestFileName)
 
     def _getTablesFromDiffDataStructure(
             self, 
@@ -622,3 +644,101 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     returnDict[currentTableKey] = attributeName
     
         return returnDict
+    
+class TestDatabaseConcistency(TransactionTestCase):
+    """
+    
+    """
+
+    def testIfLastYAMLFileRepresentsDatabaseState(self):
+        """
+        
+        """
+
+        filename = "1683486172_edited.yaml"
+        listOfDBDiffObjs = self._loadYAMLFile(filename, True)
+        for currDBDiff in listOfDBDiffObjs:
+
+            dictOfDiff = currDBDiff.differencesSortedByTable
+            for tableNameInDiffStruct in list(dictOfDiff.keys()):
+                if "Teilprojekt" in tableNameInDiffStruct:
+                    foreignRelationFromTeilprojekt = tableNameInDiffStruct.split(".")[1]
+                    fullKeyStr = tableNameInDiffStruct
+
+            if currDBDiff.keepCurrentState and not currDBDiff.keepPendingState:
+                currOrPendingStr = "currentState"
+            elif currDBDiff.keepPendingState and not currDBDiff.keepCurrentState:
+                currOrPendingStr = "pendingState"
+            else:
+                self.assertTrue(False, "User-defined kepdCurrent and keepPending Attributes are not consistent!")
+                continue
+            
+            #pdb.set_trace()
+            modelClassName = getattr(
+                Teilprojekt, 
+                foreignRelationFromTeilprojekt,
+            ).field.related_model
+
+            foreignObjToPartProject = modelClassName.objects.filter(
+                **dictOfDiff[fullKeyStr][currOrPendingStr]
+            )[0]  
+
+            filterDict = {
+                **currDBDiff.identifer, 
+                foreignRelationFromTeilprojekt: foreignObjToPartProject,
+            }
+
+            self.assertEqual(len(Teilprojekt.objects.filter(**filterDict)), 1)
+
+    def testIfNotUsedTupleWereDeleted(self):
+        """
+        
+        """
+        
+        listOfSchlagwoerterTuplesTrash = []
+        listOfModuleTuplesTrash = []
+        listOfEnargusTupleTrash = []
+
+        queryOfAllSchlagwoertregisterTuples = Schlagwortregister_erstsichtung.objects.all()
+        for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
+            if len(schlagwortregisterTuple.teilprojekt_set.all()) == 0:
+                listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)
+        self.assertEqual(
+            len(listOfSchlagwoerterTuplesTrash),
+            0,
+        )
+
+        queryOfAllModulZuordnungTuples = Modulen_zuordnung_ptj.objects.all()
+        for modulTuple in queryOfAllModulZuordnungTuples:
+            if len(modulTuple.teilprojekt_set.all()) == 0:
+                listOfModuleTuplesTrash.append(modulTuple)
+        self.assertEqual(
+            len(listOfModuleTuplesTrash),
+            0,
+        )
+
+        allEnargusTuples = Enargus.objects.all()
+        for enargusTuple in allEnargusTuples:
+            try:
+                enargusTuple.teilprojekt
+            except:
+                listOfEnargusTupleTrash.append(enargusTuple)
+        self.assertEqual(len(listOfEnargusTupleTrash), 0)
+
+    def _loadYAMLFile(self, filename, onlyLoadObjWithSetKeepAttr=False):
+        """
+        
+        """
+        listOfDBDiffs = []
+        with open(filename, "r") as file:
+            for element in yaml.load_all(file, Loader=yaml.Loader):
+                element.postprocessAfterReadIn()
+                if onlyLoadObjWithSetKeepAttr:
+                    if (element.keepCurrentState is not None 
+                        and element.keepPendingState is not None
+                    ):
+                        listOfDBDiffs.append(element)    
+                else:
+                    listOfDBDiffs.append(element)
+        return listOfDBDiffs
+            
