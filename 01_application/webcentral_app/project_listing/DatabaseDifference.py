@@ -52,7 +52,6 @@ class DatabaseDifference(yaml.YAMLObject):
             identifier: dict
                 Dictionary, containing Förderkennzeichen and the Thema.
         """
-        #self.pathTarget = pathTarget
         self.identifer = identifer
         self.verbundbezeichnung = verbundbezeichnung
         self.differencesSortedByTable = {}
@@ -140,10 +139,6 @@ class DatabaseDifference(yaml.YAMLObject):
             self.differencesSortedByTable[rootTableName]["currentState"].keys()
         )
         for rootTableFieldName in dictofRootTable:
-            #  classNameOfTable = self._findModelNameForKey(
-            #      allModels, 
-            #      tableWhereConflictingObjsAreLocated,
-            # )
              if "_id" in rootTableFieldName:
                 if self.differencesSortedByTable[rootTableName]\
                     ["currentState"][rootTableFieldName] is not None:
