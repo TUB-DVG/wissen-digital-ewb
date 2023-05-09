@@ -26,7 +26,8 @@ urlpatterns = [
     path('weatherdata_list/',include('weatherdata_over.urls')),
     path('project_list/',include('project_listing.urls')),
     path('admin/', admin.site.urls),
-#    path('Tools_list/',include('tools_over.urls')),
+    path('django_plotly_dash/', include('django_plotly_dash.urls')),
+    path('LastProfile/',include('LastProfile.urls')),
 ]
 
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
