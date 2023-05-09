@@ -116,9 +116,7 @@ class DatabaseDifference(yaml.YAMLObject):
         """
         
         """
-
         currNameWithUpperLetter = curentTableFromKey[0].upper() + curentTableFromKey[1:]
-
         for model in dir(allModels):
             if currNameWithUpperLetter in model or curentTableFromKey in model:
                 return model

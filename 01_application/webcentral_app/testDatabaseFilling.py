@@ -659,7 +659,7 @@ class TestDatabaseConcistency(TransactionTestCase):
         
         """
 
-        filename = "1683486172_edited.yaml"
+        filename = "1683640522_edited.yaml"
         listOfDBDiffObjs = self._loadYAMLFile(filename, True)
         for currDBDiff in listOfDBDiffObjs:
 
