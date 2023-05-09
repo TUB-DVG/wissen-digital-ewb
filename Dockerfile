@@ -2,7 +2,7 @@ FROM python:3.10 AS base
 MAINTAINER "DVG"
 
 # ensures, that all python logs are directly 
-# send to STDOUT or STDERR and arnt kept in
+# send to STDOUT or STDERR and are not kept in
 # buffer.
 ENV PYTHONUNBUFFERED 1
 
