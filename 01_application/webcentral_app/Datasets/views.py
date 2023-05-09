@@ -23,16 +23,15 @@ def index(request):
     datasets = collectedDatasets.objects.all() # reads all data from table Teilprojekt
     filtered_by = [None]*3
     searched=None
-
-
- 
     if ((request.GET.get("k") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
         useCaseCategory=request.GET.get('k')
         categoryDataset=request.GET.get('l')
-        reference=request.GET.get('lzp')
+        availability=request.GET.get('lzp')
         searched=request.GET.get('searched')
-        datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,categoryDataset__icontains=categoryDataset,reference__icontains=reference,resolution__icontains=searched)
-        filtered_by = [useCaseCategory, categoryDataset, reference]
+        print('here')
+        datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,categoryDataset__icontains=categoryDataset,availability__icontains=availability,nameDataset__icontains=searched)
+        print(datasets)
+        filtered_by = [useCaseCategory, categoryDataset, availability]
               
     datasets = list((datasets))
 
@@ -40,11 +39,8 @@ def index(request):
 
     page_num= request.GET.get('page',None)
     page=datasets_paginator.get_page(page_num)
-
-
-    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
     
-
+    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
     if is_ajax_request:
         html = render_to_string(
             template_name="datasets_over/dataset-listings-results.html", 
@@ -53,7 +49,7 @@ def index(request):
                 'search':searched,
                 'useCaseCategory': filtered_by[0],
                 'categoryDataset': filtered_by[1],
-                'reference': filtered_by[2]
+                'availability': filtered_by[2]
             }
 
         )
@@ -68,7 +64,7 @@ def index(request):
             'search':searched,
             'useCaseCategory': filtered_by[0],
             'categoryDataset': filtered_by[1],
-            'reference': filtered_by[2]
+            'availability': filtered_by[2]
     }
 
 
