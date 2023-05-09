@@ -186,29 +186,8 @@ class Command(BaseCommand):
                         deleteSchlagwort = True
                         if parent == "schlagwortregister_erstsichtung":
                             pass
-                            # for tagNumber in range(1, 7):
-                            #     dictForFilter = {
-                            #         f"schlagwort_{tagNumber}_id": 
-                            #         diffDataStructure[currentTable]\
-                            #             ["pendingState"]["schlagwort_id"]
-                            #     }
-                                
-                            #     if len(
-                            #         Schlagwortregister_erstsichtung\
-                            #             .objects.filter(**dictForFilter)
-                            #         ) > 1:
-                            #         deleteSchlagwort = False
-                            # if deleteSchlagwort:
-                                
-                            #     query = Schlagwort\
-                            #         .objects.filter(
-                            #         schlagwort_id=diffDataStructure[currentTable]\
-                            #             ["pendingState"]["schlagwort_id"]
-                            #         )
-                            #     query[0].delete()
 
             self.listOfToBeDeletedObjs.append(pendingObj)
-            #pendingObj.delete()
         
         else:
             currentStateObj.__setattr__(
@@ -228,27 +207,7 @@ class Command(BaseCommand):
                     deleteSchlagwort = True
                     if parent == "schlagwortregister_erstsichtung":
                         pass
-                        # for tagNumber in range(1, 7):
-                        #     dictForFilter = {
-                        #         f"schlagwort_{tagNumber}_id": 
-                        #         diffDataStructure[currentTable]["currentState"]\
-                        #             ["schlagwort_id"]
-                        #     }
-                        #     if len(
-                        #         Schlagwortregister_erstsichtung.objects.filter(
-                        #         **dictForFilter,
-                        #         )
-                        #         ) > 1:
-                        #         deleteSchlagwort = False
-                        # if deleteSchlagwort:
-                            
-                        #     query = Schlagwort\
-                        #         .objects.filter(
-                        #         schlagwort_id=diffDataStructure[currentTable]\
-                        #             ["currentState"]["schlagwort_id"]
-                        #         )
-                        #     if len(query) > 0:
-                        #         query[0].delete()
+
 
     def parseFile(
             self, 
