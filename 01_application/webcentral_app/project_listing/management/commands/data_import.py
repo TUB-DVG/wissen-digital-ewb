@@ -764,7 +764,7 @@ class Command(BaseCommand):
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append([
-                    "Enargus", 
+                    "enargus_daten", 
                     currentStateTable, 
                     obj, 
                     "Teilprojekt",
@@ -923,7 +923,10 @@ class Command(BaseCommand):
         else:
             self.fkzWrittenToYAML.append(identifer)
 
-        currentDBDifferenceObj = DatabaseDifference(identifer, theme)
+        currentDBDifferenceObj = DatabaseDifference(
+            identifer, 
+            theme, 
+        )
         while len(unvisited) > 0:
             
             currentEntryInUnvisited = unvisited.pop()
@@ -960,6 +963,7 @@ class Command(BaseCommand):
                              )
                         listOfFieldsInCurrentTable = pendingTableObj._meta.get_fields()
                         for teilprojektField in listOfFieldsInCurrentTable:
+                            
                             currentForeignTableStr = teilprojektField.__str__()\
                                 .strip(">").split(".")[-1]
                             if (
@@ -968,7 +972,9 @@ class Command(BaseCommand):
                                 and not teilprojektField.one_to_many
                             ):
                                 try: 
-                                    pendingField = pendingTableObj.__getattribute__(currentForeignTableStr)
+                                    pendingField = pendingTableObj.__getattribute__(
+                                        currentForeignTableStr,
+                                    )
                                 except:
                                     pendingField = None
                                 unvisited.append([
@@ -990,6 +996,7 @@ class Command(BaseCommand):
 
                 for teilprojektField in listOfFieldsInCurrentTable:
                     currentForeignTableStr = teilprojektField.__str__().strip(">").split(".")[-1]
+                    
                     if (
                         teilprojektField.is_relation 
                         and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
@@ -1000,7 +1007,7 @@ class Command(BaseCommand):
                                 currentForeignTableStr, 
                                 currentTableObj.__getattribute__(currentForeignTableStr), 
                                 pendingTableObj.__getattribute__(currentForeignTableStr), 
-                                currentForeignTableName,
+                                teilprojektField.model.__name__,
                             ])
                         except:
                             pass
@@ -1043,8 +1050,9 @@ class Command(BaseCommand):
                                 )   
                         except:
                             pass
-                
-        currentDBDifferenceObj.writeToYAML(self.DBdifferenceFileName)
+        
+        pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
+        currentDBDifferenceObj.writeToYAML(pathToFile)
 
 
     def readCSV(
@@ -1089,8 +1097,10 @@ class Command(BaseCommand):
         Returns:
         None
         """
-        pathCSV=options["pathCSV"][0]
+        pathCSV = options["pathCSV"][0]
         pathStr, filename = os.path.split(pathCSV)
+
+        self.targetFolder = options["targetFolder"][0]
 
         header, data = self.readCSV(pathCSV)
         for row in data:
@@ -1132,3 +1142,4 @@ class Command(BaseCommand):
         None
         """
         parser.add_argument('pathCSV', nargs='+', type=str) 
+        parser.add_argument("targetFolder", nargs="+", type=str)

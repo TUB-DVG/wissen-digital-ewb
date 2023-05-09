@@ -62,6 +62,14 @@ class Command(BaseCommand):
     the user-specified action on the database-conflict, if it is 
     consitent.
     """
+
+    def __init__(self):
+        """
+        
+        """
+        self.listOfToBeDeletedObjs = []
+
+
     def handle(
             self, 
             *args: tuple, 
@@ -94,6 +102,20 @@ class Command(BaseCommand):
                         tupleOrNone, 
                         databaseDiffObj.differencesSortedByTable
                     )
+
+        for objToBeDeleted in self.listOfToBeDeletedObjs:
+            if "teilprojekt" in dir(objToBeDeleted):
+                objToBeDeleted.refresh_from_db()
+                try:
+                    objToBeDeleted.teilprojekt
+                except:
+                    objToBeDeleted.delete()
+            elif "teilprojekt_set" in dir(objToBeDeleted):
+                objToBeDeleted.refresh_from_db()
+                if len(objToBeDeleted.teilprojekt_set.all()) == 0:
+                    objToBeDeleted.delete()
+            else:
+                pdb.set_trace()
 
 
     def add_arguments(
@@ -163,28 +185,9 @@ class Command(BaseCommand):
                     if parent in currentTable.split(".")[0]:
                         deleteSchlagwort = True
                         if parent == "schlagwortregister_erstsichtung":
-                            for tagNumber in range(1, 7):
-                                dictForFilter = {
-                                    f"schlagwort_{tagNumber}_id": 
-                                    diffDataStructure[currentTable]\
-                                        ["pendingState"]["schlagwort_id"]
-                                }
-                                
-                                if len(
-                                    Schlagwortregister_erstsichtung\
-                                        .objects.filter(**dictForFilter)
-                                    ) > 1:
-                                    deleteSchlagwort = False
-                            if deleteSchlagwort:
-                                
-                                query = Schlagwort\
-                                    .objects.filter(
-                                    schlagwort_id=diffDataStructure[currentTable]\
-                                        ["pendingState"]["schlagwort_id"]
-                                    )
-                                query[0].delete()
+                            pass
 
-            pendingObj.delete()
+            self.listOfToBeDeletedObjs.append(pendingObj)
         
         else:
             currentStateObj.__setattr__(
@@ -194,7 +197,8 @@ class Command(BaseCommand):
             currentStateObj.save()
 
             if currentStateRow is not None:
-                currentStateRow.delete()
+                self.listOfToBeDeletedObjs.append(currentStateRow)
+                #currentStateRow.delete()
             for currentTable in list(diffDataStructure.keys()):
                 if "Teilprojekt" in currentTable:
                     parent = currentTable.split(".")[1]
@@ -202,27 +206,8 @@ class Command(BaseCommand):
                 if parent in currentTable.split(".")[0]:
                     deleteSchlagwort = True
                     if parent == "schlagwortregister_erstsichtung":
-                        for tagNumber in range(1, 7):
-                            dictForFilter = {
-                                f"schlagwort_{tagNumber}_id": 
-                                diffDataStructure[currentTable]["currentState"]\
-                                    ["schlagwort_id"]
-                            }
-                            if len(
-                                Schlagwortregister_erstsichtung.objects.filter(
-                                **dictForFilter,
-                                )
-                                ) > 1:
-                                deleteSchlagwort = False
-                        if deleteSchlagwort:
-                            
-                            query = Schlagwort\
-                                .objects.filter(
-                                schlagwort_id=diffDataStructure[currentTable]\
-                                    ["currentState"]["schlagwort_id"]
-                                )
-                            if len(query) > 0:
-                                query[0].delete()
+                        pass
+
 
     def parseFile(
             self, 

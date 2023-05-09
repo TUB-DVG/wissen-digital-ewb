@@ -1,6 +1,7 @@
 import ast
 import pdb
 import importlib
+import os
 
 from project_listing.models import (
     Teilprojekt,
@@ -115,9 +116,7 @@ class DatabaseDifference(yaml.YAMLObject):
         """
         
         """
-
         currNameWithUpperLetter = curentTableFromKey[0].upper() + curentTableFromKey[1:]
-
         for model in dir(allModels):
             if currNameWithUpperLetter in model or curentTableFromKey in model:
                 return model
@@ -132,16 +131,12 @@ class DatabaseDifference(yaml.YAMLObject):
         """
         rootTableName = self.getStartingPoint()
         allModels = importlib.import_module("project_listing.models")
-        tableWhereConflictingObjsAreLocated = rootTableName.split(".")[1]
+        classNameOfTable = getattr(allModels.__getattribute__(rootTableName.split(".")[0]), rootTableName.split(".")[1]).field.related_model
         parentTableName = rootTableName.split(".")[0]
         dictofRootTable = list(
             self.differencesSortedByTable[rootTableName]["currentState"].keys()
         )
         for rootTableFieldName in dictofRootTable:
-             classNameOfTable = self._findModelNameForKey(
-                 allModels, 
-                 tableWhereConflictingObjsAreLocated,
-            )
              if "_id" in rootTableFieldName:
                 if self.differencesSortedByTable[rootTableName]\
                     ["currentState"][rootTableFieldName] is not None:
@@ -161,7 +156,7 @@ class DatabaseDifference(yaml.YAMLObject):
                         list(self.identifer.keys())[0]
                     ]}
                 )
-                querySetForPendingObj = globals()[classNameOfTable]\
+                querySetForPendingObj = classNameOfTable\
                 .objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
                 )
@@ -174,7 +169,7 @@ class DatabaseDifference(yaml.YAMLObject):
                     and len(currentStateInRootTable) > 0):
                     nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(
                         globals()[parentTableName], 
-                        globals()[classNameOfTable],
+                        classNameOfTable,
                     )
                     
                     currentStateRowObj = currentStateInRootTable[0].__getattribute__(
@@ -311,7 +306,6 @@ class DatabaseDifference(yaml.YAMLObject):
         
         for keyToBeDeleted in keysToBeDeleted:
                  self.differencesSortedByTable.pop(keyToBeDeleted)
-
         with open(yamlFileName, "a") as stream:
             yaml.dump(
                 self, 
