@@ -129,6 +129,8 @@ print(df)
 
 - joins one table: https://www.w3schools.com/sql/sql_join.asp
 - joins multiple table: https://www.sqlshack.com/learn-sql-join-multiple-tables/
+- Configuration at Server !!!!:
+  - IP into pg_hba.conf sudo vi /etc/postgresql/12/main/pg_hba.conf
 #+BEGIN_SRC python :session py_wc :results output
 
 # Example python program to read data from a PostgreSQL table
