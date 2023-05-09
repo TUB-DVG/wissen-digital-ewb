@@ -7,6 +7,8 @@ from wetterdienst.provider.dwd.observation import DwdObservationRequest
 import plotly.express as px
 import plotly.graph_objects as go
 
+
+
 Anwendung=2
 
 Warmebedarf=1500000
@@ -111,56 +113,56 @@ for i in range(0,station_data.shape[0]):
 Zeile_Anfang=Anwendung*13 -24
 
 #Stundenfaktoren für Montag einlesen
-Splate=18
+Column=18
 F_Montag = [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Montag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Montag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 #print(F_Montag)
 #Stundenfaktoren für Dienstag einlesen
-Splate=44
+Column=44
 F_Dienstag = [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Dienstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Dienstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 #Stundenfaktoren für Mittwoch einlesen
 
-Splate=70
+Column=70
 F_Mittwoch = [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Mittwoch[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Mittwoch[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 #Stundenfaktoren für Donnerstag einlesen
-Splate=96
+Column=96
 F_Donnerstag = [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Donnerstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Donnerstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 #Stundenfaktoren für Freitag einlesen
-Splate=122
+Column=122
 F_Freitag= [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Freitag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Freitag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 
 #Stundenfaktoren für Samstage einlesen
-Splate=148
+Column=148
 F_Samstag= [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Samstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Samstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 #Stundenfaktoren für Sonntage einlesen
-Splate=174
+Column=174
 F_Sonntag= [[0 for x in range(24)] for y in range(10)] 
 for i in range(0,24):
     for j in range(0,10):
-        F_Sonntag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+        F_Sonntag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 
 

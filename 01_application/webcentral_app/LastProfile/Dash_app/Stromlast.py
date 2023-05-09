@@ -1,3 +1,4 @@
+import pathlib
 
 import pandas as pd
 from .Stromlastapproximation_Csv import Stromapproximation
@@ -9,16 +10,10 @@ import os
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 
-os.chdir(r'C:\Users\Drass\Vba_Interface_Dev\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
-
-df_haupt=pd.read_csv('Hauptblatt2.csv')
-
-
+PATH = pathlib.Path(__file__).parent.resolve() 
+DATA_PATH = os.path.join(PATH , 'Hauptblatt2.csv') 
+df_haupt=pd.read_csv(DATA_PATH)
 data=[]
-
-
-
-
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 
 
@@ -26,9 +21,7 @@ app = DjangoDash('Stromlast')   # replaces dash.Dash
 app.layout = html.Div([
     #Title
     html.H1("Stromlast Approximation", style={'text-align': 'center'}),
-    #Download data as csv
-    html.Button("Download Csv", id="btn-download-csv"),
-    dcc.Download(id="download-csv"),
+ 
     # Dropdown for the available applications
     dcc.Dropdown(
         options=[
@@ -48,22 +41,22 @@ app.layout = html.Div([
         id='application'
         ),
         # Input Field for the 
-    dcc.Input(id="power_requirement", type="number", placeholder="Jahresstrombedarfs in kWh/a",style={'width':'200px'}, debounce=True),
+    dcc.Input(id="power_requirement", type="number", placeholder="Jahresstrombedarf in kWh/a",  debounce=True,style={'width':'200px'}),
     
     dcc.RadioItems(
         options=[
-                {'label': 'January', 'value': '1'},
-                {'label': 'February', 'value': '2'},
-                {'label': 'March', 'value': '3'},
+                {'label': 'Januar', 'value': '1'},
+                {'label': 'Februar', 'value': '2'},
+                {'label': 'März', 'value': '3'},
                 {'label': 'April', 'value': '4'},
-                {'label': 'May', 'value': '5'},
-                {'label': 'June', 'value': '6'},
-                {'label': 'July', 'value': '7'},
+                {'label': 'Mai', 'value': '5'},
+                {'label': 'Juni', 'value': '6'},
+                {'label': 'Juli', 'value': '7'},
                 {'label': 'August', 'value': '8'},
                 {'label': 'September', 'value': '9'},
-                {'label': 'October', 'value': '10'},
+                {'label': 'Oktober', 'value': '10'},
                 {'label': 'November', 'value': '11'},
-                {'label': 'December', 'value': '12'},
+                {'label': 'Dezember', 'value': '12'},
 
 
                 {'label': 'All', 'value': 'All'},
@@ -110,7 +103,7 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
             result={'Last':(data.groupby(data.Time.dt.month).get_group(int(display_Month)))['Last'],'Time':(data.groupby(data.Time.dt.month).get_group(int(display_Month)))['Time']}
         from plotly.subplots import make_subplots
         fig = make_subplots()
-        fig.add_trace(go.Scatter(name='Strom-lastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")))
+        fig.add_trace(go.Scatter(name='Stromlastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")))
         fig.update_xaxes(
         tickangle = 90,
         title_text = "Datum",
@@ -118,7 +111,7 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
         )
 
         fig.update_yaxes(
-        title_text = "Strom-lastgang in kW",
+        title_text = "Stromlastgang in kW",
         title_standoff = 25
         )
         return fig
