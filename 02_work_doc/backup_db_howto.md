@@ -105,3 +105,38 @@ rsync -rtp pyapps/webcentral/01_application/webcentral_app/media back_up_Media/
 - Attention: Database and Django project have to be on the same status
 ## mixture 
 - often used
+
+
+# Django and postgresql data base
+ 
+## Workflow databases and django 
+1. dump database "A" and copy database "A"
+2. copy migration files of database "A"
+3. transfer database copy and copied migration (when needed)
+  a) possible command
+  scp: e.g. scp -r -i .ssh/id_rsa
+  ubuntu@134.94.130.147:pyapps/webcentral/01_application/webcentral_app/tools_over
+  ~/Desktop/Backup_db_server_20220707/mig_tool_over
+4. migration file into the migration folder of the django app connected to database tables 
+  a) only the 000XXX files not the init.py necessary
+5. resort database "A" dump to a new data base including information from database "A"
+- see above
+6. load new data base into django project
+- in settings.py
+7. run makemigration
+8. run migrate
+9. check the database via pgAdmin or admin area of django
+
+## Archiv 20220714
+- outcome talk with a friend of Falk
+  - is it important to copy the migration file for the specific data base
+  - django is clever regarding changes in database structure because of changes
+    in the manage.py(s), but the migration-file of the database must be there
+  - migration-files are important
+- [x] check this idea
+  - [x] remove migration file from gitignore, check the migration file again
+  - [x] Backup local migration-file to Desktop/Backup_migrations_main_Schlag1_temp
+  - [x] delete old/backuped migration files
+  - [x] copy the migration files from the server into my local branch main_Schlag1_temp
+  - [x] test makemigration with the copy of the database from the server
+    - makemigration, migrate > check admin area and also pgadmin, database looks like it should, new table is there

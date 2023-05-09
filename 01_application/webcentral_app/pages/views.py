@@ -15,6 +15,10 @@ def Datenschutzhinweis(request):
 
 def about(request):
     return render(request, 'pages/about.html')
+
+@login_required(login_url='login')
+def data(request):
+    return render(request, 'pages/data.html')
 	
 def coming(request):
     return render(request, 'pages/coming.html')

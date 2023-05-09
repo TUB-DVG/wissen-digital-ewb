@@ -1,0 +1,49 @@
+#+title: Test_docker
+
+* merge docker to main 2023-02-28
+- from main_temp (feature missing)
+-
+
+* [X] clean up feature branch
+   - delete everything not needed for this feature (not used code and not necessary comments)
+   - use style guide
+   - check grammar and spelling
+   - for every file including changes regarding style guide and spell and grammar check at least commit
+   - run project and check feature
+* [X] copy of the main > main_temp_feature
+* [X] check the difference of the branch to the main/main_temp_feature  via a diff-tool
+   - possible at the "new merge request" procedure
+   - check every file
+   - understand the differences
+* [X] merge branch into the main_temp_feature
+* [ ] check main_temp_feature branch
+** [X] always use new environment and build it via requirement.txt
+** [X] run the project
+** [ ] set up database according to the main branch
+    a) copy database from https://tubcloud.tu-berlin.de/apps/files/?dir=/Shared/Digitale_Vernetzung/Assis/03_Projekte/DVG0001_BMWi_Wende/08_gemeinsames_Arbeiten/09_Wissensplattform_M4/01_Backup_Server_DB&fileid=3323429959
+    b) restore database to local postresql server see [restore .sql](./backup_db_howto.md#### psql (restore .sql))
+    c) adapt database setup in settings.py
+    d) check database works correctly
+    e) check the right migartion file are loaded
+      - should be the case, when pulled from main branch
+*** [X] check following
+- [X] check database structure fits
+  - migrate and make migration, when needed
+- [X] every page is working
+- [X] check admin area
+- [X] check search functions
+  - tools
+  - data
+** [X] check new features: docker stuff
+  - [X] reset data base connection (from former docker compose runs)
+    - docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --volumes
+    - docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate
+  - [X] docker compose development
+    - docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+    - data base not working
+  - [X] docker compose production
+    - docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+* [ ] merge main_temp_feature  into the main branch
+- check the main like "check main_temp_feature branch"
+  - here no errors should occur
+* [ ] delete main_temp_feature

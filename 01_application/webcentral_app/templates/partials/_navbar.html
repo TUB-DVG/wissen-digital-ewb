@@ -31,15 +31,15 @@
 					<!-- Nav item 4 Component-->
 					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Start</a></li>
 					<li class="nav-item"><a class="nav-link" href="{% url 'tool_list' %}">Digitale Werkzeuge</a></li>
-					<li class="dropdown nav-item">
-						<a class="nav-link dropdown-toggle" href="#" id="dataDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-							Daten
-						</a>
+
+					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'data' %}">Daten</a>
+						<a class="dropdown-toggle dropdown-toggle-split pl-0">
+							<span class="visually-hidden">Toggle Dropdown</span>
+						</a></span>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'weatherdata_list' %}">Wetterdaten</a></li>
-							<li><a class="dropdown-item" href="{% url 'LastProfile' %}">Last Profile</a></li>
-						</ul>
-					</li>
+						</ul></li>
+					
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
 					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
 						<a class="dropdown-toggle dropdown-toggle-split pl-0">
