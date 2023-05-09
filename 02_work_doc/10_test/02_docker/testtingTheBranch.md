@@ -7,6 +7,11 @@ a file called `.env`-file:
 ```
     cp .env.example .env 
 ``` 
+
+In case you use windows: 
+```
+    copy .env.example .env 
+``` 
 Open the `.env`-file with a editor of your choice and edit the `PATH_WEBCENTRAL_SRC` to the absolute path of the root-directory of webcentral-repo.
 Furthermore, copy the `.sql`-file, which holds the dump of the database you want to import,
 into `postgres/` and specify the filename of the `.sql` as `DATABASE_PLAIN_SQL_FILE`.
@@ -20,7 +25,17 @@ First, make sure, that all volumes are deleted. Change directory into the root-w
 Starting the Docker-production Environment:
 ```
     docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build
+
 ```
+
+If you already built the dev once and are **not** developing you can use: 
+
+
+```
+    docker-compose -f docker-compose.yml -f docker-compose.prod.yml up 
+
+```
+
 Check if any container exits after creation
 Since we deleted the volumes with the `down --volumes`-command, the website should be 
 completely empty. It shouldn't have a user or a admin or any data inside the admin panel or the "Digitale Werkzeuge"-Tab.
