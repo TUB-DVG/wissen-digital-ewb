@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Überblick über die Last Profi Approximation{% endblock %}
+{% block content %}
+{% load static %}
+
+
+<section class="py-4">
+	<div class="container">
+        <div class="row " id="collapseInfoContainerWeatherdata">
+            
+            
+            <div class="col-lg-12 " id="collapseInfoWeatherdata">
+                <p>
+                    Der Interface ermöglicht die Approximation   des Wärme- und Stromverbrauchs basierend auf einer ausgewählten Anwendung (definiert durch eine Reihe von Faktoren) und einem gegebenen Jahresbedarf.
+                    <br>
+                    * Für die Wärmeapproximation wird zusätzlich die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
+                </p>  
+
+      
+                <ul>
+                    Der Interface für Stromapproximation hat 3 Parameter:
+                    <li class="lead"><b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
+                    <li class="lead"><b>Jahresstrombedarfs</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs in kWh/a </li>
+                    <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
+                </ul>
+            </div>
+   
+            <img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt=""> 
+
+
+
+            <a href="{% url 'LastProfile_strom_display' %}">
+                <img src="{% static '/img/Lastprofil/strom.jpg' %}" style="max-height:30px;" >
+                StromlastApproximation
+            </a>
+
+       
+
+            <p></p>
+            <p> 
+                Wie oben erwähnt, wird für die Wärmeapproximation die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
+                Die Umgebungstemperatur wird vom Wetterdienst Server über 2 Parameter (unten definiert) abgerufen, die angeben, welche Wetterstation Temperaturdaten verwendet werden sollen.
+               
+                
+            </p>
+            <ul>
+                Der Interface für Wärmeapproximation hat 6 Parameter:
+                <li class="lead"><b>Auswahl der Bundesland</b>&nbsp;&ndash; Nach welcher Bundesland, soll der Stationwahl folgen</li>
+                <li class="lead"><b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach gewähltem Bundesland, verwendet werden soll.</li>
+                <li class="lead"><b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
+                <li class="lead"><b>Jahreswärmebedarfs in kWh/a</b>&nbsp;&ndash; Eingabe des Jahresswärmebbedarfs in kWh/a </li>
+                <li class="lead"><b>Datumsbereich</b>&nbsp;&ndash; Bereich, auf dem die Approximation berechnet werden soll  </li>
+                <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
+            </ul>
+        </div>
+
+
+        <img src="{% static '/img/Lastprofil/HeatApproximation.png' %}" alt=""> 
+	        <a href="{% url 'LastProfile_warme_display' %}">
+                <img src="{% static '/img/Lastprofil/heat.png' %}"style="max-height:30px;">
+                WarmelastApproximation
+                
+            </a>
+            
+
+        </div>
+    </div>
+</section>
+{% endblock %}
