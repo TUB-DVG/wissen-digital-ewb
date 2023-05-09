@@ -4,8 +4,6 @@ from import_export.admin import ImportExportModelAdmin
 from import_export import fields,resources
 from import_export.widgets import *
 
-
-
 class collectedDatasetsResource(resources.ModelResource):
 
     nameDataset=fields.Field(
@@ -72,7 +70,7 @@ class collectedDatasetsResource(resources.ModelResource):
         report_skipped = True
 
 class collectedDatasetsAdmin( ImportExportModelAdmin):
-    
+    search_fields = ['nameDataset',]
     resource_class = collectedDatasetsResource
 
 admin.site.register(collectedDatasets,collectedDatasetsAdmin)
