@@ -41,7 +41,7 @@ Page content START -->
 		<form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
 			<div class="row g-3">
 				<!-- Input -->
-				<div class="col-xl-3" title="Suchen in den Anwendungsnamen">
+				<div class="col-xl-3" title="Suchen in den Datasetsnamen">
 					<input id="search-input-datasets" class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
 				</div>
 
@@ -51,58 +51,75 @@ Page content START -->
 						<div class="row g-3">
 							
 							<!-- Select items -->
-						<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+						<div class="form-group col-sm-6 col-md-4 pb-lg-2 pb-md-0 mb-0">
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="k" id="kategorie-input-datasets" title="Filtern nach useCaseCategory"> 
 									
-									<option value="">useCaseCategory</option>
-									
-									<option value="UBEM" {% if useCaseCategory == "UBEM" %} selected="selected" {% endif %}>UBEM</option>
-									<option value="ALL" {% if useCaseCategory == "ALL" %} selected="selected" {% endif %}>ALL</option>
-									<option value="BIM" {% if useCaseCategory == "BIM" %} selected="selected" {% endif %}>BIM</option>
-									<option value="Energy Prediction" {% if useCaseCategory == "Energy Prediction" %} selected="selected" {% endif %}>Energy Prediction</option>
-									<option value="Benchmark" {% if useCaseCategory == "Benchmark" %} selected="selected" {% endif %}>Benchmark</option>
-									<option value="Standardlastprofile" {% if useCaseCategory == "Standardlastprofile" %} selected="selected" {% endif %}>Standardlastprofile</option>
+									<option value="">Anwendungsfall</option>
 									<option value="Potential Erneuerbare Energie " {% if useCaseCategory == "Potential Erneuerbare Energie " %} selected="selected" {% endif %}>Potential Erneuerbare Energie </option>
-									<option value="Infrastruktur Gas " {% if useCaseCategory == "Infrastruktur Gas " %} selected="selected" {% endif %}>Infrastruktur Gas </option>
+									<option value="Standardlastprofile" {% if useCaseCategory == "Standardlastprofile" %} selected="selected" {% endif %}>Standardlastprofile</option>
+									<option value="Energiesystemmodell" {% if useCaseCategory == "Energiesystemmodell" %} selected="selected" {% endif %}>Energiesystemmodell</option>
+									<option value="Energy Prediction" {% if useCaseCategory == "Energy Prediction" %} selected="selected" {% endif %}>Energy Prediction</option>
+									<option value="Infrastruktur Gas" {% if useCaseCategory == "Infrastruktur Gas" %} selected="selected" {% endif %}>Infrastruktur Gas</option>
+									<option value="System Analysis" {% if useCaseCategory == "System Analysis" %} selected="selected" {% endif %}>System Analysis</option>
 									<option value="Wetterdaten" {% if useCaseCategory == "Wetterdaten" %} selected="selected" {% endif %}>Wetterdaten</option>
 									<option value="Wärmebedarf" {% if useCaseCategory == "Wärmebedarf" %} selected="selected" {% endif %}>Wärmebedarf</option>
-									<option value="Top-Down " {% if useCaseCategory == "Top-Down " %} selected="selected" {% endif %}>Top-Down </option>
-									<option value="Enerigesysteme" {% if useCaseCategory == "Enerigesysteme" %} selected="selected" {% endif %}>Enerigesysteme</option>
-									<option value="Potentiale" {% if useCaseCategory == "Potentiale" %} selected="selected" {% endif %}>Potentiale</option>
-									<option value="Ökobilanzierung" {% if useCaseCategory == "Ökobilanzierung" %} selected="selected" {% endif %}>Ökobilanzierung</option>
-									<option value="Verbrauchsdaten" {% if useCaseCategory == "Verbrauchsdaten" %} selected="selected" {% endif %}>Verbrauchsdaten</option>
-									<option value="Nutzungsprofile" {% if useCaseCategory == "Nutzungsprofile" %} selected="selected" {% endif %}>Nutzungsprofile</option>
+									<option value="Timeseries" {% if useCaseCategory == "Timeseries" %} selected="selected" {% endif %}>Timeseries</option>
+									<option value="Benchmark" {% if useCaseCategory == "Benchmark" %} selected="selected" {% endif %}>Benchmark</option>
+									<option value="UBEM" {% if useCaseCategory == "UBEM" %} selected="selected" {% endif %}>UBEM</option>
+									<option value="BIM" {% if useCaseCategory == "BIM" %} selected="selected" {% endif %}>BIM</option>
+									<option value="LCA" {% if useCaseCategory == "LCA" %} selected="selected" {% endif %}>LCA</option>
+									<option value="Sonstiges" {% if useCaseCategory == "Sonstiges" %} selected="selected" {% endif %}>Sonstiges</option>
+									<option value="Other" {% if useCaseCategory == "Other" %} selected="selected" {% endif %}>Other</option>
 
 								</select>
 								
 							</div>
 
 							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+							<div class="form-group col-sm-6 col-md-4 pb-lg-2 pb-md-0 mb-0">
 								
 								<select class="form-select js-choice" aria-label=".form-select-sm example" name="l" id="lizenz-input-tools" title="Filtern nach categoryDataset">
 									
-									<option value="">categoryDataset</option>
-									<option value="Building footprints" {% if categoryDataset == "Building footprints" %} selected="selected" {% endif %}>Building footprints</option>
-									<!--
-									<option value="Open-Source" {% if categoryDataset == "Open-Source" %} selected="selected" {% endif %}>Open-Source</option>
-									<option value="kostenfrei" {% if categoryDataset == "kostenfrei" %} selected="selected" {% endif %}>Kostenfrei</option>
-									-->
+									<option value="">Kategorie</option>
+									<option value="Übertragungsnetzentwicklungspläne" {% if categoryDataset == "Übertragungsnetzentwicklungspläne" %} selected="selected" {% endif %}>Übertragungsnetzentwicklungspläne</option>
+									<option value="Gebäudebestandsentwicklung" {% if categoryDataset == "Gebäudebestandsentwicklung" %} selected="selected" {% endif %}>Gebäudebestandsentwicklung</option>
+									<option value="Standardlastprofile für Strom" {% if categoryDataset == "Standardlastprofile für Strom" %} selected="selected" {% endif %}>Standardlastprofile für Strom</option>
+									<option value="Digitales Geländemodell" {% if categoryDataset == "Digitales Geländemodells" %} selected="selected" {% endif %}>Digitales Geländemodell</option>
+									<option value="Gebäudegrundrisse" {% if categoryDataset == "Gebäudegrundrisse" %} selected="selected" {% endif %}>Gebäudegrundrisse</option>
+									<option value="3D Gebäude Modell" {% if categoryDataset == "3D Gebäude Modell" %} selected="selected" {% endif %}>3D Gebäude Modell</option>
+									<option value="Gebäudetypologie" {% if categoryDataset == "Gebäudetypologie" %} selected="selected" {% endif %}>Gebäudetypologie</option>
+									<option value="Zeitreihen Daten" {% if categoryDataset == "Zeitreihen Daten" %} selected="selected" {% endif %}>Zeitreihen Daten</option>
+									<option value="Gebäudebestand" {% if categoryDataset == "Gebäudebestand" %} selected="selected" {% endif %}>Gebäudebestand</option>
+									<option value="Infrastruktur" {% if categoryDataset == "Infrastruktur" %} selected="selected" {% endif %}>Infrastruktur</option>
+									<option value="Bedarfsdaten" {% if categoryDataset == "Bedarfsdaten" %} selected="selected" {% endif %}>Bedarfsdaten</option>
+									<option value="Wetterdaten" {% if categoryDataset == "Wetterdaten" %} selected="selected" {% endif %}>Wetterdaten</option>
+									<option value="BIM Content" {% if categoryDataset == "BIM Content" %} selected="selected" {% endif %}>BIM Content</option>
+									<option value="Statistiken" {% if categoryDataset == "Statistiken" %} selected="selected" {% endif %}>Statistiken</option>
+									<option value="Landnutzung" {% if categoryDataset == "Landnutzung" %} selected="selected" {% endif %}>Landnutzung</option>
+									<option value="Datenbasis" {% if categoryDataset == "Datenbasis" %} selected="selected" {% endif %}>Datenbasis</option>
+									<option value="Potential" {% if categoryDataset == "Potential" %} selected="selected" {% endif %}>Potential</option>
+									<option value="Solver" {% if categoryDataset == "Solver" %} selected="selected" {% endif %}>Solver</option>
+									<option value="LCA" {% if categoryDataset == "LCA" %} selected="selected" {% endif %}>LCA</option>
+									<option value="Andere" {% if categoryDataset == "Andere" %} selected="selected" {% endif %}>Andere</option>
+
 								</select>
 							</div>
 							
-							<!-- Search item 
+							<!-- Search item -->
 							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
 								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="lzp" id="lzp-input-tools" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
-									<option value="">Lebenszyklusphase</option>
-									<option value="Planung" {% if lebenszyklusphase == "Planung" %} selected="selected" {% endif %}>Planung</option>
-									<option value="Vorplanung" {% if lebenszyklusphase == "Vorplanung" %} selected="selected" {% endif %}>Vorplanung</option>
-									<option value="Betrieb" {% if lebenszyklusphase == "Betrieb" %} selected="selected" {% endif %}>Betrieb</option>
-									<option value="Umsetzung" {% if lebenszyklusphase == "Umsetzung" %} selected="selected" {% endif %}>Umsetzung</option>
+								<select class="form-select js-choice" aria-label=".form-select-sm example" name="lzp" id="lzp-input-tools" title="Filtern nach der Availability der Anwendung ">
+									<option value="">Verfügbarkeit</option>
+									<option value="open/commercial: remote calculation and published report" {% if availability == "open/commercial: remote calculation and published report" %} selected="selected" {% endif %}>Open/commercial:remote calculation and published report</option>
+									<option value="Open Data Commons Open Database License 1.0" {% if availability == "Open Data Commons Open Database License 1.0" %} selected="selected" {% endif %}>Open Data Commons Open Database License 1.0</option>
+									<option value="Open Database License 1.0" {% if availability == "Open Database License 1.0" %} selected="selected" {% endif %}>Open Database License 1.0</option>
+									<option value="open government data" {% if availability == "open government data" %} selected="selected" {% endif %}>Open government data</option>	
+									<option value="Creative-Commons" {% if availability == "Creative-Commons" %} selected="selected" {% endif %}>Creative-Commons</option>
+									<option value="commercial" {% if availability == "commercial" %} selected="selected" {% endif %}>Commercial</option>
+									<option value="open" {% if availability == "open" %} selected="selected" {% endif %}>Open</option>
 								</select>
 							</div>
-							-->
+							
 							<!-- Search item -->
 						
 						</div> <!-- Row END -->
