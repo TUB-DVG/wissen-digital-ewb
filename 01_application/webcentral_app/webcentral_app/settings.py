@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
     'schlagwoerter.apps.SchlagwoerterConfig',
+    'norms_over.apps.NormsOverConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',

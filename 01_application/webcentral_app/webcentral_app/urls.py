@@ -26,6 +26,7 @@ urlpatterns = [
     path('weatherdata_list/',include('weatherdata_over.urls')),
     path('project_list/',include('project_listing.urls')),
     path('admin/', admin.site.urls),
+    path('norm_list/',include('norms_over.urls')),
 #    path('Tools_list/',include('tools_over.urls')),
 ]
 
