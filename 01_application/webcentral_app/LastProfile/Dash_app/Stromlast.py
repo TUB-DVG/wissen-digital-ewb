@@ -3,11 +3,10 @@ import pathlib
 import pandas as pd
 from .Stromlastapproximation_Csv import Stromapproximation
 from django_plotly_dash import DjangoDash
-import plotly.express as px  # (version 4.7.0 or higher)
-from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
+
+from dash import  dcc, html, Input, Output  # pip install dash (version 2.0.0 or higher)
 from project_listing.models import *
 import os
-from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 
 PATH = pathlib.Path(__file__).parent.resolve() 
@@ -80,7 +79,6 @@ app.layout = html.Div([
 @app.callback(
     Output(component_id='power_graph', component_property='figure'),
     Input('application','value'),
- 
     Input('power_requirement','value'),
     Input('display_Month','value'),
     prevent_initial_call=True,)
@@ -88,12 +86,10 @@ app.layout = html.Div([
 def update_power_graph(application:str,power_requirement:int,display_Month:str):
 
     if application!=None:
-
         WW=Stromapproximation(int(application),power_requirement)
         days=df_haupt['Datum/ Uhrzeit']
-        global data
-        
-        data = {'Time':days[0:8760],'Last':WW}
+        global d
+        data = {'Last':WW,'Time':days[0:8760]}
         data=pd.DataFrame(data)
         data['Time'] = pd.to_datetime(data['Time'], errors='coerce')
         if display_Month=='All':   
@@ -117,27 +113,7 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
         return fig
     else:
         return {}
-# The download csv Funcionality
-@app.callback(
-    Output("download-csv", "data"),
-    Input("btn-download-csv", "n_clicks"),
-    
-    Input('application','value'),
 
-    Input('power_requirement','value'),
-        State("application","options"),
-    prevent_initial_call=True,
-)
-
-def download_as_csv(n_clicks,application:str,power_requirement:int,state):
-    if not n_clicks:
-        raise PreventUpdate
-    else:
-        #print(state)
-        label = [x['label'] for x in state if x['value'] == application]
-        data.columns = [['Jahresstrombedarf in KWh/a :'+str(power_requirement),''   ],['Anwendung:'+label[0],''],['',''],['Datum','Last']]    
-        #print (d)
-        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index=False)
 # ------------------------------------------------------------------------------
 # Connect the Plotly power_graphs with Dash Components
 
