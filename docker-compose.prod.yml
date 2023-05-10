@@ -31,6 +31,7 @@ services:
             - webcentral
         ports:
             - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
+            - 443:443
             #- ${LISTEN_PORT}:8080
             #- 8070:8080
             # data communication on port 80 on the host
@@ -40,8 +41,23 @@ services:
             - UWSGI_LISTEN_PORT
         volumes:
             - static-data:/vol/static
+            - ./proxy/dhparam/:/etc/nginx/dhparam
+            - ./certbot/conf/:/etc/nginx/ssl/
+            - ./certbot/data/:/usr/share/nginx/html/letsencrypt
             # the proxy can directly serve the static data, without bothering
             # the django app
+      
+    certbot:
+      image: certbot/certbot:latest
+      depends_on:
+        - proxy
+        - webcentral
+      command: certonly --non-interactive --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email m.degner@tu-berlin.de --agree-tos --no-eff-email -d h3002249.stratoserver.net
+      volumes:
+        - ./certbot/conf/:/etc/letsencrypt
+        - ./certbot/logs/:/var/log/letsencrypt/
+        - ./certbot/data/:/usr/share/nginx/html/letsencrypt
+
 
 volumes:
     static-data:
