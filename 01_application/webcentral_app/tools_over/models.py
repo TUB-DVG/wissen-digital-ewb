@@ -16,68 +16,73 @@ class Rating (models.Model):
         return self.rating_for.bezeichnung
 
 class Tools(models.Model):
-    bezeichnung = models.CharField(max_length = 150,
-                                   help_text="Name der Anwendung",
+    name = models.CharField(max_length = 150,
+                                   help_text="name",
                                    blank = True)
-    kurzbeschreibung = models.CharField(max_length = 1000,
-                                   help_text = "Kurzbeschreibung der Anwendung")
-    anwendungsbereich = models.CharField(max_length = 1000,
-                                         help_text = "Anwendungsbereich der Anwendung",
+    shortDescription = models.CharField(max_length = 1000,
+                                   help_text = "short description")
+    # use the Enum Functional API to concisely use the labels #https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
+    class ApplicationArea(models.TextChoices):
+        verwaltung = 'VW', _('Verwaltung') 
+        forschung_lehre =  'FL', _('Forschung/Lehre')
+        industrie = 'IN', _('Industrie')
+    
+    applicationArea = models.CharField(max_length = 1000,
+                                         help_text = "application area",
+                                         choices = ApplicationArea.choices,
                                          blank=True)
-    kategorie = models.CharField(max_length = 100,
-                                 help_text = "Kategorie in der die Anwendung eingeordnet werden kann",
+    # class usage
+    usage = models.CharField(max_length = 100,
+                                 help_text = "usage",
                                  blank = True)
-    lebenszyklusphase = models.CharField(max_length = 100,
-                                         help_text = "Lebenszyklusphase von Gebäuden\
-                                         in der die Anwendung genutzt wird",
+    lifeCyclePhase  = models.CharField(max_length = 100,
+                                         help_text = "Life cycle phase of buildings where the application is used",
                                          blank = True)
-    nutzerschnittstelle = models.CharField(max_length = 300,
-                                           help_text = "Nutzerschnittstelle \
-                                           (wie wird die Anwendung vom Nutzer genutzt)",
+    userInterface = models.CharField(max_length = 300,
+                                           help_text = "userInterface",
                                            blank = True)
-    zielgruppe = models.CharField(max_length = 300,
-                                  help_text = "Zielgruppe der Anwendung",
+    targetGroup = models.CharField(max_length = 300,
+                                  help_text = "Which group of people is the tool targeted at?",
                                   blank = True)
-    letztes_update = models.CharField(max_length = 100,
-                                      help_text = "letztes Update der Anwendung",
+    lastUpdate = models.CharField(max_length = 100,
+                                      help_text = "time (year/month/date) of the last update",
                                       blank = True)
-    lizenz = models.CharField(max_length = 200,
-                              help_text = "Lizenz der Anwendung",
+    licence = models.CharField(max_length = 200,
+                              help_text = "licence",
                               blank = True)
-    weitere_informationen = models.CharField(max_length = 500,
-                                             help_text = "weitere Informationen zur Anwendung",
+    furtherInformation = models.CharField(max_length = 500,
+                                             help_text = "further information",
                                              blank = True)
-    alternativen = models.CharField(max_length = 300,
-                                    help_text = "Alternativen zu der jeweiligen Anwendung",
+    alternatives = models.CharField(max_length = 300,
+                                    help_text = "similar tool(s) that can serve as alternatives",
                                     blank = True)
-    konk_anwendung= models.CharField(max_length = 500,
-                                     help_text = "konkrete Anwendung in EWB Projekten",
+    specificApplication= models.CharField(max_length = 500,
+                                     help_text = "specific application of the tool in EWB projects (project name + fkz)",
                                      blank = True)
-    nutzerbewertungen = models.DecimalField(max_digits=3, decimal_places=1,
-                                            help_text = "Bewertung der Anwendung durch Nutzende \
-                                            (geplant max. 10 mit einer Kommastelle, max. 10.0)",
+    userEvaluation = models.DecimalField(max_digits=2, decimal_places=1,
+                                            help_text = "evaluation of the application by users (range: 1-5 (best), with one decimal place)",
                                             blank = True, null = True)
     #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
     image=models.ImageField(null=True,blank = True)  #You need to install pillow
 
 
 
-    def average_rating(self):
+    def averageRating(self):
         counter = 0
-        total_ratings = 0
+        totalRatings = 0
         for item in Rating.objects.filter(rating_for=self):
             counter += 1
-            total_ratings += item.score
+            totalRatings += item.score
         if counter>0:#
                 
-            return  round((total_ratings / counter) * 2) / 2  
+            return  round((totalRatings / counter) * 2) / 2  
         else:
             return 0
 
     
 
     def __str__(self):
-        return self.bezeichnung
+        return self.name
 
 
 
