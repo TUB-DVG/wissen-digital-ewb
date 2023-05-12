@@ -27,15 +27,15 @@ def index(request):
 
 
  
-    if ((request.GET.get("k") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
-        Kategorie=request.GET.get('k')
-        Lizenz=request.GET.get('l')
-        Lebenszyklusphase=request.GET.get('lzp')
+    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
+        usage=request.GET.get('k')
+        licence=request.GET.get('l')
+        lifeCyclePhase=request.GET.get('lzp')
         searched=request.GET.get('searched')
-        tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz,bezeichnung__icontains=searched)
-        filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
+        tools=Tools.objects.filter(usage__icontains=usage,lifeCyclePhase__icontains=lifeCyclePhase,licence__icontains=licence,name__icontains=searched)
+        filtered_by = [usage, licence, lifeCyclePhase]
               
-    tools = list(sorted(tools, key=lambda obj:obj.bezeichnung))
+    tools = list(sorted(tools, key=lambda obj:obj.name))
 
     tools_paginator= Paginator (tools,12)
 
@@ -52,9 +52,9 @@ def index(request):
             context = {
                 'page': page,
                 'search':searched,
-                'kategorie': filtered_by[0],
-                'lizenz': filtered_by[1],
-                'lebenszyklusphase': filtered_by[2]
+                'usage': filtered_by[0],
+                'licence': filtered_by[1],
+                'lifeCyclePhase': filtered_by[2]
             }
 
         )
@@ -67,9 +67,9 @@ def index(request):
     context = {
         'page': page,
         'search':searched,
-        'kategorie': filtered_by[0],
-        'lizenz': filtered_by[1],
-        'lebenszyklusphase': filtered_by[2]
+        'usage': filtered_by[0],
+        'licence': filtered_by[1],
+        'lifeCyclePhase': filtered_by[2]
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
@@ -81,47 +81,47 @@ def tool_view(request, id):
     shows of the key features one project
     """
     tool = get_object_or_404(Tools, pk= id)
-    kategorien = tool.kategorie.split(", ")
-    lebenszyklusphasen = tool.lebenszyklusphase.split(", ")
-    laufende_updates = tool.letztes_update
+    usages = tool.usage.split(", ")
+    lifeCyclePhases = tool.lifeCyclePhase.split(", ")
+    continuousUpdates = tool.lastUpdate
     
-    letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    laufende_updates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
+    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
 
     #changing labels and icon
-    update_properties = letztes_update
-    if (tool.letztes_update == 'laufend'):
-        update_properties = laufende_updates
+    updateProperties = lastUpdate
+    if (tool.lastUpdate == 'laufend'): # continuous
+        updateProperties = continuousUpdates
 
     ratings = Rating.objects.filter(rating_for=id)
-    num_ratings = len(ratings)
-    print(num_ratings)
+    numRatings = len(ratings)
+    print(numRatings)
 
-    ratings_by_score = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), ratings.filter(score=4), ratings.filter(score=5)]
-    print(ratings_by_score[4])
-    rating_percent_5 = 0 if len(ratings_by_score[4])==0 else len(ratings_by_score[4])/num_ratings*100
-    rating_percent_4 = 0 if len(ratings_by_score[3])==0 else len(ratings_by_score[3])/num_ratings*100
-    rating_percent_3 = 0 if len(ratings_by_score[2])==0 else len(ratings_by_score[2])/num_ratings*100
-    rating_percent_2 = 0 if len(ratings_by_score[1])==0 else len(ratings_by_score[1])/num_ratings*100
-    rating_percent_1 = 0 if len(ratings_by_score[0])==0 else len(ratings_by_score[0])/num_ratings*100
+    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), ratings.filter(score=4), ratings.filter(score=5)]
+    print(ratingsByScore[4])
+    ratingPercent5 = 0 if len(ratingsByScore[4])==0 else len(ratingsByScore[4])/numRatings*100
+    ratingPercent4 = 0 if len(ratingsByScore[3])==0 else len(ratingsByScore[3])/numRatings*100
+    ratingPercent3 = 0 if len(ratingsByScore[2])==0 else len(ratingsByScore[2])/numRatings*100
+    ratingPercent2 = 0 if len(ratingsByScore[1])==0 else len(ratingsByScore[1])/numRatings*100
+    ratingPercent1 = 0 if len(ratingsByScore[0])==0 else len(ratingsByScore[0])/numRatings*100
 
-    ratings_with_comment = ratings.exclude(comment__exact = '')
+    ratingsWithComment = ratings.exclude(comment__exact = '')
 
     context = {
         'tool': tool,
-        'kategorien': kategorien,
-        'lebenszyklusphasen': lebenszyklusphasen,
-        'letztes_update': update_properties,
-        'letztes_update_class': update_properties.class_name,
-        'letztes_update_color': update_properties.color_class,
-        'letztes_update_label': update_properties.label,
+        'usages': usages,
+        'lifeCyclePhases': lifeCyclePhases,
+        'lastUpdate': updateProperties,
+        'lastUpdateClass': updateProperties.class_name,
+        'lastUpdateColor': updateProperties.color_class,
+        'lastUpdateLabel': updateProperties.label,
         'ratings': ratings,
-        'rating_perc_5': "{:,.2f}".format(rating_percent_5),
-        'rating_perc_4': "{:,.2f}".format(rating_percent_4),
-        'rating_perc_3': "{:,.2f}".format(rating_percent_3),
-        'rating_perc_2': "{:,.2f}".format(rating_percent_2),
-        'rating_perc_1': "{:,.2f}".format(rating_percent_1),
-        'ratings_with_comment': ratings_with_comment,
+        'ratingPercent5': "{:,.2f}".format(ratingPercent5),
+        'ratingPercent4': "{:,.2f}".format(ratingPercent4),
+        'ratingPercent3': "{:,.2f}".format(ratingPercent3),
+        'ratingPercent2': "{:,.2f}".format(ratingPercent2),
+        'ratingPercent1': "{:,.2f}".format(ratingPercent1),
+        'ratingsWithComment': ratingsWithComment,
     }
 
 

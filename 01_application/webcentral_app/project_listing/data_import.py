@@ -4,6 +4,7 @@ from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from schlagwoerter.models import *
+from norms_over.models import *
 
 # -*- coding: utf-8 -*-
 
@@ -197,34 +198,45 @@ def get_or_create_tools(row, header):
     """
     # content = row[number of the columns of the row]
 
-    bezeichung = row[header.index('Tool')]
-    kurzbe = row[header.index('Kurzbeschreibung')]
-    anwend_bereich = row[header.index('Anwendungsbereich')]
-    kategorie = row[header.index('Kategorie')]
-    lebenszy = row[header.index('Lebenszyklusphase')]
-    nutzersch = row[header.index('Nutzerschnittstelle')]
-    zielgruppe = row[header.index('Zielgruppe')]
-    letztes_update= row[header.index('letztes Update')]
-    lizenz = row[header.index('Lizenz')]
-    weitere_infos = row[header.index('weitere Informationen')]
-    alternativen = row[header.index('Alternativen')]
-    konk_anw_ewb = row[header.index('konkrete Anwendung in EWB Projekten')]
-    nutzerbewertung = row[header.index('Nutzerbewertungen')]
-
+    name = row[header.index('Tool')]
+    shortDescription = row[header.index('Kurzbeschreibung')]
+    applicationArea = row[header.index('Anwendungsbereich')]
+    usage = row[header.index('Kategorie')]
+    lifeCyclePhase = row[header.index('Lebenszyklusphase')]
+    userInterface = row[header.index('Nutzerschnittstelle')]
+    targetGroup = row[header.index('Zielgruppe')]
+    lastUpdate= row[header.index('letztes Update')]
+    licence = row[header.index('Lizenz')]
+    furtherInformation = row[header.index('weitere Informationen')]
+    alternatives = row[header.index('Alternativen')]
+    specificApplication = row[header.index('konkrete Anwendung in EWB Projekten')]
+    # userEvaluation = row[header.index('Nutzerbewertungen')]
+    # image
+    # released
+    # releasePlanned
+    # yearOfRelease
+    # resources
+    # developmentState
+    # programmingLanguages
+    # frameworksLibraries
+    # databaseSystem
+    # classification
+    # scale
+    # technicalStandards
 
     obj, created = Tools.objects.get_or_create(
-        bezeichnung = bezeichung,
-        kurzbeschreibung = kurzbe,
-        anwendungsbereich = anwend_bereich,
-        kategorie = kategorie,
-        lebenszyklusphase = lebenszy,
-        nutzerschnittstelle = nutzersch,
-        zielgruppe = zielgruppe,
-        letztes_update = letztes_update,
-        lizenz = lizenz,
-        weitere_informationen = weitere_infos,
-        alternativen = alternativen,
-        konk_anwendung = konk_anw_ewb,
+        name = name,
+        shortDescription = shortDescription,
+        applicationArea = applicationArea,
+        usage = usage,
+        lifeCyclePhase = lifeCyclePhase,
+        userInterface = userInterface,
+        targetGroup = targetGroup,
+        lastUpdate = lastUpdate,
+        licence = licence,
+        furtherInformation = furtherInformation,
+        alternatives = alternatives,
+        specificApplication = specificApplication,
         # nutzerbewertungen = nutzerbewertung
     )
     return obj, created
@@ -366,6 +378,27 @@ def add_or_update_row_teilprojekt(row, header, source):
                     schlagwortregister_erstsichtung_id= schlagwortregister_id)
                 print('updated: %s' %fkz)
 
+def get_or_create_norms(row, header):
+    """
+    add entry into table Norms or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+
+    name = row[header.index('Name')]
+    shortDescription = row[header.index('ShortDescription')]
+    title = row[header.index('Title')]
+    source  = row[header.index('Source')]
+    link  = row[header.index('Link')]
+
+    obj, created = TechnicalStandards.objects.get_or_create(
+        name = name,
+        shortDescription = shortDescription,
+        title = title, 
+        source  = source ,
+        link = link 
+    )
+    return obj, created
+
 def csv2m4db_enargus(path):
     """EnArgus csv-file into BF M4 Django database, hard coded"""
     with open(path) as csv_file:
@@ -441,6 +474,21 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
             add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
     return header, data
 
+def csv2m4db_norms(path):
+    """Normen Uebersicht csv-file into BF M4 Django database, hard coded"""
+    with open(path, encoding='utf-8') as csv_file:
+        reader = csv.reader(csv_file, delimiter='|')
+        header = next(reader)
+        data = []
+        for row in reader:
+            try:
+                print(row[header.index('Name')])
+                data.append(row)
+                # breakpoint()
+                get_or_create_norms(row, header)
+            except:
+                print('NOT WORKING FOR ROW ', row)
+    return header, data
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
@@ -452,13 +500,16 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
 # header, data = csv2m4db_modul(path_csv_modul)
 
 ## Example add/update Tool Uebersichts table
-# path_csv_tools='../../02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-# header, data = csv2m4db_tools(path_csv_tools)
+path_csv_tools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+header, data = csv2m4db_tools(path_csv_tools)
 
 ## Example add/update Weatherdata table
 # path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
 # header, data = csv2m4db_weatherdata(path_csv_weatherdata)
 
 ## Example add/update Schlagwoerter table
-path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
-header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
+#path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
+#header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
+
+path_csv_norms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
+header, data = csv2m4db_norms(path_csv_norms)

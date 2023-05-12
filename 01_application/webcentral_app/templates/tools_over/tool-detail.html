@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ tool.bezeichnung }} {% endblock %}
+{% block title %} {{ tool.name }} {% endblock %}
 
 {% load static %}
 
@@ -16,27 +16,27 @@ Page intro START -->
 				
 
 				<!-- Title -->
-				<h1>{{tool.bezeichnung}}</h1>
+				<h1>{{tool.name}}</h1>
 				<!-- Content -->
 				<ul class="list-inline mb-0">
-					{% if  tool.average_rating != 0 %}
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.average_rating}}/5.0</li>
+					{% if  tool.averageRating != 0 %}
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star text-warning me-2"></i>{{tool.averageRating}}/5.0</li>
 					{% endif %}
-					{% if tool.letztes_update %}
-						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{tool.letztes_update}}</li>
+					{% if tool.lastUpdate %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ lastUpdateClass }} {{ lastUpdateColor }} me-2"></i>{{tool.lastUpdate}}</li>
 					{% endif %}
 					
-					{% if tool.lizenz %}
-						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{tool.lizenz}}</li>
+					{% if tool.licence %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{tool.licence}}</li>
 					{% endif %}
 
-					{% if tool.lebenszyklusphase %}
-						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-history text-info me-2"></i>{{tool.lebenszyklusphase}}</li>
+					{% if tool.lifeCyclePhase %}
+						<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-history text-info me-2"></i>{{tool.lifeCyclePhase}}</li>
 					{% endif %}
 
 
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-alt text-info me-2"></i>{{tool.zielgruppe}}</li>
-					<li class="list-inline-item h6 mb-0"><i class="fas fa-bars text-info me-2"></i>{{tool.kategorie}}</li>
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-alt text-info me-2"></i>{{tool.targetGroup}}</li>
+					<li class="list-inline-item h6 mb-0"><i class="fas fa-bars text-info me-2"></i>{{tool.usage}}</li>
 				</ul>
 			</div>
 		</div>
@@ -74,33 +74,33 @@ Page content START -->
 							<!-- Content START -->
 							<div class="tab-pane container active" id="course-pills-1" >
 								<!-- Course detail START -->
-								{% if tool.bezeichnung %}
-								<h5 class="mb-3">Was ist {{tool.bezeichnung}}?</h5>
-								<p class="mb-0">{{tool.kurzbeschreibung}}</p>
+								{% if tool.name %}
+								<h5 class="mb-3">Was ist {{tool.name}}?</h5>
+								<p class="mb-0">{{tool.shortDescription}}</p>
 								{% endif %}
-								{% if tool.anwendungsbereich %}
+								{% if tool.applicationArea %}
 								<h5 class="mt-4">Anwendungsbereich</h5>
-								<p class="mb-0">{{tool.anwendungsbereich}}</p>
+								<p class="mb-0">{{tool.applicationArea}}</p>
 								{% endif %}
-								{% if tool.weitere_informationen %}
+								{% if tool.furtherInformation %}
 								<h5 class="mt-4">Weitere Informationen</h5>
-								<p class="mb-0">{{tool.weitere_informationen}}</p>
+								<p class="mb-0">{{tool.furtherInformation}}</p>
 								{% endif %}
-								{% if tool.alternativen %}
+								{% if tool.alternatives %}
 								<h5 class="mt-4">Alternativen</h5>
-								<p class="mb-0">{{tool.alternativen}}</p>
+								<p class="mb-0">{{tool.alternatives}}</p>
 								{% endif %}
-								{% if tool.nutzerschnittstelle %}
+								{% if tool.userInterface %}
 								<h5 class="mt-4">Nutzerschnittstelle</h5>
-								<p class="mb-0">{{tool.nutzerschnittstelle}}</p>
+								<p class="mb-0">{{tool.userInterface}}</p>
 								{% endif %}
-								{% if tool.konk_anwendung %}
+								{% if tool.specificApplication %}
 								<h5 class="mt-4">konkrete Anwendung</h5>
-								<p class="mb-0">{{tool.konk_anwendung}}</p>
+								<p class="mb-0">{{tool.specificApplication}}</p>
 								{% endif %}
-								{% if tool.zielgruppe %}
-								<h5 class="mt-4">Zielgruppe</h5>
-								<p class="mb-0">{{tool.zielgruppe}}</p>
+								{% if tool.targetGroup %}
+								<h5 class="mt-4">targetGroup</h5>
+								<p class="mb-0">{{tool.targetGroup}}</p>
 								{% endif %}
 								<!-- Course detail END -->
 
@@ -117,10 +117,10 @@ Page content START -->
 										<div class="col-md-4 mb-3 mb-md-0">
 											<div class="text-center">
 												<!-- Info -->
-												<h2 class="mb-0">{{tool.average_rating}}</h2>
+												<h2 class="mb-0">{{tool.averageRating}}</h2>
 												<!-- Star -->
 												
-												{% include 'partials/_stars_score.html' with score=tool.average_rating class_small='' %}
+												{% include 'partials/_stars_score.html' with score=tool.averageRating class_small='' %}
 											
 											</div>
 										</div>
@@ -130,7 +130,7 @@ Page content START -->
 												<div class="col-6 col-sm-8">
 													<!-- Progress item -->
 													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_5}}%" aria-valuenow="{{ rating_perc_5 }}" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ratingPercent5}}%" aria-valuenow="{{ ratingPercent5 }}" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
 
@@ -144,7 +144,7 @@ Page content START -->
 												<div class="col-6 col-sm-8">
 													<!-- Progress item -->
 													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ rating_perc_4 }}%" aria-valuenow="{{ rating_perc_4 }}" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ ratingPercent4 }}%" aria-valuenow="{{ ratingPercent4 }}" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
 
@@ -158,7 +158,7 @@ Page content START -->
 												<div class="col-6 col-sm-8">
 													<!-- Progress item -->
 													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_3}}%" aria-valuenow="{{rating_perc_3}}" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ratingPercent3}}%" aria-valuenow="{{ratingPercent3}}" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
 
@@ -172,7 +172,7 @@ Page content START -->
 												<div class="col-6 col-sm-8">
 													<!-- Progress item -->
 													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_2}}%" aria-valuenow="{{rating_perc_2}}" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ratingPercent2}}%" aria-valuenow="{{ratingPercent2}}" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
 
@@ -186,7 +186,7 @@ Page content START -->
 												<div class="col-6 col-sm-8">
 													<!-- Progress item -->
 													<div class="progress progress-sm bg-warning bg-opacity-15">
-														<div class="progress-bar bg-warning" role="progressbar" style="width: {{rating_perc_1}}%" aria-valuenow="{{rating_perc_1}}" aria-valuemin="0" aria-valuemax="100"></div>
+														<div class="progress-bar bg-warning" role="progressbar" style="width: {{ratingPercent1}}%" aria-valuenow="{{ratingPercent1}}" aria-valuemin="0" aria-valuemax="100"></div>
 													</div>
 												</div>
 
@@ -298,19 +298,19 @@ Page content START -->
 							<!-- Title -->
 							<h4 class="mb-3">Kurzinformationen</h4>
 							<ul class="list-group list-group-borderless">
-								{% if tool.letztes_update %}
+								{% if tool.lastUpdate %}
 								<li class="list-group-item d-flex justify-content-between align-items-center">
-									<span class="h6 fw-light mb-0"><i class="{{ letztes_update_class }} fa-fw text-primary"></i>{{ letztes_update_label }}</span>
-									<span>{{ tool.letztes_update }}</span>
+									<span class="h6 fw-light mb-0"><i class="{{ lastUpdateClass }} fa-fw text-primary"></i>{{ lastUpdateLabel }}</span>
+									<span>{{ tool.lastUpdate }}</span>
 								</li>
 								{% endif %}
 								<li class="list-group-item d-flex justify-content-between align-items-center">
 									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Lizenz</span>
-									<span>{{ tool.lizenz }}</span>
+									<span>{{ tool.licence }}</span>
 								</li>
 								<li class="list-group-item d-flex justify-content-between align-items-center">
 									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-history text-primary"></i>Lebenszyklusphase</span>
-									<span>{{ tool.lebenszyklusphase }}</span>
+									<span>{{ tool.lifeCyclePhase }}</span>
 								</li>
 							</ul>
 						</div>
@@ -323,14 +323,14 @@ Page content START -->
 						<div class="card card-body shadow p-4">
 							<h4 class="mb-3">Tags</h4>
 							<ul class="list-inline mb-0">
-								{% for kategorie in kategorien %}	
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k={{kategorie}}&l=&lzp=">{{kategorie}}</a> </li>
+								{% for usage in usages %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}</a> </li>
 								{% endfor %}
-								{% if tool.lizenz %}
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l={{tool.lizenz}}&lzp=">{{tool.lizenz}}</a> </li>
+								{% if tool.licence %}
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&u=&l={{tool.licence}}&lcp=">{{tool.licence}}</a> </li>
 								{% endif %}
-								{% for lebenszyklusphase in lebenszyklusphasen %}	
-								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&k=&l=&lzp={{lebenszyklusphase}}">{{lebenszyklusphase}}</a> </li>
+								{% for lifeCyclePhase in lifeCyclePhases %}	
+								<li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}</a> </li>
 								{% endfor %}
 							</ul>
 						</div>	
