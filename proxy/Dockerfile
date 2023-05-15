@@ -10,7 +10,6 @@ FROM nginxinc/nginx-unprivileged
 # copy configuration- and script files to the docker image
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
-COPY ./run.sh /run.sh
 
 # we set default values for the environmental variables
 # these env-vars are also set in the .env file
