@@ -42,25 +42,11 @@ services:
         volumes:
             - static-data:/vol/static
             - ./proxy/dhparam/:/etc/nginx/dhparam
-            - ./certbot/conf/:/etc/nginx/ssl/
-            - ./certbot/data/:/usr/share/nginx/html/letsencrypt
+            - ./proxy/conf/:/etc/nginx/ssl/
             # the proxy can directly serve the static data, without bothering
             # the django app
         command: >
             sh -c "envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf && \
             nginx -g 'daemon off;'"
-      
-    certbot:
-      image: certbot/certbot:latest
-      depends_on:
-        - proxy
-        - webcentral
-      command: certonly --non-interactive --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email m.degner@tu-berlin.de --agree-tos --no-eff-email -d h3002249.stratoserver.net
-      volumes:
-        - ./certbot/conf/:/etc/letsencrypt
-        - ./certbot/logs/:/var/log/letsencrypt/
-        - ./certbot/data/:/usr/share/nginx/html/letsencrypt
-
-
 volumes:
     static-data:

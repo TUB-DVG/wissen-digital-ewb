@@ -28,9 +28,9 @@ server {
 	
 	ssl on;
 	server_tokens off;
-	ssl_certificate /etc/nginx/ssl/live/h3002249.stratoserver.net/fullchain.pem;
-	ssl_certificate_key /etc/nginx/ssl/live/h3002249.stratoserver.net/privkey.pem;
-	ssl_dhparam /etc/nginx/dhparam/dhparam-2048.pem;
+	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
+	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
+	#ssl_dhparam /etc/nginx/dhparam/dhparam-2048.pem;
 	
 	ssl_buffer_size 8k;
 	ssl_protocols TLSv1.2 TLSv1.1 TLSv1;

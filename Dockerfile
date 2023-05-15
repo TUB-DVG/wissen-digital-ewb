@@ -9,11 +9,12 @@ ENV PYTHONUNBUFFERED 1
 # creates a directory src and cd's into it
 WORKDIR /src
 
+RUN useradd -m -s /bin/bash appuser
+#USER appuser
 COPY 01_application/requirements.txt .
-RUN pip install --upgrade pip 
-RUN pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 # create a venv, upgrade pip, install packages, ...
-# RUN python -m venv /py && \
+#RUN python -m venv /py && \
 #     /py/bin/pip install --upgrade pip && \
 #     /py/bin/pip install -r requirements.txt && \
 #     adduser --disabled-password --no-create-home appuser && \
@@ -34,14 +35,11 @@ FROM base AS prod
 #USER appuser
 
 # activate venv
-#ENV PATH="/scripts:$PATH"
-
+ENV PATH="/scripts:$PATH"
+#RUN chmod -R 755 /vol
 # copy the source code into /src and 
 # change the ownership to the non-root
 # user
 #COPY --chown=appuser . /src
 COPY . /src
 
-# execute scripts/run.sh, which 
-# executes collectstatic and migrate
-#CMD["./run.sh"]
