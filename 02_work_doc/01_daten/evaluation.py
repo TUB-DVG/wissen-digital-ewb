@@ -11,49 +11,64 @@ from nltk import tokenize
 import xml.etree.ElementTree as et
 import csv
 
-class Evaluation:
-    """
+class EvaluationUtils:
+    """Wrapper for all helper-functions for Evaluation
+
+    This class acts as a wrapper for helper-functions needed in the 
+    evaluation of the projectlist.
     
     """
-    def __init__(self):
-        """
-        
-        """
-        pass
 
-
-    def readCSV2DF(
+    def readCSV2Dataframe(
             self, 
             filePath: str, 
             seperator: str=',',
     ) -> pd.DataFrame:
-            """Einlesen von csv-Dateien in ein Pandas-DataFrame
+            """Reads CSV-File into Pandas-Dataframe.
 
-            input
-            file_path: Name inkl. Pfad zur Dateien
-            sep: Trennzeichen in der csv-Datei (default: ',')
+            This Method reads a CSV-file into a Pandas-Dataframe by calling
+            the pandas `read_csv`-method. As arguments, it 2 string-
+            variables: The variable `filePath` specifies the path to the 
+            csv-file, while `seperator` specifies the delimiter inside the 
+            csv-file.
 
-            return
-            pandas Data-Frame
-
+            Function Arguments:
+            filePath:   str
+                String, holds the path and filename to the csv-file.
+            seperator:  str
+                String, holdinf the delimiter character inside the csv-
+                file.
+            
+            returns:
+            pd.Dataframe
+                Dataframe-Object, which is created by the `read_csv`-
+                pandas-method.
             """
-            df = pd.read_csv(filePath, sep=seperator)
-            return df
+            return pd.read_csv(filePath, sep=seperator)
 
     def readXLSX(
             self,
             filePath: str, 
             sheet: str="Sheet1",
     ) -> pd.DataFrame:
-            """liest ein Spreadsheet aus einer xlsx-Datei in eine pandas-DataFrame ein
-            sheet: Name des Spreadsheets (default = "Sheet1")
-            """
-            df = pd.read_excel(filePath, sheet_name=sheet, engine='openpyxl')
-            return df
+            """Reads spreadsheet into pandas-Dataframe Object.
 
-    def writeDF2CSV(
+            This Method reads from a .xlsx-file, which the the path 
+            and filename specified in `filePath` the sheet with the 
+            name `sheet` into a pandas-Dataframe object and returns it.
+
+            Function Arguments:
+            filePath:   str
+                Path to the .xlsx-file, including the filename.
+            sheet:  str
+                String, which specifies the Name of the sheet, to
+                be exported.
+            """
+            return pd.read_excel(filePath, sheet_name=sheet, engine='openpyxl')
+
+    def writeDataframe2CSV(
             self,
-            df: pd.DataFrame, 
+            dataframe: pd.DataFrame, 
             dbName: str, 
             new: bool=False,
     ) -> None:
@@ -70,12 +85,16 @@ class Evaluation:
 
         """
         if new:
-            df.to_csv(dbName, index=False, sep=';')
+            dataframe.to_csv(dbName, index=False, sep=';')
             print('new file was written: %s' %dbName )
-            # print('neue Datei wurde geschrieben')
         else:
-            df.to_csv(dbName, index=False, sep=';', header=False, mode='a')
-            # print('Inhalte wurden angehängt')
+            dataframe.to_csv(
+                dbName, 
+                index=False, 
+                sep=';', 
+                header=False, 
+                mode='a',
+            )
             print('data was attached to: %s' %dbName )
 
     def readDictXML2CSV(self, pathToFile: str) -> dict:
@@ -97,7 +116,6 @@ class Evaluation:
                 else:
                     dict[row[0]]=row[1]
                 i = i + 1
-            # liste = list(reader)
         return dict
 
     def readGivenColumnsFromCSV(self, pathToFile: str):
@@ -113,7 +131,6 @@ class Evaluation:
             liste = []
             for row in reader:
                 liste.append(row[0])
-            # liste = list(reader)
         return liste
 
     def readXML(
@@ -177,11 +194,11 @@ def readXMLEnargus(
     )
 
 
-class WriteCSV2DV(object):
+class WriteCSV2Dataframe(object):
     """Objekt zum Hinzufügen, Erstellen und aktuallisieren der csv-Datenbank"""
 
-    def __init__(self):
-        self.evaluation = Evaluation()
+    def __init__(self) -> None:
+        self.evaluationUtils = EvaluationUtils()
         self.path2xml = None
         self.path2xlsx = None # alte Liste, wurde 2020 für die Zuordung der
                               # Projekte zu den Modulen von Modul 4 genutzt
@@ -189,8 +206,8 @@ class WriteCSV2DV(object):
         self.path2CSVDatabaseNew = None # wenm die DB verändert wird, wird die neue
                                     # DB in eine neue Datei geschrieben, evtl.
                                     # später anders lösen
-        self.dfXML = pd.DataFrame()
-        self.dfCSVDatabase = pd.DataFrame()
+        self.dataframeXML = pd.DataFrame()
+        self.dataframeCSVDatabase = pd.DataFrame()
         self.path2ColumnsPre = None # Datei/Pfad zur Datei, welche die
                                     # gewünschten/vorgegeben Dateinamen enthält
         self.path2dictXML2CSV = None # Datei/Pfad zur Datei, welche die
@@ -198,9 +215,9 @@ class WriteCSV2DV(object):
                                       # dem Spaltennamen enthält
         self.listColumnsPre = []
         self.dictXML2CSV = {}
-        self.dfXLSX = pd.DataFrame()
-        self.dfJSON = pd.DataFrame()
-        self.dfWrite = pd.DataFrame() # Ziel-DataFrame: hier wird alles
+        self.dataframeXLSX = pd.DataFrame()
+        self.dataframeJSON = pd.DataFrame()
+        self.dataframeWrite = pd.DataFrame() # Ziel-DataFrame: hier wird alles
                                        # zusammengefügt um anschließend
                                        # geschrieben werden zu können
         # Namenspaces wurden aus der xml-Datei rausgelesen (evtl. müssen die später mal angepasst werden)
@@ -226,23 +243,32 @@ class WriteCSV2DV(object):
         df_write des Objekts zusammen
 
         """
-        self.dfCSVDB = self.dfCSVDB.set_index(indexColCSV)
-        dfProcessing = self.df_xlsx[listColumns]
-        dfProcessing = dfProcessing.set_index(indexColumnsXLSX)
-        self.dfWrite = pd.concat(
-            [self.dfWrite,self.dfCSVDB, dfProcessing], 
+        self.dataframeCSVDatabase = self.dataframeCSVDatabase.set_index(
+            indexColCSV,
+        )
+        dataframeProcessing = self.df_xlsx[listColumns]
+        dataframeProcessing = dataframeProcessing.set_index(indexColumnsXLSX)
+        self.dataframeWrite = pd.concat(
+            [
+                self.dataframeWrite,
+                self.dataframeCSVDatabase, 
+                dataframeProcessing,
+            ], 
             axis=1,
         )
-        self.dfWrite = self.dfWrite.reset_index().rename(
+        self.dataframeWrite = self.dataframeWrite.reset_index().rename(
             columns={'index':indexColCSV},
         )
 
-    def readCSVDatabase(self):
+    def readCSVDatabase(self) -> None:
             """Einlesen der csv-DB in das Objekt
             """
-            self.dfCSVDB = self.readCSV2DF(self.path2CSVDBOld, sep=';')
+            self.dataframeCSVDatabase = self.evaluationUtils.readCSV2Dataframe(
+                self.path2CSVDatabaseOld, 
+                sep=';',
+            )
 
-    def readXML(self):
+    def readXML(self) -> None:
         """Einlesen der xml-Datei basierend auf:
            - Dictionary xml2csv
            - Liste "gewünschte" Spalten
@@ -250,22 +276,22 @@ class WriteCSV2DV(object):
         wird in das DataFrame 'df_xml' des Objekts geschrieben
         """
 
-        self.dfXML = self.readXML(
+        self.dataframeXML = self.evaluationUtils.readXML(
             self.path2xml, 
             self.dictXML2CSV, 
             self.listColumnsPre, 
             namespaces=self.namenspacesEnargus,
         )
 
-    def df_xml_equal_df_write(self):
+    def dataframeXMLEqualDataframeWrite(self) -> None:
         """Setzt das aus der xml-Datei ausgelesene DataFrame ohne weitere Veränderung
         mit dem DataFrame df_write gleich
 
         
         """
-        self.dfWrite = self.dfXML
+        self.dataframeWrite = self.dataframeXML
 
-    def write_csv(self, new=False):
+    def writeCSV(self, new: bool=False) -> None:
         """Schreiben des zusammenstellten DataFrames in die vorgebene csv-Datei
 
         input
@@ -277,15 +303,20 @@ class WriteCSV2DV(object):
         Datei wird geschrieben
         """
         if new:
-                write_df2csv(self.df_write, self.path2csv_db_new, new=True)
-                # Schreib-Fkt integrieren (hier auch
-                # anch anhängen oder neuanlegen
-                # differenzeiren)
+                self.evaluationUtils.writeDataframe2CSV(
+                    self.dataframeWrite, 
+                    self.path2csvDatabaseNew, 
+                    new=True
+                )
         else:
-                write_df2csv(self.df_write, self.path2csv_db_old, new=False)
+                self.evaluationUtils.writeDataframe2CSV(
+                    self.dataframeWrite, 
+                    self.path2csvDatabaseOld, 
+                    new=False,
+                )
 
 
-    def set_spalten_vor_csv_file(self, path_file):
+    def setColumnsPreCSVFile(self, pathFile: str):
         """Übergabe des Dateinames inkl. Pfad, der Datei, welche die vorgeben, gewünschten Spalten enthält
         input
         path_file: Dateiname inkl. Pfad
@@ -293,20 +324,21 @@ class WriteCSV2DV(object):
         ouptut
         keiner - Dateiname wird im Objekt gespeichert
         """
-        self.path2spalten_vor = os.path.join(path_file)
+        self.path2ColumnsPre = os.path.join(pathFile)
 
-    def read_spalten_vor(self):
+    def readColumnsPre(self):
         """Einlesen der vorgeben/gewünschten Spalten in eine Liste des Objekts
 
         return
         Liste der Stalten
         """
 
-        list_spalten = read_spalten_vor_csv(self.path2spalten_vor)
-        self.list_spalten_vor = list_spalten
-        return list_spalten
+        self.listColumnsPre = self.evaluationUtils.readGivenColumnsFromCSV(
+            self.path2ColumnsPre
+        )
+        return self.listColumnsPre
 
-    def set_dict_xml2csv_file(self, path_file):
+    def setDictXML2CSVFile(self, path_file):
         """Übergabe des Dateinames inkl. Pfad, der Datei, welche die Zuordnung zwischen
         xml-Elementen und Spaltennamen enthält
 
@@ -317,9 +349,9 @@ class WriteCSV2DV(object):
         keiner - Dateiname wird im Objekt gespeichert
 
         """
-        self.path2dict_xml2csv = os.path.join(path_file)
+        self.path2dictXML2CSV = os.path.join(path_file)
 
-    def read_dict_xml2csv(self):
+    def readDictXML2CSV(self):
         """Einlesen des Dictionaries mit der Zuordnung zwischen
         xml-Elementen und Spaltennamen
 
@@ -327,11 +359,12 @@ class WriteCSV2DV(object):
         Dictionary mit den Zuordnungen
         """
 
-        dict_zuordung = read_dict_xml2csv(self.path2dict_xml2csv)
-        self.dict_xml2csv = dict_zuordung
-        return dict_zuordung
+        self.dictXML2CSV = self.evaluationUtils.readDictXML2CSV(
+            self.path2dictXML2CSV
+        )
+        return self.dictXML2CSV
 
-    def set_csv_db_new_file(self, csv_db_file):
+    def setCSVdatabaseNewFile(self, csvDatabaseFile: str):
         """Übergabe der Dateinames der neu zuschreiben csv-db inkl. Pfad - wenn die DB
         neu erzeugt wird und nicht ein teile angefügt
 
@@ -342,9 +375,9 @@ class WriteCSV2DV(object):
         keiner - Dateiname wird im Objekt gespeichert
 
         """
-        self.path2csv_db_new = os.path.join(csv_db_file)
+        self.path2CSVDatabaseNew = os.path.join(csvDatabaseFile)
 
-    def set_csv_db_old_file(self, csv_db_file):
+    def setCSVDatabaseOldFile(self, csvDatabaseFile: str):
         """Übergabe der Dateinames der vorhanden csv-db inkl. Pfad
         input
         csv_file: Dateiname inkl. Pfad als String
@@ -352,9 +385,9 @@ class WriteCSV2DV(object):
         ouptut
         keiner - Dateiname wird im Objekt gespeichert
         """
-        self.path2csv_db_old = os.path.join(csv_db_file)
+        self.path2csvDatabaseOld = os.path.join(csvDatabaseFile)
 
-    def set_xlsx_file(self, xlsx_file):
+    def setXLSXFile(self, xlsxFile: str):
         """Übergabe der Dateinames des xlsx-Datei inkl. Pfad (alte Liste Modulzuordung Modul4)
         input
         xlsx_file: Dateiname inkl. Pfad als String
@@ -362,9 +395,9 @@ class WriteCSV2DV(object):
         ouptut
         keiner - Dateiname wird im Objekt gespeichert
         """
-        self.path2xlsx = os.path.join(xlsx_file)
+        self.path2xlsx = os.path.join(xlsxFile)
 
-    def set_xml_file(self, xml_file):
+    def setXMLFile(self, xmlFile: str):
         """Übergabe der Dateinames des xml-Datei inkl. Pfad
         input
         xml_file: Dateiname inkl. Pfad als String
@@ -372,9 +405,9 @@ class WriteCSV2DV(object):
         ouptut
         keiner - Dateiname wird im Objekt gespeichert
         """
-        self.path2xml = os.path.join(xml_file)
+        self.path2xml = os.path.join(xmlFile)
 
-    def read_xlsx_pl(self, sheet):
+    def readXLSXProjectlist(self, sheet: str) -> None:
         """liest ein Spreadsheet aus der ProjektListe (xlsx-Datei) in eine pandas-DataFrame ein
 
         input
@@ -384,72 +417,86 @@ class WriteCSV2DV(object):
         keiner - wird in das Objekt geschrieben
 
         """
-        self.df_xlsx = read_xlsx(self.path2xlsx , sheet= sheet)
+        self.dataframeXLSX = self.evaluationUtils.readXLSX(
+            self.path2xlsx, 
+            sheet=sheet,
+        )
 
 
-class Auswert_pl(object):
+class EvaluationProjectlist(object):
     """Enthält Vorgaben und Ergebnisse der Auswertung der ProjektListe (pl)"""
 
     def __init__(self):
+        """
+        
+        """
+        self.evaluationUtils = EvaluationUtils()
         self.path2pl = None
-        self.dfpl = pd.DataFrame()
+        self.dataframeProjectlist = pd.DataFrame()
         self.keywords = []
-        #self.auswerdict = {}
-        #self.projektanzahl = []
-        #self.gesamtprojektliste = []
 
-    def set_projectlist(self, path):
+    def setProjectlist(self, path: str) -> str:
         """Pfad zur Projektliste übergeben"""
-        # todos: 1. Prüfen ob string übergeben; 2. Kompatibilität OS
-        self.path2pl = path
+        self.path2projectlist = path
         return path
 
-    def read_xlsx_pl(self):
+    def readXLSXProjectlist(self):
         """liest ein Spreadsheet aus der ProjektListe (xlsx-Datei) in eine pandas-DataFrame ein
         """
-        self.dfpl = read_xlsx(self.path2pl , sheet= 'EWB_gesamt')
+        self.dataframeProjectlist = self.evalulationUtils.readXLSX(
+            self.path2Projectlist, 
+            sheet='EWB_gesamt',
+        )
 
-    def set_keywords(self, keywords):
+    def setKeywords(self, keywords: list(str)) -> None:
         """einlesen der Keywords
         keywords: Keywords; Liste von Strings"""
         self.keywords = keywords
 
-    def number_projects_keywords(self, column):
+    def numberProjectsKeywords(self, column: str) -> tuple(list, int):
         """Anzahl der Projekte (nicht Teilprojekte), die mind. ein Keyword in einer Spalte (column) enthalten
         column: zu untersuchende Spalte; String XXX
         return:
            1. Keywords (nach den gesucht worden ist)
            2. Anzahl der Projekte entsprechend der Keywords
         """
-        projektdict = {}
-        projektanzahl =[]
-        gesamtprojektliste = []
+        projectDict = {}
+        projectCount =[]
+        entireProjectlist = []
         for i in range(0, len(self.keywords)):
-            projektakronym = []
+            projectAcronym = []
             # index wo das Keyword auftritt rausschreiben
-            projektindex = auswert.dfpl[self.dfpl[column].str.contains(self.keywords[i], na=False)].index
+            projektindex = self.dataframeProjectlist[
+                self.dataframeProjectlist[column].str.contains(
+                    self.keywords[i], 
+                    na=False,
+                ),
+            ].index
 
             # Akronym rauslesen (auf Basis der Indices)
             for j in range(0, len(projektindex)):
-                projektakronym.append(auswert.dfpl['Akronym'][j])
+                projectAcronym.append(self.dataframeProjectlist['Akronym'][j])
 
             # Dopplung rausnehmen
-            projektakronym = list(set(projektakronym))
+            projectAcronym = list(set(projectAcronym))
 
-            projektdict[self.keywords[i]] = projektakronym
+            projectDict[self.keywords[i]] = projectAcronym
 
-        #print(projektdict)
         # Anzahl der Projekte je Keyword
-        for i in range (0, len(projektdict)):
-            projektanzahl.append(len(projektdict[self.keywords[i]]))
-            gesamtprojektliste.extend(projektdict[self.keywords[i]])
+        for i in range (0, len(projectDict)):
+            projectCount.append(len(projectDict[self.keywords[i]]))
+            entireProjectlist.extend(projectDict[self.keywords[i]])
         # Anzahl der aller Projekte, welche mind. ein Keyword enthalten
         gesamtprojektliste = list(set(gesamtprojektliste))
-        keyword.append('Gesamtprojektanzahl')
-        projektanzahl.append(len(gesamtprojektliste))
-        return self.keywords, projektanzahl
+        self.keywords.append('Gesamtprojektanzahl')
+        projectCount.append(len(entireProjectlist))
+        return self.keywords, projectCount
 
-    def get_indices_keywords(self, keywords, columns):
+    def getIndicesKeywords(
+            self, 
+            keywords: list(str), 
+            columns: list(str),
+    ) -> list(int):
         """Gibt die Indices der Zeilen zurück, welche ein Keyword in den
         vorgebeben Spalten enthalten
         input:
@@ -458,20 +505,20 @@ class Auswert_pl(object):
         output:
         indices: as list
         """
-        list_of_indices = list()
+        listOfIndices = []
         for col in columns:
             for key in keywords:
-                indicies = auswert.dfpl[self.dfpl[col].str.contains(key, na=False)].index
+                indicies = self.dataframeProjectlist[self.dataframeprojectlist[col].str.contains(key, na=False)].index
                 #print(col)
                 #print(indicies)
-                list_of_indices.extend(indicies)
-        #print(list_of_indices)
-        # sortieren und Dopplung rausnehmen
-        list_of_indices = sorted(set(list_of_indices))
-        #print(list_of_indices)
-        return list_of_indices
+                listOfIndices.extend(indicies)
+        return sorted(set(listOfIndices))
 
-    def df_by_index_columns(self, indices, columns):
+    def dataframeByIndexColumns(
+            self, 
+            indices: list, 
+            columns: list,
+        ) -> pd.DataFrame:
         """DataFrame, welches die Spalten entsprechend der vorgebeben Indices und die
         vorgebeben Spalten enthält
 
@@ -481,8 +528,9 @@ class Auswert_pl(object):
         output
         DataFrame
         """
-        df_filtered = self.dfpl[columns][self.dfpl.index.isin(indices)]
-        return df_filtered
+        return self.dataframePorjectlist[columns][
+            self.dataframeProjectlist.index.isin(indices),
+        ]
 
 if __name__ == "__main__":
     # ausführen
