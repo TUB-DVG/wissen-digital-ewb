@@ -15,8 +15,8 @@
         <div class="card-body pb-0">
     
             <!-- Title -->
-            <h5 class="card-title"><a href="{%url 'tool_view' tool.id %}"> {{ tool.bezeichnung   }}</a></h5>
-            <p class="mb-2 text-truncate-2">Nutzerschnittstelle: {{ tool.nutzerschnittstelle   }}</p>
+            <h5 class="card-title"><a href="{%url 'tool_view' tool.id %}"> {{ tool.name   }}</a></h5>
+            <p class="mb-2 text-truncate-2"> Nutzerschnittstelle: {{ tool.userInterface }}</p>
             <!-- Rating star -->
         
             
@@ -28,14 +28,14 @@
         </div>
         <!-- Card footer -->
         <div class="card-footer pt-0 pb-3">
-            {% if tool.letztes_update %}
+            {% if tool.lastUpdate %}
             <hr>
             <div class="d-flex justify-content-between">
                 <span class="h6 fw-light mb-0">
-                    {% if tool.letztes_update == 'laufend' %}
-                    <i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.letztes_update }}
+                    {% if tool.lastUpdate == 'laufend' %}
+                    <i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.lastUpdate }}
                     {% else %}
-                    <i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.letztes_update }}
+                    <i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.lastUpdate }}
                     {% endif %}
             </div>
             {% endif %}

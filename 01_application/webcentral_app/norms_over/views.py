@@ -24,7 +24,7 @@ def index(request):
     shows the list of all projects including some key features
     """
     technicalStandards = TechnicalStandards.objects.all() # reads all data from table Teilprojekt
-    filtered_by = [None]*3
+    filtered_by = [None]*2 #3
     searched=None
 
     
