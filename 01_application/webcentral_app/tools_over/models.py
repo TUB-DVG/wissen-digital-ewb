@@ -3,8 +3,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import User
 
 class Rating (models.Model):
-    rating_from = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='rating_from')
-    rating_for = models.ForeignKey("Tools", on_delete=models.SET_NULL, null=True, related_name='rating_for')
+    ratingFrom = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='ratingFrom')
+    ratingFor = models.ForeignKey("Tools", on_delete=models.SET_NULL, null=True, related_name='ratingFor')
     comment=models.CharField(max_length=1000,blank=True)
     score=models.IntegerField  ( default=0,
         validators=[
@@ -13,7 +13,7 @@ class Rating (models.Model):
         ]
      )
     def __str__(self):
-        return self.rating_for.bezeichnung
+        return self.ratingFor.name
 
 class Tools(models.Model):
     name = models.CharField(max_length = 150,
@@ -22,14 +22,15 @@ class Tools(models.Model):
     shortDescription = models.CharField(max_length = 1000,
                                    help_text = "short description")
     # use the Enum Functional API to concisely use the labels #https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
+    """
     class ApplicationArea(models.TextChoices):
         verwaltung = 'VW', _('Verwaltung') 
         forschung_lehre =  'FL', _('Forschung/Lehre')
         industrie = 'IN', _('Industrie')
-    
+    """
     applicationArea = models.CharField(max_length = 1000,
                                          help_text = "application area",
-                                         choices = ApplicationArea.choices,
+                                         #choices = ApplicationArea.choices,
                                          blank=True)
     # class usage
     usage = models.CharField(max_length = 100,
@@ -70,7 +71,7 @@ class Tools(models.Model):
     def averageRating(self):
         counter = 0
         totalRatings = 0
-        for item in Rating.objects.filter(rating_for=self):
+        for item in Rating.objects.filter(ratingFor=self):
             counter += 1
             totalRatings += item.score
         if counter>0:#

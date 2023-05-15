@@ -3,19 +3,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class TechnicalStandards(models.Model):
-    is_norm = models.TextField(default=True)
-    name = models.TextField(max_length = 300,
+    isNorm = models.BooleanField(default=True)
+    name = models.CharField(max_length = 150,
                                    help_text="name of the norm",
                                    blank = True)
-    shortDescription = models.TextField(max_length = 500,
-                                   help_text = "short description")
-    title = models.TextField(max_length = 255,
+    title = models.CharField(max_length = 250,
                                          help_text = "title of the norm",
                                          blank=True)
-    source = models.TextField(max_length = 500,
+    shortDescription = models.TextField(max_length = 600,
+                                   help_text = "short description")
+    source = models.CharField(max_length = 100,
                                  help_text = "source",
                                  blank = True)
-    link = models.TextField(max_length = 500,
+    link = models.CharField(max_length = 150,
                                          help_text = "link",
                                          blank = True)
     

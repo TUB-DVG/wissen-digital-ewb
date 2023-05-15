@@ -24,13 +24,13 @@ def index(request):
     tools = Tools.objects.all() # reads all data from table Teilprojekt
     filtered_by = [None]*3
     searched=None
-
+    print('len of tools', len(tools))
 
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
-        usage=request.GET.get('k')
+    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
+        usage=request.GET.get('u')
         licence=request.GET.get('l')
-        lifeCyclePhase=request.GET.get('lzp')
+        lifeCyclePhase=request.GET.get('lcp')
         searched=request.GET.get('searched')
         tools=Tools.objects.filter(usage__icontains=usage,lifeCyclePhase__icontains=lifeCyclePhase,licence__icontains=licence,name__icontains=searched)
         filtered_by = [usage, licence, lifeCyclePhase]
@@ -93,7 +93,7 @@ def tool_view(request, id):
     if (tool.lastUpdate == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
-    ratings = Rating.objects.filter(rating_for=id)
+    ratings = Rating.objects.filter(ratingFor=id)
     numRatings = len(ratings)
     print(numRatings)
 
@@ -133,7 +133,7 @@ def Post_Review(request,id):
         tool=tool = get_object_or_404(Tools, pk= id)
         comment=request.POST['comment']
         score=request.POST['score']
-        rating=Rating.objects.create(rating_from=User,rating_for=tool,score=score,comment=comment)
+        rating=Rating.objects.create(ratingFrom=User,ratingFor=tool,score=score,comment=comment)
 
         return  tool_view(request,id)
 

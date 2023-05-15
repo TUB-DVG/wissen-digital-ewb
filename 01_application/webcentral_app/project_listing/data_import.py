@@ -197,7 +197,6 @@ def get_or_create_tools(row, header):
     add entry into table Tools or/and return entry key
     """
     # content = row[number of the columns of the row]
-
     name = row[header.index('Tool')]
     shortDescription = row[header.index('Kurzbeschreibung')]
     applicationArea = row[header.index('Anwendungsbereich')]
@@ -383,7 +382,7 @@ def get_or_create_norms(row, header):
     add entry into table Norms or/and return entry key
     """
     # content = row[number of the columns of the row]
-
+    isNorm = True
     name = row[header.index('Name')]
     shortDescription = row[header.index('ShortDescription')]
     title = row[header.index('Title')]
@@ -391,6 +390,7 @@ def get_or_create_norms(row, header):
     link  = row[header.index('Link')]
 
     obj, created = TechnicalStandards.objects.get_or_create(
+        isNorm = isNorm,
         name = name,
         shortDescription = shortDescription,
         title = title, 
