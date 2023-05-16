@@ -10,38 +10,10 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /src
 
 COPY 01_application/requirements.txt .
-RUN pip install --upgrade pip 
-RUN pip install -r requirements.txt
-# create a venv, upgrade pip, install packages, ...
-# RUN python -m venv /py && \
-#     /py/bin/pip install --upgrade pip && \
-#     /py/bin/pip install -r requirements.txt && \
-#     adduser --disabled-password --no-create-home appuser && \
-#     mkdir -p /vol/webcentral/static && \
-#     mkdir -p /vol/webcentral/media && \
-#     chown -R appuser:appuser /vol && \
-#     chmod -R 755 /vol
-
-# make scripts and venv executables accessible, through path
-#ENV PATH="/scripts:/py/bin:$PATH"
-
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # second build stage for production
-
 FROM base AS prod
 
-# change user to non-root appuser
-#USER appuser
-
-# activate venv
-#ENV PATH="/scripts:$PATH"
-
-# copy the source code into /src and 
-# change the ownership to the non-root
-# user
-#COPY --chown=appuser . /src
 COPY . /src
 
-# execute scripts/run.sh, which 
-# executes collectstatic and migrate
-#CMD["./run.sh"]
