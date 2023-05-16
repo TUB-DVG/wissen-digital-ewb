@@ -2,11 +2,11 @@ server {
     listen ${NGINX_LISTEN_PORT};
     server_name wissen-digital-ewb.de;
 
+	# Redirect http to https:
     location / {
 	return 301 https://wissen-digital-ewb.de$request_uri;
     }
     
-    # Redirect http to https:
 }
 server {
 	listen 443 ssl http2;
@@ -15,7 +15,6 @@ server {
 	server_tokens off;
 	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
 	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
-	#ssl_dhparam /etc/nginx/dhparam/dhparam-2048.pem;
 	
 	ssl_buffer_size 8k;
 	ssl_protocols TLSv1.2 TLSv1.1 TLSv1;
