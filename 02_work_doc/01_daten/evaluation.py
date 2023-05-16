@@ -137,7 +137,7 @@ class EvaluationUtils:
             self, 
             pathToFile: str, 
             columnDict: dict, 
-            columns: list(str), 
+            columns: list, 
             namespaces: dict = None,
         ) -> pd.DataFrame:
         """liest xml Datei in eine pandas dataFrame eine
@@ -167,31 +167,30 @@ class EvaluationUtils:
             rows.append(row)
         return pd.DataFrame(rows, columns=columns)
 
-def readXMLEnargus(
-        self, 
-        path2xml: str, 
-        pathDictXML2CSV: dict, 
-        pathListColumns: list(str),
-    ) -> pd.DataFrame:
-    """reading xml-file base on:
-    - Dictionary xml2csv
-    - List of read columns
+    def readXMLEnargus(
+            self, 
+            path2xml: str, 
+            pathDictXML2CSV: dict, 
+            pathListColumns: list,
+        ) -> pd.DataFrame:
+        """reading xml-file base on:
+        - Dictionary xml2csv
+        - List of read columns
 
-    returns a DataFrame
-    """
-    # Namenspaces wurden aus der xml-Datei rausgelesen (evtl. müssen die später mal angepasst werden)
-    namenspacesEnargus = {
-            '' : "http://www.enargus.de/elements/0.1/begleitforschung/", 
-            'bscw' : "http://bscw.de/bscw/elements/0.1/",
-        }
-    dictXML2CSV = self.readDictXML2CSV(pathDictXML2CSV)
-    listColumns = self.readGivenColumnsFromCSV(pathListColumns)
-    return self.readXML(
-        path2xml, 
-        dictXML2CSV, 
-        listColumns, 
-        namespaces=namenspacesEnargus,
-    )
+        returns a DataFrame
+        """
+        namenspacesEnargus = {
+                '' : "http://www.enargus.de/elements/0.1/begleitforschung/", 
+                'bscw' : "http://bscw.de/bscw/elements/0.1/",
+            }
+        dictXML2CSV = self.readDictXML2CSV(pathDictXML2CSV)
+        listColumns = self.readGivenColumnsFromCSV(pathListColumns)
+        return self.readXML(
+            path2xml, 
+            dictXML2CSV, 
+            listColumns, 
+            namespaces=namenspacesEnargus,
+        )
 
 
 class WriteCSV2Dataframe(object):
@@ -228,7 +227,7 @@ class WriteCSV2Dataframe(object):
 
     def addColumnsFromXLSX(
             self, 
-            listColumns: list(str), 
+            listColumns: list, 
             indexColumnsXLSX: int, 
             indexColCSV: int,
     ) -> None:
@@ -448,12 +447,12 @@ class EvaluationProjectlist(object):
             sheet='EWB_gesamt',
         )
 
-    def setKeywords(self, keywords: list(str)) -> None:
+    def setKeywords(self, keywords: list) -> None:
         """einlesen der Keywords
         keywords: Keywords; Liste von Strings"""
         self.keywords = keywords
 
-    def numberProjectsKeywords(self, column: str) -> tuple(list, int):
+    def numberProjectsKeywords(self, column: str) -> tuple:
         """Anzahl der Projekte (nicht Teilprojekte), die mind. ein Keyword in einer Spalte (column) enthalten
         column: zu untersuchende Spalte; String XXX
         return:
@@ -494,9 +493,9 @@ class EvaluationProjectlist(object):
 
     def getIndicesKeywords(
             self, 
-            keywords: list(str), 
-            columns: list(str),
-    ) -> list(int):
+            keywords: list, 
+            columns: list,
+    ) -> list:
         """Gibt die Indices der Zeilen zurück, welche ein Keyword in den
         vorgebeben Spalten enthalten
         input:
