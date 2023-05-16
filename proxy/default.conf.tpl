@@ -1,10 +1,6 @@
 server {
     listen ${NGINX_LISTEN_PORT};
     server_name wissen-digital-ewb.de;
-    location ~ /.well-known/acme-challenge {
-    	allow all;
-	root /usr/share/nginx/html/letsencrypt;
-    }
     location /static {
         alias /vol/static;
     }
@@ -14,10 +10,7 @@ server {
     }
 
     location / {
-	return 301 https://h3002249.stratoserver.net$request_uri;
-        #uwsgi_pass ${APP_HOST}:${UWSGI_LISTEN_PORT};
-        #include /etc/nginx/uwsgi_params;
-        #client_max_body_size 10M;
+	return 301 https://wissen-digital-ewb.de$request_uri;
     }
     
     # Redirect http to https:
@@ -26,7 +19,6 @@ server {
 	listen 443 ssl http2;
 	server_name wissen-digital-ewb.de;
 	
-	ssl on;
 	server_tokens off;
 	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
 	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
