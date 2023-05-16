@@ -9,6 +9,7 @@ FROM nginxinc/nginx-unprivileged
 
 # copy configuration- and script files to the docker image
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
+COPY ./localDefault.conf.tpl /etc/nginx/localDefault.conf.tpl
 COPY ./uwsgi_params /etc/nginx/uwsgi_params
 
 # we set default values for the environmental variables
@@ -28,6 +29,3 @@ VOLUME /vol/static
 
 # siwtch to non-root user
 #USER nginx
-
-# script starts nginx in the foreground of the container
-#CMD ["./run.sh"]

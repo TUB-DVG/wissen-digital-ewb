@@ -24,6 +24,7 @@ services:
 
 
     proxy:
+        container_name: proxy
         build:
             context: ./proxy
         restart: always
@@ -46,7 +47,7 @@ services:
             # the proxy can directly serve the static data, without bothering
             # the django app
         command: >
-            sh -c "envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf && \
+            bash -c "if [[ "$USE_PROD_LOCALLY" == "0" ]]; then envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf; else envsubst < /etc/nginx/localDefault.conf.tpl > /etc/nginx/conf.d/default.conf; fi && \
             nginx -g 'daemon off;'"
 volumes:
     static-data:
