@@ -17,7 +17,7 @@ import sys
 import pandas as pd
 
 sys.path.insert(0, '..')
-import evaluation
+from evaluation import EvaluationUtils
 
 # adapt actual working directory (for fix the relative depenencies)
 os.chdir(
@@ -43,10 +43,10 @@ dataframeModul = dataframeXLSX[
 dataframeModul = dataframeModul.rename(
     columns={
         "Förderkenz. (0010)": "FKZ",
-        "Modulzuordnung PtJ - 1 aktuell" : 'modulzuordnung_ptj_1',
-        "Modulzuordnung PtJ - 2 aktuell" : 'modulzuordnung_ptj_2',
-        "Modulzuordnung PtJ - 3 aktuell" : 'modulzuordnung_ptj_3',
-        "Modulzuordnung PtJ - 4 aktuell" : 'modulzuordnung_ptj_4',
+        "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
+        "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
+        "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
+        "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
     }
 )
 
@@ -71,8 +71,7 @@ dataframeModul['modulzuordnung_ptj_1'] = dataframeModul[
     'modulzuordnung_ptj_1'
 ].str.replace('ausgelaufen', 'ag')
 
-evaluationUtilsObj = evaluation.EvaluationUtils()
-evaluationUtilsObj.writeDataframe2CSV(
+EvaluationUtils.writeDataframe2CSV(
     dataframeModul, 
     'modulzuordnung_csv_20220829_test.csv', 
     new=True,

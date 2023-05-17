@@ -14,7 +14,7 @@ import os
 import sys
 
 sys.path.insert(0, '..')
-import evaluation
+from evaluation import EvaluationUtils
 
 # adapt actual working directory (for fix the relative depenencies)
 os.chdir(
@@ -27,10 +27,9 @@ xml2csv = '02_parameter_files/col_dict_xml2csv.csv'
 
 pathXML = "../../../../../../Nextcloud/Shared/01_Enargus/Daten_von_Bosch_2023_02_24/2023-02-24_enargus.xml"
 
-evaluationUtilsObj = evaluation.EvaluationUtils()
-dataframe = evaluationUtilsObj.readXMLEnargus(pathXML, xml2csv, listCol)
+dataframe = EvaluationUtils.readXMLEnargus(pathXML, xml2csv, listCol)
 
-evaluationUtilsObj.writeDataframe2CSV(
+EvaluationUtils.writeDataframe2CSV(
     dataframe, 
     'enargus_csv_20230403_test.csv', 
     new=True,
