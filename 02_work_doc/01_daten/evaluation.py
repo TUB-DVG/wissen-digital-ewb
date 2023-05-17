@@ -32,9 +32,8 @@ class EvaluationUtils:
     `pre_module.py` and `pre_enargus.py`.
     
     """
-
+    @staticmethod
     def readCSV2Dataframe(
-            self, 
             filePath: str, 
             seperator: str=',',
     ) -> pd.DataFrame:
@@ -46,22 +45,24 @@ class EvaluationUtils:
         csv-file, while `seperator` specifies the delimiter inside the 
         csv-file.
 
-        Function Arguments:
+        Parameters
+        ----------
         filePath:   str
             String, holds the path and filename to the csv-file.
         seperator:  str
             String, holdinf the delimiter character inside the csv-
             file.
         
-        returns:
+        Returns
+        -------
         pd.Dataframe
             Dataframe-Object, which is created by the `read_csv`-
             pandas-method.
         """
         return pd.read_csv(filePath, sep=seperator)
 
+    @staticmethod
     def readXLSX(
-            self,
             filePath: str, 
             sheet: str="Sheet1",
     ) -> pd.DataFrame:
@@ -71,20 +72,22 @@ class EvaluationUtils:
         and filename specified in `filePath` the sheet with the 
         name `sheet` into a pandas-Dataframe object and returns it.
 
-        Function Arguments:
+        Parameters
+        ----------
         filePath:   str
             Path to the .xlsx-file, including the filename.
         sheet:  str
             String, which specifies the Name of the sheet, to
             be exported.
         
-        Returns:
+        Returns
+        -------
         pd.DataFrame
         """
         return pd.read_excel(filePath, sheet_name=sheet, engine='openpyxl')
 
+    @staticmethod
     def writeDataframe2CSV(
-            self,
             dataframe: pd.DataFrame, 
             csvFilename: str, 
             new: bool=False,
@@ -97,7 +100,8 @@ class EvaluationUtils:
         to the existing file `csvFilename`. 
         The delimiter in the .csv is set as `;`
 
-        Function Arguments:
+        Parameters
+        ----------
         dataframe:  pd.DataFrame
             pandas Dataframe, which is written to `csvFilename`.
         csvFilename:    str
@@ -108,7 +112,8 @@ class EvaluationUtils:
             is created or if `csvFilename` is appended to an existing
             file. 
 
-        Returns:
+        Returns
+        -------
         None
         """
         if new:
@@ -124,19 +129,22 @@ class EvaluationUtils:
             )
             print('data was attached to: %s' %csvFilename )
 
-    def readDictXML2CSV(self, pathToFile: str) -> dict:
+    @staticmethod
+    def readDictXML2CSV(pathToFile: str) -> dict:
         """Reads in parameter-file, which holds mapping csv <-> enargus.xml
 
         This method reads in the parameter file `pathToFile`, which holds
         the mapping betwwen the .csv-columns names and the EnArgus.xml-
         file.
         
-        Function Arguments:
+        Parameters
+        ----------
         pathToFile: str
             path with filename of the parameter-file, which holds the 
             mapping.
 
-        Returns:
+        Returns
+        -------
             dict
         dict, which contains the mapping between the csv.-columns and
         the enargus.xml.
@@ -144,27 +152,30 @@ class EvaluationUtils:
         with open(pathToFile, newline='') as f:
             reader = csv.reader(f)
             dict = {}
-            i = 0
+            lineNumber = 0
             for row in reader:
-                if i== 0:
+                if lineNumber == 0:
                     pass
                 else:
                     dict[row[0]]=row[1]
-                i = i + 1
+                lineNumber += 1
         return dict
 
-    def readGivenColumnsFromCSV(self, pathToFile: str) -> list:
+    @staticmethod
+    def readGivenColumnsFromCSV(pathToFile: str) -> list:
         """Reads columns from `pathToFile` csv-file.
 
         This method reads in the columns-names from `pathToFile` csv-file 
         and returns them as a list of strings.
         
-        Functions Arguments:
+        Parameters
+        ----------
         pathToFile: str
             path, including the filename, to the csv-file whose column-
             names should be read into a list.
          
-        Returns:
+        Returns
+        -------
             list
             list of column-names of `pathToFile` csv-file.
         """
@@ -175,8 +186,8 @@ class EvaluationUtils:
                 liste.append(row[0])
         return liste
 
+    @staticmethod
     def readXML(
-            self, 
             pathToFile: str, 
             columnDict: dict, 
             columns: list, 
@@ -190,7 +201,8 @@ class EvaluationUtils:
         `columns` is also needed, which is a list of the csv-column names.
         It has to fit the names of `columnDict`.
 
-        Function Arguments:
+        Parameters
+        ----------
         pathToFile: str
             path and filename of the .xml-file, which should be imported 
             as pandas DataFrame.
@@ -201,6 +213,10 @@ class EvaluationUtils:
             list of the column-names. has to match, with `columnDict`.
         namesspaces:    dict
             Dictionary, which holds the xml-Namespaces.
+        
+        Returns
+        -------
+            pd.DataFrame
         """
         rows = []
 
@@ -221,8 +237,8 @@ class EvaluationUtils:
             rows.append(row)
         return pd.DataFrame(rows, columns=columns)
 
+    @staticmethod
     def readXMLEnargus(
-            self, 
             path2xml: str, 
             pathDictXML2CSV: dict, 
             pathListColumns: list,
@@ -235,6 +251,8 @@ class EvaluationUtils:
         column names and the `pathListColumns`, which holds the column-
         names of the csv-file.
         
+        Parameters
+        ----------
         path2xml:   str
             Path and filename of the xml-file, which should be read into
             a pandas DataFrame.
@@ -243,16 +261,17 @@ class EvaluationUtils:
         pathListColumns:    list
             List of column names.
 
-        Returns:
-        panda DataFrame
+        Returns
+        --------
+            pd.DataFrame
         """
         namenspacesEnargus = {
                 '' : "http://www.enargus.de/elements/0.1/begleitforschung/", 
                 'bscw' : "http://bscw.de/bscw/elements/0.1/",
             }
-        dictXML2CSV = self.readDictXML2CSV(pathDictXML2CSV)
-        listColumns = self.readGivenColumnsFromCSV(pathListColumns)
-        return self.readXML(
+        dictXML2CSV = EvaluationUtils.readDictXML2CSV(pathDictXML2CSV)
+        listColumns = EvaluationUtils.readGivenColumnsFromCSV(pathListColumns)
+        return EvaluationUtils.readXML(
             path2xml, 
             dictXML2CSV, 
             listColumns, 
