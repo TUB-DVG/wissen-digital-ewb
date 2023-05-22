@@ -11,8 +11,6 @@ from pandas import (
     read_excel,
 )
 
-from evaluation import EvaluationUtils
-
 class TestPreModule(unittest.TestCase):
     """
     
@@ -114,7 +112,7 @@ class TestPreModule(unittest.TestCase):
         """
 
         returnDict = EvaluationUtils.readDictXML2CSV(
-            "01_prePro/02_parameter_files/col_dict_xml2csv.csv",
+            "02_parameter_files/col_dict_xml2csv.csv",
         )
 
         hardCodedResultDict = {
@@ -172,7 +170,7 @@ class TestPreModule(unittest.TestCase):
         """
 
         returnedList = EvaluationUtils.readGivenColumnsFromCSV(
-            '01_prePro/02_parameter_files/col_xml2csv.csv',
+            "02_parameter_files/col_xml2csv.csv",
         )
 
         hardCodedList = [
@@ -222,7 +220,7 @@ class TestPreModule(unittest.TestCase):
         .csv-files.
         """
 
-        pathToAuswertungPy = "./"
+        pathToAuswertungPy = "../../../dvg_lib/ProjektListe/"
 
         if not os.path.isfile(pathToAuswertungPy + "auswertung.py"):
             self.assertTrue(
@@ -358,4 +356,9 @@ class TestPreModule(unittest.TestCase):
         pass
 
 if __name__ == "__main__":
+    os.chdir(sys.argv[1])
+    sys.path.insert(0, os.getcwd())
+    pdb.set_trace()
+    from evaluation import EvaluationUtils
+
     unittest.main()
