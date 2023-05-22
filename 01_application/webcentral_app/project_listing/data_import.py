@@ -192,7 +192,7 @@ def get_or_create_modulen_zuordnung(row, header):
     )
     return obj, created
 
-def get_or_create_tools(row, header):
+def getOrCreateTools(row, header, list_image):
     """
     add entry into table Tools or/and return entry key
     """
@@ -210,7 +210,10 @@ def get_or_create_tools(row, header):
     alternatives = row[header.index('Alternativen')]
     specificApplication = row[header.index('konkrete Anwendung in EWB Projekten')]
     # userEvaluation = row[header.index('Nutzerbewertungen')]
-    # image
+    if len(list_image)  != 0:
+        image = list_image
+    else:
+        image = None
     # released
     # releasePlanned
     # yearOfRelease
@@ -236,6 +239,7 @@ def get_or_create_tools(row, header):
         furtherInformation = furtherInformation,
         alternatives = alternatives,
         specificApplication = specificApplication,
+        image = image
         # nutzerbewertungen = nutzerbewertung
     )
     return obj, created
@@ -377,7 +381,7 @@ def add_or_update_row_teilprojekt(row, header, source):
                     schlagwortregister_erstsichtung_id= schlagwortregister_id)
                 print('updated: %s' %fkz)
 
-def get_or_create_norms(row, header):
+def getOrCreateNorms(row, header):
     """
     add entry into table Norms or/and return entry key
     """
@@ -433,17 +437,19 @@ def read_print_csv(path):
             # print(row[header.index('FKZ')])
     return header, data
 
-def csv2m4db_tools(path):
+def csv2m4dbTools(path, list_image):
     """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
-    with open(path, encoding='utf-8') as csv_file:
-        reader = csv.reader(csv_file, delimiter=';')
+    with open(path, encoding='utf-8') as csvFile:
+        reader = csv.reader(csvFile, delimiter=';')
         header = next(reader)
         data = []
-        for row in reader:
+        for ii, row in enumerate(reader):
             print(row[header.index('Tool')])
-            data.append(row)
             # breakpoint()
-            get_or_create_tools(row, header)
+            #print(ii, list_image[ii])
+            #row.append(list_image[ii]) # add list_image to the read data
+            data.append(row)
+            getOrCreateTools(row, header, list_image[ii])
     return header, data
 
 def csv2m4db_weatherdata(path):
@@ -474,10 +480,10 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
             add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
     return header, data
 
-def csv2m4db_norms(path):
+def csv2m4dbNorms(path):
     """Normen Uebersicht csv-file into BF M4 Django database, hard coded"""
-    with open(path, encoding='utf-8') as csv_file:
-        reader = csv.reader(csv_file, delimiter='|')
+    with open(path, encoding='utf-8') as csvFile:
+        reader = csv.reader(csvFile, delimiter='|')
         header = next(reader)
         data = []
         for row in reader:
@@ -485,10 +491,19 @@ def csv2m4db_norms(path):
                 print(row[header.index('Name')])
                 data.append(row)
                 # breakpoint()
-                get_or_create_norms(row, header)
+                getOrCreateNorms(row, header)
             except:
                 print('NOT WORKING FOR ROW ', row)
     return header, data
+
+def removeFromDatabase(modelName):
+    try:
+        records = modelName.objects.all()
+        records.delete()
+    except:
+        print('Removal of records <', modelName,'> from database failed...')
+    return
+
 # Script area (here you find examples to use the functions ahead)
 
 ## Example add/update Enargus data
@@ -499,9 +514,35 @@ def csv2m4db_norms(path):
 # path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
 # header, data = csv2m4db_modul(path_csv_modul)
 
+def retrieveImageFromDatabase():
+    import psycopg2
+    import pandas as pd
+    from sqlalchemy import create_engine
+    # Create an engine instance
+    #conn_string = 'postgresql://dbadmint:abc123@localhost:5432/m4_data3'
+    ## remote access after config the server see [[remote_postgresql.org]
+    conn_string = 'postgresql://adm_webcentral:abc123@database/m4_db_serv_22070'
+    alchemeyEngine = create_engine(conn_string)
+    conn = alchemeyEngine.connect() 
+    # Read data from PostgreSQL database table and load into a DataFrame instance
+    ## test the sql code and find the specific name of the tables, use pgadmin
+    df = pd.read_sql_query(
+        """
+        SELECT tools_over_tools.image
+        FROM tools_over_tools
+        """
+    , conn) 
+    conn.close()
+    alchemeyEngine.dispose()
+    #df.to_csv('image_list.csv')
+    return df 
+
 ## Example add/update Tool Uebersichts table
-path_csv_tools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-header, data = csv2m4db_tools(path_csv_tools)
+#removeFromDatabase(Tools)
+pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+list_image = retrieveImageFromDatabase()
+removeFromDatabase(Tools)
+header, data = csv2m4dbTools(pathCsvTools, list(list_image['image']))
 
 ## Example add/update Weatherdata table
 # path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
@@ -511,5 +552,5 @@ header, data = csv2m4db_tools(path_csv_tools)
 #path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
 #header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
 
-path_csv_norms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
-header, data = csv2m4db_norms(path_csv_norms)
+pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
+header, data = csv2m4dbNorms(pathCsvNorms)
