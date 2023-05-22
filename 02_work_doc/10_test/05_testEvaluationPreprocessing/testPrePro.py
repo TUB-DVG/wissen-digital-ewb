@@ -1,9 +1,26 @@
+"""Unittest for the evaluation.py
+
+This class tests the evaluation.py with the unittest-framework. The 
+Testcase is called via the commandline, by specifying the relative-path
+to the "01_daten"-folder. An execution could look as follows:
+```
+    python3 testPrePro.py ../../01_daten/
+```
+The testcase basically tests, if the output of the .csv-files is the
+same, when called with the `evaluation.py` and the `auswertung.py`.
+That means, that the old `auswertung.py` needs still be present on 
+the local machine to run the testcases 
+`testCheckIfCSVAreTheSameAsWithAuswertung` and 
+`testCheckIfCSVAreTheSameAsWithAuswertung`. The path to the the
+`auswertung.py` needs to be set in the `__init__`-method.
+"""
 import csv
+from filecmp import (
+    cmp,
+)
 import os.path
-import unittest
-import pdb 
 import sys
-from filecmp import cmp
+import unittest
 
 
 from pandas import (
@@ -12,12 +29,51 @@ from pandas import (
 )
 
 class TestPreModule(unittest.TestCase):
+    """Class to test the preprocessing
+
+    This class inherits from unittest.TestCase. It tests the preprocessing
+    -chain, in which a .xml/.xlsx-file is written as .csv-file, which can then
+    be read into the database.
     """
-    
-    """
-    def testReadInOfFirstLineFromXLSX(self) -> None:
-        """
+    def setUp(self) -> None:
+        """setUp of TestPreModule.
+
+        This method setts the attributes of `TestProModule`. It is called 
+        before every-testmethods execution.
         
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
+        """
+        self.pathToAuswertungPy = "../../../dvg_lib/ProjektListe/"
+        self.pathExcelModul = "../../../../../../Nextcloud/Shared/05_Degner/20230403_Verteiler_EWB_Projekte.xlsx"
+        self.pathXMLEnargus = "../../../../../../Nextcloud/Shared/01_Enargus/Daten_von_Bosch_2023_02_24/2023-02-24_enargus.xml"
+
+    def testdWriteOut(self) -> None:
+        """
+
+        This method first creates an empty dataset and hands it to the
+        `writeDataframe2CSV`. It is then tested, if a .csv-file is 
+        created from an empty Dataframe.
+        After that, a Dataframe is created from a dictionary. The keys
+        of the dictionary, containing the header-names of the later
+        .csv-file.
+        The created Dataframe is then written with the 
+        `writeDataframe2CSV` to a .csv-file. It is tested, if the 
+        .csv-file exists and if it contains one data-row, and 5 
+        header-columns.
+        Lastly, the `writeDataframe2CSV` is called in append mode.
+        It is then tested, if the .csv-file now contains 2 rows.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
         """
         dataframe = DataFrame()
 
@@ -109,6 +165,13 @@ class TestPreModule(unittest.TestCase):
         class inside the `evaluation.py`. The method reads in a 
         parameter-file in which the mapping between the .csv-columns 
         and thte xml-elements is placed.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
         """
 
         returnDict = EvaluationUtils.readDictXML2CSV(
@@ -167,6 +230,13 @@ class TestPreModule(unittest.TestCase):
         `testReadGivenColumnsFromCSV`. The use of this testmethod 
         should be discussed. It can just detect unwanted changes in 
         the parameter-files, which can lead to errors. 
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
         """
 
         returnedList = EvaluationUtils.readGivenColumnsFromCSV(
@@ -217,28 +287,41 @@ class TestPreModule(unittest.TestCase):
 
         This method checks, if `evalution.py`, which is a refactored 
         version of `auswertung.py` produces the same contents in the 
-        .csv-files.
+        .csv-files. Therefore the content of the `pre_modul.py` is 
+        placed here to load the `20230403_Verteiler_EWB_Projekte.xlsx`.
+        The path to the .xlsx file is saved inside the 
+        `self.pathExcelModul` and needs to be modified before execution.
+        The .csv-file is then produced with the old `auswertung.py`
+        and the new `evaluation.py` and the contents of the two files
+        compared.
+        The same procedure is repeated with the EnargusXML-file.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
         """
 
-        pathToAuswertungPy = "../../../dvg_lib/ProjektListe/"
+        
 
-        if not os.path.isfile(pathToAuswertungPy + "auswertung.py"):
+        if not os.path.isfile(self.pathToAuswertungPy + "auswertung.py"):
             self.assertTrue(
                 False, 
                 "Please set the path to auswertung.py in testCheckIfCSVAreTheSameAsWithAuswertung!",
             )
             return
 
-        sys.path.insert(0, pathToAuswertungPy)
+        sys.path.insert(0, self.pathToAuswertungPy)
         import auswertung as asw
 
         os.chdir(
             '/home/tobias/Aufgaben/07_dockerWithDB/webcentral/02_work_doc/01_daten/01_prePro'
         )
 
-        pathExcel = '../../../../../../Nextcloud/Shared/05_Degner/20230403_Verteiler_EWB_Projekte.xlsx'
         dataframeXLSX = read_excel(
-            pathExcel, 
+            self.pathExcelModul, 
             sheet_name='Projektverteiler', 
             dtype="str",
         )
@@ -306,9 +389,9 @@ class TestPreModule(unittest.TestCase):
 
         listCol = '02_parameter_files/col_xml2csv.csv'
         xml2csv = '02_parameter_files/col_dict_xml2csv.csv'
-        pathXML = "../../../../../../Nextcloud/Shared/01_Enargus/Daten_von_Bosch_2023_02_24/2023-02-24_enargus.xml"
+        
         dataframeFromAuswertung = asw.read_xml_enargus(
-            pathXML, 
+            self.pathXMLEnargus, 
             xml2csv, 
             listCol
         )
@@ -320,7 +403,7 @@ class TestPreModule(unittest.TestCase):
         )
 
         dataframeFromEvaluationModule = EvaluationUtils.readXMLEnargus(
-            pathXML, 
+            self.pathXMLEnargus, 
             xml2csv, 
             listCol,
         )
@@ -339,26 +422,36 @@ class TestPreModule(unittest.TestCase):
             "File-contents from the .csv-files produced by evaluation and auswertung differ (For Enargus)!",
         )
 
- 
+    
+    @classmethod
+    def tearDownClass(cls) -> None:
+        """Method, which is called after all tests are executed.
 
-            
+        This method is called after all Tests of `TestPreModul` were
+        executed. It then deletes all created test-.csv-files. Since 
+        this method is a static-class method and not a instance-method,
+        it does not get the `self`-attribute. Its not mandatory, but a
+        coding style. See [1] for more information.
 
-    def testIfColumnsAreRenamed(self):
-        """Tests if Columns are renamed
+        Parameters
+        ----------
 
-        In the process of creating the module .csv-file from the 
-        xlsx-file the columns `Modulzuordnung PtJ - i aktuell`
-        are renamed to `modulzuordnung_ptj_i`, where i goes from 1 to 4.
-        Furthermore the column `Förderkenz. (0010)` is renamed to 
-        `FKZ`. It is tested, if the renaming was successful.
-        
+        Returns
+        -------
+        None
+
+        References
+        ----------
+        [1] https://peps.python.org/pep-0008/#function-and-method-arguments
         """
-        pass
+        os.remove("enargusNewEvaluation.csv")
+        os.remove("enargusOldAuswertung.csv")
+        os.remove("modulzuordnungNewEvaluation.csv")
+        os.remove("modulzuordnungOldAuswertung.csv")
+        os.remove("testWriteCSV.csv")
 
 if __name__ == "__main__":
     os.chdir(sys.argv[1])
     sys.path.insert(0, os.getcwd())
-    pdb.set_trace()
     from evaluation import EvaluationUtils
-
-    unittest.main()
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
