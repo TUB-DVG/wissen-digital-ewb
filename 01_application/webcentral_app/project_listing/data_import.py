@@ -192,7 +192,7 @@ def get_or_create_modulen_zuordnung(row, header):
     )
     return obj, created
 
-def getOrCreateTools(row, header, list_image):
+def getOrCreateTools(row, header, image_path):
     """
     add entry into table Tools or/and return entry key
     """
@@ -210,8 +210,8 @@ def getOrCreateTools(row, header, list_image):
     alternatives = row[header.index('Alternativen')]
     specificApplication = row[header.index('konkrete Anwendung in EWB Projekten')]
     # userEvaluation = row[header.index('Nutzerbewertungen')]
-    if len(list_image)  != 0:
-        image = list_image
+    if type(image_path) == str:
+        image = image_path
     else:
         image = None
     # released
@@ -437,7 +437,7 @@ def read_print_csv(path):
             # print(row[header.index('FKZ')])
     return header, data
 
-def csv2m4dbTools(path, list_image):
+def csv2m4dbTools(path, toolsImages):
     """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csvFile:
         reader = csv.reader(csvFile, delimiter=';')
@@ -445,13 +445,10 @@ def csv2m4dbTools(path, list_image):
         data = []
         for ii, row in enumerate(reader):
             print(row[header.index('Tool')])
-            # breakpoint()
-            #print(ii, list_image[ii])
-            #row.append(list_image[ii]) # add list_image to the read data
-            data.append(row)
-            getOrCreateTools(row, header, list_image[ii])
-    return header, data
-
+            image = toolsImages.loc[row[header.index('Tool')]]['image']
+            print(image)
+            getOrCreateTools(row, header, image)
+    return header, data   
 def csv2m4db_weatherdata(path):
     """Weatherdata csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csv_file:
@@ -515,6 +512,7 @@ def removeFromDatabase(modelName):
 # header, data = csv2m4db_modul(path_csv_modul)
 
 def retrieveImageFromDatabase():
+    # retrieve image path and tool names from the database <- to be executed BEFORE Tools in database are modified!
     import psycopg2
     import pandas as pd
     from sqlalchemy import create_engine
@@ -528,21 +526,24 @@ def retrieveImageFromDatabase():
     ## test the sql code and find the specific name of the tables, use pgadmin
     df = pd.read_sql_query(
         """
-        SELECT tools_over_tools.image
+        SELECT tools_over_tools.Bezeichnung, tools_over_tools.Image
         FROM tools_over_tools
         """
     , conn) 
     conn.close()
     alchemeyEngine.dispose()
-    #df.to_csv('image_list.csv')
+    df.to_csv('/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv')
     return df 
 
-## Example add/update Tool Uebersichts table
+# retrieved BEFORE Tools are modified in database! 
+#retrieveImageFromDatabase()
 #removeFromDatabase(Tools)
-pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-list_image = retrieveImageFromDatabase()
-removeFromDatabase(Tools)
-header, data = csv2m4dbTools(pathCsvTools, list(list_image['image']))
+#re-import tools into database
+pathCsvTools='./02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+pathCsvToolsImages = './02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
+import pandas as pd
+toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
+header, data = csv2m4dbTools(pathCsvTools, toolsImages)
 
 ## Example add/update Weatherdata table
 # path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
@@ -552,5 +553,5 @@ header, data = csv2m4dbTools(pathCsvTools, list(list_image['image']))
 #path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
 #header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
 
-pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
-header, data = csv2m4dbNorms(pathCsvNorms)
+#pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
+#header, data = csv2m4dbNorms(pathCsvNorms)
