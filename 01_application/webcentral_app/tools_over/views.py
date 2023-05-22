@@ -11,10 +11,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Tools, Rating # maybe I need also the other models
 
 class UpdateProperties:
-    def __init__(self, class_name, label, color_class):
-        self.class_name = class_name
+    def __init__(self, className, label, colorClass):
+        self.className = className
         self.label = label
-        self.color_class = color_class
+        self.colorClass = colorClass
 
 @login_required(login_url='login')
 def index(request):
@@ -22,10 +22,8 @@ def index(request):
     shows the list of all projects including some key features
     """
     tools = Tools.objects.all() # reads all data from table Teilprojekt
-    filtered_by = [None]*3
+    filteredBy = [None]*3
     searched=None
-    print('len of tools', len(tools))
-
  
     if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
         usage=request.GET.get('u')
@@ -33,50 +31,49 @@ def index(request):
         lifeCyclePhase=request.GET.get('lcp')
         searched=request.GET.get('searched')
         tools=Tools.objects.filter(usage__icontains=usage,lifeCyclePhase__icontains=lifeCyclePhase,licence__icontains=licence,name__icontains=searched)
-        filtered_by = [usage, licence, lifeCyclePhase]
+        filteredBy = [usage, licence, lifeCyclePhase]
               
     tools = list(sorted(tools, key=lambda obj:obj.name))
+    print('len of tools', len(tools))
+    toolsPaginator= Paginator(tools,12)
+    pageNum= request.GET.get('page',None)
+    page=toolsPaginator.get_page(pageNum)
 
-    tools_paginator= Paginator (tools,12)
-
-    page_num= request.GET.get('page',None)
-    page=tools_paginator.get_page(page_num)
-
-    #is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
-    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
+    #isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
+    isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
     
 
-    if is_ajax_request:
+    if isAjaxRequest:
         html = render_to_string(
             template_name="tools_over/tool-listings-results.html", 
             context = {
                 'page': page,
                 'search':searched,
-                'usage': filtered_by[0],
-                'licence': filtered_by[1],
-                'lifeCyclePhase': filtered_by[2]
+                'usage': filteredBy[0],
+                'licence': filteredBy[1],
+                'lifeCyclePhase': filteredBy[2]
             }
 
         )
 
-        data_dict = {"html_from_view": html}
+        dataDict = {"html_from_view": html}
 
-        return JsonResponse(data=data_dict, safe=False)
+        return JsonResponse(data=dataDict, safe=False)
 
        
     context = {
         'page': page,
         'search':searched,
-        'usage': filtered_by[0],
-        'licence': filtered_by[1],
-        'lifeCyclePhase': filtered_by[2]
+        'usage': filteredBy[0],
+        'licence': filteredBy[1],
+        'lifeCyclePhase': filteredBy[2]
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
     
 
    
-def tool_view(request, id):
+def toolView(request, id):
     """
     shows of the key features one project
     """
@@ -112,8 +109,8 @@ def tool_view(request, id):
         'usages': usages,
         'lifeCyclePhases': lifeCyclePhases,
         'lastUpdate': updateProperties,
-        'lastUpdateClass': updateProperties.class_name,
-        'lastUpdateColor': updateProperties.color_class,
+        'lastUpdateClass': updateProperties.className,
+        'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
         'ratings': ratings,
         'ratingPercent5': "{:,.2f}".format(ratingPercent5),
@@ -127,15 +124,15 @@ def tool_view(request, id):
 
     return render(request, 'tools_over/tool-detail.html', context)
 
-def Post_Review(request,id):
+def postReview(request,id):
     if request.method=="POST":
         User=request.user
-        tool=tool = get_object_or_404(Tools, pk= id)
+        tool= get_object_or_404(Tools, pk= id)
         comment=request.POST['comment']
         score=request.POST['score']
         rating=Rating.objects.create(ratingFrom=User,ratingFor=tool,score=score,comment=comment)
 
-        return  tool_view(request,id)
+        return  toolView(request,id)
 
         
  
