@@ -1,41 +1,33 @@
 from tracemalloc import start
 import pandas as pd
-import wetterdienst
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
-import plotly.express as px
 import math
 import plotly.graph_objects as go
-def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str)-> tuple[int, pd.DataFrame,pd.DataFrame]:
+def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str,referenceyear:str):
+    if referenceyear=="on":
+        #Setting up the resolution for data filtering
+        Resolution='HOURLY'
+        #Selecting the dataset
+        Dataset='AIR_TEMPERATURE'
+        # Parameter variable selection
+        Parameter='TEMPERATURE_AIR_MEAN_200'
+        #Setting up the Period
+        Period='RECENT'
+        # Acquiring all the stations that provide data according to selected filters
+        stations = DwdObservationRequest(
+            parameter=Parameter,
+            resolution=Resolution,
+            period=Period
+            )
+        data= stations.filter_by_station_id(station_id=Station)
+        station_data = data.values.all().df
 
+        #Input from the server is Im Kelvin converted to celsius
+        station_data['value']=station_data['value'].apply(lambda x: x - 273.15)
+    else:
+        station_data=pd.read_csv('TRY2015_524124130664_Jahr.csv')
+        station_data["date"] = pd.to_datetime(station_data[["YEAR","MONTH", "DAY", "HOUR"]], format="%Y-%m-%d %H",utc=True)
 
-    #Setting up the resolution for data filtering
-    Resolution='HOURLY'
-
-    #Selecting the dataset
-
-    Dataset='AIR_TEMPERATURE'
-    # Parameter variable selection
-
-    Parameter='TEMPERATURE_AIR_MEAN_200'
-    #Setting up the Period
-
-    Period='RECENT'
-    # Acquiring all the stations that provide data according to selected filters
-    stations = DwdObservationRequest(
-        parameter=Parameter,
-        resolution=Resolution,
-        period=Period
-        )
-    data= stations.filter_by_station_id(station_id=Station)
-    station_data = data.values.all().df
-
-
-
-    #Input from the server is Im Kelvin converted to celsius
-    station_data['value']=station_data['value'].apply(lambda x: x - 273.15)
-
-
-    
     # Fill in the missing entries in the wetterdient data and mark them
     Fehlende_werte=0
     station_data['fehlend'] = 'False'
@@ -235,8 +227,8 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
         Q[i]=Q[i]*(Q_input/Q_sum)
      
         Q_WW.append(D*(Q[i]/h[i]))
-
-    start=station_data.index[station_data.date == pd.Timestamp(start_date+" 00:00:00+00:00")].tolist()[0]
+    print(station_data)
+    start=station_data.index[station_data.date == pd.Timestamp(start_date+" 01:00:00+00:00")].tolist()[0]
     end=station_data.index[station_data.date == pd.Timestamp(end_date+" 23:00:00+00:00")].tolist()[0] +1
 
     heat_approximation_df = pd.DataFrame({'Time':station_data['date'][start:end],'Last':Q[start:end],'WW_Last':Q_WW[start:end],'fehlend':station_data['fehlend'][start:end]})
@@ -249,3 +241,5 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
 
 
 
+#warmelast(2,1500000,10500,"2021-01-01","2021-12-31","off")
+#print(df)
