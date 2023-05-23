@@ -9,15 +9,12 @@ import os
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 
-os.chdir(r'C:\Users\Drass\Vba_Interface_Dev\webcentral\01_application\webcentral_app\LastProfile\Dash_app')
+PATH = os.chdir(r'./LastProfile/Dash_app')
 
-df_haupt=pd.read_csv('Hauptblatt2.csv')
-
-
-data=[]
+df_haupt = pd.read_csv('Hauptblatt2.csv')
 
 
-
+data = []
 
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 
@@ -31,7 +28,7 @@ app.layout = html.Div([
     dcc.Download(id="download-csv"),
     # Dropdown for the available applications
     dcc.Dropdown(
-        options=[
+        options = [
                 {'label': 'Gewerbe allgemein ', 'value': '2'},
                 {'label': 'Gewerbe werktags 8-18 ', 'value': '3'},
                 {'label': 'Gewerbe Verbrauch Abend', 'value': '4'},
@@ -45,13 +42,15 @@ app.layout = html.Div([
                 {'label': 'Übrige Landwirtschaftsbe ', 'value': '12'},
 
             ],
-        id='application'
+        id = 'application'
         ),
         # Input Field for the 
-    dcc.Input(id="power_requirement", type="number", placeholder="Jahresstrombedarfs in kWh/a",style={'width':'200px'}, debounce=True),
+    dcc.Input(id = "powerRequirement", type = "number", 
+    placeholder = "Jahresstrombedarfs in kWh/a",
+    style = {'width':'200px'}, debounce=True),
     
     dcc.RadioItems(
-        options=[
+        options = [
                 {'label': 'January', 'value': '1'},
                 {'label': 'February', 'value': '2'},
                 {'label': 'March', 'value': '3'},
@@ -64,22 +63,18 @@ app.layout = html.Div([
                 {'label': 'October', 'value': '10'},
                 {'label': 'November', 'value': '11'},
                 {'label': 'December', 'value': '12'},
-
-
                 {'label': 'All', 'value': 'All'},
             ],
-        value='All',
-        id='display_Month',
-        inline=True
+        value = 'All',
+        id = 'display_Month',
+        inline = True
     ),
-    dcc.Graph(id='power_graph', figure={}),
+    dcc.Graph(id = 'power_graph', figure={}),
 
-   
-
-
-
-
-])
+# style is used to control css output directly from dash 
+],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)","font-size":" 18.75px",
+"font-weight": "400",
+"line-height": "22.5px"})
 # ------------------------------------------------------------------------------
 # Connect the Plotly graph with Dash Components
 
@@ -88,29 +83,34 @@ app.layout = html.Div([
     Output(component_id='power_graph', component_property='figure'),
     Input('application','value'),
  
-    Input('power_requirement','value'),
+    Input('powerRequirement','value'),
     Input('display_Month','value'),
     prevent_initial_call=True,)
     
-def update_power_graph(application:str,power_requirement:int,display_Month:str):
+def updatePowerGraph(application:str,powerRequirement:int,display_Month:str):
 
-    if application!=None:
+    if application != None:
 
-        WW=Stromapproximation(int(application),power_requirement)
-        days=df_haupt['Datum/ Uhrzeit']
+        WW = Stromapproximation(int(application),powerRequirement)
+        days = df_haupt['Datum/ Uhrzeit']
         global data
         
         data = {'Time':days[0:8760],'Last':WW}
-        data=pd.DataFrame(data)
+        data = pd.DataFrame(data)
         data['Time'] = pd.to_datetime(data['Time'], errors='coerce')
-        if display_Month=='All':   
+        if display_Month == 'All':   
          
-            result=data
+            result = data
         else:
-            result={'Last':(data.groupby(data.Time.dt.month).get_group(int(display_Month)))['Last'],'Time':(data.groupby(data.Time.dt.month).get_group(int(display_Month)))['Time']}
+            result = {'Last':
+            (data.groupby(data.Time.dt.month).
+            get_group(int(display_Month)))['Last'],
+            'Time':(data.groupby(data.Time.dt.month).
+            get_group(int(display_Month)))['Time']}
         from plotly.subplots import make_subplots
         fig = make_subplots()
-        fig.add_trace(go.Scatter(name='Strom-lastgang in kW',x=result['Time'], y=result['Last'],mode='lines', line=dict(color="#0000ff")))
+        fig.add_trace(go.Scatter(name='Strom-lastgang in kW',x=result['Time'],
+         y = result['Last'],mode='lines', line=dict(color="#0000ff")))
         fig.update_xaxes(
         tickangle = 90,
         title_text = "Datum",
@@ -131,18 +131,19 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
     
     Input('application','value'),
 
-    Input('power_requirement','value'),
+    Input('powerRequirement','value'),
         State("application","options"),
     prevent_initial_call=True,
 )
 
-def download_as_csv(n_clicks,application:str,power_requirement:int,state):
+def DownloadAsCsv(n_clicks,application:str,powerRequirement:int,state):
     if not n_clicks:
         raise PreventUpdate
     else:
         #print(state)
         label = [x['label'] for x in state if x['value'] == application]
-        data.columns = [['Jahresstrombedarf in KWh/a :'+str(power_requirement),''   ],['Anwendung:'+label[0],''],['',''],['Datum','Last']]    
+        data.columns = [['Jahresstrombedarf in KWh/a :'+str(powerRequirement),''],
+        ['Anwendung:' + label[0],''],['',''],['Datum','Last']]    
         #print (d)
         return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index=False)
 # ------------------------------------------------------------------------------
