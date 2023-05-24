@@ -1,0 +1,6 @@
+run_tests:
+  image: python:3.9-slim-buster
+  script:
+    - cd 02_work_doc/10_test/02_docker
+    - pip install -r requirementsTesting.txt
+    - 
