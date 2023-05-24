@@ -46,7 +46,7 @@ class TestDockerComposeEnvironments(TestCase):
         None
         """
         
-        os.chdir("../../../")
+    #     #os.chdir("../../../")
 
         os.system("docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --remove-orphans")
         os.system("docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --remove-orphans")
