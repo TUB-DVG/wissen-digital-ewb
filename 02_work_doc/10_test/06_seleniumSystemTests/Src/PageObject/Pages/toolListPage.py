@@ -11,6 +11,8 @@ from selenium import (
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+
 
 from Src.PageObject.Locators import Locator
 
@@ -83,4 +85,59 @@ class ToolListPage(object):
             Locator.searchStrBoxX,
         )
 
+    def getSearchCategorySelect(self) -> WebElement:
+        """Returns Categorie-Select from Search Tab
+        
+        """
 
+        return Select(self.driver.find_element(
+            By.XPATH, 
+            Locator.searchCategorieSelect,
+        ))
+
+    def getSearchLicenceSelect(self) -> WebElement:
+        """Returns Licence-Select from Search Tab
+        
+        """
+
+        return Select(self.driver.find_element(
+            By.XPATH, 
+            Locator.searchLicenceSelect,
+        ))
+
+    def getSearchLifecycleSelect(self) -> WebElement:
+        """Returns Licence-Select from Search Tab
+        
+        """
+
+        return Select(self.driver.find_element(
+            By.XPATH, 
+            Locator.searchLifecycleSelect,
+        ))
+
+    def getMagniferButton(self):
+        """Returns the magnitfer-button in the search-bar.
+        
+        """
+
+        return self.driver.find_element(
+            By.XPATH, 
+            Locator.searchMagniferButton,
+        )
+
+    def getListOfCurrentlyActiveSearchFilter(self):
+        """Returns list of currently active search filter.
+        
+        """
+        return self.driver.find_elements(
+            By.XPATH, 
+            Locator.activeSearchFilter,
+        )
+    
+    def getResetButton(self):
+        """Returns the Search-Reset Button.
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.searchResetButton,
+        )
