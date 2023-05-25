@@ -1,8 +1,14 @@
-"""This Module shows, how selenium can be used as a testting tool, to perform
-system-/accpetance tests. These tests are from a customer/user perspective and
-test the functionality of the system as a whole. The tests are often testing a
-user-Story. This is a typical use of the system.
-In this example, selenium is used together with the unittest-framework
+"""Tests, if the Prod-Env and the Dev-Env start without errors.
+
+This Module acts as a Unittest-Testcase to automatically test the
+Docker-compose-startup of the Development- and the Production-
+Environment. The Tests can be executed by creating a 
+virtual environemnt from the `requirementsTesting.txt`. After 
+activation, the tests can be started via:
+```
+    python3 testDockerCompose.py
+```
+If it outputs 'Ok', all tests passed.
 """
 import os
 import time
@@ -12,116 +18,186 @@ from unittest import (
     main,
     )
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-#from django.tests import TestCase
+import docker
 
 
-class TestLogin(TestCase):
-    """This class tests the login of the webCentral Web app.
+class TestDockerComposeEnvironments(TestCase):
+    """Test-Class for Testing if the Docker-Compose-project executes
 
+    This Class inherits from `unittest.TestCase`. It runs the 
+    Docker-compose Production-Env and the Docker-compose Development-
+    Env and checks if any errors occur.
     """
-    def setUp(self):
-        """This method gets executed before every testcase. 
-        It creates a new browser window and opens the webcentral app.
 
+    @staticmethod
+    def setUpClass() -> None:
+        """Stops all running containers before test-execution.
+
+        This static-class-method is executed before the 
+        instanciation of `TestDockerComposeEnvionemnts`. It ensures,
+        that all running containers are stoped before the test
+        execution starts.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
         """
-        self.browser = webdriver.Firefox()
-        self.localAdress = "http://127.0.0.1:" + os.environ.get("PORT_TO_OUTSIDE")
-        self.browser.get(self.localAdress)
-
-    def tearDown(self):
-        self.browser.quit()
-
-
-    def _loginAsSuperUser(self):
-        """This protected method is used internally to login as superuser in the different testcases.
-
-        """
-
-        self.browser.get(self.localAdress + "/admin")
-
-        time.sleep(1)
-
-        usernameField = self.browser.find_element("xpath", '//input[@name="username"]')
-        usernameField.send_keys(os.environ.get("DJANGO_SUPERUSER_USERNAME"))
-
-        passwordField = self.browser.find_element("xpath", '//input[@name="password"]')
-        passwordField.send_keys(os.environ.get("DJANGO_SUPERUSER_PASSWORD"))
-
-        submitButton = self.browser.find_element("xpath", '//input[@type="submit"]')
-        submitButton.click()
-
-        time.sleep(1)
-
-    def testIfSuperuserIsPresent(self):
-        """This Testcase checks if it is possible to login with the superuser-credentials
-        from the .env-file.
-
-        """
-
-        #pdb.set_trace()
-
-        self.assertTrue("Wissensplattform" in self.browser.title)
-
-        print("Trying to log-in with superuser-credentials from .env-file...")
         
-        self._loginAsSuperUser()
+    #     #os.chdir("../../../")
 
-        self.assertFalse(
-            self.browser.title == "Log in | Django site admin", 
-            "Couldnt log-in as superuser. Check if automated superuser creation was successful.",
+        os.system("docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --remove-orphans")
+        os.system("docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --remove-orphans")
+        dockerInstance = docker.DockerClient(
+            base_url='unix://var/run/docker.sock',
+        )
+        for container in dockerInstance.containers.list():
+            container.stop()
+
+    def setUp(self):
+        """setUp-method, which is called before every test.
+
+        
+        """
+        self.dockerInstance = docker.DockerClient(
+            base_url='unix://var/run/docker.sock',
+        )
+    
+    def tearDown(self) -> None:
+        """Closes the open Socket-connection to the docker-socket
+
+        This `tearDown`-method gets executed after every test. It
+        closes the connection to the Docker-SOCKET. Otherwise an
+        error is printed to the console.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
+        """
+        self.dockerInstance.close()
+
+    def testProd(self) -> None:
+        """Tests if the production-environment can be run without errors.
+
+        This method automatically runs the docker-compose production
+        envirionment and checks if all needed containers are running 
+        and all needed volumes were created.
+
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
+        """
+
+        
+        os.system(
+            "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
         )
 
-        #self.browser.get(self.localAdress)
+        print("Waiting 3 seconds, to start Docker-Compose-Project...")
+        time.sleep(3)
 
-    def testDatabaseDumpIsLoaded(self):
-        """This Testcase checks, if the database is filled, by going to the "Digitale Werkzeuge"-site 
-        and checking if the list is empty.
+        self.assertEqual(
+            len(self.dockerInstance.containers.list()),
+            3,
+            "Testing-Production-env: The number of running containers does not match 3!",
+        )
 
-        """
-        print("Checking, if Digitale Werkzeuge is populated...")
-        self._loginAsSuperUser()
+        dictToBeComparedWith = {
+            "proxy": "running",
+            "webcentral": "running",
+            "database": "running",
+        }
 
-        self.browser.get(self.localAdress)
-
-        linkToToolList = self.browser.find_element("xpath", '//a[@href="/tool_list/"]')
-        linkToToolList.click()
-
-        time.sleep(1)
-
-        listOfCards = self.browser.find_elements("xpath", '//div[@class="card-body pb-0"]')
-        self.assertNotEqual(len(listOfCards), 0, "Es sind keine Elemente in der Liste der digitalen Werkzeuge!")
-    
-    def testImagesInToolList(self):
-        """This TestCase tests if the images of the Tools are present on the Tab Digitale Werkzeuge.
-        It does this by loading the src of the image. If the returned page has 'Page not found' in title,
-        the image is not present, and an assertation error is thrown. This test is done for 5 images.
-
-        """
-        print("Checking if images are present in the Tool List...")
-        self._loginAsSuperUser()
-
-        self.browser.get(self.localAdress)
-
-        linkToToolList = self.browser.find_element("xpath", '//a[@href="/tool_list/"]')
-        linkToToolList.click()
-
-        time.sleep(1)
-
+        dictNameToStatus = {}
+        for container in self.dockerInstance.containers.list():
+            dictNameToStatus[container.name] = container.status
         
+        self.assertTrue(
+            dictNameToStatus == dictToBeComparedWith,
+            "Testing Production-env: Expected Name and Status of Containers doesnt match the expected values!",
+        )
+        
+        listOfVolumeNames = []
+        for volume in self.dockerInstance.volumes.list():
+            if "static-data" in volume.name or "pgdata" in volume.name:
+                listOfVolumeNames.append(volume.name)
+        
+        self.assertEqual(2,
+                        len(listOfVolumeNames),
+                        "Testing Production-env: Number of found volumes, with the name static-data and pgdata should be 2!",
+        )
 
-        # check 5 cards:
-        for numberOfCheckedImages in range(5):
-            listOfCardImg = self.browser.find_elements("xpath", '//img[@alt="tool image (if=db)"]')
-            urlToImage = listOfCardImg[numberOfCheckedImages].get_attribute("src")
-            self.browser.get(urlToImage)
-            self.assertFalse("Page not found" in self.browser.title, "Image not found!")
+        os.system(
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
+        )
+        os.system("docker container stop proxy")
 
-            self.browser.get("http://127.0.0.1:8070/tool_list/")
+        time.sleep(1)
 
+    def testDev(self) -> None:
+        """Tests if the Development Environment can be run.
 
+        This method tests if the docker-compose development-
+        environment rus without errors. Therefore it starts the envionment
+        and checks if the number of running container is 2 and the number 
+        of volumes with the name `pgdata` is one.
 
+        Parameters
+        ----------
+
+        Returns
+        -------
+        None
+        """
+        os.system(
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
+        )
+
+        print("Waiting 3 seconds, to start Docker-Compose-Project...")
+        time.sleep(3)
+
+        self.assertEqual(
+            len(self.dockerInstance.containers.list()),
+            2,
+            "Testing-Development-env: The number of running containers does not match 2!",
+        )
+
+        dictToBeComparedWith = {
+            "webcentral": "running",
+            "database": "running",
+        }
+
+        dictNameToStatus = {}
+        for container in self.dockerInstance.containers.list():
+            dictNameToStatus[container.name] = container.status
+        
+        self.assertTrue(
+            dictNameToStatus == dictToBeComparedWith,
+            "Testing Development-env: Expected Name and Status of Containers doesnt match the expected values!",
+        )
+        
+        listOfVolumeNames = []
+        for volume in self.dockerInstance.volumes.list():
+            if "pgdata" in volume.name:
+                listOfVolumeNames.append(volume.name)
+        
+        self.assertEqual(1,
+                        len(listOfVolumeNames),
+                        "Testing Development-env: Number of found volumes, with the name static-data and pgdata should be 1!",
+        )
+
+        os.system(
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
+        )
+        time.sleep(1)
 
 if __name__ == "__main__":
     main()
