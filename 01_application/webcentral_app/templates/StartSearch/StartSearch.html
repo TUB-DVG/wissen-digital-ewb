@@ -22,5 +22,31 @@
 <!-- Page Banner END -->
 <!-- Content START -->
 
+<!-- Page content START -->
+<section class="pt-0">
+  <div class="container">
+    <!-- Filter bar START -->
+    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
+      <!-- Input -->
+      <div class="row g-3">
+        <!-- Input text -->
+        <div class="col-xl-7" title="Allgemeine Suche">
+          <input id="search-input-tools" class="form-control me-1"
+                 type="search" placeholder="Suchbeeingabe" name='searchValue'>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                  id="search-submit-tools" href="">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Row END -->
+    <!-- Filter bar END -->
+  </div>
+</section>
 <!-- Content END -->
 {% endblock %}
