@@ -2,6 +2,6 @@
 from django.shortcuts import render
 
 
-def index(request):
-    """View function of the start page."""
+def startSearch(request):
+    """View function of the start page including central search function."""
     return render(request, 'StartSearch/StartSearch.html')
