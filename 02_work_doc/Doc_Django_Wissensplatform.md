@@ -126,15 +126,15 @@ def about(request):
 ```
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
-        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-         <title>{% block title %} {% endblock %}</title>
-    </head>
-    <body>
-        {% block content %} {% endblock %}
-    </body>
+  <head>
+    <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
+      <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+      <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
 </html>
 ```
 - {% %} is [jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)) syntax, own, kind of php language 
