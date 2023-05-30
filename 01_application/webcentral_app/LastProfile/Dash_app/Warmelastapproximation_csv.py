@@ -1,5 +1,3 @@
-import pathlib
-import os.path 
 from tracemalloc import start
 import pandas as pd
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
@@ -23,9 +21,11 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
             )
         data= stations.filter_by_station_id(station_id=Station)
         station_data = data.values.all().df
+        print(data)
 
         #Input from the server is Im Kelvin converted to celsius
         station_data['value']=station_data['value'].apply(lambda x: x - 273.15)
+        print(station_data)
     else:
         station_data=pd.read_csv('TRY2015_524124130664_Jahr.csv')
         station_data["date"] = pd.to_datetime(station_data[["YEAR","MONTH", "DAY", "HOUR"]], format="%Y-%m-%d %H",utc=True)
@@ -40,7 +40,8 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
             station_data['fehlend'][i]='True'
 
     # Prepare csv file to read factors
-    df_warme = pd.read_csv(DATA_PATH)
+    df_warme = pd.read_csv('Wärme_Strom.csv')
+
 
     #Load regression coefficients
     A=float(df_warme.iloc[:,9][Application+4])
@@ -86,59 +87,56 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
     Zeile_Anfang=Application*13 -24
 
     #Load hour factors for Mondays
-    Column=18
+    Splate=18
     F_Montag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Montag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Montag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
 
     #Load hour factors for Tuesdays
-    Column=44
+    Splate=44
     F_Dienstag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Dienstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Dienstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
     #Load hour factors for Wednesdays
 
-    Column=70
+    Splate=70
     F_Mittwoch = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Mittwoch[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Mittwoch[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
     #Load hour factors for Thursdays
-    Column=96
+    Splate=96
     F_Donnerstag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Donnerstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Donnerstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
     #Load hour factors for Fridays
-    Column=122
+    Splate=122
     F_Freitag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Freitag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Freitag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
 
     #Load hour factors for Saturdays
-    Column=148
+    Splate=148
     F_Samstag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Samstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
+            F_Samstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
     #Load hour factors for Sundays
-    Column=174
+    Splate=174
     F_Sonntag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Sonntag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
-
-
-
+            F_Sonntag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
 
     # Calculation of the hourly heat demand
     Q_average=heat_demand
@@ -228,16 +226,13 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
         Q[i]=Q[i]*(Q_input/Q_sum)
      
         Q_WW.append(D*(Q[i]/h[i]))
-    print(station_data)
+
     start=station_data.index[station_data.date == pd.Timestamp(start_date+" 01:00:00+00:00")].tolist()[0]
     end=station_data.index[station_data.date == pd.Timestamp(end_date+" 23:00:00+00:00")].tolist()[0] +1
 
-    heat_approximation_df = pd.DataFrame({'Last':Q[start:end],'Time':station_data['date'][start:end],'fehlend':station_data['fehlend'][start:end]})
-    WW_heat_approximation=pd.DataFrame({'Last':Q_WW[start:end],'Time':station_data['date'][start:end],'fehlend':station_data['fehlend'][start:end]})
-    
-  
+    heat_approximation_df = pd.DataFrame({'Time':station_data['date'][start:end],'Last':Q[start:end],'WW_Last':Q_WW[start:end],'fehlend':station_data['fehlend'][start:end]})
 
-    return Fehlende_werte,heat_approximation_df,WW_heat_approximation
+    return Fehlende_werte,heat_approximation_df
 
 
 
