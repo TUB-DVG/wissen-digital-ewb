@@ -146,15 +146,17 @@ app.layout = html.Div([
 # Connect the Plotly graphs with Dash Components
 @app.callback(
    Output(component_id='hide_text', component_property='style'),
+   Output(component_id='hide_elements', component_property='style'),
    [Input(component_id='referenceyear', component_property='value')])
 # Hide explanation text for refrenceyear run
-def show_hide_txt(visibility_state):
+def show_hide(visibility_state):
     if visibility_state == 'on':
-        return {'display': 'none'}
+        return {'display': 'none'},{'display': 'none'}
     if visibility_state == 'off':
-        return {'display': 'block'}
+        return {'display': 'block'},{'display': 'block'}
+"""
 @app.callback(
-   Output(component_id='hide_elements', component_property='style'),
+   
    [Input(component_id='referenceyear', component_property='value')])
 # Hide unnecessary elements for refrenceyear run
 def show_hide_element(visibility_state):
@@ -162,6 +164,8 @@ def show_hide_element(visibility_state):
         return {'display': 'block'}
     if visibility_state == 'off':
         return {'display': 'none'}
+
+"""
 #Selection of station
 @app.callback(Output('Station', 'options'), Input('State', 'value')
               ,prevent_initial_call=True)
