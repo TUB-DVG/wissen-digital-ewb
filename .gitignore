@@ -13,6 +13,7 @@ db.sqlite3-journal
 venv
 /static
 *csv#
+01_application/webcentral_app/webcentral_app/settings.py
 /01_application/webcentral_app/static
 02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv
 02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220216.csv
@@ -24,6 +25,7 @@ venv
 /01_application/webcentral_app/weatherdata_over/Media
 /01_application/webcentral_app/media
 #/01_application/webcentral_app/schlagwoerter/migrations
+postgres/DATABASE_PLAIN_SQL_FILE 
 
 # exclude the .env file from git, since it holds secrets
 .env

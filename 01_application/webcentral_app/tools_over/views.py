@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from .models import Tools, Rating # maybe I need also the other models
+from tools_over.models import Tools, Rating # maybe I need also the other models
 
 class UpdateProperties:
     def __init__(self, class_name, label, color_class):
