@@ -1,5 +1,4 @@
-from cmath import nan
-from turtle import title
+
 import datetime
 from typing import Tuple
 
@@ -11,6 +10,8 @@ import pandas as pd
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
+import locale
+locale.setlocale(locale.LC_ALL, "de_DE.utf8") # German time
 
 app = DjangoDash('Warmelast')   
 #Setting up the resolution for data filtering
@@ -179,7 +180,7 @@ def stationSelection(state:str) -> list:
               prevent_initial_call=True
               )
 # The following function returns the data range provided by the chosen station
-def dateRangePicker (station_id:int,referenceyear:str) :
+def dateRangePicker (station_id:int,referenceyear:str)-> Tuple[str,str] :
     if referenceyear =="off":
         min_date=datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         max_date=datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
@@ -313,7 +314,7 @@ state:str,station:str,labels_station,labels_application):
         'FehlendeWerte(Angepasst)']]    
 
         return dcc.send_data_frame(heat_approximation.to_csv,'WarmeData.csv',
-        index=False,encoding='utf-8')
+                                   index=False,encoding='utf-8')
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
