@@ -141,3 +141,36 @@ class ToolListPage(object):
             By.XPATH,
             Locator.searchResetButton,
         )
+    
+    def getShowMoreElement(self):
+        """Returns the `Zeige mehr`-link element on tool-list page.
+        
+        """
+        return self.driver.find_element(
+            By.XPATH, 
+            Locator.showMoreLink,
+        )
+    
+    def getListInExpandedText(self):
+        """Returns list of list-elements in expanded Text.
+        
+        """
+        return self.driver.find_elements(
+            By.XPATH,
+            Locator.listInExpandedText
+        )
+
+    def getShowLessElement(self):
+        """Returns the `Zeige weniger ...`-element
+        
+        """
+        return self.driver.find_element(
+            By.XPATH, 
+            Locator.showLessLink,
+        )
+    
+    def getCookieAcceptanceButton(self):
+        """Returns the cookie acceptance button, on cookie banner
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.cookieButton)

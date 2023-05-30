@@ -247,7 +247,7 @@ class TestDigitalToolsTab(WebDriverSetup):
                 )
 
     def testIsRedirectedToPreviousPageAfterLogin(self) -> None:
-        """Tests, if the user gets redirected to the previous page after login.
+        """Tests, if user gets redirected to previous page after login.
         
         """
         self.driver.get("http://127.0.0.1:8070/tool_list/")
@@ -260,6 +260,48 @@ class TestDigitalToolsTab(WebDriverSetup):
         self.assertTrue(
             self.driver.title == "Überblick über die Anwendungen",
             "Login Does not redirect back to tool_list!",
+        )
+
+    def testIfShowMoreExpandsText(self):
+        """Tests, if clicking `Zeige mehr` shows the whole text.
+        
+        This method tests the expansion-text-field on tool-list page.
+        First it tests if the expansion-field is collapsed after 
+        loading the page. This is done by checking if the list 
+        inside the text-field is displayed. After that, the
+        `Zeige mehr ...`-Link is pressed, which expands the text-
+        field. It is then checked if the list is now displayed.
+        Finally, the `Zeige weniger ...`-button is pressed, which
+        should collapse the text again. It is then tested, if
+        the list is hidden.
+        """
+        self.openToolListAndLogin()
+        
+        toolListPage = ToolListPage(self.driver)
+        pdb.set_trace()
+        toolListPage.getCookieAcceptanceButton().click()
+        self.assertFalse(
+            toolListPage.getListInExpandedText()[0].is_displayed(),
+            "The list inside the expand-field is shown, but it should be collapsed on page load!",
+        )
+        pdb.set_trace()
+        toolListPage.getShowMoreElement().click()
+
+        listOfListElements = toolListPage.getListInExpandedText()
+        self.assertTrue(
+            listOfListElements[0].is_displayed(), 
+            "List-Element is not Displayed after clicking on 'Zeige mehr ...'!",
+        )
+        time.sleep(1)
+        
+        showLessLink = toolListPage.getShowLessElement()
+        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollWidth", showLessLink)
+        pdb.set_trace()
+        showLessLink.click()
+        time.sleep(1)
+        self.assertFalse(
+            toolListPage.getListInExpandedText()[0].is_displayed(),
+            "List is still displayed after clicking 'show less ...'!",
         )
 
 
