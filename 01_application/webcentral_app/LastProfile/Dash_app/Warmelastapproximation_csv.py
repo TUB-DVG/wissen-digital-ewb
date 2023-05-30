@@ -1,14 +1,19 @@
+import pathlib
+import os.path 
 from tracemalloc import start
 import pandas as pd
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 import math
-import plotly.graph_objects as go
-def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str,referenceyear:str):
+from typing import Tuple
+
+PATH = pathlib.Path(__file__).parent.resolve() 
+DATA_PATH = os.path.join(PATH , 'Wärme_Strom.csv') 
+TRY_PATH = os.path.join(PATH , 'TRY2015_524124130664_Jahr.csv') 
+def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_date:str,referenceyear:str)-> Tuple[int, pd.DataFrame,pd.DataFrame]:
     if referenceyear=="on":
         #Setting up the resolution for data filtering
         Resolution='HOURLY'
-        #Selecting the dataset
-        Dataset='AIR_TEMPERATURE'
+     
         # Parameter variable selection
         Parameter='TEMPERATURE_AIR_MEAN_200'
         #Setting up the Period
@@ -21,13 +26,11 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
             )
         data= stations.filter_by_station_id(station_id=Station)
         station_data = data.values.all().df
-        print(data)
 
         #Input from the server is Im Kelvin converted to celsius
         station_data['value']=station_data['value'].apply(lambda x: x - 273.15)
-        print(station_data)
     else:
-        station_data=pd.read_csv('TRY2015_524124130664_Jahr.csv')
+        station_data=pd.read_csv(TRY_PATH)
         station_data["date"] = pd.to_datetime(station_data[["YEAR","MONTH", "DAY", "HOUR"]], format="%Y-%m-%d %H",utc=True)
 
     # Fill in the missing entries in the wetterdient data and mark them
@@ -40,7 +43,7 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
             station_data['fehlend'][i]='True'
 
     # Prepare csv file to read factors
-    df_warme = pd.read_csv('Wärme_Strom.csv')
+    df_warme = pd.read_csv(DATA_PATH)
 
 
     #Load regression coefficients
@@ -87,56 +90,56 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
     Zeile_Anfang=Application*13 -24
 
     #Load hour factors for Mondays
-    Splate=18
+    Column=18
     F_Montag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Montag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Montag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 
     #Load hour factors for Tuesdays
-    Splate=44
+    Column=44
     F_Dienstag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Dienstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Dienstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
     #Load hour factors for Wednesdays
 
-    Splate=70
+    Column=70
     F_Mittwoch = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Mittwoch[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Mittwoch[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
     #Load hour factors for Thursdays
-    Splate=96
+    Column=96
     F_Donnerstag = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Donnerstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Donnerstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
     #Load hour factors for Fridays
-    Splate=122
+    Column=122
     F_Freitag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Freitag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Freitag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
 
     #Load hour factors for Saturdays
-    Splate=148
+    Column=148
     F_Samstag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Samstag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Samstag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
     #Load hour factors for Sundays
-    Splate=174
+    Column=174
     F_Sonntag= [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Sonntag[j][i]=df_warme.iloc[:,Splate+i][Zeile_Anfang+j]
+            F_Sonntag[j][i]=df_warme.iloc[:,Column+i][Zeile_Anfang+j]
 
     # Calculation of the hourly heat demand
     Q_average=heat_demand
@@ -234,8 +237,3 @@ def warmelast(Application:int,heat_demand:int,Station:int,start_date:str,end_dat
 
     return Fehlende_werte,heat_approximation_df
 
-
-
-
-#warmelast(2,1500000,10500,"2021-01-01","2021-12-31","off")
-#print(df)
