@@ -1,16 +1,19 @@
-from contextlib import nullcontext
-from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-from turtle import up
+"""Definitions of the views of the tools overview app."""
+# from contextlib import nullcontext
+# from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
+# from turtle import up
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from .models import Tools, Rating # maybe I need also the other models
+from .models import Tools, Rating 
 
 class UpdateProperties:
+    """It shoud be needed to update the icons for the function tool view."""
+
     def __init__(self, className, label, colorClass):
         self.className = className
         self.label = label
@@ -18,14 +21,13 @@ class UpdateProperties:
 
 @login_required(login_url='login')
 def index(request):
-    """
-    shows the list of all projects including some key features
-    """
+    """Shows the list of all projects including some key features"""
     tools = Tools.objects.all() # reads all data from table Teilprojekt
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
+    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
+        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
         usage=request.GET.get('u')
         licence=request.GET.get('l')
         lifeCyclePhase=request.GET.get('lcp')
@@ -34,12 +36,10 @@ def index(request):
         filteredBy = [usage, licence, lifeCyclePhase]
               
     tools = list(sorted(tools, key=lambda obj:obj.name))
-    print('len of tools', len(tools))
     toolsPaginator= Paginator(tools,12)
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
 
-    #isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
     isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
     
 
@@ -53,7 +53,6 @@ def index(request):
                 'licence': filteredBy[1],
                 'lifeCyclePhase': filteredBy[2]
             }
-
         )
 
         dataDict = {"html_from_view": html}
@@ -74,9 +73,7 @@ def index(request):
 
    
 def toolView(request, id):
-    """
-    shows of the key features one project
-    """
+    """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
     usages = tool.usage.split(", ")
     lifeCyclePhases = tool.lifeCyclePhase.split(", ")
@@ -94,7 +91,8 @@ def toolView(request, id):
     numRatings = len(ratings)
     print(numRatings)
 
-    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), ratings.filter(score=4), ratings.filter(score=5)]
+    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), 
+                      ratings.filter(score=4), ratings.filter(score=5)]
     print(ratingsByScore[4])
     ratingPercent5 = 0 if len(ratingsByScore[4])==0 else len(ratingsByScore[4])/numRatings*100
     ratingPercent4 = 0 if len(ratingsByScore[3])==0 else len(ratingsByScore[3])/numRatings*100

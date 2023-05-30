@@ -11,202 +11,313 @@
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 
-<!-- =======================
-Page Banner START -->
+<!-- Page Banner START -->
 <section class="py-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Überblick über die digitalen Werkzeuge</h1>
-					
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bg-light p-4 text-center rounded-3">
+          <h1 class="m-0">Überblick über die digitalen Werkzeuge</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- =======================
-Page Banner END -->
-
+<!-- Page Banner END -->
 
 {% include '../tools_over/explanation.html' %}
 
-
-<!-- =======================
-Page content START -->
+<!-- Page content START -->
 <section class="pt-0">
-	<div class="container">
+  <div class="container">
+    <!-- Filter bar START -->
+    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
+      <div class="row g-3">
+        <!-- Input -->
+        <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
+          <input id="search-input-tools" class="form-control me-1"
+                 type="search" placeholder="Suchbegriff" name='searched'>
+        </div>
+        <!-- Select item -->
+        <div class="col-xl-7">
+          <form  method="GET">
+            <div class="row g-3">
+            <!-- Select items filter "Kategorie"-->
+            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+            <select class="form-select js-choice"
+                            aria-label=".form-select-sm example"
+                            name="u"
+                            id="kategorie-input-tools"
+                            title="Filtern nach der Kategorie der Anwendung">
+              <option value="">Kategorie
+              </option>
+              <option value="Datenverwaltung"
+                              {% if usage == "Datenverwaltung" %}
+                              selected="selected" {% endif %}>Datenverwaltung
+              </option>
+              <option value="Anzeige und Gestaltung"
+                              {% if usage == "Anzeige und Gestaltung" %}
+                              selected="selected" {% endif %}>Anzeige und Gestaltung
+              </option>
+              <option value="Modellbildung"
+                              {% if usage == "Modellbildung" %}
+                              selected="selected" {% endif %}>Modellbildung
+              </option>
+              <option value="Cloud-basiertes Echtzeit Monitoring"
+                              {% if usage == "Cloud-basiertes Echtzeit Monitoring" %}
+                              selected="selected" {% endif %}>Cloud-basiertes Echtzeit Monitoring
+              </option>
+              <option value="Programmiersprache"
+                              {% if usage == "Programmiersprache" %}
+                              selected="selected" {% endif %}>Programmiersprache
+              </option>
+              <option value="Konstruktion"
+                              {% if usage == "Konstruktion" %}
+                              selected="selected" {% endif %}>Konstruktion
+              </option>
+              <option value="Cloud Anwendung"
+                              {% if usage == "Cloud Anwendung" %}
+                              selected="selected" {% endif %}>Cloud Anwendung
+              </option>
+              <option value="Analyse"
+                              {% if usage == "Analyse" %}
+                              selected="selected" {% endif %}>Analyse
+              </option>
+              <option value="Modellierung"
+                              {% if usage == "Modellierung" %}
+                              selected="selected" {% endif %}>Modellierung
+              </option>
+              <option value="Simulation"
+                              {% if usage == "Simulation" %}
+                              selected="selected" {% endif %}>Simulation
+              </option>
+              <option value="Energiemanagement"
+                              {% if usage == "Energiemanagement" %}
+                              selected="selected"
+                              {% endif %}>Energiemanagement
+              </option>
+              <option value="Betriebsoptimierung"
+                              {% if usage == "Betriebsoptimierung" %}
+                              selected="selected" {% endif %}>Betriebsoptimierung
+              </option>
+              <option value="Datenbankmanagement"
+                              {% if usage == "Datenbankmanagement" %}
+                              selected="selected" {% endif %}>Datenbankmanagement
+              </option>
+              <option value="Berechnung"
+                              {% if usage == "Berechnung" %}
+                              selected="selected"
+                              {% endif %}>Berechnung
+              </option>
+              <option value="Programmierumgebung"
+                              {% if usage == "Programmierumgebung" %}
+                              selected="selected" {% endif %}>Programmierumgebung
+              </option>
+              <option value="Visualisierung"
+                              {% if usage == "Visualisierung" %}
+                              selected="selected" {% endif %}>Visualisierung
+              </option>
+              <option value="Modellanalyse"
+                              {% if usage == "Modellanalyse" %}
+                              selected="selected" {% endif %}>Modellanalyse
+              </option>
+              <option value="Machine Learning"
+                              {% if usage == "Machine Learning" %}
+                              selected="selected" {% endif %}>Machine Learning
+              </option>
+            </select>
+            </div>
+            <!-- Select items filter "Lizenz"-->
+            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+            <select class="form-select js-choice"
+                        aria-label=".form-select-sm example"
+                        name="l" id="lizenz-input-tools"
+                        title="Filtern nach der Lizenz der Anwendung">
+              <option value="">Lizenz
+              </option>
+              <option value="kostenpflichtig"
+                              {% if licence == "kostenpflichtig" %}
+                              selected="selected"
+                              {% endif %}>Kostenpflichtig
+              </option>
+              <option value="Open-Source"
+                              {% if licence == "Open-Source" %}
+                              selected="selected"
+                              {% endif %}>Open-Source
+              </option>
+              <option value="kostenfrei"
+                              {% if licence == "kostenfrei" %}
+                              selected="selected"
+                              {% endif %}>Kostenfrei
+              </option>
+            </select>
+            </div>
+            <!-- Search item "Lebenszyklusphase" -->
+            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+            <select class="form-select js-choice"
+                            aria-label=".form-select-sm example"
+                            name="lcp"
+                            id="lzp-input-tools"
+                            title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
+              <option value="">Lebenszyklusphase
+              </option>
+              <option value="Planung"
+                              {% if lifeCyclePhase == "Planung" %}
+                              selected="selected" {% endif %}>Planung
+              </option>
+              <option value="Vorplanung"
+                              {% if lifeCyclePhase == "Vorplanung" %}
+                              selected="selected" {% endif %}>Vorplanung
+              </option>
+              <option value="Betrieb"
+                              {% if lifeCyclePhase == "Betrieb" %}
+                              selected="selected"
+                              {% endif %}>Betrieb
+              </option>
+              <option value="Umsetzung"
+                              {% if lifeCyclePhase == "Umsetzung" %}
+                              selected="selected"
+                              {% endif %}>Umsetzung
+              </option>
+            </select>
+            </div>
+            <!-- Search item -->
+          </div>
+        </form>
+        </div>
+        <!-- Select item END -->
+        <!-- Clear button -->
+        <div class="col-xl-1">
+          <a href="{% url 'tool_list' %}">
+            <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">
+              Alle</h6>
+          </a>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                      class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                      id="search-submit-tools" href="">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Row END -->
+    <!-- Filter bar END -->
 
-		<!-- Filter bar START -->
-		<form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
-			<div class="row g-3">
-				<!-- Input -->
-				<div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-					<input id="search-input-tools" class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
-				</div>
 
-				<!-- Select item -->
-				<div class="col-xl-7">
-					<form  method="GET">
-						<div class="row g-3">
-							
-							<!-- Select items -->
-						<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="u" id="kategorie-input-tools" title="Filtern nach der Kategorie der Anwendung"> 
-									
-									<option value="">Kategorie</option>
-									
-									<option value="Datenverwaltung" {% if usage == "Datenverwaltung" %} selected="selected" {% endif %}>Datenverwaltung</option>
-									<option value="Anzeige und Gestaltung" {% if usage == "Anzeige und Gestaltung" %} selected="selected" {% endif %}>Anzeige und Gestaltung</option>
-									<option value="Modellbildung" {% if usage == "Modellbildung" %} selected="selected" {% endif %}>Modellbildung</option>
-									<option value="Cloud-basiertes Echtzeit Monitoring" {% if usage == "Cloud-basiertes Echtzeit Monitoring" %} selected="selected" {% endif %}>Cloud-basiertes Echtzeit Monitoring</option>
-									<option value="Programmiersprache" {% if usage == "Programmiersprache" %} selected="selected" {% endif %}>Programmiersprache</option>
-									<option value="Konstruktion" {% if usage == "Konstruktion" %} selected="selected" {% endif %}>Konstruktion</option>
-									<option value="Cloud Anwendung" {% if usage == "Cloud Anwendung" %} selected="selected" {% endif %}>Cloud Anwendung</option>
-									<option value="Analyse" {% if usage == "Analyse" %} selected="selected" {% endif %}>Analyse</option>
-									<option value="Modellierung" {% if usage == "Modellierung" %} selected="selected" {% endif %}>Modellierung</option>
-									<option value="Simulation" {% if usage == "Simulation" %} selected="selected" {% endif %}>Simulation</option>
-									<option value="Energiemanagement" {% if usage == "Energiemanagement" %} selected="selected" {% endif %}>Energiemanagement</option>
-									<option value="Betriebsoptimierung" {% if usage == "Betriebsoptimierung" %} selected="selected" {% endif %}>Betriebsoptimierung</option>
-									<option value="Datenbankmanagement" {% if usage == "Datenbankmanagement" %} selected="selected" {% endif %}>Datenbankmanagement</option>
-									<option value="Berechnung" {% if usage == "Berechnung" %} selected="selected" {% endif %}>Berechnung</option>
-									<option value="Programmierumgebung" {% if usage == "Programmierumgebung" %} selected="selected" {% endif %}>Programmierumgebung</option>
-									<option value="Visualisierung" {% if usage == "Visualisierung" %} selected="selected" {% endif %}>Visualisierung</option>
-									<option value="Modellanalyse" {% if usage == "Modellanalyse" %} selected="selected" {% endif %}>Modellanalyse</option>
-									<option value="Machine Learning" {% if usage == "Machine Learning" %} selected="selected" {% endif %}>Machine Learning</option>
+    <!-- search tags START -->
+    <ul class="list-inline mb-0">
+      {% if search %}
+      <li class="list-inline-item"> 
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
+            Suchbegriff: {{search}}
+          </a>
+        <a href="/tool_list/?searched=&u={% if usage %}{{usage}}
+                   {% endif %}&l={% if licence %}{{licence}}
+                   {% endif %}&lcp={% if lifeCyclePhase %}
+                   {{lifeCyclePhase}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %} 
+      {% if usage %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}
+          </a>
+          <a href="/tool_list/?searched={% if search %}{{search}}
+                    {% endif %}&u=&l={% if licence %}{{licence}}
+                    {% endif %}&lcp={% if lifeCyclePhase %}
+                    {{lifeCyclePhase}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %} 
+      {% if licence %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/tool_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}
+          </a>
+          <a href="/tool_list/?searched={% if search %}
+                    {{search}}{% endif %}&u={% if usage %}{{usage}}
+                    {% endif %}&l=&lcp={% if lifeCyclePhase %}
+                    {{lifeCyclePhase}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if lifeCyclePhase %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}
+          </a>
+          <a href="/tool_list/?searched={% if search %}{{search}}
+                   {% endif %}&u={% if usage %}{{usage}}
+                   {% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
+          <i class="bi bi-x-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+    <!-- search tags END -->
 
-								</select>
-								
-							</div>
+    <!-- tools grid row START -->
+    <div class="row mt-3">
+      <div class="col-12">
+      <!-- tools Grid START -->
+        <div class="row g-4" id="tool-listing-results">
+          {% include '../tools_over/tool-listings-results.html' %}
+        </div>
+        <!-- tools Grid END -->
 
-							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="l" id="lizenz-input-tools" title="Filtern nach der Lizenz der Anwendung">
-									
-									<option value="">Lizenz</option>
-									<option value="kostenpflichtig" {% if licence == "kostenpflichtig" %} selected="selected" {% endif %}>Kostenpflichtig</option>
-									<option value="Open-Source" {% if licence == "Open-Source" %} selected="selected" {% endif %}>Open-Source</option>
-									<option value="kostenfrei" {% if licence == "kostenfrei" %} selected="selected" {% endif %}>Kostenfrei</option>
-								</select>
-							</div>
-
-							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="lcp" id="lzp-input-tools" title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
-									<option value="">Lebenszyklusphase</option>
-									<option value="Planung" {% if lifeCyclePhase == "Planung" %} selected="selected" {% endif %}>Planung</option>
-									<option value="Vorplanung" {% if lifeCyclePhase == "Vorplanung" %} selected="selected" {% endif %}>Vorplanung</option>
-									<option value="Betrieb" {% if lifeCyclePhase == "Betrieb" %} selected="selected" {% endif %}>Betrieb</option>
-									<option value="Umsetzung" {% if lifeCyclePhase == "Umsetzung" %} selected="selected" {% endif %}>Umsetzung</option>
-								</select>
-							</div>
-
-							<!-- Search item -->
-							
-						</div> <!-- Row END -->
-					</form>
-
-				</div>
-				<!-- Clear -->
-				<div class="col-xl-1">
-					
-                	<a href="{% url 'tool_list' %}"> <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">Alle</h6></a>
-					<!--<button class="btn btn-primary mb-0 rounded z-index-1 w-100" href="{% url 'tool_list' %}">Alle</button>-->
-				</div>
-				<!-- Button -->
-				<div class="col-xl-1">
-					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" id="search-submit-tools" href=""><i class="fas fa-search"></i></button>
-				</div>
-			</form>
-			</div> <!-- Row END -->
-		</form>
-		<!-- Filter bar END -->
-
-		<ul class="list-inline mb-0">
-			{% if search %}
-			<li class="list-inline-item"> 
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched={{search}}&u=&l=&lcp=">Suchbegriff: {{search}}</a>
-					<a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}	
-			{% if usage %}
-			<li class="list-inline-item">
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}	
-			{% if licence %}
-			<li class="list-inline-item">
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}
-			{% if lifeCyclePhase %}
-			<li class="list-inline-item">
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}</a>
-					<a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
-						<i class="bi bi-x-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}
-		</ul>
-
-
-
-		<div class="row mt-3">
-			<!-- Main content START -->
-			<div class="col-12">
-
-				<!-- Course Grid START -->
-				<div class="row g-4" id="tool-listing-results">
-					{% include '../tools_over/tool-listings-results.html' %}
-
-					
-				</div>
-				<!-- Course Grid END -->
-
-				<!-- Pagination START -->
-			<div class="col-12">
-				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-					<ul class="pagination pagination-primary-soft rounded mb-0">
-						{% if page.has_previous %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
-						{% else %}
-						<!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
-						{% endif %}
-						{% if page.has_next %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
-						{% else %}
-						<!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
-						{% endif %}
-					</ul>
-				</nav>
-			</div>
-			<!-- Pagination END -->
-			</div>
-			<!-- Main content END -->
-		</div><!-- Row END -->
-	</div>
+        <!-- Pagination START -->
+        <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+        <ul class="pagination pagination-primary-soft rounded mb-0">
+          {% if page.has_previous %}
+          <li class="page-item mb-0">
+            <a class="page-link" 
+                href="{%url 'tool_list' %}?searched={% if search %}{{search}}
+                    {% endif %}&u={% if usage %}{{usage}}
+                    {% endif %}&l={% if licence %}{{licence}}
+                    {% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}
+                    {% endif %}&page={{ page.previous_page_number}}" 
+                tabindex="-1">
+              <i class="fas fa-angle-double-left"></i>
+            </a>
+          </li>
+          {% else %}
+          <!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
+          {% endif %}
+          {% if page.has_next %}
+          <li class="page-item mb-0">
+            <a class="page-link" 
+               href="{%url 'tool_list' %}?searched={% if search %}{{search}}
+                     {% endif %}&u={% if usage %}{{usage}}
+                     {% endif %}&l={% if licence %}{{licence}}
+                     {% endif %}&lcp={% if lifeCyclePhase %}
+                     {{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
+              <i class="fas fa-angle-double-right">
+              </i>
+            </a>
+          </li>
+          {% else %}
+          {% endif %}
+        </ul>
+        </nav>
+        <!-- Pagination END -->
+      </div>
+    </div>
+    <!-- tools grid row START -->
+  </div>
 </section>
-<!-- =======================
-Page content END -->
-
+<!-- Page content END -->
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->

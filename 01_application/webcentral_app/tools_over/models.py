@@ -46,20 +46,20 @@ class Tools(models.Model):
                                   help_text = "Which group of people is the tool targeted at?",
                                   blank = True)
     lastUpdate = models.CharField(max_length = 100,
-                                      help_text = "time (year/month/date) of the last update",
-                                      blank = True)
+                                  help_text = "time (year/month/date) of the last update",
+                                  blank = True)
     licence = models.CharField(max_length = 200,
                               help_text = "licence",
                               blank = True)
     furtherInformation = models.CharField(max_length = 500,
-                                             help_text = "further information",
-                                             blank = True)
+                                          help_text = "further information",
+                                          blank = True)
     alternatives = models.CharField(max_length = 300,
                                     help_text = "similar tool(s) that can serve as alternatives",
                                     blank = True)
     specificApplication= models.CharField(max_length = 500,
-                                     help_text = "specific application of the tool in EWB projects (project name + fkz)",
-                                     blank = True)
+                                          help_text = "specific application of the tool in EWB projects (project name + fkz)",
+                                          blank = True)
     userEvaluation = models.DecimalField(max_digits=2, decimal_places=1,
                                             help_text = "evaluation of the application by users (range: 1-5 (best), with one decimal place)",
                                             blank = True, null = True)
