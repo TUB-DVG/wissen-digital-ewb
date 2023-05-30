@@ -8,9 +8,6 @@ from django_plotly_dash import DjangoDash
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
-
-
-
 app = DjangoDash('Warmelast')   
 #Setting up the resolution for data filtering
 Resolution = 'HOURLY'
@@ -72,9 +69,9 @@ app.layout = html.Div([
          ],id='hide_elements', style= {'display': 'block'}),
      dcc.Dropdown(
         options=[
-                {'label': 'EFH ', 'value': '2'},
-                {'label': 'MFH ', 'value': '3'},
-                {'label': 'Gebietskörpersch', 'value': '4'},
+                {'label': 'Einfamlienhaus ', 'value': '2'},
+                {'label': 'Mehrfamilienhaus ', 'value': '3'},
+                {'label': 'Gebietskörperschaft', 'value': '4'},
                 {'label': 'Einzelhandel, Großhandel', 'value': '5'},
                 {'label': 'Metall, Kfz', 'value': '6'},
                 {'label': 'sonst. betr. Dienstleistungen  ', 'value': '7'},
@@ -90,15 +87,11 @@ app.layout = html.Div([
 
             ],
 
-        placeholder = "Auswahl der Anwendung",
-        id = 'application',
-         # <-- This is the line that will be changed by the dropdown callback
-    ),
-        
+        placeholder="Auswahl des Typs",
+        id='application'
+        ),
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id="heat_requirement", type="number",
-    placeholder="Jahreswärmebedarfs in kWh/a", 
-    debounce=True,style={'width':'200px'}),
+    dcc.Input(id="heat_requirement", type="number",placeholder="Jahreswärmebedarf in kWh/a", debounce=True,style={'width':'200px'}),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
@@ -109,29 +102,25 @@ app.layout = html.Div([
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options=[
-               {'label': 'January', 'value': '1'},
-                {'label': 'February', 'value': '2'},
-                {'label': 'March', 'value': '3'},
+                {'label': 'Januar', 'value': '1'},
+                {'label': 'Februar', 'value': '2'},
+                {'label': 'März', 'value': '3'},
                 {'label': 'April', 'value': '4'},
-                {'label': 'May', 'value': '5'},
-                {'label': 'June', 'value': '6'},
-                {'label': 'July', 'value': '7'},
+                {'label': 'Mai', 'value': '5'},
+                {'label': 'Juni', 'value': '6'},
+                {'label': 'Juli', 'value': '7'},
                 {'label': 'August', 'value': '8'},
-                {'label': 'September', 'value': '9'},
-                {'label': 'October', 'value': '10'},
+                {'label': 'Sepember', 'value': '9'},
+                {'label': 'Oktober', 'value': '10'},
                 {'label': 'November', 'value': '11'},
-                {'label': 'December', 'value': '12'},
-                {'label': 'All', 'value': 'All'},
+                {'label': 'Dezember', 'value': '12'},
+                {'label': 'Alle', 'value': 'All'},
             ],
         value='All',
         id='display_month',
         inline=True
     ),
     html.Button('Approximation starten', id='approximation_start'),
-
-    #Download data as csv
-    html.Button("Download Csv", id="btn-download-csv"),
-    dcc.Download(id="download-csv"),
     # Graph
     dcc.Graph(id='heat_graph', figure={}),
 
@@ -241,10 +230,10 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
         #global heat_approximation
         heat_approximation=heat[1]
         fehlende_werte=heat[0]
-
+        ww_heat_approximation=heat[2]
         if display_month=='All':
             result=heat_approximation
-
+            result2=ww_heat_approximation
         else:
             result=pd.DataFrame({'Last':(heat_approximation.groupby
             (heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],
@@ -272,11 +261,11 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
        )
 
         fig.update_yaxes(
-        title_text="Wärme-lastgang in kW",
-        title_standoff=25
+        title_text = "Wärmelastgang in kW",
+        title_standoff = 25
         )
         fig.update_yaxes(
-        title_text="Trink-WW-Lastgang in kW", 
+        title_text="Trinkwarmwasser-Lastgang in kW", 
         secondary_y=True
         )
  
