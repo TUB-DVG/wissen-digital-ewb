@@ -8,6 +8,7 @@ from django_plotly_dash import DjangoDash
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
+
 app = DjangoDash('Warmelast')   
 #Setting up the resolution for data filtering
 Resolution = 'HOURLY'
@@ -87,11 +88,15 @@ app.layout = html.Div([
 
             ],
 
-        placeholder="Auswahl des Typs",
-        id='application'
-        ),
+        placeholder = "Auswahl der Anwendung",
+        id = 'application',
+         # <-- This is the line that will be changed by the dropdown callback
+    ),
+        
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id="heat_requirement", type="number",placeholder="Jahreswärmebedarf in kWh/a", debounce=True,style={'width':'200px'}),
+    dcc.Input(id="heat_requirement", type="number",
+    placeholder="Jahreswärmebedarfs in kWh/a", 
+    debounce=True,style={'width':'200px'}),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
@@ -102,25 +107,29 @@ app.layout = html.Div([
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options=[
-                {'label': 'Januar', 'value': '1'},
-                {'label': 'Februar', 'value': '2'},
-                {'label': 'März', 'value': '3'},
+               {'label': 'January', 'value': '1'},
+                {'label': 'February', 'value': '2'},
+                {'label': 'March', 'value': '3'},
                 {'label': 'April', 'value': '4'},
-                {'label': 'Mai', 'value': '5'},
-                {'label': 'Juni', 'value': '6'},
-                {'label': 'Juli', 'value': '7'},
+                {'label': 'May', 'value': '5'},
+                {'label': 'June', 'value': '6'},
+                {'label': 'July', 'value': '7'},
                 {'label': 'August', 'value': '8'},
-                {'label': 'Sepember', 'value': '9'},
-                {'label': 'Oktober', 'value': '10'},
+                {'label': 'September', 'value': '9'},
+                {'label': 'October', 'value': '10'},
                 {'label': 'November', 'value': '11'},
-                {'label': 'Dezember', 'value': '12'},
-                {'label': 'Alle', 'value': 'All'},
+                {'label': 'December', 'value': '12'},
+                {'label': 'All', 'value': 'All'},
             ],
         value='All',
         id='display_month',
         inline=True
     ),
     html.Button('Approximation starten', id='approximation_start'),
+
+    #Download data as csv
+    html.Button("Download Csv", id="btn-download-csv"),
+    dcc.Download(id="download-csv"),
     # Graph
     dcc.Graph(id='heat_graph', figure={}),
 
@@ -135,17 +144,15 @@ app.layout = html.Div([
 # Connect the Plotly graphs with Dash Components
 @app.callback(
    Output(component_id='hide_text', component_property='style'),
-   Output(component_id='hide_elements', component_property='style'),
    [Input(component_id='referenceyear', component_property='value')])
 # Hide explanation text for refrenceyear run
-def show_hide(visibility_state):
+def show_hide_txt(visibility_state):
     if visibility_state == 'on':
-        return {'display': 'none'},{'display': 'none'}
+        return {'display': 'none'}
     if visibility_state == 'off':
-        return {'display': 'block'},{'display': 'block'}
-"""
+        return {'display': 'block'}
 @app.callback(
-   
+   Output(component_id='hide_elements', component_property='style'),
    [Input(component_id='referenceyear', component_property='value')])
 # Hide unnecessary elements for refrenceyear run
 def show_hide_element(visibility_state):
@@ -153,8 +160,6 @@ def show_hide_element(visibility_state):
         return {'display': 'block'}
     if visibility_state == 'off':
         return {'display': 'none'}
-
-"""
 #Selection of station
 @app.callback(Output('Station', 'options'), Input('State', 'value')
               ,prevent_initial_call=True)
@@ -192,11 +197,11 @@ def dateRangePicker (station_id:int,referenceyear:str) :
 # The following function  a list of available months in the data range selected
 def displayMonths(start_date:str,end_date:str)-> list:
     Months=pd.date_range(start_date,
-    end_date,freq='W').strftime("%b").unique().tolist()
-   
+    end_date,freq='W').strftime("%B").unique().tolist()
+    print(Months)
     # Setting the months in the right format for plotly dash
     displayMonths=[{"label":index , 
-    "value": datetime.datetime.strptime(index, "%b").month} 
+    "value": datetime.datetime.strptime(index, "%B").month} 
     for index in Months ]
 
     displayMonths.append ({"label":'All' , "value": 'All'})
@@ -230,10 +235,10 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
         #global heat_approximation
         heat_approximation=heat[1]
         fehlende_werte=heat[0]
-        ww_heat_approximation=heat[2]
+
         if display_month=='All':
             result=heat_approximation
-            result2=ww_heat_approximation
+
         else:
             result=pd.DataFrame({'Last':(heat_approximation.groupby
             (heat_approximation.Time.dt.month).get_group(int(display_month)))['Last'],
@@ -261,11 +266,11 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
        )
 
         fig.update_yaxes(
-        title_text = "Wärmelastgang in kW",
-        title_standoff = 25
+        title_text="Wärme-lastgang in kW",
+        title_standoff=25
         )
         fig.update_yaxes(
-        title_text="Trinkwarmwasser-Lastgang in kW", 
+        title_text="Trink-WW-Lastgang in kW", 
         secondary_y=True
         )
  
