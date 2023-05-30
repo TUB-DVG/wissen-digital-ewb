@@ -13,6 +13,10 @@ class Locator(object):
     searchMagniferButton = "//button[@id='search-submit-tools']"
     activeSearchFilter = "//li[@class='list-inline-item']"
     searchResetButton = "//h6[contains(text(), 'Alle')]"
+    showMoreLink = "//a[@href='#collapseInfoTools']"
+    listInExpandedText = "//li[@class='lead']"
+    showLessLink = "//a[@href='#collapseInfoTools']"
+    cookieButton = "//button[@class='cookie-btn']"
     
     # locators in loginPage
     loginButtonElement = "//input[@class='btn login_btn']"
