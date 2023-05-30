@@ -1,10 +1,13 @@
 from cmath import nan
 from turtle import title
-import pandas as pd
 import datetime
+from typing import Tuple
+
 from .Warmelastapproximation_csv import warmelast
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 from django_plotly_dash import DjangoDash
+
+import pandas as pd
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
@@ -30,9 +33,7 @@ stations = DwdObservationRequest(
     )
 
 # App layout
-app.index_string='''
-    {% extends 'base.html' %}
-    '''
+
 app.layout = html.Div([
     # Title
     html.H1("Wärmelast Approximation", style={'text-align': 'center'}),
@@ -62,10 +63,10 @@ app.layout = html.Div([
     # Dropdown for State options for the Wetterdienst station choice
     dcc.Dropdown(stations.all( ).df['state'].unique(),
                  placeholder="Auswahl der Bundesland",
-                 id = 'State'
+                 id = 'state'
                 ),
       # Dropdown for the available wetterdienst stations in the chosen State
-    dcc.Dropdown(placeholder="Auswahl der Station",id='Station'
+    dcc.Dropdown(placeholder="Auswahl der Station",id='station'
         )
          ],id='hide_elements', style= {'display': 'block'}),
      dcc.Dropdown(
@@ -88,7 +89,7 @@ app.layout = html.Div([
 
             ],
 
-        placeholder = "Auswahl der Anwendung",
+        placeholder = "Auswahl des Typs",
         id = 'application',
          # <-- This is the line that will be changed by the dropdown callback
     ),
@@ -107,19 +108,19 @@ app.layout = html.Div([
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options=[
-               {'label': 'January', 'value': '1'},
-                {'label': 'February', 'value': '2'},
-                {'label': 'March', 'value': '3'},
+                {'label': 'Januar', 'value': '1'},
+                {'label': 'Februar', 'value': '2'},
+                {'label': 'März', 'value': '3'},
                 {'label': 'April', 'value': '4'},
-                {'label': 'May', 'value': '5'},
-                {'label': 'June', 'value': '6'},
-                {'label': 'July', 'value': '7'},
+                {'label': 'Mai', 'value': '5'},
+                {'label': 'Juni', 'value': '6'},
+                {'label': 'Juli', 'value': '7'},
                 {'label': 'August', 'value': '8'},
-                {'label': 'September', 'value': '9'},
-                {'label': 'October', 'value': '10'},
+                {'label': 'Sepember', 'value': '9'},
+                {'label': 'Oktober', 'value': '10'},
                 {'label': 'November', 'value': '11'},
-                {'label': 'December', 'value': '12'},
-                {'label': 'All', 'value': 'All'},
+                {'label': 'Dezember', 'value': '12'},
+                {'label': 'Alle', 'value': 'All'},
             ],
         value='All',
         id='display_month',
@@ -161,25 +162,24 @@ def show_hide_element(visibility_state):
     if visibility_state == 'off':
         return {'display': 'none'}
 #Selection of station
-@app.callback(Output('Station', 'options'), Input('State', 'value')
+@app.callback(Output('station', 'options'), Input('state', 'value')
               ,prevent_initial_call=True)
 #The following funtion provides the list of available stations in the chosen Bundesland
-def stationSelection(State:str) -> list:
+def stationSelection(state:str) -> list:
 
     return [{"label":row['name'] , "value": row['station_id']} 
-    for index,row in stations.all( ).df.iterrows() if row['state']==State]
+    for index,row in stations.all( ).df.iterrows() if row['state']==state]
 
 
 #Setting of the available date frame
 @app.callback(Output(component_id='date_picker',component_property='min_date_allowed'),
               Output(component_id='date_picker',component_property='max_date_allowed'),
-              Input(component_id='Station', component_property='value'),
+              Input(component_id='station', component_property='value'),
               Input(component_id='referenceyear', component_property='value'),
               prevent_initial_call=True
               )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker (station_id:int,referenceyear:str) :
-    print(referenceyear)
     if referenceyear =="off":
         min_date=datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         max_date=datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
@@ -198,7 +198,6 @@ def dateRangePicker (station_id:int,referenceyear:str) :
 def displayMonths(start_date:str,end_date:str)-> list:
     Months=pd.date_range(start_date,
     end_date,freq='W').strftime("%B").unique().tolist()
-    print(Months)
     # Setting the months in the right format for plotly dash
     displayMonths=[{"label":index , 
     "value": datetime.datetime.strptime(index, "%B").month} 
@@ -213,7 +212,7 @@ def displayMonths(start_date:str,end_date:str)-> list:
     Output(component_id='container',component_property='children'),
     Output(component_id='heat_approximationStoring',component_property='data'),
     Input(component_id='application',component_property='value'),
-    Input(component_id='Station',component_property='value'),
+    Input(component_id='station',component_property='value'),
     Input(component_id='heat_requirement',component_property='value'),
     Input(component_id='display_month',component_property='value'),
     Input(component_id='date_picker',component_property='start_date'),
@@ -250,12 +249,12 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
         from plotly.subplots import make_subplots
         fig=make_subplots(specs=[[{"secondary_y": True}]])
 
-        fig.add_trace(go.Scatter(name='Wärme-lastgang in kW',x=result['Time'],
+        fig.add_trace(go.Scatter(name='Wärmelastgang in kW',x=result['Time'],
         y=result['Last'],mode='lines', line=dict(color = "#0000ff")),secondary_y=False)
         fig.add_trace(go.Scatter(name='Fehlende Eingaben',x=result['Time'],
         y=result['Last'].where(result['fehlend']=='True'),mode='lines',
         line=dict(color="red")),secondary_y=False)
-        fig.add_trace(go.Scatter(name='Trink-WW-Lastgang in kW',
+        fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',
         x=result['Time'],y=result['WW_Last'],mode='lines',
         line=dict(color="#f700ff")),secondary_y=True)
 
@@ -266,11 +265,11 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
        )
 
         fig.update_yaxes(
-        title_text="Wärme-lastgang in kW",
+        title_text="Wärmelastgang in kW",
         title_standoff=25
         )
         fig.update_yaxes(
-        title_text="Trink-WW-Lastgang in kW", 
+        title_text="Trinkwarmwasser-Lastgang in kW", 
         secondary_y=True
         )
  
@@ -287,9 +286,9 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
     Input('heat_requirement','value'),
     Input('date_picker', 'start_date'),
     Input('date_picker', 'end_date'),
-    Input('State', 'value'),
-    Input('Station','value'),
-    State('Station',"options"),
+    Input('state', 'value'),
+    Input('station','value'),
+    State('station',"options"),
     State("application","options"),
 
     prevent_initial_call=True,
@@ -297,24 +296,19 @@ display_month:str,start_date:str,end_date:str,approximation_start:int,referencey
 
 def downloadAsCsv(n_clicks,jsonified_heat_approximation:pd.DataFrame,
 application:str,heat_requirement:int,start_date:str,end_date:str,
-State:str,Station:str,labels_station,labels_application):
+state:str,station:str,labels_station,labels_application):
     if not n_clicks:
         raise PreventUpdate
     else:
-        #heat_approximation=json.loads(jsonified_heat_approximation)
-        #print(heat_approximation)
+
         heat_approximation =pd.DataFrame.from_dict(jsonified_heat_approximation)
-        #print(labels_station)
-        #print(labels_application)
-        label_station = [x['label'] for x in labels_station if x['value'] == Station]
-        #print(label_station)
+        label_station = [x['label'] for x in labels_station if x['value'] == station]
         label_application = [x['label'] for x in labels_application 
         if x['value'] == application]
-        #print(label_application)
         heat_approximation.columns = [['Jahreswärmebedarfs in kWh/a :'
         +str(heat_requirement),'','',''  ],['Anwendung:'+label_application[0],'','',''],
         ['Zeitraum : Von '+start_date+' Bis '+end_date,'','',''],
-        ['Bundesland:'+State + ' Station:' + label_station[0] ,'','',''],
+        ['Bundesland:'+state + ' Station:' + label_station[0] ,'','',''],
         ['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW',
         'FehlendeWerte(Angepasst)']]    
 
