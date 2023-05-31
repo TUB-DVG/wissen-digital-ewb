@@ -26,6 +26,7 @@ cache:
     - venv/
 
 before_script:
+  - cp .env.example .env
   - python --version  # For debugging
   - python -m venv venv
   - source venv/bin/activate
