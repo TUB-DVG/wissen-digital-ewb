@@ -5,7 +5,7 @@ from tools_over.models import Tools
 
 def startSearch(request):
     """View function of the start page including central search function."""
-    return render(request, 'StartSearch/StartSearch.html')
+    return render(request, "StartSearch/StartSearch.html")
 
 
 def resultSearch(request):
