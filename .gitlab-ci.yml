@@ -33,10 +33,8 @@ before_script:
   - pip install -r 02_work_doc/10_test/requirementsTesting.txt
 
 test:
-  variables:
-    PATH_WEBCENTRAL_SRC: "/home/djangoadmin/src/"
   script:
-    - PATH_WEBCENTRAL_SRC=/home/djangoadmin/src/
+    - PATH_WEBCENTRAL_SRC=$(pwd)
     - python 02_work_doc/10_test/02_docker/testDockerCompose.py
     - pip install tox flake8  # you can also use tox
     - tox -e py,flake8
