@@ -46,7 +46,24 @@
     </form>
     <!-- Row END -->
     <!-- Filter bar END -->
-  </div>
+    <!-- Row START -->
+    <!-- Search results list Start -->
+    <div>
+      {% if tools %}
+        <ul>
+        {% for tool in tools %}
+          <li>
+            <p>{{ tool.bezeichnung }}
+            </p>
+          </li>
+        {% endfor %}
+        </ul>
+      {% else %}
+        <p>No polls are available.</p>
+      {% endif %}
+    </div>
+ </div>
 </section>
+
 <!-- Content END -->
 {% endblock %}
