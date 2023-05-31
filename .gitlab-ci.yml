@@ -29,7 +29,7 @@ before_script:
   - python --version  # For debugging
   - python -m venv venv
   - source venv/bin/activate
-  - pip install docker
+  - pip install -r 02_work_doc/10_test/requirementsTesting.txt
 
 test:
   script:
