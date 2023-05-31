@@ -34,7 +34,7 @@ before_script:
 
 test:
   script:
-    - PATH_WEBCENTRAL_SRC=$(pwd)
+    - export PATH_WEBCENTRAL_SRC=$(pwd)
     - python 02_work_doc/10_test/02_docker/testDockerCompose.py
     - pip install tox flake8  # you can also use tox
     - tox -e py,flake8
