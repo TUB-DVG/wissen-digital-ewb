@@ -21,8 +21,6 @@
 </section>
 <!-- Page Banner END -->
 <!-- Content START -->
-
-<!-- Page content START -->
 <section class="pt-0">
   <div class="container">
     <!-- Filter bar START -->
@@ -47,7 +45,72 @@
     <!-- Row END -->
     <!-- Filter bar END -->
     <!-- Row START -->
-    <!-- Search results list Start -->
+    {% if tools %}
+    <!-- Search results list (table) Start -->
+    <div class="card-body">
+      <!-- Course table START -->
+      <div class="table-responsive border-0 rounded-3">
+        <!-- Table START -->
+        <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+          <!-- Table head -->
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 rounded-start">Nr.:</th>
+              <th scope="col" class="border-0">Name</th>
+              <th scope="col" class="border-0">Art des Ergebnisses</th>
+              <th scope="col" class="border-0">Symbol(zb. rechtilich)</th>
+              <th scope="col" class="border-0 rounded-end">Sontiges</th>
+            </tr>
+          </thead>
+          <!-- Table body START -->
+          <tbody>
+            {% for tool in tools %}
+            <!-- Table row -->
+            <tr>
+              <!-- Table data -->
+              <td>
+                <div class="d-flex align-items-center position-relative">
+                  <!-- Number of result item -->
+                  <h6 class="mb-0 ms-2"> 1
+                  </h6>
+                </div>
+              </td>
+
+              <!-- Table data -->
+              <td>
+                <div class="d-flex align-items-center mb-3">
+                  <!-- Avatar -->
+                  <div class="avatar avatar-xs flex-shrink-0">
+                    <img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+                  </div>
+                  <!-- Info -->
+                  <div class="ms-2">
+                    <h6 class="mb-0 fw-light">{{ tool.bezeichnung }}</h6>
+                  </div>
+                </div>
+              </td>
+
+              <!-- Table data -->
+              <td>28 Oct 2021</td>
+
+              <!-- Table data -->
+              <td> <span class="badge bg-primary text-white">Beginner</span> </td>
+
+              <!-- Table data -->
+              <td>$350</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <!-- Table body END -->
+        </table>
+        <!-- Table END -->
+      </div>
+      <!-- Course table END -->
+    </div>
+    <!-- Card body END -->
+    {% else %}
+      <p>Die Suche hat keine Ergebnisse ergeben.</p>
+    {% endif %}
     <div>
       {% if tools %}
         <ul>
