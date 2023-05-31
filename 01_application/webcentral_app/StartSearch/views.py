@@ -1,5 +1,6 @@
 """View functions for start page and start page search."""
 from django.shortcuts import render
+from tools_over.models import Tools
 
 
 def startSearch(request):
@@ -9,4 +10,15 @@ def startSearch(request):
 
 def resultSearch(request):
     """View function of the result page of the central search function."""
-    return render(request, 'StartSearch/ResultSearch.html')
+    # read data from data base
+    # all tool information
+    tools = Tools.objects.all()
+    searchInput = request.POST.get("searchValue", None)
+    print(searchInput)
+    print(tools)
+
+    context = {
+        "searchValue": searchInput,
+        "tools": tools,
+    }
+    return render(request, "StartSearch/ResultSearch.html", context)
