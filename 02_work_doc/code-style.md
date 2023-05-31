@@ -1,7 +1,9 @@
-Intendation: Tabs, 1 Tab = 4 Whitespaces
+* Intendation: 
+  * Python: 4 Whitespaces (1 Tab = 4 Whitespaces)
+  (* html: 2 Whitespaces, maybe we need another document as html-style guide)
 
 * CamelCase, möglichst keine Zahlen, die nicht als Wort ausgeschrieben sind in den Identifiern (Variablen, Funktionen, Klassen)
-  * Klassen: CamelCase
+  * Klassen und Django-Apps: CamelCase
   * Funktion und Variablen: camelCase (kleiner Buchstabe am Wortbeginn)
 * Konstanen: SNAKE_CASE in Großbuchstaben
 * trailing_underscore\_ für Namen, die genauso heißen sollen wie Python-Keywords
