@@ -1,6 +1,6 @@
 import pathlib
 import pandas as pd
-from .Stromlastapproximation_Csv import Stromapproximation
+from .Stromlastapproximation_Csv import currentApproximation
 from django_plotly_dash import DjangoDash
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from project_listing.models import *
@@ -18,10 +18,10 @@ app = DjangoDash('Stromlast')   # replaces dash.Dash
 # App layout
 app.layout = html.Div([
     #Title
-    html.H1("Stromlast Approximation", style={'text-align': 'center'}),
+    html.H1("Stromlast Approximation", style = {'text-align': 'center'}),
     #Download data as csv
-    html.Button("Download Csv", id="btn-download-csv"),
-    dcc.Download(id="download-csv"),
+    html.Button("Download Csv", id = "btnDownloadCsv"),
+    dcc.Download(id = "downloadCsv"),
     # Dropdown for the available applications
     dcc.Dropdown(
         options = [
@@ -41,9 +41,9 @@ app.layout = html.Div([
         id = 'application'
         ),
         # Input Field for the 
-    dcc.Input(id = "power_requirement", type = "number", 
+    dcc.Input(id = "powerRequirement", type = "number", 
     placeholder = "Jahresstrombedarfs in kWh/a",
-    style = {'width':'200px'}, debounce=True),
+    style = {'width':'200px'}, debounce = True),
     
     dcc.RadioItems(
         options=[
@@ -62,13 +62,13 @@ app.layout = html.Div([
                 {'label': 'All', 'value': 'All'},
             ],
         value = 'All',
-        id = 'display_Month',
+        id = 'displayMonth',
         inline = True
     ),
-    dcc.Graph(id = 'power_graph', figure={}),
+    dcc.Graph(id = 'powerGraph', figure = {}),
 
 # style is used to control css output directly from dash 
-],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)","font-size":" 18.75px",
+],style = {'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)","font-size":" 18.75px",
 "font-weight": "400",
 "line-height": "22.5px"})
 # ------------------------------------------------------------------------------
@@ -76,35 +76,35 @@ app.layout = html.Div([
 
 #Stromapproximation
 @app.callback(
-    Output(component_id='power_graph', component_property='figure'),
+    Output('powerGraph','figure'),
     Input('application','value'),
-    Input('power_requirement','value'),
-    Input('display_Month','value'),
+    Input('powerRequirement','value'),
+    Input('displayMonth','value'),
     prevent_initial_call=True,)
     
-def update_power_graph(application:str,power_requirement:int,display_Month:str):
+def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
 
     if application != None:
 
-        WW = Stromapproximation(int(application),power_requirement)
+        WW = currentApproximation(int(application),powerRequirement)
         days = df_haupt['Datum/ Uhrzeit']
         global data
         data = {'Time':days[0:8760],'Last':WW}
         data = pd.DataFrame(data)
         data['Time'] = pd.to_datetime(data['Time'], errors='coerce')
-        if display_Month == 'All':   
+        if displayMonth == 'All':   
          
             result = data
         else:
             result = {'Last':
             (data.groupby(data.Time.dt.month).
-            get_group(int(display_Month)))['Last'],
+            get_group(int(displayMonth)))['Last'],
             'Time':(data.groupby(data.Time.dt.month).
-            get_group(int(display_Month)))['Time']}
+            get_group(int(displayMonth)))['Time']}
         from plotly.subplots import make_subplots
         fig = make_subplots()
-        fig.add_trace(go.Scatter(name='Stromlastgang in kW',x=result['Time'],
-         y = result['Last'],mode='lines', line=dict(color="#0000ff")))
+        fig.add_trace(go.Scatter(name = 'Stromlastgang in kW',x = result['Time'],
+        y = result['Last'],mode = 'lines', line=dict(color = "#0000ff")))
         fig.update_xaxes(
         tickangle = 90,
         title_text = "Datum",
@@ -120,24 +120,24 @@ def update_power_graph(application:str,power_requirement:int,display_Month:str):
         return {}
 # The download csv Funcionality
 @app.callback(
-    Output("download-csv", "data"),
-    Input("btn-download-csv", "n_clicks"),
+    Output("downloadCsv", "data"),
+    Input("btnDownloadCsv", "n_clicks"),
     Input('application','value'),
-    Input('power_requirement','value'),
+    Input('powerRequirement','value'),
     State("application","options"),
-    prevent_initial_call=True,
+    prevent_initial_call = True,
 )
 
-def DownloadAsCsv(n_clicks,application:str,power_requirement:int,state):
+def downloadAsCsv(n_clicks,application:str,powerRequirement:int,state):
     if not n_clicks:
         raise PreventUpdate
     else:
         label = [x['label'] for x in state if x['value'] == application]
-        data.columns = [['Jahresstrombedarf in KWh/a :'+str(power_requirement),''],
+        data.columns = [['Jahresstrombedarf in KWh/a :'+str(powerRequirement),''],
         ['Anwendung:' + label[0],''],['',''],['Datum','Last']]    
-        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index=False)
+        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index=  False)
 # ------------------------------------------------------------------------------
-# Connect the Plotly power_graphs with Dash Components
+# Connect the Plotly powerGraphs with Dash Components
 
 
 
