@@ -12,20 +12,20 @@ def currentApproximation(application:int,powerRequirement:int):
 
     df = pd.read_csv(DATA_PATH)
     try:    
-        Summe = float(df['Summe'][application+1])
+        sum = float(df['Summe'][application+1])
     except:
-        Summe = 0
-    lastgang = []
+        sum = 0
+    loadGear = []
     for i in range(3,8763):
         try:
-            lastgang.append(float(df.iloc[:,application][i])*(powerRequirement/Summe))
+            loadGear.append(float(df.iloc[:,application][i])*(powerRequirement/sum))
             
         except:
-            lastgang.append(0)
-    sum = math.fsum(lastgang)
-    lastgang2 = []
-    for i in range (0, len(lastgang)):
-        lastgang2.append( lastgang[i]*(powerRequirement/sum))
-    return lastgang2
+            loadGear.append(0)
+    sum = math.fsum(loadGear)
+    loadGear2 = []
+    for i in range (0, len(loadGear)):
+        loadGear2.append( loadGear[i]*(powerRequirement/sum))
+    return loadGear2
 
 
