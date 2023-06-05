@@ -47,7 +47,7 @@ app.layout = html.Div([
 "Erstellung des Datensatzes im Mai 2016",html.Br(), 
 "Art des TRY       : mittleres Jahr",html.Br(),
 "Bezugszeitraum    : 1995-2012",html.Br(), 
-"Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012" ],id="container",
+"Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012" ],id = "container",
 ),
         ],id = 'hideText', style = {'display': 'none'}),
     # Dropdown for the application options
@@ -136,7 +136,7 @@ app.layout = html.Div([
     dcc.Graph(id = 'heat_graph', figure = {}),
 
     #Display the missing number of missing values from the station data
-    html.P('Es gibt kein Eingabe ',id='container'),
+    html.P('Es gibt kein Eingabe ',id = 'container'),
     dcc.Store(id='heat_approximationStoring')
 # style is used to control css output directly from dash 
 ],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)",
@@ -170,7 +170,7 @@ def showHideElement(visibility_state):
 @app.callback(
     Output('station', 'options'),
     Input('state', 'value'),
-    prevent_initial_call=True
+    prevent_initial_call = True
     )
 #The following funtion provides the list of available stations in the chosen Bundesland
 def stationSelection(state:str) -> list:

@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 
 PATH = pathlib.Path(__file__).parent.resolve() 
 DATA_PATH = os.path.join(PATH , 'Hauptblatt2.csv') 
-df_haupt = pd.read_csv(DATA_PATH)
+DF_MAIN = pd.read_csv(DATA_PATH)
 data = []
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 
@@ -87,7 +87,7 @@ def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
     if application != None:
 
         WW = currentApproximation(int(application),powerRequirement)
-        days = df_haupt['Datum/ Uhrzeit']
+        days = DF_MAIN['Datum/ Uhrzeit']
         global data
         data = {'Time':days[0:8760],'Last':WW}
         data = pd.DataFrame(data)
@@ -128,14 +128,14 @@ def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
     prevent_initial_call = True,
 )
 
-def downloadAsCsv(n_clicks,application:str,powerRequirement:int,state):
-    if not n_clicks:
+def downloadAsCsv(nClicks,application:str,powerRequirement:int,state):
+    if not nClicks:
         raise PreventUpdate
     else:
         label = [x['label'] for x in state if x['value'] == application]
         data.columns = [['Jahresstrombedarf in KWh/a :'+str(powerRequirement),''],
         ['Anwendung:' + label[0],''],['',''],['Datum','Last']]    
-        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index=  False)
+        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index = False)
 # ------------------------------------------------------------------------------
 # Connect the Plotly powerGraphs with Dash Components
 
