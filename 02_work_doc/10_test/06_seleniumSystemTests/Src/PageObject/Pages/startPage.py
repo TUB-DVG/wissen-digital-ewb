@@ -22,19 +22,10 @@ class StartPage(object):
         
         """
         self.driver = driver
-        self.toolListLink = Locator.toolListLink
+        #self.toolListLink = Locator.toolListLink
 
-    def getToolListLink(self) -> None:
-        """
-        
-        """
-        try:
-            return self.driver.find_element(
-                By.XPATH, 
-                self.toolListLink,
-            )
-        except NoSuchElementException:
-            print("Tool Link Element couldnt be located on webpage!")
-            return None
 
+
+
+    
 

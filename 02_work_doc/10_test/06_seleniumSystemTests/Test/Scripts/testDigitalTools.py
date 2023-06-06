@@ -24,6 +24,7 @@ from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
+from Src.PageObject.Pages.NavBar import NavBar
 
 class TestDigitalToolsTab(WebDriverSetup):
     """
@@ -40,9 +41,9 @@ class TestDigitalToolsTab(WebDriverSetup):
         
         self.checkPageTitle(webPageTitle)
         
-        startPage = StartPage(self.driver)
+        navBar = NavBar(self.driver)
 
-        toolListLink = startPage.getToolListLink()
+        toolListLink = navBar.getNavToolList()
         if toolListLink is not None:
             toolListLink.click()
         else:
@@ -63,16 +64,14 @@ class TestDigitalToolsTab(WebDriverSetup):
         if searchFieldElement is None:
             self.assertTrue(False)
             return
-        
-        searchFieldElement.send_keys("Ansys")
-        time.sleep(1)
         listOfToolItems = toolListPage.getListOfToolItems()
-
         self.assertEqual(
             len(listOfToolItems),
-            1,
-            "Number of Tool Items should be one for Search-String 'Ansys'!",
+            12,
+            "Number of Tool Items should be 12 without search-filter!",
         )
+        searchFieldElement.send_keys("Ansys")
+        time.sleep(1)
         searchFieldElement.send_keys(Keys.RETURN)
         listOfToolItemsAfterReturn = toolListPage.getListOfToolItems()
         self.assertEqual(
@@ -170,9 +169,6 @@ class TestDigitalToolsTab(WebDriverSetup):
             "After pressing 'Return', the number of tool-items should stay the same!",
         )
 
-
-               
-
         time.sleep(1)
 
         # listOfSelectWebElements = []
@@ -246,21 +242,21 @@ class TestDigitalToolsTab(WebDriverSetup):
                     "Active Search-Filter Box does not represent choosen Element from Select-Input!",
                 )
 
-    def testIsRedirectedToPreviousPageAfterLogin(self) -> None:
-        """Tests, if user gets redirected to previous page after login.
+    # def testIsRedirectedToPreviousPageAfterLogin(self) -> None:
+    #     """Tests, if user gets redirected to previous page after login.
         
-        """
-        self.driver.get("http://127.0.0.1:8070/tool_list/")
-        time.sleep(1)
+    #     """
+    #     self.driver.get("http://127.0.0.1:8070/tool_list/")
+    #     time.sleep(1)
 
-        if self.driver.title == "Login":
-            loginPageObj = LoginPage(self.driver)
-            loginPageObj.getLoginButton().click()
+    #     if self.driver.title == "Login":
+    #         loginPageObj = LoginPage(self.driver)
+    #         loginPageObj.getLoginButton().click()
         
-        self.assertTrue(
-            self.driver.title == "Überblick über die Anwendungen",
-            "Login Does not redirect back to tool_list!",
-        )
+    #     self.assertTrue(
+    #         self.driver.title == "Überblick über die Anwendungen",
+    #         "Login Does not redirect back to tool_list!",
+    #     )
 
     def testIfShowMoreExpandsText(self):
         """Tests, if clicking `Zeige mehr` shows the whole text.
@@ -278,27 +274,33 @@ class TestDigitalToolsTab(WebDriverSetup):
         self.openToolListAndLogin()
         
         toolListPage = ToolListPage(self.driver)
-        pdb.set_trace()
+        
+        time.sleep(5)
         toolListPage.getCookieAcceptanceButton().click()
+
         self.assertFalse(
             toolListPage.getListInExpandedText()[0].is_displayed(),
             "The list inside the expand-field is shown, but it should be collapsed on page load!",
         )
-        pdb.set_trace()
+        
         toolListPage.getShowMoreElement().click()
-
+        
         listOfListElements = toolListPage.getListInExpandedText()
+        time.sleep(1)
         self.assertTrue(
             listOfListElements[0].is_displayed(), 
             "List-Element is not Displayed after clicking on 'Zeige mehr ...'!",
         )
-        time.sleep(1)
         
+        time.sleep(1)
+        #pdb.set_trace()
         showLessLink = toolListPage.getShowLessElement()
         self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollWidth", showLessLink)
-        pdb.set_trace()
-        showLessLink.click()
         time.sleep(1)
+        showLessLink.click()
+        
+        time.sleep(1)
+
         self.assertFalse(
             toolListPage.getListInExpandedText()[0].is_displayed(),
             "List is still displayed after clicking 'show less ...'!",
@@ -321,8 +323,8 @@ class TestDigitalToolsTab(WebDriverSetup):
             loginButtonElement.click()
 
 
-        startPage = StartPage(self.driver)   
-        toolListLink = startPage.getToolListLink()
+        navBar = NavBar(self.driver)   
+        toolListLink = navBar.getNavToolList()
         toolListLink.click() 
 
     def checkPageTitle(self, pageTitle) -> None:

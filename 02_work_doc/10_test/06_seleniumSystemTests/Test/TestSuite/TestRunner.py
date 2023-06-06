@@ -7,6 +7,7 @@ sys.path.append(os.getcwd())
  
 from unittest import TestLoader, TestSuite, TextTestRunner
 from Test.Scripts.testDigitalTools import TestDigitalToolsTab
+from Test.Scripts.testClickThroughAllSites import TestClickThroughSites
 #from test.Scripts.test_Google_Search import Google_Search
  
 import testtools as testtools
@@ -17,6 +18,7 @@ if __name__ == "__main__":
     # Test Suite is used since there are multiple test cases
     test_suite = TestSuite((
         test_loader.loadTestsFromTestCase(TestDigitalToolsTab),
+        test_loader.loadTestsFromTestCase(TestClickThroughSites),
         #test_loader.loadTestsFromTestCase(Google_Search),
         ))
  
