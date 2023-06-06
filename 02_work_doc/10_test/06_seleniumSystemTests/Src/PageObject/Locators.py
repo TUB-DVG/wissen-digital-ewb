@@ -1,7 +1,14 @@
 class Locator(object):
     
-    # locators in Home
+    # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
+    TUBerlinImage = "//a/img[@alt='logo']"
+    navStartButton = "//li/a[contains(text(), 'Start')]"
+    navData = "//a[contains(text(), 'Daten')]"
+    digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
+    
+    # locators in Home
+
     
     # locators in tool-list
     toolListSearchInput = "//input[@id='search-input-tools']"

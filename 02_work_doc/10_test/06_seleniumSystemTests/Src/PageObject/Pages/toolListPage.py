@@ -173,4 +173,8 @@ class ToolListPage(object):
         """Returns the cookie acceptance button, on cookie banner
         
         """
-        return self.driver.find_element(By.XPATH, Locator.cookieButton)
+        return self.driver.find_element(
+            By.XPATH, 
+            Locator.cookieButton,
+        )
+    
