@@ -15,8 +15,3 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 FROM base AS prod
 
 COPY . /src
-
-# build the sphinx-docs
-# RUN sphinx-apidoc -f -o 02_work_doc/06_sphinx/source/ 01_application/webcentral_app/ \
-#     && sphinx-build 02_work_doc/06_sphinx/source 01_application/webcentral_app/webcentral_app/static/
-
