@@ -15,7 +15,7 @@ class UpdateProperties:
         self.label = label
         self.color_class = color_class
 
-@login_required(login_url='login')
+#@login_required(login_url='login')
 def index(request):
     """
     shows the list of all projects including some key features
@@ -30,16 +30,17 @@ def index(request):
         searched=request.GET.get('searched')
         print('here')
         datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,categoryDataset__icontains=categoryDataset,availability__icontains=availability,nameDataset__icontains=searched)
-        print(datasets)
         filtered_by = [useCaseCategory, categoryDataset, availability]
               
     datasets = list((datasets))
+    # datasets_paginator to datasetsPaginator 
 
     datasets_paginator= Paginator (datasets,12)
 
     page_num= request.GET.get('page',None)
     page=datasets_paginator.get_page(page_num)
     
+    # is_ajax_request to isAjaxRequest
     is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
     if is_ajax_request:
         html = render_to_string(
