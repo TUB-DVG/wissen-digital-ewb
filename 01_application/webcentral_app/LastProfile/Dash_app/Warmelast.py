@@ -1,16 +1,14 @@
-
 import datetime
-from typing import Tuple
-
-from .Warmelastapproximation_csv import heatLoad
-from wetterdienst.provider.dwd.observation import DwdObservationRequest
-from django_plotly_dash import DjangoDash
-
-import pandas as pd
-from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
-from dash.exceptions import PreventUpdate
-import plotly.graph_objects as go
 import locale
+import pandas as pd
+from typing import Tuple
+import plotly.graph_objects as go
+from django_plotly_dash import DjangoDash
+from dash.exceptions import PreventUpdate
+from .Warmelastapproximation_csv import heatLoad
+from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
+from wetterdienst.provider.dwd.observation import DwdObservationRequest
+
 locale.setlocale(locale.LC_ALL, "de_DE.utf8") # German time
 
 app = DjangoDash('Warmelast')   
@@ -40,21 +38,22 @@ app.layout = html.Div([
     html.H1("Wärmelast Approximation", style = {'text-align': 'center'}),
     html.Div([
         html.P(["Als Testrefenzjahr haben wir die folgenden Werte gewählt:",html.Br(), 
-"Koordinatensystem : Lambert konform konisch",html.Br(), 
-"Rechtswert        : 4201500 Meter",html.Br(), 
-"Hochwert          : 2848500 Meter",html.Br(), 
-"Hoehenlage        : 36 Meter ueber NN",html.Br(), 
-"Erstellung des Datensatzes im Mai 2016",html.Br(), 
-"Art des TRY       : mittleres Jahr",html.Br(),
-"Bezugszeitraum    : 1995-2012",html.Br(), 
-"Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012" ],id = "container",
-),
-        ],id = 'hideText', style = {'display': 'none'}),
+                "Koordinatensystem : Lambert konform konisch",html.Br(), 
+                "Rechtswert        : 4201500 Meter",html.Br(), 
+                "Hochwert          : 2848500 Meter",html.Br(), 
+                "Hoehenlage        : 36 Meter ueber NN",html.Br(), 
+                "Erstellung des Datensatzes im Mai 2016",html.Br(), 
+                "Art des TRY       : mittleres Jahr",html.Br(),
+                "Bezugszeitraum    : 1995-2012",html.Br(), 
+                "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012" ],id = "container",
+            ),
+    ],id = 'hideText', style = {'display': 'none'}),
     # Dropdown for the application options
-    dcc.Dropdown( options = [
-                {'label': 'Standard', 'value': 'on'}, 
-                {'label': 'Testrefenzjahr', 'value': 'off'},     
-            ],
+    dcc.Dropdown( 
+        options = [
+            {'label': 'Standard', 'value': 'on'}, 
+            {'label': 'Testrefenzjahr', 'value': 'off'},     
+        ],
 
         placeholder = "Berechnungstyp",
         id = 'referenceYear',
@@ -62,15 +61,17 @@ app.layout = html.Div([
         ),
     html.Div([
     # Dropdown for State options for the Wetterdienst station choice
-    dcc.Dropdown(stations.all( ).df['state'].unique(),
-                 placeholder = "Auswahl der Bundesland",
-                 id = 'state'
-                ),
-      # Dropdown for the available wetterdienst stations in the chosen State
-    dcc.Dropdown(placeholder = "Auswahl der Station",id = 'station'
+        dcc.Dropdown(
+            stations.all( ).df['state'].unique(),
+            placeholder = "Auswahl der Bundesland",
+            id = 'state' 
+        ),
+        # Dropdown for the available wetterdienst stations in the chosen State
+        dcc.Dropdown(
+            placeholder = "Auswahl der Station",id = 'station'
         )
-         ],id = 'hideElements', style = {'display': 'block'}),
-     dcc.Dropdown(
+    ],id = 'hideElements', style = {'display': 'block'}),
+    dcc.Dropdown(
         options = [
                 {'label': 'Einfamlienhaus ', 'value': '2'},
                 {'label': 'Mehrfamilienhaus ', 'value': '3'},
@@ -89,23 +90,25 @@ app.layout = html.Div([
                   'value': '15'},
 
             ],
-
         placeholder = "Auswahl des Typs",
         id = 'application',
          # <-- This is the line that will be changed by the dropdown callback
     ),
         
     # Input field for the heat_demand in kWh/a      
-    dcc.Input(id = "heatRequirement", type = "number",
-    placeholder = "Jahreswärmebedarfs in kWh/a", 
-    debounce = True,style = {'width':'200px'}),
+    dcc.Input(
+        id = "heatRequirement", type = "number",
+        placeholder = "Jahreswärmebedarfs in kWh/a", 
+        debounce = True,style = {'width':'200px'}
+    ),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
-    display_format = ' DD/MM/YYYY',
-    start_date_placeholder_text = 'Start Datum',
-    end_date_placeholder_text = 'End Datum',
-    id = 'datePicker'),
+        display_format = ' DD/MM/YYYY',
+        start_date_placeholder_text = 'Start Datum',
+        end_date_placeholder_text = 'End Datum',
+        id = 'datePicker'
+    ),
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options = [
@@ -174,7 +177,6 @@ def showHideElement(visibility_state):
     )
 #The following funtion provides the list of available stations in the chosen Bundesland
 def stationSelection(state:str) -> list:
-
     return [{"label":row['name'] , "value": row['station_id']} 
     for index,row in stations.all( ).df.iterrows() if row['state'] == state]
 
@@ -215,8 +217,8 @@ def displayMonths(startDate:str,endDate:str)-> list:
     displayMonths = [{"label":index , 
     "value": datetime.datetime.strptime(index, "%B").month} 
     for index in Months ]
-
     displayMonths.append ({"label":'All' , "value": 'All'})
+
     return displayMonths
 
 #Warme Approximation
@@ -238,7 +240,6 @@ def displayMonths(startDate:str,endDate:str)-> list:
 def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
 displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear:str):
 
-
     if approximation_start is None:
         raise PreventUpdate
     else:
@@ -249,7 +250,6 @@ displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear
 
         if displayMonth == 'All':
             result = heatApproximation
-
         else:
             result=pd.DataFrame({'Last':(heatApproximation.groupby
             (heatApproximation.Time.dt.month).get_group(int(displayMonth)))['Last'],
@@ -280,6 +280,7 @@ displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear
         title_text = "Wärmelastgang in kW",
         title_standoff = 25
         )
+
         fig.update_yaxes(
         title_text = "Trinkwarmwasser-Lastgang in kW", 
         secondary_y = True
@@ -311,7 +312,6 @@ state:str,station:str,labelsStation,labelsApplication):
     if not nClicks:
         raise PreventUpdate
     else:
-
         heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
         labelStation = [x['label'] for x in labelsStation if x['value'] == station]
         labelsApplication = [x['label'] for x in labelsApplication 
