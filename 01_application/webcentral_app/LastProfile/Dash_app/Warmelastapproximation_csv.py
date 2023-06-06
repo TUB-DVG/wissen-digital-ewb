@@ -1,10 +1,10 @@
+import math
 import pathlib
 import os.path 
-from tracemalloc import start
 import pandas as pd
-from wetterdienst.provider.dwd.observation import DwdObservationRequest
-import math
 from typing import Tuple
+#from tracemalloc import start
+from wetterdienst.provider.dwd.observation import DwdObservationRequest
 
 PATH = pathlib.Path(__file__).parent.resolve() 
 DATA_PATH = os.path.join(PATH , 'Wärme_Strom.csv') 
@@ -31,11 +31,10 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
         stationData['value'] = stationData['value'].apply(lambda x: x - 273.15)
     else:
         stationData = pd.read_csv(TRY_PATH)
-        stationData["date"] = pd.to_datetime(stationData[["YEAR","MONTH", 
+        stationData["date"] = pd.to_datetime(stationData[[  "YEAR","MONTH", 
                                                             "DAY", "HOUR"]],
                                                             format = "%Y-%m-%d %H",
                                                             utc = True)
-
     # Fill in the missing entries in the wetterdient data and mark them
     missingValues=0
     stationData['fehlend'] = 'False'
@@ -44,10 +43,8 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
             missingValues += 1
             stationData['value'][i] = stationData['value'][i-24]
             stationData['fehlend'][i] = 'True'
-
     # Prepare csv file to read factors
     dfHeat = pd.read_csv(DATA_PATH)
-
 
     #Load regression coefficients
     A = float(dfHeat.iloc[:,9][application+4])
@@ -71,7 +68,6 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
     weekDay.append(float(dfHeat.iloc[:,14][application+23]))
     ##Sonntag
     weekDay.append(float(dfHeat.iloc[:,15][application+23]))
-    #print(weekDay)
 
     #Calculation of h
     h = []
@@ -85,8 +81,7 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
             tAverage = tAverage+tMoment/24
             runV = runV + 1
             j += 1
-
-        
+  
         h.append(round( A / (1 + (B / (tAverage - 40)) ** C) + D,14))
 
     #Load hour factors
@@ -94,11 +89,10 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
 
     #Load hour factors for Mondays
     column = 18
-    F_Montag = [[0 for x in range(24)] for y in range(10)] 
+    factorMonday = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
         for j in range(0,10):
-            F_Montag[j][i] = dfHeat.iloc[:,column+i][lineStart+j]
-
+            factorMonday[j][i] = dfHeat.iloc[:,column+i][lineStart+j]
 
     #Load hour factors for Tuesdays
     column = 44
@@ -108,7 +102,6 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
             factorTuesday[j][i] = dfHeat.iloc[:,column+i][lineStart+j]
 
     #Load hour factors for Wednesdays
-
     column = 70
     factorWednesday = [[0 for x in range(24)] for y in range(10)] 
     for i in range(0,24):
@@ -147,8 +140,6 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
     # Calculation of the hourly heat demand
     Q_average = heatDemand
     Q = []
-    #runV = 0
-    #k = 0
 
     # Calculate mean h
     h_average = 0
@@ -162,7 +153,6 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
                 # Reset hours after 24 hours
                 if i == 24 :
                     i = 0
-          
                 #Selection of the line depending on the outside temperature
                 if stationData['value'][k] <=-15:
                     line = 0
@@ -185,7 +175,6 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
                     line = 8
                 else:
                     line = 9
-
                 #Tagessumme h
                 h_sum = 0
                 runV = k 
@@ -196,17 +185,17 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
                     j += 1
                 #Selecting the right hour factor
                 if stationData['date'][k].weekday() == 0 :
-                    F=F_Montag[line] [i]
+                    F=factorMonday[line] [i]
                 elif stationData['date'][k].weekday() == 1 :
-                        F = factorTuesday[line] [i]
+                    F = factorTuesday[line] [i]
                 elif stationData['date'][k].weekday() == 2 :
-                        F = factorWednesday[line] [i]
+                    F = factorWednesday[line] [i]
                 elif stationData['date'][k].weekday() == 3:
-                        F = factorThursday[line] [i]
+                    F = factorThursday[line] [i]
                 elif stationData['date'][k].weekday() == 4:
-                        F = factorFriday[line] [i]
+                    F = factorFriday[line] [i]
                 elif stationData['date'][k].weekday() == 5 :
-                        F = factorSaturday[line] [i]
+                    F = factorSaturday[line] [i]
                 else:
                     F = factorSunday[line] [i]
                 try:
@@ -214,8 +203,7 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
                     Q.append( h_sum * (Q_average / h_average) * F * 
                              weekDay[stationData['date'][k].weekday()])
                 except ZeroDivisionError:
-                    z = 0
-              
+                    pass
                 #Increment hours
                 i = i+1
                 
@@ -237,7 +225,7 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
     start=stationData.index[stationData.date == 
                             pd.Timestamp(startDate+" 01:00:00+00:00")].tolist()[0]
     end=stationData.index[stationData.date == 
-                          pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
+                            pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
 
     heatApproximationDf = pd.DataFrame({'Time':stationData['date'][start:end],
                                         'Last':Q[start:end],
