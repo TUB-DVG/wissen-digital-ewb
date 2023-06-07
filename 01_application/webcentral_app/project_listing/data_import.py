@@ -3,124 +3,124 @@ from encodings import utf_8
 from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
-from schlagwoerter.models import *
+from keywords.models import *
 from norms_over.models import *
 
 # -*- coding: utf-8 -*-
 
-def get_or_create_forschung(row, header):
+def getOrCreateFurtherFundingInformation(row, header):
     """
-    add entry into table forschung or/and return entry key
+    add entry into table FurtherFundingInformation or/and return entry key
     """
     # content = row[number of the columns of the row]
-    bundesministerium = row[header.index('Bundesministerium')]
-    projekttraeger = row[header.index('Projekttraeger')]
-    foerderprogramm = row[header.index('Foerderprogramm')]
-    forschungsprogramm = row[header.index('Forschungsprogramm')]
-    obj, created = Forschung.objects.get_or_create(
-        bundesministerium=bundesministerium,
-        projekttraeger=projekttraeger,
-        forschungsprogramm=forschungsprogramm,
-        foerderprogramm=foerderprogramm
+    fundedBy = row[header.index('Bundesministerium')]
+    projectManagementAgency = row[header.index('Projekttraeger')]
+    researchProgram = row[header.index('Foerderprogramm')]
+    fundingProgram = row[header.index('Forschungsprogramm')]
+    obj, created = FurtherFundingInformation.objects.get_or_create(
+        fundedBy=fundedBy,
+        projectManagementAgency=projectManagementAgency,
+        researchProgram=researchProgram,
+        fundingProgram=fundingProgram
     )
     return obj, created
 
-def get_or_create_anschrift(row, header, who):
+def getOrCreateAddress(row, header, who):
     """
     add entry into table anschrift or/and return entry key
 
     who options:
-    - 'zwe' : zuwendungsempfaenger
-    - 'as' : ausfehrende Stelle
+    - 'GrantRecipient' : zuwendungsempfaenger
+    - 'ExecutingEntity' : ausfehrende Stelle
     """
     # content = row[number of the columns of the row]
     # decision kind of persion, where should the data read from, maybe later needed
-    if who == 'zwe':
+    if who == 'GrantRecipient':
         plz = row[header.index('PLZ_ZWE')]
-        ort = row[header.index('Ort_ZWE')]
-        land = row[header.index('Land_ZWE')]
-        adresse = row[header.index('Adress_ZWE')]
-    elif who == 'as':
+        location = row[header.index('Ort_ZWE')]
+        state = row[header.index('Land_ZWE')]
+        address = row[header.index('Adress_ZWE')]
+    elif who == 'ExecutingEntity':
         plz = row[header.index('PLZ_AS')]
-        ort = row[header.index('Ort_AS')]
-        land = row[header.index('Land_AS')]
-        adresse = row[header.index('Adress_AS')]
+        location = row[header.index('Ort_AS')]
+        state = row[header.index('Land_AS')]
+        address = row[header.index('Adress_AS')]
 
-    obj, created = Anschrift.objects.get_or_create(
+    obj, created = Address.objects.get_or_create(
         plz = plz,
-        ort = ort,
-        land = land,
-        adresse = adresse
+        location = location,
+        state = state,
+        address = address
     )
     return obj, created
 
-def get_or_create_person(row, header):
+def getOrCreatePerson(row, header):
     """
     add entry into table person or/and return entry key
     """
     # content = row[number of the columns of the row]
     # decision kind of persion, where should the data read from, maybe later needed
-    name = row[header.index('Name_pl')]
-    vorname = row[header.index('Vorname_pl')]
-    titel = row[header.index('Titel_pl')]
+    surname = row[header.index('Name_pl')]
+    firstName = row[header.index('Vorname_pl')]
+    title = row[header.index('Titel_pl')]
     email = row[header.index('Email_pl')]
     obj, created = Person.objects.get_or_create(
-        name = name,
-        vorname = vorname,
-        titel = titel,
+        surname = surname,
+        firstName = firstName,
+        title = title,
         email = email
     )
     return obj, created
 
-def get_or_create_leistung_sys(row, header):
+def getOrCreateRAndDPlanningCategory(row, header):
     """
-    add entry into table leistung_sys or/and return entry key
+    add entry into table RAndDPlanningCategory (leistungsplansystematik) or/and return entry key
     """
     # content = row[number of the columns of the row]
-    leistungsplansystematik_text = row[header.index('Leistungsplan_Sys_Text')]
-    leistungsplansystematik_nr = row[header.index('Leistungsplan_Sys_Nr')]
+    rAndDPlanningCategoryText = row[header.index('Leistungsplan_Sys_Text')]
+    rAndDPlanningCategoryNumber = row[header.index('Leistungsplan_Sys_Nr')]
 
-    obj, created = Leistung_sys.objects.get_or_create(
-        leistungsplansystematik_nr =  leistungsplansystematik_nr,
-        leistungsplansystematik_text = leistungsplansystematik_text
+    obj, created = RAndDPlanningCategory.objects.get_or_create(
+        rAndDPlanningCategoryNumber =  rAndDPlanningCategoryNumber,
+        rAndDPlanningCategoryText = rAndDPlanningCategoryText
     )
     return obj, created
 
-def get_or_create_zuwendungsempfaenger(row, header):
+def getOrCreateGrantRecipient(row, header):
     """
-    add entry into table zuwendungsempfaenger or/and return entry key
+    add entry into table GrantRecipient (zuwendungsempfaenger) or/and return entry key
     """
-   # fill table anschrift in case of zuwendungsempfaenger
-    # or/and get the anschrift_id
-    obj_ans_zwe, created_ans_zwe = get_or_create_anschrift(row, header, 'zwe')
-    zwe_ans_id = obj_ans_zwe.anschrift_id
+   # fill table address in case of zuwendungsempfaenger
+    # or/and get the address_id
+    objAddressGrantRecipient, createdGrantRecipient = getOrCreateAddress(row, header, 'GrantRecipient')
+    grantRecipientAddress_id = objAddressGrantRecipient.address_id
 
     # content = row[number of the columns of the row]
     name = row[header.index('Name_ZWE')]
-    obj, created = Zuwendungsempfaenger.objects.get_or_create(
+    obj, created = GrantRecipient.objects.get_or_create(
         name = name,
-        anschrift_id = zwe_ans_id
+        address_id = grantRecipientAddress_id
     )
     return obj, created
 
-def get_or_create_ausfuehrende_stelle(row, header):
+def getOrCreateExecutingEntity(row, header):
     """
     add entry into table ausfuehrende_stelle or/and return entry key
     """
-   # fill table anschrift in case of ausfuehrende_stelle
-    # or/and get the anschrift_id
-    obj_ans_as, created_ans_as = get_or_create_anschrift(row, header, 'as')
-    as_ans_id = obj_ans_as.anschrift_id
+   # fill table address in case of ausfuehrende_stelle
+    # or/and get the address_id
+    objAddressExecutingEntity, createdAddressExecutingEntity = getOrCreateAddress(row, header, 'ExecutingEntity') ### what does ans mean here?
+    executingEntityAddress_id = objAddressExecutingEntity.address_id
 
     # content = row[number of the columns of the row]
     name = row[header.index('Name_AS')]
-    obj, created = Ausfuehrende_stelle.objects.get_or_create(
+    obj, created = ExecutingEntity.objects.get_or_create(
         name = name,
-        anschrift_id = as_ans_id
+        address_id = executingEntityAddress_id
     )
     return obj, created
 
-def get_or_create_enargus(row, header):
+def getOrCreateEnargus(row, header):
     """
     add entry into table enargus or/and return entry key
     """
@@ -128,67 +128,67 @@ def get_or_create_enargus(row, header):
     # print(forschung_id)
 
     # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
-    obj_zwe, created_zwe = get_or_create_zuwendungsempfaenger(row, header)
-    zwe_id = obj_zwe.zuwendungsempfaenger_id
+    objGrantRecipient, createdGrantRecipient = getOrCreateGrantRecipient(row, header)
+    grantRecipient_id = objGrantRecipient.grantRecipient_id
 
     # fill table ausfuehrende_stelle or/and get the ausfuehrende_stelle_id
-    obj_as, created_as = get_or_create_ausfuehrende_stelle(row, header)
-    as_id = obj_as.ausfuehrende_stelle_id
+    objExecutingEntity, createdExecutingEntity = getOrCreateExecutingEntity(row, header)
+    executingEntity_id = objExecutingEntity.executingEntity_id
 
     # fill table leistung_sys or/and get the leistungsplansystematik_nr
-    obj_lps, created_lps = get_or_create_leistung_sys(row, header)
-    lps_nr = obj_lps.leistungsplansystematik_nr
+    objRAndDPlanningCategory, createdRAndDPlanningCategory = getOrCreateRAndDPlanningCategory(row, header)
+    rAndDPlanningCategoryNumber = objRAndDPlanningCategory.rAndDPlanningCategoryNumber
 
     # fill table person or/and get the person_id
-    obj_per, created_per = get_or_create_person(row, header)
-    person_id = obj_per.person_id
+    objPerson, createdPerson = getOrCreatePerson(row, header)
+    person_id = objPerson.person_id
 
     # fill table forschung or/and get the forschung_id
-    obj_for, created_for = get_or_create_forschung(row, header)
-    forschung_id = obj_for.forschung_id
+    objFurtherFundingInformation, createdFurtherFundingInformation = getOrCreateFurtherFundingInformation(row, header)
+    furtherFundingInformation_id = objFurtherFundingInformation.furtherFundingInformation_id
 
-    laufzeitbeginn = row[header.index('Laufzeitbeginn')]
-    laufzeitende = row[header.index('Laufzeitende')]
-    thema = row[header.index('Thema')]
-    verbundbezeichnung = row[header.index('Verbundbezeichung')]
-    foerdersumme = float(row[header.index('Foerdersumme_EUR')])
-    kurzbeschreibung_de = row[header.index('Kurzbeschreibung_de')]
-    kurzbeschreibung_en = row[header.index('Kurzbeschreibung_en')]
-    datenbank = row[header.index('Datenbank')]
+    startDate = row[header.index('Laufzeitbeginn')]
+    endDate = row[header.index('Laufzeitende')]
+    topics = row[header.index('Thema')]
+    collaborativeProject = row[header.index('Verbundbezeichung')]
+    appropriatedBudget = float(row[header.index('Foerdersumme_EUR')])
+    shortDescriptionDe = row[header.index('Kurzbeschreibung_de')]
+    shortDescriptionEn = row[header.index('Kurzbeschreibung_en')]
+    database = row[header.index('Datenbank')]
     obj, created = Enargus.objects.get_or_create(
-        laufzeitbeginn=laufzeitbeginn,
-        laufzeitende=laufzeitende,
-        thema=thema,
+        startDate=startDate,
+        endDate=endDate,
+        topics=topics,
         # instead of using only the name of the feature in case
         # of foreigne keys use the name+_id, I dont know why
-        projektleiter_id = person_id,
-        forschung_id = forschung_id,
-        leistungsplan_systematik_id = lps_nr,
-        zuwendsempfanger_id = zwe_id,
-        ausfuehrende_stelle_id = as_id,
-        verbundbezeichnung = verbundbezeichnung,
-        foerdersumme = foerdersumme,
-        kurzbeschreibung_de = kurzbeschreibung_de,
-        kurzbeschreibung_en = kurzbeschreibung_en,
-        datenbank = datenbank
+        projectLead_id = person_id,
+        furtherFundingInformation_id = furtherFundingInformation_id,
+        rAndDPlanningCategory_id = rAndDPlanningCategoryNumber,
+        grantRecipient_id = grantRecipient_id,
+        executingEntity_id = executingEntity_id,
+        collaborativeProject = collaborativeProject,
+        appropriatedBudget = appropriatedBudget,
+        shortDescriptionDe = shortDescriptionDe,
+        shortDescriptionEn = shortDescriptionEn,
+        database = database
     )
     return obj, created
 
-def get_or_create_modulen_zuordnung(row, header):
+def getOrCreateModuleAssignment(row, header):
     """
     add entry into table modulen_zuordnung_ptj or/and return entry key
     """
     # content = row[number of the columns of the row]
 
-    priority_1 = row[header.index('modulzuordnung_ptj_1')]
-    priority_2 = row[header.index('modulzuordnung_ptj_2')]
-    priority_3 = row[header.index('modulzuordnung_ptj_3')]
-    priority_4 = row[header.index('modulzuordnung_ptj_4')]
-    obj, created = Modulen_zuordnung_ptj.objects.get_or_create(
-        priority_1 = priority_1,
-        priority_2 = priority_2,
-        priority_3 = priority_3,
-        priority_4 = priority_4
+    priority1 = row[header.index('modulzuordnung_ptj_1')]
+    priority2 = row[header.index('modulzuordnung_ptj_2')]
+    priority3 = row[header.index('modulzuordnung_ptj_3')]
+    priority4 = row[header.index('modulzuordnung_ptj_4')]
+    obj, created = ModuleAssignment.objects.get_or_create(
+        priority1 = priority1,
+        priority2 = priority2,
+        priority3 = priority3,
+        priority4 = priority4
     )
     return obj, created
 
@@ -244,7 +244,7 @@ def getOrCreateTools(row, header, image_path):
     )
     return obj, created
 
-def get_or_create_weatherdata(row, header):
+def getOrCreateWeatherData(row, header):
     """
     add entry into table Weatherdata or/and return entry key
     """
@@ -261,7 +261,8 @@ def get_or_create_weatherdata(row, header):
     license = row[header.index('license')]
     category = row[header.index('category')]
     long_description = row[header.index('long_description')]
-
+    image = row[header.index('image')]
+    
     obj, created = Weatherdata.objects.get_or_create(
         data_service = data_service,
         short_description = short_description,
@@ -273,113 +274,117 @@ def get_or_create_weatherdata(row, header):
         last_update = last_update,
         license = license,
         category = category,
-        long_description = long_description
+        long_description = long_description,
+        image = image
     )
     return obj, created
 
-def get_or_create_schlagwort(row, header, schlagwort_key):
+def getOrCreateKeyword(row, header, keywordKey):
     """
     add entry into table forschung or/and return entry key
     """
     # content = row[number of the columns of the row]
-    schlagwort = row[header.index(schlagwort_key)]
-    obj, created = Schlagwort.objects.get_or_create(
-        schlagwort = schlagwort
+    keyword = row[header.index(keywordKey)]
+    obj, created = Keyword.objects.get_or_create(
+        keyword = keyword
     )
     return obj, created
 
-def get_or_create_schlagwortregister(row, header):
+def getOrCreateKeywordRegister(row, header):
     """
     add entry into table Weatherdata or/and return entry key
     """
-    obj_schlagwort_1, created_schlagwort_1 = get_or_create_schlagwort(row, header, 'Schlagwort1')
-    schlagwort_1_id = obj_schlagwort_1.schlagwort_id
+    objKeyword1, createdKeyword1 = getOrCreateKeyword(row, header, 'Schlagwort1')
+    keyword1_id = objKeyword1.keyword_id
 
-    obj_schlagwort_2, created_schlagwort_2 = get_or_create_schlagwort(row, header, 'Schlagwort2')
-    schlagwort_2_id = obj_schlagwort_2.schlagwort_id
+    objKeyword2, createdKeyword2 = getOrCreateKeyword(row, header, 'Schlagwort2')
+    keyword2_id = objKeyword2.keyword_id
 
-    obj_schlagwort_3, created_schlagwort_3 = get_or_create_schlagwort(row, header, 'Schlagwort3')
-    schlagwort_3_id = obj_schlagwort_3.schlagwort_id
+    objKeyword3, createdKeyword3 = getOrCreateKeyword(row, header, 'Schlagwort3')
+    keyword3_id = objKeyword3.keyword_id
 
-    obj_schlagwort_4, created_schlagwort_4 = get_or_create_schlagwort(row, header, 'Schlagwort4')
-    schlagwort_4_id = obj_schlagwort_4.schlagwort_id
-    
-    obj_schlagwort_5, created_schlagwort_5 = get_or_create_schlagwort(row, header, 'Schlagwort5')
-    schlagwort_5_id = obj_schlagwort_5.schlagwort_id
-    
-    obj_schlagwort_6, created_schlagwort_6 = get_or_create_schlagwort(row, header, 'Schlagwort6')
-    schlagwort_6_id = obj_schlagwort_6.schlagwort_id
-    
-    obj_schlagwort_7, created_schlagwort_7 = get_or_create_schlagwort(row, header, 'Schlagwort')
-    schlagwort_7_id = obj_schlagwort_7.schlagwort_id
-    
+    objKeyword4, createdKeyword4 = getOrCreateKeyword(row, header, 'Schlagwort4')
+    keyword4_id = objKeyword4.keyword_id
 
-    obj, created = Schlagwortregister_erstsichtung.objects.get_or_create(
-        schlagwort_1_id = schlagwort_1_id,
-        schlagwort_2_id = schlagwort_2_id,
-        schlagwort_3_id = schlagwort_3_id,
-        schlagwort_4_id = schlagwort_4_id,
-        schlagwort_5_id = schlagwort_5_id,
-        schlagwort_6_id = schlagwort_6_id,
-        schlagwort_7_id = schlagwort_7_id
+    objKeyword5, createdKeyword5 = getOrCreateKeyword(row, header, 'Schlagwort5')
+    keyword5_id = objKeyword5.keyword_id
+
+    objKeyword6, createdKeyword6 = getOrCreateKeyword(row, header, 'Schlagwort6')
+    keyword6_id = objKeyword6.keyword_id
+
+    objKeyword7, createdKeyword7 = getOrCreateKeyword(row, header, 'Schlagwort')
+    keyword7_id = objKeyword7.keyword_id
+
+    obj, created = KeywordRegisterFirstReview.objects.get_or_create(
+        keyword1_id = keyword1_id,
+        keyword2_id = keyword2_id,
+        keyword3_id = keyword3_id,
+        keyword4_id = keyword4_id,
+        keyword5_id = keyword5_id,
+        keyword6_id = keyword6_id,
+        keyword7_id = keyword7_id
     )
     return obj, created
 
-def add_or_update_row_teilprojekt(row, header, source):
+def addOrUpdateRowSubproject(row, header, source):
     """add or update one row of the database, but without foreign key connections
 
     source cases:
     - 'enargus' : read data from enargus xml via csv file (here csv will loaded)
-    - 'modul' : read data from 'verteiler xlsx' via csv file (here csv will loaded)
+    - 'module' : read data from 'verteiler xlsx' via csv file (here csv will loaded)
 
     """
     # fill table enargus or/and get the enargus_id
     if source == 'enargus':
-        obj, created = get_or_create_enargus(row, header)
+        obj, created = getOrCreateEnargus(row, header)
         enargus_id = obj.enargus_id
-        fkz = row[header.index('FKZ')]
+        referenceNumber = row[header.index('FKZ')]
 
     # breakpoint()
         try:
-            Teilprojekt.objects.create(fkz=fkz,
-                                    enargus_daten_id= enargus_id)
-            print('added: %s' %fkz)
+            Subproject.objects.create(referenceNumber_id=referenceNumber,
+                                    enargusData_id= enargus_id)
+            print('added: %s' %referenceNumber)
         except IntegrityError:
-            answ = input("%s found in db. Update this part project? (y/n): "
-                     %fkz)
-            if answ == 'y':
-                Teilprojekt.objects.filter(pk=fkz).update(
-                    enargus_daten_id= enargus_id)
-    elif source == 'modul':
-        obj, created = get_or_create_modulen_zuordnung(row, header)
-        mod_id = obj.mod_id
-        fkz = row[header.index('FKZ')]
+            #answ = input("%s found in db. Update this part project? (y/n): "
+            #         %referenceNumber)
+            #if answ == 'y':
+            Subproject.objects.filter(pk=referenceNumber).update(
+                    enargusData_id= enargus_id)
+    elif source == 'module':
+        obj, created = getOrCreateModuleAssignment(row, header)
+        moduleAssignment_id = obj.moduleAssignment_id
+        referenceNumber = row[header.index('FKZ')]
         try:
-            Teilprojekt.objects.create(fkz=fkz,
-                                    zuordnung_id= mod_id)
-            print('added: %s' %fkz)
+            Subproject.objects.create(pk=referenceNumber,
+                                    moduleAssignment_id= moduleAssignment_id)
+            print('added: %s' %referenceNumber)
         except IntegrityError:
-            answ = input("%s found in db. Update this part project? (Y/n): "
-                     %fkz) or 'y'
-            if answ == 'y':
-                Teilprojekt.objects.filter(pk=fkz).update(
-                    zuordnung_id= mod_id)
-                print('updated: %s' %fkz)
-    elif source == 'schlagwortregister':
-        obj, created = get_or_create_schlagwortregister(row, header)
-        schlagwortregister_id = obj.schlagwortregister_id
-        fkz = row[header.index('Förderkennzeichen (0010)')]
+            #answ = input("%s found in db. Update this part project? (Y/n): "
+            #         %referenceNumber) or 'y'
+            #if answ == 'y':
+            Subproject.objects.filter(referenceNumber_id=referenceNumber).update(
+                    moduleAssignment_id= moduleAssignment_id)
+            print('updated: %s' %referenceNumber)
+    elif source == 'keywordRegister':
+        obj, created = getOrCreateKeywordRegister(row, header)
+        keywordRegister_id = obj.keywordRegisterFirstReview_id
+        referenceNumber = row[header.index('Förderkennzeichen (0010)')]
         try:
-            Teilprojekt.objects.create(fkz=fkz,
-                                    schlagwortregister_erstsichtung_id = schlagwortregister_id)
-            print('added: %s' %fkz)
+            keywordsFirstReview = KeywordRegisterFirstReview.objects.get(keywordRegisterFirstReview_id=keywordRegister_id)
+            #print('checking keywords', keywordsFirstReview)
+            Subproject.objects.create(referenceNumber_id=referenceNumber,
+                                    keywordsFirstReview = keywordsFirstReview)
+            print('added: %s' %referenceNumber)
         except IntegrityError:
-            answ = input("%s found in db. Update this part project? (Y/n): "
-                     %fkz) or 'y'
-            if answ == 'y':
-                Teilprojekt.objects.filter(pk=fkz).update(
-                    schlagwortregister_erstsichtung_id= schlagwortregister_id)
-                print('updated: %s' %fkz)
+            #answ = input("%s found in db. Update this part project? (Y/n): "
+            #         %referenceNumber) or 'y'
+            #if answ == 'y':
+            keywordsFirstReview = KeywordRegisterFirstReview.objects.get(keywordRegisterFirstReview_id=keywordRegister_id)
+            print('checking keywords', keywordsFirstReview)
+            Subproject.objects.filter(pk=referenceNumber).update(
+                keywordsFirstReview = keywordsFirstReview)
+            print('updated: %s' %referenceNumber)
 
 def getOrCreateNorms(row, header):
     """
@@ -403,7 +408,7 @@ def getOrCreateNorms(row, header):
     )
     return obj, created
 
-def csv2m4db_enargus(path):
+def csv2m4dbEnargus(path):
     """EnArgus csv-file into BF M4 Django database, hard coded"""
     with open(path) as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -411,10 +416,10 @@ def csv2m4db_enargus(path):
         data = []
         for row in reader:
             data.append(row)
-            add_or_update_row_teilprojekt(row, header, 'enargus')
+            addOrUpdateRowSubproject(row, header, 'enargus')
     return header, data
 
-def csv2m4db_modul(path):
+def csv2m4dbModule(path):
     """Modul csv-file into BF M4 Django database, hard coded"""
     with open(path) as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -423,10 +428,10 @@ def csv2m4db_modul(path):
         for row in reader:
             # print(row[header.index('FKZ')])
             data.append(row)
-            add_or_update_row_teilprojekt(row, header, 'modul')
+            addOrUpdateRowSubproject(row, header, 'module')
     return header, data
 
-def read_print_csv(path):
+def readPrintCsv(path):
     """Test function EnArgus csv-file into BF M4 Django database, hard coded"""
     with open(path) as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -438,7 +443,7 @@ def read_print_csv(path):
     return header, data
 
 def csv2m4dbTools(path, toolsImages):
-    """tools Uebersicht csv-file into BF M4 Django database, hard coded"""
+    """tool overview csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csvFile:
         reader = csv.reader(csvFile, delimiter=';')
         header = next(reader)
@@ -449,7 +454,7 @@ def csv2m4dbTools(path, toolsImages):
             print(image)
             getOrCreateTools(row, header, image)
     return header, data   
-def csv2m4db_weatherdata(path):
+def csv2m4dbWeatherData(path):
     """Weatherdata csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
@@ -459,12 +464,10 @@ def csv2m4db_weatherdata(path):
             print(row[header.index('data_service')])
             data.append(row)
             # breakpoint()
-            get_or_create_weatherdata(row, header)
+            getOrCreateWeatherData(row, header)
     return header, data
-
-
-def csv2m4db_schlagwortregister_erstsichtung(path):
-    """Weatherdata csv-file into BF M4 Django database, hard coded"""
+def csv2m4dbKeywordRegisterFirstReview(path):
+    """KeywordRegisterFirstReview csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
         header = next(reader)
@@ -474,11 +477,11 @@ def csv2m4db_schlagwortregister_erstsichtung(path):
             data.append(row)
             # breakpoint()
             # get_or_create_schlagwortregister(row, header)
-            add_or_update_row_teilprojekt(row, header, 'schlagwortregister')
+            addOrUpdateRowSubproject(row, header, 'keywordRegister')
     return header, data
 
 def csv2m4dbNorms(path):
-    """Normen Uebersicht csv-file into BF M4 Django database, hard coded"""
+    """Normen csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csvFile:
         reader = csv.reader(csvFile, delimiter='|')
         header = next(reader)
@@ -500,16 +503,6 @@ def removeFromDatabase(modelName):
     except:
         print('Removal of records <', modelName,'> from database failed...')
     return
-
-# Script area (here you find examples to use the functions ahead)
-
-## Example add/update Enargus data
-# path_csv_enargus='../../02_work_doc/01_daten/01_prePro/enargus_csv_20220216.csv'
-# header, data = csv2m4db_enargus(path_csv_enargus)
-
-## Example add/update Modul-Zuordnung data
-# path_csv_modul='../../02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20220225.csv'
-# header, data = csv2m4db_modul(path_csv_modul)
 
 def retrieveImageFromDatabase():
     # retrieve image path and tool names from the database <- to be executed BEFORE Tools in database are modified!
@@ -535,6 +528,8 @@ def retrieveImageFromDatabase():
     df.to_csv('/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv')
     return df 
 
+
+# Script area (here you find examples to use the functions ahead)
 # retrieved BEFORE Tools are modified in database! 
 #retrieveImageFromDatabase()
 #removeFromDatabase(Tools)
@@ -545,13 +540,23 @@ import pandas as pd
 toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
 header, data = csv2m4dbTools(pathCsvTools, toolsImages)
 
+## add/update norm data
+pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
+header, data = csv2m4dbNorms(pathCsvNorms)
+
 ## Example add/update Weatherdata table
-# path_csv_weatherdata='../../02_work_doc/01_daten/03_weatherdata/2022_03_31_weatherdata.csv'
-# header, data = csv2m4db_weatherdata(path_csv_weatherdata)
-
+pathCsvWeatherData='./02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
+header, data = csv2m4dbWeatherData(pathCsvWeatherData)
 ## Example add/update Schlagwoerter table
-#path_csv_schlagwoerter='../../02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
-#header, data = csv2m4db_schlagwortregister_erstsichtung(path_csv_schlagwoerter)
+pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
+header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
 
-#pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
-#header, data = csv2m4dbNorms(pathCsvNorms)
+## add/update Enargus data
+pathCsvEnargus ='./02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv'
+header, data = csv2m4dbEnargus(pathCsvEnargus)
+
+## add/update ModuleAssignment data
+pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
+header, data = csv2m4dbModule(pathCsvModule)
+
+
