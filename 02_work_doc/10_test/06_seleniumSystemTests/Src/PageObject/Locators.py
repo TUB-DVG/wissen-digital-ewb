@@ -6,7 +6,8 @@ class Locator(object):
     navStartButton = "//li/a[contains(text(), 'Start')]"
     navData = "//a[contains(text(), 'Daten')]"
     digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
-    
+    weatherDataItem = "//li/a[contains(text(), 'Wetterdaten')]"
+    lastProfileItem = "//li/a[contains(text(), 'Lastprofile')]"
     # locators in Home
 
     
@@ -27,3 +28,6 @@ class Locator(object):
     
     # locators in loginPage
     loginButtonElement = "//input[@class='btn login_btn']"
+
+    # locators of lastprofile:
+    stromlastApprLink = "//a[@href='LastProfile/stromlast']"
