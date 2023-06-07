@@ -3,6 +3,7 @@ from django.shortcuts import render
 from tools_over.models import Tools
 from project_listing.models import Teilprojekt
 from django.db.models import Q
+from itertools import chain
 
 
 def startSearch(request):
@@ -35,6 +36,17 @@ def resultSearch(request):
                                                       criterionProejctsTwo)
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
+    # rename fields in queryset list-dicts
+    # for filteredTools (bezeichung > name, kurzbeschreibung > description )
+    for tool in filteredTools:
+        tool["name"] = tool.pop("bezeichnung")
+        tool["description"] = tool.pop("kurzbeschreibung")
+    # for filteredTools (bezeichung > name, kurzbeschreibung > description )
+    for project in filteredProjects:
+        project["name"] = project.pop("enargus_daten__verbundbezeichnung")
+        project["description"] = project.pop("enargus_daten__kurzbeschreibung_de")
+    # concat the prepared querySets to one QuerySet
+    filteredData = list(chain(filteredTools, filteredProjects))
 
     # debuging section, delete when not needed anymore
     print(searchInput)
@@ -44,6 +56,6 @@ def resultSearch(request):
 
     context = {
         "searchValue": searchInput,
-        "tools": filteredTools,
+        "data": filteredData,
     }
     return render(request, "StartSearch/ResultSearch.html", context)

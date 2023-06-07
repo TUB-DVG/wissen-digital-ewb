@@ -45,7 +45,7 @@
     <!-- Row END -->
     <!-- Filter bar END -->
     <!-- Row START -->
-    {% if tools %}
+    {% if data %}
     <!-- Search results list (table) Start -->
     <div class="card-body">
       <!-- Course table START -->
@@ -64,7 +64,7 @@
           </thead>
           <!-- Table body START -->
           <tbody>
-            {% for tool in tools %}
+            {% for dataSet in data %}
             <!-- Table row -->
             <tr>
               <!-- Table data -->
@@ -81,7 +81,7 @@
                 <div class="d-flex align-items-center mb-3">
                   <!-- Name of item -->
                   <div class="ms-2">
-                    <h6 class="mb-0 fw-light">{{ tool.bezeichnung }}</h6>
+                    <h6 class="mb-0 fw-light">{{ dataSet.name }}</h6>
                   </div>
                 </div>
               </td>
@@ -107,21 +107,7 @@
     {% else %}
       <p>Die Suche hat keine Ergebnisse ergeben.</p>
     {% endif %}
-    <div>
-      {% if tools %}
-        <ul>
-        {% for tool in tools %}
-          <li>
-            <p>{{ tool.bezeichnung }}
-            </p>
-          </li>
-        {% endfor %}
-        </ul>
-      {% else %}
-        <p>Die Suche hat keine Ergebnisse ergeben.</p>
-      {% endif %}
-    </div>
- </div>
+  </div>
 </section>
 
 <!-- Content END -->
