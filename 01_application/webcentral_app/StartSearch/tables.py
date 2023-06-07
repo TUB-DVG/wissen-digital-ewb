@@ -6,9 +6,9 @@ import itertools
 class ResultTable(tables.Table):
     """Class defines the table of the search results."""
 
-    row_number = tables.Column(empty_values=())
-    name = tables.Column()
-    kindOfItem = tables.Column()
+    row_number = tables.Column(empty_values=(), verbose_name="Nr.:")
+    name = tables.Column(verbose_name="Name")
+    kindOfItem = tables.Column(verbose_name="Art des Ergebnisses")
 
     class Meta:
         """Meta data of the table for the search results."""
