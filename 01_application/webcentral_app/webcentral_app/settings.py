@@ -40,10 +40,10 @@ ALLOWED_HOSTS.extend(
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
-    'project_listing.apps.ProjectListingConfig',
+    'project_listing',
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
-    'schlagwoerter.apps.SchlagwoerterConfig',
+    'keywords.apps.KeywordsConfig',
     'norms_over.apps.NormsOverConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
