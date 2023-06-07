@@ -62,7 +62,7 @@ def resultSearch(request):
          {"name": "Stevie", "surName": "Kola"}
     ]
     # define table regarding tables.py
-    table = ResultTable(data)
+    table = ResultTable(filteredData)
 
     context = {
         "searchValue": searchInput,
