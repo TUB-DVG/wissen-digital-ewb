@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
     'import_export',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [

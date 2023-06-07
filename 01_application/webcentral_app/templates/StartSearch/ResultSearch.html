@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load render_table from django_tables2 %}
+
 {% block title %} Suchergebnisse {% endblock %}
 
 {% load static %}
@@ -111,6 +113,9 @@
     {% else %}
       <p>Die Suche hat keine Ergebnisse ergeben.</p>
     {% endif %}
+    <!-- table by django-table2 START -->
+    {% render_table table %}
+    <!-- table by django-table2 END -->
   </div>
 </section>
 
