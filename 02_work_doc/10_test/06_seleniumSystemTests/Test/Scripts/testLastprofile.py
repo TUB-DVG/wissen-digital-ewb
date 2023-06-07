@@ -17,6 +17,8 @@ from selenium import (
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+import selenium.webdriver.support.expected_conditions as EC
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.testWebcentral import TestWebcentral
@@ -25,6 +27,8 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.lastprofile import Lastprofile
+from Src.PageObject.Pages.stromlastApproximation import StromlastApproximation
+from Src.PageObject.Pages.cookieBanner import CookieBanner
 
 class TestLastprofileTab(TestWebcentral):
     """Tests the 'Lastapproximation'-Tab
@@ -39,11 +43,68 @@ class TestLastprofileTab(TestWebcentral):
         self.driver.get("http://127.0.0.1:8070/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
-        lastprofilePage.getLinkToStromlastTool().click()
+        lastProfileLink = lastprofilePage.getLinkToStromlastTool()
+        lastProfileLink.click()
 
         self.assertEqual(
             "Stromlastprofil",
             self.driver.title,
             "Page should be 'Stromlastprofile', but its not!",
         )
+        
+    def testHeatApproximation(self):
+        """Tests if 'Heat Approximation' is reachable
+        
+        """
+        self.login()
+
+        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        lastprofilePage = Lastprofile(self.driver)
+
+        linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
+
+        cookieBanner = CookieBanner(self.driver)
+        cookieBannerButn = cookieBanner.getCookieAcceptanceButton()  
+        time.sleep(2)
+        cookieBannerButn.click()
+
+        
+        WebDriverWait(self.driver, 1000000).until(EC.element_to_be_clickable(linkToHeatApprox)).click()
+        #linkToHeatApprox.click()
+        pdb.set_trace()
+        self.assertEqual(
+            "Wärmelastprofil",
+            self.driver.title,
+            "After clicking on Heat-Approximation Link, page should be Heat-Approximation. But its not!",
+        )
+    
+    def testLinksOnSite(self):
+        """Tests, if the links present on the website lead to the right websites.
+        
+        """
+        self.login()
+        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        lastprofilePage = Lastprofile(self.driver)
+
+        weatherServiceLink = lastprofilePage.getWeatherServiceLink()
+        weatherServiceLink.click()
+
+        self.assertEqual(
+            "GitHub - earthobservations/wetterdienst: Open weather data for humans.",
+            self.driver.title,
+            "After clicking on Wetterdienst-Link, the github-page of wetterdienst should appear!",
+        )
+
+        self.driver.back()
+
+        loadProfileLink = lastprofilePage.getLoadProfileLink()
+        loadProfileLink.click()
+
+        self.assertEqual(
+            "Standardlastprofile Strom  | BDEW ",
+            self.driver.title,
+            "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
+        )
+
+
 

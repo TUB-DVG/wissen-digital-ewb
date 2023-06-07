@@ -30,4 +30,11 @@ class Locator(object):
     loginButtonElement = "//input[@class='btn login_btn']"
 
     # locators of lastprofile:
-    stromlastApprLink = "//a[@href='LastProfile/stromlast']"
+    stromlastApprLink = "//a[@href='/LastProfile/stromlast']"
+    heatApproximationLink = "//a[@href='/LastProfile/warmelast']"
+    weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
+    linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
+
+    # locators for stromlastapproximation
+    selectTypeOfAppr = "//div[@class='Select-value']"
+

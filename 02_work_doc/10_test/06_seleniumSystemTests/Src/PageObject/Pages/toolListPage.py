@@ -169,12 +169,5 @@ class ToolListPage(object):
             Locator.showLessLink,
         )
     
-    def getCookieAcceptanceButton(self):
-        """Returns the cookie acceptance button, on cookie banner
-        
-        """
-        return self.driver.find_element(
-            By.XPATH, 
-            Locator.cookieButton,
-        )
+
     
