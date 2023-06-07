@@ -4,6 +4,7 @@ from tools_over.models import Tools
 from project_listing.models import Teilprojekt
 from django.db.models import Q
 from itertools import chain
+from .tables import ResultTable
 
 
 def startSearch(request):
@@ -55,8 +56,17 @@ def resultSearch(request):
     print(filteredProjects)
     print("Anzahl der gefilterten Projekte: %s" % filteredProjects.count())
 
+    # test data, pls delete later
+    data = [
+         {"name": "Brandley", "surName": "Kol"},
+         {"name": "Stevie", "surName": "Kola"}
+    ]
+    # define table regarding tables.py
+    table = ResultTable(data)
+
     context = {
         "searchValue": searchInput,
         "data": filteredData,
+        "table": table,
     }
     return render(request, "StartSearch/ResultSearch.html", context)
