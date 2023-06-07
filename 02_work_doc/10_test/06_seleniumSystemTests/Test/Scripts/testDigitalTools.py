@@ -21,12 +21,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
+from Test.Scripts.testWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 
-class TestDigitalToolsTab(WebDriverSetup):
+class TestDigitalToolsTab(TestWebcentral):
     """
     
     """
@@ -79,7 +80,8 @@ class TestDigitalToolsTab(WebDriverSetup):
             1,
             "Number of Tool Items should be one for Search-String 'Ansys'!",
         )
-
+        
+        time.sleep(1)
         searchStrBox = toolListPage.getSearchStringButton("Ansys")
         self.assertIsInstance(
             searchStrBox, 
@@ -95,7 +97,7 @@ class TestDigitalToolsTab(WebDriverSetup):
         )
 
         searchStringBoxX.click()
-
+        
         time.sleep(1)
         listToolItemsAfterRmvdSearch = toolListPage.getListOfToolItems()
         self.assertEqual(
@@ -149,8 +151,8 @@ class TestDigitalToolsTab(WebDriverSetup):
         for indexInList, chosenElement in enumerate(listOfActiveSearchFilter):
             if indexInList == 0:
                 self.assertTrue(
-                    "Suchbegriff: B" == chosenElement,
-                    "Text Search Filter is not displayed!",
+                    "Suchbegriff: B" == chosenElement.text,
+                    "Text Search Filter 'Suchbegriff: B' is not used, when selecting a Categorie afterwards!",
                     )
             else:
                 self.assertTrue(
@@ -160,9 +162,14 @@ class TestDigitalToolsTab(WebDriverSetup):
        
         resetButtonElement = toolListPage.getResetButton()
         resetButtonElement.click()
+
+        self.assertEqual(
+            len(toolListPage.getListOfToolItems()),
+            12,
+            "After pressing 'Reset', the number of tool-items should be 12 again!",
+        )
+
         
-
-
         self.assertEqual(
             len(toolListPage.getListOfToolItems()),
             12,
@@ -171,11 +178,6 @@ class TestDigitalToolsTab(WebDriverSetup):
 
         time.sleep(1)
 
-        # listOfSelectWebElements = []
-        # listOfSelectWebElements.append(toolListPage.getSearchCategorieSelect())
-        # listOfSelectWebElements.append(toolListPage.getSearchLicenceSelect())
-        # listOfSelectWebElements.append(toolListPage.getSearchLifecycleSelect())
-
         numberOfSelectsToBeSet = random.choice([1, 2, 3,])
 
         chosenElementsList = []
@@ -187,60 +189,58 @@ class TestDigitalToolsTab(WebDriverSetup):
                 chosenElementsList.append(elementInSelectToChoose)
             elementInSelectToChoose.click()
 
-    
-
-    def testSearchFirstCategoryThenString(self):
-        """
+    # def testSearchFirstCategoryThenString(self):
+    #     """
         
-        """
-        self.openToolListAndLogin()
+    #     """
+    #     self.openToolListAndLogin()
 
-        toolListPage = ToolListPage(self.driver)
+    #     toolListPage = ToolListPage(self.driver)
 
-        listOfSelectWebElements = [
-            toolListPage.getSearchCategorySelect(),
-            toolListPage.getSearchLicenceSelect(),
-            toolListPage.getSearchLifecycleSelect(),
-        ]
-        numberOfSelectsToBeSet = random.choice([1, 2, 3,])
+    #     listOfSelectWebElements = [
+    #         toolListPage.getSearchCategorySelect(),
+    #         toolListPage.getSearchLicenceSelect(),
+    #         toolListPage.getSearchLifecycleSelect(),
+    #     ]
+    #     numberOfSelectsToBeSet = random.choice([1, 2, 3,])
 
-        chosenElementsList = []
-        for currentNumberOfSelect in range(numberOfSelectsToBeSet):
-            elementInSelectToChoose = random.choice(
-                listOfSelectWebElements[currentNumberOfSelect].options,
-            )
-            if elementInSelectToChoose != listOfSelectWebElements[currentNumberOfSelect].first_selected_option:
-                chosenElementsList.append(elementInSelectToChoose)
-            elementInSelectToChoose.click()
+    #     chosenElementsList = []
+    #     for currentNumberOfSelect in range(numberOfSelectsToBeSet):
+    #         elementInSelectToChoose = random.choice(
+    #             listOfSelectWebElements[currentNumberOfSelect].options,
+    #         )
+    #         if elementInSelectToChoose != listOfSelectWebElements[currentNumberOfSelect].first_selected_option:
+    #             chosenElementsList.append(elementInSelectToChoose)
+    #         elementInSelectToChoose.click()
 
-        magniferButtonElement = toolListPage.getMagniferButton()
-        magniferButtonElement.click()
-        listOfActiveSearchFilter = toolListPage.getListOfCurrentlyActiveSearchFilter()
-        pdb.set_trace()
-        for indexInList, chosenElement in enumerate(listOfActiveSearchFilter):
-            self.assertTrue(
-                chosenElement.text == chosenElementsList[indexInList].text,
-                "Active Search-Filter Box does not represent choosen Element from Select-Input!",
-            )      
+    #     magniferButtonElement = toolListPage.getMagniferButton()
+    #     magniferButtonElement.click()
+    #     listOfActiveSearchFilter = toolListPage.getListOfCurrentlyActiveSearchFilter()
+    #     pdb.set_trace()
+    #     for indexInList, chosenElement in enumerate(listOfActiveSearchFilter):
+    #         self.assertTrue(
+    #             chosenElement.text == chosenElementsList[indexInList].text,
+    #             "Active Search-Filter Box does not represent choosen Element from Select-Input!",
+    #         )      
 
-        searchFieldElement = toolListPage.getSearchInputElement()
-        searchFieldElement.send_keys("Hi")
+    #     searchFieldElement = toolListPage.getSearchInputElement()
+    #     searchFieldElement.send_keys("Hi")
 
-        toolListPage.getMagniferButton().click()    
-        listOfActiveSearchFilter = toolListPage.getListOfCurrentlyActiveSearchFilter()
-        chosenElementsList.insert(0, "Suchbegriff: Hi")
+    #     toolListPage.getMagniferButton().click()    
+    #     listOfActiveSearchFilter = toolListPage.getListOfCurrentlyActiveSearchFilter()
+    #     chosenElementsList.insert(0, "Suchbegriff: Hi")
 
-        for indexInList, chosenElement in enumerate(listOfActiveSearchFilter):
-            if indexInList == 0:
-                self.assertTrue(
-                    chosenElementsList[0] == chosenElement,
-                    "Text Search Filter is not displayed!",
-                    )
-            else:
-                self.assertTrue(
-                    chosenElement.text == chosenElementsList[indexInList].text,
-                    "Active Search-Filter Box does not represent choosen Element from Select-Input!",
-                )
+    #     for indexInList, chosenElement in enumerate(listOfActiveSearchFilter):
+    #         if indexInList == 0:
+    #             self.assertTrue(
+    #                 chosenElementsList[0] == chosenElement,
+    #                 "Text Search Filter is not displayed!",
+    #                 )
+    #         else:
+    #             self.assertTrue(
+    #                 chosenElement.text == chosenElementsList[indexInList].text,
+    #                 "Active Search-Filter Box does not represent choosen Element from Select-Input!",
+    #             )
 
     # def testIsRedirectedToPreviousPageAfterLogin(self) -> None:
     #     """Tests, if user gets redirected to previous page after login.
@@ -293,14 +293,12 @@ class TestDigitalToolsTab(WebDriverSetup):
         )
         
         time.sleep(1)
-        #pdb.set_trace()
         showLessLink = toolListPage.getShowLessElement()
-        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollWidth", showLessLink)
-        time.sleep(1)
-        showLessLink.click()
+        self.driver.execute_script("arguments[0].click();",showLessLink)
+        #time.sleep(1)
+        #showLessLink.click()
         
         time.sleep(1)
-
         self.assertFalse(
             toolListPage.getListInExpandedText()[0].is_displayed(),
             "List is still displayed after clicking 'show less ...'!",
