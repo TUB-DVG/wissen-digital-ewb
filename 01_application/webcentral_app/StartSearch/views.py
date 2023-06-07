@@ -45,6 +45,7 @@ def resultSearch(request):
     for project in filteredProjects:
         project["name"] = project.pop("enargus_daten__verbundbezeichnung")
         project["description"] = project.pop("enargus_daten__kurzbeschreibung_de")
+        project["kindOfItem"] = "Forschungsprojekt"
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
 
