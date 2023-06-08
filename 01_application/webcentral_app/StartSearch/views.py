@@ -39,11 +39,14 @@ def resultSearch(request):
     # which can used as input for the table in html
     # rename fields in queryset list-dicts
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
+    # and extend list by needed fields like kindOfItems
     for tool in filteredTools:
         tool["name"] = tool.pop("bezeichnung")
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
         tool["description"] = tool.pop("kurzbeschreibung")
+        # later use input from table tools for kindOfItem
+        tool["kindOfItem"] = "digitales Werkzeug"
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         project["name"] = project.pop("enargus_daten__verbundbezeichnung")
