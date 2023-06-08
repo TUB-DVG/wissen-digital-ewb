@@ -58,15 +58,22 @@ def resultSearch(request):
 
     # test data, pls delete later
     data = [
-         {"name": "Brandley", "surName": "Kol"},
-         {"name": "Stevie", "surName": "Kola"}
+         {"name": "Brandley", "kindOfItem": "Kol"},
+         {"name": "Stevie", "kindOfItem": "Kola"},
+         {"name": "Brandl", "kindOfItem": "Ksdol"},
+         {"name": "Brandl", "kindOfItem": "Ksdol"},
+         {"name": "434Brandley", "kindOfItem": "asdfKol"},
+         {"name": "KKStevie", "kindOfItem": "Kollkjlkja"},
+         {"name": "43werrandley", "kindOfItem": "aQWERsdfKol"},
+         {"name": "OUStevie", "kindOfItem": "KolkUUUjlkja"},
+         {"name": "YYStasevie", "kindOfItem": "jkKola"}
     ]
     # define table regarding tables.py
     table = ResultTable(filteredData)
-
+    table.paginate(page=request.GET.get("page", 1), per_page=7)
     context = {
-        "searchValue": searchInput,
-        "data": filteredData,
+        "searchInput": searchInput,
+        # "data": filteredData,
         "table": table,
     }
-    return render(request, "StartSearch/ResultSearch.html", context)
+    return render(request, "StartSearch/ResultSearchT2.html", context)
