@@ -4,6 +4,7 @@ from tools_over.models import Tools
 from project_listing.models import Teilprojekt
 from django.db.models import Q
 from itertools import chain
+from django.core.paginator import Paginator
 
 
 def startSearch(request):
@@ -13,8 +14,12 @@ def startSearch(request):
 
 def resultSearch(request):
     """View function of the result page of the central search function."""
-    # search value/s from Start page
-    searchInput = request.POST.get("searchValue", None)
+    # search value reading
+    if request.method == "GET":
+        searchInput = request.GET.get("searchValue", None)
+    elif request.method == "POST":
+        # search value/s from Start page
+        searchInput = request.POST.get("searchValue", None)
     # read data from data base
     # filtered tools
     criterionToolsOne = Q(bezeichnung__icontains=searchInput)
@@ -74,8 +79,16 @@ def resultSearch(request):
          {"name": "OUStevie", "kindOfItem": "KolkUUUjlkja"},
          {"name": "YYStasevie", "kindOfItem": "jkKola"}
     ]
+
+    # setup paginator for the table
+    filterDataPaginator = Paginator(filteredData, 12)
+    pageNumber = request.GET.get("page", None)
+    dataPerPage = filterDataPaginator.get_page(
+        pageNumber
+    )
+
     context = {
         "searchInput": searchInput,
-        "data": filteredData,
+        "data": dataPerPage,
     }
     return render(request, "StartSearch/ResultSearch.html", context)
