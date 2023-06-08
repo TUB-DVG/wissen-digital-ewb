@@ -73,7 +73,7 @@ def resultSearch(request):
     table.paginate(page=request.GET.get("page", 1), per_page=7)
     context = {
         "searchInput": searchInput,
-        # "data": filteredData,
+        "data": filteredData,
         "table": table,
     }
-    return render(request, "StartSearch/ResultSearchT2.html", context)
+    return render(request, "StartSearch/ResultSearch.html", context)
