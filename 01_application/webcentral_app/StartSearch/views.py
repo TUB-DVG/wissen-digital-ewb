@@ -69,11 +69,8 @@ def resultSearch(request):
          {"name": "YYStasevie", "kindOfItem": "jkKola"}
     ]
     # define table regarding tables.py
-    table = ResultTable(filteredData)
-    table.paginate(page=request.GET.get("page", 1), per_page=7)
     context = {
         "searchInput": searchInput,
         "data": filteredData,
-        "table": table,
     }
     return render(request, "StartSearch/ResultSearch.html", context)
