@@ -16,7 +16,7 @@ class ResultTable(tables.Table):
         template_name = "django_tables2/bootstrap.html"
 
     def __init__(self, *args, **kwargs):
-        """Initialisation for the row counter of the table."""
+        """Initialise for the row counter of the table."""
         super().__init__(*args, **kwargs)
         self.counter = itertools.count()
 
