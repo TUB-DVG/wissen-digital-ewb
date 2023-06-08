@@ -4,7 +4,6 @@ from tools_over.models import Tools
 from project_listing.models import Teilprojekt
 from django.db.models import Q
 from itertools import chain
-from .tables import ResultTable
 
 
 def startSearch(request):
@@ -75,7 +74,6 @@ def resultSearch(request):
          {"name": "OUStevie", "kindOfItem": "KolkUUUjlkja"},
          {"name": "YYStasevie", "kindOfItem": "jkKola"}
     ]
-    # define table regarding tables.py
     context = {
         "searchInput": searchInput,
         "data": filteredData,
