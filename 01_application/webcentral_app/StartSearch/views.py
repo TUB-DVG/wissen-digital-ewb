@@ -41,11 +41,15 @@ def resultSearch(request):
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for tool in filteredTools:
         tool["name"] = tool.pop("bezeichnung")
+        if len(tool["name"]) > 40:
+            tool["name"] = tool["name"][:40] + " ... "
         tool["description"] = tool.pop("kurzbeschreibung")
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         project["name"] = project.pop("enargus_daten__verbundbezeichnung")
         project["description"] = project.pop("enargus_daten__kurzbeschreibung_de")
+        if len(project["name"]) > 40:
+            project["name"] = project["name"][:40] + " ... "
         project["kindOfItem"] = "Forschungsprojekt"
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
