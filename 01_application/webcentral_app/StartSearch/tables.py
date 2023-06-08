@@ -22,4 +22,4 @@ class ResultTable(tables.Table):
 
     def render_row_number(self):
         """Render of the row counter of the table."""
-        return f"{next(self.counter)}"
+        return f"{next(self.counter) +1 }"
