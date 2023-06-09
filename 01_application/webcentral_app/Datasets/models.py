@@ -16,5 +16,5 @@ class collectedDatasets(models.Model):
     dataSources=models.CharField(max_length=500,null=True,blank=True)
     # shortDescriptionEn
     # shortDescritopnDe -> vereinheitlichen 
-    shortDesciption=models.CharField(max_length=300,null=True,blank=True)
+    shortDescriptionDe=models.CharField(max_length=300,null=True,blank=True)
     includesNonResidential=models.CharField(max_length=200,null=True,blank=True)
