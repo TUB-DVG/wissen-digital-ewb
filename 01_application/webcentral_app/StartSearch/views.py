@@ -62,11 +62,10 @@ def resultSearch(request):
     filteredData = list(chain(filteredTools, filteredProjects))
 
     # debuging section, delete when not needed anymore
-    print(searchInput)
     print(filteredTools)
     print(filteredProjects)
     print("Anzahl der gefilterten Projekte: %s" % filteredProjects.count())
-
+    print(searchInput)
     # test data, pls delete later
     data = [
          {"name": "Brandley", "kindOfItem": "Kol"},
