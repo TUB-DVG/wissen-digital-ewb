@@ -17,9 +17,11 @@ def resultSearch(request):
     # search value reading
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
+        sortBy = request.GET.get("sortBy", None)
     elif request.method == "POST":
         # search value/s from Start page
         searchInput = request.POST.get("searchValue", None)
+        sortBy = None
     # read data from data base
     # filtered tools
     criterionToolsOne = Q(bezeichnung__icontains=searchInput)
@@ -61,13 +63,17 @@ def resultSearch(request):
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
-    filteredData = sorted(filteredData, key=lambda obj: obj["name"])
+    if sortBy:
+        filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
+    else:
+        filteredData = sorted(filteredData, key=lambda obj: obj["name"])
 
     # debuging section, delete when not needed anymore
     print(filteredTools)
     print(filteredProjects)
     print("Anzahl der gefilterten Projekte: %s" % filteredProjects.count())
     print(searchInput)
+    print(sortBy)
     # test data, pls delete later
     data = [
          {"name": "Brandley", "kindOfItem": "Kol"},
