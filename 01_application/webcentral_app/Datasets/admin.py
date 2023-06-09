@@ -51,8 +51,8 @@ class collectedDatasetsResource(resources.ModelResource):
         column_name='Datenquellen',
         widget=CharWidget()  
     ),
-    shortDesciption=fields.Field(  
-        attribute='shortDesciption',
+    shortDescriptionDE=fields.Field(  
+        attribute='shortDescriptionDE',
         column_name='Kurzbeschreibung',
         widget=CharWidget()  
     ),
