@@ -27,8 +27,7 @@
   <div class="container">
     <!-- Filter bar START -->
     <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative"
-          method="POST" action="ResultSearch">
-      {% csrf_token %}
+          method="GET" action="ResultSearch">
       <!-- Input -->
       <div class="row g-3">
         <!-- Input text -->
@@ -108,10 +107,11 @@
     <div class="pagination">
       <span class="step-links">
         {% if data.has_previous %}
-        <a href="?page=1">
+        <a href="?searchValue={{searchInput}}&page=1">
           &laquo; first
         </a>
-        <a href="?page={{ data.previous_page_number }}">previous
+        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}">
+          previous
         </a>
         {% endif %}
 
@@ -120,10 +120,10 @@
         </span>
 
         {% if data.has_next %}
-        <a href="?searchValue=BIM&page={{ data.next_page_number }}&">
+        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}">
           next
         </a>
-        <a href="?page={{ data.paginator.num_pages }}">
+        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}">
           last &raquo;
         </a>
         {% endif %}
