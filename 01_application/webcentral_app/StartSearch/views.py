@@ -60,6 +60,8 @@ def resultSearch(request):
         project["kindOfItem"] = "Forschungsprojekt"
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
+    # sort data list by name/kindOfItem and so on
+    filteredData = sorted(filteredData, key=lambda obj: obj["name"])
 
     # debuging section, delete when not needed anymore
     print(filteredTools)
