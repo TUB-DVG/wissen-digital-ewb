@@ -19,7 +19,7 @@ class AdminPage(object):
         """
         return self.driver.find_element(
             By.XPATH,
-            Locators.adminPageUsernameInput,
+            Locator.adminPageUsernameInput,
         )
 
     def getPasswordInput(self):
@@ -28,7 +28,7 @@ class AdminPage(object):
         """
         return self.driver.find_element(
             By.XPATH,
-            Locators.adminPagePasswordInput,
+            Locator.adminPagePasswordInput,
         )
     
     def getLoginSubmit(self):
@@ -37,5 +37,5 @@ class AdminPage(object):
         """
         return self.driver.find_element(
             By.XPATH,
-            Locators.adminPageSubmit,
+            Locator.adminPageSubmit,
         )

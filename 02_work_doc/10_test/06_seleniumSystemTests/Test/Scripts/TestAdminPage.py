@@ -45,7 +45,7 @@ class TestAdminPage(TestWebcentral):
         usernameInput = adminPageObj.getUsernameInput()
         usernameInput.send_keys(username)
 
-        paswordInput = adminPageObj.getPasswordInput()
+        passwordInput = adminPageObj.getPasswordInput()
         passwordInput.send_keys(password)
 
         adminPageObj.getLoginSubmit().click()
