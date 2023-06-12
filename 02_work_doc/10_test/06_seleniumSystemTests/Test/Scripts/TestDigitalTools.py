@@ -21,11 +21,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.testWebcentral import TestWebcentral
+from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
+from Src.PageObject.Pages.cookieBanner import CookieBanner
 
 class TestDigitalToolsTab(TestWebcentral):
     """
@@ -276,7 +277,8 @@ class TestDigitalToolsTab(TestWebcentral):
         toolListPage = ToolListPage(self.driver)
         
         time.sleep(5)
-        toolListPage.getCookieAcceptanceButton().click()
+        cookieBannerObj = CookieBanner(self.driver)
+        cookieBannerObj.getCookieAcceptanceButton().click()
 
         self.assertFalse(
             toolListPage.getListInExpandedText()[0].is_displayed(),

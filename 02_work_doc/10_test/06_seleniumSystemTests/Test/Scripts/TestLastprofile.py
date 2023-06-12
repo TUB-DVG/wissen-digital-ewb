@@ -23,13 +23,16 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.testWebcentral import TestWebcentral
+from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.lastprofile import Lastprofile
-from Src.PageObject.Pages.stromlastApproximation import StromlastApproximation
+from Src.PageObject.Pages.CurrentLoadApproximation import (
+    CurrentLoadApproximation,
+)
+from Src.PageObject.Pages.HeatApproximation import HeatApproximation
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
 class TestLastprofileTab(TestWebcentral):
@@ -53,6 +56,18 @@ class TestLastprofileTab(TestWebcentral):
             self.driver.title,
             "Page should be 'Stromlastprofile', but its not!",
         )
+
+        currentApproObj = CurrentLoadApproximation(self.driver)
+
+        time.sleep(1)
+        currentApproObj.switchToIFrame()
+        headingElement = currentApproObj.getHeadingOfPage()
+
+        self.assertEqual(
+            headingElement.text,
+            "Stromlast Approximation",
+            "Heading Title should be Stromlast Approximation, but its not!",
+        )
         
     def testHeatApproximation(self):
         """Tests if 'Heat Approximation' is reachable
@@ -69,19 +84,14 @@ class TestLastprofileTab(TestWebcentral):
         cookieBannerButn = cookieBanner.getCookieAcceptanceButton()  
         time.sleep(2)
         cookieBannerButn.click()
-        #pdb.set_trace()
+
         actions = ActionChains(self.driver)
         try:
             actions.move_to_element(linkToHeatApprox).perform()
         except MoveTargetOutOfBoundsException as e:
-            print(e)
             self.driver.execute_script("arguments[0].scrollIntoView(true);", linkToHeatApprox)
-        pdb.set_trace()
         time.sleep(1)
-        # ActionChains(self.driver)\
-        # .scroll_to_element(linkToHeatApprox)\
-        # .perform()
-        # WebDriverWait(self.driver, 1000000).until(EC.element_to_be_clickable(linkToHeatApprox)).click()
+
         linkToHeatApprox.click()
         
         self.assertEqual(
@@ -89,6 +99,19 @@ class TestLastprofileTab(TestWebcentral):
             self.driver.title,
             "After clicking on Heat-Approximation Link, page should be Heat-Approximation. But its not!",
         )
+
+        currentApproObj = HeatApproximation(self.driver)
+        
+        time.sleep(1)
+        currentApproObj.switchToIFrame()
+        headingElement = currentApproObj.getHeadingOfPage()
+
+        self.assertEqual(
+            headingElement.text,
+            "Wärmelast Approximation",
+            "Heading Title should be Wärmelast Approximation, but its not!",
+        )
+
     
     def testLinksOnSite(self):
         """Tests, if the links present on the website lead to the right websites.
@@ -99,6 +122,14 @@ class TestLastprofileTab(TestWebcentral):
         lastprofilePage = Lastprofile(self.driver)
 
         weatherServiceLink = lastprofilePage.getWeatherServiceLink()
+
+        actions = ActionChains(self.driver)
+        try:
+            actions.move_to_element(weatherServiceLink).perform()
+        except MoveTargetOutOfBoundsException as e:
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", weatherServiceLink)
+        time.sleep(1)
+        
         weatherServiceLink.click()
 
         self.assertEqual(
@@ -113,7 +144,7 @@ class TestLastprofileTab(TestWebcentral):
         loadProfileLink.click()
 
         self.assertEqual(
-            "Standardlastprofile Strom  | BDEW ",
+            "Standardlastprofile Strom | BDEW",
             self.driver.title,
             "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
         )

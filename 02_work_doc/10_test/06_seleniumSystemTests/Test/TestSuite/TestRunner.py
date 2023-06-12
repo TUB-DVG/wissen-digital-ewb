@@ -4,9 +4,11 @@ sys.path.append(sys.path[0] + "/...")
 sys.path.append(os.getcwd())
  
 from unittest import TestLoader, TestSuite, TextTestRunner
-from Test.Scripts.testDigitalTools import TestDigitalToolsTab
-from Test.Scripts.testClickThroughAllSites import TestClickThroughSites
-from Test.Scripts.testLastprofile import TestLastprofileTab
+from Test.Scripts.TestDigitalTools import TestDigitalToolsTab
+from Test.Scripts.TestClickThroughAllSites import TestClickThroughSites
+from Test.Scripts.TestLastprofile import TestLastprofileTab
+from Test.Scripts.TestAboutPage import TestAboutPage
+from Test.Scripts.TestAdminPage import TestAdminPage
  
 import testtools as testtools
  
@@ -15,9 +17,11 @@ if __name__ == "__main__":
     testLoader = TestLoader()
     # Test Suite is used since there are multiple test cases
     testSuite = TestSuite((
-        # testLoader.loadTestsFromTestCase(TestDigitalToolsTab),
-        # testLoader.loadTestsFromTestCase(TestClickThroughSites),
+        testLoader.loadTestsFromTestCase(TestDigitalToolsTab),
+        testLoader.loadTestsFromTestCase(TestClickThroughSites),
         testLoader.loadTestsFromTestCase(TestLastprofileTab),
+        testLoader.loadTestsFromTestCase(TestAboutPage),
+        testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
  
     testRunner = TextTestRunner(verbosity=2)

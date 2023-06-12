@@ -46,7 +46,7 @@ class TestDockerComposeEnvironments(TestCase):
         None
         """
         
-        os.chdir("../../../")
+        #os.chdir("../../../")
 
         os.system("docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --remove-orphans")
         os.system("docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --remove-orphans")
@@ -96,7 +96,6 @@ class TestDockerComposeEnvironments(TestCase):
         None
         """
 
-        
         os.system(
             "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
         )
@@ -135,10 +134,11 @@ class TestDockerComposeEnvironments(TestCase):
                         "Testing Production-env: Number of found volumes, with the name static-data and pgdata should be 2!",
         )
 
-        os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
-        )
         os.system("docker container stop proxy")
+        os.system(
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
+        )
+        
 
         time.sleep(1)
 
@@ -195,7 +195,7 @@ class TestDockerComposeEnvironments(TestCase):
         )
 
         os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
         )
         time.sleep(1)
 

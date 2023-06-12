@@ -35,6 +35,27 @@ class Locator(object):
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
     linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
 
-    # locators for stromlastapproximation
+    # locators for CurrentLoadApproximation-Page
     selectTypeOfAppr = "//div[@class='Select-value']"
+    headingOfCurrentLoadApproxSite = "//h1"
+    currentLoadIFrame = "//iframe"
 
+    # locators for  HeatApproximation-Page
+    headingOfHeatApproxSite = "//h1"
+
+    # locators of about page:
+    aboutPageTopHeading = "//h1"
+    aboutPageSubHeading = "//h3"
+    aboutPageEWBImage = "//img[@src='/static/static/img/Energiewendebauen.png']"
+    aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
+    aboutPageUDKLink = "//a[@href='https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW']"
+    aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
+    aboutPageImgOfEinsteinCenter = "//img[@src='/static/static/img/ECDF.png']"
+    aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
+    aboutPageImgOfUDK ="//img[@src='/static/static/img/UdK.png']"
+    aboutPageImgOfIOEW = "//img[@src='/static/static/img/ioew.png']"
+
+    # Admin Page locators
+    adminPageUsernameInput = "//input[@id='id_username']"
+    adminPagePasswordInput = "//input[@type='password']"
+    adminPageSubmit = "//input[@type='submit']"
