@@ -93,7 +93,6 @@ class TestLastprofileTab(TestWebcentral):
         time.sleep(1)
 
         linkToHeatApprox.click()
-        
         self.assertEqual(
             "Waermelastprofil",
             self.driver.title,

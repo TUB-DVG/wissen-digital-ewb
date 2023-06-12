@@ -9,11 +9,11 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
 
 # start docker-env:
 echo "Start Docker Dev-Environemnt..."
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate &
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d &
 sleep 5
 
 echo "Restore the Database State to the Dump-State, which lies in postgres/ ..."
-bash postgres/restoreDB.sh
+bash postgres/restoreDB.sh > log
 sleep 2
 
 echo "Executing Tests..."
@@ -31,11 +31,11 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
 # docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache
 
 echo "Start Docker-Compose Production Environment..."
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate &
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d &
 sleep 10
 
 echo "Restore Database state of Production-Environment..."
-bash postgres/restoreDB.sh
+bash postgres/restoreDB.sh > log
 sleep 2
 
 echo "Execute Tests in Production Environment..."
