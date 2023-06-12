@@ -22,7 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import ActionChains
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.testWebcentral import TestWebcentral
+from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.loginPage import LoginPage
