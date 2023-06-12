@@ -134,7 +134,7 @@ class TestDockerComposeEnvironments(TestCase):
 
         os.system("docker container stop proxy")
         os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
         )
         
 
@@ -193,7 +193,7 @@ class TestDockerComposeEnvironments(TestCase):
         )
 
         os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
         )
         time.sleep(1)
 
