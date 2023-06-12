@@ -19,6 +19,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.testWebcentral import TestWebcentral
@@ -67,13 +69,23 @@ class TestLastprofileTab(TestWebcentral):
         cookieBannerButn = cookieBanner.getCookieAcceptanceButton()  
         time.sleep(2)
         cookieBannerButn.click()
-
-        
-        WebDriverWait(self.driver, 1000000).until(EC.element_to_be_clickable(linkToHeatApprox)).click()
-        #linkToHeatApprox.click()
+        #pdb.set_trace()
+        actions = ActionChains(self.driver)
+        try:
+            actions.move_to_element(linkToHeatApprox).perform()
+        except MoveTargetOutOfBoundsException as e:
+            print(e)
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", linkToHeatApprox)
         pdb.set_trace()
+        time.sleep(1)
+        # ActionChains(self.driver)\
+        # .scroll_to_element(linkToHeatApprox)\
+        # .perform()
+        # WebDriverWait(self.driver, 1000000).until(EC.element_to_be_clickable(linkToHeatApprox)).click()
+        linkToHeatApprox.click()
+        
         self.assertEqual(
-            "Wärmelastprofil",
+            "Waermelastprofil",
             self.driver.title,
             "After clicking on Heat-Approximation Link, page should be Heat-Approximation. But its not!",
         )
