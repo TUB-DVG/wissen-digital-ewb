@@ -4,6 +4,9 @@ is stored
 date: April 2022
 author: Falk
 
+# Docker Backup 
+02_work_doc/05_deplyoment/02_docker/01_db_backup_strategies/dbBackupStrategies.md
+
 # tools
 - for the most backup tools the tools must be installed on the server (running db) and the local maschine (or better backup operating maschine)
 ## pgBackRest
