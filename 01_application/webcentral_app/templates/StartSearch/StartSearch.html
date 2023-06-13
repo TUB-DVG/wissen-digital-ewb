@@ -26,23 +26,16 @@
 <section class="pt-0">
   <div class="container">
     <!-- Filter bar START -->
-    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative"
+    <!-- Row START -->
+    <form class="bg-white border p-3 my-4 z-index-9 position-relative"
           method="POST" action="ResultSearch">
       {% csrf_token %}
       <!-- Input -->
       <div class="row g-3">
         <!-- general search Input (text) -->
-        <div class="col-xl-7" title="Allgemeine Suche">
+        <div class="col-xl-12" title="Allgemeine Suche">
           <input id="search-input-general" class="form-control me-1"
-                 type="search" placeholder="Sucheingabe" name="searchValue">
-        </div>
-        <!-- general search Button -->
-        <div class="col-xl-1">
-          <button type="submit"
-                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
-                  id="search-submit-general" href="">
-            <i class="fas fa-search"></i>
-          </button>
+                 type="search" placeholder="Durchsuche die Plattform!" name="searchValue">
         </div>
       </div>
     </form>
