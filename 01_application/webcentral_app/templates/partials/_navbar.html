@@ -1,29 +1,29 @@
 {% load static %}  
 
-
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
-	<!-- Logo Nav START -->
-	<nav class="navbar navbar-expand-xl">
-		<div class="container">
-			<!-- Logo START -->
-			<a class="navbar-brand" href="{% url 'index' %}">
-				<img  height="100" src="{% static 'img/tu-berlin-logo.svg' %}" alt="logo">
-			</a>
-			<!-- Logo END -->
+  <!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-xl">
+    <div class="container">
+      <!-- Logo START -->
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img  height="100" src="{% static 'img/tu-berlin-logo.svg' %}" alt="logo">
+      </a>
+      <!-- Logo END -->
 
-			<!-- Responsive navbar toggler -->
-			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-animation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</span>
-			</button>
-
-			<!-- Main navbar START -->
-			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
-
+      <!-- Responsive navbar toggler -->
+      <button class="navbar-toggler ms-auto"
+              type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-animation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <!-- Main navbar START -->
+      <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
         <!-- Nav Main menu START -->
 				<ul class="navbar-nav navbar-nav-scroll mx-auto">
 					
@@ -38,9 +38,9 @@
 						</a></span>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'weatherdata_list' %}">Wetterdaten</a></li>
-							<li><a class="dropdown-item" href="{% url 'LastProfile' %}">Lastprofile</a></li>
-						</ul>
-					</li>
+              <li><a class="dropdown-item" href="{% url 'LastProfile' %}">Lastprofile</a></li>
+						</ul></li>
+					
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
 					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
 						<a class="dropdown-toggle dropdown-toggle-split pl-0">

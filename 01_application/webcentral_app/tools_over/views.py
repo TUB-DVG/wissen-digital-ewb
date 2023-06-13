@@ -1,141 +1,136 @@
-from contextlib import nullcontext
-from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-from turtle import up
+"""Definitions of the views of the tools overview app."""
+# from contextlib import nullcontext
+# from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
+# from turtle import up
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from tools_over.models import Tools, Rating # maybe I need also the other models
+from .models import Tools, Rating # maybe I need also the other models
 
 class UpdateProperties:
-    def __init__(self, class_name, label, color_class):
-        self.class_name = class_name
+    """It shoud be needed to update the icons for the function tool view."""
+
+    def __init__(self, className, label, colorClass):
+        self.className = className
         self.label = label
-        self.color_class = color_class
+        self.colorClass = colorClass
 
 @login_required(login_url='login')
 def index(request):
-    """
-    shows the list of all projects including some key features
-    """
+    """Shows the list of all projects including some key features"""
     tools = Tools.objects.all() # reads all data from table Teilprojekt
-    filtered_by = [None]*3
+    filteredBy = [None]*3
     searched=None
-
-
  
-    if ((request.GET.get("k") != None) |(request.GET.get("l") != None)| (request.GET.get("lzp") != None) |(request.GET.get("searched") != None)):
-        Kategorie=request.GET.get('k')
-        Lizenz=request.GET.get('l')
-        Lebenszyklusphase=request.GET.get('lzp')
+    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
+        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
+        usage=request.GET.get('u')
+        licence=request.GET.get('l')
+        lifeCyclePhase=request.GET.get('lcp')
         searched=request.GET.get('searched')
-        tools=Tools.objects.filter(kategorie__icontains=Kategorie,lebenszyklusphase__icontains=Lebenszyklusphase,lizenz__icontains=Lizenz,bezeichnung__icontains=searched)
-        filtered_by = [Kategorie, Lizenz, Lebenszyklusphase]
+        tools=Tools.objects.filter(usage__icontains=usage,lifeCyclePhase__icontains=lifeCyclePhase,licence__icontains=licence,name__icontains=searched)
+        filteredBy = [usage, licence, lifeCyclePhase]
               
-    tools = list(sorted(tools, key=lambda obj:obj.bezeichnung))
+    tools = list(sorted(tools, key=lambda obj:obj.name))
+    toolsPaginator= Paginator(tools,12)
+    pageNum= request.GET.get('page',None)
+    page=toolsPaginator.get_page(pageNum)
 
-    tools_paginator= Paginator (tools,12)
-
-    page_num= request.GET.get('page',None)
-    page=tools_paginator.get_page(page_num)
-
-    #is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest" and does_req_accept_json
-    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
+    isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
     
 
-    if is_ajax_request:
+    if isAjaxRequest:
         html = render_to_string(
             template_name="tools_over/tool-listings-results.html", 
             context = {
                 'page': page,
                 'search':searched,
-                'kategorie': filtered_by[0],
-                'lizenz': filtered_by[1],
-                'lebenszyklusphase': filtered_by[2]
+                'usage': filteredBy[0],
+                'licence': filteredBy[1],
+                'lifeCyclePhase': filteredBy[2]
             }
-
         )
 
-        data_dict = {"html_from_view": html}
+        dataDict = {"html_from_view": html}
 
-        return JsonResponse(data=data_dict, safe=False)
+        return JsonResponse(data=dataDict, safe=False)
 
        
     context = {
         'page': page,
         'search':searched,
-        'kategorie': filtered_by[0],
-        'lizenz': filtered_by[1],
-        'lebenszyklusphase': filtered_by[2]
+        'usage': filteredBy[0],
+        'licence': filteredBy[1],
+        'lifeCyclePhase': filteredBy[2]
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
     
 
    
-def tool_view(request, id):
-    """
-    shows of the key features one project
-    """
+def toolView(request, id):
+    """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
-    kategorien = tool.kategorie.split(", ")
-    lebenszyklusphasen = tool.lebenszyklusphase.split(", ")
-    laufende_updates = tool.letztes_update
+    usages = tool.usage.split(", ")
+    lifeCyclePhases = tool.lifeCyclePhase.split(", ")
+    continuousUpdates = tool.lastUpdate
     
-    letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    laufende_updates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
+    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
 
     #changing labels and icon
-    update_properties = letztes_update
-    if (tool.letztes_update == 'laufend'):
-        update_properties = laufende_updates
+    updateProperties = lastUpdate
+    if (tool.lastUpdate == 'laufend'): # continuous
+        updateProperties = continuousUpdates
 
-    ratings = Rating.objects.filter(rating_for=id)
-    num_ratings = len(ratings)
-    print(num_ratings)
+    ratings = Rating.objects.filter(ratingFor=id)
+    numRatings = len(ratings)
+    print(numRatings)
 
-    ratings_by_score = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), ratings.filter(score=4), ratings.filter(score=5)]
-    print(ratings_by_score[4])
-    rating_percent_5 = 0 if len(ratings_by_score[4])==0 else len(ratings_by_score[4])/num_ratings*100
-    rating_percent_4 = 0 if len(ratings_by_score[3])==0 else len(ratings_by_score[3])/num_ratings*100
-    rating_percent_3 = 0 if len(ratings_by_score[2])==0 else len(ratings_by_score[2])/num_ratings*100
-    rating_percent_2 = 0 if len(ratings_by_score[1])==0 else len(ratings_by_score[1])/num_ratings*100
-    rating_percent_1 = 0 if len(ratings_by_score[0])==0 else len(ratings_by_score[0])/num_ratings*100
+    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), 
+                      ratings.filter(score=4), ratings.filter(score=5)]
+    print(ratingsByScore[4])
+    ratingPercent5 = 0 if len(ratingsByScore[4])==0 else len(ratingsByScore[4])/numRatings*100
+    ratingPercent4 = 0 if len(ratingsByScore[3])==0 else len(ratingsByScore[3])/numRatings*100
+    ratingPercent3 = 0 if len(ratingsByScore[2])==0 else len(ratingsByScore[2])/numRatings*100
+    ratingPercent2 = 0 if len(ratingsByScore[1])==0 else len(ratingsByScore[1])/numRatings*100
+    ratingPercent1 = 0 if len(ratingsByScore[0])==0 else len(ratingsByScore[0])/numRatings*100
 
-    ratings_with_comment = ratings.exclude(comment__exact = '')
+    ratingsWithComment = ratings.exclude(comment__exact = '')
 
     context = {
         'tool': tool,
-        'kategorien': kategorien,
-        'lebenszyklusphasen': lebenszyklusphasen,
-        'letztes_update': update_properties,
-        'letztes_update_class': update_properties.class_name,
-        'letztes_update_color': update_properties.color_class,
-        'letztes_update_label': update_properties.label,
+        'usages': usages,
+        'lifeCyclePhases': lifeCyclePhases,
+        'lastUpdate': updateProperties,
+        'lastUpdateClass': updateProperties.className,
+        'lastUpdateColor': updateProperties.colorClass,
+        'lastUpdateLabel': updateProperties.label,
         'ratings': ratings,
-        'rating_perc_5': "{:,.2f}".format(rating_percent_5),
-        'rating_perc_4': "{:,.2f}".format(rating_percent_4),
-        'rating_perc_3': "{:,.2f}".format(rating_percent_3),
-        'rating_perc_2': "{:,.2f}".format(rating_percent_2),
-        'rating_perc_1': "{:,.2f}".format(rating_percent_1),
-        'ratings_with_comment': ratings_with_comment,
+        'ratingPercent5': "{:,.2f}".format(ratingPercent5),
+        'ratingPercent4': "{:,.2f}".format(ratingPercent4),
+        'ratingPercent3': "{:,.2f}".format(ratingPercent3),
+        'ratingPercent2': "{:,.2f}".format(ratingPercent2),
+        'ratingPercent1': "{:,.2f}".format(ratingPercent1),
+        'ratingsWithComment': ratingsWithComment,
     }
 
 
     return render(request, 'tools_over/tool-detail.html', context)
 
-def Post_Review(request,id):
+def postReview(request,id):
     if request.method=="POST":
         User=request.user
-        tool=tool = get_object_or_404(Tools, pk= id)
+        tool= get_object_or_404(Tools, pk= id)
         comment=request.POST['comment']
         score=request.POST['score']
-        rating=Rating.objects.create(rating_from=User,rating_for=tool,score=score,comment=comment)
+        rating=Rating.objects.create(ratingFrom=User,ratingFor=tool,score=score,comment=comment)
 
-        return  tool_view(request,id)
+        return  toolView(request,id)
 
         
  
