@@ -1,14 +1,9 @@
 import ast
 import pdb
 import importlib
-import os
 
-from project_listing.models import (
-    Teilprojekt,
-    Modulen_zuordnung_ptj,
-    Schlagwortregister_erstsichtung,
-    Enargus,
-)
+from project_listing.models import Subproject
+
 import yaml
 import numpy as np
 
@@ -198,7 +193,7 @@ class DatabaseDifference(yaml.YAMLObject):
             So it is explictly searched for that string.
         """
         for tableName in list(self.differencesSortedByTable.keys()):
-            if "Teilprojekt" in tableName:
+            if "Subproject" in tableName:
                 rootTableName = tableName
                 break
         try:

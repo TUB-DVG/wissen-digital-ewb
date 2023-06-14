@@ -23,10 +23,13 @@ from django.db.utils import IntegrityError
 import yaml
 
 from project_listing.models import (
-    Teilprojekt,
-    Schlagwortregister_erstsichtung,
-    Modulen_zuordnung_ptj,
+    Subproject,
+    ModuleAssignment,
     Enargus,
+)
+from keywords.models import (
+    KeywordRegisterFirstReview,
+    Keyword,
 )
 from project_listing.management.commands.data_import import (
     Command, 
@@ -48,6 +51,16 @@ class checkDifferencesInDatabase(TransactionTestCase):
     an .yaml-file in which the conflicts are shown. The user then 
     needs to decide, which state should be kept, and which discarded.
     """
+
+    def setUp(self):
+        """
+        
+        """
+
+        self.allModels = [
+            importlib.import_module("project_listing.models"),
+            importlib.import_module("keywords.models"),
+        ]
 
     def testSameFKZTwoTimesInCSV(self):
         """Tests, if MultipleFKZDatasets-Exception is raised.
@@ -421,12 +434,20 @@ class checkDifferencesInDatabase(TransactionTestCase):
         allModels = importlib.import_module("project_listing.models")
         schlagwortregisterIDcurrent = None
         for tableDictKey in list(nestedDictContainingDiffs.keys()):
-            if "Teilprojekt" in tableDictKey:
+            if "Subproject" in tableDictKey:
                 tableName = dictMappingToTable[tableDictKey]
+
                 dictOfDifferences = nestedDictContainingDiffs[tableDictKey]
                 currentDBStateInTable = dictOfDifferences["currentState"]
                 CSVState = dictOfDifferences["pendingState"]
-                currentTableModel = allModels.__getattribute__(tableName)
+
+                for models in self.allModels:
+                    try:
+                        currentTableModel = models.__getattribute__(tableName)
+                        break
+                    except:
+                        pass
+
                 if (keepCurrentState == None 
                     and keepPendingState == None 
                 ):
@@ -501,12 +522,12 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """
         
         if not self._checkIfIDisNone(stateDict):
-            if not ("Schlagwort" in str(currentTableModel)
-                    and not "Schlagwortregister_erstsichtung" in str(
+            if not ("Keyword" in str(currentTableModel)
+                    and not "KeywordRegisterFirstReview" in str(
                 currentTableModel
                 )
                 ):
-                if str(currentTableModel) == "<class 'schlagwoerter.models.Schlagwortregister_erstsichtung'>":
+                if str(currentTableModel) == "<class 'schlagwoerter.models.KeywordRegisterFirstReview'>":
                     schlagwortregisterQuery = currentTableModel.objects.filter(**stateDict)
                     if len(schlagwortregisterQuery) > 0:
                         schlagwortregisterObj = schlagwortregisterQuery[0]
@@ -517,11 +538,11 @@ class checkDifferencesInDatabase(TransactionTestCase):
                                 ) == lengthOfQuerySet,
                                 assertationMessage,
                             )
-                elif str(currentTableModel) == "<class 'project_listing.models.Modulen_zuordnung_ptj'>":
+                elif str(currentTableModel) == "<class 'project_listing.models.ModuleAssignment'>":
                     moduleQuery = currentTableModel.objects.filter(**stateDict)
                     if len(moduleQuery) > 0:
                         modulObj = moduleQuery[0]
-                        if len(modulObj.teilprojekt_set.all()) == 0:
+                        if len(modulObj.subproject_set.all()) == 0:
                             self.assertTrue(
                                 len(
                                 currentTableModel.objects.filter(**stateDict)
@@ -541,8 +562,8 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
 
             elif (
-                ("Schlagwort" in str(currentTableModel) 
-                and not "Schlagwortregister_erstsichtung" in str(currentTableModel)) 
+                ("Keyword" in str(currentTableModel) 
+                and not "KeywordRegisterFirstReview" in str(currentTableModel)) 
                 and lengthOfQuerySet == 0 
                 and schlagwortregisterIDcurrent is not None
             ):
@@ -551,7 +572,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     dictCurrTagNum = {
                         f"schlagwort_{numberPosition}_id": tagToBeChecked
                     }
-                    queryForCurrTag = Schlagwortregister_erstsichtung\
+                    queryForCurrTag = KeywordRegisterFirstReview\
                         .objects.filter(**dictCurrTagNum)
                     for query in queryForCurrTag:
                         if (query.schlagwortregister_id 
@@ -631,7 +652,8 @@ class checkDifferencesInDatabase(TransactionTestCase):
             present.    
         """
         allModels = importlib.import_module("project_listing.models")
-        allAttrOfModels = dir(allModels)
+        modelsKeywords = importlib.import_module("keywords.models")
+        allAttrOfModels = dir(allModels) + dir(modelsKeywords)
         returnDict = {}
         for currentTableKey in list(nestedDictContainingDiffs.keys()):
             for attributeName in allAttrOfModels:
@@ -679,7 +701,7 @@ class TestDatabaseConcistency(TransactionTestCase):
             
             #pdb.set_trace()
             modelClassName = getattr(
-                Teilprojekt, 
+                Subproject, 
                 foreignRelationFromTeilprojekt,
             ).field.related_model
 
@@ -692,13 +714,13 @@ class TestDatabaseConcistency(TransactionTestCase):
                 foreignRelationFromTeilprojekt: foreignObjToPartProject,
             }
 
-            self.assertEqual(len(Teilprojekt.objects.filter(**filterDict)), 1)
+            self.assertEqual(len(Subproject.objects.filter(**filterDict)), 1)
 
     def testIfNotUsedTupleWereDeleted(self):
         """Checks, if Tuple are present, which are not connected to Teilprojekt.
 
-        This method checks if Enargus-, Modulen_zuordnung_ptj-, or 
-        Schlagwortregister_erstsichtung-Tuples are present in the database,
+        This method checks if Enargus-, ModuleAssignment-, or 
+        KeywordRegisterFirstReview-Tuples are present in the database,
         which are not conntected via ForeignKey-Relations to a 
         Teilprojekt-Tuple. That can happen, when after executing the user
         defined DB changes, the other dataset, which is set to be discarded,
@@ -709,7 +731,7 @@ class TestDatabaseConcistency(TransactionTestCase):
         listOfModuleTuplesTrash = []
         listOfEnargusTupleTrash = []
 
-        queryOfAllSchlagwoertregisterTuples = Schlagwortregister_erstsichtung.objects.all()
+        queryOfAllSchlagwoertregisterTuples = KeywordRegisterFirstReview.objects.all()
         for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
             if len(schlagwortregisterTuple.teilprojekt_set.all()) == 0:
                 listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)
@@ -718,7 +740,7 @@ class TestDatabaseConcistency(TransactionTestCase):
             0,
         )
 
-        queryOfAllModulZuordnungTuples = Modulen_zuordnung_ptj.objects.all()
+        queryOfAllModulZuordnungTuples = ModuleAssignment.objects.all()
         for modulTuple in queryOfAllModulZuordnungTuples:
             if len(modulTuple.teilprojekt_set.all()) == 0:
                 listOfModuleTuplesTrash.append(modulTuple)
