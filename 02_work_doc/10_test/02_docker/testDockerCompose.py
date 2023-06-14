@@ -95,7 +95,7 @@ class TestDockerComposeEnvironments(TestCase):
         """
 
         os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d",
+            "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d",
         )
 
         print("Waiting 3 seconds, to start Docker-Compose-Project...")
@@ -156,7 +156,7 @@ class TestDockerComposeEnvironments(TestCase):
         None
         """
         os.system(
-            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d",
+            "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d",
         )
 
         print("Waiting 3 seconds, to start Docker-Compose-Project...")
