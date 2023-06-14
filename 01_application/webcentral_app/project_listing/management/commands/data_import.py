@@ -15,11 +15,11 @@ If none of these sub-strings is present in the filename, the data can
 not be processed and an error is printed. 
 The relational model of the database is composed of multiple tables,
 which are connected via foreign-keys. The central table, which connects
-the different parts together is the `Teilprojekt`-table. It holds all the
+the different parts together is the `Subproject`-table. It holds all the
 foreign-keys, which point to the Enagus-Table, the 
 Schlagwörter_erstichtung-table and so on. If a dataset inside the to be
 loaded .csv-file contains a Förderkennzeichen (fkz), which is already 
-present in the Teilprojekt-table, but has differences in the other 
+present in the Subproject-table, but has differences in the other 
 columns, an IntegrityError is thrown, because the data cannot be 
 connected with the fkz. In this situation, the `compareForeignTables`-
 method is called, which wlaks though all tables and builds an 
@@ -57,18 +57,20 @@ from django.core.management.base import BaseCommand
 import numpy as np
 
 from project_listing.models import (
-    Teilprojekt,
-    Modulen_zuordnung_ptj,
-    Schlagwortregister_erstsichtung,
+    Subproject,
+    ModuleAssignment,
     Enargus,
-    Anschrift,
-    Zuwendungsempfaenger,
-    Ausfuehrende_stelle,
-    Leistung_sys,
+    Address,
+    GrantRecipient,
+    ExecutingEntity,
+    RAndDPlanningCategory,
     Person,
-    Forschung,
-    Schlagwort,
+    FurtherFundingInformation,
     IntegrityError,
+)
+from keywords.models import (
+    Keyword,
+    KeywordRegisterFirstReview,
 )
 from tools_over.models import Tools
 from weatherdata_over.models import Weatherdata
@@ -122,7 +124,7 @@ class Command(BaseCommand):
 
 
 
-    def getOrCreateResearch(
+    def getOrCreateFurtherFundingInformation(
             self, 
             row: list, 
             header: list,
@@ -131,7 +133,7 @@ class Command(BaseCommand):
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Forschung according to the fed-data. Either this object 
+        FurtherFundingInformation according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned. 
 
@@ -142,21 +144,21 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Forschung
-            Forschung-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+        obj:    FurtherFundingInformation
+            FurtherFundingInformation-object, represent the created or in database
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
-            Indicates, if the Forschung-object was created or not.
+            Indicates, if the FurtherFundingInformation-object was created or not.
         """
         federalMinistry = row[header.index('Bundesministerium')]
         projectBody = row[header.index('Projekttraeger')]
         supportProgram = row[header.index('Foerderprogramm')]
         researchProgram = row[header.index('Forschungsprogramm')]
-        obj, created = Forschung.objects.get_or_create(
-            bundesministerium=federalMinistry,
-            projekttraeger=projectBody,
-            forschungsprogramm=researchProgram,
-            foerderprogramm=supportProgram,
+        obj, created = FurtherFundingInformation.objects.get_or_create(
+            fundedBy=federalMinistry,
+            projectManagementAgency=projectBody,
+            researchProgram=researchProgram,
+            fundingProgram=supportProgram,
         )
         return obj, created
 
@@ -166,11 +168,11 @@ class Command(BaseCommand):
             header: list,
             who: str,
         ) -> tuple:
-        """Gets or Creates an object of type Anschrift from the data in row
+        """Gets or Creates an object of type Address from the data in row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Anschrift according to the fed-data. Either this object 
+        Address according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -184,11 +186,11 @@ class Command(BaseCommand):
             for zuwendungsempfaenger or `as` for ausfehrende Stelle.
 
         Returns:
-        obj:    Forschung
-            Anschrift-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+        obj:    FurtherFundingInformation
+            Address-object, represent the created or in database
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
-            Indicates, if the Anschrift-object was created or not.
+            Indicates, if the Address-object was created or not.
         """
 
         if who == 'zwe':
@@ -202,11 +204,11 @@ class Command(BaseCommand):
             country = row[header.index('Land_AS')]
             adress = row[header.index('Adress_AS')]
 
-        obj, created = Anschrift.objects.get_or_create(
-            plz = postalCode,
-            ort = location,
-            land = country,
-            adresse = adress,
+        obj, created = Address.objects.get_or_create(
+            plz=postalCode,
+            location=location,
+            state=country,
+            address=adress,
         )
         return obj, created
 
@@ -230,9 +232,9 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Forschung
+        obj:    FurtherFundingInformation
             Person-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
             Indicates, if the Person-object was created or not.
         """
@@ -240,27 +242,27 @@ class Command(BaseCommand):
         # decision kind of persion, where should the data read from, 
         # maybe later needed
         name = row[header.index('Name_pl')]
-        surname = row[header.index('Vorname_pl')]
+        firstNameFromCSV = row[header.index('Vorname_pl')]
         titel = row[header.index('Titel_pl')]
         email = row[header.index('Email_pl')]
         obj, created = Person.objects.get_or_create(
-            name = name,
-            vorname = surname,
-            titel = titel,
-            email = email,
+            surname=name,
+            firstName=firstNameFromCSV,
+            title=titel,
+            email=email,
         )
         return obj, created
 
-    def getOrCreateLeistungSys(
+    def getOrCreateRAndDPlanningCategory(
             self, 
             row: list, 
             header: list,
         ) -> tuple:
-        """Gets or Creates an object of type Leistung_sys from the data in row
+        """Gets or Creates an object of type RAndDPlanningCategory from the data in row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Leistung_sys according to the fed-data. Either this object 
+        RAndDPlanningCategory according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -271,32 +273,32 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Forschung
-            Leistung_sys-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+        obj:    FurtherFundingInformation
+            RAndDPlanningCategory-object, represent the created or in database
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
-            Indicates, if the Leistung_sys-object was created or not.
+            Indicates, if the RAndDPlanningCategory-object was created or not.
         """
         # content = row[number of the columns of the row]
-        benefitPlanSystematicText = row[header.index('Leistungsplan_Sys_Text')]
-        benefitPlanSystematicNr = row[header.index('Leistungsplan_Sys_Nr')]
+        textFromCSV = row[header.index('Leistungsplan_Sys_Text')]
+        idFromCSV = row[header.index('Leistungsplan_Sys_Nr')]
 
-        obj, created = Leistung_sys.objects.get_or_create(
-            leistungsplansystematik_nr =  benefitPlanSystematicNr,
-            leistungsplansystematik_text = benefitPlanSystematicText
+        obj, created = RAndDPlanningCategory.objects.get_or_create(
+            rAndDPlanningCategoryNumber=idFromCSV,
+            rAndDPlanningCategoryText=textFromCSV,
         )
         return obj, created
 
-    def getOrCreateGrantee(
+    def getOrCreateGrantRecipient(
             self, 
             row: list, 
             header: list,
         ) -> tuple:
-        """Gets or Creates an object of type Zuwendungsempfaenger from row
+        """Gets or Creates an object of type GrantRecipient from row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Zuwendungsempfaenger according to the fed-data. Either this object 
+        GrantRecipient according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -307,33 +309,32 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Zuwendungsempfaenger
-            Zuwendungsempfaenger-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+        obj:    GrantRecipient
+            GrantRecipient-object, represent the created or in database
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
-            Indicates, if the Leistung_sys-object was created or not.
+            Indicates, if the RAndDPlanningCategory-object was created or not.
         """
         objAnsZwe, _ = self.getOrCreateAdress(
             row, 
             header, 
             'zwe',
         )
-        doneeAdressId = objAnsZwe.anschrift_id
+        # doneeAdressId = objAnsZwe.anschrift_id
 
         # content = row[number of the columns of the row]
-        name = row[header.index('Name_ZWE')]
-        obj, created = Zuwendungsempfaenger.objects.get_or_create(
-            name = name,
-            anschrift_id = doneeAdressId,
+        nameFromCSV = row[header.index('Name_ZWE')]
+        return GrantRecipient.objects.get_or_create(
+            name=nameFromCSV,
+            address=objAnsZwe,
         )
-        return obj, created
 
-    def getOrCreateExecutive(self, row, header):
-        """Gets or Creates an object of type Ausfuehrende_stelle from row
+    def getOrCreateExecutingEntity(self, row, header):
+        """Gets or Creates an object of type ExecutingEntity from row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Ausfuehrende_stelle according to the fed-data. Either this object 
+        ExecutingEntity according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -344,24 +345,19 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Ausfuehrende_stelle
+        obj:    ExecutingEntity
             Ausfuehrende_stelle-object, represent the created or in database
-            present Forschung-Dataset with the data from row.
+            present FurtherFundingInformation-Dataset with the data from row.
         created:    bool
-            Indicates, if the Ausfuehrende_stelle-object was created or not.
+            Indicates, if the ExecutingEntity-object was created or not.
         """
-    # fill table anschrift in case of ausfuehrende_stelle
-        # or/and get the anschrift_id
         objAnsAs, _ = self.getOrCreateAdress(row, header, 'as')
-        addressId = objAnsAs.anschrift_id
 
-        # content = row[number of the columns of the row]
-        name = row[header.index('Name_AS')]
-        obj, created = Ausfuehrende_stelle.objects.get_or_create(
-            name = name,
-            anschrift_id = addressId,
+        nameFromCSV = row[header.index('Name_AS')]
+        return ExecutingEntity.objects.get_or_create(
+            name=nameFromCSV,
+            address=objAnsAs,
         )
-        return obj, created
 
     def getOrCreateEnargus(
             self, 
@@ -389,26 +385,14 @@ class Command(BaseCommand):
         created:    bool
             Indicates, if the Enargus-object was created or not.
         """
-
-        # fill table zuwendungsempfaenger or/and get the zuwendungsempfaenger_id
-        objZwe, _ = self.getOrCreateGrantee(row, header)
-        zwe_id = objZwe.zuwendungsempfaenger_id
-
-        # fill table ausfuehrende_stelle or/and get the ausfuehrende_stelle_id
-        objAs, _ = self.getOrCreateExecutive(row, header)
-        asId = objAs.ausfuehrende_stelle_id
-
-        # fill table leistung_sys or/and get the leistungsplansystematik_nr
-        objLps, _ = self.getOrCreateLeistungSys(row, header)
-        lpsNr = objLps.leistungsplansystematik_nr
-
-        # fill table person or/and get the person_id
-        objPer, _ = self.getOrCreatePerson(row, header)
-        personId = objPer.person_id
-
-        # fill table forschung or/and get the forschung_id
-        objFor, _ = self.getOrCreateResearch(row, header)
-        forschungId = objFor.forschung_id
+        objGrantRecipient, _ = self.getOrCreateGrantRecipient(row, header)
+        objExecEntity, _ = self.getOrCreateExecutingEntity(row, header)
+        objRAndDPlanning, _ = self.getOrCreateRAndDPlanningCategory(row, header)
+        objPerson, _ = self.getOrCreatePerson(row, header)
+        objFurtherFunding, _ = self.getOrCreateFurtherFundingInformation(
+            row, 
+            header,
+        )
 
         durationBegin = row[header.index('Laufzeitbeginn')]
         durationEnd = row[header.index('Laufzeitende')]
@@ -419,34 +403,32 @@ class Command(BaseCommand):
         shortDescriptionEn = row[header.index('Kurzbeschreibung_en')]
         database = row[header.index('Datenbank')]
         obj, created = Enargus.objects.get_or_create(
-            laufzeitbeginn=durationBegin,
-            laufzeitende=durationEnd,
-            thema=theme,
-            # instead of using only the name of the feature in case
-            # of foreigne keys use the name+_id, I dont know why
-            projektleiter_id = personId,
-            forschung_id = forschungId,
-            leistungsplan_systematik_id = lpsNr,
-            zuwendsempfanger_id = zwe_id,
-            ausfuehrende_stelle_id = asId,
-            verbundbezeichnung = clusterName,
-            foerdersumme = fundingSum,
-            kurzbeschreibung_de = shortDescriptionDe,
-            kurzbeschreibung_en = shortDescriptionEn,
-            datenbank = database,
+            startDate=durationBegin,
+            endDate=durationEnd,
+            topics=theme,
+            projectLead=objPerson,
+            furtherFundingInformation=objFurtherFunding,
+            rAndDPlanningCategory=objRAndDPlanning,
+            grantRecipient=objGrantRecipient,
+            executingEntity=objExecEntity,
+            collaborativeProject=clusterName,
+            appropriatedBudget=fundingSum,
+            shortDescriptionDe=shortDescriptionDe,
+            shortDescriptionEn=shortDescriptionEn,
+            database=database,
         )
         return obj, created
 
-    def getOrCreateModulesMapping(
+    def getOrCreateModuleAssignment(
             self, 
             row: list, 
             header: list,
         ) -> tuple:
-        """Gets or Creates an object of type Modulen_zuordnung_ptj from row
+        """Gets or Creates an object of type ModuleAssignment from row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Modulen_zuordnung_ptj according to the fed-data. Either this object 
+        ModuleAssignment according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -457,22 +439,22 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Modulen_zuordnung_ptj
-            Modulen_zuordnung_ptj-object, represent the created or in database
-            present Modulen_zuordnung_ptj-Dataset with the data from row.
+        obj:    ModuleAssignment
+            ModuleAssignment-object, represent the created or in database
+            present ModuleAssignment-Dataset with the data from row.
         created:    bool
-            Indicates, if the Modulen_zuordnung_ptj-object was created or not.
+            Indicates, if the ModuleAssignment-object was created or not.
         """
 
-        priority1 = row[header.index('modulzuordnung_ptj_1')]
-        priority2 = row[header.index('modulzuordnung_ptj_2')]
-        priority3 = row[header.index('modulzuordnung_ptj_3')]
-        priority4 = row[header.index('modulzuordnung_ptj_4')]
-        obj, created = Modulen_zuordnung_ptj.objects.get_or_create(
-            priority_1 = priority1,
-            priority_2 = priority2,
-            priority_3 = priority3,
-            priority_4 = priority4
+        priority1FromCSV = row[header.index('modulzuordnung_ptj_1')]
+        priority2FromCSV = row[header.index('modulzuordnung_ptj_2')]
+        priority3FromCSV = row[header.index('modulzuordnung_ptj_3')]
+        priority4FromCSV = row[header.index('modulzuordnung_ptj_4')]
+        obj, created = ModuleAssignment.objects.get_or_create(
+            priority1=priority1FromCSV,
+            priority2=priority2FromCSV,
+            priority3=priority3FromCSV,
+            priority4=priority4FromCSV,
         )
         return obj, created
 
@@ -496,11 +478,7 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Tools
-            Tools-object, represent the created or in database
-            present Tools-Dataset with the data from row.
-        created:    bool
-            Indicates, if the Tools-object was created or not.
+        obj:    ToolsSubproject the Tools-object was created or not.
         """
 
         description = row[header.index('Tool')]
@@ -519,18 +497,18 @@ class Command(BaseCommand):
         ]
 
         obj, created = Tools.objects.get_or_create(
-            bezeichnung = description,
-            kurzbeschreibung = shortDesciption,
-            anwendungsbereich = applicationArea,
-            kategorie = category,
-            lebenszyklusphase = lifeCyclePhase,
-            nutzerschnittstelle = userInterface,
-            zielgruppe = targetGroup,
-            letztes_update = lastUpdate,
-            lizenz = license,
-            weitere_informationen = furtherInfos,
-            alternativen = alternatives,
-            konk_anwendung = concreteApplication,
+            name=description,
+            shortDescription=shortDesciption,
+            applicationArea=applicationArea,
+            usage=category,
+            lifeCyclePhase=lifeCyclePhase,
+            userInterface=userInterface,
+            targetGroup=targetGroup,
+            lastUpdate=lastUpdate,
+            licence=license,
+            furtherInformation=furtherInfos,
+            alternatives=alternatives,
+            specificApplication=concreteApplication,
         )
         return obj, created
 
@@ -588,17 +566,17 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateCatchphrase(
+    def getOrCreateKeyword(
             self, 
             row: list, 
             header: list, 
             catchphraseKey: str,
         ) -> tuple:
-        """Gets or Creates an object of type Schlagwort from row
+        """Gets or Creates an object of type Keyword from row
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
-        Schlagwort according to the fed-data. Either this object 
+        Keyword according to the fed-data. Either this object 
         corresponds to a new created-dataset in the database or
         the existing dataset is returned.  
 
@@ -609,32 +587,32 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Schlagwort
-            Schlagwort-object, represent the created or in database
-            present Schlagwort-Dataset with the data from row.
+        obj:    Keyword
+            Keyword-object, represent the created or in database
+            present Keyword-Dataset with the data from row.
         created:    bool
-            Indicates, if the Schlagwort-object was created or not.
+            Indicates, if the Keyword-object was created or not.
         """
         # content = row[number of the columns of the row]
-        schlagwort = row[header.index(catchphraseKey)]
-        obj, created = Schlagwort.objects.get_or_create(
-            schlagwort = schlagwort
+        keywordFromCSV = row[header.index(catchphraseKey)]
+        obj, created = Keyword.objects.get_or_create(
+            keyword=keywordFromCSV,
         )
         return obj, created
 
-    def getOrCreateSchlagwortregister(
+    def getOrCreateKeywordRegisterFirstReview(
             self, 
             row: list, 
             header: list,
         ) -> tuple:
-        """Gets or Creates Schlagwortregister_erstsichtung from Row
+        """Gets or Creates KeywordRegisterFirstReview from Row
 
         This method feeds the data present in row into 
-        `getOrCreateCatchphrase`, which returns either an object 
+        `getOrCreateKeyword`, which returns either an object 
         which corresponds to a newly created Dataset inside the
-        Database or to an already existed Schlagwort. The returned
-        Schlagwort-objects are then used to get or create a 
-        Schlagwortregister_erstsichtung-object.
+        Database or to an already existed Keyword. The returned
+        Keyword-objects are then used to get or create a 
+        KeywordRegisterFirstReview-object.
 
         Parameters:
         row:    list
@@ -643,85 +621,71 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
 
         Returns:
-        obj:    Schlagwortregister_erstsichtung
-            Schlagwortregister_erstsichtung-object, represent 
-            the created or in database present Schlagwort-Dataset 
+        obj:    KeywordRegisterFirstReview
+            KeywordRegisterFirstReview-object, represent 
+            the created or in database present Keyword-Dataset 
             with the data from row.
         created:    bool
-            Indicates, if the Schlagwortregister_erstsichtung-object 
+            Indicates, if the KeywordRegisterFirstReview-object 
             was created or not.
         """
         
-        objSchlagwort1, _ = self.getOrCreateCatchphrase(
+        objKeyword1, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort1',
         )
-        schlagwort1Id = objSchlagwort1.schlagwort_id
-
-        objSchlagwort2, _ = self.getOrCreateCatchphrase(
+        objKeyword2, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort2',
         )
-        schlagwort2Id = objSchlagwort2.schlagwort_id
-
-        objSchlagwort3, _ = self.getOrCreateCatchphrase(
+        objKeyword3, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort3',
         )
-        schlagwort3Id = objSchlagwort3.schlagwort_id
-
-        objSchlagwort4, _ = self.getOrCreateCatchphrase(
+        objKeyword4, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort4',
-        )
-        schlagwort4Id = objSchlagwort4.schlagwort_id
-        
-        objSchlagwort5, _ = self.getOrCreateCatchphrase(
+        )        
+        objKeyword5, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort5',
         )
-        schlagwort5Id = objSchlagwort5.schlagwort_id
-        
-        objSchlagwort6, _ = self.getOrCreateCatchphrase(
+        objKeyword6, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort6',
         )
-        schlagwort6Id = objSchlagwort6.schlagwort_id
-        
-        objSchlagwort7, _ = self.getOrCreateCatchphrase(
+        objKeyword7, _ = self.getOrCreateKeyword(
             row, 
             header, 
             'Schlagwort',
         )
-        schlagwort7Id = objSchlagwort7.schlagwort_id
         
-
-        obj, created = Schlagwortregister_erstsichtung.objects.get_or_create(
-            schlagwort_1_id = schlagwort1Id,
-            schlagwort_2_id = schlagwort2Id,
-            schlagwort_3_id = schlagwort3Id,
-            schlagwort_4_id = schlagwort4Id,
-            schlagwort_5_id = schlagwort5Id,
-            schlagwort_6_id = schlagwort6Id,
-            schlagwort_7_id = schlagwort7Id,
+        obj, created = KeywordRegisterFirstReview.objects.get_or_create(
+            keyword1=objKeyword1,
+            keyword2=objKeyword2,
+            keyword3=objKeyword3,
+            keyword4=objKeyword4,
+            keyword5=objKeyword5,
+            keyword6=objKeyword6,
+            keyword7=objKeyword7,
         )
         return obj, created
 
-    def addOrUpdateRowPartProject(
+    def addOrUpdateRowSubproject(
             self, 
             row: list, 
             header: list, 
             source: str,
         ) -> tuple:
-        """Gets or Creates Teilprojekt-object from `row`
+        """Gets or Creates Subproject-object from `row`
 
-        This method adds a Teilprojekt-object to the database, if it is 
+        This method adds a Subproject-object to the database, if it is 
         not already present. If it is present, a `IntegrityError` is 
         thrown by Django and is solved by calling `compareForeignTables`-
         which finds all the differencies in all Tables.
@@ -736,12 +700,12 @@ class Command(BaseCommand):
             values are 'enargus', 'modul' or 'schlagwortregister'.
 
         Returns:
-        obj:    Schlagwortregister_erstsichtung
-            Schlagwortregister_erstsichtung-object, represent 
+        obj:    KeywordRegisterFirstReview
+            KeywordRegisterFirstReview-object, represent 
             the created or in database present Schlagwort-Dataset 
             with the data from row.
         created:    bool
-            Indicates, if the Schlagwortregister_erstsichtung-object 
+            Indicates, if the KeywordRegisterFirstReview-object 
             was created or not.
         """
         # fill table enargus or/and get the enargus_id
@@ -750,121 +714,129 @@ class Command(BaseCommand):
             enargus_id = obj.enargus_id
             fkz = row[header.index('FKZ')]            
             try:
-                if len(Teilprojekt.objects.filter(
-                    fkz=fkz, 
-                    enargus_daten_id=enargus_id
+                if len(Subproject.objects.filter(
+                    referenceNumber_id=fkz, 
+                    enargusData_id=enargus_id
                 )) == 0:
-                    Teilprojekt.objects.create(fkz=fkz,
-                                            enargus_daten_id= enargus_id)
+                    Subproject.objects.create(
+                        referenceNumber_id=fkz,
+                        enargusData_id= enargus_id,
+                    )
                     print('added: %s' %fkz)
             except IntegrityError:
-                currentStateTable = Teilprojekt.objects.filter(fkz=fkz)[0].\
-                    enargus_daten
+                currentStateTable = Subproject.objects.filter(
+                    referenceNumber_id=fkz,
+                )[0].enargusData
                 unvisited = []
                 visitedNames = []
-                visitedNames.append("teilprojekt")
+                visitedNames.append("subproject")
                 unvisited.append([
-                    "enargus_daten", 
+                    "enargusData", 
                     currentStateTable, 
                     obj, 
-                    "Teilprojekt",
+                    "Subproject",
                 ])
                 if currentStateTable is None:
                     verbundbezeichungStr = None
                 else:
-                    verbundbezeichungStr = currentStateTable.verbundbezeichnung
+                    verbundbezeichungStr = currentStateTable.collaborativeProject
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
-                    {"fkz": fkz}, 
+                    {"referenceNumber_id": fkz}, 
                     verbundbezeichungStr,
                 )
 
 
         elif source == 'modul':
-            obj, created = self.getOrCreateModulesMapping(row, header)
-            modId = obj.mod_id
+            moduleAssignmentObjNew, created = self.getOrCreateModuleAssignment(
+                row, 
+                header,
+            )
+            #modId = obj.moduleAssignment_id
             fkz = row[header.index('FKZ')].strip()
             try:
-                if len(Teilprojekt.objects.filter(
-                    fkz=fkz, 
-                    zuordnung_id=modId
+                if len(Subproject.objects.filter(
+                    referenceNumber_id=fkz, 
+                    moduleAssignment=moduleAssignmentObjNew,
                 )) == 0:
-                    Teilprojekt.objects.create(
-                        fkz=fkz,
-                        zuordnung_id= modId
+                    Subproject.objects.create(
+                        referenceNumber_id=fkz,
+                        moduleAssignment=moduleAssignmentObjNew,
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                enargusDaten = Teilprojekt.objects.filter(
-                    fkz=fkz,
-                )[0].enargus_daten
+                enargusDataObj = Subproject.objects.filter(
+                    referenceNumber_id=fkz,
+                )[0].enargusData
 
-                zuordnungObj = Teilprojekt.objects.filter(
-                    fkz=fkz,
-                )[0].zuordnung
+                ModuleAssignmentObj = Subproject.objects.filter(
+                    referenceNumber_id=fkz,
+                )[0].moduleAssignment
 
                 unvisited = []
                 visitedNames = []
-                visitedNames.append("teilprojekt")
+                visitedNames.append("subproject")
                 unvisited.append([
-                    "zuordnung", 
-                    zuordnungObj, 
-                    obj, 
-                    "Teilprojekt",
+                    "moduleAssignment", 
+                    ModuleAssignmentObj, 
+                    moduleAssignmentObjNew, 
+                    "Subproject",
                 ])
-                if enargusDaten is None:
-                    verbundbezeichung = None
+                if enargusDataObj is None:
+                    collaborativeProjectText = None
                 else:
-                    verbundbezeichung = enargusDaten.verbundbezeichnung
+                    collaborativeProjectText = enargusDataObj.collaborativeProject
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
-                    {"fkz": fkz}, 
-                    verbundbezeichung,
+                    {"referenceNumber_id": fkz}, 
+                    collaborativeProjectText,
                 )
         elif source == 'schlagwortregister':
-            obj, _ = self.getOrCreateSchlagwortregister(row, header)
-            tagRegisterId = obj.schlagwortregister_id
+            keywordRegisterFirstReviewObj, _ = self.getOrCreateKeywordRegisterFirstReview(
+                row, 
+                header,
+            )
             fkz = row[header.index('Förderkennzeichen (0010)')]
             try:
-                if len(Teilprojekt.objects.filter(
-                    fkz=fkz, 
-                    schlagwortregister_erstsichtung_id = tagRegisterId,
+                if len(Subproject.objects.filter(
+                    referenceNumber_id=fkz, 
+                    keywordsFirstReview=keywordRegisterFirstReviewObj,
                 )) == 0:
-                    Teilprojekt.objects.create(
-                        fkz=fkz,
-                        schlagwortregister_erstsichtung_id = tagRegisterId,
+                    Subproject.objects.create(
+                        referenceNumber_id=fkz,
+                        keywordsFirstReview=keywordRegisterFirstReviewObj,
                     )
                     print('added: %s' %fkz)
             except IntegrityError:
-                currentPartEnargus = Teilprojekt.objects.filter(
-                    fkz=fkz,
-                )[0].enargus_daten
+                currentPartEnargus = Subproject.objects.filter(
+                    referenceNumber_id=fkz,
+                )[0].enargusData
 
-                currentObjTagRegisterFirstLook = Teilprojekt.objects.filter(
-                    fkz=fkz,
-                )[0].schlagwortregister_erstsichtung
+                currentObjTagRegisterFirstLook = Subproject.objects.filter(
+                    referenceNumber_id=fkz,
+                )[0].keywordsFirstReview
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
                 unvisited.append([
-                    "schlagwortregister_erstsichtung", 
+                    "keywordsFirstReview", 
                     currentObjTagRegisterFirstLook, 
-                    obj, 
-                    "Teilprojekt",
+                    keywordRegisterFirstReviewObj, 
+                    "Subproject",
                 ])
                 if currentPartEnargus is None:
-                    verbundbezeichnung = None
+                    collaborativeProjectText = None
                 else:
-                    verbundbezeichnung = currentPartEnargus.verbundbezeichnung
+                    collaborativeProjectText = currentPartEnargus.collaborativeProject
                 
                 
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
-                    {"fkz": fkz}, 
-                    verbundbezeichnung,
+                    {"referenceNumber_id": fkz}, 
+                    collaborativeProjectText,
                 )
         
     def compareForeignTables(
@@ -881,8 +853,8 @@ class Command(BaseCommand):
         datasets. If the values are different for a attribute, they
         are saved inside an instance of the DatabaseDifference-class.
         At the moment the central table of the database is the 
-        `Teilprojekt`-Table. New loaded Datasets can update values 
-        of one Teilprojekt-Tuple, which is represented by a 
+        `Subproject`-Table. New loaded Datasets can update values 
+        of one Subproject-Tuple, which is represented by a 
         `Förderkennzeichen`. If 
 
         unvisited:  list
@@ -893,7 +865,7 @@ class Command(BaseCommand):
             currently connected to the fkz, the third entry the 
             CSV-state, which is a pending update. The 4th entry 
             contains the Name of the parent table, this is most 
-            likly always `Teilprojekt`
+            likly always `Subproject`
         visitedNames:   list
             List of Tablename, which should not be visited again
         identifer:  dict
@@ -1106,14 +1078,14 @@ class Command(BaseCommand):
         for row in data:
 
             if "modulzuordnung" in filename:
-                self.addOrUpdateRowPartProject(row, header, 'modul')
+                self.addOrUpdateRowSubproject(row, header, 'modul')
             elif "enargus" in filename:
-                self.addOrUpdateRowPartProject(row, header, 'enargus')
+                self.addOrUpdateRowSubproject(row, header, 'enargus')
             elif "Tools" in filename:
                 self.getOrCreateTools(row, header)
             elif "schlagwoerter" in filename:
                 print(row[header.index('Förderkennzeichen (0010)')])
-                self.addOrUpdateRowPartProject(row, header, 'schlagwortregister')
+                self.addOrUpdateRowSubproject(row, header, 'schlagwortregister')
             elif "weatherdata" in filename:
                 print(row[header.index('data_service')])
                 self.getOrCreateWeatherdata(row, header)
