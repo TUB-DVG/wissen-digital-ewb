@@ -38,10 +38,19 @@
 						</a></span>
 						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
 							<li><a class="dropdown-item" href="{% url 'weatherdata_list' %}">Wetterdaten</a></li>
-              <li><a class="dropdown-item" href="{% url 'LastProfile' %}">Lastprofile</a></li>
-						</ul></li>
+							<li><a class="dropdown-item" href="{% url 'LastProfile' %}">Lastprofile</a></li>
+						</ul>
+					</li>
 					
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
+
+					<li class="nav-item">
+						<a class="nav-link" 
+						   href="{% url 'norm_list' %}"> Technische Standards
+						</a>
+					</li>
+			
+
 					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
 						<a class="dropdown-toggle dropdown-toggle-split pl-0">
 							<span class="visually-hidden">Toggle Dropdown</span>
