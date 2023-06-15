@@ -1,7 +1,7 @@
 #!/bin/bash
 # Please execute the script as sudo, otherwise the .yaml-files wont be deleted!
-echo "Build Dev-Environment..."
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --no-cache
+# echo "Build Dev-Environment..."
+# docker-compose -f docker-compose.yml -f docker-compose.dev.yml 
 
 echo "Start Test of docker-dev environment..."
 echo "Deleting current Volumes..."
@@ -9,7 +9,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
 
 # start docker-env:
 echo "Start Docker Dev-Environemnt..."
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up &
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build -d &
 sleep 5
 
 echo "Restore the Database State to the Dump-State, which lies in postgres/ ..."
@@ -31,11 +31,11 @@ echo "Build Prod-Environment..."
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml build --no-cache
 
 echo "Start Docker-Compose Production Environment..."
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up &
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d 
 sleep 10
 
 echo "Restore Database state of Production-Environment..."
-bash postgres/restoreDB.sh
+bash postgres/restoreDB.sh > log
 sleep 2
 
 echo "Execute Tests in Production Environment..."

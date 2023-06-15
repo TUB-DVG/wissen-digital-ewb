@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SchlagwoerterConfig(AppConfig):
+class NormsOverConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'schlagwoerter'
+    name = 'norms_over'

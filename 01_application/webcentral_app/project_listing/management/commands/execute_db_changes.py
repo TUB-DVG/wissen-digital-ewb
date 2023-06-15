@@ -39,10 +39,10 @@ from encodings import utf_8
 import yaml
 
 # from project_listing.DatabaseDifference import DatabaseDifference
-from project_listing.models import (
-    Schlagwortregister_erstsichtung,
-    Schlagwort,
-)
+# from keywords.models import (
+#     Keyword,
+#     KeywordRegisterFirstReview,
+# )
 # from tools_over.models import *
 # from weatherdata_over.models import *
 # from schlagwoerter.models import *
@@ -104,15 +104,15 @@ class Command(BaseCommand):
                     )
 
         for objToBeDeleted in self.listOfToBeDeletedObjs:
-            if "teilprojekt" in dir(objToBeDeleted):
+            if "subproject" in dir(objToBeDeleted):
                 objToBeDeleted.refresh_from_db()
                 try:
                     objToBeDeleted.teilprojekt
                 except:
                     objToBeDeleted.delete()
-            elif "teilprojekt_set" in dir(objToBeDeleted):
+            elif "subproject_set" in dir(objToBeDeleted):
                 objToBeDeleted.refresh_from_db()
-                if len(objToBeDeleted.teilprojekt_set.all()) == 0:
+                if len(objToBeDeleted.subproject_set.all()) == 0:
                     objToBeDeleted.delete()
             else:
                 pdb.set_trace()
@@ -156,8 +156,8 @@ class Command(BaseCommand):
         dataset, while the old dataset is deleted from the database 
         (else-branch). 
         For the Schlagwortregister-Case special-code has to be 
-        executed, to check if the `Schlagwort` is used by another
-        tuple of type `schlagwortregister_erstsichtung`.
+        executed, to check if the `Keyword` is used by another
+        tuple of type `KeywordRegisterFirstReview`.
 
         Parameters:
         listOfDatabaseObj:  list(obj)
@@ -178,13 +178,13 @@ class Command(BaseCommand):
         nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
         if optionCurrent:
             for currentTable in list(diffDataStructure.keys()):
-                if "Teilprojekt" in currentTable:
+                if "Subproject" in currentTable:
                     parent = currentTable.split(".")[1]
             for currentTable in list(diffDataStructure.keys()):
-                if "Teilprojekt" not in currentTable:
+                if "Subproject" not in currentTable:
                     if parent in currentTable.split(".")[0]:
                         deleteSchlagwort = True
-                        if parent == "schlagwortregister_erstsichtung":
+                        if parent == "KeywordRegisterFirstReview":
                             pass
 
             self.listOfToBeDeletedObjs.append(pendingObj)
@@ -200,12 +200,12 @@ class Command(BaseCommand):
                 self.listOfToBeDeletedObjs.append(currentStateRow)
                 #currentStateRow.delete()
             for currentTable in list(diffDataStructure.keys()):
-                if "Teilprojekt" in currentTable:
+                if "Subproject" in currentTable:
                     parent = currentTable.split(".")[1]
             for currentTable in list(diffDataStructure.keys()):
                 if parent in currentTable.split(".")[0]:
                     deleteSchlagwort = True
-                    if parent == "schlagwortregister_erstsichtung":
+                    if parent == "KeywordRegisterFirstReview":
                         pass
 
 
