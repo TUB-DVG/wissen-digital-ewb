@@ -25,7 +25,11 @@ venv
 /01_application/webcentral_app/weatherdata_over/Media
 /01_application/webcentral_app/media
 #/01_application/webcentral_app/schlagwoerter/migrations
-postgres/DATABASE_PLAIN_SQL_FILE 
-
+# database dumps (for import into docker container)
+postgres/*.sql
+# backupfile from drawio
+*.bkp
+# temporary from drawio
+*.dtmp
 # exclude the .env file from git, since it holds secrets
 .env
