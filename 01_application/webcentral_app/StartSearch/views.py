@@ -1,7 +1,7 @@
 """View functions for start page and start page search."""
 from django.shortcuts import render
 from tools_over.models import Tools
-from project_listing.models import Teilprojekt
+from project_listing.models import Subproject
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
@@ -24,20 +24,20 @@ def resultSearch(request):
         sortBy = None
     # read data from data base
     # filtered tools
-    criterionToolsOne = Q(bezeichnung__icontains=searchInput)
-    criterionToolsTwo = Q(kurzbeschreibung__icontains=searchInput)
-    filteredTools = Tools.objects.values("bezeichnung",
-                                         "kurzbeschreibung"
+    criterionToolsOne = Q(name__icontains=searchInput)
+    criterionToolsTwo = Q(shortDescription__icontains=searchInput)
+    filteredTools = Tools.objects.values("name",
+                                         "shortDescription"
                                          ).filter(criterionToolsOne |
                                                   criterionToolsTwo)
     # filtered projects
     criterionProjectsOne = Q(
-        enargus_daten__verbundbezeichnung__icontains=searchInput)
+        enargusData__collaborativeProject__icontains=searchInput)
     criterionProejctsTwo = Q(
-        enargus_daten__kurzbeschreibung_de__icontains=searchInput)
-    filteredProjects = Teilprojekt.objects.values("fkz",
-                                                  "enargus_daten__verbundbezeichnung",
-                                                  "enargus_daten__kurzbeschreibung_de"
+        enargusData__shortDescriptionDe__icontains=searchInput)
+    filteredProjects = Subproject.objects.values("referenceNumber_id",
+                                                  "enargusData__collaborativeProject",
+                                                  "enargusData__shortDescriptionDe"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -47,16 +47,16 @@ def resultSearch(request):
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     # and extend list by needed fields like kindOfItems
     for tool in filteredTools:
-        tool["name"] = tool.pop("bezeichnung")
+        tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
-        tool["description"] = tool.pop("kurzbeschreibung")
+        tool["description"] = tool.pop("shortDescription")
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
-        project["name"] = project.pop("enargus_daten__verbundbezeichnung")
-        project["description"] = project.pop("enargus_daten__kurzbeschreibung_de")
+        project["name"] = project.pop("enargusData__collaborativeProject")
+        project["description"] = project.pop("enargusData__shortDescriptionDe")
         if len(project["name"]) > 40:
             project["name"] = project["name"][:40] + " ... "
         project["kindOfItem"] = "Forschungsprojekt"
