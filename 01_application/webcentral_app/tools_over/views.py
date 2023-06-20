@@ -9,7 +9,9 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-from .models import Tools, Rating # maybe I need also the other models
+# maybe I need also the other models
+from tools_over.models import Tools, Rating
+
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -19,9 +21,10 @@ class UpdateProperties:
         self.label = label
         self.colorClass = colorClass
 
+
 @login_required(login_url='login')
 def index(request):
-    """Shows the list of all projects including some key features"""
+    """Shows the list of all projects including some key features."""
     tools = Tools.objects.all() # reads all data from table Teilprojekt
     filteredBy = [None]*3
     searched=None
@@ -45,8 +48,8 @@ def index(request):
 
     if isAjaxRequest:
         html = render_to_string(
-            template_name="tools_over/tool-listings-results.html", 
-            context = {
+            template_name="tools_over/tool-listings-results.html",
+            context={
                 'page': page,
                 'search':searched,
                 'usage': filteredBy[0],
@@ -59,7 +62,6 @@ def index(request):
 
         return JsonResponse(data=dataDict, safe=False)
 
-       
     context = {
         'page': page,
         'search':searched,
@@ -69,9 +71,8 @@ def index(request):
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
-    
 
-   
+
 def toolView(request, id):
     """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
@@ -91,7 +92,7 @@ def toolView(request, id):
     numRatings = len(ratings)
     print(numRatings)
 
-    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), 
+    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3),
                       ratings.filter(score=4), ratings.filter(score=5)]
     print(ratingsByScore[4])
     ratingPercent5 = 0 if len(ratingsByScore[4])==0 else len(ratingsByScore[4])/numRatings*100
@@ -119,18 +120,22 @@ def toolView(request, id):
         'ratingsWithComment': ratingsWithComment,
     }
 
-
     return render(request, 'tools_over/tool-detail.html', context)
 
-def postReview(request,id):
-    if request.method=="POST":
-        User=request.user
-        tool= get_object_or_404(Tools, pk= id)
-        comment=request.POST['comment']
-        score=request.POST['score']
-        rating=Rating.objects.create(ratingFrom=User,ratingFor=tool,score=score,comment=comment)
 
-        return  toolView(request,id)
+def postReview(request, id):
+    """Return to tools overwiew after submit review.
 
-        
- 
+    remove?, in next version not used, maybe include at the end of 2023 if
+    there is time to implement a user space, without user space no rating
+    possible
+    """
+    if request.method == "POST":
+        User = request.user
+        tool = get_object_or_404(Tools, pk=id)
+        comment = request.POST['comment']
+        score = request.POST['score']
+        rating = Rating.objects.create(ratingFrom=User, ratingFor=tool,
+                                       score=score, comment=comment)
+
+        return toolView(request, id)

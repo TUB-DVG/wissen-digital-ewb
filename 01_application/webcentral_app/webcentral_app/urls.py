@@ -1,4 +1,4 @@
-"""webcentral_app URL Configuration
+"""Webcentral_app URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -21,14 +21,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('',include('pages.urls')),
-    path('tool_list/',include('tools_over.urls')),
-    path('weatherdata_list/',include('weatherdata_over.urls')),
-    path('project_list/',include('project_listing.urls')),
+    path('', include('pages.urls')),
+    path('tool_list/', include('tools_over.urls')),
+    path('weatherdata_list/', include('weatherdata_over.urls')),
+    path('project_list/', include('project_listing.urls')),
     path('admin/', admin.site.urls),
     path('norm_list/',include('norms_over.urls')),
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
-    path('LastProfile/',include('LastProfile.urls')),
+    path('LastProfile/', include('LastProfile.urls')),
+    path('StartSearch/', include('StartSearch.urls')),
 ]
 
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)
