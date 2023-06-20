@@ -26,22 +26,45 @@
       <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
         <!-- Nav Main menu START -->
 				<ul class="navbar-nav navbar-nav-scroll mx-auto">
-					
-
 					<!-- Nav item 4 Component-->
-					<li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Start</a></li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'tool_list' %}">Digitale Werkzeuge</a></li>
-
-					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'data' %}">Daten</a>
-						<a class="dropdown-toggle dropdown-toggle-split pl-0">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</a></span>
-						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
-							<li><a class="dropdown-item" href="{% url 'weatherdata_list' %}">Wetterdaten</a></li>
-							<li><a class="dropdown-item" href="{% url 'LastProfile' %}">Lastprofile</a></li>
+					<li class="nav-item">
+            <a class="nav-link"
+               href="{% url 'index' %}">
+              Start
+            </a>
+          </li>
+					<li class="nav-item">
+            <a class="nav-link" href="{% url 'tool_list' %}">
+              Digitale Werkzeuge
+            </a>
+          </li>
+					<li class="dropdown nav-item">
+            <span class="nav-link">
+              <a href="{% url 'data' %}">
+                Daten
+              </a>
+						  <a class="dropdown-toggle dropdown-toggle-split pl-0">
+							  <span class="visually-hidden">Toggle Dropdown
+                </span>
+						  </a>
+            </span>
+						<ul class="dropdown-menu dropdown-menu-end shadow pt-3"
+                aria-labelledby="dataDropdown">
+							<li>
+                <a class="dropdown-item"
+                   href="{% url 'weatherdata_list' %}">
+                  Wetterdaten
+                </a>
+              </li>
+							<li>
+                <a class="dropdown-item"
+                   href="{% url 'LastProfile' %}">
+                  Lastprofile
+                </a>
+              </li>
 						</ul>
 					</li>
-					
+
 					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
 
 					<li class="nav-item">
@@ -62,26 +85,29 @@
 					
 				</ul>
 				<!-- Nav Main menu END -->
-
-				
 			</div>
 			<!-- Main navbar END -->
-
 			<!-- Profile START -->
-			
 			<div class="dropdown ms-1 ms-lg-0">
 				{% if user.is_authenticated %}
-				<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-					
-					<img class="avatar-img rounded-circle" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
+				<a class="avatar avatar-sm p-0"
+           href="#" id="profileDropdown"
+           role="button" data-bs-auto-close="outside"
+           data-bs-display="static" data-bs-toggle="dropdown"
+           aria-expanded="false">
+					<img class="avatar-img rounded-circle"
+               src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
 				</a>
-				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
+				<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3"
+            aria-labelledby="profileDropdown">
 					<!-- Profile info -->
 					<li class="px-3">
 						<div class="d-flex align-items-center">
 							<!-- Avatar -->
 							<div class="avatar me-3">
-								<img class="avatar-img rounded-circle shadow" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
+								<img class="avatar-img rounded-circle shadow"
+                     src="{% static 'User_Images/Default-User.png' %}"
+                     alt="avatar">
 							</div>
 							<div>
 								<p class="h6" href="#">{{ request.user }}</p>
@@ -91,26 +117,42 @@
 						<hr>
 					</li>
 					<!-- Links -->
-					<li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
-					<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li>
-					<li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
-					<li> <hr class="dropdown-divider"></li>
-					<!-- Dark mode switch START
 					<li>
-						<div class="modeswitch-wrap" id="darkModeSwitch">
-							<div class="modeswitch-item">
-								<div class="modeswitch-icon"></div>
-							</div>
-							<span>Dark mode</span>
-						</div>
-					</li> 
-					-->
-          <!-- Dark mode switch END --> 
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-person fa-fw me-2"></i>
+              Edit Profile
+            </a>
+          </li>
+					<li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-gear fa-fw me-2">
+              </i>
+              Account Settings
+            </a>
+          </li>
+					<li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-info-circle fa-fw me-2"></i>
+              Help
+            </a>
+          </li>
+					<li>
+            <a class="dropdown-item bg-danger-soft-hover"
+               href="{% url 'logout' %}">
+              <i class="bi bi-power fa-fw me-2"></i>
+              Sign Out
+            </a>
+          </li>
+					<li>
+            <hr class="dropdown-divider">
+          </li>
 				</ul>
 				{% else %}
-				<a class="avatar avatar-sm p-0" href="{% url 'login' %}" >
-					<img class="avatar-img rounded-circle" src="{% static 'User_Images/Default-User.png' %}" alt="avatar">
+				<a class="avatar avatar-sm p-0"
+           href="{% url 'login' %}" >
+					<img class="avatar-img rounded-circle"
+               src="{% static 'User_Images/Default-User.png' %}"
+               alt="avatar">
 				</a>
 				{% endif %}	
 			</div>
