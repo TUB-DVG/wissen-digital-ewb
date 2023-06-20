@@ -1,0 +1,11 @@
+/*!
+ * webcentral css
+ * this file contains the styles and css formats that are custom to webcentral 
+ * card_hover: allows the item display cards to grow on hover to show user selection : Added 06/20/2023
+ */
+.card_hover{ 
+    transition: all .2s ease-in-out; 
+}
+.card_hover:hover { 
+    transform: scale(1.1); 
+}
