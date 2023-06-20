@@ -1,5 +1,4 @@
 FROM python:3.10 AS base
-MAINTAINER "DVG"
 
 # ensures, that all python logs are directly 
 # send to STDOUT or STDERR and are not kept in
@@ -16,4 +15,3 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 FROM base AS prod
 
 COPY . /src
-
