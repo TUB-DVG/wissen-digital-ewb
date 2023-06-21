@@ -11,6 +11,7 @@ db.sqlite3
 db.sqlite3-journal
 /media
 venv
+02_work_doc/10_test/testingVenv
 /static
 *csv#
 01_application/webcentral_app/webcentral_app/settings.py
