@@ -10,7 +10,6 @@ from django.core.paginator import Paginator
 from .models import Weatherdata 
 from django.contrib.auth.decorators import login_required
 
-
 # Create your views here.
 class UpdateProperties:
     def __init__(self, class_name, label, color_class):
