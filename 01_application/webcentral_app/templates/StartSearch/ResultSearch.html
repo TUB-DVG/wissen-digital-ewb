@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %} Suchergebnisse {% endblock %}
+
+{% load static %}
+
+{% block content%}
+
+<!-- Page Banner START -->
+<section class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="bg-light p-4 text-center rounded-3">
+          <h1 class="m-0">ResultSearch</h1>
+          <h3 class="m-0">Wird die Erebnisseite der Suche von der Startseite</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Page Banner END -->
+<!-- Content START -->
+<section class="pt-0">
+  <div class="container">
+    <!-- Filter bar START -->
+    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative"
+          method="GET" action="ResultSearch">
+      <!-- Input -->
+      <div class="row g-3">
+        <!-- Input text -->
+        <div class="col-xl-7" title="Allgemeine Suche">
+          <input id="search-input-tools" class="form-control me-1"
+                 type="search"
+                 placeholder="Sucheingabe" name='searchValue'
+                 value={{ searchInput }}>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                  id="search-submit-tools" href="">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Row END -->
+    <!-- Filter bar END -->
+    <!-- Row START -->
+    {% if data %}
+    <!-- Search results list (table) Start -->
+    <div class="card-body">
+      <!-- Course table START -->
+      <div class="table-responsive border-0 rounded-3">
+        <!-- Table START -->
+        <table class="table table-light-gray align-middle p-4 mb-0 table-hover">
+          <!-- Table head -->
+          <thead>
+            <tr>
+              <th scope="col" class="border-0 rounded-start">
+                <a href="?searchValue={{searchInput}}&sortBy=name&page={{ data.number }}">
+                   Name
+                  </a>
+                </th>
+              <th scope="col" class="border-0">
+                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}">
+                  Art des Ergebnisses
+                  </a>
+              </th>
+              <th scope="col" class="border-0">Symbol (zb. rechtilich)</th>
+              <th scope="col" class="border-0 rounded-end">Sonstiges</th>
+            </tr>
+          </thead>
+          <!-- Table body START -->
+          <tbody>
+            {% for dataSet in data %}
+            <!-- Table row -->
+            <tr>
+              <!-- Table data -->
+              <!-- Name of item -->
+              <td>
+                <div class="d-flex align-items-center mb-3">
+                  <div class="ms-2">
+                    <h6 class="mb-0 fw-light">{{ dataSet.name }}</h6>
+                  </div>
+                </div>
+              </td>
+              <!-- Table data -->
+              <!-- Name of item -->
+              <td>
+                <div class="ms-2">
+                  <h6 class="mb-0 fw-light">{{ dataSet.kindOfItem }}</h6>
+                </div>
+              </td>
+
+              <!-- Table data -->
+              <td> <span class="badge bg-primary text-white">technisch</span> </td>
+
+              <!-- Table data -->
+              <td>Platzhalter</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <!-- Table body END -->
+        </table>
+        <!-- Table END -->
+      </div>
+      <!-- Course table END -->
+    </div>
+    <!-- Card body END -->
+    <!-- Paginator START -->
+    <div class="pagination">
+      <span class="step-links">
+        {% if data.has_previous %}
+        <a href="?searchValue={{searchInput}}&page=1">
+          &laquo; first
+        </a>
+        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}">
+          previous
+        </a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ data.number }} of {{ data.paginator.num_pages }}.
+        </span>
+
+        {% if data.has_next %}
+        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}">
+          next
+        </a>
+        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}">
+          last &raquo;
+        </a>
+        {% endif %}
+      </span>
+    </div>
+    <!-- Paginator END -->
+    {% else %}
+      <p>Die Suche hat keine Ergebnisse ergeben.</p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Content END -->
+{% endblock %}

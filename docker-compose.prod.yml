@@ -19,11 +19,14 @@ services:
             - ALLOWED_HOSTS
             - MODE=production
         command: >
-            sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
+            sh -c "sphinx-apidoc -f -o 02_work_doc/06_sphinx/source/ 01_application/webcentral_app/ && \
+            sphinx-build 02_work_doc/06_sphinx/source 01_application/webcentral_app/webcentral_app/static/ && \
+            python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
             uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --module=webcentral_app.wsgi:application"
 
 
     proxy:
+        container_name: proxy
         build:
             context: ./proxy
         restart: always
@@ -31,8 +34,7 @@ services:
             - webcentral
         ports:
             - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
-            #- ${LISTEN_PORT}:8080
-            #- 8070:8080
+            - 443:443
             # data communication on port 80 on the host
             # gets mapped to port 8000 inside the proxy container
         environment:
@@ -40,11 +42,12 @@ services:
             - UWSGI_LISTEN_PORT
         volumes:
             - static-data:/vol/static
+            - ./proxy/dhparam/:/etc/nginx/dhparam
+            - ./proxy/conf/:/etc/nginx/ssl/
             # the proxy can directly serve the static data, without bothering
             # the django app
         command: >
-            sh -c "envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf && \
+            bash -c "if [[ "$USE_PROD_LOCALLY" == "0" ]]; then envsubst < /etc/nginx/default.conf.tpl > /etc/nginx/conf.d/default.conf; else envsubst < /etc/nginx/localDefault.conf.tpl > /etc/nginx/conf.d/default.conf; fi && \
             nginx -g 'daemon off;'"
-
 volumes:
     static-data:
