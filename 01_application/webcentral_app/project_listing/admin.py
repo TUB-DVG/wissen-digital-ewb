@@ -13,178 +13,177 @@ from django.utils.translation import gettext as _
 
 #lst = [''.join(choice(chars) for _ in range(2)) for _ in range(100)]
 
-admin.site.register(Forschung)
-admin.site.register(Fragebogen_21)
-
-admin.site.register(Zuwendungsempfaenger)
-admin.site.register(Ausfuehrende_stelle)
+admin.site.register(FurtherFundingInformation)
+admin.site.register(Questionnaire2021)
+admin.site.register(GrantRecipient)
+admin.site.register(ExecutingEntity)
 admin.site.register(Person)
-admin.site.register(Anschrift)
+admin.site.register(Address)
 
 
 admin.site.register(Enargus)
 
-class TeilProjektResource(resources.ModelResource,ImportMixin):
+class SubprojectResource(resources.ModelResource,ImportMixin):
     
     #widget=ForeignKeyWidget(Enargus,'enargus_id')
    
     
-    datenbank=fields.Field(
-        attribute='enargus_daten__datenbank',
+    database=fields.Field(
+        attribute='enargusData__database',
         column_name='Datenbank',
         widget=CharWidget()  
     )
         
       
-    thema=fields.Field(
-        attribute='enargus_daten__thema',
-        column_name='Thema',
+    topics=fields.Field(
+        attribute='enargusData__topics',
+        column_name='topics',
         widget=CharWidget()
         
     )
 
-    verbundbezeichnung=fields.Field(
-        attribute='enargus_daten__verbundbezeichnung',
+    collaborativeProject=fields.Field(
+        attribute='enargusData__collaborativeProject',
         column_name='Verbundbezeichung',
         widget=CharWidget()
     
         
     )  
     
-    beschreibung_de=fields.Field(
-        attribute='enargus_daten__kurzbeschreibung_de',
+    shortDescriptionDe=fields.Field(
+        attribute='enargusData__shortDescriptionDe',
         column_name='Kurzbeschreibung_de',
         widget=CharWidget()
     
         
     )
-    beschreibung_en=fields.Field(
-        attribute='enargus_daten__kurzbeschreibung_en',
+    shortDescriptionEn=fields.Field(
+        attribute='enargusData__shortDescriptionEn',
         column_name='Kurzbeschreibung_en',
         widget=CharWidget()
     
         
     )
-    projektleiter_name=fields.Field(
-        attribute='enargus_daten__projektleiter__name',
-        column_name='Name_pl',
+    projectLead=fields.Field(
+        attribute='enargusData__projectLead__surname',
+        column_name='nameProjectLead',
         widget=CharWidget()   
     )
-    projektleiter_vname=fields.Field(
-        attribute='enargus_daten__projektleiter__vorname',
-        column_name='Vorname_pl',
+    projectLeadFirstName=fields.Field(
+        attribute='enargusData__projectLead__vorname',
+        column_name='firstNameProjectLead',
         widget=CharWidget()   
     )
-    projektleiter_email=fields.Field(
-        attribute='enargus_daten__projektleiter__email',
+    projectLeadEmail=fields.Field(
+        attribute='enargusData__projectLead__email',
         column_name='Email_pl',
         widget=CharWidget()   
     )
-    projektleiter_titel=fields.Field(
-        attribute='enargus_daten__projektleiter__titel',
-        column_name='Titel_pl',
+    projectLeadTitle=fields.Field(
+        attribute='enargusData__projectLead__title',
+        column_name='titleProjectLead',
         widget=CharWidget()   
     )
 
-    laufzeitbeginn=fields.Field(
-        attribute='enargus_daten__laufzeitbeginn',
+    startDate=fields.Field(
+        attribute='enargusData__startDate',
         column_name='Laufzeitbeginn', ##
         widget=DateWidget()   
     )
-    laufzeitende=fields.Field(
-        attribute='enargus_daten__laufzeitende',
+    endDate=fields.Field(
+        attribute='enargusData__endDate',
         column_name='Laufzeitende',###
         widget=DateWidget()   
     )
-    Foerdersumme=fields.Field(
-        attribute='enargus_daten__foerdersumme',
+    appropriatedBudget=fields.Field(
+        attribute='enargusData__appropriatedBudget',
         column_name='Foerdersumme_EUR',###
         widget=DecimalWidget()
          
     )
     
-    leisstungplan_nr=fields.Field(
-        attribute='enargus_daten__leistungsplan_systematik__leistungsplansystematik_nr',
+    rAndDPlanningCategoryNumber=fields.Field(
+        attribute='enargusData__rAndDPlanningCategory__rAndDPlanningCategoryNumber',
         column_name='Leistungsplan_Sys_Nr',###
         widget=CharWidget()   
     )
-    leisstungplan_txt=fields.Field(
-        attribute='enargus_daten__leistungsplan_systematik__leistungsplansystematik_text',
+    rAndDPlanningCategoryText=fields.Field(
+        attribute='enargusData__rAndDPlanningCategory__rAndDPlanningCategoryText',
         column_name='Leistungsplan_Sys_Text',###
         widget=CharWidget()   
     )
   
-    Ausfuehrende_st_name=fields.Field(
-        attribute='enargus_daten__ausfuehrende_stelle__name',
+    executingEntityName=fields.Field(
+        attribute='enargusData__executingEntity__surname',
         column_name='Name_AS',###
         widget=CharWidget()   
     )
-    Ausfuehrende_st_plz=fields.Field(
-        attribute='enargus_daten__ausfuehrende_stelle__anschrift__plz',
+    executingEntityPlz=fields.Field(
+        attribute='enargusData__executingEntity__address__plz',
         column_name='PLZ_AS',###
         widget=CharWidget()   
     )
-    Ausfuehrende_st_ort=fields.Field(
-        attribute='enargus_daten__ausfuehrende_stelle__anschrift__ort',
+    executingEntityLocation=fields.Field(
+        attribute='enargusData__executingEntity__address__ort',
         column_name='Ort_AS',###
         widget=CharWidget()   
     )
-    Ausfuehrende_st_Adress=fields.Field(
-        attribute='enargus_daten__ausfuehrende_stelle__anschrift__adresse',
+    executingEntityAddress=fields.Field(
+        attribute='enargusData__executingEntity__address__address',
         column_name='Adress_AS',###
         widget=CharWidget()   
     )
-    Ausfuehrende_st_land=fields.Field(
-        attribute='enargus_daten__ausfuehrende_stelle__anschrift__land',
+    executingEntityState=fields.Field(
+        attribute='enargusData__executingEntity__address__land',
         column_name='Land_AS',###
         widget=CharWidget()   
     )
     
-    zuwendsempfanger_name=fields.Field(
-        attribute='enargus_daten__zuwendsempfanger__name',
+    grantRecipientName=fields.Field(
+        attribute='enargusData__grantRecipient__surname',
         column_name='Name_ZWE',###
         widget=CharWidget()   
     )
-    zuwendsempfanger_plz=fields.Field(
-        attribute='enargus_daten__zuwendsempfanger__anschrift__plz',
+    grantRecipientPlz=fields.Field(
+        attribute='enargusData__grantRecipient__address__plz',
         column_name='PLZ_ZWE',###
         widget=CharWidget()   
     )
-    zuwendsempfanger_ort=fields.Field(
-        attribute='enargus_daten__zuwendsempfanger__anschrift__ort',
+    grantRecipientLocation=fields.Field(
+        attribute='enargusData__grantRecipient__address__ort',
         column_name='Ort_ZWE',###
         widget=CharWidget()   
     )
-    zuwendsempfanger_land=fields.Field(
-        attribute='enargus_daten__zuwendsempfanger__anschrift__land',
+    grantRecipientState=fields.Field(
+        attribute='enargusData__grantRecipient__address__land',
         column_name='Land_ZWE',###
         widget=CharWidget()   
     )
-    zuwendsempfanger_address=fields.Field(
-        attribute='enargus_daten__zuwendsempfanger__anschrift__adresse',
+    grantRecipientAddress=fields.Field(
+        attribute='enargusData__grantRecipient__address__address',
         column_name='Adress_ZWE',###
         widget=CharWidget()   
     )
-    bundesministerium=fields.Field(
-        attribute='enargus_daten__forschung__bundesministerium',
+    fundedBy=fields.Field(
+        attribute='enargusData__furtherFundingInformation__fundedBy',
         column_name='Bundesministerium',###
         widget=CharWidget()   
     )
 
-    projekttraeger=fields.Field(
-        attribute='enargus_daten__forschung__projekttraeger',
+    projectManagementAgency=fields.Field(
+        attribute='enargusData__furtherFundingInformation__projectManagementAgency',
         column_name='Projekttraeger',###
         widget=CharWidget()   
     )
 
-    forschungsprogramm=fields.Field(
-        attribute='enargus_daten__forschung__forschungsprogramm',
+    researchProgram=fields.Field(
+        attribute='enargusData__furtherFundingInformation__researchProgram',
         column_name='Forschungsprogramm',###
         widget=CharWidget()   
     )
 
-    foerderprogramm=fields.Field(
-        attribute='enargus_daten__forschung__foerderprogramm',
+    fundingProgram=fields.Field(
+        attribute='enargusData__furtherFundingInformation__fundingProgram',
         column_name='Foerderprogramm',###
         widget=CharWidget()   
     )
@@ -193,19 +192,19 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
     
     
 
-    list_attrb=['enargus_daten__datenbank', 'enargus_daten__thema', 'enargus_daten__verbundbezeichnung', 
-    'enargus_daten__kurzbeschreibung_de', 'enargus_daten__kurzbeschreibung_en', 'enargus_daten__projektleiter__name', 
-    'enargus_daten__projektleiter__vorname', 'enargus_daten__projektleiter__email', 'enargus_daten__projektleiter__titel',
-    'enargus_daten__laufzeitbeginn', 'enargus_daten__laufzeitende', 'enargus_daten__foerdersumme','enargus_daten__leistungsplan_systematik__leistungsplansystematik_nr', 
-    'enargus_daten__leistungsplan_systematik__leistungsplansystematik_text', 'enargus_daten__ausfuehrende_stelle__name', 'enargus_daten__ausfuehrende_stelle__anschrift__plz', 
-    'enargus_daten__ausfuehrende_stelle__anschrift__ort', 'enargus_daten__ausfuehrende_stelle__anschrift__adresse', 'enargus_daten__ausfuehrende_stelle__anschrift__land', 
-    'enargus_daten__zuwendsempfanger__name', 'enargus_daten__zuwendsempfanger__anschrift__plz', 'enargus_daten__zuwendsempfanger__anschrift__ort', 'enargus_daten__zuwendsempfanger__anschrift__land', 
-    'enargus_daten__zuwendsempfanger__anschrift__adresse', 'enargus_daten__forschung__bundesministerium', 'enargus_daten__forschung__projekttraeger', 'enargus_daten__forschung__forschungsprogramm', 
-    'enargus_daten__forschung__foerderprogramm', 'fkz', 'enargus_daten', 'zuordnung', 'schlagwortregister_erstsichtung', 'fragebogen_21']
+    list_attrb=['enargusData__database', 'enargusData__topics', 'enargusData__collaborativeProject', 
+    'enargusData__shortDescriptionDe', 'enargusData__shortDescriptionEn', 'enargusData__projectLead__surname', 
+    'enargusData__projectLead__firstName', 'enargusData__projectLead__email', 'enargusData__projectLead__title',
+    'enargusData__startDate', 'enargusData__endDate', 'enargusData__appropriatedBudget','enargusData__rAndDPlanningCategory__rAndDPlanningCategoryNumber', 
+    'enargusData__rAndDPlanningCategory__rAndDPlanningCategoryText', 'enargusData__executingEntity__surname', 'enargusData__executingEntity__address__plz', 
+    'enargusData__executingEntity__address__location', 'enargusData__executingEntity__address__address', 'enargusData__executingEntity__address__state', 
+    'enargusData__grantRecipient__surname', 'enargusData__grantRecipient__address__plz', 'enargusData__grantRecipient__address__location', 'enargusData__grantRecipient__address__state', 
+    'enargusData__grantRecipient__address__address', 'enargusData__furtherFundingInformation__fundedBy', 'enargusData__furtherFundingInformation__projectManagementAgency', 'enargusData__furtherFundingInformation__researchProgram', 
+    'enargusData__furtherFundingInformation__fundingProgram', 'referenceNumber_id', 'enargusData', 'moduleAssignment', 'schlagwortregister_erstsichtung', 'fragebogen_21']
     
     class Meta:
-        model   =   Teilprojekt
-        import_id_fields = ['fkz']
+        model   =   Subproject
+        import_id_fields = ['referenceNumber_id']
         
         skip_unchanged = True
         report_skipped=False
@@ -265,74 +264,74 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
     def before_import_row(self, row, row_number=None, **kwargs):
         self.data=row
         set=True
-        #print(self.backup['datenbank'].attribute)
-        #print(self.backup['datenbank'].attribute)
+        #print(self.backup['database'].attribute)
+        #print(self.backup['database'].attribute)
         #print(type(self.fields))
 
-        if not Teilprojekt.objects.filter(fkz=row['fkz']).exists():
+        if not Subproject.objects.filter(referenceNumber_id=row['fkz']).exists():
             #for f in self.get_export_order():
              #   i=0
               #  if f !='fkz' :
                #     self.fields[f].attribute=lst[i]
                 #    i+=1
-            self.fields['laufzeitbeginn'].attribute='ebbbb'
-            self.fields['laufzeitende'].attribute='epppp'
-            self.fields['zuwendsempfanger_name'].attribute='enarten'
-            self.fields['zuwendsempfanger_plz'].attribute='enargusen'
-            self.fields['zuwendsempfanger_ort'].attribute='enarguen'
-            self.fields['zuwendsempfanger_land'].attribute='enaaten'
-            self.fields['zuwendsempfanger_address'].attribute='enargen'
-            self.fields['projektleiter_titel'].attribute='enargus_dn'
-            self.fields['projektleiter_name'].attribute='enargus_ten'
-            self.fields['projektleiter_vname'].attribute='en'
-            self.fields['projektleiter_email'].attribute='enars_ten'
-            self.fields['Ausfuehrende_st_plz'].attribute='needstochange'
-            self.fields['Ausfuehrende_st_land'].attribute='ena'
-            self.fields['Ausfuehrende_st_ort'].attribute='enb'
-            self.fields['Ausfuehrende_st_name'].attribute='enc'
-            self.fields['Ausfuehrende_st_Adress'].attribute='enpppp'
-            self.fields['datenbank'].attribute='enmmm'
-            self.fields['thema'].attribute='errr'
-            self.fields['leisstungplan_nr'].attribute='ennnnnnnnnnn'
-            self.fields['leisstungplan_txt'].attribute='ekkkkkkkkkkkkkk'
-            self.fields['beschreibung_de'].attribute='else'
-            self.fields['beschreibung_en'].attribute='eooooo'
-            self.fields['foerderprogramm'].attribute='epooo'
-            self.fields['forschungsprogramm'].attribute='whatever'
-            self.fields['projekttraeger'].attribute='enargi'
-            self.fields['bundesministerium'].attribute='enargo'
-            self.fields['verbundbezeichnung'].attribute='enargiii'
-            self.fields['Foerdersumme'].attribute='buggy'
+            self.fields['startDate'].attribute='ebbbb'
+            self.fields['endDate'].attribute='epppp'
+            self.fields['grantRecipientName'].attribute='enarten'
+            self.fields['grantRecipientPlz'].attribute='enargusen'
+            self.fields['grantRecipientLocation'].attribute='enarguen'
+            self.fields['grantRecipientState'].attribute='enaaten'
+            self.fields['grantRecipientAddress'].attribute='enargen'
+            self.fields['projectLeadTitle'].attribute='enargus_dn'
+            self.fields['projectLeadSurname'].attribute='enargus_ten'
+            self.fields['projectLeadFirstName'].attribute='en'
+            self.fields['projectLeadEmail'].attribute='enars_ten'
+            self.fields['executingEntityPlz'].attribute='needstochange'
+            self.fields['executingEntityState'].attribute='ena'
+            self.fields['executingEntityLocation'].attribute='enb'
+            self.fields['executingEntityName'].attribute='enc'
+            self.fields['executingEntityAddress'].attribute='enpppp'
+            self.fields['database'].attribute='enmmm'
+            self.fields['topics'].attribute='errr'
+            self.fields['rAndDPlanningCategoryNumber'].attribute='ennnnnnnnnnn'
+            self.fields['rAndDPlanningCategoryText'].attribute='ekkkkkkkkkkkkkk'
+            self.fields['shortDescriptionDe'].attribute='else'
+            self.fields['shortDescriptionEn'].attribute='eooooo'
+            self.fields['fundingProgram'].attribute='epooo'
+            self.fields['researchProgram'].attribute='whatever'
+            self.fields['projectManagementAgency'].attribute='enargi'
+            self.fields['fundedBy'].attribute='enargo'
+            self.fields['collaborativeProject'].attribute='enargiii'
+            self.fields['appropriatedBudget'].attribute='buggy'
 
-            #self.fields['Ausfuehrende_st_address'].attribute='enarg'
+            #self.fields['executingEntityAddress'].attribute='enarg'
             
             set=False
 
         else:
-            if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.projektleiter):
-                self.fields['projektleiter_titel'].attribute='enargus_dn'
-                self.fields['projektleiter_name'].attribute='enargus_ten'
-                self.fields['projektleiter_vname'].attribute='en'
-                self.fields['projektleiter_email'].attribute='enars_ten'
+            if (not Subproject.objects.get(referenceNumber_id=row['fkz']).enargusData.projectLead):
+                self.fields['projectLeadTitle'].attribute='enargus_dn'
+                self.fields['projectLeadSurname'].attribute='enargus_ten'
+                self.fields['projectLeadFirstName'].attribute='en'
+                self.fields['projectLeadEmail'].attribute='enars_ten'
                 set=False
 
-            if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.zuwendsempfanger):
-                self.fields['zuwendsempfanger_name'].attribute='enarten'
-                self.fields['zuwendsempfanger_plz'].attribute='enargusen'
-                self.fields['zuwendsempfanger_ort'].attribute='enarguen'
-                self.fields['zuwendsempfanger_land'].attribute='enaaten'
-                self.fields['zuwendsempfanger_address'].attribute='enargen'
+            if (not Subproject.objects.get(referenceNumber_id=row['fkz']).enargusData.grantRecipient):
+                self.fields['grantRecipientName'].attribute='enarten'
+                self.fields['grantRecipientPlz'].attribute='enargusen'
+                self.fields['grantRecipientLocation'].attribute='enarguen'
+                self.fields['grantRecipientState'].attribute='enaaten'
+                self.fields['grantRecipientAddress'].attribute='enargen'
                 set=False
 
-            if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.ausfuehrende_stelle):
-                self.fields['Ausfuehrende_st_plz'].attribute='noooo'
-                self.fields['Ausfuehrende_st_land'].attribute='ena'
-                self.fields['Ausfuehrende_st_ort'].attribute='enb'
-                self.fields['Ausfuehrende_st_name'].attribute='enc'
-                self.fields['Ausfuehrende_st_Adress'].attribute='enpppp'
+            if (not Subproject.objects.get(referenceNumber_id=row['fkz']).enargusData.ExecutingEntity):
+                self.fields['executingEntityPlz'].attribute='noooo'
+                self.fields['executingEntityState'].attribute='ena'
+                self.fields['executingEntityLocation'].attribute='enb'
+                self.fields['executingEntityName'].attribute='enc'
+                self.fields['executingEntityAddress'].attribute='enpppp'
                 set=False
 
-            if (not Teilprojekt.objects.get(fkz=row['fkz']).enargus_daten.leistungsplan_systematik):
+            if (not Subproject.objects.get(referenceNumber_id=row['fkz']).enargusData.rAndDPlanningCategory):
                 self.fields['leisstungplan_nr'].attribute='ennnnnnnnnnn'
                 self.fields['leisstungplan_txt'].attribute='ekkkkkkkkkkkkkk'
                 set=False
@@ -353,73 +352,73 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
     def after_save_instance(self, instance, new, row_number=None, **kwargs):
         #add_or_update_row_teilprojekt(self.data)
     
-        obj, created = Teilprojekt.objects.get_or_create(
-        fkz=self.data['fkz']
+        obj, created = Subproject.objects.get_or_create(
+        referenceNumber_id=self.data['fkz']
     )   
         if Enargus.objects.order_by('enargus_id').last() is None:
             next_id=1
         else:
             next_id = Enargus.objects.order_by('enargus_id').last().enargus_id + 1
         #   print(next_id)
-        if obj.enargus_daten is None:
-            obj.enargus_daten,created=Enargus.objects.get_or_create(enargus_id=next_id)
+        if obj.enargusData is None:
+            obj.enargusData,created=Enargus.objects.get_or_create(enargus_id=next_id)
             obj.save()
             
             
         
         #Base Enargus
-        obj.enargus_daten.datenbank=self.data['Datenbank']
-        obj.enargus_daten.thema=self.data['Thema']
-        obj.enargus_daten.verbundbezeichnung=self.data['Verbundbezeichung']
-        obj.enargus_daten.kurzbeschreibung_de=self.data['Kurzbeschreibung_de']
-        obj.enargus_daten.kurzbeschreibung_en=self.data['Kurzbeschreibung_en']
-        obj.enargus_daten.foerdersumme=self.data['Foerdersumme_EUR']
-        obj.enargus_daten.laufzeitbeginn=self.data['Laufzeitbeginn']
-        obj.enargus_daten.laufzeitende=self.data['Laufzeitende']
-        obj.enargus_daten.save(update_fields=['datenbank','verbundbezeichnung','thema','kurzbeschreibung_en','kurzbeschreibung_de','foerdersumme','laufzeitbeginn','laufzeitende']) 
+        obj.enargusData.database=self.data['Datenbank']
+        obj.enargusData.topics=self.data['Thema']
+        obj.enargusData.collaborativeProject=self.data['Verbundbezeichung']
+        obj.enargusData.shortDescriptionDe=self.data['Kurzbeschreibung_de']
+        obj.enargusData.shortDescriptionEn=self.data['Kurzbeschreibung_en']
+        obj.enargusData.appropriatedBudget=self.data['Foerdersumme_EUR']
+        obj.enargusData.startDate=self.data['Laufzeitbeginn']
+        obj.enargusData.endDate=self.data['Laufzeitende']
+        obj.enargusData.save(update_fields=['database','collaborativeProject','topics','shortDescriptionEn','shortDescriptionDe','appropriatedBudget','startDate','endDate']) 
 
 
         #Projektleiter
       
-        obj.enargus_daten.projektleiter,created=Person.objects.get_or_create(name=self.data['Name_pl'],titel=self.data['Titel_pl'],vorname=self.data['Vorname_pl'],email=self.data['Email_pl'])
-        obj.enargus_daten.save(update_fields=['projektleiter'])
+        obj.enargusData.projectLead,created=Person.objects.get_or_create(name=self.data['Name_pl'],titel=self.data['Titel_pl'],vorname=self.data['Vorname_pl'],email=self.data['Email_pl'])
+        obj.enargusData.save(update_fields=['projectLead'])
     
         
         
-        #Leistung_sys
+        #RAndDPlanningCategory
        
-        obj.enargus_daten.leistungsplan_systematik,created=Leistung_sys.objects.get_or_create(leistungsplansystematik_nr=self.data['Leistungsplan_Sys_Nr'])
-        obj.enargus_daten.leistungsplan_systematik.leistungsplansystematik_text=self.data['Leistungsplan_Sys_Text']
-        obj.enargus_daten.leistungsplan_systematik.save(update_fields=['leistungsplansystematik_text'])
-        #obj.enargus_daten.leistungsplan_systematik.leistungsplansystematik_text=self.data['Leistungsplan_Sys_Text']
-        obj.enargus_daten.save(update_fields=['leistungsplan_systematik'])
+        obj.enargusData.rAndDPlanningCategory,created=RAndDPlanningCategory.objects.get_or_create(rAndDPlanningCategoryNumber=self.data['Leistungsplan_Sys_Nr'])
+        obj.enargusData.rAndDPlanningCategory.rAndDPlanningCategoryText=self.data['Leistungsplan_Sys_Text']
+        obj.enargusData.rAndDPlanningCategory.save(update_fields=['rAndDPlanningCategoryText'])
+        #obj.enargusData.rAndDPlanningCategory.rAndDPlanningCategoryText=self.data['Leistungsplan_Sys_Text']
+        obj.enargusData.save(update_fields=['rAndDPlanningCategory'])
    
        
-        #Forschung
+        #furtherFundingInformation
       
-        obj.enargus_daten.forschung,created=Forschung.objects.get_or_create(bundesministerium=self.data['Bundesministerium'],projekttraeger=self.data['Projekttraeger'],forschungsprogramm=self.data['Forschungsprogramm'],foerderprogramm=self.data['Foerderprogramm'])
-        obj.enargus_daten.save(update_fields=['forschung'])
+        obj.enargusData.furtherFundingInformation,created=FurtherFundingInformation.objects.get_or_create(fundedBy=self.data['Bundesministerium'],projectManagementAgency=self.data['Projekttraeger'],forschungsprogramm=self.data['Forschungsprogramm'],foerderprogramm=self.data['Foerderprogramm'])
+        obj.enargusData.save(update_fields=['furtherFundingInformation'])
 
         
 
         # Ausfuehrende_stelle_adresse
-        obj2,created=Anschrift.objects.get_or_create(plz=self.data['PLZ_AS'],ort=self.data['Ort_AS'],land=self.data['Land_AS'],adresse=self.data['Adress_AS'])
+        obj2,created=Address.objects.get_or_create(plz=self.data['PLZ_AS'],location=self.data['Ort_AS'],state=self.data['Land_AS'],address=self.data['Adress_AS'])
         
        
-        #Ausfuehrende_stelle
+        #ExecutingEntity
         
-        obj.enargus_daten.ausfuehrende_stelle,created=Ausfuehrende_stelle.objects.get_or_create(name=self.data['Name_AS'],anschrift_id=obj2.anschrift_id)
-        obj.enargus_daten.save(update_fields=['ausfuehrende_stelle'])   
+        obj.enargusData.executingEntity,created=ExecutingEntity.objects.get_or_create(name=self.data['Name_AS'],address_id=obj2.address_id)
+        obj.enargusData.save(update_fields=['executingEntity'])   
       
 
         #Zuwendngs_empf adresse
-        obj3,created=Anschrift.objects.get_or_create(plz=self.data['PLZ_ZWE'],ort=self.data['Ort_ZWE'],land=self.data['Land_ZWE'],adresse=self.data['Adress_ZWE'])
+        obj3,created=Address.objects.get_or_create(plz=self.data['PLZ_ZWE'],location=self.data['Ort_ZWE'],state=self.data['Land_ZWE'],address=self.data['Adress_ZWE'])
      
         
-        #Zuwendungsempfaenger
+        #GrantRecipient
         
-        obj.enargus_daten.zuwendsempfanger,created=Zuwendungsempfaenger.objects.get_or_create(name=self.data['Name_ZWE'],anschrift_id=obj3.anschrift_id)
-        obj.enargus_daten.save(update_fields=['zuwendsempfanger'])   
+        obj.enargusData.grantRecipient,created=GrantRecipient.objects.get_or_create(name=self.data['Name_ZWE'],address_id=obj3.address_id)
+        obj.enargusData.save(update_fields=['grantRecipient'])   
 
         
         #Rest
@@ -429,19 +428,19 @@ class TeilProjektResource(resources.ModelResource,ImportMixin):
        
         
        
-    #leistungsplan_systematik
-    #zuwendsempfanger 
-    #ausfuehrende_stelle 
-    #projektleiter
-    #forschung
+    #rAndDPlanningCategory
+    #grantRecipient 
+    #ExecutingEntity 
+    #projectLead
+    #furtherFundingInformation
 
 
-    #foerdersumme 
-    #Laufzeitbeginn
-    # laufzeit ende
+    #appropriatedBudget 
+    #startDate
+    #endDate
 
 
-class TeilprojektsAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
+class SubrojectAdmin(ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
     def process_import(self, request, *args, **kwargs):
         """
         Perform the actual import action (after the user has confirmed the import)
@@ -577,25 +576,18 @@ class TeilprojektsAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
             return TemplateResponse(request, [self.import_template_name],
                                     context)
 
-    resource_class = TeilProjektResource
-    search_fields=['fkz',]
+    resource_class = SubprojectResource
+    search_fields=['referenceNumber_id',]
         
 
-admin.site.register(Teilprojekt,TeilprojektsAdmin)
+admin.site.register(Subproject,SubrojectAdmin)
 #class EnargusAdmin( ImportExportModelAdmin ):
 
 
 ##############################################
 
 
-class Modulen_zuordnung_Resource(resources.ModelResource,ImportMixin):
-
-
-
-
-
-
-
+class ModuleAssignment_Resource(resources.ModelResource,ImportMixin):
     def skip_row(self, instance, original):
         """
         Returns ``True`` if ``row`` importing should be skipped.
@@ -632,8 +624,6 @@ class Modulen_zuordnung_Resource(resources.ModelResource,ImportMixin):
                     
                     return False
             except AttributeError:
-               
-
                 if (field.get_value(instance) != field.get_value(original)) :  
 
                     print(field.get_value(instance))
@@ -641,60 +631,51 @@ class Modulen_zuordnung_Resource(resources.ModelResource,ImportMixin):
 
                     return False
         return True
-        
-
-    priority_1=fields.Field(
-
+    priority1=fields.Field(
         column_name='modulzuordnung_ptj_1',
         widget=CharWidget()  
     )
-    priority_2=fields.Field(
-        
+    priority2=fields.Field(
         column_name='modulzuordnung_ptj_2',
         widget=CharWidget()  
     )
-    priority_3=fields.Field(
-        
+    priority3=fields.Field(
         column_name='modulzuordnung_ptj_3',
         widget=CharWidget()  
     )
-    priority_4=fields.Field(
-        
+    priority4=fields.Field(
         column_name='modulzuordnung_ptj_4',
         widget=CharWidget()  
     )
-
-        
     class Meta:
-        model   =   Teilprojekt
+        model   =   Subproject
         fields=('fkz,')
         import_id_fields = ['fkz']
-        
         skip_unchanged = True
         report_skipped=False
 
     def before_import_row(self, row, row_number=None, **kwargs):
             self.data=row
 
-            if (not Teilprojekt.objects.filter(fkz=row['fkz']).exists()) or (not Teilprojekt.objects.get(fkz=row['fkz']).zuordnung):
+            if (not Subproject.objects.filter(referenceNumber_id=row['fkz']).exists()) or (not Subproject.objects.get(referenceNumber_id=row['fkz']).moduleAssignment):
 
-                self.fields['priority_4'].attribute='ebbbb'
-                self.fields['priority_3'].attribute='epppp'
-                self.fields['priority_2'].attribute='enarten'
-                self.fields['priority_1'].attribute='enaen'
+                self.fields['priority4'].attribute='ebbbb'
+                self.fields['priority3'].attribute='epppp'
+                self.fields['priority2'].attribute='enarten'
+                self.fields['priority1'].attribute='enaen'
                 
             else:
-                self.fields['priority_4'].attribute='zuordnung__priority_4'
-                self.fields['priority_3'].attribute='zuordnung__priority_3'
-                self.fields['priority_2'].attribute='zuordnung__priority_2'
-                self.fields['priority_1'].attribute='zuordnung__priority_1'
+                self.fields['priority4'].attribute='zuordnung__priority_4'
+                self.fields['priority3'].attribute='zuordnung__priority_3'
+                self.fields['priority2'].attribute='zuordnung__priority_2'
+                self.fields['priority1'].attribute='zuordnung__priority_1'
 
     def after_save_instance(self, instance, new, row_number=None, **kwargs):
-        obj, created = Teilprojekt.objects.get_or_create(fkz=self.data['fkz'])
-        obj.zuordnung,created=Modulen_zuordnung_ptj.objects.get_or_create(priority_1=self.data['modulzuordnung_ptj_1'],priority_2=self.data['modulzuordnung_ptj_2'],priority_3=self.data['modulzuordnung_ptj_3'],priority_4=self.data['modulzuordnung_ptj_4'])
-        obj.save(update_fields=['zuordnung'])   
+        obj, created = Subproject.objects.get_or_create(referenceNumber_id=self.data['fkz'])
+        obj.moduleAssignment,created=ModuleAssignment.objects.get_or_create(priority1=self.data['modulzuordnung_ptj_1'],priority2=self.data['modulzuordnung_ptj_2'],priority3=self.data['modulzuordnung_ptj_3'],priority4=self.data['modulzuordnung_ptj_4'])
+        obj.save(update_fields=['assignment'])   
 
-class ModulZuordnungAdmin( ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
-    resource_class = Modulen_zuordnung_Resource
+class ModulZuordnungAdmin(ImportExportModelAdmin,ImportMixin,admin.ModelAdmin):
+    resource_class = ModuleAssignment_Resource
                
-admin.site.register(Modulen_zuordnung_ptj,ModulZuordnungAdmin  )  
+admin.site.register(ModuleAssignment,ModulZuordnungAdmin)  
