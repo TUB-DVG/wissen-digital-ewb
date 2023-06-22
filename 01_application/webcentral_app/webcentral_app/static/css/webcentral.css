@@ -19,3 +19,15 @@
     border-radius: 2px;
     border: 2px solid var(--blau, #AFC5FF);
 }
+.border-economical {
+    border-radius: 2px;
+    border: 2px solid var(--blau, #FFAE9D);
+}
+.border-ecological {
+    border-radius: 2px;
+    border: 2px solid var(--blau, #AEEAB4);
+}
+.border-legal {
+    border-radius: 2px;
+    border: 2px solid var(--blau, #AFC5FF);
+}
