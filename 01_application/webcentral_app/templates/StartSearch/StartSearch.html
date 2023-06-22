@@ -45,7 +45,7 @@
     <!-- Row START -->
     <div class="row">
       <!-- Block START -->
-      <div class="col-md-6 border p-3" title="Technischer Fokus">
+      <div class="col-md-6 p-3" title="Technischer Fokus">
         <div class="p-3 border-technical">
           <div class="row">
             <div class="col-8 p-3" title="Erläuterungstext">
@@ -61,35 +61,24 @@
               </p>
             </div>
             <div class="col-4 p-3" title="Links">
-              <ul>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li></li>
-              </ul>
+              <table>
+                <tr>
+                  <td>icon 1</td>
+                  <td>link 1</td>
+                </tr>
+                <tr>
+                  <td>icon 2</td>
+                  <td>link 2</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
       </div>
       <!-- Block END -->
       <!-- Block START -->
-      <div class="col-md-6 border p-3" title="Ökonomischer Fokus">
-        <div class="p-3 border">
+      <div class="col-md-6 p-3" title="Ökonomischer Fokus">
+        <div class="p-3 border-economical">
           <div class="row">
             <div class="col-8 p-3" title="Erläuterungstext">
               <h3>Ökonomische Fokus</h3>
@@ -106,27 +95,23 @@
               </p>
             </div>
             <div class="col-4 p-3" title="Links">
-              <ul>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li>link 1</li>
-                <li></li>
-              </ul>
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a href="https://www.energiewendebauen.de">
+                      Daten
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>icon 2</td>
+                  <td>link 2</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
@@ -135,53 +120,58 @@
     </div>
     <!-- Row END -->
     <!-- Row START -->
-    <div class="row gx-3">
+    <div class="row">
       <!-- Block START -->
-      <div class="col-xl-6 border p-3" title="Ökologischer Fokus">
-        <div class="row g-3">
-          <div class="col-8 p-3" title="Erläuterungstext">
-            <h3>Ökologischer Fokus</h3>
-            <p class="lead">
-              Hier steht ein kurzer Einleitungstext zum ökologischen Fokus:
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
-              adipi scing elit, sed diam nonummy amet sit euismod. Lorem ipsum
-              dolor sit amet, consectetuer adipi scing elit, sed diam nonummy
-              amet sit euismod tincidunt ut laoreet dolore magn aliquam erat
-              volutpat. Lorem ipsum dolor sit amet, consectetuer adipi scing
-              elit, sed diam nonummy amet sit euismod tincidunt ut laoreet
-              dolore magn aliquam erat volutpat.
-            </p>
-          </div>
-          <div class="col-4 p-3" title="Links">
-            symbole and links
+      <div class="col-xl-6 p-3" title="Ökologischer Fokus">
+        <div class="p-3 border-ecological">
+          <div class="row">
+            <div class="col-8 p-3" title="Erläuterungstext">
+              <h3>Ökologischer Fokus</h3>
+              <p class="lead">
+                Hier steht ein kurzer Einleitungstext zum ökologischen Fokus:
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
+                adipi scing elit, sed diam nonummy amet sit euismod. Lorem ipsum
+                dolor sit amet, consectetuer adipi scing elit, sed diam nonummy
+                amet sit euismod tincidunt ut laoreet dolore magn aliquam erat
+                volutpat. Lorem ipsum dolor sit amet, consectetuer adipi scing
+                elit, sed diam nonummy amet sit euismod tincidunt ut laoreet
+                dolore magn aliquam erat volutpat.
+              </p>
+            </div>
+            <div class="col-4 p-3" title="Links">
+              symbole and links
+            </div>
           </div>
         </div>
       </div>
       <!-- Block END -->
-      <!-- Block START -->
-      <div class="col-xl-6 border p-3" title="Rechtlicher Fokus">
-        <div class="row">
+      <!-- Block -->
+      <div class="col-xl-6 p-3" title="Rechtlicher Fokus">
+        <div class="p-3 border-legal">
+          <div class="row">
           <div class="col-8 p-3" title="Erläuterungstext">
-            <h3>Rechtlicher Fokus</h3>
-            <p class="lead">
-              Hier steht ein kurzer Einleitungstext zum rechtlichen Fokus: Lorem
-              ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-              nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
-              adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
-              laoreet dolore magn aliquam erat volutpat nonummy amet. Lorem
-              ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
-              nonummy amet sit euismod tincidunt ut laoreet dolore magn aliquam
-              erat volutpat.
-            </p>
-          </div>
-          <div class="col-4 p-3" title="Links">
-            symbole and links
+              <h3>Rechtlicher Fokus</h3>
+              <p class="lead">
+                Hier steht ein kurzer Einleitungstext zum rechtlichen Fokus: Lorem
+                ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
+                adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
+                laoreet dolore magn aliquam erat volutpat nonummy amet. Lorem
+                ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
+                nonummy amet sit euismod tincidunt ut laoreet dolore magn aliquam
+                erat volutpat.
+              </p>
+            </div>
+            <div class="col-4 p-3" title="Links">
+              symbole and links
+            </div>
           </div>
         </div>
       </div>
-      <!-- Block END -->
     </div>
+    <!-- Block END -->
+  </div>
     <!-- Row END -->
   </div>
 </section>
