@@ -9,3 +9,13 @@
 .card_hover:hover { 
     transform: scale(1.1); 
 }
+
+#container-start-focus h3 {
+    color: green;
+}
+
+
+.border-technical {
+    border-radius: 2px;
+    border: 2px solid var(--blau, #AFC5FF);
+}
