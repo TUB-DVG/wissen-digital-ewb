@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path d="M10.78781,11.15501l-1.68475-3.78401c-.24465-.54948-.88412-.7984-1.42823-.55615s-.78701,.88403-.54237,1.43352l2.87404,6.4552-2.19867-.85607c-.55775-.21719-1.18163,.06058-1.39343,.6204s.06866,1.18973,.6264,1.40692c0,0,4.05042,1.53832,4.54487,1.70012,.99513,.32564,1.88143,.89131,4.52884-.28739,1.71552-.7638,2.22739-2.29789,1.66971-3.55047l-1.08861-2.44505c-.88545-1.98874-5.90781-.13699-5.90781-.13699Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  <line x1="5.48315" y1="4.97177" x2="3.98315" y2="3.47177" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round;"/>
+  <line x1="11.3283" y1="4.97177" x2="12.8283" y2="3.47177" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round;"/>
+  <line x1="8.38677" y1="4" x2="8.38677" y2="2" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round;"/>
+  <line x1="4" y1="7.51896" x2="2" y2="7.51896" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round;"/>
+</svg>
