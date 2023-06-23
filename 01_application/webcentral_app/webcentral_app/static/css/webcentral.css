@@ -43,3 +43,7 @@ a.legal {
     color: black;
     border-bottom: 2px solid var(--yellow, #F5E86A);
 }
+
+#container-start-focus table td {
+    padding: 0.25rem;
+}
