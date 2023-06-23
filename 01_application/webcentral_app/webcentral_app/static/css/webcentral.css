@@ -10,24 +10,19 @@
     transform: scale(1.1); 
 }
 
-#container-start-focus h3 {
-    color: green;
-}
-
-
 .border-technical {
     border-radius: 2px;
-    border: 2px solid var(--blau, #AFC5FF);
+    border: 2px solid var(--blue, #AFC5FF);
 }
 .border-economical {
     border-radius: 2px;
-    border: 2px solid var(--blau, #FFAE9D);
+    border: 2px solid var(--red, #FFAE9D);
 }
 .border-ecological {
     border-radius: 2px;
-    border: 2px solid var(--blau, #AEEAB4);
+    border: 2px solid var(--green, #AEEAB4);
 }
 .border-legal {
     border-radius: 2px;
-    border: 2px solid var(--blau, #AFC5FF);
+    border: 2px solid var(--yellow, #F5E86A);
 }
