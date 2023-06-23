@@ -26,3 +26,20 @@
     border-radius: 2px;
     border: 2px solid var(--yellow, #F5E86A);
 }
+
+a.technical {
+    color: black;
+    border-bottom: 2px solid var(--blue, #AFC5FF);
+}
+a.economical {
+    color: black;
+    border-bottom: 2px solid var(--red, #FFAE9D);
+}
+a.ecological {
+    color: black;
+    border-bottom: 2px solid var(--green, #AEEAB4);
+}
+a.legal {
+    color: black;
+    border-bottom: 2px solid var(--yellow, #F5E86A);
+}
