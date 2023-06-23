@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path d="M17.1564,10.6691c-.71759,1.50424-3.74524,2.64429-7.15638,2.64429-3.42346,0-6.45171-1.13194-7.15638-2.64437" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  <ellipse cx="10.00001" cy="5.36982" rx="7.15638" ry="3.36982" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  <path d="M2.84363,5.36982l-.00005,9.98581c.70468,1.51242,3.81693,2.64437,7.24039,2.64437,3.41114,0,6.35486-1.14005,7.07245-2.64429l-.00002-9.98589" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+</svg>

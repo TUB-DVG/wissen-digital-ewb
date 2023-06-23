@@ -63,8 +63,15 @@
             <div class="col-4 p-3" title="Links">
               <table>
                 <tr>
-                  <td>icon 1</td>
-                  <td>link 1</td>
+                  <td>
+                    <img src="{% static 'assets/images/1_Datenarten.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a href="{% url 'weatherdata_list' %}">
+                      Wetterdaten
+                    </a>
+                  </td>
                 </tr>
                 <tr>
                   <td>icon 2</td>
@@ -98,7 +105,7 @@
               <table>
                 <tr>
                   <td>
-                    <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+                    <img src="{% static 'assets/images/1_Datenarten.svg' %}"
                          class="rounded" alt="icon">
                   </td>
                   <td>
