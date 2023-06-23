@@ -45,8 +45,10 @@ a.legal {
 }
 
 #container-start-focus table td {
-    padding: 0.25rem;
+    padding: 3px;
 }
 #container-start-focus img {
-    width: 200px;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
 }
