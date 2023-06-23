@@ -47,3 +47,6 @@ a.legal {
 #container-start-focus table td {
     padding: 0.25rem;
 }
+#container-start-focus img {
+    width: 200px;
+}
