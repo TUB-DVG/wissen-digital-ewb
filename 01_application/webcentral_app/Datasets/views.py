@@ -82,59 +82,14 @@ def dataset_view(request, id):
     categoryDataset = dataset.categoryDataset.split(", ")
     print(useCaseCategory)
     print(categoryDataset)
-    """
-    laufende_updates = dataset.letztes_update
     
-    letztes_update = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    laufende_updates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
-
-    #changing labels and icon
-    update_properties = letztes_update
-    if (tool.letztes_update == 'laufend'):
-        update_properties = laufende_updates
-
-    ratings = Rating.objects.filter(rating_for=id)
-    num_ratings = len(ratings)
-    print(num_ratings)
-
-    ratings_by_score = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3), ratings.filter(score=4), ratings.filter(score=5)]
-    print(ratings_by_score[4])
-    rating_percent_5 = 0 if len(ratings_by_score[4])==0 else len(ratings_by_score[4])/num_ratings*100
-    rating_percent_4 = 0 if len(ratings_by_score[3])==0 else len(ratings_by_score[3])/num_ratings*100
-    rating_percent_3 = 0 if len(ratings_by_score[2])==0 else len(ratings_by_score[2])/num_ratings*100
-    rating_percent_2 = 0 if len(ratings_by_score[1])==0 else len(ratings_by_score[1])/num_ratings*100
-    rating_percent_1 = 0 if len(ratings_by_score[0])==0 else len(ratings_by_score[0])/num_ratings*100
-
-    ratings_with_comment = ratings.exclude(comment__exact = '')
-    """
     context = {
         'dataset': dataset,
         'useCaseCategory': useCaseCategory,
         'categoryDataset': categoryDataset,
         'name':nameDataset,
-        #'letztes_update': update_properties,
-        #'letztes_update_class': update_properties.class_name,
-        #'letztes_update_color': update_properties.color_class,
-        #'letztes_update_label': update_properties.label,
-        #'ratings': ratings,
-        #'rating_perc_5': "{:,.2f}".format(rating_percent_5),
-        #'rating_perc_4': "{:,.2f}".format(rating_percent_4),
-        #'rating_perc_3': "{:,.2f}".format(rating_percent_3),
-        #'rating_perc_2': "{:,.2f}".format(rating_percent_2),
-        #'rating_perc_1': "{:,.2f}".format(rating_percent_1),
-        #'ratings_with_comment': ratings_with_comment,
+       
     }
 
 
     return render(request, 'datasets_over/dataset-detail.html', context)
-"""
-def Post_Review(request,id):
-    if request.method=="POST":
-        User=request.user
-        tool=tool = get_object_or_404(collectedDatasets, pk= id)
-        comment=request.POST['comment']
-        score=request.POST['score']
-        rating=Rating.objects.create(rating_from=User,rating_for=tool,score=score,comment=comment)
-
-        return  dataset_view(request,id)
-"""
