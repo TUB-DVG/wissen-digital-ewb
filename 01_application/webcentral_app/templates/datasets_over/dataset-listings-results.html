@@ -1,16 +1,21 @@
 {% load static %}
-{% for dataset in page.object_list %}	
+{% for dataset in page.object_list %}
 <!-- Card item START -->
 <style>
-   a { transition: all .2s ease-in-out; }
-   a:hover { transform: scale(1.1); }
+  a {
+    transition: all .2s ease-in-out;
+  }
+
+  a:hover {
+    transform: scale(1.1);
+  }
 </style>
 
 
 <div class="col-sm-6 col-lg-4 col-xl-3">
-    <a href="{%url 'dataset_view' dataset.id %}">
+  <a href="{%url 'dataset_view' dataset.id %}">
     <div class="card shadow h-100">
-        <!-- Image at top discarded for NOW
+      <!-- Image at top discarded for NOW
 
         <div class="card-header text-right">
             <p class="mb-2 text-truncate-2">
@@ -26,50 +31,45 @@
         </div>
 
         -->
-        <!-- Image -->
-        
-        <div class="image-container d-flex" 
-                style="height: 150px;">
-                {%if dataset.image %}
-            <img src="{{ dataset.image.url }}" 
-                    class="card-img-top px-4 pb-2 m-auto" 
-                    style="max-height: 100%; width: auto; display: block;" 
-                    alt="weatherdata image (if=db)">
-            {% else %}
-            <img src=" {%static 'img/Default.webp' %}" 
-                    class="card-img-top px-4 pb-2 m-auto" 
-                    style="max-height: 100%; width: auto; display: block;" 
-                    alt="weatherdata image (else)">
-            {% endif %}
-        </div>
-        <!-- Card body -->
-        
-        <div class="card-body pb-0">
-    
-            <!-- Title -->
-            <h5 class="card-title">
-                <a href="{%url 'dataset_view' dataset.id %}"> {{ dataset.nameDataset}}</a>
-            </h5>
-            <!--
+      <!-- Image -->
+
+      <div class="image-container d-flex" style="height: 150px;">
+        {%if dataset.image %}
+        <img src="{{ dataset.image.url }}" class="card-img-top px-4 pb-2 m-auto"
+          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
+        {% else %}
+        <img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 pb-2 m-auto"
+          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
+        {% endif %}
+      </div>
+      <!-- Card body -->
+
+      <div class="card-body pb-0">
+
+        <!-- Title -->
+        <h5 class="card-title">
+          <a href="{%url 'dataset_view' dataset.id %}"> {{ dataset.nameDataset}}</a>
+        </h5>
+        <!--
             <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
             -->
-        
+
+      </div>
+
+      <!-- Card footer -->
+      <div class="card-footer pt-0 pb-3">
+        {% if dataset.coverage %}
+        <hr>
+        <div class="d-flex justify-content-between">
+          <span class="h6 fw-light mb-0">
+            <i class="fas fa-sync text-success me-2"></i>Coverage: {{ dataset.coverage }}
+          </span>
+
         </div>
-        
-        <!-- Card footer -->
-        <div class="card-footer pt-0 pb-3">
-            {% if dataset.coverage %}
-            <hr>
-            <div class="d-flex justify-content-between">
-                <span class="h6 fw-light mb-0">
-                    <i class="fas fa-sync text-success me-2"></i>Coverage: {{ dataset.coverage }}
-                </span>
-                
-            </div>
-            {% endif %}
-        </div>
+        {% endif %}
+      </div>
     </div>
-    </a>
+  </a>
 </div>
 
 <!-- Card item END -->
