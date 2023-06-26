@@ -498,21 +498,6 @@ def csv2m4dbNorms(path):
                 print('NOT WORKING FOR ROW ', row)
     return header, data
 
-def csv2m4dbDatasets(path):
-    """Data csv-file into BF M4 Django database, hard coded"""
-    with open(path, encoding='utf-8') as csvFile:
-        reader = csv.reader(csvFile, delimiter='|')
-        header = next(reader)
-        data = []
-        for row in reader:
-            try:
-                print(row[header.index('Name')])
-                data.append(row)
-                # breakpoint()
-                getOrCreateNorms(row, header)
-            except:
-                print('NOT WORKING FOR ROW ', row)
-    return header, data
 
 def removeFromDatabase(modelName):
     try:
