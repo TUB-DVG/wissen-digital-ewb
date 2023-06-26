@@ -773,3 +773,4 @@ class TestDatabaseConcistency(TransactionTestCase):
                 else:
                     listOfDBDiffs.append(element)
         return listOfDBDiffs
+            
