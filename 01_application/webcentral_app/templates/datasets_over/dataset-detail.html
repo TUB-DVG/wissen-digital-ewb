@@ -18,17 +18,20 @@ Page intro START -->
                 <!-- Content -->
                 <ul class="list-inline mb-0">
                     {% if dataset.availability %}
-                    <li class="list-inline-item h6 mb-0"><i class="{{category_icon}} text-info me-2">
+                    <li class="list-inline-item h6 mb-0">
+                        <i class="{{category_icon}} text-info me-2">
 
                     </i>{{dataset.availability}}</li>
                     {% endif %}
                     {% if dataset.categoryDataset %}
-                    <li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
+                    <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                        <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
 
                     </i>{{dataset.categoryDataset}}</li>
                     {% endif %}
                     {% if dataset.coverage %}
-                    <li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2">
+                    <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                        <i class="fas fa-bars fa-book-open text-info me-2">
 
                     </i>{{dataset.coverage}}</li>
                     {% endif %}
@@ -108,9 +111,11 @@ Page intro START -->
                         <div class="card shadow p-2 mb-4 z-index-9">
                             <div class="overflow-hidden rounded-3 text-center">
                                 {%if dataset.image %}
-                                <img src=" {{ dataset.image.url }}" class="p-4" style="max-height: 200px;" alt="weatherdata image">
+                                <img src=" {{ dataset.image.url }}" class="p-4" 
+                                    style="max-height: 200px;" alt="weatherdata image">
                                 {% else %}
-                                <img src=" {%static 'img/Default.webp' %}" class="p-4" style="max-height: 200px;" alt="weatherdata image (else)">
+                                <img src=" {%static 'img/Default.webp' %}" class="p-4" 
+                                    style="max-height: 200px;" alt="weatherdata image (else)">
                                 {% endif %}
                                 <!-- Overlay -->
                                 
@@ -125,19 +130,23 @@ Page intro START -->
                             <ul class="list-group list-group-borderless">
                                 {% if dataset.useCaseCategory %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Kategorie</span>
+                                    <span class="h6 fw-light mb-0">
+                                        <i class="fas fa-fw fa-book-open text-primary"></i>Kategorie</span>
                                     <span>{{ dataset.useCaseCategory }}</span>
                                 </li>
                                 {% endif %}
                                 {% if dataset.categoryDataset %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="h6 fw-light mb-0"><i class="{{category_icon}} text-primary"></i>Datensatz</span>
+                                    <span class="h6 fw-light mb-0">
+                                        <i class="{{category_icon}} text-primary"></i>Datensatz</span>
                                     <span>{{ dataset.categoryDataset }}</span>
                                 </li>
                                 {% endif %}
                                 {% if dataset.availability %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span class="h6 fw-light mb-0"><i class="{{ letztes_update_class }} fa-fw  text-primary"></i>Verfügbarkeit</span>
+                                    <span class="h6 fw-light mb-0">
+                                        <i class="{{ letztes_update_class }} fa-fw  text-primary"></i>Verfügbarkeit
+                                    </span>
                                     <span>{{ dataset.availability }}</span>
                                 </li>
                                 {% endif %}
