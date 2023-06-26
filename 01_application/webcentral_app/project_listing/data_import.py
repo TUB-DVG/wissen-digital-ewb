@@ -498,7 +498,6 @@ def csv2m4dbNorms(path):
                 print('NOT WORKING FOR ROW ', row)
     return header, data
 
-
 def removeFromDatabase(modelName):
     try:
         records = modelName.objects.all()
