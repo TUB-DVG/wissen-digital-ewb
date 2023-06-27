@@ -454,6 +454,7 @@ def csv2m4dbTools(path, toolsImages):
             print(image)
             getOrCreateTools(row, header, image)
     return header, data   
+
 def csv2m4dbWeatherData(path):
     """Weatherdata csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csv_file:
@@ -466,6 +467,7 @@ def csv2m4dbWeatherData(path):
             # breakpoint()
             getOrCreateWeatherData(row, header)
     return header, data
+
 def csv2m4dbKeywordRegisterFirstReview(path):
     """KeywordRegisterFirstReview csv-file into BF M4 Django database, hard coded"""
     with open(path, encoding='utf-8') as csv_file:

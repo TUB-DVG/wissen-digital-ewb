@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'keywords.apps.KeywordsConfig',
     'norms_over.apps.NormsOverConfig',
     'LastProfile.apps.LastprofileConfig',
+    'Datasets.apps.DatasetsConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
