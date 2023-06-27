@@ -7,7 +7,6 @@ from django.template.loader import render_to_string
 # from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
 
 # maybe I need also the other models
 from tools_over.models import Tools, Rating
@@ -22,7 +21,6 @@ class UpdateProperties:
         self.colorClass = colorClass
 
 
-@login_required(login_url='login')
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.all() # reads all data from table Teilprojekt
