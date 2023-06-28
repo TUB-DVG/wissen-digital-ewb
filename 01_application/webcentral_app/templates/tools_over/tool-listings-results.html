@@ -22,13 +22,11 @@
       <div class="card-body pb-0">
         <!-- Title -->
         <h5 class="card-title">
-          <a href="{%url 'tool_view' tool.id %}"> {{ tool.name   }}
-          </a>
+          {{ tool.name   }}
         </h5>
-        <p class="mb-2 text-truncate-2">Nutzerschnittstelle: {{ tool.userInterface   }}
+        <p class="mb-2 text-truncate-2">
+          Nutzerschnittstelle: {{ tool.userInterface   }}
         </p>
-        <!-- Rating star -->
-        {% include 'partials/_stars_score.html' with score=tool.averageRating class_small='small' %}
       </div>
       <!-- Card footer -->
       <div class="card-footer pt-0 pb-3">

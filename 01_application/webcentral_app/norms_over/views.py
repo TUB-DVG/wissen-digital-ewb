@@ -1,14 +1,11 @@
 #from django.shortcuts import render
 
-from contextlib import nullcontext
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
 from turtle import up
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
 
 from .models import TechnicalStandards
 
@@ -18,7 +15,6 @@ class UpdateProperties:
         self.label = label
         self.colorClass = colorClass
 
-@login_required(login_url='login')
 def index(request):
     """
     shows the list of all projects including some key features
