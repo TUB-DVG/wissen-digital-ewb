@@ -25,7 +25,6 @@ from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 
 class TestClickThroughSites(TestWebcentral):
@@ -37,7 +36,7 @@ class TestClickThroughSites(TestWebcentral):
         """
         
         """
-        self.login()
+        self.driver.get("http://127.0.0.1:8070/")
         self.driver.set_page_load_timeout(30)
 
         navBar = NavBar(self.driver)
@@ -119,12 +118,10 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-
-        self.login()
+        self.driver.get("http://127.0.0.1:8070/")
         navBar = NavBar(self.driver)
         dataItem = navBar.getNavData()
-
-        
+  
         action_chains = ActionChains(self.driver)
         action_chains.move_to_element(dataItem).perform()
         time.sleep(1)
@@ -133,8 +130,6 @@ class TestClickThroughSites(TestWebcentral):
         
         weatherDataItem.click()
 
-
-        
         self.assertEqual(
             "Überblick über die Wetterdaten-Services",
             self.driver.title,
@@ -145,11 +140,9 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-
-        self.login()
+        self.driver.get("http://127.0.0.1:8070/")
         navBar = NavBar(self.driver)
         dataItem = navBar.getNavData()
-
 
         action_chains = ActionChains(self.driver)
         action_chains.move_to_element(dataItem).perform()
