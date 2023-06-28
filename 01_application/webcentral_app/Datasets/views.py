@@ -5,7 +5,6 @@ from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
 
 from .models import collectedDatasets # maybe I need also the other models
 
