@@ -7,10 +7,9 @@ from django.template.loader import render_to_string
 # from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
 
 # maybe I need also the other models
-from tools_over.models import Tools, Rating
+from tools_over.models import Tools
 
 
 class UpdateProperties:
@@ -22,7 +21,6 @@ class UpdateProperties:
         self.colorClass = colorClass
 
 
-@login_required(login_url='login')
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.all() # reads all data from table Teilprojekt
@@ -88,20 +86,6 @@ def toolView(request, id):
     if (tool.lastUpdate == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
-    ratings = Rating.objects.filter(ratingFor=id)
-    numRatings = len(ratings)
-    print(numRatings)
-
-    ratingsByScore = [ratings.filter(score=1), ratings.filter(score=2), ratings.filter(score=3),
-                      ratings.filter(score=4), ratings.filter(score=5)]
-    print(ratingsByScore[4])
-    ratingPercent5 = 0 if len(ratingsByScore[4])==0 else len(ratingsByScore[4])/numRatings*100
-    ratingPercent4 = 0 if len(ratingsByScore[3])==0 else len(ratingsByScore[3])/numRatings*100
-    ratingPercent3 = 0 if len(ratingsByScore[2])==0 else len(ratingsByScore[2])/numRatings*100
-    ratingPercent2 = 0 if len(ratingsByScore[1])==0 else len(ratingsByScore[1])/numRatings*100
-    ratingPercent1 = 0 if len(ratingsByScore[0])==0 else len(ratingsByScore[0])/numRatings*100
-
-    ratingsWithComment = ratings.exclude(comment__exact = '')
 
     context = {
         'tool': tool,
@@ -111,31 +95,7 @@ def toolView(request, id):
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
-        'ratings': ratings,
-        'ratingPercent5': "{:,.2f}".format(ratingPercent5),
-        'ratingPercent4': "{:,.2f}".format(ratingPercent4),
-        'ratingPercent3': "{:,.2f}".format(ratingPercent3),
-        'ratingPercent2': "{:,.2f}".format(ratingPercent2),
-        'ratingPercent1': "{:,.2f}".format(ratingPercent1),
-        'ratingsWithComment': ratingsWithComment,
+       
     }
 
     return render(request, 'tools_over/tool-detail.html', context)
-
-
-def postReview(request, id):
-    """Return to tools overwiew after submit review.
-
-    remove?, in next version not used, maybe include at the end of 2023 if
-    there is time to implement a user space, without user space no rating
-    possible
-    """
-    if request.method == "POST":
-        User = request.user
-        tool = get_object_or_404(Tools, pk=id)
-        comment = request.POST['comment']
-        score = request.POST['score']
-        rating = Rating.objects.create(ratingFrom=User, ratingFor=tool,
-                                       score=score, comment=comment)
-
-        return toolView(request, id)

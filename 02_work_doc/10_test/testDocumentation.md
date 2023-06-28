@@ -82,3 +82,39 @@ If all 3 Testcategories need to be run:
 ```
     bash scripts/runAllTests.sh
 ```
+
+# Selenium Test-Structure
+The User-Interface Tests use the PageObject-Pattern.
+This is a Design-Pattern popular in Test automation. The Goal of this pattern is 
+to enhance test maintanance and reduce code duplication. In this design pattern
+parts of the User-Interface, which are under test, are modeled as classes. 
+They are instanciated by the Tests. The advantage of this pattern is, that if the
+UI changes, only the page obejcts need to be adapated. The tests stay as they are.
+
+## Advantages of PageObject Pattern
+    - There is a clean separation between test code and page specfic code
+
+```
+    /***
+    * Tests login feature
+    */
+    public class Login {
+
+    public void testLogin() {
+        // fill login data on sign-in page
+        driver.findElement(By.name("user_name")).sendKeys("userName");
+        driver.findElement(By.name("password")).sendKeys("my supersecret password");
+        driver.findElement(By.name("sign-in")).click();
+
+        // verify h1 tag is "Hello userName" after login
+        driver.findElement(By.tagName("h1")).isDisplayed();
+        assertThat(driver.findElement(By.tagName("h1")).getText(), is("Hello userName"));
+    }
+    }
+```
+Problems with this approac:
+    - no separation between test-methods and locators of the testObject. If the identifers or
+    the layout changes, the whole test needs to be changed.
+    - the IDs of the objects are spread accross several files. They need to be changed in every file.
+- In PageObjects, there are no Assertations
+- Assertations should be only in test code.

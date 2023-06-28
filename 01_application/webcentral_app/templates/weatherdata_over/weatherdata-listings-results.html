@@ -26,13 +26,9 @@
             </div>
             <!-- Card body -->
             <div class="card-body pb-0">
-        
                 <!-- Title -->
-                <h5 class="card-title"><a href="{%url 'weatherdata_view' weatherdata.id %}"> {{ weatherdata.data_service   }}</a></h5>
-                
+                <h5 class="card-title"> {{ weatherdata.data_service   }}</h5>
                 <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
-                
-            
             </div>
             <!-- Card footer -->
             <div class="card-footer pt-0 pb-3">
@@ -45,8 +41,7 @@
                         {% else %}
                         <i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ weatherdata.last_update }}
                         {% endif %}
-                            </span>
-                    
+                    </span> 
                 </div>
                 {% endif %}
             </div>
