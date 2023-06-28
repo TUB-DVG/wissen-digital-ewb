@@ -45,8 +45,9 @@
                 <div class="row g-3">
                   <!-- Select items -->
                   <div class="form-group col-sm-6 col-md-4 pb-lg-2 pb-md-0 mb-0">
-                    <select class="form-select js-choice" aria-label=".form-select-sm example" name="k"
-                      id="kategorie-input-datasets" title="Filtern nach useCaseCategory">
+                    <select class="form-select js-choice" 
+                            aria-label=".form-select-sm example" name="k"
+                            id="kategorie-input-datasets" title="Filtern nach useCaseCategory">
                       <option value="">Anwendungsfall</option>
                       <option value="Potential Erneuerbare Energie " 
                         {% if useCaseCategory == "Potential Erneuerbare Energie " %} 
@@ -136,7 +137,7 @@
                       </option>
                       <option value="Standardlastprofile für Strom" 
                         {% if categoryDataset == "Standardlastprofile für Strom" %}
-                        selected="selected" 
+                          selected="selected" 
                         {% endif %}>Standardlastprofile für Strom
                       </option>
                       <option value="Digitales Geländemodell" 
@@ -235,7 +236,7 @@
                       </option>
                       <option value="open/commercial: remote calculation and published report" 
                         {% if availability == "open/commercial: remote calculation and published report" %}
-                        selected="selected"
+                          selected="selected"
                         {% endif %}>Open/commercial:remote calculation and published report
                       </option>
                       <option value="Open Data Commons Open Database License 1.0" 
@@ -287,8 +288,10 @@
             </div>
             <!-- Button -->
             <div class="col-xl-1">
-              <button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" id="search-submit-tools"
-                href="">
+              <button type="submit" 
+                      class="btn btn-primary mb-0 rounded z-index-1 w-100" 
+                      id="search-submit-tools"
+                      href="">
                 <i class="fas fa-search"></i>
               </button>
             </div>
@@ -359,8 +362,7 @@
                   <a class="page-link" href="{%url 'dataset_list' %}?searched={% if search %}
                                         {{search}}{% endif %}&k={% if useCaseCategory %}
                                         {{useCaseCategory}}{% endif %}&l={% if categoryDataset %}
-                                        {{categoryDataset}}{% endif %}
-                                        &lzp=&page={{ page.previous_page_number}}" tabindex="-1">
+                                        {{categoryDataset}}{% endif %}&lzp=&page={{ page.previous_page_number}}" tabindex="-1">
                     <i class="fas fa-angle-double-left"></i>
                   </a>
                 </li>
@@ -369,10 +371,11 @@
                 {% endif %}
                 {% if page.has_next %}
                 <li class="page-item mb-0">
-                  <a class="page-link" href="{%url 'dataset_list' %}?searched={% if search %}
-                                        {{search}}{% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}
-                                        {% endif %}&l={% if categoryDataset %}{{categoryDataset}}
-                                        {% endif %}&lzp=&page={{ page.next_page_number}}">
+                  <a class="page-link" 
+                      href="{%url 'dataset_list' %}?searched={% if search %}{{search}}
+                            {% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}
+                            {% endif %}&l={% if categoryDataset %}{{categoryDataset}}
+                            {% endif %}&lzp=&page={{ page.next_page_number}}">
                     <i class="fas fa-angle-double-right"></i>
                   </a>
                 </li>

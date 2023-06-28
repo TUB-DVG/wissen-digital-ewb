@@ -26,7 +26,10 @@ def index(request):
         categoryDataset=request.GET.get('l')
         availability=request.GET.get('lzp')
         searched=request.GET.get('searched')
-        datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,categoryDataset__icontains=categoryDataset,availability__icontains=availability,nameDataset__icontains=searched)
+        datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,
+                                                  categoryDataset__icontains=categoryDataset,
+                                                  availability__icontains=availability,
+                                                  nameDataset__icontains=searched)
         filtered_by = [useCaseCategory, categoryDataset, availability]
               
     datasets = list((datasets))
