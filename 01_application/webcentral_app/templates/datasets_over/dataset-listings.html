@@ -127,82 +127,103 @@
                       <option value="">Kategorie</option>
                       <option value="Übertragungsnetzentwicklungspläne" 
                             {% if categoryDataset == "Übertragungsnetzentwicklungspläne" %} 
-                            selected="selected" {% endif %}> Übertragungsnetzentwicklungspläne
+                          selected="selected" 
+                        {% endif %}>Übertragungsnetzentwicklungspläne
                       </option>
                       <option value="Gebäudebestandsentwicklung" 
                               {% if categoryDataset == "Gebäudebestandsentwicklung" %}
-                              selected="selected" {% endif %}>Gebäudebestandsentwicklung
+                          selected="selected" 
+                        {% endif %}>Gebäudebestandsentwicklung
                       </option>
                       <option value="Standardlastprofile für Strom" 
                               {% if categoryDataset == "Standardlastprofile für Strom" %} 
-                              selected="selected" {% endif %}>Standardlastprofile für Strom
+                        selected="selected" 
+                        {% endif %}>Standardlastprofile für Strom
                       </option>
                       <option value="Digitales Geländemodell" 
                               {% if categoryDataset == "Digitales Geländemodells" %}
-                              selected="selected" {% endif %}>Digitales Geländemodell
+                          selected="selected" 
+                        {% endif %}>Digitales Geländemodell
                       </option>
                       <option value="Gebäudegrundrisse" 
                               {% if categoryDataset == "Gebäudegrundrisse" %}
-                              selected="selected" {% endif %}>Gebäudegrundrisse
+                          selected="selected" 
+                        {% endif %}>Gebäudegrundrisse
                       </option>
                       <option value="3D Gebäude Modell" 
                               {% if categoryDataset == "3D Gebäude Modell" %}
-                              selected="selected" {% endif %}>3D Gebäude Modell
+                          selected="selected" 
+                        {% endif %}>3D Gebäude Modell
                       </option>
                       <option value="Gebäudetypologie" 
                               {% if categoryDataset == "Gebäudetypologie" %} 
-                              selected="selected" {% endif %}>Gebäudetypologie
+                          selected="selected"
+                        {% endif %}>Gebäudetypologie
                       </option>
                       <option value="Zeitreihen Daten" 
                               {% if categoryDataset == "Zeitreihen Daten" %} 
-                              selected="selected" {% endif %}>Zeitreihen Daten
+                          selected="selected"
+                        {% endif %}>Zeitreihen Daten
                       </option>
-                      <option value="Gebäudebestand" {% if categoryDataset == "Gebäudebestand" %} 
-                              selected="selected" {% endif %}>Gebäudebestand
+                      <option value="Gebäudebestand" 
+                        {% if categoryDataset == "Gebäudebestand" %} 
+                          selected="selected" 
+                        {% endif %}>Gebäudebestand
                       </option>
                       <option value="Infrastruktur" 
                               {% if categoryDataset == "Infrastruktur" %} 
-                              selected="selected" {% endif %}>Infrastruktur
+                          selected="selected" 
+                        {% endif %}>Infrastruktur
                       </option>
                       <option value="Bedarfsdaten" 
                               {% if categoryDataset == "Bedarfsdaten" %} 
-                              selected="selected" {% endif %}>Bedarfsdaten
+                                selected="selected" 
+                              {% endif %}>Bedarfsdaten
                       </option>
                       <option value="Wetterdaten" 
                               {% if categoryDataset == "Wetterdaten" %} 
-                              selected="selected" {% endif %}>Wetterdaten
+                                selected="selected" 
+                              {% endif %}>Wetterdaten
                       </option>
                       <option value="BIM Daten" 
                               {% if categoryDataset == "BIM Daten" %} 
-                              selected="selected" {% endif %}>BIM Content
+                                selected="selected" 
+                              {% endif %}>BIM Content
                       </option>
                       <option value="Statistiken" 
                               {% if categoryDataset == "Statistiken" %} 
-                              selected="selected" {% endif %}>Statistiken
+                                selected="selected" 
+                              {% endif %}>Statistiken
                       </option>
                       <option value="Landnutzung" 
                               {% if categoryDataset == "Landnutzung" %} 
-                              selected="selected" {% endif %}>Landnutzung
+                          selected="selected" 
+                        {% endif %}>Landnutzung
                       </option>
                       <option value="Datenbasis" 
                               {% if categoryDataset == "Datenbasis" %} 
-                              selected="selected" {% endif %}>Datenbasis
+                                selected="selected" 
+                              {% endif %}>Datenbasis
                       </option>
                       <option value="Potential" 
                               {% if categoryDataset == "Potential" %} 
-                              selected="selected" {% endif %}>Potential
+                                selected="selected" 
+                              {% endif %}>Potential
                       </option>
                       <option value="Solver" 
                               {% if categoryDataset == "Solver" %} 
-                              selected="selected" {% endif %}>Solver
+                                selected="selected" 
+                              {% endif %}>Solver
                       </option>
                       <option value="LCA" 
                               {% if categoryDataset == "LCA" %} 
-                              selected="selected" {% endif %}>LCA
+                                selected="selected" 
+                              {% endif %}>LCA
                       </option>
                       <option value="Andere" 
                               {% if categoryDataset == "Andere" %} 
-                              selected="selected" {% endif %}>Andere
+                                selected="selected" 
+                              {% endif %}>Andere
                       </option>
 
                     </select>
@@ -221,27 +242,33 @@
                       </option>
                       <option value="Open Data Commons Open Database License 1.0" 
                               {% if availability == "Open Data Commons Open Database License 1.0" %} 
-                              selected="selected" {% endif %}>Open Data Commons Open Database License 1.0
+                          selected="selected" 
+                        {% endif %}>Open Data Commons Open Database License 1.0
                       </option>
                       <option value="Open Database License 1.0" 
                               {% if availability == "Open Database License 1.0" %}
-                              selected="selected" {% endif %}>Open Database License 1.0
+                                selected="selected" 
+                              {% endif %}>Open Database License 1.0
                       </option>
                       <option value="open government data" 
                               {% if availability == "open government data" %}
-                              selected="selected" {% endif %}>Open government data
+                                selected="selected" 
+                              {% endif %}>Open government data
                       </option>
                       <option value="Creative-Commons" 
                               {% if availability == "Creative-Commons" %} 
-                              selected="selected" {% endif %}>Creative-Commons
+                                selected="selected" 
+                              {%endif %}>Creative-Commons
                       </option>
                       <option value="commercial" 
                               {% if availability == "commercial" %} 
-                              selected="selected" {% endif %}>Commercial
+                                selected="selected" 
+                              {% endif %}>Commercial
                       </option>
                       <option value="open" 
                             {% if availability == "open" %} 
-                            selected="selected" {% endif %}>Open
+                              selected="selected" 
+                            {% endif %}>Open
                       </option>
                     </select>
                   </div>
