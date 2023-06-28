@@ -26,7 +26,6 @@ from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.lastprofile import Lastprofile
 from Src.PageObject.Pages.CurrentLoadApproximation import (
@@ -44,7 +43,6 @@ class TestLastprofileTab(TestWebcentral):
         """Clicks on 'Approximation der Stromlast' and tests the tool
         
         """
-        self.login()
         self.driver.get("http://127.0.0.1:8070/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
@@ -73,8 +71,6 @@ class TestLastprofileTab(TestWebcentral):
         """Tests if 'Heat Approximation' is reachable
         
         """
-        self.login()
-
         self.driver.get("http://127.0.0.1:8070/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
@@ -116,7 +112,6 @@ class TestLastprofileTab(TestWebcentral):
         """Tests, if the links present on the website lead to the right websites.
         
         """
-        self.login()
         self.driver.get("http://127.0.0.1:8070/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
