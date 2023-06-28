@@ -58,7 +58,9 @@ Page intro START -->
             <ul class="  nav nav-pills nav-tabs-line py-0">
               <!-- Tab item -->
               <li class="nav-item me-2 me-sm-4">
-                <a class="nav-link active mb-2 mb-md-0" data-toggle="tab" href="#course-pills-1">Overview</a>
+                <a class="nav-link active mb-2 mb-md-0" 
+                  data-toggle="tab" 
+                  href="#course-pills-1">Overview</a>
               </li>
             </ul>
           </div>
@@ -113,10 +115,11 @@ Page intro START -->
             <div class="card shadow p-2 mb-4 z-index-9">
               <div class="overflow-hidden rounded-3 text-center">
                 {%if dataset.image %}
-                <img src=" {{ dataset.image.url }}" class="p-4" style="max-height: 200px;" alt="weatherdata image">
+                <img src=" {{ dataset.image.url }}" class="p-4" 
+                     style="max-height: 200px;" alt="weatherdata image">
                 {% else %}
-                <img src=" {%static 'img/Default.webp' %}" class="p-4" style="max-height: 200px;"
-                  alt="weatherdata image (else)">
+                <img src=" {%static 'img/Default.webp' %}" class="p-4" 
+                     style="max-height: 200px;" alt="weatherdata image (else)">
                 {% endif %}
                 <!-- Overlay -->
 
