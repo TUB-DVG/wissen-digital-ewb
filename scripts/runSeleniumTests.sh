@@ -2,7 +2,7 @@
 set -a
 . ./.env
 set +a
-
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml down --volumes
 docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build --detach
 sleep 5
 bash postgres/restoreDB.sh > log

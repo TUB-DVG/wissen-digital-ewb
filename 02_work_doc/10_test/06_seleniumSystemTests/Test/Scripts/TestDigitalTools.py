@@ -24,7 +24,6 @@ from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.loginPage import LoginPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
@@ -314,14 +313,6 @@ class TestDigitalToolsTab(TestWebcentral):
         self.driver.get("http://127.0.0.1:8070/tool_list/")
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
-
-        loginPageObj = LoginPage(self.driver)
-
-        loginButtonElement = loginPageObj.getLoginButton()
-
-        if loginButtonElement is not None:
-            loginButtonElement.click()
-
 
         navBar = NavBar(self.driver)   
         toolListLink = navBar.getNavToolList()
