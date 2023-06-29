@@ -12,36 +12,36 @@
 
 .border-technical {
     border-radius: 2px;
-    border: 2px solid var(--blue, #AFC5FF);
+    border: 2px solid var(--blau, #AFC5FF);
 }
 .border-economical {
     border-radius: 2px;
-    border: 2px solid var(--red, #FFAE9D);
+    border: 2px solid var(--rot, #FFAE9D);
 }
 .border-ecological {
     border-radius: 2px;
-    border: 2px solid var(--green, #AEEAB4);
+    border: 2px solid var(--gruen, #AEEAB4);
 }
 .border-legal {
     border-radius: 2px;
-    border: 2px solid var(--yellow, #F5E86A);
+    border: 2px solid var(--gelb, #F5E86A);
 }
 
 a.technical {
     color: black;
-    border-bottom: 2px solid var(--blue, #AFC5FF);
+    border-bottom: 2px solid var(--blau, #AFC5FF);
 }
 a.economical {
     color: black;
-    border-bottom: 2px solid var(--red, #FFAE9D);
+    border-bottom: 2px solid var(--rot, #FFAE9D);
 }
 a.ecological {
     color: black;
-    border-bottom: 2px solid var(--green, #AEEAB4);
+    border-bottom: 2px solid var(--gruen, #AEEAB4);
 }
 a.legal {
     color: black;
-    border-bottom: 2px solid var(--yellow, #F5E86A);
+    border-bottom: 2px solid var(--gelb, #F5E86A);
 }
 
 #container-start-focus table td {
