@@ -53,3 +53,7 @@ a.legal {
     min-height: 30px;
     flex-shrink: 0;
 }
+
+.navbar-startpage {
+    height: 120px;
+}
