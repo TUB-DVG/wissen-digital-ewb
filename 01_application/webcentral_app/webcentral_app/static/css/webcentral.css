@@ -12,19 +12,27 @@
 
 .border-technical {
     border-radius: 2px;
-    border: 2px solid var(--blau, #AFC5FF);
+    border: None;
+    outline: 2px solid var(--blau, #AFC5FF);
+    outline-offset: -17px;
 }
 .border-economical {
     border-radius: 2px;
-    border: 2px solid var(--rot, #FFAE9D);
+    border: None;
+    outline: 2px solid var(--rot, #FFAE9D);
+    outline-offset: -17px;
 }
 .border-ecological {
     border-radius: 2px;
-    border: 2px solid var(--gruen, #AEEAB4);
+    border: None;
+    outline: 2px solid var(--gruen, #AEEAB4);
+    outline-offset: -17px;
 }
 .border-legal {
     border-radius: 2px;
-    border: 2px solid var(--gelb, #F5E86A);
+    border: None;
+    outline: 2px solid var(--gelb, #F5E86A);
+    outline-offset: -17px;
 }
 
 a.technical {
