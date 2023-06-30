@@ -27,22 +27,10 @@
         <!-- Nav Main menu START -->
         <ul class="navbar-nav navbar-nav-scroll mx-auto">
           <!-- Nav item 4 Component-->
-          <li class="nav-item">
-            <a class="nav-link"
-               href="{% url 'index' %}">
-              Start
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'tool_list' %}">
-              Digitale Werkzeuge
-            </a>
-          </li>
           <li class="dropdown nav-item">
+            <!-- Nav technical focus START-->
             <span class="nav-link">
-              <a href="{% url 'data' %}">
-                Daten
-              </a>
+              Technischer Fokus
               <a class="dropdown-toggle dropdown-toggle-split pl-0">
                 <span class="visually-hidden">Toggle Dropdown
                 </span>
@@ -50,6 +38,25 @@
             </span>
             <ul class="dropdown-menu dropdown-menu-end shadow pt-3"
                 aria-labelledby="dataDropdown">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'tool_list' %}">
+                  Digitale Werkzeuge
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'coming' %}">
+                  Digitale Anwendungen
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'norm_list' %}">
+                  Technische Standards
+                </a>
+              </li>
+
               <li>
                 <a class="dropdown-item"
                    href="{% url 'weatherdata_list' %}">
@@ -69,25 +76,8 @@
                 </a>
               </li>
             </ul>
+            <!-- Nav technical focus END -->
           </li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
-
-          <li class="nav-item">
-            <a class="nav-link"
-               href="{% url 'norm_list' %}"> Technische Standards
-            </a>
-          </li>
-
-
-          <li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown</span>
-            </a></span>
-            <ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
-              <li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
-          </ul></li>
-
-
         </ul>
         <!-- Nav Main menu END -->
       </div>
