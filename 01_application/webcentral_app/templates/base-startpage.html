@@ -1,0 +1,104 @@
+{% load static %}
+<!doctype html>
+<html lang="de">
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  <style>
+    img {width: auto; /*set the width or max-width*/
+         height: 100px; /*this makes sure to maintain the aspect ratio*/}
+  </style>
+  <!-- Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0 user-scalable=no">
+  <meta name="author"
+        content="https://www.tu.berlin/dvg">
+  <meta name="description"
+        content="collection of data sets and tools regarding building energy in Germany">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Plugins CSS -->
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'assets/vendor/font-awesome/css/all.min.css' %}">
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+  <link rel="stylesheet"type="text/css"
+        href="{% static 'assets/vendor/choices/css/choices.min.css' %}">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css"
+        href="{% static 'assets/vendor/tiny-slider/tiny-slider.css' %}">
+	<link rel="stylesheet" type="text/css"
+        href="{% static 'assets/vendor/glightbox/css/glightbox.css' %}">
+  <!-- Theme CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css"
+        href="{% static 'assets/css/style.css' %} ">
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+  </script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  </script>
+  <script
+    src="https://cdn.plot.ly/plotly-latest.min.js">
+  </script>
+  <!-- Navbar CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css"
+        href="{% static 'assets/css/navbar.css' %}?{% now 'U' %} ">
+  <!-- Responsive CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css"
+        href="{% static 'assets/css/responsive.css' %}?{% now 'U' %} ">
+  <!-- Custom CSS -->
+  <link id="style-switch" rel="stylesheet" type="text/css"
+        href="{% static 'assets/css/collapsable-info-container.css' %}?{% now 'U' %} ">
+  <link id="style-switch" rel="stylesheet" type="text/css"
+        href="{% static 'assets/css/about-logos.css' %}?{% now 'U' %} ">
+  <!-- cookies -->
+  <link rel="stylesheet" href="{% static 'css/cookies.css' %}">
+  <!-- webcentral css -->
+  <link rel="stylesheet" href="{% static 'css/webcentral.css' %}">
+</head>
+<body>
+  <!-- Nav Bar -->
+  {% include 'partials/_navbar-empty.html' %}
+  <!-- Main Content -->
+  {% block content %} {% endblock %}
+  <!-- Footer -->
+  {% include 'partials/_footer.html' %}
+  <div class="cookie-container">
+    <p>
+      We use cookies in this website to give you the best experience on our
+      site. To find out more, read our
+      <a style ="color:rgb(154, 154, 255);"href="{% url 'Datenschutzhinweis' %}">
+        privacy policy
+      </a>.
+    </p>
+
+    <button class="cookie-btn">
+      Okay
+    </button>
+  </div>
+  <!-- Back to top -->
+  <div class="back-top">
+    <i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle">
+    </i>
+  </div>
+  <!-- Bootstrap JS -->
+  <script
+    src="{% static 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}">
+  </script>
+  <!-- Vendors -->
+  <script src="{% static 'assets/vendor/choices/js/choices.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.js' %}"></script>
+  <!-- cookies -->
+  <script src="{% static 'js/cookies.js' %}"></script>
+  <!-- Search -->
+  <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+</body>
+</html>

@@ -1,11 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base-startpage.html' %}
 
 {% block title %} Wissensplattform - Digitalisierung Energiewendebauen {% endblock %}
 
 {% load static %}
 
 {% block content%}
-
 <!-- Page Banner START -->
 <section class="py-4">
   <div class="container">
@@ -24,23 +23,315 @@
 
 <!-- Page content START -->
 <section class="pt-0">
-  <div class="container">
+  <div class="container" id="container-start-search">
     <!-- Filter bar START -->
     <!-- Row START -->
-    <form class="bg-white border p-3 my-4 z-index-9 position-relative"
-          method="POST" action="ResultSearch">
+    <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
+          method="POST" action="ResultSearch" id="search-form">
       {% csrf_token %}
       <!-- Input -->
       <div class="row g-3">
         <!-- general search Input (text) -->
-        <div class="col-xl-12" title="Allgemeine Suche">
+        <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
           <input id="search-input-general" class="form-control me-1"
-                 type="search" placeholder="Durchsuche die Plattform!" name="searchValue">
+                 type="search" placeholder="Durchsuche die Plattform!" name="searchValue"
+                 style="border: None">
+        </div>
+        <div class="col-1 col-sm-1 col-xl-1 position-relative" title="Allgemeine Suche">
+          <img src="{% static 'assets/images/searchStartpage.svg' %}"
+               style="width: 30px;"
+               class="position-absolute translate-middle-y top-50 end-50"
+               alt="icon">
         </div>
       </div>
     </form>
     <!-- Row END -->
-    <!-- Filter bar END -->
+  </div>
+  <!-- Filter bar END -->
+  <div class="container" id="container-start-focus">
+    <!-- Row START -->
+    <div class="row">
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-technical" title="Technischer Fokus">
+        <div class="p-4 position-relative">
+          <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               alt="icon">
+          <div class="row">
+            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
+                 title="Erläuterungstext">
+              <h3>Technischer Fokus</h3>
+              <p class="lead">
+              Der technische Fokus der Digitalisierung in der Energieforschung
+              im Gebäudesektor umfasst Datensätze, digitale Werkzeuge bzw.
+              Anwendungen und weitere Forschungsergebnisse.
+
+              </p>
+            </div>
+            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
+                 title="Links">
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/tools.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical" href="{% url 'tool_list' %}">
+                      Werkzeuge
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/applications.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical"
+                       href="#">
+                      Anwendungen
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical"
+                       href="{% url 'norm_list' %}">
+                      technische Standards
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/data.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical" href="{% url 'weatherdata_list' %}">
+                      Wetterdaten
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/data.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical" href="{% url 'dataset_list' %}">
+                     Datensets
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/diagram_with_graph.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical" href="{% url 'LastProfile' %}">
+                      Lastprofile
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-economical" title="Ökonomischer Fokus">
+        <div class="p-4 position-relative">
+          <img src="{% static 'assets/images/symbol_economical_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               alt="icon">
+          <div class="row">
+            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
+                 title="Erläuterungstext">
+              <h3>Ökonomische Fokus</h3>
+              <p class="lead">
+                Hier steht ein kurzer Einleitungstext zum ökonomischen Fokus:
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                diam nonummy nibh euismod. Lorem ipsum dolor sit amet,
+                consectetuer adipi scing elit, sed diam nonummy amet sit. Lorem
+                ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
+                nonummy amet sit euismod tincidunt ut laoreet dolore magn
+                aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer
+                adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
+                laoreet dolore magn aliquam erat volutpat.
+              </p>
+            </div>
+            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
+                 title="Links">
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/applications.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="economical"
+                       href="#">
+                      Geschäfts&shy;modell&shy;anwendungen
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/users.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="economical"
+                       href="#">
+                      Nutzenden&shy;perspektive
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+    </div>
+    <!-- Row END -->
+    <!-- Row START -->
+    <div class="row">
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-ecological" title="Ökologischer Fokus">
+        <div class="p-4 position-relative">
+          <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               alt="icon">
+          <div class="row">
+            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
+                 title="Erläuterungstext">
+              <h3>Ökologischer Fokus</h3>
+              <p class="lead">
+                Hier steht ein kurzer Einleitungstext zum ökologischen Fokus:
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
+                adipi scing elit, sed diam nonummy amet sit euismod. Lorem ipsum
+                dolor sit amet, consectetuer adipi scing elit, sed diam nonummy
+                amet sit euismod tincidunt ut laoreet dolore magn aliquam erat
+                volutpat. Lorem ipsum dolor sit amet, consectetuer adipi scing
+                elit, sed diam nonummy amet sit euismod tincidunt ut laoreet
+                dolore magn aliquam erat volutpat.
+              </p>
+            </div>
+            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
+                 title="Links">
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/data.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="ecological"
+                       href="#">
+                     Datensuffizienz
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+      <!-- Block -->
+      <div class="col-12 col-lg-6 p-3 border-legal" title="Rechtlicher Fokus">
+        <div class="p-4 position-relative">
+          <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               alt="icon">
+          <div class="row">
+            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
+                 title="Erläuterungstext">
+              <h3>Rechtlicher Fokus</h3>
+              <p class="lead">
+                Hier steht ein kurzer Einleitungstext zum rechtlichen Fokus: Lorem
+                ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
+                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
+                adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
+                laoreet dolore magn aliquam erat volutpat nonummy amet. Lorem
+                ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
+                nonummy amet sit euismod tincidunt ut laoreet dolore magn aliquam
+                erat volutpat.
+              </p>
+            </div>
+            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
+                 title="Links">
+              <table>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/buildings.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="#">
+                     Übersicht: Datenschutz im Gebäude- und Quartiersbereich
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="#">
+                     Kriterienkatalog
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/data.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="#">
+                    Visualisierungs&shy;bausteine
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="#">
+                    Wissen
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Block END -->
+  </div>
+    <!-- Row END -->
   </div>
 </section>
 <!-- Content END -->
