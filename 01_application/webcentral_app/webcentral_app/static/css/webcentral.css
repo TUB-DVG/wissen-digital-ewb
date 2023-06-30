@@ -9,7 +9,10 @@
 .card_hover:hover { 
     transform: scale(1.1); 
 }
-
+.border-startsearch {
+    border-radius: 2px;
+    border: 2px solid var(--grau, #CCC);
+}
 .border-technical {
     border-radius: 2px;
     border: None;
