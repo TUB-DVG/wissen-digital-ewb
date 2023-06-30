@@ -25,38 +25,38 @@
       <!-- Main navbar START -->
       <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
         <!-- Nav Main menu START -->
-				<ul class="navbar-nav navbar-nav-scroll mx-auto">
-					<!-- Nav item 4 Component-->
-					<li class="nav-item">
+        <ul class="navbar-nav navbar-nav-scroll mx-auto">
+          <!-- Nav item 4 Component-->
+          <li class="nav-item">
             <a class="nav-link"
                href="{% url 'index' %}">
               Start
             </a>
           </li>
-					<li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'tool_list' %}">
               Digitale Werkzeuge
             </a>
           </li>
-					<li class="dropdown nav-item">
+          <li class="dropdown nav-item">
             <span class="nav-link">
               <a href="{% url 'data' %}">
                 Daten
               </a>
-						  <a class="dropdown-toggle dropdown-toggle-split pl-0">
-							  <span class="visually-hidden">Toggle Dropdown
+              <a class="dropdown-toggle dropdown-toggle-split pl-0">
+                <span class="visually-hidden">Toggle Dropdown
                 </span>
-						  </a>
+              </a>
             </span>
-						<ul class="dropdown-menu dropdown-menu-end shadow pt-3"
+            <ul class="dropdown-menu dropdown-menu-end shadow pt-3"
                 aria-labelledby="dataDropdown">
-							<li>
+              <li>
                 <a class="dropdown-item"
                    href="{% url 'weatherdata_list' %}">
                   Wetterdaten
                 </a>
               </li>
-							<li>
+              <li>
                 <a class="dropdown-item"
                    href="{% url 'LastProfile' %}">
                   Lastprofile
@@ -68,32 +68,32 @@
                   Datensets
                 </a>
               </li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'coming' %}">Digitale Anwendungen</a></li>
 
-					<li class="nav-item">
-						<a class="nav-link" 
-						   href="{% url 'norm_list' %}"> Technische Standards
-						</a>
-					</li>
-			
+          <li class="nav-item">
+            <a class="nav-link"
+               href="{% url 'norm_list' %}"> Technische Standards
+            </a>
+          </li>
 
-					<li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
-						<a class="dropdown-toggle dropdown-toggle-split pl-0">
-							<span class="visually-hidden">Toggle Dropdown</span>
-						</a></span>
-						<ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
-							<li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
-						</ul></li>
 
-					
-				</ul>
-				<!-- Nav Main menu END -->
-			</div>
-			<!-- Main navbar END -->
-			
-	</nav>
-	<!-- Logo Nav END -->
+          <li class="dropdown nav-item"><span class="nav-link"><a href="{% url 'about' %}">Über uns</a>
+              <a class="dropdown-toggle dropdown-toggle-split pl-0">
+                <span class="visually-hidden">Toggle Dropdown</span>
+            </a></span>
+            <ul class="dropdown-menu dropdown-menu-end shadow pt-3" aria-labelledby="dataDropdown">
+              <li><a class="dropdown-item" href="{% url 'Datenschutzhinweis' %}">Datenschutzhinweis</a></li>
+          </ul></li>
+
+
+        </ul>
+        <!-- Nav Main menu END -->
+      </div>
+      <!-- Main navbar END -->
+
+  </nav>
+  <!-- Logo Nav END -->
 </header>
 <!-- Header END -->
