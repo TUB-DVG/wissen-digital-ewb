@@ -77,3 +77,6 @@ a.legal {
 .navbar-startpage {
     height: 120px;
 }
+#footer a {
+    color: #000000;
+}
