@@ -9,3 +9,62 @@
 .card_hover:hover { 
     transform: scale(1.1); 
 }
+.border-startsearch {
+    border-radius: 2px;
+    border: 2px solid var(--grau, #CCC);
+}
+.border-technical {
+    border-radius: 2px;
+    border: None;
+    outline: 2px solid var(--blau, #AFC5FF);
+    outline-offset: -17px;
+}
+.border-economical {
+    border-radius: 2px;
+    border: None;
+    outline: 2px solid var(--rot, #FFAE9D);
+    outline-offset: -17px;
+}
+.border-ecological {
+    border-radius: 2px;
+    border: None;
+    outline: 2px solid var(--gruen, #AEEAB4);
+    outline-offset: -17px;
+}
+.border-legal {
+    border-radius: 2px;
+    border: None;
+    outline: 2px solid var(--gelb, #F5E86A);
+    outline-offset: -17px;
+}
+
+a.technical {
+    color: black;
+    border-bottom: 2px solid var(--blau, #AFC5FF);
+}
+a.economical {
+    color: black;
+    border-bottom: 2px solid var(--rot, #FFAE9D);
+}
+a.ecological {
+    color: black;
+    border-bottom: 2px solid var(--gruen, #AEEAB4);
+}
+a.legal {
+    color: black;
+    border-bottom: 2px solid var(--gelb, #F5E86A);
+}
+
+#container-start-focus table td {
+    padding: 3px;
+    min-width: 40px;
+}
+#container-start-focus img {
+    height: 35px;
+    min-height: 30px;
+    flex-shrink: 0;
+}
+
+.navbar-startpage {
+    height: 120px;
+}
