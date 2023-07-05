@@ -80,3 +80,8 @@
 #footer a {
     color: #000000;
 }
+
+#container-cards-tools .border-technical {
+    border-radius: 2px;
+    border: 2px solid var(--technical-color);
+}
