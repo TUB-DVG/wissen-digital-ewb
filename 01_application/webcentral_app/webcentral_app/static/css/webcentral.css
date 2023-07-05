@@ -98,3 +98,6 @@
     background-color: var(--technical-color);
     color: white;
 }
+.card-text {
+    color: black;
+}
