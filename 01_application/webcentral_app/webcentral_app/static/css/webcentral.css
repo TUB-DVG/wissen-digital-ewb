@@ -85,3 +85,16 @@
     border-radius: 2px;
     border: 2px solid var(--technical-color);
 }
+
+#container-cards-tools .border-technical {
+    border-radius: 2px;
+    border: 2px solid var(--technical-color);
+}
+#container-cards-tools .border-technical-round {
+    border-radius: 20px;
+    border: 2px solid var(--technical-color);
+}
+#container-cards-tools .btn-technical {
+    background-color: var(--technical-color);
+    color: white;
+}
