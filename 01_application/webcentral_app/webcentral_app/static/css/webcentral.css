@@ -3,6 +3,15 @@
  * this file contains the styles and css formats that are custom to webcentral 
  * card_hover: allows the item display cards to grow on hover to show user selection : Added 06/20/2023
  */
+
+:root {
+    --technical-color: #AFC5FF;
+    --economical-color: #FFAE9D;
+    --ecological-color: #AEEAB4;
+    --legal-color: #F5E86A;
+    --search-color: #CCC;
+}
+
 .card_hover{ 
     transition: all .2s ease-in-out; 
 }
@@ -11,48 +20,48 @@
 }
 .border-startsearch {
     border-radius: 2px;
-    border: 2px solid var(--grau, #CCC);
+    border: 2px solid var(--search-color);
 }
 .border-technical {
     border-radius: 2px;
     border: None;
-    outline: 2px solid var(--blau, #AFC5FF);
+    outline: 2px solid var(--technical-color);
     outline-offset: -17px;
 }
 .border-economical {
     border-radius: 2px;
     border: None;
-    outline: 2px solid var(--rot, #FFAE9D);
+    outline: 2px solid var(--economical-color);
     outline-offset: -17px;
 }
 .border-ecological {
     border-radius: 2px;
     border: None;
-    outline: 2px solid var(--gruen, #AEEAB4);
+    outline: 2px solid var(--ecological-color);
     outline-offset: -17px;
 }
 .border-legal {
     border-radius: 2px;
     border: None;
-    outline: 2px solid var(--gelb, #F5E86A);
+    outline: 2px solid var(--legal-color);
     outline-offset: -17px;
 }
 
 a.technical {
     color: black;
-    border-bottom: 2px solid var(--blau, #AFC5FF);
+    border-bottom: 2px solid var(--technical-color);
 }
 a.economical {
     color: black;
-    border-bottom: 2px solid var(--rot, #FFAE9D);
+    border-bottom: 2px solid var(--economical-color);
 }
 a.ecological {
     color: black;
-    border-bottom: 2px solid var(--gruen, #AEEAB4);
+    border-bottom: 2px solid var(--ecological-color);
 }
 a.legal {
     color: black;
-    border-bottom: 2px solid var(--gelb, #F5E86A);
+    border-bottom: 2px solid var(--legal-color);
 }
 
 #container-start-focus table td {
