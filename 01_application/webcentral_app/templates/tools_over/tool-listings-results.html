@@ -3,7 +3,7 @@
 <!-- Card item START -->
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'tool_view' tool.id %}">
-    <div class="card shadow h-100">
+    <div class="card border-technical h-100">
       <!-- Image -->
       <div class="image-container d-flex" style="height: 150px;">
         {%if tool.image %}
@@ -24,7 +24,7 @@
         <h5 class="card-title">
           {{ tool.name   }}
         </h5>
-        <p class="mb-2 text-truncate-2">
+        <p class="card-text mb-2 text-truncate-2">
           Nutzerschnittstelle: {{ tool.userInterface   }}
         </p>
       </div>
