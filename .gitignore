@@ -38,3 +38,4 @@ postgres/*.sql
 /scripts/log
 /02_work_doc/10_test/testingVenv
 log
+*.css.map
