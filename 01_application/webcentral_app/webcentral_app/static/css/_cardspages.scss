@@ -1,0 +1,38 @@
+/* formating cards */
+@mixin border-rect($border-color) {
+  border-radius: 2px;
+  border: 2px solid $border-color;
+}
+@mixin border-round ($border-color) {
+  border-radius: 20px;
+  border: 2px solid $border-color;
+}
+@mixin btn-search ($btn-color, $btn-text-color) {
+  background-color: $btn-color;
+  color: $btn-text-color;
+}
+#container-cards-tools {
+  .border-technical {
+    @include border-rect($technical-color)
+  }
+  .border-technical-round {
+    @include border-round($technical-color)
+  }
+  .btn-technical {
+    @include btn-search($technical-color, $third-text-color)
+  }
+}
+
+.card-text {
+  color: $primary-text-color;
+}
+
+/* card_hover: allows the item display cards to grow on hover
+ * to show user selection : Added 06/20/2023
+*/
+.card_hover{
+  transition: all .2s ease-in-out;
+}
+.card_hover:hover {
+  transform: scale(1.1);
+}

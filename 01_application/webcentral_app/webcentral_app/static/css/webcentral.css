@@ -3,17 +3,6 @@
  * use webcentral.SCSS to style the webcentral project
  * this file contains the styles and css formats that are custom to webcentral
 */
-/* card_hover: allows the item display cards to grow on hover
- * to show user selection : Added 06/20/2023
-*/
-.card_hover {
-  transition: all 0.2s ease-in-out;
-}
-
-.card_hover:hover {
-  transform: scale(1.1);
-}
-
 /* formating the startpage */
 #container-start-search .border-startsearch {
   border-radius: 2px;
@@ -70,12 +59,7 @@
   flex-shrink: 0;
 }
 
-/* formating footer */
-#footer a {
-  color: #000;
-}
-
-/* formating tools cards */
+/* formating cards */
 #container-cards-tools .border-technical {
   border-radius: 2px;
   border: 2px solid #AFC5FF;
@@ -90,6 +74,22 @@
 }
 
 .card-text {
+  color: #000;
+}
+
+/* card_hover: allows the item display cards to grow on hover
+ * to show user selection : Added 06/20/2023
+*/
+.card_hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.card_hover:hover {
+  transform: scale(1.1);
+}
+
+/* formating footer */
+#footer a {
   color: #000;
 }
 
