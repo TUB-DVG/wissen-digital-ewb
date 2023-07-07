@@ -88,6 +88,44 @@
   transform: scale(1.1);
 }
 
+/* format logos about page */
+@media (max-width: 991px) {
+  .about-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+  .about-logos a {
+    padding: 2em;
+  }
+  .about-logos img {
+    max-height: 120px;
+  }
+  .img-side-column {
+    margin-top: 2em;
+  }
+}
+@media (min-width: 992px) {
+  .about-logos {
+    height: 120px;
+  }
+  .about-logos img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+.about-logos img {
+  min-width: 95px;
+}
+
+.img-side-column {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* formating footer */
 #footer a {
   color: #000;
