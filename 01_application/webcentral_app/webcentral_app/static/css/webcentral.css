@@ -126,6 +126,28 @@
   margin-right: auto;
 }
 
+.collapseInfoContainer .collapseInfo.collapse:not(.show) {
+  display: block;
+  height: 3.2rem;
+  overflow: hidden;
+}
+
+.collapseInfoContainer .collapseInfo.collapsing {
+  height: 3.2rem;
+}
+
+.collapseInfoContainer a.text-truncation-btn.collapsed::after {
+  content: "Zeige mehr ...";
+}
+
+.collapseInfoContainer a.text-truncation-btn:not(.collapsed)::after {
+  content: "Zeige weniger ...";
+}
+
+.close-icon::before {
+  vertical-align: -0.2em;
+}
+
 /* formating footer */
 #footer a {
   color: #000;
