@@ -166,6 +166,28 @@
     padding: 0 !important;
   }
 }
+@media (max-width: 854px) {
+  .video-home {
+    width: 100%;
+  }
+  .video-text {
+    width: 100%;
+  }
+}
+@media (min-width: 855px) {
+  .video-home {
+    width: 854px;
+  }
+  .video-text {
+    width: 854px;
+  }
+}
+@media (max-width: 991px) {
+  .detail-card-body .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /* formating footer */
 #footer a {
   color: #000;
