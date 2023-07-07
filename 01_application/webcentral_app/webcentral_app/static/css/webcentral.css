@@ -146,6 +146,26 @@
   vertical-align: -0.2em;
 }
 
+.nav-link a {
+  color: #747579;
+}
+
+.nav-link a:hover {
+  color: #066ac9;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    padding: 0 1em;
+  }
+  .dropdown-menu.shadow {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    padding: 0 !important;
+  }
+}
 /* formating footer */
 #footer a {
   color: #000;
