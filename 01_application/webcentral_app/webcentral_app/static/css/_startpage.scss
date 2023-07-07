@@ -1,0 +1,55 @@
+/* formating the startpage */
+@mixin border-boxen($border-color) {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid $border-color;
+  outline-offset: -17px;
+}
+
+@mixin link-boxen($underscore-color, $text-color) {
+  color: $text-color;
+  border-bottom: 2px solid $underscore-color;
+}
+#container-start-search {
+  .border-startsearch {
+    border-radius: 2px;
+    border: 2px solid $search-color;
+  }
+}
+#container-start-focus {
+  .border-technical {
+    @include border-boxen($technical-color);
+  }
+  .border-economical {
+    @include border-boxen($economical-color);
+  }
+  .border-ecological {
+    @include border-boxen($ecological-color);
+  }
+  .border-legal {
+    @include border-boxen($legal-color);
+  }
+  a.technical {
+    @include link-boxen($technical-color, $primary-text-color);
+  }
+  a.economical {
+    @include link-boxen($economical-color, $primary-text-color);
+  }
+  a.ecological {
+    @include link-boxen($ecological-color, $primary-text-color);
+  }
+  a.legal {
+    @include link-boxen($legal-color, $primary-text-color);
+  }
+  table {
+    td {
+      padding: 3px;
+      min-width: 40px;
+    }
+  }
+  img {
+    height: 35px;
+    min-height: 30px;
+    flex-shrink: 0;
+  }
+}
