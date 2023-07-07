@@ -1,21 +1,21 @@
-.collapseInfoContainer .collapseInfo.collapse:not(.show) {
+/* define collapsable info container */
+.collapseInfoContainer {
+  .collapseInfo.collapse:not(.show) {
     display: block;
     height: 3.2rem;
     overflow: hidden;
-}
-
-.collapseInfoContainer .collapseInfo.collapsing {
+  }
+  .collapseInfo.collapsing {
     height: 3.2rem;
-}
-
-.collapseInfoContainer a.text-truncation-btn.collapsed::after {
+  }
+  a.text-truncation-btn.collapsed::after {
     content: 'Zeige mehr ...';
-}
-
-.collapseInfoContainer a.text-truncation-btn:not(.collapsed)::after {
+  }
+  a.text-truncation-btn:not(.collapsed)::after {
     content: 'Zeige weniger ...';
+  }
 }
 
 .close-icon::before {
-    vertical-align: -0.2em;
+  vertical-align: -0.2em;
 }
