@@ -188,6 +188,13 @@
     padding-right: 0;
   }
 }
+.video__wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
 .cookie-container {
   position: fixed;
   bottom: -100%;
@@ -217,13 +224,6 @@
   margin-bottom: 16px;
   border-radius: 8px;
   cursor: pointer;
-}
-
-.video__wrapper {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  padding-top: 25px;
-  height: 0;
 }
 
 /* formating footer */
