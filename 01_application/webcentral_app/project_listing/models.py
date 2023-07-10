@@ -1,11 +1,7 @@
-from pyexpat import model
-from typing import ValuesView
 from django.db import models
-from django.db import IntegrityError
-from django.forms import CharField
 from .models import *
-
 from sqlalchemy import null, true
+
 class Subproject(models.Model):
     referenceNumber_id=models.CharField(
         max_length=10,
