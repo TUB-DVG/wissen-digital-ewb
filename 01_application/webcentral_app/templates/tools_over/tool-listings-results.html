@@ -4,13 +4,6 @@
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'tool_view' tool.id %}">
     <div class="card border-technical h-100">
-        {% else %}
-        <img src="{%static 'img/Default.webp' %}"
-            class="card-img-top px-4 pt-4 pb-2 m-auto"
-            style="max-height: 100%; width: auto; display: block;"
-            alt="tool image (else)">
-        {% endif %}
-      </div>
       <!-- Card body -->
       <div class="card-body pb-0">
         <!-- Title -->
@@ -28,6 +21,8 @@
             class="card-img-bottom px-4 pt-4 pb-2 m-auto"
             style="max-height: 100%; width: auto; display: block;"
             alt="tool image (if=db)">
+        {% endif %}
+      </div>
       <!-- Card footer -->
       <div class="card-footer pt-0 pb-3">
         {% if tool.lastUpdate %}
