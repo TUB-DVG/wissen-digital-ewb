@@ -4,13 +4,6 @@
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'tool_view' tool.id %}">
     <div class="card border-technical h-100">
-      <!-- Image -->
-      <div class="image-container d-flex" style="height: 150px;">
-        {%if tool.image %}
-        <img src="{{ tool.image.url }}"
-            class="card-img-top px-4 pt-4 pb-2 m-auto"
-            style="max-height: 100%; width: auto; display: block;"
-            alt="tool image (if=db)">
         {% else %}
         <img src="{%static 'img/Default.webp' %}"
             class="card-img-top px-4 pt-4 pb-2 m-auto"
@@ -28,6 +21,13 @@
           Nutzerschnittstelle: {{ tool.userInterface   }}
         </p>
       </div>
+      <!-- Image -->
+      <div class="image-container d-flex" style="height: 150px;">
+        {%if tool.image %}
+        <img src="{{ tool.image.url }}"
+            class="card-img-bottom px-4 pt-4 pb-2 m-auto"
+            style="max-height: 100%; width: auto; display: block;"
+            alt="tool image (if=db)">
       <!-- Card footer -->
       <div class="card-footer pt-0 pb-3">
         {% if tool.lastUpdate %}
