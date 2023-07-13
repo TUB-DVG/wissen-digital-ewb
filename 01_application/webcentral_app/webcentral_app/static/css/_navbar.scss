@@ -2,13 +2,6 @@
     .navbar {
         padding: 0 1em
     }
-    
-    .dropdown-menu.shadow {
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        background: none !important;
-        padding: 0 !important
-    }
 }
 
 .navbar-light {
@@ -20,4 +13,12 @@
       }
     }
   }
+}
+
+.dropdown-menu {
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 1100;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }

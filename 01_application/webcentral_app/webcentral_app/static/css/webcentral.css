@@ -150,18 +150,20 @@
   .navbar {
     padding: 0 1em;
   }
-  .dropdown-menu.shadow {
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    background: none !important;
-    padding: 0 !important;
-  }
 }
 .navbar-light .navbar-nav .nav-link {
   color: #000;
 }
 .navbar-light .navbar-nav .nav-link a {
   color: #000;
+}
+
+.dropdown-menu {
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 1100;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 @media (max-width: 854px) {
