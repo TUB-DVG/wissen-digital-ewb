@@ -1,5 +1,5 @@
 .nav-link a {
-    color: #747579;
+    color: $primary-text-color;
 }
 
 .nav-link a:hover {
@@ -19,4 +19,8 @@
         background: none !important;
         padding: 0 !important
     }
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: $primary-text-color;
 }
