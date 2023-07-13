@@ -146,15 +146,6 @@
   vertical-align: -0.2em;
 }
 
-.nav-link a {
-  color: #000;
-}
-
-.nav-link a:hover {
-  color: #066ac9;
-  text-decoration: none;
-}
-
 @media (max-width: 991px) {
   .navbar {
     padding: 0 1em;
@@ -168,6 +159,10 @@
 }
 .navbar-light .navbar-nav .nav-link {
   color: #000;
+}
+.navbar-light .navbar-nav .nav-link a:hover {
+  color: #066ac9;
+  text-decoration: none;
 }
 
 @media (max-width: 854px) {
