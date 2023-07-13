@@ -15,9 +15,8 @@
   .navbar-nav {
     .nav-link{
       color: $primary-text-color;
-      a:hover {
-        color: #066ac9;
-        text-decoration: none;
+      a {
+        color: $primary-text-color;
       }
     }
   }
