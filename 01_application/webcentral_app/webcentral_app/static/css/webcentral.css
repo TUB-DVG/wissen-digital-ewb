@@ -147,7 +147,7 @@
 }
 
 .nav-link a {
-  color: #747579;
+  color: #000;
 }
 
 .nav-link a:hover {
@@ -166,6 +166,10 @@
     padding: 0 !important;
   }
 }
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
+
 @media (max-width: 854px) {
   .video-home {
     width: 100%;
