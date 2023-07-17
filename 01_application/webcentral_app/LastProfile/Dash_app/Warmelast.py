@@ -51,8 +51,8 @@ app.layout = html.Div([
     # Dropdown for the application options
     dcc.Dropdown( 
         options = [
-            {'label': 'Standard', 'value': 'on'}, 
-            {'label': 'Testrefenzjahr', 'value': 'off'},     
+            {'label': 'Testrefenzjahr', 'value': 'off'},
+            {'label': 'Wetterstation', 'value': 'on'}     
         ],
 
         placeholder = "Berechnungstyp",
@@ -63,7 +63,7 @@ app.layout = html.Div([
     # Dropdown for State options for the Wetterdienst station choice
         dcc.Dropdown(
             stations.all( ).df['state'].unique(),
-            placeholder = "Auswahl der Bundesland",
+            placeholder = "Auswahl des Bundesland",
             id = 'state' 
         ),
         # Dropdown for the available wetterdienst stations in the chosen State
@@ -90,7 +90,7 @@ app.layout = html.Div([
                   'value': '15'},
 
             ],
-        placeholder = "Auswahl des Typs",
+        placeholder = "Auswahl des Gebäudetyps",
         id = 'application',
          # <-- This is the line that will be changed by the dropdown callback
     ),
@@ -98,7 +98,7 @@ app.layout = html.Div([
     # Input field for the heat_demand in kWh/a      
     dcc.Input(
         id = "heatRequirement", type = "number",
-        placeholder = "Jahreswärmebedarfs in kWh/a", 
+        placeholder = "Jahreswärmebedarf in kWh/a", 
         debounce = True,style = {'width':'200px'}
     ),
     html.Br(),
@@ -133,7 +133,7 @@ app.layout = html.Div([
     html.Button('Approximation starten', id = 'approximation_start'),
 
     #Download data as csv
-    html.Button("Download Csv", id = "btn-download-csv"),
+    html.Button("Download als sv", id = "btn-download-csv"),
     dcc.Download(id = "download-csv"),
     # Graph
     dcc.Graph(id = 'heat_graph', figure = {}),
