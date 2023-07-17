@@ -218,14 +218,19 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
     Q_INPUT = heatDemand
     for i in range(0,stationData.shape[0]):
     
+    
         Q[i] = Q[i]*(Q_INPUT/qSum)
      
         qWW.append(D*(Q[i]/h[i]))
 
-    start=stationData.index[stationData.date == 
-                            pd.Timestamp(startDate+" 01:00:00+00:00")].tolist()[0]
-    end=stationData.index[stationData.date == 
-                            pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
+    if stationData: 
+        start=stationData.index[stationData.date == 
+                                pd.Timestamp(startDate+" 01:00:00+00:00")].tolist()[0]
+        end=stationData.index[stationData.date == 
+                                pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
+    else:
+        start = startDate
+        end  = endDate
 
     heatApproximationDf = pd.DataFrame({'Time':stationData['date'][start:end],
                                         'Last':Q[start:end],
