@@ -202,13 +202,6 @@
             </form>
           </div>
           <!-- Select item END -->
-          <!-- Clear button -->
-          <div class="col-xl-1">
-            <a href="{% url 'tool_list' %}">
-              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-                Alle</h6>
-            </a>
-          </div>
           <!-- search Button -->
           <div class="col-xl-1">
             <button type="submit"
@@ -216,6 +209,14 @@
               id="search-submit-tools" href="">
               <i class="fas fa-search"></i>
             </button>
+          </div>
+          <!-- Clear button -->
+          <div class="col-xl-1">
+            <a href="{% url 'tool_list' %}">
+              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+                Alle
+              </h6>
+            </a>
           </div>
         </div>
       </form>
