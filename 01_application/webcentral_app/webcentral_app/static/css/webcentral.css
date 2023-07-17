@@ -234,5 +234,10 @@
 body {
   color: #000;
 }
+body h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 32px;
+}
 
 /*# sourceMappingURL=webcentral.css.map */
