@@ -133,8 +133,8 @@ def downloadAsCsv(nClicks,application:str,powerRequirement:int,state):
     else:
         label = [x['label'] for x in state if x['value'] == application]
         data.columns = [['Jahresstrombedarf in KWh/a :'+str(powerRequirement),''],
-        ['Anwendung:' + label[0],''],['',''],['Datum','Last']]    
-        return dcc.send_data_frame(data.to_csv,'Stromdata.csv',index = False)
+        ['Anwendung: ' + label[0],''],['',''],['Datum','Last']]    
+        return dcc.send_data_frame(data.to_csv,'Stromlastgang.csv',index = False)
 # ------------------------------------------------------------------------------
 # Connect the Plotly powerGraphs with Dash Components
 
