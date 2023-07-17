@@ -19,7 +19,7 @@ app.layout = html.Div([
     #Title
     html.H1("Stromlast Approximation", style = {'text-align': 'center'}),
     #Download data as csv
-    html.Button("Download Csv", id = "btnDownloadCsv"),
+    html.Button("Download als csv", id = "btnDownloadCsv"),
     dcc.Download(id = "downloadCsv"),
     # Dropdown for the available applications
     dcc.Dropdown(
