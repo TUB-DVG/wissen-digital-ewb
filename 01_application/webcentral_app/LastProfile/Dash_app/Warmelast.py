@@ -5,7 +5,7 @@ from typing import Tuple
 import plotly.graph_objects as go
 from django_plotly_dash import DjangoDash
 from dash.exceptions import PreventUpdate
-from .Warmelastapproximation_csv import heatLoad
+from .Warmelastapproximation_csv import heatLoad , heatLoadreferenceYear
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 
@@ -51,10 +51,9 @@ app.layout = html.Div([
     # Dropdown for the application options
     dcc.Dropdown( 
         options = [
-            {'label': 'Testrefenzjahr', 'value': 'off'},
-            {'label': 'Wetterstation', 'value': 'on'}     
+            {'label': 'Testreferenzjahr', 'value': 'on'},
+            {'label': 'Wetterstation', 'value': 'off'}     
         ],
-
         placeholder = "Berechnungstyp",
         id = 'referenceYear',
         value = 'on'
@@ -155,9 +154,9 @@ app.layout = html.Div([
 
 # Hide explanation text for refrenceyear run
 def showHideTxt(visibility_state):
-    if visibility_state == 'on':
-        return {'display': 'none'}
     if visibility_state == 'off':
+        return {'display': 'none'}
+    if visibility_state == 'on':
         return {'display': 'block'}
 @app.callback(
    Output(component_id = 'hideElements', component_property = 'style'),
@@ -165,9 +164,9 @@ def showHideTxt(visibility_state):
    )
 # Hide unnecessary elements for refrenceyear run
 def showHideElement(visibility_state):
-    if visibility_state == 'on':
-        return {'display': 'block'}
     if visibility_state == 'off':
+        return {'display': 'block'}
+    if visibility_state == 'on':
         return {'display': 'none'}
 #Selection of station
 @app.callback(
@@ -191,7 +190,7 @@ def stationSelection(state:str) -> list:
     )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
-    if referenceYear == "off":
+    if referenceYear == "on":
         minDate = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
     else:
@@ -238,12 +237,15 @@ def displayMonths(startDate:str,endDate:str)-> list:
     )
 # This function calculates the approximations and displays it
 def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
-displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear:str):
+                    displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear:str):
 
     if approximation_start is None:
         raise PreventUpdate
     else:
-        heat = heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
+        if referenceYear == "off":
+            heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
+        if referenceYear == "on":
+            heat = heatLoadreferenceYear(int(application),heatRequirement,startDate,endDate)
         #global heat_approximation
         heatApproximation = heat[1]
         missingValues = heat[0]
@@ -307,24 +309,24 @@ displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear
 )
 
 def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
-application:str,heatRequirement:int,startDate:str,endDate:str,
-state:str,station:str,labelsStation,labelsApplication):
-    if not nClicks:
-        raise PreventUpdate
-    else:
-        heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
-        labelStation = [x['label'] for x in labelsStation if x['value'] == station]
-        labelsApplication = [x['label'] for x in labelsApplication 
-        if x['value'] == application]
-        heatApproximation.columns = [['Jahreswärmebedarfs in kWh/a :'
-        +str(heatRequirement),'','',''  ],['Anwendung:'+labelsApplication[0],'','',''],
-        ['Zeitraum : Von '+startDate+' Bis '+endDate,'','',''],
-        ['Bundesland:'+state + ' Station:' + labelStation[0] ,'','',''],
-        ['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW',
-        'FehlendeWerte(Angepasst)']]    
+    application:str,heatRequirement:int,startDate:str,endDate:str,
+    state:str,station:str,labelsStation,labelsApplication):
+        if not nClicks:
+            raise PreventUpdate
+        else:
+            heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
+            labelStation = [x['label'] for x in labelsStation if x['value'] == station]
+            labelsApplication = [x['label'] for x in labelsApplication 
+            if x['value'] == application]
+            heatApproximation.columns = [['Jahreswärmebedarfs in kWh/a :'
+            +str(heatRequirement),'','',''  ],['Anwendung:'+labelsApplication[0],'','',''],
+            ['Zeitraum : Von '+startDate+' Bis '+endDate,'','',''],
+            ['Bundesland:'+state + ' Station:' + labelStation[0] ,'','',''],
+            ['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW',
+            'FehlendeWerte(Angepasst)']]    
 
-        return dcc.send_data_frame(heatApproximation.to_csv,'WarmeData.csv',
-                                   index=False,encoding = 'utf-8')
+            return dcc.send_data_frame(heatApproximation.to_csv,'WarmeData.csv',
+                                       index=False,encoding = 'utf-8')
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
