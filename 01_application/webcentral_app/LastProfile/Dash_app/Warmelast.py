@@ -73,7 +73,7 @@ app.layout = html.Div([
     ],id = 'hideElements', style = {'display': 'block'}),
     dcc.Dropdown(
         options = [
-                {'label': 'Einfamlienhaus ', 'value': '2'},
+                {'label': 'Einfamilienhaus ', 'value': '2'},
                 {'label': 'Mehrfamilienhaus ', 'value': '3'},
                 {'label': 'Gebietskörperschaft', 'value': '4'},
                 {'label': 'Einzelhandel, Großhandel', 'value': '5'},
@@ -133,7 +133,7 @@ app.layout = html.Div([
     html.Button('Approximation starten', id = 'approximation_start'),
 
     #Download data as csv
-    html.Button("Download als sv", id = "btn-download-csv"),
+    html.Button("Download als csv", id = "btn-download-csv"),
     dcc.Download(id = "download-csv"),
     # Graph
     dcc.Graph(id = 'heat_graph', figure = {}),
@@ -215,9 +215,9 @@ def displayMonths(startDate:str,endDate:str)-> list:
     endDate,freq = 'W').strftime("%B").unique().tolist()
     # Setting the months in the right format for plotly dash
     displayMonths = [{"label":index , 
-    "value": datetime.datetime.strptime(index, "%B").month} 
-    for index in Months ]
-    displayMonths.append ({"label":'All' , "value": 'All'})
+        "value": datetime.datetime.strptime(index, "%B").month} 
+        for index in Months ]
+    displayMonths.append ({"label":'All' , "value": 'Alle'})
 
     return displayMonths
 
