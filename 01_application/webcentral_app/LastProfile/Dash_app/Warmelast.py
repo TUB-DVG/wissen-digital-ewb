@@ -41,7 +41,7 @@ app.layout = html.Div([
                 "Koordinatensystem : Lambert konform konisch",html.Br(), 
                 "Rechtswert        : 4201500 Meter",html.Br(), 
                 "Hochwert          : 2848500 Meter",html.Br(), 
-                "Hoehenlage        : 36 Meter über NN",html.Br(), 
+                "Höhenlage        : 36 Meter über NN",html.Br(), 
                 "Erstellung des Datensatzes im Mai 2016",html.Br(), 
                 "Art des TRY       : mittleres Jahr",html.Br(),
                 "Bezugszeitraum    : 1995-2012",html.Br(), 
