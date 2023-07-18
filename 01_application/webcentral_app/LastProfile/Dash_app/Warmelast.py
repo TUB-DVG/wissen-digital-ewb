@@ -186,10 +186,11 @@ def stationSelection(state:str) -> list:
     Output(component_id = 'datePicker',component_property = 'max_date_allowed'),
     Input(component_id = 'station', component_property = 'value'),
     Input(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = False
     )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
+    print("datrange pciker", referenceYear)
     if referenceYear == "on":
         minDate = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
@@ -198,7 +199,7 @@ def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
         stationData = data.values.all().df
         minDate = (min(stationData['date'])).date()
         maxDate = (max(stationData['date'])).date()
-
+        print("Date Range picker", minDate, maxDate)
     return minDate, maxDate
 
 #Setting Diplay Month
@@ -206,7 +207,7 @@ def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
     Output('displayMonth','options'),
     Input('datePicker', 'start_date'),
     Input('datePicker', 'end_date'),
-    prevent_initial_call  = True
+    prevent_initial_call  = False
     )
 # The following function  a list of available months in the data range selected
 def displayMonths(startDate:str,endDate:str)-> list:
@@ -239,12 +240,18 @@ def displayMonths(startDate:str,endDate:str)-> list:
 def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
                     displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear:str):
 
+    
     if approximation_start is None:
         raise PreventUpdate
-    else:
+    while (startDate is None) & (endDate is None):
+        raise PreventUpdate 
+    #help
+    else: 
+        print(referenceYear)
+        print('this is the end', startDate, endDate)
         if referenceYear == "off":
             heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
-        if referenceYear == "on":
+        if referenceYear == "on": 
             heat = heatLoadreferenceYear(int(application),heatRequirement,startDate,endDate)
         #global heat_approximation
         heatApproximation = heat[1]
@@ -307,10 +314,10 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
     State("application","options"),
     prevent_initial_call = True,
 )
-
 def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
     application:str,heatRequirement:int,startDate:str,endDate:str,
     state:str,station:str,labelsStation,labelsApplication):
+    #To Do Add download for Wärmelast 
         if not nClicks:
             raise PreventUpdate
         else:
