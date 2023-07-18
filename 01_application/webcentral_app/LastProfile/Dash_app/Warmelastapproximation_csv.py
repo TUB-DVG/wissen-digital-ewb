@@ -13,7 +13,7 @@ TRY_PATH = os.path.join(PATH , 'TRY2015_524124130664_Jahr.csv')
 
 def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:str,
              referenceYear:str)-> Tuple[int, pd.DataFrame,pd.DataFrame]:
-    if referenceYear == "on":
+    if referenceYear == "off":
         # ToDo check with Firas why this parameter is "on", when 
         #Setting up the resolution for data filtering
         RESOLUTION = 'HOURLY'
@@ -230,20 +230,12 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
     # end=stationData.index[stationData.date == pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
    
     print("This ist the end 2", startDate, endDate)
-    print(stationData.date)
-    start=stationData.index[stationData.date == pd.Timestamp(startDate+" 01:00:00+00:00")].tolist()[0]
-    end=stationData.index[stationData.date ==  pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()#[0] +1
-
+    start=stationData[stationData.date == pd.Timestamp(startDate+" 01:00:00+00:00")].index.tolist()[0]
+    end=stationData[stationData.date ==  pd.Timestamp(endDate+" 23:00:00+00:00")].index.tolist()[0] #+1
     heatApproximationDf = pd.DataFrame({'Time':stationData['date'][start:end],
                                         'Last':Q[start:end],
                                         'WW_Last':qWW[start:end],
                                         'fehlend':stationData['fehlend'][start:end]})
-
-    heatApproximationDf = pd.DataFrame({'Time':stationData['date'],
-                                        'Last':Q,
-                                        'WW_Last':qWW,
-                                        'fehlend':stationData['fehlend']})
-
     return missingValues,heatApproximationDf
 
 
