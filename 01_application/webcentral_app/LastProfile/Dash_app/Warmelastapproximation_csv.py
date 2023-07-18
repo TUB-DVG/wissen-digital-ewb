@@ -3,15 +3,18 @@ import pathlib
 import os.path 
 import pandas as pd
 from typing import Tuple
-#from tracemalloc import start
+import datetime 
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 
 PATH = pathlib.Path(__file__).parent.resolve() 
 DATA_PATH = os.path.join(PATH , 'Wärme_Strom.csv') 
 TRY_PATH = os.path.join(PATH , 'TRY2015_524124130664_Jahr.csv') 
+
+
 def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:str,
              referenceYear:str)-> Tuple[int, pd.DataFrame,pd.DataFrame]:
     if referenceYear == "on":
+        # ToDo check with Firas why this parameter is "on", when 
         #Setting up the resolution for data filtering
         RESOLUTION = 'HOURLY'
         # Parameter variable selection
@@ -223,14 +226,14 @@ def heatLoad(application:int,heatDemand:int,station:int,startDate:str,endDate:st
      
         qWW.append(D*(Q[i]/h[i]))
 
-    if stationData: 
+    if referenceYear == "off": 
         start=stationData.index[stationData.date == 
                                 pd.Timestamp(startDate+" 01:00:00+00:00")].tolist()[0]
         end=stationData.index[stationData.date == 
                                 pd.Timestamp(endDate+" 23:00:00+00:00")].tolist()[0] +1
     else:
-        start = startDate
-        end  = endDate
+        start = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
+        end = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
 
     heatApproximationDf = pd.DataFrame({'Time':stationData['date'][start:end],
                                         'Last':Q[start:end],
