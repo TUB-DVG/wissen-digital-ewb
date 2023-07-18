@@ -190,7 +190,6 @@ def stationSelection(state:str) -> list:
     )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
-    print("datrange pciker", referenceYear)
     if referenceYear == "on":
         minDate = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
@@ -199,7 +198,6 @@ def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
         stationData = data.values.all().df
         minDate = (min(stationData['date'])).date()
         maxDate = (max(stationData['date'])).date()
-        print("Date Range picker", minDate, maxDate)
     return minDate, maxDate
 
 #Setting Diplay Month
@@ -246,9 +244,7 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
     while (startDate is None) & (endDate is None):
         raise PreventUpdate 
     #help
-    else: 
-        print(referenceYear)
-        print('this is the end', startDate, endDate)
+    else:
         if referenceYear == "off":
             heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
         if referenceYear == "on": 
