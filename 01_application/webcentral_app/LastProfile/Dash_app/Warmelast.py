@@ -4,6 +4,7 @@ import pandas as pd
 from typing import Tuple
 import plotly.graph_objects as go
 from django_plotly_dash import DjangoDash
+from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
 from .Warmelastapproximation_csv import heatLoad , heatLoadreferenceYear
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
@@ -130,7 +131,6 @@ app.layout = html.Div([
         inline = True
     ),
     html.Button('Approximation starten', id = 'approximation_start'),
-
     #Download data as csv
     html.Button("Download als csv", id = "btn-download-csv"),
     dcc.Download(id = "download-csv"),
@@ -236,19 +236,17 @@ def displayMonths(startDate:str,endDate:str)-> list:
     )
 # This function calculates the approximations and displays it
 def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
-                    displayMonth:str,startDate:str,endDate:str,approximation_start:int,referenceYear:str):
+                    displayMonth:str,startDate:str,endDate:str,
+                    n_clicks:int,referenceYear:str):
 
-    
-    if approximation_start is None:
+    if not n_clicks:
         raise PreventUpdate
     while (startDate is None) & (endDate is None):
         raise PreventUpdate 
-    #help
-    else:
-        if referenceYear == "off":
-            heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
-        if referenceYear == "on": 
-            heat = heatLoadreferenceYear(int(application),heatRequirement,startDate,endDate)
+    # Restructure Option 1: Seperate Graph update and calculation
+    # Restrucute Option 2: validate, 
+    if n_clicks:
+        heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
         #global heat_approximation
         heatApproximation = heat[1]
         missingValues = heat[0]
@@ -263,7 +261,6 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
             'Time':(heatApproximation.groupby(heatApproximation.Time.dt.month).
             get_group(int(displayMonth)))
             ['Time'],'fehlend':heatApproximation['fehlend']})
-        from plotly.subplots import make_subplots
         fig=make_subplots(specs = [[{"secondary_y": True}]])
 
         fig.add_trace(go.Scatter(name = 'Wärmelastgang in kW',x = result['Time'],
@@ -290,7 +287,9 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
         title_text = "Trinkwarmwasser-Lastgang in kW", 
         secondary_y = True
         )
- 
+
+        #approximation_start = None 
+
         return fig,'Für die ausgewählte Station gibt es ' + str(missingValues) + \
             ' fehlende Werte, die in der Grafik rot markiert sind. ' ,\
             pd.DataFrame.to_dict(heatApproximation)
@@ -306,28 +305,31 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
     Input('datePicker', 'end_date'),
     Input('state', 'value'),
     Input('station','value'),
+    Input(component_id = 'referenceYear', component_property = 'value'),
     State('station',"options"),
-    State("application","options"),
+    State("application","options"), 
     prevent_initial_call = True,
 )
 def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
     application:str,heatRequirement:int,startDate:str,endDate:str,
-    state:str,station:str,labelsStation,labelsApplication):
+    state:str,station:str,labelsStation,labelsApplication, referenceYear:str):
     #To Do Add download for Wärmelast 
         if not nClicks:
             raise PreventUpdate
         else:
-            heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
-            labelStation = [x['label'] for x in labelsStation if x['value'] == station]
-            labelsApplication = [x['label'] for x in labelsApplication 
-            if x['value'] == application]
-            heatApproximation.columns = [['Jahreswärmebedarfs in kWh/a :'
-            +str(heatRequirement),'','',''  ],['Anwendung:'+labelsApplication[0],'','',''],
-            ['Zeitraum : Von '+startDate+' Bis '+endDate,'','',''],
-            ['Bundesland:'+state + ' Station:' + labelStation[0] ,'','',''],
-            ['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW',
-            'FehlendeWerte(Angepasst)']]    
-
+            if referenceYear == "off":
+                heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
+                labelStation = [x['label'] for x in labelsStation if x['value'] == station]
+                labelsApplication = [x['label'] for x in labelsApplication 
+                if x['value'] == application]
+                heatApproximation.columns = [['Jahreswärmebedarfs in kWh/a :'
+                +str(heatRequirement),'','',''  ],['Anwendung:'+labelsApplication[0],'','',''],
+                ['Zeitraum : Von '+startDate+' Bis '+endDate,'','',''],
+                ['Bundesland:'+state + ' Station:' + labelStation[0] ,'','',''],
+                ['','','',''],['Datum','WärmeLast in kW','TrinkwasserWärmeLast in kW',
+                'FehlendeWerte(Angepasst)']]    
+            if referenceYear == "on":
+                heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)  
             return dcc.send_data_frame(heatApproximation.to_csv,'WarmeData.csv',
                                        index=False,encoding = 'utf-8')
 # ------------------------------------------------------------------------------
