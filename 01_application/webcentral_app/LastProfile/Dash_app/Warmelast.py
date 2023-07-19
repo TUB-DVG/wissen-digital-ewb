@@ -7,7 +7,7 @@ import dash
 from django_plotly_dash import DjangoDash
 from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
-from .Warmelastapproximation_csv import heatLoad , heatLoadreferenceYear
+from .Warmelastapproximation_csv import heatLoad
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
 
