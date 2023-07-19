@@ -136,7 +136,7 @@
                 {% if tool.lastUpdate %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{ lastUpdateClass }} fa-fw text-primary">
+                    <i class="{{ lastUpdateClass }} fa-fw">
                     </i>
                     {{ lastUpdateLabel }}
                   </span>
@@ -146,14 +146,14 @@
                 {% endif %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-book-open text-primary"></i>
+                    <i class="fas fa-fw fa-book-open"></i>
                     Lizenz
                   </span>
                   <span>{{ tool.licence }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-history text-primary"></i>
+                    <i class="fas fa-fw fa-history"></i>
                     Lebenszyklusphase
                   </span>
                   <span>{{ tool.lifeCyclePhase }}</span>
