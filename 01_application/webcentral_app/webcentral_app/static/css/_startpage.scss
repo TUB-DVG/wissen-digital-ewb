@@ -20,8 +20,8 @@
   .border-technical {
     @include border-boxen($technical-color);
   }
-  .border-economical {
-    @include border-boxen($economical-color);
+  .border-operational {
+    @include border-boxen($operational-color);
   }
   .border-ecological {
     @include border-boxen($ecological-color);
@@ -32,8 +32,8 @@
   a.technical {
     @include link-boxen($technical-color, $primary-text-color);
   }
-  a.economical {
-    @include link-boxen($economical-color, $primary-text-color);
+  a.operational {
+    @include link-boxen($operational-color, $primary-text-color);
   }
   a.ecological {
     @include link-boxen($ecological-color, $primary-text-color);

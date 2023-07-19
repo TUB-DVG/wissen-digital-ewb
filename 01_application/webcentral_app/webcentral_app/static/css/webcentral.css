@@ -15,7 +15,7 @@
   outline: 2px solid #AFC5FF;
   outline-offset: -17px;
 }
-#container-start-focus .border-economical {
+#container-start-focus .border-operational {
   border-radius: 2px;
   border: None;
   outline: 2px solid #FFAE9D;
@@ -37,7 +37,7 @@
   color: #000;
   border-bottom: 2px solid #AFC5FF;
 }
-#container-start-focus a.economical {
+#container-start-focus a.operational {
   color: #000;
   border-bottom: 2px solid #FFAE9D;
 }
