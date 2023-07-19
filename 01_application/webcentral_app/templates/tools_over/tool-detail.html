@@ -14,7 +14,6 @@
         <h1>{{tool.name}}</h1>
         <!-- Content -->
         <ul class="list-inline mb-0">
-          
           {% if tool.lastUpdate %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
             <i class="{{ lastUpdateClass }} {{ lastUpdateColor }} me-2">
@@ -22,14 +21,12 @@
             {{tool.lastUpdate}}
           </li>
           {% endif %}
-          
           {% if tool.licence %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
             <i class="fas fa-bars fa-book-open text-info me-2">
             </i>{{tool.licence}}
           </li>
           {% endif %}
-
           {% if tool.lifeCyclePhase %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
             <i class="fas fa-bars fa-history text-info me-2">
@@ -37,7 +34,6 @@
             {{tool.lifeCyclePhase}}
           </li>
           {% endif %}
-
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
             <i class="fas fa-user-alt text-info me-2"></i>{{tool.targetGroup}}
           </li>
