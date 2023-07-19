@@ -51,11 +51,11 @@
 
 <!-- Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container">
+  <div class="container technical-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card shadow rounded-2 p-0">
+        <div class="card border-technical p-0">
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- tool detail START -->
             <div class="tab-pane container active" id="course-pills-1" >
@@ -98,8 +98,8 @@
         <div class="row mb-5 mb-lg-0">
           <div class="col-md-6 col-lg-12">
             <!-- Image Tool START -->
-            <div class="card shadow p-2 mb-4 z-index-9">
-              <div class="overflow-hidden rounded-3 text-center">
+            <div class="card border-technical p-2 mb-4 z-index-9">
+              <div class="overflow-hidden text-center">
                 {%if tool.image %}
                 <img src=" {{ tool.image.url }}"
                   class="" style="max-height: 150px;"
@@ -114,12 +114,12 @@
             </div>
             <!-- Image Tool END -->
             <!-- "Kurzinformationen" START -->
-            <div class="card card-body shadow p-4 mb-4">
+            <div class="card card-body border-technical p-4 mb-4">
               <!-- Title -->
               <h4 class="mb-3">Kurzinformationen</h4>
-              <ul class="list-group list-group-borderless">
+              <ul class="list-group border-0">
                 {% if tool.lastUpdate %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
                     <i class="{{ lastUpdateClass }} fa-fw">
                     </i>
@@ -129,14 +129,14 @@
                   </span>
                 </li>
                 {% endif %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open"></i>
                     Lizenz
                   </span>
                   <span>{{ tool.licence }}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-history"></i>
                     Lebenszyklusphase
@@ -147,7 +147,7 @@
             </div>
             <!-- "Kurzinformationen" END -->
             <!-- Tags START -->
-            <div class="card card-body shadow p-4">
+            <div class="card card-body border-technical p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
                 {% for usage in usages %} 
