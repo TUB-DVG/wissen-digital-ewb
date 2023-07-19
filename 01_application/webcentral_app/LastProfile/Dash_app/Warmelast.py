@@ -3,6 +3,7 @@ import locale
 import pandas as pd
 from typing import Tuple
 import plotly.graph_objects as go
+import dash 
 from django_plotly_dash import DjangoDash
 from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
@@ -224,29 +225,25 @@ def displayMonths(startDate:str,endDate:str)-> list:
     Output(component_id = 'heat_graph', component_property = 'figure'),
     Output(component_id = 'container',component_property = 'children'),
     Output(component_id = 'heat_approximationStoring',component_property = 'data'),
+    Input(component_id = 'approximation_start',component_property = 'n_clicks'),
     Input(component_id = 'application',component_property = 'value'),
     Input(component_id = 'station',component_property = 'value'),
     Input(component_id = 'heatRequirement',component_property = 'value'),
     Input(component_id = 'displayMonth',component_property = 'value'),
     Input(component_id = 'datePicker',component_property = 'start_date'),
     Input(component_id = 'datePicker',component_property = 'end_date'),
-    Input(component_id = 'approximation_start',component_property = 'n_clicks'),
     Input(component_id = 'referenceYear', component_property = 'value'),
     prevent_initial_call = True
     )
 # This function calculates the approximations and displays it
-def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
+def updateHeatGraph(n_clicks:int,application:str,StationId:int,heatRequirement:int,
                     displayMonth:str,startDate:str,endDate:str,
-                    n_clicks:int,referenceYear:str):
+                    referenceYear:str):
 
-    if not n_clicks:
-        raise PreventUpdate
-    while (startDate is None) & (endDate is None):
-        raise PreventUpdate 
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0] 
     # Restructure Option 1: Seperate Graph update and calculation
     # Restrucute Option 2: validate, 
-    if n_clicks:
-        print("This is the refercen", referenceYear)
+    if 'approximation_start' in changed_id:
         heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
         #global heat_approximation
         heatApproximation = heat[1]
@@ -315,10 +312,8 @@ def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
     application:str,heatRequirement:int,startDate:str,endDate:str,
     state:str,station:str,referenceYear:str, labelsStation,labelsApplication, ):
     #To Do Add download for Wärmelast 
-        if not nClicks:
-            raise PreventUpdate
-        else:
-            print(referenceYear)
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]      
+    if 'btn-download-csv' in changed_id:
             if referenceYear == "off":
                 heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
                 labelStation = [x['label'] for x in labelsStation if x['value'] == station]
