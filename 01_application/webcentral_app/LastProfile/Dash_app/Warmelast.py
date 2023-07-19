@@ -246,6 +246,7 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
     # Restructure Option 1: Seperate Graph update and calculation
     # Restrucute Option 2: validate, 
     if n_clicks:
+        print("This is the refercen", referenceYear)
         heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
         #global heat_approximation
         heatApproximation = heat[1]
@@ -305,18 +306,19 @@ def updateHeatGraph(application:str,StationId:int,heatRequirement:int,
     Input('datePicker', 'end_date'),
     Input('state', 'value'),
     Input('station','value'),
-    Input(component_id = 'referenceYear', component_property = 'value'),
+    Input('referenceYear', 'value'),
     State('station',"options"),
     State("application","options"), 
     prevent_initial_call = True,
 )
 def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
     application:str,heatRequirement:int,startDate:str,endDate:str,
-    state:str,station:str,labelsStation,labelsApplication, referenceYear:str):
+    state:str,station:str,referenceYear:str, labelsStation,labelsApplication, ):
     #To Do Add download for Wärmelast 
         if not nClicks:
             raise PreventUpdate
         else:
+            print(referenceYear)
             if referenceYear == "off":
                 heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
                 labelStation = [x['label'] for x in labelsStation if x['value'] == station]
