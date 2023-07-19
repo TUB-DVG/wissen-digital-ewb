@@ -60,15 +60,15 @@
 }
 
 /* formating cards */
-#container-cards-tools .border-technical {
+.technical-cards .border-technical {
   border-radius: 2px;
   border: 2px solid #AFC5FF;
 }
-#container-cards-tools .border-technical-round {
+.technical-cards .border-technical-round {
   border-radius: 20px;
   border: 2px solid #AFC5FF;
 }
-#container-cards-tools .btn-technical {
+.technical-cards .btn-technical {
   background-color: #AFC5FF;
   color: white;
 }
