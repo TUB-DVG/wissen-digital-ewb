@@ -4,6 +4,11 @@
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'norm_view' technicalStandards.id %}">
     <div class="card shadow h-100">
+      <!-- Card body -->
+      <div class="card-body pb-0">
+        <!-- Title -->
+        <h5 class="card-title"> {{ technicalStandards.name   }}</h5>
+      </div>
       <!-- Image -->
       <div class="image-container d-flex" style="height: 150px;">
         {%if technicalStandards.image %}
@@ -17,11 +22,6 @@
              style="max-height: 100%; width: auto; display: block;"
              alt="technicalStandards image (else)">
         {% endif %}
-      </div>
-      <!-- Card body -->
-      <div class="card-body pb-0">
-        <!-- Title -->
-        <h5 class="card-title"> {{ technicalStandards.name   }}</h5>
       </div>
       <!-- Card footer -->
       <!--
