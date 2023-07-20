@@ -77,6 +77,10 @@
   color: rgb(116, 117, 121);
 }
 
+.card-header-text {
+  color: #000;
+}
+
 /* card_hover: allows the item display cards to grow on hover
  * to show user selection : Added 06/20/2023
 */
