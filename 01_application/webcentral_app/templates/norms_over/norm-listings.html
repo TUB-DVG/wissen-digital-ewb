@@ -34,14 +34,16 @@ Page Banner END -->
 <!-- =======================
 Page content START -->
 <section class="pt-0">
-  <div class="container">
+  <div class="container technical-cards">
     <!-- Filter bar START -->
-    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
+    <form class="border-technical p-4 my-4 z-index-9 position-relative">
       <div class="row g-3">
         <!-- Input -->
         <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-          <input id="search-input-norms" class="form-control me-1"
-                 type="search" placeholder="Suchbegriff" name='searched'>
+          <input id="search-input-norms"
+                 class="form-control me-1 border-technical"
+                 type="search" placeholder="Suchbegriff"
+                 name='searched'>
         </div>
         <!-- Select item -->
         <div class="col-xl-7">
@@ -49,7 +51,7 @@ Page content START -->
             <div class="row g-3">
               <!-- Select items -->
               <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                <select class="form-select js-choice" aria-label=".form-select-sm example"
+                <select class="form-select js-choice border-technical-round" aria-label=".form-select-sm example"
                         name="n" id="source-input-norms"
                         title="Filtern nach der Bezeichnung der technischen Standards">
                   <option value="">
@@ -263,7 +265,7 @@ Page content START -->
 
               <!-- Search item -->
               <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                <select class="form-select js-choice"
+                <select class="form-select js-choice border-technical-round"
                         aria-label=".form-select-sm example" name="s" id="lizenz-input-norms"
                         title="Filter nach der Quelle der technischen Norm">
                   <option value="">
@@ -289,7 +291,7 @@ Page content START -->
         <!-- search Button -->
         <div class="col-xl-1">
           <button type="submit"
-                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                  class="btn btn-technical mb-0 rounded z-index-1 w-100"
                   id="search-submit-norms" href="">
             <i class="fas fa-search">
             </i>
@@ -298,7 +300,7 @@ Page content START -->
         <!-- Clear Button -->
         <div class="col-xl-1">
           <a href="{% url 'norm_list' %}">
-            <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">
+            <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
               Alle
             </h6>
           </a>
