@@ -14,16 +14,15 @@
 <!-- =======================
 Page Banner START -->
 <section class="py-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Überblick über die technische Standards</h1>
-					
-				</div>
-			</div>
+  <div class="container">
+	<div class="row">
+	  <div class="col-12">
+		<div class="bg-light p-4 text-center rounded-3">
+		  <h1 class="m-0">Überblick über die technische Standards</h1>
 		</div>
+	  </div>
 	</div>
+  </div>
 </section>
 <!-- =======================
 Page Banner END -->
@@ -35,214 +34,368 @@ Page Banner END -->
 <!-- =======================
 Page content START -->
 <section class="pt-0">
-	<div class="container">
+  <div class="container">
+    <!-- Filter bar START -->
+    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
+      <div class="row g-3">
+        <!-- Input -->
+        <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
+          <input id="search-input-norms" class="form-control me-1"
+                 type="search" placeholder="Suchbegriff" name='searched'>
+        </div>
+        <!-- Select item -->
+        <div class="col-xl-7">
+          <form  method="GET">
+            <div class="row g-3">
+              <!-- Select items -->
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice" aria-label=".form-select-sm example"
+                        name="n" id="source-input-norms"
+                        title="Filtern nach der Bezeichnung der technischen Standards">
+                  <option value="">
+                    Bezeichnung
+                  </option>
+                  <option value="ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" {% if name == "ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" %} selected="selected" {% endif %}>
+                    ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs
+                  </option>
+                  <option value="Arbeitsstättenrichtllinie ASR A4.1" {% if name == "Arbeitsstättenrichtllinie ASR A4.1" %} selected="selected" {% endif %}>
+                    Arbeitsstättenrichtllinie ASR A4.1
+                  </option>
+                  <option value="BISKO " {% if name == "BISKO " %} selected="selected" {% endif %}>
+                    BISKO
+                  </option>
+                  <option value="DIN 14095" {% if name == "DIN 14095" %} selected="selected" {% endif %}>
+                    DIN 14095
+                  </option>
+                  <option value="DIN 14675" {% if name == "DIN 14675" %} selected="selected" {% endif %}>
+                    DIN 14675
+                  </option>
+                  <option value="DIN 18017-3" {% if name == "DIN 18017-3" %} selected="selected" {% endif %}>
+                    DIN 18017-3
+                  </option>
+                  <option value="DIN 18599" {% if name == "DIN 18599" %} selected="selected" {% endif %}>
+                    DIN 18599
+                  </option>
+                  <option value="DIN 1946-6" {% if name == "DIN 1946-6" %} selected="selected" {% endif %}>
+                    DIN 1946-6
+                  </option>
+                  <option value="DIN 1986-100" {% if name == "DIN 1986-100" %} selected="selected" {% endif %}>
+                    DIN 1986-100
+                  </option>
+                  <option value="DIN 1988" {% if name == "DIN 1988" %} selected="selected" {% endif %}>
+                    DIN 1988
+                  </option>
+                  <option value="DIN 1988-300" {% if name == "DIN 1988-300" %} selected="selected" {% endif %}>
+                    DIN 1988-300
+                  </option>
+                  <option value="DIN 2000" {% if name == "DIN 2000" %} selected="selected" {% endif %}>
+                    DIN 2000
+                  </option>
+                  <option value="DIN 276" {% if name == "DIN 276" %} selected="selected" {% endif %}>
+                    DIN 276
+                  </option>
+                  <option value="DIN 4108" {% if name == "DIN 4108" %} selected="selected" {% endif %}>
+                    DIN 4108
+                  </option>
+                  <option value="DIN 4108 Beiblatt 2" {% if name == "DIN 4108 Beiblatt 2" %} selected="selected" {% endif %}>
+                    DIN 4108 Beiblatt 2
+                  </option>
+                  <option value="DIN 4108-2" {% if name == "DIN 4108-2" %} selected="selected" {% endif %}>
+                    DIN 4108-2
+                  </option>
+                  <option value="DIN 4108-3" {% if name == "DIN 4108-3" %} selected="selected" {% endif %}>
+                    DIN 4108-3
+                  </option>
+                  <option value="DIN 4108-6" {% if name == "DIN 4108-6" %} selected="selected" {% endif %}>
+                    DIN 4108-6
+                  </option>
+                  <option value="DIN 4109-1" {% if name == "DIN 4109-1" %} selected="selected" {% endif %}>
+                    DIN 4109-1
+                  </option>
+                  <option value="DIN 4701-10/12" {% if name == "DIN 4701-10/12" %} selected="selected" {% endif %}>
+                    DIN 4701-10/12
+                  </option>
+                  <option value="DIN 4708" {% if name == "DIN 4708" %} selected="selected" {% endif %}>
+                    DIN 4708
+                  </option>
+                  <option value="DIN 4753 " {% if name == "DIN 4753 " %} selected="selected" {% endif %}>
+                    DIN 4753
+                  </option>
+                  <option value="DIN EN 12056-2" {% if name == "DIN EN 12056-2" %} selected="selected" {% endif %}>
+                    DIN EN 12056-2
+                  </option>
+                  <option value="DIN EN 12056-3" {% if name == "DIN EN 12056-3" %} selected="selected" {% endif %}>
+                    DIN EN 12056-3</option>
+                  <option value="DIN EN 12502 1-5" {% if name == "DIN EN 12502 1-5" %} selected="selected" {% endif %}>
+                    DIN EN 12502 1-5
+                  </option>
+                  <option value="DIN EN 1264-1" {% if name == "DIN EN 1264-1" %} selected="selected" {% endif %}>
+                    DIN EN 1264-1
+                  </option>
+                  <option value="DIN EN 12831-1" {% if name == "DIN EN 12831-1" %} selected="selected" {% endif %}>
+                    DIN EN 12831-1
+                  </option>
+                  <option value="DIN EN 12831-Beiblatt 2" {% if name == "DIN EN 12831-Beiblatt 2" %} selected="selected" {% endif %}>
+                    DIN EN 12831-Beiblatt 2
+                  </option>
+                  <option value="DIN EN 15450" {% if name == "DIN EN 15450" %} selected="selected" {% endif %}>
+                    DIN EN 15450
+                  </option>
+                  <option value="DIN EN 16798-1" {% if name == "DIN EN 16798-1" %} selected="selected" {% endif %}>
+                    DIN EN 16798-1
+                  </option>
+                  <option value="DIN EN 1717" {% if name == "DIN EN 1717" %} selected="selected" {% endif %}>
+                    DIN EN 1717
+                  </option>
+                  <option value="DIN EN 442-1" {% if name == "DIN EN 442-1" %} selected="selected" {% endif %}>
+                    DIN EN 442-1
+                  </option>
+                  <option value="DIN EN 442-2" {% if name == "DIN EN 442-2" %} selected="selected" {% endif %}>
+                    DIN EN 442-2
+                  </option>
+                  <option value="DIN EN ISO 10077-02" {% if name == "DIN EN ISO 10077-02" %} selected="selected" {% endif %}>
+                    DIN EN ISO 10077-02
+                  </option>
+                  <option value="DIN EN ISO 10211" {% if name == "DIN EN ISO 10211" %} selected="selected" {% endif %}>
+                    DIN EN ISO 10211
+                  </option>
+                  <option value="DIN SPEC 15240" {% if name == "DIN SPEC 15240" %} selected="selected" {% endif %}>
+                    DIN SPEC 15240
+                  </option>
+                  <option value="DIN V 18599-9" {% if name == "DIN V 18599-9" %} selected="selected" {% endif %}>
+                    DIN V 18599-9
+                  </option>
+                  <option value="DIN/TS 12831-1:2020-04" {% if name == "DIN/TS 12831-1:2020-04" %} selected="selected" {% endif %}>
+                    DIN/TS 12831-1:2020-04
+                  </option>
+                  <option value="DVGW W 291" {% if name == "DVGW W 291" %} selected="selected" {% endif %}>
+                    DVGW W 291
+                  </option>
+                  <option value="DVGW W 293" {% if name == "DVGW W 293" %} selected="selected" {% endif %}>
+                    DVGW W 293
+                  </option>
+                  <option value="DVGW W 294 " {% if name == "DVGW W 294 " %} selected="selected" {% endif %}>
+                    DVGW W 294
+                  </option>
+                  <option value="DVGW W551" {% if name == "DVGW W551" %} selected="selected" {% endif %}>
+                    DVGW W551
+                  </option>
+                  <option value="DVGW W553" {% if name == "DVGW W553" %} selected="selected" {% endif %}>
+                    DVGW W553
+                  </option>
+                  <option value="DVGW-TRGI 2018" {% if name == "DVGW-TRGI 2018" %} selected="selected" {% endif %}>
+                    DVGW-TRGI 2018
+                  </option>
+                  <option value="DVGW-VP 670" {% if name == "DVGW-VP 670" %} selected="selected" {% endif %}>
+                    DVGW-VP 670
+                  </option>
+                  <option value="EN 1264-1" {% if name == "EN 1264-1" %} selected="selected" {% endif %}>
+                    EN 1264-1
+                  </option>
+                  <option value="EN 1264-2" {% if name == "EN 1264-2" %} selected="selected" {% endif %}>
+                    EN 1264-2
+                  </option>
+                  <option value="EN 13384-1" {% if name == "EN 13384-1" %} selected="selected" {% endif %}>
+                    EN 13384-1
+                  </option>
+                  <option value="EN 13384-2" {% if name == "EN 13384-2" %} selected="selected" {% endif %}>
+                    EN 13384-2
+                  </option>
+                  <option value="EN 13384-3" {% if name == "EN 13384-3" %} selected="selected" {% endif %}>
+                    EN 13384-3
+                  </option>
+                  <option value="EN 806 Teil 1 und 2" {% if name == "EN 806 Teil 1 und 2" %} selected="selected" {% endif %}>
+                    EN 806 Teil 1 und 2
+                  </option>
+                  <option value="EN ISO 13788" {% if name == "EN ISO 13788" %} selected="selected" {% endif %}>
+                    EN ISO 13788
+                  </option>
+                  <option value="EN ISO 6946" {% if name == "EN ISO 6946" %} selected="selected" {% endif %}>
+                    EN ISO 6946
+                  </option>
+                  <option value="GPC" {% if name == "GPC" %} selected="selected" {% endif %}>
+                    GPC
+                  </option>
+                  <option value="ISO 14.064" {% if name == "ISO 14.064" %} selected="selected" {% endif %}>
+                    ISO 14.064
+                  </option>
+                  <option value="ISO 50.001" {% if name == "ISO 50.001" %} selected="selected" {% endif %}>
+                    ISO 50.001
+                  </option>
+                  <option value="ISO 50.006" {% if name == "ISO 50.006" %} selected="selected" {% endif %}>
+                    ISO 50.006
+                  </option>
+                  <option value="OENORM H 7500-1" {% if name == "OENORM H 7500-1" %} selected="selected" {% endif %}>
+                    OENORM H 7500-1
+                  </option>
+                  <option value="TrinkwV" {% if name == "TrinkwV" %} selected="selected" {% endif %}>
+                    TrinkwV
+                  </option>
+                  <option value="VDI 2078" {% if name == "VDI 2078" %} selected="selected" {% endif %}>
+                    VDI 2078
+                  </option>
+                  <option value="VDI 2081" {% if name == "VDI 2081" %} selected="selected" {% endif %}>
+                    VDI 2081
+                  </option>
+                  <option value="VDI 3805" {% if name == "VDI 3805" %} selected="selected" {% endif %}>
+                    VDI 3805
+                  </option>
+                  <option value="VDI 4650" {% if name == "VDI 4650" %} selected="selected" {% endif %}>
+                    VDI 4650
+                  </option>
+                  <option value="VDI 6007 Blatt 1" {% if name == "VDI 6007 Blatt 1" %} selected="selected" {% endif %}>
+                    VDI 6007 Blatt 1
+                  </option>
+                  <option value="VDI 6007 Blatt 2" {% if name == "VDI 6007 Blatt 2" %} selected="selected" {% endif %}>
+                    VDI 6007 Blatt 2
+                  </option>
+                  <option value="VDI 6023" {% if name == "VDI 6023" %} selected="selected" {% endif %}>
+                    VDI 6023
+                  </option>
+                  <option value="ÖNORM EN 12831-1" {% if name == "ÖNORM EN 12831-1" %} selected="selected" {% endif %}>
+                    ÖNORM EN 12831-1
+                  </option>
+                  <option value="ÖNORM EN 12831-3" {% if name == "ÖNORM EN 12831-3" %} selected="selected" {% endif %}>
+                    ÖNORM EN 12831-3
+                  </option>
+                </select>
+              </div>
 
-		<!-- Filter bar START -->
-		<form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative">
-			<div class="row g-3">
-				<!-- Input -->
-				<div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-					<input id="search-input-norms" class="form-control me-1" type="search" placeholder="Suchbegriff" name='searched'>
-				</div>
+              <!-- Search item -->
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice"
+                        aria-label=".form-select-sm example" name="s" id="lizenz-input-norms"
+                        title="Filter nach der Quelle der technischen Norm">
+                  <option value="">
+                    Quelle
+                  </option>
+                  <option value="https://ghgprotocol.org/" {% if source == "https://ghgprotocol.org/" %} selected="selected" {% endif %}>
+                    https://ghgprotocol.org/
+                  </option>
+                  <option value="Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe" {% if source == "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe" %} selected="selected" {% endif %}>
+                    Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe
+                  </option>
+                  <option value="ENEKA - Energiekartenkartografie" {% if source == "ENEKA - Energiekartenkartografie" %} selected="selected" {% endif %}>
+                    ENEKA - Energiekartenkartografie
+                  </option>
+                  <option value="Hottgenroth Software Katalog" {% if source == "Hottgenroth Software Katalog" %} selected="selected" {% endif %}>
+                    Hottgenroth Software Katalog
+                  </option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Clear Button -->
+        <div class="col-xl-1">
+          <a href="{% url 'norm_list' %}">
+            <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">
+              Alle
+            </h6>
+          </a>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                  id="search-submit-norms" href="">
+            <i class="fas fa-search">
+            </i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <!-- Filter bar END -->
+    <!-- search tags START -->
+    <ul class="list-inline mb-0">
+      {% if search %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/norm_list/?searched={{search}}&n=&s=">
+            Suchbegriff: {{search}}
+          </a>
+          <a href="/norm_list/?searched=&n={% if name %}{{name}}{% endif %}&s={% if source %}{{source}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if name %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/norm_list/?searched=&n={{name}}&s=">
+            Suchbegriff: {{name}}
+          </a>
+          <a href="/norm_list/?searched={% if search %}{{search}}{% endif %}&n=&s={% if source %}{{ source}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if source %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="/norm_list/?searched=&n=&s={{source}}">
+            Suchbegriff: {{ source}}
+          </a>
+          <a href="/norm_list/?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s=">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+    <!-- search tags END -->
+    <!-- standards grid row START -->
+    <div class="row mt-3">
+      <!-- Main content START -->
+      <div class="col-12">
 
-				<!-- Select item -->
-				<div class="col-xl-7">
-					<form  method="GET">
-						<div class="row g-3">
-							
-							<!-- Select items -->
-						<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="n" id="source-input-norms" title="Filtern nach der Bezeichnung der technischen Standards"> 
-									
-									<option value="">Bezeichnung</option>
-									
-									<option value="ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" {% if name == "ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" %} selected="selected" {% endif %}>ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs</option>
-									<option value="Arbeitsstättenrichtllinie ASR A4.1" {% if name == "Arbeitsstättenrichtllinie ASR A4.1" %} selected="selected" {% endif %}>Arbeitsstättenrichtllinie ASR A4.1</option>
-									<option value="BISKO " {% if name == "BISKO " %} selected="selected" {% endif %}>BISKO </option>
-									<option value="DIN 14095" {% if name == "DIN 14095" %} selected="selected" {% endif %}>DIN 14095</option>
-									<option value="DIN 14675" {% if name == "DIN 14675" %} selected="selected" {% endif %}>DIN 14675</option>
-									<option value="DIN 18017-3" {% if name == "DIN 18017-3" %} selected="selected" {% endif %}>DIN 18017-3</option>
-									<option value="DIN 18599" {% if name == "DIN 18599" %} selected="selected" {% endif %}>DIN 18599</option>
-									<option value="DIN 1946-6" {% if name == "DIN 1946-6" %} selected="selected" {% endif %}>DIN 1946-6</option>
-									<option value="DIN 1986-100" {% if name == "DIN 1986-100" %} selected="selected" {% endif %}>DIN 1986-100</option>
-									<option value="DIN 1988" {% if name == "DIN 1988" %} selected="selected" {% endif %}>DIN 1988</option>
-									<option value="DIN 1988-300" {% if name == "DIN 1988-300" %} selected="selected" {% endif %}>DIN 1988-300</option>
-									<option value="DIN 2000" {% if name == "DIN 2000" %} selected="selected" {% endif %}>DIN 2000</option>
-									<option value="DIN 276" {% if name == "DIN 276" %} selected="selected" {% endif %}>DIN 276</option>
-									<option value="DIN 4108" {% if name == "DIN 4108" %} selected="selected" {% endif %}>DIN 4108</option>
-									<option value="DIN 4108 Beiblatt 2" {% if name == "DIN 4108 Beiblatt 2" %} selected="selected" {% endif %}>DIN 4108 Beiblatt 2</option>
-									<option value="DIN 4108-2" {% if name == "DIN 4108-2" %} selected="selected" {% endif %}>DIN 4108-2</option>
-									<option value="DIN 4108-3" {% if name == "DIN 4108-3" %} selected="selected" {% endif %}>DIN 4108-3</option>
-									<option value="DIN 4108-6" {% if name == "DIN 4108-6" %} selected="selected" {% endif %}>DIN 4108-6</option>
-									<option value="DIN 4109-1" {% if name == "DIN 4109-1" %} selected="selected" {% endif %}>DIN 4109-1</option>
-									<option value="DIN 4701-10/12" {% if name == "DIN 4701-10/12" %} selected="selected" {% endif %}>DIN 4701-10/12</option>
-									<option value="DIN 4708" {% if name == "DIN 4708" %} selected="selected" {% endif %}>DIN 4708</option>
-									<option value="DIN 4753 " {% if name == "DIN 4753 " %} selected="selected" {% endif %}>DIN 4753 </option>
-									<option value="DIN EN 12056-2" {% if name == "DIN EN 12056-2" %} selected="selected" {% endif %}>DIN EN 12056-2</option>
-									<option value="DIN EN 12056-3" {% if name == "DIN EN 12056-3" %} selected="selected" {% endif %}>DIN EN 12056-3</option>
-									<option value="DIN EN 12502 1-5" {% if name == "DIN EN 12502 1-5" %} selected="selected" {% endif %}>DIN EN 12502 1-5</option>
-									<option value="DIN EN 1264-1" {% if name == "DIN EN 1264-1" %} selected="selected" {% endif %}>DIN EN 1264-1</option>
-									<option value="DIN EN 12831-1" {% if name == "DIN EN 12831-1" %} selected="selected" {% endif %}>DIN EN 12831-1</option>
-									<option value="DIN EN 12831-Beiblatt 2" {% if name == "DIN EN 12831-Beiblatt 2" %} selected="selected" {% endif %}>DIN EN 12831-Beiblatt 2</option>
-									<option value="DIN EN 15450" {% if name == "DIN EN 15450" %} selected="selected" {% endif %}>DIN EN 15450</option>
-									<option value="DIN EN 16798-1" {% if name == "DIN EN 16798-1" %} selected="selected" {% endif %}>DIN EN 16798-1</option>
-									<option value="DIN EN 1717" {% if name == "DIN EN 1717" %} selected="selected" {% endif %}>DIN EN 1717</option>
-									<option value="DIN EN 442-1" {% if name == "DIN EN 442-1" %} selected="selected" {% endif %}>DIN EN 442-1</option>
-									<option value="DIN EN 442-2" {% if name == "DIN EN 442-2" %} selected="selected" {% endif %}>DIN EN 442-2</option>
-									<option value="DIN EN ISO 10077-02" {% if name == "DIN EN ISO 10077-02" %} selected="selected" {% endif %}>DIN EN ISO 10077-02</option>
-									<option value="DIN EN ISO 10211" {% if name == "DIN EN ISO 10211" %} selected="selected" {% endif %}>DIN EN ISO 10211</option>
-									<option value="DIN SPEC 15240" {% if name == "DIN SPEC 15240" %} selected="selected" {% endif %}>DIN SPEC 15240</option>
-									<option value="DIN V 18599-9" {% if name == "DIN V 18599-9" %} selected="selected" {% endif %}>DIN V 18599-9</option>
-									<option value="DIN/TS 12831-1:2020-04" {% if name == "DIN/TS 12831-1:2020-04" %} selected="selected" {% endif %}>DIN/TS 12831-1:2020-04</option>
-									<option value="DVGW W 291" {% if name == "DVGW W 291" %} selected="selected" {% endif %}>DVGW W 291</option>
-									<option value="DVGW W 293" {% if name == "DVGW W 293" %} selected="selected" {% endif %}>DVGW W 293</option>
-									<option value="DVGW W 294 " {% if name == "DVGW W 294 " %} selected="selected" {% endif %}>DVGW W 294 </option>
-									<option value="DVGW W551" {% if name == "DVGW W551" %} selected="selected" {% endif %}>DVGW W551</option>
-									<option value="DVGW W553" {% if name == "DVGW W553" %} selected="selected" {% endif %}>DVGW W553</option>
-									<option value="DVGW-TRGI 2018" {% if name == "DVGW-TRGI 2018" %} selected="selected" {% endif %}>DVGW-TRGI 2018</option>
-									<option value="DVGW-VP 670" {% if name == "DVGW-VP 670" %} selected="selected" {% endif %}>DVGW-VP 670</option>
-									<option value="EN 1264-1" {% if name == "EN 1264-1" %} selected="selected" {% endif %}>EN 1264-1</option>
-									<option value="EN 1264-2" {% if name == "EN 1264-2" %} selected="selected" {% endif %}>EN 1264-2</option>
-									<option value="EN 13384-1" {% if name == "EN 13384-1" %} selected="selected" {% endif %}>EN 13384-1</option>
-									<option value="EN 13384-2" {% if name == "EN 13384-2" %} selected="selected" {% endif %}>EN 13384-2</option>
-									<option value="EN 13384-3" {% if name == "EN 13384-3" %} selected="selected" {% endif %}>EN 13384-3</option>
-									<option value="EN 806 Teil 1 und 2" {% if name == "EN 806 Teil 1 und 2" %} selected="selected" {% endif %}>EN 806 Teil 1 und 2</option>
-									<option value="EN ISO 13788" {% if name == "EN ISO 13788" %} selected="selected" {% endif %}>EN ISO 13788</option>
-									<option value="EN ISO 6946" {% if name == "EN ISO 6946" %} selected="selected" {% endif %}>EN ISO 6946</option>
-									<option value="GPC" {% if name == "GPC" %} selected="selected" {% endif %}>GPC</option>
-									<option value="ISO 14.064" {% if name == "ISO 14.064" %} selected="selected" {% endif %}>ISO 14.064</option>
-									<option value="ISO 50.001" {% if name == "ISO 50.001" %} selected="selected" {% endif %}>ISO 50.001</option>
-									<option value="ISO 50.006" {% if name == "ISO 50.006" %} selected="selected" {% endif %}>ISO 50.006</option>
-									<option value="OENORM H 7500-1" {% if name == "OENORM H 7500-1" %} selected="selected" {% endif %}>OENORM H 7500-1</option>
-									<option value="TrinkwV" {% if name == "TrinkwV" %} selected="selected" {% endif %}>TrinkwV</option>
-									<option value="VDI 2078" {% if name == "VDI 2078" %} selected="selected" {% endif %}>VDI 2078</option>
-									<option value="VDI 2081" {% if name == "VDI 2081" %} selected="selected" {% endif %}>VDI 2081</option>
-									<option value="VDI 3805" {% if name == "VDI 3805" %} selected="selected" {% endif %}>VDI 3805</option>
-									<option value="VDI 4650" {% if name == "VDI 4650" %} selected="selected" {% endif %}>VDI 4650</option>
-									<option value="VDI 6007 Blatt 1" {% if name == "VDI 6007 Blatt 1" %} selected="selected" {% endif %}>VDI 6007 Blatt 1</option>
-									<option value="VDI 6007 Blatt 2" {% if name == "VDI 6007 Blatt 2" %} selected="selected" {% endif %}>VDI 6007 Blatt 2</option>
-									<option value="VDI 6023" {% if name == "VDI 6023" %} selected="selected" {% endif %}>VDI 6023</option>
-									<option value="ÖNORM EN 12831-1" {% if name == "ÖNORM EN 12831-1" %} selected="selected" {% endif %}>ÖNORM EN 12831-1</option>
-									<option value="ÖNORM EN 12831-3" {% if name == "ÖNORM EN 12831-3" %} selected="selected" {% endif %}>ÖNORM EN 12831-3</option>
-
-
-								</select>
-								
-							</div>
-
-							<!-- Search item -->
-							<div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-								
-								<select class="form-select js-choice" aria-label=".form-select-sm example" name="s" id="lizenz-input-norms" title="Filter nach der Quelle der technischen Norm">
-									
-									<option value="">Quelle</option>
-									<option value="https://ghgprotocol.org/" {% if source == "https://ghgprotocol.org/" %} selected="selected" {% endif %}>https://ghgprotocol.org/</option>
-									<option value="Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe" {% if source == "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe" %} selected="selected" {% endif %}>Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe</option>
-									<option value="ENEKA - Energiekartenkartografie" {% if source == "ENEKA - Energiekartenkartografie" %} selected="selected" {% endif %}>ENEKA - Energiekartenkartografie</option>
-									<option value="Hottgenroth Software Katalog" {% if source == "Hottgenroth Software Katalog" %} selected="selected" {% endif %}>Hottgenroth Software Katalog</option>
-																		
-								</select>
-							</div>
-						</div> <!-- Row END -->
-					</form>
-
-				</div>
-				<!-- Clear -->
-				<div class="col-xl-1">
-					
-                	<a href="{% url 'norm_list' %}"> <h6 class="btn btn-primary mb-0 rounded z-index-1 w-100">Alle</h6></a>
-					<!--<button class="btn btn-primary mb-0 rounded z-index-1 w-100" href="{% url 'norm_list' %}">Alle</button>-->
-				</div>
-				<!-- Button -->
-				<div class="col-xl-1">
-					<button type="submit" class="btn btn-primary mb-0 rounded z-index-1 w-100" id="search-submit-norms" href=""><i class="fas fa-search"></i></button>
-				</div>
-			</form>
-			</div> <!-- Row END -->
-		</form>
-		<!-- Filter bar END -->
-
-		<ul class="list-inline mb-0">
-			{% if search %}
-			<li class="list-inline-item"> 
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/norm_list/?searched={{search}}&n=&s=">Suchbegriff: {{search}}</a>
-					<a href="/norm_list/?searched=&n={% if name %}{{name}}{% endif %}&s={% if source %}{{source}}{% endif %}">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}	
-			{% if name %}
-			<li class="list-inline-item">
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/norm_list/?searched=&n={{name}}&s=">Suchbegriff: {{name}}</a>
-					<a href="/norm_list/?searched={% if search %}{{search}}{% endif %}&n=&s={% if source %}{{ source}}{% endif %}">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}	
-			{% if source %}
-			<li class="list-inline-item">
-				<div class="btn btn-outline-light btn-sm">
-					<a href="/norm_list/?searched=&n=&s={{source}}">Suchbegriff: {{ source}}</a>
-					<a href="/norm_list/?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s=">
-						<i class="bi bi-x fa-lg close-icon"></i>
-					</a>
-				</div>
-			</li>
-			{% endif %}
-		</ul>
-
-
-
-		<div class="row mt-3">
-			<!-- Main content START -->
-			<div class="col-12">
-
-				<!-- Course Grid START -->
-				<div class="row g-4" id="norm-listing-results">
-					{% include '../norms_over/norm-listings-results.html' %}
-
-					
-				</div>
-				<!-- Course Grid END -->
-
-				<!-- Pagination START -->
-			<div class="col-12">
-				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-					<ul class="pagination pagination-primary-soft rounded mb-0">
-						{% if page.has_previous %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
-						{% else %}
-						<!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
-						{% endif %}
-						{% if page.has_next %}
-						<li class="page-item mb-0"><a class="page-link" href="{%url 'norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}"><i class="fas fa-angle-double-right"></i></a></li>
-						{% else %}
-						<!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
-						{% endif %}
-					</ul>
-				</nav>
-			</div>
-			<!-- Pagination END -->
-			</div>
-			<!-- Main content END -->
-		</div><!-- Row END -->
-	</div>
+        <!-- Course Grid START -->
+        <div class="row g-4" id="norm-listing-results">
+          {% include '../norms_over/norm-listings-results.html' %}
+        </div>
+        <!-- standards grid END -->
+        <!-- Pagination START -->
+        <div class="col-12">
+          <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+            <ul class="pagination pagination-primary-soft rounded mb-0">
+              {% if page.has_previous %}
+              <li class="page-item mb-0">
+                <a class="page-link"
+                   href="{%url 'norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}"
+                   tabindex="-1">
+                  <i class="fas fa-angle-double-left">
+                  </i>
+                </a>
+              </li>
+              {% else %}
+              <!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
+              {% endif %}
+              {% if page.has_next %}
+              <li class="page-item mb-0">
+                <a class="page-link"
+                   href="{%url 'norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}">
+                  <i class="fas fa-angle-double-right">
+                  </i>
+                </a>
+              </li>
+              {% else %}
+              <!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        <!-- Pagination END -->
+      </div>
+      <!-- Main content END -->
+    </div><!-- Row END -->
+  </div>
 </section>
 <!-- =======================
-Page content END -->
-
-
+     Page content END -->
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
 
 {% endblock %}
-
-
-
-
-
