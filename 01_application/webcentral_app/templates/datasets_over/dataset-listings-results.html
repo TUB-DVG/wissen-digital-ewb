@@ -23,17 +23,6 @@
         </div>
 
         -->
-      <!-- Image -->
-
-      <div class="image-container d-flex" style="height: 150px;">
-        {%if dataset.image %}
-        <img src="{{ dataset.image.url }}" class="card-img-top px-4 pb-2 m-auto"
-          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
-        {% else %}
-        <img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 pb-2 m-auto"
-          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
-        {% endif %}
-      </div>
       <!-- Card body -->
 
       <div class="card-body pb-0">
@@ -46,6 +35,17 @@
             <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
             -->
 
+      </div>
+      <!-- Image -->
+
+      <div class="image-container d-flex" style="height: 150px;">
+        {%if dataset.image %}
+        <img src="{{ dataset.image.url }}" class="card-img-top px-4 pb-2 m-auto"
+          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
+        {% else %}
+        <img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 pb-2 m-auto"
+          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
+        {% endif %}
       </div>
 
       <!-- Card footer -->
