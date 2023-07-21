@@ -4,7 +4,7 @@
  * this file contains the styles and css formats that are custom to webcentral
 */
 /* formating the startpage */
-#container-start-search .border-startsearch {
+.start-search .border-startsearch {
   border-radius: 2px;
   border: 2px solid #CCC;
 }
