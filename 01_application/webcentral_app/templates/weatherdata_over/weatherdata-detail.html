@@ -136,7 +136,7 @@ Page content START -->
 								{% if weatherdata.category %}
 								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
-                    <i class="{{category_icon}} text-primary">
+                    <i class="{{category_icon}}">
                     </i>
                     Kategorie
                   </span>
@@ -146,7 +146,7 @@ Page content START -->
 								{% if weatherdata.license %}
 								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-book-open text-primary">
+                    <i class="fas fa-fw fa-book-open">
                     </i>
                     Lizenz
                   </span>
@@ -156,7 +156,7 @@ Page content START -->
 								{% if weatherdata.last_update %}
 								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
-                    <i class="{{ letztes_update_class }} fa-fw text-primary">
+                    <i class="{{ letztes_update_class }} fa-fw">
                     </i>
                     {{ letztes_update_label }}
                   </span>
