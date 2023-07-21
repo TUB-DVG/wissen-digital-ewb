@@ -35,11 +35,11 @@ Page intro END -->
 <!-- =======================
 Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container">
+  <div class="container technical-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card shadow rounded-2 p-0">
+        <div class="card border-technical rounded-2 p-0">
           <!-- Tabs START -->
           <div class="card-header border-bottom px-4 py-3">
             <ul class="  nav nav-pills nav-tabs-line py-0">
@@ -87,12 +87,11 @@ Page content START -->
 				</div>
 			</div>
 			<!-- Main content END -->
-			<!-- Right sidebar START -->
       <div class="col-lg-4">
         <div class="row mb-5 mb-lg-0">
           <div class="col-md-6 col-lg-12">
-            <!-- Video START -->
-            <div class="card shadow p-2 mb-4 z-index-9">
+            <!-- Main block START -->
+            <div class="card border-technical p-2 mb-4 z-index-9">
               <div class="overflow-hidden rounded-3 text-center">
                 {%if technicalStandards.image %}
                 <img src=" {{ technicalStandards.image.url }}" class="" style="max-height: 150px;" alt="technicalStandards image">
@@ -102,14 +101,14 @@ Page content START -->
                 <!-- Overlay -->
               </div>
             </div>
-            <!-- Video END -->
-						<!-- Course info START -->
-						<div class="card card-body shadow p-4 mb-4">
+            <!-- Main block END -->
+						<!-- Side col START -->
+						<div class="card card-body border-technical p-4 mb-4">
 							<!-- Title -->
 							<h4 class="mb-3">Kurzinformationen</h4>
-							<ul class="list-group list-group-borderless">
+							<ul class="list-group border-0">
 								{% if technicalStandards.title %}
-								<li class="list-group-item d-flex justify-content-between align-items-center">
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open text-primary">
                     </i>
@@ -120,7 +119,7 @@ Page content START -->
 								</li>
 								{% endif %}
 								{% if technicalStandards.source %}
-								<li class="list-group-item d-flex justify-content-between align-items-center">
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open text-primary">
                     </i>
@@ -131,11 +130,11 @@ Page content START -->
 								{% endif %}
 							</ul>
 						</div>
-						<!-- Course info END -->
+						<!-- Side col END -->
 					</div>
 					<div class="col-md-6 col-lg-12">
 						<!-- Tags START -->
-            <div class="card card-body shadow p-4">
+            <div class="card card-body border-technical p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
                 {% if technicalStandards.name %}
