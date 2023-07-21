@@ -21,26 +21,26 @@
 <!-- Page Banner END -->
 <!-- Content START -->
 <section class="pt-0">
-  <div class="container">
-    <!-- Filter bar START -->
-    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative"
+  <div class="container start-search">
+    <!-- Row START -->
+    <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
           method="GET" action="ResultSearch">
       <!-- Input -->
       <div class="row g-3">
-        <!-- Input text -->
-        <div class="col-xl-7" title="Allgemeine Suche">
+        <!-- general search Input (text) -->
+        <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
           <input id="search-input-tools" class="form-control me-1"
                  type="search"
-                 placeholder="Sucheingabe" name='searchValue'
-                 value={{ searchInput }}>
+                 placeholder="Durchsuche die Plattform!" name="searchValue"
+                 value={{ searchInput }}
+                 style="border: None">
         </div>
-        <!-- search Button -->
-        <div class="col-xl-1">
-          <button type="submit"
-                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
-                  id="search-submit-tools" href="">
-            <i class="fas fa-search"></i>
-          </button>
+        <div class="col-1 col-sm-1 col-xl-1 position-relative"
+             title="Allgemeine Suche">
+          <img src="{% static 'assets/images/searchStartpage.svg' %}"
+               style="width: 30px;"
+               class="position-absolute translate-middle-y top-50 end-50"
+               alt="icon">
         </div>
       </div>
     </form>
