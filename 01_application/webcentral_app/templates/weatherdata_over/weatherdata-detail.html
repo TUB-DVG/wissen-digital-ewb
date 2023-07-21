@@ -13,20 +13,28 @@ Page intro START -->
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
-				
-
 				<!-- Title -->
 				<h2>{{weatherdata.data_service}}</h2>
 				<!-- Content -->
 				<ul class="list-inline mb-0">
 					{% if weatherdata.category %}
-					<li class="list-inline-item h6 mb-0"><i class="{{category_icon}} text-info me-2"></i>{{weatherdata.category}}</li>
+					<li class="list-inline-item h6 mb-0">
+            <i class="{{category_icon}} text-info me-2">
+            </i>{{weatherdata.category}}
+          </li>
 					{% endif %}
 					{% if weatherdata.last_update %}
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2"></i>{{weatherdata.last_update}}</li>
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+            <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
+            </i>
+            {{weatherdata.last_update}}
+          </li>
 					{% endif %}
 					{% if weatherdata.license %}
-					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0"><i class="fas fa-bars fa-book-open text-info me-2"></i>{{weatherdata.license}}</li>
+					<li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+            <i class="fas fa-bars fa-book-open text-info me-2">
+            </i>{{weatherdata.license}}
+          </li>
 					{% endif %}
 				</ul>
 			</div>
