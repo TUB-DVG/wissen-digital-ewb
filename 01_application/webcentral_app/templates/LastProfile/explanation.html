@@ -29,10 +29,11 @@ Page Banner END -->
 
 <section class="py-4">
   <div class="container">
+    <!-- row electric profil START -->
     <div class="row " id="collapseInfoContainerWeatherdata">
-      <div class="col-lg-12 " id="collapseInfoWeatherdata">
+      <!-- text electric profil START -->
+      <div class="col-lg-6">
         <p class="lead">
-          <img_src><img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt=""  style="max-width:400px;"> </img_src>
           Das Interface ermöglicht die Abschätzung des Wärme- und Stromverbrauchs als Zeitreihe.
           Grundlage ist die Auswahl eines gewissen Gebäudetyp und einem gegebenen Jahresbedarf.
           Für die Berechnung der Wärmelast wird zusätzlich die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.<br>
@@ -57,6 +58,12 @@ Page Banner END -->
           </li>
         </ul>
       </div>
+      <!-- text electric profil END -->
+      <!-- image electric profil START -->
+      <div class="col-lg-6">
+        <img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt="">
+      </div>
+      <!-- image electric profil END -->
       <center>
         <a href="{% url 'LastProfile_strom_display' %}" >
           <img src="{% static '/img/Lastprofil/strom.jpg' %}" style="max-height:30px;" >
@@ -67,6 +74,7 @@ Page Banner END -->
   </div>
   <p></p>
     </br>
+      <!--  electric profil START -->
     <div class="container">
       <p class="lead">
         <img_src><img src="{% static '/img/Lastprofil/HeatApproximation.png' %}"
