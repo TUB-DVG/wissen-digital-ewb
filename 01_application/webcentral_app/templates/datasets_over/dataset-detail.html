@@ -135,21 +135,29 @@ Page intro START -->
                 {% if dataset.useCaseCategory %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-book-open text-primary"></i>Kategorie</span>
+                    <i class="fas fa-fw fa-book-open text-primary">
+                    </i>
+                    Kategorie
+                  </span>
                   <span>{{ dataset.useCaseCategory }}</span>
                 </li>
                 {% endif %}
                 {% if dataset.categoryDataset %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{category_icon}} text-primary"></i>Datensatz</span>
+                    <i class="{{category_icon}} text-primary">
+                    </i>
+                    Datensatz
+                  </span>
                   <span>{{ dataset.categoryDataset }}</span>
                 </li>
                 {% endif %}
                 {% if dataset.availability %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{ letztes_update_class }} fa-fw  text-primary"></i>Verfügbarkeit
+                    <i class="{{ letztes_update_class }} fa-fw  text-primary">
+                    </i>
+                    Verfügbarkeit
                   </span>
                   <span>{{ dataset.availability }}</span>
                 </li>
@@ -161,7 +169,10 @@ Page intro START -->
           </div>
 
           <div class="col-md-6 col-lg-12">
-            <!-- Tags END -->
+            <!-- Ta --
+              -- gs E --
+              -- ND -->
+
           </div>
         </div>
         <!-- Row End -->
@@ -171,7 +182,10 @@ Page intro START -->
     <!-- Row END -->
   </div>
 </section>
-<!-- =======================
+<!
+ -- =
+ =========
+ =============
 Page content END -->
 
 {% endblock %}
