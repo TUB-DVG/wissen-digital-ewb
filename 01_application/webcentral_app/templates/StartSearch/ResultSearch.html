@@ -75,7 +75,11 @@
           <tbody>
             {% for dataSet in data %}
             <!-- Table row -->
-            <tr>
+            {%if dataSet.kindOfItem == "Forschungsprojekt" %}
+            <tr data-href="https://ewb.innoecos.com/Group/{{dataSet.referenceNumber_id}}/Informationen/Start/Blog">
+            {% elif dataSet.kindOfItem == "digitales Werkzeug" %}
+            <tr data-href="{%url 'tool_view' dataSet.id %}">
+            {% endif %}
               <!-- Table data -->
               <!-- Name of item -->
               <td>

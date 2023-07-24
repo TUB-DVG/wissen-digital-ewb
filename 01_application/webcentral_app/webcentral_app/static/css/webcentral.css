@@ -166,7 +166,6 @@
   padding-left: 10px;
   padding-right: 10px;
   z-index: 1100;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 
@@ -230,6 +229,10 @@
   cursor: pointer;
 }
 
+tr[data-href] {
+  cursor: pointer;
+}
+
 /* formating footer */
 #footer a {
   color: #000;
@@ -253,6 +256,4 @@ body h5 {
   font-weight: normal;
   font-size: 15px;
   text-decoration: underline;
-}
-
-/*# sourceMappingURL=webcentral.css.map */
+}/*# sourceMappingURL=webcentral.css.map */
