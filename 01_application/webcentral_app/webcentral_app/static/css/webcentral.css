@@ -245,4 +245,15 @@ body h2 {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
   font-size: 32px;
+}
+body h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+body h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  text-decoration: underline;
 }/*# sourceMappingURL=webcentral.css.map */
