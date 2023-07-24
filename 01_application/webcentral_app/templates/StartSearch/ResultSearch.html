@@ -11,8 +11,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Suchergebnisse</h2>
+        <div class="bg-light p-4 text-center rounded-3">
+          <h1 class="m-0">ResultSearch</h1>
+          <h3 class="m-0">Wird die Erebnisseite der Suche von der Startseite</h3>
         </div>
       </div>
     </div>
@@ -21,26 +22,26 @@
 <!-- Page Banner END -->
 <!-- Content START -->
 <section class="pt-0">
-  <div class="container start-search">
-    <!-- Row START -->
-    <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
+  <div class="container">
+    <!-- Filter bar START -->
+    <form class="bg-light border p-4 rounded-3 my-4 z-index-9 position-relative"
           method="GET" action="ResultSearch">
       <!-- Input -->
       <div class="row g-3">
-        <!-- general search Input (text) -->
-        <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
+        <!-- Input text -->
+        <div class="col-xl-7" title="Allgemeine Suche">
           <input id="search-input-tools" class="form-control me-1"
                  type="search"
-                 placeholder="Durchsuche die Plattform!" name="searchValue"
-                 value={{ searchInput }}
-                 style="border: None">
+                 placeholder="Sucheingabe" name='searchValue'
+                 value={{ searchInput }}>
         </div>
-        <div class="col-1 col-sm-1 col-xl-1 position-relative"
-             title="Allgemeine Suche">
-          <img src="{% static 'assets/images/searchStartpage.svg' %}"
-               style="width: 30px;"
-               class="position-absolute translate-middle-y top-50 end-50"
-               alt="icon">
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-primary mb-0 rounded z-index-1 w-100"
+                  id="search-submit-tools" href="">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </div>
     </form>
@@ -67,7 +68,7 @@
                   Art des Ergebnisses
                   </a>
               </th>
-              <th scope="col" class="border-0">Fokus</th>
+              <th scope="col" class="border-0">Symbol (zb. rechtilich)</th>
               <th scope="col" class="border-0 rounded-end">Sonstiges</th>
             </tr>
           </thead>
@@ -75,7 +76,11 @@
           <tbody>
             {% for dataSet in data %}
             <!-- Table row -->
-            <tr>
+            {%if dataSet.kindOfItem == "Forschungsprojekt" %}
+            <tr  data-href="https://ewb.innoecos.com/Group/{{dataSet.referenceNumber_id}}/Informationen/Start/Blog">
+            {% elif dataSet.kindOfItem == "digitales Werkzeug" %}
+            <tr data-href="{%url 'tool_view' dataSet.id %}">
+            {% endif %}
               <!-- Table data -->
               <!-- Name of item -->
               <td>
@@ -94,13 +99,10 @@
               </td>
 
               <!-- Table data -->
-              <td>
-                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     alt="icon">
-              </td>
+              <td> <span class="badge bg-primary text-white">technisch</span> </td>
 
               <!-- Table data -->
-              <td> </td>
+              <td>Platzhalter</td>
             </tr>
             {% endfor %}
           </tbody>
