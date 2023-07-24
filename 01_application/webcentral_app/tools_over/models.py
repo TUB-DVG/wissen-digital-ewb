@@ -1,7 +1,24 @@
 from django.db import models
 
 
+class Classification(models.Model):
+    """Model for 
+    
+    """
+    classification = models.CharField(
+        max_length=100,
+        help_text="Classification Category",    
+    )
 
+class Focus(models.Model):
+    """Focus of the Tool-Items
+
+    This Model has a OneToMany-Relationship to Tools
+    """
+    focus = models.CharField(
+        max_length=100,
+        help_text="Focus of the Tool",
+    )
 
 class Tools(models.Model):
     name = models.CharField(max_length = 150,
@@ -52,7 +69,8 @@ class Tools(models.Model):
     #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
     image=models.ImageField(null=True,blank = True)  #You need to install pillow
 
-
+    classification = models.ManyToManyField(Classification) 
+    focus = models.ManyToManyField(Focus)
 
 
 
