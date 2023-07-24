@@ -19,14 +19,14 @@ class Migration(migrations.Migration):
             name='image',
             field=models.ImageField(blank=True, default='Default.webp', null=True, upload_to=''),
         ),
-        migrations.CreateModel(
-            name='Rating',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('comment', models.CharField(blank=True, max_length=1000)),
-                ('score', models.IntegerField(default=0, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(0)])),
-                ('rating_for', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rating_for', to='tools_over.tools')),
-                ('rating_from', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rating_from', to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
+        # migrations.CreateModel(
+        #     name='Rating',
+        #     fields=[
+        #         ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('comment', models.CharField(blank=True, max_length=1000)),
+        #         ('score', models.IntegerField(default=0, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(0)])),
+        #         ('rating_for', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rating_for', to='tools_over.tools')),
+        #         ('rating_from', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='rating_from', to=settings.AUTH_USER_MODEL)),
+        #     ],
+        # ),
     ]

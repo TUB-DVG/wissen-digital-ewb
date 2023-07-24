@@ -13,22 +13,22 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='rating',
-            name='rating_for',
-        ),
-        migrations.RemoveField(
-            model_name='rating',
-            name='rating_from',
-        ),
-        migrations.AddField(
-            model_name='rating',
-            name='ratingFor',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratingFor', to='tools_over.tools'),
-        ),
-        migrations.AddField(
-            model_name='rating',
-            name='ratingFrom',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratingFrom', to=settings.AUTH_USER_MODEL),
-        ),
+        # migrations.RemoveField(
+        #     model_name='rating',
+        #     name='rating_for',
+        # ),
+        # migrations.RemoveField(
+        #     model_name='rating',
+        #     name='rating_from',
+        # ),
+        # migrations.AddField(
+        #     model_name='rating',
+        #     name='ratingFor',
+        #     field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratingFor', to='tools_over.tools'),
+        # ),
+        # migrations.AddField(
+        #     model_name='rating',
+        #     name='ratingFrom',
+        #     field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratingFrom', to=settings.AUTH_USER_MODEL),
+        # ),
     ]
