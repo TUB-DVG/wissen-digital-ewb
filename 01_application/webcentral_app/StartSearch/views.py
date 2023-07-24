@@ -26,7 +26,8 @@ def resultSearch(request):
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
-    filteredTools = Tools.objects.values("name",
+    filteredTools = Tools.objects.values("id",
+                                         "name",
                                          "shortDescription"
                                          ).filter(criterionToolsOne |
                                                   criterionToolsTwo)
