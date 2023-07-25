@@ -11,4 +11,6 @@ urlpatterns = [
          name='Datenschutzhinweis'),
     path('businessModelsDev', views.businessModelsDev,
          name='businessModelsDev'),
+    path('businessModelsChallenge', views.businessModelsChallenge,
+         name='businessModelsChallenge'),
 ]
