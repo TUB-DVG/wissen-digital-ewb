@@ -45,3 +45,8 @@ def userIntegrationPractice(request):
 def userIntegrationMethod(request):
     """Call render function for user integration method page."""
     return render(request, 'pages/userIntegrationMethod.html')
+
+
+def environmentalIntegrityNegativ(request):
+    """Call render function for negativ environmental integrity page."""
+    return render(request, 'pages/environmentalIntegrityNegativ.html')
