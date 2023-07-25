@@ -7,42 +7,39 @@
 {% block content%}
 
 <!-- Page intro START -->
-<section class="bg-light py-0 py-sm-5">
+<section class="py-0 py-sm-5">
   <div class="container">
+    <div class="row">
       <div class="col-lg-12">
         <!-- Title -->
-        <h1>{{tool.name}}</h1>
+        <h2>{{tool.name}}</h2>
         <!-- Content -->
         <ul class="list-inline mb-0">
-          
           {% if tool.lastUpdate %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="{{ lastUpdateClass }} {{ lastUpdateColor }} me-2">
+            <i class="{{ lastUpdateClass }} me-2">
             </i>
             {{tool.lastUpdate}}
           </li>
           {% endif %}
-          
           {% if tool.licence %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-bars fa-book-open text-info me-2">
+            <i class="fas fa-bars fa-book-open me-2">
             </i>{{tool.licence}}
           </li>
           {% endif %}
-
           {% if tool.lifeCyclePhase %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-bars fa-history text-info me-2">
+            <i class="fas fa-bars fa-history me-2">
             </i>
             {{tool.lifeCyclePhase}}
           </li>
           {% endif %}
-
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-user-alt text-info me-2"></i>{{tool.targetGroup}}
+            <i class="fas fa-user-alt me-2"></i>{{tool.targetGroup}}
           </li>
           <li class="list-inline-item h6 mb-0">
-            <i class="fas fa-bars text-info me-2">
+            <i class="fas fa-bars me-2">
             </i>{{tool.usage}}
           </li>
         </ul>
@@ -54,27 +51,13 @@
 
 <!-- Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container">
+  <div class="container technical-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card shadow rounded-2 p-0">
-          <!-- Tabs START -->
-          <div class="card-header border-bottom px-4 py-3">
-            <ul class="  nav nav-pills nav-tabs-line py-0">
-              <!-- Tab item -->
-              <li class="nav-item me-2 me-sm-4" >
-                <a class="nav-link active mb-2 mb-md-0" 
-                  data-toggle="tab" href="#course-pills-1"  >Overview
-                </a>
-              </li>
-              <!-- Tab item -->
-            </ul>
-          </div>
-          <!-- Tabs END -->
-          <!-- Tab contents START -->
+        <div class="card border-technical p-0">
           <div class="tab-content card-body p-4 detail-card-body">
-            <!-- Course detail START -->
+            <!-- tool detail START -->
             <div class="tab-pane container active" id="course-pills-1" >
               {% if tool.name %}
                 <h5 class="mb-3">Was ist {{tool.name}}?</h5>
@@ -101,13 +84,12 @@
                 <p class="mb-0">{{tool.specificApplication}}</p>
               {% endif %}
               {% if tool.targetGroup %}
-                <h5 class="mt-4">targetGroup</h5>
+                <h5 class="mt-4">Zielgruppe</h5>
                 <p class="mb-0">{{tool.targetGroup}}</p>
               {% endif %}
             </div>
-            <!-- Course detail END -->
+            <!-- tool detail END -->
           </div>
-          <!-- Tab contents END -->
         </div>
       </div>
       <!-- Main content END -->
@@ -116,8 +98,8 @@
         <div class="row mb-5 mb-lg-0">
           <div class="col-md-6 col-lg-12">
             <!-- Image Tool START -->
-            <div class="card shadow p-2 mb-4 z-index-9">
-              <div class="overflow-hidden rounded-3 text-center">
+            <div class="card border-technical p-2 mb-4 z-index-9">
+              <div class="overflow-hidden text-center">
                 {%if tool.image %}
                 <img src=" {{ tool.image.url }}"
                   class="" style="max-height: 150px;"
@@ -132,14 +114,14 @@
             </div>
             <!-- Image Tool END -->
             <!-- "Kurzinformationen" START -->
-            <div class="card card-body shadow p-4 mb-4">
+            <div class="card card-body border-technical p-4 mb-4">
               <!-- Title -->
               <h4 class="mb-3">Kurzinformationen</h4>
-              <ul class="list-group list-group-borderless">
+              <ul class="list-group border-0">
                 {% if tool.lastUpdate %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{ lastUpdateClass }} fa-fw text-primary">
+                    <i class="{{ lastUpdateClass }} fa-fw">
                     </i>
                     {{ lastUpdateLabel }}
                   </span>
@@ -147,16 +129,16 @@
                   </span>
                 </li>
                 {% endif %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-book-open text-primary"></i>
+                    <i class="fas fa-fw fa-book-open"></i>
                     Lizenz
                   </span>
                   <span>{{ tool.licence }}</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-history text-primary"></i>
+                    <i class="fas fa-fw fa-history"></i>
                     Lebenszyklusphase
                   </span>
                   <span>{{ tool.lifeCyclePhase }}</span>
@@ -165,7 +147,7 @@
             </div>
             <!-- "Kurzinformationen" END -->
             <!-- Tags START -->
-            <div class="card card-body shadow p-4">
+            <div class="card card-body border-technical p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
                 {% for usage in usages %} 

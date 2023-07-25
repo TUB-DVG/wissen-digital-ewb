@@ -4,118 +4,180 @@
 {% load static %}
 
 <style>
-    img_src {
+  img_src {
       float: right;
 
       margin: 0px 0px 15px 20px;
-    }
-    </style>
+  }
+</style>
 
 <!-- =======================
 Page Banner START -->
 <section class="py-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="bg-light p-4 text-center rounded-3">
-					<h1 class="m-0">Lastprofile</h1>
-					
-				</div>
-			</div>
-
-
-		</div>
-
-		
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="p-2 text-left rounded-3">
+          <h2 class="m-0">Lastprofile</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- =======================
 Page Banner END -->
 
 <section class="py-4">
-	<div class="container">
-        <div class="row " id="collapseInfoContainerWeatherdata">
-            
-
-            
-            <div class="col-lg-12 " id="collapseInfoWeatherdata">
-                <p class="lead"> 
-                    <img_src><img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt=""  style="max-width:400px;"> </img_src>
-                    Das Interface ermöglicht die Abschätzung des Wärme- und Stromverbrauchs als Zeitreihe.
-                    Grundlage ist die Auswahl eines gewissen Gebäudetyp und einem gegebenen Jahresbedarf. 
-                    Für die Berechnung der Wärmelast wird zusätzlich die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.<br>
-                    
-                </p>  
-
-      
-                <ul > 
-                
-                     <p class="lead"> Das Interface für die Bestimmung des Strombedarfs hat drei Parameter: </p> 
-                    <li class="lead"><b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
-                    <li class="lead"><b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarf in kWh/a </li>
-                    <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
-                </ul>
-            </div>
-            <!-- 
-         <img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt=""> 
-
-            -->
-            <center>
-            <a href="{% url 'LastProfile_strom_display' %}" >
-                <img src="{% static '/img/Lastprofil/strom.jpg' %}" style="max-height:30px;" >
-                Approximation der Stromlast
-            </a>
-            </center>
-    
-        </div>
+  <div class="container">
+    <!-- row electric profil START -->
+    <div class="row " id="collapseInfoContainerWeatherdata">
+      <!-- text electric profil START -->
+      <div class="col-lg-6">
+        <h3>Stromlast</h3>
+        <p class="lead">
+          Das Interface ermöglicht die Abschätzung des Wärme- und
+          Stromverbrauchs als Zeitreihe. Grundlage ist die Auswahl eines
+          gewissen Gebäudetyp und einem gegebenen Jahresbedarf. Für die
+          Berechnung der Wärmelast wird zusätzlich die Umgebungstemperatur zur
+          entsprechenden Tageszeit benötigt.<br>
+        </p>
+        <ul >
+          <p class="lead">
+            Das Interface für die Bestimmung des Strombedarfs hat drei
+            Parameter:
+          </p>
+          <li class="lead">
+            <b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll
+            die Berechnung erfolgen
+          </li>
+          <li class="lead">
+            <b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarf
+            in kWh/a
+          </li>
+          <li class="lead">
+            <b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse
+            angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten
+            Monat?
+          </li>
+        </ul>
+      </div>
+      <!-- text electric profil END -->
+      <!-- image electric profil START -->
+      <div class="col-lg-6">
+        <img src="{% static '/img/Lastprofil/Image of Approximation.png' %}" alt="">
+      </div>
+      <!-- image electric profil END -->
+    <!-- row electric profil END -->
     </div>
-    <p></p>
-    </br>
-    <div class="container">
-            <p class="lead"> 
-                <img_src><img src="{% static '/img/Lastprofil/HeatApproximation.png' %}" alt="" style="max-width:400px;"> </img_src>
-                Wie oben erwähnt, wird für die Wärmeapproximation die Umgebungstemperatur zur entsprechenden Tageszeit benötigt.
-                Die Umgebungstemperatur wird vom Wetterdienst Server über zwei Parameter (unten definiert) abgerufen, die angeben, welche Wetterstation Temperaturdaten verwendet werden sollen.
-               
-                <ul>
-                    <p class="lead"> Das Interface für die Wärmeapproximation hat sechs Parameter:</p> 
-                    <li class="lead"><b>Auswahl des Bundeslands</b>&nbsp;&ndash; Nach welchem Bundesland soll die Stationwahl folgen</li>
-                    <li class="lead"><b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach gewähltem Bundesland, verwendet werden soll.</li>
-                    <li class="lead"><b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung soll die Berechnung erfolgen</li>
-                    <li class="lead"><b>Jahreswärmebedarfs in kWh/a</b>&nbsp;&ndash; Eingabe des Jahresswärmebedarfs in kWh/a </li>
-                    <li class="lead"><b>Datumsbereich</b>&nbsp;&ndash; Bereich, auf dem die Approximation berechnet werden soll  </li>
-                    <li class="lead"><b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten Monat?</li>
-                </ul>
+    <!-- row electric link START -->
+    <div class="row py-5">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-10">
+        <a href="{% url 'LastProfile_strom_display' %}">
+          <img src="{% static '/img/Lastprofil/strom.jpg' %}"
+               style="max-height:30px;">
+          Approximation der Stromlast
+        </a>
+      </div>
+    </div>
+    <!-- link electric profil END -->
+    <!-- row heat profil START -->
+    <div class="row">
+      <!-- text heat profil START -->
+      <div class="col-lg-6">
+        <h3>Wärmelast</h3>
+        <p class="lead">
+          Wie oben erwähnt, wird für die Wärmeapproximation die
+          Umgebungstemperatur zur entsprechenden Tageszeit benötigt. Die
+          Umgebungstemperatur wird vom Wetterdienst Server über zwei Parameter
+          (unten definiert) abgerufen, die angeben, welche Wetterstation
+          Temperaturdaten verwendet werden sollen.
+          <ul>
+            <p class="lead">
+              Das Interface für die Wärmeapproximation hat sechs Parameter:
             </p>
-        
-
-    </div>         
-            
- <p></p>
-<div class="container">
-    <center>
-    <a href="{% url 'LastProfile_warme_display' %}">
-        <img src="{% static '/img/Lastprofil/heat.png' %}"style="max-height:30px;">
-        Approximation der Wärmelast 
-    </a>
-    </center>
-
-</br>
-
-
-            <ul>
-                <p class="lead"> Für die Berechnungen, Daten und Annahmen werden die folgenden Quellen genutzt: </p> 
-                <li class="lead"><b>Wärmelast</b>&nbsp;&ndash; Nutzung der Dissertation von Marcus Hellwig, 2003, "Entwicklung und Anwendung parametrisierter Standard-Lastprofile"</li> <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf">Download der Disseration.</a>
-                <li class="lead"><b>Wetterdaten</b>&nbsp;&ndash; Nutzung der Wetterdienst Bibliothek</li> <a href="https://github.com/earthobservations/wetterdienst">Wetterdienst</a>
-                <li class="lead"><b>Stromlast</b>&nbsp;&ndash; Nutzung der Standard-Lastprofile </li> <a href="https://www.bdew.de/energie/standardlastprofile-strom/">Standard-Lastprofile beim BDEW</a>
-            </ul>
- </div>
-
-        
-        
-  
+            <li class="lead">
+              <b>Auswahl des Bundeslands</b>&nbsp;&ndash; Nach welchem Bundesland
+              soll die Stationwahl folgen
+            </li>
+            <li class="lead">
+              <b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach
+              gewähltem Bundesland, verwendet werden soll.
+            </li>
+            <li class="lead">
+              <b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung
+              soll die Berechnung erfolgen
+            </li>
+            <li class="lead">
+              <b>Jahreswärmebedarfs in kWh/a</b>&nbsp;&ndash; Eingabe des
+              Jahresswärmebedarfs in kWh/a
+            </li>
+            <li class="lead">
+              <b>Datumsbereich</b>&nbsp;&ndash; Bereich, auf dem die
+              Approximation berechnet werden soll
+            </li>
+            <li class="lead">
+              <b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse
+              angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten
+              Monat?
+            </li>
+          </ul>
+        </p>
+      </div>
+      <!-- text heat profil END -->
+      <!-- image heat profil START -->
+      <div class="col-lg-6">
+        <img src="{% static '/img/Lastprofil/HeatApproximation.png' %}"
+             alt="Bild Waermelast">
+      </div>
+      <!-- image heat profil END -->
+    </div>
+    <!-- row heat profil END -->
+    <!-- row heat link START -->
+    <div class="row py-5">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-10">
+      <a href="{% url 'LastProfile_warme_display' %}">
+        <img src="{% static '/img/Lastprofil/heat.png' %}"
+             style="max-height:30px;">
+        Approximation der Wärmelast
+      </a>
+      </div>
+    </div>
+    <!-- link heat profil END -->
+    <!-- row notes START -->
+    <div class="row py-5">
+      <div class="col-lg-12">
+        <h3>Anmerkungen</h3>
+        <ul>
+          <p class="lead">
+            Für die Berechnungen, Daten und Annahmen werden die folgenden Quellen
+            genutzt:
+          </p>
+          <li class="lead">
+            <b>Wärmelast</b>&nbsp;&ndash; Nutzung der Dissertation von Marcus
+            Hellwig, 2003, "Entwicklung und Anwendung parametrisierter
+            Standard-Lastprofile"
+          </li>
+          <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf">Download der Disseration.
+          </a>
+          <li class="lead">
+            <b>Wetterdaten</b>&nbsp;&ndash; Nutzung der Wetterdienst Bibliothek
+          </li>
+          <a href="https://github.com/earthobservations/wetterdienst">Wetterdienst
+          </a>
+          <li class="lead">
+            <b>Stromlast</b>&nbsp;&ndash; Nutzung der Standard-Lastprofile
+          </li>
+          <a href="https://www.bdew.de/energie/standardlastprofile-strom/">Standard-Lastprofile beim BDEW
+          </a>
+        </ul>
+      </div>
+    </div>
+    <!-- row notes END -->
+  </div>
 </section>
-
-
 
 {% endblock %}
