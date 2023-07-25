@@ -60,3 +60,8 @@ def environmentalIntegrityPositiv(request):
 def benchmarkingChallenges(request):
     """Call render function for benchmaring challenges page."""
     return render(request, 'pages/benchmarkingChallenges.html')
+
+
+def dataSufficiency(request):
+    """Call render function for data sufficiency page."""
+    return render(request, 'pages/dataSufficiency.html')

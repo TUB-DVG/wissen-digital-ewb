@@ -25,4 +25,6 @@ urlpatterns = [
          name='environmentalIntegrityPositiv'),
     path('benchmarkingChallenges', views.benchmarkingChallenges,
          name='benchmarkingChallenges'),
+    path('dataSufficiency', views.dataSufficiency,
+         name='dataSufficiency'),
 ]
