@@ -1,18 +1,22 @@
-from django.shortcuts import render 
+"""views of pages app."""
+from django.shortcuts import render
+
 
 def index(request):
-	
-	return render(request, 'pages/index.html')
+    """Call render function for index page."""
+    return render(request, 'pages/index.html')
+
 
 def Datenschutzhinweis(request):
-	return render(request, 'pages/Datenschutzhinweis.html')
+    """Call render function for datenschutzhinweis page."""
+    return render(request, 'pages/Datenschutzhinweis.html')
+
 
 def about(request):
+    """Call render function for about page."""
     return render(request, 'pages/about.html')
 
 
 def coming(request):
+    """Call render function for coming soon page."""
     return render(request, 'pages/coming.html')
-
-
-
