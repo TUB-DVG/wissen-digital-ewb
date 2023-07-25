@@ -53,5 +53,10 @@ def environmentalIntegrityNegativ(request):
 
 
 def environmentalIntegrityPositiv(request):
-    """Call render function for negativ environmental integrity page."""
+    """Call render function for positiv environmental integrity page."""
     return render(request, 'pages/environmentalIntegrityPositiv.html')
+
+
+def benchmarkingChallenges(request):
+    """Call render function for benchmaring challenges page."""
+    return render(request, 'pages/benchmarkingChallenges.html')
