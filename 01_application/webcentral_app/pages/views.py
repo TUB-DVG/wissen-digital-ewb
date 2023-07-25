@@ -30,3 +30,8 @@ def businessModelsDev(request):
 def businessModelsChallenge(request):
     """Call render function for business models challenge page."""
     return render(request, 'pages/businessModelsChallenge.html')
+
+
+def businessModelsPractice(request):
+    """Call render function for business models best practice page."""
+    return render(request, 'pages/businessModelsPractice.html')
