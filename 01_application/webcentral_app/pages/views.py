@@ -23,5 +23,5 @@ def coming(request):
 
 
 def businessModelsDev(request):
-    """Call render function for business models page."""
+    """Call render function for business models development page."""
     return render(request, 'pages/businessModelsDev.html')
