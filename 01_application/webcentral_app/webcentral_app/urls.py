@@ -20,9 +20,12 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from tools_over import views
+
 urlpatterns = [
     path('', include('pages.urls')),
     path('tool_list/', include('tools_over.urls')),
+    path('application_list/', views.indexApplication),
     path('dataset_list/',include('Datasets.urls')),
     path('weatherdata_list/', include('weatherdata_over.urls')),
     path('project_list/', include('project_listing.urls')),
