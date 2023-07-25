@@ -111,7 +111,11 @@ class Command(BaseCommand):
                 except:
                     objToBeDeleted.delete()
             elif "subproject_set" in dir(objToBeDeleted):
-                objToBeDeleted.refresh_from_db()
+                # pdb.set_trace()
+                try:
+                    objToBeDeleted.refresh_from_db()
+                except:
+                    pass
                 if len(objToBeDeleted.subproject_set.all()) == 0:
                     objToBeDeleted.delete()
             else:
