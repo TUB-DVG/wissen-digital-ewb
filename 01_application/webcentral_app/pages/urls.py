@@ -19,4 +19,6 @@ urlpatterns = [
          name='userIntegrationPractice'),
     path('userIntegrationMethod', views.userIntegrationMethod,
          name='userIntegrationMethod'),
+    path('environmentalIntegrityNegativ', views.environmentalIntegrityNegativ,
+         name='environmentalIntegrityNegativ'),
 ]
