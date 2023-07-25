@@ -9,12 +9,12 @@
 <!-- =======================
 Page intro START -->
 
-<section class="bg-light py-0 py-sm-5">
+<section class="py-0 py-sm-5">
   <div class="container">
-    <div class="row py-5">
+    <div class="row">
       <div class="col-lg-12">
         <!-- Title -->
-        <h1>{{dataset.nameDataset }}</h1>
+        <h2>{{dataset.nameDataset }}</h2>
         <!-- Content -->
         <ul class="list-inline mb-0">
           {% if dataset.availability %}
@@ -33,7 +33,7 @@ Page intro START -->
           {% endif %}
           {% if dataset.coverage %}
           <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-bars fa-book-open text-info me-2">
+            <i class="fas fa-bars fa-book-open me-2">
 
             </i>{{dataset.coverage}}
           </li>
@@ -48,23 +48,11 @@ Page intro START -->
 <!-- ======================= Page content START -->
 
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container">
+  <div class="container technical-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8 mb-4">
-        <div class="card shadow rounded-2 p-0">
-          <!-- Tabs START -->
-          <div class="card-header border-bottom px-4 py-3">
-            <ul class="  nav nav-pills nav-tabs-line py-0">
-              <!-- Tab item -->
-              <li class="nav-item me-2 me-sm-4">
-                <a class="nav-link active mb-2 mb-md-0" 
-                  data-toggle="tab" 
-                  href="#course-pills-1">Overview</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Tabs END -->
+        <div class="card border-technical p-0">
           <!-- Tab contents START -->
           <div class="tab-content card-body p-4 detail-card-body">
 
@@ -112,7 +100,7 @@ Page intro START -->
         <div class="row mb-5 mb-lg-0">
           <div class="col-md-6 col-lg-12">
             <!-- Video START -->
-            <div class="card shadow p-2 mb-4 z-index-9">
+            <div class="card border-technical p-2 mb-4 z-index-9">
               <div class="overflow-hidden rounded-3 text-center">
                 {%if dataset.image %}
                 <img src=" {{ dataset.image.url }}" class="p-4" 
@@ -128,28 +116,36 @@ Page intro START -->
             <!-- Video END -->
 
             <!-- Course info START -->
-            <div class="card card-body shadow p-4 mb-4">
+            <div class="card card-body border-technical p-4 mb-4">
               <!-- Title -->
               <h4 class="mb-3">Kurzinformationen</h4>
-              <ul class="list-group list-group-borderless">
+              <ul class="list-group border-0">
                 {% if dataset.useCaseCategory %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="fas fa-fw fa-book-open text-primary"></i>Kategorie</span>
+                    <i class="fas fa-fw fa-book-open">
+                    </i>
+                    Kategorie
+                  </span>
                   <span>{{ dataset.useCaseCategory }}</span>
                 </li>
                 {% endif %}
                 {% if dataset.categoryDataset %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{category_icon}} text-primary"></i>Datensatz</span>
+                    <i class="{{category_icon}}">
+                    </i>
+                    Datensatz
+                  </span>
                   <span>{{ dataset.categoryDataset }}</span>
                 </li>
                 {% endif %}
                 {% if dataset.availability %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
-                    <i class="{{ letztes_update_class }} fa-fw  text-primary"></i>Verfügbarkeit
+                    <i class="{{ letztes_update_class }} fa-fw">
+                    </i>
+                    Verfügbarkeit
                   </span>
                   <span>{{ dataset.availability }}</span>
                 </li>
@@ -161,7 +157,10 @@ Page intro START -->
           </div>
 
           <div class="col-md-6 col-lg-12">
-            <!-- Tags END -->
+            <!-- Ta --
+              -- gs E --
+              -- ND -->
+
           </div>
         </div>
         <!-- Row End -->
@@ -171,7 +170,10 @@ Page intro START -->
     <!-- Row END -->
   </div>
 </section>
-<!-- =======================
+<!
+ -- =
+ =========
+ =============
 Page content END -->
 
 {% endblock %}
