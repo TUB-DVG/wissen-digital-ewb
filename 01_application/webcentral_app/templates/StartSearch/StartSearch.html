@@ -10,10 +10,27 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="bg-light p-4 text-center rounded-3">
-          <h1 class="m-0">StartSearch</h1>
-          <h3 class="m-0">Wird die neue Startseite</h3>
-        </div>
+        <img src="{% static 'assets/images/StartSearch_figure.png' %}"
+             class="rounded" alt="overview_figure"
+             style="width: 800px vertical-align: middle">
+      </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-10">
+        <p class="lead">
+          Die wissenschaftliche Begleitforschung der Forschungsinitiative
+          Energiewendebauen stellt mit der Wissensplattform - Digitalisierung
+          Energiewendebauen einen Zugang zu den Forschungsergebnissen und den
+          erstellten Hilfsmitteln aus den Forschungsprojekten im Bereich
+          Digitalisierung im Bausektor dar. Diese Plattform richtet sich an die
+          interessierte Fachallgemeinheit und auch an die Forschungsprojekte der
+          Forschungsinitative Energiewendebauen.
+        </p>
+      </div>
+      <div class="col-12 col-lg-2">
+        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+          class="img-side-column" style="height: 200px;"
+          alt="Logo_BMWK">
       </div>
     </div>
   </div>
@@ -23,7 +40,7 @@
 
 <!-- Page content START -->
 <section class="pt-0">
-  <div class="container" id="container-start-search">
+  <div class="container start-search">
     <!-- Filter bar START -->
     <!-- Row START -->
     <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
@@ -62,11 +79,13 @@
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
               <h3>Technischer Fokus</h3>
-              <p class="lead">
-              Der technische Fokus der Digitalisierung in der Energieforschung
-              im Gebäudesektor umfasst Datensätze, digitale Werkzeuge bzw.
-              Anwendungen und weitere Forschungsergebnisse.
-
+              <p>
+                Der technische Fokus bei der Untersuchung der Digitalisierung in
+                der Energieforschung im Gebäudesektor zielt vorrangig auf
+                Hilfsmittel für die technische Planung und die technische
+                Betriebsdurchführung bzw. -optimierung ab. Dies umfasst
+                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere
+                Forschungsergebnisse.
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -147,26 +166,23 @@
       </div>
       <!-- Block END -->
       <!-- Block START -->
-      <div class="col-12 col-lg-6 p-3 border-economical" title="Ökonomischer Fokus">
+      <div class="col-12 col-lg-6 p-3 border-operational" title="Betrieblicher Fokus">
         <div class="p-4 position-relative">
-          <img src="{% static 'assets/images/symbol_economical_focus.svg' %}"
+          <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
                class="position-absolute start-0 translate-middle"
                style="top: 30px"
                alt="icon">
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
-              <h3>Ökonomische Fokus</h3>
-              <p class="lead">
-                Hier steht ein kurzer Einleitungstext zum ökonomischen Fokus:
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                diam nonummy nibh euismod. Lorem ipsum dolor sit amet,
-                consectetuer adipi scing elit, sed diam nonummy amet sit. Lorem
-                ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
-                nonummy amet sit euismod tincidunt ut laoreet dolore magn
-                aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer
-                adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
-                laoreet dolore magn aliquam erat volutpat.
+              <h3>Betrieblicher Fokus</h3>
+              <p>
+                Der betriebliche Fokus bei der Untersuchung der Digitalisierung
+                in der Energieforschung im Gebäudesektor zielt vorrangig auf die
+                Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind
+                dabei der wirtschaftliche Betrieb digitaler Anwendungen
+                (Geschäftsmodelle) und die Einbindung von und Interaktion mit
+                den Nutzenden.
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -178,7 +194,7 @@
                          class="rounded" alt="icon">
                   </td>
                   <td>
-                    <a class="economical"
+                    <a class="operational"
                        href="#">
                       Geschäfts&shy;modell&shy;anwendungen
                     </a>
@@ -190,7 +206,7 @@
                          class="rounded" alt="icon">
                   </td>
                   <td>
-                    <a class="economical"
+                    <a class="operational"
                        href="#">
                       Nutzenden&shy;perspektive
                     </a>
@@ -217,16 +233,15 @@
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
               <h3>Ökologischer Fokus</h3>
-              <p class="lead">
-                Hier steht ein kurzer Einleitungstext zum ökologischen Fokus:
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
-                adipi scing elit, sed diam nonummy amet sit euismod. Lorem ipsum
-                dolor sit amet, consectetuer adipi scing elit, sed diam nonummy
-                amet sit euismod tincidunt ut laoreet dolore magn aliquam erat
-                volutpat. Lorem ipsum dolor sit amet, consectetuer adipi scing
-                elit, sed diam nonummy amet sit euismod tincidunt ut laoreet
-                dolore magn aliquam erat volutpat.
+              <p>
+                Der ökologische Fokus bei der Untersuchung der Digitalisierung
+                in der Energieforschung im Gebäudesektor zielt auf das
+                Evaluieren von Umwelteffekten durch den Einsatz digitaler
+                Anwendungen ab. Neben positiven Wirkungen wie
+                Energieeinsparungen werden auch negativen Auswirkungen wie ein
+                erhöhter Materialverbrauch durch digitale Anwendungen
+                aufgezeigt. In diesem Kontext wird auch ein suffizienter Umgang
+                mit Daten sowie dessen Auswirkungen thematisiert.
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -261,15 +276,13 @@
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
               <h3>Rechtlicher Fokus</h3>
-              <p class="lead">
-                Hier steht ein kurzer Einleitungstext zum rechtlichen Fokus: Lorem
-                ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-                nonummy nibh euismod. Lorem ipsum dolor sit amet, consectetuer
-                adipi scing elit, sed diam nonummy amet sit euismod tincidunt ut
-                laoreet dolore magn aliquam erat volutpat nonummy amet. Lorem
-                ipsum dolor sit amet, consectetuer adipi scing elit, sed diam
-                nonummy amet sit euismod tincidunt ut laoreet dolore magn aliquam
-                erat volutpat.
+              <p>
+                Gebäudesektor. Hier wird einerseits aufgezeigt, wie
+                Datenschutzrisiken entstehen und wie sie sich innovationshemmend
+                auswirken können. Andererseits wird für verschiedenste
+                Anwendungsfälle im Gebäudesektor das Datenschutzrecht
+                konkretisiert und in konkrete Handlungsempfehlungen für Projekte
+                übersetzt.
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -307,7 +320,7 @@
                   <td>
                     <a class="legal"
                        href="#">
-                    Visualisierungs&shy;bausteine
+                      Visualisierungs&shy;bausteine
                     </a>
                   </td>
                 </tr>
