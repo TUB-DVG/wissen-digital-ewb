@@ -23,4 +23,6 @@ urlpatterns = [
          name='environmentalIntegrityNegativ'),
     path('environmentalIntegrityPositiv', views.environmentalIntegrityPositiv,
          name='environmentalIntegrityPositiv'),
+    path('benchmarkingChallenges', views.benchmarkingChallenges,
+         name='benchmarkingChallenges'),
 ]
