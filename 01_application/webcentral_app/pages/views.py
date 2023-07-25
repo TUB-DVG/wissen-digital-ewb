@@ -40,3 +40,8 @@ def businessModelsPractice(request):
 def userIntegrationPractice(request):
     """Call render function for user integration best practice page."""
     return render(request, 'pages/userIntegrationPractice.html')
+
+
+def userIntegrationMethod(request):
+    """Call render function for user integration method page."""
+    return render(request, 'pages/userIntegrationMethod.html')
