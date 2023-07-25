@@ -20,3 +20,8 @@ def about(request):
 def coming(request):
     """Call render function for coming soon page."""
     return render(request, 'pages/coming.html')
+
+
+def businessModelsDev(request):
+    """Call render function for business models page."""
+    return render(request, 'pages/businessModelsDev.html')
