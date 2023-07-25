@@ -13,4 +13,6 @@ urlpatterns = [
          name='businessModelsDev'),
     path('businessModelsChallenge', views.businessModelsChallenge,
          name='businessModelsChallenge'),
+    path('businessModelsPractice', views.businessModelsPractice,
+         name='businessModelsPractice'),
 ]
