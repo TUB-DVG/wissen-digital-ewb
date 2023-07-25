@@ -35,3 +35,8 @@ def businessModelsChallenge(request):
 def businessModelsPractice(request):
     """Call render function for business models best practice page."""
     return render(request, 'pages/businessModelsPractice.html')
+
+
+def userIntegrationPractice(request):
+    """Call render function for user integration best practice page."""
+    return render(request, 'pages/userIntegrationPractice.html')
