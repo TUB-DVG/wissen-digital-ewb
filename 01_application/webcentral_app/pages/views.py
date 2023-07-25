@@ -50,3 +50,8 @@ def userIntegrationMethod(request):
 def environmentalIntegrityNegativ(request):
     """Call render function for negativ environmental integrity page."""
     return render(request, 'pages/environmentalIntegrityNegativ.html')
+
+
+def environmentalIntegrityPositiv(request):
+    """Call render function for negativ environmental integrity page."""
+    return render(request, 'pages/environmentalIntegrityPositiv.html')
