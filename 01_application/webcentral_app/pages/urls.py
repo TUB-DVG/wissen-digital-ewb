@@ -17,4 +17,6 @@ urlpatterns = [
          name='businessModelsPractice'),
     path('userIntegrationPractice', views.userIntegrationPractice,
          name='userIntegrationPractice'),
+    path('userIntegrationMethod', views.userIntegrationMethod,
+         name='userIntegrationMethod'),
 ]
