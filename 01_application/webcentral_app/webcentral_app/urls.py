@@ -25,7 +25,8 @@ from tools_over import views
 urlpatterns = [
     path('pages/', include('pages.urls')),
     path('tool_list/', include('tools_over.urls')),
-    path('application_list/', views.indexApplication),
+    path('application_list/', views.indexBuisnessApplication, name="buisnessModelApplication"),
+    path('application_list/<str:id>', views.toolView, name='tool_view'),
     path('dataset_list/',include('Datasets.urls')),
     path('weatherdata_list/', include('weatherdata_over.urls')),
     path('project_list/', include('project_listing.urls')),

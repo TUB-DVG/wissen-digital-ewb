@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Anwendungen{% endblock %}
+{% block title %}Überblick über die Geschäftsmodellanwendungen{% endblock %}
 {% block content %}
 {% load static %}
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-12">
           <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">Überblick über die Geschäfts­modell­anwendungen</h2>
+            <h2 class="m-0">Überblick über die Geschäftsmodellanwendungen</h2>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
   </section>
   <!-- Page Banner END -->
 
-  {% include '../tools_over/explanation.html' %}
+  {% include '../tools_over/buisnessApplications-explanation.html' %}
 
   <!-- Page content START -->
   <section class="pt-0">
@@ -212,7 +212,7 @@
           </div>
           <!-- Clear button -->
           <div class="col-xl-1">
-            <a href="{% url 'tool_list' %}">
+            <a href="{% url 'buisnessModelApplication' %}">
               <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
                 Alle
               </h6>
@@ -227,10 +227,10 @@
         {% if search %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
+            <a href="/application_list/?searched={{search}}&u=&l=&lcp=">
               Suchbegriff: {{search}}
             </a>
-            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}
+            <a href="/application_list/?searched=&u={% if usage %}{{usage}}
               {% endif %}&l={% if licence %}{{licence}}
               {% endif %}&lcp={% if lifeCyclePhase %}
               {{lifeCyclePhase}}{% endif %}">
@@ -242,9 +242,9 @@
         {% if usage %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}
+            <a href="/application_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}
+            <a href="/application_list/?searched={% if search %}{{search}}
               {% endif %}&u=&l={% if licence %}{{licence}}
               {% endif %}&lcp={% if lifeCyclePhase %}
               {{lifeCyclePhase}}{% endif %}">
@@ -256,9 +256,9 @@
         {% if licence %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}
+            <a href="/application_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}
             </a>
-            <a href="/tool_list/?searched={% if search %}
+            <a href="/application_list/?searched={% if search %}
               {{search}}{% endif %}&u={% if usage %}{{usage}}
               {% endif %}&l=&lcp={% if lifeCyclePhase %}
               {{lifeCyclePhase}}{% endif %}">
@@ -270,9 +270,9 @@
         {% if lifeCyclePhase %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}
+            <a href="/application_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}
+            <a href="/application_list/?searched={% if search %}{{search}}
               {% endif %}&u={% if usage %}{{usage}}
               {% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
             <i class="bi bi-x-lg close-icon"></i>
@@ -287,7 +287,7 @@
         <div class="col-12">
         <!-- tools Grid START -->
           <div class="row g-4" id="tool-listing-results">
-            {% include '../tools_over/tool-listings-results.html' %}
+            {% include '../tools_over/buisnessApplications-results.html' %}
           </div>
           <!-- tools Grid END -->
           <!-- Pagination START -->
@@ -296,7 +296,7 @@
             {% if page.has_previous %}
             <li class="page-item mb-0">
               <a class="page-link" 
-                  href="{%url 'tool_list' %}?searched={% if search %}{{search}}
+                  href="{%url 'buisnessModelApplication' %}?searched={% if search %}{{search}}
                     {% endif %}&u={% if usage %}{{usage}}
                     {% endif %}&l={% if licence %}{{licence}}
                     {% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}
@@ -311,7 +311,7 @@
             {% if page.has_next %}
             <li class="page-item mb-0">
               <a class="page-link" 
-                href="{%url 'tool_list' %}?searched={% if search %}{{search}}
+                href="{%url 'buisnessModelApplication' %}?searched={% if search %}{{search}}
                   {% endif %}&u={% if usage %}{{usage}}
                   {% endif %}&l={% if licence %}{{licence}}
                   {% endif %}&lcp={% if lifeCyclePhase %}
