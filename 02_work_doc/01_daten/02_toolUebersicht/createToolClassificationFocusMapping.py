@@ -8,7 +8,7 @@ toolsList = df.Tool.tolist()
 # focusList = []
 csvList = []
 for tool in toolsList:
-    csvList.append((tool, "Werkzeug", "Technisch"))
+    csvList.append((tool, "Digitales Werkzeug", "Technisch"))
     # classificationList.append("Werkzeug")
     # focusList.append("Technisch")
 
