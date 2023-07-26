@@ -4,7 +4,7 @@
  * this file contains the styles and css formats that are custom to webcentral
 */
 /* formating the startpage */
-#container-start-search .border-startsearch {
+.start-search .border-startsearch {
   border-radius: 2px;
   border: 2px solid #CCC;
 }
@@ -15,7 +15,7 @@
   outline: 2px solid #AFC5FF;
   outline-offset: -17px;
 }
-#container-start-focus .border-economical {
+#container-start-focus .border-operational {
   border-radius: 2px;
   border: None;
   outline: 2px solid #FFAE9D;
@@ -37,7 +37,7 @@
   color: #000;
   border-bottom: 2px solid #AFC5FF;
 }
-#container-start-focus a.economical {
+#container-start-focus a.operational {
   color: #000;
   border-bottom: 2px solid #FFAE9D;
 }
@@ -60,21 +60,25 @@
 }
 
 /* formating cards */
-#container-cards-tools .border-technical {
+.technical-cards .border-technical {
   border-radius: 2px;
   border: 2px solid #AFC5FF;
 }
-#container-cards-tools .border-technical-round {
+.technical-cards .border-technical-round {
   border-radius: 20px;
   border: 2px solid #AFC5FF;
 }
-#container-cards-tools .btn-technical {
+.technical-cards .btn-technical {
   background-color: #AFC5FF;
   color: white;
 }
 
 .card-text {
   color: rgb(116, 117, 121);
+}
+
+.card-header-text {
+  color: #000;
 }
 
 /* card_hover: allows the item display cards to grow on hover
@@ -204,6 +208,7 @@
   color: #f5f6fa;
   padding: 0 20px;
   box-shadow: 0 -2px 10px rgba(47, 54, 64, 0.39);
+  z-index: 999;
   transition: 400ms;
 }
 
@@ -226,6 +231,10 @@
   cursor: pointer;
 }
 
+tr[data-href] {
+  cursor: pointer;
+}
+
 /* formating footer */
 #footer a {
   color: #000;
@@ -239,5 +248,14 @@ body h2 {
   font-weight: normal;
   font-size: 32px;
 }
-
-/*# sourceMappingURL=webcentral.css.map */
+body h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+body h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  text-decoration: underline;
+}/*# sourceMappingURL=webcentral.css.map */
