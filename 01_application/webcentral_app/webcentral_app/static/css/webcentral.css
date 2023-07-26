@@ -73,6 +73,19 @@
   color: white;
 }
 
+.operational-cards .border-operational {
+  border-radius: 2px;
+  border: 2px solid #FFAE9D;
+}
+.operational-cards .border-operational-round {
+  border-radius: 20px;
+  border: 2px solid #FFAE9D;
+}
+.operational-cards .btn-operational {
+  background-color: #FFAE9D;
+  color: white;
+}
+
 .card-text {
   color: rgb(116, 117, 121);
 }
@@ -258,4 +271,6 @@ body h5 {
   font-weight: normal;
   font-size: 15px;
   text-decoration: underline;
-}/*# sourceMappingURL=webcentral.css.map */
+}
+
+/*# sourceMappingURL=webcentral.css.map */
