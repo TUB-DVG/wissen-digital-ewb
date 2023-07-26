@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-from turtle import up
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404

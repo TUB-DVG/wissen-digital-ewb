@@ -11,7 +11,7 @@
   background-color: $btn-color;
   color: $btn-text-color;
 }
-#container-cards-tools {
+.technical-cards {
   .border-technical {
     @include border-rect($technical-color)
   }
@@ -25,6 +25,9 @@
 
 .card-text {
   color: $secondary-text-color;
+}
+.card-header-text {
+  color: $primary-text-color;
 }
 
 /* card_hover: allows the item display cards to grow on hover

@@ -6,7 +6,7 @@
 
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'dataset_view' dataset.id %}">
-    <div class="card shadow h-100">
+    <div class="card border-technical h-100">
       <!-- Image at top discarded for NOW
 
         <div class="card-header text-right">
@@ -23,29 +23,26 @@
         </div>
 
         -->
+      <!-- Card body -->
+
+      <div class="card-body pb-0">
+
+        <!-- Title -->
+        <h3 class="card-title">
+          {{ dataset.nameDataset}}
+        </h3>
+        <!--
+            <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
+            -->
+
+      </div>
       <!-- Image -->
 
       <div class="image-container d-flex" style="height: 150px;">
         {%if dataset.image %}
         <img src="{{ dataset.image.url }}" class="card-img-top px-4 pb-2 m-auto"
           style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
-        {% else %}
-        <img src=" {%static 'img/Default.webp' %}" class="card-img-top px-4 pb-2 m-auto"
-          style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (else)">
         {% endif %}
-      </div>
-      <!-- Card body -->
-
-      <div class="card-body pb-0">
-
-        <!-- Title -->
-        <h5 class="card-title">
-          {{ dataset.nameDataset}}
-        </h5>
-        <!--
-            <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
-            -->
-
       </div>
 
       <!-- Card footer -->
@@ -54,7 +51,7 @@
         <hr>
         <div class="d-flex justify-content-between">
           <span class="h6 fw-light mb-0">
-            <i class="fas fa-sync text-success me-2"></i>Coverage: {{ dataset.coverage }}
+            <i class="fas fa-sync me-2"></i>Abdeckung: {{ dataset.coverage }}
           </span>
 
         </div>
