@@ -31,20 +31,18 @@
         <!-- Nav item 4 Component-->
         <ul class="navbar-nav navbar-nav-scroll mx-auto">
           <!-- Nav technical focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="technicalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
                  &nbsp; &nbsp; &nbsp; Technischer Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'tool_list' %}">
@@ -139,20 +137,18 @@
             </ul>
           <!-- Nav operational focus END-->
           <!-- Nav ecological focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link postion-relative">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="ecologicalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
                 &nbsp; &nbsp; &nbsp; Ökologischer Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityNegativ' %}">
@@ -185,20 +181,18 @@
           </li>
           <!-- Nav ecological focus END -->
           <!-- Nav legal focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="legalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
                 &nbsp; &nbsp; &nbsp; Rechtlicher Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="#">
