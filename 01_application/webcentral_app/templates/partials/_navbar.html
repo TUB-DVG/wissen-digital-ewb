@@ -7,7 +7,9 @@
     <div class="container">
       <!-- Logo START -->
       <a class="navbar-brand" href="{% url 'StartSearch' %}">
-        <img  height="100" src="{% static 'assets/images/logo_dummy.svg' %}" alt="logo">
+        <img src="{% static 'assets/images/logo_dummy.svg' %}"
+             alt="logo"
+             style="width:240px;">
       </a>
       <!-- Logo END -->
 
@@ -29,19 +31,18 @@
         <!-- Nav item 4 Component-->
         <ul class="navbar-nav navbar-nav-scroll mx-auto">
           <!-- Nav technical focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="technicalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
-                alt="">
-                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Technischer Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+                   alt=""
+                   style="width:35px;">
+                 &nbsp; &nbsp; &nbsp; Technischer Fokus
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'tool_list' %}">
@@ -84,20 +85,19 @@
             </ul>
           </li>
           <!-- Nav technical focus END -->
-          <!-- Nav ecomomical focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <!-- Nav operational focus START-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="operationalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                class="position-absolute start-0 top-50 translate-middle-y"
-                alt="">
-                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Betrieblicher Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+                   class="position-absolute start-0 top-50 translate-middle-y"
+                   alt=""
+                   style="width:35px;">
+              &nbsp; &nbsp; &nbsp; Betrieblicher Fokus
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'businessModelsPractice' %}">
@@ -135,22 +135,20 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <!-- Nav economical focus END -->
+          <!-- Nav operational focus END-->
           <!-- Nav ecological focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link postion-relative">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="ecologicalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                class="position-absolute start-0 top-50 translate-middle-y"
-                alt="">
-                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ökologischer Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+                   class="position-absolute start-0 top-50 translate-middle-y"
+                   alt=""
+                   style="width:35px;">
+                &nbsp; &nbsp; &nbsp; Ökologischer Fokus
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityNegativ' %}">
@@ -183,19 +181,18 @@
           </li>
           <!-- Nav ecological focus END -->
           <!-- Nav legal focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="legalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                class="position-absolute start-0 top-50 translate-middle-y"
-                alt="">
-                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Rechtlicher Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+                   class="position-absolute start-0 top-50 translate-middle-y"
+                   alt=""
+                   style="width:35px;">
+                &nbsp; &nbsp; &nbsp; Rechtlicher Fokus
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="#">
@@ -229,6 +226,6 @@
       <!-- Main navbar END -->
 
   </nav>
-  <!-- Logo Nav END -->
+<!-- Logo Nav END -->
 </header>
 <!-- Header END -->
