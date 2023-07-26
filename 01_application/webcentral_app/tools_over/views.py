@@ -24,7 +24,7 @@ class UpdateProperties:
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.filter(
-        classification__classification="Werkzeug", 
+        classification__classification="Digitales Werkzeug", 
         focus__focus="Technisch",
     ) # reads all data from table Teilprojekt
     filteredBy = [None]*3

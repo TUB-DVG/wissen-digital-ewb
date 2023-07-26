@@ -23,6 +23,17 @@
   }
 }
 
+.operational-cards {
+  .border-operational {
+    @include border-rect($operational-color)
+  }
+  .border-operational-round {
+    @include border-round($operational-color)
+  }
+  .btn-operational {
+    @include btn-search($operational-color, $third-text-color)
+  }
+}
 .card-text {
   color: $secondary-text-color;
 }
