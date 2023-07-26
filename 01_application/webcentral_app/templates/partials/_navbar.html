@@ -106,8 +106,14 @@
               </li>
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  Nutzenden&shy;perspektive
+                   href="{% url 'userIntegrationPractice' %}">
+                  Nutzenden&shy;perspektive - best-practice
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item"
+                   href="{% url 'userIntegrationMethod' %}">
+                  Nutzenden&shy;perspektive - Methoden
                 </a>
               </li>
             </ul>
@@ -129,14 +135,30 @@
                 aria-labelledby="dataDropdown">
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  Daten&shy;suffizienz
+                   href="{% url 'environmentalIntegrityNegativ' %}">
+                  Negative Umweltwirkungen
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  PLATZZZZ
+                   href="{% url 'environmentalIntegrityPositiv' %}">
+                  Positive Umweltwirkungen - best-practice
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item"
+                   href="{% url 'benchmarkingChallenges' %}">
+                  Herausforderungen
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item"
+              <li>
+                <a class="dropdown-item"
+                   href="{% url 'dataSufficiency' %}">
+                  Datensuffizienz
+                </a>
+              </li>
                 </a>
               </li>
             </ul>
