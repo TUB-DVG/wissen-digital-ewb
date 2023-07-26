@@ -87,21 +87,19 @@
             </ul>
           </li>
           <!-- Nav technical focus END -->
-          <!-- Nav ecomomical focus START-->
-          <li class="dropdown nav-item postion-relative">
-            <span class="nav-link">
+          <!-- Nav operational focus START-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="operationalDropdown"
+               role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
               <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
-                &nbsp; &nbsp; &nbsp; Betrieblicher Fokus
-              <a class="dropdown-toggle dropdown-toggle-split pl-0">
-                <span class="visually-hidden">Toggle Dropdown
-                </span>
-              </a>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-end pt-3"
-                aria-labelledby="dataDropdown">
+              &nbsp; &nbsp; &nbsp; Betrieblicher Fokus
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'businessModelsPractice' %}">
@@ -139,8 +137,7 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <!-- Nav economical focus END -->
+          <!-- Nav operational focus END-->
           <!-- Nav ecological focus START-->
           <li class="dropdown nav-item postion-relative">
             <span class="nav-link postion-relative">
@@ -235,6 +232,6 @@
       <!-- Main navbar END -->
 
   </nav>
-  <!-- Logo Nav END -->
+<!-- Logo Nav END -->
 </header>
 <!-- Header END -->
