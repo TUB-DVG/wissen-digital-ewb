@@ -7,7 +7,6 @@ from keywords.models import *
 from norms_over.models import *
 
 # -*- coding: utf-8 -*-
-import pdb
 
 def getOrCreateFurtherFundingInformation(row, header):
     """
@@ -361,9 +360,6 @@ def addOrUpdateRowSubproject(row, header, source):
                                     moduleAssignment_id= moduleAssignment_id)
             print('added: %s' %referenceNumber)
         except IntegrityError:
-            #answ = input("%s found in db. Update this part project? (Y/n): "
-            #         %referenceNumber) or 'y'
-            #if answ == 'y':
             Subproject.objects.filter(referenceNumber_id=referenceNumber).update(
                     moduleAssignment_id= moduleAssignment_id)
             print('updated: %s' %referenceNumber)
@@ -554,13 +550,7 @@ def loadClassificationAndFocus(filename):
                     # pdb.set_trace()
                     querySet[0].focus.set(focusDjangoQuery)
                     querySet[0].classification.set(classificationDjangoQuery)
-                    # querySet[0].update({"classification": classificationDjangoQuery[0], "focus": focusDjangoQuery[0]})
             
-            # pdb.set_trace()
-
-            # image = toolsImages.loc[row[header.index('Tool')]]['image']
-            # print(image)
-            # getOrCreateTools(row, header, image)
     return header, data 
 
 def loadDigitalApplication(filename):
@@ -572,9 +562,6 @@ def loadDigitalApplication(filename):
         header = next(reader)
         data = []
         for ii, row in enumerate(reader):
-            # print(row[header.index('Tool')])
-            # image = toolsImages.loc[row[header.index('Tool')]]['image']
-            # print(image)
             getOrCreateDigitalApplication(row, header)
     return header, data  
 
@@ -586,20 +573,14 @@ def getOrCreateDigitalApplication(row, header):
     name = row[header.index('Name')]
     provider = row[header.index('Anbieter')]
     shortDescription = row[header.index('Kurzbeschreibung (Was ist XY?)')]
-    # applicationArea = row[header.index('Anwendungsbereich')]
-    # usage = row[header.index('Kategorie')]
     classification = Classification.objects.filter(classification="Digitale Anwendung")
     focus = Focus.objects.filter(focus="Betrieblich")
     lifeCyclePhase = row[header.index('Lebenszyklusphase')]
     userInterface = row[header.index('Nutzerschnittstelle')]
     targetGroup = row[header.index('Zielgruppe')]
-    # lastUpdate= row[header.index('letztes Update')]
     licence = row[header.index('Lizenz')]
     image_path = row[header.index('Bild / Icon')]
     furtherInformation = row[header.index('Weitere Informationen')]
-    # alternatives = row[header.index('Alternativen')]
-    # specificApplication = row[header.index('konkrete Anwendung in EWB Projekten')]
-    # userEvaluation = row[header.index('Nutzerbewertungen')]
     if type(image_path) == str:
         image = image_path
     else:
@@ -620,17 +601,12 @@ def getOrCreateDigitalApplication(row, header):
         name=name,
         provider=provider,
         shortDescription=shortDescription,
-        # focus=focus[0],
         lifeCyclePhase=lifeCyclePhase,
         userInterface=userInterface,
         targetGroup=targetGroup,
-        # lastUpdate=lastUpdate,
         licence = licence,
         furtherInformation = furtherInformation,
-        # alternatives = alternatives,
-        # specificApplication = specificApplication,
         image=image,
-        # nutzerbewertungen = nutzerbewertung
     )
     obj.classification.set(classification)
     obj.focus.set(focus)

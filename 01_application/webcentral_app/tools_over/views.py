@@ -42,7 +42,7 @@ def index(request):
             licence__icontains=licence,
             name__icontains=searched,
             focus__focus="Technisch",
-            classification__classification="Werkzeug",
+            classification__classification="Digitales Werkzeug",
         )
         filteredBy = [usage, licence, lifeCyclePhase]
               
