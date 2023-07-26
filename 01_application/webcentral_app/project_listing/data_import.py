@@ -360,9 +360,6 @@ def addOrUpdateRowSubproject(row, header, source):
                                     moduleAssignment_id= moduleAssignment_id)
             print('added: %s' %referenceNumber)
         except IntegrityError:
-            #answ = input("%s found in db. Update this part project? (Y/n): "
-            #         %referenceNumber) or 'y'
-            #if answ == 'y':
             Subproject.objects.filter(referenceNumber_id=referenceNumber).update(
                     moduleAssignment_id= moduleAssignment_id)
             print('updated: %s' %referenceNumber)
@@ -530,6 +527,90 @@ def retrieveImageFromDatabase():
     df.to_csv('/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv')
     return df 
 
+def loadClassificationAndFocus(filename):
+    """Loads Classifcation and Focus for the Tools
+    
+    """    
+    with open(filename, encoding='utf-8') as csvFile:
+        reader = csv.reader(csvFile, delimiter=',')
+        header = next(reader)
+        data = []
+        for ii, row in enumerate(reader):
+            print(row[header.index('Tool')])
+            tool = row[header.index('Tool')]
+            classificationStr = row[header.index('classification')]
+            classificationDjangoQuery = Classification.objects.filter(classification=classificationStr)
+            focusStr = row[header.index('focus')]
+            focusDjangoQuery = Focus.objects.filter(focus=focusStr)
+            # pdb.set_trace()
+            if len(classificationDjangoQuery) == 1 and len(focusDjangoQuery) == 1:
+                querySet = Tools.objects.filter(name=tool)
+                
+                if len(querySet) == 1:
+                    # pdb.set_trace()
+                    querySet[0].focus.set(focusDjangoQuery)
+                    querySet[0].classification.set(classificationDjangoQuery)
+            
+    return header, data 
+
+def loadDigitalApplication(filename):
+    """loads digital application into the database
+
+    """
+    with open(filename, encoding='utf-8') as csvFile:
+        reader = csv.reader(csvFile, delimiter=',')
+        header = next(reader)
+        data = []
+        for ii, row in enumerate(reader):
+            getOrCreateDigitalApplication(row, header)
+    return header, data  
+
+def getOrCreateDigitalApplication(row, header):
+    """
+    add entry into table Tools or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    name = row[header.index('Name')]
+    provider = row[header.index('Anbieter')]
+    shortDescription = row[header.index('Kurzbeschreibung (Was ist XY?)')]
+    classification = Classification.objects.filter(classification="Digitale Anwendung")
+    focus = Focus.objects.filter(focus="Betrieblich")
+    lifeCyclePhase = row[header.index('Lebenszyklusphase')]
+    userInterface = row[header.index('Nutzerschnittstelle')]
+    targetGroup = row[header.index('Zielgruppe')]
+    licence = row[header.index('Lizenz')]
+    image_path = row[header.index('Bild / Icon')]
+    furtherInformation = row[header.index('Weitere Informationen')]
+    if type(image_path) == str:
+        image = image_path
+    else:
+        image = None
+    # released
+    # releasePlanned
+    # yearOfRelease
+    # resources
+    # developmentState
+    # programmingLanguages
+    # frameworksLibraries
+    # databaseSystem
+    # classification
+    # scale
+    # technicalStandards
+    # pdb.set_trace()
+    obj, created = Tools.objects.get_or_create(
+        name=name,
+        provider=provider,
+        shortDescription=shortDescription,
+        lifeCyclePhase=lifeCyclePhase,
+        userInterface=userInterface,
+        targetGroup=targetGroup,
+        licence = licence,
+        furtherInformation = furtherInformation,
+        image=image,
+    )
+    obj.classification.set(classification)
+    obj.focus.set(focus)
+    return obj, created
 
 if __name__ == "__main__":
     # Script area (here you find examples to use the functions ahead)
@@ -537,8 +618,8 @@ if __name__ == "__main__":
     #retrieveImageFromDatabase()
     #removeFromDatabase(Tools)
     #re-import tools into database
-    pathCsvTools='./02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-    pathCsvToolsImages = './02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
+    pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+    pathCsvToolsImages = '/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
     import pandas as pd
     toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
     header, data = csv2m4dbTools(pathCsvTools, toolsImages)
@@ -548,18 +629,22 @@ if __name__ == "__main__":
     header, data = csv2m4dbNorms(pathCsvNorms)
 
     ## Example add/update Weatherdata table
-    pathCsvWeatherData='./02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
+    pathCsvWeatherData='/src/02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
     header, data = csv2m4dbWeatherData(pathCsvWeatherData)
     ## Example add/update Schlagwoerter table
-    pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
-    header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
+    # pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
+    # header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
 
-    ## add/update Enargus data
-    pathCsvEnargus ='./02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv'
-    header, data = csv2m4dbEnargus(pathCsvEnargus)
+    # ## add/update Enargus data
+    # pathCsvEnargus ='./02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv'
+    # header, data = csv2m4dbEnargus(pathCsvEnargus)
 
-    ## add/update ModuleAssignment data
-    pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
-    header, data = csv2m4dbModule(pathCsvModule)
+    # ## add/update ModuleAssignment data
+    # pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
+    # header, data = csv2m4dbModule(pathCsvModule)
 
+    pathToToolsClassificationFocusMapping = '/src/02_work_doc/01_daten/02_toolUebersicht/toolClassificationFocus.csv'
+    header, data = loadClassificationAndFocus(pathToToolsClassificationFocusMapping)
 
+    pathToDigitalApplicationCSV = '/src/02_work_doc/01_daten/06_digitaleAnwendungen/Tools-Digitale-Geschäftsmodelle.csv'
+    header, data = loadDigitalApplication(pathToDigitalApplicationCSV)
