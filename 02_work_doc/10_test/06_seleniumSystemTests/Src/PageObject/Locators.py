@@ -44,7 +44,7 @@ class Locator(object):
     headingOfHeatApproxSite = "//h1"
 
     # locators of about page:
-    aboutPageTopHeading = "//h1"
+    aboutPageTopHeading = "//h2"
     aboutPageSubHeading = "//h3"
     aboutPageEWBImage = "//img[@src='/static/static/img/Energiewendebauen.png']"
     aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
