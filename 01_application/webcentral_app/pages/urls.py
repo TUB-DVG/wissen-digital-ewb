@@ -9,8 +9,6 @@ urlpatterns = [
     path('coming', views.coming, name='coming'),
     path('Datenschutzhinweis', views.Datenschutzhinweis,
          name='Datenschutzhinweis'),
-    path('businessModelsDev', views.businessModelsDev,
-         name='businessModelsDev'),
     path('businessModelsChallenge', views.businessModelsChallenge,
          name='businessModelsChallenge'),
     path('businessModelsPractice', views.businessModelsPractice,

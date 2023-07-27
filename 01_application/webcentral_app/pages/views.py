@@ -22,11 +22,6 @@ def coming(request):
     return render(request, 'pages/coming.html')
 
 
-def businessModelsDev(request):
-    """Call render function for business models development page."""
-    return render(request, 'pages/businessModelsDev.html')
-
-
 def businessModelsChallenge(request):
     """Call render function for business models challenge page."""
     return render(request, 'pages/businessModelsChallenge.html')
