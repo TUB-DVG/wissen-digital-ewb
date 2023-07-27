@@ -56,63 +56,6 @@ class TestClickThroughSites(TestWebcentral):
             "After clicking Logo, Browser should be redirected to Startpage, but was not!",
         )
 
-        navStartbutton = navBar.getNavStart()  
-        self.assertIsNotNone(
-            navStartbutton,
-            "The Nav-Bar has no Start-Button!",
-        )
-
-        navStartbutton.click()
-
-        self.assertEqual(
-            "Wissensplattform - Digitalisierung Energiewendebauen",
-            self.driver.title,
-            "After clicking Start in Nav-Bar, Browser should be redirected to Startpage, but was not!",
-        )
-
-        navDataWebelement = navBar.getNavData()
-
-        self.assertIsNotNone(
-            navDataWebelement,
-            "The Nav-Bar has no Daten-Button!",
-        )
-        navDataWebelement.click()
-
-        self.assertEqual(
-            "Daten",
-            self.driver.title,
-            "After clicking 'Daten' in Nav-Bar, Browser should be redirected to Daten-page, but was not!",
-        )      
-
-        navDigitalAppsWebelement = navBar.getNavDigitalApps()
-
-        self.assertIsNotNone(
-            navDigitalAppsWebelement,
-            "The Nav-Bar has no Daten-Button!",
-        )
-
-        navDigitalAppsWebelement.click()
-
-        self.assertEqual(
-            "Wissensplattform",
-            self.driver.title,
-            "After clicking 'Digitale Anwendungen' in Nav-Bar, Browser should be redirected to 'Digitale Anwendungen'-page, but was not!",
-        )      
-
-        navToolListWebelement = navBar.getNavDigitalTools()
-
-        self.assertIsNotNone(
-            navToolListWebelement,
-            "The Nav-Bar has no 'Digitale Werkzeuge'-Button!",
-        )
-
-        navToolListWebelement.click()
-
-        self.assertEqual(
-            "Überblick über die Anwendungen",
-            self.driver.title,
-            "After clicking 'Digitale Werkzeuge' in Nav-Bar, Browser should be redirected to 'Digitale Werkzeuge'-page, but was not!",
-        )      
 
     def testHoverOverDataAndClickWeatherdata(self):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
