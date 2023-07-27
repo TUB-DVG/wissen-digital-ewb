@@ -22,14 +22,14 @@ class NavBar(object):
         """
         self.driver = driver
 
-    def getTULogo(self):
-        """Returns the TU-Logo from left upper side of page
+    def getLogo(self):
+        """Returns the Logo from left upper side of page
         
         """
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.TUBerlinImage,
+                Locator.LogoImage,
             )
         except:
             return None

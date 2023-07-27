@@ -36,18 +36,18 @@ class TestClickThroughSites(TestWebcentral):
         """
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get("http://127.0.0.1:8070/tool_list")
         self.driver.set_page_load_timeout(30)
 
         navBar = NavBar(self.driver)
 
-        tuLogoLink = navBar.getTULogo()
+        LogoLink = navBar.getLogo()
         self.assertIsNotNone(
-            tuLogoLink,
-            "The TU-Logo, which is a link at the same time is not shown! ",
+            LogoLink,
+            "The Logo, which is a link at the same time is not shown! ",
         )
 
-        tuLogoLink.click()
+        LogoLink.click()
         
 
         self.assertEqual(
