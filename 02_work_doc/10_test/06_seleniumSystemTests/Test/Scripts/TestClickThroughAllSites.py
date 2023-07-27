@@ -53,7 +53,7 @@ class TestClickThroughSites(TestWebcentral):
         self.assertEqual(
             "Wissensplattform - Digitalisierung Energiewendebauen",
             self.driver.title,
-            "After clicking TU-Logo, Browser should be redirected to Startpage, but was not!",
+            "After clicking Logo, Browser should be redirected to Startpage, but was not!",
         )
 
         navStartbutton = navBar.getNavStart()  
