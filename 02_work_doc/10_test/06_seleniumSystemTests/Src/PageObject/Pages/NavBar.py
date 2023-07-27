@@ -59,14 +59,15 @@ class NavBar(object):
             print("Tool Link Element couldnt be located on webpage!")
             return None
     
-    def getNavData(self):
-        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
+    def getNavTechFocus(self):
+        """Returns the Webelement, which represents the
+        'Technischer Fokus'-NavBar-Element
         
         """
         try:
             return self.driver.find_element(
                 By.XPATH, 
-                Locator.navData,
+                Locator.navTechFocus,
             )
         except NoSuchElementException:
             print("Tool Link Element couldnt be located on webpage!")

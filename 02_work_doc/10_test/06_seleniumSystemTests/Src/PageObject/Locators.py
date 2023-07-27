@@ -4,13 +4,12 @@ class Locator(object):
     toolListLink = "//a[@href='/tool_list/']"
     LogoImage = "//a/img[@alt='logo']"
     navStartButton = "//li/a[contains(text(), 'Start')]"
-    navData = "//a[contains(text(), 'Daten')]"
+    navTechFocus = "//*[@id='technicalDropdown']"
     digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
     weatherDataItem = "//li/a[contains(text(), 'Wetterdaten')]"
     lastProfileItem = "//li/a[contains(text(), 'Lastprofile')]"
     # locators in Home
 
-    
     # locators in tool-list
     toolListSearchInput = "//input[@id='search-input-tools']"
     toolItemsIdentifer = "//div[@class='col-sm-6 col-lg-4 col-xl-3']"
