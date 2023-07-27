@@ -32,7 +32,7 @@ class TestAboutPage(TestWebcentral):
         """Tests if the two Headings on the Page are displayed.
         
         """
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get("http://127.0.0.1:8070/pages/about")
 
         aboutPageObj = AboutPage(self.driver)
         topHeadingOfPage = aboutPageObj.getTopHeading()
@@ -59,7 +59,7 @@ class TestAboutPage(TestWebcentral):
         
         """
 
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get("http://127.0.0.1:8070/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
         ewbImage = aboutPageObj.getEWBImage()
@@ -76,7 +76,7 @@ class TestAboutPage(TestWebcentral):
 
         Tests if the Links on the About Page redirect to the right Pages. 
         """
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get("http://127.0.0.1:8070/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
 
@@ -144,9 +144,3 @@ class TestAboutPage(TestWebcentral):
             self.driver.title,            
             "Page title after clicking on image of IÖW is not 'Energiewendebauen | IÖW'!",
         )
-
-
-
-
-
-
