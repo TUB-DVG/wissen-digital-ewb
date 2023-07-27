@@ -61,12 +61,12 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get("http://127.0.0.1:8070/tool_list")
         navBar = NavBar(self.driver)
-        dataItem = navBar.getNavData()
+        techItem = navBar.getNavTechFocus()
   
         action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(dataItem).perform()
+        action_chains.move_to_element(techItem).perform()
         time.sleep(1)
         weatherDataItem = navBar.getWeatherDataItem()
         
@@ -83,12 +83,12 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get("http://127.0.0.1:8070/tool_list")
         navBar = NavBar(self.driver)
-        dataItem = navBar.getNavData()
+        techItem = navBar.getNavTechFocus()
 
         action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(dataItem).perform()
+        action_chains.move_to_element(techItem).perform()
         time.sleep(1)
         
         lastprofileItem = navBar.getLastProfileItem()
