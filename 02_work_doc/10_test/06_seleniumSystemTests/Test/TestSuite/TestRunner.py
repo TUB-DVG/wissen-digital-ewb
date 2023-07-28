@@ -4,7 +4,7 @@ sys.path.append(sys.path[0] + "/...")
 sys.path.append(os.getcwd())
  
 from unittest import TestLoader, TestSuite, TextTestRunner
-from Test.Scripts.TestDigitalTools import TestDigitalToolsTab
+from Test.Scripts.TestDigitalTools import TestDigitalToolsPage
 from Test.Scripts.TestClickThroughAllSites import TestClickThroughSites
 from Test.Scripts.TestLastprofile import TestLastprofileTab
 from Test.Scripts.TestAboutPage import TestAboutPage
