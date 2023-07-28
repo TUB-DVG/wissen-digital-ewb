@@ -62,7 +62,7 @@ class TestDigitalToolsPage(TestWebcentral):
         self.openToolList()
 
         toolListPage = ToolListPage(self.driver)
-
+        # breakpoint()
         searchFieldElement = toolListPage.getSearchInputElement()
         if searchFieldElement is None:
             self.assertTrue(False)
@@ -77,6 +77,9 @@ class TestDigitalToolsPage(TestWebcentral):
         time.sleep(1)
         searchFieldElement.send_keys(Keys.RETURN)
         listOfToolItemsAfterReturn = toolListPage.getListOfToolItems()
+        print(len(toolListPage.getListOfToolItems()))
+        print(len(listOfToolItemsAfterReturn))
+        breakpoint()
         self.assertEqual(
             len(listOfToolItemsAfterReturn),
             1,
