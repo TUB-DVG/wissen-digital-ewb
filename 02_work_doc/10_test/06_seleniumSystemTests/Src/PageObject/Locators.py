@@ -12,7 +12,7 @@ class Locator(object):
 
     # locators in tool-list
     toolListSearchInput = "//input[@id='search-input-tools']"
-    toolItemsIdentifer = "//div[@class='col-sm-6 col-lg-4 col-xl-3']"
+    toolItemsIdentifer = "//div[@class='col-sm-6 col-lg-4 col-xl-3 card_hover']"
     searchStrBoxX = "//a[@href='/tool_list/?searched=&k=&l=&lzp=']"
     searchCategorieSelect = "//select[@id='kategorie-input-tools']"
     searchLicenceSelect = "//select[@id='lizenz-input-tools']"
