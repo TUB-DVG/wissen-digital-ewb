@@ -262,10 +262,10 @@ class TestDigitalToolsPage(TestWebcentral):
 
     def testIfShowMoreExpandsText(self):
         """Tests, if clicking `Zeige mehr` shows the whole text.
-        
+
         This method tests the expansion-text-field on tool-list page.
-        First it tests if the expansion-field is collapsed after 
-        loading the page. This is done by checking if the list 
+        First it tests if the expansion-field is collapsed after
+        loading the page. This is done by checking if the list
         inside the text-field is displayed. After that, the
         `Zeige mehr ...`-Link is pressed, which expands the text-
         field. It is then checked if the list is now displayed.
@@ -274,9 +274,9 @@ class TestDigitalToolsPage(TestWebcentral):
         the list is hidden.
         """
         self.openToolListAndLogin()
-        
+
         toolListPage = ToolListPage(self.driver)
-        
+
         time.sleep(5)
         cookieBannerObj = CookieBanner(self.driver)
         cookieBannerObj.getCookieAcceptanceButton().click()
@@ -285,22 +285,22 @@ class TestDigitalToolsPage(TestWebcentral):
             toolListPage.getListInExpandedText()[0].is_displayed(),
             "The list inside the expand-field is shown, but it should be collapsed on page load!",
         )
-        
+
         toolListPage.getShowMoreElement().click()
-        
+
         listOfListElements = toolListPage.getListInExpandedText()
         time.sleep(1)
         self.assertTrue(
-            listOfListElements[0].is_displayed(), 
+            listOfListElements[0].is_displayed(),
             "List-Element is not Displayed after clicking on 'Zeige mehr ...'!",
         )
-        
+
         time.sleep(1)
         showLessLink = toolListPage.getShowLessElement()
         self.driver.execute_script("arguments[0].click();",showLessLink)
         #time.sleep(1)
         #showLessLink.click()
-        
+
         time.sleep(1)
         self.assertFalse(
             toolListPage.getListInExpandedText()[0].is_displayed(),
@@ -310,19 +310,19 @@ class TestDigitalToolsPage(TestWebcentral):
 
     def openToolListAndLogin(self) -> None:
         """Helper-method, which connects to tool-list page.
-        
+
         """
         self.driver.get("http://127.0.0.1:8070/tool_list/")
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
-        navBar = NavBar(self.driver)   
+        navBar = NavBar(self.driver)
         toolListLink = navBar.getNavToolList()
-        toolListLink.click() 
+        toolListLink.click()
 
     def checkPageTitle(self, pageTitle) -> None:
         """
-        
+
         """
         try:
             if self.driver.title == pageTitle:
