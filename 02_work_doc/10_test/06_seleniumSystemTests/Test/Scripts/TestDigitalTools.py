@@ -28,7 +28,7 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
-class TestDigitalToolsTab(TestWebcentral):
+class TestDigitalToolsPage(TestWebcentral):
     """
     
     """
