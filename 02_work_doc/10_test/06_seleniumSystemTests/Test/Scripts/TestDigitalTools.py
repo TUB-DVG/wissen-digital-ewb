@@ -19,6 +19,7 @@ from selenium import (
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
@@ -31,25 +32,26 @@ class TestDigitalToolsTab(TestWebcentral):
     """
     
     """
-    def testNavigateToDigitalToolsTab(self) -> None:
-        """Navigates from startpage to digital-tools-tab.
+    def testNavigateToDigitalToolsPage(self) -> None:
+        """Navigates from norm list to digital-tools-tab.
 
         """
 
-        self.driver.get("http://127.0.0.1:8070")
-        self.driver.set_page_load_timeout(30)
-        webPageTitle = "Wissensplattform - Digitalisierung Energiewendebauen"
-        
-        self.checkPageTitle(webPageTitle)
-        
-        navBar = NavBar(self.driver)
+        self.driver.get("http://127.0.0.1:8070/norm_list")
 
-        toolListLink = navBar.getNavToolList()
-        if toolListLink is not None:
-            toolListLink.click()
+        navBar = NavBar(self.driver)
+        techItem = navBar.getNavTechFocus()
+
+        action_chains = ActionChains(self.driver)
+        action_chains.move_to_element(techItem).perform()
+        time.sleep(1)
+        toolListItem = navBar.getNavToolList()
+
+        if toolListItem is not None:
+            toolListItem.click()
         else:
             self.assertTrue(False)
-        
+
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
