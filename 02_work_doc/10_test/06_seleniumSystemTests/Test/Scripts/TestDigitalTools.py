@@ -59,7 +59,7 @@ class TestDigitalToolsPage(TestWebcentral):
         """Tests the Search Function in `Digitale Anwendungen`
         
         """
-        self.openToolListAndLogin()
+        self.openToolList()
 
         toolListPage = ToolListPage(self.driver)
 
@@ -308,7 +308,7 @@ class TestDigitalToolsPage(TestWebcentral):
         )
 
 
-    def openToolListAndLogin(self) -> None:
+    def openToolList(self) -> None:
         """Helper-method, which connects to tool-list page.
 
         """
@@ -317,8 +317,14 @@ class TestDigitalToolsPage(TestWebcentral):
         self.checkPageTitle(titleAfterClickLink)
 
         navBar = NavBar(self.driver)
-        toolListLink = navBar.getNavToolList()
-        toolListLink.click()
+        techItem = navBar.getNavTechFocus()
+
+        action_chains = ActionChains(self.driver)
+        action_chains.move_to_element(techItem).perform()
+        time.sleep(1)
+        digitalToolsItem = navBar.getNavDigitalTools()
+
+        digitalToolsItem.click()
 
     def checkPageTitle(self, pageTitle) -> None:
         """
