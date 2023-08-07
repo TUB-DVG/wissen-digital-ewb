@@ -4,8 +4,8 @@ from project_listing.models import *
 from tools_over.models import *
 from weatherdata_over.models import *
 from keywords.models import *
-from norms_over.models import *
-
+#from norms_over.models import *
+from TechnicalStandards.models import *
 # -*- coding: utf-8 -*-
 
 def getOrCreateFurtherFundingInformation(row, header):
@@ -385,7 +385,7 @@ def addOrUpdateRowSubproject(row, header, source):
 
 def getOrCreateNorms(row, header):
     """
-    add entry into table Norms or/and return entry key
+    add entry (Norms) into table or/and return entry key
     """
     # content = row[number of the columns of the row]
     isNorm = True
@@ -395,13 +395,66 @@ def getOrCreateNorms(row, header):
     source  = row[header.index('Source')]
     link  = row[header.index('Link')]
 
-    obj, created = TechnicalStandards.objects.get_or_create(
+    obj, created = Norm.objects.get_or_create(
         isNorm = isNorm,
         name = name,
         shortDescription = shortDescription,
         title = title, 
-        source  = source ,
+        source  = source,
         link = link 
+    )
+    return obj, created
+
+def getOrCreateProtocols(row, header):
+    """
+    add entry (Protocols) into table or/and return entry key
+    """
+    # content = row[number of the columns of the row]
+    isNorm = False 
+    name = row[header.index('name')]
+    communicationMediumCategory = row[header.index('communicationMediumCategory')]
+    supportedTransmissionMediuems = row[header.index('supportedTransmissionMediuems')]
+    associatedStandards  = row[header.index('associatedStandards')]
+    openSourceStatus  = row[header.index('openSourceStatus')]
+    licensingFeeRequirement = row[header.index('licensingFeeRequirement')]
+    networkTopology  = row[header.index('networkTopology')]
+    security  = row[header.index('security')]
+    bandwidth  = row[header.index('bandwith')]
+    frequency  = row[header.index('frequency')]
+    range = row[header.index('range')]
+    numberOfConnectedDevices  = row[header.index('numberOfConnectedDevices')]
+    dataModelArchitecture = row[header.index('dataModelArchitecture')]
+    discovery  = row[header.index('discovery')]
+    multiMaster  = row[header.index('multiMaster')]
+    packetSize  = row[header.index('packetSize')]
+    priorities  = row[header.index('priorities')]
+    price = row[header.index('price')]
+    osiLayers  = row[header.index('osiLayers')]
+    buildingAutomationLayer  = row[header.index('buildingAutomationLayer')]
+    link  = row[header.index('link')]
+    obj, created = Protocol.objects.get_or_create(
+        isNorm = isNorm,
+        name = name,
+        communicationMediumCategory = communicationMediumCategory,
+        supportedTransmissionMediuems = supportedTransmissionMediuems,
+        associatedStandards  = associatedStandards,
+        openSourceStatus  = openSourceStatus,
+        licensingFeeRequirement = licensingFeeRequirement,
+        networkTopology  = networkTopology,
+        security  = security,
+        bandwidth  = bandwidth,
+        frequency  = frequency,
+        range = range,
+        numberOfConnectedDevices  = numberOfConnectedDevices,
+        dataModelArchitecture = dataModelArchitecture,
+        discovery  = discovery,
+        multiMaster = multiMaster,
+        packetSize = packetSize,
+        priorities  = priorities,
+        price = price,
+        osiLayers  = osiLayers,
+        buildingAutomationLayer  = buildingAutomationLayer,
+        link = link
     )
     return obj, created
 
@@ -491,6 +544,22 @@ def csv2m4dbNorms(path):
                 data.append(row)
                 # breakpoint()
                 getOrCreateNorms(row, header)
+            except:
+                print('NOT WORKING FOR ROW ', row)
+    return header, data
+
+def csv2m4dbProtocols(path):
+    """Normen csv-file into BF M4 Django database, hard coded"""
+    with open(path, encoding='utf-8') as csvFile:
+        reader = csv.reader(csvFile, delimiter='|')
+        header = next(reader)
+        data = []
+        for row in reader:
+            try:
+                print(row[header.index('name')])
+                data.append(row)
+                # breakpoint()
+                getOrCreateProtocols(row, header)
             except:
                 print('NOT WORKING FOR ROW ', row)
     return header, data
@@ -618,19 +687,23 @@ if __name__ == "__main__":
     #retrieveImageFromDatabase()
     #removeFromDatabase(Tools)
     #re-import tools into database
+        
     pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
     pathCsvToolsImages = '/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
     import pandas as pd
-    toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
-    header, data = csv2m4dbTools(pathCsvTools, toolsImages)
+    #toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
+    #header, data = csv2m4dbTools(pathCsvTools, toolsImages)
 
     ## add/update norm data
-    pathCsvNorms='/src/02_work_doc/01_daten/05_normen/2023_04_17_Normen.csv'
+    pathCsvNorms='/src/02_work_doc/01_daten/05_technicalStandards/2023_04_17_Normen.csv'
     header, data = csv2m4dbNorms(pathCsvNorms)
 
+    pathCsvProtocols = '/src/02_work_doc/01_daten/05_technicalStandards/2023_07_31_Protokolle.csv'
+    header, data =  csv2m4dbProtocols(pathCsvProtocols)
+
     ## Example add/update Weatherdata table
-    pathCsvWeatherData='/src/02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
-    header, data = csv2m4dbWeatherData(pathCsvWeatherData)
+    #pathCsvWeatherData='/src/02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
+    #header, data = csv2m4dbWeatherData(pathCsvWeatherData)
     ## Example add/update Schlagwoerter table
     # pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
     # header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
@@ -643,8 +716,8 @@ if __name__ == "__main__":
     # pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
     # header, data = csv2m4dbModule(pathCsvModule)
 
-    pathToToolsClassificationFocusMapping = '/src/02_work_doc/01_daten/02_toolUebersicht/toolClassificationFocus.csv'
-    header, data = loadClassificationAndFocus(pathToToolsClassificationFocusMapping)
+    #pathToToolsClassificationFocusMapping = '/src/02_work_doc/01_daten/02_toolUebersicht/toolClassificationFocus.csv'
+    #header, data = loadClassificationAndFocus(pathToToolsClassificationFocusMapping)
 
-    pathToDigitalApplicationCSV = '/src/02_work_doc/01_daten/06_digitaleAnwendungen/Tools-Digitale-Geschäftsmodelle.csv'
-    header, data = loadDigitalApplication(pathToDigitalApplicationCSV)
+    #pathToDigitalApplicationCSV = '/src/02_work_doc/01_daten/06_digitaleAnwendungen/Tools-Digitale-Geschäftsmodelle.csv'
+    #header, data = loadDigitalApplication(pathToDigitalApplicationCSV)
