@@ -32,6 +32,7 @@ urlpatterns = [
     path('django_plotly_dash/', include('django_plotly_dash.urls')),
     path('LastProfile/', include('LastProfile.urls')),
     path('', include('StartSearch.urls')),
+    path('TechnicalStandards/',include('TechnicalStandards.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

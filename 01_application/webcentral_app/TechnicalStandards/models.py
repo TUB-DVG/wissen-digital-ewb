@@ -86,6 +86,8 @@ class Protocol(TechnicalStandard):
     buildingAutomationLayer = models.CharField(max_length = 150,
                                         help_text = "Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)",
                                         blank = True)	
+    image=models.ImageField(null=True, blank = True)  
+
     def __str__(self):
         return self.name
 

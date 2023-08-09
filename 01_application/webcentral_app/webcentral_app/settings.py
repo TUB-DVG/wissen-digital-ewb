@@ -41,6 +41,7 @@ ALLOWED_HOSTS.extend(
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
+    'TechnicalStandards.apps.TechnicalStandardsConfig',
     'project_listing.apps.ProjectListingConfig',
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
