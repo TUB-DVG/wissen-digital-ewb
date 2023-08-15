@@ -2,13 +2,12 @@
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
-import pdb
 import sys
-sys.path.append(sys.path[0] + "/...")
-
 import time
 import os
 import random
+
+sys.path.append(sys.path[0] + "/...")
 
 from selenium import (
     webdriver,
@@ -43,10 +42,12 @@ class TestLastprofileTab(TestWebcentral):
         """Clicks on 'Approximation der Stromlast' and tests the tool
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         lastProfileLink = lastprofilePage.getLinkToStromlastTool()
+        self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", lastProfileLink)
+        time.sleep(1)
         lastProfileLink.click()
 
         self.assertEqual(
@@ -71,7 +72,7 @@ class TestLastprofileTab(TestWebcentral):
         """Tests if 'Heat Approximation' is reachable
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
@@ -112,7 +113,7 @@ class TestLastprofileTab(TestWebcentral):
         """Tests, if the links present on the website lead to the right websites.
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         weatherServiceLink = lastprofilePage.getWeatherServiceLink()
@@ -143,5 +144,13 @@ class TestLastprofileTab(TestWebcentral):
             "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
         )
 
+    def testDataLoadsOnStromlast(self):
+        """Test the Stromlast App, if a graph is loaded.
+        
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/stromlast")
+        lastprofilePage = Lastprofile(self.driver)
+        selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
+        
 
 

@@ -14,7 +14,6 @@ class Locator(object):
     digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
     weatherDataItem = "//li/a[contains(text(), 'Wetterdaten')]"
     lastProfileItem = "//li/a[contains(text(), 'Lastprofile')]"
-    # locators in Home
 
     # locators in tool-list
     toolListSearchInput = "//input[@id='search-input-tools']"
@@ -39,6 +38,9 @@ class Locator(object):
     heatApproximationLink = "//a[@href='/LastProfile/warmelast']"
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
     linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
+
+    # locators inside stromlast-app
+    selectPlaceholderCurrentApp = "//*[@id='react-select-2--value']"
 
     # locators for CurrentLoadApproximation-Page
     selectTypeOfAppr = "//div[@class='Select-value']"
