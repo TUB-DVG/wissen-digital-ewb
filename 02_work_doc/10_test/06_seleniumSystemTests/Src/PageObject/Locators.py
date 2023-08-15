@@ -2,6 +2,9 @@ class Locator(object):
     
     # locators on main-page:
     linkToImpressum = "//a[@id='impressumLink']"
+    inputSearchField = "//*[@id='search-input-general']"
+    resultElements = "//tr"
+    firstColumnToRow = "//td"
 
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
