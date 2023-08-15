@@ -65,3 +65,7 @@ def benchmarkingChallenges(request):
 def dataSufficiency(request):
     """Call render function for data sufficiency page."""
     return render(request, 'pages/dataSufficiency.html')
+
+def impressum(request):
+    """Call render function for impressum page."""
+    return render(request, 'pages/impressum.html')
