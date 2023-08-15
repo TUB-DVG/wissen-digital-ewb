@@ -4,7 +4,7 @@ class Locator(object):
     toolListLink = "//a[@href='/tool_list/']"
     LogoImage = "//a/img[@alt='logo']"
     navStartButton = "//li/a[contains(text(), 'Start')]"
-    navTechFocus = "//*[@id='technicalDropdown']"
+    navTechFocus = "//*[@id='technicalDropdown']/img"
     digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
     weatherDataItem = "//li/a[contains(text(), 'Wetterdaten')]"
     lastProfileItem = "//li/a[contains(text(), 'Lastprofile')]"
