@@ -47,3 +47,12 @@ class Lastprofile(object):
             By.XPATH,
             Locator.linkToStandardLoadProdile,
         )
+    
+    def getReactSelectPlaceholder(self):
+        """Returns the select placeholder on the stromlast-page
+        
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.selectPlaceholderCurrentApp,
+        )
