@@ -4,7 +4,6 @@ This module acts as system test of the digital tools tab. It is tested
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
-import pdb
 import sys
 sys.path.append(sys.path[0] + "/...")
 
@@ -36,18 +35,20 @@ class TestDigitalToolsPage(TestWebcentral):
         """Navigates from norm list to digital-tools-tab.
 
         """
-
-        self.driver.get("http://127.0.0.1:8070/norm_list")
+        print(os.environ["siteUnderTest"])
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
 
         navBar = NavBar(self.driver)
         techItem = navBar.getNavTechFocus()
-
-        action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(techItem).perform()
-        time.sleep(1)
         toolListItem = navBar.getNavToolList()
+        action_chains = ActionChains(self.driver)
+        action_chains.move_to_element(techItem).click().perform()
+        
+        time.sleep(1)
+        
 
         if toolListItem is not None:
+            # breakpoint()
             toolListItem.click()
         else:
             self.assertTrue(False)
@@ -76,10 +77,9 @@ class TestDigitalToolsPage(TestWebcentral):
         searchFieldElement.send_keys("Ansys")
         time.sleep(1)
         searchFieldElement.send_keys(Keys.RETURN)
+        time.sleep(1)
         listOfToolItemsAfterReturn = toolListPage.getListOfToolItems()
-        print(len(toolListPage.getListOfToolItems()))
-        print(len(listOfToolItemsAfterReturn))
-        breakpoint()
+
         self.assertEqual(
             len(listOfToolItemsAfterReturn),
             1,
@@ -276,8 +276,8 @@ class TestDigitalToolsPage(TestWebcentral):
         should collapse the text again. It is then tested, if
         the list is hidden.
         """
-        self.openToolListAndLogin()
-
+        # self.openToolListAndLogin()
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         toolListPage = ToolListPage(self.driver)
 
         time.sleep(5)
@@ -315,7 +315,7 @@ class TestDigitalToolsPage(TestWebcentral):
         """Helper-method, which connects to tool-list page.
 
         """
-        self.driver.get("http://127.0.0.1:8070/tool_list/")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
