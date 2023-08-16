@@ -124,3 +124,12 @@ class Lastprofile(object):
             By.XPATH, 
             Locator.pathToLineElementInPlotly,
         )
+
+    def getCsvDownloadButton(self):
+        """Return the CSVDownload Button webelement
+        
+        """
+        return self.driver.find_element(
+            By.XPATH, 
+            Locator.buttonCSVDownload,
+        )        
