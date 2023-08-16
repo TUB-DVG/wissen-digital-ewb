@@ -65,3 +65,4 @@ class StartPage(object):
             By.XPATH, 
             Locator.firstColumnToRow,
         )
+
