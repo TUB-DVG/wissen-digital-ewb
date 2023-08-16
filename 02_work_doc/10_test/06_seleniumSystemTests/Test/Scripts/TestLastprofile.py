@@ -150,7 +150,32 @@ class TestLastprofileTab(TestWebcentral):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/stromlast")
         lastprofilePage = Lastprofile(self.driver)
+
+        # switch into iframe of the react page:
+        iframeElement = lastprofilePage.getPlotlyIFrame()
+        self.driver.switch_to.frame(iframeElement)
+
+
         selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
+        actions = ActionChains(self.driver)
+        actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
         
+        openedSelectElement = lastprofilePage.getOpenedReactSelect()
+        getElementToBeSelected = random.choice(openedSelectElement.text.split("\n")[1:])
 
+        optionToClick = lastprofilePage.getReactOptionFromText(selectPlaceholderToHoverOver, getElementToBeSelected)
+        optionToClick.click()
 
+        listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
+        radioElementToClick = random.choice(listOfRadioButtons)
+        radioElementToClick.click()
+
+        inputFieldPowerRequirement = lastprofilePage.getInputFieldPowerRequirement()
+        inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
+        inputFieldPowerRequirement.send_keys(Keys.RETURN)
+        lineObj = lastprofilePage.getLinePloty()
+        self.assertGreater(
+            len(lineObj.get_attribute("d")),
+            20,
+            "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
+        )
