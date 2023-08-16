@@ -2,6 +2,7 @@
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
+import glob
 import sys
 import time
 import os
@@ -20,6 +21,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
+from watchdog.events import PatternMatchingEventHandler
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
@@ -179,3 +183,14 @@ class TestLastprofileTab(TestWebcentral):
             20,
             "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
         )
+
+        # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
+
+        # test if the data can be downloaded
+        buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
+        buttonCSVDownload.click()
+
+        time.sleep(1)
+        files = list(filter(os.path.isfile, glob.glob("/home/tobias/Downloads/" + "*")))
+        files.sort(key=lambda x: os.path.getmtime(x))
+        self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
