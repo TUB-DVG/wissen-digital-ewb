@@ -40,7 +40,12 @@ class Locator(object):
     linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
 
     # locators inside stromlast-app
-    selectPlaceholderCurrentApp = "//*[@id='react-select-2--value']"
+    selectPlaceholderCurrentApp = "/html/body/div/div/div[1]/div/div/div/div[1]"
+    iframePlotlyApp = "/html/body/div[1]/iframe"
+    radioButtonElements = "//input[@type='radio']"
+    inputPowerRequriement = "//input[@id='powerRequirement']"
+    pathToOpenedSelect = "/html/body/div/div/div[1]/div"
+    pathToLineElementInPlotly = '//*[name() = "path"][@class="js-line"]'
 
     # locators for CurrentLoadApproximation-Page
     selectTypeOfAppr = "//div[@class='Select-value']"
