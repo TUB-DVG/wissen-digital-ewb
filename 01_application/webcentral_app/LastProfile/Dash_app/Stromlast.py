@@ -2,6 +2,8 @@ import os
 import pathlib
 import pandas as pd
 import plotly.graph_objects as go
+import dash 
+from django_plotly_dash import DjangoDash
 from project_listing.models import *
 from django_plotly_dash import DjangoDash
 from dash.exceptions import PreventUpdate
@@ -19,8 +21,8 @@ app.layout = html.Div([
     #Title
     html.H1("Stromlast Approximation", style = {'text-align': 'center'}),
     #Download data as csv
-    html.Button("Download als csv", id = "btnDownloadCsv"),
-    dcc.Download(id = "downloadCsv"),
+    html.Button("Download als csv", id = "btn-download-csv"),
+    dcc.Download(id = "download-csv"),
     # Dropdown for the available applications
     dcc.Dropdown(
         options = [
@@ -82,7 +84,6 @@ app.layout = html.Div([
     )
     
 def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
-
     if application != None:
         WW = currentApproximation(int(application),powerRequirement)
         days = DF_MAIN['Datum/ Uhrzeit']
@@ -117,10 +118,11 @@ def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
         return fig
     else:
         return {}
+    
 # The download csv Funcionality
 @app.callback(
-    Output("downloadCsv", "data"),
-    Input("btnDownloadCsv", "n_clicks"),
+    Output("download-csv", "data"),
+    Input("btn-download-csv", "n_clicks"),
     Input('application','value'),
     Input('powerRequirement','value'),
     State("application","options"),
@@ -128,9 +130,8 @@ def updatePowerGraph(application:str,powerRequirement:int,displayMonth:str):
 )
 
 def downloadAsCsv(nClicks,application:str,powerRequirement:int,state):
-    if not nClicks:
-        raise PreventUpdate
-    else:
+    changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0]     
+    if 'btn-download-csv' in changed_id:
         label = [x['label'] for x in state if x['value'] == application]
         data.columns = [['Jahresstrombedarf in KWh/a :'+str(powerRequirement),''],
         ['Anwendung: ' + label[0],''],['',''],['Datum','Last']]    
