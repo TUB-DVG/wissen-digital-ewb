@@ -66,3 +66,18 @@ class StartPage(object):
             Locator.firstColumnToRow,
         )
 
+    def getChildEbElement(self, webElement):
+        """Return the first colum of the row
+
+        Method returns the first td-element in that <tr>-tag
+
+        webElement: Selenium.Webelement
+        Selenium Webelement, which represents a <tr>-tag of a table
+        """
+        return webElement.find_element(By.XPATH, "td")
+
+    def getLinkToBuisnessApps(self):
+        """Return Link to Buisness-Apps
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.linkToBuisnessApp)

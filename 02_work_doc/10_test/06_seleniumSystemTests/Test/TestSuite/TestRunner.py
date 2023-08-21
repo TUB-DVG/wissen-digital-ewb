@@ -11,6 +11,7 @@ from Test.Scripts.TestClickThroughAllSites import TestClickThroughSites
 from Test.Scripts.TestLastprofile import TestLastprofileTab
 from Test.Scripts.TestAboutPage import TestAboutPage
 from Test.Scripts.TestAdminPage import TestAdminPage
+from Test.Scripts.TestBusinessApp import TestBusinessAppPage
  
 import testtools as testtools
  
@@ -21,8 +22,9 @@ if __name__ == "__main__":
     testSuite = TestSuite((
         # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
         # testLoader.loadTestsFromTestCase(TestMainPage),
+        testLoader.loadTestsFromTestCase(TestBusinessAppPage),
         # testLoader.loadTestsFromTestCase(TestClickThroughSites),
-        testLoader.loadTestsFromTestCase(TestLastprofileTab),
+        # testLoader.loadTestsFromTestCase(TestLastprofileTab),
         # testLoader.loadTestsFromTestCase(TestAboutPage),
         # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
