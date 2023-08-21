@@ -22,9 +22,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-from watchdog.events import PatternMatchingEventHandler
+
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
