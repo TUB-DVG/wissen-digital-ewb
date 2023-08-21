@@ -34,7 +34,6 @@ stations = DwdObservationRequest(
     )
 
 # App layout
-
 app.layout = html.Div([
     # Title
     html.H1("Wärmelast Approximation", style = {'text-align': 'center'}),
@@ -100,7 +99,7 @@ app.layout = html.Div([
     dcc.Input(
         id = "heatRequirement", type = "number",
         placeholder = "Jahreswärmebedarf in kWh/a", 
-        debounce = True,style = {'width':'200px'}
+        debounce = True,style = {'width':'200px','height':'25px'}
     ),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
@@ -112,7 +111,7 @@ app.layout = html.Div([
     ),
     # List of available display months for the chosen data range
     dcc.RadioItems(
-        options = [
+        options =[
                 {'label': 'Januar', 'value': '1'},
                 {'label': 'Februar', 'value': '2'},
                 {'label': 'März', 'value': '3'},
@@ -126,18 +125,19 @@ app.layout = html.Div([
                 {'label': 'November', 'value': '11'},
                 {'label': 'Dezember', 'value': '12'},
                 {'label': 'Alle', 'value': 'All'},
-            ],
+                ],
         value = 'All',
         id = 'displayMonth',
         inline = True
     ),
-    html.Button('Approximation starten', id = 'approximation_start'),
+    html.Button('Approximation starten', id = 'approximationStart'),
     #Download data as csv
     html.Button("Download als csv", id = "btn-download-csv"),
     dcc.Download(id = "download-csv"),
     # Graph
-    dcc.Graph(id = 'heat_graph', figure = {}),
-
+    dcc.Loading(id="ls-loading",
+           children=[html.Div([dcc.Graph(id="heatGraph",figure = {})])],
+           type="circle",fullscreen=False),
     #Display the missing number of missing values from the station data
     html.P('Es gibt kein Eingabe ',id = 'container'),
     dcc.Store(id='heat_approximationStoring')
@@ -145,30 +145,46 @@ app.layout = html.Div([
 ],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)",
          "font-size":" 18.75px",
          "font-weight": "400",
-         "line-height": "22.5px"})
+         "line-height": "22.5px",
+         "overflow-x": "hidden"})
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
-@app.callback(
-   Output(component_id = 'hideText', component_property = 'style'),
-   Input(component_id = 'referenceYear', component_property = 'value')
-   )
 
 # Hide explanation text for refrenceyear run
+@app.callback(
+    Output(component_id = 'datePicker',component_property = 'start_date'),
+    Output(component_id = 'datePicker',component_property = 'end_date'),
+    Output(component_id = 'heatRequirement',component_property = 'value'),
+    Output(component_id = 'application',component_property = 'value'),
+    Output(component_id = 'displayMonth', component_property = 'value'),
+    Input(component_id = 'referenceYear', component_property = 'value'),
+    prevent_initial_call = True
+   )
+def resetData(visibility_state):
+        return None,None,None,None,'All'
+    
+# Hide explanation text for refrenceyear run
+@app.callback(
+    Output(component_id = 'hideText', component_property = 'style'),
+    Input(component_id = 'referenceYear', component_property = 'value')
+   )
 def showHideTxt(visibility_state):
     if visibility_state == 'off':
         return {'display': 'none'}
     if visibility_state == 'on':
         return {'display': 'block'}
+
+# Hide unnecessary elements for refrenceyear run    
 @app.callback(
    Output(component_id = 'hideElements', component_property = 'style'),
    Input(component_id = 'referenceYear', component_property = 'value')
    )
-# Hide unnecessary elements for refrenceyear run
 def showHideElement(visibility_state):
     if visibility_state == 'off':
         return {'display': 'block'}
     if visibility_state == 'on':
         return {'display': 'none'}
+
 #Selection of station
 @app.callback(
     Output('station', 'options'),
@@ -180,17 +196,15 @@ def stationSelection(state:str) -> list:
     return [{"label":row['name'] , "value": row['station_id']} 
     for index,row in stations.all( ).df.iterrows() if row['state'] == state]
 
-
 #Setting of the available date frame
 @app.callback(
     Output(component_id = 'datePicker',component_property = 'min_date_allowed'),
     Output(component_id = 'datePicker',component_property = 'max_date_allowed'),
-    Input(component_id = 'station', component_property = 'value'),
     Input(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = False
+    Input(component_id = 'station', component_property = 'value'),
     )
 # The following function returns the data range provided by the chosen station
-def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
+def dateRangePicker (referenceYear:str,stationId:int)-> Tuple[str,str] :
     if referenceYear == "on":
         minDate = datetime.datetime.strptime("01/01/2021", "%m/%d/%Y")
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
@@ -204,93 +218,91 @@ def dateRangePicker (stationId:int,referenceYear:str)-> Tuple[str,str] :
 #Setting Diplay Month
 @app.callback(
     Output('displayMonth','options'),
-    Input('datePicker', 'start_date'),
     Input('datePicker', 'end_date'),
-    prevent_initial_call  = False
+    State('datePicker', 'start_date'),
+    
+    prevent_initial_call  = True
     )
-# The following function  a list of available months in the data range selected
-def displayMonths(startDate:str,endDate:str)-> list:
+# The following function displays a list of available months in the data range selected
+def displayMonths(endDate:str,startDate:str)-> list:
     Months = pd.date_range(startDate,
     endDate,freq = 'W').strftime("%B").unique().tolist()
     # Setting the months in the right format for plotly dash
     displayMonths = [{"label":index , 
         "value": datetime.datetime.strptime(index, "%B").month} 
         for index in Months ]
-    displayMonths.append ({"label":'All' , "value": 'Alle'})
+    displayMonths.append ({"label":'Alle' , "value": 'All'})
 
     return displayMonths
 
 #Warme Approximation
 @app.callback(
-    Output(component_id = 'heat_graph', component_property = 'figure'),
+    Output(component_id = 'heatGraph', component_property = 'figure'),
     Output(component_id = 'container',component_property = 'children'),
     Output(component_id = 'heat_approximationStoring',component_property = 'data'),
-    Input(component_id = 'approximation_start',component_property = 'n_clicks'),
-    Input(component_id = 'application',component_property = 'value'),
-    Input(component_id = 'station',component_property = 'value'),
-    Input(component_id = 'heatRequirement',component_property = 'value'),
+    Input(component_id = 'approximationStart',component_property = 'n_clicks'),
     Input(component_id = 'displayMonth',component_property = 'value'),
-    Input(component_id = 'datePicker',component_property = 'start_date'),
-    Input(component_id = 'datePicker',component_property = 'end_date'),
-    Input(component_id = 'referenceYear', component_property = 'value'),
+    State(component_id = 'application',component_property = 'value'),
+    State(component_id = 'station',component_property = 'value'),
+    State(component_id = 'heatRequirement',component_property = 'value'),
+    State(component_id = 'datePicker',component_property = 'start_date'),
+    State(component_id = 'datePicker',component_property = 'end_date'),
+    State(component_id = 'referenceYear', component_property = 'value'),
     prevent_initial_call = True
     )
 # This function calculates the approximations and displays it
-def updateHeatGraph(n_clicks:int,application:str,StationId:int,heatRequirement:int,
-                    displayMonth:str,startDate:str,endDate:str,
-                    referenceYear:str):
+def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
+                    startDate:str,endDate:str,referenceYear:str):
 
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0] 
     # Restructure Option 1: Seperate Graph update and calculation
     # Restrucute Option 2: validate, 
-    if 'approximation_start' in changed_id:
-        heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
-        #global heat_approximation
-        heatApproximation = heat[1]
-        missingValues = heat[0]
+   
+    heat =  heatLoad(int(application),heatRequirement,StationId,startDate,endDate,referenceYear)
+    #global heat_approximation
+    heatApproximation = heat[1]
+    missingValues = heat[0]
+    if displayMonth == 'All':
+        result = heatApproximation
+    else:
+        result=pd.DataFrame({'Last':(heatApproximation.groupby
+        (heatApproximation.Time.dt.month).get_group(int(displayMonth)))['Last'],
+        'WW_Last':(heatApproximation.groupby(heatApproximation.Time.dt.month).
+        get_group(int(displayMonth)))['WW_Last'],
+        'Time':(heatApproximation.groupby(heatApproximation.Time.dt.month).
+        get_group(int(displayMonth)))
+        ['Time'],'fehlend':heatApproximation['fehlend']})
+    
+    fig=make_subplots(specs = [[{"secondary_y": True}]])
+    fig.add_trace(go.Scatter(name = 'Wärmelastgang in kW',x = result['Time'],
+    y = result['Last'],mode = 'lines', line = dict(color = "#0000ff")),secondary_y = False)
+    fig.add_trace(go.Scatter(name = 'Fehlende Eingaben',x = result['Time'],
+    y = result['Last'].where(result['fehlend'] == 'True'),mode = 'lines',
+    line = dict(color = "red")),secondary_y = False)
+    fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',
+    x = result['Time'],y = result['WW_Last'],mode = 'lines',
+    line = dict(color="#f700ff")),secondary_y = True)
 
-        if displayMonth == 'All':
-            result = heatApproximation
-        else:
-            result=pd.DataFrame({'Last':(heatApproximation.groupby
-            (heatApproximation.Time.dt.month).get_group(int(displayMonth)))['Last'],
-            'WW_Last':(heatApproximation.groupby(heatApproximation.Time.dt.month).
-            get_group(int(displayMonth)))['WW_Last'],
-            'Time':(heatApproximation.groupby(heatApproximation.Time.dt.month).
-            get_group(int(displayMonth)))
-            ['Time'],'fehlend':heatApproximation['fehlend']})
-        fig=make_subplots(specs = [[{"secondary_y": True}]])
+    fig.update_xaxes(
+    tickangle = 90,
+    title_text = "Datum",
+    title_font = {"size": 20}
+    )
 
-        fig.add_trace(go.Scatter(name = 'Wärmelastgang in kW',x = result['Time'],
-        y = result['Last'],mode = 'lines', line = dict(color = "#0000ff")),secondary_y = False)
-        fig.add_trace(go.Scatter(name = 'Fehlende Eingaben',x = result['Time'],
-        y = result['Last'].where(result['fehlend'] == 'True'),mode = 'lines',
-        line = dict(color = "red")),secondary_y = False)
-        fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',
-        x = result['Time'],y = result['WW_Last'],mode = 'lines',
-        line = dict(color="#f700ff")),secondary_y = True)
+    fig.update_yaxes(
+    title_text = "Wärmelastgang in kW",
+    title_standoff = 25
+    )
 
-        fig.update_xaxes(
-        tickangle = 90,
-        title_text = "Datum",
-        title_font = {"size": 20}
-       )
+    fig.update_yaxes(
+    title_text = "Trinkwarmwasser-Lastgang in kW", 
+    secondary_y = True
+    )
 
-        fig.update_yaxes(
-        title_text = "Wärmelastgang in kW",
-        title_standoff = 25
-        )
 
-        fig.update_yaxes(
-        title_text = "Trinkwarmwasser-Lastgang in kW", 
-        secondary_y = True
-        )
-
-        #approximation_start = None 
-
-        return fig,'Für die ausgewählte Station gibt es ' + str(missingValues) + \
-            ' fehlende Werte, die in der Grafik rot markiert sind. ' ,\
-            pd.DataFrame.to_dict(heatApproximation)
+    return fig,'Für die ausgewählte Station gibt es ' + str(missingValues) + \
+        ' fehlende Werte, die in der Grafik rot markiert sind. ' ,\
+        pd.DataFrame.to_dict(heatApproximation)
 
 # The download csv Funcionality
 @app.callback(
