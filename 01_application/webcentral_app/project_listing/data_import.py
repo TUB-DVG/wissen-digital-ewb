@@ -431,6 +431,7 @@ def getOrCreateProtocols(row, header):
     price = row[header.index('price')]
     osiLayers  = row[header.index('osiLayers')]
     buildingAutomationLayer  = row[header.index('buildingAutomationLayer')]
+    exampleProject = row[header.index('exampleProject')]
     link  = row[header.index('link')]
     image  = row[header.index('image')]
     obj, created = Protocol.objects.get_or_create(
@@ -455,6 +456,7 @@ def getOrCreateProtocols(row, header):
         price = price,
         osiLayers  = osiLayers,
         buildingAutomationLayer  = buildingAutomationLayer,
+        exampleProject = exampleProject,
         link = link,
         image = image
     )
@@ -700,7 +702,7 @@ if __name__ == "__main__":
     pathCsvNorms='/src/02_work_doc/01_daten/05_technicalStandards/2023_04_17_Normen.csv'
     header, data = csv2m4dbNorms(pathCsvNorms)
 
-    pathCsvProtocols = '/src/02_work_doc/01_daten/05_technicalStandards/2023_08_08_Protokolle.csv'
+    pathCsvProtocols = '/src/02_work_doc/01_daten/05_technicalStandards/2023_08_21_Protokolle.csv'
     header, data =  csv2m4dbProtocols(pathCsvProtocols)
 
     ## Example add/update Weatherdata table
