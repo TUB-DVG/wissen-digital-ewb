@@ -80,7 +80,7 @@ class TestAboutPage(TestWebcentral):
         
         """
 
-        self.driver.get("http://127.0.0.1:8070/pages/about")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
         ewbImage = aboutPageObj.getEWBImage()
@@ -97,7 +97,7 @@ class TestAboutPage(TestWebcentral):
 
         Tests if the Links on the About Page redirect to the right Pages. 
         """
-        self.driver.get("http://127.0.0.1:8070/pages/about")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
 
