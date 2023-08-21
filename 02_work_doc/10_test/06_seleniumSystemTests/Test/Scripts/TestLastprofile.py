@@ -2,6 +2,7 @@
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
+import datetime
 import glob
 import sys
 import time
@@ -194,3 +195,9 @@ class TestLastprofileTab(TestWebcentral):
         files = list(filter(os.path.isfile, glob.glob("/home/tobias/Downloads/" + "*")))
         files.sort(key=lambda x: os.path.getmtime(x))
         self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
+        
+        # breakpoint()
+        lastModified = os.path.getmtime(files[-1])
+        
+        self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
+        # if lastModified
