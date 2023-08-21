@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
     'keywords.apps.KeywordsConfig',
-    'norms_over.apps.NormsOverConfig',
     'LastProfile.apps.LastprofileConfig',
     'Datasets.apps.DatasetsConfig',
     'django.contrib.humanize',
