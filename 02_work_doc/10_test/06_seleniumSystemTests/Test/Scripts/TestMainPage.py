@@ -119,11 +119,13 @@ class TestMainPage(TestWebcentral):
         """Test if one can navigate from Main-Page to buisness-application site
         
         """
-
+        self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
-        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()        
-
-
+        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()    
+            
+        self.driver.execute_script("arguments[0].scrollIntoView();", linkToBuisnessApps)
+        
+        time.sleep(1)
         linkToBuisnessApps.click()
 
         time.sleep(1)

@@ -36,7 +36,7 @@ class TestClickThroughSites(TestWebcentral):
         """
         
         """
-        self.driver.get("http://127.0.0.1:8070/tool_list")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         self.driver.set_page_load_timeout(30)
 
         navBar = NavBar(self.driver)
@@ -61,7 +61,7 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/tool_list")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         navBar = NavBar(self.driver)
         techItem = navBar.getNavTechFocus()
   
@@ -83,7 +83,7 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/tool_list")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         navBar = NavBar(self.driver)
         techItem = navBar.getNavTechFocus()
 
