@@ -67,14 +67,14 @@ class Protocol(TechnicalStandard):
                                  help_text = "Discovery (Funktion, um Geräte im Netzwerk automatisch zu identifzieren)",
                                          blank = True) 
     # if BooleanField shall be used: input in the .csv should be True/False
-    multiMaster = models.CharField(max_length = 10,
+    multiMaster = models.CharField(max_length = 50,
                                    help_text = "Multi Master (Können mehrere Mastergeräte zeitgleich agieren)",
                                          blank = True)
     # if BooleanField shall be used: input in the .csv should be True/False
     packetSize = models.CharField(max_length = 10,
                                         help_text = "Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen werden können)",
                                         blank = True)
-    priorities = models.CharField(max_length = 100,
+    priorities = models.CharField(max_length = 300,
                                          help_text = "Prorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen werden)",
                                          blank = True)
     price = models.CharField(max_length = 150,
@@ -86,6 +86,9 @@ class Protocol(TechnicalStandard):
     buildingAutomationLayer = models.CharField(max_length = 150,
                                         help_text = "Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)",
                                         blank = True)	
+    exampleProject = models.CharField(max_length = 250,
+                                         help_text = "Typische Anwendung (Beispielhafte Anwendung)",
+                                         blank = True)
     image=models.ImageField(null=True, blank = True)  
 
     def __str__(self):
