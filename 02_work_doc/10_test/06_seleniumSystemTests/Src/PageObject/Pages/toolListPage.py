@@ -74,6 +74,12 @@ class ToolListPage(object):
             f"//a[contains(text(), 'Suchbegriff: {searchStr}')]",
         )
 
+    def getXOfSearchFilter(self):
+        """Return the X to remove a search filter
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.searchStrBoxX)
+
     def getCloseOnSearchStrButton(self, searchStrBox: WebElement) -> WebElement:
         """Returns the WebElement, which reprents the X in Search-String-Box
         
