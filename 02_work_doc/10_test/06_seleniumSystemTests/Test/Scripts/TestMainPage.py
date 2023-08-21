@@ -94,3 +94,42 @@ class TestMainPage(TestWebcentral):
             "BIM2SIM is not in results! Check the search...",
         )
 
+        # back to search results:
+        self.driver.back()
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+        listOfTableRows = []
+        for indexTable, rowElement in enumerate(listOfRowsInResultsTable):
+            listOfRowsInResultsTable = startPageObj.getSearchResults()
+            rowElement = listOfRowsInResultsTable[indexTable]
+            # breakpoint()
+            if rowElement.text.find("Forschungsprojekt") >= 0:
+            
+                self.driver.execute_script("arguments[0].scrollIntoView();", rowElement)
+                childRowElement = startPageObj.getChildEbElement(rowElement)
+                # breakpoint()
+                childRowElement.click()
+                time.sleep(1)
+                self.assertTrue(
+                    "Energiewendebauen" in self.driver.title,
+                    "After clicking Forschungsprojekt it should redirect to Energiewendebauen page!",
+                )
+                self.driver.back()
+        
+    def testIfLinkToBuisnessAppsWorks(self):
+        """Test if one can navigate from Main-Page to buisness-application site
+        
+        """
+
+        startPageObj = StartPage(self.driver)
+        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()        
+
+
+        linkToBuisnessApps.click()
+
+        time.sleep(1)
+        
+        self.assertEqual(
+            self.driver.title,
+            "Überblick über die Geschäftsmodellanwendungen",
+            "Website should be 'Geschäftsmodellanwendungen', but its not!",
+        )
