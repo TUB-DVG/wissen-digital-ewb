@@ -5,6 +5,7 @@ class Locator(object):
     inputSearchField = "//*[@id='search-input-general']"
     resultElements = "//tr"
     firstColumnToRow = "//td"
+    linkToBuisnessApp = "//a[contains(text(), 'Geschäftsmodellanwendungen')]"
 
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
@@ -30,6 +31,12 @@ class Locator(object):
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
     
+    # locators in Business Apps:
+    businessCardLocator = "//div[@class='card-body pb-0']"
+    businessSearchField = "//input[@id='search-input-tools']"
+    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
+    businessDetailsTags = "//ul[@id='tagsUlElement']/li"
+
     # locators in loginPage
     loginButtonElement = "//input[@class='btn login_btn']"
 
