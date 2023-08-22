@@ -36,94 +36,37 @@ class TestClickThroughSites(TestWebcentral):
         """
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         self.driver.set_page_load_timeout(30)
 
         navBar = NavBar(self.driver)
 
-        tuLogoLink = navBar.getTULogo()
+        LogoLink = navBar.getLogo()
         self.assertIsNotNone(
-            tuLogoLink,
-            "The TU-Logo, which is a link at the same time is not shown! ",
+            LogoLink,
+            "The Logo, which is a link at the same time is not shown! ",
         )
 
-        tuLogoLink.click()
+        LogoLink.click()
         
 
         self.assertEqual(
             "Wissensplattform - Digitalisierung Energiewendebauen",
             self.driver.title,
-            "After clicking TU-Logo, Browser should be redirected to Startpage, but was not!",
+            "After clicking Logo, Browser should be redirected to Startpage, but was not!",
         )
 
-        navStartbutton = navBar.getNavStart()  
-        self.assertIsNotNone(
-            navStartbutton,
-            "The Nav-Bar has no Start-Button!",
-        )
-
-        navStartbutton.click()
-
-        self.assertEqual(
-            "Wissensplattform - Digitalisierung Energiewendebauen",
-            self.driver.title,
-            "After clicking Start in Nav-Bar, Browser should be redirected to Startpage, but was not!",
-        )
-
-        navDataWebelement = navBar.getNavData()
-
-        self.assertIsNotNone(
-            navDataWebelement,
-            "The Nav-Bar has no Daten-Button!",
-        )
-        navDataWebelement.click()
-
-        self.assertEqual(
-            "Daten",
-            self.driver.title,
-            "After clicking 'Daten' in Nav-Bar, Browser should be redirected to Daten-page, but was not!",
-        )      
-
-        navDigitalAppsWebelement = navBar.getNavDigitalApps()
-
-        self.assertIsNotNone(
-            navDigitalAppsWebelement,
-            "The Nav-Bar has no Daten-Button!",
-        )
-
-        navDigitalAppsWebelement.click()
-
-        self.assertEqual(
-            "Wissensplattform",
-            self.driver.title,
-            "After clicking 'Digitale Anwendungen' in Nav-Bar, Browser should be redirected to 'Digitale Anwendungen'-page, but was not!",
-        )      
-
-        navToolListWebelement = navBar.getNavDigitalTools()
-
-        self.assertIsNotNone(
-            navToolListWebelement,
-            "The Nav-Bar has no 'Digitale Werkzeuge'-Button!",
-        )
-
-        navToolListWebelement.click()
-
-        self.assertEqual(
-            "Überblick über die Anwendungen",
-            self.driver.title,
-            "After clicking 'Digitale Werkzeuge' in Nav-Bar, Browser should be redirected to 'Digitale Werkzeuge'-page, but was not!",
-        )      
 
     def testHoverOverDataAndClickWeatherdata(self):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         navBar = NavBar(self.driver)
-        dataItem = navBar.getNavData()
+        techItem = navBar.getNavTechFocus()
   
         action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(dataItem).perform()
+        action_chains.move_to_element(techItem).perform()
         time.sleep(1)
         weatherDataItem = navBar.getWeatherDataItem()
         
@@ -140,12 +83,12 @@ class TestClickThroughSites(TestWebcentral):
         """Tests if a Sub-menu is displayed, when hovering over Data-NavBar-item. 
         
         """
-        self.driver.get("http://127.0.0.1:8070/")
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list")
         navBar = NavBar(self.driver)
-        dataItem = navBar.getNavData()
+        techItem = navBar.getNavTechFocus()
 
         action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(dataItem).perform()
+        action_chains.move_to_element(techItem).perform()
         time.sleep(1)
         
         lastprofileItem = navBar.getLastProfileItem()

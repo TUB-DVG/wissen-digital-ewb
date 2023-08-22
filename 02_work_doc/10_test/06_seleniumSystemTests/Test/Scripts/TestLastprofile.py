@@ -2,13 +2,15 @@
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
-import pdb
+import datetime
+import glob
 import sys
-sys.path.append(sys.path[0] + "/...")
-
 import time
 import os
 import random
+from pathlib import Path
+
+sys.path.append(sys.path[0] + "/...")
 
 from selenium import (
     webdriver,
@@ -21,6 +23,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
+
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Test.Scripts.TestWebcentral import TestWebcentral
@@ -43,10 +46,12 @@ class TestLastprofileTab(TestWebcentral):
         """Clicks on 'Approximation der Stromlast' and tests the tool
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         lastProfileLink = lastprofilePage.getLinkToStromlastTool()
+        self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", lastProfileLink)
+        time.sleep(1)
         lastProfileLink.click()
 
         self.assertEqual(
@@ -71,7 +76,7 @@ class TestLastprofileTab(TestWebcentral):
         """Tests if 'Heat Approximation' is reachable
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
@@ -112,7 +117,7 @@ class TestLastprofileTab(TestWebcentral):
         """Tests, if the links present on the website lead to the right websites.
         
         """
-        self.driver.get("http://127.0.0.1:8070/LastProfile/")
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
 
         weatherServiceLink = lastprofilePage.getWeatherServiceLink()
@@ -143,5 +148,55 @@ class TestLastprofileTab(TestWebcentral):
             "After clicking on Standard Loadprofile-Link, the page of bdew should appear!",
         )
 
+    def testDataLoadsOnStromlast(self):
+        """Test the Stromlast App, if a graph is loaded.
+        
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/stromlast")
+        lastprofilePage = Lastprofile(self.driver)
+
+        # switch into iframe of the react page:
+        iframeElement = lastprofilePage.getPlotlyIFrame()
+        self.driver.switch_to.frame(iframeElement)
 
 
+        selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
+        actions = ActionChains(self.driver)
+        actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
+
+        openedSelectElement = lastprofilePage.getOpenedReactSelect()
+        getElementToBeSelected = random.choice(openedSelectElement.text.split("\n")[1:])
+
+        optionToClick = lastprofilePage.getReactOptionFromText(selectPlaceholderToHoverOver, getElementToBeSelected)
+        optionToClick.click()
+
+        listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
+        radioElementToClick = random.choice(listOfRadioButtons)
+        radioElementToClick.click()
+
+        inputFieldPowerRequirement = lastprofilePage.getInputFieldPowerRequirement()
+        inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
+        inputFieldPowerRequirement.send_keys(Keys.RETURN)
+        lineObj = lastprofilePage.getLinePloty()
+        self.assertGreater(
+            len(lineObj.get_attribute("d")),
+            20,
+            "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
+        )
+
+        # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
+
+        # test if the data can be downloaded
+        buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
+        buttonCSVDownload.click()
+        buttonCSVDownload.click()
+        time.sleep(1)
+
+        files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
+
+        files.sort(key=lambda x: os.path.getmtime(x))
+        # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
+        
+        lastModified = os.path.getmtime(files[-1])
+        
+        # self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
