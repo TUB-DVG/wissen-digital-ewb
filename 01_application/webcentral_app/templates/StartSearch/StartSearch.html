@@ -109,7 +109,7 @@
                   </td>
                   <td>
                     <a class="technical"
-                       href="#">
+                       href="{% url 'coming' %}">
                       Anwendungen
                     </a>
                   </td>
@@ -368,7 +368,7 @@
                   <td>
                     <a class="legal"
                        href="{% url 'dataSecurity' %}">
-                     Übersicht: Datenschutz im Gebäude- und Quartiersbereich
+                      Daten&shy;schutz&shy;übersicht
                     </a>
                   </td>
                 </tr>
@@ -379,8 +379,8 @@
                   </td>
                   <td>
                     <a class="legal"
-                       href="#">
-                     Kriterienkatalog
+                       href="{% url 'criteriaCatalog' %}">
+                      Kriterien&shy;katalog
                     </a>
                   </td>
                 </tr>
@@ -391,20 +391,8 @@
                   </td>
                   <td>
                     <a class="legal"
-                       href="#">
-                      Visualisierungs&shy;bausteine
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img src="{% static 'assets/images/standards.svg' %}"
-                         class="rounded" alt="icon">
-                  </td>
-                  <td>
-                    <a class="legal"
-                       href="#">
-                    Wissen
+                       href="{% url 'iconsAndVis' %}">
+                      Icons und Visualisierung
                     </a>
                   </td>
                 </tr>

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} Geschäftsmodelle - Herausforderungen {% endblock %}
+
+{% load static %}
+
+{% block content%}
+
+  <!-- =======================
+Page Banner START -->
+<section class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="p-2 text-left rounded-3">
+          <h2 class="m-0">Kriterienkatalog</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Page Banner END -->
+<!-- Content START -->
+<section id="about" class=" pt-4 py-lg-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9">
+        <p>
+          Das europäische Datenschutzrecht verpflichtet den für die Verarbeitung
+          personenbezogener Daten Verantwortlichen zur Einhaltung einer Vielzahl
+          von Pflichten (z.B. Transparenz, Rechtmäßigkeit Sicherheit,
+          Zweckbindung) und gewährt den von der Datenverarbeitung betroffenen
+          Personen eine Vielzahl von Rechten (z.B. Widerspruch, Berichtigung,
+          Herausgabe etc.). Wie bereits beschrieben geht dieser Ansatz im Rahmen
+          datengetriebener Innovation jedoch mit einer Reihe an Problemen und
+          Rechtsunsicherheiten einher. Denn selbst wenn Daten nicht zur Analyse
+          oder Bewertung von Personen und ihrem Verhalten genutzt werden sollen,
+          besteht unter Umständen die Möglichkeit, dass eine Datenverarbeitung
+          in den Anwendungsbereich der Datenschutz-Grundverordnung (DSGVO) fällt
+          und damit ihren umfassenden Pflichten- (und Bußgeld-) Katalog auslöst.
+          Um die Rechtssicherheit bei der Entwicklung neuer Anwendungen und
+          Technologien für Behörden, Unternehmen und sonstige Akteure zu
+          erhöhen, wird im Modul 4 Digitalisierung der Wissenschaftlichen
+          Begleitforschung Energiewendebauen ein Kriterienkatalog entwickelt,
+          der die datenschutzrechtlichen Anforderung für verschiedene Projekt-
+          und Anwendungstypen konkretisiert. Der Kriterienkatalog soll dabei
+          über die Funktion eines bloßen Leitfadens hinausgehen und spezifische
+          Anforderungen formulieren, wie digitale Anwendungen im Gebäude- und
+          Quartiersbereich ausgestaltet sein müssen, damit sie rechtskonform und
+          rechtssicher betrieben werden können. → hier eine Einbettung des
+          fertigen Kriterienkatalogs, zumindest als PDF
+        </p>
+        <p>
+          <a href="{% url 'coming' %}">
+            Kriterienkatalog
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Content END -->
+{% endblock %}
