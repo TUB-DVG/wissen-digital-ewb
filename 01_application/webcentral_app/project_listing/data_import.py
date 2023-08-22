@@ -685,43 +685,44 @@ def getOrCreateDigitalApplication(row, header):
     obj.focus.set(focus)
     return obj, created
 
-if __name__ == "__main__":
-    # Script area (here you find examples to use the functions ahead)
-    # retrieved BEFORE Tools are modified in database! 
-    #retrieveImageFromDatabase()
-    #removeFromDatabase(Tools)
-    #re-import tools into database
-        
-    pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
-    pathCsvToolsImages = '/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
-    import pandas as pd
-    #toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
-    #header, data = csv2m4dbTools(pathCsvTools, toolsImages)
 
-    ## add/update norm data
-    pathCsvNorms='/src/02_work_doc/01_daten/05_technicalStandards/2023_04_17_Normen.csv'
-    header, data = csv2m4dbNorms(pathCsvNorms)
+# Script area (here you find examples to use the functions ahead)
+# retrieved BEFORE Tools are modified in database! 
+#retrieveImageFromDatabase()
+#removeFromDatabase(Tools)
+#re-import tools into database
+    
+#pathCsvTools='/src/02_work_doc/01_daten/02_toolUebersicht/2022_02_22_EWB_Tools_Uebersicht.csv'
+#pathCsvToolsImages = '/src/02_work_doc/01_daten/02_toolUebersicht/image_list.csv'
+import pandas as pd
+#toolsImages = pd.read_csv(pathCsvToolsImages,index_col=['bezeichnung'])
+#header, data = csv2m4dbTools(pathCsvTools, toolsImages)
 
-    pathCsvProtocols = '/src/02_work_doc/01_daten/05_technicalStandards/2023_08_21_Protokolle.csv'
-    header, data =  csv2m4dbProtocols(pathCsvProtocols)
+## add/update norm data
+removeFromDatabase(Norm)
+pathCsvNorms='/src/02_work_doc/01_daten/05_technicalStandards/2023_04_17_Normen.csv'
+header, data = csv2m4dbNorms(pathCsvNorms)
 
-    ## Example add/update Weatherdata table
-    #pathCsvWeatherData='/src/02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
-    #header, data = csv2m4dbWeatherData(pathCsvWeatherData)
-    ## Example add/update Schlagwoerter table
-    # pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
-    # header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
+pathCsvProtocols = '/src/02_work_doc/01_daten/05_technicalStandards/2023_08_21_Protokolle.csv'
+header, data =  csv2m4dbProtocols(pathCsvProtocols)
 
-    # ## add/update Enargus data
-    # pathCsvEnargus ='./02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv'
-    # header, data = csv2m4dbEnargus(pathCsvEnargus)
+## Example add/update Weatherdata table
+#pathCsvWeatherData='/src/02_work_doc/01_daten/03_weatherdata/2023_06_07_weatherdata.csv'
+#header, data = csv2m4dbWeatherData(pathCsvWeatherData)
+## Example add/update Schlagwoerter table
+# pathCsvKeywords='./02_work_doc/01_daten/04_schlagwoerter/schlagwoerter_csv_fkz_over_orthography_edit.csv'
+# header, data = csv2m4dbKeywordRegisterFirstReview(pathCsvKeywords)
 
-    # ## add/update ModuleAssignment data
-    # pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
-    # header, data = csv2m4dbModule(pathCsvModule)
+# ## add/update Enargus data
+# pathCsvEnargus ='./02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv'
+# header, data = csv2m4dbEnargus(pathCsvEnargus)
 
-    #pathToToolsClassificationFocusMapping = '/src/02_work_doc/01_daten/02_toolUebersicht/toolClassificationFocus.csv'
-    #header, data = loadClassificationAndFocus(pathToToolsClassificationFocusMapping)
+# ## add/update ModuleAssignment data
+# pathCsvModule='./02_work_doc/01_daten/01_prePro/modulzuordnung_csv_20230403.csv'
+# header, data = csv2m4dbModule(pathCsvModule)
 
-    #pathToDigitalApplicationCSV = '/src/02_work_doc/01_daten/06_digitaleAnwendungen/Tools-Digitale-Geschäftsmodelle.csv'
-    #header, data = loadDigitalApplication(pathToDigitalApplicationCSV)
+#pathToToolsClassificationFocusMapping = '/src/02_work_doc/01_daten/02_toolUebersicht/toolClassificationFocus.csv'
+#header, data = loadClassificationAndFocus(pathToToolsClassificationFocusMapping)
+
+#pathToDigitalApplicationCSV = '/src/02_work_doc/01_daten/06_digitaleAnwendungen/Tools-Digitale-Geschäftsmodelle.csv'
+#header, data = loadDigitalApplication(pathToDigitalApplicationCSV)
