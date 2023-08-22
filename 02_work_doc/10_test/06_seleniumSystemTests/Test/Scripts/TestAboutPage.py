@@ -86,6 +86,8 @@ class TestAboutPage(TestWebcentral):
         ewbImage = aboutPageObj.getEWBImage()
         ewbImage.click()
 
+        time.sleep(2)
+        
         self.assertEqual(
             "Aktuelles - energiewendebauen.de",
             self.driver.title,
@@ -102,6 +104,8 @@ class TestAboutPage(TestWebcentral):
         aboutPageObj = AboutPage(self.driver)
 
         linkToUDKPage = aboutPageObj.getUDKLink()
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", linkToUDKPage)
+        time.sleep(1)
         linkToUDKPage.click()
 
         self.assertEqual(

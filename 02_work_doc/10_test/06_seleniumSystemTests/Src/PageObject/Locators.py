@@ -66,14 +66,14 @@ class Locator(object):
     # locators of about page:
     aboutPageTopHeading = "//h2"
     aboutPageSubHeading = "//h3"
-    aboutPageEWBImage = "//img[@src='/static/img/Energiewendebauen.png']"
+    aboutPageEWBImage = "//img[@id='ewbImage']"
     aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
     aboutPageUDKLink = "//a[@href='https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW']"
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
     aboutPageImgOfEinsteinCenter = "//img[@src='/static/img/ECDF.png']"
     aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
-    aboutPageImgOfUDK ="//img[@src='/static/img/UdK.png']"
-    aboutPageImgOfIOEW = "//img[@src='/static/img/ioew.png']"
+    aboutPageImgOfUDK ="//img[@id='udkImage']"
+    aboutPageImgOfIOEW = "//img[@id='ioewImage']"
 
     # Admin Page locators
     adminPageUsernameInput = "//input[@id='id_username']"
