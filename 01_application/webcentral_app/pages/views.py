@@ -61,6 +61,12 @@ def dataSufficiency(request):
     """Call render function for data sufficiency page."""
     return render(request, 'pages/dataSufficiency.html')
 
+
+def dataSecurity(request):
+    """Call render function for data security page."""
+    return render(request, 'pages/dataSecurity.html')
+
+
 def impressum(request):
     """Call render function for impressum page."""
     return render(request, 'pages/impressum.html')
