@@ -162,7 +162,7 @@ class TestLastprofileTab(TestWebcentral):
         selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
         actions = ActionChains(self.driver)
         actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
-        
+
         openedSelectElement = lastprofilePage.getOpenedReactSelect()
         getElementToBeSelected = random.choice(openedSelectElement.text.split("\n")[1:])
 

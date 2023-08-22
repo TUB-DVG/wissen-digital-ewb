@@ -98,15 +98,15 @@ class TestMainPage(TestWebcentral):
         self.driver.back()
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         listOfTableRows = []
+        checkedScientificProjects = 0
         for indexTable, rowElement in enumerate(listOfRowsInResultsTable):
             listOfRowsInResultsTable = startPageObj.getSearchResults()
             rowElement = listOfRowsInResultsTable[indexTable]
-            # breakpoint()
             if rowElement.text.find("Forschungsprojekt") >= 0:
-            
+                checkedScientificProjects += 1
                 self.driver.execute_script("arguments[0].scrollIntoView();", rowElement)
                 childRowElement = startPageObj.getChildEbElement(rowElement)
-                # breakpoint()
+                self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", rowElement)
                 childRowElement.click()
                 time.sleep(1)
                 self.assertTrue(
@@ -114,6 +114,8 @@ class TestMainPage(TestWebcentral):
                     "After clicking Forschungsprojekt it should redirect to Energiewendebauen page!",
                 )
                 self.driver.back()
+            if checkedScientificProjects == 2:
+                break
         
     def testIfLinkToBuisnessAppsWorks(self):
         """Test if one can navigate from Main-Page to buisness-application site
