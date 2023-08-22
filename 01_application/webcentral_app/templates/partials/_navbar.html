@@ -187,26 +187,20 @@
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  Übersicht: Datenschutz im Gebäude- und Quartiersbereich
+                   href="{% url 'dataSecurity' %}">
+                  Daten&shy;schutz&shy;übersicht
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  Kriterienkatalog
+                   href="{% url 'criteriaCatalog' %}">
+                  Kriterien&shy;katalog
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                   href="#">
-                  Visualisierungs&shy;bausteine
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                   href="#">
-                  Wissen
+                   href="{% url 'iconsAndVis' %}">
+                  Icons und Visualisierung
                 </a>
               </li>
             </ul>
