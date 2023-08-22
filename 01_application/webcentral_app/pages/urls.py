@@ -29,4 +29,6 @@ urlpatterns = [
          name='dataSecurity'),
     path('iconsAndVis', views.iconsAndVis,
          name='iconsAndVis'),
+    path('criteriaCatalog', views.criteriaCatalog,
+         name='criteriaCatalog'),
 ]

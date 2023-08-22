@@ -70,3 +70,8 @@ def dataSecurity(request):
 def iconsAndVis(request):
     """Call render function for icons and Visualization page."""
     return render(request, 'pages/iconsAndVis.html')
+
+
+def criteriaCatalog(request):
+    """Call render function for criteria catalog page."""
+    return render(request, 'pages/criteriaCatalog.html')
