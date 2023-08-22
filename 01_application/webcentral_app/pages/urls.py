@@ -26,4 +26,6 @@ urlpatterns = [
          name='benchmarkingChallenges'),
     path('dataSufficiency', views.dataSufficiency,
          name='dataSufficiency'),
+    path('dataSecurity', views.dataSecurity,
+         name='dataSecurity'),
 ]
