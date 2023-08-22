@@ -29,7 +29,7 @@ class TestAdminPage(TestWebcentral):
         
         """
 
-        self.driver.get("http://127.0.0.1:8070/admin")
+        self.driver.get(os.environ["siteUnderTest"] + "/admin")
 
         self.assertEqual(
             "Log in | Django site admin",
