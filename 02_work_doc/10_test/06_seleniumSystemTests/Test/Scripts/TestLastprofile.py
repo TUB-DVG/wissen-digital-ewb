@@ -8,6 +8,7 @@ import sys
 import time
 import os
 import random
+from pathlib import Path
 
 sys.path.append(sys.path[0] + "/...")
 
@@ -190,7 +191,8 @@ class TestLastprofileTab(TestWebcentral):
         buttonCSVDownload.click()
 
         time.sleep(1)
-        files = list(filter(os.path.isfile, glob.glob("/home/tobias/Downloads/" + "*")))
+
+        files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
         files.sort(key=lambda x: os.path.getmtime(x))
         self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
         
