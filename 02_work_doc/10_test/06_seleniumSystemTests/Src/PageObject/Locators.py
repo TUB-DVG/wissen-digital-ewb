@@ -70,7 +70,7 @@ class Locator(object):
     aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
     aboutPageUDKLink = "//a[@href='https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW']"
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
-    aboutPageImgOfEinsteinCenter = "//img[@src='/static/img/ECDF.png']"
+    aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
     aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
     aboutPageImgOfUDK ="//img[@id='udkImage']"
     aboutPageImgOfIOEW = "//img[@id='ioewImage']"
