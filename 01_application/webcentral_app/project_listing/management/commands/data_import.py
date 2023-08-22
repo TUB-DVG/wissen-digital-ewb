@@ -66,8 +66,8 @@ from project_listing.models import (
     RAndDPlanningCategory,
     Person,
     FurtherFundingInformation,
-    IntegrityError,
 )
+from django.db import IntegrityError
 from keywords.models import (
     Keyword,
     KeywordRegisterFirstReview,
