@@ -65,3 +65,8 @@ def dataSufficiency(request):
 def dataSecurity(request):
     """Call render function for data security page."""
     return render(request, 'pages/dataSecurity.html')
+
+
+def iconsAndVis(request):
+    """Call render function for icons and Visualization page."""
+    return render(request, 'pages/iconsAndVis.html')

@@ -27,4 +27,6 @@ urlpatterns = [
          name='dataSufficiency'),
     path('dataSecurity', views.dataSecurity,
          name='dataSecurity'),
+    path('iconsAndVis', views.iconsAndVis,
+         name='iconsAndVis'),
 ]
