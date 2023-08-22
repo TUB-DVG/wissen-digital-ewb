@@ -3,7 +3,6 @@
 """
 import sys
 sys.path.append(sys.path[0] + "/....")
-import pdb
 
 from selenium import (
     webdriver,
@@ -75,15 +74,23 @@ class ToolListPage(object):
             f"//a[contains(text(), 'Suchbegriff: {searchStr}')]",
         )
 
+    def getXOfSearchFilter(self):
+        """Return the X to remove a search filter
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.searchStrBoxX)
+
     def getCloseOnSearchStrButton(self, searchStrBox: WebElement) -> WebElement:
         """Returns the WebElement, which reprents the X in Search-String-Box
         
         """
-
-        return searchStrBox.find_element(
-            By.XPATH,
-            Locator.searchStrBoxX,
-        )
+        try:
+            return searchStrBox.find_element(
+                By.XPATH,
+                Locator.searchStrBoxX,
+            )
+        except NoSuchElementException:
+            print("The x is not present on a search filter. Test failed!")
 
     def getSearchCategorySelect(self) -> WebElement:
         """Returns Categorie-Select from Search Tab
