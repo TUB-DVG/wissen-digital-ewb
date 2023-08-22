@@ -53,7 +53,7 @@ class Locator(object):
     inputPowerRequriement = "//input[@id='powerRequirement']"
     pathToOpenedSelect = "/html/body/div/div/div[1]/div"
     pathToLineElementInPlotly = '//*[name() = "path"][@class="js-line"]'
-    buttonCSVDownload = "//button[@id='btnDownloadCsv']"
+    buttonCSVDownload = "//button[@id='btn-download-csv']"
 
     # locators for CurrentLoadApproximation-Page
     selectTypeOfAppr = "//div[@class='Select-value']"
