@@ -1,20 +1,25 @@
 class Locator(object):
     
+    # locators on main-page:
+    linkToImpressum = "//a[@id='impressumLink']"
+    inputSearchField = "//*[@id='search-input-general']"
+    resultElements = "//tr"
+    firstColumnToRow = "//td"
+    linkToBuisnessApp = "//a[contains(text(), 'Geschäfts­modell­anwendungen')]"
+
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
-    TUBerlinImage = "//a/img[@alt='logo']"
+    LogoImage = "//a/img[@alt='logo']"
     navStartButton = "//li/a[contains(text(), 'Start')]"
-    navData = "//a[contains(text(), 'Daten')]"
+    navTechFocus = "//*[@id='technicalDropdown']/img"
     digitalApps = "//li/a[contains(text(), 'Digitale Anwendungen')]"
     weatherDataItem = "//li/a[contains(text(), 'Wetterdaten')]"
     lastProfileItem = "//li/a[contains(text(), 'Lastprofile')]"
-    # locators in Home
 
-    
     # locators in tool-list
     toolListSearchInput = "//input[@id='search-input-tools']"
-    toolItemsIdentifer = "//div[@class='col-sm-6 col-lg-4 col-xl-3']"
-    searchStrBoxX = "//a[@href='/tool_list/?searched=&k=&l=&lzp=']"
+    toolItemsIdentifer = "//div[@class='col-sm-6 col-lg-4 col-xl-3 card_hover']"
+    searchStrBoxX = "//a[@href='/tool_list/?searched=&u=&l=&lcp=']"
     searchCategorieSelect = "//select[@id='kategorie-input-tools']"
     searchLicenceSelect = "//select[@id='lizenz-input-tools']"
     searchLifecycleSelect = "//select[@id='lzp-input-tools']"
@@ -26,6 +31,12 @@ class Locator(object):
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
     
+    # locators in Business Apps:
+    businessCardLocator = "//div[@class='card-body pb-0']"
+    businessSearchField = "//input[@id='search-input-tools']"
+    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
+    businessDetailsTags = "//ul[@id='tagsUlElement']/li"
+
     # locators in loginPage
     loginButtonElement = "//input[@class='btn login_btn']"
 
@@ -34,6 +45,15 @@ class Locator(object):
     heatApproximationLink = "//a[@href='/LastProfile/warmelast']"
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
     linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
+
+    # locators inside stromlast-app
+    selectPlaceholderCurrentApp = "/html/body/div/div/div[1]/div/div/div/div[1]"
+    iframePlotlyApp = "/html/body/div[1]/iframe"
+    radioButtonElements = "//input[@type='radio']"
+    inputPowerRequriement = "//input[@id='powerRequirement']"
+    pathToOpenedSelect = "/html/body/div/div/div[1]/div"
+    pathToLineElementInPlotly = '//*[name() = "path"][@class="js-line"]'
+    buttonCSVDownload = "//button[@id='btn-download-csv']"
 
     # locators for CurrentLoadApproximation-Page
     selectTypeOfAppr = "//div[@class='Select-value']"
@@ -44,16 +64,16 @@ class Locator(object):
     headingOfHeatApproxSite = "//h1"
 
     # locators of about page:
-    aboutPageTopHeading = "//h1"
+    aboutPageTopHeading = "//h2"
     aboutPageSubHeading = "//h3"
-    aboutPageEWBImage = "//img[@src='/static/static/img/Energiewendebauen.png']"
+    aboutPageEWBImage = "//img[@id='ewbImage']"
     aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
     aboutPageUDKLink = "//a[@href='https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW']"
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
-    aboutPageImgOfEinsteinCenter = "//img[@src='/static/static/img/ECDF.png']"
+    aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
     aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
-    aboutPageImgOfUDK ="//img[@src='/static/static/img/UdK.png']"
-    aboutPageImgOfIOEW = "//img[@src='/static/static/img/ioew.png']"
+    aboutPageImgOfUDK ="//img[@id='udkImage']"
+    aboutPageImgOfIOEW = "//img[@id='ioewImage']"
 
     # Admin Page locators
     adminPageUsernameInput = "//input[@id='id_username']"

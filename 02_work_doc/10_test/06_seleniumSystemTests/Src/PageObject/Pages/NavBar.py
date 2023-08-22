@@ -22,14 +22,14 @@ class NavBar(object):
         """
         self.driver = driver
 
-    def getTULogo(self):
-        """Returns the TU-Logo from left upper side of page
+    def getLogo(self):
+        """Returns the Logo from left upper side of page
         
         """
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.TUBerlinImage,
+                Locator.LogoImage,
             )
         except:
             return None
@@ -59,14 +59,15 @@ class NavBar(object):
             print("Tool Link Element couldnt be located on webpage!")
             return None
     
-    def getNavData(self):
-        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
+    def getNavTechFocus(self):
+        """Returns the Webelement, which represents the
+        'Technischer Fokus'-NavBar-Element
         
         """
         try:
             return self.driver.find_element(
                 By.XPATH, 
-                Locator.navData,
+                Locator.navTechFocus,
             )
         except NoSuchElementException:
             print("Tool Link Element couldnt be located on webpage!")

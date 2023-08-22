@@ -1,6 +1,27 @@
-
-import pdb
 import sys
+sys.path.append(sys.path[0] + "/...")
+
+import time
+import os
+import random
+
+from selenium import (
+    webdriver,
+
+)
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+
+from Src.TestBase.WebDriverSetup import WebDriverSetup
+from Test.Scripts.TestWebcentral import TestWebcentral
+from Src.PageObject.Pages.startPage import StartPage
+from Src.PageObject.Pages.toolListPage import ToolListPage
+from Src.PageObject.Pages.NavBar import NavBar
+from Src.PageObject.Pages.AboutPage import AboutPage
+
+class TestAboutPage(TestWebcentral):import sys
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -32,7 +53,7 @@ class TestAboutPage(TestWebcentral):
         """Tests if the two Headings on the Page are displayed.
         
         """
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/about")
 
         aboutPageObj = AboutPage(self.driver)
         topHeadingOfPage = aboutPageObj.getTopHeading()
@@ -59,12 +80,14 @@ class TestAboutPage(TestWebcentral):
         
         """
 
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
         ewbImage = aboutPageObj.getEWBImage()
         ewbImage.click()
 
+        time.sleep(2)
+        
         self.assertEqual(
             "Aktuelles - energiewendebauen.de",
             self.driver.title,
@@ -76,11 +99,13 @@ class TestAboutPage(TestWebcentral):
 
         Tests if the Links on the About Page redirect to the right Pages. 
         """
-        self.driver.get("http://127.0.0.1:8070/about")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/about")
         
         aboutPageObj = AboutPage(self.driver)
 
         linkToUDKPage = aboutPageObj.getUDKLink()
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", linkToUDKPage)
+        time.sleep(1)
         linkToUDKPage.click()
 
         self.assertEqual(
@@ -144,9 +169,3 @@ class TestAboutPage(TestWebcentral):
             self.driver.title,            
             "Page title after clicking on image of IÖW is not 'Energiewendebauen | IÖW'!",
         )
-
-
-
-
-
-
