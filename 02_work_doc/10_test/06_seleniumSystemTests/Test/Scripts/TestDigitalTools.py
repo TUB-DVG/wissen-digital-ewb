@@ -42,17 +42,10 @@ class TestDigitalToolsPage(TestWebcentral):
         techItem = navBar.getNavTechFocus()
         toolListItem = navBar.getNavToolList()
         action_chains = ActionChains(self.driver)
-        action_chains.move_to_element(techItem).click().perform()
+        action_chains.move_to_element(techItem).click(toolListItem).perform()
         
         time.sleep(1)
         
-
-        if toolListItem is not None:
-            # breakpoint()
-            toolListItem.click()
-        else:
-            self.assertTrue(False)
-
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
