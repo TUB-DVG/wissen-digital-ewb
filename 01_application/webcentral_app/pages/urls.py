@@ -26,4 +26,10 @@ urlpatterns = [
          name='benchmarkingChallenges'),
     path('dataSufficiency', views.dataSufficiency,
          name='dataSufficiency'),
+    path('dataSecurity', views.dataSecurity,
+         name='dataSecurity'),
+    path('iconsAndVis', views.iconsAndVis,
+         name='iconsAndVis'),
+    path('criteriaCatalog', views.criteriaCatalog,
+         name='criteriaCatalog'),
 ]
