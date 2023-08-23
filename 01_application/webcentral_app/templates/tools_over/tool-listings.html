@@ -230,10 +230,7 @@
             <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
               Suchbegriff: {{search}}
             </a>
-            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}
-              {% endif %}&l={% if licence %}{{licence}}
-              {% endif %}&lcp={% if lifeCyclePhase %}
-              {{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i> 
             </a>
           </div>
@@ -244,10 +241,7 @@
           <div class="btn btn-outline-light btn-sm">
             <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{{usage}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}
-              {% endif %}&u=&l={% if licence %}{{licence}}
-              {% endif %}&lcp={% if lifeCyclePhase %}
-              {{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>              
             </a>
           </div>
@@ -258,10 +252,7 @@
           <div class="btn btn-outline-light btn-sm">
             <a href="/tool_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}
             </a>
-            <a href="/tool_list/?searched={% if search %}
-              {{search}}{% endif %}&u={% if usage %}{{usage}}
-              {% endif %}&l=&lcp={% if lifeCyclePhase %}
-              {{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>  
             </a>
           </div>
@@ -272,9 +263,7 @@
           <div class="btn btn-outline-light btn-sm">
             <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}
-              {% endif %}&u={% if usage %}{{usage}}
-              {% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
+            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
               <i class="bi bi-x-lg"></i>  
             </a>
           </div>
@@ -296,11 +285,7 @@
             {% if page.has_previous %}
             <li class="page-item mb-0">
               <a class="page-link" 
-                  href="{%url 'tool_list' %}?searched={% if search %}{{search}}
-                    {% endif %}&u={% if usage %}{{usage}}
-                    {% endif %}&l={% if licence %}{{licence}}
-                    {% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}
-                    {% endif %}&page={{ page.previous_page_number}}" 
+                  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" 
                   tabindex="-1">
                 <i class="fas fa-angle-double-left"></i>
               </a>
@@ -311,11 +296,7 @@
             {% if page.has_next %}
             <li class="page-item mb-0">
               <a class="page-link" 
-                href="{%url 'tool_list' %}?searched={% if search %}{{search}}
-                  {% endif %}&u={% if usage %}{{usage}}
-                  {% endif %}&l={% if licence %}{{licence}}
-                  {% endif %}&lcp={% if lifeCyclePhase %}
-                  {{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
+                href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
                 <i class="fas fa-angle-double-right">
                 </i>
               </a>
