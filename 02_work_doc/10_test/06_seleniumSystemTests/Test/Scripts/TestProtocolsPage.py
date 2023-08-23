@@ -77,7 +77,7 @@ class TestProtocolsPage(WebDriverSetup):
         
         randomCardText = randomCard.text
 
-        self.driver.execute_script("arguments[0].scrollIntoView();", randomCard)
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
         time.sleep(1)
         randomCard.click()
 
