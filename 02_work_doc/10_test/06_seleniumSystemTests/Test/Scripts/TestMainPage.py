@@ -137,3 +137,21 @@ class TestMainPage(TestWebcentral):
             "Überblick über die Geschäftsmodellanwendungen",
             "Website should be 'Geschäftsmodellanwendungen', but its not!",
         )
+
+    def testLinkToTechnicalSTandarts(self):
+        """Test if the Technical Standarts Link is working by clicking on it and 
+        checking the page-title on the next site
+        
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+
+        startPAgeObj = StartPage(self.driver)
+        linkToTechnicalStandarts = startPAgeObj.getLinkToTechnicalStandarts()
+        self.driver.execute_script("arguments[0].scrollIntoView();", linkToTechnicalStandarts)
+        time.sleep(1)
+        linkToTechnicalStandarts.click()
+        self.assertEqual(
+            self.driver.title,
+            "Überblick über die technischen Standards",
+            "Page should be technical-standarts-page after clicking on link on main-page...",
+        )

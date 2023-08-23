@@ -22,7 +22,6 @@ class StartPage(object):
         
         """
         self.driver = driver
-        #self.toolListLink = Locator.toolListLink
 
 
     def getImpressumLink(self):
@@ -81,3 +80,9 @@ class StartPage(object):
         
         """
         return self.driver.find_element(By.XPATH, Locator.linkToBuisnessApp)
+
+    def getLinkToTechnicalStandarts(self):
+        """Return Link to Technical Standarts Page
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.linkToTechnicalStandarts)
