@@ -6,6 +6,21 @@ class Locator(object):
     resultElements = "//tr"
     firstColumnToRow = "//td"
     linkToBuisnessApp = "//a[contains(text(), 'Geschäfts­modell­anwendungen')]"
+    linkToTechnicalStandarts = "//a[@id='linkToTechnicalStandarts']"
+    
+    # locators for all search-pages:
+    cardLocator = "//div[@class='card-body pb-0']"
+    xFromSearchFilter = "//i[@class='bi bi-x fa-lg close-icon']"
+
+    # locators on TechnicalStandards:
+    linkToNormsOnTS = "//a[@id='linkToNorms']"
+    linkToProtocolsOnTS = "//a[@id='linkToProtocols']"
+    
+    # locators on NormsPage:
+    searchInputNorms = "//input[@id='search-input-norms']"
+
+    # locators on ProtocolsPage:
+    searchInputProtocols = "//input[@id='search-input-protocols']"
 
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
@@ -32,7 +47,6 @@ class Locator(object):
     cookieButton = "//button[@class='cookie-btn']"
     
     # locators in Business Apps:
-    businessCardLocator = "//div[@class='card-body pb-0']"
     businessSearchField = "//input[@id='search-input-tools']"
     businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
     businessDetailsTags = "//ul[@id='tagsUlElement']/li"

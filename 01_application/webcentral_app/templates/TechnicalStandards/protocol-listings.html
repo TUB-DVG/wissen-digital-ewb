@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% block title %}Überblick über die technischen Standards - Protokolle{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+</head>
+
+<body>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Page Banner START -->
+<section class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="p-2 text-left rounded-3">
+          <h2 class="m-0">Überblick über die technischen Standards - Protokolle</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+
+{% include './protocol-explanation.html' %}
+
+
+<!-- =======================
+Page content START -->
+<section class="pt-0">
+  <div class="container technical-cards">
+    <!-- Filter bar START -->
+    <form class="border-technical p-4 my-4 z-index-9 position-relative">
+      <div class="row g-3">
+        <!-- Input -->
+        <div class="col-xl-3" title="Suchen in den Zugehörige Standards, Netzwerktopologie und Implementierte Sicherheitsmechanismen">
+          <input id="search-input-protocols"
+                 class="form-control me-1 border-technical"
+                 type="search" placeholder="Suchbegriff"
+                 name='searched'>
+        </div>
+        <!-- Select item -->
+        <div class="col-xl-7">
+          <form  method="GET">
+            <div class="row g-3">
+              <!-- Select items -->
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice border-technical-round" aria-label=".form-select-sm example"
+                        name="n" id="name-input-protocols"
+                        title="Filtern nach dem Namen des Protokolls">
+                  <option value="">
+                    Name
+                  </option>
+                  <option value="BACnet" {% if name == "BACnet" %} selected="selected" {% endif %}>
+                    BACnet
+                  </option>
+                  <option value="KNX" {% if name == "KNX" %} selected="selected" {% endif %}>
+                    KNX
+                  </option>
+                  <option value="Zigbee " {% if name == "Zigbee " %} selected="selected" {% endif %}>
+                    Zigbee
+                  </option>
+                  <option value="Modbus" {% if name == "Modbus" %} selected="selected" {% endif %}>
+                    Modbus
+                  </option>
+                  <option value="MQTT" {% if name == "MQTT" %} selected="selected" {% endif %}>
+                    MQTT
+                  </option>
+                  <option value="LonWorks" {% if name == "LonWorks" %} selected="selected" {% endif %}>
+                    LonWorks
+                  </option>
+                  <option value="OPC UA" {% if name == "OPC UA" %} selected="selected" {% endif %}>
+                    OPC UA
+                  </option>
+                  <option value="DALI" {% if name == "DALI" %} selected="selected" {% endif %}>
+                    DALI
+                  </option>
+                  <option value="EnOcean" {% if name == "EnOcean" %} selected="selected" {% endif %}>
+                    EnOcean
+                  </option>
+                  <option value="LoRaWan" {% if name == "LoRaWan" %} selected="selected" {% endif %}>
+                    LoRaWan
+                  </option>
+                  <option value="m-Bus" {% if name == "m-Bus" %} selected="selected" {% endif %}>
+                    m-Bus
+                  </option>
+                  <option value="profibus" {% if name == "profibus" %} selected="selected" {% endif %}>
+                    profibus
+                  </option>
+                </select>
+              </div>
+
+              <!-- Search item -->
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice border-technical-round"
+                        aria-label=".form-select-sm example" name="c" id="communicationMediumCategory-input-protocols"
+                        title="Filter nach der Übertragungsmethoden des Protokolls">
+                  <option value="">
+                    Übertragungsmethoden
+                  </option>
+                  <option value="Verkabelt & Drahtlos" {% if source == "Verkabelt & Drahtlos" %} selected="selected" {% endif %}>
+                    Verkabelt & Drahtlos
+                  </option>
+                  <option value="Drahtlos" {% if source == "Drahtlos" %} selected="selected" {% endif %}>
+                    Drahtlos
+                  </option>
+                  <option value="Verkabelt" {% if source == "Verkabelt" %} selected="selected" {% endif %}>
+                    Verkabelt
+                  </option>
+                </select>
+              </div>
+
+              <!-- Search item -->
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice border-technical-round"
+                        aria-label=".form-select-sm example" name="os" id="openSourceStatus-input-protocols"
+                        title="Filter nach dem Open-Source-Status des Protokolls">
+                  <option value="">
+                    Open-Source-Status
+                  </option>
+                  <option value="Open Source" {% if source == "Open Source" %} selected="selected" {% endif %}>
+                    Open Source 
+                  </option>
+                  <option value="Proprietär" {% if source == "Proprietär" %} selected="selected" {% endif %}>
+                    Proprietär
+                  </option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-technical mb-0 rounded z-index-1 w-100"
+                  id="search-submit-protocols" href="">
+            <i class="fas fa-search">
+            </i>
+          </button>
+        </div>
+        <!-- Clear Button -->
+        <div class="col-xl-1">
+          <a href="{% url 'TechnicalStandards_protocol_list' %}">
+            <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+              Alle
+            </h6>
+          </a>
+        </div>
+      </div>
+    </form>
+    <!-- Filter bar END -->
+    <!-- search tags START -->
+    <ul class="list-inline mb-0">
+      {% if search %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={{search}}&n=&c=&os=">
+            Suchbegriff: {{search}}
+          </a>
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{openSourceStatus}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if name %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={{name}}&c=&os=">
+            Suchbegriff: {{name}}
+          </a>
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n=&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if communicationMediumCategory %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c={{communicationMediumCategory}}&os=">
+            Suchbegriff: {{ communicationMediumCategory}}
+          </a>
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c=&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+      {% if openSourceStatus %}
+      <li class="list-inline-item">
+        <div class="btn btn-outline-light btn-sm">
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c=&os={{openSourceStatus}}">
+            Suchbegriff: {{ openSourceStatus}}
+          </a>
+          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os=">
+            <i class="bi bi-x fa-lg close-icon"></i>
+          </a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+    <!-- search tags END -->
+    <!-- standards grid row START -->
+    <div class="row mt-3">
+      <!-- Main content START -->
+      <div class="col-12">
+
+        <!-- Course Grid START -->
+        <div class="row g-4" id="protocol-listing-results">
+          {% include './protocol-listings-results.html' %}
+        </div>
+        <!-- standards grid END -->
+        <!-- Pagination START -->
+        <div class="col-12">
+          <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+            <ul class="pagination pagination-primary-soft rounded mb-0">
+              {% if page.has_previous %}
+              <li class="page-item mb-0">
+                <a class="page-link"
+                   href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.previous_page_number}}"
+                   tabindex="-1">
+                  <i class="fas fa-angle-double-left">
+                  </i>
+                </a>
+              </li>
+              {% else %}
+              <!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
+              {% endif %}
+              {% if page.has_next %}
+              <li class="page-item mb-0">
+                <a class="page-link"
+                   href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.next_page_number}}">
+                  <i class="fas fa-angle-double-right">
+                  </i>
+                </a>
+              </li>
+              {% else %}
+              <!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+        <!-- Pagination END -->
+      </div>
+      <!-- Main content END -->
+    </div><!-- Row END -->
+  </div>
+</section>
+<!-- =======================
+     Page content END -->
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+
+{% endblock %}

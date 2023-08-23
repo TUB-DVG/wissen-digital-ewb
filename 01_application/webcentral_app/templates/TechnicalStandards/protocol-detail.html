@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ technicalStandards.name }} {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- =======================
+Page intro START -->
+
+<section class="py-0 py-sm-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Title -->
+        <h2>{{technicalStandards.name}}</h2>
+        <!-- Content -->
+        <ul class="list-inline mb-0">
+          {% if technicalStandards.openSourceStatus %}
+          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+            <i class="fas fa-bars fa-code">
+            </i>
+            {{technicalStandards.openSourceStatus}}
+          </li>
+          {% endif %}
+          {% if technicalStandards.licensingFeeRequirement  %}
+          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+            <i class="fas fa-bars fa-book-open me-2">
+            </i>{{technicalStandards.licensingFeeRequirement }}
+          </li>
+          {% endif %}
+          {% if technicalStandards.communicationMediumCategory %}
+          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+            <i class="fas fa-bars fa-sync">
+            </i>
+            {{technicalStandards.communicationMediumCategory}}
+          </li>
+          {% endif %}
+          {% if technicalStandards.networkTopology %}
+          <li class="list-inline-item h6 mb-0">
+            <i class="fas fa-bars me-2">
+            </i>{{technicalStandards.networkTopology}}
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+Page intro END -->
+
+<!-- =======================
+Page content START -->
+<section class="pb-0 pt-4 py-lg-5">
+  <div class="container technical-cards">
+    <div class="row">
+      <!-- Main content START -->
+      <div class="col-lg-8">
+        <div class="card border-technical p-0">
+					<!-- Tab contents START -->
+          <div class="tab-content card-body p-4 detail-card-body">
+            <!-- Content START -->
+            <div class="tab-pane container active" id="course-pills-1" >
+              <!-- Course detail START -->
+							{% if technicalStandards.supportedTransmissionMediuems %}
+							<h5 class="mt-4">Unterstützte Übertragungsmedien</h5>
+							<p class="mb-0">{{technicalStandards.supportedTransmissionMediuems}}</p>
+							{% endif %}
+							{% if technicalStandards.associatedStandards %}
+							<h5 class="mt-4">Zugehörige Standards (Spezifische Standards, denen jedes Protokoll entspricht)</h5>
+							<p class="mb-0">
+                {{technicalStandards.associatedStandards}}
+              </p>
+							{% endif %}
+              {% if technicalStandards.security %}
+              <h5 class="mt-4">Implementierte Sicherheitsmechanismen</h5>
+							<p class="mb-0">
+                {{technicalStandards.security}}
+              </p>
+							{% endif %}
+							{% if technicalStandards.bandwidth %}
+							<h5 class="mt-4">Bandbreite</h5>
+							<p class="mb-0">{{technicalStandards.bandwidth}}</p>
+							{% endif %}
+							{% if technicalStandards.frequency %}
+							<h5 class="mt-4">Frequenz</h5>
+							<p class="mb-0">
+                {{technicalStandards.frequency}}
+              </p>
+							{% endif %}
+              {% if technicalStandards.range %}
+              <h5 class="mt-4">Reichweite</h5>
+							<p class="mb-0">
+                {{technicalStandards.range}}
+              </p>
+							{% endif %}
+							{% if technicalStandards.numberOfConnectedDevices %}
+							<h5 class="mt-4">Geräte (maximale Anzahl an Geräten, die vernetzt werden können)</h5>
+							<p class="mb-0">{{technicalStandards.numberOfConnectedDevices}}</p>
+							{% endif %}
+							{% if technicalStandards.dataModelArchitecture %}
+							<h5 class="mt-4">Datenmodell Architektur (Datenmodell, in dem die Informationen/Attribute zu einem Objekt hinzugefügt werden )</h5>
+							<p class="mb-0">
+                {{technicalStandards.dataModelArchitecture}}
+              </p>
+							{% endif %}
+              {% if technicalStandards.discovery %}
+							<h5 class="mt-4">Discovery (Funktion, um Geräte im Netzwerk automatisch zu identifzieren)</h5>
+							<p class="mb-0">{{technicalStandards.discovery}}</p>
+							{% endif %}
+							{% if technicalStandards.multiMaster %}
+							<h5 class="mt-4">Multi Master (Können mehrere Mastergeräte zeitgleich agieren)</h5>
+							<p class="mb-0">
+                {{technicalStandards.multiMaster}}
+              </p>
+							{% endif %}
+              {% if technicalStandards.packetSize %}
+              <h5 class="mt-4">Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen werden können)</h5>
+							<p class="mb-0">
+                {{technicalStandards.packetSize}}
+              </p>
+							{% endif %}
+							{% if technicalStandards.priorities %}
+							<h5 class="mt-4">Priorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen werden)</h5>
+							<p class="mb-0">{{technicalStandards.priorities}}</p>
+							{% endif %}
+							{% if technicalStandards.price %}
+							<h5 class="mt-4">Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen (Gering, Durchschnittlich, Hoch)</h5>
+							<p class="mb-0">
+                {{technicalStandards.price}}
+              </p>
+							{% endif %}
+              {% if technicalStandards.osiLayers %}
+							<h5 class="mt-4">Implementierte OSI-Schichten (Anwendung [Application], Darstellung [Presentation], Sitzung [Session], Transport [Transport], Vermittlung/Paket [Network], Sicherung [Data Link], Bitübertragung [Phyiscal])</h5>
+							<p class="mb-0">{{technicalStandards.osiLayers}}</p>
+							{% endif %}
+							{% if technicalStandards.buildingAutomationLayer %}
+							<h5 class="mt-4">Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)</h5>
+							<p class="mb-0">
+                {{technicalStandards.buildingAutomationLayer}}
+              </p>
+							{% endif %}
+							{% if technicalStandards.link %}
+							<h5 class="mt-4">Link</h5>
+							<p class="mb-0">
+                <a href="{{technicalStandards.link}}">{{technicalStandards.link}}
+                </a>
+              </p>
+							{% endif %}
+							<!-- Course detail END -->
+						</div>
+							<!-- Content END -->
+					</div>
+					<!-- Tab contents END -->
+				</div>
+			</div>
+			<!-- Main content END -->
+      <div class="col-lg-4">
+        <div class="row mb-5 mb-lg-0">
+          <div class="col-md-6 col-lg-12">
+            <!-- Main block START -->
+            <div class="card border-technical p-2 mb-4 z-index-9">
+              <div class="overflow-hidden rounded-3 text-center">
+                {%if technicalStandards.image %}
+                <img src=" {{ technicalStandards.image.url }}" class="" style="max-height: 150px;" alt="technicalStandards image">
+                {% else %}
+                <img src=" {%static 'img/Default.webp' %}" class="" style="max-height: 150px;" alt="technicalStandards image (else)">
+                {% endif %}
+                <!-- Overlay -->
+              </div>
+            </div>
+            <!-- Main block END -->
+						<!-- Side col START -->
+						<div class="card card-body border-technical p-4 mb-4">
+							<!-- Title -->
+							<h4 class="mb-3">Kurzinformationen</h4>
+							<ul class="list-group border-0">
+								{% if technicalStandards.communicationMediumCategory %}
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
+									<span class="h6 fw-light mb-0">
+                    <i class="fas fa-fw fa-solid fa-sync">
+                    </i>
+                    Übertragung
+                  </span>
+									<span>{{ technicalStandards.communicationMediumCategory }}</span>
+								</li>
+								{% endif %}
+								{% if technicalStandards.openSourceStatus %}
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
+									<span class="h6 fw-light mb-0">
+                    <i class="fas fa-fw fa-solid fa-code">
+                    </i>
+                    Open-Source-Status
+                  </span>
+									<span>{{ technicalStandards.openSourceStatus }}</span>
+								</li>
+								{% endif %}
+                {% if technicalStandards.licensingFeeRequirement %}
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
+									<span class="h6 fw-light mb-0">
+                    <i class="fas fa-bars fa-book-open me-2">
+                    </i>
+                    Übertragung
+                  </span>
+									<span>{{ technicalStandards.licensingFeeRequirement }}</span>
+								</li>
+								{% endif %}
+								{% if technicalStandards.networkTopology %}
+								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
+									<span class="h6 fw-light mb-0">
+                    <i class="fas fa-fw fa-bars">
+                    </i>
+                    Netzwerktopologie
+                  </span>
+									<span>{{ technicalStandards.networkTopology }}</span>
+								</li>
+								{% endif %}
+
+
+							</ul>
+						</div>
+						<!-- Side col END -->
+					</div>
+					<div class="col-md-6 col-lg-12">
+						<!-- Tags START -->
+            <div class="card card-body border-technical p-4">
+              <h4 class="mb-3">Tags</h4>
+              <ul class="list-inline mb-0">
+                {% if technicalStandards.name %}
+                <li class="list-inline-item">
+                  <a class="btn btn-outline-light btn-sm" href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={{technicalStandards.name}}&c=&os=">
+                    {{technicalStandards.name}}
+                  </a>
+                </li>
+                {% endif %}
+                {% if technicalStandards.communicationMediumCategory %}
+                <li class="list-inline-item">
+                  <a class="btn btn-outline-light btn-sm" href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c={{technicalStandards.communicationMediumCategory}}&os=">
+                    {{technicalStandards.communicationMediumCategory}}
+                  </a>
+                </li>
+                {% endif %}
+                {% if technicalStandards.openSourceStatus %}
+                <li class="list-inline-item">
+                  <a class="btn btn-outline-light btn-sm" href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c=&os={{technicalStandards.openSourceStatus}}">
+                    {{technicalStandards.openSourceStatus}}
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+            <!-- Tags END -->
+          </div>
+        </div><!-- Row End -->
+      </div>
+      <!-- Right sidebar END -->
+    </div><!-- Row END -->
+  </div>
+</section>
+<!-- =======================
+Page content END -->
+
+{% endblock %}
