@@ -19,6 +19,9 @@ class Locator(object):
     # locators on NormsPage:
     searchInputNorms = "//input[@id='search-input-norms']"
 
+    # locators on ProtocolsPage:
+    searchInputProtocols = "//input[@id='search-input-protocols']"
+
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
     LogoImage = "//a/img[@alt='logo']"
