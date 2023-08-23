@@ -118,7 +118,7 @@ Page content START -->
 				  	Suchbegriff: {{search}}
 				  </a>
 			    <a href="/weatherdata_list/?searched=&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}">
-				    <i class="bi bi-x-lg"></i>  
+				    <i class="bi bi-x-lg"></i> 
 			    </a>
 			  </div>
 		  </li>
@@ -138,7 +138,7 @@ Page content START -->
  		    <div class="btn btn-outline-light btn-sm">
 				  <a href="/weatherdata_list/?searched=&k=&l={{lizenz}}">{{lizenz}}</a>
 				  <a href="/weatherdata_list/?searched={% if search %}{{search}}{% endif %}&k={% if kategorie %}{{kategorie}}{% endif %}&l=">
-					<i class="bi bi-x-lg"></i>  
+					<i class="bi bi-x-lg"></i> 
 				  </a>
 			  </div>
 		  </li>
@@ -155,31 +155,33 @@ Page content START -->
   		</div>
 	  	<!-- Course Grid END -->
   		<!-- Pagination START -->
-	  	<div class="col-12">
-		  	<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-			  	<ul class="pagination pagination-primary-soft rounded mb-0">
-				  	{% if page.has_previous %}
-					  <li class="page-item mb-0">
-							<a class="page-link" h
-					 		   ref="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}" tabindex="-1">
-								<i class="fas fa-angle-double-left">
-								</i>
-							</a>
-						</li>
-					  {% else %}
-				  	{% endif %}
-					  {% if page.has_next %}
-					  <li class="page-item mb-0">
-							<a class="page-link"
-								 href="{%url 'weatherdata_list' %}?page={{ page.next_page_number}}">
-								<i class="fas fa-angle-double-right">
-								</i>
-							</a>
-						</li>
-					  {% else %}
-					  {% endif %}
-				  </ul>
-			  </nav>
+		  <div class="pagination">
+			<span class="step-links">
+			  {% if page.has_previous %}
+			  <a  href="{%url 'weatherdata_list' %}?page=1">
+				&laquo; erste
+			  </a>
+			  &nbsp &nbsp
+			  <a href="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}">
+				vorherige
+			  </a>
+			  {% endif %}
+			  &nbsp &nbsp
+			  <span class="current">
+				Seite {{ page.number }} von {{ page.paginator.num_pages }}  
+			  </span>
+			  &nbsp &nbsp
+			  {% if page.has_next %}
+			  <a href="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}">
+				nächste
+			  </a>
+			  &nbsp &nbsp
+			  <a href="{%url 'weatherdata_list' %}?page={{ page.paginator.num_pages}} ">
+				letzte &raquo;
+			  </a>
+			  &nbsp &nbsp
+			  {% endif %}
+			</span>
 		  </div>
 		  <!-- Pagination END -->
 	  </div>
