@@ -113,8 +113,9 @@ def protocol(request):
         criterionProtocolsOne = Q(associatedStandards__icontains=searched)
         criterionProtocolsTwo = Q(networkTopology__icontains=searched)
         criterionProtocolsThree = Q(security__icontains=searched)
+        criterionProtocolsFour = Q(name__icontains=searched)
         protocols = Protocol.objects.filter(criterionProtocolsOne |
-                                                    criterionProtocolsTwo | criterionProtocolsThree).filter(name__icontains=name, communicationMediumCategory__icontains=communicationMediumCategory,
+                                                    criterionProtocolsTwo | criterionProtocolsThree | criterionProtocolsFour).filter(name__icontains=name, communicationMediumCategory__icontains=communicationMediumCategory,
                                           openSourceStatus__icontains=openSourceStatus)
         
 
