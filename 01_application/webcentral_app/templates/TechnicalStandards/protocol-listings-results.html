@@ -1,0 +1,43 @@
+{% load static %}
+{% for technicalStandards in page.object_list %}	
+<!-- Card item START -->
+<div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+  <a href="{%url 'TechnicalStandards_protocol_details' technicalStandards.id %}">
+    <div class="card border-technical h-100">
+      <!-- Card body -->
+      <div class="card-body pb-0">
+        <!-- Title -->
+        <h3 class="card-title">
+          {{ technicalStandards.name }}
+        </h3>
+      </div>
+      <!-- Image -->
+      <div class="image-container d-flex" style="height: 150px;">
+        {%if technicalStandards.image %}
+        <img src="{{ technicalStandards.image.url }}"
+             class="card-img-top px-4 pt-4 pb-2 m-auto"
+             style="max-height: 100%; width: auto; display: block;"
+             alt="technicalStandards image (if=db)">
+        {% endif %}
+      </div>
+      <!-- Card footer -->
+      <!--
+           <div class="card-footer pt-0 pb-3">
+             {% if tool.letztes_update %}
+             <hr>
+             <div class="d-flex justify-content-between">
+               <span class="h6 fw-light mb-0">
+                 {% if tool.letztes_update == 'laufend' %}
+                 <i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.letztes_update }}
+                 {% else %}
+                 <i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.letztes_update }}
+                 {% endif %}
+             </div>
+             {% endif %}
+           </div>
+           -->
+    </div>
+  </a>
+</div>
+<!-- Card item END -->
+{% endfor %}

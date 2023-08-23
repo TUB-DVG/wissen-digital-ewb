@@ -12,6 +12,10 @@ from Test.Scripts.TestLastprofile import TestLastprofileTab
 from Test.Scripts.TestAboutPage import TestAboutPage
 from Test.Scripts.TestAdminPage import TestAdminPage
 from Test.Scripts.TestBusinessApp import TestBusinessAppPage
+from Test.Scripts.TestTechnicalStandarts import TestTechnicalStandarts
+from Test.Scripts.TestNormsPage import TestNormsPage
+from Test.Scripts.TestProtocolsPage import TestProtocolsPage
+
  
 import testtools as testtools
 
@@ -23,6 +27,9 @@ if __name__ == "__main__":
     testSuite = TestSuite((
         testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
         testLoader.loadTestsFromTestCase(TestMainPage),
+        testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
+        testLoader.loadTestsFromTestCase(TestNormsPage),
+        testLoader.loadTestsFromTestCase(TestProtocolsPage),
         testLoader.loadTestsFromTestCase(TestBusinessAppPage),
         testLoader.loadTestsFromTestCase(TestClickThroughSites),
         testLoader.loadTestsFromTestCase(TestLastprofileTab),
