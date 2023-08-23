@@ -28,7 +28,7 @@ class BusinessAppPage(object):
         """Return the Cards, which shows the present Business-Applications
         
         """
-        return self.driver.find_elements(By.XPATH, Locator.businessCardLocator)
+        return self.driver.find_elements(By.XPATH, Locator.cardLocator)
 
     def getSearchField(self):
         """Return the Search-Input-Field on the Business-Application Site
