@@ -26,7 +26,7 @@ from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.NormPage import NormPage
 
 
-class TestNormsPage(TestWebcentral):
+class TestNormsPage(WebDriverSetup):
     """Tests the 'Lastapproximation'-Tab
     
     """
@@ -76,7 +76,16 @@ class TestNormsPage(TestWebcentral):
         randomCard = random.choice(cardsOnPage)
         
         randomCardText = randomCard.text
+
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
+        time.sleep(1)
         randomCard.click()
 
         time.sleep(1)
+
+        self.assertEqual(
+            self.driver.title,
+            randomCardText,
+            f"Page Title should be '{randomCardText}', after clicking on the card with the same name!",
+        )
 
