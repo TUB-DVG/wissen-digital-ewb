@@ -2,9 +2,8 @@
 
 {% block title %} Waermelastprofil {% endblock %}
 
-{% block content%}
-
-<div style="height: 130vh ">
+{% block content%}  
+<div style="height: 100vh ;">
   <iframe src="/django_plotly_dash/app/Warmelast/" style="
   top: 0;
   left: 0;
@@ -12,6 +11,5 @@
   height: 100%;
   " sandbox="allow-downloads allow-scripts allow-same-origin" frameborder="0"></iframe>
 </div>
-
 
 {% endblock %}
