@@ -1,9 +1,5 @@
 """Definitions of the views of the tools overview app."""
-# from contextlib import nullcontext
-# from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-# from turtle import up
-from django.http import JsonResponse
-from django.template.loader import render_to_string
+
 # from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
@@ -51,25 +47,6 @@ def index(request):
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
 
-    isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
-    
-
-    if isAjaxRequest:
-        html = render_to_string(
-            template_name="tools_over/tool-listings-results.html",
-            context={
-                'page': page,
-                'search':searched,
-                'usage': filteredBy[0],
-                'licence': filteredBy[1],
-                'lifeCyclePhase': filteredBy[2]
-            }
-        )
-
-        dataDict = {"html_from_view": html}
-
-        return JsonResponse(data=dataDict, safe=False)
-
     context = {
         'page': page,
         'search':searched,
@@ -109,25 +86,6 @@ def indexBuisnessApplication(request):
     toolsPaginator= Paginator(applications,12)
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
-
-    isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
-    
-
-    if isAjaxRequest:
-        html = render_to_string(
-            template_name="tools_over/tool-listings-results.html",
-            context={
-                'page': page,
-                'search':searched,
-                'usage': filteredBy[0],
-                'licence': filteredBy[1],
-                'lifeCyclePhase': filteredBy[2]
-            }
-        )
-
-        dataDict = {"html_from_view": html}
-
-        return JsonResponse(data=dataDict, safe=False)
 
     context = {
         'page': page,
