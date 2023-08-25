@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Weatherdata 
@@ -34,25 +32,6 @@ def index(request):
 
     page_num= request.GET.get('page',None)
     page=weatherdata_paginator.get_page(page_num)
-
-    is_ajax_request = request.headers.get("x-requested-with") == "XMLHttpRequest"
-    
-    
-    if is_ajax_request:
-        html = render_to_string(
-            template_name="weatherdata_over/weatherdata-listings-results.html", 
-            context = {
-                'page': page,
-                'search':searched,
-                'kategorie': filtered_by[0],
-                'lizenz': filtered_by[1],
-            }
-
-        )
-
-        data_dict = {"html_from_view": html}
-
-        return JsonResponse(data=data_dict, safe=False)
        
     context = {
         'page': page,
