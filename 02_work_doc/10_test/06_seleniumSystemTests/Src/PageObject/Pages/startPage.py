@@ -25,7 +25,14 @@ class StartPage(object):
         #self.toolListLink = Locator.toolListLink
 
 
-
+    def getImpressumLink(self):
+        """Return Impressum Webelement
+        
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.linkToImpressum, 
+        )
 
     
 
