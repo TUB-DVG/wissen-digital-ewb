@@ -1,5 +1,8 @@
 class Locator(object):
     
+    # locators on main-page:
+    linkToImpressum = "//a[@id='impressumLink']"
+
     # locators of NavBar:
     toolListLink = "//a[@href='/tool_list/']"
     LogoImage = "//a/img[@alt='logo']"

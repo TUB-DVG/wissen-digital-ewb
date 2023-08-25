@@ -75,3 +75,8 @@ def iconsAndVis(request):
 def criteriaCatalog(request):
     """Call render function for criteria catalog page."""
     return render(request, 'pages/criteriaCatalog.html')
+
+
+def impressum(request):
+    """Call render function for impressum page."""
+    return render(request, 'pages/impressum.html')
