@@ -57,4 +57,4 @@ class BusinessAppPage(object):
             return self.driver.find_element(By.XPATH, f"//a[contains(text(), '{tagText}')]")
 
         except:
-            return None 
+            return None

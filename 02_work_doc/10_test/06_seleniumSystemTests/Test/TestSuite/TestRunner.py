@@ -16,7 +16,7 @@ from Test.Scripts.TestTechnicalStandarts import TestTechnicalStandarts
 from Test.Scripts.TestNormsPage import TestNormsPage
 from Test.Scripts.TestProtocolsPage import TestProtocolsPage
 
- 
+
 import testtools as testtools
 
 if __name__ == "__main__":
