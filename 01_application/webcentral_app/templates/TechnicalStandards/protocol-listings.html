@@ -218,34 +218,33 @@ Page content START -->
         </div>
         <!-- standards grid END -->
         <!-- Pagination START -->
-        <div class="col-12">
-          <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-            <ul class="pagination pagination-primary-soft rounded mb-0">
-              {% if page.has_previous %}
-              <li class="page-item mb-0">
-                <a class="page-link"
-                   href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.previous_page_number}}"
-                   tabindex="-1">
-                  <i class="fas fa-angle-double-left">
-                  </i>
-                </a>
-              </li>
-              {% else %}
-              <!--<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>-->
-              {% endif %}
-              {% if page.has_next %}
-              <li class="page-item mb-0">
-                <a class="page-link"
-                   href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.next_page_number}}">
-                  <i class="fas fa-angle-double-right">
-                  </i>
-                </a>
-              </li>
-              {% else %}
-              <!--<li class="page-item mb-0"><a class="page-link" href="#" ><i class="fas fa-angle-double-right"></i></a></li>-->
-              {% endif %}
-            </ul>
-          </nav>
+        <div class="pagination">
+          <span class="step-links">
+            {% if page.has_previous %}
+            <a  href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page=1">
+              &laquo; erste
+            </a>
+            &nbsp &nbsp
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}">
+              vorherige
+            </a>
+            {% endif %}
+            &nbsp &nbsp
+            <span class="current">
+              Seite {{ page.number }} von {{ page.paginator.num_pages }}
+            </span>
+            &nbsp &nbsp
+            {% if page.has_next %}
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}">
+              nächste
+            </a>
+            &nbsp &nbsp
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.paginator.num_pages}}">
+              letzte &raquo;
+            </a>
+            &nbsp &nbsp
+            {% endif %}
+          </span>
         </div>
         <!-- Pagination END -->
       </div>
