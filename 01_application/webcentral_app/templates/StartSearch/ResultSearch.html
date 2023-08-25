@@ -120,24 +120,27 @@
       <span class="step-links">
         {% if data.has_previous %}
         <a href="?searchValue={{searchInput}}&page=1">
-          &laquo; first
+          &laquo; erste
         </a>
+        &nbsp &nbsp
         <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}">
-          previous
+          vorherige
         </a>
         {% endif %}
-
+        &nbsp &nbsp
         <span class="current">
-          Page {{ data.number }} of {{ data.paginator.num_pages }}.
+          Seite {{ data.number }} von {{ data.paginator.num_pages }}  
         </span>
-
+        &nbsp &nbsp
         {% if data.has_next %}
         <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}">
-          next
+          nächste
         </a>
+        &nbsp &nbsp
         <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}">
-          last &raquo;
+          letzte &raquo;
         </a>
+        &nbsp &nbsp
         {% endif %}
       </span>
     </div>
