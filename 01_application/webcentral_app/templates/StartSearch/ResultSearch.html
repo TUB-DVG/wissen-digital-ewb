@@ -119,11 +119,11 @@
     <div class="pagination">
       <span class="step-links">
         {% if data.has_previous %}
-        <a href="?searchValue={{searchInput}}&page=1">
+        <a href="?searchValue={{searchInput}}&page=1" id="paginationFirstSite">
           &laquo; erste
         </a>
         &nbsp &nbsp
-        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}">
+        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}" id="paginationPreviousLink">
           vorherige
         </a>
         {% endif %}
@@ -133,11 +133,11 @@
         </span>
         &nbsp &nbsp
         {% if data.has_next %}
-        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}">
+        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}" id="paginationNextLink">
           nächste
         </a>
         &nbsp &nbsp
-        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}">
+        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}" id="paginationLastSite">
           letzte &raquo;
         </a>
         &nbsp &nbsp

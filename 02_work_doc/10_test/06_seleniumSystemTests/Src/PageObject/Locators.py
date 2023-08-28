@@ -7,7 +7,12 @@ class Locator(object):
     firstColumnToRow = "//td"
     linkToBuisnessApp = "//a[contains(text(), 'Geschäfts­modell­anwendungen')]"
     linkToTechnicalStandarts = "//a[@id='linkToTechnicalStandarts']"
-    
+    paginationNextLink = "//a[@id='paginationNextLink']"
+    paginationPreviousLink = "//a[@id='paginationPreviousLink']"
+    paginationFirstLink = "//a[@id='paginationFirstSite']"
+    paginationLastLink = "//a[@id='paginationLastSite']"
+    paginationCurrentSite = "//span[@class='current']"
+
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"
     xFromSearchFilter = "//i[@class='bi bi-x fa-lg close-icon']"
