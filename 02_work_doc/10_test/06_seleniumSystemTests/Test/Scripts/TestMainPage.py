@@ -29,6 +29,7 @@ from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
+from Src.PageObject.Pages.cookieBanner import CookieBanner
 
 class TestMainPage(TestWebcentral):
     """Testclass for MainPage-Test
@@ -116,6 +117,87 @@ class TestMainPage(TestWebcentral):
                 self.driver.back()
             if checkedScientificProjects == 2:
                 break
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+        textOnFirstSearchResult = listOfRowsInResultsTable[1].text
+        # on first site, "next" and "last" should be present:
+        listOfNextElement = startPageObj.getNextElementInList()
+        self.assertEqual(
+            len(listOfNextElement),
+            1,
+            "next-search-results-page should be present, but it is not!",
+        )
+        listOfPreviousElement = startPageObj.getPreviousElementInList()
+        self.assertEqual(
+            len(listOfPreviousElement),
+            0,
+            "previous-search-results-page should not be present, but it is!",
+        )
+        listOfFirstElement = startPageObj.getFirstElementInList()
+        self.assertEqual(
+            len(listOfFirstElement),
+            0,
+            "First-search-results-page should not be present, but it is!",
+        )
+        listOfLastElement = startPageObj.getLastElementInList()
+        self.assertEqual(
+            len(listOfLastElement),
+            1,
+            "last-search-results-page should be present, but it is not!",
+        )
+        cookieBannerObj = CookieBanner(self.driver)
+        cookieBannerObj.getCookieAcceptanceButton().click()
+        time.sleep(1)
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfNextElement[0])
+        time.sleep(1)
+        listOfNextElement[0].click()
+        time.sleep(1)
+        resultsOnNextSite = startPageObj.getSearchResults()
+        self.assertNotEqual(
+            resultsOnNextSite[1].text,
+            textOnFirstSearchResult,
+            "The results on 2 different sites should differ!",
+        )
+        listOfNextElement = startPageObj.getNextElementInList()
+        self.assertEqual(
+            len(listOfNextElement),
+            1,
+            "next-search-results-page should be present, but it is not!",
+        )
+        listOfPreviousElement = startPageObj.getPreviousElementInList()
+        self.assertEqual(
+            len(listOfPreviousElement),
+            1,
+            "previous-search-results-page should be present, but it is not!",
+        )
+        listOfFirstElement = startPageObj.getFirstElementInList()
+        self.assertEqual(
+            len(listOfFirstElement),
+            1,
+            "First-search-results-page should be present, but it is not!",
+        )
+        listOfLastElement = startPageObj.getLastElementInList()
+        self.assertEqual(
+            len(listOfLastElement),
+            1,
+            "last-search-results-page should be present, but it is not!",
+        )
+        currentPageNumberElement = startPageObj.getCurrentSearchResultNumber()
+        self.assertIn(
+            "Seite 2",
+            currentPageNumberElement.text,
+            "Current Page Number should say 'Seite 2'"
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfPreviousElement[0])
+        time.sleep(1)
+        listOfPreviousElement[0].click()
+        currentPageNumberElement = startPageObj.getCurrentSearchResultNumber()
+        self.assertIn(
+            "Seite 1",
+            currentPageNumberElement.text,
+            "Current Page Number should say 'Seite 1'"
+        )       
+
+
         
     def testIfLinkToBuisnessAppsWorks(self):
         """Test if one can navigate from Main-Page to buisness-application site
@@ -155,3 +237,4 @@ class TestMainPage(TestWebcentral):
             "Überblick über die technischen Standards",
             "Page should be technical-standarts-page after clicking on link on main-page...",
         )
+    
