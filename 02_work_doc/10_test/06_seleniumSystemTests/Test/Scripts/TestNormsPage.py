@@ -21,7 +21,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.NormPage import NormPage
 

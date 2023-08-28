@@ -22,12 +22,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import ActionChains
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 
-class TestClickThroughSites(TestWebcentral):
+class TestClickThroughSites(WebDriverSetup):
     """
     
     """

@@ -21,13 +21,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
-class TestDigitalToolsPage(TestWebcentral):
+class TestDigitalToolsPage(WebDriverSetup):
     """
     
     """
