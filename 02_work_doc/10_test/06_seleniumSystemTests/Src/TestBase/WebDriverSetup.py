@@ -1,23 +1,37 @@
 """
 
 """
-
-
+import os
 import unittest
-from selenium import webdriver
-import time
-from time import sleep
-import warnings
 import urllib3
+
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as Firefox_Options
+
  
 class WebDriverSetup(unittest.TestCase):
     def setUp(self):
+        """Start a webdriver-instance for every test in headless-mode.
+        The headles browser instance is a firefox-instance and has the
+        dimensions 1920x1080.
+        
+        """
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-        self.driver = webdriver.Firefox()
+        firefoxOptions = Firefox_Options()
+        firefoxOptions.add_argument("--window-size=1920,1080")
+        firefoxOptions.add_argument("start-maximised")
+        # firefoxOptions.add_argument("--width=1920")
+        # firefoxOptions.add_argument("--height=1080")
+        if os.environ.get("HEADLESS") == "1":
+            firefoxOptions.headless = True
+        self.driver = webdriver.Firefox(options=firefoxOptions)
         self.driver.implicitly_wait(10)
         self.driver.maximize_window()
  
     def tearDown(self):
+        """Close the browser Window of every test.
+        
+        """
         if (self.driver != None):
             print("Cleanup of test environment")
             self.driver.close()

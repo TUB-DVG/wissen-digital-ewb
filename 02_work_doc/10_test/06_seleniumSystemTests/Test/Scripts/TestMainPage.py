@@ -24,14 +24,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
-class TestMainPage(TestWebcentral):
+class TestMainPage(WebDriverSetup):
     """Testclass for MainPage-Test
 
     Inherit from TestWebcentral. There methods should be implemented,
