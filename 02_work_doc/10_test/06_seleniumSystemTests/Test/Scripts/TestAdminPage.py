@@ -16,13 +16,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AdminPage import AdminPage
 
-class TestAdminPage(TestWebcentral):
+class TestAdminPage(WebDriverSetup):
 
     def testLoginAsAdmin(self):
         """Login as Admin with the credentials from .env

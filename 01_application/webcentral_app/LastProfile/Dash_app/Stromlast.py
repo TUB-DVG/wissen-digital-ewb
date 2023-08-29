@@ -85,8 +85,8 @@ app.layout = html.Div([
     Output('powerGraph','figure'),
     Input('approximation_start','n_clicks'),
     Input('displayMonth','value'),
-    State('application','value'),
-    State('powerRequirement','value'),
+    Input('application','value'),
+    Input('powerRequirement','value'),
 
     prevent_initial_call=True
     )

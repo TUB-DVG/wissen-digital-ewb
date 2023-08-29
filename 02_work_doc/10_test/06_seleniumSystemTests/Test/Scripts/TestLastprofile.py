@@ -26,7 +26,6 @@ from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Test.Scripts.TestWebcentral import TestWebcentral
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
@@ -37,7 +36,7 @@ from Src.PageObject.Pages.CurrentLoadApproximation import (
 from Src.PageObject.Pages.HeatApproximation import HeatApproximation
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
-class TestLastprofileTab(TestWebcentral):
+class TestLastprofileTab(WebDriverSetup):
     """Tests the 'Lastapproximation'-Tab
     
     """
@@ -90,9 +89,12 @@ class TestLastprofileTab(TestWebcentral):
         try:
             actions.move_to_element(linkToHeatApprox).perform()
         except MoveTargetOutOfBoundsException as e:
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", linkToHeatApprox)
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", linkToHeatApprox)
         time.sleep(1)
-
+        # cookieBannerObj = CookieBanner(self.driver)
+        # cookieBannerObj.getCookieAcceptanceButton().click()
+        time.sleep(1)
+        self.driver.save_screenshot("ss.png")
         linkToHeatApprox.click()
         self.assertEqual(
             "Waermelastprofil",
@@ -159,7 +161,6 @@ class TestLastprofileTab(TestWebcentral):
         iframeElement = lastprofilePage.getPlotlyIFrame()
         self.driver.switch_to.frame(iframeElement)
 
-
         selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
         actions = ActionChains(self.driver)
         actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
@@ -177,6 +178,7 @@ class TestLastprofileTab(TestWebcentral):
         inputFieldPowerRequirement = lastprofilePage.getInputFieldPowerRequirement()
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
+        time.sleep(3)
         lineObj = lastprofilePage.getLinePloty()
         self.assertGreater(
             len(lineObj.get_attribute("d")),
@@ -188,15 +190,15 @@ class TestLastprofileTab(TestWebcentral):
 
         # test if the data can be downloaded
         buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
-        buttonCSVDownload.click()
+        time.sleep(1)
         buttonCSVDownload.click()
         time.sleep(1)
-
+        buttonCSVDownload.click()
         files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
 
         files.sort(key=lambda x: os.path.getmtime(x))
-        # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
+        self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
         
         lastModified = os.path.getmtime(files[-1])
         
-        # self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
+        self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
