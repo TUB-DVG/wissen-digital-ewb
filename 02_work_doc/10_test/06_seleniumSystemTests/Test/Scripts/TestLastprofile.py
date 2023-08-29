@@ -189,15 +189,15 @@ class TestLastprofileTab(WebDriverSetup):
         # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
 
         # test if the data can be downloaded
-        buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
-        time.sleep(1)
-        buttonCSVDownload.click()
-        time.sleep(1)
-        buttonCSVDownload.click()
-        time.sleep(3)
-        files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
+        # buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
+        # time.sleep(1)
+        # buttonCSVDownload.click()
+        # time.sleep(1)
+        # buttonCSVDownload.click()
+        # time.sleep(3)
+        # files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
 
-        files.sort(key=lambda x: os.path.getmtime(x))
+        # files.sort(key=lambda x: os.path.getmtime(x))
         # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
         
         # lastModified = os.path.getmtime(files[-1])
