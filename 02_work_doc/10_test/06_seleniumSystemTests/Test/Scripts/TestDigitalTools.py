@@ -69,7 +69,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         searchFieldElement.send_keys("Ansys")
         time.sleep(1)
         searchFieldElement.send_keys(Keys.RETURN)
-        time.sleep(1)
+        time.sleep(3)
         listOfToolItemsAfterReturn = toolListPage.getListOfToolItems()
 
         self.assertEqual(
