@@ -42,7 +42,7 @@ class TestProtocolsPage(WebDriverSetup):
         searchInputField.send_keys("dali")
         searchInputField.send_keys(Keys.RETURN)
 
-        time.sleep(1)
+        time.sleep(3)
 
         cardList = protocolPageObj.getCards() 
 
@@ -80,7 +80,7 @@ class TestProtocolsPage(WebDriverSetup):
         time.sleep(1)
         randomCard.click()
 
-        time.sleep(1)
+        time.sleep(3)
 
         self.assertEqual(
             self.driver.title,
