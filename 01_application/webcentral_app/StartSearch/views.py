@@ -72,18 +72,6 @@ def resultSearch(request):
     else:
         filteredData = sorted(filteredData, key=lambda obj: obj["name"])
 
-    data = [
-         {"name": "Brandley", "kindOfItem": "Kol"},
-         {"name": "Stevie", "kindOfItem": "Kola"},
-         {"name": "Brandl", "kindOfItem": "Ksdol"},
-         {"name": "Brandl", "kindOfItem": "Ksdol"},
-         {"name": "434Brandley", "kindOfItem": "asdfKol"},
-         {"name": "KKStevie", "kindOfItem": "Kollkjlkja"},
-         {"name": "43werrandley", "kindOfItem": "aQWERsdfKol"},
-         {"name": "OUStevie", "kindOfItem": "KolkUUUjlkja"},
-         {"name": "YYStasevie", "kindOfItem": "jkKola"}
-    ]
-
     # setup paginator for the table
     filterDataPaginator = Paginator(filteredData, 12)
     pageNumber = request.GET.get("page", None)
