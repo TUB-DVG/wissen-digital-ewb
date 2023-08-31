@@ -72,13 +72,6 @@ def resultSearch(request):
     else:
         filteredData = sorted(filteredData, key=lambda obj: obj["name"])
 
-    # debuging section, delete when not needed anymore
-    print(filteredTools)
-    print(filteredProjects)
-    print("Anzahl der gefilterten Projekte: %s" % filteredProjects.count())
-    print(searchInput)
-    print(sortBy)
-    # test data, pls delete later
     data = [
          {"name": "Brandley", "kindOfItem": "Kol"},
          {"name": "Stevie", "kindOfItem": "Kola"},
