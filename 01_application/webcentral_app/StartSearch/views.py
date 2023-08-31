@@ -38,7 +38,8 @@ def resultSearch(request):
         enargusData__shortDescriptionDe__icontains=searchInput)
     filteredProjects = Subproject.objects.values("referenceNumber_id",
                                                   "enargusData__collaborativeProject",
-                                                  "enargusData__shortDescriptionDe"
+                                                  "enargusData__shortDescriptionDe",
+                                                  "enargusData__topics"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -57,9 +58,11 @@ def resultSearch(request):
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         project["name"] = project.pop("enargusData__collaborativeProject")
-        project["description"] = project.pop("enargusData__shortDescriptionDe")
+        if project["name"] == "nein":
+            project["name"] = project.pop("enargusData__topics")
         if len(project["name"]) > 40:
             project["name"] = project["name"][:40] + " ... "
+        project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
