@@ -65,10 +65,14 @@
               <th scope="col" class="border-0">
                 <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}">
                   Art des Ergebnisses
-                  </a>
+                </a>
               </th>
               <th scope="col" class="border-0">Fokus</th>
-              <th scope="col" class="border-0 rounded-end">Sonstiges</th>
+              <th scope="col" class="border-0 rounded-end">
+                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page={{ data.number }}">
+                  Aktualität
+                </a>
+              </th>
             </tr>
           </thead>
           <!-- Table body START -->
@@ -102,9 +106,12 @@
                 <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                      alt="icon">
               </td>
-
+              <td>
+                <div class="ms-2">
+                  <h6 class="mb-0 fw-light">{{ dataSet.date }}</h6>
+                </div>
+              </td>
               <!-- Table data -->
-              <td> </td>
             </tr>
             {% endfor %}
           </tbody>
