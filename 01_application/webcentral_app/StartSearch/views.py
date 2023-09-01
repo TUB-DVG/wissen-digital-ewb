@@ -5,6 +5,7 @@ from project_listing.models import Subproject
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
+from datetime import date
 
 
 def startSearch(request):
@@ -28,7 +29,8 @@ def resultSearch(request):
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
     filteredTools = Tools.objects.values("id",
                                          "name",
-                                         "shortDescription"
+                                         "shortDescription",
+                                         "lastUpdate"
                                          ).filter(criterionToolsOne |
                                                   criterionToolsTwo)
     # filtered projects
@@ -39,7 +41,8 @@ def resultSearch(request):
     filteredProjects = Subproject.objects.values("referenceNumber_id",
                                                   "enargusData__collaborativeProject",
                                                   "enargusData__shortDescriptionDe",
-                                                  "enargusData__topics"
+                                                  "enargusData__topics",
+                                                  "enargusData__startDate"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -53,8 +56,25 @@ def resultSearch(request):
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
         tool["description"] = tool.pop("shortDescription")
+
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
+
+        # make a time stamp list, including also virtual dates
+        # replancning unspecific time values like "laufend" or
+        # no given date
+        toolDate = tool.pop("lastUpdate")
+        toolVirtDate = toolDate
+        if toolDate == "laufend":
+            toolVirtDate = date.fromisoformat("2049-09-09")
+            print("laufend gefunden")
+        elif toolDate == "":
+            toolVirtDate = date.fromisoformat("1949-09-09")
+            toolDate = "unbekannt"
+            print("nix gefunden")
+        tool["date"] = toolDate
+        tool["virtDate"] = toolVirtDate
+
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         project["name"] = project.pop("enargusData__collaborativeProject")
@@ -64,6 +84,8 @@ def resultSearch(request):
             project["name"] = project["name"][:40] + " ... "
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
+        project["date"] = project.pop("enargusData__startDate")
+        project["virtDate"] = project["date"]
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
