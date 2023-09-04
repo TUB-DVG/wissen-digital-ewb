@@ -92,7 +92,8 @@ def resultSearch(request):
     if sortBy:
         filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
     else:
-        filteredData = sorted(filteredData, key=lambda obj: obj["name"])
+        filteredData = sorted(filteredData, key=lambda obj: obj["virtDate"],
+                              reverse=True)
 
     # setup paginator for the table
     filterDataPaginator = Paginator(filteredData, 12)
