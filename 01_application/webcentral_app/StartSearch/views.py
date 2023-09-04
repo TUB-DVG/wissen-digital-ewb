@@ -18,7 +18,7 @@ def resultSearch(request):
     # search value reading
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
-        sortBy = request.GET.get("sortBy", None)
+        sortBy = request.GET.get("sortBy", "virtDate")
     elif request.method == "POST":
         # search value/s from Start page
         searchInput = request.POST.get("searchValue", None)
@@ -105,5 +105,6 @@ def resultSearch(request):
     context = {
         "searchInput": searchInput,
         "data": dataPerPage,
+        "sortBy": sortBy,
     }
     return render(request, "StartSearch/ResultSearch.html", context)
