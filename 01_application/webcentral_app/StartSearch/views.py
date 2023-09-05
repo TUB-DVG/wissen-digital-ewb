@@ -24,6 +24,7 @@ def resultSearch(request):
         # search value/s from Start page
         searchInput = request.POST.get("searchValue", None)
         sortBy = None
+        direction = None
     # read data from data base
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
