@@ -67,14 +67,22 @@
                 </a>
               </th>
               <th scope="col" class="border-0">
-                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}">
-                  Art des Ergebnisses
+                Art des Ergebnisses
+                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}&direction=asc">
+                  <i class="bi bi-arrow-up"></i>
+                </a>
+                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}&direction=desc">
+                  <i class="bi bi-arrow-down"></i>
                 </a>
               </th>
               <th scope="col" class="border-0">Fokus</th>
               <th scope="col" class="border-0 rounded-end">
-                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page={{ data.number }}">
-                  Aktualität
+                Aktualität
+                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page={{ data.number }}&direction=asc">
+                  <i class="bi bi-arrow-up"></i>
+                </a>
+                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page={{ data.number }}&direction=desc">
+                  <i class="bi bi-arrow-down"></i>
                 </a>
               </th>
             </tr>
