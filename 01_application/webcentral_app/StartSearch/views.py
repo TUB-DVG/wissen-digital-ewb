@@ -19,6 +19,7 @@ def resultSearch(request):
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
         sortBy = request.GET.get("sortBy", "virtDate")
+        direction = request.GET.get("direction", None)
     elif request.method == "POST":
         # search value/s from Start page
         searchInput = request.POST.get("searchValue", None)
@@ -90,8 +91,17 @@ def resultSearch(request):
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
     if sortBy:
-        filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
+        print(sortBy)
+        print(direction)
+        if direction == "desc":
+            # descending
+            filteredData = sorted(filteredData, key=lambda obj: obj[sortBy],
+                                  reverse=True)
+        elif direction == "asc":
+            # ascending
+            filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
     else:
+        # virtual date with descending order
         filteredData = sorted(filteredData, key=lambda obj: obj["virtDate"],
                               reverse=True)
 
@@ -106,5 +116,6 @@ def resultSearch(request):
         "searchInput": searchInput,
         "data": dataPerPage,
         "sortBy": sortBy,
+        "direction": direction,
     }
     return render(request, "StartSearch/ResultSearch.html", context)
