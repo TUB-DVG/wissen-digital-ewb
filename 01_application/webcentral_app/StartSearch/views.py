@@ -91,7 +91,7 @@ def resultSearch(request):
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
-    if sortBy:
+    if sortBy and direction:
         print(sortBy)
         print(direction)
         if direction == "desc":
