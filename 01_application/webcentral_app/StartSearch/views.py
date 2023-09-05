@@ -86,8 +86,9 @@ def resultSearch(request):
             project["name"] = project["name"][:40] + " ... "
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
-        project["date"] = project.pop("enargusData__startDate")
-        project["virtDate"] = project["date"]
+        projectDates = project.pop("enargusData__startDate")
+        project["virtDate"] = projectDates
+        project["date"] = projectDates.strftime("%d.%m.%Y")
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
