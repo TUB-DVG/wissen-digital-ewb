@@ -5,6 +5,7 @@ from project_listing.models import Subproject
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
+from datetime import date
 
 
 def startSearch(request):
@@ -17,18 +18,21 @@ def resultSearch(request):
     # search value reading
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
-        sortBy = request.GET.get("sortBy", None)
+        sortBy = request.GET.get("sortBy", "virtDate")
+        direction = request.GET.get("direction", None)
     elif request.method == "POST":
         # search value/s from Start page
         searchInput = request.POST.get("searchValue", None)
         sortBy = None
+        direction = None
     # read data from data base
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
     filteredTools = Tools.objects.values("id",
                                          "name",
-                                         "shortDescription"
+                                         "shortDescription",
+                                         "lastUpdate"
                                          ).filter(criterionToolsOne |
                                                   criterionToolsTwo)
     # filtered projects
@@ -39,7 +43,8 @@ def resultSearch(request):
     filteredProjects = Subproject.objects.values("referenceNumber_id",
                                                   "enargusData__collaborativeProject",
                                                   "enargusData__shortDescriptionDe",
-                                                  "enargusData__topics"
+                                                  "enargusData__topics",
+                                                  "enargusData__startDate"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -53,8 +58,25 @@ def resultSearch(request):
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
         tool["description"] = tool.pop("shortDescription")
+
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
+
+        # make a time stamp list, including also virtual dates
+        # replancning unspecific time values like "laufend" or
+        # no given date
+        toolDate = tool.pop("lastUpdate")
+        toolVirtDate = toolDate
+        if toolDate == "laufend":
+            toolVirtDate = date.fromisoformat("2049-09-09")
+            print("laufend gefunden")
+        elif toolDate == "":
+            toolVirtDate = date.fromisoformat("1949-09-09")
+            toolDate = "unbekannt"
+            print("nix gefunden")
+        tool["date"] = toolDate
+        tool["virtDate"] = toolVirtDate
+
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         project["name"] = project.pop("enargusData__collaborativeProject")
@@ -64,25 +86,26 @@ def resultSearch(request):
             project["name"] = project["name"][:40] + " ... "
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
+        projectDates = project.pop("enargusData__startDate")
+        project["virtDate"] = projectDates
+        project["date"] = projectDates.strftime("%d.%m.%Y")
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
-    if sortBy:
-        filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
+    if sortBy and direction:
+        print(sortBy)
+        print(direction)
+        if direction == "desc":
+            # descending
+            filteredData = sorted(filteredData, key=lambda obj: obj[sortBy],
+                                  reverse=True)
+        elif direction == "asc":
+            # ascending
+            filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
     else:
-        filteredData = sorted(filteredData, key=lambda obj: obj["name"])
-
-    data = [
-         {"name": "Brandley", "kindOfItem": "Kol"},
-         {"name": "Stevie", "kindOfItem": "Kola"},
-         {"name": "Brandl", "kindOfItem": "Ksdol"},
-         {"name": "Brandl", "kindOfItem": "Ksdol"},
-         {"name": "434Brandley", "kindOfItem": "asdfKol"},
-         {"name": "KKStevie", "kindOfItem": "Kollkjlkja"},
-         {"name": "43werrandley", "kindOfItem": "aQWERsdfKol"},
-         {"name": "OUStevie", "kindOfItem": "KolkUUUjlkja"},
-         {"name": "YYStasevie", "kindOfItem": "jkKola"}
-    ]
+        # virtual date with descending order
+        filteredData = sorted(filteredData, key=lambda obj: obj["virtDate"],
+                              reverse=True)
 
     # setup paginator for the table
     filterDataPaginator = Paginator(filteredData, 12)
@@ -94,5 +117,7 @@ def resultSearch(request):
     context = {
         "searchInput": searchInput,
         "data": dataPerPage,
+        "sortBy": sortBy,
+        "direction": direction,
     }
     return render(request, "StartSearch/ResultSearch.html", context)

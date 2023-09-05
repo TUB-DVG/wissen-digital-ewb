@@ -58,17 +58,33 @@
           <thead>
             <tr>
               <th scope="col" class="border-0 rounded-start">
-                <a href="?searchValue={{searchInput}}&sortBy=name&page={{ data.number }}">
-                   Name
-                  </a>
-                </th>
+                Name
+                <a href="?searchValue={{searchInput}}&sortBy=name&page=1&direction=asc">
+                  <i class="bi bi-arrow-up"></i>
+                </a>
+                <a href="?searchValue={{searchInput}}&sortBy=name&page=1&direction=desc">
+                  <i class="bi bi-arrow-down"></i>
+                </a>
+              </th>
               <th scope="col" class="border-0">
-                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page={{ data.number }}">
-                  Art des Ergebnisses
-                  </a>
+                Art des Ergebnisses
+                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page=1&direction=asc">
+                  <i class="bi bi-arrow-up"></i>
+                </a>
+                <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page=1&direction=desc">
+                  <i class="bi bi-arrow-down"></i>
+                </a>
               </th>
               <th scope="col" class="border-0">Fokus</th>
-              <th scope="col" class="border-0 rounded-end">Sonstiges</th>
+              <th scope="col" class="border-0 rounded-end">
+                Aktualität
+                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page=1&direction=asc">
+                  <i class="bi bi-arrow-up"></i>
+                </a>
+                <a href="?searchValue={{searchInput}}&sortBy=virtDate&page=1&direction=desc">
+                  <i class="bi bi-arrow-down"></i>
+                </a>
+              </th>
             </tr>
           </thead>
           <!-- Table body START -->
@@ -102,9 +118,12 @@
                 <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                      alt="icon">
               </td>
-
+              <td>
+                <div class="ms-2">
+                  <h6 class="mb-0 fw-light">{{ dataSet.date }}</h6>
+                </div>
+              </td>
               <!-- Table data -->
-              <td> </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -119,11 +138,13 @@
     <div class="pagination">
       <span class="step-links">
         {% if data.has_previous %}
-        <a href="?searchValue={{searchInput}}&page=1" id="paginationFirstSite">
+        <a href="?searchValue={{searchInput}}&page=1&sortBy={{ sortBy }}&direction={{ direction }}"
+           id="paginationFirstSite">
           &laquo; erste
         </a>
         &nbsp &nbsp
-        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}" id="paginationPreviousLink">
+        <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
+           id="paginationPreviousLink">
           vorherige
         </a>
         {% endif %}
@@ -133,11 +154,13 @@
         </span>
         &nbsp &nbsp
         {% if data.has_next %}
-        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}" id="paginationNextLink">
+        <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
+           id="paginationNextLink">
           nächste
         </a>
         &nbsp &nbsp
-        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}" id="paginationLastSite">
+        <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}&sortBy={{ sortBy }}&direction={{ direction }}"
+           id="paginationLastSite">
           letzte &raquo;
         </a>
         &nbsp &nbsp
