@@ -69,28 +69,28 @@ class TestMainPage(WebDriverSetup):
         
         """
         self.driver.get(os.environ["siteUnderTest"])
-        startPageObj = StartPage(self.driver) 
+        startPageObj = StartPage(self.driver)
         searchInputField = startPageObj.getSearchInputField()
         searchInputField.send_keys("Bim")
         searchInputField.send_keys(Keys.RETURN)
         time.sleep(1)
-        foundInstanceOfBIM2SIM = False
+        foundInstanceOfBim = False
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         for rowElement in listOfRowsInResultsTable:
-            if rowElement.text.find("BIM2SIM") >= 0:
-                foundInstanceOfBIM2SIM = True
+            if rowElement.text.find("EnOB: AluPV") >= 0:
+                foundInstanceOfBim = True
                 firstColumnWebelement = startPageObj.getFirstColumn(rowElement)
                 firstColumnWebelement.click()
                 time.sleep(1)
                 self.assertEqual(
-                    "BIM2SIM",
+                    "Energiewendebauen | 03EN1069E",
                     self.driver.title,
-                    "After clicking of the search result, which contains 'BIM2SIM', Page-Title should be BIM2SIM, but its not...",
+                    "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
                 break
         
         self.assertTrue(
-            foundInstanceOfBIM2SIM, 
+            foundInstanceOfBim,
             "BIM2SIM is not in results! Check the search...",
         )
 
@@ -236,4 +236,3 @@ class TestMainPage(WebDriverSetup):
             "Überblick über die technischen Standards",
             "Page should be technical-standarts-page after clicking on link on main-page...",
         )
-    
