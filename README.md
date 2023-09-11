@@ -1,5 +1,5 @@
 # WebCentral
-web interface with data base system of project infromation of the "Begrleitforschung Energiewendebauen 2020" (focus modul digitalization).
+web interface with data base system of project infromation of the "Begleitforschung Energiewendebauen 2020" (focus modul digitalization).
 
 # Main concept
 - web application: Django
@@ -9,11 +9,8 @@ web interface with data base system of project infromation of the "Begrleitforsc
 - https://wissen-digital-ewb.de
 
 # work docs
- - in ~/Nextcloud/Shared/Digitale_Vernetzung/02_Assis/
- 03_Projekte/DVG0001_BMWi_Wende/08_gemeinsames_Arbeiten/
- 09_Wissensplattform_M4
-- actual folder structure:
-.
+ - in ~/Nextcloud/Shared/Digitale_Vernetzung/02_Assis/03_Projekte/DVG0001_BMWi_Wende/08_gemeinsames_Arbeiten/09_Wissensplattform_M4
+ - actual folder structure:
 ├── 01_Backup_Server_DB
 ├── 02_Backup_lokal_Falk
 ├── 03_vServer
