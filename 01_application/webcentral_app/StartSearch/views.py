@@ -44,7 +44,8 @@ def resultSearch(request):
                                                   "enargusData__collaborativeProject",
                                                   "enargusData__shortDescriptionDe",
                                                   "enargusData__topics",
-                                                  "enargusData__startDate"
+                                                  "enargusData__startDate",
+                                                  "referenceNumber_id"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -79,11 +80,14 @@ def resultSearch(request):
 
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
-        project["name"] = project.pop("enargusData__collaborativeProject")
-        if project["name"] == "nein":
-            project["name"] = project.pop("enargusData__topics")
-        if len(project["name"]) > 40:
-            project["name"] = project["name"][:40] + " ... "
+        projecName = project.pop("enargusData__collaborativeProject")
+        if projecName == "nein":
+            projecName = project.pop("enargusData__topics")
+        if len(projecName) > 40:
+            projecName = projecName[:40] + " ... "
+        referenceNumber = project.get("referenceNumber_id")
+        referenceNumberLastCharacters = referenceNumber[-3:]
+        project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
         projectDates = project.pop("enargusData__startDate")
