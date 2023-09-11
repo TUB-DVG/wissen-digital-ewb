@@ -81,7 +81,7 @@ Page intro START -->
               {% endif %}
               {% if dataset.referenceLink %}
               <h5 class="mt-4">Weitere Informationen</h5>
-              <p class="mb-0">{{dataset.referenceLink}}</p>
+              <p class="mb-0"><a href="{{dataset.referenceLink}}" target="_blank">{{dataset.referenceLink}}</a></p>
               {% endif %}
 
 
@@ -170,10 +170,6 @@ Page intro START -->
     <!-- Row END -->
   </div>
 </section>
-<!
- -- =
- =========
- =============
-Page content END -->
+<!--Page content END -->
 
 {% endblock %}
