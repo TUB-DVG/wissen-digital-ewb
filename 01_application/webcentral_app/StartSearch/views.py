@@ -70,11 +70,9 @@ def resultSearch(request):
         toolVirtDate = toolDate
         if toolDate == "laufend":
             toolVirtDate = date.fromisoformat("2049-09-09")
-            print("laufend gefunden")
         elif toolDate == "":
             toolVirtDate = date.fromisoformat("1949-09-09")
             toolDate = "unbekannt"
-            print("nix gefunden")
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
 
@@ -97,8 +95,6 @@ def resultSearch(request):
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
-        print(sortBy)
-        print(direction)
         if direction == "desc":
             # descending
             filteredData = sorted(filteredData, key=lambda obj: obj[sortBy],
