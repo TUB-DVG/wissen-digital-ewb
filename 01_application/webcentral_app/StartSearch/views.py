@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from tools_over.models import Tools
 from project_listing.models import Subproject
-from TechnicalStandards.models import Norm
+from TechnicalStandards.models import Norm, Protocol
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
@@ -60,6 +60,20 @@ def resultSearch(request):
                                             criterionNormsOne |
                                             criterionNormsTwo
                                         )
+
+    # filtered protocols
+    criterionProtocolsOne = Q(name__icontains=searchInput)
+    # because there is no short Description until now
+    # > use buildingAutomationLayer
+    criterionProtocolsTwo = Q(buildingAutomationLayer__icontains=searchInput)
+    filteredProtocols = Protocol.objects.values("id",
+                                                "name",
+                                                "buildingAutomationLayer"
+                                                ).filter(
+                                                    criterionProtocolsOne |
+                                                    criterionProtocolsTwo
+                                                    )
+    print(filteredProtocols)
 
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
