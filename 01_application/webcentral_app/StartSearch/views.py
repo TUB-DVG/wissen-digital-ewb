@@ -59,7 +59,6 @@ def resultSearch(request):
                                             criterionNormsOne |
                                             criterionNormsTwo
                                         )
-    print(filteredNorms)
 
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
@@ -103,8 +102,20 @@ def resultSearch(request):
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
+
+    # for filteredNorms (including also virtual dates, because no information
+    # about last Update is include to the database)
+    for norm in filteredNorms:
+        normName = norm.pop("name")
+        if len(normName) > 40:
+            normName = normName[:40] + " ... "
+        norm["name"] = normName
+        norm["kindOfItem"] = "Norm"
+        norm["date"] = "noch nicht hinterlegt"
+        norm["virtDate"] = date.fromisoformat("2049-09-09")
+
     # concat the prepared querySets to one QuerySet
-    filteredData = list(chain(filteredTools, filteredProjects))
+    filteredData = list(chain(filteredTools, filteredProjects, filteredNorms))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
         if direction == "desc":
