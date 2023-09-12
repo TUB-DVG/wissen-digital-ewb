@@ -53,7 +53,8 @@ def resultSearch(request):
     # filtered norms
     criterionNormsOne = Q(name__icontains=searchInput)
     criterionNormsTwo = Q(shortDescription__icontains=searchInput)
-    filteredNorms = Norm.objects.values("name",
+    filteredNorms = Norm.objects.values("id",
+                                        "name",
                                         "shortDescription"
                                         ).filter(
                                             criterionNormsOne |
