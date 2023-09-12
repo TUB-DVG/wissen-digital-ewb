@@ -73,7 +73,6 @@ def resultSearch(request):
                                                     criterionProtocolsOne |
                                                     criterionProtocolsTwo
                                                     )
-    print(filteredProtocols)
 
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
@@ -129,8 +128,20 @@ def resultSearch(request):
         norm["date"] = "noch nicht hinterlegt"
         norm["virtDate"] = date.fromisoformat("2049-09-09")
 
+    # for filteredProtocols (including also virtual dates, because
+    # no information about last Update is include to the database)
+    for protocol in filteredProtocols:
+        protocolName = protocol.pop("name")
+        if len(protocolName) > 40:
+            protocolName = protocolName[:40] + " ... "
+        protocol["name"] = protocolName
+        protocol["kindOfItem"] = "Protokoll"
+        protocol["date"] = "noch nicht hinterlegt"
+        protocol["virtDate"] = date.fromisoformat("2049-09-09")
+
     # concat the prepared querySets to one QuerySet
-    filteredData = list(chain(filteredTools, filteredProjects, filteredNorms))
+    filteredData = list(chain(filteredTools, filteredProjects,
+                              filteredNorms, filteredProtocols))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
         if direction == "desc":
