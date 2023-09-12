@@ -44,7 +44,8 @@ def resultSearch(request):
                                                   "enargusData__collaborativeProject",
                                                   "enargusData__shortDescriptionDe",
                                                   "enargusData__topics",
-                                                  "enargusData__startDate"
+                                                  "enargusData__startDate",
+                                                  "referenceNumber_id"
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
@@ -69,21 +70,22 @@ def resultSearch(request):
         toolVirtDate = toolDate
         if toolDate == "laufend":
             toolVirtDate = date.fromisoformat("2049-09-09")
-            print("laufend gefunden")
         elif toolDate == "":
             toolVirtDate = date.fromisoformat("1949-09-09")
             toolDate = "unbekannt"
-            print("nix gefunden")
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
 
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
-        project["name"] = project.pop("enargusData__collaborativeProject")
-        if project["name"] == "nein":
-            project["name"] = project.pop("enargusData__topics")
-        if len(project["name"]) > 40:
-            project["name"] = project["name"][:40] + " ... "
+        projecName = project.pop("enargusData__collaborativeProject")
+        if projecName == "nein":
+            projecName = project.pop("enargusData__topics")
+        if len(projecName) > 40:
+            projecName = projecName[:40] + " ... "
+        referenceNumber = project.get("referenceNumber_id")
+        referenceNumberLastCharacters = referenceNumber[-3:]
+        project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
         projectDates = project.pop("enargusData__startDate")
@@ -93,8 +95,6 @@ def resultSearch(request):
     filteredData = list(chain(filteredTools, filteredProjects))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
-        print(sortBy)
-        print(direction)
         if direction == "desc":
             # descending
             filteredData = sorted(filteredData, key=lambda obj: obj[sortBy],
