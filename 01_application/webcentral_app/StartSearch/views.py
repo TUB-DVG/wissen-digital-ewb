@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from tools_over.models import Tools
 from project_listing.models import Subproject
+from TechnicalStandards.models import Norm
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
@@ -49,6 +50,17 @@ def resultSearch(request):
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
+    # filtered norms
+    criterionNormsOne = Q(name__icontains=searchInput)
+    criterionNormsTwo = Q(shortDescription__icontains=searchInput)
+    filteredNorms = Norm.objects.values("name",
+                                        "shortDescription"
+                                        ).filter(
+                                            criterionNormsOne |
+                                            criterionNormsTwo
+                                        )
+    print(filteredNorms)
+
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
     # rename fields in queryset list-dicts
