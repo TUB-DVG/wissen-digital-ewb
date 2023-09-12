@@ -2,6 +2,7 @@
 from django.shortcuts import render
 from tools_over.models import Tools
 from project_listing.models import Subproject
+from TechnicalStandards.models import Norm, Protocol
 from django.db.models import Q
 from itertools import chain
 from django.core.paginator import Paginator
@@ -49,6 +50,30 @@ def resultSearch(request):
                                                   ).filter(
                                                       criterionProjectsOne |
                                                       criterionProejctsTwo)
+    # filtered norms
+    criterionNormsOne = Q(name__icontains=searchInput)
+    criterionNormsTwo = Q(shortDescription__icontains=searchInput)
+    filteredNorms = Norm.objects.values("id",
+                                        "name",
+                                        "shortDescription"
+                                        ).filter(
+                                            criterionNormsOne |
+                                            criterionNormsTwo
+                                        )
+
+    # filtered protocols
+    criterionProtocolsOne = Q(name__icontains=searchInput)
+    # because there is no short Description until now
+    # > use buildingAutomationLayer
+    criterionProtocolsTwo = Q(buildingAutomationLayer__icontains=searchInput)
+    filteredProtocols = Protocol.objects.values("id",
+                                                "name",
+                                                "buildingAutomationLayer"
+                                                ).filter(
+                                                    criterionProtocolsOne |
+                                                    criterionProtocolsTwo
+                                                    )
+
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
     # rename fields in queryset list-dicts
@@ -91,8 +116,32 @@ def resultSearch(request):
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
+
+    # for filteredNorms (including also virtual dates, because no information
+    # about last Update is include to the database)
+    for norm in filteredNorms:
+        normName = norm.pop("name")
+        if len(normName) > 40:
+            normName = normName[:40] + " ... "
+        norm["name"] = normName
+        norm["kindOfItem"] = "Norm"
+        norm["date"] = "noch nicht hinterlegt"
+        norm["virtDate"] = date.fromisoformat("2049-09-09")
+
+    # for filteredProtocols (including also virtual dates, because
+    # no information about last Update is include to the database)
+    for protocol in filteredProtocols:
+        protocolName = protocol.pop("name")
+        if len(protocolName) > 40:
+            protocolName = protocolName[:40] + " ... "
+        protocol["name"] = protocolName
+        protocol["kindOfItem"] = "Protokoll"
+        protocol["date"] = "noch nicht hinterlegt"
+        protocol["virtDate"] = date.fromisoformat("2049-09-09")
+
     # concat the prepared querySets to one QuerySet
-    filteredData = list(chain(filteredTools, filteredProjects))
+    filteredData = list(chain(filteredTools, filteredProjects,
+                              filteredNorms, filteredProtocols))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
         if direction == "desc":
