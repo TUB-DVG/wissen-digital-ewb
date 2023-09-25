@@ -207,6 +207,30 @@ Page content START -->
       {% endif %}
     </ul>
     <!-- search tags END -->
+    <!-- Comparison button START -->
+    <div class="col-xl-4" id="comparisonButton">
+      <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+        Vergleiche 
+      </h6>
+    </div>
+   
+    <div class="row g-3" style="display:none" id="comparisonBar">
+      <div class="col-xl-2" id="compareButton" >
+        <a href="#" id="comparisonUrl">
+          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+            Vergleiche 
+          </h6>
+        </a>
+      </div>
+      <div class="col-xl-2" id="cancelButton">
+          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+            Zurück
+          </h6>
+
+      </div>
+    </div>
+    <br>
+    <!-- Comparison button END -->
     <!-- standards grid row START -->
     <div class="row mt-3">
       <!-- Main content START -->
@@ -219,13 +243,12 @@ Page content START -->
         <!-- standards grid END -->
         <!-- Pagination START -->
         <div class="pagination">
-          <span class="step-links">
             {% if page.has_previous %}
-            <a  href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page=1">
+            <a  href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page=1">
               &laquo; erste
             </a>
             &nbsp &nbsp
-            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}">
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.previous_page_number}}">
               vorherige
             </a>
             {% endif %}
@@ -235,16 +258,15 @@ Page content START -->
             </span>
             &nbsp &nbsp
             {% if page.has_next %}
-            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}">
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.next_page_number}}">
               nächste
             </a>
             &nbsp &nbsp
-            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.paginator.num_pages}}">
+            <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.paginator.num_pages}}">
               letzte &raquo;
             </a>
             &nbsp &nbsp
-            {% endif %}
-          </span>
+            {% endif %}       
         </div>
         <!-- Pagination END -->
       </div>
@@ -255,6 +277,7 @@ Page content START -->
 <!-- =======================
      Page content END -->
 </main>
+
 <!-- **************** MAIN CONTENT END **************** -->
 
 
