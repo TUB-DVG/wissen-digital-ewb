@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+{% block title %}Überblick über die Use Cases{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- Page Banner START -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="p-2 text-left rounded-3">
+            <h2 class="m-0">Überblick über die Use Cases</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Page Banner END -->
+
+  {% include '../use_cases/explanation.html' %}
+
+  <!-- Page content START -->
+  <section class="pt-0">
+    <div class="container webcentral-cards">
+      <!-- Filter bar START -->
+      <form class="border-technical p-4 my-4 z-index-9 position-relative">
+        <div class="row g-3">
+          <!-- Input -->
+          <div class="col-xl-3" title="Suchen in den UseCases">
+            <input id="search-input-tools"
+                   class="form-control me-1 border-technical"
+                   type="search" placeholder="Suchbegriff"
+                   name='searched'>
+          </div>
+          <!-- Select item -->
+          <div class="col-xl-7">
+            <form  method="GET">
+              <div class="row g-3">
+                <!-- Select items filter "Use Case"-->
+                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                  <select class="form-select js-choice border-technical-round"
+                    aria-label=".form-select-sm example"
+                    name="u"
+                    id="Use Case-input-tools"
+                    title="Filtern nach der Use Case der UseCase">
+                    <option value="">Use Case</option>
+                    <option value="Aggregation"
+                      {% if use_case == "Aggregation" %}
+                        selected="selected" 
+                      {% endif %}>Aggregation
+                    </option>
+                  </select>
+                  </div>
+                  <!-- Select items filter "perspective"-->
+                  <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                    <select class="form-select js-choice border-technical-round"
+                      aria-label=".form-select-sm example"
+                      name="p" id="perspective-input-tools"
+                      title="Filtern nach der perspective der UseCase">
+                      <option value="">Perspective</option>
+                      <option value="ökologisch"
+                        {% if perspective == "ökologisch" %}
+                          selected="selected"
+                        {% endif %}>ökologisch
+                      </option>
+                    </select>
+                </div>
+                <!-- Search item "effectevaluation" -->
+                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                  <select class="form-select js-choice border-technical-round"
+                    aria-label=".form-select-sm example"
+                    name="ev"
+                    id="effectevaluation-input-tools"
+                    title="Filtern nach der effectevaluation der UseCase">
+                    <option value="">Effect evaluation</option>
+                    <option value= "+"
+                      {% if effectevaluation == "+" %}
+                        selected="selected" 
+                      {% endif %}>Positive
+                    </option>
+                    <option value="-"
+                    {% if effectevaluation == "-" %}
+                      selected="selected" 
+                    {% endif %}>Negative
+                    </option>
+                    <option value="o"
+                      {% if effectevaluation == "o" %}
+                        selected="selected" 
+                      {% endif %}>Neutral
+                    </option>
+                  </select>
+                </div>
+                <!-- Search item -->
+              </div>
+            </form>
+          </div>
+          <!-- Select item END -->
+          <!-- search Button -->
+          <div class="col-xl-1">
+            <button type="submit"
+              class="btn btn-technical mb-0 rounded z-index-1 w-100"
+              id="search-submit-tools" href="">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <!-- Clear button -->
+          <div class="col-xl-1">
+            <a href="{% url 'use_cases_list' %}">
+              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+                Alle
+              </h6>
+            </a>
+          </div>
+        </div>
+      </form>
+      <!-- Row END -->
+      <!-- Filter bar END -->
+      <!-- search tags START -->
+      <ul class="list-inline mb-0">
+        {% if search %}
+        <li class="list-inline-item">
+          <div class="btn btn-outline-light btn-sm">
+            <a href="/useCases_list/?searched={{search}}&u=&p=&ev=">
+              Suchbegriff: {{search}}
+            </a>
+          </div>
+        </li>
+        {% endif %} 
+        {% if use_case %}
+        <li class="list-inline-item">
+          <div class="btn btn-outline-light btn-sm">
+            <a href="/useCases_list/?searched=&u={{use_case}}&p=&ev=">{{use_case}}
+            </a>
+          </div>
+        </li>
+        {% endif %} 
+        {% if perspective %}
+        <li class="list-inline-item">
+          <div class="btn btn-outline-light btn-sm">
+            <a href="/useCases_list/?searched=&u=&p={{perspective}}&ev=">{{perspective}}
+            </a> 
+          </div>
+        </li>
+        {% endif %}
+        {% if effectevaluation %}
+        <li class="list-inline-item">
+          <div class="btn btn-outline-light btn-sm">
+            <a href="/useCases_list/?searched=&u=&p=&ev={{effectevaluation}}"> 
+              {% if effectevaluation == "+" %}
+              Positive
+              {% elif effectevaluation == "o" %}
+              Neutral
+              {% else %}
+              Negative
+              {% endif %}
+            </a>
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+      <!-- search tags END -->
+      <!-- tools grid row START -->
+      <div class="row mt-3">
+        <div class="col-12">
+        <!-- tools Grid START -->
+          <div class="row g-4" id="useCase-listing-results">
+            {% include '../use_cases/usecase-listings-results.html' %}
+          </div>
+          <!-- tools Grid END -->
+          <!-- Pagination START -->
+          <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+          <ul class="pagination pagination-primary-soft rounded mb-0">
+            {% if page.has_previous %}
+            <li class="page-item mb-0">
+              <a class="page-link" 
+                  href="{%url 'use_cases_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&p={% if licence %}{{licence}}{% endif %}&ev={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" 
+                  tabindex="-1">
+                <i class="fas fa-angle-double-left"></i>
+              </a>
+            </li>
+            {% endif %}
+            {% if page.has_next %}
+            <li class="page-item mb-0">
+              <a class="page-link" 
+                href="{%url 'use_cases_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&p={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
+                tabindex="-1"
+                <i class="fas fa-angle-double-right">
+                </i>
+              </a>
+            </li>
+            {% else %}
+            {% endif %}
+          </ul>
+          </nav>
+          <!-- Pagination END -->
+        </div>
+      </div>
+      <!-- tools grid row START -->
+    </div>
+  </section>
+  <!-- Page content END -->
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+
+{% endblock %}
+
+
+
+
+

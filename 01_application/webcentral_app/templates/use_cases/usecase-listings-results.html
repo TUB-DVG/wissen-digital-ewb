@@ -1,0 +1,53 @@
+{% load static %}
+{% for useCase in page.object_list %}  
+<!-- Card item START -->
+
+<div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+  <div class="card border-technical h-100">
+    <a href="{%url 'use_cases_view' useCase.id %}">
+      <!-- Card body -->
+      <div class="card-body pb-0">
+        <!-- Title -->
+        <h3 class="card-title">
+          {{ useCase.effectName  }}
+        </h3>
+        <p class="card-text mb-2 text-truncate-2">
+          Perspektive: {{ useCase.perspective  }}
+        </p>
+        <p class="card-text mb-2 text-truncate-2">
+          Detailgrad: {{ useCase.degreeOfDetail   }}
+        </p>
+      </div>
+      <!-- Image -->
+      <div class="image-container d-flex" style="height: 150px;">
+        {%if useCase.icon %}
+        <img src="{{ useCase.icon.url }}"
+            class="card-img-bottom px-4 pt-4 pb-2 m-auto"
+            style="max-height: 100%; width: auto; display: block;"
+            alt="UseCase icon (if=db)">
+          {% else %}
+          <center>
+            <img src=" {%static 'img/Default.webp' %}"
+              style="max-height: 100%; width: auto; display: block;"
+              alt="useCase icon (else)">
+          </center>
+        {% endif %}
+      </div>
+      <!-- Card footer -->
+      <!-- To be deleted if not needed: no footer -->
+      <div class="card-footer pt-0 pb-3">
+        <hr>
+        <div class="d-flex justify-content-between">
+          <span class="h6 fw-light mb-0">
+            Wirkebene: {{ useCase.levelOfAction }}
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<script>
+  cardColorChange("{{useCase.perspective}}");
+</script>
+<!-- Card item END -->
+{% endfor %}
