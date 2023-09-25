@@ -75,7 +75,7 @@ class Protocol(TechnicalStandard):
                                         help_text = "Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen werden können)",
                                         blank = True)
     priorities = models.CharField(max_length = 300,
-                                         help_text = "Prorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen werden)",
+                                         help_text = "Priorität  (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen werden)",
                                          blank = True)
     price = models.CharField(max_length = 150,
                                          help_text = "Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen (Gering, Durchschnittlich, Hoch)",
