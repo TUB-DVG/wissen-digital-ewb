@@ -205,3 +205,14 @@ def protocolDetailView(request, id):
     }
     return render(request, 'TechnicalStandards/protocol-detail.html', context)
 
+def protocolComparison (request, ids):
+    protocols=[]
+    ids= ids.split(',')
+    for id in ids:
+        protocols.append( get_object_or_404(Protocol, pk= id))
+    
+    context={
+        'protocols':protocols
+    }
+
+    return render(request, 'TechnicalStandards/protocol-comparison.html',context)
