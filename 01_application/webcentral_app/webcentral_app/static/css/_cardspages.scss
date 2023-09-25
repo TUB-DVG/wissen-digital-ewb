@@ -11,7 +11,7 @@
   background-color: $btn-color;
   color: $btn-text-color;
 }
-.technical-cards {
+.webcentral-cards {
   .border-technical {
     @include border-rect($technical-color)
   }
@@ -21,9 +21,6 @@
   .btn-technical {
     @include btn-search($technical-color, $third-text-color)
   }
-}
-
-.operational-cards {
   .border-operational {
     @include border-rect($operational-color)
   }
@@ -32,6 +29,26 @@
   }
   .btn-operational {
     @include btn-search($operational-color, $third-text-color)
+  }
+  
+  .border-ecological {
+    @include border-rect($ecological-color)
+  }
+  .border-ecological-round {
+    @include border-round($ecological-color)
+  }
+  .btn-ecological {
+    @include btn-search($ecological-color, $third-text-color)
+  }
+
+  .border-legal {
+    @include border-rect($legal-color)
+  }
+  .border-legal-round {
+    @include border-round($legal-color)
+  }
+  .btn-legal {
+    @include btn-search($legal-color, $third-text-color)
   }
 }
 
