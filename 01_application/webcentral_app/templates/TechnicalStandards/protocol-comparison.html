@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #AFC5FF;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+<div class = "container technical-cards">
+<div class="row">
+
+  <h1>Vergleich Protokols</h1>
+
+  <table style="display: block;
+  overflow-x: auto;">
+    <!-- Table Header -->
+    <tr>
+      <th>Attribute</th>
+      {% for protocol in protocols %}
+      <th>{{protocol.name}}
+      {%if protocol.image %}
+          <img src="{{ protocol.image.url }}"
+              class="card-img-top px-4 pt-4 pb-2 m-auto"
+              style="max-height: 100%; width: auto; display: block;"
+              alt="protocol image (if=db)">
+      {% endif %}
+        </th>
+      {% endfor %}
+      
+    </tr>
+
+    <tr>
+      <th>Unterstützte Übertragungsmedien</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.supportedTransmissionMediuems}}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Zugehörige Standards</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.associatedStandards}}</td>
+      {% endfor %}
+    </tr>
+
+
+    <tr>
+      <th>Implementierte Sicherheitsmechanismen</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.security}}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Bandbreite</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.bandwidth}}</td>
+      {% endfor %}
+    </tr>
+    
+    <!-- Model -->
+    <tr>
+      <th>Frequenz</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.frequency}}</td>
+      {% endfor %}
+    </tr>
+
+    <!-- Price -->
+    <tr>
+      <th>Reichweite</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.range}}</td>
+      {% endfor %}
+    </tr>
+
+    <!-- Battery Life -->
+ 
+    <tr>
+      <th>Datenmodell Architektur</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.dataModelArchitecture}}</td>
+      {% endfor %}
+    </tr>
+
+    
+    <tr>
+      <th>Discovery</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.discovery}}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Multi Master</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.multiMaster}}</td>
+      {% endfor %}
+    </tr>
+    
+    <tr>
+      <th>Priorität</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.priorities}}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Implementierte OSI-Schichten</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.osiLayers}}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Ebenen der Gebäudeautomation</th>
+      {% for protocol in protocols %}
+      <td>{{protocol.buildingAutomationLayer}}</td>
+      {% endfor %}
+    </tr>
+    
+
+  </table>
+</div>
+</div>
+  {% endblock %}
