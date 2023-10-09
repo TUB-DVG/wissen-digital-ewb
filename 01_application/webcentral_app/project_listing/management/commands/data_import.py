@@ -495,7 +495,7 @@ class Command(BaseCommand):
         concreteApplication = row[
             header.index('konkrete Anwendung in EWB Projekten')
         ]
-
+        # breakpoint()
         obj, created = Tools.objects.get_or_create(
             name=description,
             shortDescription=shortDesciption,
@@ -697,7 +697,7 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
         source: str
             String, which specifies the Source of the data. Possible 
-            values are 'enargus', 'modul' or 'schlagwortregister'.
+            values are 'enargus', 'modul', 'tools' or 'schlagwortregister'.
 
         Returns:
         obj:    KeywordRegisterFirstReview
@@ -838,6 +838,67 @@ class Command(BaseCommand):
                     {"referenceNumber_id": fkz}, 
                     collaborativeProjectText,
                 )
+        elif source == "tools":
+            # if Tools.objects.filter(name=row["name"]) ==
+            obj, created = self.getOrCreateTools(row, header)
+            # breakpoint()
+            toolsID = obj.id
+            toolsName = obj.name
+            # fkz = row[header.index('FKZ')]   
+            if len(Tools.objects.filter(name=toolsName)) > 1:
+                currentStateTable = Tools.objects.filter(name=toolsName)[0]
+                unvisited = []
+                visitedNames = []
+                visitedNames.append("tools")
+                unvisited.append([
+                    "Tools", 
+                    currentStateTable, 
+                    obj, 
+                    "Tools",
+                ])
+                # if currentStateTable is None:
+                #     verbundbezeichungStr = None
+                # else:
+                #     verbundbezeichungStr = currentStateTable.collaborativeProject
+                self.compareForeignTables(
+                    unvisited, 
+                    visitedNames, 
+                    {"name": obj.name}, 
+                    obj.name,
+                )
+
+            # try:
+            #     if len(Tools.objects.filter(
+            #         name=toolsName, 
+            #     )) == 0:
+            #         Subproject.objects.create(
+            #             referenceNumber_id=fkz,
+            #             enargusData_id= enargus_id,
+            #         )
+            #         print('added: %s' %fkz)
+            # except IntegrityError:
+            #     currentStateTable = Subproject.objects.filter(
+            #         referenceNumber_id=fkz,
+            #     )[0].enargusData
+            #     unvisited = []
+            #     visitedNames = []
+            #     visitedNames.append("subproject")
+            #     unvisited.append([
+            #         "enargusData", 
+            #         currentStateTable, 
+            #         obj, 
+            #         "Subproject",
+            #     ])
+            #     if currentStateTable is None:
+            #         verbundbezeichungStr = None
+            #     else:
+            #         verbundbezeichungStr = currentStateTable.collaborativeProject
+            #     self.compareForeignTables(
+            #         unvisited, 
+            #         visitedNames, 
+            #         {"referenceNumber_id": fkz}, 
+            #         verbundbezeichungStr,
+            #     )
         
     def compareForeignTables(
             self, 
@@ -957,8 +1018,11 @@ class Command(BaseCommand):
                                 ])     
                   
             else:
-                listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
-                
+                # breakpoint()
+                try:
+                    listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
+                except:
+                    listOfFieldsInCurrentTable = currentTableObj.target_field.related_model._meta.get_fields()
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
                     currentDBDifferenceObj.addTable(
                         f"{parentTableName}.{currentForeignTableName}",
@@ -1082,7 +1146,7 @@ class Command(BaseCommand):
             elif "enargus" in filename:
                 self.addOrUpdateRowSubproject(row, header, 'enargus')
             elif "Tools" in filename:
-                self.getOrCreateTools(row, header)
+                self.addOrUpdateRowSubproject(row, header, 'tools')
             elif "schlagwoerter" in filename:
                 print(row[header.index('Förderkennzeichen (0010)')])
                 self.addOrUpdateRowSubproject(row, header, 'schlagwortregister')
