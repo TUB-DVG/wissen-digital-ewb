@@ -38,6 +38,7 @@ from django.core.management.base import BaseCommand
 from encodings import utf_8
 import yaml
 
+from tools_over.models import Tools
 # from project_listing.DatabaseDifference import DatabaseDifference
 # from keywords.models import (
 #     Keyword,
@@ -97,6 +98,7 @@ class Command(BaseCommand):
         for databaseDiffObj in listOfParsedConflicts:
             if databaseDiffObj.checkIfUserInputIsValid():
                 tupleOrNone = databaseDiffObj.checkIfConflictIsConsistentWithDatabase()
+                # breakpoint()
                 if tupleOrNone is not None:
                     self.executeAction(
                         tupleOrNone, 
@@ -181,36 +183,46 @@ class Command(BaseCommand):
         currentStateRow = listOfDatabaseObjs[3]
         nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
         if optionCurrent:
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" in currentTable:
-                    parent = currentTable.split(".")[1]
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" not in currentTable:
+            if isinstance(currentStateObj, Tools):
+                pendingObj.delete()
+            else:
+
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" in currentTable:
+                        parent = currentTable.split(".")[1]
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" not in currentTable:
+                        if parent in currentTable.split(".")[0]:
+                            deleteSchlagwort = True
+                            if parent == "KeywordRegisterFirstReview":
+                                pass
+
+                self.listOfToBeDeletedObjs.append(pendingObj)
+        
+        else:
+            if isinstance(currentStateObj, Tools):
+                idOfCurrent = currentStateObj.id
+                currentStateObj.delete()
+                pendingObj.id = idOfCurrent
+                pendingObj.save()
+            else:
+                currentStateObj.__setattr__(
+                    nameOfFieldRelatesToTable.name, 
+                    pendingObj,
+                )
+                currentStateObj.save()
+
+                if currentStateRow is not None:
+                    self.listOfToBeDeletedObjs.append(currentStateRow)
+                    #currentStateRow.delete()
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" in currentTable:
+                        parent = currentTable.split(".")[1]
+                for currentTable in list(diffDataStructure.keys()):
                     if parent in currentTable.split(".")[0]:
                         deleteSchlagwort = True
                         if parent == "KeywordRegisterFirstReview":
                             pass
-
-            self.listOfToBeDeletedObjs.append(pendingObj)
-        
-        else:
-            currentStateObj.__setattr__(
-                nameOfFieldRelatesToTable.name, 
-                pendingObj,
-            )
-            currentStateObj.save()
-
-            if currentStateRow is not None:
-                self.listOfToBeDeletedObjs.append(currentStateRow)
-                #currentStateRow.delete()
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" in currentTable:
-                    parent = currentTable.split(".")[1]
-            for currentTable in list(diffDataStructure.keys()):
-                if parent in currentTable.split(".")[0]:
-                    deleteSchlagwort = True
-                    if parent == "KeywordRegisterFirstReview":
-                        pass
 
 
     def parseFile(
