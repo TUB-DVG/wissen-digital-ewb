@@ -72,7 +72,11 @@ from keywords.models import (
     Keyword,
     KeywordRegisterFirstReview,
 )
-from tools_over.models import Tools
+from tools_over.models import (
+    Tools, 
+    Focus, 
+    Classification,
+)
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
 
@@ -495,7 +499,12 @@ class Command(BaseCommand):
         concreteApplication = row[
             header.index('konkrete Anwendung in EWB Projekten')
         ]
-        # breakpoint()
+        focusList = row[header.index('Focus')].split(",")
+        classificationList = row[header.index('Classification')].split(",")
+
+
+
+        
         obj, created = Tools.objects.get_or_create(
             name=description,
             shortDescription=shortDesciption,
@@ -510,6 +519,20 @@ class Command(BaseCommand):
             alternatives=alternatives,
             specificApplication=concreteApplication,
         )
+        for focusStr in focusList:
+            try:
+                focusElement = Focus.objects.filter(focus=focusStr)[0]
+                obj.focus.add(focusElement)
+            except:
+                print(f"Could not add {focusStr} to Database. First add it to Focus-Table!")
+        
+        for classificationStr in classificationList:
+            classificationElement = Classification.objects.filter(classification=classificationStr)
+            if len(classificationElement) > 0:
+                obj.classification.add(classificationElement[0])
+            else:
+                print(f"Could not add {classificationElement} to Database. First add it to Classification-Table!")
+                 
         return obj, created
 
     def getOrCreateWeatherdata(
@@ -971,6 +994,7 @@ class Command(BaseCommand):
                 continue
             parentTableName = currentEntryInUnvisited[3]
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
+            # breakpoint()
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
@@ -1046,7 +1070,7 @@ class Command(BaseCommand):
                                 teilprojektField.model.__name__,
                             ])
                         except:
-                            pass
+                            breakpoint()
                     elif not teilprojektField.is_relation:
                         try:
                             if (

@@ -201,7 +201,11 @@ class Command(BaseCommand):
         
         else:
             if isinstance(currentStateObj, Tools):
+                # breakpoint()
                 idOfCurrent = currentStateObj.id
+                idOfPending = pendingObj.id
+                Tools.objects.filter(id=idOfPending)[0].delete()
+                # pendingObj.delete()
                 currentStateObj.delete()
                 pendingObj.id = idOfCurrent
                 pendingObj.save()
