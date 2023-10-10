@@ -500,9 +500,10 @@ class Command(BaseCommand):
         ]
         focusList = row[header.index('Focus')].split(",")
         classificationList = row[header.index('Classification')].split(",")
-
-        focusElements = Focus.objects.filter(focus__in=focusList)    
-
+        
+        focusList = [x.replace(" ", "") for x in focusList]
+        # 
+        focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
         obj, created = Tools.objects.get_or_create(
             name=description, 
@@ -520,6 +521,9 @@ class Command(BaseCommand):
             focus__in=focusElements, 
             classification__in=classificationElements
         )
+        obj.focus.add(*focusElements)
+        obj.classification.add(*classificationElements)
+        obj.save()
             
         return obj, created
 
@@ -853,12 +857,10 @@ class Command(BaseCommand):
         elif source == "tools":
             # if Tools.objects.filter(name=row["name"]) ==
             obj, created = self.getOrCreateTools(row, header)
-            # breakpoint()
             toolsID = obj.id
             toolsName = obj.name
             # fkz = row[header.index('FKZ')]   
             if len(Tools.objects.filter(name=toolsName)) > 1:
-                breakpoint()
                 currentStateTable = Tools.objects.filter(name=toolsName).order_by("id")[0]
                 unvisited = []
                 visitedNames = []
@@ -974,7 +976,6 @@ class Command(BaseCommand):
             theme, 
         )
         while len(unvisited) > 0:
-            breakpoint()
             currentEntryInUnvisited = unvisited.pop()
             
             currentForeignTableName = currentEntryInUnvisited[0]
@@ -984,7 +985,6 @@ class Command(BaseCommand):
                 continue
             parentTableName = currentEntryInUnvisited[3]
             visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
-            # breakpoint()
             if currentTableObj is None:
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
@@ -1036,7 +1036,6 @@ class Command(BaseCommand):
                 try:
                     listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 except:
-                    # breakpoint()
                     if len(currentTableObj) > 0:
                         listOfFieldsInCurrentTable = currentTableObj[0]._meta.get_fields()
                     else:
@@ -1058,7 +1057,6 @@ class Command(BaseCommand):
                     ):
                         if teilprojektField.many_to_many:
                             # try:
-                            # breakpoint() 
                             if currentForeignTableStr != "tools":
                                 unvisited.append([
                                     currentForeignTableStr, 
@@ -1083,7 +1081,6 @@ class Command(BaseCommand):
                         strDifferencesPending = ""
                         strDifferencesCurrent = ""
                         if "QuerySet" in str(type(pendingTableObj)):
-                            # breakpoint()
                             # if "focus" in pendingTableObj.__dict__.keys():
                             #     currentAttributeName = "focus"
                             # elif "classification" in pendingTableObj.__dict__.keys():
@@ -1105,7 +1102,6 @@ class Command(BaseCommand):
                                             break
                                     else:
                                         foundDifference = True 
-                            # breakpoint()            
                             if foundDifference:
                                 
                                 for index, currentPendingObj in enumerate(pendingTableObj):
@@ -1182,8 +1178,6 @@ class Command(BaseCommand):
                                     {currentForeignTableStr: 
                                     str(pendingTableObj.__getattribute__(currentForeignTableStr))},
                                 )   
-                        # except:
-                        #     breakpoint()
         
         pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
         currentDBDifferenceObj.writeToYAML(pathToFile)
