@@ -127,7 +127,6 @@ class Command(BaseCommand):
         self.fkzWrittenToYAML = []
 
 
-
     def getOrCreateFurtherFundingInformation(
             self, 
             row: list, 
@@ -502,38 +501,28 @@ class Command(BaseCommand):
         focusList = row[header.index('Focus')].split(",")
         classificationList = row[header.index('Classification')].split(",")
 
+        focusElements = Focus.objects.filter(focus__in=focusList)    
 
-
-        
+        classificationElements = Classification.objects.filter(classification__in=classificationList)
         obj, created = Tools.objects.get_or_create(
-            name=description,
-            shortDescription=shortDesciption,
-            applicationArea=applicationArea,
-            usage=category,
-            lifeCyclePhase=lifeCyclePhase,
-            userInterface=userInterface,
-            targetGroup=targetGroup,
-            lastUpdate=lastUpdate,
-            licence=license,
-            furtherInformation=furtherInfos,
-            alternatives=alternatives,
-            specificApplication=concreteApplication,
+            name=description, 
+            shortDescription=shortDesciption, 
+            applicationArea=applicationArea, 
+            usage=category, 
+            lifeCyclePhase=lifeCyclePhase, 
+            userInterface=userInterface, 
+            targetGroup=targetGroup, 
+            lastUpdate=lastUpdate, 
+            licence=license, 
+            furtherInformation=furtherInfos, 
+            alternatives=alternatives, 
+            specificApplication=concreteApplication, 
+            focus__in=focusElements, 
+            classification__in=classificationElements
         )
-        for focusStr in focusList:
-            try:
-                focusElement = Focus.objects.filter(focus=focusStr)[0]
-                obj.focus.add(focusElement)
-            except:
-                print(f"Could not add {focusStr} to Database. First add it to Focus-Table!")
-        
-        for classificationStr in classificationList:
-            classificationElement = Classification.objects.filter(classification=classificationStr)
-            if len(classificationElement) > 0:
-                obj.classification.add(classificationElement[0])
-            else:
-                print(f"Could not add {classificationElement} to Database. First add it to Classification-Table!")
-                 
+            
         return obj, created
+
 
     def getOrCreateWeatherdata(
             self, 
@@ -869,10 +858,11 @@ class Command(BaseCommand):
             toolsName = obj.name
             # fkz = row[header.index('FKZ')]   
             if len(Tools.objects.filter(name=toolsName)) > 1:
-                currentStateTable = Tools.objects.filter(name=toolsName)[0]
+                breakpoint()
+                currentStateTable = Tools.objects.filter(name=toolsName).order_by("id")[0]
                 unvisited = []
                 visitedNames = []
-                visitedNames.append("tools")
+                # visitedNames.append("tools")
                 unvisited.append([
                     "Tools", 
                     currentStateTable, 
@@ -984,7 +974,7 @@ class Command(BaseCommand):
             theme, 
         )
         while len(unvisited) > 0:
-            
+            breakpoint()
             currentEntryInUnvisited = unvisited.pop()
             
             currentForeignTableName = currentEntryInUnvisited[0]
@@ -1042,11 +1032,15 @@ class Command(BaseCommand):
                                 ])     
                   
             else:
-                # breakpoint()
+                
                 try:
                     listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 except:
-                    listOfFieldsInCurrentTable = currentTableObj.target_field.related_model._meta.get_fields()
+                    # breakpoint()
+                    if len(currentTableObj) > 0:
+                        listOfFieldsInCurrentTable = currentTableObj[0]._meta.get_fields()
+                    else:
+                        listOfFieldsInCurrentTable = []
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
                     currentDBDifferenceObj.addTable(
                         f"{parentTableName}.{currentForeignTableName}",
@@ -1062,22 +1056,102 @@ class Command(BaseCommand):
                         and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
                         and not teilprojektField.one_to_many
                     ):
-                        try:
+                        if teilprojektField.many_to_many:
+                            # try:
+                            # breakpoint() 
+                            if currentForeignTableStr != "tools":
+                                unvisited.append([
+                                    currentForeignTableStr, 
+                                    currentTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                    pendingTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                    teilprojektField.model.__name__,
+                                ]) 
+                                
+                            # except:
+                                
+                        else:                         
                             unvisited.append([
                                 currentForeignTableStr, 
                                 currentTableObj.__getattribute__(currentForeignTableStr), 
                                 pendingTableObj.__getattribute__(currentForeignTableStr), 
                                 teilprojektField.model.__name__,
                             ])
-                        except:
-                            breakpoint()
+
                     elif not teilprojektField.is_relation:
-                        try:
+                        # try:
+                        foundDifference = False
+                        strDifferencesPending = ""
+                        strDifferencesCurrent = ""
+                        if "QuerySet" in str(type(pendingTableObj)):
+                            # breakpoint()
+                            # if "focus" in pendingTableObj.__dict__.keys():
+                            #     currentAttributeName = "focus"
+                            # elif "classification" in pendingTableObj.__dict__.keys():
+                            #     currentAttributeName = "classification"
+                            # else:
+                            #     print("Cant interpret ManyToMany-Field!")
+                            strCurrent = f" {currentForeignTableStr}: "
+                            strPending = f" {currentForeignTableStr}: "
+                            pendingTableObj =  pendingTableObj.order_by("id")
+                            currentTableObj = currentTableObj.order_by("id")
+                            if len(currentTableObj) != len(pendingTableObj):
+                                foundDifference = True
+                            else:
+                                for index, currentPendingObj in enumerate(pendingTableObj):
+                                    foundCurrentObj = False
+                                    if len(currentTableObj) >= index+1:
+                                        if currentPendingObj.__getattribute__(currentForeignTableStr) != currentTableObj[index].__getattribute__(currentForeignTableStr):
+                                            foundDifference = True 
+                                            break
+                                    else:
+                                        foundDifference = True 
+                            # breakpoint()            
+                            if foundDifference:
+                                
+                                for index, currentPendingObj in enumerate(pendingTableObj):
+                                    strPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
+                                    strDifferencesPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
+                                for index, currentManyObj in enumerate(currentTableObj):
+                                    strCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "              
+                                    strDifferencesCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "      
+                                
+                                # strCurrent = f" {currentForeignTableStr}: "
+                                # strPending = f" {currentForeignTableStr}: {str(currentPendingObj.__getattribute__(currentForeignTableStr))}"
+
+                                lengthOfStr = np.array([len(strCurrent), len(strPending)])
+                                posOfMaxLengthStr = np.argmin(lengthOfStr)
+                                numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
+                                if posOfMaxLengthStr == 0:
+                                    strCurrent += numberOfCharacterDifference*" "
+                                else:
+                                    strPending += numberOfCharacterDifference*" "
+                
+                                diffCurrentObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                    + "|" 
+                                    + strCurrent
+                                )
+                                diffPendingObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                    + "|" 
+                                    + strPending
+                                    )
+                                currentDBDifferenceObj.addDifference(
+                                    f"{parentTableName}.{currentForeignTableName}", 
+                                    {currentForeignTableStr: 
+                                    strDifferencesCurrent}, 
+                                    {currentForeignTableStr: 
+                                    strDifferencesPending},
+                                )   
+                        else:
+
                             if (
                                 str(pendingTableObj\
                                     .__getattribute__(currentForeignTableStr)) 
                                 != str(currentTableObj\
-                                       .__getattribute__(currentForeignTableStr))
+                                    .__getattribute__(currentForeignTableStr))
                                 ):
                                 strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
                                 strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
@@ -1098,18 +1172,18 @@ class Command(BaseCommand):
                                 diffPendingObjDict[
                                     f"{parentTableName}.{currentForeignTableName}"
                                 ] = (diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] 
-                                     + "|" 
-                                     + strPending
+                                    + "|" 
+                                    + strPending
                                 )
                                 currentDBDifferenceObj.addDifference(
                                     f"{parentTableName}.{currentForeignTableName}", 
                                     {currentForeignTableStr: 
-                                     str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
+                                    str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
                                     {currentForeignTableStr: 
-                                     str(pendingTableObj.__getattribute__(currentForeignTableStr))},
+                                    str(pendingTableObj.__getattribute__(currentForeignTableStr))},
                                 )   
-                        except:
-                            pass
+                        # except:
+                        #     breakpoint()
         
         pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
         currentDBDifferenceObj.writeToYAML(pathToFile)
