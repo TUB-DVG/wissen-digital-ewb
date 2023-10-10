@@ -98,7 +98,6 @@ class Command(BaseCommand):
         for databaseDiffObj in listOfParsedConflicts:
             if databaseDiffObj.checkIfUserInputIsValid():
                 tupleOrNone = databaseDiffObj.checkIfConflictIsConsistentWithDatabase()
-                # breakpoint()
                 if tupleOrNone is not None:
                     self.executeAction(
                         tupleOrNone, 
@@ -201,14 +200,23 @@ class Command(BaseCommand):
         
         else:
             if isinstance(currentStateObj, Tools):
-                # breakpoint()
-                idOfCurrent = currentStateObj.id
-                idOfPending = pendingObj.id
-                Tools.objects.filter(id=idOfPending)[0].delete()
-                # pendingObj.delete()
-                currentStateObj.delete()
-                pendingObj.id = idOfCurrent
-                pendingObj.save()
+                currentStateObj.name = pendingObj.name
+                currentStateObj.shortDescription = pendingObj.shortDescription
+                currentStateObj.applicationArea = pendingObj.applicationArea
+                currentStateObj.usage = pendingObj.applicationArea
+                currentStateObj.lifeCyclePhase = pendingObj.lifeCyclePhase
+                currentStateObj.userInterface = pendingObj.userInterface
+                currentStateObj.targetGroup = pendingObj.targetGroup
+                currentStateObj.lastUpdate = pendingObj.lastUpdate
+                currentStateObj.licence = pendingObj.licence
+                currentStateObj.furtherInformation = pendingObj.furtherInformation
+                currentStateObj.alternatives = pendingObj.alternatives
+                currentStateObj.specificApplication = pendingObj.specificApplication
+                
+                currentStateObj.focus.set(pendingObj.focus.select_related())
+                currentStateObj.classification.set(pendingObj.classification.select_related())
+                currentStateObj.save()
+                pendingObj.delete()
             else:
                 currentStateObj.__setattr__(
                     nameOfFieldRelatesToTable.name, 
