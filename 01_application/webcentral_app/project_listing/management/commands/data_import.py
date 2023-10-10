@@ -855,65 +855,26 @@ class Command(BaseCommand):
                     collaborativeProjectText,
                 )
         elif source == "tools":
-            # if Tools.objects.filter(name=row["name"]) ==
             obj, created = self.getOrCreateTools(row, header)
             toolsID = obj.id
             toolsName = obj.name
-            # fkz = row[header.index('FKZ')]   
             if len(Tools.objects.filter(name=toolsName)) > 1:
                 currentStateTable = Tools.objects.filter(name=toolsName).order_by("id")[0]
                 unvisited = []
                 visitedNames = []
-                # visitedNames.append("tools")
                 unvisited.append([
                     "Tools", 
                     currentStateTable, 
                     obj, 
                     "Tools",
                 ])
-                # if currentStateTable is None:
-                #     verbundbezeichungStr = None
-                # else:
-                #     verbundbezeichungStr = currentStateTable.collaborativeProject
+
                 self.compareForeignTables(
                     unvisited, 
                     visitedNames, 
                     {"name": obj.name}, 
                     obj.name,
                 )
-
-            # try:
-            #     if len(Tools.objects.filter(
-            #         name=toolsName, 
-            #     )) == 0:
-            #         Subproject.objects.create(
-            #             referenceNumber_id=fkz,
-            #             enargusData_id= enargus_id,
-            #         )
-            #         print('added: %s' %fkz)
-            # except IntegrityError:
-            #     currentStateTable = Subproject.objects.filter(
-            #         referenceNumber_id=fkz,
-            #     )[0].enargusData
-            #     unvisited = []
-            #     visitedNames = []
-            #     visitedNames.append("subproject")
-            #     unvisited.append([
-            #         "enargusData", 
-            #         currentStateTable, 
-            #         obj, 
-            #         "Subproject",
-            #     ])
-            #     if currentStateTable is None:
-            #         verbundbezeichungStr = None
-            #     else:
-            #         verbundbezeichungStr = currentStateTable.collaborativeProject
-            #     self.compareForeignTables(
-            #         unvisited, 
-            #         visitedNames, 
-            #         {"referenceNumber_id": fkz}, 
-            #         verbundbezeichungStr,
-            #     )
         
     def compareForeignTables(
             self, 
