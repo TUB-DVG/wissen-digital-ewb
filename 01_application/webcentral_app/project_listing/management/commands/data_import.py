@@ -498,6 +498,7 @@ class Command(BaseCommand):
         concreteApplication = row[
             header.index('konkrete Anwendung in EWB Projekten')
         ]
+        imageName = row[header.index('imageName')]
         focusList = row[header.index('Focus')].split(",")
         classificationList = row[header.index('Classification')].split(",")
         
@@ -519,7 +520,8 @@ class Command(BaseCommand):
             alternatives=alternatives, 
             specificApplication=concreteApplication, 
             focus__in=focusElements, 
-            classification__in=classificationElements
+            classification__in=classificationElements,
+            image=imageName,
         )
         obj.focus.add(*focusElements)
         obj.classification.add(*classificationElements)
