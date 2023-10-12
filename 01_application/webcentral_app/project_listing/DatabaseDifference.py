@@ -1,5 +1,4 @@
 import ast
-# import pdb
 import importlib
 
 from project_listing.models import Subproject
@@ -131,8 +130,6 @@ class DatabaseDifference(yaml.YAMLObject):
         try:
             classNameOfTable = getattr(allModels.__getattribute__(rootTableName.split(".")[0]), rootTableName.split(".")[1]).field.related_model
         except:
-            # breakpoint()
-            # classNameOfTable = getattr(allModelsTools.__getattribute__(rootTableName.split(".")[0]), rootTableName.split(".")[1]).field.related_model
             classNameOfTable = allModelsTools.__getattribute__(rootTableName.split(".")[0])
         parentTableName = rootTableName.split(".")[0]
         dictofRootTable = list(
@@ -163,7 +160,6 @@ class DatabaseDifference(yaml.YAMLObject):
                 if (len(querySetForPendingObj) > 0 
                     and (len(querySetForCurrentObj) > 0 or idOfConflictingCurrentObj is None)
                     and len(currentStateInRootTable) > 0):
-                    # breakpoint()
                     try:
                         nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(globals()[parentTableName], classNameOfTable)
                     except:
@@ -208,7 +204,6 @@ class DatabaseDifference(yaml.YAMLObject):
                     rootTableName = tableName
                     break            
             return rootTableName
-            # pdb.set_trace()
 
     def findFieldNameRelatingToForeignTable(self, parentTable, tableObj):
         """Finds the 

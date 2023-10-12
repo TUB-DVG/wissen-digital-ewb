@@ -503,7 +503,6 @@ class Command(BaseCommand):
         classificationList = row[header.index('Classification')].split(",")
         
         focusList = [x.replace(" ", "") for x in focusList]
-        # 
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
         obj, created = Tools.objects.get_or_create(
@@ -1044,12 +1043,7 @@ class Command(BaseCommand):
                         strDifferencesPending = ""
                         strDifferencesCurrent = ""
                         if "QuerySet" in str(type(pendingTableObj)):
-                            # if "focus" in pendingTableObj.__dict__.keys():
-                            #     currentAttributeName = "focus"
-                            # elif "classification" in pendingTableObj.__dict__.keys():
-                            #     currentAttributeName = "classification"
-                            # else:
-                            #     print("Cant interpret ManyToMany-Field!")
+
                             strCurrent = f" {currentForeignTableStr}: "
                             strPending = f" {currentForeignTableStr}: "
                             pendingTableObj =  pendingTableObj.order_by("id")
@@ -1074,8 +1068,6 @@ class Command(BaseCommand):
                                     strCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "              
                                     strDifferencesCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "      
                                 
-                                # strCurrent = f" {currentForeignTableStr}: "
-                                # strPending = f" {currentForeignTableStr}: {str(currentPendingObj.__getattribute__(currentForeignTableStr))}"
 
                                 lengthOfStr = np.array([len(strCurrent), len(strPending)])
                                 posOfMaxLengthStr = np.argmin(lengthOfStr)
