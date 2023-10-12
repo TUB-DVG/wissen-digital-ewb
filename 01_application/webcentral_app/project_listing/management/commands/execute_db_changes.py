@@ -32,21 +32,13 @@ connected to the fkz is deleted (keepCurrent = false) and the
 foreign-key of the CSV-Dataset is set for the fkz 
 (keepPending = true).
 """
-import pdb
+import yaml
+from encodings import utf_8
 
 from django.core.management.base import BaseCommand
-from encodings import utf_8
-import yaml
 
 from tools_over.models import Tools
-# from project_listing.DatabaseDifference import DatabaseDifference
-# from keywords.models import (
-#     Keyword,
-#     KeywordRegisterFirstReview,
-# )
-# from tools_over.models import *
-# from weatherdata_over.models import *
-# from schlagwoerter.models import *
+
 
 class Command(BaseCommand):
     """Defines Django user-defined Command.
@@ -112,7 +104,6 @@ class Command(BaseCommand):
                 except:
                     objToBeDeleted.delete()
             elif "subproject_set" in dir(objToBeDeleted):
-                # pdb.set_trace()
                 try:
                     objToBeDeleted.refresh_from_db()
                 except:
@@ -203,7 +194,7 @@ class Command(BaseCommand):
                 currentStateObj.name = pendingObj.name
                 currentStateObj.shortDescription = pendingObj.shortDescription
                 currentStateObj.applicationArea = pendingObj.applicationArea
-                currentStateObj.usage = pendingObj.applicationArea
+                currentStateObj.usage = pendingObj.usage
                 currentStateObj.lifeCyclePhase = pendingObj.lifeCyclePhase
                 currentStateObj.userInterface = pendingObj.userInterface
                 currentStateObj.targetGroup = pendingObj.targetGroup
@@ -226,7 +217,6 @@ class Command(BaseCommand):
 
                 if currentStateRow is not None:
                     self.listOfToBeDeletedObjs.append(currentStateRow)
-                    #currentStateRow.delete()
                 for currentTable in list(diffDataStructure.keys()):
                     if "Subproject" in currentTable:
                         parent = currentTable.split(".")[1]
