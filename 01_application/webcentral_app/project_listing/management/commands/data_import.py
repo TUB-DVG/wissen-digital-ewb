@@ -33,7 +33,7 @@ and written to a.YAML-File. The .yaml-file is named as the current
 timestamp.
 The `data_import`-Script can be started as a Django-Command. For
 that, the current directory needs to be changed to the folder
-containing the Django `manage.py`. From there, te following 
+containing the Django `manage.py`. From there, the following
 command needs to be run:
 ```
     python3 manage.py data_import enargus_01.csv
