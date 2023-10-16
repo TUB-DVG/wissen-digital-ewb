@@ -83,7 +83,8 @@ class TestAboutPage(WebDriverSetup):
         aboutPageObj = AboutPage(self.driver)
         ewbImage = aboutPageObj.getEWBImage()
         ewbImage.click()
-
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         time.sleep(2)
         
         self.assertEqual(
@@ -91,6 +92,8 @@ class TestAboutPage(WebDriverSetup):
             self.driver.title,
             "Page title should be 'Aktuelles - energiewendebauen.de', but its not!",
         )
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
     
     def testIfLinksWork(self):
         """Clicks all Links on Page
@@ -105,16 +108,22 @@ class TestAboutPage(WebDriverSetup):
         self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", linkToUDKPage)
         time.sleep(1)
         linkToUDKPage.click()
-
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        
         self.assertEqual(
             "Energiewendebauen | Berlin Career College/Zentralinstitut für Weiterbildung (ZIW)",
             self.driver.title,
             "Page title after clicking UDK-Team Link Link should be 'Energiewendebauen | Berlin Career College/Zentralinstitut für Weiterbildung (ZIW)', but its not!",
         )
-        self.driver.back()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
         linkToIOeWPage = aboutPageObj.getIOeWLink()
         linkToIOeWPage.click() 
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        time.sleep(1)
 
         self.assertEqual(
             "Energiewendebauen | IÖW",
@@ -122,23 +131,30 @@ class TestAboutPage(WebDriverSetup):
             "Page title after clicking IÖW Link should be 'Energiewendebauen | IÖW', but its not!",
         )
 
-        self.driver.back()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
         imgOfEinsteinCenter = aboutPageObj.getImgOfEinsteinCenter() 
 
         self.driver.execute_script("arguments[0].scrollIntoView(true);", imgOfEinsteinCenter)
         time.sleep(1)
         imgOfEinsteinCenter.click()
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        time.sleep(1)
 
         self.assertEqual(
             "Energiewendebauen | Einstein Center Digital Future",
             self.driver.title,            
             "Page title after clicking on image of Einstein Center is not 'Energiewendebauen | Einstein Center Digital Future'!",
         )
-        self.driver.back()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
         
         imgOfTUBerlin = aboutPageObj.getImgOfTUBerlin()
         imgOfTUBerlin.click()
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         
         self.assertEqual(
             "Technische Universität Berlin",
@@ -146,10 +162,13 @@ class TestAboutPage(WebDriverSetup):
             "Page title after clicking on image of TU Berlin is not 'Technische Universität Berlin'!",
         )
 
-        self.driver.back()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
         imgOfUDK = aboutPageObj.getImgOfUDK()
         imgOfUDK.click()
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
 
         self.assertEqual(
             "Energiewendebauen | Berlin Career College/Zentralinstitut für Weiterbildung (ZIW)",
@@ -157,10 +176,13 @@ class TestAboutPage(WebDriverSetup):
             "Page title after clicking on image of UDK is not 'Energiewendebauen | Berlin Career College/Zentralinstitut für Weiterbildung (ZIW)'!",
         )
 
-        self.driver.back()
+        self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
         imgOfIOEW = aboutPageObj.getImgOfIOEW()
         imgOfIOEW.click()
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
 
         self.assertEqual(
             "Energiewendebauen | IÖW",
