@@ -25,15 +25,15 @@ if __name__ == "__main__":
     testLoader = TestLoader()
     # Test Suite is used since there are multiple test cases
     testSuite = TestSuite((
-        # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
-        # testLoader.loadTestsFromTestCase(TestMainPage),
-        # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
-        # testLoader.loadTestsFromTestCase(TestNormsPage),
-        # testLoader.loadTestsFromTestCase(TestProtocolsPage),
-        # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
-        # testLoader.loadTestsFromTestCase(TestClickThroughSites),
+        testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
+        testLoader.loadTestsFromTestCase(TestMainPage),
+        testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
+        testLoader.loadTestsFromTestCase(TestNormsPage),
+        testLoader.loadTestsFromTestCase(TestProtocolsPage),
+        testLoader.loadTestsFromTestCase(TestBusinessAppPage),
+        testLoader.loadTestsFromTestCase(TestClickThroughSites),
         testLoader.loadTestsFromTestCase(TestLastprofileTab),
-        # testLoader.loadTestsFromTestCase(TestAboutPage),
+        testLoader.loadTestsFromTestCase(TestAboutPage),
         # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
  
