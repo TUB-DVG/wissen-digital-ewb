@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
+    'use_cases.apps.UseCasesConfig',
     'pages.apps.PagesConfig',
     'TechnicalStandards.apps.TechnicalStandardsConfig',
     'project_listing.apps.ProjectListingConfig',
