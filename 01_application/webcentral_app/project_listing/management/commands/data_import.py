@@ -770,7 +770,6 @@ class Command(BaseCommand):
                 row, 
                 header,
             )
-            #modId = obj.moduleAssignment_id
             fkz = row[header.index('FKZ')].strip()
             try:
                 if len(Subproject.objects.filter(
@@ -1018,7 +1017,6 @@ class Command(BaseCommand):
                         and not teilprojektField.one_to_many
                     ):
                         if teilprojektField.many_to_many:
-                            # try:
                             if currentForeignTableStr != "tools":
                                 unvisited.append([
                                     currentForeignTableStr, 
@@ -1026,19 +1024,18 @@ class Command(BaseCommand):
                                     pendingTableObj.__getattribute__(currentForeignTableStr).select_related(), 
                                     teilprojektField.model.__name__,
                                 ]) 
-                                
-                            # except:
-                                
-                        else:                         
-                            unvisited.append([
-                                currentForeignTableStr, 
-                                currentTableObj.__getattribute__(currentForeignTableStr), 
-                                pendingTableObj.__getattribute__(currentForeignTableStr), 
-                                teilprojektField.model.__name__,
-                            ])
+                        else:   
+                            try:                     
+                                unvisited.append([
+                                    currentForeignTableStr, 
+                                    currentTableObj.__getattribute__(currentForeignTableStr), 
+                                    pendingTableObj.__getattribute__(currentForeignTableStr), 
+                                    teilprojektField.model.__name__,
+                                ])
+                            except:
+                                pass
 
                     elif not teilprojektField.is_relation:
-                        # try:
                         foundDifference = False
                         strDifferencesPending = ""
                         strDifferencesCurrent = ""
