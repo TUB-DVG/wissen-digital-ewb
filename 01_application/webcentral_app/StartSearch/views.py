@@ -8,6 +8,51 @@ from itertools import chain
 from django.core.paginator import Paginator
 from datetime import date
 
+def findPicturesForFocus(searchResultObj):
+    """Return the path to the picture, showing the Focus. 
+    
+    searchResultObj:    obj
+        search-result-object, for which the symbol-path should be found
+    
+    Returns:
+    str
+        String, which specifies the path to the symbol-image.
+    """
+    print(list(searchResultObj.keys()))
+    if "name" in list(searchResultObj.keys()) and "lastUpdate" in list(searchResultObj.keys()):
+        toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
+        focusStrList = toolObj.focus.all().values_list("focus", flat=True)
+        # focusStr = searchResultObj["focus__focus"]
+        print(focusStrList)
+    else:
+        # for other Objects, than Tools set the default-value "Technisch"
+        # this needs to be adapted later
+        focusStrList = ["Technisch"]
+    
+    pathStr = "assets/images/"
+    if len(focusStrList) == 1:
+        focusStr = focusStrList[0]
+        if focusStr == "Technisch":
+            pathStr += "symbol_technical_focus.svg"
+        elif focusStr == "Betrieblich":
+            pathStr += "symbol_operational_focus.svg"
+        elif focusStr == "Rechtlich":
+            pathStr += "symbol_legal_focus.svg"
+        elif focusStr == "Ökologisch":
+            pathStr += "symbol_ecological_focus.svg"
+        else:
+            pass
+    elif len(focusStrList) == 2:
+        if "Betrieblich" in focusStrList and "Technisch" in focusStrList:
+            pathStr += "symbol_technical_operational_focus.svg"
+        elif "Betrieblich" in focusStrList and "Ökologisch" in focusStrList:
+            pathStr += "symbol_ecological_operational_focus.svg"
+        elif "Betrieblich" in focusStrList and "Rechtlich" in focusStrList:
+            pathStr += "symbol_legal_operational_focus.svg"
+        elif "Technisch" in focusStrList and "Ökologisch" in focusStrList:
+            pathStr += "symbol_technical_ecological_focus.svg"
+    
+    return pathStr
 
 def startSearch(request):
     """View function of the start page including central search function."""
@@ -33,7 +78,7 @@ def resultSearch(request):
     filteredTools = Tools.objects.values("id",
                                          "name",
                                          "shortDescription",
-                                         "lastUpdate"
+                                         "lastUpdate",
                                          ).filter(criterionToolsOne |
                                                   criterionToolsTwo)
     # filtered projects
@@ -68,7 +113,7 @@ def resultSearch(request):
     criterionProtocolsTwo = Q(buildingAutomationLayer__icontains=searchInput)
     filteredProtocols = Protocol.objects.values("id",
                                                 "name",
-                                                "buildingAutomationLayer"
+                                                "buildingAutomationLayer",
                                                 ).filter(
                                                     criterionProtocolsOne |
                                                     criterionProtocolsTwo
@@ -95,12 +140,14 @@ def resultSearch(request):
         toolVirtDate = toolDate
         if toolDate == "laufend":
             toolVirtDate = date.fromisoformat("2049-09-09")
-        elif toolDate == "":
+        elif toolDate == "unbekannt":
             toolVirtDate = date.fromisoformat("1949-09-09")
-            toolDate = "unbekannt"
+        else:
+            toolVirtDate = date.fromisoformat(toolVirtDate)
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
-
+        tool["pathToFocusImage"] = findPicturesForFocus(tool)
+        
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         projecName = project.pop("enargusData__collaborativeProject")
@@ -116,6 +163,7 @@ def resultSearch(request):
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
+        project["pathToFocusImage"] = findPicturesForFocus(project)
 
     # for filteredNorms (including also virtual dates, because no information
     # about last Update is include to the database)
@@ -127,7 +175,7 @@ def resultSearch(request):
         norm["kindOfItem"] = "Norm"
         norm["date"] = "noch nicht hinterlegt"
         norm["virtDate"] = date.fromisoformat("2049-09-09")
-
+        norm["pathToFocusImage"] = findPicturesForFocus(norm)
     # for filteredProtocols (including also virtual dates, because
     # no information about last Update is include to the database)
     for protocol in filteredProtocols:
@@ -138,6 +186,7 @@ def resultSearch(request):
         protocol["kindOfItem"] = "Protokoll"
         protocol["date"] = "noch nicht hinterlegt"
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
+        protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
 
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects,
