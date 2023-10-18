@@ -8,7 +8,7 @@ from itertools import chain
 from django.core.paginator import Paginator
 from datetime import date
 
-def findPicturesForFocus(searchResultObj):
+def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus. 
     
     searchResultObj:    obj
@@ -17,13 +17,13 @@ def findPicturesForFocus(searchResultObj):
     Returns:
     str
         String, which specifies the path to the symbol-image.
+    tool:   bool
+        This flag is a temporary argument, as long as "project", "norm" and "standards" 
+        have no focus
     """
-    print(list(searchResultObj.keys()))
-    if "name" in list(searchResultObj.keys()) and "lastUpdate" in list(searchResultObj.keys()):
+    if tool:
         toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
         focusStrList = toolObj.focus.all().values_list("focus", flat=True)
-        # focusStr = searchResultObj["focus__focus"]
-        print(focusStrList)
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
@@ -46,12 +46,38 @@ def findPicturesForFocus(searchResultObj):
         if "Betrieblich" in focusStrList and "Technisch" in focusStrList:
             pathStr += "symbol_technical_operational_focus.svg"
         elif "Betrieblich" in focusStrList and "Ökologisch" in focusStrList:
-            pathStr += "symbol_ecological_operational_focus.svg"
+            pathStr += "symbol_operational_ecological_focus.svg"
         elif "Betrieblich" in focusStrList and "Rechtlich" in focusStrList:
-            pathStr += "symbol_legal_operational_focus.svg"
+            pathStr += "symbol_operational_legal_focus.svg"
         elif "Technisch" in focusStrList and "Ökologisch" in focusStrList:
             pathStr += "symbol_technical_ecological_focus.svg"
-    
+        elif "Technisch" in focusStrList and "Rechtlich" in focusStrList:
+            pathStr += "symbol_technical_legal_focus.svg"
+        elif "Ökologisch" in focusStrList and "Rechtlich" in focusStrList:
+            pathStr += "symbol_ecological_legal_focus.svg"
+        else:
+            pass
+    elif len(focusStrList) == 3:
+        if ("Betrieblich" in focusStrList 
+            and "Technisch" in focusStrList 
+            and "Ökologisch" in focusStrList):
+            pathStr += "symbol_technical_operational_ecological_focus.svg"
+        elif ("Betrieblich" in focusStrList 
+            and "Ökologisch" in focusStrList
+            and "Rechtlich" in focusStrList):
+            pathStr += "symbol_operational_ecological_legal_focus.svg"
+        elif ("Technisch" in focusStrList
+            and "Ökologisch" in focusStrList
+            and "Rechtlich" in focusStrList):
+            pathStr += "symbol_technical_ecological_legal_focus.svg"
+        elif ("Technisch" in focusStrList
+            and "Rechtlich" in focusStrList
+            and "Betrieblich" in focusStrList):
+            pathStr += "symbol_technical_operational_legal_focus.svg"
+        else:
+            pass
+    elif len(focusStrList) == 4:
+        pathStr += "symbol_technical_operational_ecological_legal_focus.svg"
     return pathStr
 
 def startSearch(request):
@@ -146,7 +172,7 @@ def resultSearch(request):
             toolVirtDate = date.fromisoformat(toolVirtDate)
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
-        tool["pathToFocusImage"] = findPicturesForFocus(tool)
+        tool["pathToFocusImage"] = findPicturesForFocus(tool, tool=True)
         
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
