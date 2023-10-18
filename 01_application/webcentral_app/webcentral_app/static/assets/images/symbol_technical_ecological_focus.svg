@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="87"
+   height="50"
+   viewBox="0 0 87 50"
+   fill="none"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="symbol_technical_ecological_focus.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="10.550033"
+     inkscape:cx="76.824404"
+     inkscape:cy="22.98571"
+     inkscape:window-width="1920"
+     inkscape:window-height="931"
+     inkscape:window-x="0"
+     inkscape:window-y="40"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4"
+     height="51px"
+     width="77px" />
+  <g
+     style="fill:none"
+     id="g1105"
+     transform="translate(33.947168,-0.07098577)">
+    <circle
+       cx="25"
+       cy="25"
+       r="19"
+       fill="#aeeab4"
+       id="circle1096" />
+  </g>
+  <g
+     style="fill:none"
+     id="g151"
+     transform="translate(-3.9504753,-2.155222)">
+    <path
+       d="M 5,7 H 45 L 25,48 Z"
+       fill="#afc5ff"
+       id="path142" />
+  </g>
+</svg>
