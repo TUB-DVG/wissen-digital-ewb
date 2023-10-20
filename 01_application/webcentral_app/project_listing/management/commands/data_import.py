@@ -33,7 +33,7 @@ and written to a.YAML-File. The .yaml-file is named as the current
 timestamp.
 The `data_import`-Script can be started as a Django-Command. For
 that, the current directory needs to be changed to the folder
-containing the Django `manage.py`. From there, te following 
+containing the Django `manage.py`. From there, the following
 command needs to be run:
 ```
     python3 manage.py data_import enargus_01.csv
@@ -72,7 +72,11 @@ from keywords.models import (
     Keyword,
     KeywordRegisterFirstReview,
 )
-from tools_over.models import Tools
+from tools_over.models import (
+    Tools, 
+    Focus, 
+    Classification,
+)
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
 
@@ -121,7 +125,6 @@ class Command(BaseCommand):
         )
 
         self.fkzWrittenToYAML = []
-
 
 
     def getOrCreateFurtherFundingInformation(
@@ -495,22 +498,38 @@ class Command(BaseCommand):
         concreteApplication = row[
             header.index('konkrete Anwendung in EWB Projekten')
         ]
-
+        provider = row[header.index("Anbieter")]
+        imageName = row[header.index('imageName')]
+        focusList = row[header.index('Focus')].split(",")
+        classificationList = row[header.index('Classification')].split(",")
+        
+        focusList = [x.replace(" ", "") for x in focusList]
+        focusElements = Focus.objects.filter(focus__in=focusList) 
+        classificationElements = Classification.objects.filter(classification__in=classificationList)
         obj, created = Tools.objects.get_or_create(
-            name=description,
-            shortDescription=shortDesciption,
-            applicationArea=applicationArea,
-            usage=category,
-            lifeCyclePhase=lifeCyclePhase,
-            userInterface=userInterface,
-            targetGroup=targetGroup,
-            lastUpdate=lastUpdate,
-            licence=license,
-            furtherInformation=furtherInfos,
-            alternatives=alternatives,
-            specificApplication=concreteApplication,
+            name=description, 
+            shortDescription=shortDesciption, 
+            applicationArea=applicationArea, 
+            usage=category, 
+            lifeCyclePhase=lifeCyclePhase, 
+            userInterface=userInterface, 
+            targetGroup=targetGroup, 
+            lastUpdate=lastUpdate, 
+            licence=license, 
+            furtherInformation=furtherInfos, 
+            alternatives=alternatives, 
+            specificApplication=concreteApplication, 
+            focus__in=focusElements, 
+            classification__in=classificationElements,
+            provider=provider,
+            image=imageName,
         )
+        obj.focus.add(*focusElements)
+        obj.classification.add(*classificationElements)
+        obj.save()
+            
         return obj, created
+
 
     def getOrCreateWeatherdata(
             self, 
@@ -697,7 +716,7 @@ class Command(BaseCommand):
             list of strings, which represent the header-columns.
         source: str
             String, which specifies the Source of the data. Possible 
-            values are 'enargus', 'modul' or 'schlagwortregister'.
+            values are 'enargus', 'modul', 'tools' or 'schlagwortregister'.
 
         Returns:
         obj:    KeywordRegisterFirstReview
@@ -753,7 +772,6 @@ class Command(BaseCommand):
                 row, 
                 header,
             )
-            #modId = obj.moduleAssignment_id
             fkz = row[header.index('FKZ')].strip()
             try:
                 if len(Subproject.objects.filter(
@@ -838,6 +856,27 @@ class Command(BaseCommand):
                     {"referenceNumber_id": fkz}, 
                     collaborativeProjectText,
                 )
+        elif source == "tools":
+            obj, created = self.getOrCreateTools(row, header)
+            toolsID = obj.id
+            toolsName = obj.name
+            if len(Tools.objects.filter(name=toolsName)) > 1:
+                currentStateTable = Tools.objects.filter(name=toolsName).order_by("id")[0]
+                unvisited = []
+                visitedNames = []
+                unvisited.append([
+                    "Tools", 
+                    currentStateTable, 
+                    obj, 
+                    "Tools",
+                ])
+
+                self.compareForeignTables(
+                    unvisited, 
+                    visitedNames, 
+                    {"name": obj.name}, 
+                    obj.name,
+                )
         
     def compareForeignTables(
             self, 
@@ -900,7 +939,6 @@ class Command(BaseCommand):
             theme, 
         )
         while len(unvisited) > 0:
-            
             currentEntryInUnvisited = unvisited.pop()
             
             currentForeignTableName = currentEntryInUnvisited[0]
@@ -957,8 +995,14 @@ class Command(BaseCommand):
                                 ])     
                   
             else:
-                listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
                 
+                try:
+                    listOfFieldsInCurrentTable = currentTableObj._meta.get_fields()
+                except:
+                    if len(currentTableObj) > 0:
+                        listOfFieldsInCurrentTable = currentTableObj[0]._meta.get_fields()
+                    else:
+                        listOfFieldsInCurrentTable = []
                 if f"{parentTableName}.{currentForeignTableName}" not in diffCurrentObjDict.keys():
                     currentDBDifferenceObj.addTable(
                         f"{parentTableName}.{currentForeignTableName}",
@@ -974,22 +1018,90 @@ class Command(BaseCommand):
                         and f"{parentTableName}.{currentForeignTableStr}" not in visitedNames 
                         and not teilprojektField.one_to_many
                     ):
-                        try:
-                            unvisited.append([
-                                currentForeignTableStr, 
-                                currentTableObj.__getattribute__(currentForeignTableStr), 
-                                pendingTableObj.__getattribute__(currentForeignTableStr), 
-                                teilprojektField.model.__name__,
-                            ])
-                        except:
-                            pass
+                        if teilprojektField.many_to_many:
+                            if currentForeignTableStr != "tools":
+                                unvisited.append([
+                                    currentForeignTableStr, 
+                                    currentTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                    pendingTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                    teilprojektField.model.__name__,
+                                ]) 
+                        else:   
+                            try:                     
+                                unvisited.append([
+                                    currentForeignTableStr, 
+                                    currentTableObj.__getattribute__(currentForeignTableStr), 
+                                    pendingTableObj.__getattribute__(currentForeignTableStr), 
+                                    teilprojektField.model.__name__,
+                                ])
+                            except:
+                                pass
+
                     elif not teilprojektField.is_relation:
-                        try:
+                        foundDifference = False
+                        strDifferencesPending = ""
+                        strDifferencesCurrent = ""
+                        if "QuerySet" in str(type(pendingTableObj)):
+
+                            strCurrent = f" {currentForeignTableStr}: "
+                            strPending = f" {currentForeignTableStr}: "
+                            pendingTableObj =  pendingTableObj.order_by("id")
+                            currentTableObj = currentTableObj.order_by("id")
+                            if len(currentTableObj) != len(pendingTableObj):
+                                foundDifference = True
+                            else:
+                                for index, currentPendingObj in enumerate(pendingTableObj):
+                                    foundCurrentObj = False
+                                    if len(currentTableObj) >= index+1:
+                                        if currentPendingObj.__getattribute__(currentForeignTableStr) != currentTableObj[index].__getattribute__(currentForeignTableStr):
+                                            foundDifference = True 
+                                            break
+                                    else:
+                                        foundDifference = True 
+                            if foundDifference:
+                                
+                                for index, currentPendingObj in enumerate(pendingTableObj):
+                                    strPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
+                                    strDifferencesPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
+                                for index, currentManyObj in enumerate(currentTableObj):
+                                    strCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "              
+                                    strDifferencesCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "      
+                                
+
+                                lengthOfStr = np.array([len(strCurrent), len(strPending)])
+                                posOfMaxLengthStr = np.argmin(lengthOfStr)
+                                numberOfCharacterDifference = np.abs(lengthOfStr[0] - lengthOfStr[1])
+                                if posOfMaxLengthStr == 0:
+                                    strCurrent += numberOfCharacterDifference*" "
+                                else:
+                                    strPending += numberOfCharacterDifference*" "
+                
+                                diffCurrentObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffCurrentObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                    + "|" 
+                                    + strCurrent
+                                )
+                                diffPendingObjDict[
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] 
+                                    + "|" 
+                                    + strPending
+                                    )
+                                currentDBDifferenceObj.addDifference(
+                                    f"{parentTableName}.{currentForeignTableName}", 
+                                    {currentForeignTableStr: 
+                                    strDifferencesCurrent}, 
+                                    {currentForeignTableStr: 
+                                    strDifferencesPending},
+                                )   
+                        else:
+
                             if (
                                 str(pendingTableObj\
                                     .__getattribute__(currentForeignTableStr)) 
                                 != str(currentTableObj\
-                                       .__getattribute__(currentForeignTableStr))
+                                    .__getattribute__(currentForeignTableStr))
                                 ):
                                 strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
                                 strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
@@ -1010,18 +1122,16 @@ class Command(BaseCommand):
                                 diffPendingObjDict[
                                     f"{parentTableName}.{currentForeignTableName}"
                                 ] = (diffPendingObjDict[f"{parentTableName}.{currentForeignTableName}"] 
-                                     + "|" 
-                                     + strPending
+                                    + "|" 
+                                    + strPending
                                 )
                                 currentDBDifferenceObj.addDifference(
                                     f"{parentTableName}.{currentForeignTableName}", 
                                     {currentForeignTableStr: 
-                                     str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
+                                    str(currentTableObj.__getattribute__(currentForeignTableStr))}, 
                                     {currentForeignTableStr: 
-                                     str(pendingTableObj.__getattribute__(currentForeignTableStr))},
+                                    str(pendingTableObj.__getattribute__(currentForeignTableStr))},
                                 )   
-                        except:
-                            pass
         
         pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
         currentDBDifferenceObj.writeToYAML(pathToFile)
@@ -1082,7 +1192,7 @@ class Command(BaseCommand):
             elif "enargus" in filename:
                 self.addOrUpdateRowSubproject(row, header, 'enargus')
             elif "Tools" in filename:
-                self.getOrCreateTools(row, header)
+                self.addOrUpdateRowSubproject(row, header, 'tools')
             elif "schlagwoerter" in filename:
                 print(row[header.index('Förderkennzeichen (0010)')])
                 self.addOrUpdateRowSubproject(row, header, 'schlagwortregister')

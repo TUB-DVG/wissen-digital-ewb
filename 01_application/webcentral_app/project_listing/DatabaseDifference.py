@@ -1,8 +1,8 @@
 import ast
-import pdb
 import importlib
 
 from project_listing.models import Subproject
+from tools_over.models import Tools
 
 import yaml
 import numpy as np
@@ -126,31 +126,29 @@ class DatabaseDifference(yaml.YAMLObject):
         """
         rootTableName = self.getStartingPoint()
         allModels = importlib.import_module("project_listing.models")
-        classNameOfTable = getattr(allModels.__getattribute__(rootTableName.split(".")[0]), rootTableName.split(".")[1]).field.related_model
+        allModelsTools = importlib.import_module("tools_over.models")
+        try:
+            classNameOfTable = getattr(allModels.__getattribute__(rootTableName.split(".")[0]), rootTableName.split(".")[1]).field.related_model
+        except:
+            classNameOfTable = allModelsTools.__getattribute__(rootTableName.split(".")[0])
         parentTableName = rootTableName.split(".")[0]
         dictofRootTable = list(
             self.differencesSortedByTable[rootTableName]["currentState"].keys()
         )
         for rootTableFieldName in dictofRootTable:
-             if "_id" in rootTableFieldName:
+             
+             if "_id" in rootTableFieldName or rootTableFieldName == "id":
                 if self.differencesSortedByTable[rootTableName]\
                     ["currentState"][rootTableFieldName] is not None:
                     
-                    idOfConflictingCurrentObj = int(
-                        self.differencesSortedByTable[rootTableName]\
-                            ["currentState"][rootTableFieldName]
-                    )
+                    idOfConflictingCurrentObj = int(self.differencesSortedByTable[rootTableName]["currentState"][rootTableFieldName])
                 else:
                     idOfConflictingCurrentObj = None
                 idOfConflictingPendingObj = int(
                     self.differencesSortedByTable[rootTableName]\
                         ["pendingState"][rootTableFieldName]
                 )
-                currentStateInRootTable = globals()[parentTableName].objects.filter(
-                    **{list(self.identifer.keys())[0]: self.identifer[
-                        list(self.identifer.keys())[0]
-                    ]}
-                )
+                currentStateInRootTable = globals()[parentTableName].objects.filter(**{list(self.identifer.keys())[0]: self.identifer[list(self.identifer.keys())[0]]})
                 querySetForPendingObj = classNameOfTable\
                 .objects.filter(
                     **{rootTableFieldName: idOfConflictingPendingObj}
@@ -162,14 +160,16 @@ class DatabaseDifference(yaml.YAMLObject):
                 if (len(querySetForPendingObj) > 0 
                     and (len(querySetForCurrentObj) > 0 or idOfConflictingCurrentObj is None)
                     and len(currentStateInRootTable) > 0):
-                    nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(
-                        globals()[parentTableName], 
-                        classNameOfTable,
-                    )
-                    
-                    currentStateRowObj = currentStateInRootTable[0].__getattribute__(
-                        nameOfFieldRelatesToTable.name,
-                    )
+                    try:
+                        nameOfFieldRelatesToTable = self.findFieldNameRelatingToForeignTable(globals()[parentTableName], classNameOfTable)
+                    except:
+                        nameOfFieldRelatesToTable = None
+                    try:
+                        currentStateRowObj = currentStateInRootTable[0].__getattribute__(
+                            nameOfFieldRelatesToTable.name,
+                        )
+                    except:
+                        currentStateRowObj = currentStateInRootTable[0]
                     return (
                         self.keepCurrentState, 
                         querySetForCurrentObj[0], 
@@ -199,7 +199,11 @@ class DatabaseDifference(yaml.YAMLObject):
         try:
             return rootTableName
         except:
-            pdb.set_trace()
+            for tableName in list(self.differencesSortedByTable.keys()):
+                if "Tools" in tableName:
+                    rootTableName = tableName
+                    break            
+            return rootTableName
 
     def findFieldNameRelatingToForeignTable(self, parentTable, tableObj):
         """Finds the 
