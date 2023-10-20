@@ -32,20 +32,13 @@ connected to the fkz is deleted (keepCurrent = false) and the
 foreign-key of the CSV-Dataset is set for the fkz 
 (keepPending = true).
 """
-import pdb
+import yaml
+from encodings import utf_8
 
 from django.core.management.base import BaseCommand
-from encodings import utf_8
-import yaml
 
-# from project_listing.DatabaseDifference import DatabaseDifference
-# from keywords.models import (
-#     Keyword,
-#     KeywordRegisterFirstReview,
-# )
-# from tools_over.models import *
-# from weatherdata_over.models import *
-# from schlagwoerter.models import *
+from tools_over.models import Tools
+
 
 class Command(BaseCommand):
     """Defines Django user-defined Command.
@@ -111,7 +104,6 @@ class Command(BaseCommand):
                 except:
                     objToBeDeleted.delete()
             elif "subproject_set" in dir(objToBeDeleted):
-                # pdb.set_trace()
                 try:
                     objToBeDeleted.refresh_from_db()
                 except:
@@ -181,36 +173,58 @@ class Command(BaseCommand):
         currentStateRow = listOfDatabaseObjs[3]
         nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
         if optionCurrent:
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" in currentTable:
-                    parent = currentTable.split(".")[1]
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" not in currentTable:
+            if isinstance(currentStateObj, Tools):
+                pendingObj.delete()
+            else:
+
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" in currentTable:
+                        parent = currentTable.split(".")[1]
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" not in currentTable:
+                        if parent in currentTable.split(".")[0]:
+                            deleteSchlagwort = True
+                            if parent == "KeywordRegisterFirstReview":
+                                pass
+
+                self.listOfToBeDeletedObjs.append(pendingObj)
+        
+        else:
+            if isinstance(currentStateObj, Tools):
+                currentStateObj.name = pendingObj.name
+                currentStateObj.shortDescription = pendingObj.shortDescription
+                currentStateObj.applicationArea = pendingObj.applicationArea
+                currentStateObj.usage = pendingObj.usage
+                currentStateObj.lifeCyclePhase = pendingObj.lifeCyclePhase
+                currentStateObj.userInterface = pendingObj.userInterface
+                currentStateObj.targetGroup = pendingObj.targetGroup
+                currentStateObj.lastUpdate = pendingObj.lastUpdate
+                currentStateObj.licence = pendingObj.licence
+                currentStateObj.furtherInformation = pendingObj.furtherInformation
+                currentStateObj.alternatives = pendingObj.alternatives
+                currentStateObj.specificApplication = pendingObj.specificApplication
+                
+                currentStateObj.focus.set(pendingObj.focus.select_related())
+                currentStateObj.classification.set(pendingObj.classification.select_related())
+                currentStateObj.save()
+                pendingObj.delete()
+            else:
+                currentStateObj.__setattr__(
+                    nameOfFieldRelatesToTable.name, 
+                    pendingObj,
+                )
+                currentStateObj.save()
+
+                if currentStateRow is not None:
+                    self.listOfToBeDeletedObjs.append(currentStateRow)
+                for currentTable in list(diffDataStructure.keys()):
+                    if "Subproject" in currentTable:
+                        parent = currentTable.split(".")[1]
+                for currentTable in list(diffDataStructure.keys()):
                     if parent in currentTable.split(".")[0]:
                         deleteSchlagwort = True
                         if parent == "KeywordRegisterFirstReview":
                             pass
-
-            self.listOfToBeDeletedObjs.append(pendingObj)
-        
-        else:
-            currentStateObj.__setattr__(
-                nameOfFieldRelatesToTable.name, 
-                pendingObj,
-            )
-            currentStateObj.save()
-
-            if currentStateRow is not None:
-                self.listOfToBeDeletedObjs.append(currentStateRow)
-                #currentStateRow.delete()
-            for currentTable in list(diffDataStructure.keys()):
-                if "Subproject" in currentTable:
-                    parent = currentTable.split(".")[1]
-            for currentTable in list(diffDataStructure.keys()):
-                if parent in currentTable.split(".")[0]:
-                    deleteSchlagwort = True
-                    if parent == "KeywordRegisterFirstReview":
-                        pass
 
 
     def parseFile(
