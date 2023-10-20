@@ -84,7 +84,6 @@ def resultSearch(request):
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
         tool["description"] = tool.pop("shortDescription")
-
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
 
@@ -95,9 +94,11 @@ def resultSearch(request):
         toolVirtDate = toolDate
         if toolDate == "laufend":
             toolVirtDate = date.fromisoformat("2049-09-09")
-        elif toolDate == "":
+        elif toolDate == "unbekannt":
             toolVirtDate = date.fromisoformat("1949-09-09")
-            toolDate = "unbekannt"
+        else:
+            toolVirtDate = date.fromisoformat(toolDate)
+            # toolDate = "unbekannt"
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
 
