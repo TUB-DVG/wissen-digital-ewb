@@ -27,6 +27,8 @@ class Focus(models.Model):
 
         app_label = 'tools_over'
 
+    def __str__(self) -> str:
+        return self.focus
 class Tools(models.Model):
     name = models.CharField(max_length = 150,
                                    help_text="name",
