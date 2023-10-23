@@ -66,7 +66,7 @@ class Publication(models.Model):
 	focus = models.ManyToManyField(Focus)
 	authors = models.CharField(max_length=2048,
 		help_text='List of authors separated by commas or <i>and</i>.')
-	year = models.PositiveIntegerField()
+	year = models.PositiveIntegerField(blank=True, null=True)
 	month = models.IntegerField(choices=MONTH_CHOICES, blank=True, null=True)
 	journal = models.CharField(max_length=256, blank=True)
 	book_title = models.CharField(max_length=256, blank=True)
@@ -76,7 +76,7 @@ class Publication(models.Model):
 	number = models.IntegerField(blank=True, null=True, verbose_name='Issue number')
 	pages = PagesField(max_length=32, blank=True)
 	note = models.CharField(max_length=256, blank=True)
-	keywords = models.CharField(max_length=256, blank=True,
+	keywords = models.CharField(max_length=512, blank=True,
 		help_text='List of keywords separated by commas.')
 	url = models.URLField(blank=True, verbose_name='URL',
 		help_text='Link to PDF or journal page.')
