@@ -1,15 +1,11 @@
-__license__ = 'MIT License <http://www.opensource.org/licenses/mit-license.php>'
-__author__ = 'Lucas Theis <lucas@theis.io>'
-__docformat__ = 'epytext'
 
-try:
-    from django.conf.urls import url
-except ImportError:
-    from django.conf.urls.defaults import url
+from django.urls import path
 
-from publications import views
+from . import views
 
-app_name = 'publications'
-urlpatterns = [
+
+urlpatterns = [path('', views.index, name = 'publicationPage'),
+               path('<str:id>', views.publicationView, name='publicationDetails'),
+               path('download_pdf/<int:pk>/', views.download_pdf, name="download_pdf"),
 
 ]

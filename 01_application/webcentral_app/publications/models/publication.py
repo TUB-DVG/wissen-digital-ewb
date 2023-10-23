@@ -12,6 +12,7 @@ from django.conf import settings
 from publications.fields import PagesField
 from publications.models import Type, List
 from string import ascii_uppercase
+from tools_over.models import Focus
 
 if 'django.contrib.sites' in settings.INSTALLED_APPS:
 	from django.contrib.sites.models import Site
@@ -62,6 +63,7 @@ class Publication(models.Model):
 	citekey = models.CharField(max_length=512, blank=True, null=True,
 		help_text='BibTex citation key. Leave blank if unsure.')
 	title = models.CharField(max_length=512)
+	focus = models.ManyToManyField(Focus)
 	authors = models.CharField(max_length=2048,
 		help_text='List of authors separated by commas or <i>and</i>.')
 	year = models.PositiveIntegerField()
@@ -90,6 +92,7 @@ class Publication(models.Model):
 	isbn = models.CharField(max_length=32, verbose_name="ISBN", blank=True,
 		help_text='Only for a book.') # A-B-C-D
 	lists = models.ManyToManyField(List, blank=True)
+	copyright = models.CharField(max_length=256, blank=True)
 
 	def __init__(self, *args, **kwargs):
 		models.Model.__init__(self, *args, **kwargs)
