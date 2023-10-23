@@ -13,6 +13,7 @@ import os
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY = 'django-insecure-l6nvsp#y_3o8--2^h5@903kz%_yx_0=l+i%(2kllzhb=@3+ar('
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # tries to read the DEBUG env-var and converts it to int. 
 # If it cant convert to int, DEBUG is set to 0, which is converted to false.
-DEBUG = True
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
 ALLOWED_HOSTS.extend(
@@ -40,14 +41,13 @@ ALLOWED_HOSTS.extend(
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
+    'TechnicalStandards.apps.TechnicalStandardsConfig',
     'project_listing.apps.ProjectListingConfig',
     'tools_over.apps.ToolsOverConfig',
     'weatherdata_over.apps.WeatherdataOverConfig',
     'keywords.apps.KeywordsConfig',
-    'TechnicalStandards.apps.TechnicalStandardsConfig',
     'LastProfile.apps.LastprofileConfig',
     'Datasets.apps.DatasetsConfig',
-    'publications.apps.PublicationsConfig',
     'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,15 +94,19 @@ WSGI_APPLICATION = 'webcentral_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {   
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Webcentral',
-        'USER': 'postgres',
-        'PASSWORD': 'TUBdatabase',
-        'HOST': 'localhost',
-    }
+        'NAME': os.environ.get("POSTGRES_DB"),
+        'USER': os.environ.get("POSTGRES_USER"),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
+        'HOST': 'database',
+        'TEST': {
+            'MIRROR': "default",
+        },
+    },   
 }
+
 
 
 # Password validation
