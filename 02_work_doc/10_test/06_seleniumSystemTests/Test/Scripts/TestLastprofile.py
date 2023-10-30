@@ -132,18 +132,20 @@ class TestLastprofileTab(WebDriverSetup):
         time.sleep(1)
         
         weatherServiceLink.click()
-
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[-1])
         self.assertEqual(
             "GitHub - earthobservations/wetterdienst: Open weather data for humans.",
             self.driver.title,
             "After clicking on Wetterdienst-Link, the github-page of wetterdienst should appear!",
         )
-
-        self.driver.back()
+        self.driver.switch_to.window(self.driver.window_handles[0])
 
         loadProfileLink = lastprofilePage.getLoadProfileLink()
         loadProfileLink.click()
-
+        time.sleep(1)
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        time.sleep(1)
         self.assertEqual(
             "Standardlastprofile Strom | BDEW",
             self.driver.title,
