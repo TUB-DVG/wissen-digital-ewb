@@ -102,7 +102,7 @@ Page content START -->
               {% endif %}
 							{% if publication.url %}
 							<h5 class="mt-4">Link zur PDF oder Journalseite</h5>
-							<p class="mb-0">{{publication.url}}</p>
+							<p class="mb-0"><a href="{{ publication.url }}" target="_blank">{{ publication.url }}</a></p>
 							{% endif %}
               {% if publication.citekey %}
 							<h5 class="mt-4">Kurzbeleg</h5>
