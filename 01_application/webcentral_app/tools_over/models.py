@@ -41,7 +41,7 @@ class ApplicationArea(models.Model):
 
         app_label = 'tools_over'
 
-def Usage(models.Model):
+class Usage(models.Model):
     """Usage of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools
@@ -55,7 +55,7 @@ def Usage(models.Model):
 
         app_label = 'tools_over'
 
-def TargetGroup(models.Model):
+class TargetGroup(models.Model):
     """TargetGroup of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools
@@ -69,7 +69,7 @@ def TargetGroup(models.Model):
 
         app_label = 'tools_over'
 
-def LifeCyclePhase(models.Model):
+class LifeCyclePhase(models.Model):
     """LifeCyclePhase of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools
@@ -83,7 +83,7 @@ def LifeCyclePhase(models.Model):
 
         app_label = 'tools_over'
 
-def UserInterface(models.Model):
+class UserInterface(models.Model):
     """LifeCyclePhase of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools
@@ -97,7 +97,7 @@ def UserInterface(models.Model):
 
         app_label = 'tools_over'
 
-def Accessibility(models.Model):
+class Accessibility(models.Model):
     """LifeCyclePhase of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools

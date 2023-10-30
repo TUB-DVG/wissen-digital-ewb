@@ -76,6 +76,12 @@ from tools_over.models import (
     Tools, 
     Focus, 
     Classification,
+    ApplicationArea,
+    Usage,
+    TargetGroup,
+    LifeCyclePhase,
+    UserInterface,
+    Accessibility,
 )
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
@@ -486,23 +492,63 @@ class Command(BaseCommand):
 
         description = row[header.index('Tool')]
         shortDesciption = row[header.index('Kurzbeschreibung')]
-        applicationArea = row[header.index('Anwendungsbereich')]
-        category = row[header.index('Kategorie')]
+
+        applicationArea = row[header.index('Anwendungsbereich')].split(",")
+        applicationAreaList = applicationArea.split(",")
+        processedApplicationAreaList = []
+        for currentApplicationArea in applicationAreaList:
+            if currentApplicationArea[0] == " ":
+                processedApplicationAreaList.append(currentApplicationArea[1:])
+            else:
+                processedApplicationAreaList.append(currentApplicationArea)
+            objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
+                applicationArea=processedApplicationAreaList[-1]
+            )
+            if len(objsForCurrentApplicationAreaName) == 0:
+                ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
+            
+        # usage is the new category and the column is called "Nutzung" in the csv?
+        # category = row[header.index('Kategorie')]
+        usageList = row[header.index('Nutzung')].split(",")
+        processedUsageList = []
+        for currentUsage in usageList:
+            if currentUsage[0] == " ":
+                processedUsageList.append(currentUsage[1:])
+            else:
+                processedUsageList.append(currentUsage)
+            
+            objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
+            if len(objsForCurrentUsage) == 0:
+                Usage.objects.create(usage=processedUsageList[-1])       
+        
+        targetGroupList = row[header.index('Zielgruppe')].split(",")
+        processedTargetGroup = []
+        for currentTargetGroup in targetGroupList:
+            if currentUsage[0] == " ":
+                processedTargetGroup.append(currentTargetGroup[1:])
+            else:
+                processedTargetGroup.append(currentTargetGroup)
+            
+            objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
+            if len(objsForCurrentUsage) == 0:
+                Usage.objects.create(usage=processedUsageList[-1]) 
+
+        
         lifeCyclePhase = row[header.index('Lebenszyklusphase')]
         userInterface = row[header.index('Nutzerschnittstelle')]
-        targetGroup = row[header.index('Zielgruppe')]
-        lastUpdate= row[header.index('letztes Update')]
+        
+        lastUpdate = row[header.index('letztes Update')]
         license = row[header.index('Lizenz')]
         furtherInfos = row[header.index('weitere Informationen')]
         alternatives = row[header.index('Alternativen')]
         concreteApplication = row[
             header.index('konkrete Anwendung in EWB Projekten')
         ]
+
         provider = row[header.index("Anbieter")]
         imageName = row[header.index('imageName')]
         focusList = row[header.index('Focus')].split(",")
         classificationList = row[header.index('Classification')].split(",")
-        
         focusList = [x.replace(" ", "") for x in focusList]
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
@@ -526,6 +572,7 @@ class Command(BaseCommand):
         )
         obj.focus.add(*focusElements)
         obj.classification.add(*classificationElements)
+        obj.applicationArea.add(*processedApplicationAreaList)
         obj.save()
             
         return obj, created
