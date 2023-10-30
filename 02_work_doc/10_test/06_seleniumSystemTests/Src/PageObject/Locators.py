@@ -67,7 +67,7 @@ class Locator(object):
 
     # locators inside stromlast-app
     selectPlaceholderCurrentApp = "//div[@class='Select-placeholder']"
-    iframePlotlyApp = "/html/body/div[1]/iframe"
+    iframePlotlyApp = "//iframe"
     radioButtonElements = "//input[@type='radio']"
     inputPowerRequriement = "//input[@id='powerRequirement']"
     pathToOpenedSelect = "/html/body/div/div/div[1]/div"
