@@ -617,8 +617,12 @@ class Command(BaseCommand):
         focusList = [x.replace(" ", "") for x in focusList]
         focusElements = Focus.objects.filter(focus__in=focusList)
         
+        typeORMObjList = Type.objects.filter(type=type_)
+        if len(typeORMObjList) == 0:
+            Type.objects.create(type=type_)
+        
         typeORMObj = Type.objects.filter(type=type_)[0]
-
+        
         if number == "":
             number = None
         
