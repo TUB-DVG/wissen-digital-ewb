@@ -84,6 +84,11 @@ from tools_over.models import (
     UserInterface,
     Scale,
 )
+from TechnicalStandards.models import (
+    Norm,
+    Protocol,
+)
+
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
 
@@ -492,9 +497,9 @@ class Command(BaseCommand):
         """
 
         name = row[header.index('name')]
-        shortDesciption = row[header.index('shortDescription')]
+        shortDescription = row[header.index('shortDescription')]
 
-        applicationArea = row[header.index('applicationArea')].split(",")
+        applicationArea = row[header.index('applicationArea')]
         applicationAreaList = applicationArea.split(",")
         processedApplicationAreaList = []
         for currentApplicationArea in applicationAreaList:
@@ -633,42 +638,106 @@ class Command(BaseCommand):
         processedTechnicalStandardsNorms = []
         for currentTechnicalStandardsNorms in technicalStandardsNormsList:
             if currentTechnicalStandardsNorms[0] == " ":
-                processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms[1:])
-            else:
-                processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
-            objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=processedTechnicalStandardsNorms[-1])
+                currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
+
+            objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
             if len(objsForCurrentTechnicalStandardsNorms) == 0:
                 print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
             else:
-                processedSpecificApplicationList.append(processedTechnicalStandardsNorms[-1])
+                processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
+
+
+        technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
+        processedTechnicalStandardsProtocols = []
+        for currentTechnicalStandardsProtocols in technicalStandardsProtocolsList:
+            if currentTechnicalStandardsProtocols[0] == " ":
+                currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
+
+            objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
+            if len(objsForCurrentTechnicalStandardsProtocols) == 0:
+                print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
+            else:
+                processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
 
         focusList = row[header.index('focus')].split(",")
+        processedFocusList = []
+        for currentFocus in focusList:
+            if currentFocus[0] == " ":
+                processedFocusList.append(currentFocus[1:])
+            else:
+                processedFocusList.append(currentFocus)
+            objsForCurrentFocus = Focus.objects.filter(focus=processedFocusList[-1])
+            if len(objsForCurrentFocus) == 0:
+                Focus.objects.create(focus=processedFocusList[-1]) 
+
         classificationList = row[header.index('classification')].split(",")
-        focusList = [x.replace(" ", "") for x in focusList]
+        processedClassificationList = []
+        for currentClassification in classificationList:
+            if currentClassification[0] == " ":
+                processedClassificationList.append(currentClassification[1:])
+            else:
+                processedClassificationList.append(currentClassification)
+            objsForCurrentClassification = Classification.objects.filter(classification=processedClassificationList[-1])
+            if len(objsForCurrentClassification) == 0:
+                Classification.objects.create(classification=processedClassificationList[-1]) 
+        # focusList = [x.replace(" ", "") for x in focusList]
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
+        applicationAreaElements = ApplicationArea.objects.filter(applicationArea__in=processedApplicationAreaList)
+        usageElements = Usage.objects.filter(usage__in=processedUsageList)
+        lifeCyclePhaseElements = LifeCyclePhase.objects.filter(lifeCyclePhase__in=processedlifeCyclePhase)
+        userInterfaceElements = UserInterface.objects.filter(userInterface__in=processedUserInterface)
+        targetGroupElements = TargetGroup.objects.filter(targetGroup__in=processedTargetGroup)
+        scaleElements = Scale.objects.filter(scale__in=processedScaleList)
+        accessibilityElements = Accessibility.objects.filter(accessibility__in=processedAccessibilityList)
+        specificApplicationElements = Subproject.objects.filter(referenceNumber_id__in=processedSpecificApplicationList)
+        technicalStandardsNormsElements = Norm.objects.filter(name__in=processedTechnicalStandardsNorms)
+        technicalStandardsProtocolsElements = Protocol.objects.filter(name__in=processedTechnicalStandardsProtocols)
         obj, created = Tools.objects.get_or_create(
-            name=description, 
-            shortDescription=shortDesciption, 
-            applicationArea=applicationArea, 
-            usage=category, 
-            lifeCyclePhase=lifeCyclePhase, 
-            userInterface=userInterface, 
-            targetGroup=targetGroup, 
+            name=name, 
+            shortDescription=shortDescription, 
+            applicationArea__in=applicationAreaElements, 
+            usage__in=usageElements, 
+            lifeCyclePhase__in=lifeCyclePhaseElements, 
+            userInterface__in=userInterfaceElements,
+            userInterfaceNotes=userInterfaceNotes,
+            programmingLanguages=programmingLanguages,
+            frameworksLibraries=frameworksLibraries,
+            databaseSystem=databaseSystem,
+            scale__in=scaleElements,
+            accessibility__in=accessibilityElements,
+            targetGroup__in=targetGroupElements, 
             lastUpdate=lastUpdate, 
             licence=license, 
+            licenseNotes=licenseNotes,
             furtherInformation=furtherInfos, 
             alternatives=alternatives, 
-            specificApplication=concreteApplication, 
+            specificApplication__in=specificApplicationElements, 
             focus__in=focusElements, 
             classification__in=classificationElements,
             provider=provider,
             image=imageName,
+            released=released,
+            releasedPlanned=releasedPlanned,
+            yearOfRelease=yearOfRelease,
+            developmentState=developmentState,
+            technicalStandardsNorms__in=technicalStandardsNormsElements,
+            technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
-        obj.focus.add(*focusElements)
-        obj.classification.add(*classificationElements)
-        obj.applicationArea.add(*processedApplicationAreaList)
-        obj.save()
+        if created:
+            obj.focus.add(*focusElements)
+            obj.classification.add(*classificationElements)
+            obj.applicationArea.add(*applicationAreaElements)
+            obj.usage.add(*usageElements)
+            obj.lifeCyclePhase.add(*lifeCyclePhaseElements)
+            obj.userInterface.add(*userInterfaceElements)
+            obj.scale.add(*scaleElements)
+            obj.accessibility.add(*accessibilityElements)
+            obj.targetGroup.add(*targetGroupElements)
+            obj.specificApplication.add(*specificApplicationElements)
+            obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
+            obj.technicalStandardsProtocols.add(*technicalStandardsProtocolsElements)
+            obj.save()
             
         return obj, created
 
