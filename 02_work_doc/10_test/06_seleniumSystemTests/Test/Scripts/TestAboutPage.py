@@ -85,7 +85,7 @@ class TestAboutPage(WebDriverSetup):
         ewbImage.click()
         time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        time.sleep(2)
+        time.sleep(3)
         
         self.assertEqual(
             "Aktuelles - energiewendebauen.de",
@@ -123,8 +123,7 @@ class TestAboutPage(WebDriverSetup):
         linkToIOeWPage.click() 
         time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        time.sleep(2)
-
+        time.sleep(3)
         self.assertEqual(
             "Energiewendebauen | IÖW",
             self.driver.title,            
