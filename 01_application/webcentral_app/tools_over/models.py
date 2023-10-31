@@ -1,5 +1,10 @@
 from django.db import models
 
+from project_listing.models import Subproject
+from TechnicalStandards.models import (
+    Norm,
+    Protocol,
+)
 
 class Classification(models.Model):
     """Model for 
@@ -38,7 +43,6 @@ class ApplicationArea(models.Model):
         blank=True,
     )
     class Meta:
-
         app_label = 'tools_over'
 
 class Usage(models.Model):
@@ -46,7 +50,7 @@ class Usage(models.Model):
 
     This Model has a ManyToMany-Relationship to Tools
     """
-    usage = models.Model(
+    usage = models.CharField(
         max_length=100,
         help_text="usage",
         blank=True,
@@ -60,7 +64,7 @@ class TargetGroup(models.Model):
 
     This Model has a ManyToMany-Relationship to Tools
     """
-    targetGroup = models.Model(
+    targetGroup = models.CharField(
         max_length=300,
         help_text="Which group of people is the tool targeted at?",
         blank=True,
@@ -74,7 +78,7 @@ class LifeCyclePhase(models.Model):
 
     This Model has a ManyToMany-Relationship to Tools
     """
-    lifeCyclePhase = models.Model(
+    lifeCyclePhase = models.CharField(
         max_length=100,
         help_text="Life cycle phase of buildings where the application is used",
         blank=True,
@@ -88,7 +92,21 @@ class UserInterface(models.Model):
 
     This Model has a ManyToMany-Relationship to Tools
     """
-    userInterface = models.Model(
+    userInterface = models.CharField(
+        max_length=300,
+        help_text="userInterface",
+        blank=True,
+    )
+    class Meta:
+        app_label = 'tools_over'
+
+
+class Accessibility(models.Model):
+    """LifeCyclePhase of the Tool-Items
+
+    This Model has a ManyToMany-Relationship to Tools
+    """
+    accessibility = models.CharField(
         max_length=300,
         help_text="userInterface",
         blank=True,
@@ -97,14 +115,14 @@ class UserInterface(models.Model):
 
         app_label = 'tools_over'
 
-class Accessibility(models.Model):
-    """LifeCyclePhase of the Tool-Items
+class Scale(models.Model):
+    """Scale of the Tool-Items
 
     This Model has a ManyToMany-Relationship to Tools
     """
-    accessibility = models.Model(
-        max_length=300,
-        help_text="userInterface",
+    scale = models.CharField(
+        max_length=100,
+        help_text="spatial scope of consideration",
         blank=True,
     )
     class Meta:
@@ -123,7 +141,12 @@ class Tools(models.Model):
     targetGroup = models.ManyToManyField(TargetGroup)
     lifeCyclePhase  = models.ManyToManyField(LifeCyclePhase)
     userInterface = models.ManyToManyField(UserInterface)
-    accessibility = models.ManyToMany(Accessibility)
+    userInterfaceNotes = models.CharField(
+        max_length=300,
+        help_text="additional notes for userInterface",
+        blank=True,
+    )
+    accessibility = models.ManyToManyField(Accessibility)
     lastUpdate = models.CharField(max_length = 100,
                                   help_text = "time (year/month/date) of the last update",
                                   blank = True)
@@ -139,9 +162,14 @@ class Tools(models.Model):
     alternatives = models.CharField(max_length = 300,
                                     help_text = "similar tool(s) that can serve as alternatives",
                                     blank = True)
-    specificApplication = models.CharField(max_length = 500,
-                                          help_text = "specific application of the tool in EWB projects (project name + fkz)",
-                                          blank = True)
+    specificApplication = models.ManyToManyField(
+        Subproject,
+        help_text = "specific application of the tool in EWB projects (project name + fkz)",
+    )
+    
+    # models.CharField(max_length = 500,
+                                        #   help_text = "specific application of the tool in EWB projects (project name + fkz)",
+                                        #   blank = True)
     provider = models.CharField(
         max_length=300,
         blank=True,
@@ -159,13 +187,40 @@ class Tools(models.Model):
         help_text="year of software release (planned or conducted)",
     )
     resources = models.CharField(
-        max_length=300,
+        max_length=1000,
         blank=True,
         help_text="documentation, literature, git-Repos, etc.",
     )
+    choices = [
+        (1, "pre-alpha"), 
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"),
+    ]
+    developmentState = models.IntegerField(choices=choices)
     
+    programmingLanguages = models.CharField(
+        max_length=200,
+        blank=True,
+    )
+    frameworksLibraries = models.CharField(
+        max_length=200,
+        blank=True,
+    )
+    databaseSystem = models.CharField(
+        max_length=200,
+        blank=True,
+    )
+    scale = models.CharField(
+        max_length=100,
+        blank=True,
+    )
+
+    technicalStandardsNorms = models.ManyToManyField(Norm)
+    technicalStandardsProtocols = models.ManyToManyField(Protocol)
     #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
-    image=models.ImageField(
+    image = models.ImageField(
         null=True,
         blank = True,
     )  #You need to install pillow
