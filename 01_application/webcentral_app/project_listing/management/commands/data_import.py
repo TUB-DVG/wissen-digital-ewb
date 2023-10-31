@@ -524,18 +524,39 @@ class Command(BaseCommand):
         targetGroupList = row[header.index('Zielgruppe')].split(",")
         processedTargetGroup = []
         for currentTargetGroup in targetGroupList:
-            if currentUsage[0] == " ":
+            if currentTargetGroup[0] == " ":
                 processedTargetGroup.append(currentTargetGroup[1:])
             else:
                 processedTargetGroup.append(currentTargetGroup)
             
-            objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
-            if len(objsForCurrentUsage) == 0:
-                Usage.objects.create(usage=processedUsageList[-1]) 
+            objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
+            if len(objsForCurrentTargetGroup) == 0:
+                TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
 
         
-        lifeCyclePhase = row[header.index('Lebenszyklusphase')]
-        userInterface = row[header.index('Nutzerschnittstelle')]
+        lifeCyclePhaseList = row[header.index('Lebenszyklusphase')].split(",")
+        processedlifeCyclePhase = []
+        for currentlifeCyclePhase in lifeCyclePhaseList:
+            if currentlifeCyclePhase[0] == " ":
+                processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
+            else:
+                processedlifeCyclePhase.append(currentlifeCyclePhase)
+            
+            objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhaseList=processedlifeCyclePhase[-1])
+            if len(objsForCurrentLifeCyclePhase) == 0:
+                LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
+
+        userInterfaceList = row[header.index('Nutzerschnittstelle')].split(",")
+        processedUserInterface = []
+        for currentUserInterface in userInterfaceList:
+            if currentUserInterface[0] == " ":
+                processedUserInterface.append(currentUserInterface[1:])
+            else:
+                processedUserInterface.append(currentUserInterface)
+            
+            objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
+            if len(objsForCurrentUserInterface) == 0:
+                UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
         
         lastUpdate = row[header.index('letztes Update')]
         license = row[header.index('Lizenz')]

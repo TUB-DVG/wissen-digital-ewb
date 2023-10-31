@@ -146,6 +146,24 @@ class Tools(models.Model):
         max_length=300,
         blank=True,
     )
+    released = models.BooleanField(
+        blank=True,
+        help_text = "whether the tool is released or not",
+    )
+    releasedPlanned = models.BooleanField(
+        blank=True,
+        help_text="whether publication is planned",
+    )
+    yearOfRelease = models.IntegerField(
+        blank=True,
+        help_text="year of software release (planned or conducted)",
+    )
+    resources = models.CharField(
+        max_length=300,
+        blank=True,
+        help_text="documentation, literature, git-Repos, etc.",
+    )
+    
     #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
     image=models.ImageField(
         null=True,
