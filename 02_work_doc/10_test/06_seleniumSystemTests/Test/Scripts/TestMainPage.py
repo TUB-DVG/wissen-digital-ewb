@@ -81,12 +81,16 @@ class TestMainPage(WebDriverSetup):
                 foundInstanceOfBim = True
                 firstColumnWebelement = startPageObj.getFirstColumn(rowElement)
                 firstColumnWebelement.click()
-                time.sleep(1)
+                self.driver.switch_to.window(self.driver.window_handles[-1])
+                time.sleep(2)
                 self.assertEqual(
                     "Energiewendebauen | 03EN1069E",
                     self.driver.title,
                     "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
+                self.driver.close()
+                self.driver.switch_to.window(self.driver.window_handles[0])
+                # 
                 break
         
         self.assertTrue(
@@ -95,7 +99,6 @@ class TestMainPage(WebDriverSetup):
         )
 
         # back to search results:
-        self.driver.back()
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         listOfTableRows = []
         checkedScientificProjects = 0
@@ -108,12 +111,14 @@ class TestMainPage(WebDriverSetup):
                 childRowElement = startPageObj.getChildEbElement(rowElement)
                 self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", rowElement)
                 childRowElement.click()
+                self.driver.switch_to.window(self.driver.window_handles[-1])
                 time.sleep(1)
                 self.assertTrue(
                     "Energiewendebauen" in self.driver.title,
                     "After clicking Forschungsprojekt it should redirect to Energiewendebauen page!",
                 )
-                self.driver.back()
+                self.driver.close()
+                self.driver.switch_to.window(self.driver.window_handles[0])
             if checkedScientificProjects == 2:
                 break
         listOfRowsInResultsTable = startPageObj.getSearchResults()
