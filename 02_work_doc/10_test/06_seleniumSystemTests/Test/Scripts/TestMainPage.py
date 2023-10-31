@@ -82,7 +82,7 @@ class TestMainPage(WebDriverSetup):
                 firstColumnWebelement = startPageObj.getFirstColumn(rowElement)
                 firstColumnWebelement.click()
                 self.driver.switch_to.window(self.driver.window_handles[-1])
-                time.sleep(1)
+                time.sleep(2)
                 self.assertEqual(
                     "Energiewendebauen | 03EN1069E",
                     self.driver.title,

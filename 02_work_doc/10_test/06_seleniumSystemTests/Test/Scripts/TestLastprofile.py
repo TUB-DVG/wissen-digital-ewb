@@ -145,7 +145,7 @@ class TestLastprofileTab(WebDriverSetup):
         loadProfileLink.click()
         time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[1])
-        time.sleep(1)
+        time.sleep(2)
         self.assertEqual(
             "Standardlastprofile Strom | BDEW",
             self.driver.title,
