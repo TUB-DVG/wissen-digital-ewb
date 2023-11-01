@@ -20,7 +20,7 @@ class UpdateProperties:
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.filter(
-        classification__classification="Digitales Werkzeug", 
+        # classification__classification="Digitales Werkzeug", 
         focus__focus="Technisch",
     ) # reads all data from table Teilprojekt
     filteredBy = [None]*3
@@ -38,7 +38,7 @@ def index(request):
             licence__icontains=licence,
             name__icontains=searched,
             focus__focus="Technisch",
-            classification__classification="Digitales Werkzeug",
+            # classification__classification="Digitales Werkzeug",
         )
         filteredBy = [usage, licence, lifeCyclePhase]
               
@@ -61,7 +61,10 @@ def indexBuisnessApplication(request):
     """serves a request for digital applications search
     
     """
-    applications = Tools.objects.filter(classification__classification="Digitale Anwendung", focus__focus="Betrieblich") # reads all data from table Teilprojekt
+    applications = Tools.objects.filter(
+        # classification__classification="Digitale Anwendung", 
+        focus__focus="Betrieblich"
+    ) # reads all data from table Teilprojekt
     
     filteredBy = [None]*3
     searched=None
@@ -77,7 +80,7 @@ def indexBuisnessApplication(request):
             lifeCyclePhase__icontains=lifeCyclePhase,
             licence__icontains=licence,
             name__icontains=searched,
-            classification__classification="Digitale Anwendung",
+            # classification__classification="Digitale Anwendung",
             focus__focus="Betrieblich",
         )
         filteredBy = [usage, licence, lifeCyclePhase]
