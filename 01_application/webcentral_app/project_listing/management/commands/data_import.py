@@ -560,7 +560,7 @@ class Command(BaseCommand):
         lifeCyclePhaseList = row[header.index('lifeCyclePhase')].split(",")
         processedlifeCyclePhase = []
         for currentlifeCyclePhase in lifeCyclePhaseList:
-            if currentlifeCyclePhase == "":
+            if currentlifeCyclePhase != "":
                 if currentlifeCyclePhase[0] == " ":
                     processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
                 else:
