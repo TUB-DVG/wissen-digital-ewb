@@ -5,8 +5,12 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 
 # maybe I need also the other models
-from tools_over.models import Tools
-
+from tools_over.models import (
+    Tools,
+    Usage,
+    Accessibility,
+    LifeCyclePhase,
+)
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -21,7 +25,7 @@ def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.filter(
         # classification__classification="Digitales Werkzeug", 
-        focus__focus="Technisch",
+        focus__focus="technisch",
     ) # reads all data from table Teilprojekt
     filteredBy = [None]*3
     searched=None
@@ -37,7 +41,7 @@ def index(request):
             lifeCyclePhase__icontains=lifeCyclePhase,
             licence__icontains=licence,
             name__icontains=searched,
-            focus__focus="Technisch",
+            focus__focus="technisch",
             # classification__classification="Digitales Werkzeug",
         )
         filteredBy = [usage, licence, lifeCyclePhase]
@@ -47,12 +51,31 @@ def index(request):
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
 
+    usageElements = Usage.objects.all()
+    usageNames = []
+    for currentUsage in usageElements:
+        usageNames.append(currentUsage.usage)
+
+    accessibilityElements = Accessibility.objects.all()
+    accessibilityNames = []
+    for currentAccessibility in accessibilityElements:
+        accessibilityNames.append(currentAccessibility.accessibility)
+
+    lifeCyclePhaseElements = LifeCyclePhase.objects.all()
+    lifeCyclePhaseNames = []
+    for currentLifeCyclePhase in lifeCyclePhaseElements:
+        lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
+    
+
     context = {
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'licence': filteredBy[1],
-        'lifeCyclePhase': filteredBy[2]
+        'lifeCyclePhase': filteredBy[2],
+        'usageFields': usageNames,
+        'accessibilityFields': accessibilityNames,
+        'lifeCyclePhaseFields': lifeCyclePhaseNames,
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
@@ -63,7 +86,7 @@ def indexBuisnessApplication(request):
     """
     applications = Tools.objects.filter(
         # classification__classification="Digitale Anwendung", 
-        focus__focus="Betrieblich"
+        focus__focus="betrieblich"
     ) # reads all data from table Teilprojekt
     
     filteredBy = [None]*3
@@ -81,7 +104,7 @@ def indexBuisnessApplication(request):
             licence__icontains=licence,
             name__icontains=searched,
             # classification__classification="Digitale Anwendung",
-            focus__focus="Betrieblich",
+            focus__focus="betrieblich",
         )
         filteredBy = [usage, licence, lifeCyclePhase]
               
