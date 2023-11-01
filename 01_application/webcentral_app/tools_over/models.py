@@ -150,10 +150,10 @@ class Tools(models.Model):
     lastUpdate = models.CharField(max_length = 100,
                                   help_text = "time (year/month/date) of the last update",
                                   blank = True)
-    licence = models.CharField(max_length = 200,
+    licence = models.CharField(max_length = 500,
                               help_text = "licence",
                               blank = True)
-    licenceNotes = models.CharField(max_length = 200,
+    licenceNotes = models.CharField(max_length = 500,
                               help_text = "licence notes",
                               blank = True)                              
     furtherInformation = models.CharField(max_length = 500,
@@ -176,14 +176,17 @@ class Tools(models.Model):
     )
     released = models.BooleanField(
         blank=True,
+        null=True,
         help_text = "whether the tool is released or not",
     )
     releasedPlanned = models.BooleanField(
         blank=True,
+        null=True,
         help_text="whether publication is planned",
     )
-    yearOfRelease = models.IntegerField(
+    yearOfRelease = models.CharField(
         blank=True,
+        max_length=100,
         help_text="year of software release (planned or conducted)",
     )
     resources = models.CharField(
@@ -198,24 +201,24 @@ class Tools(models.Model):
         (4, "release candidate"),
         (5, "release"),
     ]
-    developmentState = models.IntegerField(choices=choices)
+    developmentState = models.IntegerField(
+        choices=choices, 
+        null=True,
+    )
     
     programmingLanguages = models.CharField(
-        max_length=200,
+        max_length=500,
         blank=True,
     )
     frameworksLibraries = models.CharField(
-        max_length=200,
+        max_length=500,
         blank=True,
     )
     databaseSystem = models.CharField(
-        max_length=200,
+        max_length=500,
         blank=True,
     )
-    scale = models.CharField(
-        max_length=100,
-        blank=True,
-    )
+    scale = models.ManyToManyField(Scale)
 
     technicalStandardsNorms = models.ManyToManyField(Norm)
     technicalStandardsProtocols = models.ManyToManyField(Protocol)

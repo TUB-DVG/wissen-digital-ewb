@@ -503,79 +503,85 @@ class Command(BaseCommand):
         applicationAreaList = applicationArea.split(",")
         processedApplicationAreaList = []
         for currentApplicationArea in applicationAreaList:
-            if currentApplicationArea[0] == " ":
-                processedApplicationAreaList.append(currentApplicationArea[1:])
-            else:
-                processedApplicationAreaList.append(currentApplicationArea)
-            objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
-                applicationArea=processedApplicationAreaList[-1]
-            )
-            if len(objsForCurrentApplicationAreaName) == 0:
-                ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
+            if currentApplicationArea != "":
+                if currentApplicationArea[0] == " ":
+                    processedApplicationAreaList.append(currentApplicationArea[1:])
+                else:
+                    processedApplicationAreaList.append(currentApplicationArea)
+                objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
+                    applicationArea=processedApplicationAreaList[-1]
+                )
+                if len(objsForCurrentApplicationAreaName) == 0:
+                    ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
             
         # usage is the new category and the column is called "Nutzung" in the csv?
         # category = row[header.index('Kategorie')]
         usageList = row[header.index('usage')].split(",")
         processedUsageList = []
         for currentUsage in usageList:
-            if currentUsage[0] == " ":
-                processedUsageList.append(currentUsage[1:])
-            else:
-                processedUsageList.append(currentUsage)
-            
-            objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
-            if len(objsForCurrentUsage) == 0:
-                Usage.objects.create(usage=processedUsageList[-1])       
+            if currentUsage != "":
+                if currentUsage[0] == " ":
+                    processedUsageList.append(currentUsage[1:])
+                else:
+                    processedUsageList.append(currentUsage)
+                
+                objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
+                if len(objsForCurrentUsage) == 0:
+                    Usage.objects.create(usage=processedUsageList[-1])       
         
         targetGroupList = row[header.index('targetGroup')].split(",")
         processedTargetGroup = []
         for currentTargetGroup in targetGroupList:
-            if currentTargetGroup[0] == " ":
-                processedTargetGroup.append(currentTargetGroup[1:])
-            else:
-                processedTargetGroup.append(currentTargetGroup)
-            
-            objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
-            if len(objsForCurrentTargetGroup) == 0:
-                TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
+            if currentTargetGroup != "":
+                if currentTargetGroup[0] == " ":
+                    processedTargetGroup.append(currentTargetGroup[1:])
+                else:
+                    processedTargetGroup.append(currentTargetGroup)
+                
+                objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
+                if len(objsForCurrentTargetGroup) == 0:
+                    TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
 
         
         accessibilityList = row[header.index('accessibility')].split(",")
         processedAccessibilityList = []
         for currentAccessibility in accessibilityList:
-            if currentAccessibility[0] == " ":
-                processedAccessibilityList.append(currentAccessibility[1:])
-            else:
-                processedAccessibilityList.append(currentAccessibility)
-            
-            objsForCurrentAccessibility = Accessibility.objects.filter(accessibility=processedAccessibilityList[-1])
-            if len(objsForCurrentAccessibility) == 0:
-                Accessibility.objects.create(accessibility=processedAccessibilityList[-1])         
+            if currentAccessibility != "":
+                if currentAccessibility[0] == " ":
+                    processedAccessibilityList.append(currentAccessibility[1:])
+                else:
+                    processedAccessibilityList.append(currentAccessibility)
+                
+                objsForCurrentAccessibility = Accessibility.objects.filter(accessibility=processedAccessibilityList[-1])
+                if len(objsForCurrentAccessibility) == 0:
+                    Accessibility.objects.create(accessibility=processedAccessibilityList[-1])         
 
 
         lifeCyclePhaseList = row[header.index('lifeCyclePhase')].split(",")
         processedlifeCyclePhase = []
         for currentlifeCyclePhase in lifeCyclePhaseList:
-            if currentlifeCyclePhase[0] == " ":
-                processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
-            else:
-                processedlifeCyclePhase.append(currentlifeCyclePhase)
-            
-            objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhaseList=processedlifeCyclePhase[-1])
-            if len(objsForCurrentLifeCyclePhase) == 0:
-                LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
+            if currentlifeCyclePhase == "":
+                if currentlifeCyclePhase[0] == " ":
+                    processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
+                else:
+                    processedlifeCyclePhase.append(currentlifeCyclePhase)
+                
+                objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhase=processedlifeCyclePhase[-1])
+                if len(objsForCurrentLifeCyclePhase) == 0:
+                    LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
 
         userInterfaceList = row[header.index('userInterface')].split(",")
         processedUserInterface = []
         for currentUserInterface in userInterfaceList:
-            if currentUserInterface[0] == " ":
-                processedUserInterface.append(currentUserInterface[1:])
-            else:
-                processedUserInterface.append(currentUserInterface)
-            
-            objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
-            if len(objsForCurrentUserInterface) == 0:
-                UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
+            if currentUserInterface != "":
+                if currentUserInterface[0] == " ":
+                    processedUserInterface.append(currentUserInterface[1:])
+                else:
+                    processedUserInterface.append(currentUserInterface)
+                
+                objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
+                if len(objsForCurrentUserInterface) == 0:
+                    UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
         
         lastUpdate = row[header.index('lastUpdate')]
         license = row[header.index('licence')]
@@ -601,14 +607,15 @@ class Command(BaseCommand):
         scaleList = row[header.index('scale')].split(",")
         processedScaleList = []
         for currentScale in scaleList:
-            if currentScale[0] == " ":
-                processedScaleList.append(currentScale[1:])
-            else:
-                processedScaleList.append(currentScale)
-            
-            objsForCurrentScale = Scale.objects.filter(scale=processedScaleList[-1])
-            if len(objsForCurrentScale) == 0:
-                Scale.objects.create(scale=processedScaleList[-1]) 
+            if currentScale != "":
+                if currentScale[0] == " ":
+                    processedScaleList.append(currentScale[1:])
+                else:
+                    processedScaleList.append(currentScale)
+                
+                objsForCurrentScale = Scale.objects.filter(scale=processedScaleList[-1])
+                if len(objsForCurrentScale) == 0:
+                    Scale.objects.create(scale=processedScaleList[-1]) 
         
         released = row[header.index('released')]
         if released == "":
@@ -623,10 +630,10 @@ class Command(BaseCommand):
             releasedPlanned = bool(int(releasedPlanned)) 
 
         yearOfRelease = row[header.index('yearOfRelease')]
-        if yearOfRelease == "":
-            yearOfRelease = None
-        else:
-            yearOfRelease = int(yearOfRelease)
+        # if yearOfRelease == "":
+        #     yearOfRelease = None
+        # else:
+        #     yearOfRelease = int(yearOfRelease)
         
         developmentState = row[header.index('developmentState')]
         if developmentState == "":
@@ -637,27 +644,29 @@ class Command(BaseCommand):
         technicalStandardsNormsList = row[header.index('technicalStandardsNorms')].split(",")
         processedTechnicalStandardsNorms = []
         for currentTechnicalStandardsNorms in technicalStandardsNormsList:
-            if currentTechnicalStandardsNorms[0] == " ":
-                currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
+            if currentTechnicalStandardsNorms != "":
+                if currentTechnicalStandardsNorms[0] == " ":
+                    currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
 
-            objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
-            if len(objsForCurrentTechnicalStandardsNorms) == 0:
-                print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
-            else:
-                processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
+                objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
+                if len(objsForCurrentTechnicalStandardsNorms) == 0:
+                    print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
+                else:
+                    processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
 
 
         technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
         processedTechnicalStandardsProtocols = []
         for currentTechnicalStandardsProtocols in technicalStandardsProtocolsList:
-            if currentTechnicalStandardsProtocols[0] == " ":
-                currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
+            if currentTechnicalStandardsProtocols != "":
+                if currentTechnicalStandardsProtocols[0] == " ":
+                    currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
 
-            objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
-            if len(objsForCurrentTechnicalStandardsProtocols) == 0:
-                print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
-            else:
-                processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
+                objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
+                if len(objsForCurrentTechnicalStandardsProtocols) == 0:
+                    print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
+                else:
+                    processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
 
         focusList = row[header.index('focus')].split(",")
         processedFocusList = []
@@ -681,6 +690,10 @@ class Command(BaseCommand):
             if len(objsForCurrentClassification) == 0:
                 Classification.objects.create(classification=processedClassificationList[-1]) 
         # focusList = [x.replace(" ", "") for x in focusList]
+        userInterfaceNotes = row[header.index('userInterfaceNotes')]
+        programmingLanguages = row[header.index('programmingLanguages')]
+        frameworksLibraries = row[header.index('frameworksLibraries')]
+        databaseSystem = row[header.index('databaseSystem')]
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
         applicationAreaElements = ApplicationArea.objects.filter(applicationArea__in=processedApplicationAreaList)
@@ -709,7 +722,7 @@ class Command(BaseCommand):
             targetGroup__in=targetGroupElements, 
             lastUpdate=lastUpdate, 
             licence=license, 
-            licenseNotes=licenseNotes,
+            licenceNotes=licenseNotes,
             furtherInformation=furtherInfos, 
             alternatives=alternatives, 
             specificApplication__in=specificApplicationElements, 
