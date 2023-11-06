@@ -41,8 +41,8 @@ def index(request):
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(classification__classification__icontains=searched)
-        #criterionToolsFour = Q(name__icontains=searched)
-        tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+        criterionToolsFour = Q(name__icontains=searched)
+        tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
                         focus__focus="technisch"
                         # classification__classification="Digitales Werkzeug",
@@ -110,8 +110,8 @@ def indexBuisnessApplication(request):
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(classification__classification__icontains=searched)
-        #criterionToolsFour = Q(name__icontains=searched)
-        applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+        criterionToolsFour = Q(name__icontains=searched)
+        applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
                         focus__focus="betrieblich"
                         # classification__classification="Digitales Werkzeug",
