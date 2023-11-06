@@ -3,7 +3,7 @@
 # from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
-
+from django.db.models import Q, Count
 # maybe I need also the other models
 from tools_over.models import (
     Tools,
@@ -11,6 +11,7 @@ from tools_over.models import (
     Accessibility,
     LifeCyclePhase,
 )
+# from project_listing.models import Subproject
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -33,20 +34,24 @@ def index(request):
     if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
         (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
         usage = request.GET.get('u')
-        licence = request.GET.get('l')
+        accessibility = request.GET.get('l')
         lifeCyclePhase = request.GET.get('lcp')
         searched = request.GET.get('searched')
-        tools = Tools.objects.filter(
-            usage__icontains=usage,
-            lifeCyclePhase__icontains=lifeCyclePhase,
-            licence__icontains=licence,
-            name__icontains=searched,
-            focus__focus="technisch",
-            # classification__classification="Digitales Werkzeug",
-        )
-        filteredBy = [usage, licence, lifeCyclePhase]
+        
+        criterionToolsOne = Q(programmingLanguages__icontains=searched)
+        criterionToolsTwo = Q(scale__scale__icontains=searched)
+        criterionToolsThree = Q(classification__classification__icontains=searched)
+        #criterionToolsFour = Q(name__icontains=searched)
+        tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+                        accessibility__accessibility__icontains=accessibility,
+                        focus__focus="technisch"
+                        # classification__classification="Digitales Werkzeug",
+        ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
+        # having distinct removes the duplicates, 
+        # but filters out e.g., solely open-source tools!
+        filteredBy = [usage, accessibility, lifeCyclePhase]
               
-    tools = list(sorted(tools, key=lambda obj:obj.name))
+    tools = list(sorted(tools, key=lambda obj:obj.name))  
     toolsPaginator= Paginator(tools,12)
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
@@ -71,7 +76,7 @@ def index(request):
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
-        'licence': filteredBy[1],
+        'accessibility': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
         'accessibilityFields': accessibilityNames,
@@ -88,7 +93,10 @@ def indexBuisnessApplication(request):
         # classification__classification="Digitale Anwendung", 
         focus__focus="betrieblich"
     ) # reads all data from table Teilprojekt
-    
+    usage = request.GET.get('u')
+    accessibility = request.GET.get('l')
+    lifeCyclePhase = request.GET.get('lcp')
+    searched = request.GET.get('searched')
     filteredBy = [None]*3
     searched=None
  
@@ -98,27 +106,49 @@ def indexBuisnessApplication(request):
         licence = request.GET.get('l')
         lifeCyclePhase = request.GET.get('lcp')
         searched = request.GET.get('searched')
-        applications = Tools.objects.filter(
-            usage__icontains=usage,
-            lifeCyclePhase__icontains=lifeCyclePhase,
-            licence__icontains=licence,
-            name__icontains=searched,
-            # classification__classification="Digitale Anwendung",
-            focus__focus="betrieblich",
-        )
-        filteredBy = [usage, licence, lifeCyclePhase]
+        
+        criterionToolsOne = Q(programmingLanguages__icontains=searched)
+        criterionToolsTwo = Q(scale__scale__icontains=searched)
+        criterionToolsThree = Q(classification__classification__icontains=searched)
+        #criterionToolsFour = Q(name__icontains=searched)
+        applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+                        accessibility__accessibility__icontains=accessibility,
+                        focus__focus="betrieblich"
+                        # classification__classification="Digitales Werkzeug",
+        ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
+        # having distinct removes the duplicates, 
+        # but filters out e.g., solely open-source tools!
+        filteredBy = [usage, accessibility, lifeCyclePhase]
               
     applications = list(sorted(applications, key=lambda obj:obj.name))
     toolsPaginator= Paginator(applications,12)
     pageNum= request.GET.get('page',None)
     page=toolsPaginator.get_page(pageNum)
 
+    usageElements = Usage.objects.all()
+    usageNames = []
+    for currentUsage in usageElements:
+        usageNames.append(currentUsage.usage)
+
+    accessibilityElements = Accessibility.objects.all()
+    accessibilityNames = []
+    for currentAccessibility in accessibilityElements:
+        accessibilityNames.append(currentAccessibility.accessibility)
+
+    lifeCyclePhaseElements = LifeCyclePhase.objects.all()
+    lifeCyclePhaseNames = []
+    for currentLifeCyclePhase in lifeCyclePhaseElements:
+        lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
+
     context = {
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'licence': filteredBy[1],
-        'lifeCyclePhase': filteredBy[2]
+        'lifeCyclePhase': filteredBy[2],
+        'usageFields': usageNames,
+        'accessibilityFields': accessibilityNames,
+        'lifeCyclePhaseFields': lifeCyclePhaseNames,
     }
 
     return render(request, 'tools_over/buisnessApplications-listings.html', context)  
@@ -126,10 +156,25 @@ def indexBuisnessApplication(request):
 def buisnessApplicationView(request, id):
     """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
-    usages = tool.usage.split(", ")
-    lifeCyclePhases = tool.lifeCyclePhase.split(", ")
-    continuousUpdates = tool.lastUpdate
+    applicationAreas = tool.applicationArea.all()
+    usages = tool.usage.all()#.split(", ")
+    targetGroups = tool.targetGroup.all()
+    lifeCyclePhases = tool.lifeCyclePhase.all()#.split(", ")
+    userInterfaces = tool.userInterface.all()
+    accessibilities = tool.accessibility.all()
+    specificApplications = tool.specificApplication.all()
+    # print(specificApplications)
+    # print(len(specificApplications))
+    # print([str(a.referenceNumber_id) for a in specificApplications])
+    scales = tool.scale.all()
+    technicalStandardsNorms = tool.technicalStandardsNorms.all()
+    technicalStandardsProtocols = tool.technicalStandardsProtocols.all()
+    classifications = tool.classification.all() 
+    focus = tool.focus.all()
+    resources = tool.resources.split(", ")
     
+    continuousUpdates = tool.lastUpdate
+
     lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
     continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
 
@@ -141,8 +186,19 @@ def buisnessApplicationView(request, id):
 
     context = {
         'tool': tool,
-        'usages': usages,
-        'lifeCyclePhases': lifeCyclePhases,
+        'applicationAreas': ', '.join([a.applicationArea for a in applicationAreas]),
+        'usages': ', '.join([a.usage for a in usages]),
+        'targetGroups': ', '.join([a.targetGroup for a in targetGroups]),
+        'lifeCyclePhases': ', '.join([a.lifeCyclePhase for a in lifeCyclePhases]),
+        'userInterfaces': ', '.join([a.userInterface for a in userInterfaces]),
+        'accessibilities': ', '.join([a.accessibility for a in accessibilities]),
+        'specificApplications': [str(a.referenceNumber_id) for a in specificApplications], #specificApplications, #
+        'scales': ', '.join([a.scale for a in scales]),
+        'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
+        'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
+        'classifications': ', '.join([a.classification for a in classifications]),
+        'focus': ', '.join([a.focus for a in focus]),       
+        'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
@@ -156,8 +212,23 @@ def buisnessApplicationView(request, id):
 def toolView(request, id):
     """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
-    usages = tool.usage.split(", ")
-    lifeCyclePhases = tool.lifeCyclePhase.split(", ")
+    applicationAreas = tool.applicationArea.all()
+    usages = tool.usage.all()#.split(", ")
+    targetGroups = tool.targetGroup.all()
+    lifeCyclePhases = tool.lifeCyclePhase.all()#.split(", ")
+    userInterfaces = tool.userInterface.all()
+    accessibilities = tool.accessibility.all()
+    specificApplications = tool.specificApplication.all()
+    # print(specificApplications)
+    # print(len(specificApplications))
+    # print([str(a.referenceNumber_id) for a in specificApplications])
+    scales = tool.scale.all()
+    technicalStandardsNorms = tool.technicalStandardsNorms.all()
+    technicalStandardsProtocols = tool.technicalStandardsProtocols.all()
+    classifications = tool.classification.all() 
+    focus = tool.focus.all()
+    resources = tool.resources.split(", ")
+    
     continuousUpdates = tool.lastUpdate
     
     lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
@@ -171,8 +242,19 @@ def toolView(request, id):
 
     context = {
         'tool': tool,
-        'usages': usages,
-        'lifeCyclePhases': lifeCyclePhases,
+        'applicationAreas': ', '.join([a.applicationArea for a in applicationAreas]),
+        'usages': ', '.join([a.usage for a in usages]),
+        'targetGroups': ', '.join([a.targetGroup for a in targetGroups]),
+        'lifeCyclePhases': ', '.join([a.lifeCyclePhase for a in lifeCyclePhases]),
+        'userInterfaces': ', '.join([a.userInterface for a in userInterfaces]),
+        'accessibilities': ', '.join([a.accessibility for a in accessibilities]),
+        'specificApplications': [str(a.referenceNumber_id) for a in specificApplications], #specificApplications, #
+        'scales': ', '.join([a.scale for a in scales]),
+        'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
+        'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
+        'classifications': ', '.join([a.classification for a in classifications]),
+        'focus': ', '.join([a.focus for a in focus]),       
+        'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
