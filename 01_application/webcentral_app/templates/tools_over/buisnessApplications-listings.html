@@ -48,8 +48,11 @@
                     name="u"
                     id="kategorie-input-tools"
                     title="Filtern nach der Kategorie der Anwendung">
-                    <option value="">Kategorie</option>
-                    <option value="Datenverwaltung"
+                    <option value="">Nutzung</option>
+                    {% for currentUsage in usageFields %}
+                      <option value="{{ currentUsage }}">{{ currentUsage }}</option>
+                    {% endfor %}
+                    <!-- <option value="Datenverwaltung"
                       {% if usage == "Datenverwaltung" %}
                         selected="selected" 
                       {% endif %}>Datenverwaltung
@@ -138,7 +141,7 @@
                       {% if usage == "Machine Learning" %}
                         selected="selected" 
                       {% endif %}>Machine Learning
-                    </option>
+                    </option> -->
                   </select>
                   </div>
                   <!-- Select items filter "Lizenz"-->
@@ -147,7 +150,12 @@
                       aria-label=".form-select-sm example"
                       name="l" id="lizenz-input-tools"
                       title="Filtern nach der Lizenz der Anwendung">
-                      <option value="">Lizenz
+                      <option value="">Zugänglichkeit
+                      </option>
+                      {% for currentAccessibility in accessibilityFields %}
+                        <option value="{{ currentAccessibility }}">{{ currentAccessibility }}</option>
+                      {% endfor %}
+                      <!-- <option value="">Lizenz
                       </option>
                       <option value="kostenpflichtig"
                         {% if licence == "kostenpflichtig" %}
@@ -163,7 +171,7 @@
                         {% if licence == "kostenfrei" %}
                           selected="selected"
                         {% endif %}>Kostenfrei
-                      </option>
+                      </option> -->
                     </select>
                 </div>
                 <!-- Search item "Lebenszyklusphase" -->
@@ -174,6 +182,11 @@
                     id="lzp-input-tools"
                     title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
                     <option value="">Lebenszyklusphase
+                    </option>
+                    {% for currentLifeCyclePhase in lifeCyclePhaseFields %}
+                    <option value="{{ currentLifeCyclePhase }}">{{ currentLifeCyclePhase }}</option>
+                  {% endfor %}                     
+                    <!-- <option value="">Lebenszyklusphase
                     </option>
                     <option value="Planung"
                       {% if lifeCyclePhase == "Planung" %}
@@ -194,7 +207,7 @@
                       {% if lifeCyclePhase == "Umsetzung" %}
                         selected="selected"
                       {% endif %}>Umsetzung
-                    </option>
+                    </option> -->
                   </select>
                 </div>
                 <!-- Search item -->
