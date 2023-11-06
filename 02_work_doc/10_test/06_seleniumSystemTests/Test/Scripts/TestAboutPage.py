@@ -110,7 +110,7 @@ class TestAboutPage(WebDriverSetup):
         linkToUDKPage.click()
         time.sleep(1)
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        time.sleep(1)
+        time.sleep(3)
         self.assertEqual(
             "Energiewendebauen | Berlin Career College/Zentralinstitut für Weiterbildung (ZIW)",
             self.driver.title,

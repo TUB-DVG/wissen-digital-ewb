@@ -77,14 +77,14 @@ class TestMainPage(WebDriverSetup):
         foundInstanceOfBim = False
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         for rowElement in listOfRowsInResultsTable:
-            if rowElement.text.find("EnOB: AluPV") >= 0:
+            if rowElement.text.find("BIM2SIM") >= 0:
                 foundInstanceOfBim = True
                 firstColumnWebelement = startPageObj.getFirstColumn(rowElement)
                 firstColumnWebelement.click()
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 time.sleep(2)
                 self.assertEqual(
-                    "Energiewendebauen | 03EN1069E",
+                    "BIM2SIM",
                     self.driver.title,
                     "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
