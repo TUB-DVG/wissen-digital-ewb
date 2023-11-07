@@ -88,11 +88,6 @@ class TestBusinessAppPage(WebDriverSetup):
             f"After clicking on '{cardName}'-card, the detail page of the card should appear...",
         )
 
-        # # check if further information is clickable
-        # breakpoint()
-        # furtherInfoLink = businessAppObj.getFurtherInfoOnDetailsPage()
-        # furtherInfoLink.click()
-
     def testTagOnDetailPage(self):
         """
         
