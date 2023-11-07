@@ -88,8 +88,9 @@ class TestMainPage(WebDriverSetup):
                     self.driver.title,
                     "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
-                self.driver.close()
-                self.driver.switch_to.window(self.driver.window_handles[0])
+                # self.driver.close()
+                # breakpoint()
+                # self.driver.switch_to.window(self.driver.window_handles[0])
                 # 
                 break
         
@@ -121,6 +122,8 @@ class TestMainPage(WebDriverSetup):
                 self.driver.switch_to.window(self.driver.window_handles[0])
             if checkedScientificProjects == 2:
                 break
+        self.driver.back()
+        time.sleep(1)
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         textOnFirstSearchResult = listOfRowsInResultsTable[1].text
         # on first site, "next" and "last" should be present:

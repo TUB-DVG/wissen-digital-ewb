@@ -40,7 +40,36 @@ class SearchPage(object):
             By.XPATH,
             Locator.accessabilityDropdownElement,
         )
+    
+    def getAccessabilityParagraph(self, searchText):
+        """Return the accessability-value from details-page
+        
+        searchText: string
+        Text, which is written inside the paragraph
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            f"//p[contains(text(), {searchText})]",
+        )
 
+    def getLifeCyclePhaseSpan(self, searchText):
+        """Return the LifeCyclePhase-value from details-page
+        
+        searchText: string
+        Text, which is written inside the span
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            f"//span[contains(text(), {searchText})]",
+        )
+
+    def getLifeCyclePhaseDropdown(self):
+        """Return the webelement corresponding to the lifecyclePhaseDropdown on searchpage 
+        """
+        return self.driver.find_elements(
+            By.XPATH,
+            Locator.lifeCyclePhaseDropdownElement,
+        )
 
     def getSearchSubmitButton(self):
         """Return the search submit button
