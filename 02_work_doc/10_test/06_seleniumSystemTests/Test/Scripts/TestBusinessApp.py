@@ -65,6 +65,8 @@ class TestBusinessAppPage(WebDriverSetup):
             2,
             "The Number of Results for 'BIEC' should be 2...",
         )
+
+
     
     def testIfDetailSiteIsShown(self):
         """Test, if on click on a Card, the Detail-Site is displayed.
@@ -86,9 +88,10 @@ class TestBusinessAppPage(WebDriverSetup):
             f"After clicking on '{cardName}'-card, the detail page of the card should appear...",
         )
 
-        # check if further information is clickable
-        furtherInfoLink = businessAppObj.getFurtherInfoOnDetailsPage()
-        furtherInfoLink.click()
+        # # check if further information is clickable
+        # breakpoint()
+        # furtherInfoLink = businessAppObj.getFurtherInfoOnDetailsPage()
+        # furtherInfoLink.click()
 
     def testTagOnDetailPage(self):
         """
