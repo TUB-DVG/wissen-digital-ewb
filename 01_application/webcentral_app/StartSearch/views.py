@@ -28,7 +28,6 @@ def findPicturesForFocus(searchResultObj, tool=False):
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
         focusStrList = ["technisch"]
-    print(focusStrList)
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
         focusStr = focusStrList[0]
@@ -78,7 +77,6 @@ def findPicturesForFocus(searchResultObj, tool=False):
             pass
     elif len(focusStrList) == 4:
         pathStr += "symbol_technical_operational_ecological_legal_focus.svg"
-    print(pathStr)
     return pathStr
 
 def startSearch(request):
