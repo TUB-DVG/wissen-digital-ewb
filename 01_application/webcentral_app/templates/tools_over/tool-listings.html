@@ -48,97 +48,10 @@
                     name="u"
                     id="kategorie-input-tools"
                     title="Filtern nach der Kategorie der Anwendung">
-                    <option value="">Kategorie</option>
-                    <option value="Datenverwaltung"
-                      {% if usage == "Datenverwaltung" %}
-                        selected="selected" 
-                      {% endif %}>Datenverwaltung
-                    </option>
-                    <option value="Anzeige und Gestaltung"
-                      {% if usage == "Anzeige und Gestaltung" %}
-                        selected="selected" 
-                      {% endif %}>Anzeige und Gestaltung
-                    </option>
-                    <option value="Modellbildung"
-                      {% if usage == "Modellbildung" %}
-                        selected="selected" 
-                      {% endif %}>Modellbildung
-                    </option>
-                    <option value="Cloud-basiertes Echtzeit Monitoring"
-                      {% if usage == "Cloud-basiertes Echtzeit Monitoring" %}
-                        selected="selected" 
-                      {% endif %}>Cloud-basiertes Echtzeit Monitoring
-                    </option>
-                    <option value="Programmiersprache"
-                      {% if usage == "Programmiersprache" %}
-                        selected="selected" 
-                      {% endif %}>Programmiersprache
-                    </option>
-                    <option value="Konstruktion"
-                      {% if usage == "Konstruktion" %}
-                        selected="selected" 
-                      {% endif %}>Konstruktion
-                    </option>
-                    <option value="Cloud Anwendung"
-                      {% if usage == "Cloud Anwendung" %}
-                        selected="selected" 
-                      {% endif %}>Cloud Anwendung
-                    </option>
-                    <option value="Analyse"
-                      {% if usage == "Analyse" %}
-                        selected="selected" 
-                      {% endif %}>Analyse
-                    </option>
-                    <option value="Modellierung"
-                      {% if usage == "Modellierung" %}
-                        selected="selected" 
-                      {% endif %}>Modellierung
-                    </option>
-                    <option value="Simulation"
-                      {% if usage == "Simulation" %}
-                        selected="selected" 
-                      {% endif %}>Simulation
-                    </option>
-                    <option value="Energiemanagement"
-                      {% if usage == "Energiemanagement" %}
-                        selected="selected"
-                      {% endif %}>Energiemanagement
-                    </option>
-                    <option value="Betriebsoptimierung"
-                      {% if usage == "Betriebsoptimierung" %}
-                        selected="selected" 
-                      {% endif %}>Betriebsoptimierung
-                    </option>
-                    <option value="Datenbankmanagement"
-                      {% if usage == "Datenbankmanagement" %}
-                        selected="selected" 
-                      {% endif %}>Datenbankmanagement
-                    </option>
-                    <option value="Berechnung"
-                      {% if usage == "Berechnung" %}
-                        selected="selected"
-                      {% endif %}>Berechnung
-                    </option>
-                    <option value="Programmierumgebung"
-                      {% if usage == "Programmierumgebung" %}
-                        selected="selected" 
-                      {% endif %}>Programmierumgebung
-                    </option>
-                    <option value="Visualisierung"
-                      {% if usage == "Visualisierung" %}
-                        selected="selected" 
-                      {% endif %}>Visualisierung
-                    </option>
-                    <option value="Modellanalyse"
-                      {% if usage == "Modellanalyse" %}
-                        selected="selected" 
-                      {% endif %}>Modellanalyse
-                    </option>
-                    <option value="Machine Learning"
-                      {% if usage == "Machine Learning" %}
-                        selected="selected" 
-                      {% endif %}>Machine Learning
-                    </option>
+                    <option value="">Nutzung</option>
+                    {% for currentUsage in usageFields %}
+                      <option value="{{ currentUsage }}">{{ currentUsage }}</option>
+                    {% endfor %}
                   </select>
                   </div>
                   <!-- Select items filter "Lizenz"-->
@@ -147,23 +60,11 @@
                       aria-label=".form-select-sm example"
                       name="l" id="lizenz-input-tools"
                       title="Filtern nach der Lizenz der Anwendung">
-                      <option value="">Lizenz
+                      <option value="">Zugänglichkeit
                       </option>
-                      <option value="kostenpflichtig"
-                        {% if licence == "kostenpflichtig" %}
-                          selected="selected"
-                        {% endif %}>Kostenpflichtig
-                      </option>
-                      <option value="Open-Source"
-                        {% if licence == "Open-Source" %}
-                          selected="selected"
-                        {% endif %}>Open-Source
-                      </option>
-                      <option value="kostenfrei"
-                        {% if licence == "kostenfrei" %}
-                          selected="selected"
-                        {% endif %}>Kostenfrei
-                      </option>
+                      {% for currentAccessibility in accessibilityFields %}
+                        <option value="{{ currentAccessibility }}">{{ currentAccessibility }}</option>
+                      {% endfor %}
                     </select>
                 </div>
                 <!-- Search item "Lebenszyklusphase" -->
@@ -175,26 +76,9 @@
                     title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
                     <option value="">Lebenszyklusphase
                     </option>
-                    <option value="Planung"
-                      {% if lifeCyclePhase == "Planung" %}
-                        selected="selected" 
-                      {% endif %}>Planung
-                    </option>
-                    <option value="Vorplanung"
-                      {% if lifeCyclePhase == "Vorplanung" %}
-                        selected="selected" 
-                      {% endif %}>Vorplanung
-                    </option>
-                    <option value="Betrieb"
-                      {% if lifeCyclePhase == "Betrieb" %}
-                        selected="selected"
-                      {% endif %}>Betrieb
-                    </option>
-                    <option value="Umsetzung"
-                      {% if lifeCyclePhase == "Umsetzung" %}
-                        selected="selected"
-                      {% endif %}>Umsetzung
-                    </option>
+                    {% for currentLifeCyclePhase in lifeCyclePhaseFields %}
+                    <option value="{{ currentLifeCyclePhase }}">{{ currentLifeCyclePhase }}</option>
+                  {% endfor %}                    
                   </select>
                 </div>
                 <!-- Search item -->
@@ -230,7 +114,7 @@
             <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
               Suchbegriff: {{search}}
             </a>
-            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i> 
             </a>
           </div>
@@ -239,18 +123,18 @@
         {% if usage %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">Usage:{{usage}}
+            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">Nutzung:{{usage}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
         </li>
         {% endif %} 
-        {% if licence %}
+        {% if accessibility %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l={{licence}}&lcp=">{{licence}}
+            <a href="/tool_list/?searched=&u=&l={{accessibility.accessibility}}&lcp=">Zugänglichkeit: {{accessibility}}
             </a>
             <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
@@ -261,9 +145,9 @@
         {% if lifeCyclePhase %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{{lifeCyclePhase}}
+            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">Lebenszyklusphase: {{lifeCyclePhase}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp=">
+            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp=">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
@@ -283,11 +167,11 @@
           <div class="pagination">
             <span class="step-links">
               {% if page.has_previous %}
-              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1">
+              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1">
                 &laquo; erste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}">
                 vorherige
               </a>
               {% endif %}
@@ -297,11 +181,11 @@
               </span>
               &nbsp &nbsp
               {% if page.has_next %}
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
                 nächste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}">
                 letzte &raquo;
               </a>
               &nbsp &nbsp
