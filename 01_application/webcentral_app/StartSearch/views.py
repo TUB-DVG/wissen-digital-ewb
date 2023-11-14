@@ -27,52 +27,51 @@ def findPicturesForFocus(searchResultObj, tool=False):
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
-        focusStrList = ["Technisch"]
-    
+        focusStrList = ["technisch"]
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
         focusStr = focusStrList[0]
-        if focusStr == "Technisch":
+        if focusStr == "technisch":
             pathStr += "symbol_technical_focus.svg"
-        elif focusStr == "Betrieblich":
+        elif focusStr == "betrieblich":
             pathStr += "symbol_operational_focus.svg"
-        elif focusStr == "Rechtlich":
+        elif focusStr == "rechtlich":
             pathStr += "symbol_legal_focus.svg"
-        elif focusStr == "Ökologisch":
+        elif focusStr == "ökologisch":
             pathStr += "symbol_ecological_focus.svg"
         else:
             pass
     elif len(focusStrList) == 2:
-        if "Betrieblich" in focusStrList and "Technisch" in focusStrList:
+        if "betrieblich" in focusStrList and "technisch" in focusStrList:
             pathStr += "symbol_technical_operational_focus.svg"
-        elif "Betrieblich" in focusStrList and "Ökologisch" in focusStrList:
+        elif "betrieblich" in focusStrList and "ökologisch" in focusStrList:
             pathStr += "symbol_operational_ecological_focus.svg"
-        elif "Betrieblich" in focusStrList and "Rechtlich" in focusStrList:
+        elif "betrieblich" in focusStrList and "rechtlich" in focusStrList:
             pathStr += "symbol_operational_legal_focus.svg"
-        elif "Technisch" in focusStrList and "Ökologisch" in focusStrList:
+        elif "technisch" in focusStrList and "ökologisch" in focusStrList:
             pathStr += "symbol_technical_ecological_focus.svg"
-        elif "Technisch" in focusStrList and "Rechtlich" in focusStrList:
+        elif "technisch" in focusStrList and "rechtlich" in focusStrList:
             pathStr += "symbol_technical_legal_focus.svg"
-        elif "Ökologisch" in focusStrList and "Rechtlich" in focusStrList:
+        elif "ökologisch" in focusStrList and "rechtlich" in focusStrList:
             pathStr += "symbol_ecological_legal_focus.svg"
         else:
             pass
     elif len(focusStrList) == 3:
-        if ("Betrieblich" in focusStrList 
-            and "Technisch" in focusStrList 
-            and "Ökologisch" in focusStrList):
+        if ("betrieblich" in focusStrList 
+            and "technisch" in focusStrList 
+            and "ökologisch" in focusStrList):
             pathStr += "symbol_technical_operational_ecological_focus.svg"
-        elif ("Betrieblich" in focusStrList 
-            and "Ökologisch" in focusStrList
-            and "Rechtlich" in focusStrList):
+        elif ("betrieblich" in focusStrList 
+            and "ökologisch" in focusStrList
+            and "rechtlich" in focusStrList):
             pathStr += "symbol_operational_ecological_legal_focus.svg"
-        elif ("Technisch" in focusStrList
-            and "Ökologisch" in focusStrList
-            and "Rechtlich" in focusStrList):
+        elif ("technisch" in focusStrList
+            and "ökologisch" in focusStrList
+            and "rechtlich" in focusStrList):
             pathStr += "symbol_technical_ecological_legal_focus.svg"
-        elif ("Technisch" in focusStrList
-            and "Rechtlich" in focusStrList
-            and "Betrieblich" in focusStrList):
+        elif ("technisch" in focusStrList
+            and "rechtlich" in focusStrList
+            and "betrieblich" in focusStrList):
             pathStr += "symbol_technical_operational_legal_focus.svg"
         else:
             pass
