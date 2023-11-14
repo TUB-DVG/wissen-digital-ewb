@@ -11,7 +11,10 @@
           {{ tool.name   }}
         </h3>
         <p class="card-text mb-2 text-truncate-2">
-          Nutzerschnittstelle: {{ tool.userInterface   }}
+          Nutzerschnittstelle:  
+          {% for userInterface in tool.userInterface.all %} 
+            {{userInterface.userInterface}} 
+          {% endfor %}
         </p>
       </div>
       <!-- Image -->
