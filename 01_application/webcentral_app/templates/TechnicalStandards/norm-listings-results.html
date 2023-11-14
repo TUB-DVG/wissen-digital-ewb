@@ -10,6 +10,11 @@
         <h3 class="card-title">
           {{ technicalStandards.name }}
         </h3>
+        {%if technicalStandards.title %}
+        <p class="card-text mb-2 text-truncate-2">
+          {{ technicalStandards.title   }}
+        </p>
+        {%endif %}
       </div>
       <!-- Image -->
       <div class="image-container d-flex" style="height: 150px;">
