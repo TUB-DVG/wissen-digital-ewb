@@ -132,7 +132,7 @@ class TestLastprofileTab(WebDriverSetup):
         time.sleep(1)
         
         weatherServiceLink.click()
-        time.sleep(1)
+        time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.assertEqual(
             "GitHub - earthobservations/wetterdienst: Open weather data for humans.",

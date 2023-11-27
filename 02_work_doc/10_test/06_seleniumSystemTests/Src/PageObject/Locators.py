@@ -16,6 +16,13 @@ class Locator(object):
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"
     xFromSearchFilter = "//i[@class='bi bi-x fa-lg close-icon']"
+    usageDropdownElement = "//select[@id='kategorie-input-tools']/option"
+    accessabilityDropdownElement = "//select[@id='lizenz-input-tools']/option"
+    lifeCyclePhaseDropdownElement = "//select[@id='lzp-input-tools']/option"
+    searchSubmitButton = "//button[@id='search-submit-tools']"
+    usageOnDetailPage = "//li[@class='list-inline-item h6 mb-0']"
+    accessabilityParagraphTag = "//h5[contains(text(), 'Zugänglichkeit')]/p"
+    
 
     # locators on TechnicalStandards:
     linkToNormsOnTS = "//a[@id='linkToNorms']"
