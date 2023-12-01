@@ -1,17 +1,17 @@
-server {
-    listen ${NGINX_LISTEN_PORT};
-    server_name wissen-digital-ewb.de;
-
+#server {
+#    listen ${NGINX_LISTEN_PORT};
+#    server_name wissen-digital-ewb.de;
+#    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 	# Redirect http to https:
-    location / {
-	return 301 https://wissen-digital-ewb.de$request_uri;
-    }
+#    location / {
+#	return 301 https://wissen-digital-ewb.de$request_uri;
+#    }
     
 }
 server {
 	listen 443 ssl http2;
 	server_name wissen-digital-ewb.de;
-	
+	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 	server_tokens off;
 	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
 	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
