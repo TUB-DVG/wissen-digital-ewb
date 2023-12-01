@@ -172,6 +172,8 @@ if os.environ.get("MODE") == "production":
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
     MEDIA_ROOT = "/vol/webcentral/media"
     MEDIA_URL = '/media/'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 else:
     STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
     STATIC_URL = '/static/'
