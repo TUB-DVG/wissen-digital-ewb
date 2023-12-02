@@ -24,3 +24,4 @@ FROM base AS prod
 
 COPY . /src
 RUN adduser uwsgiguest
+USER uwsgiguest
