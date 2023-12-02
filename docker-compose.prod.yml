@@ -7,7 +7,7 @@ services:
             target: prod
             
         volumes:
-            - static-data:/vol/webcentral
+            - static-data:/var/tmp/webcentral
         depends_on:
             - database
         restart: always

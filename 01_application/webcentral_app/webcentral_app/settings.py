@@ -163,14 +163,14 @@ CHANNEL_LAYERS={
 
 #STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
-    STATIC_ROOT = "/vol/webcentral/static"
+    STATIC_ROOT = "/var/tmp/webcentral/static"
     STATIC_URL = '/static/static/'
     STATICFILES_DIRS = [
         Path.joinpath(BASE_DIR, 'webcentral_app/static')
     ]
     # Media folder settings
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-    MEDIA_ROOT = "/vol/webcentral/media"
+    MEDIA_ROOT = "/var/tmp/webcentral/media"
     MEDIA_URL = '/media/'
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
