@@ -7,7 +7,7 @@
 #	return 301 https://wissen-digital-ewb.de$request_uri;
 #    }
     
-}
+#}
 server {
 	listen 443 ssl http2;
 	server_name wissen-digital-ewb.de;
