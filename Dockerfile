@@ -23,3 +23,4 @@ ENV LC_ALL de_DE.UTF-8
 FROM base AS prod
 
 COPY . /src
+USER uwsgiguest
