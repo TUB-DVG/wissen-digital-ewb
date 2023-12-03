@@ -19,9 +19,7 @@ services:
             - ALLOWED_HOSTS
             - MODE=production
         command: >
-            sh -c "sphinx-apidoc -f -o 02_work_doc/06_sphinx/source/ 01_application/webcentral_app/ data_import.py && \
-            sphinx-build 02_work_doc/06_sphinx/source 01_application/webcentral_app/webcentral_app/static/ && \
-            python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
+            sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
             uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid uwsgiguest --gid uwsgiguest"
 
 
