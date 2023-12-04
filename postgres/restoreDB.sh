@@ -10,4 +10,4 @@ docker container exec webcentral bash -c "cp -r /src/01_application/webcentral_a
 
 docker container exec webcentral python3 /src/01_application/webcentral_app/manage.py migrate
 
-docker container exec webcentral python3 /src/01_application/webcentral_app/manage.py createsuperuser --noinput
+# docker container exec webcentral python3 /src/01_application/webcentral_app/manage.py createsuperuser --noinput
