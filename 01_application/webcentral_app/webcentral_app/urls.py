@@ -33,6 +33,7 @@ urlpatterns = [
     path('LastProfile/', include('LastProfile.urls')),
     path('', include('StartSearch.urls')),
     path('TechnicalStandards/',include('TechnicalStandards.urls')),
+    path('publications/',include('publications.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,
