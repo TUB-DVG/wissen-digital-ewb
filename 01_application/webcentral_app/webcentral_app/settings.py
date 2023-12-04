@@ -40,6 +40,7 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    'publications.apps.PublicationsConfig',
     'pages.apps.PagesConfig',
     'TechnicalStandards.apps.TechnicalStandardsConfig',
     'project_listing.apps.ProjectListingConfig',

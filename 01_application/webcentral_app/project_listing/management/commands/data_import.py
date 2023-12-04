@@ -67,6 +67,9 @@ from project_listing.models import (
     Person,
     FurtherFundingInformation,
 )
+from publications.models.publication import Publication
+from publications.models.publication import Type
+
 from django.db import IntegrityError
 from keywords.models import (
     Keyword,
@@ -809,6 +812,82 @@ class Command(BaseCommand):
         )
         return obj, created
 
+    def getOrCreatePublications(self, row, header):
+        """
+        Add entry (Publications) into the table or/and return entry key.
+        """
+        type_ = row[header.index('type')]
+        title = row[header.index('title')]
+        copyright = row[header.index('copyright')]
+        url = row[header.index('url')]
+        abstract = row[header.index('abstract')]
+        institution = row[header.index('institution')]
+        authors = row[header.index('authors')]
+        month = row[header.index('month')]
+        year = row[header.index('year')]
+        doi = row[header.index('doi')]
+        keywords = row[header.index('keywords')]
+        focus = row[header.index('focus')]
+        journal = row[header.index('journal')]
+        volume = row[header.index('volume')]
+        number = row[header.index('number')]
+        pages = row[header.index('pages')]
+        pdf = row[header.index('pdf')]
+        image = row[header.index('image')]
+
+        focusList = row[header.index('focus')].split(",")
+        # classificationList = row[header.index('Classification')].split(",")
+        
+        focusList = [x.replace(" ", "") for x in focusList]
+        focusElements = Focus.objects.filter(focus__in=focusList)
+        
+        typeORMObjList = Type.objects.filter(type=type_)
+        if len(typeORMObjList) == 0:
+            Type.objects.create(type=type_)
+        
+        typeORMObj = Type.objects.filter(type=type_)[0]
+        
+        if number == "":
+            number = None
+        
+        if volume == "":
+            volume = None
+        
+        if month == "":
+            month = None
+        else:
+            month = int(month)
+        
+        if year == "":
+            year = None
+        else:
+            year = int(year)
+
+        obj, created = Publication.objects.get_or_create(
+            type=typeORMObj,
+            title=title,
+            copyright=copyright,
+            url=url,
+            abstract=abstract,
+            institution=institution,
+            authors=authors,
+            month=month,
+            year=year,
+            doi=doi,
+            keywords=keywords,
+            # focus=focus,
+            journal = journal,
+            volume = volume,
+            number = number,
+            pages = pages,
+            pdf = pdf,
+            image = image,
+        )
+        # breakpoint()
+        obj.focus.add(*focusElements)
+        return obj, created
+
+
     def getOrCreateKeyword(
             self, 
             row: list, 
@@ -1360,6 +1439,16 @@ class Command(BaseCommand):
         pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
         currentDBDifferenceObj.writeToYAML(pathToFile)
 
+    # def getOrCreatePublications(            
+    #     self, 
+    #     row: list, 
+    #     header: list,
+    # ) -> tuple:
+    #     """
+        
+    #     """
+        
+
 
     def readCSV(
             self, 
@@ -1423,6 +1512,8 @@ class Command(BaseCommand):
             elif "weatherdata" in filename:
                 print(row[header.index('data_service')])
                 self.getOrCreateWeatherdata(row, header)
+            elif "publications" in filename:
+                self.getOrCreatePublications(row, header)
             else:
                 print(f"Cant detect type of data. Please add 'modulzuordnung', \
                     'enargus', 'Tools' or 'weatherdata' to Filename to make \
