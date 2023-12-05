@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,6 +70,33 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Content Security Policy
+CSP_IMG_SRC = ("'self'")
+CSP_STYLE_SRC = (
+    "'self'",
+    "'unsafe-inline'", 
+    "https://fonts.googleapis.com", 
+    "nonce-baseStyleOne",
+    "nonce-baseStartpageOne",
+    "nonce-baseDivStyleOne",
+    "nonce-baseStartpageAOne",
+    "nonce-weatherdataDetailDivOne",
+    "https://cdn.jsdelivr.net",
+)
+CSP_SCRIPT_SRC = (
+    "'self'", 
+    "https://ajax.googleapis.com", 
+    "https://cdnjs.cloudflare.com",
+    "https://maxcdn.bootstrapcdn.com",
+    "https://cdn.plot.ly",
+    "https://unpkg.com",
+)
+CSP_DEFAULT_SRC = (
+    "'self'", 
+    "https://fonts.gstatic.com",
+    "https://cdn.jsdelivr.net",    
+)
 
 ROOT_URLCONF = 'webcentral_app.urls'
 
