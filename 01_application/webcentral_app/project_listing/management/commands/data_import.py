@@ -596,7 +596,7 @@ class Command(BaseCommand):
             currentSpecificApplication = currentSpecificApplication.replace(" ", "")
             currentSpecificApplication = currentSpecificApplication.replace("'", "")
             objsForCurrentSpecificApplication = Subproject.objects.filter(referenceNumber_id=currentSpecificApplication)
-            if len(objsForCurrentUserInterface) == 0:
+            if len(objsForCurrentSpecificApplication) == 0:
                 print(f"No Subproject found in database for: {currentSpecificApplication}")
             else:
                 processedSpecificApplicationList.append(currentSpecificApplication)
@@ -619,6 +619,8 @@ class Command(BaseCommand):
         
         released = row[header.index('released')]
         if released == "":
+            released = None
+        elif released == "unbekannt":
             released = None
         else:
             released = bool(int(released)) 
@@ -671,7 +673,7 @@ class Command(BaseCommand):
         focusList = row[header.index('focus')].split(",")
         processedFocusList = []
         for currentFocus in focusList:
-            if currentFocus[0] == " ":
+            if len(currentFocus) > 0 and currentFocus[0] == " ":
                 processedFocusList.append(currentFocus[1:])
             else:
                 processedFocusList.append(currentFocus)
@@ -682,7 +684,7 @@ class Command(BaseCommand):
         classificationList = row[header.index('classification')].split(",")
         processedClassificationList = []
         for currentClassification in classificationList:
-            if currentClassification[0] == " ":
+            if len(currentClassification) > 0 and currentClassification[0] == " ":
                 processedClassificationList.append(currentClassification[1:])
             else:
                 processedClassificationList.append(currentClassification)
@@ -1269,8 +1271,13 @@ class Command(BaseCommand):
 
                             strCurrent = f" {currentForeignTableStr}: "
                             strPending = f" {currentForeignTableStr}: "
-                            pendingTableObj =  pendingTableObj.order_by("id")
-                            currentTableObj = currentTableObj.order_by("id")
+                            
+                            try:
+                                pendingTableObj =  pendingTableObj.order_by("id")
+                                currentTableObj = currentTableObj.order_by("id")
+                            except:
+                                pendingTableObj =  pendingTableObj.order_by("referenceNumber_id")
+                                currentTableObj = currentTableObj.order_by("referenceNumber_id")                            
                             if len(currentTableObj) != len(pendingTableObj):
                                 foundDifference = True
                             else:
