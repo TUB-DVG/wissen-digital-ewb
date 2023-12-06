@@ -22,7 +22,7 @@ ENV LC_ALL de_DE.UTF-8
 # second build stage for production
 FROM base AS prod
 
-RUN adduser uwsgiguest
+RUN adduser uwsgiguest -u 999
 
 COPY --chown=uwsgiguest . /src
 
