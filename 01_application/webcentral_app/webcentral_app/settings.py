@@ -86,6 +86,7 @@ CSP_STYLE_SRC = (
 )
 CSP_SCRIPT_SRC = (
     "'self'", 
+    "'unsafe-inline'",
     "https://ajax.googleapis.com", 
     "https://cdnjs.cloudflare.com",
     "https://maxcdn.bootstrapcdn.com",
