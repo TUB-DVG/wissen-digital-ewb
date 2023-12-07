@@ -10,6 +10,9 @@ WORKDIR /src
 RUN apt update && apt upgrade --yes
 RUN apt-get install -y locales locales-all
 
+RUN adduser --home /home/uwsgiguest uwsgiguest -u 999
+USER uwsgiguest
+
 COPY 01_application/requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
@@ -21,9 +24,6 @@ ENV LC_ALL de_DE.UTF-8
 
 # second build stage for production
 FROM base AS prod
-
-RUN adduser -m uwsgiguest -u 999
-
+# 
 COPY --chown=uwsgiguest . /src
 
-USER uwsgiguest
