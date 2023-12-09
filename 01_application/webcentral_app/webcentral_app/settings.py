@@ -40,6 +40,7 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
     'pages.apps.PagesConfig',
     'TechnicalStandards.apps.TechnicalStandardsConfig',
