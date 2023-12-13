@@ -25,7 +25,7 @@ ENV LC_ALL de_DE.UTF-8
 # second build stage for production
 FROM base AS prod
 # 
-COPY --chown=uwsgiguest . /src
-
-WORKDIR /home/uwsgiguest
-COPY . /home/uwsgiguest --chown=uwsgiguest
+COPY --chown=uwsgiguest . /home/uwsgiguest 
+# RUN chown uwsgiguest /home/uwsgiguest/webcentral 
+USER uwsgiguest
+# COPY . /home/uwsgiguest --chown=uwsgiguest
