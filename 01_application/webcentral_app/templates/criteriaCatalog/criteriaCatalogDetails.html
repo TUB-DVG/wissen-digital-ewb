@@ -15,17 +15,19 @@
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- tool detail START -->
             <div class="tab-pane container active" id="course-pills-1" >
+              <ul>
               {% for tree in trees %}
-                <ul class="root{{ loop.index0 }}">
-                <li onclick="showOrHide(event, this)">{{ tree.root.topic.text }}
-                  <ul class="level1">
-                  {% for neighbour in tree.root.neighbours %}
-                    <li onclick="showOrHide(event, this)">{{ neighbour.topic.text }}</li>
-                  {% endfor %}
-                  </ul>
-                </li>
-                </ul>
+                    {% for node in tree %}
+                    {% if node.indent %}
+                      <ul>
+                    {% elif node.outdent %}
+                  </li></ul>
+                    {% elif node.content %}
+                      <li onclick="showOrHide(event, this)">{{ node.content }}
+                    {% endif %}
+                    {% endfor %}
               {% endfor %}
+            </ul>
               {% if tool.name %}
                 <h5 class="mb-3">Was ist {{tool.name}}?</h5>
                 <p class="mb-0">{{tool.shortDescription}}</p>
@@ -258,15 +260,17 @@ Page content END -->
 <script>
   function showOrHide(event, element) {
     var childElements = element.children;
-    if (childElements.length > 0) {
-        if ( childElements[0].offsetWidth || childElements[0].offsetHeight || childElements[0].getClientRects().length ) {
+    debugger;
+    for (i = 0; i < childElements.length; i++) {
+        if ( childElements[i].offsetWidth || childElements[i].offsetHeight || childElements[i].getClientRects().length ) {
           
-          childElements[0].style.display = 'none';
+          childElements[i].style.display = 'none';
         }
         else {
-          childElements[0].style.display = 'block';
+          childElements[i].style.display = 'block';
         }
     }
+
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
     } else {
