@@ -205,9 +205,13 @@ if os.environ.get("MODE") == "production":
     MEDIA_URL = '/media/'
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = 'Strict'
     SECURE_HSTS_SECONDS = 10
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    CSRF_USE_SESSIONS = True
 else:
     STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
     STATIC_URL = '/static/'
