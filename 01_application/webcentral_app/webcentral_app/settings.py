@@ -214,6 +214,7 @@ if os.environ.get("MODE") == "production":
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     CSRF_USE_SESSIONS = True
+    SECURE_BROWSER_XSS_FILTER = True
 else:
     STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
     STATIC_URL = '/static/'
