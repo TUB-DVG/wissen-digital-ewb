@@ -6,16 +6,16 @@ FROM python:3.10 AS base
 ENV PYTHONUNBUFFERED 1
 
 # creates a directory src and cd's into it
-WORKDIR /src
 RUN apt update && apt upgrade --yes
 RUN apt-get install -y locales locales-all
 
-RUN adduser --home /home/uwsgiguest uwsgiguest -u 999
-USER uwsgiguest
+RUN adduser --home /home/uwsgiguest uwsgiguest -u 1000
 
 COPY 01_application/requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
-
+RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
+# RUN chmod o+rwx /home/uwsgiguest/.cache
+USER uwsgiguest
+WORKDIR /home/uwsgiguest
 #RUN apt update && apt upgrade --yes && apt install locale-gen && locale-gen de_DE.UTF-8 
 # RUN locale-gen de_DE.UTF-8  
 ENV LANG de_DE.UTF-8  
@@ -27,3 +27,5 @@ FROM base AS prod
 # 
 COPY --chown=uwsgiguest . /src
 
+WORKDIR /home/uwsgiguest
+COPY . /home/uwsgiguest --chown=uwsgiguest
