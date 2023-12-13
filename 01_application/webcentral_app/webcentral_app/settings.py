@@ -100,7 +100,9 @@ CSP_DEFAULT_SRC = (
     "https://fonts.gstatic.com",
     "https://cdn.jsdelivr.net",    
 )
-
+CSP_FRAME_ANCESTORS = ("'self'",)
+CSP_FORM_ACTION = ("'self'",)
+CSP_BASE_URI = ("'self'",)
 ROOT_URLCONF = 'webcentral_app.urls'
 
 TEMPLATES = [
