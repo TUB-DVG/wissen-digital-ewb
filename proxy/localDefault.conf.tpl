@@ -10,7 +10,7 @@ server {
 	listen 443 ssl http2;
 	listen [::]:443 ssl http2;
 	server_name wissen-digital-ewb.de;
-	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+	add_header Strict-Transport-Security "max-age=31536; includeSubDomains" always;
 	server_tokens off;
 	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
 	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
