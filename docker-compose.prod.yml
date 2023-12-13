@@ -1,15 +1,25 @@
-version: "3.9"
 services:
+    change-vol-ownership:
+        # We can use any image we want as long as we can chown
+        image: ubuntu
+        # Need a user priviliged enough to chown
+        user: "root"
+        # Specify the group in question
+        group_add:
+        - '1000'
+        volumes:
+        # The volume to chown
+        - static-data:/tmp/change-ownership
+        command: chown -R 1000:1000 /tmp/change-ownership
     webcentral:
         build:
             context: ${PATH_WEBCENTRAL_SRC}
             dockerfile: Dockerfile
             target: prod
-            
         volumes:
             - static-data:/home/uwsgiguest/webcentral
         depends_on:
-            - database
+            - change-vol-ownership
         restart: always
         environment:
             - UWSGI_LISTEN_PORT
@@ -19,10 +29,8 @@ services:
             - ALLOWED_HOSTS
             - MODE=production
         command: >
-            sh -c "python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
-            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid uwsgiguest --gid uwsgiguest"
-
-
+            sh -c "python /home/uwsgiguest/01_application/webcentral_app/manage.py collectstatic --noinput && \
+            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/home/uwsgiguest/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid uwsgiguest --gid uwsgiguest"
     proxy:
         container_name: proxy
         build:
