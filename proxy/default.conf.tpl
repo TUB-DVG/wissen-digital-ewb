@@ -27,7 +27,7 @@ server {
     # OCSP stapling
     ssl_stapling on;
     ssl_stapling_verify on;
-	#ssl_trusted_certificate /etc/nginx/ssl;
+	ssl_trusted_certificate /etc/nginx/ssl/rootCA;
 	location /static {
         	alias /vol/static;
     	}
