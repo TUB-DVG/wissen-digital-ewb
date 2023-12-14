@@ -3,4 +3,4 @@ services:
     webcentral:
         command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
         volumes:
-            - ${PATH_WEBCENTRAL_SRC}:/home/uwsgiguest
+            - ${PWD}:/home/uwsgiguest
