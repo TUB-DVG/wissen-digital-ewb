@@ -21,11 +21,11 @@ services:
         container_name: database
     webcentral:
         build:
-            context: ${PATH_WEBCENTRAL_SRC}
+            context: ${PWD}
             dockerfile: Dockerfile
             target: base
             args:
-                PATH_WEBCENTRAL_SRC: ${PATH_WEBCENTRAL_SRC}
+                PATH_WEBCENTRAL_SRC: ${PWD}
         ports:
             - ${WEBCENTRAL_OUTSIDE_PORT}:${WEBCENTRAL_INSIDE_PORT}
         depends_on:
