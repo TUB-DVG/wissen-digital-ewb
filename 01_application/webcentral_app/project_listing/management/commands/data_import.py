@@ -48,12 +48,14 @@ deleted. The modified file can then be used as an input for the
 """
 
 import csv
-import pdb
+import datetime
+import difflib
 from encodings import utf_8
 import os
-import datetime
 
+from django.apps import apps
 from django.core.management.base import BaseCommand
+from django.db.models import Model
 import numpy as np
 
 from project_listing.models import (
@@ -502,123 +504,139 @@ class Command(BaseCommand):
         name = row[header.index('name')]
         shortDescription = row[header.index('shortDescription')]
 
-        applicationArea = row[header.index('applicationArea')]
-        applicationAreaList = applicationArea.split(",")
-        processedApplicationAreaList = []
-        for currentApplicationArea in applicationAreaList:
-            if currentApplicationArea != "":
-                if currentApplicationArea[0] == " ":
-                    processedApplicationAreaList.append(currentApplicationArea[1:])
-                else:
-                    processedApplicationAreaList.append(currentApplicationArea)
-                objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
-                    applicationArea=processedApplicationAreaList[-1]
-                )
-                if len(objsForCurrentApplicationAreaName) == 0:
-                    ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
+        # applicationArea = row[header.index('applicationArea')]
+        # applicationAreaList = applicationArea.split(",")
+        processedApplicationAreaList = self._correctReadInValue(row[header.index('applicationArea')])
+        applicationAreaList = self._iterateThroughListOfStrings(processedApplicationAreaList, ApplicationArea)
+        # for currentApplicationArea in applicationAreaList:
+        #     if currentApplicationArea != "":
+        #         if currentApplicationArea[0] == " ":
+        #             processedApplicationAreaList.append(currentApplicationArea[1:])
+        #         else:
+        #             processedApplicationAreaList.append(currentApplicationArea)
+        #         objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
+        #             applicationArea=processedApplicationAreaList[-1]
+        #         )
+        #         if len(objsForCurrentApplicationAreaName) == 0:
+        #             ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
             
         # usage is the new category and the column is called "Nutzung" in the csv?
         # category = row[header.index('Kategorie')]
-        usageList = row[header.index('usage')].split(",")
-        processedUsageList = []
-        for currentUsage in usageList:
-            if currentUsage != "":
-                if currentUsage[0] == " ":
-                    processedUsageList.append(currentUsage[1:])
-                else:
-                    processedUsageList.append(currentUsage)
+        # usageList = row[header.index('usage')].split(",")
+        processedUsageList = self._correctReadInValue(row[header.index('usage')])
+        usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
+        # for currentUsage in usageList:
+        #     if currentUsage != "":
+        #         if currentUsage[0] == " ":
+        #             processedUsageList.append(currentUsage[1:])
+        #         else:
+        #             processedUsageList.append(currentUsage)
                 
-                objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
-                if len(objsForCurrentUsage) == 0:
-                    Usage.objects.create(usage=processedUsageList[-1])       
+        #         objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
+        #         if len(objsForCurrentUsage) == 0:
+        #             Usage.objects.create(usage=processedUsageList[-1])       
         
-        targetGroupList = row[header.index('targetGroup')].split(",")
-        processedTargetGroup = []
-        for currentTargetGroup in targetGroupList:
-            if currentTargetGroup != "":
-                if currentTargetGroup[0] == " ":
-                    processedTargetGroup.append(currentTargetGroup[1:])
-                else:
-                    processedTargetGroup.append(currentTargetGroup)
+        # targetGroupList = row[header.index('targetGroup')].split(",")
+        processedTargetGroup = self._correctReadInValue(row[header.index('targetGroup')])
+        targetGroupList = self._iterateThroughListOfStrings(processedTargetGroup, TargetGroup)
+        # for currentTargetGroup in targetGroupList:
+        #     if currentTargetGroup != "":
+        #         if currentTargetGroup[0] == " ":
+        #             processedTargetGroup.append(currentTargetGroup[1:])
+        #         else:
+        #             processedTargetGroup.append(currentTargetGroup)
                 
-                objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
-                if len(objsForCurrentTargetGroup) == 0:
-                    TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
+        #         objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
+        #         if len(objsForCurrentTargetGroup) == 0:
+        #             TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
 
         
-        accessibilityList = row[header.index('accessibility')].split(",")
-        processedAccessibilityList = []
-        for currentAccessibility in accessibilityList:
-            if currentAccessibility != "":
-                if currentAccessibility[0] == " ":
-                    processedAccessibilityList.append(currentAccessibility[1:])
-                else:
-                    processedAccessibilityList.append(currentAccessibility)
+        # accessibilityList = row[header.index('accessibility')].split(",")
+        processedAccessibilityList = self._correctReadInValue(row[header.index('accessibility')])
+        accessibilityList = self._iterateThroughListOfStrings(processedAccessibilityList, Accessibility)
+        # for currentAccessibility in accessibilityList:
+        #     if currentAccessibility != "":
+        #         if currentAccessibility[0] == " ":
+        #             processedAccessibilityList.append(currentAccessibility[1:])
+        #         else:
+        #             processedAccessibilityList.append(currentAccessibility)
                 
-                objsForCurrentAccessibility = Accessibility.objects.filter(accessibility=processedAccessibilityList[-1])
-                if len(objsForCurrentAccessibility) == 0:
-                    Accessibility.objects.create(accessibility=processedAccessibilityList[-1])         
+        #         objsForCurrentAccessibility = Accessibility.objects.filter(accessibility=processedAccessibilityList[-1])
+        #         if len(objsForCurrentAccessibility) == 0:
+        #             Accessibility.objects.create(accessibility=processedAccessibilityList[-1])         
 
 
-        lifeCyclePhaseList = row[header.index('lifeCyclePhase')].split(",")
-        processedlifeCyclePhase = []
-        for currentlifeCyclePhase in lifeCyclePhaseList:
-            if currentlifeCyclePhase != "":
-                if currentlifeCyclePhase[0] == " ":
-                    processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
-                else:
-                    processedlifeCyclePhase.append(currentlifeCyclePhase)
+        # lifeCyclePhaseList = row[header.index('lifeCyclePhase')].split(",")
+        processedlifeCyclePhase = self._correctReadInValue(row[header.index('lifeCyclePhase')])
+        lifeCyclePhaseList = self._iterateThroughListOfStrings(processedlifeCyclePhase, LifeCyclePhase)
+        # for currentlifeCyclePhase in lifeCyclePhaseList:
+        #     if currentlifeCyclePhase != "":
+        #         if currentlifeCyclePhase[0] == " ":
+        #             processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
+        #         else:
+        #             processedlifeCyclePhase.append(currentlifeCyclePhase)
                 
-                objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhase=processedlifeCyclePhase[-1])
-                if len(objsForCurrentLifeCyclePhase) == 0:
-                    LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
+        #         objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhase=processedlifeCyclePhase[-1])
+        #         if len(objsForCurrentLifeCyclePhase) == 0:
+        #             LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
 
-        userInterfaceList = row[header.index('userInterface')].split(",")
-        processedUserInterface = []
-        for currentUserInterface in userInterfaceList:
-            if currentUserInterface != "":
-                if currentUserInterface[0] == " ":
-                    processedUserInterface.append(currentUserInterface[1:])
-                else:
-                    processedUserInterface.append(currentUserInterface)
+        # userInterfaceList = row[header.index('userInterface')].split(",")
+        processedUserInterface = self._correctReadInValue(row[header.index('userInterface')])
+        userInterfaceList = self._iterateThroughListOfStrings(processedUserInterface, UserInterface)
+        # for currentUserInterface in userInterfaceList:
+        #     if currentUserInterface != "":
+        #         if currentUserInterface[0] == " ":
+        #             processedUserInterface.append(currentUserInterface[1:])
+        #         else:
+        #             processedUserInterface.append(currentUserInterface)
                 
-                objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
-                if len(objsForCurrentUserInterface) == 0:
-                    UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
+        #         objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
+        #         if len(objsForCurrentUserInterface) == 0:
+        #             UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
         
         lastUpdate = row[header.index('lastUpdate')]
+        # lastUpdate = self._correctReadInValue(header.index('lastUpdate'))
         license = row[header.index('licence')]
+        # license = self._correctReadInValue(row[header.index('licence')])
         licenseNotes = row[header.index('licenseNotes')]
+        # licenseNotes = self._correctReadInValue(row[header.index('licenseNotes')])
         furtherInfos = row[header.index('furtherInformation')]
+        # furtherInfos = self._correctReadInValue(row[header.index('furtherInformation')])
         alternatives = row[header.index('alternatives')]
-        specificApplicationList = row[header.index('specificApplication')].split(",")
-        processedSpecificApplicationList = []
-        for currentSpecificApplication in specificApplicationList:
-            currentSpecificApplication = currentSpecificApplication.replace("[", "")
-            currentSpecificApplication = currentSpecificApplication.replace("]", "")
-            currentSpecificApplication = currentSpecificApplication.replace(" ", "")
-            currentSpecificApplication = currentSpecificApplication.replace("'", "")
-            objsForCurrentSpecificApplication = Subproject.objects.filter(referenceNumber_id=currentSpecificApplication)
-            if len(objsForCurrentUserInterface) == 0:
-                print(f"No Subproject found in database for: {currentSpecificApplication}")
-            else:
-                processedSpecificApplicationList.append(currentSpecificApplication)
+        # alternatives = self._correctReadInValue(row[header.index('alternatives')])
+        # specificApplicationList = row[header.index('specificApplication')].split(",")
+        processedSpecificApplicationList = self._correctReadInValue(row[header.index('specificApplication')])
+        specificApplicationList = self._iterateThroughListOfStrings(processedSpecificApplicationList, Subproject)
+        # for currentSpecificApplication in specificApplicationList:
+        #     currentSpecificApplication = currentSpecificApplication.replace("[", "")
+        #     currentSpecificApplication = currentSpecificApplication.replace("]", "")
+        #     currentSpecificApplication = currentSpecificApplication.replace(" ", "")
+        #     currentSpecificApplication = currentSpecificApplication.replace("'", "")
+        #     objsForCurrentSpecificApplication = Subproject.objects.filter(referenceNumber_id=currentSpecificApplication)
+        #     if len(objsForCurrentUserInterface) == 0:
+        #         print(f"No Subproject found in database for: {currentSpecificApplication}")
+        #     else:
+        #         processedSpecificApplicationList.append(currentSpecificApplication)
 
         provider = row[header.index("provider")]
+        # provider = self._correctReadInValue(header.index("provider"))
         imageName = row[header.index('image')]
+        # imageName = self._correctReadInValue(row[header.index('image')])
 
-        scaleList = row[header.index('scale')].split(",")
-        processedScaleList = []
-        for currentScale in scaleList:
-            if currentScale != "":
-                if currentScale[0] == " ":
-                    processedScaleList.append(currentScale[1:])
-                else:
-                    processedScaleList.append(currentScale)
+        #scaleList = row[header.index('scale')].split(",")
+        # scaleList = self._correctReadInValue(row[header.index('scale')])
+        processedScaleList = self._correctReadInValue(row[header.index('scale')])
+        scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
+        # for currentScale in scaleList:
+        #     if currentScale != "":
+        #         if currentScale[0] == " ":
+        #             processedScaleList.append(currentScale[1:])
+        #         else:
+        #             processedScaleList.append(currentScale)
                 
-                objsForCurrentScale = Scale.objects.filter(scale=processedScaleList[-1])
-                if len(objsForCurrentScale) == 0:
-                    Scale.objects.create(scale=processedScaleList[-1]) 
+        #         objsForCurrentScale = Scale.objects.filter(scale=processedScaleList[-1])
+        #         if len(objsForCurrentScale) == 0:
+        #             Scale.objects.create(scale=processedScaleList[-1]) 
         
         released = row[header.index('released')]
         if released == "":
@@ -644,71 +662,80 @@ class Command(BaseCommand):
         else:
             developmentState = int(developmentState)        
 
-        technicalStandardsNormsList = row[header.index('technicalStandardsNorms')].split(",")
-        processedTechnicalStandardsNorms = []
-        for currentTechnicalStandardsNorms in technicalStandardsNormsList:
-            if currentTechnicalStandardsNorms != "":
-                if currentTechnicalStandardsNorms[0] == " ":
-                    currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
+        # technicalStandardsNormsList = row[header.index('technicalStandardsNorms')].split(",")
+        processedTechnicalStandardsNorms = self._correctReadInValue(row[header.index("technicalStandardsNorms")])
+        technicalStandardsNormsList = self._iterateThroughListOfStrings(processedTechnicalStandardsNorms, Norm)
+        # for currentTechnicalStandardsNorms in technicalStandardsNormsList:
+        #     if currentTechnicalStandardsNorms != "":
+        #         if currentTechnicalStandardsNorms[0] == " ":
+        #             currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
 
-                objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
-                if len(objsForCurrentTechnicalStandardsNorms) == 0:
-                    print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
-                else:
-                    processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
+        #         objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
+        #         if len(objsForCurrentTechnicalStandardsNorms) == 0:
+        #             print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
+        #         else:
+        #             processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
 
 
-        technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
-        processedTechnicalStandardsProtocols = []
-        for currentTechnicalStandardsProtocols in technicalStandardsProtocolsList:
-            if currentTechnicalStandardsProtocols != "":
-                if currentTechnicalStandardsProtocols[0] == " ":
-                    currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
+        # technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
+        processedTechnicalStandardsProtocols = self._correctReadInValue(row[header.index('technicalStandardsProtocols')])
+        technicalStandardsProtocolsList = self._iterateThroughListOfStrings(processedTechnicalStandardsProtocols, Protocol)
+        # for currentTechnicalStandardsProtocols in technicalStandardsProtocolsList:
+        #     if currentTechnicalStandardsProtocols != "":
+        #         if currentTechnicalStandardsProtocols[0] == " ":
+        #             currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
 
-                objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
-                if len(objsForCurrentTechnicalStandardsProtocols) == 0:
-                    print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
-                else:
-                    processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
+        #         objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
+        #         if len(objsForCurrentTechnicalStandardsProtocols) == 0:
+        #             print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
+        #         else:
+        #             processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
 
-        focusList = row[header.index('focus')].split(",")
-        processedFocusList = []
-        for currentFocus in focusList:
-            if currentFocus[0] == " ":
-                processedFocusList.append(currentFocus[1:])
-            else:
-                processedFocusList.append(currentFocus)
-            objsForCurrentFocus = Focus.objects.filter(focus=processedFocusList[-1])
-            if len(objsForCurrentFocus) == 0:
-                Focus.objects.create(focus=processedFocusList[-1]) 
+        # focusList = row[header.index('focus')].split(",")
+        processedFocusList = self._correctReadInValue(row[header.index('focus')])
+        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
+        # for currentFocus in focusList:
+        #     if currentFocus[0] == " ":
+        #         processedFocusList.append(currentFocus[1:])
+        #     else:
+        #         processedFocusList.append(currentFocus)
+        #     objsForCurrentFocus = Focus.objects.filter(focus=processedFocusList[-1])
+        #     if len(objsForCurrentFocus) == 0:
+        #         Focus.objects.create(focus=processedFocusList[-1]) 
 
-        classificationList = row[header.index('classification')].split(",")
-        processedClassificationList = []
-        for currentClassification in classificationList:
-            if currentClassification[0] == " ":
-                processedClassificationList.append(currentClassification[1:])
-            else:
-                processedClassificationList.append(currentClassification)
-            objsForCurrentClassification = Classification.objects.filter(classification=processedClassificationList[-1])
-            if len(objsForCurrentClassification) == 0:
-                Classification.objects.create(classification=processedClassificationList[-1]) 
+        # classificationList = row[header.index('classification')].split(",")
+        processedClassificationList = self._correctReadInValue(row[header.index('classification')])
+        classificationList = self._iterateThroughListOfStrings(processedClassificationList, Classification)
+        # for currentClassification in classificationList:
+        #     if currentClassification[0] == " ":
+        #         processedClassificationList.append(currentClassification[1:])
+        #     else:
+        #         processedClassificationList.append(currentClassification)
+        #     objsForCurrentClassification = Classification.objects.filter(classification=processedClassificationList[-1])
+        #     if len(objsForCurrentClassification) == 0:
+        #         Classification.objects.create(classification=processedClassificationList[-1]) 
         # focusList = [x.replace(" ", "") for x in focusList]
         userInterfaceNotes = row[header.index('userInterfaceNotes')]
+        # userInterfaceNotes = self._correctReadInValue(row[header.index('userInterfaceNotes')])
         programmingLanguages = row[header.index('programmingLanguages')]
+        # programmingLanguages = self._correctReadInValue(row[header.index('programmingLanguages')])
         frameworksLibraries = row[header.index('frameworksLibraries')]
+        # frameworksLibraries = self._correctReadInValue(row[header.index('frameworksLibraries')])
         databaseSystem = row[header.index('databaseSystem')]
+        # databaseSystem = self._correctReadInValue(row[header.index('databaseSystem')])
+        
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
-        applicationAreaElements = ApplicationArea.objects.filter(applicationArea__in=processedApplicationAreaList)
-        usageElements = Usage.objects.filter(usage__in=processedUsageList)
-        lifeCyclePhaseElements = LifeCyclePhase.objects.filter(lifeCyclePhase__in=processedlifeCyclePhase)
-        userInterfaceElements = UserInterface.objects.filter(userInterface__in=processedUserInterface)
-        targetGroupElements = TargetGroup.objects.filter(targetGroup__in=processedTargetGroup)
-        scaleElements = Scale.objects.filter(scale__in=processedScaleList)
-        accessibilityElements = Accessibility.objects.filter(accessibility__in=processedAccessibilityList)
-        specificApplicationElements = Subproject.objects.filter(referenceNumber_id__in=processedSpecificApplicationList)
-        technicalStandardsNormsElements = Norm.objects.filter(name__in=processedTechnicalStandardsNorms)
-        technicalStandardsProtocolsElements = Protocol.objects.filter(name__in=processedTechnicalStandardsProtocols)
+        applicationAreaElements = ApplicationArea.objects.filter(applicationArea__in=applicationAreaList)
+        usageElements = Usage.objects.filter(usage__in=usageList)
+        lifeCyclePhaseElements = LifeCyclePhase.objects.filter(lifeCyclePhase__in=lifeCyclePhaseList)
+        userInterfaceElements = UserInterface.objects.filter(userInterface__in=userInterfaceList)
+        targetGroupElements = TargetGroup.objects.filter(targetGroup__in=targetGroupList)
+        scaleElements = Scale.objects.filter(scale__in=scaleList)
+        accessibilityElements = Accessibility.objects.filter(accessibility__in=accessibilityList)
+        specificApplicationElements = Subproject.objects.filter(referenceNumber_id__in=specificApplicationList)
+        technicalStandardsNormsElements = Norm.objects.filter(name__in=technicalStandardsNormsList)
+        technicalStandardsProtocolsElements = Protocol.objects.filter(name__in=technicalStandardsProtocolsList)
         obj, created = Tools.objects.get_or_create(
             name=name, 
             shortDescription=shortDescription, 
@@ -1521,6 +1548,78 @@ class Command(BaseCommand):
                 )
                 return None
     
+    def _correctReadInValue(self, readInString):
+        """Correct the read in value from the csv-file. 
+
+        This method corrects the read in value from the csv-file,
+        by removing whitespaces at the beginning and end of the
+        string. 
+
+        readInString:   str
+            String, which represents the read in value from the csv-file.
+        """
+        if readInString == "":
+            return ""
+        splitStringToSeeIfList = readInString.split(",")
+        if len(splitStringToSeeIfList) > 0:
+            for index, listElement in enumerate(splitStringToSeeIfList):
+                if listElement[0] == " ":
+                    listElement = listElement[1:]
+                if listElement[-1] == " ":
+                    listElement = listElement[:-1]
+                splitStringToSeeIfList[index] = listElement
+            return splitStringToSeeIfList
+        else:
+            if readInString[0] == " ":
+                readInString = readInString[1:]
+            if readInString[-1] == " ":
+                readInString = readInString[:-1]
+            return readInString
+    
+    def _selectNearestMatch(self, categoryString: str, djangoModel: Model) -> str:
+        """Return closest match for categoryString in djangoModel
+
+        This method returns the closest match for `categoryString` in `djangoModel`
+        by using the difflib.get_close_matches-function. Thereby the cutoff is set
+        to 80 %. That means if the closest match is below 80 %, an error message
+        is printed and an empty string is returned.
+
+        categoryStr:    str
+            String, which represents the category, which should be matched.
+        djangoModel:    Model
+            Django-Model, which represents the table, in which the closest match is searched.
+
+        Returns:
+        str
+            String, which represents the closest match for `categoryString` in `djangoModel`.
+
+        """
+
+        # get names of all djangoModel-objects
+        if djangoModel.__name__ == "Subproject":
+            attributeNameInModel = "referenceNumber_id"
+        else:
+            attributeNameInModel = djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
+        allNames = [x.__getattribute__(attributeNameInModel) for x in djangoModel.objects.all()]
+
+        # get the closest match
+        listOfClosestMatches = difflib.get_close_matches(categoryString, allNames, n=1, cutoff=0.8)
+        if len(listOfClosestMatches) > 0:
+            return listOfClosestMatches[0]
+        else:
+            print(f"Found no match for {categoryString} in {djangoModel}")
+            return ""
+
+    def _iterateThroughListOfStrings(self, listOfStrings: list, djangoModel: Model):
+        """
+
+        """
+        listOfModifiedStrings = []
+        for curretnCategoryString in listOfStrings:
+            modifiedStr = self._selectNearestMatch(curretnCategoryString, djangoModel)
+            listOfModifiedStrings.append(modifiedStr)
+        return listOfModifiedStrings
+
     def add_arguments(
             self, 
             parser,
