@@ -193,17 +193,30 @@ class Command(BaseCommand):
             if isinstance(currentStateObj, Tools):
                 currentStateObj.name = pendingObj.name
                 currentStateObj.shortDescription = pendingObj.shortDescription
-                currentStateObj.applicationArea = pendingObj.applicationArea
-                currentStateObj.usage = pendingObj.usage
-                currentStateObj.lifeCyclePhase = pendingObj.lifeCyclePhase
-                currentStateObj.userInterface = pendingObj.userInterface
-                currentStateObj.targetGroup = pendingObj.targetGroup
+                currentStateObj.applicationArea.set(pendingObj.applicationArea.select_related())
+                currentStateObj.usage.set(pendingObj.usage.select_related())
+                currentStateObj.lifeCyclePhase.set(pendingObj.lifeCyclePhase.select_related())
+                currentStateObj.userInterface.set(pendingObj.userInterface.select_related())
+                currentStateObj.targetGroup.set(pendingObj.targetGroup.select_related())
                 currentStateObj.lastUpdate = pendingObj.lastUpdate
                 currentStateObj.licence = pendingObj.licence
+                currentStateObj.licenceNotes = pendingObj.licenceNotes
                 currentStateObj.furtherInformation = pendingObj.furtherInformation
                 currentStateObj.alternatives = pendingObj.alternatives
-                currentStateObj.specificApplication = pendingObj.specificApplication
-                
+                currentStateObj.specificApplication.set(pendingObj.specificApplication.select_related())
+                currentStateObj.released = pendingObj.released
+                currentStateObj.releasedPlanned = pendingObj.releasedPlanned
+                currentStateObj.yearOfRelease = pendingObj.yearOfRelease
+                currentStateObj.resources = pendingObj.resources
+                currentStateObj.developmentState = pendingObj.developmentState
+                currentStateObj.programmingLanguages = pendingObj.programmingLanguages
+                currentStateObj.frameworksLibraries = pendingObj.frameworksLibraries
+                currentStateObj.databaseSystem = pendingObj.databaseSystem
+                currentStateObj.scale.set(pendingObj.scale.select_related())
+                currentStateObj.technicalStandardsNorms.set(pendingObj.technicalStandardsNorms.select_related())
+                currentStateObj.technicalStandardsProtocols.set(pendingObj.technicalStandardsProtocols.select_related())
+                currentStateObj.provider = pendingObj.provider
+                currentStateObj.userInterfaceNotes = pendingObj.userInterfaceNotes
                 currentStateObj.focus.set(pendingObj.focus.select_related())
                 currentStateObj.classification.set(pendingObj.classification.select_related())
                 currentStateObj.save()

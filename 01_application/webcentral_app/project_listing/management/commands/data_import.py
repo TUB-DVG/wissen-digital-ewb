@@ -504,140 +504,37 @@ class Command(BaseCommand):
         name = row[header.index('name')]
         shortDescription = row[header.index('shortDescription')]
 
-        # applicationArea = row[header.index('applicationArea')]
-        # applicationAreaList = applicationArea.split(",")
         processedApplicationAreaList = self._correctReadInValue(row[header.index('applicationArea')])
         applicationAreaList = self._iterateThroughListOfStrings(processedApplicationAreaList, ApplicationArea)
-        # for currentApplicationArea in applicationAreaList:
-        #     if currentApplicationArea != "":
-        #         if currentApplicationArea[0] == " ":
-        #             processedApplicationAreaList.append(currentApplicationArea[1:])
-        #         else:
-        #             processedApplicationAreaList.append(currentApplicationArea)
-        #         objsForCurrentApplicationAreaName = ApplicationArea.objects.filter(
-        #             applicationArea=processedApplicationAreaList[-1]
-        #         )
-        #         if len(objsForCurrentApplicationAreaName) == 0:
-        #             ApplicationArea.objects.create(applicationArea=processedApplicationAreaList[-1])
-            
-        # usage is the new category and the column is called "Nutzung" in the csv?
-        # category = row[header.index('Kategorie')]
-        # usageList = row[header.index('usage')].split(",")
+
         processedUsageList = self._correctReadInValue(row[header.index('usage')])
         usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
-        # for currentUsage in usageList:
-        #     if currentUsage != "":
-        #         if currentUsage[0] == " ":
-        #             processedUsageList.append(currentUsage[1:])
-        #         else:
-        #             processedUsageList.append(currentUsage)
-                
-        #         objsForCurrentUsage = Usage.objects.filter(usage=processedUsageList[-1])
-        #         if len(objsForCurrentUsage) == 0:
-        #             Usage.objects.create(usage=processedUsageList[-1])       
-        
-        # targetGroupList = row[header.index('targetGroup')].split(",")
+
         processedTargetGroup = self._correctReadInValue(row[header.index('targetGroup')])
         targetGroupList = self._iterateThroughListOfStrings(processedTargetGroup, TargetGroup)
-        # for currentTargetGroup in targetGroupList:
-        #     if currentTargetGroup != "":
-        #         if currentTargetGroup[0] == " ":
-        #             processedTargetGroup.append(currentTargetGroup[1:])
-        #         else:
-        #             processedTargetGroup.append(currentTargetGroup)
-                
-        #         objsForCurrentTargetGroup = TargetGroup.objects.filter(targetGroup=processedTargetGroup[-1])
-        #         if len(objsForCurrentTargetGroup) == 0:
-        #             TargetGroup.objects.create(targetGroup=processedTargetGroup[-1]) 
 
-        
-        # accessibilityList = row[header.index('accessibility')].split(",")
         processedAccessibilityList = self._correctReadInValue(row[header.index('accessibility')])
         accessibilityList = self._iterateThroughListOfStrings(processedAccessibilityList, Accessibility)
-        # for currentAccessibility in accessibilityList:
-        #     if currentAccessibility != "":
-        #         if currentAccessibility[0] == " ":
-        #             processedAccessibilityList.append(currentAccessibility[1:])
-        #         else:
-        #             processedAccessibilityList.append(currentAccessibility)
-                
-        #         objsForCurrentAccessibility = Accessibility.objects.filter(accessibility=processedAccessibilityList[-1])
-        #         if len(objsForCurrentAccessibility) == 0:
-        #             Accessibility.objects.create(accessibility=processedAccessibilityList[-1])         
 
-
-        # lifeCyclePhaseList = row[header.index('lifeCyclePhase')].split(",")
         processedlifeCyclePhase = self._correctReadInValue(row[header.index('lifeCyclePhase')])
         lifeCyclePhaseList = self._iterateThroughListOfStrings(processedlifeCyclePhase, LifeCyclePhase)
-        # for currentlifeCyclePhase in lifeCyclePhaseList:
-        #     if currentlifeCyclePhase != "":
-        #         if currentlifeCyclePhase[0] == " ":
-        #             processedlifeCyclePhase.append(currentlifeCyclePhase[1:])
-        #         else:
-        #             processedlifeCyclePhase.append(currentlifeCyclePhase)
-                
-        #         objsForCurrentLifeCyclePhase = LifeCyclePhase.objects.filter(lifeCyclePhase=processedlifeCyclePhase[-1])
-        #         if len(objsForCurrentLifeCyclePhase) == 0:
-        #             LifeCyclePhase.objects.create(lifeCyclePhase=processedlifeCyclePhase[-1]) 
 
-        # userInterfaceList = row[header.index('userInterface')].split(",")
         processedUserInterface = self._correctReadInValue(row[header.index('userInterface')])
         userInterfaceList = self._iterateThroughListOfStrings(processedUserInterface, UserInterface)
-        # for currentUserInterface in userInterfaceList:
-        #     if currentUserInterface != "":
-        #         if currentUserInterface[0] == " ":
-        #             processedUserInterface.append(currentUserInterface[1:])
-        #         else:
-        #             processedUserInterface.append(currentUserInterface)
-                
-        #         objsForCurrentUserInterface = UserInterface.objects.filter(userInterface=processedUserInterface[-1])
-        #         if len(objsForCurrentUserInterface) == 0:
-        #             UserInterface.objects.create(userInterface=processedUserInterface[-1]) 
-        
+
         lastUpdate = row[header.index('lastUpdate')]
-        # lastUpdate = self._correctReadInValue(header.index('lastUpdate'))
         license = row[header.index('licence')]
-        # license = self._correctReadInValue(row[header.index('licence')])
         licenseNotes = row[header.index('licenseNotes')]
-        # licenseNotes = self._correctReadInValue(row[header.index('licenseNotes')])
         furtherInfos = row[header.index('furtherInformation')]
-        # furtherInfos = self._correctReadInValue(row[header.index('furtherInformation')])
         alternatives = row[header.index('alternatives')]
-        # alternatives = self._correctReadInValue(row[header.index('alternatives')])
-        # specificApplicationList = row[header.index('specificApplication')].split(",")
         processedSpecificApplicationList = self._correctReadInValue(row[header.index('specificApplication')])
         specificApplicationList = self._iterateThroughListOfStrings(processedSpecificApplicationList, Subproject)
-        # for currentSpecificApplication in specificApplicationList:
-        #     currentSpecificApplication = currentSpecificApplication.replace("[", "")
-        #     currentSpecificApplication = currentSpecificApplication.replace("]", "")
-        #     currentSpecificApplication = currentSpecificApplication.replace(" ", "")
-        #     currentSpecificApplication = currentSpecificApplication.replace("'", "")
-        #     objsForCurrentSpecificApplication = Subproject.objects.filter(referenceNumber_id=currentSpecificApplication)
-        #     if len(objsForCurrentUserInterface) == 0:
-        #         print(f"No Subproject found in database for: {currentSpecificApplication}")
-        #     else:
-        #         processedSpecificApplicationList.append(currentSpecificApplication)
 
         provider = row[header.index("provider")]
-        # provider = self._correctReadInValue(header.index("provider"))
         imageName = row[header.index('image')]
-        # imageName = self._correctReadInValue(row[header.index('image')])
 
-        #scaleList = row[header.index('scale')].split(",")
-        # scaleList = self._correctReadInValue(row[header.index('scale')])
         processedScaleList = self._correctReadInValue(row[header.index('scale')])
         scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
-        # for currentScale in scaleList:
-        #     if currentScale != "":
-        #         if currentScale[0] == " ":
-        #             processedScaleList.append(currentScale[1:])
-        #         else:
-        #             processedScaleList.append(currentScale)
-                
-        #         objsForCurrentScale = Scale.objects.filter(scale=processedScaleList[-1])
-        #         if len(objsForCurrentScale) == 0:
-        #             Scale.objects.create(scale=processedScaleList[-1]) 
-        
         released = row[header.index('released')]
         if released == "":
             released = None
@@ -651,78 +548,26 @@ class Command(BaseCommand):
             releasedPlanned = bool(int(releasedPlanned)) 
 
         yearOfRelease = row[header.index('yearOfRelease')]
-        # if yearOfRelease == "":
-        #     yearOfRelease = None
-        # else:
-        #     yearOfRelease = int(yearOfRelease)
-        
+
         developmentState = row[header.index('developmentState')]
         if developmentState == "":
             developmentState = None
         else:
             developmentState = int(developmentState)        
 
-        # technicalStandardsNormsList = row[header.index('technicalStandardsNorms')].split(",")
         processedTechnicalStandardsNorms = self._correctReadInValue(row[header.index("technicalStandardsNorms")])
         technicalStandardsNormsList = self._iterateThroughListOfStrings(processedTechnicalStandardsNorms, Norm)
-        # for currentTechnicalStandardsNorms in technicalStandardsNormsList:
-        #     if currentTechnicalStandardsNorms != "":
-        #         if currentTechnicalStandardsNorms[0] == " ":
-        #             currentTechnicalStandardsNorms = currentTechnicalStandardsNorms[1:]
 
-        #         objsForCurrentTechnicalStandardsNorms = Norm.objects.filter(name=currentTechnicalStandardsNorms)
-        #         if len(objsForCurrentTechnicalStandardsNorms) == 0:
-        #             print(f"No Subproject found in database for: {currentTechnicalStandardsNorms}")
-        #         else:
-        #             processedTechnicalStandardsNorms.append(currentTechnicalStandardsNorms)
-
-
-        # technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
-        processedTechnicalStandardsProtocols = self._correctReadInValue(row[header.index('technicalStandardsProtocols')])
-        technicalStandardsProtocolsList = self._iterateThroughListOfStrings(processedTechnicalStandardsProtocols, Protocol)
-        # for currentTechnicalStandardsProtocols in technicalStandardsProtocolsList:
-        #     if currentTechnicalStandardsProtocols != "":
-        #         if currentTechnicalStandardsProtocols[0] == " ":
-        #             currentTechnicalStandardsProtocols = currentTechnicalStandardsProtocols[1:]
-
-        #         objsForCurrentTechnicalStandardsProtocols = Protocol.objects.filter(name=currentTechnicalStandardsProtocols)
-        #         if len(objsForCurrentTechnicalStandardsProtocols) == 0:
-        #             print(f"No Subproject found in database for: {currentTechnicalStandardsProtocols}")
-        #         else:
-        #             processedTechnicalStandardsProtocols.append(currentTechnicalStandardsProtocols)
-
-        # focusList = row[header.index('focus')].split(",")
+        technicalStandardsProtocolsList = row[header.index('technicalStandardsProtocols')].split(",")
         processedFocusList = self._correctReadInValue(row[header.index('focus')])
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
-        # for currentFocus in focusList:
-        #     if currentFocus[0] == " ":
-        #         processedFocusList.append(currentFocus[1:])
-        #     else:
-        #         processedFocusList.append(currentFocus)
-        #     objsForCurrentFocus = Focus.objects.filter(focus=processedFocusList[-1])
-        #     if len(objsForCurrentFocus) == 0:
-        #         Focus.objects.create(focus=processedFocusList[-1]) 
 
-        # classificationList = row[header.index('classification')].split(",")
         processedClassificationList = self._correctReadInValue(row[header.index('classification')])
         classificationList = self._iterateThroughListOfStrings(processedClassificationList, Classification)
-        # for currentClassification in classificationList:
-        #     if currentClassification[0] == " ":
-        #         processedClassificationList.append(currentClassification[1:])
-        #     else:
-        #         processedClassificationList.append(currentClassification)
-        #     objsForCurrentClassification = Classification.objects.filter(classification=processedClassificationList[-1])
-        #     if len(objsForCurrentClassification) == 0:
-        #         Classification.objects.create(classification=processedClassificationList[-1]) 
-        # focusList = [x.replace(" ", "") for x in focusList]
         userInterfaceNotes = row[header.index('userInterfaceNotes')]
-        # userInterfaceNotes = self._correctReadInValue(row[header.index('userInterfaceNotes')])
         programmingLanguages = row[header.index('programmingLanguages')]
-        # programmingLanguages = self._correctReadInValue(row[header.index('programmingLanguages')])
         frameworksLibraries = row[header.index('frameworksLibraries')]
-        # frameworksLibraries = self._correctReadInValue(row[header.index('frameworksLibraries')])
         databaseSystem = row[header.index('databaseSystem')]
-        # databaseSystem = self._correctReadInValue(row[header.index('databaseSystem')])
         
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
@@ -1350,12 +1195,15 @@ class Command(BaseCommand):
                     ):
                         if teilprojektField.many_to_many:
                             if currentForeignTableStr != "tools":
-                                unvisited.append([
-                                    currentForeignTableStr, 
-                                    currentTableObj.__getattribute__(currentForeignTableStr).select_related(), 
-                                    pendingTableObj.__getattribute__(currentForeignTableStr).select_related(), 
-                                    teilprojektField.model.__name__,
-                                ]) 
+                                try:
+                                    unvisited.append([
+                                        currentForeignTableStr, 
+                                        currentTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                        pendingTableObj.__getattribute__(currentForeignTableStr).select_related(), 
+                                        teilprojektField.model.__name__,
+                                    ]) 
+                                except:
+                                    pass
                         else:   
                             try:                     
                                 unvisited.append([
@@ -1375,8 +1223,13 @@ class Command(BaseCommand):
 
                             strCurrent = f" {currentForeignTableStr}: "
                             strPending = f" {currentForeignTableStr}: "
-                            pendingTableObj =  pendingTableObj.order_by("id")
-                            currentTableObj = currentTableObj.order_by("id")
+                            try:
+                                pendingTableObj =  pendingTableObj.order_by("id")
+                                currentTableObj = currentTableObj.order_by("id")
+                            except:
+                                pendingTableObj =  pendingTableObj.order_by("referenceNumber_id")
+                                currentTableObj = currentTableObj.order_by("referenceNumber_id")
+
                             if len(currentTableObj) != len(pendingTableObj):
                                 foundDifference = True
                             else:
@@ -1598,6 +1451,8 @@ class Command(BaseCommand):
         # get names of all djangoModel-objects
         if djangoModel.__name__ == "Subproject":
             attributeNameInModel = "referenceNumber_id"
+        elif djangoModel.__name__ == "Norm":
+            attributeNameInModel = "title"
         else:
             attributeNameInModel = djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
         allNames = [x.__getattribute__(attributeNameInModel) for x in djangoModel.objects.all()]
