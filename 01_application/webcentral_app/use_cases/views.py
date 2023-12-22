@@ -57,4 +57,4 @@ def useCaseView(request, id):
 
 def graph(request):
 
-    return render(request, 'use_cases/one home vs three aggregatedGermanTrials.html') 
+    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html') 
