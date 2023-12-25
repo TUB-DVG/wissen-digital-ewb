@@ -7,12 +7,13 @@ __docformat__ = 'epytext'
 import os
 
 from django.db import models
-from django.utils.http import urlquote_plus
-from django.conf import settings
+from urllib.parse import quote_plus
 from publications.fields import PagesField
 from publications.models import Type, List
 from string import ascii_uppercase
 from tools_over.models import Focus
+
+from django.conf import settings
 
 if 'django.contrib.sites' in settings.INSTALLED_APPS:
 	from django.contrib.sites.models import Site
