@@ -199,8 +199,8 @@ class Command(BaseCommand):
                 currentStateObj.userInterface.set(pendingObj.userInterface.select_related())
                 currentStateObj.targetGroup.set(pendingObj.targetGroup.select_related())
                 currentStateObj.lastUpdate = pendingObj.lastUpdate
-                currentStateObj.licence = pendingObj.licence
-                currentStateObj.licenceNotes = pendingObj.licenceNotes
+                currentStateObj.license = pendingObj.license
+                currentStateObj.licenseNotes = pendingObj.licenseNotes
                 currentStateObj.furtherInformation = pendingObj.furtherInformation
                 currentStateObj.alternatives = pendingObj.alternatives
                 currentStateObj.specificApplication.set(pendingObj.specificApplication.select_related())

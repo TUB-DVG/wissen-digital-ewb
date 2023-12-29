@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Check if command is provided
+if [ -z "$1" ]
+then
+    echo "No command provided. Usage: ./run command"
+    exit 1
+fi
+
+# Set command
+command=$1
+
+# Set Docker container ID
+container_id=webcentral
+
+# Execute different actions based on the command
+case $command in
+    "migrate")
+        echo "Running Django migrations..."
+        docker exec -it $container_id python 01_application/webcentral_app/manage.py migrate
+        ;;
+    "makemigrations")
+        echo "Creating Django migrations..."
+        docker exec -it $container_id python 01_application/webcentral_app/manage.py makemigrations
+        ;;
+    "shell")
+        echo "Creating Django migrations..."
+        docker exec -it $container_id python 01_application/webcentral_app/manage.py shell
+        ;;
+    "data_import")
+        if [ -z "$2" ]
+        then
+            echo "No path to an input-filename is provided. Usage: ./run data_import path/to/input-filename"
+            exit 1
+        fi
+        echo "Creating Django migrations..."
+        docker exec -it $container_id python 01_application/webcentral_app/manage.py data_import $2 testFiles/
+        ;;
+    "restore_db")
+        source .env
+        if [ -z "$2" ]
+        then
+            echo "No path to an input-filename is provided. Using file $DATABASE_PLAIN_SQL_FILE"
+            cat postgres/${DATABASE_PLAIN_SQL_FILE} | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+        else
+            echo "Restoring database with file $2"
+            cat $2 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+        fi
+        ;;
+    *)
+        echo "Unknown command: $command"
+        exit 1
+        ;;
+esac

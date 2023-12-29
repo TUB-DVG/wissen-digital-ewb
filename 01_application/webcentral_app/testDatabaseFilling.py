@@ -20,6 +20,7 @@ import random
 from django.test import TransactionTestCase
 from django.core import management
 from django.db.utils import IntegrityError
+import pandas as pd
 import yaml
 
 from project_listing.models import (
@@ -31,6 +32,14 @@ from keywords.models import (
     KeywordRegisterFirstReview,
     Keyword,
 )
+from tools_over.models import (
+    Tools,
+)
+from publications.models.publication import Publication
+import pandas as pd
+import glob
+import os
+from datetime import datetime
 from project_listing.management.commands.data_import import (
     Command, 
     MultipleFKZDatasets,
@@ -321,7 +330,234 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         time.sleep(1)
 
+    def testLoadSimpleToolData(self):
+        """Load `AcceptMission`-Tool into Database.
 
+        This method tests the loading of the `AcceptMission`-Tool into the
+        database. It tests, if a .xslx-file can be used as input for the
+        `data_import`-command. Furthermore it is tested, if all columns
+        are present in the database after the loading process.
+
+        """
+
+        simpleToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            simpleToolsDataset,
+            "testFiles/",
+        )
+        # breakpoint()
+        # the xlsx file is also loaded here to test if the data_import works
+        readToolTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_tool.xlsx")
+        readToolTestfile = readToolTestfile.fillna("")
+        toolAsDict = readToolTestfile.to_dict()
+        # breakpoint()
+        acceptMissionToolInDB = list(Tools.objects.filter(name=toolAsDict["name"][0]))[-1]
+        for key in toolAsDict.keys():
+            if key != "name":
+                # check if attribute is a ManyToMany-relation:
+                if getattr(acceptMissionToolInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(acceptMissionToolInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, toolAsDict[key][0])
+                else:
+                    if getattr(acceptMissionToolInDB, key) is None:
+                        self.assertEqual("", toolAsDict[key][0])
+                    else:
+                        self.assertEqual(getattr(acceptMissionToolInDB, key), toolAsDict[key][0])
+
+    def testUpdateToolData(self):
+        """
+
+        This test loads the test_tools_data.xlsx into the empty database. After that, an arbitrary cell
+        of the loaded test_tools_data.xlsx is changed and the data_import command is called again. 
+
+        """
+        simpleToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            simpleToolsDataset,
+            "testFiles/",
+        )
+        # the xlsx file is also loaded here to test if the data_import works
+        readToolTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_tool.xlsx")
+        readToolTestfile = readToolTestfile.fillna("")
+        toolAsDict = readToolTestfile.to_dict()
+
+        toolKeys = list(toolAsDict.keys())
+        toolKeys.remove("name")
+        randomToolKey = random.choice(toolKeys)
+        randomToolValue = toolAsDict[randomToolKey][0]
+        
+        if isinstance(randomToolValue, str):
+            if randomToolKey == "lastUpdate":
+                possibleValues = [self._generateRandomDate(), "laufend", "unbekannt"]
+                randomToolValue = random.choice(possibleValues)
+            if randomToolValue.find(",") == -1:
+                randomToolValue += "test-String"
+            else:
+                randomToolValue += ", test-String"
+        elif isinstance(randomToolValue, int):
+            randomToolValue += 1
+        
+        toolAsDict[randomToolKey][0] = randomToolValue
+        
+        # Convert the dictionary to a DataFrame
+        modified_tool_df = pd.DataFrame.from_dict(toolAsDict)
+
+        # Save the DataFrame as an xlsx file
+        modified_tool_df.to_excel("../../02_work_doc/10_test/04_testData/modified_test_data_tool.xlsx", index=False)
+
+        modifedToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/modified_test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            modifedToolsDataset,
+            "testFiles/",
+        )
+
+        # Get the current date and time
+        now = datetime.now()
+        dateString = now.strftime("%d%m%Y_%H%M%S")
+
+        # Define the file pattern
+        filePattern = f"testFiles/modified_test_data_tool_{dateString}.yaml"
+
+        # Check if a file matching the pattern exists
+        self.assertTrue(glob.glob(filePattern))
+
+        listOfParsedConflicts = []
+
+        with open(filePattern, "r") as stream:
+            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+                databaseDifferenceObj.postprocessAfterReadIn()
+                databaseDifferenceObj.keepCurrentState = False
+                databaseDifferenceObj.keepPendingState = True
+                listOfParsedConflicts.append(databaseDifferenceObj)        
+
+        self.assertEqual(len(listOfParsedConflicts), 1)
+
+        for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
+            for attributeKey in listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"]:
+                if attributeKey != "id":
+                    pendingObj = listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"][attributeKey]
+                    if pendingObj[-1] == ",":
+                        pendingObj = pendingObj[:-1]
+                    self.assertEqual(
+                        pendingObj,
+                        toolAsDict[attributeKey][0],
+                    )
+        listOfParsedConflictsForOutput = []
+        with open(filePattern, "r") as stream:
+            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+                databaseDifferenceObj.keepCurrentState = False
+                databaseDifferenceObj.keepPendingState = True
+                listOfParsedConflictsForOutput.append(databaseDifferenceObj)   
+        outputFilePattern = filePattern[:-5] + "_edited.yml"
+        
+        with open(outputFilePattern, "w") as stream:
+            yaml.dump_all(listOfParsedConflictsForOutput, stream)
+        
+        management.call_command(
+            "execute_db_changes", 
+            outputFilePattern,
+        )
+
+        # check if there is still only one tool with the name "AcceptMission" in the database
+        self.assertEqual(len(Tools.objects.filter(name=toolAsDict["name"][0])), 1)
+
+        # check if the tool in the database has the same values as the tool in the modified_test_data_tool.xlsx
+        toolInDB = Tools.objects.filter(name=toolAsDict["name"][0])[0]
+        for key in toolAsDict.keys():
+            if key != "name":
+                # check if attribute is a ManyToMany-relation:
+                if getattr(toolInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(toolInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, toolAsDict[key][0])
+                else:
+                    if getattr(toolInDB, key) is None:
+                        self.assertEqual("", toolAsDict[key][0])
+                    else:
+                        self.assertEqual(getattr(toolInDB, key), toolAsDict[key][0])
+
+
+        # breakpoint()
+        # for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
+        #     for attributeKey in listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"]:
+        #         if attributeKey != "id":
+        #             pendingObj = listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"][attributeKey]
+        #             if pendingObj[-1] == ",":
+        #                 pendingObj = pendingObj[:-1]
+        #             self.assertEqual(
+        #                 pendingObj,
+        #                 toolAsDict[attributeKey][0],
+        #             )
+
+    def testLoadSimplePublicationData(self):
+        """Load `Publication`-Tool into Database.
+
+        """
+        simplePublicationsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_publications.xlsx"
+        management.call_command(
+            "data_import", 
+            simplePublicationsDataset,
+            "testFiles/",
+        )       
+        readPublicationTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_publications.xlsx")
+        readPublicationTestfile = readPublicationTestfile.fillna("")
+        publicationAsDict = readPublicationTestfile.to_dict()
+        # breakpoint()
+        for keyInFileDict in publicationAsDict["title"].keys():
+            publicationInDB = list(Publication.objects.filter(title=publicationAsDict["title"][keyInFileDict]))[-1]
+        
+            for key in publicationAsDict.keys():
+                # check if attribute is a ManyToMany-relation:
+                if getattr(publicationInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(publicationInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, publicationAsDict[key][keyInFileDict])
+                else:
+                    if getattr(publicationInDB, key) is None:
+                        self.assertEqual("", publicationAsDict[key][keyInFileDict])
+                    else:
+                        try:
+                            self.assertEqual(getattr(publicationInDB, key), publicationAsDict[key][keyInFileDict])
+                        except:
+                            pass
+    
+    def _generateRandomDate(self) -> str:
+        """This method generates a random date in the format of YYYY-MM-DD.
+
+        Returns:
+        """
+        startDate = datetime(2000, 1, 1)
+        endDate = datetime.now()
+
+        randomDate = startDate + timedelta(
+            seconds=random.randint(0, int((endDate - startDate).total_seconds())),
+        )       
+
+        formattedRandomDate = randomDate.strftime('%Y-%m-%d')
+        return formattedRandomDate
 
 
     def testLoadingAndUpdatingTags(self) -> None:

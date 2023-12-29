@@ -150,11 +150,11 @@ class Tools(models.Model):
     lastUpdate = models.CharField(max_length = 100,
                                   help_text = "time (year/month/date) of the last update",
                                   blank = True)
-    licence = models.CharField(max_length = 500,
-                              help_text = "licence",
+    license = models.CharField(max_length = 500,
+                              help_text = "license",
                               blank = True)
-    licenceNotes = models.CharField(max_length = 500,
-                              help_text = "licence notes",
+    licenseNotes = models.CharField(max_length = 500,
+                              help_text = "license notes",
                               blank = True)                              
     furtherInformation = models.CharField(max_length = 500,
                                           help_text = "further information",
