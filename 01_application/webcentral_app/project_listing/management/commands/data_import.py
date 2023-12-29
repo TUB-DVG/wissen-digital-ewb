@@ -52,11 +52,13 @@ import datetime
 import difflib
 from encodings import utf_8
 import os
+import math
 
 from django.apps import apps
 from django.core.management.base import BaseCommand
 from django.db.models import Model
 import numpy as np
+import pandas as pd
 
 from project_listing.models import (
     Subproject,
@@ -96,6 +98,7 @@ from TechnicalStandards.models import (
 
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
+import math
 
 class MultipleFKZDatasets(Exception):
     """Custom Exception, which is thrown when multiple changes for one 
@@ -136,10 +139,10 @@ class Command(BaseCommand):
         Returns:
         None
         """        
-        currentTimestamp = datetime.datetime.now()
-        self.DBdifferenceFileName = (str(int(currentTimestamp.timestamp())) 
-                                    + ".yaml"
-        )
+        # currentTimestamp = datetime.datetime.now()
+        # self.DBdifferenceFileName = (str(int(currentTimestamp.timestamp())) 
+        #                             + ".yaml"
+        # )
 
         self.fkzWrittenToYAML = []
 
@@ -523,7 +526,7 @@ class Command(BaseCommand):
         userInterfaceList = self._iterateThroughListOfStrings(processedUserInterface, UserInterface)
 
         lastUpdate = row[header.index('lastUpdate')]
-        license = row[header.index('licence')]
+        license = row[header.index('license')]
         licenseNotes = row[header.index('licenseNotes')]
         furtherInfos = row[header.index('furtherInformation')]
         alternatives = row[header.index('alternatives')]
@@ -532,8 +535,8 @@ class Command(BaseCommand):
 
         provider = row[header.index("provider")]
         imageName = row[header.index('image')]
-
         processedScaleList = self._correctReadInValue(row[header.index('scale')])
+
         scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
         released = row[header.index('released')]
         if released == "":
@@ -568,6 +571,7 @@ class Command(BaseCommand):
         programmingLanguages = row[header.index('programmingLanguages')]
         frameworksLibraries = row[header.index('frameworksLibraries')]
         databaseSystem = row[header.index('databaseSystem')]
+        resources = row[header.index('resources')]
         
         focusElements = Focus.objects.filter(focus__in=focusList) 
         classificationElements = Classification.objects.filter(classification__in=classificationList)
@@ -596,8 +600,8 @@ class Command(BaseCommand):
             accessibility__in=accessibilityElements,
             targetGroup__in=targetGroupElements, 
             lastUpdate=lastUpdate, 
-            licence=license, 
-            licenceNotes=licenseNotes,
+            license=license, 
+            licenseNotes=licenseNotes,
             furtherInformation=furtherInfos, 
             alternatives=alternatives, 
             specificApplication__in=specificApplicationElements, 
@@ -607,6 +611,7 @@ class Command(BaseCommand):
             image=imageName,
             released=released,
             releasedPlanned=releasedPlanned,
+            resources=resources,
             yearOfRelease=yearOfRelease,
             developmentState=developmentState,
             technicalStandardsNorms__in=technicalStandardsNormsElements,
@@ -708,10 +713,13 @@ class Command(BaseCommand):
         image = row[header.index('image')]
 
         focusList = row[header.index('focus')].split(",")
+        processedFocusList = self._correctReadInValue(row[header.index('focus')])
+        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
+        focusElements = Focus.objects.filter(focus__in=focusList)         
         # classificationList = row[header.index('Classification')].split(",")
         
-        focusList = [x.replace(" ", "") for x in focusList]
-        focusElements = Focus.objects.filter(focus__in=focusList)
+        # focusList = [x.replace(" ", "") for x in focusList]
+        # focusElements = Focus.objects.filter(focus__in=focusList)
         
         typeORMObjList = Type.objects.filter(type=type_)
         if len(typeORMObjList) == 0:
@@ -1316,7 +1324,19 @@ class Command(BaseCommand):
                                     str(pendingTableObj.__getattribute__(currentForeignTableStr))},
                                 )   
         
+
+
+        # remove the file-extension
+        filename = self.filename.split(".")[0]
+
+        now = datetime.datetime.now()
+        dateString = now.strftime("%d%m%Y_%H%M%S")
+
+
+        self.DBdifferenceFileName = f"{filename}_{dateString}.yaml"
+
         pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
+        # breakpoint()
         currentDBDifferenceObj.writeToYAML(pathToFile)
 
     # def getOrCreatePublications(            
@@ -1353,6 +1373,28 @@ class Command(BaseCommand):
             for row in reader:
                 data.append(row)
         return header, data
+    
+    def readExcel(
+        self,
+        path: str,
+    ) -> tuple:
+        """This method reads the excel-file, and loads the content into 
+        the two variables header and data. 
+
+        Parameters:
+        path:   str
+
+        Returns:
+        header: list
+            List of headers from the excel-file.
+        data:   list
+            list, containing the rows from the excel-file.
+        """
+        df = pd.read_excel(path)
+        df = df.fillna('')
+        header = list(df.columns)
+        data = df.values.tolist()
+        return header, data
 
     def handle(
             self, 
@@ -1372,19 +1414,27 @@ class Command(BaseCommand):
         Returns:
         None
         """
-        pathCSV = options["pathCSV"][0]
-        pathStr, filename = os.path.split(pathCSV)
-
+        pathFile = options["pathCSV"][0]
+        if pathFile.endswith('.csv'):
+            header, data = self.readCSV(pathFile)
+        elif pathFile.endswith('.xlsx'):
+            header, data = self.readExcel(pathFile)
+        else:
+            print("Invalid file format. Please provide a .csv or .xlsx file.")
+            return None
+        pathStr, filename = os.path.split(pathFile)
+        self.filename = filename
         self.targetFolder = options["targetFolder"][0]
 
-        header, data = self.readCSV(pathCSV)
+        # header, data = self.readCSV(pathCSV)
+        # breakpoint()
         for row in data:
 
             if "modulzuordnung" in filename:
                 self.addOrUpdateRowSubproject(row, header, 'modul')
             elif "enargus" in filename:
                 self.addOrUpdateRowSubproject(row, header, 'enargus')
-            elif "Tools" in filename:
+            elif "tool" in filename or "Tool" in filename:
                 self.addOrUpdateRowSubproject(row, header, 'tools')
             elif "schlagwoerter" in filename:
                 print(row[header.index('Förderkennzeichen (0010)')])
@@ -1411,6 +1461,9 @@ class Command(BaseCommand):
         readInString:   str
             String, which represents the read in value from the csv-file.
         """
+
+        if isinstance(readInString, float) and math.isnan(readInString):
+            return ""
         if readInString == "":
             return ""
         splitStringToSeeIfList = readInString.split(",")
@@ -1462,8 +1515,9 @@ class Command(BaseCommand):
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
         else:
-            print(f"Found no match for {categoryString} in {djangoModel}")
-            return ""
+            print(f"No nearest match for {categoryString} in {djangoModel} was found. {categoryString} is created inside of {djangoModel}")
+            newlyCreatedRow = djangoModel.objects.create(**{attributeNameInModel: categoryString})
+            return newlyCreatedRow.__getattribute__(attributeNameInModel)
 
     def _iterateThroughListOfStrings(self, listOfStrings: list, djangoModel: Model):
         """
