@@ -13,6 +13,9 @@ command=$1
 # Set Docker container ID
 container_id=webcentral
 
+# Get current working directory inside the webcentral container
+currentDirInContainer=$(docker exec $container_id pwd)
+
 # Execute different actions based on the command
 case $command in
     "migrate")
@@ -33,8 +36,15 @@ case $command in
             echo "No path to an input-filename is provided. Usage: ./run data_import path/to/input-filename"
             exit 1
         fi
-        echo "Creating Django migrations..."
-        docker exec -it $container_id python 01_application/webcentral_app/manage.py data_import $2 testFiles/
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 testFiles/
+        ;;
+    "execute_db_changes")
+        if [ -z "$2" ]
+        then
+            echo "No path to an input-filename is provided. Usage: ./run execute_db_changes path/to/input-filename"
+            exit 1
+        fi
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py execute_db_changes $2
         ;;
     "restore_db")
         source .env
@@ -45,6 +55,17 @@ case $command in
         else
             echo "Restoring database with file $2"
             cat $2 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+        fi
+        ;;
+    "dump_db")
+        source .env
+        if [ -z "$2" ]
+        then
+            echo "No path to an output-filename is provided. Using filename postgres/dump.sql"
+            docker exec -i database pg_dump -U ${POSTGRES_USER} ${POSTGRES_DB} > postgres/dump.sql
+        else
+            echo "Dumping database to file $2"
+            docker exec -i database pg_dump -U ${POSTGRES_USER} ${POSTGRES_DB} > $2
         fi
         ;;
     *)

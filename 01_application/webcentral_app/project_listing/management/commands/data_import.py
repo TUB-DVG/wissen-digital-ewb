@@ -48,7 +48,7 @@ deleted. The modified file can then be used as an input for the
 """
 
 import csv
-import datetime
+from datetime import datetime, timedelta
 import difflib
 from encodings import utf_8
 import os
@@ -1329,26 +1329,37 @@ class Command(BaseCommand):
         # remove the file-extension
         filename = self.filename.split(".")[0]
 
-        now = datetime.datetime.now()
-        dateString = now.strftime("%d%m%Y_%H%M%S")
+        now = datetime.now()
 
+        twoMinutesAgo = now - timedelta(minutes=2)
 
-        self.DBdifferenceFileName = f"{filename}_{dateString}.yaml"
+        # Get the list of files in the directory
+        files = os.listdir('testFiles/')
 
-        pathToFile = os.path.join(self.targetFolder, self.DBdifferenceFileName)   
+        # Initialize the filename variable
+        DBdifferenceFileName = None
+
+        # Iterate over the files
+        for file in files:
+            # Get the full path of the file
+            fullPath = os.path.join('testFiles/', file)
+
+            # Get the modification time of the file
+            modTime = datetime.fromtimestamp(os.path.getmtime(fullPath))
+
+            # If the file was modified in the last 2 minutes, set the filename variable
+            if modTime > twoMinutesAgo:
+                DBdifferenceFileName = file
+                break
+
+        # If no file was modified in the last 2 minutes, create a new file
+        if DBdifferenceFileName is None:
+            dateString = now.strftime("%d%m%Y_%H%M%S")
+            DBdifferenceFileName = f"{filename}_{dateString}.yaml"
+
+        pathToFile = os.path.join(self.targetFolder, DBdifferenceFileName)   
         # breakpoint()
         currentDBDifferenceObj.writeToYAML(pathToFile)
-
-    # def getOrCreatePublications(            
-    #     self, 
-    #     row: list, 
-    #     header: list,
-    # ) -> tuple:
-    #     """
-        
-    #     """
-        
-
 
     def readCSV(
             self, 
@@ -1467,6 +1478,7 @@ class Command(BaseCommand):
         if readInString == "":
             return ""
         splitStringToSeeIfList = readInString.split(",")
+        splitStringToSeeIfList = [item for item in splitStringToSeeIfList if item]
         if len(splitStringToSeeIfList) > 0:
             for index, listElement in enumerate(splitStringToSeeIfList):
                 if listElement[0] == " ":
@@ -1515,9 +1527,13 @@ class Command(BaseCommand):
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
         else:
-            print(f"No nearest match for {categoryString} in {djangoModel} was found. {categoryString} is created inside of {djangoModel}")
-            newlyCreatedRow = djangoModel.objects.create(**{attributeNameInModel: categoryString})
-            return newlyCreatedRow.__getattribute__(attributeNameInModel)
+            if djangoModel.__name__ != "Subproject" and djangoModel.__name__ != "Norm":
+                try:
+                    newlyCreatedRow = djangoModel.objects.create(**{attributeNameInModel: categoryString})
+                except:
+                    breakpoint()
+                print(f"No nearest match for {categoryString} in {djangoModel} was found. {categoryString} is created inside of {djangoModel}")
+                return newlyCreatedRow.__getattribute__(attributeNameInModel)
 
     def _iterateThroughListOfStrings(self, listOfStrings: list, djangoModel: Model):
         """
