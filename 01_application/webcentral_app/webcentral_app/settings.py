@@ -102,11 +102,12 @@ DATABASES = {
         'USER': os.environ.get("POSTGRES_USER"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
         'HOST': 'database',
-        'TEST': {
-            'MIRROR': "default",
+    },
+    'TEST': {
+        'MIRROR': "default",
         },
-    },   
-}
+    }   
+
 
 
 

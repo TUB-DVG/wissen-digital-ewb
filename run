@@ -36,7 +36,7 @@ case $command in
             echo "No path to an input-filename is provided. Usage: ./run data_import path/to/input-filename"
             exit 1
         fi
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 testFiles/
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 tests/data/
         ;;
     "execute_db_changes")
         if [ -z "$2" ]
@@ -66,6 +66,20 @@ case $command in
         else
             echo "Dumping database to file $2"
             docker exec -i database pg_dump -U ${POSTGRES_USER} ${POSTGRES_DB} > $2
+        fi
+        ;;
+    "test")
+        if [ -z "$2" ]
+        then
+            echo "No test-type specified. Possible types are Database, Selenium. Usage: ./run test test-type"   
+            exit 1
+        fi
+        if [ "$2" = "Database" ]; then
+            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py test tests/ testDatabaseFilling.checkDifferencesInDatabase
+            exit 1
+        fi
+        if ["$2" = "Selenium" ]; then
+            echo "Not implmented yet."
         fi
         ;;
     *)
