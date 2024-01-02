@@ -1325,7 +1325,7 @@ class Command(BaseCommand):
         twoMinutesAgo = now - timedelta(minutes=2)
 
         # Get the list of files in the directory
-        files = os.listdir('testFiles/')
+        files = os.listdir(self.targetFolder)
 
         # Initialize the filename variable
         DBdifferenceFileName = None
@@ -1333,7 +1333,7 @@ class Command(BaseCommand):
         # Iterate over the files
         for file in files:
             # Get the full path of the file
-            fullPath = os.path.join('testFiles/', file)
+            fullPath = os.path.join(self.targetFolder, file)
 
             # Get the modification time of the file
             modTime = datetime.fromtimestamp(os.path.getmtime(fullPath))
