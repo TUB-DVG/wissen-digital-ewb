@@ -44,7 +44,7 @@ case $command in
         fi
         if [ -z "$3" ]
         then
-            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 postgres/
+            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import ../../$2 ../../postgres/
         fi
         ;;
     "delete_db")
@@ -67,7 +67,7 @@ case $command in
             echo "No path to an input-filename is provided. Usage: ./run execute_db_changes path/to/input-filename"
             exit 1
         fi
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py execute_db_changes $2
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py execute_db_changes ../../$2
         ;;
     "migrate")
         echo "Running Django migrations..."
