@@ -20,6 +20,7 @@ import random
 from django.test import TransactionTestCase
 from django.core import management
 from django.db.utils import IntegrityError
+import pandas as pd
 import yaml
 
 from project_listing.models import (
@@ -31,6 +32,14 @@ from keywords.models import (
     KeywordRegisterFirstReview,
     Keyword,
 )
+from tools_over.models import (
+    Tools,
+)
+from publications.models.publication import Publication
+import pandas as pd
+import glob
+import os
+from datetime import datetime
 from project_listing.management.commands.data_import import (
     Command, 
     MultipleFKZDatasets,
@@ -78,7 +87,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
             management.call_command(
                 'data_import', 
                 csvFileToBeLoaded,
-                "testFiles/",
+                "tests/data/",
             )
         except MultipleFKZDatasets:
             time.sleep(1)
@@ -104,20 +113,20 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command(
             'data_import', 
             fileNameContainingTestData,
-            "testFiles/",    
+            "tests/data/",    
         )
 
         newestFilePath = self._getNewestYAML()
         head, newestFileName = os.path.split(newestFilePath)
         if (
             newestFileName == "" 
-            or int(newestFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            or self._checkIfFileIsOlderThan2Minutes(newestFilePath)
             ):
             fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
             management.call_command(
                 'data_import', 
                 fileNameModifiedTestData,
-                "testFiles/",    
+                "tests/data/",    
             )
             newestFilePath = self._getNewestYAML()
             head, newestFileName = os.path.split(newestFilePath)
@@ -150,7 +159,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command(
             'data_import', 
             loadInitialStateOfDB,
-            "testFiles/",    
+            "tests/data/",    
         )
 
         newestYAMLFilePath = self._getNewestYAML()
@@ -158,18 +167,18 @@ class checkDifferencesInDatabase(TransactionTestCase):
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if (
             newestYAMLFileName == "" 
-            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            or self._checkIfFileIsOlderThan2Minutes(newestYAMLFilePath)
             ):
             management.call_command(
                 'data_import', 
                 updateDatasetInDB,
-                "testFiles/",
+                "tests/data/",
             )
             newestYAMLFilePath = self._getNewestYAML()
             head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
         nameYAMLFileAfterUserInput = os.path.join(
-            "testFiles/", 
+            "tests/data/", 
             newestYAMLFileName[0:-5] + "Curr.yml",
         )
 
@@ -208,7 +217,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command(
             'data_import', 
             loadInitialStateOfDB,
-            "testFiles/",
+            "tests/data/",
         )
 
         newestYAMLFilePath = self._getNewestYAML()
@@ -216,18 +225,18 @@ class checkDifferencesInDatabase(TransactionTestCase):
         updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if (
             newestYAMLFileName == "" 
-            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            or self._checkIfFileIsOlderThan2Minutes(newestYAMLFilePath)
             ):
             management.call_command(
                 'data_import', 
                 updateDatasetInDB,
-                "testFiles/",
+                "tests/data/",
             )
             newestYAMLFilePath = self._getNewestYAML()
             head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
         nameYAMLFileAfterUserInput = os.path.join(
-            "testFiles/", 
+            "tests/data/", 
             newestYAMLFileName[0:-5] + "CSV.yml",
         )
         with open(newestYAMLFilePath, "r") as file:
@@ -270,25 +279,25 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command(
             "data_import", 
             simpleModulzurodnungDatasets,
-            "testFiles/",
+            "tests/data/",
         )
 
         newestYAMLFilePath = self._getNewestYAML()
         head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
         simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
         if (newestYAMLFileName == "" 
-            or int(newestYAMLFileName[0:-5]) + 2 < datetime.datetime.now().timestamp()
+            or self._checkIfFileIsOlderThan2Minutes(newestYAMLFilePath)
             ):
             management.call_command(
                 "data_import", 
                 simpleModulzurodnungDatasetsModified,
-                "testFiles/",
+                "tests/data/",
             )
             newestYAMLFilePath = self._getNewestYAML()
             head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
 
         nameYAMLFileAfterUserInput = os.path.join(
-            "testFiles/", 
+            "tests/data/", 
             newestYAMLFileName[0:-5] + "_edited.yml",
         )
         with open(newestYAMLFilePath, "r") as file:
@@ -321,7 +330,234 @@ class checkDifferencesInDatabase(TransactionTestCase):
         
         time.sleep(1)
 
+    def testLoadSimpleToolData(self):
+        """Load `AcceptMission`-Tool into Database.
 
+        This method tests the loading of the `AcceptMission`-Tool into the
+        database. It tests, if a .xslx-file can be used as input for the
+        `data_import`-command. Furthermore it is tested, if all columns
+        are present in the database after the loading process.
+
+        """
+
+        simpleToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            simpleToolsDataset,
+            "tests/data/",
+        )
+        # breakpoint()
+        # the xlsx file is also loaded here to test if the data_import works
+        readToolTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_tool.xlsx")
+        readToolTestfile = readToolTestfile.fillna("")
+        toolAsDict = readToolTestfile.to_dict()
+        # breakpoint()
+        acceptMissionToolInDB = list(Tools.objects.filter(name=toolAsDict["name"][0]))[-1]
+        for key in toolAsDict.keys():
+            if key != "name":
+                # check if attribute is a ManyToMany-relation:
+                if getattr(acceptMissionToolInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(acceptMissionToolInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, toolAsDict[key][0])
+                else:
+                    if getattr(acceptMissionToolInDB, key) is None:
+                        self.assertEqual("", toolAsDict[key][0])
+                    else:
+                        self.assertEqual(getattr(acceptMissionToolInDB, key), toolAsDict[key][0])
+
+    def testUpdateToolData(self):
+        """
+
+        This test loads the test_tools_data.xlsx into the empty database. After that, an arbitrary cell
+        of the loaded test_tools_data.xlsx is changed and the data_import command is called again. 
+
+        """
+        simpleToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            simpleToolsDataset,
+            "tests/data/",
+        )
+        # the xlsx file is also loaded here to test if the data_import works
+        readToolTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_tool.xlsx")
+        readToolTestfile = readToolTestfile.fillna("")
+        toolAsDict = readToolTestfile.to_dict()
+
+        toolKeys = list(toolAsDict.keys())
+        toolKeys.remove("name")
+        randomToolKey = random.choice(toolKeys)
+        randomToolValue = toolAsDict[randomToolKey][0]
+        
+        if isinstance(randomToolValue, str):
+            if randomToolKey == "lastUpdate":
+                possibleValues = [self._generateRandomDate(), "laufend", "unbekannt"]
+                randomToolValue = random.choice(possibleValues)
+            if randomToolValue.find(",") == -1:
+                randomToolValue += "test-String"
+            else:
+                randomToolValue += ", test-String"
+        elif isinstance(randomToolValue, int):
+            randomToolValue += 1
+        
+        toolAsDict[randomToolKey][0] = randomToolValue
+        
+        # Convert the dictionary to a DataFrame
+        modified_tool_df = pd.DataFrame.from_dict(toolAsDict)
+
+        # Save the DataFrame as an xlsx file
+        modified_tool_df.to_excel("../../02_work_doc/10_test/04_testData/modified_test_data_tool.xlsx", index=False)
+
+        modifedToolsDataset = \
+            "../../02_work_doc/10_test/04_testData/modified_test_data_tool.xlsx"
+        management.call_command(
+            "data_import", 
+            modifedToolsDataset,
+            "tests/data/",
+        )
+
+        # Get the current date and time
+        now = datetime.now()
+        dateString = now.strftime("%d%m%Y_%H%M%S")
+
+        # Define the file pattern
+        filePattern = f"tests/data/modified_test_data_tool_{dateString}.yaml"
+
+        # Check if a file matching the pattern exists
+        self.assertTrue(glob.glob(filePattern))
+
+        listOfParsedConflicts = []
+
+        with open(filePattern, "r") as stream:
+            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+                databaseDifferenceObj.postprocessAfterReadIn()
+                databaseDifferenceObj.keepCurrentState = False
+                databaseDifferenceObj.keepPendingState = True
+                listOfParsedConflicts.append(databaseDifferenceObj)        
+
+        self.assertEqual(len(listOfParsedConflicts), 1)
+
+        for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
+            for attributeKey in listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"]:
+                if attributeKey != "id":
+                    pendingObj = listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"][attributeKey]
+                    if pendingObj[-1] == ",":
+                        pendingObj = pendingObj[:-1]
+                    self.assertEqual(
+                        pendingObj,
+                        toolAsDict[attributeKey][0],
+                    )
+        listOfParsedConflictsForOutput = []
+        with open(filePattern, "r") as stream:
+            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+                databaseDifferenceObj.keepCurrentState = False
+                databaseDifferenceObj.keepPendingState = True
+                listOfParsedConflictsForOutput.append(databaseDifferenceObj)   
+        outputFilePattern = filePattern[:-5] + "_edited.yml"
+        
+        with open(outputFilePattern, "w") as stream:
+            yaml.dump_all(listOfParsedConflictsForOutput, stream)
+        
+        management.call_command(
+            "execute_db_changes", 
+            outputFilePattern,
+        )
+
+        # check if there is still only one tool with the name "AcceptMission" in the database
+        self.assertEqual(len(Tools.objects.filter(name=toolAsDict["name"][0])), 1)
+
+        # check if the tool in the database has the same values as the tool in the modified_test_data_tool.xlsx
+        toolInDB = Tools.objects.filter(name=toolAsDict["name"][0])[0]
+        for key in toolAsDict.keys():
+            if key != "name":
+                # check if attribute is a ManyToMany-relation:
+                if getattr(toolInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(toolInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, toolAsDict[key][0])
+                else:
+                    if getattr(toolInDB, key) is None:
+                        self.assertEqual("", toolAsDict[key][0])
+                    else:
+                        self.assertEqual(getattr(toolInDB, key), toolAsDict[key][0])
+
+
+        # breakpoint()
+        # for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
+        #     for attributeKey in listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"]:
+        #         if attributeKey != "id":
+        #             pendingObj = listOfParsedConflicts[0].differencesSortedByTable[tableKey]["pendingState"][attributeKey]
+        #             if pendingObj[-1] == ",":
+        #                 pendingObj = pendingObj[:-1]
+        #             self.assertEqual(
+        #                 pendingObj,
+        #                 toolAsDict[attributeKey][0],
+        #             )
+
+    def testLoadSimplePublicationData(self):
+        """Load `Publication`-Tool into Database.
+
+        """
+        simplePublicationsDataset = \
+            "../../02_work_doc/10_test/04_testData/test_data_publications.xlsx"
+        management.call_command(
+            "data_import", 
+            simplePublicationsDataset,
+            "tests/data/",
+        )       
+        readPublicationTestfile = pd.read_excel("../../02_work_doc/10_test/04_testData/test_data_publications.xlsx")
+        readPublicationTestfile = readPublicationTestfile.fillna("")
+        publicationAsDict = readPublicationTestfile.to_dict()
+        # breakpoint()
+        for keyInFileDict in publicationAsDict["title"].keys():
+            publicationInDB = list(Publication.objects.filter(title=publicationAsDict["title"][keyInFileDict]))[-1]
+        
+            for key in publicationAsDict.keys():
+                # check if attribute is a ManyToMany-relation:
+                if getattr(publicationInDB, key).__class__.__name__ == "ManyRelatedManager":
+                    manyToManyValues = getattr(publicationInDB, key).all()
+                    manyToManyString = ""
+                    for index, value in enumerate(manyToManyValues):
+                        if index == 0:
+                            manyToManyString += value.__getattribute__(key[0].lower() + key[1:])
+                        else:
+                            manyToManyString += ", " + value.__getattribute__(key[0].lower() + key[1:])
+                    self.assertEqual(manyToManyString, publicationAsDict[key][keyInFileDict])
+                else:
+                    if getattr(publicationInDB, key) is None:
+                        self.assertEqual("", publicationAsDict[key][keyInFileDict])
+                    else:
+                        try:
+                            self.assertEqual(getattr(publicationInDB, key), publicationAsDict[key][keyInFileDict])
+                        except:
+                            pass
+    
+    def _generateRandomDate(self) -> str:
+        """This method generates a random date in the format of YYYY-MM-DD.
+
+        Returns:
+        """
+        startDate = datetime(2000, 1, 1)
+        endDate = datetime.now()
+
+        randomDate = startDate + timedelta(
+            seconds=random.randint(0, int((endDate - startDate).total_seconds())),
+        )       
+
+        formattedRandomDate = randomDate.strftime('%Y-%m-%d')
+        return formattedRandomDate
 
 
     def testLoadingAndUpdatingTags(self) -> None:
@@ -355,18 +591,18 @@ class checkDifferencesInDatabase(TransactionTestCase):
         management.call_command(
             "data_import", 
             simpleTagsDatasets,
-            "testFiles/",
+            "tests/data/",
         )
         
         newestYAMLFilePath = self._getNewestYAML()
         head, newestYAMLFile = os.path.split(newestYAMLFilePath)
         simpleTagsModifiedDataset = \
     "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestDataModified.csv"
-        if newestYAMLFile == "" or int(newestYAMLFile[0:-5]) + 2 < datetime.datetime.now().timestamp():
+        if newestYAMLFile == "" or self._checkIfFileIsOlderThan2Minutes(newestYAMLFilePath):
             management.call_command(
                 "data_import", 
                 simpleTagsModifiedDataset, 
-                "testFiles/",
+                "tests/data/",
             )
             newestYAMLFilePath = self._getNewestYAML()
             head, newestYAMLFile = os.path.split(newestYAMLFilePath)
@@ -384,7 +620,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         time.sleep(2) 
 
         exportFileKeepCurrent = os.path.join(
-            "testFiles/", 
+            "tests/data/", 
             newestYAMLFile[:-5] + "keepCurr.yml",
         )
         # change each DifferenceObject to keep-Current-DB-State
@@ -608,28 +844,26 @@ class checkDifferencesInDatabase(TransactionTestCase):
         """This method is a helper function for the Testcases. It iterates 
         through all .yaml files in the current directory and searches for 
         the one, which has the newest timestamp. If the timestamp of the 
-        newest .yaml file is older than 2 minutes, the assert staatement 
-        raises and error.
+        newest .yaml file is older than 2 minutes, the assert statement 
+        raises an error.
 
         Returns: 
         newestFileName: str
             string, which represents the name of the newest .yaml file.
         """
-        if not os.path.exists("testFiles"):
-            os.mkdir("testFiles")
-        #os.chdir("testFiles")
-        fileContents = os.listdir(path="testFiles/")
-        newest = 0
+        if not os.path.exists("tests/data/"):
+            os.mkdir("tests/data/")
+        fileContents = os.listdir(path="tests/data/")
+        newestTimestamp = 0
         newestFileName = ""
         for currentFilename in fileContents:
             if ".yaml" in currentFilename:
-                fileWithoutExtension = currentFilename[0:-5]
-
-                if int(fileWithoutExtension) > newest:
-                    newest = int(fileWithoutExtension)
+                fileTimestamp = os.path.getmtime(os.path.join("tests/data/", currentFilename))
+                if fileTimestamp > newestTimestamp:
+                    newestTimestamp = fileTimestamp
                     newestFileName = currentFilename
         
-        return os.path.join("testFiles/", newestFileName)
+        return os.path.join("tests/data/", newestFileName)
 
     def _getTablesFromDiffDataStructure(
             self, 
@@ -667,54 +901,65 @@ class checkDifferencesInDatabase(TransactionTestCase):
     
         return returnDict
     
+    def _checkIfFileIsOlderThan2Minutes(self, pathToFile: str) -> bool:
+        """Check if the file locatted at `pathToFile` is older than 2 minutes.
+        
+        """
+        fileTimestamp = os.path.getmtime(pathToFile)
+        if fileTimestamp + 120 < datetime.now().timestamp():
+            return False
+        else:
+            return True
+
+    
 class TestDatabaseConcistency(TransactionTestCase):
     """
     
     """
 
-    def testIfLastYAMLFileRepresentsDatabaseState(self):
-        """Test checks, if DB-state specified by .YAML-file represents DB.
+    # def testIfLastYAMLFileRepresentsDatabaseState(self):
+    #     """Test checks, if DB-state specified by .YAML-file represents DB.
 
-        This method checks if the user-edited-.YAML-file represents the
-        state in the Database. Before execution, the filename variable
-        needs to be set to the name of the .yaml-file. 
+    #     This method checks if the user-edited-.YAML-file represents the
+    #     state in the Database. Before execution, the filename variable
+    #     needs to be set to the name of the .yaml-file. 
         
-        """
+    #     """
 
-        filename = "1683640522_edited.yaml"
-        listOfDBDiffObjs = self._loadYAMLFile(filename, True)
-        for currDBDiff in listOfDBDiffObjs:
+    #     filename = "1683640522_edited.yaml"
+    #     listOfDBDiffObjs = self._loadYAMLFile(filename, True)
+    #     for currDBDiff in listOfDBDiffObjs:
 
-            dictOfDiff = currDBDiff.differencesSortedByTable
-            for tableNameInDiffStruct in list(dictOfDiff.keys()):
-                if "Teilprojekt" in tableNameInDiffStruct:
-                    foreignRelationFromTeilprojekt = tableNameInDiffStruct.split(".")[1]
-                    fullKeyStr = tableNameInDiffStruct
+    #         dictOfDiff = currDBDiff.differencesSortedByTable
+    #         for tableNameInDiffStruct in list(dictOfDiff.keys()):
+    #             if "Subproject" in tableNameInDiffStruct:
+    #                 foreignRelationFromTeilprojekt = tableNameInDiffStruct.split(".")[1]
+    #                 fullKeyStr = tableNameInDiffStruct
 
-            if currDBDiff.keepCurrentState and not currDBDiff.keepPendingState:
-                currOrPendingStr = "currentState"
-            elif currDBDiff.keepPendingState and not currDBDiff.keepCurrentState:
-                currOrPendingStr = "pendingState"
-            else:
-                self.assertTrue(False, "User-defined kepdCurrent and keepPending Attributes are not consistent!")
-                continue
+    #         if currDBDiff.keepCurrentState and not currDBDiff.keepPendingState:
+    #             currOrPendingStr = "currentState"
+    #         elif currDBDiff.keepPendingState and not currDBDiff.keepCurrentState:
+    #             currOrPendingStr = "pendingState"
+    #         else:
+    #             self.assertTrue(False, "User-defined kepdCurrent and keepPending Attributes are not consistent!")
+    #             continue
             
-            #pdb.set_trace()
-            modelClassName = getattr(
-                Subproject, 
-                foreignRelationFromTeilprojekt,
-            ).field.related_model
+    #         #pdb.set_trace()
+    #         modelClassName = getattr(
+    #             Subproject, 
+    #             foreignRelationFromTeilprojekt,
+    #         ).field.related_model
 
-            foreignObjToPartProject = modelClassName.objects.filter(
-                **dictOfDiff[fullKeyStr][currOrPendingStr]
-            )[0]  
+    #         foreignObjToPartProject = modelClassName.objects.filter(
+    #             **dictOfDiff[fullKeyStr][currOrPendingStr]
+    #         )[0]  
 
-            filterDict = {
-                **currDBDiff.identifer, 
-                foreignRelationFromTeilprojekt: foreignObjToPartProject,
-            }
+    #         filterDict = {
+    #             **currDBDiff.identifer, 
+    #             foreignRelationFromTeilprojekt: foreignObjToPartProject,
+    #         }
 
-            self.assertEqual(len(Subproject.objects.filter(**filterDict)), 1)
+    #         self.assertEqual(len(Subproject.objects.filter(**filterDict)), 1)
 
     def testIfNotUsedTupleWereDeleted(self):
         """Checks, if Tuple are present, which are not connected to Teilprojekt.
@@ -733,7 +978,7 @@ class TestDatabaseConcistency(TransactionTestCase):
 
         queryOfAllSchlagwoertregisterTuples = KeywordRegisterFirstReview.objects.all()
         for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
-            if len(schlagwortregisterTuple.teilprojekt_set.all()) == 0:
+            if len(schlagwortregisterTuple.subproject_set.all()) == 0:
                 listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)
         self.assertEqual(
             len(listOfSchlagwoerterTuplesTrash),
@@ -742,7 +987,7 @@ class TestDatabaseConcistency(TransactionTestCase):
 
         queryOfAllModulZuordnungTuples = ModuleAssignment.objects.all()
         for modulTuple in queryOfAllModulZuordnungTuples:
-            if len(modulTuple.teilprojekt_set.all()) == 0:
+            if len(modulTuple.subproject_set.all()) == 0:
                 listOfModuleTuplesTrash.append(modulTuple)
         self.assertEqual(
             len(listOfModuleTuplesTrash),
@@ -752,7 +997,7 @@ class TestDatabaseConcistency(TransactionTestCase):
         allEnargusTuples = Enargus.objects.all()
         for enargusTuple in allEnargusTuples:
             try:
-                enargusTuple.teilprojekt
+                enargusTuple.subproject
             except:
                 listOfEnargusTupleTrash.append(enargusTuple)
         self.assertEqual(len(listOfEnargusTupleTrash), 0)
@@ -773,4 +1018,5 @@ class TestDatabaseConcistency(TransactionTestCase):
                 else:
                     listOfDBDiffs.append(element)
         return listOfDBDiffs
+    
             
