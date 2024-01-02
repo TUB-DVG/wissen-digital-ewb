@@ -139,11 +139,6 @@ class Command(BaseCommand):
         Returns:
         None
         """        
-        # currentTimestamp = datetime.datetime.now()
-        # self.DBdifferenceFileName = (str(int(currentTimestamp.timestamp())) 
-        #                             + ".yaml"
-        # )
-
         self.fkzWrittenToYAML = []
 
 
@@ -716,10 +711,6 @@ class Command(BaseCommand):
         processedFocusList = self._correctReadInValue(row[header.index('focus')])
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
         focusElements = Focus.objects.filter(focus__in=focusList)         
-        # classificationList = row[header.index('Classification')].split(",")
-        
-        # focusList = [x.replace(" ", "") for x in focusList]
-        # focusElements = Focus.objects.filter(focus__in=focusList)
         
         typeORMObjList = Type.objects.filter(type=type_)
         if len(typeORMObjList) == 0:
@@ -1358,7 +1349,6 @@ class Command(BaseCommand):
             DBdifferenceFileName = f"{filename}_{dateString}.yaml"
 
         pathToFile = os.path.join(self.targetFolder, DBdifferenceFileName)   
-        # breakpoint()
         currentDBDifferenceObj.writeToYAML(pathToFile)
 
     def readCSV(
