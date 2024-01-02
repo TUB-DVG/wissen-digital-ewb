@@ -42,7 +42,13 @@ case $command in
             echo "No path to an input-filename is provided. Usage: ./run data_import path/to/input-filename"
             exit 1
         fi
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 tests/data/
+        if [ -z "$3" ]
+        then
+            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import $2 postgres/
+        fi
+        ;;
+    "delete_db")
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
         ;;
     "dump_db")
         source .env
