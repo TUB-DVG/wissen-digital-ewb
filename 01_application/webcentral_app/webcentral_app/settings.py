@@ -193,7 +193,7 @@ CHANNEL_LAYERS={
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILED_USER")
+nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILEGED_USER")
 #STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
     STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static" 
