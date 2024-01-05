@@ -26,6 +26,7 @@ services:
             target: base
             args:
                 PATH_WEBCENTRAL_SRC: ${PWD}
+                WEBCENTRAL_UNPRIVILEGED_USER: ${WEBCENTRAL_UNPRIVILEGED_USER}
         ports:
             - ${WEBCENTRAL_OUTSIDE_PORT}:${WEBCENTRAL_INSIDE_PORT}
         depends_on:

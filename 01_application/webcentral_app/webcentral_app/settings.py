@@ -193,17 +193,17 @@ CHANNEL_LAYERS={
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILED_USER")
 #STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
-    STATIC_ROOT = "/home/uwsgiguest/webcentral/static" 
+    STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static" 
     STATIC_URL = '/static/static/'
     STATICFILES_DIRS = [
         Path.joinpath(BASE_DIR, 'webcentral_app/static')
     ]
     # Media folder settings
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-    MEDIA_ROOT = "/home/uwsgiguest/webcentral/media"
+    MEDIA_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/media"
     MEDIA_URL = '/media/'
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
