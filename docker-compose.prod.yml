@@ -20,8 +20,8 @@ services:
                 WEBCENTRAL_UNPRIVILEGED_USER: ${WEBCENTRAL_UNPRIVILEGED_USER}            
         volumes:
             - static-data:/home/${WEBCENTRAL_UNPRIVILEGED_USER}/webcentral
-        # depends_on:
-        #     - change-vol-ownership
+        depends_on:
+            - change-vol-ownership
         restart: always
         env_file:
           - .env
