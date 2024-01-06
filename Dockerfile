@@ -7,6 +7,7 @@ ENV PYTHONUNBUFFERED 1
 ARG WEBCENTRAL_UNPRIVILEGED_USER
 
 # creates a directory src and cd's into it
+WORKDIR /src
 RUN apt update && apt upgrade --yes
 RUN apt-get install -y locales locales-all
 
