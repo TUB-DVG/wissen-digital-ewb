@@ -11,6 +11,14 @@ WORKDIR /src
 RUN apt update && apt upgrade --yes
 RUN apt-get install -y locales locales-all
 
+<<<<<<< HEAD
+=======
+COPY 01_application/requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+#RUN apt update && apt upgrade --yes && apt install locale-gen && locale-gen de_DE.UTF-8 
+# RUN locale-gen de_DE.UTF-8  
+>>>>>>> cb6f912 (removed tries to work with unprivileged user, added run-script for convienience)
 ENV LANG de_DE.UTF-8  
 ENV LANGUAGE de_DE:de  
 ENV LC_ALL de_DE.UTF-8  
@@ -22,6 +30,7 @@ COPY 01_application/requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
 RUN chown -R ${WEBCENTRAL_UNPRIVILEGED_USER} /usr/local/lib/python3.10/site-packages/
 
+<<<<<<< HEAD
 USER ${WEBCENTRAL_UNPRIVILEGED_USER}
 WORKDIR /home/${WEBCENTRAL_UNPRIVILEGED_USER}
 
@@ -34,3 +43,6 @@ RUN apt-get install -y gettext
 WORKDIR /webcentral/
 COPY 01_application/requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
+=======
+COPY . /src
+>>>>>>> cb6f912 (removed tries to work with unprivileged user, added run-script for convienience)
