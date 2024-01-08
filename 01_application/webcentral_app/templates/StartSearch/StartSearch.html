@@ -12,7 +12,7 @@
       <div class="col-12">
         <img src="{% static 'assets/images/StartPage_figure.svg' %}"
              class="rounded" alt="overview_figure"
-             style="width: 800px vertical-align: middle">
+             style="width: 800px vertical-align: middle" nonce="{{request.csp_nonce}}">
       </div>
     </div>
     <div class="row align-items-center">
@@ -52,13 +52,13 @@
         <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
           <input id="search-input-general" class="form-control me-1"
                  type="search" placeholder="Durchsuche die Plattform!" name="searchValue"
-                 style="border: None">
+                 style="border: None" nonce="{{request.csp_nonce}}">
         </div>
         <div class="col-1 col-sm-1 col-xl-1 position-relative" title="Allgemeine Suche">
           <img src="{% static 'assets/images/searchStartpage.svg' %}"
                style="width: 30px;"
                class="position-absolute translate-middle-y top-50 end-50"
-               alt="icon">
+               alt="icon" nonce="{{request.csp_nonce}}">
         </div>
       </div>
     </form>
@@ -74,7 +74,8 @@
           <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                class="position-absolute start-0 translate-middle"
                style="top: 30px"
-               alt="icon">
+               alt="icon"
+               nonce="{{request.csp_nonce}}">
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
@@ -183,6 +184,7 @@
           <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
                class="position-absolute start-0 translate-middle"
                style="top: 30px"
+               nonce="{{request.csp_nonce}}"
                alt="icon">
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
@@ -288,6 +290,7 @@
           <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
                class="position-absolute start-0 translate-middle"
                style="top: 30px"
+               nonce="{{request.csp_nonce}}"
                alt="icon">
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
@@ -379,6 +382,7 @@
           <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
                class="position-absolute start-0 translate-middle"
                style="top: 30px"
+               nonce="{{request.csp_nonce}}"
                alt="icon">
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"

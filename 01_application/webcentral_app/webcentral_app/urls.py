@@ -34,6 +34,7 @@ urlpatterns = [
     path('', include('StartSearch.urls')),
     path('TechnicalStandards/',include('TechnicalStandards.urls')),
     path('publications/',include('publications.urls')),
+    path("criteriaCatalog/", include("criteriaCatalog.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

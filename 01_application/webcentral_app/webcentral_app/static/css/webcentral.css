@@ -8,12 +8,7 @@
   border-radius: 2px;
   border: 2px solid #CCC;
 }
-/* #container-start-focus .border-neutral {
-  border-radius: 2px;
-  border: None;
-  outline: 2px solid #CCC;
-  outline-offset: -17px;
-} */
+
 #container-start-focus .border-technical {
   border-radius: 2px;
   border: None;
@@ -77,18 +72,7 @@
   background-color: #AFC5FF;
   color: white;
 }
-.neutral-cards .border-neutral {
-  border-radius: 2px;
-  border: 2px solid #CCC ;
-}
-.neutral-cards .border-neutral-round {
-  border-radius: 20px;
-  border: 2px solid #CCC;
-}
-.neutral-cards .btn-neutral {
-  background-color: #CCC;
-  color: white;
-}
+
 .operational-cards .border-operational {
   border-radius: 2px;
   border: 2px solid #FFAE9D;

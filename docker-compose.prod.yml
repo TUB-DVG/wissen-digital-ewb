@@ -1,16 +1,30 @@
-version: "3.9"
 services:
+    change-vol-ownership:
+        # We can use any image we want as long as we can chown
+        image: ubuntu
+        # Need a user priviliged enough to chown
+        user: "root"
+        # Specify the group in question
+        group_add:
+        - '1000'
+        volumes:
+        # The volume to chown
+        - static-data:/tmp/change-ownership
+        command: chown -R 1000:1000 /tmp/change-ownership
     webcentral:
         build:
-            context: ${PATH_WEBCENTRAL_SRC}
+            context: ${PWD}
             dockerfile: Dockerfile
             target: prod
-            
+            args:
+                WEBCENTRAL_UNPRIVILEGED_USER: ${WEBCENTRAL_UNPRIVILEGED_USER}            
         volumes:
-            - static-data:/vol/webcentral
+            - static-data:/home/${WEBCENTRAL_UNPRIVILEGED_USER}/webcentral
         depends_on:
-            - database
+            - change-vol-ownership
         restart: always
+        env_file:
+          - .env
         environment:
             - UWSGI_LISTEN_PORT
             - UWSGI_NUM_WORKERS
@@ -19,12 +33,8 @@ services:
             - ALLOWED_HOSTS
             - MODE=production
         command: >
-            sh -c "sphinx-apidoc -f -o 02_work_doc/06_sphinx/source/ 01_application/webcentral_app/ data_import.py && \
-            sphinx-build 02_work_doc/06_sphinx/source 01_application/webcentral_app/webcentral_app/static/ && \
-            python /src/01_application/webcentral_app/manage.py collectstatic --noinput && \
-            uwsgi --socket :${UWSGI_LISTEN_PORT} --chdir=/src/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application"
-
-
+            bash -c "python /home/$WEBCENTRAL_UNPRIVILEGED_USER/01_application/webcentral_app/manage.py collectstatic --noinput && \
+            uwsgi --socket :$UWSGI_LISTEN_PORT --chdir=/home/$WEBCENTRAL_UNPRIVILEGED_USER/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid $WEBCENTRAL_UNPRIVILEGED_USER --gid $WEBCENTRAL_UNPRIVILEGED_USER"
     proxy:
         container_name: proxy
         build:
