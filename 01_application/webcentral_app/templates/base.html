@@ -3,7 +3,7 @@
 <html lang="de">
 <head>
   <title>{% block title %} {% endblock %}</title>
-  <style nonce="baseStyleOne">
+  <style nonce="{{request.csp_nonce}}">
     img {width: auto; /*set the width or max-width*/
          height: 100px; /*this makes sure to maintain the aspect ratio*/}
   </style>
@@ -33,13 +33,13 @@
   <!-- webcentral css -->
   <link rel="stylesheet" href="{% static 'css/webcentral.css' %}">
   <!-- js scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous" nonce="{{request.csp_nonce}}"></script>
   <!-- <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
   </script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js" integrity="sha384-W7FXNbEY44RgDK8MunBe4gETSKi3Qo2bJAXX3PH8v5l3hdabFb9dbCIn3X69OFjX" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" nonce="{{request.csp_nonce}}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" nonce="{{request.csp_nonce}}"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" integrity="sha384-W7FXNbEY44RgDK8MunBe4gETSKi3Qo2bJAXX3PH8v5l3hdabFb9dbCIn3X69OFjX" crossorigin="anonymous" nonce="{{request.csp_nonce}}"></script>
 </head>
 <body>
   <!-- Nav Bar -->
@@ -52,7 +52,7 @@
     <p>
       We use cookies in this website to give you the best experience on our
       site. To find out more, read our
-      <a style ="color:rgb(154, 154, 255);"href="{% url 'Datenschutzhinweis' %}" nonce="baseDivStyleOne">
+      <a style ="color:rgb(154, 154, 255);"href="{% url 'Datenschutzhinweis' %}" nonce="{{request.csp_nonce}}">
         privacy policy
       </a>.
     </p>
@@ -68,19 +68,19 @@
   </div>
   <!-- Bootstrap JS -->
   <script
-    src="{% static 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}">
+    src="{% static 'assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}" nonce="{{request.csp_nonce}}">
   </script>
   <!-- Vendors -->
-  <script src="{% static 'assets/vendor/choices/js/choices.min.js' %}"></script>
-  <script src="{% static 'assets/vendor/glightbox/js/glightbox.js' %}"></script>
+  <script src="{% static 'assets/vendor/choices/js/choices.min.js' %}" nonce="{{request.csp_nonce}}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.js' %}" nonce="{{request.csp_nonce}}"></script>
   <!-- cookies -->
-  <script src="{% static 'js/cookies.js' %}"></script>
+  <script src="{% static 'js/cookies.js' %}" nonce="{{request.csp_nonce}}"></script>
   <!-- clickable-table-rows -->
-  <script src="{% static 'js/clickable-table-rows.js' %}"></script>
+  <script src="{% static 'js/clickable-table-rows.js' %}" nonce="{{request.csp_nonce}}"></script>
   <!-- Search -->
-  <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/search.js' %}" nonce="{{request.csp_nonce}}"></script>
   <!--ComparisonFeature-->
-  <script type="text/javascript" src="{% static 'js/comparison-feature.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/comparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script>
 
 </body>
 </html>
