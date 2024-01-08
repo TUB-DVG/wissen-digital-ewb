@@ -40,6 +40,7 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
     'pages.apps.PagesConfig',
@@ -78,22 +79,20 @@ CSP_IMG_SRC = ("'self'")
 CSP_STYLE_SRC = (
     "'self'",
     "'unsafe-inline'", 
+    "'strict-dynamic'",
     "https://fonts.googleapis.com", 
-    "nonce-baseStyleOne",
-    "nonce-baseStartpageOne",
-    "nonce-baseDivStyleOne",
-    "nonce-baseStartpageAOne",
-    "nonce-weatherdataDetailDivOne",
     "https://cdn.jsdelivr.net",
 )
 CSP_SCRIPT_SRC = (
     "'self'", 
-    "'unsafe-inline'",
     "https://ajax.googleapis.com", 
     "https://cdnjs.cloudflare.com",
     "https://maxcdn.bootstrapcdn.com",
     "https://cdn.plot.ly",
     "https://unpkg.com",
+    # "'unsafe-inline'",
+    "'strict-dynamic'",
+    "'nonce'",
 )
 CSP_DEFAULT_SRC = (
     "'self'", 
@@ -103,6 +102,7 @@ CSP_DEFAULT_SRC = (
 CSP_FRAME_ANCESTORS = ("'self'",)
 CSP_FORM_ACTION = ("'self'",)
 CSP_BASE_URI = ("'self'",)
+CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
 ROOT_URLCONF = 'webcentral_app.urls'
 
 TEMPLATES = [
