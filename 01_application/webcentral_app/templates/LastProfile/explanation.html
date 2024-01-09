@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 
-<style>
+<style nonce="{{request.csp_nonce}}">
   img_src {
       float: right;
 

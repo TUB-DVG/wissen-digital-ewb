@@ -75,11 +75,11 @@ MIDDLEWARE = [
 ]
 
 # Content Security Policy
-CSP_IMG_SRC = ("'self'")
+CSP_IMG_SRC = ("'self'", "data:image/webp*")
 CSP_STYLE_SRC = (
     "'self'",
     "'unsafe-inline'", 
-    "'strict-dynamic'",
+    # "'strict-dynamic'",
     "https://fonts.googleapis.com", 
     "https://cdn.jsdelivr.net",
 )
@@ -90,19 +90,22 @@ CSP_SCRIPT_SRC = (
     "https://maxcdn.bootstrapcdn.com",
     "https://cdn.plot.ly",
     "https://unpkg.com",
-    # "'unsafe-inline'",
-    "'strict-dynamic'",
-    "'nonce'",
+    # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+    # "'strict-dynamic'",
 )
 CSP_DEFAULT_SRC = (
     "'self'", 
+    # "'strict-dynamic'",
     "https://fonts.gstatic.com",
     "https://cdn.jsdelivr.net",    
 )
 CSP_FRAME_ANCESTORS = ("'self'",)
+CSP_FRAME_SRC = ("'self'",)
 CSP_FORM_ACTION = ("'self'",)
 CSP_BASE_URI = ("'self'",)
-CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
+# CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
 ROOT_URLCONF = 'webcentral_app.urls'
 
 TEMPLATES = [

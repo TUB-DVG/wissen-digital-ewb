@@ -35,6 +35,9 @@ case $command in
             fi
         fi
         ;;
+    "down")
+        docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+        ;;
     "data_import")
         if [ -z "$2" ]
         then
