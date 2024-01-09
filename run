@@ -1,7 +1,4 @@
 #!/bin/bash
-shopt -s expand_aliases
-# Define your alias here
-alias docker-compose='docker compose'
 # Check if command is provided
 if [ -z "$1" ]
 then
