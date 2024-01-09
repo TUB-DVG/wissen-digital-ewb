@@ -1,6 +1,6 @@
 class Locator(object):
     
-    # locators on main-page:
+    # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
     resultElements = "//tr"
@@ -12,6 +12,10 @@ class Locator(object):
     paginationFirstLink = "//a[@id='paginationFirstSite']"
     paginationLastLink = "//a[@id='paginationLastSite']"
     paginationCurrentSite = "//span[@class='current']"
+    linkToTechnicalPublications = "//a[@id='linkToTechnicalPublications']"
+    linkToOperationalPublications = "//a[@id='linkToOperationalPublications']"
+    linkToLegalPublications = "//a[@id='linkToLegalPublications']"
+    linkToEcologicalPublications = "//a[@id='linkToEcologicalPublications']"
 
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"

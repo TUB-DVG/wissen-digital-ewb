@@ -39,6 +39,17 @@ def index(request):
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
     
+    focusName = focus_queryset.get(id=focus).focus
+    if focusName == "technisch":
+        focusBorder = "technical"
+    elif focusName == "betrieblich":
+        focusBorder = "operational"
+    elif focusName == "ökologisch":
+        focusBorder = "ecological"
+    elif focusName == "rechtlich":
+        focusBorder = "legal"
+    else:
+        focusBorder = "neutral"
     context = {
         'page': page,
         'search': searched,
@@ -46,6 +57,7 @@ def index(request):
         # 'year': year,
         'focus': focus,
         'focus_options': focus_options,
+        "focusBorder": focusBorder,
     }
     
     return render(request, 'publications/publications-listings.html', context)

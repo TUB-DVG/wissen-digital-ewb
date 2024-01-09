@@ -87,6 +87,13 @@ class StartPage(object):
         """
         return self.driver.find_element(By.XPATH, Locator.linkToTechnicalStandarts)
 
+    def getLinkToTechnicalPublications(self):
+        """Return the Link to the Technical Publications Page,
+        which is located in the box "Technische Publikationen"
+        below the search-bar.
+        """
+        return self.driver.find_element(By.XPATH, Locator.linkToTechnicalPublications)
+
     def getNextElementInList(self) -> list:
         """Return List of webelements, containing next-element of pagination
 
