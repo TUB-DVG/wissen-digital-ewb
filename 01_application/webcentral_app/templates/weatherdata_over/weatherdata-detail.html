@@ -40,8 +40,14 @@ Page intro START -->
 			</div>
 		</div>
 		<div class="row" style="margin-top: 16px;" nonce="weatherdataDetailDivOne">
-			<a href="javascript:window.history.back();">Zurück </a>
-		</div>
+		  <a href="#" id="backButton">Zurück</a>
+      <script nonce="{{request.csp_nonce}}">
+        document.getElementById('backButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          window.history.back();
+        });
+      </script>
+    </div>
 	</div>
 </section>
 <!-- =======================
