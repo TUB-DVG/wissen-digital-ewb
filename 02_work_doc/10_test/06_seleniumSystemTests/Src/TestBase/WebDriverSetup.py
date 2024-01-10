@@ -7,7 +7,8 @@ import urllib3
 
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options as Firefox_Options
-
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
  
 class WebDriverSetup(unittest.TestCase):
     def setUp(self):
@@ -37,4 +38,21 @@ class WebDriverSetup(unittest.TestCase):
             self.driver.close()
             self.driver.quit()
 
+    def scrollElementIntoViewAndClickIt(self, element):
+        """Scroll the element into the view of the browser-window.
+        
+        """
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.element = element
+        wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
+        wait.until(self._elementIsClickable)
 
+    def _elementIsClickable(self, driver):
+        """Check if the element is clickable.
+        
+        """
+        try:
+            self.element.click()
+        except:
+            return False
+        return True
