@@ -87,12 +87,26 @@ class StartPage(object):
         """
         return self.driver.find_element(By.XPATH, Locator.linkToTechnicalStandarts)
 
-    def getLinkToTechnicalPublications(self):
+    def getLinkToPublications(self, focus: str):
         """Return the Link to the Technical Publications Page,
         which is located in the box "Technische Publikationen"
         below the search-bar.
+
+        focus: str
+            String, which represents the focus for which the publication-link should 
+            be returned    
         """
-        return self.driver.find_element(By.XPATH, Locator.linkToTechnicalPublications)
+        if focus == "technisch":
+            locator = Locator.linkToTechnicalPublications
+        elif focus == "betrieblich":
+            locator = Locator.linkToOperationalPublications
+        elif focus == "rechtlich":
+            locator = Locator.linkToLegalPublications
+        elif focus == "ökologisch":
+            locator = Locator.linkToEcologicalPublications
+        else:
+            return None
+        return self.driver.find_element(By.XPATH, locator)
 
     def getNextElementInList(self) -> list:
         """Return List of webelements, containing next-element of pagination

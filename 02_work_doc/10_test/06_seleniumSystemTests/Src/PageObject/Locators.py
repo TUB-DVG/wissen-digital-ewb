@@ -109,3 +109,11 @@ class Locator(object):
     adminPageUsernameInput = "//input[@id='id_username']"
     adminPagePasswordInput = "//input[@type='password']"
     adminPageSubmit = "//input[@type='submit']"
+
+    # publicationPage locators
+    publicationContainer = "//div[@id='publicationsContainer']"
+    publicationSearchBoxForm = "//form[@id='searchBox']"
+    publicationSearchBoxInput = "//input[@id='search-input-publication']"
+    publicationSearchBoxSelect = "//select[@id='name-input-publication']"
+    publicationSearchBoxSubmit = "//button[@id='search-submit-publication']"
+    publicationSearchBoxReset = "//h6[@id='allButton']"

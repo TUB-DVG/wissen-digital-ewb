@@ -34,9 +34,9 @@ Page Banner END -->
 <!-- =======================
 Page content START -->
 <section class="pt-0">
-  <div class="container {{ focusBorder }}-cards">
+  <div class="container {{ focusBorder }}-cards" id="publicationsContainer">
     <!-- Filter bar START -->
-    <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative">
+    <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative" id="searchBox">
       <div class="row g-3">
         <!-- Input -->
         <div class="col-xl-3" title="Suchen in den ">
@@ -79,7 +79,7 @@ Page content START -->
         <!-- Clear Button -->
         <div class="col-xl-1">
           <a href="{% url 'publicationPage' %}">
-            <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+            <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="allButton">
               Alle
             </h6>
           </a>
