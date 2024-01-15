@@ -34,6 +34,30 @@
     @include btn-search($operational-color, $third-text-color)
   }
 }
+
+.ecological-cards {
+  .border-ecological {
+    @include border-rect($ecological-color)
+  }
+  .border-ecological-round {
+    @include border-round($ecological-color)
+  }
+  .btn-ecological {
+    @include btn-search($ecological-color, $third-text-color)
+  }
+}
+
+.legal-cards {
+  .border-legal {
+    @include border-rect($legal-color)
+  }
+  .border-legal-round {
+    @include border-round($legal-color)
+  }
+  .btn-legal {
+    @include btn-search($legal-color, $third-text-color)
+  }
+}
 .card-text {
   color: $secondary-text-color;
 }
