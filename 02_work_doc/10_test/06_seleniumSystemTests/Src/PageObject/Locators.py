@@ -117,3 +117,4 @@ class Locator(object):
     publicationSearchBoxSelect = "//select[@id='name-input-publication']"
     publicationSearchBoxSubmit = "//button[@id='search-submit-publication']"
     publicationSearchBoxReset = "//h6[@id='allButton']"
+    publicationCloseButton = "//a/i"
