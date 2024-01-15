@@ -1,6 +1,6 @@
 """Include url conneced to view functions."""
 from django.urls import path
-
+# from django.shortcuts import redirect
 from . import views
 
 urlpatterns = [
@@ -32,4 +32,5 @@ urlpatterns = [
          name='iconsAndVis'),
     path('criteriaCatalog', views.criteriaCatalog,
          name='criteriaCatalog'),
+#     redirect('criteriaCatalog:index'),
 ]
