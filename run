@@ -149,11 +149,11 @@ case $command in
 
             cd 02_work_doc/10_test/06_seleniumSystemTests/
             . ../testingVenv/bin/activate
-            if [-z "$3"]
+            if [-z "$3" ]
             then
               siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py
             else
-              siteUnderTest=$3 HEADLESS=1 python Test/TestSuite/TestRunner.py
+              siteUnderTest=$3 HEADLESS=0 python Test/TestSuite/TestRunner.py
             fi
             deactivate
             cd ../../../
