@@ -14,7 +14,9 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
@@ -22,7 +24,7 @@ from Src.PageObject.Pages.PublicationPage import PublicationPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 
 class TestPublicationPage(WebDriverSetup):
-
+    
     def testAllPublicationPages(self):
         """Test the publication pages with all focuses
 
@@ -33,6 +35,45 @@ class TestPublicationPage(WebDriverSetup):
         for focus in focusStringsList:
             self._colorOfBorder(focus)
             self.driver.back()
+    
+    def testRemoveFocusFilter(self):
+        """Check if an error occurs when the focus filter is removed
+        
+        This Tests checks, if an error is produced, if the focus filter is removed.
+        Therefore the cross of the showing focus-search-filter is clicked. 
+        After that it is tested, if the search-box is still available.
+        After that, it also tests the reset-button.
+
+        """
+        
+        focusStringsList = {
+            "technisch": "11",
+            "betrieblich": "12",
+            "ökologisch": "13",
+            "rechtlich": "14",
+        }
+        randomFocusElement = random.choice(list(focusStringsList.keys()))
+            
+        self.driver.get(os.environ["siteUnderTest"] + "/publications/?searched=&fo=" + focusStringsList[randomFocusElement])
+        publicationPage = PublicationPage(self.driver)
+        # breakpoint()
+        removeFocusFilterLink = publicationPage.getPublicationRemoveFocusFilter()
+        self.scrollElementIntoViewAndClickIt(removeFocusFilterLink)
+
+        try:
+            publicationSearchBoxElement = publicationPage.getPublicationSearchBoxInput()
+            WebDriverWait(self.driver, 10).until(lambda d : publicationSearchBoxElement.is_displayed())
+        except TimeoutException:
+            self.fail("The publication search box is not available after removing the focus filter")
+
+        self.driver.get(os.environ["siteUnderTest"] + "/publications/?searched=&fo=" + focusStringsList[randomFocusElement])
+        resetButton = publicationPage.getPublicationSearchBoxReset()
+        self.scrollElementIntoViewAndClickIt(resetButton)
+        try:
+            publicationSearchBoxElement = publicationPage.getPublicationSearchBoxInput()
+            WebDriverWait(self.driver, 10).until(lambda d : publicationSearchBoxElement.is_displayed())
+        except TimeoutException:
+            self.fail("The publication search box is not available after removing the focus filter")
 
     def _colorOfBorder(self, focus: str) -> None:
         """Check if the color of the border is correct

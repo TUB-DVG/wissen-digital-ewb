@@ -38,8 +38,11 @@ def index(request):
 
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
+    if focus is None or focus == "":
+        focusName = "neutral"
+    else:
+        focusName = focus_queryset.get(id=focus).focus
     
-    focusName = focus_queryset.get(id=focus).focus
     if focusName == "technisch":
         focusBorder = "technical"
     elif focusName == "betrieblich":
