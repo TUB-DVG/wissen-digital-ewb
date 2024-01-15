@@ -63,3 +63,9 @@ class PublicationPage(object):
 
         """
         return self.driver.find_element(By.XPATH, Locator.publicationSearchBoxReset)
+    
+    def getPublicationRemoveFocusFilter(self):
+        """Return the publication search box div, to check if it has the correct color.
+
+        """
+        return self.driver.find_element(By.XPATH, Locator.publicationCloseButton)
