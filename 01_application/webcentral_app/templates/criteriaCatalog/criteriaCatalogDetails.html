@@ -1,73 +1,33 @@
 {% extends 'base.html' %}
 
-{% block title %} {{ tool.name }} {% endblock %}
+{% block title %} {{ useCase.name }} {% endblock %}
 
 {% load static %}
 
 {% block content%}
-
-<!-- Page intro START -->
-<section class="py-0 py-sm-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <!-- Title -->
-        <h2>{{tool.name}}</h2>
-        <!-- Content -->
-        <ul class="list-inline mb-0">
-          {% if tool.lastUpdate %}
-          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="{{ lastUpdateClass }} me-2">
-            </i>
-            {{tool.lastUpdate}}
-          </li>
-          {% endif %}
-          {% if tool.licence %}
-          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-bars fa-book-open me-2">
-            </i>{{tool.licence}}
-          </li>
-          {% endif %}
-          {% if lifeCyclePhases %}
-          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-bars fa-history me-2">
-            </i>
-            {{lifeCyclePhases}}
-          </li>
-          {% endif %}
-          <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-            <i class="fas fa-user-alt me-2"></i>{{targetGroups}}
-          </li>
-          <li class="list-inline-item h6 mb-0">
-            <i class="fas fa-bars me-2">
-            </i>{{usages}}
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 16px;">
-      <a href="#" id="backButton">Zurück</a>
-      <script nonce="{{request.csp_nonce}}">
-        document.getElementById('backButton').addEventListener('click', function(event) {
-          event.preventDefault();
-          window.history.back();
-        });
-      </script>      
-    </div>
-  </div>
-</section>
-<!-- Page intro END -->
-
 <!-- Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container operational-cards">
+  <div class="container legal-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card border-operational p-0">
+        <div class="card border-legal p-0">
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- tool detail START -->
             <div class="tab-pane container active" id="course-pills-1" >
+              <ul>
+              {% for tree in trees %}
+                    {% for node in tree %}
+                    {% if node.indent %}
+                      <ul>
+                    {% elif node.outdent %}
+                  </li></ul>
+                    {% elif node.content %}
+                      <li onclick="showOrHide(event, this)">{{ node.content }}
+                    {% endif %}
+                    {% endfor %}
+              {% endfor %}
+            </ul>
               {% if tool.name %}
                 <h5 class="mb-3">Was ist {{tool.name}}?</h5>
                 <p class="mb-0">{{tool.shortDescription}}</p>
@@ -192,6 +152,9 @@
                 <p class="mb-0">{{technicalStandardsNorms}}</p>
                 <p class="mb-0">{{technicalStandardsProtocols}}</p>
               {% endif %}
+ 
+
+              
             </div>
             <!-- tool detail END -->
           </div>
@@ -203,7 +166,7 @@
         <div class="row mb-5 mb-lg-0">
           <div class="col-md-6 col-lg-12">
             <!-- Image Tool START -->
-            <div class="card border-operational p-2 mb-4 z-index-9">
+            <div class="card border-technical p-2 mb-4 z-index-9">
               <div class="overflow-hidden text-center">
                 {%if tool.image %}
                 <img src=" {{ tool.image.url }}"
@@ -219,7 +182,7 @@
             </div>
             <!-- Image Tool END -->
             <!-- "Kurzinformationen" START -->
-            <div class="card card-body border-operational p-4 mb-4">
+            <div class="card card-body border-technical p-4 mb-4">
               <!-- Title -->
               <h4 class="mb-3">Kurzinformationen</h4>
               <ul class="list-group border-0">
@@ -254,9 +217,9 @@
             </div>
             <!-- "Kurzinformationen" END -->
             <!-- Tags START -->
-            <div class="card card-body border-operational p-4">
+            <div class="card card-body border-technical p-4">
               <h4 class="mb-3">Tags</h4>
-              <ul class="list-inline mb-0" id="tagsUlElement">
+              <ul class="list-inline mb-0">
                 {% for usage in tool.usage.all %} 
                 <li class="list-inline-item"> 
                   <a class="btn btn-outline-light btn-sm" 
@@ -294,5 +257,24 @@
 </section>
 <!-- =======================
 Page content END -->
+<script>
+  function showOrHide(event, element) {
+    var childElements = element.children;
+    for (i = 0; i < childElements.length; i++) {
+        if ( childElements[i].offsetWidth || childElements[i].offsetHeight || childElements[i].getClientRects().length ) {
+          
+          childElements[i].style.display = 'none';
+        }
+        else {
+          childElements[i].style.display = 'block';
+        }
+    }
 
+    if (event.stopPropagation) {
+      event.stopPropagation();   // W3C model
+    } else {
+      event.cancelBubble = true; // IE model
+    }
+  }
+</script>
 {% endblock %}
