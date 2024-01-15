@@ -16,6 +16,7 @@ from Test.Scripts.TestTechnicalStandarts import TestTechnicalStandarts
 from Test.Scripts.TestNormsPage import TestNormsPage
 from Test.Scripts.TestProtocolsPage import TestProtocolsPage
 from Test.Scripts.TestSearch import TestSearch
+from Test.Scripts.TestPublications import TestPublicationPage
 
  
 import testtools as testtools
@@ -36,6 +37,7 @@ if __name__ == "__main__":
         testLoader.loadTestsFromTestCase(TestLastprofileTab),
         testLoader.loadTestsFromTestCase(TestAboutPage),
         testLoader.loadTestsFromTestCase(TestSearch),
+        testLoader.loadTestsFromTestCase(TestPublicationPage),
         # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
  
