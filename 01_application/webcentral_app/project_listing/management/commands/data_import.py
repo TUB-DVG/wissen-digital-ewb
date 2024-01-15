@@ -536,6 +536,8 @@ class Command(BaseCommand):
         released = row[header.index('released')]
         if released == "":
             released = None
+        elif released == "unbekannt":
+            released = None
         else:
             released = bool(int(released)) 
         

@@ -5,32 +5,7 @@ import time
 import os
 import random
 
-from selenium import (
-    webdriver,
-
-)
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
-
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.startPage import StartPage
-from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.AboutPage import AboutPage
-
-import sys
-sys.path.append(sys.path[0] + "/...")
-
-import time
-import os
-import random
-
-from selenium import (
-    webdriver,
-
-)
+from selenium import webdriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
