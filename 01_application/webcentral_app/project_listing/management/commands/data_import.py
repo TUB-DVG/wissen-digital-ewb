@@ -526,19 +526,19 @@ class Command(BaseCommand):
         if lastUpdate == "":
             lastUpdate = "unbekannt"
         if lastUpdate not in correctLastUpdateValues:
-            try:
-                # Try to parse the string as a date with time
-                if isinstance(lastUpdate, pd.Timestamp):
-                    date = lastUpdate.date()
-                else:
-                    date = datetime.strptime(lastUpdate, "%Y-%m-%d %H:%M:%S")
-            except ValueError:
+            if isinstance(lastUpdate, pd.Timestamp) or isinstance(lastUpdate, datetime):
+                date = lastUpdate.date()
+            else:
                 try:
-                    # If that fails, try to parse it as a date without time
-                    date = datetime.strptime(lastUpdate, "%Y-%m-%d")
+                    # Try to parse the string as a date with time
+                    date = datetime.strptime(lastUpdate, "%Y-%m-%d %H:%M:%S")
                 except ValueError:
-                    # If that also fails, return None
-                    raise ValueError(f"The tool {name} could not be imported, because the lastUpdate-Value is {lastUpdate}. Only 'unbekannt', 'laufend' or a date in the format 'YYYY-MM-DD' is allowed.")
+                    try:
+                        # If that fails, try to parse it as a date without time
+                        date = datetime.strptime(lastUpdate, "%Y-%m-%d")
+                    except ValueError:
+                        # If that also fails, return None
+                        raise ValueError(f"The tool {name} could not be imported, because the lastUpdate-Value is {lastUpdate}. Only 'unbekannt', 'laufend' or a date in the format 'YYYY-MM-DD' is allowed.")
 
             # Return the date part of the datetime object as a string
             lastUpdate = date.strftime("%Y-%m-%d")          
