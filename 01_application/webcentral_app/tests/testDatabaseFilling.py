@@ -506,6 +506,55 @@ class checkDifferencesInDatabase(TransactionTestCase):
         #                 toolAsDict[attributeKey][0],
         #             )
 
+    def testToolCheckForLastUpdate(self):
+        """Check if an error is thrown, if lastUpdate has the wrong format.
+
+        This test checks if the data_import command throws an error if the lastUpdate is not of format `unbekannt`,
+        `laufend` or `YYYY-MM-DD`.
+
+        """
+        testDatasetFilePath = "../../02_work_doc/10_test/04_testData/test_data_tool_lastUpdate_wrongFormat.xlsx"
+        with self.assertRaises(ValueError):
+            management.call_command(
+                "data_import", 
+                testDatasetFilePath,
+                "tests/data/",
+            )
+    
+    def testToolCheckLastUpdateEmpty(self):
+        """Check if `lastUpdate` is set to `unbekannt` if the cell is empty in the .xlsx-file.
+
+        This test checks if the data_import command sets the `lastUpdate` to `unbekannt` if the cell is empty in the .xlsx-file.
+        It should import the tool "lastUpdateTest1" and `lastUpdate` should be "unbekannt".
+
+        """
+        testDatasetFilePath = "../../02_work_doc/10_test/04_testData/test_data_tool_lastUpdate_empty.xlsx"
+        management.call_command(
+            "data_import", 
+            testDatasetFilePath,
+            "tests/data/",
+        )  
+
+        self.assertEqual(len(Tools.objects.filter(name="lastUpdateTest1")), 1)
+        self.assertEqual(Tools.objects.filter(name="lastUpdateTest1")[0].lastUpdate, "unbekannt")
+    
+    def testToolCheckLastUpdateDateAndTime(self):
+        """Check if only the date is imported, if the date and time is given in the .xlsx-file.
+
+        Sometimes the date and time in the format "2023-09-14 00:00:00" is given in the .xlsx-file. 
+        This test checks if only the date is imported.
+
+        """ 
+        testDatasetFilePath = "../../02_work_doc/10_test/04_testData/test_data_tool_lastUpdate_dateTime.xlsx"
+        management.call_command(
+            "data_import", 
+            testDatasetFilePath,
+            "tests/data/",
+        )  
+        self.assertEqual(len(Tools.objects.filter(name="TestToolWithDateTime")), 1)
+        self.assertEqual(Tools.objects.filter(name="TestToolWithDateTime")[0].lastUpdate, "2023-09-14")
+
+
     def testLoadSimplePublicationData(self):
         """Load `Publication`-Tool into Database.
 
@@ -786,15 +835,13 @@ class checkDifferencesInDatabase(TransactionTestCase):
                                 assertationMessage,
                             )                   
                 else:
-                    try:
-                        self.assertTrue(
-                            len(
-                            currentTableModel.objects.filter(**stateDict)
-                            ) == lengthOfQuerySet,
-                            assertationMessage,
-                        )
-                    except:
-                        pdb.set_trace()
+                    self.assertTrue(
+                        len(
+                        currentTableModel.objects.filter(**stateDict)
+                        ) == lengthOfQuerySet,
+                        assertationMessage,
+                    )
+
 
 
             elif (
