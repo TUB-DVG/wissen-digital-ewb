@@ -10,26 +10,22 @@
   <div class="container legal-cards">
     <div class="row">
       <!-- Main content START -->
-      <div class="col-lg-8">
-        <div class="card border-legal p-0">
-          <div class="tab-content card-body p-4 detail-card-body">
-            <!-- use case tree START -->
-            <div class="tab-pane container active" id="course-pills-1" >
-              <ul>
-              {% for tree in trees %}
-                {% for node in tree %}
-                  {% if node.indent %}
-                    <ul>
-                  {% elif node.outdent %}
-                    </li></ul>
-                  {% elif node.content %}
-                    <li onclick="showOrHide(event, this)">{{ node.content }}
-                  {% endif %}
-                {% endfor %}
+      <div class="col-lg-12">
+        <!-- use case tree START -->
+        <div class="tab-pane container active" id="course-pills-1" >
+          <ul>
+            {% for tree in trees %}
+              {% for node in tree %}
+                {% if node.indent %}
+                  <ul>
+                {% elif node.outdent %}
+                  </li></ul>
+                {% elif node.content %}
+                  <li onclick="showOrHide(event, this)">{{ node.content }}
+                {% endif %}
               {% endfor %}
-            </ul>
-            <!-- use case tree END -->
-          </div>
+            {% endfor %}
+          </ul>
         </div>
         <!-- use case tree END -->
       </div>
