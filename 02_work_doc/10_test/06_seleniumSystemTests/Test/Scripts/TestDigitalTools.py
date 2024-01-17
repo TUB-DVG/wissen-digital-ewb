@@ -19,6 +19,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
+from selenium.common.exceptions import NoSuchElementException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
@@ -238,3 +239,40 @@ class TestDigitalToolsPage(WebDriverSetup):
             lastPageEndNumber,
             "Page numbers on the first and last pages should be the same",
         )
+    def testIfToolImageErrorTextIsPresent(self):
+        """Check if a tool is on the page, which has the 'tool image (if=db)'-error
+      In this test all pages of the digital-tools-tab are gone through and checked if one of the tools shows the image error 'tool image (if=db)'. If so the test is red.
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+        toolsPageObj = ToolListPage(self.driver)
+        paginationPagesStr = toolsPageObj.getCurrentSearchResultNumber()
+        numberOfPages = int(paginationPagesStr.text[-1])
+        script = """
+        var img = arguments[0];
+        if (img.naturalWidth === 0) {
+            return img.alt;
+        } else {
+            return null;
+        }
+        """ 
+        foundAltText = False
+        for currentPageNumber in range(numberOfPages):
+            listOfToolItemsOnCurrentPage = toolsPageObj.getListOfToolItems()
+            for toolItem in listOfToolItemsOnCurrentPage:
+                try:
+                    imageOfCurrentItem = toolItem.find_element(By.XPATH, ".//img")
+                except NoSuchElementException:
+                    continue
+                altTextPresent = self.driver.execute_script(script, imageOfCurrentItem)
+                if altTextPresent:
+                    toolName = toolItem.text.split('\n')[0]
+                    print(f"Alt Text is present for Tool {toolName} instead of the image.")                
+                    foundAltText = True
+            
+            nextLink = toolsPageObj.getNextElementInList()
+            if len(nextLink) > 0:
+                nextLink = toolsPageObj.getNextElementInList()[0]
+                self.scrollElementIntoViewAndClickIt(nextLink)
+            
+        self.assertFalse(foundAltText, "Found Alt-Text for images in Digital-Tools. Check if the image for the tool is present in the media-folder")
+        

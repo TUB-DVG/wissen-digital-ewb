@@ -184,12 +184,8 @@ class TestMainPage(WebDriverSetup):
             "last-search-results-page should be present, but it is not!",
         )
         cookieBannerObj = CookieBanner(self.driver)
-        cookieBannerObj.getCookieAcceptanceButton().click()
-        time.sleep(1)
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfNextElement[0])
-        time.sleep(1)
-        listOfNextElement[0].click()
-        time.sleep(1)
+        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self.scrollElementIntoViewAndClickIt(listOfNextElement[0])
         resultsOnNextSite = startPageObj.getSearchResults()
         self.assertNotEqual(
             resultsOnNextSite[1].text,
