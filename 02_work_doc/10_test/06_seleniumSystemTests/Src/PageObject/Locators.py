@@ -61,7 +61,12 @@ class Locator(object):
     listInExpandedText = "//li[@class='lead']"
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
-    
+    #paginationNextLink = "//a[@id='paginationNextLink']"
+    #paginationNextLink = "//a[@id='paginationNextLink']"
+    #paginationPreviousLink = "//a[@id='paginationPreviousLink']"
+    #paginationFirstLink = "//a[@id='paginationFirstLink']"
+    #paginationLastLink = "//a[@id='paginationLastLink']"
+
     # locators in Business Apps:
     businessSearchField = "//input[@id='search-input-tools']"
     businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
