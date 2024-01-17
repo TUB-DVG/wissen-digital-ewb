@@ -167,11 +167,11 @@
           <div class="pagination">
             <span class="step-links">
               {% if page.has_previous %}
-              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1">
+              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1" id="paginationFirstSite">
                 &laquo; erste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" id="paginationPreviousLink">
                 vorherige
               </a>
               {% endif %}
@@ -181,11 +181,11 @@
               </span>
               &nbsp &nbsp
               {% if page.has_next %}
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}" id="paginationNextLink">
                 nächste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}">
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}" id="paginationLastSite">
                 letzte &raquo;
               </a>
               &nbsp &nbsp

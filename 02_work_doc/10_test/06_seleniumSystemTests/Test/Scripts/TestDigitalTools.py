@@ -55,7 +55,6 @@ class TestDigitalToolsPage(WebDriverSetup):
         self.openToolList()
 
         toolListPage = ToolListPage(self.driver)
-        # breakpoint()
         searchFieldElement = toolListPage.getSearchInputElement()
         if searchFieldElement is None:
             self.assertTrue(False)
@@ -105,14 +104,14 @@ class TestDigitalToolsPage(WebDriverSetup):
         )
 
         searchFieldElement = toolListPage.getSearchInputElement()
-        searchFieldElement.send_keys("B")
+        searchFieldElement.send_keys("Bim")
         searchFieldElement.send_keys(Keys.RETURN)
         time.sleep(1)
         numberOfToolItems = len(toolListPage.getListOfToolItems())
         self.assertLess(
             numberOfToolItems,
             12,
-            "After writing 'B' into search-field, the number of Tool-items should be decreased!",
+            "After writing 'Bim' into search-field, the number of Tool-items should be decreased!",
         )
         
     def testIfShowMoreExpandsText(self):
@@ -191,3 +190,51 @@ class TestDigitalToolsPage(WebDriverSetup):
                 self.assertEqual(self.driver.title, pageTitle)
         except Exception as error:
             print(error + "WebPage Failed to load")
+
+    def testConsistentPagination(self):
+        """
+        This method tests the pagination of tool list
+        the first page should have first and last page but no previous page.
+        Also the number of pages displayed on the first page 
+        matches the number shown on the last page
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+        toolPageObj = ToolListPage(self.driver)
+
+        listOfNextElement = toolPageObj.getNextElementInList()
+        self.assertEqual(
+            len(listOfNextElement),
+            1,
+            "next-search-results-page should be present, but it is not!",
+        )
+        listOfPreviousElement = toolPageObj.getPreviousElementInList()
+        self.assertEqual(
+            len(listOfPreviousElement),
+            0,
+            "previous-search-results-page should not be present, but it is!",
+        )
+        listOfFirstElement = toolPageObj.getFirstElementInList()
+        self.assertEqual(
+            len(listOfFirstElement),
+            0,
+            "First-search-results-page should not be present, but it is!",
+        )
+        listOfLastElement = toolPageObj.getLastElementInList()
+        self.assertEqual(
+            len(listOfLastElement),
+            1,
+            "last-search-results-page should be present, but it is not!",
+        )
+        currentPageNumberElement = toolPageObj.getCurrentSearchResultNumber()
+        indexPageEndNumber = currentPageNumberElement.text.split()[-1]
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfLastElement[0])
+        time.sleep(1)
+        listOfLastElement[0].click()
+        time.sleep(1)
+        currentPageNumberElement = toolPageObj.getCurrentSearchResultNumber()
+        lastPageEndNumber = currentPageNumberElement.text.split()[-1]
+        self.assertEqual(
+            indexPageEndNumber,
+            lastPageEndNumber,
+            "Page numbers on the first and last pages should be the same",
+        )
