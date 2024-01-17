@@ -521,6 +521,28 @@ class Command(BaseCommand):
         userInterfaceList = self._iterateThroughListOfStrings(processedUserInterface, UserInterface)
 
         lastUpdate = row[header.index('lastUpdate')]
+
+        correctLastUpdateValues = ["unbekannt", "laufend"]
+        if lastUpdate == "":
+            lastUpdate = "unbekannt"
+        if lastUpdate not in correctLastUpdateValues:
+            if isinstance(lastUpdate, pd.Timestamp) or isinstance(lastUpdate, datetime):
+                date = lastUpdate.date()
+            else:
+                try:
+                    # Try to parse the string as a date with time
+                    date = datetime.strptime(lastUpdate, "%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    try:
+                        # If that fails, try to parse it as a date without time
+                        date = datetime.strptime(lastUpdate, "%Y-%m-%d")
+                    except ValueError:
+                        # If that also fails, return None
+                        raise ValueError(f"The tool {name} could not be imported, because the lastUpdate-Value is {lastUpdate}. Only 'unbekannt', 'laufend' or a date in the format 'YYYY-MM-DD' is allowed.")
+
+            # Return the date part of the datetime object as a string
+            lastUpdate = date.strftime("%Y-%m-%d")          
+
         license = row[header.index('license')]
         licenseNotes = row[header.index('licenseNotes')]
         furtherInfos = row[header.index('furtherInformation')]

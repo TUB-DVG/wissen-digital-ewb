@@ -26,7 +26,7 @@ class WebDriverSetup(unittest.TestCase):
         if os.environ.get("HEADLESS") == "1":
             firefoxOptions.headless = True
         self.driver = webdriver.Firefox(options=firefoxOptions)
-        self.driver.implicitly_wait(10)
+        # self.driver.implicitly_wait(10)
         self.driver.maximize_window()
  
     def tearDown(self):
