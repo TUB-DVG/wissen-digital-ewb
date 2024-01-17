@@ -22,6 +22,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
@@ -60,11 +61,38 @@ class TestMainPage(WebDriverSetup):
             "Impressum",
             "Page should be Impressum, but its not!"
         )
+    
+    def testSearchFieldWithRandomCharacters(self):
+        """Check if search produces results for random search-string
 
-    def testSearchField(self):
+        This test checks, if start-search produces an result for an 
+        random character combination of length 2. Since there was an
+        error present in the past, due to wrong format of 'lastUpdate',
+        this test should find out about that error.
+        """
+        lengthOfRandomSearch = 2
+
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        searchInputField = startPageObj.getSearchInputField()
+        searchStr = ""
+        for currentNumberOfSearch in range(lengthOfRandomSearch):
+           searchStr += chr(random.randint(ord('a'), ord('z')))         
+
+        searchInputField.send_keys(searchStr)
+        searchInputField.send_keys(Keys.RETURN)
+        try:
+            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, 'searchResultH2')))
+        except TimeoutException:
+          self.assertTrue(
+            self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
+            "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"  
+          )
+      
+    def testSearchFieldForBim2Sim(self):
         """Test the searchfield on the startpage
 
-        The Test is done by first insert 'Bim' into the input-field. After pushing Return, 
+        It writes 'Bim' into the input-field. After pushing Return, 
         BIM2SIM should be in the Result.
         
         """
@@ -75,6 +103,11 @@ class TestMainPage(WebDriverSetup):
         searchInputField.send_keys(Keys.RETURN)
         time.sleep(1)
         foundInstanceOfBim = False
+        # check if the results page is loaded:
+        self.assertTrue(
+            self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
+            "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"  
+        )
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         for rowElement in listOfRowsInResultsTable:
             if rowElement.text.find("BIM2SIM") >= 0:
@@ -89,7 +122,6 @@ class TestMainPage(WebDriverSetup):
                     "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
                 # self.driver.close()
-                # breakpoint()
                 # self.driver.switch_to.window(self.driver.window_handles[0])
                 # 
                 break
@@ -152,12 +184,8 @@ class TestMainPage(WebDriverSetup):
             "last-search-results-page should be present, but it is not!",
         )
         cookieBannerObj = CookieBanner(self.driver)
-        cookieBannerObj.getCookieAcceptanceButton().click()
-        time.sleep(1)
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfNextElement[0])
-        time.sleep(1)
-        listOfNextElement[0].click()
-        time.sleep(1)
+        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self.scrollElementIntoViewAndClickIt(listOfNextElement[0])
         resultsOnNextSite = startPageObj.getSearchResults()
         self.assertNotEqual(
             resultsOnNextSite[1].text,

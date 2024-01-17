@@ -175,6 +175,57 @@ class ToolListPage(object):
             By.XPATH, 
             Locator.showLessLink,
         )
-    
+    def getNextElementInList(self) -> list:
+        """Return List of webelements, containing next-element of pagination
+
+        The Element is returned as list, to check if is present on page
+
+        Returns:
+        List(Webelement):   
+        """
+
+        return self.driver.find_elements(By.XPATH, Locator.paginationNextLink)
+
+    def getPreviousElementInList(self) -> list:
+        """Return List of webelements, containing previous-element of pagination
+
+        The Element is returned as list, to check if is present on page
+
+        Returns:
+        List(Webelement):   
+        """
+
+        return self.driver.find_elements(By.XPATH, Locator.paginationPreviousLink)
+
+    def getLastElementInList(self) -> list:
+        """Return List of webelements, containing Last-element of pagination
+
+        The Element is returned as list, to check if is present on page
+
+        Returns:
+        List(Webelement):   
+        """
+
+        return self.driver.find_elements(By.XPATH, Locator.paginationLastLink)
+
+    def getFirstElementInList(self) -> list:
+        """Return List of webelements, containing First-element of pagination
+
+        The Element is returned as list, to check if is present on page
+
+        Returns:
+        List(Webelement):   
+        """
+
+        return self.driver.find_elements(By.XPATH, Locator.paginationFirstLink)
+
+
+
+    def getCurrentSearchResultNumber(self):
+        """Return the span element, which holds the current Search result page number
+        
+        """
+        return self.driver.find_element(By.XPATH, Locator.paginationCurrentSite)
+
 
     
