@@ -65,5 +65,5 @@ class WebDriverSetup(unittest.TestCase):
       """
       self.assertTrue(
         self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
-        "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"
+        errorMessage,
       )
