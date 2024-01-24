@@ -89,6 +89,8 @@ def resultSearch(request):
     # search value reading
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
+        if searchInput is None:
+          return render(request, "StartSearch/StartSearch.html")
         sortBy = request.GET.get("sortBy", "virtDate")
         direction = request.GET.get("direction", None)
     elif request.method == "POST":
