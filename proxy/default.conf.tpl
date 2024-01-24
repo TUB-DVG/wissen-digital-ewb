@@ -12,8 +12,8 @@ server {
 	server_name wissen-digital-ewb.de;
 	add_header Strict-Transport-Security "max-age=31536; includeSubDomains" always;
 	server_tokens off;
-	ssl_certificate /etc/nginx/ssl/stratoCert.crt;
-	ssl_certificate_key /etc/nginx/ssl/wissen-digital-ewb_de.key;
+	ssl_certificate /etc/nginx/ssl/${NGINX_SSL_CERTIFICATE_FILENAME};
+	ssl_certificate_key /etc/nginx/ssl/${NGINX_SSL_CERTIFICATE_KEY_FILENAME};
     ssl_session_timeout 1d;
     ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
     ssl_session_tickets off;

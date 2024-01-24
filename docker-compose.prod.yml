@@ -50,6 +50,8 @@ services:
         environment:
             - NGINX_LISTEN_PORT
             - UWSGI_LISTEN_PORT
+            - NGINX_SSL_CERTIFICATE_FILENAME
+            - NGINX_SSL_CERTIFICATE_KEY_FILENAME
         volumes:
             - static-data:/vol/static
             - ./proxy/dhparam/:/etc/nginx/dhparam
