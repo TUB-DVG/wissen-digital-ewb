@@ -40,7 +40,7 @@ when you started the development environment or
 ```
    http://127.0.0.1:PORT_TO_OUTSIDE
 ```
-where `PORT_To_OUTSIDE` needs to be replaced by the port, which is set in the `.env`-file.
+where `PORT_TO_OUTSIDE` needs to be replaced by the port, which is set in the `.env`-file.
 ## Starting the App with an empty database
 Leave the app running in the terminal and open another one. There run the following to commands:
 ```
