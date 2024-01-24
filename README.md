@@ -8,6 +8,10 @@ A key objective of the WeNDE project is to simplify and disseminate the findings
 web interface with data base system of project infromation of the "Begleitforschung Energiewendebauen 2020" (focus modul digitalization).
 
 # Main concept
+The Web-Application consists of 3 services, which are containerized, each of them living in a seperate container. In the backend the python based Django-Framework is used. Data is stored in a relational-database, whereby as a DBMS PostgreSQL is chosen. A nginx-instance is used as reverse-proxy to redirect HTTP-requests to the Django-Backend, using the uwsgi-protocol. Static-content is directly served by nginx, since it has access to a Docker-Volume, which is shared with the Django-application.
+![Structure of the Project](./img/dockerComposeDeploymentStructure.png)
+
+To start all needed services, networks and volumes Docker-compose can be used. Thereby it is possible to start it in development- or production-mode. As a prerequesite, the `.env.example`-file needs to be reviewed. It contains the secrets of the application. Please change the 
 - web application: Django
 - data base system: PostgreSQL
 
