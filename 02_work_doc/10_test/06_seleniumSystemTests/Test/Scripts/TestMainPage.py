@@ -39,6 +39,36 @@ class TestMainPage(WebDriverSetup):
     which is no longer needed.)
     
     """
+    def testReloadOfResultsPage(self):
+        """Check if reload of StartSearch-Result Page produces an error
+        
+        When pressing reload on the results page a django-error is thrown, which also 
+        leads to a 500 Internal Server Error by nginx in the production environment.
+        That should not happen. A bugfix was implemented, which returns the startpage, 
+        when the reload button on the webbrowser was clicked. That behaviour is tested 
+        here.
+        """
+        lengthOfRandomSearch = 2
+
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        searchInputField = startPageObj.getSearchInputField()
+        searchStr = ""
+        for currentNumberOfSearch in range(lengthOfRandomSearch):
+           searchStr += chr(random.randint(ord('a'), ord('z')))
+
+        searchInputField.send_keys(searchStr)
+        searchInputField.send_keys(Keys.RETURN)        
+        
+        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, 'searchResultH2')))
+        self.driver.get(os.environ["siteUnderTest"]+ "/ResultSearch")
+        try:
+            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, 'inputSearchField')))
+        except TimeoutException:
+            self._checkForPageError("After reloading the page, an django-error appears, because the search-string is None")
+        
+        
+
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
         the Impressum page opens, which is located on $siteunderTtest + /pages/Impressum
@@ -84,10 +114,9 @@ class TestMainPage(WebDriverSetup):
         try:
             WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, 'searchResultH2')))
         except TimeoutException:
-          self.assertTrue(
-            self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
-            "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"  
-          )
+            self._checkForPageError("The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!")          
+
+      
       
     def testSearchFieldForBim2Sim(self):
         """Test the searchfield on the startpage
