@@ -28,4 +28,4 @@ RUN mkdir -p /vol/static && \
 VOLUME /vol/static
 
 # siwtch to non-root user
-#USER nginx
+USER nginx
