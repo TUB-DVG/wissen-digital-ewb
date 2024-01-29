@@ -112,6 +112,13 @@
 .card-header-text {
   color: #000; }
 
+.break-words {
+    max-width: 300px; 
+    overflow-wrap: break-word; /* change row while reach maxwidth */
+    white-space: normal;
+    overflow: visible;
+  }
+
 /* card_hover: allows the item display cards to grow on hover
  * to show user selection : Added 06/20/2023
 */
@@ -259,3 +266,5 @@ body {
     font-weight: normal;
     font-size: 15px;
     text-decoration: underline; }
+
+

@@ -174,8 +174,8 @@ Page content START -->
               <ul class="list-inline mb-0">
                 {% if publication.focus %}
                   {% for focus in publication.focus.all %}
-                  <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
+                  <li class="list-inline-item break-words">
+                    <a class="btn btn-outline-light btn-sm break-words" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
                       {{focus.focus}}
                     </a>
                   </li>
@@ -183,8 +183,8 @@ Page content START -->
                 {% endif %}
                 {% if publication.keywords %}
                   {% for keyword in keywords %}
-                  <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
+                  <li class="list-inline-item break-words">
+                    <a class="btn btn-outline-light btn-sm " href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
                       {{keyword.strip}}
                     </a>
                   </li>
