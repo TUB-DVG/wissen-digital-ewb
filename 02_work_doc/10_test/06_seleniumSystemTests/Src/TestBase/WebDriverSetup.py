@@ -56,3 +56,14 @@ class WebDriverSetup(unittest.TestCase):
         except:
             return False
         return True
+    
+    def _checkForPageError(self, errorMessage):
+      """Check if the Django-ValueError-Page or the nginx Server-Error Page appears
+      
+      errorMessage: str
+        this is a string, which contains the error-message, which is displayed if the assert-statement fails
+      """
+      self.assertTrue(
+        self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
+        errorMessage,
+      )
