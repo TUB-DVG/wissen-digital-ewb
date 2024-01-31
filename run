@@ -9,6 +9,18 @@ source .env
 # Set command
 command=$1
 
+# Check if docker-compose or docker compose is available
+if command -v docker-compose &> /dev/null
+then
+    COMPOSE_COMMAND="docker-compose"
+elif command -v docker &> /dev/null && docker compose version &> /dev/null
+then
+    COMPOSE_COMMAND="docker compose"
+else
+    echo "Neither docker-compose nor docker compose is available on this system."
+    exit 1
+fi
+
 # Set Docker container ID
 container_id=webcentral
 
@@ -25,12 +37,12 @@ case $command in
         else
             if [ "$2" = "dev" ]; then
                 echo "Building development environment..."
-                docker-compose -f docker-compose.yml -f docker-compose.dev.yml build
+                $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml build
                 exit 1
             fi
             if [ "$2" = "prod" ]; then
                 echo "Building production environment..."
-                docker-compose -f docker-compose.yml -f docker-compose.prod.yml build
+                $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml build
                 exit 1
             fi
         fi
@@ -72,7 +84,7 @@ case $command in
         docker cp ~/src/01_application/webcentral_app/media/. webcentral:/home/$WEBCENTRAL_UNPRIVILEGED_USER/webcentral/media/
         ;;
     "down")
-        docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+        $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down
         ;;
     "data_import")
         if [ -z "$2" ]
@@ -86,7 +98,7 @@ case $command in
         fi
         ;;
     "delete_db")
-        docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes
+        $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down --volumes
         ;;
     "dump_db")
         
@@ -167,12 +179,12 @@ case $command in
         else
             if [ "$2" = "dev" ]; then
                 echo "Starting development environment..."
-                docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+                $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up
                 exit 1
             fi
             if [ "$2" = "prod" ]; then
                 echo "Startin production environment..."
-                docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+                $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up
                 exit 1
             fi
         fi
