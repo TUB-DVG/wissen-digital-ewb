@@ -24,9 +24,6 @@ fi
 # Set Docker container ID
 container_id=webcentral
 
-# Get current working directory inside the webcentral container
-currentDirInContainer=$(docker exec $container_id pwd)
-
 # Execute different actions based on the command
 case $command in
     "build")
@@ -94,6 +91,8 @@ case $command in
         fi
         if [ -z "$3" ]
         then
+            # Get current working directory inside the webcentral container
+            currentDirInContainer=$(docker exec $container_id pwd)
             docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import ../../$2 ../../postgres/
         fi
         ;;
@@ -117,6 +116,8 @@ case $command in
             echo "No path to an input-filename is provided. Usage: ./run execute_db_changes path/to/input-filename"
             exit 1
         fi
+        # Get current working directory inside the webcentral container
+        currentDirInContainer=$(docker exec $container_id pwd)
         docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py execute_db_changes ../../$2
         ;;
     "migrate")
@@ -151,6 +152,8 @@ case $command in
             exit 1
         fi
         if [ "$2" = "Database" ]; then
+            # Get current working directory inside the webcentral container
+            currentDirInContainer=$(docker exec $container_id pwd)
             docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py test tests/ testDatabaseFilling.checkDifferencesInDatabase
             exit 1
         fi
