@@ -123,3 +123,12 @@ class Locator(object):
     publicationSearchBoxSubmit = "//button[@id='search-submit-publication']"
     publicationSearchBoxReset = "//h6[@id='allButton']"
     publicationCloseButton = "//a/i"
+    paginatorObjects = "card"
+    paginatorObjectTitle = ".//h3"
+    paginatorObjectAuthorsAndType = ".//p"
+
+    publicationDetailsPageTitle = "//h2"
+    publicationDetailsPageAuthorsHeading = "//h5[contains(text(), 'Autoren')]"
+    publicationDetailsPageAuthorsValues = "following-sibling::p"
+
+    publicationDetailsPageType = "list-inline-item"
