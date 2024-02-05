@@ -1,4 +1,4 @@
-<img src="img/wissensplattformLogo.png" width="700" \>
+<img src="img/wissensplattformLogo.png" width="700">
 
 # WenDE – Knowledge Platform for Sustainable Digitalization Strategies in Energiewende Construction
 
