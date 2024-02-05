@@ -69,3 +69,63 @@ class PublicationPage(object):
 
         """
         return self.driver.find_element(By.XPATH, Locator.publicationCloseButton)
+    
+    def getPublicationPaginatorObjects(self):
+        """Return a list of all paginator objects, each of which represents a publication.
+
+        """
+        return self.driver.find_elements(By.CLASS_NAME, Locator.paginatorObjects)
+    
+    def getTitleOfPaginationObject(self, paginatorObject) -> str:
+        """Return the title of `paginatorObject`
+
+        The title of `paginatorObject` lies inside a h3-tag and can be accessed by
+        searching in the child-elements of `paginatorObject`.
+
+        paginatorObject: WebElement
+            Selenium-WebElement, which represents a item in the paginator.
+
+        """
+        return paginatorObject.find_element(By.XPATH, Locator.paginatorObjectTitle).text
+
+    def getAuthorsOfPaginationObject(self, paginatorObject) -> str:
+        """Return the Authors of `paginatorObject` of type Publication.
+
+        The authors of `paginatorObject` lie inside a p-tag and can be accessed by
+        searching in the child-elements of `paginatorObject`.
+
+        paginatorObject: WebElement
+            Selenium-WebElement, which represents a item in the paginator.
+
+        """
+        return paginatorObject.find_elements(By.XPATH, Locator.paginatorObjectAuthorsAndType)[0].text
+
+    def getTypeOfPaginationObject(self, paginatorObject) -> str:
+        """Return the Type of `paginatorObject` of type Publication.
+
+        The Type of `paginatorObject` lie inside a p-tag and can be accessed by
+        searching in the child-elements of `paginatorObject`.
+
+        paginatorObject: WebElement
+            Selenium-WebElement, which represents a item in the paginator.
+
+        """
+        return paginatorObject.find_elements(By.XPATH, Locator.paginatorObjectAuthorsAndType)[1].text
+
+    def getPublicationDetailsPageTitle(self):
+        """Return the title of the publication details page.
+
+        """
+        return self.driver.find_element(By.XPATH, Locator.publicationDetailsPageTitle).text
+
+    def getAuthorsOfPublicationOnDetailsPage(self):
+        """Return the authors of the publication on the details page.
+
+        """
+        return self.driver.find_element(By.XPATH, Locator.publicationDetailsPageAuthorsHeading).find_element(By.XPATH, Locator.publicationDetailsPageAuthorsValues).text
+
+    def getPublicationDetailsPageType(self):
+        """Return the title of the publication details page.
+
+        """
+        return self.driver.find_element(By.CLASS_NAME, Locator.publicationDetailsPageType).text

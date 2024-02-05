@@ -25,6 +25,45 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 
 class TestPublicationPage(WebDriverSetup):
     
+    def testIfTechnicalPublicationsAreShown(self):
+        """Test if the technical publications are shown
+
+        This Tests checks if technical publications are present on the page.
+        It selects randomly one of the paginator objects and clicks on it.
+        After that it is checked if the details-page of the publication matches the
+        clicked publication.
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/publications/?searched=&fo=11")
+        publicationPage = PublicationPage(self.driver)
+        listOfTechnicalPublications = publicationPage.getPublicationPaginatorObjects()
+        
+        self.assertTrue(len(listOfTechnicalPublications) > 0, "No technical publications are shown")
+
+        randomPublication = random.choice(listOfTechnicalPublications)
+        titleOfRandomPublication = publicationPage.getTitleOfPaginationObject(randomPublication)
+        getAuthorsOfPaginationObject = publicationPage.getAuthorsOfPaginationObject(randomPublication)[9:]
+        getTypeOfPublication = publicationPage.getTypeOfPaginationObject(randomPublication)[5:]
+        
+        self.scrollElementIntoViewAndClickIt(randomPublication)
+        publicationTtitleOnDetailsPage = publicationPage.getPublicationDetailsPageTitle()
+        self.assertTrue(
+            publicationTtitleOnDetailsPage == titleOfRandomPublication, 
+            "The title of the publication does not match the title of the clicked publication",
+        )
+        
+        authorsOnDetailsPage = publicationPage.getAuthorsOfPublicationOnDetailsPage()
+        
+        self.assertTrue(
+            authorsOnDetailsPage == getAuthorsOfPaginationObject,
+            "The authors of the publication do not match the authors of the clicked publication",
+        )
+
+        typeOnPublicationsDetailsPage = publicationPage.getPublicationDetailsPageType() 
+        self.assertTrue(
+            typeOnPublicationsDetailsPage == getTypeOfPublication,
+            "The Type of the publication do not match the type of the clicked publication",
+        )
+
     def testAllPublicationPages(self):
         """Test the publication pages with all focuses
 
