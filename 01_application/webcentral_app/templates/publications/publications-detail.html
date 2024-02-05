@@ -175,7 +175,7 @@ Page content START -->
                 {% if publication.focus %}
                   {% for focus in publication.focus.all %}
                   <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
+                    <a class="btn btn-outline-light btn-sm break-words" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
                       {{focus.focus}}
                     </a>
                   </li>
@@ -184,7 +184,7 @@ Page content START -->
                 {% if publication.keywords %}
                   {% for keyword in keywords %}
                   <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
+                    <a class="btn btn-outline-light btn-sm break-words" href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
                       {{keyword.strip}}
                     </a>
                   </li>
