@@ -1,5 +1,6 @@
-<img src="img/wissensplattformLogo.png" width="700" \>
-
+<p align="center">
+  <img src="img/wissensplattformLogo.png" width="700">
+</p>
 # WenDE – Knowledge Platform for Sustainable Digitalization Strategies in Energiewende Construction
 
 The shift from a traditional supply infrastructure to a regenerative, decentralized energy system introduces increased complexity and necessitates the integration of previously independent sectors. The efficient operation of these systems relies on modern IT communication and control technologies. This transition poses significant changes and new challenges for all stakeholders, alongside a substantial need for research.
