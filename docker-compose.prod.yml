@@ -55,7 +55,7 @@ services:
         volumes:
             - static-data:/vol/static
             - ./proxy/dhparam/:/etc/nginx/dhparam
-            - ./proxy/conf/:/etc/nginx/ssl/
+            # - ./proxy/conf/:/etc/nginx/ssl/
             # the proxy can directly serve the static data, without bothering
             # the django app
         command: >
