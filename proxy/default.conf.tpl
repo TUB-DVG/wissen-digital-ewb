@@ -1,14 +1,6 @@
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-server {
-	listen 443 ssl http2;
-	listen [::]:443 ssl http2;
+	listen ${NGINX_LISTEN_PORT} ssl http2;
+	listen [::]:${NGINX_LISTEN_PORT} ssl http2;
 	server_name wissen-digital-ewb.de;
 	add_header Strict-Transport-Security "max-age=31536; includeSubDomains" always;
 	server_tokens off;

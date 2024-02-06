@@ -259,7 +259,7 @@
               <ul class="list-inline mb-0" id="tagsUlElement">
                 {% for usage in tool.usage.all %} 
                 <li class="list-inline-item"> 
-                  <a class="btn btn-outline-light btn-sm" 
+                  <a class="btn btn-outline-light btn-sm break-words" 
                     href="/tool_list/?searched=&u={{usage.usage}}&l=&lcp=">
                     {{usage.usage}}
                   </a> 
@@ -267,7 +267,7 @@
                 {% endfor %}
                 {% if tool.licence %}
                 <li class="list-inline-item"> 
-                  <a class="btn btn-outline-light btn-sm" 
+                  <a class="btn btn-outline-light btn-sm break-words" 
                     href="/tool_list/?searched=&u=&l={{tool.licence}}&lcp=">
                     {{tool.licence}}
                   </a> 
@@ -275,7 +275,7 @@
                 {% endif %}
                 {% for lifeCyclePhase in tool.lifeCyclePhase.all %} 
                 <li class="list-inline-item"> 
-                  <a class="btn btn-outline-light btn-sm" 
+                  <a class="btn btn-outline-light btn-sm break-words" 
                     href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase.lifeCyclePhase}}">
                     {{lifeCyclePhase.lifeCyclePhase}}
                   </a> 

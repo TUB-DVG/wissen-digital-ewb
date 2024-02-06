@@ -43,8 +43,8 @@ services:
         depends_on:
             - webcentral
         ports:
-            - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
-            - 443:443
+            # - ${PORT_TO_OUTSIDE}:${NGINX_LISTEN_PORT}
+            - 443:${NGINX_LISTEN_PORT}
             # data communication on port 80 on the host
             # gets mapped to port 8000 inside the proxy container
         environment:
@@ -55,7 +55,7 @@ services:
         volumes:
             - static-data:/vol/static
             - ./proxy/dhparam/:/etc/nginx/dhparam
-            - ./proxy/conf/:/etc/nginx/ssl/
+            # - ./proxy/conf/:/etc/nginx/ssl/
             # the proxy can directly serve the static data, without bothering
             # the django app
         command: >
