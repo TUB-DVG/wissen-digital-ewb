@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-12">
           <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">Überblick über die digitalen Werkzeuge</h2>
+            <h2 class="m-0">Überblick über die digitalen Anwendungen</h2>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
   </section>
   <!-- Page Banner END -->
 
-  {% include '../tools_over/explanationTools.html' %}
+  {% include '../tools_over/explanationApps.html' %}
 
   <!-- Page content START -->
   <section class="pt-0">
@@ -96,7 +96,7 @@
           </div>
           <!-- Clear button -->
           <div class="col-xl-1">
-            <a href="{% url 'tool_list' %}">
+            <a href="{% url 'app_list' %}">
               <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
                 Alle
               </h6>
@@ -111,10 +111,10 @@
         {% if search %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
+            <a href="/tool_list/technicalApps/?searched={{search}}&u=&l=&lcp=">
               Suchbegriff: {{search}}
             </a>
-            <a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/technicalApps/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i> 
             </a>
           </div>
@@ -123,9 +123,9 @@
         {% if usage %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">Nutzung:{{usage}}
+            <a href="/tool_list/technicalApps/?searched=&u={{usage}}&l=&lcp=">Nutzung:{{usage}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/technicalApps/?searched={% if search %}{{search}}{% endif %}&u=&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
@@ -134,9 +134,9 @@
         {% if accessibility %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l={{accessibility.accessibility}}&lcp=">Zugänglichkeit: {{accessibility}}
+            <a href="/tool_list/technicalApps/?searched=&u=&l={{accessibility.accessibility}}&lcp=">Zugänglichkeit: {{accessibility}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
+            <a href="/tool_list/technicalApps/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
@@ -145,9 +145,9 @@
         {% if lifeCyclePhase %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">Lebenszyklusphase: {{lifeCyclePhase}}
+            <a href="/tool_list/technicalApps/?searched=&u=&l=&lcp={{lifeCyclePhase}}">Lebenszyklusphase: {{lifeCyclePhase}}
             </a>
-            <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp=">
+            <a href="/tool_list/technicalApps/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp=">
               <i class="bi bi-x-lg"></i>
             </a>
           </div>
@@ -160,18 +160,18 @@
         <div class="col-12">
         <!-- tools Grid START -->
           <div class="row g-4" id="tool-listing-results">
-            {% include '../tools_over/tool-listings-results.html' %}
+            {% include '../tools_over/app-listings-results.html' %}
           </div>
           <!-- tools Grid END -->
           <!-- Pagination START -->
           <div class="pagination">
             <span class="step-links">
               {% if page.has_previous %}
-              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1" id="paginationFirstSite">
+              <a  href="{%url 'app_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1" id="paginationFirstSite">
                 &laquo; erste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" id="paginationPreviousLink">
+              <a href="{%url 'app_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" id="paginationPreviousLink">
                 vorherige
               </a>
               {% endif %}
@@ -181,11 +181,11 @@
               </span>
               &nbsp &nbsp
               {% if page.has_next %}
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}" id="paginationNextLink">
+              <a href="{%url 'app_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}" id="paginationNextLink">
                 nächste
               </a>
               &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}" id="paginationLastSite">
+              <a href="{%url 'app_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}" id="paginationLastSite">
                 letzte &raquo;
               </a>
               &nbsp &nbsp
