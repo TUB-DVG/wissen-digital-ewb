@@ -1,7 +1,6 @@
 import yaml
 import pdb
-import os
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webcentral_app.settings')
+
 import django 
 django.setup()
 # import DatabaseDifference
