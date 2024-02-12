@@ -25,9 +25,10 @@ class UpdateProperties:
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.filter(
-        classification__classification="digitales Werkzeug", 
-        focus__focus="technisch",
-    ) # reads all data from table Teilprojekt
+        focus__focus="technisch"
+    ).exclude(
+        classification__classification="digitale Anwendung"
+    ) 
     filteredBy = [None]*3
     searched=None
  
@@ -45,7 +46,8 @@ def index(request):
         tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
                         focus__focus="technisch",
-                        classification__classification="digitales Werkzeug",
+        ).exclude(
+            classification__classification="digitale Anwendung"
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
         # but filters out e.g., solely open-source tools!
@@ -90,7 +92,7 @@ def indexApps(request):
     tools = Tools.objects.filter(
         classification__classification="digitale Anwendung", 
         focus__focus="technisch",
-    ) # reads all data from table Teilprojekt
+    ) 
     filteredBy = [None]*3
     searched=None
  
