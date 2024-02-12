@@ -28,7 +28,7 @@ def index(request):
         focus__focus="technisch"
     ).exclude(
         classification__classification="digitale Anwendung"
-    ) 
+    ) # .exclude is used since we want to include programming languages, frameworks, etc
     filteredBy = [None]*3
     searched=None
  
@@ -47,7 +47,7 @@ def index(request):
                         accessibility__accessibility__icontains=accessibility,
                         focus__focus="technisch",
         ).exclude(
-            classification__classification="digitale Anwendung"
+            classification__classification="digitale Anwendung" # .exclude is used since we want to include programming languages, frameworks, etc
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
         # but filters out e.g., solely open-source tools!
