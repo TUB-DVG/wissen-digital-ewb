@@ -372,3 +372,18 @@ def AppView(request, id):
     }
 
     return render(request, 'tools_over/app-detail.html', context)
+
+def toolComparison(request):
+    ids = request.GET.getlist('id')
+    
+    # Retrieve tools based on the ids
+    tools = []
+    for id in ids:
+        tool = get_object_or_404(Tools, pk=id)
+        tools.append(tool)
+    
+    context = {
+        'tools': tools
+    }
+    
+    return render(request, 'tools_over/tool-comparison.html', context)
