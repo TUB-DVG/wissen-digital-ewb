@@ -9,4 +9,5 @@ urlpatterns = [
     path('technicalApps/<str:id>', views.AppView, name='app_view'),
     path('buisnessApps/', views.indexBuisnessApplication, name='buisnessModelApplication'),
     path('buisnessApps/<str:id>', views.buisnessApplicationView, name='buisnessAppView'),
+    path('comparison/', views.toolComparison, name ='tool_comparison'),
 ]
