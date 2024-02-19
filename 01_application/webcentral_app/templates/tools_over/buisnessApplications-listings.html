@@ -155,6 +155,30 @@
         {% endif %}
       </ul>
       <!-- search tags END -->
+      <!-- Comparison button START -->
+    <div class="col-xl-4" id="firstComparisonButtonTools">
+      <h6 class="btn btn-operational mb-0 rounded z-index-1 w-100">
+        Vergleiche 
+      </h6>
+    </div>
+   
+    <div class="row g-3" style="display:none" id="comparisonBarTools">
+      <div class="col-xl-2" id="secondComparisonButtonTools" >
+        <a href="#" id="comparisonUrlTools">
+          <h6 class="btn btn-operational mb-0 rounded z-index-1 w-100">
+            Vergleiche 
+          </h6>
+        </a>
+      </div>
+      <div class="col-xl-2" id="cancelButtonTools">
+          <h6 class="btn btn-operational mb-0 rounded z-index-1 w-100">
+            Zurücksetzen
+          </h6>
+
+      </div>
+    </div>
+    <br>
+    <!-- Comparison button END -->
       <!-- tools grid row START -->
       <div class="row mt-3">
         <div class="col-12">
@@ -202,6 +226,8 @@
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
+<!--ComparisonFeature-->
+<script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script>
 
 {% endblock %}
 
