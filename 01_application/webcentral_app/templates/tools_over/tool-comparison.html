@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #AFC5FF;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+<div class = "container technical-cards">
+<div class="row">
+
+  <h1>Vergleich Werkzeuges</h1>
+
+  <table style="display: block;
+  overflow-x: auto;">
+    <!-- Table Header -->
+    <tr>
+      <th>Attribut</th>
+      {% for tool in tools %}
+      <th>{{tool.name}}
+      {%if tool.image %}
+          <img src="{{ tool.image.url }}"
+              class="card-img-top px-4 pt-4 pb-2 m-auto"
+              style="max-height: 100%; width: auto; display: block;"
+              alt="tool image (if=db)">
+      {% endif %}
+        </th>
+      {% endfor %}
+      
+    </tr>
+
+    <tr>
+      <th>Einsatzbereich</th>
+      {% for tool in tools %}
+      <td>
+        {% if tool.applicationArea.all %}
+            {% for area in tool.applicationArea.all %}
+                {{ area.applicationArea }}
+                {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <th>Verwendung</th> 
+      {% for tool in tools %}
+      <td>
+        {% if tool.usage.all %}
+            {% for usage in tool.usage.all %}
+                {{ usage.usage }}
+                {% if not forloop.last %},{% endif %}
+            {% endfor %} 
+        {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Lebenszyklusphase</th>
+      {% for tool in tools %}
+      <td>
+        {% for phase in tool.lifeCyclePhase.all %}
+            {{ phase.lifeCyclePhase }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Zielgruppe</th>
+      {% for tool in tools %}
+      <td>
+        {% for group in tool.targetGroup.all %}
+            {{ group.targetGroup }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Benutzeroberfläche</th>
+      {% for tool in tools %}
+      <td>
+        {% for ui in tool.userInterface.all %}
+            {{ ui.userInterface }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Räumliche Größenordnung der Anwendungsfälle </th>
+      {% for tool in tools %}
+      <td>
+        {% for scale in tool.scale.all %}
+            {{ scale.scale }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Zugänglichkeit</th>
+      {% for tool in tools %}
+      <td>
+        {% for access in tool.accessibility.all %}
+            {{ access.accessibility }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Programmiersprache (Umsetzung)</th>
+      {% for tool in tools %}
+      <td>{{ tool.programmingLanguages }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Lizenz</th>
+      {% for tool in tools %}
+      <td>{{ tool.license }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Entwicklungsstand 
+        - 1 : pre-Alpha
+        - 2 : Alpha
+        - 3 : Beta
+        - 4 : Release Canditate
+        - 5 : Released
+      </th>
+      {% for tool in tools %}
+      <td>{{ tool.developmentState }}</td>
+      {% endfor %}
+    </tr>
+
+    <tr>
+      <th>Veröffentlichungsjahr</th>
+      {% for tool in tools %}
+      <td>{{ tool.yearOfRelease }}</td>
+      {% endfor %}
+    </tr>
+
+    
+    <tr>
+      <th>Letztes Update</th>
+      {% for tool in tools %}
+      <td>{{ tool.lastUpdate }}</td>
+      {% endfor %}
+    </tr>
+
+
+  </table>
+</div>
+</div>
+  {% endblock %}
