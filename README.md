@@ -55,6 +55,9 @@ and
    ./run migrate
 ```
 after that, restart the app from within the first terminal by pressing `CTRL+C` and run the command `./run up <env>` again.
+## Style Guide
+The Style guide for the project can be viewed [here](./styleGuide.md).
+
 # Hosted 
 - https://wissen-digital-ewb.de
 
