@@ -2,9 +2,9 @@
 {% for tool in page.object_list %}  
 <!-- Card item START -->
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-  <a href="{%url 'buisnessAppView' tool.id %}">
     <div class="card border-operational h-100" id="{{tool.id}}">
       <input type="checkbox" style="visibility:hidden;  position:absolute; left:230px; top:2px; " class ="comparisonInputTools"/>
+      <a href="{%url 'buisnessAppView' tool.id %}"></a>
       <!-- Card body -->
       <div class="card-body pb-0">
         <!-- Title -->
