@@ -1,51 +1,50 @@
 {% load static %}
 {% for tool in page.object_list %}  
-<!-- Card item START -->
-<div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-    <div class="card border-operational h-100" id="{{tool.id}}">
-      <input type="checkbox" style="visibility:hidden;  position:absolute; left:230px; top:2px; " class ="comparisonInputTools"/>
-      <a href="{%url 'buisnessAppView' tool.id %}"></a>
-      <!-- Card body -->
-      <div class="card-body pb-0">
-        <!-- Title -->
-        <h3 class="card-title">
-          {{ tool.name   }}
-        </h3>
-        <p class="card-text mb-2 text-truncate-2">
-          Nutzerschnittstelle:  
-          {% for userInterface in tool.userInterface.all %} 
-            {{userInterface.userInterface}} 
-          {% endfor %}
-        </p>
-      </div>
-      <!-- Image -->
-      <div class="image-container d-flex" style="height: 150px;">
-        {%if tool.image %}
-        <img src="{{ tool.image.url }}"
-            class="card-img-bottom px-4 pt-4 pb-2 m-auto"
-            style="max-height: 100%; width: auto; display: block;"
-            alt="tool image (if=db)">
-        {% endif %}
-      </div>
-      <!-- Card footer -->
-      <div class="card-footer pt-0 pb-3">
-        {% if tool.lastUpdate %}
-        <hr>
-        <div class="d-flex justify-content-between">
-          <span class="h6 fw-light mb-0">
-            {% if tool.lastUpdate == 'laufend' %}
-            <i class="fas fa-sync me-2">
-            </i>
-            Updates: {{ tool.lastUpdate }}
-            {% else %}
-            <i class="far fa-clock me-2">
-            </i>Letztes Update: {{ tool.lastUpdate }}
-            {% endif %}
+  <!-- Card item START -->
+  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+    <div class="card border-operational h-100" id="{{ tool.id }}">
+      <input type="checkbox" style="visibility:hidden;  position:absolute; left:230px; top:2px; " class="comparisonInputTools"/>
+      <a href="{% url 'buisnessAppView' tool.id %}">
+        <!-- Card body -->
+        <div class="card-body pb-0">
+          <!-- Title -->
+          <h3 class="card-title">
+            {{ tool.name }}
+          </h3>
+          <p class="card-text mb-2 text-truncate-2">
+            Nutzerschnittstelle:  
+            {% for userInterface in tool.userInterface.all %} 
+              {{ userInterface.userInterface }} 
+            {% endfor %}
+          </p>
         </div>
-        {% endif %}
-      </div>
+        <!-- Image -->
+        <div class="image-container d-flex" style="height: 150px;">
+          {% if tool.image %}
+            <img src="{{ tool.image.url }}"
+                 class="card-img-bottom px-4 pt-4 pb-2 m-auto"
+                 style="max-height: 100%; width: auto; display: block;"
+                 alt="tool image (if=db)">
+          {% endif %}
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer pt-0 pb-3">
+          {% if tool.lastUpdate %}
+            <hr>
+            <div class="d-flex justify-content-between">
+              <span class="h6 fw-light mb-0">
+                {% if tool.lastUpdate == 'laufend' %}
+                  <i class="fas fa-sync me-2"></i>
+                  Updates: {{ tool.lastUpdate }}
+                {% else %}
+                  <i class="far fa-clock me-2"></i>Letztes Update: {{ tool.lastUpdate }}
+                {% endif %}
+              </span>
+            </div>
+          {% endif %}
+        </div>
+      </a>
     </div>
-  </a>
-</div>
-<!-- Card item END -->
+  </div>
+  <!-- Card item END -->
 {% endfor %}
