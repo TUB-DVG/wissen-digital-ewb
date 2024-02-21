@@ -192,6 +192,9 @@ case $command in
             fi
         fi
         ;;
+    "webcentral_shell")
+        docker exec -it webcentral bash
+        ;;
     *)
         echo "Unknown command: $command"
         exit 1

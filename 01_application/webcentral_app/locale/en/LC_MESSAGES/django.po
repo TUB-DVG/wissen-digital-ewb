@@ -1,0 +1,141 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 10:43+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
+msgid "Find Apps"
+msgstr ""
+
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:13
+#: templates/admin/publications/publication_change_list.html:11
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: publications/admin/orderedmodeladmin.py:113
+msgid "Move"
+msgstr ""
+
+#: publications/models/orderedmodel.py:88
+msgid ""
+"The method move() is deprecated and will be removed in the next release."
+msgstr ""
+
+#: publications/models/orderedmodel.py:101
+msgid ""
+"The method move_down() is deprecated and will be removed in the next "
+"release. Please use down() instead!"
+msgstr ""
+
+#: publications/models/orderedmodel.py:111
+msgid ""
+"The method move_up() is deprecated and will be removed in the next release. "
+"Please use up() instead!"
+msgstr ""
+
+#: templates/StartSearch/StartSearch.html:3 templates/pages/index.html:4
+msgid "Wissensplattform - Digitalisierung Energiewendebauen"
+msgstr ""
+
+#: templates/StartSearch/StartSearch.html:21
+msgid ""
+"Die wissenschaftliche Begleitforschung der Forschungsinitiative\n"
+"          Energiewendebauen stellt mit der Wissensplattform - "
+"Digitalisierung\n"
+"          Energiewendebauen einen Zugang zu den Forschungsergebnissen und "
+"den\n"
+"          erstellten Hilfsmitteln aus den Forschungsprojekten im Bereich\n"
+"          Digitalisierung im Bausektor dar. Diese Plattform richtet sich an "
+"die\n"
+"          interessierte Fachallgemeinheit und auch an die Forschungsprojekte "
+"der\n"
+"          Forschungsinitative Energiewendebauen."
+msgstr "The accompanying scientific research of the research initiative Energiewendebauen provides with the knowledge platform digitization knowledge platform provides access to the research results and the tools created from the research projects in the area of digitization in the construction sector. This platform is aimed at the interested specialist community and also to the research projects of the Energiewendebauen research initiative."
+
+#: templates/StartSearch/StartSearch.html:82
+msgid "Technischer Fokus"
+msgstr "Technical Focus"
+
+#: templates/StartSearch/StartSearch.html:84
+msgid ""
+"Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
+"                der Energieforschung im Gebäudesektor zielt vorrangig auf\n"
+"                Hilfsmittel für die technische Planung und die technische\n"
+"                Betriebsdurchführung bzw. -optimierung ab. Dies umfasst\n"
+"                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
+"                Forschungsergebnisse."
+msgstr "The technical focus in the investigation of digitalization in energy research in the building sector is primarily aimed at tools for technical planning and the technical operational implementation and optimization. This includes data sets, digital tools and applications and other research Research results."
+
+#: templates/StartSearch/StartSearch.html:102
+msgid "Werkzeuge"
+msgstr "Tools"
+
+#: templates/StartSearch/StartSearch.html:114
+msgid "Anwendungen"
+msgstr "Applications"
+
+#: templates/StartSearch/StartSearch.html:126
+msgid "technische Standards"
+msgstr "Technical Standards"
+
+#: templates/StartSearch/StartSearch.html:137
+msgid "Wetterdaten"
+msgstr "Wheatherdata"
+
+#: templates/StartSearch/StartSearch.html:148
+msgid "Datensets"
+msgstr "Datasets"
+
+#: templates/StartSearch/StartSearch.html:159
+msgid "Lastprofile"
+msgstr "load profiles"
+
+#: templates/StartSearch/StartSearch.html:172
+msgid "Publikationen"
+msgstr "Publications"
+
+#: templates/admin/publications/import_bibtex.html:8
+msgid "Home"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:9
+#: templates/admin/publications/import_bibtex.html:10
+msgid "Publications"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:11
+#: templates/admin/publications/publication_change_list.html:7
+msgid "Import BibTex"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:22
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:32
+msgid "Bibliography"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:34
+msgid "Required keys: title, author and year."
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:39
+msgid "Import"
+msgstr ""
