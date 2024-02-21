@@ -28,6 +28,8 @@ COPY --chown=${WEBCENTRAL_UNPRIVILEGED_USER} . /home/${WEBCENTRAL_UNPRIVILEGED_U
 
 # second build stage for dev environment
 FROM base AS dev
+
+RUN apt-get install -y gettext
 WORKDIR /webcentral/
 COPY 01_application/requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
