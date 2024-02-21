@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Wissensplattform - Digitalisierung Energiewendebauen {% endblock %}
+{% block title %} {% translate "Wissensplattform - Digitalisierung Energiewendebauen" %} {% endblock %}
 
 {% load static %}
 
@@ -18,13 +18,13 @@
     <div class="row align-items-center">
       <div class="col-12 col-lg-10">
         <p class="lead">
-          Die wissenschaftliche Begleitforschung der Forschungsinitiative
+          {% blocktranslate %}Die wissenschaftliche Begleitforschung der Forschungsinitiative
           Energiewendebauen stellt mit der Wissensplattform - Digitalisierung
           Energiewendebauen einen Zugang zu den Forschungsergebnissen und den
           erstellten Hilfsmitteln aus den Forschungsprojekten im Bereich
           Digitalisierung im Bausektor dar. Diese Plattform richtet sich an die
           interessierte Fachallgemeinheit und auch an die Forschungsprojekte der
-          Forschungsinitiative Energiewendebauen.
+          Forschungsinitative Energiewendebauen.{% endblocktranslate %}
         </p>
       </div>
       <div class="col-12 col-lg-2">
@@ -79,14 +79,14 @@
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
-              <h3>Technischer Fokus</h3>
+              <h3>{% translate "Technischer Fokus" %}</h3>
               <p>
-                Der technische Fokus bei der Untersuchung der Digitalisierung in
+                {% blocktranslate %}Der technische Fokus bei der Untersuchung der Digitalisierung in
                 der Energieforschung im Gebäudesektor zielt vorrangig auf
                 Hilfsmittel für die technische Planung und die technische
                 Betriebsdurchführung bzw. -optimierung ab. Dies umfasst
                 Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere
-                Forschungsergebnisse.
+                Forschungsergebnisse.{% endblocktranslate %}
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -99,7 +99,7 @@
                   </td>
                   <td>
                     <a class="technical" href="{% url 'tool_list' %}">
-                      Werkzeuge
+                      {% translate "Werkzeuge" %}
                     </a>
                   </td>
                 </tr>
@@ -111,7 +111,7 @@
                   <td>
                     <a class="technical"
                        href="{% url 'app_list' %}">
-                      Anwendungen
+                      {% translate "Anwendungen" %}
                     </a>
                   </td>
                 </tr>
@@ -123,7 +123,7 @@
                   <td>
                     <a class="technical"
                        href="{% url 'TechnicalStandards' %}" id="linkToTechnicalStandarts">
-                      Technische Standards
+                      {% translate "Technische Standards" %}
                     </a>
                   </td>
                 </tr>
@@ -134,7 +134,7 @@
                   </td>
                   <td>
                     <a class="technical" href="{% url 'weatherdata_list' %}">
-                      Wetterdaten
+                      {% translate "Wetterdaten" %}
                     </a>
                   </td>
                 </tr>
@@ -145,7 +145,7 @@
                   </td>
                   <td>
                     <a class="technical" href="{% url 'dataset_list' %}">
-                     Datensätze
+                     {% translate "Datensätze" %}
                     </a>
                   </td>
                 </tr>
@@ -156,7 +156,7 @@
                   </td>
                   <td>
                     <a class="technical" href="{% url 'LastProfile' %}">
-                      Lastprofile
+                      {% translate "Lastprofile" %}
                     </a>
                   </td>
                 </tr>
@@ -169,7 +169,7 @@
                     <a class="technical"
                     href="{%url 'publicationPage' %}?searched=&fo=11"
                     id="linkToTechnicalPublications">
-                      Publikationen
+                      {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
