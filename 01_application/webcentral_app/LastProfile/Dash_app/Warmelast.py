@@ -276,7 +276,7 @@ def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,
     fig=make_subplots(specs = [[{"secondary_y": True}]])
     fig.add_trace(go.Scatter(name = 'Wärmelastgang in kW',x = result['Time'],
     y = result['Last'],mode = 'lines', line = dict(color = "#0000ff")),secondary_y = False)
-    fig.add_trace(go.Scatter(name = 'Fehlende Eingaben',x = result['Time'],
+    fig.add_trace(go.Scatter(name = 'Fehlende Angaben',x = result['Time'],
     y = result['Last'].where(result['fehlend'] == 'True'),mode = 'lines',
     line = dict(color = "red")),secondary_y = False)
     fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',
