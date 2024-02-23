@@ -20,11 +20,17 @@ Page Banner START -->
         <div class="p-2 text-left rounded-3">
           <h2 class="m-0">Lastprofile</h2>
             <p class="lead">
-              Das Interface ermöglicht die Abschätzung des Wärme- und
-              Stromverbrauchs als Zeitreihe. Grundlage ist die Auswahl eines
-              gewissen Gebäudetyps und einem gegebenen Jahresbedarf. Für die
-              Berechnung der Wärmelast wird zusätzlich die Umgebungstemperatur zur
-              entsprechenden Tageszeit benötigt.<br>
+              Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
+              Wärmeverbrauch und einen Lastprofilgenerator für Stromverbrauch.
+              Die Lastprofile werden als Zeitreihen dargestellt.
+
+              Die Lastprofile basieren auf dem (Gebäude-)Nutzung/Gebäudetyp, dem
+              Jahresbedarf und dem Berechnungszeitraum, die von Nutzenden
+              vorgegeben werden. Für die Berechnung der Wärmelast wird
+              zusätzlich die Umgebungstemperatur entsprechenden des
+              Berechnungszeitraums mit Hilfe von Wetterdaten genutzt.
+              <br>
+              Die jeweiligen Lastprofile können auch heruntergeladen werden.
            </p>
         </div>
       </div>
@@ -42,28 +48,23 @@ Page Banner END -->
       <div class="col-lg-6">
         <h3>Stromlast</h3>
         <p class="lead">
-          Das Stromlast-Interface ermöglicht die Abschätzung des
-          Stromverbrauchs als Zeitreihe. Hierbei ist es notwendig den
-          Gebäudetyp und den Jahresbedarf anzugeben.
+          Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den
+          typischen Verlauf des Stromverbrauchs über der Zeit in Abhängigkeit
+          der (Gebäude-)Nutzung und des Jahresstrombedarfs darstellt. Des weiteren
+          kann der Berechnungszeitraum angegeben werden:
           <br>
         </p>
         <ul >
-          <p class="lead">
-            Das Interface für die Bestimmung des Strombedarfs hat drei
-            Parameter:
-          </p>
           <li class="lead">
-            <b>Anwendung Auswahl</b>&nbsp;&ndash; Nach welcher Anwendung soll
-            die Berechnung erfolgen
+            <b>(Gebäude-)Nutzung</b>&nbsp;&ndash; Auswahl der Nutzung des Stroms
           </li>
           <li class="lead">
-            <b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarf
+            <b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs
             in kWh/a
           </li>
           <li class="lead">
-            <b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse
-            angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten
-            Monat?
+            <b>Berechnungszeitraum</b>&nbsp;&ndash; Auswahl des
+            Berechnungszeitraums
           </li>
         </ul>
       </div>
@@ -94,39 +95,25 @@ Page Banner END -->
       <div class="col-lg-6">
         <h3>Wärmelast</h3>
         <p class="lead">
-          Wie oben erwähnt, wird für die Wärmeapproximation die
-          Umgebungstemperatur zur entsprechenden Tageszeit benötigt. Die
-          Umgebungstemperatur wird vom Wetterdienst Server über zwei Parameter
-          (unten definiert) abgerufen, die angeben, welche Wetterstation
-          Temperaturdaten verwendet werden sollen.
+
+          Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den
+          typischen Verlauf der Wärmelast über der Zeit in Abhängigkeit der
+          Wetterdaten, des Jahreswärmebedarfs und des Gebäudetyps darstellt.
+          Desweiteren kann der Berechnungszeitraum angegeben werden:
           <ul>
-            <p class="lead">
-              Das Interface für die Wärmeapproximation hat sechs Parameter:
-            </p>
             <li class="lead">
-              <b>Auswahl des Bundeslands</b>&nbsp;&ndash; Nach welchem Bundesland
-              soll die Stationwahl folgen
+              <b>Wetterdaten</b>&nbsp;&ndash; Hier kann das Testreferenzjahr
+              (TRJ) oder eine spezifische Wetterstation gewählt werden
             </li>
             <li class="lead">
-              <b>Anwendung der Station</b>&nbsp;&ndash; Welche Station, je nach
-              gewähltem Bundesland, verwendet werden soll.
+              <b>Gebäudetyp</b>&nbsp;&ndash; Auswahl des Gebäudetyps
             </li>
             <li class="lead">
-              <b>Auswahl der Anwendung</b>&nbsp;&ndash; Nach welcher Anwendung
-              soll die Berechnung erfolgen
+              <b>Jahreswärmebedarf</b>&nbsp;&ndash; Eingabe des
+              Jahreswärmebedarfs in kWh/a
             </li>
             <li class="lead">
-              <b>Jahreswärmebedarfs in kWh/a</b>&nbsp;&ndash; Eingabe des
-              Jahresswärmebedarfs in kWh/a
-            </li>
-            <li class="lead">
-              <b>Datumsbereich</b>&nbsp;&ndash; Bereich, auf dem die
-              Approximation berechnet werden soll
-            </li>
-            <li class="lead">
-              <b>Display Setting</b>&nbsp;&ndash; Wie sollen die Ergebnisse
-              angezeigt werden: Alle Daten oder gruppiert nach einem bestimmten
-              Monat?
+              <b>Berechnungszeitraum</b>&nbsp;&ndash; Eingabe des Berechnungszeitraums
             </li>
           </ul>
         </p>
@@ -159,8 +146,8 @@ Page Banner END -->
         <h3>Anmerkungen</h3>
         <ul>
           <p class="lead">
-            Für die Berechnungen, Daten und Annahmen werden die folgenden Quellen
-            genutzt:
+            Die Generatoren basieren auf Berechnungsvorschriften, Daten und
+            Annahmen der folgenden Quellen:
           </p>
           <li class="lead">
             <b>Wärmelast</b>&nbsp;&ndash; Nutzung der Dissertation von Marcus
