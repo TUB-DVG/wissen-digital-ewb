@@ -2,7 +2,7 @@
 This file describes the styling conventions for the project.
 ## Python
 - Indentation:
-  - 1 Tab or 2 Whitespaces
+  - 1 Tab or 4 Whitespaces
 - Naming of identifiers:
   - camelCase for variables, functions and methods, numbers should be written out as characters
   - Classes should be named in PascalCase
