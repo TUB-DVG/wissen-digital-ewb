@@ -134,7 +134,7 @@ class Publication(models.Model):
 
 		suffixes = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', "Jr.", "Sr."]
 		prefixes = ['Dr.']
-		prepositions = ['van', 'von', 'der', 'de', 'den']
+		prepositions = ['Van','van', 'Von', 'von', 'Der', 'der', 'De', 'de', 'Den', 'den']
 
 		# further post-process author names
 		for i, author in enumerate(self.authors_list):
@@ -142,14 +142,14 @@ class Publication(models.Model):
 				continue
 
 			names = author.split(' ')
+			names = [names[-1]] + names[:-1] # Move the last name to the beginning
 
 			# check if last string contains initials
 			if (len(names[-1]) <= 3) \
-				and names[-1] not in suffixes \
-				and all(c in ascii_uppercase for c in names[-1]):
+				and names[0] not in suffixes \
+				and all(c in ascii_uppercase for c in names[0]):
 				# turn "Gauss CF" into "C. F. Gauss"
-				names = [c + '.' for c in names[-1]] + names[:-1]
-
+				names[0] = '.'.join(names[0])
 			# number of suffixes
 			num_suffixes = 0
 			for name in names[::-1]:
@@ -163,7 +163,7 @@ class Publication(models.Model):
 				# don't try to abbreviate these
 				if j == 0 and name in prefixes:
 					continue
-				if j > 0 and name in prepositions:
+				if name in prepositions:
 					continue
 
 				if (len(name) > 2) or (len(name) and (name[-1] != '.')):
@@ -173,14 +173,14 @@ class Publication(models.Model):
 						names[j] = name[0] + '.-' + name[k + 1] + '.'
 					else:
 						names[j] = name[0] + '.'
-
+			names = names[1:] + [names[0]]  # Second inverse
 			if len(names):
 				self.authors_list[i] = ' '.join(names)
 
 				# create simplified/normalized representation of author name
 				if len(names) > 1:
-					for name in names[0].split('-'):
-						name_simple = self.simplify_name(' '.join([name, names[-1]]))
+					for name in names[1].split('-'):
+						name_simple = self.simplify_name(' '.join([name, names[0]]))
 						self.authors_list_simple.append(name_simple)
 				else:
 					self.authors_list_simple.append(self.simplify_name(names[0]))
@@ -194,7 +194,7 @@ class Publication(models.Model):
 				# splitting point
 				sp = 1 + num_suffixes + num_prepositions
 				self.authors_list_split.append(
-					(' '.join(names[:-sp]), ' '.join(names[-sp:])))
+					(' '.join(names[1:-sp]), ' '.join(names[-sp:])))
 
 		# list of authors in BibTex format
 		self.authors_bibtex = ' and '.join(self.authors_list)
