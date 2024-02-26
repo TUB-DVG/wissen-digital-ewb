@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Lastprofil Approximation{% endblock %}
+{% block title %}Überblick über den Lastprofilgenerator{% endblock %}
 {% block content %}
 {% load static %}
 
@@ -21,13 +21,12 @@ Page Banner START -->
           <h2 class="m-0">Lastprofile</h2>
             <p class="lead">
               Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
-              Wärmeverbrauch und einen Lastprofilgenerator für Stromverbrauch.
-              Die Lastprofile werden als Zeitreihen dargestellt.
+              Wärmeverbrauch und einem Lastprofilgenerator für Stromverbrauch.
+              Die Lastprofile werden als Zeitreihen dargestellt. 
 
               Die Lastprofile basieren auf dem (Gebäude-)Nutzung/Gebäudetyp, dem
-              Jahresbedarf und dem Berechnungszeitraum, die von Nutzenden
-              vorgegeben werden. Für die Berechnung der Wärmelast wird
-              zusätzlich die Umgebungstemperatur entsprechenden des
+              Jahresbedarf und dem Berechnungszeitraum, die vorgegeben werden müssen. Für die Berechnung 
+              der Wärmelast wird zusätzlich die Umgebungstemperatur entsprechenden des
               Berechnungszeitraums mit Hilfe von Wetterdaten genutzt.
               <br>
               Die jeweiligen Lastprofile können auch heruntergeladen werden.
