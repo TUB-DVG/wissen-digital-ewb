@@ -45,8 +45,7 @@
       <td>
         {% if tool.applicationArea.all %}
             {% for area in tool.applicationArea.all %}
-                {{ area.applicationArea }}
-                {% if not forloop.last %},{% endif %}
+              {{ area.applicationArea }}{% if not forloop.last %},{% endif %}
             {% endfor %}
         {% endif %}
       </td>
@@ -58,8 +57,7 @@
       <td>
         {% if tool.usage.all %}
             {% for usage in tool.usage.all %}
-                {{ usage.usage }}
-                {% if not forloop.last %},{% endif %}
+              {{ usage.usage }}{% if not forloop.last %},{% endif %}
             {% endfor %} 
         {% endif %}
       </td>
@@ -71,8 +69,7 @@
       {% for tool in tools %}
       <td>
         {% for phase in tool.lifeCyclePhase.all %}
-            {{ phase.lifeCyclePhase }}
-            {% if not forloop.last %},{% endif %}
+          {{ phase.lifeCyclePhase }}{% if not forloop.last %},{% endif %}
         {% endfor %}
       </td>
       {% endfor %}
@@ -83,8 +80,7 @@
       {% for tool in tools %}
       <td>
         {% for group in tool.targetGroup.all %}
-            {{ group.targetGroup }}
-            {% if not forloop.last %},{% endif %}
+            {{ group.targetGroup }}{% if not forloop.last %},{% endif %}
         {% endfor %}
       </td>
       {% endfor %}
@@ -95,8 +91,7 @@
       {% for tool in tools %}
       <td>
         {% for ui in tool.userInterface.all %}
-            {{ ui.userInterface }}
-            {% if not forloop.last %},{% endif %}
+            {{ ui.userInterface }}{% if not forloop.last %},{% endif %}
         {% endfor %}
       </td>
       {% endfor %}
@@ -107,8 +102,7 @@
       {% for tool in tools %}
       <td>
         {% for scale in tool.scale.all %}
-            {{ scale.scale }}
-            {% if not forloop.last %},{% endif %}
+            {{ scale.scale }}{% if not forloop.last %},{% endif %}
         {% endfor %}
       </td>
       {% endfor %}
@@ -119,8 +113,7 @@
       {% for tool in tools %}
       <td>
         {% for access in tool.accessibility.all %}
-            {{ access.accessibility }}
-            {% if not forloop.last %},{% endif %}
+            {{ access.accessibility }}{% if not forloop.last %},{% endif %}
         {% endfor %}
       </td>
       {% endfor %}
