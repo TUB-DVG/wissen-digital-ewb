@@ -42,17 +42,7 @@ def index(request):
         focusName = "neutral"
     else:
         focusName = focus_queryset.get(id=focus).focus
-    
-    if focusName == "technisch":
-        focusBorder = "technical"
-    elif focusName == "betrieblich":
-        focusBorder = "operational"
-    elif focusName == "ökologisch":
-        focusBorder = "ecological"
-    elif focusName == "rechtlich":
-        focusBorder = "legal"
-    else:
-        focusBorder = "neutral"
+
     context = {
         'page': page,
         'search': searched,
@@ -60,7 +50,7 @@ def index(request):
         # 'year': year,
         'focus': focus,
         'focus_options': focus_options,
-        "focusBorder": focusBorder,
+        "focusBorder": _translateFocusStr(focusName),
     }
     
     return render(request, 'publications/publications-listings.html', context)
@@ -74,13 +64,14 @@ def publicationView(request, id):
     keywords = publication.keywords.split(',') if publication.keywords else []
     focus_options = Focus.objects.all()
 
-
+    firstElementOfPublicationFocus = publication.focus.first().focus  
     context = {
         'publication': publication,
         'title': title,
         'type': type,
         'keywords': keywords,
         'focus_options': focus_options,
+        "focusBorder": _translateFocusStr(firstElementOfPublicationFocus),
     }
 
     return render(request, 'publications/publications-detail.html', context)
@@ -92,3 +83,20 @@ def download_pdf(request, pk):
         return FileResponse(open(publication.pdf.path, 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404("PDF not found.")
+
+def _translateFocusStr(focusStr: str) -> str:
+    """Return the english translataion for the focus string
+
+    """
+    if focusStr == "technisch":
+        focusBorder = "technical"
+    elif focusStr == "betrieblich":
+        focusBorder = "operational"
+    elif focusStr == "ökologisch":
+        focusBorder = "ecological"
+    elif focusStr == "rechtlich":
+        focusBorder = "legal"
+    else:
+        focusBorder = "neutral"
+    
+    return focusBorder
