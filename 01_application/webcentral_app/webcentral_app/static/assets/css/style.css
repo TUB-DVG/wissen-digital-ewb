@@ -5318,6 +5318,10 @@ textarea.form-control-lg {
   margin-bottom: 0.5rem;
 }
 
+.card-title--spaced {
+  margin-right: 2rem;
+}
+
 .card-subtitle {
   margin-top: -0.25rem;
   margin-bottom: 0;
