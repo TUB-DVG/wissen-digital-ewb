@@ -44,11 +44,11 @@ Page intro END -->
 <!-- =======================
 Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container neutral-cards">
+  <div class="container {{ focusBorder }}-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card border-neutral p-0">
+        <div class="card border-{{ focusBorder }} p-0">
 					<!-- Tab contents START -->
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- Content START -->
@@ -155,7 +155,7 @@ Page content START -->
         <div class="row mb-5 mb-lg-0">
 					<div class="col-md-6 col-lg-12">
 						<!-- Tags START -->
-            <div class="card card-body border-neutral p-4">
+            <div class="card card-body border-{{ focusBorder }} p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
                 {% if publication.focus %}

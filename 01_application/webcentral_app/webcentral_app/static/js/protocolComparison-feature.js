@@ -2,9 +2,14 @@ function resetPageState() {
     const firstCompareButton = document.getElementById('comparisonButton');
     const comparisonBar = document.getElementById('comparisonBar');
     const inputs = document.getElementsByClassName('comparisonInput');
+    const cardTitles = document.getElementsByClassName("card-title")
 
     for (let i = 0; i < inputs.length; i++) {
         inputs[i].style.visibility = "hidden";
+    }
+
+    for (let i = 0; i < cardTitles.length; i++) {
+        cardTitles[i].classList.remove("card-title--spaced");
     }
 
     firstCompareButton.style.display = '';
@@ -79,6 +84,12 @@ document.addEventListener('DOMContentLoaded', function () {
             var inputs = document.getElementsByClassName('comparisonInput');
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].style.visibility = "visible";
+            }
+
+            const cardTitles = document.getElementsByClassName("card-title")
+        
+            for (let i = 0; i < cardTitles.length; i++) {
+                cardTitles[i].classList.add("card-title--spaced");
             }
         }
 

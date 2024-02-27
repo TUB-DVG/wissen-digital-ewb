@@ -65,6 +65,18 @@
   color: $primary-text-color;
 }
 
+.neutral-cards {
+  .border-neutral {
+    @include border-rect($neutral-color)
+  }
+  .border-neutral-round {
+    @include border-round($neutral-color)
+  }
+  .btn-neutral {
+    @include btn-search($neutral-color, $third-text-color)
+  }
+}
+
 /* card_hover: allows the item display cards to grow on hover
  * to show user selection : Added 06/20/2023
 */
