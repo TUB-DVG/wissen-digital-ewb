@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', function () {
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].style.visibility = "visible";
             }
+
+            const cardTitles = document.getElementsByClassName("card-title")
+        
+            for (let i = 0; i < cardTitles.length; i++) {
+                cardTitles[i].classList.add("card-title--spaced");
+            }
         }
 
         // Define functions that describe the behaviour of the buttons for tools comparison
@@ -88,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function () {
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].style.visibility = "hidden";
             }
+
+            const cardTitles = document.getElementsByClassName("card-title")
+
+            for (let i = 0; i < cardTitles.length; i++) {
+                cardTitles[i].classList.remove("card-title--spaced");
+            }
+
             firstComparisonButtonTools.style.display = '';
             comparisonBarTools.style.display = 'none';
             $('input[type=checkbox]').prop('checked', false);
