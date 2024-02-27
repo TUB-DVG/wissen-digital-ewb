@@ -121,6 +121,19 @@
   color: #000;
 }
 
+.neutral-cards .border-neutral {
+  border-radius: 2px;
+  border: 2px solid #636363;
+}
+.neutral-cards .border-neutral-round {
+  border-radius: 20px;
+  border: 2px solid #636363;
+}
+.neutral-cards .btn-neutral {
+  background-color: #636363;
+  color: white;
+}
+
 /* card_hover: allows the item display cards to grow on hover
  * to show user selection : Added 06/20/2023
 */
