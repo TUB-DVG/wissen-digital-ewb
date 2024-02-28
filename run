@@ -164,7 +164,6 @@ case $command in
 
             cd 02_work_doc/10_test/06_seleniumSystemTests/
             . ../testingVenv/bin/activate
-<<<<<<< HEAD
             if [-z "$3" ]
             then
               siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py
@@ -173,10 +172,6 @@ case $command in
             fi
             deactivate
             cd ../../../
-=======
-            siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py
-            deactivate
->>>>>>> 98ea7d5 (changed run-script to run test without reimporting the database)
         fi
         ;;
     "up")
