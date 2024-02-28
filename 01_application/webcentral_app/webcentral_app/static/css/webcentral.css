@@ -60,6 +60,20 @@
   flex-shrink: 0;
 }
 
+#container-criteria-catalog-landing-page .border-legal {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #F5E86A;
+  outline-offset: -17px;
+}
+#container-criteria-catalog-landing-page p, #container-criteria-catalog-landing-page li {
+  color: #868181;
+  font-size: 12px;
+}
+#container-criteria-catalog-landing-page h2 {
+  font-size: 25px;
+}
+
 /* formating cards */
 .technical-cards .border-technical {
   border-radius: 2px;
@@ -319,6 +333,10 @@ body h5 {
   font-weight: normal;
   font-size: 15px;
   text-decoration: underline;
+}
+
+.criteriaCatalogHeading {
+  color: #F5E86A;
 }
 
 /*# sourceMappingURL=webcentral.css.map */

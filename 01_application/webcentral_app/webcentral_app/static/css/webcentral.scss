@@ -5,7 +5,11 @@
 */
 @import "_variables";
 
+@import "_functions";
+
 @import "_startpage";
+
+@import "_criteria-catalog";
 
 @import "_cardspages";
 
@@ -43,3 +47,6 @@ body {
   }
 }
 
+.criteriaCatalogHeading {
+  color: $legal-color;
+}

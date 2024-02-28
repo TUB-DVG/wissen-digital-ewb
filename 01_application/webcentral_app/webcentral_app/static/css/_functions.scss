@@ -1,0 +1,6 @@
+@mixin border-boxen($border-color) {
+    border-radius: 2px;
+    border: None;
+    outline: 2px solid $border-color;
+    outline-offset: -17px;
+  }
