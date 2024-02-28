@@ -15,48 +15,220 @@ Page Banner START -->
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Kriterienkatalog</h2>
-        </div>
+        <img src="{% static 'assets/images/StartPage_figure.svg' %}"
+             class="rounded" alt="overview_figure"
+             style="width: 800px vertical-align: middle" nonce="{{request.csp_nonce}}">
       </div>
+    </div> -->
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-12">
+        <p class="lead">
+          <img src="{% static 'assets/images/standards.svg' %}">Kriterienkatalog <br />
+          Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </p>
+        <br />
+        <p>
+          <a href="#" style="color: black; text-decoration: underline;">Downloade den gesamten Kriterienkatalog als Exceldatei</a> 
+        </p>
+      </div>
+      <!-- <div class="col-12 col-lg-2">
+        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+          class="img-side-column" style="height: 200px;"
+          alt="Logo_BMWK">
+      </div> -->
     </div>
   </div>
 </section>
 <!-- Page Banner END -->
 <!-- Content START -->
-<section id="about" class=" pt-4 py-lg-5">
-  <div class="container">
+
+<!-- Page content START -->
+<section class="pt-0">
+  <!-- Filter bar END -->
+  
+  <div class="container" id="container-criteria-catalog-landing-page">
+    <!-- Row START -->
     <div class="row">
-      <div class="col-lg-9">
-        <p>
-          Das europäische Datenschutzrecht verpflichtet den für die Verarbeitung
-          personenbezogener Daten Verantwortlichen zur Einhaltung einer Vielzahl
-          von Pflichten (z.B. Transparenz, Rechtmäßigkeit Sicherheit,
-          Zweckbindung) und gewährt den von der Datenverarbeitung betroffenen
-          Personen eine Vielzahl von Rechten (z.B. Widerspruch, Berichtigung,
-          Herausgabe etc.). Wie bereits beschrieben geht dieser Ansatz im Rahmen
-          datengetriebener Innovation jedoch mit einer Reihe an Problemen und
-          Rechtsunsicherheiten einher. Denn selbst wenn Daten nicht zur Analyse
-          oder Bewertung von Personen und ihrem Verhalten genutzt werden sollen,
-          besteht unter Umständen die Möglichkeit, dass eine Datenverarbeitung
-          in den Anwendungsbereich der Datenschutz-Grundverordnung (DSGVO) fällt
-          und damit ihren umfassenden Pflichten- (und Bußgeld-) Katalog auslöst.
-          Um die Rechtssicherheit bei der Entwicklung neuer Anwendungen und
-          Technologien für Behörden, Unternehmen und sonstige Akteure zu
-          erhöhen, wird im Modul 4 Digitalisierung der Wissenschaftlichen
-          Begleitforschung Energiewendebauen ein Kriterienkatalog entwickelt,
-          der die datenschutzrechtlichen Anforderung für verschiedene Projekt-
-          und Anwendungstypen konkretisiert. Der Kriterienkatalog soll dabei
-          über die Funktion eines bloßen Leitfadens hinausgehen und spezifische
-          Anforderungen formulieren, wie digitale Anwendungen im Gebäude- und
-          Quartiersbereich ausgestaltet sein müssen, damit sie rechtskonform und
-          rechtssicher betrieben werden können. 
-        </p>
-        <!-- <p>
-          <a href="{% url 'criteriaCatalog:index' %}">
-            Kriterienkatalog
-          </a>
-        </p> -->
+      <h2 class="criteriaCatalogHeading" style="color: #F5E86A">Für welchen Zweck möchtest du Daten verarbeiten?</h2>
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-legal" title="Technischer Fokus">
+        <div class="p-4 position-relative">
+          <!-- <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               alt="icon"
+               nonce="{{request.csp_nonce}}"> -->
+          <div class="row">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3"
+                 title="Erläuterungstext">
+              <h3>Planung, Betrieb und Betriebsoptimierung</h3>
+              <p>Zum Beispiel:
+                <ul>
+                  <li>(Teil-)Automatisierte Regelung der Gebäude-Klimatisierung (z.B. Belüftung, Heizanlagen)</li>
+                  <li>(Teil-)Automatisierte Regelung sonstiger technischer Anlagen</li>
+                  <li>Modellbasierte Regelung technischer Anlagen</li>
+                  <li>Verbesserung von Modellen</li>
+                  <li>Monitoring technischer Anlagen</li>
+                  <li>Errechnung des Wärme-/Kältebedarfs (auf Gebäude- oder Quartiersebene)</li>
+                  <li>Errechnung des Bedarfs elektrischer Energie (auf Wohneinheits-, Gebäude- oder Quartiersebene)</li>
+                  <li>Ermittlung von Energie-Einsparpotenzialen</li>
+                  <li>Handlungsempfehlung an Gebäudebetreiber zur Energieeinsparung</li>
+                  <li>Erfassung von Gebäudeinformationen in digitalem Zwilling; BIM</li>
+                </ul>
+              </p>
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3"
+                 title="Links">
+              <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-legal" title="Betrieblicher Fokus">
+        <div class="p-4 position-relative">
+          <!-- <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               nonce="{{request.csp_nonce}}"
+               alt="icon"> -->
+          <div class="row">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3"
+                 title="Erläuterungstext">
+              <h3>Verhaltensbeeinflussung (Nudging)</h3>
+              <p>
+                Zum Beispiel:
+                <ul>
+                  <li>Visualisierung des Energieverbrauchs auf UI</li>
+                  <li>Handlungsempfehlungen mittels UI</li>
+                  <li>Gamification Anwendungen</li>
+                </ul>
+              </p>
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3"
+                 title="Links">
+              <img src="{% static 'assets/images/PurposeCategory2.svg' %}"  class="rounded" alt="icon" style="justify-self: end;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+    </div>
+    <!-- Row END -->
+    <!-- Row START -->
+    <div class="row">
+      <!-- Block START -->
+      <div class="col-12 col-lg-6 p-3 border-legal" title="Ökologischer Fokus" style="min-height: 460px;">
+        <div class="p-4 position-relative">
+          <!-- <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               nonce="{{request.csp_nonce}}"
+               alt="icon"> -->
+          <div class="row">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3"
+                 title="Erläuterungstext">
+              <h3>Profilbildung und Personalisierung</h3>
+              <p>
+                Zum Beispiel:
+                <ul>
+                  <li>Personalisierte Gebäude-Klimatisierung</li>
+                  <li>Personalisierte Handlungsempfehlungen</li>
+                  <li>Intelligentes Raumwärmemanagement</li>
+                  <li>Erstellung von Personenprofilen</li>
+                  <li>Einholen von Nutzenden-Feedback</li>
+                </ul>
+              </p>
+            </div>
+            <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3"
+                 title="Links">
+                 <img src="{% static 'assets/images/PurposeCategory3.svg' %}"
+                  class="rounded" alt="icon" style="justify-self: end;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Block END -->
+      <!-- Block -->
+      <div class="col-12 col-lg-6 p-3 border-legal" title="Rechtlicher Fokus">
+        <div class="p-4 position-relative">
+          <!-- <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+               class="position-absolute start-0 translate-middle"
+               style="top: 30px"
+               nonce="{{request.csp_nonce}}"
+               alt="icon"> -->
+          <div class="row">
+            <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10 p-3"
+                 title="Erläuterungstext">
+              <h3>Teilen von Daten</h3>
+              <p>
+                Zum Beispiel:
+                <ul>
+                  <li>Veröffentlichen/Teilen von Energieverbrauchsdaten</li>
+                  <li>Veröffentlichen/Teilen von Gebäudebestandsdaten</li>
+                  <li>Veröffentlichen/Teilen von Monitoring Daten</li>
+                </ul>
+              </p>
+            </div>
+            <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2 p-3"
+                 title="Links">
+              <img src="{% static 'assets/images/PurposeCategory4.svg' %}"
+              class="rounded" alt="icon" style="justify-self: end;">
+              <!-- <table>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/buildings.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="{% url 'dataSecurity' %}">
+                      Daten&shy;schutz&shy;übersicht
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="{% url 'criteriaCatalog' %}">
+                      Kriterien&shy;katalog
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/data.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                       href="{% url 'iconsAndVis' %}">
+                      Icons und Visualisierung
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal"
+                    href="{%url 'publicationPage' %}?searched=&fo=14"
+                    id="linkToLegalPublications">
+                      Publikationen
+                    </a>
+                  </td>
+                </tr>
+              </table> -->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
