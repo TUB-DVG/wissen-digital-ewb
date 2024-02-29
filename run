@@ -192,7 +192,8 @@ case $command in
             fi
         fi
         ;;
-    "up_debug")         $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral         
+    "up_debug")
+        $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral
         ;;
     "webcentral_shell")
         docker exec -it webcentral bash
