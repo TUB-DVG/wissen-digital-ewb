@@ -10,7 +10,6 @@ def index(request):
     
     """
     allCatalogs = CriteriaCatalog.objects.all()
-    # breakpoint()
     return render(
         request, 
         'criteriaCatalog/criteriaCatalog.html', 

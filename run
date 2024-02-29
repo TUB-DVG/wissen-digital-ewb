@@ -129,7 +129,7 @@ case $command in
         docker exec -it $container_id python 01_application/webcentral_app/manage.py makemigrations
         ;;
     "shell")
-        echo "Creating Django migrations..."
+        echo "Opening Django Shell..."
         docker exec -it $container_id python 01_application/webcentral_app/manage.py shell
         ;;
 
