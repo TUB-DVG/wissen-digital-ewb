@@ -10,7 +10,7 @@ def index(request):
     
     """
     allCatalogs = CriteriaCatalog.objects.all()
-    breakpoint()
+    # breakpoint()
     return render(
         request, 
         'criteriaCatalog/criteriaCatalog.html', 
@@ -43,15 +43,14 @@ class Tree:
     def addToDict(self, node, listOfNodesForLayer):
         self.dictOfTree[node] = listOfNodesForLayer
 
-def tree_to_html(tree, root):
-    html = []
-    html.append({"indent": True})
-    html.append({"content": root})
-    for child in tree.get(root, []):
-        html += tree_to_html(tree, child)
-    html.append({"outdent": True})
-    # breakpoint()
-    return html
+            else:
+                flattendTreeList.append({"content": self.dictOfTree[key]})
+                flattendTreeList.append({"outdent": True})
+                outdentCount -= 1
+        for outdent in range(outdentCount):
+            flattendTreeList.append({"outdent": True})
+        flattendTreeList.append({"outdent": True})
+        return flattendTreeList
 
 
 def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
@@ -91,16 +90,17 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
                 currentNode.addNeighbour(childNode)
-                childNode.addDepth(currentNode.depth+1)
-                childNodes.append(childNode)
-                queueBreathFirstSearch.append(childNode) 
-            currentTree.addToDict(currentNode, childNodes)
-        listOfFlattenedTrees.append(tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index]))
+                queueBreathFirstSearch.append(childNode)
+            currentTree.dictOfTree
+            currentTree.addToDict(currentNode, list(childsOfCurrentElement))
+        listOfFlattenedTrees.append(currentTree.flattenDictTreeToList())
+    # hi = listOfTrees[0].flattenDictTreeToList()
+    
     return render(
         request, 
         "criteriaCatalog/criteriaCatalogDetails.html", 
         {
-            "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
+            "criteriaCatalog": CriteriaCatalog.objects.filter(id = id)[0],
             "trees": listOfFlattenedTrees,
         }
     )

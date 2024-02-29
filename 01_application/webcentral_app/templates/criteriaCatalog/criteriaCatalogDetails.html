@@ -1,41 +1,134 @@
 {% extends 'base.html' %}
-
-{% block title %} {{ useCase.name }} {% endblock %}
-
+{% block title %}{{ criteriaCatalog.name }}{% endblock %}
+{% block content %}
 {% load static %}
+<!DOCTYPE html>
 
-{% block content%}
-<!-- Page content START -->
-<section class="pb-0 pt-4 py-lg-5">
-  <div class="container legal-cards">
-    <div class="row">
-      <!-- Main content START -->
-      <div class="col-lg-12">
-        <!-- use case tree START -->
-        <div class="tab-pane container active" id="course-pills-1" >
-          <ul>
-            {% for tree in trees %}
-              {% for node in tree %}
-                {% if node.indent %}
-                  <ul>
-                {% elif node.outdent %}
-                  </li></ul>
-                {% elif node.content %}
-                  <li onclick="showOrHide(event, this)">{{ node.content }}
-                {% endif %}
-              {% endfor %}
-            {% endfor %}
-          </ul>
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+  <!-- Page Banner START -->
+  <!-- <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="p-2 text-left rounded-3">
+            <h2 class="m-0">Überblick über digitale Werkzeuge</h2>
+          </div>
         </div>
-        <!-- use case tree END -->
       </div>
-      <!-- Main content END -->
     </div>
-    <!-- Row End -->
-  </div>
-</section>
-<!-- =======================
-Page content END -->
+  </section> -->
+  <!-- Page Banner END -->
+
+  <!-- Page content START -->
+  <section class="pt-0">
+    <div class="container legal-cards">
+      <!-- Filter bar START -->
+      <div class="row">
+        <a href="/pages/criteriaCatalog" style="color: #E0D674">< Kriterienkatalog Start</a>
+      </div>
+      <form class="border-legal p-4 my-4 z-index-9 position-relative">
+        <div class="row g-3">
+          <!-- Input -->
+          <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
+            <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
+            <img src="{% static 'assets/images/PurposeCategory2.svg' %}"  class="rounded" alt="icon">
+            <img src="{% static 'assets/images/PurposeCategory3.svg' %}"  class="rounded" alt="icon">
+            <img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon">
+          </div>
+          <!-- search Field Schlagwort -->
+          <div class="col-xl-7"></div>
+          <div class="col-xl-2">
+            <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'>
+          </div>
+          <!-- END search Field Schlagwort -->
+        </div>
+      </form>
+      <!-- Row END -->
+      <!-- Filter bar END -->
+      <!-- tools grid row START -->
+      <div class="row mt-3">
+        <div class="col-12">
+        <!-- tools Grid START -->
+          <div class="row g-4" id="tool-listing-results">
+            <div class="col-lg-12">
+              <!-- use case tree START -->
+              <div class="tab-pane border-legal container active" id="course-pills-1" >
+                <div class="row">
+                  {{ criteriaCatalog.name }}
+                </div>
+                <div class="row">
+                  Beschreibungstext: {{ criteriaCatalog.text }}
+                </div>
+                <br />
+                <div class="row">
+                  Themen
+                </div>
+                <div class="row">
+                  <!-- <ul> -->
+                    {% for tree in trees %}
+                      {% for node in tree %}
+                        {% if node.indent %}
+                          <ul>
+                        {% elif node.outdent %}
+                          </li></ul>
+                        {% elif node.content %}
+                          <li onclick="showOrHide(event, this)">{{ node.content }}
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  <!-- </ul> -->
+              </div>
+            </div>
+              <!-- use case tree END -->
+            </div>
+            <!-- {% include '../tools_over/tool-listings-results.html' %} -->
+          </div>
+          <!-- tools Grid END -->
+          <!-- Pagination START -->
+          <!-- <div class="pagination">
+            <span class="step-links">
+              {% if page.has_previous %}
+              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1" id="paginationFirstSite">
+                &laquo; erste
+              </a>
+              &nbsp &nbsp
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" id="paginationPreviousLink">
+                vorherige
+              </a>
+              {% endif %}
+              &nbsp &nbsp
+              <span class="current">
+                Seite {{ page.number }} von {{ page.paginator.num_pages }}  
+              </span>
+              &nbsp &nbsp
+              {% if page.has_next %}
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}" id="paginationNextLink">
+                nächste
+              </a>
+              &nbsp &nbsp
+              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}" id="paginationLastSite">
+                letzte &raquo;
+              </a>
+              &nbsp &nbsp
+              {% endif %}
+            </span>
+          </div> -->
+          <!-- Pagination END -->
+        </div>
+      </div>
+      <!-- tools grid row START -->
+    </div>
+  </section>
+  <!-- Page content END -->
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!--ComparisonFeature-->
+<!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
+
 <script>
   function showOrHide(event, element) {
     var childElements = element.children;

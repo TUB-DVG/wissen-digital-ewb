@@ -260,6 +260,7 @@ class Command(BaseCommand):
             text=row[header.index('text')],
             criteriaCatalog=criteriaCatalogForTopic,
             parent=parentTopicOfCurrentTopic,
+            imageFilename=row[header.index('image')],
         )
         # return obj, created
 
