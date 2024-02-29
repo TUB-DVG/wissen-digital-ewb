@@ -60,6 +60,11 @@ from django.db.models import Model
 import numpy as np
 import pandas as pd
 
+
+from criteriaCatalog.models import (
+    CriteriaCatalog,
+    Topic,
+)
 from project_listing.models import (
     Subproject,
     ModuleAssignment,
@@ -98,7 +103,6 @@ from TechnicalStandards.models import (
 from use_cases.models import UseCase
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
-import math
 
 class MultipleFKZDatasets(Exception):
     """Custom Exception, which is thrown when multiple changes for one 
@@ -230,6 +234,34 @@ class Command(BaseCommand):
             address=adress,
         )
         return obj, created
+
+    def getOrCreateCriteriaCatalog(self, row: list, header: list) -> None:
+        """
+        Add entry (CriteriaCatalog) into the table or/and return entry key.
+        """
+
+        criteriaCatalogForTopic, _ = CriteriaCatalog.objects.get_or_create(
+            name=row[header.index('katalog')],
+        )
+
+        try:
+            if row[header.index('parentId')] == "":
+                parentTopicOfCurrentTopic = None
+            else:
+                parentTopicOfCurrentTopic = Topic.objects.get(
+                    id=int(row[header.index('parentId')]),
+                )
+        except Topic.DoesNotExist:
+            parentTopicOfCurrentTopic = None
+
+        obj, created = Topic.objects.get_or_create(
+            id=row[header.index('id')],
+            heading=row[header.index('ueberschrift')], 
+            text=row[header.index('text')],
+            criteriaCatalog=criteriaCatalogForTopic,
+            parent=parentTopicOfCurrentTopic,
+        )
+        # return obj, created
 
     def getOrCreatePerson(
             self, 
@@ -1514,8 +1546,9 @@ class Command(BaseCommand):
             elif "publications" in filename:
                 self.getOrCreatePublications(row, header)
             elif "use_cases" in filename:
-                # breakpoint()
                 self.getOrCreateUseCases(row, header)
+            elif "criteriaCatalog" in filename:
+                self.getOrCreateCriteriaCatalog(row, header)
             else:
                 CommandError("Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible.")
                 return None
