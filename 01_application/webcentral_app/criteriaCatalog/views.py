@@ -42,6 +42,27 @@ class Tree:
         self.dictOfTree = {}
     def addToDict(self, node, listOfNodesForLayer):
         self.dictOfTree[node] = listOfNodesForLayer
+    def flattenDictTreeToList(self):
+        """
+        """
+        flattendTreeList = []
+        listOfDictKeys = []
+        listOfDictKeys.append(list(self.dictOfTree.keys())[0])
+        outdentCount = 0
+        while len(listOfDictKeys) > 0:
+            key = listOfDictKeys.pop(0)
+            flattendTreeList.append({"indent": True})
+            flattendTreeList.append({"content": key})
+            # breakpoint()
+            if len(self.dictOfTree[key]) > 0:
+                for nodeValue in self.dictOfTree[key]:
+                    if len(self.dictOfTree[nodeValue]) == 0:
+                        flattendTreeList.append({"indent": True})
+                        flattendTreeList.append({"content": nodeValue})
+                        flattendTreeList.append({"outdent": True})
+                    else:
+                        listOfDictKeys.append(nodeValue)
+                        outdentCount += 1
 
             else:
                 flattendTreeList.append({"content": self.dictOfTree[key]})
@@ -72,7 +93,6 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
     nodeRootElements = []
     for index, element in enumerate(rootElements):
         nodeRootElement = Node(element)
-        nodeRootElements.append(nodeRootElement)
         nodeRootElement.addDepth(0)
         currentTree = Tree(nodeRootElement)
         listOfTrees.append(currentTree)
@@ -90,17 +110,17 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
                 currentNode.addNeighbour(childNode)
-                queueBreathFirstSearch.append(childNode)
-            currentTree.dictOfTree
-            currentTree.addToDict(currentNode, list(childsOfCurrentElement))
+                childNode.addDepth(currentNode.depth+1)
+                childNodes.append(childNode)
+                queueBreathFirstSearch.append(childNode) 
+            currentTree.addToDict(currentNode, childNodes)
         listOfFlattenedTrees.append(currentTree.flattenDictTreeToList())
     # hi = listOfTrees[0].flattenDictTreeToList()
-    
     return render(
         request, 
         "criteriaCatalog/criteriaCatalogDetails.html", 
         {
-            "criteriaCatalog": CriteriaCatalog.objects.filter(id = id)[0],
+            "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
             "trees": listOfFlattenedTrees,
         }
     )

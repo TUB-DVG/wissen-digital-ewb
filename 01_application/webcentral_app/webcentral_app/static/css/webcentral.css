@@ -74,6 +74,21 @@
   font-size: 25px;
 }
 
+#container-criteria-catalog-details .border-legal {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #F5E86A;
+  outline-offset: -17px;
+}
+#container-criteria-catalog-details hr {
+  background: #F5E86A;
+  height: 4px;
+  border: solid;
+}
+#container-criteria-catalog-details li {
+  list-style-type: none;
+}
+
 /* formating cards */
 .technical-cards .border-technical {
   border-radius: 2px;
