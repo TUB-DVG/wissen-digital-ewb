@@ -11,3 +11,25 @@
         font-size: 25px;
     }
 }
+
+#container-criteria-catalog-details {
+
+    .border-legal {
+        @include border-boxen($legal-color);
+      }
+    hr {
+        background: $legal-color;
+        height: 3px;
+        border: solid;
+    }
+    li {
+        list-style-type: none;
+    }
+    // p, li {
+    //     color: #868181;
+    //     font-size: 12px;
+    // }
+    // h2 {
+    //     font-size: 25px;
+    // }
+}
