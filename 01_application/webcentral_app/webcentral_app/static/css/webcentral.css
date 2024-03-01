@@ -81,9 +81,9 @@
   outline-offset: -17px;
 }
 #container-criteria-catalog-details hr {
-  background: #F5E86A;
+  background-color: #F5E86A;
   height: 3px;
-  border: solid;
+  border: 0;
 }
 #container-criteria-catalog-details li {
   list-style-type: none;
