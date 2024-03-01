@@ -42,36 +42,16 @@ class Tree:
         self.dictOfTree = {}
     def addToDict(self, node, listOfNodesForLayer):
         self.dictOfTree[node] = listOfNodesForLayer
-    def flattenDictTreeToList(self):
-        """
-        """
-        flattendTreeList = []
-        listOfDictKeys = []
-        listOfDictKeys.append(list(self.dictOfTree.keys())[0])
-        outdentCount = 0
-        while len(listOfDictKeys) > 0:
-            key = listOfDictKeys.pop(0)
-            flattendTreeList.append({"indent": True})
-            flattendTreeList.append({"content": key})
-            # breakpoint()
-            if len(self.dictOfTree[key]) > 0:
-                for nodeValue in self.dictOfTree[key]:
-                    if len(self.dictOfTree[nodeValue]) == 0:
-                        flattendTreeList.append({"indent": True})
-                        flattendTreeList.append({"content": nodeValue})
-                        flattendTreeList.append({"outdent": True})
-                    else:
-                        listOfDictKeys.append(nodeValue)
-                        outdentCount += 1
 
-            else:
-                flattendTreeList.append({"content": self.dictOfTree[key]})
-                flattendTreeList.append({"outdent": True})
-                outdentCount -= 1
-        for outdent in range(outdentCount):
-            flattendTreeList.append({"outdent": True})
-        flattendTreeList.append({"outdent": True})
-        return flattendTreeList
+def tree_to_html(tree, root):
+    html = []
+    html.append({"indent": True})
+    html.append({"content": root})
+    for child in tree.get(root, []):
+        html += tree_to_html(tree, child)
+    html.append({"outdent": True})
+    # breakpoint()
+    return html
 
 
 def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
@@ -93,6 +73,7 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
     nodeRootElements = []
     for index, element in enumerate(rootElements):
         nodeRootElement = Node(element)
+        nodeRootElements.append(nodeRootElement)
         nodeRootElement.addDepth(0)
         currentTree = Tree(nodeRootElement)
         listOfTrees.append(currentTree)
@@ -114,8 +95,7 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
                 childNodes.append(childNode)
                 queueBreathFirstSearch.append(childNode) 
             currentTree.addToDict(currentNode, childNodes)
-        listOfFlattenedTrees.append(currentTree.flattenDictTreeToList())
-    # hi = listOfTrees[0].flattenDictTreeToList()
+        listOfFlattenedTrees.append(tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index]))
     return render(
         request, 
         "criteriaCatalog/criteriaCatalogDetails.html", 
