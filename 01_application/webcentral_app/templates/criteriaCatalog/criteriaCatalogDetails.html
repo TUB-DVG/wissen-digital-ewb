@@ -33,16 +33,24 @@
         <div class="row g-4">
           <!-- Input -->
           <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-            {% if "Profilbildung" in criteriaCatalog.name %}
+            {% if "Betriebsoptimierung" in criteriaCatalog.name %}
               <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
             {% else %}
               <a href="/criteriaCatalog/Profilbildung">
                 <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
               </a>
             {% endif %}
-            <img src="{% static 'assets/images/PurposeCategory2.svg' %}"  class="rounded" alt="icon">
-            <img src="{% static 'assets/images/PurposeCategory3.svg' %}"  class="rounded" alt="icon">
-            <img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon">
+            {% if "Planung" in criteriaCatalog.name %}
+              <img src="{% static 'assets/images/PurposeCategory2-selected.svg' %}"  class="rounded" alt="icon">
+            {% else %}
+              <a href="/criteriaCatalog/Planung"><img src="{% static 'assets/images/PurposeCategory2.svg' %}"></a>
+            {% endif %}
+            {% if "Verhaltensbeeinflussung" in criteriaCatalog.name %}
+              <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
+            {% else %}
+              <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
+            {% endif %}  
+              <img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon">
           </div>
           <!-- search Field Schlagwort -->
           <div class="col-xl-7"></div>
@@ -52,9 +60,9 @@
           <!-- END search Field Schlagwort -->
         </div>
       </form>
-      <div class="p-4 position-relative">
-        <div class="row">
-          <div class="col-lg-12 border-legal">
+      <div class="p-2">
+        <div class="row g-4">
+          <div class="col-lg-12 border-legal p-4 my-4">
               {{ criteriaCatalog.name }}
             <div class="row">
               <div class="col-lg-12">
@@ -65,7 +73,7 @@
             <div class="row">
               Themen
             </div>
-              <div class="row">
+              <div class="row" id="container-criteria-catalog-details">
                 <!-- <ul> -->
                   {% for tree in trees %}
                     {% for node in tree %}

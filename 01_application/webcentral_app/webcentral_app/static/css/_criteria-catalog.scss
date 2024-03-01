@@ -18,9 +18,10 @@
         @include border-boxen($legal-color);
       }
     hr {
-        background: $legal-color;
+        background-color: $legal-color;
         height: 3px;
-        border: solid;
+        border: 0;
+        // border: 3px, solid $legal-color;
     }
     li {
         list-style-type: none;
