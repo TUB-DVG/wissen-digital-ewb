@@ -24,16 +24,22 @@
 
   <!-- Page content START -->
   <section class="pt-0">
-    <div class="container" id="container-criteria-catalog-details">
+    <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
       <!-- Filter bar START -->
       <div class="row">
         <a href="/pages/criteriaCatalog" style="color: #E0D674">< Kriterienkatalog Start</a>
       </div>
-      <form class="border-legal" id="container-criteria-catalog-details">
-        <div class="row g-3">
+      <form class="container p-2 container-criteria-catalog-details border-legal">
+        <div class="row g-4">
           <!-- Input -->
           <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-            <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
+            {% if "Profilbildung" in criteriaCatalog.name %}
+              <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
+            {% else %}
+              <a href="/criteriaCatalog/Profilbildung">
+                <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
+              </a>
+            {% endif %}
             <img src="{% static 'assets/images/PurposeCategory2.svg' %}"  class="rounded" alt="icon">
             <img src="{% static 'assets/images/PurposeCategory3.svg' %}"  class="rounded" alt="icon">
             <img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon">
@@ -46,57 +52,47 @@
           <!-- END search Field Schlagwort -->
         </div>
       </form>
-      <!-- Row END -->
-      <!-- Filter bar END -->
-      <!-- tools grid row START -->
-      <div class="row">
-        <div class="col-12">
-        <!-- tools Grid START -->
-          <div class="row">
-            <div class="col-lg-12">
-              <!-- use case tree START -->
-              <div class="border-legal" id="container-criteria-catalog-details">
-                <div class="row">
-                  {{ criteriaCatalog.name }}
-                </div>
-                <div class="row" id="container-criteria-catalog-details">
-                  Beschreibungstext: {{ criteriaCatalog.text }}
-                </div>
-                <br />
-                <div class="row" id="container-criteria-catalog-details">
-                  Themen
-                </div>
-                <div class="row" id="container-criteria-catalog-details">
-                  <!-- <ul> -->
-                    {% for tree in trees %}
-                      {% for node in tree %}
-                        {% if node.indent %}
-                          <ul>
-                        {% elif node.outdent %}
-                          </li></ul>
-                        {% elif node.content %}
-                          {% if node.content.depth == 0 %}
-                            <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}">{{ node.content.topic.heading }}<br />
-                              <p style="display: none;">{{ node.content.topic.text }}</p>
-                            <hr style="display: none;">
-                          {% else %}
-                            <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
-                              <p style="display: none;">{{ node.content.topic.text }}</p>
-                            <hr style="display: none;">
-                          {% endif %}
-                        {% endif %}
-                      {% endfor %}
-                      <hr>
-                    {% endfor %}
-                  <!-- </ul> -->
+      <div class="p-4 position-relative">
+        <div class="row">
+          <div class="col-lg-12 border-legal">
+              {{ criteriaCatalog.name }}
+            <div class="row">
+              <div class="col-lg-12">
+                Beschreibungstext: {{ criteriaCatalog.text }}
               </div>
             </div>
-              <!-- use case tree END -->
+            <br />
+            <div class="row">
+              Themen
             </div>
+              <div class="row">
+                <!-- <ul> -->
+                  {% for tree in trees %}
+                    {% for node in tree %}
+                      {% if node.indent %}
+                        <ul>
+                      {% elif node.outdent %}
+                        </li></ul>
+                      {% elif node.content %}
+                        {% if node.content.depth == 0 %}
+                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}">{{ node.content.topic.heading }}<br />
+                            <p style="display: none;">{{ node.content.topic.text }}</p>
+                          <hr style="display: none;">
+                        {% else %}
+                          <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
+                            <p style="display: none;">{{ node.content.topic.text }}</p>
+                          <hr style="display: none;">
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                    <hr>
+                  {% endfor %}
+                <!-- </ul> -->
+              </div>
           </div>
+                <!-- use case tree END -->
         </div>
       </div>
-      <!-- tools grid row START -->
     </div>
   </section>
   <!-- Page content END -->
@@ -113,9 +109,10 @@
     var foundChilds = [];
     // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
     for (var i = 0; i < childElements.length; i++) {
-      if (childElements[i].tagName == "P") {
+      if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
         foundChilds.push(childElements[i]);
       }
+
       if (childElements[i].tagName == "UL") {
         foundChilds.push(childElements[i]);
         var childrenOfUL = childElements[i].children
