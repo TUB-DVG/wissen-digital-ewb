@@ -77,12 +77,12 @@
                         {% elif node.content %}
                           {% if node.content.depth == 0 %}
                             <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}">{{ node.content.topic.heading }}<br />
-                              <p>{{ node.content.topic.text }}</p>
-                            <hr>
+                              <p style="display: none;">{{ node.content.topic.text }}</p>
+                            <hr style="display: none;">
                           {% else %}
-                            <li onclick="showOrHide(event, this)">{{ node.content }}
-                              <p>{{ node.content.topic.text }}</p>
-                            <hr>
+                            <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
+                              <p style="display: none;">{{ node.content.topic.text }}</p>
+                            <hr style="display: none;">
                           {% endif %}
                         {% endif %}
                       {% endfor %}
@@ -108,16 +108,38 @@
 
 <script>
   function showOrHide(event, element) {
-    var childElements = Array.from(element.children).filter(function(child) {
-    return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
-});
-    for (i = 0; i < childElements.length; i++) {
-        if ( childElements[i].offsetWidth || childElements[i].offsetHeight || childElements[i].getClientRects().length ) {
+    var childElements = element.children;
+    var foundULs = 0;
+    var foundChilds = [];
+    // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
+    for (var i = 0; i < childElements.length; i++) {
+      if (childElements[i].tagName == "P") {
+        foundChilds.push(childElements[i]);
+      }
+      if (childElements[i].tagName == "UL") {
+        foundChilds.push(childElements[i]);
+        var childrenOfUL = childElements[i].children
+        // debugger;
+        for (var j= 0; j < childrenOfUL.length; j++) {
+          foundChilds.push(childrenOfUL[j]);
+        }
+      }
+    }
+    // var childElementsOfUL = filteredChildElements[0].children;
+
+    
+
+//     var childElements = Array.from(element.children).filter(function(child) {
+//     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
+// });
+    for (i = 0; i < foundChilds.length; i++) {
+        // debugger;
+        if ( foundChilds[i].style.display == "block") {
           
-          childElements[i].style.display = 'none';
+          foundChilds[i].style.display = 'none';
         }
         else {
-          childElements[i].style.display = 'block';
+          foundChilds[i].style.display = 'block';
         }
     }
 
