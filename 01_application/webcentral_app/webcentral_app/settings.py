@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
+    'parler',
 ]
 
 MIDDLEWARE = [
