@@ -177,10 +177,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGES = [
-    ('en', ('English')),
+# LANGUAGES = [
+#     ('en', ('English')),
+#     ('de', ('German')),
+# ]
+# gettext = lambda s: s
+LANGUAGES = (
     ('de', ('German')),
-]
+    ('en', ('English')),
+)
 
 LANGUAGE_CODE = 'de'
 
@@ -192,16 +197,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-PARLER_LANGUAGES = {
-    None: (
-        {'code': 'de', },
-        {'code': 'en',},
-    ),
-    'default': {
-        'fallback': 'de',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
-        'hide_untranslated': False,   # the default; let .active_translations()       return fallbacks too.
-    }
-}
+# PARLER_LANGUAGES = {
+#     None: (
+#         {'code': 'de', },
+#         {'code': 'en',},
+#     ),
+#     'default': {
+#         'fallback': 'de',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+#         'hide_untranslated': False,   # the default; let .active_translations()       return fallbacks too.
+#     }
+# }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
