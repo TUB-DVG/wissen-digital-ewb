@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 from .models import (
+    CriteriaCatalog,
     Topic,
-    UseCase,
 )
 
 admin.site.register(Topic)
-admin.site.register(UseCase)
+admin.site.register(CriteriaCatalog)

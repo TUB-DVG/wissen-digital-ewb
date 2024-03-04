@@ -95,3 +95,4 @@ uwsgi>=2.0.19.1,<2.1
 pyyaml
 sphinx
 django-csp
+django-modeltranslation

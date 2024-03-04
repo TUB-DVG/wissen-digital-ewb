@@ -40,6 +40,7 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    "modeltranslation",
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
@@ -61,7 +62,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
-    'parler',
+    # 'parler',
+    
 ]
 
 MIDDLEWARE = [
@@ -189,6 +191,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'de', },
+        {'code': 'en',},
+    ),
+    'default': {
+        'fallback': 'de',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+        'hide_untranslated': False,   # the default; let .active_translations()       return fallbacks too.
+    }
+}
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
