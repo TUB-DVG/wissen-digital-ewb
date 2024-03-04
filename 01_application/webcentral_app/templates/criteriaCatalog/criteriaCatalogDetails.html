@@ -49,8 +49,12 @@
               <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
             {% else %}
               <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
-            {% endif %}  
-              <img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon">
+            {% endif %}
+            {% if "Teilen" in criteriaCatalog.name %} 
+              <img src="{% static 'assets/images/PurposeCategory4-selected.svg' %}"  class="rounded" alt="icon">
+            {% else %}
+              <a href="/criteriaCatalog/Teilen"><img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon"></a>
+            {% endif %}
           </div>
           <!-- search Field Schlagwort -->
           <div class="col-xl-7"></div>
