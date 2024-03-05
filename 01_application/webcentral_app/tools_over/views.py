@@ -150,13 +150,13 @@ def indexApps(request):
 
     return render(request, 'tools_over/app-listings.html', context)
 
-def indexBuisnessApplication(request):
+def indexBusinessApplication(request):
     """serves a request for digital applications search
     
     """
     applications = Tools.objects.filter(
         # classification__classification="Digitale Anwendung", 
-        focus__focus="betrieblich"
+        focus__focus_de="betrieblich"
     ) # reads all data from table Teilprojekt
     usage = request.GET.get('u')
     accessibility = request.GET.get('l')
@@ -178,7 +178,7 @@ def indexBuisnessApplication(request):
         criterionToolsFour = Q(name__icontains=searched)
         applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
-                        focus__focus="betrieblich"
+                        focus__focus_de="betrieblich"
                         # classification__classification="Digitales Werkzeug",
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
@@ -216,9 +216,9 @@ def indexBuisnessApplication(request):
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
     }
 
-    return render(request, 'tools_over/buisnessApplications-listings.html', context)  
+    return render(request, 'tools_over/businessApplications-listings.html', context)  
 
-def buisnessApplicationView(request, id):
+def businessApplicationView(request, id):
     """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
     applicationAreas = tool.applicationArea.all()
@@ -242,7 +242,7 @@ def buisnessApplicationView(request, id):
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 
@@ -268,7 +268,7 @@ def buisnessApplicationView(request, id):
        
     }
 
-    return render(request, 'tools_over/buisnessApplications-detail.html', context)
+    return render(request, 'tools_over/businessApplications-detail.html', context)
 
 
 def toolView(request, id):
@@ -295,7 +295,7 @@ def toolView(request, id):
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 
@@ -347,7 +347,7 @@ def AppView(request, id):
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 

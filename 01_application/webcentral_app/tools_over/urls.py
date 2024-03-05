@@ -7,7 +7,7 @@ urlpatterns = [
     path('<str:id>', views.toolView, name='tool_view'),
     path('technicalApps/', views.indexApps, name='app_list'),
     path('technicalApps/<str:id>', views.AppView, name='app_view'),
-    path('buisnessApps/', views.indexBuisnessApplication, name='buisnessModelApplication'),
-    path('buisnessApps/<str:id>', views.buisnessApplicationView, name='buisnessAppView'),
+    path('businessApps/', views.indexBusinessApplication, name='businessModelApplication'),
+    path('businessApps/<str:id>', views.businessApplicationView, name='businessAppView'),
     path('comparison/', views.toolComparison, name ='tool_comparison'),
 ]
