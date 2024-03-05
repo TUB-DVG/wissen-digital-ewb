@@ -14,6 +14,10 @@ class Classification(models.Model):
         max_length=100,
         help_text="Classification Category",    
     )
+
+    def __str__(self):
+        return self.classification
+
     class Meta:
 
         app_label = 'tools_over'
@@ -28,6 +32,10 @@ class Focus(models.Model):
         max_length=100,
         help_text="Focus of the Tool",
     )
+    
+    def __str__(self):
+        return self.focus
+
     class Meta:
 
         app_label = 'tools_over'

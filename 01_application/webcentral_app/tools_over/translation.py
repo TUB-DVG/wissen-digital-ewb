@@ -1,10 +1,18 @@
-from modeltranslation.translator import translator, TranslationOptions
+from modeltranslation.translator import (
+    translator, 
+    TranslationOptions,
+)
+
 from .models import (
+    Accessibility,
     ApplicationArea,
     Classification,
     Focus,
-    Usage,
+    LifeCyclePhase,
+    Scale,
     TargetGroup,
+    Usage,
+    UserInterface,
 )
 
 class ApplicationAreaTranslationOptions(TranslationOptions):
@@ -22,9 +30,24 @@ class UsageTranslationOptions(TranslationOptions):
 class TargetGroupTranslationOptions(TranslationOptions):
     fields = ("targetGroup",)
 
+class LifeCyclePhaseTranslationOptions(TranslationOptions):
+    fields = ("lifeCyclePhase",)
+
+class UserInterfaceTranslationOptions(TranslationOptions):
+    fields = ("userInterface",)
+
+class AccessibilityTranslationOptions(TranslationOptions):
+    fields = ("accessibility",)
+
+class ScaleTranslationOptions(TranslationOptions):
+    fields = ("scale",)
+
+translator.register(Accessibility, AccessibilityTranslationOptions)
 translator.register(ApplicationArea, ApplicationAreaTranslationOptions)
 translator.register(Classification, ClassificationTranslationOptions)
 translator.register(Focus, FocusTranslationOptions)
 translator.register(Usage, UsageTranslationOptions)
+translator.register(Scale, ScaleTranslationOptions)
 translator.register(TargetGroup, TargetGroupTranslationOptions)
-
+translator.register(LifeCyclePhase, LifeCyclePhaseTranslationOptions)
+translator.register(UserInterface, UserInterfaceTranslationOptions)
