@@ -36,7 +36,18 @@ class TargetGroupAdmin(TranslationAdmin):
     pass
 admin.site.register(TargetGroup, TargetGroupAdmin)
 
-admin.site.register(Tools)
+class ToolsAdmin(TranslationAdmin):
+    # class Media:
+    #     js = (
+    #         'modeltranslation/js/force_jquery.js',
+    #         'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js',
+    #         'modeltranslation/js/tabbed_translation_fields.js',
+    #     )
+    #     css = {
+    #         'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+    #     }
+    pass
+admin.site.register(Tools, ToolsAdmin)
 
 class LifeCyclePhaseAdmin(TranslationAdmin):
     pass
