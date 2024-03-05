@@ -14,8 +14,6 @@ from .models import (
     Scale,
 )
 
-# Register your models here.
-admin.site.register(Tools)
 
 class ClassificationAdmin(TranslationAdmin):
     pass
@@ -25,13 +23,19 @@ class FocusAdmin(TranslationAdmin):
     pass
 admin.site.register(Focus, FocusAdmin)
 
-# admin.site.register(ApplicationArea)
 class ApplicationAreaAdmin(TranslationAdmin):
     pass
 
 admin.site.register(ApplicationArea, ApplicationAreaAdmin)
-admin.site.register(Usage)
-admin.site.register(TargetGroup)
+
+class UsageAdmin(TranslationAdmin):
+    pass
+admin.site.register(Usage, UsageAdmin)
+
+class TargetGroupAdmin(TranslationAdmin):
+    pass
+admin.site.register(TargetGroup, TargetGroupAdmin)
+admin.site.register(Tools)
 admin.site.register(LifeCyclePhase)
 admin.site.register(UserInterface)
 admin.site.register(Accessibility)
