@@ -35,8 +35,21 @@ admin.site.register(Usage, UsageAdmin)
 class TargetGroupAdmin(TranslationAdmin):
     pass
 admin.site.register(TargetGroup, TargetGroupAdmin)
+
 admin.site.register(Tools)
-admin.site.register(LifeCyclePhase)
-admin.site.register(UserInterface)
-admin.site.register(Accessibility)
+
+class LifeCyclePhaseAdmin(TranslationAdmin):
+    pass
+
+admin.site.register(LifeCyclePhase, LifeCyclePhaseAdmin)
+
+class UserInterfaceAdmin(TranslationAdmin):
+    pass
+
+admin.site.register(UserInterface, UserInterfaceAdmin)
+
+class AccessibilityAdmin(TranslationAdmin):
+    pass
+
+admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
