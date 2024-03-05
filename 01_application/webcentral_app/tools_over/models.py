@@ -146,7 +146,11 @@ class Tools(models.Model):
                                    blank = True)
     applicationArea = models.ManyToManyField(ApplicationArea)
     usage = models.ManyToManyField(Usage)
-    targetGroup = models.ManyToManyField(TargetGroup)
+    targetGroup = models.ManyToManyField(
+        TargetGroup,
+        blank=True,
+        null=True,
+    )
     lifeCyclePhase  = models.ManyToManyField(LifeCyclePhase)
     userInterface = models.ManyToManyField(UserInterface)
     userInterfaceNotes = models.CharField(
@@ -173,6 +177,8 @@ class Tools(models.Model):
     specificApplication = models.ManyToManyField(
         Subproject,
         help_text = "specific application of the tool in EWB projects (project name + fkz)",
+        blank=True,
+        null=True,
     )
     
     # models.CharField(max_length = 500,
@@ -226,10 +232,22 @@ class Tools(models.Model):
         max_length=500,
         blank=True,
     )
-    scale = models.ManyToManyField(Scale)
+    scale = models.ManyToManyField(
+        Scale,
+        blank=True,
+        null=True,
+    )
 
-    technicalStandardsNorms = models.ManyToManyField(Norm)
-    technicalStandardsProtocols = models.ManyToManyField(Protocol)
+    technicalStandardsNorms = models.ManyToManyField(
+        Norm,
+        blank=True,
+        null=True,
+    )
+    technicalStandardsProtocols = models.ManyToManyField(
+        Protocol,
+        blank=True,
+        null=True,
+    )
     #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
     image = models.ImageField(
         null=True,
@@ -239,6 +257,9 @@ class Tools(models.Model):
     classification = models.ManyToManyField(Classification) 
     focus = models.ManyToManyField(Focus)
     
+    def __str__(self):  
+        return self.name
+
     class Meta:
         app_label = 'tools_over'
 

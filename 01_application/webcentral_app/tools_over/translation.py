@@ -11,6 +11,7 @@ from .models import (
     LifeCyclePhase,
     Scale,
     TargetGroup,
+    Tools,
     Usage,
     UserInterface,
 )
@@ -29,6 +30,17 @@ class UsageTranslationOptions(TranslationOptions):
 
 class TargetGroupTranslationOptions(TranslationOptions):
     fields = ("targetGroup",)
+
+class ToolsTranslationOptions(TranslationOptions):
+    fields = (
+        "shortDescription", 
+        "userInterfaceNotes",
+        "lastUpdate",
+        "licenseNotes",
+        "furtherInformation",
+        "provider",
+        "yearOfRelease",
+    )
 
 class LifeCyclePhaseTranslationOptions(TranslationOptions):
     fields = ("lifeCyclePhase",)
@@ -49,5 +61,6 @@ translator.register(Focus, FocusTranslationOptions)
 translator.register(Usage, UsageTranslationOptions)
 translator.register(Scale, ScaleTranslationOptions)
 translator.register(TargetGroup, TargetGroupTranslationOptions)
+translator.register(Tools, ToolsTranslationOptions)
 translator.register(LifeCyclePhase, LifeCyclePhaseTranslationOptions)
 translator.register(UserInterface, UserInterfaceTranslationOptions)
