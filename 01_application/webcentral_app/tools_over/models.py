@@ -50,6 +50,10 @@ class ApplicationArea(models.Model):
         help_text="application area",
         blank=True,
     )
+
+    def __str__(self):
+        return self.applicationArea 
+
     class Meta:
         app_label = 'tools_over'
 
@@ -63,6 +67,10 @@ class Usage(models.Model):
         help_text="usage",
         blank=True,
     )
+
+    def __str__(self):
+        return self.usage
+
     class Meta:
 
         app_label = 'tools_over'
@@ -77,6 +85,10 @@ class TargetGroup(models.Model):
         help_text="Which group of people is the tool targeted at?",
         blank=True,
     )
+
+    def __str__(self):
+        return self.targetGroup
+    
     class Meta:
 
         app_label = 'tools_over'
@@ -91,6 +103,10 @@ class LifeCyclePhase(models.Model):
         help_text="Life cycle phase of buildings where the application is used",
         blank=True,
     )
+
+    def __str__(self):
+        return self.lifeCyclePhase
+
     class Meta:
 
         app_label = 'tools_over'
@@ -105,6 +121,10 @@ class UserInterface(models.Model):
         help_text="userInterface",
         blank=True,
     )
+
+    def __str__(self):
+        return self.userInterface
+    
     class Meta:
         app_label = 'tools_over'
 
@@ -119,6 +139,10 @@ class Accessibility(models.Model):
         help_text="userInterface",
         blank=True,
     )
+
+    def __str__(self):
+        return self.accessibility
+
     class Meta:
 
         app_label = 'tools_over'
@@ -133,6 +157,10 @@ class Scale(models.Model):
         help_text="spatial scope of consideration",
         blank=True,
     )
+
+    def __str__(self):
+        return self.scale
+    
     class Meta:
 
         app_label = 'tools_over'
@@ -152,7 +180,11 @@ class Tools(models.Model):
         null=True,
     )
     lifeCyclePhase  = models.ManyToManyField(LifeCyclePhase)
-    userInterface = models.ManyToManyField(UserInterface)
+    userInterface = models.ManyToManyField(
+        UserInterface,
+        blank=True,
+        null=True,
+    )
     userInterfaceNotes = models.CharField(
         max_length=300,
         help_text="additional notes for userInterface",
@@ -180,10 +212,7 @@ class Tools(models.Model):
         blank=True,
         null=True,
     )
-    
-    # models.CharField(max_length = 500,
-                                        #   help_text = "specific application of the tool in EWB projects (project name + fkz)",
-                                        #   blank = True)
+
     provider = models.CharField(
         max_length=300,
         blank=True,
@@ -249,11 +278,10 @@ class Tools(models.Model):
         blank=True,
         null=True,
     )
-    #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
     image = models.ImageField(
         null=True,
         blank = True,
-    )  #You need to install pillow
+    )
 
     classification = models.ManyToManyField(Classification) 
     focus = models.ManyToManyField(Focus)
