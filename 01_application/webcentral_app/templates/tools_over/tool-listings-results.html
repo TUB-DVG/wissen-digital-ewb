@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% for tool in page.object_list %}  
   <!-- Card item START -->
   <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
@@ -12,7 +13,7 @@
             {{ tool.name }}
           </h3>
           <p class="card-text mb-2 text-truncate-2">
-            Nutzerschnittstelle:  
+            {% translate 'Nutzerschnittstelle' %}:  
             {% for userInterface in tool.userInterface.all %} 
               {{ userInterface.userInterface }} 
             {% endfor %}
@@ -33,11 +34,11 @@
             <hr>
             <div class="d-flex justify-content-between">
               <span class="h6 fw-light mb-0">
-                {% if tool.lastUpdate == 'laufend' %}
+                {% if tool.lastUpdate_de == 'laufend' %}
                   <i class="fas fa-sync me-2"></i>
-                  Updates: {{ tool.lastUpdate }}
+                  {% translate "Updates" %}: {{ tool.lastUpdate }}
                 {% else %}
-                  <i class="far fa-clock me-2"></i>Letztes Update: {{ tool.lastUpdate }}
+                  <i class="far fa-clock me-2"></i>{% translate "Letztes Update" %}: {{ tool.lastUpdate }}
                 {% endif %}
               </span>
             </div>
