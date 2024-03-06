@@ -134,7 +134,7 @@
               {% if tool.released %}
                 <h5 class="mt-4">{% translate "Ist das Tool veröffentlicht?" %}</h5>
                 {% if tool.released == True %}
-                  <p class="mb-0">Ja</p>
+                  <p class="mb-0">{% translate "Ja" %}</p>
                   {% if tool.yearOfRelease %}
                     <h5 class="mt-4">{% translate "Veröffentlichungsjahr" %}</h5>
                     <p class="mb-0">{{tool.yearOfRelease}}</p>

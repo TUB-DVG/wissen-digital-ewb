@@ -23,7 +23,7 @@ def findPicturesForFocus(searchResultObj, tool=False):
     """
     if tool:
         toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
-        focusStrList = toolObj.focus.all().values_list("focus", flat=True)
+        focusStrList = toolObj.focus.all().values_list("focus_de", flat=True)
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
@@ -155,6 +155,7 @@ def resultSearch(request):
         tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
+        # breakpoint()
         tool["description"] = tool.pop("shortDescription")
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
@@ -164,15 +165,13 @@ def resultSearch(request):
         # no given date
         toolDate = tool.pop("lastUpdate")
         toolVirtDate = toolDate
-        if toolDate == "laufend":
+        if toolDate == "laufend" or toolDate == "ongoing":
             toolVirtDate = date.fromisoformat("2049-09-09")
-        elif toolDate == "unbekannt":
+        elif toolDate == "unbekannt" or toolDate == "unknown" or toolDate == "":
             toolVirtDate = date.fromisoformat("1949-09-09")
         else:
-            try:
-                toolVirtDate = date.fromisoformat(toolVirtDate)
-            except:
-                breakpoint()
+            toolVirtDate = date.fromisoformat(toolVirtDate)
+
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
         tool["pathToFocusImage"] = findPicturesForFocus(tool, tool=True)
