@@ -1,13 +1,23 @@
 """View functions for start page and start page search."""
-from django.shortcuts import render
-from tools_over.models import Tools
-from project_listing.models import Subproject
-from TechnicalStandards.models import Norm, Protocol
-from django.db.models import Q
-from itertools import chain
-from django.core.paginator import Paginator
 from datetime import date
+from itertools import chain
 
+from django.shortcuts import render
+from django.db.models import Q
+from django.core.paginator import Paginator
+from django.db.models import Prefetch
+from django.contrib.postgres.aggregates import StringAgg
+# from django.db.models.functions import StringAgg
+
+from tools_over.models import (
+    Tools,
+    Classification,
+)
+from project_listing.models import Subproject
+from TechnicalStandards.models import (
+    Norm, 
+    Protocol,
+)
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus. 
     
@@ -102,12 +112,14 @@ def resultSearch(request):
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
-    filteredTools = Tools.objects.values("id",
-                                         "name",
-                                         "shortDescription",
-                                         "lastUpdate",
-                                         ).filter(criterionToolsOne |
-                                                  criterionToolsTwo)
+
+    if request.LANGUAGE_CODE == "de":
+        classificationQueryExpression = 'classification__classification_de'
+    else:
+        classificationQueryExpression = 'classification__classification_en'
+    
+    filteredTools = Tools.objects.annotate(classificationAgg=StringAgg(classificationQueryExpression, delimiter=', ')).values("id", "name", "shortDescription", "lastUpdate", "classificationAgg").filter(criterionToolsOne | criterionToolsTwo)
+
     # filtered projects
     criterionProjectsOne = Q(
         enargusData__collaborativeProject__icontains=searchInput)
@@ -158,7 +170,7 @@ def resultSearch(request):
         # breakpoint()
         tool["description"] = tool.pop("shortDescription")
         # later use input from table tools for kindOfItem
-        tool["kindOfItem"] = "digitales Werkzeug"
+        tool["kindOfItem"] = tool["classificationAgg"]
 
         # make a time stamp list, including also virtual dates
         # replancning unspecific time values like "laufend" or

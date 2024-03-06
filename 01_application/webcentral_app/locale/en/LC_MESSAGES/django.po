@@ -60,15 +60,15 @@ msgstr "Results"
 #, fuzzy
 #| msgid "Ergebnisse"
 msgid "Art des Ergebnisses"
-msgstr "Results"
+msgstr "Type of result"
 
 #: templates/StartSearch/ResultSearch.html:78
 msgid "Fokus"
-msgstr ""
+msgstr "Focus"
 
 #: templates/StartSearch/ResultSearch.html:80
 msgid "Aktualität"
-msgstr ""
+msgstr "Actuality"
 
 #: templates/StartSearch/ResultSearch.html:147
 #: templates/tools_over/tool-listings.html:196
@@ -102,11 +102,11 @@ msgstr "last"
 
 #: templates/StartSearch/ResultSearch.html:176
 msgid "Die Suche hat keine Ergebnisse ergeben."
-msgstr ""
+msgstr "The search returned no results."
 
 #: templates/StartSearch/StartSearch.html:3 templates/pages/index.html:4
 msgid "Wissensplattform - Digitalisierung Energiewendebauen"
-msgstr ""
+msgstr "Knowledge platform - building digitalization of the energy transition"
 
 #: templates/StartSearch/StartSearch.html:21
 msgid ""
