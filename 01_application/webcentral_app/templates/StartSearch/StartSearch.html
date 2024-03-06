@@ -190,14 +190,14 @@
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
-              <h3>Betrieblicher Fokus</h3>
+              <h3>{% translate "Betrieblicher Fokus" %}</h3>
               <p>
-                Der betriebliche Fokus bei der Untersuchung der Digitalisierung
+                {% blocktranslate %}Der betriebliche Fokus bei der Untersuchung der Digitalisierung
                 in der Energieforschung im Gebäudesektor zielt vorrangig auf die
                 Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind
                 dabei der wirtschaftliche Betrieb digitaler Anwendungen
                 (Geschäftsmodelle) und die Einbindung von und Interaktion mit
-                den Nutzenden.
+                den Nutzenden.{% endblocktranslate %}
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -211,7 +211,7 @@
                   <td>
                     <a class="operational"
                        href="{% url 'businessModelsPractice' %}">
-                      Geschäfts&shy;modell&shy; - good-practice
+                      {% translate "Geschäfts&shy;modell&shy;" %} - good-practice
                     </a>
                   </td>
                 </tr>
@@ -223,7 +223,7 @@
                   <td>
                     <a class="operational"
                        href="{% url 'businessModelsChallenge' %}">
-                      Geschäfts&shy;modell&shy; - Herausforderungen
+                      {% translate "Geschäfts&shy;modell&shy;" - Herausforderungen %}
                     </a>
                   </td>
                 </tr>
@@ -235,7 +235,7 @@
                   <td>
                     <a class="operational"
                        href="{% url 'businessModelApplication' %}">
-                    Geschäfts&shy;modell&shy;anwendungen
+                       {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                   </a>
                   </td>
                 </tr>
@@ -247,7 +247,7 @@
                   <td>
                     <a class="operational"
                        href="{% url 'userIntegrationPractice' %}">
-                      Nutzenden&shy;perspektive - good-practice
+                       {% translate "Nutzenden&shy;perspektive" %} - good-practice
                     </a>
                   </td>
                 </tr>
@@ -259,7 +259,7 @@
                   <td>
                     <a class="operational"
                        href="{% url 'userIntegrationMethod' %}">
-                      Nutzenden&shy;perspektive - Methoden
+                       {% translate "Nutzenden&shy;perspektive" - Methoden %}
                     </a>
                   </td>
                 </tr>
@@ -272,7 +272,7 @@
                     <a class="operational"
                     href="{%url 'publicationPage' %}?searched=&fo=12"
                     id="linkToOperationalPublications">
-                      Publikationen
+                    {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
@@ -297,16 +297,16 @@
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
-              <h3>Ökologischer Fokus</h3>
+              <h3>{% translate "Ökologischer Fokus" %}</h3>
               <p>
-                Der ökologische Fokus bei der Untersuchung der Digitalisierung
+                {% blocktranslate %}Der ökologische Fokus bei der Untersuchung der Digitalisierung
                 in der Energieforschung im Gebäudesektor zielt auf das
                 Evaluieren von Umwelteffekten durch den Einsatz digitaler
                 Anwendungen ab. Neben positiven Wirkungen wie
                 Energieeinsparungen werden auch negative Auswirkungen wie ein
                 erhöhter Materialverbrauch durch digitale Anwendungen
                 aufgezeigt. In diesem Kontext wird auch ein suffizienter Umgang
-                mit Daten sowie dessen Auswirkungen thematisiert.
+                mit Daten sowie dessen Auswirkungen thematisiert.{% endblocktranslate %}
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -320,7 +320,7 @@
                   <td>
                     <a class="ecological"
                        href="{% url 'environmentalIntegrityNegativ' %}">
-                     Negative Umweltwirkungen
+                     {% translate "Negative Umweltwirkungen" %}
                     </a>
                   </td>
                 </tr>
@@ -332,7 +332,7 @@
                   <td>
                     <a class="ecological"
                        href="{% url 'environmentalIntegrityPositiv' %}">
-                      Positive Umweltwirkungen - good-practice
+                      {% translate "Positive Umweltwirkungen" %} - good-practice
                     </a>
                   </td>
                 </tr>
@@ -344,7 +344,7 @@
                   <td>
                     <a class="ecological"
                        href="{% url 'benchmarkingChallenges' %}">
-                      Herausforderungen
+                       {% translate "Herausforderungen" %}
                     </a>
                   </td>
                 </tr>
@@ -356,7 +356,7 @@
                   <td>
                     <a class="ecological"
                        href="{% url 'dataSufficiency' %}">
-                      Datensuffizienz
+                       {% translate "Datensuffizienz" %}
                     </a>
                   </td>
                 </tr>
@@ -369,7 +369,7 @@
                     <a class="ecological"
                     href="{%url 'publicationPage' %}?searched=&fo=13"
                     id="linkToEcologicalPublications">
-                      Publikationen
+                    {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
@@ -390,15 +390,15 @@
           <div class="row">
             <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3"
                  title="Erläuterungstext">
-              <h3>Rechtlicher Fokus</h3>
+              <h3>{% translate "Rechtlicher Fokus" %}</h3>
               <p>
-                Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des
+                {% blocktranslate %}Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des
                 Datenschutzes für die Digitalisierung im Gebäudesektor. Hier
                 wird einerseits aufgezeigt, wie Datenschutzrisiken entstehen und
                 wie sie sich innovationshemmend auswirken können. Andererseits
                 wird für verschiedenste Anwendungsfälle im Gebäudesektor das
                 Datenschutzrecht konkretisiert und in konkrete
-                Handlungsempfehlungen für Projekte übersetzt.
+                Handlungsempfehlungen für Projekte übersetzt.{% endblocktranslate %}
               </p>
             </div>
             <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3"
@@ -412,7 +412,7 @@
                   <td>
                     <a class="legal"
                        href="{% url 'dataSecurity' %}">
-                      Daten&shy;schutz&shy;übersicht
+                       {% translate "Daten&shy;schutz&shy;übersicht" %}
                     </a>
                   </td>
                 </tr>
@@ -424,7 +424,7 @@
                   <td>
                     <a class="legal"
                        href="{% url 'criteriaCatalog' %}">
-                      Kriterien&shy;katalog
+                      {% translate "Kriterien&shy;katalog" %}
                     </a>
                   </td>
                 </tr>
@@ -436,7 +436,7 @@
                   <td>
                     <a class="legal"
                        href="{% url 'iconsAndVis' %}">
-                      Icons und Visualisierung
+                      {% translate "Icons und Visualisierung" %}
                     </a>
                   </td>
                 </tr>
@@ -449,7 +449,7 @@
                     <a class="legal"
                     href="{%url 'publicationPage' %}?searched=&fo=14"
                     id="linkToLegalPublications">
-                      Publikationen
+                    {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
