@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 09:52+0000\n"
+"POT-Creation-Date: 2024-03-06 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,14 +51,10 @@ msgstr ""
 
 #: templates/StartSearch/ResultSearch.html:3
 #: templates/StartSearch/ResultSearch.html:15
-#, fuzzy
-#| msgid "Ergebnisse"
 msgid "Suchergebnisse"
-msgstr "Results"
+msgstr "Search results"
 
 #: templates/StartSearch/ResultSearch.html:70
-#, fuzzy
-#| msgid "Ergebnisse"
 msgid "Art des Ergebnisses"
 msgstr "Type of result"
 
@@ -758,13 +754,14 @@ msgstr "Updates"
 msgid "Überblick über digitale Werkzeuge"
 msgstr "Overview of digital tools"
 
-#: templates/tools_over/tool-listings.html:102
-msgid "Alle"
-msgstr "All"
-
+#: templates/tools_over/tool-listings.html:38
 #: templates/tools_over/tool-listings.html:116
 msgid "Suchbegriff"
 msgstr "search term"
+
+#: templates/tools_over/tool-listings.html:102
+msgid "Alle"
+msgstr "All"
 
 #: templates/tools_over/tool-listings.html:162
 #: templates/tools_over/tool-listings.html:170
