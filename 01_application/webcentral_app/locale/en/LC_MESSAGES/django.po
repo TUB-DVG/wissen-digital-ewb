@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 06:57+0000\n"
+"POT-Creation-Date: 2024-03-06 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,61 @@ msgstr ""
 msgid ""
 "The method move_up() is deprecated and will be removed in the next release. "
 "Please use up() instead!"
+msgstr ""
+
+#: templates/StartSearch/ResultSearch.html:3
+#: templates/StartSearch/ResultSearch.html:15
+#, fuzzy
+#| msgid "Ergebnisse"
+msgid "Suchergebnisse"
+msgstr "Results"
+
+#: templates/StartSearch/ResultSearch.html:70
+#, fuzzy
+#| msgid "Ergebnisse"
+msgid "Art des Ergebnisses"
+msgstr "Results"
+
+#: templates/StartSearch/ResultSearch.html:78
+msgid "Fokus"
+msgstr ""
+
+#: templates/StartSearch/ResultSearch.html:80
+msgid "Aktualität"
+msgstr ""
+
+#: templates/StartSearch/ResultSearch.html:147
+#: templates/tools_over/tool-listings.html:196
+msgid "erste"
+msgstr "first"
+
+#: templates/StartSearch/ResultSearch.html:152
+#: templates/tools_over/tool-listings.html:200
+msgid "vorherige"
+msgstr "previous"
+
+#: templates/StartSearch/ResultSearch.html:157
+#: templates/tools_over/tool-listings.html:205
+msgid "Seite"
+msgstr "Site"
+
+#: templates/StartSearch/ResultSearch.html:157
+#: templates/tools_over/tool-listings.html:205
+msgid "von"
+msgstr "from"
+
+#: templates/StartSearch/ResultSearch.html:163
+#: templates/tools_over/tool-listings.html:210
+msgid "nächste"
+msgstr "next"
+
+#: templates/StartSearch/ResultSearch.html:168
+#: templates/tools_over/tool-listings.html:214
+msgid "letzte"
+msgstr "last"
+
+#: templates/StartSearch/ResultSearch.html:176
+msgid "Die Suche hat keine Ergebnisse ergeben."
 msgstr ""
 
 #: templates/StartSearch/StartSearch.html:3 templates/pages/index.html:4
@@ -186,17 +241,28 @@ msgid ""
 "          <br>\n"
 "          Bei der Zusammenstellung der Werkzeuge haben wir folgende Aspekte "
 "berücksichtigt:"
-msgstr "The digital tools presented here correspond to the tools used in the evaluation of the questionnaire of the accompanying scientific research of the Energiewendebauen research initiative of 2021 and 2023 were recorded. Alle digitalen Werkzeuge werden dementsprechend von Projekten eingesetzt, "
-"entwickelt oder weiterentwickelt, die im Rahmen der Forschungsinitiative Energiewendebauen gefördert werden. <br>"
-"Generell wird hier zwischen digitalen Werkzeugen und digitalen Anwendungen unterschieden <br>"
-"Ein digitales Werkzeug ist ein Stück Software, das in Verbindung mit anderen Werkzeugen von Entwicklern oder Ingenieuren verwendet wird, "
-"um Produkte mit bestimmten Funktionalitäten zu erstellen. Frameworks, Bibliotheken, Programmiersprachen und Standards sind ebenfalls unter Werkzeuge aufgeführt. <br>"
-"Eine digitale Anwendung hingegen ist ein Stück Software, das einen bestimmten Anwendungsfall allein abdeckt. "
-"In der Regel setzt sich eine digitale Anwendung als eine Verkettung von Werkzeugen, mit möglicher direkter Interaktion mit dem Endbenutzer, zusammen. "
-"Plattformen sind ebenfalls unter Anwendungen aufgeführt. <br>"
-"It is entirely possible to have a tool that can also be classified as an application. <br>"
-"In a first step, we collect these digital tools and applications and make them available to you as an overview and inspiration. A detailed compilation of the tools and applications can only be done together with the users, so please feel free to contact us. We look forward to hearing your application examples from your projects. <br>"
-"When putting together the tools, we took the following aspects into account:"
+msgstr ""
+"The digital tools presented here correspond to the tools that were recorded "
+"as part of the evaluation of the questionnaire of the scientific "
+"accompanying research of the Energy Transition Building Research Initiative "
+"from 2021 and 2023. All digital tools are accordingly used, developed or "
+"further developed by projects that are funded as part of the Energy "
+"Transition Building research initiative. <br>A general distinction is made "
+"here between digital tools and digital applications. <br>A digital tool is a "
+"piece of software used in conjunction with other tools by developers or "
+"engineers,to create products with specific functionalities. Frameworks, "
+"libraries, programming languages and standards are also listed under Tools. "
+"<br>A digital application, on the other hand, is a piece of software that "
+"covers a specific use case alone.As a rule, a digital application is "
+"composed of a chain of tools with possible direct interaction with the end "
+"user. Platforms are also listed under Applications. <br>It is entirely "
+"possible to have a tool that can also be classified as an application. "
+"<br>In a first step, we collect these digital tools and applications and "
+"make them available to you as an overview and inspiration. A detailed "
+"compilation of the tools and applications can only be done together with the "
+"users, so please feel free to contact us. We look forward to hearing your "
+"application examples from your projects. <br>When putting together the "
+"tools, we took the following aspects into account:"
 
 #: templates/tools_over/explanationTools.html:27
 msgid "Kurzbeschreibung"
@@ -218,7 +284,9 @@ msgid ""
 "Werkzeugs? \n"
 "            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
 "Dienstleistung."
-msgstr "What do the developers describe as the area of application of their digital tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
+msgstr ""
+"What do the developers describe as the area of application of their digital "
+"tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
 "Dienstleistung."
 
 #: templates/tools_over/explanationTools.html:34
@@ -232,7 +300,9 @@ msgid ""
 "Zu welchem Zweck wird das Werkzeug eingesetzt? \n"
 "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
 "Steuerung, Regelung."
-msgstr "What purpose is the tool used for? Options include simulation, monitoring, optimization, planning, control, advanced control."
+msgstr ""
+"What purpose is the tool used for? Options include simulation, monitoring, "
+"optimization, planning, control, advanced control."
 
 #: templates/tools_over/explanationTools.html:38
 #: templates/tools_over/tool-comparison.html:71
@@ -247,7 +317,10 @@ msgid ""
 "In welcher Phase des Produktlebenszyklus wird das Werkzeug eingesetzt? \n"
 "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
 "berücksichtigt."
-msgstr "In which phase of the product life cycle is the tool used? The phases of preliminary planning, planning, implementation and operation are taken into account here."
+msgstr ""
+"In which phase of the product life cycle is the tool used? The phases of "
+"preliminary planning, planning, implementation and operation are taken into "
+"account here."
 
 #: templates/tools_over/explanationTools.html:42
 #: templates/tools_over/tool-detail.html:81
@@ -260,7 +333,10 @@ msgid ""
 "Wie können Nutzende das digitale Werkzeug bedienen? \n"
 "            Benötigt es eine eigenständige Installation, gibt es eine "
 "webbasierte Oberfläche oder bspw. über die Kommandozeile?"
-msgstr "Wie können Nutzende das digitale Werkzeug bedienen? Benötigt es eine eigenständige Installation, gibt es eine webbasierte Oberfläche oder bspw. über die Kommandozeile?"
+msgstr ""
+"How can users operate the digital tool? Does it require an independent "
+"installation, is there a web-based interface or, for example, via the "
+"command line?"
 
 #: templates/tools_over/explanationTools.html:46
 #: templates/tools_over/tool-comparison.html:83
@@ -272,7 +348,9 @@ msgstr "Target group"
 msgid ""
 "An wen richtet sich das digitale Werkzeug laut eigener Aussage?\n"
 "            In der Regel können digitale Werkzeuge von allen genutzt werden."
-msgstr "Who do you say the digital tool is aimed at? As a rule, digital tools can be used by everyone."
+msgstr ""
+"Who do you say the digital tool is aimed at? As a rule, digital tools can be "
+"used by everyone."
 
 #: templates/tools_over/explanationTools.html:50
 #: templates/tools_over/tool-comparison.html:166
@@ -289,7 +367,10 @@ msgid ""
 "            welche im Rahmen von Forschungsprojekten entwickelt werden, \n"
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
-msgstr "When was the last update done? Particularly in the case of digital tools that are developed as part of research projects, further development or maintenance can be stopped after the project has been completed."
+msgstr ""
+"When was the last update done? Particularly in the case of digital tools "
+"that are developed as part of research projects, further development or "
+"maintenance can be stopped after the project has been completed."
 
 #: templates/tools_over/explanationTools.html:56
 #: templates/tools_over/tool-comparison.html:119
@@ -317,7 +398,9 @@ msgid ""
 "Unter welcher Lizenz wurde das digitale Werkzeug veröffentlicht und "
 "entstehen Kosten \n"
 "            durch die Anwendung des digitalen Werkzeugs?"
-msgstr "Under what license was the digital tool published and are there any costs associated with using the digital tool?"
+msgstr ""
+"Under what license was the digital tool published and are there any costs "
+"associated with using the digital tool?"
 
 #: templates/tools_over/explanationTools.html:63
 #: templates/tools_over/tool-detail.html:107
@@ -328,7 +411,9 @@ msgstr "Alternatives"
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
 "Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen)."
-msgstr "Identification of concrete examples of the use of tools in the construction sector/energy transition construction (e.g. funding indicators)."
+msgstr ""
+"Identification of concrete examples of the use of tools in the construction "
+"sector/energy transition construction (e.g. funding indicators)."
 
 #: templates/tools_over/explanationTools.html:66
 msgid "Konkrete Anwendungsfälle"
@@ -338,7 +423,9 @@ msgstr "Specific use cases"
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
 "Bausektor/EnergiewendeBauen (bspw. Projekt Nummer)."
-msgstr "Identification of concrete examples of the use of tools in the construction sector/energy transition (e.g. project number)."
+msgstr ""
+"Identification of concrete examples of the use of tools in the construction "
+"sector/energy transition (e.g. project number)."
 
 #: templates/tools_over/explanationTools.html:69
 msgid "Entwicklende / Maintainer"
@@ -357,7 +444,9 @@ msgid ""
 "Welcher Art ist das Werkzeug? \n"
 "            Handelt es sich um ein digitales Werkzeug, ein Framework/eine "
 "Bibliothek, eine Programmiersprache, einen Standard oder auch eine Anwendung?"
-msgstr "What type is the tool? Is it a digital tool, a framework/library, a programming language, a standard or even an application?"
+msgstr ""
+"What type is the tool? Is it a digital tool, a framework/library, a "
+"programming language, a standard or even an application?"
 
 #: templates/tools_over/explanationTools.html:76
 msgid "Veröffentlicht"
@@ -395,7 +484,9 @@ msgstr "Sources of information"
 #: templates/tools_over/explanationTools.html:86
 msgid ""
 "Quelle für weitere Information zum Werkzeug, z.B. git-Repo, Projektwebseite."
-msgstr "Source for further information about the tool, e.g. git repo, project website."
+msgstr ""
+"Source for further information about the tool, e.g. git repo, project "
+"website."
 
 #: templates/tools_over/explanationTools.html:88
 #: templates/tools_over/tool-comparison.html:145
@@ -406,7 +497,8 @@ msgstr "Level of development"
 #: templates/tools_over/explanationTools.html:89
 msgid ""
 "Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen möglich:"
-msgstr "What is the current development status? The following options are possible:"
+msgstr ""
+"What is the current development status? The following options are possible:"
 
 #: templates/tools_over/explanationTools.html:91
 msgid "erster Entwurf (pre-Alpha)"
@@ -422,7 +514,8 @@ msgstr "not yet fully tested (beta)"
 
 #: templates/tools_over/explanationTools.html:94
 msgid "alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)"
-msgstr "All functions preserved, possibly containing errors (Release Candidate - RC)"
+msgstr ""
+"All functions preserved, possibly containing errors (Release Candidate - RC)"
 
 #: templates/tools_over/explanationTools.html:95
 msgid "bereit für den produktiven Einsatz (Released)"
@@ -445,7 +538,8 @@ msgstr "Most important framework/libraries"
 #: templates/tools_over/explanationTools.html:102
 msgid ""
 "Was sind die wichtigsten Frameworks oder Bibliotheken bei der Umsetzung?"
-msgstr "What are the most important frameworks or libraries for implementation?"
+msgstr ""
+"What are the most important frameworks or libraries for implementation?"
 
 #: templates/tools_over/explanationTools.html:104
 #: templates/tools_over/tool-detail.html:182
@@ -468,7 +562,9 @@ msgid ""
 "in \n"
 "            einer Komponente, einer Anlage, einem Gebäude, oder in einem "
 "Quartier/Netz oder einer/em Region/Land?"
-msgstr "In welcher Größenordnung wird das Werkzeug angewendet? Findet das Werkzeug in einer Komponente, einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder einer/em Region/Land?"
+msgstr ""
+"On what scale is the tool used? Does the tool find in a component, a system, "
+"a building, or in a district/network or a region/country?"
 
 #: templates/tools_over/explanationTools.html:111
 #, fuzzy
@@ -480,7 +576,8 @@ msgstr "Technical Standards"
 msgid ""
 "Welche Normen oder Standards dienen als Basis bzw. Orientierung für das "
 "Werkzeug?"
-msgstr "Which norms or standards serve as the basis or orientation for the tool?"
+msgstr ""
+"Which norms or standards serve as the basis or orientation for the tool?"
 
 #: templates/tools_over/explanationTools.html:116
 msgid "Weiterführende Informationen:"
@@ -496,7 +593,12 @@ msgid ""
 "          Auf der oben genannten Website sind weiterführende Informationen "
 "zu IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS und AixLib "
 "einsehbar."
-msgstr "The Simquality project collected information and data on the topic of quality assurance and standardization of simulation processes. Part of the project was the independent testing of simulation software. Further information about IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS and AixLib can be found on the website mentioned above."
+msgstr ""
+"The Simquality project collected information and data on the topic of "
+"quality assurance and standardization of simulation processes. Part of the "
+"project was the independent testing of simulation software. Further "
+"information about IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, "
+"TRNSYS and AixLib can be found on the website mentioned above."
 
 #: templates/tools_over/explanationTools.html:130
 msgid ""
@@ -505,7 +607,10 @@ msgid ""
 "          nachhaltige Energieversorgung zu ermöglichen. Dabei werden\n"
 "          Standards, Daten oder Programme gesammelt. Es erfolgt keine\n"
 "          weitere Einordnung."
-msgstr "The Open Sustainable Technology project collects open, sustainable and active projects that aim to enable a sustainable energy supply. Standards, data or programs are collected. There is no further classification."
+msgstr ""
+"The Open Sustainable Technology project collects open, sustainable and "
+"active projects that aim to enable a sustainable energy supply. Standards, "
+"data or programs are collected. There is no further classification."
 
 #: templates/tools_over/explanationTools.html:140
 msgid ""
@@ -514,7 +619,11 @@ msgid ""
 "           oder digitale Werkzeuge zur Planungen werden auch Informationen "
 "zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von "
 "Mengen gesammelt."
-msgstr "The website baulinks collects information about software with a focus on architecture and crafts. In addition to CAD tools or digital tools for planning, information on digital timesheets or digital tools for calculating quantities is also collected."
+msgstr ""
+"The website baulinks collects information about software with a focus on "
+"architecture and crafts. In addition to CAD tools or digital tools for "
+"planning, information on digital timesheets or digital tools for calculating "
+"quantities is also collected."
 
 #: templates/tools_over/explanationTools.html:148
 msgid ""
@@ -522,7 +631,10 @@ msgid ""
 "transparent zu machen. \n"
 "          Hierzu werden Informationen und digitale Werkzeuge rund um das "
 "Thema Energie gesammelt."
-msgstr "The Openenergy platform aims to make the modeling of energy systems transparent. For this purpose, information and digital tools on the topic of energy are collected."
+msgstr ""
+"The Openenergy platform aims to make the modeling of energy systems "
+"transparent. For this purpose, information and digital tools on the topic of "
+"energy are collected."
 
 #: templates/tools_over/explanationTools.html:156
 msgid ""
@@ -532,8 +644,12 @@ msgid ""
 "          diese finanziert und erstellt werden. Zudem werden durch weitere\n"
 "          Informationen wie beispielsweise eines Blogs anschauliche\n"
 "          Informationen bereitgestellt."
-msgstr "Other sites such as those operated by the Office of Energy Efficiency & Renewable Energy of the United States of America "
-"Website collects information about digital tools that are financed and created by them. In addition, clear information is provided through further information such as a blog."
+msgstr ""
+"Other sites such as those operated by the Office of Energy Efficiency & "
+"Renewable Energy of the United States of America Website collects "
+"information about digital tools that are financed and created by them. In "
+"addition, clear information is provided through further information such as "
+"a blog."
 
 #: templates/tools_over/explanationTools.html:169
 msgid ""
@@ -541,7 +657,17 @@ msgid ""
 "zur Verfügung. \n"
 "          Diese richten sich insbesondere an Personen richten, die in der "
 "Bilanzierung und Beratung tätig sind."
-msgstr "The Climate Neutral Building Forum provides an overview of digital tools. These are aimed particularly at people who work in accounting and consulting."
+msgstr ""
+"The Climate Neutral Building Forum provides an overview of digital tools. "
+"These are aimed particularly at people who work in accounting and consulting."
+
+#: templates/tools_over/explanationTools.html:177
+msgid "Zeige weniger ..."
+msgstr "Show less ..."
+
+#: templates/tools_over/explanationTools.html:178
+msgid "Zeige mehr ..."
+msgstr "Show more ..."
 
 #: templates/tools_over/tool-comparison.html:23
 msgid "Ergebnisse"
@@ -601,6 +727,10 @@ msgstr "Applications"
 msgid "Ist das Tool veröffentlicht?"
 msgstr "Is the tool published?"
 
+#: templates/tools_over/tool-detail.html:137
+msgid "Ja"
+msgstr "Yes"
+
 #: templates/tools_over/tool-detail.html:145
 msgid "Ist eine Veröffentlichung geplant?"
 msgstr "Is a publication planned?"
@@ -628,6 +758,10 @@ msgstr "Updates"
 msgid "Überblick über digitale Werkzeuge"
 msgstr "Overview of digital tools"
 
+#: templates/tools_over/tool-listings.html:102
+msgid "Alle"
+msgstr "All"
+
 #: templates/tools_over/tool-listings.html:116
 msgid "Suchbegriff"
 msgstr "search term"
@@ -640,27 +774,3 @@ msgstr "Comparisons"
 #: templates/tools_over/tool-listings.html:176
 msgid "Zurücksetzen"
 msgstr "Reset to default"
-
-#: templates/tools_over/tool-listings.html:196
-msgid "erste"
-msgstr "first"
-
-#: templates/tools_over/tool-listings.html:200
-msgid "vorherige"
-msgstr "previous"
-
-#: templates/tools_over/tool-listings.html:205
-msgid "Seite"
-msgstr "Site"
-
-#: templates/tools_over/tool-listings.html:205
-msgid "von"
-msgstr "from"
-
-#: templates/tools_over/tool-listings.html:210
-msgid "nächste"
-msgstr "next"
-
-#: templates/tools_over/tool-listings.html:214
-msgid "letzte"
-msgstr "last"
