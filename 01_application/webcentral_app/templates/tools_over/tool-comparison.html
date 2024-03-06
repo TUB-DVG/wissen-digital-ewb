@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
 {% load static %}
   <style>
@@ -19,7 +20,7 @@
 <div class = "container technical-cards">
 <div class="row">
 
-  <h1>Ergebnisse</h1>
+  <h1>{% translate "Ergebnisse" %}</h1>
 
   <table style="display: block;
   overflow-x: auto;">
@@ -40,7 +41,7 @@
     </tr>
 
     <tr>
-      <th>Einsatzbereich</th>
+      <th>{% translate "Einsatzbereich" %}</th>
       {% for tool in tools %}
       <td>
         {% if tool.applicationArea.all %}
@@ -52,7 +53,7 @@
       {% endfor %}
     </tr>
     <tr>
-      <th>Verwendung</th> 
+      <th>{% translate "Verwendung" %}</th> 
       {% for tool in tools %}
       <td>
         {% if tool.usage.all %}
@@ -65,7 +66,7 @@
     </tr>
 
     <tr>
-      <th>Lebenszyklusphase</th>
+      <th>{% translate "Lebenszyklusphase" %}</th>
       {% for tool in tools %}
       <td>
         {% for phase in tool.lifeCyclePhase.all %}
@@ -76,7 +77,7 @@
     </tr>
 
     <tr>
-      <th>Zielgruppe</th>
+      <th>{% translate "Zielgruppe" %}</th>
       {% for tool in tools %}
       <td>
         {% for group in tool.targetGroup.all %}
@@ -87,7 +88,7 @@
     </tr>
 
     <tr>
-      <th>Benutzeroberfläche</th>
+      <th>{% translate "Benutzeroberfläche" %}</th>
       {% for tool in tools %}
       <td>
         {% for ui in tool.userInterface.all %}
@@ -98,7 +99,7 @@
     </tr>
 
     <tr>
-      <th>Räumliche Größenordnung der Anwendungsfälle </th>
+      <th>{% translate "Räumliche Größenordnung der Anwendungsfälle" %}</th>
       {% for tool in tools %}
       <td>
         {% for scale in tool.scale.all %}
@@ -109,7 +110,7 @@
     </tr>
 
     <tr>
-      <th>Zugänglichkeit</th>
+      <th>{% translate "Zugänglichkeit" %}</th>
       {% for tool in tools %}
       <td>
         {% for access in tool.accessibility.all %}
@@ -120,21 +121,21 @@
     </tr>
 
     <tr>
-      <th>Programmiersprache (Umsetzung)</th>
+      <th>{% translate "Programmiersprache (Umsetzung)" %}</th>
       {% for tool in tools %}
       <td>{{ tool.programmingLanguages }}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Lizenz</th>
+      <th>{% translate "Lizenz" %}</th>
       {% for tool in tools %}
       <td>{{ tool.license }}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Entwicklungsstand 
+      <th>{% translate "Entwicklungsstand" %} 
         - 1 : pre-Alpha
         - 2 : Alpha
         - 3 : Beta
@@ -147,7 +148,7 @@
     </tr>
 
     <tr>
-      <th>Veröffentlichungsjahr</th>
+      <th>{% translate "Veröffentlichungsjahr" %}</th>
       {% for tool in tools %}
       <td>{{ tool.yearOfRelease }}</td>
       {% endfor %}
@@ -155,7 +156,7 @@
 
     
     <tr>
-      <th>Letztes Update</th>
+      <th>{% translate "Letztes Update" %}</th>
       {% for tool in tools %}
       <td>{{ tool.lastUpdate }}</td>
       {% endfor %}
