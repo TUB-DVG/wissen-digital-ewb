@@ -9,10 +9,10 @@
     height: 3.2rem;
   }
   a.text-truncation-btn.collapsed::after {
-    content: 'Zeige mehr ...';
+    content: attr(data-collapsed-text);
   }
   a.text-truncation-btn:not(.collapsed)::after {
-    content: 'Zeige weniger ...';
+    content: attr(data-expanded-text);
   }
 }
 
