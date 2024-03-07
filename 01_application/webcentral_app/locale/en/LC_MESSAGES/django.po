@@ -345,41 +345,6 @@ msgid "Import"
 msgstr ""
 
 #: templates/tools_over/explanationApps.html:9
-#, fuzzy
-#| msgid ""
-#| "Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, "
-#| "die im Rahmen der Auswertung \n"
-#| "          des Fragebogens der wissenschaftlichen Begleitforschung der "
-#| "Forschungsinitiative Energiewendebauen von \n"
-#| "          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden "
-#| "dementsprechend von Projekten eingesetzt, \n"
-#| "          entwickelt oder weiterentwickelt, die im Rahmen der "
-#| "Forschungsinitiative Energiewendebauen gefördert werden. <br>\n"
-#| "          Generell wird hier  zwischen digitalen Werkzeugen und digitalen "
-#| "Anwendungen unterschieden <br>\n"
-#| "          Ein digitales Werkzeug ist ein Stück Software, das in "
-#| "Verbindung mit anderen Werkzeugen von Entwicklern oder Ingenieuren "
-#| "verwendet wird, \n"
-#| "          um Produkte mit bestimmten Funktionalitäten zu erstellen. "
-#| "Frameworks, Bibliotheken, Programmiersprachen und Standards sind "
-#| "ebenfalls unter Werkzeuge aufgeführt. <br>\n"
-#| "          Eine digitale Anwendung hingegen ist ein Stück Software, das "
-#| "einen bestimmten Anwendungsfall allein abdeckt. \n"
-#| "          In der Regel setzt sich eine digitale Anwendung  als eine "
-#| "Verkettung von Werkzeugen, mit möglicher direkter Interaktion mit dem "
-#| "Endbenutzer, zusammen. \n"
-#| "          Plattformen sind ebenfalls unter Anwendungen aufgeführt. <br>\n"
-#| "          Es ist durchaus möglich, ein Werkzeug zu haben, das auch als "
-#| "Anwendung klassifiziert werden kann. <br>\n"
-#| "          In einem ersten Schritt sammeln wir diese digitalen Werkzeuge "
-#| "und Anwendungen und stellen sie Ihnen als Übersicht und Inspiration zur \n"
-#| "          Verfügung. Eine detaillierte Zusammenstellung der Werkzeuge und "
-#| "Anwendungen kann nur gemeinsam mit den Anwendern erfolgen, sprechen \n"
-#| "          Sie uns daher gerne an. Wir freuen uns auf Ihre "
-#| "Anwendungsbeispiele aus Ihren Projekten.\n"
-#| "          <br>\n"
-#| "          Bei der Zusammenstellung der Werkzeuge haben wir folgende "
-#| "Aspekte berücksichtigt:"
 msgid ""
 "Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, "
 "die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen \n"
@@ -414,7 +379,7 @@ msgid ""
 "          Bei der Zusammenstellung der Anwendungen haben wir folgende "
 "Aspekte berücksichtigt:"
 msgstr ""
-"The digital tools presented here correspond to the tools that were recorded "
+"The digital applications presented here correspond to the applications that were recorded "
 "as part of the evaluation of the questionnaire of the scientific "
 "accompanying research of the Energy Transition Building Research Initiative "
 "from 2021 and 2023. All digital tools are accordingly used, developed or "
@@ -454,12 +419,6 @@ msgid "Einsatzbereich"
 msgstr "Area of application"
 
 #: templates/tools_over/explanationApps.html:31
-#, fuzzy
-#| msgid ""
-#| "Was beschreiben die Entwicklenden als Einsatzsbereich ihres digitalen "
-#| "Werkzeugs? \n"
-#| "            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
-#| "Dienstleistung."
 msgid ""
 "Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen "
 "Anwendung? \n"
@@ -467,8 +426,7 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
-"Dienstleistung."
+"application? Options include administration, research/teaching, industry, and service."
 
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
@@ -478,17 +436,12 @@ msgid "Nutzung"
 msgstr "Use"
 
 #: templates/tools_over/explanationApps.html:35
-#, fuzzy
-#| msgid ""
-#| "Zu welchem Zweck wird das Werkzeug eingesetzt? \n"
-#| "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
-#| "Steuerung, Regelung."
 msgid ""
 "Zu welchem Zweck wird die Anwendung eingesetzt? \n"
 "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
 "Steuerung, Regelung."
 msgstr ""
-"What purpose is the tool used for? Options include simulation, monitoring, "
+"What purpose is the application used for? Options include simulation, monitoring, "
 "optimization, planning, control, advanced control."
 
 #: templates/tools_over/explanationApps.html:38
@@ -501,17 +454,12 @@ msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
 #: templates/tools_over/explanationApps.html:39
-#, fuzzy
-#| msgid ""
-#| "In welcher Phase des Produktlebenszyklus wird das Werkzeug eingesetzt? \n"
-#| "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und "
-#| "Betrieb berücksichtigt."
 msgid ""
 "In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt? \n"
 "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
 "berücksichtigt."
 msgstr ""
-"In which phase of the product life cycle is the tool used? The phases of "
+"In which phase of the product life cycle is the application used? The phases of "
 "preliminary planning, planning, implementation and operation are taken into "
 "account here."
 
@@ -523,17 +471,12 @@ msgid "Nutzerschnittstelle"
 msgstr "User interface"
 
 #: templates/tools_over/explanationApps.html:43
-#, fuzzy
-#| msgid ""
-#| "Wie können Nutzende das digitale Werkzeug bedienen? \n"
-#| "            Benötigt es eine eigenständige Installation, gibt es eine "
-#| "webbasierte Oberfläche oder bspw. über die Kommandozeile?"
 msgid ""
 "Wie können Nutzende die digitale Anwendung bedienen? \n"
 "            Benötigt es eine eigenständige Installation, gibt es eine "
 "webbasierte Oberfläche oder bspw. über die Kommandozeile?"
 msgstr ""
-"How can users operate the digital tool? Does it require an independent "
+"How can users operate the digital application? Does it require an independent "
 "installation, is there a web-based interface or, for example, via the "
 "command line?"
 
@@ -545,17 +488,12 @@ msgid "Zielgruppe"
 msgstr "Target group"
 
 #: templates/tools_over/explanationApps.html:47
-#, fuzzy
-#| msgid ""
-#| "An wen richtet sich das digitale Werkzeug laut eigener Aussage?\n"
-#| "            In der Regel können digitale Werkzeuge von allen genutzt "
-#| "werden."
 msgid ""
 "An wen richtet sich die digitale Anwendung laut eigener Aussage?\n"
 "            In der Regel können digitale Anwendungen von allen genutzt "
 "werden."
 msgstr ""
-"Who do you say the digital tool is aimed at? As a rule, digital tools can be "
+"Who do you say the digital application is aimed at? As a rule, digital applications can be "
 "used by everyone."
 
 #: templates/tools_over/explanationApps.html:50
@@ -566,13 +504,6 @@ msgid "Letztes Update"
 msgstr "Last update"
 
 #: templates/tools_over/explanationApps.html:51
-#, fuzzy
-#| msgid ""
-#| "Wann ist das letzte Update erfolgt. \n"
-#| "            Insbesondere bei digitalen Werkzeugen, \n"
-#| "            welche im Rahmen von Forschungsprojekten entwickelt werden, \n"
-#| "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. "
-#| "die Wartung eingestellt werden."
 msgid ""
 "Wann ist das letzte Update erfolgt.\n"
 "            Insbesondere bei digitalen Anwendungen, \n"
@@ -580,7 +511,7 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital tools "
+"When was the last update done? Particularly in the case of digital applications "
 "that are developed as part of research projects, further development or "
 "maintenance can be stopped after the project has been completed."
 
@@ -594,14 +525,10 @@ msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
 #: templates/tools_over/explanationApps.html:57
-#, fuzzy
-#| msgid ""
-#| "Wie zugänglich ist das Werkzeug? Ist es kostenpflichtig, open-source oder "
-#| "freeware?"
 msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
-msgstr "How accessible is the tool? Is it paid, open source or freeware?"
+msgstr "How accessible is the application? Is it paid, open source or freeware?"
 
 #: templates/tools_over/explanationApps.html:59
 #: templates/tools_over/explanationTools.html:59
@@ -612,18 +539,13 @@ msgid "Lizenz"
 msgstr "License"
 
 #: templates/tools_over/explanationApps.html:60
-#, fuzzy
-#| msgid ""
-#| "Unter welcher Lizenz wurde das digitale Werkzeug veröffentlicht und "
-#| "entstehen Kosten \n"
-#| "            durch die Anwendung des digitalen Werkzeugs?"
 msgid ""
 "Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und "
 "entstehen Kosten \n"
 "            durch die Anwendung ?"
 msgstr ""
-"Under what license was the digital tool published and are there any costs "
-"associated with using the digital tool?"
+"Under what license was the digital application published and are there any costs "
+"associated with using the digital application?"
 
 #: templates/tools_over/explanationApps.html:63
 #: templates/tools_over/explanationTools.html:63
@@ -635,7 +557,7 @@ msgstr "Alternatives"
 msgid ""
 "Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen "
 "ermöglichen (wenn vorhanden)?"
-msgstr ""
+msgstr "Which other digital applications can provide similar benefits (if any)?"
 
 #: templates/tools_over/explanationApps.html:66
 #: templates/tools_over/explanationTools.html:66
@@ -643,15 +565,11 @@ msgid "Konkrete Anwendungsfälle"
 msgstr "Specific use cases"
 
 #: templates/tools_over/explanationApps.html:67
-#, fuzzy
-#| msgid ""
-#| "Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
-#| "Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen)."
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Anwendungen im "
 "Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen)."
 msgstr ""
-"Identification of concrete examples of the use of tools in the construction "
+"Identification of concrete examples of the use of applications in the construction "
 "sector/energy transition construction (e.g. funding indicators)."
 
 #: templates/tools_over/explanationApps.html:69
@@ -660,11 +578,8 @@ msgid "Entwicklende / Maintainer"
 msgstr "Developers/maintainers"
 
 #: templates/tools_over/explanationApps.html:70
-#, fuzzy
-#| msgid ""
-#| "Wer ist für die Entwicklung und Wartung des Werkzeugs verantwortlich?"
 msgid "Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?"
-msgstr "Who is responsible for the development and maintenance of the tool?"
+msgstr "Who is responsible for the development and maintenance of the application?"
 
 #: templates/tools_over/explanationApps.html:72
 #, fuzzy
@@ -677,7 +592,7 @@ msgid ""
 "Welcher Art ist die Anwendung? \n"
 "            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung "
 "als auch als Werkzeug eingestuft?"
-msgstr ""
+msgstr "What type is the application? Is it classified as just an application/platform or both an application and a tool?"
 
 #: templates/tools_over/explanationApps.html:76
 #: templates/tools_over/explanationTools.html:76
@@ -706,8 +621,6 @@ msgid "Jahr der Veröffentlichung"
 msgstr "Year of publication"
 
 #: templates/tools_over/explanationApps.html:83
-#, fuzzy
-#| msgid "Ist eine Veröffentlichung geplant? (falls noch nicht erfolgt)"
 msgid "In welchem Jahr wurde es veröffentlicht? (falls schon erfolgt)"
 msgstr "Is a publication planned? (if not already done)"
 
@@ -718,14 +631,10 @@ msgid "Informationsquellen"
 msgstr "Sources of information"
 
 #: templates/tools_over/explanationApps.html:86
-#, fuzzy
-#| msgid ""
-#| "Quelle für weitere Information zum Werkzeug, z.B. git-Repo, "
-#| "Projektwebseite."
 msgid ""
 "Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
 msgstr ""
-"Source for further information about the tool, e.g. git repo, project "
+"Source for further information about the application, e.g. git repo, project "
 "website."
 
 #: templates/tools_over/explanationApps.html:88
@@ -746,7 +655,13 @@ msgid ""
 "              <li>alle Funktion erhalten, evtl. Fehler enthalten (Release "
 "Canditate - RC)</li>\n"
 "              <li>bereit für den produktiven Einsatz (Released)</li>"
-msgstr ""
+msgstr "What is the current development status? The following options are possible: <ol>"
+"<li>first draft (pre-alpha)</li>\n"
+" <li>Essential functions (Alpha)</li>\n"
+" <li>not yet fully tested (Beta)</li>\n"
+" <li>all functions preserved, possibly containing errors (release "
+"Canditate - RC)</li>\n"
+" <li>ready for productive use (released)</li>"
 
 #: templates/tools_over/explanationApps.html:98
 #: templates/tools_over/explanationTools.html:98
@@ -754,14 +669,10 @@ msgid "Programmiersprache"
 msgstr "programming language"
 
 #: templates/tools_over/explanationApps.html:99
-#, fuzzy
-#| msgid ""
-#| "Welche Programmiersprache ist bei der Umsetzung des Werkzeugss "
-#| "hauptsächlich genutzt?"
 msgid ""
 "Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich "
 "genutzt?"
-msgstr "Which programming language is mainly used to implement the tool?"
+msgstr "Which programming language is mainly used to implement the application?"
 
 #: templates/tools_over/explanationApps.html:101
 #: templates/tools_over/explanationTools.html:101
@@ -795,19 +706,13 @@ msgid "Räumliche Größenordnung der Anwendungsfälle"
 msgstr "Spatial scale of use cases"
 
 #: templates/tools_over/explanationApps.html:108
-#, fuzzy
-#| msgid ""
-#| "In welcher Größenordnung wird das Werkzeug angewendet? Findet das "
-#| "Werkzeug in \n"
-#| "            einer Komponente, einer Anlage, einem Gebäude, oder in einem "
-#| "Quartier/Netz oder einer/em Region/Land?"
 msgid ""
 "In welcher Größenordnung wird die Anwendung angewendet? Findet die Anwendung "
 "in einer Komponente, \n"
 "            einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder "
 "einer/em Region/Land?"
 msgstr ""
-"On what scale is the tool used? Does the tool find in a component, a system, "
+"On what scale is the application used? Does the application find in a component, a system, "
 "a building, or in a district/network or a region/country?"
 
 #: templates/tools_over/explanationApps.html:110
@@ -818,15 +723,11 @@ msgid "Normen/Standards"
 msgstr "Technical Standards"
 
 #: templates/tools_over/explanationApps.html:111
-#, fuzzy
-#| msgid ""
-#| "Welche Normen oder Standards dienen als Basis bzw. Orientierung für das "
-#| "Werkzeug?"
 msgid ""
 "Welche Normen oder Standards dienen als Basis bzw. Orientierung für die "
 "Anwendung?"
 msgstr ""
-"Which norms or standards serve as the basis or orientation for the tool?"
+"Which norms or standards serve as the basis or orientation for the application?"
 
 #: templates/tools_over/explanationApps.html:120
 #: templates/tools_over/explanationTools.html:121
