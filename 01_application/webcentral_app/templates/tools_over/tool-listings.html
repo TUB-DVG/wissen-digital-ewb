@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% translate "Überblick über digitale Werkzeuge" %}{% endblock %}
+{% block title %}{{ heading }}{% endblock %}
 {% block content %}
 {% load static %}
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-12">
           <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">{% translate "Überblick über digitale Werkzeuge" %}</h2>
+            <h2 class="m-0">{{ heading }}</h2>
           </div>
         </div>
       </div>
