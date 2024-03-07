@@ -560,12 +560,10 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:50
 #: templates/tools_over/explanationTools.html:50
-#: templates/tools_over/tool-comparison.html:166
 #: templates/tools_over/tool-listings-results.html:41
-#, fuzzy
-#| msgid "Wetterdaten"
+#: templates/tools_over/tool-comparison.html:166
 msgid "Letztes Update"
-msgstr "Wheatherdata"
+msgstr "Last update"
 
 #: templates/tools_over/explanationApps.html:51
 #, fuzzy

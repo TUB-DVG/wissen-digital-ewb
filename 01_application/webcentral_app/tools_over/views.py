@@ -12,7 +12,7 @@ from tools_over.models import (
     Accessibility,
     LifeCyclePhase,
 )
-# from project_listing.models import Subproject
+
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -21,6 +21,18 @@ class UpdateProperties:
         self.className = className
         self.label = label
         self.colorClass = colorClass
+
+def setLanguageForLastUpdate(request):
+    """Sets the language for the last update."""
+    if request.LANGUAGE_CODE == 'de':
+        lastUpdateText = 'letztes Update'
+    else:
+        lastUpdateText = 'last Update'
+
+    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', lastUpdateText, 'text-danger')
+    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+
+    return lastUpdate, continuousUpdates
 
 
 def index(request):
@@ -243,8 +255,8 @@ def businessApplicationView(request, id):
     
     continuousUpdates = tool.lastUpdate
 
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
@@ -295,8 +307,7 @@ def toolView(request, id):
     
     continuousUpdates = tool.lastUpdate
     
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
@@ -348,8 +359,7 @@ def AppView(request, id):
     
     continuousUpdates = tool.lastUpdate
     
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
