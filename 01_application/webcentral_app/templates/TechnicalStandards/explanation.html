@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}Überblick über die technischen Standards{% endblock %}
 {% block content %}
 {% load static %} 
@@ -10,7 +11,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Technische Standards</h2>
+          <h2 class="m-0">{% translate "Technische Standards" %}</h2>
         </div>
       </div>
     </div>
@@ -24,23 +25,23 @@ Page Banner END -->
     <div class="row"> 
         <ul>
           <p class="lead">
-            Normen und Protokolle spielen eine zentrale Rolle im Kontext der Gebäudeautomation und auch in der Energiewende im Gebäudesektor. 
-            Mithilfe von Normen sollen Standards und Richtlinien festgelegt werden, die sicherstellen, 
+            {% blocktranslate %}Normen und Protokolle spielen eine zentrale Rolle im Kontext der Gebäudeautomation und auch in der Energiewende im Gebäubesektor. 
+            Mit Hilfe von Normen sollen Standards und Richtlinien festgelegt werden, die sicherstellen, 
             dass Gebäude entsprechend der neuesten technologischen Entwicklungen und nachhaltigen Prinzipien gestaltet,
             gebaut und betrieben werden. Diese Normen decken Aspekte wie Wärmedämmung, Energieeffizienz von Heizungs-, 
             Lüftungs- und Klimatechnik sowie den Einsatz erneuerbarer Energiequellen ab. Sie dienen als Leitfaden für Architekt*innen, 
             Bauherr*innnen und Fachleute der Baubranche, um Gebäude zu schaffen, die den höchsten Standards der Energieeffizienz 
-            entsprechen und so zur Reduzierung des Energieverbrauchs und der Umweltauswirkungen beitragen.
+            entsprechen und so zur Reduzierung des Energieverbrauchs und der Umweltauswirkungen beitragen.{% endblocktranslate %}
           </p>
           <p class="lead">
-            Mithilfe von moderner Gebäudeautomation und deren intelligenten Steuerung und Überwachung von Gebäudetechnik und -systemen kann
-            der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezifische Kommunikations- und 
+            {% blocktranslate %}Mit Hilfe von moderner Gebäudeautomation und deren intelligenten Steuerung und Überwachung von Gebäudetechnik und -systemen kann
+der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezifische Kommunikations- und 
             Steuerungsstandards definieren, um eine nahtlose Interaktion zwischen verschiedenen Komponenten der Gebäudeautomatisierung 
             zu gewährleisten. Diese Protokolle ermöglichen die Vernetzung von Beleuchtungs-, Heizungs-, Kühlungs-, Lüftungs- 
             und Sicherheitssystemen, um den Energieverbrauch zu regulieren und den Komfort für die Bewohner*innen zu maximieren.
             Sie sorgen dafür, dass Gebäude effizient arbeiten, indem sie Daten sammeln, analysieren und auf Grundlage von vordefinierten 
             Algorithmen automatisierte Aktionen auslösen. Normen und Protokolle sind somit Schlüsselelemente, die dazu beitragen, 
-            die Ziele der Energiewende im Gebäudesektor und der intelligenten Gebäudeautomation erfolgreich umzusetzen.
+            die Ziele der Energiewende im Gebäudesektor und der intelligenten Gebäudeautomation erfolgreich umzusetzen.{% endblocktranslate %}
           </p>          
         </ul>
     </div>
@@ -48,10 +49,10 @@ Page Banner END -->
 
     <!-- row norm START -->
     <div class="row " id="collapseInfoContainerNorm">
-        <h3><b>Normen</b></h3>
+        <h3><b>{% translate "Normen" %}</b></h3>
         <div class="row collapseInfoContainer" id="collapseInfoContainerNorm">
           <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoNorm">
-            <p> Auf dieser Seite befinden sich unterschiedliche technische Normen,
+            <p> {% blocktranslate %}Auf dieser Seite befinden sich unterschiedliche technische Normen,
               die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in 
               Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen
               Projekte erfasst worden. Es handelt sich um deutsche, österreichische, 
@@ -60,18 +61,18 @@ Page Banner END -->
               Entwässerungs-, Heizungs-, Kühl-, und sonstiger Energiesysteme in Gebäuden. 
               Andere technische Standards wie Schallschutz, Beleuchtung und Gasinstallation
               sind ebenfalls enthalten. Für jede Norm wurden die folgenden Aspekte
-              erfasst: </p>
+              erfasst:{% endblocktranslate %} </p>
             <ul>
               <li class="lead">
-                <b>Name und vollständiger Titel der Norm</b>
+                <b>{% blocktranslate %}Name und vollständiger Titel der Norm{% endblocktranslate %}</b>
               </li>
               <li class="lead">
-                <b>Kurzbeschreibung</b>&nbsp;&ndash; Um was handelt es sich?</li>
+                <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% blocktranslate %}um was handelt es sich?{% endblocktranslate %}</li>
               <li class="lead">
-                <b>Quelle</b>&nbsp;&ndash; Woher kann die Norm bezogen werden?</li>
+                <b>{% translate "Quelle" %}</b>&nbsp;&ndash; {% blocktranslate %}woher kann die Norm bezogen werden?{% endblocktranslate %}</li>
               <li class="lead">
-                <b>Link</b>&nbsp;&ndash; Ein Link, über den die Norm abgerufen (ggf.
-                gekauft) werden kann.</li>
+                <b>{% translate "Link" %}</b>&nbsp;&ndash; {% blocktranslate %}ein Link, über den die Norm abgerufen (ggf.
+                gekauft) werden kann.{% endblocktranslate %}</li>
             </ul>
           </div>
           <div class="col-lg-12 lead mt-3">
@@ -90,7 +91,7 @@ Page Banner END -->
         <a href="{% url 'TechnicalStandards_norm_list' %}" id="linkToNorms">
           <img src="{% static '/img/TechnicalStandards/norm.png' %}"
                style="max-height:30px;" alt="Bild Normen">
-               Überblick über die Normen
+               {% translate "Überblick über die Normen" %}
         </a>
       </div>
     </div>
@@ -100,52 +101,52 @@ Page Banner END -->
   <h3><b>Protokolle</b></h3>
   <div class="row collapseInfoContainer" id="collapseInfoContainerProtocol">
     <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoProtocol">
-      <p> Auf der Seite sind verschiedenen Protokolle,
+      <p> {% blocktranslate %}Auf der Seite sind verschiedenen Protokolle,
         die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. Diese sind durch Recherche in 
         der entsprechenden Fachliteratur, in Dokumentationen von Hard- und Software und in Unterlagen aus den 
         Forschungsprojekten der Energiewendebauen zusammengetragen worden. 
         Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt und für diese die 
-          folgenden Eigenschaften zusammengefasst:
+          folgenden Eigenschaften zusammengefasst:{% endblocktranslate %}
       </p>
       <ul>
         <li class="lead">
           <b>Name des Protokolls</b>
         </li>
         <li class="lead">
-          <b>Übertragungsmethoden</b>&nbsp;&ndash; Wie werden Daten zwischen den 
-          verschiedenen Komponenten und Geräten innerhalb des Systems übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?</li>
+          <b>Übertragungsmethoden</b>&nbsp;&ndash; {% blocktranslate %}wie werden Daten zwischen den 
+          verschiedenen Komponenten und Geräten innerhalb des Systems übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Unterstützte Übertragungsmedien</b>&nbsp;&ndash; Wie werden Signale übertragen?</li>
+          <b>{% translate "Unterstützte Übertragungsmedien" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Signale übertragen?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Zugehörige Standards</b>&nbsp;&ndash; Spezifische Standards, denen jedes Protokoll zugeordnet werden kann.</li>
+          <b>{% translate "Zugehörige Standards" %}</b>&nbsp;&ndash; {% blocktranslate %}spezifische Standards, denen jedes Protokoll zugeordnet werden kann.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Open-Source-Status</b>&nbsp;&ndash; Ist das Protokoll öffentlich und frei verfügbar?</li>
+          <b>{% translate "Open-Source-Status" %}</b>&nbsp;&ndash; {% blocktranslate %}ist das Protokoll öffentlich und frei verfügbar?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Lizenzgebühr</b>&nbsp;&ndash; Ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die Zertifizierung fällig?</li>
+          <b>{% translate "Lizenzgebühr" %}</b>&nbsp;&ndash; {% blocktranslate %}ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die Zertifizierung fällig?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Netzwerktopologie</b>&nbsp;&ndash; Was ist die physische und logische Anordnung von Geräten und Komponenten in einem Netzwerk?</li>
+          <b>{% translate "Netzwerktopologie" %}</b>&nbsp;&ndash; {% blocktranslate %}was ist die physische und logische Anordnung von Geräten und Komponenten in einem Netzwerk?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Implementierte Sicherheitsmechanismen</b>&nbsp;&ndash; Ob und welche Mechanismen sind im Protokoll implementiert, um die Datensicherheit zu gewährleisten?</li>
+          <b>{% translate "Implementierte Sicherheitsmechanismen" %}</b>&nbsp;&ndash; {% blocktranslate %}ob und welche Mechanismen sind im Protokoll implementiert, um die Datensicherheit zu gewährleisten?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Bandbreite</b>&nbsp;&ndash; Die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen Komponenten des Systems zu übertragen.</li>
+          <b>{% translate "Bandbreite" %}</b>&nbsp;&ndash; {% blocktranslate %}die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen Komponenten des Systems zu übertragen.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Frequenz</b>&nbsp;&ndash; Die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den drahtlosen Kommunikationsgeräten im System verwendet wird.</li>
+          <b>{% translate "Frequenz" %}</b>&nbsp;&ndash; {% blocktranslate %}die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den drahtlosen Kommunikationsgeräten im System verwendet wird.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Reichweite</b>&nbsp;&ndash; Die maximale Entfernung, über die die Kommunikation zwischen den verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden kann, ohne dass die Signalstärke zu schwach wird.</li>
+          <b>{% translate "Reichweite" %}</b>&nbsp;&ndash; {% blocktranslate %}die maximale Entfernung, über die die Kommunikation zwischen den verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden kann, ohne dass die Signalstärke zu schwach wird.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Implementierte OSI-Schichten</b>&nbsp;&ndash; Die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation zwischen den verschiedenen Komponenten des Systems.</li>
+          <b>{% translate "Implementierte OSI-Schichten" %}</b>&nbsp;&ndash; {% blocktranslate %}die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation zwischen den verschiedenen Komponenten des Systems.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Ebenen der Gebäudeautomation</b>&nbsp;&ndash; Die hierarchische Struktur eines Gebäudeautomation Systems.</li>
+          <b>{% translate "Ebenen der Gebäudeautomation" %}</b>&nbsp;&ndash; {% blocktranslate %}die hierarchische Struktur eines Gebäudeautomation Systems.{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Datenmodell Architektur</b>&nbsp;&ndash; Wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?</li>
+          <b>{% translate "Datenmodell Architektur" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Discovery</b>&nbsp;&ndash; Ob das Protokoll über die „Discovery“ Funktion verfügt, um Geräte bei der Datenübertragung automatisch zu identifizieren?</li>
+          <b>{% translate "Discovery" %}</b>&nbsp;&ndash; {% blocktranslate %}ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der Datenübertragung automatisch zu identifizieren?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Multi Master</b>&nbsp;&ndash; Können mehrere Mastergeräte zeitgleich agieren?</li>
+          <b>{% translate "Multi Master" %}</b>&nbsp;&ndash; {% blocktranslate %}können mehrere Mastergeräte zeitgleich agieren?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>Priorität</b>&nbsp;&ndash; Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.</li>
+          <b>{% translate "Priorität" %}</b>&nbsp;&ndash; Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.</li>
         <li class="lead">
-          <b>Typische Anwendung</b>&nbsp;&ndash; Ggf. beispielhafte Anwendung.</li>
+          <b>{% translate "Typische Anwendung" %}</b>&nbsp;&ndash; {% blocktranslate %}ggf. Beispielhafte Anwendung.{% endblocktranslate %}</li>
         </ul>
     </div>
     <div class="col-lg-12 lead mt-3">
@@ -164,7 +165,7 @@ Page Banner END -->
   <a href="{% url 'TechnicalStandards_protocol_list' %}" id="linkToProtocols">
     <img src="{% static '/img/TechnicalStandards/protocol.png' %}"
          style="max-height:30px;" alt="Bild Protokolle">
-         Überblick über die Protokolle
+         {% translate "Überblick über die Protokolle" %}
   </a>
 </div>
 </div>
