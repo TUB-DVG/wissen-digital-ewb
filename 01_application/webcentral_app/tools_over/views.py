@@ -83,7 +83,11 @@ def index(request):
     lifeCyclePhaseNames = []
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
-    
+
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über digitale Werkzeuge'
+    else:
+        headingText = 'Overview of digital tools'
 
     context = {
         'accessibility': filteredBy[1],
@@ -96,6 +100,7 @@ def index(request):
         'usageFields': usageNames,
         'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
@@ -150,6 +155,10 @@ def indexApps(request):
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
     
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über digitale Anwendungen'
+    else:
+        headingText = 'Overview of digital applications'
 
     context = {
         'accessibilityFields': accessibilityNames,
@@ -162,6 +171,7 @@ def indexApps(request):
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
@@ -220,6 +230,11 @@ def indexBusinessApplication(request):
     lifeCyclePhaseNames = []
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
+    
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über Geschäftsmodellanwendungen'
+    else:
+        headingText = 'Overview of Business Applications'
 
     context = {
         'accessibilityFields': accessibilityNames,
@@ -232,6 +247,7 @@ def indexBusinessApplication(request):
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
     }
 
     return render(request, 'tools_over/tool-listings.html', context)  
@@ -387,7 +403,6 @@ def AppView(request, id):
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
-       
     }
 
     return render(request, 'tools_over/tool-detail.html', context)
