@@ -74,10 +74,12 @@ def index(request):
     
 
     context = {
+        'accessibility': filteredBy[1],
+        "focusBorder": "technical",
+        "typeOfTool": "Tools",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
-        'accessibility': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
         'accessibilityFields': accessibilityNames,
@@ -138,17 +140,19 @@ def indexApps(request):
     
 
     context = {
+        'accessibilityFields': accessibilityNames,
+        "focusBorder": "technical",
+        "typeOfTool": "Apps",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'accessibility': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
-        'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
     }
 
-    return render(request, 'tools_over/app-listings.html', context)
+    return render(request, 'tools_over/tool-listings.html', context)
 
 def indexBusinessApplication(request):
     """serves a request for digital applications search
@@ -206,17 +210,19 @@ def indexBusinessApplication(request):
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
 
     context = {
+        'accessibilityFields': accessibilityNames,
+        "focusBorder": "operational",
+        "typeOfTool": "BusinessApps",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'licence': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
-        'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
     }
 
-    return render(request, 'tools_over/businessApplications-listings.html', context)  
+    return render(request, 'tools_over/tool-listings.html', context)  
 
 def businessApplicationView(request, id):
     """Shows of the key features one project"""
@@ -259,16 +265,15 @@ def businessApplicationView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]),  
+        "focusBorder": "operational",     
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
-       
     }
-
-    return render(request, 'tools_over/businessApplications-detail.html', context)
+    return render(request, 'tools_over/tool-detail.html', context)
 
 
 def toolView(request, id):
@@ -312,7 +317,8 @@ def toolView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]), 
+        "focusBorder": "technical",      
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
@@ -364,7 +370,8 @@ def AppView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]),  
+        "focusBorder": "technical",      
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
@@ -373,7 +380,7 @@ def AppView(request, id):
        
     }
 
-    return render(request, 'tools_over/app-detail.html', context)
+    return render(request, 'tools_over/tool-detail.html', context)
 
 def toolComparison(request):
     ids = request.GET.getlist('id')

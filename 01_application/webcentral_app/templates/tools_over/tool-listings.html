@@ -22,19 +22,23 @@
     </div>
   </section>
   <!-- Page Banner END -->
-
-  {% include '../tools_over/explanationTools.html' %}
-
+    {% if typeOfTool == "Tools" %}
+      {% include 'tools_over/explanationTools.html' %}
+    {% elif typeOfTool == "Apps" %}
+      {% include 'tools_over/explanationApps.html' %}
+    {% else %}
+      {% include 'tools_over/explanationBusinessApps.html' %}
+    {% endif %}
   <!-- Page content START -->
   <section class="pt-0">
-    <div class="container technical-cards">
+    <div class="container {{ focusBorder }}-cards">
       <!-- Filter bar START -->
-      <form class="border-technical p-4 my-4 z-index-9 position-relative">
+      <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative">
         <div class="row g-3">
           <!-- Input -->
           <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
             <input id="search-input-tools"
-                   class="form-control me-1 border-technical"
+                   class="form-control me-1 border-{{ focusBorder }}"
                    type="search" placeholder="{% translate 'Suchbegriff' %}"
                    name='searched'>
           </div>
@@ -44,7 +48,7 @@
               <div class="row g-3">
                 <!-- Select items filter "Kategorie"-->
                 <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
+                  <select class="form-select js-choice border-{{ focusBorder }}-round"
                     aria-label=".form-select-sm example"
                     name="u"
                     id="kategorie-input-tools"
@@ -57,7 +61,7 @@
                   </div>
                   <!-- Select items filter "Lizenz"-->
                   <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                    <select class="form-select js-choice border-technical-round"
+                    <select class="form-select js-choice border-{{ focusBorder }}-round"
                       aria-label=".form-select-sm example"
                       name="l" id="lizenz-input-tools"
                       title="Filtern nach der Lizenz der Anwendung">
@@ -70,7 +74,7 @@
                 </div>
                 <!-- Search item "Lebenszyklusphase" -->
                 <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
+                  <select class="form-select js-choice border-{{ focusBorder }}-round"
                     aria-label=".form-select-sm example"
                     name="lcp"
                     id="lzp-input-tools"
@@ -90,7 +94,7 @@
           <!-- search Button -->
           <div class="col-xl-1">
             <button type="submit"
-              class="btn btn-technical mb-0 rounded z-index-1 w-100"
+              class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100"
               id="search-submit-tools" href="">
               <i class="fas fa-search"></i>
             </button>
@@ -98,7 +102,7 @@
           <!-- Clear button -->
           <div class="col-xl-1">
             <a href="{% url 'tool_list' %}">
-              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+              <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
                 {% translate "Alle" %}
               </h6>
             </a>
@@ -158,7 +162,7 @@
       <!-- search tags END -->
       <!-- Comparison button START -->
     <div class="col-xl-4" id="firstComparisonButtonTools">
-      <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+      <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
         {% translate "Vergleiche" %} 
       </h6>
     </div>
@@ -166,13 +170,13 @@
     <div class="row g-3" style="display:none" id="comparisonBarTools">
       <div class="col-xl-2" id="secondComparisonButtonTools" >
         <a href="#" id="comparisonUrlTools">
-          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+          <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
             {% translate "Vergleiche" %}  
           </h6>
         </a>
       </div>
       <div class="col-xl-2" id="cancelButtonTools">
-          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+          <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
             {% translate "Zurücksetzen" %} 
           </h6>
 
@@ -185,7 +189,7 @@
         <div class="col-12">
         <!-- tools Grid START -->
           <div class="row g-4" id="tool-listing-results">
-            {% include '../tools_over/tool-listings-results.html' %}
+            {% include '../tools_over/tool-listings-results.html' with typeOfTool=typeOfTool %}
           </div>
           <!-- tools Grid END -->
           <!-- Pagination START -->
