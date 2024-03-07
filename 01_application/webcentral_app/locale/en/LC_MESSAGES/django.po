@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-07 10:14+0000\n"
+"POT-Creation-Date: 2024-03-07 12:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,11 @@ msgstr ""
 #: templates/StartSearch/ResultSearch.html:15
 msgid "Suchergebnisse"
 msgstr "Search results"
+
+#: templates/StartSearch/ResultSearch.html:34
+#: templates/StartSearch/StartSearch.html:66
+msgid "Durchsuche die Plattform!"
+msgstr "Search the platform!"
 
 #: templates/StartSearch/ResultSearch.html:70
 msgid "Art des Ergebnisses"
@@ -125,10 +130,6 @@ msgstr ""
 "construction sector. This platform is aimed at the interested specialist "
 "community and also to the research projects of the Energiewendebauen "
 "research initiative."
-
-#: templates/StartSearch/StartSearch.html:66
-msgid "Durchsuche die Plattform!"
-msgstr "Search the platform!"
 
 #: templates/StartSearch/StartSearch.html:94
 msgid "Technischer Fokus"
@@ -314,6 +315,297 @@ msgstr "Catalog of criteria"
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
+#: templates/TechnicalStandards/explanation.html:14
+#, fuzzy
+#| msgid "technische Standards"
+msgid "Technische Standards"
+msgstr "Technical Standards"
+
+#: templates/TechnicalStandards/explanation.html:28
+msgid ""
+"Normen und Protokolle spielen eine zentrale Rolle im Kontext der "
+"Gebäudeautomation und auch in der Energiewende im Gebäubesektor. \n"
+"            Mit Hilfe von Normen sollen Standards und Richtlinien festgelegt "
+"werden, die sicherstellen, \n"
+"            dass Gebäude entsprechend der neuesten technologischen "
+"Entwicklungen und nachhaltigen Prinzipien gestaltet,\n"
+"            gebaut und betrieben werden. Diese Normen decken Aspekte wie "
+"Wärmedämmung, Energieeffizienz von Heizungs-, \n"
+"            Lüftungs- und Klimatechnik sowie den Einsatz erneuerbarer "
+"Energiequellen ab. Sie dienen als Leitfaden für Architekt*innen, \n"
+"            Bauherr*innnen und Fachleute der Baubranche, um Gebäude zu "
+"schaffen, die den höchsten Standards der Energieeffizienz \n"
+"            entsprechen und so zur Reduzierung des Energieverbrauchs und der "
+"Umweltauswirkungen beitragen."
+msgstr "Standards and protocols play a central role in the context of building automation and also in the energy transition in the building sector."
+"Norms are intended to establish standards and guidelines that ensure that buildings are designed, constructed and operated in accordance with the "
+"latest technological developments and sustainable principles. These standards cover aspects such as thermal insulation, energy efficiency of heating, "
+"ventilation and air conditioning technology as well as the use of renewable energy sources. They serve as a guide for architects, builders and construction "
+"industry professionals to create buildings that meet the highest standards of energy efficiency, helping to reduce energy consumption and environmental impact."
+
+#: templates/TechnicalStandards/explanation.html:37
+msgid ""
+"Mit Hilfe von moderner Gebäudeautomation und deren intelligenten Steuerung "
+"und Überwachung von Gebäudetechnik und -systemen kann\n"
+"der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die "
+"spezifische Kommunikations- und \n"
+"            Steuerungsstandards definieren, um eine nahtlose Interaktion "
+"zwischen verschiedenen Komponenten der Gebäudeautomatisierung \n"
+"            zu gewährleisten. Diese Protokolle ermöglichen die Vernetzung "
+"von Beleuchtungs-, Heizungs-, Kühlungs-, Lüftungs- \n"
+"            und Sicherheitssystemen, um den Energieverbrauch zu regulieren "
+"und den Komfort für die Bewohner*innen zu maximieren.\n"
+"            Sie sorgen dafür, dass Gebäude effizient arbeiten, indem sie "
+"Daten sammeln, analysieren und auf Grundlage von vordefinierten \n"
+"            Algorithmen automatisierte Aktionen auslösen. Normen und "
+"Protokolle sind somit Schlüsselelemente, die dazu beitragen, \n"
+"            die Ziele der Energiewende im Gebäudesektor und der "
+"intelligenten Gebäudeautomation erfolgreich umzusetzen."
+msgstr "With the help of modern building automation and its intelligent control and monitoring of building technology and systems"
+"energy consumption can be optimized. This requires protocols that define specific communication and control standards to ensure seamless "
+"interaction between different building automation components. These protocols enable the networking of lighting, heating, cooling, "
+"ventilation and security systems to regulate energy consumption and maximize comfort for residents. They ensure that buildings operate "
+"efficiently by collecting and analyzing data and triggering automated actions based on predefined algorithms. Standards and protocols are "
+"therefore key elements that contribute to successfully implementing the goals of the energy transition in the building sector and intelligent building automation."
+
+#: templates/TechnicalStandards/explanation.html:52
+msgid "Normen"
+msgstr "Norms"
+
+#: templates/TechnicalStandards/explanation.html:55
+msgid ""
+"Auf dieser Seite befinden sich unterschiedliche technische Normen,\n"
+"              die im Herbst 2022 erfasst worden sind. Diese sind durch "
+"Recherche in \n"
+"              Softwarekatalogen, Normendatenbanken und in "
+"Forschungsprojekten der Energiewendebauen\n"
+"              Projekte erfasst worden. Es handelt sich um deutsche, "
+"österreichische, \n"
+"              europäische oder internationale Standards und Richtlinien für "
+"die Planung, \n"
+"              den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+"Warmwasser-, \n"
+"              Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
+"in Gebäuden. \n"
+"              Andere technische Standards, wie Schallschutz, Beleuchtung, "
+"und Gasinstallation,\n"
+"              sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+"Aspekte\n"
+"              erfasst:"
+msgstr "On this page you will find different technical standards,"
+"which were recorded in autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects. These are German, Austrian, European or international "
+"standards and guidelines for the planning, construction and/or operation of ventilation, drinking water, hot water, drainage, heating, "
+"cooling and other energy systems in buildings . Other technical standards, such as soundproofing, lighting, and gas installation, "
+"are also included. The following aspects were recorded for each standard:"
+
+#: templates/TechnicalStandards/explanation.html:67
+msgid "Name und vollständiger Titel der Norm"
+msgstr "Name and full title of the standard"
+
+#: templates/TechnicalStandards/explanation.html:70
+#: templates/tools_over/explanationApps.html:27
+#: templates/tools_over/explanationTools.html:27
+msgid "Kurzbeschreibung"
+msgstr "Short description"
+
+#: templates/TechnicalStandards/explanation.html:70
+#, fuzzy
+#| msgid "Um was handelt es sich?"
+msgid "um was handelt es sich?"
+msgstr "What is it about?"
+
+#: templates/TechnicalStandards/explanation.html:72
+msgid "Quelle"
+msgstr "Source"
+
+#: templates/TechnicalStandards/explanation.html:72
+msgid "woher kann die Norm bezogen werden?"
+msgstr "where can the standard be obtained from?"
+
+#: templates/TechnicalStandards/explanation.html:74
+msgid "Link"
+msgstr "Link"
+
+#: templates/TechnicalStandards/explanation.html:74
+msgid ""
+"ein Link, über den die Norm abgerufen (ggf.\n"
+"                gekauft) werden kann."
+msgstr "a link through which the standard can be accessed (possibly purchased)."
+
+#: templates/TechnicalStandards/explanation.html:94
+msgid "Überblick über die Normen"
+msgstr "Overview of norms"
+
+#: templates/TechnicalStandards/explanation.html:104
+msgid ""
+"Auf der Seite sind verschiedenen Protokolle,\n"
+"        die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
+"Diese sind durch Recherche in \n"
+"        der entsprechenden Fachliteratur, in Dokumentationen von Hard- und "
+"Software, und in Unterlagen aus den \n"
+"        Forschungsprojekten der Energiewendebauen zusammengetragen worden. \n"
+"        Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt und "
+"für diese die \n"
+"          folgenden Eigenschaften zusammengefasst:"
+msgstr "Various protocols that were recorded in summer 2023 are described in detail on the page. "
+"These were compiled through research in the relevant specialist literature, in documentation of "
+"hardware and software, and in documents from energy transition building research projects. "
+"We have selected 12 commonly used and modern protocols and summarized the following characteristics for them:"
+
+#: templates/TechnicalStandards/explanation.html:116
+msgid ""
+"wie werden Daten zwischen den \n"
+"          verschiedenen Komponenten und Geräten innerhalb des Systems "
+"übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
+msgstr "How is data transferred between the various components and devices within the system (wired, wireless or wired & wireless)?"
+
+#: templates/TechnicalStandards/explanation.html:119
+msgid "Unterstützte Übertragungsmedien"
+msgstr "Supported transmission media"
+
+#: templates/TechnicalStandards/explanation.html:119
+msgid "wie werden Signale übertragen?"
+msgstr "how are signals transmitted?"
+
+#: templates/TechnicalStandards/explanation.html:121
+msgid "Zugehörige Standards"
+msgstr "Related standards"
+
+#: templates/TechnicalStandards/explanation.html:121
+msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
+msgstr "specific standards to which each protocol can be assigned."
+
+#: templates/TechnicalStandards/explanation.html:123
+msgid "Open-Source-Status"
+msgstr "Open-Source-status"
+
+#: templates/TechnicalStandards/explanation.html:123
+msgid "ist das Protokoll öffentlich und frei verfügbar?"
+msgstr "is the protocol public and freely available?"
+
+#: templates/TechnicalStandards/explanation.html:125
+msgid "Lizenzgebühr"
+msgstr "License fee"
+
+#: templates/TechnicalStandards/explanation.html:125
+msgid ""
+"ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die "
+"Zertifizierung fällig?"
+msgstr "Is there a fee to cover the costs of use and/or certification?"
+
+#: templates/TechnicalStandards/explanation.html:127
+msgid "Netzwerktopologie"
+msgstr "network topology"
+
+#: templates/TechnicalStandards/explanation.html:127
+msgid ""
+"was ist die physische und logische Anordnung von Geräten und Komponenten in "
+"einem Netzwerk?"
+msgstr "what is the physical and logical arrangement of devices and components in a network?"
+
+#: templates/TechnicalStandards/explanation.html:129
+msgid "Implementierte Sicherheitsmechanismen"
+msgstr "Implemented security mechanisms"
+
+#: templates/TechnicalStandards/explanation.html:129
+msgid ""
+"ob und welche Mechanismen sind im Protokoll implementiert, um die "
+"Datensicherheit zu gewährleisten?"
+msgstr "whether and what mechanisms are implemented in the protocol to ensure data security?"
+
+#: templates/TechnicalStandards/explanation.html:131
+msgid "Bandbreite"
+msgstr "Bandwidth"
+
+#: templates/TechnicalStandards/explanation.html:131
+msgid ""
+"die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen "
+"Komponenten des Systems zu übertragen."
+msgstr "the capacity of the communication channel to transmit data between the various components of the system."
+
+#: templates/TechnicalStandards/explanation.html:133
+msgid "Frequenz"
+msgstr "Frequency"
+
+#: templates/TechnicalStandards/explanation.html:133
+msgid ""
+"die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
+"drahtlosen Kommunikationsgeräten im System verwendet wird."
+msgstr "the frequency, wavelength, or carrier frequency used by the wireless communication devices in the system."
+
+#: templates/TechnicalStandards/explanation.html:135
+msgid "Reichweite"
+msgstr "Range"
+
+#: templates/TechnicalStandards/explanation.html:135
+msgid ""
+"die maximale Entfernung, über die die Kommunikation zwischen den "
+"verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden "
+"kann, ohne dass die Signalstärke zu schwach wird."
+msgstr "the maximum distance over which communication can be maintained "
+"between the various devices and components of the system without the signal strength becoming too weak."
+
+#: templates/TechnicalStandards/explanation.html:137
+msgid "Implementierte OSI-Schichten"
+msgstr "Implemented OSI-layer"
+
+#: templates/TechnicalStandards/explanation.html:137
+msgid ""
+"die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
+"zwischen den verschiedenen Komponenten des Systems."
+msgstr "the application of the layers of the OSI reference model for communication between the various components of the system."
+
+#: templates/TechnicalStandards/explanation.html:139
+msgid "Ebenen der Gebäudeautomation"
+msgstr "Levels of building automation"
+
+#: templates/TechnicalStandards/explanation.html:139
+msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
+msgstr "the hierarchical structure of a building automation system."
+
+#: templates/TechnicalStandards/explanation.html:141
+msgid "Datenmodell Architektur"
+msgstr "Data model architecture"
+
+#: templates/TechnicalStandards/explanation.html:141
+msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
+msgstr "how do you add information or attributes to an object?"
+
+#: templates/TechnicalStandards/explanation.html:143
+msgid "Discovery"
+msgstr "Discovery"
+
+#: templates/TechnicalStandards/explanation.html:143
+msgid ""
+"ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
+"Datenübertragung automatisch zu identifizieren?"
+msgstr "whether the protocol has the “discovery” function to automatically identify devices during data transfer?"
+
+#: templates/TechnicalStandards/explanation.html:145
+msgid "Multi Master"
+msgstr "Multi Master"
+
+#: templates/TechnicalStandards/explanation.html:145
+msgid "können mehrere Mastergeräte zeitgleich agieren?"
+msgstr "Can several master devices act at the same time?"
+
+#: templates/TechnicalStandards/explanation.html:147
+msgid "Priorität"
+msgstr "Priority"
+
+#: templates/TechnicalStandards/explanation.html:149
+msgid "Typische Anwendung"
+msgstr "Typical application"
+
+#: templates/TechnicalStandards/explanation.html:149
+msgid "ggf. Beispielhafte Anwendung."
+msgstr "If applicable, exemplary application."
+
+#: templates/TechnicalStandards/explanation.html:168
+msgid "Überblick über die Protokolle"
+msgstr "Overview of protocols"
+
 #: templates/admin/publications/import_bibtex.html:8
 msgid "Home"
 msgstr ""
@@ -379,14 +671,14 @@ msgid ""
 "          Bei der Zusammenstellung der Anwendungen haben wir folgende "
 "Aspekte berücksichtigt:"
 msgstr ""
-"The digital applications presented here correspond to the applications that were recorded "
-"as part of the evaluation of the questionnaire of the scientific "
-"accompanying research of the Energy Transition Building Research Initiative "
-"from 2021 and 2023. All digital tools are accordingly used, developed or "
-"further developed by projects that are funded as part of the Energy "
-"Transition Building research initiative. <br>A general distinction is made "
-"here between digital tools and digital applications. <br>A digital tool is a "
-"piece of software used in conjunction with other tools by developers or "
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the evaluation of the questionnaire of the "
+"scientific accompanying research of the Energy Transition Building Research "
+"Initiative from 2021 and 2023. All digital tools are accordingly used, "
+"developed or further developed by projects that are funded as part of the "
+"Energy Transition Building research initiative. <br>A general distinction is "
+"made here between digital tools and digital applications. <br>A digital tool "
+"is a piece of software used in conjunction with other tools by developers or "
 "engineers,to create products with specific functionalities. Frameworks, "
 "libraries, programming languages and standards are also listed under Tools. "
 "<br>A digital application, on the other hand, is a piece of software that "
@@ -400,11 +692,6 @@ msgstr ""
 "users, so please feel free to contact us. We look forward to hearing your "
 "application examples from your projects. <br>When putting together the "
 "tools, we took the following aspects into account:"
-
-#: templates/tools_over/explanationApps.html:27
-#: templates/tools_over/explanationTools.html:27
-msgid "Kurzbeschreibung"
-msgstr "Short description"
 
 #: templates/tools_over/explanationApps.html:28
 #: templates/tools_over/explanationTools.html:28
@@ -426,7 +713,8 @@ msgid ""
 "Dienstleistung."
 msgstr ""
 "What do the developers describe as the area of application of their digital "
-"application? Options include administration, research/teaching, industry, and service."
+"application? Options include administration, research/teaching, industry, "
+"and service."
 
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
@@ -441,8 +729,8 @@ msgid ""
 "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
 "Steuerung, Regelung."
 msgstr ""
-"What purpose is the application used for? Options include simulation, monitoring, "
-"optimization, planning, control, advanced control."
+"What purpose is the application used for? Options include simulation, "
+"monitoring, optimization, planning, control, advanced control."
 
 #: templates/tools_over/explanationApps.html:38
 #: templates/tools_over/explanationTools.html:38
@@ -459,14 +747,14 @@ msgid ""
 "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
 "berücksichtigt."
 msgstr ""
-"In which phase of the product life cycle is the application used? The phases of "
-"preliminary planning, planning, implementation and operation are taken into "
-"account here."
+"In which phase of the product life cycle is the application used? The phases "
+"of preliminary planning, planning, implementation and operation are taken "
+"into account here."
 
 #: templates/tools_over/explanationApps.html:42
 #: templates/tools_over/explanationTools.html:42
 #: templates/tools_over/tool-detail.html:81
-#: templates/tools_over/tool-listings-results.html:16
+#: templates/tools_over/tool-listings-results.html:20
 msgid "Nutzerschnittstelle"
 msgstr "User interface"
 
@@ -476,9 +764,9 @@ msgid ""
 "            Benötigt es eine eigenständige Installation, gibt es eine "
 "webbasierte Oberfläche oder bspw. über die Kommandozeile?"
 msgstr ""
-"How can users operate the digital application? Does it require an independent "
-"installation, is there a web-based interface or, for example, via the "
-"command line?"
+"How can users operate the digital application? Does it require an "
+"independent installation, is there a web-based interface or, for example, "
+"via the command line?"
 
 #: templates/tools_over/explanationApps.html:46
 #: templates/tools_over/explanationTools.html:46
@@ -493,13 +781,13 @@ msgid ""
 "            In der Regel können digitale Anwendungen von allen genutzt "
 "werden."
 msgstr ""
-"Who do you say the digital application is aimed at? As a rule, digital applications can be "
-"used by everyone."
+"Who do you say the digital application is aimed at? As a rule, digital "
+"applications can be used by everyone."
 
 #: templates/tools_over/explanationApps.html:50
 #: templates/tools_over/explanationTools.html:50
-#: templates/tools_over/tool-listings-results.html:41
 #: templates/tools_over/tool-comparison.html:166
+#: templates/tools_over/tool-listings-results.html:45
 msgid "Letztes Update"
 msgstr "Last update"
 
@@ -511,9 +799,10 @@ msgid ""
 "            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
 "Wartung eingestellt werden."
 msgstr ""
-"When was the last update done? Particularly in the case of digital applications "
-"that are developed as part of research projects, further development or "
-"maintenance can be stopped after the project has been completed."
+"When was the last update done? Particularly in the case of digital "
+"applications that are developed as part of research projects, further "
+"development or maintenance can be stopped after the project has been "
+"completed."
 
 #: templates/tools_over/explanationApps.html:56
 #: templates/tools_over/explanationTools.html:56
@@ -528,7 +817,8 @@ msgstr "Accessibility"
 msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
-msgstr "How accessible is the application? Is it paid, open source or freeware?"
+msgstr ""
+"How accessible is the application? Is it paid, open source or freeware?"
 
 #: templates/tools_over/explanationApps.html:59
 #: templates/tools_over/explanationTools.html:59
@@ -544,8 +834,8 @@ msgid ""
 "entstehen Kosten \n"
 "            durch die Anwendung ?"
 msgstr ""
-"Under what license was the digital application published and are there any costs "
-"associated with using the digital application?"
+"Under what license was the digital application published and are there any "
+"costs associated with using the digital application?"
 
 #: templates/tools_over/explanationApps.html:63
 #: templates/tools_over/explanationTools.html:63
@@ -557,7 +847,8 @@ msgstr "Alternatives"
 msgid ""
 "Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen "
 "ermöglichen (wenn vorhanden)?"
-msgstr "Which other digital applications can provide similar benefits (if any)?"
+msgstr ""
+"Which other digital applications can provide similar benefits (if any)?"
 
 #: templates/tools_over/explanationApps.html:66
 #: templates/tools_over/explanationTools.html:66
@@ -569,8 +860,8 @@ msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Anwendungen im "
 "Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen)."
 msgstr ""
-"Identification of concrete examples of the use of applications in the construction "
-"sector/energy transition construction (e.g. funding indicators)."
+"Identification of concrete examples of the use of applications in the "
+"construction sector/energy transition construction (e.g. funding indicators)."
 
 #: templates/tools_over/explanationApps.html:69
 #: templates/tools_over/explanationTools.html:69
@@ -579,7 +870,8 @@ msgstr "Developers/maintainers"
 
 #: templates/tools_over/explanationApps.html:70
 msgid "Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?"
-msgstr "Who is responsible for the development and maintenance of the application?"
+msgstr ""
+"Who is responsible for the development and maintenance of the application?"
 
 #: templates/tools_over/explanationApps.html:72
 #, fuzzy
@@ -592,7 +884,9 @@ msgid ""
 "Welcher Art ist die Anwendung? \n"
 "            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung "
 "als auch als Werkzeug eingestuft?"
-msgstr "What type is the application? Is it classified as just an application/platform or both an application and a tool?"
+msgstr ""
+"What type is the application? Is it classified as just an application/"
+"platform or both an application and a tool?"
 
 #: templates/tools_over/explanationApps.html:76
 #: templates/tools_over/explanationTools.html:76
@@ -655,12 +949,13 @@ msgid ""
 "              <li>alle Funktion erhalten, evtl. Fehler enthalten (Release "
 "Canditate - RC)</li>\n"
 "              <li>bereit für den produktiven Einsatz (Released)</li>"
-msgstr "What is the current development status? The following options are possible: <ol>"
-"<li>first draft (pre-alpha)</li>\n"
+msgstr ""
+"What is the current development status? The following options are possible: "
+"<ol><li>first draft (pre-alpha)</li>\n"
 " <li>Essential functions (Alpha)</li>\n"
 " <li>not yet fully tested (Beta)</li>\n"
-" <li>all functions preserved, possibly containing errors (release "
-"Canditate - RC)</li>\n"
+" <li>all functions preserved, possibly containing errors (release Canditate "
+"- RC)</li>\n"
 " <li>ready for productive use (released)</li>"
 
 #: templates/tools_over/explanationApps.html:98
@@ -672,7 +967,8 @@ msgstr "programming language"
 msgid ""
 "Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich "
 "genutzt?"
-msgstr "Which programming language is mainly used to implement the application?"
+msgstr ""
+"Which programming language is mainly used to implement the application?"
 
 #: templates/tools_over/explanationApps.html:101
 #: templates/tools_over/explanationTools.html:101
@@ -712,8 +1008,9 @@ msgid ""
 "            einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder "
 "einer/em Region/Land?"
 msgstr ""
-"On what scale is the application used? Does the application find in a component, a system, "
-"a building, or in a district/network or a region/country?"
+"On what scale is the application used? Does the application find in a "
+"component, a system, a building, or in a district/network or a region/"
+"country?"
 
 #: templates/tools_over/explanationApps.html:110
 #: templates/tools_over/explanationTools.html:111
@@ -727,7 +1024,8 @@ msgid ""
 "Welche Normen oder Standards dienen als Basis bzw. Orientierung für die "
 "Anwendung?"
 msgstr ""
-"Which norms or standards serve as the basis or orientation for the application?"
+"Which norms or standards serve as the basis or orientation for the "
+"application?"
 
 #: templates/tools_over/explanationApps.html:120
 #: templates/tools_over/explanationTools.html:121
@@ -813,6 +1111,18 @@ msgstr ""
 "The Climate Neutral Building Forum provides an overview of digital tools. "
 "These are aimed particularly at people who work in accounting and consulting."
 
+#: templates/tools_over/explanationApps.html:176
+#: templates/tools_over/explanationBusinessApps.html:21
+#: templates/tools_over/explanationTools.html:177
+msgid "Zeige weniger ..."
+msgstr "Show less ..."
+
+#: templates/tools_over/explanationApps.html:177
+#: templates/tools_over/explanationBusinessApps.html:22
+#: templates/tools_over/explanationTools.html:178
+msgid "Zeige mehr ..."
+msgstr "Show more ..."
+
 #: templates/tools_over/explanationBusinessApps.html:10
 msgid ""
 "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, \n"
@@ -824,9 +1134,13 @@ msgid ""
 "          Eine Reihe von Tools kann die "
 "Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier "
 "vorgestellt."
-msgstr "In addition to the scientific development of digital applications, proven technologies must also be implemented economically." 
-"This requires business models so that the potential of the digital application can be made available as a product or service to as "
-"wide a range of users as possible. A number of tools can support business model development. Some of these are presented here."
+msgstr ""
+"In addition to the scientific development of digital applications, proven "
+"technologies must also be implemented economically.This requires business "
+"models so that the potential of the digital application can be made "
+"available as a product or service to as wide a range of users as possible. A "
+"number of tools can support business model development. Some of these are "
+"presented here."
 
 #: templates/tools_over/explanationTools.html:9
 msgid ""
@@ -1070,14 +1384,6 @@ msgstr ""
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
-#: templates/tools_over/explanationTools.html:177
-msgid "Zeige weniger ..."
-msgstr "Show less ..."
-
-#: templates/tools_over/explanationTools.html:178
-msgid "Zeige mehr ..."
-msgstr "Show more ..."
-
 #: templates/tools_over/tool-comparison.html:23
 msgid "Ergebnisse"
 msgstr "Results"
@@ -1156,14 +1462,9 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 msgid "Kurzinformationen"
 msgstr "Publications"
 
-#: templates/tools_over/tool-listings-results.html:39
+#: templates/tools_over/tool-listings-results.html:43
 msgid "Updates"
 msgstr "Updates"
-
-#: templates/tools_over/tool-listings.html:3
-#: templates/tools_over/tool-listings.html:18
-msgid "Überblick über digitale Werkzeuge"
-msgstr "Overview of digital tools"
 
 #: templates/tools_over/tool-listings.html:42
 #: templates/tools_over/tool-listings.html:120
