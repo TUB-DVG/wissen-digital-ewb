@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-06 12:37+0000\n"
+"POT-Creation-Date: 2024-03-07 07:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,6 +126,10 @@ msgstr ""
 "community and also to the research projects of the Energiewendebauen "
 "research initiative."
 
+#: templates/StartSearch/StartSearch.html:54
+msgid "Durchsuche die Plattform!"
+msgstr "Search the platform!"
+
 #: templates/StartSearch/StartSearch.html:82
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
@@ -170,8 +174,145 @@ msgid "Lastprofile"
 msgstr "load profiles"
 
 #: templates/StartSearch/StartSearch.html:172
+#: templates/StartSearch/StartSearch.html:275
+#: templates/StartSearch/StartSearch.html:372
+#: templates/StartSearch/StartSearch.html:452
 msgid "Publikationen"
 msgstr "Publications"
+
+#: templates/StartSearch/StartSearch.html:193
+msgid "Betrieblicher Fokus"
+msgstr "Operational Focus"
+
+#: templates/StartSearch/StartSearch.html:195
+#, fuzzy
+#| msgid ""
+#| "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
+#| "                der Energieforschung im Gebäudesektor zielt vorrangig "
+#| "auf\n"
+#| "                Hilfsmittel für die technische Planung und die "
+#| "technische\n"
+#| "                Betriebsdurchführung bzw. -optimierung ab. Dies umfasst\n"
+#| "                Datensätze, digitale Werkzeuge bzw. Anwendungen und "
+#| "weitere\n"
+#| "                Forschungsergebnisse."
+msgid ""
+"Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
+"                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
+"die\n"
+"                Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte "
+"sind\n"
+"                dabei der wirtschaftliche Betrieb digitaler Anwendungen\n"
+"                (Geschäftsmodelle) und die Einbindung von und Interaktion "
+"mit\n"
+"                den Nutzenden."
+msgstr ""
+"The technical focus in the investigation of digitalization in energy "
+"research in the building sector is primarily aimed at tools for technical "
+"planning and the technical operational implementation and optimization. This "
+"includes data sets, digital tools and applications and other research "
+"Research results."
+
+#: templates/StartSearch/StartSearch.html:214
+msgid "Geschäfts&shy;modell&shy;"
+msgstr "Business model"
+
+#: templates/StartSearch/StartSearch.html:226
+#, fuzzy
+#| msgid "Geschäfts&shy;modell&shy;anwendungen"
+msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
+msgstr "Business model applications"
+
+#: templates/StartSearch/StartSearch.html:238
+msgid "Geschäfts&shy;modell&shy;anwendungen"
+msgstr "Business model applications"
+
+#: templates/StartSearch/StartSearch.html:250
+msgid "Nutzenden&shy;perspektive"
+msgstr "User perspective"
+
+#: templates/StartSearch/StartSearch.html:262
+#, fuzzy
+#| msgid "Nutzenden&shy;perspektive"
+msgid "Nutzenden&shy;perspektive - Methoden"
+msgstr "User perspective"
+
+#: templates/StartSearch/StartSearch.html:300
+msgid "Ökologischer Fokus"
+msgstr "Ecological Focus"
+
+#: templates/StartSearch/StartSearch.html:302
+msgid ""
+"Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
+"                in der Energieforschung im Gebäudesektor zielt auf das\n"
+"                Evaluieren von Umwelteffekten durch den Einsatz digitaler\n"
+"                Anwendungen ab. Neben positiven Wirkungen wie\n"
+"                Energieeinsparungen werden auch negativen Auswirkungen wie "
+"ein\n"
+"                erhöhter Materialverbrauch durch digitale Anwendungen\n"
+"                aufgezeigt. In diesem Kontext wird auch ein suffizienter "
+"Umgang\n"
+"                mit Daten sowie dessen Auswirkungen thematisiert."
+msgstr ""
+"The ecological focus when examining digitalization in energy research in the "
+"building sector aims to evaluate environmental effects through the use of "
+"digital applications. In addition to positive effects such as energy "
+"savings, negative effects such as increased material consumption through "
+"digital applications are also shown. In this context, the adequate handling "
+"of data and its effects are also discussed."
+
+#: templates/StartSearch/StartSearch.html:323
+msgid "Negative Umweltwirkungen"
+msgstr "Negative environmental impacts"
+
+#: templates/StartSearch/StartSearch.html:335
+msgid "Positive Umweltwirkungen"
+msgstr "Positive environmental impact"
+
+#: templates/StartSearch/StartSearch.html:347
+msgid "Herausforderungen"
+msgstr "Challenges"
+
+#: templates/StartSearch/StartSearch.html:359
+msgid "Datensuffizienz"
+msgstr "Data sufficiency"
+
+#: templates/StartSearch/StartSearch.html:393
+msgid "Rechtlicher Fokus"
+msgstr "Legal Focus"
+
+#: templates/StartSearch/StartSearch.html:395
+msgid ""
+"Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
+"                Datenschutzes für die Digitalisierung im Gebäudesektor. "
+"Hier\n"
+"                wird einerseits aufgezeigt, wie Datenschutzrisiken entstehen "
+"und\n"
+"                wie sie sich innovationshemmend auswirken können. "
+"Andererseits\n"
+"                wird für verschiedenste Anwendungsfälle im Gebäudesektor "
+"das\n"
+"                Datenschutzrecht konkretisiert und in konkrete\n"
+"                Handlungsempfehlungen für Projekte übersetzt."
+msgstr ""
+"The legal focus primarily highlights the importance of data protection for "
+"digitalization in the building sector. On the one hand, it shows how data "
+"protection risks arise and how they can inhibit innovation. On the other "
+"hand, data protection law is being clarified for a wide range of "
+"applications in the building sector and translated into concrete "
+"recommendations for action for projects."
+
+#: templates/StartSearch/StartSearch.html:415
+msgid "Daten&shy;schutz&shy;übersicht"
+msgstr "Privacy Overview"
+
+#: templates/StartSearch/StartSearch.html:427
+msgid "Kriterien&shy;katalog"
+msgstr "Catalog of criteria"
+
+#: templates/StartSearch/StartSearch.html:439
+msgid "Icons und Visualisierung"
+msgstr "Icons and visualization"
 
 #: templates/admin/publications/import_bibtex.html:8
 msgid "Home"
