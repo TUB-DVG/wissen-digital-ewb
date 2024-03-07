@@ -31,7 +31,7 @@
         <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
           <input id="search-input-tools" class="form-control me-1"
                  type="search"
-                 placeholder="Durchsuche die Plattform!" name="searchValue"
+                 placeholder="{% translate 'Durchsuche die Plattform!' %}" name="searchValue"
                  value={{ searchInput }}
                  style="border: None">
         </div>
@@ -113,7 +113,7 @@
               <!-- Name of item -->
               <td>
                 <div class="ms-2">
-                  <h6 class="mb-0 fw-light">{{ dataSet.kindOfItem }}</h6>
+                  <h6 class="mb-0 fw-light">{{ dataSet.classificationAgg }}</h6>
                 </div>
               </td>
 

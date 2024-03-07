@@ -167,10 +167,10 @@ def resultSearch(request):
         tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
             tool["name"] = tool["name"][:40] + " ... "
-        # breakpoint()
         tool["description"] = tool.pop("shortDescription")
         # later use input from table tools for kindOfItem
-        tool["kindOfItem"] = tool["classificationAgg"]
+        tool["kindOfItem"] = "digitales Werkzeug"
+        # tool["classificationAgg"]
 
         # make a time stamp list, including also virtual dates
         # replancning unspecific time values like "laufend" or
@@ -200,6 +200,7 @@ def resultSearch(request):
         project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
+        project["classificationAgg"] = "Forschungsprojekt"
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
@@ -224,6 +225,7 @@ def resultSearch(request):
             protocolName = protocolName[:40] + " ... "
         protocol["name"] = protocolName
         protocol["kindOfItem"] = "Protokoll"
+        protocol["classificationAgg"] = "Protokoll"
         protocol["date"] = "noch nicht hinterlegt"
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)

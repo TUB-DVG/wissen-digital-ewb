@@ -1,12 +1,12 @@
 {% load static %}
-
+{% load i18n %}
 <section class="py-4">
 	<div class="container">
     <div class="row collapseInfoContainer"
          id="collapseInfoContainerTools">
       <div class="col-lg-12 collapse lead collapseInfo"
            id="collapseInfoTools">
-        <p>Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen 
+        <p>{% blocktranslate %}Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen 
           Begleitforschung der Forschungsinitiative Energiewendebauen von 2021 und 2023 erfasst wurden. 
           Alle digitalen Anwendungen werden dementsprechend von Projekten, die im Rahmen der 
           Forschungsinitiative Energiewendebauen gefördert werden, eingesetzt, entwickelt oder weiterentwickelt. <br>
@@ -21,94 +21,94 @@
           Verfügung. Eine detaillierte Zusammenstellung der Werkzeuge und Anwendungen kann nur gemeinsam mit den Anwendern erfolgen, sprechen 
           Sie uns daher gerne an. Wir freuen uns auf Ihre Anwendungsbeispiele aus Ihren Projekten. 
           <br>
-          Bei der Zusammenstellung der Anwendungen haben wir folgende Aspekte berücksichtigt:
+          Bei der Zusammenstellung der Anwendungen haben wir folgende Aspekte berücksichtigt:{% endblocktranslate %}
         </p>
         <ul>
-          <li class="lead"><b>Kurzbeschreibung</b>&nbsp;&ndash;
-            Um was handelt es sich?
+          <li class="lead"><b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Um was handelt es sich?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Einsatzbereich </b>&nbsp;&ndash; 
-            Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen Anwendung? 
-            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und Dienstleistung.
+          <li class="lead"><b>{% translate "Einsatzbereich" %}</b>&nbsp;&ndash; 
+            {% blocktranslate %}Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen Anwendung? 
+            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und Dienstleistung.{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Nutzung</b>&nbsp;&ndash;
-            Zu welchem Zweck wird die Anwendung eingesetzt? 
-            Optionen sind Simulation, Monitoring, Optimierung, Planung, Steuerung, Regelung.
+          <li class="lead"><b>{% translate "Nutzung" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Zu welchem Zweck wird die Anwendung eingesetzt? 
+            Optionen sind Simulation, Monitoring, Optimierung, Planung, Steuerung, Regelung.{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Lebenszyklusphase</b>&nbsp;&ndash;
-            In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt? 
-            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb berücksichtigt.
+          <li class="lead"><b>{% translate "Lebenszyklusphase" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt? 
+            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb berücksichtigt.{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Nutzerschnittstelle</b>&nbsp;&ndash;
-            Wie können Nutzende die digitale Anwendung bedienen? 
-            Benötigt es eine eigenständige Installation, gibt es eine webbasierte Oberfläche oder bspw. über die Kommandozeile? 
+          <li class="lead"><b>{% translate "Nutzerschnittstelle" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Wie können Nutzende die digitale Anwendung bedienen? 
+            Benötigt es eine eigenständige Installation, gibt es eine webbasierte Oberfläche oder bspw. über die Kommandozeile?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Zielgruppe</b>&nbsp;&ndash;
-            An wen richtet sich die digitale Anwendung laut eigener Aussage?
-            In der Regel können digitale Anwendungen von allen genutzt werden. 
+          <li class="lead"><b>{% translate "Zielgruppe" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}An wen richtet sich die digitale Anwendung laut eigener Aussage?
+            In der Regel können digitale Anwendungen von allen genutzt werden.{% endblocktranslate %} 
           </li>          
-          <li class="lead"><b>Letztes Update</b>&nbsp;&ndash;
-            Wann ist das letzte Update erfolgt. 
+          <li class="lead"><b>{% translate "Letztes Update" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Wann ist das letzte Update erfolgt.
             Insbesondere bei digitalen Anwendungen, 
             welche im Rahmen von Forschungsprojekten entwickelt werden, 
-            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die Wartung eingestellt werden.
+            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die Wartung eingestellt werden.{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Zugänglichkeit</b>&nbsp;&ndash;
-            Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder freeware?
+          <li class="lead"><b>{% translate "Zugänglichkeit" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder freeware?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Lizenz</b>&nbsp;&ndash;
-            Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und entstehen Kosten 
-            durch die Anwendung ?
+          <li class="lead"><b>{% translate "Lizenz" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und entstehen Kosten 
+            durch die Anwendung ?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Alternativen</b>&nbsp;&ndash;
-            Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen ermöglichen (wenn vorhanden)?
+          <li class="lead"><b>{% translate "Alternativen" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen ermöglichen (wenn vorhanden)?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Konkrete Anwendungsfälle</b>&nbsp;&ndash;
-            Benennung von konkreten Beispielen für den Einsatz von Anwendungen im Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen).
+          <li class="lead"><b>{% translate "Konkrete Anwendungsfälle" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Benennung von konkreten Beispielen für den Einsatz von Anwendungen im Bausektor/EnergiewendeBauen (bspw. Förderkennzeichen).{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Entwicklende / Maintainer</b>&nbsp;&ndash;
-            Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?
+          <li class="lead"><b>{% translate "Entwicklende / Maintainer" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Generelle Art der Anwendung</b>&nbsp;&ndash;
-            Welcher Art ist die Anwendung? 
-            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung als auch als Werkzeug eingestuft?
+          <li class="lead"><b>{% translate "Generelle Art der Anwendung" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Welcher Art ist die Anwendung? 
+            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung als auch als Werkzeug eingestuft?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Veröffentlicht</b>&nbsp;&ndash;
-            Ist das Werkzeug bereits veröffentlicht?
+          <li class="lead"><b>{% translate "Veröffentlicht" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Ist das Werkzeug bereits veröffentlicht?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Veröffentlichung geplant</b>&nbsp;&ndash;
-            Ist eine Veröffentlichung geplant? (falls noch nicht erfolgt)
+          <li class="lead"><b>{% translate "Veröffentlichung geplant" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Ist eine Veröffentlichung geplant? (falls noch nicht erfolgt){% endblocktranslate %}
           </li>
-          <li class="lead"><b>Jahr der Veröffentlichung</b>&nbsp;&ndash;
-            In welchem Jahr wurde es veröffentlicht? (falls schon erfolgt)
+          <li class="lead"><b>{% translate "Jahr der Veröffentlichung" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}In welchem Jahr wurde es veröffentlicht? (falls schon erfolgt){% endblocktranslate %}
           </li>
-          <li class="lead"><b>Informationsquellen</b>&nbsp;&ndash;
-            Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite.
+          <li class="lead"><b>{% translate "Informationsquellen" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite.{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Entwicklungsstand</b>&nbsp;&ndash;
-            Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen möglich:
+          <li class="lead"><b>{% translate "Entwicklungsstand" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen möglich:
             <ol>
               <li>erster Entwurf (pre-Alpha)</li>
               <li>wesentliche Funktionen (Alpha)</li>
               <li>noch nicht vollständig gestetet (Beta)</li>
               <li>alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)</li>
-              <li>bereit für den produktiven Einsatz (Released)</li>
+              <li>bereit für den produktiven Einsatz (Released)</li>{% endblocktranslate %}
             </ol> 
           </li>
-          <li class="lead"><b>Programmiersprache</b>&nbsp;&ndash;
-            Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich genutzt?
+          <li class="lead"><b>{% translate "Programmiersprache" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich genutzt?{% endblocktranslate %}
           </li>    
-          <li class="lead"><b>Wichtigste Framework / Bibliotheken</b>&nbsp;&ndash;
-            Was sind die wichtigsten Frameworks oder Bibliotheken bei der Umsetzung?
+          <li class="lead"><b>{% translate "Wichtigste Framework / Bibliotheken" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Was sind die wichtigsten Frameworks oder Bibliotheken bei der Umsetzung?{% endblocktranslate %}
           </li>
-          <li class="lead"><b>Datenbanksystem</b>&nbsp;&ndash;
-            Welches Datenbanksystem verwendet die Anwendung?
+          <li class="lead"><b>{% translate "Datenbanksystem" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Welches Datenbanksystem verwendet die Anwendung?{% endblocktranslate %}
           </li> 
-          <li class="lead"><b>Räumliche Größenordnung der Anwendungsfälle</b>&nbsp;&ndash;
-            In welcher Größenordnung wird die Anwendung angewendet? Findet die Anwendung in einer Komponente, 
-            einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder einer/em Region/Land?
-          <li class="lead"><b>Normen/Standards</b>&nbsp;&ndash;
-            Welche Normen oder Standards dienen als Basis bzw. Orientierung für die Anwendung?
+          <li class="lead"><b>{% translate "Räumliche Größenordnung der Anwendungsfälle" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}In welcher Größenordnung wird die Anwendung angewendet? Findet die Anwendung in einer Komponente, 
+            einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder einer/em Region/Land?{% endblocktranslate %}
+          <li class="lead"><b>{% translate "Normen/Standards" %}</b>&nbsp;&ndash;
+            {% blocktranslate %}Welche Normen oder Standards dienen als Basis bzw. Orientierung für die Anwendung?{% endblocktranslate %}
           </li>
         </ul>
         <p>
@@ -117,47 +117,47 @@
         <p>
           <a href="https://simquality.de/tools/" target="_blank">https://simquality.de/tools</a>
           </br>
-          Im Projekt Simquality wurden Informationen und Daten rund um das Thema Qualitätssicherung und Standardisierung von Simulationsverfahren gesammelt. 
+          {% blocktranslate %}Im Projekt Simquality wurden Informationen und Daten rund um das Thema Qualitätssicherung und Standardisierung von Simulationsverfahren gesammelt. 
           Bestandteil des Projektes war die unabhängige Prüfung von Simulationssoftware. 
-          Auf der oben genannten Website sind weiterführende Informationen zu IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS und AixLib einsehbar.
+          Auf der oben genannten Website sind weiterführende Informationen zu IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS und AixLib einsehbar.{% endblocktranslate %}
         </p>
         <p>
           <a href="https://github.com/protontypes/open-sustainable-technology" target="_blank">
             https://github.com/protontypes/open-sustainable-technology
           </a>
           </br>
-          Das Projekt Open Sustainable Technology sammelt offene,
+          {% blocktranslate %}Das Projekt Open Sustainable Technology sammelt offene,
           nachhaltige und aktive Projekte, welche zum Ziel haben eine
           nachhaltige Energieversorgung zu ermöglichen. Dabei werden
           Standards, Daten oder Programme gesammelt. Es erfolgt keine
-          weitere Einordnung.
+          weitere Einordnung.{% endblocktranslate %}
         </p>
         <p>
           <a href="https://www.baulinks.de/architektursoftware/index.php" target="_blank">
             https://www.baulinks.de/architektursoftware/index.php</a>
            </br>
-           Die Website baulinks sammelt Informationen über Software mit dem Fokus Architektur und Handwerk. Neben CAD-Werkzeugen, 
-           oder digitale Werkzeuge zur Planungen werden auch Informationen zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von Mengen gesammelt.
+           {% blocktranslate %}Die Website baulinks sammelt Informationen über Software mit dem Fokus Architektur und Handwerk. Neben CAD-Werkzeugen, 
+           oder digitale Werkzeuge zur Planungen werden auch Informationen zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von Mengen gesammelt.{% endblocktranslate %}
         </p>
         <p>
           <a href="https://openenergy-platform.org/" target="_blank">
             https://openenergy-platform.org
           </a>
           </br>
-          Die Openenergy Plattform hat zum Ziel die Modellierung von Energiesystemen transparent zu machen. 
-          Hierzu werden Informationen und digitale Werkzeuge rund um das Thema Energie gesammelt
+          {% blocktranslate %}Die Openenergy Plattform hat zum Ziel die Modellierung von Energiesystemen transparent zu machen. 
+          Hierzu werden Informationen und digitale Werkzeuge rund um das Thema Energie gesammelt.{% endblocktranslate %}
         </p>
         <p class="mb-0">
           <a href="https://www.energy.gov/eere/buildings/building-energy-modeling" target="_blank">
             https://www.energy.gov/eere/buildings/building-energy-modeling
           </a>
           </br>
-          Andere Seiten wie bspw. die durch das Office of Energy Efficiency &
+          {% blocktranslate %}Andere Seiten wie bspw. die durch das Office of Energy Efficiency &
           Renewable Energy der Vereinigten Staaten von Amerika betriebene
           Website sammeln Informationen zu digitale Werkzeuge, welche durch
           diese finanziert und erstellt werden. Zudem werden durch weitere
           Informationen wie beispielsweise eines Blogs anschauliche
-          Informationen bereitgestellt.
+          Informationen bereitgestellt.{% endblocktranslate %}
         </p>
         <br>
         <p>
@@ -165,14 +165,16 @@
             https://www.gebaeudeforum.de/service/toolbox/
           </a>
           </br>
-          Das Gebäudeforum Klimaneutral stellt eine Übersicht zu digitalen Werkzeugen zur Verfügung. 
-          Diese richten sich insbesondere an Personen richten, die in der Bilanzierung und Beratung tätig sind.
+          {% blocktranslate %}Das Gebäudeforum Klimaneutral stellt eine Übersicht zu digitalen Werkzeugen zur Verfügung. 
+          Diese richten sich insbesondere an Personen richten, die in der Bilanzierung und Beratung tätig sind.{% endblocktranslate %}
         </p>
       </div>
       <div class="col-lg-12 lead mt-3">
         <a role="button" class="collapsed text-truncation-btn"
            data-toggle="collapse" href="#collapseInfoTools"
-           aria-expanded="false" aria-controls="collapseInfoTools">
+           aria-expanded="false" aria-controls="collapseInfoTools"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}">
         </a>
       </div>
     </div>
