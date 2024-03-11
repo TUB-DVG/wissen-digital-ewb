@@ -74,8 +74,9 @@
                         {% if node.content.depth == 0 %}
                           <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}">{{ node.content.topic.heading }}<br />
                             <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none;">
+                          <hr>
                         {% else %}
+                          <hr style="display: none;">
                           <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
                             <p style="display: none;">{{ node.content.topic.text }}</p>
                           <hr style="display: none;">
@@ -105,6 +106,7 @@
     var foundULs = 0;
     var foundChilds = [];
     // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
+    var firstElementSkipped = false;
     for (var i = 0; i < childElements.length; i++) {
       if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
         foundChilds.push(childElements[i]);
@@ -115,14 +117,17 @@
         var childrenOfUL = childElements[i].children
         // debugger;
         for (var j= 0; j < childrenOfUL.length; j++) {
-          foundChilds.push(childrenOfUL[j]);
+          if (firstElementSkipped) {
+            foundChilds.push(childrenOfUL[j]);
+          }
+          else {
+            firstElementSkipped = true;
+          }
         }
       }
+      // lastElementStr = childElements[i].tagName;
     }
-    // var childElementsOfUL = filteredChildElements[0].children;
-
-    
-
+// var childElementsOfUL = filteredChildElements[0].children;
 //     var childElements = Array.from(element.children).filter(function(child) {
 //     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
 // });
