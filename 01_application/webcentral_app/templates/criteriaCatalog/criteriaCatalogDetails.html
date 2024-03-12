@@ -74,7 +74,7 @@
                         {% if node.content.depth == 0 %}
                           <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}">{{ node.content.topic.heading }}<br />
                             <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr>
+                          <hr style="display: none;">
                         {% else %}
                           <hr style="display: none;">
                           <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
@@ -107,15 +107,29 @@
     var foundChilds = [];
     // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
     var firstElementSkipped = false;
+    // if the parent of the parent of the clicked element is a div, then the clicked element is
+    // a root element and its text should be displayed in grey.
+    var displayPInGray = false;
+    if (element.parentElement.parentElement.tagName == "DIV") {
+      displayPInGray = true;
+    }
+
     for (var i = 0; i < childElements.length; i++) {
+      // debugger;
       if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
+        if (displayPInGray) {
+          childElements[i].style.color = "grey";
+        }
+        else {
+          childElements[i].style.color = "black";
+        }
         foundChilds.push(childElements[i]);
       }
 
       if (childElements[i].tagName == "UL") {
         foundChilds.push(childElements[i]);
+        
         var childrenOfUL = childElements[i].children
-        // debugger;
         for (var j= 0; j < childrenOfUL.length; j++) {
           if (firstElementSkipped) {
             foundChilds.push(childrenOfUL[j]);
