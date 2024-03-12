@@ -118,14 +118,16 @@
     // if the parent of the parent of the clicked element is a div, then the clicked element is
     // a root element and its text should be displayed in grey.
     var displayPInGray = false;
+    // debugger;
     if (element.parentElement.parentElement.tagName == "DIV") {
       displayPInGray = true;
       foundChilds.push(document.getElementById("criterias"));
       // foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
     }
-
+    else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
+      foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+    }
     for (var i = 0; i < childElements.length; i++) {
-      // debugger;
       if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
         if (displayPInGray) {
           childElements[i].style.color = "grey";
@@ -152,7 +154,6 @@
           }
         }
       }
-      // debugger;
       // lastElementStr = childElements[i].tagName;
     }
 // var childElementsOfUL = filteredChildElements[0].children;
@@ -170,7 +171,7 @@
           foundChilds[i].style.display = 'block';
         }
     }
-    debugger;
+    // debugger;
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
     } else {
