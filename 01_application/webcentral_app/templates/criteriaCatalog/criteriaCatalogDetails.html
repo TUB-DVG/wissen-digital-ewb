@@ -80,18 +80,18 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" width="20" height="20">{{ node.content.topic.heading }}<br />
+                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 1px;">{{ node.content.topic.heading }}<br />
                             <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none;">
+                          <hr style="display: none; margin-top: 1px; padding-left: 80px;">
                         {% else %}
-                          <hr style="display: none;">
-                          <li onclick="showOrHide(event, this)" style="display: none;">{{ node.content }}
+                          <hr style="display: none; margin-top: 1px;">
+                          <li onclick="showOrHide(event, this)" style="display: none; padding-left: 80px;">{{ node.content }}
                             <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none;">
+                          <hr style="display: none; margin-top: 1px; padding-left: 80px;">
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <hr>
+                    <hr style="margin-top: 1px; margin-bottom: 1px; padding-left: 80px;">
                   {% endfor %}
                 <!-- </ul> -->
               </div>
