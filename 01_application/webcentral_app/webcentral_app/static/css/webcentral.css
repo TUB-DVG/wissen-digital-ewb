@@ -82,11 +82,13 @@
 }
 
 #container-criteria-catalog-details p {
-  font-size: 18px;
+  font-size: 22px;
+  margin-bottom: 1px;
 }
 
 #container-criteria-catalog-details li {
-  font-size: 18px;
+  font-size: 22px;
+  margin-bottom: 1px;
 }
 
 #container-criteria-catalog-details hr {
