@@ -51,16 +51,18 @@
       </form>
       <div class="p-2">
         <div class="row g-4">
-          <div class="col-lg-12 border-legal p-4 my-4">
-              {{ criteriaCatalog.name }}
+          <div class="col-lg-12 border-legal p-4 my-4" id="container-criteria-catalog-details">
+              <p style="margin-bottom: 1px;">{{ criteriaCatalog.name }}</p>
             <div class="row">
-              <div class="col-lg-12">
-                Beschreibungstext: {{ criteriaCatalog.text }}
+              <div class="col-lg-12" id="container-criteria-catalog-details">
+                <p>Beschreibungstext: {{ criteriaCatalog.text }}</p>
               </div>
             </div>
             <br />
             <div class="row">
-              Themen
+              <div class="col-lg-12" id="container-criteria-catalog-details">
+                Themen
+              </div>
             </div>
               <div class="row" id="container-criteria-catalog-details">
                 <!-- <ul> -->
