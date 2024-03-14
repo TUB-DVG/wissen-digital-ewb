@@ -21,7 +21,7 @@
             {% if "Betriebsoptimierung" in criteriaCatalog.name %}
               <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
             {% else %}
-              <a href="/criteriaCatalog/Profilbildung">
+              <a href="/criteriaCatalog/Betriebsoptimierung">
                 <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
               </a>
             {% endif %}
@@ -75,23 +75,23 @@
                   {% for tree in trees %}
                     {% for node in tree %}
                       {% if node.indent %}
-                        <ul>
+                        <ul style="margin-bottom: 2px;">
                       {% elif node.outdent %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 1px;">{{ node.content.topic.heading }}<br />
-                            <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; padding-left: 80px;">
+                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
+                            <p style="display: none; margin-bottom: 0px;">{{ node.content.topic.text }}</p>
+                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;">
                         {% else %}
-                          <hr style="display: none; margin-top: 1px;">
+                          <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
                           <li onclick="showOrHide(event, this)" style="display: none; padding-left: 80px;">{{ node.content }}
                             <p style="display: none;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; padding-left: 80px;">
+                          <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;">
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <hr style="margin-top: 1px; margin-bottom: 1px; padding-left: 80px;">
+                    <hr style="margin-top: 1px; margin-bottom: 1px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
                   {% endfor %}
                 <!-- </ul> -->
               </div>
@@ -122,7 +122,9 @@
     if (element.parentElement.parentElement.tagName == "DIV") {
       displayPInGray = true;
       foundChilds.push(document.getElementById("criterias"));
-      // foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+      if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
+        foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+      }
     }
     else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
       foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
