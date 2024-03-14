@@ -80,17 +80,6 @@
   outline: 2px solid #F5E86A;
   outline-offset: -17px;
 }
-
-#container-criteria-catalog-details p {
-  font-size: 22px;
-  margin-bottom: 1px;
-}
-
-#container-criteria-catalog-details li {
-  font-size: 22px;
-  margin-bottom: 1px;
-}
-
 #container-criteria-catalog-details hr {
   background-color: #F5E86A;
   height: 3px;
@@ -98,6 +87,16 @@
 }
 #container-criteria-catalog-details li {
   list-style-type: none;
+}
+
+.select-style {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M10 15l5-5 5 5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  padding-right: 30px; /* space for the icon */
 }
 
 /* formating cards */

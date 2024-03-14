@@ -11,63 +11,76 @@
   <section class="pt-0">
     <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
       <!-- Filter bar START -->
-      <div class="row">
-        <a href="/pages/criteriaCatalog" style="color: #E0D674">< Kriterienkatalog Start</a>
+      <div class="row my-4">
+        <a href="/pages/criteriaCatalog" style="color: #E0D674; font-size: 15px;">< Kriterienkatalog Start</a>
       </div>
-      <form class="container p-2 container-criteria-catalog-details border-legal">
+      <div class="p-2">
         <div class="row g-4">
-          <!-- Input -->
-          <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-            {% if "Betriebsoptimierung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Betriebsoptimierung">
-                <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
-              </a>
-            {% endif %}
-            {% if "Profilbildung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory2-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Profilbildung"><img src="{% static 'assets/images/PurposeCategory2.svg' %}"></a>
-            {% endif %}
-            {% if "Verhaltensbeeinflussung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
-            {% endif %}
-            {% if "Teilen" in criteriaCatalog.name %} 
-              <img src="{% static 'assets/images/PurposeCategory4-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Teilen"><img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon"></a>
-            {% endif %}
-          </div>
-          <!-- search Field Schlagwort -->
-          <div class="col-xl-7"></div>
-          <div class="col-xl-2">
-            <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'>
+          <div class="col-lg-12 border-legal p-2 my-1" id="container-criteria-catalog-details">
+            <div class="row">
+            <!-- Input -->
+              <div class="col-3 col-xl-3" title="Suchen in den Anwendungsnamen">
+              {% if "Betriebsoptimierung" in criteriaCatalog.name %}
+                <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
+              {% else %}
+                <a href="/criteriaCatalog/Betriebsoptimierung">
+                  <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon">
+                </a>
+              {% endif %}
+              {% if "Profilbildung" in criteriaCatalog.name %}
+                <img src="{% static 'assets/images/PurposeCategory2-selected.svg' %}"  class="rounded" alt="icon">
+              {% else %}
+                <a href="/criteriaCatalog/Profilbildung"><img src="{% static 'assets/images/PurposeCategory2.svg' %}"></a>
+              {% endif %}
+              {% if "Verhaltensbeeinflussung" in criteriaCatalog.name %}
+                <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
+              {% else %}
+                <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
+              {% endif %}
+              {% if "Teilen" in criteriaCatalog.name %} 
+                <img src="{% static 'assets/images/PurposeCategory4-selected.svg' %}"  class="rounded" alt="icon">
+              {% else %}
+                <a href="/criteriaCatalog/Teilen"><img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon"></a>
+              {% endif %}
+            </div>
+            <!-- search Field Schlagwort -->
+            <div class="col-6"></div>
+            <div class="col-3 form-group d-flex align-items-center">
+              
+              <!-- d-flex align-items-center justify-content-center pe-1 -->
+              <form> 
+                <!-- <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'> -->
+                <select name="tags" class="form-select js-choice border-legal-round" id="tags" placeholder="Schlagwort" style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;"> 
+                <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
+                  <option>Schlagwort</option>
+                </select>
+              </form>
+            </div>
           </div>
           <!-- END search Field Schlagwort -->
         </div>
-      </form>
+      </div>
+    </div>
+      <!-- </form> -->
       <div class="p-2">
         <div class="row g-4">
           <div class="col-lg-12 border-legal p-4 my-4" id="container-criteria-catalog-details">
-              <p style="margin-bottom: 1px;">{{ criteriaCatalog.name }}</p>
+              <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
             <div class="row">
               <div class="col-lg-12" id="container-criteria-catalog-details">
-                <p>Beschreibungstext: {{ criteriaCatalog.text }}</p>
+                <p style="font-size: 22px;">Beschreibungstext: {{ criteriaCatalog.text }}</p>
               </div>
             </div>
             <br />
             <div class="row">
-              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details">
+              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px;">
                 Themen
               </div>
               <div class="col-lg-1 mb-3" id="container-criteria-catalog-details">
-                <div id="criterias" style="display: none;">Kriterien</div>
+                <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
               </div>
               <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
-                <div id="requirementsAndRuleExamples" style="display: none;">Anforderungen und Regelbeispiele</div>
+                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
               </div>
             </div>
               <div class="row" id="container-criteria-catalog-details">
@@ -80,13 +93,13 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
-                            <p style="display: none; margin-bottom: 0px;">{{ node.content.topic.text }}</p>
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
+                            <p style="display: none; margin-bottom: 0px; font-size: 22px;">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;">
                         {% else %}
                           <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
-                          <li onclick="showOrHide(event, this)" style="display: none; padding-left: 80px;">{{ node.content }}
-                            <p style="display: none;">{{ node.content.topic.text }}</p>
+                          <li onclick="showOrHide(event, this)" style="display: none; padding-left: 80px; font-size: 22px;">{{ node.content }}
+                            <p style="display: none; font-size: 22px;">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;">
                         {% endif %}
                       {% endif %}
