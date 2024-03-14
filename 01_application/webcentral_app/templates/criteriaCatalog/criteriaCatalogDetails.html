@@ -93,12 +93,12 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
                             <p style="display: none; margin-bottom: 0px; font-size: 22px;">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;">
                         {% else %}
                           <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
-                          <li onclick="showOrHide(event, this)" style="display: none; padding-left: 80px; font-size: 22px;">{{ node.content }}
+                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;">{{ node.content }}
                             <p style="display: none; font-size: 22px;">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;">
                         {% endif %}
@@ -122,6 +122,7 @@
 <!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
 
 <script>
+  var numberOfOpenElementsPerLayer = {};
   function showOrHide(event, element) {
     var childElements = element.children;
     var foundULs = 0;
@@ -134,13 +135,20 @@
     // debugger;
     if (element.parentElement.parentElement.tagName == "DIV") {
       displayPInGray = true;
-      foundChilds.push(document.getElementById("criterias"));
-      if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
-        foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
-      }
-    }
-    else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
-      foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+      pElements = element.getElementsByTagName("p");
+      // if (document.getElementById("criterias").style.display == "block" && pElements[0].style.display == "none") {
+
+      // }
+      // else {
+      //   foundChilds.push(document.getElementById("criterias"));
+      // }
+      
+    //   if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
+    //     foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+    //   }
+    // }
+    // else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
+    //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
     }
     for (var i = 0; i < childElements.length; i++) {
       if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
@@ -175,16 +183,39 @@
 //     var childElements = Array.from(element.children).filter(function(child) {
 //     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
 // });
-    
     for (i = 0; i < foundChilds.length; i++) {
       
         if ( foundChilds[i].style.display == "block") {
           
           foundChilds[i].style.display = 'none';
+          if (foundChilds[i].tagName == "LI") {
+              numberOfOpenElementsPerLayer[foundChilds[i].id] -= 1;
+          }
         }
         else {
           foundChilds[i].style.display = 'block';
+          if (foundChilds[i].tagName == "LI") {
+            if (numberOfOpenElementsPerLayer[foundChilds[i].id] == undefined) {
+              numberOfOpenElementsPerLayer[foundChilds[i].id] = 1;
+            }
+            else {
+              numberOfOpenElementsPerLayer[foundChilds[i].id] += 1;            
+            }
+          }
         }
+    }
+    if (numberOfOpenElementsPerLayer["1"] == undefined || numberOfOpenElementsPerLayer["1"] < 1) {
+      document.getElementById("criterias").style.display = "none";
+      document.getElementById("requirementsAndRuleExamples").style.display = "none";
+    }
+    else {
+      document.getElementById("criterias").style.display = "block";
+      if (numberOfOpenElementsPerLayer["2"] == undefined || numberOfOpenElementsPerLayer["2"] < 1) {
+      document.getElementById("requirementsAndRuleExamples").style.display = "none";
+      }
+      else {
+        document.getElementById("requirementsAndRuleExamples").style.display = "block";
+      } 
     }
     // debugger;
     if (event.stopPropagation) {
