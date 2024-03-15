@@ -10,7 +10,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        {% if LANGUAGE_CODE == "de" %}
+        {% if request.LANGUAGE_CODE == "de" %}
           <img src="{% static 'assets/images/StartPage_figure.svg' %}"
               class="rounded" alt="overview_figure"
               style="width: 800px vertical-align: middle" nonce="{{request.csp_nonce}}">
@@ -34,15 +34,9 @@
         </p>
       </div>
       <div class="col-12 col-lg-2">
-        {% if LANGUAGE_CODE == "de" %}
-          <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
-            class="img-side-column" style="height: 200px;"
-            alt="Logo_BMWK">
-        {% else %}
-          <img src="{% static '/img/BMWK_Fz_2017_WebSVG_en.svg' %}"
+        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
           class="img-side-column" style="height: 200px;"
-          alt="Logo_BMWK"> 
-        {% endif %}       
+          alt="Logo_BMWK">
       </div>
     </div>
   </div>

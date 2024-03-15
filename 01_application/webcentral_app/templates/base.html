@@ -1,6 +1,7 @@
 {% load static %}
+{% load i18n %}
 <!doctype html>
-<html lang="de">
+<html lang="{{ request.LANGUAGE_CODE }}">
 <head>
   <title>{% block title %} {% endblock %}</title>
   <style nonce="{{request.csp_nonce}}">
