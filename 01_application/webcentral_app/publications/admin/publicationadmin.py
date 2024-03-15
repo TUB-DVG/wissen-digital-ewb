@@ -23,7 +23,7 @@ class CustomFileInline(admin.StackedInline):
 	max_num = 5
 
 
-class PublicationAdmin(admin.ModelAdmin):
+class PublicationAdmin(TranslationAdmin):
 	list_display = ('type', 'first_author', 'title', 'type', 'year', 'journal_or_book_title')
 	list_display_links = ('title',)
 	change_list_template = 'admin/publications/publication_change_list.html'

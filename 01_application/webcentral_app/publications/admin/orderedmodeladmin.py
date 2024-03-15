@@ -47,7 +47,7 @@ if not getattr(Options, 'model_name', False):
 if not getattr(ChangeList, 'get_queryset', False):
     ChangeList.get_queryset = ChangeList.get_query_set
 
-class OrderedModelAdmin(admin.ModelAdmin):
+class OrderedModelAdmin(TranslationAdmin):
 
     def get_model_info(self):
         return dict(app=self.model._meta.app_label,
