@@ -62,7 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    "common.apps.commonConfig",
+    "common.apps.CommonConfig",
     'channels',
 ]
 
@@ -94,6 +94,7 @@ CSP_SCRIPT_SRC = (
     "https://maxcdn.bootstrapcdn.com",
     "https://cdn.plot.ly",
     "https://unpkg.com",
+    "https://code.highcharts.com/highcharts.js5",
     # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
     "'unsafe-inline'",
     "'unsafe-eval'",
