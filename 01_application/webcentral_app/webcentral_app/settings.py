@@ -62,13 +62,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'channels',    
+    "common.apps.commonConfig",
+    'channels',
 ]
 
 MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
+    "common.middleware.SessionExpiration",
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
