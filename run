@@ -192,11 +192,12 @@ case $command in
             fi
         fi
         ;;
-    "up_debug")
+    "up_debug")         
         $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral
-        ;;
-    "webcentral_shell")
-        docker exec -it webcentral bash
+        ;;     
+    "webcentral_shell")         
+        echo "Opening wecentral-container shell"         
+        docker exec -it $container_id bash         
         ;;
     *)
         echo "Unknown command: $command"
