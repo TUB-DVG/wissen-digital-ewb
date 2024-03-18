@@ -1,6 +1,11 @@
 version: "3.9"
 services:
     webcentral:
-        command: python 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000
+        build:
+            context: ${PWD}
+            dockerfile: Dockerfile
+            target: dev
+        command: >
+            bash -c "python3 01_application/webcentral_app/manage.py runserver 0.0.0.0:8000"
         volumes:
-            - ${PATH_WEBCENTRAL_SRC}:/src
+            - ${PWD}:/webcentral/

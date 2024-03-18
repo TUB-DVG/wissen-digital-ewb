@@ -125,16 +125,18 @@ Page content START -->
             <div class="card card-body border-technical p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
+                <!--
                 {% if technicalStandards.name %}
                 <li class="list-inline-item">
-                  <a class="btn btn-outline-light btn-sm" href="/norm_list/?searched=&n={{technicalStandards.name}}&s=">
+                  <a class="btn btn-outline-light btn-sm break-words" href="/norm_list/?searched=&n={{technicalStandards.name}}&s=">
                     {{technicalStandards.name}}
                   </a>
                 </li>
                 {% endif %}
+                -->
                 {% if technicalStandards.source %}
                 <li class="list-inline-item">
-                  <a class="btn btn-outline-light btn-sm" href="/norm_list/?searched=&n=&s={{technicalStandards.source}}">
+                  <a class="btn btn-outline-light btn-sm break-words" href="/norm_list/?searched=&n=&s={{technicalStandards.source}}">
                     {{technicalStandards.source}}
                   </a>
                 </li>

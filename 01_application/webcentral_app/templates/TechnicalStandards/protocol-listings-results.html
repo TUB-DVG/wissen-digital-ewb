@@ -3,7 +3,7 @@
 <!-- Card item START -->
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
     <div class="card border-technical h-100" id="{{technicalStandards.id}}">
-      <input type="checkbox" style="visibility:hidden;  position:absolute; left:230px; top:2px; " class ="comparisonInput"/>
+      <input type="checkbox" style="visibility:hidden;  position:absolute; right: 1.25rem; top: 1rem; z-index: 2;" class ="comparisonInput"/>
       <!-- Card body -->
       <a href="{%url 'TechnicalStandards_protocol_details' technicalStandards.id %}">
         <div class="card-body pb-0">
@@ -21,22 +21,6 @@
               alt="technicalStandards image (if=db)">
           {% endif %}
         </div>
-        <!-- Card footer -->
-        <!--
-            <div class="card-footer pt-0 pb-3">
-              {% if tool.letztes_update %}
-              <hr>
-              <div class="d-flex justify-content-between">
-                <span class="h6 fw-light mb-0">
-                  {% if tool.letztes_update == 'laufend' %}
-                  <i class="fas fa-sync text-success me-2"></i>Updates: {{ tool.letztes_update }}
-                  {% else %}
-                  <i class="far fa-clock text-danger me-2"></i>Letztes Update: {{ tool.letztes_update }}
-                  {% endif %}
-              </div>
-              {% endif %}
-            </div>
-        -->
       </a>     
     </div>
 </div>

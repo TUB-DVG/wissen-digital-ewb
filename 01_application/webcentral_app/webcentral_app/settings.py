@@ -40,6 +40,8 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    "csp",
+    "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
     'pages.apps.PagesConfig',
     'TechnicalStandards.apps.TechnicalStandardsConfig',
@@ -62,6 +64,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,6 +74,38 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Content Security Policy
+CSP_IMG_SRC = ("'self'", "data:image/webp*")
+CSP_STYLE_SRC = (
+    "'self'",
+    "'unsafe-inline'", 
+    # "'strict-dynamic'",
+    "https://fonts.googleapis.com", 
+    "https://cdn.jsdelivr.net",
+)
+CSP_SCRIPT_SRC = (
+    "'self'", 
+    "https://ajax.googleapis.com", 
+    "https://cdnjs.cloudflare.com",
+    "https://maxcdn.bootstrapcdn.com",
+    "https://cdn.plot.ly",
+    "https://unpkg.com",
+    # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
+    "'unsafe-inline'",
+    "'unsafe-eval'",
+    # "'strict-dynamic'",
+)
+CSP_DEFAULT_SRC = (
+    "'self'", 
+    # "'strict-dynamic'",
+    "https://fonts.gstatic.com",
+    "https://cdn.jsdelivr.net",    
+)
+CSP_FRAME_ANCESTORS = ("'self'",)
+CSP_FRAME_SRC = ("'self'",)
+CSP_FORM_ACTION = ("'self'",)
+CSP_BASE_URI = ("'self'",)
+# CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
 ROOT_URLCONF = 'webcentral_app.urls'
 
 TEMPLATES = [
@@ -102,11 +137,12 @@ DATABASES = {
         'USER': os.environ.get("POSTGRES_USER"),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
         'HOST': 'database',
-        'TEST': {
-            'MIRROR': "default",
+    },
+    'TEST': {
+        'MIRROR': "default",
         },
-    },   
-}
+    }   
+
 
 
 
@@ -161,18 +197,28 @@ CHANNEL_LAYERS={
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILEGED_USER")
 #STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
-    STATIC_ROOT = "/vol/webcentral/static"
+    STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static" 
     STATIC_URL = '/static/static/'
     STATICFILES_DIRS = [
         Path.joinpath(BASE_DIR, 'webcentral_app/static')
     ]
     # Media folder settings
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-    MEDIA_ROOT = "/vol/webcentral/media"
+    MEDIA_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/media"
     MEDIA_URL = '/media/'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SAMESITE = 'Strict'
+    SECURE_HSTS_SECONDS = 10
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    CSRF_USE_SESSIONS = True
+    SECURE_BROWSER_XSS_FILTER = True
 else:
     STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
     STATIC_URL = '/static/'

@@ -38,7 +38,11 @@ def index(request):
 
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-    
+    if focus is None or focus == "":
+        focusName = "neutral"
+    else:
+        focusName = focus_queryset.get(id=focus).focus
+
     context = {
         'page': page,
         'search': searched,
@@ -46,6 +50,7 @@ def index(request):
         # 'year': year,
         'focus': focus,
         'focus_options': focus_options,
+        "focusBorder": _translateFocusStr(focusName),
     }
     
     return render(request, 'publications/publications-listings.html', context)
@@ -59,13 +64,14 @@ def publicationView(request, id):
     keywords = publication.keywords.split(',') if publication.keywords else []
     focus_options = Focus.objects.all()
 
-
+    firstElementOfPublicationFocus = publication.focus.first().focus  
     context = {
         'publication': publication,
         'title': title,
         'type': type,
         'keywords': keywords,
         'focus_options': focus_options,
+        "focusBorder": _translateFocusStr(firstElementOfPublicationFocus),
     }
 
     return render(request, 'publications/publications-detail.html', context)
@@ -77,3 +83,20 @@ def download_pdf(request, pk):
         return FileResponse(open(publication.pdf.path, 'rb'), content_type='application/pdf')
     except FileNotFoundError:
         raise Http404("PDF not found.")
+
+def _translateFocusStr(focusStr: str) -> str:
+    """Return the english translataion for the focus string
+
+    """
+    if focusStr == "technisch":
+        focusBorder = "technical"
+    elif focusStr == "betrieblich":
+        focusBorder = "operational"
+    elif focusStr == "ökologisch":
+        focusBorder = "ecological"
+    elif focusStr == "rechtlich":
+        focusBorder = "legal"
+    else:
+        focusBorder = "neutral"
+    
+    return focusBorder

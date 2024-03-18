@@ -34,11 +34,47 @@
     @include btn-search($operational-color, $third-text-color)
   }
 }
+
+.ecological-cards {
+  .border-ecological {
+    @include border-rect($ecological-color)
+  }
+  .border-ecological-round {
+    @include border-round($ecological-color)
+  }
+  .btn-ecological {
+    @include btn-search($ecological-color, $third-text-color)
+  }
+}
+
+.legal-cards {
+  .border-legal {
+    @include border-rect($legal-color)
+  }
+  .border-legal-round {
+    @include border-round($legal-color)
+  }
+  .btn-legal {
+    @include btn-search($legal-color, $third-text-color)
+  }
+}
 .card-text {
   color: $secondary-text-color;
 }
 .card-header-text {
   color: $primary-text-color;
+}
+
+.neutral-cards {
+  .border-neutral {
+    @include border-rect($neutral-color)
+  }
+  .border-neutral-round {
+    @include border-round($neutral-color)
+  }
+  .btn-neutral {
+    @include btn-search($neutral-color, $third-text-color)
+  }
 }
 
 /* card_hover: allows the item display cards to grow on hover
@@ -49,4 +85,12 @@
 }
 .card_hover:hover {
   transform: scale(1.1);
+}
+
+/* .break-words：change row while reach maxwidth，added 29.01.2024 */
+.break-words {
+  max-width: 300px; 
+  overflow-wrap: break-word; 
+  white-space: normal;
+  overflow: visible;
 }

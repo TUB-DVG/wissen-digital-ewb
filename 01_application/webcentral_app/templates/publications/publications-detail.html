@@ -28,7 +28,13 @@ Page intro START -->
       </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-      <a href="javascript:window.history.back();">Zurück </a>
+      <a href="#" id="backButton">Zurück</a>
+<script nonce="{{request.csp_nonce}}">
+    document.getElementById('backButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        window.history.back();
+    });
+</script>
     </div>
   </div>
 </section>
@@ -38,11 +44,11 @@ Page intro END -->
 <!-- =======================
 Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container neutral-cards">
+  <div class="container {{ focusBorder }}-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card border-neutral p-0">
+        <div class="card border-{{ focusBorder }} p-0">
 					<!-- Tab contents START -->
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- Content START -->
@@ -147,29 +153,15 @@ Page content START -->
 			<!-- Main content END -->
       <div class="col-lg-4">
         <div class="row mb-5 mb-lg-0">
-          <div class="col-md-6 col-lg-12">
-            <!-- Main block START -->
-            <div class="card border-neutral p-2 mb-4 z-index-9">
-              <div class="overflow-hidden rounded-3 text-center">
-                {%if pblication.image %}
-                <img src=" {{ pblication.image.url }}" class="" style="max-height: 150px;" alt="pblication image">
-                {% else %}
-                <img src=" {%static 'img/Default.webp' %}" class="" style="max-height: 150px;" alt="pblication image (else)">
-                {% endif %}
-                <!-- Overlay -->
-              </div>
-            </div>
-            <!-- Main block END -->
-						
 					<div class="col-md-6 col-lg-12">
 						<!-- Tags START -->
-            <div class="card card-body border-neutral p-4">
+            <div class="card card-body border-{{ focusBorder }} p-4">
               <h4 class="mb-3">Tags</h4>
               <ul class="list-inline mb-0">
                 {% if publication.focus %}
                   {% for focus in publication.focus.all %}
                   <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
+                    <a class="btn btn-outline-light btn-sm break-words" href="{% url 'publicationPage' %}?searched=&fo={{focus.id}}">
                       {{focus.focus}}
                     </a>
                   </li>
@@ -178,7 +170,7 @@ Page content START -->
                 {% if publication.keywords %}
                   {% for keyword in keywords %}
                   <li class="list-inline-item">
-                    <a class="btn btn-outline-light btn-sm" href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
+                    <a class="btn btn-outline-light btn-sm break-words" href="{% url 'publicationPage' %}?searched={{keyword.strip}}&fo=">
                       {{keyword.strip}}
                     </a>
                   </li>

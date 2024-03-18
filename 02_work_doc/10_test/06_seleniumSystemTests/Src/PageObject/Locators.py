@@ -1,6 +1,6 @@
 class Locator(object):
     
-    # locators on main-page:
+    # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
     resultElements = "//tr"
@@ -12,6 +12,10 @@ class Locator(object):
     paginationFirstLink = "//a[@id='paginationFirstSite']"
     paginationLastLink = "//a[@id='paginationLastSite']"
     paginationCurrentSite = "//span[@class='current']"
+    linkToTechnicalPublications = "//a[@id='linkToTechnicalPublications']"
+    linkToOperationalPublications = "//a[@id='linkToOperationalPublications']"
+    linkToLegalPublications = "//a[@id='linkToLegalPublications']"
+    linkToEcologicalPublications = "//a[@id='linkToEcologicalPublications']"
 
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"
@@ -57,7 +61,12 @@ class Locator(object):
     listInExpandedText = "//li[@class='lead']"
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
-    
+    #paginationNextLink = "//a[@id='paginationNextLink']"
+    #paginationNextLink = "//a[@id='paginationNextLink']"
+    #paginationPreviousLink = "//a[@id='paginationPreviousLink']"
+    #paginationFirstLink = "//a[@id='paginationFirstLink']"
+    #paginationLastLink = "//a[@id='paginationLastLink']"
+
     # locators in Business Apps:
     businessSearchField = "//input[@id='search-input-tools']"
     businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
@@ -105,3 +114,21 @@ class Locator(object):
     adminPageUsernameInput = "//input[@id='id_username']"
     adminPagePasswordInput = "//input[@type='password']"
     adminPageSubmit = "//input[@type='submit']"
+
+    # publicationPage locators
+    publicationContainer = "//div[@id='publicationsContainer']"
+    publicationSearchBoxForm = "//form[@id='searchBox']"
+    publicationSearchBoxInput = "//input[@id='search-input-publication']"
+    publicationSearchBoxSelect = "//select[@id='name-input-publication']"
+    publicationSearchBoxSubmit = "//button[@id='search-submit-publication']"
+    publicationSearchBoxReset = "//h6[@id='allButton']"
+    publicationCloseButton = "//a/i"
+    paginatorObjects = "card"
+    paginatorObjectTitle = ".//h3"
+    paginatorObjectAuthorsAndType = ".//p"
+
+    publicationDetailsPageTitle = "//h2"
+    publicationDetailsPageAuthorsHeading = "//h5[contains(text(), 'Autoren')]"
+    publicationDetailsPageAuthorsValues = "following-sibling::p"
+
+    publicationDetailsPageType = "list-inline-item"

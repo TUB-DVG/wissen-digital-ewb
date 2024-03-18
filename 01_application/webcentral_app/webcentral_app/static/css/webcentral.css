@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * webcentral css
  * use webcentral.SCSS to style the webcentral project
@@ -8,12 +9,7 @@
   border-radius: 2px;
   border: 2px solid #CCC;
 }
-/* #container-start-focus .border-neutral {
-  border-radius: 2px;
-  border: None;
-  outline: 2px solid #CCC;
-  outline-offset: -17px;
-} */
+
 #container-start-focus .border-technical {
   border-radius: 2px;
   border: None;
@@ -77,18 +73,7 @@
   background-color: #AFC5FF;
   color: white;
 }
-.neutral-cards .border-neutral {
-  border-radius: 2px;
-  border: 2px solid #CCC ;
-}
-.neutral-cards .border-neutral-round {
-  border-radius: 20px;
-  border: 2px solid #CCC;
-}
-.neutral-cards .btn-neutral {
-  background-color: #CCC;
-  color: white;
-}
+
 .operational-cards .border-operational {
   border-radius: 2px;
   border: 2px solid #FFAE9D;
@@ -102,12 +87,51 @@
   color: white;
 }
 
+.ecological-cards .border-ecological {
+  border-radius: 2px;
+  border: 2px solid #AEEAB4;
+}
+.ecological-cards .border-ecological-round {
+  border-radius: 20px;
+  border: 2px solid #AEEAB4;
+}
+.ecological-cards .btn-ecological {
+  background-color: #AEEAB4;
+  color: white;
+}
+
+.legal-cards .border-legal {
+  border-radius: 2px;
+  border: 2px solid #F5E86A;
+}
+.legal-cards .border-legal-round {
+  border-radius: 20px;
+  border: 2px solid #F5E86A;
+}
+.legal-cards .btn-legal {
+  background-color: #F5E86A;
+  color: white;
+}
+
 .card-text {
   color: rgb(116, 117, 121);
 }
 
 .card-header-text {
   color: #000;
+}
+
+.neutral-cards .border-neutral {
+  border-radius: 2px;
+  border: 2px solid #636363;
+}
+.neutral-cards .border-neutral-round {
+  border-radius: 20px;
+  border: 2px solid #636363;
+}
+.neutral-cards .btn-neutral {
+  background-color: #636363;
+  color: white;
 }
 
 /* card_hover: allows the item display cards to grow on hover
@@ -119,6 +143,14 @@
 
 .card_hover:hover {
   transform: scale(1.1);
+}
+
+/* .break-words：change row while reach maxwidth，added 29.01.2024 */
+.break-words {
+  max-width: 300px;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: visible;
 }
 
 /* format logos about page */

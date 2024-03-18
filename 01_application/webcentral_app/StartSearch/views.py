@@ -89,6 +89,8 @@ def resultSearch(request):
     # search value reading
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
+        if searchInput is None:
+          return render(request, "StartSearch/StartSearch.html")
         sortBy = request.GET.get("sortBy", "virtDate")
         direction = request.GET.get("direction", None)
     elif request.method == "POST":
@@ -167,7 +169,10 @@ def resultSearch(request):
         elif toolDate == "unbekannt":
             toolVirtDate = date.fromisoformat("1949-09-09")
         else:
-            toolVirtDate = date.fromisoformat(toolVirtDate)
+            try:
+                toolVirtDate = date.fromisoformat(toolVirtDate)
+            except:
+                breakpoint()
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
         tool["pathToFocusImage"] = findPicturesForFocus(tool, tool=True)

@@ -3,7 +3,7 @@
 <!-- Card item START -->
 <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
   <a href="{%url 'publicationDetails' publication.id %}">
-    <div class="card border-neutral h-100">
+    <div class="card border-{{ focusBorder }} h-100">
       <!-- Card body -->
       <div class="card-body pb-0">
         <!-- Title -->
@@ -11,10 +11,10 @@
           {{ publication.title }}
         </h3>
         <p class="card-text mb-2 text-truncate-2">
-          Author: {{ publication.authors }}
+          Autoren: {{ publication.authors }}
         </p>
         <p class="card-text mb-2 text-truncate-2">
-          Type: {{ publication.type   }}
+          Typ: {{ publication.type   }}
         </p>
         <p class="card-text mb-2 text-truncate-2">
           Fokus: 
@@ -34,7 +34,7 @@
              <div class="d-flex justify-content-between">
                <span class="h6 fw-light mb-0">
               
-                 Year: {{ publication.year }}
+                 Jahr: {{ publication.year }}
               
              </div>
       
