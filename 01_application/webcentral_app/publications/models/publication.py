@@ -7,12 +7,13 @@ __docformat__ = 'epytext'
 import os
 
 from django.db import models
-from django.utils.http import urlquote_plus
-from django.conf import settings
+from urllib.parse import quote_plus
 from publications.fields import PagesField
 from publications.models import Type, List
 from string import ascii_uppercase
 from tools_over.models import Focus
+
+from django.conf import settings
 
 if 'django.contrib.sites' in settings.INSTALLED_APPS:
 	from django.contrib.sites.models import Site
@@ -227,7 +228,7 @@ class Publication(models.Model):
 
 
 	def keywords_escaped(self):
-		return [(keyword.strip(), urlquote_plus(keyword.strip()))
+		return [(keyword.strip(), quote_plus(keyword.strip()))
 			for keyword in self.keywords.split(',')]
 
 
@@ -311,27 +312,27 @@ class Publication(models.Model):
 		if self.book_title and not self.journal:
 			contextObj.append('rft_val_fmt=info:ofi/fmt:kev:mtx:book')
 			contextObj.append('rfr_id=info:sid/' + domain + ':' + rfr_id)
-			contextObj.append('rft_id=info:doi/' + urlquote_plus(self.doi))
+			contextObj.append('rft_id=info:doi/' + quote_plus(self.doi))
 
-			contextObj.append('rft.btitle=' + urlquote_plus(self.title))
+			contextObj.append('rft.btitle=' + quote_plus(self.title))
 
 			if self.publisher:
-				contextObj.append('rft.pub=' + urlquote_plus(self.publisher))
+				contextObj.append('rft.pub=' + quote_plus(self.publisher))
 
 		else:
 			contextObj.append('rft_val_fmt=info:ofi/fmt:kev:mtx:journal')
 			contextObj.append('rfr_id=info:sid/' + domain + ':' + rfr_id)
-			contextObj.append('rft_id=info:doi/' + urlquote_plus(self.doi))
-			contextObj.append('rft.atitle=' + urlquote_plus(self.title))
+			contextObj.append('rft_id=info:doi/' + quote_plus(self.doi))
+			contextObj.append('rft.atitle=' + quote_plus(self.title))
 
 			if self.journal:
-				contextObj.append('rft.jtitle=' + urlquote_plus(self.journal))
+				contextObj.append('rft.jtitle=' + quote_plus(self.journal))
 
 			if self.volume:
 				contextObj.append('rft.volume={0}'.format(self.volume))
 
 			if self.pages:
-				contextObj.append('rft.pages=' + urlquote_plus(self.pages))
+				contextObj.append('rft.pages=' + quote_plus(self.pages))
 
 			if self.number:
 				contextObj.append('rft.issue={0}'.format(self.number))
@@ -342,11 +343,11 @@ class Publication(models.Model):
 			contextObj.append('rft.date={0}'.format(self.year))
 
 		for author in self.authors_list:
-			contextObj.append('rft.au=' + urlquote_plus(author))
+			contextObj.append('rft.au=' + quote_plus(author))
 
 
 		if self.isbn:
-			contextObj.append('rft.isbn=' + urlquote_plus(self.isbn))
+			contextObj.append('rft.isbn=' + quote_plus(self.isbn))
 
 		return '&'.join(contextObj)
 

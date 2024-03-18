@@ -108,6 +108,11 @@ CSP_BASE_URI = ("'self'",)
 # CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
 ROOT_URLCONF = 'webcentral_app.urls'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://wissen-digital-ewb.de', 
+    'https://www.wissen-digital-ewb.de',
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
