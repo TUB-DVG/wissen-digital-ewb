@@ -1,6 +1,10 @@
 [tool.pylint.format]
 max-line-length = 80
 
+[tool.pylint.basic]
+variable-naming-style = "camelCase"
+function-naming-style = "camelCase"
+
 [tool.djlint]
 profile = "django"
 indent = 2
