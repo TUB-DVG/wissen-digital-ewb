@@ -135,7 +135,7 @@ class Publication(models.Model):
 
 		suffixes = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', "Jr.", "Sr."]
 		prefixes = ['Dr.']
-		prepositions = ['van', 'von', 'der', 'de', 'den']
+		prepositions = ['Van','van', 'Von', 'von', 'Der', 'der', 'De', 'de', 'Den', 'den']
 
 		# further post-process author names
 		for i, author in enumerate(self.authors_list):
@@ -143,14 +143,14 @@ class Publication(models.Model):
 				continue
 
 			names = author.split(' ')
+			names = [names[-1]] + names[:-1] # Move the last name to the beginning
 
 			# check if last string contains initials
 			if (len(names[-1]) <= 3) \
-				and names[-1] not in suffixes \
-				and all(c in ascii_uppercase for c in names[-1]):
+				and names[0] not in suffixes \
+				and all(c in ascii_uppercase for c in names[0]):
 				# turn "Gauss CF" into "C. F. Gauss"
-				names = [c + '.' for c in names[-1]] + names[:-1]
-
+				names[0] = '.'.join(names[0])
 			# number of suffixes
 			num_suffixes = 0
 			for name in names[::-1]:
@@ -164,7 +164,7 @@ class Publication(models.Model):
 				# don't try to abbreviate these
 				if j == 0 and name in prefixes:
 					continue
-				if j > 0 and name in prepositions:
+				if name in prepositions:
 					continue
 
 				if (len(name) > 2) or (len(name) and (name[-1] != '.')):
@@ -174,14 +174,14 @@ class Publication(models.Model):
 						names[j] = name[0] + '.-' + name[k + 1] + '.'
 					else:
 						names[j] = name[0] + '.'
-
+			names = names[1:] + [names[0]]  # Second inverse
 			if len(names):
 				self.authors_list[i] = ' '.join(names)
 
 				# create simplified/normalized representation of author name
 				if len(names) > 1:
-					for name in names[0].split('-'):
-						name_simple = self.simplify_name(' '.join([name, names[-1]]))
+					for name in names[1].split('-'):
+						name_simple = self.simplify_name(' '.join([name, names[0]]))
 						self.authors_list_simple.append(name_simple)
 				else:
 					self.authors_list_simple.append(self.simplify_name(names[0]))
@@ -195,7 +195,7 @@ class Publication(models.Model):
 				# splitting point
 				sp = 1 + num_suffixes + num_prepositions
 				self.authors_list_split.append(
-					(' '.join(names[:-sp]), ' '.join(names[-sp:])))
+					(' '.join(names[1:-sp]), ' '.join(names[-sp:])))
 
 		# list of authors in BibTex format
 		self.authors_bibtex = ' and '.join(self.authors_list)
@@ -228,7 +228,7 @@ class Publication(models.Model):
 
 
 	def keywords_escaped(self):
-		return [(keyword.strip(), urlquote_plus(keyword.strip()))
+		return [(keyword.strip(), quote_plus(keyword.strip()))
 			for keyword in self.keywords.split(',')]
 
 
@@ -312,27 +312,27 @@ class Publication(models.Model):
 		if self.book_title and not self.journal:
 			contextObj.append('rft_val_fmt=info:ofi/fmt:kev:mtx:book')
 			contextObj.append('rfr_id=info:sid/' + domain + ':' + rfr_id)
-			contextObj.append('rft_id=info:doi/' + urlquote_plus(self.doi))
+			contextObj.append('rft_id=info:doi/' + quote_plus(self.doi))
 
-			contextObj.append('rft.btitle=' + urlquote_plus(self.title))
+			contextObj.append('rft.btitle=' + quote_plus(self.title))
 
 			if self.publisher:
-				contextObj.append('rft.pub=' + urlquote_plus(self.publisher))
+				contextObj.append('rft.pub=' + quote_plus(self.publisher))
 
 		else:
 			contextObj.append('rft_val_fmt=info:ofi/fmt:kev:mtx:journal')
 			contextObj.append('rfr_id=info:sid/' + domain + ':' + rfr_id)
-			contextObj.append('rft_id=info:doi/' + urlquote_plus(self.doi))
-			contextObj.append('rft.atitle=' + urlquote_plus(self.title))
+			contextObj.append('rft_id=info:doi/' + quote_plus(self.doi))
+			contextObj.append('rft.atitle=' + quote_plus(self.title))
 
 			if self.journal:
-				contextObj.append('rft.jtitle=' + urlquote_plus(self.journal))
+				contextObj.append('rft.jtitle=' + quote_plus(self.journal))
 
 			if self.volume:
 				contextObj.append('rft.volume={0}'.format(self.volume))
 
 			if self.pages:
-				contextObj.append('rft.pages=' + urlquote_plus(self.pages))
+				contextObj.append('rft.pages=' + quote_plus(self.pages))
 
 			if self.number:
 				contextObj.append('rft.issue={0}'.format(self.number))
@@ -343,11 +343,11 @@ class Publication(models.Model):
 			contextObj.append('rft.date={0}'.format(self.year))
 
 		for author in self.authors_list:
-			contextObj.append('rft.au=' + urlquote_plus(author))
+			contextObj.append('rft.au=' + quote_plus(author))
 
 
 		if self.isbn:
-			contextObj.append('rft.isbn=' + urlquote_plus(self.isbn))
+			contextObj.append('rft.isbn=' + quote_plus(self.isbn))
 
 		return '&'.join(contextObj)
 
