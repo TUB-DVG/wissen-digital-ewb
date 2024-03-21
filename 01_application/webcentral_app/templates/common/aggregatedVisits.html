@@ -2,7 +2,7 @@
 {% block content %}
 <div id="chartContainer"></div>
 
-<script nonce="{{request.csp_nonce}}" src="https://code.highcharts.com/highcharts.js"></script>
+<script nonce="{{request.csp_nonce}}" crossorigin="anonymous" src="https://code.highcharts.com/highcharts.js"></script>
 {{ dates|json_script:"dates" }}
 {{ visitsPerDate|json_script:"visitsPerDate" }}
 <script nonce="{{request.csp_nonce}}">
