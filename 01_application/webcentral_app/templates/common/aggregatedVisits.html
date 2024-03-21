@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+<div id="chartContainer"></div>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+{{ dates|json_script:"dates" }}
+{{ visitsPerDate|json_script:"visitsPerDate" }}
+<script>
+    debugger;
+    var dates = JSON.parse(document.getElementById('dates').textContent);
+    var visitsPerDate = JSON.parse(document.getElementById('visitsPerDate').textContent);
+    document.addEventListener("DOMContentLoaded", function() {
+
+        Highcharts.chart('chartContainer', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Visits by Date'
+            },
+            xAxis: {
+                categories: dates // Replace with your actual dates
+            },
+            yAxis: {
+                title: {
+                    text: 'Number of Visits'
+                }
+            },
+            series: [{
+                name: 'Visits',
+                data: visitsPerDate // Replace with your actual visit numbers
+            }]
+        });
+    });
+</script>
+
+{% endblock %}
