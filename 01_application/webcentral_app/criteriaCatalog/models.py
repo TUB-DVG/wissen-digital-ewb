@@ -1,5 +1,7 @@
 from django.db import models
+from django import template
 
+register = template.Library()
 # Create your models here.
 class CriteriaCatalog(models.Model):
     """Represent a CriteriaCatalog, which holds Tree-Structures of Topics.
@@ -52,3 +54,8 @@ class Tag(models.Model):
 
         """
         return self.name
+
+
+@register.filter
+def format_tags(tags):
+    return ', '.join(str(tag) for tag in tags.all())
