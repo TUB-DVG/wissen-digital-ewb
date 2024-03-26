@@ -2,6 +2,7 @@
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
 {% load static %}
+{% load format_tags %}
 <!DOCTYPE html>
 
 
@@ -93,13 +94,13 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
                             <p style="display: none; margin-bottom: 0px; font-size: 22px;">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;">
                         {% else %}
                           <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
-                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;">{{ node.content }}
-                            <p style="display: none; font-size: 22px;">{{ node.content.topic.text }}</p>
+                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content }}
+                            <p style="display: none; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                           <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;">
                         {% endif %}
                       {% endif %}
