@@ -32,9 +32,23 @@ class Topic(models.Model):
         blank=True,
     )
     imageFilename = models.CharField(max_length=200, null=True, blank=True)
+    tag = models.ManyToManyField("Tag", blank=True)
+
 
     def __str__(self):
         """Return string representation of an `Topic`-object
 
         """
         return self.heading
+
+class Tag(models.Model):
+    """Represent a Tag, which can be assigned to a Topic.
+
+    """
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        """Return string representation of an `Tag`-object
+
+        """
+        return self.name
