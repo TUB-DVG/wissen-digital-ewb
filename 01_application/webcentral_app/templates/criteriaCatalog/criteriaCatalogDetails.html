@@ -86,7 +86,7 @@
                 <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
               </div>
             </div>
-              <div class="row" id="container-criteria-catalog-details">
+              <div class="row" id="hi">
                 <!-- <ul> -->
                   {% for tree in trees %}
                     {% for node in tree %}
@@ -129,7 +129,22 @@
     // Code to be executed when an option is selected
     var selectedOption = document.getElementById("tags").value;
     console.log("Selected option: " + selectedOption);
-    // Add your code here
+    // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
+    var elements = document.getElementById("hi").getElementsByTagName("*");
+    for (var i = 0; i < elements.length; i++) {
+      // debugger;
+      // if the element has the attribute "tags" and the value of the attribute is not equal to the selected option
+      if (elements[i].hasAttribute("tags") && !elements[i].getAttribute("tags").includes(selectedOption)) {
+        // hide the element
+        elements[i].style.display = "none";
+      }
+      // if the element has the attribute "tags" and the value of the attribute is equal to the selected option
+      else if (elements[i].hasAttribute("tags") && elements[i].getAttribute("tags").includes(selectedOption)) {
+        // show the element
+        
+        elements[i].style.display = "block";
+      }
+    }
   }
   var numberOfOpenElementsPerLayer = {};
   function showOrHide(event, element) {
