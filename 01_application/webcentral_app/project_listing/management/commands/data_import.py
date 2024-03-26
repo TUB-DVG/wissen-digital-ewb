@@ -64,6 +64,7 @@ import pandas as pd
 from criteriaCatalog.models import (
     CriteriaCatalog,
     Topic,
+    Tag,
 )
 from project_listing.models import (
     Subproject,
@@ -262,6 +263,14 @@ class Command(BaseCommand):
             parent=parentTopicOfCurrentTopic,
             imageFilename=row[header.index('image')],
         )
+
+        if row[header.index('tags')] != "" or row[header.index('tags')] == " ":
+            tagList = row[header.index('tags')].split(",")
+            for tag in tagList:
+                tagObj, _ = Tag.objects.get_or_create(name=tag)
+                obj.tag.add(tagObj)
+            obj.save()
+
         # return obj, created
 
     def getOrCreatePerson(
