@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import (
     CriteriaCatalog,
     Topic,
+    Tag,
 )
 
 def index(request):
@@ -102,5 +103,6 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
         {
             "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
             "trees": listOfFlattenedTrees,
+            "tags": Tag.objects.all(),
         }
     )

@@ -51,9 +51,11 @@
               <!-- d-flex align-items-center justify-content-center pe-1 -->
               <form> 
                 <!-- <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'> -->
-                <select name="tags" class="form-select js-choice border-legal-round" id="tags" placeholder="Schlagwort" style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;"> 
+                <select name="tags" class="form-select js-choice border-legal-round" id="tags" placeholder="Schlagwort" style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;" onchange="handleOptionSelected()"> 
                 <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
-                  <option>Schlagwort</option>
+                  {% for tag in tags %}  
+                    <option>{{ tag }}</option>
+                  {% endfor %}
                 </select>
               </form>
             </div>
@@ -123,6 +125,12 @@
 <!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
 
 <script>
+  function handleOptionSelected() {
+    // Code to be executed when an option is selected
+    var selectedOption = document.getElementById("tags").value;
+    console.log("Selected option: " + selectedOption);
+    // Add your code here
+  }
   var numberOfOpenElementsPerLayer = {};
   function showOrHide(event, element) {
     var childElements = element.children;
