@@ -1,6 +1,15 @@
 """View functions for start page and start page search."""
-from datetime import date
 from itertools import chain
+from datetime import date
+
+from django.shortcuts import render
+from django.db.models import Q
+from django.core.paginator import Paginator
+
+from criteriaCatalog.models import Tag
+from tools_over.models import Tools
+from project_listing.models import Subproject
+from TechnicalStandards.models import Norm, Protocol
 
 from django.shortcuts import render
 from django.db.models import Q
@@ -39,6 +48,9 @@ def findPicturesForFocus(searchResultObj, tool=False):
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
         focusStrList = ["technisch"]
+        if searchResultObj["kindOfItem"] == "Kriterienkatalog":
+            focusStrList = ["rechtlich"]
+        
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
         focusStr = focusStrList[0]
@@ -158,6 +170,9 @@ def resultSearch(request):
                                                     criterionProtocolsTwo
                                                     )
 
+    criterionCriteriaCatalog = Q(name__icontains=searchInput)
+    filteredTopicsOfCriteriaCatalog = Tag.objects.values("id", "name").filter(criterionCriteriaCatalog)
+
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
     # rename fields in queryset list-dicts
@@ -229,10 +244,19 @@ def resultSearch(request):
         protocol["date"] = _("noch nicht hinterlegt")
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
-
+    
+    for criteriaCatalogTag in filteredTopicsOfCriteriaCatalog:
+        tagName = criteriaCatalogTag.pop("name")
+        if len(tagName) > 40:
+            tagName = tagName[:40] + " ... "
+        criteriaCatalogTag["name"] = tagName
+        criteriaCatalogTag["kindOfItem"] = "Kriterienkatalog"
+        criteriaCatalogTag["date"] = "noch nicht hinterlegt"
+        criteriaCatalogTag["virtDate"] = date.fromisoformat("2049-09-09")
+        criteriaCatalogTag["pathToFocusImage"] = findPicturesForFocus(criteriaCatalogTag)
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects,
-                              filteredNorms, filteredProtocols))
+                              filteredNorms, filteredProtocols, filteredTopicsOfCriteriaCatalog))
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
         if direction == "desc":
