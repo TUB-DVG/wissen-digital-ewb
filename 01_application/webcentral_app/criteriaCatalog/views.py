@@ -46,7 +46,7 @@ class Tree:
 
 def tree_to_html(tree, root):
     html = []
-    html.append({"indent": True})
+    html.append({"indent": True, "depth": root.depth})
     html.append({"content": root})
     for child in tree.get(root, []):
         html += tree_to_html(tree, child)

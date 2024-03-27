@@ -91,19 +91,19 @@
                   {% for tree in trees %}
                     {% for node in tree %}
                       {% if node.indent %}
-                        <ul style="margin-bottom: 2px;">
+                          <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
                       {% elif node.outdent %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;">{{ node.content.topic.heading }}<br />
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0">{{ node.content.topic.heading }}<br id="0" />
                             <p style="display: none; margin-bottom: 0px; font-size: 22px;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;">
+                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;" id="0">
                         {% else %}
-                          <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
+                          <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}">
                           <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content }}
-                            <p style="display: none; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;">
+                            <p style="display: none; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                          <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;" id="{{ node.content.depth }}">
                         {% endif %}
                       {% endif %}
                     {% endfor %}
@@ -130,79 +130,202 @@
     var selectedOption = document.getElementById("tags").value;
     console.log("Selected option: " + selectedOption);
     // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
-    var elements = document.getElementById("hi").getElementsByTagName("*");
-    for (var i = 0; i < elements.length; i++) {
+    // var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+    var elementsToBeSearched = document.querySelectorAll("#hi *");
+    var foundElements = [];
+    foundULelements = [];
+    for (var i = 0; i < elementsToBeSearched.length; i++) {
       // debugger;
       // if the element has the attribute "tags" and the value of the attribute is not equal to the selected option
-      if (elements[i].hasAttribute("tags") && !elements[i].getAttribute("tags").includes(selectedOption)) {
-        // hide the element
-        elements[i].style.display = "none";
-      }
+      // if (elements[i].hasAttribute("tags") && !elements[i].getAttribute("tags").includes(selectedOption)) {
+      //   // hide the element
+      //   elements[i].style.display = "none";
+      // }
       // if the element has the attribute "tags" and the value of the attribute is equal to the selected option
-      else if (elements[i].hasAttribute("tags") && elements[i].getAttribute("tags").includes(selectedOption)) {
+      if (elementsToBeSearched[i].hasAttribute("tags") && elementsToBeSearched[i].getAttribute("tags").includes(selectedOption)) {
         // show the element
-        
-        elements[i].style.display = "block";
+        // add the element to the found elements:
+        // debugger;
+        parentElement = elementsToBeSearched[i];
+        while (parentElement.id != "0") {
+          parentElement = parentElement.parentElement;
+        }
+        resetCriteriaCatalog();
+        depthFirstWalk(parentElement, elementsToBeSearched[i]);
+      }
+    // if (foundElements.length > 0) {
+    //   // call a function, which will reset the criteriaCatalog to the original state
+    //   resetCriteriaCatalog();
+    //   // show all found elements
+    //   // firsst activate the ul-elements
+    //   var ulElements = foundElements.filter(function(element) {
+    //     return element.tagName === 'UL';
+    //   });
+    //   for (var i = 0; i < foundElements.length; i++) {
+    //     debugger;
+    //     foundElements[i].style.display = "block";
+    //   }
+    // }
+    }
+  }
+
+function depthFirstWalk(rootElement, target) {
+  var childElements = rootElement.children;
+  for (var i = 0; i < childElements.length; i++) {
+    var childElement = childElements[i];
+    // Perform your desired operation on the child element here
+    console.log(childElement);
+    // check if the childElement is a ancestor of target
+
+    
+    if (checkIfAncestor(childElement, target)) {
+        if (Number(childElement.id) < Number(target.id)) {
+        showHeadingAndDscription(childElement);
+        depthFirstWalk(childElement, target);
+      }
+    }
+    else {
+      showHeading(childElement);
+    }
+  }
+}
+
+function checkIfAncestor(element, target) {
+  var childElements = [];
+  childElements.push(element);
+  while (childElements.length > 0) {
+    var childElement = childElements.pop();
+    if (childElement == target) {
+      return true;
+    }
+    else {
+      var grandChildElements = childElement.children;
+      for (var i = 0; i < grandChildElements.length; i++) {
+        childElements.push(grandChildElements[i]);
       }
     }
   }
-  var numberOfOpenElementsPerLayer = {};
-  function showOrHide(event, element) {
-    var childElements = element.children;
-    var foundULs = 0;
-    var foundChilds = [];
-    // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
-    var firstElementSkipped = false;
-    // if the parent of the parent of the clicked element is a div, then the clicked element is
-    // a root element and its text should be displayed in grey.
-    var displayPInGray = false;
-    // debugger;
-    if (element.parentElement.parentElement.tagName == "DIV") {
-      displayPInGray = true;
-      pElements = element.getElementsByTagName("p");
-      // if (document.getElementById("criterias").style.display == "block" && pElements[0].style.display == "none") {
+  return false;
+}
 
-      // }
-      // else {
-      //   foundChilds.push(document.getElementById("criterias"));
-      // }
-      
-    //   if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
-    //     foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
-    //   }
-    // }
-    // else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
-    //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+function showHeading(element){
+  // debugger;
+  if (element.tagName == "UL") {
+    element.style.display = "block";
+    for (var i = 0; i < element.children.length; i++) {
+      if (element.children[i].tagName == "LI") {
+        element.children[i].style.display = "block";
+      }
     }
-    for (var i = 0; i < childElements.length; i++) {
-      if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
-        if (displayPInGray) {
-          childElements[i].style.color = "grey";
-          childElements[i].style.fontSize = "16px";
-          // also append the 2 column names over the tree structure to be hidden or shown
-          
+  }
+  if (element.tagName == "LI" || element.tagName == "HR") {
+    element.style.display = "block";
+  }
+}
+
+function showHeadingAndDescription(element) {
+  // debugger;
+  if (element.tagName == "UL") {
+    element.style.display = "block";
+    for (var i = 0; i < element.children.length; i++) {
+      if (element.children[i].tagName == "LI") {
+        element.children[i].style.display = "block";
+        element.children[i].getElementsByTagName("p")[0].style.display = "block";
+      }
+    }
+  }
+  if (element.tagName == "LI" || element.tagName == "HR") {
+    element.style.display = "block";
+    element.getElementsByTagName("p")[0].style.display = "block";
+  }
+}
+
+
+// var elementsToBeSearched = document.querySelectorAll("#hi *");
+// for (var i = 0; i < elementsToBeSearched.length; i++) {
+//   depthFirstWalk(elementsToBeSearched[i]);
+// }
+
+
+function resetCriteriaCatalog() {
+  // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
+  var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+  for (var i = 0; i < elementsToBeSearched.length; i++) {
+    // show all elements
+    // debugger;
+    if (elementsToBeSearched[i].id == "0") {
+      if (elementsToBeSearched[i].tagName == "HR") {
+        elementsToBeSearched[i].style.display = "block";
+      }
+      else {
+        elementsToBeSearched[i].style.display = "inline";
+      }
+      
+    }
+    else {
+      elementsToBeSearched[i].style.display = "none";
+
+    }
+  }
+}
+
+var numberOfOpenElementsPerLayer = {};
+function showOrHide(event, element) {
+  var childElements = element.children;
+  var foundULs = 0;
+  var foundChilds = [];
+  // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
+  var firstElementSkipped = false;
+  // if the parent of the parent of the clicked element is a div, then the clicked element is
+  // a root element and its text should be displayed in grey.
+  var displayPInGray = false;
+  // debugger;
+  if (element.parentElement.parentElement.tagName == "DIV") {
+    displayPInGray = true;
+    pElements = element.getElementsByTagName("p");
+    // if (document.getElementById("criterias").style.display == "block" && pElements[0].style.display == "none") {
+
+    // }
+    // else {
+    //   foundChilds.push(document.getElementById("criterias"));
+    // }
+    
+  //   if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
+  //     foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+  //   }
+  // }
+  // else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
+  //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
+  }
+  for (var i = 0; i < childElements.length; i++) {
+    if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
+      if (displayPInGray) {
+        childElements[i].style.color = "grey";
+        childElements[i].style.fontSize = "16px";
+        // also append the 2 column names over the tree structure to be hidden or shown
+        
+      }
+      else {
+        childElements[i].style.color = "black";
+      }
+      foundChilds.push(childElements[i]);        
+    }
+
+    if (childElements[i].tagName == "UL") {
+      foundChilds.push(childElements[i]);
+      
+      var childrenOfUL = childElements[i].children
+      for (var j= 0; j < childrenOfUL.length; j++) {
+        if (firstElementSkipped) {
+          foundChilds.push(childrenOfUL[j]);
         }
         else {
-          childElements[i].style.color = "black";
-        }
-        foundChilds.push(childElements[i]);        
-      }
-
-      if (childElements[i].tagName == "UL") {
-        foundChilds.push(childElements[i]);
-        
-        var childrenOfUL = childElements[i].children
-        for (var j= 0; j < childrenOfUL.length; j++) {
-          if (firstElementSkipped) {
-            foundChilds.push(childrenOfUL[j]);
-          }
-          else {
-            firstElementSkipped = true;
-          }
+          firstElementSkipped = true;
         }
       }
-      // lastElementStr = childElements[i].tagName;
     }
+    // lastElementStr = childElements[i].tagName;
+  }
 // var childElementsOfUL = filteredChildElements[0].children;
 //     var childElements = Array.from(element.children).filter(function(child) {
 //     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
