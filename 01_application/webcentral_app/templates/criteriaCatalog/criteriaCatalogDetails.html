@@ -96,18 +96,19 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0">{{ node.content.topic.heading }}<br id="0" />
-                            <p style="display: none; margin-bottom: 0px; font-size: 22px;">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A;" id="0">
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0">{{ node.content.topic.heading }}
+                            <!-- <br id="0" /> -->
+                          <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; margin-left: 110px;" id="0">{{ node.content.topic.text }}</p>
+                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A; margin-left: 110px;" id="0">
                         {% else %}
-                          <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}">
+                          <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
                           <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content }}
-                            <p style="display: none; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; padding-left: 80px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A;" id="{{ node.content.depth }}">
+                            <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                            <hr style="display: none; margin-top: 1px; padding-left: 120px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A; margin-left: 80px;" id="{{ node.content.depth }}">
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <hr style="margin-top: 1px; margin-bottom: 1px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;">
+                    <hr style="margin-top: 1px; margin-bottom: 1px; margin-left: 120px; color: #F5E86A; border: 2px solid #F5E86A;">
                   {% endfor %}
                 <!-- </ul> -->
               </div>
@@ -150,6 +151,7 @@
         while (parentElement.id != "0") {
           parentElement = parentElement.parentElement;
         }
+        // debugger;
         resetCriteriaCatalog();
         depthFirstWalk(parentElement, elementsToBeSearched[i]);
       }
@@ -167,6 +169,13 @@
     //   }
     // }
     }
+    var numberOfLayersShown = checkHowManyLayersAreShown();
+    if (numberOfLayersShown >= 1) {
+      document.getElementById("criterias").style.display = "block";
+    }
+    if (numberOfLayersShown >= 2) {
+      document.getElementById("requirementsAndRuleExamples").style.display = "block";
+    }
   }
 
 function depthFirstWalk(rootElement, target) {
@@ -180,7 +189,7 @@ function depthFirstWalk(rootElement, target) {
     
     if (checkIfAncestor(childElement, target)) {
         if (Number(childElement.id) < Number(target.id)) {
-        showHeadingAndDscription(childElement);
+        showHeadingAndDescription(childElement);
         depthFirstWalk(childElement, target);
       }
     }
@@ -215,10 +224,21 @@ function showHeading(element){
     for (var i = 0; i < element.children.length; i++) {
       if (element.children[i].tagName == "LI") {
         element.children[i].style.display = "block";
+        element.children[i].getElementsByTagName("hr")[0].style.display = "block";
+        element.children[i].getElementsByTagName("hr")[0].style.marginLeft = "0px";
+        // debugger;
+        // element.children[i].children.getElementsByTagName("hr")[0].style.display = "block";
       }
     }
   }
-  if (element.tagName == "LI" || element.tagName == "HR") {
+  if (element.tagName == "LI") {
+    element.style.display = "block"; 
+    element.children.getElementsByTagName("hr")[0].style.display = "block";
+  }
+  else if (element.tagName == "HR") {
+    element.style.display = "block";
+  }
+  if (element.tagName == "P" && element.id == "0") {
     element.style.display = "block";
   }
 }
@@ -231,6 +251,7 @@ function showHeadingAndDescription(element) {
       if (element.children[i].tagName == "LI") {
         element.children[i].style.display = "block";
         element.children[i].getElementsByTagName("p")[0].style.display = "block";
+        element.children[i].getElementsByTagName("hr")[0].style.display = "block";
       }
     }
   }
@@ -246,6 +267,17 @@ function showHeadingAndDescription(element) {
 //   depthFirstWalk(elementsToBeSearched[i]);
 // }
 
+function checkHowManyLayersAreShown() {
+  var elementsToBeSearched = document.querySelectorAll("#hi *");
+  var layersExpanded = 0;
+  for (var i = 0; i < elementsToBeSearched.length; i++) {
+    if (elementsToBeSearched[i].style.display == "block" && Number(elementsToBeSearched[i].id) > layersExpanded) {
+      layersExpanded += 1;
+    }
+  }
+  return layersExpanded;
+}
+
 
 function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
@@ -254,7 +286,7 @@ function resetCriteriaCatalog() {
     // show all elements
     // debugger;
     if (elementsToBeSearched[i].id == "0") {
-      if (elementsToBeSearched[i].tagName == "HR") {
+      if (elementsToBeSearched[i].tagName == "HR" || elementsToBeSearched[i].tagName == "P") {
         elementsToBeSearched[i].style.display = "block";
       }
       else {
@@ -267,6 +299,8 @@ function resetCriteriaCatalog() {
 
     }
   }
+  document.getElementById("criterias").style.display = "none";
+  document.getElementById("requirementsAndRuleExamples").style.display = "none";
 }
 
 var numberOfOpenElementsPerLayer = {};
