@@ -31,8 +31,9 @@ if __name__ == "__main__":
     # Parse the command line arguments
     args = parser.parse_args()
 
+    # breakpoint()
     # Access the value of the optional argument
-    testFileName = args.optional_arg
+    testFileName = args.test_file
 
     testLoader = TestLoader()
 
