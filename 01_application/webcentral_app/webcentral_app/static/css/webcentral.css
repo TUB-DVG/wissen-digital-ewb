@@ -80,11 +80,11 @@
   outline: 2px solid #F5E86A;
   outline-offset: -17px;
 }
-#container-criteria-catalog-details hr {
+/* #container-criteria-catalog-details hr {
   background-color: #F5E86A;
   height: 3px;
   border: 0;
-}
+} */
 #container-criteria-catalog-details li {
   list-style-type: none;
 }

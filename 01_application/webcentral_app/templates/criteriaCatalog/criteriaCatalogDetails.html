@@ -99,16 +99,19 @@
                           <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0">{{ node.content.topic.heading }}
                             <!-- <br id="0" /> -->
                           <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; margin-left: 110px;" id="0">{{ node.content.topic.text }}</p>
-                          <hr style="display: none; margin-top: 1px; color: #F5E86A; border: 2px solid #F5E86A; margin-left: 110px;" id="0">
+                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                          <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
                           <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
                           <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content }}
                             <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                            <hr style="display: none; margin-top: 1px; padding-left: 120px; color: #F5E86A; height: 2px; border: 2px solid #F5E86A; margin-left: 80px;" id="{{ node.content.depth }}">
+                            <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                            <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <hr style="margin-top: 1px; margin-bottom: 1px; margin-left: 120px; color: #F5E86A; border: 2px solid #F5E86A;">
+                    <div class="hr" style="height: 2px; background-color: #F5E86A;"></div>
+                    <!-- <hr style="margin-top: 1px; margin-bottom: 1px; margin-left: 120px; border-top: 5px solid #F5E86A;"> -->
                   {% endfor %}
                 <!-- </ul> -->
               </div>
@@ -224,8 +227,8 @@ function showHeading(element){
     for (var i = 0; i < element.children.length; i++) {
       if (element.children[i].tagName == "LI") {
         element.children[i].style.display = "block";
-        element.children[i].getElementsByTagName("hr")[0].style.display = "block";
-        element.children[i].getElementsByTagName("hr")[0].style.marginLeft = "0px";
+        element.children[i].getElementsByTagName("div")[0].style.display = "block";
+        element.children[i].getElementsByTagName("div")[0].style.marginLeft = "0px";
         // debugger;
         // element.children[i].children.getElementsByTagName("hr")[0].style.display = "block";
       }
@@ -251,11 +254,11 @@ function showHeadingAndDescription(element) {
       if (element.children[i].tagName == "LI") {
         element.children[i].style.display = "block";
         element.children[i].getElementsByTagName("p")[0].style.display = "block";
-        element.children[i].getElementsByTagName("hr")[0].style.display = "block";
+        element.children[i].getElementsByTagName("div")[0].style.display = "block";
       }
     }
   }
-  if (element.tagName == "LI" || element.tagName == "HR") {
+  if (element.tagName == "LI" || element.tagName == "DIV") {
     element.style.display = "block";
     element.getElementsByTagName("p")[0].style.display = "block";
   }
@@ -268,10 +271,11 @@ function showHeadingAndDescription(element) {
 // }
 
 function checkHowManyLayersAreShown() {
-  var elementsToBeSearched = document.querySelectorAll("#hi *");
+  var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
   var layersExpanded = 0;
   for (var i = 0; i < elementsToBeSearched.length; i++) {
     if (elementsToBeSearched[i].style.display == "block" && Number(elementsToBeSearched[i].id) > layersExpanded) {
+      // debugger;
       layersExpanded += 1;
     }
   }
@@ -286,7 +290,7 @@ function resetCriteriaCatalog() {
     // show all elements
     // debugger;
     if (elementsToBeSearched[i].id == "0") {
-      if (elementsToBeSearched[i].tagName == "HR" || elementsToBeSearched[i].tagName == "P") {
+      if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "P") {
         elementsToBeSearched[i].style.display = "block";
       }
       else {
@@ -332,7 +336,7 @@ function showOrHide(event, element) {
   //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
   }
   for (var i = 0; i < childElements.length; i++) {
-    if (childElements[i].tagName == "P" || childElements[i].tagName == "HR") {
+    if (childElements[i].tagName == "P" || childElements[i].tagName == "DIV") {
       if (displayPInGray) {
         childElements[i].style.color = "grey";
         childElements[i].style.fontSize = "16px";
@@ -385,20 +389,20 @@ function showOrHide(event, element) {
           }
         }
     }
-    if (numberOfOpenElementsPerLayer["1"] == undefined || numberOfOpenElementsPerLayer["1"] < 1) {
-      document.getElementById("criterias").style.display = "none";
-      document.getElementById("requirementsAndRuleExamples").style.display = "none";
+    var numberOfLayersShown = checkHowManyLayersAreShown();
+    debugger;
+    if (numberOfLayersShown >= 1) {
+      document.getElementById("criterias").style.display = "block";
     }
     else {
-      document.getElementById("criterias").style.display = "block";
-      if (numberOfOpenElementsPerLayer["2"] == undefined || numberOfOpenElementsPerLayer["2"] < 1) {
-      document.getElementById("requirementsAndRuleExamples").style.display = "none";
-      }
-      else {
-        document.getElementById("requirementsAndRuleExamples").style.display = "block";
-      } 
+      document.getElementById("criterias").style.display = "none";
     }
-    // debugger;
+    if (numberOfLayersShown >= 2) {
+      document.getElementById("requirementsAndRuleExamples").style.display = "block";
+    }
+    else {
+      document.getElementById("requirementsAndRuleExamples").style.display = "none";
+    }
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
     } else {

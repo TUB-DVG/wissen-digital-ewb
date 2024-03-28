@@ -134,5 +134,7 @@ class Locator(object):
     publicationDetailsPageType = "list-inline-item"
 
     # CriteriaCatalog locators
-    criteriaCatalogOverviewCard1 = "//div[title='Planung, Betrieb und Betriebsoptimierung']"
-    criteriaCatalogOverviewCard2 = "//div[title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogOverviewCard1 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogOverviewCard2 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogDetailsContentContainer = "//div[@id='container-criteria-catalog-details']"
+    allHorizontalLineElements = "//hr"
