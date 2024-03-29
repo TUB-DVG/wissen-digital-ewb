@@ -296,6 +296,8 @@ function openChildLayer(element) {
   var childElements = element.children;
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
   childParagraphDescriptionText[0].style.display = "block";
+  var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
+  childHRElements[0].style.display = "block";
   // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
   // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
@@ -318,8 +320,33 @@ function openChildLayer(element) {
 }
 
 function closeChildLayer(element) {
+  var layerNumberOfClickedElement = Number(element.id);
+  // debugger;
+  // element.parentElement.nextElementSibling.style.display = "block";
+  var childElements = element.children;
+  var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
+  childParagraphDescriptionText[0].style.display = "none";
+  // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
+  // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
+  var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
+  for (var i = 0; i < nextLayerElementsUL.length; i++) {
+    nextLayerElementsUL[i].style.display = "none";
 
+    // get the li-elements, which are childs of the ul:
+    var childsOfUL = nextLayerElementsUL[i].children;
+    var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
+      if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
+        return element;
+      } 
+    })
+
+    for (var j = 0; j < nextLayerElementsLI.length; j++) {
+      nextLayerElementsLI[j].style.display = "none";
+      nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+    }
+  }
 }
+
 
 function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
