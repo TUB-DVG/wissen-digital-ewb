@@ -91,19 +91,25 @@
                   {% for tree in trees %}
                     {% for node in tree %}
                       {% if node.indent %}
+                        {{ node.indent.depth }}
+                        {% if node.depth == 0 %}
                           <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
+                        {% else %}
+                          <ul style="display: none; margin-bottom: 2px;" id="{{ node.depth }}">
+                        {% endif %}
                       {% elif node.outdent %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0">{{ node.content.topic.heading }}
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
                             <!-- <br id="0" /> -->
                           <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; margin-left: 110px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
                           <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
-                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content }}
+                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
+                            <button style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
                             <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
@@ -282,13 +288,44 @@ function checkHowManyLayersAreShown() {
   return layersExpanded;
 }
 
+function openChildLayer(element) {
+  // get the layer-number of the clicked element
+  var layerNumberOfClickedElement = Number(element.id);
+  // debugger;
+  element.parentElement.nextElementSibling.style.display = "none";
+  var childElements = element.children;
+  var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
+  childParagraphDescriptionText[0].style.display = "block";
+  // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
+  // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
+  var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
+  for (var i = 0; i < nextLayerElementsUL.length; i++) {
+    nextLayerElementsUL[i].style.display = "block";
+
+    // get the li-elements, which are childs of the ul:
+    var childsOfUL = nextLayerElementsUL[i].children;
+    var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
+      if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
+        return element;
+      } 
+    })
+
+    for (var j = 0; j < nextLayerElementsLI.length; j++) {
+      nextLayerElementsLI[j].style.display = "block";
+      nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+    }
+  }
+}
+
+function closeChildLayer(element) {
+
+}
 
 function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
   for (var i = 0; i < elementsToBeSearched.length; i++) {
     // show all elements
-    // debugger;
     if (elementsToBeSearched[i].id == "0") {
       if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "P") {
         elementsToBeSearched[i].style.display = "block";
@@ -309,7 +346,16 @@ function resetCriteriaCatalog() {
 
 var numberOfOpenElementsPerLayer = {};
 function showOrHide(event, element) {
-  var childElements = element.children;
+  // check if element if child-elements should be expoanded or collapsed
+  var childElements = element.children;  
+  var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
+  if (filteredChildElements[0].style.display == "none") {
+    openChildLayer(element);
+  }
+  else {
+    closeChildLayer(element);
+  }
+
   var foundULs = 0;
   var foundChilds = [];
   // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
@@ -335,62 +381,74 @@ function showOrHide(event, element) {
   // else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
   //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
   }
-  for (var i = 0; i < childElements.length; i++) {
-    if (childElements[i].tagName == "P" || childElements[i].tagName == "DIV") {
-      if (displayPInGray) {
-        childElements[i].style.color = "grey";
-        childElements[i].style.fontSize = "16px";
-        // also append the 2 column names over the tree structure to be hidden or shown
+  // for (var i = 0; i < childElements.length; i++) {
+  //   if (childElements[i].tagName == "P" || childElements[i].tagName == "DIV") {
+  //     if (displayPInGray) {
+  //       childElements[i].style.color = "grey";
+  //       childElements[i].style.fontSize = "16px";
+  //       // also append the 2 column names over the tree structure to be hidden or shown
         
-      }
-      else {
-        childElements[i].style.color = "black";
-      }
-      foundChilds.push(childElements[i]);        
-    }
+  //     }
+  //     else {
+  //       childElements[i].style.color = "black";
+  //     }
+  //     foundChilds.push(childElements[i]);        
+  //   }
 
-    if (childElements[i].tagName == "UL") {
-      foundChilds.push(childElements[i]);
+  //   if (childElements[i].tagName == "UL") {
+  //     foundChilds.push(childElements[i]);
       
-      var childrenOfUL = childElements[i].children
-      for (var j= 0; j < childrenOfUL.length; j++) {
-        if (firstElementSkipped) {
-          foundChilds.push(childrenOfUL[j]);
-        }
-        else {
-          firstElementSkipped = true;
-        }
-      }
-    }
-    // lastElementStr = childElements[i].tagName;
-  }
+  //     var childrenOfUL = childElements[i].children
+  //     // debugger;
+  //     for (var j= 0; j < childrenOfUL.length; j++) {
+  //       // if (firstElementSkipped) {
+  //       //   foundChilds.push(childrenOfUL[j]);
+  //       // }
+  //       // else {
+  //       //   firstElementSkipped = true;
+  //       // }
+  //       foundChilds.push(childrenOfUL[j]);
+
+      
+  //     }
+  //   }
+  //   // lastElementStr = childElements[i].tagName;
+  // }
 // var childElementsOfUL = filteredChildElements[0].children;
 //     var childElements = Array.from(element.children).filter(function(child) {
 //     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
 // });
-    for (i = 0; i < foundChilds.length; i++) {
+    // for (i = 0; i < foundChilds.length; i++) {
       
-        if ( foundChilds[i].style.display == "block") {
+    //     if ( foundChilds[i].style.display == "block") {
           
-          foundChilds[i].style.display = 'none';
-          if (foundChilds[i].tagName == "LI") {
-              numberOfOpenElementsPerLayer[foundChilds[i].id] -= 1;
-          }
-        }
-        else {
-          foundChilds[i].style.display = 'block';
-          if (foundChilds[i].tagName == "LI") {
-            if (numberOfOpenElementsPerLayer[foundChilds[i].id] == undefined) {
-              numberOfOpenElementsPerLayer[foundChilds[i].id] = 1;
-            }
-            else {
-              numberOfOpenElementsPerLayer[foundChilds[i].id] += 1;            
-            }
-          }
-        }
-    }
+    //       foundChilds[i].style.display = 'none';
+    //       if (foundChilds[i].tagName == "LI") {
+    //         var childrenDiv = Array.from(foundChilds[i].children).filter(function(element) {
+    //           return element.tagName.toLowerCase() === 'div';
+    //         });
+    //         childrenDiv[0].style.display = 'none';
+    //           numberOfOpenElementsPerLayer[foundChilds[i].id] -= 1;
+    //       }
+    //     }
+    //     else {
+    //       foundChilds[i].style.display = 'block';
+    //       if (foundChilds[i].tagName == "LI") {
+    //         var childrenDiv = Array.from(foundChilds[i].children).filter(function(element) {
+    //           return element.tagName.toLowerCase() === 'div';
+    //         });
+    //         childrenDiv[0].style.display = 'block';
+    //         if (numberOfOpenElementsPerLayer[foundChilds[i].id] == undefined) {
+    //           numberOfOpenElementsPerLayer[foundChilds[i].id] = 1;
+    //         }
+    //         else {
+    //           numberOfOpenElementsPerLayer[foundChilds[i].id] += 1;            
+    //         }
+    //       }
+    //     }
+    // }
     var numberOfLayersShown = checkHowManyLayersAreShown();
-    debugger;
+    // debugger;
     if (numberOfLayersShown >= 1) {
       document.getElementById("criterias").style.display = "block";
     }
@@ -408,6 +466,6 @@ function showOrHide(event, element) {
     } else {
       event.cancelBubble = true; // IE model
     }
-  }
+}
 </script>
 {% endblock %}
