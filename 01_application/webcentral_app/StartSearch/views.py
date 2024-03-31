@@ -276,7 +276,6 @@ def resultSearch(request):
         else:
             criteriaCatalogTag["criteriaCatalogPath"] = "Sonstige"
     
-    breakpoint()
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects,
                               filteredNorms, filteredProtocols, filteredTopicsOfCriteriaCatalog))

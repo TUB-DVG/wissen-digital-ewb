@@ -141,8 +141,10 @@
   if (idOfTopicToBeOpened != "") {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     for (var i = 0; i < elementsToBeSearched.length; i++) {
-      if (elementsToBeSearched[i].topicid == idOfTopicToBeOpened) {
+      
+      if (elementsToBeSearched[i].getAttribute("topicid") == idOfTopicToBeOpened) {
         var rootElement = findRootElement(elementsToBeSearched[i]);
+        // debugger;
         depthFirstWalk(rootElement, elementsToBeSearched[i]);  
       }
     }
