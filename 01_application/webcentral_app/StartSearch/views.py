@@ -6,7 +6,11 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.core.paginator import Paginator
 
-from criteriaCatalog.models import Tag
+from criteriaCatalog.models import (
+    CriteriaCatalog,
+    Tag, 
+    Topic,
+)
 from tools_over.models import Tools
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm, Protocol
@@ -171,7 +175,16 @@ def resultSearch(request):
                                                     )
 
     criterionCriteriaCatalog = Q(name__icontains=searchInput)
-    filteredTopicsOfCriteriaCatalog = Tag.objects.values("id", "name").filter(criterionCriteriaCatalog)
+    # get topics for tags:
+    tagsForSearchString = Tag.objects.filter(name__icontains=searchInput)
+    filteredTopicsOfCriteriaCatalog = []
+    for tag in tagsForSearchString:
+        filteredTopicsOfCriteriaCatalog += Topic.objects.filter(tag=tag).values("id", "heading", "criteriaCatalog")
+    # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
+    #     "id", 
+    #     "heading", 
+    #     "criteriaCatalog",
+    # ).filter(criterionCriteriaCatalog)
 
     # concatenate the filtered data sets to one data set,
     # which can used as input for the table in html
@@ -246,14 +259,24 @@ def resultSearch(request):
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
     
     for criteriaCatalogTag in filteredTopicsOfCriteriaCatalog:
-        tagName = criteriaCatalogTag.pop("name")
-        if len(tagName) > 40:
-            tagName = tagName[:40] + " ... "
-        criteriaCatalogTag["name"] = tagName
+        headingName = criteriaCatalogTag.pop("heading")
+        if len(headingName) > 40:
+            headingName = headingName[:40] + " ... "
+        criteriaCatalogTag["name"] = headingName
         criteriaCatalogTag["kindOfItem"] = "Kriterienkatalog"
         criteriaCatalogTag["date"] = "noch nicht hinterlegt"
         criteriaCatalogTag["virtDate"] = date.fromisoformat("2049-09-09")
         criteriaCatalogTag["pathToFocusImage"] = findPicturesForFocus(criteriaCatalogTag)
+        criteriaCatalogTag["criteriaCatalogPath"] = ""
+        criteriaCatalogName = CriteriaCatalog.objects.filter(id=criteriaCatalogTag["criteriaCatalog"])[0].name
+        if "Profilbildung" in criteriaCatalogName:
+            criteriaCatalogTag["criteriaCatalogPath"] = "Profilbildung"
+        elif "Betriebsoptimierung" in criteriaCatalogName:
+            criteriaCatalogTag["criteriaCatalogPath"] = "Betriebsoptimierung"
+        else:
+            criteriaCatalogTag["criteriaCatalogPath"] = "Sonstige"
+    
+    breakpoint()
     # concat the prepared querySets to one QuerySet
     filteredData = list(chain(filteredTools, filteredProjects,
                               filteredNorms, filteredProtocols, filteredTopicsOfCriteriaCatalog))

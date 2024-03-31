@@ -55,12 +55,15 @@ def tree_to_html(tree, root):
     return html
 
 
-def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
+def buildCriteriaCatalog(
+    request,
+    criteriaCatalogIdentifier: str,
+):
     """
 
     """
 
-    id = CriteriaCatalog.objects.filter(name__icontains=criteriaCatalogIdentifer)[0].id
+    id = CriteriaCatalog.objects.filter(name__icontains=criteriaCatalogIdentifier)[0].id
 
 
     # return a nested dictionary, which contains the hierarchical data
@@ -104,5 +107,59 @@ def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
             "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
             "trees": listOfFlattenedTrees,
             "tags": Tag.objects.all(),
+        }
+    )
+
+def buildingCriteriaCatalogOpenTopic(
+    request,
+    criteriaCatalogIdentifier: str,
+    topicIdentifier: int,
+):
+    """
+
+    """
+    id = CriteriaCatalog.objects.filter(name__icontains=criteriaCatalogIdentifier)[0].id
+    topicForSelectedUseCase = Topic.objects.filter(criteriaCatalog__id=id)
+
+    dictOfElements = {}
+    rootElements = topicForSelectedUseCase.filter(parent=None)
+    topicsWithoutRootElements = topicForSelectedUseCase.exclude(parent=None)
+    listOfTrees = []
+    listOfFlattenedTrees = []
+    nodeRootElements = []
+    for index, element in enumerate(rootElements):
+        nodeRootElement = Node(element)
+        nodeRootElements.append(nodeRootElement)
+        nodeRootElement.addDepth(0)
+        currentTree = Tree(nodeRootElement)
+        listOfTrees.append(currentTree)
+
+        # implementation of a breath-first-search:
+        queueBreathFirstSearch = []
+        queueBreathFirstSearch.append(nodeRootElement)
+        topicsWithoutChilds = topicsWithoutRootElements
+        
+        while len(queueBreathFirstSearch) > 0:
+            currentNode = queueBreathFirstSearch.pop()
+            childsOfCurrentElement = topicsWithoutChilds.filter(parent=currentNode.topic)
+            topicsWithoutChilds = topicsWithoutChilds.exclude(parent=currentNode.topic)
+            childNodes = []
+            for childElement in childsOfCurrentElement:
+                childNode = Node(childElement)
+                currentNode.addNeighbour(childNode)
+                childNode.addDepth(currentNode.depth+1)
+                childNodes.append(childNode)
+                queueBreathFirstSearch.append(childNode) 
+            currentTree.addToDict(currentNode, childNodes)
+        listOfFlattenedTrees.append(tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index]))
+    # breakpoint()
+    return render(
+        request, 
+        "criteriaCatalog/criteriaCatalogDetails.html", 
+        {
+            "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
+            "tags": Tag.objects.all(),
+            "trees": listOfFlattenedTrees,
+            "topicIdentifier": topicIdentifier,
         }
     )
