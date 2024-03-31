@@ -101,14 +101,14 @@
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
                             <!-- <br id="0" /> -->
                           <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; margin-left: 110px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
                           <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
-                          <li onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
+                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <button style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
                             <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
@@ -135,6 +135,26 @@
 <!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
 
 <script>
+  var idOfTopicToBeOpened = "{{ topicIdentifier }}";
+  console.log(idOfTopicToBeOpened)
+
+  if (idOfTopicToBeOpened != "") {
+    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+    for (var i = 0; i < elementsToBeSearched.length; i++) {
+      if (elementsToBeSearched[i].topicid == idOfTopicToBeOpened) {
+        var rootElement = findRootElement(elementsToBeSearched[i]);
+        depthFirstWalk(rootElement, elementsToBeSearched[i]);  
+      }
+    }
+  }
+  function findRootElement(element) {
+    var parentElement = element;
+    while (parentElement.id != "0") {
+      parentElement = parentElement.parentElement;
+    }
+    return parentElement;
+  }
+
   function handleOptionSelected() {
     // Code to be executed when an option is selected
     var selectedOption = document.getElementById("tags").value;
