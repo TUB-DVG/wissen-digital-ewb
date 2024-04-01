@@ -179,12 +179,11 @@
         // add the element to the found elements:
         // debugger;
         parentElement = elementsToBeSearched[i];
-        while (parentElement.id != "0") {
+        while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
           parentElement = parentElement.parentElement;
         }
-        // debugger;
-        resetCriteriaCatalog();
         debugger;
+        resetCriteriaCatalog();
         depthFirstWalk(parentElement, elementsToBeSearched[i]);
       }
     // if (foundElements.length > 0) {
@@ -217,7 +216,6 @@ function depthFirstWalk(rootElement, target) {
     // Perform your desired operation on the child element here
     console.log(childElement);
     // check if the childElement is a ancestor of target
-
     
     if (checkIfAncestor(childElement, target)) {
         if (Number(childElement.id) < Number(target.id)) {
@@ -313,14 +311,20 @@ function checkHowManyLayersAreShown() {
 
 function openChildLayer(element) {
   // get the layer-number of the clicked element
+  // if (element.tagName == "UL") {
+  // debugger;
   var layerNumberOfClickedElement = Number(element.id);
   // debugger;
-  element.parentElement.nextElementSibling.style.display = "none";
+  // element.parentElement.nextElementSibling.style.display = "none";
   var childElements = element.children;
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-  childParagraphDescriptionText[0].style.display = "block";
+  if (childParagraphDescriptionText.length > 0) {
+    childParagraphDescriptionText[0].style.display = "block";
+  }
   var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
-  childHRElements[0].style.display = "block";
+  if (childHRElements.length > 0) {
+    childHRElements[0].style.display = "block";
+  }
   // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
   // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
@@ -337,9 +341,11 @@ function openChildLayer(element) {
 
     for (var j = 0; j < nextLayerElementsLI.length; j++) {
       nextLayerElementsLI[j].style.display = "block";
+      nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
       nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
     }
   }
+  // }
 }
 
 function closeChildLayer(element) {
