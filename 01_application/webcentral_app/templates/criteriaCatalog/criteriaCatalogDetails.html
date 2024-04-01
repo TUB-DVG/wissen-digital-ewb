@@ -144,16 +144,17 @@
       
       if (elementsToBeSearched[i].getAttribute("topicid") == idOfTopicToBeOpened) {
         var rootElement = findRootElement(elementsToBeSearched[i]);
-        // debugger;
         depthFirstWalk(rootElement, elementsToBeSearched[i]);  
       }
     }
+    openHeadingsForLayers();
   }
+
   function findRootElement(element) {
     var parentElement = element;
-    while (parentElement.id != "0") {
-      parentElement = parentElement.parentElement;
-    }
+    while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
+          parentElement = parentElement.parentElement;
+        }
     return parentElement;
   }
 
@@ -166,7 +167,6 @@
     var foundElements = [];
     foundULelements = [];
     for (var i = 0; i < elementsToBeSearched.length; i++) {
-      // debugger;
       // if the element has the attribute "tags" and the value of the attribute is not equal to the selected option
       // if (elements[i].hasAttribute("tags") && !elements[i].getAttribute("tags").includes(selectedOption)) {
       //   // hide the element
@@ -176,7 +176,6 @@
       if (elementsToBeSearched[i].hasAttribute("tags") && elementsToBeSearched[i].getAttribute("tags").includes(selectedOption)) {
         // show the element
         // add the element to the found elements:
-        // debugger;
         parentElement = elementsToBeSearched[i];
         while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
           parentElement = parentElement.parentElement;
@@ -193,7 +192,6 @@
     //     return element.tagName === 'UL';
     //   });
     //   for (var i = 0; i < foundElements.length; i++) {
-    //     debugger;
     //     foundElements[i].style.display = "block";
     //   }
     // }
@@ -206,6 +204,22 @@
       document.getElementById("requirementsAndRuleExamples").style.display = "block";
     }
   }
+
+function openHeadingsForLayers() {
+  var numberOfLayersShown = checkHowManyLayersAreShown();
+    if (numberOfLayersShown >= 1) {
+      document.getElementById("criterias").style.display = "block";
+    }
+    else {
+      document.getElementById("criterias").style.display = "none";
+    }
+    if (numberOfLayersShown >= 2) {
+      document.getElementById("requirementsAndRuleExamples").style.display = "block";
+    }
+    else {
+      document.getElementById("requirementsAndRuleExamples").style.display = "none";
+    }
+}
 
 function depthFirstWalk(rootElement, target) {
   var childElements = rootElement.children;
@@ -246,7 +260,6 @@ function checkIfAncestor(element, target) {
 }
 
 function showHeading(element){
-  // debugger;
   if (element.tagName == "UL") {
     element.style.display = "block";
     for (var i = 0; i < element.children.length; i++) {
@@ -254,7 +267,6 @@ function showHeading(element){
         element.children[i].style.display = "block";
         element.children[i].getElementsByTagName("div")[0].style.display = "block";
         element.children[i].getElementsByTagName("div")[0].style.marginLeft = "0px";
-        // debugger;
         // element.children[i].children.getElementsByTagName("hr")[0].style.display = "block";
       }
     }
@@ -272,7 +284,6 @@ function showHeading(element){
 }
 
 function showHeadingAndDescription(element) {
-  // debugger;
   if (element.tagName == "UL") {
     element.style.display = "block";
     for (var i = 0; i < element.children.length; i++) {
@@ -303,7 +314,19 @@ function checkHowManyLayersAreShown() {
   var layersExpanded = 0;
   for (var i = 0; i < liElements.length; i++) {
     if ((liElements[i].style.display == "block" || liElements[i].style.display == "") && Number(liElements[i].id) > layersExpanded) {
-        layersExpanded = Number(liElements[i].id)
+      var parentElement = liElements[i];
+      var parentIsNone = false;
+      
+      while (Number(parentElement.parentElement.id) >= 0) {
+
+        if (parentElement.parentElement.style.display == "none") {
+          parentIsNone = true;
+        }
+        parentElement = parentElement.parentElement;
+      }
+      if (!parentIsNone) {
+      layersExpanded += 1;
+      }
     }
   }
   return layersExpanded;
@@ -312,9 +335,7 @@ function checkHowManyLayersAreShown() {
 function openChildLayer(element) {
   // get the layer-number of the clicked element
   // if (element.tagName == "UL") {
-  // debugger;
   var layerNumberOfClickedElement = Number(element.id);
-  // debugger;
   // element.parentElement.nextElementSibling.style.display = "none";
   var childElements = element.children;
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
@@ -350,7 +371,6 @@ function openChildLayer(element) {
 
 function closeChildLayer(element) {
   var layerNumberOfClickedElement = Number(element.id);
-  // debugger;
   // element.parentElement.nextElementSibling.style.display = "block";
   var childElements = element.children;
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
@@ -424,7 +444,6 @@ function showOrHide(event, element) {
   // if the parent of the parent of the clicked element is a div, then the clicked element is
   // a root element and its text should be displayed in grey.
   var displayPInGray = false;
-  // debugger;
   if (element.parentElement.parentElement.tagName == "DIV") {
     displayPInGray = true;
     pElements = element.getElementsByTagName("p");
@@ -460,7 +479,6 @@ function showOrHide(event, element) {
   //     foundChilds.push(childElements[i]);
       
   //     var childrenOfUL = childElements[i].children
-  //     // debugger;
   //     for (var j= 0; j < childrenOfUL.length; j++) {
   //       // if (firstElementSkipped) {
   //       //   foundChilds.push(childrenOfUL[j]);
@@ -508,20 +526,7 @@ function showOrHide(event, element) {
     //       }
     //     }
     // }
-    var numberOfLayersShown = checkHowManyLayersAreShown();
-    debugger;
-    if (numberOfLayersShown >= 1) {
-      document.getElementById("criterias").style.display = "block";
-    }
-    else {
-      document.getElementById("criterias").style.display = "none";
-    }
-    if (numberOfLayersShown >= 2) {
-      document.getElementById("requirementsAndRuleExamples").style.display = "block";
-    }
-    else {
-      document.getElementById("requirementsAndRuleExamples").style.display = "none";
-    }
+    openHeadingsForLayers();
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
     } else {
