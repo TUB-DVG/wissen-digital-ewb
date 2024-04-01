@@ -160,7 +160,6 @@
   function handleOptionSelected() {
     // Code to be executed when an option is selected
     var selectedOption = document.getElementById("tags").value;
-    console.log("Selected option: " + selectedOption);
     // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
     // var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     var elementsToBeSearched = document.querySelectorAll("#hi *");
@@ -182,7 +181,6 @@
         while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
           parentElement = parentElement.parentElement;
         }
-        debugger;
         resetCriteriaCatalog();
         depthFirstWalk(parentElement, elementsToBeSearched[i]);
       }
@@ -298,12 +296,14 @@ function showHeadingAndDescription(element) {
 // }
 
 function checkHowManyLayersAreShown() {
+  // find the li-element with the highest id
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+  // check the visible UL-elements to check, how many layers are shown:
+  var liElements = Array.from(elementsToBeSearched).filter((element) => {return element.tagName == "LI"})
   var layersExpanded = 0;
-  for (var i = 0; i < elementsToBeSearched.length; i++) {
-    if (elementsToBeSearched[i].style.display == "block" && Number(elementsToBeSearched[i].id) > layersExpanded) {
-      // debugger;
-      layersExpanded += 1;
+  for (var i = 0; i < liElements.length; i++) {
+    if ((liElements[i].style.display == "block" || liElements[i].style.display == "") && Number(liElements[i].id) > layersExpanded) {
+        layersExpanded = Number(liElements[i].id)
     }
   }
   return layersExpanded;
@@ -509,7 +509,7 @@ function showOrHide(event, element) {
     //     }
     // }
     var numberOfLayersShown = checkHowManyLayersAreShown();
-    // debugger;
+    debugger;
     if (numberOfLayersShown >= 1) {
       document.getElementById("criterias").style.display = "block";
     }
