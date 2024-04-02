@@ -23,14 +23,16 @@
           <li class="lead">
             <b>{% translate "Quelle" %}</b>&nbsp;&ndash; {% translate "woher kann die Norm bezogen werden?" %}</li>
           <li class="lead">
-            <b>Link</b>&nbsp;&ndash; {% translate "ein Link, über den die Norm abgerufen (ggf.
-            gekauft) werden kann." %}</li>
+            <b>Link</b>&nbsp;&ndash; {% translate "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann." %}</li>
         </ul>
       </div>
       <div class="col-lg-12 lead mt-3">
-        <a role="button" class="collapsed text-truncation-btn"
+        <a role="button" class="collapsed text-truncation-btn collapseInfoContainer"
           data-toggle="collapse" href="#collapseInfoNorms" aria-expanded="false"
-          aria-controls="collapseInfoNorms"></a>
+          aria-controls="collapseInfoNorms"
+          data-expanded-text="{% translate 'Zeige weniger ...' %}"
+          data-collapsed-text="{% translate 'Zeige mehr ...' %}">
+        </a>
       </div>
     </div>
   </div>
