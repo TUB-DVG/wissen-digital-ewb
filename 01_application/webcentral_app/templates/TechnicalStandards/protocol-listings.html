@@ -18,7 +18,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Überblick über technische Standards - Protokolle</h2>
+          <h2 class="m-0">{% translate "Überblick über  technische Standards" %} - {% translate "Protokolle" %}</h2>
         </div>
       </div>
     </div>
@@ -102,16 +102,16 @@ Page content START -->
                         aria-label=".form-select-sm example" name="c" id="communicationMediumCategory-input-protocols"
                         title="Filter nach der Übertragungsmethoden des Protokolls">
                   <option value="">
-                    Übertragungsmethoden
+                    {% translate "Übertragungsmethoden" %}
                   </option>
                   <option value="Verkabelt & Drahtlos" {% if source == "Verkabelt & Drahtlos" %} selected="selected" {% endif %}>
-                    Verkabelt & Drahtlos
+                    {% translate "Verkabelt" %} & {% translate "Drahtlos" %}
                   </option>
                   <option value="Drahtlos" {% if source == "Drahtlos" %} selected="selected" {% endif %}>
-                    Drahtlos
+                    {% translate "Drahtlos" %}
                   </option>
                   <option value="Verkabelt" {% if source == "Verkabelt" %} selected="selected" {% endif %}>
-                    Verkabelt
+                    {% translate "Verkabelt" %}
                   </option>
                 </select>
               </div>
@@ -128,7 +128,7 @@ Page content START -->
                     Open Source 
                   </option>
                   <option value="Proprietär" {% if source == "Proprietär" %} selected="selected" {% endif %}>
-                    Proprietär
+                    {% translate "Proprietär" %}
                   </option>
                 </select>
               </div>
@@ -161,7 +161,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={{search}}&n=&c=&os=">
-            Suchbegriff: {{search}}
+            {% translate "Suchbegriff" %}: {{search}}
           </a>
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{openSourceStatus}}{% endif %}">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -173,7 +173,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={{name}}&c=&os=">
-            Suchbegriff: {{name}}
+            {% translate "Suchbegriff" %}: {{name}}
           </a>
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n=&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -185,7 +185,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c={{communicationMediumCategory}}&os=">
-            Suchbegriff: {{ communicationMediumCategory}}
+            {% translate "Suchbegriff" %}: {{ communicationMediumCategory}}
           </a>
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c=&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -197,7 +197,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c=&os={{openSourceStatus}}">
-            Suchbegriff: {{ openSourceStatus}}
+            {% translate "Suchbegriff" %}: {{ openSourceStatus}}
           </a>
           <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os=">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -210,7 +210,7 @@ Page content START -->
     <!-- Comparison button START -->
     <div class="col-xl-4" id="comparisonButton">
       <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-        Vergleiche 
+        {% translate "Vergleiche" %} 
       </h6>
     </div>
    
@@ -218,13 +218,13 @@ Page content START -->
       <div class="col-xl-2" id="compareButton" >
         <a href="#" id="comparisonUrl">
           <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            Vergleiche 
+            {% translate "Vergleiche" %} 
           </h6>
         </a>
       </div>
       <div class="col-xl-2" id="cancelButton">
           <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            Zurücksetzen
+            {% translate "Zurücksetzen" %}
           </h6>
 
       </div>
@@ -245,25 +245,25 @@ Page content START -->
         <div class="pagination">
             {% if page.has_previous %}
             <a  href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page=1">
-              &laquo; erste
+              &laquo; {% translate "erste" %}
             </a>
             &nbsp &nbsp
             <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.previous_page_number}}">
-              vorherige
+              {% translate "vorherige" %}
             </a>
             {% endif %}
             &nbsp &nbsp
             <span class="current">
-              Seite {{ page.number }} von {{ page.paginator.num_pages }}
+              {% translate "Seite" %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
             </span>
             &nbsp &nbsp
             {% if page.has_next %}
             <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.next_page_number}}">
-              nächste
+              {% translate "nächste" %}
             </a>
             &nbsp &nbsp
             <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}&page={{ page.paginator.num_pages}}">
-              letzte &raquo;
+              {% translate "letzte" %} &raquo;
             </a>
             &nbsp &nbsp
             {% endif %}       
