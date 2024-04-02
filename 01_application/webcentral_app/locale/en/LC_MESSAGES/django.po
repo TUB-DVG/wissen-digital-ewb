@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-02 09:33+0000\n"
+"POT-Creation-Date: 2024-04-02 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,6 +72,7 @@ msgid "Aktualität"
 msgstr "Actuality"
 
 #: templates/StartSearch/ResultSearch.html:147
+#: templates/TechnicalStandards/norm-listings.html:367
 #: templates/TechnicalStandards/protocol-listings.html:248
 #: templates/tools_over/tool-listings.html:200
 msgid "erste"
@@ -85,6 +86,7 @@ msgid "vorherige"
 msgstr "previous"
 
 #: templates/StartSearch/ResultSearch.html:157
+#: templates/TechnicalStandards/norm-listings.html:376
 #: templates/TechnicalStandards/protocol-listings.html:257
 #: templates/tools_over/tool-listings.html:209
 msgid "Seite"
@@ -393,6 +395,7 @@ msgstr ""
 "building automation."
 
 #: templates/TechnicalStandards/explanation.html:52
+#: templates/TechnicalStandards/norm-listings.html:22
 msgid "Normen"
 msgstr "Norms"
 
@@ -430,7 +433,7 @@ msgstr ""
 #: templates/TechnicalStandards/explanation.html:67
 #: templates/TechnicalStandards/norm-explanation.html:19
 msgid "Name und vollständiger Titel der Norm"
-msgstr "Name and full title of the standard"
+msgstr "Name and full title of the norm"
 
 #: templates/TechnicalStandards/explanation.html:70
 #: templates/TechnicalStandards/norm-detail.html:65
@@ -452,6 +455,7 @@ msgstr "What is it about?"
 #: templates/TechnicalStandards/norm-detail.html:69
 #: templates/TechnicalStandards/norm-detail.html:124
 #: templates/TechnicalStandards/norm-explanation.html:24
+#: templates/TechnicalStandards/norm-listings.html:273
 #: templates/norms_over/explanation.html:24
 msgid "Quelle"
 msgstr "Source"
@@ -469,8 +473,7 @@ msgstr "Link"
 msgid ""
 "ein Link, über den die Norm abgerufen (ggf.\n"
 "                gekauft) werden kann."
-msgstr ""
-"a link through which the standard can be accessed (possibly purchased)."
+msgstr "a link through which the norm can be accessed (possibly purchased)."
 
 #: templates/TechnicalStandards/explanation.html:94
 msgid "Überblick über die Normen"
@@ -710,37 +713,15 @@ msgstr "Overview of protocols"
 
 #: templates/TechnicalStandards/norm-detail.html:59
 msgid "Titel"
-msgstr ""
+msgstr "Title"
 
 #: templates/TechnicalStandards/norm-detail.html:107
 #: templates/TechnicalStandards/protocol-detail.html:187
 #: templates/tools_over/tool-detail.html:228
-#, fuzzy
-#| msgid "Publikationen"
 msgid "Kurzinformationen"
-msgstr "Publications"
+msgstr "Quick information"
 
 #: templates/TechnicalStandards/norm-explanation.html:7
-#, fuzzy
-#| msgid ""
-#| "Auf dieser Seite befinden sich unterschiedliche technische Normen,\n"
-#| "              die im Herbst 2022 erfasst worden sind. Diese sind durch "
-#| "Recherche in \n"
-#| "              Softwarekatalogen, Normendatenbanken und in "
-#| "Forschungsprojekten der Energiewendebauen\n"
-#| "              Projekte erfasst worden. Es handelt sich um deutsche, "
-#| "österreichische, \n"
-#| "              europäische oder internationale Standards und Richtlinien "
-#| "für die Planung, \n"
-#| "              den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
-#| "Warmwasser-, \n"
-#| "              Entwässerungs-, Heizungs-, Kühl-, und sonstige "
-#| "Energiesystemen in Gebäuden. \n"
-#| "              Andere technische Standards, wie Schallschutz, Beleuchtung, "
-#| "und Gasinstallation,\n"
-#| "              sind ebenfalls enthalten. Für jede Norm wurden die "
-#| "folgenden Aspekte\n"
-#| "              erfasst:"
 msgid ""
 "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
 "          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
@@ -761,25 +742,52 @@ msgid ""
 "Aspekte\n"
 "          erfasst: "
 msgstr ""
-"On this page you will find different technical standards,which were recorded "
-"in autumn 2022. These were recorded through research in software catalogs, "
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
 "standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
 "drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical standards, such as soundproofing, "
+"systems in buildings . Other technical norms, such as soundproofing, "
 "lighting, and gas installation, are also included. The following aspects "
-"were recorded for each standard:"
+"were recorded for each norm:"
+
+#: templates/TechnicalStandards/norm-explanation.html:26
+msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
+msgstr ""
+"a link through which the standard can be accessed (possibly purchased)."
+
+#: templates/TechnicalStandards/norm-explanation.html:33
+#: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/tools_over/explanationApps.html:176
+#: templates/tools_over/explanationBusinessApps.html:21
+#: templates/tools_over/explanationTools.html:177
+msgid "Zeige weniger ..."
+msgstr "Show less ..."
+
+#: templates/TechnicalStandards/norm-explanation.html:34
+#: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/tools_over/explanationApps.html:177
+#: templates/tools_over/explanationBusinessApps.html:22
+#: templates/tools_over/explanationTools.html:178
+msgid "Zeige mehr ..."
+msgstr "Show more ..."
 
 #: templates/TechnicalStandards/norm-listings.html:22
+#: templates/TechnicalStandards/protocol-listings.html:21
 #, fuzzy
 #| msgid "Überblick über die Normen"
-msgid "Überblick über die technischen Standards - Normen "
+msgid "Überblick über die technischen Standards"
 msgstr "Overview of norms"
 
 #: templates/TechnicalStandards/norm-listings.html:59
 msgid "Bezeichnung"
-msgstr ""
+msgstr "Designation"
+
+#: templates/TechnicalStandards/norm-listings.html:305
+#: templates/tools_over/tool-listings.html:106
+msgid "Alle"
+msgstr "All"
 
 #: templates/TechnicalStandards/norm-listings.html:318
 #: templates/TechnicalStandards/norm-listings.html:330
@@ -796,8 +804,13 @@ msgstr "search term"
 #: templates/TechnicalStandards/protocol-comparison.html:22
 #, fuzzy
 #| msgid "Vergleiche"
-msgid "Vergleich Protokolle"
+msgid "Vergleich"
 msgstr "Comparisons"
+
+#: templates/TechnicalStandards/protocol-comparison.html:22
+#: templates/TechnicalStandards/protocol-listings.html:21
+msgid "Protokolle"
+msgstr "protocols"
 
 #: templates/TechnicalStandards/protocol-detail.html:81
 #, fuzzy
@@ -809,25 +822,19 @@ msgstr "specific standards to which each protocol can be assigned."
 
 #: templates/TechnicalStandards/protocol-detail.html:109
 msgid "Geräte (maximale Anzahl an Geräten, die vernetzt werden können)"
-msgstr ""
+msgstr "Devices (maximum number of devices that can be networked)"
 
 #: templates/TechnicalStandards/protocol-detail.html:113
-#, fuzzy
-#| msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
 msgid ""
 "Datenmodell Architektur (Datenmodell, in dem die Informationen/Attribute zu "
 "einem Objekt hinzugefügt werden )"
-msgstr "how do you add information or attributes to an object?"
+msgstr ""
+"Data model architecture (data model in which the information/attributes are "
+"added to an object)"
 
 #: templates/TechnicalStandards/protocol-detail.html:119
-#, fuzzy
-#| msgid ""
-#| "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
-#| "Datenübertragung automatisch zu identifizieren?"
 msgid "Funktion, um Geräte im Netzwerk automatisch zu identifzieren"
-msgstr ""
-"whether the protocol has the “discovery” function to automatically identify "
-"devices during data transfer?"
+msgstr "Function to automatically identify devices on the network"
 
 #: templates/TechnicalStandards/protocol-detail.html:123
 #, fuzzy
@@ -840,18 +847,21 @@ msgid ""
 "Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen "
 "werden können)"
 msgstr ""
+"Packet size (data packet size that can be transmitted according to Maximum "
+"Transmission Unit)"
 
 #: templates/TechnicalStandards/protocol-detail.html:135
 msgid ""
 "Priorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen "
 "werden)"
-msgstr ""
+msgstr "Priority (how the changes/updates are made)"
 
 #: templates/TechnicalStandards/protocol-detail.html:139
 msgid ""
 "Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen "
 "(Gering, Durchschnittlich, Hoch)"
 msgstr ""
+"Cost to enable hardware support for additional protocols (Low, Average, High)"
 
 #: templates/TechnicalStandards/protocol-detail.html:145
 msgid ""
@@ -859,20 +869,24 @@ msgid ""
 "[Presentation], Sitzung [Session], Transport [Transport], Vermittlung/Paket "
 "[Network], Sicherung [Data Link], Bitübertragung [Phyiscal])"
 msgstr ""
+"Implemented OSI layers (Application, Presentation, Session, Transport, "
+"Network/Packet, Data Link, Physical)"
 
 #: templates/TechnicalStandards/protocol-detail.html:149
 msgid ""
 "Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)"
 msgstr ""
+"Levels of building automation (field level, automation level, management "
+"level)"
 
 #: templates/TechnicalStandards/protocol-detail.html:194
 #: templates/TechnicalStandards/protocol-detail.html:214
 msgid "Übertragung"
-msgstr ""
+msgstr "Transmission"
 
 #: templates/TechnicalStandards/protocol-explanation.html:7
 msgid "Was ist Gebäudeautomation (GA; Building Automation)? "
-msgstr ""
+msgstr "What is building automation (GA; Building Automation)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:8
 msgid ""
@@ -896,12 +910,20 @@ msgid ""
 "(Steuerungen) \n"
 "          und der Managementebene (Überwachungssoftware)."
 msgstr ""
+"Building automation is revolutionizing the way buildings are operated, "
+"controlled and monitored. It is an advanced system that uses modern "
+"technology to optimize the efficiency, comfort and safety of buildings. It "
+"integrates various systems such as HVAC (heating, ventilation, air "
+"conditioning), lighting, security technology and more into a central "
+"platform for efficient control and monitoring. The main advantages of GA are "
+"improved energy efficiency, lower operating costs, increased comfort for "
+"residents and simplified maintenance. A GA usually consists of three logical "
+"levels: the field level (sensors and actuators), the automation level "
+"(controllers) and the management level (monitoring software)."
 
 #: templates/TechnicalStandards/protocol-explanation.html:20
-#, fuzzy
-#| msgid "Ebenen der Gebäudeautomation"
 msgid "Warum brauchen wir Protokolle in der Gebäudeautomation?"
-msgstr "Levels of building automation"
+msgstr "Why do we need protocols in building automation?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:21
 msgid ""
@@ -920,6 +942,13 @@ msgid ""
 "          schnelle Reaktionen auf veränderte Bedingungen und kann damit die "
 "Gesamteffizienz des Systems verbessern."
 msgstr ""
+"Protocols are essential in building automation because they enable seamless "
+"communication between different devices and systems within the building. "
+"Building automation often uses products from different manufacturers that "
+"may use proprietary communication methods. Protocols serve as a common "
+"language that ensures interoperability and avoids data silos. Extensive data "
+"exchange in real time in particular enables rapid reactions to changing "
+"conditions and can therefore Improve overall system efficiency."
 
 #: templates/TechnicalStandards/protocol-explanation.html:30
 #, fuzzy
@@ -988,29 +1017,19 @@ msgstr ""
 msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
 msgstr ""
 
-#: templates/TechnicalStandards/protocol-listings.html:21
-#, fuzzy
-#| msgid "Überblick über die Normen"
-msgid "Überblick über die technischen Standards"
-msgstr "Overview of norms"
-
-#: templates/TechnicalStandards/protocol-listings.html:21
-msgid "Protokolle"
-msgstr ""
-
 #: templates/TechnicalStandards/protocol-listings.html:108
 #: templates/TechnicalStandards/protocol-listings.html:114
 msgid "Verkabelt"
-msgstr ""
+msgstr "Wired"
 
 #: templates/TechnicalStandards/protocol-listings.html:108
 #: templates/TechnicalStandards/protocol-listings.html:111
 msgid "Drahtlos"
-msgstr ""
+msgstr "Wireless"
 
 #: templates/TechnicalStandards/protocol-listings.html:131
 msgid "Proprietär"
-msgstr ""
+msgstr "Proprietary"
 
 #: templates/TechnicalStandards/protocol-listings.html:213
 #: templates/TechnicalStandards/protocol-listings.html:221
@@ -1581,18 +1600,6 @@ msgstr ""
 "The Climate Neutral Building Forum provides an overview of digital tools. "
 "These are aimed particularly at people who work in accounting and consulting."
 
-#: templates/tools_over/explanationApps.html:176
-#: templates/tools_over/explanationBusinessApps.html:21
-#: templates/tools_over/explanationTools.html:177
-msgid "Zeige weniger ..."
-msgstr "Show less ..."
-
-#: templates/tools_over/explanationApps.html:177
-#: templates/tools_over/explanationBusinessApps.html:22
-#: templates/tools_over/explanationTools.html:178
-msgid "Zeige mehr ..."
-msgstr "Show more ..."
-
 #: templates/tools_over/explanationBusinessApps.html:10
 msgid ""
 "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, \n"
@@ -1930,6 +1937,12 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 msgid "Updates"
 msgstr "Updates"
 
-#: templates/tools_over/tool-listings.html:106
-msgid "Alle"
-msgstr "All"
+#, fuzzy
+#~| msgid "Überblick über die Normen"
+#~ msgid "Überblick über die technischen Standards - Normen "
+#~ msgstr "Overview of norms"
+
+#, fuzzy
+#~| msgid "Vergleiche"
+#~ msgid "Vergleich Protokolle"
+#~ msgstr "Comparisons"

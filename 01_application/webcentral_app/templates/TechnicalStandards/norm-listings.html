@@ -19,7 +19,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% blocktranslate %}Überblick über die technischen Standards - Normen {% endblocktranslate %}</h2>
+          <h2 class="m-0">{% blocktranslate %}Überblick über die technischen Standards{% endblocktranslate %} - {% translate "Normen" %} </h2>
         </div>
       </div>
     </div>
@@ -270,7 +270,7 @@ Page content START -->
                         aria-label=".form-select-sm example" name="s" id="lizenz-input-norms"
                         title="Filter nach der Quelle der technischen Norm">
                   <option value="">
-                    Quelle
+                    {% translate "Quelle" %}
                   </option>
                   <option value="https://ghgprotocol.org/" {% if source == "https://ghgprotocol.org/" %} selected="selected" {% endif %}>
                     https://ghgprotocol.org/
@@ -302,7 +302,7 @@ Page content START -->
         <div class="col-xl-1">
           <a href="{%url 'TechnicalStandards_norm_list' %}">
             <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-              Alle
+              {% translate "Alle" %}
             </h6>
           </a>
         </div>
@@ -364,7 +364,7 @@ Page content START -->
           <span class="step-links">
             {% if page.has_previous %}
             <a  href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page=1">
-              &laquo; erste
+              &laquo; {% translate "erste" %}
             </a>
             &nbsp &nbsp
             <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}">
@@ -373,7 +373,7 @@ Page content START -->
             {% endif %}
             &nbsp &nbsp
             <span class="current">
-              {% translate "Seite %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
+              {% translate "Seite" %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
             </span>
             &nbsp &nbsp
             {% if page.has_next %}
