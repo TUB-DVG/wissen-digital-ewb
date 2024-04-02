@@ -7,8 +7,9 @@ from django.contrib import admin
 from django.urls import include, re_path
 # except ImportError:
 # 	from django.conf.urls.defaults import url
-from publications.models import CustomLink, CustomFile
+from modeltranslation.admin import TranslationAdmin
 
+from publications.models import CustomLink, CustomFile
 import publications.admin_views
 
 class CustomLinkInline(admin.StackedInline):
