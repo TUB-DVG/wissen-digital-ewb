@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Überblick über technische Standards - Normen {% endblock %}
 {% block content %}
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
 
@@ -18,7 +19,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Überblick über technische Standards - Normen </h2>
+          <h2 class="m-0">{% blocktranslate %}Überblick über die technischen Standards - Normen {% endblocktranslate %}</h2>
         </div>
       </div>
     </div>
@@ -55,7 +56,7 @@ Page content START -->
                         name="n" id="source-input-norms"
                         title="Filtern nach der Bezeichnung der technischen Norm">
                   <option value="">
-                    Bezeichnung
+                    {% translate "Bezeichnung" %}
                   </option>
                   <option value="ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" {% if name == "ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs" %} selected="selected" {% endif %}>
                     ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs
@@ -314,7 +315,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="/TechnicalStandards/norm?searched={{search}}&n=&s=">
-            Suchbegriff: {{search}}
+            {% translate "Suchbegriff" %}: {{search}}
           </a>
           <a href="/TechnicalStandards/norm?searched=&n={% if name %}{{name}}{% endif %}&s={% if source %}{{source}}{% endif %}">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -326,7 +327,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="/TechnicalStandards/norm?searched=&n={{name}}&s=">
-            Suchbegriff: {{name}}
+            {% translate "Suchbegriff" %}: {{name}}
           </a>
           <a href="/TechnicalStandards/norm?searched={% if search %}{{search}}{% endif %}&n=&s={% if source %}{{ source}}{% endif %}">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -338,7 +339,7 @@ Page content START -->
       <li class="list-inline-item">
         <div class="btn btn-outline-light btn-sm">
           <a href="/TechnicalStandards/norm?searched=&n=&s={{source}}">
-            Suchbegriff: {{ source}}
+            {% translate "Suchbegriff" %}: {{ source}}
           </a>
           <a href="/TechnicalStandards/norm?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s=">
             <i class="bi bi-x fa-lg close-icon"></i>
@@ -367,21 +368,21 @@ Page content START -->
             </a>
             &nbsp &nbsp
             <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}">
-              vorherige
+              {% translate "vorherige" %}
             </a>
             {% endif %}
             &nbsp &nbsp
             <span class="current">
-              Seite {{ page.number }} von {{ page.paginator.num_pages }}
+              {% translate "Seite %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
             </span>
             &nbsp &nbsp
             {% if page.has_next %}
             <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}">
-              nächste
+              {% translate "nächste" %}
             </a>
             &nbsp &nbsp
             <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.paginator.num_pages}}">
-              letzte &raquo;
+              {% translate "letzte" %} &raquo;
             </a>
             &nbsp &nbsp
             {% endif %}
