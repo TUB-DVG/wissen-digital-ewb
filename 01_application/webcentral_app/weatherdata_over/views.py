@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from http.client import REQUESTED_RANGE_NOT_SATISFIABLE
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import (
+    render, 
+    get_object_or_404,
+)
 from django.core.paginator import Paginator
+
 from .models import Weatherdata 
 
 # Create your views here.
@@ -17,27 +19,58 @@ def index(request):
     """
     weatherdata = Weatherdata.objects.all() # reads all data from table Teilprojekt       
     filtered_by = [None]*2
-    searched=None
+    searched = None
 
-    if ((request.GET.get("k") != None) |(request.GET.get("l") != None) |(request.GET.get("searched") != None)):
-        Kategorie=request.GET.get('k')
-        Lizenz=request.GET.get('l')
-        searched=request.GET.get('searched')
-        weatherdata=Weatherdata.objects.filter(category__icontains=Kategorie,license__icontains=Lizenz,data_service__icontains=searched)
-        filtered_by = [Kategorie, Lizenz]
+    if (
+        (_checkDjangoDict(request, "Kategorie") is not None) | 
+        (_checkDjangoDict(request, "Lizenz") is not None) |
+        (_checkDjangoDict(request, "searched") is not None)
+    ):
+        category = request.GET.get("Kategorie", "")
+        license = request.GET.get("Lizenz", "")
+        searched = request.GET.get("searched", "")
+        weatherdata = Weatherdata.objects.filter(
+            category__icontains=category,
+            license__icontains=license,
+            data_service__icontains=searched,
+        )
+        filtered_by = [category, license]
     
     weatherdata = list(sorted(weatherdata, key=lambda obj:obj.data_service))
 
-    weatherdata_paginator= Paginator (weatherdata,12)
+    weatherdata_paginator = Paginator(weatherdata,12)
 
-    page_num= request.GET.get('page',None)
-    page=weatherdata_paginator.get_page(page_num)
-       
+    pageNum = request.GET.get('page', None)
+    page = weatherdata_paginator.get_page(pageNum)
+
     context = {
         'page': page,
         'search': searched,
         'kategorie': filtered_by[0],
         'lizenz': filtered_by[1],
+        "nameOfTemplate": "weatherdata",
+        "urlName": "publicationPage",
+        "optionList": [
+            {
+                "placeholder": "Kategorie", 
+                "objects": [
+                    "Datensätze", 
+                    "Anwendung",
+                ],
+                "filter": filtered_by[0],
+            },
+            {
+                "placeholder": "Lizenz", 
+                "objects": [
+                    "Frei nutzbar", 
+                    "Open Data", 
+                    "CC BY 4.0", 
+                    "MIT-Lizenz", 
+                ],
+                "filter": filtered_by[1],
+            },
+        ],
+        "focusBorder": "technical",
     }
 
     return render(request, 'weatherdata_over/data-service-listings.html', context)
@@ -83,3 +116,7 @@ def weatherdata_view(request, id):
 def wetterdienst(request):
     return render(request,'weatherdata_over/wetterdienst(example).html')
 
+def _checkDjangoDict(request, key):
+    if key in request.GET:
+        return request.GET[key]
+    return None
