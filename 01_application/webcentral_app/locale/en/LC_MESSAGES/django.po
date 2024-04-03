@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-02 11:11+0000\n"
+"POT-Creation-Date: 2024-04-03 06:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Add %(name)s"
 msgstr ""
 
-#: publications/admin/orderedmodeladmin.py:114
+#: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
 msgstr ""
 
@@ -73,42 +73,42 @@ msgstr "Actuality"
 
 #: templates/StartSearch/ResultSearch.html:147
 #: templates/TechnicalStandards/norm-listings.html:367
-#: templates/TechnicalStandards/protocol-listings.html:248
+#: templates/TechnicalStandards/protocol-listings.html:249
 #: templates/tools_over/tool-listings.html:200
 msgid "erste"
 msgstr "first"
 
 #: templates/StartSearch/ResultSearch.html:152
 #: templates/TechnicalStandards/norm-listings.html:371
-#: templates/TechnicalStandards/protocol-listings.html:252
+#: templates/TechnicalStandards/protocol-listings.html:253
 #: templates/tools_over/tool-listings.html:204
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/StartSearch/ResultSearch.html:157
 #: templates/TechnicalStandards/norm-listings.html:376
-#: templates/TechnicalStandards/protocol-listings.html:257
+#: templates/TechnicalStandards/protocol-listings.html:258
 #: templates/tools_over/tool-listings.html:209
 msgid "Seite"
 msgstr "Site"
 
 #: templates/StartSearch/ResultSearch.html:157
 #: templates/TechnicalStandards/norm-listings.html:376
-#: templates/TechnicalStandards/protocol-listings.html:257
+#: templates/TechnicalStandards/protocol-listings.html:258
 #: templates/tools_over/tool-listings.html:209
 msgid "von"
 msgstr "from"
 
 #: templates/StartSearch/ResultSearch.html:163
 #: templates/TechnicalStandards/norm-listings.html:381
-#: templates/TechnicalStandards/protocol-listings.html:262
+#: templates/TechnicalStandards/protocol-listings.html:263
 #: templates/tools_over/tool-listings.html:214
 msgid "nächste"
 msgstr "next"
 
 #: templates/StartSearch/ResultSearch.html:168
 #: templates/TechnicalStandards/norm-listings.html:385
-#: templates/TechnicalStandards/protocol-listings.html:266
+#: templates/TechnicalStandards/protocol-listings.html:267
 #: templates/tools_over/tool-listings.html:218
 msgid "letzte"
 msgstr "last"
@@ -171,7 +171,8 @@ msgid "Anwendungen"
 msgstr "Applications"
 
 #: templates/StartSearch/StartSearch.html:132
-msgid "technische Standards"
+#: templates/TechnicalStandards/explanation.html:14
+msgid "Technische Standards"
 msgstr "Technical Standards"
 
 #: templates/StartSearch/StartSearch.html:143
@@ -179,7 +180,7 @@ msgid "Wetterdaten"
 msgstr "Wheatherdata"
 
 #: templates/StartSearch/StartSearch.html:154
-msgid "Datensets"
+msgid "Datensätze"
 msgstr "Datasets"
 
 #: templates/StartSearch/StartSearch.html:165
@@ -255,12 +256,25 @@ msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
 #: templates/StartSearch/StartSearch.html:308
+#, fuzzy
+#| msgid ""
+#| "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
+#| "                in der Energieforschung im Gebäudesektor zielt auf das\n"
+#| "                Evaluieren von Umwelteffekten durch den Einsatz "
+#| "digitaler\n"
+#| "                Anwendungen ab. Neben positiven Wirkungen wie\n"
+#| "                Energieeinsparungen werden auch negativen Auswirkungen "
+#| "wie ein\n"
+#| "                erhöhter Materialverbrauch durch digitale Anwendungen\n"
+#| "                aufgezeigt. In diesem Kontext wird auch ein suffizienter "
+#| "Umgang\n"
+#| "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
 "                Evaluieren von Umwelteffekten durch den Einsatz digitaler\n"
 "                Anwendungen ab. Neben positiven Wirkungen wie\n"
-"                Energieeinsparungen werden auch negativen Auswirkungen wie "
+"                Energieeinsparungen werden auch negative Auswirkungen wie "
 "ein\n"
 "                erhöhter Materialverbrauch durch digitale Anwendungen\n"
 "                aufgezeigt. In diesem Kontext wird auch ein suffizienter "
@@ -327,11 +341,11 @@ msgstr "Catalog of criteria"
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/TechnicalStandards/explanation.html:14
-#, fuzzy
-#| msgid "technische Standards"
-msgid "Technische Standards"
-msgstr "Technical Standards"
+#: templates/TechnicalStandards/explanation.html:3
+#: templates/TechnicalStandards/norm-listings.html:22
+#: templates/TechnicalStandards/protocol-listings.html:22
+msgid "Überblick über technische Standards"
+msgstr "Overview of technical standards"
 
 #: templates/TechnicalStandards/explanation.html:28
 msgid ""
@@ -412,23 +426,23 @@ msgid ""
 "die Planung, \n"
 "              den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
 "Warmwasser-, \n"
-"              Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
+"              Entwässerungs-, Heizungs-, Kühl-, und sonstiger Energiesysteme "
 "in Gebäuden. \n"
-"              Andere technische Standards, wie Schallschutz, Beleuchtung, "
-"und Gasinstallation,\n"
+"              Andere technische Standards wie Schallschutz, Beleuchtung und "
+"Gasinstallation\n"
 "              sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
 "Aspekte\n"
 "              erfasst:"
 msgstr ""
-"On this page you will find different technical standards,which were recorded "
-"in autumn 2022. These were recorded through research in software catalogs, "
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
 "standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
 "drinking water, hot water, drainage, heating, cooling and other energy "
 "systems in buildings . Other technical standards, such as soundproofing, "
 "lighting, and gas installation, are also included. The following aspects "
-"were recorded for each standard:"
+"were recorded for each norm:"
 
 #: templates/TechnicalStandards/explanation.html:67
 #: templates/TechnicalStandards/norm-explanation.html:19
@@ -446,8 +460,6 @@ msgstr "Short description"
 
 #: templates/TechnicalStandards/explanation.html:70
 #: templates/TechnicalStandards/norm-explanation.html:22
-#, fuzzy
-#| msgid "Um was handelt es sich?"
 msgid "um was handelt es sich?"
 msgstr "What is it about?"
 
@@ -475,17 +487,42 @@ msgid ""
 "                gekauft) werden kann."
 msgstr "a link through which the norm can be accessed (possibly purchased)."
 
-#: templates/TechnicalStandards/explanation.html:94
+#: templates/TechnicalStandards/explanation.html:82
+#: templates/TechnicalStandards/explanation.html:158
+#: templates/TechnicalStandards/norm-explanation.html:33
+#: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/tools_over/explanationApps.html:176
+#: templates/tools_over/explanationBusinessApps.html:21
+#: templates/tools_over/explanationTools.html:177
+msgid "Zeige weniger ..."
+msgstr "Show less ..."
+
+#: templates/TechnicalStandards/explanation.html:83
+#: templates/TechnicalStandards/explanation.html:159
+#: templates/TechnicalStandards/norm-explanation.html:34
+#: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/tools_over/explanationApps.html:177
+#: templates/tools_over/explanationBusinessApps.html:22
+#: templates/tools_over/explanationTools.html:178
+msgid "Zeige mehr ..."
+msgstr "Show more ..."
+
+#: templates/TechnicalStandards/explanation.html:96
 msgid "Überblick über die Normen"
 msgstr "Overview of norms"
 
-#: templates/TechnicalStandards/explanation.html:104
+#: templates/TechnicalStandards/explanation.html:103
+#: templates/TechnicalStandards/protocol-listings.html:22
+msgid "Protokolle"
+msgstr "protocols"
+
+#: templates/TechnicalStandards/explanation.html:106
 msgid ""
 "Auf der Seite sind verschiedenen Protokolle,\n"
 "        die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
 "Diese sind durch Recherche in \n"
 "        der entsprechenden Fachliteratur, in Dokumentationen von Hard- und "
-"Software, und in Unterlagen aus den \n"
+"Software und in Unterlagen aus den \n"
 "        Forschungsprojekten der Energiewendebauen zusammengetragen worden. \n"
 "        Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt und "
 "für diese die \n"
@@ -498,7 +535,17 @@ msgstr ""
 "used and modern protocols and summarized the following characteristics for "
 "them:"
 
-#: templates/TechnicalStandards/explanation.html:116
+#: templates/TechnicalStandards/explanation.html:115
+msgid "Name des Protokolls"
+msgstr "Name of the protocol"
+
+#: templates/TechnicalStandards/explanation.html:118
+#: templates/TechnicalStandards/protocol-explanation.html:41
+#: templates/TechnicalStandards/protocol-listings.html:106
+msgid "Übertragungsmethoden"
+msgstr "transmission media"
+
+#: templates/TechnicalStandards/explanation.html:118
 msgid ""
 "wie werden Daten zwischen den \n"
 "          verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -507,59 +554,60 @@ msgstr ""
 "How is data transferred between the various components and devices within "
 "the system (wired, wireless or wired & wireless)?"
 
-#: templates/TechnicalStandards/explanation.html:119
-#: templates/TechnicalStandards/protocol-comparison.html:43
+#: templates/TechnicalStandards/explanation.html:121
+#: templates/TechnicalStandards/protocol-comparison.html:44
 #: templates/TechnicalStandards/protocol-detail.html:77
 #: templates/TechnicalStandards/protocol-explanation.html:44
 msgid "Unterstützte Übertragungsmedien"
 msgstr "Supported transmission media"
 
-#: templates/TechnicalStandards/explanation.html:119
+#: templates/TechnicalStandards/explanation.html:121
 #: templates/TechnicalStandards/protocol-explanation.html:44
 msgid "wie werden Signale übertragen?"
 msgstr "how are signals transmitted?"
 
-#: templates/TechnicalStandards/explanation.html:121
-#: templates/TechnicalStandards/protocol-comparison.html:50
+#: templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/protocol-comparison.html:51
+#: templates/TechnicalStandards/protocol-detail.html:81
 #: templates/TechnicalStandards/protocol-explanation.html:46
 msgid "Zugehörige Standards"
 msgstr "Related standards"
 
-#: templates/TechnicalStandards/explanation.html:121
+#: templates/TechnicalStandards/explanation.html:123
 #: templates/TechnicalStandards/protocol-explanation.html:46
 msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
 msgstr "specific standards to which each protocol can be assigned."
 
-#: templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/explanation.html:125
 #: templates/TechnicalStandards/protocol-detail.html:204
 #: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
-#: templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/explanation.html:125
 #: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "ist das Protokoll öffentlich und frei verfügbar?"
 msgstr "is the protocol public and freely available?"
 
-#: templates/TechnicalStandards/explanation.html:125
+#: templates/TechnicalStandards/explanation.html:127
 #: templates/TechnicalStandards/protocol-explanation.html:50
 msgid "Lizenzgebühr"
 msgstr "License fee"
 
-#: templates/TechnicalStandards/explanation.html:125
+#: templates/TechnicalStandards/explanation.html:127
 #: templates/TechnicalStandards/protocol-explanation.html:50
 msgid ""
 "ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die "
 "Zertifizierung fällig?"
 msgstr "Is there a fee to cover the costs of use and/or certification?"
 
-#: templates/TechnicalStandards/explanation.html:127
+#: templates/TechnicalStandards/explanation.html:129
 #: templates/TechnicalStandards/protocol-detail.html:224
 #: templates/TechnicalStandards/protocol-explanation.html:52
 msgid "Netzwerktopologie"
 msgstr "network topology"
 
-#: templates/TechnicalStandards/explanation.html:127
+#: templates/TechnicalStandards/explanation.html:129
 #: templates/TechnicalStandards/protocol-explanation.html:52
 msgid ""
 "was ist die physische und logische Anordnung von Geräten und Komponenten in "
@@ -568,13 +616,14 @@ msgstr ""
 "what is the physical and logical arrangement of devices and components in a "
 "network?"
 
-#: templates/TechnicalStandards/explanation.html:129
-#: templates/TechnicalStandards/protocol-comparison.html:58
+#: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-comparison.html:59
+#: templates/TechnicalStandards/protocol-detail.html:87
 #: templates/TechnicalStandards/protocol-explanation.html:54
 msgid "Implementierte Sicherheitsmechanismen"
 msgstr "Implemented security mechanisms"
 
-#: templates/TechnicalStandards/explanation.html:129
+#: templates/TechnicalStandards/explanation.html:131
 #: templates/TechnicalStandards/protocol-explanation.html:54
 msgid ""
 "ob und welche Mechanismen sind im Protokoll implementiert, um die "
@@ -583,14 +632,14 @@ msgstr ""
 "whether and what mechanisms are implemented in the protocol to ensure data "
 "security?"
 
-#: templates/TechnicalStandards/explanation.html:131
-#: templates/TechnicalStandards/protocol-comparison.html:65
+#: templates/TechnicalStandards/explanation.html:133
+#: templates/TechnicalStandards/protocol-comparison.html:66
 #: templates/TechnicalStandards/protocol-detail.html:93
 #: templates/TechnicalStandards/protocol-explanation.html:56
 msgid "Bandbreite"
 msgstr "Bandwidth"
 
-#: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/explanation.html:133
 #: templates/TechnicalStandards/protocol-explanation.html:56
 msgid ""
 "die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen "
@@ -599,14 +648,14 @@ msgstr ""
 "the capacity of the communication channel to transmit data between the "
 "various components of the system."
 
-#: templates/TechnicalStandards/explanation.html:133
-#: templates/TechnicalStandards/protocol-comparison.html:73
+#: templates/TechnicalStandards/explanation.html:135
+#: templates/TechnicalStandards/protocol-comparison.html:74
 #: templates/TechnicalStandards/protocol-detail.html:97
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid "Frequenz"
 msgstr "Frequency"
 
-#: templates/TechnicalStandards/explanation.html:133
+#: templates/TechnicalStandards/explanation.html:135
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid ""
 "die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
@@ -615,14 +664,14 @@ msgstr ""
 "the frequency, wavelength, or carrier frequency used by the wireless "
 "communication devices in the system."
 
-#: templates/TechnicalStandards/explanation.html:135
-#: templates/TechnicalStandards/protocol-comparison.html:81
+#: templates/TechnicalStandards/explanation.html:137
+#: templates/TechnicalStandards/protocol-comparison.html:82
 #: templates/TechnicalStandards/protocol-detail.html:103
 #: templates/TechnicalStandards/protocol-explanation.html:60
 msgid "Reichweite"
 msgstr "Range"
 
-#: templates/TechnicalStandards/explanation.html:135
+#: templates/TechnicalStandards/explanation.html:137
 #: templates/TechnicalStandards/protocol-explanation.html:60
 msgid ""
 "die maximale Entfernung, über die die Kommunikation zwischen den "
@@ -633,13 +682,13 @@ msgstr ""
 "various devices and components of the system without the signal strength "
 "becoming too weak."
 
-#: templates/TechnicalStandards/explanation.html:137
-#: templates/TechnicalStandards/protocol-comparison.html:119
+#: templates/TechnicalStandards/explanation.html:139
+#: templates/TechnicalStandards/protocol-comparison.html:120
 #: templates/TechnicalStandards/protocol-explanation.html:62
 msgid "Implementierte OSI-Schichten"
 msgstr "Implemented OSI-layer"
 
-#: templates/TechnicalStandards/explanation.html:137
+#: templates/TechnicalStandards/explanation.html:139
 #: templates/TechnicalStandards/protocol-explanation.html:62
 msgid ""
 "die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
@@ -648,33 +697,33 @@ msgstr ""
 "the application of the layers of the OSI reference model for communication "
 "between the various components of the system."
 
-#: templates/TechnicalStandards/explanation.html:139
-#: templates/TechnicalStandards/protocol-comparison.html:126
+#: templates/TechnicalStandards/explanation.html:141
+#: templates/TechnicalStandards/protocol-comparison.html:127
 #: templates/TechnicalStandards/protocol-explanation.html:64
 msgid "Ebenen der Gebäudeautomation"
 msgstr "Levels of building automation"
 
-#: templates/TechnicalStandards/explanation.html:139
+#: templates/TechnicalStandards/explanation.html:141
 #: templates/TechnicalStandards/protocol-explanation.html:64
 msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
 msgstr "the hierarchical structure of a building automation system."
 
-#: templates/TechnicalStandards/explanation.html:141
-#: templates/TechnicalStandards/protocol-comparison.html:90
+#: templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/protocol-comparison.html:91
 #: templates/TechnicalStandards/protocol-explanation.html:66
 msgid "Datenmodell Architektur"
 msgstr "Data model architecture"
 
-#: templates/TechnicalStandards/explanation.html:141
+#: templates/TechnicalStandards/explanation.html:143
 #: templates/TechnicalStandards/protocol-explanation.html:66
 msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
 msgstr "how do you add information or attributes to an object?"
 
-#: templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/explanation.html:145
 msgid "Discovery"
 msgstr "Discovery"
 
-#: templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/explanation.html:145
 msgid ""
 "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
 "Datenübertragung automatisch zu identifizieren?"
@@ -682,34 +731,45 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
-#: templates/TechnicalStandards/explanation.html:145
+#: templates/TechnicalStandards/explanation.html:147
 msgid "Multi Master"
 msgstr "Multi Master"
 
-#: templates/TechnicalStandards/explanation.html:145
+#: templates/TechnicalStandards/explanation.html:147
 #: templates/TechnicalStandards/protocol-explanation.html:70
 msgid "können mehrere Mastergeräte zeitgleich agieren?"
 msgstr "Can several master devices act at the same time?"
 
-#: templates/TechnicalStandards/explanation.html:147
-#: templates/TechnicalStandards/protocol-comparison.html:112
+#: templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/protocol-comparison.html:113
 #: templates/TechnicalStandards/protocol-explanation.html:72
 msgid "Priorität"
 msgstr "Priority"
 
 #: templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/protocol-explanation.html:72
+msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
+msgstr "Procedure for how the changes or updates are made."
+
+#: templates/TechnicalStandards/explanation.html:151
 #: templates/TechnicalStandards/protocol-explanation.html:74
 msgid "Typische Anwendung"
 msgstr "Typical application"
 
-#: templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/explanation.html:151
 #: templates/TechnicalStandards/protocol-explanation.html:74
 msgid "ggf. Beispielhafte Anwendung."
 msgstr "If applicable, exemplary application."
 
-#: templates/TechnicalStandards/explanation.html:168
+#: templates/TechnicalStandards/explanation.html:172
 msgid "Überblick über die Protokolle"
 msgstr "Overview of protocols"
+
+#: templates/TechnicalStandards/norm-detail.html:32
+#: templates/TechnicalStandards/protocol-detail.html:50
+#: templates/tools_over/tool-detail.html:49
+msgid "Zurück"
+msgstr "Back"
 
 #: templates/TechnicalStandards/norm-detail.html:59
 msgid "Titel"
@@ -757,67 +817,41 @@ msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
 msgstr ""
 "a link through which the standard can be accessed (possibly purchased)."
 
-#: templates/TechnicalStandards/norm-explanation.html:33
-#: templates/TechnicalStandards/protocol-explanation.html:81
-#: templates/tools_over/explanationApps.html:176
-#: templates/tools_over/explanationBusinessApps.html:21
-#: templates/tools_over/explanationTools.html:177
-msgid "Zeige weniger ..."
-msgstr "Show less ..."
-
-#: templates/TechnicalStandards/norm-explanation.html:34
-#: templates/TechnicalStandards/protocol-explanation.html:82
-#: templates/tools_over/explanationApps.html:177
-#: templates/tools_over/explanationBusinessApps.html:22
-#: templates/tools_over/explanationTools.html:178
-msgid "Zeige mehr ..."
-msgstr "Show more ..."
-
-#: templates/TechnicalStandards/norm-listings.html:22
-#: templates/TechnicalStandards/protocol-listings.html:21
-#, fuzzy
-#| msgid "Überblick über die Normen"
-msgid "Überblick über die technischen Standards"
-msgstr "Overview of norms"
+#: templates/TechnicalStandards/norm-listings.html:46
+#: templates/TechnicalStandards/norm-listings.html:318
+#: templates/TechnicalStandards/norm-listings.html:330
+#: templates/TechnicalStandards/norm-listings.html:342
+#: templates/TechnicalStandards/protocol-listings.html:46
+#: templates/TechnicalStandards/protocol-listings.html:165
+#: templates/TechnicalStandards/protocol-listings.html:177
+#: templates/TechnicalStandards/protocol-listings.html:189
+#: templates/TechnicalStandards/protocol-listings.html:201
+#: templates/tools_over/tool-listings.html:42
+#: templates/tools_over/tool-listings.html:120
+msgid "Suchbegriff"
+msgstr "search term"
 
 #: templates/TechnicalStandards/norm-listings.html:59
 msgid "Bezeichnung"
 msgstr "Designation"
 
 #: templates/TechnicalStandards/norm-listings.html:305
+#: templates/TechnicalStandards/protocol-listings.html:152
 #: templates/tools_over/tool-listings.html:106
 msgid "Alle"
 msgstr "All"
 
-#: templates/TechnicalStandards/norm-listings.html:318
-#: templates/TechnicalStandards/norm-listings.html:330
-#: templates/TechnicalStandards/norm-listings.html:342
-#: templates/TechnicalStandards/protocol-listings.html:164
-#: templates/TechnicalStandards/protocol-listings.html:176
-#: templates/TechnicalStandards/protocol-listings.html:188
-#: templates/TechnicalStandards/protocol-listings.html:200
-#: templates/tools_over/tool-listings.html:42
-#: templates/tools_over/tool-listings.html:120
-msgid "Suchbegriff"
-msgstr "search term"
+#: templates/TechnicalStandards/protocol-comparison.html:23
+#: templates/tools_over/tool-comparison.html:23
+msgid "Ergebnisse"
+msgstr "Results"
 
-#: templates/TechnicalStandards/protocol-comparison.html:22
-#, fuzzy
-#| msgid "Vergleiche"
-msgid "Vergleich"
-msgstr "Comparisons"
-
-#: templates/TechnicalStandards/protocol-comparison.html:22
-#: templates/TechnicalStandards/protocol-listings.html:21
-msgid "Protokolle"
-msgstr "protocols"
+#: templates/TechnicalStandards/protocol-comparison.html:29
+msgid "Attribut"
+msgstr "Attribute"
 
 #: templates/TechnicalStandards/protocol-detail.html:81
-#, fuzzy
-#| msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
-msgid ""
-"Zugehörige Standards (Spezifische Standards, denen jedes Protokoll "
-"entspricht)"
+msgid "Spezifische Standards, denen jedes Protokoll entspricht"
 msgstr "specific standards to which each protocol can be assigned."
 
 #: templates/TechnicalStandards/protocol-detail.html:109
@@ -837,8 +871,6 @@ msgid "Funktion, um Geräte im Netzwerk automatisch zu identifzieren"
 msgstr "Function to automatically identify devices on the network"
 
 #: templates/TechnicalStandards/protocol-detail.html:123
-#, fuzzy
-#| msgid "können mehrere Mastergeräte zeitgleich agieren?"
 msgid "Können mehrere Mastergeräte zeitgleich agieren"
 msgstr "Can several master devices act at the same time?"
 
@@ -951,18 +983,6 @@ msgstr ""
 "conditions and can therefore Improve overall system efficiency."
 
 #: templates/TechnicalStandards/protocol-explanation.html:30
-#, fuzzy
-#| msgid ""
-#| "Auf der Seite sind verschiedenen Protokolle,\n"
-#| "        die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
-#| "Diese sind durch Recherche in \n"
-#| "        der entsprechenden Fachliteratur, in Dokumentationen von Hard- "
-#| "und Software, und in Unterlagen aus den \n"
-#| "        Forschungsprojekten der Energiewendebauen zusammengetragen "
-#| "worden. \n"
-#| "        Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt "
-#| "und für diese die \n"
-#| "          folgenden Eigenschaften zusammengefasst:"
 msgid ""
 "Auf dieser Seite sind verschiedenen Protokolle,\n"
 "          die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
@@ -981,18 +1001,6 @@ msgstr ""
 "them:"
 
 #: templates/TechnicalStandards/protocol-explanation.html:41
-#: templates/TechnicalStandards/protocol-listings.html:105
-#, fuzzy
-#| msgid "Unterstützte Übertragungsmedien"
-msgid "Übertragungsmethoden"
-msgstr "Supported transmission media"
-
-#: templates/TechnicalStandards/protocol-explanation.html:41
-#, fuzzy
-#| msgid ""
-#| "wie werden Daten zwischen den \n"
-#| "          verschiedenen Komponenten und Geräten innerhalb des Systems "
-#| "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgid ""
 "wie werden Daten zwischen den \n"
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -1002,10 +1010,6 @@ msgstr ""
 "the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:68
-#, fuzzy
-#| msgid ""
-#| "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
-#| "Datenübertragung automatisch zu identifizieren?"
 msgid ""
 "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
 "Datenübertragungautomatisch zu identifizieren?"
@@ -1013,32 +1017,28 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
-#: templates/TechnicalStandards/protocol-explanation.html:72
-msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
-msgstr ""
-
-#: templates/TechnicalStandards/protocol-listings.html:108
-#: templates/TechnicalStandards/protocol-listings.html:114
+#: templates/TechnicalStandards/protocol-listings.html:109
+#: templates/TechnicalStandards/protocol-listings.html:115
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: templates/TechnicalStandards/protocol-listings.html:108
-#: templates/TechnicalStandards/protocol-listings.html:111
+#: templates/TechnicalStandards/protocol-listings.html:109
+#: templates/TechnicalStandards/protocol-listings.html:112
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: templates/TechnicalStandards/protocol-listings.html:131
+#: templates/TechnicalStandards/protocol-listings.html:132
 msgid "Proprietär"
 msgstr "Proprietary"
 
-#: templates/TechnicalStandards/protocol-listings.html:213
-#: templates/TechnicalStandards/protocol-listings.html:221
+#: templates/TechnicalStandards/protocol-listings.html:214
+#: templates/TechnicalStandards/protocol-listings.html:222
 #: templates/tools_over/tool-listings.html:166
 #: templates/tools_over/tool-listings.html:174
 msgid "Vergleiche"
-msgstr "Comparisons"
+msgstr "Compare"
 
-#: templates/TechnicalStandards/protocol-listings.html:227
+#: templates/TechnicalStandards/protocol-listings.html:228
 #: templates/tools_over/tool-listings.html:180
 msgid "Zurücksetzen"
 msgstr "Reset to default"
@@ -1076,24 +1076,24 @@ msgstr ""
 #: templates/norms_over/explanation.html:7
 #, fuzzy
 #| msgid ""
-#| "Auf dieser Seite befinden sich unterschiedliche technische Normen,\n"
-#| "              die im Herbst 2022 erfasst worden sind. Diese sind durch "
+#| "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+#| "          die im Herbst 2022 erfasst worden sind. Diese sind durch "
 #| "Recherche in \n"
-#| "              Softwarekatalogen, Normendatenbanken und in "
-#| "Forschungsprojekten der Energiewendebauen\n"
-#| "              Projekte erfasst worden. Es handelt sich um deutsche, "
+#| "          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
+#| "der Energiewendebauen\n"
+#| "          Projekte erfasst worden. Es handelt sich um deutsche, "
 #| "österreichische, \n"
-#| "              europäische oder internationale Standards und Richtlinien "
-#| "für die Planung, \n"
-#| "              den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+#| "          europäische oder internationale Standards und Richtlinien für "
+#| "die Planung, \n"
+#| "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
 #| "Warmwasser-, \n"
-#| "              Entwässerungs-, Heizungs-, Kühl-, und sonstige "
-#| "Energiesystemen in Gebäuden. \n"
-#| "              Andere technische Standards, wie Schallschutz, Beleuchtung, "
-#| "und Gasinstallation,\n"
-#| "              sind ebenfalls enthalten. Für jede Norm wurden die "
-#| "folgenden Aspekte\n"
-#| "              erfasst:"
+#| "          Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
+#| "in Gebäuden. \n"
+#| "          Andere technische Standards, wie Schallschutz, Beleuchtung, und "
+#| "Gasinstallation,\n"
+#| "          sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+#| "Aspekte\n"
+#| "          erfasst: "
 msgid ""
 "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
 "          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
@@ -1114,15 +1114,15 @@ msgid ""
 "Aspekte\n"
 "          erfasst: "
 msgstr ""
-"On this page you will find different technical standards,which were recorded "
-"in autumn 2022. These were recorded through research in software catalogs, "
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
 "standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
 "drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical standards, such as soundproofing, "
+"systems in buildings . Other technical norms, such as soundproofing, "
 "lighting, and gas installation, are also included. The following aspects "
-"were recorded for each standard:"
+"were recorded for each norm:"
 
 #: templates/norms_over/explanation.html:22
 #: templates/tools_over/explanationApps.html:28
@@ -1223,7 +1223,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:38
 #: templates/tools_over/explanationTools.html:38
-#: templates/tools_over/tool-comparison.html:71
+#: templates/tools_over/tool-comparison.html:69
 #: templates/tools_over/tool-detail.html:253
 #: templates/tools_over/tool-listings.html:82
 #: templates/tools_over/tool-listings.html:153
@@ -1259,7 +1259,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:46
 #: templates/tools_over/explanationTools.html:46
-#: templates/tools_over/tool-comparison.html:83
+#: templates/tools_over/tool-comparison.html:80
 #: templates/tools_over/tool-detail.html:88
 msgid "Zielgruppe"
 msgstr "Target group"
@@ -1275,7 +1275,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:50
 #: templates/tools_over/explanationTools.html:50
-#: templates/tools_over/tool-comparison.html:166
+#: templates/tools_over/tool-comparison.html:159
 #: templates/tools_over/tool-listings-results.html:45
 msgid "Letztes Update"
 msgstr "Last update"
@@ -1295,7 +1295,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:56
 #: templates/tools_over/explanationTools.html:56
-#: templates/tools_over/tool-comparison.html:119
+#: templates/tools_over/tool-comparison.html:113
 #: templates/tools_over/tool-detail.html:92
 #: templates/tools_over/tool-listings.html:68
 #: templates/tools_over/tool-listings.html:142
@@ -1311,7 +1311,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:59
 #: templates/tools_over/explanationTools.html:59
-#: templates/tools_over/tool-comparison.html:138
+#: templates/tools_over/tool-comparison.html:131
 #: templates/tools_over/tool-detail.html:96
 #: templates/tools_over/tool-detail.html:245
 msgid "Lizenz"
@@ -1422,7 +1422,7 @@ msgstr ""
 
 #: templates/tools_over/explanationApps.html:88
 #: templates/tools_over/explanationTools.html:88
-#: templates/tools_over/tool-comparison.html:145
+#: templates/tools_over/tool-comparison.html:138
 #: templates/tools_over/tool-detail.html:164
 msgid "Entwicklungsstand"
 msgstr "Level of development"
@@ -1485,7 +1485,7 @@ msgstr "Which database system does the tool use?"
 
 #: templates/tools_over/explanationApps.html:107
 #: templates/tools_over/explanationTools.html:107
-#: templates/tools_over/tool-comparison.html:107
+#: templates/tools_over/tool-comparison.html:102
 #: templates/tools_over/tool-detail.html:187
 msgid "Räumliche Größenordnung der Anwendungsfälle"
 msgstr "Spatial scale of use cases"
@@ -1861,33 +1861,25 @@ msgstr ""
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
-#: templates/tools_over/tool-comparison.html:23
-msgid "Ergebnisse"
-msgstr "Results"
-
-#: templates/tools_over/tool-comparison.html:57
+#: templates/tools_over/tool-comparison.html:56
 #, fuzzy
 #| msgid "Anwendungen"
 msgid "Verwendung"
 msgstr "Applications"
 
-#: templates/tools_over/tool-comparison.html:95
+#: templates/tools_over/tool-comparison.html:91
 msgid "Benutzeroberfläche"
 msgstr "User interface"
 
-#: templates/tools_over/tool-comparison.html:131
+#: templates/tools_over/tool-comparison.html:124
 #: templates/tools_over/tool-detail.html:174
 msgid "Programmiersprache (Umsetzung)"
 msgstr "Programming language (implementation)"
 
-#: templates/tools_over/tool-comparison.html:158
+#: templates/tools_over/tool-comparison.html:151
 #: templates/tools_over/tool-detail.html:139
 msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
-
-#: templates/tools_over/tool-detail.html:49
-msgid "Zurück"
-msgstr "Back"
 
 #: templates/tools_over/tool-detail.html:73
 msgid "Was ist"
@@ -1936,6 +1928,19 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 #: templates/tools_over/tool-listings-results.html:43
 msgid "Updates"
 msgstr "Updates"
+
+#, fuzzy
+#~| msgid "Vergleiche"
+#~ msgid "Vergleich"
+#~ msgstr "Compare"
+
+#, fuzzy
+#~| msgid "Überblick über die Normen"
+#~ msgid "Überblick über  technische Standards"
+#~ msgstr "Overview of norms"
+
+#~ msgid "technische Standards"
+#~ msgstr "Technical Standards"
 
 #, fuzzy
 #~| msgid "Überblick über die Normen"

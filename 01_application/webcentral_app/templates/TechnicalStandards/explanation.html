@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}Überblick über die technischen Standards{% endblock %}
+{% block title %}{% translate "Überblick über technische Standards" %}{% endblock %}
 {% block content %}
 {% load static %} 
 
@@ -78,7 +78,9 @@ der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezi
           <div class="col-lg-12 lead mt-3">
             <a role="button" class="collapsed text-truncation-btn"
               data-toggle="collapse" href="#collapseInfoNorm" aria-expanded="false"
-              aria-controls="collapseInfoNorm"></a>
+              aria-controls="collapseInfoNorm"
+              data-expanded-text="{% translate 'Zeige weniger ...' %}"
+              data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
           </div>
       </div> 
     <!-- row norm END -->
@@ -98,7 +100,7 @@ der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezi
     <!-- link norm  END -->
 <!-- row protocol START -->
 <div class="row " id="collapseInfoContainerProtocol">
-  <h3><b>Protokolle</b></h3>
+  <h3><b>{% translate "Protokolle"|capfirst %}</b></h3>
   <div class="row collapseInfoContainer" id="collapseInfoContainerProtocol">
     <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoProtocol">
       <p> {% blocktranslate %}Auf der Seite sind verschiedenen Protokolle,
@@ -110,10 +112,10 @@ der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezi
       </p>
       <ul>
         <li class="lead">
-          <b>Name des Protokolls</b>
+          <b>{% translate "Name des Protokolls" %}</b>
         </li>
         <li class="lead">
-          <b>Übertragungsmethoden</b>&nbsp;&ndash; {% blocktranslate %}wie werden Daten zwischen den 
+          <b>{% translate "Übertragungsmethoden" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Daten zwischen den 
           verschiedenen Komponenten und Geräten innerhalb des Systems übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?{% endblocktranslate %}</li>
         <li class="lead">
           <b>{% translate "Unterstützte Übertragungsmedien" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Signale übertragen?{% endblocktranslate %}</li>
@@ -144,7 +146,7 @@ der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezi
         <li class="lead">
           <b>{% translate "Multi Master" %}</b>&nbsp;&ndash; {% blocktranslate %}können mehrere Mastergeräte zeitgleich agieren?{% endblocktranslate %}</li>
         <li class="lead">
-          <b>{% translate "Priorität" %}</b>&nbsp;&ndash; Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.</li>
+          <b>{% translate "Priorität" %}</b>&nbsp;&ndash; {% blocktranslate %}Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.{% endblocktranslate %}</li>
         <li class="lead">
           <b>{% translate "Typische Anwendung" %}</b>&nbsp;&ndash; {% blocktranslate %}ggf. Beispielhafte Anwendung.{% endblocktranslate %}</li>
         </ul>
@@ -152,7 +154,9 @@ der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die spezi
     <div class="col-lg-12 lead mt-3">
       <a role="button" class="collapsed text-truncation-btn"
         data-toggle="collapse" href="#collapseInfoProtocol" aria-expanded="false"
-        aria-controls="collapseInfoProtocol"></a>
+        aria-controls="collapseInfoProtocol"          
+        data-expanded-text="{% translate 'Zeige weniger ...' %}"
+        data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
     </div>
 </div> 
 <!-- row protocol END -->
