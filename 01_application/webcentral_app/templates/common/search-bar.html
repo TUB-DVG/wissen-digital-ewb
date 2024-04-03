@@ -1,0 +1,53 @@
+{% load i18n %}
+<!-- Filter bar START -->
+    <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative" id="searchBox">
+      <div class="row g-3">
+        <!-- Input -->
+        <div class="col-xl-3" title="Suchen in den ">
+          <input id="search-input-{{ nameOfTemplate }}"
+                 class="form-control me-1 border-{{ focusBorder }}"
+                 type="search" placeholder="{% translate 'Suchbegriff' %}"
+                 name='searched'>
+        </div>
+        <!-- Select item -->
+        <div class="col-xl-7">
+          <form  method="GET">
+            <div class="row g-3">
+              <!-- Select items -->
+              {% for optionContent in optionList %}
+                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                    <select class="form-select js-choice border-{{ focusBorder }}-round" aria-label=".form-select-sm example"
+                            name="{{ optionContent.placeholder }}" id="name-input-{{ nameOfTemplate }}">
+                    <option value="">
+                        {{ optionContent.placeholder }}
+                    </option>
+                    {% for option in optionContent.objects %}
+                        <option  value="{{ option }}" {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                            {{ option }}
+                        </option>
+                    {% endfor %}
+                    </select>
+                </div>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+        <!-- search Button -->
+        <div class="col-xl-1">
+          <button type="submit"
+                  class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100"
+                  id="search-submit-{{ nameOfTemplate }}" href="">
+            <i class="fas fa-search">
+            </i>
+          </button>
+        </div>
+        <!-- Clear Button -->
+        <div class="col-xl-1">
+          <a href="{% url urlName %}">
+            <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="allButton">
+                {% translate 'Alle' %}
+            </h6>
+          </a>
+        </div>
+      </div>
+    </form>

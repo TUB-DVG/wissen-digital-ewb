@@ -50,6 +50,15 @@ def index(request):
         # 'year': year,
         'focus': focus,
         'focus_options': focus_options,
+        "nameOfTemplate": "publication",
+        "urlName": "publicationPage",
+        "optionList": [
+            {
+                "placeholder": "Fokus", 
+                "objects": focus_options,
+                "fieldName": "focus",
+            },
+        ],
         "focusBorder": _translateFocusStr(focusName),
     }
     
