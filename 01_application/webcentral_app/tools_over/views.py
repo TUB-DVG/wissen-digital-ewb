@@ -134,12 +134,12 @@ def indexApps(request):
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
-        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
-        usage = request.GET.get('u')
-        accessibility = request.GET.get('l')
-        lifeCyclePhase = request.GET.get('lcp')
-        searched = request.GET.get('searched')
+    if ((request.GET.get("Nutzung") != None) |(request.GET.get("Zugänglichkeit") != None)| 
+        (request.GET.get("Lebenszyklusphase") != None) |(request.GET.get("searched") != None)):
+        usage = request.GET.get('Nutzung', '')
+        accessibility = request.GET.get('Zugänglichkeit', '')
+        lifeCyclePhase = request.GET.get('Lebenszyklusphase', '')
+        searched = request.GET.get('searched', '')
         
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
@@ -191,6 +191,25 @@ def indexApps(request):
         'usageFields': usageNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
         "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "optionList": [
+            {
+                "placeholder": "Nutzung", 
+                "objects": usageNames,
+                "filter": filteredBy[0],
+            },
+            {
+                "placeholder": "Zugänglichkeit", 
+                "objects": accessibilityNames,
+                "filter": filteredBy[1],
+            },
+            {
+                "placeholder": "Lebenszyklusphase", 
+                "objects": lifeCyclePhaseNames,
+                "filter": filteredBy[2],
+            },
+        ],
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
