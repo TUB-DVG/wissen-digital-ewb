@@ -72,7 +72,6 @@ def index(request):
         ],
         "focusBorder": "technical",
     }
-
     return render(request, 'weatherdata_over/data-service-listings.html', context)
 
 def weatherdata_view(request, id):

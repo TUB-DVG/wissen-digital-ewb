@@ -19,7 +19,7 @@
                     <select class="form-select js-choice border-{{ focusBorder }}-round" aria-label=".form-select-sm example"
                             name="{{ optionContent.placeholder }}" id="name-input-{{ nameOfTemplate }}">
                     <option value="">
-                        {{ optionContent.placeholder }}
+                        {% translate optionContent.placeholder %}
                     </option>
                     {% for option in optionContent.objects %}
                         <option  value="{{ option }}" {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
