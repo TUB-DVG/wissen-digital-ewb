@@ -47,7 +47,7 @@ Page intro START -->
       </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-      <a href="#" id="backButton">Zurück</a>
+      <a href="#" id="backButton">{% translate "Zurück" %}</a>
       <script nonce="{{request.csp_nonce}}">
         document.getElementById('backButton').addEventListener('click', function(event) {
           event.preventDefault();
@@ -78,13 +78,13 @@ Page content START -->
 							<p class="mb-0">{{technicalStandards.supportedTransmissionMediuems}}</p>
 							{% endif %}
 							{% if technicalStandards.associatedStandards %}
-							<h5 class="mt-4">{% blocktranslate %}Zugehörige Standards (Spezifische Standards, denen jedes Protokoll entspricht){% endblocktranslate %}</h5>
+							<h5 class="mt-4">{% translate "Zugehörige Standards" %} ({% blocktranslate %}Spezifische Standards, denen jedes Protokoll entspricht{% endblocktranslate %})</h5>
 							<p class="mb-0">
                 {{technicalStandards.associatedStandards}}
               </p>
 							{% endif %}
               {% if technicalStandards.security %}
-              <h5 class="mt-4">{% translate %}Implementierte Sicherheitsmechanismen</h5>
+              <h5 class="mt-4">{% translate "Implementierte Sicherheitsmechanismen" %}</h5>
 							<p class="mb-0">
                 {{technicalStandards.security}}
               </p>
