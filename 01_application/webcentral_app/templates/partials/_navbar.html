@@ -1,4 +1,5 @@
 {% load static %}  
+{% load i18n %}
 
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
@@ -40,52 +41,52 @@
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
-                 &nbsp; &nbsp; &nbsp; Technischer Fokus
+                 &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'tool_list' %}">
-                  Digitale Werkzeuge
+                  {% translate "Digitale Werkzeuge" %}
                 </a>
               </li>
 
               <li>
                 <a class="dropdown-item"
                    href="{% url 'app_list' %}">
-                  Digitale Anwendungen
+                  {% translate "Digitale Anwendungen" %}
                 </a>
               </li>
 
               <li>
                 <a class="dropdown-item"
                    href="{% url 'TechnicalStandards' %}">
-                  Technische Standards
+                  {% translate "Technische Standards" %}
                 </a>
               </li>
 
               <li>
                 <a class="dropdown-item"
                    href="{% url 'weatherdata_list' %}">
-                  Wetterdaten
+                  {% translate "Wetterdaten" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'LastProfile' %}">
-                  Lastprofile
+                  {% translate "Lastprofile" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'dataset_list' %}">
-                  Datensätze
+                  {% translate "Datensätze" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                 href="{%url 'publicationPage' %}?searched=&fo=11">
-                  Publikationen
+                  {% translate "Publikationen" %}
                 </a>
               </li>
             </ul>
@@ -101,43 +102,43 @@
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
-              &nbsp; &nbsp; &nbsp; Betrieblicher Fokus
+              &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'businessModelsPractice' %}">
-                  Geschäfts&shy;modell&shy; - good-practice
+                  {% translate "Geschäfts&shy;modell&shy;" %} - good-practice
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'businessModelsChallenge' %}">
-                  Geschäfts&shy;modell&shy; - Herausfoderungen
+                  {% translate "Geschäfts&shy;modell&shy;" %} - Herausfoderungen
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'businessModelApplication' %}">
-                  Geschäfts&shy;modell&shy;anwendungen
+                  {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'userIntegrationPractice' %}">
-                  Nutzenden&shy;perspektive - good-practice
+                  {% translate "Nutzenden&shy;perspektive" %} - good-practice
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'userIntegrationMethod' %}">
-                  Nutzenden&shy;perspektive - Methoden
+                  {% translate "Nutzenden&shy;perspektive" %} - {% translate "Methoden" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                 href="{%url 'publicationPage' %}?searched=&fo=12">
-                  Publikationen
+                  {% translate "Publikationen" %}
                 </a>
               </li>
             </ul>
@@ -152,37 +153,37 @@
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
-                &nbsp; &nbsp; &nbsp; Ökologischer Fokus
+                &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityNegativ' %}">
-                  Negative Umweltwirkungen
+                  {% translate "Negative" %} {% translate "Umweltwirkungen" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityPositiv' %}">
-                  Positive Umweltwirkungen - good-practice
+                  {% translate "Positive" %} {% translate "Umweltwirkungen" %} - good-practice
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'benchmarkingChallenges' %}">
-                  Herausforderungen
+                  {% translate "Herausforderungen" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'dataSufficiency' %}">
-                  Datensuffizienz
+                  {% translate "Datensuffizienz" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                 href="{%url 'publicationPage' %}?searched=&fo=13">
-                  Publikationen
+                  {% translate "Publikationen" %}
                 </a>
               </li>
             </ul>
@@ -198,31 +199,31 @@
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
                    style="width:35px;">
-                &nbsp; &nbsp; &nbsp; Rechtlicher Fokus
+                &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
                 <a class="dropdown-item"
                    href="{% url 'dataSecurity' %}">
-                  Daten&shy;schutz&shy;übersicht
+                  {% translate "Daten&shy;schutz&shy;übersicht" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'criteriaCatalog' %}">
-                  Kriterien&shy;katalog
+                  {% translate "Kriterien&shy;katalog" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'iconsAndVis' %}">
-                  Icons und Visualisierung
+                  Icons {% translate "und" %} {% translate "Visualisierung" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                 href="{%url 'publicationPage' %}?searched=&fo=14">
-                  Publikationen
+                  {% translate "Publikationen" %}
                 </a>
               </li>
             </ul>

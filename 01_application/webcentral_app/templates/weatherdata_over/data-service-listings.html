@@ -2,6 +2,7 @@
 {% block title %}Überblick über Wetterdaten-Services{% endblock %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 
 </head>
@@ -18,7 +19,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Überblick über Wetterdaten-Services</h2>
+          <h2 class="m-0">{% translate "Überblick über Wetterdaten-Services" %}</h2>
         </div>
       </div>
     </div>
@@ -41,7 +42,7 @@ Page content START -->
 	    <li class="list-inline-item">
 		    <div class="btn btn-outline-light btn-sm">
 			  	<a href="/weatherdata_list/?searched={{search}}&k=&l=">
-				  	Suchbegriff: {{search}}
+				  	{% translate "Suchbegriff" %}: {{search}}
 				  </a>
 			    <a href="/weatherdata_list/?searched=&k={% if kategorie %}{{kategorie}}{% endif %}&l={% if lizenz %}{{lizenz}}{% endif %}">
 				    <i class="bi bi-x-lg"></i>
