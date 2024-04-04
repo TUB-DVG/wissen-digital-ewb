@@ -1,18 +1,10 @@
 {% extends 'base.html' %}
-
-{% block title %} Waermelastprofil {% endblock %}
+{% load i18n %}
+{% block title %} {% translate "Waermelastprofil" %} {% endblock %}
 
 {% block content%}  
 <div class="container">
-  <div class="row" style="margin-top: 16px;">
-    <a href="#" id="backButton">Zurück</a>
-      <script nonce="{{request.csp_nonce}}">
-        document.getElementById('backButton').addEventListener('click', function(event) {
-          event.preventDefault();
-          window.history.back();
-        });
-      </script>
-  </div>
+  {% include "common/back-button.html" %}
 </div>
 <div class="container" style="height: 100vh ;">
   <iframe src="/django_plotly_dash/app/Warmelast/" style="

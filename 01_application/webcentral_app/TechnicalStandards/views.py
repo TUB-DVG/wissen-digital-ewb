@@ -7,12 +7,8 @@ from django.db.models import Q
 from django.utils.translation import gettext as _
 
 from .models import TechnicalStandard, Norm, Protocol
-"""
-path('', views.index, name='TechnicalStandards'),
-path('norm', views.norm, name='TechnicalStandards_norm_list'),
-path('protocol', views.protocol, name='TechnicalStandards_protocol_list'),
-path('<str:id>', views.detailView, name='TechnicalStandards_details'),
-"""
+
+
 class UpdateProperties:
     def __init__(self, className, label, colorClass):
         self.className = className
