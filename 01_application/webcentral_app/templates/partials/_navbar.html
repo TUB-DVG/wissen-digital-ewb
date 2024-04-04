@@ -85,7 +85,7 @@
               </li>
               <li>
                 <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&fo=11">
+                href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'technisch' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
@@ -137,7 +137,7 @@
               </li>
               <li>
                 <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&fo=12">
+                href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'betrieblich' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
@@ -159,13 +159,13 @@
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityNegativ' %}">
-                  {% translate "Negative" %} {% translate "Umweltwirkungen" %}
+                  {% translate "Negative Umweltwirkungen" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
                    href="{% url 'environmentalIntegrityPositiv' %}">
-                  {% translate "Positive" %} {% translate "Umweltwirkungen" %} - good-practice
+                  {% translate "Positive Umweltwirkungen" %} - good-practice
                 </a>
               </li>
               <li>
@@ -182,7 +182,7 @@
               </li>
               <li>
                 <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&fo=13">
+                href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'ökologisch' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
@@ -217,12 +217,12 @@
               <li>
                 <a class="dropdown-item"
                    href="{% url 'iconsAndVis' %}">
-                  Icons {% translate "und" %} {% translate "Visualisierung" %}
+                   {% translate "Icons und Visualisierung" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&fo=14">
+                href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'rechtlich' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
