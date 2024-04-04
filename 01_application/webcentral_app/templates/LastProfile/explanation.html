@@ -2,7 +2,7 @@
 {% block title %}Überblick über den Lastprofilgenerator{% endblock %}
 {% block content %}
 {% load static %}
-
+{% load i18n %}
 <style nonce="{{request.csp_nonce}}">
   img_src {
       float: right;
@@ -18,18 +18,19 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Lastprofile</h2>
+          <h2 class="m-0">{% translate "Lastprofile" %}</h2>
             <p class="lead">
-              Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
+              {% blocktranslate %}Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
               Wärmeverbrauch und einem Lastprofilgenerator für Stromverbrauch.
               Die Lastprofile werden als Zeitreihen dargestellt. 
 
               Die Lastprofile basieren auf dem (Gebäude-)Nutzung/Gebäudetyp, dem
               Jahresbedarf und dem Berechnungszeitraum, die vorgegeben werden müssen. Für die Berechnung 
               der Wärmelast wird zusätzlich die Umgebungstemperatur entsprechenden des
-              Berechnungszeitraums mit Hilfe von Wetterdaten genutzt.
+              Berechnungszeitraums mit Hilfe von Wetterdaten genutzt. 
+              
               <br>
-              Die jeweiligen Lastprofile können auch heruntergeladen werden.
+              Die jeweiligen Lastprofile können auch heruntergeladen werden.{% endblocktranslate %}
            </p>
         </div>
       </div>
@@ -45,25 +46,25 @@ Page Banner END -->
     <div class="row " id="collapseInfoContainerWeatherdata">
       <!-- text electric profil START -->
       <div class="col-lg-5">
-        <h3>Stromlast</h3>
+        <h3>{% translate "Stromlast" %}</h3>
         <p class="lead">
-          Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den
+          {% blocktranslate %}Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den
           typischen Verlauf des Stromverbrauchs über der Zeit in Abhängigkeit
           der (Gebäude-)Nutzung und des Jahresstrombedarfs darstellt. Des weiteren
-          kann der Berechnungszeitraum angegeben werden:
+          kann der Berechnungszeitraum angegeben werden:{% endblocktranslate %}
           <br>
         </p>
         <ul >
           <li class="lead">
-            <b>(Gebäude-)Nutzung</b>&nbsp;&ndash; Auswahl der Nutzung des Stroms
+            <b>({% translate "Gebäude"-)%}{% translate "Nutzung" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl der Nutzung des Stroms{% endblocktranslate %}
           </li>
           <li class="lead">
-            <b>Jahresstrombedarf</b>&nbsp;&ndash; Eingabe des Jahresstrombedarfs
-            in kWh/a
+            <b>{% translate "Jahresstrombedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Jahresstrombedarfs
+            in kWh/a{% endblocktranslate %}
           </li>
           <li class="lead">
-            <b>Berechnungszeitraum</b>&nbsp;&ndash; Auswahl des
-            Berechnungszeitraums
+            <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des
+            Berechnungszeitraums{% endblocktranslate %}
           </li>
         </ul>
       </div>
@@ -83,7 +84,7 @@ Page Banner END -->
         <a href="{% url 'LastProfile_strom_display' %}">
           <img src="{% static '/img/Lastprofil/strom.jpg' %}"
                style="max-height:30px;">
-          Approximation der Stromlast
+          {% blocktranslate %}Approximation der Stromlast{% endblocktranslate %}
         </a>
       </div>
     </div>
@@ -92,27 +93,28 @@ Page Banner END -->
     <div class="row">
       <!-- text heat profil START -->
       <div class="col-lg-5">
-        <h3>Wärmelast</h3>
+        <h3>{% translate "Wärmelast" %}</h3>
         <p class="lead">
 
-          Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den
+          {% blocktranslate %}Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den
           typischen Verlauf der Wärmelast über der Zeit in Abhängigkeit der
           Wetterdaten, des Jahreswärmebedarfs und des Gebäudetyps darstellt.
-          Desweiteren kann der Berechnungszeitraum angegeben werden:
+          Desweiteren kann der Berechnungszeitraum angegeben werden:{% endblocktranslate %}
           <ul>
             <li class="lead">
-              <b>Wetterdaten</b>&nbsp;&ndash; Hier kann das Testreferenzjahr
-              (TRJ) oder eine spezifische Wetterstation gewählt werden
+              <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Hier kann das Testreferenzjahr
+              (TRJ) oder eine spezifische Wetterstation gewählt werden{% endblocktranslate %}
             </li>
             <li class="lead">
-              <b>Gebäudetyp</b>&nbsp;&ndash; Auswahl des Gebäudetyps
+              <b>{% translate "Gebäudetyp" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des Gebäudetyps{% endblocktranslate %}
             </li>
             <li class="lead">
-              <b>Jahreswärmebedarf</b>&nbsp;&ndash; Eingabe des
-              Jahreswärmebedarfs in kWh/a
+              <b>{% translate "Jahreswärmebedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des
+              Jahreswärmebedarfs in kWh/a{% endblocktranslate %}
+            </li>
             </li>
             <li class="lead">
-              <b>Berechnungszeitraum</b>&nbsp;&ndash; Eingabe des Berechnungszeitraums
+              <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Berechnungszeitraums{% endblocktranslate %}
             </li>
           </ul>
         </p>
@@ -134,7 +136,7 @@ Page Banner END -->
       <a href="{% url 'LastProfile_warme_display' %}">
         <img src="{% static '/img/Lastprofil/heat.png' %}"
              style="max-height:30px;">
-        Approximation der Wärmelast
+        {% blocktranslate %}Approximation der Wärmelast{% endblocktranslate %}
       </a>
       </div>
     </div>
@@ -145,25 +147,25 @@ Page Banner END -->
         <h3>Anmerkungen</h3>
         <ul>
           <p class="lead">
-            Die Generatoren basieren auf Berechnungsvorschriften, Daten und
-            Annahmen der folgenden Quellen:
+            {% blocktranslate %}Die Generatoren basieren auf Berechnungsvorschriften, Daten und
+            Annahmen der folgenden Quellen:{% endblocktranslate %}
           </p>
           <li class="lead">
-            <b>Wärmelast</b>&nbsp;&ndash; Nutzung der Dissertation von Marcus
+            <b>{% translate "Wärmelast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Dissertation von Marcus
             Hellwig, 2003, "Entwicklung und Anwendung parametrisierter
-            Standard-Lastprofile"
+            Standard-Lastprofile"{% endblocktranslate %}
           </li>
           <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf" target="_blank">Download der Disseration.
           </a>
           <li class="lead">
-            <b>Wetterdaten</b>&nbsp;&ndash; Nutzung der Wetterdienst Bibliothek
+            <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Wetterdienst Bibliothek{% endblocktranslate %}
           </li>
-          <a href="https://github.com/earthobservations/wetterdienst" target="_blank">Wetterdienst
+          <a href="https://github.com/earthobservations/wetterdienst" target="_blank">{% translate "Wetterdienst" %}
           </a>
           <li class="lead">
-            <b>Stromlast</b>&nbsp;&ndash; Nutzung der Standard-Lastprofile
+            <b>{% translate "Stromlast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Standard-Lastprofile{% endblocktranslate %}
           </li>
-          <a href="https://www.bdew.de/energie/standardlastprofile-strom/" target="_blank">Standard-Lastprofile beim BDEW
+          <a href="https://www.bdew.de/energie/standardlastprofile-strom/" target="_blank">{% blocktranslate %}Standard-Lastprofile beim BDEW{% endblocktranslate %}
           </a>
         </ul>
       </div>
