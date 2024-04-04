@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-03 06:35+0000\n"
+"POT-Creation-Date: 2024-04-04 06:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,135 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Datasets/views.py:53
+msgid "Potential Erneuerbare Energie"
+msgstr ""
+
+#: Datasets/views.py:54
+#, fuzzy
+#| msgid "Lastprofile"
+msgid "Standardlastprofile"
+msgstr "load profiles"
+
+#: Datasets/views.py:55
+msgid "Energiesystemmodell"
+msgstr ""
+
+#: Datasets/views.py:56
+msgid "Infrastruktur Gas"
+msgstr ""
+
+#: Datasets/views.py:57 Datasets/views.py:83
+#: templates/StartSearch/StartSearch.html:143
+msgid "Wetterdaten"
+msgstr "Wheatherdata"
+
+#: Datasets/views.py:58
+msgid "Wärmebedarf"
+msgstr ""
+
+#: Datasets/views.py:59 Datasets/views.py:79
+msgid "Zeitreihen"
+msgstr ""
+
+#: Datasets/views.py:64
+msgid "Sonstiges"
+msgstr ""
+
+#: Datasets/views.py:72
+#, fuzzy
+#| msgid "Übertragungsmethoden"
+msgid "Übertragungsnetzentwicklungspläne"
+msgstr "transmission media"
+
+#: Datasets/views.py:73
+msgid "Gebäudebestandsentwicklung"
+msgstr ""
+
+#: Datasets/views.py:74
+msgid "Standardlastprofile für Strom"
+msgstr ""
+
+#: Datasets/views.py:75
+msgid "Digitales Geländemodell"
+msgstr ""
+
+#: Datasets/views.py:76
+msgid "Gebäudegrundrisse"
+msgstr ""
+
+#: Datasets/views.py:77
+msgid "Gebäude"
+msgstr ""
+
+#: Datasets/views.py:77
+msgid "Modell"
+msgstr ""
+
+#: Datasets/views.py:78
+msgid "Gebäudetypologie"
+msgstr ""
+
+#: Datasets/views.py:80
+msgid "Gebäudebestand"
+msgstr ""
+
+#: Datasets/views.py:81
+msgid "Infrastruktur"
+msgstr ""
+
+#: Datasets/views.py:82
+#, fuzzy
+#| msgid "Wetterdaten"
+msgid "Bedarfsdaten"
+msgstr "Wheatherdata"
+
+#: Datasets/views.py:84
+#, fuzzy
+#| msgid "Datensätze"
+msgid "Daten"
+msgstr "Datasets"
+
+#: Datasets/views.py:85
+msgid "Statistiken"
+msgstr ""
+
+#: Datasets/views.py:86
+#, fuzzy
+#| msgid "Nutzung"
+msgid "Landnutzung"
+msgstr "Use"
+
+#: Datasets/views.py:87
+#, fuzzy
+#| msgid "Datenbanksystem"
+msgid "Datenbasis"
+msgstr "Database system"
+
+#: Datasets/views.py:88
+msgid "Potential"
+msgstr ""
+
+#: Datasets/views.py:89
+msgid "Löser"
+msgstr ""
+
+#: Datasets/views.py:91
+msgid "Andere"
+msgstr ""
+
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:243
+msgid "Verkabelt"
+msgstr "Wired"
+
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:242
+msgid "Drahtlos"
+msgstr "Wireless"
+
+#: TechnicalStandards/views.py:251
+msgid "Proprietär"
+msgstr "Proprietary"
 
 #: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
 msgid "Find Apps"
@@ -72,44 +201,44 @@ msgid "Aktualität"
 msgstr "Actuality"
 
 #: templates/StartSearch/ResultSearch.html:147
-#: templates/TechnicalStandards/norm-listings.html:367
-#: templates/TechnicalStandards/protocol-listings.html:249
-#: templates/tools_over/tool-listings.html:200
+#: templates/TechnicalStandards/norm-listings.html:97
+#: templates/TechnicalStandards/protocol-listings.html:132
+#: templates/tools_over/tool-listings.html:125
 msgid "erste"
 msgstr "first"
 
 #: templates/StartSearch/ResultSearch.html:152
-#: templates/TechnicalStandards/norm-listings.html:371
-#: templates/TechnicalStandards/protocol-listings.html:253
-#: templates/tools_over/tool-listings.html:204
+#: templates/TechnicalStandards/norm-listings.html:101
+#: templates/TechnicalStandards/protocol-listings.html:136
+#: templates/tools_over/tool-listings.html:129
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/StartSearch/ResultSearch.html:157
-#: templates/TechnicalStandards/norm-listings.html:376
-#: templates/TechnicalStandards/protocol-listings.html:258
-#: templates/tools_over/tool-listings.html:209
+#: templates/TechnicalStandards/norm-listings.html:106
+#: templates/TechnicalStandards/protocol-listings.html:141
+#: templates/tools_over/tool-listings.html:134
 msgid "Seite"
 msgstr "Site"
 
 #: templates/StartSearch/ResultSearch.html:157
-#: templates/TechnicalStandards/norm-listings.html:376
-#: templates/TechnicalStandards/protocol-listings.html:258
-#: templates/tools_over/tool-listings.html:209
+#: templates/TechnicalStandards/norm-listings.html:106
+#: templates/TechnicalStandards/protocol-listings.html:141
+#: templates/tools_over/tool-listings.html:134
 msgid "von"
 msgstr "from"
 
 #: templates/StartSearch/ResultSearch.html:163
-#: templates/TechnicalStandards/norm-listings.html:381
-#: templates/TechnicalStandards/protocol-listings.html:263
-#: templates/tools_over/tool-listings.html:214
+#: templates/TechnicalStandards/norm-listings.html:111
+#: templates/TechnicalStandards/protocol-listings.html:146
+#: templates/tools_over/tool-listings.html:139
 msgid "nächste"
 msgstr "next"
 
 #: templates/StartSearch/ResultSearch.html:168
-#: templates/TechnicalStandards/norm-listings.html:385
-#: templates/TechnicalStandards/protocol-listings.html:267
-#: templates/tools_over/tool-listings.html:218
+#: templates/TechnicalStandards/norm-listings.html:115
+#: templates/TechnicalStandards/protocol-listings.html:150
+#: templates/tools_over/tool-listings.html:143
 msgid "letzte"
 msgstr "last"
 
@@ -175,10 +304,6 @@ msgstr "Applications"
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
-#: templates/StartSearch/StartSearch.html:143
-msgid "Wetterdaten"
-msgstr "Wheatherdata"
-
 #: templates/StartSearch/StartSearch.html:154
 msgid "Datensätze"
 msgstr "Datasets"
@@ -186,6 +311,10 @@ msgstr "Datasets"
 #: templates/StartSearch/StartSearch.html:165
 msgid "Lastprofile"
 msgstr "load profiles"
+
+#: templates/StartSearch/StartSearch.html:176
+msgid "technisch"
+msgstr "technical"
 
 #: templates/StartSearch/StartSearch.html:178
 #: templates/StartSearch/StartSearch.html:281
@@ -250,6 +379,10 @@ msgstr "User perspective"
 #| msgid "Nutzenden&shy;perspektive"
 msgid "Nutzenden&shy;perspektive - Methoden"
 msgstr "User perspective"
+
+#: templates/StartSearch/StartSearch.html:279
+msgid "betrieblich"
+msgstr "operational"
 
 #: templates/StartSearch/StartSearch.html:306
 msgid "Ökologischer Fokus"
@@ -340,6 +473,10 @@ msgstr "Catalog of criteria"
 #: templates/StartSearch/StartSearch.html:445
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
+
+#: templates/StartSearch/StartSearch.html:456
+msgid "rechtlich"
+msgstr "legal"
 
 #: templates/TechnicalStandards/explanation.html:3
 #: templates/TechnicalStandards/norm-listings.html:22
@@ -467,7 +604,6 @@ msgstr "What is it about?"
 #: templates/TechnicalStandards/norm-detail.html:69
 #: templates/TechnicalStandards/norm-detail.html:124
 #: templates/TechnicalStandards/norm-explanation.html:24
-#: templates/TechnicalStandards/norm-listings.html:273
 #: templates/norms_over/explanation.html:24
 msgid "Quelle"
 msgstr "Source"
@@ -541,7 +677,6 @@ msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:118
 #: templates/TechnicalStandards/protocol-explanation.html:41
-#: templates/TechnicalStandards/protocol-listings.html:106
 msgid "Übertragungsmethoden"
 msgstr "transmission media"
 
@@ -817,29 +952,17 @@ msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
 msgstr ""
 "a link through which the standard can be accessed (possibly purchased)."
 
-#: templates/TechnicalStandards/norm-listings.html:46
-#: templates/TechnicalStandards/norm-listings.html:318
-#: templates/TechnicalStandards/norm-listings.html:330
-#: templates/TechnicalStandards/norm-listings.html:342
-#: templates/TechnicalStandards/protocol-listings.html:46
-#: templates/TechnicalStandards/protocol-listings.html:165
-#: templates/TechnicalStandards/protocol-listings.html:177
-#: templates/TechnicalStandards/protocol-listings.html:189
-#: templates/TechnicalStandards/protocol-listings.html:201
-#: templates/tools_over/tool-listings.html:42
-#: templates/tools_over/tool-listings.html:120
+#: templates/TechnicalStandards/norm-listings.html:48
+#: templates/TechnicalStandards/norm-listings.html:60
+#: templates/TechnicalStandards/norm-listings.html:72
+#: templates/TechnicalStandards/protocol-listings.html:48
+#: templates/TechnicalStandards/protocol-listings.html:60
+#: templates/TechnicalStandards/protocol-listings.html:72
+#: templates/TechnicalStandards/protocol-listings.html:84
+#: templates/common/search-bar.html:9
+#: templates/tools_over/tool-listings.html:45
 msgid "Suchbegriff"
 msgstr "search term"
-
-#: templates/TechnicalStandards/norm-listings.html:59
-msgid "Bezeichnung"
-msgstr "Designation"
-
-#: templates/TechnicalStandards/norm-listings.html:305
-#: templates/TechnicalStandards/protocol-listings.html:152
-#: templates/tools_over/tool-listings.html:106
-msgid "Alle"
-msgstr "All"
 
 #: templates/TechnicalStandards/protocol-comparison.html:23
 #: templates/tools_over/tool-comparison.html:23
@@ -1017,29 +1140,15 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
-#: templates/TechnicalStandards/protocol-listings.html:109
-#: templates/TechnicalStandards/protocol-listings.html:115
-msgid "Verkabelt"
-msgstr "Wired"
-
-#: templates/TechnicalStandards/protocol-listings.html:109
-#: templates/TechnicalStandards/protocol-listings.html:112
-msgid "Drahtlos"
-msgstr "Wireless"
-
-#: templates/TechnicalStandards/protocol-listings.html:132
-msgid "Proprietär"
-msgstr "Proprietary"
-
-#: templates/TechnicalStandards/protocol-listings.html:214
-#: templates/TechnicalStandards/protocol-listings.html:222
-#: templates/tools_over/tool-listings.html:166
-#: templates/tools_over/tool-listings.html:174
+#: templates/TechnicalStandards/protocol-listings.html:97
+#: templates/TechnicalStandards/protocol-listings.html:105
+#: templates/tools_over/tool-listings.html:91
+#: templates/tools_over/tool-listings.html:99
 msgid "Vergleiche"
 msgstr "Compare"
 
-#: templates/TechnicalStandards/protocol-listings.html:228
-#: templates/tools_over/tool-listings.html:180
+#: templates/TechnicalStandards/protocol-listings.html:111
+#: templates/tools_over/tool-listings.html:105
 msgid "Zurücksetzen"
 msgstr "Reset to default"
 
@@ -1072,6 +1181,10 @@ msgstr ""
 #: templates/admin/publications/import_bibtex.html:39
 msgid "Import"
 msgstr ""
+
+#: templates/common/search-bar.html:48
+msgid "Alle"
+msgstr "All"
 
 #: templates/norms_over/explanation.html:7
 #, fuzzy
@@ -1208,7 +1321,6 @@ msgstr ""
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
 #: templates/tools_over/tool-listings.html:56
-#: templates/tools_over/tool-listings.html:131
 msgid "Nutzung"
 msgstr "Use"
 
@@ -1225,8 +1337,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:38
 #: templates/tools_over/tool-comparison.html:69
 #: templates/tools_over/tool-detail.html:253
-#: templates/tools_over/tool-listings.html:82
-#: templates/tools_over/tool-listings.html:153
+#: templates/tools_over/tool-listings.html:78
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
@@ -1297,8 +1408,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:56
 #: templates/tools_over/tool-comparison.html:113
 #: templates/tools_over/tool-detail.html:92
-#: templates/tools_over/tool-listings.html:68
-#: templates/tools_over/tool-listings.html:142
+#: templates/tools_over/tool-listings.html:67
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
@@ -1929,6 +2039,9 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 msgid "Updates"
 msgstr "Updates"
 
+#~ msgid "Bezeichnung"
+#~ msgstr "Designation"
+
 #, fuzzy
 #~| msgid "Vergleiche"
 #~ msgid "Vergleich"
@@ -1938,9 +2051,6 @@ msgstr "Updates"
 #~| msgid "Überblick über die Normen"
 #~ msgid "Überblick über  technische Standards"
 #~ msgstr "Overview of norms"
-
-#~ msgid "technische Standards"
-#~ msgstr "Technical Standards"
 
 #, fuzzy
 #~| msgid "Überblick über die Normen"

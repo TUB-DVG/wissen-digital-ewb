@@ -50,7 +50,7 @@ def index(request):
         # 'type': type,
         # 'year': year,
         'focus': focus,
-        'focus_options': focusName,
+        'focus_options': focusOptions,
         "nameOfTemplate": "publication",
         "urlName": "publicationPage",
         "optionList": [
