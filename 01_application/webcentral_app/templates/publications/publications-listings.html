@@ -57,7 +57,7 @@ Page content START -->
         <div class="btn btn-outline-light btn-sm">
           <a href="{%url 'publicationPage' %}?searched=&fo={{focus}}">
             {% for option in focus_options %}
-              {% if focus == option.id|stringformat:"s" %}
+              {% if focus == option.focus|stringformat:"s" %}
                 {{ option.focus }}
               {% endif %}
             {% endfor %}
