@@ -81,34 +81,7 @@ Page content START -->
         </div>
         <!-- standards grid END -->
         <!-- Pagination START -->
-        <div class="pagination">
-          <span class="step-links">
-            {% if page.has_previous %}
-            <a  href="{%url 'publicationPage' %}?searched={% if search %}{{search}}{% endif %}&fo={% if focus %}{{focus}}{% endif %}&page=1">
-              &laquo; erste
-            </a>
-            &nbsp &nbsp
-            <a href="{%url 'publicationPage' %}?searched={% if search %}{{search}}{% endif %}&fo={% if focus %}{{focus}}{% endif %}&page={{ page.previous_page_number}}">
-              vorherige
-            </a>
-            {% endif %}
-            &nbsp &nbsp
-            <span class="current">
-              Seite {{ page.number }} von {{ page.paginator.num_pages }}
-            </span>
-            &nbsp &nbsp
-            {% if page.has_next %}
-            <a href="{%url 'publicationPage' %}?searched={% if search %}{{search}}{% endif %}&fo={% if focus %}{{focus}}{% endif %}&page={{ page.next_page_number}}">
-              nächste
-            </a>
-            &nbsp &nbsp
-            <a href="{%url 'publicationPage' %}?searched={% if search %}{{search}}{% endif %}&fo={% if focus %}{{focus}}{% endif %}&page={{ page.paginator.num_pages}}">
-              letzte &raquo;
-            </a>
-            &nbsp &nbsp
-            {% endif %}
-          </span>
-        </div>
+        {% include "common/pagination.html" %}
         <!-- Pagination END -->
       </div>
       <!-- Main content END -->
