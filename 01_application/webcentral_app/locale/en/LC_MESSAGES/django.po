@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 06:55+0000\n"
+"POT-Creation-Date: 2024-04-04 07:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: Datasets/views.py:53
 msgid "Potential Erneuerbare Energie"
-msgstr ""
+msgstr "Renewable energy potential"
 
 #: Datasets/views.py:54
 #, fuzzy
@@ -30,76 +30,73 @@ msgstr "load profiles"
 
 #: Datasets/views.py:55
 msgid "Energiesystemmodell"
-msgstr ""
+msgstr "Energie system model"
 
 #: Datasets/views.py:56
 msgid "Infrastruktur Gas"
-msgstr ""
+msgstr "Gas Infrastructure"
 
 #: Datasets/views.py:57 Datasets/views.py:83
 #: templates/StartSearch/StartSearch.html:143
+#: templates/partials/_navbar.html:71
 msgid "Wetterdaten"
 msgstr "Wheatherdata"
 
 #: Datasets/views.py:58
 msgid "Wärmebedarf"
-msgstr ""
+msgstr "Heat demand"
 
 #: Datasets/views.py:59 Datasets/views.py:79
 msgid "Zeitreihen"
-msgstr ""
+msgstr "Time series"
 
 #: Datasets/views.py:64
 msgid "Sonstiges"
-msgstr ""
+msgstr "Miscellaneous"
 
 #: Datasets/views.py:72
-#, fuzzy
-#| msgid "Übertragungsmethoden"
 msgid "Übertragungsnetzentwicklungspläne"
-msgstr "transmission media"
+msgstr "Transmission network development plans"
 
 #: Datasets/views.py:73
 msgid "Gebäudebestandsentwicklung"
-msgstr ""
+msgstr "Building stock development"
 
 #: Datasets/views.py:74
 msgid "Standardlastprofile für Strom"
-msgstr ""
+msgstr "Standard load profiles for electricity"
 
 #: Datasets/views.py:75
 msgid "Digitales Geländemodell"
-msgstr ""
+msgstr "Digital terrain model"
 
 #: Datasets/views.py:76
 msgid "Gebäudegrundrisse"
-msgstr ""
+msgstr "Building floor plans"
 
 #: Datasets/views.py:77
 msgid "Gebäude"
-msgstr ""
+msgstr "Building"
 
 #: Datasets/views.py:77
 msgid "Modell"
-msgstr ""
+msgstr "Model"
 
 #: Datasets/views.py:78
 msgid "Gebäudetypologie"
-msgstr ""
+msgstr "Building typology"
 
 #: Datasets/views.py:80
 msgid "Gebäudebestand"
-msgstr ""
+msgstr "Building stock"
 
 #: Datasets/views.py:81
 msgid "Infrastruktur"
-msgstr ""
+msgstr "Infrastructure"
 
 #: Datasets/views.py:82
-#, fuzzy
-#| msgid "Wetterdaten"
 msgid "Bedarfsdaten"
-msgstr "Wheatherdata"
+msgstr "Demand data"
 
 #: Datasets/views.py:84
 #, fuzzy
@@ -109,13 +106,11 @@ msgstr "Datasets"
 
 #: Datasets/views.py:85
 msgid "Statistiken"
-msgstr ""
+msgstr "Statistics"
 
 #: Datasets/views.py:86
-#, fuzzy
-#| msgid "Nutzung"
 msgid "Landnutzung"
-msgstr "Use"
+msgstr "land use"
 
 #: Datasets/views.py:87
 #, fuzzy
@@ -125,15 +120,15 @@ msgstr "Database system"
 
 #: Datasets/views.py:88
 msgid "Potential"
-msgstr ""
+msgstr "Potential"
 
 #: Datasets/views.py:89
 msgid "Löser"
-msgstr ""
+msgstr "Solver"
 
 #: Datasets/views.py:91
 msgid "Andere"
-msgstr ""
+msgstr "Others"
 
 #: TechnicalStandards/views.py:241 TechnicalStandards/views.py:243
 msgid "Verkabelt"
@@ -272,7 +267,7 @@ msgstr ""
 "community and also to the research projects of the Energiewendebauen "
 "research initiative."
 
-#: templates/StartSearch/StartSearch.html:88
+#: templates/StartSearch/StartSearch.html:88 templates/partials/_navbar.html:44
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
 
@@ -301,14 +296,17 @@ msgstr "Applications"
 
 #: templates/StartSearch/StartSearch.html:132
 #: templates/TechnicalStandards/explanation.html:14
+#: templates/partials/_navbar.html:64
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
 #: templates/StartSearch/StartSearch.html:154
+#: templates/partials/_navbar.html:83
 msgid "Datensätze"
 msgstr "Datasets"
 
 #: templates/StartSearch/StartSearch.html:165
+#: templates/partials/_navbar.html:77
 msgid "Lastprofile"
 msgstr "load profiles"
 
@@ -320,10 +318,13 @@ msgstr "technical"
 #: templates/StartSearch/StartSearch.html:281
 #: templates/StartSearch/StartSearch.html:378
 #: templates/StartSearch/StartSearch.html:458
+#: templates/partials/_navbar.html:89 templates/partials/_navbar.html:141
+#: templates/partials/_navbar.html:186 templates/partials/_navbar.html:226
 msgid "Publikationen"
 msgstr "Publications"
 
 #: templates/StartSearch/StartSearch.html:199
+#: templates/partials/_navbar.html:105
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
@@ -357,6 +358,7 @@ msgstr ""
 "Research results."
 
 #: templates/StartSearch/StartSearch.html:220
+#: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
@@ -367,10 +369,12 @@ msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
 msgstr "Business model applications"
 
 #: templates/StartSearch/StartSearch.html:244
+#: templates/partials/_navbar.html:123
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
 #: templates/StartSearch/StartSearch.html:256
+#: templates/partials/_navbar.html:129 templates/partials/_navbar.html:135
 msgid "Nutzenden&shy;perspektive"
 msgstr "User perspective"
 
@@ -385,6 +389,7 @@ msgid "betrieblich"
 msgstr "operational"
 
 #: templates/StartSearch/StartSearch.html:306
+#: templates/partials/_navbar.html:156
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
@@ -430,14 +435,17 @@ msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impact"
 
 #: templates/StartSearch/StartSearch.html:353
+#: templates/partials/_navbar.html:174
 msgid "Herausforderungen"
 msgstr "Challenges"
 
 #: templates/StartSearch/StartSearch.html:365
+#: templates/partials/_navbar.html:180
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
 #: templates/StartSearch/StartSearch.html:399
+#: templates/partials/_navbar.html:202
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
@@ -463,10 +471,12 @@ msgstr ""
 "recommendations for action for projects."
 
 #: templates/StartSearch/StartSearch.html:421
+#: templates/partials/_navbar.html:208
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:433
+#: templates/partials/_navbar.html:214
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
@@ -592,6 +602,7 @@ msgstr "Name and full title of the norm"
 #: templates/norms_over/explanation.html:22
 #: templates/tools_over/explanationApps.html:27
 #: templates/tools_over/explanationTools.html:27
+#: templates/weatherdata_over/explanation.html:24
 msgid "Kurzbeschreibung"
 msgstr "Short description"
 
@@ -630,6 +641,7 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
+#: templates/weatherdata_over/explanation.html:35
 msgid "Zeige weniger ..."
 msgstr "Show less ..."
 
@@ -640,6 +652,7 @@ msgstr "Show less ..."
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
+#: templates/weatherdata_over/explanation.html:36
 msgid "Zeige mehr ..."
 msgstr "Show more ..."
 
@@ -1240,8 +1253,51 @@ msgstr ""
 #: templates/norms_over/explanation.html:22
 #: templates/tools_over/explanationApps.html:28
 #: templates/tools_over/explanationTools.html:28
+#: templates/weatherdata_over/explanation.html:24
 msgid "Um was handelt es sich?"
 msgstr "What is it about?"
+
+#: templates/partials/_navbar.html:50
+#, fuzzy
+#| msgid "Werkzeuge"
+msgid "Digitale Werkzeuge"
+msgstr "Tools"
+
+#: templates/partials/_navbar.html:57
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Digitale Anwendungen"
+msgstr "Applications"
+
+#: templates/partials/_navbar.html:135
+msgid "Methoden"
+msgstr ""
+
+#: templates/partials/_navbar.html:162
+#, fuzzy
+#| msgid "Alternativen"
+msgid "Negative"
+msgstr "Alternatives"
+
+#: templates/partials/_navbar.html:162 templates/partials/_navbar.html:168
+#, fuzzy
+#| msgid "Negative Umweltwirkungen"
+msgid "Umweltwirkungen"
+msgstr "Negative environmental impacts"
+
+#: templates/partials/_navbar.html:168
+msgid "Positive"
+msgstr ""
+
+#: templates/partials/_navbar.html:220
+msgid "und"
+msgstr ""
+
+#: templates/partials/_navbar.html:220
+#, fuzzy
+#| msgid "Icons und Visualisierung"
+msgid "Visualisierung"
+msgstr "Icons and visualization"
 
 #: templates/tools_over/explanationApps.html:9
 msgid ""
@@ -1388,6 +1444,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:50
 #: templates/tools_over/tool-comparison.html:159
 #: templates/tools_over/tool-listings-results.html:45
+#: templates/weatherdata_over/explanation.html:25
 msgid "Letztes Update"
 msgstr "Last update"
 
@@ -1424,6 +1481,7 @@ msgstr ""
 #: templates/tools_over/tool-comparison.html:131
 #: templates/tools_over/tool-detail.html:96
 #: templates/tools_over/tool-detail.html:245
+#: templates/weatherdata_over/explanation.html:29
 msgid "Lizenz"
 msgstr "License"
 
@@ -2038,6 +2096,63 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 #: templates/tools_over/tool-listings-results.html:43
 msgid "Updates"
 msgstr "Updates"
+
+#: templates/weatherdata_over/explanation.html:11
+msgid ""
+"Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit "
+"Wetterdaten\n"
+"                    sind in einer ersten Recherche durch das Modul "
+"Digitalisierung der\n"
+"                    wissenschaftliche Begleitforschung der "
+"Forschungsinitiative Energiewendebauen\n"
+"                    entstanden. Der Fokus der Recherche lag auf der Region "
+"Deutschland."
+msgstr "The weather data and applications for dealing with weather data presented here were created in initial research by the digitalization module of the scientific accompanying research of the Energy Transition Building research initiative. The focus of the research was on the Germany region."
+
+#: templates/weatherdata_over/explanation.html:16
+msgid ""
+"Wir möchten Sie ermutigen uns auf weitere Datenquellen, digitale Werkzeuge "
+"oder\n"
+"                    auch konkrete Anwendungen von Wetterdaten aufmerksam zu "
+"machen, um diese ihren\n"
+"                    Kollegenschaft aus der Forschung aber auch aus der "
+"Praxis zugänglich zu machen."
+msgstr "We would like to encourage you to draw our attention to other data sources, digital tools or concrete applications of weather data in order to make these accessible to your colleagues from research and practice."
+
+#: templates/weatherdata_over/explanation.html:20
+msgid ""
+"Im Rahmen der ersten Recherche haben wir folgende Aspekte zu den "
+"Wetterdaten\n"
+"                    bzw. deren Anwendungen zusammengetragen:"
+msgstr "As part of our initial research, we examined the following aspects"
+"Weather data and their applications compiled:"
+
+#: templates/weatherdata_over/explanation.html:25
+msgid ""
+"Wann ist das letzte Update erfolgt. Insbesondere bei\n"
+"                        Anwendungen, welche im Rahmen von "
+"Forschungsprojekten entwickelt werden, kann\n"
+"                        nach Abschluss des Projektes die Weiterentwicklung "
+"bzw. die Wartung eingestellt\n"
+"                        werden. "
+msgstr ""
+"When was the last update done? Particularly in the case of digital "
+"applications that are developed as part of research projects, further "
+"development or maintenance can be stopped after the project has been "
+"completed."
+
+#: templates/weatherdata_over/explanation.html:29
+#, fuzzy
+#| msgid ""
+#| "Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und "
+#| "entstehen Kosten \n"
+#| "            durch die Anwendung ?"
+msgid ""
+"Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
+"                        entstehen Kosten durch die Verwendung?"
+msgstr ""
+"Under what license was the digital application published and are there any "
+"costs associated with using the digital application?"
 
 #~ msgid "Bezeichnung"
 #~ msgstr "Designation"
