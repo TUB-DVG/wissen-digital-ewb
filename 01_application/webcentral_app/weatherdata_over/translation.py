@@ -22,6 +22,6 @@ class WeatherdataTranslationOptions(TranslationOptions):
 
 
 translator.register(
-    Weatherdata, 
+    Weatherdata,
     WeatherdataTranslationOptions,
 )
