@@ -54,18 +54,18 @@ def index(request):
             {
                 "placeholder": "Kategorie", 
                 "objects": [
-                    "Datensätze", 
-                    "Anwendung",
+                    _("Datensätze"), 
+                    _("Anwendung"),
                 ],
                 "filter": filtered_by[0],
             },
             {
                 "placeholder": "Lizenz", 
                 "objects": [
-                    "Frei nutzbar", 
+                    _("Frei nutzbar"), 
                     "Open Data", 
                     "CC BY 4.0", 
-                    "MIT-Lizenz", 
+                    _("MIT-Lizenz"), 
                 ],
                 "filter": filtered_by[1],
             },
