@@ -16,7 +16,6 @@ DATA_PATH = os.path.join(PATH , 'Hauptblatt2.csv')
 DF_MAIN = pd.read_csv(DATA_PATH)
 data = []
 app = DjangoDash('Stromlast')   # replaces dash.Dash
-breakpoint()
 # App layout
 app.layout = html.Div([
     #Title
@@ -90,7 +89,6 @@ app.layout = html.Div([
     Input('displayMonth','value'),
     Input('application','value'),
     Input('powerRequirement','value'),
-
     prevent_initial_call=True
     )
     
@@ -149,10 +147,3 @@ def downloadAsCsv(nClicks,application:str,powerRequirement:int,state):
         return dcc.send_data_frame(data.to_csv,'Stromlastgang.csv',index = False)
 # ------------------------------------------------------------------------------
 # Connect the Plotly powerGraphs with Dash Components
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 14:24+0000\n"
+"POT-Creation-Date: 2024-04-04 21:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,128 +130,128 @@ msgstr "Solver"
 msgid "Andere"
 msgstr "Others"
 
-#: LastProfile/Dash_app/Stromlast.py:24
+#: LastProfile/Dash_app/Stromlast.py:22
 msgid "Stromlast Approximation"
 msgstr "Current load approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:28
+#: LastProfile/Dash_app/Stromlast.py:26
 msgid "Gewerbe allgemein "
 msgstr "Business in general"
 
-#: LastProfile/Dash_app/Stromlast.py:29
+#: LastProfile/Dash_app/Stromlast.py:27
 msgid "Gewerbe werktags 8-18 "
 msgstr "Business weekdays 8 a.m. to 6 p.m"
 
-#: LastProfile/Dash_app/Stromlast.py:30
+#: LastProfile/Dash_app/Stromlast.py:28
 msgid "Gewerbe Verbrauch Abend"
 msgstr "Commercial consumption evening"
 
-#: LastProfile/Dash_app/Stromlast.py:31
+#: LastProfile/Dash_app/Stromlast.py:29
 msgid "Gewerbe durchlaufend"
 msgstr "Business continuous"
 
-#: LastProfile/Dash_app/Stromlast.py:32
+#: LastProfile/Dash_app/Stromlast.py:30
 msgid "Laden Friseur  "
 msgstr "Shop hairdresser"
 
-#: LastProfile/Dash_app/Stromlast.py:33
+#: LastProfile/Dash_app/Stromlast.py:31
 msgid "Bäckerei mit Backstube "
 msgstr "Bakery with bakehouse"
 
-#: LastProfile/Dash_app/Stromlast.py:34
+#: LastProfile/Dash_app/Stromlast.py:32
 msgid "Wochenendbetrieb "
 msgstr "Weekend operation"
 
-#: LastProfile/Dash_app/Stromlast.py:35
+#: LastProfile/Dash_app/Stromlast.py:33
 msgid "Haushaltskunden "
 msgstr "Household customers"
 
-#: LastProfile/Dash_app/Stromlast.py:36
+#: LastProfile/Dash_app/Stromlast.py:34
 msgid "Landwirtschaftsbetriebe "
 msgstr "Farming operations"
 
-#: LastProfile/Dash_app/Stromlast.py:37
+#: LastProfile/Dash_app/Stromlast.py:35
 msgid "Landwirts. mit Milchwirts Tierzucht "
 msgstr "Farming operations with dairy farming"
 
-#: LastProfile/Dash_app/Stromlast.py:38
+#: LastProfile/Dash_app/Stromlast.py:36
 msgid "Übrige Landwirtschaftsbe "
 msgstr "Other agricultural businesses"
 
-#: LastProfile/Dash_app/Stromlast.py:50 LastProfile/Dash_app/Warmelast.py:117
+#: LastProfile/Dash_app/Stromlast.py:48 LastProfile/Dash_app/Warmelast.py:117
 msgid "Januar"
 msgstr "January"
 
-#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Warmelast.py:118
+#: LastProfile/Dash_app/Stromlast.py:49 LastProfile/Dash_app/Warmelast.py:118
 msgid "Februar"
 msgstr "February"
 
-#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Warmelast.py:119
+#: LastProfile/Dash_app/Stromlast.py:50 LastProfile/Dash_app/Warmelast.py:119
 msgid "März"
 msgstr "March"
 
-#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Warmelast.py:120
+#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Warmelast.py:120
 msgid "April"
 msgstr "April"
 
-#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Warmelast.py:121
+#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Warmelast.py:121
 msgid "Mai"
 msgstr "May"
 
-#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Warmelast.py:122
+#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Warmelast.py:122
 msgid "Juni"
 msgstr "June"
 
-#: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Warmelast.py:123
+#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Warmelast.py:123
 msgid "Juli"
 msgstr "July"
 
-#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Warmelast.py:124
+#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Warmelast.py:124
 msgid "August"
 msgstr "August"
 
-#: LastProfile/Dash_app/Stromlast.py:58
+#: LastProfile/Dash_app/Stromlast.py:56
 msgid "September"
 msgstr "September"
 
-#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Warmelast.py:126
+#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Warmelast.py:126
 msgid "Oktober"
 msgstr "Oktober"
 
-#: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Warmelast.py:127
+#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Warmelast.py:127
 msgid "November"
 msgstr "Nomvember"
 
-#: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Warmelast.py:128
+#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Warmelast.py:128
 msgid "Dezember"
 msgstr "December"
 
-#: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Warmelast.py:135
+#: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Warmelast.py:135
 msgid "Approximation starten"
 msgstr "Start approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:70 LastProfile/Dash_app/Warmelast.py:137
+#: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Warmelast.py:137
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:122 LastProfile/Dash_app/Stromlast.py:149
+#: LastProfile/Dash_app/Stromlast.py:119 LastProfile/Dash_app/Stromlast.py:146
 #: LastProfile/Dash_app/Warmelast.py:290
 msgid "Datum"
 msgstr "Date"
 
-#: LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Stromlast.py:124
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
-#: LastProfile/Dash_app/Stromlast.py:148
+#: LastProfile/Dash_app/Stromlast.py:145
 msgid "Jahresstrombedarf in KWh/a :"
 msgstr "Annual electricity requirement in KWh/a"
 
-#: LastProfile/Dash_app/Stromlast.py:149
+#: LastProfile/Dash_app/Stromlast.py:146
 msgid "Anwendung: "
 msgstr "Applications: "
 
-#: LastProfile/Dash_app/Stromlast.py:149
+#: LastProfile/Dash_app/Stromlast.py:146
 msgid "Last"
 msgstr "Load"
 
@@ -1102,6 +1102,7 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/explanation.html:158
 #: templates/TechnicalStandards/norm-explanation.html:33
 #: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/datasets_over/explanation.html:69
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
@@ -1113,6 +1114,7 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/norm-explanation.html:34
 #: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/datasets_over/explanation.html:70
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
@@ -1380,6 +1382,7 @@ msgstr "Overview of protocols"
 #: templates/TechnicalStandards/norm-detail.html:32
 #: templates/TechnicalStandards/protocol-detail.html:50
 #: templates/common/back-button.html:4
+#: templates/datasets_over/dataset-detail.html:45
 #: templates/publications/publications-detail.html:31
 #: templates/tools_over/tool-detail.html:49
 #: templates/weatherdata_over/weatherdata-detail.html:44
@@ -1392,6 +1395,7 @@ msgstr "Title"
 
 #: templates/TechnicalStandards/norm-detail.html:107
 #: templates/TechnicalStandards/protocol-detail.html:187
+#: templates/datasets_over/dataset-detail.html:124
 #: templates/tools_over/tool-detail.html:228
 #: templates/weatherdata_over/weatherdata-detail.html:133
 msgid "Kurzinformationen"
@@ -1441,6 +1445,7 @@ msgstr ""
 #: templates/TechnicalStandards/protocol-listings.html:72
 #: templates/TechnicalStandards/protocol-listings.html:84
 #: templates/common/search-bar.html:9
+#: templates/datasets_over/dataset-listings.html:41
 #: templates/tools_over/tool-listings.html:45
 #: templates/weatherdata_over/data-service-listings.html:45
 msgid "Suchbegriff"
@@ -1663,6 +1668,176 @@ msgstr ""
 #: templates/admin/publications/import_bibtex.html:39
 msgid "Import"
 msgstr ""
+
+#: templates/datasets_over/dataset-detail.html:66
+#: templates/tools_over/tool-detail.html:73
+#: templates/weatherdata_over/weatherdata-detail.html:73
+msgid "Was ist"
+msgstr "What is"
+
+#: templates/datasets_over/dataset-detail.html:70
+#: templates/datasets_over/explanation.html:34
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Anwendungsbereich"
+msgstr "Applications"
+
+#: templates/datasets_over/dataset-detail.html:74
+msgid "Geographische Abdeckung"
+msgstr "Geographic coverage"
+
+#: templates/datasets_over/dataset-detail.html:78
+msgid "Auflösung"
+msgstr "Resolution"
+
+#: templates/datasets_over/dataset-detail.html:82
+#: templates/datasets_over/dataset-detail.html:151
+#: templates/datasets_over/explanation.html:37
+msgid "Verfügbarkeit"
+msgstr "Availability"
+
+#: templates/datasets_over/dataset-detail.html:86
+#: templates/weatherdata_over/weatherdata-detail.html:89
+msgid "Weitere Informationen"
+msgstr "Further information"
+
+#: templates/datasets_over/dataset-detail.html:131
+#: templates/weatherdata_over/weatherdata-detail.html:140
+msgid "Kategorie"
+msgstr "Category"
+
+#: templates/datasets_over/dataset-detail.html:141
+#, fuzzy
+#| msgid "Datensätze"
+msgid "Datensatz"
+msgstr "Datasets"
+
+#: templates/datasets_over/dataset-listings.html:3
+#: templates/datasets_over/dataset-listings.html:20
+msgid "Überblick über Datensätze"
+msgstr "Overview of datasets"
+
+#: templates/datasets_over/explanation.html:13
+msgid ""
+"Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie "
+"den Zugang zu Informationen und die\n"
+"          Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch "
+"die Bereitstellung von offenen Daten tragen\n"
+"          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."
+msgstr ""
+"Open data plays a crucial role in the energy transition as it enables access "
+"to information and collaboration between different actors. By providing open "
+"data, companies, researchers and administration also contribute to "
+"transparency."
+
+#: templates/datasets_over/explanation.html:17
+msgid ""
+"Diese hilft dabei fundierte Entscheidungen treffen und innovative Lösungen "
+"entwickeln. Beispielhaft hierfür\n"
+"          ist die Nutzung von Gebäudealter und Sanierungsjahren zur "
+"Berechnung des Energiebedarfs in Gebäuden.\n"
+"          Somit hilft die Offenlegung von Daten beispielsweise dabei, "
+"erneuerbare Energie in Strom- und Wärmenetze zu\n"
+"          integrieren.\n"
+"          Durch die Kombination von offenen Energie- und Wetterdaten können "
+"bspw. Prognosemodelle für die erneuerbare\n"
+"          Energieerzeugung verbessert und die Stabilität des Netzes erhöht "
+"werden."
+msgstr ""
+"This helps make informed decisions and develop innovative solutions. An "
+"example of this is the use of building age and renovation years to calculate "
+"the energy requirements in buildings. The disclosure of data helps, for "
+"example, to integrate renewable energy into electricity and heating "
+"networks. By combining open energy and weather data, forecast models for "
+"renewable energy production can be improved and the stability of the network "
+"can be increased."
+
+#: templates/datasets_over/explanation.html:24
+msgid ""
+"Die hier dargestellten Datensätze sind durch die Begleitforschung durch "
+"verschiedene Maßnahmen erfasst worden,\n"
+"          unter anderem dem Fragebogen 2021, Interviews mit Projekten oder "
+"eigene Recherchen."
+msgstr ""
+"The data sets presented here were collected through accompanying research "
+"using various measures, including the 2021 questionnaire, interviews with "
+"projects or our own research."
+
+#: templates/datasets_over/explanation.html:27
+msgid ""
+"Eine Einordnung unsererseits erfolgt zunächst über öffentlich zugängliche "
+"Informationen."
+msgstr ""
+"Our classification is initially based on publicly available information."
+
+#: templates/datasets_over/explanation.html:29
+msgid "Dabei berücksichtigen wir die folgenden Aspekte:"
+msgstr "We take the following aspects into account:"
+
+#: templates/datasets_over/explanation.html:32
+msgid "Kategorie Anwendungsfall"
+msgstr "Use case category"
+
+#: templates/datasets_over/explanation.html:32
+msgid ""
+"Welcher Kategorie kann das Datenset zugeordnet\n"
+"            werden."
+msgstr "Which category can the data set be assigned to?"
+
+#: templates/datasets_over/explanation.html:34
+msgid ""
+"Typischer Anwendungsbereich bei dem das Datenset zum\n"
+"            Einsatz kommt. Ein Anwendungsbereich beschreibt alle möglichen "
+"Methoden und Datensätze mit denen ein\n"
+"            bestimmter Zweck erreicht werden kann."
+msgstr ""
+"Typical application area in which the data set is used. An application area "
+"describes all possible methods and data sets that can be used to achieve a "
+"specific purpose."
+
+#: templates/datasets_over/explanation.html:37
+msgid ""
+"Unter welcher Lizenz sind die Daten verfügbar? Sind diese\n"
+"            kostenlos oder kostenpflichtig?"
+msgstr "Under what license is the data available? Are these free or paid?"
+
+#: templates/datasets_over/explanation.html:41
+msgid "Weiterführende Informationen"
+msgstr "Additional information"
+
+#: templates/datasets_over/explanation.html:46
+msgid ""
+"Die Plattform bietet umfangreiche Daten zu Stromerzeugung, -verbrauch und -"
+"übertragung in verschiedenen\n"
+"          Ländern."
+msgstr ""
+"The platform provides extensive data on electricity generation, consumption "
+"and transmission in different countries."
+
+#: templates/datasets_over/explanation.html:53
+msgid ""
+"OpenEI ist eine Plattform, die umfassende Informationen zu erneuerbaren "
+"Energien weltweit bereitstellt.\n"
+"          Forschende können auf Daten zu erneuerbaren Energieressourcen, "
+"Technologien, politischen Rahmenbedingungen und\n"
+"          Marktdaten zugreifen, um ihre Forschung und Analyse zu "
+"unterstützen."
+msgstr ""
+"OpenEI is a platform that provides comprehensive information on renewable "
+"energy worldwide. Researchers can access data on renewable energy resources, "
+"technologies, policy frameworks and market data to support their research "
+"and analysis."
+
+#: templates/datasets_over/explanation.html:60
+msgid ""
+"Die Openenergy Platform hat zum Ziel die Modellierung des Energiesystems\n"
+"          transparent zu machen. Hierzu werden Informationen und digitale "
+"Werkzeuge rund um das\n"
+"          Thema Energie gesammelt."
+msgstr ""
+"The Openenergy Platform aims to make the modeling of the energy system "
+"transparent. For this purpose, information and digital tools on the topic of "
+"energy are collected."
 
 #: templates/norms_over/explanation.html:7
 #, fuzzy
@@ -2535,11 +2710,6 @@ msgstr "Programming language (implementation)"
 msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
 
-#: templates/tools_over/tool-detail.html:73
-#: templates/weatherdata_over/weatherdata-detail.html:73
-msgid "Was ist"
-msgstr "What is"
-
 #: templates/tools_over/tool-detail.html:103
 msgid "weitere Informationen"
 msgstr "Further information"
@@ -2652,10 +2822,6 @@ msgstr ""
 msgid "Welche Daten bietet"
 msgstr "What data offers"
 
-#: templates/weatherdata_over/weatherdata-detail.html:89
-msgid "Weitere Informationen"
-msgstr "Further information"
-
 #: templates/weatherdata_over/weatherdata-detail.html:93
 msgid "Link zum Datensatz"
 msgstr "Link to the dataset"
@@ -2665,10 +2831,6 @@ msgstr "Link to the dataset"
 #| msgid "ggf. Beispielhafte Anwendung."
 msgid "Beispielanwendung"
 msgstr "If applicable, exemplary application."
-
-#: templates/weatherdata_over/weatherdata-detail.html:140
-msgid "Kategorie"
-msgstr "Category"
 
 #: weatherdata_over/views.py:58
 #, fuzzy
