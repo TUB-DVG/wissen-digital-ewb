@@ -90,35 +90,8 @@
           </div>
           <!-- Course Grid END -->
 
- <!-- Pagination START -->
-          <div class="pagination">
-            <span class="step-links">
-              {% if page.has_previous %}
-              <a href="{%url 'dataset_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}{% endif %}&l={% if categoryDataset %}{{categoryDataset}}{% endif %}&lzp=&page=1">
-                &laquo; erste
-              </a>
-              &nbsp &nbsp
-              <a href="{%url 'dataset_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}{% endif %}&l={% if categoryDataset %}{{categoryDataset}}{% endif %}&lzp=&page={{ page.previous_page_number}}">
-                vorherige
-              </a>
-              {% endif %}
-              &nbsp &nbsp
-              <span class="current">
-                Seite {{ page.number }} von {{ page.paginator.num_pages }}
-              </span>
-              &nbsp &nbsp
-              {% if page.has_next %}
-              <a href="{%url 'dataset_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}{% endif %}&l={% if categoryDataset %}{{categoryDataset}}{% endif %}&lzp=&page={{ page.next_page_number}}">
-                nächste
-              </a>
-              &nbsp &nbsp
-              <a href="{%url 'dataset_list' %}?searched={% if search %}{{search}}{% endif %}&k={% if useCaseCategory %}{{useCaseCategory}}{% endif %}&l={% if categoryDataset %}{{categoryDataset}}{% endif %}&lzp=&page={{ page.paginator.num_pages }}">
-                letzte &raquo;
-              </a>
-              &nbsp &nbsp
-              {% endif %}
-            </span>
-          </div>
+           <!-- Pagination START -->
+          {% include "common/pagination.html" %}
           <!-- Pagination END -->
         </div>
         <!-- Main content END -->

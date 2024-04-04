@@ -65,9 +65,9 @@ def index(request):
         filteredBy = [usage, accessibility, lifeCyclePhase]
               
     tools = list(sorted(tools, key=lambda obj:obj.name))  
-    toolsPaginator= Paginator(tools,12)
-    pageNum= request.GET.get('page',None)
-    page=toolsPaginator.get_page(pageNum)
+    toolsPaginator = Paginator(tools, 12)
+    pageNum = request.GET.get('page', None)
+    page = toolsPaginator.get_page(pageNum)
 
     usageElements = Usage.objects.all()
     usageNames = []

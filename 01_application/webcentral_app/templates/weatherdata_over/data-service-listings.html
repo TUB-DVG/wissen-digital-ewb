@@ -82,35 +82,8 @@ Page content START -->
   		</div>
 	  	<!-- Course Grid END -->
   		<!-- Pagination START -->
-		  <div class="pagination">
-			<span class="step-links">
-			  {% if page.has_previous %}
-			  <a  href="{%url 'weatherdata_list' %}?page=1">
-				&laquo; erste
-			  </a>
-			  &nbsp &nbsp
-			  <a href="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}">
-				vorherige
-			  </a>
-			  {% endif %}
-			  &nbsp &nbsp
-			  <span class="current">
-				Seite {{ page.number }} von {{ page.paginator.num_pages }}  
-			  </span>
-			  &nbsp &nbsp
-			  {% if page.has_next %}
-			  <a href="{%url 'weatherdata_list' %}?page={{ page.previous_page_number}}">
-				nächste
-			  </a>
-			  &nbsp &nbsp
-			  <a href="{%url 'weatherdata_list' %}?page={{ page.paginator.num_pages}} ">
-				letzte &raquo;
-			  </a>
-			  &nbsp &nbsp
-			  {% endif %}
-			</span>
-		  </div>
-		  <!-- Pagination END -->
+		{% include "common/pagination.html" %}
+		<!-- Pagination END -->
 	  </div>
 	  <!-- Main content END -->
   </div><!-- Container END -->

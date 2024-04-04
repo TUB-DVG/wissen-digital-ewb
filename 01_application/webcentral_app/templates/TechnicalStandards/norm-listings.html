@@ -90,34 +90,7 @@ Page content START -->
         </div>
         <!-- standards grid END -->
         <!-- Pagination START -->
-        <div class="pagination">
-          <span class="step-links">
-            {% if page.has_previous %}
-            <a  href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page=1">
-              &laquo; {% translate "erste" %}
-            </a>
-            &nbsp &nbsp
-            <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.previous_page_number}}">
-              {% translate "vorherige" %}
-            </a>
-            {% endif %}
-            &nbsp &nbsp
-            <span class="current">
-              {% translate "Seite" %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
-            </span>
-            &nbsp &nbsp
-            {% if page.has_next %}
-            <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.next_page_number}}">
-              {% translate "nächste" %}
-            </a>
-            &nbsp &nbsp
-            <a href="{%url 'TechnicalStandards_norm_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&s={% if  source %}{{ source}}{% endif %}&page={{ page.paginator.num_pages}}">
-              {% translate "letzte" %} &raquo;
-            </a>
-            &nbsp &nbsp
-            {% endif %}
-          </span>
-        </div>
+        {% include "common/pagination.html" %}
         <!-- Pagination END -->
       </div>
       <!-- Main content END -->
