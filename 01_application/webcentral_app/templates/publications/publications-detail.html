@@ -3,7 +3,7 @@
 {% block title %} {{ pblication.name }} {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content %}
 
 <!-- =======================
@@ -28,7 +28,7 @@ Page intro START -->
       </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-      <a href="#" id="backButton">Zurück</a>
+      <a href="#" id="backButton">{% translate "Zurück" %}</a>
 <script nonce="{{request.csp_nonce}}">
     document.getElementById('backButton').addEventListener('click', function(event) {
         event.preventDefault();
@@ -65,13 +65,13 @@ Page content START -->
               </p>
 							{% endif %}
               {% if publication.abstract %}
-              <h5 class="mt-4">Abstrakt</h5>
+              <h5 class="mt-4">{% translate "Abstrakt" %}</h5>
 							<p class="mb-0">
                 {{publication.abstract}}
               </p>
 							{% endif %}
 							{% if publication.authors %}
-							<h5 class="mt-4">Autoren</h5>
+							<h5 class="mt-4">{% translate "Autoren" %}</h5>
 							<p class="mb-0">
                 {{publication.authors}}
               </p>
@@ -83,13 +83,13 @@ Page content START -->
               </p>
 							{% endif %}
               {% if publication.keywords %}
-              <h5 class="mt-4">Stichworte</h5>
+              <h5 class="mt-4">{% translate "Stichworte" %}</h5>
 							<p class="mb-0">
                 {{publication.keywords}}
               </p>
 							{% endif %}
 							{% if publication.year %}
-							<h5 class="mt-4">Publikationsjahr</h5>
+							<h5 class="mt-4">{% translate "Publikationsjahr" %}</h5>
 							<p class="mb-0">{{publication.year}}</p>
 							{% endif %}
               {% if publication.volume and publication.number %}
@@ -97,7 +97,7 @@ Page content START -->
                 <p class="mb-0">Vol. {{ publication.volume }}, No. {{ publication.number }}</p>
               {% endif %}
 							{% if publication.publisher %}
-							<h5 class="mt-4">Verlag</h5>
+							<h5 class="mt-4">{% translate "Verlag" %}</h5>
 							<p class="mb-0">
                 {{publication.publisher}}
               </p>
@@ -107,11 +107,11 @@ Page content START -->
               <p class="mb-0">{{publication.journal}}</p>
               {% endif %}
 							{% if publication.url %}
-							<h5 class="mt-4">Link zur PDF oder Journalseite</h5>
+							<h5 class="mt-4">{% translate "Link zur PDF oder Journalseite" %}</h5>
 							<p class="mb-0"><a href="{{ publication.url }}" target="_blank">{{ publication.url }}</a></p>
 							{% endif %}
               {% if publication.citekey %}
-							<h5 class="mt-4">Kurzbeleg</h5>
+							<h5 class="mt-4">{% translate "Kurzbeleg" %}</h5>
 							<p class="mb-0">{{publication.citekey}}</p>
 							{% endif %}
 							{% if publication.code %}
@@ -121,7 +121,7 @@ Page content START -->
               </p>
 							{% endif %}
 							{% if publication.focus %}
-							<h5 class="mt-4">Fokus</h5>
+							<h5 class="mt-4">{% translate "Fokus" %}</h5>
 							<p class="mb-0">
                 {% for focus in publication.focus.all %}
                   {{ focus.focus }}

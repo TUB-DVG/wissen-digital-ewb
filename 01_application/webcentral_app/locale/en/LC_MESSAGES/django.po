@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 09:33+0000\n"
+"POT-Creation-Date: 2024-04-04 10:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,6 +188,7 @@ msgid "Art des Ergebnisses"
 msgstr "Type of result"
 
 #: templates/StartSearch/ResultSearch.html:78
+#: templates/publications/publications-detail.html:124
 msgid "Fokus"
 msgstr "Focus"
 
@@ -279,6 +280,7 @@ msgid "Werkzeuge"
 msgstr "Tools"
 
 #: templates/StartSearch/StartSearch.html:120
+#: templates/weatherdata_over/weatherdata-detail.html:85
 msgid "Anwendungen"
 msgstr "Applications"
 
@@ -907,7 +909,9 @@ msgstr "Overview of protocols"
 
 #: templates/TechnicalStandards/norm-detail.html:32
 #: templates/TechnicalStandards/protocol-detail.html:50
+#: templates/publications/publications-detail.html:31
 #: templates/tools_over/tool-detail.html:49
+#: templates/weatherdata_over/weatherdata-detail.html:44
 msgid "Zurück"
 msgstr "Back"
 
@@ -918,6 +922,7 @@ msgstr "Title"
 #: templates/TechnicalStandards/norm-detail.html:107
 #: templates/TechnicalStandards/protocol-detail.html:187
 #: templates/tools_over/tool-detail.html:228
+#: templates/weatherdata_over/weatherdata-detail.html:133
 msgid "Kurzinformationen"
 msgstr "Quick information"
 
@@ -1250,15 +1255,15 @@ msgstr ""
 msgid "Um was handelt es sich?"
 msgstr "What is it about?"
 
-#: templates/partials/_footer.html:27
+#: templates/partials/_footer.html:28
 msgid "Über uns"
 msgstr "About us"
 
-#: templates/partials/_footer.html:38
+#: templates/partials/_footer.html:39
 msgid "Impressum"
 msgstr "Imprint"
 
-#: templates/partials/_footer.html:50
+#: templates/partials/_footer.html:51
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
@@ -1277,6 +1282,34 @@ msgstr "Methods"
 #: templates/partials/_navbar.html:185
 msgid "ökologisch"
 msgstr "ecological"
+
+#: templates/publications/publications-detail.html:68
+msgid "Abstrakt"
+msgstr "Abstract"
+
+#: templates/publications/publications-detail.html:74
+msgid "Autoren"
+msgstr "Authors"
+
+#: templates/publications/publications-detail.html:86
+msgid "Stichworte"
+msgstr "Keywords"
+
+#: templates/publications/publications-detail.html:92
+msgid "Publikationsjahr"
+msgstr "Year of publication"
+
+#: templates/publications/publications-detail.html:100
+msgid "Verlag"
+msgstr "Publisher"
+
+#: templates/publications/publications-detail.html:110
+msgid "Link zur PDF oder Journalseite"
+msgstr "Link to PDF or journal page"
+
+#: templates/publications/publications-detail.html:114
+msgid "Kurzbeleg"
+msgstr "Citation"
 
 #: templates/tools_over/explanationApps.html:9
 msgid ""
@@ -1461,6 +1494,7 @@ msgstr ""
 #: templates/tools_over/tool-detail.html:96
 #: templates/tools_over/tool-detail.html:245
 #: templates/weatherdata_over/explanation.html:29
+#: templates/weatherdata_over/weatherdata-detail.html:150
 msgid "Lizenz"
 msgstr "License"
 
@@ -2029,6 +2063,7 @@ msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
 
 #: templates/tools_over/tool-detail.html:73
+#: templates/weatherdata_over/weatherdata-detail.html:73
 msgid "Was ist"
 msgstr "What is"
 
@@ -2077,10 +2112,8 @@ msgid "Updates"
 msgstr "Updates"
 
 #: templates/weatherdata_over/data-service-listings.html:22
-#, fuzzy
-#| msgid "Überblick über die Normen"
 msgid "Überblick über Wetterdaten-Services"
-msgstr "Overview of norms"
+msgstr "Overview of wheatherdata Services"
 
 #: templates/weatherdata_over/explanation.html:11
 msgid ""
@@ -2146,6 +2179,28 @@ msgid ""
 msgstr ""
 "Under what license was the digital application published and are there any "
 "costs associated with using the digital application?"
+
+#: templates/weatherdata_over/weatherdata-detail.html:75
+msgid "Welche Daten bietet"
+msgstr ""
+
+#: templates/weatherdata_over/weatherdata-detail.html:89
+msgid "Weitere Informationen"
+msgstr "Further information"
+
+#: templates/weatherdata_over/weatherdata-detail.html:93
+msgid "Link zum Datensatz"
+msgstr ""
+
+#: templates/weatherdata_over/weatherdata-detail.html:98
+#, fuzzy
+#| msgid "ggf. Beispielhafte Anwendung."
+msgid "Beispielanwendung"
+msgstr "If applicable, exemplary application."
+
+#: templates/weatherdata_over/weatherdata-detail.html:140
+msgid "Kategorie"
+msgstr "Category"
 
 #~ msgid "und"
 #~ msgstr "and"
