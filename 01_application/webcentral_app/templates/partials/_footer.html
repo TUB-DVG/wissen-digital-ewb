@@ -1,3 +1,4 @@
+{% load i18n %}
 <!-- Footer START -->
 <footer class="pt-5 bg-white">
 	<div class="container">
@@ -24,7 +25,7 @@
 						<!-- ueber uns END -->
 						<span>
 							<a href="{% url 'about' %}">
-								Über uns
+								{% translate "Über uns" %}
 							</a>
 						</span>
 					</div>
@@ -35,7 +36,7 @@
 											py-3 text-center text-md-left">
 						<span>
 							<a href="{% url 'impressum' %}" id="impressumLink">
-								Impressum
+								{% translate "Impressum" %}
 							</a>
 						</span>
 					</div>
@@ -47,7 +48,7 @@
 
 						<span>
 							<a href="{% url 'Datenschutzhinweis' %}">
-								Datenschutz&shy;hinweis
+								{% translate "Datenschutz&shy;hinweis" %}
 							</a>
 						</span>
 					</div>

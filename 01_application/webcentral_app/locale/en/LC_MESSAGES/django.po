@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-04 09:31+0000\n"
+"POT-Creation-Date: 2024-04-04 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1249,6 +1249,18 @@ msgstr ""
 #: templates/weatherdata_over/explanation.html:24
 msgid "Um was handelt es sich?"
 msgstr "What is it about?"
+
+#: templates/partials/_footer.html:27
+msgid "Über uns"
+msgstr "About us"
+
+#: templates/partials/_footer.html:38
+msgid "Impressum"
+msgstr "Imprint"
+
+#: templates/partials/_footer.html:50
+msgid "Datenschutz&shy;hinweis"
+msgstr "Data protection notice"
 
 #: templates/partials/_navbar.html:50
 msgid "Digitale Werkzeuge"
