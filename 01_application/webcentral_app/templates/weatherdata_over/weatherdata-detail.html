@@ -69,9 +69,9 @@ Page content START -->
 						<div class="tab-pane container active" id="course-pills-1" >
 							<!-- Course detail START -->
 							{% if weatherdata.short_description %}
-							{% if weatherdata.category == 'Anwendung' %}
+							{% if weatherdata.category == 'Anwendung' or weatherdata.category == 'Application' %}
 							<h5 class="mb-3">{% translate "Was ist" %} {{weatherdata.data_service}}?</h5>
-							{% elif weatherdata.category == 'Datensätze'%}
+							{% elif weatherdata.category == 'Datensätze' or weatherdata.category == 'Datasets' %}
 							<h5 class="mb-3">{% translate "Welche Daten bietet" %} {{weatherdata.data_service}}?</h5>
 							{% endif %}
 							<p class="mb-1">{{weatherdata.short_description}}.</p>

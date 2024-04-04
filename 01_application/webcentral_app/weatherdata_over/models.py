@@ -37,3 +37,6 @@ class Weatherdata(models.Model):
                                    help_text = "Beschreibung des DatenService",
                                    blank = True)
     image = models.ImageField(null=True,blank = True)  #You need to install pillow
+
+    def __str__(self):
+        return self.data_service

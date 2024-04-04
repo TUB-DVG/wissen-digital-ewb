@@ -40,7 +40,7 @@ msgstr "Gas Infrastructure"
 #: templates/StartSearch/StartSearch.html:143
 #: templates/partials/_navbar.html:71
 msgid "Wetterdaten"
-msgstr "Wheatherdata"
+msgstr "Weatherdata"
 
 #: Datasets/views.py:58
 msgid "Wärmebedarf"
@@ -2168,21 +2168,16 @@ msgstr ""
 "completed."
 
 #: templates/weatherdata_over/explanation.html:29
-#, fuzzy
-#| msgid ""
-#| "Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und "
-#| "entstehen Kosten \n"
-#| "            durch die Anwendung ?"
 msgid ""
 "Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
 "                        entstehen Kosten durch die Verwendung?"
 msgstr ""
-"Under what license was the digital application published and are there any "
-"costs associated with using the digital application?"
+"Under what license was the application published and are there any "
+"costs associated with using the application?"
 
 #: templates/weatherdata_over/weatherdata-detail.html:75
 msgid "Welche Daten bietet"
-msgstr ""
+msgstr "What data offers"
 
 #: templates/weatherdata_over/weatherdata-detail.html:89
 msgid "Weitere Informationen"
@@ -2190,7 +2185,7 @@ msgstr "Further information"
 
 #: templates/weatherdata_over/weatherdata-detail.html:93
 msgid "Link zum Datensatz"
-msgstr ""
+msgstr "Link to the dataset"
 
 #: templates/weatherdata_over/weatherdata-detail.html:98
 #, fuzzy
