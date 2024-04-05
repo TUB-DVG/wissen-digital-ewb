@@ -2,6 +2,7 @@
 
 {% block title %} Geschäftsmodelle - Herausforderungen {% endblock %}
 
+{% load i18n %}
 {% load static %}
 
 {% block content%}
@@ -13,7 +14,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Datenschutzübersicht</h2>
+          <h2 class="m-0">{% translate "Datenschutzübersicht" %}</h2>
         </div>
       </div>
     </div>
@@ -26,7 +27,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
+          {% blocktranslate %}Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
           lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder
           bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von
           Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf
@@ -55,16 +56,16 @@ Page Banner START -->
           Datenschutzübersicht entstanden. Anhand verschiedener Use-Cases wird
           hier erklärt wann Datenschutzrisiken entstehen und wie diese durch den
           richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen
-          kontrolliert werden müssen.
+          kontrolliert werden müssen.{% endblocktranslate %}
         </p>
         <p>
           <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">
-            Effiziente Datenminimierung im Gebäude- und Quartierssektor
+            {% translate "Effiziente Datenminimierung im Gebäude- und Quartierssektor" %}
           </a>
         </p>
         <p>
           <a href="{% url 'coming' %}">
-            Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen
+            {% translate "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen" %}
           </a>
         </p>
       </div>

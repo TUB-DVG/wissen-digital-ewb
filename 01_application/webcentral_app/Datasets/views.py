@@ -17,10 +17,10 @@ def index(request):
     datasets = collectedDatasets.objects.all() # reads all data from table Teilprojekt
     filteredBy = [None]*3
     searched=None
-    if ((request.GET.get("Anwendungsfall") != None) |(request.GET.get("Kategorie") != None)| (request.GET.get("Verfügbarkeit") != None) |(request.GET.get("searched") != None)):
-        useCaseCategory=request.GET.get('Anwendungsfall', '')
-        categoryDataset=request.GET.get('Kategorie', '')
-        availability=request.GET.get('Verfügbarkeit', '')
+    if ((request.GET.get(_("Anwendungsfall")) != None) |(request.GET.get(_("Kategorie")) != None)| (request.GET.get(_("Verfügbarkeit")) != None) |(request.GET.get("searched") != None)):
+        useCaseCategory=request.GET.get(_('Anwendungsfall'), '')
+        categoryDataset=request.GET.get(_('Kategorie'), '')
+        availability=request.GET.get(_('Verfügbarkeit'), '')
         searched=request.GET.get('searched', '')
         datasets=collectedDatasets.objects.filter(useCaseCategory__icontains=useCaseCategory,
                                                   categoryDataset__icontains=categoryDataset,
@@ -48,7 +48,7 @@ def index(request):
             "focusBorder": "technical",
             "optionList": [
                 {
-                    "placeholder": "Anwendungsfall", 
+                    "placeholder": _("Anwendungsfall"), 
                     "objects": [
                         _("Potential Erneuerbare Energie"),
                         _("Standardlastprofile"),
@@ -67,7 +67,7 @@ def index(request):
                     "filter": filteredBy[0],
                 },
                 {
-                    "placeholder": "Kategorie", 
+                    "placeholder": _("Kategorie"), 
                     "objects": [
                         _("Übertragungsnetzentwicklungspläne"),
                         _("Gebäudebestandsentwicklung"),
@@ -93,7 +93,7 @@ def index(request):
                     "filter": filteredBy[1],
                 },
                 {
-                    "placeholder": "Verfügbarkeit", 
+                    "placeholder": _("Verfügbarkeit"), 
                     "objects": [
                         "Open/commercial:remote calculation and published report",
                         "Open Data Commons Open Database License 1.0",

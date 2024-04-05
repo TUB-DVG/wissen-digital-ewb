@@ -6,7 +6,11 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.utils.translation import gettext as _
 
-from .models import TechnicalStandard, Norm, Protocol
+from .models import (
+    TechnicalStandard, 
+    Norm, 
+    Protocol,
+)
 
 
 class UpdateProperties:
@@ -26,9 +30,9 @@ def norm(request):
     filteredBy = [None]*2 #3
     searched=None
 
-    if ((request.GET.get("Bezeichnung") != None)| (request.GET.get("Quelle") != None) |(request.GET.get("searched") != None)): #(request.GET.get("n") != None) |
-        name=request.GET.get('Bezeichnung', "")
-        source=request.GET.get('Quelle', "")
+    if ((request.GET.get(_("Bezeichnung")) != None)| (request.GET.get(_("Quelle")) != None) |(request.GET.get("searched") != None)): #(request.GET.get("n") != None) |
+        name=request.GET.get(_('Bezeichnung'), "")
+        source=request.GET.get(_('Quelle'), "")
         #link=request.GET.get('l')
         searched=request.GET.get('searched', "")
         norms=Norm.objects.filter(source__icontains=source,name__icontains=name,shortDescription__icontains=searched) #name__icontains=Name,
@@ -53,7 +57,7 @@ def norm(request):
         "urlName": "TechnicalStandards_norm_list",
         "optionList": [
             {
-                "placeholder": "Bezeichnung", 
+                "placeholder": _("Bezeichnung"), 
                 "objects": [
                     "ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs",
                     "Arbeitsstättenrichtllinie ASR A4.1",
@@ -127,7 +131,7 @@ def norm(request):
                 "filter": filteredBy[0],
             },
             {
-                "placeholder": "Quelle", 
+                "placeholder": _("Quelle"), 
                 "objects": [
                     "https://ghgprotocol.org/",
                     "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
@@ -181,10 +185,10 @@ def protocol(request):
     filteredBy = [None]*3
     searched=None
     #communicationMediumCategory	openSourceStatus
-    if ((request.GET.get("Name") != None)| (request.GET.get("Übertragungsmethoden") != None) |(request.GET.get("Open-Source-Status") != None) |(request.GET.get("searched") != None)): 
+    if ((request.GET.get("Name") != None)| (request.GET.get(_("Übertragungsmethoden")) != None) |(request.GET.get(_("Open-Source-Status")) != None) |(request.GET.get("searched") != None)): 
         name=request.GET.get('Name', "")
-        communicationMediumCategory=request.GET.get('Übertragungsmethoden', "")
-        openSourceStatus=request.GET.get('Open-Source-Status', "")
+        communicationMediumCategory=request.GET.get(_('Übertragungsmethoden'), "")
+        openSourceStatus=request.GET.get(_('Open-Source-Status'), "")
         searched=request.GET.get('searched', "")
         criterionProtocolsOne = Q(associatedStandards__icontains=searched)
         criterionProtocolsTwo = Q(networkTopology__icontains=searched)
@@ -232,7 +236,7 @@ def protocol(request):
                 "filter": filteredBy[0],
             },
             {
-                "placeholder": "Übertragungsmethoden", 
+                "placeholder": _("Übertragungsmethoden"), 
                 "objects": [
                     _("Verkabelt") +" & " + _("Drahtlos"),
                     _("Drahtlos"),
@@ -241,7 +245,7 @@ def protocol(request):
                 "filter": filteredBy[1],
             },
             {
-                "placeholder": "Open-Source-Status",
+                "placeholder": _("Open-Source-Status"),
                 "objects": [
                     "Open Source",
                     _("Proprietär"),
