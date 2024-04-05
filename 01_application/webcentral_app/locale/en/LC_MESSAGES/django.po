@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-05 09:33+0000\n"
+"POT-Creation-Date: 2024-04-05 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Datasets/views.py:20 Datasets/views.py:21 Datasets/views.py:51
+msgid "Anwendungsfall"
+msgstr "Use case"
+
+#: Datasets/views.py:20 Datasets/views.py:22 Datasets/views.py:70
+#: templates/datasets_over/dataset-detail.html:131
+#: templates/weatherdata_over/weatherdata-detail.html:140
+#: weatherdata_over/views.py:26 weatherdata_over/views.py:30
+#: weatherdata_over/views.py:56
+msgid "Kategorie"
+msgstr "Category"
+
+#: Datasets/views.py:20 Datasets/views.py:23 Datasets/views.py:96
+#: templates/datasets_over/dataset-detail.html:82
+#: templates/datasets_over/dataset-detail.html:151
+#: templates/datasets_over/explanation.html:37
+msgid "Verfügbarkeit"
+msgstr "Availability"
 
 #: Datasets/views.py:53
 msgid "Potential Erneuerbare Energie"
@@ -28,7 +47,7 @@ msgstr "Standard load profiles"
 
 #: Datasets/views.py:55
 msgid "Energiesystemmodell"
-msgstr "Energie system model"
+msgstr "Energy system model"
 
 #: Datasets/views.py:56
 msgid "Infrastruktur Gas"
@@ -430,15 +449,45 @@ msgstr "Missing disclosures"
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
-#: TechnicalStandards/views.py:237 TechnicalStandards/views.py:239
+#: TechnicalStandards/views.py:33 TechnicalStandards/views.py:34
+#: TechnicalStandards/views.py:60
+msgid "Bezeichnung"
+msgstr "Designation"
+
+#: TechnicalStandards/views.py:33 TechnicalStandards/views.py:35
+#: TechnicalStandards/views.py:134
+#: templates/TechnicalStandards/explanation.html:72
+#: templates/TechnicalStandards/norm-detail.html:69
+#: templates/TechnicalStandards/norm-detail.html:124
+#: templates/TechnicalStandards/norm-explanation.html:24
+#: templates/norms_over/explanation.html:24
+msgid "Quelle"
+msgstr "Source"
+
+#: TechnicalStandards/views.py:188 TechnicalStandards/views.py:190
+#: TechnicalStandards/views.py:239
+#: templates/TechnicalStandards/explanation.html:118
+#: templates/TechnicalStandards/protocol-explanation.html:41
+msgid "Übertragungsmethoden"
+msgstr "transmission media"
+
+#: TechnicalStandards/views.py:188 TechnicalStandards/views.py:191
+#: TechnicalStandards/views.py:248
+#: templates/TechnicalStandards/explanation.html:125
+#: templates/TechnicalStandards/protocol-detail.html:204
+#: templates/TechnicalStandards/protocol-explanation.html:48
+msgid "Open-Source-Status"
+msgstr "Open-Source-status"
+
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:243
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: TechnicalStandards/views.py:237 TechnicalStandards/views.py:238
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:242
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: TechnicalStandards/views.py:247
+#: TechnicalStandards/views.py:251
 msgid "Proprietär"
 msgstr "Proprietary"
 
@@ -766,7 +815,7 @@ msgid "Technische Standards"
 msgstr "Technical Standards"
 
 #: templates/StartSearch/StartSearch.html:154
-#: templates/partials/_navbar.html:83 weatherdata_over/views.py:57
+#: templates/partials/_navbar.html:83 weatherdata_over/views.py:58
 msgid "Datensätze"
 msgstr "Datasets"
 
@@ -790,17 +839,6 @@ msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
 #: templates/StartSearch/StartSearch.html:201
-#, fuzzy
-#| msgid ""
-#| "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
-#| "                der Energieforschung im Gebäudesektor zielt vorrangig "
-#| "auf\n"
-#| "                Hilfsmittel für die technische Planung und die "
-#| "technische\n"
-#| "                Betriebsdurchführung bzw. -optimierung ab. Dies umfasst\n"
-#| "                Datensätze, digitale Werkzeuge bzw. Anwendungen und "
-#| "weitere\n"
-#| "                Forschungsergebnisse."
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -812,11 +850,11 @@ msgid ""
 "mit\n"
 "                den Nutzenden."
 msgstr ""
-"The technical focus in the investigation of digitalization in energy "
-"research in the building sector is primarily aimed at tools for technical "
-"planning and the technical operational implementation and optimization. This "
-"includes data sets, digital tools and applications and other research "
-"Research results."
+"The operational focus when examining digitalization in energy research in "
+"the building sector is primarily aimed at the use phase of digital "
+"applications. Important aspects are the economical operation of digital "
+"applications(business models) and the integration and interactionwith the "
+"users."
 
 #: templates/StartSearch/StartSearch.html:220
 #: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
@@ -838,10 +876,8 @@ msgid "Nutzenden&shy;perspektive"
 msgstr "User perspective"
 
 #: templates/StartSearch/StartSearch.html:268
-#, fuzzy
-#| msgid "Nutzenden&shy;perspektive"
 msgid "Nutzenden&shy;perspektive - Methoden"
-msgstr "User perspective"
+msgstr "User perspective - methods"
 
 #: templates/StartSearch/StartSearch.html:279
 #: templates/partials/_navbar.html:140
@@ -892,7 +928,7 @@ msgid "Herausforderungen"
 msgstr "Challenges"
 
 #: templates/StartSearch/StartSearch.html:365
-#: templates/partials/_navbar.html:180
+#: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:180
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
@@ -1066,14 +1102,6 @@ msgid "um was handelt es sich?"
 msgstr "What is it about?"
 
 #: templates/TechnicalStandards/explanation.html:72
-#: templates/TechnicalStandards/norm-detail.html:69
-#: templates/TechnicalStandards/norm-detail.html:124
-#: templates/TechnicalStandards/norm-explanation.html:24
-#: templates/norms_over/explanation.html:24
-msgid "Quelle"
-msgstr "Source"
-
-#: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-explanation.html:24
 msgid "woher kann die Norm bezogen werden?"
 msgstr "where can the standard be obtained from?"
@@ -1145,11 +1173,6 @@ msgid "Name des Protokolls"
 msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:118
-#: templates/TechnicalStandards/protocol-explanation.html:41
-msgid "Übertragungsmethoden"
-msgstr "transmission media"
-
-#: templates/TechnicalStandards/explanation.html:118
 msgid ""
 "wie werden Daten zwischen den \n"
 "          verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -1181,12 +1204,6 @@ msgstr "Related standards"
 #: templates/TechnicalStandards/protocol-explanation.html:46
 msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
 msgstr "specific standards to which each protocol can be assigned."
-
-#: templates/TechnicalStandards/explanation.html:125
-#: templates/TechnicalStandards/protocol-detail.html:204
-#: templates/TechnicalStandards/protocol-explanation.html:48
-msgid "Open-Source-Status"
-msgstr "Open-Source-status"
 
 #: templates/TechnicalStandards/explanation.html:125
 #: templates/TechnicalStandards/protocol-explanation.html:48
@@ -1680,21 +1697,10 @@ msgstr "Geographic coverage"
 msgid "Auflösung"
 msgstr "Resolution"
 
-#: templates/datasets_over/dataset-detail.html:82
-#: templates/datasets_over/dataset-detail.html:151
-#: templates/datasets_over/explanation.html:37
-msgid "Verfügbarkeit"
-msgstr "Availability"
-
 #: templates/datasets_over/dataset-detail.html:86
 #: templates/weatherdata_over/weatherdata-detail.html:89
 msgid "Weitere Informationen"
 msgstr "Further information"
-
-#: templates/datasets_over/dataset-detail.html:131
-#: templates/weatherdata_over/weatherdata-detail.html:140
-msgid "Kategorie"
-msgstr "Category"
 
 #: templates/datasets_over/dataset-detail.html:141
 msgid "Datensatz"
@@ -1904,7 +1910,13 @@ msgid ""
 "          informieren. Die Website wird durch das Institut für Digitale "
 "Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
 "          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
-msgstr "Thank you for your interest in the knowledge platform. The protection of the personal data of visitors to our websites is very important to us. We would therefore like to inform you here about the data protection of this website atwissen-digital-ewb.de. The website is operated by the Institute for Digital Networking of Buildings, Energy Supply Systems and Users at the TU Berlin. Hereafter abbreviated as DVG."
+msgstr ""
+"Thank you for your interest in the knowledge platform. The protection of the "
+"personal data of visitors to our websites is very important to us. We would "
+"therefore like to inform you here about the data protection of this website "
+"atwissen-digital-ewb.de. The website is operated by the Institute for "
+"Digital Networking of Buildings, Energy Supply Systems and Users at the TU "
+"Berlin. Hereafter abbreviated as DVG."
 
 #: templates/pages/Datenschutzhinweis.html:39
 msgid "Gegenstand des Datenschutzes"
@@ -1920,14 +1932,22 @@ msgid ""
 "können, Sie zu identifizieren. Hierunter fallen z.B. \n"
 "          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
 "Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
-msgstr "Data protection deals with personal data. According to Article 4 No. 1 of the European General Data Protection Regulation (EU-GDPR), this is all information that relates to an identified or identifiable natural person, i.e. all information that can be used to identify you. This includes, for example, information such as name, private address, email address or telephone number, but also usage data such as your IP address."
+msgstr ""
+"Data protection deals with personal data. According to Article 4 No. 1 of "
+"the European General Data Protection Regulation (EU-GDPR), this is all "
+"information that relates to an identified or identifiable natural person, i."
+"e. all information that can be used to identify you. This includes, for "
+"example, information such as name, private address, email address or "
+"telephone number, but also usage data such as your IP address."
 
 #: templates/pages/Datenschutzhinweis.html:45
 msgid ""
 "Selbstverständlich beachtet die Technische Universität Berlin die "
 "gesetzlichen Bestimmungen zum Datenschutz und \n"
 "          andere rechtliche Bestimmungen und Vorgaben."
-msgstr "Of course, the Technical University of Berlin observes the legal provisions on data protection and other legal regulations and requirements."
+msgstr ""
+"Of course, the Technical University of Berlin observes the legal provisions "
+"on data protection and other legal regulations and requirements."
 
 #: templates/pages/Datenschutzhinweis.html:48
 msgid ""
@@ -1936,7 +1956,11 @@ msgid ""
 "          personenbezogener und sensibler Daten verschlüsselt. Zusätzlich "
 "sind unsere Webseiten durch technische Maßnahmen gegen \n"
 "          Beschädigungen oder unberechtigten Zugriff geschützt."
-msgstr "We do everything we can to ensure that you can trust us with your personal information. The transmission of personal and sensitive data is encrypted. In addition, our websites are protected by technical measures against damage or unauthorized access."
+msgstr ""
+"We do everything we can to ensure that you can trust us with your personal "
+"information. The transmission of personal and sensitive data is encrypted. "
+"In addition, our websites are protected by technical measures against damage "
+"or unauthorized access."
 
 #: templates/pages/Datenschutzhinweis.html:53
 msgid "Allgemeiner Datenschutzhinweis"
@@ -1947,7 +1971,10 @@ msgid ""
 "Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
 "herunterladen, werden Informationen hierüber in einer Logdatei \n"
 "              mit folgendem Inhalt gespeichert:"
-msgstr "If you access TU Berlin websites or download data from these pages, information about this will be stored in a log file with the following content:"
+msgstr ""
+"If you access TU Berlin websites or download data from these pages, "
+"information about this will be stored in a log file with the following "
+"content:"
 
 #: templates/pages/Datenschutzhinweis.html:63
 msgid "die IP-Adresse Ihres Gerätes,"
@@ -1976,7 +2003,8 @@ msgstr "the website from which you accessed the current page or file"
 
 #: templates/pages/Datenschutzhinweis.html:93
 msgid "und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war."
-msgstr "and the status message as to whether the access or retrieval was successful."
+msgstr ""
+"and the status message as to whether the access or retrieval was successful."
 
 #: templates/pages/Datenschutzhinweis.html:98
 msgid ""
@@ -1989,7 +2017,14 @@ msgid ""
 "              6 Abs. 1 lit. f EU-DSGVO dar. Ein Widerspruchsrecht nach Art. "
 "21 EU-DSGVO ist nicht möglich aufgrund fehlender technischer \n"
 "              Realisierbarkeit."
-msgstr "These non-anonymized log data are automatically deleted after two weeks, are not archived and are used exclusively for non-commercial purposes. They are only viewed manually when necessary and are required for error analysis, optimization or investigation of cases of misuse or performance bottlenecks. This represents a legitimate interest within the meaning of Article 6 Paragraph 1 Letter f EU GDPR. A right to object according to Article 21 EU GDPR is not possible due to a lack of technical feasibility."
+msgstr ""
+"These non-anonymized log data are automatically deleted after two weeks, are "
+"not archived and are used exclusively for non-commercial purposes. They are "
+"only viewed manually when necessary and are required for error analysis, "
+"optimization or investigation of cases of misuse or performance bottlenecks. "
+"This represents a legitimate interest within the meaning of Article 6 "
+"Paragraph 1 Letter f EU GDPR. A right to object according to Article 21 EU "
+"GDPR is not possible due to a lack of technical feasibility."
 
 #: templates/pages/Datenschutzhinweis.html:107
 msgid ""
@@ -2003,7 +2038,14 @@ msgid ""
 "Sie an diese Website übermitteln – etwa bei Anfragen oder \n"
 "              Logins – können dank SSL-Verschlüsselung nicht von Dritten "
 "gelesen werden."
-msgstr "In order to best protect your transmitted data, we use SSL encryption for all data transmission. You can recognize such encrypted connections by the prefix \"https://\" in the page link in the address bar or by the green/closed lock symbol in your browser. Unencrypted pages are identified by \"http://\" or an open or red lock symbol. All data that you transmit to this website - such as inquiries or logins - cannot be read by third parties thanks to SSL encryption."
+msgstr ""
+"In order to best protect your transmitted data, we use SSL encryption for "
+"all data transmission. You can recognize such encrypted connections by the "
+"prefix \"https://\" in the page link in the address bar or by the green/"
+"closed lock symbol in your browser. Unencrypted pages are identified by "
+"\"http://\" or an open or red lock symbol. All data that you transmit to "
+"this website - such as inquiries or logins - cannot be read by third parties "
+"thanks to SSL encryption."
 
 #: templates/pages/Datenschutzhinweis.html:116
 msgid "Social-Media-Drittanbieter"
@@ -2028,7 +2070,18 @@ msgid ""
 "          Ihren aktiven Klick auf die entsprechende Grafik werden Sie zu dem "
 "Dienst des jeweiligen sozialen Netzwerks geleitet. Die \n"
 "          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO."
-msgstr "On our websites we refer to TU Berlin-specific presences or social network profiles of the third-party providers listed below or offer the option of sharing our web offerings in the social networks of the third-party providers listed below. The integration takes place via a linked graphic of the respective network, which prevents a connection to the respective server of the social network from being automatically established when our websites with such social media content are accessed, for example to view a post from the respective network itself to represent. Only when you actively click on the corresponding graphic will you be directed to the service of the respective social network. The legal basis is Article 6 Paragraph 1 Letter a EU GDPR."
+msgstr ""
+"On our websites we refer to TU Berlin-specific presences or social network "
+"profiles of the third-party providers listed below or offer the option of "
+"sharing our web offerings in the social networks of the third-party "
+"providers listed below. The integration takes place via a linked graphic of "
+"the respective network, which prevents a connection to the respective server "
+"of the social network from being automatically established when our websites "
+"with such social media content are accessed, for example to view a post from "
+"the respective network itself to represent. Only when you actively click on "
+"the corresponding graphic will you be directed to the service of the "
+"respective social network. The legal basis is Article 6 Paragraph 1 Letter a "
+"EU GDPR."
 
 #: templates/pages/Datenschutzhinweis.html:128
 msgid ""
@@ -2047,14 +2100,28 @@ msgid ""
 "unmittelbar Ihrem Benutzerkonto zugeordnet werden, müssen Sie \n"
 "          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die "
 "Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren."
-msgstr "The respective network then collects information about you. This initially includes data such as the IP address of your device, date, time and page visited. It cannot be ruled out that the data collected in this way will be processed in the USA. If you are logged in with your user account for the respective network, the network operator may be able to assign the information collected from your specific visit to your personal account. If you interact using a \"Share\" button on the respective network, this information can be saved in your user account and, if necessary, published. If you want to prevent the collected information from being directly assigned to your user account, you must log out before clicking on the graphic. It is also possible to configure your user accounts accordingly."
+msgstr ""
+"The respective network then collects information about you. This initially "
+"includes data such as the IP address of your device, date, time and page "
+"visited. It cannot be ruled out that the data collected in this way will be "
+"processed in the USA. If you are logged in with your user account for the "
+"respective network, the network operator may be able to assign the "
+"information collected from your specific visit to your personal account. If "
+"you interact using a \"Share\" button on the respective network, this "
+"information can be saved in your user account and, if necessary, published. "
+"If you want to prevent the collected information from being directly "
+"assigned to your user account, you must log out before clicking on the "
+"graphic. It is also possible to configure your user accounts accordingly."
 
 #: templates/pages/Datenschutzhinweis.html:137
 msgid ""
 "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein "
 "Tochterunternehmen der Google LLC, 1600 Amphitheatre \n"
 "          Parkway, Mountain View, CA 94043 USA"
-msgstr "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, a subsidiary of Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043 USA"
+msgstr ""
+"Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, a "
+"subsidiary of Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043 "
+"USA"
 
 #: templates/pages/Datenschutzhinweis.html:139
 msgid "Datenschutzerklärung:"
@@ -2074,26 +2141,43 @@ msgid ""
 "erfährt hierbei YouTube die IP-Adresse Ihres Endgerätes und die Seite mit \n"
 "          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie "
 "nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen."
-msgstr "To display video content, our website uses, among other things, a plugin to integrate YouTube videos. The provider of the video portal is YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. When you access a page with an integrated YouTube plugin, a connection to the YouTube servers is not immediately established. Instead, a local image (\"thumbnail\") is loaded to announce the video and points to YouTube as a third-party provider. Users must actively start the YouTube video. Only then will YouTube find out the IP address of your device and the page with the YouTube video that you have just accessed, even if you are not logged in to the video portal or do not have an account there."
+msgstr ""
+"To display video content, our website uses, among other things, a plugin to "
+"integrate YouTube videos. The provider of the video portal is YouTube, LLC, "
+"901 Cherry Ave., San Bruno, CA 94066, USA. When you access a page with an "
+"integrated YouTube plugin, a connection to the YouTube servers is not "
+"immediately established. Instead, a local image (\"thumbnail\") is loaded to "
+"announce the video and points to YouTube as a third-party provider. Users "
+"must actively start the YouTube video. Only then will YouTube find out the "
+"IP address of your device and the page with the YouTube video that you have "
+"just accessed, even if you are not logged in to the video portal or do not "
+"have an account there."
 
 #: templates/pages/Datenschutzhinweis.html:151
 msgid ""
 "YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, "
 "sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges "
 "Ausloggen haben Sie die Möglichkeit, dies zu unterbinden."
-msgstr "YouTube can assign your surfing behavior directly to your personal profile if you are logged into your YouTube account. You can prevent this by logging out beforehand."
+msgstr ""
+"YouTube can assign your surfing behavior directly to your personal profile "
+"if you are logged into your YouTube account. You can prevent this by logging "
+"out beforehand."
 
 #: templates/pages/Datenschutzhinweis.html:154
 msgid ""
 "Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren "
 "aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO."
-msgstr "The use of YouTube only takes place with your consent by actively starting the video within the meaning of Art. 6 Para. 1 lit. a EU GDPR."
+msgstr ""
+"The use of YouTube only takes place with your consent by actively starting "
+"the video within the meaning of Art. 6 Para. 1 lit. a EU GDPR."
 
 #: templates/pages/Datenschutzhinweis.html:157
 msgid ""
 "Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der "
 "Datenschutzerklärung von YouTube unter:"
-msgstr "Details on how to handle user data can be found in YouTube's privacy policy at:"
+msgstr ""
+"Details on how to handle user data can be found in YouTube's privacy policy "
+"at:"
 
 #: templates/pages/Datenschutzhinweis.html:161
 msgid "Ort der Speicherung und zweckgebundene Datenverwendung"
@@ -2112,7 +2196,15 @@ msgid ""
 "          und Behörden erfolgt nur im Rahmen der gesetzlichen "
 "Auskunftspflichten bzw. wenn wir durch eine gerichtliche Entscheidung zur \n"
 "          Auskunft verpflichtet werden."
-msgstr "We collect, process and store your personal data exclusively internally (usually on our own servers) only for the purpose for which you provided it to us and thus observe the principle of appropriate data use. Your personal data will not be passed on to third parties without your express consent, unless this is necessary to provide the service or to execute the contract. The transmission to government institutions and authorities requesting information only takes place within the scope of the statutory information obligations or if we are obliged to provide information by a court decision."
+msgstr ""
+"We collect, process and store your personal data exclusively internally "
+"(usually on our own servers) only for the purpose for which you provided it "
+"to us and thus observe the principle of appropriate data use. Your personal "
+"data will not be passed on to third parties without your express consent, "
+"unless this is necessary to provide the service or to execute the contract. "
+"The transmission to government institutions and authorities requesting "
+"information only takes place within the scope of the statutory information "
+"obligations or if we are obliged to provide information by a court decision."
 
 #: templates/pages/Datenschutzhinweis.html:171
 msgid ""
@@ -2123,10 +2215,14 @@ msgid ""
 "Bestimmungen \n"
 "          verpflichtet."
 msgstr ""
+"We also take internal university data protection very seriously. Our "
+"employees and those of usWe require the service companies we commission to "
+"maintain confidentiality and compliance with data protection lawsregulations "
+"obligated."
 
 #: templates/pages/Datenschutzhinweis.html:176
 msgid "Auskunftsrecht"
-msgstr ""
+msgstr "Right of information"
 
 #: templates/pages/Datenschutzhinweis.html:177
 msgid ""
@@ -2136,12 +2232,18 @@ msgid ""
 "Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren \n"
 "          Datenschutzhinweisen zur Verfügung."
 msgstr ""
+"You will receive information about your data stored by us free of charge at "
+"any time without giving any reason. For thisPlease contact the contact "
+"address given in the legal notice. We would be happy to answer any further "
+"questions you may have about our data protection information."
 
 #: templates/pages/Datenschutzhinweis.html:183
 msgid ""
 "Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung "
 "und Übertragung Ihrer Daten."
 msgstr ""
+"In addition, you have the right to correct, delete, restrict and transfer "
+"your data."
 
 #: templates/pages/Datenschutzhinweis.html:186
 msgid ""
@@ -2155,10 +2257,17 @@ msgid ""
 "überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
 "          Verteidigung von Rechtsansprüchen dient."
 msgstr ""
+"You also have the right to object at any time to the processing of your "
+"personal data, which is carried out on the basis of Article 6 Paragraph 1 "
+"Letters e and f EU GDPR. The responsible body may no longer process the "
+"personal data concerning you unless it can demonstrate compelling legitimate "
+"reasons for the processing that outweigh your interests, rights and "
+"freedoms, or the processing serves to assert, exercise or defend legal "
+"claims."
 
 #: templates/pages/Datenschutzhinweis.html:193
 msgid "Beschwerderecht"
-msgstr ""
+msgstr "Right of appeal"
 
 #: templates/pages/Datenschutzhinweis.html:195
 msgid ""
@@ -2167,28 +2276,33 @@ msgid ""
 "          Team Datenschutz der Technischen Universität Berlin oder an die "
 "Aufsichtsbehörde wenden."
 msgstr ""
+"If you see any indications that we are not handling your data in accordance "
+"with data protection regulations, you can contact the data protection team "
+"at the Technical University of Berlin or the supervisory authority at any "
+"time."
 
 #: templates/pages/Datenschutzhinweis.html:199
 msgid ""
 "Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu "
 "wenden:"
 msgstr ""
+"Of course, you also have the right to contact the supervisory authority:"
 
 #: templates/pages/Datenschutzhinweis.html:202
 msgid "Berliner Beauftragte für Datenschutz und Informationsfreiheit"
-msgstr ""
+msgstr "Berlin Commissioner for Data Protection and Freedom of Information"
 
 #: templates/pages/Datenschutzhinweis.html:208
 msgid "Tel."
-msgstr ""
+msgstr "Phone"
 
 #: templates/pages/Datenschutzhinweis.html:210
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: templates/pages/Datenschutzhinweis.html:215
 msgid "Abschließende Hinweise"
-msgstr ""
+msgstr "Final Notes"
 
 #: templates/pages/Datenschutzhinweis.html:217
 msgid ""
@@ -2197,6 +2311,9 @@ msgid ""
 "          sich über Veränderungen der gesetzlichen Bestimmungen und der "
 "Praxis von Unternehmen fortlaufend zu informieren."
 msgstr ""
+"Please note that data protection regulations and data protection practices "
+"can change continuously, so it is necessary to stay abreast of changes in "
+"legal regulations and theContinuously inform company practices."
 
 #: templates/pages/about.html:17
 msgid "Wissensplattform"
@@ -2266,11 +2383,11 @@ msgid ""
 "          Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4:\n"
 "          Digitalisierung, Modul 5: Vernetzung und Kommunikation)."
 msgstr ""
-"Insgesamt fünf Module werten die inhaltlichen Schwerpunkte der "
-"Forschungsinitiative Energiewendebauen aus, vernetzen diese und entwickeln "
-"sie weiter (Modul 1: Monitoring und Dokumentation, Modul 2: Gebäude, Modul "
-"3: Quartiere, Modul 4: Digitalisierung, Modul 5: Vernetzung und "
-"Kommunikation)."
+"A total of five modules evaluate the focus of the contentEnergy Transition "
+"Building Research Initiative, network them and develop them further (Module "
+"1: Monitoring and Documentation, Module 2: Buildings, Module3: "
+"Neighborhoods, Module 4: Digitalization, Module 5: Networking and "
+"Communication)"
 
 #: templates/pages/about.html:55
 msgid ""
@@ -2388,6 +2505,135 @@ msgstr ""
 "described. The good practice examples are intended to encourage "
 "consideration of business model development as early as possible in order to "
 "support the efficient development of digital applications."
+
+#: templates/pages/dataSecurity.html:17
+msgid "Datenschutzübersicht"
+msgstr "Privacy Overview"
+
+#: templates/pages/dataSecurity.html:30
+msgid ""
+"Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
+"          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
+"oder\n"
+"          bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten "
+"von\n"
+"          Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten "
+"auf\n"
+"          eine identifizierte oder identifizierbare Person, findet das "
+"nationale\n"
+"          bzw. europäische Datenschutzrecht Anwendung und mit ihm die "
+"gesamte\n"
+"          Bandbreite rechtlicher Verpflichtungen für den Verantwortlichen "
+"der\n"
+"          Datenverarbeitung. Ziel des Datenschutzrechts ist es dabei, die\n"
+"          Betroffenen vor Risiken zu schützen, die durch die "
+"Datenverarbeitung\n"
+"          verursacht werden und ihnen damit grundsätzlich die Entscheidung "
+"über\n"
+"          das Maß und den Umgang mit diesen Risiken zu gewähren. Schon die\n"
+"          Frage, ob eine Datenverarbeitung überhaupt in den "
+"Anwendungsbereich\n"
+"          des Datenschutzrechts fällt, kann aber zur Herausforderung werden. "
+"Das\n"
+"          dafür zentrale europäische Regelwerk - die Datenschutz-"
+"Grundverordnung\n"
+"          (DSGVO) - ist nämlich an den sehr unbestimmten Begriff der\n"
+"          personenbezogenen Daten geknüpft. Der Anwendungsbereich wurde "
+"dabei\n"
+"          durch den Gesetzgeber bewusst weit gefasst und wird durch die "
+"Gerichte\n"
+"          weit ausgelegt, um einen möglichst umfassenden Schutz der "
+"Betroffenen\n"
+"          vor den Risiken verschiedener Datenverarbeitungen zu "
+"gewährleisten.\n"
+"          Das liegt daran, dass sogar vermeintlich rein technische Daten "
+"wie\n"
+"          Maschinen-Daten, Geo-Daten oder Gebäude-Daten Rückschlüsse über\n"
+"          Personen zulassen können, wenn sie mit anderen Datensätzen "
+"verknüpft\n"
+"          werden. Zur Erläuterung, wie Datenschutzrisiken bei der "
+"Verarbeitung\n"
+"          von gebäudebezogenen Daten entstehen können und wann dadurch der\n"
+"          Anwendungsbereich der DSGVO eröffnet wird, ist im Rahmen von Modul "
+"4\n"
+"          der Wissenschaftlichen Begleitforschung Energiewendebauen eine\n"
+"          Datenschutzübersicht entstanden. Anhand verschiedener Use-Cases "
+"wird\n"
+"          hier erklärt wann Datenschutzrisiken entstehen und wie diese durch "
+"den\n"
+"          richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen\n"
+"          kontrolliert werden müssen."
+msgstr ""
+"When using digital applications in the building and neighborhood sector, "
+"various data sources on indoor climate, energy consumption or mere building "
+"information often allow conclusions to be drawn about the behavior of "
+"individuals or groups of people. If this data relates to an identified or "
+"identifiable person, this will be foundNational or European data protection "
+"law applies and with it the entire range of legal obligations for the person "
+"responsibledata processing. The aim of data protection law is to protect "
+"those affected from risks caused by thedata processing and thus "
+"fundamentally grant you the decision about the extent and how to deal with "
+"these risks. The very question of whether data processing is even within the "
+"scope of application of data protection law, but can become a challenge. The "
+"central European regulation - the General Data Protection Regulation (GDPR) "
+"- is linked to the very vague concept of personal data. The scope of "
+"application was deliberately defined broadly by the legislature and is "
+"interpreted broadly by the courts in order to ensure the most comprehensive "
+"protection possible for those affected from the risks of various data "
+"processing. This is because even supposedly purely technical data such as "
+"machine data, geodata or building data can allow conclusions to be drawn "
+"about people if they are linked to other data sets. To explain how data "
+"protection risks can arise when processing building-related data and when "
+"this opens up the scope of the GDPR, a data protection overview was created "
+"as part of Module 4 of the Scientific Accompanying Research on Building "
+"Energy Transitions. Using various use cases, it is explained here when data "
+"protection risks arise and how they must be controlled through the correct "
+"use of technical and organizational protective measures."
+
+#: templates/pages/dataSecurity.html:63
+msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
+msgstr "Efficient data minimization in the building and neighborhood sector"
+
+#: templates/pages/dataSecurity.html:68
+msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
+msgstr "Collection of guides, literature and court decisions"
+
+#: templates/pages/dataSufficiency.html:32
+msgid ""
+"Sowohl die Materialisierung als auch der Energieaufwand für den\n"
+"          Betrieb immer größer werdender Rechenkapazitäten stellt eine\n"
+"          Herausforderung dar. Der maßhaltige Umgang mit Daten – die\n"
+"          Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die\n"
+"          Datensuffizienz schaut dabei auf alle Bereiche der "
+"Datenverarbeitung:\n"
+"          von der Erhebung, der Weiterverarbeitung, Speicherung bis zur\n"
+"          Löschung. Gerade die ökologischen Auswirkungen eines "
+"(in-)suffizienten\n"
+"          Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben "
+"in\n"
+"          der Praxis oftmals unbeachtet. Durch die ständige Zunahme "
+"digitaler\n"
+"          Anwendungen im Gebäudebereich muss die Datensuffizienz jedoch "
+"bereits\n"
+"          bei der Entwicklung und auch später bei der Nutzung mitgedacht "
+"werden.\n"
+"          Im Folgenden sollen daher Anhaltspunkte für einen maßhaltigen "
+"Umgang\n"
+"          mit Daten gegeben und auf die ökologischen Wirkungen bestimmter\n"
+"          Praktiken beim Umgang mit Daten hingewiesen werden."
+msgstr ""
+"Both the materialization and the energy expenditure for theOperating ever-"
+"increasing computing capacities represents a challenge. The moderate "
+"handling of data - theData sufficiency – is therefore becoming increasingly "
+"relevant. TheData sufficiency looks at all areas of data processing: from "
+"collection, further processing, storage to deletion. The ecological effects "
+"of (in)sufficient handling of data in particular have currently not been "
+"researched much and often remain unnoticed in practice. However, due to the "
+"constant increase in digital applications in the building sector, data "
+"sufficiency must be taken into account during development and later during "
+"usebecome. The following is therefore intended to provide guidelines for a "
+"moderate handling of data and to point out the ecological effects of certain "
+"practices when handling data."
 
 #: templates/pages/environmentalIntegrityNegativ.html:32
 msgid ""
@@ -2690,6 +2936,24 @@ msgstr "About us"
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
+#: templates/partials/_gefoerdert_bmwk.html:7
+msgid ""
+"Die Wissensplattform - Digitalisierung Energiewendebauen entsteht im\n"
+"        Rahmen des Forschungsprojektes „BF2020 Begleitforschung\n"
+"        Energiewendebauen - Modul Digitalisierung; Teilvorhaben: TU Berlin:\n"
+"        Wissensplattform“ (FKZ: 03EWB004A).</br>\n"
+"        Dieses Projekt wurde aufgrund\n"
+"        eines Beschlusses des Deutschen Bundestages mit öffentlichen Mitteln "
+"des\n"
+"        Bundesministeriums für Wirtschaft und Klimaschutz gefördert."
+msgstr ""
+"The knowledge platform - digitization of energy transition construction is "
+"being created as part of the research project \"BF2020 accompanying research "
+"on energy transition construction - module digitization; Sub-project: TU "
+"Berlin: Knowledge Platform\" (FKZ: 03EWB004A).</br>This project was funded "
+"with public funds from the Federal Ministry for Economic Affairs and Climate "
+"Protection based on a resolution by the German Bundestag."
+
 #: templates/partials/_navbar.html:50
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
@@ -2912,6 +3176,8 @@ msgstr ""
 #: templates/tools_over/tool-detail.html:245
 #: templates/weatherdata_over/explanation.html:29
 #: templates/weatherdata_over/weatherdata-detail.html:150
+#: weatherdata_over/views.py:27 weatherdata_over/views.py:31
+#: weatherdata_over/views.py:64
 msgid "Lizenz"
 msgstr "License"
 
@@ -3601,21 +3867,19 @@ msgstr "Link to the dataset"
 msgid "Beispielanwendung"
 msgstr "If applicable, exemplary application."
 
-#: weatherdata_over/views.py:58
+#: weatherdata_over/views.py:59
 #, fuzzy
 #| msgid "Anwendungen"
 msgid "Anwendung"
 msgstr "Applications"
 
-#: weatherdata_over/views.py:65
+#: weatherdata_over/views.py:66
 msgid "Frei nutzbar"
-msgstr ""
+msgstr "Free to use"
 
-#: weatherdata_over/views.py:68
-#, fuzzy
-#| msgid "Lizenz"
+#: weatherdata_over/views.py:69
 msgid "MIT-Lizenz"
-msgstr "License"
+msgstr "MIT license"
 
 #~ msgid "und"
 #~ msgstr "and"

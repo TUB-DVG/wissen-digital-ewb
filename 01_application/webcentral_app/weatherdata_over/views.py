@@ -3,6 +3,7 @@ from django.shortcuts import (
     get_object_or_404,
 )
 from django.core.paginator import Paginator
+from django.utils.translation import gettext as _
 
 from .models import Weatherdata 
 
@@ -22,12 +23,12 @@ def index(request):
     searched = None
 
     if (
-        (_checkDjangoDict(request, "Kategorie") is not None) | 
-        (_checkDjangoDict(request, "Lizenz") is not None) |
+        (_checkDjangoDict(request, _("Kategorie")) is not None) | 
+        (_checkDjangoDict(request, _("Lizenz")) is not None) |
         (_checkDjangoDict(request, "searched") is not None)
     ):
-        category = request.GET.get("Kategorie", "")
-        license = request.GET.get("Lizenz", "")
+        category = request.GET.get(_("Kategorie"), "")
+        license = request.GET.get(_("Lizenz"), "")
         searched = request.GET.get("searched", "")
         weatherdata = Weatherdata.objects.filter(
             category__icontains=category,
@@ -52,7 +53,7 @@ def index(request):
         "urlName": "publicationPage",
         "optionList": [
             {
-                "placeholder": "Kategorie", 
+                "placeholder": _("Kategorie"), 
                 "objects": [
                     _("Datensätze"), 
                     _("Anwendung"),
@@ -60,7 +61,7 @@ def index(request):
                 "filter": filtered_by[0],
             },
             {
-                "placeholder": "Lizenz", 
+                "placeholder": _("Lizenz"), 
                 "objects": [
                     _("Frei nutzbar"), 
                     "Open Data", 
