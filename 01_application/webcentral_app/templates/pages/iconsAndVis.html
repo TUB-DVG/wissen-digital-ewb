@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %} Geschäftsmodelle - Herausforderungen {% endblock %}
-
+{% load i18n %}
 {% load static %}
 
 {% block content%}
@@ -13,7 +13,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Icons und Visualisierung</h2>
+          <h2 class="m-0">{% translate "Icons und Visualisierung" %}</h2>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Icons können auch im Gebäude- und Quartiersbereich die grafische
+          {% blocktranslate %}Icons können auch im Gebäude- und Quartiersbereich die grafische
           Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl für
           die Informationsvermittlung an professionelle, wie auch fachfremde
           Adressat*innenkreise genutzt werden. Im Modul 4 der Begleitforschung,
@@ -47,7 +47,7 @@ Page Banner START -->
           eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie
           technischer Perspektive erlaubt und von der Visualisierung eines
           ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem
-          User-Interface verwendet werden kann.
+          User-Interface verwendet werden kann.{% endblocktranslate %}
         </p>
         <p>
           <a href="https://github.com/Privacy-Icons/Privacy-Icons">
