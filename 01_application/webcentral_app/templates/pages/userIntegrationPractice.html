@@ -3,7 +3,7 @@
 {% block title %} Nutzendeneinbindung – good-practice {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content%}
 
 <!-- general text for "coming soon" -->
@@ -16,7 +16,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Nutzendeneinbindung – good-practice</h2>
+          <h2 class="m-0">{% translate "Nutzendeneinbindung" %} – good-practice</h2>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Was kann eine gelungene Nutzendeneinbindung bewirken? Dieser Frage
+          {% blocktranslate %}Was kann eine gelungene Nutzendeneinbindung bewirken? Dieser Frage
           widmet sich die Aufbereitung von ausgewählten Beispielen. Es wird
           näher auf Projekte eingegangen, die die Nutzenden digitaler
           Anwendungen während der Entwicklung und/oder während der Nutzung der
@@ -39,7 +39,7 @@ Page Banner START -->
           angewandt wurden, wird die good-practice Darstellung auch auf die
           damit realisierten Effekte fokussiert. Ebenso werden die
           Herausforderungen und Erkenntnisse aus der Nutzendeneinbindung des
-          jeweiligen Beispielprojekts aufgezeigt werden.
+          jeweiligen Beispielprojekts aufgezeigt werden.{% endblocktranslate %}
         </p>
       </div>
     </div>

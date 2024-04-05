@@ -286,6 +286,25 @@ def indexBusinessApplication(request):
         'usageFields': usageNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
         "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "optionList": [
+            {
+                "placeholder": "Nutzung", 
+                "objects": usageNames,
+                "filter": filteredBy[0],
+            },
+            {
+                "placeholder": "Zugänglichkeit", 
+                "objects": accessibilityNames,
+                "filter": filteredBy[1],
+            },
+            {
+                "placeholder": "Lebenszyklusphase", 
+                "objects": lifeCyclePhaseNames,
+                "filter": filteredBy[2],
+            },
+        ],
     }
 
     return render(request, 'tools_over/tool-listings.html', context)  

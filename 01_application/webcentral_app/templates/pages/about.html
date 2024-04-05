@@ -3,6 +3,7 @@
 {% block title %} Über uns {% endblock %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content%}
 
@@ -13,8 +14,8 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Wissensplattform</h2>
-          <h3 class="m-0">Eine Plattform der Begleitforschung Energiewendebauen</h3>
+          <h2 class="m-0">{% translate "Wissensplattform" %}</h2>
+          <h3 class="m-0">{% blocktranslate %}Eine Plattform der Begleitforschung Energiewendebauen{% endblocktranslate %}</h3>
         </div>
       </div>
     </div>
@@ -26,32 +27,32 @@ Page Banner START -->
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        <p class="lead">Die Wissensplattform wird durch das Modul
+        <p class="lead">{% blocktranslate %}Die Wissensplattform wird durch das Modul
           Digitalisierung der wissenschaftlichen Begleitforschung der
           Forschungsinitiative
           <a href="https://www.energiewendebauen.de" target="_blank">Energiewendebauen</a>
-          entwickelt und bereitgestellt.
+          entwickelt und bereitgestellt.{% endblocktranslate %}
         </p>
-        <p class="lead">Die wissenschaftliche Begleitforschung wertet Arbeitsprogramme und
+        <p class="lead">{% blocktranslate %}Die wissenschaftliche Begleitforschung wertet Arbeitsprogramme und
           Ergebnisse der Forschungs- und Demonstrationsvorhaben aus die im Rahmen der 
           Forschungsinitiative Energiewendebauen vom Bundesministerium für Wirtschaft und Klimaschutz
           geförderten werden. Ziel ist es diese Ergebnisse zentral aufzubereiten, um die Erkenntnisse 
-          in die Planungs- und Entscheidungspraxis nachhaltig einfließen zu lassen.
+          in die Planungs- und Entscheidungspraxis nachhaltig einfließen zu lassen.{% endblocktranslate %}
         </p>
-        <p class="lead">Die Querauswertung der Forschungsprojekte, die
+        <p class="lead">{% blocktranslate %}Die Querauswertung der Forschungsprojekte, die
           Bereitstellung von Fachinformationen, der Transfer von
           Forschungsergebnissen in die Praxis und die breite Kommunikation von
           Lösungsansätzen sind wesentliche Elemente, um die Dekarabonisierung von 
           Gebäuden und Quartieren zu erreichen. Diese Leistungen werden durch 
-          die Begleitforschung erbracht.
+          die Begleitforschung erbracht.{% endblocktranslate %}
         </p>
-        <p class="lead">Insgesamt fünf Module werten die inhaltlichen
+        <p class="lead">{% blocktranslate %}Insgesamt fünf Module werten die inhaltlichen
           Schwerpunkte der Forschungsinitiative Energiewendebauen aus,
           vernetzen diese und entwickeln sie weiter (Modul 1: Monitoring und
           Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4:
-          Digitalisierung, Modul 5: Vernetzung und Kommunikation).
+          Digitalisierung, Modul 5: Vernetzung und Kommunikation).{% endblocktranslate %}
         </p>
-        <p class="lead">Das Modul 4 (Digitalisierung) wird von der TU Berlin
+        <p class="lead">{% blocktranslate %}Das Modul 4 (Digitalisierung) wird von der TU Berlin
           mit der
           <a href="https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future" target="_blank">
             Einstein Center Digital Future Professur
@@ -66,7 +67,7 @@ Page Banner START -->
           <a href="https://ewb.innoecos.com/Group/IOeW/" target="_blank">
             Institut für ökologische Wirtschaftsforschung
           </a>
-          bearbeitet.
+          bearbeitet.{% endblocktranslate %}
         </p>
       </div>
       <div class="col-lg-3">

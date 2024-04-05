@@ -3,7 +3,7 @@
 {% block title %} Nutzendeneinbindung – Methoden {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content%}
 
 <!-- general text for "coming soon" -->
@@ -16,7 +16,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Nutzendeneinbindung – Methoden</h2>
+          <h2 class="m-0">{% translate "Nutzendeneinbindung – Methoden" %}</h2>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Wie kann die Nutzendeneinbindung gelingen? Erprobte Methoden aus der
+          {% blocktranslate %}Wie kann die Nutzendeneinbindung gelingen? Erprobte Methoden aus der
           sozialwissenschaftlichen Forschung können auf diese Frage Antwort
           geben. Auf dieser Seite werden Sie eine Zusammenstellung gängiger
           Methoden zur Nutzendeneinbindung finden. Die hier aufgezeigten
@@ -37,7 +37,7 @@ Page Banner START -->
           Projektkontexte dargelegt werden. Durch die weiterführenden
           Literaturhinweisen sollen Interessierte zur tieferen
           Auseinandersetzung mit den Methoden für eigene Projekte ermutigt
-          werden.
+          werden.{% endblocktranslate %}
         </p>
       </div>
     </div>
