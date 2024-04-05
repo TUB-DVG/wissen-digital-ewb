@@ -7,6 +7,7 @@ from project_listing.models import *
 from django_plotly_dash import DjangoDash
 from dash.exceptions import PreventUpdate
 from django.utils.translation import gettext as _
+from django.contrib.sessions.models import Session
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 
 from .Stromlastapproximation_Csv import currentApproximation
@@ -17,6 +18,14 @@ DF_MAIN = pd.read_csv(DATA_PATH)
 data = []
 app = DjangoDash('Stromlast')   # replaces dash.Dash
 # App layout
+# Get the session key from the cookie
+session_key = request.cookies.get(settings.SESSION_COOKIE_NAME)
+
+# Get the session
+session = Session.objects.get(session_key=session_key)
+
+# Get the current language from the session
+current_language = session.get_decoded().get('current_language')
 app.layout = html.Div([
     #Title
     html.H1(_("Stromlast Approximation"), style = {'text-align': 'center'}),
@@ -85,6 +94,7 @@ app.layout = html.Div([
 #Stromapproximation
 @app.callback(
     Output('powerGraph','figure'),
+    # Output('application', 'children'),
     Input('approximation_start','n_clicks'),
     Input('displayMonth','value'),
     Input('application','value'),
@@ -93,6 +103,7 @@ app.layout = html.Div([
     )
     
 def updatePowerGraph(click:int,displayMonth:str,application:str,powerRequirement:int):
+
         if application != None:
             WW = currentApproximation(int(application),powerRequirement)
             days = DF_MAIN['Datum/ Uhrzeit']
