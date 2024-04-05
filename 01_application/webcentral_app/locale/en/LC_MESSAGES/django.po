@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-05 08:04+0000\n"
+"POT-Creation-Date: 2024-04-05 09:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -854,19 +854,6 @@ msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
 #: templates/StartSearch/StartSearch.html:308
-#, fuzzy
-#| msgid ""
-#| "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
-#| "                in der Energieforschung im Gebäudesektor zielt auf das\n"
-#| "                Evaluieren von Umwelteffekten durch den Einsatz "
-#| "digitaler\n"
-#| "                Anwendungen ab. Neben positiven Wirkungen wie\n"
-#| "                Energieeinsparungen werden auch negativen Auswirkungen "
-#| "wie ein\n"
-#| "                erhöhter Materialverbrauch durch digitale Anwendungen\n"
-#| "                aufgezeigt. In diesem Kontext wird auch ein suffizienter "
-#| "Umgang\n"
-#| "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -887,16 +874,19 @@ msgstr ""
 "of data and its effects are also discussed."
 
 #: templates/StartSearch/StartSearch.html:329
+#: templates/pages/environmentalIntegrityNegativ.html:19
 #: templates/partials/_navbar.html:162
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
 #: templates/StartSearch/StartSearch.html:341
+#: templates/pages/environmentalIntegrityPositiv.html:19
 #: templates/partials/_navbar.html:168
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impact"
 
 #: templates/StartSearch/StartSearch.html:353
+#: templates/pages/benchmarkingChallenges.html:19
 #: templates/partials/_navbar.html:174
 msgid "Herausforderungen"
 msgstr "Challenges"
@@ -943,7 +933,7 @@ msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
 #: templates/StartSearch/StartSearch.html:445
-#: templates/partials/_navbar.html:220
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:220
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
@@ -1899,25 +1889,802 @@ msgstr ""
 msgid "Um was handelt es sich?"
 msgstr "What is it about?"
 
+#: templates/pages/Datenschutzhinweis.html:17
+#, fuzzy
+#| msgid "Datenschutz&shy;hinweis"
+msgid "Datenschutzhinweis"
+msgstr "Data protection notice"
+
+#: templates/pages/Datenschutzhinweis.html:33
+msgid ""
+"Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
+"persönlichen Daten von Besucher*innen unserer \n"
+"          Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier über "
+"den Datenschutz dieses Webangebots unter wissen-digital-ewb.de\n"
+"          informieren. Die Website wird durch das Institut für Digitale "
+"Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
+"          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
+msgstr "Thank you for your interest in the knowledge platform. The protection of the personal data of visitors to our websites is very important to us. We would therefore like to inform you here about the data protection of this website atwissen-digital-ewb.de. The website is operated by the Institute for Digital Networking of Buildings, Energy Supply Systems and Users at the TU Berlin. Hereafter abbreviated as DVG."
+
+#: templates/pages/Datenschutzhinweis.html:39
+msgid "Gegenstand des Datenschutzes"
+msgstr "Subject of data protection"
+
+#: templates/pages/Datenschutzhinweis.html:40
+msgid ""
+"Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
+"Artikel 4 Nr. 1 der Europäischen \n"
+"          Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die sich "
+"auf eine identifizierte oder identifizierbare natürliche \n"
+"          Person beziehen, also alle Informationen, die dazu genutzt werden "
+"können, Sie zu identifizieren. Hierunter fallen z.B. \n"
+"          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
+"Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
+msgstr "Data protection deals with personal data. According to Article 4 No. 1 of the European General Data Protection Regulation (EU-GDPR), this is all information that relates to an identified or identifiable natural person, i.e. all information that can be used to identify you. This includes, for example, information such as name, private address, email address or telephone number, but also usage data such as your IP address."
+
+#: templates/pages/Datenschutzhinweis.html:45
+msgid ""
+"Selbstverständlich beachtet die Technische Universität Berlin die "
+"gesetzlichen Bestimmungen zum Datenschutz und \n"
+"          andere rechtliche Bestimmungen und Vorgaben."
+msgstr "Of course, the Technical University of Berlin observes the legal provisions on data protection and other legal regulations and requirements."
+
+#: templates/pages/Datenschutzhinweis.html:48
+msgid ""
+"Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten "
+"vertrauen können. So erfolgt die Übertragung \n"
+"          personenbezogener und sensibler Daten verschlüsselt. Zusätzlich "
+"sind unsere Webseiten durch technische Maßnahmen gegen \n"
+"          Beschädigungen oder unberechtigten Zugriff geschützt."
+msgstr "We do everything we can to ensure that you can trust us with your personal information. The transmission of personal and sensitive data is encrypted. In addition, our websites are protected by technical measures against damage or unauthorized access."
+
+#: templates/pages/Datenschutzhinweis.html:53
+msgid "Allgemeiner Datenschutzhinweis"
+msgstr "General data protection notice"
+
+#: templates/pages/Datenschutzhinweis.html:57
+msgid ""
+"Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
+"herunterladen, werden Informationen hierüber in einer Logdatei \n"
+"              mit folgendem Inhalt gespeichert:"
+msgstr "If you access TU Berlin websites or download data from these pages, information about this will be stored in a log file with the following content:"
+
+#: templates/pages/Datenschutzhinweis.html:63
+msgid "die IP-Adresse Ihres Gerätes,"
+msgstr "the IP address of your device,"
+
+#: templates/pages/Datenschutzhinweis.html:68
+msgid "das Datum und die Uhrzeit des Seitenaufrufs,"
+msgstr "the date and time of the page view,"
+
+#: templates/pages/Datenschutzhinweis.html:73
+msgid "die aufgerufene Seite bzw. der Name der abgerufenen Datei,"
+msgstr "the page accessed or the name of the file accessed,"
+
+#: templates/pages/Datenschutzhinweis.html:78
+msgid "die übertragene Datenmenge,"
+msgstr "the amount of data transferred,"
+
+#: templates/pages/Datenschutzhinweis.html:83
+msgid "der \\"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:88
+msgid ""
+"die Webseite, von der aus Sie die aktuelle Seite oder Datei aufgerufen haben"
+msgstr "the website from which you accessed the current page or file"
+
+#: templates/pages/Datenschutzhinweis.html:93
+msgid "und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war."
+msgstr "and the status message as to whether the access or retrieval was successful."
+
+#: templates/pages/Datenschutzhinweis.html:98
+msgid ""
+"Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch "
+"gelöscht, nicht archiviert und ausschließlich zu nicht \n"
+"              kommerziellen Zwecken genutzt. Sie werden nur im Bedarfsfall "
+"manuell eingesehen und zur Fehleranalyse, Optimierung oder \n"
+"              Untersuchung von Missbrauchsfällen oder Performance-Engpässen "
+"benötigt. Dies stellt ein berechtigtes Interesse im Sinne von Art. \n"
+"              6 Abs. 1 lit. f EU-DSGVO dar. Ein Widerspruchsrecht nach Art. "
+"21 EU-DSGVO ist nicht möglich aufgrund fehlender technischer \n"
+"              Realisierbarkeit."
+msgstr "These non-anonymized log data are automatically deleted after two weeks, are not archived and are used exclusively for non-commercial purposes. They are only viewed manually when necessary and are required for error analysis, optimization or investigation of cases of misuse or performance bottlenecks. This represents a legitimate interest within the meaning of Article 6 Paragraph 1 Letter f EU GDPR. A right to object according to Article 21 EU GDPR is not possible due to a lack of technical feasibility."
+
+#: templates/pages/Datenschutzhinweis.html:107
+msgid ""
+"Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche "
+"Übertragung von Daten SSL-Verschlüsselung. Sie \n"
+"              erkennen derart verschlüsselte Verbindungen an dem Präfix "
+"“https://“ im Seitenlink in der Adresszeile bzw. durch das \n"
+"              grüne/geschlossene Schlosssymbol Ihres Browsers. "
+"Unverschlüsselte Seite sind durch “http://“ oder ein offenes bzw. \n"
+"              rotes Schlosssymbol gekennzeichnet. Sämtliche Daten, welche "
+"Sie an diese Website übermitteln – etwa bei Anfragen oder \n"
+"              Logins – können dank SSL-Verschlüsselung nicht von Dritten "
+"gelesen werden."
+msgstr "In order to best protect your transmitted data, we use SSL encryption for all data transmission. You can recognize such encrypted connections by the prefix \"https://\" in the page link in the address bar or by the green/closed lock symbol in your browser. Unencrypted pages are identified by \"http://\" or an open or red lock symbol. All data that you transmit to this website - such as inquiries or logins - cannot be read by third parties thanks to SSL encryption."
+
+#: templates/pages/Datenschutzhinweis.html:116
+msgid "Social-Media-Drittanbieter"
+msgstr "Third Party Social Media Providers"
+
+#: templates/pages/Datenschutzhinweis.html:117
+msgid "Social-Media-Links"
+msgstr "Social media links"
+
+#: templates/pages/Datenschutzhinweis.html:119
+msgid ""
+"Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. "
+"Profile von sozialen Netzwerken der nachstehend \n"
+"          aufgeführten Drittanbieter bzw. bieten die Möglichkeit zum Teilen "
+"unseres Webangebotes in den sozialen Netzwerken der nachstehend \n"
+"          aufgeführten Drittanbieter. Die Einbindung erfolgt dabei über eine "
+"verlinkte Grafik des jeweiligen Netzwerks, wodurch verhindert \n"
+"          wird, dass es beim Aufruf unserer Webseiten mit einem solchen "
+"Social-Media-Inhalt automatisch zu einem Verbindungsaufbau zum \n"
+"          jeweiligen Server des sozialen Netzwerks kommt, um z.B. einen "
+"Beitrag des jeweiligen Netzwerkes selbst darzustellen. Erst durch \n"
+"          Ihren aktiven Klick auf die entsprechende Grafik werden Sie zu dem "
+"Dienst des jeweiligen sozialen Netzwerks geleitet. Die \n"
+"          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO."
+msgstr "On our websites we refer to TU Berlin-specific presences or social network profiles of the third-party providers listed below or offer the option of sharing our web offerings in the social networks of the third-party providers listed below. The integration takes place via a linked graphic of the respective network, which prevents a connection to the respective server of the social network from being automatically established when our websites with such social media content are accessed, for example to view a post from the respective network itself to represent. Only when you actively click on the corresponding graphic will you be directed to the service of the respective social network. The legal basis is Article 6 Paragraph 1 Letter a EU GDPR."
+
+#: templates/pages/Datenschutzhinweis.html:128
+msgid ""
+"Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie "
+"erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres \n"
+"          Endgeräts, Datum, Uhrzeit und besuchte Seite. Es kann nicht "
+"ausgeschlossen werden, dass eine Verarbeitung der so erhobenen Daten in \n"
+"          den USA stattfindet. Sind Sie währenddessen mit Ihrem "
+"Benutzerkonto des jeweiligen Netzwerks eingeloggt, kann der Netzwerk-"
+"Betreiber \n"
+"          ggf. die gesammelten Informationen Ihres konkreten Besuchs Ihrem "
+"persönlichen Account zuordnen. Interagierten Sie über einen \n"
+"          „Teilen“-Button des jeweiligen Netzwerks, können diese "
+"Informationen in Ihrem Benutzerkonto gespeichert und ggf. veröffentlicht \n"
+"          werden. Wollen Sie verhindern, dass die gesammelten Informationen "
+"unmittelbar Ihrem Benutzerkonto zugeordnet werden, müssen Sie \n"
+"          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die "
+"Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren."
+msgstr "The respective network then collects information about you. This initially includes data such as the IP address of your device, date, time and page visited. It cannot be ruled out that the data collected in this way will be processed in the USA. If you are logged in with your user account for the respective network, the network operator may be able to assign the information collected from your specific visit to your personal account. If you interact using a \"Share\" button on the respective network, this information can be saved in your user account and, if necessary, published. If you want to prevent the collected information from being directly assigned to your user account, you must log out before clicking on the graphic. It is also possible to configure your user accounts accordingly."
+
+#: templates/pages/Datenschutzhinweis.html:137
+msgid ""
+"Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein "
+"Tochterunternehmen der Google LLC, 1600 Amphitheatre \n"
+"          Parkway, Mountain View, CA 94043 USA"
+msgstr "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, a subsidiary of Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043 USA"
+
+#: templates/pages/Datenschutzhinweis.html:139
+msgid "Datenschutzerklärung:"
+msgstr "Data protection:"
+
+#: templates/pages/Datenschutzhinweis.html:143
+msgid ""
+"Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein "
+"Plugin zur Einbindung von YouTube-Videos. \n"
+"          Anbieter des Videoportals ist die YouTube, LLC, 901 Cherry Ave., "
+"San Bruno, CA 94066, USA.\n"
+"          Beim Aufruf einer Seite mit integriertem YouTube-Plugin wird nicht "
+"sofort eine Verbindung zu den Servern von YouTube hergestellt. \n"
+"          Statt dessen wird ein lokales Bild (\"Thumbnail\") zur Ankündigung "
+"des Videos geladen und auf YouTube als Drittanbieter hingewiesen. \n"
+"          Nutzer*innen müssen aktiv das YouTube-Video starten. Erst dann "
+"erfährt hierbei YouTube die IP-Adresse Ihres Endgerätes und die Seite mit \n"
+"          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie "
+"nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen."
+msgstr "To display video content, our website uses, among other things, a plugin to integrate YouTube videos. The provider of the video portal is YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA. When you access a page with an integrated YouTube plugin, a connection to the YouTube servers is not immediately established. Instead, a local image (\"thumbnail\") is loaded to announce the video and points to YouTube as a third-party provider. Users must actively start the YouTube video. Only then will YouTube find out the IP address of your device and the page with the YouTube video that you have just accessed, even if you are not logged in to the video portal or do not have an account there."
+
+#: templates/pages/Datenschutzhinweis.html:151
+msgid ""
+"YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, "
+"sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges "
+"Ausloggen haben Sie die Möglichkeit, dies zu unterbinden."
+msgstr "YouTube can assign your surfing behavior directly to your personal profile if you are logged into your YouTube account. You can prevent this by logging out beforehand."
+
+#: templates/pages/Datenschutzhinweis.html:154
+msgid ""
+"Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren "
+"aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO."
+msgstr "The use of YouTube only takes place with your consent by actively starting the video within the meaning of Art. 6 Para. 1 lit. a EU GDPR."
+
+#: templates/pages/Datenschutzhinweis.html:157
+msgid ""
+"Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der "
+"Datenschutzerklärung von YouTube unter:"
+msgstr "Details on how to handle user data can be found in YouTube's privacy policy at:"
+
+#: templates/pages/Datenschutzhinweis.html:161
+msgid "Ort der Speicherung und zweckgebundene Datenverwendung"
+msgstr "Location of storage and intended use of data"
+
+#: templates/pages/Datenschutzhinweis.html:163
+msgid ""
+"Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten "
+"ausschließlich intern (i.d.R. auf eigenen Servern) nur für den \n"
+"          Zweck, für den Sie sie uns mitgeteilt haben und beachten damit den "
+"Grundsatz der zweckgebundenen Datenverwendung. Es erfolgt ohne \n"
+"          Ihre ausdrückliche Einwilligung keine Weitergabe Ihrer "
+"persönlichen Daten an Dritte, sofern dies nicht zur Erbringung der \n"
+"          Dienstleistung oder zur Vertragsdurchführung notwendig ist. Auch "
+"die Übermittlung an auskunftsverlangende staatliche Institutionen \n"
+"          und Behörden erfolgt nur im Rahmen der gesetzlichen "
+"Auskunftspflichten bzw. wenn wir durch eine gerichtliche Entscheidung zur \n"
+"          Auskunft verpflichtet werden."
+msgstr "We collect, process and store your personal data exclusively internally (usually on our own servers) only for the purpose for which you provided it to us and thus observe the principle of appropriate data use. Your personal data will not be passed on to third parties without your express consent, unless this is necessary to provide the service or to execute the contract. The transmission to government institutions and authorities requesting information only takes place within the scope of the statutory information obligations or if we are obliged to provide information by a court decision."
+
+#: templates/pages/Datenschutzhinweis.html:171
+msgid ""
+"Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere "
+"Mitarbeiter und Mitarbeiterinnen sowie die von uns \n"
+"          beauftragten Dienstleistungsunternehmen sind von uns zur "
+"Verschwiegenheit und zur Einhaltung der datenschutzrechtlichen "
+"Bestimmungen \n"
+"          verpflichtet."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:176
+msgid "Auskunftsrecht"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:177
+msgid ""
+"Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre "
+"bei uns gespeicherten Daten. Hierzu \n"
+"          wenden Sie sich bitte an die im Impressum angegebene "
+"Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren \n"
+"          Datenschutzhinweisen zur Verfügung."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:183
+msgid ""
+"Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung "
+"und Übertragung Ihrer Daten."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:186
+msgid ""
+"Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
+"betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. \n"
+"          1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. Die "
+"fachverantwortliche Stelle darf danach die Sie betreffenden \n"
+"          personenbezogenen Daten nicht mehr verarbeiten, es sei denn, diese "
+"kann zwingende schutzwürdige Gründe für die Verarbeitung \n"
+"          nachweisen, die Ihren Interessen, Rechte und Freiheiten "
+"überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
+"          Verteidigung von Rechtsansprüchen dient."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:193
+msgid "Beschwerderecht"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:195
+msgid ""
+"Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
+"datenschutzgerecht umgehen, können Sie sich jederzeit an das \n"
+"          Team Datenschutz der Technischen Universität Berlin oder an die "
+"Aufsichtsbehörde wenden."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:199
+msgid ""
+"Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu "
+"wenden:"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:202
+msgid "Berliner Beauftragte für Datenschutz und Informationsfreiheit"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:208
+msgid "Tel."
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:210
+msgid "Fax"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:215
+msgid "Abschließende Hinweise"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:217
+msgid ""
+"Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
+"Datenschutz laufend ändern können, so dass es erforderlich ist, \n"
+"          sich über Veränderungen der gesetzlichen Bestimmungen und der "
+"Praxis von Unternehmen fortlaufend zu informieren."
+msgstr ""
+
+#: templates/pages/about.html:17
+msgid "Wissensplattform"
+msgstr "Knowledge platform"
+
+#: templates/pages/about.html:18
+msgid "Eine Plattform der Begleitforschung Energiewendebauen"
+msgstr "A platform for accompanying research on the energy transition"
+
+#: templates/pages/about.html:30
+msgid ""
+"Die Wissensplattform wird durch das Modul\n"
+"          Digitalisierung der wissenschaftlichen Begleitforschung der\n"
+"          Forschungsinitiative\n"
+"          <a href=\"https://www.energiewendebauen.de\" "
+"target=\"_blank\">Energiewendebauen</a>\n"
+"          entwickelt und bereitgestellt."
+msgstr ""
+"The knowledge platform is developed and provided by the digitalization "
+"module of the accompanying scientific research of the research initiative <a "
+"href=\"https://www.energiewendebauen.de\" target=\"_blank\">Energy "
+"Transition Building</a>."
+
+#: templates/pages/about.html:36
+msgid ""
+"Die wissenschaftliche Begleitforschung wertet Arbeitsprogramme und\n"
+"          Ergebnisse der Forschungs- und Demonstrationsvorhaben aus die im "
+"Rahmen der \n"
+"          Forschungsinitiative Energiewendebauen vom Bundesministerium für "
+"Wirtschaft und Klimaschutz\n"
+"          geförderten werden. Ziel ist es diese Ergebnisse zentral "
+"aufzubereiten, um die Erkenntnisse \n"
+"          in die Planungs- und Entscheidungspraxis nachhaltig einfließen zu "
+"lassen."
+msgstr ""
+"The accompanying scientific research evaluates work programs and results of "
+"the research and demonstration projects that are funded by the Federal "
+"Ministry for Economic Affairs and Climate Protection as part of the Energy "
+"Transition Building research initiative. The aim is to process these results "
+"centrally in order to incorporate the findings sustainably into planning and "
+"decision-making practice."
+
+#: templates/pages/about.html:42
+msgid ""
+"Die Querauswertung der Forschungsprojekte, die\n"
+"          Bereitstellung von Fachinformationen, der Transfer von\n"
+"          Forschungsergebnissen in die Praxis und die breite Kommunikation "
+"von\n"
+"          Lösungsansätzen sind wesentliche Elemente, um die "
+"Dekarabonisierung von \n"
+"          Gebäuden und Quartieren zu erreichen. Diese Leistungen werden "
+"durch \n"
+"          die Begleitforschung erbracht."
+msgstr ""
+"The cross-evaluation of research projects, the provision of specialist "
+"information, the transfer of research results into practice and the broad "
+"communication of solution approaches are essential elements in achieving the "
+"decarbonization of buildings and neighborhoods. These services are provided "
+"through accompanying research."
+
+#: templates/pages/about.html:49
+msgid ""
+"Insgesamt fünf Module werten die inhaltlichen\n"
+"          Schwerpunkte der Forschungsinitiative Energiewendebauen aus,\n"
+"          vernetzen diese und entwickeln sie weiter (Modul 1: Monitoring "
+"und\n"
+"          Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4:\n"
+"          Digitalisierung, Modul 5: Vernetzung und Kommunikation)."
+msgstr ""
+"Insgesamt fünf Module werten die inhaltlichen Schwerpunkte der "
+"Forschungsinitiative Energiewendebauen aus, vernetzen diese und entwickeln "
+"sie weiter (Modul 1: Monitoring und Dokumentation, Modul 2: Gebäude, Modul "
+"3: Quartiere, Modul 4: Digitalisierung, Modul 5: Vernetzung und "
+"Kommunikation)."
+
+#: templates/pages/about.html:55
+msgid ""
+"Das Modul 4 (Digitalisierung) wird von der TU Berlin\n"
+"          mit der\n"
+"          <a href=\"https://ewb.innoecos.com/Group/Einstein.Center.Digital."
+"Future\" target=\"_blank\">\n"
+"            Einstein Center Digital Future Professur\n"
+"          </a>\n"
+"          für die digitale Vernetzung von Gebäuden,\n"
+"          Energieversorgungsanlagen und Nutzenden zusammen mit der\n"
+"          <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College."
+"Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">\n"
+"            Universität der Künste Berlin und der Einstein Center Digital\n"
+"            Future Professur Digitale Selbstbestimmung\n"
+"          </a>\n"
+"          und dem\n"
+"          <a href=\"https://ewb.innoecos.com/Group/IOeW/\" "
+"target=\"_blank\">\n"
+"            Institut für ökologische Wirtschaftsforschung\n"
+"          </a>\n"
+"          bearbeitet."
+msgstr ""
+"Module 4 (digitalization) is provided by the TU Berlin with the <a "
+"href=\"https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future\" "
+"target=\"_blank\">Einstein Center Digital Future Professorship</a> for the "
+"digital networking of buildings,Energy supply systems and users together "
+"with the <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College. "
+"Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">University of the "
+"Arts Berlin and the Einstein Center Digital Future Professorship for Digital "
+"Self-Determination</a>and the<a href=\"https://ewb.innoecos.com/Group/"
+"IOeWtarget=\"_blank\">Institute for Ecological Economic Research</a> edited."
+
+#: templates/pages/benchmarkingChallenges.html:32
+msgid ""
+"Die Bewertung der positiven und negativen Umweltwirkungen ist nicht\n"
+"          immer einfach. Hier soll auf Herausforderungen bei der "
+"ökologischen\n"
+"          Bewertung digitaler Anwendungen hingewiesen werden, die sich "
+"häufig in\n"
+"          der Praxis ergeben. Dazu sind Erfahrungen hinsichtlich der\n"
+"          Herausforderungen im Folgenden in die Themenbereiche "
+"„Benchmarking“,\n"
+"          „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ "
+"untergliedert."
+msgstr ""
+"Assessing the positive and negative environmental impacts is not always "
+"easy. The aim here is to point out challenges in the ecological assessment "
+"of digital applicationsoften arise in practice. Experiences regarding the "
+"challenges are summarized below in the subject areas of \"benchmarking\", "
+"\"depth of detail – area of application\" and \"system limits\".subdivided."
+
+#: templates/pages/businessModelsChallenge.html:20
+msgid "Geschäftsmodelle – Herausforderungen"
+msgstr "Business model applications - Challenges"
+
+#: templates/pages/businessModelsChallenge.html:33
+msgid ""
+"Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
+"          Dem Einsatz als fertigem Produkt steht nichts mehr im Wege und "
+"die\n"
+"          digitale Anwendung kann bald großflächig zum Einsatz kommen? "
+"Oftmals\n"
+"          ist der Weg zu einem funktionierenden Geschäftsmodell lang. Gerade "
+"bei\n"
+"          digitalen Anwendungen treten entlang der "
+"Technologieentwicklungsstufen\n"
+"          immer wieder Herausforderungen auf. So auch beim Übergang von der\n"
+"          technologischen Entwicklung zur wirtschaftlichen Verwertung. Die "
+"mit\n"
+"          der Geschätsmodellentwicklung einhergehenden Herausforderungen, "
+"mit\n"
+"          der sich Projekte der Forschungsinitiative Energiewendebauen\n"
+"          konfrontiert sehen, wurden systematisch aufgearbeitet und sollen "
+"hier\n"
+"          vorgestellt werden."
+msgstr ""
+"The digital application has been successfully tested in a prototype? Nothing "
+"stands in the way of its use as a finished product and the digital "
+"application can soon be used on a large scale? The path to a functioning "
+"business model is often long. Especially with digital applications, "
+"challenges always arise along the technology development stages. This also "
+"applies to the transition from technological development to economic "
+"exploitation. The challenges associated with business model development, "
+"which projects of the Energy Transition Research Initiative are confronted "
+"with, have been systematically reviewed and will be presented here."
+
+#: templates/pages/businessModelsPractice.html:19
+msgid "Geschäftsmodelle – good-practice"
+msgstr "Business models – good practice"
+
+#: templates/pages/businessModelsPractice.html:32
+msgid ""
+"Der Weg zum marktgängigen Produkt oder Service ist oftmals steinig.\n"
+"          Unzählige Beispiele bezeugen jedoch die erfolgreiche\n"
+"          Geschäftsmodellentwicklung und -implementierung von digitalen\n"
+"          Anwendungen. Auch in Projekten der Forschungsinitiative\n"
+"          Energiewendebauen wurden und werden Geschäftsmodelle erfolgreich\n"
+"          entwickelt. Hier sollen einige dieser Projekte beispielhaft\n"
+"          vorgestellt werden. Dabei sollen der Projektkontext, die digitale\n"
+"          Anwendung, die Geschäftsmodellentwicklung und die sich daraus\n"
+"          ergebenden Erfahrungen der Projekte beschrieben werden. Die\n"
+"          good-practice Beispiele sollen zu einer möglichst frühzeitigen\n"
+"          Auseinandersetzung mit der Geschäftsmodellentwicklung anregen, um "
+"so\n"
+"          eine effiziente Entwicklung digitaler Anwendungen zu unterstützen."
+msgstr ""
+"The path to a marketable product or service is often rocky. However, "
+"countless examples demonstrate the successful business model development and "
+"implementation of digital applications. Business models have also been and "
+"are being successfully developed in projects of the Energy Transition "
+"Building research initiative. Here are some of these projects as examplesto "
+"be introduced. The project context, the digital application, the business "
+"model development and the resulting experiences of the projects should be "
+"described. The good practice examples are intended to encourage "
+"consideration of business model development as early as possible in order to "
+"support the efficient development of digital applications."
+
+#: templates/pages/environmentalIntegrityNegativ.html:32
+msgid ""
+"Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
+"          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
+"          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
+"          good-practice). Jedoch stehen den positiven Wirkungen, "
+"hervorgerufen\n"
+"          durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend "
+"vom\n"
+"          Lebenszyklus der verwendeten Produkte und Services ergeben sich\n"
+"          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
+"          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
+msgstr ""
+"Digitalization offers great potential and opportunities. Digital "
+"applications can also be used to increase efficiency potential in the "
+"building sector (see positive environmental effects – good practice). "
+"However, the positive effects caused by digital applications are also offset "
+"by environmental burdens. Based on the life cycle of the products and "
+"services used, there are negative environmental impacts from the extraction "
+"of raw materials, to the energy consumption in operation, to the disposal of "
+"the technology."
+
+#: templates/pages/environmentalIntegrityNegativ.html:42
+msgid ""
+"Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
+"          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
+"nur\n"
+"          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
+"fokussiert, da die\n"
+"          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
+"          derzeitigen Forschung der Forschungsinitiative Energiewendebauen\n"
+"          darstellt. Die Übersicht soll zunächst einen einfachen Überblick "
+"und\n"
+"          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen soll "
+"sie\n"
+"          Interessierte dazu befähigen, die Nettoeffekte – also die Bilanz "
+"aus\n"
+"          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
+"Anwendungen\n"
+"          aus der ökologischen Perspektive möglichst effektiv zu "
+"entwickeln,\n"
+"          und/oder zu nutzen."
+msgstr ""
+"The environmental impacts for frequently used components of digital "
+"applications in buildings are listed below. The focus is only on energy "
+"consumption and CO<sub>2</sub> emissions, as minimizing these parameters in "
+"buildings is a main pillar of the current research of the Energy Transition "
+"Building research initiative. The overview is intended to initially provide "
+"a simple overview and initial indication of the environmental burdens. On "
+"the other hand, it should enable those interested to estimate the net "
+"effects - i.e. the balance of environmental benefits and burdens - in order "
+"to make digital applications as effective as possible from an ecological "
+"perspectivedevelop and/or use."
+
+#: templates/pages/environmentalIntegrityPositiv.html:32
+msgid ""
+"Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
+"Gebäuden\n"
+"          und Quartieren steht im derzeitigen Fokus der Forschung. "
+"Gleichzeitig\n"
+"          stellt dieses Ziel nur eine der möglichen positiven "
+"Umweltwirkungen\n"
+"          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in\n"
+"          Projekten der Forschungsinitiative Energiewendebauen kommen eine\n"
+"          Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, "
+"mit\n"
+"          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
+"die\n"
+"          Effekte oftmals schwer auf andere Gebäude/Quartiere zu übertragen\n"
+"          sind, gibt es doch immer Forschungsprojekte, an denen die "
+"Potenziale\n"
+"          bestimmter digitaler Anwendungen gut verdeutlicht werden können. "
+"Diese\n"
+"          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
+"eingesetzte\n"
+"          digitale Anwendung beschrieben und die gefundenen positiven\n"
+"          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
+"Aufzeigen\n"
+"          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
+"          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz soll\n"
+"          Interessierte animieren, sich eingehender mit den Möglichkeiten\n"
+"          digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben\n"
+"          fundierte Entscheidungen treffen zu können."
+msgstr ""
+"Reducing the energy requirements and CO<sub>2</sub> emissions of buildings "
+"and neighborhoods is the current focus of research. At the same time, this "
+"goal represents just one of the possible positive environmental impacts that "
+"are made possible by digital applications. A variety of digital applications "
+"are also being used or developed in projects of the Energy Transition "
+"Building research initiative that can achieve positive environmental "
+"impacts. Even if the effects are often difficult to transfer to other "
+"buildings/districts, there are always research projects that can clearly "
+"demonstrate the potential of certain digital applications. These will be "
+"briefly presented below. The digital application used is described and the "
+"positive environmental effects found are discussed. The aim of this overview "
+"is to show the current possibilities of digital applications to achieve "
+"positive environmental impacts. The incentive created by this is intended to "
+"encourage those interested to take a closer look at the possibilities of "
+"digital applications in order to be able to make well-founded decisions for "
+"their own projects."
+
+#: templates/pages/iconsAndVis.html:29
+msgid ""
+"Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
+"          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
+"für\n"
+"          die Informationsvermittlung an professionelle, wie auch "
+"fachfremde\n"
+"          Adressat*innenkreise genutzt werden. Im Modul 4 der "
+"Begleitforschung,\n"
+"          in Zusammenarbeit mit dem Projekt “Privacy Icons” der "
+"Forschungsgruppe\n"
+"          Digitale Selbstbestimmung, wurde zu diesem Zweck ein Open-Source\n"
+"          Iconset entwickelt, das zur freien Nutzung und Abänderung "
+"freigegeben\n"
+"          wurde. Das Iconset richtet sich an unterschiedlichste Akteure.\n"
+"          Einerseits können datenschutzrechtliche Informationspflichten "
+"mithilfe\n"
+"          der Icons effektiv umgesetzt werden und damit dem "
+"Transparenzprinzip\n"
+"          Rechnung tragen. Darüber hinaus ist eine Nutzung der Icons zur\n"
+"          Visualisierung verschiedenster Sachverhalte im Gebäude- und "
+"Quartiers\n"
+"          Bereich denkbar, etwa zur verständlichen Aufbereitung von\n"
+"          Forschungsergebnissen oder Erklärung digitaler Anwendungen. Das\n"
+"          Iconset besteht aus über 150 Icons verschiedener Kategorien (z.B. "
+"Data\n"
+"          and Identifiers, Purposes, Actors and Technical Means). Es wird\n"
+"          ergänzt durch ein Set von Gebäudegrafiken und anderen\n"
+"          Visualisierungskomponenten, die gemeinsam einen Baukasten ergeben, "
+"der\n"
+"          eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie\n"
+"          technischer Perspektive erlaubt und von der Visualisierung eines\n"
+"          ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem\n"
+"          User-Interface verwendet werden kann."
+msgstr ""
+"Icons can also support the graphical preparation of complex issues in "
+"buildings and neighborhoods and can be used to convey information to both "
+"professional and non-professional target groups. In Module 4 of the "
+"accompanying research, in collaboration with the \"Privacy Icons\" project "
+"of the Digital Self-Determination Research Group, an open source icon set "
+"was developed for this purpose, which was released for free use and "
+"modification. The icon set is aimed at a wide variety of actors. On the one "
+"hand, data protection information obligations can be effectively implemented "
+"using the icons and thus take the transparency principle into account. In "
+"addition, it is conceivable that the icons can be used to visualize a wide "
+"variety of issues in the building and district sector, for example to "
+"prepare research results in a comprehensible manner or to explain digital "
+"applications. The icon set consists of over 150 icons of different "
+"categories (e.g. Data and Identifiers, Purposes, Actors and Technical "
+"Means). It is supplemented by a set of building graphics and other "
+"visualization components, which together form a construction kit that allows "
+"consideration from a legal, economic-ecological and technical perspective "
+"and from the visualization of an entire project to a concrete application, "
+"for example on a user interface can be used."
+
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:39
+msgid "Impressum"
+msgstr "Imprint"
+
+#: templates/pages/impressum.html:27
+msgid "Kontakt"
+msgstr "Contact"
+
+#: templates/pages/impressum.html:30
+msgid "Postanschrift"
+msgstr "Postal address"
+
+#: templates/pages/impressum.html:31
+msgid "Sekretariat"
+msgstr "Secretariat"
+
+#: templates/pages/impressum.html:32
+msgid ""
+"z.Hd. Fachgebiet: Digitale Vernetzung von Gebäuden, "
+"Energieversorgungsanlagen und Nutzenden"
+msgstr ""
+"For the attention of the specialist area: Digital networking of buildings, "
+"energy supply systems and users"
+
+#: templates/pages/impressum.html:37
+msgid "Haftungsausschluss"
+msgstr "Disclaimer"
+
+#: templates/pages/impressum.html:39
+msgid ""
+"Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
+"sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
+"Haftung für die fortwährende Aktualität, Vollständigkeit und Richtigkeit der "
+"angebotenen Informationen."
+msgstr ""
+"We have carefully compiled the web pages of the knowledge platform (wissen-"
+"digital-ewb.de). However, we assume no liability or guarantee that the "
+"information provided is always up-to-date, complete and correct."
+
+#: templates/pages/impressum.html:40
+msgid "Links auf externe Web-Seiten"
+msgstr "Links to external websites"
+
+#: templates/pages/impressum.html:41
+msgid ""
+"Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
+"Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung zu "
+"deren Inhalt dar. Für die Inhalte der verlinkten Seiten ist stets der "
+"jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n"
+"                    Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung "
+"nicht erkennbar. Wir übernehmen keine Gewähr für die fortwährende "
+"Aktualität, Richtigkeit und Vollständigkeit der verlinkten Inhalte, da diese "
+"Inhalte außerhalb unseres Verantwortungsbereichs liegen und wir auf die "
+"zukünftige Gestaltung keinen Einfluss haben."
+msgstr ""
+"The knowledge platform's websites contain links to third-party websites. "
+"These links to third-party websites do not constitute approval of their "
+"content. The respective provider or operator of the pages is always "
+"responsible for the content of the linked pages. Illegal content was not "
+"apparent at the time of linking. We assume no liability for the ongoing "
+"topicality, accuracy and completeness of the linked content, as this content "
+"is outside our area of responsibility and we have no influence on its future "
+"design."
+
 #: templates/pages/stromlast.html:3
 #, fuzzy
 #| msgid "Standardlastprofile"
 msgid "Stromlastprofil"
 msgstr "Standard load profiles"
 
-#: templates/pages/warmelast.html:3
+#: templates/pages/userIntegrationMethod.html:19
 #, fuzzy
-#| msgid "Standardlastprofile"
+#| msgid "Nutzenden&shy;perspektive"
+msgid "Nutzendeneinbindung – Methoden"
+msgstr "User perspective"
+
+#: templates/pages/userIntegrationMethod.html:32
+msgid ""
+"Wie kann die Nutzendeneinbindung gelingen? Erprobte Methoden aus der\n"
+"          sozialwissenschaftlichen Forschung können auf diese Frage Antwort\n"
+"          geben. Auf dieser Seite werden Sie eine Zusammenstellung gängiger\n"
+"          Methoden zur Nutzendeneinbindung finden. Die hier aufgezeigten\n"
+"          Methoden werden kurz beschrieben und mögliche Einsatzgebiete bzw.\n"
+"          Projektkontexte dargelegt werden. Durch die weiterführenden\n"
+"          Literaturhinweisen sollen Interessierte zur tieferen\n"
+"          Auseinandersetzung mit den Methoden für eigene Projekte ermutigt\n"
+"          werden."
+msgstr ""
+"How can user integration be successful? Tried-and-tested methods from social "
+"science research can provide an answer to this question. On this page you "
+"will find a compilation of common methods for user integration. The methods "
+"shown here will be briefly described and possible areas of application or "
+"project contexts will be presented. The additional literature references are "
+"intended to encourage those interested to delve deeper into the methods for "
+"their own projects."
+
+#: templates/pages/userIntegrationPractice.html:19
+msgid "Nutzendeneinbindung"
+msgstr "User engagement"
+
+#: templates/pages/userIntegrationPractice.html:32
+msgid ""
+"Was kann eine gelungene Nutzendeneinbindung bewirken? Dieser Frage\n"
+"          widmet sich die Aufbereitung von ausgewählten Beispielen. Es wird\n"
+"          näher auf Projekte eingegangen, die die Nutzenden digitaler\n"
+"          Anwendungen während der Entwicklung und/oder während der Nutzung "
+"der\n"
+"          digitalen Anwendung aktiv eingebunden haben, um so übergeordnete "
+"Ziele\n"
+"          wie die Realisierung von Energieeinsparungen zu erreichen. Neben "
+"den\n"
+"          Methoden, die in den Beispielprojekten für eine "
+"Nutzendenintegration\n"
+"          angewandt wurden, wird die good-practice Darstellung auch auf die\n"
+"          damit realisierten Effekte fokussiert. Ebenso werden die\n"
+"          Herausforderungen und Erkenntnisse aus der Nutzendeneinbindung "
+"des\n"
+"          jeweiligen Beispielprojekts aufgezeigt werden."
+msgstr ""
+"What can successful user integration achieve? The preparation of selected "
+"examples is dedicated to this question. Projects are discussed in more "
+"detail that actively involved the users of digital applications during the "
+"development and/or use of the digital application in order to achieve "
+"overarching goals such as the realization of energy savings. In addition to "
+"the methods that were used in the example projects for user integration, the "
+"good practice presentation also focuses on the effects achieved with it. The "
+"challenges and insights from the user integration of the respective example "
+"project will also be shown."
+
+#: templates/pages/warmelast.html:3
 msgid "Waermelastprofil"
-msgstr "Standard load profiles"
+msgstr "Thermal load profile"
+
+#: templates/partials/_coming.html:9
+msgid "Im Entwicklungsprozess"
+msgstr "In the development process"
 
 #: templates/partials/_footer.html:28
 msgid "Über uns"
 msgstr "About us"
-
-#: templates/partials/_footer.html:39
-msgid "Impressum"
-msgstr "Imprint"
 
 #: templates/partials/_footer.html:51
 msgid "Datenschutz&shy;hinweis"
