@@ -3,6 +3,7 @@
 {% block title %} Datenschutzhinweis {% endblock %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content%}
 
@@ -13,7 +14,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="text-left rounded-3">
-          <h1 class="m-0">Datenschutzhinweis</h1>
+          <h1 class="m-0">{% translate "Datenschutzhinweis" %}</h1>
         </div>
       </div>
     </div>
@@ -29,192 +30,192 @@ Page Banner END -->
     <div class="row">
       <div class="col-md-12">
         <p class="lead">
-          Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der persönlichen Daten von Besucher*innen unserer 
+          {% blocktranslate %}Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der persönlichen Daten von Besucher*innen unserer 
           Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier über den Datenschutz dieses Webangebots unter wissen-digital-ewb.de
           informieren. Die Website wird durch das Institut für Digitale Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden 
-          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt.
+          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt.{% endblocktranslate %}
         </p>
         <br>
-        <h4>Gegenstand des Datenschutzes</h4>
-        <p class="lead">Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach Artikel 4 Nr. 1 der Europäischen 
+        <h4>{% translate "Gegenstand des Datenschutzes" %}</h4>
+        <p class="lead">{% blocktranslate %}Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach Artikel 4 Nr. 1 der Europäischen 
           Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche 
           Person beziehen, also alle Informationen, die dazu genutzt werden können, Sie zu identifizieren. Hierunter fallen z.B. 
-          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse.
+          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse.{% endblocktranslate %}
         </p>
-        <p class="lead">Selbstverständlich beachtet die Technische Universität Berlin die gesetzlichen Bestimmungen zum Datenschutz und 
-          andere rechtliche Bestimmungen und Vorgaben.
+        <p class="lead">{% blocktranslate %}Selbstverständlich beachtet die Technische Universität Berlin die gesetzlichen Bestimmungen zum Datenschutz und 
+          andere rechtliche Bestimmungen und Vorgaben.{% endblocktranslate %}
         </p>
-        <p class="lead">Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten vertrauen können. So erfolgt die Übertragung 
+        <p class="lead">{% blocktranslate %}Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten vertrauen können. So erfolgt die Übertragung 
           personenbezogener und sensibler Daten verschlüsselt. Zusätzlich sind unsere Webseiten durch technische Maßnahmen gegen 
-          Beschädigungen oder unberechtigten Zugriff geschützt.
+          Beschädigungen oder unberechtigten Zugriff geschützt.{% endblocktranslate %}
         </p>
         <br>
-        <h4>Allgemeiner Datenschutzhinweis</h4>
+        <h4>{% translate "Allgemeiner Datenschutzhinweis" %}</h4>
         <ol>
           <li>
             <p class="lead">
-              Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten herunterladen, werden Informationen hierüber in einer Logdatei 
-              mit folgendem Inhalt gespeichert:
+              {% blocktranslate %}Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten herunterladen, werden Informationen hierüber in einer Logdatei 
+              mit folgendem Inhalt gespeichert:{% endblocktranslate %}
             </p>
             <ul>
               <li>
                 <p class="lead">
-                  die IP-Adresse Ihres Gerätes,
+                  {% translate "die IP-Adresse Ihres Gerätes," %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  das Datum und die Uhrzeit des Seitenaufrufs,
+                  {% translate "das Datum und die Uhrzeit des Seitenaufrufs," %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  die aufgerufene Seite bzw. der Name der abgerufenen Datei,
+                  {% translate "die aufgerufene Seite bzw. der Name der abgerufenen Datei," %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  die übertragene Datenmenge,
+                  {% translate "die übertragene Datenmenge," %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  der "User Agent-String" Ihres Webbrowsers,
+                  {% translate "der \"User Agent-String\" Ihres Webbrowsers," %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  die Webseite, von der aus Sie die aktuelle Seite oder Datei aufgerufen haben
+                  {% blocktranslate %}die Webseite, von der aus Sie die aktuelle Seite oder Datei aufgerufen haben{% endblocktranslate %}
                 </p>
               </li>
               <li>
                 <p class="lead">
-                  und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war.
+                  {% blocktranslate %}und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war.{% endblocktranslate %}
                 </p>
               </li>
             </ul>
             <p class="lead">
-              Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch gelöscht, nicht archiviert und ausschließlich zu nicht 
+              {% blocktranslate %}Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch gelöscht, nicht archiviert und ausschließlich zu nicht 
               kommerziellen Zwecken genutzt. Sie werden nur im Bedarfsfall manuell eingesehen und zur Fehleranalyse, Optimierung oder 
               Untersuchung von Missbrauchsfällen oder Performance-Engpässen benötigt. Dies stellt ein berechtigtes Interesse im Sinne von Art. 
               6 Abs. 1 lit. f EU-DSGVO dar. Ein Widerspruchsrecht nach Art. 21 EU-DSGVO ist nicht möglich aufgrund fehlender technischer 
-              Realisierbarkeit.
+              Realisierbarkeit.{% endblocktranslate %}
             </p>
           </li>
           <li>
             <p class="lead">
-              Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche Übertragung von Daten SSL-Verschlüsselung. Sie 
+              {% blocktranslate %}Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche Übertragung von Daten SSL-Verschlüsselung. Sie 
               erkennen derart verschlüsselte Verbindungen an dem Präfix “https://“ im Seitenlink in der Adresszeile bzw. durch das 
               grüne/geschlossene Schlosssymbol Ihres Browsers. Unverschlüsselte Seite sind durch “http://“ oder ein offenes bzw. 
               rotes Schlosssymbol gekennzeichnet. Sämtliche Daten, welche Sie an diese Website übermitteln – etwa bei Anfragen oder 
-              Logins – können dank SSL-Verschlüsselung nicht von Dritten gelesen werden.
+              Logins – können dank SSL-Verschlüsselung nicht von Dritten gelesen werden.{% endblocktranslate %}
             </p>
           </li>
         </ol>
         <br>
-        <h4>Social-Media-Drittanbieter</h4>
-        <h6>Social-Media-Links</h6>
+        <h4>{% translate "Social-Media-Drittanbieter" %}</h4>
+        <h6>{% translate "Social-Media-Links" %}</h6>
         <p class="lead">
-          Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. Profile von sozialen Netzwerken der nachstehend 
+          {% blocktranslate %}Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. Profile von sozialen Netzwerken der nachstehend 
           aufgeführten Drittanbieter bzw. bieten die Möglichkeit zum Teilen unseres Webangebotes in den sozialen Netzwerken der nachstehend 
           aufgeführten Drittanbieter. Die Einbindung erfolgt dabei über eine verlinkte Grafik des jeweiligen Netzwerks, wodurch verhindert 
           wird, dass es beim Aufruf unserer Webseiten mit einem solchen Social-Media-Inhalt automatisch zu einem Verbindungsaufbau zum 
           jeweiligen Server des sozialen Netzwerks kommt, um z.B. einen Beitrag des jeweiligen Netzwerkes selbst darzustellen. Erst durch 
           Ihren aktiven Klick auf die entsprechende Grafik werden Sie zu dem Dienst des jeweiligen sozialen Netzwerks geleitet. Die 
-          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO.
+          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres 
+          {% blocktranslate %}Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres 
           Endgeräts, Datum, Uhrzeit und besuchte Seite. Es kann nicht ausgeschlossen werden, dass eine Verarbeitung der so erhobenen Daten in 
           den USA stattfindet. Sind Sie währenddessen mit Ihrem Benutzerkonto des jeweiligen Netzwerks eingeloggt, kann der Netzwerk-Betreiber 
           ggf. die gesammelten Informationen Ihres konkreten Besuchs Ihrem persönlichen Account zuordnen. Interagierten Sie über einen 
           „Teilen“-Button des jeweiligen Netzwerks, können diese Informationen in Ihrem Benutzerkonto gespeichert und ggf. veröffentlicht 
           werden. Wollen Sie verhindern, dass die gesammelten Informationen unmittelbar Ihrem Benutzerkonto zugeordnet werden, müssen Sie 
-          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren.
+          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren.{% endblocktranslate %}
         </p>
         <h6>YouTube</h6>
-        <p class="lead">Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein Tochterunternehmen der Google LLC, 1600 Amphitheatre 
-          Parkway, Mountain View, CA 94043 USA
-          Datenschutzerklärung: <a href="https://policies.google.com/privacy?hl=de">https://policies.google.com/privacy?hl=de</a>
+        <p class="lead">{% blocktranslate %}Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein Tochterunternehmen der Google LLC, 1600 Amphitheatre 
+          Parkway, Mountain View, CA 94043 USA{% endblocktranslate %}
+          {% translate "Datenschutzerklärung:" %} <a href="https://policies.google.com/privacy?hl=de">https://policies.google.com/privacy?hl=de</a>
         </p>
         <br>
         <h4>YouTube</h4>
-        <p class="lead">Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein Plugin zur Einbindung von YouTube-Videos. 
+        <p class="lead">{% blocktranslate %}Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein Plugin zur Einbindung von YouTube-Videos. 
           Anbieter des Videoportals ist die YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA.
           Beim Aufruf einer Seite mit integriertem YouTube-Plugin wird nicht sofort eine Verbindung zu den Servern von YouTube hergestellt. 
           Statt dessen wird ein lokales Bild ("Thumbnail") zur Ankündigung des Videos geladen und auf YouTube als Drittanbieter hingewiesen. 
           Nutzer*innen müssen aktiv das YouTube-Video starten. Erst dann erfährt hierbei YouTube die IP-Adresse Ihres Endgerätes und die Seite mit 
-          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen.
+          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen.{% endblocktranslate %}
         </p>
         <p class="lead">
-          YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges Ausloggen haben Sie die Möglichkeit, dies zu unterbinden.
+          {% blocktranslate %}YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges Ausloggen haben Sie die Möglichkeit, dies zu unterbinden.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO.
+          {% blocktranslate %}Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter: 
+          {% blocktranslate %}Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerklärung von YouTube unter:{% endblocktranslate %}
           <a href="https://www.google.de/intl/de/policies/privacy">https://www.google.de/intl/de/policies/privacy</a>
         </p>
         <br>
-        <h4>Ort der Speicherung und zweckgebundene Datenverwendung</h4>
+        <h4>{% blocktranslate %}Ort der Speicherung und zweckgebundene Datenverwendung{% endblocktranslate %}</h4>
         <p class="lead">
-          Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten ausschließlich intern (i.d.R. auf eigenen Servern) nur für den 
+          {% blocktranslate %}Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten ausschließlich intern (i.d.R. auf eigenen Servern) nur für den 
           Zweck, für den Sie sie uns mitgeteilt haben und beachten damit den Grundsatz der zweckgebundenen Datenverwendung. Es erfolgt ohne 
           Ihre ausdrückliche Einwilligung keine Weitergabe Ihrer persönlichen Daten an Dritte, sofern dies nicht zur Erbringung der 
           Dienstleistung oder zur Vertragsdurchführung notwendig ist. Auch die Übermittlung an auskunftsverlangende staatliche Institutionen 
           und Behörden erfolgt nur im Rahmen der gesetzlichen Auskunftspflichten bzw. wenn wir durch eine gerichtliche Entscheidung zur 
-          Auskunft verpflichtet werden.
+          Auskunft verpflichtet werden.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere Mitarbeiter und Mitarbeiterinnen sowie die von uns 
+          {% blocktranslate %}Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere Mitarbeiter und Mitarbeiterinnen sowie die von uns 
           beauftragten Dienstleistungsunternehmen sind von uns zur Verschwiegenheit und zur Einhaltung der datenschutzrechtlichen Bestimmungen 
-          verpflichtet.
+          verpflichtet.{% endblocktranslate %}
         </p>
         <br>
-        <h4>Auskunftsrecht</h4>
-        <p class="lead">Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre bei uns gespeicherten Daten. Hierzu 
+        <h4>{% translate "Auskunftsrecht" %}</h4>
+        <p class="lead">{% blocktranslate %}Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre bei uns gespeicherten Daten. Hierzu 
           wenden Sie sich bitte an die im Impressum angegebene Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren 
-          Datenschutzhinweisen zur Verfügung.
+          Datenschutzhinweisen zur Verfügung.{% endblocktranslate %}
 
         </p>
         <p class="lead">
-          Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung und Übertragung Ihrer Daten.
+          {% blocktranslate %}Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung und Übertragung Ihrer Daten.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. 
+          {% blocktranslate %}Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. 
           1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. Die fachverantwortliche Stelle darf danach die Sie betreffenden 
           personenbezogenen Daten nicht mehr verarbeiten, es sei denn, diese kann zwingende schutzwürdige Gründe für die Verarbeitung 
           nachweisen, die Ihren Interessen, Rechte und Freiheiten überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder 
-          Verteidigung von Rechtsansprüchen dient.
+          Verteidigung von Rechtsansprüchen dient.{% endblocktranslate %}
         </p>
         <br>
-        <h4>Beschwerderecht</h4>
+        <h4>{% translate "Beschwerderecht" %}</h4>
         <p class="lead">
-          Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht datenschutzgerecht umgehen, können Sie sich jederzeit an das 
-          Team Datenschutz der Technischen Universität Berlin oder an die Aufsichtsbehörde wenden.
+          {% blocktranslate %}Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht datenschutzgerecht umgehen, können Sie sich jederzeit an das 
+          Team Datenschutz der Technischen Universität Berlin oder an die Aufsichtsbehörde wenden.{% endblocktranslate %}
         </p>
         <p class="lead">
-          Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu wenden:
+          {% blocktranslate %}Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu wenden:{% endblocktranslate %}
         </p>
         <p class="lead">
-          Berliner Beauftragte für Datenschutz und Informationsfreiheit
+          {% blocktranslate %}Berliner Beauftragte für Datenschutz und Informationsfreiheit{% endblocktranslate %}
           <br>
           Alt–Moabit 59–61
           <br>
           10555 Berlin
           <br>
-          Tel.: +49 30 13889-0
+          {% translate "Tel." %}: +49 30 13889-0
           <br>
-          Fax: +49 30 2155050
+          {% translate "Fax" %}: +49 30 2155050
           <br>
           E-Mail: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a>
         </p>
         <br>
-        <h4>Abschließende Hinweise</h4>
+        <h4>{% translate "Abschließende Hinweise" %}</h4>
         <p class="lead">
-          Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum Datenschutz laufend ändern können, so dass es erforderlich ist, 
-          sich über Veränderungen der gesetzlichen Bestimmungen und der Praxis von Unternehmen fortlaufend zu informieren.
+          {% blocktranslate %}Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum Datenschutz laufend ändern können, so dass es erforderlich ist, 
+          sich über Veränderungen der gesetzlichen Bestimmungen und der Praxis von Unternehmen fortlaufend zu informieren.{% endblocktranslate %}
         </p>
       </div>
     </div>
