@@ -50,7 +50,7 @@ app.layout = html.Div([
                 _("Erstellung des Datensatzes im Mai 2016"),html.Br(), 
                 _("Art des TRY") + "       : " + _("mittleres Jahr"),html.Br(),
                 _("Bezugszeitraum") + "    : 1995-2012",html.Br(), 
-                _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ],id = "container",
+                _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ],id = "containerAbove",
             ),
     ],id = 'hideText', style = {'display': 'none'}),
     # Dropdown for the application options
@@ -160,11 +160,15 @@ app.layout = html.Div([
     Output("headingOfSite", "children"),
     Output("state", "placeholder"),
     Output("station", "placeholder"),
-    # Output('displayMonth', 'options'),
-    # Output("referenceYear", "options"),
-    # Output("referenceYear", "placeholder"),
-    # Output("approximationStart", "children"),
-    # Output("btnDownloadCsv", "children"),
+    Output("referenceYear", "placeholder"),
+    Output("referenceYear", "options"),
+    Output("heatRequirement", "placeholder"),
+    Output("displayMonth", "options"),
+    Output("approximationStart", "children"),
+    Output("btn-download-csv", "children"),
+    Output("datePicker", "start_date_placeholder_text"),
+    Output("datePicker", "end_date_placeholder_text"),
+    Output("container", "children"),
     # Output("headingApp", "children"),
     # Output("powerRequirement", "placeholder"),
     Input('on-load', 'data'),
@@ -173,6 +177,21 @@ app.layout = html.Div([
     # prevent_initial_call=True
     )
 def update_layout(unsuedArgument):
+    optionsMonths =[
+                    {'label': _('Januar'), 'value': '1'},
+                    {'label': _('Februar'), 'value': '2'},
+                    {'label': _('März'), 'value': '3'},
+                    {'label': _('April'), 'value': '4'},
+                    {'label': _('Mai'), 'value': '5'},
+                    {'label': _('Juni'), 'value': '6'},
+                    {'label': _('Juli'), 'value': '7'},
+                    {'label': _('August'), 'value': '8'},
+                    {'label': _('Sepember'), 'value': '9'},
+                    {'label': _('Oktober'), 'value': '10'},
+                    {'label': _('November'), 'value': '11'},
+                    {'label': _('Dezember'), 'value': '12'},
+                    {'label': _('Alle'), 'value': 'All'},
+                ]
     optionsDropdown = [
             {'label': _('Einfamilienhaus '), 'value': '2'},
             {'label': _('Mehrfamilienhaus '), 'value': '3'},
@@ -212,7 +231,6 @@ def update_layout(unsuedArgument):
         {'label': _('Wetterstation'), 'value': 'off'}     
     ]
     placeholderTRY = _("Berechnungstyp")
-    textOfParagraph = _("Als Testrefenzjahr haben wir die folgenden Werte gewählt") + ":" 
                 # _("Koordinatensystem") + " : " + _("Lambert konform konisch"),html.Br(), 
                 # _("Rechtswert") + "        : " + "4201500 " + _("Meter"),html.Br(), 
                 # _("Hochwert") + "          : 2848500" + _("Meter"),html.Br(), 
@@ -230,11 +248,17 @@ def update_layout(unsuedArgument):
                 _("Erstellung des Datensatzes im Mai 2016"),html.Br(), 
                 _("Art des TRY") + "       : " + _("mittleres Jahr"),html.Br(),
                 _("Bezugszeitraum") + "    : 1995-2012",html.Br(), 
-                _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ],id = "container",
+                _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ],id = "containerAbove",
             )
     placeholderOfState = _("Auswahl des Bundesland")
     stationPlaceholder = _("Auswahl der Station")
-    return optionsDropdown, optionsPlaceholder, paragraphElement, headingOfSite, placeholderOfState, stationPlaceholder,
+    placeholderYearDemand = _("Jahreswärmebedarf in kWh/a")
+    buttonApprStart = _('Approximation starten')
+    downloadCSV = _("Download als csv")
+    startDatePlaceholder = _('Start Datum')
+    endDatePlaceholder = _('End Datum')
+    paragraphPlaceholderTextBelowDiagram = _('Es gibt keine Eingabe ')
+    return optionsDropdown, optionsPlaceholder, paragraphElement, headingOfSite, placeholderOfState, stationPlaceholder, placeholderTRY, optionsTRY, placeholderYearDemand, optionsMonths, buttonApprStart, downloadCSV, startDatePlaceholder, endDatePlaceholder, paragraphPlaceholderTextBelowDiagram
     # , 
     # optionsDisplayMonth, optionsTRY, placeholderTRY
 
@@ -247,7 +271,8 @@ def update_layout(unsuedArgument):
     Output(component_id = 'application',component_property = 'value'),
     Output(component_id = 'displayMonth', component_property = 'value'),
     Input(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = True,
+    allow_duplicate=True,
    )
 def resetData(visibility_state):
         return None,None,None,None,'All'
@@ -255,7 +280,8 @@ def resetData(visibility_state):
 # Hide explanation text for refrenceyear run
 @app.callback(
     Output(component_id = 'hideText', component_property = 'style'),
-    Input(component_id = 'referenceYear', component_property = 'value')
+    Input(component_id = 'referenceYear', component_property = 'value'),
+    allow_duplicate=True,
    )
 def showHideTxt(visibility_state):
     if visibility_state == 'off':
@@ -266,7 +292,8 @@ def showHideTxt(visibility_state):
 # Hide unnecessary elements for refrenceyear run    
 @app.callback(
    Output(component_id = 'hideElements', component_property = 'style'),
-   Input(component_id = 'referenceYear', component_property = 'value')
+   Input(component_id = 'referenceYear', component_property = 'value'),
+   allow_duplicate=True,
    )
 def showHideElement(visibility_state):
     if visibility_state == 'off':
@@ -278,7 +305,8 @@ def showHideElement(visibility_state):
 @app.callback(
     Output('station', 'options'),
     Input('state', 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = True,
+    allow_duplicate=True,
     )
 #The following funtion provides the list of available stations in the chosen Bundesland
 def stationSelection(state:str) -> list:
@@ -291,6 +319,7 @@ def stationSelection(state:str) -> list:
     Output(component_id = 'datePicker',component_property = 'max_date_allowed'),
     Input(component_id = 'referenceYear', component_property = 'value'),
     Input(component_id = 'station', component_property = 'value'),
+    allow_duplicate=True,
     )
 # The following function returns the data range provided by the chosen station
 def dateRangePicker (referenceYear:str,stationId:int)-> Tuple[str,str] :
@@ -306,10 +335,10 @@ def dateRangePicker (referenceYear:str,stationId:int)-> Tuple[str,str] :
 
 #Setting Diplay Month
 @app.callback(
-    Output('displayMonth','options'),
+    Output('displayMonth','options', allow_duplicate=True),
     Input('datePicker', 'end_date'),
     State('datePicker', 'start_date'),
-    
+    allow_duplicate=True,
     prevent_initial_call  = True
     )
 # The following function displays a list of available months in the data range selected
@@ -327,7 +356,7 @@ def displayMonths(endDate:str,startDate:str)-> list:
 #Warme Approximation
 @app.callback(
     Output(component_id = 'heatGraph', component_property = 'figure'),
-    Output(component_id = 'container',component_property = 'children'),
+    Output(component_id = 'containerAbove',component_property = 'children', allow_duplicate=True),
     Output(component_id = 'heat_approximationStoring',component_property = 'data'),
     Input(component_id = 'approximationStart',component_property = 'n_clicks'),
     Input(component_id = 'displayMonth',component_property = 'value'),
