@@ -39,8 +39,9 @@ stations = DwdObservationRequest(
 # App layout
 app.layout = html.Div([
     # Title
-    html.H1(_("Wärmelast Approximation"), style = {'text-align': 'center'}),
+    html.H1(_("Wärmelast Approximation"), style = {'text-align': 'center'}, id="headingOfSite"),
     html.Div([
+        dcc.Store(id='on-load', data='loaded'),
         html.P([_("Als Testrefenzjahr haben wir die folgenden Werte gewählt") + ":",html.Br(), 
                 _("Koordinatensystem") + " : " + _("Lambert konform konisch"),html.Br(), 
                 _("Rechtswert") + "        : " + "4201500 " + _("Meter"),html.Br(), 
@@ -67,7 +68,7 @@ app.layout = html.Div([
         dcc.Dropdown(
             stations.all( ).df['state'].unique(),
             placeholder = _("Auswahl des Bundesland"),
-            id = 'state' 
+            id = 'state',
         ),
         # Dropdown for the available wetterdienst stations in the chosen State
         dcc.Dropdown(
@@ -152,6 +153,92 @@ app.layout = html.Div([
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
+@app.callback(
+    Output('application', 'options'),
+    Output("application", "placeholder"),
+    Output("hideText", "children"),
+    Output("headingOfSite", "children"),
+    Output("state", "placeholder"),
+    Output("station", "placeholder"),
+    # Output('displayMonth', 'options'),
+    # Output("referenceYear", "options"),
+    # Output("referenceYear", "placeholder"),
+    # Output("approximationStart", "children"),
+    # Output("btnDownloadCsv", "children"),
+    # Output("headingApp", "children"),
+    # Output("powerRequirement", "placeholder"),
+    Input('on-load', 'data'),
+    allow_duplicate=True,
+    # Input('url', 'pathname'),  # Assuming you have a `dcc.Location` component with id='url'
+    # prevent_initial_call=True
+    )
+def update_layout(unsuedArgument):
+    optionsDropdown = [
+            {'label': _('Einfamilienhaus '), 'value': '2'},
+            {'label': _('Mehrfamilienhaus '), 'value': '3'},
+            {'label': _('Gebietskörperschaft'), 'value': '4'},
+            {'label': _('Einzelhandel, Großhandel'), 'value': '5'},
+            {'label': _('Metall, Kfz'), 'value': '6'},
+            {'label': _('sonst. betr. Dienstleistungen  '), 'value': '7'},
+            {'label': _('Gaststätten '), 'value': '8'},
+            {'label': _('Beherbergung '), 'value': '9'},
+            {'label': _('Bäckereien '), 'value': '10'},
+            {'label': _('Wäschereien '), 'value': '11'},
+            {'label': _('Gartenbau '), 'value': '12'},
+            {'label': _('Papier und Druck '), 'value': '13'},
+            {'label': _('haushaltsähnliche Gewerbebetriebe '), 'value': '14'},
+            {'label': _('Summenlastprofil Gewerbe, Handel, Dienstleistung '), 'value': '15'},
+
+    ]
+    optionsPlaceholder = _("Auswahl des Gebäudetyps") 
+    headingOfSite = _("Wärmelast Approximation")
+    optionsDisplayMonth =[
+            {'label': _('Januar'), 'value': '1'},
+            {'label': _('Februar'), 'value': '2'},
+            {'label': _('März'), 'value': '3'},
+            {'label': _('April'), 'value': '4'},
+            {'label': _('Mai'), 'value': '5'},
+            {'label': _('Juni'), 'value': '6'},
+            {'label': _('Juli'), 'value': '7'},
+            {'label': _('August'), 'value': '8'},
+            {'label': _('Sepember'), 'value': '9'},
+            {'label': _('Oktober'), 'value': '10'},
+            {'label': _('November'), 'value': '11'},
+            {'label': _('Dezember'), 'value': '12'},
+            {'label': _('Alle'), 'value': 'All'},
+            ]
+    optionsTRY = [
+        {'label': _('Testreferenzjahr'), 'value': 'on'},
+        {'label': _('Wetterstation'), 'value': 'off'}     
+    ]
+    placeholderTRY = _("Berechnungstyp")
+    textOfParagraph = _("Als Testrefenzjahr haben wir die folgenden Werte gewählt") + ":" 
+                # _("Koordinatensystem") + " : " + _("Lambert konform konisch"),html.Br(), 
+                # _("Rechtswert") + "        : " + "4201500 " + _("Meter"),html.Br(), 
+                # _("Hochwert") + "          : 2848500" + _("Meter"),html.Br(), 
+                # _("Höhenlage") + "        : 36 " + _("Meter über NN"),html.Br(), 
+                # _("Erstellung des Datensatzes im Mai 2016"),html.Br(), 
+                # _("Art des TRY") + "       : " + _("mittleres Jahr"),html.Br(),
+                # _("Bezugszeitraum") + "    : 1995-2012",html.Br(), 
+                # _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ]
+    # buttonTextApprStart = 
+    paragraphElement = html.P([_("Als Testrefenzjahr haben wir die folgenden Werte gewählt") + ":",html.Br(), 
+                _("Koordinatensystem") + " : " + _("Lambert konform konisch"),html.Br(), 
+                _("Rechtswert") + "        : " + "4201500 " + _("Meter"),html.Br(), 
+                _("Hochwert") + "          : 2848500" + _("Meter"),html.Br(), 
+                _("Höhenlage") + "        : 36 " + _("Meter über NN"),html.Br(), 
+                _("Erstellung des Datensatzes im Mai 2016"),html.Br(), 
+                _("Art des TRY") + "       : " + _("mittleres Jahr"),html.Br(),
+                _("Bezugszeitraum") + "    : 1995-2012",html.Br(), 
+                _("Datenbasis") + "        : " + _("Beobachtungsdaten Zeitraum") + " 1995-2012" ],id = "container",
+            )
+    placeholderOfState = _("Auswahl des Bundesland")
+    stationPlaceholder = _("Auswahl der Station")
+    return optionsDropdown, optionsPlaceholder, paragraphElement, headingOfSite, placeholderOfState, stationPlaceholder,
+    # , 
+    # optionsDisplayMonth, optionsTRY, placeholderTRY
+
+    
 # Hide explanation text for refrenceyear run
 @app.callback(
     Output(component_id = 'datePicker',component_property = 'start_date'),
@@ -250,7 +337,8 @@ def displayMonths(endDate:str,startDate:str)-> list:
     State(component_id = 'datePicker',component_property = 'start_date'),
     State(component_id = 'datePicker',component_property = 'end_date'),
     State(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = True,
+    allow_dublicate=True,
     )
 # This function calculates the approximations and displays it
 def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
