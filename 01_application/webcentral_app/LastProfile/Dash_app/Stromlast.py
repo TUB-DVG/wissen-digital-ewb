@@ -132,9 +132,9 @@ def update_layout(hi):
     buttonLabelApproximationStart = _('Approximation starten')
     buttonLabelDownloadCsv = _('Download als csv')
     headingApp = _('Stromlast Approximation')
-    _("Jahresstrombedarf in kWh/a")
+    placeholderInput =  _("Jahresstrombedarf in kWh/a")
     # Set the labels of the dropdown options and radio items based on the current language
-    return optionsDropdown, optionsRadio, buttonLabelApproximationStart, buttonLabelDownloadCsv, headingApp
+    return optionsDropdown, optionsRadio, buttonLabelApproximationStart, buttonLabelDownloadCsv, headingApp, placeholderInput
 
 #Stromapproximation
 @app.callback(

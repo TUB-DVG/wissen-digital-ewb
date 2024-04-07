@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-05 13:04+0000\n"
+"POT-Creation-Date: 2024-04-07 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,128 +149,145 @@ msgstr "Solver"
 msgid "Andere"
 msgstr "Others"
 
-#: LastProfile/Dash_app/Stromlast.py:22
+#: LastProfile/Dash_app/Stromlast.py:25 LastProfile/Dash_app/Stromlast.py:134
 msgid "Stromlast Approximation"
 msgstr "Current load approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:26
+#: LastProfile/Dash_app/Stromlast.py:29 LastProfile/Dash_app/Stromlast.py:105
 msgid "Gewerbe allgemein "
 msgstr "Business in general"
 
-#: LastProfile/Dash_app/Stromlast.py:27
+#: LastProfile/Dash_app/Stromlast.py:30 LastProfile/Dash_app/Stromlast.py:106
 msgid "Gewerbe werktags 8-18 "
 msgstr "Business weekdays 8 a.m. to 6 p.m"
 
-#: LastProfile/Dash_app/Stromlast.py:28
+#: LastProfile/Dash_app/Stromlast.py:31 LastProfile/Dash_app/Stromlast.py:107
 msgid "Gewerbe Verbrauch Abend"
 msgstr "Commercial consumption evening"
 
-#: LastProfile/Dash_app/Stromlast.py:29
+#: LastProfile/Dash_app/Stromlast.py:32 LastProfile/Dash_app/Stromlast.py:108
 msgid "Gewerbe durchlaufend"
 msgstr "Business continuous"
 
-#: LastProfile/Dash_app/Stromlast.py:30
+#: LastProfile/Dash_app/Stromlast.py:33 LastProfile/Dash_app/Stromlast.py:109
 msgid "Laden Friseur  "
 msgstr "Shop hairdresser"
 
-#: LastProfile/Dash_app/Stromlast.py:31
+#: LastProfile/Dash_app/Stromlast.py:34 LastProfile/Dash_app/Stromlast.py:110
 msgid "Bäckerei mit Backstube "
 msgstr "Bakery with bakehouse"
 
-#: LastProfile/Dash_app/Stromlast.py:32
+#: LastProfile/Dash_app/Stromlast.py:35 LastProfile/Dash_app/Stromlast.py:111
 msgid "Wochenendbetrieb "
 msgstr "Weekend operation"
 
-#: LastProfile/Dash_app/Stromlast.py:33
+#: LastProfile/Dash_app/Stromlast.py:36 LastProfile/Dash_app/Stromlast.py:112
 msgid "Haushaltskunden "
 msgstr "Household customers"
 
-#: LastProfile/Dash_app/Stromlast.py:34
+#: LastProfile/Dash_app/Stromlast.py:37 LastProfile/Dash_app/Stromlast.py:113
 msgid "Landwirtschaftsbetriebe "
 msgstr "Farming operations"
 
-#: LastProfile/Dash_app/Stromlast.py:35
+#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:114
 msgid "Landwirts. mit Milchwirts Tierzucht "
 msgstr "Farming operations with dairy farming"
 
-#: LastProfile/Dash_app/Stromlast.py:36
+#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:115
 msgid "Übrige Landwirtschaftsbe "
 msgstr "Other agricultural businesses"
 
-#: LastProfile/Dash_app/Stromlast.py:48 LastProfile/Dash_app/Warmelast.py:117
+#: LastProfile/Dash_app/Stromlast.py:46 LastProfile/Dash_app/Stromlast.py:135
+msgid "Jahresstrombedarf in kWh/a"
+msgstr "Annual electricity requirement in KWh/a"
+
+#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:118
+#: LastProfile/Dash_app/Warmelast.py:117
 msgid "Januar"
 msgstr "January"
 
-#: LastProfile/Dash_app/Stromlast.py:49 LastProfile/Dash_app/Warmelast.py:118
+#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:119
+#: LastProfile/Dash_app/Warmelast.py:118
 msgid "Februar"
 msgstr "February"
 
-#: LastProfile/Dash_app/Stromlast.py:50 LastProfile/Dash_app/Warmelast.py:119
+#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:120
+#: LastProfile/Dash_app/Warmelast.py:119
 msgid "März"
 msgstr "March"
 
-#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Warmelast.py:120
+#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:121
+#: LastProfile/Dash_app/Warmelast.py:120
 msgid "April"
 msgstr "April"
 
-#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Warmelast.py:121
+#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:122
+#: LastProfile/Dash_app/Warmelast.py:121
 msgid "Mai"
 msgstr "May"
 
-#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Warmelast.py:122
+#: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:123
+#: LastProfile/Dash_app/Warmelast.py:122
 msgid "Juni"
 msgstr "June"
 
-#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Warmelast.py:123
+#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:124
+#: LastProfile/Dash_app/Warmelast.py:123
 msgid "Juli"
 msgstr "July"
 
-#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Warmelast.py:124
+#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:125
+#: LastProfile/Dash_app/Warmelast.py:124
 msgid "August"
 msgstr "August"
 
-#: LastProfile/Dash_app/Stromlast.py:56
+#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Stromlast.py:126
 msgid "September"
 msgstr "September"
 
-#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Warmelast.py:126
+#: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Warmelast.py:126
 msgid "Oktober"
 msgstr "Oktober"
 
-#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Warmelast.py:127
+#: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:128
+#: LastProfile/Dash_app/Warmelast.py:127
 msgid "November"
 msgstr "Nomvember"
 
-#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Warmelast.py:128
+#: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:129
+#: LastProfile/Dash_app/Warmelast.py:128
 msgid "Dezember"
 msgstr "December"
 
-#: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Warmelast.py:135
+#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:132
+#: LastProfile/Dash_app/Warmelast.py:135
 msgid "Approximation starten"
 msgstr "Start approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Warmelast.py:137
+#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:133
+#: LastProfile/Dash_app/Warmelast.py:137
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:119 LastProfile/Dash_app/Stromlast.py:146
+#: LastProfile/Dash_app/Stromlast.py:184 LastProfile/Dash_app/Stromlast.py:212
 #: LastProfile/Dash_app/Warmelast.py:290
 msgid "Datum"
 msgstr "Date"
 
-#: LastProfile/Dash_app/Stromlast.py:124
+#: LastProfile/Dash_app/Stromlast.py:189
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
-#: LastProfile/Dash_app/Stromlast.py:145
+#: LastProfile/Dash_app/Stromlast.py:211
 msgid "Jahresstrombedarf in KWh/a :"
 msgstr "Annual electricity requirement in KWh/a"
 
-#: LastProfile/Dash_app/Stromlast.py:146
+#: LastProfile/Dash_app/Stromlast.py:212
 msgid "Anwendung: "
 msgstr "Applications: "
 
-#: LastProfile/Dash_app/Stromlast.py:146
+#: LastProfile/Dash_app/Stromlast.py:212
 msgid "Last"
 msgstr "Load"
 
