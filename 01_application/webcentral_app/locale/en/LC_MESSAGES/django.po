@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-07 08:25+0000\n"
+"POT-Creation-Date: 2024-04-07 12:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,11 +131,10 @@ msgstr "Statistics"
 msgid "Landnutzung"
 msgstr "land use"
 
-#: Datasets/views.py:87 LastProfile/Dash_app/Warmelast.py:52
-#, fuzzy
-#| msgid "Datenbanksystem"
+#: Datasets/views.py:87 LastProfile/Dash_app/Warmelast.py:53
+#: LastProfile/Dash_app/Warmelast.py:251
 msgid "Datenbasis"
-msgstr "Database system"
+msgstr "Database"
 
 #: Datasets/views.py:88
 msgid "Potential"
@@ -202,42 +201,50 @@ msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
 #: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:118
-#: LastProfile/Dash_app/Warmelast.py:117
+#: LastProfile/Dash_app/Warmelast.py:118 LastProfile/Dash_app/Warmelast.py:181
+#: LastProfile/Dash_app/Warmelast.py:215
 msgid "Januar"
 msgstr "January"
 
 #: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:119
-#: LastProfile/Dash_app/Warmelast.py:118
+#: LastProfile/Dash_app/Warmelast.py:119 LastProfile/Dash_app/Warmelast.py:182
+#: LastProfile/Dash_app/Warmelast.py:216
 msgid "Februar"
 msgstr "February"
 
 #: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:120
-#: LastProfile/Dash_app/Warmelast.py:119
+#: LastProfile/Dash_app/Warmelast.py:120 LastProfile/Dash_app/Warmelast.py:183
+#: LastProfile/Dash_app/Warmelast.py:217
 msgid "März"
 msgstr "March"
 
 #: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:121
-#: LastProfile/Dash_app/Warmelast.py:120
+#: LastProfile/Dash_app/Warmelast.py:121 LastProfile/Dash_app/Warmelast.py:184
+#: LastProfile/Dash_app/Warmelast.py:218
 msgid "April"
 msgstr "April"
 
 #: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:122
-#: LastProfile/Dash_app/Warmelast.py:121
+#: LastProfile/Dash_app/Warmelast.py:122 LastProfile/Dash_app/Warmelast.py:185
+#: LastProfile/Dash_app/Warmelast.py:219
 msgid "Mai"
 msgstr "May"
 
 #: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:123
-#: LastProfile/Dash_app/Warmelast.py:122
+#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:186
+#: LastProfile/Dash_app/Warmelast.py:220
 msgid "Juni"
 msgstr "June"
 
 #: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:124
-#: LastProfile/Dash_app/Warmelast.py:123
+#: LastProfile/Dash_app/Warmelast.py:124 LastProfile/Dash_app/Warmelast.py:187
+#: LastProfile/Dash_app/Warmelast.py:221
 msgid "Juli"
 msgstr "July"
 
 #: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:125
-#: LastProfile/Dash_app/Warmelast.py:124
+#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:188
+#: LastProfile/Dash_app/Warmelast.py:222
 msgid "August"
 msgstr "August"
 
@@ -246,32 +253,35 @@ msgid "September"
 msgstr "September"
 
 #: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:127
-#: LastProfile/Dash_app/Warmelast.py:126
+#: LastProfile/Dash_app/Warmelast.py:127 LastProfile/Dash_app/Warmelast.py:190
+#: LastProfile/Dash_app/Warmelast.py:224
 msgid "Oktober"
 msgstr "Oktober"
 
 #: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:128
-#: LastProfile/Dash_app/Warmelast.py:127
+#: LastProfile/Dash_app/Warmelast.py:128 LastProfile/Dash_app/Warmelast.py:191
+#: LastProfile/Dash_app/Warmelast.py:225
 msgid "November"
 msgstr "Nomvember"
 
 #: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:129
-#: LastProfile/Dash_app/Warmelast.py:128
+#: LastProfile/Dash_app/Warmelast.py:129 LastProfile/Dash_app/Warmelast.py:192
+#: LastProfile/Dash_app/Warmelast.py:226
 msgid "Dezember"
 msgstr "December"
 
 #: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:132
-#: LastProfile/Dash_app/Warmelast.py:135
+#: LastProfile/Dash_app/Warmelast.py:136 LastProfile/Dash_app/Warmelast.py:256
 msgid "Approximation starten"
 msgstr "Start approximation"
 
 #: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:133
-#: LastProfile/Dash_app/Warmelast.py:137
+#: LastProfile/Dash_app/Warmelast.py:138 LastProfile/Dash_app/Warmelast.py:257
 msgid "Download als csv"
 msgstr "Download as csv"
 
 #: LastProfile/Dash_app/Stromlast.py:184 LastProfile/Dash_app/Stromlast.py:212
-#: LastProfile/Dash_app/Warmelast.py:290
+#: LastProfile/Dash_app/Warmelast.py:407
 msgid "Datum"
 msgstr "Date"
 
@@ -291,178 +301,179 @@ msgstr "Applications: "
 msgid "Last"
 msgstr "Load"
 
-#: LastProfile/Dash_app/Warmelast.py:42
-#, fuzzy
-#| msgid "Stromlast Approximation"
+#: LastProfile/Dash_app/Warmelast.py:42 LastProfile/Dash_app/Warmelast.py:213
 msgid "Wärmelast Approximation"
-msgstr "Current load approximation"
+msgstr "Heat load approximation"
 
-#: LastProfile/Dash_app/Warmelast.py:44
+#: LastProfile/Dash_app/Warmelast.py:45 LastProfile/Dash_app/Warmelast.py:243
 msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt"
 msgstr "We chose the following values as the test reference year"
 
-#: LastProfile/Dash_app/Warmelast.py:45
+#: LastProfile/Dash_app/Warmelast.py:46 LastProfile/Dash_app/Warmelast.py:244
 msgid "Koordinatensystem"
 msgstr "Coordinate system"
 
-#: LastProfile/Dash_app/Warmelast.py:45
+#: LastProfile/Dash_app/Warmelast.py:46 LastProfile/Dash_app/Warmelast.py:244
 msgid "Lambert konform konisch"
 msgstr "Lambert compliant conical"
 
-#: LastProfile/Dash_app/Warmelast.py:46
+#: LastProfile/Dash_app/Warmelast.py:47 LastProfile/Dash_app/Warmelast.py:245
 msgid "Rechtswert"
 msgstr "Legal value"
 
-#: LastProfile/Dash_app/Warmelast.py:46 LastProfile/Dash_app/Warmelast.py:47
+#: LastProfile/Dash_app/Warmelast.py:47 LastProfile/Dash_app/Warmelast.py:48
+#: LastProfile/Dash_app/Warmelast.py:245 LastProfile/Dash_app/Warmelast.py:246
 msgid "Meter"
 msgstr "meters"
 
-#: LastProfile/Dash_app/Warmelast.py:47
+#: LastProfile/Dash_app/Warmelast.py:48 LastProfile/Dash_app/Warmelast.py:246
 msgid "Hochwert"
 msgstr "High value"
 
-#: LastProfile/Dash_app/Warmelast.py:48
+#: LastProfile/Dash_app/Warmelast.py:49 LastProfile/Dash_app/Warmelast.py:247
 msgid "Höhenlage"
 msgstr "Altitude"
 
-#: LastProfile/Dash_app/Warmelast.py:48
+#: LastProfile/Dash_app/Warmelast.py:49 LastProfile/Dash_app/Warmelast.py:247
 msgid "Meter über NN"
 msgstr "meters above sea level"
 
-#: LastProfile/Dash_app/Warmelast.py:49
+#: LastProfile/Dash_app/Warmelast.py:50 LastProfile/Dash_app/Warmelast.py:248
 msgid "Erstellung des Datensatzes im Mai 2016"
 msgstr "The data set was created in May 2016"
 
-#: LastProfile/Dash_app/Warmelast.py:50
+#: LastProfile/Dash_app/Warmelast.py:51 LastProfile/Dash_app/Warmelast.py:249
 msgid "Art des TRY"
 msgstr "Type of TRY"
 
-#: LastProfile/Dash_app/Warmelast.py:50
+#: LastProfile/Dash_app/Warmelast.py:51 LastProfile/Dash_app/Warmelast.py:249
 msgid "mittleres Jahr"
 msgstr "avarage year"
 
-#: LastProfile/Dash_app/Warmelast.py:51
+#: LastProfile/Dash_app/Warmelast.py:52 LastProfile/Dash_app/Warmelast.py:250
 msgid "Bezugszeitraum"
 msgstr "reference period"
 
-#: LastProfile/Dash_app/Warmelast.py:52
+#: LastProfile/Dash_app/Warmelast.py:53 LastProfile/Dash_app/Warmelast.py:251
 msgid "Beobachtungsdaten Zeitraum"
 msgstr "Observation data period"
 
-#: LastProfile/Dash_app/Warmelast.py:58
+#: LastProfile/Dash_app/Warmelast.py:59 LastProfile/Dash_app/Warmelast.py:230
 msgid "Testreferenzjahr"
 msgstr "Test reference year"
 
-#: LastProfile/Dash_app/Warmelast.py:59
+#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:231
 msgid "Wetterstation"
 msgstr "Weather station"
 
-#: LastProfile/Dash_app/Warmelast.py:61
+#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:233
 msgid "Berechnungstyp"
 msgstr "Calculation type"
 
-#: LastProfile/Dash_app/Warmelast.py:69
+#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:253
 msgid "Auswahl des Bundesland"
 msgstr "Selection of the state"
 
-#: LastProfile/Dash_app/Warmelast.py:74
+#: LastProfile/Dash_app/Warmelast.py:75 LastProfile/Dash_app/Warmelast.py:254
 msgid "Auswahl der Station"
 msgstr "Selection of station"
 
-#: LastProfile/Dash_app/Warmelast.py:79
+#: LastProfile/Dash_app/Warmelast.py:80 LastProfile/Dash_app/Warmelast.py:196
 msgid "Einfamilienhaus "
 msgstr "detached house"
 
-#: LastProfile/Dash_app/Warmelast.py:80
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:197
 msgid "Mehrfamilienhaus "
 msgstr "Apartment building"
 
-#: LastProfile/Dash_app/Warmelast.py:81
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:198
 msgid "Gebietskörperschaft"
 msgstr "local authority"
 
-#: LastProfile/Dash_app/Warmelast.py:82
+#: LastProfile/Dash_app/Warmelast.py:83 LastProfile/Dash_app/Warmelast.py:199
 msgid "Einzelhandel, Großhandel"
 msgstr "Retail, Wholesale"
 
-#: LastProfile/Dash_app/Warmelast.py:83
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:200
 msgid "Metall, Kfz"
 msgstr "metal, automotive"
 
-#: LastProfile/Dash_app/Warmelast.py:84
+#: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:201
 msgid "sonst. betr. Dienstleistungen  "
 msgstr "other services considered"
 
-#: LastProfile/Dash_app/Warmelast.py:85
+#: LastProfile/Dash_app/Warmelast.py:86 LastProfile/Dash_app/Warmelast.py:202
 msgid "Gaststätten "
 msgstr "Restaurants"
 
-#: LastProfile/Dash_app/Warmelast.py:86
+#: LastProfile/Dash_app/Warmelast.py:87 LastProfile/Dash_app/Warmelast.py:203
 msgid "Beherbergung "
 msgstr "Accommodation"
 
-#: LastProfile/Dash_app/Warmelast.py:87
+#: LastProfile/Dash_app/Warmelast.py:88 LastProfile/Dash_app/Warmelast.py:204
 msgid "Bäckereien "
 msgstr "Bakeries"
 
-#: LastProfile/Dash_app/Warmelast.py:88
+#: LastProfile/Dash_app/Warmelast.py:89 LastProfile/Dash_app/Warmelast.py:205
 msgid "Wäschereien "
 msgstr "Laundries"
 
-#: LastProfile/Dash_app/Warmelast.py:89
+#: LastProfile/Dash_app/Warmelast.py:90 LastProfile/Dash_app/Warmelast.py:206
 msgid "Gartenbau "
 msgstr "horticulture"
 
-#: LastProfile/Dash_app/Warmelast.py:90
+#: LastProfile/Dash_app/Warmelast.py:91 LastProfile/Dash_app/Warmelast.py:207
 msgid "Papier und Druck "
 msgstr "Paper and printing"
 
-#: LastProfile/Dash_app/Warmelast.py:91
+#: LastProfile/Dash_app/Warmelast.py:92 LastProfile/Dash_app/Warmelast.py:208
 msgid "haushaltsähnliche Gewerbebetriebe "
 msgstr "household-like businesses"
 
-#: LastProfile/Dash_app/Warmelast.py:92
+#: LastProfile/Dash_app/Warmelast.py:93 LastProfile/Dash_app/Warmelast.py:209
 msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung "
 msgstr "Total load profile for trade, commerce, services"
 
-#: LastProfile/Dash_app/Warmelast.py:95
+#: LastProfile/Dash_app/Warmelast.py:96 LastProfile/Dash_app/Warmelast.py:212
 #: templates/LastProfile/explanation.html:109
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
-#: LastProfile/Dash_app/Warmelast.py:103
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:255
 msgid "Jahreswärmebedarf in kWh/a"
 msgstr "Annual heat requirement in kWh/a"
 
-#: LastProfile/Dash_app/Warmelast.py:110
+#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:258
 msgid "Start Datum"
 msgstr "Start date"
 
-#: LastProfile/Dash_app/Warmelast.py:111
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:259
 msgid "End Datum"
 msgstr "End date"
 
-#: LastProfile/Dash_app/Warmelast.py:125
+#: LastProfile/Dash_app/Warmelast.py:126 LastProfile/Dash_app/Warmelast.py:189
+#: LastProfile/Dash_app/Warmelast.py:223
 msgid "Sepember"
 msgstr "September"
 
-#: LastProfile/Dash_app/Warmelast.py:129 templates/common/search-bar.html:48
+#: LastProfile/Dash_app/Warmelast.py:130 LastProfile/Dash_app/Warmelast.py:193
+#: LastProfile/Dash_app/Warmelast.py:227 templates/common/search-bar.html:48
 msgid "Alle"
 msgstr "All"
 
-#: LastProfile/Dash_app/Warmelast.py:144
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:260
 msgid "Es gibt keine Eingabe "
 msgstr "There is no input"
 
-#: LastProfile/Dash_app/Warmelast.py:279 LastProfile/Dash_app/Warmelast.py:295
+#: LastProfile/Dash_app/Warmelast.py:396 LastProfile/Dash_app/Warmelast.py:412
 msgid "Wärmelastgang in kW"
 msgstr "Heat load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:281
+#: LastProfile/Dash_app/Warmelast.py:398
 msgid "Fehlende Angaben"
 msgstr "Missing disclosures"
 
-#: LastProfile/Dash_app/Warmelast.py:284 LastProfile/Dash_app/Warmelast.py:300
+#: LastProfile/Dash_app/Warmelast.py:401 LastProfile/Dash_app/Warmelast.py:417
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
@@ -696,15 +707,17 @@ msgstr ""
 "Hellwig, 2003, 'Development and application of parameterized' Standard load "
 "profiles"
 
+#: templates/LastProfile/explanation.html:158
+msgid "Download der Disseration"
+msgstr "Download the dissertation"
+
 #: templates/LastProfile/explanation.html:161
 msgid "Nutzung der Wetterdienst Bibliothek"
 msgstr "Use of the weather service library"
 
 #: templates/LastProfile/explanation.html:163
-#, fuzzy
-#| msgid "Wetterdaten"
 msgid "Wetterdienst"
-msgstr "Weatherdata"
+msgstr "Weather Service"
 
 #: templates/LastProfile/explanation.html:166
 msgid "Nutzung der Standard-Lastprofile"
