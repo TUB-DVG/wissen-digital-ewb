@@ -59,7 +59,7 @@ msgstr "Gas Infrastructure"
 #: templates/StartSearch/StartSearch.html:143
 #: templates/partials/_navbar.html:71
 msgid "Wetterdaten"
-msgstr "Weatherdata"
+msgstr "Weather data"
 
 #: Datasets/views.py:58
 msgid "Wärmebedarf"
@@ -256,13 +256,13 @@ msgstr "September"
 #: LastProfile/Dash_app/Warmelast.py:127 LastProfile/Dash_app/Warmelast.py:190
 #: LastProfile/Dash_app/Warmelast.py:224
 msgid "Oktober"
-msgstr "Oktober"
+msgstr "October"
 
 #: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:128
 #: LastProfile/Dash_app/Warmelast.py:128 LastProfile/Dash_app/Warmelast.py:191
 #: LastProfile/Dash_app/Warmelast.py:225
 msgid "November"
-msgstr "Nomvember"
+msgstr "November"
 
 #: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:129
 #: LastProfile/Dash_app/Warmelast.py:129 LastProfile/Dash_app/Warmelast.py:192
@@ -324,7 +324,7 @@ msgstr "Legal value"
 #: LastProfile/Dash_app/Warmelast.py:47 LastProfile/Dash_app/Warmelast.py:48
 #: LastProfile/Dash_app/Warmelast.py:245 LastProfile/Dash_app/Warmelast.py:246
 msgid "Meter"
-msgstr "meters"
+msgstr "Meters"
 
 #: LastProfile/Dash_app/Warmelast.py:48 LastProfile/Dash_app/Warmelast.py:246
 msgid "Hochwert"
@@ -336,7 +336,7 @@ msgstr "Altitude"
 
 #: LastProfile/Dash_app/Warmelast.py:49 LastProfile/Dash_app/Warmelast.py:247
 msgid "Meter über NN"
-msgstr "meters above sea level"
+msgstr "Meters above sea level"
 
 #: LastProfile/Dash_app/Warmelast.py:50 LastProfile/Dash_app/Warmelast.py:248
 msgid "Erstellung des Datensatzes im Mai 2016"
@@ -352,7 +352,7 @@ msgstr "avarage year"
 
 #: LastProfile/Dash_app/Warmelast.py:52 LastProfile/Dash_app/Warmelast.py:250
 msgid "Bezugszeitraum"
-msgstr "reference period"
+msgstr "Reference period"
 
 #: LastProfile/Dash_app/Warmelast.py:53 LastProfile/Dash_app/Warmelast.py:251
 msgid "Beobachtungsdaten Zeitraum"
@@ -380,15 +380,15 @@ msgstr "Selection of station"
 
 #: LastProfile/Dash_app/Warmelast.py:80 LastProfile/Dash_app/Warmelast.py:196
 msgid "Einfamilienhaus "
-msgstr "detached house"
+msgstr "Single Family House"
 
 #: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:197
 msgid "Mehrfamilienhaus "
-msgstr "Apartment building"
+msgstr "Multi Family House"
 
 #: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:198
 msgid "Gebietskörperschaft"
-msgstr "local authority"
+msgstr "Local authority"
 
 #: LastProfile/Dash_app/Warmelast.py:83 LastProfile/Dash_app/Warmelast.py:199
 msgid "Einzelhandel, Großhandel"
@@ -396,11 +396,11 @@ msgstr "Retail, Wholesale"
 
 #: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:200
 msgid "Metall, Kfz"
-msgstr "metal, automotive"
+msgstr "Metal, Automotive"
 
 #: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:201
 msgid "sonst. betr. Dienstleistungen  "
-msgstr "other services considered"
+msgstr "Other operational services"
 
 #: LastProfile/Dash_app/Warmelast.py:86 LastProfile/Dash_app/Warmelast.py:202
 msgid "Gaststätten "
@@ -428,7 +428,7 @@ msgstr "Paper and printing"
 
 #: LastProfile/Dash_app/Warmelast.py:92 LastProfile/Dash_app/Warmelast.py:208
 msgid "haushaltsähnliche Gewerbebetriebe "
-msgstr "household-like businesses"
+msgstr "Household-like businesses"
 
 #: LastProfile/Dash_app/Warmelast.py:93 LastProfile/Dash_app/Warmelast.py:209
 msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung "
@@ -471,7 +471,7 @@ msgstr "Heat load profile in kW"
 
 #: LastProfile/Dash_app/Warmelast.py:398
 msgid "Fehlende Angaben"
-msgstr "Missing disclosures"
+msgstr "Missing values"
 
 #: LastProfile/Dash_app/Warmelast.py:401 LastProfile/Dash_app/Warmelast.py:417
 msgid "Trinkwarmwasser-Lastgang in kW"
@@ -574,19 +574,18 @@ msgid ""
 "              <br>\n"
 "              Die jeweiligen Lastprofile können auch heruntergeladen werden."
 msgstr ""
-"On this page you have access to a load profile generator for heat "
-"consumption and a load profile generator for electricity consumption.The "
+"On this page you have access to a load profile generator for heat"
+"demand and a load profile generator for electricity demand. The "
 "load profiles are displayed as time series. The load profiles are based on "
-"the (building) use/building type, the annual requirement and the calculation "
+"the (building) use type, the annual electricity or heat requirements and the calculation "
 "period, which must be specified. To calculate the heat load, the ambient "
-"temperature corresponding to the calculation period is also used with the "
-"help of weather data. <br>The respective load profiles can also be "
-"downloaded."
+"temperature corresponding to the calculation period is also used with the respective weather data."
+"<br>The generated load profiles can also be downloaded."
 
 #: templates/LastProfile/explanation.html:49
 #: templates/LastProfile/explanation.html:166
 msgid "Stromlast"
-msgstr "Current load"
+msgstr "Electrical Load Profiles"
 
 #: templates/LastProfile/explanation.html:51
 msgid ""
@@ -597,21 +596,20 @@ msgid ""
 "weiteren\n"
 "          kann der Berechnungszeitraum angegeben werden:"
 msgstr ""
-"The power load profile generator creates a time series that shows the "
+"The electrical load profile generator generates a time series that shows the "
 "typical course of power consumption over time depending on (building) usage "
-"and annual power requirements. Furthermore, the calculation period can be "
-"specified:"
+"and annual power requirements. Furthermore, the calculation period can be specified:"
 
 #: templates/LastProfile/explanation.html:59
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
 #: templates/tools_over/tool-listings.html:56
 msgid "Nutzung"
-msgstr "Use"
+msgstr "use type"
 
 #: templates/LastProfile/explanation.html:59
 msgid "Auswahl der Nutzung des Stroms"
-msgstr "Choosing how to use electricity"
+msgstr "Selection of building use type"
 
 #: templates/LastProfile/explanation.html:62
 msgid "Jahresstrombedarf"
@@ -636,12 +634,12 @@ msgstr "Selection of the calculation period"
 
 #: templates/LastProfile/explanation.html:87
 msgid "Approximation der Stromlast"
-msgstr "Approximation of the current load"
+msgstr "Approximation of the electrical load"
 
 #: templates/LastProfile/explanation.html:96
 #: templates/LastProfile/explanation.html:154
 msgid "Wärmelast"
-msgstr "Heat load"
+msgstr "Heat Load"
 
 #: templates/LastProfile/explanation.html:99
 msgid ""
@@ -653,7 +651,7 @@ msgid ""
 msgstr ""
 "The heat load profile generator creates a time series that shows the typical "
 "course of the heat load over time depending on the weather data, the annual "
-"heat requirement and the building typerepresents. Furthermore, the "
+"heat requirement and the building type. Furthermore, the "
 "calculation period can be specified:"
 
 #: templates/LastProfile/explanation.html:105
@@ -661,22 +659,22 @@ msgid ""
 "Hier kann das Testreferenzjahr\n"
 "              (TRJ) oder eine spezifische Wetterstation gewählt werden"
 msgstr ""
-"The test reference year (TRJ) or a specific weather station can be selected "
+"The test reference year (TRY) or a specific weather station can be selected "
 "here"
 
 #: templates/LastProfile/explanation.html:109
 msgid "Gebäudetyp"
-msgstr "Building typ"
+msgstr "Building Use type"
 
 #: templates/LastProfile/explanation.html:112
 msgid "Jahreswärmebedarf"
-msgstr "Yearly heat demand"
+msgstr "Annual heat requirement"
 
 #: templates/LastProfile/explanation.html:112
 msgid ""
 "Eingabe des\n"
 "              Jahreswärmebedarfs in kWh/a"
-msgstr "Enter the annual heat requirement in kWh/a"
+msgstr "Enter the annual heat demand in kWh/a"
 
 #: templates/LastProfile/explanation.html:117
 msgid "Eingabe des Berechnungszeitraums"
@@ -704,8 +702,7 @@ msgid ""
 "            Hellwig, 2003, \"Entwicklung und Anwendung parametrisierter\n"
 "            Standard-Lastprofile\""
 msgstr ""
-"Hellwig, 2003, 'Development and application of parameterized' Standard load "
-"profiles"
+"Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-Lastprofile'"
 
 #: templates/LastProfile/explanation.html:158
 msgid "Download der Disseration"
@@ -3821,7 +3818,7 @@ msgstr "Updates"
 
 #: templates/weatherdata_over/data-service-listings.html:22
 msgid "Überblick über Wetterdaten-Services"
-msgstr "Overview of wheatherdata Services"
+msgstr "Overview of weather data Services"
 
 #: templates/weatherdata_over/explanation.html:11
 msgid ""
