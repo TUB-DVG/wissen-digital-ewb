@@ -62,7 +62,12 @@ ul {
               {% endif %}
             </div>
             <!-- search Field Schlagwort -->
-            <div class="col-6"></div>
+            <div class="col-3"></div>
+            <div class="col-3 form-group d-flex align-items-center">
+              <form>
+                <input type="text" onkeydown="searchFullText()" class="form-select js-choice border-legal-round" id="search-input-criteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
+              </form>
+            </div>
             <div class="col-3 form-group d-flex align-items-center">
               
               <!-- d-flex align-items-center justify-content-center pe-1 -->
@@ -129,10 +134,10 @@ ul {
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px; margin-top: 18px; margin-bottom: 20px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <br id="0" /> -->
-                          <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; padding-left: 120px; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
+                          <p style="display: none; margin-bottom: 18px; margin-top: 18px; padding-top: 0px; padding-bottom: 0px; font-size: 16px; color: grey; padding-left: 120px; font-style: italic; font-size: 20px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 110px;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
@@ -140,7 +145,7 @@ ul {
                           <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <button style="border: none; background: none; cursor: pointer;" id="{{ node.content.depth }}"><img style="margin-right: 4px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
-                            <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                            <p style="display: none; font-size: 22px; margin-left: 120px; margin-top: 18px; margin-bottom: 18px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
@@ -188,6 +193,10 @@ ul {
           parentElement = parentElement.parentElement;
         }
     return parentElement;
+  }
+
+  function searchFullText(searchString) {
+
   }
 
   function handleOptionSelected() {
