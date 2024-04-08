@@ -139,6 +139,7 @@ ul {
                           <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
                           <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <button style="border: none; background: none; cursor: pointer;" id="{{ node.content.depth }}"><img style="margin-right: 4px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
                             <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
@@ -165,6 +166,8 @@ ul {
 
 <script>
   var idOfTopicToBeOpened = "{{ topicIdentifier }}";
+  var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
+  var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
   console.log(idOfTopicToBeOpened)
 
   if (idOfTopicToBeOpened != "") {
@@ -362,11 +365,13 @@ function checkHowManyLayersAreShown() {
 }
 
 function openChildLayer(element) {
-  // get the layer-number of the clicked element
-  // if (element.tagName == "UL") {
   var layerNumberOfClickedElement = Number(element.id);
   // element.parentElement.nextElementSibling.style.display = "none";
   var childElements = element.children;
+  var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
+  if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
+    buttonElements[0].children[0].src = pathToArrowUpImg;
+  }
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
   if (childParagraphDescriptionText.length > 0) {
     childParagraphDescriptionText[0].style.display = "block";
@@ -374,7 +379,6 @@ function openChildLayer(element) {
     childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
     childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
     childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
-    // debugger;
 
   }
   var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
@@ -407,10 +411,15 @@ function openChildLayer(element) {
 
 function closeChildLayer(element) {
   var layerNumberOfClickedElement = Number(element.id);
-  // element.parentElement.nextElementSibling.style.display = "block";
   var childElements = element.children;
+  var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
+  if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
+    buttonElements[0].children[0].src = pathToArrowDownImg;
+  }
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
   childParagraphDescriptionText[0].style.display = "none";
+  childParagraphDescriptionText[0].previousElementSibling.style.display = "none";
+  childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "0px";
   // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
   // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
@@ -570,4 +579,5 @@ function showOrHide(event, element) {
     }
 }
 </script>
+<img src="{% static 'assets/images/arrow_up.svg' %}" id="hiddenImage" style="display: none;" />
 {% endblock %}
