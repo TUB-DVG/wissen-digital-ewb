@@ -4,7 +4,21 @@
 {% load static %}
 {% load format_tags %}
 <!DOCTYPE html>
+<style>
+#firstLayerUl {
+    position: relative;
+    margin-bottom: 2px;
+}
 
+#deeperLevelUl::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 10px solid #F5E86A;
+}
+</style>
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
@@ -85,7 +99,15 @@
               <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
                 <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
               </div>
+              <div class="col-lg-5 mb-3">
+              </div>
+              <div class="col-lg-2" id="container-criteria-catalog-details">
+                <div style="text-align: right">
+                  <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;">Alles einklappen</button>
+                </div>
+              </div>
             </div>
+            
               <div class="row" id="hi">
                 <!-- <ul> -->
                   {% for tree in trees %}
@@ -94,10 +116,11 @@
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
                           <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
+                          <div class="hr" id="{{ node.content.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
                         {% elif node.depth == 1 %}
-                          <ul style="display: none; margin-bottom: 2px; border-left: 5px solid #F5E86A;" id="{{ node.depth }}">
+                          <ul class="firstLayerUl" style="display: none; margin-bottom: 2px; border-left: 10px solid #F5E86A;" id="{{ node.depth }}">
                         {% else %}
-                          <ul style="display: none; margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul class="deeperLevelUl" style="display: none; margin-bottom: 2px;" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         </li></ul>
@@ -118,7 +141,7 @@
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <div class="hr" style="height: 2px; background-color: #F5E86A;"></div>
+                    <!-- <div class="hr" style="height: 2px; background-color: #F5E86A;"></div> -->
                     <!-- <hr style="margin-top: 1px; margin-bottom: 1px; margin-left: 120px; border-top: 5px solid #F5E86A;"> -->
                   {% endfor %}
                 <!-- </ul> -->
