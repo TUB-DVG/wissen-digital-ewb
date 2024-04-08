@@ -130,14 +130,15 @@ ul {
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
                           <li onclick="showOrHide(event, this)" style="font-size: 22px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
+                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <br id="0" /> -->
                           <p style="display: none; margin-bottom: 0px; font-size: 16px; color: grey; padding-left: 120px; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
-                          <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                          <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 110px;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
                           <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
                           <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <button style="border: none; background: none; cursor: pointer;" id="{{ node.content.depth }}"><img style="padding-right: 3px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            <button style="border: none; background: none; cursor: pointer;" id="{{ node.content.depth }}"><img style="margin-right: 4px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                             <p style="display: none; font-size: 22px; margin-left: 120px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
@@ -369,11 +370,18 @@ function openChildLayer(element) {
   var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
   if (childParagraphDescriptionText.length > 0) {
     childParagraphDescriptionText[0].style.display = "block";
+    childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
+    childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
+    childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
+    childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
+    // debugger;
+
   }
   var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
-  if (childHRElements.length > 0) {
-    childHRElements[0].style.display = "block";
-  }
+  // if (childHRElements.length > 0) {
+    
+  //   childHRElements[0].style.display = "block";
+  // }
   // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
   // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
