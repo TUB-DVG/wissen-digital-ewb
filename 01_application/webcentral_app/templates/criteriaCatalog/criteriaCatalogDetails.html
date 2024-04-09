@@ -121,32 +121,32 @@ ul {
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul style="margin-bottom: 2px; border-left: 15px solid #F5E86A;" id="{{ node.depth }}">
                           <div class="hr" id="{{ node.content.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
                         {% elif node.depth == 1 %}
-                          <ul class="firstLayerUl" style="display: none; margin-bottom: 2px; border-left: 10px solid #F5E86A;" id="{{ node.depth }}">
+                          <ul class="firstLayerUl" style="display: none; margin-left: 105px; padding: 0px; margin-bottom: 2px;" id="{{ node.depth }}">
                         {% else %}
-                          <ul class="deeperLevelUl" style="display: none; margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul class="deeperLevelUl" style="display: none; margin-left: 105px; margin-bottom: 2px;" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         </li></ul>
                       {% elif node.content %}
+                        {% with displayValue="none" %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px; margin-top: 18px; margin-bottom: 20px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}"><img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-bottom: 4px; margin-top: 4px;" id="0"><button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer;">{{ node.content.topic.heading }}</button>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                          {% with displayValue="" %}
+                        {% endif %}
+                          <li onclick="showOrHide(event, this)" style="display: {{ displayValue }}, font-size: 22px; margin: 0px; line-height: 0;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
+                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="display: {{ displayValue }}; width: 20px; margin-right: 4px;" id="0">
+                            <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 25px; padding-bottom: 25px; margin: 0px; line-height:0;">
+                              {{ node.content.topic.heading }}
+                            </button>
+                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
                             <!-- <br id="0" /> -->
-                          <p style="display: none; margin-bottom: 18px; margin-top: 18px; padding-top: 0px; padding-bottom: 0px; font-size: 16px; color: grey; padding-left: 120px; font-style: italic; font-size: 20px;" id="0">{{ node.content.topic.text }}</p>
+                          <p style="display: none; padding-top: 24px; padding-bottom: 27px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; font-size: 20px; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 110px;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
-                        {% else %}
-                          <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
-                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; padding-left: 80px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <button style="border: none; background: none; cursor: pointer;" id="{{ node.content.depth }}"><img style="margin-right: 4px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
-                            <p style="display: none; font-size: 22px; margin-left: 120px; margin-top: 18px; margin-bottom: 18px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
-                        {% endif %}
                       {% endif %}
                     {% endfor %}
                     <!-- <div class="hr" style="height: 2px; background-color: #F5E86A;"></div> -->
