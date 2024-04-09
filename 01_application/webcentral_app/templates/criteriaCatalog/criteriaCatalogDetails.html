@@ -64,9 +64,7 @@ ul {
             <!-- search Field Schlagwort -->
             <div class="col-3"></div>
             <div class="col-3 form-group d-flex align-items-center">
-              <form>
-                <input type="text" onkeydown="searchFullText()" class="form-select js-choice border-legal-round" id="search-input-criteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
-              </form>
+              <input type="text" onkeydown="if (event.key === 'Enter') searchFullText(this.value)" class="form-select js-choice border-legal-round" id="search-input-criteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
             </div>
             <div class="col-3 form-group d-flex align-items-center">
               
@@ -195,8 +193,31 @@ ul {
     return parentElement;
   }
 
-  function searchFullText(searchString) {
-
+  function searchFullText(searchString) {    
+    console.log(searchString)
+    var elementsToBeSearched = document.querySelectorAll("#hi *");
+    var foundElements = [];
+    foundULelements = [];
+    for (var i = 0; i < elementsToBeSearched.length; i++) {
+      if (elementsToBeSearched[i].textContent.includes(searchString)) {
+            // The search string is contained in the text content of the element
+        if (elementsToBeSearched[i].tagName == "BUTTON") {
+          foundElements.push(elementsToBeSearched[i]);
+        }
+      }
+    }
+    if (foundElements.length > 0) {
+      // call a function, which will reset the criteriaCatalog to the original state
+      resetCriteriaCatalog();
+      // show all found elements
+      for (var i = 0; i < foundElements.length; i++) {
+        // debugger;
+        foundElements[i].style.backgroundColor = "yellow";
+        var rootElement = findRootElement(foundElements[i]);
+        depthFirstWalk(rootElement, foundElements[i]);  
+      }
+    }
+    // console.log("Enter was pressed")
   }
 
   function handleOptionSelected() {
