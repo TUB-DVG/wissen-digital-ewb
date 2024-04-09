@@ -64,7 +64,7 @@ ul {
             <!-- search Field Schlagwort -->
             <div class="col-3"></div>
             <div class="col-3 form-group d-flex align-items-center">
-              <input type="text" onkeydown="if (event.key === 'Enter') searchFullText(this.value)" class="form-select js-choice border-legal-round" id="search-input-criteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
+              <input type="text" onkeydown="if (event.key === 'Enter') searchFullText(this.value)" class="form-select js-choice border-legal-round" id="searchInputCriteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
             </div>
             <div class="col-3 form-group d-flex align-items-center">
               
@@ -109,7 +109,7 @@ ul {
               </div>
               <div class="col-lg-2" id="container-criteria-catalog-details">
                 <div style="text-align: right">
-                  <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;">Alles einklappen</button>
+                  <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
               </div>
             </div>
@@ -476,7 +476,7 @@ function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
   for (var i = 0; i < elementsToBeSearched.length; i++) {
-    // show all elements
+    elementsToBeSearched[i].style.backgroundColor = "white";
     if (elementsToBeSearched[i].id == "0") {
       if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "LI") {
         elementsToBeSearched[i].style.display = "block";

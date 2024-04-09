@@ -136,5 +136,7 @@ class Locator(object):
     # CriteriaCatalog locators
     criteriaCatalogOverviewCard1 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
     criteriaCatalogOverviewCard2 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
-    criteriaCatalogDetailsContentContainer = "//div[@id='container-criteria-catalog-details']"
+    criteriaCatalogDetailsContentContainer = "//div[@id='hi']"
     allHorizontalLineElements = "//hr"
+    fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
+    collpaseEveryThingButton = "//button[@id='collapseEverythingButton']"
