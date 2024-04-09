@@ -124,29 +124,33 @@ ul {
                           <ul style="margin-bottom: 2px; border-left: 15px solid #F5E86A;" id="{{ node.depth }}">
                           <div class="hr" id="{{ node.content.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
                         {% elif node.depth == 1 %}
-                          <ul class="firstLayerUl" style="display: none; margin-left: 105px; padding: 0px; margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul class="firstLayerUl" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
                         {% else %}
-                          <ul class="deeperLevelUl" style="display: none; margin-left: 105px; margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul class="deeperLevelUl" style="display: none; margin-left: 105px; padding: 0px;" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         </li></ul>
                       {% elif node.content %}
-                        {% with displayValue="none" %}
                         {% if node.content.depth == 0 %}
-                          {% with displayValue="" %}
-                        {% endif %}
-                          <li onclick="showOrHide(event, this)" style="display: {{ displayValue }}, font-size: 22px; margin: 0px; line-height: 0;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="display: {{ displayValue }}; width: 20px; margin-right: 4px;" id="0">
-                            <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 25px; padding-bottom: 25px; margin: 0px; line-height:0;">
+                          <li onclick="showOrHide(event, this)" style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
+                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px;" id="0">
+                            <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
                             <!-- <br id="0" /> -->
-                          <p style="display: none; padding-top: 24px; padding-bottom: 27px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; font-size: 20px; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
-                          <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 110px;"></div>
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
+                          <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 105px;"></div>
                           <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
-
+                        {% else %}
+                          <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
+                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                            <button style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
+                            <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px; padding-left: 105px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
+                        {% endif %}
                       {% endif %}
                     {% endfor %}
                     <!-- <div class="hr" style="height: 2px; background-color: #F5E86A;"></div> -->
@@ -476,7 +480,7 @@ function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
   for (var i = 0; i < elementsToBeSearched.length; i++) {
-    elementsToBeSearched[i].style.backgroundColor = "white";
+    // elementsToBeSearched[i].style.backgroundColor = "white";
     if (elementsToBeSearched[i].id == "0") {
       if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "LI") {
         elementsToBeSearched[i].style.display = "block";
