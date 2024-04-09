@@ -50,3 +50,30 @@ class CriteriaCatalogDetailsPage(object):
             By.XPATH,
             Locator.allHorizontalLineElements,
         )
+    
+    def getSearchField(self):
+        """Returns the search field.
+        
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.fullTextSearchField,
+        )
+    
+    def getCollapseEverythingButton(self):
+        """Returns the collapse-everything-button.
+        
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.collpaseEveryThingButton,
+        )
+    
+    def getAllButtonElements(self, parent):
+        """Returns all child-buttons.
+        
+        """
+        return parent.find_elements(
+            By.TAG_NAME,
+            "button",
+        )            
