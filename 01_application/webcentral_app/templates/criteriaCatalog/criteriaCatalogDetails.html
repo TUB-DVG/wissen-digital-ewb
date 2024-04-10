@@ -113,7 +113,6 @@ ul {
                 </div>
               </div>
               <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
-
             </div>
             
               <div class="row" id="hi">
@@ -176,7 +175,9 @@ ul {
   var idOfTopicToBeOpened = "{{ topicIdentifier }}";
   var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
   var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
-  console.log(idOfTopicToBeOpened)
+
+  // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
+  modifyCatalogToBeShownInOneElement();
 
   if (idOfTopicToBeOpened != "") {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
@@ -198,6 +199,64 @@ ul {
     return parentElement;
   }
 
+  function getHeadingAndDescription(element, stringToConcatanate) {
+    for (var i = 0; i < element.children.length; i++) {
+      if (element.children[i].tagName == "BUTTON") {
+        stringToConcatanate += "<h6>" + element.children[i].textContent + "</h6>" + "<br>";
+      }
+      if (element.children[i].tagName == "P") {
+        stringToConcatanate += "<p>" + element.children[i].textContent + "</p>" + "<br>";
+      }
+    }
+    return stringToConcatanate;
+  }
+
+  function modifyCatalogToBeShownInOneElement() {
+    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+    for (var i = 0; i < elementsToBeSearched.length; i++) {
+      
+      if (elementsToBeSearched[i].tagName == "UL" && Number(elementsToBeSearched[i].id) >= 2) {
+        var textForCombinedElement = "";
+        var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
+        // debugger;
+        textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
+        for (var j = 0; j < liDescendants.length; j++) {
+          // if (Number(liDescendants[j].id) > 2) {
+          //   textForCombinedElement += getHeadingAndDescription(liDescendants[j], textForCombinedElement);
+          // }
+          if (Number(liDescendants[j].id) >= 3) {
+            liDescendants[j].remove();
+          }
+          if (Number(liDescendants[j].id) == 2) {
+            liDescendants[j].querySelector("p").remove();
+            liDescendants[j].querySelectorAll("div")[1].remove();
+          }
+          
+        }
+        var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
+        for (var j = 0; j < ulChildElements.length; j++) {
+          if (Number(ulChildElements[j].id) > 3) {
+            ulChildElements[j].remove();
+          }
+        }
+        var newLiElement = document.createElement("li");
+        newLiElement.style.display = "none";
+        newLiElement.innerHTML = textForCombinedElement;
+        var firstULElement = elementsToBeSearched[i].querySelector('ul')
+        if (firstULElement != null) {
+          firstULElement.appendChild(newLiElement);
+        }
+        
+        // for (var j = 0; j < elementsToBeSearched[i].children.length; j++) {
+        //   if (elementsToBeSearched[i].children[j].tagName == "LI") {
+        //     elementsToBeSearched[i].children[j].style.display = "block";
+        //     elementsToBeSearched[i].children[j].getElementsByTagName("div")[0].style.display = "block";
+        //   }
+        // }
+      }
+    }
+  }
+
   function searchFullText(searchString) {    
     console.log(searchString)
     var elementsToBeSearched = document.querySelectorAll("#hi *");
@@ -216,7 +275,6 @@ ul {
       resetCriteriaCatalog();
       // show all found elements
       for (var i = 0; i < foundElements.length; i++) {
-        // debugger;
         foundElements[i].style.backgroundColor = "yellow";
         var rootElement = findRootElement(foundElements[i]);
         depthFirstWalk(rootElement, foundElements[i]);  
@@ -287,6 +345,48 @@ function openHeadingsForLayers() {
     else {
       document.getElementById("requirementsAndRuleExamples").style.display = "none";
     }
+}
+
+function addElementsToArray(arrayToBeAddedTo, arrayToAdd) {
+  for (var i = 0; i < arrayToAdd.length; i++) {
+    arrayToBeAddedTo.push(arrayToAdd[i]);
+  }
+  return arrayToBeAddedTo;
+}
+
+function returnFirstAppearanceOfElementWithTagName(element, tagName) {
+  var childElements = element.children;
+  for (var i = 0; i < childElements.length; i++) {
+    if (childElements[i].tagName == tagName) {
+      return childElements[i];
+    }
+  }
+}
+
+
+function depthFirstWalkForModification(element) {
+
+  var aggregatedString = ""; 
+  var liElement = ""
+  
+  var array = Array.prototype.slice.call(element.children);
+  var ulAndLiElements = array.filter(function(element) {
+    return element.tagName === 'UL' || element.tagName === 'LI';
+  });
+  liUlElements = []
+  liUlElements = addElementsToArray(liUlElements, ulAndLiElements)
+  while (liUlElements.length > 0) {
+    liUlElement = liUlElements.pop();
+    if (liUlElement.tagName == "LI") {
+      liElement = liUlElement;
+      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br/>"
+      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "P").textContent + "<br/>"
+    }
+    if (liUlElement.tagName == "UL") {
+      liUlElements = addElementsToArray(liUlElements, liUlElement.children);
+    }
+  }
+  return aggregatedString;
 }
 
 function depthFirstWalk(rootElement, target) {
@@ -402,55 +502,62 @@ function checkHowManyLayersAreShown() {
 
 function openChildLayer(element) {
   var parentOfClickedElement = element.parentElement;
-
-  if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
-    parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
-    parentOfClickedElement.style.marginLeft = "34px";
-    parentOfClickedElement.style.paddingLeft = "0px";
+  var childUlElements = [];
+  if (element.id == "2") {
+    childUlElements = element.querySelectorAll("ul ul");
+    childUlElements[0].style.display = "block";
+    childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
   }
-  
-  var layerNumberOfClickedElement = Number(element.id);
-  // element.parentElement.nextElementSibling.style.display = "none";
-  var childElements = element.children;
-  var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-  if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
-    buttonElements[0].children[0].src = pathToArrowUpImg;
-  }
-  var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-  if (childParagraphDescriptionText.length > 0) {
-    childParagraphDescriptionText[0].style.display = "block";
-    childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
-    childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
-    childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
-    childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
-
-  }
-  var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
-  // if (childHRElements.length > 0) {
-    
-  //   childHRElements[0].style.display = "block";
-  // }
-  // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
-  // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
-  var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
-  for (var i = 0; i < nextLayerElementsUL.length; i++) {
-    nextLayerElementsUL[i].style.display = "block";
-
-    // get the li-elements, which are childs of the ul:
-    var childsOfUL = nextLayerElementsUL[i].children;
-    var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
-      if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
-        return element;
-      } 
-    })
-
-    for (var j = 0; j < nextLayerElementsLI.length; j++) {
-      nextLayerElementsLI[j].style.display = "block";
-      nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
-      nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+  else {
+    if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
+      parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
+      parentOfClickedElement.style.marginLeft = "34px";
+      parentOfClickedElement.style.paddingLeft = "0px";
     }
+    
+    var layerNumberOfClickedElement = Number(element.id);
+    // element.parentElement.nextElementSibling.style.display = "none";
+    var childElements = element.children;
+    var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
+    if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
+      buttonElements[0].children[0].src = pathToArrowUpImg;
+    }
+    var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
+    if (childParagraphDescriptionText.length > 0) {
+      childParagraphDescriptionText[0].style.display = "block";
+      childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
+      childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
+      childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
+      childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
+
+    }
+    var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
+    // if (childHRElements.length > 0) {
+      
+    //   childHRElements[0].style.display = "block";
+    // }
+    // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
+    // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
+    var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
+    for (var i = 0; i < nextLayerElementsUL.length; i++) {
+      nextLayerElementsUL[i].style.display = "block";
+
+      // get the li-elements, which are childs of the ul:
+      var childsOfUL = nextLayerElementsUL[i].children;
+      var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
+        if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
+          return element;
+        } 
+      })
+
+      for (var j = 0; j < nextLayerElementsLI.length; j++) {
+        nextLayerElementsLI[j].style.display = "block";
+        nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
+        nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+      }
+    }
+    // }
   }
-  // }
 }
 
 function closeChildLayer(element) {
