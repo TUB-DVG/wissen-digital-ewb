@@ -121,8 +121,8 @@ ul {
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul style="margin-bottom: 2px; border-left: 15px solid #F5E86A;" id="{{ node.depth }}">
-                          <div class="hr" id="{{ node.content.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
+                          <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
+                          <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
                         {% elif node.depth == 1 %}
                           <ul class="firstLayerUl" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
                         {% else %}
@@ -133,7 +133,7 @@ ul {
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
                           <li onclick="showOrHide(event, this)" style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px;" id="0">
+                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
                             <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
@@ -221,6 +221,7 @@ ul {
         depthFirstWalk(rootElement, foundElements[i]);  
       }
     }
+    openHeadingsForLayers();
     // console.log("Enter was pressed")
   }
 
@@ -399,6 +400,14 @@ function checkHowManyLayersAreShown() {
 }
 
 function openChildLayer(element) {
+  var parentOfClickedElement = element.parentElement;
+
+  if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
+    parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
+    parentOfClickedElement.style.marginLeft = "34px";
+    parentOfClickedElement.style.paddingLeft = "0px";
+  }
+  
   var layerNumberOfClickedElement = Number(element.id);
   // element.parentElement.nextElementSibling.style.display = "none";
   var childElements = element.children;
@@ -444,6 +453,13 @@ function openChildLayer(element) {
 }
 
 function closeChildLayer(element) {
+  var parentOfClickedElement = element.parentElement;
+
+  if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
+    parentOfClickedElement.style.borderLeft = "none";
+    parentOfClickedElement.style.marginLeft = "0px";
+  }
+
   var layerNumberOfClickedElement = Number(element.id);
   var childElements = element.children;
   var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
@@ -480,6 +496,9 @@ function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
   for (var i = 0; i < elementsToBeSearched.length; i++) {
+    if (elementsToBeSearched[i].tagName == "BUTTON") {
+      elementsToBeSearched[i].style.backgroundColor = "white";
+    }
     // elementsToBeSearched[i].style.backgroundColor = "white";
     if (elementsToBeSearched[i].id == "0") {
       if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "LI") {
