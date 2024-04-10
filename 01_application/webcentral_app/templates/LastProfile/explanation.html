@@ -71,7 +71,11 @@ Page Banner END -->
       <!-- text electric profil END -->
       <!-- image electric profil START -->
       <div class="col-lg-7">
-        <img src="{% static '/img/Lastprofil/stromlast_sketch.png' %}" alt="">
+        {% if request.LANGUAGE_CODE == "de" %}
+          <img src="{% static '/img/Lastprofil/stromlast_sketch.png' %}" alt="">
+        {% else %}
+          <img src="{% static '/img/Lastprofil/electricload_sketch.png' %}" alt="">
+        {% endif %} 
       </div>
       <!-- image electric profil END -->
     <!-- row electric profil END -->
@@ -122,9 +126,14 @@ Page Banner END -->
       <!-- text heat profil END -->
       <!-- image heat profil START -->
       <div class="col-lg-7">
-        <img src="{% static '/img/Lastprofil/waermelast_sketch.png' %}"
-             alt="Bild Waermelast">
-      </div>
+        {% if request.LANGUAGE_CODE == "de" %}
+          <img src="{% static '/img/Lastprofil/waermelast_sketch.png' %}"
+              alt="Bild Waermelast">
+        {% else %}
+          <img src="{% static '/img/Lastprofil/heatload_sketch.png' %}"
+              alt="Image heat load">
+        {% endif %}
+        </div>
       <!-- image heat profil END -->
     </div>
     <!-- row heat profil END -->
