@@ -95,23 +95,25 @@ ul {
               </div>
             </div>
             <br />
-            <div class="row">
-              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px;">
+            <div class="row sticky-top" style="top: 115px; background-color: white;">
+              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px; margin-left: 35px; padding: 0px;">
                 Themen
               </div>
               <div class="col-lg-1 mb-3" id="container-criteria-catalog-details">
-                <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
+                <div id="criterias" style="display: none; font-size: 16px; margin-left: 20px;">Kriterien</div>
               </div>
               <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
-                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
+                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px; margin-left: 20px;">Anforderungen und Regelbeispiele</div>
               </div>
-              <div class="col-lg-5 mb-3">
+              <div class="col-lg-4 mb-3">
               </div>
-              <div class="col-lg-2" id="container-criteria-catalog-details">
+              <div class="col-lg-2" style="margin-left: 30px"id="container-criteria-catalog-details">
                 <div style="text-align: right">
                   <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
               </div>
+              <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
+
             </div>
             
               <div class="row" id="hi">
@@ -122,7 +124,6 @@ ul {
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
                           <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
-                          <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
                         {% elif node.depth == 1 %}
                           <ul class="firstLayerUl" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
                         {% else %}
