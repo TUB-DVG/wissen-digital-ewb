@@ -39,6 +39,7 @@ urlpatterns += i18n_patterns(
         path('TechnicalStandards/',include('TechnicalStandards.urls')),
         path('publications/',include('publications.urls')),
         path("criteriaCatalog/", include("criteriaCatalog.urls")),
+        path('i18n/', include('django.conf.urls.i18n')),
 )
 
 
