@@ -80,11 +80,11 @@
   outline: 2px solid #F5E86A;
   outline-offset: -17px;
 }
-/* #container-criteria-catalog-details hr {
+#container-criteria-catalog-details hr {
   background-color: #F5E86A;
   height: 3px;
   border: 0;
-} */
+}
 #container-criteria-catalog-details li {
   list-style-type: none;
 }
@@ -97,6 +97,11 @@
   background-position-x: 95%;
   background-position-y: 50%;
   padding-right: 30px; /* space for the icon */
+}
+
+.same-horizontal-position-lvl-1 {
+  position: relative; /* or absolute, depending on your layout */
+  left: 50px; /* or any value you want */
 }
 
 /* formating cards */

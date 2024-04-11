@@ -100,7 +100,7 @@ ul {
               <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px;">
                 Themen
               </div>
-              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details">
+              <div class="col-lg-1 mb-3 same-horizontal-position-lvl-1" id="container-criteria-catalog-details">
                 <div id="criterias" style="display: none; font-size: 16px; margin-left: 20px;">Kriterien</div>
               </div>
               <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
@@ -117,7 +117,6 @@ ul {
                 <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A; margin-left: 15px;"></div>
               </div>
             </div>
-            
               <div class="row" id="hi">
                 <!-- <ul> -->
                   {% for tree in trees %}
@@ -125,11 +124,11 @@ ul {
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul style="margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
+                          <ul class="pl-0" style="margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
                         {% elif node.depth == 1 %}
-                          <ul class="firstLayerUl" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
+                          <ul class="pl-1" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
                         {% else %}
-                          <ul class="deeperLevelUl" style="display: none; margin-left: 105px; padding: 0px;" id="{{ node.depth }}">
+                          <ul class="pl-{{ node.depth }}" style="display: none" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         {% if node.depth == 0 %}
@@ -149,9 +148,13 @@ ul {
                           <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 105px;"></div>
                         {% else %}
-                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <button style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
+                          <li onclick="showOrHide(event, this)" class="same-horizontal-position-lvl-1" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                            {% if node.content.depth == 1 %}
+                              <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            {% else %}
+                              <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            {% endif %}
+                              <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
                               <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px; padding-left: 105px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                               <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             
@@ -183,8 +186,8 @@ ul {
   var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
 
   // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
-  modifyCatalogToBeShownInOneElement();
-
+  // modifyCatalogToBeShownInOneElement();
+  bringParagraphsInNextLayer();
   if (idOfTopicToBeOpened != "") {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     for (var i = 0; i < elementsToBeSearched.length; i++) {
@@ -195,6 +198,28 @@ ul {
       }
     }
     openHeadingsForLayers();
+  }
+
+  function bringParagraphsInNextLayer() {
+    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+    var parentOfParagraph = undefined;
+    for (var i = 0; i < elementsToBeSearched.length; i++) {
+      if (elementsToBeSearched[i].tagName === "P") {
+        // elementsToBeSearched[i].style.marginLeft = "110px";
+        
+        // find the ul-element, to which the paragrpah should be moved:
+        childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementsToBeSearched[i], "UL");
+        if (childUlFromParagraph != "") {
+            newLiElement = document.createElement("li");
+            newLiElement.prepend(elementsToBeSearched[i]);
+            debugger;
+            childUlFromParagraph.prepend(newLiElement);
+            // remove the paragraph from its current position:
+            parentOfParagraph = elementsToBeSearched[i].parentElement;
+            parentOfParagraph.removeChild(elementsToBeSearched[i]);
+        }
+      }
+    }
   }
 
   function findRootElement(element) {

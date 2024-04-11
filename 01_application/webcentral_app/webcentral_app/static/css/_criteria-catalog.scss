@@ -44,3 +44,8 @@
     background-position-y: 50%;
     padding-right: 30px; /* space for the icon */
   }
+
+  .same-horizontal-position-lvl-1 {
+    position: relative; /* or absolute, depending on your layout */
+    left: 50px; /* or any value you want */
+}
