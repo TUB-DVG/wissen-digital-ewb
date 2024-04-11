@@ -87,16 +87,17 @@ ul {
       <!-- </form> -->
       <div class="p-2">
         <div class="row g-4">
-          <div class="col-lg-12 border-legal p-4 my-4" id="container-criteria-catalog-details">
+          <div class="col-lg-12 border-legal my-4 p-4" id="container-criteria-catalog-details">
               <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
             <div class="row">
-              <div class="col-lg-12" id="container-criteria-catalog-details">
+              <div>
                 <p style="font-size: 22px;">Beschreibungstext: {{ criteriaCatalog.text }}</p>
               </div>
             </div>
             <br />
+
             <div class="row sticky-top" style="top: 115px; background-color: white;">
-              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px; margin-left: 35px; padding: 0px;">
+              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px;">
                 Themen
               </div>
               <div class="col-lg-1 mb-3" id="container-criteria-catalog-details">
@@ -105,14 +106,16 @@ ul {
               <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
                 <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px; margin-left: 20px;">Anforderungen und Regelbeispiele</div>
               </div>
-              <div class="col-lg-4 mb-3">
+              <div class="col-lg-3 mb-3">
               </div>
-              <div class="col-lg-2" style="margin-left: 30px"id="container-criteria-catalog-details">
+              <div class="col-lg-2" style="margin-left: 30px" id="container-criteria-catalog-details">
                 <div style="text-align: right">
                   <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
               </div>
-              <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
+              <div class="row col-lg-12 mr-3">
+                <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A; margin-left: 15px;"></div>
+              </div>
             </div>
             
               <div class="row" id="hi">
@@ -122,13 +125,18 @@ ul {
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul style="margin-bottom: 2px;" id="{{ node.depth }}">
+                          <ul style="margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
                         {% elif node.depth == 1 %}
                           <ul class="firstLayerUl" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
                         {% else %}
                           <ul class="deeperLevelUl" style="display: none; margin-left: 105px; padding: 0px;" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
+                        {% if node.depth == 0 %}
+                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
+                        {% else %}
+                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                        {% endif %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
@@ -137,19 +145,17 @@ ul {
                             <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
-                            <!-- <br id="0" /> -->
+                          <div class="hr" id="{{ node.content.depth }}" style=" height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
                           <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 105px;"></div>
-                          <!-- <hr style="border: none; display: none; margin-top: 1px;  background-color: #F5E86A; border: none; height: 4px; margin-left: 110px;" id="0"> -->
                         {% else %}
-                          <!-- <hr style="display: none; margin-top: 1px; margin-left: 80px; padding-left: 80px; color: #F5E86A; border: 2px solid #F5E86A;" id="{{ node.content.depth }}"> -->
                           <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <button style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                             <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
-                            <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px; padding-left: 105px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                            <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
-                            <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
+                              <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px; padding-left: 105px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                              <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                            
+                              <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
                       {% endif %}
                     {% endfor %}
@@ -535,7 +541,7 @@ function openChildLayer(element) {
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
       parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
-      parentOfClickedElement.style.marginLeft = "34px";
+      parentOfClickedElement.style.marginLeft = "16px";
       parentOfClickedElement.style.paddingLeft = "0px";
     }
     
@@ -577,9 +583,15 @@ function openChildLayer(element) {
       for (var j = 0; j < nextLayerElementsLI.length; j++) {
         nextLayerElementsLI[j].style.display = "block";
         nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
+        // if (j < nextLayerElementsLI.length - 1) {
+        if (i < nextLayerElementsUL.length - 1) {
         nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+        }
       }
     }
+    // horizontal line, which closes the nested layer is shown
+    element.children[element.children.length-1].style.display = "block";
+    // debugger;
     // }
   }
 }
