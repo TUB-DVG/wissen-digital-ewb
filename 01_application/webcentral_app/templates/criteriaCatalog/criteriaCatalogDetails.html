@@ -217,9 +217,23 @@ ul {
       
       if (elementsToBeSearched[i].tagName == "UL" && Number(elementsToBeSearched[i].id) >= 2) {
         var textForCombinedElement = "";
+        var textCombinedConcatenated = "";
         var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
         // debugger;
-        textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
+        // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
+
+        var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
+        for (var j = 0; j < ulChildElements.length; j++) {
+          if (Number(ulChildElements[j].id) == 3) {
+            textForCombinedElement = ulChildElements[j].textContent
+            textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n\n');
+            textCombinedConcatenated += textForCombinedElement;
+            // debugger;
+          }
+          if (Number(ulChildElements[j].id) > 3) {
+            ulChildElements[j].remove();
+          }
+        }
         for (var j = 0; j < liDescendants.length; j++) {
           // if (Number(liDescendants[j].id) > 2) {
           //   textForCombinedElement += getHeadingAndDescription(liDescendants[j], textForCombinedElement);
@@ -233,15 +247,11 @@ ul {
           }
           
         }
-        var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
-        for (var j = 0; j < ulChildElements.length; j++) {
-          if (Number(ulChildElements[j].id) > 3) {
-            ulChildElements[j].remove();
-          }
-        }
+
         var newLiElement = document.createElement("li");
         newLiElement.style.display = "none";
-        newLiElement.innerHTML = textForCombinedElement;
+        newLiElement.style.whiteSpace = "pre-line";
+        newLiElement.innerHTML = textCombinedConcatenated;
         var firstULElement = elementsToBeSearched[i].querySelector('ul')
         if (firstULElement != null) {
           firstULElement.appendChild(newLiElement);
@@ -347,6 +357,14 @@ function openHeadingsForLayers() {
     }
 }
 
+function getLiAndUlElements(element) {
+  var array = Array.prototype.slice.call(element.children);
+  var ulAndLiElements = array.filter(function(element) {
+    return element.tagName === 'UL' || element.tagName === 'LI';
+  });
+  return ulAndLiElements;
+}
+
 function addElementsToArray(arrayToBeAddedTo, arrayToAdd) {
   for (var i = 0; i < arrayToAdd.length; i++) {
     arrayToBeAddedTo.push(arrayToAdd[i]);
@@ -361,6 +379,7 @@ function returnFirstAppearanceOfElementWithTagName(element, tagName) {
       return childElements[i];
     }
   }
+  return "";
 }
 
 
@@ -368,7 +387,7 @@ function depthFirstWalkForModification(element) {
 
   var aggregatedString = ""; 
   var liElement = ""
-  
+  var newUlLiElements = [];
   var array = Array.prototype.slice.call(element.children);
   var ulAndLiElements = array.filter(function(element) {
     return element.tagName === 'UL' || element.tagName === 'LI';
@@ -376,15 +395,20 @@ function depthFirstWalkForModification(element) {
   liUlElements = []
   liUlElements = addElementsToArray(liUlElements, ulAndLiElements)
   while (liUlElements.length > 0) {
+    
     liUlElement = liUlElements.pop();
-    if (liUlElement.tagName == "LI") {
+    debugger;
+    if (liUlElement.tagName == "LI" && Number(liUlElement.id) > 2) {
       liElement = liUlElement;
       aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br/>"
       aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "P").textContent + "<br/>"
     }
-    if (liUlElement.tagName == "UL") {
-      liUlElements = addElementsToArray(liUlElements, liUlElement.children);
-    }
+    newUlLiElements = getLiAndUlElements(liUlElement);
+    liUlElements = addElementsToArray(liUlElements, newUlLiElements);
+
+    // if (liUlElement.tagName == "UL") {
+    //   liUlElements = addElementsToArray(liUlElements, liUlElement.children);
+    // }
   }
   return aggregatedString;
 }
@@ -636,6 +660,9 @@ function showOrHide(event, element) {
   // check if element if child-elements should be expoanded or collapsed
   var childElements = element.children;  
   var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
+  if (filteredChildElements.length == 0) {
+    return;
+  }
   if (filteredChildElements[0].style.display == "none") {
     openChildLayer(element);
   }
