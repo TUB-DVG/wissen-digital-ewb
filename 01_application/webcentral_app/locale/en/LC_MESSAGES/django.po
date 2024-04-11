@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-07 12:27+0000\n"
+"POT-Creation-Date: 2024-04-11 14:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -519,16 +519,6 @@ msgstr "Wireless"
 msgid "Proprietär"
 msgstr "Proprietary"
 
-#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
-msgid "Find Apps"
-msgstr ""
-
-#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:13
-#: templates/admin/publications/publication_change_list.html:11
-#, python-format
-msgid "Add %(name)s"
-msgstr ""
-
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
 msgstr ""
@@ -574,13 +564,14 @@ msgid ""
 "              <br>\n"
 "              Die jeweiligen Lastprofile können auch heruntergeladen werden."
 msgstr ""
-"On this page you have access to a load profile generator for heat"
-"demand and a load profile generator for electricity demand. The "
-"load profiles are displayed as time series. The load profiles are based on "
-"the (building) use type, the annual electricity or heat requirements and the calculation "
+"On this page you have access to a load profile generator for heatdemand and "
+"a load profile generator for electricity demand. The load profiles are "
+"displayed as time series. The load profiles are based on the (building) use "
+"type, the annual electricity or heat requirements and the calculation "
 "period, which must be specified. To calculate the heat load, the ambient "
-"temperature corresponding to the calculation period is also used with the respective weather data."
-"<br>The generated load profiles can also be downloaded."
+"temperature corresponding to the calculation period is also used with the "
+"respective weather data.<br>The generated load profiles can also be "
+"downloaded."
 
 #: templates/LastProfile/explanation.html:49
 #: templates/LastProfile/explanation.html:166
@@ -598,7 +589,8 @@ msgid ""
 msgstr ""
 "The electrical load profile generator generates a time series that shows the "
 "typical course of power consumption over time depending on (building) usage "
-"and annual power requirements. Furthermore, the calculation period can be specified:"
+"and annual power requirements. Furthermore, the calculation period can be "
+"specified:"
 
 #: templates/LastProfile/explanation.html:59
 #: templates/tools_over/explanationApps.html:34
@@ -651,8 +643,8 @@ msgid ""
 msgstr ""
 "The heat load profile generator creates a time series that shows the typical "
 "course of the heat load over time depending on the weather data, the annual "
-"heat requirement and the building type. Furthermore, the "
-"calculation period can be specified:"
+"heat requirement and the building type. Furthermore, the calculation period "
+"can be specified:"
 
 #: templates/LastProfile/explanation.html:105
 msgid ""
@@ -702,7 +694,8 @@ msgid ""
 "            Hellwig, 2003, \"Entwicklung und Anwendung parametrisierter\n"
 "            Standard-Lastprofile\""
 msgstr ""
-"Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-Lastprofile'"
+"Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-"
+"Lastprofile'"
 
 #: templates/LastProfile/explanation.html:158
 msgid "Download der Disseration"
@@ -800,12 +793,11 @@ msgid ""
 "          Forschungsinitative Energiewendebauen."
 msgstr ""
 "The accompanying scientific research of the research initiative "
-"Energiewendebauen provides with the knowledge platform digitization "
-"knowledge platform provides access to the research results and the tools "
-"created from the research projects in the area of digitization in the "
-"construction sector. This platform is aimed at the interested specialist "
-"community and also to the research projects of the Energiewendebauen "
-"research initiative."
+"Energiewendebauen offers a knowledge platform that provides access to the "
+"research results and toolsd eveloped from the research projects in the area "
+"of digitalization in the built environment. This platform targets the "
+"community interested in such research and also supports the research projects "
+"of the Energiewendebauen initiative."
 
 #: templates/StartSearch/StartSearch.html:88 templates/partials/_navbar.html:44
 msgid "Technischer Fokus"
@@ -820,11 +812,9 @@ msgid ""
 "                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
 "                Forschungsergebnisse."
 msgstr ""
-"The technical focus in the investigation of digitalization in energy "
-"research in the building sector is primarily aimed at tools for technical "
-"planning and the technical operational implementation and optimization. This "
-"includes data sets, digital tools and applications and other research "
-"Research results."
+"The technical focus of investigating digitalization in energy research"
+"within the built environment primarily targets tools for technical planning,"
+"energy efficient operation, and optimization. This encompasses datasets, digital tools, applications, and other research results."
 
 #: templates/StartSearch/StartSearch.html:108
 msgid "Werkzeuge"
@@ -878,10 +868,10 @@ msgid ""
 "                den Nutzenden."
 msgstr ""
 "The operational focus when examining digitalization in energy research in "
-"the building sector is primarily aimed at the use phase of digital "
-"applications. Important aspects are the economical operation of digital "
-"applications(business models) and the integration and interactionwith the "
-"users."
+"the built environment primarily centers on the use phase of digital applications. "
+"Key aspects include the economical operation of digital "
+"applications/business models, along with user integration and interactivity."
+
 
 #: templates/StartSearch/StartSearch.html:220
 #: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
@@ -930,11 +920,10 @@ msgid ""
 "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgstr ""
 "The ecological focus when examining digitalization in energy research in the "
-"building sector aims to evaluate environmental effects through the use of "
-"digital applications. In addition to positive effects such as energy "
-"savings, negative effects such as increased material consumption through "
-"digital applications are also shown. In this context, the adequate handling "
-"of data and its effects are also discussed."
+"built environment aims to evaluate environmental impacts resuluting from the use of "
+"digital applications. his includes assessing both positive effects, such as energy savings,"
+"and potential negative effects, like increased material consumption."
+"Adequate data handling and its implications are also discussed in this context."
 
 #: templates/StartSearch/StartSearch.html:329
 #: templates/pages/environmentalIntegrityNegativ.html:19
@@ -978,12 +967,11 @@ msgid ""
 "                Datenschutzrecht konkretisiert und in konkrete\n"
 "                Handlungsempfehlungen für Projekte übersetzt."
 msgstr ""
-"The legal focus primarily highlights the importance of data protection for "
-"digitalization in the building sector. On the one hand, it shows how data "
-"protection risks arise and how they can inhibit innovation. On the other "
-"hand, data protection law is being clarified for a wide range of "
-"applications in the building sector and translated into concrete "
-"recommendations for action for projects."
+"The legal focus emphasizes the importance of data protection in digitalization"
+" within the built environment. It addresses the emergence of data protection" 
+" risks and their potential to impede innovation. Concurrently, it clarifies" 
+"data protection laws for various applications in the building sector, offering concrete"
+" action recommendations for projects."
 
 #: templates/StartSearch/StartSearch.html:421
 #: templates/partials/_navbar.html:208
@@ -1701,6 +1689,11 @@ msgstr ""
 
 #: templates/admin/publications/import_bibtex.html:39
 msgid "Import"
+msgstr ""
+
+#: templates/admin/publications/publication_change_list.html:11
+#, python-format
+msgid "Add %(name)s"
 msgstr ""
 
 #: templates/datasets_over/dataset-detail.html:66
