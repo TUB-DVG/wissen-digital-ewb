@@ -34,9 +34,15 @@
         </p>
       </div>
       <div class="col-12 col-lg-2">
-        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
-          class="img-side-column" style="height: 200px;"
-          alt="Logo_BMWK">
+        {% if request.LANGUAGE_CODE == "de" %}
+          <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+            class="img-side-column" style="height: 200px;"
+            alt="Logo_BMWK">
+        {% else %}
+          <img src="{% static '/img/bmwk_en_2023.png' %}"
+            class="img-side-column"
+            alt="Logo_BMWK">
+        {% endif %}
       </div>
     </div>
   </div>

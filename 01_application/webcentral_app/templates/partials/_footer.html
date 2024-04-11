@@ -1,4 +1,8 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+
+{% url 'set_language' as set_language_url %}
 <!-- Footer START -->
 <footer class="pt-5 bg-white">
 	<div class="container">
@@ -16,6 +20,21 @@
 								info@dvg.tu-berlin.de
 							</a>
 						</span>
+						<div>
+							Set language:
+							<form action="{{ set_language_url }}" method="post">
+								{% csrf_token %}
+								<input name="next" type="hidden" value="{{ request.path }}">
+								<select name="language" onchange="this.form.submit();">
+									{% get_available_languages as LANGUAGES %}
+									{% for code, name in LANGUAGES %}
+										<option value="{{ code }}"{% if lang.code == code %} selected{% endif %}>
+											{{ name }}
+										</option>
+									{% endfor %}
+								</select>
+							</form>
+						</div>
 					</div>
 					<!-- mailto END -->
 					<!-- offical links START -->
