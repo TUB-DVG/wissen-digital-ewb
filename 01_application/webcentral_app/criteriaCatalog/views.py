@@ -89,7 +89,7 @@ def buildCriteriaCatalog(
         
         while len(queueBreathFirstSearch) > 0:
             currentNode = queueBreathFirstSearch.pop()
-            childsOfCurrentElement = topicsWithoutChilds.filter(parent=currentNode.topic)
+            childsOfCurrentElement = topicsWithoutChilds.filter(parent=currentNode.topic).order_by('id')
             topicsWithoutChilds = topicsWithoutChilds.exclude(parent=currentNode.topic)
             childNodes = []
             for childElement in childsOfCurrentElement:
@@ -98,6 +98,7 @@ def buildCriteriaCatalog(
                 childNode.addDepth(currentNode.depth+1)
                 childNodes.append(childNode)
                 queueBreathFirstSearch.append(childNode) 
+            childNodes.sort(key=lambda x: x.topic.id)
             currentTree.addToDict(currentNode, childNodes)
         listOfFlattenedTrees.append(tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index]))
     return render(
