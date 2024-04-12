@@ -5,6 +5,9 @@
 {% load format_tags %}
 <!DOCTYPE html>
 <style>
+button {
+  text-align: left;
+}
 .absolute-horizontal-position-lvl-one {
     padding-left: 111px;
     margin-left: 0px;
@@ -150,32 +153,22 @@
                           <ul style="display: none" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
-                        {% if node.depth == 0 %}
-                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
-                        {% else %}
-                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
-                        {% endif %}
+                        <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li onclick="showOrHide(event, this)" style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
+                          <li  style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
                             <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
-                            <button  id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
+                            <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
-                          <div class="hr" id="{{ node.content.depth }}" style=" height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
+                          <!-- <div class="hr" id="{{ node.content.depth }}" style=" height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div> -->
                           <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
-                          <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 105px;"></div>
                         {% else %}
-                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            {% if node.content.depth == 1 %}
-                              <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                            {% else %}
-                              <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                            {% endif %}
-                              <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
-                              <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                              <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                          <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                          <!-- <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                             -->
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                             
                               <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
@@ -205,7 +198,7 @@
   var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
 
   // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
-  // modifyCatalogToBeShownInOneElement();
+  modifyCatalogToBeShownInOneElement();
   // bringParagraphsInNextLayer();
   depthFirstWalkForParagraphs();
   if (idOfTopicToBeOpened != "") {
@@ -218,6 +211,15 @@
       }
     }
     openHeadingsForLayers();
+  }
+
+  function removeLastDivFromUlOfLevelOne () {
+    var ulElements = document.querySelectorAll("#hi ul.\\1");
+    for (var i = 0; i < ulElements.length; i++) {
+      if (ulElements[i].nextElementSibling == undefined) {
+        ulElements[i].children[0].children[1].style.display = "none";
+      }
+    }
   }
 
   function bringParagraphsInNextLayer() {
@@ -261,6 +263,15 @@
     return stringToConcatanate;
   }
 
+  function createDivElement(id){
+    var newDivElement = document.createElement("div");
+    newDivElement.className = "hr";
+    newDivElement.style.display = "none";
+    newDivElement.id = id;
+
+    return newDivElement;
+  }
+
   function depthFirstWalkForParagraphs() {
     var divContainerOfCriteriaCatalog = document.getElementById("hi");
     var childElements = divContainerOfCriteriaCatalog.children;
@@ -290,6 +301,7 @@
 
           newUlElement = document.createElement("ul");
           newUlElement.id = Number(elementFromQueue.id);
+          newUlElement.style.display = "none";
           if (newUlElement.id == 1) {
             newUlElement.className = "absolute-horizontal-position-lvl-one";
           }
@@ -298,11 +310,13 @@
           }
           newLiElement = document.createElement("li");
           newLiElement.id = Number(elementFromQueue.id);
-          newLiElement.prepend(elementFromQueue);
-          newDivElement = document.createElement("div");
-          newDivElement.className = "hr";
-          newDivElement.style.display = "none";
-          newLiElement.appendChild(newDivElement);
+
+          prevNewDiv = createDivElement(Number(elementFromQueue.id));
+          nextNewDiv = createDivElement(Number(elementFromQueue.id));
+
+          newLiElement.prepend(prevNewDiv);
+          newLiElement.appendChild(elementFromQueue);
+          newLiElement.appendChild(nextNewDiv);
           newUlElement.prepend(newLiElement);
           firstUlAsChildOfLi = returnFirstAppearanceOfElementWithTagName(parentOfParagraph, "UL");
           if (firstUlAsChildOfLi != "") {
@@ -627,9 +641,19 @@ function checkHowManyLayersAreShown() {
   return layersExpanded;
 }
 
+function getFirstParentElementWithTagName(element, tagName) {
+  var parentElement = element;
+  while (parentElement.tagName != tagName) {
+    parentElement = parentElement.parentElement;
+  }
+  return parentElement;
+}
+
 function openChildLayer(element) {
-  var parentOfClickedElement = element.parentElement;
+
+  var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
+  
   if (element.id == "2") {
     childUlElements = element.querySelectorAll("ul ul");
     childUlElements[0].style.display = "block";
@@ -644,11 +668,19 @@ function openChildLayer(element) {
     
     var layerNumberOfClickedElement = Number(element.id);
     // element.parentElement.nextElementSibling.style.display = "none";
-    var childElements = element.children;
-    var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-    if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
-      buttonElements[0].children[0].src = pathToArrowUpImg;
+    var childElementsOfButton = element.children;
+
+    // since element is the button element, we can change the image of the element:
+    if (childElementsOfButton.length > 0) {
+      childElementsOfButton[0].src = pathToArrowUpImg;
     }
+    // show the DIV-element
+    // element.nextElementSibling.style.display = "block";
+
+    // var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
+    // if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
+    //   buttonElements[0].children[0].src = pathToArrowUpImg;
+    // }
     // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
     // if (childParagraphDescriptionText.length > 0) {
     //   childParagraphDescriptionText[0].style.display = "block";
@@ -658,14 +690,17 @@ function openChildLayer(element) {
     //   childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
 
     // }
-    var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
+    // var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
     // if (childHRElements.length > 0) {
       
     //   childHRElements[0].style.display = "block";
     // }
     // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
     // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
-    var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
+    
+    
+    debugger;
+    var nextLayerElementsUL = Array.from(element.parentElement.children).filter((element) => {return element.tagName == "UL"});
     var childOfLi = undefined;
     var buttonElementInLi = undefined;
     var paragraphElementInLi = undefined; 
@@ -692,6 +727,8 @@ function openChildLayer(element) {
         if (paragraphElementInLi.length > 0) {
           paragraphElementInLi[0].style.display = "block";
           paragraphElementInLi[0].nextElementSibling.style.display = "block";
+          debugger;
+          paragraphElementInLi[0].previousElementSibling.style.display = "block";
         }
         // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
         // if (j < nextLayerElementsLI.length - 1) {
@@ -786,8 +823,10 @@ function resetCriteriaCatalog() {
 var numberOfOpenElementsPerLayer = {};
 function showOrHide(event, element) {
   // check if element if child-elements should be expoanded or collapsed
-  var childElements = element.children;  
+  var childElements = element.parentElement.children; 
+
   var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
+  debugger;
   if (filteredChildElements.length == 0) {
     return;
   }
