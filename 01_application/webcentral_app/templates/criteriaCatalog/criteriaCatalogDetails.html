@@ -153,7 +153,11 @@ button {
                           <ul style="display: none" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
-                        <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
+                        {% if node.depth == 0 %}
+                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
+                        {% else %}
+                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                        {% endif %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
@@ -168,8 +172,7 @@ button {
                           <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                           <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                           <!-- <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                             -->
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
-                            
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>  
                               <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
                       {% endif %}
@@ -361,7 +364,8 @@ button {
           }
           if (Number(liDescendants[j].id) == 2) {
             liDescendants[j].querySelector("p").remove();
-            liDescendants[j].querySelectorAll("div")[1].remove();
+            // debugger;
+            // liDescendants[j].querySelectorAll("div")[1].remove();
           }
           
         }
@@ -649,13 +653,24 @@ function getFirstParentElementWithTagName(element, tagName) {
   return parentElement;
 }
 
+function getAllChildElementsWithTagName(element, tagName) {
+  var childElements = element.children;
+  var elements = [];
+  for (var i = 0; i < childElements.length; i++) {
+    if (childElements[i].tagName == tagName) {
+      elements.push(childElements[i]);
+    }
+  }
+  return elements;
+}
+
 function openChildLayer(element) {
 
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
   
   if (element.id == "2") {
-    childUlElements = element.querySelectorAll("ul ul");
+    childUlElements = element.parentElement.querySelectorAll("ul ul");
     childUlElements[0].style.display = "block";
     childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
   }
@@ -699,11 +714,12 @@ function openChildLayer(element) {
     // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
     
     
-    debugger;
+    // debugger;
     var nextLayerElementsUL = Array.from(element.parentElement.children).filter((element) => {return element.tagName == "UL"});
     var childOfLi = undefined;
     var buttonElementInLi = undefined;
-    var paragraphElementInLi = undefined; 
+    var paragraphElementInLi = undefined;
+    var divElements; 
     for (var i = 0; i < nextLayerElementsUL.length; i++) {
       nextLayerElementsUL[i].style.display = "block";
 
@@ -727,21 +743,28 @@ function openChildLayer(element) {
         if (paragraphElementInLi.length > 0) {
           paragraphElementInLi[0].style.display = "block";
           paragraphElementInLi[0].nextElementSibling.style.display = "block";
-          debugger;
+          // debugger;
           paragraphElementInLi[0].previousElementSibling.style.display = "block";
         }
         // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
         // if (j < nextLayerElementsLI.length - 1) {
         if (i < nextLayerElementsUL.length - 1) {
           if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
-          
-            nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+            debugger;
+            if (nextLayerElementsLI[j].parentElement.nextElementSibling != null && nextLayerElementsLI[j].id != "0") {
+              divElements = getAllChildElementsWithTagName(nextLayerElementsLI[j], "DIV")
+              for (var k = 0; k < divElements.length; k++) {
+                divElements[k].style.display = "block";
+              }
+              // nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+            }
+            // nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
           }
         }
       }
     }
     // horizontal line, which closes the nested layer is shown
-    element.children[element.children.length-1].style.display = "block";
+    // element.children[element.children.length-1].style.display = "block";
     // debugger;
     // }
   }
