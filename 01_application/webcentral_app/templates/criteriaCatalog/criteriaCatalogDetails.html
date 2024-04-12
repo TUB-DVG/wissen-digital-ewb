@@ -5,9 +5,26 @@
 {% load format_tags %}
 <!DOCTYPE html>
 <style>
-ul {
-  padding-left: 20px;
+.absolute-horizontal-position-lvl-one {
+    padding-left: 111px;
+    margin-left: 0px;
 }
+.absolute-horizontal-position-lvl-two {
+    padding-left: 106px;
+    margin-left: 0px;
+}
+.hr {
+    height: 2px;
+    background-color: #F5E86A;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+/* ul {
+  padding-left: 20px;
+} */
 #firstLayerUl {
     position: relative;
     margin-bottom: 2px;
@@ -97,14 +114,14 @@ ul {
             <br />
 
             <div class="row sticky-top" style="top: 115px; background-color: white;">
-              <div class="col-lg-1 mb-3" id="container-criteria-catalog-details" style="font-size: 16px;">
+              <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px;">
                 Themen
               </div>
-              <div class="col-lg-1 mb-3 same-horizontal-position-lvl-1" id="container-criteria-catalog-details">
-                <div id="criterias" style="display: none; font-size: 16px; margin-left: 20px;">Kriterien</div>
+              <div class="mb-3" style="width: 106px;">
+                <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
               </div>
-              <div class="col-lg-3 mb-3" id="container-criteria-catalog-details">
-                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px; margin-left: 20px;">Anforderungen und Regelbeispiele</div>
+              <div class="mb-3" id="container-criteria-catalog-details" style="width: 289px;">
+                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
               </div>
               <div class="col-lg-3 mb-3">
               </div>
@@ -124,11 +141,13 @@ ul {
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul class="pl-0" style="margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
+                          <ul style=" padding-left: 0px; margin-left: 0px; margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
                         {% elif node.depth == 1 %}
-                          <ul class="pl-1" style="display: none; margin-left: 105px; margin-top: 0px; margin-bottom: 0px; padding: 0px;" id="{{ node.depth }}">
+                          <ul class="absolute-horizontal-position-lvl-one" style="display: none; margin-top: 0px; margin-bottom: 0px; " id="{{ node.depth }}">
+                        {% elif node.depth == 2 %}
+                          <ul class="absolute-horizontal-position-lvl-two" style="display: none" id="{{ node.depth }}">
                         {% else %}
-                          <ul class="pl-{{ node.depth }}" style="display: none" id="{{ node.depth }}">
+                          <ul style="display: none" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         {% if node.depth == 0 %}
@@ -145,17 +164,17 @@ ul {
                               {{ node.content.topic.heading }}
                             </button>
                           <div class="hr" id="{{ node.content.depth }}" style=" height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div>
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; padding-left: 105px; font-style: italic; margin: 0px;" id="0">{{ node.content.topic.text }}</p>
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
                           <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A; margin-left: 105px;"></div>
                         {% else %}
-                          <li onclick="showOrHide(event, this)" class="same-horizontal-position-lvl-1" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                          <li onclick="showOrHide(event, this)" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                             {% if node.content.depth == 1 %}
                               <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                             {% else %}
                               <button  style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                             {% endif %}
                               <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                            
-                              <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px; padding-left: 105px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
+                              <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>
                               <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>
                             
                               <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
@@ -187,7 +206,8 @@ ul {
 
   // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
   // modifyCatalogToBeShownInOneElement();
-  bringParagraphsInNextLayer();
+  // bringParagraphsInNextLayer();
+  depthFirstWalkForParagraphs();
   if (idOfTopicToBeOpened != "") {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     for (var i = 0; i < elementsToBeSearched.length; i++) {
@@ -208,11 +228,10 @@ ul {
         // elementsToBeSearched[i].style.marginLeft = "110px";
         
         // find the ul-element, to which the paragrpah should be moved:
-        childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementsToBeSearched[i], "UL");
         if (childUlFromParagraph != "") {
             newLiElement = document.createElement("li");
             newLiElement.prepend(elementsToBeSearched[i]);
-            debugger;
+            // debugger;
             childUlFromParagraph.prepend(newLiElement);
             // remove the paragraph from its current position:
             parentOfParagraph = elementsToBeSearched[i].parentElement;
@@ -242,6 +261,62 @@ ul {
     return stringToConcatanate;
   }
 
+  function depthFirstWalkForParagraphs() {
+    var divContainerOfCriteriaCatalog = document.getElementById("hi");
+    var childElements = divContainerOfCriteriaCatalog.children;
+    var queue = Array.from(childElements);
+    var elementFromQueue = undefined;
+    var firstUlAsChildOfLi = undefined;
+    while (queue.length > 0) {
+      elementFromQueue = queue.shift();
+      // bring child-elements into queue:
+      queue = addElementsToArray(queue, elementFromQueue.children);
+      if (elementFromQueue.tagName == "P") {
+        // debugger;
+        childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementFromQueue, "UL");
+        if (childUlFromParagraph != "") {
+          newLiElement = document.createElement("li");
+          newLiElement.prepend(elementFromQueue);
+          childUlFromParagraph.prepend(newLiElement);
+          // remove the paragraph from its current position:
+          parentOfParagraph = elementFromQueue.parentElement;
+          parentOfParagraph.removeChild(elementFromQueue);
+        }
+        else {
+          parentOfParagraph = elementFromQueue.parentElement;
+          parentOfParagraph.removeChild(elementFromQueue);
+          
+          elementFromQueue.id = Number(elementFromQueue.id) + 1;
+
+          newUlElement = document.createElement("ul");
+          newUlElement.id = Number(elementFromQueue.id);
+          if (newUlElement.id == 1) {
+            newUlElement.className = "absolute-horizontal-position-lvl-one";
+          }
+          else if (newUlElement.id == 2) {
+            newUlElement.className = "absolute-horizontal-position-lvl-two";
+          }
+          newLiElement = document.createElement("li");
+          newLiElement.id = Number(elementFromQueue.id);
+          newLiElement.prepend(elementFromQueue);
+          newDivElement = document.createElement("div");
+          newDivElement.className = "hr";
+          newDivElement.style.display = "none";
+          newLiElement.appendChild(newDivElement);
+          newUlElement.prepend(newLiElement);
+          firstUlAsChildOfLi = returnFirstAppearanceOfElementWithTagName(parentOfParagraph, "UL");
+          if (firstUlAsChildOfLi != "") {
+            parentOfParagraph.insertBefore(newUlElement, firstUlAsChildOfLi);
+          }
+          else {
+          parentOfParagraph.prepend(newUlElement);
+        }
+      }
+    }
+
+    
+  }
+  }
   function modifyCatalogToBeShownInOneElement() {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     for (var i = 0; i < elementsToBeSearched.length; i++) {
@@ -250,7 +325,6 @@ ul {
         var textForCombinedElement = "";
         var textCombinedConcatenated = "";
         var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
-        // debugger;
         // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
 
         var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
@@ -259,7 +333,6 @@ ul {
             textForCombinedElement = ulChildElements[j].textContent
             textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n\n');
             textCombinedConcatenated += textForCombinedElement;
-            // debugger;
           }
           if (Number(ulChildElements[j].id) > 3) {
             ulChildElements[j].remove();
@@ -428,7 +501,6 @@ function depthFirstWalkForModification(element) {
   while (liUlElements.length > 0) {
     
     liUlElement = liUlElements.pop();
-    debugger;
     if (liUlElement.tagName == "LI" && Number(liUlElement.id) > 2) {
       liElement = liUlElement;
       aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br/>"
@@ -566,8 +638,8 @@ function openChildLayer(element) {
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
       parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
-      parentOfClickedElement.style.marginLeft = "16px";
-      parentOfClickedElement.style.paddingLeft = "0px";
+      // parentOfClickedElement.style.marginLeft = "16px";
+      // parentOfClickedElement.style.paddingLeft = "0px";
     }
     
     var layerNumberOfClickedElement = Number(element.id);
@@ -577,15 +649,15 @@ function openChildLayer(element) {
     if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
       buttonElements[0].children[0].src = pathToArrowUpImg;
     }
-    var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-    if (childParagraphDescriptionText.length > 0) {
-      childParagraphDescriptionText[0].style.display = "block";
-      childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
-      childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
-      childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
-      childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
+    // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
+    // if (childParagraphDescriptionText.length > 0) {
+    //   childParagraphDescriptionText[0].style.display = "block";
+    //   childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
+    //   childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
+    //   childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
+    //   childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
 
-    }
+    // }
     var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
     // if (childHRElements.length > 0) {
       
@@ -594,6 +666,9 @@ function openChildLayer(element) {
     // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
     // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
     var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
+    var childOfLi = undefined;
+    var buttonElementInLi = undefined;
+    var paragraphElementInLi = undefined; 
     for (var i = 0; i < nextLayerElementsUL.length; i++) {
       nextLayerElementsUL[i].style.display = "block";
 
@@ -604,13 +679,27 @@ function openChildLayer(element) {
           return element;
         } 
       })
-
+      
       for (var j = 0; j < nextLayerElementsLI.length; j++) {
         nextLayerElementsLI[j].style.display = "block";
-        nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
+        childOfLi = nextLayerElementsLI[j].children;
+        buttonElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "BUTTON"})
+        if (buttonElementInLi.length > 0) {
+          buttonElementInLi[0].style.display = "block";
+        }
+        // debugger;
+        paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
+        if (paragraphElementInLi.length > 0) {
+          paragraphElementInLi[0].style.display = "block";
+          paragraphElementInLi[0].nextElementSibling.style.display = "block";
+        }
+        // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
         // if (j < nextLayerElementsLI.length - 1) {
         if (i < nextLayerElementsUL.length - 1) {
-        nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+          if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
+          
+            nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+          }
         }
       }
     }
@@ -635,10 +724,10 @@ function closeChildLayer(element) {
   if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
     buttonElements[0].children[0].src = pathToArrowDownImg;
   }
-  var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-  childParagraphDescriptionText[0].style.display = "none";
-  childParagraphDescriptionText[0].previousElementSibling.style.display = "none";
-  childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "0px";
+  // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
+  // childParagraphDescriptionText[0].style.display = "none";
+  // childParagraphDescriptionText[0].previousElementSibling.style.display = "none";
+  // childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "0px";
   // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
   // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
@@ -655,7 +744,9 @@ function closeChildLayer(element) {
 
     for (var j = 0; j < nextLayerElementsLI.length; j++) {
       nextLayerElementsLI[j].style.display = "none";
-      nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+      if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
+        nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
+      }
     }
   }
 }
