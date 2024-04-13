@@ -163,14 +163,14 @@ button {
                         {% if node.content.depth == 0 %}
                           <li  style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
                             <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
-                            <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
+                            <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>  
+                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
                       {% endif %}
                     {% endfor %}
@@ -202,10 +202,10 @@ button {
   // bringParagraphsInNextLayer();
   depthFirstWalkForParagraphs();
   if (idOfTopicToBeOpened != "") {
-    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+    var elementsToBeSearched = document.getElementById("hi").querySelectorAll("button, p");;
     for (var i = 0; i < elementsToBeSearched.length; i++) {
-      
-      if (elementsToBeSearched[i].getAttribute("topicid") == idOfTopicToBeOpened) {
+      // debugger;
+      if (elementsToBeSearched[i].getAttribute("topicId").includes(idOfTopicToBeOpened)) {
         var rootElement = findRootElement(elementsToBeSearched[i]);
         depthFirstWalk(rootElement, elementsToBeSearched[i]);  
       }
@@ -361,6 +361,8 @@ button {
       if (elementsToBeSearched[i].tagName == "UL" && Number(elementsToBeSearched[i].id) >= 2) {
         var textForCombinedElement = "";
         var textCombinedConcatenated = "";
+        var aggregatedTags = "";
+        var aggregatedTopicIds = "";
         var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
         // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
 
@@ -368,6 +370,13 @@ button {
         for (var j = 0; j < ulChildElements.length; j++) {
           if (Number(ulChildElements[j].id) == 3) {
             textForCombinedElement = ulChildElements[j].textContent
+            // debugger;
+            firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
+            if (firstLiChildren != "") {
+              aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
+              aggregatedTopicIds += "," + firstLiChildren.getAttribute("topicId");
+            }
+
             textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n\n');
             textCombinedConcatenated += textForCombinedElement;
           }
@@ -402,6 +411,8 @@ button {
         newParagraphElement.style.whiteSpace = "pre-line";
         newParagraphElement.setAttribute("aggregatedText", "true")
         newParagraphElement.innerHTML = textCombinedConcatenated;
+        newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
+        newParagraphElement.setAttribute("tags", aggregatedTags);
         newLiElement.id = "3";
         newLiElement.setAttribute("aggregatedText", "true")
         newParagraphElement.id = "3";
