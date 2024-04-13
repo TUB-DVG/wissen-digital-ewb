@@ -380,10 +380,17 @@ button {
           //   textForCombinedElement += getHeadingAndDescription(liDescendants[j], textForCombinedElement);
           // }
           if (Number(liDescendants[j].id) >= 3) {
-            liDescendants[j].remove();
+            if (liDescendants[j].getAttribute("aggregatedText") != "true") {
+              liDescendants[j].remove();
+            }
+            
           }
           if (Number(liDescendants[j].id) == 2) {
-            liDescendants[j].querySelector("p").remove();
+          
+            paragraphToBeDeleted = liDescendants[j].querySelector("p")
+            if (paragraphToBeDeleted.getAttribute("aggregatedText") != "true") {
+              paragraphToBeDeleted.remove();
+            }
             // liDescendants[j].querySelectorAll("div")[1].remove();
           }
           
@@ -396,12 +403,14 @@ button {
         newParagraphElement.setAttribute("aggregatedText", "true")
         newParagraphElement.innerHTML = textCombinedConcatenated;
         newLiElement.id = "3";
+        newLiElement.setAttribute("aggregatedText", "true")
         newParagraphElement.id = "3";
         newLiElement.appendChild(newParagraphElement);
         var firstULElement = elementsToBeSearched[i].querySelector('ul')
         if (firstULElement != null) {
           firstULElement.id = "3";
           firstULElement.appendChild(newLiElement);
+          
         }
         
         // for (var j = 0; j < elementsToBeSearched[i].children.length; j++) {
@@ -431,8 +440,8 @@ button {
       resetCriteriaCatalog();
       // show all found elements
       for (var i = 0; i < foundElements.length; i++) {
-        debugger;
         foundElements[i].innerHTML = foundElements[i].textContent.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
+        debugger;
         // foundElements[i].style.backgroundColor = "yellow";
         var rootElement = findRootElement(foundElements[i]);
         depthFirstWalk(rootElement, foundElements[i]);  
@@ -697,13 +706,14 @@ function openChildLayer(element) {
   if (element.id == "2") {
     childUlElements = element.parentElement.querySelectorAll("ul ul");
     childUlElements[0].style.display = "block";
-    debugger;
     childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
 
     childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "block";
     var layerNumberOfClickedElement = Number(element.id);
     var childElementsOfButton = element.children;
-    childElementsOfButton[0].src = pathToArrowUpImg;
+    if (childElementsOfButton.length > 0) {
+      childElementsOfButton[0].src = pathToArrowUpImg;
+    }
   }
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
@@ -769,13 +779,21 @@ function openChildLayer(element) {
         if (buttonElementInLi.length > 0) {
           buttonElementInLi[0].style.display = "block";
           imageInButtonElement = returnFirstAppearanceOfElementWithTagName(buttonElementInLi[0], "IMG");
-          imageInButtonElement.style.display = "inline";
+          if (imageInButtonElement != ""){
+            imageInButtonElement.style.display = "inline";
+          }
         }
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
         if (paragraphElementInLi.length > 0) {
           paragraphElementInLi[0].style.display = "block";
+          try {
           paragraphElementInLi[0].nextElementSibling.style.display = "block";
           paragraphElementInLi[0].previousElementSibling.style.display = "block";
+          }
+          catch {
+            console.log("Error");
+          
+          }
         }
         // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
         // if (j < nextLayerElementsLI.length - 1) {
