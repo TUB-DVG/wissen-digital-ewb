@@ -154,9 +154,9 @@ button {
                         {% endif %}
                       {% elif node.outdent %}
                         {% if node.depth == 0 %}
-                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;"></div>
+                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% else %}
-                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;"></div>
+                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% endif %}
                         </li></ul>
                       {% elif node.content %}
@@ -166,14 +166,11 @@ button {
                             <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
-                          <!-- <div class="hr" id="{{ node.content.depth }}" style=" height: 2px; background-color: #F5E86A; padding: 0px; margin: 0px;"></div> -->
                           <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                          <!-- <div class="hr" id="{{ node.content.depth }}" style="display: none; height: 2px; background-color: #F5E86A;"></div>                             -->
+                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                           <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}">{{ node.content.topic.text }}</p>  
-                              <!-- <hr style="border: none; display: none; margin-top: 1px; padding-left: 120px; outline: 2px solid #F5E86A; border: None; outline-offset: -17px; margin-left: 80px;" id="{{ node.content.depth }}"> -->
                         {% endif %}
                       {% endif %}
                     {% endfor %}
@@ -225,26 +222,25 @@ button {
     }
   }
 
-  function bringParagraphsInNextLayer() {
-    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-    var parentOfParagraph = undefined;
-    for (var i = 0; i < elementsToBeSearched.length; i++) {
-      if (elementsToBeSearched[i].tagName === "P") {
-        // elementsToBeSearched[i].style.marginLeft = "110px";
+  // function bringParagraphsInNextLayer() {
+  //   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
+  //   var parentOfParagraph = undefined;
+  //   for (var i = 0; i < elementsToBeSearched.length; i++) {
+  //     if (elementsToBeSearched[i].tagName === "P") {
+  //       // elementsToBeSearched[i].style.marginLeft = "110px";
         
-        // find the ul-element, to which the paragrpah should be moved:
-        if (childUlFromParagraph != "") {
-            newLiElement = document.createElement("li");
-            newLiElement.prepend(elementsToBeSearched[i]);
-            // debugger;
-            childUlFromParagraph.prepend(newLiElement);
-            // remove the paragraph from its current position:
-            parentOfParagraph = elementsToBeSearched[i].parentElement;
-            parentOfParagraph.removeChild(elementsToBeSearched[i]);
-        }
-      }
-    }
-  }
+  //       // find the ul-element, to which the paragrpah should be moved:
+  //       if (childUlFromParagraph != "") {
+  //           newLiElement = document.createElement("li");
+  //           newLiElement.prepend(elementsToBeSearched[i]);
+  //           childUlFromParagraph.prepend(newLiElement);
+  //           // remove the paragraph from its current position:
+  //           parentOfParagraph = elementsToBeSearched[i].parentElement;
+  //           parentOfParagraph.removeChild(elementsToBeSearched[i]);
+  //       }
+  //     }
+  //   }
+  // }
 
   function findRootElement(element) {
     var parentElement = element;
@@ -275,6 +271,31 @@ button {
     return newDivElement;
   }
 
+  function depthFirstSearch(element, func) {
+    var stack = [element];
+
+    while (stack.length > 0) {
+        var currentElement = stack.pop();
+        func(currentElement);
+
+        var children = currentElement.children;
+        for (var i = children.length - 1; i >= 0; i--) {
+            stack.push(children[i]);
+        }
+    }
+  }
+
+  function hideElementExceptForFirstLayer(element) {
+    if (Number(element.id) > 0) {
+      element.style.display = "none";
+    }
+    if (element.tagName == "UL" && element.id == "0") {
+      element.style.borderLeft = "none";
+      element.style.marginLeft = "0px";
+      // element.style.borderLeft = "0px;"
+    }
+  }
+
   function depthFirstWalkForParagraphs() {
     var divContainerOfCriteriaCatalog = document.getElementById("hi");
     var childElements = divContainerOfCriteriaCatalog.children;
@@ -285,8 +306,7 @@ button {
       elementFromQueue = queue.shift();
       // bring child-elements into queue:
       queue = addElementsToArray(queue, elementFromQueue.children);
-      if (elementFromQueue.tagName == "P") {
-        // debugger;
+      if (elementFromQueue.tagName == "P" && Number(elementFromQueue.id) < 3) {
         childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementFromQueue, "UL");
         if (childUlFromParagraph != "") {
           newLiElement = document.createElement("li");
@@ -364,18 +384,23 @@ button {
           }
           if (Number(liDescendants[j].id) == 2) {
             liDescendants[j].querySelector("p").remove();
-            // debugger;
             // liDescendants[j].querySelectorAll("div")[1].remove();
           }
           
         }
 
         var newLiElement = document.createElement("li");
+        var newParagraphElement = document.createElement("p");
         newLiElement.style.display = "none";
-        newLiElement.style.whiteSpace = "pre-line";
-        newLiElement.innerHTML = textCombinedConcatenated;
+        newParagraphElement.style.whiteSpace = "pre-line";
+        newParagraphElement.setAttribute("aggregatedText", "true")
+        newParagraphElement.innerHTML = textCombinedConcatenated;
+        newLiElement.id = "3";
+        newParagraphElement.id = "3";
+        newLiElement.appendChild(newParagraphElement);
         var firstULElement = elementsToBeSearched[i].querySelector('ul')
         if (firstULElement != null) {
+          firstULElement.id = "3";
           firstULElement.appendChild(newLiElement);
         }
         
@@ -390,14 +415,13 @@ button {
   }
 
   function searchFullText(searchString) {    
-    console.log(searchString)
     var elementsToBeSearched = document.querySelectorAll("#hi *");
     var foundElements = [];
     foundULelements = [];
     for (var i = 0; i < elementsToBeSearched.length; i++) {
       if (elementsToBeSearched[i].textContent.includes(searchString)) {
             // The search string is contained in the text content of the element
-        if (elementsToBeSearched[i].tagName == "BUTTON") {
+        if (elementsToBeSearched[i].tagName == "BUTTON" || elementsToBeSearched[i].tagName == "P") {
           foundElements.push(elementsToBeSearched[i]);
         }
       }
@@ -407,13 +431,14 @@ button {
       resetCriteriaCatalog();
       // show all found elements
       for (var i = 0; i < foundElements.length; i++) {
-        foundElements[i].style.backgroundColor = "yellow";
+        debugger;
+        foundElements[i].innerHTML = foundElements[i].textContent.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
+        // foundElements[i].style.backgroundColor = "yellow";
         var rootElement = findRootElement(foundElements[i]);
         depthFirstWalk(rootElement, foundElements[i]);  
       }
     }
     openHeadingsForLayers();
-    // console.log("Enter was pressed")
   }
 
   function handleOptionSelected() {
@@ -672,7 +697,13 @@ function openChildLayer(element) {
   if (element.id == "2") {
     childUlElements = element.parentElement.querySelectorAll("ul ul");
     childUlElements[0].style.display = "block";
+    debugger;
     childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
+
+    childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "block";
+    var layerNumberOfClickedElement = Number(element.id);
+    var childElementsOfButton = element.children;
+    childElementsOfButton[0].src = pathToArrowUpImg;
   }
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
@@ -684,9 +715,9 @@ function openChildLayer(element) {
     var layerNumberOfClickedElement = Number(element.id);
     // element.parentElement.nextElementSibling.style.display = "none";
     var childElementsOfButton = element.children;
-
     // since element is the button element, we can change the image of the element:
     if (childElementsOfButton.length > 0) {
+      childElementsOfButton[0].style.display = "inline";
       childElementsOfButton[0].src = pathToArrowUpImg;
     }
     // show the DIV-element
@@ -714,12 +745,12 @@ function openChildLayer(element) {
     // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
     
     
-    // debugger;
     var nextLayerElementsUL = Array.from(element.parentElement.children).filter((element) => {return element.tagName == "UL"});
     var childOfLi = undefined;
     var buttonElementInLi = undefined;
     var paragraphElementInLi = undefined;
     var divElements; 
+    var imageInButtonElement;
     for (var i = 0; i < nextLayerElementsUL.length; i++) {
       nextLayerElementsUL[i].style.display = "block";
 
@@ -737,20 +768,19 @@ function openChildLayer(element) {
         buttonElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "BUTTON"})
         if (buttonElementInLi.length > 0) {
           buttonElementInLi[0].style.display = "block";
+          imageInButtonElement = returnFirstAppearanceOfElementWithTagName(buttonElementInLi[0], "IMG");
+          imageInButtonElement.style.display = "inline";
         }
-        // debugger;
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
         if (paragraphElementInLi.length > 0) {
           paragraphElementInLi[0].style.display = "block";
           paragraphElementInLi[0].nextElementSibling.style.display = "block";
-          // debugger;
           paragraphElementInLi[0].previousElementSibling.style.display = "block";
         }
         // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
         // if (j < nextLayerElementsLI.length - 1) {
         if (i < nextLayerElementsUL.length - 1) {
           if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
-            debugger;
             if (nextLayerElementsLI[j].parentElement.nextElementSibling != null && nextLayerElementsLI[j].id != "0") {
               divElements = getAllChildElementsWithTagName(nextLayerElementsLI[j], "DIV")
               for (var k = 0; k < divElements.length; k++) {
@@ -765,13 +795,12 @@ function openChildLayer(element) {
     }
     // horizontal line, which closes the nested layer is shown
     // element.children[element.children.length-1].style.display = "block";
-    // debugger;
     // }
   }
 }
 
 function closeChildLayer(element) {
-  var parentOfClickedElement = element.parentElement;
+  var parentOfClickedElement = element.parentElement.parentElement;
 
   if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
     parentOfClickedElement.style.borderLeft = "none";
@@ -779,10 +808,11 @@ function closeChildLayer(element) {
   }
 
   var layerNumberOfClickedElement = Number(element.id);
-  var childElements = element.children;
+  var childElements = element.parentElement.children;
   var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
   if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
     buttonElements[0].children[0].src = pathToArrowDownImg;
+    // buttonElements[0].children[0].style.display = "none";
   }
   // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
   // childParagraphDescriptionText[0].style.display = "none";
@@ -814,31 +844,8 @@ function closeChildLayer(element) {
 
 function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
-  var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-  for (var i = 0; i < elementsToBeSearched.length; i++) {
-    if (elementsToBeSearched[i].tagName == "BUTTON") {
-      elementsToBeSearched[i].style.backgroundColor = "white";
-    }
-    // elementsToBeSearched[i].style.backgroundColor = "white";
-    if (elementsToBeSearched[i].id == "0") {
-      if (elementsToBeSearched[i].tagName == "DIV" || elementsToBeSearched[i].tagName == "LI") {
-        elementsToBeSearched[i].style.display = "block";
-      }
-      else {
-        if (elementsToBeSearched[i].tagName == "P") {
-          elementsToBeSearched[i].style.display = "none";
-        }
-        else {
-          elementsToBeSearched[i].style.display = "inline";
-        }
-      }
-      
-    }
-    else {
-      elementsToBeSearched[i].style.display = "none";
-
-    }
-  }
+  
+  depthFirstSearch(document.getElementById("hi"), hideElementExceptForFirstLayer);
   document.getElementById("criterias").style.display = "none";
   document.getElementById("requirementsAndRuleExamples").style.display = "none";
 }
@@ -849,7 +856,6 @@ function showOrHide(event, element) {
   var childElements = element.parentElement.children; 
 
   var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
-  debugger;
   if (filteredChildElements.length == 0) {
     return;
   }
