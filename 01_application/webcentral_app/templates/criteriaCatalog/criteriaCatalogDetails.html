@@ -429,7 +429,7 @@ button {
     foundULelements = [];
     for (var i = 0; i < elementsToBeSearched.length; i++) {
       if (elementsToBeSearched[i].textContent.includes(searchString)) {
-            // The search string is contained in the text content of the element
+        // The search string is contained in the text content of the element
         if (elementsToBeSearched[i].tagName == "BUTTON" || elementsToBeSearched[i].tagName == "P") {
           foundElements.push(elementsToBeSearched[i]);
         }
@@ -440,7 +440,7 @@ button {
       resetCriteriaCatalog();
       // show all found elements
       for (var i = 0; i < foundElements.length; i++) {
-        foundElements[i].innerHTML = foundElements[i].textContent.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
+        foundElements[i].innerHTML = foundElements[i].innerHTML.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
         // foundElements[i].style.backgroundColor = "yellow";
         var rootElement = findRootElement(foundElements[i]);
         depthFirstWalk(rootElement, foundElements[i]);  
@@ -697,6 +697,15 @@ function getAllChildElementsWithTagName(element, tagName) {
   return elements;
 }
 
+function removeMarkTagsFromText(element) {
+  if (element.tagName == "BUTTON" || element.tagName == "P") {
+    var textContentOfNode = element.innerHTML;
+    textContentOfNode = textContentOfNode.replace(/<mark>/g, "");
+    textContentOfNode = textContentOfNode.replace(/<\/mark>/g, "");
+    element.innerHTML = textContentOfNode;
+  }
+}
+
 function openChildLayer(element) {
 
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
@@ -728,7 +737,10 @@ function openChildLayer(element) {
     var childElementsOfButton = element.children;
     // since element is the button element, we can change the image of the element:
     if (childElementsOfButton.length > 0) {
-      childElementsOfButton[0].style.display = "inline";
+      imageInButtonElement = returnFirstAppearanceOfElementWithTagName(element, "IMG");
+      if (imageInButtonElement != "") {
+        childElementsOfButton[0].style.display = "inline";
+      }
       if (Number(element.id) > 0) {
         childElementsOfButton[0].src = pathToArrowUpImg;
       }
@@ -865,7 +877,7 @@ function closeChildLayer(element) {
 
 function resetCriteriaCatalog() {
   // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
-  
+  depthFirstSearch(document.getElementById("hi"), removeMarkTagsFromText);
   depthFirstSearch(document.getElementById("hi"), hideElementExceptForFirstLayer);
   document.getElementById("criterias").style.display = "none";
   document.getElementById("requirementsAndRuleExamples").style.display = "none";
