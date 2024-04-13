@@ -441,7 +441,6 @@ button {
       // show all found elements
       for (var i = 0; i < foundElements.length; i++) {
         foundElements[i].innerHTML = foundElements[i].textContent.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
-        debugger;
         // foundElements[i].style.backgroundColor = "yellow";
         var rootElement = findRootElement(foundElements[i]);
         depthFirstWalk(rootElement, foundElements[i]);  
@@ -712,7 +711,9 @@ function openChildLayer(element) {
     var layerNumberOfClickedElement = Number(element.id);
     var childElementsOfButton = element.children;
     if (childElementsOfButton.length > 0) {
+      if (Number(element.id) > 0) {
       childElementsOfButton[0].src = pathToArrowUpImg;
+      }
     }
   }
   else {
@@ -728,7 +729,9 @@ function openChildLayer(element) {
     // since element is the button element, we can change the image of the element:
     if (childElementsOfButton.length > 0) {
       childElementsOfButton[0].style.display = "inline";
-      childElementsOfButton[0].src = pathToArrowUpImg;
+      if (Number(element.id) > 0) {
+        childElementsOfButton[0].src = pathToArrowUpImg;
+      }
     }
     // show the DIV-element
     // element.nextElementSibling.style.display = "block";
