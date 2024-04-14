@@ -12,6 +12,7 @@ button {
     padding-left: 111px;
     margin-left: 0px;
 }
+
 .absolute-horizontal-position-lvl-two {
     padding-left: 106px;
     margin-left: 0px;
@@ -32,6 +33,23 @@ button {
   padding-top: 14px; 
   padding-bottom: 17px; 
   font-size: 22px;
+}
+
+.button-first-level {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding-top: 10.5px;
+  padding-bottom: 10.5px;
+  margin: 0px;
+}
+
+.button-deeper-level{
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .hr {
@@ -181,13 +199,13 @@ button {
                         {% if node.content.depth == 0 %}
                           <li  style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
                             <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
-                            <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
+                            <button class="button-first-level" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
                               {{ node.content.topic.heading }}
                             </button>
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                          <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                          <button onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
                       {% endif %}
@@ -903,8 +921,7 @@ function showOrHide(event, element) {
   if (element.parentElement.parentElement.tagName == "DIV") {
     displayPInGray = true;
     pElements = element.getElementsByTagName("p");
-    // if (document.getElementById("criterias").style.display == "block" && pElements[0].style.display == "none") {
-
+  }
     openHeadingsForLayers();
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
