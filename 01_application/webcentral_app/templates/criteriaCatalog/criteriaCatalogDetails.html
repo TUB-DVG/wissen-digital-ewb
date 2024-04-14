@@ -364,10 +364,9 @@ button {
         }
       }
     }
+  }
+  }
 
-    
-  }
-  }
   function modifyCatalogToBeShownInOneElement() {
     var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
     for (var i = 0; i < elementsToBeSearched.length; i++) {
@@ -770,29 +769,6 @@ function openChildLayer(element) {
         childElementsOfButton[0].src = pathToArrowUpImg;
       }
     }
-    // show the DIV-element
-    // element.nextElementSibling.style.display = "block";
-
-    // var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-    // if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
-    //   buttonElements[0].children[0].src = pathToArrowUpImg;
-    // }
-    // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-    // if (childParagraphDescriptionText.length > 0) {
-    //   childParagraphDescriptionText[0].style.display = "block";
-    //   childParagraphDescriptionText[0].previousElementSibling.style.display = "block";
-    //   childParagraphDescriptionText[0].previousElementSibling.style.marginLeft = "110px";
-    //   childParagraphDescriptionText[0].nextElementSibling.style.display = "block";
-    //   childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "110px";
-
-    // }
-    // var childHRElements = Array.from(childElements).filter((element) => {return element.tagName == "DIV"})
-    // if (childHRElements.length > 0) {
-      
-    //   childHRElements[0].style.display = "block";
-    // }
-    // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
-    // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
     
     
     var nextLayerElementsUL = Array.from(element.parentElement.children).filter((element) => {return element.tagName == "UL"});
@@ -851,9 +827,7 @@ function openChildLayer(element) {
         }
       }
     }
-    // horizontal line, which closes the nested layer is shown
-    // element.children[element.children.length-1].style.display = "block";
-    // }
+
   }
 }
 
@@ -872,12 +846,7 @@ function closeChildLayer(element) {
     buttonElements[0].children[0].src = pathToArrowDownImg;
     // buttonElements[0].children[0].style.display = "none";
   }
-  // var childParagraphDescriptionText = Array.from(childElements).filter((element) => {return element.tagName == "P"})
-  // childParagraphDescriptionText[0].style.display = "none";
-  // childParagraphDescriptionText[0].previousElementSibling.style.display = "none";
-  // childParagraphDescriptionText[0].nextElementSibling.style.marginLeft = "0px";
-  // get all UL-elements, which have the ID layerNumberOfClickedElement + 1
-  // var nextLayerElements = document.querySelectorAll("#hi ul[id='" + (layerNumberOfClickedElement + 1) + "']");
+
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
   for (var i = 0; i < nextLayerElementsUL.length; i++) {
     nextLayerElementsUL[i].style.display = "none";
@@ -936,83 +905,6 @@ function showOrHide(event, element) {
     pElements = element.getElementsByTagName("p");
     // if (document.getElementById("criterias").style.display == "block" && pElements[0].style.display == "none") {
 
-    // }
-    // else {
-    //   foundChilds.push(document.getElementById("criterias"));
-    // }
-    
-  //   if (document.getElementById("requirementsAndRuleExamples").style.display == "block"){
-  //     foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
-  //   }
-  // }
-  // else if (element.parentElement.parentElement.parentElement.parentElement.tagName  == "DIV"){
-  //   foundChilds.push(document.getElementById("requirementsAndRuleExamples"));
-  }
-  // for (var i = 0; i < childElements.length; i++) {
-  //   if (childElements[i].tagName == "P" || childElements[i].tagName == "DIV") {
-  //     if (displayPInGray) {
-  //       childElements[i].style.color = "grey";
-  //       childElements[i].style.fontSize = "16px";
-  //       // also append the 2 column names over the tree structure to be hidden or shown
-        
-  //     }
-  //     else {
-  //       childElements[i].style.color = "black";
-  //     }
-  //     foundChilds.push(childElements[i]);        
-  //   }
-
-  //   if (childElements[i].tagName == "UL") {
-  //     foundChilds.push(childElements[i]);
-      
-  //     var childrenOfUL = childElements[i].children
-  //     for (var j= 0; j < childrenOfUL.length; j++) {
-  //       // if (firstElementSkipped) {
-  //       //   foundChilds.push(childrenOfUL[j]);
-  //       // }
-  //       // else {
-  //       //   firstElementSkipped = true;
-  //       // }
-  //       foundChilds.push(childrenOfUL[j]);
-
-      
-  //     }
-  //   }
-  //   // lastElementStr = childElements[i].tagName;
-  // }
-// var childElementsOfUL = filteredChildElements[0].children;
-//     var childElements = Array.from(element.children).filter(function(child) {
-//     return child.tagName.toLowerCase() === 'ul' || child.tagName.toLowerCase() === 'li' || child.tagName.toLowerCase() === 'hr' || child.tagName.toLowerCase() === 'p';
-// });
-    // for (i = 0; i < foundChilds.length; i++) {
-      
-    //     if ( foundChilds[i].style.display == "block") {
-          
-    //       foundChilds[i].style.display = 'none';
-    //       if (foundChilds[i].tagName == "LI") {
-    //         var childrenDiv = Array.from(foundChilds[i].children).filter(function(element) {
-    //           return element.tagName.toLowerCase() === 'div';
-    //         });
-    //         childrenDiv[0].style.display = 'none';
-    //           numberOfOpenElementsPerLayer[foundChilds[i].id] -= 1;
-    //       }
-    //     }
-    //     else {
-    //       foundChilds[i].style.display = 'block';
-    //       if (foundChilds[i].tagName == "LI") {
-    //         var childrenDiv = Array.from(foundChilds[i].children).filter(function(element) {
-    //           return element.tagName.toLowerCase() === 'div';
-    //         });
-    //         childrenDiv[0].style.display = 'block';
-    //         if (numberOfOpenElementsPerLayer[foundChilds[i].id] == undefined) {
-    //           numberOfOpenElementsPerLayer[foundChilds[i].id] = 1;
-    //         }
-    //         else {
-    //           numberOfOpenElementsPerLayer[foundChilds[i].id] += 1;            
-    //         }
-    //       }
-    //     }
-    // }
     openHeadingsForLayers();
     if (event.stopPropagation) {
       event.stopPropagation();   // W3C model
