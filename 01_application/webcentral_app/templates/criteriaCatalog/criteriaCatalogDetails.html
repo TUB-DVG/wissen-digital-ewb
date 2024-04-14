@@ -16,6 +16,24 @@ button {
     padding-left: 106px;
     margin-left: 0px;
 }
+
+.paragraph-first-level{
+  display: none; 
+  padding-top: 14px; 
+  padding-bottom: 17px; 
+  font-size: 16px; 
+  color: grey; 
+  font-style: italic;
+  margin: 0px;
+}
+
+.paragraph-deeper-level {
+  display: none; 
+  padding-top: 14px; 
+  padding-bottom: 17px; 
+  font-size: 22px;
+}
+
 .hr {
     height: 2px;
     background-color: #F5E86A;
@@ -128,13 +146,13 @@ button {
               </div>
               <div class="col-lg-3 mb-3">
               </div>
-              <div class="col-lg-2" style="margin-left: 30px" id="container-criteria-catalog-details">
+              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 42px;" id="container-criteria-catalog-details">
                 <div style="text-align: right">
                   <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
               </div>
               <div class="row col-lg-12 mr-3">
-                <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A; margin-left: 15px;"></div>
+                <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
               </div>
             </div>
               <div class="row" id="hi">
@@ -166,21 +184,17 @@ button {
                             <button onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" style="border: none; background: none; cursor: pointer; padding-top: 10.5px; padding-bottom: 10.5px; margin: 0px;">
                               {{ node.content.topic.heading }}
                             </button>
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 16px; color: grey; font-style: italic;" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
+                          <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                           <button onclick="showOrHide(event, this)" style="border: none; background: none; cursor: pointer; margin-top: 10px; margin-bottom: 10px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
-                          <p style="display: none; padding-top: 14px; padding-bottom: 17px; font-size: 22px;" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
+                          <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
                       {% endif %}
                     {% endfor %}
-                    <!-- <div class="hr" style="height: 2px; background-color: #F5E86A;"></div> -->
-                    <!-- <hr style="margin-top: 1px; margin-bottom: 1px; margin-left: 120px; border-top: 5px solid #F5E86A;"> -->
                   {% endfor %}
-                <!-- </ul> -->
               </div>
           </div>
-                <!-- use case tree END -->
         </div>
       </div>
     </div>
