@@ -597,7 +597,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:34
 #: templates/tools_over/tool-listings.html:56
 msgid "Nutzung"
-msgstr "use type"
+msgstr "Use type"
 
 #: templates/LastProfile/explanation.html:59
 msgid "Auswahl der Nutzung des Stroms"
@@ -3322,7 +3322,7 @@ msgstr ""
 #: templates/tools_over/explanationApps.html:98
 #: templates/tools_over/explanationTools.html:98
 msgid "Programmiersprache"
-msgstr "programming language"
+msgstr "Programming language"
 
 #: templates/tools_over/explanationApps.html:99
 msgid ""
