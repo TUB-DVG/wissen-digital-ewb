@@ -794,7 +794,7 @@ msgid ""
 msgstr ""
 "The accompanying scientific research of the research initiative "
 "Energiewendebauen offers a knowledge platform that provides access to the "
-"research results and toolsd eveloped from the research projects in the area "
+"research results and tools developed from the research projects in the area "
 "of digitalization in the built environment. This platform targets the "
 "community interested in such research and also supports the research projects "
 "of the Energiewendebauen initiative."
@@ -3785,7 +3785,7 @@ msgstr "Updates"
 
 #: templates/weatherdata_over/data-service-listings.html:22
 msgid "Überblick über Wetterdaten-Services"
-msgstr "Overview of weather data Services"
+msgstr "Overview of weather data services"
 
 #: templates/weatherdata_over/explanation.html:11
 msgid ""
@@ -3800,8 +3800,7 @@ msgid ""
 msgstr ""
 "The weather data and applications for dealing with weather data presented "
 "here were created in initial research by the digitalization module of the "
-"scientific accompanying research of the Energy Transition Building research "
-"initiative. The focus of the research was on the Germany region."
+"scientific accompanying research of the research initiative Energiewendebauen. Research in Germany is the main focus."
 
 #: templates/weatherdata_over/explanation.html:16
 msgid ""
@@ -3822,7 +3821,7 @@ msgid ""
 "Wetterdaten\n"
 "                    bzw. deren Anwendungen zusammengetragen:"
 msgstr ""
-"As part of our initial research, we examined the following aspectsWeather "
+"As part of our initial research, we examined the following aspects for weather "
 "data and their applications compiled:"
 
 #: templates/weatherdata_over/explanation.html:25
@@ -3834,18 +3833,14 @@ msgid ""
 "bzw. die Wartung eingestellt\n"
 "                        werden. "
 msgstr ""
-"When was the last update done? Particularly in the case of digital "
-"applications that are developed as part of research projects, further "
-"development or maintenance can be stopped after the project has been "
-"completed."
+"When was the last update shipped? Particularly in the case of digital applications developed as part of research projects, further development or maintenance may be discontinued once the project is completed"
 
 #: templates/weatherdata_over/explanation.html:29
 msgid ""
 "Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
 "                        entstehen Kosten durch die Verwendung?"
 msgstr ""
-"Under what license was the application published and are there any costs "
-"associated with using the application?"
+"Under what license was the application published and are there any costs associated with using the application?"
 
 #: templates/weatherdata_over/weatherdata-detail.html:75
 msgid "Welche Daten bietet"
