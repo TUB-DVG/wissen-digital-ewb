@@ -34,8 +34,8 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js" integrity="sha384-W7FXNbEY44RgDK8MunBe4gETSKi3Qo2bJAXX3PH8v5l3hdabFb9dbCIn3X69OFjX" crossorigin="anonymous" nonce="{{request.csp_nonce}}"></script>
 </head>
 <body>
-  <!-- Nav Bar no Navbar at Startpage -->
-
+  <!-- Nav Bar -->
+  {% include 'partials/_navbar.html' %}
   <!-- Main Content -->
   {% block content %} {% endblock %}
   <!-- Footer -->
