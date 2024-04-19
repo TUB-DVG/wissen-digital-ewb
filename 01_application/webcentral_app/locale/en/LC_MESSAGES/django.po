@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-19 08:56+0000\n"
+"POT-Creation-Date: 2024-04-19 12:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2818,7 +2818,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: templates/pages/impressum.html:15 templates/partials/_footer.html:58
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:76
 msgid "Impressum"
 msgstr "Imprint"
 
@@ -2950,11 +2950,15 @@ msgstr "Thermal load profile"
 msgid "Im Entwicklungsprozess"
 msgstr "Under development"
 
-#: templates/partials/_footer.html:47
+#: templates/partials/_footer.html:28 templates/partials/_footer.html:44
+msgid "Sprache wählen"
+msgstr "Select Language"
+
+#: templates/partials/_footer.html:65
 msgid "Über uns"
 msgstr "About us"
 
-#: templates/partials/_footer.html:70
+#: templates/partials/_footer.html:88
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
