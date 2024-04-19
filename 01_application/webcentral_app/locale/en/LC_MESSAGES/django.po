@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-11 14:31+0000\n"
+"POT-Creation-Date: 2024-04-19 08:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,9 +54,9 @@ msgid "Infrastruktur Gas"
 msgstr "Gas Infrastructure"
 
 #: Datasets/views.py:57 Datasets/views.py:83
-#: templates/LastProfile/explanation.html:105
-#: templates/LastProfile/explanation.html:161
-#: templates/StartSearch/StartSearch.html:143
+#: templates/LastProfile/explanation.html:109
+#: templates/LastProfile/explanation.html:170
+#: templates/StartSearch/StartSearch.html:149
 #: templates/partials/_navbar.html:71
 msgid "Wetterdaten"
 msgstr "Weather data"
@@ -435,7 +435,7 @@ msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung "
 msgstr "Total load profile for trade, commerce, services"
 
 #: LastProfile/Dash_app/Warmelast.py:96 LastProfile/Dash_app/Warmelast.py:212
-#: templates/LastProfile/explanation.html:109
+#: templates/LastProfile/explanation.html:113
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
@@ -519,6 +519,16 @@ msgstr "Wireless"
 msgid "Proprietär"
 msgstr "Proprietary"
 
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
+msgid "Find Apps"
+msgstr ""
+
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:13
+#: templates/admin/publications/publication_change_list.html:11
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
 msgstr ""
@@ -541,7 +551,7 @@ msgid ""
 msgstr ""
 
 #: templates/LastProfile/explanation.html:21
-#: templates/StartSearch/StartSearch.html:165
+#: templates/StartSearch/StartSearch.html:171
 #: templates/partials/_navbar.html:77
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -574,7 +584,7 @@ msgstr ""
 "downloaded."
 
 #: templates/LastProfile/explanation.html:49
-#: templates/LastProfile/explanation.html:166
+#: templates/LastProfile/explanation.html:175
 msgid "Stromlast"
 msgstr "Electrical Load Profiles"
 
@@ -614,7 +624,7 @@ msgid ""
 msgstr "Enter the annual electricity requirement in kWh/a"
 
 #: templates/LastProfile/explanation.html:66
-#: templates/LastProfile/explanation.html:117
+#: templates/LastProfile/explanation.html:121
 msgid "Berechnungszeitraum"
 msgstr "Calculation period"
 
@@ -624,16 +634,16 @@ msgid ""
 "            Berechnungszeitraums"
 msgstr "Selection of the calculation period"
 
-#: templates/LastProfile/explanation.html:87
+#: templates/LastProfile/explanation.html:91
 msgid "Approximation der Stromlast"
 msgstr "Approximation of the electrical load"
 
-#: templates/LastProfile/explanation.html:96
-#: templates/LastProfile/explanation.html:154
+#: templates/LastProfile/explanation.html:100
+#: templates/LastProfile/explanation.html:163
 msgid "Wärmelast"
 msgstr "Heat Load"
 
-#: templates/LastProfile/explanation.html:99
+#: templates/LastProfile/explanation.html:103
 msgid ""
 "Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den\n"
 "          typischen Verlauf der Wärmelast über der Zeit in Abhängigkeit der\n"
@@ -646,7 +656,7 @@ msgstr ""
 "heat requirement and the building type. Furthermore, the calculation period "
 "can be specified:"
 
-#: templates/LastProfile/explanation.html:105
+#: templates/LastProfile/explanation.html:109
 msgid ""
 "Hier kann das Testreferenzjahr\n"
 "              (TRJ) oder eine spezifische Wetterstation gewählt werden"
@@ -654,33 +664,33 @@ msgstr ""
 "The test reference year (TRY) or a specific weather station can be selected "
 "here"
 
-#: templates/LastProfile/explanation.html:109
+#: templates/LastProfile/explanation.html:113
 msgid "Gebäudetyp"
 msgstr "Building Use type"
 
-#: templates/LastProfile/explanation.html:112
+#: templates/LastProfile/explanation.html:116
 msgid "Jahreswärmebedarf"
 msgstr "Annual heat requirement"
 
-#: templates/LastProfile/explanation.html:112
+#: templates/LastProfile/explanation.html:116
 msgid ""
 "Eingabe des\n"
 "              Jahreswärmebedarfs in kWh/a"
 msgstr "Enter the annual heat demand in kWh/a"
 
-#: templates/LastProfile/explanation.html:117
+#: templates/LastProfile/explanation.html:121
 msgid "Eingabe des Berechnungszeitraums"
 msgstr "Enter the calculation period"
 
-#: templates/LastProfile/explanation.html:139
+#: templates/LastProfile/explanation.html:148
 msgid "Approximation der Wärmelast"
 msgstr "Approximation of the heat load"
 
-#: templates/LastProfile/explanation.html:147
+#: templates/LastProfile/explanation.html:156
 msgid "Anmerkungen"
 msgstr "Remarks"
 
-#: templates/LastProfile/explanation.html:150
+#: templates/LastProfile/explanation.html:159
 msgid ""
 "Die Generatoren basieren auf Berechnungsvorschriften, Daten und\n"
 "            Annahmen der folgenden Quellen:"
@@ -688,7 +698,7 @@ msgstr ""
 "The generators are based on calculation rules, data and assumptions from the "
 "following sources:"
 
-#: templates/LastProfile/explanation.html:154
+#: templates/LastProfile/explanation.html:163
 msgid ""
 "Nutzung der Dissertation von Marcus\n"
 "            Hellwig, 2003, \"Entwicklung und Anwendung parametrisierter\n"
@@ -697,23 +707,23 @@ msgstr ""
 "Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-"
 "Lastprofile'"
 
-#: templates/LastProfile/explanation.html:158
+#: templates/LastProfile/explanation.html:167
 msgid "Download der Disseration"
 msgstr "Download the dissertation"
 
-#: templates/LastProfile/explanation.html:161
+#: templates/LastProfile/explanation.html:170
 msgid "Nutzung der Wetterdienst Bibliothek"
 msgstr "Use of the weather service library"
 
-#: templates/LastProfile/explanation.html:163
+#: templates/LastProfile/explanation.html:172
 msgid "Wetterdienst"
 msgstr "Weather Service"
 
-#: templates/LastProfile/explanation.html:166
+#: templates/LastProfile/explanation.html:175
 msgid "Nutzung der Standard-Lastprofile"
 msgstr "Use of standard load profiles"
 
-#: templates/LastProfile/explanation.html:168
+#: templates/LastProfile/explanation.html:177
 msgid "Standard-Lastprofile beim BDEW"
 msgstr "Standard load profiles at BDEW"
 
@@ -723,7 +733,7 @@ msgid "Suchergebnisse"
 msgstr "Search results"
 
 #: templates/StartSearch/ResultSearch.html:34
-#: templates/StartSearch/StartSearch.html:60
+#: templates/StartSearch/StartSearch.html:66
 msgid "Durchsuche die Plattform!"
 msgstr "Search the platform!"
 
@@ -796,14 +806,14 @@ msgstr ""
 "Energiewendebauen offers a knowledge platform that provides access to the "
 "research results and tools developed from the research projects in the area "
 "of digitalization in the built environment. This platform targets the "
-"community interested in such research and also supports the research projects "
-"of the Energiewendebauen initiative."
+"community interested in such research and also supports the research "
+"projects of the Energiewendebauen initiative."
 
-#: templates/StartSearch/StartSearch.html:88 templates/partials/_navbar.html:44
+#: templates/StartSearch/StartSearch.html:94 templates/partials/_navbar.html:44
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
 
-#: templates/StartSearch/StartSearch.html:90
+#: templates/StartSearch/StartSearch.html:96
 msgid ""
 "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
 "                der Energieforschung im Gebäudesektor zielt vorrangig auf\n"
@@ -812,50 +822,51 @@ msgid ""
 "                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
 "                Forschungsergebnisse."
 msgstr ""
-"The technical focus of investigating digitalization in energy research"
-"within the built environment primarily targets tools for technical planning,"
-"energy efficient operation, and optimization. This encompasses datasets, digital tools, applications, and other research results."
+"The technical focus of investigating digitalization in energy researchwithin "
+"the built environment primarily targets tools for technical planning,energy "
+"efficient operation, and optimization. This encompasses datasets, digital "
+"tools, applications, and other research results."
 
-#: templates/StartSearch/StartSearch.html:108
+#: templates/StartSearch/StartSearch.html:114
 msgid "Werkzeuge"
 msgstr "Tools"
 
-#: templates/StartSearch/StartSearch.html:120
+#: templates/StartSearch/StartSearch.html:126
 #: templates/weatherdata_over/weatherdata-detail.html:85
 msgid "Anwendungen"
 msgstr "Applications"
 
-#: templates/StartSearch/StartSearch.html:132
+#: templates/StartSearch/StartSearch.html:138
 #: templates/TechnicalStandards/explanation.html:14
 #: templates/partials/_navbar.html:64
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
-#: templates/StartSearch/StartSearch.html:154
+#: templates/StartSearch/StartSearch.html:160
 #: templates/partials/_navbar.html:83 weatherdata_over/views.py:58
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/StartSearch/StartSearch.html:176
+#: templates/StartSearch/StartSearch.html:182
 #: templates/partials/_navbar.html:88
 msgid "technisch"
 msgstr "technical"
 
-#: templates/StartSearch/StartSearch.html:178
-#: templates/StartSearch/StartSearch.html:281
-#: templates/StartSearch/StartSearch.html:378
-#: templates/StartSearch/StartSearch.html:458
+#: templates/StartSearch/StartSearch.html:184
+#: templates/StartSearch/StartSearch.html:287
+#: templates/StartSearch/StartSearch.html:384
+#: templates/StartSearch/StartSearch.html:464
 #: templates/partials/_navbar.html:89 templates/partials/_navbar.html:141
 #: templates/partials/_navbar.html:186 templates/partials/_navbar.html:226
 msgid "Publikationen"
 msgstr "Publications"
 
-#: templates/StartSearch/StartSearch.html:199
+#: templates/StartSearch/StartSearch.html:205
 #: templates/partials/_navbar.html:105
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
-#: templates/StartSearch/StartSearch.html:201
+#: templates/StartSearch/StartSearch.html:207
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -868,45 +879,46 @@ msgid ""
 "                den Nutzenden."
 msgstr ""
 "The operational focus when examining digitalization in energy research in "
-"the built environment primarily centers on the use phase of digital applications. "
-"Key aspects include the economical operation of digital "
+"the built environment primarily centers on the use phase of digital "
+"applications. Key aspects include the economical operation of digital "
 "applications/business models, along with user integration and interactivity."
 
-
-#: templates/StartSearch/StartSearch.html:220
+#: templates/StartSearch/StartSearch.html:226
 #: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/StartSearch/StartSearch.html:232
+#: templates/StartSearch/StartSearch.html:238
 msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
 msgstr "Business model applications - Challenges"
 
-#: templates/StartSearch/StartSearch.html:244
+#: templates/StartSearch/StartSearch.html:250
 #: templates/partials/_navbar.html:123
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/StartSearch/StartSearch.html:256
+#: templates/StartSearch/StartSearch.html:262
+#: templates/StartSearch/StartSearch.html:274
 #: templates/partials/_navbar.html:129 templates/partials/_navbar.html:135
-msgid "Nutzendenperspektive"
+msgid "Nutzenden&shy;perspektive"
 msgstr "User Engagement"
 
-#: templates/StartSearch/StartSearch.html:268
-msgid "Nutzendenperspektive - Methoden"
-msgstr "User engagement - methods"
+#: templates/StartSearch/StartSearch.html:274
+#: templates/partials/_navbar.html:135
+msgid "Methoden"
+msgstr "Methods"
 
-#: templates/StartSearch/StartSearch.html:279
+#: templates/StartSearch/StartSearch.html:285
 #: templates/partials/_navbar.html:140
 msgid "betrieblich"
 msgstr "operational"
 
-#: templates/StartSearch/StartSearch.html:306
+#: templates/StartSearch/StartSearch.html:312
 #: templates/partials/_navbar.html:156
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:308
+#: templates/StartSearch/StartSearch.html:314
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -920,40 +932,41 @@ msgid ""
 "                mit Daten sowie dessen Auswirkungen thematisiert."
 msgstr ""
 "The ecological focus when examining digitalization in energy research in the "
-"built environment aims to evaluate environmental impacts resuluting from the use of "
-"digital applications. his includes assessing both positive effects, such as energy savings,"
-"and potential negative effects, like increased material consumption."
-"Adequate data handling and its implications are also discussed in this context."
+"built environment aims to evaluate environmental impacts resuluting from the "
+"use of digital applications. his includes assessing both positive effects, "
+"such as energy savings,and potential negative effects, like increased "
+"material consumption.Adequate data handling and its implications are also "
+"discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:329
+#: templates/StartSearch/StartSearch.html:335
 #: templates/pages/environmentalIntegrityNegativ.html:19
 #: templates/partials/_navbar.html:162
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: templates/StartSearch/StartSearch.html:341
+#: templates/StartSearch/StartSearch.html:347
 #: templates/pages/environmentalIntegrityPositiv.html:19
 #: templates/partials/_navbar.html:168
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impact"
 
-#: templates/StartSearch/StartSearch.html:353
+#: templates/StartSearch/StartSearch.html:359
 #: templates/pages/benchmarkingChallenges.html:19
 #: templates/partials/_navbar.html:174
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:365
+#: templates/StartSearch/StartSearch.html:371
 #: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:180
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: templates/StartSearch/StartSearch.html:399
+#: templates/StartSearch/StartSearch.html:405
 #: templates/partials/_navbar.html:202
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:401
+#: templates/StartSearch/StartSearch.html:407
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -967,28 +980,28 @@ msgid ""
 "                Datenschutzrecht konkretisiert und in konkrete\n"
 "                Handlungsempfehlungen für Projekte übersetzt."
 msgstr ""
-"The legal focus emphasizes the importance of data protection in digitalization"
-" within the built environment. It addresses the emergence of data protection" 
-" risks and their potential to impede innovation. Concurrently, it clarifies" 
-"data protection laws for various applications in the building sector, offering concrete"
-" action recommendations for projects."
+"The legal focus emphasizes the importance of data protection in "
+"digitalization within the built environment. It addresses the emergence of "
+"data protection risks and their potential to impede innovation. "
+"Concurrently, it clarifiesdata protection laws for various applications in "
+"the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:421
+#: templates/StartSearch/StartSearch.html:427
 #: templates/partials/_navbar.html:208
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:433
+#: templates/StartSearch/StartSearch.html:439
 #: templates/partials/_navbar.html:214
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
-#: templates/StartSearch/StartSearch.html:445
+#: templates/StartSearch/StartSearch.html:451
 #: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:220
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:456
+#: templates/StartSearch/StartSearch.html:462
 #: templates/partials/_navbar.html:225
 msgid "rechtlich"
 msgstr "legal"
@@ -1689,11 +1702,6 @@ msgstr ""
 
 #: templates/admin/publications/import_bibtex.html:39
 msgid "Import"
-msgstr ""
-
-#: templates/admin/publications/publication_change_list.html:11
-#, python-format
-msgid "Add %(name)s"
 msgstr ""
 
 #: templates/datasets_over/dataset-detail.html:66
@@ -2454,9 +2462,11 @@ msgid ""
 "          „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ "
 "untergliedert."
 msgstr ""
-"Assessing the positive and negative environmental impacts is not always straigthtforward. "
-"This section highlights challenges in the ecological assessment of digital applications that often arise in practice. "
-"These challenges are divided into the following thematic areas: \"Benchmarking,\" \"Level of Detail – Scope of Application,\" and \"System Boundaries.\""
+"Assessing the positive and negative environmental impacts is not always "
+"straigthtforward. This section highlights challenges in the ecological "
+"assessment of digital applications that often arise in practice. These "
+"challenges are divided into the following thematic areas: \"Benchmarking,\" "
+"\"Level of Detail – Scope of Application,\" and \"System Boundaries.\""
 
 #: templates/pages/businessModelsChallenge.html:20
 msgid "Geschäftsmodelle – Herausforderungen"
@@ -2514,14 +2524,15 @@ msgid ""
 "          eine effiziente Entwicklung digitaler Anwendungen zu unterstützen."
 msgstr ""
 "The path to a marketable product or service is often rocky. However, "
-"countless examples demonstrate successful development and implementation of business models and "
-"implementation of digital applications. Business models have also been, and continue to be, " 
-"successfully developed within the projects of the research initative Energiewendebauen. "
-"Here, we plan to intrdouce some these projects as examples. The project context, the digital application, the business "
-"model development and the resulting experiences of the projects should be "
-"described. The good practice examples are intended to encourage "
-"consideration of business model development as early as possible in order to "
-"support the efficient development of digital applications."
+"countless examples demonstrate successful development and implementation of "
+"business models and implementation of digital applications. Business models "
+"have also been, and continue to be, successfully developed within the "
+"projects of the research initative Energiewendebauen. Here, we plan to "
+"intrdouce some these projects as examples. The project context, the digital "
+"application, the business model development and the resulting experiences of "
+"the projects should be described. The good practice examples are intended to "
+"encourage consideration of business model development as early as possible "
+"in order to support the efficient development of digital applications."
 
 #: templates/pages/dataSecurity.html:17
 msgid "Datenschutzübersicht"
@@ -2583,25 +2594,28 @@ msgid ""
 msgstr ""
 "When using digital applications in the building and neighborhood sector, "
 "various data sources on indoor climate, energy consumption or mere building "
-"information often often allows for inferences about the behavior of individuals or groups. "
-"When these data pertain to an identified or identifiable person, national or European data protection laws apply, along with a broad range of legal obligations for the entity processing the data. "
-" The objective of data protection law is to protect "
-"those affected from risks caused by the data processing andto fundamentally allow them to decide on the extent and management of these risks. "
- " The very question of whether data processing is even within the "
-"scope of application of data protection law, can be challenging. The "
-"central European regulation - the General Data Protection Regulation (GDPR) "
-"- is linked to the very vague concept of personal data. The scope of "
-"application was deliberately defined broadly by the legislature and is "
-"interpreted broadly by the courts in order to ensure the most comprehensive "
-"protection possible for those affected from the risks of various data "
-"processing. This is because even supposedly purely technical data such as "
-"machine data, geodata or building data can allow conclusions to be drawn "
-"about people if they are linked to other data sets. To explain how data "
-"protection risks can arise when processing building-related data and when "
-"this opens up the scope of the GDPR, a data protection overview was created "
-"as part of Module 4 of the Scientific Accompanying Research. Using various use cases, it is explained here when data "
-"protection risks arise and how they must be controlled through the correct "
-"use of technical and organizational protective measures."
+"information often often allows for inferences about the behavior of "
+"individuals or groups. When these data pertain to an identified or "
+"identifiable person, national or European data protection laws apply, along "
+"with a broad range of legal obligations for the entity processing the data.  "
+"The objective of data protection law is to protect those affected from risks "
+"caused by the data processing andto fundamentally allow them to decide on "
+"the extent and management of these risks.  The very question of whether data "
+"processing is even within the scope of application of data protection law, "
+"can be challenging. The central European regulation - the General Data "
+"Protection Regulation (GDPR) - is linked to the very vague concept of "
+"personal data. The scope of application was deliberately defined broadly by "
+"the legislature and is interpreted broadly by the courts in order to ensure "
+"the most comprehensive protection possible for those affected from the risks "
+"of various data processing. This is because even supposedly purely technical "
+"data such as machine data, geodata or building data can allow conclusions to "
+"be drawn about people if they are linked to other data sets. To explain how "
+"data protection risks can arise when processing building-related data and "
+"when this opens up the scope of the GDPR, a data protection overview was "
+"created as part of Module 4 of the Scientific Accompanying Research. Using "
+"various use cases, it is explained here when data protection risks arise and "
+"how they must be controlled through the correct use of technical and "
+"organizational protective measures."
 
 #: templates/pages/dataSecurity.html:63
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
@@ -2635,13 +2649,17 @@ msgid ""
 "          mit Daten gegeben und auf die ökologischen Wirkungen bestimmter\n"
 "          Praktiken beim Umgang mit Daten hingewiesen werden."
 msgstr ""
-"Both the materialization and the energy required to operate ever-increasing computing capacities present a challenge. "
-"Therefore, the moderate use of data — or data sufficiency — is increasingly gaining relevance. "
-"Data sufficiency considers all aspects of data processing: from collection and further processing to storage and deletion. "
-"Currently, the ecological impacts of (in)sufficient data management are still under-researched and often overlooked in practice. "
-"However, with the constant increase in digital applications in the built environment sector, data sufficiency must be considered both during development and later during use. "
-"The following will provide guidelines for judicious data management and highlight the ecological effects of certain data handling practices."
-
+"Both the materialization and the energy required to operate ever-increasing "
+"computing capacities present a challenge. Therefore, the moderate use of "
+"data — or data sufficiency — is increasingly gaining relevance. Data "
+"sufficiency considers all aspects of data processing: from collection and "
+"further processing to storage and deletion. Currently, the ecological "
+"impacts of (in)sufficient data management are still under-researched and "
+"often overlooked in practice. However, with the constant increase in digital "
+"applications in the built environment sector, data sufficiency must be "
+"considered both during development and later during use. The following will "
+"provide guidelines for judicious data management and highlight the "
+"ecological effects of certain data handling practices."
 
 #: templates/pages/environmentalIntegrityNegativ.html:32
 msgid ""
@@ -2799,7 +2817,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: templates/pages/impressum.html:15 templates/partials/_footer.html:39
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:58
 msgid "Impressum"
 msgstr "Imprint"
 
@@ -2887,10 +2905,13 @@ msgid ""
 "          Auseinandersetzung mit den Methoden für eigene Projekte ermutigt\n"
 "          werden."
 msgstr ""
-"How can user engagement be successful? Proven methods from social science research can provide answers to this question. "
-"On this page, you will find a compilation of common methods for user engagement. The methods presented here will be briefly described, "
-"and potential applications or project contexts will be explained. Further literature references will encourage those interested to engage "
-"more deeply with the methods for their own projects."
+"How can user engagement be successful? Proven methods from social science "
+"research can provide answers to this question. On this page, you will find a "
+"compilation of common methods for user engagement. The methods presented "
+"here will be briefly described, and potential applications or project "
+"contexts will be explained. Further literature references will encourage "
+"those interested to engage more deeply with the methods for their own "
+"projects."
 
 #: templates/pages/userIntegrationPractice.html:19
 msgid "Nutzendeneinbindung"
@@ -2915,10 +2936,15 @@ msgid ""
 "des\n"
 "          jeweiligen Beispielprojekts aufgezeigt werden."
 msgstr ""
-"What can successful user integration achieve? This question is addressed by presenting selected examples. "
-"The discussion will focus on projects that have actively involved users of digital applications during their development and/or during the use of the digital application, with overarching goals such as achieving energy savings. "
-" In addition to the methods that were used in the example projects for user integration, the "
-"good practice presentation also focuses on the effects achieved with it. The challenges and insights from the user integration of each example project will also be highlighted. "
+"What can successful user integration achieve? This question is addressed by "
+"presenting selected examples. The discussion will focus on projects that "
+"have actively involved users of digital applications during their "
+"development and/or during the use of the digital application, with "
+"overarching goals such as achieving energy savings.  In addition to the "
+"methods that were used in the example projects for user integration, the "
+"good practice presentation also focuses on the effects achieved with it. The "
+"challenges and insights from the user integration of each example project "
+"will also be highlighted. "
 
 #: templates/pages/warmelast.html:3
 msgid "Waermelastprofil"
@@ -2928,11 +2954,11 @@ msgstr "Thermal load profile"
 msgid "Im Entwicklungsprozess"
 msgstr "Under development"
 
-#: templates/partials/_footer.html:28
+#: templates/partials/_footer.html:47
 msgid "Über uns"
 msgstr "About us"
 
-#: templates/partials/_footer.html:51
+#: templates/partials/_footer.html:70
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
@@ -2961,10 +2987,6 @@ msgstr "Digital tools"
 #: templates/partials/_navbar.html:57
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
-
-#: templates/partials/_navbar.html:135
-msgid "Methoden"
-msgstr "Methods"
 
 #: templates/partials/_navbar.html:185
 msgid "ökologisch"
@@ -3033,15 +3055,27 @@ msgid ""
 "          Bei der Zusammenstellung der Anwendungen haben wir folgende "
 "Aspekte berücksichtigt:"
 msgstr ""
-"The digital applications presented here correspond to the applications that were recorded as part of the evaluation of the questionnaire of the "
-"scientific accompanying research of the research initiative Energiewendebauen from 2021 and 2023. All digital tools are accordingly used, "
-"developed or further developed by projects that are funded as part of the respective initiative. A general distinction is made here between digital tools and digital applications. A digital tool "
-"is a piece of software used in conjunction with other tools by developers or engineers, to create products with specific functionalities. Frameworks, libraries, programming languages and standards are also listed under tools. "
-"A digital application, on the other hand, is a standalone piece of software designed for a specific use case. Typically, a digital application is "
-"consists of a chain of tools with possible direct interaction with the end user. Platforms are also listed under Applications. It is entirely possible to have a tool that can also be classified as an application. "
-"In a first step, we collect these digital tools and applications and make them available to you as an overview and inspiration. A detailed compilation of the tools and applications can only be done together with the "
-"users, so please feel free to contact us. We look forward to hearing your application examples from your projects."
-"<br>When putting together the tools, we took the following aspects into account:"
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the evaluation of the questionnaire of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen from 2021 and 2023. All digital tools are accordingly "
+"used, developed or further developed by projects that are funded as part of "
+"the respective initiative. A general distinction is made here between "
+"digital tools and digital applications. A digital tool is a piece of "
+"software used in conjunction with other tools by developers or engineers, to "
+"create products with specific functionalities. Frameworks, libraries, "
+"programming languages and standards are also listed under tools. A digital "
+"application, on the other hand, is a standalone piece of software designed "
+"for a specific use case. Typically, a digital application is consists of a "
+"chain of tools with possible direct interaction with the end user. Platforms "
+"are also listed under Applications. It is entirely possible to have a tool "
+"that can also be classified as an application. In a first step, we collect "
+"these digital tools and applications and make them available to you as an "
+"overview and inspiration. A detailed compilation of the tools and "
+"applications can only be done together with the users, so please feel free "
+"to contact us. We look forward to hearing your application examples from "
+"your projects.<br>When putting together the tools, we took the following "
+"aspects into account:"
 
 #: templates/tools_over/explanationApps.html:30
 #: templates/tools_over/explanationTools.html:30
@@ -3380,9 +3414,11 @@ msgid ""
 "zu IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS und AixLib "
 "einsehbar."
 msgstr ""
-"The Simquality compiles information and data on quality assurance and standardization of simulation processes," 
-"including independent tests of simulation software. Further information is provided about tools like IDA ICE," 
-"EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS and AixLib can be found on the website mentioned above."
+"The Simquality compiles information and data on quality assurance and "
+"standardization of simulation processes,including independent tests of "
+"simulation software. Further information is provided about tools like IDA "
+"ICE,EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS and AixLib can be "
+"found on the website mentioned above."
 
 #: templates/tools_over/explanationApps.html:129
 #: templates/tools_over/explanationTools.html:130
@@ -3394,8 +3430,9 @@ msgid ""
 "          weitere Einordnung."
 msgstr ""
 "The Open Sustainable Technology project collects open, sustainable and "
-"actively maintained projects that aim to enable a sustainable energy transition."
-"It encompasses standards, data, and programs without further classification."
+"actively maintained projects that aim to enable a sustainable energy "
+"transition.It encompasses standards, data, and programs without further "
+"classification."
 
 #: templates/tools_over/explanationApps.html:139
 #: templates/tools_over/explanationTools.html:140
@@ -3504,15 +3541,27 @@ msgid ""
 "          Bei der Zusammenstellung der Werkzeuge haben wir folgende Aspekte "
 "berücksichtigt:"
 msgstr ""
-"The digital applications presented here correspond to the applications that were recorded as part of the evaluation of the questionnaire of the "
-"scientific accompanying research of the research initiative Energiewendebauen from 2021 and 2023. All digital tools are accordingly used, "
-"developed or further developed by projects that are funded as part of the respective initiative. A general distinction is made here between digital tools and digital applications. A digital tool "
-"is a piece of software used in conjunction with other tools by developers or engineers, to create products with specific functionalities. Frameworks, libraries, programming languages and standards are also listed under tools. "
-"A digital application, on the other hand, is a standalone piece of software designed for a specific use case. Typically, a digital application is "
-"consists of a chain of tools with possible direct interaction with the end user. Platforms are also listed under Applications. It is entirely possible to have a tool that can also be classified as an application. "
-"In a first step, we collect these digital tools and applications and make them available to you as an overview and inspiration. A detailed compilation of the tools and applications can only be done together with the "
-"users, so please feel free to contact us. We look forward to hearing your application examples from your projects."
-"<br>When putting together the tools, we took the following aspects into account:"
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the evaluation of the questionnaire of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen from 2021 and 2023. All digital tools are accordingly "
+"used, developed or further developed by projects that are funded as part of "
+"the respective initiative. A general distinction is made here between "
+"digital tools and digital applications. A digital tool is a piece of "
+"software used in conjunction with other tools by developers or engineers, to "
+"create products with specific functionalities. Frameworks, libraries, "
+"programming languages and standards are also listed under tools. A digital "
+"application, on the other hand, is a standalone piece of software designed "
+"for a specific use case. Typically, a digital application is consists of a "
+"chain of tools with possible direct interaction with the end user. Platforms "
+"are also listed under Applications. It is entirely possible to have a tool "
+"that can also be classified as an application. In a first step, we collect "
+"these digital tools and applications and make them available to you as an "
+"overview and inspiration. A detailed compilation of the tools and "
+"applications can only be done together with the users, so please feel free "
+"to contact us. We look forward to hearing your application examples from "
+"your projects.<br>When putting together the tools, we took the following "
+"aspects into account:"
 
 #: templates/tools_over/explanationTools.html:31
 msgid ""
@@ -3780,7 +3829,8 @@ msgid ""
 msgstr ""
 "The weather data and applications for dealing with weather data presented "
 "here were created in initial research by the digitalization module of the "
-"scientific accompanying research of the research initiative Energiewendebauen. Research in Germany is the main focus."
+"scientific accompanying research of the research initiative "
+"Energiewendebauen. Research in Germany is the main focus."
 
 #: templates/weatherdata_over/explanation.html:16
 msgid ""
@@ -3801,8 +3851,8 @@ msgid ""
 "Wetterdaten\n"
 "                    bzw. deren Anwendungen zusammengetragen:"
 msgstr ""
-"As part of our initial research, we examined the following aspects for weather "
-"data and their applications compiled:"
+"As part of our initial research, we examined the following aspects for "
+"weather data and their applications compiled:"
 
 #: templates/weatherdata_over/explanation.html:25
 msgid ""
@@ -3813,14 +3863,17 @@ msgid ""
 "bzw. die Wartung eingestellt\n"
 "                        werden. "
 msgstr ""
-"When was the last update shipped? Particularly in the case of digital applications developed as part of research projects, further development or maintenance may be discontinued once the project is completed"
+"When was the last update shipped? Particularly in the case of digital "
+"applications developed as part of research projects, further development or "
+"maintenance may be discontinued once the project is completed"
 
 #: templates/weatherdata_over/explanation.html:29
 msgid ""
 "Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
 "                        entstehen Kosten durch die Verwendung?"
 msgstr ""
-"Under what license was the application published and are there any costs associated with using the application?"
+"Under what license was the application published and are there any costs "
+"associated with using the application?"
 
 #: templates/weatherdata_over/weatherdata-detail.html:75
 msgid "Welche Daten bietet"
@@ -3849,6 +3902,9 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:69
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid "Nutzendenperspektive - Methoden"
+#~ msgstr "User engagement - methods"
 
 #~ msgid "und"
 #~ msgstr "and"
