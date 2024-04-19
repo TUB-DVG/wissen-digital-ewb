@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-19 08:47+0000\n"
+"POT-Creation-Date: 2024-04-19 08:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -904,6 +904,7 @@ msgid "Nutzenden&shy;perspektive"
 msgstr "User Engagement"
 
 #: templates/StartSearch/StartSearch.html:274
+#: templates/pages/userIntegrationMethod.html:19
 #: templates/partials/_navbar.html:135
 msgid "Methoden"
 msgstr "Methods"
@@ -2888,10 +2889,9 @@ msgid "Stromlastprofil"
 msgstr "Standard load profiles"
 
 #: templates/pages/userIntegrationMethod.html:19
-#, fuzzy
-#| msgid "Nutzenden&shy;perspektive"
-msgid "Nutzendeneinbindung – Methoden"
-msgstr "User engangement methods"
+#: templates/pages/userIntegrationPractice.html:19
+msgid "Nutzendeneinbindung"
+msgstr "User engangement"
 
 #: templates/pages/userIntegrationMethod.html:32
 msgid ""
@@ -2912,10 +2912,6 @@ msgstr ""
 "contexts will be explained. Further literature references will encourage "
 "those interested to engage more deeply with the methods for their own "
 "projects."
-
-#: templates/pages/userIntegrationPractice.html:19
-msgid "Nutzendeneinbindung"
-msgstr "User engagement"
 
 #: templates/pages/userIntegrationPractice.html:32
 msgid ""
