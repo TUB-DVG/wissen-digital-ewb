@@ -10,8 +10,9 @@ button {
 }
 .sticky-third-lvl {
     position: sticky;
-    top: 150px;
+    top: 155px;
     z-index: 1;
+    background: white;
 }
 .absolute-horizontal-position-lvl-one {
     padding-left: 111px;
@@ -42,7 +43,7 @@ button {
 
 .button-first-level {
   border: none;
-  background: none;
+  background: white;
   cursor: pointer;
   padding-top: 10.5px;
   padding-bottom: 10.5px;
@@ -203,14 +204,20 @@ button {
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
                           <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
-                            <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
-                              {{ node.content.topic.heading }}
-                            </button>
+                            <div class="sticky-third-lvl">
+                              <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px; padding-top: 10.5px; padding-bottom: 10.5px;" id="0">
+                              <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
+                                {{ node.content.topic.heading }}
+                              </button>
+                              <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
+                            </div>
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                          <button class="sticky-element-button" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            <div>
+                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">
+                              <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            </div>  
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
                       {% endif %}
@@ -251,22 +258,40 @@ button {
     }
     openHeadingsForLayers();
   }
+  function isAboveStickyElement(stickyElement) {
+    return window.scrollY < stickyElement.offsetTop;
+  }
+  var lastScrollTop = 0;
 
   window.onscroll = function() {
 
-    var stickyElements = findVisibleButtonElementsInViewport();
+    var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var currentStickyThirdLvlElement = document.querySelector('div.sticky-third-lvl');
+    if (lastScrollTop < currentScrollTop) {
+      // on scroll down
+      var stickyElements = findVisibleButtonElementsInViewport();
 
-    // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
-    //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
-    // });
-    var currentStickyThirdLvlElement = document.querySelector('button.sticky-third-lvl');
-    var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
-    if (expandedChildOfStickyElement != undefined) {
-     if (getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
-        // debugger;
+      // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
+      //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      // });
+      
+      var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
+      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
+          currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
+          // if (currenStickyThirdLvlElement.id == "0") {
+          //   currentStickyThirdLvlElement.previousElementSibling.classList.remove('sticky-third-lvl');
+          // }
+          // debugger;
+          expandedChildOfStickyElement.parentElement.classList.add('sticky-third-lvl');
+      }
+    }
+    else {
+      // on scroll up
+      if (isAboveStickyElement(currentStickyThirdLvlElement)) {
+        // The window is scrolled above the sticky element.
+        // Perform your actions here.
         currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
-        expandedChildOfStickyElement.classList.add('sticky-third-lvl');
-     }
+    }
     }
   };
 
@@ -290,7 +315,7 @@ button {
 
   function findVisibleButtonElementsInViewport() {
     var listElements = Array.from(document.querySelectorAll('.sticky-element-button')).filter(function(element) {
-      return window.getComputedStyle(element).display !== 'none' && element.parentElement.style.display != "none";
+      return window.getComputedStyle(element).display !== 'none' && element.parentElement.parentElement.style.display != "none";
     });
       var visibleElements = [];
       for (var i = 0; i < listElements.length; i++) {
@@ -306,7 +331,6 @@ button {
     var directChildOfStickyElement = undefined;
     for (var i = 0; i < listOfVisibleElements.length; i++) {
       if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
-        // debugger;
         directChildOfStickyElement = listOfVisibleElements[i];
       }
       else if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+2) {
@@ -472,7 +496,6 @@ button {
         for (var j = 0; j < ulChildElements.length; j++) {
           if (Number(ulChildElements[j].id) == 3) {
             textForCombinedElement = ulChildElements[j].textContent
-            // debugger;
             firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
             if (firstLiChildren != "") {
               aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
@@ -821,9 +844,9 @@ function removeMarkTagsFromText(element) {
 
 function openChildLayer(element) {
 
+
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
-  
   if (element.id == "2") {
     childUlElements = element.parentElement.querySelectorAll("ul ul");
     childUlElements[0].style.display = "block";
@@ -860,7 +883,7 @@ function openChildLayer(element) {
     }
     
     
-    var nextLayerElementsUL = Array.from(element.parentElement.children).filter((element) => {return element.tagName == "UL"});
+    var nextLayerElementsUL = Array.from(element.parentElement.parentElement.children).filter((element) => {return element.tagName == "UL"});
     var childOfLi = undefined;
     var buttonElementInLi = undefined;
     var paragraphElementInLi = undefined;
@@ -969,8 +992,7 @@ function resetCriteriaCatalog() {
 var numberOfOpenElementsPerLayer = {};
 function showOrHide(event, element) {
   // check if element if child-elements should be expoanded or collapsed
-  var childElements = element.parentElement.children; 
-
+  var childElements = element.parentElement.parentElement.children; 
   var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
   if (filteredChildElements.length == 0) {
     return;
