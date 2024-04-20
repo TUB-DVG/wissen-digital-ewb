@@ -8,6 +8,11 @@
 button {
   text-align: left;
 }
+.sticky-third-lvl {
+    position: sticky;
+    top: 150px;
+    z-index: 1;
+}
 .absolute-horizontal-position-lvl-one {
     padding-left: 111px;
     margin-left: 0px;
@@ -190,22 +195,22 @@ button {
                         {% endif %}
                       {% elif node.outdent %}
                         {% if node.depth == 0 %}
-                          <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
+                          <div class="hr sticky-third-lvl" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% else %}
-                          <div class="hr" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
+                          <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% endif %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
-                          <li  style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <img src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
-                            <button class="button-first-level" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
+                          <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
+                            <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px;" id="0">
+                            <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
                               {{ node.content.topic.heading }}
                             </button>
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
-                          <li  topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                          <button onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                          <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                          <button class="sticky-element-button" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}"><img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
                       {% endif %}
@@ -229,6 +234,9 @@ button {
   var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
   var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
 
+
+
+
   // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
   modifyCatalogToBeShownInOneElement();
   // bringParagraphsInNextLayer();
@@ -236,13 +244,76 @@ button {
   if (idOfTopicToBeOpened != "") {
     var elementsToBeSearched = document.getElementById("hi").querySelectorAll("button, p");;
     for (var i = 0; i < elementsToBeSearched.length; i++) {
-      // debugger;
       if (elementsToBeSearched[i].getAttribute("topicId").includes(idOfTopicToBeOpened)) {
         var rootElement = findRootElement(elementsToBeSearched[i]);
         depthFirstWalk(rootElement, elementsToBeSearched[i]);  
       }
     }
     openHeadingsForLayers();
+  }
+
+  window.onscroll = function() {
+
+    var stickyElements = findVisibleButtonElementsInViewport();
+
+    // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
+    //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+    // });
+    var currentStickyThirdLvlElement = document.querySelector('button.sticky-third-lvl');
+    var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
+    if (expandedChildOfStickyElement != undefined) {
+     if (getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
+        // debugger;
+        currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
+        expandedChildOfStickyElement.classList.add('sticky-third-lvl');
+     }
+    }
+  };
+
+  function getDistanceBetweenElements(element1, element2) {
+      var rect1 = element1.getBoundingClientRect();
+      var rect2 = element2.getBoundingClientRect();
+
+      return Math.abs(rect1.top - rect2.top);
+  }
+
+  function isInViewport(element) {
+      var rect = element.getBoundingClientRect();
+      var html = document.documentElement;
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || html.clientHeight) &&
+          rect.right <= (window.innerWidth || html.clientWidth)
+      );
+  }
+
+  function findVisibleButtonElementsInViewport() {
+    var listElements = Array.from(document.querySelectorAll('.sticky-element-button')).filter(function(element) {
+      return window.getComputedStyle(element).display !== 'none' && element.parentElement.style.display != "none";
+    });
+      var visibleElements = [];
+      for (var i = 0; i < listElements.length; i++) {
+          if (isInViewport(listElements[i])) {
+              visibleElements.push(listElements[i]);
+          }
+      }
+      return visibleElements;
+  }
+
+  function findFirstElementWhichIsExpanded(stickyElement, listOfVisibleElements) {
+    var stickyElementLayerNumber = Number(stickyElement.id);
+    var directChildOfStickyElement = undefined;
+    for (var i = 0; i < listOfVisibleElements.length; i++) {
+      if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
+        // debugger;
+        directChildOfStickyElement = listOfVisibleElements[i];
+      }
+      else if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+2) {
+        return directChildOfStickyElement;
+      }
+    }
+    return undefined;
   }
 
   function removeLastDivFromUlOfLevelOne () {
