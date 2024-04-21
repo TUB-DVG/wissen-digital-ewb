@@ -198,13 +198,13 @@ button {
                         {% if node.depth == 0 %}
                           <div class="hr sticky-third-lvl" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% else %}
-                          <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
+                          <!-- <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div> -->
                         {% endif %}
                         </li></ul>
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
                           <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div class="sticky-third-lvl">
+                            <div class="sticky-third-lvl" id="{{ node.content.depth }}">
                               <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px; padding-top: 10.5px; padding-bottom: 10.5px;" id="0">
                               <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
                                 {{ node.content.topic.heading }}
@@ -214,9 +214,10 @@ button {
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div>
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">
-                              <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">{{ node.content.topic.heading }}</button>
+                            <div id="{{ node.content.depth }}">
+                              <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
+                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">{{ node.content.topic.heading }}</button>
+                              <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                             </div>  
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
@@ -276,12 +277,12 @@ button {
       // });
       
       var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
-      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
+      // debugger;
+      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 30) {
           currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
           // if (currenStickyThirdLvlElement.id == "0") {
           //   currentStickyThirdLvlElement.previousElementSibling.classList.remove('sticky-third-lvl');
           // }
-          // debugger;
           expandedChildOfStickyElement.parentElement.classList.add('sticky-third-lvl');
       }
     }
@@ -289,7 +290,6 @@ button {
       // on scroll up
       if (isAboveStickyElement(currentStickyThirdLvlElement)) {
         // The window is scrolled above the sticky element.
-        // Perform your actions here.
         currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
     }
     }
@@ -299,7 +299,7 @@ button {
       var rect1 = element1.getBoundingClientRect();
       var rect2 = element2.getBoundingClientRect();
 
-      return Math.abs(rect1.top - rect2.top);
+      return Math.abs(rect1.bottom - rect2.top);
   }
 
   function isInViewport(element) {
@@ -329,16 +329,34 @@ button {
   function findFirstElementWhichIsExpanded(stickyElement, listOfVisibleElements) {
     var stickyElementLayerNumber = Number(stickyElement.id);
     var directChildOfStickyElement = undefined;
-    for (var i = 0; i < listOfVisibleElements.length; i++) {
-      if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
-        directChildOfStickyElement = listOfVisibleElements[i];
+    
+    for (var i = 1; i < listOfVisibleElements.length; i++) {
+      // debugger;
+      if (isExpanded(listOfVisibleElements[i])) {
+        return listOfVisibleElements[i];
       }
-      else if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+2) {
-        return directChildOfStickyElement;
-      }
+    //   if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
+    //     directChildOfStickyElement = listOfVisibleElements[i];
+    //     // debugger;
+    //     if (directChildOfStickyElement.parentElement.parentElement.children[1].children[0].children[0].style.display == "inline") {
+    //       return directChildOfStickyElement;
+    //     }
+    //   }
+    //   else if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+2) {
+    //     return directChildOfStickyElement;
+    //   }
+    // }
+      
     }
     return undefined;
   }
+
+  function isExpanded(element) {
+    if (element.tagName == "BUTTON") {
+      return element.parentElement.nextElementSibling.style.display != "none" && element.parentElement.nextElementSibling.children[0].style.display != "none";
+    }
+  }
+
 
   function removeLastDivFromUlOfLevelOne () {
     var ulElements = document.querySelectorAll("#hi ul.\\1");
@@ -348,26 +366,6 @@ button {
       }
     }
   }
-
-  // function bringParagraphsInNextLayer() {
-  //   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-  //   var parentOfParagraph = undefined;
-  //   for (var i = 0; i < elementsToBeSearched.length; i++) {
-  //     if (elementsToBeSearched[i].tagName === "P") {
-  //       // elementsToBeSearched[i].style.marginLeft = "110px";
-        
-  //       // find the ul-element, to which the paragrpah should be moved:
-  //       if (childUlFromParagraph != "") {
-  //           newLiElement = document.createElement("li");
-  //           newLiElement.prepend(elementsToBeSearched[i]);
-  //           childUlFromParagraph.prepend(newLiElement);
-  //           // remove the paragraph from its current position:
-  //           parentOfParagraph = elementsToBeSearched[i].parentElement;
-  //           parentOfParagraph.removeChild(elementsToBeSearched[i]);
-  //       }
-  //     }
-  //   }
-  // }
 
   function findRootElement(element) {
     var parentElement = element;
@@ -848,11 +846,12 @@ function openChildLayer(element) {
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
   if (element.id == "2") {
-    childUlElements = element.parentElement.querySelectorAll("ul ul");
+    childUlElements = element.parentElement.parentElement.querySelectorAll("ul ul");
+    // debugger;
     childUlElements[0].style.display = "block";
     childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
 
-    childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "block";
+    childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "inline";
     var layerNumberOfClickedElement = Number(element.id);
     var childElementsOfButton = element.children;
     if (childElementsOfButton.length > 0) {
@@ -870,17 +869,25 @@ function openChildLayer(element) {
     
     var layerNumberOfClickedElement = Number(element.id);
     // element.parentElement.nextElementSibling.style.display = "none";
-    var childElementsOfButton = element.children;
+    // var childElementsOfButton = element.children;
+    imageInButtonElement = element.previousElementSibling;
+    imageInButtonElement.style.display = "inline";
+    // debugger;
+    if (Number(element.id) > 0) {
+      imageInButtonElement.src = pathToArrowUpImg;
+      }
+    // debugger;
     // since element is the button element, we can change the image of the element:
-    if (childElementsOfButton.length > 0) {
-      imageInButtonElement = returnFirstAppearanceOfElementWithTagName(element, "IMG");
-      if (imageInButtonElement != "") {
-        childElementsOfButton[0].style.display = "inline";
-      }
-      if (Number(element.id) > 0) {
-        childElementsOfButton[0].src = pathToArrowUpImg;
-      }
-    }
+    // if (childElementsOfButton.length > 0) {
+    //   // imageInButtonElement = returnFirstAppearanceOfElementWithTagName(element, "IMG");
+    //   imageInButtonElement = element.previousElementSibling;
+    //   if (imageInButtonElement != "") {
+    //     childElementsOfButton[0].style.display = "inline";
+    //   }
+    //   // if (Number(element.id) > 0) {
+    //   //   childElementsOfButton[0].src = pathToArrowUpImg;
+    //   // }
+    // }
     
     
     var nextLayerElementsUL = Array.from(element.parentElement.parentElement.children).filter((element) => {return element.tagName == "UL"});
@@ -903,13 +910,13 @@ function openChildLayer(element) {
       for (var j = 0; j < nextLayerElementsLI.length; j++) {
         nextLayerElementsLI[j].style.display = "block";
         childOfLi = nextLayerElementsLI[j].children;
-        buttonElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "BUTTON"})
+        
+        buttonElementInLi = Array.from(childOfLi[0].children).filter((element) => {return element.tagName == "BUTTON"})
         if (buttonElementInLi.length > 0) {
-          buttonElementInLi[0].style.display = "block";
-          imageInButtonElement = returnFirstAppearanceOfElementWithTagName(buttonElementInLi[0], "IMG");
-          if (imageInButtonElement != ""){
-            imageInButtonElement.style.display = "inline";
-          }
+          buttonElementInLi[0].style.display = "inline";
+          imageInButtonElement = buttonElementInLi[0].previousElementSibling;
+          // debugger;
+          imageInButtonElement.style.display = "inline";
         }
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
         if (paragraphElementInLi.length > 0) {
@@ -944,20 +951,25 @@ function openChildLayer(element) {
 }
 
 function closeChildLayer(element) {
-  var parentOfClickedElement = element.parentElement.parentElement;
-
+  var parentOfClickedElement = element.parentElement.parentElement.parentElement;
+  // debugger;
   if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
     parentOfClickedElement.style.borderLeft = "none";
     parentOfClickedElement.style.marginLeft = "0px";
   }
 
   var layerNumberOfClickedElement = Number(element.id);
-  var childElements = element.parentElement.children;
-  var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-  if (buttonElements.length > 0 && buttonElements[0].children.length > 0) {
-    buttonElements[0].children[0].src = pathToArrowDownImg;
-    // buttonElements[0].children[0].style.display = "none";
+  var childElements = element.parentElement.parentElement.children;
+  if (layerNumberOfClickedElement > 0) {
+    element.previousElementSibling.src = pathToArrowDownImg;
+
   }
+  // var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
+  // debugger;
+  // if (buttonElements.length > 0) {
+  //   buttonElements[0].previousElementSibling.src = pathToArrowDownImg;
+  //   // buttonElements[0].children[0].style.display = "none";
+  // }
 
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
   for (var i = 0; i < nextLayerElementsUL.length; i++) {
