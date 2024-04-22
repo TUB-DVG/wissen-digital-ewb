@@ -19,6 +19,11 @@ button {
     margin-left: 0px;
 }
 
+.test li .absolute-horizontal-position-lvl-one li .absolute-horizontal-position-lvl-two:last-child > li,
+.test li .absolute-horizontal-position-lvl-one:last-child > li {
+  border-bottom: none !important;
+}
+
 .absolute-horizontal-position-lvl-two {
     padding-left: 106px;
     margin-left: 0px;
@@ -36,8 +41,8 @@ button {
 
 .paragraph-deeper-level {
   display: none; 
-  padding-top: 14px; 
-  padding-bottom: 17px; 
+  padding-block: 14px; 
+  margin-bottom: 0;
   font-size: 22px;
 }
 
@@ -66,6 +71,17 @@ button {
     padding-left: 0px;
     padding-right: 0px;
 
+}
+
+.border-bottom {
+    width: 100%;
+    border-bottom: 2px solid #F5E86A !important;
+}
+
+.wrapper {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 8px;
 }
 /* ul {
   padding-left: 20px;
@@ -158,8 +174,8 @@ button {
             </div>
             <br />
 
-            <div class="row sticky-top" style="top: 115px; background-color: white;">
-              <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px;">
+            <div class="row sticky-top border-bottom" style="top: 115px; background-color: white; margin-inline: 0;">
+              <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px; padding-left: 0;">
                 Themen
               </div>
               <div class="mb-3" style="width: 106px;">
@@ -170,33 +186,29 @@ button {
               </div>
               <div class="col-lg-3 mb-3">
               </div>
-              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 42px;" id="container-criteria-catalog-details">
+              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 0; padding-right: 0;" id="container-criteria-catalog-details">
                 <div style="text-align: right">
                   <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
               </div>
-              <div class="row col-lg-12 mr-3">
-                <div class="hr" id="{{ node.depth }}" style="height: 2px; background-color: #F5E86A;"></div>
-              </div>
             </div>
-              <div class="row" id="hi">
+              <div class="row" id="hi" style="margin-inline: 0;">
                 <!-- <ul> -->
                   {% for tree in trees %}
                     {% for node in tree %}
                       {% if node.indent %}
                         {{ node.indent.depth }}
                         {% if node.depth == 0 %}
-                          <ul style=" padding-left: 0px; margin-left: 0px; margin-bottom: 2px; padding-right: 37px;" id="{{ node.depth }}">
+                          <ul class="border-bottom test" style=" padding-left: 0px; margin-left: 0px; margin-bottom: 2px; padding-right: 0; padding-bottom: 3px;" id="{{ node.depth }}">
                         {% elif node.depth == 1 %}
-                          <ul class="absolute-horizontal-position-lvl-one" style="display: none; margin-top: 0px; margin-bottom: 0px; " id="{{ node.depth }}">
+                          <ul class="absolute-horizontal-position-lvl-one" style="display: none; margin-top: 0px; margin-bottom: 0px;" id="{{ node.depth }}">
                         {% elif node.depth == 2 %}
-                          <ul class="absolute-horizontal-position-lvl-two" style="display: none" id="{{ node.depth }}">
+                          <ul class="absolute-horizontal-position-lvl-two" style="display: none; :last-child { border-bottom: none; }" id="{{ node.depth }}">
                         {% else %}
                           <ul style="display: none" id="{{ node.depth }}">
                         {% endif %}
                       {% elif node.outdent %}
                         {% if node.depth == 0 %}
-                          <div class="hr sticky-third-lvl" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                         {% else %}
                           <!-- <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div> -->
                         {% endif %}
@@ -209,17 +221,13 @@ button {
                               <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
                                 {{ node.content.topic.heading }}
                               </button>
-                              <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                             </div>
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
-                          <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
+                          <li class="border-bottom sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <div id="{{ node.content.depth }}" class="wrapper">
-                              <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" text="{{ node.content.topic.heading }}">
-                                {{ node.content.topic.heading|truncatechars:80 }}
-                              </button>
-                              <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
+                              <img style="display: none; margin-right: 4px; margin-top: 11px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
+                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">{{ node.content.topic.heading }}</button>
                             </div>  
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
@@ -799,7 +807,7 @@ function showHeadingAndDescription(element) {
     }
   }
   if (element.tagName == "LI" || element.tagName == "DIV") {
-    element.style.display = "block";
+    element.style.display = "flex";
     element.getElementsByTagName("p")[0].style.display = "block";
   }
 }
@@ -858,7 +866,7 @@ function getFirstParentElementWithTagName(element, tagName) {
     parentElement = parentElement.parentElement;
   }
   return parentElement;
-}
+}    element.st
 
 function getAllChildElementsWithTagName(element, tagName) {
   var childElements = element.children;
@@ -912,7 +920,7 @@ function openChildLayer(element) {
   }
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
-      parentOfClickedElement.style.borderLeft = "29px solid #F5E86A";
+      console.log(parentOfClickedElement.children[0].style.borderLeft = "29px solid #F5E86A")
       // parentOfClickedElement.style.marginLeft = "16px";
       // parentOfClickedElement.style.paddingLeft = "0px";
     }
