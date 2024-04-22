@@ -204,7 +204,7 @@ button {
                       {% elif node.content %}
                         {% if node.content.depth == 0 %}
                           <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div class="sticky-third-lvl" id="{{ node.content.depth }}">
+                            <div class="sticky-third-lvl" id="{{ node.content.depth }}" class="wrapper">
                               <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px; padding-top: 10.5px; padding-bottom: 10.5px;" id="0">
                               <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
                                 {{ node.content.topic.heading }}
@@ -214,7 +214,7 @@ button {
                           <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
                         {% else %}
                           <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div id="{{ node.content.depth }}">
+                            <div id="{{ node.content.depth }}" class="wrapper">
                               <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
                               <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">{{ node.content.topic.heading }}</button>
                               <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
@@ -260,7 +260,10 @@ button {
     openHeadingsForLayers();
   }
   function isAboveStickyElement(stickyElement) {
-    return window.scrollY < stickyElement.offsetTop;
+    if (stickyElement.getBoundingClientRect().top > 170) {
+      return true;
+    }
+    return false;
   }
   var lastScrollTop = 0;
 
@@ -268,9 +271,11 @@ button {
 
     var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     var currentStickyThirdLvlElement = document.querySelector('div.sticky-third-lvl');
+    var stickyElements = findVisibleButtonElementsInViewport();
+    var liParent = undefined;
     if (lastScrollTop < currentScrollTop) {
       // on scroll down
-      var stickyElements = findVisibleButtonElementsInViewport();
+      
 
       // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
       //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
@@ -288,11 +293,26 @@ button {
     }
     else {
       // on scroll up
+      // set the most upward element as sticky element:
+      
+      // stickyElements[0].parentElement.classList.add('sticky-third-lvl');
       if (isAboveStickyElement(currentStickyThirdLvlElement)) {
+        
         // The window is scrolled above the sticky element.
+        // currentStickyThirdLvlElement
+        // find the ul-parent of most upward button:
         currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
+        if (stickyElements[0].id == "0") {
+          stickyElements[0].parentElement.classList.add('sticky-third-lvl');
+        }
+        else {
+          // debugger;
+          liParent = getFirstParentElementWithTagName(stickyElements[0], "UL").parentElement;
+          liParent.children[0].classList.add('sticky-third-lvl');
+        }
+      }   
     }
-    }
+    lastScrollTop = currentScrollTop;
   };
 
   function getDistanceBetweenElements(element1, element2) {
@@ -411,6 +431,10 @@ button {
   }
 
   function hideElementExceptForFirstLayer(element) {
+    // debugger;
+    if (element.classList.contains("wrapper")) {
+      return;
+    }
     if (Number(element.id) > 0) {
       element.style.display = "none";
     }
@@ -710,7 +734,7 @@ function depthFirstWalk(rootElement, target) {
     // check if the childElement is a ancestor of target
     
     if (checkIfAncestor(childElement, target)) {
-        if (Number(childElement.id) < Number(target.id)) {
+        if (Number(childElement.id) <= Number(target.id)) {
           openChildLayer(childElement);
         depthFirstWalk(childElement, target);
       }
@@ -842,22 +866,32 @@ function removeMarkTagsFromText(element) {
 
 function openChildLayer(element) {
 
-
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
   if (element.id == "2") {
+    if (element.display == "none") {
+      element.style.display = "block";
+    }
     childUlElements = element.parentElement.parentElement.querySelectorAll("ul ul");
-    // debugger;
-    childUlElements[0].style.display = "block";
-    childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
+    if (childUlElements.length == 0) {
+      childUlElements = element.parentElement.parentElement.parentElement.querySelectorAll("ul ul");
+    }
+    if (childUlElements.length > 0) {
+      // debugger;
+      childUlElements[0].style.display = "block";
+      childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
 
-    childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "inline";
-    var layerNumberOfClickedElement = Number(element.id);
-    var childElementsOfButton = element.children;
-    if (childElementsOfButton.length > 0) {
-      if (Number(element.id) > 0) {
-      childElementsOfButton[0].src = pathToArrowUpImg;
+      childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "inline";
+      var layerNumberOfClickedElement = Number(element.id);
+      var childElementsOfButton = element.children;
+      if (childElementsOfButton.length > 0) {
+        if (Number(element.id) > 0) {
+        childElementsOfButton[0].src = pathToArrowUpImg;
+        }
       }
+    }
+    else {
+      debugger;
     }
   }
   else {
@@ -871,11 +905,14 @@ function openChildLayer(element) {
     // element.parentElement.nextElementSibling.style.display = "none";
     // var childElementsOfButton = element.children;
     imageInButtonElement = element.previousElementSibling;
-    imageInButtonElement.style.display = "inline";
-    // debugger;
-    if (Number(element.id) > 0) {
+    if (imageInButtonElement != null) {
+      imageInButtonElement.style.display = "inline";
+      if (Number(element.id) > 0) {
       imageInButtonElement.src = pathToArrowUpImg;
       }
+    }
+    // debugger;
+
     // debugger;
     // since element is the button element, we can change the image of the element:
     // if (childElementsOfButton.length > 0) {
