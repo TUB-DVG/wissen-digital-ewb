@@ -352,17 +352,6 @@ button {
       if (isExpanded(listOfVisibleElements[i])) {
         return listOfVisibleElements[i];
       }
-    //   if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
-    //     directChildOfStickyElement = listOfVisibleElements[i];
-    //     if (directChildOfStickyElement.parentElement.parentElement.children[1].children[0].children[0].style.display == "inline") {
-    //       return directChildOfStickyElement;
-    //     }
-    //   }
-    //   else if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+2) {
-    //     return directChildOfStickyElement;
-    //   }
-    // }
-      
     }
     return undefined;
   }
@@ -513,6 +502,7 @@ button {
         for (var j = 0; j < ulChildElements.length; j++) {
           if (Number(ulChildElements[j].id) == 3) {
             textForCombinedElement = ulChildElements[j].textContent
+            // debugger;
             firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
             if (firstLiChildren != "") {
               aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
@@ -795,7 +785,9 @@ function showElement(element) {
     element.style.display = "block";
   }
   else {
-    element.style.display = "inline";
+    if (element.tagName != "MARK") {
+      element.style.display = "inline";
+    }
   }
 }
 
