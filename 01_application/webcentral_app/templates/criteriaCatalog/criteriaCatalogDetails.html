@@ -282,7 +282,6 @@ button {
       // });
       
       var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
-      // debugger;
       if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 30) {
           currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
           // if (currenStickyThirdLvlElement.id == "0") {
@@ -306,7 +305,6 @@ button {
           stickyElements[0].parentElement.classList.add('sticky-third-lvl');
         }
         else {
-          // debugger;
           liParent = getFirstParentElementWithTagName(stickyElements[0], "UL").parentElement;
           liParent.children[0].classList.add('sticky-third-lvl');
         }
@@ -351,13 +349,11 @@ button {
     var directChildOfStickyElement = undefined;
     
     for (var i = 1; i < listOfVisibleElements.length; i++) {
-      // debugger;
       if (isExpanded(listOfVisibleElements[i])) {
         return listOfVisibleElements[i];
       }
     //   if (Number(listOfVisibleElements[i].id) == stickyElementLayerNumber+1) {
     //     directChildOfStickyElement = listOfVisibleElements[i];
-    //     // debugger;
     //     if (directChildOfStickyElement.parentElement.parentElement.children[1].children[0].children[0].style.display == "inline") {
     //       return directChildOfStickyElement;
     //     }
@@ -431,7 +427,6 @@ button {
   }
 
   function hideElementExceptForFirstLayer(element) {
-    // debugger;
     if (element.classList.contains("wrapper")) {
       return;
     }
@@ -571,13 +566,15 @@ button {
           
         }
         
-        // for (var j = 0; j < elementsToBeSearched[i].children.length; j++) {
-        //   if (elementsToBeSearched[i].children[j].tagName == "LI") {
-        //     elementsToBeSearched[i].children[j].style.display = "block";
-        //     elementsToBeSearched[i].children[j].getElementsByTagName("div")[0].style.display = "block";
-        //   }
-        // }
       }
+    }
+  }
+
+  function showAllElementsUntilRoot(element) {
+    var parentElement = element;
+    while (parentElement.id != "0" || parentElement.tagName != "UL") {
+      showElement(parentElement);
+      parentElement = parentElement.parentElement;
     }
   }
 
@@ -632,18 +629,6 @@ button {
         resetCriteriaCatalog();
         depthFirstWalk(parentElement, elementsToBeSearched[i]);
       }
-    // if (foundElements.length > 0) {
-    //   // call a function, which will reset the criteriaCatalog to the original state
-    //   resetCriteriaCatalog();
-    //   // show all found elements
-    //   // firsst activate the ul-elements
-    //   var ulElements = foundElements.filter(function(element) {
-    //     return element.tagName === 'UL';
-    //   });
-    //   for (var i = 0; i < foundElements.length; i++) {
-    //     foundElements[i].style.display = "block";
-    //   }
-    // }
     }
     var numberOfLayersShown = checkHowManyLayersAreShown();
     if (numberOfLayersShown >= 1) {
@@ -730,7 +715,7 @@ function depthFirstWalk(rootElement, target) {
   for (var i = 0; i < childElements.length; i++) {
     var childElement = childElements[i];
     // Perform your desired operation on the child element here
-    console.log(childElement);
+    // console.log(childElement);
     // check if the childElement is a ancestor of target
     
     if (checkIfAncestor(childElement, target)) {
@@ -805,13 +790,8 @@ function showHeadingAndDescription(element) {
 }
 
 
-// var elementsToBeSearched = document.querySelectorAll("#hi *");
-// for (var i = 0; i < elementsToBeSearched.length; i++) {
-//   depthFirstWalk(elementsToBeSearched[i]);
-// }
-
 function showElement(element) {
-  if (element.tagName == "UL" || element.tagName == "LI") {
+  if (element.tagName == "UL" || element.tagName == "LI" || element.tagName == "DIV") {
     element.style.display = "block";
   }
   else {
@@ -874,7 +854,7 @@ function removeMarkTagsFromText(element) {
 }
 
 function openChildLayer(element) {
-
+  showElement(element);
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
   if (element.id == "2") {
@@ -946,7 +926,6 @@ function openChildLayer(element) {
         if (buttonElementInLi.length > 0) {
           showElement(buttonElementInLi[0]);
           imageInButtonElement = buttonElementInLi[0].previousElementSibling;
-          // debugger;
           showElement(imageInButtonElement);
         }
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
@@ -983,7 +962,6 @@ function openChildLayer(element) {
 
 function closeChildLayer(element) {
   var parentOfClickedElement = element.parentElement.parentElement.parentElement;
-  // debugger;
   if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
     parentOfClickedElement.style.borderLeft = "none";
     parentOfClickedElement.style.marginLeft = "0px";
@@ -996,7 +974,6 @@ function closeChildLayer(element) {
 
   }
   // var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-  // debugger;
   // if (buttonElements.length > 0) {
   //   buttonElements[0].previousElementSibling.src = pathToArrowDownImg;
   //   // buttonElements[0].children[0].style.display = "none";
