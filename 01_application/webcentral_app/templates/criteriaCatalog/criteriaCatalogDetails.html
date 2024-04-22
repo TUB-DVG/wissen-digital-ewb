@@ -810,6 +810,15 @@ function showHeadingAndDescription(element) {
 //   depthFirstWalk(elementsToBeSearched[i]);
 // }
 
+function showElement(element) {
+  if (element.tagName == "UL" || element.tagName == "LI") {
+    element.style.display = "block";
+  }
+  else {
+    element.style.display = "inline";
+  }
+}
+
 function checkHowManyLayersAreShown() {
   // find the li-element with the highest id
   var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
@@ -877,11 +886,11 @@ function openChildLayer(element) {
       childUlElements = element.parentElement.parentElement.parentElement.querySelectorAll("ul ul");
     }
     if (childUlElements.length > 0) {
-      // debugger;
       childUlElements[0].style.display = "block";
-      childUlElements[0].querySelectorAll("li li")[0].style.display = "block";
-
-      childUlElements[0].querySelectorAll("li li")[0].children[0].style.display = "inline";
+      showElement(childUlElements[0].querySelectorAll("li li")[0]);
+      showElement(childUlElements[0].querySelectorAll("li li")[0].children[0]);
+      showElement(childUlElements[0].querySelectorAll("li li p")[0]);
+      // showElement(childUlElements[0].querySelectorAll("li li")[0].children[0].children[0]);
       var layerNumberOfClickedElement = Number(element.id);
       var childElementsOfButton = element.children;
       if (childElementsOfButton.length > 0) {
@@ -906,26 +915,11 @@ function openChildLayer(element) {
     // var childElementsOfButton = element.children;
     imageInButtonElement = element.previousElementSibling;
     if (imageInButtonElement != null) {
-      imageInButtonElement.style.display = "inline";
+      showElement(imageInButtonElement);
       if (Number(element.id) > 0) {
       imageInButtonElement.src = pathToArrowUpImg;
       }
     }
-    // debugger;
-
-    // debugger;
-    // since element is the button element, we can change the image of the element:
-    // if (childElementsOfButton.length > 0) {
-    //   // imageInButtonElement = returnFirstAppearanceOfElementWithTagName(element, "IMG");
-    //   imageInButtonElement = element.previousElementSibling;
-    //   if (imageInButtonElement != "") {
-    //     childElementsOfButton[0].style.display = "inline";
-    //   }
-    //   // if (Number(element.id) > 0) {
-    //   //   childElementsOfButton[0].src = pathToArrowUpImg;
-    //   // }
-    // }
-    
     
     var nextLayerElementsUL = Array.from(element.parentElement.parentElement.children).filter((element) => {return element.tagName == "UL"});
     var childOfLi = undefined;
@@ -945,15 +939,15 @@ function openChildLayer(element) {
       })
       
       for (var j = 0; j < nextLayerElementsLI.length; j++) {
-        nextLayerElementsLI[j].style.display = "block";
+        showElement(nextLayerElementsLI[j]);
         childOfLi = nextLayerElementsLI[j].children;
         
         buttonElementInLi = Array.from(childOfLi[0].children).filter((element) => {return element.tagName == "BUTTON"})
         if (buttonElementInLi.length > 0) {
-          buttonElementInLi[0].style.display = "inline";
+          showElement(buttonElementInLi[0]);
           imageInButtonElement = buttonElementInLi[0].previousElementSibling;
           // debugger;
-          imageInButtonElement.style.display = "inline";
+          showElement(imageInButtonElement);
         }
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
         if (paragraphElementInLi.length > 0) {
@@ -1036,6 +1030,15 @@ function resetCriteriaCatalog() {
   depthFirstSearch(document.getElementById("hi"), hideElementExceptForFirstLayer);
   document.getElementById("criterias").style.display = "none";
   document.getElementById("requirementsAndRuleExamples").style.display = "none";
+  // remove all current sticky-elements:
+  var stickyElements = document.querySelectorAll('.sticky-third-lvl');
+  for (var i = 0; i < stickyElements.length; i++) {
+    stickyElements[i].classList.remove('sticky-third-lvl');
+  }
+  var firstLevelDivs = document.getElementById("hi").querySelectorAll('div[id="0"]');
+  for (var i = 0; i < firstLevelDivs.length; i++) {
+    firstLevelDivs[i].classList.add("sticky-third-lvl");
+  }
 }
 
 var numberOfOpenElementsPerLayer = {};
