@@ -216,7 +216,9 @@ button {
                           <li class="sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <div id="{{ node.content.depth }}" class="wrapper">
                               <img style="display: none; margin-right: 4px; margin-top: 0px; margin-bottom: 0px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">{{ node.content.topic.heading }}</button>
+                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" text="{{ node.content.topic.heading }}">
+                                {{ node.content.topic.heading|truncatechars:80 }}
+                              </button>
                               <div class="hr" style="display: block; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div>
                             </div>  
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
@@ -803,6 +805,16 @@ function showHeadingAndDescription(element) {
 }
 
 
+function showFullTextOfHeading(element) {
+  var fullHeading = element.getAttribute("text");
+  element.textContent = fullHeading;
+}
+function showPreviewTextOfHeading(element) {
+  if (element.textContent.length > 80) {
+    element.textContent = element.getAttribute("text").substring(0, 80) + "...";
+  }
+}
+
 function showElement(element) {
   if (element.tagName == "UL" || element.tagName == "LI" || element.tagName == "DIV") {
     element.style.display = "block";
@@ -869,6 +881,9 @@ function removeMarkTagsFromText(element) {
 }
 
 function openChildLayer(element) {
+  if (element.tagName == "BUTTON" && element.id != "0") {
+    showFullTextOfHeading(element);
+  }
   showElement(element);
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
   var childUlElements = [];
@@ -973,6 +988,9 @@ function openChildLayer(element) {
 }
 
 function closeChildLayer(element) {
+  if (element.tagName == "BUTTON" && element.id != "0") {
+    showPreviewTextOfHeading(element);
+  }
   var parentOfClickedElement = element.parentElement.parentElement.parentElement;
   if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
     parentOfClickedElement.style.borderLeft = "none";
