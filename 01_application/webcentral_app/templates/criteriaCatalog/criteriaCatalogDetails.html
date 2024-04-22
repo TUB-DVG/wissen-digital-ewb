@@ -499,10 +499,12 @@ button {
         // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
 
         var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
+        window.textForCombinedElement = "";
         for (var j = 0; j < ulChildElements.length; j++) {
           if (Number(ulChildElements[j].id) == 3) {
             textForCombinedElement = ulChildElements[j].textContent
             // debugger;
+            depthFirstSearch(ulChildElements[j], aggregateAndStyleText);
             firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
             if (firstLiChildren != "") {
               aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
@@ -542,7 +544,7 @@ button {
         newLiElement.style.display = "none";
         newParagraphElement.style.whiteSpace = "pre-line";
         newParagraphElement.setAttribute("aggregatedText", "true")
-        newParagraphElement.innerHTML = textCombinedConcatenated;
+        newParagraphElement.innerHTML = window.textForCombinedElement;
         newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
         newParagraphElement.setAttribute("tags", aggregatedTags);
         newLiElement.id = "3";
@@ -558,6 +560,27 @@ button {
         
       }
     }
+  }
+
+  function aggregateAndStyleText(element) {
+    var textContent = "";
+    if (element.tagName == "BUTTON") {
+      if (Number(element.id) > 3) {
+        textContent = "&emsp;" + element.textContent + "\n";
+      }
+      else {
+        textContent = element.textContent + "\n";
+      }
+    }
+    if (element.tagName == "P") {
+      if (Number(element.id) > 3) {
+        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>\n";
+      }
+      else {
+        textContent = element.textContent + "\n";
+      }
+    }
+    window.textForCombinedElement += textContent;
   }
 
   function showAllElementsUntilRoot(element) {
@@ -870,9 +893,6 @@ function openChildLayer(element) {
         childElementsOfButton[0].src = pathToArrowUpImg;
         }
       }
-    }
-    else {
-      debugger;
     }
   }
   else {
