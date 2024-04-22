@@ -4,6 +4,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q, Count
+from django.utils.translation import gettext
 # maybe I need also the other models
 from tools_over.models import (
     Tools,
@@ -11,7 +12,7 @@ from tools_over.models import (
     Accessibility,
     LifeCyclePhase,
 )
-# from project_listing.models import Subproject
+
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -21,22 +22,34 @@ class UpdateProperties:
         self.label = label
         self.colorClass = colorClass
 
+def setLanguageForLastUpdate(request):
+    """Sets the language for the last update."""
+    if request.LANGUAGE_CODE == 'de':
+        lastUpdateText = 'letztes Update'
+    else:
+        lastUpdateText = 'last Update'
+
+    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', lastUpdateText, 'text-danger')
+    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+
+    return lastUpdate, continuousUpdates
+
 
 def index(request):
     """Shows the list of all projects including some key features."""
     tools = Tools.objects.filter(
-        classification__classification__in=['digitales Werkzeug', 'Sprache', 'Standard', 'Framework/Bibliothek'],
-        focus__focus="technisch"
+        classification__classification_de__in=['digitales Werkzeug', 'Sprache', 'Standard', 'Framework/Bibliothek'],
+        focus__focus_de="technisch"
     )
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
-        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
-        usage = request.GET.get('u')
-        accessibility = request.GET.get('l')
-        lifeCyclePhase = request.GET.get('lcp')
-        searched = request.GET.get('searched')
+    if ((request.GET.get("Nutzung") != None) |(request.GET.get("Zugänglichkeit") != None)| 
+        (request.GET.get("Lebenszyklusphase") != None) |(request.GET.get("searched") != None)):
+        usage = request.GET.get('Nutzung', "")
+        accessibility = request.GET.get('Zugänglichkeit', "")
+        lifeCyclePhase = request.GET.get('Lebenszyklusphase', "")
+        searched = request.GET.get('searched', "")
         
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
@@ -44,17 +57,17 @@ def index(request):
         criterionToolsFour = Q(name__icontains=searched)
         tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
-                        classification__classification__in=['digitales Werkzeug', 'Sprache', 'Standard', 'Framework/Bibliothek'],
-                        focus__focus="technisch",
+                        classification__classification_de__in=['digitales Werkzeug', 'Sprache', 'Standard', 'Framework/Bibliothek'],
+                        focus__focus_de="technisch",
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
         # but filters out e.g., solely open-source tools!
         filteredBy = [usage, accessibility, lifeCyclePhase]
               
     tools = list(sorted(tools, key=lambda obj:obj.name))  
-    toolsPaginator= Paginator(tools,12)
-    pageNum= request.GET.get('page',None)
-    page=toolsPaginator.get_page(pageNum)
+    toolsPaginator = Paginator(tools, 12)
+    pageNum = request.GET.get('page', None)
+    page = toolsPaginator.get_page(pageNum)
 
     usageElements = Usage.objects.all()
     usageNames = []
@@ -70,36 +83,63 @@ def index(request):
     lifeCyclePhaseNames = []
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
-    
+
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über digitale Werkzeuge'
+    else:
+        headingText = 'Overview of digital tools'
 
     context = {
+        'accessibility': filteredBy[1],
+        "focusBorder": "technical",
+        "typeOfTool": "Tools",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
-        'accessibility': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
         'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "optionList": [
+            {
+                "placeholder": "Nutzung", 
+                "objects": usageNames,
+                "filter": filteredBy[0],
+            },
+            {
+                "placeholder": "Zugänglichkeit", 
+                "objects": accessibilityNames,
+                "filter": filteredBy[1],
+            },
+            {
+                "placeholder": "Lebenszyklusphase", 
+                "objects": lifeCyclePhaseNames,
+                "filter": filteredBy[2],
+            },
+        ],
     }
 
     return render(request, 'tools_over/tool-listings.html', context)
 
 def indexApps(request):
     """Shows the list of all projects including some key features."""
+
     tools = Tools.objects.filter(
-        classification__classification="digitale Anwendung", 
-        focus__focus="technisch",
+        classification__classification_de="digitale Anwendung", 
+        focus__focus_de="technisch",
     ) 
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
-        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
-        usage = request.GET.get('u')
-        accessibility = request.GET.get('l')
-        lifeCyclePhase = request.GET.get('lcp')
-        searched = request.GET.get('searched')
+    if ((request.GET.get("Nutzung") != None) |(request.GET.get("Zugänglichkeit") != None)| 
+        (request.GET.get("Lebenszyklusphase") != None) |(request.GET.get("searched") != None)):
+        usage = request.GET.get('Nutzung', '')
+        accessibility = request.GET.get('Zugänglichkeit', '')
+        lifeCyclePhase = request.GET.get('Lebenszyklusphase', '')
+        searched = request.GET.get('searched', '')
         
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
@@ -107,8 +147,8 @@ def indexApps(request):
         criterionToolsFour = Q(name__icontains=searched)
         tools = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
-                        focus__focus="technisch",
-                        classification__classification__in=['digitale Anwendung', 'Plattform'],
+                        focus__focus_de="technisch",
+                        classification__classification_de__in=['digitale Anwendung', 'Plattform'],
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
         # but filters out e.g., solely open-source tools!
@@ -134,27 +174,53 @@ def indexApps(request):
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
     
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über digitale Anwendungen'
+    else:
+        headingText = 'Overview of digital applications'
 
     context = {
+        'accessibilityFields': accessibilityNames,
+        "focusBorder": "technical",
+        "typeOfTool": "Apps",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'accessibility': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
-        'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "optionList": [
+            {
+                "placeholder": "Nutzung", 
+                "objects": usageNames,
+                "filter": filteredBy[0],
+            },
+            {
+                "placeholder": "Zugänglichkeit", 
+                "objects": accessibilityNames,
+                "filter": filteredBy[1],
+            },
+            {
+                "placeholder": "Lebenszyklusphase", 
+                "objects": lifeCyclePhaseNames,
+                "filter": filteredBy[2],
+            },
+        ],
     }
 
-    return render(request, 'tools_over/app-listings.html', context)
+    return render(request, 'tools_over/tool-listings.html', context)
 
-def indexBuisnessApplication(request):
+def indexBusinessApplication(request):
     """serves a request for digital applications search
     
     """
     applications = Tools.objects.filter(
         # classification__classification="Digitale Anwendung", 
-        focus__focus="betrieblich"
+        focus__focus_de="betrieblich"
     ) # reads all data from table Teilprojekt
     usage = request.GET.get('u')
     accessibility = request.GET.get('l')
@@ -176,7 +242,7 @@ def indexBuisnessApplication(request):
         criterionToolsFour = Q(name__icontains=searched)
         applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
-                        focus__focus="betrieblich"
+                        focus__focus_de="betrieblich"
                         # classification__classification="Digitales Werkzeug",
         ).distinct() #.annotate(num_features=Count('id'))#.filter(num_features__gt=1)
         # having distinct removes the duplicates, 
@@ -202,21 +268,48 @@ def indexBuisnessApplication(request):
     lifeCyclePhaseNames = []
     for currentLifeCyclePhase in lifeCyclePhaseElements:
         lifeCyclePhaseNames.append(currentLifeCyclePhase.lifeCyclePhase)
+    
+    if request.LANGUAGE_CODE == 'de':
+        headingText = 'Überblick über Geschäftsmodellanwendungen'
+    else:
+        headingText = 'Overview of Business Applications'
 
     context = {
+        'accessibilityFields': accessibilityNames,
+        "focusBorder": "operational",
+        "typeOfTool": "BusinessApps",
         'page': page,
         'search':searched,
         'usage': filteredBy[0],
         'licence': filteredBy[1],
         'lifeCyclePhase': filteredBy[2],
         'usageFields': usageNames,
-        'accessibilityFields': accessibilityNames,
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "optionList": [
+            {
+                "placeholder": "Nutzung", 
+                "objects": usageNames,
+                "filter": filteredBy[0],
+            },
+            {
+                "placeholder": "Zugänglichkeit", 
+                "objects": accessibilityNames,
+                "filter": filteredBy[1],
+            },
+            {
+                "placeholder": "Lebenszyklusphase", 
+                "objects": lifeCyclePhaseNames,
+                "filter": filteredBy[2],
+            },
+        ],
     }
 
-    return render(request, 'tools_over/buisnessApplications-listings.html', context)  
+    return render(request, 'tools_over/tool-listings.html', context)  
 
-def buisnessApplicationView(request, id):
+def businessApplicationView(request, id):
     """Shows of the key features one project"""
     tool = get_object_or_404(Tools, pk= id)
     applicationAreas = tool.applicationArea.all()
@@ -235,12 +328,12 @@ def buisnessApplicationView(request, id):
     
     continuousUpdates = tool.lastUpdate
 
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 
@@ -257,16 +350,15 @@ def buisnessApplicationView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]),  
+        "focusBorder": "operational",     
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
-       
     }
-
-    return render(request, 'tools_over/buisnessApplications-detail.html', context)
+    return render(request, 'tools_over/tool-detail.html', context)
 
 
 def toolView(request, id):
@@ -288,12 +380,11 @@ def toolView(request, id):
     
     continuousUpdates = tool.lastUpdate
     
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 
@@ -310,7 +401,8 @@ def toolView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]), 
+        "focusBorder": "technical",      
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
@@ -340,12 +432,11 @@ def AppView(request, id):
     
     continuousUpdates = tool.lastUpdate
     
-    lastUpdate = UpdateProperties('bi bi-patch-exclamation-fill', 'letztes Update', 'text-danger')
-    continuousUpdates = UpdateProperties('fas fa-sync', 'Updates', 'text-success')
+    lastUpdate, continuousUpdates = setLanguageForLastUpdate(request)
 
     #changing labels and icon
     updateProperties = lastUpdate
-    if (tool.lastUpdate == 'laufend'): # continuous
+    if (tool.lastUpdate_de == 'laufend'): # continuous
         updateProperties = continuousUpdates
 
 
@@ -362,16 +453,16 @@ def AppView(request, id):
         'technicalStandardsNorms': ', '.join([a.technicalStandardsNorms for a in technicalStandardsNorms]),
         'technicalStandardsProtocols': ', '.join([a.technicalStandardsProtocols for a in technicalStandardsProtocols]),
         'classifications': ', '.join([a.classification for a in classifications]),
-        'focus': ', '.join([a.focus for a in focus]),       
+        'focus': ', '.join([a.focus for a in focus]),  
+        "focusBorder": "technical",      
         'resources': resources,
         'lastUpdate': updateProperties,
         'lastUpdateClass': updateProperties.className,
         'lastUpdateColor': updateProperties.colorClass,
         'lastUpdateLabel': updateProperties.label,
-       
     }
 
-    return render(request, 'tools_over/app-detail.html', context)
+    return render(request, 'tools_over/tool-detail.html', context)
 
 def toolComparison(request):
     ids = request.GET.getlist('id')

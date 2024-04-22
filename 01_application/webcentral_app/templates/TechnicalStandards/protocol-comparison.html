@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 {% load static %}
   <style>
     table {
@@ -19,13 +20,13 @@
 <div class = "container technical-cards">
 <div class="row">
 
-  <h1>Ergebnisse</h1>
+  <h1>{% translate "Ergebnisse" %}</h1>
 
   <table style="display: block;
   overflow-x: auto;">
     <!-- Table Header -->
     <tr>
-      <th>Attribut</th>
+      <th>{% translate "Attribut" %}</th>
       {% for protocol in protocols %}
       <th>{{protocol.name}}
       {%if protocol.image %}
@@ -40,14 +41,14 @@
     </tr>
 
     <tr>
-      <th>Unterstützte Übertragungsmedien</th>
+      <th>{% translate "Unterstützte Übertragungsmedien" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.supportedTransmissionMediuems}}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Zugehörige Standards</th>
+      <th>{% translate "Zugehörige Standards" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.associatedStandards}}</td>
       {% endfor %}
@@ -55,14 +56,14 @@
 
 
     <tr>
-      <th>Implementierte Sicherheitsmechanismen</th>
+      <th>{% translate "Implementierte Sicherheitsmechanismen" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.security}}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Bandbreite</th>
+      <th>{% translate "Bandbreite" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.bandwidth}}</td>
       {% endfor %}
@@ -70,7 +71,7 @@
     
     <!-- Model -->
     <tr>
-      <th>Frequenz</th>
+      <th>{% translate "Frequenz" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.frequency}}</td>
       {% endfor %}
@@ -78,7 +79,7 @@
 
     <!-- Price -->
     <tr>
-      <th>Reichweite</th>
+      <th>{% translate "Reichweite" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.range}}</td>
       {% endfor %}
@@ -87,7 +88,7 @@
     <!-- Battery Life -->
  
     <tr>
-      <th>Datenmodell Architektur</th>
+      <th>{% translate "Datenmodell Architektur" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.dataModelArchitecture}}</td>
       {% endfor %}
@@ -109,21 +110,21 @@
     </tr>
     
     <tr>
-      <th>Priorität</th>
+      <th>{% translate "Priorität" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.priorities}}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Implementierte OSI-Schichten</th>
+      <th>{% translate "Implementierte OSI-Schichten" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.osiLayers}}</td>
       {% endfor %}
     </tr>
 
     <tr>
-      <th>Ebenen der Gebäudeautomation</th>
+      <th>{% translate "Ebenen der Gebäudeautomation" %}</th>
       {% for protocol in protocols %}
       <td>{{protocol.buildingAutomationLayer}}</td>
       {% endfor %}

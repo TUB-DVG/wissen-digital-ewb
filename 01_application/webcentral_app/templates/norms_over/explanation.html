@@ -1,8 +1,10 @@
-{% load static %} <section class="py-4">
+{% load static %}
+{% load i18n %}
+<section class="py-4">
   <div class="container">
     <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
       <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoNorms">
-        <p> Auf dieser Seite befinden sich unterschiedlichen technische Normen,
+        <p> {% blocktranslate %}Auf dieser Seite befinden sich unterschiedlichen technische Normen,
           die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in 
           Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen
           Projekte erfasst worden. Es handelt sich um deutsche, österreichische, 
@@ -11,15 +13,15 @@
           Entwässerungs-, Heizung-, Kühl-, und sonstige Energiesystemen in Gebäuden. 
           Anderen technische, wie Schallschutz, Beleuchtung, und Gasinstallation,
           sind ebenfalls enthalten. Für jede Norm wurde die folgenden Aspekte
-          erfasst: </p>
+          erfasst: {% endblocktranslate %}</p>
         <ul>
           <li class="lead">
-            <b>Name und vollständiger Titel der Norm</b>
+            <b>{% translase "Name und vollständiger Titel der Norm" %}</b>
           </li>
           <li class="lead">
-            <b>Kurzbeschreibung</b>&nbsp;&ndash; Um was handelt es sich?</li>
+            <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% translate "Um was handelt es sich?" %}</li>
           <li class="lead">
-            <b>Quelle</b>&nbsp;&ndash; Woher wird die Norm entnommen?</li>
+            <b>{% translate "Quelle" %}</b>&nbsp;&ndash; Woher wird die Norm entnommen?</li>
           <li class="lead">
             <b>Link</b>&nbsp;&ndash; Ein Link, über den die Norm abgerufen (ggf.
             gekauft) werden kann.</li>

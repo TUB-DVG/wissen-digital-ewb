@@ -1,10 +1,15 @@
 {% load static %}
+{% load i18n %}
 {% for tool in page.object_list %}  
   <!-- Card item START -->
   <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-    <div class="card border-technical h-100" id="{{ tool.id }}">
-      <input type="checkbox" style="visibility:hidden;  position:absolute; right: 1.25rem; top: 1rem; z-index: 2;" class ="comparisonInputTools"/>
+    <div class="card border-{{ focusBorder }} h-100" id="{{ tool.id }}">
+      <input type="checkbox" style="visibility:hidden;  position:absolute; left:230px; top:2px; " class ="comparisonInputTools"/>
+      {% if typeOfTool == "Tools" or typeOfTool == "Apps" %}
       <a href="{% url 'tool_view' tool.id %}">
+      {% else %}
+      <a href="{% url 'businessAppView' tool.id %}">
+      {% endif %}
         <!-- Card body -->
         <div class="card-body pb-0">
           <!-- Title -->
@@ -12,7 +17,7 @@
             {{ tool.name }}
           </h3>
           <p class="card-text mb-2 text-truncate-2">
-            Nutzerschnittstelle:  
+            {% translate 'Nutzerschnittstelle' %}:  
             {% for userInterface in tool.userInterface.all %} 
               {{ userInterface.userInterface }} 
             {% endfor %}
@@ -33,11 +38,11 @@
             <hr>
             <div class="d-flex justify-content-between">
               <span class="h6 fw-light mb-0">
-                {% if tool.lastUpdate == 'laufend' %}
+                {% if tool.lastUpdate_de == 'laufend' %}
                   <i class="fas fa-sync me-2"></i>
-                  Updates: {{ tool.lastUpdate }}
+                  {% translate "Updates" %}: {{ tool.lastUpdate }}
                 {% else %}
-                  <i class="far fa-clock me-2"></i>Letztes Update: {{ tool.lastUpdate }}
+                  <i class="far fa-clock me-2"></i>{% translate "Letztes Update" %}: {{ tool.lastUpdate }}
                 {% endif %}
               </span>
             </div>

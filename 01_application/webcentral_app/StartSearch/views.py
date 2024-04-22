@@ -1,13 +1,23 @@
 """View functions for start page and start page search."""
-from django.shortcuts import render
-from tools_over.models import Tools
-from project_listing.models import Subproject
-from TechnicalStandards.models import Norm, Protocol
-from django.db.models import Q
-from itertools import chain
-from django.core.paginator import Paginator
 from datetime import date
+from itertools import chain
 
+from django.shortcuts import render
+from django.db.models import Q
+from django.core.paginator import Paginator
+from django.db.models import Prefetch
+from django.contrib.postgres.aggregates import StringAgg
+# from django.db.models.functions import StringAgg
+
+from tools_over.models import (
+    Tools,
+    Classification,
+)
+from project_listing.models import Subproject
+from TechnicalStandards.models import (
+    Norm, 
+    Protocol,
+)
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus. 
     
@@ -23,7 +33,7 @@ def findPicturesForFocus(searchResultObj, tool=False):
     """
     if tool:
         toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
-        focusStrList = toolObj.focus.all().values_list("focus", flat=True)
+        focusStrList = toolObj.focus.all().values_list("focus_de", flat=True)
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
@@ -102,12 +112,14 @@ def resultSearch(request):
     # filtered tools
     criterionToolsOne = Q(name__icontains=searchInput)
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
-    filteredTools = Tools.objects.values("id",
-                                         "name",
-                                         "shortDescription",
-                                         "lastUpdate",
-                                         ).filter(criterionToolsOne |
-                                                  criterionToolsTwo)
+
+    if request.LANGUAGE_CODE == "de":
+        classificationQueryExpression = 'classification__classification_de'
+    else:
+        classificationQueryExpression = 'classification__classification_en'
+    
+    filteredTools = Tools.objects.annotate(classificationAgg=StringAgg(classificationQueryExpression, delimiter=', ')).values("id", "name", "shortDescription", "lastUpdate", "classificationAgg").filter(criterionToolsOne | criterionToolsTwo)
+
     # filtered projects
     criterionProjectsOne = Q(
         enargusData__collaborativeProject__icontains=searchInput)
@@ -158,21 +170,20 @@ def resultSearch(request):
         tool["description"] = tool.pop("shortDescription")
         # later use input from table tools for kindOfItem
         tool["kindOfItem"] = "digitales Werkzeug"
+        # tool["classificationAgg"]
 
         # make a time stamp list, including also virtual dates
         # replancning unspecific time values like "laufend" or
         # no given date
         toolDate = tool.pop("lastUpdate")
         toolVirtDate = toolDate
-        if toolDate == "laufend":
+        if toolDate == "laufend" or toolDate == "ongoing":
             toolVirtDate = date.fromisoformat("2049-09-09")
-        elif toolDate == "unbekannt":
+        elif toolDate == "unbekannt" or toolDate == "unknown" or toolDate == "":
             toolVirtDate = date.fromisoformat("1949-09-09")
         else:
-            try:
-                toolVirtDate = date.fromisoformat(toolVirtDate)
-            except:
-                breakpoint()
+            toolVirtDate = date.fromisoformat(toolVirtDate)
+
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
         tool["pathToFocusImage"] = findPicturesForFocus(tool, tool=True)
@@ -189,6 +200,7 @@ def resultSearch(request):
         project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
+        project["classificationAgg"] = "Forschungsprojekt"
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
@@ -213,6 +225,7 @@ def resultSearch(request):
             protocolName = protocolName[:40] + " ... "
         protocol["name"] = protocolName
         protocol["kindOfItem"] = "Protokoll"
+        protocol["classificationAgg"] = "Protokoll"
         protocol["date"] = "noch nicht hinterlegt"
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)

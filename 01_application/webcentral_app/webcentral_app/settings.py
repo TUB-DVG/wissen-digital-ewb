@@ -40,6 +40,7 @@ ALLOWED_HOSTS.extend(
 # Application definition
 
 INSTALLED_APPS = [
+    "modeltranslation",
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
@@ -61,15 +62,18 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
+    # 'parler',
+    
 ]
 
 MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -173,7 +177,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGES = [
+#     ('en', ('English')),
+#     ('de', ('German')),
+# ]
+# gettext = lambda s: s
+LANGUAGES = (
+    ('de', ('German')),
+    ('en', ('English')),
+)
+
+LANGUAGE_CODE = 'de'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'de'
 
 TIME_ZONE = 'UTC'
 
@@ -182,6 +197,17 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# PARLER_LANGUAGES = {
+#     None: (
+#         {'code': 'de', },
+#         {'code': 'en',},
+#     ),
+#     'default': {
+#         'fallback': 'de',             # defaults to PARLER_DEFAULT_LANGUAGE_CODE
+#         'hide_untranslated': False,   # the default; let .active_translations()       return fallbacks too.
+#     }
+# }
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -198,7 +224,10 @@ CHANNEL_LAYERS={
     }
 }
 """
-
+LOCALE_PATHS = ( 
+os.path.join(BASE_DIR, "locale"),
+# os.path.join(BASE_DIR, "yourapp/locale"), 
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

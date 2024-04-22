@@ -3,7 +3,7 @@
 {% block title %} Geschäftsmodelle – good-practice {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content%}
 
 <!-- general text for "coming soon" -->
@@ -16,7 +16,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Geschäftsmodelle – good-practice</h2>
+          <h2 class="m-0">{% translate "Geschäftsmodelle – good-practice" %}</h2>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Der Weg zum marktgängigen Produkt oder Service ist oftmals steinig.
+          {% blocktranslate %}Der Weg zum marktgängigen Produkt oder Service ist oftmals steinig.
           Unzählige Beispiele bezeugen jedoch die erfolgreiche
           Geschäftsmodellentwicklung und -implementierung von digitalen
           Anwendungen. Auch in Projekten der Forschungsinitiative
@@ -40,7 +40,7 @@ Page Banner START -->
           ergebenden Erfahrungen der Projekte beschrieben werden. Die
           good-practice Beispiele sollen zu einer möglichst frühzeitigen
           Auseinandersetzung mit der Geschäftsmodellentwicklung anregen, um so
-          eine effiziente Entwicklung digitaler Anwendungen zu unterstützen.
+          eine effiziente Entwicklung digitaler Anwendungen zu unterstützen.{% endblocktranslate %}
         </p>
       </div>
     </div>

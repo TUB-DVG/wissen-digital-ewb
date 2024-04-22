@@ -19,15 +19,16 @@ def index(request):
     searched = request.GET.get('searched')
     # type = request.GET.get('ty')
     # year = request.GET.get('yr')
-    focus = request.GET.get('fo')
-    focus_options = Focus.objects.all()
+    focus = request.GET.get('Fokus')
+    focusOptions = Focus.objects.all()
+
     if searched:
         query_filters |= Q(title__icontains=searched) 
         query_filters |= Q(abstract__icontains=searched) 
         query_filters |= Q(authors__icontains=searched)
         query_filters |= Q(keywords__icontains=searched)  
     if focus:
-        query_filters &= Q(focus__id=focus)
+        query_filters &= Q(focus__focus=focus)
 
     if query_filters:
         publications = publications.filter(query_filters).distinct()
@@ -41,7 +42,7 @@ def index(request):
     if focus is None or focus == "":
         focusName = "neutral"
     else:
-        focusName = focus_queryset.get(id=focus).focus
+        focusName = focusOptions.get(focus=focus).focus_en
 
     context = {
         'page': page,
@@ -49,8 +50,17 @@ def index(request):
         # 'type': type,
         # 'year': year,
         'focus': focus,
-        'focus_options': focus_options,
-        "focusBorder": _translateFocusStr(focusName),
+        'focus_options': focusOptions,
+        "nameOfTemplate": "publication",
+        "urlName": "publicationPage",
+        "optionList": [
+            {
+                "placeholder": "Fokus", 
+                "objects": focusOptions,
+                "fieldName": "focus",
+            },
+        ],
+        "focusBorder": focusName,
     }
     
     return render(request, 'publications/publications-listings.html', context)

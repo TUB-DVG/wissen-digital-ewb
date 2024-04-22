@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über digitale Werkzeuge{% endblock %}
+{% load i18n %}
+{% block title %}{{ heading }}{% endblock %}
 {% block content %}
 {% load static %}
 <!DOCTYPE html>
@@ -14,96 +15,25 @@
       <div class="row">
         <div class="col-12">
           <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">Überblick über digitale Werkzeuge</h2>
+            <h2 class="m-0">{{ heading }}</h2>
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- Page Banner END -->
-
-  {% include '../tools_over/explanationTools.html' %}
-
+    {% if typeOfTool == "Tools" %}
+      {% include 'tools_over/explanationTools.html' %}
+    {% elif typeOfTool == "Apps" %}
+      {% include 'tools_over/explanationApps.html' %}
+    {% else %}
+      {% include 'tools_over/explanationBusinessApps.html' %}
+    {% endif %}
   <!-- Page content START -->
   <section class="pt-0">
-    <div class="container technical-cards">
+    <div class="container {{ focusBorder }}-cards">
       <!-- Filter bar START -->
-      <form class="border-technical p-4 my-4 z-index-9 position-relative">
-        <div class="row g-3">
-          <!-- Input -->
-          <div class="col-xl-3" title="Suchen in den Anwendungsnamen">
-            <input id="search-input-tools"
-                   class="form-control me-1 border-technical"
-                   type="search" placeholder="Suchbegriff"
-                   name='searched'>
-          </div>
-          <!-- Select item -->
-          <div class="col-xl-7">
-            <form  method="GET">
-              <div class="row g-3">
-                <!-- Select items filter "Kategorie"-->
-                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
-                    aria-label=".form-select-sm example"
-                    name="u"
-                    id="kategorie-input-tools"
-                    title="Filtern nach der Kategorie der Anwendung">
-                    <option value="">Nutzung</option>
-                    {% for currentUsage in usageFields %}
-                      <option value="{{ currentUsage }}">{{ currentUsage }}</option>
-                    {% endfor %}
-                  </select>
-                  </div>
-                  <!-- Select items filter "Lizenz"-->
-                  <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                    <select class="form-select js-choice border-technical-round"
-                      aria-label=".form-select-sm example"
-                      name="l" id="lizenz-input-tools"
-                      title="Filtern nach der Lizenz der Anwendung">
-                      <option value="">Zugänglichkeit
-                      </option>
-                      {% for currentAccessibility in accessibilityFields %}
-                        <option value="{{ currentAccessibility }}">{{ currentAccessibility }}</option>
-                      {% endfor %}
-                    </select>
-                </div>
-                <!-- Search item "Lebenszyklusphase" -->
-                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
-                    aria-label=".form-select-sm example"
-                    name="lcp"
-                    id="lzp-input-tools"
-                    title="Filtern nach der Lebenszyklusphase in der die Anwendung genutzt wird">
-                    <option value="">Lebenszyklusphase
-                    </option>
-                    {% for currentLifeCyclePhase in lifeCyclePhaseFields %}
-                    <option value="{{ currentLifeCyclePhase }}">{{ currentLifeCyclePhase }}</option>
-                  {% endfor %}                    
-                  </select>
-                </div>
-                <!-- Search item -->
-              </div>
-            </form>
-          </div>
-          <!-- Select item END -->
-          <!-- search Button -->
-          <div class="col-xl-1">
-            <button type="submit"
-              class="btn btn-technical mb-0 rounded z-index-1 w-100"
-              id="search-submit-tools" href="">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-          <!-- Clear button -->
-          <div class="col-xl-1">
-            <a href="{% url 'tool_list' %}">
-              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-                Alle
-              </h6>
-            </a>
-          </div>
-        </div>
-      </form>
+      {% include "common/search-bar.html" %}
       <!-- Row END -->
       <!-- Filter bar END -->
       <!-- search tags START -->
@@ -112,7 +42,7 @@
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
             <a href="/tool_list/?searched={{search}}&u=&l=&lcp=">
-              Suchbegriff: {{search}}
+              {% translate "Suchbegriff" %}: {{search}}
             </a>
             <a href="/tool_list/?searched=&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i> 
@@ -123,7 +53,7 @@
         {% if usage %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">Nutzung:{{usage}}
+            <a href="/tool_list/?searched=&u={{usage}}&l=&lcp=">{% translate "Nutzung" %}:{{usage}}
             </a>
             <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u=&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
@@ -134,7 +64,7 @@
         {% if accessibility %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l={{accessibility.accessibility}}&lcp=">Zugänglichkeit: {{accessibility}}
+            <a href="/tool_list/?searched=&u=&l={{accessibility.accessibility}}&lcp=">{% translate "Zugänglichkeit" %}: {{accessibility}}
             </a>
             <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l=&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}">
               <i class="bi bi-x-lg"></i>
@@ -145,7 +75,7 @@
         {% if lifeCyclePhase %}
         <li class="list-inline-item">
           <div class="btn btn-outline-light btn-sm">
-            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">Lebenszyklusphase: {{lifeCyclePhase}}
+            <a href="/tool_list/?searched=&u=&l=&lcp={{lifeCyclePhase}}">{% translate "Lebenszyklusphase" %}: {{lifeCyclePhase}}
             </a>
             <a href="/tool_list/?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp=">
               <i class="bi bi-x-lg"></i>
@@ -157,22 +87,22 @@
       <!-- search tags END -->
       <!-- Comparison button START -->
     <div class="col-xl-4" id="firstComparisonButtonTools">
-      <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-        Vergleiche 
+      <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+        {% translate "Vergleiche" %} 
       </h6>
     </div>
    
     <div class="row g-3" style="display:none" id="comparisonBarTools">
       <div class="col-xl-2" id="secondComparisonButtonTools" >
         <a href="#" id="comparisonUrlTools">
-          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            Vergleiche 
+          <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+            {% translate "Vergleiche" %}  
           </h6>
         </a>
       </div>
       <div class="col-xl-2" id="cancelButtonTools">
-          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            Zurücksetzen
+          <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+            {% translate "Zurücksetzen" %} 
           </h6>
 
       </div>
@@ -184,38 +114,11 @@
         <div class="col-12">
         <!-- tools Grid START -->
           <div class="row g-4" id="tool-listing-results">
-            {% include '../tools_over/tool-listings-results.html' %}
+            {% include '../tools_over/tool-listings-results.html' with typeOfTool=typeOfTool %}
           </div>
           <!-- tools Grid END -->
           <!-- Pagination START -->
-          <div class="pagination">
-            <span class="step-links">
-              {% if page.has_previous %}
-              <a  href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page=1" id="paginationFirstSite">
-                &laquo; erste
-              </a>
-              &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" id="paginationPreviousLink">
-                vorherige
-              </a>
-              {% endif %}
-              &nbsp &nbsp
-              <span class="current">
-                Seite {{ page.number }} von {{ page.paginator.num_pages }}  
-              </span>
-              &nbsp &nbsp
-              {% if page.has_next %}
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}" id="paginationNextLink">
-                nächste
-              </a>
-              &nbsp &nbsp
-              <a href="{%url 'tool_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&l={% if accessibility %}{{accessibility}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.paginator.num_pages }}" id="paginationLastSite">
-                letzte &raquo;
-              </a>
-              &nbsp &nbsp
-              {% endif %}
-            </span>
-          </div>
+          {% include "common/pagination.html" %}
           <!-- Pagination END -->
         </div>
       </div>

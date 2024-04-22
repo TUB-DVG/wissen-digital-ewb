@@ -14,6 +14,10 @@ class Classification(models.Model):
         max_length=100,
         help_text="Classification Category",    
     )
+
+    def __str__(self):
+        return self.classification
+
     class Meta:
 
         app_label = 'tools_over'
@@ -28,6 +32,10 @@ class Focus(models.Model):
         max_length=100,
         help_text="Focus of the Tool",
     )
+    
+    def __str__(self):
+        return self.focus
+
     class Meta:
 
         app_label = 'tools_over'
@@ -42,6 +50,10 @@ class ApplicationArea(models.Model):
         help_text="application area",
         blank=True,
     )
+
+    def __str__(self):
+        return self.applicationArea 
+
     class Meta:
         app_label = 'tools_over'
 
@@ -55,6 +67,10 @@ class Usage(models.Model):
         help_text="usage",
         blank=True,
     )
+
+    def __str__(self):
+        return self.usage
+
     class Meta:
 
         app_label = 'tools_over'
@@ -69,6 +85,10 @@ class TargetGroup(models.Model):
         help_text="Which group of people is the tool targeted at?",
         blank=True,
     )
+
+    def __str__(self):
+        return self.targetGroup
+    
     class Meta:
 
         app_label = 'tools_over'
@@ -83,6 +103,10 @@ class LifeCyclePhase(models.Model):
         help_text="Life cycle phase of buildings where the application is used",
         blank=True,
     )
+
+    def __str__(self):
+        return self.lifeCyclePhase
+
     class Meta:
 
         app_label = 'tools_over'
@@ -97,6 +121,10 @@ class UserInterface(models.Model):
         help_text="userInterface",
         blank=True,
     )
+
+    def __str__(self):
+        return self.userInterface
+    
     class Meta:
         app_label = 'tools_over'
 
@@ -111,6 +139,10 @@ class Accessibility(models.Model):
         help_text="userInterface",
         blank=True,
     )
+
+    def __str__(self):
+        return self.accessibility
+
     class Meta:
 
         app_label = 'tools_over'
@@ -125,6 +157,10 @@ class Scale(models.Model):
         help_text="spatial scope of consideration",
         blank=True,
     )
+
+    def __str__(self):
+        return self.scale
+    
     class Meta:
 
         app_label = 'tools_over'
@@ -138,9 +174,17 @@ class Tools(models.Model):
                                    blank = True)
     applicationArea = models.ManyToManyField(ApplicationArea)
     usage = models.ManyToManyField(Usage)
-    targetGroup = models.ManyToManyField(TargetGroup)
+    targetGroup = models.ManyToManyField(
+        TargetGroup,
+        blank=True,
+        null=True,
+    )
     lifeCyclePhase  = models.ManyToManyField(LifeCyclePhase)
-    userInterface = models.ManyToManyField(UserInterface)
+    userInterface = models.ManyToManyField(
+        UserInterface,
+        blank=True,
+        null=True,
+    )
     userInterfaceNotes = models.CharField(
         max_length=300,
         help_text="additional notes for userInterface",
@@ -165,11 +209,10 @@ class Tools(models.Model):
     specificApplication = models.ManyToManyField(
         Subproject,
         help_text = "specific application of the tool in EWB projects (project name + fkz)",
+        blank=True,
+        null=True,
     )
-    
-    # models.CharField(max_length = 500,
-                                        #   help_text = "specific application of the tool in EWB projects (project name + fkz)",
-                                        #   blank = True)
+
     provider = models.CharField(
         max_length=300,
         blank=True,
@@ -204,6 +247,7 @@ class Tools(models.Model):
     developmentState = models.IntegerField(
         choices=choices, 
         null=True,
+        blank=True,
     )
     
     programmingLanguages = models.CharField(
@@ -218,19 +262,33 @@ class Tools(models.Model):
         max_length=500,
         blank=True,
     )
-    scale = models.ManyToManyField(Scale)
+    scale = models.ManyToManyField(
+        Scale,
+        blank=True,
+        null=True,
+    )
 
-    technicalStandardsNorms = models.ManyToManyField(Norm)
-    technicalStandardsProtocols = models.ManyToManyField(Protocol)
-    #image=models.ImageField(default="webcentral_app/tools_over/Media/Default.webp", null=True,blank = True)  #You need to install pillow
+    technicalStandardsNorms = models.ManyToManyField(
+        Norm,
+        blank=True,
+        null=True,
+    )
+    technicalStandardsProtocols = models.ManyToManyField(
+        Protocol,
+        blank=True,
+        null=True,
+    )
     image = models.ImageField(
         null=True,
         blank = True,
-    )  #You need to install pillow
+    )
 
     classification = models.ManyToManyField(Classification) 
     focus = models.ManyToManyField(Focus)
     
+    def __str__(self):  
+        return self.name
+
     class Meta:
         app_label = 'tools_over'
 

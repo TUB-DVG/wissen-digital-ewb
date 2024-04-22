@@ -3,6 +3,7 @@
 {% block title %} {{ weatherdata.data_service }} {% endblock %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content%}
 
@@ -40,7 +41,7 @@ Page intro START -->
 			</div>
 		</div>
 		<div class="row" style="margin-top: 16px;" nonce="weatherdataDetailDivOne">
-		  <a href="#" id="backButton">Zurück</a>
+		  <a href="#" id="backButton">{% translate "Zurück" %}</a>
       <script nonce="{{request.csp_nonce}}">
         document.getElementById('backButton').addEventListener('click', function(event) {
           event.preventDefault();
@@ -68,10 +69,10 @@ Page content START -->
 						<div class="tab-pane container active" id="course-pills-1" >
 							<!-- Course detail START -->
 							{% if weatherdata.short_description %}
-							{% if weatherdata.category == 'Anwendung' %}
-							<h5 class="mb-3">Was ist {{weatherdata.data_service}}?</h5>
-							{% elif weatherdata.category == 'Datensätze'%}
-							<h5 class="mb-3">Welche Daten bietet {{weatherdata.data_service}}?</h5>
+							{% if weatherdata.category == 'Anwendung' or weatherdata.category == 'Application' %}
+							<h5 class="mb-3">{% translate "Was ist" %} {{weatherdata.data_service}}?</h5>
+							{% elif weatherdata.category == 'Datensätze' or weatherdata.category == 'Datasets' %}
+							<h5 class="mb-3">{% translate "Welche Daten bietet" %} {{weatherdata.data_service}}?</h5>
 							{% endif %}
 							<p class="mb-1">{{weatherdata.short_description}}.</p>
 							<p class="mb-0">{{weatherdata.long_description}}</p>
@@ -81,20 +82,20 @@ Page content START -->
 							<p class="mb-0">{{weatherdata.provider}}</p>
 							{% endif %}
 							{% if weatherdata.provider %}
-							<h5 class="mt-4">Anwendungen</h5>
+							<h5 class="mt-4">{% translate "Anwendungen" %}</h5>
 							<p class="mb-0">{{weatherdata.applications}}</p>
 							{% endif %}
 							{% if weatherdata.further_information %}
-							<h5 class="mt-4">Weitere Informationen</h5>
+							<h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
 							<p class="mb-0"><a href="{{weatherdata.further_information}}" target="_blank">{{weatherdata.further_information}}</a></p>
 							{% endif %}
 							{% if weatherdata.data_url %}
-							<h5 class="mt-4">Link zum Datensatz</h5>
+							<h5 class="mt-4">{% translate "Link zum Datensatz" %}</h5>
 							<p class="mb-0"><a href="{{weatherdata.data_url}}">{{weatherdata.data_url}}</a></p>
 							{% endif %}
 							<!-- Course detail END -->
 							{% if weatherdata.data_service == 'Wetterdienst' %}
-							<h5 class="mt-4"><a href="{%url 'wetterdienstBeispiel'%}">Beispielanwendung</a></h5>
+							<h5 class="mt-4"><a href="{%url 'wetterdienstBeispiel'%}">{% translate "Beispielanwendung" %}</a></h5>
 							{% endif %}
 							
 
@@ -129,14 +130,14 @@ Page content START -->
 						<!-- Course info START -->
 						<div class="card card-body border-technical p-4 mb-4">
 							<!-- Title -->
-							<h4 class="mb-3">Kurzinformationen</h4>
+							<h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
 							<ul class="list-group border-0">
 								{% if weatherdata.category %}
 								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
 									<span class="h6 fw-light mb-0">
                     <i class="{{category_icon}}">
                     </i>
-                    Kategorie
+                    {% translate "Kategorie" %}
                   </span>
 									<span>{{ weatherdata.category }}</span>
 								</li>
@@ -146,7 +147,7 @@ Page content START -->
 									<span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open">
                     </i>
-                    Lizenz
+                    {% translate "Lizenz" %}
                   </span>
 									<span>{{ weatherdata.license }}</span>
 								</li>
@@ -174,7 +175,7 @@ Page content START -->
 							<ul class="list-inline mb-0">
 								{% if weatherdata.category %}	
 								<li class="list-inline-item">
-                  <a class="btn btn-outline-light btn-sm"                href="/weatherdata_list/?searched=&1={{weatherdata.category}}&2=">
+                  <a class="btn btn-outline-light btn-sm" href="/weatherdata_list/?searched=&1={{weatherdata.category}}&2=">
                     {{weatherdata.category}}
                   </a>
                 </li>

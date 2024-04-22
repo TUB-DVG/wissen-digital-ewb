@@ -3,7 +3,7 @@
 {% block title %} Positive Umweltwirkungen {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content%}
 
 <!-- general text for "coming soon" -->
@@ -16,7 +16,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Positive Umweltwirkungen – good-practice</h2>
+          <h2 class="m-0">{% translate "Positive Umweltwirkungen" %} – good-practice</h2>
         </div>
       </div>
     </div>
@@ -29,7 +29,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von Gebäuden
+          {% blocktranslate %}Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von Gebäuden
           und Quartieren steht im derzeitigen Fokus der Forschung. Gleichzeitig
           stellt dieses Ziel nur eine der möglichen positiven Umweltwirkungen
           dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in
@@ -46,7 +46,7 @@ Page Banner START -->
           Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz soll
           Interessierte animieren, sich eingehender mit den Möglichkeiten
           digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben
-          fundierte Entscheidungen treffen zu können.
+          fundierte Entscheidungen treffen zu können.{% endblocktranslate %}
         </p>
       </div>
     </div>

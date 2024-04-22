@@ -3,7 +3,7 @@
 {% block title %} Herausforderungen {% endblock %}
 
 {% load static %}
-
+{% load i18n %}
 {% block content%}
 
 <!-- general text for "coming soon" -->
@@ -16,7 +16,7 @@ Page Banner START -->
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Herausforderungen</h2>
+          <h2 class="m-0">{% translate "Herausforderungen" %}</h2>
         </div>
       </div>
     </div>
@@ -29,12 +29,12 @@ Page Banner START -->
     <div class="row">
       <div class="col-lg-9">
         <p>
-          Die Bewertung der positiven und negativen Umweltwirkungen ist nicht
+          {% blocktranslate %}Die Bewertung der positiven und negativen Umweltwirkungen ist nicht
           immer einfach. Hier soll auf Herausforderungen bei der ökologischen
           Bewertung digitaler Anwendungen hingewiesen werden, die sich häufig in
           der Praxis ergeben. Dazu sind Erfahrungen hinsichtlich der
           Herausforderungen im Folgenden in die Themenbereiche „Benchmarking“,
-          „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ untergliedert.
+          „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ untergliedert.{% endblocktranslate %}
         </p>
       </div>
     </div>
