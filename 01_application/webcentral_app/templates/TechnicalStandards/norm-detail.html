@@ -3,6 +3,7 @@
 {% block title %} {{ technicalStandards.name }} {% endblock %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
@@ -28,7 +29,7 @@ Page intro START -->
       </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-      <a href="#" id="backButton">Zurück</a>
+      <a href="#" id="backButton">{% translate "Zurück" %}</a>
       <script nonce="{{request.csp_nonce}}">
         document.getElementById('backButton').addEventListener('click', function(event) {
           event.preventDefault();
@@ -55,17 +56,17 @@ Page content START -->
             <div class="tab-pane container active" id="course-pills-1" >
               <!-- Course detail START -->
               {% if technicalStandards.title %}
-              <h5 class="mt-4">Titel</h5>
+              <h5 class="mt-4">{% translate "Titel" %}</h5>
 							<p class="mb-0">
                 {{technicalStandards.title}}
               </p>
 							{% endif %}
 							{% if technicalStandards.shortDescription %}
-							<h5 class="mt-4">Kurzbeschreibung</h5>
+							<h5 class="mt-4">{% translate "Kurzbeschreibung" %}</h5>
 							<p class="mb-0">{{technicalStandards.shortDescription}}</p>
 							{% endif %}
 							{% if technicalStandards.source %}
-							<h5 class="mt-4">Quelle</h5>
+							<h5 class="mt-4">{% translate "Quelle" %}</h5>
 							<p class="mb-0">
                 {{technicalStandards.source}}
               </p>
@@ -103,7 +104,7 @@ Page content START -->
 						<!-- Side col START -->
 						<div class="card card-body border-technical p-4 mb-4">
 							<!-- Title -->
-							<h4 class="mb-3">Kurzinformationen</h4>
+							<h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
 							<ul class="list-group border-0">
 								{% if technicalStandards.title %}
 								<li class="list-group-item d-flex justify-content-between align-items-center border-0">
@@ -120,7 +121,7 @@ Page content START -->
 									<span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open">
                     </i>
-                    Quelle
+                    {% translate "Quelle" %}
                   </span>
 									<span>{{ technicalStandards.source }}</span>
 								</li>

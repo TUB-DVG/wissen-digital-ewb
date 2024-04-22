@@ -1,29 +1,39 @@
 from django.shortcuts import render
 
 from .models import (
+    CriteriaCatalog,
     Topic,
-    UseCase,
 )
 
 def index(request):
     """Return the criteriaCatalog-Page
     
     """
-    allUseCases = UseCase.objects.all()
+    allCatalogs = CriteriaCatalog.objects.all()
+    # breakpoint()
     return render(
         request, 
         'criteriaCatalog/criteriaCatalog.html', 
         {
-            "useCases": allUseCases,
+            "useCases": allCatalogs,
         }
     )
 
 class Node:
-    def __init__(self, topic):
+    def __init__(self, topic: Topic):
         self.topic = topic
         self.neighbours = []
+        self.depth = None
     def addNeighbour(self, neighbourTopic):
         self.neighbours.append(neighbourTopic)
+    
+    def addDepth(self, depth: int):
+        """adds the depth of the element in the tree
+
+        """
+        self.depth = depth
+    def __str__(self):
+        return str(self.topic)
 
 class Tree:
     def __init__(self, rootNode):
@@ -31,56 +41,41 @@ class Tree:
         self.level = []
         self.dictOfTree = {}
     def addToDict(self, node, listOfNodesForLayer):
-        self.dictOfTree[node.topic] = listOfNodesForLayer
-    def flattenDictTreeToList(self):
-        """
-        """
-        flattendTreeList = []
-        depthFirstSearchList = []
-        listOfDictKeys = []
-        listOfDictKeys.append(list(self.dictOfTree.keys())[0])
-        outdentCount = 0
-        while len(listOfDictKeys) > 0:
-            key = listOfDictKeys.pop(0)
-            flattendTreeList.append({"indent": True})
-            flattendTreeList.append({"content": key})
-            # breakpoint()
-            if len(self.dictOfTree[key]) > 0:
-                for nodeValue in self.dictOfTree[key]:
-                    if len(self.dictOfTree[nodeValue]) == 0:
-                        flattendTreeList.append({"indent": True})
-                        flattendTreeList.append({"content": nodeValue})
-                        flattendTreeList.append({"outdent": True})
-                    else:
-                        listOfDictKeys.append(nodeValue)
-                        outdentCount += 1
+        self.dictOfTree[node] = listOfNodesForLayer
 
-            else:
-                flattendTreeList.append({"content": self.dictOfTree[key]})
-                flattendTreeList.append({"outdent": True})
-                outdentCount -= 1
-        for outdent in range(outdentCount):
-            flattendTreeList.append({"outdent": True})
-        return flattendTreeList
+def tree_to_html(tree, root):
+    html = []
+    html.append({"indent": True})
+    html.append({"content": root})
+    for child in tree.get(root, []):
+        html += tree_to_html(tree, child)
+    html.append({"outdent": True})
+    # breakpoint()
+    return html
 
-    
 
-def useCaseView(request, id):
+def buildCrtieriaCatalog(request, criteriaCatalogIdentifer):
     """
 
     """
+
+    id = CriteriaCatalog.objects.filter(name__icontains=criteriaCatalogIdentifer)[0].id
+
+
     # return a nested dictionary, which contains the hierarchical data
-    topicForSelectedUseCase = Topic.objects.filter(useCase__id=id)
+    topicForSelectedUseCase = Topic.objects.filter(criteriaCatalog__id=id)
     
     dictOfElements = {}
     rootElements = topicForSelectedUseCase.filter(parent=None)
     topicsWithoutRootElements = topicForSelectedUseCase.exclude(parent=None)
     listOfTrees = []
     listOfFlattenedTrees = []
-    for element in rootElements:
+    nodeRootElements = []
+    for index, element in enumerate(rootElements):
         nodeRootElement = Node(element)
+        nodeRootElements.append(nodeRootElement)
+        nodeRootElement.addDepth(0)
         currentTree = Tree(nodeRootElement)
-        # print(currentTree.root.topic.text)
         listOfTrees.append(currentTree)
 
         # implementation of a breath-first-search:
@@ -92,21 +87,20 @@ def useCaseView(request, id):
             currentNode = queueBreathFirstSearch.pop()
             childsOfCurrentElement = topicsWithoutChilds.filter(parent=currentNode.topic)
             topicsWithoutChilds = topicsWithoutChilds.exclude(parent=currentNode.topic)
+            childNodes = []
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
                 currentNode.addNeighbour(childNode)
-                queueBreathFirstSearch.append(childNode)
-            currentTree.dictOfTree
-            currentTree.addToDict(currentNode, list(childsOfCurrentElement))
-        listOfFlattenedTrees.append(currentTree.flattenDictTreeToList())
-    # hi = listOfTrees[0].flattenDictTreeToList()
-    
-    
+                childNode.addDepth(currentNode.depth+1)
+                childNodes.append(childNode)
+                queueBreathFirstSearch.append(childNode) 
+            currentTree.addToDict(currentNode, childNodes)
+        listOfFlattenedTrees.append(tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index]))
     return render(
         request, 
         "criteriaCatalog/criteriaCatalogDetails.html", 
         {
-            "useCase": UseCase.objects.filter(id = id)[0],
+            "criteriaCatalog": CriteriaCatalog.objects.get(id = id),
             "trees": listOfFlattenedTrees,
         }
     )

@@ -1,0 +1,3950 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-19 12:08+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Datasets/views.py:20 Datasets/views.py:21 Datasets/views.py:51
+msgid "Anwendungsfall"
+msgstr "Use case"
+
+#: Datasets/views.py:20 Datasets/views.py:22 Datasets/views.py:70
+#: templates/datasets_over/dataset-detail.html:131
+#: templates/weatherdata_over/weatherdata-detail.html:140
+#: weatherdata_over/views.py:26 weatherdata_over/views.py:30
+#: weatherdata_over/views.py:56
+msgid "Kategorie"
+msgstr "Category"
+
+#: Datasets/views.py:20 Datasets/views.py:23 Datasets/views.py:96
+#: templates/datasets_over/dataset-detail.html:82
+#: templates/datasets_over/dataset-detail.html:151
+#: templates/datasets_over/explanation.html:37
+msgid "Verfügbarkeit"
+msgstr "Availability"
+
+#: Datasets/views.py:53
+msgid "Potential Erneuerbare Energie"
+msgstr "Renewable energy potential"
+
+#: Datasets/views.py:54
+msgid "Standardlastprofile"
+msgstr "Standard load profiles"
+
+#: Datasets/views.py:55
+msgid "Energiesystemmodell"
+msgstr "Energy system model"
+
+#: Datasets/views.py:56
+msgid "Infrastruktur Gas"
+msgstr "Gas Infrastructure"
+
+#: Datasets/views.py:57 Datasets/views.py:83
+#: templates/LastProfile/explanation.html:109
+#: templates/LastProfile/explanation.html:170
+#: templates/StartSearch/StartSearch.html:149
+#: templates/partials/_navbar.html:71
+msgid "Wetterdaten"
+msgstr "Weather data"
+
+#: Datasets/views.py:58
+msgid "Wärmebedarf"
+msgstr "Heat demand"
+
+#: Datasets/views.py:59 Datasets/views.py:79
+msgid "Zeitreihen"
+msgstr "Time series"
+
+#: Datasets/views.py:64
+msgid "Sonstiges"
+msgstr "Miscellaneous"
+
+#: Datasets/views.py:72
+msgid "Übertragungsnetzentwicklungspläne"
+msgstr "Transmission network development plans"
+
+#: Datasets/views.py:73
+msgid "Gebäudebestandsentwicklung"
+msgstr "Building stock development"
+
+#: Datasets/views.py:74
+msgid "Standardlastprofile für Strom"
+msgstr "Standard load profiles for electricity"
+
+#: Datasets/views.py:75
+msgid "Digitales Geländemodell"
+msgstr "Digital terrain model"
+
+#: Datasets/views.py:76
+msgid "Gebäudegrundrisse"
+msgstr "Building floor plans"
+
+#: Datasets/views.py:77 templates/LastProfile/explanation.html:59
+msgid "Gebäude"
+msgstr "Building"
+
+#: Datasets/views.py:77
+msgid "Modell"
+msgstr "Model"
+
+#: Datasets/views.py:78
+msgid "Gebäudetypologie"
+msgstr "Building typology"
+
+#: Datasets/views.py:80
+msgid "Gebäudebestand"
+msgstr "Building stock"
+
+#: Datasets/views.py:81
+msgid "Infrastruktur"
+msgstr "Infrastructure"
+
+#: Datasets/views.py:82
+msgid "Bedarfsdaten"
+msgstr "Demand data"
+
+#: Datasets/views.py:84
+#, fuzzy
+#| msgid "Datensätze"
+msgid "Daten"
+msgstr "Datasets"
+
+#: Datasets/views.py:85
+msgid "Statistiken"
+msgstr "Statistics"
+
+#: Datasets/views.py:86
+msgid "Landnutzung"
+msgstr "land use"
+
+#: Datasets/views.py:87 LastProfile/Dash_app/Warmelast.py:53
+#: LastProfile/Dash_app/Warmelast.py:251
+msgid "Datenbasis"
+msgstr "Database"
+
+#: Datasets/views.py:88
+msgid "Potential"
+msgstr "Potential"
+
+#: Datasets/views.py:89
+msgid "Löser"
+msgstr "Solver"
+
+#: Datasets/views.py:91
+msgid "Andere"
+msgstr "Others"
+
+#: LastProfile/Dash_app/Stromlast.py:25 LastProfile/Dash_app/Stromlast.py:134
+msgid "Stromlast Approximation"
+msgstr "Current load approximation"
+
+#: LastProfile/Dash_app/Stromlast.py:29 LastProfile/Dash_app/Stromlast.py:105
+msgid "Gewerbe allgemein "
+msgstr "Business in general"
+
+#: LastProfile/Dash_app/Stromlast.py:30 LastProfile/Dash_app/Stromlast.py:106
+msgid "Gewerbe werktags 8-18 "
+msgstr "Business weekdays 8 a.m. to 6 p.m"
+
+#: LastProfile/Dash_app/Stromlast.py:31 LastProfile/Dash_app/Stromlast.py:107
+msgid "Gewerbe Verbrauch Abend"
+msgstr "Commercial consumption evening"
+
+#: LastProfile/Dash_app/Stromlast.py:32 LastProfile/Dash_app/Stromlast.py:108
+msgid "Gewerbe durchlaufend"
+msgstr "Business continuous"
+
+#: LastProfile/Dash_app/Stromlast.py:33 LastProfile/Dash_app/Stromlast.py:109
+msgid "Laden Friseur  "
+msgstr "Shop hairdresser"
+
+#: LastProfile/Dash_app/Stromlast.py:34 LastProfile/Dash_app/Stromlast.py:110
+msgid "Bäckerei mit Backstube "
+msgstr "Bakery with bakehouse"
+
+#: LastProfile/Dash_app/Stromlast.py:35 LastProfile/Dash_app/Stromlast.py:111
+msgid "Wochenendbetrieb "
+msgstr "Weekend operation"
+
+#: LastProfile/Dash_app/Stromlast.py:36 LastProfile/Dash_app/Stromlast.py:112
+msgid "Haushaltskunden "
+msgstr "Household customers"
+
+#: LastProfile/Dash_app/Stromlast.py:37 LastProfile/Dash_app/Stromlast.py:113
+msgid "Landwirtschaftsbetriebe "
+msgstr "Farming operations"
+
+#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:114
+msgid "Landwirts. mit Milchwirts Tierzucht "
+msgstr "Farming operations with dairy farming"
+
+#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:115
+msgid "Übrige Landwirtschaftsbe "
+msgstr "Other agricultural businesses"
+
+#: LastProfile/Dash_app/Stromlast.py:46 LastProfile/Dash_app/Stromlast.py:135
+msgid "Jahresstrombedarf in kWh/a"
+msgstr "Annual electricity requirement in KWh/a"
+
+#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:118
+#: LastProfile/Dash_app/Warmelast.py:118 LastProfile/Dash_app/Warmelast.py:181
+#: LastProfile/Dash_app/Warmelast.py:215
+msgid "Januar"
+msgstr "January"
+
+#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:119
+#: LastProfile/Dash_app/Warmelast.py:119 LastProfile/Dash_app/Warmelast.py:182
+#: LastProfile/Dash_app/Warmelast.py:216
+msgid "Februar"
+msgstr "February"
+
+#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:120
+#: LastProfile/Dash_app/Warmelast.py:120 LastProfile/Dash_app/Warmelast.py:183
+#: LastProfile/Dash_app/Warmelast.py:217
+msgid "März"
+msgstr "March"
+
+#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:121
+#: LastProfile/Dash_app/Warmelast.py:121 LastProfile/Dash_app/Warmelast.py:184
+#: LastProfile/Dash_app/Warmelast.py:218
+msgid "April"
+msgstr "April"
+
+#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:122
+#: LastProfile/Dash_app/Warmelast.py:122 LastProfile/Dash_app/Warmelast.py:185
+#: LastProfile/Dash_app/Warmelast.py:219
+msgid "Mai"
+msgstr "May"
+
+#: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:123
+#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:186
+#: LastProfile/Dash_app/Warmelast.py:220
+msgid "Juni"
+msgstr "June"
+
+#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:124
+#: LastProfile/Dash_app/Warmelast.py:124 LastProfile/Dash_app/Warmelast.py:187
+#: LastProfile/Dash_app/Warmelast.py:221
+msgid "Juli"
+msgstr "July"
+
+#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:125
+#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:188
+#: LastProfile/Dash_app/Warmelast.py:222
+msgid "August"
+msgstr "August"
+
+#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Stromlast.py:126
+msgid "September"
+msgstr "September"
+
+#: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Warmelast.py:127 LastProfile/Dash_app/Warmelast.py:190
+#: LastProfile/Dash_app/Warmelast.py:224
+msgid "Oktober"
+msgstr "October"
+
+#: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:128
+#: LastProfile/Dash_app/Warmelast.py:128 LastProfile/Dash_app/Warmelast.py:191
+#: LastProfile/Dash_app/Warmelast.py:225
+msgid "November"
+msgstr "November"
+
+#: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:129
+#: LastProfile/Dash_app/Warmelast.py:129 LastProfile/Dash_app/Warmelast.py:192
+#: LastProfile/Dash_app/Warmelast.py:226
+msgid "Dezember"
+msgstr "December"
+
+#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:132
+#: LastProfile/Dash_app/Warmelast.py:136 LastProfile/Dash_app/Warmelast.py:256
+msgid "Approximation starten"
+msgstr "Start approximation"
+
+#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:133
+#: LastProfile/Dash_app/Warmelast.py:138 LastProfile/Dash_app/Warmelast.py:257
+msgid "Download als csv"
+msgstr "Download as csv"
+
+#: LastProfile/Dash_app/Stromlast.py:184 LastProfile/Dash_app/Stromlast.py:212
+#: LastProfile/Dash_app/Warmelast.py:407
+msgid "Datum"
+msgstr "Date"
+
+#: LastProfile/Dash_app/Stromlast.py:189
+msgid "Stromlastgang in kW"
+msgstr "Current load profile in kW"
+
+#: LastProfile/Dash_app/Stromlast.py:211
+msgid "Jahresstrombedarf in KWh/a :"
+msgstr "Annual electricity requirement in KWh/a"
+
+#: LastProfile/Dash_app/Stromlast.py:212
+msgid "Anwendung: "
+msgstr "Applications: "
+
+#: LastProfile/Dash_app/Stromlast.py:212
+msgid "Last"
+msgstr "Load"
+
+#: LastProfile/Dash_app/Warmelast.py:42 LastProfile/Dash_app/Warmelast.py:213
+msgid "Wärmelast Approximation"
+msgstr "Heat load approximation"
+
+#: LastProfile/Dash_app/Warmelast.py:45 LastProfile/Dash_app/Warmelast.py:243
+msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt"
+msgstr "We chose the following values as the test reference year"
+
+#: LastProfile/Dash_app/Warmelast.py:46 LastProfile/Dash_app/Warmelast.py:244
+msgid "Koordinatensystem"
+msgstr "Coordinate system"
+
+#: LastProfile/Dash_app/Warmelast.py:46 LastProfile/Dash_app/Warmelast.py:244
+msgid "Lambert konform konisch"
+msgstr "Lambert compliant conical"
+
+#: LastProfile/Dash_app/Warmelast.py:47 LastProfile/Dash_app/Warmelast.py:245
+msgid "Rechtswert"
+msgstr "Legal value"
+
+#: LastProfile/Dash_app/Warmelast.py:47 LastProfile/Dash_app/Warmelast.py:48
+#: LastProfile/Dash_app/Warmelast.py:245 LastProfile/Dash_app/Warmelast.py:246
+msgid "Meter"
+msgstr "Meters"
+
+#: LastProfile/Dash_app/Warmelast.py:48 LastProfile/Dash_app/Warmelast.py:246
+msgid "Hochwert"
+msgstr "High value"
+
+#: LastProfile/Dash_app/Warmelast.py:49 LastProfile/Dash_app/Warmelast.py:247
+msgid "Höhenlage"
+msgstr "Altitude"
+
+#: LastProfile/Dash_app/Warmelast.py:49 LastProfile/Dash_app/Warmelast.py:247
+msgid "Meter über NN"
+msgstr "Meters above sea level"
+
+#: LastProfile/Dash_app/Warmelast.py:50 LastProfile/Dash_app/Warmelast.py:248
+msgid "Erstellung des Datensatzes im Mai 2016"
+msgstr "The data set was created in May 2016"
+
+#: LastProfile/Dash_app/Warmelast.py:51 LastProfile/Dash_app/Warmelast.py:249
+msgid "Art des TRY"
+msgstr "Type of TRY"
+
+#: LastProfile/Dash_app/Warmelast.py:51 LastProfile/Dash_app/Warmelast.py:249
+msgid "mittleres Jahr"
+msgstr "avarage year"
+
+#: LastProfile/Dash_app/Warmelast.py:52 LastProfile/Dash_app/Warmelast.py:250
+msgid "Bezugszeitraum"
+msgstr "Reference period"
+
+#: LastProfile/Dash_app/Warmelast.py:53 LastProfile/Dash_app/Warmelast.py:251
+msgid "Beobachtungsdaten Zeitraum"
+msgstr "Observation data period"
+
+#: LastProfile/Dash_app/Warmelast.py:59 LastProfile/Dash_app/Warmelast.py:230
+msgid "Testreferenzjahr"
+msgstr "Test reference year"
+
+#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:231
+msgid "Wetterstation"
+msgstr "Weather station"
+
+#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:233
+msgid "Berechnungstyp"
+msgstr "Calculation type"
+
+#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:253
+msgid "Auswahl des Bundesland"
+msgstr "Selection of the state"
+
+#: LastProfile/Dash_app/Warmelast.py:75 LastProfile/Dash_app/Warmelast.py:254
+msgid "Auswahl der Station"
+msgstr "Selection of station"
+
+#: LastProfile/Dash_app/Warmelast.py:80 LastProfile/Dash_app/Warmelast.py:196
+msgid "Einfamilienhaus "
+msgstr "Single Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:197
+msgid "Mehrfamilienhaus "
+msgstr "Multi Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:198
+msgid "Gebietskörperschaft"
+msgstr "Local authority"
+
+#: LastProfile/Dash_app/Warmelast.py:83 LastProfile/Dash_app/Warmelast.py:199
+msgid "Einzelhandel, Großhandel"
+msgstr "Retail, Wholesale"
+
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:200
+msgid "Metall, Kfz"
+msgstr "Metal, Automotive"
+
+#: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:201
+msgid "sonst. betr. Dienstleistungen  "
+msgstr "Other operational services"
+
+#: LastProfile/Dash_app/Warmelast.py:86 LastProfile/Dash_app/Warmelast.py:202
+msgid "Gaststätten "
+msgstr "Restaurants"
+
+#: LastProfile/Dash_app/Warmelast.py:87 LastProfile/Dash_app/Warmelast.py:203
+msgid "Beherbergung "
+msgstr "Accommodation"
+
+#: LastProfile/Dash_app/Warmelast.py:88 LastProfile/Dash_app/Warmelast.py:204
+msgid "Bäckereien "
+msgstr "Bakeries"
+
+#: LastProfile/Dash_app/Warmelast.py:89 LastProfile/Dash_app/Warmelast.py:205
+msgid "Wäschereien "
+msgstr "Laundries"
+
+#: LastProfile/Dash_app/Warmelast.py:90 LastProfile/Dash_app/Warmelast.py:206
+msgid "Gartenbau "
+msgstr "horticulture"
+
+#: LastProfile/Dash_app/Warmelast.py:91 LastProfile/Dash_app/Warmelast.py:207
+msgid "Papier und Druck "
+msgstr "Paper and printing"
+
+#: LastProfile/Dash_app/Warmelast.py:92 LastProfile/Dash_app/Warmelast.py:208
+msgid "haushaltsähnliche Gewerbebetriebe "
+msgstr "Household-like businesses"
+
+#: LastProfile/Dash_app/Warmelast.py:93 LastProfile/Dash_app/Warmelast.py:209
+msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung "
+msgstr "Total load profile for trade, commerce, services"
+
+#: LastProfile/Dash_app/Warmelast.py:96 LastProfile/Dash_app/Warmelast.py:212
+#: templates/LastProfile/explanation.html:113
+msgid "Auswahl des Gebäudetyps"
+msgstr "Selection of building typ"
+
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:255
+msgid "Jahreswärmebedarf in kWh/a"
+msgstr "Annual heat requirement in kWh/a"
+
+#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:258
+msgid "Start Datum"
+msgstr "Start date"
+
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:259
+msgid "End Datum"
+msgstr "End date"
+
+#: LastProfile/Dash_app/Warmelast.py:126 LastProfile/Dash_app/Warmelast.py:189
+#: LastProfile/Dash_app/Warmelast.py:223
+msgid "Sepember"
+msgstr "September"
+
+#: LastProfile/Dash_app/Warmelast.py:130 LastProfile/Dash_app/Warmelast.py:193
+#: LastProfile/Dash_app/Warmelast.py:227 templates/common/search-bar.html:48
+msgid "Alle"
+msgstr "All"
+
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:260
+msgid "Es gibt keine Eingabe "
+msgstr "There is no input"
+
+#: LastProfile/Dash_app/Warmelast.py:396 LastProfile/Dash_app/Warmelast.py:412
+msgid "Wärmelastgang in kW"
+msgstr "Heat load profile in kW"
+
+#: LastProfile/Dash_app/Warmelast.py:398
+msgid "Fehlende Angaben"
+msgstr "Missing values"
+
+#: LastProfile/Dash_app/Warmelast.py:401 LastProfile/Dash_app/Warmelast.py:417
+msgid "Trinkwarmwasser-Lastgang in kW"
+msgstr "Domestic hot water load profile in kW"
+
+#: TechnicalStandards/views.py:33 TechnicalStandards/views.py:34
+#: TechnicalStandards/views.py:60
+msgid "Bezeichnung"
+msgstr "Designation"
+
+#: TechnicalStandards/views.py:33 TechnicalStandards/views.py:35
+#: TechnicalStandards/views.py:134
+#: templates/TechnicalStandards/explanation.html:72
+#: templates/TechnicalStandards/norm-detail.html:69
+#: templates/TechnicalStandards/norm-detail.html:124
+#: templates/TechnicalStandards/norm-explanation.html:24
+#: templates/norms_over/explanation.html:24
+msgid "Quelle"
+msgstr "Source"
+
+#: TechnicalStandards/views.py:188 TechnicalStandards/views.py:190
+#: TechnicalStandards/views.py:239
+#: templates/TechnicalStandards/explanation.html:118
+#: templates/TechnicalStandards/protocol-explanation.html:41
+msgid "Übertragungsmethoden"
+msgstr "transmission media"
+
+#: TechnicalStandards/views.py:188 TechnicalStandards/views.py:191
+#: TechnicalStandards/views.py:248
+#: templates/TechnicalStandards/explanation.html:125
+#: templates/TechnicalStandards/protocol-detail.html:204
+#: templates/TechnicalStandards/protocol-explanation.html:48
+msgid "Open-Source-Status"
+msgstr "Open-Source-status"
+
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:243
+msgid "Verkabelt"
+msgstr "Wired"
+
+#: TechnicalStandards/views.py:241 TechnicalStandards/views.py:242
+msgid "Drahtlos"
+msgstr "Wireless"
+
+#: TechnicalStandards/views.py:251
+msgid "Proprietär"
+msgstr "Proprietary"
+
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
+msgid "Find Apps"
+msgstr ""
+
+#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:13
+#: templates/admin/publications/publication_change_list.html:11
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
+#: publications/admin/orderedmodeladmin.py:115
+msgid "Move"
+msgstr ""
+
+#: publications/models/orderedmodel.py:88
+msgid ""
+"The method move() is deprecated and will be removed in the next release."
+msgstr ""
+
+#: publications/models/orderedmodel.py:101
+msgid ""
+"The method move_down() is deprecated and will be removed in the next "
+"release. Please use down() instead!"
+msgstr ""
+
+#: publications/models/orderedmodel.py:111
+msgid ""
+"The method move_up() is deprecated and will be removed in the next release. "
+"Please use up() instead!"
+msgstr ""
+
+#: templates/LastProfile/explanation.html:21
+#: templates/StartSearch/StartSearch.html:171
+#: templates/partials/_navbar.html:77
+msgid "Lastprofile"
+msgstr "Load profiles"
+
+#: templates/LastProfile/explanation.html:23
+msgid ""
+"Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für\n"
+"              Wärmeverbrauch und einem Lastprofilgenerator für "
+"Stromverbrauch.\n"
+"              Die Lastprofile werden als Zeitreihen dargestellt. \n"
+"\n"
+"              Die Lastprofile basieren auf dem (Gebäude-)Nutzung/Gebäudetyp, "
+"dem\n"
+"              Jahresbedarf und dem Berechnungszeitraum, die vorgegeben "
+"werden müssen. Für die Berechnung \n"
+"              der Wärmelast wird zusätzlich die Umgebungstemperatur "
+"entsprechenden des\n"
+"              Berechnungszeitraums mit Hilfe von Wetterdaten genutzt. \n"
+"              \n"
+"              <br>\n"
+"              Die jeweiligen Lastprofile können auch heruntergeladen werden."
+msgstr ""
+"On this page you have access to a load profile generator for heatdemand and "
+"a load profile generator for electricity demand. The load profiles are "
+"displayed as time series. The load profiles are based on the (building) use "
+"type, the annual electricity or heat requirements and the calculation "
+"period, which must be specified. To calculate the heat load, the ambient "
+"temperature corresponding to the calculation period is also used with the "
+"respective weather data.<br>The generated load profiles can also be "
+"downloaded."
+
+#: templates/LastProfile/explanation.html:49
+#: templates/LastProfile/explanation.html:175
+msgid "Stromlast"
+msgstr "Electrical Load Profiles"
+
+#: templates/LastProfile/explanation.html:51
+msgid ""
+"Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den\n"
+"          typischen Verlauf des Stromverbrauchs über der Zeit in "
+"Abhängigkeit\n"
+"          der (Gebäude-)Nutzung und des Jahresstrombedarfs darstellt. Des "
+"weiteren\n"
+"          kann der Berechnungszeitraum angegeben werden:"
+msgstr ""
+"The electrical load profile generator generates a time series that shows the "
+"typical course of power consumption over time depending on (building) usage "
+"and annual power requirements. Furthermore, the calculation period can be "
+"specified:"
+
+#: templates/LastProfile/explanation.html:59
+#: templates/tools_over/explanationApps.html:34
+#: templates/tools_over/explanationTools.html:34
+#: templates/tools_over/tool-listings.html:56
+msgid "Nutzung"
+msgstr "Use type"
+
+#: templates/LastProfile/explanation.html:59
+msgid "Auswahl der Nutzung des Stroms"
+msgstr "Selection of building use type"
+
+#: templates/LastProfile/explanation.html:62
+msgid "Jahresstrombedarf"
+msgstr "Annual electricity requirement"
+
+#: templates/LastProfile/explanation.html:62
+msgid ""
+"Eingabe des Jahresstrombedarfs\n"
+"            in kWh/a"
+msgstr "Enter the annual electricity requirement in kWh/a"
+
+#: templates/LastProfile/explanation.html:66
+#: templates/LastProfile/explanation.html:121
+msgid "Berechnungszeitraum"
+msgstr "Calculation period"
+
+#: templates/LastProfile/explanation.html:66
+msgid ""
+"Auswahl des\n"
+"            Berechnungszeitraums"
+msgstr "Selection of the calculation period"
+
+#: templates/LastProfile/explanation.html:91
+msgid "Approximation der Stromlast"
+msgstr "Approximation of the electrical load"
+
+#: templates/LastProfile/explanation.html:100
+#: templates/LastProfile/explanation.html:163
+msgid "Wärmelast"
+msgstr "Heat Load"
+
+#: templates/LastProfile/explanation.html:103
+msgid ""
+"Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den\n"
+"          typischen Verlauf der Wärmelast über der Zeit in Abhängigkeit der\n"
+"          Wetterdaten, des Jahreswärmebedarfs und des Gebäudetyps "
+"darstellt.\n"
+"          Desweiteren kann der Berechnungszeitraum angegeben werden:"
+msgstr ""
+"The heat load profile generator creates a time series that shows the typical "
+"course of the heat load over time depending on the weather data, the annual "
+"heat requirement and the building type. Furthermore, the calculation period "
+"can be specified:"
+
+#: templates/LastProfile/explanation.html:109
+msgid ""
+"Hier kann das Testreferenzjahr\n"
+"              (TRJ) oder eine spezifische Wetterstation gewählt werden"
+msgstr ""
+"The test reference year (TRY) or a specific weather station can be selected "
+"here"
+
+#: templates/LastProfile/explanation.html:113
+msgid "Gebäudetyp"
+msgstr "Building Use type"
+
+#: templates/LastProfile/explanation.html:116
+msgid "Jahreswärmebedarf"
+msgstr "Annual heat requirement"
+
+#: templates/LastProfile/explanation.html:116
+msgid ""
+"Eingabe des\n"
+"              Jahreswärmebedarfs in kWh/a"
+msgstr "Enter the annual heat demand in kWh/a"
+
+#: templates/LastProfile/explanation.html:121
+msgid "Eingabe des Berechnungszeitraums"
+msgstr "Enter the calculation period"
+
+#: templates/LastProfile/explanation.html:148
+msgid "Approximation der Wärmelast"
+msgstr "Approximation of the heat load"
+
+#: templates/LastProfile/explanation.html:156
+msgid "Anmerkungen"
+msgstr "Remarks"
+
+#: templates/LastProfile/explanation.html:159
+msgid ""
+"Die Generatoren basieren auf Berechnungsvorschriften, Daten und\n"
+"            Annahmen der folgenden Quellen:"
+msgstr ""
+"The generators are based on calculation rules, data and assumptions from the "
+"following sources:"
+
+#: templates/LastProfile/explanation.html:163
+msgid ""
+"Nutzung der Dissertation von Marcus\n"
+"            Hellwig, 2003, \"Entwicklung und Anwendung parametrisierter\n"
+"            Standard-Lastprofile\""
+msgstr ""
+"Hellwig, 2003, 'Entwicklung und Anwendung parametrisierter Standard-"
+"Lastprofile'"
+
+#: templates/LastProfile/explanation.html:167
+msgid "Download der Disseration"
+msgstr "Download the dissertation"
+
+#: templates/LastProfile/explanation.html:170
+msgid "Nutzung der Wetterdienst Bibliothek"
+msgstr "Use of the weather service library"
+
+#: templates/LastProfile/explanation.html:172
+msgid "Wetterdienst"
+msgstr "Weather Service"
+
+#: templates/LastProfile/explanation.html:175
+msgid "Nutzung der Standard-Lastprofile"
+msgstr "Use of standard load profiles"
+
+#: templates/LastProfile/explanation.html:177
+msgid "Standard-Lastprofile beim BDEW"
+msgstr "Standard load profiles at BDEW"
+
+#: templates/StartSearch/ResultSearch.html:3
+#: templates/StartSearch/ResultSearch.html:15
+msgid "Suchergebnisse"
+msgstr "Search results"
+
+#: templates/StartSearch/ResultSearch.html:34
+#: templates/StartSearch/StartSearch.html:66
+msgid "Durchsuche die Plattform!"
+msgstr "Search the platform!"
+
+#: templates/StartSearch/ResultSearch.html:70
+msgid "Art des Ergebnisses"
+msgstr "Type of result"
+
+#: templates/StartSearch/ResultSearch.html:78
+#: templates/publications/publications-detail.html:124
+msgid "Fokus"
+msgstr "Focus"
+
+#: templates/StartSearch/ResultSearch.html:80
+msgid "Aktualität"
+msgstr "Actuality"
+
+#: templates/StartSearch/ResultSearch.html:147
+#: templates/common/pagination.html:6
+msgid "erste"
+msgstr "first"
+
+#: templates/StartSearch/ResultSearch.html:152
+#: templates/common/pagination.html:10
+msgid "vorherige"
+msgstr "previous"
+
+#: templates/StartSearch/ResultSearch.html:157
+#: templates/common/pagination.html:15
+msgid "Seite"
+msgstr "Site"
+
+#: templates/StartSearch/ResultSearch.html:157
+#: templates/common/pagination.html:15
+msgid "von"
+msgstr "from"
+
+#: templates/StartSearch/ResultSearch.html:163
+#: templates/common/pagination.html:20
+msgid "nächste"
+msgstr "next"
+
+#: templates/StartSearch/ResultSearch.html:168
+#: templates/common/pagination.html:24
+msgid "letzte"
+msgstr "last"
+
+#: templates/StartSearch/ResultSearch.html:176
+msgid "Die Suche hat keine Ergebnisse ergeben."
+msgstr "The search returned no results."
+
+#: templates/StartSearch/StartSearch.html:3 templates/pages/index.html:4
+msgid "Wissensplattform - Digitalisierung Energiewendebauen"
+msgstr "Knowledge platform - building digitalization of the energy transition"
+
+#: templates/StartSearch/StartSearch.html:27
+msgid ""
+"Die wissenschaftliche Begleitforschung der Forschungsinitiative\n"
+"          Energiewendebauen stellt mit der Wissensplattform - "
+"Digitalisierung\n"
+"          Energiewendebauen einen Zugang zu den Forschungsergebnissen und "
+"den\n"
+"          erstellten Hilfsmitteln aus den Forschungsprojekten im Bereich\n"
+"          Digitalisierung im Bausektor dar. Diese Plattform richtet sich an "
+"die\n"
+"          interessierte Fachallgemeinheit und auch an die Forschungsprojekte "
+"der\n"
+"          Forschungsinitative Energiewendebauen."
+msgstr ""
+"The accompanying scientific research of the research initiative "
+"Energiewendebauen offers a knowledge platform that provides access to the "
+"research results and tools developed from the research projects in the area "
+"of digitalization in the built environment. This platform targets the "
+"community interested in such research and also supports the research "
+"projects of the Energiewendebauen initiative."
+
+#: templates/StartSearch/StartSearch.html:94 templates/partials/_navbar.html:44
+msgid "Technischer Fokus"
+msgstr "Technical Focus"
+
+#: templates/StartSearch/StartSearch.html:96
+msgid ""
+"Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
+"                der Energieforschung im Gebäudesektor zielt vorrangig auf\n"
+"                Hilfsmittel für die technische Planung und die technische\n"
+"                Betriebsdurchführung bzw. -optimierung ab. Dies umfasst\n"
+"                Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere\n"
+"                Forschungsergebnisse."
+msgstr ""
+"The technical focus of investigating digitalization in energy researchwithin "
+"the built environment primarily targets tools for technical planning,energy "
+"efficient operation, and optimization. This encompasses datasets, digital "
+"tools, applications, and other research results."
+
+#: templates/StartSearch/StartSearch.html:114
+msgid "Werkzeuge"
+msgstr "Tools"
+
+#: templates/StartSearch/StartSearch.html:126
+#: templates/weatherdata_over/weatherdata-detail.html:85
+msgid "Anwendungen"
+msgstr "Applications"
+
+#: templates/StartSearch/StartSearch.html:138
+#: templates/TechnicalStandards/explanation.html:14
+#: templates/partials/_navbar.html:64
+msgid "Technische Standards"
+msgstr "Technical Standards"
+
+#: templates/StartSearch/StartSearch.html:160
+#: templates/partials/_navbar.html:83 weatherdata_over/views.py:58
+msgid "Datensätze"
+msgstr "Datasets"
+
+#: templates/StartSearch/StartSearch.html:182
+#: templates/partials/_navbar.html:88
+msgid "technisch"
+msgstr "technical"
+
+#: templates/StartSearch/StartSearch.html:184
+#: templates/StartSearch/StartSearch.html:287
+#: templates/StartSearch/StartSearch.html:384
+#: templates/StartSearch/StartSearch.html:464
+#: templates/partials/_navbar.html:89 templates/partials/_navbar.html:141
+#: templates/partials/_navbar.html:186 templates/partials/_navbar.html:226
+msgid "Publikationen"
+msgstr "Publications"
+
+#: templates/StartSearch/StartSearch.html:205
+#: templates/partials/_navbar.html:105
+msgid "Betrieblicher Fokus"
+msgstr "Operational Focus"
+
+#: templates/StartSearch/StartSearch.html:207
+msgid ""
+"Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
+"                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
+"die\n"
+"                Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte "
+"sind\n"
+"                dabei der wirtschaftliche Betrieb digitaler Anwendungen\n"
+"                (Geschäftsmodelle) und die Einbindung von und Interaktion "
+"mit\n"
+"                den Nutzenden."
+msgstr ""
+"The operational focus when examining digitalization in energy research in "
+"the built environment primarily centers on the use phase of digital "
+"applications. Key aspects include the economical operation of digital "
+"applications/business models, along with user integration and interactivity."
+
+#: templates/StartSearch/StartSearch.html:226
+#: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
+msgid "Geschäfts&shy;modell&shy;"
+msgstr "Business model"
+
+#: templates/StartSearch/StartSearch.html:238
+msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
+msgstr "Business model applications - Challenges"
+
+#: templates/StartSearch/StartSearch.html:250
+#: templates/partials/_navbar.html:123
+msgid "Geschäfts&shy;modell&shy;anwendungen"
+msgstr "Business model applications"
+
+#: templates/StartSearch/StartSearch.html:262
+#: templates/StartSearch/StartSearch.html:274
+#: templates/partials/_navbar.html:129 templates/partials/_navbar.html:135
+msgid "Nutzenden&shy;perspektive"
+msgstr "User Engagement"
+
+#: templates/StartSearch/StartSearch.html:274
+#: templates/pages/userIntegrationMethod.html:19
+#: templates/partials/_navbar.html:135
+msgid "Methoden"
+msgstr "Methods"
+
+#: templates/StartSearch/StartSearch.html:285
+#: templates/partials/_navbar.html:140
+msgid "betrieblich"
+msgstr "operational"
+
+#: templates/StartSearch/StartSearch.html:312
+#: templates/partials/_navbar.html:156
+msgid "Ökologischer Fokus"
+msgstr "Ecological Focus"
+
+#: templates/StartSearch/StartSearch.html:314
+msgid ""
+"Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
+"                in der Energieforschung im Gebäudesektor zielt auf das\n"
+"                Evaluieren von Umwelteffekten durch den Einsatz digitaler\n"
+"                Anwendungen ab. Neben positiven Wirkungen wie\n"
+"                Energieeinsparungen werden auch negative Auswirkungen wie "
+"ein\n"
+"                erhöhter Materialverbrauch durch digitale Anwendungen\n"
+"                aufgezeigt. In diesem Kontext wird auch ein suffizienter "
+"Umgang\n"
+"                mit Daten sowie dessen Auswirkungen thematisiert."
+msgstr ""
+"The ecological focus when examining digitalization in energy research in the "
+"built environment aims to evaluate environmental impacts resuluting from the "
+"use of digital applications. his includes assessing both positive effects, "
+"such as energy savings,and potential negative effects, like increased "
+"material consumption.Adequate data handling and its implications are also "
+"discussed in this context."
+
+#: templates/StartSearch/StartSearch.html:335
+#: templates/pages/environmentalIntegrityNegativ.html:19
+#: templates/partials/_navbar.html:162
+msgid "Negative Umweltwirkungen"
+msgstr "Negative environmental impacts"
+
+#: templates/StartSearch/StartSearch.html:347
+#: templates/pages/environmentalIntegrityPositiv.html:19
+#: templates/partials/_navbar.html:168
+msgid "Positive Umweltwirkungen"
+msgstr "Positive environmental impact"
+
+#: templates/StartSearch/StartSearch.html:359
+#: templates/pages/benchmarkingChallenges.html:19
+#: templates/partials/_navbar.html:174
+msgid "Herausforderungen"
+msgstr "Challenges"
+
+#: templates/StartSearch/StartSearch.html:371
+#: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:180
+msgid "Datensuffizienz"
+msgstr "Data sufficiency"
+
+#: templates/StartSearch/StartSearch.html:405
+#: templates/partials/_navbar.html:202
+msgid "Rechtlicher Fokus"
+msgstr "Legal Focus"
+
+#: templates/StartSearch/StartSearch.html:407
+msgid ""
+"Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
+"                Datenschutzes für die Digitalisierung im Gebäudesektor. "
+"Hier\n"
+"                wird einerseits aufgezeigt, wie Datenschutzrisiken entstehen "
+"und\n"
+"                wie sie sich innovationshemmend auswirken können. "
+"Andererseits\n"
+"                wird für verschiedenste Anwendungsfälle im Gebäudesektor "
+"das\n"
+"                Datenschutzrecht konkretisiert und in konkrete\n"
+"                Handlungsempfehlungen für Projekte übersetzt."
+msgstr ""
+"The legal focus emphasizes the importance of data protection in "
+"digitalization within the built environment. It addresses the emergence of "
+"data protection risks and their potential to impede innovation. "
+"Concurrently, it clarifiesdata protection laws for various applications in "
+"the building sector, offering concrete action recommendations for projects."
+
+#: templates/StartSearch/StartSearch.html:427
+#: templates/partials/_navbar.html:208
+msgid "Daten&shy;schutz&shy;übersicht"
+msgstr "Privacy Overview"
+
+#: templates/StartSearch/StartSearch.html:439
+#: templates/partials/_navbar.html:214
+msgid "Kriterien&shy;katalog"
+msgstr "Catalog of criteria"
+
+#: templates/StartSearch/StartSearch.html:451
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:220
+msgid "Icons und Visualisierung"
+msgstr "Icons and visualization"
+
+#: templates/StartSearch/StartSearch.html:462
+#: templates/partials/_navbar.html:225
+msgid "rechtlich"
+msgstr "legal"
+
+#: templates/TechnicalStandards/explanation.html:3
+#: templates/TechnicalStandards/norm-listings.html:22
+#: templates/TechnicalStandards/protocol-listings.html:22
+msgid "Überblick über technische Standards"
+msgstr "Overview of technical standards"
+
+#: templates/TechnicalStandards/explanation.html:28
+msgid ""
+"Normen und Protokolle spielen eine zentrale Rolle im Kontext der "
+"Gebäudeautomation und auch in der Energiewende im Gebäubesektor. \n"
+"            Mit Hilfe von Normen sollen Standards und Richtlinien festgelegt "
+"werden, die sicherstellen, \n"
+"            dass Gebäude entsprechend der neuesten technologischen "
+"Entwicklungen und nachhaltigen Prinzipien gestaltet,\n"
+"            gebaut und betrieben werden. Diese Normen decken Aspekte wie "
+"Wärmedämmung, Energieeffizienz von Heizungs-, \n"
+"            Lüftungs- und Klimatechnik sowie den Einsatz erneuerbarer "
+"Energiequellen ab. Sie dienen als Leitfaden für Architekt*innen, \n"
+"            Bauherr*innnen und Fachleute der Baubranche, um Gebäude zu "
+"schaffen, die den höchsten Standards der Energieeffizienz \n"
+"            entsprechen und so zur Reduzierung des Energieverbrauchs und der "
+"Umweltauswirkungen beitragen."
+msgstr ""
+"Standards and protocols play a central role in the context of building "
+"automation and also in the energy transition in the building sector.Norms "
+"are intended to establish standards and guidelines that ensure that "
+"buildings are designed, constructed and operated in accordance with the "
+"latest technological developments and sustainable principles. These "
+"standards cover aspects such as thermal insulation, energy efficiency of "
+"heating, ventilation and air conditioning technology as well as the use of "
+"renewable energy sources. They serve as a guide for architects, builders and "
+"construction industry professionals to create buildings that meet the "
+"highest standards of energy efficiency, helping to reduce energy consumption "
+"and environmental impact."
+
+#: templates/TechnicalStandards/explanation.html:37
+msgid ""
+"Mit Hilfe von moderner Gebäudeautomation und deren intelligenten Steuerung "
+"und Überwachung von Gebäudetechnik und -systemen kann\n"
+"der Energieverbrauch optimiert werden. Dazu sind Protokolle notwendig, die "
+"spezifische Kommunikations- und \n"
+"            Steuerungsstandards definieren, um eine nahtlose Interaktion "
+"zwischen verschiedenen Komponenten der Gebäudeautomatisierung \n"
+"            zu gewährleisten. Diese Protokolle ermöglichen die Vernetzung "
+"von Beleuchtungs-, Heizungs-, Kühlungs-, Lüftungs- \n"
+"            und Sicherheitssystemen, um den Energieverbrauch zu regulieren "
+"und den Komfort für die Bewohner*innen zu maximieren.\n"
+"            Sie sorgen dafür, dass Gebäude effizient arbeiten, indem sie "
+"Daten sammeln, analysieren und auf Grundlage von vordefinierten \n"
+"            Algorithmen automatisierte Aktionen auslösen. Normen und "
+"Protokolle sind somit Schlüsselelemente, die dazu beitragen, \n"
+"            die Ziele der Energiewende im Gebäudesektor und der "
+"intelligenten Gebäudeautomation erfolgreich umzusetzen."
+msgstr ""
+"With the help of modern building automation and its intelligent control and "
+"monitoring of building technology and systemsenergy consumption can be "
+"optimized. This requires protocols that define specific communication and "
+"control standards to ensure seamless interaction between different building "
+"automation components. These protocols enable the networking of lighting, "
+"heating, cooling, ventilation and security systems to regulate energy "
+"consumption and maximize comfort for residents. They ensure that buildings "
+"operate efficiently by collecting and analyzing data and triggering "
+"automated actions based on predefined algorithms. Standards and protocols "
+"are therefore key elements that contribute to successfully implementing the "
+"goals of the energy transition in the building sector and intelligent "
+"building automation."
+
+#: templates/TechnicalStandards/explanation.html:52
+#: templates/TechnicalStandards/norm-listings.html:22
+msgid "Normen"
+msgstr "Norms"
+
+#: templates/TechnicalStandards/explanation.html:55
+msgid ""
+"Auf dieser Seite befinden sich unterschiedliche technische Normen,\n"
+"              die im Herbst 2022 erfasst worden sind. Diese sind durch "
+"Recherche in \n"
+"              Softwarekatalogen, Normendatenbanken und in "
+"Forschungsprojekten der Energiewendebauen\n"
+"              Projekte erfasst worden. Es handelt sich um deutsche, "
+"österreichische, \n"
+"              europäische oder internationale Standards und Richtlinien für "
+"die Planung, \n"
+"              den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+"Warmwasser-, \n"
+"              Entwässerungs-, Heizungs-, Kühl-, und sonstiger Energiesysteme "
+"in Gebäuden. \n"
+"              Andere technische Standards wie Schallschutz, Beleuchtung und "
+"Gasinstallation\n"
+"              sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+"Aspekte\n"
+"              erfasst:"
+msgstr ""
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects. "
+"These are German, Austrian, European or international standards and "
+"guidelines for the planning, construction and/or operation of ventilation, "
+"drinking water, hot water, drainage, heating, cooling and other energy "
+"systems in buildings . Other technical standards, such as soundproofing, "
+"lighting, and gas installation, are also included. The following aspects "
+"were recorded for each norm:"
+
+#: templates/TechnicalStandards/explanation.html:67
+#: templates/TechnicalStandards/norm-explanation.html:19
+msgid "Name und vollständiger Titel der Norm"
+msgstr "Name and full title of the norm"
+
+#: templates/TechnicalStandards/explanation.html:70
+#: templates/TechnicalStandards/norm-detail.html:65
+#: templates/TechnicalStandards/norm-explanation.html:22
+#: templates/norms_over/explanation.html:22
+#: templates/tools_over/explanationApps.html:27
+#: templates/tools_over/explanationTools.html:27
+#: templates/weatherdata_over/explanation.html:24
+msgid "Kurzbeschreibung"
+msgstr "Short description"
+
+#: templates/TechnicalStandards/explanation.html:70
+#: templates/TechnicalStandards/norm-explanation.html:22
+msgid "um was handelt es sich?"
+msgstr "What is it about?"
+
+#: templates/TechnicalStandards/explanation.html:72
+#: templates/TechnicalStandards/norm-explanation.html:24
+msgid "woher kann die Norm bezogen werden?"
+msgstr "where can the standard be obtained from?"
+
+#: templates/TechnicalStandards/explanation.html:74
+msgid "Link"
+msgstr "Link"
+
+#: templates/TechnicalStandards/explanation.html:74
+msgid ""
+"ein Link, über den die Norm abgerufen (ggf.\n"
+"                gekauft) werden kann."
+msgstr "a link through which the norm can be accessed (possibly purchased)."
+
+#: templates/TechnicalStandards/explanation.html:82
+#: templates/TechnicalStandards/explanation.html:158
+#: templates/TechnicalStandards/norm-explanation.html:33
+#: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/datasets_over/explanation.html:69
+#: templates/tools_over/explanationApps.html:176
+#: templates/tools_over/explanationBusinessApps.html:21
+#: templates/tools_over/explanationTools.html:177
+#: templates/weatherdata_over/explanation.html:35
+msgid "Zeige weniger ..."
+msgstr "Show less ..."
+
+#: templates/TechnicalStandards/explanation.html:83
+#: templates/TechnicalStandards/explanation.html:159
+#: templates/TechnicalStandards/norm-explanation.html:34
+#: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/datasets_over/explanation.html:70
+#: templates/tools_over/explanationApps.html:177
+#: templates/tools_over/explanationBusinessApps.html:22
+#: templates/tools_over/explanationTools.html:178
+#: templates/weatherdata_over/explanation.html:36
+msgid "Zeige mehr ..."
+msgstr "Show more ..."
+
+#: templates/TechnicalStandards/explanation.html:96
+msgid "Überblick über die Normen"
+msgstr "Overview of norms"
+
+#: templates/TechnicalStandards/explanation.html:103
+#: templates/TechnicalStandards/protocol-listings.html:22
+msgid "Protokolle"
+msgstr "protocols"
+
+#: templates/TechnicalStandards/explanation.html:106
+msgid ""
+"Auf der Seite sind verschiedenen Protokolle,\n"
+"        die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
+"Diese sind durch Recherche in \n"
+"        der entsprechenden Fachliteratur, in Dokumentationen von Hard- und "
+"Software und in Unterlagen aus den \n"
+"        Forschungsprojekten der Energiewendebauen zusammengetragen worden. \n"
+"        Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt und "
+"für diese die \n"
+"          folgenden Eigenschaften zusammengefasst:"
+msgstr ""
+"Various protocols that were recorded in summer 2023 are described in detail "
+"on the page. These were compiled through research in the relevant specialist "
+"literature, in documentation of hardware and software, and in documents from "
+"energy transition building research projects. We have selected 12 commonly "
+"used and modern protocols and summarized the following characteristics for "
+"them:"
+
+#: templates/TechnicalStandards/explanation.html:115
+msgid "Name des Protokolls"
+msgstr "Name of the protocol"
+
+#: templates/TechnicalStandards/explanation.html:118
+msgid ""
+"wie werden Daten zwischen den \n"
+"          verschiedenen Komponenten und Geräten innerhalb des Systems "
+"übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
+msgstr ""
+"How is data transferred between the various components and devices within "
+"the system (wired, wireless or wired & wireless)?"
+
+#: templates/TechnicalStandards/explanation.html:121
+#: templates/TechnicalStandards/protocol-comparison.html:44
+#: templates/TechnicalStandards/protocol-detail.html:77
+#: templates/TechnicalStandards/protocol-explanation.html:44
+msgid "Unterstützte Übertragungsmedien"
+msgstr "Supported transmission media"
+
+#: templates/TechnicalStandards/explanation.html:121
+#: templates/TechnicalStandards/protocol-explanation.html:44
+msgid "wie werden Signale übertragen?"
+msgstr "how are signals transmitted?"
+
+#: templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/protocol-comparison.html:51
+#: templates/TechnicalStandards/protocol-detail.html:81
+#: templates/TechnicalStandards/protocol-explanation.html:46
+msgid "Zugehörige Standards"
+msgstr "Related standards"
+
+#: templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/protocol-explanation.html:46
+msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
+msgstr "specific standards to which each protocol can be assigned."
+
+#: templates/TechnicalStandards/explanation.html:125
+#: templates/TechnicalStandards/protocol-explanation.html:48
+msgid "ist das Protokoll öffentlich und frei verfügbar?"
+msgstr "is the protocol public and freely available?"
+
+#: templates/TechnicalStandards/explanation.html:127
+#: templates/TechnicalStandards/protocol-explanation.html:50
+msgid "Lizenzgebühr"
+msgstr "License fee"
+
+#: templates/TechnicalStandards/explanation.html:127
+#: templates/TechnicalStandards/protocol-explanation.html:50
+msgid ""
+"ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die "
+"Zertifizierung fällig?"
+msgstr "Is there a fee to cover the costs of use and/or certification?"
+
+#: templates/TechnicalStandards/explanation.html:129
+#: templates/TechnicalStandards/protocol-detail.html:224
+#: templates/TechnicalStandards/protocol-explanation.html:52
+msgid "Netzwerktopologie"
+msgstr "network topology"
+
+#: templates/TechnicalStandards/explanation.html:129
+#: templates/TechnicalStandards/protocol-explanation.html:52
+msgid ""
+"was ist die physische und logische Anordnung von Geräten und Komponenten in "
+"einem Netzwerk?"
+msgstr ""
+"what is the physical and logical arrangement of devices and components in a "
+"network?"
+
+#: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-comparison.html:59
+#: templates/TechnicalStandards/protocol-detail.html:87
+#: templates/TechnicalStandards/protocol-explanation.html:54
+msgid "Implementierte Sicherheitsmechanismen"
+msgstr "Implemented security mechanisms"
+
+#: templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-explanation.html:54
+msgid ""
+"ob und welche Mechanismen sind im Protokoll implementiert, um die "
+"Datensicherheit zu gewährleisten?"
+msgstr ""
+"whether and what mechanisms are implemented in the protocol to ensure data "
+"security?"
+
+#: templates/TechnicalStandards/explanation.html:133
+#: templates/TechnicalStandards/protocol-comparison.html:66
+#: templates/TechnicalStandards/protocol-detail.html:93
+#: templates/TechnicalStandards/protocol-explanation.html:56
+msgid "Bandbreite"
+msgstr "Bandwidth"
+
+#: templates/TechnicalStandards/explanation.html:133
+#: templates/TechnicalStandards/protocol-explanation.html:56
+msgid ""
+"die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen "
+"Komponenten des Systems zu übertragen."
+msgstr ""
+"the capacity of the communication channel to transmit data between the "
+"various components of the system."
+
+#: templates/TechnicalStandards/explanation.html:135
+#: templates/TechnicalStandards/protocol-comparison.html:74
+#: templates/TechnicalStandards/protocol-detail.html:97
+#: templates/TechnicalStandards/protocol-explanation.html:58
+msgid "Frequenz"
+msgstr "Frequency"
+
+#: templates/TechnicalStandards/explanation.html:135
+#: templates/TechnicalStandards/protocol-explanation.html:58
+msgid ""
+"die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
+"drahtlosen Kommunikationsgeräten im System verwendet wird."
+msgstr ""
+"the frequency, wavelength, or carrier frequency used by the wireless "
+"communication devices in the system."
+
+#: templates/TechnicalStandards/explanation.html:137
+#: templates/TechnicalStandards/protocol-comparison.html:82
+#: templates/TechnicalStandards/protocol-detail.html:103
+#: templates/TechnicalStandards/protocol-explanation.html:60
+msgid "Reichweite"
+msgstr "Range"
+
+#: templates/TechnicalStandards/explanation.html:137
+#: templates/TechnicalStandards/protocol-explanation.html:60
+msgid ""
+"die maximale Entfernung, über die die Kommunikation zwischen den "
+"verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden "
+"kann, ohne dass die Signalstärke zu schwach wird."
+msgstr ""
+"the maximum distance over which communication can be maintained between the "
+"various devices and components of the system without the signal strength "
+"becoming too weak."
+
+#: templates/TechnicalStandards/explanation.html:139
+#: templates/TechnicalStandards/protocol-comparison.html:120
+#: templates/TechnicalStandards/protocol-explanation.html:62
+msgid "Implementierte OSI-Schichten"
+msgstr "Implemented OSI-layer"
+
+#: templates/TechnicalStandards/explanation.html:139
+#: templates/TechnicalStandards/protocol-explanation.html:62
+msgid ""
+"die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
+"zwischen den verschiedenen Komponenten des Systems."
+msgstr ""
+"the application of the layers of the OSI reference model for communication "
+"between the various components of the system."
+
+#: templates/TechnicalStandards/explanation.html:141
+#: templates/TechnicalStandards/protocol-comparison.html:127
+#: templates/TechnicalStandards/protocol-explanation.html:64
+msgid "Ebenen der Gebäudeautomation"
+msgstr "Levels of building automation"
+
+#: templates/TechnicalStandards/explanation.html:141
+#: templates/TechnicalStandards/protocol-explanation.html:64
+msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
+msgstr "the hierarchical structure of a building automation system."
+
+#: templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/protocol-comparison.html:91
+#: templates/TechnicalStandards/protocol-explanation.html:66
+msgid "Datenmodell Architektur"
+msgstr "Data model architecture"
+
+#: templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/protocol-explanation.html:66
+msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
+msgstr "how do you add information or attributes to an object?"
+
+#: templates/TechnicalStandards/explanation.html:145
+msgid "Discovery"
+msgstr "Discovery"
+
+#: templates/TechnicalStandards/explanation.html:145
+msgid ""
+"ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
+"Datenübertragung automatisch zu identifizieren?"
+msgstr ""
+"whether the protocol has the “discovery” function to automatically identify "
+"devices during data transfer?"
+
+#: templates/TechnicalStandards/explanation.html:147
+msgid "Multi Master"
+msgstr "Multi Master"
+
+#: templates/TechnicalStandards/explanation.html:147
+#: templates/TechnicalStandards/protocol-explanation.html:70
+msgid "können mehrere Mastergeräte zeitgleich agieren?"
+msgstr "Can several master devices act at the same time?"
+
+#: templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/protocol-comparison.html:113
+#: templates/TechnicalStandards/protocol-explanation.html:72
+msgid "Priorität"
+msgstr "Priority"
+
+#: templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/protocol-explanation.html:72
+msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
+msgstr "Procedure for how the changes or updates are made."
+
+#: templates/TechnicalStandards/explanation.html:151
+#: templates/TechnicalStandards/protocol-explanation.html:74
+msgid "Typische Anwendung"
+msgstr "Typical application"
+
+#: templates/TechnicalStandards/explanation.html:151
+#: templates/TechnicalStandards/protocol-explanation.html:74
+msgid "ggf. Beispielhafte Anwendung."
+msgstr "If applicable, exemplary application."
+
+#: templates/TechnicalStandards/explanation.html:172
+msgid "Überblick über die Protokolle"
+msgstr "Overview of protocols"
+
+#: templates/TechnicalStandards/norm-detail.html:32
+#: templates/TechnicalStandards/protocol-detail.html:50
+#: templates/common/back-button.html:4
+#: templates/datasets_over/dataset-detail.html:45
+#: templates/publications/publications-detail.html:31
+#: templates/tools_over/tool-detail.html:49
+#: templates/weatherdata_over/weatherdata-detail.html:44
+msgid "Zurück"
+msgstr "Back"
+
+#: templates/TechnicalStandards/norm-detail.html:59
+msgid "Titel"
+msgstr "Title"
+
+#: templates/TechnicalStandards/norm-detail.html:107
+#: templates/TechnicalStandards/protocol-detail.html:187
+#: templates/datasets_over/dataset-detail.html:124
+#: templates/tools_over/tool-detail.html:228
+#: templates/weatherdata_over/weatherdata-detail.html:133
+msgid "Kurzinformationen"
+msgstr "Quick information"
+
+#: templates/TechnicalStandards/norm-explanation.html:7
+msgid ""
+"Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+"          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
+"in \n"
+"          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
+"der Energiewendebauen\n"
+"          Projekte erfasst worden. Es handelt sich um deutsche, "
+"österreichische, \n"
+"          europäische oder internationale Standards und Richtlinien für die "
+"Planung, \n"
+"          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+"Warmwasser-, \n"
+"          Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen in "
+"Gebäuden. \n"
+"          Andere technische Standards, wie Schallschutz, Beleuchtung, und "
+"Gasinstallation,\n"
+"          sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+"Aspekte\n"
+"          erfasst: "
+msgstr ""
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects. "
+"These are German, Austrian, European or international standards and "
+"guidelines for the planning, construction and/or operation of ventilation, "
+"drinking water, hot water, drainage, heating, cooling and other energy "
+"systems in buildings . Other technical norms, such as soundproofing, "
+"lighting, and gas installation, are also included. The following aspects "
+"were recorded for each norm:"
+
+#: templates/TechnicalStandards/norm-explanation.html:26
+msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
+msgstr ""
+"a link through which the standard can be accessed (possibly purchased)."
+
+#: templates/TechnicalStandards/norm-listings.html:48
+#: templates/TechnicalStandards/norm-listings.html:60
+#: templates/TechnicalStandards/norm-listings.html:72
+#: templates/TechnicalStandards/protocol-listings.html:48
+#: templates/TechnicalStandards/protocol-listings.html:60
+#: templates/TechnicalStandards/protocol-listings.html:72
+#: templates/TechnicalStandards/protocol-listings.html:84
+#: templates/common/search-bar.html:9
+#: templates/datasets_over/dataset-listings.html:41
+#: templates/tools_over/tool-listings.html:45
+#: templates/weatherdata_over/data-service-listings.html:45
+msgid "Suchbegriff"
+msgstr "search term"
+
+#: templates/TechnicalStandards/protocol-comparison.html:23
+#: templates/tools_over/tool-comparison.html:23
+msgid "Ergebnisse"
+msgstr "Results"
+
+#: templates/TechnicalStandards/protocol-comparison.html:29
+msgid "Attribut"
+msgstr "Attribute"
+
+#: templates/TechnicalStandards/protocol-detail.html:81
+msgid "Spezifische Standards, denen jedes Protokoll entspricht"
+msgstr "specific standards to which each protocol can be assigned."
+
+#: templates/TechnicalStandards/protocol-detail.html:109
+msgid "Geräte (maximale Anzahl an Geräten, die vernetzt werden können)"
+msgstr "Devices (maximum number of devices that can be networked)"
+
+#: templates/TechnicalStandards/protocol-detail.html:113
+msgid ""
+"Datenmodell Architektur (Datenmodell, in dem die Informationen/Attribute zu "
+"einem Objekt hinzugefügt werden )"
+msgstr ""
+"Data model architecture (data model in which the information/attributes are "
+"added to an object)"
+
+#: templates/TechnicalStandards/protocol-detail.html:119
+msgid "Funktion, um Geräte im Netzwerk automatisch zu identifzieren"
+msgstr "Function to automatically identify devices on the network"
+
+#: templates/TechnicalStandards/protocol-detail.html:123
+msgid "Können mehrere Mastergeräte zeitgleich agieren"
+msgstr "Can several master devices act at the same time?"
+
+#: templates/TechnicalStandards/protocol-detail.html:129
+msgid ""
+"Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen "
+"werden können)"
+msgstr ""
+"Packet size (data packet size that can be transmitted according to Maximum "
+"Transmission Unit)"
+
+#: templates/TechnicalStandards/protocol-detail.html:135
+msgid ""
+"Priorität (Vorgehen, wie die Änderungen / Aktualisierungen vorgenommen "
+"werden)"
+msgstr "Priority (how the changes/updates are made)"
+
+#: templates/TechnicalStandards/protocol-detail.html:139
+msgid ""
+"Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen "
+"(Gering, Durchschnittlich, Hoch)"
+msgstr ""
+"Cost to enable hardware support for additional protocols (Low, Average, High)"
+
+#: templates/TechnicalStandards/protocol-detail.html:145
+msgid ""
+"Implementierte OSI-Schichten (Anwendung [Application], Darstellung "
+"[Presentation], Sitzung [Session], Transport [Transport], Vermittlung/Paket "
+"[Network], Sicherung [Data Link], Bitübertragung [Phyiscal])"
+msgstr ""
+"Implemented OSI layers (Application, Presentation, Session, Transport, "
+"Network/Packet, Data Link, Physical)"
+
+#: templates/TechnicalStandards/protocol-detail.html:149
+msgid ""
+"Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)"
+msgstr ""
+"Levels of building automation (field level, automation level, management "
+"level)"
+
+#: templates/TechnicalStandards/protocol-detail.html:194
+#: templates/TechnicalStandards/protocol-detail.html:214
+msgid "Übertragung"
+msgstr "Transmission"
+
+#: templates/TechnicalStandards/protocol-explanation.html:7
+msgid "Was ist Gebäudeautomation (GA; Building Automation)? "
+msgstr "What is building automation (GA; Building Automation)?"
+
+#: templates/TechnicalStandards/protocol-explanation.html:8
+msgid ""
+"Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude "
+"betrieben, \n"
+"          gesteuert und überwacht werden. Sie ist ein fortschrittliches "
+"System, das moderne \n"
+"          Technologie nutzt, um die Effizienz, den Komfort und die "
+"Sicherheit von Gebäuden \n"
+"          zu optimieren. Es integriert verschiedene Systeme wie HLK "
+"(Heizung, Lüftung, \n"
+"          Klimatechnik), Beleuchtung, Sicherheitstechnik und mehr in eine "
+"zentrale Plattform zur \n"
+"          effizienten Steuerung und Überwachung. Die Hauptvorteile von GA "
+"sind verbesserte \n"
+"          Energieeffizienz, geringere Betriebskosten, erhöhter Komfort für "
+"die Bewohner \n"
+"          und vereinfachte Wartung. Ein GA besteht in der Regel aus drei "
+"logischen Ebenen: \n"
+"          der Feldebene (Sensoren und Aktoren), der Automatisierungsebene "
+"(Steuerungen) \n"
+"          und der Managementebene (Überwachungssoftware)."
+msgstr ""
+"Building automation is revolutionizing the way buildings are operated, "
+"controlled and monitored. It is an advanced system that uses modern "
+"technology to optimize the efficiency, comfort and safety of buildings. It "
+"integrates various systems such as HVAC (heating, ventilation, air "
+"conditioning), lighting, security technology and more into a central "
+"platform for efficient control and monitoring. The main advantages of GA are "
+"improved energy efficiency, lower operating costs, increased comfort for "
+"residents and simplified maintenance. A GA usually consists of three logical "
+"levels: the field level (sensors and actuators), the automation level "
+"(controllers) and the management level (monitoring software)."
+
+#: templates/TechnicalStandards/protocol-explanation.html:20
+msgid "Warum brauchen wir Protokolle in der Gebäudeautomation?"
+msgstr "Why do we need protocols in building automation?"
+
+#: templates/TechnicalStandards/protocol-explanation.html:21
+msgid ""
+"Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
+"nahtlose \n"
+"          Kommunikation zwischen verschiedenen Geräten und Systemen "
+"innerhalb des Gebäudes \n"
+"          ermöglichen. In der Gebäudeautomation kommen oft Produkte "
+"verschiedener Hersteller \n"
+"          zum Einsatz, die möglicherweise proprietäre Kommunikationsmethoden "
+"verwenden. \n"
+"          Protokolle dienen als gemeinsame Sprache, die Interoperabilität "
+"gewährleistet \n"
+"          und Datensilos vermeidet. Gerade der umfängliche Datenaustausch in "
+"Echtzeit ermöglicht\n"
+"          schnelle Reaktionen auf veränderte Bedingungen und kann damit die "
+"Gesamteffizienz des Systems verbessern."
+msgstr ""
+"Protocols are essential in building automation because they enable seamless "
+"communication between different devices and systems within the building. "
+"Building automation often uses products from different manufacturers that "
+"may use proprietary communication methods. Protocols serve as a common "
+"language that ensures interoperability and avoids data silos. Extensive data "
+"exchange in real time in particular enables rapid reactions to changing "
+"conditions and can therefore Improve overall system efficiency."
+
+#: templates/TechnicalStandards/protocol-explanation.html:30
+msgid ""
+"Auf dieser Seite sind verschiedenen Protokolle,\n"
+"          die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
+"Diese sind durch Recherche in der entsprechenden Fachliteratur, in\n"
+"          Dokumentationen von Hard- und Software, und in Unterlagen aus den "
+"Forschungsprojekten der Energiewendebauen\n"
+"           zusammengetragen worden. Wir haben 12 häufig verwendete und "
+"moderne Protokolle ausgewählt und für diese die\n"
+"           folgenden Eigenschaften zusammengefasst:"
+msgstr ""
+"Various protocols that were recorded in summer 2023 are described in detail "
+"on the page. These were compiled through research in the relevant specialist "
+"literature, in documentation of hardware and software, and in documents from "
+"energy transition building research projects. We have selected 12 commonly "
+"used and modern protocols and summarized the following characteristics for "
+"them:"
+
+#: templates/TechnicalStandards/protocol-explanation.html:41
+msgid ""
+"wie werden Daten zwischen den \n"
+"              verschiedenen Komponenten und Geräten innerhalb des Systems "
+"übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
+msgstr ""
+"How is data transferred between the various components and devices within "
+"the system (wired, wireless or wired & wireless)?"
+
+#: templates/TechnicalStandards/protocol-explanation.html:68
+msgid ""
+"ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
+"Datenübertragungautomatisch zu identifizieren?"
+msgstr ""
+"whether the protocol has the “discovery” function to automatically identify "
+"devices during data transfer?"
+
+#: templates/TechnicalStandards/protocol-listings.html:97
+#: templates/TechnicalStandards/protocol-listings.html:105
+#: templates/tools_over/tool-listings.html:91
+#: templates/tools_over/tool-listings.html:99
+msgid "Vergleiche"
+msgstr "Compare"
+
+#: templates/TechnicalStandards/protocol-listings.html:111
+#: templates/tools_over/tool-listings.html:105
+msgid "Zurücksetzen"
+msgstr "Reset to default"
+
+#: templates/admin/publications/import_bibtex.html:8
+msgid "Home"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:9
+#: templates/admin/publications/import_bibtex.html:10
+msgid "Publications"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:11
+#: templates/admin/publications/publication_change_list.html:7
+msgid "Import BibTex"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:22
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:32
+msgid "Bibliography"
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:34
+msgid "Required keys: title, author and year."
+msgstr ""
+
+#: templates/admin/publications/import_bibtex.html:39
+msgid "Import"
+msgstr ""
+
+#: templates/datasets_over/dataset-detail.html:66
+#: templates/tools_over/tool-detail.html:73
+#: templates/weatherdata_over/weatherdata-detail.html:73
+msgid "Was ist"
+msgstr "What is"
+
+#: templates/datasets_over/dataset-detail.html:70
+#: templates/datasets_over/explanation.html:34
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Anwendungsbereich"
+msgstr "Applications"
+
+#: templates/datasets_over/dataset-detail.html:74
+msgid "Geographische Abdeckung"
+msgstr "Geographic coverage"
+
+#: templates/datasets_over/dataset-detail.html:78
+msgid "Auflösung"
+msgstr "Resolution"
+
+#: templates/datasets_over/dataset-detail.html:86
+#: templates/weatherdata_over/weatherdata-detail.html:89
+msgid "Weitere Informationen"
+msgstr "Further information"
+
+#: templates/datasets_over/dataset-detail.html:141
+msgid "Datensatz"
+msgstr "Dataset"
+
+#: templates/datasets_over/dataset-listings-results.html:55
+msgid "Abdeckung"
+msgstr "Covering"
+
+#: templates/datasets_over/dataset-listings.html:3
+#: templates/datasets_over/dataset-listings.html:20
+msgid "Überblick über Datensätze"
+msgstr "Overview of datasets"
+
+#: templates/datasets_over/explanation.html:13
+msgid ""
+"Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie "
+"den Zugang zu Informationen und die\n"
+"          Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch "
+"die Bereitstellung von offenen Daten tragen\n"
+"          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."
+msgstr ""
+"Open data plays a crucial role in the energy transition as it enables access "
+"to information and collaboration between different actors. By providing open "
+"data, companies, researchers and administration also contribute to "
+"transparency."
+
+#: templates/datasets_over/explanation.html:17
+msgid ""
+"Diese hilft dabei fundierte Entscheidungen treffen und innovative Lösungen "
+"entwickeln. Beispielhaft hierfür\n"
+"          ist die Nutzung von Gebäudealter und Sanierungsjahren zur "
+"Berechnung des Energiebedarfs in Gebäuden.\n"
+"          Somit hilft die Offenlegung von Daten beispielsweise dabei, "
+"erneuerbare Energie in Strom- und Wärmenetze zu\n"
+"          integrieren.\n"
+"          Durch die Kombination von offenen Energie- und Wetterdaten können "
+"bspw. Prognosemodelle für die erneuerbare\n"
+"          Energieerzeugung verbessert und die Stabilität des Netzes erhöht "
+"werden."
+msgstr ""
+"This helps make informed decisions and develop innovative solutions. An "
+"example of this is the use of building age and renovation years to calculate "
+"the energy requirements in buildings. The disclosure of data helps, for "
+"example, to integrate renewable energy into electricity and heating "
+"networks. By combining open energy and weather data, forecast models for "
+"renewable energy production can be improved and the stability of the network "
+"can be increased."
+
+#: templates/datasets_over/explanation.html:24
+msgid ""
+"Die hier dargestellten Datensätze sind durch die Begleitforschung durch "
+"verschiedene Maßnahmen erfasst worden,\n"
+"          unter anderem dem Fragebogen 2021, Interviews mit Projekten oder "
+"eigene Recherchen."
+msgstr ""
+"The data sets presented here were collected through accompanying research "
+"using various measures, including the 2021 questionnaire, interviews with "
+"projects or our own research."
+
+#: templates/datasets_over/explanation.html:27
+msgid ""
+"Eine Einordnung unsererseits erfolgt zunächst über öffentlich zugängliche "
+"Informationen."
+msgstr ""
+"Our classification is initially based on publicly available information."
+
+#: templates/datasets_over/explanation.html:29
+msgid "Dabei berücksichtigen wir die folgenden Aspekte:"
+msgstr "We take the following aspects into account:"
+
+#: templates/datasets_over/explanation.html:32
+msgid "Kategorie Anwendungsfall"
+msgstr "Use case category"
+
+#: templates/datasets_over/explanation.html:32
+msgid ""
+"Welcher Kategorie kann das Datenset zugeordnet\n"
+"            werden."
+msgstr "Which category can the data set be assigned to?"
+
+#: templates/datasets_over/explanation.html:34
+msgid ""
+"Typischer Anwendungsbereich bei dem das Datenset zum\n"
+"            Einsatz kommt. Ein Anwendungsbereich beschreibt alle möglichen "
+"Methoden und Datensätze mit denen ein\n"
+"            bestimmter Zweck erreicht werden kann."
+msgstr ""
+"Typical application area in which the data set is used. An application area "
+"describes all possible methods and data sets that can be used to achieve a "
+"specific purpose."
+
+#: templates/datasets_over/explanation.html:37
+msgid ""
+"Unter welcher Lizenz sind die Daten verfügbar? Sind diese\n"
+"            kostenlos oder kostenpflichtig?"
+msgstr "Under what license is the data available? Are these free or paid?"
+
+#: templates/datasets_over/explanation.html:41
+msgid "Weiterführende Informationen"
+msgstr "Additional information"
+
+#: templates/datasets_over/explanation.html:46
+msgid ""
+"Die Plattform bietet umfangreiche Daten zu Stromerzeugung, -verbrauch und -"
+"übertragung in verschiedenen\n"
+"          Ländern."
+msgstr ""
+"The platform provides extensive data on electricity generation, consumption "
+"and transmission in different countries."
+
+#: templates/datasets_over/explanation.html:53
+msgid ""
+"OpenEI ist eine Plattform, die umfassende Informationen zu erneuerbaren "
+"Energien weltweit bereitstellt.\n"
+"          Forschende können auf Daten zu erneuerbaren Energieressourcen, "
+"Technologien, politischen Rahmenbedingungen und\n"
+"          Marktdaten zugreifen, um ihre Forschung und Analyse zu "
+"unterstützen."
+msgstr ""
+"OpenEI is a platform that provides comprehensive information on renewable "
+"energy worldwide. Researchers can access data on renewable energy resources, "
+"technologies, policy frameworks and market data to support their research "
+"and analysis."
+
+#: templates/datasets_over/explanation.html:60
+msgid ""
+"Die Openenergy Platform hat zum Ziel die Modellierung des Energiesystems\n"
+"          transparent zu machen. Hierzu werden Informationen und digitale "
+"Werkzeuge rund um das\n"
+"          Thema Energie gesammelt."
+msgstr ""
+"The Openenergy Platform aims to make the modeling of the energy system "
+"transparent. For this purpose, information and digital tools on the topic of "
+"energy are collected."
+
+#: templates/norms_over/explanation.html:7
+#, fuzzy
+#| msgid ""
+#| "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+#| "          die im Herbst 2022 erfasst worden sind. Diese sind durch "
+#| "Recherche in \n"
+#| "          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
+#| "der Energiewendebauen\n"
+#| "          Projekte erfasst worden. Es handelt sich um deutsche, "
+#| "österreichische, \n"
+#| "          europäische oder internationale Standards und Richtlinien für "
+#| "die Planung, \n"
+#| "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+#| "Warmwasser-, \n"
+#| "          Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
+#| "in Gebäuden. \n"
+#| "          Andere technische Standards, wie Schallschutz, Beleuchtung, und "
+#| "Gasinstallation,\n"
+#| "          sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+#| "Aspekte\n"
+#| "          erfasst: "
+msgid ""
+"Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+"          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
+"in \n"
+"          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
+"der Energiewendebauen\n"
+"          Projekte erfasst worden. Es handelt sich um deutsche, "
+"österreichische, \n"
+"          europäische oder internationale Standard und Richtlinien für die "
+"Planung, \n"
+"          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+"Warmwasser-, \n"
+"          Entwässerungs-, Heizung-, Kühl-, und sonstige Energiesystemen in "
+"Gebäuden. \n"
+"          Anderen technische, wie Schallschutz, Beleuchtung, und "
+"Gasinstallation,\n"
+"          sind ebenfalls enthalten. Für jede Norm wurde die folgenden "
+"Aspekte\n"
+"          erfasst: "
+msgstr ""
+"On this page you will find different technical norms, which were recorded in "
+"autumn 2022. These were recorded through research in software catalogs, "
+"standards databases and in energy transition building research projects. "
+"These are German, Austrian, European or international standards and "
+"guidelines for the planning, construction and/or operation of ventilation, "
+"drinking water, hot water, drainage, heating, cooling and other energy "
+"systems in buildings . Other technical norms, such as soundproofing, "
+"lighting, and gas installation, are also included. The following aspects "
+"were recorded for each norm:"
+
+#: templates/norms_over/explanation.html:22
+#: templates/tools_over/explanationApps.html:28
+#: templates/tools_over/explanationTools.html:28
+#: templates/weatherdata_over/explanation.html:24
+msgid "Um was handelt es sich?"
+msgstr "What is it about?"
+
+#: templates/pages/Datenschutzhinweis.html:17
+#, fuzzy
+#| msgid "Datenschutz&shy;hinweis"
+msgid "Datenschutzhinweis"
+msgstr "Data protection notice"
+
+#: templates/pages/Datenschutzhinweis.html:33
+msgid ""
+"Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
+"persönlichen Daten von Besucher*innen unserer \n"
+"          Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier über "
+"den Datenschutz dieses Webangebots unter wissen-digital-ewb.de\n"
+"          informieren. Die Website wird durch das Institut für Digitale "
+"Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
+"          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
+msgstr ""
+"Thank you for your interest in the knowledge platform. The protection of the "
+"personal data of visitors to our websites is very important to us. We would "
+"therefore like to inform you here about the data protection of this website "
+"atwissen-digital-ewb.de. The website is operated by the Institute for "
+"Digital Networking of Buildings, Energy Supply Systems and Users at the TU "
+"Berlin. Hereafter abbreviated as DVG."
+
+#: templates/pages/Datenschutzhinweis.html:39
+msgid "Gegenstand des Datenschutzes"
+msgstr "Subject of data protection"
+
+#: templates/pages/Datenschutzhinweis.html:40
+msgid ""
+"Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
+"Artikel 4 Nr. 1 der Europäischen \n"
+"          Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die sich "
+"auf eine identifizierte oder identifizierbare natürliche \n"
+"          Person beziehen, also alle Informationen, die dazu genutzt werden "
+"können, Sie zu identifizieren. Hierunter fallen z.B. \n"
+"          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
+"Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
+msgstr ""
+"Data protection deals with personal data. According to Article 4 No. 1 of "
+"the European General Data Protection Regulation (EU-GDPR), this is all "
+"information that relates to an identified or identifiable natural person, i."
+"e. all information that can be used to identify you. This includes, for "
+"example, information such as name, private address, email address or "
+"telephone number, but also usage data such as your IP address."
+
+#: templates/pages/Datenschutzhinweis.html:45
+msgid ""
+"Selbstverständlich beachtet die Technische Universität Berlin die "
+"gesetzlichen Bestimmungen zum Datenschutz und \n"
+"          andere rechtliche Bestimmungen und Vorgaben."
+msgstr ""
+"Of course, the Technical University of Berlin observes the legal provisions "
+"on data protection and other legal regulations and requirements."
+
+#: templates/pages/Datenschutzhinweis.html:48
+msgid ""
+"Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten "
+"vertrauen können. So erfolgt die Übertragung \n"
+"          personenbezogener und sensibler Daten verschlüsselt. Zusätzlich "
+"sind unsere Webseiten durch technische Maßnahmen gegen \n"
+"          Beschädigungen oder unberechtigten Zugriff geschützt."
+msgstr ""
+"We do everything we can to ensure that you can trust us with your personal "
+"information. The transmission of personal and sensitive data is encrypted. "
+"In addition, our websites are protected by technical measures against damage "
+"or unauthorized access."
+
+#: templates/pages/Datenschutzhinweis.html:53
+msgid "Allgemeiner Datenschutzhinweis"
+msgstr "General data protection notice"
+
+#: templates/pages/Datenschutzhinweis.html:57
+msgid ""
+"Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
+"herunterladen, werden Informationen hierüber in einer Logdatei \n"
+"              mit folgendem Inhalt gespeichert:"
+msgstr ""
+"If you access TU Berlin websites or download data from these pages, "
+"information about this will be stored in a log file with the following "
+"content:"
+
+#: templates/pages/Datenschutzhinweis.html:63
+msgid "die IP-Adresse Ihres Gerätes,"
+msgstr "the IP address of your device,"
+
+#: templates/pages/Datenschutzhinweis.html:68
+msgid "das Datum und die Uhrzeit des Seitenaufrufs,"
+msgstr "the date and time of the page view,"
+
+#: templates/pages/Datenschutzhinweis.html:73
+msgid "die aufgerufene Seite bzw. der Name der abgerufenen Datei,"
+msgstr "the page accessed or the name of the file accessed,"
+
+#: templates/pages/Datenschutzhinweis.html:78
+msgid "die übertragene Datenmenge,"
+msgstr "the amount of data transferred,"
+
+#: templates/pages/Datenschutzhinweis.html:83
+msgid "der \\"
+msgstr ""
+
+#: templates/pages/Datenschutzhinweis.html:88
+msgid ""
+"die Webseite, von der aus Sie die aktuelle Seite oder Datei aufgerufen haben"
+msgstr "the website from which you accessed the current page or file"
+
+#: templates/pages/Datenschutzhinweis.html:93
+msgid "und die Statusmeldung, ob der Zugriff bzw. Abruf erfolgreich war."
+msgstr ""
+"and the status message as to whether the access or retrieval was successful."
+
+#: templates/pages/Datenschutzhinweis.html:98
+msgid ""
+"Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch "
+"gelöscht, nicht archiviert und ausschließlich zu nicht \n"
+"              kommerziellen Zwecken genutzt. Sie werden nur im Bedarfsfall "
+"manuell eingesehen und zur Fehleranalyse, Optimierung oder \n"
+"              Untersuchung von Missbrauchsfällen oder Performance-Engpässen "
+"benötigt. Dies stellt ein berechtigtes Interesse im Sinne von Art. \n"
+"              6 Abs. 1 lit. f EU-DSGVO dar. Ein Widerspruchsrecht nach Art. "
+"21 EU-DSGVO ist nicht möglich aufgrund fehlender technischer \n"
+"              Realisierbarkeit."
+msgstr ""
+"These non-anonymized log data are automatically deleted after two weeks, are "
+"not archived and are used exclusively for non-commercial purposes. They are "
+"only viewed manually when necessary and are required for error analysis, "
+"optimization or investigation of cases of misuse or performance bottlenecks. "
+"This represents a legitimate interest within the meaning of Article 6 "
+"Paragraph 1 Letter f EU GDPR. A right to object according to Article 21 EU "
+"GDPR is not possible due to a lack of technical feasibility."
+
+#: templates/pages/Datenschutzhinweis.html:107
+msgid ""
+"Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche "
+"Übertragung von Daten SSL-Verschlüsselung. Sie \n"
+"              erkennen derart verschlüsselte Verbindungen an dem Präfix "
+"“https://“ im Seitenlink in der Adresszeile bzw. durch das \n"
+"              grüne/geschlossene Schlosssymbol Ihres Browsers. "
+"Unverschlüsselte Seite sind durch “http://“ oder ein offenes bzw. \n"
+"              rotes Schlosssymbol gekennzeichnet. Sämtliche Daten, welche "
+"Sie an diese Website übermitteln – etwa bei Anfragen oder \n"
+"              Logins – können dank SSL-Verschlüsselung nicht von Dritten "
+"gelesen werden."
+msgstr ""
+"In order to best protect your transmitted data, we use SSL encryption for "
+"all data transmission. You can recognize such encrypted connections by the "
+"prefix \"https://\" in the page link in the address bar or by the green/"
+"closed lock symbol in your browser. Unencrypted pages are identified by "
+"\"http://\" or an open or red lock symbol. All data that you transmit to "
+"this website - such as inquiries or logins - cannot be read by third parties "
+"thanks to SSL encryption."
+
+#: templates/pages/Datenschutzhinweis.html:116
+msgid "Social-Media-Drittanbieter"
+msgstr "Third Party Social Media Providers"
+
+#: templates/pages/Datenschutzhinweis.html:117
+msgid "Social-Media-Links"
+msgstr "Social media links"
+
+#: templates/pages/Datenschutzhinweis.html:119
+msgid ""
+"Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. "
+"Profile von sozialen Netzwerken der nachstehend \n"
+"          aufgeführten Drittanbieter bzw. bieten die Möglichkeit zum Teilen "
+"unseres Webangebotes in den sozialen Netzwerken der nachstehend \n"
+"          aufgeführten Drittanbieter. Die Einbindung erfolgt dabei über eine "
+"verlinkte Grafik des jeweiligen Netzwerks, wodurch verhindert \n"
+"          wird, dass es beim Aufruf unserer Webseiten mit einem solchen "
+"Social-Media-Inhalt automatisch zu einem Verbindungsaufbau zum \n"
+"          jeweiligen Server des sozialen Netzwerks kommt, um z.B. einen "
+"Beitrag des jeweiligen Netzwerkes selbst darzustellen. Erst durch \n"
+"          Ihren aktiven Klick auf die entsprechende Grafik werden Sie zu dem "
+"Dienst des jeweiligen sozialen Netzwerks geleitet. Die \n"
+"          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO."
+msgstr ""
+"On our websites we refer to TU Berlin-specific presences or social network "
+"profiles of the third-party providers listed below or offer the option of "
+"sharing our web offerings in the social networks of the third-party "
+"providers listed below. The integration takes place via a linked graphic of "
+"the respective network, which prevents a connection to the respective server "
+"of the social network from being automatically established when our websites "
+"with such social media content are accessed, for example to view a post from "
+"the respective network itself to represent. Only when you actively click on "
+"the corresponding graphic will you be directed to the service of the "
+"respective social network. The legal basis is Article 6 Paragraph 1 Letter a "
+"EU GDPR."
+
+#: templates/pages/Datenschutzhinweis.html:128
+msgid ""
+"Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie "
+"erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres \n"
+"          Endgeräts, Datum, Uhrzeit und besuchte Seite. Es kann nicht "
+"ausgeschlossen werden, dass eine Verarbeitung der so erhobenen Daten in \n"
+"          den USA stattfindet. Sind Sie währenddessen mit Ihrem "
+"Benutzerkonto des jeweiligen Netzwerks eingeloggt, kann der Netzwerk-"
+"Betreiber \n"
+"          ggf. die gesammelten Informationen Ihres konkreten Besuchs Ihrem "
+"persönlichen Account zuordnen. Interagierten Sie über einen \n"
+"          „Teilen“-Button des jeweiligen Netzwerks, können diese "
+"Informationen in Ihrem Benutzerkonto gespeichert und ggf. veröffentlicht \n"
+"          werden. Wollen Sie verhindern, dass die gesammelten Informationen "
+"unmittelbar Ihrem Benutzerkonto zugeordnet werden, müssen Sie \n"
+"          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die "
+"Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren."
+msgstr ""
+"The respective network then collects information about you. This initially "
+"includes data such as the IP address of your device, date, time and page "
+"visited. It cannot be ruled out that the data collected in this way will be "
+"processed in the USA. If you are logged in with your user account for the "
+"respective network, the network operator may be able to assign the "
+"information collected from your specific visit to your personal account. If "
+"you interact using a \"Share\" button on the respective network, this "
+"information can be saved in your user account and, if necessary, published. "
+"If you want to prevent the collected information from being directly "
+"assigned to your user account, you must log out before clicking on the "
+"graphic. It is also possible to configure your user accounts accordingly."
+
+#: templates/pages/Datenschutzhinweis.html:137
+msgid ""
+"Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein "
+"Tochterunternehmen der Google LLC, 1600 Amphitheatre \n"
+"          Parkway, Mountain View, CA 94043 USA"
+msgstr ""
+"Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, a "
+"subsidiary of Google LLC, 1600 Amphitheater Parkway, Mountain View, CA 94043 "
+"USA"
+
+#: templates/pages/Datenschutzhinweis.html:139
+msgid "Datenschutzerklärung:"
+msgstr "Data protection:"
+
+#: templates/pages/Datenschutzhinweis.html:143
+msgid ""
+"Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein "
+"Plugin zur Einbindung von YouTube-Videos. \n"
+"          Anbieter des Videoportals ist die YouTube, LLC, 901 Cherry Ave., "
+"San Bruno, CA 94066, USA.\n"
+"          Beim Aufruf einer Seite mit integriertem YouTube-Plugin wird nicht "
+"sofort eine Verbindung zu den Servern von YouTube hergestellt. \n"
+"          Statt dessen wird ein lokales Bild (\"Thumbnail\") zur Ankündigung "
+"des Videos geladen und auf YouTube als Drittanbieter hingewiesen. \n"
+"          Nutzer*innen müssen aktiv das YouTube-Video starten. Erst dann "
+"erfährt hierbei YouTube die IP-Adresse Ihres Endgerätes und die Seite mit \n"
+"          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie "
+"nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen."
+msgstr ""
+"To display video content, our website uses, among other things, a plugin to "
+"integrate YouTube videos. The provider of the video portal is YouTube, LLC, "
+"901 Cherry Ave., San Bruno, CA 94066, USA. When you access a page with an "
+"integrated YouTube plugin, a connection to the YouTube servers is not "
+"immediately established. Instead, a local image (\"thumbnail\") is loaded to "
+"announce the video and points to YouTube as a third-party provider. Users "
+"must actively start the YouTube video. Only then will YouTube find out the "
+"IP address of your device and the page with the YouTube video that you have "
+"just accessed, even if you are not logged in to the video portal or do not "
+"have an account there."
+
+#: templates/pages/Datenschutzhinweis.html:151
+msgid ""
+"YouTube kann Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen, "
+"sollten Sie in Ihrem YouTube Konto eingeloggt sein. Durch vorheriges "
+"Ausloggen haben Sie die Möglichkeit, dies zu unterbinden."
+msgstr ""
+"YouTube can assign your surfing behavior directly to your personal profile "
+"if you are logged into your YouTube account. You can prevent this by logging "
+"out beforehand."
+
+#: templates/pages/Datenschutzhinweis.html:154
+msgid ""
+"Die Nutzung von YouTube erfolgt erst mit Ihrer Zustimmung durch Ihren "
+"aktiven Start des Videos im Sinne von Art. 6 Abs. 1 lit. a EU-DSGVO."
+msgstr ""
+"The use of YouTube only takes place with your consent by actively starting "
+"the video within the meaning of Art. 6 Para. 1 lit. a EU GDPR."
+
+#: templates/pages/Datenschutzhinweis.html:157
+msgid ""
+"Einzelheiten zum Umgang mit Nutzerdaten finden Sie in der "
+"Datenschutzerklärung von YouTube unter:"
+msgstr ""
+"Details on how to handle user data can be found in YouTube's privacy policy "
+"at:"
+
+#: templates/pages/Datenschutzhinweis.html:161
+msgid "Ort der Speicherung und zweckgebundene Datenverwendung"
+msgstr "Location of storage and intended use of data"
+
+#: templates/pages/Datenschutzhinweis.html:163
+msgid ""
+"Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten "
+"ausschließlich intern (i.d.R. auf eigenen Servern) nur für den \n"
+"          Zweck, für den Sie sie uns mitgeteilt haben und beachten damit den "
+"Grundsatz der zweckgebundenen Datenverwendung. Es erfolgt ohne \n"
+"          Ihre ausdrückliche Einwilligung keine Weitergabe Ihrer "
+"persönlichen Daten an Dritte, sofern dies nicht zur Erbringung der \n"
+"          Dienstleistung oder zur Vertragsdurchführung notwendig ist. Auch "
+"die Übermittlung an auskunftsverlangende staatliche Institutionen \n"
+"          und Behörden erfolgt nur im Rahmen der gesetzlichen "
+"Auskunftspflichten bzw. wenn wir durch eine gerichtliche Entscheidung zur \n"
+"          Auskunft verpflichtet werden."
+msgstr ""
+"We collect, process and store your personal data exclusively internally "
+"(usually on our own servers) only for the purpose for which you provided it "
+"to us and thus observe the principle of appropriate data use. Your personal "
+"data will not be passed on to third parties without your express consent, "
+"unless this is necessary to provide the service or to execute the contract. "
+"The transmission to government institutions and authorities requesting "
+"information only takes place within the scope of the statutory information "
+"obligations or if we are obliged to provide information by a court decision."
+
+#: templates/pages/Datenschutzhinweis.html:171
+msgid ""
+"Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere "
+"Mitarbeiter und Mitarbeiterinnen sowie die von uns \n"
+"          beauftragten Dienstleistungsunternehmen sind von uns zur "
+"Verschwiegenheit und zur Einhaltung der datenschutzrechtlichen "
+"Bestimmungen \n"
+"          verpflichtet."
+msgstr ""
+"We also take internal university data protection very seriously. Our "
+"employees and those of usWe require the service companies we commission to "
+"maintain confidentiality and compliance with data protection lawsregulations "
+"obligated."
+
+#: templates/pages/Datenschutzhinweis.html:176
+msgid "Auskunftsrecht"
+msgstr "Right of information"
+
+#: templates/pages/Datenschutzhinweis.html:177
+msgid ""
+"Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre "
+"bei uns gespeicherten Daten. Hierzu \n"
+"          wenden Sie sich bitte an die im Impressum angegebene "
+"Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu unseren \n"
+"          Datenschutzhinweisen zur Verfügung."
+msgstr ""
+"You will receive information about your data stored by us free of charge at "
+"any time without giving any reason. For thisPlease contact the contact "
+"address given in the legal notice. We would be happy to answer any further "
+"questions you may have about our data protection information."
+
+#: templates/pages/Datenschutzhinweis.html:183
+msgid ""
+"Darüber hinaus haben Sie das Recht auf Berichtigung, Löschung, Einschränkung "
+"und Übertragung Ihrer Daten."
+msgstr ""
+"In addition, you have the right to correct, delete, restrict and transfer "
+"your data."
+
+#: templates/pages/Datenschutzhinweis.html:186
+msgid ""
+"Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
+"betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. \n"
+"          1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. Die "
+"fachverantwortliche Stelle darf danach die Sie betreffenden \n"
+"          personenbezogenen Daten nicht mehr verarbeiten, es sei denn, diese "
+"kann zwingende schutzwürdige Gründe für die Verarbeitung \n"
+"          nachweisen, die Ihren Interessen, Rechte und Freiheiten "
+"überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
+"          Verteidigung von Rechtsansprüchen dient."
+msgstr ""
+"You also have the right to object at any time to the processing of your "
+"personal data, which is carried out on the basis of Article 6 Paragraph 1 "
+"Letters e and f EU GDPR. The responsible body may no longer process the "
+"personal data concerning you unless it can demonstrate compelling legitimate "
+"reasons for the processing that outweigh your interests, rights and "
+"freedoms, or the processing serves to assert, exercise or defend legal "
+"claims."
+
+#: templates/pages/Datenschutzhinweis.html:193
+msgid "Beschwerderecht"
+msgstr "Right of appeal"
+
+#: templates/pages/Datenschutzhinweis.html:195
+msgid ""
+"Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
+"datenschutzgerecht umgehen, können Sie sich jederzeit an das \n"
+"          Team Datenschutz der Technischen Universität Berlin oder an die "
+"Aufsichtsbehörde wenden."
+msgstr ""
+"If you see any indications that we are not handling your data in accordance "
+"with data protection regulations, you can contact the data protection team "
+"at the Technical University of Berlin or the supervisory authority at any "
+"time."
+
+#: templates/pages/Datenschutzhinweis.html:199
+msgid ""
+"Natürlich steht Ihnen auch das Recht zu, sich an die Aufsichtsbehörde zu "
+"wenden:"
+msgstr ""
+"Of course, you also have the right to contact the supervisory authority:"
+
+#: templates/pages/Datenschutzhinweis.html:202
+msgid "Berliner Beauftragte für Datenschutz und Informationsfreiheit"
+msgstr "Berlin Commissioner for Data Protection and Freedom of Information"
+
+#: templates/pages/Datenschutzhinweis.html:208
+msgid "Tel."
+msgstr "Phone"
+
+#: templates/pages/Datenschutzhinweis.html:210
+msgid "Fax"
+msgstr "Fax"
+
+#: templates/pages/Datenschutzhinweis.html:215
+msgid "Abschließende Hinweise"
+msgstr "Final Notes"
+
+#: templates/pages/Datenschutzhinweis.html:217
+msgid ""
+"Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
+"Datenschutz laufend ändern können, so dass es erforderlich ist, \n"
+"          sich über Veränderungen der gesetzlichen Bestimmungen und der "
+"Praxis von Unternehmen fortlaufend zu informieren."
+msgstr ""
+"Please note that data protection regulations and data protection practices "
+"can change continuously, so it is necessary to stay abreast of changes in "
+"legal regulations and theContinuously inform company practices."
+
+#: templates/pages/about.html:17
+msgid "Wissensplattform"
+msgstr "Knowledge platform"
+
+#: templates/pages/about.html:18
+msgid "Eine Plattform der Begleitforschung Energiewendebauen"
+msgstr "A platform for accompanying research on the energy transition"
+
+#: templates/pages/about.html:30
+msgid ""
+"Die Wissensplattform wird durch das Modul\n"
+"          Digitalisierung der wissenschaftlichen Begleitforschung der\n"
+"          Forschungsinitiative\n"
+"          <a href=\"https://www.energiewendebauen.de\" "
+"target=\"_blank\">Energiewendebauen</a>\n"
+"          entwickelt und bereitgestellt."
+msgstr ""
+"The knowledge platform is developed and provided by the digitalization "
+"module of the accompanying scientific research of the research initiative <a "
+"href=\"https://www.energiewendebauen.de\" target=\"_blank\">Energy "
+"Transition Building</a>."
+
+#: templates/pages/about.html:36
+msgid ""
+"Die wissenschaftliche Begleitforschung wertet Arbeitsprogramme und\n"
+"          Ergebnisse der Forschungs- und Demonstrationsvorhaben aus die im "
+"Rahmen der \n"
+"          Forschungsinitiative Energiewendebauen vom Bundesministerium für "
+"Wirtschaft und Klimaschutz\n"
+"          geförderten werden. Ziel ist es diese Ergebnisse zentral "
+"aufzubereiten, um die Erkenntnisse \n"
+"          in die Planungs- und Entscheidungspraxis nachhaltig einfließen zu "
+"lassen."
+msgstr ""
+"The accompanying scientific research evaluates work programs and results of "
+"the research and demonstration projects that are funded by the Federal "
+"Ministry for Economic Affairs and Climate Protection as part of the Energy "
+"Transition Building research initiative. The aim is to process these results "
+"centrally in order to incorporate the findings sustainably into planning and "
+"decision-making practice."
+
+#: templates/pages/about.html:42
+msgid ""
+"Die Querauswertung der Forschungsprojekte, die\n"
+"          Bereitstellung von Fachinformationen, der Transfer von\n"
+"          Forschungsergebnissen in die Praxis und die breite Kommunikation "
+"von\n"
+"          Lösungsansätzen sind wesentliche Elemente, um die "
+"Dekarabonisierung von \n"
+"          Gebäuden und Quartieren zu erreichen. Diese Leistungen werden "
+"durch \n"
+"          die Begleitforschung erbracht."
+msgstr ""
+"The cross-evaluation of research projects, the provision of specialist "
+"information, the transfer of research results into practice and the broad "
+"communication of solution approaches are essential elements in achieving the "
+"decarbonization of buildings and neighborhoods. These services are provided "
+"through accompanying research."
+
+#: templates/pages/about.html:49
+msgid ""
+"Insgesamt fünf Module werten die inhaltlichen\n"
+"          Schwerpunkte der Forschungsinitiative Energiewendebauen aus,\n"
+"          vernetzen diese und entwickeln sie weiter (Modul 1: Monitoring "
+"und\n"
+"          Dokumentation, Modul 2: Gebäude, Modul 3: Quartiere, Modul 4:\n"
+"          Digitalisierung, Modul 5: Vernetzung und Kommunikation)."
+msgstr ""
+"A total of five modules evaluate the focus of the contentEnergy Transition "
+"Building Research Initiative, network them and develop them further (Module "
+"1: Monitoring and Documentation, Module 2: Buildings, Module3: "
+"Neighborhoods, Module 4: Digitalization, Module 5: Networking and "
+"Communication)"
+
+#: templates/pages/about.html:55
+msgid ""
+"Das Modul 4 (Digitalisierung) wird von der TU Berlin\n"
+"          mit der\n"
+"          <a href=\"https://ewb.innoecos.com/Group/Einstein.Center.Digital."
+"Future\" target=\"_blank\">\n"
+"            Einstein Center Digital Future Professur\n"
+"          </a>\n"
+"          für die digitale Vernetzung von Gebäuden,\n"
+"          Energieversorgungsanlagen und Nutzenden zusammen mit der\n"
+"          <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College."
+"Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">\n"
+"            Universität der Künste Berlin und der Einstein Center Digital\n"
+"            Future Professur Digitale Selbstbestimmung\n"
+"          </a>\n"
+"          und dem\n"
+"          <a href=\"https://ewb.innoecos.com/Group/IOeW/\" "
+"target=\"_blank\">\n"
+"            Institut für ökologische Wirtschaftsforschung\n"
+"          </a>\n"
+"          bearbeitet."
+msgstr ""
+"Module 4 (digitalization) is provided by the TU Berlin with the <a "
+"href=\"https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future\" "
+"target=\"_blank\">Einstein Center Digital Future Professorship</a> for the "
+"digital networking of buildings,Energy supply systems and users together "
+"with the <a href=\"https://ewb.innoecos.com/Group/Berlin.Career.College. "
+"Zentralinstitut.fuer.Weiterbildung.ZIW\" target=\"_blank\">University of the "
+"Arts Berlin and the Einstein Center Digital Future Professorship for Digital "
+"Self-Determination</a>and the<a href=\"https://ewb.innoecos.com/Group/"
+"IOeWtarget=\"_blank\">Institute for Ecological Economic Research</a> edited."
+
+#: templates/pages/benchmarkingChallenges.html:32
+msgid ""
+"Die Bewertung der positiven und negativen Umweltwirkungen ist nicht\n"
+"          immer einfach. Hier soll auf Herausforderungen bei der "
+"ökologischen\n"
+"          Bewertung digitaler Anwendungen hingewiesen werden, die sich "
+"häufig in\n"
+"          der Praxis ergeben. Dazu sind Erfahrungen hinsichtlich der\n"
+"          Herausforderungen im Folgenden in die Themenbereiche "
+"„Benchmarking“,\n"
+"          „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ "
+"untergliedert."
+msgstr ""
+"Assessing the positive and negative environmental impacts is not always "
+"straigthtforward. This section highlights challenges in the ecological "
+"assessment of digital applications that often arise in practice. These "
+"challenges are divided into the following thematic areas: \"Benchmarking,\" "
+"\"Level of Detail – Scope of Application,\" and \"System Boundaries.\""
+
+#: templates/pages/businessModelsChallenge.html:20
+msgid "Geschäftsmodelle – Herausforderungen"
+msgstr "Business model applications - Challenges"
+
+#: templates/pages/businessModelsChallenge.html:33
+msgid ""
+"Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
+"          Dem Einsatz als fertigem Produkt steht nichts mehr im Wege und "
+"die\n"
+"          digitale Anwendung kann bald großflächig zum Einsatz kommen? "
+"Oftmals\n"
+"          ist der Weg zu einem funktionierenden Geschäftsmodell lang. Gerade "
+"bei\n"
+"          digitalen Anwendungen treten entlang der "
+"Technologieentwicklungsstufen\n"
+"          immer wieder Herausforderungen auf. So auch beim Übergang von der\n"
+"          technologischen Entwicklung zur wirtschaftlichen Verwertung. Die "
+"mit\n"
+"          der Geschätsmodellentwicklung einhergehenden Herausforderungen, "
+"mit\n"
+"          der sich Projekte der Forschungsinitiative Energiewendebauen\n"
+"          konfrontiert sehen, wurden systematisch aufgearbeitet und sollen "
+"hier\n"
+"          vorgestellt werden."
+msgstr ""
+"The digital application has been successfully tested in a prototype? Nothing "
+"stands in the way of its use as a finished product and the digital "
+"application can soon be used on a large scale? The path to a functioning "
+"business model is often long. Especially with digital applications, "
+"challenges always arise along the technology development stages. This also "
+"applies to the transition from technological development to economic "
+"exploitation. The challenges associated with business model development, "
+"which projects of the research initative Energiewendebauen are confronted "
+"with, have been systematically reviewed and will be presented here."
+
+#: templates/pages/businessModelsPractice.html:19
+msgid "Geschäftsmodelle – good-practice"
+msgstr "Business models – good practice"
+
+#: templates/pages/businessModelsPractice.html:32
+msgid ""
+"Der Weg zum marktgängigen Produkt oder Service ist oftmals steinig.\n"
+"          Unzählige Beispiele bezeugen jedoch die erfolgreiche\n"
+"          Geschäftsmodellentwicklung und -implementierung von digitalen\n"
+"          Anwendungen. Auch in Projekten der Forschungsinitiative\n"
+"          Energiewendebauen wurden und werden Geschäftsmodelle erfolgreich\n"
+"          entwickelt. Hier sollen einige dieser Projekte beispielhaft\n"
+"          vorgestellt werden. Dabei sollen der Projektkontext, die digitale\n"
+"          Anwendung, die Geschäftsmodellentwicklung und die sich daraus\n"
+"          ergebenden Erfahrungen der Projekte beschrieben werden. Die\n"
+"          good-practice Beispiele sollen zu einer möglichst frühzeitigen\n"
+"          Auseinandersetzung mit der Geschäftsmodellentwicklung anregen, um "
+"so\n"
+"          eine effiziente Entwicklung digitaler Anwendungen zu unterstützen."
+msgstr ""
+"The path to a marketable product or service is often rocky. However, "
+"countless examples demonstrate successful development and implementation of "
+"business models and implementation of digital applications. Business models "
+"have also been, and continue to be, successfully developed within the "
+"projects of the research initative Energiewendebauen. Here, we plan to "
+"intrdouce some these projects as examples. The project context, the digital "
+"application, the business model development and the resulting experiences of "
+"the projects should be described. The good practice examples are intended to "
+"encourage consideration of business model development as early as possible "
+"in order to support the efficient development of digital applications."
+
+#: templates/pages/dataSecurity.html:17
+msgid "Datenschutzübersicht"
+msgstr "Privacy Overview"
+
+#: templates/pages/dataSecurity.html:30
+msgid ""
+"Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
+"          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
+"oder\n"
+"          bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten "
+"von\n"
+"          Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten "
+"auf\n"
+"          eine identifizierte oder identifizierbare Person, findet das "
+"nationale\n"
+"          bzw. europäische Datenschutzrecht Anwendung und mit ihm die "
+"gesamte\n"
+"          Bandbreite rechtlicher Verpflichtungen für den Verantwortlichen "
+"der\n"
+"          Datenverarbeitung. Ziel des Datenschutzrechts ist es dabei, die\n"
+"          Betroffenen vor Risiken zu schützen, die durch die "
+"Datenverarbeitung\n"
+"          verursacht werden und ihnen damit grundsätzlich die Entscheidung "
+"über\n"
+"          das Maß und den Umgang mit diesen Risiken zu gewähren. Schon die\n"
+"          Frage, ob eine Datenverarbeitung überhaupt in den "
+"Anwendungsbereich\n"
+"          des Datenschutzrechts fällt, kann aber zur Herausforderung werden. "
+"Das\n"
+"          dafür zentrale europäische Regelwerk - die Datenschutz-"
+"Grundverordnung\n"
+"          (DSGVO) - ist nämlich an den sehr unbestimmten Begriff der\n"
+"          personenbezogenen Daten geknüpft. Der Anwendungsbereich wurde "
+"dabei\n"
+"          durch den Gesetzgeber bewusst weit gefasst und wird durch die "
+"Gerichte\n"
+"          weit ausgelegt, um einen möglichst umfassenden Schutz der "
+"Betroffenen\n"
+"          vor den Risiken verschiedener Datenverarbeitungen zu "
+"gewährleisten.\n"
+"          Das liegt daran, dass sogar vermeintlich rein technische Daten "
+"wie\n"
+"          Maschinen-Daten, Geo-Daten oder Gebäude-Daten Rückschlüsse über\n"
+"          Personen zulassen können, wenn sie mit anderen Datensätzen "
+"verknüpft\n"
+"          werden. Zur Erläuterung, wie Datenschutzrisiken bei der "
+"Verarbeitung\n"
+"          von gebäudebezogenen Daten entstehen können und wann dadurch der\n"
+"          Anwendungsbereich der DSGVO eröffnet wird, ist im Rahmen von Modul "
+"4\n"
+"          der Wissenschaftlichen Begleitforschung Energiewendebauen eine\n"
+"          Datenschutzübersicht entstanden. Anhand verschiedener Use-Cases "
+"wird\n"
+"          hier erklärt wann Datenschutzrisiken entstehen und wie diese durch "
+"den\n"
+"          richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen\n"
+"          kontrolliert werden müssen."
+msgstr ""
+"When using digital applications in the building and neighborhood sector, "
+"various data sources on indoor climate, energy consumption or mere building "
+"information often often allows for inferences about the behavior of "
+"individuals or groups. When these data pertain to an identified or "
+"identifiable person, national or European data protection laws apply, along "
+"with a broad range of legal obligations for the entity processing the data.  "
+"The objective of data protection law is to protect those affected from risks "
+"caused by the data processing andto fundamentally allow them to decide on "
+"the extent and management of these risks.  The very question of whether data "
+"processing is even within the scope of application of data protection law, "
+"can be challenging. The central European regulation - the General Data "
+"Protection Regulation (GDPR) - is linked to the very vague concept of "
+"personal data. The scope of application was deliberately defined broadly by "
+"the legislature and is interpreted broadly by the courts in order to ensure "
+"the most comprehensive protection possible for those affected from the risks "
+"of various data processing. This is because even supposedly purely technical "
+"data such as machine data, geodata or building data can allow conclusions to "
+"be drawn about people if they are linked to other data sets. To explain how "
+"data protection risks can arise when processing building-related data and "
+"when this opens up the scope of the GDPR, a data protection overview was "
+"created as part of Module 4 of the Scientific Accompanying Research. Using "
+"various use cases, it is explained here when data protection risks arise and "
+"how they must be controlled through the correct use of technical and "
+"organizational protective measures."
+
+#: templates/pages/dataSecurity.html:63
+msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
+msgstr "Efficient data minimization in the building and neighborhood sector"
+
+#: templates/pages/dataSecurity.html:68
+msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
+msgstr "Collection of guides, literature and court decisions"
+
+#: templates/pages/dataSufficiency.html:32
+msgid ""
+"Sowohl die Materialisierung als auch der Energieaufwand für den\n"
+"          Betrieb immer größer werdender Rechenkapazitäten stellt eine\n"
+"          Herausforderung dar. Der maßhaltige Umgang mit Daten – die\n"
+"          Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die\n"
+"          Datensuffizienz schaut dabei auf alle Bereiche der "
+"Datenverarbeitung:\n"
+"          von der Erhebung, der Weiterverarbeitung, Speicherung bis zur\n"
+"          Löschung. Gerade die ökologischen Auswirkungen eines "
+"(in-)suffizienten\n"
+"          Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben "
+"in\n"
+"          der Praxis oftmals unbeachtet. Durch die ständige Zunahme "
+"digitaler\n"
+"          Anwendungen im Gebäudebereich muss die Datensuffizienz jedoch "
+"bereits\n"
+"          bei der Entwicklung und auch später bei der Nutzung mitgedacht "
+"werden.\n"
+"          Im Folgenden sollen daher Anhaltspunkte für einen maßhaltigen "
+"Umgang\n"
+"          mit Daten gegeben und auf die ökologischen Wirkungen bestimmter\n"
+"          Praktiken beim Umgang mit Daten hingewiesen werden."
+msgstr ""
+"Both the materialization and the energy required to operate ever-increasing "
+"computing capacities present a challenge. Therefore, the moderate use of "
+"data — or data sufficiency — is increasingly gaining relevance. Data "
+"sufficiency considers all aspects of data processing: from collection and "
+"further processing to storage and deletion. Currently, the ecological "
+"impacts of (in)sufficient data management are still under-researched and "
+"often overlooked in practice. However, with the constant increase in digital "
+"applications in the built environment sector, data sufficiency must be "
+"considered both during development and later during use. The following will "
+"provide guidelines for judicious data management and highlight the "
+"ecological effects of certain data handling practices."
+
+#: templates/pages/environmentalIntegrityNegativ.html:32
+msgid ""
+"Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
+"          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
+"          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
+"          good-practice). Jedoch stehen den positiven Wirkungen, "
+"hervorgerufen\n"
+"          durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend "
+"vom\n"
+"          Lebenszyklus der verwendeten Produkte und Services ergeben sich\n"
+"          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
+"          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
+msgstr ""
+"Digitalization offers great potential and opportunities. Digital "
+"applications can also be used to increase efficiency potential in the "
+"building sector (see positive environmental effects – good practice). "
+"However, the positive effects caused by digital applications are also offset "
+"by environmental burdens. Based on the life cycle of the products and "
+"services used, there are negative environmental impacts from the extraction "
+"of raw materials, to the energy consumption in operation, to the disposal of "
+"the technology."
+
+#: templates/pages/environmentalIntegrityNegativ.html:42
+msgid ""
+"Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
+"          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
+"nur\n"
+"          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
+"fokussiert, da die\n"
+"          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
+"          derzeitigen Forschung der Forschungsinitiative Energiewendebauen\n"
+"          darstellt. Die Übersicht soll zunächst einen einfachen Überblick "
+"und\n"
+"          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen soll "
+"sie\n"
+"          Interessierte dazu befähigen, die Nettoeffekte – also die Bilanz "
+"aus\n"
+"          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
+"Anwendungen\n"
+"          aus der ökologischen Perspektive möglichst effektiv zu "
+"entwickeln,\n"
+"          und/oder zu nutzen."
+msgstr ""
+"The environmental impacts for frequently used components of digital "
+"applications in buildings are listed below. The focus is only on energy "
+"consumption and CO<sub>2</sub> emissions, as minimizing these parameters in "
+"buildings is a main pillar of the current research of the Energy Transition "
+"Building research initiative. The overview is intended to initially provide "
+"a simple overview and initial indication of the environmental burdens. On "
+"the other hand, it should enable those interested to estimate the net "
+"effects - i.e. the balance of environmental benefits and burdens - in order "
+"to make digital applications as effective as possible from an ecological "
+"perspectivedevelop and/or use."
+
+#: templates/pages/environmentalIntegrityPositiv.html:32
+msgid ""
+"Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
+"Gebäuden\n"
+"          und Quartieren steht im derzeitigen Fokus der Forschung. "
+"Gleichzeitig\n"
+"          stellt dieses Ziel nur eine der möglichen positiven "
+"Umweltwirkungen\n"
+"          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in\n"
+"          Projekten der Forschungsinitiative Energiewendebauen kommen eine\n"
+"          Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, "
+"mit\n"
+"          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
+"die\n"
+"          Effekte oftmals schwer auf andere Gebäude/Quartiere zu übertragen\n"
+"          sind, gibt es doch immer Forschungsprojekte, an denen die "
+"Potenziale\n"
+"          bestimmter digitaler Anwendungen gut verdeutlicht werden können. "
+"Diese\n"
+"          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
+"eingesetzte\n"
+"          digitale Anwendung beschrieben und die gefundenen positiven\n"
+"          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
+"Aufzeigen\n"
+"          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
+"          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz soll\n"
+"          Interessierte animieren, sich eingehender mit den Möglichkeiten\n"
+"          digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben\n"
+"          fundierte Entscheidungen treffen zu können."
+msgstr ""
+"Reducing the energy requirements and CO<sub>2</sub> emissions of buildings "
+"and neighborhoods is the current focus of research. At the same time, this "
+"goal represents just one of the possible positive environmental impacts that "
+"are made possible by digital applications. A variety of digital applications "
+"are also being used or developed in projects of the Energy Transition "
+"Building research initiative that can achieve positive environmental "
+"impacts. Even if the effects are often difficult to transfer to other "
+"buildings/districts, there are always research projects that can clearly "
+"demonstrate the potential of certain digital applications. These will be "
+"briefly presented below. The digital application used is described and the "
+"positive environmental effects found are discussed. The aim of this overview "
+"is to show the current possibilities of digital applications to achieve "
+"positive environmental impacts. The incentive created by this is intended to "
+"encourage those interested to take a closer look at the possibilities of "
+"digital applications in order to be able to make well-founded decisions for "
+"their own projects."
+
+#: templates/pages/iconsAndVis.html:29
+msgid ""
+"Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
+"          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
+"für\n"
+"          die Informationsvermittlung an professionelle, wie auch "
+"fachfremde\n"
+"          Adressat*innenkreise genutzt werden. Im Modul 4 der "
+"Begleitforschung,\n"
+"          in Zusammenarbeit mit dem Projekt “Privacy Icons” der "
+"Forschungsgruppe\n"
+"          Digitale Selbstbestimmung, wurde zu diesem Zweck ein Open-Source\n"
+"          Iconset entwickelt, das zur freien Nutzung und Abänderung "
+"freigegeben\n"
+"          wurde. Das Iconset richtet sich an unterschiedlichste Akteure.\n"
+"          Einerseits können datenschutzrechtliche Informationspflichten "
+"mithilfe\n"
+"          der Icons effektiv umgesetzt werden und damit dem "
+"Transparenzprinzip\n"
+"          Rechnung tragen. Darüber hinaus ist eine Nutzung der Icons zur\n"
+"          Visualisierung verschiedenster Sachverhalte im Gebäude- und "
+"Quartiers\n"
+"          Bereich denkbar, etwa zur verständlichen Aufbereitung von\n"
+"          Forschungsergebnissen oder Erklärung digitaler Anwendungen. Das\n"
+"          Iconset besteht aus über 150 Icons verschiedener Kategorien (z.B. "
+"Data\n"
+"          and Identifiers, Purposes, Actors and Technical Means). Es wird\n"
+"          ergänzt durch ein Set von Gebäudegrafiken und anderen\n"
+"          Visualisierungskomponenten, die gemeinsam einen Baukasten ergeben, "
+"der\n"
+"          eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie\n"
+"          technischer Perspektive erlaubt und von der Visualisierung eines\n"
+"          ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem\n"
+"          User-Interface verwendet werden kann."
+msgstr ""
+"Icons can also support the graphical preparation of complex issues in "
+"buildings and neighborhoods and can be used to convey information to both "
+"professional and non-professional target groups. In Module 4 of the "
+"accompanying research, in collaboration with the \"Privacy Icons\" project "
+"of the Digital Self-Determination Research Group, an open source icon set "
+"was developed for this purpose, which was released for free use and "
+"modification. The icon set is aimed at a wide variety of actors. On the one "
+"hand, data protection information obligations can be effectively implemented "
+"using the icons and thus take the transparency principle into account. In "
+"addition, it is conceivable that the icons can be used to visualize a wide "
+"variety of issues in the building and district sector, for example to "
+"prepare research results in a comprehensible manner or to explain digital "
+"applications. The icon set consists of over 150 icons of different "
+"categories (e.g. Data and Identifiers, Purposes, Actors and Technical "
+"Means). It is supplemented by a set of building graphics and other "
+"visualization components, which together form a construction kit that allows "
+"consideration from a legal, economic-ecological and technical perspective "
+"and from the visualization of an entire project to a concrete application, "
+"for example on a user interface can be used."
+
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:76
+msgid "Impressum"
+msgstr "Imprint"
+
+#: templates/pages/impressum.html:27
+msgid "Kontakt"
+msgstr "Contact"
+
+#: templates/pages/impressum.html:30
+msgid "Postanschrift"
+msgstr "Postal address"
+
+#: templates/pages/impressum.html:31
+msgid "Sekretariat"
+msgstr "Secretariat"
+
+#: templates/pages/impressum.html:32
+msgid ""
+"z.Hd. Fachgebiet: Digitale Vernetzung von Gebäuden, "
+"Energieversorgungsanlagen und Nutzenden"
+msgstr ""
+"For the attention of the specialist area: Digital networking of buildings, "
+"energy supply systems and users"
+
+#: templates/pages/impressum.html:37
+msgid "Haftungsausschluss"
+msgstr "Disclaimer"
+
+#: templates/pages/impressum.html:39
+msgid ""
+"Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
+"sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
+"Haftung für die fortwährende Aktualität, Vollständigkeit und Richtigkeit der "
+"angebotenen Informationen."
+msgstr ""
+"We have carefully compiled the web pages of the knowledge platform (wissen-"
+"digital-ewb.de). However, we assume no liability or guarantee that the "
+"information provided is always up-to-date, complete and correct."
+
+#: templates/pages/impressum.html:40
+msgid "Links auf externe Web-Seiten"
+msgstr "Links to external websites"
+
+#: templates/pages/impressum.html:41
+msgid ""
+"Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
+"Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung zu "
+"deren Inhalt dar. Für die Inhalte der verlinkten Seiten ist stets der "
+"jeweilige Anbieter oder Betreiber der Seiten verantwortlich.\n"
+"                    Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung "
+"nicht erkennbar. Wir übernehmen keine Gewähr für die fortwährende "
+"Aktualität, Richtigkeit und Vollständigkeit der verlinkten Inhalte, da diese "
+"Inhalte außerhalb unseres Verantwortungsbereichs liegen und wir auf die "
+"zukünftige Gestaltung keinen Einfluss haben."
+msgstr ""
+"The knowledge platform's websites contain links to third-party websites. "
+"These links to third-party websites do not constitute approval of their "
+"content. The respective provider or operator of the pages is always "
+"responsible for the content of the linked pages. Illegal content was not "
+"apparent at the time of linking. We assume no liability for the ongoing "
+"topicality, accuracy and completeness of the linked content, as this content "
+"is outside our area of responsibility and we have no influence on its future "
+"design."
+
+#: templates/pages/stromlast.html:3
+#, fuzzy
+#| msgid "Standardlastprofile"
+msgid "Stromlastprofil"
+msgstr "Standard load profiles"
+
+#: templates/pages/userIntegrationMethod.html:19
+#: templates/pages/userIntegrationPractice.html:19
+msgid "Nutzendeneinbindung"
+msgstr "User engangement"
+
+#: templates/pages/userIntegrationMethod.html:32
+msgid ""
+"Wie kann die Nutzendeneinbindung gelingen? Erprobte Methoden aus der\n"
+"          sozialwissenschaftlichen Forschung können auf diese Frage Antwort\n"
+"          geben. Auf dieser Seite werden Sie eine Zusammenstellung gängiger\n"
+"          Methoden zur Nutzendeneinbindung finden. Die hier aufgezeigten\n"
+"          Methoden werden kurz beschrieben und mögliche Einsatzgebiete bzw.\n"
+"          Projektkontexte dargelegt werden. Durch die weiterführenden\n"
+"          Literaturhinweisen sollen Interessierte zur tieferen\n"
+"          Auseinandersetzung mit den Methoden für eigene Projekte ermutigt\n"
+"          werden."
+msgstr ""
+"How can user engagement be successful? Proven methods from social science "
+"research can provide answers to this question. On this page, you will find a "
+"compilation of common methods for user engagement. The methods presented "
+"here will be briefly described, and potential applications or project "
+"contexts will be explained. Further literature references will encourage "
+"those interested to engage more deeply with the methods for their own "
+"projects."
+
+#: templates/pages/userIntegrationPractice.html:32
+msgid ""
+"Was kann eine gelungene Nutzendeneinbindung bewirken? Dieser Frage\n"
+"          widmet sich die Aufbereitung von ausgewählten Beispielen. Es wird\n"
+"          näher auf Projekte eingegangen, die die Nutzenden digitaler\n"
+"          Anwendungen während der Entwicklung und/oder während der Nutzung "
+"der\n"
+"          digitalen Anwendung aktiv eingebunden haben, um so übergeordnete "
+"Ziele\n"
+"          wie die Realisierung von Energieeinsparungen zu erreichen. Neben "
+"den\n"
+"          Methoden, die in den Beispielprojekten für eine "
+"Nutzendenintegration\n"
+"          angewandt wurden, wird die good-practice Darstellung auch auf die\n"
+"          damit realisierten Effekte fokussiert. Ebenso werden die\n"
+"          Herausforderungen und Erkenntnisse aus der Nutzendeneinbindung "
+"des\n"
+"          jeweiligen Beispielprojekts aufgezeigt werden."
+msgstr ""
+"What can successful user integration achieve? This question is addressed by "
+"presenting selected examples. The discussion will focus on projects that "
+"have actively involved users of digital applications during their "
+"development and/or during the use of the digital application, with "
+"overarching goals such as achieving energy savings.  In addition to the "
+"methods that were used in the example projects for user integration, the "
+"good practice presentation also focuses on the effects achieved with it. The "
+"challenges and insights from the user integration of each example project "
+"will also be highlighted. "
+
+#: templates/pages/warmelast.html:3
+msgid "Waermelastprofil"
+msgstr "Thermal load profile"
+
+#: templates/partials/_coming.html:9
+msgid "Im Entwicklungsprozess"
+msgstr "Under development"
+
+#: templates/partials/_footer.html:28 templates/partials/_footer.html:44
+msgid "Sprache wählen"
+msgstr "Select Language"
+
+#: templates/partials/_footer.html:65
+msgid "Über uns"
+msgstr "About us"
+
+#: templates/partials/_footer.html:88
+msgid "Datenschutz&shy;hinweis"
+msgstr "Data protection notice"
+
+#: templates/partials/_gefoerdert_bmwk.html:7
+msgid ""
+"Die Wissensplattform - Digitalisierung Energiewendebauen entsteht im\n"
+"        Rahmen des Forschungsprojektes „BF2020 Begleitforschung\n"
+"        Energiewendebauen - Modul Digitalisierung; Teilvorhaben: TU Berlin:\n"
+"        Wissensplattform“ (FKZ: 03EWB004A).</br>\n"
+"        Dieses Projekt wurde aufgrund\n"
+"        eines Beschlusses des Deutschen Bundestages mit öffentlichen Mitteln "
+"des\n"
+"        Bundesministeriums für Wirtschaft und Klimaschutz gefördert."
+msgstr ""
+"The knowledge platform - digitization of energy transition construction is "
+"being created as part of the research project \"BF2020 accompanying research "
+"on energy transition construction - module digitization; Sub-project: TU "
+"Berlin: Knowledge Platform\" (FKZ: 03EWB004A).</br>This project was funded "
+"with public funds from the Federal Ministry for Economic Affairs and Climate "
+"Protection based on a resolution by the German Bundestag."
+
+#: templates/partials/_navbar.html:50
+msgid "Digitale Werkzeuge"
+msgstr "Digital tools"
+
+#: templates/partials/_navbar.html:57
+msgid "Digitale Anwendungen"
+msgstr "Digital applications"
+
+#: templates/partials/_navbar.html:185
+msgid "ökologisch"
+msgstr "ecological"
+
+#: templates/publications/publications-detail.html:68
+msgid "Abstrakt"
+msgstr "Abstract"
+
+#: templates/publications/publications-detail.html:74
+msgid "Autoren"
+msgstr "Authors"
+
+#: templates/publications/publications-detail.html:86
+msgid "Stichworte"
+msgstr "Keywords"
+
+#: templates/publications/publications-detail.html:92
+msgid "Publikationsjahr"
+msgstr "Year of publication"
+
+#: templates/publications/publications-detail.html:100
+msgid "Verlag"
+msgstr "Publisher"
+
+#: templates/publications/publications-detail.html:110
+msgid "Link zur PDF oder Journalseite"
+msgstr "Link to PDF or journal page"
+
+#: templates/publications/publications-detail.html:114
+msgid "Kurzbeleg"
+msgstr "Citation"
+
+#: templates/tools_over/explanationApps.html:9
+msgid ""
+"Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, "
+"die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen \n"
+"          Begleitforschung der Forschungsinitiative Energiewendebauen von "
+"2021 und 2023 erfasst wurden. \n"
+"          Alle digitalen Anwendungen werden dementsprechend von Projekten, "
+"die im Rahmen der \n"
+"          Forschungsinitiative Energiewendebauen gefördert werden, "
+"eingesetzt, entwickelt oder weiterentwickelt. <br>\n"
+"          Generell wird hier  zwischen digitalen Werkzeugen und digitalen "
+"Anwendungen unterschieden <br>\n"
+"          Ein digitales Werkzeug ist ein Stück Software, das in Verbindung "
+"mit anderen Werkzeugen von Entwicklern oder Ingenieuren verwendet wird, \n"
+"          um Produkte mit bestimmten Funktionalitäten zu erstellen. "
+"Frameworks, Bibliotheken, Programmiersprachen und Standards sind ebenfalls "
+"unter Werkzeuge aufgeführt. <br>\n"
+"          Eine digitale Anwendung hingegen ist ein Stück Software, das einen "
+"bestimmten Anwendungsfall allein abdeckt. \n"
+"          In der Regel setzt sich eine digitale Anwendung  als eine "
+"Verkettung von Werkzeugen, mit möglicher direkter Interaktion mit dem "
+"Endbenutzer, zusammen. \n"
+"          Plattformen sind ebenfalls unter Anwendungen aufgeführt. <br>\n"
+"          Es ist durchaus möglich, ein Werkzeug zu haben, das auch als "
+"Anwendung klassifiziert werden kann. <br>\n"
+"          In einem ersten Schritt sammeln wir diese digitalen Werkzeuge und "
+"Anwendungen und stellen sie Ihnen als Übersicht und Inspiration zur \n"
+"          Verfügung. Eine detaillierte Zusammenstellung der Werkzeuge und "
+"Anwendungen kann nur gemeinsam mit den Anwendern erfolgen, sprechen \n"
+"          Sie uns daher gerne an. Wir freuen uns auf Ihre "
+"Anwendungsbeispiele aus Ihren Projekten. \n"
+"          <br>\n"
+"          Bei der Zusammenstellung der Anwendungen haben wir folgende "
+"Aspekte berücksichtigt:"
+msgstr ""
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the evaluation of the questionnaire of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen from 2021 and 2023. All digital tools are accordingly "
+"used, developed or further developed by projects that are funded as part of "
+"the respective initiative. A general distinction is made here between "
+"digital tools and digital applications. A digital tool is a piece of "
+"software used in conjunction with other tools by developers or engineers, to "
+"create products with specific functionalities. Frameworks, libraries, "
+"programming languages and standards are also listed under tools. A digital "
+"application, on the other hand, is a standalone piece of software designed "
+"for a specific use case. Typically, a digital application is consists of a "
+"chain of tools with possible direct interaction with the end user. Platforms "
+"are also listed under Applications. It is entirely possible to have a tool "
+"that can also be classified as an application. In a first step, we collect "
+"these digital tools and applications and make them available to you as an "
+"overview and inspiration. A detailed compilation of the tools and "
+"applications can only be done together with the users, so please feel free "
+"to contact us. We look forward to hearing your application examples from "
+"your projects.<br>When putting together the tools, we took the following "
+"aspects into account:"
+
+#: templates/tools_over/explanationApps.html:30
+#: templates/tools_over/explanationTools.html:30
+#: templates/tools_over/tool-comparison.html:44
+#: templates/tools_over/tool-detail.html:77
+msgid "Einsatzbereich"
+msgstr "Area of application"
+
+#: templates/tools_over/explanationApps.html:31
+msgid ""
+"Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen "
+"Anwendung? \n"
+"            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
+"Dienstleistung."
+msgstr ""
+"What do the developers describe as the area of application of their digital "
+"application? Options include administration, research/teaching, industry, "
+"and service."
+
+#: templates/tools_over/explanationApps.html:35
+msgid ""
+"Zu welchem Zweck wird die Anwendung eingesetzt? \n"
+"            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
+"Steuerung, Regelung."
+msgstr ""
+"What purpose is the application used for? Options include simulation, "
+"monitoring, optimization, planning, control, advanced control."
+
+#: templates/tools_over/explanationApps.html:38
+#: templates/tools_over/explanationTools.html:38
+#: templates/tools_over/tool-comparison.html:69
+#: templates/tools_over/tool-detail.html:253
+#: templates/tools_over/tool-listings.html:78
+msgid "Lebenszyklusphase"
+msgstr "Life cycle phase"
+
+#: templates/tools_over/explanationApps.html:39
+msgid ""
+"In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt? \n"
+"            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
+"berücksichtigt."
+msgstr ""
+"In which phase of the product life cycle is the application used? The phases "
+"of preliminary planning, planning, implementation and operation are taken "
+"into account here."
+
+#: templates/tools_over/explanationApps.html:42
+#: templates/tools_over/explanationTools.html:42
+#: templates/tools_over/tool-detail.html:81
+#: templates/tools_over/tool-listings-results.html:20
+msgid "Nutzerschnittstelle"
+msgstr "User interface"
+
+#: templates/tools_over/explanationApps.html:43
+msgid ""
+"Wie können Nutzende die digitale Anwendung bedienen? \n"
+"            Benötigt es eine eigenständige Installation, gibt es eine "
+"webbasierte Oberfläche oder bspw. über die Kommandozeile?"
+msgstr ""
+"How can users operate the digital application? Does it require an "
+"independent installation, is there a web-based interface or, for example, "
+"via the command line?"
+
+#: templates/tools_over/explanationApps.html:46
+#: templates/tools_over/explanationTools.html:46
+#: templates/tools_over/tool-comparison.html:80
+#: templates/tools_over/tool-detail.html:88
+msgid "Zielgruppe"
+msgstr "Target group"
+
+#: templates/tools_over/explanationApps.html:47
+msgid ""
+"An wen richtet sich die digitale Anwendung laut eigener Aussage?\n"
+"            In der Regel können digitale Anwendungen von allen genutzt "
+"werden."
+msgstr ""
+"Who do you say the digital application is aimed at? As a rule, digital "
+"applications can be used by everyone."
+
+#: templates/tools_over/explanationApps.html:50
+#: templates/tools_over/explanationTools.html:50
+#: templates/tools_over/tool-comparison.html:159
+#: templates/tools_over/tool-listings-results.html:45
+#: templates/weatherdata_over/explanation.html:25
+msgid "Letztes Update"
+msgstr "Last update"
+
+#: templates/tools_over/explanationApps.html:51
+msgid ""
+"Wann ist das letzte Update erfolgt.\n"
+"            Insbesondere bei digitalen Anwendungen, \n"
+"            welche im Rahmen von Forschungsprojekten entwickelt werden, \n"
+"            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
+"Wartung eingestellt werden."
+msgstr ""
+"When was the last update done? Particularly in the case of digital "
+"applications that are developed as part of research projects, further "
+"development or maintenance can be stopped after the project has been "
+"completed."
+
+#: templates/tools_over/explanationApps.html:56
+#: templates/tools_over/explanationTools.html:56
+#: templates/tools_over/tool-comparison.html:113
+#: templates/tools_over/tool-detail.html:92
+#: templates/tools_over/tool-listings.html:67
+msgid "Zugänglichkeit"
+msgstr "Accessibility"
+
+#: templates/tools_over/explanationApps.html:57
+msgid ""
+"Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
+"freeware?"
+msgstr ""
+"How accessible is the application? Is it paid, open source or freeware?"
+
+#: templates/tools_over/explanationApps.html:59
+#: templates/tools_over/explanationTools.html:59
+#: templates/tools_over/tool-comparison.html:131
+#: templates/tools_over/tool-detail.html:96
+#: templates/tools_over/tool-detail.html:245
+#: templates/weatherdata_over/explanation.html:29
+#: templates/weatherdata_over/weatherdata-detail.html:150
+#: weatherdata_over/views.py:27 weatherdata_over/views.py:31
+#: weatherdata_over/views.py:64
+msgid "Lizenz"
+msgstr "License"
+
+#: templates/tools_over/explanationApps.html:60
+msgid ""
+"Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und "
+"entstehen Kosten \n"
+"            durch die Anwendung ?"
+msgstr ""
+"Under what license was the digital application published and are there any "
+"costs associated with using the digital application?"
+
+#: templates/tools_over/explanationApps.html:63
+#: templates/tools_over/explanationTools.html:63
+#: templates/tools_over/tool-detail.html:107
+msgid "Alternativen"
+msgstr "Alternatives"
+
+#: templates/tools_over/explanationApps.html:64
+msgid ""
+"Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen "
+"ermöglichen (wenn vorhanden)?"
+msgstr ""
+"Which other digital applications can provide similar benefits (if any)?"
+
+#: templates/tools_over/explanationApps.html:66
+#: templates/tools_over/explanationTools.html:66
+msgid "Konkrete Anwendungsfälle"
+msgstr "Specific use cases"
+
+#: templates/tools_over/explanationApps.html:67
+msgid ""
+"Benennung von konkreten Beispielen für den Einsatz von Anwendungen im "
+"Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
+msgstr ""
+"Identification of concrete examples of the use of applications in the "
+"construction sector/energy transition construction (e.g. funding indicators)."
+
+#: templates/tools_over/explanationApps.html:69
+#: templates/tools_over/explanationTools.html:69
+msgid "Entwicklende / Maintainer"
+msgstr "Developers/maintainers"
+
+#: templates/tools_over/explanationApps.html:70
+msgid "Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?"
+msgstr ""
+"Who is responsible for the development and maintenance of the application?"
+
+#: templates/tools_over/explanationApps.html:72
+#, fuzzy
+#| msgid "Generelle Art des Werkzeugs"
+msgid "Generelle Art der Anwendung"
+msgstr "General type of tool"
+
+#: templates/tools_over/explanationApps.html:73
+msgid ""
+"Welcher Art ist die Anwendung? \n"
+"            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung "
+"als auch als Werkzeug eingestuft?"
+msgstr ""
+"What type is the application? Is it classified as just an application/"
+"platform or both an application and a tool?"
+
+#: templates/tools_over/explanationApps.html:76
+#: templates/tools_over/explanationTools.html:76
+msgid "Veröffentlicht"
+msgstr "Published"
+
+#: templates/tools_over/explanationApps.html:77
+#, fuzzy
+#| msgid "Ist das Tool veröffentlicht?"
+msgid "Ist das Werkzeug bereits veröffentlicht?"
+msgstr "Is the tool published?"
+
+#: templates/tools_over/explanationApps.html:79
+#: templates/tools_over/explanationTools.html:79
+msgid "Veröffentlichung geplant"
+msgstr "Publication planned"
+
+#: templates/tools_over/explanationApps.html:80
+#: templates/tools_over/explanationTools.html:77
+msgid "Ist eine Veröffentlichung geplant? (falls noch nicht erfolgt)"
+msgstr "Is a publication planned? (if not already done)"
+
+#: templates/tools_over/explanationApps.html:82
+#: templates/tools_over/explanationTools.html:82
+msgid "Jahr der Veröffentlichung"
+msgstr "Year of publication"
+
+#: templates/tools_over/explanationApps.html:83
+msgid "In welchem Jahr wurde es veröffentlicht? (falls schon erfolgt)"
+msgstr "Is a publication planned? (if not already done)"
+
+#: templates/tools_over/explanationApps.html:85
+#: templates/tools_over/explanationTools.html:85
+#: templates/tools_over/tool-detail.html:155
+msgid "Informationsquellen"
+msgstr "Sources of information"
+
+#: templates/tools_over/explanationApps.html:86
+msgid ""
+"Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
+msgstr ""
+"Source for further information about the application, e.g. git repo, project "
+"website."
+
+#: templates/tools_over/explanationApps.html:88
+#: templates/tools_over/explanationTools.html:88
+#: templates/tools_over/tool-comparison.html:138
+#: templates/tools_over/tool-detail.html:164
+msgid "Entwicklungsstand"
+msgstr "Level of development"
+
+#: templates/tools_over/explanationApps.html:89
+msgid ""
+"Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen "
+"möglich:\n"
+"            <ol>\n"
+"              <li>erster Entwurf (pre-Alpha)</li>\n"
+"              <li>wesentliche Funktionen (Alpha)</li>\n"
+"              <li>noch nicht vollständig gestetet (Beta)</li>\n"
+"              <li>alle Funktion erhalten, evtl. Fehler enthalten (Release "
+"Canditate - RC)</li>\n"
+"              <li>bereit für den produktiven Einsatz (Released)</li>"
+msgstr ""
+"What is the current development status? The following options are possible: "
+"<ol><li>first draft (pre-alpha)</li>\n"
+" <li>Essential functions (Alpha)</li>\n"
+" <li>not yet fully tested (Beta)</li>\n"
+" <li>all functions preserved, possibly containing errors (release Canditate "
+"- RC)</li>\n"
+" <li>ready for productive use (released)</li>"
+
+#: templates/tools_over/explanationApps.html:98
+#: templates/tools_over/explanationTools.html:98
+msgid "Programmiersprache"
+msgstr "Programming language"
+
+#: templates/tools_over/explanationApps.html:99
+msgid ""
+"Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich "
+"genutzt?"
+msgstr ""
+"Which programming language is mainly used to implement the application?"
+
+#: templates/tools_over/explanationApps.html:101
+#: templates/tools_over/explanationTools.html:101
+msgid "Wichtigste Framework / Bibliotheken"
+msgstr "Most important framework/libraries"
+
+#: templates/tools_over/explanationApps.html:102
+#: templates/tools_over/explanationTools.html:102
+msgid ""
+"Was sind die wichtigsten Frameworks oder Bibliotheken bei der Umsetzung?"
+msgstr ""
+"What are the most important frameworks or libraries for implementation?"
+
+#: templates/tools_over/explanationApps.html:104
+#: templates/tools_over/explanationTools.html:104
+#: templates/tools_over/tool-detail.html:182
+msgid "Datenbanksystem"
+msgstr "Database system"
+
+#: templates/tools_over/explanationApps.html:105
+#, fuzzy
+#| msgid "Welches Datenbanksystem verwendet das Werkzeug?"
+msgid "Welches Datenbanksystem verwendet die Anwendung?"
+msgstr "Which database system does the tool use?"
+
+#: templates/tools_over/explanationApps.html:107
+#: templates/tools_over/explanationTools.html:107
+#: templates/tools_over/tool-comparison.html:102
+#: templates/tools_over/tool-detail.html:187
+msgid "Räumliche Größenordnung der Anwendungsfälle"
+msgstr "Spatial scale of use cases"
+
+#: templates/tools_over/explanationApps.html:108
+msgid ""
+"In welcher Größenordnung wird die Anwendung angewendet? Findet die Anwendung "
+"in einer Komponente, \n"
+"            einer Anlage, einem Gebäude, oder in einem Quartier/Netz oder "
+"einer/em Region/Land?"
+msgstr ""
+"On what scale is the application used? Does the application find in a "
+"component, a system, a building, or in a district/network or a region/"
+"country?"
+
+#: templates/tools_over/explanationApps.html:110
+#: templates/tools_over/explanationTools.html:111
+#, fuzzy
+#| msgid "technische Standards"
+msgid "Normen/Standards"
+msgstr "Technical Standards"
+
+#: templates/tools_over/explanationApps.html:111
+msgid ""
+"Welche Normen oder Standards dienen als Basis bzw. Orientierung für die "
+"Anwendung?"
+msgstr ""
+"Which norms or standards serve as the basis or orientation for the "
+"application?"
+
+#: templates/tools_over/explanationApps.html:120
+#: templates/tools_over/explanationTools.html:121
+msgid ""
+"Im Projekt Simquality wurden Informationen und Daten rund um das Thema "
+"Qualitätssicherung und Standardisierung von Simulationsverfahren "
+"gesammelt. \n"
+"          Bestandteil des Projektes war die unabhängige Prüfung von "
+"Simulationssoftware. \n"
+"          Auf der oben genannten Website sind weiterführende Informationen "
+"zu IDA ICE, EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS und AixLib "
+"einsehbar."
+msgstr ""
+"The Simquality compiles information and data on quality assurance and "
+"standardization of simulation processes,including independent tests of "
+"simulation software. Further information is provided about tools like IDA "
+"ICE,EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS and AixLib can be "
+"found on the website mentioned above."
+
+#: templates/tools_over/explanationApps.html:129
+#: templates/tools_over/explanationTools.html:130
+msgid ""
+"Das Projekt Open Sustainable Technology sammelt offene,\n"
+"          nachhaltige und aktive Projekte, welche zum Ziel haben eine\n"
+"          nachhaltige Energieversorgung zu ermöglichen. Dabei werden\n"
+"          Standards, Daten oder Programme gesammelt. Es erfolgt keine\n"
+"          weitere Einordnung."
+msgstr ""
+"The Open Sustainable Technology project collects open, sustainable and "
+"actively maintained projects that aim to enable a sustainable energy "
+"transition.It encompasses standards, data, and programs without further "
+"classification."
+
+#: templates/tools_over/explanationApps.html:139
+#: templates/tools_over/explanationTools.html:140
+msgid ""
+"Die Website baulinks sammelt Informationen über Software mit dem Fokus "
+"Architektur und Handwerk. Neben CAD-Werkzeugen, \n"
+"           oder digitale Werkzeuge zur Planungen werden auch Informationen "
+"zu digitalen Stundenzetteln oder digitalen Werkzeugen zur Kalkulation von "
+"Mengen gesammelt."
+msgstr ""
+"The website baulinks collects information about software with a focus on "
+"architecture and crafts. In addition to CAD tools or digital tools for "
+"planning, information on digital timesheets or digital tools for calculating "
+"quantities is also collected."
+
+#: templates/tools_over/explanationApps.html:147
+#: templates/tools_over/explanationTools.html:148
+msgid ""
+"Die Openenergy Plattform hat zum Ziel die Modellierung von Energiesystemen "
+"transparent zu machen. \n"
+"          Hierzu werden Informationen und digitale Werkzeuge rund um das "
+"Thema Energie gesammelt."
+msgstr ""
+"The Openenergy platform aims to make the modeling of energy systems "
+"transparent. For this purpose, information and digital tools on the topic of "
+"energy are collected."
+
+#: templates/tools_over/explanationApps.html:155
+#: templates/tools_over/explanationTools.html:156
+msgid ""
+"Andere Seiten wie bspw. die durch das Office of Energy Efficiency &\n"
+"          Renewable Energy der Vereinigten Staaten von Amerika betriebene\n"
+"          Website sammeln Informationen zu digitale Werkzeuge, welche durch\n"
+"          diese finanziert und erstellt werden. Zudem werden durch weitere\n"
+"          Informationen wie beispielsweise eines Blogs anschauliche\n"
+"          Informationen bereitgestellt."
+msgstr ""
+"Other sites such as those operated by the Office of Energy Efficiency & "
+"Renewable Energy of the United States of America Website collects "
+"information about digital tools that are financed and created by them. In "
+"addition, clear information is provided through further information such as "
+"a blog."
+
+#: templates/tools_over/explanationApps.html:168
+#: templates/tools_over/explanationTools.html:169
+msgid ""
+"Das Gebäudeforum Klimaneutral stellt eine Übersicht zu digitalen Werkzeugen "
+"zur Verfügung. \n"
+"          Diese richten sich insbesondere an Personen richten, die in der "
+"Bilanzierung und Beratung tätig sind."
+msgstr ""
+"The Climate Neutral Building Forum provides an overview of digital tools. "
+"These are aimed particularly at people who work in accounting and consulting."
+
+#: templates/tools_over/explanationBusinessApps.html:10
+msgid ""
+"Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, \n"
+"          müssen erprobte Technologien auch ökonomisch umgesetzt werden. \n"
+"          Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der "
+"digitalen Anwendung \n"
+"          als Produkt oder Service einer möglichst breiten Anwenderschaft "
+"zur Verfügung gestellt werden kann. \n"
+"          Eine Reihe von Tools kann die "
+"Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier "
+"vorgestellt."
+msgstr ""
+"In addition to the scientific development of digital applications, proven "
+"technologies must also be implemented economically.This requires business "
+"models so that the potential of the digital application can be made "
+"available as a product or service to as wide a range of users as possible. A "
+"number of tools can support business model development. Some of these are "
+"presented here."
+
+#: templates/tools_over/explanationTools.html:9
+msgid ""
+"Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die "
+"im Rahmen der Auswertung \n"
+"          des Fragebogens der wissenschaftlichen Begleitforschung der "
+"Forschungsinitiative Energiewendebauen von \n"
+"          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden "
+"dementsprechend von Projekten eingesetzt, \n"
+"          entwickelt oder weiterentwickelt, die im Rahmen der "
+"Forschungsinitiative Energiewendebauen gefördert werden. <br>\n"
+"          Generell wird hier  zwischen digitalen Werkzeugen und digitalen "
+"Anwendungen unterschieden <br>\n"
+"          Ein digitales Werkzeug ist ein Stück Software, das in Verbindung "
+"mit anderen Werkzeugen von Entwicklern oder Ingenieuren verwendet wird, \n"
+"          um Produkte mit bestimmten Funktionalitäten zu erstellen. "
+"Frameworks, Bibliotheken, Programmiersprachen und Standards sind ebenfalls "
+"unter Werkzeuge aufgeführt. <br>\n"
+"          Eine digitale Anwendung hingegen ist ein Stück Software, das einen "
+"bestimmten Anwendungsfall allein abdeckt. \n"
+"          In der Regel setzt sich eine digitale Anwendung  als eine "
+"Verkettung von Werkzeugen, mit möglicher direkter Interaktion mit dem "
+"Endbenutzer, zusammen. \n"
+"          Plattformen sind ebenfalls unter Anwendungen aufgeführt. <br>\n"
+"          Es ist durchaus möglich, ein Werkzeug zu haben, das auch als "
+"Anwendung klassifiziert werden kann. <br>\n"
+"          In einem ersten Schritt sammeln wir diese digitalen Werkzeuge und "
+"Anwendungen und stellen sie Ihnen als Übersicht und Inspiration zur \n"
+"          Verfügung. Eine detaillierte Zusammenstellung der Werkzeuge und "
+"Anwendungen kann nur gemeinsam mit den Anwendern erfolgen, sprechen \n"
+"          Sie uns daher gerne an. Wir freuen uns auf Ihre "
+"Anwendungsbeispiele aus Ihren Projekten.\n"
+"          <br>\n"
+"          Bei der Zusammenstellung der Werkzeuge haben wir folgende Aspekte "
+"berücksichtigt:"
+msgstr ""
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the evaluation of the questionnaire of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen from 2021 and 2023. All digital tools are accordingly "
+"used, developed or further developed by projects that are funded as part of "
+"the respective initiative. A general distinction is made here between "
+"digital tools and digital applications. A digital tool is a piece of "
+"software used in conjunction with other tools by developers or engineers, to "
+"create products with specific functionalities. Frameworks, libraries, "
+"programming languages and standards are also listed under tools. A digital "
+"application, on the other hand, is a standalone piece of software designed "
+"for a specific use case. Typically, a digital application is consists of a "
+"chain of tools with possible direct interaction with the end user. Platforms "
+"are also listed under Applications. It is entirely possible to have a tool "
+"that can also be classified as an application. In a first step, we collect "
+"these digital tools and applications and make them available to you as an "
+"overview and inspiration. A detailed compilation of the tools and "
+"applications can only be done together with the users, so please feel free "
+"to contact us. We look forward to hearing your application examples from "
+"your projects.<br>When putting together the tools, we took the following "
+"aspects into account:"
+
+#: templates/tools_over/explanationTools.html:31
+msgid ""
+"Was beschreiben die Entwicklenden als Einsatzsbereich ihres digitalen "
+"Werkzeugs? \n"
+"            Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
+"Dienstleistung."
+msgstr ""
+"What do the developers describe as the area of application of their digital "
+"tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
+"Dienstleistung."
+
+#: templates/tools_over/explanationTools.html:35
+msgid ""
+"Zu welchem Zweck wird das Werkzeug eingesetzt? \n"
+"            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
+"Steuerung, Regelung."
+msgstr ""
+"What purpose is the tool used for? Options include simulation, monitoring, "
+"optimization, planning, control, advanced control."
+
+#: templates/tools_over/explanationTools.html:39
+msgid ""
+"In welcher Phase des Produktlebenszyklus wird das Werkzeug eingesetzt? \n"
+"            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
+"berücksichtigt."
+msgstr ""
+"In which phase of the product life cycle is the tool used? The phases of "
+"preliminary planning, planning, implementation and operation are taken into "
+"account here."
+
+#: templates/tools_over/explanationTools.html:43
+msgid ""
+"Wie können Nutzende das digitale Werkzeug bedienen? \n"
+"            Benötigt es eine eigenständige Installation, gibt es eine "
+"webbasierte Oberfläche oder bspw. über die Kommandozeile?"
+msgstr ""
+"How can users operate the digital tool? Does it require an independent "
+"installation, is there a web-based interface or, for example, via the "
+"command line?"
+
+#: templates/tools_over/explanationTools.html:47
+msgid ""
+"An wen richtet sich das digitale Werkzeug laut eigener Aussage?\n"
+"            In der Regel können digitale Werkzeuge von allen genutzt werden."
+msgstr ""
+"Who do you say the digital tool is aimed at? As a rule, digital tools can be "
+"used by everyone."
+
+#: templates/tools_over/explanationTools.html:51
+msgid ""
+"Wann ist das letzte Update erfolgt. \n"
+"            Insbesondere bei digitalen Werkzeugen, \n"
+"            welche im Rahmen von Forschungsprojekten entwickelt werden, \n"
+"            kann nach Abschluss des Projektes die Weiterentwicklung bzw. die "
+"Wartung eingestellt werden."
+msgstr ""
+"When was the last update done? Particularly in the case of digital tools "
+"that are developed as part of research projects, further development or "
+"maintenance can be stopped after the project has been completed."
+
+#: templates/tools_over/explanationTools.html:57
+msgid ""
+"Wie zugänglich ist das Werkzeug? Ist es kostenpflichtig, open-source oder "
+"freeware?"
+msgstr "How accessible is the tool? Is it paid, open source or freeware?"
+
+#: templates/tools_over/explanationTools.html:60
+msgid ""
+"Unter welcher Lizenz wurde das digitale Werkzeug veröffentlicht und "
+"entstehen Kosten \n"
+"            durch die Anwendung des digitalen Werkzeugs?"
+msgstr ""
+"Under what license was the digital tool published and are there any costs "
+"associated with using the digital tool?"
+
+#: templates/tools_over/explanationTools.html:64
+msgid ""
+"Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
+"Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
+msgstr ""
+"Identification of concrete examples of the use of tools in the construction "
+"sector/energy transition construction (e.g. funding indicators)."
+
+#: templates/tools_over/explanationTools.html:67
+msgid ""
+"Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
+"Bausektor/Energiewendebauen (bspw. Projekt Nummer)."
+msgstr ""
+"Identification of concrete examples of the use of tools in the construction "
+"sector/energy transition (e.g. project number)."
+
+#: templates/tools_over/explanationTools.html:70
+msgid "Wer ist für die Entwicklung und Wartung des Werkzeugs verantwortlich?"
+msgstr "Who is responsible for the development and maintenance of the tool?"
+
+#: templates/tools_over/explanationTools.html:72
+msgid "Generelle Art des Werkzeugs"
+msgstr "General type of tool"
+
+#: templates/tools_over/explanationTools.html:73
+msgid ""
+"Welcher Art ist das Werkzeug? \n"
+"            Handelt es sich um ein digitales Werkzeug, ein Framework/eine "
+"Bibliothek, eine Programmiersprache, einen Standard oder auch eine Anwendung?"
+msgstr ""
+"What type is the tool? Is it a digital tool, a framework/library, a "
+"programming language, a standard or even an application?"
+
+#: templates/tools_over/explanationTools.html:80
+msgid ""
+"Falls das Werkzeug noch nicht veröffentlicht ist, ist eine Veröffentlichung "
+"geplant?"
+msgstr "If the tool is not yet published, is there plans to release it?"
+
+#: templates/tools_over/explanationTools.html:83
+msgid ""
+"Falls das Werkzeug veröffentlicht ist, in welchem Jahr wurde es "
+"veröffentlicht?"
+msgstr "If the tool is published, in what year was it released?"
+
+#: templates/tools_over/explanationTools.html:86
+msgid ""
+"Quelle für weitere Information zum Werkzeug, z.B. git-Repo, Projektwebseite."
+msgstr ""
+"Source for further information about the tool, e.g. git repo, project "
+"website."
+
+#: templates/tools_over/explanationTools.html:89
+msgid ""
+"Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen möglich:"
+msgstr ""
+"What is the current development status? The following options are possible:"
+
+#: templates/tools_over/explanationTools.html:91
+msgid "erster Entwurf (pre-Alpha)"
+msgstr "first draft (pre-alpha)"
+
+#: templates/tools_over/explanationTools.html:92
+msgid "wesentliche Funktionen (Alpha)"
+msgstr "essential functions (alpha)"
+
+#: templates/tools_over/explanationTools.html:93
+msgid "noch nicht vollständig gestetet (Beta)"
+msgstr "not yet fully tested (beta)"
+
+#: templates/tools_over/explanationTools.html:94
+msgid "alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)"
+msgstr ""
+"All functions preserved, possibly containing errors (Release Candidate - RC)"
+
+#: templates/tools_over/explanationTools.html:95
+msgid "bereit für den produktiven Einsatz (Released)"
+msgstr "ready for productive use (released)"
+
+#: templates/tools_over/explanationTools.html:99
+msgid ""
+"Welche Programmiersprache ist bei der Umsetzung des Werkzeugss hauptsächlich "
+"genutzt?"
+msgstr "Which programming language is mainly used to implement the tool?"
+
+#: templates/tools_over/explanationTools.html:105
+msgid "Welches Datenbanksystem verwendet das Werkzeug?"
+msgstr "Which database system does the tool use?"
+
+#: templates/tools_over/explanationTools.html:108
+msgid ""
+"In welcher Größenordnung wird das Werkzeug angewendet? Findet das Werkzeug "
+"in \n"
+"            einer Komponente, einer Anlage, einem Gebäude, oder in einem "
+"Quartier/Netz oder einer/em Region/Land?"
+msgstr ""
+"On what scale is the tool used? Does the tool find in a component, a system, "
+"a building, or in a district/network or a region/country?"
+
+#: templates/tools_over/explanationTools.html:112
+msgid ""
+"Welche Normen oder Standards dienen als Basis bzw. Orientierung für das "
+"Werkzeug?"
+msgstr ""
+"Which norms or standards serve as the basis or orientation for the tool?"
+
+#: templates/tools_over/explanationTools.html:116
+msgid "Weiterführende Informationen:"
+msgstr "Additional information:"
+
+#: templates/tools_over/tool-comparison.html:56
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Verwendung"
+msgstr "Applications"
+
+#: templates/tools_over/tool-comparison.html:91
+msgid "Benutzeroberfläche"
+msgstr "User interface"
+
+#: templates/tools_over/tool-comparison.html:124
+#: templates/tools_over/tool-detail.html:174
+msgid "Programmiersprache (Umsetzung)"
+msgstr "Programming language (implementation)"
+
+#: templates/tools_over/tool-comparison.html:151
+#: templates/tools_over/tool-detail.html:139
+msgid "Veröffentlichungsjahr"
+msgstr "Year of publication"
+
+#: templates/tools_over/tool-detail.html:103
+msgid "weitere Informationen"
+msgstr "Further information"
+
+#: templates/tools_over/tool-detail.html:112
+msgid "konkrete Anwendungsfälle"
+msgstr "concrete use cases"
+
+#: templates/tools_over/tool-detail.html:123
+msgid "Entwickler/ Maintainer"
+msgstr "Developer/maintainer"
+
+#: templates/tools_over/tool-detail.html:127
+msgid "generelle Art des Werkzeugs"
+msgstr "general type of tool"
+
+#: templates/tools_over/tool-detail.html:131
+msgid "Fokus der Anwendung"
+msgstr "Focus of the application"
+
+#: templates/tools_over/tool-detail.html:135
+msgid "Ist das Tool veröffentlicht?"
+msgstr "Is the tool published?"
+
+#: templates/tools_over/tool-detail.html:137
+msgid "Ja"
+msgstr "Yes"
+
+#: templates/tools_over/tool-detail.html:145
+msgid "Ist eine Veröffentlichung geplant?"
+msgstr "Is a publication planned?"
+
+#: templates/tools_over/tool-detail.html:178
+msgid "Wichtigste Bibliotheken (bei Umsetzung genutzt)"
+msgstr "Most important libraries (used during implementation)"
+
+#: templates/tools_over/tool-detail.html:192
+msgid "Normen/ Standard (Basis/Orientierung des Tools)"
+msgstr "Norms/standard (basis/orientation of the tool)"
+
+#: templates/tools_over/tool-listings-results.html:43
+msgid "Updates"
+msgstr "Updates"
+
+#: templates/weatherdata_over/data-service-listings.html:22
+msgid "Überblick über Wetterdaten-Services"
+msgstr "Overview of weather data services"
+
+#: templates/weatherdata_over/explanation.html:11
+msgid ""
+"Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit "
+"Wetterdaten\n"
+"                    sind in einer ersten Recherche durch das Modul "
+"Digitalisierung der\n"
+"                    wissenschaftliche Begleitforschung der "
+"Forschungsinitiative Energiewendebauen\n"
+"                    entstanden. Der Fokus der Recherche lag auf der Region "
+"Deutschland."
+msgstr ""
+"The weather data and applications for dealing with weather data presented "
+"here were created in initial research by the digitalization module of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen. Research in Germany is the main focus."
+
+#: templates/weatherdata_over/explanation.html:16
+msgid ""
+"Wir möchten Sie ermutigen uns auf weitere Datenquellen, digitale Werkzeuge "
+"oder\n"
+"                    auch konkrete Anwendungen von Wetterdaten aufmerksam zu "
+"machen, um diese ihren\n"
+"                    Kollegenschaft aus der Forschung aber auch aus der "
+"Praxis zugänglich zu machen."
+msgstr ""
+"We would like to encourage you to draw our attention to other data sources, "
+"digital tools or concrete applications of weather data in order to make "
+"these accessible to your colleagues from research and practice."
+
+#: templates/weatherdata_over/explanation.html:20
+msgid ""
+"Im Rahmen der ersten Recherche haben wir folgende Aspekte zu den "
+"Wetterdaten\n"
+"                    bzw. deren Anwendungen zusammengetragen:"
+msgstr ""
+"As part of our initial research, we examined the following aspects for "
+"weather data and their applications compiled:"
+
+#: templates/weatherdata_over/explanation.html:25
+msgid ""
+"Wann ist das letzte Update erfolgt. Insbesondere bei\n"
+"                        Anwendungen, welche im Rahmen von "
+"Forschungsprojekten entwickelt werden, kann\n"
+"                        nach Abschluss des Projektes die Weiterentwicklung "
+"bzw. die Wartung eingestellt\n"
+"                        werden. "
+msgstr ""
+"When was the last update shipped? Particularly in the case of digital "
+"applications developed as part of research projects, further development or "
+"maintenance may be discontinued once the project is completed"
+
+#: templates/weatherdata_over/explanation.html:29
+msgid ""
+"Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
+"                        entstehen Kosten durch die Verwendung?"
+msgstr ""
+"Under what license was the application published and are there any costs "
+"associated with using the application?"
+
+#: templates/weatherdata_over/weatherdata-detail.html:75
+msgid "Welche Daten bietet"
+msgstr "What data offers"
+
+#: templates/weatherdata_over/weatherdata-detail.html:93
+msgid "Link zum Datensatz"
+msgstr "Link to the dataset"
+
+#: templates/weatherdata_over/weatherdata-detail.html:98
+#, fuzzy
+#| msgid "ggf. Beispielhafte Anwendung."
+msgid "Beispielanwendung"
+msgstr "If applicable, exemplary application."
+
+#: weatherdata_over/views.py:59
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Anwendung"
+msgstr "Applications"
+
+#: weatherdata_over/views.py:66
+msgid "Frei nutzbar"
+msgstr "Free to use"
+
+#: weatherdata_over/views.py:69
+msgid "MIT-Lizenz"
+msgstr "MIT license"
+
+#~ msgid "Nutzendenperspektive - Methoden"
+#~ msgstr "User engagement - methods"
+
+#~ msgid "und"
+#~ msgstr "and"
+
+#, fuzzy
+#~| msgid "Icons und Visualisierung"
+#~ msgid "Visualisierung"
+#~ msgstr "Icons and visualization"
+
+#, fuzzy
+#~| msgid "Positive Umweltwirkungen"
+#~ msgid "Positiv Umweltwirkungen"
+#~ msgstr "Positive environmental impact"
+
+#, fuzzy
+#~| msgid "Alternativen"
+#~ msgid "Negative"
+#~ msgstr "Alternatives"
+
+#, fuzzy
+#~| msgid "Negative Umweltwirkungen"
+#~ msgid "Umweltwirkungen"
+#~ msgstr "Negative environmental impacts"
+
+#, fuzzy
+#~| msgid "Vergleiche"
+#~ msgid "Vergleich"
+#~ msgstr "Compare"
+
+#, fuzzy
+#~| msgid "Überblick über die Normen"
+#~ msgid "Überblick über  technische Standards"
+#~ msgstr "Overview of norms"
+
+#, fuzzy
+#~| msgid "Überblick über die Normen"
+#~ msgid "Überblick über die technischen Standards - Normen "
+#~ msgstr "Overview of norms"
+
+#, fuzzy
+#~| msgid "Vergleiche"
+#~ msgid "Vergleich Protokolle"
+#~ msgstr "Comparisons"

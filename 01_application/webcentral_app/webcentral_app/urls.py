@@ -13,29 +13,34 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
-    path('pages/', include('pages.urls')),
-    path('tool_list/', include('tools_over.urls')),
-    path('dataset_list/',include('Datasets.urls')),
-    path('weatherdata_list/', include('weatherdata_over.urls')),
-    path('project_list/', include('project_listing.urls')),
     path('admin/', admin.site.urls),
-    #path('norm_list/',include('norms_over.urls')),
-    path('django_plotly_dash/', include('django_plotly_dash.urls')),
-    path('LastProfile/', include('LastProfile.urls')),
-    path('', include('StartSearch.urls')),
-    path('TechnicalStandards/',include('TechnicalStandards.urls')),
-    path('publications/',include('publications.urls')),
-    path("criteriaCatalog/", include("criteriaCatalog.urls")),
 ]
-
 urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)
+
+urlpatterns += i18n_patterns(
+        path('pages/', include('pages.urls')),
+        path('tool_list/', include('tools_over.urls')),
+        path('dataset_list/',include('Datasets.urls')),
+        path('weatherdata_list/', include('weatherdata_over.urls')),
+        path('project_list/', include('project_listing.urls')),
+        #path('norm_list/',include('norms_over.urls')),
+        path('django_plotly_dash/', include('django_plotly_dash.urls')),
+        path('LastProfile/', include('LastProfile.urls')),
+        path('', include('StartSearch.urls')),
+        path('TechnicalStandards/',include('TechnicalStandards.urls')),
+        path('publications/',include('publications.urls')),
+        path("criteriaCatalog/", include("criteriaCatalog.urls")),
+        path('i18n/', include('django.conf.urls.i18n')),
+)
+
+
+# reakpoint()

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %} Suchergebnisse {% endblock %}
+{% load i18n %}
+{% block title %} {% translate "Suchergebnisse" %} {% endblock %}
 
 {% load static %}
 
@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-12">
         <div class="p-2 text-left rounded-3">
-          <h2 class="m-0" id="searchResultH2">Suchergebnisse</h2>
+          <h2 class="m-0" id="searchResultH2">{% translate "Suchergebnisse" %}</h2>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
           <input id="search-input-tools" class="form-control me-1"
                  type="search"
-                 placeholder="Durchsuche die Plattform!" name="searchValue"
+                 placeholder="{% translate 'Durchsuche die Plattform!' %}" name="searchValue"
                  value={{ searchInput }}
                  style="border: None">
         </div>
@@ -67,7 +67,7 @@
                 </a>
               </th>
               <th scope="col" class="border-0">
-                Art des Ergebnisses
+                {% translate "Art des Ergebnisses" %}
                 <a href="?searchValue={{searchInput}}&sortBy=kindOfItem&page=1&direction=asc">
                   <i class="bi bi-arrow-up"></i>
                 </a>
@@ -75,9 +75,9 @@
                   <i class="bi bi-arrow-down"></i>
                 </a>
               </th>
-              <th scope="col" class="border-0">Fokus</th>
+              <th scope="col" class="border-0">{% translate "Fokus" %}</th>
               <th scope="col" class="border-0 rounded-end">
-                Aktualität
+                {% translate "Aktualität" %}
                 <a href="?searchValue={{searchInput}}&sortBy=virtDate&page=1&direction=asc">
                   <i class="bi bi-arrow-up"></i>
                 </a>
@@ -113,7 +113,7 @@
               <!-- Name of item -->
               <td>
                 <div class="ms-2">
-                  <h6 class="mb-0 fw-light">{{ dataSet.kindOfItem }}</h6>
+                  <h6 class="mb-0 fw-light">{{ dataSet.classificationAgg }}</h6>
                 </div>
               </td>
 
@@ -144,28 +144,28 @@
         {% if data.has_previous %}
         <a href="?searchValue={{searchInput}}&page=1&sortBy={{ sortBy }}&direction={{ direction }}"
            id="paginationFirstSite">
-          &laquo; erste
+          &laquo; {% translate "erste" %}
         </a>
         &nbsp &nbsp
         <a href="?searchValue={{searchInput}}&page={{ data.previous_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
            id="paginationPreviousLink">
-          vorherige
+          {% translate "vorherige" %}
         </a>
         {% endif %}
         &nbsp &nbsp
         <span class="current">
-          Seite {{ data.number }} von {{ data.paginator.num_pages }}  
+          {% translate "Seite" %} {{ data.number }} {% translate "von" %} {{ data.paginator.num_pages }}  
         </span>
         &nbsp &nbsp
         {% if data.has_next %}
         <a href="?searchValue={{searchInput}}&page={{ data.next_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
            id="paginationNextLink">
-          nächste
+          {% translate "nächste" %}
         </a>
         &nbsp &nbsp
         <a href="?searchValue={{searchInput}}&page={{ data.paginator.num_pages }}&sortBy={{ sortBy }}&direction={{ direction }}"
            id="paginationLastSite">
-          letzte &raquo;
+          {% translate "letzte" %} &raquo;
         </a>
         &nbsp &nbsp
         {% endif %}
@@ -173,7 +173,7 @@
     </div>
     <!-- Paginator END -->
     {% else %}
-      <p>Die Suche hat keine Ergebnisse ergeben.</p>
+      <p>{% translate "Die Suche hat keine Ergebnisse ergeben." %}</p>
     {% endif %}
   </div>
 </section>

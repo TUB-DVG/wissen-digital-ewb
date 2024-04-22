@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %} {{ dataset.resolution }} {% endblock %}
-
+{% load i18n %}
 {% load static %}
 
 {% block content%}
@@ -42,7 +42,7 @@ Page intro START -->
       </div>
     </div>
     <div class="row" style="margin-top: 16px;">
-      <a href="javascript:window.history.back();">Zurück </a>
+      <a href="javascript:window.history.back();">{% translate "Zurück" %} </a>
     </div>
   </div>
 </section>
@@ -63,27 +63,27 @@ Page intro START -->
             <div class="tab-pane container active" id="course-pills-1">
               <!-- Course detail START -->
               {% if dataset.shortDescriptionDE %}
-              <h5 class="mb-3">Was ist {{dataset.resolution}}?</h5>
+              <h5 class="mb-3">{% translate "Was ist" %} {{dataset.resolution}}?</h5>
               <p class="mb-1">{{shortDescriptionDE.shortDescriptionDEn}}.</p>
               {% endif %}
               {% if dataset.useCaseCategory %}
-              <h5 class="mt-4">Anwendungsbereich</h5>
+              <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
               <p class="mb-0">{{dataset.useCaseCategory}}</p>
               {% endif %}
               {% if dataset.coverage %}
-              <h5 class="mt-4">Geographische Abdeckung</h5>
+              <h5 class="mt-4">{% translate "Geographische Abdeckung" %}</h5>
               <p class="mb-0">{{dataset.coverage}}</p>
               {% endif %}
               {% if dataset.resolution %}
-              <h5 class="mt-4">Auflösung</h5>
+              <h5 class="mt-4">{% translate "Auflösung" %}</h5>
               <p class="mb-0">{{dataset.resolution}}</p>
               {% endif %}
               {% if dataset.availability %}
-              <h5 class="mt-4">Verfügbarkeit</h5>
+              <h5 class="mt-4">{% translate "Verfügbarkeit" %}</h5>
               <p class="mb-0">{{dataset.availability}}</p>
               {% endif %}
               {% if dataset.referenceLink %}
-              <h5 class="mt-4">Weitere Informationen</h5>
+              <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
               <p class="mb-0"><a href="{{dataset.referenceLink}}" target="_blank">{{dataset.referenceLink}}</a></p>
               {% endif %}
 
@@ -121,14 +121,14 @@ Page intro START -->
             <!-- Course info START -->
             <div class="card card-body border-technical p-4 mb-4">
               <!-- Title -->
-              <h4 class="mb-3">Kurzinformationen</h4>
+              <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
               <ul class="list-group border-0">
                 {% if dataset.useCaseCategory %}
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                   <span class="h6 fw-light mb-0">
                     <i class="fas fa-fw fa-book-open">
                     </i>
-                    Kategorie
+                    {% translate "Kategorie" %}
                   </span>
                   <span>{{ dataset.useCaseCategory }}</span>
                 </li>
@@ -138,7 +138,7 @@ Page intro START -->
                   <span class="h6 fw-light mb-0">
                     <i class="{{category_icon}}">
                     </i>
-                    Datensatz
+                    {% translate "Datensatz" %}
                   </span>
                   <span>{{ dataset.categoryDataset }}</span>
                 </li>
@@ -148,7 +148,7 @@ Page intro START -->
                   <span class="h6 fw-light mb-0">
                     <i class="{{ letztes_update_class }} fa-fw">
                     </i>
-                    Verfügbarkeit
+                    {% translate "Verfügbarkeit" %}
                   </span>
                   <span>{{ dataset.availability }}</span>
                 </li>
