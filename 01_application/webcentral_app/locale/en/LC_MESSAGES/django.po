@@ -3948,3 +3948,15 @@ msgstr "MIT license"
 #~| msgid "Vergleiche"
 #~ msgid "Vergleich Protokolle"
 #~ msgstr "Comparisons"
+
+#: StartSearch/views.py:203 StartSearch/views.py:204
+msgid "Forschungsprojekt"
+msgstr "Research project"
+
+#: StartSearch/views.py:218 StartSearch/views.py:230
+msgid "noch nicht hinterlegt"
+msgstr "not yet filed"
+
+#: StartSearch/views.py:228 StartSearch/views.py:229
+msgid "Protokoll"
+msgstr "Protocol"

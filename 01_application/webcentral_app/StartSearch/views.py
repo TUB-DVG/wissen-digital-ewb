@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.db.models import Prefetch
 from django.contrib.postgres.aggregates import StringAgg
+from django.utils.translation import gettext as _
 # from django.db.models.functions import StringAgg
 
 from tools_over.models import (
@@ -119,7 +120,6 @@ def resultSearch(request):
         classificationQueryExpression = 'classification__classification_en'
     
     filteredTools = Tools.objects.annotate(classificationAgg=StringAgg(classificationQueryExpression, delimiter=', ')).values("id", "name", "shortDescription", "lastUpdate", "classificationAgg").filter(criterionToolsOne | criterionToolsTwo)
-
     # filtered projects
     criterionProjectsOne = Q(
         enargusData__collaborativeProject__icontains=searchInput)
@@ -200,7 +200,7 @@ def resultSearch(request):
         project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
-        project["classificationAgg"] = "Forschungsprojekt"
+        project["classificationAgg"] = _("Forschungsprojekt")
         projectDates = project.pop("enargusData__startDate")
         project["virtDate"] = projectDates
         project["date"] = projectDates.strftime("%d.%m.%Y")
@@ -214,7 +214,7 @@ def resultSearch(request):
             normName = normName[:40] + " ... "
         norm["name"] = normName
         norm["kindOfItem"] = "Norm"
-        norm["date"] = "noch nicht hinterlegt"
+        norm["date"] = _("noch nicht hinterlegt")
         norm["virtDate"] = date.fromisoformat("2049-09-09")
         norm["pathToFocusImage"] = findPicturesForFocus(norm)
     # for filteredProtocols (including also virtual dates, because
@@ -225,8 +225,8 @@ def resultSearch(request):
             protocolName = protocolName[:40] + " ... "
         protocol["name"] = protocolName
         protocol["kindOfItem"] = "Protokoll"
-        protocol["classificationAgg"] = "Protokoll"
-        protocol["date"] = "noch nicht hinterlegt"
+        protocol["classificationAgg"] = _("Protokoll")
+        protocol["date"] = _("noch nicht hinterlegt")
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
 
