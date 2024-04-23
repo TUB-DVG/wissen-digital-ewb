@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-19 12:08+0000\n"
+"POT-Creation-Date: 2024-04-23 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -477,6 +477,18 @@ msgstr "Missing values"
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
+#: StartSearch/views.py:203
+msgid "Forschungsprojekt"
+msgstr "Research project"
+
+#: StartSearch/views.py:217 StartSearch/views.py:229
+msgid "noch nicht hinterlegt"
+msgstr "not yet filed"
+
+#: StartSearch/views.py:228
+msgid "Protokoll"
+msgstr "Protocol"
+
 #: TechnicalStandards/views.py:33 TechnicalStandards/views.py:34
 #: TechnicalStandards/views.py:60
 msgid "Bezeichnung"
@@ -853,20 +865,27 @@ msgid "technisch"
 msgstr "technical"
 
 #: templates/StartSearch/StartSearch.html:184
-#: templates/StartSearch/StartSearch.html:287
-#: templates/StartSearch/StartSearch.html:384
-#: templates/StartSearch/StartSearch.html:464
-#: templates/partials/_navbar.html:89 templates/partials/_navbar.html:141
-#: templates/partials/_navbar.html:186 templates/partials/_navbar.html:226
+#: templates/StartSearch/StartSearch.html:298
+#: templates/StartSearch/StartSearch.html:406
+#: templates/StartSearch/StartSearch.html:496
+#: templates/partials/_navbar.html:89 templates/partials/_navbar.html:147
+#: templates/partials/_navbar.html:197 templates/partials/_navbar.html:242
 msgid "Publikationen"
 msgstr "Publications"
 
-#: templates/StartSearch/StartSearch.html:205
-#: templates/partials/_navbar.html:105
+#: templates/StartSearch/StartSearch.html:195
+#: templates/StartSearch/StartSearch.html:309
+#: templates/StartSearch/StartSearch.html:417
+#: templates/StartSearch/StartSearch.html:507
+msgid "Anwendungsfälle"
+msgstr "Use cases"
+
+#: templates/StartSearch/StartSearch.html:216
+#: templates/partials/_navbar.html:111
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
-#: templates/StartSearch/StartSearch.html:207
+#: templates/StartSearch/StartSearch.html:218
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -883,43 +902,43 @@ msgstr ""
 "applications. Key aspects include the economical operation of digital "
 "applications/business models, along with user integration and interactivity."
 
-#: templates/StartSearch/StartSearch.html:226
-#: templates/partials/_navbar.html:111 templates/partials/_navbar.html:117
+#: templates/StartSearch/StartSearch.html:237
+#: templates/partials/_navbar.html:117 templates/partials/_navbar.html:123
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/StartSearch/StartSearch.html:238
+#: templates/StartSearch/StartSearch.html:249
 msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
 msgstr "Business model applications - Challenges"
 
-#: templates/StartSearch/StartSearch.html:250
-#: templates/partials/_navbar.html:123
+#: templates/StartSearch/StartSearch.html:261
+#: templates/partials/_navbar.html:129
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/StartSearch/StartSearch.html:262
-#: templates/StartSearch/StartSearch.html:274
-#: templates/partials/_navbar.html:129 templates/partials/_navbar.html:135
+#: templates/StartSearch/StartSearch.html:273
+#: templates/StartSearch/StartSearch.html:285
+#: templates/partials/_navbar.html:135 templates/partials/_navbar.html:141
 msgid "Nutzenden&shy;perspektive"
 msgstr "User Engagement"
 
-#: templates/StartSearch/StartSearch.html:274
+#: templates/StartSearch/StartSearch.html:285
 #: templates/pages/userIntegrationMethod.html:19
-#: templates/partials/_navbar.html:135
+#: templates/partials/_navbar.html:141
 msgid "Methoden"
 msgstr "Methods"
 
-#: templates/StartSearch/StartSearch.html:285
-#: templates/partials/_navbar.html:140
+#: templates/StartSearch/StartSearch.html:296
+#: templates/partials/_navbar.html:146
 msgid "betrieblich"
 msgstr "operational"
 
-#: templates/StartSearch/StartSearch.html:312
-#: templates/partials/_navbar.html:156
+#: templates/StartSearch/StartSearch.html:334
+#: templates/partials/_navbar.html:167
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:314
+#: templates/StartSearch/StartSearch.html:336
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -939,35 +958,35 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:335
+#: templates/StartSearch/StartSearch.html:357
 #: templates/pages/environmentalIntegrityNegativ.html:19
-#: templates/partials/_navbar.html:162
+#: templates/partials/_navbar.html:173
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: templates/StartSearch/StartSearch.html:347
+#: templates/StartSearch/StartSearch.html:369
 #: templates/pages/environmentalIntegrityPositiv.html:19
-#: templates/partials/_navbar.html:168
+#: templates/partials/_navbar.html:179
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impact"
 
-#: templates/StartSearch/StartSearch.html:359
+#: templates/StartSearch/StartSearch.html:381
 #: templates/pages/benchmarkingChallenges.html:19
-#: templates/partials/_navbar.html:174
+#: templates/partials/_navbar.html:185
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:371
-#: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:180
+#: templates/StartSearch/StartSearch.html:393
+#: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:191
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: templates/StartSearch/StartSearch.html:405
-#: templates/partials/_navbar.html:202
+#: templates/StartSearch/StartSearch.html:437
+#: templates/partials/_navbar.html:218
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:407
+#: templates/StartSearch/StartSearch.html:439
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -987,23 +1006,23 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:427
-#: templates/partials/_navbar.html:208
+#: templates/StartSearch/StartSearch.html:459
+#: templates/partials/_navbar.html:224
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:439
-#: templates/partials/_navbar.html:214
+#: templates/StartSearch/StartSearch.html:471
+#: templates/partials/_navbar.html:230
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
-#: templates/StartSearch/StartSearch.html:451
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:220
+#: templates/StartSearch/StartSearch.html:483
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:236
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:462
-#: templates/partials/_navbar.html:225
+#: templates/StartSearch/StartSearch.html:494
+#: templates/partials/_navbar.html:241
 msgid "rechtlich"
 msgstr "legal"
 
@@ -2988,7 +3007,7 @@ msgstr "Digital tools"
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:185
+#: templates/partials/_navbar.html:196
 msgid "ökologisch"
 msgstr "ecological"
 
@@ -3812,6 +3831,16 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 msgid "Updates"
 msgstr "Updates"
 
+#: templates/use_cases/usecase-listings.html:18
+#, fuzzy
+#| msgid "Überblick über die Normen"
+msgid "Überblick über die Anwendungsfälle"
+msgstr "Overview of norms"
+
+#: templates/use_cases/usecase-listings.html:117
+msgid "Perspektive"
+msgstr ""
+
 #: templates/weatherdata_over/data-service-listings.html:22
 msgid "Überblick über Wetterdaten-Services"
 msgstr "Overview of weather data services"
@@ -3948,15 +3977,3 @@ msgstr "MIT license"
 #~| msgid "Vergleiche"
 #~ msgid "Vergleich Protokolle"
 #~ msgstr "Comparisons"
-
-#: StartSearch/views.py:203 StartSearch/views.py:204
-msgid "Forschungsprojekt"
-msgstr "Research project"
-
-#: StartSearch/views.py:218 StartSearch/views.py:230
-msgid "noch nicht hinterlegt"
-msgstr "not yet filed"
-
-#: StartSearch/views.py:228 StartSearch/views.py:229
-msgid "Protokoll"
-msgstr "Protocol"
