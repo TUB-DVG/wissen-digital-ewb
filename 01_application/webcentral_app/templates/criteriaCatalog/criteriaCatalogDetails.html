@@ -576,18 +576,18 @@ button {
     var textContent = "";
     if (element.tagName == "BUTTON") {
       if (Number(element.id) > 3) {
-        textContent = "&emsp;" + element.textContent + "\n";
+        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
       }
       else {
-        textContent = element.textContent + "\n";
+        textContent = element.textContent;
       }
     }
     if (element.tagName == "P") {
       if (Number(element.id) > 3) {
-        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>\n";
+        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
       }
       else {
-        textContent = element.textContent + "\n";
+        textContent = element.textContent;
       }
     }
     window.textForCombinedElement += textContent;
@@ -889,6 +889,9 @@ function removeMarkTagsFromText(element) {
 }
 
 function openChildLayer(element) {
+  if (element == null) {
+    return;
+  }
   if (element.tagName == "BUTTON" && element.id != "0") {
     showFullTextOfHeading(element);
   }
