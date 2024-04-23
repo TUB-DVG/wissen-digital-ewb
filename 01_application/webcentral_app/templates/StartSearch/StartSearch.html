@@ -191,7 +191,7 @@
                          class="rounded" alt="icon">
                   </td>
                   <td>
-                    <a class="technical" href="{% url 'use_cases_list' %}" >
+                    <a class="technical" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}" >
                       {% translate "Anwendungsfälle" %}
                     </a>
                   </td>
@@ -305,7 +305,7 @@
                          class="rounded" alt="icon">
                   </td>
                   <td>
-                    <a class="operational" href="{% url 'use_cases_list' %}" >
+                    <a class="operational" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'betrieblich' %}" >
                       {% translate "Anwendungsfälle" %}
                     </a>
                   </td>
@@ -401,7 +401,7 @@
                   </td>
                   <td>
                     <a class="ecological"
-                    href="{%url 'publicationPage' %}?searched=&fo=13"
+                    href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'ökologisch' %}"
                     id="linkToEcologicalPublications">
                     {% translate "Publikationen" %}
                     </a>
@@ -503,7 +503,7 @@
                          class="rounded" alt="icon">
                   </td>
                   <td>
-                    <a class="legal" href="{% url 'use_cases_list' %}" >
+                    <a class="legal" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'rechtlich' %}" >
                       {% translate "Anwendungsfälle" %}
                     </a>
                   </td>

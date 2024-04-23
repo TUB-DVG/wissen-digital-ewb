@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from tools_over.models import Focus
 
 class UseCase(models.Model):
     item_code = models.CharField(max_length=25, unique=True)
@@ -9,7 +10,8 @@ class UseCase(models.Model):
                                 verbose_name="SRI-Zuordnung")
     levelOfAction = models.CharField(max_length=100)
     degreeOfDetail = models.CharField(max_length=100)
-    perspective = models.CharField(max_length=255)
+    # perspective = models.CharField(max_length=255)
+    focus = models.ManyToManyField(Focus)
     idPerspectiveforDetail = models.PositiveIntegerField()
     effectEvaluation = models.CharField(max_length=1, 
                                      choices=[('+', 'Positive'), ('-', 'Negative'), ('o', 'Neutrale')])
