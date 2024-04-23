@@ -221,26 +221,26 @@ def indexBusinessApplication(request):
     applications = Tools.objects.filter(
         # classification__classification="Digitale Anwendung", 
         focus__focus_de="betrieblich"
-    ) # reads all data from table Teilprojekt
-    usage = request.GET.get('u')
-    accessibility = request.GET.get('l')
-    lifeCyclePhase = request.GET.get('lcp')
-    searched = request.GET.get('searched')
+    )
+
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("u") != None) |(request.GET.get("l") != None)| 
-        (request.GET.get("lcp") != None) |(request.GET.get("searched") != None)):
-        usage = request.GET.get('u')
-        licence = request.GET.get('l')
-        lifeCyclePhase = request.GET.get('lcp')
-        searched = request.GET.get('searched')
-        
+    if ((request.GET.get("Nutzung", '') != None) |(request.GET.get("Zugänglichkeit", '') != None)| 
+        (request.GET.get("Lebenszyklusphase", '') != None) |(request.GET.get('searched', '') != None)):
+
+        usage = request.GET.get("Nutzung", '')
+        accessibility = request.GET.get("Zugänglichkeit", '')
+        lifeCyclePhase = request.GET.get("Lebenszyklusphase", '')
+        searched = request.GET.get('searched', '')
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
-        applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(name__icontains=searched,  usage__usage__icontains=usage, lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+        applications = Tools.objects.filter(criterionToolsOne | criterionToolsTwo | criterionToolsThree | criterionToolsFour).filter(
+                        name__icontains=searched,  
+                        usage__usage__icontains=usage, 
+                        lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
                         accessibility__accessibility__icontains=accessibility,
                         focus__focus_de="betrieblich"
                         # classification__classification="Digitales Werkzeug",
@@ -287,7 +287,7 @@ def indexBusinessApplication(request):
         'lifeCyclePhaseFields': lifeCyclePhaseNames,
         "heading": headingText,
         "nameOfTemplate": "tools",
-        "urlName": "tool_list",
+        "urlName": "businessModelApplication",
         "optionList": [
             {
                 "placeholder": "Nutzung", 
