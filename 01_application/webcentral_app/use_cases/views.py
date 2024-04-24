@@ -4,7 +4,10 @@ from django.db.models import Q
 
 from .models import UseCase
 from tools_over.models import Focus
-from common.views import getFocusObjectFromGetRequest
+from common.views import (
+    getFocusObjectFromGetRequest,
+    getFocusNameIndependentOfLanguage,
+)
 
 
 def index(request):
@@ -47,6 +50,7 @@ def index(request):
     useCasePaginator = Paginator(useCase,12)
     pageNum = request.GET.get('page',None)
     page = useCasePaginator.get_page(pageNum)
+    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
 
     
     context = {

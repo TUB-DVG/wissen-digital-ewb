@@ -8,7 +8,10 @@ from publications.models import Publication
 from django.db.models import Q          # used this to be able to search over many parameters
 from tools_over.models import Focus
 
-from common.views import getFocusObjectFromGetRequest
+from common.views import (
+    getFocusObjectFromGetRequest,
+    getFocusNameIndependentOfLanguage,
+)
 
 
 def index(request):
@@ -37,11 +40,10 @@ def index(request):
     paginator = Paginator(publications, 12)
 
     page_number = request.GET.get('page')
+
     page = paginator.get_page(page_number)
-    if focus is None or focus == "":
-        focusName = "neutral"
-    else:
-        focusName = focusObjectFromGetRequest.focus_en
+    
+    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
 
     context = {
         'page': page,

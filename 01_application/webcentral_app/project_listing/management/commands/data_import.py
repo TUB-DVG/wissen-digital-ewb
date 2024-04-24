@@ -95,7 +95,7 @@ from TechnicalStandards.models import (
     Norm,
     Protocol,
 )
-
+from use_cases.models import UseCase
 from weatherdata_over.models import Weatherdata
 from project_listing.DatabaseDifference import DatabaseDifference
 import math
@@ -718,7 +718,7 @@ class Command(BaseCommand):
         sriLevel = row[header.index('SRI-Zuordnung')]
         levelOfAction = row[header.index('Wirkebene')]
         detail = row[header.index('Detailgrad')]
-        focus = row[header.index('Perspektive')]
+        # focus = row[header.index('Perspektive')]
         effects = row[header.index('Lfd Nr. Effekte dieser Perspektive bei dem jeweiligen Detailgrad')]
         ratingOfEffect = row[header.index('Wertung des Effektes')]
         nameOfEffect = row[header.index('Name des Effekts')]
@@ -726,8 +726,8 @@ class Command(BaseCommand):
         source = row[header.index('Quelle / Hinweise')]
         icon = row[header.index('ICON')]
 
-        focusList = row[header.index('focus')].split(",")
-        processedFocusList = self._correctReadInValue(row[header.index('focus')])
+        focusList = row[header.index('Perspektive')].split(",")
+        processedFocusList = self._correctReadInValue(row[header.index('Perspektive')])
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
         focusElements = Focus.objects.filter(focus__in=focusList)  
 

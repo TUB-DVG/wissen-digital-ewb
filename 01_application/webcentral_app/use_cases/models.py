@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 from tools_over.models import Focus
 
 class UseCase(models.Model):
