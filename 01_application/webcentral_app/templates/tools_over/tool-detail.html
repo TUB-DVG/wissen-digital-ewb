@@ -45,16 +45,7 @@
         </ul>
       </div>
     </div>
-    <div class="row" style="margin-top: 16px;">
-       <a href="#" id="backButton">{% translate "Zurück" %}</a>
-      <script nonce="{{request.csp_nonce}}">
-        document.getElementById('backButton').addEventListener('click', function(event) {
-          event.preventDefault();
-          window.history.back();
-        });
-      </script>
-
-    </div>
+      {% include "common/back-button.html" %}
   </div>
 </section>
 <!-- Page intro END -->
