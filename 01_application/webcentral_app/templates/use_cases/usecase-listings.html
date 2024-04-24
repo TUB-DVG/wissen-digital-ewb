@@ -28,99 +28,8 @@
   <!-- Page content START -->
   <section class="pt-0">
     <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
-      {% include "common/search-bar.html" %}
-
       <!-- Filter bar START -->
-      <form class="border-technical p-4 my-4 z-index-9 position-relative">
-        <div class="row g-3">
-          <!-- Input -->
-          <div class="col-xl-3" title="Suchen in den UseCases">
-            <input id="search-input-tools"
-                   class="form-control me-1 border-technical"
-                   type="search" placeholder="Suchbegriff"
-                   name='searched'>
-          </div>
-          <!-- Select item -->
-          <div class="col-xl-7">
-            <form  method="GET">
-              <div class="row g-3">
-                <!-- Select items filter "Use Case"-->
-                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
-                    aria-label=".form-select-sm example"
-                    name="u"
-                    id="Use Case-input-tools"
-                    title="Filtern nach der Use Case der UseCase">
-                    <option value="">Use Case</option>
-                    <option value="Aggregation"
-                      {% if use_case == "Aggregation" %}
-                        selected="selected" 
-                      {% endif %}>Aggregation
-                    </option>
-                  </select>
-                  </div>
-                  <!-- Select items filter "perspective"-->
-                  <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                    <select class="form-select js-choice border-technical-round"
-                      aria-label=".form-select-sm example"
-                      name="p" id="perspective-input-tools"
-                      title="Filtern nach der Perspektive des Anwendungfalls">
-                      <option value="">{% translate "Perspektive" %}</option>
-                      <option value="ökologisch"
-                        {% if perspective == "ökologisch" %}
-                          selected="selected"
-                        {% endif %}>ökologisch
-                      </option>
-                    </select>
-                </div>
-                <!-- Search item "effectevaluation" -->
-                <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                  <select class="form-select js-choice border-technical-round"
-                    aria-label=".form-select-sm example"
-                    name="ev"
-                    id="effectevaluation-input-tools"
-                    title="Filtern nach der effectevaluation der UseCase">
-                    <option value="">Auswirkungen der Aktion</option>
-                    <option value= "+"
-                      {% if effectevaluation == "+" %}
-                        selected="selected" 
-                      {% endif %}>Positive
-                    </option>
-                    <option value="-"
-                    {% if effectevaluation == "-" %}
-                      selected="selected" 
-                    {% endif %}>Negative
-                    </option>
-                    <option value="o"
-                      {% if effectevaluation == "o" %}
-                        selected="selected" 
-                      {% endif %}>Neutral
-                    </option>
-                  </select>
-                </div>
-                <!-- Search item -->
-              </div>
-            </form>
-          </div>
-          <!-- Select item END -->
-          <!-- search Button -->
-          <div class="col-xl-1">
-            <button type="submit"
-              class="btn btn-technical mb-0 rounded z-index-1 w-100"
-              id="search-submit-tools" href="">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-          <!-- Clear button -->
-          <div class="col-xl-1">
-            <a href="{% url 'use_cases_list' %}">
-              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-                Alle
-              </h6>
-            </a>
-          </div>
-        </div>
-      </form>
+      {% include "common/search-bar.html" %}
       <!-- Row END -->
       <!-- Filter bar END -->
       <!-- search tags START -->
@@ -176,30 +85,7 @@
           </div>
           <!-- tools Grid END -->
           <!-- Pagination START -->
-          <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
-          <ul class="pagination pagination-primary-soft rounded mb-0">
-            {% if page.has_previous %}
-            <li class="page-item mb-0">
-              <a class="page-link" 
-                  href="{%url 'use_cases_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&p={% if licence %}{{licence}}{% endif %}&ev={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.previous_page_number}}" 
-                  tabindex="-1">
-                <i class="fas fa-angle-double-left"></i>
-              </a>
-            </li>
-            {% endif %}
-            {% if page.has_next %}
-            <li class="page-item mb-0">
-              <a class="page-link" 
-                href="{%url 'use_cases_list' %}?searched={% if search %}{{search}}{% endif %}&u={% if usage %}{{usage}}{% endif %}&p={% if licence %}{{licence}}{% endif %}&lcp={% if lifeCyclePhase %}{{lifeCyclePhase}}{% endif %}&page={{ page.next_page_number}}">
-                tabindex="-1"
-                <i class="fas fa-angle-double-right">
-                </i>
-              </a>
-            </li>
-            {% else %}
-            {% endif %}
-          </ul>
-          </nav>
+          {% include "common/pagination.html" %}
           <!-- Pagination END -->
         </div>
       </div>

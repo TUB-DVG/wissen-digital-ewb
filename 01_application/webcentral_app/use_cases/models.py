@@ -3,7 +3,7 @@ from django.db import models
 from tools_over.models import Focus
 
 class UseCase(models.Model):
-    item_code = models.CharField(max_length=25, unique=True)
+    item_code = models.CharField(max_length=25)
     useCase = models.CharField(max_length=50)
     sriLevel = models.CharField(max_length=255,
                                 verbose_name="SRI-Zuordnung")

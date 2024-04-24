@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.utils.translation import gettext as _
 
 from .models import UseCase
 from tools_over.models import Focus
@@ -58,18 +59,18 @@ def index(request):
         "nameOfTemplate": "use_cases",    
         "optionList": [
             {
-                "placeholder": "Fokus", 
+                "placeholder": _("Fokus"), 
                 "objects": focusOptions,
                 "fieldName": "focus",
             },
             {
-                "placeholder": "Use Case", 
+                "placeholder": _("Use Case"), 
                 "objects": ["Aggregation"],
                 "fieldName": "use",
             },
             {
-                "placeholder": "Auswirkung der Evaluation", 
-                "objects": ["Positiv", "Negativ", "Neutral"],
+                "placeholder": _("Auswirkung der Evaluation"), 
+                "objects": [_("Positiv"), _("Negativ"), _("Neutral")],
                 "fieldName": "evaluation",
             }, 
         ],
