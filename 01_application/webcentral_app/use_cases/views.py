@@ -15,7 +15,7 @@ def index(request):
     """Shows the list of all projects including some key features."""
     searched = request.GET.get('searched')
 
-    focus = request.GET.get('Fokus')
+    focus = request.GET.get(_('Fokus'))
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
     # query_filters = Q()
