@@ -28,23 +28,21 @@ def index(request):
     #     query_filters &= Q(focus=focusObjectFromGetRequest)
     useCase = UseCase.objects.all() # reads all data from table UseCase
     filteredBy = [None]*3
-    searched=None
-    if ((request.GET.get("u") != None) |(request.GET.get("p") != None)| 
+    searched = None
+    if ((request.GET.get("u") != None) | (focusObjectFromGetRequest is not None) | 
         (request.GET.get("ev") != None) |(request.GET.get("searched") != None)):
-        use_case = request.GET.get('u')
-        perspective = request.GET.get('')
-        effectevaluation = request.GET.get('ev')
+        use_case = request.GET.get('u', '')
+        effectevaluation = request.GET.get('ev', '')
         if effectevaluation == ' ':
             effectevaluation = '+'
         searched = request.GET.get('searched')
         useCase = UseCase.objects.filter(
             useCase__icontains=use_case,
-            perspective__icontains=perspective,
             effectEvaluation__icontains=effectevaluation,
             sriLevel__icontains=searched,
             focus=focusObjectFromGetRequest,
         )
-        filteredBy = [use_case, perspective, effectevaluation]
+        filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
 
     useCase = list(sorted(useCase, key=lambda obj:obj.item_code))
     useCasePaginator = Paginator(useCase,12)
@@ -63,9 +61,20 @@ def index(request):
                 "placeholder": "Fokus", 
                 "objects": focusOptions,
                 "fieldName": "focus",
-            },    
+            },
+            {
+                "placeholder": "Use Case", 
+                "objects": ["Aggregation"],
+                "fieldName": "use",
+            },
+            {
+                "placeholder": "Auswirkung der Evaluation", 
+                "objects": ["Positiv", "Negativ", "Neutral"],
+                "fieldName": "evaluation",
+            }, 
         ],
         "focusBorder": focusName,
+        "urlName": "use_cases_list",
         'search':searched,
         'use_case': filteredBy[0],
         'perspective': filteredBy[1],
