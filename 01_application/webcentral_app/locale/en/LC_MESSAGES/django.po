@@ -968,7 +968,7 @@ msgstr "Negative environmental impacts"
 #: templates/pages/environmentalIntegrityPositiv.html:19
 #: templates/partials/_navbar.html:179
 msgid "Positive Umweltwirkungen"
-msgstr "Positive environmental impact"
+msgstr "Positive environmental impacts"
 
 #: templates/StartSearch/StartSearch.html:381
 #: templates/pages/benchmarkingChallenges.html:19
@@ -3946,7 +3946,7 @@ msgstr "MIT license"
 #, fuzzy
 #~| msgid "Positive Umweltwirkungen"
 #~ msgid "Positiv Umweltwirkungen"
-#~ msgstr "Positive environmental impact"
+#~ msgstr "Positive environmental impacts"
 
 #, fuzzy
 #~| msgid "Alternativen"
