@@ -1,6 +1,9 @@
 import datetime
 import locale
+
+from django.contrib import messages
 import pandas as pd
+
 from typing import Tuple
 import plotly.graph_objects as go
 import dash 
@@ -10,6 +13,7 @@ from dash.exceptions import PreventUpdate
 from .Warmelastapproximation_csv import heatLoad
 from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
 from wetterdienst.provider.dwd.observation import DwdObservationRequest
+
 
 locale.setlocale(locale.LC_ALL, "de_DE.utf8") # German time
 
@@ -32,13 +36,12 @@ stations = DwdObservationRequest(
     resolution = resolution,
     period = period
     )
-
+placeholderState = "Auswahl des Bundesland"
 try:
     polledStationNames = stations.all( ).df['state'].unique()
 except ValueError:
     polledStationNames = []
-    print("Error in the data")
-
+    placeholderState = "Weatherdata-API is not available. Please try again later."
 
 # App layout
 app.layout = html.Div([
@@ -70,7 +73,7 @@ app.layout = html.Div([
     # Dropdown for State options for the Wetterdienst station choice
         dcc.Dropdown(
             polledStationNames,
-            placeholder = "Auswahl des Bundesland",
+            placeholder = placeholderState,
             id = 'state' 
         ),
         # Dropdown for the available wetterdienst stations in the chosen State

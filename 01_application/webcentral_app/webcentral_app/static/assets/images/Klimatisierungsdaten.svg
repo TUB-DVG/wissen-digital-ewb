@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g>
+    <circle cx="9.945" cy="11.64578" r=".99846" style="fill: none; stroke: #000; stroke-miterlimit: 10;"/>
+    <path d="M9.20177,10.74718s-.95661-.97613-.87852-2.14749,1.15184-1.44468,1.93274-1.36658,1.54298,.5471,1.28849,1.32754c-.28692,.87988-1.47339,.61656-1.44783,2.09285" style="fill: none; stroke: #000; stroke-miterlimit: 10;"/>
+    <path d="M11.15423,11.55855s1.2591-.5316,2.32006-.02905,.92112,1.60167,.56188,2.29942-1.07522,1.23451-1.70779,.71135c-.71744-.59335-.02458-1.60894-1.4405-2.12415" style="fill: none; stroke: #000; stroke-miterlimit: 10;"/>
+    <path d="M9.46126,12.67127s-.43883,1.29436-1.51918,1.75374-1.80916-.37515-2.0922-1.10714-.20878-1.62374,.60246-1.74918c.91281-.14114,1.21438,1.03145,2.51347,.35052" style="fill: none; stroke: #000; stroke-miterlimit: 10;"/>
+  </g>
+  <g>
+    <polyline points="16.27981 6.96616 16.4 18 3.72019 18 3.6 6.96616" style="fill: none; fill-rule: evenodd; stroke: #000; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <polyline points="2.00195 8.15788 10.02816 2 17.99805 8.21069" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  </g>
+</svg>
