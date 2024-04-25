@@ -18,15 +18,6 @@ def index(request):
     focus = request.GET.get('focus')
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
-    # query_filters = Q()
-
-    # if searched:
-    #     query_filters |= Q(title__icontains=searched)
-    #     query_filters |= Q(abstract__icontains=searched)
-    #     query_filters |= Q(authors__icontains=searched)
-    #     query_filters |= Q(keywords__icontains=searched)  
-    # if focus:
-    #     query_filters &= Q(focus=focusObjectFromGetRequest)
     
     useCase = UseCase.objects.all() # reads all data from table UseCase
     filteredBy = [None]*3
@@ -121,8 +112,12 @@ def useCaseView(request, id):
     return render(request, 'use_cases/usecase-detail.html', context)
 
 def graph(request):
+    distinctLevelOfDetails = UseCase.objects.all().values("degreeOfDetail").distinct()
+    context = {
+        "levelOfDetailElements": distinctLevelOfDetails,
+    }
 
-    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html') 
+    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html', context)
 
 def _setUseCaseImage(useCaseItem):
     """
