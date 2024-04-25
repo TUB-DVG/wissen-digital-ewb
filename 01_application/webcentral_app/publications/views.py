@@ -8,6 +8,10 @@ from publications.models import Publication
 from django.db.models import Q          # used this to be able to search over many parameters
 from tools_over.models import Focus
 
+from common.views import (
+    getFocusObjectFromGetRequest,
+    getFocusNameIndependentOfLanguage,
+)
 
 
 def index(request):
@@ -17,20 +21,17 @@ def index(request):
     filteredBy = [None]*3
     
     searched = request.GET.get('searched')
-
-    focus = request.GET.get('Fokus')
+    focus = request.GET.get('focus')
+    focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
     
-    englishFocus = Focus.objects.filter(focus_en=focus)
-    germanFocus = Focus.objects.filter(focus_de=focus)
-    focusElements = englishFocus | germanFocus
     if searched:
         query_filters |= Q(title__icontains=searched)
         query_filters |= Q(abstract__icontains=searched)
         query_filters |= Q(authors__icontains=searched)
         query_filters |= Q(keywords__icontains=searched)  
     if focus:
-        query_filters &= Q(focus=focusElements[0])
+        query_filters &= Q(focus=focusObjectFromGetRequest)
     if query_filters:
         publications = publications.filter(query_filters).distinct()
 
@@ -39,11 +40,10 @@ def index(request):
     paginator = Paginator(publications, 12)
 
     page_number = request.GET.get('page')
+
     page = paginator.get_page(page_number)
-    if focus is None or focus == "":
-        focusName = "neutral"
-    else:
-        focusName = focusElements[0].focus_en
+    
+    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
 
     context = {
         'page': page,

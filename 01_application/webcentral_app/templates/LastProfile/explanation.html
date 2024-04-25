@@ -145,6 +145,13 @@ Page Banner END -->
       <a href="{% url 'LastProfile_warme_display' %}">
         <img src="{% static '/img/Lastprofil/heat.png' %}"
              style="max-height:30px;">
+        {% if messages %}
+          <ul class="messages">
+                 {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                 {% endfor %}
+          </ul>
+        {% endif %}
         {% blocktranslate %}Approximation der Wärmelast{% endblocktranslate %}
       </a>
       </div>

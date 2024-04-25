@@ -179,12 +179,23 @@
                   </td>
                   <td>
                     <a class="technical"
-                    href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'technisch' %}"
+                    href="{%url 'publicationPage' %}?searched=&focus={% translate 'technisch' %}"
                     id="linkToTechnicalPublications">
                       {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
+                <!-- <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="technical" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}" >
+                      {% translate "Anwendungsfälle" %}
+                    </a>
+                  </td>
+                </tr> -->
               </table>
             </div>
           </div>
@@ -282,12 +293,23 @@
                   </td>
                   <td>
                     <a class="operational"
-                    href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'betrieblich' %}"
+                    href="{%url 'publicationPage' %}?searched=&focus={% translate 'betrieblich' %}"
                     id="linkToOperationalPublications">
                     {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
+                <!-- <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="operational" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'betrieblich' %}" >
+                      {% translate "Anwendungsfälle" %}
+                    </a>
+                  </td>
+                </tr> -->
               </table>
             </div>
           </div>
@@ -379,12 +401,23 @@
                   </td>
                   <td>
                     <a class="ecological"
-                    href="{%url 'publicationPage' %}?searched=&fo=13"
+                    href="{%url 'publicationPage' %}?searched=&focus={% translate 'ökologisch' %}"
                     id="linkToEcologicalPublications">
                     {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
+                <!-- <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="ecological" href="{% url 'use_cases_list' %}" >
+                      {% translate "Anwendungsfälle" %}
+                    </a>
+                  </td>  
+                </tr>              -->
               </table>
             </div>
           </div>
@@ -428,7 +461,7 @@
                     </a>
                   </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                   <td>
                     <img src="{% static 'assets/images/standards.svg' %}"
                          class="rounded" alt="icon">
@@ -439,7 +472,7 @@
                       {% translate "Kriterien&shy;katalog" %}
                     </a>
                   </td>
-                </tr>
+                </tr> -->
                 <tr>
                   <td>
                     <img src="{% static 'assets/images/data.svg' %}"
@@ -459,12 +492,23 @@
                   </td>
                   <td>
                     <a class="legal"
-                    href="{%url 'publicationPage' %}?searched=&Fokus={% translate 'rechtlich' %}"
+                    href="{%url 'publicationPage' %}?searched=&focus={% translate 'rechtlich' %}"
                     id="linkToLegalPublications">
                     {% translate "Publikationen" %}
                     </a>
                   </td>
                 </tr>
+                <!-- <tr>
+                  <td>
+                    <img src="{% static 'assets/images/standards.svg' %}"
+                         class="rounded" alt="icon">
+                  </td>
+                  <td>
+                    <a class="legal" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'rechtlich' %}" >
+                      {% translate "Anwendungsfälle" %}
+                    </a>
+                  </td>
+                </tr> -->
               </table>
             </div>
           </div>

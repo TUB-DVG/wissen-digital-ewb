@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g>
+    <path d="M7.71875,5.5c1.02295,2.09163,2.94196,3.5,5.14062,3.5s4.11768-1.40837,5.14062-3.5c-1.02295-2.09163-2.94196-3.5-5.14062-3.5s-4.11768,1.40837-5.14062,3.5Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <path d="M12.85943,4.45c.57983,0,1.04993,.4701,1.04993,1.05s-.47009,1.05-1.04993,1.05c-.57996,0-1.05005-.4701-1.05005-1.05s.47009-1.05,1.05005-1.05m0-1c-1.13037,0-2.05005,.91963-2.05005,2.05s.91968,2.05,2.05005,2.05,2.04993-.91963,2.04993-2.05-.91956-2.05-2.04993-2.05h0Z"/>
+  </g>
+  <g>
+    <path d="M7.92117,14.68568c-.30041,.0262-.60848,.03991-.92116,.03991-2.39188,0-4.50764-.79086-4.99998-1.84755" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <path d="M7.00001,11.53003c-2.76141,0-4.99998-1.0541-4.99998-2.3544,0-.99845,1.31988-1.85174,3.18287-2.1941" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <path d="M2.00003,9.17563l-.00003,6.97682c.49234,1.05669,2.66679,1.84755,5.05867,1.84755,2.38327,0,4.43997-.79652,4.94133-1.8475v-3.27447" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  </g>
+</svg>

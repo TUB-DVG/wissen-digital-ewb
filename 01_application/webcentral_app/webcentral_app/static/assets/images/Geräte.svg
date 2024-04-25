@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path d="M11.54129,11.375H3.28431c-.70931,0-1.28431-.57501-1.28431-1.28431V3.28431c0-.70931,.57501-1.28431,1.28431-1.28431H13.21569c.70931,0,1.28431,.57501,1.28431,1.28431v1.46705" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 1.1px;"/>
+  <line x1="8.25" y1="11.375" x2="8.25" y2="14.5" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 1.1px;"/>
+  <line x1="5.3479" y1="14.5" x2="11.69146" y2="14.5" style="fill: none; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 1.1px;"/>
+  <g>
+    <line x1="15.83438" y1="16.12901" x2="13.86563" y2="16.12901" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <path d="M12.68124,7.5c-.54193,0-.98124,.49922-.98124,1.11505v8.2699c0,.61582,.43932,1.11505,.98124,1.11505h4.33751c.54193,0,.98124-.49922,.98124-1.11505V8.61505c0-.61582-.43932-1.11505-.98124-1.11505h-4.33751Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  </g>
+</svg>
