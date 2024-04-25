@@ -175,7 +175,8 @@ def normDetailView(request, id):
         'shortDescription': shortDescription, 
         'title': title,
         'source': source,
-        'link': link
+        'link': link,
+        "focusBorder": "technical",
     }
     return render(request, 'TechnicalStandards/norm-detail.html', context)
 
@@ -322,7 +323,8 @@ def protocolDetailView(request, id):
         'priorities': priorities,
         'price': price,
         'osiLayers': osiLayers,
-        'buildingAutomationLayer': buildingAutomationLayer
+        'buildingAutomationLayer': buildingAutomationLayer,
+        "focusBorder": "technical",
     }
     return render(request, 'TechnicalStandards/protocol-detail.html', context)
 
@@ -334,7 +336,8 @@ def protocolComparison(request):
         protocols.append(protocol)
     
     context = {
-        'protocols': protocols
+        'protocols': protocols,
+        "focusBorder": "technical",
     }
 
     return render(request, 'TechnicalStandards/protocol-comparison.html', context)
