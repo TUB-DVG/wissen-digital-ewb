@@ -15,7 +15,7 @@ def index(request):
     """Shows the list of all projects including some key features."""
     searched = request.GET.get('searched')
 
-    focus = request.GET.get(_('Fokus'))
+    focus = request.GET.get('focus')
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
     # query_filters = Q()
@@ -27,22 +27,40 @@ def index(request):
     #     query_filters |= Q(keywords__icontains=searched)  
     # if focus:
     #     query_filters &= Q(focus=focusObjectFromGetRequest)
+    
     useCase = UseCase.objects.all() # reads all data from table UseCase
     filteredBy = [None]*3
     searched = None
-    if ((request.GET.get("u") != None) | (focusObjectFromGetRequest is not None) | 
-        (request.GET.get("ev") != None) |(request.GET.get("searched") != None)):
-        use_case = request.GET.get('u', '')
-        effectevaluation = request.GET.get('ev', '')
-        if effectevaluation == ' ':
+    if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
+        (request.GET.get("evaluation") != None) |(request.GET.get("searched") != None)):
+        use_case = request.GET.get("use", '')
+        effectevaluation = request.GET.get("evaluation", '')
+        # breakpoint()
+        if effectevaluation == "Positiv" or effectevaluation == "Positive":
             effectevaluation = '+'
-        searched = request.GET.get('searched')
-        useCase = UseCase.objects.filter(
-            useCase__icontains=use_case,
-            effectEvaluation__icontains=effectevaluation,
-            sriLevel__icontains=searched,
-            focus=focusObjectFromGetRequest,
-        )
+        elif effectevaluation == "Negativ" or effectevaluation == "Negative":
+            effectevaluation = '-'
+        elif effectevaluation == "Neutral":
+            effectevaluation = 'o'
+        else:
+            effectevaluation = ''
+        searched = request.GET.get('searched', "")
+        
+        # criterionUseCaseOne = Q(levelOfAction__icontains=searched)
+        # criterionUseCaseTwo = Q(degreeOfDetail__icontains=searched)
+        # criterionUseCaseThree = Q(effectName__icontains=searched)
+        criterionUseCaseFour = Q(effectDescription__icontains=searched)
+        if focusObjectFromGetRequest is not None:
+            useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
+                useCase__icontains=use_case,
+                effectEvaluation__icontains=effectevaluation,
+                focus=focusObjectFromGetRequest,
+            )
+        else:
+            useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
+                useCase__icontains=use_case,
+                effectEvaluation__icontains=effectevaluation,
+            )            
         filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
 
     useCase = list(sorted(useCase, key=lambda obj:obj.item_code))

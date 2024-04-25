@@ -44,11 +44,11 @@ def index(request):
     filteredBy = [None]*3
     searched=None
  
-    if ((request.GET.get("Nutzung") != None) |(request.GET.get("Zugänglichkeit") != None)| 
-        (request.GET.get("Lebenszyklusphase") != None) |(request.GET.get("searched") != None)):
-        usage = request.GET.get('Nutzung', "")
-        accessibility = request.GET.get('Zugänglichkeit', "")
-        lifeCyclePhase = request.GET.get('Lebenszyklusphase', "")
+    if ((request.GET.get("use") != None) |(request.GET.get("accessibility") != None)| 
+        (request.GET.get("lifeCyclePhase") != None) |(request.GET.get("searched") != None)):
+        usage = request.GET.get("use", "")
+        accessibility = request.GET.get("accessibility", "")
+        lifeCyclePhase = request.GET.get("lifeCyclePhase", "")
         searched = request.GET.get('searched', "")
         
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
@@ -108,16 +108,19 @@ def index(request):
                 "placeholder": "Nutzung", 
                 "objects": usageNames,
                 "filter": filteredBy[0],
+                "fieldName": "use",
             },
             {
                 "placeholder": "Zugänglichkeit", 
                 "objects": accessibilityNames,
                 "filter": filteredBy[1],
+                "fieldName": "accessibility",
             },
             {
                 "placeholder": "Lebenszyklusphase", 
                 "objects": lifeCyclePhaseNames,
                 "filter": filteredBy[2],
+                "fieldName": "lifeCyclePhase",
             },
         ],
     }
