@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
     'publications.apps.PublicationsConfig',
+    'use_cases.apps.UseCasesConfig',
     'pages.apps.PagesConfig',
     'TechnicalStandards.apps.TechnicalStandardsConfig',
     'project_listing.apps.ProjectListingConfig',
@@ -61,9 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'channels',
-    # 'parler',
-    
+    'channels',    
 ]
 
 MIDDLEWARE = [

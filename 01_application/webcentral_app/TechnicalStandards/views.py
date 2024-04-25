@@ -30,9 +30,9 @@ def norm(request):
     filteredBy = [None]*2 #3
     searched=None
 
-    if ((request.GET.get(_("Bezeichnung")) != None)| (request.GET.get(_("Quelle")) != None) |(request.GET.get("searched") != None)): #(request.GET.get("n") != None) |
+    if ((request.GET.get("name") != None)| (request.GET.get("source") != None) |(request.GET.get("searched") != None)): #(request.GET.get("n") != None) |
         name=request.GET.get(_('Bezeichnung'), "")
-        source=request.GET.get(_('Quelle'), "")
+        source=request.GET.get("source", "")
         #link=request.GET.get('l')
         searched=request.GET.get('searched', "")
         norms=Norm.objects.filter(source__icontains=source,name__icontains=name,shortDescription__icontains=searched) #name__icontains=Name,
@@ -129,6 +129,7 @@ def norm(request):
                     "ÖNORM EN 12831-3",
                 ],
                 "filter": filteredBy[0],
+                "fieldName": "name",
             },
             {
                 "placeholder": _("Quelle"), 
@@ -138,6 +139,7 @@ def norm(request):
                     "ENEKA - Energiekartenkartografie",
                     "Hottgenroth Software Katalog",
                 ],
+                "fieldName": "source",
                 "filter": filteredBy[1],
             },
         ],     
@@ -173,7 +175,8 @@ def normDetailView(request, id):
         'shortDescription': shortDescription, 
         'title': title,
         'source': source,
-        'link': link
+        'link': link,
+        "focusBorder": "technical",
     }
     return render(request, 'TechnicalStandards/norm-detail.html', context)
 
@@ -185,10 +188,10 @@ def protocol(request):
     filteredBy = [None]*3
     searched=None
     #communicationMediumCategory	openSourceStatus
-    if ((request.GET.get("Name") != None)| (request.GET.get(_("Übertragungsmethoden")) != None) |(request.GET.get(_("Open-Source-Status")) != None) |(request.GET.get("searched") != None)): 
-        name=request.GET.get('Name', "")
-        communicationMediumCategory=request.GET.get(_('Übertragungsmethoden'), "")
-        openSourceStatus=request.GET.get(_('Open-Source-Status'), "")
+    if ((request.GET.get("name") != None)| (request.GET.get("transmission") != None) |(request.GET.get("oss") != None) |(request.GET.get("searched") != None)): 
+        name=request.GET.get('name', "")
+        communicationMediumCategory=request.GET.get("transmission", "")
+        openSourceStatus=request.GET.get("oss", "")
         searched=request.GET.get('searched', "")
         criterionProtocolsOne = Q(associatedStandards__icontains=searched)
         criterionProtocolsTwo = Q(networkTopology__icontains=searched)
@@ -234,15 +237,17 @@ def protocol(request):
                     "profibus",
                 ],
                 "filter": filteredBy[0],
+                "fieldName": "name",
             },
             {
-                "placeholder": _("Übertragungsmethoden"), 
+                "placeholder": "Übertragungsmethoden", 
                 "objects": [
                     _("Verkabelt") +" & " + _("Drahtlos"),
                     _("Drahtlos"),
                     _("Verkabelt"), 
                 ],
                 "filter": filteredBy[1],
+                "fieldName": "transmission",
             },
             {
                 "placeholder": _("Open-Source-Status"),
@@ -251,6 +256,7 @@ def protocol(request):
                     _("Proprietär"),
                 ],
                 "filter": filteredBy[2],
+                "fieldName": "oss",
             }
         ],
         "focusBorder": "technical",
@@ -317,7 +323,8 @@ def protocolDetailView(request, id):
         'priorities': priorities,
         'price': price,
         'osiLayers': osiLayers,
-        'buildingAutomationLayer': buildingAutomationLayer
+        'buildingAutomationLayer': buildingAutomationLayer,
+        "focusBorder": "technical",
     }
     return render(request, 'TechnicalStandards/protocol-detail.html', context)
 
@@ -329,7 +336,8 @@ def protocolComparison(request):
         protocols.append(protocol)
     
     context = {
-        'protocols': protocols
+        'protocols': protocols,
+        "focusBorder": "technical",
     }
 
     return render(request, 'TechnicalStandards/protocol-comparison.html', context)

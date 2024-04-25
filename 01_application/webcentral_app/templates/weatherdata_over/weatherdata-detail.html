@@ -40,15 +40,7 @@ Page intro START -->
 				</ul>
 			</div>
 		</div>
-		<div class="row" style="margin-top: 16px;" nonce="weatherdataDetailDivOne">
-		  <a href="#" id="backButton">{% translate "Zurück" %}</a>
-      <script nonce="{{request.csp_nonce}}">
-        document.getElementById('backButton').addEventListener('click', function(event) {
-          event.preventDefault();
-          window.history.back();
-        });
-      </script>
-    </div>
+			{% include "common/back-button.html" %}
 	</div>
 </section>
 <!-- =======================
@@ -57,7 +49,7 @@ Page intro END -->
 <!-- =======================
 Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-	<div class="container technical-cards">
+	<div class="container  {{ focusBorder }}-cards">
 		<div class="row">
 			<!-- Main content START -->
 			<div class="col-lg-8 mb-4">

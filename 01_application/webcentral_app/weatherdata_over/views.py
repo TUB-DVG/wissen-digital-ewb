@@ -85,7 +85,8 @@ def weatherdata_view(request, id):
 #        'window': 'bi bi-window',
         'Anwendung': 'bi bi-terminal fa-lg',
         'Datensätze': 'fas fa-database',
-        'default': 'fas fa-bars'
+        'default': 'fas fa-bars',
+        "focusBorder": "technical",
     }
 
     weatherdata = get_object_or_404(Weatherdata, pk= id)
@@ -108,7 +109,8 @@ def weatherdata_view(request, id):
         'letztes_update_class': update_properties.class_name,
         'letztes_update_color': update_properties.color_class,
         'letztes_update_label': update_properties.label,
-        'category_icon': category_icon
+        'category_icon': category_icon,
+        "focusBorder": "technical",
     }
 
     return render(request, 'weatherdata_over/weatherdata-detail.html', context)
