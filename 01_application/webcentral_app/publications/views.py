@@ -21,7 +21,7 @@ def index(request):
     filteredBy = [None]*3
     
     searched = request.GET.get('searched')
-    focus = request.GET.get('Fokus')
+    focus = request.GET.get('focus')
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
     

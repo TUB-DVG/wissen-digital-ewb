@@ -64,6 +64,10 @@ def index(request):
         filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
 
     useCase = list(sorted(useCase, key=lambda obj:obj.item_code))
+
+    for useCaseItem in useCase:
+        _setUseCaseImage(useCaseItem)
+
     useCasePaginator = Paginator(useCase,12)
     pageNum = request.GET.get('page',None)
     page = useCasePaginator.get_page(pageNum)
@@ -107,6 +111,7 @@ def useCaseView(request, id):
     """Shows of the key features one project"""
     useCase = get_object_or_404(UseCase, pk = id)
     
+    _setUseCaseImage(useCase)
 
     context = {
         'useCase': useCase,
@@ -118,3 +123,24 @@ def useCaseView(request, id):
 def graph(request):
 
     return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html') 
+
+def _setUseCaseImage(useCaseItem):
+    """
+
+    """
+    if "Monat" in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/constructionAgeClass.svg"
+    elif "1 h" in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/consumptionData.svg"
+    elif "Sek." in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/dataVisulization.svg"
+    elif "Gebäude" == useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/Klimatisierungsdaten.svg"
+    elif "3 Gebäude" == useCaseItem.degreeOfDetail or "4 Gebäude" in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/Gebäudetyp.svg"
+    elif "Anlagen" in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/Klimatisierungsverhalten.svg"
+    elif "Geräte" in useCaseItem.degreeOfDetail:
+        useCaseItem.icon = "/static/assets/images/Geräte.svg"
+    else:
+        useCaseItem.icon = None
