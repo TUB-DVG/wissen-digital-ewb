@@ -132,3 +132,11 @@ class Locator(object):
     publicationDetailsPageAuthorsValues = "following-sibling::p"
 
     publicationDetailsPageType = "list-inline-item"
+
+    # CriteriaCatalog locators
+    criteriaCatalogOverviewCard1 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogOverviewCard2 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogDetailsContentContainer = "//div[@id='hi']"
+    allHorizontalLineElements = "//hr"
+    fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
+    collpaseEveryThingButton = "//button[@id='collapseEverythingButton']"

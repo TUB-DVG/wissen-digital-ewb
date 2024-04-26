@@ -1,0 +1,51 @@
+#container-criteria-catalog-landing-page {
+
+    .border-legal {
+        @include border-boxen($legal-color);
+      }
+    p, li {
+        color: #868181;
+        font-size: 12px;
+    }
+    h2 {
+        font-size: 25px;
+    }
+}
+
+#container-criteria-catalog-details {
+
+    .border-legal {
+        @include border-boxen($legal-color);
+      }
+    hr {
+        background-color: $legal-color;
+        height: 3px;
+        border: 0;
+        // border: 3px, solid $legal-color;
+    }
+    li {
+        list-style-type: none;
+    }
+    // p, li {
+    //     color: #868181;
+    //     font-size: 12px;
+    // }
+    // h2 {
+    //     font-size: 25px;
+    // }
+}
+
+.select-style {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M10 15l5-5 5 5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat;
+    background-position-x: 95%;
+    background-position-y: 50%;
+    padding-right: 30px; /* space for the icon */
+  }
+
+  .same-horizontal-position-lvl-1 {
+    position: relative; /* or absolute, depending on your layout */
+    left: 50px; /* or any value you want */
+}

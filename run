@@ -129,7 +129,7 @@ case $command in
         docker exec -it $container_id python 01_application/webcentral_app/manage.py makemigrations
         ;;
     "shell")
-        echo "Creating Django migrations..."
+        echo "Opening Django Shell..."
         docker exec -it $container_id python 01_application/webcentral_app/manage.py shell
         ;;
 
@@ -192,10 +192,12 @@ case $command in
             fi
         fi
         ;;
-    "up_debug")         $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral         
-        ;;
-    "webcentral_shell")
-        docker exec -it webcentral bash
+    "up_debug")         
+        $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral
+        ;;     
+    "webcentral_shell")         
+        echo "Opening wecentral-container shell"         
+        docker exec -it $container_id bash         
         ;;
     *)
         echo "Unknown command: $command"
