@@ -62,12 +62,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
-    'channels',    
+    "common.apps.CommonConfig",
+    'channels',
 ]
 
 MIDDLEWARE = [
     'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "common.middleware.SessionExpiration",
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -93,6 +95,7 @@ CSP_SCRIPT_SRC = (
     "https://maxcdn.bootstrapcdn.com",
     "https://cdn.plot.ly",
     "https://unpkg.com",
+    "https://code.highcharts.com/highcharts.js",
     # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
     "'unsafe-inline'",
     "'unsafe-eval'",

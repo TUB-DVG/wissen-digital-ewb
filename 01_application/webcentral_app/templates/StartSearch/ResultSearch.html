@@ -99,6 +99,8 @@
             <tr data-href="{%url 'TechnicalStandards_norm_details' dataSet.id %}">
             {% elif dataSet.kindOfItem == "Protokoll" %}
             <tr data-href="{%url 'TechnicalStandards_protocol_details' dataSet.id %}">
+            {% elif dataSet.kindOfItem == "Kriterienkatalog" %}
+            <tr data-href="{%url 'criteriaCatalogOpenTopic' dataSet.criteriaCatalogPath dataSet.id %}">
             {% endif %}
               <!-- Table data -->
               <!-- Name of item -->

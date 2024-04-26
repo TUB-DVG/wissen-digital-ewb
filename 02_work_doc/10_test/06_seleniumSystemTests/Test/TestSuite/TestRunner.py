@@ -1,4 +1,4 @@
-
+import argparse
 from unittest import TestLoader, TestSuite, TextTestRunner
 import sys
 import os
@@ -17,29 +17,47 @@ from Test.Scripts.TestNormsPage import TestNormsPage
 from Test.Scripts.TestProtocolsPage import TestProtocolsPage
 from Test.Scripts.TestSearch import TestSearch
 from Test.Scripts.TestPublications import TestPublicationPage
-
+from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
  
 import testtools as testtools
 
 if __name__ == "__main__":
+    # Create an ArgumentParser object
+    parser = argparse.ArgumentParser()
 
+    # Add an optional argument
+    parser.add_argument("--test_file", help="add a Test-file, which should be executed.")
+
+    # Parse the command line arguments
+    args = parser.parse_args()
+
+    # breakpoint()
+    # Access the value of the optional argument
+    testFileName = args.test_file
 
     testLoader = TestLoader()
-    # Test Suite is used since there are multiple test cases
-    testSuite = TestSuite((
-        testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
-        testLoader.loadTestsFromTestCase(TestMainPage),
-        testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
-        testLoader.loadTestsFromTestCase(TestNormsPage),
-        testLoader.loadTestsFromTestCase(TestProtocolsPage),
-        testLoader.loadTestsFromTestCase(TestBusinessAppPage),
-        testLoader.loadTestsFromTestCase(TestClickThroughSites),
-        testLoader.loadTestsFromTestCase(TestLastprofileTab),
-        testLoader.loadTestsFromTestCase(TestAboutPage),
-        testLoader.loadTestsFromTestCase(TestSearch),
-        testLoader.loadTestsFromTestCase(TestPublicationPage),
-        # testLoader.loadTestsFromTestCase(TestAdminPage),
-        ))
+
+    if testFileName is not None:
+        testClass = getattr(sys.modules[__name__], testFileName)
+        testSuite = TestSuite(
+            (testLoader.loadTestsFromTestCase(testClass)),
+        )
+    else:
+        # Test Suite is used since there are multiple test cases
+        testSuite = TestSuite((
+            testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
+            testLoader.loadTestsFromTestCase(TestMainPage),
+            testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
+            testLoader.loadTestsFromTestCase(TestNormsPage),
+            testLoader.loadTestsFromTestCase(TestProtocolsPage),
+            testLoader.loadTestsFromTestCase(TestBusinessAppPage),
+            testLoader.loadTestsFromTestCase(TestClickThroughSites),
+            testLoader.loadTestsFromTestCase(TestLastprofileTab),
+            testLoader.loadTestsFromTestCase(TestAboutPage),
+            testLoader.loadTestsFromTestCase(TestSearch),
+            testLoader.loadTestsFromTestCase(TestPublicationPage),
+            # testLoader.loadTestsFromTestCase(TestAdminPage),
+            ))
  
     testRunner = TextTestRunner(verbosity=2)
     testRunner.run(testSuite)
