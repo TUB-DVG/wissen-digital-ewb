@@ -10,7 +10,7 @@ button {
 }
 .sticky-third-lvl {
     position: sticky;
-    top: 165px;
+    top: 155px;
     z-index: 1;
     background: white;
 }
@@ -76,6 +76,15 @@ button {
 .border-bottom {
     width: 100%;
     border-bottom: 2px solid #F5E86A !important;
+}
+
+.is-pinned {
+  width: 100%;
+    border-bottom: 2px solid #F5E86A !important;
+}
+
+.border-left {
+    border-left: 29px solid #F5E86A;
 }
 
 .wrapper {
@@ -227,7 +236,9 @@ button {
                           <li class="border-bottom sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
                             <div id="{{ node.content.depth }}" class="wrapper">
                               <img style="display: none; margin-right: 4px; margin-top: 11px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}">{{ node.content.topic.heading }}</button>
+                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" text="{{ node.content.topic.heading }}">
+                                {{ node.content.topic.heading }}
+                              </button>
                             </div>  
                           <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
                         {% endif %}
@@ -269,6 +280,15 @@ button {
     }
     openHeadingsForLayers();
   }
+
+  const el = document.querySelector(".sticky-third-lvl")
+const observer = new IntersectionObserver( 
+  ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
+  { threshold: [1] }
+);
+
+observer.observe(el);
+
   function isAboveStickyElement(stickyElement) {
     if (stickyElement.getBoundingClientRect().top > 170) {
       return true;
@@ -294,10 +314,12 @@ button {
       var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
       if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 30) {
           currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
+          // currentStickyThirdLvlElement.classList.remove('border-bottom');
           // if (currenStickyThirdLvlElement.id == "0") {
           //   currentStickyThirdLvlElement.previousElementSibling.classList.remove('sticky-third-lvl');
           // }
           expandedChildOfStickyElement.parentElement.classList.add('sticky-third-lvl');
+          // expandedChildOfStickyElement.parentElement.classList.add('border-bottom');
       }
     }
     else {
@@ -311,12 +333,15 @@ button {
         // currentStickyThirdLvlElement
         // find the ul-parent of most upward button:
         currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
+        // currentStickyThirdLvlElement.classList.remove('border-bottom');
         if (stickyElements[0].id == "0") {
           stickyElements[0].parentElement.classList.add('sticky-third-lvl');
+          // stickyElements[0].parentElement.classList.add('border-bottom');
         }
         else {
           liParent = getFirstParentElementWithTagName(stickyElements[0], "UL").parentElement;
           liParent.children[0].classList.add('sticky-third-lvl');
+          // liParent.children[0].classList.add('border-bottom');
         }
       }   
     }
@@ -425,6 +450,13 @@ button {
     }
   }
 
+  function hideLeftBorder(element) {
+    if (element.tagName == "UL" && element.id == "0") {
+      element.querySelector("li").classList.remove("border-left");
+    }
+  }
+
+
   function hideElementExceptForFirstLayer(element) {
     if (element.classList.contains("wrapper")) {
       return;
@@ -432,11 +464,7 @@ button {
     if (Number(element.id) > 0) {
       element.style.display = "none";
     }
-    if (element.tagName == "UL" && element.id == "0") {
-      element.style.borderLeft = "none";
-      element.style.marginLeft = "0px";
-      // element.style.borderLeft = "0px;"
-    }
+    hideLeftBorder(element);
   }
 
   function depthFirstWalkForParagraphs() {
@@ -703,7 +731,6 @@ function returnFirstAppearanceOfElementWithTagName(element, tagName) {
   return "";
 }
 
-
 function depthFirstWalkForModification(element) {
 
   var aggregatedString = ""; 
@@ -735,6 +762,7 @@ function depthFirstWalkForModification(element) {
 
 function depthFirstWalk(rootElement, target) {
   var childElements = rootElement.children;
+  var buttonForLI = undefined;
   for (var i = 0; i < childElements.length; i++) {
     var childElement = childElements[i];
     // Perform your desired operation on the child element here
@@ -742,6 +770,10 @@ function depthFirstWalk(rootElement, target) {
     // check if the childElement is a ancestor of target
     
     if (checkIfAncestor(childElement, target)) {
+      if (childElement.tagName == "LI") {
+        buttonForLI = childElement.querySelector("button");
+        openChildLayer(buttonForLI);
+      }
         if (Number(childElement.id) <= Number(target.id)) {
           openChildLayer(childElement);
         depthFirstWalk(childElement, target);
@@ -866,7 +898,7 @@ function getFirstParentElementWithTagName(element, tagName) {
     parentElement = parentElement.parentElement;
   }
   return parentElement;
-}    element.st
+} 
 
 function getAllChildElementsWithTagName(element, tagName) {
   var childElements = element.children;
@@ -888,12 +920,22 @@ function removeMarkTagsFromText(element) {
   }
 }
 
+function showDirectionOfArrow(imgElement, direction) {
+  if (direction == "up") {
+    imgElement.src = pathToArrowUpImg;
+  }
+  else {
+    imgElement.src = pathToArrowDownImg;
+  }
+}
+
 function openChildLayer(element) {
   if (element == null) {
     return;
   }
   if (element.tagName == "BUTTON" && element.id != "0") {
     showFullTextOfHeading(element);
+    addOrRemoveBottomBorder(element);
   }
   showElement(element);
   var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
@@ -923,9 +965,7 @@ function openChildLayer(element) {
   }
   else {
     if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
-      console.log(parentOfClickedElement.children[0].style.borderLeft = "29px solid #F5E86A")
-      // parentOfClickedElement.style.marginLeft = "16px";
-      // parentOfClickedElement.style.paddingLeft = "0px";
+      parentOfClickedElement.children[0].classList.add("border-left");
     }
     
     var layerNumberOfClickedElement = Number(element.id);
@@ -935,7 +975,8 @@ function openChildLayer(element) {
     if (imageInButtonElement != null) {
       showElement(imageInButtonElement);
       if (Number(element.id) > 0) {
-      imageInButtonElement.src = pathToArrowUpImg;
+      // imageInButtonElement.src = pathToArrowUpImg;
+      // showDirectionOfArrow(imageInButtonElement, "up");
       }
     }
     
@@ -965,6 +1006,7 @@ function openChildLayer(element) {
           showElement(buttonElementInLi[0]);
           imageInButtonElement = buttonElementInLi[0].previousElementSibling;
           showElement(imageInButtonElement);
+          // showDirectionOfArrow(imageInButtonElement, "up");
         }
         paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
         if (paragraphElementInLi.length > 0) {
@@ -998,27 +1040,58 @@ function openChildLayer(element) {
   }
 }
 
+function setArrowUpOrDown(element, directionStr) {
+  if (directionStr == "up") {
+    element.src = pathToArrowUpImg;
+  }
+  else {
+    element.src = pathToArrowDownImg;
+  }
+}
+
+function addOrRemoveBottomBorder(buttonElement) {
+  // check if the child-elements of button are hidden
+  // then it will be opened and the border-bottom will be added
+  var liParentElement = getFirstParentElementWithTagName(buttonElement, "LI");
+  var divParent = getFirstParentElementWithTagName(buttonElement, "DIV");
+  var imgElement = divParent.querySelector("img");
+  var firstChildUlElement = liParentElement.querySelector("ul");
+  var firstChildLiElement = firstChildUlElement.querySelector("li");
+  var firstButtonOrParagraphElement = firstChildLiElement.querySelector("button, p");
+  // debugger;
+  if (firstChildUlElement.style.display == "none" || firstChildLiElement.style.display == "none") {
+    if (divParent.id == "2") {
+      divParent.classList.add("border-bottom");
+    }
+    setArrowUpOrDown(imgElement, "up");
+    showElement(buttonElement)
+  }
+  else {
+    if (divParent.id == "2") {
+      divParent.classList.remove("border-bottom");
+    }
+    setArrowUpOrDown(imgElement, "down");
+  }
+
+}
+
+
 function closeChildLayer(element) {
   if (element.tagName == "BUTTON" && element.id != "0") {
     showPreviewTextOfHeading(element);
+    addOrRemoveBottomBorder(element);
+    // flipAppearanceOfBorderBottom(element);
+
   }
   var parentOfClickedElement = element.parentElement.parentElement.parentElement;
-  if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
-    parentOfClickedElement.style.borderLeft = "none";
-    parentOfClickedElement.style.marginLeft = "0px";
-  }
+  
+  hideLeftBorder(parentOfClickedElement);
 
   var layerNumberOfClickedElement = Number(element.id);
   var childElements = element.parentElement.parentElement.children;
   if (layerNumberOfClickedElement > 0) {
     element.previousElementSibling.src = pathToArrowDownImg;
-
   }
-  // var buttonElements = Array.from(childElements).filter((element) => {return element.tagName == "BUTTON"})
-  // if (buttonElements.length > 0) {
-  //   buttonElements[0].previousElementSibling.src = pathToArrowDownImg;
-  //   // buttonElements[0].children[0].style.display = "none";
-  // }
 
   var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
   for (var i = 0; i < nextLayerElementsUL.length; i++) {
