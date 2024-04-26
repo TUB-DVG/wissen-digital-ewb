@@ -33,7 +33,7 @@
       <!-- Image -->
       <div class="image-container d-flex" style="height: 150px;">
         {%if useCase.icon %}
-        <img src="{{ useCase.icon }}"
+        <img src="{% static useCase.icon %}"
             class="card-img-bottom px-4 pt-4 pb-2 m-auto"
             style="max-height: 100%; width: auto; display: block;"
             alt="UseCase icon (if=db)">

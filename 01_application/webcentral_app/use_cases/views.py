@@ -124,18 +124,18 @@ def _setUseCaseImage(useCaseItem):
 
     """
     if "Monat" in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/constructionAgeClass.svg"
+        useCaseItem.icon = "/assets/images/constructionAgeClass.svg"
     elif "1 h" in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/consumptionData.svg"
+        useCaseItem.icon = "/assets/images/consumptionData.svg"
     elif "Sek." in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/dataVisulization.svg"
+        useCaseItem.icon = "/assets/images/dataVisulization.svg"
     elif "Gebäude" == useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/Klimatisierungsdaten.svg"
+        useCaseItem.icon = "/assets/images/Klimatisierungsdaten.svg"
     elif "3 Gebäude" == useCaseItem.degreeOfDetail or "4 Gebäude" in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/Gebäudetyp.svg"
+        useCaseItem.icon = "/assets/images/Gebäudetyp.svg"
     elif "Anlagen" in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/Klimatisierungsverhalten.svg"
+        useCaseItem.icon = "/assets/images/Klimatisierungsverhalten.svg"
     elif "Geräte" in useCaseItem.degreeOfDetail:
-        useCaseItem.icon = "/static/assets/images/Geräte.svg"
+        useCaseItem.icon = "/assets/images/Geräte.svg"
     else:
         useCaseItem.icon = None
