@@ -43,7 +43,7 @@ button {
   display: none; 
   padding-block: 14px; 
   margin-bottom: 0;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .button-first-level {
@@ -301,18 +301,27 @@ observer.observe(el);
 
     var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     var currentStickyThirdLvlElement = document.querySelector('div.sticky-third-lvl');
+    var allStickyThirdLvlElements = document.querySelectorAll('div.sticky-third-lvl');
+    // addOrRemoveBottomBorderClass(allStickyThirdLvlElements);
+    if (isSticky(currentStickyThirdLvlElement)) {
+      // addHorizontalLineBelowButton(currentStickyThirdLvlElement);
+      currentStickyThirdLvlElement.classList.add('border-bottom');
+    }
+    else {
+      if (currentStickyThirdLvlElement.id != "2")
+      currentStickyThirdLvlElement.classList.remove('border-bottom');
+
+    }
     var stickyElements = findVisibleButtonElementsInViewport();
     var liParent = undefined;
     if (lastScrollTop < currentScrollTop) {
       // on scroll down
-      
-
       // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
       //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
       // });
       
       var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
-      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 30) {
+      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
           currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
           // currentStickyThirdLvlElement.classList.remove('border-bottom');
           // if (currenStickyThirdLvlElement.id == "0") {
@@ -347,6 +356,29 @@ observer.observe(el);
     }
     lastScrollTop = currentScrollTop;
   };
+
+  function isSticky(stickyElement) {
+    var rect = stickyElement.getBoundingClientRect();
+    if (rect.top == 155) {
+      return true;
+    }
+    return false;
+    // var offsetTop = rect.top + window.scrollY;
+    // return offsetTop === stickyElement.offsetTop;
+  }
+
+  function addOrRemoveBottomBorderClass(divElementList) {
+    for (var i = 0; i < divElementList.length; i++) {
+      if (isSticky(divElementList[i])) {
+        divElementList[i].classList.add('border-bottom');
+      }
+      else {
+        if (divElementList[i].id != "2") {
+          divElementList[i].classList.remove('border-bottom');
+        }
+      }
+    }
+  }
 
   function getDistanceBetweenElements(element1, element2) {
       var rect1 = element1.getBoundingClientRect();
@@ -541,7 +573,6 @@ observer.observe(el);
         for (var j = 0; j < ulChildElements.length; j++) {
           if (Number(ulChildElements[j].id) == 3) {
             textForCombinedElement = ulChildElements[j].textContent
-            // debugger;
             depthFirstSearch(ulChildElements[j], aggregateAndStyleText);
             firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
             if (firstLiChildren != "") {
@@ -612,7 +643,7 @@ observer.observe(el);
     }
     if (element.tagName == "P") {
       if (Number(element.id) > 3) {
-        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
+        textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
       }
       else {
         textContent = element.textContent;
@@ -1058,7 +1089,6 @@ function addOrRemoveBottomBorder(buttonElement) {
   var firstChildUlElement = liParentElement.querySelector("ul");
   var firstChildLiElement = firstChildUlElement.querySelector("li");
   var firstButtonOrParagraphElement = firstChildLiElement.querySelector("button, p");
-  // debugger;
   if (firstChildUlElement.style.display == "none" || firstChildLiElement.style.display == "none") {
     if (divParent.id == "2") {
       divParent.classList.add("border-bottom");
