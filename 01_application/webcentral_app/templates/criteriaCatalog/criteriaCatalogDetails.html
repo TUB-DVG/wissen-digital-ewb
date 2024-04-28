@@ -43,7 +43,7 @@ button {
   display: none; 
   padding-block: 14px; 
   margin-bottom: 0;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .button-first-level {
@@ -612,7 +612,7 @@ observer.observe(el);
     }
     if (element.tagName == "P") {
       if (Number(element.id) > 3) {
-        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
+        textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
       }
       else {
         textContent = element.textContent;
