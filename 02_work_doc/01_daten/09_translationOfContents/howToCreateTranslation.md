@@ -69,4 +69,29 @@ Alternativly the run script can be used:
 After that, wehen seleting the english-website the english-string should be shwon instead of the german version.
 
 ## Translation of database-content
-For the transdlation of the database-content the python-package "model-translation" is used, which is installed as dependency inside the webcentral-container.
+For the translation of the database-content the python-package "model-translation" is used, which is installed as dependency inside the webcentral-container.
+That packet uses additional database attributes to store different translations for a database-attribute. First, all django-model-fields which should be translated, have to be marked for translation. This is done by adding a additional python script called `translation.py` to the django-app, which model-fields should be translated. For each model-class inside the apps `models.py` a class is created which inherits from `TranslationOptions`. It has a fields attribute in which the names of all model-fields are provided, which should be translated.
+Finally the created class gets registered with the corresponding model-class:
+```
+    class ToolsTranslationOptions(TranslationOptions):
+        fields = (
+            "shortDescription", 
+            "userInterfaceNotes",
+            "lastUpdate",
+            "licenseNotes",
+            "furtherInformation",
+            "provider",
+            "yearOfRelease",
+        )
+    translator.register(Tools, ToolsTranslationOptions)
+```
+"model translation" expects now for each of the provided model-field names additional database attributes for each present language. In case of the Wissensplattform for each specified attribute a "_de" and "_en" attribute is execpted. E.g. besides "shortDescription" there should also be "shortDescription_de" and "shortDescription_en" inside the "Tools" table. Otherwise an database-lookup error is thrown and the App doesnt work. The missing attributes have to be created manually:
+```
+ALTER TABLE public.publications_type
+ADD COLUMN "bibtex_types_de" varchar(256);
+```
+The above example adds the german version of the "bibtex_types"-attribute to the publications_type-table. After the database is set up correctly the default german content needs to be copied into the "_de"-field. E.g. for all rows the content of "shortDescription" has to be copied inside "shortDescription_de". This can be done with a custom django command:
+```
+   python manage.py update_translation_fields
+```
+After that only the english attribute needs to be filled with content. A convenient way is via the django-admin panel.
