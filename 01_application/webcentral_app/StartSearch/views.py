@@ -264,7 +264,8 @@ def resultSearch(request):
             headingName = headingName[:40] + " ... "
         criteriaCatalogTag["name"] = headingName
         criteriaCatalogTag["kindOfItem"] = "Kriterienkatalog"
-        criteriaCatalogTag["date"] = "noch nicht hinterlegt"
+        criteriaCatalogTag["classificationAgg"] = _("Kriterienkatalog")
+        criteriaCatalogTag["date"] = _("noch nicht hinterlegt")
         criteriaCatalogTag["virtDate"] = date.fromisoformat("2049-09-09")
         criteriaCatalogTag["pathToFocusImage"] = findPicturesForFocus(criteriaCatalogTag)
         criteriaCatalogTag["criteriaCatalogPath"] = ""
