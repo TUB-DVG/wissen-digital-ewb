@@ -490,6 +490,10 @@ observer.observe(el);
 
 
   function hideElementExceptForFirstLayer(element) {
+    if (element.tagName === "IMG") {
+      showDirectionOfArrow(element, "down");
+    }
+
     if (element.classList.contains("wrapper")) {
       return;
     }
