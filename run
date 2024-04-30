@@ -23,6 +23,7 @@ fi
 
 # Set Docker container ID
 container_id=webcentral
+currentDirInContainer=$(docker exec $container_id pwd)
 
 # Execute different actions based on the command
 case $command in
@@ -153,7 +154,6 @@ case $command in
         fi
         if [ "$2" = "Database" ]; then
             # Get current working directory inside the webcentral container
-            currentDirInContainer=$(docker exec $container_id pwd)
             docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py test tests/ testDatabaseFilling.checkDifferencesInDatabase
             exit 1
         fi
@@ -198,6 +198,12 @@ case $command in
     "webcentral_shell")         
         echo "Opening wecentral-container shell"         
         docker exec -it $container_id bash         
+        ;;
+    "makemessages")         
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py makemessages -a       
+        ;;
+    "compilemessages")         
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py compilemessages 
         ;;
     *)
         echo "Unknown command: $command"
