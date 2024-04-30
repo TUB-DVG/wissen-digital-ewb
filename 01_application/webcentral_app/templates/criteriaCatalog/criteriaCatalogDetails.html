@@ -9,14 +9,17 @@ button {
   text-align: left;
 }
 .sticky-third-lvl {
-    position: sticky;
-    top: 155px;
-    z-index: 1;
-    background: white;
+  position: sticky;
+  top: 155px;
+  z-index: 1;
+  background: white;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 }
 .absolute-horizontal-position-lvl-one {
-    padding-left: 111px;
-    margin-left: 0px;
+  padding-left: 111px;
+  margin-left: 0px;
 }
 
 .test li .absolute-horizontal-position-lvl-one li .absolute-horizontal-position-lvl-two:last-child > li,
@@ -76,7 +79,7 @@ button {
 }
 
 .border-bottom {
-    width: 100%;
+    min-width: fit-content;
     border-bottom: 2px solid #F5E86A !important;
 }
 
@@ -110,6 +113,11 @@ button {
     left: 0;
     border-left: 10px solid #F5E86A;
 }
+
+.form__container {
+  overflow-x: scroll;
+}
+
 </style>
 
 <!-- **************** MAIN CONTENT START **************** -->
@@ -169,7 +177,7 @@ button {
             <!-- </form> -->
       <div class="p-2">
         <div class="row g-4">
-          <div class="col-lg-12 border-legal my-4 p-4" id="container-criteria-catalog-details">
+          <div class="col-lg-12 border-legal my-4 p-4 form__container" id="container-criteria-catalog-details">
               <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
             <div class="row">
               <div>
@@ -178,7 +186,7 @@ button {
             </div>
             <br />
 
-            <div class="row sticky-top border-bottom" style="top: 115px; background-color: white; margin-inline: 0;">
+            <div class="row sticky-top border-bottom" style="top: 115px; background-color: white; margin-inline: 0; flex-wrap: nowrap; overflow-x: scroll;">
               <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px; padding-left: 0;">
                 Themen
               </div>
@@ -190,7 +198,7 @@ button {
               </div>
               <div class="col-lg-3 mb-3">
               </div>
-              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 0; padding-right: 0;" id="container-criteria-catalog-details">
+              <div class="col-lg-2" style="margin-left: auto; padding-right: 0; width: auto;" id="container-criteria-catalog-details">
                 <div style="text-align: right">
                   <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
                 </div>
