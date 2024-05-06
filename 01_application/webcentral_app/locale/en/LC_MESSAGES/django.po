@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-29 07:02+0000\n"
+"POT-Creation-Date: 2024-05-06 12:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Gas Infrastructure"
 #: Datasets/views.py:57 Datasets/views.py:83
 #: templates/LastProfile/explanation.html:109
 #: templates/LastProfile/explanation.html:177
-#: templates/StartSearch/StartSearch.html:149
+#: templates/StartSearch/StartSearch.html:150
 #: templates/partials/_navbar.html:71
 msgid "Wetterdaten"
 msgstr "Weather data"
@@ -147,133 +147,314 @@ msgstr "Solver"
 msgid "Andere"
 msgstr "Others"
 
-#: LastProfile/Dash_app/Stromlast.py:25 LastProfile/Dash_app/Stromlast.py:134
+#: LastProfile/Dash_app/Stromlast.py:25 LastProfile/Dash_app/Stromlast.py:132
 msgid "Stromlast Approximation"
 msgstr "Current load approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:29 LastProfile/Dash_app/Stromlast.py:105
+#: LastProfile/Dash_app/Stromlast.py:29 LastProfile/Dash_app/Stromlast.py:103
 msgid "Gewerbe allgemein "
 msgstr "Business in general"
 
-#: LastProfile/Dash_app/Stromlast.py:30 LastProfile/Dash_app/Stromlast.py:106
+#: LastProfile/Dash_app/Stromlast.py:30 LastProfile/Dash_app/Stromlast.py:104
 msgid "Gewerbe werktags 8-18 "
 msgstr "Business weekdays 8 a.m. to 6 p.m"
 
-#: LastProfile/Dash_app/Stromlast.py:31 LastProfile/Dash_app/Stromlast.py:107
+#: LastProfile/Dash_app/Stromlast.py:31 LastProfile/Dash_app/Stromlast.py:105
 msgid "Gewerbe Verbrauch Abend"
 msgstr "Commercial consumption evening"
 
-#: LastProfile/Dash_app/Stromlast.py:32 LastProfile/Dash_app/Stromlast.py:108
+#: LastProfile/Dash_app/Stromlast.py:32 LastProfile/Dash_app/Stromlast.py:106
 msgid "Gewerbe durchlaufend"
 msgstr "Business continuous"
 
-#: LastProfile/Dash_app/Stromlast.py:33 LastProfile/Dash_app/Stromlast.py:109
+#: LastProfile/Dash_app/Stromlast.py:33 LastProfile/Dash_app/Stromlast.py:107
 msgid "Laden Friseur  "
 msgstr "Shop hairdresser"
 
-#: LastProfile/Dash_app/Stromlast.py:34 LastProfile/Dash_app/Stromlast.py:110
+#: LastProfile/Dash_app/Stromlast.py:34 LastProfile/Dash_app/Stromlast.py:108
 msgid "Bäckerei mit Backstube "
 msgstr "Bakery with bakehouse"
 
-#: LastProfile/Dash_app/Stromlast.py:35 LastProfile/Dash_app/Stromlast.py:111
+#: LastProfile/Dash_app/Stromlast.py:35 LastProfile/Dash_app/Stromlast.py:109
 msgid "Wochenendbetrieb "
 msgstr "Weekend operation"
 
-#: LastProfile/Dash_app/Stromlast.py:36 LastProfile/Dash_app/Stromlast.py:112
+#: LastProfile/Dash_app/Stromlast.py:36 LastProfile/Dash_app/Stromlast.py:110
 msgid "Haushaltskunden "
 msgstr "Household customers"
 
-#: LastProfile/Dash_app/Stromlast.py:37 LastProfile/Dash_app/Stromlast.py:113
+#: LastProfile/Dash_app/Stromlast.py:37 LastProfile/Dash_app/Stromlast.py:111
 msgid "Landwirtschaftsbetriebe "
 msgstr "Farming operations"
 
-#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:114
+#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:112
 msgid "Landwirts. mit Milchwirts Tierzucht "
 msgstr "Farming operations with dairy farming"
 
-#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:115
+#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:113
 msgid "Übrige Landwirtschaftsbe "
 msgstr "Other agricultural businesses"
 
-#: LastProfile/Dash_app/Stromlast.py:46 LastProfile/Dash_app/Stromlast.py:135
+#: LastProfile/Dash_app/Stromlast.py:46 LastProfile/Dash_app/Stromlast.py:133
 msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
-#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:118
+#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:116
+#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:436
 msgid "Januar"
 msgstr "January"
 
-#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:119
+#: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:117
+#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:437
 msgid "Februar"
 msgstr "February"
 
-#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:120
+#: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:118
+#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:438
 msgid "März"
 msgstr "March"
 
-#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:121
+#: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:119
+#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:439
 msgid "April"
 msgstr "April"
 
-#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:122
+#: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:120
+#: LastProfile/Dash_app/Warmelast.py:143 LastProfile/Dash_app/Warmelast.py:440
 msgid "Mai"
 msgstr "May"
 
-#: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:123
+#: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:121
+#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:441
 msgid "Juni"
 msgstr "June"
 
-#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:124
+#: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:122
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:442
 msgid "Juli"
 msgstr "July"
 
-#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:125
+#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:123
+#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:443
 msgid "August"
 msgstr "August"
 
-#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Stromlast.py:126
+#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Stromlast.py:124
 msgid "September"
 msgstr "September"
 
-#: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:125
+#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:445
 msgid "Oktober"
 msgstr "October"
 
-#: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:128
+#: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:126
+#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:446
 msgid "November"
 msgstr "November"
 
-#: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:129
+#: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:447
 msgid "Dezember"
 msgstr "December"
 
-#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:132
+#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:130
+#: LastProfile/Dash_app/Warmelast.py:157 LastProfile/Dash_app/Warmelast.py:456
 msgid "Approximation starten"
 msgstr "Start approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:133
+#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:131
+#: LastProfile/Dash_app/Warmelast.py:159 LastProfile/Dash_app/Warmelast.py:457
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:184 LastProfile/Dash_app/Stromlast.py:212
+#: LastProfile/Dash_app/Stromlast.py:182 LastProfile/Dash_app/Stromlast.py:210
+#: LastProfile/Dash_app/Warmelast.py:312
 msgid "Datum"
 msgstr "Date"
 
-#: LastProfile/Dash_app/Stromlast.py:189
+#: LastProfile/Dash_app/Stromlast.py:187
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
-#: LastProfile/Dash_app/Stromlast.py:211
+#: LastProfile/Dash_app/Stromlast.py:209
 msgid "Jahresstrombedarf in KWh/a :"
 msgstr "Annual electricity requirement in KWh/a"
 
-#: LastProfile/Dash_app/Stromlast.py:212
+#: LastProfile/Dash_app/Stromlast.py:210
 msgid "Anwendung: "
 msgstr "Applications: "
 
-#: LastProfile/Dash_app/Stromlast.py:212
+#: LastProfile/Dash_app/Stromlast.py:210
 msgid "Last"
 msgstr "Load"
+
+#: LastProfile/Dash_app/Warmelast.py:47
+msgid "Auswahl des Bundesland"
+msgstr "Selection of the state"
+
+#: LastProfile/Dash_app/Warmelast.py:58 LastProfile/Dash_app/Warmelast.py:399
+msgid "Wärmelast Approximation"
+msgstr "Heat load approximation"
+
+#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:400
+msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
+msgstr "We chose the following values as the test reference year:"
+
+#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:401
+msgid "Koordinatensystem : Lambert konform konisch"
+msgstr "Coordinate System : Lambert compliant conical"
+
+#: LastProfile/Dash_app/Warmelast.py:64 LastProfile/Dash_app/Warmelast.py:402
+msgid "Rechtswert        : 4201500 Meter"
+msgstr "Easting value: 4201500 meters"
+
+#: LastProfile/Dash_app/Warmelast.py:66 LastProfile/Dash_app/Warmelast.py:403
+msgid "Hochwert          : 2848500 Meter"
+msgstr "High value: 2848500 meters"
+
+#: LastProfile/Dash_app/Warmelast.py:68 LastProfile/Dash_app/Warmelast.py:404
+msgid "Höhenlage        : 36 Meter über NN"
+msgstr "Altitude: 36 meters above sea level"
+
+#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:405
+msgid "Erstellung des Datensatzes im Mai 2016"
+msgstr "The data set was created in May 2016"
+
+#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:406
+msgid "Art des TRY       : mittleres Jahr"
+msgstr "Type of TRY: middle year"
+
+#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:407
+msgid "Bezugszeitraum    : 1995-2012"
+msgstr "Reference period    : 1995-2012"
+
+#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:408
+msgid "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
+msgstr "Database: observation data period 1995-2012"
+
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:410
+msgid "Testreferenzjahr"
+msgstr "Test reference year"
+
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:411
+msgid "Wetterstation"
+msgstr "Weather station"
+
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:413
+msgid "Berechnungstyp"
+msgstr "Calculation type"
+
+#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:414
+#: LastProfile/Dash_app/Warmelast.py:458
+msgid "Auswahl der Station"
+msgstr "Selection of station"
+
+#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:416
+msgid "Einfamilienhaus"
+msgstr "Single Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:103 LastProfile/Dash_app/Warmelast.py:417
+msgid "Mehrfamilienhaus"
+msgstr "Multi Family House"
+
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:418
+msgid "Gebietskörperschaft"
+msgstr "Local authority"
+
+#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:419
+msgid "Einzelhandel, Großhandel"
+msgstr "Retail, Wholesale"
+
+#: LastProfile/Dash_app/Warmelast.py:106 LastProfile/Dash_app/Warmelast.py:420
+msgid "Metall, Kfz"
+msgstr "Metal, Automotive"
+
+#: LastProfile/Dash_app/Warmelast.py:107 LastProfile/Dash_app/Warmelast.py:421
+msgid "sonst. betr. Dienstleistungen"
+msgstr "Other operational services"
+
+#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:422
+msgid "Gaststätten"
+msgstr "Restaurants"
+
+#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:423
+msgid "Beherbergung"
+msgstr "Accommodation"
+
+#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:424
+msgid "Bäckereien"
+msgstr "Bakeries"
+
+#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:425
+msgid "Wäschereien"
+msgstr "Laundries"
+
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:426
+msgid "Gartenbau"
+msgstr "horticulture"
+
+#: LastProfile/Dash_app/Warmelast.py:113 LastProfile/Dash_app/Warmelast.py:427
+msgid "Papier und Druck"
+msgstr "Paper and printing"
+
+#: LastProfile/Dash_app/Warmelast.py:114 LastProfile/Dash_app/Warmelast.py:428
+msgid "haushaltsähnliche Gewerbebetriebe"
+msgstr "Household-like businesses"
+
+#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:429
+msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
+msgstr "Total load profile for trade, commerce, services"
+
+#: LastProfile/Dash_app/Warmelast.py:117 LastProfile/Dash_app/Warmelast.py:431
+#: templates/LastProfile/explanation.html:113
+msgid "Auswahl des Gebäudetyps"
+msgstr "Selection of building typ"
+
+#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:432
+msgid "Jahreswärmebedarf in kWh/a"
+msgstr "Annual heat requirement in kWh/a"
+
+#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:433
+msgid "Start Datum"
+msgstr "Start date"
+
+#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:434
+msgid "End Datum"
+msgstr "End date"
+
+#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:444
+msgid "Sepember"
+msgstr "September"
+
+#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:448
+#: templates/common/search-bar.html:48
+msgid "Alle"
+msgstr "All"
+
+#: LastProfile/Dash_app/Warmelast.py:166 LastProfile/Dash_app/Warmelast.py:450
+msgid "Es gibt keine Eingabe"
+msgstr "There is no input"
+
+#: LastProfile/Dash_app/Warmelast.py:301 LastProfile/Dash_app/Warmelast.py:317
+msgid "Wärmelastgang in kW"
+msgstr "Heat load profile in kW"
+
+#: LastProfile/Dash_app/Warmelast.py:303
+msgid "Fehlende Angaben"
+msgstr "Missing values"
+
+#: LastProfile/Dash_app/Warmelast.py:306 LastProfile/Dash_app/Warmelast.py:322
+msgid "Trinkwarmwasser-Lastgang in kW"
+msgstr "Domestic hot water load profile in kW"
+
+#: LastProfile/Dash_app/Warmelast.py:327
+msgid "Für die ausgewählte Station gibt es "
+msgstr "For the selected stations exist "
+
+#: LastProfile/Dash_app/Warmelast.py:328
+msgid " fehlende Werte, die in der Grafik rot markiert sind. "
+msgstr " missing values, which are marked in red in the plot. "
 
 #: StartSearch/views.py:231
 msgid "Forschungsprojekt"
@@ -355,7 +536,7 @@ msgid ""
 msgstr ""
 
 #: templates/LastProfile/explanation.html:21
-#: templates/StartSearch/StartSearch.html:171
+#: templates/StartSearch/StartSearch.html:172
 #: templates/partials/_navbar.html:77
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -471,10 +652,6 @@ msgstr ""
 #: templates/LastProfile/explanation.html:113
 msgid "Gebäudetyp"
 msgstr "Building Use type"
-
-#: templates/LastProfile/explanation.html:113
-msgid "Auswahl des Gebäudetyps"
-msgstr "Selection of building typ"
 
 #: templates/LastProfile/explanation.html:116
 msgid "Jahreswärmebedarf"
@@ -617,11 +794,11 @@ msgstr ""
 "community interested in such research and also supports the research "
 "projects of the Energiewendebauen initiative."
 
-#: templates/StartSearch/StartSearch.html:94 templates/partials/_navbar.html:44
+#: templates/StartSearch/StartSearch.html:95 templates/partials/_navbar.html:44
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
 
-#: templates/StartSearch/StartSearch.html:96
+#: templates/StartSearch/StartSearch.html:97
 msgid ""
 "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
 "                der Energieforschung im Gebäudesektor zielt vorrangig auf\n"
@@ -635,56 +812,56 @@ msgstr ""
 "efficient operation, and optimization. This encompasses datasets, digital "
 "tools, applications, and other research results."
 
-#: templates/StartSearch/StartSearch.html:114
+#: templates/StartSearch/StartSearch.html:115
 msgid "Werkzeuge"
 msgstr "Tools"
 
-#: templates/StartSearch/StartSearch.html:126
+#: templates/StartSearch/StartSearch.html:127
 #: templates/weatherdata_over/weatherdata-detail.html:77
 msgid "Anwendungen"
 msgstr "Applications"
 
-#: templates/StartSearch/StartSearch.html:138
+#: templates/StartSearch/StartSearch.html:139
 #: templates/TechnicalStandards/explanation.html:14
 #: templates/partials/_navbar.html:64
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
-#: templates/StartSearch/StartSearch.html:160
+#: templates/StartSearch/StartSearch.html:161
 #: templates/partials/_navbar.html:83 weatherdata_over/views.py:58
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/StartSearch/StartSearch.html:182
-#: templates/StartSearch/StartSearch.html:194
+#: templates/StartSearch/StartSearch.html:183
+#: templates/StartSearch/StartSearch.html:195
 #: templates/partials/_navbar.html:88 templates/partials/_navbar.html:94
 msgid "technisch"
 msgstr "technical"
 
-#: templates/StartSearch/StartSearch.html:184
-#: templates/StartSearch/StartSearch.html:298
-#: templates/StartSearch/StartSearch.html:406
-#: templates/StartSearch/StartSearch.html:497
+#: templates/StartSearch/StartSearch.html:185
+#: templates/StartSearch/StartSearch.html:300
+#: templates/StartSearch/StartSearch.html:409
+#: templates/StartSearch/StartSearch.html:501
 #: templates/partials/_navbar.html:89 templates/partials/_navbar.html:147
 #: templates/partials/_navbar.html:197 templates/partials/_navbar.html:242
 msgid "Publikationen"
 msgstr "Publications"
 
-#: templates/StartSearch/StartSearch.html:195
-#: templates/StartSearch/StartSearch.html:309
-#: templates/StartSearch/StartSearch.html:417
-#: templates/StartSearch/StartSearch.html:508
+#: templates/StartSearch/StartSearch.html:196
+#: templates/StartSearch/StartSearch.html:311
+#: templates/StartSearch/StartSearch.html:420
+#: templates/StartSearch/StartSearch.html:512
 #: templates/partials/_navbar.html:95 templates/partials/_navbar.html:152
 #: templates/partials/_navbar.html:202 templates/partials/_navbar.html:248
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/StartSearch/StartSearch.html:216
+#: templates/StartSearch/StartSearch.html:218
 #: templates/partials/_navbar.html:111
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
-#: templates/StartSearch/StartSearch.html:218
+#: templates/StartSearch/StartSearch.html:220
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -701,44 +878,44 @@ msgstr ""
 "applications. Key aspects include the economical operation of digital "
 "applications/business models, along with user integration and interactivity."
 
-#: templates/StartSearch/StartSearch.html:237
+#: templates/StartSearch/StartSearch.html:239
 #: templates/partials/_navbar.html:117 templates/partials/_navbar.html:123
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/StartSearch/StartSearch.html:249
+#: templates/StartSearch/StartSearch.html:251
 msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
 msgstr "Business model applications - Challenges"
 
-#: templates/StartSearch/StartSearch.html:261
+#: templates/StartSearch/StartSearch.html:263
 #: templates/partials/_navbar.html:129
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/StartSearch/StartSearch.html:273
-#: templates/StartSearch/StartSearch.html:285
+#: templates/StartSearch/StartSearch.html:275
+#: templates/StartSearch/StartSearch.html:287
 #: templates/partials/_navbar.html:135 templates/partials/_navbar.html:141
 msgid "Nutzenden&shy;perspektive"
 msgstr "User Engagement"
 
-#: templates/StartSearch/StartSearch.html:285
+#: templates/StartSearch/StartSearch.html:287
 #: templates/pages/userIntegrationMethod.html:19
 #: templates/partials/_navbar.html:141
 msgid "Methoden"
 msgstr "Methods"
 
-#: templates/StartSearch/StartSearch.html:296
-#: templates/StartSearch/StartSearch.html:308
+#: templates/StartSearch/StartSearch.html:298
+#: templates/StartSearch/StartSearch.html:310
 #: templates/partials/_navbar.html:146 templates/partials/_navbar.html:151
 msgid "betrieblich"
 msgstr "operational"
 
-#: templates/StartSearch/StartSearch.html:334
+#: templates/StartSearch/StartSearch.html:337
 #: templates/partials/_navbar.html:167
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:336
+#: templates/StartSearch/StartSearch.html:339
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -758,40 +935,40 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:357
+#: templates/StartSearch/StartSearch.html:360
 #: templates/pages/environmentalIntegrityNegativ.html:19
 #: templates/partials/_navbar.html:173
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: templates/StartSearch/StartSearch.html:369
+#: templates/StartSearch/StartSearch.html:372
 #: templates/pages/environmentalIntegrityPositiv.html:19
 #: templates/partials/_navbar.html:179
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: templates/StartSearch/StartSearch.html:381
+#: templates/StartSearch/StartSearch.html:384
 #: templates/pages/benchmarkingChallenges.html:19
 #: templates/partials/_navbar.html:185
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:393
+#: templates/StartSearch/StartSearch.html:396
 #: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:191
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: templates/StartSearch/StartSearch.html:404
+#: templates/StartSearch/StartSearch.html:407
 #: templates/partials/_navbar.html:196 templates/partials/_navbar.html:201
 msgid "ökologisch"
 msgstr "ecological"
 
-#: templates/StartSearch/StartSearch.html:438
+#: templates/StartSearch/StartSearch.html:442
 #: templates/partials/_navbar.html:218
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:440
+#: templates/StartSearch/StartSearch.html:444
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -811,23 +988,23 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:460
+#: templates/StartSearch/StartSearch.html:464
 #: templates/partials/_navbar.html:224
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:472
+#: templates/StartSearch/StartSearch.html:476
 #: templates/partials/_navbar.html:230
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
-#: templates/StartSearch/StartSearch.html:484
+#: templates/StartSearch/StartSearch.html:488
 #: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:236
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:495
-#: templates/StartSearch/StartSearch.html:507
+#: templates/StartSearch/StartSearch.html:499
+#: templates/StartSearch/StartSearch.html:511
 #: templates/partials/_navbar.html:241 templates/partials/_navbar.html:247
 msgid "rechtlich"
 msgstr "legal"
@@ -1531,10 +1708,6 @@ msgstr ""
 #: templates/datasets_over/dataset-detail.html:45
 msgid "Zurück"
 msgstr "Back"
-
-#: templates/common/search-bar.html:48
-msgid "Alle"
-msgstr "All"
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -3645,6 +3818,70 @@ msgstr "Updates"
 msgid "Darstellung der Zeitreihen"
 msgstr ""
 
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:14
+msgid "Einen Haushalt"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:17
+#, fuzzy
+#| msgid "Haushaltskunden "
+msgid "Drei Haushalte"
+msgstr "Household customers"
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:21
+msgid "Geschirrspüler"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:24
+msgid "Elektrisch-Kombiniert"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:27
+msgid "Kühl- und Gefrierschrank"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:30
+msgid "Wasserkocher"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:33
+#, fuzzy
+#| msgid "Haftungsausschluss"
+msgid "Hauptanschluss"
+msgstr "Disclaimer"
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:36
+msgid "Staubsauger"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:39
+msgid "Herd"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:42
+msgid "Mikrowelle"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:45
+msgid "Waschmaschine"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:48
+msgid "Durchlauferhitzer"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:52
+msgid "5 Sekunden"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:54
+msgid "15 Minuten"
+msgstr ""
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:56
+msgid "1 Stunde"
+msgstr ""
+
 #: templates/use_cases/explanation.html:18
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
@@ -3854,8 +4091,6 @@ msgid "Use Case"
 msgstr ""
 
 #: use_cases/views.py:85
-#, fuzzy
-#| msgid "Auswahl der Station"
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
@@ -3887,17 +4122,8 @@ msgstr "Free to use"
 msgid "MIT-Lizenz"
 msgstr "MIT license"
 
-#~ msgid "Wärmelast Approximation"
-#~ msgstr "Heat load approximation"
-
-#~ msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt"
-#~ msgstr "We chose the following values as the test reference year"
-
 #~ msgid "Koordinatensystem"
 #~ msgstr "Coordinate system"
-
-#~ msgid "Lambert konform konisch"
-#~ msgstr "Lambert compliant conical"
 
 #~ msgid "Rechtswert"
 #~ msgstr "Legal value"
@@ -3914,98 +4140,11 @@ msgstr "MIT license"
 #~ msgid "Meter über NN"
 #~ msgstr "Meters above sea level"
 
-#~ msgid "Erstellung des Datensatzes im Mai 2016"
-#~ msgstr "The data set was created in May 2016"
-
 #~ msgid "Art des TRY"
 #~ msgstr "Type of TRY"
 
 #~ msgid "mittleres Jahr"
 #~ msgstr "avarage year"
-
-#~ msgid "Bezugszeitraum"
-#~ msgstr "Reference period"
-
-#~ msgid "Beobachtungsdaten Zeitraum"
-#~ msgstr "Observation data period"
-
-#~ msgid "Testreferenzjahr"
-#~ msgstr "Test reference year"
-
-#~ msgid "Wetterstation"
-#~ msgstr "Weather station"
-
-#~ msgid "Berechnungstyp"
-#~ msgstr "Calculation type"
-
-#~ msgid "Auswahl des Bundesland"
-#~ msgstr "Selection of the state"
-
-#~ msgid "Einfamilienhaus "
-#~ msgstr "Single Family House"
-
-#~ msgid "Mehrfamilienhaus "
-#~ msgstr "Multi Family House"
-
-#~ msgid "Gebietskörperschaft"
-#~ msgstr "Local authority"
-
-#~ msgid "Einzelhandel, Großhandel"
-#~ msgstr "Retail, Wholesale"
-
-#~ msgid "Metall, Kfz"
-#~ msgstr "Metal, Automotive"
-
-#~ msgid "sonst. betr. Dienstleistungen  "
-#~ msgstr "Other operational services"
-
-#~ msgid "Gaststätten "
-#~ msgstr "Restaurants"
-
-#~ msgid "Beherbergung "
-#~ msgstr "Accommodation"
-
-#~ msgid "Bäckereien "
-#~ msgstr "Bakeries"
-
-#~ msgid "Wäschereien "
-#~ msgstr "Laundries"
-
-#~ msgid "Gartenbau "
-#~ msgstr "horticulture"
-
-#~ msgid "Papier und Druck "
-#~ msgstr "Paper and printing"
-
-#~ msgid "haushaltsähnliche Gewerbebetriebe "
-#~ msgstr "Household-like businesses"
-
-#~ msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung "
-#~ msgstr "Total load profile for trade, commerce, services"
-
-#~ msgid "Jahreswärmebedarf in kWh/a"
-#~ msgstr "Annual heat requirement in kWh/a"
-
-#~ msgid "Start Datum"
-#~ msgstr "Start date"
-
-#~ msgid "End Datum"
-#~ msgstr "End date"
-
-#~ msgid "Sepember"
-#~ msgstr "September"
-
-#~ msgid "Es gibt keine Eingabe "
-#~ msgstr "There is no input"
-
-#~ msgid "Wärmelastgang in kW"
-#~ msgstr "Heat load profile in kW"
-
-#~ msgid "Fehlende Angaben"
-#~ msgstr "Missing values"
-
-#~ msgid "Trinkwarmwasser-Lastgang in kW"
-#~ msgstr "Domestic hot water load profile in kW"
 
 #~ msgid "Nutzendenperspektive - Methoden"
 #~ msgstr "User engagement - methods"
