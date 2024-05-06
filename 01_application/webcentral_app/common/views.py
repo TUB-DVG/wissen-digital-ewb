@@ -22,3 +22,6 @@ def getFocusNameIndependentOfLanguage(focusStr: str, focusObj: Focus) -> str:
     else:
         focusName = focusObj.focus_en
     return focusName
+
+def error404view(request, exception):
+    return render(request, '404.html')
