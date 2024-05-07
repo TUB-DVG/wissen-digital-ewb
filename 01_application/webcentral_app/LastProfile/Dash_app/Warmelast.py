@@ -296,7 +296,7 @@ def displayMonths(endDate:str, dataOnLoad, startDate:str)-> list:
 def updateHeatGraph(onLoadData, n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
                     startDate:str,endDate:str,referenceYear:str):
 
-    if n_clicks == 0:
+    if n_clicks == 0 or n_clicks is None:
         return _("Es gibt keine Eingabe"),_("Es gibt keine Eingabe"),pd.DataFrame.to_dict(pd.DataFrame())
 
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0] 
