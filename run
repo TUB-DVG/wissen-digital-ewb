@@ -168,7 +168,7 @@ case $command in
                 if [ -n "$4" ]; then
                     siteUnderTest=http://127.0.0.1:8000 HEADLESS=0 python Test/TestSuite/TestRunner.py --test_file $3 --test_method $4
                 else
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py --test_file $3
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=0 python Test/TestSuite/TestRunner.py --test_file $3
                 fi
             else 
                 siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py

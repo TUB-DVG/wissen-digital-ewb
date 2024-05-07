@@ -1,6 +1,7 @@
 """
 
 """
+import time
 import os
 import unittest
 import urllib3
@@ -44,7 +45,10 @@ class WebDriverSetup(unittest.TestCase):
         """Scroll the element into the view of the browser-window.
         
         """
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        window_height = self.driver.execute_script('return window.innerHeight')
+        middle_y_coordinate = element.location['y'] - (window_height / 2)
+        self.driver.execute_script(f"window.scrollTo(0, {middle_y_coordinate})")
+        time.sleep(1)
 
     def scrollElementIntoViewAndClickIt(self, element):
         """Scroll the element into the view of the browser-window.
