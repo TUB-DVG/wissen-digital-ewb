@@ -6,6 +6,7 @@ import unittest
 import urllib3
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as Firefox_Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -67,3 +68,11 @@ class WebDriverSetup(unittest.TestCase):
         self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
         errorMessage,
       )
+
+    def getLanguage(self):
+        """Get the language of the page.
+        
+        """
+
+        element = self.driver.find_element(By.XPATH, "//select[@name='language']")
+        return element.get_attribute("value")

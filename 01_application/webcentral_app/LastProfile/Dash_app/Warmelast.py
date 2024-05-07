@@ -182,7 +182,8 @@ app.layout = html.Div([
     Output(component_id = 'application',component_property = 'value'),
     Output(component_id = 'displayMonth', component_property = 'value'),
     Input(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = True,
+    allow_duplicate=True,
    )
 def resetData(visibility_state):
         return None,None,None,None,'All'
@@ -243,18 +244,35 @@ def dateRangePicker (referenceYear:str,stationId:int)-> Tuple[str,str] :
 @app.callback(
     Output('displayMonth','options'),
     Input('datePicker', 'end_date'),
+    Input('on-load', 'data'),
     State('datePicker', 'start_date'),
-    prevent_initial_call  = True,
+    # prevent_initial_call  = True,
     )
 # The following function displays a list of available months in the data range selected
-def displayMonths(endDate:str,startDate:str)-> list:
+def displayMonths(endDate:str, dataOnLoad, startDate:str)-> list:
+    if endDate is None or startDate is None:
+        return [
+                {'label': _('Januar'), 'value': '1'},
+                {'label': _('Februar'), 'value': '2'},
+                {'label': _('März'), 'value': '3'},
+                {'label': _('April'), 'value': '4'},
+                {'label': _('Mai'), 'value': '5'},
+                {'label': _('Juni'), 'value': '6'},
+                {'label': _('Juli'), 'value': '7'},
+                {'label': _('August'), 'value': '8'},
+                {'label': _('Sepember'), 'value': '9'},
+                {'label': _('Oktober'), 'value': '10'},
+                {'label': _('November'), 'value': '11'},
+                {'label': _('Dezember'), 'value': '12'},
+                {'label': _('Alle'), 'value': 'All'},
+                ]
     Months = pd.date_range(startDate,
     endDate,freq = 'W').strftime("%B").unique().tolist()
     # Setting the months in the right format for plotly dash
-    displayMonths = [{"label":index , 
+    displayMonths = [{"label":_(index) , 
         "value": datetime.datetime.strptime(index, "%B").month} 
         for index in Months ]
-    displayMonths.append ({"label":'Alle' , "value": 'All'})
+    displayMonths.append ({"label":_('Alle') , "value": 'All'})
 
     return displayMonths
 
@@ -263,6 +281,7 @@ def displayMonths(endDate:str,startDate:str)-> list:
     Output(component_id = 'heatGraph', component_property = 'figure'),
     Output(component_id = 'containerParagraphAtBottom',component_property = 'children'),
     Output(component_id = 'heat_approximationStoring',component_property = 'data'),
+    Input('on-load', 'data'),
     Input(component_id = 'approximationStart',component_property = 'n_clicks'),
     Input(component_id = 'displayMonth',component_property = 'value'),
     State(component_id = 'application',component_property = 'value'),
@@ -271,11 +290,14 @@ def displayMonths(endDate:str,startDate:str)-> list:
     State(component_id = 'datePicker',component_property = 'start_date'),
     State(component_id = 'datePicker',component_property = 'end_date'),
     State(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    # prevent_initial_call = True
     )
 # This function calculates the approximations and displays it
-def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
+def updateHeatGraph(onLoadData, n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
                     startDate:str,endDate:str,referenceYear:str):
+
+    if n_clicks == 0:
+        return _("Es gibt keine Eingabe"),_("Es gibt keine Eingabe"),pd.DataFrame.to_dict(pd.DataFrame())
 
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0] 
     # Restructure Option 1: Seperate Graph update and calculation
@@ -388,9 +410,6 @@ def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
     Output('datePicker', "end_date_placeholder_text"),
     Output("approximationStart", "children"),
     Output("btn-download-csv", "children"),
-    # Output('displayMonth', 'options'),
-    # Output("station", "placeholder"),
-    # Output("containerParagraphAtBottom", "children"),
     Input('on-load', 'data'),
     allow_duplicate=True,
 )
@@ -431,32 +450,12 @@ def update_layout(data):
     heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
     startDatePlaceholderText = _('Start Datum')
     endDatePlaceholderText = _('End Datum')
-    optionsMonth = [
-        {'label': _('Januar'), 'value': '1'},
-        {'label': _('Februar'), 'value': '2'},
-        {'label': _('März'), 'value': '3'},
-        {'label': _('April'), 'value': '4'},
-        {'label': _('Mai'), 'value': '5'},
-        {'label': _('Juni'), 'value': '6'},
-        {'label': _('Juli'), 'value': '7'},
-        {'label': _('August'), 'value': '8'},
-        {'label': _('Sepember'), 'value': '9'},
-        {'label': _('Oktober'), 'value': '10'},
-        {'label': _('November'), 'value': '11'},
-        {'label': _('Dezember'), 'value': '12'},
-        {'label': _('Alle'), 'value': 'All'},
-    ]
+
     paragraphNoEntry = _('Es gibt keine Eingabe')
-    # placeholderStationPlaceholder = _("Auswahl der Station")
-    # referenceYearDropdown = [
-    #     {'label': _('Testreferenzjahr'), 'value': 'on'},
-    #     {'label': _('Wetterstation'), 'value': 'off'}     
-    # ]
+
     buttonLabelApproximationStart = _('Approximation starten')
     buttonLabelDownloadCsv = _('Download als csv')
     stationplaceholder = _("Auswahl der Station")
-    # headingApp = _("Wärmelast Approximation")
-    # placeholderInput =  _("Jahreswärmebedarf") + " in kWh/a"
 
     return (
         headingAppTranslation,
@@ -479,8 +478,6 @@ def update_layout(data):
         endDatePlaceholderText,
         buttonLabelApproximationStart,
         buttonLabelDownloadCsv,
-        # paragraphNoEntry,
-        optionsMonth,
     )
 
 

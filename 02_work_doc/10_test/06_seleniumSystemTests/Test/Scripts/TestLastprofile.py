@@ -3,6 +3,7 @@ from the outside/from a enduser perspective using selenium-webdriver.
 
 """
 import datetime
+import gettext
 import glob
 import sys
 import time
@@ -41,6 +42,37 @@ class TestLastprofileTab(WebDriverSetup):
     
     """
     
+    def testTranslationOfHeatLoadApp(self):
+        """Test if the Heat-Load-Approximation is translated correctly
+
+        """
+
+        lastprofilePage = Lastprofile(self.driver)
+
+        self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
+        language = getLastprofilePage.getLanguage()
+
+        linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
+
+
+        # get the current language and check if the right text is displayed with the gettext utilty
+
+
+        linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
+        linkToHeatApprox.click()
+
+        currentApproObj = HeatApproximation(self.driver)
+        
+        time.sleep(1)
+        currentApproObj.switchToIFrame()
+        headingElement = currentApproObj.getHeadingOfPage()
+
+        self.assertEqual(
+            headingElement.text,
+            "Wärmelast Approximation",
+            "Heading Title should be Wärmelast Approximation, but its not!",
+        )
+
     def testLastprofileApprox(self):
         """Clicks on 'Approximation der Stromlast' and tests the tool
         
