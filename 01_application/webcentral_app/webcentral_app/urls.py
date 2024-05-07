@@ -27,6 +27,8 @@ urlpatterns += static(settings.MEDIA_URL,
                       document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
+        path('component_list/', include('component_list.urls')),
+        path("criteriaCatalog/", include("criteriaCatalog.urls")),
         path('pages/', include('pages.urls')),
         path('tool_list/', include('tools_over.urls')),
         path('dataset_list/',include('Datasets.urls')),
@@ -38,7 +40,6 @@ urlpatterns += i18n_patterns(
         path('', include('StartSearch.urls')),
         path('TechnicalStandards/',include('TechnicalStandards.urls')),
         path('publications/',include('publications.urls')),
-        path("criteriaCatalog/", include("criteriaCatalog.urls")),
         path('useCases_list/', include('use_cases.urls')),
         path('i18n/', include('django.conf.urls.i18n')),
 )
