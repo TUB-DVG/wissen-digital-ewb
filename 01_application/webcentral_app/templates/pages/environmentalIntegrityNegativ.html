@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Negative Umweltwirkungen{% endblock %}
-{% load static %}
 {% load i18n %}
+{% block title %}
+  {% translate "Negative Umweltwirkungen" %}
+{% endblock %}
+{% load static %}
 {% block content %}
-  <!-- general text for "coming soon" -->
-  {% include 'partials/_coming.html' %}
   <!-- =======================
  Content START -->
   <div class="content container">
@@ -20,37 +20,52 @@
         </div>
       </div>
     </div>
-  </div>
-  <section id="about" class=" pt-4 py-lg-5">
-    <div class="container">
+    <div class="boxes" id="container-start-focus">
       <div class="row">
-        <div class="col-lg-9">
-          <p>
-            {% blocktranslate %}Die Digitalisierung bietet große Potenziale und Chancen. Auch im
-          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.
-          Effizienzpotenziale heben (siehe positive Umweltwirkungen –
-          good-practice). Jedoch stehen den positiven Wirkungen, hervorgerufen
-          durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend vom
-          Lebenszyklus der verwendeten Produkte und Services ergeben sich
-          negative Umweltwirkungen von der Rohstoffgewinnung, über den
-          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie.{% endblocktranslate %}
-          </p>
-          <p>
-            {% blocktranslate %}Folgend sollen die Umweltlasten für häufig verwendete Komponenten
-          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird nur
-          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen fokussiert, da die
-          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der
-          derzeitigen Forschung der Forschungsinitiative Energiewendebauen
-          darstellt. Die Übersicht soll zunächst einen einfachen Überblick und
-          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen soll sie
-          Interessierte dazu befähigen, die Nettoeffekte – also die Bilanz aus
-          Umweltnutzen und – lasten – abzuschätzen, um so digitale Anwendungen
-          aus der ökologischen Perspektive möglichst effektiv zu entwickeln,
-          und/oder zu nutzen.{% endblocktranslate %}
-          </p>
+        <div class="col-12 col-lg-6 p-3 border-ecological" id="box1">
+          <a href="#"
+             style="color: inherit;
+                    text-decoration: none;
+                    font-style: normal">
+            <div class="row">
+              <div class="col-12">
+                <h6 class="boxHeading">{% translate "Aufwände für verwendete Komponenten " %}</h6>
+              </div>
+              <div class="col-12">
+                <p class="boxDescription">
+                  {% blocktranslate %}Die Digitalisierung bietet große Potenziale und Chancen. Auch im Gebäudebereich lassen sich mittels digitaler Anwendungen u.a. Effizienzpotenziale heben (siehe positive Umweltwirkungen – good-practice). Jedoch stehen den positiven Wirkungen, hervorgerufen durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich negative Umweltwirkungen von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. {% endblocktranslate %}
+                </p>
+              </div>
+              <div class="boxImage">
+                <img src="{% static 'img/negativeEnvironmentalImpactsBox1.svg' %}"
+                     alt="box1">
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-12 col-lg-6 p-3 border-ecological" id="box2">
+          <a href="#"
+             style="color: inherit;
+                    text-decoration: none;
+                    font-style: normal">
+            <div class="row">
+              <div class="col-12">
+                <h6 class="boxHeading">{% translate "Aufwände für Datenverarbeitungsprozesse" %}</h6>
+              </div>
+              <div class="col-12">
+                <p class="boxDescription">
+                  {% blocktranslate %}Bei der Nutzung digitaler Technologien für die Betriebsoptimierung von Gebäuden und Quartieren werden in der Regel unterschiedliche Datenverarbeitungsprozesse durchlaufen, die am Ende eine bestmögliche Nutzung der Daten ermöglichen sollen. Einen Überblick über einige der möglichen Prozessschritte bietet das in Abbildung 1 gezeigten Daten-Wertschöpfungskette. Hinter jedem Prozessschritt steht eine programmierte Anweisung, die oftmals in Schleifen ausgeführt wird. Dadurch kommt es fortwährend zur Generierung von Daten, welche auch mit einem entsprechenden Energieverbrauch verbunden ist. Hier finden Sie Umweltlasten wichtiger Datenverarbeitungsprozesse. {% endblocktranslate %}
+                </p>
+              </div>
+              <div class="boxImage">
+                <img src="{% static 'img/negativeEnvironmentalImpactsBox1.svg' %}"
+                     alt="box1">
+              </div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
   <!-- Content END -->
 {% endblock %}
