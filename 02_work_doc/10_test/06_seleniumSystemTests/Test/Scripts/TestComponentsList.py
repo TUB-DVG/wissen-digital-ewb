@@ -47,3 +47,53 @@ class TestComponentsList(WebDriverSetup):
     
         descriptionHeadingDiv = impactsObj.getDescriptionHeadingDiv()
         self.assertIsNotNone(descriptionHeadingDiv)
+
+        boxesDiv = impactsObj.getBoxesDiv()
+        self.assertIsNotNone(boxesDiv)
+
+        boxes1and2 = impactsObj.getBox1and2()
+        self.assertIsNotNone(boxes1and2[0])
+        self.assertIsNotNone(boxes1and2[1])
+
+        # test the structure inside the boxes
+        boxHeading1 = impactsObj.getBoxHeading(boxes1and2[0])
+        self.assertIsNotNone(boxHeading1)
+
+        boxContent1 = impactsObj.getBoxDescription(boxes1and2[0])
+        self.assertIsNotNone(boxContent1)
+
+        boxImage1 = impactsObj.getBoxImage(boxes1and2[0])
+        self.assertIsNotNone(boxImage1)
+
+        imageInDivBox1 = impactsObj.getImageInBox(boxes1and2[0])
+        self.assertIsNotNone(imageInDivBox1)
+
+        image1NaturalWidth = imageInDivBox1.get_attribute('naturalWidth')
+        self.assertNotEqual(image1NaturalWidth, '0', 'Image 1 is not displayed, only alt-text is shown')
+
+        boxHeading2 = impactsObj.getBoxHeading(boxes1and2[1])
+        self.assertIsNotNone(boxHeading2)
+
+        boxContent2 = impactsObj.getBoxDescription(boxes1and2[1])
+        self.assertIsNotNone(boxContent2)
+
+        boxImage2 = impactsObj.getBoxImage(boxes1and2[1])
+        self.assertIsNotNone(boxImage2)
+
+        imageInDivBox2 = impactsObj.getImageInBox(boxes1and2[1])
+        self.assertIsNotNone(imageInDivBox2)
+
+        image2NaturalWidth = imageInDivBox2.get_attribute('naturalWidth')
+        self.assertNotEqual(image2NaturalWidth, '0', 'Image 2 is not displayed, only alt-text is shown')
+
+        borderColor1 = boxes1and2[0].value_of_css_property('border-color')
+        borderColor2 = boxes1and2[1].value_of_css_property("border-color")
+        self.assertEqual(borderColor1, 'rgb(143, 222, 151)', 'Div box 1 does not have a green border')
+        self.assertEqual(borderColor2, 'rgb(143, 222, 151)', 'Div box 1 does not have a green border')
+
+    def testLinksFromOverviewPage(self):
+        """Test if the links from the negative environmental impacts page leads to a working page.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ")
+        impactsObj = NegativeEnvironmentalImpacts(self.driver)
