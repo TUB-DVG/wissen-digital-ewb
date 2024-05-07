@@ -147,3 +147,11 @@ class Locator(object):
     contentDiv = "//div[contains(@class, 'content')]"
     descriptionHeadingDiv = "//div[@class='description-heading']"
     descriptionContentDiv = "//div[@class='description-content']"
+    boxesDiv = "//div[@class='boxes']"
+    box1 = "//div[@id='box1']"
+    box2 = "//div[@id='box2']"
+    boxHeading = "//h6[@class='boxHeading']"
+    boxDescription = "//p[@class='boxDescription']"
+    boxImage = "//div[@class='boxImage']"
+    imageInDiv = "//img"
+
