@@ -26,9 +26,16 @@ class HeatApproximation(object):
         """Switches to the Iframe in which the react app is located.
         
         """
+        wait = WebDriverWait(self.driver, timeout=2)
+        iframeObj = wait.until(EC.presence_of_element_located((By.XPATH, Locator.currentLoadIFrame)))
 
-        iframeObj = self.driver.find_element(
-            By.XPATH,
-            Locator.currentLoadIFrame,
-        )
         self.driver.switch_to.frame(iframeObj)
+    
+    def getBottomParagraph(self):
+        """Returns the bottom paragraph of the page.
+        
+        """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.bottomParagraph,
+        )

@@ -77,7 +77,7 @@ class Locator(object):
 
     # locators of lastprofile:
     stromlastApprLink = "//a[@href='/LastProfile/stromlast']"
-    heatApproximationLink = "//a[@href='/LastProfile/warmelast']"
+    heatApproximationLink = "/LastProfile/warmelast"
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
     linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
 
@@ -97,6 +97,7 @@ class Locator(object):
 
     # locators for  HeatApproximation-Page
     headingOfHeatApproxSite = "//h1"
+    bottomParagraph = "//p[@id='containerParagraphAtBottom']"
 
     # locators of about page:
     aboutPageTopHeading = "//h2"

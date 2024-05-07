@@ -12,6 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
  
 class WebDriverSetup(unittest.TestCase):
+    PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -38,6 +39,12 @@ class WebDriverSetup(unittest.TestCase):
             print("Cleanup of test environment")
             self.driver.close()
             self.driver.quit()
+
+    def scrollElementIntoView(self, element):
+        """Scroll the element into the view of the browser-window.
+        
+        """
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     def scrollElementIntoViewAndClickIt(self, element):
         """Scroll the element into the view of the browser-window.

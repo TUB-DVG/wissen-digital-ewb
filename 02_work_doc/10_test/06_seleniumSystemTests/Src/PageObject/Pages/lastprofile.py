@@ -23,13 +23,14 @@ class Lastprofile(object):
             Locator.stromlastApprLink,
         )
 
+
     def getLinkForHeatApproxTool(self):
         """
         
         """
         return self.driver.find_element(
             By.XPATH,
-            Locator.heatApproximationLink,
+            f"//a[contains(@href, '{Locator.heatApproximationLink}')]",
         )
 
     def getWeatherServiceLink(self):
