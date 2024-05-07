@@ -1,35 +1,32 @@
 {% extends 'base.html' %}
-
-{% block title %} Negative Umweltwirkungen {% endblock %}
-
+{% block title %}Negative Umweltwirkungen{% endblock %}
 {% load static %}
 {% load i18n %}
-{% block content%}
-
-<!-- general text for "coming soon" -->
-{% include 'partials/_coming.html' %}
-
+{% block content %}
+  <!-- general text for "coming soon" -->
+  {% include 'partials/_coming.html' %}
   <!-- =======================
-Page Banner START -->
-<section class="py-4">
-  <div class="container">
+ Content START -->
+  <div class="content container">
     <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% translate "Negative Umweltwirkungen" %}</h2>
+      <div class="col-12 description">
+        <div class="description-heading">
+          <p>{% translate "Negative Umweltwirkungen" %}</p>
+        </div>
+        <div class="description-content">
+          <p>
+            {% blocktranslate %}Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale Anwendungen muss zudem der materielle und energetische Aufwand für die involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte können aber auch auf andere digitale Anwendungen übertragen werden. {% endblocktranslate %}
+          </p>
         </div>
       </div>
     </div>
   </div>
-</section>
-<!-- Page Banner END -->
-<!-- Content START -->
-<section id="about" class=" pt-4 py-lg-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <p>
-          {% blocktranslate %}Die Digitalisierung bietet große Potenziale und Chancen. Auch im
+  <section id="about" class=" pt-4 py-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <p>
+            {% blocktranslate %}Die Digitalisierung bietet große Potenziale und Chancen. Auch im
           Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.
           Effizienzpotenziale heben (siehe positive Umweltwirkungen –
           good-practice). Jedoch stehen den positiven Wirkungen, hervorgerufen
@@ -37,9 +34,9 @@ Page Banner START -->
           Lebenszyklus der verwendeten Produkte und Services ergeben sich
           negative Umweltwirkungen von der Rohstoffgewinnung, über den
           Energieverbrauch im Betrieb bis zur Entsorgung der Technologie.{% endblocktranslate %}
-        </p>
-        <p>
-          {% blocktranslate %}Folgend sollen die Umweltlasten für häufig verwendete Komponenten
+          </p>
+          <p>
+            {% blocktranslate %}Folgend sollen die Umweltlasten für häufig verwendete Komponenten
           digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird nur
           auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen fokussiert, da die
           Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der
@@ -50,10 +47,10 @@ Page Banner START -->
           Umweltnutzen und – lasten – abzuschätzen, um so digitale Anwendungen
           aus der ökologischen Perspektive möglichst effektiv zu entwickeln,
           und/oder zu nutzen.{% endblocktranslate %}
-        </p>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Content END -->
+  </section>
+  <!-- Content END -->
 {% endblock %}

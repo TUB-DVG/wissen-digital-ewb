@@ -142,3 +142,8 @@ class Locator(object):
     allHorizontalLineElements = "//hr"
     fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
     collpaseEveryThingButton = "//button[@id='collapseEverythingButton']"
+
+    # locators for negative-environmental-impacts
+    contentDiv = "//div[contains(@class, 'content')]"
+    descriptionHeadingDiv = "//div[@class='description-heading']"
+    descriptionContentDiv = "//div[@class='description-content']"
