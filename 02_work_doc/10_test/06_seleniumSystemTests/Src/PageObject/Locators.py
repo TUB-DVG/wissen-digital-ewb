@@ -16,6 +16,7 @@ class Locator(object):
     linkToOperationalPublications = "//a[@id='linkToOperationalPublications']"
     linkToLegalPublications = "//a[@id='linkToLegalPublications']"
     linkToEcologicalPublications = "//a[@id='linkToEcologicalPublications']"
+    linkToNegativeEnviormentalImpact = "/pages/environmentalIntegrityNegativ"
 
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"
