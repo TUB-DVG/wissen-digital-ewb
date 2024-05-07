@@ -99,8 +99,6 @@ app.layout = html.Div([
     # prevent_initial_call=True
 )
 def update_layout(hi):
-    # Get the session key from the cookie
-    # breakpoint()
     optionsDropdown = [
         {'label': _('Gewerbe allgemein '), 'value': '2'},
         {'label': _('Gewerbe werktags 8-18 '), 'value': '3'},
