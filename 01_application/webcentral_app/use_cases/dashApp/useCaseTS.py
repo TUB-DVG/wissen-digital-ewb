@@ -3,7 +3,6 @@ import pathlib
 
 import pandas as pd
 import plotly.graph_objects as go
-from project_listing.models import *
 from django_plotly_dash import DjangoDash
 from dash.exceptions import PreventUpdate
 from django.utils.translation import gettext as _
@@ -20,7 +19,6 @@ csv_files = {
     "file2": "01_application/webcentral_app/use_cases/dashApp/Household73_15min.csv",
 }
 app = DjangoDash('useCaseTS')
-
 
 # Read all CSV files into dataframes
 dataframes = {name: pd.read_csv(path) for name, path in csv_files.items()}
