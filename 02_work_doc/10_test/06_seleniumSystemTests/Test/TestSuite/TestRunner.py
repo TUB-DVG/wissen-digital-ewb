@@ -17,7 +17,7 @@ from Test.Scripts.TestNormsPage import TestNormsPage
 from Test.Scripts.TestProtocolsPage import TestProtocolsPage
 from Test.Scripts.TestSearch import TestSearch
 from Test.Scripts.TestPublications import TestPublicationPage
-# from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
+from Test.Scripts.TestComponentsList import TestComponentsList
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
 
