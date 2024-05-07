@@ -99,6 +99,21 @@ class NavBar(object):
             print("Tool Link Element couldnt be located on webpage!")
             return None
     
+    def clickOnNegativeEnvironmentalImpact(self):
+        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
+        
+        """
+        try:
+            self.driver.find_element(
+                By.XPATH, 
+                f"//a[contains(@href, '{Locator.linkToNegativeEnviormentalImpact}')]",
+            ).click()
+            return
+        except NoSuchElementException:
+            print("Tool Link Element couldnt be located on webpage!")
+            return None
+
+
     def getWeatherDataItem(self):
         """Returns wheater-data item in submenu under data-tab
         
