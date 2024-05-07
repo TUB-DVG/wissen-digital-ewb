@@ -97,3 +97,9 @@ class TestComponentsList(WebDriverSetup):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ")
         impactsObj = NegativeEnvironmentalImpacts(self.driver)
+
+        linkToComponentList = impactsObj.getLinkToComponentList()
+        linkToComponentList.click()
+        self.assertTrue("components" in self.driver.title or "Komponenten" in self.driver.title)
+
+        
