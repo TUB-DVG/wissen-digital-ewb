@@ -139,3 +139,6 @@ def _setUseCaseImage(useCaseItem):
         useCaseItem.icon = "/assets/images/Geräte.svg"
     else:
         useCaseItem.icon = None
+
+def dashboard_view(request):
+    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html')

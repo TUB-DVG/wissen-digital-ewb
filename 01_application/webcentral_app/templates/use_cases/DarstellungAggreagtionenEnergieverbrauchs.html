@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load plotly_dash %}
 {% block title %}{% translate "Darstellung der Zeitreihen" %}{% endblock %}
 {% block content %}
 {% load static %}
@@ -98,5 +99,9 @@
 
     }
 </script>
+<body>
+    <h1>My Dash App</h1>
+    {% plotly_app name='useCaseTS' %}
+</body>
 </html>
 {% endblock %}
