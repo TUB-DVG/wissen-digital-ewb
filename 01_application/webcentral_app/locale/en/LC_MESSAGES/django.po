@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:37+0000\n"
+"POT-Creation-Date: 2024-05-08 07:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,42 +200,42 @@ msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
 #: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:116
-#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:436
+#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:255
 msgid "Januar"
 msgstr "January"
 
 #: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:117
-#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:437
+#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:256
 msgid "Februar"
 msgstr "February"
 
 #: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:118
-#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:438
+#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:257
 msgid "März"
 msgstr "March"
 
 #: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:119
-#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:439
+#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:258
 msgid "April"
 msgstr "April"
 
 #: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:120
-#: LastProfile/Dash_app/Warmelast.py:143 LastProfile/Dash_app/Warmelast.py:440
+#: LastProfile/Dash_app/Warmelast.py:143 LastProfile/Dash_app/Warmelast.py:259
 msgid "Mai"
 msgstr "May"
 
 #: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:121
-#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:441
+#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:260
 msgid "Juni"
 msgstr "June"
 
 #: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:122
-#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:442
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:261
 msgid "Juli"
 msgstr "July"
 
 #: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:123
-#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:443
+#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:262
 msgid "August"
 msgstr "August"
 
@@ -244,17 +244,17 @@ msgid "September"
 msgstr "September"
 
 #: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:125
-#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:445
+#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:264
 msgid "Oktober"
 msgstr "October"
 
 #: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:126
-#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:446
+#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:265
 msgid "November"
 msgstr "November"
 
 #: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:127
-#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:447
+#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:266
 msgid "Dezember"
 msgstr "December"
 
@@ -269,7 +269,7 @@ msgid "Download als csv"
 msgstr "Download as csv"
 
 #: LastProfile/Dash_app/Stromlast.py:182 LastProfile/Dash_app/Stromlast.py:210
-#: LastProfile/Dash_app/Warmelast.py:312
+#: LastProfile/Dash_app/Warmelast.py:333
 msgid "Datum"
 msgstr "Date"
 
@@ -293,166 +293,167 @@ msgstr "Load"
 msgid "Auswahl des Bundesland"
 msgstr "Selection of the state"
 
-#: LastProfile/Dash_app/Warmelast.py:58 LastProfile/Dash_app/Warmelast.py:399
+#: LastProfile/Dash_app/Warmelast.py:58 LastProfile/Dash_app/Warmelast.py:417
 msgid "Wärmelast Approximation"
 msgstr "Heat load approximation"
 
-#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:400
+#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:418
 msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
 msgstr "We chose the following values as the test reference year:"
 
-#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:401
+#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:419
 msgid "Koordinatensystem : Lambert konform konisch"
 msgstr "Coordinate System : Lambert compliant conical"
 
-#: LastProfile/Dash_app/Warmelast.py:64 LastProfile/Dash_app/Warmelast.py:402
+#: LastProfile/Dash_app/Warmelast.py:64 LastProfile/Dash_app/Warmelast.py:420
 msgid "Rechtswert        : 4201500 Meter"
 msgstr "Easting value: 4201500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:66 LastProfile/Dash_app/Warmelast.py:403
+#: LastProfile/Dash_app/Warmelast.py:66 LastProfile/Dash_app/Warmelast.py:421
 msgid "Hochwert          : 2848500 Meter"
 msgstr "High value: 2848500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:68 LastProfile/Dash_app/Warmelast.py:404
+#: LastProfile/Dash_app/Warmelast.py:68 LastProfile/Dash_app/Warmelast.py:422
 msgid "Höhenlage        : 36 Meter über NN"
 msgstr "Altitude: 36 meters above sea level"
 
-#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:405
+#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:423
 msgid "Erstellung des Datensatzes im Mai 2016"
 msgstr "The data set was created in May 2016"
 
-#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:406
+#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:424
 msgid "Art des TRY       : mittleres Jahr"
 msgstr "Type of TRY: middle year"
 
-#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:407
+#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:425
 msgid "Bezugszeitraum    : 1995-2012"
 msgstr "Reference period    : 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:408
+#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:426
 msgid "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
 msgstr "Database: observation data period 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:410
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:428
 msgid "Testreferenzjahr"
 msgstr "Test reference year"
 
-#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:411
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:429
 msgid "Wetterstation"
 msgstr "Weather station"
 
-#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:413
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:431
 msgid "Berechnungstyp"
 msgstr "Calculation type"
 
-#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:414
+#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:432
 #: LastProfile/Dash_app/Warmelast.py:458
 msgid "Auswahl der Station"
 msgstr "Selection of station"
 
-#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:416
+#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:434
 msgid "Einfamilienhaus"
 msgstr "Single Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:103 LastProfile/Dash_app/Warmelast.py:417
+#: LastProfile/Dash_app/Warmelast.py:103 LastProfile/Dash_app/Warmelast.py:435
 msgid "Mehrfamilienhaus"
 msgstr "Multi Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:418
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:436
 msgid "Gebietskörperschaft"
 msgstr "Local authority"
 
-#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:419
+#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:437
 msgid "Einzelhandel, Großhandel"
 msgstr "Retail, Wholesale"
 
-#: LastProfile/Dash_app/Warmelast.py:106 LastProfile/Dash_app/Warmelast.py:420
+#: LastProfile/Dash_app/Warmelast.py:106 LastProfile/Dash_app/Warmelast.py:438
 msgid "Metall, Kfz"
 msgstr "Metal, Automotive"
 
-#: LastProfile/Dash_app/Warmelast.py:107 LastProfile/Dash_app/Warmelast.py:421
+#: LastProfile/Dash_app/Warmelast.py:107 LastProfile/Dash_app/Warmelast.py:439
 msgid "sonst. betr. Dienstleistungen"
 msgstr "Other operational services"
 
-#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:422
+#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:440
 msgid "Gaststätten"
 msgstr "Restaurants"
 
-#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:423
+#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:441
 msgid "Beherbergung"
 msgstr "Accommodation"
 
-#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:424
+#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:442
 msgid "Bäckereien"
 msgstr "Bakeries"
 
-#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:425
+#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:443
 msgid "Wäschereien"
 msgstr "Laundries"
 
-#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:426
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:444
 msgid "Gartenbau"
 msgstr "horticulture"
 
-#: LastProfile/Dash_app/Warmelast.py:113 LastProfile/Dash_app/Warmelast.py:427
+#: LastProfile/Dash_app/Warmelast.py:113 LastProfile/Dash_app/Warmelast.py:445
 msgid "Papier und Druck"
 msgstr "Paper and printing"
 
-#: LastProfile/Dash_app/Warmelast.py:114 LastProfile/Dash_app/Warmelast.py:428
+#: LastProfile/Dash_app/Warmelast.py:114 LastProfile/Dash_app/Warmelast.py:446
 msgid "haushaltsähnliche Gewerbebetriebe"
 msgstr "Household-like businesses"
 
-#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:429
+#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:447
 msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
 msgstr "Total load profile for trade, commerce, services"
 
-#: LastProfile/Dash_app/Warmelast.py:117 LastProfile/Dash_app/Warmelast.py:431
+#: LastProfile/Dash_app/Warmelast.py:117 LastProfile/Dash_app/Warmelast.py:449
 #: templates/LastProfile/explanation.html:113
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
-#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:432
+#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:450
 msgid "Jahreswärmebedarf in kWh/a"
 msgstr "Annual heat requirement in kWh/a"
 
-#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:433
+#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:451
 msgid "Start Datum"
 msgstr "Start date"
 
-#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:434
+#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:452
 msgid "End Datum"
 msgstr "End date"
 
-#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:444
+#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:263
 msgid "Sepember"
 msgstr "September"
 
-#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:448
-#: templates/common/search-bar.html:48
+#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:267
+#: LastProfile/Dash_app/Warmelast.py:275 templates/common/search-bar.html:48
 msgid "Alle"
 msgstr "All"
 
-#: LastProfile/Dash_app/Warmelast.py:166 LastProfile/Dash_app/Warmelast.py:450
+#: LastProfile/Dash_app/Warmelast.py:166 LastProfile/Dash_app/Warmelast.py:300
+#: LastProfile/Dash_app/Warmelast.py:454
 msgid "Es gibt keine Eingabe"
 msgstr "There is no input"
 
-#: LastProfile/Dash_app/Warmelast.py:301 LastProfile/Dash_app/Warmelast.py:317
+#: LastProfile/Dash_app/Warmelast.py:322 LastProfile/Dash_app/Warmelast.py:338
 msgid "Wärmelastgang in kW"
 msgstr "Heat load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:303
+#: LastProfile/Dash_app/Warmelast.py:324
 msgid "Fehlende Angaben"
 msgstr "Missing values"
 
-#: LastProfile/Dash_app/Warmelast.py:306 LastProfile/Dash_app/Warmelast.py:322
+#: LastProfile/Dash_app/Warmelast.py:327 LastProfile/Dash_app/Warmelast.py:343
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:327
+#: LastProfile/Dash_app/Warmelast.py:348
 msgid "Für die ausgewählte Station gibt es "
 msgstr "For the selected stations exist "
 
-#: LastProfile/Dash_app/Warmelast.py:328
+#: LastProfile/Dash_app/Warmelast.py:349
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
@@ -936,7 +937,9 @@ msgstr ""
 "discussed in this context."
 
 #: templates/StartSearch/StartSearch.html:360
-#: templates/pages/environmentalIntegrityNegativ.html:19
+#: templates/component_list/components.html:11
+#: templates/pages/environmentalIntegrityNegativ.html:4
+#: templates/pages/environmentalIntegrityNegativ.html:14
 #: templates/partials/_navbar.html:173
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
@@ -1708,6 +1711,41 @@ msgstr ""
 #: templates/datasets_over/dataset-detail.html:45
 msgid "Zurück"
 msgstr "Back"
+
+#: templates/component_list/components.html:4
+msgid "Komponentenliste"
+msgstr ""
+
+#: templates/component_list/components.html:12
+msgid "Zu den Aufwänden für Datenverarbeitungsprozsse "
+msgstr ""
+
+#: templates/component_list/components.html:17
+#: templates/pages/environmentalIntegrityNegativ.html:32
+msgid "Aufwände für verwendete Komponenten"
+msgstr "Effort for used components"
+
+#: templates/component_list/components.html:20
+msgid ""
+"In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
+"Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
+"Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. "
+"Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer "
+"effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und "
+"Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – "
+"Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, "
+"müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
+"sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
+"Komponenten und deren Umweltlasten."
+msgstr "In analogy to the data value chain (see 'Expenses for data processing processes'), important components can be thought of from data acquisition (sensors) to data use (actuators). Figure 2 shows important components that are necessary to realize the effective use of data for the operational optimization of buildings and districts. Depending on which of these – or other – components had to be installed additionally for the digital application, the corresponding environmental impact must be included in the balance sheet. All life cycle phases must be taken into account. Here you will find important components and their environmental impact."
+
+#: templates/component_list/components.html:24
+msgid "Download Link"
+msgstr "Download link"
+
+#: templates/component_list/dataProcessing.html:4
+msgid "Datenverarbeitung"
+msgstr ""
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -2667,18 +2705,46 @@ msgstr ""
 "provide guidelines for judicious data management and highlight the "
 "ecological effects of certain data handling practices."
 
-#: templates/pages/environmentalIntegrityNegativ.html:32
+#: templates/pages/environmentalIntegrityNegativ.html:18
 msgid ""
-"Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
-"          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
-"          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
-"          good-practice). Jedoch stehen den positiven Wirkungen, "
-"hervorgerufen\n"
-"          durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend "
-"vom\n"
-"          Lebenszyklus der verwendeten Produkte und Services ergeben sich\n"
-"          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
-"          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
+"Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie "
+"bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch "
+"immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt "
+"digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten "
+"verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei "
+"der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale "
+"Anwendungen muss zudem der materielle und energetische Aufwand für die "
+"involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. "
+"Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige "
+"Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient "
+"die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale "
+"Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte "
+"können aber auch auf andere digitale Anwendungen übertragen werden. "
+msgstr ""
+
+#: templates/pages/environmentalIntegrityNegativ.html:36
+#, fuzzy
+#| msgid ""
+#| "Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
+#| "          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
+#| "          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
+#| "          good-practice). Jedoch stehen den positiven Wirkungen, "
+#| "hervorgerufen\n"
+#| "          durch digitale Anwendungen, auch Umweltlasten gegenüber. "
+#| "Ausgehend vom\n"
+#| "          Lebenszyklus der verwendeten Produkte und Services ergeben "
+#| "sich\n"
+#| "          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
+#| "          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
+msgid ""
+"Die Digitalisierung bietet große Potenziale und Chancen. Auch im "
+"Gebäudebereich lassen sich mittels digitaler Anwendungen u.a. "
+"Effizienzpotenziale heben (siehe positive Umweltwirkungen – good-practice). "
+"Jedoch stehen den positiven Wirkungen, hervorgerufen durch digitale "
+"Anwendungen, auch Umweltlasten gegenüber. Ausgehend vom Lebenszyklus der "
+"verwendeten Produkte und Services ergeben sich negative Umweltwirkungen von "
+"der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur "
+"Entsorgung der Technologie. "
 msgstr ""
 "Digitalization offers great potential and opportunities. Digital "
 "applications can also be used to increase efficiency potential in the "
@@ -2689,37 +2755,23 @@ msgstr ""
 "of raw materials, to the energy consumption in operation, to the disposal of "
 "the technology."
 
-#: templates/pages/environmentalIntegrityNegativ.html:42
-msgid ""
-"Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
-"          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
-"nur\n"
-"          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
-"fokussiert, da die\n"
-"          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
-"          derzeitigen Forschung der Forschungsinitiative Energiewendebauen\n"
-"          darstellt. Die Übersicht soll zunächst einen einfachen Überblick "
-"und\n"
-"          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen soll "
-"sie\n"
-"          Interessierte dazu befähigen, die Nettoeffekte – also die Bilanz "
-"aus\n"
-"          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
-"Anwendungen\n"
-"          aus der ökologischen Perspektive möglichst effektiv zu "
-"entwickeln,\n"
-"          und/oder zu nutzen."
+#: templates/pages/environmentalIntegrityNegativ.html:53
+msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr ""
-"The environmental impacts for frequently used components of digital "
-"applications in buildings are listed below. The focus is only on energy "
-"consumption and CO<sub>2</sub> emissions, as minimizing these parameters in "
-"buildings is a main pillar of the current research of the Energy Transition "
-"Building research initiative. The overview is intended to initially provide "
-"a simple overview and initial indication of the environmental burdens. On "
-"the other hand, it should enable those interested to estimate the net "
-"effects - i.e. the balance of environmental benefits and burdens - in order "
-"to make digital applications as effective as possible from an ecological "
-"perspectivedevelop and/or use."
+
+#: templates/pages/environmentalIntegrityNegativ.html:57
+msgid ""
+"Bei der Nutzung digitaler Technologien für die Betriebsoptimierung von "
+"Gebäuden und Quartieren werden in der Regel unterschiedliche "
+"Datenverarbeitungsprozesse durchlaufen, die am Ende eine bestmögliche "
+"Nutzung der Daten ermöglichen sollen. Einen Überblick über einige der "
+"möglichen Prozessschritte bietet das in Abbildung 1 gezeigten Daten-"
+"Wertschöpfungskette. Hinter jedem Prozessschritt steht eine programmierte "
+"Anweisung, die oftmals in Schleifen ausgeführt wird. Dadurch kommt es "
+"fortwährend zur Generierung von Daten, welche auch mit einem entsprechenden "
+"Energieverbrauch verbunden ist. Hier finden Sie Umweltlasten wichtiger "
+"Datenverarbeitungsprozesse. "
+msgstr ""
 
 #: templates/pages/environmentalIntegrityPositiv.html:32
 msgid ""
@@ -4121,6 +4173,39 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:69
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
+#~ "          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
+#~ "nur\n"
+#~ "          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
+#~ "fokussiert, da die\n"
+#~ "          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
+#~ "          derzeitigen Forschung der Forschungsinitiative "
+#~ "Energiewendebauen\n"
+#~ "          darstellt. Die Übersicht soll zunächst einen einfachen "
+#~ "Überblick und\n"
+#~ "          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen "
+#~ "soll sie\n"
+#~ "          Interessierte dazu befähigen, die Nettoeffekte – also die "
+#~ "Bilanz aus\n"
+#~ "          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
+#~ "Anwendungen\n"
+#~ "          aus der ökologischen Perspektive möglichst effektiv zu "
+#~ "entwickeln,\n"
+#~ "          und/oder zu nutzen."
+#~ msgstr ""
+#~ "The environmental impacts for frequently used components of digital "
+#~ "applications in buildings are listed below. The focus is only on energy "
+#~ "consumption and CO<sub>2</sub> emissions, as minimizing these parameters "
+#~ "in buildings is a main pillar of the current research of the Energy "
+#~ "Transition Building research initiative. The overview is intended to "
+#~ "initially provide a simple overview and initial indication of the "
+#~ "environmental burdens. On the other hand, it should enable those "
+#~ "interested to estimate the net effects - i.e. the balance of "
+#~ "environmental benefits and burdens - in order to make digital "
+#~ "applications as effective as possible from an ecological "
+#~ "perspectivedevelop and/or use."
 
 #~ msgid "Koordinatensystem"
 #~ msgstr "Coordinate system"
