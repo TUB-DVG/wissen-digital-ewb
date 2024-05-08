@@ -154,4 +154,16 @@ class Locator(object):
     boxDescription = "//p[@class='boxDescription']"
     boxImage = "//div[@class='boxImage']"
     imageInDiv = "//img"
+    linkToComponentsListPage = "/component_list/components"
+    linkToDataProcessingPage = "/component_list/dataProcessing"
 
+    # locators for components_list
+    secondaryNavBar = "secondaryNavbar"
+    descriptionBox  = "descriptionBox"
+    descriptionHeading = "descriptionHeading"
+    descriptionText = "descriptionText"
+    descriptionDownloadLink = "descriptionDownloadLink"
+    descriptionImage = "descriptionImage"
+
+    # locators for Footer
+    languageSelectionField = "//select[@name='language']"
