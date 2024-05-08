@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "modeltranslation",
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
+    "component_list.apps.ComponentListConfig",
     'publications.apps.PublicationsConfig',
     'use_cases.apps.UseCasesConfig',
     'pages.apps.PagesConfig',
