@@ -114,3 +114,15 @@ class ComponentListPage(object):
             )
         except:
             return None
+
+    def getSearchInputField(self):
+        """Returns the div-element, which wraps the content of the page
+        
+        """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.inputSearchField,
+            )
+        except:
+            return None

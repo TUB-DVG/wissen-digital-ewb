@@ -6,6 +6,7 @@ sys.path.append(sys.path[0] + "/...")
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
@@ -157,12 +158,20 @@ class TestComponentsList(WebDriverSetup):
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
+        
+        # click the cookie-banner away
+        cookieBannerObj = CookieBanner(self.driver)
+        cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
+        
+        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
+
         for option in options:
             if option.text == "English":
-                option.click()
+                self.scrollElementIntoViewAndClickIt(option)
+                
                 break
             elif option.text == "Englisch":
-                option.click()
+                self.scrollElementIntoViewAndClickIt(option)
                 break
         
         descriptionHeading = componentsListPageObj.getDescriptionHeading()
@@ -176,5 +185,15 @@ class TestComponentsList(WebDriverSetup):
         descriptionDownloadLink = componentsListPageObj.getDescriptionDownloadLink()
         self.assertIsNotNone(descriptionDownloadLink)
 
-        descriptionImage = componentsListPageObj.getDescriptionImage()
-        self.assertIsNotNone(descriptionImage)
+        descriptionImageDiv = componentsListPageObj.getDescriptionImage()
+        self.assertIsNotNone(descriptionImageDiv)
+
+        # check if the image is displayed:
+        imageInDivContainer = componentsListPageObj.getDescendantsByTagName(descriptionImageDiv, "img")
+        self.assertIsNotNone(imageInDivContainer)
+
+        self.checkIfImageIsDisplayed(imageInDivContainer[0])
+
+        # check if a search-input field is present
+        searchInputField = componentsListPageObj.getSearchInputField()
+        self.assertIsNotNone(searchInputField)
