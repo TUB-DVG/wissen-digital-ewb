@@ -65,7 +65,12 @@ from criteriaCatalog.models import (
     Topic,
     Tag,
 )
-from component_list.models import Component
+from component_list.models import (
+    Component,
+    ComponentClass,
+    Category,
+)
+
 from project_listing.models import (
     Subproject,
     ModuleAssignment,
@@ -828,8 +833,15 @@ class Command(BaseCommand):
         return obj, created
 
     def getOrCreateComponent(self, row, header):
-        category = row[header.index("Category")]
-        component = row[header.index("Component")]
+        categoryName = row[header.index("Category")]
+        # category = self._correctReadInValue(categoryName)
+        categoryStr = self._selectNearestMatch(categoryName, Category)
+        category = Category.objects.get(category=categoryStr)
+        # Add foreign key relation to category
+        componentName = row[header.index("Component")]
+        componentStr = self._selectNearestMatch(componentName, ComponentClass)
+        # breakpoint()
+        component = ComponentClass.objects.get(componentClass=componentStr)
         description = row[header.index("Description")]
         try:
             energyConsumptionUsePhaseTotal = float(row[header.index(
@@ -880,7 +892,6 @@ class Command(BaseCommand):
         furtherInformationNotes = row[header.index(
             "Further information / notes")]
         sources = row[header.index("Sources")]
-
         obj, created = Component.objects.get_or_create(
             category=category,
             component=component,
@@ -1678,7 +1689,6 @@ class Command(BaseCommand):
         self.targetFolder = options["targetFolder"][0]
 
         # header, data = self.readCSV(pathCSV)
-        # breakpoint()
         for row in data:
             if "modulzuordnung" in filename:
                 self.addOrUpdateRowSubproject(row, header, "modul")
