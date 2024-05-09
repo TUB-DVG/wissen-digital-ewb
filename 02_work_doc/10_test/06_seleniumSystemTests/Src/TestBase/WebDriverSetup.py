@@ -87,3 +87,10 @@ class WebDriverSetup(unittest.TestCase):
 
         element = self.driver.find_element(By.XPATH, "//select[@name='language']")
         return element.get_attribute("value")
+    
+    def checkIfImageIsDisplayed(self, image):
+        """Check if the image is displayed.
+        
+        """
+        naturalWidth = image.get_attribute('naturalWidth')
+        self.assertNotEqual(naturalWidth, '0', 'Image is not displayed, only alt-text is shown')
