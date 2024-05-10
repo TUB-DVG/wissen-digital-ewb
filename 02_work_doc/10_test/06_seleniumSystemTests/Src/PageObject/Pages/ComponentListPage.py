@@ -44,8 +44,8 @@ class ComponentListPage(object):
     def getDescendantsByTagName(self, element, tagName):
         """Returns the div-element, which wraps the content of the page"""
         try:
-            breakpoint()
-            return element.find_elements(By.By.XPATH, ".//" + tagName)
+            # breakpoint()
+            return element.find_elements(By.XPATH, ".//" + tagName)
 
         except:
             return None
@@ -144,5 +144,15 @@ class ComponentListPage(object):
                         Locator.selectOverview,
                     )),
             ]
+        except:
+            return None
+
+    def getCompareContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.compareContainer,
+            )
         except:
             return None

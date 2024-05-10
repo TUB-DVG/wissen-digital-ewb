@@ -157,6 +157,7 @@ class Locator(object):
     imageInDiv = "//img"
     linkToComponentsListPage = "/component_list/components"
     linkToDataProcessingPage = "/component_list/dataProcessing"
+    compareContainer = "//div[@id='compareBox']"
 
     # locators for components_list
     secondaryNavBar = "secondaryNavbar"
