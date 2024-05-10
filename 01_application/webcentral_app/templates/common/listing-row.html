@@ -4,18 +4,20 @@
 {% for object in page.object_list %}
     <div class="row border-{{ focusName }}">
         <div class="col-6">
-            {% for element in elementsFirstColum %}
+            {% for element in elementsFirstColumn %}
                 <div>
                     {% if element.description != "" %}{{ descriptionText }}:{% endif %}
                     {{ object|get_attribute:element.objectReference }}
-                {% endfor %}
-            </div>
-            <div class="col-6">
-                {% for descriptionText in descriptionSecondColumn %}
-                    <div>
-                        {% if descriptionText != "" %}{{ descriptionText }}:{% endif %}
-                    </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+        <div class="col-6">
+            {% for element in elementsSecondColumn %}
+                <div>
+                    {% if element.description != "" %}{{ descriptionText }}:{% endif %}
+                    {{ object|get_attribute:element.objectReference }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
