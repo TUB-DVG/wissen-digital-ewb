@@ -24,7 +24,7 @@ def components(request):
         "components",
         "page":
         page,
-        "elementsFirstColum": [
+        "elementsFirstColumn": [
             {
                 "objectReference": "category",
                 "description": "",
@@ -47,26 +47,46 @@ def components(request):
             },
         ],
         "elementsSecondColumn": [
-            "energyConsumptionUsePhaseTotal",
-            "globalWarmingPotentialTotal",
-            "componentWeight",
-            "lifetime",
-            "energyConsumptionUsePhaseActive",
-            "energyConsumptionUsePhasePassive",
-            "globalWarmingPotentialProduction",
-            "globalWarmingPotentialUsePhase",
-            "globalWarmingPotentialEndOfLife",
-        ],
-        "descriptionSecondColumn": [
-            _("Energieverbrauch Nutzung (gesamt; in W):"),
-            _("Treibhauspotenzial (gesamt; in kg CO2-e):"),
-            _("Bauteilgewicht (in kg):"),
-            _("Lebensdauer (in Jahre):"),
-            _("Energieverbrauch Nutzung (akitv; in W):"),
-            _("Energieverbrauch Nutzung (passiv/ Stand-by; in W):"),
-            _("Treibhauspotenzial (Herstellung; in kg CO2-e):"),
-            _("Treibhauspotenzial (Nutzung; in kg CO2-e):"),
-            _("Treibhauspotenzial (Entsorgung; in kg CO2-e):"),
+            {
+                "objectReference": "energyConsumptionUsePhaseTotal",
+                "description": _("Energieverbrauch Nutzung (gesamt; in W):"),
+            },
+            {
+                "objectReference": "globalWarmingPotentialTotal",
+                "description": _("Treibhauspotenzial (gesamt; in kg CO2-e):"),
+            },
+            {
+                "objectReference": "componentWeight",
+                "description": _("Bauteilgewicht (in kg):"),
+            },
+            {
+                "objectReference": "lifetime",
+                "description": _("Lebensdauer (in Jahre):"),
+            },
+            {
+                "objectReference": "energyConsumptionUsePhaseActive",
+                "description": _("Energieverbrauch Nutzung (aktiv; in W):"),
+            },
+            {
+                "objectReference":
+                "energyConsumptionUsePhasePassive",
+                "description":
+                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W):"),
+            },
+            {
+                "objectReference": "globalWarmingPotentialProduction",
+                "description":
+                _("Treibhauspotenzial (Herstellung; in kg CO2-e):"),
+            },
+            {
+                "objectReference": "globalWarmingPotentialUsePhase",
+                "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e):"),
+            },
+            {
+                "objectReference": "globalWarmingPotentialEndOfLife",
+                "description":
+                _("Treibhauspotenzial (Entsorgung; in kg CO2-e):"),
+            },
         ],
         "optionList": [
             {
