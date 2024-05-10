@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from .models import (
     Category,
@@ -22,22 +23,34 @@ def components(request):
                     categoryItem.category
                     for categoryItem in Category.objects.all()
                 ],
-                # "filter":
-                # filteredBy[0],
                 "fieldName":
                 "category",
             },
             {
                 "placeholder":
-                "Komponente",
+                _("Komponente"),
                 "objects": [
                     componentItem.componentClass
                     for componentItem in ComponentClass.objects.all()
                 ],
-                # "filter":
-                # filteredBy[1],
                 "fieldName":
                 "component",
+            },
+            {
+                "placeholder": _("Sortierung"),
+                "objects": [
+                    _("Aufsteigend"),
+                    _("Absteigend"),
+                ],
+                "fieldName": "sorting",
+            },
+            {
+                "placeholder": _("Übersicht"),
+                "objects": [
+                    _("Ausgeklappt"),
+                    _("Eingeklappt"),
+                ],
+                "fieldName": "overview",
             },
         ],
     }

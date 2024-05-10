@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-08 07:00+0000\n"
+"POT-Creation-Date: 2024-05-10 08:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -428,7 +428,7 @@ msgid "Sepember"
 msgstr "September"
 
 #: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:267
-#: LastProfile/Dash_app/Warmelast.py:275 templates/common/search-bar.html:48
+#: LastProfile/Dash_app/Warmelast.py:275 templates/common/search-bar.html:52
 msgid "Alle"
 msgstr "All"
 
@@ -504,6 +504,38 @@ msgstr "Open-Source-status"
 #: TechnicalStandards/views.py:256
 msgid "Proprietär"
 msgstr "Proprietary"
+
+#: component_list/views.py:31
+#, fuzzy
+#| msgid "Komponentenliste"
+msgid "Komponente"
+msgstr "Component list"
+
+#: component_list/views.py:40
+msgid "Sortierung"
+msgstr ""
+
+#: component_list/views.py:42
+msgid "Aufsteigend"
+msgstr ""
+
+#: component_list/views.py:43
+msgid "Absteigend"
+msgstr ""
+
+#: component_list/views.py:48
+#, fuzzy
+#| msgid "Über uns"
+msgid "Übersicht"
+msgstr "About us"
+
+#: component_list/views.py:50
+msgid "Ausgeklappt"
+msgstr ""
+
+#: component_list/views.py:51
+msgid "Eingeklappt"
+msgstr ""
 
 #: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
 msgid "Find Apps"
@@ -1482,7 +1514,7 @@ msgstr ""
 #: templates/TechnicalStandards/protocol-listings.html:60
 #: templates/TechnicalStandards/protocol-listings.html:72
 #: templates/TechnicalStandards/protocol-listings.html:84
-#: templates/common/search-bar.html:9
+#: templates/common/search-bar.html:11
 #: templates/datasets_over/dataset-listings.html:41
 #: templates/tools_over/tool-listings.html:45
 #: templates/weatherdata_over/data-service-listings.html:45
@@ -1714,18 +1746,18 @@ msgstr "Back"
 
 #: templates/component_list/components.html:4
 msgid "Komponentenliste"
-msgstr ""
+msgstr "Component list"
 
 #: templates/component_list/components.html:12
 msgid "Zu den Aufwänden für Datenverarbeitungsprozsse "
 msgstr ""
 
-#: templates/component_list/components.html:17
+#: templates/component_list/components.html:18
 #: templates/pages/environmentalIntegrityNegativ.html:32
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: templates/component_list/components.html:20
+#: templates/component_list/components.html:22
 msgid ""
 "In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
 "Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
@@ -1737,9 +1769,18 @@ msgid ""
 "müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
 "sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
 "Komponenten und deren Umweltlasten."
-msgstr "In analogy to the data value chain (see 'Expenses for data processing processes'), important components can be thought of from data acquisition (sensors) to data use (actuators). Figure 2 shows important components that are necessary to realize the effective use of data for the operational optimization of buildings and districts. Depending on which of these – or other – components had to be installed additionally for the digital application, the corresponding environmental impact must be included in the balance sheet. All life cycle phases must be taken into account. Here you will find important components and their environmental impact."
+msgstr ""
+"In analogy to the data value chain (see 'Expenses for data processing "
+"processes'), important components can be thought of from data acquisition "
+"(sensors) to data use (actuators). Figure 2 shows important components that "
+"are necessary to realize the effective use of data for the operational "
+"optimization of buildings and districts. Depending on which of these – or "
+"other – components had to be installed additionally for the digital "
+"application, the corresponding environmental impact must be included in the "
+"balance sheet. All life cycle phases must be taken into account. Here you "
+"will find important components and their environmental impact."
 
-#: templates/component_list/components.html:24
+#: templates/component_list/components.html:26
 msgid "Download Link"
 msgstr "Download link"
 

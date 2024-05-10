@@ -1,5 +1,4 @@
 class Locator(object):
-    
     # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
@@ -27,12 +26,11 @@ class Locator(object):
     searchSubmitButton = "//button[@id='search-submit-tools']"
     usageOnDetailPage = "//li[@class='list-inline-item h6 mb-0']"
     accessabilityParagraphTag = "//h5[contains(text(), 'Zugänglichkeit')]/p"
-    
 
     # locators on TechnicalStandards:
     linkToNormsOnTS = "//a[@id='linkToNorms']"
     linkToProtocolsOnTS = "//a[@id='linkToProtocols']"
-    
+
     # locators on NormsPage:
     searchInputNorms = "//input[@id='search-input-norms']"
 
@@ -62,15 +60,15 @@ class Locator(object):
     listInExpandedText = "//li[@class='lead']"
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
-    #paginationNextLink = "//a[@id='paginationNextLink']"
-    #paginationNextLink = "//a[@id='paginationNextLink']"
-    #paginationPreviousLink = "//a[@id='paginationPreviousLink']"
-    #paginationFirstLink = "//a[@id='paginationFirstLink']"
-    #paginationLastLink = "//a[@id='paginationLastLink']"
+    # paginationNextLink = "//a[@id='paginationNextLink']"
+    # paginationNextLink = "//a[@id='paginationNextLink']"
+    # paginationPreviousLink = "//a[@id='paginationPreviousLink']"
+    # paginationFirstLink = "//a[@id='paginationFirstLink']"
+    # paginationLastLink = "//a[@id='paginationLastLink']"
 
     # locators in Business Apps:
     businessSearchField = "//input[@id='search-input-tools']"
-    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
+    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']"
     businessDetailsTags = "//ul[@id='tagsUlElement']/li"
 
     # locators in loginPage
@@ -80,7 +78,8 @@ class Locator(object):
     stromlastApprLink = "//a[@href='/LastProfile/stromlast']"
     heatApproximationLink = "/LastProfile/warmelast"
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
-    linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
+    linkToStandardLoadProdile = (
+        "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]")
 
     # locators inside stromlast-app
     selectPlaceholderCurrentApp = "//div[@class='Select-placeholder']"
@@ -109,7 +108,7 @@ class Locator(object):
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
     aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
     aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
-    aboutPageImgOfUDK ="//img[@id='udkImage']"
+    aboutPageImgOfUDK = "//img[@id='udkImage']"
     aboutPageImgOfIOEW = "//img[@id='ioewImage']"
 
     # Admin Page locators
@@ -136,8 +135,10 @@ class Locator(object):
     publicationDetailsPageType = "list-inline-item"
 
     # CriteriaCatalog locators
-    criteriaCatalogOverviewCard1 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
-    criteriaCatalogOverviewCard2 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogOverviewCard1 = (
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
+    criteriaCatalogOverviewCard2 = (
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
     criteriaCatalogDetailsContentContainer = "//div[@id='hi']"
     allHorizontalLineElements = "//hr"
     fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
@@ -159,11 +160,16 @@ class Locator(object):
 
     # locators for components_list
     secondaryNavBar = "secondaryNavbar"
-    descriptionBox  = "descriptionBox"
+    descriptionBox = "descriptionBox"
     descriptionHeading = "descriptionHeading"
     descriptionText = "descriptionText"
     descriptionDownloadLink = "descriptionDownloadLink"
     descriptionImage = "descriptionImage"
-
+    searchContainer = "searchContainer"
+    searchInputField = "//input[@id='search-input-']"
+    selectCategory = "//select[@id='select-category']"
+    selectComponent = "//select[@id='select-component']"
+    selectSorting = "//select[@id='select-sorting']"
+    selectOverview = "//select[@id='select-overview']"
     # locators for Footer
     languageSelectionField = "//select[@name='language']"
