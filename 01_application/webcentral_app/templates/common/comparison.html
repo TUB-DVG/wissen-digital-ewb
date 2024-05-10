@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load static %}
+<div class="col-xl-4" id="firstComparisonButtonTools">
+    <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+        {% translate "Vergleiche" %}
+    </h6>
+</div>
+
+<div class="row g-3" style="display:none" id="comparisonBarTools">
+    <div class="col-xl-2" id="secondComparisonButtonTools">
+        <a href="#" id="comparisonUrlTools">
+            <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+                {% translate "Vergleiche" %}
+            </h6>
+        </a>
+    </div>
+    <div class="col-xl-2" id="cancelButtonTools">
+        <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100">
+            {% translate "Zurücksetzen" %}
+        </h6>
+
+    </div>
+</div>
+<!--ComparisonFeature-->
+<script type="text/javascript"
+        src="{% static 'js/toolComparison-feature.js' %}"
+        nonce="{{request.csp_nonce}}"></script>

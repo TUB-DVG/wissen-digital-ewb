@@ -338,6 +338,41 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
         self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
 
+    def testIfCompareSectionIsPresent(self):
+        """test if the compare section below the search container is present"""
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/component_list/components")
+        componentsListPageObj = ComponentListPage(self.driver)
+
+        self._removeCookieBanner()
+        self._setLangaugeToGerman()
+
+        compareDiv = componentsListPageObj.getCompareContainer()
+        self.assertIsNotNone(compareDiv)
+
+        compareButtons = componentsListPageObj.getDescendantsByTagName(
+            compareDiv, "h6")
+        activeCompareElements = []
+        for element in compareButtons:
+            if element.is_displayed():
+                activeCompareElements.append(element)
+
+        self.assertEqual(len(activeCompareElements), 1)
+
+        self.assertEqual(activeCompareElements[0].text, "Vergleiche")
+
+        # check if 2 other buttons appear, if the compareButton[0] is clicked:
+        activeCompareElements[0].click()
+
+        activeCompareElements = []
+        for element in compareButtons:
+            if element.is_displayed():
+                activeCompareElements.append(element)
+
+        self.assertEqual(len(activeCompareElements), 2)
+        self.assertEqual(activeCompareElements[0].text, "Vergleiche")
+        self.assertEqual(activeCompareElements[1].text, "Zurücksetzen")
+
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
         cookieBannerObj = CookieBanner(self.driver)

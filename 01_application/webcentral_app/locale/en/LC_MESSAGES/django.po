@@ -506,36 +506,32 @@ msgid "Proprietär"
 msgstr "Proprietary"
 
 #: component_list/views.py:31
-#, fuzzy
-#| msgid "Komponentenliste"
 msgid "Komponente"
-msgstr "Component list"
+msgstr "Component"
 
 #: component_list/views.py:40
 msgid "Sortierung"
-msgstr ""
+msgstr "Sorting"
 
 #: component_list/views.py:42
 msgid "Aufsteigend"
-msgstr ""
+msgstr "Ascending"
 
 #: component_list/views.py:43
 msgid "Absteigend"
-msgstr ""
+msgstr "Descending"
 
 #: component_list/views.py:48
-#, fuzzy
-#| msgid "Über uns"
 msgid "Übersicht"
-msgstr "About us"
+msgstr "Overview"
 
 #: component_list/views.py:50
 msgid "Ausgeklappt"
-msgstr ""
+msgstr "Expanded"
 
 #: component_list/views.py:51
 msgid "Eingeklappt"
-msgstr ""
+msgstr "Collapsed"
 
 #: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
 msgid "Find Apps"
