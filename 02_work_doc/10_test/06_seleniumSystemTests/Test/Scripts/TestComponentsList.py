@@ -373,6 +373,54 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(activeCompareElements[0].text, "Vergleiche")
         self.assertEqual(activeCompareElements[1].text, "Zurücksetzen")
 
+    def testIfComponentListingContainer(self):
+        """Test if the component listing container is present"""
+
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/component_list/components")
+        componentsListPageObj = ComponentListPage(self.driver)
+
+        self._removeCookieBanner()
+        self._setLangaugeToGerman()
+
+        componentListingContainer = (
+            componentsListPageObj.getComponentListingContainer())
+        self.assertIsNotNone(componentListingContainer)
+
+        # check if the componentListingContainer contains the correct number of elements:
+        components = componentsListPageObj.getDescendantsByTagName(
+            componentListingContainer, "div")
+        self.assertEqual(len(components), 3)
+        for component in components:
+            # check if each component div has a border-ecological div-class:
+            self.assertTrue(
+                "border-ecological" in component.get_attribute("class"))
+
+            # each component should contain a "Mehr anzeigen" expanding element:
+            expandElement = componentsListPageObj.getDescendantsByTagName(
+                component, "a")
+            self.assertIsNotNone(expandElement)
+            self.assertTrue("Mehr anzeigen" in expandElement.text)
+            self.assertTrue("Weitere Informationen" in component.text)
+            self.assertTrue("Quellen" in component.text)
+            self.assertTrue(
+                "Energieverbrauch Nutzung (gesamt; in W):" in component.text)
+            self.assertTrue(
+                "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text)
+            self.assertTrue("Bauteilgewicht (in kg):" in component.text)
+            self.assertTrue("Lebensdauer (in Jahre):" in component.text)
+            self.assertTrue(
+                "Energieverbrauch Nutzung (akitv; in W):" in component.text)
+            self.assertTrue(
+                "Energieverbrauch Nutzung (passiv/ Stand-by; in W):" in
+                component.text)
+            self.assertTrue("Treibhauspotenzial (Herstellung; in kg CO2-e):" in
+                            component.text)
+            self.assertTrue(
+                "Treibhauspotenzial (Nutzung; in kg CO2-e):" in component.text)
+            self.assertTrue("Treibhauspotenzial (Entsorgung; in kg CO2-e):" in
+                            component.text)
+
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
         cookieBannerObj = CookieBanner(self.driver)
