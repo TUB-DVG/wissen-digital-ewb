@@ -156,3 +156,13 @@ class ComponentListPage(object):
             )
         except:
             return None
+
+    def getComponentListingContainer(self):
+        """Return the Component Listing Container"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.componentListingContainer,
+            )
+        except:
+            return None
