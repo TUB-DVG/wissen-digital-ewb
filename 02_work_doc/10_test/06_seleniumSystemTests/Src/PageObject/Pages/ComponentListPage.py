@@ -2,30 +2,27 @@
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver,
-)
+    webdriver, )
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 from Src.PageObject.Locators import Locator
 
+
 class ComponentListPage(object):
-    """
-    
-    """
+    """ """
+
     def __init__(self, driver):
-        """
-        
-        """
+        """ """
         self.driver = driver
-    
+
     def getContentDiv(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -35,9 +32,7 @@ class ComponentListPage(object):
             return None
 
     def getSecondaryNavbar(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -45,32 +40,27 @@ class ComponentListPage(object):
             )
         except:
             return None
-    
+
     def getDescendantsByTagName(self, element, tagName):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
-            return element.find_elements(
-                By.TAG_NAME,
-                tagName,
-            )
+            breakpoint()
+            return element.find_elements(By.By.XPATH, ".//" + tagName)
+
         except:
             return None
 
     def getDescriptionSection(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
-            return self.driver.find_element(By.XPATH,f"//div[contains(@class, '{Locator.descriptionBox}')]")
+            return self.driver.find_element(
+                By.XPATH,
+                f"//div[contains(@class, '{Locator.descriptionBox}')]")
         except:
             return None
 
     def getDescriptionHeading(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -80,9 +70,7 @@ class ComponentListPage(object):
             return None
 
     def getDescriptionText(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -92,9 +80,7 @@ class ComponentListPage(object):
             return None
 
     def getDescriptionDownloadLink(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -104,9 +90,7 @@ class ComponentListPage(object):
             return None
 
     def getDescriptionImage(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -115,14 +99,50 @@ class ComponentListPage(object):
         except:
             return None
 
-    def getSearchInputField(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+    def getSearchContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.inputSearchField,
+                f"//div[contains(@class, {Locator.searchContainer})]",
             )
+        except:
+            return None
+
+    def getSearchInputField(self):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.searchInputField,
+            )
+        except:
+            return None
+
+    def getSelectFieldsInSearchContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            return [
+                Select(
+                    self.driver.find_element(
+                        By.XPATH,
+                        Locator.selectCategory,
+                    )),
+                Select(
+                    self.driver.find_element(
+                        By.XPATH,
+                        Locator.selectComponent,
+                    )),
+                Select(
+                    self.driver.find_element(
+                        By.XPATH,
+                        Locator.selectSorting,
+                    )),
+                Select(
+                    self.driver.find_element(
+                        By.XPATH,
+                        Locator.selectOverview,
+                    )),
+            ]
         except:
             return None

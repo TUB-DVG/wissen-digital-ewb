@@ -182,25 +182,7 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue("Aufwände für verwendete Komponenten" in headingText
                         or "Effort for used components" in headingText)
 
-        # change the language to english and check if the english heading is displayed
-        footerObj = Footer(self.driver)
-        selectionField = footerObj.getLanguageSelectionField()
-        options = selectionField.options
-
-        # click the cookie-banner away
-        cookieBannerObj = CookieBanner(self.driver)
-        cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
-
-        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
-
-        for option in options:
-            if option.text == "English":
-                self.scrollElementIntoViewAndClickIt(option)
-
-                break
-            elif option.text == "Englisch":
-                self.scrollElementIntoViewAndClickIt(option)
-                break
+        self._setLanguageToEnglish()
 
         descriptionHeading = componentsListPageObj.getDescriptionHeading()
         headingText = descriptionHeading.text
@@ -236,17 +218,24 @@ class TestComponentsList(WebDriverSetup):
                         "/component_list/components")
         componentsListPageObj = ComponentListPage(self.driver)
 
+        self._removeCookieBanner()
+        self._setLangaugeToGerman()
+
+        searchContainer = componentsListPageObj.getSearchContainer()
+        self.assertIsNotNone(searchContainer)
+
         # check if a search-input field is present
         searchInputField = componentsListPageObj.getSearchInputField()
         self.assertIsNotNone(searchInputField)
 
         # check if 2 selection-fields are present and if they contain the
         # data for Category and ComponentClass
-        selectionFields = componentsListPageObj.getSelectionFields()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
         self.assertEqual(
             len(selectionFields),
-            2,
-            "There are not 2 selection-fields present",
+            4,
+            "There are not 4 selection-fields present",
         )
 
         # check if the selection-fields contain the correct data
@@ -256,7 +245,15 @@ class TestComponentsList(WebDriverSetup):
             "Infrastruktur",
             "Sensorik",
         ])
-        categoryOptionsSet = set(selectionFields[0].options)
+
+        # check if the placeholders are correct for german:
+        self.assertEqual(selectionFields[0].options[0].text, "Kategorie")
+        self.assertEqual(selectionFields[1].options[0].text, "Komponente")
+
+        categoryOptionsSet = set([
+            optionElement.text for optionElement in selectionFields[0].options
+        ])
+
         self.assertTrue(categorySet.issubset(categoryOptionsSet))
 
         componentsSet = set([
@@ -266,5 +263,115 @@ class TestComponentsList(WebDriverSetup):
             "Umwälzpumpe",
             "Präsenzmelder",
         ])
-        componentClassSelectionField = set(selectionFields[1].options)
+        componentClassSelectionField = set([
+            optionElement.text for optionElement in selectionFields[1].options
+        ])
         self.assertTrue(componentsSet.issubset(componentClassSelectionField))
+
+        # check if the selection fields "sorting" and "overview" are present
+        sortingSet = set([
+            "Aufsteigend",
+            "Absteigend",
+        ])
+        sortingOptionsSet = set([
+            optionElement.text for optionElement in selectionFields[2].options
+        ])
+
+        overviewSet = set([
+            "Ausgeklappt",
+            "Eingeklappt",
+        ])
+        overviewOptionsSet = set([
+            optionElement.text for optionElement in selectionFields[3].options
+        ])
+
+        self.assertTrue(sortingSet.issubset(sortingOptionsSet))
+        self.assertTrue(overviewSet.issubset(overviewOptionsSet))
+
+        self._setLanguageToEnglish()
+
+        categorySet = set([
+            "Actuators",
+            "Signal processing",
+            "Infrastructure",
+            "Sensors",
+        ])
+
+        componentsSet = set([
+            "Flow controller",
+            "Data logger",
+            "Air duct",
+            "Circulation pump",
+            "Presence sensor",
+        ])
+        sortingSet = set([
+            "Ascending",
+            "Descending",
+        ])
+        overviewSet = set([
+            "Expanded",
+            "Collapsed",
+        ])
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
+
+        # check if the placeholders are correct for english:
+        self.assertEqual(selectionFields[0].options[0].text, "Category")
+        self.assertEqual(selectionFields[1].options[0].text, "Component")
+        self.assertEqual(selectionFields[2].options[0].text, "Sorting")
+        self.assertEqual(selectionFields[3].options[0].text, "Overview")
+
+        categoryOptionsSet = set([
+            optionElement.text for optionElement in selectionFields[0].options
+        ])
+        componentClassSelectionField = set([
+            optionElement.text for optionElement in selectionFields[1].options
+        ])
+        sortingSetSelectionField = set([
+            optionElement.text for optionElement in selectionFields[2].options
+        ])
+        overviewSetSelectionField = set([
+            optionElement.text for optionElement in selectionFields[3].options
+        ])
+        self.assertTrue(componentsSet.issubset(componentClassSelectionField))
+        self.assertTrue(categorySet.issubset(categoryOptionsSet))
+        self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
+        self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
+
+    def _removeCookieBanner(self):
+        """Remove the cookie-banner from the page"""
+        cookieBannerObj = CookieBanner(self.driver)
+        cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
+        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
+
+    def _setLangaugeToGerman(self):
+        """Set the language of the page to german"""
+        # change the language to german and check if the german heading is displayed
+        footerObj = Footer(self.driver)
+        selectionField = footerObj.getLanguageSelectionField()
+        options = selectionField.options
+
+        for option in options:
+            if option.text == "Deutsch":
+                self.scrollElementIntoViewAndClickIt(option)
+
+                break
+            elif option.text == "German":
+                self.scrollElementIntoViewAndClickIt(option)
+                break
+
+    def _setLanguageToEnglish(self):
+        """Set the language of the page to english"""
+        # change the language to english and check if the english heading is displayed
+        footerObj = Footer(self.driver)
+        selectionField = footerObj.getLanguageSelectionField()
+        options = selectionField.options
+
+        for option in options:
+            if option.text == "English":
+                self.scrollElementIntoViewAndClickIt(option)
+
+                break
+            elif option.text == "Englisch":
+                self.scrollElementIntoViewAndClickIt(option)
+                break
