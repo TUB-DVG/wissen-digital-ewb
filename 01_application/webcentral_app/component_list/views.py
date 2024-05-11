@@ -20,6 +20,8 @@ def components(request):
     context = {
         "focusBorder":
         "ecological",
+        "focusName":
+        "ecological",
         "urlName":
         "components",
         "page":
@@ -39,7 +41,7 @@ def components(request):
             },
             {
                 "objectReference": "furtherInformationNotes",
-                "description": _("Weitere Infomrationen"),
+                "description": _("Weitere Informationen"),
             },
             {
                 "objectReference": "sources",
