@@ -174,6 +174,7 @@ class Locator(object):
     selectOverview = "//select[@id='select-overview']"
     componentListingContainer = "//div[@id='componentListingContainer']"
     componentListElementContainer = "//div[contains(@class, 'ListElement')]"
+    paginationContainer = "paginationContainer"
 
     # locators for Footer
     languageSelectionField = "//select[@name='language']"

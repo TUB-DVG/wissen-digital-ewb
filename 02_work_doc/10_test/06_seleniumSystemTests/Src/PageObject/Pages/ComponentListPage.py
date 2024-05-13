@@ -157,6 +157,16 @@ class ComponentListPage(object):
         except:
             return None
 
+    def getPaginationContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                f"//div[@id='{Locator.paginationContainer}']",
+            )
+        except:
+            return None
+
     def getComponentListingContainer(self):
         """Return the Component Listing Container"""
         try:

@@ -340,6 +340,21 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
         self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
 
+        # change the language back to german:
+        self._setLangaugeToGerman()
+
+        # test the functionality of the search-input field:
+        searchInputField = componentsListPageObj.getSearchInputField()
+        searchInputField.send_keys("Volumenstromregler")
+        searchInputField.send_keys(Keys.RETURN)
+
+        searchResultsComponents = componentsListPageObj.getAllListElements()
+        self.assertTrue(len(searchResultsComponents) >= 1)
+
+        # in each result, the search-string should be present:
+        for component in searchResultsComponents:
+            self.assertTrue("Volumenstromregler" in component.text)
+
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
         self.driver.get(os.environ["siteUnderTest"] +
@@ -533,6 +548,18 @@ class TestComponentsList(WebDriverSetup):
                 "Presence detector",
             ],
         )
+
+    def testPagination(self):
+        """Test if the pagination elements are present and working"""
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/component_list/components")
+        componentsListPageObj = ComponentListPage(self.driver)
+
+        self._removeCookieBanner()
+        self._setLangaugeToGerman()
+
+        paginatorContainer = componentsListPageObj.getPaginationContainer()
+        self.assertIsNotNone(paginatorContainer)
 
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
