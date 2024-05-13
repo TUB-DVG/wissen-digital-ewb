@@ -1,6 +1,8 @@
 import os
 from random import choice
 import sys
+import time
+from random import choice
 
 sys.path.append(sys.path[0] + "/...")
 
@@ -383,15 +385,29 @@ class TestComponentsList(WebDriverSetup):
         self._removeCookieBanner()
         self._setLangaugeToGerman()
 
+        componentClass = [
+            "Volumenstromregler",
+            "Datenlogger",
+            "Luftleitung",
+            "Umwälzpumpe",
+            "Präsenzmelder",
+        ]
+
+        categoryElements = [
+            "Aktuatoren",
+            "Signaleverarbeitung",
+            "Infrastruktur",
+            "Sensorik",
+        ]
+
         componentListingContainer = (
             componentsListPageObj.getComponentListingContainer())
         self.assertIsNotNone(componentListingContainer)
 
         # check if the componentListingContainer contains the correct number of elements:
-        components = componentsListPageObj.getDescendantsByTagName(
-            componentListingContainer, "div")
+        components = componentsListPageObj.getAllListElements()
         self.assertEqual(len(components), 3)
-        for component in components:
+        for index, component in enumerate(components):
             # check if each component div has a border-ecological div-class:
             self.assertTrue(
                 "border-ecological" in component.get_attribute("class"))
@@ -399,18 +415,48 @@ class TestComponentsList(WebDriverSetup):
             # each component should contain a "Mehr anzeigen" expanding element:
             expandElement = componentsListPageObj.getDescendantsByTagName(
                 component, "a")
-            self.assertIsNotNone(expandElement)
-            self.assertTrue("Mehr anzeigen" in expandElement.text)
-            self.assertTrue("Weitere Informationen" in component.text)
-            self.assertTrue("Quellen" in component.text)
+            self.assertIsNotNone(expandElement[0])
+            self.assertTrue("Zeige mehr" in expandElement[0].get_attribute(
+                "data-collapsed-text"))
+            self._checkIfStrElementFromListIsDisplayed(component,
+                                                       componentClass)
+            self._checkIfStrElementFromListIsDisplayed(component,
+                                                       categoryElements)
+
+            self.assertTrue("Quelle" not in component.text)
+            self.assertTrue("Weitere Informationen" not in component.text)
+
             self.assertTrue(
                 "Energieverbrauch Nutzung (gesamt; in W):" in component.text)
             self.assertTrue(
                 "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text)
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
-            self.assertTrue("Lebensdauer (in Jahre):" in component.text)
+            self.assertTrue("Lebensdauer (in Jahren)" in component.text)
+
+            collapsedContainer = componentsListPageObj.getDescendantsByClass(
+                component, "collapse")
+            # breakpoint()
+            self.assertEqual(len(collapsedContainer), 3)
+
+            self.assertTrue(not collapsedContainer[0].is_displayed())
+            # check if the not shown elements are present after the expandElement is clicked:
+            self.scrollElementIntoViewAndClickIt(expandElement[0])
+
+            self.assertTrue(collapsedContainer[0].is_displayed())
+
+            # check if the not shown elements are present after the expandElement is clicked:
+            self.assertTrue("Quelle" in component.text)
+            self.assertTrue("Weitere Informationen" in component.text)
+
             self.assertTrue(
-                "Energieverbrauch Nutzung (akitv; in W):" in component.text)
+                "Energieverbrauch Nutzung (gesamt; in W):" in component.text)
+            self.assertTrue(
+                "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text)
+            self.assertTrue("Bauteilgewicht (in kg):" in component.text)
+            self.assertTrue("Lebensdauer (in Jahren)" in component.text)
+
+            self.assertTrue(
+                "Energieverbrauch Nutzung (aktiv; in W)" in component.text)
             self.assertTrue(
                 "Energieverbrauch Nutzung (passiv/ Stand-by; in W):" in
                 component.text)
@@ -420,6 +466,54 @@ class TestComponentsList(WebDriverSetup):
                 "Treibhauspotenzial (Nutzung; in kg CO2-e):" in component.text)
             self.assertTrue("Treibhauspotenzial (Entsorgung; in kg CO2-e):" in
                             component.text)
+
+            # check if the list-elements can collapsed again:
+            self.scrollElementIntoViewAndClickIt(expandElement[0])
+            time.sleep(1)
+            self.assertTrue("Quelle" not in component.text)
+            self.assertTrue("Weitere Informationen" not in component.text)
+
+            self.assertTrue(
+                "Energieverbrauch Nutzung (aktiv; in W)" not in component.text)
+            self.assertTrue(
+                "Energieverbrauch Nutzung (passiv/ Stand-by; in W):" not in
+                component.text)
+            self.assertTrue("Treibhauspotenzial (Herstellung; in kg CO2-e):"
+                            not in component.text)
+            self.assertTrue("Treibhauspotenzial (Nutzung; in kg CO2-e):" not in
+                            component.text)
+            self.assertTrue("Treibhauspotenzial (Entsorgung; in kg CO2-e):"
+                            not in component.text)
+
+        # select english language and check if the component-attributes are translated:
+        self._setLanguageToEnglish()
+        components = componentsListPageObj.getAllListElements()
+
+        randomComponent = choice(components)
+
+        # expand the random component:
+        expandElement = componentsListPageObj.getDescendantsByTagName(
+            randomComponent, "a")
+        self.scrollElementIntoViewAndClickIt(expandElement[0])
+
+        self.assertTrue(
+            "Total energy consumption (in W)" in randomComponent.text)
+        self.assertTrue("Total greenhouse gas potential (in kg CO2-e)" in
+                        randomComponent.text)
+        self.assertTrue("Component weight (in kg):" in randomComponent.text)
+        self.assertTrue("Lifespan (in years)" in randomComponent.text)
+        self.assertTrue(
+            "Active energy consumption (in W)" in randomComponent.text)
+        self.assertTrue("Passive/standby energy consumption (in W)" in
+                        randomComponent.text)
+        self.assertTrue("Greenhouse gas potential (production; in kg CO2-e)" in
+                        randomComponent.text)
+        self.assertTrue("Greenhouse gas potential (usage; in kg CO2-e)" in
+                        randomComponent.text)
+        self.assertTrue("Greenhouse gas potential (disposal; in kg CO2-e)" in
+                        randomComponent.text)
+        self.assertTrue("Source" in randomComponent.text)
+        self.assertTrue("Further information" in randomComponent.text)
 
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
@@ -458,3 +552,12 @@ class TestComponentsList(WebDriverSetup):
             elif option.text == "Englisch":
                 self.scrollElementIntoViewAndClickIt(option)
                 break
+
+    def _checkIfStrElementFromListIsDisplayed(self, component, elementList):
+        """Check if a string-element from a list is displayed"""
+        isElementFound = False
+        for element in elementList:
+            if element in component.text:
+                isElementFound = True
+                break
+        self.assertTrue(isElementFound)

@@ -280,6 +280,12 @@
   margin-right: auto;
 }
 
+.collapseListingRow a.text-truncation-btn.collapsed::after {
+  content: attr(data-collapsed-text);
+}
+.collapseListingRow a.text-truncation-btn:not(.collapsed)::after {
+  content: attr(data-expanded-text);
+}
 /* define collapsable info container */
 .collapseInfoContainer .collapseInfo.collapse:not(.show) {
   display: block;

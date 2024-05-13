@@ -51,43 +51,43 @@ def components(request):
         "elementsSecondColumn": [
             {
                 "objectReference": "energyConsumptionUsePhaseTotal",
-                "description": _("Energieverbrauch Nutzung (gesamt; in W):"),
+                "description": _("Energieverbrauch Nutzung (gesamt; in W)"),
             },
             {
                 "objectReference": "globalWarmingPotentialTotal",
-                "description": _("Treibhauspotenzial (gesamt; in kg CO2-e):"),
+                "description": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
             },
             {
                 "objectReference": "componentWeight",
-                "description": _("Bauteilgewicht (in kg):"),
+                "description": _("Bauteilgewicht (in kg)"),
             },
             {
                 "objectReference": "lifetime",
-                "description": _("Lebensdauer (in Jahre):"),
+                "description": _("Lebensdauer (in Jahren)"),
             },
             {
                 "objectReference": "energyConsumptionUsePhaseActive",
-                "description": _("Energieverbrauch Nutzung (aktiv; in W):"),
+                "description": _("Energieverbrauch Nutzung (aktiv; in W)"),
             },
             {
                 "objectReference":
                 "energyConsumptionUsePhasePassive",
                 "description":
-                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W):"),
+                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
             },
             {
                 "objectReference": "globalWarmingPotentialProduction",
                 "description":
-                _("Treibhauspotenzial (Herstellung; in kg CO2-e):"),
+                _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
             },
             {
                 "objectReference": "globalWarmingPotentialUsePhase",
-                "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e):"),
+                "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
             },
             {
                 "objectReference": "globalWarmingPotentialEndOfLife",
                 "description":
-                _("Treibhauspotenzial (Entsorgung; in kg CO2-e):"),
+                _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
         ],
         "optionList": [
