@@ -11,55 +11,66 @@ import dash
 from dash import  dcc, html, Input, Output ,State
 
 PATH = pathlib.Path(__file__).parent.resolve() 
-DATA_PATH = os.path.join(PATH , 'DreiHaushalte.csv') 
+DATA_PATH = os.path.join(PATH , 'auxillary/Household62_1h.csv') 
 DF_MAIN = pd.read_csv(DATA_PATH)
 
 csv_files = {
-    "file1": "01_application/webcentral_app/use_cases/dashApp/Household62_1h.csv",
-    "file2": "01_application/webcentral_app/use_cases/dashApp/Household73_15min.csv",
+    "file1": "01_application/webcentral_app/use_cases/dashApp/auxillary/Household62_1h.csv",
+    "file2": "01_application/webcentral_app/use_cases/dashApp/auxillary/Household73_15min.csv",
 }
+data_directory = '01_application/webcentral_app/use_cases/dashApp/auxillary'
+file_list = os.listdir(data_directory)
+file_list = [file for file in file_list if file.endswith('.csv')] 
+
 app = DjangoDash('useCaseTS')
 
-# Read all CSV files into dataframes
-dataframes = {name: pd.read_csv(path) for name, path in csv_files.items()}
-
-# Prepare graph traces from all dataframes
-traces = []
-for name, df in dataframes.items():
-    traces.append({
-        'x': df.iloc[:, 0],  # Assuming the first column is x-axis
-        'y': df.iloc[:, 1],  # Assuming the second column is y-axis
-        'type': 'scatter',
-        'name': name  # Legend name for each trace
-    })
-
-# Layout of the Dash app
+# Define the layout of the app
 app.layout = html.Div([
-    dcc.Graph(
-        id='all-data-graph',
-        figure={
-            'data': traces,
-            'layout': {
-                'title': 'Combined Data Plot'
-            }
-        }
-    )
-])
-options = [{"label": k, "value": k} for k in csv_files.keys()]
+    dcc.Dropdown(
+        id='file-selector',
+        options=[{'label': file, 'value': file} for file in file_list],
+        value=file_list[:min(len(file_list), 12)],  # Default to the first 12 files
+        multi=True
+    ),
+    dcc.Loading(id="loading",
+           children=[html.Div([dcc.Graph(id="time-series-chart",figure = {})])],
+           type="circle",fullscreen=False),
+],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)",
+         "font-size":" 18.75px",
+         "font-weight": "400",
+         "line-height": "22.5px",
+         "overflow-x": "hidden"})
 
-app.layout = html.Div([
-    dcc.Dropdown(id='file-dropdown', options=options, value='file1'),
-    dcc.Graph(id='graph')
-])
 
+# Callback to update the graph based on file and column selection
 @app.callback(
-    Output('graph', 'figure'),
-    [Input('file-dropdown', 'value')]
+    Output('time-series-chart', 'figure'),
+    Input('file-selector', 'value')
 )
-def update_graph(selected_file):
-    df = pd.read_csv(csv_files[selected_file])
-    figure = {
-        'data': [{'x': df.columns[0], 'y': df.columns[1]}],  # Adjust columns as needed
-        'layout': {'title': 'Simple Graph'}
-    }
-    return figure
+def update_graph(selected_files):
+    if not selected_files:
+        return go.Figure()
+
+    # Initialize a plotly graph object figure
+    fig = go.Figure()
+
+    # Loop through selected files and add each as a separate trace in the graph
+    for file in selected_files:
+        df = pd.read_csv(os.path.join(data_directory, file), parse_dates=['datetime'])
+        df.set_index('datetime', inplace=True)
+
+
+         # Automatically add traces for all numerical columns
+        for col in df.columns:
+            fig.add_trace(go.Scatter(x=df.index, y=df[col], mode='lines', name=f'{file} - {col}'))
+
+
+
+    # Update layout
+    fig.update_layout(
+        xaxis_title='Timestamp',
+        yaxis_title="Test",
+        legend_title='File'
+    )
+
+    return fig

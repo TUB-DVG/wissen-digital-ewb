@@ -41,6 +41,8 @@ urlpatterns += i18n_patterns(
         path("criteriaCatalog/", include("criteriaCatalog.urls")),
         path('useCases_list/', include('use_cases.urls')),
         path('i18n/', include('django.conf.urls.i18n')),
+        path('django_plotly_dash/', include('django_plotly_dash.urls')),
+
 )
 
 
