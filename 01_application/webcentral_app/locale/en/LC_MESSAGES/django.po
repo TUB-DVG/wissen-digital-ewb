@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-10 08:12+0000\n"
+"POT-Creation-Date: 2024-05-13 07:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -477,7 +477,7 @@ msgstr "Catalog of criteria"
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:135
+#: TechnicalStandards/views.py:135 component_list/views.py:48
 #: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
@@ -505,31 +505,72 @@ msgstr "Open-Source-status"
 msgid "Proprietär"
 msgstr "Proprietary"
 
-#: component_list/views.py:31
+#: component_list/views.py:44 templates/datasets_over/dataset-detail.html:86
+#: templates/weatherdata_over/weatherdata-detail.html:81
+msgid "Weitere Informationen"
+msgstr "Further information"
+
+#: component_list/views.py:54
+msgid "Energieverbrauch Nutzung (gesamt; in W)"
+msgstr "Total energy consumption (in W)"
+
+#: component_list/views.py:58
+msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
+msgstr "Total greenhouse gas potential (in kg CO2-e)"
+
+#: component_list/views.py:62
+msgid "Bauteilgewicht (in kg)"
+msgstr "Component weight (in kg)"
+
+#: component_list/views.py:66
+msgid "Lebensdauer (in Jahren)"
+msgstr "Lifespan (in years)"
+
+#: component_list/views.py:70
+msgid "Energieverbrauch Nutzung (aktiv; in W)"
+msgstr "Active energy consumption (in W)"
+
+#: component_list/views.py:76
+msgid "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
+msgstr "Passive/standby energy consumption (in W)"
+
+#: component_list/views.py:81
+msgid "Treibhauspotenzial (Herstellung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (production; in kg CO2-e)"
+
+#: component_list/views.py:85
+msgid "Treibhauspotenzial (Nutzung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (usage; in kg CO2-e)"
+
+#: component_list/views.py:90
+msgid "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (disposal; in kg CO2-e)"
+
+#: component_list/views.py:106
 msgid "Komponente"
 msgstr "Component"
 
-#: component_list/views.py:40
+#: component_list/views.py:115
 msgid "Sortierung"
 msgstr "Sorting"
 
-#: component_list/views.py:42
+#: component_list/views.py:117
 msgid "Aufsteigend"
 msgstr "Ascending"
 
-#: component_list/views.py:43
+#: component_list/views.py:118
 msgid "Absteigend"
 msgstr "Descending"
 
-#: component_list/views.py:48
+#: component_list/views.py:123
 msgid "Übersicht"
 msgstr "Overview"
 
-#: component_list/views.py:50
+#: component_list/views.py:125
 msgid "Ausgeklappt"
 msgstr "Expanded"
 
-#: component_list/views.py:51
+#: component_list/views.py:126
 msgid "Eingeklappt"
 msgstr "Collapsed"
 
@@ -1182,6 +1223,7 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/explanation.html:158
 #: templates/TechnicalStandards/norm-explanation.html:33
 #: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/common/listing-row.html:50
 #: templates/datasets_over/explanation.html:69
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
@@ -1195,6 +1237,7 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/norm-explanation.html:34
 #: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/common/listing-row.html:51
 #: templates/datasets_over/explanation.html:70
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
@@ -1512,7 +1555,7 @@ msgstr ""
 #: templates/TechnicalStandards/protocol-listings.html:84
 #: templates/common/search-bar.html:11
 #: templates/datasets_over/dataset-listings.html:41
-#: templates/tools_over/tool-listings.html:45
+#: templates/tools_over/tool-listings.html:44
 #: templates/weatherdata_over/data-service-listings.html:45
 msgid "Suchbegriff"
 msgstr "search term"
@@ -1695,13 +1738,12 @@ msgstr ""
 
 #: templates/TechnicalStandards/protocol-listings.html:97
 #: templates/TechnicalStandards/protocol-listings.html:105
-#: templates/tools_over/tool-listings.html:91
-#: templates/tools_over/tool-listings.html:99
+#: templates/common/comparison.html:5 templates/common/comparison.html:13
 msgid "Vergleiche"
 msgstr "Compare"
 
 #: templates/TechnicalStandards/protocol-listings.html:111
-#: templates/tools_over/tool-listings.html:105
+#: templates/common/comparison.html:19
 msgid "Zurücksetzen"
 msgstr "Reset to default"
 
@@ -1804,11 +1846,6 @@ msgstr "Geographic coverage"
 #: templates/datasets_over/dataset-detail.html:78
 msgid "Auflösung"
 msgstr "Resolution"
-
-#: templates/datasets_over/dataset-detail.html:86
-#: templates/weatherdata_over/weatherdata-detail.html:81
-msgid "Weitere Informationen"
-msgstr "Further information"
 
 #: templates/datasets_over/dataset-detail.html:141
 #: templates/use_cases/explanation.html:95
@@ -3198,7 +3235,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:38
 #: templates/tools_over/tool-comparison.html:69
 #: templates/tools_over/tool-detail.html:244
-#: templates/tools_over/tool-listings.html:78
+#: templates/tools_over/tool-listings.html:79
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
@@ -3270,7 +3307,7 @@ msgstr ""
 #: templates/tools_over/explanationTools.html:56
 #: templates/tools_over/tool-comparison.html:113
 #: templates/tools_over/tool-detail.html:83
-#: templates/tools_over/tool-listings.html:67
+#: templates/tools_over/tool-listings.html:68
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 

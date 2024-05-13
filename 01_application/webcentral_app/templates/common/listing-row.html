@@ -1,25 +1,25 @@
 {% load static %}
 {% load i18n %}
 {% load template_tags %}
-<div class="container {{ focusName }}-cards "
-     id="collapseInfoContainerTools">
+<div class="container {{ focusName }}-cards ">
     {% for object in page.object_list %}
-        <div class="row border-{{ focusName }} collapseInfoContainer"
+        <div class="row border-{{ focusName }} collapseListingRow ListElement"
              style="margin-top: 24px">
             <div class="col-6">
                 {% for element in elementsFirstColumn %}
-                    {% if element.description != "" %}{{ element.description }}:{% endif %}
-                    {% if forloop.first %}
-                        <h3 style="font-size: 35px;">
-                            {{ object|get_attribute:element.objectReference }}
-                        </h3>
-                    {% elif forloop.counter == 2 %}
-                        <p style="color: grey;">{{ object|get_attribute:element.objectReference }}</p>
-                    {% else %}
-                        {% if forloop.counter == 3 %}
-                            <div class="collapseInfo collapse"
-                                 id="collapseComponent{{ forloop.parentloop.counter }}">
-                            {% endif %}
+                    {% if forloop.counter == 4 %}
+                        <div class="collapse"
+                             id="collapseComponent{{ forloop.parentloop.counter }}">
+                        {% endif %}
+                        {% if element.description != "" %}{{ element.description }}:{% endif %}
+                        {% if forloop.first %}
+                            <h3 style="font-size: 35px;">
+                                {{ object|get_attribute:element.objectReference }}
+                            </h3>
+                        {% elif forloop.counter == 2 %}
+                            <p style="color: grey;">{{ object|get_attribute:element.objectReference }}</p>
+                        {% else %}
+
                             <p>{{ object|get_attribute:element.objectReference }}</p>
                         {% endif %}
                     {% endfor %}
@@ -27,8 +27,8 @@
             </div>
             <div class="col-6">
                 {% for element in elementsSecondColumn %}
-                    {% if forloop.counter == 4 %}
-                        <div class="collapseInfo collapse"
+                    {% if forloop.counter == 5 %}
+                        <div class="collapse"
                              id="collapseComponent{{ forloop.parentloop.counter }}">
                         {% endif %}
                         <p>
@@ -46,7 +46,6 @@
                    href="#collapseComponent{{ forloop.counter }}"
                    aria-expanded="false"
                    data-target="#collapseComponent{{ forloop.counter }}"
-                   data-bs-toggle="collapse"
                    aria-controls="collapseComponent{{ forloop.counter }}"
                    data-expanded-text="{% translate 'Zeige weniger ...' %}"
                    data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>

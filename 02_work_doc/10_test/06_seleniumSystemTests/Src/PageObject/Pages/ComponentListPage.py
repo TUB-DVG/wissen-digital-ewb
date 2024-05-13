@@ -166,3 +166,31 @@ class ComponentListPage(object):
             )
         except:
             return None
+
+    def getAllListElements(self):
+        """Return the Component Listing Container"""
+        try:
+            return self.driver.find_elements(
+                By.XPATH,
+                Locator.componentListElementContainer,
+            )
+        except:
+            return None
+
+    def getCollapsedContainerInComponent(self):
+        """Return the Component Listing Container"""
+        try:
+            return self.driver.find_elements(
+                By.ID,
+                "//div[contains(@class, 'collapse')]",
+            )
+        except:
+            return None
+
+    def getDescendantsByClass(self, element, className):
+        """ """
+        try:
+            return element.find_elements(
+                By.XPATH, f".//*[contains(@class, '{className}')]")
+        except:
+            return None
