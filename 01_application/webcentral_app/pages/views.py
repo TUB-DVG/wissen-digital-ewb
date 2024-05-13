@@ -49,7 +49,11 @@ def environmentalIntegrityNegativ(request):
 
 def environmentalIntegrityPositiv(request):
     """Call render function for positiv environmental integrity page."""
-    return render(request, 'pages/environmentalIntegrityPositiv.html')
+    context = {
+    'n': range(4),
+    }
+
+    return render(request, 'pages/environmentalIntegrityPositiv.html', context)
 
 
 def benchmarkingChallenges(request):

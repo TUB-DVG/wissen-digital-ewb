@@ -1,56 +1,116 @@
 {% extends 'base.html' %}
-
-{% block title %} Positive Umweltwirkungen {% endblock %}
-
-{% load static %}
 {% load i18n %}
-{% block content%}
+{% block title %}
+  Positive Umweltwirkungen
+{% endblock title %}
+{% load static %}
+{% block content %}
+  <style>
+    .description-heading {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+    }
 
-<!-- general text for "coming soon" -->
-{% include 'partials/_coming.html' %}
+    .description-heading__icon {
+      font-size: 24px;
+    }
 
-  <!-- =======================
-Page Banner START -->
-<section class="py-4">
-  <div class="container">
+    .box {
+        padding: 40px;
+    }
+
+    .box__content {
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .boxHeading {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .box-content__main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .content-right {
+      display: flex; flex-direction: column; color: #787575;
+    }
+
+    .box__image {
+      width: 100% !important;
+      height: 100px !important;
+      margin-top: 28px;
+      object-fit: contain;
+      object-position: top;
+    }
+    
+    @media only screen and (min-width: 480px) {
+      .box-content__main {
+        flex-direction: row;
+      }
+
+      .boxDescription {
+        margin-bottom: 0;
+      }
+
+      .content-left {
+        flex-basis: 70%;
+      }
+
+      .content-right {
+        flex-basis: 30%;
+      }
+    } 
+  </style>
+
+  <!-- ======================= Page Banner START ======================= -->
+  <div class="content container">
     <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% translate "Positive Umweltwirkungen" %} – good-practice</h2>
+      <div class="col-12 description">
+        <div class="description-heading mb-3">
+          <img src="{% static 'img/componentList/circle-icon.svg' %}"
+               alt="Circle icon"
+               class="description-heading__icon" />
+          <p class="mb-0">{% translate "Positive Umweltwirkungen" %}</p>
+        </div>
+        <div class="description-content">
+          <p>
+            {% blocktranslate %}Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt.{% endblocktranslate %}
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Page Banner END -->
-<!-- Content START -->
-<section id="about" class=" pt-4 py-lg-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <p>
-          {% blocktranslate %}Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von Gebäuden
-          und Quartieren steht im derzeitigen Fokus der Forschung. Gleichzeitig
-          stellt dieses Ziel nur eine der möglichen positiven Umweltwirkungen
-          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in
-          Projekten der Forschungsinitiative Energiewendebauen kommen eine
-          Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, mit
-          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn die
-          Effekte oftmals schwer auf andere Gebäude/Quartiere zu übertragen
-          sind, gibt es doch immer Forschungsprojekte, an denen die Potenziale
-          bestimmter digitaler Anwendungen gut verdeutlicht werden können. Diese
-          sollen im Folgenden kurz vorgestellt werden. Dazu wird die eingesetzte
-          digitale Anwendung beschrieben und die gefundenen positiven
-          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das Aufzeigen
-          von derzeitigen Möglichkeiten digitaler Anwendungen, positive
-          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz soll
-          Interessierte animieren, sich eingehender mit den Möglichkeiten
-          digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben
-          fundierte Entscheidungen treffen zu können.{% endblocktranslate %}
-        </p>
+    <div class="boxes" id="container-start-focus">
+      <div class="row">
+        {% for i in n %}
+          <div class="col-12 col-lg-6 box border-ecological" id="box1">
+            <div class="row box__content">
+              <div class="col-12">
+                <h6 class="boxHeading mb-4">{% translate "Positive Wirkung" %}</h6>
+              </div>
+              <div class="box-content__main">
+                <div class="col-12 content-left">
+                  <p class="boxDescription">
+                    {% blocktranslate %}Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt ut pel ma dolorpo rruntur, accat. Ent, que nimi, quas si odi optatis ex estisque ommossi tatur, vendit por sum ellecatur repudanda simusae et enis ne nus. Ent, que nimi, quas si odi optatis ex estisque ommossi tatur, vendit por sum ellecatur repudanda simusae et enis ne nus.{% endblocktranslate %}
+                  </p>
+                </div>
+                <div class="content-right">
+                  <div>Name Digitale Anwendung</div>
+                  <div class="mt-4">Projektname</div>
+                  <img src="{% static 'img/componentList/environment-positive.png' %}"
+                       alt="Environment positive"
+                       class="box__image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
     </div>
-  </div>
-</section>
-<!-- Content END -->
-{% endblock %}
+    <!-- Content END -->
+  {% endblock %}
