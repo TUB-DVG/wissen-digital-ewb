@@ -347,13 +347,30 @@ class TestComponentsList(WebDriverSetup):
         searchInputField = componentsListPageObj.getSearchInputField()
         searchInputField.send_keys("Volumenstromregler")
         searchInputField.send_keys(Keys.RETURN)
-
+        time.sleep(1)
         searchResultsComponents = componentsListPageObj.getAllListElements()
         self.assertTrue(len(searchResultsComponents) >= 1)
 
         # in each result, the search-string should be present:
         for component in searchResultsComponents:
             self.assertTrue("Volumenstromregler" in component.text)
+
+        # test the functionality of the category-selection field:
+        categorySelectionField = selectionFields[0]
+        randomChoiceFromCategory = choice(categorySelectionField.options[1:])
+
+        randomChoiceFromCategory.click()
+        randomChoiceFromCategoryText = randomChoiceFromCategory.text
+
+        searchSubmitButton = componentsListPageObj.getSearchSubmitButton()
+        searchSubmitButton.click()
+        time.sleep(1)
+        searchResultsComponents = componentsListPageObj.getAllListElements()
+        self.assertTrue(len(searchResultsComponents) >= 1)
+
+        # in each result, the search-string should be present:
+        for component in searchResultsComponents:
+            self.assertTrue(randomChoiceFromCategoryText in component.text)
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""

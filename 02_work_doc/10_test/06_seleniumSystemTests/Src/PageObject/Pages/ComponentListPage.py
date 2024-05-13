@@ -204,3 +204,12 @@ class ComponentListPage(object):
                 By.XPATH, f".//*[contains(@class, '{className}')]")
         except:
             return None
+
+    def getSearchSubmit(self):
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.searchSubmit,
+            )
+        except:
+            return None
