@@ -5,13 +5,57 @@
 {% endblock %}
 {% load static %}
 {% block content %}
+  <style>
+    .description-heading {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+    }
+
+    .description-heading__icon {
+      font-size: 24px;
+    }
+
+    .box {
+        padding: 40px;
+        padding-bottom: 44px;
+    }
+
+    .box__content {
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .boxHeading {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .boxDescription {
+      font-size: 16px;
+    }
+
+    .boxImage {
+      margin-top: auto;
+    }
+
+    .box__image {
+      margin-top: 8px;
+      height: 100% !important;
+      object-fit: contain;
+    }
+  </style>
   <!-- =======================
  Content START -->
   <div class="content container">
     <div class="row">
       <div class="col-12 description">
-        <div class="description-heading">
-          <p>{% translate "Negative Umweltwirkungen" %}</p>
+        <div class="description-heading mb-3">
+          <img src="{% static 'img/componentList/circle-icon.svg' %}"
+              alt="Circle icon"
+              class="description-heading__icon">
+          <p class="mb-0">{% translate "Negative Umweltwirkungen" %}</p>
         </div>
         <div class="description-content">
           <p>
@@ -22,35 +66,36 @@
     </div>
     <div class="boxes" id="container-start-focus">
       <div class="row">
-        <div class="col-12 col-lg-6 p-3 border-ecological" id="box1">
+        <div class="col-12 col-lg-6 box border-ecological" id="box1">
           <a href="{% url 'components' %}"
              style="color: inherit;
                     text-decoration: none;
                     font-style: normal">
-            <div class="row">
+            <div class="row box__content">
               <div class="col-12">
-                <h6 class="boxHeading">{% translate "Aufwände für verwendete Komponenten" %}</h6>
+                <h6 class="boxHeading mb-4">{% translate "Aufwände für verwendete Komponenten" %}</h6>
               </div>
               <div class="col-12">
                 <p class="boxDescription">
-                  {% blocktranslate %}Die Digitalisierung bietet große Potenziale und Chancen. Auch im Gebäudebereich lassen sich mittels digitaler Anwendungen u.a. Effizienzpotenziale heben (siehe positive Umweltwirkungen – good-practice). Jedoch stehen den positiven Wirkungen, hervorgerufen durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich negative Umweltwirkungen von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. {% endblocktranslate %}
+                  {% blocktranslate %}In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten{% endblocktranslate %}
                 </p>
               </div>
               <div class="boxImage">
-                <img src="{% static 'img/negativeEnvironmentalImpactsBox1.svg' %}"
-                     alt="box1">
+                <img src="{% static 'img/componentList/negativeEnvironmentalImpactsBox1.png' %}"
+                     alt="box1"
+                     class="box__image">
               </div>
             </div>
           </a>
         </div>
-        <div class="col-12 col-lg-6 p-3 border-ecological" id="box2">
+        <div class="col-12 col-lg-6 box border-ecological" id="box2">
           <a href="{% url 'dataProcessing' %}"
              style="color: inherit;
                     text-decoration: none;
                     font-style: normal">
-            <div class="row">
+            <div class="row box__content">
               <div class="col-12">
-                <h6 class="boxHeading">{% translate "Aufwände für Datenverarbeitungsprozesse" %}</h6>
+                <h6 class="boxHeading mb-4">{% translate "Aufwände für Datenverarbeitungsprozesse" %}</h6>
               </div>
               <div class="col-12">
                 <p class="boxDescription">
@@ -58,8 +103,9 @@
                 </p>
               </div>
               <div class="boxImage">
-                <img src="{% static 'img/negativeEnvironmentalImpactsBox1.svg' %}"
-                     alt="box1">
+                <img src="{% static 'img/componentList/negativeEnvironmentalImpactsBox2.png' %}"
+                     alt="box1"
+                     class="box__image">
               </div>
             </div>
           </a>
