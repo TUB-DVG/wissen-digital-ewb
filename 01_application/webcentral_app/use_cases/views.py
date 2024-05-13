@@ -140,5 +140,3 @@ def _setUseCaseImage(useCaseItem):
     else:
         useCaseItem.icon = None
 
-def dashboard_view(request):
-    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html')
