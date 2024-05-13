@@ -7,101 +7,31 @@
 
 <html>
 <head><meta charset="utf-8" /></head>
-<body>
-    <div class="container" id="plotlyContainer">
-        {% include "common/back-button.html" %}
-        <div>
-            <input type="checkbox" id="einHaushalt" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Einen Haushalt"%}</label>
-            
-            <input type="checkbox" id="dreiHaushalte" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="threeHouseHolds">{%translate "Drei Haushalte"%}</label>
-        </div>
-        <div>
-            <input type="checkbox" id="Geschirrspüler" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Geschirrspüler"%}</label>
 
-            <input type="checkbox" id="Elektrisch-Kombiniert" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Elektrisch-Kombiniert"%}</label>
+<section class="py-0 py-sm-5">
+    <div class="container">
+        <body> 
+<p>
+    {% blocktranslate %}Auf dieser Seite präsentieren wir eine beispielhafte Darstellung, wie sich verschiedene Aggregationen (zeitlich und räumlich) auf verschiedene Anwendungsfälle der Digitalisierung auswirken. 
+    Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein:{% endblocktranslate %} 
+  </p>
+  <li>{% blocktranslate %}Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit von Effekten aus?{% endblocktranslate %}</li>
+  <li>{% blocktranslate %}Wie wirken sich einzelne Aggregationen (Anlagen, Gesamterverbrauch, Drei Gebäude) auf die Sichtbarkeit von Effekten aus?{% endblocktranslate %}</li>
+  <li>{% blocktranslate %}Was ist in dem Graph zu sehen?{% endblocktranslate %}
+  </li>
 
-            <input type="checkbox" id="Kühl-_und_Gefrierschrank" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Kühl- und Gefrierschrank"%}</label>   
-            
-            <input type="checkbox" id="Wasserkocher" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Wasserkocher"%}</label>   
+</ol>
 
-            <input type="checkbox" id="Hauptanschluss" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Hauptanschluss"%}</label> 
+<p>
+{% blocktranslate %} Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen komplex und vielschichtig. So werden bepspielweise Ressourcen und Energie für Erstellung und den Betrieb von Messetechnik benötigt, eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder ein genaues Erkennen von Fehlern.
+Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und in ihren Auswirkungen begreifbar gemacht werden. Dazu werden die entsprechenden ausgewählten Zeitreihen dargestellt.{% endblocktranslate %}
+</p>
 
-            <input type="checkbox" id="Staubsauger" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Staubsauger"%}</label>
+    {% plotly_app name='useCaseTS' %}
 
-            <input type="checkbox" id="Herd" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Herd"%}</label>
-
-            <input type="checkbox" id="Mikrowelle" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Mikrowelle"%}</label>
-
-            <input type="checkbox" id="Waschmaschine" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Waschmaschine"%}</label>
-
-            <input type="checkbox" id="Durchlauferhitzer" onchange="showPlotsBasedOnSelection(this)" checked>
-            <label for="oneHouseHold">{%translate "Durchlauferhitzer"%}</label>
-        </div>
-        
-        <input type="checkbox" id="5sek" onchange="showPlotsBasedOnSelection(this)" checked>
-        <label for="oneHouseHold">{%translate "Mikrowelle"%}</label>
-
-        <input type="checkbox" id="15min" onchange="showPlotsBasedOnSelection(this)" checked>
-        <label for="oneHouseHold">{%translate "Waschmaschine"%}</label>
-
-        <input type="checkbox" id="1h" onchange="showPlotsBasedOnSelection(this)" checked>
-        <label for="oneHouseHold">{%translate "Durchlauferhitzer"%}</label>
-        <div>
-        </div>
-        <!-- <div>
-    Wirkebene:
-    <ul>
-        <li>{{ levelOfDetailElements.degreeOfDetail }}</li>
-    </ul>
-</div> -->
 </div>
 </body>
-<script>
-    // function getShownTraces(graphDiv) {
-    //     var shownTraces = [];
-    //     for (var i = 0; i < graphDiv.data.length; i++) {
-    //         if (graphDiv.data[i].visible !== false) {
-    //             shownTraces.push(graphDiv.data[i]);
-    //         }
-    //     }
-    //     return shownTraces;
-    // }
-    function showPlotsBasedOnSelection(element) {
-    
-        // check which option-elements are ticked:
-        var householdType = element.id
-        var enabledOrDisabled = element.checked
-        // debugger;
-        plotlyDiv = document.getElementsByClassName("plotly-graph-div")[0]
-        allPlotlyTraces = plotlyDiv.data
-        for (var i = 0; i < allPlotlyTraces.length; i++) {
-            if (allPlotlyTraces[i].name.includes(householdType)) {
-                if (enabledOrDisabled) {
-                    allPlotlyTraces[i].visible = true;
-                }
-                else {
-                    allPlotlyTraces[i].visible = false;
-                }
-            }
-        }
-        Plotly.react(plotlyDiv, allPlotlyTraces);
-
-    }
-</script>
-<body>
-    <h1>My Dash App</h1>
-    {% plotly_app name='useCaseTS' %}
-</body>
+    </div>
+</section>
 </html>
 {% endblock %}
