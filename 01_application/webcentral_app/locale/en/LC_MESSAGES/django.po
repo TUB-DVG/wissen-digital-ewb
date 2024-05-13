@@ -1013,6 +1013,9 @@ msgstr ""
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
+msgid "Aufwände für Datenverarbeitungsprozsse"
+msgstr "Expenditure for data processing procedures"
+
 #: templates/StartSearch/StartSearch.html:372
 #: templates/pages/environmentalIntegrityPositiv.html:19
 #: templates/partials/_navbar.html:179
