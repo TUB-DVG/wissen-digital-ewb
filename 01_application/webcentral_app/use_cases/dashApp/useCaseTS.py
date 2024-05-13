@@ -25,21 +25,24 @@ file_list = [file for file in file_list if file.endswith('.csv')]
 app = DjangoDash('useCaseTS')
 
 # Define the layout of the app
-app.layout = html.Div([
+app.layout = html.Div([html.Div(
     dcc.Dropdown(
         id='file-selector',
         options=[{'label': file, 'value': file} for file in file_list],
         value=file_list[:min(len(file_list), 12)],  # Default to the first 12 files
         multi=True
-    ),
+    )),
     dcc.Loading(id="loading",
            children=[html.Div([dcc.Graph(id="time-series-chart",figure = {})])],
            type="circle",fullscreen=False),
-],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)",
+    ],style={'font-family': "Roboto, sans-serif",
+             
+         "color":"rgb(116, 117, 121)",
          "font-size":" 18.75px",
          "font-weight": "400",
          "line-height": "22.5px",
-         "overflow-x": "hidden"})
+         "overflow-x": "auto",
+         "overflow-y": "auto",})
 
 
 # Callback to update the graph based on file and column selection
@@ -68,9 +71,9 @@ def update_graph(selected_files):
 
     # Update layout
     fig.update_layout(
-        xaxis_title='Timestamp',
-        yaxis_title="Test",
-        legend_title='File'
+        xaxis_title='Datum Zeit',
+        yaxis_title="Werte (kWh)",
+        legend_title='Dargestellte Zeitreihen'
     )
 
     return fig
