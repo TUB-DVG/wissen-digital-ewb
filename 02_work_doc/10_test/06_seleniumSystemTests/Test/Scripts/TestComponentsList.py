@@ -514,6 +514,25 @@ class TestComponentsList(WebDriverSetup):
                         randomComponent.text)
         self.assertTrue("Source" in randomComponent.text)
         self.assertTrue("Further information" in randomComponent.text)
+        self._checkIfStrElementFromListIsDisplayed(
+            randomComponent,
+            [
+                "Actuators",
+                "Signal processing",
+                "Infrastructure",
+                "Sensors",
+            ],
+        )
+        self._checkIfStrElementFromListIsDisplayed(
+            randomComponent,
+            [
+                "Flow controller",
+                "Data logger",
+                "Air duct",
+                "Circulating pump",
+                "Presence detector",
+            ],
+        )
 
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
