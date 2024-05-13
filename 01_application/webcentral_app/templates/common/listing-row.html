@@ -1,6 +1,11 @@
 {% load static %}
 {% load i18n %}
 {% load template_tags %}
+<style>
+    .listingRowAttributeNames {
+        color: #787575;
+    }
+</style>
 <div class="container {{ focusName }}-cards ">
     {% for object in page.object_list %}
         <div class="row border-{{ focusName }} collapseListingRow ListElement"
@@ -11,7 +16,9 @@
                         <div class="collapse"
                              id="collapseComponent{{ forloop.parentloop.counter }}">
                         {% endif %}
-                        {% if element.description != "" %}{{ element.description }}:{% endif %}
+                        {% if element.description != "" %}
+                            <span class="listingRowAttributeNames">{{ element.description }}:</span>
+                        {% endif %}
                         {% if forloop.first %}
                             <h3 style="font-size: 35px;">
                                 {{ object|get_attribute:element.objectReference }}
@@ -32,7 +39,9 @@
                              id="collapseComponent{{ forloop.parentloop.counter }}">
                         {% endif %}
                         <p>
-                            {% if element.description != "" %}{{ element.description }}:{% endif %}
+                            {% if element.description != "" %}
+                                <span class="listingRowAttributeNames">{{ element.description }}:</span>
+                            {% endif %}
                             {{ object|get_attribute:element.objectReference }}
                         </p>
 

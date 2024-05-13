@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
+from django.db.models import Q
 
 from .models import (
     Category,
@@ -12,7 +13,30 @@ from .models import (
 # Create your views here.
 def components(request):
     """Load the Component Modeldata and render the components-template"""
-    componentsObj = Component.objects.all()
+
+    # get the values of the input-fields:
+    searchInputValue = request.GET.get("searched", "")
+    categoryValue = request.GET.get("category", "")
+    componentValue = request.GET.get("component", "")
+    sortingValue = request.GET.get("sorting", "")
+    overviewValue = request.GET.get("overview", "")
+
+    if (searchInputValue or categoryValue or componentValue or sortingValue
+            or overviewValue):
+        componentsObj = Component.objects.filter(
+            Q(category__category__icontains=categoryValue)
+            | Q(category__category__icontains=searchInputValue)
+            | Q(component__componentClass__icontains=componentValue)
+            | Q(component__componentClass__icontains=searchInputValue),
+            description__icontains=searchInputValue,
+            furtherInformationNotes__icontains=searchInputValue,
+            sources__icontains=searchInputValue,
+        ).order_by("component__componentClass")
+
+        if sortingValue == "Absteigend":
+            componentsObj = componentsObj.reverse()
+    else:
+        componentsObj = Component.objects.all()
     componentsObjList = list(componentsObj)
     componentsPaginator = Paginator(componentsObjList, 3)
     pageNum = request.GET.get("page", None)
