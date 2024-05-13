@@ -24,14 +24,14 @@ def components(request):
     if (searchInputValue or categoryValue or componentValue or sortingValue
             or overviewValue):
         componentsObj = Component.objects.filter(
-            Q(category__category__icontains=categoryValue)
-            | Q(category__category__icontains=searchInputValue)
-            | Q(component__componentClass__icontains=componentValue)
-            | Q(component__componentClass__icontains=searchInputValue),
-            description__icontains=searchInputValue,
-            furtherInformationNotes__icontains=searchInputValue,
-            sources__icontains=searchInputValue,
-        ).order_by("component__componentClass")
+            # Q(category__category__icontains=categoryValue)
+            Q(category__category__icontains=searchInputValue)
+            # | Q(component__componentClass__icontains=componentValue)
+            | Q(component__componentClass__icontains=searchInputValue)
+            | Q(description__icontains=searchInputValue)
+            | Q(furtherInformationNotes__icontains=searchInputValue)
+            | Q(sources__icontains=searchInputValue)).order_by(
+                "component__componentClass")
 
         if sortingValue == "Absteigend":
             componentsObj = componentsObj.reverse()
