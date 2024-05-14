@@ -5,6 +5,7 @@ from the outside/from a enduser perspective using selenium-webdriver.
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -12,9 +13,7 @@ import os
 import random
 
 from selenium import (
-    webdriver,
-
-)
+    webdriver, )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -26,15 +25,14 @@ from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+
 
 class TestDigitalToolsPage(WebDriverSetup):
-    """
-    
-    """
-    def testNavigateToDigitalToolsPage(self) -> None:
-        """Navigates from norm list to digital-tools-tab.
+    """ """
 
-        """
+    def testNavigateToDigitalToolsPage(self) -> None:
+        """Navigates from norm list to digital-tools-tab."""
         print(os.environ["siteUnderTest"])
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
 
@@ -43,16 +41,14 @@ class TestDigitalToolsPage(WebDriverSetup):
         toolListItem = navBar.getNavToolList()
         action_chains = ActionChains(self.driver)
         action_chains.move_to_element(techItem).click(toolListItem).perform()
-        
+
         time.sleep(1)
-        
+
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
     def testSearchField(self) -> None:
-        """Tests the Search Function in `Digitale Anwendungen`
-        
-        """
+        """Tests the Search Function in `Digitale Anwendungen`"""
         self.openToolList()
 
         toolListPage = ToolListPage(self.driver)
@@ -77,25 +73,25 @@ class TestDigitalToolsPage(WebDriverSetup):
             1,
             "Number of Tool Items should be one for Search-String 'Ansys'!",
         )
-        
+
         time.sleep(1)
         searchStrBox = toolListPage.getSearchStringButton("Ansys")
         self.assertIsInstance(
-            searchStrBox, 
-            WebElement, 
+            searchStrBox,
+            WebElement,
             "Search-String Button is not present!",
         )
 
         searchStringBoxX = toolListPage.getCloseOnSearchStrButton(searchStrBox)
         self.assertIsInstance(
-            searchStrBox, 
-            WebElement, 
+            searchStrBox,
+            WebElement,
             "Search-String-X Button is not present!",
         )
 
         # breakpoint()
         toolListPage.getXOfSearchFilter().click()
-        
+
         time.sleep(1)
         listToolItemsAfterRmvdSearch = toolListPage.getListOfToolItems()
         self.assertEqual(
@@ -114,7 +110,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             12,
             "After writing 'Bim' into search-field, the number of Tool-items should be decreased!",
         )
-        
+
     def testIfShowMoreExpandsText(self):
         """Tests, if clicking `Zeige mehr` shows the whole text.
 
@@ -152,9 +148,9 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         time.sleep(1)
         showLessLink = toolListPage.getShowLessElement()
-        self.driver.execute_script("arguments[0].click();",showLessLink)
-        #time.sleep(1)
-        #showLessLink.click()
+        self.driver.execute_script("arguments[0].click();", showLessLink)
+        # time.sleep(1)
+        # showLessLink.click()
 
         time.sleep(1)
         self.assertFalse(
@@ -162,11 +158,8 @@ class TestDigitalToolsPage(WebDriverSetup):
             "List is still displayed after clicking 'show less ...'!",
         )
 
-
     def openToolList(self) -> None:
-        """Helper-method, which connects to tool-list page.
-
-        """
+        """Helper-method, which connects to tool-list page."""
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
@@ -182,9 +175,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         digitalToolsItem.click()
 
     def checkPageTitle(self, pageTitle) -> None:
-        """
-
-        """
+        """ """
         try:
             if self.driver.title == pageTitle:
                 print("WebPage loaded successfully")
@@ -196,7 +187,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         """
         This method tests the pagination of tool list
         the first page should have first and last page but no previous page.
-        Also the number of pages displayed on the first page 
+        Also the number of pages displayed on the first page
         matches the number shown on the last page
         """
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
@@ -228,7 +219,10 @@ class TestDigitalToolsPage(WebDriverSetup):
         )
         currentPageNumberElement = toolPageObj.getCurrentSearchResultNumber()
         indexPageEndNumber = currentPageNumberElement.text.split()[-1]
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfLastElement[0])
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            listOfLastElement[0],
+        )
         time.sleep(1)
         listOfLastElement[0].click()
         time.sleep(1)
@@ -239,9 +233,10 @@ class TestDigitalToolsPage(WebDriverSetup):
             lastPageEndNumber,
             "Page numbers on the first and last pages should be the same",
         )
+
     def testIfToolImageErrorTextIsPresent(self):
         """Check if a tool is on the page, which has the 'tool image (if=db)'-error
-      In this test all pages of the digital-tools-tab are gone through and checked if one of the tools shows the image error 'tool image (if=db)'. If so the test is red.
+        In this test all pages of the digital-tools-tab are gone through and checked if one of the tools shows the image error 'tool image (if=db)'. If so the test is red.
         """
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         toolsPageObj = ToolListPage(self.driver)
@@ -254,25 +249,72 @@ class TestDigitalToolsPage(WebDriverSetup):
         } else {
             return null;
         }
-        """ 
+        """
         foundAltText = False
         for currentPageNumber in range(numberOfPages):
             listOfToolItemsOnCurrentPage = toolsPageObj.getListOfToolItems()
             for toolItem in listOfToolItemsOnCurrentPage:
                 try:
-                    imageOfCurrentItem = toolItem.find_element(By.XPATH, ".//img")
+                    imageOfCurrentItem = toolItem.find_element(
+                        By.XPATH, ".//img")
                 except NoSuchElementException:
                     continue
-                altTextPresent = self.driver.execute_script(script, imageOfCurrentItem)
+                altTextPresent = self.driver.execute_script(
+                    script, imageOfCurrentItem)
                 if altTextPresent:
-                    toolName = toolItem.text.split('\n')[0]
-                    print(f"Alt Text is present for Tool {toolName} instead of the image.")                
+                    toolName = toolItem.text.split("\n")[0]
+                    print(
+                        f"Alt Text is present for Tool {toolName} instead of the image."
+                    )
                     foundAltText = True
-            
+
             nextLink = toolsPageObj.getNextElementInList()
             if len(nextLink) > 0:
                 nextLink = toolsPageObj.getNextElementInList()[0]
                 self.scrollElementIntoViewAndClickIt(nextLink)
-            
-        self.assertFalse(foundAltText, "Found Alt-Text for images in Digital-Tools. Check if the image for the tool is present in the media-folder")
-        
+
+        self.assertFalse(
+            foundAltText,
+            "Found Alt-Text for images in Digital-Tools. Check if the image for the tool is present in the media-folder",
+        )
+
+    def testComparison(self):
+        """ """
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+
+        self._setLanguageToGerman()
+
+        toolsPageObj = ToolListPage(self.driver)
+        comparisonPageSection = ComparisonPageSection(self.driver)
+
+        # click the Compare-Button and check if 2 buttons appear and the checkboxes
+        # in each listing element is shown
+        compareButton = comparisonPageSection.getCompareButton()
+        self.assertEqual(
+            compareButton.text,
+            "Vergleiche",
+            "The compare-button should be present",
+        )
+        compareButton.click()
+        secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
+        comparisonButtons = comparisonPageSection.getDescendantsByTagName(
+            secondComparisonDiv, "h6")
+        self.assertEqual(len(comparisonButtons), 2)
+
+        # check if the right text is displayed in the comparison-buttons
+        self.assertEqual(
+            comparisonButtons[0].text,
+            "Vergleiche",
+            "The compare-button should be present",
+        )
+        self.assertEqual(
+            comparisonButtons[1].text,
+            "Zurücksetzen",
+            "The reset-button should be present",
+        )
+
+        # check if the checkboxes are present in the listing elements
+        listOfToolItems = toolsPageObj.getListOfToolItems()
+        for toolItem in listOfToolItems:
+            checkbox = toolItem.find_element(By.XPATH, ".//input")
+            self.assertTrue(checkbox.is_displayed())

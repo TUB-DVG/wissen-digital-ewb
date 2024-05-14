@@ -11,14 +11,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as Firefox_Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
- 
+
+from Src.PageObject.Components.CookieBanner import CookieBanner
+from Src.PageObject.Components.Footer import Footer
+
+
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
+
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
         dimensions 1920x1080.
-        
+
         """
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         firefoxOptions = Firefox_Options()
@@ -31,66 +36,96 @@ class WebDriverSetup(unittest.TestCase):
         self.driver = webdriver.Firefox(options=firefoxOptions)
         # self.driver.implicitly_wait(10)
         self.driver.maximize_window()
- 
+
     def tearDown(self):
-        """Close the browser Window of every test.
-        
-        """
-        if (self.driver != None):
+        """Close the browser Window of every test."""
+        if self.driver != None:
             print("Cleanup of test environment")
             self.driver.close()
             self.driver.quit()
 
     def scrollElementIntoView(self, element):
-        """Scroll the element into the view of the browser-window.
-        
-        """
-        window_height = self.driver.execute_script('return window.innerHeight')
-        middle_y_coordinate = element.location['y'] - (window_height / 2)
-        self.driver.execute_script(f"window.scrollTo(0, {middle_y_coordinate})")
+        """Scroll the element into the view of the browser-window."""
+        window_height = self.driver.execute_script("return window.innerHeight")
+        middle_y_coordinate = element.location["y"] - (window_height / 2)
+        self.driver.execute_script(
+            f"window.scrollTo(0, {middle_y_coordinate})")
         time.sleep(1)
 
     def scrollElementIntoViewAndClickIt(self, element):
-        """Scroll the element into the view of the browser-window.
-        
-        """
+        """Scroll the element into the view of the browser-window."""
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         self.element = element
         wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
         wait.until(self._elementIsClickable)
 
     def _elementIsClickable(self, driver):
-        """Check if the element is clickable.
-        
-        """
+        """Check if the element is clickable."""
         try:
             self.element.click()
         except:
             return False
         return True
-    
+
     def _checkForPageError(self, errorMessage):
-      """Check if the Django-ValueError-Page or the nginx Server-Error Page appears
-      
-      errorMessage: str
-        this is a string, which contains the error-message, which is displayed if the assert-statement fails
-      """
-      self.assertTrue(
-        self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
-        errorMessage,
-      )
+        """Check if the Django-ValueError-Page or the nginx Server-Error Page appears
+
+        errorMessage: str
+          this is a string, which contains the error-message, which is displayed if the assert-statement fails
+        """
+        self.assertTrue(
+            self.driver.title != "Server Error (500)"
+            or "ValueError" not in self.driver.title,
+            errorMessage,
+        )
 
     def getLanguage(self):
-        """Get the language of the page.
-        
-        """
+        """Get the language of the page."""
 
-        element = self.driver.find_element(By.XPATH, "//select[@name='language']")
+        element = self.driver.find_element(By.XPATH,
+                                           "//select[@name='language']")
         return element.get_attribute("value")
-    
+
     def checkIfImageIsDisplayed(self, image):
-        """Check if the image is displayed.
-        
-        """
-        naturalWidth = image.get_attribute('naturalWidth')
-        self.assertNotEqual(naturalWidth, '0', 'Image is not displayed, only alt-text is shown')
+        """Check if the image is displayed."""
+        naturalWidth = image.get_attribute("naturalWidth")
+        self.assertNotEqual(naturalWidth, "0",
+                            "Image is not displayed, only alt-text is shown")
+
+    def _removeCookieBanner(self):
+        """Remove the cookie-banner from the page"""
+        cookieBannerObj = CookieBanner(self.driver)
+        cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
+        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
+
+    def _setLanguageToGerman(self):
+        """Set the language of the page to german"""
+        # change the language to german and check if the german heading is displayed
+        footerObj = Footer(self.driver)
+        selectionField = footerObj.getLanguageSelectionField()
+        options = selectionField.options
+
+        for option in options:
+            if option.text == "Deutsch":
+                self.scrollElementIntoViewAndClickIt(option)
+
+                break
+            elif option.text == "German":
+                self.scrollElementIntoViewAndClickIt(option)
+                break
+
+    def _setLanguageToEnglish(self):
+        """Set the language of the page to english"""
+        # change the language to english and check if the english heading is displayed
+        footerObj = Footer(self.driver)
+        selectionField = footerObj.getLanguageSelectionField()
+        options = selectionField.options
+
+        for option in options:
+            if option.text == "English":
+                self.scrollElementIntoViewAndClickIt(option)
+
+                break
+            elif option.text == "Englisch":
+                self.scrollElementIntoViewAndClickIt(option)
+                break

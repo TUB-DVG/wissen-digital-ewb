@@ -14,7 +14,7 @@ from selenium.webdriver.support.select import Select
 from Src.PageObject.Locators import Locator
 
 
-class ComponentListPage(object):
+class ComponentListPage(GenericPageObject):
     """ """
 
     def __init__(self, driver):
@@ -38,15 +38,6 @@ class ComponentListPage(object):
                 By.XPATH,
                 f"//div[contains(@class, '{Locator.secondaryNavBar}')]",
             )
-        except:
-            return None
-
-    def getDescendantsByTagName(self, element, tagName):
-        """Returns the div-element, which wraps the content of the page"""
-        try:
-            # breakpoint()
-            return element.find_elements(By.XPATH, ".//" + tagName)
-
         except:
             return None
 

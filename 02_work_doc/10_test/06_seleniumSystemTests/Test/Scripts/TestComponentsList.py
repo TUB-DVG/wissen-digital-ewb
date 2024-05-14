@@ -341,7 +341,7 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
 
         # change the language back to german:
-        self._setLangaugeToGerman()
+        self._setLanguageToGerman()
 
         # test the functionality of the search-input field:
         searchInputField = componentsListPageObj.getSearchInputField()
@@ -408,6 +408,30 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(len(activeCompareElements), 2)
         self.assertEqual(activeCompareElements[0].text, "Vergleiche")
         self.assertEqual(activeCompareElements[1].text, "Zurücksetzen")
+
+        # check if checkboxes appear in each component div, if the compareButton[0] is clicked:
+        components = componentsListPageObj.getAllListElements()
+        for component in components:
+            checkbox = componentsListPageObj.getDescendantsByTagName(
+                component, "input")
+            self.assertIsNotNone(checkbox)
+            self.assertEqual(checkbox[0].get_attribute("type"), "checkbox")
+
+        # choose 2 components and activate their checkboxes:
+        component1 = choice(components)
+        components.remove(component1)
+        component2 = choice(components)
+
+        componentsListPageObj.getDescendantsByTagName(component1,
+                                                      "input")[0].click()
+
+        componentsListPageObj.getDescendantsByTagName(component2,
+                                                      "input")[0].click()
+
+        activeCompareElements[0].click()
+
+        # check if the 2 elements are compared:
+        breakpoint()
 
     def testIfComponentListingContainer(self):
         """Test if the component listing container is present"""
@@ -579,44 +603,6 @@ class TestComponentsList(WebDriverSetup):
 
         paginatorContainer = componentsListPageObj.getPaginationContainer()
         self.assertIsNotNone(paginatorContainer)
-
-    def _removeCookieBanner(self):
-        """Remove the cookie-banner from the page"""
-        cookieBannerObj = CookieBanner(self.driver)
-        cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
-        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
-
-    def _setLangaugeToGerman(self):
-        """Set the language of the page to german"""
-        # change the language to german and check if the german heading is displayed
-        footerObj = Footer(self.driver)
-        selectionField = footerObj.getLanguageSelectionField()
-        options = selectionField.options
-
-        for option in options:
-            if option.text == "Deutsch":
-                self.scrollElementIntoViewAndClickIt(option)
-
-                break
-            elif option.text == "German":
-                self.scrollElementIntoViewAndClickIt(option)
-                break
-
-    def _setLanguageToEnglish(self):
-        """Set the language of the page to english"""
-        # change the language to english and check if the english heading is displayed
-        footerObj = Footer(self.driver)
-        selectionField = footerObj.getLanguageSelectionField()
-        options = selectionField.options
-
-        for option in options:
-            if option.text == "English":
-                self.scrollElementIntoViewAndClickIt(option)
-
-                break
-            elif option.text == "Englisch":
-                self.scrollElementIntoViewAndClickIt(option)
-                break
 
     def _checkIfStrElementFromListIsDisplayed(self, component, elementList):
         """Check if a string-element from a list is displayed"""
