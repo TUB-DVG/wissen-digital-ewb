@@ -14,6 +14,8 @@ from .models import (
 def components(request):
     """Load the Component Modeldata and render the components-template"""
 
+    listingShowOrCollapse = "collapse"
+
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
     categoryValue = request.GET.get("category", "")
@@ -34,13 +36,20 @@ def components(request):
         searchQuery = searchQuery | Q(sources__icontains=searchInputValue)
 
     if categoryValue:
-        searchQuery = searchQuery | Q(category__category=categoryValue)
+        categoryForSelectValue = Category.objects.filter(
+            category=categoryValue)
+        if len(categoryForSelectValue) == 1:
+            searchQuery = searchQuery | Q(category=categoryForSelectValue[0])
 
     if componentValue:
         componentForSelectValue = ComponentClass.objects.filter(
             componentClass=componentValue)
         if len(componentForSelectValue) == 1:
             searchQuery = searchQuery | Q(component=componentForSelectValue[0])
+
+    if overviewValue:
+        if overviewValue == _("Ausgeklappt"):
+            listingShowOrCollapse = "show"
 
     componentsObj = Component.objects.filter(searchQuery)
     componentsObjList = list(componentsObj)
@@ -56,6 +65,8 @@ def components(request):
         "components",
         "page":
         page,
+        "listElementsShowOrCollapse":
+        listingShowOrCollapse,
         "elementsFirstColumn": [
             {
                 "objectReference": "category",

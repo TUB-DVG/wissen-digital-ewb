@@ -13,7 +13,7 @@
             <div class="col-6">
                 {% for element in elementsFirstColumn %}
                     {% if forloop.counter == 4 %}
-                        <div class="collapse"
+                        <div class="{{ listElementsShowOrCollapse }}"
                              id="collapseComponent{{ forloop.parentloop.counter }}">
                         {% endif %}
                         {% if element.description != "" %}
@@ -35,7 +35,7 @@
             <div class="col-6">
                 {% for element in elementsSecondColumn %}
                     {% if forloop.counter == 5 %}
-                        <div class="collapse"
+                        <div class="{{ listElementsShowOrCollapse }}"
                              id="collapseComponent{{ forloop.parentloop.counter }}">
                         {% endif %}
                         <p>

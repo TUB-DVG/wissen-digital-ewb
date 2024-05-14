@@ -359,23 +359,20 @@ class TestComponentsList(WebDriverSetup):
             componentsListPageObj.getSelectFieldsInSearchContainer())
         # test the functionality of the category-selection field:
         categorySelectionField = selectionFields[0]
-        randomChoiceFromCategory = choice(categorySelectionField.options[1:])
-        randomChoiceFromCategoryText = randomChoiceFromCategory.text
+        self._checkIfSelectFieldsWorks(categorySelectionField,
+                                       componentsListPageObj)
 
-        self.scrollElementIntoView(randomChoiceFromCategory)
-        breakpoint()
-        categorySelectionField.select_by_visible_text(
-            randomChoiceFromCategoryText)
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
 
-        searchSubmitButton = componentsListPageObj.getSearchSubmitButton()
-        searchSubmitButton.click()
-        time.sleep(1)
-        searchResultsComponents = componentsListPageObj.getAllListElements()
-        self.assertTrue(len(searchResultsComponents) >= 1)
+        self._checkIfSelectFieldsWorks(selectionFields[1],
+                                       componentsListPageObj)
 
-        # in each result, the search-string should be present:
-        for component in searchResultsComponents:
-            self.assertTrue(randomChoiceFromCategoryText in component.text)
+        # test the functionality of the overview selection field:
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
+        self._checkIfSelectFieldsWorks(selectionFields[3],
+                                       componentsListPageObj, True)
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
@@ -629,3 +626,37 @@ class TestComponentsList(WebDriverSetup):
                 isElementFound = True
                 break
         self.assertTrue(isElementFound)
+
+    def _checkIfSelectFieldsWorks(self,
+                                  selectionField,
+                                  componentsListPageObj,
+                                  overviewSelect=False):
+        """Check if the selection field works"""
+        randomChoiceFromSelect = choice(selectionField.options[1:])
+        randomChoiceFromSelectText = randomChoiceFromSelect.text
+
+        self.scrollElementIntoView(randomChoiceFromSelect)
+
+        selectionField.select_by_visible_text(randomChoiceFromSelectText)
+
+        searchSubmitButton = componentsListPageObj.getSearchSubmitButton()
+        searchSubmitButton.click()
+        time.sleep(1)
+        searchResultsComponents = componentsListPageObj.getAllListElements()
+        self.assertTrue(len(searchResultsComponents) >= 1)
+
+        if overviewSelect:
+            if (randomChoiceFromSelectText == "Expanded"
+                    or randomChoiceFromSelectText == "Ausgeklappt"):
+                for component in searchResultsComponents:
+                    self.assertTrue("Quelle" in component.text)
+                    self.assertTrue("Weitere Informationen" in component.text)
+            else:
+                for component in searchResultsComponents:
+                    self.assertTrue("Quelle" not in component.text)
+                    self.assertTrue(
+                        "Weitere Informationen" not in component.text)
+            return
+        # in each result, the search-string should be present:
+        for component in searchResultsComponents:
+            self.assertTrue(randomChoiceFromSelectText in component.text)
