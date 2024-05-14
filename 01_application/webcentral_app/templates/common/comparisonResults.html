@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
   {% load static %}
@@ -16,30 +17,38 @@
       background-color: #f2f2f2;
     }
   </style>
-
-  <div class = "container technical-cards">
+  <div class="content container">
     <div class="row">
-      <table style="display: block; overflow-x: auto;">
-        <!-- Table Header -->
+      <div class="explanation">
+        <a href="{% url 'components' %}">Aufwände für verwendete Komponenten</a>
+        <p>{% translate "Ergebnisse" %}</p>
+        <p>{{ explanationText }}</p>
+      </div>
+      <div class="comparisonContent">
+        <table style="display: block; overflow-x: auto;">
+          <!-- Table Header -->
 
-        {% for attribute in attributesToCompare %}
-          <tr>
-            <th>{{ attribute.displayedStr }}</th>
-            {% for modelObject in objectsToCompare %}
-              <td>
-                {% if attribute.isManyToManyField %}
-                  {% for manyToManyObj in modelObject|get_attribute:modelObject.dbLocator|get_attribute:all %}
-                    {{ manyToManyObj|get_attribute:modelObject.dbLocator }}
-                    {% if not forloop.last %},{% endif %}
-                  {% endfor %}
-                {% else %}
-                  {{ modelObject|get_attribute:attribute.dbLocator }}
-                {% endif %}
-              </td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
+          {% for attribute in attributesToCompare %}
+            <tr>
+              <th>{{ attribute.displayedStr }}</th>
+              {% for modelObject in objectsToCompare %}
+                <td>
+                  {% if attribute.isManyToManyField %}
+                    {% for manyToManyObj in modelObject|get_attribute:modelObject.dbLocator|get_attribute:all %}
+                      {{ manyToManyObj|get_attribute:modelObject.dbLocator }}
+                      {% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                  {% else %}
+                    {{ modelObject|get_attribute:attribute.dbLocator }}
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
   </div>
+
+</div>
 {% endblock %}
