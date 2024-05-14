@@ -330,7 +330,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             tool.find_element(By.XPATH, ".//input").click()
 
         # click the compare-button and check if the comparison-page is loaded
-        compareButton[0].click()
+        comparisonButtons[0].click()
 
         comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
         self.assertEqual(
@@ -352,7 +352,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             "Benutzeroberfläche",
             "Räumliche Größenordnung der Anwendungsfälle",
             "Zugänglichkeit",
-            "Programmiersprache (Umsetzung)"
+            "Programmiersprache (Umsetzung)",
             "Lizenz",
             "Entwicklungsstand - 1 : pre-Alpha - 2 : Alpha - 3 : Beta - 4 : Release Canidate - 5 : Released ",
             "Veröffentlichungsjahr",
@@ -391,9 +391,14 @@ class TestDigitalToolsPage(WebDriverSetup):
             comparisonPageSection.getComparisonTableContainer())
 
         for attributeStr in shownAttributesStr:
-            self.assertTrue(attributeStr in comparisonTableContainer.text)
+            self.assertTrue(
+                attributeStr in comparisonTableContainer.text,
+                f"Attribute {attributeStr} is not present in the comparison table",
+            )
 
         # check if the buttons are translated to english
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+
         self._setLanguageToEnglish()
         firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
         compareButton = comparisonPageSection.getDescendantsByTagName(
