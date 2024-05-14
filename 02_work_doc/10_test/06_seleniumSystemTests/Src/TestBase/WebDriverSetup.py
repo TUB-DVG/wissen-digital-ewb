@@ -12,8 +12,8 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from Src.PageObject.Components.CookieBanner import CookieBanner
-from Src.PageObject.Components.Footer import Footer
+from Src.PageObject.Pages.cookieBanner import CookieBanner
+from Src.PageObject.Pages.Footer import Footer
 
 
 class WebDriverSetup(unittest.TestCase):

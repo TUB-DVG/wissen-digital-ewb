@@ -12,6 +12,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
 
 class ComponentListPage(GenericPageObject):
