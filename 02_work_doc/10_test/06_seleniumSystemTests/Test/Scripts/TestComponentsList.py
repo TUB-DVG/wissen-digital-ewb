@@ -431,7 +431,33 @@ class TestComponentsList(WebDriverSetup):
         activeCompareElements[0].click()
 
         # check if the 2 elements are compared:
-        breakpoint()
+        compareResultsContainer = (
+            componentsListPageObj.getCompareResultsContainer())
+        self.assertIsNotNone(compareResultsContainer)
+
+        compareResults = componentsListPageObj.getDescendantsByTagName(
+            compareResultsContainer, "div")
+        # the content container should contain 2 sections, which are represented by 2 divs:
+        self.assertEqual(len(compareResults), 2)
+
+        compareResultsExplanationContainer = (
+            componentsListPageObj.getDescendantsByTagName(
+                compareResults[0], "a"))
+        self.assertEqual(len(compareResultsExplanationContainer), 1)
+
+        # the link should point back to components-listing page:
+        self.assertTrue(
+            "/component_list/components" in
+            compareResultsExplanationContainer[0].get_attribute("href"))
+
+        compareResults = componentsListPageObj.getDescendantsByTagName(
+            compareResults[0], "p")
+
+        # there should be 2 paragraphs, first for the heading, second for the explanaiton:
+        self.assertEqual(len(compareResults), 2)
+
+        self.assertEqual(compareResults[0].text, "Ergebnisse")
+        self.assertTrue(len(compareResults[1].text) > 0)
 
     def testIfComponentListingContainer(self):
         """Test if the component listing container is present"""

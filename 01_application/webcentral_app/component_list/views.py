@@ -65,6 +65,8 @@ def components(request):
         "components",
         "page":
         page,
+        "model":
+        "Component",
         "listElementsShowOrCollapse":
         listingShowOrCollapse,
         "elementsFirstColumn": [

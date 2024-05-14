@@ -1,0 +1,45 @@
+{% load i18n %}
+{% block content %}
+  {% load static %}
+  {% load template_tags %}
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #AFC5FF;
+      text-align: center;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+
+  <div class = "container technical-cards">
+    <div class="row">
+      <table style="display: block; overflow-x: auto;">
+        <!-- Table Header -->
+
+        {% for attribute in attributesToCompare %}
+          <tr>
+            <th>{{ attribute.displayedStr }}</th>
+            {% for modelObject in objectsToCompare %}
+              <td>
+                {% if attribute.isManyToManyField %}
+                  {% for manyToManyObj in modelObject|get_attribute:modelObject.dbLocator|get_attribute:all %}
+                    {{ manyToManyObj|get_attribute:modelObject.dbLocator }}
+                    {% if not forloop.last %},{% endif %}
+                  {% endfor %}
+                {% else %}
+                  {{ modelObject|get_attribute:attribute.dbLocator }}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+{% endblock %}

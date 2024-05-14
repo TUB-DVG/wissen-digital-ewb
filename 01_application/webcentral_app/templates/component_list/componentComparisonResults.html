@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Komponentenliste Vergleich Ergebnisse" %}
+{% endblock %}
+{% load static %}
+{% block content %}
+    <div class="content container">
+        <div class="row">
+            <div class="explanation">
+                <a href="{% url 'components' %}">Aufwände für verwendete Komponenten</a>
+                <p>{% translate "Ergebnisse" %}</p>
+                <p>
+                    {% blocktranslate %}Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem.{% endblocktranslate %}
+                </p>
+            </div>
+            <div class="comparisonContent">
+                {% include "common/comparisonResults.html" %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
