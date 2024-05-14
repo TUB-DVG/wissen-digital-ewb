@@ -355,12 +355,17 @@ class TestComponentsList(WebDriverSetup):
         for component in searchResultsComponents:
             self.assertTrue("Volumenstromregler" in component.text)
 
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
         # test the functionality of the category-selection field:
         categorySelectionField = selectionFields[0]
         randomChoiceFromCategory = choice(categorySelectionField.options[1:])
-
-        randomChoiceFromCategory.click()
         randomChoiceFromCategoryText = randomChoiceFromCategory.text
+
+        self.scrollElementIntoView(randomChoiceFromCategory)
+        breakpoint()
+        categorySelectionField.select_by_visible_text(
+            randomChoiceFromCategoryText)
 
         searchSubmitButton = componentsListPageObj.getSearchSubmitButton()
         searchSubmitButton.click()

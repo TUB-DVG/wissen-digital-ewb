@@ -21,22 +21,28 @@ def components(request):
     sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
 
-    if (searchInputValue or categoryValue or componentValue or sortingValue
-            or overviewValue):
-        componentsObj = Component.objects.filter(
-            # Q(category__category__icontains=categoryValue)
-            Q(category__category__icontains=searchInputValue)
-            # | Q(component__componentClass__icontains=componentValue)
-            | Q(component__componentClass__icontains=searchInputValue)
-            | Q(description__icontains=searchInputValue)
-            | Q(furtherInformationNotes__icontains=searchInputValue)
-            | Q(sources__icontains=searchInputValue)).order_by(
-                "component__componentClass")
+    searchQuery = Q()
 
-        if sortingValue == "Absteigend":
-            componentsObj = componentsObj.reverse()
-    else:
-        componentsObj = Component.objects.all()
+    if searchInputValue:
+        searchQuery = searchQuery | Q(
+            category__category__icontains=searchInputValue)
+        searchQuery = searchQuery | Q(
+            component__componentClass__icontains=searchInputValue)
+        searchQuery = searchQuery | Q(description__icontains=searchInputValue)
+        searchQuery = searchQuery | Q(
+            furtherInformationNotes__icontains=searchInputValue)
+        searchQuery = searchQuery | Q(sources__icontains=searchInputValue)
+
+    if categoryValue:
+        searchQuery = searchQuery | Q(category__category=categoryValue)
+
+    if componentValue:
+        componentForSelectValue = ComponentClass.objects.filter(
+            componentClass=componentValue)
+        if len(componentForSelectValue) == 1:
+            searchQuery = searchQuery | Q(component=componentForSelectValue[0])
+
+    componentsObj = Component.objects.filter(searchQuery)
     componentsObjList = list(componentsObj)
     componentsPaginator = Paginator(componentsObjList, 3)
     pageNum = request.GET.get("page", None)

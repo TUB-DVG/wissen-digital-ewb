@@ -205,7 +205,7 @@ class ComponentListPage(object):
         except:
             return None
 
-    def getSearchSubmit(self):
+    def getSearchSubmitButton(self):
         try:
             return self.driver.find_element(
                 By.XPATH,
