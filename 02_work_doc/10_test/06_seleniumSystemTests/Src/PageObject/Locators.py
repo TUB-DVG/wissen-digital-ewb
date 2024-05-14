@@ -176,5 +176,10 @@ class Locator(object):
     componentListElementContainer = "//div[contains(@class, 'ListElement')]"
     paginationContainer = "paginationContainer"
     searchSubmit = "//button[@id='search-submit-']"
+
     # locators for Footer
     languageSelectionField = "//select[@name='language']"
+
+    # locators for the comparison page
+    compareButton = "//button[@id='compareButton']"
+    secondComparisonDiv = "//div[@id='secondComparisonDiv']"
