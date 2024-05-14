@@ -15,7 +15,7 @@ from Src.PageObject.Locators import Locator
 from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
 
-class ComperisonPageSection(GenericPageObject):
+class ComparisonPageSection(GenericPageObject):
 
     def __init__(self, driver):
         """ """
@@ -37,6 +37,36 @@ class ComperisonPageSection(GenericPageObject):
             return self.driver.find_element(
                 By.XPATH,
                 Locator.secondComparisonDiv,
+            )
+        except:
+            return None
+
+    def getFirstComparisonDiv(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.firstComparisonDiv,
+            )
+        except:
+            return None
+
+    def getHeadingComparisonSite(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.headingComparisonSite,
+            )
+        except:
+            return None
+
+    def getComparisonTableContainer(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.comparisonTableContainer,
             )
         except:
             return None

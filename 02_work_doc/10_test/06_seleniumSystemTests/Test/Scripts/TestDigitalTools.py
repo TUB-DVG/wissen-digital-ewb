@@ -289,7 +289,9 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         # click the Compare-Button and check if 2 buttons appear and the checkboxes
         # in each listing element is shown
-        compareButton = comparisonPageSection.getCompareButton()
+        firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
+        compareButton = comparisonPageSection.getDescendantsByTagName(
+            firstComparisonDiv, "h6")[0]
         self.assertEqual(
             compareButton.text,
             "Vergleiche",
@@ -299,6 +301,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
         comparisonButtons = comparisonPageSection.getDescendantsByTagName(
             secondComparisonDiv, "h6")
+        # breakpoint()
         self.assertEqual(len(comparisonButtons), 2)
 
         # check if the right text is displayed in the comparison-buttons
@@ -318,3 +321,101 @@ class TestDigitalToolsPage(WebDriverSetup):
         for toolItem in listOfToolItems:
             checkbox = toolItem.find_element(By.XPATH, ".//input")
             self.assertTrue(checkbox.is_displayed())
+
+        # randomly decide how many tools to compare:
+        numberOfToolsToCompare = random.randint(2, 5)
+        # randomly select the tools to compare
+        toolsToCompare = random.sample(listOfToolItems, numberOfToolsToCompare)
+        for tool in toolsToCompare:
+            tool.find_element(By.XPATH, ".//input").click()
+
+        # click the compare-button and check if the comparison-page is loaded
+        compareButton[0].click()
+
+        comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
+        self.assertEqual(
+            comparisonHeading.text,
+            "Ergebnisse",
+            "The comparison-heading should be present",
+        )
+
+        comparisonTableContainer = (
+            comparisonPageSection.getComparisonTableContainer())
+
+        # check if the comparison tabel has all attributes as rows:
+        shownAttributesStr = [
+            "Attribut",
+            "Einsatzbereich",
+            "Verwendung",
+            "Lebenszyklusphase",
+            "Zielgruppe",
+            "Benutzeroberfläche",
+            "Räumliche Größenordnung der Anwendungsfälle",
+            "Zugänglichkeit",
+            "Programmiersprache (Umsetzung)"
+            "Lizenz",
+            "Entwicklungsstand - 1 : pre-Alpha - 2 : Alpha - 3 : Beta - 4 : Release Canidate - 5 : Released ",
+            "Veröffentlichungsjahr",
+            "Letztes Update",
+        ]
+
+        for attributeStr in shownAttributesStr:
+            self.assertTrue(attributeStr in comparisonTableContainer.text)
+
+        # check if all the row-attribute names are translated:
+        self._setLanguageToEnglish()
+
+        comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
+        self.assertEqual(
+            comparisonHeading.text,
+            "Results",
+            "The comparison-heading should be present",
+        )
+
+        shownAttributesStr = [
+            "Attribute",
+            "Area of application",
+            "Usage",
+            "Life cycle phase",
+            "Target group",
+            "User interface",
+            "Spatial Scale of Use Cases",
+            "Accessibility",
+            "Programming language (Implementation)",
+            "License",
+            "Level of development  - 1: pre-Alpha - 2: Alpha - 3: Beta - 4: Release Candidate - 5: Released",
+            "Year of publication",
+            "Last update",
+        ]
+        comparisonTableContainer = (
+            comparisonPageSection.getComparisonTableContainer())
+
+        for attributeStr in shownAttributesStr:
+            self.assertTrue(attributeStr in comparisonTableContainer.text)
+
+        # check if the buttons are translated to english
+        self._setLanguageToEnglish()
+        firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
+        compareButton = comparisonPageSection.getDescendantsByTagName(
+            firstComparisonDiv, "h6")[0]
+        self.assertEqual(
+            compareButton.text,
+            "Compare",
+            "The compare-button should be present",
+        )
+        compareButton.click()
+        secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
+        comparisonButtons = comparisonPageSection.getDescendantsByTagName(
+            secondComparisonDiv, "h6")
+
+        self.assertEqual(len(comparisonButtons), 2)
+        self.assertEqual(
+            comparisonButtons[0].text,
+            "Compare",
+            "The compare-button should be present",
+        )
+        self.assertEqual(
+            comparisonButtons[1].text,
+            "Reset to default",
+            "The reset-button should be present",
+        )

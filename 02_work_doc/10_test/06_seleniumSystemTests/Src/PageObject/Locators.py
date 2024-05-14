@@ -182,4 +182,7 @@ class Locator(object):
 
     # locators for the comparison page
     compareButton = "//button[@id='compareButton']"
-    secondComparisonDiv = "//div[@id='secondComparisonDiv']"
+    firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
+    secondComparisonDiv = "//div[@id='comparisonBarTools']"
+    headingComparisonSite = "//h1"
+    comparisonTableContainer = "//tbody"
