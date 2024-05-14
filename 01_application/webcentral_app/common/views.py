@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext as _
 
-from tools_over.models import Focus
+from tools_over.models import (
+    Focus,
+    Tools,
+)
 from component_list.models import Component
 
 
@@ -110,7 +113,6 @@ def comparison(request):
                 "displayedStr": _("Quellen"),
             },
         ]
-        templateName = "component_list/componentComparisonResults.html"
 
     elif model == "Tools":
         modelObj = Tools
@@ -191,6 +193,7 @@ def comparison(request):
                 "displayedStr": _("Letztes Update"),
             },
         ]
+        templateName = "tools_over/toolsComparisonResults.html"
     else:
         return render(request, "404.html")
 
@@ -203,8 +206,13 @@ def comparison(request):
         objectsToCompare.append(objectToCompare)
 
     context = {
-        "objectsToCompare": objectsToCompare,
-        "attributesToCompare": attributesToCompare,
+        "objectsToCompare":
+        objectsToCompare,
+        "attributesToCompare":
+        attributesToCompare,
+        "explanationText":
+        _("Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
+          ),
     }
-
+    templateName = "common/comparisonResults.html"
     return render(request, templateName, context)
