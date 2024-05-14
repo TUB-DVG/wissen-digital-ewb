@@ -21,28 +21,25 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 ]
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
-        path('component_list/', include('component_list.urls')),
-        path("criteriaCatalog/", include("criteriaCatalog.urls")),
-        path('pages/', include('pages.urls')),
-        path('tool_list/', include('tools_over.urls')),
-        path('dataset_list/',include('Datasets.urls')),
-        path('weatherdata_list/', include('weatherdata_over.urls')),
-        path('project_list/', include('project_listing.urls')),
-        #path('norm_list/',include('norms_over.urls')),
-        path('django_plotly_dash/', include('django_plotly_dash.urls')),
-        path('LastProfile/', include('LastProfile.urls')),
-        path('', include('StartSearch.urls')),
-        path('TechnicalStandards/',include('TechnicalStandards.urls')),
-        path('publications/',include('publications.urls')),
-        path('useCases_list/', include('use_cases.urls')),
-        path('i18n/', include('django.conf.urls.i18n')),
+    path("component_list/", include("component_list.urls")),
+    path("criteriaCatalog/", include("criteriaCatalog.urls")),
+    path("pages/", include("pages.urls")),
+    path("tool_list/", include("tools_over.urls")),
+    path("dataset_list/", include("Datasets.urls")),
+    path("weatherdata_list/", include("weatherdata_over.urls")),
+    path("project_list/", include("project_listing.urls")),
+    # path('norm_list/',include('norms_over.urls')),
+    path("django_plotly_dash/", include("django_plotly_dash.urls")),
+    path("LastProfile/", include("LastProfile.urls")),
+    path("", include("StartSearch.urls")),
+    path("TechnicalStandards/", include("TechnicalStandards.urls")),
+    path("publications/", include("publications.urls")),
+    path("useCases_list/", include("use_cases.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("common/", include("common.urls")),
 )
-
-
-# reakpoint()

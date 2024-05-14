@@ -24,12 +24,94 @@ def getFocusNameIndependentOfLanguage(focusStr: str, focusObj: Focus) -> str:
     return focusName
 
 
-def comparison(request, model):
+def comparison(request):
     """Compare instances of the model."""
 
     # check if the specified model exists:
+    model = request.GET.getlist("model")[0]
+    print(model)
     if model == "Component":
         modelObj = Component
+
+        attributesToCompare = [
+            {
+                "dbLocator": "category",
+                "isManyToManyField": False,
+                "displayedStr": _("Kategorie"),
+            },
+            {
+                "dbLocator": "component",
+                "isManyToManyField": False,
+                "displayedStr": _("Komponente"),
+            },
+            {
+                "dbLocator": "description",
+                "isManyToManyField": False,
+                "displayedStr": _("Beschreibung"),
+            },
+            {
+                "dbLocator": "energyConsumptionUsePhaseTotal",
+                "isManyToManyField": False,
+                "displayedStr": _("Energieverbrauch Nutzung (gesamt; in W)"),
+            },
+            {
+                "dbLocator": "globalWarmingPotentialTotal",
+                "isManyToManyField": False,
+                "displayedStr": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
+            },
+            {
+                "dbLocator": "componentWeight",
+                "isManyToManyField": False,
+                "displayedStr": _("Bauteilgewicht (in kg)"),
+            },
+            {
+                "dbLocator": "lifetime",
+                "isManyToManyField": False,
+                "displayedStr": _("Lebensdauer (in Jahre)"),
+            },
+            {
+                "dbLocator": "energyConsumptionUsePhaseActive",
+                "isManyToManyField": False,
+                "displayedStr": _("Energieverbrauch Nutzung (aktiv; in W)"),
+            },
+            {
+                "dbLocator":
+                "energyConsumptionUsePhasePassive",
+                "isManyToManyField":
+                False,
+                "displayedStr":
+                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+            },
+            {
+                "dbLocator": "globalWarmingPotentialProduction",
+                "isManyToManyField": False,
+                "displayedStr":
+                _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
+            },
+            {
+                "dbLocator": "globalWarmingPotentialUsePhase",
+                "isManyToManyField": False,
+                "displayedStr": _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
+            },
+            {
+                "dbLocator": "globalWarmingPotentialEndOfLife",
+                "isManyToManyField": False,
+                "displayedStr":
+                _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
+            },
+            {
+                "dbLocator": "furtherInformationNotes",
+                "isManyToManyField": False,
+                "displayedStr": _("Weitere Informationen"),
+            },
+            {
+                "dbLocator": "sources",
+                "isManyToManyField": False,
+                "displayedStr": _("Quellen"),
+            },
+        ]
+        templateName = "component_list/componentComparisonResults.html"
+
     elif model == "Tools":
         modelObj = Tools
         attributesToCompare = [
@@ -120,6 +202,9 @@ def comparison(request, model):
         objectToCompare = get_object_or_404(modelObj, pk=id)
         objectsToCompare.append(objectToCompare)
 
-    context = {"objectsToCompare": objectsToCompare}
+    context = {
+        "objectsToCompare": objectsToCompare,
+        "attributesToCompare": attributesToCompare,
+    }
 
-    return render(request, "tools_over/tool-comparison.html", context)
+    return render(request, templateName, context)

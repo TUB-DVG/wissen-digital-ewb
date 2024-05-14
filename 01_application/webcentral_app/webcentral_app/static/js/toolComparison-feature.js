@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         secondComparisonButtonTools.addEventListener('click', function (event) {
             // Handle the click event for the second comparison button for tools
             var url = document.getElementById('comparisonUrlTools');
-            var baseUrl = "/tool_list/comparison/";
+            var baseUrl = "/common/comparison/";
             var ids = JSON.parse(sessionStorage.ids);
             console.log(ids.length);
             if (ids.length < 2) {
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 var searchParams = new URLSearchParams();
                 ids.forEach(id => searchParams.append('id', id));
+                searchParams.append('model', modelName);
                 url.href = baseUrl + '?' + searchParams.toString();
             }
         });
