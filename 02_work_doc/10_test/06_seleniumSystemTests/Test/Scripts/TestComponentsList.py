@@ -399,7 +399,7 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(activeCompareElements[0].text, "Vergleiche")
 
         # check if 2 other buttons appear, if the compareButton[0] is clicked:
-        activeCompareElements[0].click()
+        self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
 
         activeCompareElements = []
         for element in compareButtons:
@@ -423,13 +423,15 @@ class TestComponentsList(WebDriverSetup):
         components.remove(component1)
         component2 = choice(components)
 
-        componentsListPageObj.getDescendantsByTagName(component1,
-                                                      "input")[0].click()
+        self.scrollElementIntoViewAndClickIt(
+            componentsListPageObj.getDescendantsByTagName(component1,
+                                                          "input")[0])
 
-        componentsListPageObj.getDescendantsByTagName(component2,
-                                                      "input")[0].click()
+        self.scrollElementIntoViewAndClickIt(
+            componentsListPageObj.getDescendantsByTagName(component2,
+                                                          "input")[0])
 
-        activeCompareElements[0].click()
+        self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
 
         compareSectionObj = ComparisonPageSection(self.driver)
 
@@ -480,6 +482,14 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(
             compareResults[0].value_of_css_property("padding-top") == "26px")
         self.assertTrue(len(compareResults[1].text) > 0)
+
+        # test if the back-button points back to components-listing page:
+        backButton = compareSectionObj.getBackButton()
+        self.assertIsNotNone(backButton)
+
+        backButton.click()
+        self.assertTrue("Components list" in self.driver.title
+                        or "Komponentenliste" in self.driver.title)
 
     def testIfComponentListingContainer(self):
         """Test if the component listing container is present"""

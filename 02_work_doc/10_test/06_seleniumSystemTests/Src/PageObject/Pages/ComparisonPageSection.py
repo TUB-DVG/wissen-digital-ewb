@@ -80,3 +80,13 @@ class ComparisonPageSection(GenericPageObject):
             )
         except:
             return None
+
+    def getBackButton(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.backButton,
+            )
+        except:
+            return None

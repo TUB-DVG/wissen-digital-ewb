@@ -187,3 +187,4 @@ class Locator(object):
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
     headingComparisonSite = "//h1"
     comparisonTableContainer = "//tbody"
+    backButton = "//a[@class='backLink']"
