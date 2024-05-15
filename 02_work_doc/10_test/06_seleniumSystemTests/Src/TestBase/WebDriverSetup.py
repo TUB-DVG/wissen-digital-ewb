@@ -92,6 +92,18 @@ class WebDriverSetup(unittest.TestCase):
         self.assertNotEqual(naturalWidth, "0",
                             "Image is not displayed, only alt-text is shown")
 
+    def checkIfSvgIsDisplayed(self, svgElement):
+        try:
+            # Check if the SVG element is present and has child elements
+            children = svgElement.find_elements(By.XPATH, "./*")
+            if len(children) == 0:
+                return False
+            else:
+                return True
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            return False
+
     def _removeCookieBanner(self):
         """Remove the cookie-banner from the page"""
         cookieBannerObj = CookieBanner(self.driver)

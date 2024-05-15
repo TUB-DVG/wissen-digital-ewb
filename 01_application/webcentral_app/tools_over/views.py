@@ -142,6 +142,8 @@ def index(request):
         "tools",
         "urlName":
         "tool_list",
+        "model":
+        "Tools",
         "optionList": [
             {
                 "placeholder": "Nutzung",
@@ -264,6 +266,8 @@ def indexApps(request):
         "tools",
         "urlName":
         "tool_list",
+        "model":
+        "Tools",
         "optionList": [
             {
                 "placeholder": "Nutzung",
@@ -378,6 +382,8 @@ def indexBusinessApplication(request):
         "tools",
         "urlName":
         "businessModelApplication",
+        "model":
+        "Tools",
         "optionList": [
             {
                 "placeholder": "Nutzung",
