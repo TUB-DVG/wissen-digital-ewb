@@ -22,3 +22,18 @@ class GenericPageObject(object):
 
         except:
             return None
+
+    def getDirectChildren(self, element):
+        """Returns the direct children of the given element"""
+        try:
+            return element.find_elements(By.XPATH, "./*")
+        except:
+            return None
+
+    def getPreviousSiblingOfTagName(self, element, tagName):
+        """Returns the previous sibling of the given element"""
+        try:
+            return element.find_element(By.XPATH,
+                                        "preceding-sibling::" + tagName)
+        except:
+            return None

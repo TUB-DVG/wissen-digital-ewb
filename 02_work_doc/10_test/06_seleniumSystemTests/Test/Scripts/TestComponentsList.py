@@ -16,6 +16,7 @@ from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
     NegativeEnvironmentalImpacts, )
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 
 
 class TestComponentsList(WebDriverSetup):
@@ -221,7 +222,7 @@ class TestComponentsList(WebDriverSetup):
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
-        self._setLangaugeToGerman()
+        self._setLanguageToGerman()
 
         searchContainer = componentsListPageObj.getSearchContainer()
         self.assertIsNotNone(searchContainer)
@@ -381,7 +382,7 @@ class TestComponentsList(WebDriverSetup):
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
-        self._setLangaugeToGerman()
+        self._setLanguageToGerman()
 
         compareDiv = componentsListPageObj.getCompareContainer()
         self.assertIsNotNone(compareDiv)
@@ -430,13 +431,16 @@ class TestComponentsList(WebDriverSetup):
 
         activeCompareElements[0].click()
 
-        # check if the 2 elements are compared:
-        compareResultsContainer = (
-            componentsListPageObj.getCompareResultsContainer())
-        self.assertIsNotNone(compareResultsContainer)
+        compareSectionObj = ComparisonPageSection(self.driver)
 
+        # check if the 2 elements are compared:
+        compareResultsContainer = compareSectionObj.getCompareResultsContainer(
+        )
+        self.assertIsNotNone(compareResultsContainer)
         compareResults = componentsListPageObj.getDescendantsByTagName(
-            compareResultsContainer, "div")
+            compareSectionObj.getDirectChildren(compareResultsContainer)[0],
+            "div",
+        )
         # the content container should contain 2 sections, which are represented by 2 divs:
         self.assertEqual(len(compareResults), 2)
 
@@ -450,6 +454,20 @@ class TestComponentsList(WebDriverSetup):
             "/component_list/components" in
             compareResultsExplanationContainer[0].get_attribute("href"))
 
+        # test if link is styled:
+        self.assertTrue(
+            compareResultsExplanationContainer[0].get_attribute("style"))
+
+        siblingElement = compareSectionObj.getPreviousSiblingOfTagName(
+            compareResultsExplanationContainer[0], "img")
+        self.assertIsNotNone(siblingElement)
+        # no alt text should be present, because the image is loaded successfully:
+        self.assertTrue(siblingElement.text == "")
+        self.assertTrue(compareResultsExplanationContainer[0].
+                        value_of_css_property("color") == "rgb(143, 222, 151)")
+        self.assertTrue(compareResultsExplanationContainer[0].
+                        value_of_css_property("font-size") == "15px")
+
         compareResults = componentsListPageObj.getDescendantsByTagName(
             compareResults[0], "p")
 
@@ -457,6 +475,10 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(len(compareResults), 2)
 
         self.assertEqual(compareResults[0].text, "Ergebnisse")
+        self.assertTrue(
+            compareResults[0].value_of_css_property("font-size") == "22px")
+        self.assertTrue(
+            compareResults[0].value_of_css_property("padding-top") == "26px")
         self.assertTrue(len(compareResults[1].text) > 0)
 
     def testIfComponentListingContainer(self):
@@ -467,7 +489,7 @@ class TestComponentsList(WebDriverSetup):
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
-        self._setLangaugeToGerman()
+        self._setLanguageToGerman()
 
         componentClass = [
             "Volumenstromregler",
@@ -625,7 +647,7 @@ class TestComponentsList(WebDriverSetup):
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
-        self._setLangaugeToGerman()
+        self._setLanguageToGerman()
 
         paginatorContainer = componentsListPageObj.getPaginationContainer()
         self.assertIsNotNone(paginatorContainer)

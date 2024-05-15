@@ -181,6 +181,7 @@ class Locator(object):
     languageSelectionField = "//select[@name='language']"
 
     # locators for the comparison page
+    compareResultsContainer = "//div[@id='compareResultsContainer']"
     compareButton = "//button[@id='compareButton']"
     firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
     secondComparisonDiv = "//div[@id='comparisonBarTools']"

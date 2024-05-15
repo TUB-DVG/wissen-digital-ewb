@@ -113,6 +113,7 @@ def comparison(request):
                 "displayedStr": _("Quellen"),
             },
         ]
+        backLinkText = _("Aufwände für verwendete Komponenten")
 
     elif model == "Tools":
         modelObj = Tools
@@ -194,6 +195,7 @@ def comparison(request):
             },
         ]
         templateName = "tools_over/toolsComparisonResults.html"
+        backLinkText = _("Zurück zu den digitalen Werkzeugen")
     else:
         return render(request, "404.html")
 
@@ -213,6 +215,8 @@ def comparison(request):
         "explanationText":
         _("Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
           ),
+        "backLinkText":
+        backLinkText,
     }
     templateName = "common/comparisonResults.html"
     return render(request, templateName, context)
