@@ -31,6 +31,8 @@ from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 class TestDigitalToolsPage(WebDriverSetup):
     """ """
 
+    TECHNICAL_COLOR_CODE = "rgba(175, 197, 255, 1)"
+
     def testNavigateToDigitalToolsPage(self) -> None:
         """Navigates from norm list to digital-tools-tab."""
         print(os.environ["siteUnderTest"])
@@ -362,6 +364,25 @@ class TestDigitalToolsPage(WebDriverSetup):
         for attributeStr in shownAttributesStr:
             self.assertTrue(attributeStr in comparisonTableContainer.text)
 
+        # check if a back button is present:
+        backButton = comparisonPageSection.getBackButton()
+        self.assertEqual(backButton.text, "Zurück zu den digitalen Werkzeugen")
+        # check if the color is the tool-color and the font-size is small:
+        self.assertEqual(
+            backButton.value_of_css_property("color"),
+            self.TECHNICAL_COLOR_CODE,
+            "The color of the back-button should be the technical-focus-color",
+        )
+        self.assertEqual(
+            backButton.value_of_css_property("font-size"),
+            "15px",
+            "The font-size of the back-button should be 14px",
+        )
+        siblingElement = comparisonPageSection.getPreviousSiblingOfTagName(
+            backButton, "img")
+        self.assertIsNotNone(siblingElement)
+        # no alt text should be present, because the image is loaded successfully:
+        self.assertTrue(siblingElement.text == "")
         # check if all the row-attribute names are translated:
         self._setLanguageToEnglish()
 

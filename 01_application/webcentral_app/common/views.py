@@ -114,6 +114,8 @@ def comparison(request):
             },
         ]
         backLinkText = _("Aufwände für verwendete Komponenten")
+        backLinkColor = "#8FDE97"
+        imgBackButtonPath = "img/componentList/caret-left.svg"
 
     elif model == "Tools":
         modelObj = Tools
@@ -196,6 +198,8 @@ def comparison(request):
         ]
         templateName = "tools_over/toolsComparisonResults.html"
         backLinkText = _("Zurück zu den digitalen Werkzeugen")
+        backLinkColor = "#AFC5FF"
+        imgBackButtonPath = "img/tools_over/backArrowTools.svg"
     else:
         return render(request, "404.html")
 
@@ -217,6 +221,10 @@ def comparison(request):
           ),
         "backLinkText":
         backLinkText,
+        "imgBackButtonPath":
+        imgBackButtonPath,
+        "backLinkColor":
+        backLinkColor,
     }
     templateName = "common/comparisonResults.html"
     return render(request, templateName, context)

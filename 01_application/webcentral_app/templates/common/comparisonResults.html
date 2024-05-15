@@ -16,15 +16,20 @@
     th {
       background-color: #f2f2f2;
     }
+    .backLink {
+      font-size: 15px;
+    }
   </style>
   <div class="content container" id="compareResultsContainer">
     <div class="row">
       <div class="explanation">
-        <img src="{% static 'img/componentList/caret-left.svg' %}"
+        <img src="{% static imgBackButtonPath %}"
              alt="arrow"
              style="width: 11px;
                     height: 11px" />
-        <a href="{% url 'components' %}" style="color: #8FDE97; font-size: 15px">{{ backLinkText }}</a>
+        <a href="{% url 'components' %}"
+           class="backLink"
+           style="color: {{ backLinkColor }}">{{ backLinkText }}</a>
         <p style="padding-top: 26px; font-size: 22px;">{% translate "Ergebnisse" %}</p>
         <p style="font-size: 22px;">{{ explanationText }}</p>
       </div>
@@ -44,6 +49,13 @@
                         {% if not forloop.last %},{% endif %}
                       {% endfor %}
                     {% endwith %}
+                  {% elif attribute.dbLocator == "image" %}
+                    <img src="{{ modelObject.image.url }}"
+                         class="card-img-top px-4 pt-4 pb-2 m-auto"
+                         style="max-height: 100%;
+                                width: auto;
+                                display: block"
+                         alt="tool image (if=db)" />
                   {% else %}
                     {{ modelObject|get_attribute:attribute.dbLocator }}
                   {% endif %}
