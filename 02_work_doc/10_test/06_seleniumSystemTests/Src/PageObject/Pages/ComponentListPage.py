@@ -125,11 +125,10 @@ class ComponentListPage(GenericPageObject):
                         By.XPATH,
                         Locator.selectComponent,
                     )),
-                Select(
-                    self.driver.find_element(
-                        By.XPATH,
-                        Locator.selectSorting,
-                    )),
+                self.driver.find_element(
+                    By.XPATH,
+                    Locator.selectSorting,
+                ),
                 Select(
                     self.driver.find_element(
                         By.XPATH,
@@ -205,3 +204,24 @@ class ComponentListPage(GenericPageObject):
             )
         except:
             return None
+
+    def getDropdownElements(self, element):
+        try:
+            return element.find_elements(
+                By.XPATH,
+                "./..//div[@class='dropdown']/a[@id='nestedDropdownMenuButton']",
+            )
+        except:
+            return None
+
+    def getNestedDropdownElements(self, element):
+        return element.find_elements(
+            By.XPATH,
+            ".//a[@class='dropdown-item nested']",
+        )
+
+    def getParentElement(self, element):
+        return element.find_element(
+            By.XPATH,
+            "./..",
+        )

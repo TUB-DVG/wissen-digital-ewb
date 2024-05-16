@@ -169,7 +169,7 @@ class Locator(object):
     searchInputField = "//input[@id='search-input-']"
     selectCategory = "//select[@id='select-category']"
     selectComponent = "//select[@id='select-component']"
-    selectSorting = "//select[@id='select-sorting']"
+    selectSorting = "//button[@id='dropdownMenuButton']"
     compareContainer = "//div[@id='compareBox']"
     selectOverview = "//select[@id='select-overview']"
     componentListingContainer = "//div[@id='componentListingContainer']"
