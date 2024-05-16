@@ -5,6 +5,13 @@
     .listingRowAttributeNames {
         color: #787575;
     }
+    .subHeading {
+        color: grey;
+    }
+    .headingInListingContainer{
+        font-size: 35px;
+    
+    }
 </style>
 <div class="container {{ focusName }}-cards ">
     {% for object in page.object_list %}
@@ -24,11 +31,11 @@
                             <span class="listingRowAttributeNames">{{ element.description }}:</span>
                         {% endif %}
                         {% if forloop.first %}
-                            <h3 style="font-size: 35px;">
+                            <h3 class="headingInListingContainer">
                                 {{ object|get_attribute:element.objectReference }}
                             </h3>
                         {% elif forloop.counter == 2 %}
-                            <p style="color: grey;">{{ object|get_attribute:element.objectReference }}</p>
+                            <p class="subHeading">{{ object|get_attribute:element.objectReference }}</p>
                         {% else %}
 
                             <p>{{ object|get_attribute:element.objectReference }}</p>

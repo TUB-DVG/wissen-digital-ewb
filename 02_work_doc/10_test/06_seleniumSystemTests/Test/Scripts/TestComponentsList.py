@@ -2,7 +2,7 @@ import os
 from random import choice
 import sys
 import time
-from random import choice
+import re
 
 sys.path.append(sys.path[0] + "/...")
 
@@ -272,23 +272,60 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(componentsSet.issubset(componentClassSelectionField))
 
         # check if the selection fields "sorting" and "overview" are present
-        sortingSet = set([
-            "Aufsteigend",
-            "Absteigend",
-        ])
-        sortingOptionsSet = set([
-            optionElement.text for optionElement in selectionFields[2].options
-        ])
+        sortingDropdownField = selectionFields[2]
+        self.scrollElementIntoViewAndClickIt(sortingDropdownField)
+        sortingOptions = componentsListPageObj.getDropdownElements(
+            sortingDropdownField)
+
+        # check if the sorting-dropdown contains the correct elements:
+        sortingList = [
+            "Kategorie",
+            "Komponenten",
+            "Energieverbrauch Nutzung",
+            "Treibhauspotenzial",
+            "Bauteilgewicht",
+            "Lebensdauer",
+        ]
+        # sortingOptionsInDropdown = set(
+        #     [optionElement.text for optionElement in sortingOptions])
+        # self.assertTrue(sortingSet.issubset(sortingOptionsInDropdown))
+        # randomly click one of the elements of the sorting-dropdown:
+
+        chosenElement = choice(sortingOptions)
+        foundMatch = False
+        for element in sortingList:
+            if element in chosenElement.text:
+                foundMatch = True
+                break
+        self.assertTrue(foundMatch)
+
+        parentOfChosenElement = componentsListPageObj.getParentElement(
+            chosenElement)
+        chosenElement.click()
+        nestedDropdownItems = componentsListPageObj.getNestedDropdownElements(
+            parentOfChosenElement)
+        nestedOptionsText = [option.text for option in nestedDropdownItems]
+        self.assertEqual(len(nestedOptionsText), 2)
+        self.assertIn("Aufsteigend", nestedOptionsText)
+        self.assertIn("Absteigend", nestedOptionsText)
+
+        chosenNestedItem = choice(nestedDropdownItems)
+
+        self.scrollElementIntoViewAndClickIt(chosenNestedItem)
+        self._checkIfOrderingIsLikeSpecified(chosenElement, chosenNestedItem,
+                                             componentsListPageObj)
+        # check if the elements are now ordered in the specified way
 
         overviewSet = set([
             "Ausgeklappt",
             "Eingeklappt",
         ])
+
         overviewOptionsSet = set([
             optionElement.text for optionElement in selectionFields[3].options
         ])
 
-        self.assertTrue(sortingSet.issubset(sortingOptionsSet))
+        # self.assertTrue(sortingSet.issubset(sortingOptionsSet))
         self.assertTrue(overviewSet.issubset(overviewOptionsSet))
 
         self._setLanguageToEnglish()
@@ -307,10 +344,10 @@ class TestComponentsList(WebDriverSetup):
             "Circulation pump",
             "Presence sensor",
         ])
-        sortingSet = set([
-            "Ascending",
-            "Descending",
-        ])
+        # sortingSet = set([
+        #     "Ascending",
+        #     "Descending",
+        # ])
         overviewSet = set([
             "Expanded",
             "Collapsed",
@@ -321,7 +358,7 @@ class TestComponentsList(WebDriverSetup):
         # check if the placeholders are correct for english:
         self.assertEqual(selectionFields[0].options[0].text, "Category")
         self.assertEqual(selectionFields[1].options[0].text, "Component")
-        self.assertEqual(selectionFields[2].options[0].text, "Sorting")
+        # self.assertEqual(selectionFields[2].options[0].text, "Sorting")
         self.assertEqual(selectionFields[3].options[0].text, "Overview")
 
         categoryOptionsSet = set([
@@ -330,15 +367,15 @@ class TestComponentsList(WebDriverSetup):
         componentClassSelectionField = set([
             optionElement.text for optionElement in selectionFields[1].options
         ])
-        sortingSetSelectionField = set([
-            optionElement.text for optionElement in selectionFields[2].options
-        ])
+        # sortingSetSelectionField = set([
+        #     optionElement.text for optionElement in selectionFields[2].options
+        # ])
         overviewSetSelectionField = set([
             optionElement.text for optionElement in selectionFields[3].options
         ])
         self.assertTrue(componentsSet.issubset(componentClassSelectionField))
         self.assertTrue(categorySet.issubset(categoryOptionsSet))
-        self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
+        # self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
         self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
 
         # change the language back to german:
@@ -374,6 +411,12 @@ class TestComponentsList(WebDriverSetup):
             componentsListPageObj.getSelectFieldsInSearchContainer())
         self._checkIfSelectFieldsWorks(selectionFields[3],
                                        componentsListPageObj, True)
+
+        # test the functionality of the sorting selection field
+        # the sorting select-field should be multi-level
+        # in the first level, the attribute can be choosen
+        # in the second level, it can be chosen if the sorting should be ascending or descending
+        # selectionFields = (
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
@@ -704,3 +747,102 @@ class TestComponentsList(WebDriverSetup):
         # in each result, the search-string should be present:
         for component in searchResultsComponents:
             self.assertTrue(randomChoiceFromSelectText in component.text)
+
+    def _checkIfOrderingIsLikeSpecified(
+        self,
+        clickedAttributeElement,
+        clickedOrderingElement,
+        componentsListPageObj,
+    ):
+        """Check if the ordering is like specified in the nested dropdown"""
+
+        allPresentComponentContainers = (
+            componentsListPageObj.getAllListElements())
+
+        attributesSortedAlphabetically = {
+            "de": [
+                "Kategorie",
+                "Komponente",
+            ],
+            "en": [
+                "Category",
+                "Component",
+            ],
+        }
+        attributesSortedNumerically = {
+            "de": [
+                "Energieverbrauch Nutzung (gesamt; in W)",
+                "Treibhauspotenzial (gesamt; in kg CO2-e)",
+                "Bauteilgewicht (in kg)",
+                "Lebensdauer (in Jahren)",
+                "Energieverbrauch Nutzung (aktiv; in W)",
+                "Energieverbrauch Nutzung (passiv/ Stand-by; in W)",
+                "Treibhauspotenzial (Herstellung; in kg CO2-e)",
+                "Treibhauspotenzial (Nutzung; in kg CO2-e)",
+                "Treibhauspotenzial (Entsorgung; in kg CO2-e)",
+            ],
+            "en": [
+                "Category",
+                "Component",
+            ],
+        }
+        extractedAttributeForComponents = []
+        if (clickedAttributeElement.text == "Kategorie"
+                or clickedAttributeElement.text == "Category"):
+            for component in allPresentComponentContainers:
+                # check if the elements are sorted alphabetically:
+                extractedAttributeForComponents.append(
+                    componentsListPageObj.getDescendantsByTagName(
+                        component, "h3")[0].text)
+        elif (clickedAttributeElement.text == "Komponente"
+              or clickedAttributeElement.text == "Component"):
+            for component in allPresentComponentContainers:
+                extractedAttributeForComponents.append(
+                    componentsListPageObj.getDescendantsByClass(
+                        component, "subHeading")[0].text)
+
+        else:
+            for component in allPresentComponentContainers:
+                floatOrNone = self._findNextFloat(
+                    component.text, clickedAttributeElement.text + ":")
+                if floatOrNone is not None:
+                    extractedAttributeForComponents.append(floatOrNone)
+
+                # check if the elements are sorted alphabetically:
+                extractedAttributeForComponents.append(
+                    componentsListPageObj.getDescendantsByTagName(
+                        component, "h6")[0].text)
+
+        if clickedOrderingElement.text in attributesSortedAlphabetically:
+            if (clickedOrderingElement.text == "Ascending"
+                    or clickedOrderingElement.text == "Aufsteigend"):
+                self.assertTrue(
+                    self._isSorted(extractedAttributeForComponents))
+            else:
+                self.assertTrue(
+                    self._isSortedReverse(extractedAttributeForComponents))
+        # check if the elements are sorted numerically:
+        else:
+            if (clickedOrderingElement.text == "Ascending"
+                    or clickedOrderingElement.text == "Aufsteigend"):
+                self.assertTrue(
+                    self._isSorted(extractedAttributeForComponents))
+            else:
+                self.assertTrue(
+                    self._isSortedReverse(extractedAttributeForComponents))
+
+    def _findNextFloat(self, text, substring):
+        pattern = re.escape(substring) + r"\s*([\d\.]+)"
+        match = re.search(pattern, text)
+        if match:
+            return float(match.group(1))
+        else:
+            return None
+
+    def _isSorted(self, listToCheck):
+        """Check if a list is sorted alphabetically"""
+        return listToCheck == sorted(listToCheck)
+
+    def _isSortedReverse(self, listToCheck):
+        """Check if a list is sorted alphabetically"""
+        return listToCheck == sorted(listToCheck, reverse=True)

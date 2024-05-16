@@ -155,12 +155,25 @@ def components(request):
                 "component",
             },
             {
-                "placeholder": _("Sortierung"),
+                "placeholder":
+                _("Sortierung"),
+                "multiDimensional":
+                True,
                 "objects": [
-                    _("Aufsteigend"),
-                    _("Absteigend"),
+                    _("Kategorie"),
+                    _("Komponente"),
+                    _("Energieverbrauch Nutzung (gesamt; in W)"),
+                    _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
+                    _("Bauteilgewicht (in kg)"),
+                    _("Lebensdauer (in Jahren)"),
+                    _("Energieverbrauch Nutzung (aktiv; in W)"),
+                    _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+                    _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
+                    _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
+                    _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
                 ],
-                "fieldName": "sorting",
+                "fieldName":
+                "sorting",
             },
             {
                 "placeholder": _("Übersicht"),

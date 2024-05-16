@@ -17,20 +17,50 @@
         <div class="row g-3">
           <!-- Select items -->
           {% for optionContent in optionList %}
-            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-              <select class="form-select js-choice border-{{ focusBorder }}-round"
-                      aria-label=".form-select-sm example"
-                      name="{{ optionContent.fieldName }}"
-                      id="select-{{ optionContent.fieldName }}">
-                <option value="">{% translate optionContent.placeholder %}</option>
-                {% for option in optionContent.objects %}
-                  <option value="{{ option }}"
-                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
-                    {{ option }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
+            {% if optionContent.multiDimensional %}
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0 dropdown">
+                <button class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                  {{ optionContent.placeholder }}
+                </button>
+                <div class="dropdown-menu" id="dropdownMenuDiv">
+                  {% for option in optionContent.objects %}
+                    <div class="dropdown">
+                      <a class="dropdown-item dropdown-toggle"
+                         href="#"
+                         id="nestedDropdownMenuButton"
+                         role="button"
+                         data-toggle="dropdown"
+                         aria-haspopup="true"
+                         aria-expanded="false">{{ option }}</a>
+                      <div class="dropdown-menu" aria-labelledby="nestedDropdownMenuButton">
+                        <a class="dropdown-item nested" href="#">{% translate "Aufsteigend" %}</a>
+                        <a class="dropdown-item nested" href="#">{% translate "Absteigend" %}</a>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            {% else %}
+              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+                <select class="form-select js-choice border-{{ focusBorder }}-round"
+                        aria-label=".form-select-sm example"
+                        name="{{ optionContent.fieldName }}"
+                        id="select-{{ optionContent.fieldName }}">
+                  <option value="">{% translate optionContent.placeholder %}</option>
+                  {% for option in optionContent.objects %}
+                    <option value="{{ option }}"
+                            {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                      {{ option }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+            {% endif %}
           {% endfor %}
         </div>
       </form>
@@ -54,3 +84,35 @@
     </div>
   </div>
 </form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
+        }
+        var $subMenu = $(this).next('.dropdown-menu');
+        $subMenu.toggleClass('show');
+
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass('show');
+        });
+
+        return false;
+    });
+
+    // Handle click events on second level dropdown items
+    $('.dropdown-menu a.dropdown-item').on('click', function(e) {
+        // Do something when a second level dropdown item is clicked
+      var secondLevelValue = $(this).text();
+      var firstLevelValue = $(this).parent().parent().text();
+      var form = $('form');
+      var action = form.attr('action');
+      action += '?firstLevel=' + encodeURIComponent(firstLevelValue);
+      action += '&secondLevel=' + encodeURIComponent(secondLevelValue);
+      form.attr('action', action);
+      form.submit();
+    });
+});
+</script>
