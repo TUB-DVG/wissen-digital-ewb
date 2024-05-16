@@ -103,16 +103,16 @@ $(document).ready(function() {
     });
 
     // Handle click events on second level dropdown items
-    $('.dropdown-menu a.dropdown-item').on('click', function(e) {
+    $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
         // Do something when a second level dropdown item is clicked
       var secondLevelValue = $(this).text();
-      var firstLevelValue = $(this).parent().parent().text();
+      
+      var firstLevelValue = $(this).parent().parent().children('a:first').text();
       var form = $('form');
       var action = form.attr('action');
       action += '?firstLevel=' + encodeURIComponent(firstLevelValue);
       action += '&secondLevel=' + encodeURIComponent(secondLevelValue);
       form.attr('action', action);
-      form.submit();
     });
 });
 </script>
