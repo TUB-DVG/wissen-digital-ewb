@@ -37,3 +37,11 @@ class GenericPageObject(object):
                                         "preceding-sibling::" + tagName)
         except:
             return None
+
+    def getFollowingSiblingOfTagName(self, element, tagName):
+        """Returns the following sibling of the given element"""
+        try:
+            return element.find_element(By.XPATH,
+                                        "following-sibling::" + tagName)
+        except:
+            return None
