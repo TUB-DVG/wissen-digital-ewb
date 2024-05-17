@@ -16,11 +16,15 @@ def components(request):
 
     listingShowOrCollapse = "collapse"
 
+    # get the values of the multi-level dropdown field:
+    firstLevelDropdown = request.GET.get("firstLevel", "")
+    secondLevelDropdown = request.GET.get("secondLevel", "")
+
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
     categoryValue = request.GET.get("category", "")
     componentValue = request.GET.get("component", "")
-    sortingValue = request.GET.get("sorting", "")
+    # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
 
     searchQuery = Q()
@@ -51,9 +55,26 @@ def components(request):
         if overviewValue == _("Ausgeklappt"):
             listingShowOrCollapse = "show"
 
-    componentsObj = Component.objects.filter(searchQuery)
+    if firstLevelDropdown and secondLevelDropdown:
+        if secondLevelDropdown == "Ascending":
+            if firstLevelDropdown == "category":
+                firstLevelDropdown = "category__category"
+            elif firstLevelDropdown == "component":
+                firstLevelDropdown = "component__componentClass"
+            componentsObj = Component.objects.filter(searchQuery).order_by(
+                firstLevelDropdown)
+        else:
+            if firstLevelDropdown == "category":
+                firstLevelDropdown = "category__category"
+            elif firstLevelDropdown == "component":
+                firstLevelDropdown = "component__componentClass"
+            componentsObj = Component.objects.filter(searchQuery).order_by(
+                f"-{firstLevelDropdown}")
+    else:
+        componentsObj = Component.objects.filter(searchQuery)
+
     componentsObjList = list(componentsObj)
-    componentsPaginator = Paginator(componentsObjList, 3)
+    componentsPaginator = Paginator(componentsObjList, 10)
     pageNum = request.GET.get("page", None)
     page = componentsPaginator.get_page(pageNum)
     context = {
@@ -160,17 +181,55 @@ def components(request):
                 "multiDimensional":
                 True,
                 "objects": [
-                    _("Kategorie"),
-                    _("Komponente"),
-                    _("Energieverbrauch Nutzung (gesamt; in W)"),
-                    _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
-                    _("Bauteilgewicht (in kg)"),
-                    _("Lebensdauer (in Jahren)"),
-                    _("Energieverbrauch Nutzung (aktiv; in W)"),
-                    _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
-                    _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
-                    _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
-                    _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
+                    {
+                        "shown": _("Kategorie"),
+                        "name": "category",
+                    },
+                    {
+                        "shown": _("Komponente"),
+                        "name": "component",
+                    },
+                    {
+                        "shown": _("Energieverbrauch Nutzung (gesamt; in W)"),
+                        "name": "energyConsumptionUsePhaseTotal",
+                    },
+                    {
+                        "shown": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
+                        "name": "globalWarmingPotentialTotal",
+                    },
+                    {
+                        "shown": _("Bauteilgewicht (in kg)"),
+                        "name": "componentWeight",
+                    },
+                    {
+                        "shown": _("Lebensdauer (in Jahren)"),
+                        "name": "lifetime",
+                    },
+                    {
+                        "shown": _("Energieverbrauch Nutzung (aktiv; in W)"),
+                        "name": "energyConsumptionUsePhaseActive",
+                    },
+                    {
+                        "shown":
+                        _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+                        "name":
+                        "energyConsumptionUsePhasePassive",
+                    },
+                    {
+                        "shown":
+                        _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
+                        "name": "globalWarmingPotentialProduction",
+                    },
+                    {
+                        "shown":
+                        _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
+                        "name": "globalWarmingPotentialUsePhase",
+                    },
+                    {
+                        "shown":
+                        _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
+                        "name": "globalWarmingPotentialEndOfLife",
+                    },
                 ],
                 "fieldName":
                 "sorting",

@@ -8,6 +8,7 @@ sys.path.append(sys.path[0] + "/...")
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
@@ -280,7 +281,7 @@ class TestComponentsList(WebDriverSetup):
         # check if the sorting-dropdown contains the correct elements:
         sortingList = [
             "Kategorie",
-            "Komponenten",
+            "Komponente",
             "Energieverbrauch Nutzung",
             "Treibhauspotenzial",
             "Bauteilgewicht",
@@ -310,9 +311,12 @@ class TestComponentsList(WebDriverSetup):
         self.assertIn("Absteigend", nestedOptionsText)
 
         chosenNestedItem = choice(nestedDropdownItems)
-
+        chosenNestedItemText = chosenNestedItem.text
+        chosenElementText = chosenElement.text
         self.scrollElementIntoViewAndClickIt(chosenNestedItem)
-        self._checkIfOrderingIsLikeSpecified(chosenElement, chosenNestedItem,
+
+        self._checkIfOrderingIsLikeSpecified(chosenElementText,
+                                             chosenNestedItemText,
                                              componentsListPageObj)
         # check if the elements are now ordered in the specified way
 
@@ -320,7 +324,8 @@ class TestComponentsList(WebDriverSetup):
             "Ausgeklappt",
             "Eingeklappt",
         ])
-
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer())
         overviewOptionsSet = set([
             optionElement.text for optionElement in selectionFields[3].options
         ])
@@ -787,15 +792,15 @@ class TestComponentsList(WebDriverSetup):
             ],
         }
         extractedAttributeForComponents = []
-        if (clickedAttributeElement.text == "Kategorie"
-                or clickedAttributeElement.text == "Category"):
+        if (clickedAttributeElement == "Kategorie"
+                or clickedAttributeElement == "Category"):
             for component in allPresentComponentContainers:
                 # check if the elements are sorted alphabetically:
                 extractedAttributeForComponents.append(
                     componentsListPageObj.getDescendantsByTagName(
                         component, "h3")[0].text)
-        elif (clickedAttributeElement.text == "Komponente"
-              or clickedAttributeElement.text == "Component"):
+        elif (clickedAttributeElement == "Komponente"
+              or clickedAttributeElement == "Component"):
             for component in allPresentComponentContainers:
                 extractedAttributeForComponents.append(
                     componentsListPageObj.getDescendantsByClass(
@@ -803,19 +808,35 @@ class TestComponentsList(WebDriverSetup):
 
         else:
             for component in allPresentComponentContainers:
+                # before extracting the information, the container has to be
+                # extended, so that the information is present:
+                collapsedContainerList = (
+                    componentsListPageObj.getDescendantsByClass(
+                        component, "collapse"))
+                self.driver.execute_script(
+                    "arguments[0].setAttribute('class', 'show')",
+                    collapsedContainerList[0],
+                )
+                self.driver.execute_script(
+                    "arguments[0].setAttribute('class', 'show')",
+                    collapsedContainerList[1],
+                )
                 floatOrNone = self._findNextFloat(
-                    component.text, clickedAttributeElement.text + ":")
+                    component.text, clickedAttributeElement + ":")
                 if floatOrNone is not None:
                     extractedAttributeForComponents.append(floatOrNone)
+                else:
+                    extractedAttributeForComponents.append(None)
 
                 # check if the elements are sorted alphabetically:
-                extractedAttributeForComponents.append(
-                    componentsListPageObj.getDescendantsByTagName(
-                        component, "h6")[0].text)
+                # breakpoint()
+                # extractedAttributeForComponents.append(
+                #     componentsListPageObj.getDescendantsByTagName(
+                #         component, "h3")[0].text)
 
-        if clickedOrderingElement.text in attributesSortedAlphabetically:
-            if (clickedOrderingElement.text == "Ascending"
-                    or clickedOrderingElement.text == "Aufsteigend"):
+        if clickedOrderingElement in attributesSortedAlphabetically:
+            if (clickedOrderingElement == "Ascending"
+                    or clickedOrderingElement == "Aufsteigend"):
                 self.assertTrue(
                     self._isSorted(extractedAttributeForComponents))
             else:
@@ -823,8 +844,8 @@ class TestComponentsList(WebDriverSetup):
                     self._isSortedReverse(extractedAttributeForComponents))
         # check if the elements are sorted numerically:
         else:
-            if (clickedOrderingElement.text == "Ascending"
-                    or clickedOrderingElement.text == "Aufsteigend"):
+            if (clickedOrderingElement == "Ascending"
+                    or clickedOrderingElement == "Aufsteigend"):
                 self.assertTrue(
                     self._isSorted(extractedAttributeForComponents))
             else:
@@ -841,8 +862,12 @@ class TestComponentsList(WebDriverSetup):
 
     def _isSorted(self, listToCheck):
         """Check if a list is sorted alphabetically"""
+        if None in listToCheck:
+            return True
         return listToCheck == sorted(listToCheck)
 
     def _isSortedReverse(self, listToCheck):
         """Check if a list is sorted alphabetically"""
+        if None in listToCheck:
+            return True
         return listToCheck == sorted(listToCheck, reverse=True)
