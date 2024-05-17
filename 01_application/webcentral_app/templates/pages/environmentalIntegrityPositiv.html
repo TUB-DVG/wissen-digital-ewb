@@ -70,21 +70,7 @@
 
   <!-- ======================= Page Banner START ======================= -->
   <div class="content container">
-    <div class="row">
-      <div class="col-12 description">
-        <div class="description-heading mb-3">
-          <img src="{% static 'img/componentList/circle-icon.svg' %}"
-               alt="Circle icon"
-               class="description-heading__icon" />
-          <p class="mb-0">{% translate "Positive Umweltwirkungen" %}</p>
-        </div>
-        <div class="description-content">
-          <p>
-            {% blocktranslate %}Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt.{% endblocktranslate %}
-          </p>
-        </div>
-      </div>
-    </div>
+    <div class="row">{% include "common/descriptionContainer.html" %}</div>
     <div class="boxes" id="container-start-focus">
       <div class="row">
         {% for i in n %}
