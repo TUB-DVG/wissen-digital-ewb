@@ -156,6 +156,27 @@ class TestComponentsList(WebDriverSetup):
             "The secondaryNavBar does not hold 2 links",
         )
 
+        # test styling of link one:
+        self.assertTrue(linksInSecNavBar[0].value_of_css_property("color") ==
+                        "rgb(143, 222, 151)")
+        self.assertTrue(
+            linksInSecNavBar[0].value_of_css_property("font-size") == "15px;")
+
+        borderColor = linksInSecNavBar[1].value_of_css_property("border-color")
+        self.assertEqual(
+            borderColor,
+            "rgb(0, 128, 0)",
+            "The second link does not have a green border",
+        )
+        # check if the left link has a sibling element, which is an image:
+        siblingElement = componentsListPageObj.getPreviousSiblingOfTagName(
+            linksInSecNavBar[0], "img")
+        self.assertIsNotNone(siblingElement)
+
+        # check if the right link has a following sibling element, which is an image:
+        siblingElement = componentsListPageObj.getFollowingSiblingOfTagName(
+            linksInSecNavBar[1], "img")
+
         # test if the links are working
         linkToDataProcessing = linksInSecNavBar[1]
         linkToDataProcessing.click()

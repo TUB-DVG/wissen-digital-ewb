@@ -5,11 +5,41 @@
 {% endblock %}
 {% load static %}
 {% block content %}
+    <style>
+    .secondaryNavbar{
+        display: flex;
+        justify-content: space-between;
+    }
+    .secondaryNavbarLeft a{
+        color: #8FDE97;
+        font-size: 15px;
+    }
+    .secondaryNavbarRight a{
+        color: #000000;
+        font-size: 15px;
+        border: 2px solid #8FDE97;
+        margin: 6.5px;
+    }
+    .arrowImage{
+        width: 5px;
+        height: 11px;
+    }
+    </style>
     <div class="content container">
         <div class="row">
             <div class="col-12 secondaryNavbar">
-                <a href="{% url 'environmentalIntegrityNegativ' %}">{% translate "Negative Umweltwirkungen" %}</a>
-                <a href="{% url 'dataProcessing' %}">{% translate "Zu den Aufwänden für Datenverarbeitungsprozsse " %}</a>
+                <div class="secondaryNavbarLeft">
+                    <img src="{% static 'img/componentList/caret-left.svg' %}"
+                         alt="green arrow"
+                         class="arrowImage" />
+                    <a href="{% url 'environmentalIntegrityNegativ' %}">{% translate "Negative Umweltwirkungen" %}</a>
+                </div>
+                <div class="secondaryNavbarRight">
+                    <a href="{% url 'dataProcessing' %}">{% translate "Zu den Aufwänden für Datenverarbeitungsprozesse " %}
+                        <img src="{% static '/assets/images/right-arrow.svg' %}"
+                             class="arrowImage" />
+                    </a>
+                </div>
             </div>
         </div>
         <div class="row">
