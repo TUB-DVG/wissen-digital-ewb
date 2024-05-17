@@ -1,35 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %} Datensuffizienz {% endblock %}
+{% block title %}Datensuffizienz{% endblock %}
 
 {% load static %}
 {% load i18n %}
-{% block content%}
-
-<!-- general text for "coming soon" -->
-{% include 'partials/_coming.html' %}
+{% block content %}
 
   <!-- =======================
 Page Banner START -->
-<section class="py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% translate "Datensuffizienz"%}</h2>
-        </div>
-      </div>
+  <section class="py-4">
+    <div class="container content">
+      <div class="row">{% include 'common/descriptionContainer.html' %}</div>
     </div>
-  </div>
-</section>
-<!-- Page Banner END -->
-<!-- Content START -->
-<section id="about" class=" pt-4 py-lg-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <p>
-          {% blocktranslate %}Sowohl die Materialisierung als auch der Energieaufwand für den
+  </section>
+  <!-- Page Banner END -->
+  <!-- Content START -->
+  <section id="about" class=" pt-4 py-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <p>
+            {% blocktranslate %}Sowohl die Materialisierung als auch der Energieaufwand für den
           Betrieb immer größer werdender Rechenkapazitäten stellt eine
           Herausforderung dar. Der maßhaltige Umgang mit Daten – die
           Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die
@@ -43,10 +34,10 @@ Page Banner START -->
           Im Folgenden sollen daher Anhaltspunkte für einen maßhaltigen Umgang
           mit Daten gegeben und auf die ökologischen Wirkungen bestimmter
           Praktiken beim Umgang mit Daten hingewiesen werden.{% endblocktranslate %}
-        </p>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Content END -->
+  </section>
+  <!-- Content END -->
 {% endblock %}

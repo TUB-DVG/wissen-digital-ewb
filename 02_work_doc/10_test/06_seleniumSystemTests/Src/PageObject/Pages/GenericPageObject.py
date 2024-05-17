@@ -23,6 +23,16 @@ class GenericPageObject(object):
         except:
             return None
 
+    def getDescendantsByClass(self, element, className):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            # breakpoint()
+            return element.find_elements(
+                By.XPATH, f".//[contains(@class, '{className}')]")
+
+        except:
+            return None
+
     def getDirectChildren(self, element):
         """Returns the direct children of the given element"""
         try:
