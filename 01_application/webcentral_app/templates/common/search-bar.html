@@ -1,7 +1,9 @@
 {% load i18n %}
 <!-- Filter bar START -->
 <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
-      id="searchBox">
+      id="searchBox"
+      method="GET"
+      action="">
   <div class="row g-3">
     <!-- Input -->
     <div class="col-xl-3" title="Suchen in den ">
@@ -13,57 +15,60 @@
     </div>
     <!-- Select item -->
     <div class="col-xl-7">
-      <form method="GET">
-        <div class="row g-3">
-          <!-- Select items -->
-          {% for optionContent in optionList %}
-            {% if optionContent.multiDimensional %}
-              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0 dropdown">
-                <button class="btn btn-secondary dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                  {{ optionContent.placeholder }}
-                </button>
-                <div class="dropdown-menu" id="dropdownMenuDiv">
-                  {% for option in optionContent.objects %}
-                    <div class="dropdown">
-                      <a class="dropdown-item dropdown-toggle"
-                         href="#"
-                         id="nestedDropdownMenuButton"
-                         role="button"
-                         data-toggle="dropdown"
-                         aria-haspopup="true"
-                         aria-expanded="false">{{ option }}</a>
-                      <div class="dropdown-menu" aria-labelledby="nestedDropdownMenuButton">
-                        <a class="dropdown-item nested" href="#">{% translate "Aufsteigend" %}</a>
-                        <a class="dropdown-item nested" href="#">{% translate "Absteigend" %}</a>
-                      </div>
+      <div class="row g-3">
+        <!-- Select items -->
+        {% for optionContent in optionList %}
+          {% if optionContent.multiDimensional %}
+            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0 dropdown">
+              <button class="btn btn-secondary dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                {{ optionContent.placeholder }}
+              </button>
+              <div class="dropdown-menu" id="dropdownMenuDiv">
+                {% for option in optionContent.objects %}
+                  <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle"
+                       href="#"
+                       id="nestedDropdownMenuButton"
+                       role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       dblocator="{{ option.name }}">{{ option.shown }}</a>
+                    <div class="dropdown-menu" aria-labelledby="nestedDropdownMenuButton">
+                      <a class="dropdown-item nested"
+                         href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
+                         sorting="Ascending">{% translate "Aufsteigend" %}</a>
+                      <a class="dropdown-item nested"
+                         href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending"
+                         sorting="Descending">{% translate "Absteigend" %}</a>
                     </div>
-                  {% endfor %}
-                </div>
+                  </div>
+                {% endfor %}
               </div>
-            {% else %}
-              <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-                <select class="form-select js-choice border-{{ focusBorder }}-round"
-                        aria-label=".form-select-sm example"
-                        name="{{ optionContent.fieldName }}"
-                        id="select-{{ optionContent.fieldName }}">
-                  <option value="">{% translate optionContent.placeholder %}</option>
-                  {% for option in optionContent.objects %}
-                    <option value="{{ option }}"
-                            {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
-                      {{ option }}
-                    </option>
-                  {% endfor %}
-                </select>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
-      </form>
+            </div>
+          {% else %}
+            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+              <select class="form-select js-choice border-{{ focusBorder }}-round"
+                      aria-label=".form-select-sm example"
+                      name="{{ optionContent.fieldName }}"
+                      id="select-{{ optionContent.fieldName }}">
+                <option value="">{% translate optionContent.placeholder %}</option>
+                {% for option in optionContent.objects %}
+                  <option value="{{ option }}"
+                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                    {{ option }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
     <!-- search Button -->
     <div class="col-xl-1">
@@ -84,9 +89,7 @@
     </div>
   </div>
 </form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
 $(document).ready(function() {
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
@@ -102,17 +105,20 @@ $(document).ready(function() {
         return false;
     });
 
-    // Handle click events on second level dropdown items
-    $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
-        // Do something when a second level dropdown item is clicked
-      var secondLevelValue = $(this).text();
+    // // Handle click events on second level dropdown items
+    // $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
+    //     // Do something when a second level dropdown item is clicked
+    //   var secondLevelValue = $(this).attr('sorting');
       
-      var firstLevelValue = $(this).parent().parent().children('a:first').text();
-      var form = $('form');
-      var action = form.attr('action');
-      action += '?firstLevel=' + encodeURIComponent(firstLevelValue);
-      action += '&secondLevel=' + encodeURIComponent(secondLevelValue);
-      form.attr('action', action);
-    });
+    //   var firstLevelValue = $(this).parent().parent().children('a:first').attr('dblocator');
+    //   var form = $('#searchBox');
+    //   var action = form.attr('action');
+    //   action += '?firstLevel=' + encodeURIComponent(firstLevelValue);
+    //   action += '&secondLevel=' + encodeURIComponent(secondLevelValue);
+      
+    //   form.attr('action', action);
+    //   debugger;
+    //   form.submit();
+    // });
 });
 </script>
