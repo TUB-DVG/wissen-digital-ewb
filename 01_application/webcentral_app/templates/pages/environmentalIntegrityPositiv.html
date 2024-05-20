@@ -72,31 +72,7 @@
   <div class="content container">
     <div class="row">{% include "common/descriptionContainer.html" %}</div>
     <div class="boxes" id="container-start-focus">
-      <div class="row">
-        {% for i in n %}
-          <div class="col-12 col-lg-6 box border-ecological" id="box1">
-            <div class="row box__content">
-              <div class="col-12">
-                <h6 class="boxHeading mb-4">{% translate "Positive Wirkung" %}</h6>
-              </div>
-              <div class="box-content__main">
-                <div class="col-12 content-left">
-                  <p class="boxDescription">
-                    {% blocktranslate %}Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt ut pel ma dolorpo rruntur, accat. Ent, que nimi, quas si odi optatis ex estisque ommossi tatur, vendit por sum ellecatur repudanda simusae et enis ne nus. Ent, que nimi, quas si odi optatis ex estisque ommossi tatur, vendit por sum ellecatur repudanda simusae et enis ne nus.{% endblocktranslate %}
-                  </p>
-                </div>
-                <div class="content-right">
-                  <div>Name Digitale Anwendung</div>
-                  <div class="mt-4">Projektname</div>
-                  <img src="{% static 'img/componentList/environment-positive.svg' %}"
-                       alt="Environment positive"
-                       class="box__image" />
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+      {% include "common/fourBoxesContainer.html" %}
     </div>
     <!-- Content END -->
   {% endblock %}

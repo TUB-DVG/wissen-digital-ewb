@@ -60,6 +60,14 @@ def environmentalIntegrityPositiv(request):
         "explanaitionText":
         _("Die folgenden vier Kriterien beschreiben die positiven Umweltwirkungen, die durch die Nutzung des Produkts entstehen."
           ),
+        "pathToBoxTemplates": [
+            "pages/environmentalIntegrityBox.html",
+            "pages/environmentalIntegrityBox.html",
+            "pages/environmentalIntegrityBox.html",
+            "pages/environmentalIntegrityBox.html",
+        ],
+        "focusBorder":
+        "ecological",
     }
 
     return render(request, "pages/environmentalIntegrityPositiv.html", context)
@@ -72,7 +80,26 @@ def benchmarkingChallenges(request):
 
 def dataSufficiency(request):
     """Call render function for data sufficiency page."""
-    return render(request, "pages/dataSufficiency.html")
+    context = {
+        "n":
+        range(4),
+        "pathToImage":
+        "img/componentList/circle-icon.svg",
+        "heading":
+        _("Datensuffizienz"),
+        "explanaitionText":
+        _("Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet."
+          ),
+        "pathToBoxTemplates": [
+            "pages/dataSufficiencyBox1.html",
+            "pages/dataSufficiencyBox2.html",
+            "pages/dataSufficiencyBox3.html",
+            "pages/dataSufficiencyBox4.html",
+        ],
+        "focusBorder":
+        "ecological",
+    }
+    return render(request, "pages/dataSufficiency.html", context)
 
 
 def dataSecurity(request):
