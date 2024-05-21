@@ -43,7 +43,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 listing-right">
                 {% for element in elementsSecondColumn %}
                     {% if forloop.counter == 5 %}
                         <div class="{{ listElementsShowOrCollapse }}"
@@ -53,7 +53,7 @@
                             {% if element.description != "" %}
                                 <span class="listingRowAttributeNames">{{ element.description }}:</span>
                             {% endif %}
-                            {{ object|get_attribute:element.objectReference }}
+                            <span class="listingRowAttributeValues">{{ object|get_attribute:element.objectReference }}</span>
                         </p>
 
                     {% endfor %}
