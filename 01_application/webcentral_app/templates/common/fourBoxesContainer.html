@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 <div class="row">
-    {% for pathToTemplate in pathToBoxTemplates %}
-        {% include pathToTemplate %}
+    {% for boxObject in boxes %}
+        {% include boxObject.pathToTemplate with boxObject=boxObject.objectToRender %}
     {% endfor %}
 </div>
