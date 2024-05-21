@@ -102,6 +102,27 @@ def dataSufficiency(request):
     return render(request, "pages/dataSufficiency.html", context)
 
 
+def dataSufficiencyBox(request, idOfPage):
+    """Call render function for data sufficiency box page."""
+    mappingIdHeading = {
+        1: _("Datenerhebung"),
+        2: _("Datenverarbeitung"),
+        3: _("Datenmanagement "),
+        4: _("Datenspeicherung"),
+    }
+    context = {
+        "focusBorder": "ecological",
+        "focusName": "ecological",
+        "urlName": "dataProcessing",
+        "backLinkText": _("Datensuffizienz"),
+        "backLink": "dataSufficiency",
+        "leftColumn": "pages/dataSufficiencyLeftColumn.html",
+        "leftColumnHeading": mappingIdHeading[idOfPage],
+        "rightColumn": "pages/dataSufficiencyRightColumn.html",
+    }
+    return render(request, "common/detailsPage.html", context)
+
+
 def dataSecurity(request):
     """Call render function for data security page."""
     return render(request, "pages/dataSecurity.html")

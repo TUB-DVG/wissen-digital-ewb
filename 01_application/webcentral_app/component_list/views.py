@@ -248,4 +248,13 @@ def components(request):
 
 
 def dataProcessing(request):
-    return render(request, "component_list/dataProcessing.html")
+    context = {
+        "focusBorder": "ecological",
+        "focusName": "ecological",
+        "urlName": "dataProcessing",
+        "backLinkText": _("Negative Umweltwirkungen"),
+        "backLink": "environmentalIntegrityNegativ",
+        "leftColumn": _("Aufwände für Datenverarbeitungsprozsse"),
+        "rightColumn": "component_list/dataProcessingRightColumn.html",
+    }
+    return render(request, "common/detailsPage.html", context)
