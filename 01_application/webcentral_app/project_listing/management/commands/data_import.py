@@ -446,6 +446,7 @@ class Command(BaseCommand):
         created:    bool
             Indicates, if the EnvironmentalImpact-object was created or not.
         """
+        breakpoint()
         category = row[header.index("Category")]
         description = row[header.index("Description")]
         nameDigitalApplication = row[header.index("Name_Digital_Application")]
@@ -464,8 +465,8 @@ class Command(BaseCommand):
         partner = row[header.index("Partner")]
         projectWebsite = row[header.index("Project_Website")]
         consortium = row[header.index("Consortium")]
-        additionalDigitalApplications = row[header.index(
-            "Additional_Digital_Application(s)")]
+        further = row[header.index("Further")]
+        digitalApplications = row[header.index("Digital_Applications")]
         goals = row[header.index("Goals")]
         strategies = row[header.index("Strategies")]
         relevance = row[header.index("Relevance")]
@@ -480,12 +481,13 @@ class Command(BaseCommand):
             category=category,
             description=description,
             name_digital_application=nameDigitalApplication,
+            further=further,
             project_name=projectName,
             funding_label=subprojectForeignObj,
             partner=partner,
             project_website=projectWebsite,
             consortium=consortium,
-            additional_digital_applications=additionalDigitalApplications,
+            digitalApplications=digitalApplications,
             goals=goals,
             strategies=strategies,
             relevance=relevance,
