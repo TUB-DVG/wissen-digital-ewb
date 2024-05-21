@@ -69,6 +69,7 @@ from component_list.models import (
     Component,
     ComponentClass,
     Category,
+    EnvironmentalImpact,
 )
 
 from project_listing.models import (
@@ -422,6 +423,78 @@ class Command(BaseCommand):
             name=nameFromCSV,
             address=objAnsAs,
         )
+
+    def getOrCreateEnvironmentalImpact(self, row: list, header: list) -> tuple:
+        """Gets or Creates an object of type EnvironmentalImpact from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        EnvironmentalImpact according to the fed-data. Either this object
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    EnvironmentalImpact
+            EnvironmentalImpact-object, represent the created or in database
+            present EnvironmentalImpact-Dataset with the data from row.
+        created:    bool
+            Indicates, if the EnvironmentalImpact-object was created or not.
+        """
+        category = row[header.index("Category")]
+        description = row[header.index("Description")]
+        nameDigitalApplication = row[header.index("Name_Digital_Application")]
+        projectName = row[header.index("Project_Name")]
+        fundingLabel = row[header.index("Funding_Label")]
+
+        # check if the project is present in the Subproject-table:
+        try:
+            subprojectForeignObj = Subproject.objects.get(
+                referenceNumber_id=fundingLabel)
+        except Subproject.DoesNotExist:
+            print(
+                f"The specified funding-label {fundingLabel} is not present in the Subproject-table."
+            )
+            return None, None
+        partner = row[header.index("Partner")]
+        projectWebsite = row[header.index("Project_Website")]
+        consortium = row[header.index("Consortium")]
+        additionalDigitalApplications = row[header.index(
+            "Additional_Digital_Application(s)")]
+        goals = row[header.index("Goals")]
+        strategies = row[header.index("Strategies")]
+        relevance = row[header.index("Relevance")]
+        image = row[header.index("Image")]
+        problemStatementAndProblemGoals = row[header.index(
+            "Problem_Statement_and_Problem_Goals")]
+        implementationInTheProject = row[header.index(
+            "Implementation_in_the_Project")]
+        evaluation = row[header.index("Evaluation")]
+
+        obj, created = EnvironmentalImpact.objects.get_or_create(
+            category=category,
+            description=description,
+            name_digital_application=nameDigitalApplication,
+            project_name=projectName,
+            funding_label=subprojectForeignObj,
+            partner=partner,
+            project_website=projectWebsite,
+            consortium=consortium,
+            additional_digital_applications=additionalDigitalApplications,
+            goals=goals,
+            strategies=strategies,
+            relevance=relevance,
+            image=image,
+            problem_statement_and_problem_goals=problemStatementAndProblemGoals,
+            implementation_in_the_project=implementationInTheProject,
+            evaluation=evaluation,
+        )
+        return obj, created
 
     def getOrCreateEnargus(
         self,
@@ -1709,6 +1782,8 @@ class Command(BaseCommand):
                 self.getOrCreateCriteriaCatalog(row, header)
             elif "component" in filename:
                 self.getOrCreateComponent(row, header)
+            elif "environmentalImpact" in filename:
+                self.getOrCreateEnvironmentalImpact(row, header)
             else:
                 CommandError(
                     "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."

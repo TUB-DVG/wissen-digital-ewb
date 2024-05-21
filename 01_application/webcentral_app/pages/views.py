@@ -2,6 +2,8 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 
+from component_list.models import EnvironmentalImpact
+
 
 def index(request):
     """Call render function for index page."""
@@ -50,9 +52,10 @@ def environmentalIntegrityNegativ(request):
 
 def environmentalIntegrityPositiv(request):
     """Call render function for positiv environmental integrity page."""
+
+    # get number of environmentalImpact-objects and render them as boxes:
+    environmentalImpacts = EnvironmentalImpact.objects.all()
     context = {
-        "n":
-        range(4),
         "pathToImage":
         "img/componentList/circle-icon.svg",
         "heading":
@@ -60,12 +63,10 @@ def environmentalIntegrityPositiv(request):
         "explanaitionText":
         _("Die folgenden vier Kriterien beschreiben die positiven Umweltwirkungen, die durch die Nutzung des Produkts entstehen."
           ),
-        "pathToBoxTemplates": [
-            "pages/environmentalIntegrityBox.html",
-            "pages/environmentalIntegrityBox.html",
-            "pages/environmentalIntegrityBox.html",
-            "pages/environmentalIntegrityBox.html",
-        ],
+        "boxes": [{
+            "pathToTemplate": "pages/environmentalIntegrityBox.html",
+            "objectToRender": environmentalImpact,
+        } for environmentalImpact in environmentalImpacts],
         "focusBorder":
         "ecological",
     }
