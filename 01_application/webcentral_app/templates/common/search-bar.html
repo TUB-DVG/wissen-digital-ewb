@@ -20,7 +20,7 @@
         {% for optionContent in optionList %}
           {% if optionContent.multiDimensional %}
             <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0 dropdown">
-              <button class="btn btn-secondary dropdown-toggle"
+              <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -71,7 +71,7 @@
       </div>
     </div>
     <!-- search Button -->
-    <div class="col-xl-1">
+    <div class="col-xl-1 search-button">
       <button type="submit"
               class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100"
               id="search-submit-{{ nameOfTemplate }}"
