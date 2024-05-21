@@ -55,3 +55,13 @@ class GenericPageObject(object):
                                         "following-sibling::" + tagName)
         except:
             return None
+
+    def getContentDiv(self):
+        """Returns the div-element, which wraps the content of the page"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                ".//div[contains(@class, 'content')]",
+            )
+        except:
+            return None

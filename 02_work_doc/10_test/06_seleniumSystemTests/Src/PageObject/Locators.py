@@ -188,3 +188,6 @@ class Locator(object):
     headingComparisonSite = "//h1"
     comparisonTableContainer = "//tbody"
     backButton = "//a[@class='backLink']"
+
+    # DetailsPage locators
+    linkNavigatorDiv = "//div[contains(@class, 'linkNavigator')]"
