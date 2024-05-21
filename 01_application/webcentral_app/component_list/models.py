@@ -1,5 +1,7 @@
 from django.db import models
 
+from project_listing.models import Subproject
+
 
 class ComponentClass(models.Model):
     componentClass = models.CharField(max_length=255)
@@ -33,3 +35,26 @@ class Component(models.Model):
 
     def __str__(self):
         return self.component.componentClass
+
+
+class EnvironmentalImpact(models.Model):
+    category = models.CharField(max_length=255)
+    description = models.TextField()
+    name_digital_application = models.CharField(max_length=255)
+    project_name = models.CharField(max_length=255)
+    funding_label = models.ForeignKey(Subproject, on_delete=models.CASCADE)
+    duration = models.DurationField()
+    partner = models.CharField(max_length=255)
+    project_website = models.URLField()
+    consortium = models.TextField()
+    additional_digital_applications = models.TextField()
+    goals = models.TextField()
+    strategies = models.TextField()
+    relevance = models.TextField()
+    image = models.CharField(max_length=300)
+    problem_statement_and_problem_goals = models.TextField()
+    implementation_in_the_project = models.TextField()
+    evaluation = models.TextField()
+
+    def __str__(self):
+        return self.category

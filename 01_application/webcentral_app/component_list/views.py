@@ -254,7 +254,7 @@ def dataProcessing(request):
         "urlName": "dataProcessing",
         "backLinkText": _("Negative Umweltwirkungen"),
         "backLink": "environmentalIntegrityNegativ",
-        "leftColumn": _("Aufwände für Datenverarbeitungsprozsse"),
+        "leftColumn": "component_list/dataProcessingLeftColumn.html",
         "rightColumn": "component_list/dataProcessingRightColumn.html",
     }
     return render(request, "common/detailsPage.html", context)

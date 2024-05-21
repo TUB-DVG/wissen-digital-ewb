@@ -73,6 +73,18 @@ def environmentalIntegrityPositiv(request):
     return render(request, "pages/environmentalIntegrityPositiv.html", context)
 
 
+def environmentalIntegrityBox(request, idOfPage):
+    context = {
+        "focusBorder": "ecological",
+        "backLinkText": _("Positive Umweltwirkungen"),
+        "backLink": "environmentalIntegrityPositiv",
+        "leftColumn": "pages/dataSufficiencyLeftColumn.html",
+        "leftColumnHeading": mappingIdHeading[idOfPage],
+        "rightColumn": "pages/dataSufficiencyRightColumn.html",
+    }
+    return render(request, "common/detailsPage.html", context)
+
+
 def benchmarkingChallenges(request):
     """Call render function for benchmaring challenges page."""
     return render(request, "pages/benchmarkingChallenges.html")
