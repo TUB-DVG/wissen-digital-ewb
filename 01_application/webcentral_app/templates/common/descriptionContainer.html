@@ -11,7 +11,9 @@
     .description-heading__icon {
       font-size: 24px;
     }
-  
+    .description-heading__paragraph {
+      font-size: 22px;
+    }
     .box {
         padding: 40px;
     }
@@ -85,24 +87,28 @@
     <img src="{% static pathToImage %}"
          alt="Circle icon"
          class="description-heading__icon" />
-    <p class="mb-0">{{ heading }}</p>
+    <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
   </div>
   <div class="description-content">
     <div class="blockOfContent">
-      <p class="mainContent">{{ explanaitionText|slice:":500" }}</p>
-      <div class="mainContent collapse" id="explanaitionText">
-        {{ explanaitionText|slice:"501:" }}
+      {% if showMorePresent %}
+        <p class="mainContent">{{ explanaitionText|slice:":500" }}</p>
+        <div class="mainContent collapse" id="explanaitionText">
+          {{ explanaitionText|slice:"501:" }}
+        </div>
+        <div class="showMore">
+          <a role="button"
+             class="collapsed text-truncation-btn"
+             data-toggle="collapse"
+             href="#explanaitionText"
+             aria-expanded="true"
+             aria-controls="explanaitionText"
+             data-expanded-text="{% translate 'Zeige weniger ...' %}"
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+        </div>
       </div>
-      <div class="showMore">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#explanaitionText"
-           aria-expanded="true"
-           aria-controls="explanaitionText"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
-      </div>
-    </div>
+    {% else %}
+      <p class="mainContent">{{ explanaitionText }}</p>
+    {% endif %}
   </div>
 </div>
