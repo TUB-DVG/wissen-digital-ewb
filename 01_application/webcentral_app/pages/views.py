@@ -152,3 +152,16 @@ def criteriaCatalog(request):
 def impressum(request):
     """Call render function for impressum page."""
     return render(request, "pages/impressum.html")
+
+
+def showImage(request, idOfEnvironmentalImpactObj):
+    """Call render function for show image page."""
+    environmentalObjToReturn = EnvironmentalImpact.objects.get(
+        id=idOfEnvironmentalImpactObj)
+    context = {
+        "imageName": environmentalObjToReturn.image,
+        "backLink": "environmentalIntegrityBox",
+        "backLinkParam": idOfEnvironmentalImpactObj,
+        "backLinkText": environmentalObjToReturn.project_name,
+    }
+    return render(request, "pages/showImage.html", context)

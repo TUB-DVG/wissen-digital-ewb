@@ -1,10 +1,49 @@
 {% load static %}
 {% load i18n %}
 <style>
-.mainContent {
-font-size: 22px;
-}
+    .mainContent {
+        font-size: 22px;
+        display: inline;
+    }
+    .mainContentHeading {
+        font-size: 22px;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .showMore {
+        display: inline;
+        
+        font-size: 22px;
+    }
+    .showMore a {
+        color: #8FDE97;
+    }
+    .blockOfContent{
+        margin-bottom: 54px;
+        display: block;
+    }
 </style>
+<div class="blockOfContent">
+    <div class="mainContentHeading">
+        {% translate "Problemstellung und Problemziele" %}
+    </div>
+    <div class="mainContent" id="shortDescription">
+        {{ boxObject.problem_statement_and_problem_goals|slice:":500" }}
+    </div>
+    <div class="mainContent collapse" id="problemStatement">
+        {{ boxObject.problem_statement_and_problem_goals|slice:"501:" }}
+    </div>
+    <div class="showMore">
+        <a role="button"
+           class="collapsed text-truncation-btn"
+           data-toggle="collapse"
+           href="#problemStatement"
+           aria-expanded="true"
+           aria-controls="problemStatement"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+    </div>
+</div>
 <div class="mainContent">
     {% translate "Problemstellung und Problemziele" %}
 </div>
