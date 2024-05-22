@@ -56,7 +56,7 @@ urlpatterns = [
     ),
     path("dataSufficiency", views.dataSufficiency, name="dataSufficiency"),
     path(
-        "dataSufficiencyBox/<int:idOfPage>/",
+        "dataSufficiencyBox/<int:idOfObject>/",
         views.dataSufficiencyBox,
         name="dataSufficiencyBox",
     ),

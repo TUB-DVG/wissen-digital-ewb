@@ -2,7 +2,10 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 
-from component_list.models import EnvironmentalImpact
+from component_list.models import (
+    EnvironmentalImpact,
+    DataSufficiency,
+)
 
 
 def index(request):
@@ -96,9 +99,8 @@ def benchmarkingChallenges(request):
 
 def dataSufficiency(request):
     """Call render function for data sufficiency page."""
+    dataSufficiencyObjs = DataSufficiency.objects.all()
     context = {
-        "n":
-        range(4),
         "pathToImage":
         "img/componentList/circle-icon.svg",
         "heading":
@@ -106,34 +108,27 @@ def dataSufficiency(request):
         "explanaitionText":
         _("Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet."
           ),
-        "pathToBoxTemplates": [
-            "pages/dataSufficiencyBox1.html",
-            "pages/dataSufficiencyBox2.html",
-            "pages/dataSufficiencyBox3.html",
-            "pages/dataSufficiencyBox4.html",
-        ],
+        "boxes": [{
+            "pathToTemplate": "pages/dataSufficiencyBox.html",
+            "objectToRender": dataSufficiencyObj,
+        } for dataSufficiencyObj in dataSufficiencyObjs],
         "focusBorder":
         "ecological",
     }
     return render(request, "pages/dataSufficiency.html", context)
 
 
-def dataSufficiencyBox(request, idOfPage):
+def dataSufficiencyBox(request, idOfObject):
     """Call render function for data sufficiency box page."""
-    mappingIdHeading = {
-        1: _("Datenerhebung"),
-        2: _("Datenverarbeitung"),
-        3: _("Datenmanagement "),
-        4: _("Datenspeicherung"),
-    }
+    dataSufficiencyObj = DataSufficiency.objects.get(id=idOfObject)
     context = {
+        "boxObject": dataSufficiencyObj,
         "focusBorder": "ecological",
         "focusName": "ecological",
         "urlName": "dataProcessing",
         "backLinkText": _("Datensuffizienz"),
         "backLink": "dataSufficiency",
         "leftColumn": "pages/dataSufficiencyLeftColumn.html",
-        "leftColumnHeading": mappingIdHeading[idOfPage],
         "rightColumn": "pages/dataSufficiencyRightColumn.html",
     }
     return render(request, "common/detailsPage.html", context)
