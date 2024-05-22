@@ -446,7 +446,6 @@ class Command(BaseCommand):
         created:    bool
             Indicates, if the EnvironmentalImpact-object was created or not.
         """
-        breakpoint()
         category = row[header.index("Category")]
         description = row[header.index("Description")]
         nameDigitalApplication = row[header.index("Name_Digital_Application")]
@@ -466,7 +465,7 @@ class Command(BaseCommand):
         projectWebsite = row[header.index("Project_Website")]
         consortium = row[header.index("Consortium")]
         further = row[header.index("Further")]
-        digitalApplications = row[header.index("Digital_Applications")]
+        digitalApplications = row[header.index("Digital_applications")]
         goals = row[header.index("Goals")]
         strategies = row[header.index("Strategies")]
         relevance = row[header.index("Relevance")]
@@ -915,7 +914,6 @@ class Command(BaseCommand):
         # Add foreign key relation to category
         componentName = row[header.index("Component")]
         componentStr = self._selectNearestMatch(componentName, ComponentClass)
-        # breakpoint()
         component = ComponentClass.objects.get(componentClass=componentStr)
         description = row[header.index("Description")]
         try:

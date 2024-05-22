@@ -43,7 +43,7 @@ class EnvironmentalImpact(models.Model):
     name_digital_application = models.CharField(max_length=255)
     project_name = models.CharField(max_length=255)
     funding_label = models.ForeignKey(Subproject, on_delete=models.CASCADE)
-    duration = models.DurationField()
+    # duration = models.DurationField()
     partner = models.CharField(max_length=255)
     project_website = models.URLField()
     consortium = models.TextField()
