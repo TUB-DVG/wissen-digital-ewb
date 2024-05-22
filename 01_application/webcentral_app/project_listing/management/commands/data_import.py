@@ -70,6 +70,7 @@ from component_list.models import (
     ComponentClass,
     Category,
     EnvironmentalImpact,
+    DataSufficiency,
 )
 
 from project_listing.models import (
@@ -494,6 +495,42 @@ class Command(BaseCommand):
             problem_statement_and_problem_goals=problemStatementAndProblemGoals,
             implementation_in_the_project=implementationInTheProject,
             evaluation=evaluation,
+        )
+        return obj, created
+
+    def getOrCreateDataSufficiency(self, row: list, header: list) -> tuple:
+        """Gets or Creates an object of type DataSufficiency from row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        DataSufficiency according to the fed-data. Either this object
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    DataSufficiency
+            DataSufficiency-object, represent the created or in database
+            present DataSufficiency-Dataset with the data from row.
+        created:    bool
+            Indicates, if the DataSufficiency-object was created or not.
+        """
+        strategyCategory = row[header.index("Strategiekategorie")]
+        categoryShortDescription = row[header.index(
+            "Kategorie_Kurzbeschreibung")]
+        example1 = row[header.index("Beispiel_1")]
+        example2 = row[header.index("Beispiel_2")]
+
+        obj, created = DataSufficiency.objects.get_or_create(
+            strategyCategory=strategyCategory,
+            categoryShortDescription=categoryShortDescription,
+            example1=example1,
+            example2=example2,
         )
         return obj, created
 
@@ -1784,6 +1821,8 @@ class Command(BaseCommand):
                 self.getOrCreateComponent(row, header)
             elif "environmentalImpact" in filename:
                 self.getOrCreateEnvironmentalImpact(row, header)
+            elif "DataSufficiency" in filename:
+                self.getOrCreateDataSufficiency(row, header)
             else:
                 CommandError(
                     "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
