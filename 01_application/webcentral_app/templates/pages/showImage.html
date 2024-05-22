@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Detailansicht zum Bild" %}
+{% endblock %}
+
+{% load static %}
+{% block content %}
+    <div class="content container">
+        <div class="row">{% include "common/backLinkInFocusColor.html" %}</div>
+        <div class="row d-flex justify-content-center align-items-center">
+            <img src="{% static imageName %}"
+                 alt="Detailansicht des angeklickten Bildes"
+                 style="width: 636px;
+                        467px;
+                        margin-top: 150px" />
+        </div>
+    </div>
+{% endblock %}

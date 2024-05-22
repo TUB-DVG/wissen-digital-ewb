@@ -62,14 +62,47 @@
       }
     } 
 </style>
+<style>
+  .mainContent {
+      font-size: 22px;
+      display: inline;
+  }
+  .showMore {
+      display: inline;
+      
+      font-size: 22px;
+  }
+  .showMore a {
+      color: #8FDE97;
+  }
+  .blockOfContent{
+    display: block;
+    margin-bottom: 20px;
+  }
+</style>
 <div class="col-12 descriptionContainer">
-    <div class="description-heading mb-3">
-        <img src="{% static pathToImage %}"
-             alt="Circle icon"
-             class="description-heading__icon" />
-        <p class="mb-0">{{ heading }}</p>
+  <div class="description-heading mb-3">
+    <img src="{% static pathToImage %}"
+         alt="Circle icon"
+         class="description-heading__icon" />
+    <p class="mb-0">{{ heading }}</p>
+  </div>
+  <div class="description-content">
+    <div class="blockOfContent">
+      <p class="mainContent">{{ explanaitionText|slice:":500" }}</p>
+      <div class="mainContent collapse" id="explanaitionText">
+        {{ explanaitionText|slice:"501:" }}
+      </div>
+      <div class="showMore">
+        <a role="button"
+           class="collapsed text-truncation-btn"
+           data-toggle="collapse"
+           href="#explanaitionText"
+           aria-expanded="true"
+           aria-controls="explanaitionText"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+      </div>
     </div>
-    <div class="description-content">
-        <p>{{ explanaitionText }}</p>
-    </div>
+  </div>
 </div>

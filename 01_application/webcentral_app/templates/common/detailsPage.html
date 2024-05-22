@@ -60,14 +60,7 @@
     </style>
     <!-- ======================= Content START ======================= -->
     <div class="content container" id="container-start-focus">
-        <div class="row link-navigator">
-            <a href="{% url backLink %}" class="link-navigator__negative">
-                <img src="{% static 'img/componentList/caret-left.svg' %}"
-                     alt="Caret left icon"
-                     class="link-navigator__icon" />
-                {{ backLinkText }}
-            </a>
-        </div>
+        {% include "common/backLinkInFocusColor.html" %}
         <div class="row columns border-{{ focusBorder }}">
             <div class="column__left">{% include leftColumn %}</div>
             <div class="column__right">{% include rightColumn %}</div>

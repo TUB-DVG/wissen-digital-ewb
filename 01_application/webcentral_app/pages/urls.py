@@ -63,5 +63,10 @@ urlpatterns = [
     path("dataSecurity", views.dataSecurity, name="dataSecurity"),
     path("iconsAndVis", views.iconsAndVis, name="iconsAndVis"),
     path("criteriaCatalog", views.criteriaCatalog, name="criteriaCatalog"),
+    path(
+        "showImage/<int:idOfEnvironmentalImpactObj>",
+        views.showImage,
+        name="showImage",
+    ),
     #     redirect('criteriaCatalog:index'),
 ]

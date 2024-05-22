@@ -10,7 +10,7 @@
     <span class="columnHeading">{% translate "Förderkennzeichen" %}:</span> {{ boxObject.funding_label }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Laufzeit" %}:</span> {{ boxObject.funding_label.enargusData.startDate }}
+    <span class="columnHeading">{% translate "Laufzeit" %}:</span> {{ boxObject.funding_label.enargusData.startDate }} - {{ boxObject.funding_label.enargusData.endDate }}
 </p>
 <p>
     <span class="columnHeading">{% translate "Partner" %}:</span> {{ boxObject.partner }}
@@ -37,5 +37,9 @@
     <span class="columnHeading">{% translate "Relevanz" %}:</span>{{ boxObject.relevance }}
 </p>
 <p>
-    <img src="{% static boxObject.image %}" />
+    <a href="{% url 'showImage' boxObject.id %}">
+        <img src="{% static boxObject.image %}"
+             style="width: 287px;
+                    height: 203px" />
+    </a>
 </p>

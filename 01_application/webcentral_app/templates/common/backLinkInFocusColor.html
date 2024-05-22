@@ -1,0 +1,27 @@
+{% load static %}
+<style>
+    .link-navigator__icon {
+        width: 8px;
+    }
+    .link-navigator__negative {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #8FDE97;
+    }
+</style>
+<div class="row link-navigator">
+    {% if backLinkParam %}
+        <a href="{% url backLink backLinkParam %}"
+           class="link-navigator__negative">
+        {% else %}
+            <a href="{% url backLink %}" class="link-navigator__negative">
+            {% endif %}
+            <img src="{% static 'img/componentList/caret-left.svg' %}"
+                 alt="Caret left icon"
+                 class="link-navigator__icon" />
+            {{ backLinkText }}
+        </a>
+    </div>
