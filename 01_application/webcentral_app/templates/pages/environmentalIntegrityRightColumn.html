@@ -1,0 +1,17 @@
+{% load static %}
+{% load i18n %}
+<style>
+.mainContent {
+font-size: 22px;
+}
+</style>
+<div class="mainContent">
+    {% translate "Problemstellung und Problemziele" %}
+</div>
+<div class="mainContent">
+    {{ boxObject.problem_statement_and_problem_goals }}
+</div>
+<div class="mainContent">{% translate "Umsetzung im Projekt" %}</div>
+<div class="mainContent">{{ boxObject.implementation_in_the_project }}</div>
+<div class="mainContent">{% translate "Evaluation" %}</div>
+<div class="mainContent">{{ boxObject.evaluation }}</div>

@@ -45,6 +45,11 @@ urlpatterns = [
         name="environmentalIntegrityPositiv",
     ),
     path(
+        "environmentalIntegrityPositiv/<int:idOfEnvironmentalImpactObj>/",
+        views.environmentalIntegrityBox,
+        name="environmentalIntegrityBox",
+    ),
+    path(
         "benchmarkingChallenges",
         views.benchmarkingChallenges,
         name="benchmarkingChallenges",

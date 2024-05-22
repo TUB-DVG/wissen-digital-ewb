@@ -74,14 +74,17 @@ def environmentalIntegrityPositiv(request):
     return render(request, "pages/environmentalIntegrityPositiv.html", context)
 
 
-def environmentalIntegrityBox(request, idOfPage):
+def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
+    """Call render function for environmental integrity box page."""
+    environmentalImpactObj = EnvironmentalImpact.objects.get(
+        id=idOfEnvironmentalImpactObj)
     context = {
+        "boxObject": environmentalImpactObj,
         "focusBorder": "ecological",
         "backLinkText": _("Positive Umweltwirkungen"),
         "backLink": "environmentalIntegrityPositiv",
-        "leftColumn": "pages/dataSufficiencyLeftColumn.html",
-        "leftColumnHeading": mappingIdHeading[idOfPage],
-        "rightColumn": "pages/dataSufficiencyRightColumn.html",
+        "leftColumn": "pages/environmentalIntegrityLeftColumn.html",
+        "rightColumn": "pages/environmentalIntegrityRightColumn.html",
     }
     return render(request, "common/detailsPage.html", context)
 
