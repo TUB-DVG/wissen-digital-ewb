@@ -50,7 +50,48 @@ def userIntegrationMethod(request):
 
 def environmentalIntegrityNegativ(request):
     """Call render function for negativ environmental integrity page."""
-    return render(request, "pages/environmentalIntegrityNegativ.html")
+    context = {
+        "pathToImage":
+        "img/componentList/circle-icon.svg",
+        "heading":
+        _("Negative Umweltwirkungen"),
+        "showMorePresent":
+        False,
+        "explanaitionText":
+        _("Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale Anwendungen muss zudem der materielle und energetische Aufwand für die involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte können aber auch auf andere digitale Anwendungen übertragen werden."
+          ),
+        "boxes": [
+            {
+                "pathToTemplate":
+                "pages/environmentalIntegrityNegativeBox.html",
+                "linkToDetailsPage":
+                "components",
+                "heading":
+                _("Aufwände für verwendete Komponenten"),
+                "description":
+                _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten"
+                  ),
+                "image":
+                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+            },
+            {
+                "pathToTemplate":
+                "pages/environmentalIntegrityNegativeBox.html",
+                "linkToDetailsPage":
+                "dataProcessing",
+                "heading":
+                _("Aufwände für Datenverarbeitungsprozesse"),
+                "description":
+                _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten"
+                  ),
+                "image":
+                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+            },
+        ],
+        "focusBorder":
+        "ecological",
+    }
+    return render(request, "pages/environmentalIntegrityNegativ.html", context)
 
 
 def environmentalIntegrityPositiv(request):

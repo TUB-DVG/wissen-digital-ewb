@@ -97,6 +97,14 @@
     .comparisonInputTools {
         transform: translate(-20px,5px);
     }
+    .unstyledLink{
+        text-decoration: none;
+        color: black;
+        font-size: 22px;
+    }
+    .descriptionDownloadLink {
+        margin-bottom: 24px;
+    }
     </style>
     <div class="content container">
         <div class="row">
@@ -117,22 +125,18 @@
         </div>
         <div class="row">
             <div class="descriptionBox">
-                <div class="descriptionHeading">
-                    {% translate "Aufwände für verwendete Komponenten" %}
-                </div>
-                <div class="descriptionText">
-                    <p>
-                        {% blocktranslate %}In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten.{% endblocktranslate %}
-                    </p>
-                </div>
+                {% include "common/descriptionContainer.html" %}
                 <div class="descriptionDownloadLink">
-                    <a href="{% static 'pdf/componentList.pdf' %}" download>{% translate "Download Link" %}</a>
+                    <a href="{% static 'pdf/componentList.pdf' %}"
+                       class="unstyledLink"
+                       download>{% translate "Download Link" %}</a>
                 </div>
                 <div class="descriptionImage">
                     <img src="{% static 'img/componentListDescriptionImage.svg' %}"
                          alt="Description Component Image" />
                 </div>
             </div>
+
         </div>
         <div class="searchContainer {{ focusBorder }}-cards">
             {% include "common/search-bar.html" %}

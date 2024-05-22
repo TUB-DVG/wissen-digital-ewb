@@ -44,73 +44,17 @@
       margin-top: 8px;
       height: 100% !important;
       object-fit: contain;
+      width: 602px;
     }
   </style>
   <!-- =======================
  Content START -->
   <div class="content container">
-    <div class="row">
-      <div class="col-12 description">
-        <div class="description-heading mb-3">
-          <img src="{% static 'img/componentList/circle-icon.svg' %}"
-              alt="Circle icon"
-              class="description-heading__icon">
-          <p class="mb-0">{% translate "Negative Umweltwirkungen" %}</p>
-        </div>
-        <div class="description-content">
-          <p>
-            {% blocktranslate %}Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale Anwendungen muss zudem der materielle und energetische Aufwand für die involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte können aber auch auf andere digitale Anwendungen übertragen werden. {% endblocktranslate %}
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="boxes" id="container-start-focus">
-      <div class="row">
-        <div class="col-12 col-lg-6 box border-ecological" id="box1">
-          <a href="{% url 'components' %}"
-             style="color: inherit;
-                    text-decoration: none;
-                    font-style: normal">
-            <div class="row box__content">
-              <div class="col-12">
-                <h6 class="boxHeading mb-4">{% translate "Aufwände für verwendete Komponenten" %}</h6>
-              </div>
-              <div class="col-12">
-                <p class="boxDescription">
-                  {% blocktranslate %}In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten{% endblocktranslate %}
-                </p>
-              </div>
-              <div class="boxImage">
-                <img src="{% static 'img/componentList/negativeEnvironmentalImpactsBox1.svg' %}"
-                     alt="box1"
-                     class="box__image">
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-12 col-lg-6 box border-ecological" id="box2">
-          <a href="{% url 'dataProcessing' %}"
-             style="color: inherit;
-                    text-decoration: none;
-                    font-style: normal">
-            <div class="row box__content">
-              <div class="col-12">
-                <h6 class="boxHeading mb-4">{% translate "Aufwände für Datenverarbeitungsprozesse" %}</h6>
-              </div>
-              <div class="col-12">
-                <p class="boxDescription">
-                  {% blocktranslate %}Bei der Nutzung digitaler Technologien für die Betriebsoptimierung von Gebäuden und Quartieren werden in der Regel unterschiedliche Datenverarbeitungsprozesse durchlaufen, die am Ende eine bestmögliche Nutzung der Daten ermöglichen sollen. Einen Überblick über einige der möglichen Prozessschritte bietet das in Abbildung 1 gezeigten Daten-Wertschöpfungskette. Hinter jedem Prozessschritt steht eine programmierte Anweisung, die oftmals in Schleifen ausgeführt wird. Dadurch kommt es fortwährend zur Generierung von Daten, welche auch mit einem entsprechenden Energieverbrauch verbunden ist. Hier finden Sie Umweltlasten wichtiger Datenverarbeitungsprozesse. {% endblocktranslate %}
-                </p>
-              </div>
-              <div class="boxImage">
-                <img src="{% static 'img/componentList/negativeEnvironmentalImpactsBox2.svg' %}"
-                     alt="box1"
-                     class="box__image">
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+    {% include "common/descriptionContainer.html" %}
+    <div class="boxes row" id="container-start-focus">
+      {% for boxObject in boxes %}
+        {% include "pages/environmentalIntegrityNegativeBox.html" with boxObject=boxObject %}
+      {% endfor %}
     </div>
   </div>
   <!-- Content END -->

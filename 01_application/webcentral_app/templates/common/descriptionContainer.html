@@ -82,11 +82,13 @@
     margin-bottom: 20px;
   }
 </style>
-<div class="col-12 descriptionContainer">
+<div class="col-12 descriptionContainer" style="margin-top: 24px;">
   <div class="description-heading mb-3">
-    <img src="{% static pathToImage %}"
-         alt="Circle icon"
-         class="description-heading__icon" />
+    {% if pathToImage %}
+      <img src="{% static pathToImage %}"
+           alt="Circle icon"
+           class="description-heading__icon" />
+    {% endif %}
     <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
   </div>
   <div class="description-content">
