@@ -63,8 +63,10 @@ def environmentalIntegrityPositiv(request):
         "img/componentList/circle-icon.svg",
         "heading":
         _("Positive Umweltwirkungen"),
+        "showMorePresent":
+        False,
         "explanaitionText":
-        _("Die folgenden vier Kriterien beschreiben die positiven Umweltwirkungen, die durch die Nutzung des Produkts entstehen."
+        _("Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt."
           ),
         "boxes": [{
             "pathToTemplate": "pages/environmentalIntegrityBox.html",
