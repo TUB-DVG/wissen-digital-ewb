@@ -199,7 +199,7 @@ def comparison(request):
         templateName = "tools_over/toolsComparisonResults.html"
         backLinkText = _("Zurück zu den digitalen Werkzeugen")
         backLinkColor = "#AFC5FF"
-        imgBackButtonPath = "img/tools_over/backArrowTools.svg"
+        imgBackButtonPath = "img/backArrowTools.svg"
     else:
         return render(request, "404.html")
 
