@@ -74,7 +74,7 @@ app.layout = html.Div([
     dcc.Dropdown(
         id='interval-dropdown',
         options=[
-            {'label': '5 Seconds', 'value': '5sec'},
+            {'label': '5 Seconds', 'value': '5s'},
             {'label': '15 Minutes', 'value': '15min'},
             {'label': '1 Hour', 'value': '1h'},
             {'label': 'Alle Frequenzen', 'value': 'all'},
