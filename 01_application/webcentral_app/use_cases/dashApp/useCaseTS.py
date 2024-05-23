@@ -1,6 +1,6 @@
 import os
 import pathlib
-
+import regex as re
 import pandas as pd
 import plotly.graph_objects as go
 from django_plotly_dash import DjangoDash
@@ -140,24 +140,41 @@ def update_graph(building, interval, scale):
             intervals = ["5s", "15min", "1h"]
         else:
             intervals = [interval]
+            # columns: 
+            # Elektrisch-Kombiniert_einHaushalt_15min,Wasserkocher_einHaushalt_15min,
+            # Waschmaschine_einHaushalt_15min,Kühl-_und_Gefrierschrank_einHaushalt_15min,Hauptanschluss_einHaushalt_15min,Durchlauferhitzer_einHaushalt_15min
 
         for i in intervals:
             data = data_store[b][i]
-            if scale == "all":
-                for col in data.columns:
-                    fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Equipment 2'))
+            if scale == "all" or scale == "equipment":
+                if any(re.match(r'Wasserkocher.*', col) for col in data.columns):
+                    for col in [col for col in data.columns if re.match(r'Wasserkocher.*', col)]:
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Wasserkocher'))
+                if any(re.match(r'Waschmaschine.*', col) for col in data.columns):
+                    for col in [col for col in data.columns if re.match(r'Waschmaschine.*', col)]:
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Waschmaschine'))
+                if any(re.match(r'Kühl-_und_Gefrierschrank.*', col) for col in data.columns):
+                    for col in [col for col in data.columns if re.match(r'Kühl-_und_Gefrierschrank.*', col)]:
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Kühl-_und_Gefrierschrank'))
+                if any(re.match(r'Durchlauferhitzer.*', col) for col in data.columns):
+                    for col in [col for col in data.columns if re.match(r'Durchlauferhitzer.*', col)]:
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Durchlauferhitzer'))
             
+            if scale == "all" or scale == "full_building":
+                if any(re.match(r'Hauptanschluss.*', col) for col in data.columns):
+                    for col in [col for col in data.columns if re.match(r'Hauptanschluss.*', col)]:
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Hauptanschluss'))
             
-            elif scale == "equipment":
-                if 'equipment1' in data.columns:
-                    fig.add_trace(go.Scatter(x=data.index, y=data['equipment1'], mode='lines', name=f'{b} {i} Equipment 1'))
-                if 'equipment2' in data.columns:
-                    fig.add_trace(go.Scatter(x=data.index, y=data['equipment2'], mode='lines', name=f'{b} {i} Equipment 2'))
-            
-            elif scale == "full_building":
-                #if 'total' in data.columns:
-                if "Elektrisch-Kombiniert" in data.columns:
-                    fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Total'))
+            if scale == "all" or scale == "aggregated_buildings":
+                if building == 'all':
+                    aggregated_data = data.groupby(data.index).sum()
+                    if any(re.match(r'Hauptanschluss.*', col) for col in aggregated_data.columns):
+                        for col in [col for col in aggregated_data.columns if re.match(r'Hauptanschluss.*', col)]:
+                            fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data[col], mode='lines', name=f'{b} {i} Aggregated {col}'))
+                else:
+                    if any(re.match(r'Hauptanschluss.*', col) for col in data.columns):
+                        for col in [col for col in data.columns if re.match(r'Hauptanschluss.*', col)]:
+                            fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Hauptanschluss'))
 
             elif scale == "aggregated_buildings":
                 
