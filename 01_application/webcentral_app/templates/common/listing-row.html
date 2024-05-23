@@ -8,9 +8,8 @@
     .subHeading {
         color: grey;
     }
-    .headingInListingContainer{
-        font-size: 35px;
-    
+    .headingInListingContainer1{
+        font-size: 22px;
     }
 </style>
 <div class="container {{ focusName }}-cards ">
@@ -31,9 +30,9 @@
                             <span class="listingRowAttributeNames">{{ element.description }}:</span>
                         {% endif %}
                         {% if forloop.first %}
-                            <h3 class="headingInListingContainer">
+                            <div class="headingInListingContainer1">
                                 {{ object|get_attribute:element.objectReference }}
-                            </h3>
+                            </div>
                         {% elif forloop.counter == 2 %}
                             <p class="subHeading">{{ object|get_attribute:element.objectReference }}</p>
                         {% else %}
