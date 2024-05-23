@@ -8,7 +8,7 @@ from dash.exceptions import PreventUpdate
 from django.utils.translation import gettext as _
 from django.contrib.sessions.models import Session
 import dash
-from dash import  dcc, html, Input, Output ,State
+from dash import  dcc, html, Input, Output, State
 
 PATH = pathlib.Path(__file__).parent.resolve() 
 DATA_PATH = os.path.join(PATH , 'auxillary/Household62_1h.csv') 
@@ -22,52 +22,148 @@ data_directory = '01_application/webcentral_app/use_cases/dashApp/auxillary'
 file_list = os.listdir(data_directory)
 file_list = [file for file in file_list if file.endswith('.csv')] 
 
+def load_data(file):
+    df = pd.read_csv(os.path.join(data_directory, file), parse_dates=['datetime'])
+    df.set_index('datetime', inplace=True)
+    return df
+
+data_store = {
+    "building62" : {
+        "5s" : load_data("Household62_5sec.csv"),
+        "15min" :  load_data("Household62_15min.csv"),
+        "1h" :  load_data("Household62_1h.csv")
+        
+    },
+    "building73" : {
+        "5s" : load_data("Household73_5sec.csv"),
+        "15min" :  load_data("Household73_15min.csv"),
+        "1h" :  load_data("Household73_1h.csv")
+        
+    },
+    "building106" : {
+        "5s" : load_data("Household106_5sec.csv"),
+        "15min" :  load_data("Household106_15min.csv"),
+        "1h" :  load_data("Household106_1h.csv")
+        
+    },
+    "threebuildings" : {
+        "5s" : load_data("three_households_5sec.csv"),
+        "15min" :  load_data("three_households_15min.csv"),
+        "1h" :  load_data("three_households_1h.csv")
+        
+    },
+
+
+}
+
 app = DjangoDash('useCaseTS')
 
 # Define the layout of the app
-app.layout = html.Div([html.Div(
+app.layout = html.Div([
+    html.Div([
+        dcc.Dropdown(
+        id='building-dropdown',
+        options=[
+            {'label': 'Building 1', 'value': 'building62'},
+            {'label': 'Building 2', 'value': 'building73'},
+            {'label': 'Building 3', 'value': 'building106'},
+            {'label': 'All Buildings', 'value': 'all'}
+        ],
+        value='all'
+    ),
     dcc.Dropdown(
-        id='file-selector',
-        options=[{'label': file, 'value': file} for file in file_list],
-        value=file_list[:min(len(file_list), 12)],  # Default to the first 12 files
-        multi=True
-    )),
-    dcc.Loading(id="loading",
-           children=[html.Div([dcc.Graph(id="time-series-chart",figure = {})])],
-           type="circle",fullscreen=False),
-    ],style={'font-family': "Roboto, sans-serif",
-             
-         "color":"rgb(116, 117, 121)",
-         "font-size":" 18.75px",
-         "font-weight": "400",
-         "line-height": "22.5px",
-         "overflow-x": "auto",
-         "overflow-y": "auto",})
+        id='interval-dropdown',
+        options=[
+            {'label': '5 Seconds', 'value': '5sec'},
+            {'label': '15 Minutes', 'value': '15min'},
+            {'label': '1 Hour', 'value': '1h'},
+            {'label': 'Alle Frequenzen', 'value': 'all'},
+
+        ],
+        value='all'
+    ),
+    dcc.Dropdown(
+        id='scale-dropdown',
+        options=[
+            {'label': 'Equipment', 'value': 'equipment'},
+            {'label': 'Full Building', 'value': 'full_building'},
+            {'label': 'Aggregated Buildings', 'value': 'aggregated_buildings'},
+            {'label': 'Alle Aggregationen', 'value': 'all'},
+        ],
+        value='all'
+    ),
+        dcc.Loading(
+            id="loading",
+            children=[html.Div([dcc.Graph(id="time-series-chart",figure = {})])],
+            type="circle",
+            fullscreen=False
+            )
+            ])],
+            style={'font-family': "Roboto, sans-serif",
+                   "color":"rgb(116, 117, 121)",
+                   "font-size":" 18.75px",
+                   "font-weight": "400",
+                   "line-height": "22.5px",
+                   "overflow-x": "auto",
+                   "overflow-y": "auto",})
 
 
 # Callback to update the graph based on file and column selection
 @app.callback(
     Output('time-series-chart', 'figure'),
-    Input('file-selector', 'value')
+    Input('building-dropdown', 'value'),
+    Input('interval-dropdown', 'value'),
+    Input('scale-dropdown', 'value'),
 )
-def update_graph(selected_files):
-    if not selected_files:
-        return go.Figure()
-
+def update_graph(building, interval, scale):
+    
+    temp_data = {}
     # Initialize a plotly graph object figure
     fig = go.Figure()
 
     # Loop through selected files and add each as a separate trace in the graph
-    for file in selected_files:
-        df = pd.read_csv(os.path.join(data_directory, file), parse_dates=['datetime'])
-        df.set_index('datetime', inplace=True)
+    #for file in selected_files:
+    #    df = pd.read_csv(os.path.join(data_directory, file), parse_dates=['datetime'])
+    #    df.set_index('datetime', inplace=True)#
 
 
          # Automatically add traces for all numerical columns
-        for col in df.columns:
-            fig.add_trace(go.Scatter(x=df.index, y=df[col], mode='lines', name=f'{file} - {col}'))
+    #    for col in df.columns:
+    #        fig.add_trace(go.Scatter(x=df.index, y=df[col], mode='lines', name=f'{file} - {col}'))
+    if building == "all":
+        buildings = ["building62", "building73", "building106", "threebuildings"]
+    else:
+        buildings = [building]
 
+    for b in buildings:
+        if interval == "all":
+            intervals = ["5s", "15min", "1h"]
+        else:
+            intervals = [interval]
 
+        for i in intervals:
+            data = data_store[b][i]
+            if scale == "all":
+                for col in data.columns:
+                    fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Equipment 2'))
+            
+            
+            elif scale == "equipment":
+                if 'equipment1' in data.columns:
+                    fig.add_trace(go.Scatter(x=data.index, y=data['equipment1'], mode='lines', name=f'{b} {i} Equipment 1'))
+                if 'equipment2' in data.columns:
+                    fig.add_trace(go.Scatter(x=data.index, y=data['equipment2'], mode='lines', name=f'{b} {i} Equipment 2'))
+            
+            elif scale == "full_building":
+                #if 'total' in data.columns:
+                if "Elektrisch-Kombiniert" in data.columns:
+                    fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Total'))
+
+            elif scale == "aggregated_buildings":
+                
+                fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data['total'], mode='lines', name=f'{b} {i} Aggregated Total'))
+
+        
 
     # Update layout
     fig.update_layout(
