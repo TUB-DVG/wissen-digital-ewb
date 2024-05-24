@@ -38,6 +38,54 @@ def businessModelsPractice(request):
     return render(request, "pages/businessModelsPractice.html")
 
 
+def businessModels(request):
+    """Call render function for business models best practice page."""
+    context = {
+        "focusBorder":
+        "operational",
+        "pathToImage":
+        "img/componentList/circle-icon.svg",
+        "heading":
+        _("Geschäftsmodelle"),
+        "showMorePresent":
+        False,
+        "explanaitionText":
+        _("Der Fokus in einem Forschungsprojekt liegt häufig in einem innovativen Produkt, einer digitalen Anwendung oder auch einer neuen Software. Bei der Erstellung des Prototyps endet in den meisten Fällen die Entwicklung im Forschungsprojekt. Bei einer erfolgreichen Entwicklung ist die Übersetzung in ein Geschäftsmodell jedoch wünschenswert. Die hier aufzufindenden Informationen sollen dabei helfen, die Entwicklung von Geschäftsmodellen zu unterstützen und auftretende Herausforderungen zu meistern. Dafür wurden aus bisherigen Forschungsprojekte in Interviews und Workshops Herausforderungen gesammelt, geclustert und erste Lösungsansätze diskutiert. Daneben wurde auch eine Sammlung von Tools erstellt, die bei der Entwicklung vom Prototyp zum Geschäftsmodell unterstützen."
+          ),
+        "boxes": [
+            {
+                "pathToTemplate": "partials/businessModelsBox.html",
+                "objectToRender": {
+                    "image":
+                    "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+                    "linkToDetailsPage":
+                    "components",
+                    "heading":
+                    _("Herausforderungen bei der Entwicklung und Umsetzung"),
+                    "description":
+                    _("Bei der Umsetzung von Prototypen digitaler Anwendungen in ein funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese ergeben sich durch strukturelle Faktoren wie die Förderbedingungen, durch technische oder organisatorische Faktoren wie die Übertragbarkeit sowie durch ökonomische und soziale Faktoren wie schwierige Finanzierungsmodelle. Ein Überblick über Hürden und mögliche Lösungen bietet hier eine Hilfestellung."
+                      ),
+                },
+            },
+            {
+                "pathToTemplate": "partials/businessModelsBox.html",
+                "objectToRender": {
+                    "image":
+                    "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+                    "linkToDetailsPage":
+                    "components",
+                    "heading":
+                    _("Herausforderungen bei der Entwicklung und Umsetzung"),
+                    "description":
+                    _("Bei der Umsetzung von Prototypen digitaler Anwendungen in ein funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese ergeben sich durch strukturelle Faktoren wie die Förderbedingungen, durch technische oder organisatorische Faktoren wie die Übertragbarkeit sowie durch ökonomische und soziale Faktoren wie schwierige Finanzierungsmodelle. Ein Überblick über Hürden und mögliche Lösungen bietet hier eine Hilfestellung."
+                      ),
+                },
+            },
+        ],
+    }
+    return render(request, "pages/businessModels.html", context)
+
+
 def userIntegrationPractice(request):
     """Call render function for user integration best practice page."""
     return render(request, "pages/userIntegrationPractice.html")
