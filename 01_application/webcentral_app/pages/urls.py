@@ -20,6 +20,11 @@ urlpatterns = [
         name="businessModelsChallenge",
     ),
     path(
+        "businessModels",
+        views.businessModels,
+        name="businessModels",
+    ),
+    path(
         "businessModelsPractice",
         views.businessModelsPractice,
         name="businessModelsPractice",
