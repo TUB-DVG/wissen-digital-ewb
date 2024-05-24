@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Komponentenliste" %}
+{% endblock %}
+{% load static %}
+{% block content %}
+    <div class="content container">
+        <div class="row">{% include "common/backLinkInFocusColor.html" %}</div>
+        <div class="row">
+            <div class="descriptionBox">
+                {% include "common/descriptionContainer.html" %}
+            </div>
+            <div class="descriptionImage"
+                 style="background-color: #EDEDED;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center">
+                <img src="{% static 'img/businessModelsOverviewImg.svg' %}"
+                     alt="Description Component Image"
+                     style="width: 923px;
+                            height: 502px" />
+            </div>
+        </div>
+    </div>
+{% endblock %}

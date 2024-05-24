@@ -14,11 +14,11 @@ urlpatterns = [
         views.Datenschutzhinweis,
         name="Datenschutzhinweis",
     ),
-    path(
-        "businessModelsChallenge",
-        views.businessModelsChallenge,
-        name="businessModelsChallenge",
-    ),
+    # path(
+    #     "businessModelsChallenge",
+    #     views.businessModelsChallenge,
+    #     name="businessModelsChallenge",
+    # ),
     path(
         "businessModels",
         views.businessModels,
