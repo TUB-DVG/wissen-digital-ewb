@@ -57,7 +57,7 @@ def businessModels(request):
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
                     "image":
-                    "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+                    "img/businessModelsOverviewImg.svg",
                     "linkToDetailsPage":
                     "components",
                     "heading":
