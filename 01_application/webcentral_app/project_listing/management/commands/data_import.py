@@ -73,6 +73,8 @@ from component_list.models import (
     DataSufficiency,
 )
 
+from businessModel.models import BusinessModel
+
 from project_listing.models import (
     Subproject,
     ModuleAssignment,
@@ -316,6 +318,57 @@ class Command(BaseCommand):
             firstName=firstNameFromCSV,
             title=titel,
             email=email,
+        )
+        return obj, created
+
+    def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
+        """Gets or Creates an object of type BusinessModel from the data in row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        BusinessModel according to the fed-data. Either this object
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    BusinessModel
+            BusinessModel-object, represent the created or in database
+            present BusinessModel-Dataset with the data from row.
+        created:    bool
+            Indicates, if the BusinessModel-object was created or not.
+        """
+        challenge = row[header.index("Herausfoderung")]
+        shortDescription = row[header.index("Kurzbeschreibung")]
+        property1 = row[header.index("Eigenschaft_1")]
+        property1Text = row[header.index("Eigenschaft_1_Text")]
+        property2 = row[header.index("Eigenschaft_2")]
+        property2Text = row[header.index("Eigenschaft_2_Text")]
+        property3 = row[header.index("Eigenschaft_3")]
+        property3Text = row[header.index("Eigenschaft_3_Text")]
+        property4 = row[header.index("Eigenschaft_4")]
+        property4Text = row[header.index("Eigenschaft_4_Text")]
+        property5 = row[header.index("Eigenschaft_5")]
+        property5Text = row[header.index("Eigenschaft_5_Text")]
+
+        obj, created = BusinessModel.objects.get_or_create(
+            challenge=challenge,
+            shortDescription=shortDescription,
+            property1=property1,
+            property1Text=property1Text,
+            property2=property2,
+            property2Text=property2Text,
+            property3=property3,
+            property3Text=property3Text,
+            property4=property4,
+            property4Text=property4Text,
+            property5=property5,
+            property5Text=property5Text,
         )
         return obj, created
 
@@ -1823,6 +1876,8 @@ class Command(BaseCommand):
                 self.getOrCreateEnvironmentalImpact(row, header)
             elif "DataSufficiency" in filename:
                 self.getOrCreateDataSufficiency(row, header)
+            elif "businessModels" in filename:
+                self.getOrCreateBusinessModel(row, header)
             else:
                 CommandError(
                     "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
