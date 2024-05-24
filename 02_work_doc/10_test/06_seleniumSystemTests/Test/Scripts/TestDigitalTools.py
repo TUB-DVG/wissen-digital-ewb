@@ -383,6 +383,12 @@ class TestDigitalToolsPage(WebDriverSetup):
         self.assertIsNotNone(siblingElement)
         # no alt text should be present, because the image is loaded successfully:
         self.assertTrue(siblingElement.text == "")
+
+        # check if the back button redirects to the tool-list page:
+        backButton.click()
+
+        self.assertTrue("/tool_list/" in self.driver.current_url)
+
         # check if all the row-attribute names are translated:
         self._setLanguageToEnglish()
 
