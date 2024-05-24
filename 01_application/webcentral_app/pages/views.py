@@ -28,11 +28,6 @@ def coming(request):
     return render(request, "pages/coming.html")
 
 
-def businessModelsChallenge(request):
-    """Call render function for business models challenge page."""
-    return render(request, "pages/businessModelsChallenge.html")
-
-
 def businessModelsPractice(request):
     """Call render function for business models best practice page."""
     return render(request, "pages/businessModelsPractice.html")
@@ -59,7 +54,7 @@ def businessModels(request):
                     "image":
                     "img/businessModelsOverviewImg.svg",
                     "linkToDetailsPage":
-                    "components",
+                    "businessModelsChallenge",
                     "heading":
                     _("Herausforderungen bei der Entwicklung und Umsetzung"),
                     "description":
@@ -173,6 +168,7 @@ def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
     environmentalImpactObj = EnvironmentalImpact.objects.get(
         id=idOfEnvironmentalImpactObj)
     context = {
+        "imageInBackButton": "img/componentList/caret-left.svg",
         "boxObject": environmentalImpactObj,
         "focusBorder": "ecological",
         "backLinkText": _("Positive Umweltwirkungen"),
@@ -213,6 +209,7 @@ def dataSufficiencyBox(request, idOfObject):
     """Call render function for data sufficiency box page."""
     dataSufficiencyObj = DataSufficiency.objects.get(id=idOfObject)
     context = {
+        "imageInBackButton": "img/componentList/caret-left.svg",
         "boxObject": dataSufficiencyObj,
         "focusBorder": "ecological",
         "focusName": "ecological",
@@ -250,6 +247,7 @@ def showImage(request, idOfEnvironmentalImpactObj):
     environmentalObjToReturn = EnvironmentalImpact.objects.get(
         id=idOfEnvironmentalImpactObj)
     context = {
+        "imageInBackButton": "img/componentList/caret-left.svg",
         "imageName": environmentalObjToReturn.image,
         "backLink": "environmentalIntegrityBox",
         "backLinkParam": idOfEnvironmentalImpactObj,
