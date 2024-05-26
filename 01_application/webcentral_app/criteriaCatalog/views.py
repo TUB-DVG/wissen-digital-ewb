@@ -120,6 +120,8 @@ def buildCriteriaCatalog(
             CriteriaCatalog.objects.get(id=criteriaCatalogId),
             "trees": listOfFlattenedTrees,
             "tags": Tag.objects.all(),
+            "showInputsInImageQuickLinkBar": True,
+            "quickLinkName": "criteriaCatalog",
         },
     )
 

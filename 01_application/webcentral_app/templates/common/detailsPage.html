@@ -61,6 +61,9 @@
     <!-- ======================= Content START ======================= -->
     <div class="content container" id="container-start-focus">
         {% include "common/backLinkInFocusColor.html" %}
+        {% if imageQuickLinks == True %}
+            <div class="row">{% include "partials/_imagesNavBar.html" %}</div>
+        {% endif %}
         <div class="row columns border-{{ focusBorder }}">
             <div class="column__left">{% include leftColumn %}</div>
             <div class="column__right">{% include rightColumn %}</div>
