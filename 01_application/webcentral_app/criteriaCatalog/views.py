@@ -109,11 +109,15 @@ def buildCriteriaCatalog(
         listOfFlattenedTrees.append(
             tree_to_html(listOfTrees[index].dictOfTree,
                          nodeRootElements[index]))
+    allCriteriaCatalogObjs = CriteriaCatalog.objects.all()
     return render(
         request,
         "criteriaCatalog/criteriaCatalogDetails.html",
         {
-            "criteriaCatalog": CriteriaCatalog.objects.get(id=id),
+            "idOfSelectedObj": criteriaCatalogId,
+            "allObjectsForQuickLinks": allCriteriaCatalogObjs,
+            "criteriaCatalog":
+            CriteriaCatalog.objects.get(id=criteriaCatalogId),
             "trees": listOfFlattenedTrees,
             "tags": Tag.objects.all(),
         },
