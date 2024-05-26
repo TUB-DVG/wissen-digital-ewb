@@ -7,6 +7,8 @@ from component_list.models import (
     DataSufficiency,
 )
 
+from criteriaCatalog.models import CriteriaCatalog
+
 
 def index(request):
     """Call render function for index page."""
@@ -234,7 +236,27 @@ def iconsAndVis(request):
 
 def criteriaCatalog(request):
     """Call render function for criteria catalog page."""
-    return render(request, "pages/criteriaCatalog.html")
+    criteriaCatalogObjs = CriteriaCatalog.objects.all()
+    context = {
+        "pathToImage":
+        "img/componentList/circle-icon.svg",
+        "heading":
+        _("Positive Umweltwirkungen"),
+        "showMorePresent":
+        False,
+        "explanaitionText":
+        _("Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt."
+          ),
+        "boxes": [{
+            "pathToTemplate":
+            "criteriaCatalog/criteriaCatalogOverviewBox.html",
+            "objectToRender": criteriaCatalogObj,
+        } for criteriaCatalogObj in criteriaCatalogObjs],
+        "focusBorder":
+        "legal",
+    }
+
+    return render(request, "pages/criteriaCatalog.html", context)
 
 
 def impressum(request):

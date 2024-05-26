@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
-{% load static %}
-{% load format_tags %}
-<!DOCTYPE html>
-<style>
+  {% load static %}
+  {% load format_tags %}
+  <!DOCTYPE html>
+  <style>
 button {
   text-align: left;
 }
@@ -110,150 +110,195 @@ button {
     left: 0;
     border-left: 10px solid #F5E86A;
 }
-</style>
+  </style>
 
-<!-- **************** MAIN CONTENT START **************** -->
-<main>
-  <!-- Page content START -->
-  <section class="pt-0">
-    <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
-      <!-- Filter bar START -->
-      <div class="row my-4">
-        <a href="/pages/criteriaCatalog" style="color: #E0D674; font-size: 15px;">< Kriterienkatalog Start</a>
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
+    <!-- Page content START -->
+    <section class="pt-0">
+      <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
+        <!-- Filter bar START -->
+        <div class="row my-4">
+          <a href="/pages/criteriaCatalog"
+             style="color: #E0D674;
+                    font-size: 15px">< Kriterienkatalog Start</a>
+        </div>
+        {% include "partials/_imagesNavBar.html" %}
+        <!-- END search Field Schlagwort -->
       </div>
-      <div class="p-2">
-        <div class="row g-4">
-          <div class="col-lg-12 border-legal p-2 my-1 search__container" id="container-criteria-catalog-details">
-            <div class="col-3 col-xl-3 search__icons" title="Suchen in den Anwendungsnamen">
-            {% if "Betriebsoptimierung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Betriebsoptimierung">
-                <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon"> </a> {% endif %} {% if "Profilbildung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory2-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Profilbildung"><img src="{% static 'assets/images/PurposeCategory2.svg' %}"></a>
-            {% endif %}
-            {% if "Verhaltensbeeinflussung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
-            {% endif %}
-            {% if "Teilen" in criteriaCatalog.name %} 
-              <img src="{% static 'assets/images/PurposeCategory4-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Teilen"><img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon"></a>
-            {% endif %}
-            </div>
-            <!-- search Field Schlagwort -->
-            <div class="col-3 form-group d-flex align-items-center search__input">
-              <input type="text" onkeydown="if (event.key === 'Enter') searchFullText(this.value)" class="form-select js-choice border-legal-round" id="searchInputCriteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
-            </div>
-            <div class="col-3 form-group d-flex align-items-center search__dropdown">
-              
-              <!-- d-flex align-items-center justify-content-center pe-1 -->
-              <form> 
-                <!-- <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'> -->
-                <select name="tags" class="form-select js-choice border-legal-round" id="tags" placeholder="Schlagwort" style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;" onchange="handleOptionSelected()"> 
-                <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
-                  {% for tag in tags %}  
-                    <option>{{ tag }}</option>
-                  {% endfor %}
-                </select>
-              </form>
+    </div>
+    <!-- </form> -->
+    <div class="p-2">
+      <div class="row g-4">
+        <div class="col-lg-12 border-legal my-4 p-4"
+             id="container-criteria-catalog-details">
+          <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
+          <div class="row">
+            <div>
+              <p style="font-size: 22px;">Beschreibungstext: {{ criteriaCatalog.text }}</p>
             </div>
           </div>
-          <!-- END search Field Schlagwort -->
-        </div>
-      </div>
-            <!-- </form> -->
-      <div class="p-2">
-        <div class="row g-4">
-          <div class="col-lg-12 border-legal my-4 p-4" id="container-criteria-catalog-details">
-              <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
-            <div class="row">
-              <div>
-                <p style="font-size: 22px;">Beschreibungstext: {{ criteriaCatalog.text }}</p>
-              </div>
-            </div>
-            <br />
+          <br />
 
-            <div class="row sticky-top border-bottom" style="top: 115px; background-color: white; margin-inline: 0;">
-              <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px; padding-left: 0;">
-                Themen
-              </div>
-              <div class="mb-3" style="width: 106px;">
-                <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
-              </div>
-              <div class="mb-3" id="container-criteria-catalog-details" style="width: 350px;">
-                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
-              </div>
-              <div class="col-lg-3 mb-3">
-              </div>
-              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 0; padding-right: 0;" id="container-criteria-catalog-details">
-                <div style="text-align: right">
-                  <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
-                </div>
+          <div class="row sticky-top border-bottom"
+               style="top: 115px;
+                      background-color: white;
+                      margin-inline: 0">
+            <div class="mb-3"
+                 style="font-size: 16px;
+                        width: 130px;
+                        margin-left: 0px;
+                        padding-left: 0">Themen</div>
+            <div class="mb-3" style="width: 106px;">
+              <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
+            </div>
+            <div class="mb-3"
+                 id="container-criteria-catalog-details"
+                 style="width: 350px">
+              <div id="requirementsAndRuleExamples"
+                   style="display: none;
+                          font-size: 16px">
+                Anforderungen und Regelbeispiele
               </div>
             </div>
-              <div class="row" id="hi" style="margin-inline: 0;">
-                <!-- <ul> -->
-                  {% for tree in trees %}
-                    {% for node in tree %}
-                      {% if node.indent %}
-                        {{ node.indent.depth }}
-                        {% if node.depth == 0 %}
-                          <ul class="border-bottom test" style=" padding-left: 0px; margin-left: 0px; margin-bottom: 2px; padding-right: 0; padding-bottom: 3px;" id="{{ node.depth }}">
-                        {% elif node.depth == 1 %}
-                          <ul class="absolute-horizontal-position-lvl-one" style="display: none; margin-top: 0px; margin-bottom: 0px;" id="{{ node.depth }}">
-                        {% elif node.depth == 2 %}
-                          <ul class="absolute-horizontal-position-lvl-two" style="display: none; :last-child { border-bottom: none; }" id="{{ node.depth }}">
+            <div class="col-lg-3 mb-3"></div>
+            <div class="col-lg-2"
+                 style="margin-left: 30px;
+                        position: absolute;
+                        right: 0;
+                        padding-right: 0"
+                 id="container-criteria-catalog-details">
+              <div style="text-align: right">
+                <button onclick="resetCriteriaCatalog()"
+                        style="border: none;
+                               background: none;
+                               cursor: pointer;
+                               padding: 0px;
+                               margin: 0px"
+                        id="collapseEverythingButton">Alles einklappen</button>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="hi" style="margin-inline: 0;">
+            <!-- <ul> -->
+            {% for tree in trees %}
+              {% for node in tree %}
+                {% if node.indent %}
+                  {{ node.indent.depth }}
+                  {% if node.depth == 0 %}
+                    <ul class="border-bottom test"
+                        style="padding-left: 0px;
+                               margin-left: 0px;
+                               margin-bottom: 2px;
+                               padding-right: 0;
+                               padding-bottom: 3px"
+                        id="{{ node.depth }}">
+                    {% elif node.depth == 1 %}
+                      <ul class="absolute-horizontal-position-lvl-one"
+                          style="display: none;
+                                 margin-top: 0px;
+                                 margin-bottom: 0px"
+                          id="{{ node.depth }}">
+                      {% elif node.depth == 2 %}
+                        <ul class="absolute-horizontal-position-lvl-two"
+                            style="display: none;
+                                   :last-child { border-bottom: none;
+                                   }"
+                            id="{{ node.depth }}">
                         {% else %}
                           <ul style="display: none" id="{{ node.depth }}">
-                        {% endif %}
-                      {% elif node.outdent %}
-                        {% if node.depth == 0 %}
+                          {% endif %}
+                        {% elif node.outdent %}
+                          {% if node.depth == 0 %}
+                          {% else %}
+                            <!-- <div class="hr sticky-third-lvl"
+      style="display: none;
+             height: 2px;
+             background-color: #F5E86A"
+      id="{{ node.depth }}"></div> -->
+                          {% endif %}
+                        </li>
+                      </ul>
+                    {% elif node.content %}
+                      {% if node.content.depth == 0 %}
+                        <li style="font-size: 22px;
+                                   margin: 0px"
+                            topicId="{{ node.content.topic.id }}"
+                            id="{{ node.content.depth }}"
+                            tags="{{ node.content.topic.tag|format_tags }}">
+                          <div class="sticky-third-lvl"
+                               id="{{ node.content.depth }}"
+                               class="wrapper">
+                            <img class="sticky-third-lvl"
+                                 src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}"
+                                 style="width: 20px;
+                                        margin-right: 4px;
+                                        margin-left: 9px;
+                                        padding-top: 10.5px;
+                                        padding-bottom: 10.5px"
+                                 id="0" />
+                            <button class="button-first-level sticky-third-lvl sticky-element-button"
+                                    onclick="showOrHide(event, this)"
+                                    id="{{ node.content.depth }}"
+                                    topicId="{{ node.content.topic.id }}">
+                              {{ node.content.topic.heading }}
+                            </button>
+                          </div>
+                          <p class="paragraph-first-level"
+                             id="0"
+                             topicId="{{ node.content.topic.id }}"
+                             tags="{{ node.content.topic.tag|format_tags }}">
+                            {{ node.content.topic.text }}
+                          </p>
                         {% else %}
-                          <!-- <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div> -->
-                        {% endif %}
-                        </li></ul>
-                      {% elif node.content %}
-                        {% if node.content.depth == 0 %}
-                          <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div class="sticky-third-lvl" id="{{ node.content.depth }}" class="wrapper">
-                              <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px; padding-top: 10.5px; padding-bottom: 10.5px;" id="0">
-                              <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
+                          <li class="border-bottom sticky-element-li"
+                              topicId="{{ node.content.topic.id }}"
+                              id="{{ node.content.depth }}"
+                              style="display: none;
+                                     font-size: 22px;
+                                     margin: 0px;
+                                     padding: 0px"
+                              tags="{{ node.content.topic.tag|format_tags }}">
+                            <div id="{{ node.content.depth }}" class="wrapper">
+                              <img style="display: none;
+                                          margin-right: 4px;
+                                          margin-top: 11px;
+                                          padding: 0px"
+                                   src="{% static 'assets/images/arrow_down.svg' %}" />
+                              <button class="sticky-element-button button-deeper-level"
+                                      onclick="showOrHide(event, this)"
+                                      class="button-deeper-level"
+                                      topicId="{{ node.content.topic.id }}"
+                                      id="{{ node.content.depth }}"
+                                      text="{{ node.content.topic.heading }}">
                                 {{ node.content.topic.heading }}
                               </button>
                             </div>
-                          <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
-                        {% else %}
-                          <li class="border-bottom sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div id="{{ node.content.depth }}" class="wrapper">
-                              <img style="display: none; margin-right: 4px; margin-top: 11px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" text="{{ node.content.topic.heading }}">
-                                {{ node.content.topic.heading }}
-                              </button>
-                            </div>  
-                          <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
+                            <p class="paragraph-deeper-level"
+                               tags="{{ node.content.topic.tag|format_tags }}"
+                               id="{{ node.content.depth }}"
+                               topicId="{{ node.content.topic.id }}"
+                               tags="{{ node.content.topic.tag|format_tags }}">
+                              {{ node.content.topic.text }}
+                            </p>
+                          {% endif %}
                         {% endif %}
-                      {% endif %}
+                      {% endfor %}
                     {% endfor %}
-                  {% endfor %}
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Page content END -->
-</main>
-<!-- **************** MAIN CONTENT END **************** -->
+        </section>
+        <!-- Page content END -->
+      </main>
+      <!-- **************** MAIN CONTENT END **************** -->
 
-<!--ComparisonFeature-->
-<!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
+      <!--ComparisonFeature-->
+      <!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
 
-<script>
+      <script>
   var idOfTopicToBeOpened = "{{ topicIdentifier }}";
   var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
   var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
@@ -445,10 +490,10 @@ observer.observe(el);
   function getHeadingAndDescription(element, stringToConcatanate) {
     for (var i = 0; i < element.children.length; i++) {
       if (element.children[i].tagName == "BUTTON") {
-        stringToConcatanate += "<h6>" + element.children[i].textContent + "</h6>" + "<br>";
+        stringToConcatanate += "<h6>" + element.children[i].textContent + "</h6>" + "<br />";
       }
       if (element.children[i].tagName == "P") {
-        stringToConcatanate += "<p>" + element.children[i].textContent + "</p>" + "<br>";
+        stringToConcatanate += "<p>" + element.children[i].textContent + "</p>" + "<br />";
       }
     }
     return stringToConcatanate;
@@ -777,8 +822,8 @@ function depthFirstWalkForModification(element) {
     liUlElement = liUlElements.pop();
     if (liUlElement.tagName == "LI" && Number(liUlElement.id) > 2) {
       liElement = liUlElement;
-      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br/>"
-      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "P").textContent + "<br/>"
+      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br />"
+      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "P").textContent + "<br />"
     }
     newUlLiElements = getLiAndUlElements(liUlElement);
     liUlElements = addElementsToArray(liUlElements, newUlLiElements);
@@ -1194,6 +1239,8 @@ function showOrHide(event, element) {
       event.cancelBubble = true; // IE model
     }
 }
-</script>
-<img src="{% static 'assets/images/arrow_up.svg' %}" id="hiddenImage" style="display: none;" />
-{% endblock %}
+      </script>
+      <img src="{% static 'assets/images/arrow_up.svg' %}"
+           id="hiddenImage"
+           style="display: none" />
+    {% endblock %}
