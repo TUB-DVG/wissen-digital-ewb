@@ -73,7 +73,7 @@ from component_list.models import (
     DataSufficiency,
 )
 
-from businessModel.models import BusinessModel
+from businessModel.models import BusinessModel, UserIntegration
 
 from project_listing.models import (
     Subproject,
@@ -318,6 +318,68 @@ class Command(BaseCommand):
             firstName=firstNameFromCSV,
             title=titel,
             email=email,
+        )
+        return obj, created
+
+    def getOrCreateUserIntegration(self, row: list, header: list) -> tuple:
+        """Gets or Creates an object of type UserIntegration from the data in row
+
+        This method feeds the data present in row into the django
+        get_or_create-function, which returns an Object of Type
+        UserIntegration according to the fed-data. Either this object
+        corresponds to a new created-dataset in the database or
+        the existing dataset is returned.
+
+        Parameters:
+        row:    list
+            A dataset, represented by a list.
+        header: list
+            list of strings, which represent the header-columns.
+
+        Returns:
+        obj:    UserIntegration
+            UserIntegration-object, represent the created or in database
+            present UserIntegration-Dataset with the data from row.
+        created:    bool
+            Indicates, if the UserIntegration-object was created or not.
+        """
+        category = row[header.index("Kategorie")]
+        categoryShortDescription = row[header.index(
+            "Kategorie_Kurzbeschreibung")]
+        subCategory = row[header.index("Unterkategorie")]
+        subCategoryShortDescription = row[header.index(
+            "Unterkategorie_Kurzbeschreibung")]
+        subtitle = row[header.index("Untertitel")]
+        timeRequired = row[header.index("Zeitbedarf")]
+        groupSize = row[header.index("Gruppengröße")]
+        material = row[header.index("Material")]
+        advantages = row[header.index("Vorteile")]
+        disadvantages = row[header.index("Nachteile")]
+        conductedBy = row[header.index("Durchgeführt von")]
+        successFactors = row[header.index(
+            "Erfolgsfaktoren für die Umsetzung der Methode")]
+        goals = row[header.index("Ziele")]
+        procedure = row[header.index("Ablauf")]
+        specificGoals = row[header.index("Konkrete_Ziele")]
+        specificProcedure = row[header.index("Konkreter_Ablauf")]
+
+        obj, created = UserIntegration.objects.get_or_create(
+            category=category,
+            categoryShortDescription=categoryShortDescription,
+            subCategory=subCategory,
+            subCategoryShortDescription=subCategoryShortDescription,
+            subtitle=subtitle,
+            timeRequired=timeRequired,
+            groupSize=groupSize,
+            material=material,
+            advantages=advantages,
+            disadvantages=disadvantages,
+            conductedBy=conductedBy,
+            successFactors=successFactors,
+            goals=goals,
+            procedure=procedure,
+            specificGoals=specificGoals,
+            specificProcedure=specificProcedure,
         )
         return obj, created
 
@@ -1878,6 +1940,8 @@ class Command(BaseCommand):
                 self.getOrCreateDataSufficiency(row, header)
             elif "businessModels" in filename:
                 self.getOrCreateBusinessModel(row, header)
+            elif "userIntegration" in filename:
+                self.getOrCreateUserIntegration(row, header)
             else:
                 CommandError(
                     "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
