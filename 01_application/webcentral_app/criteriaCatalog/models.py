@@ -11,6 +11,7 @@ class CriteriaCatalog(models.Model):
     name = models.CharField(max_length=100)
     text = models.CharField(max_length=1000, blank=True)
     imageIcon = models.CharField(max_length=200, blank=True)
+    imageIconSelected = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
         """Define a String-Representation of a object of type UseCase
