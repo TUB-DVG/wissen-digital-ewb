@@ -10,10 +10,6 @@ from django.contrib.sessions.models import Session
 import dash
 from dash import  dcc, html, Input, Output, State
 
-PATH = pathlib.Path(__file__).parent.resolve() 
-DATA_PATH = os.path.join(PATH , 'auxillary/Household62_1h.csv') 
-DF_MAIN = pd.read_csv(DATA_PATH)
-
 
 PATH = pathlib.Path(__file__).parent.resolve() 
 data_directory =  os.path.join(PATH, 'auxillary')
