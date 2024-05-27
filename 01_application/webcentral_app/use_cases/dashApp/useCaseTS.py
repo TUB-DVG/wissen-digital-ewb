@@ -155,30 +155,30 @@ def update_graph(building, interval, scale):
                         fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Waschmaschine'))
                 if any(re.match(r'Kühl-_und_Gefrierschrank.*', col) for col in data.columns):
                     for col in [col for col in data.columns if re.match(r'Kühl-_und_Gefrierschrank.*', col)]:
-                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Kühl-_und_Gefrierschrank'))
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Kühl- und Gefrierschrank'))
                 if any(re.match(r'Durchlauferhitzer.*', col) for col in data.columns):
                     for col in [col for col in data.columns if re.match(r'Durchlauferhitzer.*', col)]:
                         fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Durchlauferhitzer'))
             
             if scale == "all" or scale == "full_building":
-                if any(re.match(r'Hauptanschluss.*', col) for col in data.columns):
+                if any(re.match(r'Elektrisch-Kombiniert.*', col) for col in data.columns):
                     for col in [col for col in data.columns if re.match(r'Hauptanschluss.*', col)]:
-                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Hauptanschluss'))
+                        fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Gesamter Stromverbrauch'))
             
             if scale == "all" or scale == "aggregated_buildings":
                 if building == 'all':
                     aggregated_data = data.groupby(data.index).sum()
-                    if any(re.match(r'Hauptanschluss.*', col) for col in aggregated_data.columns):
+                    if any(re.match(r'Elektrisch-Kombiniert.*', col) for col in aggregated_data.columns):
                         for col in [col for col in aggregated_data.columns if re.match(r'Hauptanschluss.*', col)]:
-                            fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data[col], mode='lines', name=f'{b} {i} Aggregated {col}'))
+                            fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data[col], mode='lines', name=f'{b} {i} Aggregierter {col}'))
                 else:
-                    if any(re.match(r'Hauptanschluss.*', col) for col in data.columns):
+                    if any(re.match(r'Elektrisch-Kombiniert.*', col) for col in data.columns):
                         for col in [col for col in data.columns if re.match(r'Hauptanschluss.*', col)]:
-                            fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Hauptanschluss'))
+                            fig.add_trace(go.Scatter(x=data.index, y=data[col], mode='lines', name=f'{b} {i} Gesamtstromverbrauch '))
 
             elif scale == "aggregated_buildings":
                 
-                fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data['total'], mode='lines', name=f'{b} {i} Aggregated Total'))
+                fig.add_trace(go.Scatter(x=aggregated_data.index, y=aggregated_data['total'], mode='lines', name=f'{b} {i} Aggregierter Gesamterverbrauch'))
 
         
 
