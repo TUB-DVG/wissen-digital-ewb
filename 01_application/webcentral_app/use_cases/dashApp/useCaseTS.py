@@ -14,11 +14,9 @@ PATH = pathlib.Path(__file__).parent.resolve()
 DATA_PATH = os.path.join(PATH , 'auxillary/Household62_1h.csv') 
 DF_MAIN = pd.read_csv(DATA_PATH)
 
-csv_files = {
-    "file1": "01_application/webcentral_app/use_cases/dashApp/auxillary/Household62_1h.csv",
-    "file2": "01_application/webcentral_app/use_cases/dashApp/auxillary/Household73_15min.csv",
-}
-data_directory = '01_application/webcentral_app/use_cases/dashApp/auxillary'
+
+PATH = pathlib.Path(__file__).parent.resolve() 
+data_directory =  os.path.join(PATH, 'auxillary')
 file_list = os.listdir(data_directory)
 file_list = [file for file in file_list if file.endswith('.csv')] 
 
