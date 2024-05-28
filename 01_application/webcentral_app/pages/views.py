@@ -70,11 +70,11 @@ def businessModels(request):
                     "image":
                     "img/componentList/negativeEnvironmentalImpactsBox1.svg",
                     "linkToDetailsPage":
-                    "components",
+                    "businessModelApplication",
                     "heading":
-                    _("Herausforderungen bei der Entwicklung und Umsetzung"),
+                    _("Anwendungen zur Entwicklung von Geschäftsmodellen"),
                     "description":
-                    _("Bei der Umsetzung von Prototypen digitaler Anwendungen in ein funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese ergeben sich durch strukturelle Faktoren wie die Förderbedingungen, durch technische oder organisatorische Faktoren wie die Übertragbarkeit sowie durch ökonomische und soziale Faktoren wie schwierige Finanzierungsmodelle. Ein Überblick über Hürden und mögliche Lösungen bietet hier eine Hilfestellung."
+                    _("Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei kann es hilfreich sein, sich mithilfe eines Leitfadens oder einer Struktur alle Faktoren vorzunehmen, die für eine erfolgreiche Umsetzung berücksichtigt werden sollten. Ein Überblick über unterstützende Tools bei der Entwicklung oder Verbesserung von Geschäftsmodellen bietet hier eine Hilfestellung."
                       ),
                 },
             },

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 from .models import (
     CriteriaCatalog,
@@ -122,6 +123,10 @@ def buildCriteriaCatalog(
             "tags": Tag.objects.all(),
             "showInputsInImageQuickLinkBar": True,
             "quickLinkName": "criteriaCatalog",
+            "focusBorder": "legal",
+            "backLink": "criteriaCatalog",
+            "imageInBackButton": "assets/images/backArrowLegal.svg",
+            "backLinkText": _("Zurück"),
         },
     )
 
@@ -181,5 +186,9 @@ def buildingCriteriaCatalogOpenTopic(
             "tags": Tag.objects.all(),
             "trees": listOfFlattenedTrees,
             "topicIdentifier": topicIdentifier,
+            "focusBorder": "legal",
+            "backLink": "criteriaCatalog",
+            "imageInBackButton": "assets/images/backArrowLegal.svg",
+            "backLinkText": _("Zurück"),
         },
     )
