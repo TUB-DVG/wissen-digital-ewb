@@ -20,6 +20,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.conf.urls import handler404, handler500
+from . import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -43,5 +46,6 @@ urlpatterns += i18n_patterns(
         path('i18n/', include('django.conf.urls.i18n')),
 )
 
-
+handler404 = views.custom_404_view
+handler500 = views.custom_500_view
 # reakpoint()
