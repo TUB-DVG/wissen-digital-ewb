@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Nutzendenintegration" %}
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="content container">
+        <div class="row">{% include "common/descriptionContainer.html" %}</div>
+        <div class="boxes" id="container-start-focus">
+            {% include "common/fourBoxesContainer.html" %}
+        </div>
+    </div>
+    <!-- Content END -->
+{% endblock %}

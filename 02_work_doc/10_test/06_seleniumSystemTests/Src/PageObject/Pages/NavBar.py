@@ -122,3 +122,10 @@ class NavBar(object):
             By.XPATH,
             Locator.lastProfileItem,
         )
+
+    def getOperationalDropdownButton(self):
+        """ """
+        return self.driver.find_element(
+            By.XPATH,
+            Locator.linkToOperationalDropdown,
+        )
