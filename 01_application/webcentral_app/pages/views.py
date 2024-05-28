@@ -6,7 +6,7 @@ from component_list.models import (
     EnvironmentalImpact,
     DataSufficiency,
 )
-
+from businessModel.models import UserEngagement
 from criteriaCatalog.models import CriteriaCatalog
 
 
@@ -95,6 +95,7 @@ def userIntegrationMethod(request):
 
 def userEngagement(request):
     """Call render function for user engagement page."""
+    userEngagementObjs = UserEngagement.objects.all()
     context = {
         "focusBorder":
         "operational",
@@ -107,34 +108,21 @@ def userEngagement(request):
         "explanaitionText":
         _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
           ),
-        "boxes": [
-            {
-                "pathToTemplate":
-                "businessModel/userEngagementBox.html",
-                "linkToDetailsPage":
-                "userIntegrationMethod",
-                "heading":
-                _("Methoden zur Nutzendenintegration"),
-                "description":
-                _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
-                  ),
-                "image":
-                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
-            },
-            {
-                "pathToTemplate":
-                "businessModel/userEngagementBox.html",
-                "linkToDetailsPage":
-                "userIntegrationPractice",
-                "heading":
-                _("Praxisbeispiele zur Nutzendenintegration"),
-                "description":
-                _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
-                  ),
-                "image":
-                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
-            },
-        ],
+        "boxes": [{
+            "pathToTemplate":
+            "businessModel/userEngagementBox.html",
+            "objectToRender":
+            userEngagementObj,
+            "linkToDetailsPage":
+            "userIntegrationMethod",
+            "heading":
+            _("Methoden zur Nutzendenintegration"),
+            "description":
+            _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
+              ),
+            "image":
+            "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+        } for userEngagementObj in userEngagementObjs],
     }
     return render(request, "pages/userEngagement.html", context)
 
