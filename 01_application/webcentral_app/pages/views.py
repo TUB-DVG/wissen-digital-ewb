@@ -93,6 +93,11 @@ def userIntegrationMethod(request):
     return render(request, "pages/userIntegrationMethod.html")
 
 
+def userEngagement(request):
+    """Call render function for user engagement page."""
+    return render(request, "pages/userEngagement.html")
+
+
 def environmentalIntegrityNegativ(request):
     """Call render function for negativ environmental integrity page."""
     context = {

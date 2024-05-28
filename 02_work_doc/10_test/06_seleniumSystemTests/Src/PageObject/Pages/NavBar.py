@@ -2,30 +2,26 @@
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver,
-)
+    webdriver, )
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
 
+
 class NavBar(object):
-    """
-    
-    """
+    """ """
+
     def __init__(self, driver):
-        """
-        
-        """
+        """ """
         self.driver = driver
 
     def getLogo(self):
-        """Returns the Logo from left upper side of page
-        
-        """
+        """Returns the Logo from left upper side of page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -35,9 +31,7 @@ class NavBar(object):
             return None
 
     def getNavStart(self):
-        """Returns the TU-Logo from left upper side of page
-        
-        """
+        """Returns the TU-Logo from left upper side of page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -47,26 +41,24 @@ class NavBar(object):
             return None
 
     def getNavToolList(self) -> None:
-        """
-        
-        """
+        """ """
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 Locator.toolListLink,
             )
         except NoSuchElementException:
             print("Tool Link Element couldnt be located on webpage!")
             return None
-    
+
     def getNavTechFocus(self):
         """Returns the Webelement, which represents the
         'Technischer Fokus'-NavBar-Element
-        
+
         """
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 Locator.navTechFocus,
             )
         except NoSuchElementException:
@@ -74,12 +66,10 @@ class NavBar(object):
             return None
 
     def getNavDigitalApps(self):
-        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
-        
-        """
+        """Returns the Webelement, which represents the 'Daten'-NavBar-Element"""
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 Locator.digitalApps,
             )
         except NoSuchElementException:
@@ -87,47 +77,47 @@ class NavBar(object):
             return None
 
     def getNavDigitalTools(self):
-        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
-        
-        """
+        """Returns the Webelement, which represents the 'Daten'-NavBar-Element"""
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 Locator.toolListLink,
             )
         except NoSuchElementException:
             print("Tool Link Element couldnt be located on webpage!")
             return None
-    
+
     def returnNegativeEnvironmentalImpactLink(self):
-        """Returns the Webelement, which represents the 'Daten'-NavBar-Element
-        
-        """
+        """Returns the Webelement, which represents the 'Daten'-NavBar-Element"""
         try:
             return self.driver.find_elements(
-                By.XPATH, 
+                By.XPATH,
                 f"//a[contains(@href, '{Locator.linkToNegativeEnviormentalImpact}')]",
             )
-
-            
         except NoSuchElementException:
             print("Tool Link Element couldnt be located on webpage!")
             return None
 
+    def returnUserEngagementLink(self):
+        """Returns the Webelement, which represents the 'Daten'-NavBar-Element"""
+        try:
+            return self.driver.find_elements(
+                By.XPATH,
+                f"//a[contains(@href, '{Locator.linkToUserEgagement}')]",
+            )
+        except NoSuchElementException:
+            print("Tool Link Element couldnt be located on webpage!")
+            return None
 
     def getWeatherDataItem(self):
-        """Returns wheater-data item in submenu under data-tab
-        
-        """
+        """Returns wheater-data item in submenu under data-tab"""
         return self.driver.find_element(
             By.XPATH,
             Locator.weatherDataItem,
         )
 
     def getLastProfileItem(self):
-        """Returns wheater-data item in submenu under data-tab
-        
-        """
+        """Returns wheater-data item in submenu under data-tab"""
         return self.driver.find_element(
             By.XPATH,
             Locator.lastProfileItem,

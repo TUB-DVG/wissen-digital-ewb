@@ -25,6 +25,11 @@ urlpatterns = [
         name="businessModels",
     ),
     path(
+        "userEngagment",
+        views.userEngagement,
+        name="userEngagement",
+    ),
+    path(
         "businessModelsPractice",
         views.businessModelsPractice,
         name="businessModelsPractice",
