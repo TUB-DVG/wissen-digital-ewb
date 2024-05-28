@@ -39,7 +39,7 @@
                        aria-haspopup="true"
                        aria-expanded="false"
                        dblocator="{{ option.name }}">{{ option.shown }}</a>
-                    <div class="dropdown-menu" aria-labelledby="nestedDropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu__nested" aria-labelledby="nestedDropdownMenuButton">
                       <a class="dropdown-item nested"
                          href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
                          sorting="Ascending">{% translate "Aufsteigend" %}</a>
