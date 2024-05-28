@@ -35,15 +35,43 @@ class TestUserEngagement(WebDriverSetup):
         navbar = NavBar(self.driver)
 
         languageName = self.getLanguage()
-        userEngagementLink = navbar.returnUserEngagementLink()
-        self.assertEqual(len(userEngagementLink), 2)
-        if languageName == "Deutsch":
-            self.assertTrue("Nutzendenintegration" in userEngagementLink.text)
-        else:
-            self.assertTrue("User Engagement" in userEngagementLink.text)
+        userEngagementLinks = navbar.returnUserEngagementLink()
+        self.assertEqual(len(userEngagementLinks), 2)
+        for userEngagementLink in userEngagementLinks:
+            # breakpoint()
+            if userEngagementLink.get_attribute("class") == "dropdown-item":
+                navbarActivateDropdownButton = (
+                    navbar.getOperationalDropdownButton())
+                navbarActivateDropdownButton.click()
 
-        userEngagementLink.click()
+                if languageName == "de":
+                    self.assertTrue(
+                        "Nutzendenintegration" in userEngagementLink.text)
+                else:
+                    self.assertTrue(
+                        "User Engagement" in userEngagementLink.text)
 
-        # check if the new page title includes the word "User Engagement" or "Nutzendenintegration"
+            # userEngagementLink.click()
+            # self.assertTrue("User Engagement" in self.driver.title
+            #                 or "Nutzendenintegration" in self.driver.title)
+            # self.driver.back()
+            # userEngagementLinks = navbar.returnUserEngagementLink()
+
+        userEngagementLinks[1].click()
         self.assertTrue("User Engagement" in self.driver.title
                         or "Nutzendenintegration" in self.driver.title)
+        self.driver.back()
+        userEngagementLinks = navbar.returnUserEngagementLink()
+        navbarActivateDropdownButton = navbar.getOperationalDropdownButton()
+        navbarActivateDropdownButton.click()
+        userEngagementLinks[0].click()
+        self.assertTrue("User Engagement" in self.driver.title
+                        or "Nutzendenintegration" in self.driver.title)
+        self.driver.back()
+
+    def testUserEngagementPage(self):
+        """Test if a description-container is present"""
+
+        self.driver.get(os.environ["siteUnderTest"] + "/userEngagement")
+        userEngagementPage = UserEngagementPage(self.driver)
+        self.assertTrue(userEngagementPage.isDescriptionContainerPresent())

@@ -95,7 +95,48 @@ def userIntegrationMethod(request):
 
 def userEngagement(request):
     """Call render function for user engagement page."""
-    return render(request, "pages/userEngagement.html")
+    context = {
+        "focusBorder":
+        "operational",
+        "pathToImage":
+        "img/componentList/circle-icon.svg",
+        "heading":
+        _("Nutzendenintegration"),
+        "showMorePresent":
+        False,
+        "explanaitionText":
+        _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
+          ),
+        "boxes": [
+            {
+                "pathToTemplate":
+                "businessModel/userEngagementBox.html",
+                "linkToDetailsPage":
+                "userIntegrationMethod",
+                "heading":
+                _("Methoden zur Nutzendenintegration"),
+                "description":
+                _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
+                  ),
+                "image":
+                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+            },
+            {
+                "pathToTemplate":
+                "businessModel/userEngagementBox.html",
+                "linkToDetailsPage":
+                "userIntegrationPractice",
+                "heading":
+                _("Praxisbeispiele zur Nutzendenintegration"),
+                "description":
+                _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
+                  ),
+                "image":
+                "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+            },
+        ],
+    }
+    return render(request, "pages/userEngagement.html", context)
 
 
 def environmentalIntegrityNegativ(request):

@@ -73,7 +73,7 @@ from component_list.models import (
     DataSufficiency,
 )
 
-from businessModel.models import BusinessModel, UserIntegration
+from businessModel.models import BusinessModel, UserEngagement
 
 from project_listing.models import (
     Subproject,
@@ -363,7 +363,7 @@ class Command(BaseCommand):
         specificGoals = row[header.index("Konkrete_Ziele")]
         specificProcedure = row[header.index("Konkreter_Ablauf")]
 
-        obj, created = UserIntegration.objects.get_or_create(
+        obj, created = UserEngagement.objects.get_or_create(
             category=category,
             categoryShortDescription=categoryShortDescription,
             subCategory=subCategory,
