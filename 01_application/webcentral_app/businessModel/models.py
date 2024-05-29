@@ -43,3 +43,12 @@ class UserEngagement(models.Model):
 
     def __str__(self):
         return self.category
+
+
+class ProcedureItem(models.Model):
+    userEngagement = models.ForeignKey(UserEngagement,
+                                       on_delete=models.CASCADE)
+    procedureItem = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.procedureItem
