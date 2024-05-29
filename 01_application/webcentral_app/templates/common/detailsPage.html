@@ -21,6 +21,7 @@
 
     .columns {
         display: flex;
+        flex-wrap: nowrap;
         row-gap: 16px;
         padding-inline: 28px;
         padding-block: 36px;
@@ -30,6 +31,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        flex-shrink: 1;
     }
 
     .column__right-image-background {
@@ -66,7 +68,7 @@
             {% if imageQuickLinks == True %}
                 {% include "partials/_imagesNavBar.html" %}
             {% endif %}
-            <div class="row columns p-4 my-4 z-index-9 border-{{ focusBorder }}">
+            <div class="row columns p-4 my-4 z-index-9 border-{{ focusBorder }} mx-auto">
                 <div class="column__left">{% include leftColumn %}</div>
                 <div class="column__right">{% include rightColumn %}</div>
             </div>
