@@ -1,5 +1,11 @@
 {% load i18n %}
 {% load static %}
+<style>
+    .rightSideContent {
+        text-decoration: underline;
+        color: black;
+    }
+</style>
 <div class="col-12 col-lg-6 box border-{{ focusBorder }}" id="box1">
     <a href="{% url 'userEngagementDetails' boxObject.id %}"
        style="color: inherit;
@@ -8,11 +14,29 @@
         <div class="row box__content">
             <div class="col-12" style="display: flex; justify-content: space-between">
                 <h6 class="boxHeading mb-4">{{ boxObject.category }}</h6>
-                <img src="{% static boxObject.imageIcon %}" />
             </div>
             <div class="box-content__main">
                 <div class="col-12 content-left">
-                    <p class="boxDescription">{{ boxObject.categoryShortDescription }}</p>
+                    <p>{{ boxObject.categoryShortDescription }}</p>
+                </div>
+                <div class="col-12 content-right">
+
+                    <p>
+                        <img src="{% static 'img/componentList/circle-icon.svg' %}"
+                             alt="image of circles" />
+                        <span class="rightSideContent">{{ boxObject.subCategory }}</span>
+                    </p>
+
+                    <p>
+                        <img src="{% static 'img/componentList/circle-icon.svg' %}"
+                             alt="image of circles" />
+                        <span class="rightSideContent">{{ boxObject.groupSize }}</span>
+                    </p>
+                    <p>
+                        <img src="{% static 'img/componentList/circle-icon.svg' %}"
+                             alt="image of circles" />
+                        <span class="rightSideContent">{{ boxObject.groupSize }}</span>
+                    </p>
                 </div>
             </div>
         </div>
