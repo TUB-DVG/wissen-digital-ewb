@@ -127,6 +127,7 @@ def buildCriteriaCatalog(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
+            "showSelect": True,
         },
     )
 
@@ -190,5 +191,6 @@ def buildingCriteriaCatalogOpenTopic(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
+            "showSelect": True,
         },
     )
