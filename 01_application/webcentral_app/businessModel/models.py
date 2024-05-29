@@ -38,6 +38,8 @@ class UserEngagement(models.Model):
     procedure = models.TextField(blank=True, null=True)
     specificGoals = models.TextField(blank=True, null=True)
     specificProcedure = models.TextField(blank=True, null=True)
+    imageIcon = models.CharField(max_length=255, blank=True, null=True)
+    imageIconSelected = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.category
