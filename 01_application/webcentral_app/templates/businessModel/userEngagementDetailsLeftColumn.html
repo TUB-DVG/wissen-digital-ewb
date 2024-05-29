@@ -1,0 +1,31 @@
+{% load static %}
+{% load i18n %}
+<style>
+    .columnHeading {
+        color: #787575;
+    }
+    p {
+        margin-top: 32px;
+    
+    }
+</style>
+<h6>{{ boxObject.category }}</h6>
+<p>
+    <span class="columnHeading">{% translate "Zeitbedarf" %}:</span> {{ boxObject.timeRequired }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Gruppengröße" %}:</span> {{ boxObject.groupSize }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Material" %}:</span> {{ boxObject.material }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Vorteile" %}:</span> {{ boxObject.advantages }}
+</p>
+<br />
+<p>
+    <span class="columnHeading">{% translate "Durchgeführt von" %}:</span> {{ boxObject.conductedBy }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Erfolgsfaktoren für die Umsetzung der Methode" %}:</span> {{ boxObject.successFactors }}
+</p>
