@@ -32,7 +32,7 @@
 <div class="row link-navigator">
     {% if backLinkParam %}
         <a href="{% url backLink backLinkParam %}"
-           class="link-navigator__negative">
+           class="link-navigator__negative-{{ focusBorder }}">
         {% else %}
             <a href="{% url backLink %}"
                class="link-navigator__negative-{{ focusBorder }}">

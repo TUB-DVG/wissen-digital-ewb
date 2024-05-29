@@ -308,5 +308,6 @@ def showImage(request, idOfEnvironmentalImpactObj):
         "backLink": "environmentalIntegrityBox",
         "backLinkParam": idOfEnvironmentalImpactObj,
         "backLinkText": environmentalObjToReturn.project_name,
+        "focusBorder": "ecological",
     }
     return render(request, "pages/showImage.html", context)

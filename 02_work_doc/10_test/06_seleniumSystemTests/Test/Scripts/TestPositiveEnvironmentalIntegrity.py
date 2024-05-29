@@ -83,3 +83,26 @@ class TestPositiveEnvironmentalIntegrity(WebDriverSetup):
             divsInsideContentDiv[1], "div")
 
         self.assertEqual(len(divDescription), 2)
+
+        # test if the image is clickable and leads to a new page:
+        image = detailsPageObj.getDescendantsByTagName(divDescription[0],
+                                                       "img")
+        image.click()
+
+        self.assertTrue(re.search(
+            r"/showImage",
+            self.driver.current_url,
+        ))
+
+        # check if a backlink is present and has green color:
+        backLink = detailsPageObj.getBackLink()
+        colorOfbackLink = backLink.value_of_css_property("color")
+        self.assertTrue("rgb(143, 222, 151)" in colorOfbackLink)
+
+        backLink.click()
+        # check if the user is now on the details page:
+        self.assertTrue(
+            re.search(
+                r"/pages/environmentalIntegrityPositiv/[0-3]+",
+                self.driver.current_url,
+            ))
