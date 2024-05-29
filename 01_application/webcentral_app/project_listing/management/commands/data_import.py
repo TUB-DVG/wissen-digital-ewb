@@ -73,7 +73,12 @@ from component_list.models import (
     DataSufficiency,
 )
 
-from businessModel.models import BusinessModel, UserEngagement
+from businessModel.models import (
+    BusinessModel,
+    UserEngagement,
+    SpecificProcedureItem,
+    ProcedureItem,
+)
 
 from project_listing.models import (
     Subproject,
@@ -359,9 +364,10 @@ class Command(BaseCommand):
         successFactors = row[header.index(
             "Erfolgsfaktoren für die Umsetzung der Methode")]
         goals = row[header.index("Ziele")]
-        procedure = row[header.index("Ablauf")]
         specificGoals = row[header.index("Konkrete_Ziele")]
-        specificProcedure = row[header.index("Konkreter_Ablauf")]
+        participantObservations = row[header.index(
+            "Beobachtungen der Teilnehmenden")]
+        persons = row[header.index("Personas")]
 
         obj, created = UserEngagement.objects.get_or_create(
             category=category,
@@ -377,10 +383,24 @@ class Command(BaseCommand):
             conductedBy=conductedBy,
             successFactors=successFactors,
             goals=goals,
-            procedure=procedure,
+            persons=persons,
+            participantObservations=participantObservations,
             specificGoals=specificGoals,
-            specificProcedure=specificProcedure,
         )
+        specificProcedureList = self._processListInput(
+            row[header.index("Konkreter_Ablauf")])
+        specificProcedureObjList = [
+            SpecificProcedureItem.objects.get_or_create(
+                specificProcedureItem=specificProcedure)[0]
+            for specificProcedure in specificProcedureList
+        ]
+        procedureList = self._processListInput(row[header.index("Ablauf")])
+        procedureObjList = [
+            ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
+            for procedure in procedureList
+        ]
+        obj.procedure.add(*procedureObjList)
+        obj.specificProcedure.add(*specificProcedureObjList)
         return obj, created
 
     def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
@@ -1948,6 +1968,31 @@ class Command(BaseCommand):
                 )
                 return None
         # self.stdout.write(self.style.SUCCESS('Successfully executed command'))
+
+    def _processListInput(self, inputStr):
+        """Process a cell, which includes a list of elements"""
+        returnList = []
+        for element in inputStr.split(";"):
+            if not self._checkIfOnlyContainsSpaces(element):
+                returnList.append(element)
+
+        return returnList
+
+    def _checkIfOnlyContainsSpaces(self, inputStr):
+        """Check if the inputStr only contains whitespaces.
+
+        This method checks if the inputStr only contains whitespaces.
+        If this is the case, the method returns True, otherwise False.
+
+        Parameters:
+        inputStr:   str
+            String, which should be checked, if it only contains whitespaces.
+
+        Returns:
+        bool
+            True, if the inputStr only contains whitespaces, otherwise False.
+        """
+        return all(x.isspace() for x in inputStr)
 
     def _correctReadInValue(self, readInString):
         """Correct the read in value from the csv-file.

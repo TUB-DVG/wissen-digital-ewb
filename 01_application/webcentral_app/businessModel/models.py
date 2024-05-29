@@ -35,9 +35,15 @@ class UserEngagement(models.Model):
     conductedBy = models.CharField(max_length=255, blank=True, null=True)
     successFactors = models.TextField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)
-    procedure = models.TextField(blank=True, null=True)
+    procedure = models.ManyToManyField("ProcedureItem", null=True, blank=True)
     specificGoals = models.TextField(blank=True, null=True)
-    specificProcedure = models.TextField(blank=True, null=True)
+    specificProcedure = models.ManyToManyField("SpecificProcedureItem",
+                                               null=True,
+                                               blank=True)
+    participantObservations = models.CharField(max_length=255,
+                                               blank=True,
+                                               null=True)
+    persons = models.CharField(max_length=255, blank=True, null=True)
     imageIcon = models.CharField(max_length=255, blank=True, null=True)
     imageIconSelected = models.CharField(max_length=255, blank=True, null=True)
 
@@ -46,9 +52,16 @@ class UserEngagement(models.Model):
 
 
 class ProcedureItem(models.Model):
-    userEngagement = models.ForeignKey(UserEngagement,
-                                       on_delete=models.CASCADE)
     procedureItem = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return self.procedureItem
+
+
+class SpecificProcedureItem(models.Model):
+    specificProcedureItem = models.CharField(max_length=255,
+                                             blank=True,
+                                             null=True)
+
+    def __str__(self):
+        return self.specificProcedureItem
