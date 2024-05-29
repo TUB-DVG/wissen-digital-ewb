@@ -11,7 +11,8 @@
         <div class="col-lg-12 border-{{ focusBorder }} p-2 my-1 search__container"
              id="container-criteria-catalog-details">
             <div class="col-3 col-xl-3 search__icons"
-                 title="Suchen in den Anwendungsnamen">
+                 title="Suchen in den Anwendungsnamen"
+                 style="margin-right: auto;">
                 {% for iconObj in allObjectsForQuickLinks %}
                     {% if iconObj.id == idOfSelectedObj %}
                         <img src="{% static iconObj.imageIconSelected %}"
@@ -40,8 +41,7 @@
                 </div>
             {% endif %}
             {% if showSelect %}
-                <div class="col-3 form-group d-flex align-items-center search__dropdown"
-                     style="margin-left: auto">
+                <div class="col-3 form-group d-flex align-items-center search__dropdown">
 
                     <!-- d-flex align-items-center justify-content-center pe-1 -->
                     <form>
