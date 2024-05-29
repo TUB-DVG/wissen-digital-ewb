@@ -18,6 +18,10 @@
   .border-technical-round {
     @include border-round($technical-color)
   }
+  .border-technical-round-font-color {
+    @include border-round($technical-color);
+    color: $technical-color;
+  }
   .btn-technical {
     @include btn-search($technical-color, $third-text-color)
   }
@@ -26,6 +30,10 @@
   }
   .border-operational-round {
     @include border-round($operational-color)
+  }
+  .border-operational-round-font-color {
+    @include border-round($operational-color);
+    color: $operational-color;
   }
   .btn-operational {
     @include btn-search($operational-color, $third-text-color)
@@ -37,6 +45,7 @@
   .border-ecological-round {
     @include border-round($ecological-color)
   }
+
   .btn-ecological {
     @include btn-search($ecological-color, $third-text-color)
   }
@@ -47,6 +56,7 @@
   .border-legal-round {
     @include border-round($legal-color)
   }
+
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
   }
@@ -58,6 +68,10 @@
   }
   .border-ecological-round {
     @include border-round($ecological-color)
+  }
+  .border-ecological-round-font-color {
+    @include border-round($ecological-color);
+    color: $ecological-color;
   }
   .btn-ecological {
     @include btn-search($ecological-color, $third-text-color)
@@ -71,10 +85,48 @@
   .border-legal-round {
     @include border-round($legal-color)
   }
+  .border-legal-round-font-color {
+    @include border-round($legal-color);
+    color: $legal-color;
+  }
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
   }
 }
+
+
+.operational-cards {
+  .border-operational {
+    @include border-rect($operational-color)
+  }
+  .border-operational-round {
+    @include border-round($operational-color)
+  }
+  .border-operational-round-font-color {
+    @include border-round($operational-color);
+    color: $operational-color;
+  }
+  .btn-operational {
+    @include btn-search($operational-color, $third-text-color)
+  }
+}
+
+.technical-cards {
+  .border-technical {
+    @include border-rect($technical-color)
+  }
+  .border-technical-round {
+    @include border-round($technical-color)
+  }
+  .border-technical-round-font-color {
+    @include border-round($technical-color);
+    color: $technical-color;
+  }
+  .btn-technical {
+    @include btn-search($technical-color, $third-text-color)
+  }
+}
+
 .card-text {
   color: $secondary-text-color;
 }
