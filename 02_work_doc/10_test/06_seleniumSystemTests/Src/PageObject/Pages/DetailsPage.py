@@ -31,3 +31,13 @@ class DetailsPage(GenericPageObject):
             )
         except:
             return None
+
+    def getBackLink(self):
+        """Returns the back link"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.backButton,
+            )
+        except:
+            return None
