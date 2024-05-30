@@ -84,6 +84,16 @@ class TestPositiveEnvironmentalIntegrity(WebDriverSetup):
 
         self.assertEqual(len(divDescription), 2)
 
+        # check if the showMore-link is present:
+        showMoreLink = detailsPageObj.getDescendantsByTagName(
+            divDescription[1], "a")
+        if self.getLanguage() == "de":
+            for link in showMoreLink:
+                self.assertTrue("Zeige mehr" in link.text)
+        else:
+            for link in showMoreLink:
+                self.assertTrue("Show more" in link.text)
+
         # test if the image is clickable and leads to a new page:
         image = detailsPageObj.getDescendantsByTagName(divDescription[0],
                                                        "img")

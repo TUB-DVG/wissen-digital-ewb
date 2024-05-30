@@ -33,7 +33,7 @@
     <div class="mainContent collapse" id="problemStatement">
         {{ boxObject.problem_statement_and_problem_goals|slice:"501:" }}
     </div>
-    <div class="showMore">
+    <div class="showMore collapseInfoContainer">
         <a role="button"
            class="collapsed text-truncation-btn"
            data-toggle="collapse"
@@ -41,7 +41,7 @@
            aria-expanded="true"
            aria-controls="problemStatement"
            data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
     </div>
 </div>
 <div class="blockOfContent">
@@ -52,7 +52,7 @@
     <div class="mainContent collapse" id="implementation">
         {{ boxObject.implementation_in_the_project|slice:"501:" }}
     </div>
-    <div class="showMore">
+    <div class="showMore collapseInfoContainer">
         <a role="button"
            class="collapsed text-truncation-btn"
            data-toggle="collapse"
@@ -60,7 +60,7 @@
            aria-expanded="true"
            aria-controls="implementation"
            data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
     </div>
 </div>
 <div class="blockOfContent">
@@ -71,7 +71,7 @@
     <div class="mainContent collapse" id="evaluation">
         {{ boxObject.evaluation|slice:"501:" }}
     </div>
-    <div class="showMore">
+    <div class="showMore collapseInfoContainer">
         <a role="button"
            class="collapsed text-truncation-btn"
            data-toggle="collapse"
@@ -79,6 +79,6 @@
            aria-expanded="true"
            aria-controls="evaluation"
            data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
     </div>
 </div>
