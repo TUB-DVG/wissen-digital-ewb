@@ -97,12 +97,13 @@ def components(request):
         listingShowOrCollapse,
         "elementsFirstColumn": [
             {
-                "objectReference": "category",
+                "objectReference": "component",
                 "description": "",
             },
             {
-                "objectReference": "component",
+                "objectReference": "category",
                 "description": "",
+
             },
             {
                 "objectReference": "description",
@@ -187,12 +188,12 @@ def components(request):
                 True,
                 "objects": [
                     {
-                        "shown": _("Kategorie"),
-                        "name": "category",
-                    },
-                    {
                         "shown": _("Komponente"),
                         "name": "component",
+                    },
+                    {
+                        "shown": _("Kategorie"),
+                        "name": "category",
                     },
                     {
                         "shown": _("Energieverbrauch Nutzung (gesamt; in W)"),
