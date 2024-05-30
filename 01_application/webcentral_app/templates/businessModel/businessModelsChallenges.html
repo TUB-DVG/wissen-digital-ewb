@@ -11,16 +11,7 @@
             <div class="descriptionBox">
                 {% include "common/descriptionContainer.html" %}
             </div>
-            <div class="descriptionImage"
-                 style="background-color: #EDEDED;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center">
-                <img src="{% static 'img/businessModelsOverviewImg.svg' %}"
-                     alt="Description Component Image"
-                     style="width: 923px;
-                            height: 502px" />
-            </div>
+            {% include "partials/_descriptionImage.html" %}
         </div>
         <div class="container" id="container-start-focus">
             {% include "common/fourBoxesContainer.html" %}

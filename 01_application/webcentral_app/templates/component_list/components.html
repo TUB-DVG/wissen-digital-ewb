@@ -28,6 +28,8 @@
         flex-wrap: wrap;
         padding-inline: 14px;
         padding-bottom: 24px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .collapseListingRow .col-6 {
         word-break: break-word;
@@ -108,8 +110,7 @@
     .descriptionDownloadLink {
         margin-bottom: 24px;
     }
-    .container .ecological-cards {
-        padding-inline: 16px;
+    .ecological-cards {
         max-width: 100%;
     }
     .dropdown-menu__nested {
@@ -118,6 +119,9 @@
         border-bottom: 1px solid #cccccc;
         border-radius: 0;
     }
+    /* #componentListingContainer{ 
+        padding-inline: 16px;
+    } */
     </style>
     <div class="content container">
         <div class="row">
@@ -144,23 +148,19 @@
                        class="unstyledLink"
                        download>{% translate "Download Link" %}</a>
                 </div>
-                <div class="descriptionImage">
-                    <img src="{% static 'img/componentListDescriptionImage.svg' %}"
-                         alt="Description Component Image" />
-                </div>
-            </div>
+                {% include "partials/_descriptionImage.html" %}
 
+            </div>
+            <div class="searchContainer {{ focusBorder }}-cards">
+                {% include "common/search-bar.html" %}
+            </div>
+            <div class="compareBox {{ focusBorder }}-cards" id="compareBox">
+                {% include "common/comparison.html" %}
+            </div>
+            <div id="componentListingContainer">
+                {% include "common/listing-row.html" %}
+            </div>
+            <div id="paginationContainer">{% include "common/pagination.html" %}</div>
         </div>
-        <div class="searchContainer {{ focusBorder }}-cards">
-            {% include "common/search-bar.html" %}
-        </div>
-        <div class="compareBox {{ focusBorder }}-cards" id="compareBox">
-            {% include "common/comparison.html" %}
-        </div>
-        <div class="container" id="componentListingContainer">
-            {% include "common/listing-row.html" %}
-        </div>
-        <div id="paginationContainer">{% include "common/pagination.html" %}</div>
-    </div>
-    <script>var modelName = "{{ model }}";</script>
-{% endblock %}
+        <script>var modelName = "{{ model }}";</script>
+    {% endblock %}
