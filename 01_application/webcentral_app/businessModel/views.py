@@ -88,7 +88,7 @@ def userEngagementDetails(request, engagementId):
             for currentUserEnagementObj in UserEngagement.objects.all()
         ],
         "quickLinkName":
-        "userEngagement",
+        "businessModels/userEngagement",
     }
 
     return render(request, "common/detailsPage.html", context)
