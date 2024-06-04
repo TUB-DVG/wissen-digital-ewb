@@ -212,7 +212,7 @@ def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
         "leftColumn": "pages/environmentalIntegrityLeftColumn.html",
         "rightColumn": "pages/environmentalIntegrityRightColumn.html",
     }
-    return render(request, "common/detailsPage.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def benchmarkingChallenges(request):
@@ -255,7 +255,7 @@ def dataSufficiencyBox(request, idOfObject):
         "leftColumn": "pages/dataSufficiencyLeftColumn.html",
         "rightColumn": "pages/dataSufficiencyRightColumn.html",
     }
-    return render(request, "common/detailsPage.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def dataSecurity(request):

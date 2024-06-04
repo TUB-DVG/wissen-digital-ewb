@@ -1,0 +1,72 @@
+{% load static %}
+<style>
+    .link-navigator__icon {
+        width: 8px;
+    }
+    .link-navigator {
+        display: flex;
+        justify-content: space-between;
+    }
+    .secondaryNavbarLeft a{
+        color: #8FDE97;
+        font-size: 15px;
+    }
+    .secondaryNavbarRight a{
+        color: #000000;
+        font-size: 15px;
+        border: 2px solid #8FDE97;
+        margin: 6.5px;
+    }
+    .link-navigator__negative-ecological {
+        /* display: flex; */
+        /* align-items: center; */
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #8FDE97;
+        justify-content: space-between;
+    }
+    .link-navigator__negative-operational {
+        /* display: flex; */
+        /* align-items: center; */
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #FFAE9D;
+    }
+
+    .link-navigator__negative-legal {
+        /* display: flex; */
+        /* align-items: center; */
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #EADB52;
+    }
+</style>
+<div class="row">
+    <div class="col-12 secondaryNavbar link-navigator">
+        <div class="secondaryNavbarLeft">
+            {% if backLinkParam %}
+                <a href="{% url backLink backLinkParam %}"
+                   class="link-navigator__negative-{{ focusBorder }}">
+                {% else %}
+                    <a href="{% url backLink %}"
+                       class="link-navigator__negative-{{ focusBorder }}">
+                    {% endif %}
+                    <img src="{% static imageInBackButton %}"
+                         alt="Caret left icon"
+                         class="link-navigator__icon" />
+                    {{ backLinkText }}
+                </a>
+            </div>
+            {% if linkOnRightSiteBool %}
+                <div class="secondaryNavbarRight">
+                    <a href="{% url linkOnRightSiteName %}">{{ linkOnRightSiteDescription }}
+                        <img src="{% static '/assets/images/right-arrow.svg' %}"
+                             class="arrowImage" />
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>

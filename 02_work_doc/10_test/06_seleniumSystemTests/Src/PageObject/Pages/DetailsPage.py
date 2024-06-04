@@ -41,3 +41,13 @@ class DetailsPage(GenericPageObject):
             )
         except:
             return None
+
+    def getSecondaryNavBar(self):
+        """Returns the secondary navigation bar"""
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                f"//div[contains(@class, {Locator.secondaryNavBar})]",
+            )
+        except:
+            return None

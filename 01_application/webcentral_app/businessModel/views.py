@@ -52,7 +52,7 @@ def businessModelsChallengeDetails(request, challengeId):
         "showInputsInImageQuickLinkBar": False,
         "quickLinkName": "businessModels/challenges",
     }
-    return render(request, "common/detailsPage.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def userEngagementDetails(request, engagementId):
@@ -91,4 +91,4 @@ def userEngagementDetails(request, engagementId):
         "businessModels/userEngagement",
     }
 
-    return render(request, "common/detailsPage.html", context)
+    return render(request, "pages/detailsPage.html", context)

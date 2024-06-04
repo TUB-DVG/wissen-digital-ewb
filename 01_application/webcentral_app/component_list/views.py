@@ -103,7 +103,6 @@ def components(request):
             {
                 "objectReference": "category",
                 "description": "",
-
             },
             {
                 "objectReference": "description",
@@ -251,18 +250,45 @@ def components(request):
         ],
         "image":
         "img/componentList/negativeEnvironmentalImpactsBox2.svg",
+        "linkOnRightSiteBool":
+        True,
+        "linkOnRightSiteName":
+        "dataProcessing",
+        "linkOnRightSiteDescription":
+        _("Zu den Aufwänden für Datenverarbeitungsprozesse"),
+        "imageInBackButton":
+        "img/componentList/caret-left.svg",
+        "backLink":
+        "environmentalIntegrityNegativ",
+        "backLinkText":
+        _("Negative Umweltwirkungen"),
     }
     return render(request, "component_list/components.html", context)
 
 
 def dataProcessing(request):
     context = {
-        "focusBorder": "ecological",
-        "focusName": "ecological",
-        "urlName": "dataProcessing",
-        "backLinkText": _("Negative Umweltwirkungen"),
-        "backLink": "environmentalIntegrityNegativ",
-        "leftColumn": "component_list/dataProcessingLeftColumn.html",
-        "rightColumn": "component_list/dataProcessingRightColumn.html",
+        "focusBorder":
+        "ecological",
+        "focusName":
+        "ecological",
+        "urlName":
+        "dataProcessing",
+        "backLinkText":
+        _("Negative Umweltwirkungen"),
+        "backLink":
+        "environmentalIntegrityNegativ",
+        "leftColumn":
+        "partials/dataProcessingLeftColumn.html",
+        "rightColumn":
+        "partials/dataProcessingRightColumn.html",
+        "linkOnRightSiteBool":
+        True,
+        "linkOnRightSiteName":
+        "components",
+        "linkOnRightSiteDescription":
+        _("Zu den Aufwänden für verwendete Komponenten"),
+        "imageInBackButton":
+        "img/componentList/caret-left.svg",
     }
-    return render(request, "common/detailsPage.html", context)
+    return render(request, "pages/detailsPage.html", context)
