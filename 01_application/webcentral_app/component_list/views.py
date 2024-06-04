@@ -249,7 +249,7 @@ def components(request):
             },
         ],
         "image":
-        "img/componentList/negativeEnvironmentalImpactsBox2.svg",
+        "img/componentList/negativeEnvironmentalImpactsBox1.svg",
         "linkOnRightSiteBool":
         True,
         "linkOnRightSiteName":

@@ -109,6 +109,7 @@
     }
     .descriptionDownloadLink {
         margin-bottom: 24px;
+        font-size: 22px;
     }
     .ecological-cards {
         max-width: 100%;
@@ -129,9 +130,9 @@
             <div class="descriptionBox">
                 {% include "common/descriptionContainer.html" %}
                 <div class="descriptionDownloadLink">
-                    <a href="{% static 'pdf/componentList.pdf' %}"
-                       class="unstyledLink"
-                       download>{% translate "Download Link" %}</a>
+                    {% blocktranslate %}
+                    In der folgenden Tabelle finden Sie weitergehende Informationen zu den Treibhausgasemissionen und Energieverbräuchen (Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als{% endblocktranslate %} <a href="{% static 'pdf/componentList.pdf' %}" class="unstyledLink" download>Gesamttabelle</a>{% blocktranslate %} herunterladen oder die Komponenten nach Ihren Vorgaben online darstellen lassen.
+                                        {% endblocktranslate %}
                 </div>
                 {% include "partials/_descriptionImage.html" %}
 
