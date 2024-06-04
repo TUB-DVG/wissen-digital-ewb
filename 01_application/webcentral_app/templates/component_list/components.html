@@ -124,22 +124,7 @@
     } */
     </style>
     <div class="content container">
-        <div class="row">
-            <div class="col-12 secondaryNavbar">
-                <div class="secondaryNavbarLeft">
-                    <img src="{% static 'img/componentList/caret-left.svg' %}"
-                         alt="green arrow"
-                         class="arrowImage" />
-                    <a href="{% url 'environmentalIntegrityNegativ' %}">{% translate "Negative Umweltwirkungen" %}</a>
-                </div>
-                <div class="secondaryNavbarRight">
-                    <a href="{% url 'dataProcessing' %}">{% translate "Zu den Aufwänden für Datenverarbeitungsprozesse " %}
-                        <img src="{% static '/assets/images/right-arrow.svg' %}"
-                             class="arrowImage" />
-                    </a>
-                </div>
-            </div>
-        </div>
+        {% include "partials/backLinkInFocusColor.html" %}
         <div class="row">
             <div class="descriptionBox">
                 {% include "common/descriptionContainer.html" %}

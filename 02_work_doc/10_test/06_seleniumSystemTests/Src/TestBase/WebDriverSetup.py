@@ -141,3 +141,17 @@ class WebDriverSetup(unittest.TestCase):
             elif option.text == "Englisch":
                 self.scrollElementIntoViewAndClickIt(option)
                 break
+
+    def checkIfElementIsTranslated(self, language, elementText,
+                                   translationDict):
+        """Change the language of the page and check if the language is changed."""
+        if language == "en":
+            self._setLanguageToGerman()
+            self.assertEqual(self.getLanguage(), "de")
+            self.assertEqual(translationDict["de"], elementText)
+        elif language == "de":
+            self._setLanguageToEnglish()
+            self.assertEqual(self.getLanguage(), "en")
+            self.assertEqual(translationDict["en"], elementText)
+        else:
+            self.assertEqual(self.getLanguage(), "en")

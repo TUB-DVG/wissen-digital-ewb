@@ -20,6 +20,8 @@ from Test.Scripts.TestSearch import TestSearch
 from Test.Scripts.TestPublications import TestPublicationPage
 from Test.Scripts.TestComponentsList import TestComponentsList
 from Test.Scripts.TestUserEngagement import TestUserEngagement
+from Test.Scripts.TestNegativeEnvironmentalImpacts import (
+    TestNegativeEnvironmentalImpacts, )
 
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
@@ -70,6 +72,7 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestPublicationPage),
             testLoader.loadTestsFromTestCase(TestComponentsList),
             testLoader.loadTestsFromTestCase(TestUserEngagement),
+            testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
             # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
 
