@@ -86,6 +86,7 @@ CSP_STYLE_SRC = (
     # "'strict-dynamic'",
     "https://fonts.googleapis.com",
     "https://cdn.jsdelivr.net",
+    "https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css",
 )
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -95,6 +96,7 @@ CSP_SCRIPT_SRC = (
     "https://cdn.plot.ly",
     "https://unpkg.com",
     "https://code.highcharts.com/highcharts.js",
+    "https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js",
     # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
     "'unsafe-inline'",
     "'unsafe-eval'",

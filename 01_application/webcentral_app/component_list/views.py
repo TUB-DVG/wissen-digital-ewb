@@ -10,10 +10,11 @@ from .models import (
 )
 
 
-# Create your views here.
 def components(request):
     """Load the Component Modeldata and render the components-template"""
 
+    # if request.method == "POST":
+    #     breakpoint()
     listingShowOrCollapse = "collapse"
 
     # get the values of the multi-level dropdown field:

@@ -1,17 +1,38 @@
 {% load i18n %}
+{% load static %}
 <!-- Filter bar START -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js"></script> -->
+<!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
+<script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/chosen.css' %}" />
 <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
       id="searchBox"
-      method="GET"
+      method="POST"
       action="">
+
+  {% csrf_token %}
   <div class="row g-3">
     <!-- Input -->
-    <div class="col-xl-3" title="Suchen in den ">
-      <input id="search-input-{{ nameOfTemplate }}"
-             class="form-control me-1 border-{{ focusBorder }}"
-             type="search"
-             placeholder="{% translate 'Suchbegriff' %}"
-             name='searched' />
+    <div class="col-xl-2" title="Suchen in den ">
+      <div class="input-group">
+        <input id="search-input-{{ nameOfTemplate }}"
+               class="form-control border-{{ focusBorder }}"
+               type="search"
+               placeholder="{% translate 'Suchbegriff' %}"
+               name='searched' />
+        <div class="input-group-append">
+          <button type="submit"
+                  class="btn btn-{{ focusBorder }}"
+                  id="search-submit-{{ nameOfTemplate }}"
+                  style="position: absolute;
+                         right: 20px"
+                  href="">
+            <i class="fas fa-search">
+            </i>
+          </button>
+        </div>
+      </div>
     </div>
     <!-- Select item -->
     <div class="col-xl-7">
@@ -39,7 +60,8 @@
                        aria-haspopup="true"
                        aria-expanded="false"
                        dblocator="{{ option.name }}">{{ option.shown }}</a>
-                    <div class="dropdown-menu dropdown-menu__nested" aria-labelledby="nestedDropdownMenuButton">
+                    <div class="dropdown-menu dropdown-menu__nested"
+                         aria-labelledby="nestedDropdownMenuButton">
                       <a class="dropdown-item nested"
                          href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
                          sorting="Ascending">{% translate "Aufsteigend" %}</a>
@@ -53,7 +75,12 @@
             </div>
           {% else %}
             <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
-              <select class="form-select js-choice border-{{ focusBorder }}-round"
+              <!-- <select data-placeholder="{{ optionContent.placeholder }}" multiple class="chosen-select chosen-select-{{ focusBorder }}" name="test">
+                {% for option in optionContent.objects %}
+                  <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+              </select> -->
+              <select class="form-select select2-multiple js-choice border-{{ focusBorder }}-round trigger-submit-onchange"
                       aria-label=".form-select-sm example"
                       name="{{ optionContent.fieldName }}"
                       id="select-{{ optionContent.fieldName }}">
@@ -71,22 +98,18 @@
       </div>
     </div>
     <!-- search Button -->
-    <div class="col-xl-1 search-button">
-      <button type="submit"
-              class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100"
-              id="search-submit-{{ nameOfTemplate }}"
-              href="">
+    <!-- <div class="col-xl-1 search-button">
+      <button type="submit" class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="search-submit-{{ nameOfTemplate }}" href="">
         <i class="fas fa-search">
         </i>
       </button>
-    </div>
+    </div> -->
     <!-- Clear Button -->
-    <div class="col-xl-1">
+    <!-- <div class="col-xl-1">
       <a href="{% url urlName %}">
-        <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100"
-            id="allButton">{% translate 'Alle' %}</h6>
+        <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="allButton">{% translate 'Alle' %}</h6>
       </a>
-    </div>
+    </div> -->
   </div>
 </form>
 <script>
@@ -104,6 +127,27 @@ $(document).ready(function() {
 
         return false;
     });
+    $(document).ready(function() {
+    $('.trigger-submit-onchange').change(function() {
+        var selectedOption = $(this).val();
+        console.log('You selected: ', selectedOption);
+        var form = $('#searchBox');
+        var action = form.attr('action');
+        debugger;
+        $.ajax({
+          url: '/component_list/components/',
+          type: 'POST',
+          data: { key1: 'value1', key2: 'value2' },
+          success: function(data, status) {
+            console.log('Data: ' + data + '\nStatus: ' + status);
+          }
+        });
+        // action += '?' + $(this).attr("id") + '=' + encodeURIComponent(selectedOption);
+        // form.submit();
+        // Your function here
+    });
+});
+    
 
     // // Handle click events on second level dropdown items
     // $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
@@ -121,4 +165,11 @@ $(document).ready(function() {
     //   form.submit();
     // });
 });
+</script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+<script>
+$(".chosen-select").chosen({
+  no_results_text: "Oops, nothing found!"
+})
 </script>
