@@ -103,7 +103,8 @@
         transform: translate(-20px,5px);
     }
     .unstyledLink{
-        text-decoration: none;
+        text-decoration: underline;
+        text-decoration-color: #8FDE97;
         color: black;
         font-size: 22px;
     }
@@ -129,13 +130,13 @@
         <div class="row">
             <div class="descriptionBox">
                 {% include "common/descriptionContainer.html" %}
+
+                {% include "partials/_descriptionImage.html" %}
                 <div class="descriptionDownloadLink">
                     {% blocktranslate %}
-                    In der folgenden Tabelle finden Sie weitergehende Informationen zu den Treibhausgasemissionen und Energieverbräuchen (Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als{% endblocktranslate %} <a href="{% static 'pdf/componentList.pdf' %}" class="unstyledLink" download>Gesamttabelle</a>{% blocktranslate %} herunterladen oder die Komponenten nach Ihren Vorgaben online darstellen lassen.
+                    In der folgenden Tabelle finden Sie weitergehende Informationen zu den Treibhausgasemissionen und Energieverbräuchen (Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als{% endblocktranslate %} <a href="{% static 'pdf/componentList.pdf' %}" class="unstyledLink" download>Gesamttabelle herunterladen</a>{% blocktranslate %} oder die Komponenten nach Ihren Vorgaben online darstellen lassen.
                                         {% endblocktranslate %}
                 </div>
-                {% include "partials/_descriptionImage.html" %}
-
             </div>
             <div class="searchContainer {{ focusBorder }}-cards">
                 {% include "common/search-bar.html" %}
