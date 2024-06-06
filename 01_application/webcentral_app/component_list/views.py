@@ -283,6 +283,9 @@ def components(request):
             "sorting": "",
             "overview": overviewValue,
         },
+        "pathToArrow":
+        "assets/images/arrowDownEcological.svg",
+        # "assets/images/arrow.svg",
     }
     return render(request, "component_list/components.html", context)
 
