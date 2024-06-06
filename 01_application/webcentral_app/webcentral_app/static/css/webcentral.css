@@ -181,6 +181,33 @@
   background-color: #8FDE97;
   color: white;
 }
+.ecological-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #8FDE97;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px #999; */
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.ecological-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.ecological-cards input[type=radio]:checked:before {
+  background: #35495e;
+}
+.ecological-cards .ecological-text-near-radio {
+  color: #8FDE97;
+  position: relative;
+  bottom: 5px;
+}
 
 .legal-cards .border-legal {
   border-radius: 2px;
@@ -199,6 +226,33 @@
   background-color: #F5E86A;
   color: white;
 }
+.legal-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #F5E86A;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px #999; */
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.legal-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.legal-cards input[type=radio]:checked:before {
+  background: #35495e;
+}
+.legal-cards .legal-text-near-radio {
+  color: #F5E86A;
+  position: relative;
+  bottom: 5px;
+}
 
 .operational-cards .border-operational {
   border-radius: 2px;
@@ -216,6 +270,33 @@
 .operational-cards .btn-operational {
   background-color: #FFAE9D;
   color: white;
+}
+.operational-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FFAE9D;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px #999; */
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.operational-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.operational-cards input[type=radio]:checked:before {
+  background: #35495e;
+}
+.operational-cards .operational-text-near-radio {
+  color: #FFAE9D;
+  position: relative;
+  bottom: 5px;
 }
 
 .technical-cards .border-technical {
@@ -236,6 +317,33 @@
 .technical-cards .btn-technical {
   background-color: #AFC5FF;
   color: white;
+}
+.technical-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #AFC5FF;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px #999; */
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.technical-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.technical-cards input[type=radio]:checked:before {
+  background: #35495e;
+}
+.technical-cards .technical-text-near-radio {
+  color: #AFC5FF;
+  position: relative;
+  bottom: 5px;
 }
 
 .card-text {
