@@ -17,7 +17,10 @@
     margin-left: 10px;
   
   }
+.customSelectArrow {
+  background-position: 90% 50%;
 
+}
 </style>
 <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
       id="searchBox"
@@ -92,10 +95,12 @@
                   <option value="{{ option }}">{{ option }}</option>
                 {% endfor %}
               </select> -->
-              <select class="form-select select2-multiple js-choice border-{{ focusBorder }}-round trigger-submit-onchange"
+              <select class="form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
                       aria-label=".form-select-sm example"
                       name="{{ optionContent.fieldName }}"
-                      id="{{ optionContent.fieldName }}">
+                      id="{{ optionContent.fieldName }}"
+                      style="background: url('{% static pathToArrow %}') no-repeat;
+                             background-position: 90% 50%">
                 <option value="">{% translate optionContent.placeholder %}</option>
                 {% for option in optionContent.objects %}
                   <option value="{{ option }}"

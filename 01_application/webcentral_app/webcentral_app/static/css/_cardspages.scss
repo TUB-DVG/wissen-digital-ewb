@@ -64,10 +64,10 @@
 
 .ecological-cards {
   .border-ecological {
-    @include border-rect($ecological-color)
+    @include border-rect($ecological-color);
   }
   .border-ecological-round {
-    @include border-round($ecological-color)
+    @include border-round($ecological-color);
   }
   .border-ecological-round-font-color {
     @include border-round($ecological-color);
@@ -80,10 +80,10 @@
 
 .legal-cards {
   .border-legal {
-    @include border-rect($legal-color)
+    @include border-rect($legal-color);
   }
   .border-legal-round {
-    @include border-round($legal-color)
+    @include border-round($legal-color);
   }
   .border-legal-round-font-color {
     @include border-round($legal-color);
@@ -97,10 +97,10 @@
 
 .operational-cards {
   .border-operational {
-    @include border-rect($operational-color)
+    @include border-rect($operational-color);
   }
   .border-operational-round {
-    @include border-round($operational-color)
+    @include border-round($operational-color);
   }
   .border-operational-round-font-color {
     @include border-round($operational-color);
@@ -113,10 +113,12 @@
 
 .technical-cards {
   .border-technical {
-    @include border-rect($technical-color)
+    @include border-rect($technical-color);
+    color: $technical-color;
   }
   .border-technical-round {
-    @include border-round($technical-color)
+    @include border-round($technical-color);
+    color: $technical-color;
   }
   .border-technical-round-font-color {
     @include border-round($technical-color);
