@@ -23,8 +23,16 @@ def components(request):
 
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
-    categoryValue = request.GET.get("category", "")
-    componentValue = request.GET.get("component", "")
+    categoryValue = request.GET.get("category-hidden", "")
+
+    # the values in category are a comma separated list:
+    categoryValues = categoryValue.split(",")
+    categoryValues = _removeEmtpyStringsFromList(categoryValues)
+    print(categoryValues)
+    componentValue = request.GET.get("component-hidden", "")
+    componentValues = componentValue.split(",")
+    componentValues = _removeEmtpyStringsFromList(componentValues)
+    print(componentValues)
     # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
 
@@ -32,7 +40,7 @@ def components(request):
 
     if searchInputValue:
         searchQuery = searchQuery | Q(
-            category__category__icontains=searchInputValue)
+            category__category__icontains=categoryValues)
         searchQuery = searchQuery | Q(
             component__componentClass__icontains=searchInputValue)
         searchQuery = searchQuery | Q(description__icontains=searchInputValue)
@@ -40,15 +48,15 @@ def components(request):
             furtherInformationNotes__icontains=searchInputValue)
         searchQuery = searchQuery | Q(sources__icontains=searchInputValue)
 
-    if categoryValue:
+    if len(categoryValues) > 0:
         categoryForSelectValue = Category.objects.filter(
             category=categoryValue)
         if len(categoryForSelectValue) == 1:
             searchQuery = searchQuery | Q(category=categoryForSelectValue[0])
 
-    if componentValue:
+    if len(componentValues) > 0:
         componentForSelectValue = ComponentClass.objects.filter(
-            componentClass=componentValue)
+            componentClass=componentValues)
         if len(componentForSelectValue) == 1:
             searchQuery = searchQuery | Q(component=componentForSelectValue[0])
 
@@ -249,6 +257,11 @@ def components(request):
                 "fieldName": "overview",
             },
         ],
+        # "radioButtons": [
+        #     {
+        #         "description":
+        #     }
+        # ],
         "image":
         "img/componentList/negativeEnvironmentalImpactsBox1.svg",
         "linkOnRightSiteBool":
@@ -263,6 +276,13 @@ def components(request):
         "environmentalIntegrityNegativ",
         "backLinkText":
         _("Negative Umweltwirkungen"),
+        "filters": {
+            "searched": searchInputValue,
+            "category": categoryValues,
+            "component": componentValues,
+            "sorting": "",
+            "overview": overviewValue,
+        },
     }
     return render(request, "component_list/components.html", context)
 
@@ -293,3 +313,11 @@ def dataProcessing(request):
         "img/componentList/caret-left.svg",
     }
     return render(request, "pages/detailsPage.html", context)
+
+
+def _removeEmtpyStringsFromList(listOfStrings):
+    """Remove empty strings from list of strings"""
+    for string in listOfStrings:
+        if string == "":
+            listOfStrings.remove(string)
+    return listOfStrings

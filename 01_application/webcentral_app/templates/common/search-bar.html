@@ -6,12 +6,24 @@
 <!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
 <script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/chosen.css' %}" />
+<style>
+  .filter {
+    background: #8FDE97;
+    padding: 13px; 
+    margin-right: 12px;
+  }
+  .closeFilter {
+    color: #000;
+    margin-left: 10px;
+  
+  }
+
+</style>
 <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
       id="searchBox"
-      method="POST"
+      method="GET"
       action="">
 
-  {% csrf_token %}
   <div class="row g-3">
     <!-- Input -->
     <div class="col-xl-2" title="Suchen in den ">
@@ -74,7 +86,7 @@
               </div>
             </div>
           {% else %}
-            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0">
+            <div class="form-group col-sm-4 col-md-3 pb-lg-2 pb-md-0 mb-0">
               <!-- <select data-placeholder="{{ optionContent.placeholder }}" multiple class="chosen-select chosen-select-{{ focusBorder }}" name="test">
                 {% for option in optionContent.objects %}
                   <option value="{{ option }}">{{ option }}</option>
@@ -83,7 +95,7 @@
               <select class="form-select select2-multiple js-choice border-{{ focusBorder }}-round trigger-submit-onchange"
                       aria-label=".form-select-sm example"
                       name="{{ optionContent.fieldName }}"
-                      id="select-{{ optionContent.fieldName }}">
+                      id="{{ optionContent.fieldName }}">
                 <option value="">{% translate optionContent.placeholder %}</option>
                 {% for option in optionContent.objects %}
                   <option value="{{ option }}"
@@ -95,24 +107,61 @@
             </div>
           {% endif %}
         {% endfor %}
+        <div>
+          <input type="radio" id="triggerDetailsView" />
+          {% translate "Detail Ansicht" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3 pb-lg-2 pb-md-0 mb-0">
+          <input type="radio" id="triggerComparisonMode" />
+          {% translate "Vergleichsmodus" %}
+        </div>
       </div>
     </div>
-    <!-- search Button -->
-    <!-- <div class="col-xl-1 search-button">
-      <button type="submit" class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="search-submit-{{ nameOfTemplate }}" href="">
-        <i class="fas fa-search">
-        </i>
-      </button>
-    </div> -->
-    <!-- Clear Button -->
-    <!-- <div class="col-xl-1">
-      <a href="{% url urlName %}">
-        <h6 class="btn btn-{{ focusBorder }} mb-0 rounded z-index-1 w-100" id="allButton">{% translate 'Alle' %}</h6>
-      </a>
-    </div> -->
+
   </div>
 </form>
+<div style="margin-bottom: 24px;">
+  {% for key, value in filters.items %}
+    {% if key == "searched" %}
+      <span class="filter {{ key }}">{{ value }}
+        <button class="closeFilter">
+          <i class="fas fa-times"></i>
+        </button>
+      </span>
+    {% else %}
+      {% for selectedItem in value %}
+        <span class="filter {{ key }}">{{ selectedItem }}
+          <button class="closeFilter">
+            <i class="fas fa-times"></i>
+          </button>
+        </span>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
 <script>
+  var radioButtonChecked = false;
+  $("#triggerComparisonMode").click(function() {
+    if ($(this).is(':checked')) {
+      $("#compareBox").css("display", "block");
+      if (!radioButtonChecked) {
+        radioButtonChecked = true;
+        
+      }
+      else {
+        radioButtonChecked = false;
+        this.checked = false;
+        $("#compareBox").css("display", "none");
+      }
+    }
+    else {
+      $("#compareBox").css("display", "none");
+    }
+  });
+  $('.closeFilter').click(function() {
+    // Your code here
+    $(this).parent().remove();
+  });
 $(document).ready(function() {
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
@@ -132,19 +181,53 @@ $(document).ready(function() {
         var selectedOption = $(this).val();
         console.log('You selected: ', selectedOption);
         var form = $('#searchBox');
-        var action = form.attr('action');
-        debugger;
-        $.ajax({
-          url: '/component_list/components/',
-          type: 'POST',
-          data: { key1: 'value1', key2: 'value2' },
-          success: function(data, status) {
-            console.log('Data: ' + data + '\nStatus: ' + status);
-          }
+        var categoryOfNewlySelectedFitler = $(this).attr("id");
+        var listOfActivatedFilters = [];
+        var url = $('#searchBox').attr('action');
+        url += "?";
+        
+        $("select.form-select").each(function () {
+
+          var filterIdentifer = $(this).attr("id");
+          var spansOfFilter = $("span.filter." + filterIdentifer);
+          var selectedOptions = "";
+          // debugger;
+          spansOfFilter.each(function() {
+            var filter = $(this).text();
+            selectedOptions += filter + ",";
+            // debugger;
         });
-        // action += '?' + $(this).attr("id") + '=' + encodeURIComponent(selectedOption);
-        // form.submit();
-        // Your function here
+        if ($(this).attr("id") ==  categoryOfNewlySelectedFitler) {
+          selectedOptions += selectedOption;
+        }
+        // debugger;
+          // create a hidden input-field for each filter category, which holds a list of the 
+          // already selected filter and the newly selected one
+          var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name", filterIdentifer + "-hidden");
+          if (selectedOptions.slice(-1) === ',') {
+            selectedOptions = selectedOptions.slice(0, -1);
+          }
+          hiddenInput.setAttribute("value", selectedOptions);
+          form.append(hiddenInput);
+          // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
+        })
+
+
+        // var action = form.attr('action');
+        // action += '?' + $(this).attr("id") + '=' + encodeURIComponent(setCategories);
+        // debugger;
+        form.submit();
+        
+        
+
+        // Send a GET request to the server
+        // $.get(url, function(response) {
+
+        //     // window.location.href = response;
+        //     $('html').html(response);
+        // });        
     });
 });
     

@@ -73,3 +73,23 @@
 
     {% endfor %}
 </div>
+<script>
+    var radioButtonCLicked = false;
+    $("#triggerDetailsView").click('change', function() {
+        if ($(this).is(':checked')) {
+            if (!radioButtonCLicked) {
+                radioButtonCLicked = true;
+                
+                $(".collapse").attr("class", "show");
+            }
+            else {
+                radioButtonCLicked = false;
+                this.checked = false;
+                debugger;
+                $(".show").attr("class", "collapse");
+            }
+            // $("#collapseComponent1").attr("class") = "";
+        }
+    });
+
+</script>
