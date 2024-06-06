@@ -1,145 +1,148 @@
 {% extends 'base.html' %}
 {% block title %}Überblick über technische Standards - Protokolle{% endblock %}
 {% block content %}
-{% load static %}
-{% load i18n %}
-<!DOCTYPE html>
+  {% load static %}
+  {% load i18n %}
+  <!DOCTYPE html>
 
 </head>
 
 <body>
 
-<!-- **************** MAIN CONTENT START **************** -->
-<main>
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
 
-<!-- =======================
+    <!-- =======================
 Page Banner START -->
-<section class="py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% translate "Überblick über technische Standards" %} - {% translate "Protokolle" %}</h2>
+    <section class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="p-2 text-left rounded-3">
+              <h2 class="m-0">
+                {% translate "Überblick über technische Standards" %} - {% translate "Protokolle" %}
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- =======================
+    </section>
+    <!-- =======================
 Page Banner END -->
 
+    {% include './protocol-explanation.html' %}
 
-{% include './protocol-explanation.html' %}
-
-
-<!-- =======================
+    <!-- =======================
 Page content START -->
-<section class="pt-0">
-  <div class="container {{ focusBorder }}-cards">
-    <!-- Filter bar START -->
-    {% include "common/search-bar.html" %}
-    <!-- Filter bar END -->
-    <!-- search tags START -->
-    <ul class="list-inline mb-0">
-      {% if search %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={{search}}&n=&c=&os=">
-            {% translate "Suchbegriff" %}: {{search}}
-          </a>
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{openSourceStatus}}{% endif %}">
-            <i class="bi bi-x fa-lg close-icon"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-      {% if name %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n={{name}}&c=&os=">
-            {% translate "Suchbegriff" %}: {{name}}
-          </a>
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n=&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
-            <i class="bi bi-x fa-lg close-icon"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-      {% if communicationMediumCategory %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c={{communicationMediumCategory}}&os=">
-            {% translate "Suchbegriff" %}: {{ communicationMediumCategory}}
-          </a>
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c=&os={% if openSourceStatus %}{{ sopenSourceStatusource}}{% endif %}">
-            <i class="bi bi-x fa-lg close-icon"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-      {% if openSourceStatus %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched=&n=&c=&os={{openSourceStatus}}">
-            {% translate "Suchbegriff" %}: {{ openSourceStatus}}
-          </a>
-          <a href="{%url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{search}}{% endif %}&n={% if name %}{{name}}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory}}{% endif %}&os=">
-            <i class="bi bi-x fa-lg close-icon"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-    </ul>
-    <!-- search tags END -->
-    <!-- Comparison button START -->
-    <div class="col-xl-4" id="comparisonButton">
-      <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-        {% translate "Vergleiche" %} 
-      </h6>
-    </div>
-   
-    <div class="row g-3" style="display:none" id="comparisonBar">
-      <div class="col-xl-2" id="compareButton" >
-        <a href="#" id="comparisonUrl">
+    <section class="pt-0">
+      <div class="container {{ focusBorder }}-cards">
+        <!-- Filter bar START -->
+        {% include "partials/search-bar.html" %}
+        <!-- Filter bar END -->
+        <!-- search tags START -->
+        <ul class="list-inline mb-0">
+          {% if search %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched={{ search }}&n=&c=&os=">
+                  {% translate "Suchbegriff" %}: {{ search }}
+                </a>
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched=&n={% if name %}{{ name }}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory }}{% endif %}&os={% if openSourceStatus %}{{ openSourceStatus }}{% endif %}">
+                  <i class="bi bi-x fa-lg close-icon"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+          {% if name %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched=&n={{ name }}&c=&os=">
+                  {% translate "Suchbegriff" %}: {{ name }}
+                </a>
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{ search }}{% endif %}&n=&c={% if communicationMediumCategory %}{{ communicationMediumCategory }}{% endif %}&os={% if openSourceStatus %}{{ sopenSourceStatusource }}{% endif %}">
+                  <i class="bi bi-x fa-lg close-icon"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+          {% if communicationMediumCategory %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched=&n=&c={{ communicationMediumCategory }}&os=">
+                  {% translate "Suchbegriff" %}: {{ communicationMediumCategory }}
+                </a>
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{ search }}{% endif %}&n={% if name %}{{ name }}{% endif %}&c=&os={% if openSourceStatus %}{{ sopenSourceStatusource }}{% endif %}">
+                  <i class="bi bi-x fa-lg close-icon"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+          {% if openSourceStatus %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched=&n=&c=&os={{ openSourceStatus }}">
+                  {% translate "Suchbegriff" %}: {{ openSourceStatus }}
+                </a>
+                <a href="{% url 'TechnicalStandards_protocol_list' %}?searched={% if search %}{{ search }}{% endif %}&n={% if name %}{{ name }}{% endif %}&c={% if communicationMediumCategory %}{{ communicationMediumCategory }}{% endif %}&os=">
+                  <i class="bi bi-x fa-lg close-icon"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+        </ul>
+        <!-- search tags END -->
+        <!-- Comparison button START -->
+        <div class="col-xl-4" id="comparisonButton">
           <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            {% translate "Vergleiche" %} 
+            {% translate "Vergleiche" %}
           </h6>
-        </a>
-      </div>
-      <div class="col-xl-2" id="cancelButton">
-          <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
-            {% translate "Zurücksetzen" %}
-          </h6>
-
-      </div>
-    </div>
-    <br>
-    <!-- Comparison button END -->
-    <!-- standards grid row START -->
-    <div class="row mt-3">
-      <!-- Main content START -->
-      <div class="col-12">
-
-        <!-- Course Grid START -->
-        <div class="row g-4" id="protocol-listing-results">
-          {% include './protocol-listings-results.html' %}
         </div>
-        <!-- standards grid END -->
-        <!-- Pagination START -->
-        {% include "common/pagination.html" %}
-        <!-- Pagination END -->
+
+        <div class="row g-3" style="display:none" id="comparisonBar">
+          <div class="col-xl-2" id="compareButton">
+            <a href="#" id="comparisonUrl">
+              <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+                {% translate "Vergleiche" %}
+              </h6>
+            </a>
+          </div>
+          <div class="col-xl-2" id="cancelButton">
+            <h6 class="btn btn-technical mb-0 rounded z-index-1 w-100">
+              {% translate "Zurücksetzen" %}
+            </h6>
+
+          </div>
+        </div>
+        <br />
+        <!-- Comparison button END -->
+        <!-- standards grid row START -->
+        <div class="row mt-3">
+          <!-- Main content START -->
+          <div class="col-12">
+
+            <!-- Course Grid START -->
+            <div class="row g-4" id="protocol-listing-results">
+              {% include './protocol-listings-results.html' %}
+            </div>
+            <!-- standards grid END -->
+            <!-- Pagination START -->
+            {% include "common/pagination.html" %}
+            <!-- Pagination END -->
+          </div>
+          <!-- Main content END -->
+        </div>
+        <!-- Row END -->
       </div>
-      <!-- Main content END -->
-    </div><!-- Row END -->
-  </div>
-</section>
-<!-- =======================
+    </section>
+    <!-- =======================
      Page content END -->
-</main>
+  </main>
 
-<!-- **************** MAIN CONTENT END **************** -->
+  <!-- **************** MAIN CONTENT END **************** -->
 
   <!--ComparisonFeature-->
-<script type="text/javascript" src="{% static 'js/protocolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script>
+  <script type="text/javascript"
+          src="{% static 'js/protocolComparison-feature.js' %}"
+          nonce="{{request.csp_nonce}}"></script>
 
 {% endblock %}
