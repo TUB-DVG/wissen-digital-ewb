@@ -1,6 +1,28 @@
+var radioButtonChecked = false;
+$("#triggerComparisonMode").click(function() {
+  if ($(this).is(':checked')) {
+    $("#compareBox").css("display", "block");
+    if (!radioButtonChecked) {
+        radioButtonChecked = true;
+        $(".comparisonInputTools").css("visibility", "visible");
+    }
+    else {
+      radioButtonChecked = false;
+      this.checked = false;
+      $("#compareBox").css("display", "none");
+      $(".comparisonInputTools").css("visibility", "hidden");
+    }
+  }
+  else {
+    $("#compareBox").css("display", "none");
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    var firstComparisonButtonToolsExists = document.getElementById('firstComparisonButtonTools');
-    if (firstComparisonButtonToolsExists) {
+    var firstComparisonButtonToolsExists = document.getElementById('comparisonBarTools');
+    // debugger;
+    if (firstComparisonButtonToolsExists.style.display) {
         $(document).ready(function () {
             // Card Multi Select
             $('input[type=checkbox]').click(function () {

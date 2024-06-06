@@ -146,24 +146,7 @@
   {% endfor %}
 </div>
 <script>
-  var radioButtonChecked = false;
-  $("#triggerComparisonMode").click(function() {
-    if ($(this).is(':checked')) {
-      $("#compareBox").css("display", "block");
-      if (!radioButtonChecked) {
-        radioButtonChecked = true;
-        
-      }
-      else {
-        radioButtonChecked = false;
-        this.checked = false;
-        $("#compareBox").css("display", "none");
-      }
-    }
-    else {
-      $("#compareBox").css("display", "none");
-    }
-  });
+
   $('.closeFilter').click(function() {
     $(this).parent().remove();
   });
