@@ -80,12 +80,12 @@
             if (!radioButtonCLicked) {
                 radioButtonCLicked = true;
                 
-                $(".collapse").attr("class", "show");
+                $("[id*='collapseComponent'].collapse").attr("class", "show");
             }
             else {
                 radioButtonCLicked = false;
                 this.checked = false;
-                $(".show").attr("class", "collapse");
+                $("[id*='collapseComponent'].show").attr("class", "collapse");
             }
         }
     });

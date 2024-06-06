@@ -248,14 +248,6 @@ def components(request):
                 "fieldName":
                 "sorting",
             },
-            {
-                "placeholder": _("Übersicht"),
-                "objects": [
-                    _("Ausgeklappt"),
-                    _("Eingeklappt"),
-                ],
-                "fieldName": "overview",
-            },
         ],
         # "radioButtons": [
         #     {

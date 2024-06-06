@@ -21,6 +21,7 @@
   background-position: 90% 50%;
 
 }
+
 </style>
 <form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
       id="searchBox"
@@ -114,11 +115,11 @@
         {% endfor %}
         <div>
           <input type="radio" id="triggerDetailsView" />
-          {% translate "Detail Ansicht" %}
+          <span class="{{ focusBorder }}-text-near-radio">{% translate "Detail Ansicht" %}</span>
         </div>
         <div class="form-group col-sm-4 col-md-3 pb-lg-2 pb-md-0 mb-0">
           <input type="radio" id="triggerComparisonMode" />
-          {% translate "Vergleichsmodus" %}
+          <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
         </div>
       </div>
     </div>
@@ -164,7 +165,6 @@
     }
   });
   $('.closeFilter').click(function() {
-    // Your code here
     $(this).parent().remove();
   });
 $(document).ready(function() {
