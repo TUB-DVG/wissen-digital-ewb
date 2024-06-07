@@ -11,11 +11,18 @@
     background: #8FDE97;
     padding: 13px; 
     margin-right: 12px;
+    font-size: 15px;
   }
   .closeFilter {
     color: #000;
     margin-left: 10px;
-  
+    background: none;
+    /* color: inherit; */
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
 .customSelectArrow {
   background-position: 90% 50%;
@@ -37,7 +44,7 @@ select.form-select {
     <div class="col-xl-2" title="Suchen in den ">
       <div class="input-group">
         <input id="search-input-{{ nameOfTemplate }}"
-               class="form-control border-{{ focusBorder }}"
+               class="form-control border-{{ focusBorder }} trigger-submit-onchange"
                type="search"
                placeholder="{% translate 'Suchbegriff' %}"
                name='searched' />
@@ -132,28 +139,61 @@ select.form-select {
 </form>
 <div style="margin-bottom: 24px;">
   {% for key, value in filters.items %}
-    {% if key == "searched" %}
-      <span class="filter {{ key }}">{{ value }}
+    {% for selectedItem in value %}
+      <span class="filter {{ key }}">{{ selectedItem }}
         <button class="closeFilter">
-          <i class="fas fa-times"></i>
+          <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
         </button>
       </span>
-    {% else %}
-      {% for selectedItem in value %}
-        <span class="filter {{ key }}">{{ selectedItem }}
-          <button class="closeFilter">
-            <i class="fas fa-times"></i>
-          </button>
-        </span>
-      {% endfor %}
-    {% endif %}
+    {% endfor %}
   {% endfor %}
 </div>
 <script>
 
   $('.closeFilter').click(function() {
     $(this).parent().remove();
+
+    listOfCollectedFilters = collectFilter();
+    writeURLandSubmit(listOfCollectedFilters);
   });
+  function collectFilter() {
+
+    var listOfActivatedFilters = [];
+    $("select.form-select").each(function () {
+      var objectForCurrentCategory = {};
+      var filterIdentifer = $(this).attr("id");
+      var spansOfFilter = $("span.filter." + filterIdentifer);
+      var selectedOptions = "";
+      spansOfFilter.each(function() {
+        var filter = $(this).text();
+        selectedOptions += filter + ",";
+    });
+
+    listOfActivatedFilters.push({category: $(this).attr("id"), string: selectedOptions});
+  });
+  return listOfActivatedFilters;
+}
+
+  function writeURLandSubmit(listOfActivatedFilters) {
+    var url = $('#searchBox').attr('action');
+    url += "?";
+    var form = $('#searchBox');
+    for (var i = 0; i < listOfActivatedFilters.length; i++) {
+      var filterIdentifer = listOfActivatedFilters[i].category;
+      var selectedOptions = listOfActivatedFilters[i].string;
+      var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name", filterIdentifer + "-hidden");
+          if (selectedOptions.slice(-1) === ',') {
+            selectedOptions = selectedOptions.slice(0, -1);
+          }
+          hiddenInput.setAttribute("value", selectedOptions);
+          form.append(hiddenInput);
+          // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
+        }
+        form.submit();
+    }
+
 $(document).ready(function() {
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
@@ -171,7 +211,6 @@ $(document).ready(function() {
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
         var selectedOption = $(this).val();
-        console.log('You selected: ', selectedOption);
         var form = $('#searchBox');
         var categoryOfNewlySelectedFitler = $(this).attr("id");
         var listOfActivatedFilters = [];
@@ -183,16 +222,13 @@ $(document).ready(function() {
           var filterIdentifer = $(this).attr("id");
           var spansOfFilter = $("span.filter." + filterIdentifer);
           var selectedOptions = "";
-          // debugger;
           spansOfFilter.each(function() {
             var filter = $(this).text();
             selectedOptions += filter + ",";
-            // debugger;
         });
         if ($(this).attr("id") ==  categoryOfNewlySelectedFitler) {
           selectedOptions += selectedOption;
         }
-        // debugger;
           // create a hidden input-field for each filter category, which holds a list of the 
           // already selected filter and the newly selected one
           var hiddenInput = document.createElement("input");
@@ -206,6 +242,25 @@ $(document).ready(function() {
           // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
         })
 
+
+        var searchFullTextInput = $("#search-input-");
+        // get filter of full text search:
+        stringOfFullTextSearches = "";
+        $("span.filter.searched").each(function() {
+          var filter = $(this).text();
+          stringOfFullTextSearches += filter + ",";
+        });
+        if (searchFullTextInput.val() != "") {
+          stringOfFullTextSearches += searchFullTextInput.val();
+        }
+        var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name",  "searched" + "-hidden");
+          if (stringOfFullTextSearches.slice(-1) === ',') {
+            stringOfFullTextSearches = stringOfFullTextSearches.slice(0, -1);
+          }
+          hiddenInput.setAttribute("value", stringOfFullTextSearches);
+          form.append(hiddenInput);
 
         // var action = form.attr('action');
         // action += '?' + $(this).attr("id") + '=' + encodeURIComponent(setCategories);

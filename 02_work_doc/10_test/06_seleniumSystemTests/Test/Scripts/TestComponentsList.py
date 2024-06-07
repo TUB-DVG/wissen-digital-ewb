@@ -496,6 +496,35 @@ class TestComponentsList(WebDriverSetup):
             "Zurücksetzen" in resetCompareDiv.text or "Reset" in resetCompareDiv.text
         )
 
+    def testDifferentFiltersInSearch(self):
+        """Test if Adding and Removing search-filters works as expected.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/component_list/components")
+        componentsListPageObj = ComponentListPage(self.driver)      
+
+        self._removeCookieBanner()
+
+        searchBarObj = SearchPage(self.driver)
+        # use free tect search:
+        searchInputField = componentsListPageObj.getSearchInputField()
+
+        searchInputField.send_keys("Institut Bauen und Umwelt")
+        searchInputField.send_keys(Keys.RETURN)
+
+        time.sleep(1)
+        searchFilters = searchBarObj.getAllElementsOfClass("filter")
+        self.assertTrue(len(searchFilters) == 1)
+
+        self.assertTrue(
+            "Institut Bauen und Umwelt" in searchFilters[0].text
+        )
+        self.assertTrue(
+            searchFilters[0].get_css_value("background-color") == self.ECOLOGICAL_COLOR
+        )
+
+
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
