@@ -80,6 +80,10 @@
   .btn-ecological {
     @include btn-search($ecological-color, $third-text-color)
   }
+  .btn-ecological-white-bg {
+    @include btn-search(white, $ecological-color);
+    border: 2px solid $ecological-color;
+  }
   .btn-ecological-free-text {
     @include btn-search-free-text($ecological-color)
   }
