@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
         secondComparisonButtonTools.addEventListener('click', function (event) {
             // Handle the click event for the second comparison button for tools
             var url = document.getElementById('comparisonUrlTools');
-            var baseUrl = "/common/comparison/";
+            var baseUrl = "/partials/comparison/";
             var ids = JSON.parse(sessionStorage.ids);
             console.log(ids.length);
             if (ids.length < 2) {

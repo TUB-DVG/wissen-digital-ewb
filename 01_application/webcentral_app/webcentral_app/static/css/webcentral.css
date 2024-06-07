@@ -181,6 +181,11 @@
   background-color: #8FDE97;
   color: white;
 }
+.ecological-cards .btn-ecological-white-bg {
+  background-color: white;
+  color: #8FDE97;
+  border: 2px solid #8FDE97;
+}
 .ecological-cards .btn-ecological-free-text {
   color: #8FDE97;
 }
