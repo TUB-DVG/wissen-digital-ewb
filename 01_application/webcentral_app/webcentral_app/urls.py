@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from django.conf.urls import handler404, handler500
+from django.conf.urls import handler404, handler500, handler400, handler403
 from . import views
 
 urlpatterns = [
@@ -51,8 +51,8 @@ urlpatterns += i18n_patterns(
         #path('test-500/', views.test_500),
 )
 
-handler404 = views.custom_404_view
-handler500 = views.custom_500_view
-handler403 = views.custom_403_view
-handler400 = views.custom_400_view
+handler404 = 'webcentral_app.views.custom_404_view'
+handler500 = 'webcentral_app.views.custom_500_view'
+handler403 = 'webcentral_app.views.custom_403_view'
+handler400 = 'webcentral_app.views.custom_400_view'
 # reakpoint()
