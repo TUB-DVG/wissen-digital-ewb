@@ -19,6 +19,8 @@ from Src.PageObject.Pages.Footer import Footer
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
+    ECOLOGICAL_COLOR = "(143, 222, 151)"
+
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the

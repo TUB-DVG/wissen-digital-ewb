@@ -65,3 +65,17 @@ class GenericPageObject(object):
             )
         except:
             return None
+
+    def getNextSibling(self, domObj):
+        """Return the next DOM-sibling of the `domObj`
+
+        domObj: WebElement
+            The WebElement of which the next sibling should be returned
+
+        Returns:
+        -------
+        WebElement
+            The next sibling of the `domObj`
+        """
+
+        return domObj.find_element(By.XPATH, "following-sibling::*")

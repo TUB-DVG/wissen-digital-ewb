@@ -8,9 +8,13 @@
   border: 2px solid $border-color;
 }
 @mixin btn-search ($btn-color, $btn-text-color) {
-  // background-color: $btn-color;
+  background-color: $btn-color;
+  color: $btn-text-color;
+}
+@mixin btn-search-free-text ($btn-color) {
   color: $btn-color;
 }
+
 .webcentral-cards {
   .border-technical {
     @include border-rect($technical-color)
@@ -76,7 +80,9 @@
   .btn-ecological {
     @include btn-search($ecological-color, $third-text-color)
   }
-
+  .btn-ecological-free-text {
+    @include btn-search-free-text($ecological-color)
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -144,6 +150,9 @@ input[type='checkbox']:checked:before {
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
   }
+  .btn-legal-free-text {
+    @include btn-search-free-text($legal-color)
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -209,6 +218,9 @@ input[type='checkbox']:checked:before {
   }
   .btn-operational {
     @include btn-search($operational-color, $third-text-color)
+  }
+  .btn-operational-free-text {
+    @include btn-search-free-text($operational-color)
   }
   input[type='radio'] {
     appearance: none;
@@ -276,6 +288,9 @@ input[type='checkbox']:checked:before {
   }
   .btn-technical {
     @include btn-search($technical-color, $third-text-color)
+  }
+  .btn-technical-free-text {
+    @include btn-search-free-text($technical-color)
   }
   input[type='radio'] {
     appearance: none;
