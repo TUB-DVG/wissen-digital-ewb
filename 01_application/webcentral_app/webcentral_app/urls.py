@@ -44,8 +44,15 @@ urlpatterns += i18n_patterns(
         path("criteriaCatalog/", include("criteriaCatalog.urls")),
         path('useCases_list/', include('use_cases.urls')),
         path('i18n/', include('django.conf.urls.i18n')),
+        
+        #path('test-400/', views.test_400),
+        #path('test-403/', views.test_403),
+        #path('test-404/', views.test_404),
+        #path('test-500/', views.test_500),
 )
 
 handler404 = views.custom_404_view
 handler500 = views.custom_500_view
+handler403 = views.custom_403_view
+handler400 = views.custom_400_view
 # reakpoint()
