@@ -15,6 +15,7 @@ from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.SearchPage import SearchPage
+from Src-PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
     NegativeEnvironmentalImpacts, )
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
@@ -342,19 +343,8 @@ class TestComponentsList(WebDriverSetup):
                                              chosenNestedItemText,
                                              componentsListPageObj)
         # check if the elements are now ordered in the specified way
-
-        # overviewSet = set([
-        #     "Ausgeklappt",
-        #     "Eingeklappt",
-        # ])
         selectionFields = (
             componentsListPageObj.getSelectFieldsInSearchContainer())
-        overviewOptionsSet = set([
-            optionElement.text for optionElement in selectionFields[3].options
-        ])
-
-        # self.assertTrue(sortingSet.issubset(sortingOptionsSet))
-        # self.assertTrue(overviewSet.issubset(overviewOptionsSet))
 
         self._setLanguageToEnglish()
 
@@ -443,8 +433,69 @@ class TestComponentsList(WebDriverSetup):
             self.assertTrue(descriptionTextOfRadio.text == textOfRadioButtons[
                 self.getLanguage()][radioindex])
             self.assertTrue(
-                descriptionTextOfRadio.get_css_value("color") == self.ECOLOGICAL_COLOR, "Color of the SPan element shpuld be ecological color!"
+                descriptionTextOfRadio.get_css_value("color") ==
+                self.ECOLOGICAL_COLOR,
+                "Color of the SPan element shpuld be ecological color!",
             )
+
+        # check if the functionallity of the radio buttons work
+        # first radio button should expand all card listings
+
+        # check if the cards have the
+        cardsList = searchBarObj.getAllElementsOfClass("ListElement")
+        self.assertTrue(len(cardsList) > 0)
+        for card in cardsList:
+            # in each card should be 2 collapsed containers
+            self.assertEqual(
+                len(searchBarObj.getDescendantsByClass(card, "collapse")), 2)
+
+        # click the first radio button
+        radioButtons[0].click()
+        for card in cardsList:
+            # in each card should be 2 showed containers
+            self.assertEqual(
+                len(searchBarObj.getDescendantsByClass(card, "show")), 2)
+
+        # check functionallity of second radio button:
+        radioButtons[1].click()
+        # check if checkboxes in each card are present
+        for card in cardsList:
+            checkboxForCar = searchBarObj.getDescendantsByTagName(
+                card, "input")[0]
+            self.assertTrue(
+                checkboxForCar.get_css_value("visibility") == "visible")
+            self.assertTrue(
+                checkboxForCar.get_css_value("border-color") ==
+                self.ECOLOGICAL_COLOR)
+        # check if the start compare and reset button are shown:
+
+        compareSectionObj = ComparisonPageSection(self.driver)
+        startCompareDiv = compareSectionObj.getSecondComparisonDiv()
+        self.assertTrue(startCompareDiv.is_displayed())
+
+        # check if the comare button and the reset button are present:
+        startCompareDiv = compareSectionObj.getStartComparisonDiv()
+        self.assertTrue(startCompareDiv.is_displayed())
+        self.assertTrue(
+            startCompareDiv.get_css_value("background-color") == self.ECOLOGICAL_COLOR
+        )
+        self.assertTrue(
+            "Vergleiche" in startCompareDiv.text or "Compare" in startCompareDiv.text 
+        )
+
+        # check if the Reset button exists
+        resetCompareDiv = compareSectionObj.getResetComparisonDiv()
+        self.assertTrue(resetCompareDiv.is_displayed())
+        self.assertTrue(
+            resetCompareDiv.get_css_value("background-color") == "rgb(255, 255, 255)"
+        )
+        self.assertTrue(
+            resetCompareDiv.get_css_value("border-color") == self.ECOLOGICAL_COLOR
+        )
+        self.assertTrue(
+            "Zurücksetzen" in resetCompareDiv.text or "Reset" in resetCompareDiv.text
+        )
+
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""

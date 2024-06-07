@@ -79,3 +79,10 @@ class GenericPageObject(object):
         """
 
         return domObj.find_element(By.XPATH, "following-sibling::*")
+
+    def getAllElementsOfClass(self, className: str) -> list:
+        """Returns a list of all elements with the given class."""
+        return self.driver.find_elements(
+            By.CLASS_NAME,
+            className,
+        )

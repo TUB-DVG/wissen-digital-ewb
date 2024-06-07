@@ -90,3 +90,23 @@ class ComparisonPageSection(GenericPageObject):
             )
         except:
             return None
+
+    def getStartComparisonDiv(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.startComparisonDiv,
+            )
+        except:
+            return None
+
+    def getResetComparisonDiv(self):
+        """ """
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.resetComparisonDiv,
+            )
+        except:
+            return None
