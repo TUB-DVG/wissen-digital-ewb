@@ -82,9 +82,10 @@ document.addEventListener('DOMContentLoaded', function () {
             // comparisonBarTools.style.display = '';
             // firstComparisonButtonTools.style.display = 'none';
             var inputs = document.getElementsByClassName('comparisonInputTools');
-            for (var i = 0; i < inputs.length; i++) {
-                inputs[i].style.visibility = "visible";
-            }
+            // for (var i = 0; i < inputs.length; i++) {
+            //     debugger;
+            //     inputs[i].style.visibility = "visible";
+            // }
 
             const cardTitles = document.getElementsByClassName("card-title")
         
@@ -125,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var cancelButtonTools = document.getElementById('cancelButtonTools');
         cancelButtonTools.addEventListener('click', function () {
             // Reset the comparison interface for tools
-            var inputs = document.getElementsByClassName('comparisonInputTools');
-            for (var i = 0; i < inputs.length; i++) {
-                inputs[i].style.visibility = "hidden";
-            }
+            // var inputs = document.getElementsByClassName('comparisonInputTools');
+            // for (var i = 0; i < inputs.length; i++) {
+            //     inputs[i].style.visibility = "hidden";
+            // }
 
             const cardTitles = document.getElementsByClassName("card-title")
 
@@ -136,8 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 cardTitles[i].classList.remove("card-title--spaced");
             }
 
-            firstComparisonButtonTools.style.display = '';
-            comparisonBarTools.style.display = 'none';
+            // firstComparisonButtonTools.style.display = '';
+            // comparisonBarTools.style.display = 'none';
             $('input[type=checkbox]').prop('checked', false);
             var elements = document.getElementsByClassName('comparison-active');
             while (elements.length) {
