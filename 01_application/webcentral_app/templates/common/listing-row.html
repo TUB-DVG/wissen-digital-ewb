@@ -11,16 +11,15 @@
     .headingInListingContainer1{
         font-size: 22px;
     }
+    .comparisonInputTools {
+        border: 2px solid #000;
+    }
 </style>
 <div class="{{ focusName }}-cards ">
     {% for object in page.object_list %}
         <div class="row border-{{ focusName }} collapseListingRow ListElement"
              style="margin-top: 24px">
-            <div class="col-6" id="{{ object.id }}">
-                <input type="checkbox"
-                       style="visibility:hidden"
-                       class="comparisonInputTools" />
-
+            <div class="col-6 p-3" id="{{ object.id }}">
                 {% for element in elementsFirstColumn %}
                     {% if forloop.counter == 4 %}
                         <div class="{{ listElementsShowOrCollapse }}"
@@ -30,7 +29,11 @@
                             <span class="listingRowAttributeNames">{{ element.description }}:</span>
                         {% endif %}
                         {% if forloop.first %}
+
                             <div class="headingInListingContainer1">
+                                <input type="checkbox"
+                                       style="visibility:hidden"
+                                       class="comparisonInputTools" />
                                 {{ object|get_attribute:element.objectReference }}
                             </div>
                         {% elif forloop.counter == 2 %}
