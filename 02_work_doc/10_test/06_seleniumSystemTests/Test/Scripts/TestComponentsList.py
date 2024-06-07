@@ -14,6 +14,7 @@ from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
+from Src.PageObject.Pages.SearchPage import SearchPage
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
     NegativeEnvironmentalImpacts, )
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
@@ -33,7 +34,6 @@ class TestComponentsList(WebDriverSetup):
         self.driver.get(os.environ["siteUnderTest"])
         navBar = NavBar(self.driver)
         linkToPage = navBar.returnNegativeEnvironmentalImpactLink()
-        # breakpoint()
         self.scrollElementIntoView(linkToPage[1])
         linkToPage[1].click()
         self.assertTrue("Negative environmental impacts" in self.driver.title
@@ -246,6 +246,8 @@ class TestComponentsList(WebDriverSetup):
         self._removeCookieBanner()
         self._setLanguageToGerman()
 
+        searchBarObj = SearchPage(self.driver)
+
         searchContainer = componentsListPageObj.getSearchContainer()
         self.assertIsNotNone(searchContainer)
 
@@ -341,10 +343,10 @@ class TestComponentsList(WebDriverSetup):
                                              componentsListPageObj)
         # check if the elements are now ordered in the specified way
 
-        overviewSet = set([
-            "Ausgeklappt",
-            "Eingeklappt",
-        ])
+        # overviewSet = set([
+        #     "Ausgeklappt",
+        #     "Eingeklappt",
+        # ])
         selectionFields = (
             componentsListPageObj.getSelectFieldsInSearchContainer())
         overviewOptionsSet = set([
@@ -352,7 +354,7 @@ class TestComponentsList(WebDriverSetup):
         ])
 
         # self.assertTrue(sortingSet.issubset(sortingOptionsSet))
-        self.assertTrue(overviewSet.issubset(overviewOptionsSet))
+        # self.assertTrue(overviewSet.issubset(overviewOptionsSet))
 
         self._setLanguageToEnglish()
 
@@ -370,22 +372,13 @@ class TestComponentsList(WebDriverSetup):
             "Circulation pump",
             "Presence sensor",
         ])
-        # sortingSet = set([
-        #     "Ascending",
-        #     "Descending",
-        # ])
-        overviewSet = set([
-            "Expanded",
-            "Collapsed",
-        ])
+
         selectionFields = (
             componentsListPageObj.getSelectFieldsInSearchContainer())
 
         # check if the placeholders are correct for english:
         self.assertEqual(selectionFields[0].options[0].text, "Category")
         self.assertEqual(selectionFields[1].options[0].text, "Component")
-        # self.assertEqual(selectionFields[2].options[0].text, "Sorting")
-        self.assertEqual(selectionFields[3].options[0].text, "Overview")
 
         categoryOptionsSet = set([
             optionElement.text for optionElement in selectionFields[0].options
@@ -393,16 +386,9 @@ class TestComponentsList(WebDriverSetup):
         componentClassSelectionField = set([
             optionElement.text for optionElement in selectionFields[1].options
         ])
-        # sortingSetSelectionField = set([
-        #     optionElement.text for optionElement in selectionFields[2].options
-        # ])
-        overviewSetSelectionField = set([
-            optionElement.text for optionElement in selectionFields[3].options
-        ])
+
         self.assertTrue(componentsSet.issubset(componentClassSelectionField))
         self.assertTrue(categorySet.issubset(categoryOptionsSet))
-        # self.assertTrue(sortingSet.issubset(sortingSetSelectionField))
-        self.assertTrue(overviewSet.issubset(overviewSetSelectionField))
 
         # change the language back to german:
         self._setLanguageToGerman()
@@ -438,11 +424,27 @@ class TestComponentsList(WebDriverSetup):
         self._checkIfSelectFieldsWorks(selectionFields[3],
                                        componentsListPageObj, True)
 
-        # test the functionality of the sorting selection field
-        # the sorting select-field should be multi-level
-        # in the first level, the attribute can be choosen
-        # in the second level, it can be chosen if the sorting should be ascending or descending
-        # selectionFields = (
+        # check if 2 radio-buttons are present in the search bar:
+        radioButtons = searchBarObj.getRadioButtons()
+        self.assertEqual(len(radioButtons), 2)
+
+        textOfRadioButtons = {
+            "de": ["Detail Ansicht", "Vergleichsmodus"],
+            "en": ["Detail view", "Comparison mode"],
+        }
+
+        for radioindex, radioButton in enumerate(radioButtons):
+            self.assertTrue(radioButton.is_displayed())
+            self.assertTrue(
+                radioButton.get_css_value("border-color") ==
+                self.ECOLOGICAL_COLOR)
+            descriptionTextOfRadio = searchBarObj.getNextSibling(radioButton)
+            self.assertTrue(descriptionTextOfRadio.tag_name == "span")
+            self.assertTrue(descriptionTextOfRadio.text == textOfRadioButtons[
+                self.getLanguage()][radioindex])
+            self.assertTrue(
+                descriptionTextOfRadio.get_css_value("color") == self.ECOLOGICAL_COLOR, "Color of the SPan element shpuld be ecological color!"
+            )
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
