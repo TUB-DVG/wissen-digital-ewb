@@ -33,6 +33,7 @@ def comparison(request):
     # check if the specified model exists:
     model = request.GET.getlist("model")[0]
     print(model)
+    headingOfSite = _("Ergebnisse")
     if model == "Component":
         modelObj = Component
 
@@ -114,9 +115,10 @@ def comparison(request):
             },
         ]
         backLinkText = _("Aufwände für verwendete Komponenten")
-        backLinkColor = "#8FDE97"
+        # backLinkColor = "#8FDE97"
         imgBackButtonPath = "img/componentList/caret-left.svg"
         backLinkPath = "components"
+        focusBorder = "ecological"
 
     elif model == "Tools":
         modelObj = Tools
@@ -197,10 +199,12 @@ def comparison(request):
                 "displayedStr": _("Letztes Update"),
             },
         ]
+        imgBackButtonPath = "assets/images/backArrowTechnical.svg"
+        focusBorder = "technical"
         templateName = "tools_over/toolsComparisonResults.html"
         backLinkText = _("Zurück zu den digitalen Werkzeugen")
-        backLinkColor = "#AFC5FF"
-        imgBackButtonPath = "img/backArrowTools.svg"
+        # backLinkColor = "#AFC5FF"
+        # imgBackButtonPath = "img/backArrowTools.svg"
         backLinkPath = "tool_list"
     else:
         return render(request, "404.html")
@@ -218,17 +222,21 @@ def comparison(request):
         objectsToCompare,
         "attributesToCompare":
         attributesToCompare,
-        "explanationText":
+        "explanaitionText":
         _("Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
           ),
         "backLinkText":
         backLinkText,
-        "imgBackButtonPath":
+        "imageInBackButton":
         imgBackButtonPath,
-        "backLinkColor":
-        backLinkColor,
-        "backLinkPath":
+        # "backLinkColor":
+        # backLinkColor,
+        "backLink":
         backLinkPath,
+        "focusBorder":
+        focusBorder,
+        "heading":
+        headingOfSite,
     }
     templateName = "common/comparisonResults.html"
     return render(request, templateName, context)

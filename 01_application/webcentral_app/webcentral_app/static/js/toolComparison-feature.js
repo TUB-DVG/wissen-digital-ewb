@@ -21,12 +21,18 @@ $("#triggerComparisonMode").click(function() {
 
 document.addEventListener('DOMContentLoaded', function () {
     var firstComparisonButtonToolsExists = document.getElementById('comparisonBarTools');
-    // debugger;
-    if (firstComparisonButtonToolsExists.style.display) {
+    if (firstComparisonButtonToolsExists) {
         $(document).ready(function () {
             // Card Multi Select
             $('input[type=checkbox]').click(function () {
-                var id = $(this).parent().attr('id');
+                var currentUrl = window.location.href;
+                if (currentUrl.includes("component_list/")) {
+                    var id = $(this).parent().parent().attr('id');
+                }
+                else {
+                    var id = $(this).parent().attr('id');
+
+                }
                 var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
                 
                 if ($(this).parent().hasClass('comparison-active')) {
@@ -48,7 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Handling the comparison based on the session storage
         $(document).ready(function () {
             let data = sessionStorage.getItem("comparisonTools");
-            let values = JSON.parse(sessionStorage.ids) || [];
+            let values;
+            try {
+                values = JSON.parse(sessionStorage.ids) || [];
+            }
+            catch (e) {
+                values = [];
+            }
             // if session storage variable comparison is True, then the comparison should be carried over to new page
             if (data == "True") {
                 comparisonButtonHandlingTools();
@@ -67,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         function comparisonButtonHandlingTools() {
-            comparisonBarTools.style.display = '';
-            firstComparisonButtonTools.style.display = 'none';
+            // comparisonBarTools.style.display = '';
+            // firstComparisonButtonTools.style.display = 'none';
             var inputs = document.getElementsByClassName('comparisonInputTools');
             for (var i = 0; i < inputs.length; i++) {
                 inputs[i].style.visibility = "visible";
@@ -82,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Define functions that describe the behaviour of the buttons for tools comparison
-        var firstComparisonButtonTools = document.getElementById('firstComparisonButtonTools');
+        var firstComparisonButtonTools = document.getElementById('triggerComparisonMode');
         var comparisonBarTools = document.getElementById('comparisonBarTools');
         firstComparisonButtonTools.addEventListener('click', function () {
             sessionStorage.clear();
@@ -91,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Define event listener for the second comparison button for tools
-        var secondComparisonButtonTools = document.getElementById('secondComparisonButtonTools');
+        var secondComparisonButtonTools = document.getElementById('comparisonUrlTools');
         secondComparisonButtonTools.addEventListener('click', function (event) {
             // Handle the click event for the second comparison button for tools
             var url = document.getElementById('comparisonUrlTools');
-            var baseUrl = "/partials/comparison/";
+            var baseUrl = "/common/comparison/";
             var ids = JSON.parse(sessionStorage.ids);
             console.log(ids.length);
             if (ids.length < 2) {

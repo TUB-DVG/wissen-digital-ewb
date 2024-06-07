@@ -22,21 +22,11 @@
   </style>
   <div class="content container" id="compareResultsContainer">
     <div class="row">
-      <div class="explanation">
-        <img src="{% static imgBackButtonPath %}"
-             alt="arrow"
-             style="width: 11px;
-                    height: 11px" />
-        <a href="{% url backLinkPath %}"
-           class="backLink"
-           style="color: {{ backLinkColor }}">{{ backLinkText }}</a>
-        <p style="padding-top: 26px; font-size: 22px;">{% translate "Ergebnisse" %}</p>
-        <p style="font-size: 22px;">{{ explanationText }}</p>
-      </div>
+      {% include "partials/backLinkInFocusColor.html" %}
+      {% include "partials/descriptionContainer.html" %}
       <div class="comparisonContent">
         <table style="display: block; overflow-x: auto;">
           <!-- Table Header -->
-
           {% for attribute in attributesToCompare %}
             <tr>
               <th>{{ attribute.displayedStr }}</th>
