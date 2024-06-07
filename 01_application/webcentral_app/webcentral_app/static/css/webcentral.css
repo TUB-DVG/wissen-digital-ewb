@@ -119,8 +119,7 @@
   color: #AFC5FF;
 }
 .webcentral-cards .btn-technical {
-  background-color: #AFC5FF;
-  color: white;
+  color: #AFC5FF;
 }
 .webcentral-cards .border-operational {
   border-radius: 2px;
@@ -136,8 +135,7 @@
   color: #FFAE9D;
 }
 .webcentral-cards .btn-operational {
-  background-color: #FFAE9D;
-  color: white;
+  color: #FFAE9D;
 }
 .webcentral-cards .border-ecological {
   border-radius: 2px;
@@ -148,8 +146,7 @@
   border: 2px solid #8FDE97;
 }
 .webcentral-cards .btn-ecological {
-  background-color: #8FDE97;
-  color: white;
+  color: #8FDE97;
 }
 .webcentral-cards .border-legal {
   border-radius: 2px;
@@ -160,8 +157,7 @@
   border: 2px solid #F5E86A;
 }
 .webcentral-cards .btn-legal {
-  background-color: #F5E86A;
-  color: white;
+  color: #F5E86A;
 }
 
 .ecological-cards .border-ecological {
@@ -178,8 +174,7 @@
   color: #8FDE97;
 }
 .ecological-cards .btn-ecological {
-  background-color: #8FDE97;
-  color: white;
+  color: #8FDE97;
 }
 .ecological-cards input[type=radio] {
   appearance: none;
@@ -225,8 +220,6 @@
 }
 .ecological-cards .ecological-text-near-radio {
   color: #8FDE97;
-  position: relative;
-  bottom: 5px;
 }
 
 .legal-cards .border-legal {
@@ -243,8 +236,7 @@
   color: #F5E86A;
 }
 .legal-cards .btn-legal {
-  background-color: #F5E86A;
-  color: white;
+  color: #F5E86A;
 }
 .legal-cards input[type=radio] {
   appearance: none;
@@ -289,8 +281,6 @@
 }
 .legal-cards .legal-text-near-radio {
   color: #F5E86A;
-  position: relative;
-  bottom: 5px;
 }
 
 .operational-cards .border-operational {
@@ -307,8 +297,7 @@
   color: #FFAE9D;
 }
 .operational-cards .btn-operational {
-  background-color: #FFAE9D;
-  color: white;
+  color: #FFAE9D;
 }
 .operational-cards input[type=radio] {
   appearance: none;
@@ -353,8 +342,6 @@
 }
 .operational-cards .operational-text-near-radio {
   color: #FFAE9D;
-  position: relative;
-  bottom: 5px;
 }
 
 .technical-cards .border-technical {
@@ -373,8 +360,7 @@
   color: #AFC5FF;
 }
 .technical-cards .btn-technical {
-  background-color: #AFC5FF;
-  color: white;
+  color: #AFC5FF;
 }
 .technical-cards input[type=radio] {
   appearance: none;
@@ -399,8 +385,6 @@
 }
 .technical-cards .technical-text-near-radio {
   color: #AFC5FF;
-  position: relative;
-  bottom: 5px;
 }
 .technical-cards input[type=checkbox] {
   appearance: none;
@@ -421,12 +405,7 @@
   margin: 20% auto;
 }
 .technical-cards input[type=checkbox]:checked:before {
-  background: #FFAE9D;
-}
-.technical-cards .operational-text-near-radio {
-  color: #AFC5FF;
-  position: relative;
-  bottom: 5px;
+  background: #AFC5FF;
 }
 
 .card-text {
@@ -446,8 +425,7 @@
   border: 2px solid #636363;
 }
 .neutral-cards .btn-neutral {
-  background-color: #636363;
-  color: white;
+  color: #636363;
 }
 
 /* card_hover: allows the item display cards to grow on hover
