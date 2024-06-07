@@ -23,30 +23,30 @@ def components(request):
 
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
+    searchInputValues = searchInputValue.split(",")
+    searchInputValues = _removeEmtpyStringsFromList(searchInputValues)
     categoryValue = request.GET.get("category-hidden", "")
 
     # the values in category are a comma separated list:
     categoryValues = categoryValue.split(",")
     categoryValues = _removeEmtpyStringsFromList(categoryValues)
-    print(categoryValues)
     componentValue = request.GET.get("component-hidden", "")
     componentValues = componentValue.split(",")
     componentValues = _removeEmtpyStringsFromList(componentValues)
-    print(componentValues)
     # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
 
     searchQuery = Q()
 
-    if searchInputValue:
+    if len(searchInputValues) > 0:
         searchQuery = searchQuery | Q(
-            category__category__icontains=categoryValues)
+            category__category__icontains=searchInputValues)
         searchQuery = searchQuery | Q(
-            component__componentClass__icontains=searchInputValue)
-        searchQuery = searchQuery | Q(description__icontains=searchInputValue)
+            component__componentClass__icontains=searchInputValues)
+        searchQuery = searchQuery | Q(description__icontains=searchInputValues)
         searchQuery = searchQuery | Q(
-            furtherInformationNotes__icontains=searchInputValue)
-        searchQuery = searchQuery | Q(sources__icontains=searchInputValue)
+            furtherInformationNotes__icontains=searchInputValues)
+        searchQuery = searchQuery | Q(sources__icontains=searchInputValues)
 
     if len(categoryValues) > 0:
         categoryForSelectValue = Category.objects.filter(
@@ -269,7 +269,7 @@ def components(request):
         "backLinkText":
         _("Negative Umweltwirkungen"),
         "filters": {
-            "searched": searchInputValue,
+            "searched": searchInputValues,
             "category": categoryValues,
             "component": componentValues,
             "sorting": "",
