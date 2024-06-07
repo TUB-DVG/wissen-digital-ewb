@@ -21,9 +21,13 @@
   background-position: 90% 50%;
 
 }
-
+select.form-select {
+  width: 120px; /* Or any specific width you want */
+  display: inline;
+  margin-right: 16px;
+}
 </style>
-<form class="border-{{ focusBorder }} p-4 my-4 z-index-9 position-relative"
+<form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
       id="searchBox"
       method="GET"
       action="">
@@ -51,46 +55,47 @@
       </div>
     </div>
     <!-- Select item -->
-    <div class="col-xl-7">
+    <div class="col-xl-10">
       <div class="row g-3">
         <!-- Select items -->
-        {% for optionContent in optionList %}
-          {% if optionContent.multiDimensional %}
-            <div class="form-group col-sm-6 col-md-3 pb-lg-2 pb-md-0 mb-0 dropdown">
-              <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false">
-                {{ optionContent.placeholder }}
-              </button>
-              <div class="dropdown-menu" id="dropdownMenuDiv">
-                {% for option in optionContent.objects %}
-                  <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle"
-                       href="#"
-                       id="nestedDropdownMenuButton"
-                       role="button"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false"
-                       dblocator="{{ option.name }}">{{ option.shown }}</a>
-                    <div class="dropdown-menu dropdown-menu__nested"
-                         aria-labelledby="nestedDropdownMenuButton">
-                      <a class="dropdown-item nested"
-                         href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
-                         sorting="Ascending">{% translate "Aufsteigend" %}</a>
-                      <a class="dropdown-item nested"
-                         href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending"
-                         sorting="Descending">{% translate "Absteigend" %}</a>
+        <div class="form-group col-sm-6 col-md-5" style="margin-left: 240px">
+          {% for optionContent in optionList %}
+            {% if optionContent.multiDimensional %}
+              <div class="dropdown" style="display: inline;">
+                <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                  {{ optionContent.placeholder }}
+                </button>
+                <div class="dropdown-menu" id="dropdownMenuDiv">
+                  {% for option in optionContent.objects %}
+                    <div class="dropdown">
+                      <a class="dropdown-item dropdown-toggle"
+                         href="#"
+                         id="nestedDropdownMenuButton"
+                         role="button"
+                         data-toggle="dropdown"
+                         aria-haspopup="true"
+                         aria-expanded="false"
+                         dblocator="{{ option.name }}">{{ option.shown }}</a>
+                      <div class="dropdown-menu dropdown-menu__nested"
+                           aria-labelledby="nestedDropdownMenuButton">
+                        <a class="dropdown-item nested"
+                           href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
+                           sorting="Ascending">{% translate "Aufsteigend" %}</a>
+                        <a class="dropdown-item nested"
+                           href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending"
+                           sorting="Descending">{% translate "Absteigend" %}</a>
+                      </div>
                     </div>
-                  </div>
-                {% endfor %}
+                  {% endfor %}
+                </div>
               </div>
-            </div>
-          {% else %}
-            <div class="form-group col-sm-4 col-md-3 pb-lg-2 pb-md-0 mb-0">
+            {% else %}
+
               <!-- <select data-placeholder="{{ optionContent.placeholder }}" multiple class="chosen-select chosen-select-{{ focusBorder }}" name="test">
                 {% for option in optionContent.objects %}
                   <option value="{{ option }}">{{ option }}</option>
@@ -110,14 +115,13 @@
                   </option>
                 {% endfor %}
               </select>
-            </div>
-          {% endif %}
-        {% endfor %}
-        <div>
-          <input type="radio" id="triggerDetailsView" />
-          <span class="{{ focusBorder }}-text-near-radio">{% translate "Detail Ansicht" %}</span>
+              <!-- </div> -->
+            {% endif %}
+          {% endfor %}
         </div>
-        <div class="form-group col-sm-4 col-md-3 pb-lg-2 pb-md-0 mb-0">
+        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+          <input type="radio" id="triggerDetailsView" />
+          <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
           <input type="radio" id="triggerComparisonMode" />
           <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
         </div>
