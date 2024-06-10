@@ -15,11 +15,12 @@ from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.SearchPage import SearchPage
-from Src-PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
     NegativeEnvironmentalImpacts, )
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
-from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+
+# from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 
 
 class TestComponentsList(WebDriverSetup):
@@ -60,6 +61,7 @@ class TestComponentsList(WebDriverSetup):
         self.assertIsNotNone(descriptionHeadingDiv)
 
         boxesDiv = impactsObj.getBoxesDiv()
+
         self.assertIsNotNone(boxesDiv)
 
         boxes1and2 = impactsObj.getBox1and2()
@@ -161,18 +163,21 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue(linksInSecNavBar[0].value_of_css_property("color") ==
                         "rgb(143, 222, 151)")
         self.assertTrue(
-            linksInSecNavBar[0].value_of_css_property("font-size") == "15px;")
+            linksInSecNavBar[0].value_of_css_property("font-size") == "15px",
+            "Font-size of link in Navbar should be 15px!",
+        )
 
         borderColor = linksInSecNavBar[1].value_of_css_property("border-color")
+
         self.assertEqual(
             borderColor,
-            "rgb(0, 128, 0)",
+            self.ECOLOGICAL_COLOR,
             "The second link does not have a green border",
         )
         # check if the left link has a sibling element, which is an image:
-        siblingElement = componentsListPageObj.getPreviousSiblingOfTagName(
+        siblingElement = componentsListPageObj.getDescendantsByTagName(
             linksInSecNavBar[0], "img")
-        self.assertIsNotNone(siblingElement)
+        self.assertEqual(len(siblingElement), 1)
 
         # check if the right link has a following sibling element, which is an image:
         siblingElement = componentsListPageObj.getFollowingSiblingOfTagName(
@@ -201,6 +206,7 @@ class TestComponentsList(WebDriverSetup):
         self.assertIsNotNone(descriptionSection)
 
         descriptionHeading = componentsListPageObj.getDescriptionHeading()
+
         self.assertIsNotNone(descriptionHeading)
 
         # check if the heading is displayed inside the div:
@@ -233,6 +239,16 @@ class TestComponentsList(WebDriverSetup):
         self.assertIsNotNone(imageInDivContainer)
 
         self.checkIfImageIsDisplayed(imageInDivContainer[0])
+
+        # inide the description div there should be a div with the name descriptionBox:
+        descriptionBox = componentsListPageObj.getDescendantsByClass(
+            boxContent2, "descriptionBox")[0]
+        breakpoint()
+        self.assertIsNotNone(descriptionBox)
+        downloadlink = impactsObj.getDescendantsByTagName(descriptionBox, "a")
+        self.assertIsNotNone(downloadlink)
+        self.assertTrue(self.ECOLOGICAL_COLOR in
+                        downloadlink[0].value_of_css_property("color"))
 
     def testSearchContainer(self):
         """Test the search-container of the components-list page
@@ -477,32 +493,28 @@ class TestComponentsList(WebDriverSetup):
         startCompareDiv = compareSectionObj.getStartComparisonDiv()
         self.assertTrue(startCompareDiv.is_displayed())
         self.assertTrue(
-            startCompareDiv.get_css_value("background-color") == self.ECOLOGICAL_COLOR
-        )
-        self.assertTrue(
-            "Vergleiche" in startCompareDiv.text or "Compare" in startCompareDiv.text 
-        )
+            startCompareDiv.get_css_value("background-color") ==
+            self.ECOLOGICAL_COLOR)
+        self.assertTrue("Vergleiche" in startCompareDiv.text
+                        or "Compare" in startCompareDiv.text)
 
         # check if the Reset button exists
         resetCompareDiv = compareSectionObj.getResetComparisonDiv()
         self.assertTrue(resetCompareDiv.is_displayed())
         self.assertTrue(
-            resetCompareDiv.get_css_value("background-color") == "rgb(255, 255, 255)"
-        )
+            resetCompareDiv.get_css_value("background-color") ==
+            "rgb(255, 255, 255)")
         self.assertTrue(
-            resetCompareDiv.get_css_value("border-color") == self.ECOLOGICAL_COLOR
-        )
-        self.assertTrue(
-            "Zurücksetzen" in resetCompareDiv.text or "Reset" in resetCompareDiv.text
-        )
+            resetCompareDiv.get_css_value("border-color") ==
+            self.ECOLOGICAL_COLOR)
+        self.assertTrue("Zurücksetzen" in resetCompareDiv.text
+                        or "Reset" in resetCompareDiv.text)
 
     def testDifferentFiltersInSearch(self):
-        """Test if Adding and Removing search-filters works as expected.
-
-        """
+        """Test if Adding and Removing search-filters works as expected."""
         self.driver.get(os.environ["siteUnderTest"] +
                         "/component_list/components")
-        componentsListPageObj = ComponentListPage(self.driver)      
+        componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
 
@@ -517,14 +529,9 @@ class TestComponentsList(WebDriverSetup):
         searchFilters = searchBarObj.getAllElementsOfClass("filter")
         self.assertTrue(len(searchFilters) == 1)
 
-        self.assertTrue(
-            "Institut Bauen und Umwelt" in searchFilters[0].text
-        )
-        self.assertTrue(
-            searchFilters[0].get_css_value("background-color") == self.ECOLOGICAL_COLOR
-        )
-
-
+        self.assertTrue("Institut Bauen und Umwelt" in searchFilters[0].text)
+        self.assertTrue(searchFilters[0].get_css_value("background-color") ==
+                        self.ECOLOGICAL_COLOR)
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
@@ -702,7 +709,6 @@ class TestComponentsList(WebDriverSetup):
 
             collapsedContainer = componentsListPageObj.getDescendantsByClass(
                 component, "collapse")
-            # breakpoint()
             self.assertEqual(len(collapsedContainer), 3)
 
             self.assertTrue(not collapsedContainer[0].is_displayed())

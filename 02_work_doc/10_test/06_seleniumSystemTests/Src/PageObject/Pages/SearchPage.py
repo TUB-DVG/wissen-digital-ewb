@@ -14,7 +14,7 @@ from Src.PageObject.Locators import Locator
 from Src.PageObject.Pages import GenericPageObject
 
 
-class SearchPage(GenericPageObject):
+class SearchPage(object):
     """ """
 
     def __init__(self, driver):

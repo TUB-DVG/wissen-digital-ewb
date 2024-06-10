@@ -2,30 +2,28 @@
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver,
-)
+    webdriver, )
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-class NegativeEnvironmentalImpacts(object):
-    """
-    
-    """
+
+class NegativeEnvironmentalImpacts(GenericPageObject):
+    """ """
+
     def __init__(self, driver):
-        """
-        
-        """
+        """ """
+        # super().__init__(driver)
         self.driver = driver
-    
+
     def getContentDiv(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -35,9 +33,7 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getBoxesDiv(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -47,28 +43,24 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getBox1and2(self):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return [
                 self.driver.find_element(
-                By.XPATH,
-                Locator.box1,
+                    By.XPATH,
+                    Locator.box1,
                 ),
                 self.driver.find_element(
                     By.XPATH,
                     Locator.box2,
-                )
+                ),
             ]
 
         except:
             return None
-    
+
     def getBoxHeading(self, boxElement):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return boxElement.find_element(
                 By.XPATH,
@@ -78,9 +70,7 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getBoxDescription(self, boxElement):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return boxElement.find_element(
                 By.XPATH,
@@ -90,28 +80,27 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getBoxImage(self, boxElement):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
-            return boxElement.find_element(By.XPATH, Locator.boxImage,)
+            return boxElement.find_element(
+                By.XPATH,
+                Locator.boxImage,
+            )
         except:
             return None
-
 
     def getImageInBox(self, imageDivElement):
-        """Returns the div-element, which wraps the content of the page
-        
-        """
+        """Returns the div-element, which wraps the content of the page"""
         try:
-            return imageDivElement.find_element(By.XPATH, Locator.imageInDiv,)
+            return imageDivElement.find_element(
+                By.XPATH,
+                Locator.imageInDiv,
+            )
         except:
             return None
-    
+
     def getDescriptionHeadingDiv(self):
-        """Returns the div-element, which wraps the description-heading
-        
-        """
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -121,9 +110,7 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getDescriptionContentDiv(self):
-        """Returns the div-element, which wraps the description-heading
-        
-        """
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -131,11 +118,9 @@ class NegativeEnvironmentalImpacts(object):
             )
         except:
             return None
-    
+
     def getLinkToComponentList(self):
-        """Returns the div-element, which wraps the description-heading
-        
-        """
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH,
@@ -145,9 +130,7 @@ class NegativeEnvironmentalImpacts(object):
             return None
 
     def getLinkToDataProcessing(self):
-        """Returns the div-element, which wraps the description-heading
-        
-        """
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH,

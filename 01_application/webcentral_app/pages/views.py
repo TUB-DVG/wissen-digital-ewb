@@ -51,6 +51,7 @@ def businessModels(request):
           ),
         "boxes": [
             {
+                "boxId": 1,
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
                     "image":
@@ -65,6 +66,7 @@ def businessModels(request):
                 },
             },
             {
+                "boxId": 2,
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
                     "image":
@@ -141,8 +143,10 @@ def environmentalIntegrityNegativ(request):
           ),
         "boxes": [
             {
+                "boxId":
+                1,
                 "pathToTemplate":
-                "pages/environmentalIntegrityNegativeBox.html",
+                "partials/environmentalIntegrityNegativeBox.html",
                 "linkToDetailsPage":
                 "components",
                 "heading":
@@ -154,8 +158,10 @@ def environmentalIntegrityNegativ(request):
                 "img/componentList/negativeEnvironmentalImpactsBox1.svg",
             },
             {
+                "boxId":
+                2,
                 "pathToTemplate":
-                "pages/environmentalIntegrityNegativeBox.html",
+                "partials/environmentalIntegrityNegativeBox.html",
                 "linkToDetailsPage":
                 "dataProcessing",
                 "heading":
