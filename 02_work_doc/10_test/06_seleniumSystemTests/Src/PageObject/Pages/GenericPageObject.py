@@ -5,7 +5,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
 
-class GenericPageObject(object):
+class GenericPageObject:
+
+    # def __init__(self, driver):
+    #     """Constructor of GenericPageObject"""
+    #     self.driver = driver
 
     def getAllElementsOfTagname(self, tagname: str) -> list:
         """Returns a list of all elements with the given tagname."""

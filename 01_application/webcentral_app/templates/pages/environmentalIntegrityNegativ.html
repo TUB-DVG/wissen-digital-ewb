@@ -53,7 +53,7 @@
     {% include "partials/descriptionContainer.html" %}
     <div class="boxes row" id="container-start-focus">
       {% for boxObject in boxes %}
-        {% include "pages/environmentalIntegrityNegativeBox.html" with boxObject=boxObject %}
+        {% include boxObject.pathToTemplate with boxObject=boxObject %}
       {% endfor %}
     </div>
   </div>
