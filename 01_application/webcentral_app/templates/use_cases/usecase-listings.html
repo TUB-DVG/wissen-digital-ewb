@@ -3,8 +3,26 @@
 {% block content %}
 {% load i18n %}
 {% load static %}
+{% load plotly_dash %}
 <!DOCTYPE html>
 
+<style>
+  .plotly > div {
+    padding-bottom: 100% !important;
+  }
+
+  @media screen and (min-width: 600px) {
+    .plotly > div {
+      padding-bottom: 51.7% !important;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .plotly > div {
+      padding-bottom: 45.2% !important;
+    }
+  }
+</style>
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
@@ -28,6 +46,12 @@
   <!-- Page content START -->
   <section class="pt-0">
     <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
+      <!-- Plotly chart START -->
+      <div class="plotly">
+        {% plotly_app name='useCaseTS' ratio=10 %}
+      </div>
+      <!-- Plotly chart END -->
+
       <!-- Filter bar START -->
       {% include "common/search-bar.html" %}
       <!-- Row END -->
