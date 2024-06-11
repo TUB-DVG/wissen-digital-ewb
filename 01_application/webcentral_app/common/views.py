@@ -22,3 +22,4 @@ def getFocusNameIndependentOfLanguage(focusStr: str, focusObj: Focus) -> str:
     else:
         focusName = focusObj.focus_en
     return focusName
+
