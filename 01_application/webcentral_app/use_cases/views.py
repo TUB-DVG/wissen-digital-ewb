@@ -139,3 +139,4 @@ def _setUseCaseImage(useCaseItem):
         useCaseItem.icon = "/assets/images/Geräte.svg"
     else:
         useCaseItem.icon = None
+
