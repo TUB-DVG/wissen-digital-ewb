@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-06 12:37+0000\n"
+"POT-Creation-Date: 2024-06-11 09:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,42 +200,42 @@ msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
 #: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:116
-#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:436
+#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:255
 msgid "Januar"
 msgstr "January"
 
 #: LastProfile/Dash_app/Stromlast.py:52 LastProfile/Dash_app/Stromlast.py:117
-#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:437
+#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:256
 msgid "Februar"
 msgstr "February"
 
 #: LastProfile/Dash_app/Stromlast.py:53 LastProfile/Dash_app/Stromlast.py:118
-#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:438
+#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:257
 msgid "März"
 msgstr "March"
 
 #: LastProfile/Dash_app/Stromlast.py:54 LastProfile/Dash_app/Stromlast.py:119
-#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:439
+#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:258
 msgid "April"
 msgstr "April"
 
 #: LastProfile/Dash_app/Stromlast.py:55 LastProfile/Dash_app/Stromlast.py:120
-#: LastProfile/Dash_app/Warmelast.py:143 LastProfile/Dash_app/Warmelast.py:440
+#: LastProfile/Dash_app/Warmelast.py:143 LastProfile/Dash_app/Warmelast.py:259
 msgid "Mai"
 msgstr "May"
 
 #: LastProfile/Dash_app/Stromlast.py:56 LastProfile/Dash_app/Stromlast.py:121
-#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:441
+#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:260
 msgid "Juni"
 msgstr "June"
 
 #: LastProfile/Dash_app/Stromlast.py:57 LastProfile/Dash_app/Stromlast.py:122
-#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:442
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:261
 msgid "Juli"
 msgstr "July"
 
 #: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:123
-#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:443
+#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:262
 msgid "August"
 msgstr "August"
 
@@ -244,17 +244,17 @@ msgid "September"
 msgstr "September"
 
 #: LastProfile/Dash_app/Stromlast.py:60 LastProfile/Dash_app/Stromlast.py:125
-#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:445
+#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:264
 msgid "Oktober"
 msgstr "October"
 
 #: LastProfile/Dash_app/Stromlast.py:61 LastProfile/Dash_app/Stromlast.py:126
-#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:446
+#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:265
 msgid "November"
 msgstr "November"
 
 #: LastProfile/Dash_app/Stromlast.py:62 LastProfile/Dash_app/Stromlast.py:127
-#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:447
+#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:266
 msgid "Dezember"
 msgstr "December"
 
@@ -269,7 +269,7 @@ msgid "Download als csv"
 msgstr "Download as csv"
 
 #: LastProfile/Dash_app/Stromlast.py:182 LastProfile/Dash_app/Stromlast.py:210
-#: LastProfile/Dash_app/Warmelast.py:312
+#: LastProfile/Dash_app/Warmelast.py:333
 msgid "Datum"
 msgstr "Date"
 
@@ -293,166 +293,167 @@ msgstr "Load"
 msgid "Auswahl des Bundesland"
 msgstr "Selection of the state"
 
-#: LastProfile/Dash_app/Warmelast.py:58 LastProfile/Dash_app/Warmelast.py:399
+#: LastProfile/Dash_app/Warmelast.py:58 LastProfile/Dash_app/Warmelast.py:417
 msgid "Wärmelast Approximation"
 msgstr "Heat load approximation"
 
-#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:400
+#: LastProfile/Dash_app/Warmelast.py:60 LastProfile/Dash_app/Warmelast.py:418
 msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
 msgstr "We chose the following values as the test reference year:"
 
-#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:401
+#: LastProfile/Dash_app/Warmelast.py:62 LastProfile/Dash_app/Warmelast.py:419
 msgid "Koordinatensystem : Lambert konform konisch"
 msgstr "Coordinate System : Lambert compliant conical"
 
-#: LastProfile/Dash_app/Warmelast.py:64 LastProfile/Dash_app/Warmelast.py:402
+#: LastProfile/Dash_app/Warmelast.py:64 LastProfile/Dash_app/Warmelast.py:420
 msgid "Rechtswert        : 4201500 Meter"
 msgstr "Easting value: 4201500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:66 LastProfile/Dash_app/Warmelast.py:403
+#: LastProfile/Dash_app/Warmelast.py:66 LastProfile/Dash_app/Warmelast.py:421
 msgid "Hochwert          : 2848500 Meter"
 msgstr "High value: 2848500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:68 LastProfile/Dash_app/Warmelast.py:404
+#: LastProfile/Dash_app/Warmelast.py:68 LastProfile/Dash_app/Warmelast.py:422
 msgid "Höhenlage        : 36 Meter über NN"
 msgstr "Altitude: 36 meters above sea level"
 
-#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:405
+#: LastProfile/Dash_app/Warmelast.py:70 LastProfile/Dash_app/Warmelast.py:423
 msgid "Erstellung des Datensatzes im Mai 2016"
 msgstr "The data set was created in May 2016"
 
-#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:406
+#: LastProfile/Dash_app/Warmelast.py:72 LastProfile/Dash_app/Warmelast.py:424
 msgid "Art des TRY       : mittleres Jahr"
 msgstr "Type of TRY: middle year"
 
-#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:407
+#: LastProfile/Dash_app/Warmelast.py:74 LastProfile/Dash_app/Warmelast.py:425
 msgid "Bezugszeitraum    : 1995-2012"
 msgstr "Reference period    : 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:408
+#: LastProfile/Dash_app/Warmelast.py:76 LastProfile/Dash_app/Warmelast.py:426
 msgid "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
 msgstr "Database: observation data period 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:410
+#: LastProfile/Dash_app/Warmelast.py:81 LastProfile/Dash_app/Warmelast.py:428
 msgid "Testreferenzjahr"
 msgstr "Test reference year"
 
-#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:411
+#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:429
 msgid "Wetterstation"
 msgstr "Weather station"
 
-#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:413
+#: LastProfile/Dash_app/Warmelast.py:84 LastProfile/Dash_app/Warmelast.py:431
 msgid "Berechnungstyp"
 msgstr "Calculation type"
 
-#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:414
+#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:432
 #: LastProfile/Dash_app/Warmelast.py:458
 msgid "Auswahl der Station"
 msgstr "Selection of station"
 
-#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:416
+#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:434
 msgid "Einfamilienhaus"
 msgstr "Single Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:103 LastProfile/Dash_app/Warmelast.py:417
+#: LastProfile/Dash_app/Warmelast.py:103 LastProfile/Dash_app/Warmelast.py:435
 msgid "Mehrfamilienhaus"
 msgstr "Multi Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:418
+#: LastProfile/Dash_app/Warmelast.py:104 LastProfile/Dash_app/Warmelast.py:436
 msgid "Gebietskörperschaft"
 msgstr "Local authority"
 
-#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:419
+#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:437
 msgid "Einzelhandel, Großhandel"
 msgstr "Retail, Wholesale"
 
-#: LastProfile/Dash_app/Warmelast.py:106 LastProfile/Dash_app/Warmelast.py:420
+#: LastProfile/Dash_app/Warmelast.py:106 LastProfile/Dash_app/Warmelast.py:438
 msgid "Metall, Kfz"
 msgstr "Metal, Automotive"
 
-#: LastProfile/Dash_app/Warmelast.py:107 LastProfile/Dash_app/Warmelast.py:421
+#: LastProfile/Dash_app/Warmelast.py:107 LastProfile/Dash_app/Warmelast.py:439
 msgid "sonst. betr. Dienstleistungen"
 msgstr "Other operational services"
 
-#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:422
+#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:440
 msgid "Gaststätten"
 msgstr "Restaurants"
 
-#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:423
+#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:441
 msgid "Beherbergung"
 msgstr "Accommodation"
 
-#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:424
+#: LastProfile/Dash_app/Warmelast.py:110 LastProfile/Dash_app/Warmelast.py:442
 msgid "Bäckereien"
 msgstr "Bakeries"
 
-#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:425
+#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:443
 msgid "Wäschereien"
 msgstr "Laundries"
 
-#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:426
+#: LastProfile/Dash_app/Warmelast.py:112 LastProfile/Dash_app/Warmelast.py:444
 msgid "Gartenbau"
 msgstr "horticulture"
 
-#: LastProfile/Dash_app/Warmelast.py:113 LastProfile/Dash_app/Warmelast.py:427
+#: LastProfile/Dash_app/Warmelast.py:113 LastProfile/Dash_app/Warmelast.py:445
 msgid "Papier und Druck"
 msgstr "Paper and printing"
 
-#: LastProfile/Dash_app/Warmelast.py:114 LastProfile/Dash_app/Warmelast.py:428
+#: LastProfile/Dash_app/Warmelast.py:114 LastProfile/Dash_app/Warmelast.py:446
 msgid "haushaltsähnliche Gewerbebetriebe"
 msgstr "Household-like businesses"
 
-#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:429
+#: LastProfile/Dash_app/Warmelast.py:115 LastProfile/Dash_app/Warmelast.py:447
 msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
 msgstr "Total load profile for trade, commerce, services"
 
-#: LastProfile/Dash_app/Warmelast.py:117 LastProfile/Dash_app/Warmelast.py:431
+#: LastProfile/Dash_app/Warmelast.py:117 LastProfile/Dash_app/Warmelast.py:449
 #: templates/LastProfile/explanation.html:113
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
-#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:432
+#: LastProfile/Dash_app/Warmelast.py:125 LastProfile/Dash_app/Warmelast.py:450
 msgid "Jahreswärmebedarf in kWh/a"
 msgstr "Annual heat requirement in kWh/a"
 
-#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:433
+#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:451
 msgid "Start Datum"
 msgstr "Start date"
 
-#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:434
+#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:452
 msgid "End Datum"
 msgstr "End date"
 
-#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:444
+#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:263
 msgid "Sepember"
 msgstr "September"
 
-#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:448
-#: templates/common/search-bar.html:48
+#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:267
+#: LastProfile/Dash_app/Warmelast.py:275 templates/common/search-bar.html:48
 msgid "Alle"
 msgstr "All"
 
-#: LastProfile/Dash_app/Warmelast.py:166 LastProfile/Dash_app/Warmelast.py:450
+#: LastProfile/Dash_app/Warmelast.py:166 LastProfile/Dash_app/Warmelast.py:300
+#: LastProfile/Dash_app/Warmelast.py:454
 msgid "Es gibt keine Eingabe"
 msgstr "There is no input"
 
-#: LastProfile/Dash_app/Warmelast.py:301 LastProfile/Dash_app/Warmelast.py:317
+#: LastProfile/Dash_app/Warmelast.py:322 LastProfile/Dash_app/Warmelast.py:338
 msgid "Wärmelastgang in kW"
 msgstr "Heat load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:303
+#: LastProfile/Dash_app/Warmelast.py:324
 msgid "Fehlende Angaben"
 msgstr "Missing values"
 
-#: LastProfile/Dash_app/Warmelast.py:306 LastProfile/Dash_app/Warmelast.py:322
+#: LastProfile/Dash_app/Warmelast.py:327 LastProfile/Dash_app/Warmelast.py:343
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:327
+#: LastProfile/Dash_app/Warmelast.py:348
 msgid "Für die ausgewählte Station gibt es "
 msgstr "For the selected stations exist "
 
-#: LastProfile/Dash_app/Warmelast.py:328
+#: LastProfile/Dash_app/Warmelast.py:349
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
@@ -503,16 +504,6 @@ msgstr "Open-Source-status"
 #: TechnicalStandards/views.py:256
 msgid "Proprietär"
 msgstr "Proprietary"
-
-#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:7
-msgid "Find Apps"
-msgstr ""
-
-#: django_plotly_dash/templates/admin/django_plotly_dash/statelessapp/change_list.html:13
-#: templates/admin/publications/publication_change_list.html:11
-#, python-format
-msgid "Add %(name)s"
-msgstr ""
 
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
@@ -1155,7 +1146,7 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
-#: templates/use_cases/explanation.html:106
+#: templates/use_cases/explanation.html:115
 #: templates/weatherdata_over/explanation.html:35
 msgid "Zeige weniger ..."
 msgstr "Show less ..."
@@ -1168,7 +1159,7 @@ msgstr "Show less ..."
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
-#: templates/use_cases/explanation.html:107
+#: templates/use_cases/explanation.html:116
 #: templates/weatherdata_over/explanation.html:36
 msgid "Zeige mehr ..."
 msgstr "Show more ..."
@@ -1704,6 +1695,11 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
+#: templates/admin/publications/publication_change_list.html:11
+#, python-format
+msgid "Add %(name)s"
+msgstr ""
+
 #: templates/common/back-button.html:4
 #: templates/datasets_over/dataset-detail.html:45
 msgid "Zurück"
@@ -1736,7 +1732,7 @@ msgid "Weitere Informationen"
 msgstr "Further information"
 
 #: templates/datasets_over/dataset-detail.html:141
-#: templates/use_cases/explanation.html:95
+#: templates/use_cases/explanation.html:104
 msgid "Datensatz"
 msgstr "Dataset"
 
@@ -3746,7 +3742,7 @@ msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
 #: templates/tools_over/explanationTools.html:116
-#: templates/use_cases/explanation.html:88
+#: templates/use_cases/explanation.html:97
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
@@ -3814,73 +3810,54 @@ msgstr "Norms/standard (basis/orientation of the tool)"
 msgid "Updates"
 msgstr "Updates"
 
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:3
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:5
 msgid "Darstellung der Zeitreihen"
+msgstr "Overview of timeseries"
+
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:20
+msgid ""
+"Auf dieser Seite präsentieren wir eine beispielhafte Darstellung, wie sich "
+"verschiedene Aggregationen (zeitlich und räumlich) auf verschiedene "
+"Anwendungsfälle der Digitalisierung auswirken. \n"
+"            Das Ziel ist es die unterschiedlichen Effekte der "
+"Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen "
+"aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein:"
 msgstr ""
 
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:14
-msgid "Einen Haushalt"
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:25
+#: templates/use_cases/explanation.html:91
+msgid ""
+"Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
+"von Effekten aus?"
 msgstr ""
 
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:17
-#, fuzzy
-#| msgid "Haushaltskunden "
-msgid "Drei Haushalte"
-msgstr "Household customers"
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:21
-msgid "Geschirrspüler"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:24
-msgid "Elektrisch-Kombiniert"
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:26
+#: templates/use_cases/explanation.html:92
+msgid ""
+"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
+"Gebäude) auf die Sichtbarkeit von Effekten aus?"
 msgstr ""
 
 #: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:27
-msgid "Kühl- und Gefrierschrank"
+#: templates/use_cases/explanation.html:24
+#: templates/use_cases/explanation.html:93
+msgid "Was ist in dem Graph zu sehen?"
 msgstr ""
 
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:30
-msgid "Wasserkocher"
-msgstr ""
+#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:31
+msgid ""
+"Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
+"komplex und vielschichtig. So werden beispielsweise Ressourcen und Energie "
+"für Erstellung und den Betrieb von Messtechnik benötigt, eine genauere "
+"Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder "
+"ein genaues Erkennen von Fehlern.\n"
+"            Hier sollen einige dieser wechselwirkenden Effekte gesammelt und "
+"in ihren Auswirkungen begreifbar gemacht werden. Dazu werden die "
+"entsprechenden ausgewählten Zeitreihen dargestellt."
+msgstr "The impacts of digital applications are complex and multifaceted due to their interactions. For instance, resources and energy are required for the creation and operation of measurement technology."
+"However, more precise measurements also allow for more individualized feedback to users or accurate detection of errors."
+"Here, some of these interacting effects will be collected and their impacts made comprehensible. To this end, the respective selected time series will be displayed."
 
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:33
-#, fuzzy
-#| msgid "Haftungsausschluss"
-msgid "Hauptanschluss"
-msgstr "Disclaimer"
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:36
-msgid "Staubsauger"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:39
-msgid "Herd"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:42
-msgid "Mikrowelle"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:45
-msgid "Waschmaschine"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:48
-msgid "Durchlauferhitzer"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:52
-msgid "5 Sekunden"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:54
-msgid "15 Minuten"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:56
-msgid "1 Stunde"
-msgstr ""
 
 #: templates/use_cases/explanation.html:18
 msgid ""
@@ -3890,29 +3867,27 @@ msgid ""
 "Digitalisierung aufzudecken und die Inteaktion verschiedener Anforderungen "
 "aufzuzeigen. \n"
 "              Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr ""
+msgstr "On this page, we present a detailed analysis of various use cases in the context of the Smart Readiness Indicator. \n"
+"              The goal is to uncover the various effects of digitalization and to demonstrate the interaction of different requirements. \n"
+"              In doing so, we address various questions:"
 
 #: templates/use_cases/explanation.html:22
 #, fuzzy
 #| msgid "Kategorie Anwendungsfall"
 msgid "Was verstehen wir unter einem Anwendungsfall?"
-msgstr "Use case category"
+msgstr "What do we mean by a use case?"
 
 #: templates/use_cases/explanation.html:23
 msgid "Welche Anwendungsfälle werden diskutiert?"
-msgstr ""
-
-#: templates/use_cases/explanation.html:24
-msgid "Was ist in dem Graph zu sehen?"
-msgstr ""
+msgstr "Which use cases are discussed?"
 
 #: templates/use_cases/explanation.html:26
-msgid "Welche Aggreationen sind zu sehen und warum?"
-msgstr ""
+msgid "Welche Aggregationen sind zu sehen und warum?"
+msgstr "What aggregations are visible and why?"
 
 #: templates/use_cases/explanation.html:27
 msgid "Woher kommen die Daten?"
-msgstr ""
+msgstr "Where do the data come from?"
 
 #: templates/use_cases/explanation.html:34
 msgid ""
@@ -3929,6 +3904,12 @@ msgid ""
 "          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und "
 "in ihren Auswirkungen begreifbar gemacht werden."
 msgstr ""
+"Does the digital application require numerous measurements that reveal behavioral patterns? \n"
+"          Does the application enable energy savings through feedback? \n"
+"          The impacts of digital applications are complex and multifaceted due to their interactions.\n"
+"          For instance, resources and energy are required for the creation and operation of measurement technology, \n"
+"          but more precise measurements also allow for more individualized feedback to users or accurate detection of errors.\n"
+"          Here, some of these interacting effects will be collected and their impacts made comprehensible."
 
 #: templates/use_cases/explanation.html:42
 msgid ""
@@ -3938,72 +3919,85 @@ msgid ""
 "sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
 "          Dabei werden die folgenden Aspekte betrachtet:"
 msgstr ""
+"The framework of the Smart Readiness Indicator, developed according to EU regulations to assess the intelligence capability of buildings, is used as the basis. \n"
+"          Within this framework, 'Services' are defined, which are considered here as use cases.\n"
+"          The following aspects are considered:"
 
 #: templates/use_cases/explanation.html:47
 msgid ""
 "Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
 "wordurch die Effekte/Wirkungen hervorgerufen werden."
 msgstr ""
+"Use Case: Describes the specific service being referenced and through which the effects/impacts are generated."
 
 #: templates/use_cases/explanation.html:48
 msgid ""
 "Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
 "Durchführung bezieht."
-msgstr ""
+msgstr "Impact Level: The levels to which the use case or action/implementation pertains."
 
 #: templates/use_cases/explanation.html:49
 msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
-msgstr ""
+msgstr "Level: The gradations in the implementation of the use case."
 
 #: templates/use_cases/explanation.html:70
 msgid ""
 "Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
 "auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
-"             aus der Nutzendenperspektive oder der technischen Sichweite."
-msgstr ""
+"             aus der Nutzendenperspektive oder der technischen Sichtweite."
+msgstr "Perspective: The areas impacted by the implementation of the use case, such as economic, ecological, from the user's perspective, or from a technical viewpoint."
 
 #: templates/use_cases/explanation.html:73
 msgid ""
 "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
 "Erzielten/intendierten Effekte."
-msgstr ""
+msgstr "Effect: The outcomes or intended effects associated with the implementation of the use case."
 
 #: templates/use_cases/explanation.html:76
 msgid ""
 "Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
 "Services „Reporting information regarding electricity consumption“ statt."
-msgstr ""
+msgstr "A detailed examination using time series is conducted for the service 'Reporting information regarding electricity consumption.'"
 
 #: templates/use_cases/explanation.html:78
 msgid ""
 "Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
-"genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte aus den "
+"genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus den "
 "UK und Schottland enthalten.\n"
 "          39 dieser Haushalte sind in einem engmaschigen System gemonitort "
 "worden. \n"
 "          Für die Darstellung sind die engmaschig gemonitorten Haushalte "
 "105, 106 und 62 genutzt worden. "
-msgstr ""
+msgstr "To illustrate these effects in detail, the IDEAL dataset was used, containing monitoring data for 255 households in the UK and Scotland.\n"
+"          39 of these households were monitored in a close-mesh system.\n"
+"          For the presentation, closely monitored households 105, 106, and 62 were used."
 
 #: templates/use_cases/explanation.html:82
 msgid ""
-"Dargestellt sind der Durschnittliche Verbrauch in einem Zeitfenster von 15 "
-"Sekunden (orange), einer Stunde (blau) und als Mittel von drei Haushalten "
-"(grün). \n"
-"          Bei der 15-sekündigen Messung sind die einezonen Ausshläge sehr "
-"gut zu sehen. Diese gehen werden geglättet bei der Messung des "
-"durschnittlichen Verbrauchs über eine Stunde. \n"
-"          Zeiten in denen das Gerät aus ist, reduzieren die "
-"Spitzenlastausschläge."
-msgstr ""
+"Dargestellt sind der Durchschnittliche Verbrauch in einem Zeitfenster von fünf "
+"Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die einzelnen Werte "
+"der Haushalte dargestellt und auch die Summe der Lastgänge (three "
+"buildings).\n"
+"          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
+"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrequenter "
+"Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
+"Aggregationen untergehen. Damit sollen die Nutzenden \n"
+"          ein quantitatives und qualitatives Gefühl für die Effekte der "
+"Digitalisierung und deren Wechselwirkungen bekommen. So werden "
+"beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
+"Messtechnik benötigt, \n"
+"          eine genauere Messung ermöglicht aber auch ein individuelleres "
+"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+"          <br>\n"
+"          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
+"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
+"Dabei gehen wir auf verschiedene Fragestellungen ein:"
+msgstr "Displayed are the average consumption in time windows of five seconds, 15 minutes, and one hour, showing both the individual values of the households and the sum of the load profiles (three buildings).\n"
+"          The exemplary presentation illustrates how various aggregations (temporal and spatial) affect outcomes. High-frequency measurements make individual effects very visible, which may be lost in other aggregations. This aims to provide users with a quantitative and qualitative understanding of the effects of digitalization and their interactions. For example, resources and energy are required for the creation and operation of measurement technology,\n"
+"          but more precise measurements also enable more individualized feedback to users
 
-#: templates/use_cases/explanation.html:86
-#, fuzzy
-#| msgid "Zeitreihen"
-msgid "Zeige Zeitreihen Daten"
-msgstr "Time series"
 
-#: templates/use_cases/usecase-listings.html:18
+#: templates/use_cases/usecase-listings.html:36
 #, fuzzy
 #| msgid "Überblick über die Normen"
 msgid "Überblick über die Anwendungsfälle"
@@ -4121,6 +4115,21 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:69
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#, fuzzy
+#~| msgid "Haushaltskunden "
+#~ msgid "Drei Haushalte"
+#~ msgstr "Household customers"
+
+#, fuzzy
+#~| msgid "Haftungsausschluss"
+#~ msgid "Hauptanschluss"
+#~ msgstr "Disclaimer"
+
+#, fuzzy
+#~| msgid "Zeitreihen"
+#~ msgid "Zeige Zeitreihen Daten"
+#~ msgstr "Time series"
 
 #~ msgid "Koordinatensystem"
 #~ msgstr "Coordinate system"
