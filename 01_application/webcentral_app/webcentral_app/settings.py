@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'django_plotly_dash',
     "common.apps.CommonConfig",
     'channels',
 ]
@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_plotly_dash.middleware.BaseMiddleware',
 ]
 
 # Content Security Policy
