@@ -28,9 +28,15 @@
   background-position: 90% 50%;
 
 }
-
+.form-select-sm {
+    /* Change the width property */
+    width: 150px !important;
+    /* display: inline !important; */
+    /* Add any other properties you want to change */
+}
 .use-bootstrap-select-wrapper {
-  width: 120px;
+  width: 150px !important;
+  display: inline-block !important;
 }
 </style>
 <form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
@@ -64,7 +70,7 @@
     <div class="col-xl-10">
       <div class="row g-3">
         <!-- Select items -->
-        <div class="form-group col-sm-6 col-md-5" style="margin-left: 240px">
+        <div class="form-group col-sm-6 col-md-5" style="margin-left: 160px">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
               <div class="dropdown" style="display: inline;">
@@ -153,8 +159,17 @@
   {% endfor %}
 </div>
 <script>
-const category = new UseBootstrapSelect(document.getElementById('category'))
-const component = new UseBootstrapSelect(document.getElementById('component'))
+  var listOfUseBootstrapSelects = [];
+{% for optionContent in optionList %}
+{% if not optionContent.multiDimensional %}
+  var element = document.getElementById('{{ optionContent.fieldName }}');
+  if (element) {
+    listOfUseBootstrapSelects.push(new UseBootstrapSelect(element));
+  } else {
+    console.error('Element with ID "{{ optionContent.fieldName }}" not found');
+  }
+  {% endif %}
+  {% endfor %}
   $('.closeFilter').click(function() {
     $(this).parent().remove();
 
@@ -197,8 +212,30 @@ const component = new UseBootstrapSelect(document.getElementById('component'))
           // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
         }
         form.submit();
-    }
+   } 
+$('#searchBox').on('submit', function(e) {
+    e.preventDefault();  // Prevent the form from submitting normally
 
+    var url = $(this).attr('action');  // Get the form's action URL
+    var formData = $(this).serialize();  // Serialize the form data
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: formData,
+        success: function(response) {
+            // Handle the response here
+            console.log(response);
+            debugger;
+            // remove all ancestors of the div with the id
+            $('#componentListingContainer').empty();
+            $('#componentListingContainer').append(response);
+          },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error here
+        }
+    });
+});
 $(document).ready(function() {
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
@@ -213,76 +250,39 @@ $(document).ready(function() {
 
         return false;
     });
+  });
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
-        var selectedOption = $(this).val();
-        var form = $('#searchBox');
-        var categoryOfNewlySelectedFitler = $(this).attr("id");
-        var listOfActivatedFilters = [];
-        var url = $('#searchBox').attr('action');
-        url += "?";
-        
-        $("select.form-select-sm").each(function () {
-
-          var filterIdentifer = $(this).attr("id");
-          var spansOfFilter = $("span.filter." + filterIdentifer);
-          var selectedOptions = "";
-          spansOfFilter.each(function() {
-            var filter = $(this).text();
-            selectedOptions += filter + ",";
-        });
-        if ($(this).attr("id") ==  categoryOfNewlySelectedFitler) {
-          selectedOptions += selectedOption;
-        }
-          // create a hidden input-field for each filter category, which holds a list of the 
-          // already selected filter and the newly selected one
+      // get values from the select inputs:
+      // iterate over the list of selects and call the method to return the values as a list:
+      var listOfSelectedFilters;
+      var form = $('#searchBox');
+      
+      for (var i=0;i < listOfUseBootstrapSelects.length;i++) {
+        listOfSelectedFilters = listOfUseBootstrapSelects[i].getValue()
+        if (listOfSelectedFilters != null) {
+            var selectedOptions = "";
+          for (var j=0;j<listOfSelectedFilters.length;j++) {
+            selectedOptions += listOfSelectedFilters[j] + ",";
+          }
+          debugger;
           var hiddenInput = document.createElement("input");
-          hiddenInput.setAttribute("type", "hidden");
-          hiddenInput.setAttribute("name", filterIdentifer + "-hidden");
-          if (selectedOptions.slice(-1) === ',') {
-            selectedOptions = selectedOptions.slice(0, -1);
-          }
-          hiddenInput.setAttribute("value", selectedOptions);
-          form.append(hiddenInput);
-          // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
-        })
+            hiddenInput.setAttribute("type", "hidden");
+            
+            hiddenInput.setAttribute("name", listOfUseBootstrapSelects[i].selectElement.id  + "-hidden");
+            if (selectedOptions.slice(-1) === ',') {
+              selectedOptions = selectedOptions.slice(0, -1);
+            }
+            hiddenInput.setAttribute("value", selectedOptions);
+            form.append(hiddenInput);
 
-
-        var searchFullTextInput = $("#search-input-");
-        // get filter of full text search:
-        stringOfFullTextSearches = "";
-        $("span.filter.searched").each(function() {
-          var filter = $(this).text();
-          stringOfFullTextSearches += filter + ",";
-        });
-        if (searchFullTextInput.val() != "") {
-          stringOfFullTextSearches += searchFullTextInput.val();
         }
-        var hiddenInput = document.createElement("input");
-          hiddenInput.setAttribute("type", "hidden");
-          hiddenInput.setAttribute("name",  "searched" + "-hidden");
-          if (stringOfFullTextSearches.slice(-1) === ',') {
-            stringOfFullTextSearches = stringOfFullTextSearches.slice(0, -1);
-          }
-          hiddenInput.setAttribute("value", stringOfFullTextSearches);
-          form.append(hiddenInput);
-
-        // var action = form.attr('action');
-        // action += '?' + $(this).attr("id") + '=' + encodeURIComponent(setCategories);
-        // debugger;
+      }        
         form.submit();
         
-        
-
-        // Send a GET request to the server
-        // $.get(url, function(response) {
-
-        //     // window.location.href = response;
-        //     $('html').html(response);
-        // });        
     });
-});
-    
+
+  })
 
     // // Handle click events on second level dropdown items
     // $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
@@ -299,7 +299,7 @@ $(document).ready(function() {
     //   debugger;
     //   form.submit();
     // });
-});
+// });
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
