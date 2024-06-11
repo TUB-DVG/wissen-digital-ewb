@@ -2,17 +2,25 @@ import datetime
 import locale
 
 from django.contrib import messages
+from django.utils.translation import gettext as _
 import pandas as pd
-
-from typing import Tuple
 import plotly.graph_objects as go
 import dash 
+from dash import (
+    dcc,
+    html,
+    Input,
+    Output,
+    State,
+)
 from django_plotly_dash import DjangoDash
+from wetterdienst.provider.dwd.observation import DwdObservationRequest
+from typing import Tuple
 from plotly.subplots import make_subplots
 from dash.exceptions import PreventUpdate
+
 from .Warmelastapproximation_csv import heatLoad
-from dash import  dcc, html, Input, Output ,State # pip install dash (version 2.0.0 or higher)
-from wetterdienst.provider.dwd.observation import DwdObservationRequest
+
 
 
 locale.setlocale(locale.LC_ALL, "de_DE.utf8") # German time
@@ -28,7 +36,7 @@ dataset = 'AIR_TEMPERATURE'
 
 parameter = 'TEMPERATURE_AIR_MEAN_200'
 #Setting up the Period
-
+data = []
 period = 'RECENT'
 # Acquiring all the stations that provide data according to selected filters
 stations = DwdObservationRequest(
@@ -36,7 +44,7 @@ stations = DwdObservationRequest(
     resolution = resolution,
     period = period
     )
-placeholderState = "Auswahl des Bundesland"
+placeholderState = _("Auswahl des Bundesland")
 try:
     polledStationNames = stations.all( ).df['state'].unique()
 except ValueError:
@@ -46,26 +54,34 @@ except ValueError:
 # App layout
 app.layout = html.Div([
     # Title
-    html.H1("Wärmelast Approximation", style = {'text-align': 'center'}),
+    dcc.Store(id='on-load', data='loaded'),
+    html.H1(_("Wärmelast Approximation"), style = {'text-align': 'center'}, id="headingApp"),
     html.Div([
-        html.P(["Als Testrefenzjahr haben wir die folgenden Werte gewählt:",html.Br(), 
-                "Koordinatensystem : Lambert konform konisch",html.Br(), 
-                "Rechtswert        : 4201500 Meter",html.Br(), 
-                "Hochwert          : 2848500 Meter",html.Br(), 
-                "Höhenlage        : 36 Meter über NN",html.Br(), 
-                "Erstellung des Datensatzes im Mai 2016",html.Br(), 
-                "Art des TRY       : mittleres Jahr",html.Br(),
-                "Bezugszeitraum    : 1995-2012",html.Br(), 
-                "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012" ],id = "container",
-            ),
+        html.P(_("Als Testrefenzjahr haben wir die folgenden Werte gewählt:"),id = "container1"),
+        # html.Br(), 
+        html.P(_("Koordinatensystem : Lambert konform konisch"), id="container2"),
+        # html.Br(), 
+        html.P(_("Rechtswert        : 4201500 Meter"), id="container3"),
+        # html.Br(), 
+        html.P(_("Hochwert          : 2848500 Meter"), id="container4"),
+        # html.Br(), 
+        html.P(_("Höhenlage        : 36 Meter über NN"), id="container5"),
+        # html.Br(), 
+        html.P(_("Erstellung des Datensatzes im Mai 2016"), id="container6"),
+        # html.Br(), 
+        html.P(_("Art des TRY       : mittleres Jahr"), id="container7"),
+        # html.Br(),
+        html.P(_("Bezugszeitraum    : 1995-2012"), id="container8"),
+        # html.Br(), 
+        html.P(_("Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"), id="container9"),
     ],id = 'hideText', style = {'display': 'none'}),
     # Dropdown for the application options
     dcc.Dropdown( 
         options = [
-            {'label': 'Testreferenzjahr', 'value': 'on'},
-            {'label': 'Wetterstation', 'value': 'off'}     
+            {'label': _('Testreferenzjahr'), 'value': 'on'},
+            {'label': _('Wetterstation'), 'value': 'off'}     
         ],
-        placeholder = "Berechnungstyp",
+        placeholder = _("Berechnungstyp"),
         id = 'referenceYear',
         value = 'on'
         ),
@@ -78,29 +94,27 @@ app.layout = html.Div([
         ),
         # Dropdown for the available wetterdienst stations in the chosen State
         dcc.Dropdown(
-            placeholder = "Auswahl der Station",id = 'station'
+            placeholder = _("Auswahl der Station"),id = 'station'
         )
     ],id = 'hideElements', style = {'display': 'block'}),
     dcc.Dropdown(
         options = [
-                {'label': 'Einfamilienhaus ', 'value': '2'},
-                {'label': 'Mehrfamilienhaus ', 'value': '3'},
-                {'label': 'Gebietskörperschaft', 'value': '4'},
-                {'label': 'Einzelhandel, Großhandel', 'value': '5'},
-                {'label': 'Metall, Kfz', 'value': '6'},
-                {'label': 'sonst. betr. Dienstleistungen  ', 'value': '7'},
-                {'label': 'Gaststätten ', 'value': '8'},
-                {'label': 'Beherbergung ', 'value': '9'},
-                {'label': 'Bäckereien ', 'value': '10'},
-                {'label': 'Wäschereien ', 'value': '11'},
-                {'label': 'Gartenbau ', 'value': '12'},
-                {'label': 'Papier und Druck ', 'value': '13'},
-                {'label': 'haushaltsähnliche Gewerbebetriebe ', 'value': '14'},
-                {'label': 'Summenlastprofil Gewerbe, Handel, Dienstleistung ',
-                  'value': '15'},
-
+                {'label': _('Einfamilienhaus'), 'value': '2'},
+                {'label': _('Mehrfamilienhaus'), 'value': '3'},
+                {'label': _('Gebietskörperschaft'), 'value': '4'},
+                {'label': _('Einzelhandel, Großhandel'), 'value': '5'},
+                {'label': _('Metall, Kfz'), 'value': '6'},
+                {'label': _('sonst. betr. Dienstleistungen'), 'value': '7'},
+                {'label': _('Gaststätten'), 'value': '8'},
+                {'label': _('Beherbergung'), 'value': '9'},
+                {'label': _('Bäckereien'), 'value': '10'},
+                {'label': _('Wäschereien'), 'value': '11'},
+                {'label': _('Gartenbau'), 'value': '12'},
+                {'label': _('Papier und Druck'), 'value': '13'},
+                {'label': _('haushaltsähnliche Gewerbebetriebe'), 'value': '14'},
+                {'label': _('Summenlastprofil Gewerbe, Handel, Dienstleistung'), 'value': '15'},
             ],
-        placeholder = "Auswahl des Gebäudetyps",
+        placeholder = _("Auswahl des Gebäudetyps"),
         id = 'application',
          # <-- This is the line that will be changed by the dropdown callback
     ),
@@ -108,48 +122,48 @@ app.layout = html.Div([
     # Input field for the heat_demand in kWh/a      
     dcc.Input(
         id = "heatRequirement", type = "number",
-        placeholder = "Jahreswärmebedarf in kWh/a", 
+        placeholder = _("Jahreswärmebedarf in kWh/a"), 
         debounce = True,style = {'width':'200px','height':'25px'}
     ),
     html.Br(),
     # Data range picker : choose the date range used for the approximation
     dcc.DatePickerRange(
         display_format = ' DD/MM/YYYY',
-        start_date_placeholder_text = 'Start Datum',
-        end_date_placeholder_text = 'End Datum',
+        start_date_placeholder_text = _('Start Datum'),
+        end_date_placeholder_text = _('End Datum'),
         id = 'datePicker'
     ),
     # List of available display months for the chosen data range
     dcc.RadioItems(
         options =[
-                {'label': 'Januar', 'value': '1'},
-                {'label': 'Februar', 'value': '2'},
-                {'label': 'März', 'value': '3'},
-                {'label': 'April', 'value': '4'},
-                {'label': 'Mai', 'value': '5'},
-                {'label': 'Juni', 'value': '6'},
-                {'label': 'Juli', 'value': '7'},
-                {'label': 'August', 'value': '8'},
-                {'label': 'Sepember', 'value': '9'},
-                {'label': 'Oktober', 'value': '10'},
-                {'label': 'November', 'value': '11'},
-                {'label': 'Dezember', 'value': '12'},
-                {'label': 'Alle', 'value': 'All'},
+                {'label': _('Januar'), 'value': '1'},
+                {'label': _('Februar'), 'value': '2'},
+                {'label': _('März'), 'value': '3'},
+                {'label': _('April'), 'value': '4'},
+                {'label': _('Mai'), 'value': '5'},
+                {'label': _('Juni'), 'value': '6'},
+                {'label': _('Juli'), 'value': '7'},
+                {'label': _('August'), 'value': '8'},
+                {'label': _('Sepember'), 'value': '9'},
+                {'label': _('Oktober'), 'value': '10'},
+                {'label': _('November'), 'value': '11'},
+                {'label': _('Dezember'), 'value': '12'},
+                {'label': _('Alle'), 'value': 'All'},
                 ],
         value = 'All',
         id = 'displayMonth',
         inline = True
     ),
-    html.Button('Approximation starten', id = 'approximationStart'),
+    html.Button(_('Approximation starten'), id = 'approximationStart'),
     #Download data as csv
-    html.Button("Download als csv", id = "btn-download-csv"),
+    html.Button(_("Download als csv"), id = "btn-download-csv"),
     dcc.Download(id = "download-csv"),
     # Graph
     dcc.Loading(id="ls-loading",
            children=[html.Div([dcc.Graph(id="heatGraph",figure = {})])],
            type="circle",fullscreen=False),
     #Display the missing number of missing values from the station data
-    html.P('Es gibt kein Eingabe ',id = 'container'),
+    html.P(_('Es gibt keine Eingabe'),id = 'containerParagraphAtBottom'),
     dcc.Store(id='heat_approximationStoring')
 # style is used to control css output directly from dash 
 ],style={'font-family': "Roboto, sans-serif","color":"rgb(116, 117, 121)",
@@ -168,7 +182,8 @@ app.layout = html.Div([
     Output(component_id = 'application',component_property = 'value'),
     Output(component_id = 'displayMonth', component_property = 'value'),
     Input(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    prevent_initial_call = True,
+    allow_duplicate=True,
    )
 def resetData(visibility_state):
         return None,None,None,None,'All'
@@ -229,27 +244,44 @@ def dateRangePicker (referenceYear:str,stationId:int)-> Tuple[str,str] :
 @app.callback(
     Output('displayMonth','options'),
     Input('datePicker', 'end_date'),
+    Input('on-load', 'data'),
     State('datePicker', 'start_date'),
-    
-    prevent_initial_call  = True
+    # prevent_initial_call  = True,
     )
 # The following function displays a list of available months in the data range selected
-def displayMonths(endDate:str,startDate:str)-> list:
+def displayMonths(endDate:str, dataOnLoad, startDate:str)-> list:
+    if endDate is None or startDate is None:
+        return [
+                {'label': _('Januar'), 'value': '1'},
+                {'label': _('Februar'), 'value': '2'},
+                {'label': _('März'), 'value': '3'},
+                {'label': _('April'), 'value': '4'},
+                {'label': _('Mai'), 'value': '5'},
+                {'label': _('Juni'), 'value': '6'},
+                {'label': _('Juli'), 'value': '7'},
+                {'label': _('August'), 'value': '8'},
+                {'label': _('Sepember'), 'value': '9'},
+                {'label': _('Oktober'), 'value': '10'},
+                {'label': _('November'), 'value': '11'},
+                {'label': _('Dezember'), 'value': '12'},
+                {'label': _('Alle'), 'value': 'All'},
+                ]
     Months = pd.date_range(startDate,
     endDate,freq = 'W').strftime("%B").unique().tolist()
     # Setting the months in the right format for plotly dash
-    displayMonths = [{"label":index , 
+    displayMonths = [{"label":_(index) , 
         "value": datetime.datetime.strptime(index, "%B").month} 
         for index in Months ]
-    displayMonths.append ({"label":'Alle' , "value": 'All'})
+    displayMonths.append ({"label":_('Alle') , "value": 'All'})
 
     return displayMonths
 
 #Warme Approximation
 @app.callback(
     Output(component_id = 'heatGraph', component_property = 'figure'),
-    Output(component_id = 'container',component_property = 'children'),
+    Output(component_id = 'containerParagraphAtBottom',component_property = 'children'),
     Output(component_id = 'heat_approximationStoring',component_property = 'data'),
+    Input('on-load', 'data'),
     Input(component_id = 'approximationStart',component_property = 'n_clicks'),
     Input(component_id = 'displayMonth',component_property = 'value'),
     State(component_id = 'application',component_property = 'value'),
@@ -258,11 +290,14 @@ def displayMonths(endDate:str,startDate:str)-> list:
     State(component_id = 'datePicker',component_property = 'start_date'),
     State(component_id = 'datePicker',component_property = 'end_date'),
     State(component_id = 'referenceYear', component_property = 'value'),
-    prevent_initial_call = True
+    # prevent_initial_call = True
     )
 # This function calculates the approximations and displays it
-def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
+def updateHeatGraph(onLoadData, n_clicks:int,displayMonth:str,application:str,StationId:int,heatRequirement:int,
                     startDate:str,endDate:str,referenceYear:str):
+
+    if n_clicks == 0 or n_clicks is None:
+        return _("Es gibt keine Eingabe"),_("Es gibt keine Eingabe"),pd.DataFrame.to_dict(pd.DataFrame())
 
     changed_id = [p['prop_id'] for p in dash.callback_context.triggered][0] 
     # Restructure Option 1: Seperate Graph update and calculation
@@ -284,34 +319,34 @@ def updateHeatGraph(n_clicks:int,displayMonth:str,application:str,StationId:int,
         ['Time'],'fehlend':heatApproximation['fehlend']})
     
     fig=make_subplots(specs = [[{"secondary_y": True}]])
-    fig.add_trace(go.Scatter(name = 'Wärmelastgang in kW',x = result['Time'],
+    fig.add_trace(go.Scatter(name = _('Wärmelastgang in kW'),x = result['Time'],
     y = result['Last'],mode = 'lines', line = dict(color = "#0000ff")),secondary_y = False)
-    fig.add_trace(go.Scatter(name = 'Fehlende Angaben',x = result['Time'],
+    fig.add_trace(go.Scatter(name = _('Fehlende Angaben'),x = result['Time'],
     y = result['Last'].where(result['fehlend'] == 'True'),mode = 'lines',
     line = dict(color = "red")),secondary_y = False)
-    fig.add_trace(go.Scatter(name='Trinkwarmwasser-Lastgang in kW',
+    fig.add_trace(go.Scatter(name=_('Trinkwarmwasser-Lastgang in kW'),
     x = result['Time'],y = result['WW_Last'],mode = 'lines',
     line = dict(color="#f700ff")),secondary_y = True)
 
     fig.update_xaxes(
     tickangle = 90,
-    title_text = "Datum",
+    title_text = _("Datum"),
     title_font = {"size": 20}
     )
 
     fig.update_yaxes(
-    title_text = "Wärmelastgang in kW",
+    title_text = _("Wärmelastgang in kW"),
     title_standoff = 25
     )
 
     fig.update_yaxes(
-    title_text = "Trinkwarmwasser-Lastgang in kW", 
+    title_text = _("Trinkwarmwasser-Lastgang in kW"), 
     secondary_y = True
     )
 
 
-    return fig,'Für die ausgewählte Station gibt es ' + str(missingValues) + \
-        ' fehlende Werte, die in der Grafik rot markiert sind. ' ,\
+    return fig,_('Für die ausgewählte Station gibt es ') + str(missingValues) + \
+        _(' fehlende Werte, die in der Grafik rot markiert sind. ') ,\
         pd.DataFrame.to_dict(heatApproximation)
 
 # The download csv Funcionality
@@ -354,6 +389,96 @@ def downloadAsCsv(nClicks,jsonifiedHeatApproximation:pd.DataFrame,
 # ------------------------------------------------------------------------------
 # Connect the Plotly graphs with Dash Components
 
+@app.callback(
+    Output("headingApp", "children"),
+    Output("container1", "children"),
+    Output("container2", "children"),
+    Output("container3", "children"),
+    Output("container4", "children"),
+    Output("container5", "children"),
+    Output("container6", "children"),
+    Output("container7", "children"),
+    Output("container8", "children"),
+    Output("container9", "children"),
+    Output("referenceYear", "options"),
+    Output("referenceYear", "placeholder"),
+    Output("station", "placeholder"),
+    Output('application', 'options'),
+    Output('application', 'placeholder'),
+    Output("heatRequirement", "placeholder"),
+    Output('datePicker', "start_date_placeholder_text"),
+    Output('datePicker', "end_date_placeholder_text"),
+    Output("approximationStart", "children"),
+    Output("btn-download-csv", "children"),
+    Input('on-load', 'data'),
+    allow_duplicate=True,
+)
+def update_layout(data):
+    headingAppTranslation = _("Wärmelast Approximation")
+    container1Translation = _("Als Testrefenzjahr haben wir die folgenden Werte gewählt:")
+    container2Translation = _("Koordinatensystem : Lambert konform konisch")
+    container3Translation = _("Rechtswert        : 4201500 Meter")
+    container4Translation = _("Hochwert          : 2848500 Meter")
+    container5Translation = _("Höhenlage        : 36 Meter über NN")
+    container6Translation = _("Erstellung des Datensatzes im Mai 2016")
+    container7Translation = _("Art des TRY       : mittleres Jahr")
+    container8Translation = _("Bezugszeitraum    : 1995-2012")
+    container9Translation = _("Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012")
+    optionsReferenceYear = [
+        {'label': _('Testreferenzjahr'), 'value': 'on'},
+        {'label': _('Wetterstation'), 'value': 'off'},     
+    ]
+    placeholderReferenceYear = _("Berechnungstyp")
+    placeholderStationPlaceholder = _("Auswahl der Station")
+    optionsDropdown = [
+        {'label': _('Einfamilienhaus'), 'value': '2'},
+        {'label': _('Mehrfamilienhaus'), 'value': '3'},
+        {'label': _('Gebietskörperschaft'), 'value': '4'},
+        {'label': _('Einzelhandel, Großhandel'), 'value': '5'},
+        {'label': _('Metall, Kfz'), 'value': '6'},
+        {'label': _('sonst. betr. Dienstleistungen'), 'value': '7'},
+        {'label': _('Gaststätten'), 'value': '8'},
+        {'label': _('Beherbergung'), 'value': '9'},
+        {'label': _('Bäckereien'), 'value': '10'},
+        {'label': _('Wäschereien'), 'value': '11'},
+        {'label': _('Gartenbau'), 'value': '12'},
+        {'label': _('Papier und Druck'), 'value': '13'},
+        {'label': _('haushaltsähnliche Gewerbebetriebe'), 'value': '14'},
+        {'label': _('Summenlastprofil Gewerbe, Handel, Dienstleistung'), 'value': '15'},
+    ]
+    placeholderBuildingType = _("Auswahl des Gebäudetyps")
+    heatRequirementPlaceholder = _("Jahreswärmebedarf in kWh/a")
+    startDatePlaceholderText = _('Start Datum')
+    endDatePlaceholderText = _('End Datum')
+
+    paragraphNoEntry = _('Es gibt keine Eingabe')
+
+    buttonLabelApproximationStart = _('Approximation starten')
+    buttonLabelDownloadCsv = _('Download als csv')
+    stationplaceholder = _("Auswahl der Station")
+
+    return (
+        headingAppTranslation,
+        container1Translation,
+        container2Translation,
+        container3Translation,
+        container4Translation,
+        container5Translation,
+        container6Translation,
+        container7Translation,
+        container8Translation,
+        container9Translation,
+        optionsReferenceYear,
+        placeholderReferenceYear,
+        placeholderStationPlaceholder,
+        optionsDropdown,
+        placeholderBuildingType,
+        heatRequirementPlaceholder,
+        startDatePlaceholderText,
+        endDatePlaceholderText,
+        buttonLabelApproximationStart,
+        buttonLabelDownloadCsv,
+    )
 
 
 

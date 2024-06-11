@@ -39,3 +39,6 @@ postgres/*.sql
 /02_work_doc/10_test/testingVenv
 log
 *.css.map
+
+# Javascript
+node_modules
