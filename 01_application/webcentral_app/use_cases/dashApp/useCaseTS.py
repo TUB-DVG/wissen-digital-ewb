@@ -58,19 +58,19 @@ app.layout = html.Div([
         dcc.Dropdown(
         id='building-dropdown',
         options=[
-            {'label': 'Building 1', 'value': 'building62'},
-            {'label': 'Building 2', 'value': 'building73'},
-            {'label': 'Building 3', 'value': 'building106'},
-            {'label': 'All Buildings', 'value': 'all'}
+            {'label': 'Wohnung 1', 'value': 'building62'},
+            {'label': 'Wohnung 2', 'value': 'building73'},
+            {'label': 'Wohnung 3', 'value': 'building106'},
+            {'label': 'Alle Wohnungen', 'value': 'all'}
         ],
         value='all'
     ),
     dcc.Dropdown(
         id='interval-dropdown',
         options=[
-            {'label': '5 Seconds', 'value': '5s'},
-            {'label': '15 Minutes', 'value': '15min'},
-            {'label': '1 Hour', 'value': '1h'},
+            {'label': '5 Sekunden', 'value': '5s'},
+            {'label': '15 Minuten', 'value': '15min'},
+            {'label': '1 Stunde', 'value': '1h'},
             {'label': 'Alle Frequenzen', 'value': 'all'},
 
         ],
@@ -79,9 +79,9 @@ app.layout = html.Div([
     dcc.Dropdown(
         id='scale-dropdown',
         options=[
-            {'label': 'Equipment', 'value': 'equipment'},
-            {'label': 'Full Building', 'value': 'full_building'},
-            {'label': 'Aggregated Buildings', 'value': 'aggregated_buildings'},
+            {'label': 'Einzelnes Equipment', 'value': 'equipment'},
+            {'label': 'Gesamte Wohnungen', 'value': 'full_building'},
+            {'label': 'Aggregierte Wohnungen', 'value': 'aggregated_buildings'},
             {'label': 'Alle Aggregationen', 'value': 'all'},
         ],
         value='all'
