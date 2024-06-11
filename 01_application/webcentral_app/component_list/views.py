@@ -2,12 +2,26 @@ from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.http import JsonResponse
 
 from .models import (
     Category,
     Component,
     ComponentClass,
 )
+from .serialzers import ComponentSerializer
+
+# def page_to_dict(page):
+#     # breakpoint()
+#     serializer = ComponentSerializer(page.object_list, many=True)
+
+#     return {
+#         "number": page.number,
+#         "num_pages": page.paginator.num_pages,
+#         "has_next": page.has_next(),
+#         "has_previous": page.has_previous(),
+#         "objects": serializer.data,
+#     }
 
 
 def components(request):
@@ -35,6 +49,11 @@ def components(request):
     componentValues = _removeEmtpyStringsFromList(componentValues)
     # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
+
+    if searchInputValue != "" or categoryValue != "" or componentValue != "":
+        filtering = True
+    else:
+        filtering = False
 
     searchQuery = Q()
 
@@ -279,7 +298,11 @@ def components(request):
         "assets/images/arrowDownEcological.svg",
         # "assets/images/arrow.svg",
     }
-    return render(request, "component_list/components.html", context)
+    if filtering == True:
+        # context["page"] = page_to_dict(context["page"])
+        return render(request, "partials/listing-row.html", context)
+    else:
+        return render(request, "component_list/components.html", context)
 
 
 def dataProcessing(request):
