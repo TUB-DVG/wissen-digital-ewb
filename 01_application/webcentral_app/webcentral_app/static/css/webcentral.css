@@ -713,3 +713,8 @@ body h5 {
 }
 
 /*# sourceMappingURL=webcentral.css.map */
+select.form-select-sm {
+  width: 120px; /* Or any specific width you want */
+  display: inline;
+  margin-right: 16px;
+}

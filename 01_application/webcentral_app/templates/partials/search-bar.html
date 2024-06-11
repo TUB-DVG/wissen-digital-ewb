@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load static %}
 <!-- Filter bar START -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js"></script> -->
 <!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
 <script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script>
@@ -28,10 +28,9 @@
   background-position: 90% 50%;
 
 }
-select.form-select {
-  width: 120px; /* Or any specific width you want */
-  display: inline;
-  margin-right: 16px;
+
+.use-bootstrap-select-wrapper {
+  width: 120px;
 }
 </style>
 <form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
@@ -108,12 +107,17 @@ select.form-select {
                   <option value="{{ option }}">{{ option }}</option>
                 {% endfor %}
               </select> -->
-              <select class="form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
-                      aria-label=".form-select-sm example"
-                      name="{{ optionContent.fieldName }}"
-                      id="{{ optionContent.fieldName }}"
-                      style="background: url('{% static pathToArrow %}') no-repeat;
-                             background-position: 90% 50%">
+              <select id="{{ optionContent.fieldName }}"
+                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                      data-clearable="true"
+                      multiple>
+                <!-- </select> -->
+                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+         aria-label=".form-select-sm example"
+         name="{{ optionContent.fieldName }}"
+         id="{{ optionContent.fieldName }}"
+         style="background: url('{% static pathToArrow %}') no-repeat;
+                background-position: 90% 50%"> -->
                 <option value="">{% translate optionContent.placeholder %}</option>
                 {% for option in optionContent.objects %}
                   <option value="{{ option }}"
@@ -149,7 +153,8 @@ select.form-select {
   {% endfor %}
 </div>
 <script>
-
+const category = new UseBootstrapSelect(document.getElementById('category'))
+const component = new UseBootstrapSelect(document.getElementById('component'))
   $('.closeFilter').click(function() {
     $(this).parent().remove();
 
@@ -217,7 +222,7 @@ $(document).ready(function() {
         var url = $('#searchBox').attr('action');
         url += "?";
         
-        $("select.form-select").each(function () {
+        $("select.form-select-sm").each(function () {
 
           var filterIdentifer = $(this).attr("id");
           var spansOfFilter = $("span.filter." + filterIdentifer);
@@ -298,8 +303,7 @@ $(document).ready(function() {
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
-<script>
-$(".chosen-select").chosen({
-  no_results_text: "Oops, nothing found!"
-})
-</script>
+<!-- <script>
+  $('.my-select').selectpicker();
+
+</script> -->

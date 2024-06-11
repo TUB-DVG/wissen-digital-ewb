@@ -87,6 +87,7 @@ CSP_STYLE_SRC = (
     "https://fonts.googleapis.com",
     "https://cdn.jsdelivr.net",
     "https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css",
+    "https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.1.1/dist/use-bootstrap-select.min.css",
 )
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -97,6 +98,10 @@ CSP_SCRIPT_SRC = (
     "https://unpkg.com",
     "https://code.highcharts.com/highcharts.js",
     "https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js",
+    "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js",
+    "https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js",
+    "https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.1.1/dist/use-bootstrap-select.min.js",
     # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
     "'unsafe-inline'",
     "'unsafe-eval'",
