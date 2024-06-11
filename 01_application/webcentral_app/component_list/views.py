@@ -9,19 +9,6 @@ from .models import (
     Component,
     ComponentClass,
 )
-from .serialzers import ComponentSerializer
-
-# def page_to_dict(page):
-#     # breakpoint()
-#     serializer = ComponentSerializer(page.object_list, many=True)
-
-#     return {
-#         "number": page.number,
-#         "num_pages": page.paginator.num_pages,
-#         "has_next": page.has_next(),
-#         "has_previous": page.has_previous(),
-#         "objects": serializer.data,
-#     }
 
 
 def components(request):
