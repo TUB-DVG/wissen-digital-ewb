@@ -13,10 +13,8 @@ import os
 
 from pathlib import Path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -25,17 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# tries to read the DEBUG env-var and converts it to int. 
+# tries to read the DEBUG env-var and converts it to int.
 # If it cant convert to int, DEBUG is set to 0, which is converted to false.
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["85.214.114.204"]
 ALLOWED_HOSTS.extend(
     filter(
         None,
-        os.environ.get("ALLOWED_HOSTS", '').split(','),
-    )
-)
+        os.environ.get("ALLOWED_HOSTS", "").split(","),
+    ))
 
 # Application definition
 
@@ -43,54 +40,55 @@ INSTALLED_APPS = [
     "modeltranslation",
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
-    'publications.apps.PublicationsConfig',
-    'use_cases.apps.UseCasesConfig',
-    'pages.apps.PagesConfig',
-    'TechnicalStandards.apps.TechnicalStandardsConfig',
-    'project_listing.apps.ProjectListingConfig',
-    'tools_over.apps.ToolsOverConfig',
-    'weatherdata_over.apps.WeatherdataOverConfig',
-    'keywords.apps.KeywordsConfig',
-    'LastProfile.apps.LastprofileConfig',
-    'Datasets.apps.DatasetsConfig',
-    'django.contrib.humanize',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django_extensions',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    "publications.apps.PublicationsConfig",
+    "use_cases.apps.UseCasesConfig",
+    "pages.apps.PagesConfig",
+    "TechnicalStandards.apps.TechnicalStandardsConfig",
+    "project_listing.apps.ProjectListingConfig",
+    "tools_over.apps.ToolsOverConfig",
+    "weatherdata_over.apps.WeatherdataOverConfig",
+    "keywords.apps.KeywordsConfig",
+    "LastProfile.apps.LastprofileConfig",
+    "Datasets.apps.DatasetsConfig",
+    "django.contrib.humanize",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django_extensions",
+    "django_plotly_dash",
     "common.apps.CommonConfig",
-    'channels',
+    "channels",
 ]
 
 MIDDLEWARE = [
-    'csp.middleware.CSPMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    "csp.middleware.CSPMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "common.middleware.SessionExpiration",
-    'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.middleware.security.SecurityMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_plotly_dash.middleware.BaseMiddleware",
 ]
 
 # Content Security Policy
 CSP_IMG_SRC = ("'self'", "data:image/webp*")
 CSP_STYLE_SRC = (
     "'self'",
-    "'unsafe-inline'", 
+    "'unsafe-inline'",
     # "'strict-dynamic'",
-    "https://fonts.googleapis.com", 
+    "https://fonts.googleapis.com",
     "https://cdn.jsdelivr.net",
 )
 CSP_SCRIPT_SRC = (
-    "'self'", 
-    "https://ajax.googleapis.com", 
+    "'self'",
+    "https://ajax.googleapis.com",
     "https://cdnjs.cloudflare.com",
     "https://maxcdn.bootstrapcdn.com",
     "https://cdn.plot.ly",
@@ -102,79 +100,79 @@ CSP_SCRIPT_SRC = (
     # "'strict-dynamic'",
 )
 CSP_DEFAULT_SRC = (
-    "'self'", 
+    "'self'",
     # "'strict-dynamic'",
     "https://fonts.gstatic.com",
-    "https://cdn.jsdelivr.net",    
+    "https://cdn.jsdelivr.net",
 )
-CSP_FRAME_ANCESTORS = ("'self'",)
-CSP_FRAME_SRC = ("'self'",)
-CSP_FORM_ACTION = ("'self'",)
-CSP_BASE_URI = ("'self'",)
+CSP_FRAME_ANCESTORS = ("'self'", )
+CSP_FRAME_SRC = ("'self'", )
+CSP_FORM_ACTION = ("'self'", )
+CSP_BASE_URI = ("'self'", )
 # CSP_INCLUDE_NONCE_IN=['script-src', 'style-src']
-ROOT_URLCONF = 'webcentral_app.urls'
+ROOT_URLCONF = "webcentral_app.urls"
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://wissen-digital-ewb.de', 
-    'https://www.wissen-digital-ewb.de',
+    "https://wissen-digital-ewb.de",
+    "https://www.wissen-digital-ewb.de",
+    "https://85.214.114.204",
 ]
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [Path.joinpath(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [Path.joinpath(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'webcentral_app.wsgi.application'
-
+WSGI_APPLICATION = "webcentral_app.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("POSTGRES_DB"),
-        'USER': os.environ.get("POSTGRES_USER"),
-        'PASSWORD': os.environ.get("POSTGRES_PASSWORD"),
-        'HOST': 'database',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": "database",
     },
-    'TEST': {
-        'MIRROR': "default",
-        },
-    }   
-
-
-
+    "TEST": {
+        "MIRROR": "default",
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME":
+        "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -185,14 +183,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # ]
 # gettext = lambda s: s
 LANGUAGES = (
-    ('de', ('German')),
-    ('en', ('English')),
+    ("de", ("German")),
+    ("en", ("English")),
 )
 
-LANGUAGE_CODE = 'de'
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'de'
+LANGUAGE_CODE = "de"
+MODELTRANSLATION_DEFAULT_LANGUAGE = "de"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -211,11 +209,11 @@ USE_TZ = True
 #     }
 # }
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-ASGI_APPLICATION='webcentral_app.routing.application'
+ASGI_APPLICATION = "webcentral_app.routing.application"
 """
 CHANNEL_LAYERS={
     'default':{
@@ -226,28 +224,26 @@ CHANNEL_LAYERS={
     }
 }
 """
-LOCALE_PATHS = ( 
-os.path.join(BASE_DIR, "locale"),
-# os.path.join(BASE_DIR, "yourapp/locale"), 
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+    # os.path.join(BASE_DIR, "yourapp/locale"),
 )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILEGED_USER")
-#STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
+# STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
-    STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static" 
-    STATIC_URL = '/static/static/'
-    STATICFILES_DIRS = [
-        Path.joinpath(BASE_DIR, 'webcentral_app/static')
-    ]
+    STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static"
+    STATIC_URL = "/static/static/"
+    STATICFILES_DIRS = [Path.joinpath(BASE_DIR, "webcentral_app/static")]
     # Media folder settings
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
     MEDIA_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/media"
-    MEDIA_URL = '/media/'
+    MEDIA_URL = "/media/"
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
-    SESSION_COOKIE_SAMESITE = 'Strict'
+    SESSION_COOKIE_SAMESITE = "Strict"
     SECURE_HSTS_SECONDS = 10
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
@@ -256,22 +252,20 @@ if os.environ.get("MODE") == "production":
     CSRF_USE_SESSIONS = True
     SECURE_BROWSER_XSS_FILTER = True
 else:
-    STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = [
-        Path.joinpath(BASE_DIR, 'webcentral_app/static')
-    ]
+    STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = [Path.joinpath(BASE_DIR, "webcentral_app/static")]
     # Media folder settings
-    MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
-    MEDIA_URL = '/media/'
+    MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
+    MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 useDotENV = bool(int(os.environ.get("USE_DOT_ENV", 0)))
-if not useDotENV: 
+if not useDotENV:
     try:
         from webcentral_app.local_settings import *
     except ImportError:
