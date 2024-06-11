@@ -24,35 +24,27 @@ from django.conf.urls import handler404, handler500, handler400, handler403
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 ]
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += i18n_patterns(
-        path('pages/', include('pages.urls')),
-        path('tool_list/', include('tools_over.urls')),
-        path('dataset_list/',include('Datasets.urls')),
-        path('weatherdata_list/', include('weatherdata_over.urls')),
-        path('project_list/', include('project_listing.urls')),
-        #path('norm_list/',include('norms_over.urls')),
-        path('django_plotly_dash/', include('django_plotly_dash.urls')),
-        path('LastProfile/', include('LastProfile.urls')),
-        path('', include('StartSearch.urls')),
-        path('TechnicalStandards/',include('TechnicalStandards.urls')),
-        path('publications/',include('publications.urls')),
-        path("criteriaCatalog/", include("criteriaCatalog.urls")),
-        path('useCases_list/', include('use_cases.urls')),
-        path('i18n/', include('django.conf.urls.i18n')),
-        
-        #path('test-400/', views.test_400),
-        #path('test-403/', views.test_403),
-        #path('test-404/', views.test_404),
-        #path('test-500/', views.test_500),
+    path("pages/", include("pages.urls")),
+    path("tool_list/", include("tools_over.urls")),
+    path("dataset_list/", include("Datasets.urls")),
+    path("weatherdata_list/", include("weatherdata_over.urls")),
+    path("project_list/", include("project_listing.urls")),
+    path("django_plotly_dash/", include("django_plotly_dash.urls")),
+    path("LastProfile/", include("LastProfile.urls")),
+    path("", include("StartSearch.urls")),
+    path("TechnicalStandards/", include("TechnicalStandards.urls")),
+    path("publications/", include("publications.urls")),
+    path("criteriaCatalog/", include("criteriaCatalog.urls")),
+    path("useCases_list/", include("use_cases.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),
 )
 
-handler404 = 'webcentral_app.views.custom_404_view'
-handler500 = 'webcentral_app.views.custom_500_view'
-handler403 = 'webcentral_app.views.custom_403_view'
-handler400 = 'webcentral_app.views.custom_400_view'
-# reakpoint()
+handler404 = "webcentral_app.views.custom_404_view"
+handler500 = "webcentral_app.views.custom_500_view"
+handler403 = "webcentral_app.views.custom_403_view"
+handler400 = "webcentral_app.views.custom_400_view"
