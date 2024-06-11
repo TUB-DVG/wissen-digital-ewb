@@ -6,11 +6,13 @@ import unittest
 import urllib3
 
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as Firefox_Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
  
 class WebDriverSetup(unittest.TestCase):
+    PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -37,6 +39,12 @@ class WebDriverSetup(unittest.TestCase):
             print("Cleanup of test environment")
             self.driver.close()
             self.driver.quit()
+
+    def scrollElementIntoView(self, element):
+        """Scroll the element into the view of the browser-window.
+        
+        """
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
     def scrollElementIntoViewAndClickIt(self, element):
         """Scroll the element into the view of the browser-window.
@@ -67,3 +75,11 @@ class WebDriverSetup(unittest.TestCase):
         self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
         errorMessage,
       )
+
+    def getLanguage(self):
+        """Get the language of the page.
+        
+        """
+
+        element = self.driver.find_element(By.XPATH, "//select[@name='language']")
+        return element.get_attribute("value")
