@@ -100,6 +100,8 @@ def components(request):
     pageNum = request.GET.get("page", None)
     page = componentsPaginator.get_page(pageNum)
     context = {
+        "renderDetailsRadio":
+        True,
         "heading":
         _("Aufwände für verwendete Komponenten"),
         "explanaitionText":

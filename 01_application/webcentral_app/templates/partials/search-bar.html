@@ -4,8 +4,8 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js"></script> -->
 <!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
-<script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/chosen.css' %}" />
+<!-- <script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script> -->
+<!-- <link rel="stylesheet" href="{% static 'css/chosen.css' %}" /> -->
 <style>
   .filter {
     background: #8FDE97;
@@ -147,8 +147,10 @@
           {% endfor %}
         </div>
         <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
-          <input type="radio" id="triggerDetailsView" />
-          <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+          {% if renderDetailsRadio %}
+            <input type="radio" id="triggerDetailsView" />
+            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+          {% endif %}
           <input type="radio" id="triggerComparisonMode" />
           <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
         </div>

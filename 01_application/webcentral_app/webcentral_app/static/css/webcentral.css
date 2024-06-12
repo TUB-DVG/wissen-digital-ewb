@@ -159,6 +159,11 @@
   border-radius: 20px;
   border: 2px solid #F5E86A;
 }
+.webcentral-cards .btn-legal-white-bg {
+  background-color: white;
+  color: #F5E86A;
+  border: 2px solid #F5E86A;
+}
 .webcentral-cards .btn-legal {
   background-color: #F5E86A;
   color: white;
@@ -258,6 +263,11 @@
 .legal-cards .btn-legal-free-text {
   color: #F5E86A;
 }
+.legal-cards .btn-legal-white-bg {
+  background-color: white;
+  color: #F5E86A;
+  border: 2px solid #F5E86A;
+}
 .legal-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -323,6 +333,11 @@
 .operational-cards .btn-operational-free-text {
   color: #FFAE9D;
 }
+.operational-cards .btn-operational-white-bg {
+  background-color: white;
+  color: #FFAE9D;
+  border: 2px solid #FFAE9D;
+}
 .operational-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -377,6 +392,11 @@
   border-radius: 20px;
   border: 2px solid #AFC5FF;
   color: #AFC5FF;
+}
+.technical-cards .btn-technical-white-bg {
+  background-color: white;
+  color: #AFC5FF;
+  border: 2px solid #AFC5FF;
 }
 .technical-cards .border-technical-round-font-color {
   border-radius: 20px;
