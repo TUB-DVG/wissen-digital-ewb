@@ -31,13 +31,23 @@
 .form-select-sm {
     /* Change the width property */
     width: 150px !important;
+    /* color: #8FDE97; */
     /* display: inline !important; */
     /* Add any other properties you want to change */
 }
 .use-bootstrap-select-wrapper {
   width: 150px !important;
+  /* height: 102px; */
   display: inline-block !important;
 }
+
+.text-input-with-arrow {
+  background-image: url('/static/assets/images/arrowDownEcological.svg'); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+}
+
 </style>
 <form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
       id="searchBox"
@@ -58,7 +68,7 @@
                   class="btn btn-{{ focusBorder }}-free-text"
                   id="search-submit-{{ nameOfTemplate }}"
                   style="position: absolute;
-                         right: 20px"
+                         right: 10px"
                   href="">
             <i class="fas fa-search">
             </i>
@@ -70,7 +80,7 @@
     <div class="col-xl-10">
       <div class="row g-3">
         <!-- Select items -->
-        <div class="form-group col-sm-6 col-md-5" style="margin-left: 160px">
+        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
               <div class="dropdown" style="display: inline;">
@@ -115,7 +125,6 @@
               </select> -->
               <select id="{{ optionContent.fieldName }}"
                       class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
-                      data-clearable="true"
                       multiple>
                 <!-- </select> -->
                 <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
@@ -226,7 +235,7 @@ $('#searchBox').on('submit', function(e) {
         success: function(response) {
             // Handle the response here
             console.log(response);
-            debugger;
+            // debugger;
             // remove all ancestors of the div with the id
             $('#componentListingContainer').empty();
             $('#componentListingContainer').append(response);
@@ -237,6 +246,15 @@ $('#searchBox').on('submit', function(e) {
     });
 });
 $(document).ready(function() {
+    debugger;
+    $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
+    $("div.input-wrapper").children("input").addClass("text-input-with-arrow")
+
+    
+    // $("input.use-bootstrap-select[type='text']").each(function() {
+      
+    //   $(this).addClass("form-input-{{ focusBorder }}");
+    // });
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
         if (!$(this).next().hasClass('show')) {
             $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
@@ -257,18 +275,18 @@ $(document).ready(function() {
       // iterate over the list of selects and call the method to return the values as a list:
       var listOfSelectedFilters;
       var form = $('#searchBox');
-      
       for (var i=0;i < listOfUseBootstrapSelects.length;i++) {
         listOfSelectedFilters = listOfUseBootstrapSelects[i].getValue()
+        $("input[name='" + listOfUseBootstrapSelects[i].selectElement.id + "-hidden']").remove();
+        var selectedOptions = "";
         if (listOfSelectedFilters != null) {
-            var selectedOptions = "";
+            // var selectedOptions = "";
           for (var j=0;j<listOfSelectedFilters.length;j++) {
             selectedOptions += listOfSelectedFilters[j] + ",";
           }
-          debugger;
+          
           var hiddenInput = document.createElement("input");
             hiddenInput.setAttribute("type", "hidden");
-            
             hiddenInput.setAttribute("name", listOfUseBootstrapSelects[i].selectElement.id  + "-hidden");
             if (selectedOptions.slice(-1) === ',') {
               selectedOptions = selectedOptions.slice(0, -1);
@@ -277,28 +295,23 @@ $(document).ready(function() {
             form.append(hiddenInput);
 
         }
-      }        
+      }    
+
+        if ($("input[name='filtering']").length == 0) {
+          var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name", "filtering");
+          hiddenInput.setAttribute("value", "true");
+          form.append(hiddenInput);
+        }
         form.submit();
         
     });
 
   })
-
-    // // Handle click events on second level dropdown items
-    // $('.dropdown-menu a.dropdown-item.nested').on('click', function(e) {
-    //     // Do something when a second level dropdown item is clicked
-    //   var secondLevelValue = $(this).attr('sorting');
-      
-    //   var firstLevelValue = $(this).parent().parent().children('a:first').attr('dblocator');
-    //   var form = $('#searchBox');
-    //   var action = form.attr('action');
-    //   action += '?firstLevel=' + encodeURIComponent(firstLevelValue);
-    //   action += '&secondLevel=' + encodeURIComponent(secondLevelValue);
-      
-    //   form.attr('action', action);
-    //   debugger;
-    //   form.submit();
-    // });
+  $("span.ms-auto").click(function() {
+    debugger;
+  });
 // });
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -231,6 +231,9 @@
 .ecological-cards input[type=checkbox]:checked:before {
   background: #8FDE97;
 }
+.ecological-cards .form-input-ecological {
+  color: #8FDE97;
+}
 .ecological-cards .ecological-text-near-radio {
   color: #8FDE97;
 }
@@ -713,8 +716,3 @@ body h5 {
 }
 
 /*# sourceMappingURL=webcentral.css.map */
-select.form-select-sm {
-  width: 120px; /* Or any specific width you want */
-  display: inline;
-  margin-right: 16px;
-}
