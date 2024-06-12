@@ -87,9 +87,10 @@
                 <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle"
                         type="button"
                         id="dropdownMenuButton"
-                        data-toggle="dropdown"
+                        data-bs-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false">
+                  >
                   {{ optionContent.placeholder }}
                 </button>
                 <div class="dropdown-menu" id="dropdownMenuDiv">
@@ -99,7 +100,7 @@
                          href="#"
                          id="nestedDropdownMenuButton"
                          role="button"
-                         data-toggle="dropdown"
+                         data-bs-toggle="dropdown"
                          aria-haspopup="true"
                          aria-expanded="false"
                          dblocator="{{ option.name }}">{{ option.shown }}</a>
@@ -179,6 +180,24 @@
   }
   {% endif %}
   {% endfor %}
+  $(document).ready(function() {
+    debugger;
+    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+      debugger;
+        if (!$(this).next().hasClass('show')) {
+            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
+        }
+        var $subMenu = $(this).next('.dropdown-menu');
+        $subMenu.toggleClass('show');
+
+        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
+            $('.dropdown-submenu .show').removeClass('show');
+        });
+
+        return false;
+    });
+
+  });
   $('.closeFilter').click(function() {
     $(this).parent().remove();
 
@@ -246,7 +265,7 @@ $('#searchBox').on('submit', function(e) {
     });
 });
 $(document).ready(function() {
-    debugger;
+    // debugger;
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow")
 
@@ -255,19 +274,6 @@ $(document).ready(function() {
       
     //   $(this).addClass("form-input-{{ focusBorder }}");
     // });
-    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-        if (!$(this).next().hasClass('show')) {
-            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
-        }
-        var $subMenu = $(this).next('.dropdown-menu');
-        $subMenu.toggleClass('show');
-
-        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-            $('.dropdown-submenu .show').removeClass('show');
-        });
-
-        return false;
-    });
   });
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
