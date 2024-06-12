@@ -90,6 +90,12 @@
   .btn-ecological-free-text {
     @include btn-search-free-text($ecological-color)
   }
+  .text-input-with-arrow-ecological {
+    background-image: url('/static/assets/images/arrowDownEcological.svg'); /* Path to your arrow image */
+    background-position: right 10px center; /* Position the arrow on the right, with some padding */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -166,6 +172,12 @@ input[type='checkbox']:checked:before {
     @include btn-search(white, $legal-color);
     border: 2px solid $legal-color;
   }
+  .text-input-with-arrow-legal {
+    background-image: url('/static/assets/images/arrowDownLegal.svg'); /* Path to your arrow image */
+    background-position: right 10px center; /* Position the arrow on the right, with some padding */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -239,6 +251,12 @@ input[type='checkbox']:checked:before {
     @include btn-search(white, $operational-color);
     border: 2px solid $operational-color;
   }
+  .text-input-with-arrow-operational {
+    background-image: url('/static/assets/images/arrowDownOperational.svg'); /* Path to your arrow image */
+    background-position: right 10px center; /* Position the arrow on the right, with some padding */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -306,6 +324,12 @@ input[type='checkbox']:checked:before {
   .border-technical-round-font-color {
     @include border-round($technical-color);
     color: $technical-color;
+  }
+  .text-input-with-arrow-technical {
+    background-image: url('/static/assets/images/arrowDownTechnical.svg'); /* Path to your arrow image */
+    background-position: right 10px center; /* Position the arrow on the right, with some padding */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
   }
   .btn-technical {
     @include btn-search($technical-color, $third-text-color)

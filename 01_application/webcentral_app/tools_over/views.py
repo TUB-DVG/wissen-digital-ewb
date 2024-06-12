@@ -386,7 +386,7 @@ def indexBusinessApplication(request):
         "urlName":
         "businessModelApplication",
         "model":
-        "Tools",
+        "BusinessApps",
         "optionList": [
             {
                 "placeholder": "Nutzung",

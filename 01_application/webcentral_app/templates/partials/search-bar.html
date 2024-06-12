@@ -4,8 +4,6 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js"></script> -->
 <!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
-<!-- <script type="text/javascript" src="{% static 'js/chosen.jquery.min.js' %}"></script> -->
-<!-- <link rel="stylesheet" href="{% static 'css/chosen.css' %}" /> -->
 <style>
   .filter {
     background: #8FDE97;
@@ -269,7 +267,7 @@ $('#searchBox').on('submit', function(e) {
 $(document).ready(function() {
     // debugger;
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
-    $("div.input-wrapper").children("input").addClass("text-input-with-arrow")
+    $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
 
     
     // $("input.use-bootstrap-select[type='text']").each(function() {

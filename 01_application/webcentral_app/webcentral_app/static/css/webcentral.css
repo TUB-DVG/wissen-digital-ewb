@@ -194,6 +194,12 @@
 .ecological-cards .btn-ecological-free-text {
   color: #8FDE97;
 }
+.ecological-cards .text-input-with-arrow-ecological {
+  background-image: url("/static/assets/images/arrowDownEcological.svg"); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+}
 .ecological-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -268,6 +274,12 @@
   color: #F5E86A;
   border: 2px solid #F5E86A;
 }
+.legal-cards .text-input-with-arrow-legal {
+  background-image: url("/static/assets/images/arrowDownLegal.svg"); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+}
 .legal-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -338,6 +350,12 @@
   color: #FFAE9D;
   border: 2px solid #FFAE9D;
 }
+.operational-cards .text-input-with-arrow-operational {
+  background-image: url("/static/assets/images/arrowDownOperational.svg"); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+}
 .operational-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -402,6 +420,12 @@
   border-radius: 20px;
   border: 2px solid #AFC5FF;
   color: #AFC5FF;
+}
+.technical-cards .text-input-with-arrow-technical {
+  background-image: url("/static/assets/images/arrowDownTechnical.svg"); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
 }
 .technical-cards .btn-technical {
   background-color: #AFC5FF;

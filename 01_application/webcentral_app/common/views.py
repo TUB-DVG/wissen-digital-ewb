@@ -115,12 +115,11 @@ def comparison(request):
             },
         ]
         backLinkText = _("Aufwände für verwendete Komponenten")
-        # backLinkColor = "#8FDE97"
         imgBackButtonPath = "img/componentList/caret-left.svg"
         backLinkPath = "components"
         focusBorder = "ecological"
 
-    elif model == "Tools":
+    elif model == "Tools" or model == "BusinessApps":
         modelObj = Tools
         attributesToCompare = [
             {
@@ -199,13 +198,18 @@ def comparison(request):
                 "displayedStr": _("Letztes Update"),
             },
         ]
-        imgBackButtonPath = "assets/images/backArrowTechnical.svg"
-        focusBorder = "technical"
-        templateName = "tools_over/toolsComparisonResults.html"
-        backLinkText = _("Zurück zu den digitalen Werkzeugen")
-        # backLinkColor = "#AFC5FF"
-        # imgBackButtonPath = "img/backArrowTools.svg"
-        backLinkPath = "tool_list"
+        if model == "Tools":
+            imgBackButtonPath = "assets/images/backArrowTechnical.svg"
+            focusBorder = "technical"
+            templateName = "tools_over/toolsComparisonResults.html"
+            backLinkText = _("Zurück zu den digitalen Werkzeugen")
+            backLinkPath = "tool_list"
+        else:
+            imgBackButtonPath = "assets/images/backArrowOperational.svg"
+            focusBorder = "operational"
+            templateName = "tools_over/toolsComparisonResults.html"
+            backLinkText = _("Zurück zu den digitalen Anwendungen")
+            backLinkPath = "businessModelApplication"
     else:
         return render(request, "404.html")
 
