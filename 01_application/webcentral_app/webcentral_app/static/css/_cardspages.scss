@@ -134,7 +134,9 @@ input[type='checkbox']:before {
 input[type='checkbox']:checked:before {
   background: $ecological-color;
 }
-
+.form-input-ecological {
+  color: $ecological-color;
+}
 .ecological-text-near-radio {
   color: $ecological-color;
 }

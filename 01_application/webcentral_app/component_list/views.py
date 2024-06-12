@@ -36,35 +36,42 @@ def components(request):
     componentValues = _removeEmtpyStringsFromList(componentValues)
     # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
-
-    if searchInputValue != "" or categoryValue != "" or componentValue != "":
-        filtering = True
-    else:
-        filtering = False
+    # breakpoint()
+    filtering = bool(request.GET.get("filtering", False))
 
     searchQuery = Q()
-
+    searchQueryInput = Q()
     if len(searchInputValues) > 0:
-        searchQuery = searchQuery | Q(
-            category__category__icontains=searchInputValues)
-        searchQuery = searchQuery | Q(
-            component__componentClass__icontains=searchInputValues)
-        searchQuery = searchQuery | Q(description__icontains=searchInputValues)
-        searchQuery = searchQuery | Q(
-            furtherInformationNotes__icontains=searchInputValues)
-        searchQuery = searchQuery | Q(sources__icontains=searchInputValues)
+        for searchInputValue in searchInputValues:
+            searchQueryInput = searchQueryInput | Q(
+                category__category__icontains=searchInputValue)
+            searchQueryInput = searchQueryInput | Q(
+                component__componentClass__icontains=searchInputValue)
+            searchQueryInput = searchQueryInput | Q(
+                description__icontains=searchInputValue)
+            searchQueryInput = searchQueryInput | Q(
+                furtherInformationNotes__icontains=searchInputValue)
+            searchQueryInput = searchQueryInput | Q(
+                sources__icontains=searchInputValue)
 
+    searchQueryCategory = Q()
     if len(categoryValues) > 0:
-        categoryForSelectValue = Category.objects.filter(
-            category=categoryValue)
-        if len(categoryForSelectValue) == 1:
-            searchQuery = searchQuery | Q(category=categoryForSelectValue[0])
+        for category in categoryValues:
+            searchQueryCategory = searchQueryCategory | Q(
+                category__category__icontains=category)
 
+    searchQueryComponents = Q()
     if len(componentValues) > 0:
-        componentForSelectValue = ComponentClass.objects.filter(
-            componentClass=componentValues)
-        if len(componentForSelectValue) == 1:
-            searchQuery = searchQuery | Q(component=componentForSelectValue[0])
+        for component in componentValues:
+            searchQueryComponents = searchQueryComponents | Q(
+                component__componentClass__icontains=component)
+
+        # componentForSelectValue = ComponentClass.objects.filter(
+        #     componentClass=componentValues)
+        # if len(componentForSelectValue) == 1:
+        #     searchQuery = searchQuery | Q(component=componentForSelectValue[0])
+
+    searchQuery = searchQueryInput & searchQueryCategory & searchQueryComponents
 
     if overviewValue:
         if overviewValue == _("Ausgeklappt"):
@@ -285,7 +292,7 @@ def components(request):
         "assets/images/arrowDownEcological.svg",
         # "assets/images/arrow.svg",
     }
-    if filtering == True:
+    if filtering:
         # context["page"] = page_to_dict(context["page"])
         return render(request, "partials/listing-row.html", context)
     else:
