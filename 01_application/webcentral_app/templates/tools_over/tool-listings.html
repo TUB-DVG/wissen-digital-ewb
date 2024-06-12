@@ -87,7 +87,11 @@
         </ul>
         <!-- search tags END -->
         <!-- Comparison button START -->
-        {% include "partials/comparison.html" %}
+        <div class="compareBox {{ focusBorder }}-cards"
+             id="compareBox"
+             style="display: none">
+          {% include "partials/comparison.html" %}
+        </div>
         <br />
         <!-- Comparison button END -->
         <!-- tools grid row START -->
@@ -99,7 +103,7 @@
             </div>
             <!-- tools Grid END -->
             <!-- Pagination START -->
-            {% include "common/pagination.html" %}
+            {% include "partials/pagination.html" %}
             <!-- Pagination END -->
           </div>
         </div>

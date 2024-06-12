@@ -60,7 +60,10 @@
   .border-legal-round {
     @include border-round($legal-color)
   }
-
+  .btn-legal-white-bg {
+    @include btn-search(white, $legal-color);
+    border: 2px solid $legal-color;
+  }
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
   }
@@ -159,6 +162,10 @@ input[type='checkbox']:checked:before {
   .btn-legal-free-text {
     @include btn-search-free-text($legal-color)
   }
+  .btn-legal-white-bg {
+    @include btn-search(white, $legal-color);
+    border: 2px solid $legal-color;
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -228,6 +235,10 @@ input[type='checkbox']:checked:before {
   .btn-operational-free-text {
     @include btn-search-free-text($operational-color)
   }
+  .btn-operational-white-bg {
+    @include btn-search(white, $operational-color);
+    border: 2px solid $operational-color;
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -287,6 +298,10 @@ input[type='checkbox']:checked:before {
   .border-technical-round {
     @include border-round($technical-color);
     color: $technical-color;
+  }
+  .btn-technical-white-bg {
+    @include btn-search(white, $technical-color);
+    border: 2px solid $technical-color;
   }
   .border-technical-round-font-color {
     @include border-round($technical-color);

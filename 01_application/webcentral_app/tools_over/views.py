@@ -273,16 +273,19 @@ def indexApps(request):
                 "placeholder": "Nutzung",
                 "objects": usageNames,
                 "filter": filteredBy[0],
+                "fieldName": "use",
             },
             {
                 "placeholder": "Zugänglichkeit",
                 "objects": accessibilityNames,
                 "filter": filteredBy[1],
+                "fieldName": "accessibility",
             },
             {
                 "placeholder": "Lebenszyklusphase",
                 "objects": lifeCyclePhaseNames,
                 "filter": filteredBy[2],
+                "fieldName": "lifeCyclePhase",
             },
         ],
     }
@@ -389,16 +392,19 @@ def indexBusinessApplication(request):
                 "placeholder": "Nutzung",
                 "objects": usageNames,
                 "filter": filteredBy[0],
+                "fieldName": "use",
             },
             {
                 "placeholder": "Zugänglichkeit",
                 "objects": accessibilityNames,
                 "filter": filteredBy[1],
+                "fieldName": "accessibility",
             },
             {
                 "placeholder": "Lebenszyklusphase",
                 "objects": lifeCyclePhaseNames,
                 "filter": filteredBy[2],
+                "fieldName": "lifeCyclePhase",
             },
         ],
     }
