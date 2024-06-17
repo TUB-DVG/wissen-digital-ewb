@@ -144,3 +144,8 @@ class StartPage(object):
         """Return the span element, which holds the current Search result page number"""
         return self.driver.find_element(By.XPATH,
                                         Locator.paginationCurrentSite)
+
+    def getOperationalFocusContainer(self):
+        """Return the Container for the Operational Focus"""
+        return self.driver.find_element(By.XPATH,
+                                        Locator.operationalFocusContainer)

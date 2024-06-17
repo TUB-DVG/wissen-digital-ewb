@@ -18,6 +18,7 @@ class Locator(object):
     linkToNegativeEnviormentalImpact = "/pages/environmentalIntegrityNegativ"
     linkToUserEgagement = "pages/userEngagement"
     linkToOperationalDropdown = "//a[@id='operationalDropdown']"
+    operationalFocusContainer = "//div[@title='Betrieblicher Fokus']"
 
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"

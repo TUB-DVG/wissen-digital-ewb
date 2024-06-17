@@ -531,7 +531,7 @@ msgstr ""
 
 #: businessModel/views.py:67 pages/views.py:105
 msgid "Nutzendenintegration"
-msgstr "User engangement"
+msgstr "User integration"
 
 #: common/views.py:48 component_list/views.py:173 component_list/views.py:192
 msgid "Komponente"
@@ -1251,10 +1251,7 @@ msgid ""
 "mit\n"
 "                den Nutzenden."
 msgstr ""
-"The operational focus when examining digitalization in energy research in "
-"the built environment primarily centers on the use phase of digital "
-"applications. Key aspects include the economical operation of digital "
-"applications/business models, along with user integration and interactivity."
+"The operational focus in studying digitalization in the building sector of energy research is primarily directed at the use phase of digital applications. Important aspects are the economic operation of digital applications in business models and the integration of and interaction with users."
 
 #: templates/StartSearch/StartSearch.html:261
 #: templates/partials/_navbar.html:115 templates/partials/_navbar.html:120

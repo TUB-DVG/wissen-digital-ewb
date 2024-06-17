@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # If it cant convert to int, DEBUG is set to 0, which is converted to false.
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-ALLOWED_HOSTS = ["134.94.32.53", ".kfa-juelich.de"]
+ALLOWED_HOSTS = ["134.94.32.53", ".kfa-juelich.de", "85.214.114.204"]
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -124,6 +124,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://wissen-digital-ewb.de",
     "https://www.wissen-digital-ewb.de",
     "https://134.94.32.53",
+    "https://85.214.114.204",
 ]
 
 TEMPLATES = [
