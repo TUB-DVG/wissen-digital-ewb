@@ -95,8 +95,10 @@
                       <option>A...Z</option>
                       <option>Z...A</option>
                     {% endif %}
-                  {% endfor %}
-                  <!-- <div class="dropdown" style="display: inline;">
+                  </optgroup>
+                {% endfor %}
+              </select>
+              <!-- <div class="dropdown" style="display: inline;">
                     <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 0px; width: 150px; height: 21px; padding-top: 3px; padding-bottom: 25px; text-align: left">
                       {{ optionContent.placeholder }}
                     </button>
@@ -111,55 +113,56 @@
                         </div>
                       {% endfor %}
                     </div>
-                  </div> -->
-                {% else %}
-                  <select id="{{ optionContent.fieldName }}"
-                          class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
-                          multiple>
-                    <!-- </select> -->
-                    <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+</div> -->
+
+            {% else %}
+              <select id="{{ optionContent.fieldName }}"
+                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                      multiple>
+                <!-- </select> -->
+                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
          aria-label=".form-select-sm example"
          name="{{ optionContent.fieldName }}"
          id="{{ optionContent.fieldName }}"
          style="background: url('{% static pathToArrow %}') no-repeat;
                 background-position: 90% 50%"> -->
-                    <option value="">{% translate optionContent.placeholder %}</option>
-                    {% for option in optionContent.objects %}
-                      <option value="{{ option }}"
-                              {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
-                        {{ option }}
-                      </option>
-                    {% endfor %}
-                  </select>
-                  <!-- </div> -->
-                {% endif %}
-              {% endfor %}
-            </div>
-            <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
-              {% if renderDetailsRadio %}
-                <input type="radio" id="triggerDetailsView" />
-                <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
-              {% endif %}
-              <input type="radio" id="triggerComparisonMode" />
-              <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
-            </div>
-          </div>
+                <option value="">{% translate optionContent.placeholder %}</option>
+                {% for option in optionContent.objects %}
+                  <option value="{{ option }}"
+                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                    {{ option }}
+                  </option>
+                {% endfor %}
+              </select>
+              <!-- </div> -->
+            {% endif %}
+          {% endfor %}
         </div>
-
+        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+          {% if renderDetailsRadio %}
+            <input type="radio" id="triggerDetailsView" />
+            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+          {% endif %}
+          <input type="radio" id="triggerComparisonMode" />
+          <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+        </div>
       </div>
-    </form>
-    <div style="margin-bottom: 24px;">
-      {% for key, value in filters.items %}
-        {% for selectedItem in value %}
-          <span class="filter {{ key }}">{{ selectedItem }}
-            <button class="closeFilter">
-              <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
-            </button>
-          </span>
-        {% endfor %}
-      {% endfor %}
     </div>
-    <script>
+
+  </div>
+</form>
+<div style="margin-bottom: 24px;">
+  {% for key, value in filters.items %}
+    {% for selectedItem in value %}
+      <span class="filter {{ key }}">{{ selectedItem }}
+        <button class="closeFilter">
+          <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
+        </button>
+      </span>
+    {% endfor %}
+  {% endfor %}
+</div>
+<script>
   var listOfUseBootstrapSelects = [];
 {% for optionContent in optionList %}
   var element = document.getElementById('{{ optionContent.fieldName }}');
@@ -327,10 +330,10 @@ $(document).ready(function() {
     // debugger;
   });
 // });
-    </script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
-  <!-- <script>
+<!-- <script>
   $('.my-select').selectpicker();
 
-  </script> -->
+</script> -->
