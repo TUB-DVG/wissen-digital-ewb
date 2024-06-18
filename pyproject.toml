@@ -1,3 +1,61 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'wissenplattEWB'
+version = '0.1'
+authors = [
+    {name = "falk cudok"},
+    {name = "felix rehmann"},
+    {name = "rita streblow"},
+    {name = "tobias degner"},
+    {name = "siling chen"},
+    {name = "ibukun odeyemi"},
+    {name = "kaifeng xu"},
+    {name = "ngoc long nguyen"},
+    {name = "johanna tengler"},
+    {name = "marius bieker"},
+
+]
+description = "WenDE - Wissensplattform: is a platform providing knowledge about tool and data for the researcher community of the EnergieWendeBauen."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: Release to manufacturing (RTM)", # see https://en.wikipedia.org/wiki/Software_release_life_cycle
+    "License :: MIT",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "channels==4.0.0",
+    "dash==2.9.3",
+    "Django==4.2.1",
+    "django-plotly-dash==2.2.2",
+    "numpy==1.24.3",
+    "pandas==1.5.3",
+    "plotly==5.14.1",
+    "PyYAML==6.0",
+    "wetterdienst==0.55.1",
+]
+
+# root folder of the python/django not found automatically
+[tool.setuptools.packages.find]
+where = ["01_application"]
+#include = ["pkg*"]  # alternatively: `exclude = ["additional*"]`
+namespaces = false
+
+[project.optional-dependencies]
+dev = [
+    "sphinx",
+    "myst-parser"
+]
+test = [
+    "coverage[toml] ==7.4", # [toml] not needed using micromanba, maybe also new python version
+]
+
 [tool.pylint.format]
 max-line-length = 80
 
