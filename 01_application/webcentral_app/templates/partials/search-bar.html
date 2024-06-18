@@ -265,10 +265,29 @@ $('#searchBox').on('submit', function(e) {
     });
 });
 $(document).ready(function() {
-    // debugger;
+
+    // on the backend load all static-paths for the down arrows:
+    var downArrowTechnical = "{% static '/assets/images/arrowDownTechnical.svg' %}";
+    var downArrowEcological = "{% static '/assets/images/arrowDownEcological.svg' %}";
+    var downArrowOperational = "{% static '/assets/images/arrowDownOperational.svg' %}";
+    var downArrowLegal = "{% static '/assets/images/arrowDownLegal.svg' %}";
+
+    var focusBorder = "{{ focusBorder }}";
+    focusBorder = focusBorder.charAt(0).toUpperCase() + focusBorder.slice(1);
+    var focusArrowToSet = ""
+    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal];
+    for (var i=0; i < listOfPathToFocusArrow.length; i++) {
+      if (listOfPathToFocusArrow[i].includes(focusBorder)) {
+        focusArrowToSet = listOfPathToFocusArrow[i];
+        focusArrowToSet = "url('" + focusArrowToSet + "')"
+        break;
+      }
+    }
+
+
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
-
+    $("div.input-wrapper").children("input").css("background-image", focusArrowToSet)
     
     // $("input.use-bootstrap-select[type='text']").each(function() {
       
