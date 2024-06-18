@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Publikationen{% endblock %}
+{% load i18n %}
+{% block title %}
+  {% translate "Überblick über die Publikationen" %}
+{% endblock %}
 {% block content %}
   {% load static %}
   <!DOCTYPE html>
@@ -18,7 +21,7 @@ Page Banner START -->
         <div class="row">
           <div class="col-12">
             <div class="p-2 text-left rounded-3">
-              <h2 class="m-0">Überblick über Publikationen</h2>
+              <h2 class="m-0">{% translate "Überblick über Publikationen" %}</h2>
             </div>
           </div>
         </div>
@@ -77,7 +80,7 @@ Page content START -->
             </div>
             <!-- standards grid END -->
             <!-- Pagination START -->
-            {% include "common/pagination.html" %}
+            {% include "partials/pagination.html" %}
             <!-- Pagination END -->
           </div>
           <!-- Main content END -->
