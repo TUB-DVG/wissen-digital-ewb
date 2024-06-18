@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext as _
+from django.db.models import Q
 
 from tools_over.models import (
     Focus,
@@ -25,6 +26,20 @@ def getFocusNameIndependentOfLanguage(focusStr: str, focusObj: Focus) -> str:
     else:
         focusName = focusObj.focus_en
     return focusName
+
+
+def createQ(request, filterElements):
+    """Filtering Function, which is used in all other apps.
+
+    This function will hopfully be used in the future to handle the
+    filtering in the filter views of all apps.
+    """
+    complexSearchFilter = Q()
+    for filter in filterElements:
+        for filterValue in filter["filterValues"]:
+            queryStr = (
+                f"{filter['filterName']}__{filter['filterName']}__icontains")
+            complexSearchFilter |= Q(queryStr=filterValue)
 
 
 def comparison(request):
