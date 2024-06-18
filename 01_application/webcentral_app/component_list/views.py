@@ -213,51 +213,32 @@ def components(request):
                     {
                         "shown": _("Komponente"),
                         "name": "component",
+                        "type": "alphabetic",
                     },
                     {
                         "shown": _("Kategorie"),
                         "name": "category",
+                        "type": "alphabetic",
                     },
                     {
                         "shown": _("Energieverbrauch Nutzung (gesamt; in W)"),
                         "name": "energyConsumptionUsePhaseTotal",
+                        "type": "numeric",
                     },
                     {
                         "shown": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
                         "name": "globalWarmingPotentialTotal",
+                        "type": "numeric",
                     },
                     {
                         "shown": _("Bauteilgewicht (in kg)"),
                         "name": "componentWeight",
+                        "type": "numeric",
                     },
                     {
                         "shown": _("Lebensdauer (in Jahren)"),
                         "name": "lifetime",
-                    },
-                    {
-                        "shown": _("Energieverbrauch Nutzung (aktiv; in W)"),
-                        "name": "energyConsumptionUsePhaseActive",
-                    },
-                    {
-                        "shown":
-                        _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
-                        "name":
-                        "energyConsumptionUsePhasePassive",
-                    },
-                    {
-                        "shown":
-                        _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
-                        "name": "globalWarmingPotentialProduction",
-                    },
-                    {
-                        "shown":
-                        _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
-                        "name": "globalWarmingPotentialUsePhase",
-                    },
-                    {
-                        "shown":
-                        _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
-                        "name": "globalWarmingPotentialEndOfLife",
+                        "type": "numeric",
                     },
                 ],
                 "fieldName":
