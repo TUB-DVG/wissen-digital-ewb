@@ -199,6 +199,7 @@
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  font-weight: 500;
 }
 .ecological-cards input[type=radio] {
   appearance: none;
@@ -279,6 +280,8 @@
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #F5E86A;
+  font-weight: 500;
 }
 .legal-cards input[type=radio] {
   appearance: none;
@@ -355,6 +358,8 @@
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #FFAE9D;
+  font-weight: 500;
 }
 .operational-cards input[type=radio] {
   appearance: none;
@@ -426,6 +431,8 @@
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #AFC5FF;
+  font-weight: 500;
 }
 .technical-cards .btn-technical {
   background-color: #AFC5FF;

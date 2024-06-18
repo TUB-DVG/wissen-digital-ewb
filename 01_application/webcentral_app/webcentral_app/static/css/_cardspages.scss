@@ -95,6 +95,7 @@
     background-position: right 10px center; /* Position the arrow on the right, with some padding */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+    font-weight: 500;
   }
   input[type='radio'] {
     appearance: none;
@@ -177,6 +178,8 @@ input[type='checkbox']:checked:before {
     background-position: right 10px center; /* Position the arrow on the right, with some padding */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+    color: $legal-color;
+    font-weight: 500;
   }
   input[type='radio'] {
     appearance: none;
@@ -256,6 +259,8 @@ input[type='checkbox']:checked:before {
     background-position: right 10px center; /* Position the arrow on the right, with some padding */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+    color: $operational-color;
+    font-weight: 500;
   }
   input[type='radio'] {
     appearance: none;
@@ -330,6 +335,8 @@ input[type='checkbox']:checked:before {
     background-position: right 10px center; /* Position the arrow on the right, with some padding */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+    color: $technical-color;
+    font-weight: 500;
   }
   .btn-technical {
     @include btn-search($technical-color, $third-text-color)
