@@ -53,6 +53,15 @@ def index(request):
     filteredBy = [None] * 3
     searched = None
 
+    usageElements = request.GET.get("use-hidden", "")
+    usageElementsList = usageElements.split(",")
+
+    lifeCyclePhaseElements = request.GET.get("lifeCyclePhase-hidden", "")
+    lifeCyclePhaseElementsList = lifeCyclePhaseElements.split(",")
+
+    accessibilityElements = request.GET.get("lifeCyclePhase-hidden", "")
+    accessibilityElementsList = accessibilityElements.split(",")
+
     if ((request.GET.get("use") != None)
             | (request.GET.get("accessibility") != None)
             | (request.GET.get("lifeCyclePhase") != None)
