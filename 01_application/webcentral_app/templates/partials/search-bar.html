@@ -38,7 +38,9 @@
   /* height: 102px; */
   display: inline-block !important;
 }
-
+.dropdown-toggle::after {
+    display: none;
+}
 .text-input-with-arrow {
   background-image: url('/static/assets/images/arrowDownEcological.svg'); /* Path to your arrow image */
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
@@ -87,8 +89,13 @@
                         id="dropdownMenuButton"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
-                        aria-expanded="false">
-                  >
+                        aria-expanded="false"
+                        style="margin-bottom: 0px;
+                               width: 150px;
+                               height: 21px;
+                               padding-top: 3px;
+                               padding-bottom: 25px;
+                               text-align: left">
                   {{ optionContent.placeholder }}
                 </button>
                 <div class="dropdown-menu" id="dropdownMenuDiv">
@@ -288,7 +295,7 @@ $(document).ready(function() {
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
     $("div.input-wrapper").children("input").css("background-image", focusArrowToSet)
-    
+    $("div.dropdown").children("button").addClass("text-input-with-arrow-{{ focusBorder }}")
     // $("input.use-bootstrap-select[type='text']").each(function() {
       
     //   $(this).addClass("form-input-{{ focusBorder }}");
