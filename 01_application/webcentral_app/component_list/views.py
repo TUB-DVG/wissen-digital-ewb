@@ -19,8 +19,8 @@ def components(request):
     listingShowOrCollapse = "collapse"
 
     # get the values of the multi-level dropdown field:
-    firstLevelDropdown = request.GET.get("firstLevel", "")
-    secondLevelDropdown = request.GET.get("secondLevel", "")
+    firstLevelDropdown = ""
+    secondLevelDropdown = ""
 
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
@@ -36,6 +36,12 @@ def components(request):
     componentValues = _removeEmtpyStringsFromList(componentValues)
     # sortingValue = request.GET.get("sorting", "")
     overviewValue = request.GET.get("overview", "")
+
+    sortingValue = request.GET.get("sorting-hidden", "")
+    
+    if sortingValue != "":
+        firstLevelDropdown = sortingValue.split("_")[0]
+        secondLevelDropdown = sortingValue.split("_")[1]
     # breakpoint()
     filtering = bool(request.GET.get("filtering", False))
 
@@ -78,7 +84,7 @@ def components(request):
             listingShowOrCollapse = "show"
 
     if firstLevelDropdown and secondLevelDropdown:
-        if secondLevelDropdown == "Ascending":
+        if secondLevelDropdown == "Ascending" or secondLevelDropdown == "A...Z":
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":

@@ -29,6 +29,7 @@
 .form-select-sm {
     /* Change the width property */
     width: 150px !important;
+    font-weight: bold;
     /* color: #8FDE97; */
     /* display: inline !important; */
     /* Add any other properties you want to change */
@@ -38,14 +39,18 @@
   /* height: 102px; */
   display: inline-block !important;
 }
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
     display: none;
+} */
+input[type='text']::placeholder {
+  font-weight: 800; /* Adjust the font weight as needed */
 }
 .text-input-with-arrow {
   background-image: url('/static/assets/images/arrowDownEcological.svg'); /* Path to your arrow image */
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  font-weight: bold;
 }
 
 </style>
@@ -89,11 +94,15 @@
                 {% for option in optionContent.objects %}
                   <optgroup label="{{ option.shown }}">
                     {% if option.type == "numeric" %}
-                      <option>{% translate "Aufsteigend" %}</option>
-                      <option>{% translate "Absteigend" %}</option>
+                      <option value="{{ option.name }}_Ascending">
+                        {% translate "Aufsteigend" %}
+                      </option>
+                      <option value="{{ option.name }}_Descending">
+                        {% translate "Absteigend" %}
+                      </option>
                     {% else %}
-                      <option>A...Z</option>
-                      <option>Z...A</option>
+                      <option value="{{ option.name }}_Ascending">A...Z</option>
+                      <option value="{{ option.name }}_Descending">Z...A</option>
                     {% endif %}
                   </optgroup>
                 {% endfor %}
@@ -172,24 +181,7 @@
     console.error('Element with ID "{{ optionContent.fieldName }}" not found');
   }
   {% endfor %}
-  $(document).ready(function() {
-    // debugger;
-    $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
-      // debugger;
-        if (!$(this).next().hasClass('show')) {
-            $(this).parents('.dropdown-menu').first().find('.show').removeClass('show');
-        }
-        var $subMenu = $(this).next('.dropdown-menu');
-        $subMenu.toggleClass('show');
 
-        $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e) {
-            $('.dropdown-submenu .show').removeClass('show');
-        });
-
-        return false;
-    });
-
-  });
   $('.closeFilter').click(function() {
     $(this).parent().remove();
 
@@ -245,8 +237,6 @@ $('#searchBox').on('submit', function(e) {
         data: formData,
         success: function(response) {
             // Handle the response here
-            console.log(response);
-            // debugger;
             // remove all ancestors of the div with the id
             $('#componentListingContainer').empty();
             $('#componentListingContainer').append(response);
@@ -291,9 +281,20 @@ $(document).ready(function() {
       // get values from the select inputs:
       // iterate over the list of selects and call the method to return the values as a list:
       var listOfSelectedFilters;
+      var retunValueOfSelect;
       var form = $('#searchBox');
       for (var i=0;i < listOfUseBootstrapSelects.length;i++) {
-        listOfSelectedFilters = listOfUseBootstrapSelects[i].getValue()
+        listOfSelectedFilters = [];
+        returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
+        if (typeof returnValueOfSelect === "string" ) {
+          listOfSelectedFilters.push(returnValueOfSelect);
+        }
+        else if ($.isArray(returnValueOfSelect)) {
+          listOfSelectedFilters = returnValueOfSelect;
+        }
+        else {
+          listOfSelectedFilters = null;
+        }
         $("input[name='" + listOfUseBootstrapSelects[i].selectElement.id + "-hidden']").remove();
         var selectedOptions = "";
         if (listOfSelectedFilters != null) {
@@ -327,13 +328,5 @@ $(document).ready(function() {
 
   })
   $("span.ms-auto").click(function() {
-    // debugger;
   });
-// });
 </script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
-<!-- <script>
-  $('.my-select').selectpicker();
-
-</script> -->
