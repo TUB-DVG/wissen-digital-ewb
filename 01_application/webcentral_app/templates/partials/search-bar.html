@@ -83,109 +83,91 @@
         <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
-              <div class="dropdown" style="display: inline;">
-                <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        style="margin-bottom: 0px;
-                               width: 150px;
-                               height: 21px;
-                               padding-top: 3px;
-                               padding-bottom: 25px;
-                               text-align: left">
-                  {{ optionContent.placeholder }}
-                </button>
-                <div class="dropdown-menu" id="dropdownMenuDiv">
-                  {% for option in optionContent.objects %}
-                    <div class="dropdown">
-                      <a class="dropdown-item dropdown-toggle"
-                         href="#"
-                         id="nestedDropdownMenuButton"
-                         role="button"
-                         data-bs-toggle="dropdown"
-                         aria-haspopup="true"
-                         aria-expanded="false"
-                         dblocator="{{ option.name }}">{{ option.shown }}</a>
-                      <div class="dropdown-menu dropdown-menu__nested"
-                           aria-labelledby="nestedDropdownMenuButton">
-                        <a class="dropdown-item nested"
-                           href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending"
-                           sorting="Ascending">{% translate "Aufsteigend" %}</a>
-                        <a class="dropdown-item nested"
-                           href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending"
-                           sorting="Descending">{% translate "Absteigend" %}</a>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-              </div>
-            {% else %}
-
-              <!-- <select data-placeholder="{{ optionContent.placeholder }}" multiple class="chosen-select chosen-select-{{ focusBorder }}" name="test">
-                {% for option in optionContent.objects %}
-                  <option value="{{ option }}">{{ option }}</option>
-                {% endfor %}
-              </select> -->
               <select id="{{ optionContent.fieldName }}"
-                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
-                      multiple>
-                <!-- </select> -->
-                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange">
+                <option value="">{{ optionContent.placeholder }}</option>
+                {% for option in optionContent.objects %}
+                  <optgroup label="{{ option.shown }}">
+                    {% if option.type == "numeric" %}
+                      <option>{% translate "Aufsteigend" %}</option>
+                      <option>{% translate "Absteigend" %}</option>
+                    {% else %}
+                      <option>A...Z</option>
+                      <option>Z...A</option>
+                    {% endif %}
+                  {% endfor %}
+                  <!-- <div class="dropdown" style="display: inline;">
+                    <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 0px; width: 150px; height: 21px; padding-top: 3px; padding-bottom: 25px; text-align: left">
+                      {{ optionContent.placeholder }}
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenuDiv">
+                      {% for option in optionContent.objects %}
+                        <div class="dropdown">
+                          <a class="dropdown-item dropdown-toggle" href="#" id="nestedDropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" dblocator="{{ option.name }}">{{ option.shown }}</a>
+                          <div class="dropdown-menu dropdown-menu__nested" aria-labelledby="nestedDropdownMenuButton">
+                            <a class="dropdown-item nested" href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending" sorting="Ascending">{% translate "Aufsteigend" %}</a>
+                            <a class="dropdown-item nested" href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending" sorting="Descending">{% translate "Absteigend" %}</a>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div> -->
+                {% else %}
+                  <select id="{{ optionContent.fieldName }}"
+                          class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                          multiple>
+                    <!-- </select> -->
+                    <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
          aria-label=".form-select-sm example"
          name="{{ optionContent.fieldName }}"
          id="{{ optionContent.fieldName }}"
          style="background: url('{% static pathToArrow %}') no-repeat;
                 background-position: 90% 50%"> -->
-                <option value="">{% translate optionContent.placeholder %}</option>
-                {% for option in optionContent.objects %}
-                  <option value="{{ option }}"
-                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
-                    {{ option }}
-                  </option>
-                {% endfor %}
-              </select>
-              <!-- </div> -->
-            {% endif %}
-          {% endfor %}
+                    <option value="">{% translate optionContent.placeholder %}</option>
+                    {% for option in optionContent.objects %}
+                      <option value="{{ option }}"
+                              {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                        {{ option }}
+                      </option>
+                    {% endfor %}
+                  </select>
+                  <!-- </div> -->
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+              {% if renderDetailsRadio %}
+                <input type="radio" id="triggerDetailsView" />
+                <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+              {% endif %}
+              <input type="radio" id="triggerComparisonMode" />
+              <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+            </div>
+          </div>
         </div>
-        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
-          {% if renderDetailsRadio %}
-            <input type="radio" id="triggerDetailsView" />
-            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
-          {% endif %}
-          <input type="radio" id="triggerComparisonMode" />
-          <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
-        </div>
-      </div>
-    </div>
 
-  </div>
-</form>
-<div style="margin-bottom: 24px;">
-  {% for key, value in filters.items %}
-    {% for selectedItem in value %}
-      <span class="filter {{ key }}">{{ selectedItem }}
-        <button class="closeFilter">
-          <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
-        </button>
-      </span>
-    {% endfor %}
-  {% endfor %}
-</div>
-<script>
+      </div>
+    </form>
+    <div style="margin-bottom: 24px;">
+      {% for key, value in filters.items %}
+        {% for selectedItem in value %}
+          <span class="filter {{ key }}">{{ selectedItem }}
+            <button class="closeFilter">
+              <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
+            </button>
+          </span>
+        {% endfor %}
+      {% endfor %}
+    </div>
+    <script>
   var listOfUseBootstrapSelects = [];
 {% for optionContent in optionList %}
-{% if not optionContent.multiDimensional %}
   var element = document.getElementById('{{ optionContent.fieldName }}');
   if (element) {
     listOfUseBootstrapSelects.push(new UseBootstrapSelect(element));
   } else {
     console.error('Element with ID "{{ optionContent.fieldName }}" not found');
   }
-  {% endif %}
   {% endfor %}
   $(document).ready(function() {
     // debugger;
@@ -345,10 +327,10 @@ $(document).ready(function() {
     // debugger;
   });
 // });
-</script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
-<!-- <script>
+    </script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script> -->
+  <!-- <script>
   $('.my-select').selectpicker();
 
-</script> -->
+  </script> -->
