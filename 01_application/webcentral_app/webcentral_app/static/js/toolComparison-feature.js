@@ -4,13 +4,13 @@ $("#triggerComparisonMode").click(function() {
     $("#compareBox").css("display", "block");
     if (!radioButtonChecked) {
         radioButtonChecked = true;
-        $(".comparisonInputTools").css("visibility", "visible");
+        $(".comparisonInputTools").css("display", "");
     }
     else {
       radioButtonChecked = false;
       this.checked = false;
       $("#compareBox").css("display", "none");
-      $(".comparisonInputTools").css("visibility", "hidden");
+      $(".comparisonInputTools").css("display", "none");
     }
   }
   else {
