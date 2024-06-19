@@ -253,6 +253,14 @@ $('#searchBox').on('submit', function(e) {
               $('#dataset-listing-results').empty();
               $('#dataset-listing-results').append(response);             
             }
+            else if ($("#weatherdata-listing-results").length > 0) {
+              $('#weatherdata-listing-results').empty();
+              $('#weatherdata-listing-results').append(response);             
+            }
+            else if ($("#protocol-listing-results").length > 0) {
+              $('#protocol-listing-results').empty();
+              $('#protocol-listing-results').append(response);             
+            }
           },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
