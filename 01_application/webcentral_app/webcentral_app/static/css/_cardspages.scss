@@ -70,6 +70,9 @@
 }
 
 .ecological-cards {
+  .ecological-font-color{
+    color: $ecological-color;
+  } 
   .border-ecological {
     @include border-rect($ecological-color);
   }
@@ -160,6 +163,9 @@ input[type='checkbox']:checked:before {
 }
 
 .legal-cards {
+  .legal-font-color{
+    color: $legal-color;
+  }  
   .border-legal {
     @include border-rect($legal-color);
   }
@@ -245,6 +251,9 @@ input[type='checkbox']:checked:before {
 
 
 .operational-cards {
+  .operational-font-color{
+    color: $operational-color;
+  }  
   .border-operational {
     @include border-rect($operational-color);
   }
@@ -332,6 +341,9 @@ input[type='checkbox']:checked:before {
 }
 
 .technical-cards {
+  .technical-font-color{
+    color: $technical-color;
+  }
   .border-technical {
     @include border-rect($technical-color);
     // color: $technical-color;

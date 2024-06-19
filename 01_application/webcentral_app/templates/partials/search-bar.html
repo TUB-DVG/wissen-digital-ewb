@@ -305,6 +305,17 @@ $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
       // get values from the select inputs:
       // iterate over the list of selects and call the method to return the values as a list:
+      
+      // switch the closing symbol and the text so the closing symbol is always shown:
+      var selectedFilterItems = $("div.align-items-center.gap-1.d-inline-flex.py-0");
+      for (var i=0; i < selectedFilterItems.length; i++) {
+        var span = $(selectedFilterItems[i]).find("span");
+        var textNode = selectedFilterItems[i].textContent;
+        $(selectedFilterItems[i]).empty();
+        $(selectedFilterItems[i]).append(span);
+        $(selectedFilterItems[i]).append(textNode);
+        $(selectedFilterItems[i]).addClass("{{ focusBorder }}-font-color")
+      }
       var listOfSelectedFilters;
       var retunValueOfSelect;
       var form = $('#searchBox');
