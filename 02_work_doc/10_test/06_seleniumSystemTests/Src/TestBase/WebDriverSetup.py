@@ -144,6 +144,15 @@ class WebDriverSetup(unittest.TestCase):
                 self.scrollElementIntoViewAndClickIt(option)
                 break
 
+    def checkInGermanAndEnglish(self, funcHandler, translationsDict):
+        """Execute the function `funcHandler` when language is set to german and english."""
+
+        self._setLanguageToGerman()
+        funcHandler(translationsDict["de"])
+
+        self._setLanguageToEnglish()
+        funcHandler(translationsDict["en"])
+
     def checkIfElementIsTranslated(self, language, elementText,
                                    translationDict):
         """Change the language of the page and check if the language is changed."""
