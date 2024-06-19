@@ -31,9 +31,7 @@
                         {% if forloop.first %}
 
                             <div class="headingInListingContainer1">
-                                <input type="checkbox"
-                                       style="visibility:hidden"
-                                       class="comparisonInputTools" />
+                                <input type="checkbox" style="display: none;" class="comparisonInputTools" />
                                 {{ object|get_attribute:element.objectReference }}
                             </div>
                         {% elif forloop.counter == 2 %}
