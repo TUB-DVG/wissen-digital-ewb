@@ -1,3 +1,4 @@
+from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
 
 from .models import (
@@ -7,7 +8,12 @@ from .models import (
     ProcedureItem,
 )
 
-admin.site.register(BusinessModel)
+
+class BusinessModelAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(BusinessModel, BusinessModelAdmin)
 admin.site.register(UserEngagement)
 admin.site.register(SpecificProcedureItem)
 admin.site.register(ProcedureItem)
