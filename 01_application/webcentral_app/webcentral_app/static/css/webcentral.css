@@ -393,7 +393,7 @@
   border-radius: 50%;
 }
 .operational-cards input[type=radio]:checked:before {
-  background: #35495e;
+  background: #FFAE9D;
 }
 .operational-cards input[type=checkbox] {
   appearance: none;
@@ -494,7 +494,6 @@
   width: 30px;
   height: 30px;
   border: 2px solid #AFC5FF;
-  border-radius: 50%;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;

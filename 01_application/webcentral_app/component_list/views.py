@@ -38,7 +38,7 @@ def components(request):
     overviewValue = request.GET.get("overview", "")
 
     sortingValue = request.GET.get("sorting-hidden", "")
-    
+
     if sortingValue != "":
         firstLevelDropdown = sortingValue.split("_")[0]
         secondLevelDropdown = sortingValue.split("_")[1]
@@ -279,6 +279,8 @@ def components(request):
         },
         "pathToArrow":
         "assets/images/arrowDownEcological.svg",
+        "renderComparisonRadio":
+        True,
         # "assets/images/arrow.svg",
     }
     if filtering:
