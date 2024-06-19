@@ -4,8 +4,10 @@ from django.shortcuts import (
 )
 from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
+from django.db.models import Q
 
 from .models import Weatherdata
+from common.views import createQ
 
 
 # Create your views here.
@@ -26,18 +28,31 @@ def index(request):
     filtered_by = [None] * 2
     searched = None
 
-    if ((_checkDjangoDict(request, _("Kategorie")) is not None)
-            | (_checkDjangoDict(request, _("Lizenz")) is not None)
-            | (_checkDjangoDict(request, "searched") is not None)):
-        category = request.GET.get(_("Kategorie"), "")
-        license = request.GET.get(_("Lizenz"), "")
-        searched = request.GET.get("searched", "")
-        weatherdata = Weatherdata.objects.filter(
-            category__icontains=category,
-            license__icontains=license,
-            data_service__icontains=searched,
-        )
-        filtered_by = [category, license]
+    filtering = bool(request.GET.get("filtering", False))
+
+    categoryElements = request.GET.get("category-hidden", "")
+    categoryElementsList = categoryElements.split(",")
+
+    licenseElements = request.GET.get("license-hidden", "")
+    licenseElementsList = licenseElements.split(",")
+
+    listOfFilters = [
+        {
+            "filterValues": categoryElementsList,
+            "filterName": "category__icontains",
+        },
+        {
+            "filterValues": licenseElementsList,
+            "filterName": "license__icontains",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+
+    searched = request.GET.get("searched", "")
+    if searched != "":
+        complexCriterion &= Q(data_service__icontains=searched)
+    weatherdata = Weatherdata.objects.filter(complexCriterion)
+    # filtered_by = [category, license]
 
     weatherdata = list(sorted(weatherdata, key=lambda obj: obj.data_service))
 
@@ -51,10 +66,10 @@ def index(request):
         page,
         "search":
         searched,
-        "kategorie":
-        filtered_by[0],
-        "lizenz":
-        filtered_by[1],
+        # "kategorie":
+        # filtered_by[0],
+        # "lizenz":
+        # filtered_by[1],
         "nameOfTemplate":
         "weatherdata",
         "urlName":
@@ -87,6 +102,12 @@ def index(request):
         "focusBorder":
         "technical",
     }
+    if filtering:
+        return render(
+            request,
+            "weatherdata_over/weatherdata-listings-results.html",
+            context,
+        )
     return render(request, "weatherdata_over/data-service-listings.html",
                   context)
 
