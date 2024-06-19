@@ -168,7 +168,7 @@ input[type='checkbox']:checked:before {
   }
   .border-legal-round-font-color {
     @include border-round($legal-color);
-    color: $legal-color;
+    // color: $legal-color;
   }
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
@@ -253,7 +253,7 @@ input[type='checkbox']:checked:before {
   }
   .border-operational-round-font-color {
     @include border-round($operational-color);
-    color: $operational-color;
+    // color: $operational-color;
   }
   .btn-operational {
     @include btn-search($operational-color, $third-text-color)
@@ -334,7 +334,7 @@ input[type='checkbox']:checked:before {
 .technical-cards {
   .border-technical {
     @include border-rect($technical-color);
-    color: $technical-color;
+    // color: $technical-color;
   }
   .border-technical-round {
     @include border-round($technical-color);

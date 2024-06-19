@@ -269,7 +269,6 @@
 .legal-cards .border-legal-round-font-color {
   border-radius: 20px;
   border: 2px solid #F5E86A;
-  color: #F5E86A;
 }
 .legal-cards .btn-legal {
   background-color: #F5E86A;
@@ -352,7 +351,6 @@
 .operational-cards .border-operational-round-font-color {
   border-radius: 20px;
   border: 2px solid #FFAE9D;
-  color: #FFAE9D;
 }
 .operational-cards .btn-operational {
   background-color: #FFAE9D;
@@ -430,7 +428,6 @@
 .technical-cards .border-technical {
   border-radius: 2px;
   border: 2px solid #AFC5FF;
-  color: #AFC5FF;
 }
 .technical-cards .border-technical-round {
   border-radius: 20px;

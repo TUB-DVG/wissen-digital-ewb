@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
+from django.db.models import Q
 
 from .models import collectedDatasets  # maybe I need also the other models
+
+from common.views import createQ
 
 
 class UpdateProperties:
@@ -21,21 +24,39 @@ def index(request):
                 )  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
-    if ((request.GET.get(_("Anwendungsfall")) != None)
-            | (request.GET.get(_("Kategorie")) != None)
-            | (request.GET.get(_("Verfügbarkeit")) != None)
-            | (request.GET.get("searched") != None)):
-        useCaseCategory = request.GET.get(_("Anwendungsfall"), "")
-        categoryDataset = request.GET.get(_("Kategorie"), "")
-        availability = request.GET.get(_("Verfügbarkeit"), "")
-        searched = request.GET.get("searched", "")
-        datasets = collectedDatasets.objects.filter(
-            useCaseCategory__icontains=useCaseCategory,
-            categoryDataset__icontains=categoryDataset,
-            availability__icontains=availability,
-            nameDataset__icontains=searched,
-        )
-        filteredBy = [useCaseCategory, categoryDataset, availability]
+
+    filtering = bool(request.GET.get("filtering", False))
+    applicationAreaElements = request.GET.get("applicationArea-hidden", "")
+    applicationAreaElementsList = applicationAreaElements.split(",")
+
+    categoryElements = request.GET.get("category-hidden", "")
+    categoryElementsList = categoryElements.split(",")
+
+    availabilityElements = request.GET.get("availability-hidden", "")
+    availabilityElementsList = availabilityElements.split(",")
+
+    listOfFilters = [
+        {
+            "filterValues": applicationAreaElementsList,
+            "filterName": "useCaseCategory__icontains",
+        },
+        {
+            "filterValues": categoryElementsList,
+            "filterName": "categoryDataset__icontains",
+        },
+        {
+            "filterValues": availabilityElementsList,
+            "filterName": "availability__icontains",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+
+    searched = request.GET.get("searched", "")
+    if searched != "":
+        complexCriterion |= Q(nameDataset__icontains=searched)
+
+    datasets = collectedDatasets.objects.filter(complexCriterion)
+    # filteredBy = [useCaseCategory, categoryDataset, availability]
 
     datasets = list((datasets))
     # datasets_paginator to datasetsPaginator
@@ -50,12 +71,12 @@ def index(request):
         page,
         "search":
         searched,
-        "useCaseCategory":
-        filteredBy[0],
-        "categoryDataset":
-        filteredBy[1],
-        "availability":
-        filteredBy[2],
+        # "useCaseCategory":
+        # filteredBy[0],
+        # "categoryDataset":
+        # filteredBy[1],
+        # "availability":
+        # filteredBy[2],
         "nameOfTemplate":
         "datasets",
         "urlName":
@@ -131,11 +152,13 @@ def index(request):
                 "filter":
                 filteredBy[2],
                 "fieldName":
-                "accessibility",
+                "availability",
             },
         ],
     }
-
+    if filtering:
+        return render(request, "datasets_over/dataset-listings-results.html",
+                      context)
     return render(request, "datasets_over/dataset-listings.html", context)
 
 
