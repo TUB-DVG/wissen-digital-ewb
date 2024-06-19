@@ -27,6 +27,7 @@ from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.SearchPage import SearchPage
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 
 
 class TestDigitalToolsPage(WebDriverSetup):
@@ -70,6 +71,37 @@ class TestDigitalToolsPage(WebDriverSetup):
             "The number of select elements in the search bar of the Tools page should be 3.",
         )
 
+        # check if a radio button is present:
+        listOfRadioButtons = self.searchPartialObj.getRadioButtons()
+        self.assertEqual(
+            len(listOfRadioButtons),
+            1,
+            "The number of radio elements in the search bar of the Tools page should be 1.",
+        )
+
+        # if the radio button is clicked, the compare buttons should appear
+        # check if the radio buttons are not present by default:
+        comparisonPageSecObj = ComparisonPageSection(self.driver)
+        startComapareDiv = comparisonPageSecObj.getStartComparisonDiv()
+        resetComparisonDiv = comparisonPageSecObj.getResetComparisonDiv()
+
+        self.assertTrue(not startComapareDiv.is_displayed())
+        self.assertTrue(not resetComparisonDiv.is_displayed())
+
+        # click the radio button:
+        listOfRadioButtons[0].click()
+
+        self.assertTrue(startComapareDiv.is_displayed())
+        self.assertTrue(resetComparisonDiv.is_displayed())
+
+        # check if the right translation is displayed:
+        descriptionTextForRadio = self.searchPartialObj.getNextSibling(
+            listOfRadioButtons[0])
+        self.assertEqual(
+            descriptionTextForRadio.text,
+            dictOfTranslation["radioDescription"],
+        )
+
     def testNavigateToDigitalToolsPage(self) -> None:
         """Navigates from norm list to digital-tools-tab."""
         print(os.environ["siteUnderTest"])
@@ -100,9 +132,11 @@ class TestDigitalToolsPage(WebDriverSetup):
         translationDict = {
             "de": {
                 "searchInput": "Suchbegriff",
+                "radioDescription": "Vergleichsmodus",
             },
             "en": {
                 "searchInput": "search term",
+                "radioDescription": "Comparison mode",
             },
         }
         self.checkInGermanAndEnglish(self._testSearchBar, translationDict)

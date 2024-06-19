@@ -63,7 +63,7 @@ def index(request):
     lifeCyclePhaseElements = request.GET.get("lifeCyclePhase-hidden", "")
     lifeCyclePhaseElementsList = lifeCyclePhaseElements.split(",")
 
-    accessibilityElements = request.GET.get("lifeCyclePhase-hidden", "")
+    accessibilityElements = request.GET.get("accessibility-hidden", "")
     accessibilityElementsList = accessibilityElements.split(",")
 
     listOfFilters = [
@@ -81,6 +81,7 @@ def index(request):
         },
     ]
     complexCriterion = createQ(listOfFilters)
+
     # if ((request.GET.get("use") != None)
     #         | (request.GET.get("accessibility") != None)
     #         | (request.GET.get("lifeCyclePhase") != None)
@@ -89,12 +90,16 @@ def index(request):
     #     accessibility = request.GET.get("accessibility", "")
     #     lifeCyclePhase = request.GET.get("lifeCyclePhase", "")
     searched = request.GET.get("searched", "")
-
-    # criterionToolsOne = Q(programmingLanguages__icontains=searched)
-    # criterionToolsTwo = Q(scale__scale__icontains=searched)
-    # criterionToolsThree = Q(
-    #     classification__classification__icontains=searched)
-    # criterionToolsFour = Q(name__icontains=searched)
+    if searched != "":
+        criterionToolsOne = Q(programmingLanguages__icontains=searched)
+        criterionToolsTwo = Q(scale__scale__icontains=searched)
+        criterionToolsThree = Q(
+            classification__classification__icontains=searched)
+        criterionToolsFour = Q(name__icontains=searched)
+        complexCriterion |= (criterionToolsOne
+                             | criterionToolsTwo
+                             | criterionToolsThree
+                             | criterionToolsFour)
     tools = (
         Tools.objects.filter(complexCriterion).filter(
             name__icontains=searched,
@@ -185,6 +190,8 @@ def index(request):
                 "fieldName": "lifeCyclePhase",
             },
         ],
+        "renderComparisonRadio":
+        True,
     }
 
     if filtering:
@@ -203,41 +210,65 @@ def indexApps(request):
     )
     filteredBy = [None] * 3
     searched = None
+    filtering = bool(request.GET.get("filtering", False))
+    usageElements = request.GET.get("use-hidden", "")
+    usageElementsList = usageElements.split(",")
 
-    if ((request.GET.get("Nutzung") != None)
-            | (request.GET.get("Zugänglichkeit") != None)
-            | (request.GET.get("Lebenszyklusphase") != None)
-            | (request.GET.get("searched") != None)):
-        usage = request.GET.get("Nutzung", "")
-        accessibility = request.GET.get("Zugänglichkeit", "")
-        lifeCyclePhase = request.GET.get("Lebenszyklusphase", "")
-        searched = request.GET.get("searched", "")
+    lifeCyclePhaseElements = request.GET.get("lifeCyclePhase-hidden", "")
+    lifeCyclePhaseElementsList = lifeCyclePhaseElements.split(",")
 
+    accessibilityElements = request.GET.get("accessibility-hidden", "")
+    accessibilityElementsList = accessibilityElements.split(",")
+
+    listOfFilters = [
+        {
+            "filterValues": usageElementsList,
+            "filterName": "usage",
+        },
+        {
+            "filterValues": lifeCyclePhaseElementsList,
+            "filterName": "lifeCyclePhase",
+        },
+        {
+            "filterValues": accessibilityElementsList,
+            "filterName": "accessibility",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+    # if ((request.GET.get("Nutzung") != None)
+    #         | (request.GET.get("Zugänglichkeit") != None)
+    #         | (request.GET.get("Lebenszyklusphase") != None)
+    #         | (request.GET.get("searched") != None)):
+    #     usage = request.GET.get("Nutzung", "")
+    #     accessibility = request.GET.get("Zugänglichkeit", "")
+    #     lifeCyclePhase = request.GET.get("Lebenszyklusphase", "")
+    searched = request.GET.get("searched", "")
+    if searched != "":
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(
             classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
-        tools = (
-            Tools.objects.filter(
-                criterionToolsOne
-                | criterionToolsTwo
-                | criterionToolsThree
-                | criterionToolsFour).filter(
-                    name__icontains=searched,
-                    usage__usage__icontains=usage,
-                    lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
-                    accessibility__accessibility__icontains=accessibility,
-                    focus__focus_de="technisch",
-                    classification__classification_de__in=[
-                        "digitale Anwendung",
-                        "Plattform",
-                    ],
-                ).distinct()
-        )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
-        # having distinct removes the duplicates,
-        # but filters out e.g., solely open-source tools!
-        filteredBy = [usage, accessibility, lifeCyclePhase]
+        complexCriterion |= (criterionToolsOne
+                             | criterionToolsTwo
+                             | criterionToolsThree
+                             | criterionToolsFour)
+    tools = (
+        Tools.objects.filter(complexCriterion).filter(
+            name__icontains=searched,
+            # usage__usage__icontains=usage,
+            # lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+            # accessibility__accessibility__icontains=accessibility,
+            focus__focus_de="technisch",
+            classification__classification_de__in=[
+                "digitale Anwendung",
+                "Plattform",
+            ],
+        ).distinct()
+    )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
+    # having distinct removes the duplicates,
+    # but filters out e.g., solely open-source tools!
+    # filteredBy = [usage, accessibility, lifeCyclePhase]
 
     tools = list(sorted(tools, key=lambda obj: obj.name))
     toolsPaginator = Paginator(tools, 12)
@@ -275,12 +306,12 @@ def indexApps(request):
         page,
         "search":
         searched,
-        "usage":
-        filteredBy[0],
-        "accessibility":
-        filteredBy[1],
-        "lifeCyclePhase":
-        filteredBy[2],
+        # "usage":
+        # filteredBy[0],
+        # "accessibility":
+        # filteredBy[1],
+        # "lifeCyclePhase":
+        # filteredBy[2],
         "usageFields":
         usageNames,
         "lifeCyclePhaseFields":
@@ -313,7 +344,12 @@ def indexApps(request):
                 "fieldName": "lifeCyclePhase",
             },
         ],
+        "renderComparisonRadio":
+        True,
     }
+    if filtering:
+        return render(request, "tools_over/tool-listings-results.html",
+                      context)
 
     return render(request, "tools_over/tool-listings.html", context)
 
@@ -327,37 +363,64 @@ def indexBusinessApplication(request):
     filteredBy = [None] * 3
     searched = None
 
-    if ((request.GET.get("Nutzung", "") != None)
-            | (request.GET.get("Zugänglichkeit", "") != None)
-            | (request.GET.get("Lebenszyklusphase", "") != None)
-            | (request.GET.get("searched", "") != None)):
-        usage = request.GET.get("Nutzung", "")
-        accessibility = request.GET.get("Zugänglichkeit", "")
-        lifeCyclePhase = request.GET.get("Lebenszyklusphase", "")
-        searched = request.GET.get("searched", "")
+    filtering = bool(request.GET.get("filtering", False))
+    usageElements = request.GET.get("use-hidden", "")
+    usageElementsList = usageElements.split(",")
+
+    lifeCyclePhaseElements = request.GET.get("lifeCyclePhase-hidden", "")
+    lifeCyclePhaseElementsList = lifeCyclePhaseElements.split(",")
+
+    accessibilityElements = request.GET.get("accessibility-hidden", "")
+    accessibilityElementsList = accessibilityElements.split(",")
+
+    listOfFilters = [
+        {
+            "filterValues": usageElementsList,
+            "filterName": "usage",
+        },
+        {
+            "filterValues": lifeCyclePhaseElementsList,
+            "filterName": "lifeCyclePhase",
+        },
+        {
+            "filterValues": accessibilityElementsList,
+            "filterName": "accessibility",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+    searched = request.GET.get("searched", "")
+    # if ((request.GET.get("Nutzung", "") != None)
+    #         | (request.GET.get("Zugänglichkeit", "") != None)
+    #         | (request.GET.get("Lebenszyklusphase", "") != None)
+    #         | (request.GET.get("searched", "") != None)):
+    #     usage = request.GET.get("Nutzung", "")
+    #     accessibility = request.GET.get("Zugänglichkeit", "")
+    #     lifeCyclePhase = request.GET.get("Lebenszyklusphase", "")
+    #     searched = request.GET.get("searched", "")
+    if searched != "":
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(
             classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
-        applications = (
-            Tools.objects.filter(
-                criterionToolsOne
-                | criterionToolsTwo
-                | criterionToolsThree
-                | criterionToolsFour).filter(
-                    name__icontains=searched,
-                    usage__usage__icontains=usage,
-                    lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
-                    accessibility__accessibility__icontains=accessibility,
-                    focus__focus_de="betrieblich"
-                    # classification__classification="Digitales Werkzeug",
-                ).distinct()
-        )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
-        # having distinct removes the duplicates,
-        # but filters out e.g., solely open-source tools!
-        filteredBy = [usage, accessibility, lifeCyclePhase]
-
+        complexCriterion |= (criterionToolsOne
+                             | criterionToolsTwo
+                             | criterionToolsThree
+                             | criterionToolsFour)
+    applications = (
+        Tools.objects.filter(complexCriterion).filter(
+            name__icontains=searched,
+            # usage__usage__icontains=usage,
+            # lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
+            # accessibility__accessibility__icontains=accessibility,
+            focus__focus_de="betrieblich",
+            # classification__classification__icontains=searched,
+            # classification__classification="Digitales Werkzeug",
+        ).distinct()
+    )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
+    # having distinct removes the duplicates,
+    # but filters out e.g., solely open-source tools!
+    # filteredBy = [usage, accessibility, lifeCyclePhase]
     applications = list(sorted(applications, key=lambda obj: obj.name))
     toolsPaginator = Paginator(applications, 12)
     pageNum = request.GET.get("page", None)
@@ -394,12 +457,12 @@ def indexBusinessApplication(request):
         page,
         "search":
         searched,
-        "usage":
-        filteredBy[0],
-        "licence":
-        filteredBy[1],
-        "lifeCyclePhase":
-        filteredBy[2],
+        # "usage":
+        # filteredBy[0],
+        # "licence":
+        # filteredBy[1],
+        # "lifeCyclePhase":
+        # filteredBy[2],
         "usageFields":
         usageNames,
         "lifeCyclePhaseFields":
@@ -432,8 +495,12 @@ def indexBusinessApplication(request):
                 "fieldName": "lifeCyclePhase",
             },
         ],
+        "renderComparisonRadio":
+        True,
     }
-
+    if filtering:
+        return render(request, "tools_over/tool-listings-results.html",
+                      context)
     return render(request, "tools_over/tool-listings.html", context)
 
 

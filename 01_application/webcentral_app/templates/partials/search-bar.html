@@ -152,8 +152,10 @@ input[type='text']::placeholder {
             <input type="radio" id="triggerDetailsView" />
             <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
           {% endif %}
-          <input type="radio" id="triggerComparisonMode" />
-          <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+          {% if renderComparisonRadio %}
+            <input type="radio" id="triggerComparisonMode" />
+            <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -238,8 +240,15 @@ $('#searchBox').on('submit', function(e) {
         success: function(response) {
             // Handle the response here
             // remove all ancestors of the div with the id
-            $('#componentListingContainer').empty();
-            $('#componentListingContainer').append(response);
+            // debugger;
+            if ($("#componentListingContainer").length > 0) {
+              $('#componentListingContainer').empty();
+              $('#componentListingContainer').append(response);
+            }
+            else if ($('#tool-listing-results').length > 0) {
+              $('#tool-listing-results').empty();
+              $('#tool-listing-results').append(response);
+            }
           },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
