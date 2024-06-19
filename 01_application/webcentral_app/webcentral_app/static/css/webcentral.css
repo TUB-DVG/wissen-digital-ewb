@@ -169,6 +169,9 @@
   color: white;
 }
 
+.ecological-cards .ecological-font-color {
+  color: #8FDE97;
+}
 .ecological-cards .border-ecological {
   border-radius: 2px;
   border: 2px solid #8FDE97;
@@ -258,6 +261,9 @@
   color: #8FDE97;
 }
 
+.legal-cards .legal-font-color {
+  color: #F5E86A;
+}
 .legal-cards .border-legal {
   border-radius: 2px;
   border: 2px solid #F5E86A;
@@ -340,6 +346,9 @@
   color: #F5E86A;
 }
 
+.operational-cards .operational-font-color {
+  color: #FFAE9D;
+}
 .operational-cards .border-operational {
   border-radius: 2px;
   border: 2px solid #FFAE9D;
@@ -425,6 +434,9 @@
   color: #FFAE9D;
 }
 
+.technical-cards .technical-font-color {
+  color: #AFC5FF;
+}
 .technical-cards .border-technical {
   border-radius: 2px;
   border: 2px solid #AFC5FF;
