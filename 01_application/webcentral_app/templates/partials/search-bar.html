@@ -261,6 +261,10 @@ $('#searchBox').on('submit', function(e) {
               $('#protocol-listing-results').empty();
               $('#protocol-listing-results').append(response);             
             }
+            else if ($("#norm-listing-results").length > 0) {
+              $('#norm-listing-results').empty();
+              $('#norm-listing-results').append(response);             
+            }
           },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
