@@ -26,12 +26,49 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+from Src.PageObject.Pages.SearchPage import SearchPage
 
 
 class TestDigitalToolsPage(WebDriverSetup):
     """ """
 
     TECHNICAL_COLOR_CODE = "rgba(175, 197, 255, 1)"
+
+    def _testSearchBar(self, dictOfTranslation):
+        """ """
+
+        searchInput = self.searchPartialObj.getTextInput()
+
+        self.assertEqual(
+            searchInput.get_attribute("placeholder"),
+            dictOfTranslation["searchInput"],
+            "Placeholder in search-input field is not as expected.",
+        )
+        placeholderColor = self.driver.execute_script(
+            """
+        var input = arguments[0];
+        var pseudoElement = '::placeholder';
+        var prop = 'color';
+        return window.getComputedStyle(input, pseudoElement).getPropertyValue(prop);
+        """,
+            searchInput,
+        )
+        self.assertEqual(
+            placeholderColor,
+            self.TECHNICAL_COLOR_CODE,
+            "Placeholder color of the search input field should be technical focus color.",
+        )
+
+        # get all select inputs of the search-bar:
+        surroundingDiv = self.searchPartialObj.getSearchDivContainer()
+        allSelectsInSearchBar = self.searchPartialObj.getDescendantsByTagName(
+            surroundingDiv, "select")
+
+        self.assertEqual(
+            len(allSelectsInSearchBar),
+            3,
+            "The number of select elements in the search bar of the Tools page should be 3.",
+        )
 
     def testNavigateToDigitalToolsPage(self) -> None:
         """Navigates from norm list to digital-tools-tab."""
@@ -51,9 +88,25 @@ class TestDigitalToolsPage(WebDriverSetup):
 
     def testSearchField(self) -> None:
         """Tests the Search Function in `Digitale Anwendungen`"""
-        self.openToolList()
+        # self.openToolList()
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
 
         toolListPage = ToolListPage(self.driver)
+
+        self.searchPartialObj = SearchPage(self.driver)
+
+        # search-input field and 3 select-inputs should be present
+        # furthermore the radio button for the comparison feature should be there.
+        translationDict = {
+            "de": {
+                "searchInput": "Suchbegriff",
+            },
+            "en": {
+                "searchInput": "search term",
+            },
+        }
+        self.checkInGermanAndEnglish(self._testSearchBar, translationDict)
+
         searchFieldElement = toolListPage.getSearchInputElement()
         if searchFieldElement is None:
             self.assertTrue(False)

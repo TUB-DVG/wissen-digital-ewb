@@ -28,18 +28,20 @@ def getFocusNameIndependentOfLanguage(focusStr: str, focusObj: Focus) -> str:
     return focusName
 
 
-def createQ(request, filterElements):
+def createQ(filterElements):
     """Filtering Function, which is used in all other apps.
 
     This function will hopfully be used in the future to handle the
     filtering in the filter views of all apps.
     """
     complexSearchFilter = Q()
-    for filter in filterElements:
-        for filterValue in filter["filterValues"]:
-            queryStr = (
-                f"{filter['filterName']}__{filter['filterName']}__icontains")
-            complexSearchFilter |= Q(queryStr=filterValue)
+    for filterElement in filterElements:
+        for filterValue in filterElement["filterValues"]:
+            searchFilterForOneFilter = Q()
+            queryStr = f"{filterElement['filterName']}__{filterElement['filterName']}__icontains"
+            searchFilterForOneFilter |= Q(**{queryStr: filterValue})
+        complexSearchFilter &= searchFilterForOneFilter
+    return complexSearchFilter
 
 
 def comparison(request):

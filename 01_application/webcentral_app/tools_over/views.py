@@ -14,6 +14,8 @@ from tools_over.models import (
     LifeCyclePhase,
 )
 
+from common.views import createQ
+
 
 class UpdateProperties:
     """It shoud be needed to update the icons for the function tool view."""
@@ -53,6 +55,8 @@ def index(request):
     filteredBy = [None] * 3
     searched = None
 
+    filtering = bool(request.GET.get("filtering", False))
+
     usageElements = request.GET.get("use-hidden", "")
     usageElementsList = usageElements.split(",")
 
@@ -62,42 +66,50 @@ def index(request):
     accessibilityElements = request.GET.get("lifeCyclePhase-hidden", "")
     accessibilityElementsList = accessibilityElements.split(",")
 
-    if ((request.GET.get("use") != None)
-            | (request.GET.get("accessibility") != None)
-            | (request.GET.get("lifeCyclePhase") != None)
-            | (request.GET.get("searched") != None)):
-        usage = request.GET.get("use", "")
-        accessibility = request.GET.get("accessibility", "")
-        lifeCyclePhase = request.GET.get("lifeCyclePhase", "")
-        searched = request.GET.get("searched", "")
+    listOfFilters = [
+        {
+            "filterValues": usageElementsList,
+            "filterName": "usage",
+        },
+        {
+            "filterValues": lifeCyclePhaseElementsList,
+            "filterName": "lifeCyclePhase",
+        },
+        {
+            "filterValues": accessibilityElementsList,
+            "filterName": "accessibility",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+    # if ((request.GET.get("use") != None)
+    #         | (request.GET.get("accessibility") != None)
+    #         | (request.GET.get("lifeCyclePhase") != None)
+    #         | (request.GET.get("searched") != None)):
+    #     usage = request.GET.get("use", "")
+    #     accessibility = request.GET.get("accessibility", "")
+    #     lifeCyclePhase = request.GET.get("lifeCyclePhase", "")
+    searched = request.GET.get("searched", "")
 
-        criterionToolsOne = Q(programmingLanguages__icontains=searched)
-        criterionToolsTwo = Q(scale__scale__icontains=searched)
-        criterionToolsThree = Q(
-            classification__classification__icontains=searched)
-        criterionToolsFour = Q(name__icontains=searched)
-        tools = (
-            Tools.objects.filter(
-                criterionToolsOne
-                | criterionToolsTwo
-                | criterionToolsThree
-                | criterionToolsFour).filter(
-                    name__icontains=searched,
-                    usage__usage__icontains=usage,
-                    lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
-                    accessibility__accessibility__icontains=accessibility,
-                    classification__classification_de__in=[
-                        "digitales Werkzeug",
-                        "Sprache",
-                        "Standard",
-                        "Framework/Bibliothek",
-                    ],
-                    focus__focus_de="technisch",
-                ).distinct()
-        )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
-        # having distinct removes the duplicates,
-        # but filters out e.g., solely open-source tools!
-        filteredBy = [usage, accessibility, lifeCyclePhase]
+    # criterionToolsOne = Q(programmingLanguages__icontains=searched)
+    # criterionToolsTwo = Q(scale__scale__icontains=searched)
+    # criterionToolsThree = Q(
+    #     classification__classification__icontains=searched)
+    # criterionToolsFour = Q(name__icontains=searched)
+    tools = (
+        Tools.objects.filter(complexCriterion).filter(
+            name__icontains=searched,
+            classification__classification_de__in=[
+                "digitales Werkzeug",
+                "Sprache",
+                "Standard",
+                "Framework/Bibliothek",
+            ],
+            focus__focus_de="technisch",
+        ).distinct()
+    )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
+    # having distinct removes the duplicates,
+    # but filters out e.g., solely open-source tools!
+    filteredBy = ["usage", "accessibility", "lifeCyclePhase"]
 
     tools = list(sorted(tools, key=lambda obj: obj.name))
     toolsPaginator = Paginator(tools, 12)
@@ -174,6 +186,10 @@ def index(request):
             },
         ],
     }
+
+    if filtering:
+        return render(request, "tools_over/tool-listings-results.html",
+                      context)
 
     return render(request, "tools_over/tool-listings.html", context)
 

@@ -83,3 +83,12 @@ class SearchPage(object):
         """Return all radio buttons"""
 
         return self.driver.find_elements(By.XPATH, "//input[@type='radio']")
+
+    def getTextInput(self):
+        """Get free-text-search Selenium object."""
+        return self.driver.find_element(By.XPATH, "//input[@name='searched']")
+
+    def getSearchDivContainer(self):
+        """Get Search-bar surrounding div container"""
+        return self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'searchContainer')]")
