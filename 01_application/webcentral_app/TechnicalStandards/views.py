@@ -32,21 +32,29 @@ def norm(request):
     norms = Norm.objects.all()
     filteredBy = [None] * 2  # 3
     searched = None
+    filtering = bool(request.GET.get("filtering", False))
 
-    if ((request.GET.get("name") != None)
-            | (request.GET.get("source") != None)
-            | (request.GET.get("searched")
-               != None)):  # (request.GET.get("n") != None) |
-        name = request.GET.get(_("Bezeichnung"), "")
-        source = request.GET.get("source", "")
-        # link=request.GET.get('l')
-        searched = request.GET.get("searched", "")
-        norms = Norm.objects.filter(
-            source__icontains=source,
-            name__icontains=name,
-            shortDescription__icontains=searched,
-        )  # name__icontains=Name,
-        filteredBy = [name, source]
+    nameElements = request.GET.get("name-hidden", "")
+    nameElementsList = nameElements.split(",")
+
+    sourceElements = request.GET.get("source-hidden", "")
+    sourceElementsList = sourceElements.split(",")
+
+    listOfFilters = [
+        {
+            "filterValues": nameElementsList,
+            "filterName": "name__icontains",
+        },
+        {
+            "filterValues": sourceElementsList,
+            "filterName": "source__icontains",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+    searched = request.GET.get("searched", "")
+    if searched != "":
+        complexCriterion &= Q(shortDescription__icontains=searched)
+    norms = Norm.objects.filter(complexCriterion)  # name__icontains=Name,
 
     norms = list(sorted(norms, key=lambda obj: obj.name))
 
@@ -62,10 +70,10 @@ def norm(request):
         page,
         "search":
         searched,
-        "name":
-        filteredBy[0],
-        "source":
-        filteredBy[1],
+        # "name":
+        # filteredBy[0],
+        # "source":
+        # filteredBy[1],
         "nameOfTemplate":
         "norms",
         "focusBorder":
@@ -146,8 +154,8 @@ def norm(request):
                     "ÖNORM EN 12831-1",
                     "ÖNORM EN 12831-3",
                 ],
-                "filter":
-                filteredBy[0],
+                # "filter":
+                # filteredBy[0],
                 "fieldName":
                 "name",
             },
@@ -162,12 +170,17 @@ def norm(request):
                 ],
                 "fieldName":
                 "source",
-                "filter":
-                filteredBy[1],
+                # "filter":
+                # filteredBy[1],
             },
         ],
     }
-
+    if filtering:
+        return render(
+            request,
+            "TechnicalStandards/norm-listings-results.html",
+            context,
+        )
     if isAjaxRequest:
         html = render_to_string(
             template_name="TechnicalStandards/norm-listings-results.html",
