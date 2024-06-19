@@ -249,6 +249,10 @@ $('#searchBox').on('submit', function(e) {
               $('#tool-listing-results').empty();
               $('#tool-listing-results').append(response);
             }
+            else if ($("#dataset-listing-results").length > 0) {
+              $('#dataset-listing-results').empty();
+              $('#dataset-listing-results').append(response);             
+            }
           },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here

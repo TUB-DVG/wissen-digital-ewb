@@ -38,7 +38,7 @@ def createQ(filterElements):
     for filterElement in filterElements:
         for filterValue in filterElement["filterValues"]:
             searchFilterForOneFilter = Q()
-            queryStr = f"{filterElement['filterName']}__{filterElement['filterName']}__icontains"
+            queryStr = filterElement['filterName']
             searchFilterForOneFilter |= Q(**{queryStr: filterValue})
         complexSearchFilter &= searchFilterForOneFilter
     return complexSearchFilter

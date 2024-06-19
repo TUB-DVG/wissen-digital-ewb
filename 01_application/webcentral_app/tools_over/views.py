@@ -223,15 +223,15 @@ def indexApps(request):
     listOfFilters = [
         {
             "filterValues": usageElementsList,
-            "filterName": "usage",
+            "filterName": "usage__usage__icontains",
         },
         {
             "filterValues": lifeCyclePhaseElementsList,
-            "filterName": "lifeCyclePhase",
+            "filterName": "lifeCyclePhase__lifeCyclePhase__icontains",
         },
         {
             "filterValues": accessibilityElementsList,
-            "filterName": "accessibility",
+            "filterName": "accessibility__accessibility__icontains",
         },
     ]
     complexCriterion = createQ(listOfFilters)
