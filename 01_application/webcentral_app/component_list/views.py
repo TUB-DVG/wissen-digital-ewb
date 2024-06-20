@@ -281,6 +281,8 @@ def components(request):
         "assets/images/arrowDownEcological.svg",
         "renderComparisonRadio":
         True,
+        "headerOfImage":
+        _("Die Daten-Wertschöpfungkette"),
         # "assets/images/arrow.svg",
     }
     if filtering:

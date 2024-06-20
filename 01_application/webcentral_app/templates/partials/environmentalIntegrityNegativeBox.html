@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
-<div class="col-6 col-lg-6 box border-{{ focusBorder }}" id="box{{ boxObject.boxId }}">
+<div class="col-6 col-lg-6 box border-{{ focusBorder }}"
+     id="box{{ boxObject.boxId }}">
     <a href="{% url boxObject.linkToDetailsPage %}"
        style="color: inherit;
               text-decoration: none;
@@ -13,10 +14,7 @@
                 <p class="boxDescription">{{ boxObject.description }}</p>
             </div>
             <div class="boxImage">
-                <img src="{% static boxObject.image %}"
-                     alt="box1"
-                     class="box__image"
-                     style="width: 602px" />
+                <img src="{% static boxObject.image %}" alt="box1" class="box__image" />
             </div>
         </div>
     </a>

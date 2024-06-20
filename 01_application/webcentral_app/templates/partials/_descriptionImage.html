@@ -1,11 +1,11 @@
 {% load static %}
 <div class="descriptionImage"
      style="background-color: #EDEDED;
-            display: flex;
             justify-content: center;
-            align-items: center">
-    <img src="{% static image %}"
-         alt="Description Component Image"
-         style="width: 923px;
-                height: 502px" />
+            align-items: center;
+            padding: 35px">
+     <div style="display: block">
+          <span style="font-size: 22px; font-weight: 500; padding-bottom: 17px;">{{ headerOfImage }}</span>
+     </div>
+     <img src="{% static image %}" alt="Description Component Image" />
 </div>
