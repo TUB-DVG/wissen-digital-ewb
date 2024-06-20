@@ -1,5 +1,15 @@
 .overview-box-site {
-.border-ecological {
-    @include border-boxen($ecological-color);
+    .border-ecological {
+        @include border-boxen($ecological-color);
+        }
+    .grey-box-container {
+        padding: 16px;
+        margin-top: auto;
+        background-color: #F0F0F0;
+    }
+    .imageHeading{
+        font-weight: 500;
+        font-size: 15px;
+        padding-bottom: 16px;
     }
 }

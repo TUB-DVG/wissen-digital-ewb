@@ -156,6 +156,9 @@ def environmentalIntegrityNegativ(request):
                   ),
                 "image":
                 "img/componentList/backBoneOverviewImg.svg",
+                "headingOfImage":
+                _("Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
+                  ),
             },
             {
                 "boxId":
