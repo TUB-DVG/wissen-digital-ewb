@@ -779,6 +779,13 @@ tr[data-href] {
   color: #AFC5FF;
 }
 
+.overview-box-site .border-ecological {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #8FDE97;
+  outline-offset: -17px;
+}
+
 body {
   color: #000;
 }

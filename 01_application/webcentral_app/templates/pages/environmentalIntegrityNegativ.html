@@ -41,17 +41,20 @@
     }
 
     .box__image {
+      background-color: #F0F0F0;
       margin-top: 8px;
-      height: 100% !important;
-      object-fit: contain;
-      width: 602px;
+      /* height: 100% !important; */
+      /* object-fit: contain; */
+      /* eight: */
+      height: auto;
+      width: 569px;
     }
   </style>
   <!-- =======================
  Content START -->
   <div class="content container">
     {% include "partials/descriptionContainer.html" %}
-    <div class="boxes row" id="container-start-focus">
+    <div class="boxes row overview-box-site">
       {% for boxObject in boxes %}
         {% include boxObject.pathToTemplate with boxObject=boxObject %}
       {% endfor %}
