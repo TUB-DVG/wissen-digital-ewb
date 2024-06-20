@@ -25,6 +25,7 @@ class Component(models.Model):
     globalWarmingPotentialTotal = models.FloatField(blank=True, null=True)
     componentWeight = models.FloatField(blank=True, null=True)
     lifetime = models.IntegerField(blank=True, null=True)
+    specificGlobalWarmingPotential = models.FloatField(blank=True, null=True)
     energyConsumptionUsePhaseActive = models.FloatField(blank=True, null=True)
     energyConsumptionUsePhasePassive = models.FloatField(blank=True, null=True)
     globalWarmingPotentialProduction = models.FloatField(blank=True, null=True)

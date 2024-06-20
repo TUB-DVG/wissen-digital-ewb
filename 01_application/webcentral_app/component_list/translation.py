@@ -6,6 +6,7 @@ from modeltranslation.translator import (
 from .models import (
     Category,
     ComponentClass,
+    Component,
 )
 
 
@@ -17,5 +18,14 @@ class CategoryTranslationOptions(TranslationOptions):
     fields = ("category", )
 
 
+class ComponentTranslationOptions(TranslationOptions):
+    fields = (
+        "description",
+        "furtherInformationNotes",
+        "sources",
+    )
+
+
 translator.register(ComponentClass, ComponentClassTranslationOptions)
 translator.register(Category, CategoryTranslationOptions)
+translator.register(Component, ComponentTranslationOptions)
