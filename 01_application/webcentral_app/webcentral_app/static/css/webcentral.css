@@ -785,6 +785,16 @@ tr[data-href] {
   outline: 2px solid #8FDE97;
   outline-offset: -17px;
 }
+.overview-box-site .grey-box-container {
+  padding: 16px;
+  margin-top: auto;
+  background-color: #F0F0F0;
+}
+.overview-box-site .imageHeading {
+  font-weight: 500;
+  font-size: 15px;
+  padding-bottom: 16px;
+}
 
 body {
   color: #000;

@@ -13,8 +13,9 @@
             <div class="col-12">
                 <p class="boxDescription">{{ boxObject.description }}</p>
             </div>
-            <div class="boxImage">
-                <img src="{% static boxObject.image %}" alt="box1" class="box__image" />
+            <div class="grey-box-container">
+                <span class="imageHeading">{{ boxObject.headingOfImage }}</span>
+                <img src="{% static boxObject.image %}" alt="box1" />
             </div>
         </div>
     </a>
