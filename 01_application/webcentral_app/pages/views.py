@@ -173,7 +173,9 @@ def environmentalIntegrityNegativ(request):
                 _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten"
                   ),
                 "image":
-                "img/componentList/negativeEnvironmentalImpactsBox2.svg",
+                "img/componentList/dataPipelineOverviewImg.svg",
+                "headingOfImage":
+                _("Die Daten-Wertschöpfungkette"),
             },
         ],
         "focusBorder":
