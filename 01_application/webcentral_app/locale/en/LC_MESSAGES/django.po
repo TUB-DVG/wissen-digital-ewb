@@ -2207,12 +2207,16 @@ msgid ""
 "Informationen zu den Treibhausgasemissionen und Energieverbräuchen "
 "(Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als"
 msgstr ""
+"\n"
+"                    In the following table, you will find detailed "
+"information on the greenhouse gas emissions and energy consumption "
+"(operational phase) of commonly used components. You can download the data as"
 
 #: templates/component_list/components.html:137
 msgid ""
 " oder die Komponenten nach Ihren Vorgaben online darstellen lassen.\n"
 "                                        "
-msgstr ""
+msgstr "or show the components with their requirements online."
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
