@@ -757,7 +757,6 @@ msgid "Sortierung"
 msgstr "Sorting"
 
 #: component_list/views.py:266
-#, fuzzy
 #| msgid "Aufwände für Datenverarbeitungsprozsse"
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
