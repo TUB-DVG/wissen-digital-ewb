@@ -257,7 +257,7 @@ def components(request):
         #     }
         # ],
         "image":
-        "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+        "img/componentList/backbone_de.svg",
         "linkOnRightSiteBool":
         True,
         "linkOnRightSiteName":
