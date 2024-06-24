@@ -105,6 +105,12 @@ def components(request):
     componentsPaginator = Paginator(componentsObjList, 10)
     pageNum = request.GET.get("page", None)
     page = componentsPaginator.get_page(pageNum)
+
+    if request.LANGUAGE_CODE == "de":
+        descriptionImage = "backbone_de.svg"
+    else:
+        descriptionImage = "backbone_en.svg"
+
     context = {
         "renderDetailsRadio":
         True,
@@ -257,7 +263,7 @@ def components(request):
         #     }
         # ],
         "image":
-        "img/componentList/backbone_de.svg",
+        f"img/componentList/{descriptionImage}",
         "linkOnRightSiteBool":
         True,
         "linkOnRightSiteName":
@@ -293,7 +299,14 @@ def components(request):
 
 
 def dataProcessing(request):
+    
+    if request.LANGUAGE_CODE == "de":
+        descriptionImage = "datenwertschöpfungskette_de.svg"
+    else:
+        descriptionImage = "datenwertschöpfungskette_en.svg"
+
     context = {
+        "descriptionImage": "img/componentList/" + descriptionImage,
         "focusBorder":
         "ecological",
         "focusName":
