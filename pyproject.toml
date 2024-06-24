@@ -49,6 +49,8 @@ namespaces = false
 
 [project.optional-dependencies]
 dev = [
+    "pylint",
+    "black",
     "sphinx",
     "myst-parser"
 ]
