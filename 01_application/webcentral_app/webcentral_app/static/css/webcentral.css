@@ -13,42 +13,42 @@
 #container-start-focus .border-technical {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #AFC5FF;
+  outline: 2px solid #8FABF7;
   outline-offset: -17px;
 }
 #container-start-focus .border-operational {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #FFAE9D;
+  outline: 2px solid #F49783;
   outline-offset: -17px;
 }
 #container-start-focus .border-ecological {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #8FDE97;
+  outline: 2px solid #6CC876;
   outline-offset: -17px;
 }
 #container-start-focus .border-legal {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #F5E86A;
+  outline: 2px solid #E4D85C;
   outline-offset: -17px;
 }
 #container-start-focus a.technical {
   color: #000;
-  border-bottom: 2px solid #AFC5FF;
+  border-bottom: 2px solid #8FABF7;
 }
 #container-start-focus a.operational {
   color: #000;
-  border-bottom: 2px solid #FFAE9D;
+  border-bottom: 2px solid #F49783;
 }
 #container-start-focus a.ecological {
   color: #000;
-  border-bottom: 2px solid #8FDE97;
+  border-bottom: 2px solid #6CC876;
 }
 #container-start-focus a.legal {
   color: #000;
-  border-bottom: 2px solid #F5E86A;
+  border-bottom: 2px solid #E4D85C;
 }
 #container-start-focus table td {
   padding: 3px;
@@ -63,7 +63,7 @@
 #container-criteria-catalog-landing-page .border-legal {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #F5E86A;
+  outline: 2px solid #E4D85C;
   outline-offset: -17px;
 }
 #container-criteria-catalog-landing-page p, #container-criteria-catalog-landing-page li {
@@ -77,11 +77,11 @@
 #container-criteria-catalog-details .border-legal {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #F5E86A;
+  outline: 2px solid #E4D85C;
   outline-offset: -17px;
 }
 #container-criteria-catalog-details hr {
-  background-color: #F5E86A;
+  background-color: #E4D85C;
   height: 3px;
   border: 0;
 }
@@ -107,95 +107,95 @@
 /* formating cards */
 .webcentral-cards .border-technical {
   border-radius: 2px;
-  border: 2px solid #AFC5FF;
+  border: 2px solid #8FABF7;
 }
 .webcentral-cards .border-technical-round {
   border-radius: 20px;
-  border: 2px solid #AFC5FF;
+  border: 2px solid #8FABF7;
 }
 .webcentral-cards .border-technical-round-font-color {
   border-radius: 20px;
-  border: 2px solid #AFC5FF;
-  color: #AFC5FF;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
 }
 .webcentral-cards .btn-technical {
-  background-color: #AFC5FF;
+  background-color: #8FABF7;
   color: white;
 }
 .webcentral-cards .border-operational {
   border-radius: 2px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
 }
 .webcentral-cards .border-operational-round {
   border-radius: 20px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
 }
 .webcentral-cards .border-operational-round-font-color {
   border-radius: 20px;
-  border: 2px solid #FFAE9D;
-  color: #FFAE9D;
+  border: 2px solid #F49783;
+  color: #F49783;
 }
 .webcentral-cards .btn-operational {
-  background-color: #FFAE9D;
+  background-color: #F49783;
   color: white;
 }
 .webcentral-cards .border-ecological {
   border-radius: 2px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
 }
 .webcentral-cards .border-ecological-round {
   border-radius: 20px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
 }
 .webcentral-cards .btn-ecological {
-  background-color: #8FDE97;
+  background-color: #6CC876;
   color: white;
 }
 .webcentral-cards .border-legal {
   border-radius: 2px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
 }
 .webcentral-cards .border-legal-round {
   border-radius: 20px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
 }
 .webcentral-cards .btn-legal-white-bg {
   background-color: white;
-  color: #F5E86A;
-  border: 2px solid #F5E86A;
+  color: #E4D85C;
+  border: 2px solid #E4D85C;
 }
 .webcentral-cards .btn-legal {
-  background-color: #F5E86A;
+  background-color: #E4D85C;
   color: white;
 }
 
 .ecological-cards .ecological-font-color {
-  color: #8FDE97;
+  color: #6CC876;
 }
 .ecological-cards .border-ecological {
   border-radius: 2px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
 }
 .ecological-cards .border-ecological-round {
   border-radius: 20px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
 }
 .ecological-cards .border-ecological-round-font-color {
   border-radius: 20px;
-  border: 2px solid #8FDE97;
-  color: #8FDE97;
+  border: 2px solid #6CC876;
+  color: #6CC876;
 }
 .ecological-cards .btn-ecological {
-  background-color: #8FDE97;
+  background-color: #6CC876;
   color: white;
 }
 .ecological-cards .btn-ecological-white-bg {
   background-color: white;
-  color: #8FDE97;
-  border: 2px solid #8FDE97;
+  color: #6CC876;
+  border: 2px solid #6CC876;
 }
 .ecological-cards .btn-ecological-free-text {
-  color: #8FDE97;
+  color: #6CC876;
 }
 .ecological-cards .text-input-with-arrow-ecological {
   background-image: url("/static/assets/images/arrowDownEcological.svg"); /* Path to your arrow image */
@@ -208,7 +208,7 @@
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
   border-radius: 50%;
   outline: none;
   /* box-shadow: 0 0 5px #999; */
@@ -216,12 +216,12 @@
   margin-right: 10px;
 }
 .ecological-cards ::placeholder {
-  color: #8FDE97 !important;
+  color: #6CC876 !important;
   opacity: 1;
   font-weight: 400 !important;
 }
 .ecological-cards input[type=text] {
-  color: #8FDE97;
+  color: #6CC876;
 }
 .ecological-cards input[type=radio]:before {
   content: "";
@@ -232,13 +232,13 @@
   border-radius: 50%;
 }
 .ecological-cards input[type=radio]:checked:before {
-  background: #8FDE97;
+  background: #6CC876;
 }
 .ecological-cards input[type=checkbox] {
   appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid #8FDE97;
+  border: 2px solid #6CC876;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
@@ -252,55 +252,55 @@
   margin: 20% auto;
 }
 .ecological-cards input[type=checkbox]:checked:before {
-  background: #8FDE97;
+  background: #6CC876;
 }
 .ecological-cards .form-input-ecological {
-  color: #8FDE97;
+  color: #6CC876;
 }
 .ecological-cards .ecological-text-near-radio {
-  color: #8FDE97;
+  color: #6CC876;
 }
 
 .legal-cards .legal-font-color {
-  color: #F5E86A;
+  color: #E4D85C;
 }
 .legal-cards .border-legal {
   border-radius: 2px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
 }
 .legal-cards .border-legal-round {
   border-radius: 20px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
 }
 .legal-cards .border-legal-round-font-color {
   border-radius: 20px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
 }
 .legal-cards .btn-legal {
-  background-color: #F5E86A;
+  background-color: #E4D85C;
   color: white;
 }
 .legal-cards .btn-legal-free-text {
-  color: #F5E86A;
+  color: #E4D85C;
 }
 .legal-cards .btn-legal-white-bg {
   background-color: white;
-  color: #F5E86A;
-  border: 2px solid #F5E86A;
+  color: #E4D85C;
+  border: 2px solid #E4D85C;
 }
 .legal-cards .text-input-with-arrow-legal {
   background-image: url("/static/assets/images/arrowDownLegal.svg"); /* Path to your arrow image */
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
-  color: #F5E86A;
+  color: #E4D85C;
   font-weight: 500;
 }
 .legal-cards input[type=radio] {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
   border-radius: 50%;
   outline: none;
   transition: 0.2s;
@@ -315,7 +315,7 @@
   border-radius: 50%;
 }
 .legal-cards ::placeholder {
-  color: #F5E86A;
+  color: #E4D85C;
   opacity: 1;
   font-weight: 400 !important;
 }
@@ -326,7 +326,7 @@
   appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid #F5E86A;
+  border: 2px solid #E4D85C;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
@@ -340,52 +340,52 @@
   margin: 20% auto;
 }
 .legal-cards input[type=checkbox]:checked:before {
-  background: #F5E86A;
+  background: #E4D85C;
 }
 .legal-cards .legal-text-near-radio {
-  color: #F5E86A;
+  color: #E4D85C;
 }
 
 .operational-cards .operational-font-color {
-  color: #FFAE9D;
+  color: #F49783;
 }
 .operational-cards .border-operational {
   border-radius: 2px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
 }
 .operational-cards .border-operational-round {
   border-radius: 20px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
 }
 .operational-cards .border-operational-round-font-color {
   border-radius: 20px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
 }
 .operational-cards .btn-operational {
-  background-color: #FFAE9D;
+  background-color: #F49783;
   color: white;
 }
 .operational-cards .btn-operational-free-text {
-  color: #FFAE9D;
+  color: #F49783;
 }
 .operational-cards .btn-operational-white-bg {
   background-color: white;
-  color: #FFAE9D;
-  border: 2px solid #FFAE9D;
+  color: #F49783;
+  border: 2px solid #F49783;
 }
 .operational-cards .text-input-with-arrow-operational {
   background-image: url("/static/assets/images/arrowDownOperational.svg"); /* Path to your arrow image */
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
-  color: #FFAE9D;
+  color: #F49783;
   font-weight: 500;
 }
 .operational-cards input[type=radio] {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
   border-radius: 50%;
   outline: none;
   transition: 0.2s;
@@ -400,25 +400,25 @@
   border-radius: 50%;
 }
 .operational-cards input[type=radio]:checked:before {
-  background: #FFAE9D;
+  background: #F49783;
 }
 .operational-cards input[type=checkbox] {
   appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid #FFAE9D;
+  border: 2px solid #F49783;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
   margin-left: 20px;
 }
 .operational-cards ::placeholder {
-  color: #FFAE9D !important;
+  color: #F49783 !important;
   opacity: 1;
   font-weight: 400 !important;
 }
 .operational-cards input[type=text] {
-  color: #FFAE9D;
+  color: #F49783;
 }
 .operational-cards input[type=checkbox]:before {
   content: "";
@@ -428,61 +428,61 @@
   margin: 20% auto;
 }
 .operational-cards input[type=checkbox]:checked:before {
-  background: #FFAE9D;
+  background: #F49783;
 }
 .operational-cards .operational-text-near-radio {
-  color: #FFAE9D;
+  color: #F49783;
 }
 
 .technical-cards .technical-font-color {
-  color: #AFC5FF;
+  color: #8FABF7;
 }
 .technical-cards .border-technical {
   border-radius: 2px;
-  border: 2px solid #AFC5FF;
+  border: 2px solid #8FABF7;
 }
 .technical-cards .border-technical-round {
   border-radius: 20px;
-  border: 2px solid #AFC5FF;
-  color: #AFC5FF;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
 }
 .technical-cards .btn-technical-white-bg {
   background-color: white;
-  color: #AFC5FF;
-  border: 2px solid #AFC5FF;
+  color: #8FABF7;
+  border: 2px solid #8FABF7;
 }
 .technical-cards .border-technical-round-font-color {
   border-radius: 20px;
-  border: 2px solid #AFC5FF;
-  color: #AFC5FF;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
 }
 .technical-cards .text-input-with-arrow-technical {
   background-image: url("/static/assets/images/arrowDownTechnical.svg"); /* Path to your arrow image */
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
-  color: #AFC5FF;
+  color: #8FABF7;
   font-weight: 500;
 }
 .technical-cards .btn-technical {
-  background-color: #AFC5FF;
+  background-color: #8FABF7;
   color: white;
 }
 .technical-cards .btn-technical-free-text {
-  color: #AFC5FF;
+  color: #8FABF7;
 }
 .technical-cards input[type=radio] {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #AFC5FF;
+  border: 2px solid #8FABF7;
   border-radius: 50%;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
 }
 .technical-cards input[type=text] {
-  color: #AFC5FF;
+  color: #8FABF7;
 }
 .technical-cards input[type=radio]:before {
   content: "";
@@ -493,23 +493,23 @@
   border-radius: 50%;
 }
 .technical-cards input[type=radio]:checked:before {
-  background: #AFC5FF;
+  background: #8FABF7;
 }
 .technical-cards .technical-text-near-radio {
-  color: #AFC5FF;
+  color: #8FABF7;
 }
 .technical-cards input[type=checkbox] {
   appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid #AFC5FF;
+  border: 2px solid #8FABF7;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
   margin-left: 20px;
 }
 .technical-cards ::placeholder {
-  color: #AFC5FF !important;
+  color: #8FABF7 !important;
   opacity: 1;
   font-weight: 400 !important;
 }
@@ -521,7 +521,7 @@
   margin: 20% auto;
 }
 .technical-cards input[type=checkbox]:checked:before {
-  background: #AFC5FF;
+  background: #8FABF7;
 }
 
 .card-text {
@@ -534,14 +534,14 @@
 
 .neutral-cards .border-neutral {
   border-radius: 2px;
-  border: 2px solid #636363;
+  border: 2px solid #F8F8F8;
 }
 .neutral-cards .border-neutral-round {
   border-radius: 20px;
-  border: 2px solid #636363;
+  border: 2px solid #F8F8F8;
 }
 .neutral-cards .btn-neutral {
-  background-color: #636363;
+  background-color: #F8F8F8;
   color: white;
 }
 
@@ -754,7 +754,7 @@ tr[data-href] {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: #8FDE97;
+  color: #6CC876;
   justify-content: space-between;
 }
 
@@ -762,27 +762,27 @@ tr[data-href] {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: #FFAE9D;
+  color: #F49783;
 }
 
 .link-navigator__negative-legal {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: #F5E86A;
+  color: #E4D85C;
 }
 
 .link-navigator__negative-technical {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  color: #AFC5FF;
+  color: #8FABF7;
 }
 
 .overview-box-site .border-ecological {
   border-radius: 2px;
   border: None;
-  outline: 2px solid #8FDE97;
+  outline: 2px solid #6CC876;
   outline-offset: -17px;
 }
 .overview-box-site .grey-box-container {
@@ -817,7 +817,7 @@ body h5 {
 }
 
 .criteriaCatalogHeading {
-  color: #F5E86A;
+  color: #E4D85C;
 }
 
 /*# sourceMappingURL=webcentral.css.map */
