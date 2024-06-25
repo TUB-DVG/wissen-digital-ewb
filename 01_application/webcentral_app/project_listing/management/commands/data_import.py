@@ -258,6 +258,8 @@ class Command(BaseCommand):
         criteriaCatalogForTopic, _ = CriteriaCatalog.objects.get_or_create(
             name=row[header.index("katalog")], )
 
+        breakpoint()
+
         try:
             if row[header.index("parentId")] == "":
                 parentTopicOfCurrentTopic = None
