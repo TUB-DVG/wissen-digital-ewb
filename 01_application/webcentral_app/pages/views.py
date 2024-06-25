@@ -1,6 +1,7 @@
 """views of pages app."""
 from django.shortcuts import render
 from django.utils.translation import gettext as _
+from django.template import Template, Context
 
 from component_list.models import (
     EnvironmentalImpact,
@@ -131,6 +132,11 @@ def userEngagement(request):
 
 def environmentalIntegrityNegativ(request):
     """Call render function for negativ environmental integrity page."""
+
+    linkToDynamicallyRender = "<a href=\"{% url 'environmentalIntegrityNegativ' %}\">positive Umweltwirkungen</a>"
+    templateObj = Template(linkToDynamicallyRender)
+    renderedTemplate = templateObj.render(Context({}))
+    breakpoint()
     context = {
         "pathToImage":
         "img/componentList/circle-icon.svg",
@@ -139,8 +145,8 @@ def environmentalIntegrityNegativ(request):
         "showMorePresent":
         False,
         "explanaitionText":
-           _('''
-    Digitale Anwendungen zeichnen sich oftmals durch positive Umweltwirkungen aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden installiert werden. Aus der Summe dieser Aufwände lassen sich so die Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.
+           _(f'''
+    Digitale Anwendungen zeichnen sich oftmals durch {renderedTemplate} aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden installiert werden. Aus der Summe dieser Aufwände lassen sich so die Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.
 
     Zur Bestimmung der Umweltlasten sind Hinweise zur Abschätzung daher hier in die Bereiche „Aufwände für Datenverarbeitungsprozesse“ und „Aufwände für häufig verwendete Komponenten“ unterteilt.
 '''), 
@@ -155,8 +161,7 @@ def environmentalIntegrityNegativ(request):
                 "heading":
                 _("Aufwände für verwendete Komponenten"),
                 "description":
-                _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten"
-                  ),
+                _('Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten verbunden. Das sind alle Komponenten, die einen zweckmäßigen Betrieb der digitalen Anwendung sicherstellen. Je nachdem, welche dieser Komponenten zusätzlich für die digitale Anwendung verbaut werden, müssen die entsprechenden Umweltlasten mitbilanziert werden (inkl. aller Lebensphasen). Werden bestehende Komponenten genutzt, können die Lasten durch die anteilige Nutzung in die Bilanz einfließen. Die hier dargestellte Übersicht zu häufig verwendeten Komponenten (Fokus Betriebsoptimierung von Gebäuden) soll einen einfachen Überblick zu den Hardware-bezogenen Umweltlasten bieten. Mehr Anzeigen'),
                 "image":
                 "img/componentList/backBoneOverviewImg.svg",
                 "headingOfImage":
@@ -173,8 +178,7 @@ def environmentalIntegrityNegativ(request):
                 "heading":
                 _("Aufwände für Datenverarbeitungsprozesse"),
                 "description":
-                _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten"
-                  ),
+                _('Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, die sich in der Regel ständig wiederholen. Dadurch kommt es ununterbrochen zur Generierung von Daten, was mit einem entsprechenden Energie- und Ressourcenverbrauch verbunden ist. Die Aufwände, die für die Nutzung der entsprechenden Dateninfrastruktur entstehen, werden hier näher erläutert. Einfache Abschätzungen anhand des Datenaufkommens werden ebenfalls vorgenommen. Mehr Anzeigen'),
                 "image":
                 "img/componentList/dataPipelineOverviewImg.svg",
                 "headingOfImage":
