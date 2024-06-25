@@ -188,7 +188,7 @@ def environmentalIntegrityNegativ(request):
         "focusBorder":
         "ecological",
     }
-    breakpoint()
+    # breakpoint()
     return render(request, "pages/environmentalIntegrityNegativ.html", context)
 
 
