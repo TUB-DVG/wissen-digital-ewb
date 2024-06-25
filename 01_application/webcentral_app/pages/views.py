@@ -139,8 +139,11 @@ def environmentalIntegrityNegativ(request):
         "showMorePresent":
         False,
         "explanaitionText":
-        _("Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale Anwendungen muss zudem der materielle und energetische Aufwand für die involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte können aber auch auf andere digitale Anwendungen übertragen werden."
-          ),
+           _('''
+    Digitale Anwendungen zeichnen sich oftmals durch positive Umweltwirkungen aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden installiert werden. Aus der Summe dieser Aufwände lassen sich so die Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.
+
+    Zur Bestimmung der Umweltlasten sind Hinweise zur Abschätzung daher hier in die Bereiche „Aufwände für Datenverarbeitungsprozesse“ und „Aufwände für häufig verwendete Komponenten“ unterteilt.
+'''), 
         "boxes": [
             {
                 "boxId":
