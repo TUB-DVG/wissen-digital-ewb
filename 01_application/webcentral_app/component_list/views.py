@@ -117,8 +117,9 @@ def components(request):
         "heading":
         _("Aufwände für verwendete Komponenten"),
         "explanaitionText":
-        _("In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für Datenverarbeitungsprozesse”) können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige Komponenten und deren Umweltlasten."
-          ),
+        _('''
+            Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch „Aufwände für Datenverarbeitungsprozesse“) ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
+        '''),
         "focusBorder":
         "ecological",
         "focusName":
@@ -264,6 +265,7 @@ def components(request):
         # ],
         "image":
         f"img/componentList/{descriptionImage}",
+        "caption": _('Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die zur Realisierung der Daten-Wertschöpfungskette notwendig sind.'),
         "linkOnRightSiteBool":
         True,
         "linkOnRightSiteName":

@@ -134,8 +134,11 @@
                 {% include "partials/_descriptionImage.html" %}
                 <div class="descriptionDownloadLink">
                     {% blocktranslate %}
-                    In der folgenden Tabelle finden Sie weitergehende Informationen zu den Treibhausgasemissionen und Energieverbräuchen (Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als{% endblocktranslate %} <a href="{% static 'pdf/componentList.pdf' %}" class="unstyledLink" download>Gesamttabelle herunterladen</a>{% blocktranslate %} oder die Komponenten nach Ihren Vorgaben online darstellen lassen.
-                                        {% endblocktranslate %}
+                    Für häufig verwendete Komponenten, die für die Realisierung digitaler Anwendungen notwendig sind, wurden beispielhafte Produkte und deren Emissionen recherchiert oder mittels Lebenszyklusanalyse-Software modelliert. Die folgende Übersicht listet diese Komponenten, die entstehenden Emissionen, sowie weitere Informationen rund um die Komponenten auf. Zudem stehen die Inhalte der Tabelle als Excel-Datei inklusive eines kleinen Berechnungstools der Gesamt-Treibhausgasemissionen, verursacht durch alle Komponenten einer digitalen Anwendung, zum Download bereit:                    
+                    {% endblocktranslate %}
+                </div>
+                <div class="ecological-cards">
+                  <a class="ecological-font-color" style="font-size: 22px;" href="#">Excel-Tabelle zum Download</a>
                 </div>
             </div>
             <div class="searchContainer {{ focusBorder }}-cards">

@@ -109,7 +109,10 @@
         </div>
       </div>
     {% else %}
-      <p class="mainContent">{{ explanaitionText }}</p>
+      <p class="mainContent" id="mainContent"></p>
     {% endif %}
   </div>
 </div>
+<script>
+  $("#mainContent").html = '{{ explanaitionText }}'
+</script>
