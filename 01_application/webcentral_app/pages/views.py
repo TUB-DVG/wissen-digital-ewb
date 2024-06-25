@@ -159,7 +159,7 @@ def environmentalIntegrityNegativ(request):
                 "heading":
                 _("Aufwände für verwendete Komponenten"),
                 "description":
-                _("Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten verbunden. Das sind alle Komponenten, die einen zweckmäßigen Betrieb der digitalen Anwendung sicherstellen. Je nachdem, welche dieser Komponenten zusätzlich für die digitale Anwendung verbaut werden, müssen die entsprechenden Umweltlasten mitbilanziert werden (inkl. aller Lebensphasen). Werden bestehende Komponenten genutzt, können die Lasten durch die anteilige Nutzung in die Bilanz einfließen. Die hier dargestellte Übersicht zu häufig verwendeten Komponenten (Fokus Betriebsoptimierung von Gebäuden) soll einen einfachen Überblick zu den Hardware-bezogenen Umweltlasten bieten. Mehr Anzeigen"
+                _("Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten verbunden. Das sind alle Komponenten, die einen zweckmäßigen Betrieb der digitalen Anwendung sicherstellen. Je nachdem, welche dieser Komponenten zusätzlich für die digitale Anwendung verbaut werden, müssen die entsprechenden Umweltlasten mitbilanziert werden (inkl. aller Lebensphasen). Werden bestehende Komponenten genutzt, können die Lasten durch die anteilige Nutzung in die Bilanz einfließen. Die hier dargestellte Übersicht zu häufig verwendeten Komponenten (Fokus Betriebsoptimierung von Gebäuden) soll einen einfachen Überblick zu den Hardware-bezogenen Umweltlasten bieten."
                   ),
                 "image":
                 "img/componentList/backBoneOverviewImg.svg",
@@ -177,7 +177,7 @@ def environmentalIntegrityNegativ(request):
                 "heading":
                 _("Aufwände für Datenverarbeitungsprozesse"),
                 "description":
-                _("Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, die sich in der Regel ständig wiederholen. Dadurch kommt es ununterbrochen zur Generierung von Daten, was mit einem entsprechenden Energie- und Ressourcenverbrauch verbunden ist. Die Aufwände, die für die Nutzung der entsprechenden Dateninfrastruktur entstehen, werden hier näher erläutert. Einfache Abschätzungen anhand des Datenaufkommens werden ebenfalls vorgenommen. Mehr Anzeigen"
+                _("Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, die sich in der Regel ständig wiederholen. Dadurch kommt es ununterbrochen zur Generierung von Daten, was mit einem entsprechenden Energie- und Ressourcenverbrauch verbunden ist. Die Aufwände, die für die Nutzung der entsprechenden Dateninfrastruktur entstehen, werden hier näher erläutert. Einfache Abschätzungen anhand des Datenaufkommens werden ebenfalls vorgenommen."
                   ),
                 "image":
                 "img/componentList/dataPipelineOverviewImg.svg",
