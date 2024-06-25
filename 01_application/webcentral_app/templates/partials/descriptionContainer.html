@@ -81,7 +81,8 @@
     margin-bottom: 20px;
   }
 </style>
-<div class="col-12 descriptionContainer" style="margin-top: 24px;">
+<div class="col-12 descriptionContainer ecological-cards"
+     style="margin-top: 24px">
   <div class="description-heading mb-3">
     {% if pathToImage %}
       <img src="{% static pathToImage %}"
@@ -114,5 +115,7 @@
   </div>
 </div>
 <script>
-  $("#mainContent").html = '{{ explanaitionText }}'
+  $(document).ready(function() {
+      $("#mainContent").html('{{ explanaitionText|safe }}');
+  });
 </script>
