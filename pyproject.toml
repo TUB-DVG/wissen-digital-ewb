@@ -37,8 +37,14 @@ dependencies = [
     "numpy==1.24.3",
     "pandas==1.5.3",
     "plotly==5.14.1",
+    "Pillow==9.5.0",
+    "psycopg2-binary==2.9.6",
     "PyYAML==6.0",
     "wetterdienst==0.55.1",
+    "django-modeltranslation",
+    "django-csp",
+    "django-extensions==3.1.5",
+    "SQLAlchemy==2.0.10",
 ]
 
 # root folder of the python/django not found automatically

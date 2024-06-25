@@ -31,5 +31,6 @@ FROM base AS dev
 
 RUN apt-get install -y gettext
 WORKDIR /webcentral/
-COPY 01_application/requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt --no-cache-dir
+# copy the whole django project from git into the docker container
+COPY . .
+RUN pip install --upgrade pip && pip install -e "." --no-cache-dir
