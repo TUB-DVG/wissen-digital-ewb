@@ -275,6 +275,7 @@
 .legal-cards .border-legal-round-font-color {
   border-radius: 20px;
   border: 2px solid #E4D85C;
+  color: #E4D85C;
 }
 .legal-cards .btn-legal {
   background-color: #E4D85C;
