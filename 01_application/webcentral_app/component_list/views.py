@@ -336,7 +336,7 @@ def dataProcessing(request):
         _("Zu den Aufwänden für verwendete Komponenten"),
         "imageInBackButton":
         "img/componentList/caret-left.svg",
-    }
+   }
     return render(request, "pages/detailsPage.html", context)
 
 
@@ -346,3 +346,18 @@ def _removeEmtpyStringsFromList(listOfStrings):
         if string == "":
             listOfStrings.remove(string)
     return listOfStrings
+
+def showImage(request, pathToImage: str):
+    """
+    show image detail-page with the image, from which the image-path is provided
+    """
+    
+    context = {
+        "imageName": pathToImage,
+        "focusBorder": "ecological",
+        "backLink": "dataProcessing",
+        "imageInBackButton": "img/componentList/caret-left.svg",
+        "backLinkText": _("Aufwände für Datenverarbeitungsprozesse"),   
+    }
+
+    return render(request, "pages/showImage.html", context)
