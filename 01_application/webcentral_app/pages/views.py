@@ -293,12 +293,11 @@ def criteriaCatalog(request):
         "pathToImage":
         "img/componentList/circle-icon.svg",
         "heading":
-        _("Positive Umweltwirkungen"),
+        _("Kriterienkatalog"),
         "showMorePresent":
         False,
         "explanaitionText":
-        _("Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt."
-          ),
+        _("Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."),
         "boxes": [{
             "pathToTemplate":
             "criteriaCatalog/criteriaCatalogOverviewBox.html",

@@ -11,39 +11,13 @@
   <!-- =======================
 Page Banner START -->
   <section class="py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-lg-12">
-          <p class="lead" style="font-size: 22px;">
-            <img src="{% static 'assets/images/standards.svg' %}" />
-            Kriterienkatalog
-            <br />
-            Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </p>
-          <br />
-          <p>
-            <a href="#"
-               style="color: black;
-                      text-decoration: underline;
-                      font-size: 16px">Downloade den gesamten Kriterienkatalog als Exceldatei</a>
-          </p>
-        </div>
-        <!-- <div class="col-12 col-lg-2">
-        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}" class="img-side-column" style="height: 200px;" alt="Logo_BMWK" />
-      </div> -->
-      </div>
-    </div>
-  </section>
-  <!-- Page Banner END -->
-  <!-- Content START -->
-
-  <!-- Page content START -->
-  <section class="pt-0">
-    <!-- Filter bar END -->
-
-    <div class="content container"
-         id="container-criteria-catalog-landing-page">
-      <!-- Row START -->
+    <div class="content container">
+      {% include "partials/descriptionContainer.html" %}
+      <p>
+        <a href="#"
+          style="color: black;
+          text-decoration: underline;
+          font-size: 16px">Downloade den gesamten Kriterienkatalog als Exceldatei</a>
       <div class="row">
         <h2 class="criteriaCatalogHeading"
             style="color: #E4D75C;
@@ -58,8 +32,4 @@ Page Banner START -->
           {% include boxObject.pathToTemplate with boxObject=boxObject.objectToRender %}
         {% endfor %}
       </div>
-      <!-- Block END -->
-    </div>
-  </section>
-  <!-- Content END -->
 {% endblock %}

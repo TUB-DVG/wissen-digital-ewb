@@ -174,7 +174,7 @@ input[type='checkbox']:checked:before {
   }
   .border-legal-round-font-color {
     @include border-round($legal-color);
-    // color: $legal-color;
+    color: $legal-color;
   }
   .btn-legal {
     @include btn-search($legal-color, $third-text-color)
