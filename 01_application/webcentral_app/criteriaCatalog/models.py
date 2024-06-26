@@ -25,10 +25,11 @@ class CriteriaCatalog(models.Model):
 class Topic(models.Model):
     """Represent the Elements inside the hierarchical-structure for each criteriaCatalog."""
 
-    heading = models.CharField(max_length=200, null=True, blank=True)
-    text = models.CharField(max_length=5000)
+    heading = models.TextField(null=True, blank=True)
+    text = models.TextField()
     criteriaCatalog = models.ForeignKey("CriteriaCatalog",
                                         on_delete=models.CASCADE)
+    topicHeadingNumber = models.CharField(blank=True, null=True)
     # useCase = models.OneToOneField("UseCase", on_delete=models.PROTECT)
     parent = models.ForeignKey(
         "Topic",
