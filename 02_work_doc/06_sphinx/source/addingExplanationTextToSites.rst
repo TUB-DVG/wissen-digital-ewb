@@ -15,3 +15,4 @@ The names of the placeholders definied in the HTML-templates correspond to the k
 
 The description-template is a partial, which is included into a page-template or a app-specific page-template. It has the following DTL variables, which have to be present in the context dictionary given to the
 django render function.
+

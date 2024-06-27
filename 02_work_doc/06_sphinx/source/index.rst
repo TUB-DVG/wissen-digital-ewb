@@ -6,11 +6,14 @@
 Welcome to webcentral's documentation!
 ======================================
 
+Here you can find the documentation of the page source. The source code can be found on Github (insert link).
+If you would like to do some development or host the Wissensplattform, please find information on the get started (insert link) page
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-      modules
 
+   quickstart
 
 
 Indices and tables
