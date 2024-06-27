@@ -94,19 +94,19 @@
   <div class="description-content">
     <div class="blockOfContent">
       {% if showMorePresent %}
-        <p class="mainContent">{{ explanaitionText|slice:":500" }}</p>
-        <div class="mainContent collapse" id="explanaitionText">
-          {{ explanaitionText|slice:"501:" }}
+        <p class="mainContent" id="mainContent"></p>
+        <div class="mainContent collapse col-lg-12 lead collapseInfo" id="explanationText">
         </div>
         <div class="showMore">
           <a role="button"
              class="collapsed text-truncation-btn"
              data-toggle="collapse"
-             href="#explanaitionText"
-             aria-expanded="true"
-             aria-controls="explanaitionText"
+             href="#explanationText"
+             aria-expanded="false"
+             aria-controls="collapseInfoTools"
              data-expanded-text="{% translate 'Zeige weniger ...' %}"
-             data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}">
+          </a>
         </div>
       </div>
     {% else %}
@@ -116,6 +116,21 @@
 </div>
 <script>
   $(document).ready(function() {
-      $("#mainContent").html('{{ explanaitionText|safe }}');
+      var showMorePresent = '{{ showMorePresent }}'
+      var explanationText = '{{ explanaitionText|safe }}'
+      var numberOfInitialShownIntro = {{ charNumberToShowCollapsed }}
+      //debugger;
+      if (showMorePresent == "True") {
+        // split the explanationText into 2 parts
+        var collapsedText = explanationText.slice(0, numberOfInitialShownIntro)
+        var restOfText = explanationText.slice(numberOfInitialShownIntro)
+        
+        $("#mainContent").html(collapsedText);
+        $("#explanationText").html(restOfText);
+        //debugger;
+      }
+      else {
+        $("#mainContent").html('{{ explanaitionText|safe }}');
+      }
   });
 </script>

@@ -241,20 +241,35 @@ def benchmarkingChallenges(request):
 def dataSufficiency(request):
     """Call render function for data sufficiency page."""
     dataSufficiencyObjs = DataSufficiency.objects.all()
+    
+    dataSufficencyIntroductionText = _("""Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen verbunden. Der sparsame Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz, um das Datenvolumen insgesamt möglichst klein zu halten. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, der Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet.
+
+Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb verbunden ist. Gleichzeitig soll bei der Datenerhebung, -übermittlung, -verarbeitung und -speicherung Hardware mit ressourcenschonendem Materialeinsatz und ressourcenschonende Übermittlungswege gewählt werden. Damit sollen die negativen ökologischen Wirkungen, die mit der Implementierung digitaler Anwendungen einhergehen, möglichst reduziert werden, während ein möglichst großer Nutzen erzielt werden soll. 
+
+Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 Abs. 1c der Datenschutz-Grundverordnung (DSGVO) für personenbezogene Daten definiert ist, und darauf abzielt, das Risiko für die Rechte und Freiheiten natürlicher Personen zu reduzieren. Der Begriff Datenminimierung aus der DSGVO ersetzt die Begriffe Datensparsamkeit und -vermeidung, die im Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden.
+
+Während die Datenminimierung also Grundrechtsrisiken durch extensive, nicht erforderliche Datenverarbeitung verhindert, zielt die Datensuffizienz darauf ab, die ökologischen Wirkungen durch die Erhebung, Verarbeitung und Speicherung von extensiven, nicht erforderlichen Daten zu minimieren. Um eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden unterschiedliche Begriffe verwendet. 
+
+Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen Zweck sie im weiteren Verlauf erfüllen werden und ob den Erwartungen an eine Forschungsarbeit auch entsprochen wird. Diese Maxime wissenschaftlichen Arbeitens soll auch mit diesem Ansatz nicht in Frage gestellt werden, jedoch sollte Datensuffizienz bei der Entwicklung im Hinblick auf die spätere Nutzungsphase mitgedacht werden. Denn werden die in Forschungsprojekten entwickelten digitalen Lösungen auf den Markt gebracht, können bei der Verbreitung datensparsamer Technologien durch die Mengeneffekte ökologische Wirkungen erzielt werden.   
+
+Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen.
+    """.replace("\n", "<br>"))
+
     context = {
         "pathToImage":
         "img/componentList/circle-icon.svg",
         "heading":
         _("Datensuffizienz"),
         "explanaitionText":
-        _("Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet."
-          ),
+        dataSufficencyIntroductionText,
         "boxes": [{
             "pathToTemplate": "pages/dataSufficiencyBox.html",
             "objectToRender": dataSufficiencyObj,
         } for dataSufficiencyObj in dataSufficiencyObjs],
         "focusBorder":
         "ecological",
+        "showMorePresent": True,
+        "charNumberToShowCollapsed": 616,
     }
     return render(request, "pages/dataSufficiency.html", context)
 
