@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
+from django.db.models.functions import Cast
+from django.db.models import IntegerField
 
 from .models import (
     CriteriaCatalog,
@@ -80,6 +82,12 @@ def buildCriteriaCatalog(
     listOfTrees = []
     listOfFlattenedTrees = []
     nodeRootElements = []
+
+    # order the root elements lexicographically:
+
+    rootElements = rootElements.annotate(
+        topicHeadingNumber_as_int=Cast("topicHeadingNumber", IntegerField()
+                                       )).order_by("topicHeadingNumber_as_int")
     for index, element in enumerate(rootElements):
         nodeRootElement = Node(element)
         nodeRootElements.append(nodeRootElement)
