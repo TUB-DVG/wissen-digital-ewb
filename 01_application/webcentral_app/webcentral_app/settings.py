@@ -244,7 +244,7 @@ nameOfUnpriviledUser = os.environ.get("WEBCENTRAL_UNPRIVILEGED_USER")
 # STATIC_ROOT= Path.joinpath(BASE_DIR, 'static')
 if os.environ.get("MODE") == "production":
     STATIC_ROOT = f"/home/{nameOfUnpriviledUser}/webcentral/static"
-    STATIC_URL = "/static/static/"
+    STATIC_URL = "/static/"
     STATICFILES_DIRS = [Path.joinpath(BASE_DIR, "webcentral_app/static")]
     # Media folder settings
     # MEDIA_ROOT=Path.joinpath(BASE_DIR,'media')
