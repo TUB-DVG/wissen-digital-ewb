@@ -6,6 +6,7 @@ import time
 import os
 import random
 
+from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.BusinessModels import BusinessModels
 
 
@@ -14,19 +15,11 @@ class TestBusinessModels(WebDriverSetup):
 
     def _checkTranslationOfHeading(self, transDict):
         """ """
-        self.assertEqual(transDict["heading"], self.headingText.text)
-        self.assertEqual(transDict["introText"], self.introContentText.text)
-
-    def testStructureOfOverviewPage(self):
-        """Test if the content is present and if all images are loaded"""
-
-        # first test if a heading and a introduction text is present:
-        self.businessModelObj = BusinessModels(self.driver)
         headingContainer = self.businessModelObj.getHeadingContainer()
 
         introContentContainer = self.businessModelObj.getDescriptionContainer()
 
-        iconinHeadingContainer = headingContainer.getDescendantsByTagName(
+        iconinHeadingContainer = self.businessModelObj.getDescendantsByTagName(
             headingContainer, "img")
 
         self.assertEqual(len(iconinHeadingContainer), 1)
@@ -34,11 +27,21 @@ class TestBusinessModels(WebDriverSetup):
                         iconinHeadingContainer[0].get_attribute("src"))
         self.checkIfSvgIsDisplayed(iconinHeadingContainer[0])
 
-        self.headingText = headingContainer.getDescendantsByTagName(
-            headingContainer, "p")
+        self.headingText = self.businessModelObj.getDescendantsByTagName(
+            headingContainer, "p")[0]
 
         self.introContentText = self.businessModelObj.getDescendantsByTagName(
-            introContentContainer, "p")
+            introContentContainer, "p")[0]
+        self.assertEqual(transDict["heading"], self.headingText.text)
+        self.assertEqual(transDict["introText"], self.introContentText.text)
+
+    def testStructureOfOverviewPage(self):
+        """Test if the content is present and if all images are loaded"""
+
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/pages/businessModels"
+        )  # first test if a heading and a introduction text is present:
+        self.businessModelObj = BusinessModels(self.driver)
 
         translationDict = {
             "en": {

@@ -11,6 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
 
 class BusinessModels(GenericPageObject):
