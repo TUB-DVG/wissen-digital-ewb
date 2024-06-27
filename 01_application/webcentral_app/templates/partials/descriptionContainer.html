@@ -95,8 +95,8 @@
     <div class="blockOfContent">
       {% if showMorePresent %}
         <p class="mainContent" id="mainContent"></p>
-        <div class="mainContent collapse col-lg-12 lead collapseInfo" id="explanationText">
-        </div>
+        <div class="mainContent collapse col-lg-12 lead collapseInfo"
+             id="explanationText"></div>
         <div class="showMore">
           <a role="button"
              class="collapsed text-truncation-btn"
@@ -105,8 +105,7 @@
              aria-expanded="false"
              aria-controls="collapseInfoTools"
              data-expanded-text="{% translate 'Zeige weniger ...' %}"
-             data-collapsed-text="{% translate 'Zeige mehr ...' %}">
-          </a>
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
         </div>
       </div>
     {% else %}
@@ -132,5 +131,17 @@
       else {
         $("#mainContent").html('{{ explanaitionText|safe }}');
       }
+      var $collapseButton = $('.text-truncation-btn');
+    var isExpanded = $collapseButton.attr('aria-expanded') === 'true';
+    $collapseButton.text(isExpanded ? $collapseButton.data('expanded-text') : $collapseButton.data('collapsed-text'));
+
+    // Change button text on click based on the collapse state
+    $collapseButton.click(function() {
+        var $this = $(this);
+        setTimeout(function() { // Use setTimeout to wait for the collapse action to complete
+            var isExpanded = $this.attr('aria-expanded') === 'true';
+            $this.text(isExpanded ? $this.data('expanded-text') : $this.data('collapsed-text'));
+        }, 350); // Adjust timeout duration if necessary
+    });
   });
 </script>
