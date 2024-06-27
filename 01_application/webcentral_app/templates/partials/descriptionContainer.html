@@ -117,7 +117,8 @@
   $(document).ready(function() {
       var showMorePresent = '{{ showMorePresent }}'
       var explanationText = '{{ explanaitionText|safe }}'
-      var numberOfInitialShownIntro = {{ charNumberToShowCollapsed }}
+      var numberOfInitialShownIntro = '{{ charNumberToShowCollapsed }}';
+      var numberOfInitialShownIntro = parseFloat(numberOfInitialShownIntro);
       //debugger;
       if (showMorePresent == "True") {
         // split the explanationText into 2 parts
