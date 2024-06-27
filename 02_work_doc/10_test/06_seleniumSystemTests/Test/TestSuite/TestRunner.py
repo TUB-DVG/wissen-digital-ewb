@@ -22,6 +22,7 @@ from Test.Scripts.TestComponentsList import TestComponentsList
 from Test.Scripts.TestUserEngagement import TestUserEngagement
 from Test.Scripts.TestNegativeEnvironmentalImpacts import (
     TestNegativeEnvironmentalImpacts, )
+from Test.Scripts.TestBusinessModels import TestBusinessModels
 
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
@@ -73,6 +74,7 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestComponentsList),
             testLoader.loadTestsFromTestCase(TestUserEngagement),
             testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
+            testLoader.loadTestsFromTestCase(TestBusinessModels),
             # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
 
