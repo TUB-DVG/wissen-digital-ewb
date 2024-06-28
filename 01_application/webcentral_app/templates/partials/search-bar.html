@@ -301,6 +301,22 @@ $(document).ready(function() {
     //   $(this).addClass("form-input-{{ focusBorder }}");
     // });
   });
+  $(document).ready(function() {
+    $('.trigger-submit-onchange').onclick(function() {
+      var dropDownElementsForThatSelect;
+      var selectElements = $('div.use-bootstrap-select')
+      var checkboxInput = $("<input>")
+      checkboxInput.attr("type", "checkbox")
+      for (var i=0;i<selectElements.length;i++ ) {
+        dropDownElementsForThatSelect = $(selectElements[i]).find('.dropdown-item');
+        
+        for (var j=0;j<dropDownElementsForThatSelect.length;j++) {
+          $(dropDownElementsForThatSelect[j]).append(checkboxInput);
+          debugger;
+        }
+      }
+    })
+  })
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
       // get values from the select inputs:
