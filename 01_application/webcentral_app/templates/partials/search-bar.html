@@ -318,11 +318,7 @@ $(document).ready(function() {
       }
   }
 
-  $(document).ready(function() {
-    // $('.trigger-submit-onchange').change(function() {
-      changeStylingOfUBS();
-    // })
-  });
+
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
       // get values from the select inputs:
@@ -349,18 +345,6 @@ $(document).ready(function() {
         listOfSelectedFilters = [];
         returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
         currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
-        if (returnValueOfSelect != null) {
-          for (var j=0; j<returnValueOfSelect.length;j++) {
-            newDivElement = $("<div>");
-            newDivElement.attr("class", "dropdown-item");
-            newDivElement.attr("data-value", returnValueOfSelect[j]);
-            newDivElement.text(returnValueOfSelect[j]);
-            newCheckbox = $("<input />");
-            newCheckbox.attr("type", "checkbox");
-            newCheckbox.attr("checked", true);
-            newDivElement.prepend(newCheckbox);
-          }
-        }
         // debugger;
         if (typeof returnValueOfSelect === "string" ) {
           listOfSelectedFilters.push(returnValueOfSelect);
