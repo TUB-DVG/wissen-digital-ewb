@@ -81,7 +81,7 @@
     margin-bottom: 20px;
   }
 </style>
-<div class="col-12 descriptionContainer ecological-cards"
+<div class="col-12 descriptionContainer {{ focusBorder }}-cards"
      style="margin-top: 24px">
   <div class="description-heading mb-3">
     {% if pathToImage %}
@@ -99,7 +99,7 @@
              id="explanationText"></div>
         <div class="showMore">
           <a role="button"
-             class="collapsed text-truncation-btn"
+             class="collapsed text-truncation-btn {{ focusBorder }}-font-color"
              data-toggle="collapse"
              href="#explanationText"
              aria-expanded="false"
