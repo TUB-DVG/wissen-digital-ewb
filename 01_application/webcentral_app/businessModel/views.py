@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.utils.translation import gettext as _
 
-from .models import BusinessModel, UserEngagement
+from .models import BusinessModel
 
 
 def businessModelsChallenge(request):
@@ -52,43 +52,4 @@ def businessModelsChallengeDetails(request, challengeId):
         "showInputsInImageQuickLinkBar": False,
         "quickLinkName": "businessModels/challenges",
     }
-    return render(request, "pages/detailsPage.html", context)
-
-
-def userEngagementDetails(request, engagementId):
-    """Serve the user engagement details page."""
-    userEngagementObj = UserEngagement.objects.get(id=engagementId)
-    context = {
-        "imageInBackButton":
-        "assets/images/backArrowOperational.svg",
-        "focusBorder":
-        "operational",
-        "boxObject":
-        userEngagementObj,
-        "backLinkText":
-        _("Nutzendenintegration"),
-        "backLink":
-        "userEngagement",
-        "leftColumn":
-        "businessModel/userEngagementDetailsLeftColumn.html",
-        "rightColumn":
-        "businessModel/userEngagementDetailsRightColumn.html",
-        "imageQuickLinks":
-        True,
-        "idOfSelectedObj":
-        engagementId,
-        "allObjectsForQuickLinks":
-        UserEngagement.objects.all(),
-        "showInputsInImageQuickLinkBar":
-        False,
-        "showSelect":
-        True,
-        "tags": [
-            currentUserEnagementObj.category
-            for currentUserEnagementObj in UserEngagement.objects.all()
-        ],
-        "quickLinkName":
-        "businessModels/userEngagement",
-    }
-
     return render(request, "pages/detailsPage.html", context)

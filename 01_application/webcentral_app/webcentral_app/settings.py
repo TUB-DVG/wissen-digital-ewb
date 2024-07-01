@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "keywords.apps.KeywordsConfig",
     "LastProfile.apps.LastprofileConfig",
     "Datasets.apps.DatasetsConfig",
+    "user_integration.apps.UserIntegrationConfig",
     "django.contrib.humanize",
     "django.contrib.admin",
     "django.contrib.auth",

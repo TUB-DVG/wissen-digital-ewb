@@ -7,7 +7,7 @@ from component_list.models import (
     EnvironmentalImpact,
     DataSufficiency,
 )
-from businessModel.models import UserEngagement
+from user_integration.models import UserEngagement
 from criteriaCatalog.models import CriteriaCatalog
 
 
@@ -98,6 +98,35 @@ def userIntegrationMethod(request):
 
 def userEngagement(request):
     """Call render function for user engagement page."""
+
+    explanationText = """<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration in der Entwicklung digitaler Anwendungen</h6>
+<p>Die Nutzendenintegration beschreibt die <b>direkte oder indirekte Integration von Nutzenden und ihren Perspektiven in die Entwicklung digitaler Anwendungen</b>. Die direkte Beteiligung geschieht über Methoden wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen verfügen.</p>
+<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</p>
+<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor der Markteinführung einer digitalen Anwendung sorgen, erhöhen die Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>
+<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der Entwicklung digitaler Anwendungen vor allem um die Exploration von Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für diese Exploration sind qualitative Methoden besonders geeignet. In späteren Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>
+<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in anderen Phasen sinnvoll nutzen.</p>
+<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Analysephase vor Beginn der Anwendungsentwicklung</h6>
+<ul>
+    <li>Teilnehmende Beobachtung</li>
+    <li>Einzel-Interview</li>
+    <li>Gruppen-Interview / Fokusgruppe</li>
+    <li>Personas</li>
+</ul>
+<h2 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der Anwendungsentwicklung</h2>
+<ul>
+    <li>A/B-Test</li>
+    <li>Prototyping</li>
+    <li>Cognitive Walkthrough</li>
+    <li>Styleguide</li>
+</ul>
+<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase während bzw. nach der Anwendungsentwicklung</h6>
+<ul>
+    <li>Lautes Denken</li>
+    <li>Eyetracking</li>
+    <li>Heuristische Evaluation</li>
+    <li>Usability-Befragung</li>
+</ul>
+    """
     userEngagementObjs = UserEngagement.objects.all()
     context = {
         "focusBorder":
@@ -107,10 +136,9 @@ def userEngagement(request):
         "heading":
         _("Nutzendenintegration"),
         "showMorePresent":
-        False,
+        True,
         "explanaitionText":
-        _("Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als Methoden für die Analysephase eignen sich besonders Einzelinterviews, Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
-          ),
+        _(explanationText.replace("\n", "")),
         "boxes": [{
             "pathToTemplate":
             "businessModel/userEngagementBox.html",
@@ -126,6 +154,8 @@ def userEngagement(request):
             "image":
             "img/componentList/negativeEnvironmentalImpactsBox1.svg",
         } for userEngagementObj in userEngagementObjs],
+        "charNumberToShowCollapsed":
+        629,
     }
     return render(request, "pages/userEngagement.html", context)
 
@@ -241,8 +271,9 @@ def benchmarkingChallenges(request):
 def dataSufficiency(request):
     """Call render function for data sufficiency page."""
     dataSufficiencyObjs = DataSufficiency.objects.all()
-    
-    dataSufficencyIntroductionText = _("""Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen verbunden. Der sparsame Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz, um das Datenvolumen insgesamt möglichst klein zu halten. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, der Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet.
+
+    dataSufficencyIntroductionText = _(
+        """Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen verbunden. Der sparsame Umgang mit Daten – die Datensuffizienz – gewinnt daher zunehmend an Relevanz, um das Datenvolumen insgesamt möglichst klein zu halten. Die Datensuffizienz schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, der Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben in der Praxis oftmals unbeachtet.
 
 Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb verbunden ist. Gleichzeitig soll bei der Datenerhebung, -übermittlung, -verarbeitung und -speicherung Hardware mit ressourcenschonendem Materialeinsatz und ressourcenschonende Übermittlungswege gewählt werden. Damit sollen die negativen ökologischen Wirkungen, die mit der Implementierung digitaler Anwendungen einhergehen, möglichst reduziert werden, während ein möglichst großer Nutzen erzielt werden soll. 
 
@@ -268,8 +299,10 @@ Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt un
         } for dataSufficiencyObj in dataSufficiencyObjs],
         "focusBorder":
         "ecological",
-        "showMorePresent": True,
-        "charNumberToShowCollapsed": 616,
+        "showMorePresent":
+        True,
+        "charNumberToShowCollapsed":
+        616,
     }
     return render(request, "pages/dataSufficiency.html", context)
 
@@ -312,7 +345,8 @@ def criteriaCatalog(request):
         "showMorePresent":
         False,
         "explanaitionText":
-        _("Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."),
+        _("Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+          ),
         "boxes": [{
             "pathToTemplate":
             "criteriaCatalog/criteriaCatalogOverviewBox.html",
