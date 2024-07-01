@@ -74,10 +74,15 @@ from component_list.models import (
 )
 
 from businessModel.models import (
-    BusinessModel,
+    BusinessModel, )
+
+from user_integration.models import (
     UserEngagement,
     SpecificProcedureItem,
     ProcedureItem,
+    ProArgument,
+    ConArgument,
+    Literature,
 )
 
 from project_listing.models import (
@@ -250,7 +255,8 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateCriteriaCatalog(self, row: list, header: list, data: list) -> None:
+    def getOrCreateCriteriaCatalog(self, row: list, header: list,
+                                   data: list) -> None:
         """
         Add entry (CriteriaCatalog) into the table or/and return entry key.
         """
@@ -258,27 +264,30 @@ class Command(BaseCommand):
         criteriaCatalogForTopic, _ = CriteriaCatalog.objects.get_or_create(
             name=row[header.index("katalog")], )
 
-
         try:
             if row[header.index("parentId")] == "":
                 parentTopicOfCurrentTopic = None
             else:
                 for rowToBeSearchedForParent in data:
-                    if rowToBeSearchedForParent[header.index("id")] == row[header.index("parentId")]:
+                    if (rowToBeSearchedForParent[header.index("id")] == row[
+                            header.index("parentId")]):
                         parentIdRow = rowToBeSearchedForParent
                         break
                 if parentIdRow is not None:
                     # find also the parent of the parent since Topics can be identical
                     if parentIdRow[header.index("parentId")] != "":
                         for rowToBeSearchedForParent in data:
-                            if rowToBeSearchedForParent[header.index("id")] == parentIdRow[header.index("parentId")]:
+                            if (rowToBeSearchedForParent[header.index("id")] ==
+                                    parentIdRow[header.index("parentId")]):
                                 parentOfParentRow = rowToBeSearchedForParent
                                 break
                         parentOfParent = Topic.objects.get(
-                            heading=parentOfParentRow[header.index("ueberschrift")],
+                            heading=parentOfParentRow[header.index(
+                                "ueberschrift")],
                             text=parentOfParentRow[header.index("text")],
                             criteriaCatalog=criteriaCatalogForTopic,
-                            topicHeadingNumber=parentOfParentRow[header.index("id2")],
+                            topicHeadingNumber=parentOfParentRow[header.index(
+                                "id2")],
                         )
 
                     else:
@@ -290,7 +299,7 @@ class Command(BaseCommand):
                         parent=parentOfParent,
                         topicHeadingNumber=parentIdRow[header.index("id2")],
                     )
-                     
+
                     if len(parentTopicOfCurrentTopic) > 1:
                         breakpoint()
                     parentTopicOfCurrentTopic = parentTopicOfCurrentTopic[0]
@@ -387,17 +396,17 @@ class Command(BaseCommand):
         timeRequired = row[header.index("Zeitbedarf")]
         groupSize = row[header.index("Gruppengröße")]
         material = row[header.index("Material")]
-        advantages = row[header.index("Vorteile")]
-        disadvantages = row[header.index("Nachteile")]
-        conductedBy = row[header.index("Durchgeführt von")]
-        successFactors = row[header.index(
-            "Erfolgsfaktoren für die Umsetzung der Methode")]
+        # advantages = row[header.index("Vorteile")]
+        # disadvantages = row[header.index("Nachteile")]
+        # conductedBy = row[header.index("Durchgeführt von")]
+        # successFactors = row[header.index(
+        # "Erfolgsfaktoren für die Umsetzung der Methode")]
         goals = row[header.index("Ziele")]
-        specificGoals = row[header.index("Konkrete_Ziele")]
-        participantObservations = row[header.index(
-            "Beobachtungen der Teilnehmenden")]
-        persons = row[header.index("Personas")]
-
+        # specificGoals = row[header.index("Konkrete_Ziele")]
+        # participantObservations = row[header.index(
+        # "Beobachtungen der Teilnehmenden")]
+        # persons = row[header.index("Personas")]
+        goodPracticeExample = row[header.index("Good-Practice-Beispiel")]
         obj, created = UserEngagement.objects.get_or_create(
             category=category,
             categoryShortDescription=categoryShortDescription,
@@ -407,14 +416,14 @@ class Command(BaseCommand):
             timeRequired=timeRequired,
             groupSize=groupSize,
             material=material,
-            advantages=advantages,
-            disadvantages=disadvantages,
-            conductedBy=conductedBy,
-            successFactors=successFactors,
+            # advantages=advantages,
+            # disadvantages=disadvantages,
+            # conductedBy=conductedBy,
+            # successFactors=successFactors,
             goals=goals,
-            persons=persons,
-            participantObservations=participantObservations,
-            specificGoals=specificGoals,
+            # persons=persons,
+            # participantObservations=participantObservations,
+            # specificGoals=specificGoals,
         )
         specificProcedureList = self._processListInput(
             row[header.index("Konkreter_Ablauf")])
@@ -428,8 +437,28 @@ class Command(BaseCommand):
             ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
             for procedure in procedureList
         ]
+        conArgumentsList = self._processListInput(
+            row[header.index("Nachteile")])
+        conObjsList = [
+            ConArgument.objects.get_or_create(conArgument=conArgElement)
+            for conArgElement in conArgumentsList
+        ]
+        proArgumentsList = self._processListInput(
+            row[header.index("Vorteile")])
+        proObjsList = [
+            ProArgument.objects.get_or_create(proArgument=proArgElement)
+            for proArgElement in proArgumentsList
+        ]
+        literatureList = self._processListInput(row[header.index("Literatur")])
+        literatureObjsList = [
+            Literature.objects.get_or_create(literature=literatureElement)
+            for literatureElement in literatureList
+        ]
         obj.procedure.add(*procedureObjList)
         obj.specificProcedure.add(*specificProcedureObjList)
+        obj.proArguments.add(*proObjsList)
+        obj.conArguments.add(*conObjsList)
+        obj.literature.ad(*literatureObjsList)
         return obj, created
 
     def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
