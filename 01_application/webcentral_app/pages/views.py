@@ -141,7 +141,7 @@ def userEngagement(request):
         _(explanationText.replace("\n", "")),
         "boxes": [{
             "pathToTemplate":
-            "businessModel/userEngagementBox.html",
+            "user_integration/userEngagementBox.html",
             "objectToRender":
             userEngagementObj,
             "linkToDetailsPage":
