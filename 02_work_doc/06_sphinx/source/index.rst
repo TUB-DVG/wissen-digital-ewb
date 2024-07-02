@@ -14,6 +14,7 @@ If you would like to do some development or host the Wissensplattform, please fi
    :caption: Contents:
 
    quickstart
+   insertLinksInDatabase
 
 
 Indices and tables
