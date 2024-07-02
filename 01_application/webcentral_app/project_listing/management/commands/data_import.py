@@ -78,7 +78,7 @@ from businessModel.models import (
 
 from user_integration.models import (
     UserEngagement,
-    SpecificProcedureItem,
+    # SpecificProcedureItem,
     ProcedureItem,
     ProArgument,
     ConArgument,
@@ -421,17 +421,18 @@ class Command(BaseCommand):
             # conductedBy=conductedBy,
             # successFactors=successFactors,
             goals=goals,
+            goodPracticeExample=goodPracticeExample,
             # persons=persons,
             # participantObservations=participantObservations,
             # specificGoals=specificGoals,
         )
-        specificProcedureList = self._processListInput(
-            row[header.index("Konkreter_Ablauf")])
-        specificProcedureObjList = [
-            SpecificProcedureItem.objects.get_or_create(
-                specificProcedureItem=specificProcedure)[0]
-            for specificProcedure in specificProcedureList
-        ]
+        # specificProcedureList = self._processListInput(
+        #     row[header.index("Konkreter_Ablauf")])
+        # specificProcedureObjList = [
+        #     SpecificProcedureItem.objects.get_or_create(
+        #         specificProcedureItem=specificProcedure)[0]
+        #     for specificProcedure in specificProcedureList
+        # ]
         procedureList = self._processListInput(row[header.index("Ablauf")])
         procedureObjList = [
             ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
@@ -440,25 +441,25 @@ class Command(BaseCommand):
         conArgumentsList = self._processListInput(
             row[header.index("Nachteile")])
         conObjsList = [
-            ConArgument.objects.get_or_create(conArgument=conArgElement)
+            ConArgument.objects.get_or_create(conArgument=conArgElement)[0]
             for conArgElement in conArgumentsList
         ]
         proArgumentsList = self._processListInput(
             row[header.index("Vorteile")])
         proObjsList = [
-            ProArgument.objects.get_or_create(proArgument=proArgElement)
+            ProArgument.objects.get_or_create(proArgument=proArgElement)[0]
             for proArgElement in proArgumentsList
         ]
         literatureList = self._processListInput(row[header.index("Literatur")])
         literatureObjsList = [
-            Literature.objects.get_or_create(literature=literatureElement)
+            Literature.objects.get_or_create(literature=literatureElement)[0]
             for literatureElement in literatureList
         ]
         obj.procedure.add(*procedureObjList)
-        obj.specificProcedure.add(*specificProcedureObjList)
+        # obj.specificProcedure.add(*specificProcedureObjList)
         obj.proArguments.add(*proObjsList)
         obj.conArguments.add(*conObjsList)
-        obj.literature.ad(*literatureObjsList)
+        obj.literature.add(*literatureObjsList)
         return obj, created
 
     def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
