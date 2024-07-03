@@ -43,5 +43,5 @@ urlpatterns += i18n_patterns(
     path("useCases_list/", include("use_cases.urls")),
     path("i18n/", include("django.conf.urls.i18n")),
     path("common/", include("common.urls")),
-    path("user_integration", include("user_integration.urls")),
+    path("user_integration/", include("user_integration.urls")),
 )

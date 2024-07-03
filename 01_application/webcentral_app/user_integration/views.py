@@ -40,6 +40,8 @@ def userEngagementDetails(request, engagementId):
         ],
         "quickLinkName":
         "user_integration/userEngagement",
+        "javascriptFilePath":
+        "js/user_integration_functions.js",
     }
 
     return render(request, "pages/detailsPage.html", context)
@@ -79,6 +81,8 @@ def userEngagementDetailsTitle(request, engagmentTitle):
         ],
         "quickLinkName":
         "user_integration/userEngagement",
+        "javascriptFilePath":
+        "js/user_integration_functions.js",
     }
 
     return render(request, "pages/detailsPage.html", context)

@@ -433,28 +433,37 @@ class Command(BaseCommand):
         #         specificProcedureItem=specificProcedure)[0]
         #     for specificProcedure in specificProcedureList
         # ]
-        procedureList = self._processListInput(row[header.index("Ablauf")])
+        procedureList = self._processListInput(row[header.index("Ablauf")],
+                                               ";;")
         procedureObjList = [
-            ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
+            ProcedureItem.objects.get_or_create(_procedureItem=procedure)[0]
             for procedure in procedureList
         ]
         conArgumentsList = self._processListInput(
-            row[header.index("Nachteile")])
+            row[header.index("Nachteile")], ";;")
         conObjsList = [
             ConArgument.objects.get_or_create(conArgument=conArgElement)[0]
             for conArgElement in conArgumentsList
         ]
         proArgumentsList = self._processListInput(
-            row[header.index("Vorteile")])
+            row[header.index("Vorteile")], ";;")
         proObjsList = [
             ProArgument.objects.get_or_create(proArgument=proArgElement)[0]
             for proArgElement in proArgumentsList
         ]
-        literatureList = self._processListInput(row[header.index("Literatur")])
-        literatureObjsList = [
-            Literature.objects.get_or_create(literature=literatureElement)[0]
-            for literatureElement in literatureList
-        ]
+        literatureList = self._processListInput(row[header.index("Literatur")],
+                                                ";;")
+        literatureObjsList = []
+        for literatureElement in literatureList:
+            splittedLiteratureElement = literatureElement.split("((")
+            literatureString = splittedLiteratureElement[0]
+            literatureIdentifer = splittedLiteratureElement[1].replace(
+                "))", "")
+            literatureObj, _ = Literature.objects.get_or_create(
+                literature=literatureString,
+                linkName=literatureIdentifer,
+            )
+            literatureObjsList.append(literatureObj)
         obj.procedure.add(*procedureObjList)
         # obj.specificProcedure.add(*specificProcedureObjList)
         obj.proArguments.add(*proObjsList)
@@ -2028,10 +2037,10 @@ class Command(BaseCommand):
                 return None
         # self.stdout.write(self.style.SUCCESS('Successfully executed command'))
 
-    def _processListInput(self, inputStr):
+    def _processListInput(self, inputStr, separator=";"):
         """Process a cell, which includes a list of elements"""
         returnList = []
-        for element in inputStr.split(";"):
+        for element in inputStr.split(separator):
             if not self._checkIfOnlyContainsSpaces(element):
                 returnList.append(element)
 

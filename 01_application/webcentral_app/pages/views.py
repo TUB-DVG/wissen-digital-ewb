@@ -107,26 +107,29 @@ def userEngagement(request):
 <p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in anderen Phasen sinnvoll nutzen.</p>
 <h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Analysephase vor Beginn der Anwendungsentwicklung</h6>
 <ul>
-    <li>Teilnehmende Beobachtung</li>
-    <li>Einzel-Interview</li>
-    <li>Gruppen-Interview / Fokusgruppe</li>
-    <li>Personas</li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Teilnehmende Beobachtung' %}">Teilnehmende Beobachtung</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Einzel-Interview' %}">Einzel-Interview</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/Fokusgruppe' %}">Gruppen-Interview / Fokusgruppe</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Personas' %}">Personas</a></li>
 </ul>
 <h2 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der Anwendungsentwicklung</h2>
 <ul>
-    <li>A/B-Test</li>
-    <li>Prototyping</li>
-    <li>Cognitive Walkthrough</li>
-    <li>Styleguide</li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'A/B-Test' %}">A/B-Test</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Prototyping' %}">Prototyping</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Cognitive Walkthrough' %}">Cognitive Walkthrough</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Styleguide' %}">Styleguide</a></li>
 </ul>
 <h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase während bzw. nach der Anwendungsentwicklung</h6>
 <ul>
-    <li>Lautes Denken</li>
-    <li>Eyetracking</li>
-    <li>Heuristische Evaluation</li>
-    <li>Usability-Befragung</li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Lautes Denken' %}">Lautes Denken</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Eyetracking' %}">Eyetracking</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Heuristische Evaluation' %}">Heuristische Evaluation</a></li>
+    <li><a href="{% url 'userEngagementDetailsTitle' 'Usability-Befragung' %}">Usability-Befragung</a></li>
 </ul>
-    """
+    """.replace("\n", "")
+    templateObj = Template(explanationText)
+    contextObj = Context({})
+
     userEngagementObjs = UserEngagement.objects.all()
     context = {
         "focusBorder":
@@ -138,7 +141,7 @@ def userEngagement(request):
         "showMorePresent":
         True,
         "explanaitionText":
-        _(explanationText.replace("\n", "")),
+        templateObj.render(contextObj),
         "boxes": [{
             "pathToTemplate":
             "user_integration/userEngagementBox.html",

@@ -6,14 +6,26 @@ class ProArgument(models.Model):
     proArgument = models.TextField()
 
     def __str__(self):
-        return str(self.proArgument)[0:100]
+        return self.proArgument
+
+    @property
+    def proArgumentRendered(self):
+        template = Template(self.proArgument)
+        context = Context({})
+        return template.render(context)
 
 
 class ConArgument(models.Model):
     conArgument = models.TextField()
 
     def __str__(self):
-        return str(self.conArgument)[0:100]
+        return self.conArgument
+
+    @property
+    def conArgumentRendered(self):
+        template = Template(self.conArgument)
+        context = Context({})
+        return template.render(context)
 
 
 class Literature(models.Model):
@@ -30,7 +42,7 @@ class Literature(models.Model):
     #                                         blank=True,
     #                                         null=True)
     def __str__(self):
-        return str(self.literature)[0:100]
+        return self.literature
 
 
 class UserEngagement(models.Model):
@@ -68,7 +80,6 @@ class UserEngagement(models.Model):
 
     @property
     def description(self):
-        # breakpoint()
         template = Template(self.subCategoryShortDescription)
         context = Context({})
         return template.render(context)

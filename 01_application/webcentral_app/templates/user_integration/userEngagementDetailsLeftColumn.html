@@ -45,7 +45,7 @@
     <span class="columnHeading">{% translate "Vorteile" %}:</span>
     <ul class="plus-sign-list">
         {% for proElement in boxObject.proArguments.all %}
-            <li>{{ proElement }}</li>
+            <li>{{ proElement.proArgumentRendered }}</li>
         {% endfor %}
     </ul>
 </p>
@@ -53,7 +53,7 @@
     <span class="columnHeading">{% translate "Nachteile" %}:</span>
     <ul class="minus-sign-list">
         {% for conElement in boxObject.conArguments.all %}
-            <li>{{ conElement }}</li>
+            <li>{{ conElement.conArgumentRendered }}</li>
         {% endfor %}
     </ul>
 </p>
