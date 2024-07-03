@@ -44,4 +44,5 @@ urlpatterns += i18n_patterns(
     path("i18n/", include("django.conf.urls.i18n")),
     path("common/", include("common.urls")),
     path("user_integration/", include("user_integration.urls")),
+    # path("data_sufficiency/", include("data_sufficiency.urls")),
 )
