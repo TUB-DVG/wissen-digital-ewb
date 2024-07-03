@@ -70,9 +70,9 @@ from component_list.models import (
     ComponentClass,
     Category,
     EnvironmentalImpact,
-    DataSufficiency,
 )
-
+from data_sufficiency.models import (
+    DataSufficiency, )
 from businessModel.models import (
     BusinessModel, )
 
@@ -396,16 +396,7 @@ class Command(BaseCommand):
         timeRequired = row[header.index("Zeitbedarf")]
         groupSize = row[header.index("Gruppengröße")]
         material = row[header.index("Material")]
-        # advantages = row[header.index("Vorteile")]
-        # disadvantages = row[header.index("Nachteile")]
-        # conductedBy = row[header.index("Durchgeführt von")]
-        # successFactors = row[header.index(
-        # "Erfolgsfaktoren für die Umsetzung der Methode")]
         goals = row[header.index("Ziele")]
-        # specificGoals = row[header.index("Konkrete_Ziele")]
-        # participantObservations = row[header.index(
-        # "Beobachtungen der Teilnehmenden")]
-        # persons = row[header.index("Personas")]
         goodPracticeExample = row[header.index("Good-Practice-Beispiel")]
         obj, created = UserEngagement.objects.get_or_create(
             category=category,
@@ -416,23 +407,9 @@ class Command(BaseCommand):
             timeRequired=timeRequired,
             groupSize=groupSize,
             material=material,
-            # advantages=advantages,
-            # disadvantages=disadvantages,
-            # conductedBy=conductedBy,
-            # successFactors=successFactors,
             goals=goals,
             goodPracticeExample=goodPracticeExample,
-            # persons=persons,
-            # participantObservations=participantObservations,
-            # specificGoals=specificGoals,
         )
-        # specificProcedureList = self._processListInput(
-        #     row[header.index("Konkreter_Ablauf")])
-        # specificProcedureObjList = [
-        #     SpecificProcedureItem.objects.get_or_create(
-        #         specificProcedureItem=specificProcedure)[0]
-        #     for specificProcedure in specificProcedureList
-        # ]
         procedureList = self._processListInput(row[header.index("Ablauf")],
                                                ";;")
         procedureObjList = [
@@ -465,7 +442,6 @@ class Command(BaseCommand):
             )
             literatureObjsList.append(literatureObj)
         obj.procedure.add(*procedureObjList)
-        # obj.specificProcedure.add(*specificProcedureObjList)
         obj.proArguments.add(*proObjsList)
         obj.conArguments.add(*conObjsList)
         obj.literature.add(*literatureObjsList)
@@ -725,15 +701,15 @@ class Command(BaseCommand):
         """
         strategyCategory = row[header.index("Strategiekategorie")]
         categoryShortDescription = row[header.index(
-            "Kategorie_Kurzbeschreibung")]
-        example1 = row[header.index("Beispiel_1")]
-        example2 = row[header.index("Beispiel_2")]
+            "Kategorie_Kurzbeschreibung_Teaser")]
+        # example1 = row[header.index("Beispiel_1")]
+        # example2 = row[header.index("Beispiel_2")]
 
         obj, created = DataSufficiency.objects.get_or_create(
             strategyCategory=strategyCategory,
             categoryShortDescription=categoryShortDescription,
-            example1=example1,
-            example2=example2,
+            # example1=example1,
+            # example2=example2,
         )
         return obj, created
 

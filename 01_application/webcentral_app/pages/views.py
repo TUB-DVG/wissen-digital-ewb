@@ -4,9 +4,9 @@ from django.utils.translation import gettext as _
 from django.template import Template, Context
 
 from component_list.models import (
-    EnvironmentalImpact,
-    DataSufficiency,
-)
+    EnvironmentalImpact, )
+from data_sufficiency.models import (
+    DataSufficiency, )
 from user_integration.models import UserEngagement
 from criteriaCatalog.models import CriteriaCatalog
 
