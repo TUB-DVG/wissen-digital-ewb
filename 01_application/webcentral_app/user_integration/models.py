@@ -85,6 +85,12 @@ class UserEngagement(models.Model):
         return template.render(context)
 
     @property
+    def shortDescription(self):
+        template = Template(self.categoryShortDescription)
+        context = Context({})
+        return template.render(context)
+
+    @property
     def groupSizeRendered(self):
         template = Template(self.groupSize)
         context = Context({})
