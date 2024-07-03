@@ -24,50 +24,60 @@
     <div class="mainContent collapse" id="shortDescriptionRest">
         {{ boxObject.categoryShortDescription|slice:"401:" }}
     </div>
-    <div class="showMore">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#shortDescriptionRest"
-           aria-expanded="true"
-           aria-controls="shortDescriptionRest"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
-    </div>
-</div>
-<div class="blockOfContent">
-    <div class="mainContent">{% translate "Good Practice Beispiel" %} 1:</div>
-    <div>
-        <div class="mainContent">{{ boxObject.example1|slice:":400" }}</div>
-        <div class="mainContent collapse" id="example1">
-            {{ boxObject.example1|slice:"401:" }}
-        </div>
+    {% if boxObject.categoryShortDescription|slice:"401:" %}
         <div class="showMore">
             <a role="button"
                class="collapsed text-truncation-btn"
                data-toggle="collapse"
-               href="#example1"
+               href="#shortDescriptionRest"
                aria-expanded="true"
-               aria-controls="example1"
+               aria-controls="shortDescriptionRest"
                data-expanded-text="{% translate 'Zeige weniger ...' %}"
                data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
         </div>
-    </div>
+    {% endif %}
 </div>
-<div class="mainContent">{% translate "Good Practice Beispiel" %} 2:</div>
-<div>
-    <div class="mainContent">{{ boxObject.example2|slice:":400" }}</div>
-    <div class="mainContent collapse" id="example2">
-        {{ boxObject.example2|slice:"401:" }}
+{% if boxObject.example1 %}
+    <div class="blockOfContent">
+        <div class="mainContent">{% translate "Good Practice Beispiel" %} 1:</div>
+        <div>
+            <div class="mainContent">{{ boxObject.example1|slice:":400" }}</div>
+            <div class="mainContent collapse" id="example1">
+                {{ boxObject.example1|slice:"401:" }}
+            </div>
+            {% if boxObject.example1|slice:"401:" %}
+                <div class="showMore">
+                    <a role="button"
+                       class="collapsed text-truncation-btn"
+                       data-toggle="collapse"
+                       href="#example1"
+                       aria-expanded="true"
+                       aria-controls="example1"
+                       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                       data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+                </div>
+            {% endif %}
+        </div>
     </div>
-    <div class="showMore">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#example2"
-           aria-expanded="true"
-           aria-controls="example2"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+{% endif %}
+{% if boxObject.example1 %}
+    <div class="mainContent">{% translate "Good Practice Beispiel" %} 2:</div>
+    <div>
+        <div class="mainContent">{{ boxObject.example2|slice:":400" }}</div>
+        <div class="mainContent collapse" id="example2">
+            {{ boxObject.example2|slice:"401:" }}
+        </div>
+        {% if boxObject.example2|slice:"401:" %}
+            <div class="showMore">
+                <a role="button"
+                   class="collapsed text-truncation-btn"
+                   data-toggle="collapse"
+                   href="#example2"
+                   aria-expanded="true"
+                   aria-controls="example2"
+                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                   data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+            </div>
+        {% endif %}
     </div>
-</div>
+{% endif %}

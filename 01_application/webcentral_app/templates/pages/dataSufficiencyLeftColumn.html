@@ -15,23 +15,27 @@
     }
 </style>
 <div class="strategyCategory">{{ boxObject.strategyCategory }}</div>
-<div class="exampleHeading">
-    <a role="button"
-       class="collapsed text-truncation-btn"
-       data-toggle="collapse"
-       href="#example1"
-       aria-expanded="true"
-       aria-controls="example1"
-       data-expanded-text="{% translate 'Zeige weniger ...' %}"
-       data-collapsed-text="{% translate 'Zeige mehr ...' %}">Good Practice Beispiel 1</a>
-</div>
-<div class="exampleHeading">
-    <a role="button"
-       class="collapsed text-truncation-btn"
-       data-toggle="collapse"
-       href="#example2"
-       aria-expanded="true"
-       aria-controls="example2"
-       data-expanded-text="{% translate 'Zeige weniger ...' %}"
-       data-collapsed-text="{% translate 'Zeige mehr ...' %}">Good Practice Beispiel 1</a>
-</div>
+{% if boxObject.example1 %}
+    <div class="exampleHeading">
+        <a role="button"
+           class="collapsed text-truncation-btn"
+           data-toggle="collapse"
+           href="#example1"
+           aria-expanded="true"
+           aria-controls="example1"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Good Practice Beispiel 1</a>
+    </div>
+{% endif %}
+{% if boxObject.example2 %}
+    <div class="exampleHeading">
+        <a role="button"
+           class="collapsed text-truncation-btn"
+           data-toggle="collapse"
+           href="#example2"
+           aria-expanded="true"
+           aria-controls="example2"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}">Good Practice Beispiel 1</a>
+    </div>
+{% endif %}
