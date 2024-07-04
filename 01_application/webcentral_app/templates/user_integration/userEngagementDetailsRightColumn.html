@@ -37,7 +37,7 @@
     <div class="mainContent" id="shortDescription">
         <ol>
             {% for procedure in boxObject.procedure.all %}
-                <li>{{ procedure.procedureItem|safe }}</li>
+                <li>{{ procedure.procedureItem }}</li>
             {% endfor %}
         </ol>
     </div>

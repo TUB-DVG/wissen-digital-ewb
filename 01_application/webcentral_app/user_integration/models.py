@@ -60,7 +60,7 @@ class UserEngagement(models.Model):
     successFactors = models.TextField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)
     procedure = models.ManyToManyField("ProcedureItem", null=True, blank=True)
-    specificGoals = models.TextField(blank=True, null=True)
+    # specificGoals = models.TextField(blank=True, null=True)
     # specificProcedure = models.ManyToManyField("SpecificProcedureItem",
     #    null=True,
     #    blank=True)
