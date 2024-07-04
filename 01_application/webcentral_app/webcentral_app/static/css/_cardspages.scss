@@ -68,7 +68,11 @@
     @include btn-search($legal-color, $third-text-color)
   }
 }
-
+.border-operational {
+  .operational-font-color {
+    color: $operational-color;
+  }
+}
 .ecological-cards {
   .ecological-font-color{
     color: $ecological-color;
@@ -99,6 +103,9 @@
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
     font-weight: 500;
+  }
+  a {
+    color: $ecological-color;
   }
   input[type='radio'] {
     appearance: none;
@@ -194,6 +201,9 @@ input[type='checkbox']:checked:before {
     color: $legal-color;
     font-weight: 500;
   }
+  a {
+    color: $legal-color;
+  }
   input[type='radio'] {
     appearance: none;
     width: 20px;
@@ -281,6 +291,9 @@ input[type='checkbox']:checked:before {
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
     color: $operational-color;
     font-weight: 500;
+  }
+  a {
+    color: $operational-color;
   }
   input[type='radio'] {
     appearance: none;
@@ -373,6 +386,9 @@ input[type='checkbox']:checked:before {
   }
   .btn-technical-free-text {
     @include btn-search-free-text($technical-color)
+  }
+  a {
+    color: $technical-color;
   }
   input[type='radio'] {
     appearance: none;

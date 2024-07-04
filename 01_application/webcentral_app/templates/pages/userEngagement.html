@@ -15,4 +15,15 @@
         </div>
     </div>
     <!-- Content END -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all <a> tags
+            var links = document.querySelectorAll('a');
+            
+            // Loop through each <a> tag and add the class
+            links.forEach(function(link) {
+                link.classList.add('{{ focusBorder }}-font-color');
+            });
+        });
+    </script>
 {% endblock %}
