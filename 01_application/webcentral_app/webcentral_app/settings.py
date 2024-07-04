@@ -263,6 +263,7 @@ if os.environ.get("MODE") == "production":
     SECURE_CONTENT_TYPE_NOSNIFF = True
     CSRF_USE_SESSIONS = True
     SECURE_BROWSER_XSS_FILTER = True
+    loggingDir = "/home/webcentraluser/djangoLog"
 else:
     STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
     STATIC_URL = "/static/"
@@ -270,9 +271,29 @@ else:
     # Media folder settings
     MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
     MEDIA_URL = "/media/"
+    loggingDir = "/webcentral/djangoLog"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": loggingDir,
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+    },
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
