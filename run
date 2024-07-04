@@ -168,7 +168,7 @@ case $command in
                 if [ -n "$4" ]; then
                     siteUnderTest=http://127.0.0.1:8000 HEADLESS=0 python Test/TestSuite/TestRunner.py --test_file $3 --test_method $4
                 else
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py --test_file $3
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=0 python Test/TestSuite/TestRunner.py --test_file $3
                 fi
             else 
                 siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py
@@ -195,6 +195,45 @@ case $command in
             fi
         fi
         ;;
+    "up_initial")
+        if [ -z "$2" ]
+        then
+            echo "Please Specify as a second argument, which docker-environment you want to start. Possible options are: dev, prod"
+            exit 1
+        else
+            if [ "$2" = "dev" ]; then
+                if [ -z "$3" ]
+                then 
+                    echo "Please provide a filename of a .sql database-dunp inside the postgres/ folder."
+                    exit 1
+                else
+
+                    echo "Starting development environment..."
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up -d
+                    sleep 1
+                    cat $3 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up
+                    exit 1
+                fi
+            fi
+            if [ "$2" = "prod" ]; then
+                if [ -z "$3" ]
+                then 
+                    echo "Please provide a filename of a .sql database-dunp inside the postgres/ folder."
+                    exit 1
+                else
+                    echo "Startin production environment..."
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up -d
+                    sleep 10
+                    cat $3 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml down
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up -d
+                    exit 1
+                fi
+            fi
+        fi
+        ;;        
     "up_debug")         
         $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml run --service-ports webcentral
         ;;     
@@ -207,6 +246,9 @@ case $command in
         ;;
     "compilemessages")         
         docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py compilemessages 
+        ;;
+    "update_translation_fields")
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py update_translation_fields 
         ;;
     *)
         echo "Unknown command: $command"
