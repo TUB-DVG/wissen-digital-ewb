@@ -169,6 +169,10 @@
   color: white;
 }
 
+.border-operational .operational-font-color {
+  color: #F49783;
+}
+
 .ecological-cards .ecological-font-color {
   color: #6CC876;
 }
@@ -203,6 +207,9 @@
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
   font-weight: 500;
+}
+.ecological-cards a {
+  color: #6CC876;
 }
 .ecological-cards input[type=radio] {
   appearance: none;
@@ -297,6 +304,9 @@
   color: #E4D85C;
   font-weight: 500;
 }
+.legal-cards a {
+  color: #E4D85C;
+}
 .legal-cards input[type=radio] {
   appearance: none;
   width: 20px;
@@ -381,6 +391,9 @@
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
   color: #F49783;
   font-weight: 500;
+}
+.operational-cards a {
+  color: #F49783;
 }
 .operational-cards input[type=radio] {
   appearance: none;
@@ -470,6 +483,9 @@
   color: white;
 }
 .technical-cards .btn-technical-free-text {
+  color: #8FABF7;
+}
+.technical-cards a {
   color: #8FABF7;
 }
 .technical-cards input[type=radio] {

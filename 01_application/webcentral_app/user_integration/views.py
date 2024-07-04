@@ -9,30 +9,9 @@ from .models import UserEngagement
 def userEngagementDetails(request, engagementId):
     """Serve the user engagement details page."""
     userEngagementObj = UserEngagement.objects.get(id=engagementId)
-    context = {
-        "imageInBackButton": "assets/images/backArrowOperational.svg",
-        "focusBorder": "operational",
-        "boxObject": userEngagementObj,
-        "backLinkText": _("Übersicht Methoden Nutzendenintegration"),
-        "backLink": "userEngagement",
-        "leftColumn": "user_integration/userEngagementDetailsLeftColumn.html",
-        "rightColumn":
-        "user_integration/userEngagementDetailsRightColumn.html",
-        "imageQuickLinks": False,
-        "idOfSelectedObj": engagementId,
-        # "allObjectsForQuickLinks":
-        # UserEngagement.objects.all(),
-        # "showInputsInImageQuickLinkBar":
-        # False,
-        # "showSelect":
-        # False,
-        # "tags": [
-        #     currentUserEnagementObj.category
-        #     for currentUserEnagementObj in UserEngagement.objects.all()
-        # ],
-        "quickLinkName": "user_integration/userEngagement",
-        "javascriptFilePath": "js/user_integration_functions.js",
-    }
+    context = _defineContextForView()
+    context["boxObject"] = userEngagementObj
+    context["idOfSelectedObj"] = engagementId
 
     return render(request, "pages/detailsPage.html", context)
 
@@ -40,39 +19,21 @@ def userEngagementDetails(request, engagementId):
 def userEngagementDetailsTitle(request, engagmentTitle):
     userEngagementObj = UserEngagement.objects.get(category=engagmentTitle)
     engagementId = userEngagementObj.id
-    context = {
-        "imageInBackButton":
-        "assets/images/backArrowOperational.svg",
-        "focusBorder":
-        "operational",
-        "boxObject":
-        userEngagementObj,
-        "backLinkText":
-        _("Nutzendenintegration"),
-        "backLink":
-        "userEngagement",
-        "leftColumn":
-        "user_integration/userEngagementDetailsLeftColumn.html",
+    context = _defineContextForView()
+    context["boxObject"] = userEngagementObj
+    context["idOfSelectedObj"] = engagementId
+    return render(request, "pages/detailsPage.html", context)
+
+
+def _defineContextForView():
+    """Define the base context, which is modified in the 2 different view functions."""
+    return {
+        "imageInBackButton": "assets/images/backArrowOperational.svg",
+        "focusBorder": "operational",
+        "backLinkText": _("Übersicht Methoden Nutzendenintegration"),
+        "backLink": "userEngagement",
+        "leftColumn": "user_integration/userEngagementDetailsLeftColumn.html",
         "rightColumn":
         "user_integration/userEngagementDetailsRightColumn.html",
-        "imageQuickLinks":
-        True,
-        "idOfSelectedObj":
-        engagementId,
-        "allObjectsForQuickLinks":
-        UserEngagement.objects.all(),
-        "showInputsInImageQuickLinkBar":
-        False,
-        "showSelect":
-        True,
-        "tags": [
-            currentUserEnagementObj.category
-            for currentUserEnagementObj in UserEngagement.objects.all()
-        ],
-        "quickLinkName":
-        "user_integration/userEngagement",
-        "javascriptFilePath":
-        "js/user_integration_functions.js",
+        "imageQuickLinks": False,
     }
-
-    return render(request, "pages/detailsPage.html", context)
