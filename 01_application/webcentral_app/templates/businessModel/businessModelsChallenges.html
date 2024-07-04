@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Komponentenliste" %}
+{% endblock %}
+{% load static %}
+{% block content %}
+    <div class="content container">
+        <div class="row">{% include "partials/backLinkInFocusColor.html" %}</div>
+        <div class="row">
+            <div class="descriptionBox">
+                {% include "partials/descriptionContainer.html" %}
+            </div>
+            {% include "partials/_descriptionImage.html" %}
+        </div>
+        <div class="container" id="container-start-focus">
+            {% include "common/fourBoxesContainer.html" %}
+        </div>
+    </div>
+{% endblock %}

@@ -19,3 +19,20 @@
 .close-icon::before {
   vertical-align: -0.2em;
 }
+
+.collapseListingRow{
+  .collapseInfo.collapse:not(.show) {
+    display: block;
+    height: 4.0rem;
+    overflow: hidden;
+  }
+  .collapseInfo.collapsing {
+    height: 4.0rem;
+  }
+  a.text-truncation-btn.collapsed::after {
+    content: attr(data-collapsed-text);
+  }
+  a.text-truncation-btn:not(.collapsed)::after {
+    content: attr(data-expanded-text);
+  }
+}

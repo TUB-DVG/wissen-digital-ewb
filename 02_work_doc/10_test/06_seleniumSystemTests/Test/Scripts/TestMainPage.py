@@ -6,6 +6,7 @@ https://wissen-digital-ewb.de.
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -13,9 +14,7 @@ import os
 import random
 
 from selenium import (
-    webdriver,
-
-)
+    webdriver, )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -31,21 +30,23 @@ from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
+
 class TestMainPage(WebDriverSetup):
     """Testclass for MainPage-Test
 
     Inherit from TestWebcentral. There methods should be implemented,
     which are relevant for all Test-Classes (like the login-functionality,
     which is no longer needed.)
-    
+
     """
+
     def testReloadOfResultsPage(self):
         """Check if reload of StartSearch-Result Page produces an error
-        
-        When pressing reload on the results page a django-error is thrown, which also 
+
+        When pressing reload on the results page a django-error is thrown, which also
         leads to a 500 Internal Server Error by nginx in the production environment.
-        That should not happen. A bugfix was implemented, which returns the startpage, 
-        when the reload button on the webbrowser was clicked. That behaviour is tested 
+        That should not happen. A bugfix was implemented, which returns the startpage,
+        when the reload button on the webbrowser was clicked. That behaviour is tested
         here.
         """
         lengthOfRandomSearch = 2
@@ -55,24 +56,27 @@ class TestMainPage(WebDriverSetup):
         searchInputField = startPageObj.getSearchInputField()
         searchStr = ""
         for currentNumberOfSearch in range(lengthOfRandomSearch):
-           searchStr += chr(random.randint(ord('a'), ord('z')))
+            searchStr += chr(random.randint(ord("a"), ord("z")))
 
         searchInputField.send_keys(searchStr)
-        searchInputField.send_keys(Keys.RETURN)        
-        
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, 'searchResultH2')))
-        self.driver.get(os.environ["siteUnderTest"]+ "/ResultSearch")
+        searchInputField.send_keys(Keys.RETURN)
+
+        WebDriverWait(self.driver, 5).until(
+            EC.visibility_of_element_located((By.ID, "searchResultH2")))
+        self.driver.get(os.environ["siteUnderTest"] + "/ResultSearch")
         try:
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.XPATH, 'inputSearchField')))
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located(
+                    (By.XPATH, "inputSearchField")))
         except TimeoutException:
-            self._checkForPageError("After reloading the page, an django-error appears, because the search-string is None")
-        
-        
+            self._checkForPageError(
+                "After reloading the page, an django-error appears, because the search-string is None"
+            )
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
         the Impressum page opens, which is located on $siteunderTtest + /pages/Impressum
-        
+
         """
         self.driver.get(os.environ["siteUnderTest"])
 
@@ -80,7 +84,8 @@ class TestMainPage(WebDriverSetup):
         impressumLinkElement = startPageObj.getImpressumLink()
         # self.driver.implicitly_wait(10)
         # ActionChains(self.driver).move_to_element(impressumLinkElement).perform()
-        self.driver.execute_script("arguments[0].scrollIntoView();", impressumLinkElement)
+        self.driver.execute_script("arguments[0].scrollIntoView();",
+                                   impressumLinkElement)
         # WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(impressumLinkElement)).click()
         time.sleep(1)
         impressumLinkElement.click()
@@ -89,13 +94,13 @@ class TestMainPage(WebDriverSetup):
         self.assertEqual(
             self.driver.title,
             "Impressum",
-            "Page should be Impressum, but its not!"
+            "Page should be Impressum, but its not!",
         )
-    
+
     def testSearchFieldWithRandomCharacters(self):
         """Check if search produces results for random search-string
 
-        This test checks, if start-search produces an result for an 
+        This test checks, if start-search produces an result for an
         random character combination of length 2. Since there was an
         error present in the past, due to wrong format of 'lastUpdate',
         this test should find out about that error.
@@ -107,23 +112,24 @@ class TestMainPage(WebDriverSetup):
         searchInputField = startPageObj.getSearchInputField()
         searchStr = ""
         for currentNumberOfSearch in range(lengthOfRandomSearch):
-           searchStr += chr(random.randint(ord('a'), ord('z')))         
+            searchStr += chr(random.randint(ord("a"), ord("z")))
 
         searchInputField.send_keys(searchStr)
         searchInputField.send_keys(Keys.RETURN)
         try:
-            WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located((By.ID, 'searchResultH2')))
+            WebDriverWait(self.driver, 5).until(
+                EC.visibility_of_element_located((By.ID, "searchResultH2")))
         except TimeoutException:
-            self._checkForPageError("The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!")          
+            self._checkForPageError(
+                "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"
+            )
 
-      
-      
     def testSearchFieldForBim2Sim(self):
         """Test the searchfield on the startpage
 
-        It writes 'Bim' into the input-field. After pushing Return, 
+        It writes 'Bim' into the input-field. After pushing Return,
         BIM2SIM should be in the Result.
-        
+
         """
         self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
@@ -134,8 +140,9 @@ class TestMainPage(WebDriverSetup):
         foundInstanceOfBim = False
         # check if the results page is loaded:
         self.assertTrue(
-            self.driver.title != "Server Error (500)" or "ValueError" not in self.driver.title,
-            "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"  
+            self.driver.title != "Server Error (500)"
+            or "ValueError" not in self.driver.title,
+            "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!",
         )
         listOfRowsInResultsTable = startPageObj.getSearchResults()
         for rowElement in listOfRowsInResultsTable:
@@ -152,9 +159,9 @@ class TestMainPage(WebDriverSetup):
                 )
                 # self.driver.close()
                 # self.driver.switch_to.window(self.driver.window_handles[0])
-                # 
+                #
                 break
-        
+
         self.assertTrue(
             foundInstanceOfBim,
             "BIM2SIM is not in results! Check the search...",
@@ -169,9 +176,13 @@ class TestMainPage(WebDriverSetup):
             rowElement = listOfRowsInResultsTable[indexTable]
             if rowElement.text.find("Forschungsprojekt") >= 0:
                 checkedScientificProjects += 1
-                self.driver.execute_script("arguments[0].scrollIntoView();", rowElement)
+                self.driver.execute_script("arguments[0].scrollIntoView();",
+                                           rowElement)
                 childRowElement = startPageObj.getChildEbElement(rowElement)
-                self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", rowElement)
+                self.driver.execute_script(
+                    "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));",
+                    rowElement,
+                )
                 childRowElement.click()
                 self.driver.switch_to.window(self.driver.window_handles[-1])
                 time.sleep(1)
@@ -213,7 +224,8 @@ class TestMainPage(WebDriverSetup):
             "last-search-results-page should be present, but it is not!",
         )
         cookieBannerObj = CookieBanner(self.driver)
-        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self.scrollElementIntoViewAndClickIt(
+            cookieBannerObj.getCookieAcceptanceButton())
         self.scrollElementIntoViewAndClickIt(listOfNextElement[0])
         resultsOnNextSite = startPageObj.getSearchResults()
         self.assertNotEqual(
@@ -249,35 +261,35 @@ class TestMainPage(WebDriverSetup):
         self.assertIn(
             "Seite 2",
             currentPageNumberElement.text,
-            "Current Page Number should say 'Seite 2'"
+            "Current Page Number should say 'Seite 2'",
         )
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfPreviousElement[0])
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            listOfPreviousElement[0],
+        )
         time.sleep(1)
         listOfPreviousElement[0].click()
         currentPageNumberElement = startPageObj.getCurrentSearchResultNumber()
         self.assertIn(
             "Seite 1",
             currentPageNumberElement.text,
-            "Current Page Number should say 'Seite 1'"
-        )       
+            "Current Page Number should say 'Seite 1'",
+        )
 
-
-        
     def testIfLinkToBuisnessAppsWorks(self):
-        """Test if one can navigate from Main-Page to buisness-application site
-        
-        """
+        """Test if one can navigate from Main-Page to buisness-application site"""
         self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
-        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()    
-            
-        self.driver.execute_script("arguments[0].scrollIntoView();", linkToBuisnessApps)
-        
+        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()
+
+        self.driver.execute_script("arguments[0].scrollIntoView();",
+                                   linkToBuisnessApps)
+
         time.sleep(1)
         linkToBuisnessApps.click()
 
         time.sleep(1)
-        
+
         self.assertEqual(
             self.driver.title,
             "Überblick über die Geschäftsmodellanwendungen",
@@ -285,15 +297,16 @@ class TestMainPage(WebDriverSetup):
         )
 
     def testLinkToTechnicalSTandarts(self):
-        """Test if the Technical Standarts Link is working by clicking on it and 
+        """Test if the Technical Standarts Link is working by clicking on it and
         checking the page-title on the next site
-        
+
         """
         self.driver.get(os.environ["siteUnderTest"])
 
         startPAgeObj = StartPage(self.driver)
         linkToTechnicalStandarts = startPAgeObj.getLinkToTechnicalStandarts()
-        self.driver.execute_script("arguments[0].scrollIntoView();", linkToTechnicalStandarts)
+        self.driver.execute_script("arguments[0].scrollIntoView();",
+                                   linkToTechnicalStandarts)
         time.sleep(1)
         linkToTechnicalStandarts.click()
         self.assertEqual(
@@ -301,3 +314,97 @@ class TestMainPage(WebDriverSetup):
             "Überblick über die technischen Standards",
             "Page should be technical-standarts-page after clicking on link on main-page...",
         )
+
+    def testContainers(self):
+        """Check if the right links and description is shown in german and english."""
+        self.driver.get(os.environ["siteUnderTest"])
+
+        startPAgeObj = StartPage(self.driver)
+
+        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
+
+        # set the language to german:
+        self._setLanguageToGerman()
+
+        # get the heading in the operational focus container:
+        headingText = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "h2")[0]
+
+        self.assertEqual(
+            headingText.text,
+            "Betrieblicher Fokus",
+            "Heading should be 'Operationaler Fokus', but its not!",
+        )
+
+        # get the description paragraph in the operational focus container:
+        descParagraph = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "p")[0]
+
+        self.assertEqual(
+            descParagraph.text,
+            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen in Geschäftsmodellen und die Einbindung von und Interaktion mit den Nutzenden.",
+            "Description in opertional focus container is not as expected!",
+        )
+
+        expectedGermanLinkNames = [
+            "Geschäftsmodelle",
+            "Nutzendenintegration",
+        ]
+
+        # check the links in the operational focus container:
+        linkListElements = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "a")
+
+        self.assertEqual(
+            len(linkListElements),
+            len(expectedGermanLinkNames),
+            "The number of links in the operational focus box is not as expected!",
+        )
+
+        for linkNumber, linkElement in enumerate(linkListElements):
+            self.assertEqual(linkElement.text,
+                             expectedGermanLinkNames[linkNumber])
+
+        # set the language to english:
+        self._setLanguageToEnglish()
+
+        # get the heading in the operational focus container:
+        headingText = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "h2")[0]
+
+        self.assertEqual(
+            headingText.text,
+            "Operational focus",
+            "Heading should be 'Operationaler Fokus', but its not!",
+        )
+
+        # get the description paragraph in the operational focus container:
+        descParagraph = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "p")[0]
+
+        self.assertEqual(
+            descParagraph.text,
+            "The operational focus in studying digitalization in the building sector of energy research is primarily directed at the use phase of digital applications. Important aspects are the economic operation of digital applications in business models and the integration of and interaction with users.",
+            "Description in opertional focus container is not as expected!",
+        )
+
+        expectedGermanLinkNames = [
+            "Business models",
+            "User integration",
+        ]
+
+        # check the links in the operational focus container:
+        linkListElements = startPAgeObj.getDescendantsByTagName(
+            operationalFocusContainer, "td")
+
+        self.assertEqual(
+            len(linkListElements),
+            len(expectedGermanLinkNames),
+            "The number of links in the operational focus box is not as expected!",
+        )
+
+        for linkNumber, linkTableElement in enumerate(linkListElements):
+            linkElement = startPAgeObj.getDescendantsByTagName(
+                linkTableElement, "a")
+            self.assertEqual(linkElement.text,
+                             expectedGermanLinkNames[linkNumber])
