@@ -119,14 +119,14 @@ def buildCriteriaCatalog(
             tree_to_html(listOfTrees[index].dictOfTree,
                          nodeRootElements[index]))
     allCriteriaCatalogObjs = CriteriaCatalog.objects.all()
+    criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
         request,
         "criteriaCatalog/criteriaCatalogDetails.html",
         {
             "idOfSelectedObj": criteriaCatalogId,
             "allObjectsForQuickLinks": allCriteriaCatalogObjs,
-            "criteriaCatalog":
-            CriteriaCatalog.objects.get(id=criteriaCatalogId),
+            "criteriaCatalog": criteriaCatalogObj,
             "trees": listOfFlattenedTrees,
             "tags": Tag.objects.all(),
             "showInputsInImageQuickLinkBar": True,
@@ -136,6 +136,8 @@ def buildCriteriaCatalog(
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
             "showSelect": True,
+            "explanaitionText": criteriaCatalogObj.text.replace("\n", "<br>"),
+            "heading": criteriaCatalogObj.name,
         },
     )
 
