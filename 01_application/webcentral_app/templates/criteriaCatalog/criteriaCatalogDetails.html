@@ -299,7 +299,6 @@ button {
 
 
 
-
   // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
   modifyCatalogToBeShownInOneElement();
   // bringParagraphsInNextLayer();
@@ -605,7 +604,17 @@ observer.observe(el);
         var aggregatedTopicIds = "";
         var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
         // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
+        
+        // first add the content of the element itself:
+         
+         if (liDescendants[0] != undefined) {
+          var firstParagraph = liDescendants[0].getElementsByTagName("p");
+          if (firstParagraph != null) {
+            textCombinedConcatenated += firstParagraph[0].innerHTML;
+          }
+         }
 
+        // debugger;
         var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
         window.textForCombinedElement = "";
         for (var j = 0; j < ulChildElements.length; j++) {
@@ -624,7 +633,11 @@ observer.observe(el);
           if (Number(ulChildElements[j].id) > 3) {
             ulChildElements[j].remove();
           }
+          // if (liDescendants.length == 1) {
+
+          // }
         }
+        // debugger;
         for (var j = 0; j < liDescendants.length; j++) {
           // if (Number(liDescendants[j].id) > 2) {
           //   textForCombinedElement += getHeadingAndDescription(liDescendants[j], textForCombinedElement);
@@ -639,7 +652,31 @@ observer.observe(el);
           
             paragraphToBeDeleted = liDescendants[j].querySelector("p")
             if (paragraphToBeDeleted.getAttribute("aggregatedText") != "true") {
-              paragraphToBeDeleted.remove();
+              
+              if (paragraphToBeDeleted.parentElement.parentElement.getElementsByTagName("ul").length > 0) {
+                paragraphToBeDeleted.remove();
+              }
+              else {
+                var newUlElement = document.createElement("ul");
+                newUlElement.id = "3";
+                newUlElement.style.display = "none";
+                var newLiElement = document.createElement("li");
+                newLiElement.id = "3";
+                newLiElement.style.display = "none";
+                newLiElement.setAttribute("aggregatedText", true);
+                var newParagraphElement = document.createElement("p");
+                newLiElement.setAttribute("aggregatedText", true);
+                newParagraphElement.style.display = "none";
+                newParagraphElement.id = "3";
+                newParagraphElement.innerHTML = paragraphToBeDeleted.innerHTML;
+                // debugger;
+                paragraphToBeDeleted.parentElement.append(newUlElement);
+                paragraphToBeDeleted.parentElement.children[paragraphToBeDeleted.parentElement.children.length-1].append(newLiElement);
+                paragraphToBeDeleted.parentElement.children[paragraphToBeDeleted.parentElement.children.length-1].children[0].append(newParagraphElement)
+
+                paragraphToBeDeleted.remove();
+                // debugger;
+              }
             }
             // liDescendants[j].querySelectorAll("div")[1].remove();
           }
@@ -651,7 +688,7 @@ observer.observe(el);
         newLiElement.style.display = "none";
         newParagraphElement.style.whiteSpace = "pre-line";
         newParagraphElement.setAttribute("aggregatedText", "true")
-        newParagraphElement.innerHTML = window.textForCombinedElement;
+        newParagraphElement.innerHTML = textCombinedConcatenated;
         newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
         newParagraphElement.setAttribute("tags", aggregatedTags);
         newLiElement.id = "3";
