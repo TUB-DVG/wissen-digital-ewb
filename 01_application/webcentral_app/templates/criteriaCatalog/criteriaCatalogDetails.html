@@ -627,7 +627,7 @@ observer.observe(el);
               aggregatedTopicIds += "," + firstLiChildren.getAttribute("topicId");
             }
 
-            textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n\n');
+            textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n');
             textCombinedConcatenated += textForCombinedElement;
           }
           if (Number(ulChildElements[j].id) > 3) {
@@ -667,6 +667,7 @@ observer.observe(el);
                 var newParagraphElement = document.createElement("p");
                 newLiElement.setAttribute("aggregatedText", true);
                 newParagraphElement.style.display = "none";
+                newParagraphElement.style.fontSize = "18px";
                 newParagraphElement.id = "3";
                 newParagraphElement.innerHTML = paragraphToBeDeleted.innerHTML;
                 // debugger;
@@ -689,6 +690,7 @@ observer.observe(el);
         newParagraphElement.style.whiteSpace = "pre-line";
         newParagraphElement.setAttribute("aggregatedText", "true")
         newParagraphElement.innerHTML = textCombinedConcatenated;
+        newParagraphElement.style.fontSize = "18px";
         newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
         newParagraphElement.setAttribute("tags", aggregatedTags);
         newLiElement.id = "3";
