@@ -117,13 +117,8 @@ button {
     <!-- Page content START -->
     <section class="pt-0">
       <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
-        <!-- Filter bar START -->
-        <!-- <div class="row my-4">
-          <a href="/pages/criteriaCatalog" style="color: #E0D674; font-size: 15px">< Kriterienkatalog Start</a>
-        </div> -->
         {% include "partials/backLinkInFocusColor.html" %}
         {% include "partials/_imagesNavBar.html" %}
-        <!-- END search Field Schlagwort -->
       </div>
     </div>
     <!-- </form> -->
@@ -247,7 +242,7 @@ button {
                              id="0"
                              topicId="{{ node.content.topic.id }}"
                              tags="{{ node.content.topic.tag|format_tags }}">
-                            {{ node.content.topic.text }}
+                            {{ node.content.topic.textLineBreaks }}
                           </p>
                         {% else %}
                           <li class="border-bottom sticky-element-li"
@@ -278,7 +273,7 @@ button {
                                id="{{ node.content.depth }}"
                                topicId="{{ node.content.topic.id }}"
                                tags="{{ node.content.topic.tag|format_tags }}">
-                              {{ node.content.topic.text }}
+                              {{ node.content.topic.textLineBreaks }}
                             </p>
                           {% endif %}
                         {% endif %}
