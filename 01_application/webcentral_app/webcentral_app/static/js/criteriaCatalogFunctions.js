@@ -341,6 +341,9 @@ function modifyCatalogToBeShownInOneElement() {
               newLiElement.style.display = "none";
               newLiElement.setAttribute("aggregatedText", true);
               var newParagraphElement = document.createElement("p");
+              newParagraphElement.classList.add("paragraph-deeper-level")
+              newParagraphElement.setAttribute("topicId", paragraphToBeDeleted.getAttribute("topicId"))
+              newParagraphElement.setAttribute("tags", paragraphToBeDeleted.getAttribute("tags"))
               newLiElement.setAttribute("aggregatedText", true);
               newParagraphElement.style.display = "none";
               newParagraphElement.style.fontSize = "18px";
@@ -626,7 +629,7 @@ if (element.textContent.length > 80) {
 }
 
 function showElement(element) {
-if (element.tagName == "UL" || element.tagName == "LI" || element.tagName == "DIV") {
+if (element.tagName == "UL" || element.tagName == "LI" || element.tagName == "DIV" || element.tagName == "P") {
   element.style.display = "block";
 }
 else {
