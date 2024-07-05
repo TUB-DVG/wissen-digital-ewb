@@ -1,5 +1,6 @@
 from django.db import models
 from django import template
+from django.template import Template, Context
 
 register = template.Library()
 
@@ -44,6 +45,15 @@ class Topic(models.Model):
         """Return string representation of an `Topic`-object"""
         return self.heading
 
+    @property
+    def textLineBreaks(self):
+        """Add <br> tags where a linebreak should be present"""
+
+        textWithBRs = str(self.text).replace("\n", "<br>")
+        templateObj = Template(textWithBRs)
+
+        contextObj = Context({})
+        return templateObj.render(contextObj)
 
 class Tag(models.Model):
     """Represent a Tag, which can be assigned to a Topic."""
