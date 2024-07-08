@@ -70,19 +70,14 @@ from component_list.models import (
     ComponentClass,
     Category,
     EnvironmentalImpact,
+    DataSufficiency,
 )
-from data_sufficiency.models import (
-    DataSufficiency, )
-from businessModel.models import (
-    BusinessModel, )
 
-from user_integration.models import (
+from businessModel.models import (
+    BusinessModel,
     UserEngagement,
-    # SpecificProcedureItem,
+    SpecificProcedureItem,
     ProcedureItem,
-    ProArgument,
-    ConArgument,
-    Literature,
 )
 
 from project_listing.models import (
@@ -255,8 +250,7 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def getOrCreateCriteriaCatalog(self, row: list, header: list,
-                                   data: list) -> None:
+    def getOrCreateCriteriaCatalog(self, row: list, header: list, data: list) -> None:
         """
         Add entry (CriteriaCatalog) into the table or/and return entry key.
         """
@@ -264,30 +258,27 @@ class Command(BaseCommand):
         criteriaCatalogForTopic, _ = CriteriaCatalog.objects.get_or_create(
             name=row[header.index("katalog")], )
 
+
         try:
             if row[header.index("parentId")] == "":
                 parentTopicOfCurrentTopic = None
             else:
                 for rowToBeSearchedForParent in data:
-                    if (rowToBeSearchedForParent[header.index("id")] == row[
-                            header.index("parentId")]):
+                    if rowToBeSearchedForParent[header.index("id")] == row[header.index("parentId")]:
                         parentIdRow = rowToBeSearchedForParent
                         break
                 if parentIdRow is not None:
                     # find also the parent of the parent since Topics can be identical
                     if parentIdRow[header.index("parentId")] != "":
                         for rowToBeSearchedForParent in data:
-                            if (rowToBeSearchedForParent[header.index("id")] ==
-                                    parentIdRow[header.index("parentId")]):
+                            if rowToBeSearchedForParent[header.index("id")] == parentIdRow[header.index("parentId")]:
                                 parentOfParentRow = rowToBeSearchedForParent
                                 break
                         parentOfParent = Topic.objects.get(
-                            heading=parentOfParentRow[header.index(
-                                "ueberschrift")],
+                            heading=parentOfParentRow[header.index("ueberschrift")],
                             text=parentOfParentRow[header.index("text")],
                             criteriaCatalog=criteriaCatalogForTopic,
-                            topicHeadingNumber=parentOfParentRow[header.index(
-                                "id2")],
+                            topicHeadingNumber=parentOfParentRow[header.index("id2")],
                         )
 
                     else:
@@ -299,7 +290,7 @@ class Command(BaseCommand):
                         parent=parentOfParent,
                         topicHeadingNumber=parentIdRow[header.index("id2")],
                     )
-
+                     
                     if len(parentTopicOfCurrentTopic) > 1:
                         breakpoint()
                     parentTopicOfCurrentTopic = parentTopicOfCurrentTopic[0]
@@ -396,8 +387,17 @@ class Command(BaseCommand):
         timeRequired = row[header.index("Zeitbedarf")]
         groupSize = row[header.index("Gruppengröße")]
         material = row[header.index("Material")]
+        advantages = row[header.index("Vorteile")]
+        disadvantages = row[header.index("Nachteile")]
+        conductedBy = row[header.index("Durchgeführt von")]
+        successFactors = row[header.index(
+            "Erfolgsfaktoren für die Umsetzung der Methode")]
         goals = row[header.index("Ziele")]
-        goodPracticeExample = row[header.index("Good-Practice-Beispiel")]
+        specificGoals = row[header.index("Konkrete_Ziele")]
+        participantObservations = row[header.index(
+            "Beobachtungen der Teilnehmenden")]
+        persons = row[header.index("Personas")]
+
         obj, created = UserEngagement.objects.get_or_create(
             category=category,
             categoryShortDescription=categoryShortDescription,
@@ -407,44 +407,29 @@ class Command(BaseCommand):
             timeRequired=timeRequired,
             groupSize=groupSize,
             material=material,
+            advantages=advantages,
+            disadvantages=disadvantages,
+            conductedBy=conductedBy,
+            successFactors=successFactors,
             goals=goals,
-            goodPracticeExample=goodPracticeExample,
+            persons=persons,
+            participantObservations=participantObservations,
+            specificGoals=specificGoals,
         )
-        procedureList = self._processListInput(row[header.index("Ablauf")],
-                                               ";;")
+        specificProcedureList = self._processListInput(
+            row[header.index("Konkreter_Ablauf")])
+        specificProcedureObjList = [
+            SpecificProcedureItem.objects.get_or_create(
+                specificProcedureItem=specificProcedure)[0]
+            for specificProcedure in specificProcedureList
+        ]
+        procedureList = self._processListInput(row[header.index("Ablauf")])
         procedureObjList = [
-            ProcedureItem.objects.get_or_create(_procedureItem=procedure)[0]
+            ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
             for procedure in procedureList
         ]
-        conArgumentsList = self._processListInput(
-            row[header.index("Nachteile")], ";;")
-        conObjsList = [
-            ConArgument.objects.get_or_create(conArgument=conArgElement)[0]
-            for conArgElement in conArgumentsList
-        ]
-        proArgumentsList = self._processListInput(
-            row[header.index("Vorteile")], ";;")
-        proObjsList = [
-            ProArgument.objects.get_or_create(proArgument=proArgElement)[0]
-            for proArgElement in proArgumentsList
-        ]
-        literatureList = self._processListInput(row[header.index("Literatur")],
-                                                ";;")
-        literatureObjsList = []
-        for literatureElement in literatureList:
-            splittedLiteratureElement = literatureElement.split("((")
-            literatureString = splittedLiteratureElement[0]
-            literatureIdentifer = splittedLiteratureElement[1].replace(
-                "))", "")
-            literatureObj, _ = Literature.objects.get_or_create(
-                literature=literatureString,
-                linkName=literatureIdentifer,
-            )
-            literatureObjsList.append(literatureObj)
         obj.procedure.add(*procedureObjList)
-        obj.proArguments.add(*proObjsList)
-        obj.conArguments.add(*conObjsList)
-        obj.literature.add(*literatureObjsList)
+        obj.specificProcedure.add(*specificProcedureObjList)
         return obj, created
 
     def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
@@ -701,7 +686,7 @@ class Command(BaseCommand):
         """
         strategyCategory = row[header.index("Strategiekategorie")]
         categoryShortDescription = row[header.index(
-            "Kategorie_Kurzbeschreibung_Teaser")]
+            "Kategorie_Kurzbeschreibung")]
         example1 = row[header.index("Beispiel_1")]
         example2 = row[header.index("Beispiel_2")]
 
@@ -1123,64 +1108,73 @@ class Command(BaseCommand):
         return obj, created
 
     def getOrCreateComponent(self, row, header):
-        categoryName = row[header.index("Category")]
+        categoryName = row[header.index("Kategorie")]
         # category = self._correctReadInValue(categoryName)
         categoryStr = self._selectNearestMatch(categoryName, Category)
         category = Category.objects.get(category=categoryStr)
         # Add foreign key relation to category
-        componentName = row[header.index("Component")]
+        componentName = row[header.index("Komponente")]
         componentStr = self._selectNearestMatch(componentName, ComponentClass)
         component = ComponentClass.objects.get(componentClass=componentStr)
-        description = row[header.index("Description")]
+        description = row[header.index("Beschreibung")]
         try:
             energyConsumptionUsePhaseTotal = float(row[header.index(
-                "Energy consumption Use Phase (total; in W)")])
+                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)")])
         except ValueError:
             energyConsumptionUsePhaseTotal = None
         try:
-            globalWarmingPotentialTotal = float(row[header.index(
-                "Global warming potential (total; in kg CO2-e)")])
+            specificGlobalWarmingPotentialTotal = float(row[header.index(
+                "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)")])
         except ValueError:
-            globalWarmingPotentialTotal = None
+            specificGlobalWarmingPotentialTotal = None
+        try:
+            globalWarmingPotentialTotal = float(row[header.index(
+                "Treibhauspotenzial (gesamt; in kg CO2-e)")])
+        except ValueError:
+            globalWarmingPotentialTotal = None       
         try:
             componentWeight = float(
-                row[header.index("Component weight (in kg)")])
+                row[header.index("Bauteilgewicht (in kg)")])
         except ValueError:
             componentWeight = None
         try:
-            lifetime = float(row[header.index("Lifetime (in years)")])
+            lifetime = float(row[header.index("Lebensdauer (in Jahre)")])
         except ValueError:
             lifetime = None
         # lifetime = row[header.index("Lifetime (in years)")]
         try:
             energyConsumptionUsePhaseActive = float(row[header.index(
-                "Energy consumption Use Phase (active; in W)")])
+                "Leistung Nutzungsphase (akitv; in W)")])
         except ValueError:
             energyConsumptionUsePhaseActive = None
         try:
             energyConsumptionUsePhasePassive = float(row[header.index(
-                "Energy consumption Use Phase (passive; in W)")])
+                "Leistung Nutzungsphase (passiv/ Stand-by; in W)")])
         except ValueError:
             energyConsumptionUsePhasePassive = None
 
         try:
             globalWarmingPotentialProduction = float(row[header.index(
-                "Global warming potential (production; in kg CO2-e)")])
+                "Treibhauspotenzial (Herstellung; in kg CO2-e)")])
         except ValueError:
             globalWarmingPotentialProduction = None
         try:
             globalWarmingPotentialUsePhase = float(row[header.index(
-                "Global warming potential (use phase; in kg CO2-e)")])
+                "Treibhauspotenzial (Nutzung; in kg CO2-e)")])
         except ValueError:
             globalWarmingPotentialUsePhase = None
         try:
             globalWarmingPotentialEndOfLife = float(row[header.index(
-                "Global warming potential (end-of-life; in kg CO2-e)")])
+                "Treibhauspotenzial (Entsorgung; in kg CO2-e)")])
         except ValueError:
             globalWarmingPotentialEndOfLife = None
         furtherInformationNotes = row[header.index(
-            "Further information / notes")]
-        sources = row[header.index("Sources")]
+            "Weitere Informationen / Anmerkungen")]
+        sources = row[header.index("Quellen")]
+        try:
+            yearOfUse = int(row[header.index("Betriebsdauer (h/Jahr)")])
+        except:
+            yearOfUse = None
         obj, created = Component.objects.get_or_create(
             category=category,
             component=component,
@@ -1196,6 +1190,7 @@ class Command(BaseCommand):
             globalWarmingPotentialEndOfLife=globalWarmingPotentialEndOfLife,
             furtherInformationNotes=furtherInformationNotes,
             sources=sources,
+            yearOfUsePerYear=yearOfUse,
         )
 
         return obj, created
@@ -2013,10 +2008,10 @@ class Command(BaseCommand):
                 return None
         # self.stdout.write(self.style.SUCCESS('Successfully executed command'))
 
-    def _processListInput(self, inputStr, separator=";"):
+    def _processListInput(self, inputStr):
         """Process a cell, which includes a list of elements"""
         returnList = []
-        for element in inputStr.split(separator):
+        for element in inputStr.split(";"):
             if not self._checkIfOnlyContainsSpaces(element):
                 returnList.append(element)
 
