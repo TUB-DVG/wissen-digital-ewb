@@ -11,6 +11,7 @@ class DataSufficiencyTranslationOptions(TranslationOptions):
     fields = (
         "strategyCategory",
         "categoryShortDescription",
+        "categoryLongDescription",
         "example1",
         "example2",
     )

@@ -321,8 +321,8 @@ def dataSufficiencyBox(request, idOfObject):
         "urlName": "dataProcessing",
         "backLinkText": _("Datensuffizienz"),
         "backLink": "dataSufficiency",
-        "leftColumn": "pages/dataSufficiencyLeftColumn.html",
-        "rightColumn": "pages/dataSufficiencyRightColumn.html",
+        "leftColumn": "data_sufficiency/dataSufficiencyLeftColumn.html",
+        "rightColumn": "data_sufficiency/dataSufficiencyRightColumn.html",
     }
     return render(request, "pages/detailsPage.html", context)
 
