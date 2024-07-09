@@ -24,7 +24,7 @@
     <div class="mainContent collapse" id="shortDescriptionRest">
         {{ boxObject.categoryShortDescription|slice:"401:" }}
     </div>
-    {% if boxObject.categoryShortDescription|slice:"401:" %}
+    {% if boxObject.categoryLongDescription|slice:"401:" %}
         <div class="showMore">
             <a role="button"
                class="collapsed text-truncation-btn"
@@ -33,7 +33,7 @@
                aria-expanded="true"
                aria-controls="shortDescriptionRest"
                data-expanded-text="{% translate 'Zeige weniger ...' %}"
-               data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+               data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
         </div>
     {% endif %}
 </div>
@@ -54,7 +54,7 @@
                        aria-expanded="true"
                        aria-controls="example1"
                        data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                       data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+                       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
                 </div>
             {% endif %}
         </div>
@@ -76,7 +76,7 @@
                    aria-expanded="true"
                    aria-controls="example2"
                    data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                   data-collapsed-text="{% translate 'Zeige mehr ...' %}">Zeige mehr...</a>
+                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
             </div>
         {% endif %}
     </div>

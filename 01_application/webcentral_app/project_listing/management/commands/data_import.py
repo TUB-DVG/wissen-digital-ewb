@@ -686,13 +686,15 @@ class Command(BaseCommand):
         """
         strategyCategory = row[header.index("Strategiekategorie")]
         categoryShortDescription = row[header.index(
-            "Kategorie_Kurzbeschreibung")]
+            "Kategorie_Kurzbeschreibung_Teaser")]
+        categoryLongDescription = row[header.index("Kategorie_Kurzbeschreibung_Lang")]
         example1 = row[header.index("Beispiel_1")]
         example2 = row[header.index("Beispiel_2")]
-
+         
         obj, created = DataSufficiency.objects.get_or_create(
             strategyCategory=strategyCategory,
             categoryShortDescription=categoryShortDescription,
+            categoryLongDescription=categoryLongDescription,
             example1=example1,
             example2=example2,
         )

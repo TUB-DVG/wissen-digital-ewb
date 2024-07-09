@@ -4,6 +4,7 @@ from django.db import models
 class DataSufficiency(models.Model):
     strategyCategory = models.CharField(max_length=255)
     categoryShortDescription = models.TextField()
+    categoryLongDescription = models.TextField()
     example1 = models.TextField()
     example2 = models.TextField()
 
