@@ -69,15 +69,23 @@ from component_list.models import (
     Component,
     ComponentClass,
     Category,
-    EnvironmentalImpact,
+    EnvironmentalImpact, 
+)
+
+from data_sufficiency.models import (
     DataSufficiency,
 )
 
 from businessModel.models import (
     BusinessModel,
-    UserEngagement,
-    SpecificProcedureItem,
+)
+
+from user_integration.models import (
+    ProArgument,
+    ConArgument,
+    Literature,
     ProcedureItem,
+    UserEngagement,
 )
 
 from project_listing.models import (
@@ -694,7 +702,7 @@ class Command(BaseCommand):
         obj, created = DataSufficiency.objects.get_or_create(
             strategyCategory=strategyCategory,
             categoryShortDescription=categoryShortDescription,
-            categoryLongDescription=categoryLongDescription,
+            categoryLongDescription_de=categoryLongDescription,
             example1=example1,
             example2=example2,
         )
