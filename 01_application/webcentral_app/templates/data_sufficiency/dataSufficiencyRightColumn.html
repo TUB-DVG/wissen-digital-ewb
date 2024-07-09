@@ -18,13 +18,13 @@
     }
 </style>
 <div class="blockOfContent">
-    <div class="mainContent" id="shortDescription">
-        {{ boxObject.categoryShortDescription|slice:":400" }}
-    </div>
+  <div class="mainContent" id="shortDescription">
+        {{ boxObject.categoryLongDescription|slice:":400"|safe }}
+  </div>
     <div class="mainContent collapse" id="shortDescriptionRest">
-        {{ boxObject.categoryShortDescription|slice:"401:" }}
+        {{ boxObject.categoryLongDescriptionRendered|slice:"401:"|safe }}
     </div>
-    {% if boxObject.categoryLongDescription|slice:"401:" %}
+    {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}
         <div class="showMore">
             <a role="button"
                class="collapsed text-truncation-btn"
@@ -60,7 +60,8 @@
         </div>
     </div>
 {% endif %}
-{% if boxObject.example1 %}
+{% if boxObject.example2 %}
+  <div class="blockOfContent"> 
     <div class="mainContent">{% translate "Good Practice Beispiel" %} 2:</div>
     <div>
         <div class="mainContent">{{ boxObject.example2|slice:":400" }}</div>
