@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-11 09:03+0000\n"
+"POT-Creation-Date: 2024-06-24 12:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,134 +18,132 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Datasets/views.py:20 Datasets/views.py:21 Datasets/views.py:51
+#: Datasets/views.py:89
 msgid "Anwendungsfall"
 msgstr "Use case"
 
-#: Datasets/views.py:20 Datasets/views.py:22 Datasets/views.py:70
-#: templates/datasets_over/dataset-detail.html:131
-#: templates/weatherdata_over/weatherdata-detail.html:132
-#: weatherdata_over/views.py:26 weatherdata_over/views.py:30
-#: weatherdata_over/views.py:56
-msgid "Kategorie"
-msgstr "Category"
-
-#: Datasets/views.py:20 Datasets/views.py:23 Datasets/views.py:96
-#: templates/datasets_over/dataset-detail.html:82
-#: templates/datasets_over/dataset-detail.html:151
-#: templates/datasets_over/explanation.html:37
-msgid "Verfügbarkeit"
-msgstr "Availability"
-
-#: Datasets/views.py:53
+#: Datasets/views.py:91
 msgid "Potential Erneuerbare Energie"
 msgstr "Renewable energy potential"
 
-#: Datasets/views.py:54
+#: Datasets/views.py:92
 msgid "Standardlastprofile"
 msgstr "Standard load profiles"
 
-#: Datasets/views.py:55
+#: Datasets/views.py:93
 msgid "Energiesystemmodell"
 msgstr "Energy system model"
 
-#: Datasets/views.py:56
+#: Datasets/views.py:94
 msgid "Infrastruktur Gas"
 msgstr "Gas Infrastructure"
 
-#: Datasets/views.py:57 Datasets/views.py:83
+#: Datasets/views.py:95 Datasets/views.py:125
 #: templates/LastProfile/explanation.html:109
 #: templates/LastProfile/explanation.html:177
-#: templates/StartSearch/StartSearch.html:150
-#: templates/partials/_navbar.html:71
+#: templates/StartSearch/StartSearch.html:170
+#: templates/partials/_navbar.html:72
 msgid "Wetterdaten"
 msgstr "Weather data"
 
-#: Datasets/views.py:58
+#: Datasets/views.py:96
 msgid "Wärmebedarf"
 msgstr "Heat demand"
 
-#: Datasets/views.py:59 Datasets/views.py:79
+#: Datasets/views.py:97 Datasets/views.py:121
 msgid "Zeitreihen"
 msgstr "Time series"
 
-#: Datasets/views.py:64
+#: Datasets/views.py:102
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:72
+#: Datasets/views.py:112 common/views.py:61 component_list/views.py:225
+#: templates/datasets_over/dataset-detail.html:131
+#: templates/weatherdata_over/weatherdata-detail.html:132
+#: weatherdata_over/views.py:79
+msgid "Kategorie"
+msgstr "Category"
+
+#: Datasets/views.py:114
 msgid "Übertragungsnetzentwicklungspläne"
 msgstr "Transmission network development plans"
 
-#: Datasets/views.py:73
+#: Datasets/views.py:115
 msgid "Gebäudebestandsentwicklung"
 msgstr "Building stock development"
 
-#: Datasets/views.py:74
+#: Datasets/views.py:116
 msgid "Standardlastprofile für Strom"
 msgstr "Standard load profiles for electricity"
 
-#: Datasets/views.py:75
+#: Datasets/views.py:117
 msgid "Digitales Geländemodell"
 msgstr "Digital terrain model"
 
-#: Datasets/views.py:76
+#: Datasets/views.py:118
 msgid "Gebäudegrundrisse"
 msgstr "Building floor plans"
 
-#: Datasets/views.py:77 templates/LastProfile/explanation.html:59
+#: Datasets/views.py:119 templates/LastProfile/explanation.html:59
 msgid "Gebäude"
 msgstr "Building"
 
-#: Datasets/views.py:77
+#: Datasets/views.py:119
 msgid "Modell"
 msgstr "Model"
 
-#: Datasets/views.py:78
+#: Datasets/views.py:120
 msgid "Gebäudetypologie"
 msgstr "Building typology"
 
-#: Datasets/views.py:80
+#: Datasets/views.py:122
 msgid "Gebäudebestand"
 msgstr "Building stock"
 
-#: Datasets/views.py:81
+#: Datasets/views.py:123
 msgid "Infrastruktur"
 msgstr "Infrastructure"
 
-#: Datasets/views.py:82
+#: Datasets/views.py:124
 msgid "Bedarfsdaten"
 msgstr "Demand data"
 
-#: Datasets/views.py:84
+#: Datasets/views.py:126
 #, fuzzy
 #| msgid "Datensätze"
 msgid "Daten"
 msgstr "Datasets"
 
-#: Datasets/views.py:85
+#: Datasets/views.py:127
 msgid "Statistiken"
 msgstr "Statistics"
 
-#: Datasets/views.py:86
+#: Datasets/views.py:128
 msgid "Landnutzung"
 msgstr "land use"
 
-#: Datasets/views.py:87
+#: Datasets/views.py:129
 msgid "Datenbasis"
 msgstr "Database"
 
-#: Datasets/views.py:88
+#: Datasets/views.py:130
 msgid "Potential"
 msgstr "Potential"
 
-#: Datasets/views.py:89
+#: Datasets/views.py:131
 msgid "Löser"
 msgstr "Solver"
 
-#: Datasets/views.py:91
+#: Datasets/views.py:133
 msgid "Andere"
 msgstr "Others"
+
+#: Datasets/views.py:142 templates/datasets_over/dataset-detail.html:82
+#: templates/datasets_over/dataset-detail.html:151
+#: templates/datasets_over/explanation.html:37
+msgid "Verfügbarkeit"
+msgstr "Availability"
 
 #: LastProfile/Dash_app/Stromlast.py:25 LastProfile/Dash_app/Stromlast.py:132
 msgid "Stromlast Approximation"
@@ -428,7 +426,7 @@ msgid "Sepember"
 msgstr "September"
 
 #: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:267
-#: LastProfile/Dash_app/Warmelast.py:275 templates/common/search-bar.html:48
+#: LastProfile/Dash_app/Warmelast.py:275
 msgid "Alle"
 msgstr "All"
 
@@ -473,11 +471,11 @@ msgstr "Protocol"
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
-#: TechnicalStandards/views.py:34 TechnicalStandards/views.py:60
+#: TechnicalStandards/views.py:86
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:135
+#: TechnicalStandards/views.py:164 component_list/views.py:147
 #: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
@@ -486,24 +484,512 @@ msgstr "Designation"
 msgid "Quelle"
 msgstr "Source"
 
-#: TechnicalStandards/views.py:245 TechnicalStandards/views.py:247
+#: TechnicalStandards/views.py:322 TechnicalStandards/views.py:324
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: TechnicalStandards/views.py:245 TechnicalStandards/views.py:246
+#: TechnicalStandards/views.py:322 TechnicalStandards/views.py:323
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: TechnicalStandards/views.py:253
+#: TechnicalStandards/views.py:332
 #: templates/TechnicalStandards/explanation.html:125
 #: templates/TechnicalStandards/protocol-detail.html:196
 #: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
-#: TechnicalStandards/views.py:256
+#: TechnicalStandards/views.py:335
 msgid "Proprietär"
 msgstr "Proprietary"
+
+#: businessModel/views.py:18 pages/views.py:46
+#: templates/StartSearch/StartSearch.html:261
+#: templates/partials/_navbar.html:115
+msgid "Geschäftsmodelle"
+msgstr "Business models"
+
+#: businessModel/views.py:20 businessModel/views.py:45
+#: templates/pages/businessModelsChallenge.html:20
+msgid "Geschäftsmodelle – Herausforderungen"
+msgstr "Business models - Challenges"
+
+#: businessModel/views.py:24
+msgid ""
+"Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet? Dem "
+"Einsatz als fertiges Produkt steht nichts mehr im Wege und die digitale "
+"Anwendung kann bald großflächig zum Einsatz kommen? Oftmals ist der Weg zu "
+"einem funktionierenden Geschäftsmodell lang. Gerade bei digitalen "
+"Anwendungen treten entlang der Technologieentwicklungsstufen immer wieder "
+"Herausforderungen auf. So auch beim Übergang von der technologischen "
+"Entwicklung zur wirtschaftlichen Verwertung. Die mit der "
+"Geschäftsmodellentwicklung einhergehenden Herausforderungen, mit der sich "
+"Projekte der Forschungsinitiative Energiewendebauen konfrontiert sehen, "
+"wurden systematisch aufgearbeitet und werden hier vorgestellt. "
+msgstr ""
+"The digital application has been successfully tested in a prototype? There "
+"is nothing standing in the way of its use as a finished product and the "
+"digital application can soon be used on a large scale? Often, the path to a "
+"functioning business model is long. Especially with digital applications, "
+"challenges arise along the technology development stages. This is also the "
+"case when transitioning from technological development to economic "
+"exploitation. The challenges associated with business model development, "
+"which projects of the research initiative Energiewendebauen are confronted "
+"with, have been systematically addressed and are presented here."
+
+#: businessModel/views.py:69 pages/views.py:107
+#: templates/StartSearch/StartSearch.html:273
+#: templates/pages/userEngagement.html:4
+msgid "Nutzendenintegration"
+msgstr "User integration"
+
+#: common/views.py:53 templates/TechnicalStandards/protocol-comparison.html:23
+#: templates/component_list/componentComparisonResults.html:12
+#: templates/tools_over/tool-comparison.html:23
+msgid "Ergebnisse"
+msgstr "Results"
+
+#: common/views.py:66 component_list/views.py:205 component_list/views.py:220
+msgid "Komponente"
+msgstr "Component"
+
+#: common/views.py:71
+msgid "Beschreibung"
+msgstr "Description"
+
+#: common/views.py:76 component_list/views.py:153 component_list/views.py:230
+msgid "Energieverbrauch Nutzung (gesamt; in W)"
+msgstr "Total energy consumption (in W)"
+
+#: common/views.py:81 component_list/views.py:157 component_list/views.py:235
+msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
+msgstr "Total greenhouse gas potential (in kg CO2-e)"
+
+#: common/views.py:86 component_list/views.py:161 component_list/views.py:240
+msgid "Bauteilgewicht (in kg)"
+msgstr "Component weight (in kg)"
+
+#: common/views.py:91
+#, fuzzy
+#| msgid "Lebensdauer (in Jahren)"
+msgid "Lebensdauer (in Jahre)"
+msgstr "Lifespan (in years)"
+
+#: common/views.py:96 component_list/views.py:169
+msgid "Energieverbrauch Nutzung (aktiv; in W)"
+msgstr "Active energy consumption (in W)"
+
+#: common/views.py:104 component_list/views.py:175
+msgid "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
+msgstr "Passive/standby energy consumption (in W)"
+
+#: common/views.py:110 component_list/views.py:180
+msgid "Treibhauspotenzial (Herstellung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (production; in kg CO2-e)"
+
+#: common/views.py:115 component_list/views.py:184
+msgid "Treibhauspotenzial (Nutzung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (usage; in kg CO2-e)"
+
+#: common/views.py:121 component_list/views.py:189
+msgid "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
+msgstr "Greenhouse gas potential (disposal; in kg CO2-e)"
+
+#: common/views.py:126 component_list/views.py:143
+#: templates/datasets_over/dataset-detail.html:86
+#: templates/weatherdata_over/weatherdata-detail.html:81
+msgid "Weitere Informationen"
+msgstr "Further information"
+
+#: common/views.py:131
+#, fuzzy
+#| msgid "Quelle"
+msgid "Quellen"
+msgstr "Source"
+
+#: common/views.py:134 component_list/views.py:112 pages/views.py:153
+msgid "Aufwände für verwendete Komponenten"
+msgstr "Effort for used components"
+
+#: common/views.py:145 templates/TechnicalStandards/protocol-comparison.html:29
+msgid "Attribut"
+msgstr "Attribute"
+
+#: common/views.py:155 templates/tools_over/explanationApps.html:30
+#: templates/tools_over/explanationTools.html:30
+#: templates/tools_over/tool-comparison.html:44
+#: templates/tools_over/tool-detail.html:68
+msgid "Einsatzbereich"
+msgstr "Area of application"
+
+#: common/views.py:160 templates/tools_over/tool-comparison.html:56
+#, fuzzy
+#| msgid "Anwendungen"
+msgid "Verwendung"
+msgstr "Applications"
+
+#: common/views.py:165 templates/tools_over/explanationApps.html:38
+#: templates/tools_over/explanationTools.html:38
+#: templates/tools_over/tool-comparison.html:69
+#: templates/tools_over/tool-detail.html:244
+#: templates/tools_over/tool-listings.html:81
+msgid "Lebenszyklusphase"
+msgstr "Life cycle phase"
+
+#: common/views.py:170 templates/tools_over/explanationApps.html:46
+#: templates/tools_over/explanationTools.html:46
+#: templates/tools_over/tool-comparison.html:80
+#: templates/tools_over/tool-detail.html:79
+msgid "Zielgruppe"
+msgstr "Target group"
+
+#: common/views.py:175 templates/tools_over/tool-comparison.html:91
+msgid "Benutzeroberfläche"
+msgstr "User interface"
+
+#: common/views.py:181 templates/tools_over/explanationApps.html:107
+#: templates/tools_over/explanationTools.html:107
+#: templates/tools_over/tool-comparison.html:102
+#: templates/tools_over/tool-detail.html:178
+msgid "Räumliche Größenordnung der Anwendungsfälle"
+msgstr "Spatial scale of use cases"
+
+#: common/views.py:186 templates/tools_over/explanationApps.html:56
+#: templates/tools_over/explanationTools.html:56
+#: templates/tools_over/tool-comparison.html:113
+#: templates/tools_over/tool-detail.html:83
+#: templates/tools_over/tool-listings.html:70
+msgid "Zugänglichkeit"
+msgstr "Accessibility"
+
+#: common/views.py:191 templates/tools_over/tool-comparison.html:124
+#: templates/tools_over/tool-detail.html:165
+msgid "Programmiersprache (Umsetzung)"
+msgstr "Programming language (implementation)"
+
+#: common/views.py:196 templates/tools_over/explanationApps.html:59
+#: templates/tools_over/explanationTools.html:59
+#: templates/tools_over/tool-comparison.html:131
+#: templates/tools_over/tool-detail.html:87
+#: templates/tools_over/tool-detail.html:236
+#: templates/weatherdata_over/explanation.html:29
+#: templates/weatherdata_over/weatherdata-detail.html:142
+#: weatherdata_over/views.py:89
+msgid "Lizenz"
+msgstr "License"
+
+#: common/views.py:204 templates/tools_over/explanationApps.html:88
+#: templates/tools_over/explanationTools.html:88
+#: templates/tools_over/tool-comparison.html:138
+#: templates/tools_over/tool-detail.html:155
+msgid "Entwicklungsstand"
+msgstr "Level of development"
+
+#: common/views.py:210 templates/tools_over/tool-comparison.html:151
+#: templates/tools_over/tool-detail.html:130
+msgid "Veröffentlichungsjahr"
+msgstr "Year of publication"
+
+#: common/views.py:215 templates/tools_over/explanationApps.html:50
+#: templates/tools_over/explanationTools.html:50
+#: templates/tools_over/tool-comparison.html:159
+#: templates/tools_over/tool-listings-results.html:52
+#: templates/weatherdata_over/explanation.html:25
+msgid "Letztes Update"
+msgstr "Last update"
+
+#: common/views.py:222
+#, fuzzy
+#| msgid "Digitale Werkzeuge"
+msgid "Zurück zu den digitalen Werkzeugen"
+msgstr "Digital tools"
+
+#: common/views.py:228
+#, fuzzy
+#| msgid "Digitale Werkzeuge"
+msgid "Zurück zu den digitalen Anwendungen"
+msgstr "Digital tools"
+
+#: common/views.py:247
+#: templates/component_list/componentComparisonResults.html:14
+msgid ""
+"Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum "
+"autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, "
+"volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum "
+"quianihictem unt rest voles molor se reptur, erum sum autaquiae prae "
+"nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es "
+"doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
+msgstr ""
+
+#: component_list/views.py:83
+msgid "Ausgeklappt"
+msgstr "Expanded"
+
+#: component_list/views.py:114
+msgid ""
+"In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
+"Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
+"Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. "
+"Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer "
+"effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und "
+"Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – "
+"Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, "
+"müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
+"sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
+"Komponenten und deren Umweltlasten."
+msgstr ""
+"In analogy to the data value chain (see 'Expenses for data processing "
+"processes'), important components can be thought of from data acquisition "
+"(sensors) to data use (actuators). Figure 2 shows important components that "
+"are necessary to realize the effective use of data for the operational "
+"optimization of buildings and districts. Depending on which of these – or "
+"other – components had to be installed additionally for the digital "
+"application, the corresponding environmental impact must be included in the "
+"balance sheet. All life cycle phases must be taken into account. Here you "
+"will find important components and their environmental impact."
+
+#: component_list/views.py:165 component_list/views.py:245
+msgid "Lebensdauer (in Jahren)"
+msgstr "Lifespan (in years)"
+
+#: component_list/views.py:215
+msgid "Sortierung"
+msgstr "Sorting"
+
+#: component_list/views.py:266
+#| msgid "Aufwände für Datenverarbeitungsprozsse"
+msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
+msgstr "Expenditure for data processing procedures"
+
+#: component_list/views.py:272 component_list/views.py:304 pages/views.py:138
+#: templates/StartSearch/StartSearch.html:332
+#: templates/pages/environmentalIntegrityNegativ.html:4
+#: templates/partials/_navbar.html:168
+msgid "Negative Umweltwirkungen"
+msgstr "Negative environmental impacts"
+
+#: component_list/views.py:285 pages/views.py:178
+msgid "Die Daten-Wertschöpfungkette"
+msgstr ""
+
+#: component_list/views.py:316
+#, fuzzy
+#| msgid "Aufwände für verwendete Komponenten"
+msgid "Zu den Aufwänden für verwendete Komponenten"
+msgstr "Effort for used components"
+
+#: criteriaCatalog/views.py:129 criteriaCatalog/views.py:193
+#: templates/common/back-button.html:4
+#: templates/datasets_over/dataset-detail.html:45
+msgid "Zurück"
+msgstr "Back"
+
+#: pages/views.py:50
+msgid ""
+"Der Fokus in einem Forschungsprojekt liegt häufig in einem innovativen "
+"Produkt, einer digitalen Anwendung oder auch einer neuen Software. Bei der "
+"Erstellung des Prototyps endet in den meisten Fällen die Entwicklung im "
+"Forschungsprojekt. Bei einer erfolgreichen Entwicklung ist die Übersetzung "
+"in ein Geschäftsmodell jedoch wünschenswert. Die hier aufzufindenden "
+"Informationen sollen dabei helfen, die Entwicklung von Geschäftsmodellen zu "
+"unterstützen und auftretende Herausforderungen zu meistern. Dafür wurden aus "
+"bisherigen Forschungsprojekte in Interviews und Workshops Herausforderungen "
+"gesammelt, geclustert und erste Lösungsansätze diskutiert. Daneben wurde "
+"auch eine Sammlung von Tools erstellt, die bei der Entwicklung vom Prototyp "
+"zum Geschäftsmodell unterstützen."
+msgstr ""
+"The focus in a research project often lies in an innovative product, a "
+"digital application, or a new software. In most cases, the development ends "
+"with the creation of the prototype in the research project. However, it is "
+"desirable to translate it into a business model for successful development. "
+"The information found here is intended to help support the development of "
+"business models and overcome challenges that arise. For this purpose, "
+"challenges have been collected, clustered, and initial solution approaches "
+"have been discussed from previous research projects in interviews and "
+"workshops. In addition, a collection of tools has been created to support "
+"the development from prototype to business model."
+
+#: pages/views.py:62
+msgid "Herausforderungen bei der Entwicklung und Umsetzung"
+msgstr "Challenges in development and implementation"
+
+#: pages/views.py:64
+msgid ""
+"Bei der Umsetzung von Prototypen digitaler Anwendungen in ein "
+"funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese "
+"ergeben sich durch strukturelle Faktoren wie die Förderbedingungen, durch "
+"technische oder organisatorische Faktoren wie die Übertragbarkeit sowie "
+"durch ökonomische und soziale Faktoren wie schwierige Finanzierungsmodelle. "
+"Ein Überblick über Hürden und mögliche Lösungen bietet hier eine "
+"Hilfestellung."
+msgstr ""
+"During the implementation of prototypes of digital applications into a "
+"functional business model, there are numerous challenges. These challenges "
+"arise from structural factors such as funding conditions, technical or "
+"organizational factors such as transferability, as well as economic and "
+"social factors such as difficult financing models. An overview of obstacles "
+"and possible solutions provides assistance in this regard."
+
+#: pages/views.py:77
+msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
+msgstr "Applications for the development of business models"
+
+#: pages/views.py:79
+msgid ""
+"Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die "
+"Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei "
+"kann es hilfreich sein, sich mithilfe eines Leitfadens oder einer Struktur "
+"alle Faktoren vorzunehmen, die für eine erfolgreiche Umsetzung "
+"berücksichtigt werden sollten. Ein Überblick über unterstützende Tools bei "
+"der Entwicklung oder Verbesserung von Geschäftsmodellen bietet hier eine "
+"Hilfestellung."
+msgstr ""
+"The development of successful business models requires the consideration of "
+"a variety of actors and framework conditions. In this regard, it can be "
+"helpful to use a guide or structure to consider all factors that should be "
+"taken into account for successful implementation. An overview of supporting "
+"tools for the development or improvement of business models provides "
+"assistance in this regard."
+
+#: pages/views.py:111 pages/views.py:123
+msgid ""
+"Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
+"deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist "
+"die Nutzendenintegration in sämtlichen Phasen des Entwicklungsprozesses "
+"eines digitalen Produktes sinnvoll, das heißt sowohl in der Analysephase, "
+"Konzeptionsphase als auch in der Umsetzungs- und Evaluationsphase. Als "
+"Methoden für die Analysephase eignen sich besonders Einzelinterviews, "
+"Gruppeninterviews / Fokusgruppen, teilnehmende Beobachtungen und Personas."
+msgstr ""
+"A crucial success factor for the benefit and use of digital products is "
+"their usability. To ensure or increase usability, user integration is useful "
+"in all phases of the development process of a digital product, including the "
+"analysis phase, conceptual phase, as well as the implementation and "
+"evaluation phase. Particularly suitable methods for the analysis phase are "
+"individual interviews, group interviews / focus groups, participant "
+"observations, and personas."
+
+#: pages/views.py:121
+msgid "Methoden zur Nutzendenintegration"
+msgstr "Methods for user integration"
+
+#: pages/views.py:142
+msgid ""
+"Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie "
+"bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch "
+"immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt "
+"digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten "
+"verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei "
+"der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale "
+"Anwendungen muss zudem der materielle und energetische Aufwand für die "
+"involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. "
+"Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige "
+"Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient "
+"die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale "
+"Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte "
+"können aber auch auf andere digitale Anwendungen übertragen werden."
+msgstr ""
+"Digital applications can contribute to achieving positive environmental "
+"impacts, such as energy savings. However, achieving these goals is always "
+"associated with a need for materials and resources. In order to use digital "
+"applications at all, the corresponding components must be installed. Like "
+"other products, emissions occur during manufacturing, operation, and end-of-"
+"life. For digital applications, the material and energy requirements for the "
+"processes involved in the effective use of data must also be accounted for. "
+"The following overviews are intended to provide an overview of important "
+"aspects in the assessment of environmental impacts. The optimization of "
+"building and district operations serves as an exemplary digital application. "
+"Many of the components and data usage steps depicted can also be applied to "
+"other digital applications."
+
+#: pages/views.py:155 pages/views.py:173
+msgid ""
+"In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
+"Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
+"Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. "
+"Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer "
+"effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und "
+"Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – "
+"Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, "
+"müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
+"sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
+"Komponenten und deren Umweltlasten"
+msgstr ""
+"In analogy to the data value chain (see \"Efforts for data processing "
+"processes\"), important components can be considered from data acquisition "
+"(sensors) to data utilization (actuators). Figure 2 shows important "
+"components that are necessary for the realization of effective data "
+"utilization for the optimization of building and district operations. "
+"Depending on which of these - or additional - components had to be installed "
+"for the digital application, the corresponding environmental impacts must be "
+"included in the balance sheet. All life cycle phases must be considered. "
+"Here you will find important components and their environmental impacts."
+
+#: pages/views.py:160
+msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
+msgstr ""
+
+#: pages/views.py:171
+#, fuzzy
+#| msgid "Aufwände für Datenverarbeitungsprozsse"
+msgid "Aufwände für Datenverarbeitungsprozesse"
+msgstr "Expenditure for data processing procedures"
+
+#: pages/views.py:196 pages/views.py:221 pages/views.py:289
+#: templates/StartSearch/StartSearch.html:344
+#: templates/partials/_navbar.html:174
+msgid "Positive Umweltwirkungen"
+msgstr "Positive environmental impacts"
+
+#: pages/views.py:200 pages/views.py:293
+#, fuzzy
+#| msgid ""
+#| "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
+#| "erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
+#| "Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung "
+#| "als Produkt oder Service einer möglichst breiten Anwenderschaft zur "
+#| "Verfügung gestellt werden kann. Eine Reihe von Tools kann die "
+#| "Geschäftsmodellentwicklung unterstützen. Einige von diesen werden hier "
+#| "vorgestellt."
+msgid ""
+"Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
+"erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
+"Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als "
+"Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung "
+"gestellt werden kann. Eine Reihe von Tools kann die "
+"Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier "
+"vorgestellt."
+msgstr ""
+"In addition to the scientific development of digital applications, proven "
+"technologies also need to be implemented economically. For this purpose, "
+"business models are necessary so that the potential of the digital "
+"application can be made available to as wide a user base as possible as a "
+"product or service. A number of tools can support business model "
+"development. Some of these are presented here."
+
+#: pages/views.py:241 pages/views.py:264
+#: templates/StartSearch/StartSearch.html:368
+#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:184
+msgid "Datensuffizienz"
+msgstr "Data sufficiency"
+
+#: pages/views.py:243
+msgid ""
+"Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb "
+"immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. "
+"Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher "
+"zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche "
+"der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, Speicherung "
+"bis zur Löschung. Gerade die ökologischen Auswirkungen eines "
+"(in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und "
+"bleiben in der Praxis oftmals unbeachtet."
+msgstr ""
+"Sustainable handling of data - data sufficiency - is becoming increasingly "
+"relevant due to the material consumption and energy expenditure associated "
+"with the operation of ever-increasing computing capacities. Data sufficiency "
+"focuses on all areas of data processing: from collection, processing, "
+"storage to deletion. The ecological impacts of (in)sufficient data handling "
+"are currently under-researched and often overlooked in practice."
 
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
@@ -527,7 +1013,7 @@ msgid ""
 msgstr ""
 
 #: templates/LastProfile/explanation.html:21
-#: templates/StartSearch/StartSearch.html:172
+#: templates/StartSearch/StartSearch.html:194
 #: templates/partials/_navbar.html:77
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -581,7 +1067,7 @@ msgstr ""
 #: templates/LastProfile/explanation.html:59
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
-#: templates/tools_over/tool-listings.html:56
+#: templates/tools_over/tool-listings.html:58
 msgid "Nutzung"
 msgstr "Use type"
 
@@ -709,7 +1195,7 @@ msgid "Suchergebnisse"
 msgstr "Search results"
 
 #: templates/StartSearch/ResultSearch.html:34
-#: templates/StartSearch/StartSearch.html:66
+#: templates/StartSearch/StartSearch.html:78
 msgid "Durchsuche die Plattform!"
 msgstr "Search the platform!"
 
@@ -727,32 +1213,32 @@ msgid "Aktualität"
 msgstr "Actuality"
 
 #: templates/StartSearch/ResultSearch.html:149
-#: templates/common/pagination.html:6
+#: templates/partials/pagination.html:6
 msgid "erste"
 msgstr "first"
 
 #: templates/StartSearch/ResultSearch.html:154
-#: templates/common/pagination.html:10
+#: templates/partials/pagination.html:10
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/StartSearch/ResultSearch.html:159
-#: templates/common/pagination.html:15
+#: templates/partials/pagination.html:15
 msgid "Seite"
 msgstr "Site"
 
 #: templates/StartSearch/ResultSearch.html:159
-#: templates/common/pagination.html:15
+#: templates/partials/pagination.html:15
 msgid "von"
 msgstr "from"
 
 #: templates/StartSearch/ResultSearch.html:165
-#: templates/common/pagination.html:20
+#: templates/partials/pagination.html:20
 msgid "nächste"
 msgstr "next"
 
 #: templates/StartSearch/ResultSearch.html:170
-#: templates/common/pagination.html:24
+#: templates/partials/pagination.html:24
 msgid "letzte"
 msgstr "last"
 
@@ -760,11 +1246,11 @@ msgstr "last"
 msgid "Die Suche hat keine Ergebnisse ergeben."
 msgstr "The search returned no results."
 
-#: templates/StartSearch/StartSearch.html:3 templates/pages/index.html:4
+#: templates/StartSearch/StartSearch.html:4 templates/pages/index.html:4
 msgid "Wissensplattform - Digitalisierung Energiewendebauen"
 msgstr "Knowledge platform - building digitalization of the energy transition"
 
-#: templates/StartSearch/StartSearch.html:27
+#: templates/StartSearch/StartSearch.html:34
 msgid ""
 "Die wissenschaftliche Begleitforschung der Forschungsinitiative\n"
 "          Energiewendebauen stellt mit der Wissensplattform - "
@@ -785,11 +1271,12 @@ msgstr ""
 "community interested in such research and also supports the research "
 "projects of the Energiewendebauen initiative."
 
-#: templates/StartSearch/StartSearch.html:95 templates/partials/_navbar.html:44
+#: templates/StartSearch/StartSearch.html:112
+#: templates/partials/_navbar.html:49
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
 
-#: templates/StartSearch/StartSearch.html:97
+#: templates/StartSearch/StartSearch.html:114
 msgid ""
 "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
 "                der Energieforschung im Gebäudesektor zielt vorrangig auf\n"
@@ -803,56 +1290,55 @@ msgstr ""
 "efficient operation, and optimization. This encompasses datasets, digital "
 "tools, applications, and other research results."
 
-#: templates/StartSearch/StartSearch.html:115
+#: templates/StartSearch/StartSearch.html:132
 msgid "Werkzeuge"
 msgstr "Tools"
 
-#: templates/StartSearch/StartSearch.html:127
+#: templates/StartSearch/StartSearch.html:144
 #: templates/weatherdata_over/weatherdata-detail.html:77
 msgid "Anwendungen"
 msgstr "Applications"
 
-#: templates/StartSearch/StartSearch.html:139
+#: templates/StartSearch/StartSearch.html:158
 #: templates/TechnicalStandards/explanation.html:14
-#: templates/partials/_navbar.html:64
+#: templates/partials/_navbar.html:66
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
-#: templates/StartSearch/StartSearch.html:161
-#: templates/partials/_navbar.html:83 weatherdata_over/views.py:58
+#: templates/StartSearch/StartSearch.html:182
+#: templates/partials/_navbar.html:82 weatherdata_over/views.py:81
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/StartSearch/StartSearch.html:183
-#: templates/StartSearch/StartSearch.html:195
-#: templates/partials/_navbar.html:88 templates/partials/_navbar.html:94
+#: templates/StartSearch/StartSearch.html:206
+#: templates/StartSearch/StartSearch.html:217
+#: templates/partials/_navbar.html:87 templates/partials/_navbar.html:92
 msgid "technisch"
 msgstr "technical"
 
-#: templates/StartSearch/StartSearch.html:185
-#: templates/StartSearch/StartSearch.html:300
-#: templates/StartSearch/StartSearch.html:409
-#: templates/StartSearch/StartSearch.html:501
-#: templates/partials/_navbar.html:89 templates/partials/_navbar.html:147
-#: templates/partials/_navbar.html:197 templates/partials/_navbar.html:242
+#: templates/StartSearch/StartSearch.html:208
+#: templates/StartSearch/StartSearch.html:382
+#: templates/StartSearch/StartSearch.html:471
+#: templates/partials/_navbar.html:88 templates/partials/_navbar.html:141
+#: templates/partials/_navbar.html:190 templates/partials/_navbar.html:233
 msgid "Publikationen"
 msgstr "Publications"
 
-#: templates/StartSearch/StartSearch.html:196
-#: templates/StartSearch/StartSearch.html:311
-#: templates/StartSearch/StartSearch.html:420
-#: templates/StartSearch/StartSearch.html:512
-#: templates/partials/_navbar.html:95 templates/partials/_navbar.html:152
-#: templates/partials/_navbar.html:202 templates/partials/_navbar.html:248
+#: templates/StartSearch/StartSearch.html:218
+#: templates/StartSearch/StartSearch.html:283
+#: templates/StartSearch/StartSearch.html:392
+#: templates/StartSearch/StartSearch.html:481
+#: templates/partials/_navbar.html:93 templates/partials/_navbar.html:146
+#: templates/partials/_navbar.html:195 templates/partials/_navbar.html:238
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/StartSearch/StartSearch.html:218
-#: templates/partials/_navbar.html:111
+#: templates/StartSearch/StartSearch.html:241
+#: templates/partials/_navbar.html:110
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
-#: templates/StartSearch/StartSearch.html:220
+#: templates/StartSearch/StartSearch.html:243
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -864,49 +1350,23 @@ msgid ""
 "mit\n"
 "                den Nutzenden."
 msgstr ""
-"The operational focus when examining digitalization in energy research in "
-"the built environment primarily centers on the use phase of digital "
-"applications. Key aspects include the economical operation of digital "
-"applications/business models, along with user integration and interactivity."
+"The operational focus in studying digitalization in the building sector of "
+"energy research is primarily directed at the use phase of digital "
+"applications. Important aspects are the economic operation of digital "
+"applications in business models and the integration of and interaction with "
+"users."
 
-#: templates/StartSearch/StartSearch.html:239
-#: templates/partials/_navbar.html:117 templates/partials/_navbar.html:123
-msgid "Geschäfts&shy;modell&shy;"
-msgstr "Business model"
-
-#: templates/StartSearch/StartSearch.html:251
-msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
-msgstr "Business model applications - Challenges"
-
-#: templates/StartSearch/StartSearch.html:263
-#: templates/partials/_navbar.html:129
-msgid "Geschäfts&shy;modell&shy;anwendungen"
-msgstr "Business model applications"
-
-#: templates/StartSearch/StartSearch.html:275
-#: templates/StartSearch/StartSearch.html:287
-#: templates/partials/_navbar.html:135 templates/partials/_navbar.html:141
-msgid "Nutzenden&shy;perspektive"
-msgstr "User Engagement"
-
-#: templates/StartSearch/StartSearch.html:287
-#: templates/pages/userIntegrationMethod.html:19
-#: templates/partials/_navbar.html:141
-msgid "Methoden"
-msgstr "Methods"
-
-#: templates/StartSearch/StartSearch.html:298
-#: templates/StartSearch/StartSearch.html:310
-#: templates/partials/_navbar.html:146 templates/partials/_navbar.html:151
+#: templates/StartSearch/StartSearch.html:282
+#: templates/partials/_navbar.html:140 templates/partials/_navbar.html:145
 msgid "betrieblich"
 msgstr "operational"
 
-#: templates/StartSearch/StartSearch.html:337
-#: templates/partials/_navbar.html:167
+#: templates/StartSearch/StartSearch.html:310
+#: templates/partials/_navbar.html:162
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:339
+#: templates/StartSearch/StartSearch.html:312
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -926,40 +1386,23 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:360
-#: templates/pages/environmentalIntegrityNegativ.html:19
-#: templates/partials/_navbar.html:173
-msgid "Negative Umweltwirkungen"
-msgstr "Negative environmental impacts"
-
-#: templates/StartSearch/StartSearch.html:372
-#: templates/pages/environmentalIntegrityPositiv.html:19
-#: templates/partials/_navbar.html:179
-msgid "Positive Umweltwirkungen"
-msgstr "Positive environmental impacts"
-
-#: templates/StartSearch/StartSearch.html:384
+#: templates/StartSearch/StartSearch.html:356
 #: templates/pages/benchmarkingChallenges.html:19
-#: templates/partials/_navbar.html:185
+#: templates/partials/_navbar.html:179
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:396
-#: templates/pages/dataSufficiency.html:19 templates/partials/_navbar.html:191
-msgid "Datensuffizienz"
-msgstr "Data sufficiency"
-
-#: templates/StartSearch/StartSearch.html:407
-#: templates/partials/_navbar.html:196 templates/partials/_navbar.html:201
+#: templates/StartSearch/StartSearch.html:380
+#: templates/partials/_navbar.html:189 templates/partials/_navbar.html:194
 msgid "ökologisch"
 msgstr "ecological"
 
-#: templates/StartSearch/StartSearch.html:442
-#: templates/partials/_navbar.html:218
+#: templates/StartSearch/StartSearch.html:414
+#: templates/partials/_navbar.html:212
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:444
+#: templates/StartSearch/StartSearch.html:416
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -979,30 +1422,30 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:464
-#: templates/partials/_navbar.html:224
+#: templates/StartSearch/StartSearch.html:435
+#: templates/partials/_navbar.html:217
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:476
-#: templates/partials/_navbar.html:230
+#: templates/StartSearch/StartSearch.html:445
+#: templates/partials/_navbar.html:222
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
-#: templates/StartSearch/StartSearch.html:488
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:236
+#: templates/StartSearch/StartSearch.html:457
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:227
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:499
-#: templates/StartSearch/StartSearch.html:511
-#: templates/partials/_navbar.html:241 templates/partials/_navbar.html:247
+#: templates/StartSearch/StartSearch.html:469
+#: templates/StartSearch/StartSearch.html:480
+#: templates/partials/_navbar.html:232 templates/partials/_navbar.html:237
 msgid "rechtlich"
 msgstr "legal"
 
 #: templates/TechnicalStandards/explanation.html:3
-#: templates/TechnicalStandards/norm-listings.html:22
-#: templates/TechnicalStandards/protocol-listings.html:22
+#: templates/TechnicalStandards/norm-listings.html:23
+#: templates/TechnicalStandards/protocol-listings.html:23
 msgid "Überblick über technische Standards"
 msgstr "Overview of technical standards"
 
@@ -1068,7 +1511,7 @@ msgstr ""
 "building automation."
 
 #: templates/TechnicalStandards/explanation.html:52
-#: templates/TechnicalStandards/norm-listings.html:22
+#: templates/TechnicalStandards/norm-listings.html:23
 msgid "Normen"
 msgstr "Norms"
 
@@ -1143,6 +1586,16 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/norm-explanation.html:33
 #: templates/TechnicalStandards/protocol-explanation.html:81
 #: templates/datasets_over/explanation.html:69
+#: templates/pages/dataSufficiencyLeftColumn.html:25
+#: templates/pages/dataSufficiencyLeftColumn.html:35
+#: templates/pages/dataSufficiencyRightColumn.html:34
+#: templates/pages/dataSufficiencyRightColumn.html:52
+#: templates/pages/dataSufficiencyRightColumn.html:70
+#: templates/pages/environmentalIntegrityRightColumn.html:43
+#: templates/pages/environmentalIntegrityRightColumn.html:62
+#: templates/pages/environmentalIntegrityRightColumn.html:81
+#: templates/partials/descriptionContainer.html:107
+#: templates/partials/listing-row.html:70
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
@@ -1156,6 +1609,16 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/norm-explanation.html:34
 #: templates/TechnicalStandards/protocol-explanation.html:82
 #: templates/datasets_over/explanation.html:70
+#: templates/pages/dataSufficiencyLeftColumn.html:26
+#: templates/pages/dataSufficiencyLeftColumn.html:36
+#: templates/pages/dataSufficiencyRightColumn.html:35
+#: templates/pages/dataSufficiencyRightColumn.html:53
+#: templates/pages/dataSufficiencyRightColumn.html:71
+#: templates/pages/environmentalIntegrityRightColumn.html:44
+#: templates/pages/environmentalIntegrityRightColumn.html:63
+#: templates/pages/environmentalIntegrityRightColumn.html:82
+#: templates/partials/descriptionContainer.html:108
+#: templates/partials/listing-row.html:71
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
@@ -1169,7 +1632,7 @@ msgid "Überblick über die Normen"
 msgstr "Overview of norms"
 
 #: templates/TechnicalStandards/explanation.html:103
-#: templates/TechnicalStandards/protocol-listings.html:22
+#: templates/TechnicalStandards/protocol-listings.html:23
 msgid "Protokolle"
 msgstr "protocols"
 
@@ -1470,21 +1933,12 @@ msgstr ""
 #: templates/TechnicalStandards/protocol-listings.html:60
 #: templates/TechnicalStandards/protocol-listings.html:72
 #: templates/TechnicalStandards/protocol-listings.html:84
-#: templates/common/search-bar.html:9
 #: templates/datasets_over/dataset-listings.html:41
-#: templates/tools_over/tool-listings.html:45
-#: templates/weatherdata_over/data-service-listings.html:45
+#: templates/partials/search-bar.html:69
+#: templates/tools_over/tool-listings.html:46
+#: templates/weatherdata_over/data-service-listings.html:49
 msgid "Suchbegriff"
 msgstr "search term"
-
-#: templates/TechnicalStandards/protocol-comparison.html:23
-#: templates/tools_over/tool-comparison.html:23
-msgid "Ergebnisse"
-msgstr "Results"
-
-#: templates/TechnicalStandards/protocol-comparison.html:29
-msgid "Attribut"
-msgstr "Attribute"
 
 #: templates/TechnicalStandards/protocol-detail.html:73
 msgid "Spezifische Standards, denen jedes Protokoll entspricht"
@@ -1653,18 +2107,6 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
-#: templates/TechnicalStandards/protocol-listings.html:97
-#: templates/TechnicalStandards/protocol-listings.html:105
-#: templates/tools_over/tool-listings.html:91
-#: templates/tools_over/tool-listings.html:99
-msgid "Vergleiche"
-msgstr "Compare"
-
-#: templates/TechnicalStandards/protocol-listings.html:111
-#: templates/tools_over/tool-listings.html:105
-msgid "Zurücksetzen"
-msgstr "Reset to default"
-
 #: templates/admin/publications/import_bibtex.html:8
 msgid "Home"
 msgstr ""
@@ -1700,10 +2142,81 @@ msgstr ""
 msgid "Add %(name)s"
 msgstr ""
 
-#: templates/common/back-button.html:4
-#: templates/datasets_over/dataset-detail.html:45
-msgid "Zurück"
-msgstr "Back"
+#: templates/businessModel/businessModelsChallenges.html:4
+#: templates/component_list/components.html:4
+msgid "Komponentenliste"
+msgstr "Component list"
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:14
+#, fuzzy
+#| msgid "Wärmebedarf"
+msgid "Zeitbedarf"
+msgstr "Heat demand"
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:17
+msgid "Gruppengröße"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:20
+msgid "Material"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:23
+msgid "Vorteile"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:27
+msgid "Durchgeführt von"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsLeftColumn.html:30
+msgid "Erfolgsfaktoren für die Umsetzung der Methode"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsRightColumn.html:33
+#: templates/pages/environmentalIntegrityLeftColumn.html:31
+#, fuzzy
+#| msgid "Zielgruppe"
+msgid "Ziele"
+msgstr "Target group"
+
+#: templates/businessModel/userEngagementDetailsRightColumn.html:37
+msgid "Ablauf"
+msgstr ""
+
+#: templates/businessModel/userEngagementDetailsRightColumn.html:47
+#, fuzzy
+#| msgid "Konkrete Anwendungsfälle"
+msgid "Konkrete Ziele"
+msgstr "Specific use cases"
+
+#: templates/businessModel/userEngagementDetailsRightColumn.html:54
+msgid "Konkreter Ablauf"
+msgstr "Concrete process"
+
+#: templates/component_list/componentComparisonResults.html:4
+#, fuzzy
+#| msgid "Komponentenliste"
+msgid "Komponentenliste Vergleich Ergebnisse"
+msgstr "Component list"
+
+#: templates/component_list/components.html:136
+msgid ""
+"\n"
+"                    In der folgenden Tabelle finden Sie weitergehende "
+"Informationen zu den Treibhausgasemissionen und Energieverbräuchen "
+"(Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als"
+msgstr ""
+"\n"
+"                    In the following table, you will find detailed "
+"information on the greenhouse gas emissions and energy consumption "
+"(operational phase) of commonly used components. You can download the data as"
+
+#: templates/component_list/components.html:137
+msgid ""
+" oder die Komponenten nach Ihren Vorgaben online darstellen lassen.\n"
+"                                        "
+msgstr "or show the components with their requirements online."
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -1726,11 +2239,6 @@ msgstr "Geographic coverage"
 msgid "Auflösung"
 msgstr "Resolution"
 
-#: templates/datasets_over/dataset-detail.html:86
-#: templates/weatherdata_over/weatherdata-detail.html:81
-msgid "Weitere Informationen"
-msgstr "Further information"
-
 #: templates/datasets_over/dataset-detail.html:141
 #: templates/use_cases/explanation.html:104
 msgid "Datensatz"
@@ -1740,7 +2248,7 @@ msgstr "Dataset"
 msgid "Abdeckung"
 msgstr "Covering"
 
-#: templates/datasets_over/dataset-listings.html:3
+#: templates/datasets_over/dataset-listings.html:4
 #: templates/datasets_over/dataset-listings.html:20
 msgid "Überblick über Datensätze"
 msgstr "Overview of datasets"
@@ -2470,10 +2978,6 @@ msgstr ""
 "challenges are divided into the following thematic areas: \"Benchmarking,\" "
 "\"Level of Detail – Scope of Application,\" and \"System Boundaries.\""
 
-#: templates/pages/businessModelsChallenge.html:20
-msgid "Geschäftsmodelle – Herausforderungen"
-msgstr "Business model applications - Challenges"
-
 #: templates/pages/businessModelsChallenge.html:33
 msgid ""
 "Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
@@ -2535,6 +3039,10 @@ msgstr ""
 "the projects should be described. The good practice examples are intended to "
 "encourage consideration of business model development as early as possible "
 "in order to support the efficient development of digital applications."
+
+#: templates/pages/criteriaCatalog.html:4
+msgid "Kriterienkatalog - Übersicht"
+msgstr "Catalog of criteria - Overview"
 
 #: templates/pages/dataSecurity.html:17
 msgid "Datenschutzübersicht"
@@ -2627,142 +3135,66 @@ msgstr "Efficient data minimization in the building and neighborhood sector"
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guides, literature and court decisions"
 
-#: templates/pages/dataSufficiency.html:32
-msgid ""
-"Sowohl die Materialisierung als auch der Energieaufwand für den\n"
-"          Betrieb immer größer werdender Rechenkapazitäten stellt eine\n"
-"          Herausforderung dar. Der maßhaltige Umgang mit Daten – die\n"
-"          Datensuffizienz – gewinnt daher zunehmend an Relevanz. Die\n"
-"          Datensuffizienz schaut dabei auf alle Bereiche der "
-"Datenverarbeitung:\n"
-"          von der Erhebung, der Weiterverarbeitung, Speicherung bis zur\n"
-"          Löschung. Gerade die ökologischen Auswirkungen eines "
-"(in-)suffizienten\n"
-"          Umgangs mit Daten sind derzeit noch wenig untersucht und bleiben "
-"in\n"
-"          der Praxis oftmals unbeachtet. Durch die ständige Zunahme "
-"digitaler\n"
-"          Anwendungen im Gebäudebereich muss die Datensuffizienz jedoch "
-"bereits\n"
-"          bei der Entwicklung und auch später bei der Nutzung mitgedacht "
-"werden.\n"
-"          Im Folgenden sollen daher Anhaltspunkte für einen maßhaltigen "
-"Umgang\n"
-"          mit Daten gegeben und auf die ökologischen Wirkungen bestimmter\n"
-"          Praktiken beim Umgang mit Daten hingewiesen werden."
-msgstr ""
-"Both the materialization and the energy required to operate ever-increasing "
-"computing capacities present a challenge. Therefore, the moderate use of "
-"data — or data sufficiency — is increasingly gaining relevance. Data "
-"sufficiency considers all aspects of data processing: from collection and "
-"further processing to storage and deletion. Currently, the ecological "
-"impacts of (in)sufficient data management are still under-researched and "
-"often overlooked in practice. However, with the constant increase in digital "
-"applications in the built environment sector, data sufficiency must be "
-"considered both during development and later during use. The following will "
-"provide guidelines for judicious data management and highlight the "
-"ecological effects of certain data handling practices."
+#: templates/pages/dataSufficiencyRightColumn.html:39
+#: templates/pages/dataSufficiencyRightColumn.html:57
+msgid "Good Practice Beispiel"
+msgstr "Good practice example"
 
-#: templates/pages/environmentalIntegrityNegativ.html:32
-msgid ""
-"Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
-"          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
-"          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
-"          good-practice). Jedoch stehen den positiven Wirkungen, "
-"hervorgerufen\n"
-"          durch digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend "
-"vom\n"
-"          Lebenszyklus der verwendeten Produkte und Services ergeben sich\n"
-"          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
-"          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
-msgstr ""
-"Digitalization offers great potential and opportunities. Digital "
-"applications can also be used to increase efficiency potential in the "
-"building sector (see positive environmental effects – good practice). "
-"However, the positive effects caused by digital applications are also offset "
-"by environmental burdens. Based on the life cycle of the products and "
-"services used, there are negative environmental impacts from the extraction "
-"of raw materials, to the energy consumption in operation, to the disposal of "
-"the technology."
+#: templates/pages/detailsPage.html:4
+msgid "Datenverarbeitung"
+msgstr "Data processing"
 
-#: templates/pages/environmentalIntegrityNegativ.html:42
-msgid ""
-"Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
-"          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
-"nur\n"
-"          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
-"fokussiert, da die\n"
-"          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
-"          derzeitigen Forschung der Forschungsinitiative Energiewendebauen\n"
-"          darstellt. Die Übersicht soll zunächst einen einfachen Überblick "
-"und\n"
-"          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen soll "
-"sie\n"
-"          Interessierte dazu befähigen, die Nettoeffekte – also die Bilanz "
-"aus\n"
-"          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
-"Anwendungen\n"
-"          aus der ökologischen Perspektive möglichst effektiv zu "
-"entwickeln,\n"
-"          und/oder zu nutzen."
-msgstr ""
-"The environmental impacts for frequently used components of digital "
-"applications in buildings are listed below. The focus is only on energy "
-"consumption and CO<sub>2</sub> emissions, as minimizing these parameters in "
-"buildings is a main pillar of the current research of the Energy Transition "
-"Building research initiative. The overview is intended to initially provide "
-"a simple overview and initial indication of the environmental burdens. On "
-"the other hand, it should enable those interested to estimate the net "
-"effects - i.e. the balance of environmental benefits and burdens - in order "
-"to make digital applications as effective as possible from an ecological "
-"perspectivedevelop and/or use."
+#: templates/pages/environmentalIntegrityLeftColumn.html:10
+msgid "Förderkennzeichen"
+msgstr "Funding code"
 
-#: templates/pages/environmentalIntegrityPositiv.html:32
-msgid ""
-"Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
-"Gebäuden\n"
-"          und Quartieren steht im derzeitigen Fokus der Forschung. "
-"Gleichzeitig\n"
-"          stellt dieses Ziel nur eine der möglichen positiven "
-"Umweltwirkungen\n"
-"          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in\n"
-"          Projekten der Forschungsinitiative Energiewendebauen kommen eine\n"
-"          Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, "
-"mit\n"
-"          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
-"die\n"
-"          Effekte oftmals schwer auf andere Gebäude/Quartiere zu übertragen\n"
-"          sind, gibt es doch immer Forschungsprojekte, an denen die "
-"Potenziale\n"
-"          bestimmter digitaler Anwendungen gut verdeutlicht werden können. "
-"Diese\n"
-"          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
-"eingesetzte\n"
-"          digitale Anwendung beschrieben und die gefundenen positiven\n"
-"          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
-"Aufzeigen\n"
-"          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
-"          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz soll\n"
-"          Interessierte animieren, sich eingehender mit den Möglichkeiten\n"
-"          digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben\n"
-"          fundierte Entscheidungen treffen zu können."
-msgstr ""
-"Reducing the energy requirements and CO<sub>2</sub> emissions of buildings "
-"and neighborhoods is the current focus of research. At the same time, this "
-"goal represents just one of the possible positive environmental impacts that "
-"are made possible by digital applications. A variety of digital applications "
-"are also being used or developed in projects of the Energy Transition "
-"Building research initiative that can achieve positive environmental "
-"impacts. Even if the effects are often difficult to transfer to other "
-"buildings/districts, there are always research projects that can clearly "
-"demonstrate the potential of certain digital applications. These will be "
-"briefly presented below. The digital application used is described and the "
-"positive environmental effects found are discussed. The aim of this overview "
-"is to show the current possibilities of digital applications to achieve "
-"positive environmental impacts. The incentive created by this is intended to "
-"encourage those interested to take a closer look at the possibilities of "
-"digital applications in order to be able to make well-founded decisions for "
-"their own projects."
+#: templates/pages/environmentalIntegrityLeftColumn.html:13
+msgid "Laufzeit"
+msgstr "Duration"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:16
+msgid "Partner"
+msgstr "Partners"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:19
+msgid "Projektwebseite"
+msgstr "Project website"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:22
+msgid "Konsortium"
+msgstr "Consortium"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:25
+#, fuzzy
+#| msgid "Seite"
+msgid "Weitere"
+msgstr "Site"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:28
+#, fuzzy
+#| msgid "Digitale Anwendungen"
+msgid "Digitale Anwendung(en)"
+msgstr "Digital applications"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:34
+msgid "Strategien"
+msgstr "Strategies"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:37
+msgid "Relevanz"
+msgstr "Relevance"
+
+#: templates/pages/environmentalIntegrityRightColumn.html:28
+msgid "Problemstellung und Problemziele"
+msgstr "Problem statement and problem objectives"
+
+#: templates/pages/environmentalIntegrityRightColumn.html:48
+msgid "Umsetzung im Projekt"
+msgstr "Implementation in the project"
+
+#: templates/pages/environmentalIntegrityRightColumn.html:67
+msgid "Evaluation"
+msgstr "Evaluation"
 
 #: templates/pages/iconsAndVis.html:29
 msgid ""
@@ -2883,6 +3315,10 @@ msgstr ""
 "is outside our area of responsibility and we have no influence on its future "
 "design."
 
+#: templates/pages/showImage.html:5
+msgid "Detailansicht zum Bild"
+msgstr "Detailed view of the image"
+
 #: templates/pages/stromlast.html:3
 #, fuzzy
 #| msgid "Standardlastprofile"
@@ -2893,6 +3329,11 @@ msgstr "Standard load profiles"
 #: templates/pages/userIntegrationPractice.html:19
 msgid "Nutzendeneinbindung"
 msgstr "User engangement"
+
+#: templates/pages/userIntegrationMethod.html:19
+#: templates/partials/_navbar.html:135
+msgid "Methoden"
+msgstr "Methods"
 
 #: templates/pages/userIntegrationMethod.html:32
 msgid ""
@@ -2981,13 +3422,77 @@ msgstr ""
 "with public funds from the Federal Ministry for Economic Affairs and Climate "
 "Protection based on a resolution by the German Bundestag."
 
-#: templates/partials/_navbar.html:50
+#: templates/partials/_navbar.html:54
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
-#: templates/partials/_navbar.html:57
+#: templates/partials/_navbar.html:60
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
+
+#: templates/partials/_navbar.html:120
+msgid "Geschäfts&shy;modell&shy;"
+msgstr "Business model"
+
+#: templates/partials/_navbar.html:125
+msgid "Geschäfts&shy;modell&shy;anwendungen"
+msgstr "Business model applications"
+
+#: templates/partials/_navbar.html:130 templates/partials/_navbar.html:135
+msgid "Nutzenden&shy;perspektive"
+msgstr "User Engagement"
+
+#: templates/partials/comparison.html:5 templates/partials/comparison.html:13
+msgid "Vergleiche"
+msgstr "Compare"
+
+#: templates/partials/comparison.html:19
+msgid "Zurücksetzen"
+msgstr "Reset to default"
+
+#: templates/partials/dataProcessingLeftColumn.html:3
+msgid "Aufwände für Datenverarbeitungsprozsse"
+msgstr "Expenditure for data processing procedures"
+
+#: templates/partials/dataProcessingRightColumn.html:4
+msgid ""
+"\n"
+"Bei der Nutzung digitaler Technologien für die Betriebsoptimierung von "
+"Gebäuden und\n"
+"Quartieren werden in der Regel unterschiedliche Datenverarbeitungsprozesse "
+"durchlaufen, die am Ende eine\n"
+"bestmögliche Nutzung der Daten ermöglichen sollen. Einen Überblick über "
+"einige der möglichen\n"
+"Prozessschritte bietet das in Abbildung 1 gezeigten Daten-"
+"Wertschöpfungskette. Hinter jedem\n"
+"Prozessschritt steht eine programmierte Anweisung, die oftmals in Schleifen "
+"ausgeführt wird. Dadurch\n"
+"kommt es fortwährend zur Generierung von Daten, welche auch mit einem "
+"entsprechenden Energieverbrauch\n"
+"verbunden ist. Hier finden Sie Umweltlasten wichtiger "
+"Datenverarbeitungsprozesse."
+msgstr ""
+
+#: templates/partials/search-bar.html:98 templates/partials/search-bar.html:119
+msgid "Aufsteigend"
+msgstr "Ascending"
+
+#: templates/partials/search-bar.html:101
+#: templates/partials/search-bar.html:120
+msgid "Absteigend"
+msgstr "Descending"
+
+#: templates/partials/search-bar.html:153
+#, fuzzy
+#| msgid "Detailansicht zum Bild"
+msgid "Detail Ansicht"
+msgstr "Detailed view of the image"
+
+#: templates/partials/search-bar.html:157
+#, fuzzy
+#| msgid "Vergleiche"
+msgid "Vergleichsmodus"
+msgstr "Compare"
 
 #: templates/publications/publications-detail.html:60
 msgid "Abstrakt"
@@ -3016,6 +3521,18 @@ msgstr "Link to PDF or journal page"
 #: templates/publications/publications-detail.html:106
 msgid "Kurzbeleg"
 msgstr "Citation"
+
+#: templates/publications/publications-listings.html:4
+#, fuzzy
+#| msgid "Überblick über die Normen"
+msgid "Überblick über die Publikationen"
+msgstr "Overview of norms"
+
+#: templates/publications/publications-listings.html:24
+#, fuzzy
+#| msgid "Überblick über die Normen"
+msgid "Überblick über Publikationen"
+msgstr "Overview of norms"
 
 #: templates/tools_over/explanationApps.html:9
 msgid ""
@@ -3074,13 +3591,6 @@ msgstr ""
 "your projects.<br>When putting together the tools, we took the following "
 "aspects into account:"
 
-#: templates/tools_over/explanationApps.html:30
-#: templates/tools_over/explanationTools.html:30
-#: templates/tools_over/tool-comparison.html:44
-#: templates/tools_over/tool-detail.html:68
-msgid "Einsatzbereich"
-msgstr "Area of application"
-
 #: templates/tools_over/explanationApps.html:31
 msgid ""
 "Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen "
@@ -3101,14 +3611,6 @@ msgstr ""
 "What purpose is the application used for? Options include simulation, "
 "monitoring, optimization, planning, control, advanced control."
 
-#: templates/tools_over/explanationApps.html:38
-#: templates/tools_over/explanationTools.html:38
-#: templates/tools_over/tool-comparison.html:69
-#: templates/tools_over/tool-detail.html:244
-#: templates/tools_over/tool-listings.html:78
-msgid "Lebenszyklusphase"
-msgstr "Life cycle phase"
-
 #: templates/tools_over/explanationApps.html:39
 msgid ""
 "In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt? \n"
@@ -3122,7 +3624,7 @@ msgstr ""
 #: templates/tools_over/explanationApps.html:42
 #: templates/tools_over/explanationTools.html:42
 #: templates/tools_over/tool-detail.html:72
-#: templates/tools_over/tool-listings-results.html:20
+#: templates/tools_over/tool-listings-results.html:24
 msgid "Nutzerschnittstelle"
 msgstr "User interface"
 
@@ -3136,13 +3638,6 @@ msgstr ""
 "independent installation, is there a web-based interface or, for example, "
 "via the command line?"
 
-#: templates/tools_over/explanationApps.html:46
-#: templates/tools_over/explanationTools.html:46
-#: templates/tools_over/tool-comparison.html:80
-#: templates/tools_over/tool-detail.html:79
-msgid "Zielgruppe"
-msgstr "Target group"
-
 #: templates/tools_over/explanationApps.html:47
 msgid ""
 "An wen richtet sich die digitale Anwendung laut eigener Aussage?\n"
@@ -3151,14 +3646,6 @@ msgid ""
 msgstr ""
 "Who do you say the digital application is aimed at? As a rule, digital "
 "applications can be used by everyone."
-
-#: templates/tools_over/explanationApps.html:50
-#: templates/tools_over/explanationTools.html:50
-#: templates/tools_over/tool-comparison.html:159
-#: templates/tools_over/tool-listings-results.html:45
-#: templates/weatherdata_over/explanation.html:25
-msgid "Letztes Update"
-msgstr "Last update"
 
 #: templates/tools_over/explanationApps.html:51
 msgid ""
@@ -3173,32 +3660,12 @@ msgstr ""
 "development or maintenance can be stopped after the project has been "
 "completed."
 
-#: templates/tools_over/explanationApps.html:56
-#: templates/tools_over/explanationTools.html:56
-#: templates/tools_over/tool-comparison.html:113
-#: templates/tools_over/tool-detail.html:83
-#: templates/tools_over/tool-listings.html:67
-msgid "Zugänglichkeit"
-msgstr "Accessibility"
-
 #: templates/tools_over/explanationApps.html:57
 msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
 msgstr ""
 "How accessible is the application? Is it paid, open source or freeware?"
-
-#: templates/tools_over/explanationApps.html:59
-#: templates/tools_over/explanationTools.html:59
-#: templates/tools_over/tool-comparison.html:131
-#: templates/tools_over/tool-detail.html:87
-#: templates/tools_over/tool-detail.html:236
-#: templates/weatherdata_over/explanation.html:29
-#: templates/weatherdata_over/weatherdata-detail.html:142
-#: weatherdata_over/views.py:27 weatherdata_over/views.py:31
-#: weatherdata_over/views.py:64
-msgid "Lizenz"
-msgstr "License"
 
 #: templates/tools_over/explanationApps.html:60
 msgid ""
@@ -3303,13 +3770,6 @@ msgstr ""
 "Source for further information about the application, e.g. git repo, project "
 "website."
 
-#: templates/tools_over/explanationApps.html:88
-#: templates/tools_over/explanationTools.html:88
-#: templates/tools_over/tool-comparison.html:138
-#: templates/tools_over/tool-detail.html:155
-msgid "Entwicklungsstand"
-msgstr "Level of development"
-
 #: templates/tools_over/explanationApps.html:89
 msgid ""
 "Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen "
@@ -3365,13 +3825,6 @@ msgstr "Database system"
 #| msgid "Welches Datenbanksystem verwendet das Werkzeug?"
 msgid "Welches Datenbanksystem verwendet die Anwendung?"
 msgstr "Which database system does the tool use?"
-
-#: templates/tools_over/explanationApps.html:107
-#: templates/tools_over/explanationTools.html:107
-#: templates/tools_over/tool-comparison.html:102
-#: templates/tools_over/tool-detail.html:178
-msgid "Räumliche Größenordnung der Anwendungsfälle"
-msgstr "Spatial scale of use cases"
 
 #: templates/tools_over/explanationApps.html:108
 msgid ""
@@ -3746,26 +4199,6 @@ msgstr ""
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
-#: templates/tools_over/tool-comparison.html:56
-#, fuzzy
-#| msgid "Anwendungen"
-msgid "Verwendung"
-msgstr "Applications"
-
-#: templates/tools_over/tool-comparison.html:91
-msgid "Benutzeroberfläche"
-msgstr "User interface"
-
-#: templates/tools_over/tool-comparison.html:124
-#: templates/tools_over/tool-detail.html:165
-msgid "Programmiersprache (Umsetzung)"
-msgstr "Programming language (implementation)"
-
-#: templates/tools_over/tool-comparison.html:151
-#: templates/tools_over/tool-detail.html:130
-msgid "Veröffentlichungsjahr"
-msgstr "Year of publication"
-
 #: templates/tools_over/tool-detail.html:94
 msgid "weitere Informationen"
 msgstr "Further information"
@@ -3806,7 +4239,7 @@ msgstr "Most important libraries (used during implementation)"
 msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 msgstr "Norms/standard (basis/orientation of the tool)"
 
-#: templates/tools_over/tool-listings-results.html:43
+#: templates/tools_over/tool-listings-results.html:50
 msgid "Updates"
 msgstr "Updates"
 
@@ -3997,7 +4430,13 @@ msgstr "Displayed are the average consumption in time windows of five seconds, 1
 "          but more precise measurements also enable more individualized feedback to users
 
 
-#: templates/use_cases/usecase-listings.html:36
+#: templates/use_cases/usecase-listings.html:3
+#, fuzzy
+#| msgid "Überblick über die Normen"
+msgid "Überblick über die Use Cases"
+msgstr "Overview of norms"
+
+#: templates/use_cases/usecase-listings.html:18
 #, fuzzy
 #| msgid "Überblick über die Normen"
 msgid "Überblick über die Anwendungsfälle"
@@ -4102,34 +4541,149 @@ msgstr "Alternatives"
 msgid "Neutral"
 msgstr ""
 
-#: weatherdata_over/views.py:59
+#: weatherdata_over/views.py:82
 #, fuzzy
 #| msgid "Anwendungen"
 msgid "Anwendung"
 msgstr "Applications"
 
-#: weatherdata_over/views.py:66
+#: weatherdata_over/views.py:91
 msgid "Frei nutzbar"
 msgstr "Free to use"
 
-#: weatherdata_over/views.py:69
+#: weatherdata_over/views.py:94
 msgid "MIT-Lizenz"
 msgstr "MIT license"
 
-#, fuzzy
-#~| msgid "Haushaltskunden "
-#~ msgid "Drei Haushalte"
-#~ msgstr "Household customers"
+#~ msgid "Übersicht"
+#~ msgstr "Overview"
+
+#~ msgid "Eingeklappt"
+#~ msgstr "Collapsed"
+
+#~ msgid "Geschäfts&shy;modell&shy; - Herausforderungen"
+#~ msgstr "Business model applications - Challenges"
+
+#~ msgid "Download Link"
+#~ msgstr "Download link"
 
 #, fuzzy
-#~| msgid "Haftungsausschluss"
-#~ msgid "Hauptanschluss"
-#~ msgstr "Disclaimer"
+#~| msgid ""
+#~| "Die Digitalisierung bietet große Potenziale und Chancen. Auch im\n"
+#~| "          Gebäudebereich lassen sich mittels digitaler Anwendungen u.a.\n"
+#~| "          Effizienzpotenziale heben (siehe positive Umweltwirkungen –\n"
+#~| "          good-practice). Jedoch stehen den positiven Wirkungen, "
+#~| "hervorgerufen\n"
+#~| "          durch digitale Anwendungen, auch Umweltlasten gegenüber. "
+#~| "Ausgehend vom\n"
+#~| "          Lebenszyklus der verwendeten Produkte und Services ergeben "
+#~| "sich\n"
+#~| "          negative Umweltwirkungen von der Rohstoffgewinnung, über den\n"
+#~| "          Energieverbrauch im Betrieb bis zur Entsorgung der Technologie."
+#~ msgid ""
+#~ "Die Digitalisierung bietet große Potenziale und Chancen. Auch im "
+#~ "Gebäudebereich lassen sich mittels digitaler Anwendungen u.a. "
+#~ "Effizienzpotenziale heben (siehe positive Umweltwirkungen – good-"
+#~ "practice). Jedoch stehen den positiven Wirkungen, hervorgerufen durch "
+#~ "digitale Anwendungen, auch Umweltlasten gegenüber. Ausgehend vom "
+#~ "Lebenszyklus der verwendeten Produkte und Services ergeben sich negative "
+#~ "Umweltwirkungen von der Rohstoffgewinnung, über den Energieverbrauch im "
+#~ "Betrieb bis zur Entsorgung der Technologie. "
+#~ msgstr ""
+#~ "Digitalization offers great potential and opportunities. Digital "
+#~ "applications can also be used to increase efficiency potential in the "
+#~ "building sector (see positive environmental effects – good practice). "
+#~ "However, the positive effects caused by digital applications are also "
+#~ "offset by environmental burdens. Based on the life cycle of the products "
+#~ "and services used, there are negative environmental impacts from the "
+#~ "extraction of raw materials, to the energy consumption in operation, to "
+#~ "the disposal of the technology."
 
-#, fuzzy
-#~| msgid "Zeitreihen"
-#~ msgid "Zeige Zeitreihen Daten"
-#~ msgstr "Time series"
+#~ msgid ""
+#~ "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
+#~ "Gebäuden\n"
+#~ "          und Quartieren steht im derzeitigen Fokus der Forschung. "
+#~ "Gleichzeitig\n"
+#~ "          stellt dieses Ziel nur eine der möglichen positiven "
+#~ "Umweltwirkungen\n"
+#~ "          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch "
+#~ "in\n"
+#~ "          Projekten der Forschungsinitiative Energiewendebauen kommen "
+#~ "eine\n"
+#~ "          Vielzahl digitaler Anwendungen zum Einsatz oder werden "
+#~ "entwickelt, mit\n"
+#~ "          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
+#~ "die\n"
+#~ "          Effekte oftmals schwer auf andere Gebäude/Quartiere zu "
+#~ "übertragen\n"
+#~ "          sind, gibt es doch immer Forschungsprojekte, an denen die "
+#~ "Potenziale\n"
+#~ "          bestimmter digitaler Anwendungen gut verdeutlicht werden "
+#~ "können. Diese\n"
+#~ "          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
+#~ "eingesetzte\n"
+#~ "          digitale Anwendung beschrieben und die gefundenen positiven\n"
+#~ "          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
+#~ "Aufzeigen\n"
+#~ "          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
+#~ "          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz "
+#~ "soll\n"
+#~ "          Interessierte animieren, sich eingehender mit den "
+#~ "Möglichkeiten\n"
+#~ "          digitaler Anwendungen zu beschäftigen, um so für eigene "
+#~ "Vorhaben\n"
+#~ "          fundierte Entscheidungen treffen zu können."
+#~ msgstr ""
+#~ "Reducing the energy requirements and CO<sub>2</sub> emissions of "
+#~ "buildings and neighborhoods is the current focus of research. At the same "
+#~ "time, this goal represents just one of the possible positive "
+#~ "environmental impacts that are made possible by digital applications. A "
+#~ "variety of digital applications are also being used or developed in "
+#~ "projects of the Energy Transition Building research initiative that can "
+#~ "achieve positive environmental impacts. Even if the effects are often "
+#~ "difficult to transfer to other buildings/districts, there are always "
+#~ "research projects that can clearly demonstrate the potential of certain "
+#~ "digital applications. These will be briefly presented below. The digital "
+#~ "application used is described and the positive environmental effects "
+#~ "found are discussed. The aim of this overview is to show the current "
+#~ "possibilities of digital applications to achieve positive environmental "
+#~ "impacts. The incentive created by this is intended to encourage those "
+#~ "interested to take a closer look at the possibilities of digital "
+#~ "applications in order to be able to make well-founded decisions for their "
+#~ "own projects."
+
+#~ msgid ""
+#~ "Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
+#~ "          digitaler Anwendungen in Gebäuden aufgeführt werden. Dabei wird "
+#~ "nur\n"
+#~ "          auf den Energieverbrauch und die CO<sub>2</sub>-Emissionen "
+#~ "fokussiert, da die\n"
+#~ "          Minimierung dieser Kenngrößen in Gebäuden ein Hauptpfeiler der\n"
+#~ "          derzeitigen Forschung der Forschungsinitiative "
+#~ "Energiewendebauen\n"
+#~ "          darstellt. Die Übersicht soll zunächst einen einfachen "
+#~ "Überblick und\n"
+#~ "          ersten Anhaltspunkt zu den Umweltlasten bieten. Zum anderen "
+#~ "soll sie\n"
+#~ "          Interessierte dazu befähigen, die Nettoeffekte – also die "
+#~ "Bilanz aus\n"
+#~ "          Umweltnutzen und – lasten – abzuschätzen, um so digitale "
+#~ "Anwendungen\n"
+#~ "          aus der ökologischen Perspektive möglichst effektiv zu "
+#~ "entwickeln,\n"
+#~ "          und/oder zu nutzen."
+#~ msgstr ""
+#~ "The environmental impacts for frequently used components of digital "
+#~ "applications in buildings are listed below. The focus is only on energy "
+#~ "consumption and CO<sub>2</sub> emissions, as minimizing these parameters "
+#~ "in buildings is a main pillar of the current research of the Energy "
+#~ "Transition Building research initiative. The overview is intended to "
+#~ "initially provide a simple overview and initial indication of the "
+#~ "environmental burdens. On the other hand, it should enable those "
+#~ "interested to estimate the net effects - i.e. the balance of "
+#~ "environmental benefits and burdens - in order to make digital "
+#~ "applications as effective as possible from an ecological "
+#~ "perspectivedevelop and/or use."
 
 #~ msgid "Koordinatensystem"
 #~ msgstr "Coordinate system"
@@ -4175,11 +4729,6 @@ msgstr "MIT license"
 #~| msgid "Negative Umweltwirkungen"
 #~ msgid "Umweltwirkungen"
 #~ msgstr "Negative environmental impacts"
-
-#, fuzzy
-#~| msgid "Vergleiche"
-#~ msgid "Vergleich"
-#~ msgstr "Compare"
 
 #, fuzzy
 #~| msgid "Überblick über die Normen"

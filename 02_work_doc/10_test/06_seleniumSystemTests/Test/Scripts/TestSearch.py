@@ -5,6 +5,7 @@ It is used to reduce redundancy in the businessApps and Tools-test scripts,
 since the search in buisnessApps and Tools work the same way.
 """
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -12,9 +13,7 @@ import os
 from random import choice
 
 from selenium import (
-    webdriver,
-
-)
+    webdriver, )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -30,58 +29,60 @@ from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.BusinessAppPage import BusinessAppPage
 from Src.PageObject.Pages.SearchPage import SearchPage
 
+
 class TestSearch(WebDriverSetup):
-    """
-    
-    """
+    """ """
+
     # def setUp(self):
     #     """Constructor of Testcase
-        
+
     #     """
-        
+
+    def testStructureOfSearchBar(self):
+        """The Search Bar should contain a text-input, selection-inputs and a radio-button"""
+
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/component_list/components/")
 
     def testUsageDropDown(self):
         """Test if the usage dropdown works.
-        
+
         One element of the usage dropdown menu is chosen randomly
-        and clicked. After that the search button is clicked. This 
+        and clicked. After that the search button is clicked. This
         process is done for tools and business Apps
-        
+
         """
-        
+
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         self.usageDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         self.usageDropdown()
 
     def testAccessabilityDropdown(self):
-        """
-        
-        """
+        """ """
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         self.accessibilityDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         self.accessibilityDropdown()
 
     def testLifeCyclePhaseDropdown(self):
-        """
-        
-        """
+        """ """
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         self.lifeCyclePhaseDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         self.lifeCyclePhaseDropdown()
 
     def usageDropdown(self):
-        """
-        
-        """
+        """ """
         usageDropdownoptions = self.searchPageObj.getUsageDropdown()
 
         # exclude Nutzung from list:
@@ -92,8 +93,6 @@ class TestSearch(WebDriverSetup):
         randomUsageElement = choice(usageDropdownoptions)
         randomUsageValue = randomUsageElement.text
         randomUsageElement.click()
-        
-        
 
         searchSubmittButton = self.searchPageObj.getSearchSubmitButton()
         searchSubmittButton.click()
@@ -102,31 +101,33 @@ class TestSearch(WebDriverSetup):
         if len(searchResultElements) > 0:
             randomResult = choice(searchResultElements)
             self.scrollElementIntoViewAndClick(randomResult)
-            usageOnDetailPage = self.searchPageObj.getUsageForToolOnDetailPage()
+            usageOnDetailPage = self.searchPageObj.getUsageForToolOnDetailPage(
+            )
             self.assertTrue(randomUsageValue in usageOnDetailPage.text)
-    
+
     def scrollElementIntoViewAndClick(self, webelement) -> None:
         """Scroll the Element into view and click it.
-        
+
         This helper function is used to click an webelement, which is currently
         out of view of the browser page. Therefore it scrolls the page, so that the
         element is clickable, and clicks it.
-        
+
         webelement: Webelement
             selenium webelement, which should be scrolled and clicked
         """
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", webelement)        
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            webelement,
+        )
         time.sleep(1)
         # breakpoint()
         webelement.click()
         time.sleep(1)
 
-
     def accessibilityDropdown(self):
-        """
-
-        """
-        accessibilityDropdownoptions = self.searchPageObj.getAccessabilityDropdown()
+        """ """
+        accessibilityDropdownoptions = (
+            self.searchPageObj.getAccessabilityDropdown())
 
         # exclude Nutzung from list:
         for index, currentOption in enumerate(accessibilityDropdownoptions):
@@ -136,7 +137,7 @@ class TestSearch(WebDriverSetup):
         randomAccessabilityElement = choice(accessibilityDropdownoptions)
         accessabilityElementValue = randomAccessabilityElement.text
         randomAccessabilityElement.click()
-        
+
         searchSubmittButton = self.searchPageObj.getSearchSubmitButton()
         searchSubmittButton.click()
 
@@ -145,18 +146,19 @@ class TestSearch(WebDriverSetup):
             randomResult = choice(searchResultElements)
             self.scrollElementIntoViewAndClick(randomResult)
             try:
-                accessabilityOnDetailPage = self.searchPageObj.getAccessabilityParagraph(accessabilityElementValue)
+                accessabilityOnDetailPage = (
+                    self.searchPageObj.getAccessabilityParagraph(
+                        accessabilityElementValue))
             except:
                 self.assertTrue(
-                    False, 
+                    False,
                     f"Accessability Value '{accessabilityElementValue}' is not a displayed on details-page",
                 )
 
     def lifeCyclePhaseDropdown(self):
-        """
-        
-        """
-        lifeCyclePhaseDropdownoptions = self.searchPageObj.getLifeCyclePhaseDropdown()
+        """ """
+        lifeCyclePhaseDropdownoptions = (
+            self.searchPageObj.getLifeCyclePhaseDropdown())
 
         # exclude Nutzung from list:
         for index, currentOption in enumerate(lifeCyclePhaseDropdownoptions):
@@ -166,8 +168,6 @@ class TestSearch(WebDriverSetup):
         randomLifeCyclePhaseElement = choice(lifeCyclePhaseDropdownoptions)
         randomLifeCyclePhaseValue = randomLifeCyclePhaseElement.text
         randomLifeCyclePhaseElement.click()
-        
-        
 
         searchSubmittButton = self.searchPageObj.getSearchSubmitButton()
         searchSubmittButton.click()
@@ -177,9 +177,11 @@ class TestSearch(WebDriverSetup):
             randomResult = choice(searchResultElements)
             self.scrollElementIntoViewAndClick(randomResult)
             try:
-                lifeCyclePhaseOnDetailPage = self.searchPageObj.getLifeCyclePhaseSpan(randomLifeCyclePhaseValue)
+                lifeCyclePhaseOnDetailPage = (
+                    self.searchPageObj.getLifeCyclePhaseSpan(
+                        randomLifeCyclePhaseValue))
             except:
                 self.assertTrue(
-                    False, 
+                    False,
                     f"Accessability Value '{randomLifeCyclePhaseValue}' is not a displayed on details-page",
                 )

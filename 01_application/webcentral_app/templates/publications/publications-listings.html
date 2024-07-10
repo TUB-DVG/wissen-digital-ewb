@@ -1,97 +1,96 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Publikationen {% endblock %}
+{% load i18n %}
+{% block title %}
+  {% translate "Überblick über die Publikationen" %}
+{% endblock %}
 {% block content %}
-{% load static %}
-<!DOCTYPE html>
+  {% load static %}
+  <!DOCTYPE html>
 
 </head>
 
 <body>
 
-<!-- **************** MAIN CONTENT START **************** -->
-<main>
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
 
-<!-- =======================
+    <!-- =======================
 Page Banner START -->
-<section class="py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">Überblick über Publikationen</h2>
+    <section class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="p-2 text-left rounded-3">
+              <h2 class="m-0">{% translate "Überblick über Publikationen" %}</h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-<!-- =======================
+    </section>
+    <!-- =======================
 Page Banner END -->
 
+    {% include './publications-explanation.html' %}
 
-{% include './publications-explanation.html' %}
-
-
-<!-- =======================
+    <!-- =======================
 Page content START -->
-<section class="pt-0">
-  <div class="container {{ focusBorder }}-cards" id="publicationsContainer">
-    <!-- Filter bar START -->
-    {% include "common/search-bar.html" %}
-    <!-- Filter bar END -->
-    <!-- search tags START -->
-    <ul class="list-inline mb-0">
-      {% if search %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'publicationPage' %}?searched={{search}}">
-            Suchbegriff: {{search}}
-          </a>
-          <a href="{%url 'publicationPage' %}?searched=&fo={% if focus %}{{focus}}{% endif %}">
-            <i class="bi bi-x fa-lg close-icon" id="deleteFocusFilter"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-      {% if focus %}
-      <li class="list-inline-item">
-        <div class="btn btn-outline-light btn-sm">
-          <a href="{%url 'publicationPage' %}?searched=&fo={{focus}}">
-            {% for option in focus_options %}
-              {% if focus == option.focus|stringformat:"s" %}
-                {{ option.focus }}
-              {% endif %}
-            {% endfor %}
-          </a>
-          <a href="{%url 'publicationPage' %}?searched={% if search %}{{search}}{% endif %}&fo=">
-            <i class="bi bi-x fa-lg close-icon"></i>
-          </a>
-        </div>
-      </li>
-      {% endif %}
-    </ul>
-    <!-- search tags END -->
-    <!-- publications grid row START -->
-    <div class="row mt-3">
-      <!-- Main content START -->
-      <div class="col-12">
+    <section class="pt-0">
+      <div class="container {{ focusBorder }}-cards" id="publicationsContainer">
+        <!-- Filter bar START -->
+        {% include "partials/search-bar.html" %}
+        <!-- Filter bar END -->
+        <!-- search tags START -->
+        <ul class="list-inline mb-0">
+          {% if search %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'publicationPage' %}?searched={{ search }}">
+                  Suchbegriff: {{ search }}
+                </a>
+                <a href="{% url 'publicationPage' %}?searched=&fo={% if focus %}{{ focus }}{% endif %}">
+                  <i class="bi bi-x fa-lg close-icon" id="deleteFocusFilter"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+          {% if focus %}
+            <li class="list-inline-item">
+              <div class="btn btn-outline-light btn-sm">
+                <a href="{% url 'publicationPage' %}?searched=&fo={{ focus }}">
+                  {% for option in focus_options %}
+                    {% if focus == option.focus|stringformat:"s" %}{{ option.focus }}{% endif %}
+                  {% endfor %}
+                </a>
+                <a href="{% url 'publicationPage' %}?searched={% if search %}{{ search }}{% endif %}&fo=">
+                  <i class="bi bi-x fa-lg close-icon"></i>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+        </ul>
+        <!-- search tags END -->
+        <!-- publications grid row START -->
+        <div class="row mt-3">
+          <!-- Main content START -->
+          <div class="col-12">
 
-        <!-- Course Grid START -->
-        <div class="row g-4" id="publications-listing-results">
-          {% include './publications-results.html' %}
+            <!-- Course Grid START -->
+            <div class="row g-4" id="publications-listing-results">
+              {% include './publications-results.html' %}
+            </div>
+            <!-- standards grid END -->
+            <!-- Pagination START -->
+            {% include "partials/pagination.html" %}
+            <!-- Pagination END -->
+          </div>
+          <!-- Main content END -->
         </div>
-        <!-- standards grid END -->
-        <!-- Pagination START -->
-        {% include "common/pagination.html" %}
-        <!-- Pagination END -->
+        <!-- Row END -->
       </div>
-      <!-- Main content END -->
-    </div><!-- Row END -->
-  </div>
-</section>
-<!-- =======================
+    </section>
+    <!-- =======================
      Page content END -->
-</main>
-<!-- **************** MAIN CONTENT END **************** -->
-
+  </main>
+  <!-- **************** MAIN CONTENT END **************** -->
 
 {% endblock %}
