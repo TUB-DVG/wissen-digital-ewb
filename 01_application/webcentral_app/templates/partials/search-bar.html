@@ -1,0 +1,392 @@
+{% load i18n %}
+{% load static %}
+<!-- Filter bar START -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js"></script> -->
+<!-- <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" /> -->
+<style>
+  .filter {
+    background: #8FDE97;
+    padding: 13px; 
+    margin-right: 12px;
+    font-size: 15px;
+  }
+  .closeFilter {
+    color: #000;
+    margin-left: 10px;
+    background: none;
+    /* color: inherit; */
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+  }
+.customSelectArrow {
+  background-position: 90% 50%;
+
+}
+.form-select-sm {
+    /* Change the width property */
+    width: 150px !important;
+    font-weight: bold;
+    /* color: #8FDE97; */
+    /* display: inline !important; */
+    /* Add any other properties you want to change */
+}
+.use-bootstrap-select-wrapper {
+  width: 150px !important;
+  /* height: 102px; */
+  display: inline-block !important;
+}
+/* .dropdown-toggle::after {
+    display: none;
+} */
+input[type='text']::placeholder {
+  font-weight: 800; /* Adjust the font weight as needed */
+}
+.text-input-with-arrow {
+  background-image: url('/static/assets/images/arrowDownEcological.svg'); /* Path to your arrow image */
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  font-weight: bold;
+}
+
+</style>
+<form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
+      id="searchBox"
+      method="GET"
+      action="">
+
+  <div class="row g-3">
+    <!-- Input -->
+    <div class="col-xl-2" title="Suchen in den ">
+      <div class="input-group">
+        <input id="search-input-{{ nameOfTemplate }}"
+               class="form-control border-{{ focusBorder }} trigger-submit-onchange"
+               type="search"
+               placeholder="{% translate 'Suchbegriff' %}"
+               name='searched' />
+        <div class="input-group-append">
+          <button type="submit"
+                  class="btn btn-{{ focusBorder }}-free-text"
+                  id="search-submit-{{ nameOfTemplate }}"
+                  style="position: absolute;
+                         right: 10px"
+                  href="">
+            <i class="fas fa-search">
+            </i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Select item -->
+    <div class="col-xl-10">
+      <div class="row g-3">
+        <!-- Select items -->
+        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px">
+          {% for optionContent in optionList %}
+            {% if optionContent.multiDimensional %}
+              <select id="{{ optionContent.fieldName }}"
+                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange">
+                <option value="">{{ optionContent.placeholder }}</option>
+                {% for option in optionContent.objects %}
+                  <optgroup label="{{ option.shown }}">
+                    {% if option.type == "numeric" %}
+                      <option value="{{ option.name }}_Ascending">
+                        {% translate "Aufsteigend" %}
+                      </option>
+                      <option value="{{ option.name }}_Descending">
+                        {% translate "Absteigend" %}
+                      </option>
+                    {% else %}
+                      <option value="{{ option.name }}_Ascending">A...Z</option>
+                      <option value="{{ option.name }}_Descending">Z...A</option>
+                    {% endif %}
+                  </optgroup>
+                {% endfor %}
+              </select>
+              <!-- <div class="dropdown" style="display: inline;">
+                    <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 0px; width: 150px; height: 21px; padding-top: 3px; padding-bottom: 25px; text-align: left">
+                      {{ optionContent.placeholder }}
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenuDiv">
+                      {% for option in optionContent.objects %}
+                        <div class="dropdown">
+                          <a class="dropdown-item dropdown-toggle" href="#" id="nestedDropdownMenuButton" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" dblocator="{{ option.name }}">{{ option.shown }}</a>
+                          <div class="dropdown-menu dropdown-menu__nested" aria-labelledby="nestedDropdownMenuButton">
+                            <a class="dropdown-item nested" href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Ascending" sorting="Ascending">{% translate "Aufsteigend" %}</a>
+                            <a class="dropdown-item nested" href="{% url 'components' %}?firstLevel={{ option.name }}&secondLevel=Descending" sorting="Descending">{% translate "Absteigend" %}</a>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+</div> -->
+
+            {% else %}
+              <select id="{{ optionContent.fieldName }}"
+                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                      multiple>
+                <!-- </select> -->
+                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+         aria-label=".form-select-sm example"
+         name="{{ optionContent.fieldName }}"
+         id="{{ optionContent.fieldName }}"
+         style="background: url('{% static pathToArrow %}') no-repeat;
+                background-position: 90% 50%"> -->
+                <option value="">{% translate optionContent.placeholder %}</option>
+                {% for option in optionContent.objects %}
+                  <option value="{{ option }}"
+                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                    {{ option }}
+                  </option>
+                {% endfor %}
+              </select>
+              <!-- </div> -->
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+          {% if renderDetailsRadio %}
+            <input type="radio" id="triggerDetailsView" />
+            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+          {% endif %}
+          {% if renderComparisonRadio %}
+            <input type="radio" id="triggerComparisonMode" />
+            <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>
+<div style="margin-bottom: 24px;">
+  {% for key, value in filters.items %}
+    {% for selectedItem in value %}
+      <span class="filter {{ key }}">{{ selectedItem }}
+        <button class="closeFilter">
+          <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
+        </button>
+      </span>
+    {% endfor %}
+  {% endfor %}
+</div>
+<script>
+  var listOfUseBootstrapSelects = [];
+{% for optionContent in optionList %}
+  var element = document.getElementById('{{ optionContent.fieldName }}');
+  if (element) {
+    listOfUseBootstrapSelects.push(new UseBootstrapSelect(element));
+  } else {
+    console.error('Element with ID "{{ optionContent.fieldName }}" not found');
+  }
+  {% endfor %}
+
+  $('.closeFilter').click(function() {
+    $(this).parent().remove();
+
+    listOfCollectedFilters = collectFilter();
+    writeURLandSubmit(listOfCollectedFilters);
+  });
+  function collectFilter() {
+
+    var listOfActivatedFilters = [];
+    $("select.form-select").each(function () {
+      var objectForCurrentCategory = {};
+      var filterIdentifer = $(this).attr("id");
+      var spansOfFilter = $("span.filter." + filterIdentifer);
+      var selectedOptions = "";
+      spansOfFilter.each(function() {
+        var filter = $(this).text();
+        selectedOptions += filter + ",";
+    });
+
+    listOfActivatedFilters.push({category: $(this).attr("id"), string: selectedOptions});
+  });
+  return listOfActivatedFilters;
+}
+
+  function writeURLandSubmit(listOfActivatedFilters) {
+    var url = $('#searchBox').attr('action');
+    url += "?";
+    var form = $('#searchBox');
+    for (var i = 0; i < listOfActivatedFilters.length; i++) {
+      var filterIdentifer = listOfActivatedFilters[i].category;
+      var selectedOptions = listOfActivatedFilters[i].string;
+      var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name", filterIdentifer + "-hidden");
+          if (selectedOptions.slice(-1) === ',') {
+            selectedOptions = selectedOptions.slice(0, -1);
+          }
+          hiddenInput.setAttribute("value", selectedOptions);
+          form.append(hiddenInput);
+          // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
+        }
+        form.submit();
+   } 
+$('#searchBox').on('submit', function(e) {
+    e.preventDefault();  // Prevent the form from submitting normally
+
+    var url = $(this).attr('action');  // Get the form's action URL
+    var formData = $(this).serialize();  // Serialize the form data
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: formData,
+        success: function(response) {
+            // Handle the response here
+            // remove all ancestors of the div with the id
+            // debugger;
+            if ($("#componentListingContainer").length > 0) {
+              $('#componentListingContainer').empty();
+              $('#componentListingContainer').append(response);
+            }
+            else if ($('#tool-listing-results').length > 0) {
+              $('#tool-listing-results').empty();
+              $('#tool-listing-results').append(response);
+            }
+            else if ($("#dataset-listing-results").length > 0) {
+              $('#dataset-listing-results').empty();
+              $('#dataset-listing-results').append(response);             
+            }
+            else if ($("#weatherdata-listing-results").length > 0) {
+              $('#weatherdata-listing-results').empty();
+              $('#weatherdata-listing-results').append(response);             
+            }
+            else if ($("#protocol-listing-results").length > 0) {
+              $('#protocol-listing-results').empty();
+              $('#protocol-listing-results').append(response);             
+            }
+            else if ($("#norm-listing-results").length > 0) {
+              $('#norm-listing-results').empty();
+              $('#norm-listing-results').append(response);             
+            }
+          },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error here
+        }
+    });
+});
+$(document).ready(function() {
+
+    // on the backend load all static-paths for the down arrows:
+    var downArrowTechnical = "{% static '/assets/images/arrowDownTechnical.svg' %}";
+    var downArrowEcological = "{% static '/assets/images/arrowDownEcological.svg' %}";
+    var downArrowOperational = "{% static '/assets/images/arrowDownOperational.svg' %}";
+    var downArrowLegal = "{% static '/assets/images/arrowDownLegal.svg' %}";
+
+    var focusBorder = "{{ focusBorder }}";
+    focusBorder = focusBorder.charAt(0).toUpperCase() + focusBorder.slice(1);
+    var focusArrowToSet = ""
+    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal];
+    for (var i=0; i < listOfPathToFocusArrow.length; i++) {
+      if (listOfPathToFocusArrow[i].includes(focusBorder)) {
+        focusArrowToSet = listOfPathToFocusArrow[i];
+        focusArrowToSet = "url('" + focusArrowToSet + "')"
+        break;
+      }
+    }
+
+
+    $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
+    $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
+    $("div.input-wrapper").children("input").css("background-image", focusArrowToSet)
+    $("div.dropdown").children("button").addClass("text-input-with-arrow-{{ focusBorder }}")
+    // $("input.use-bootstrap-select[type='text']").each(function() {
+      
+    //   $(this).addClass("form-input-{{ focusBorder }}");
+    // });
+  });
+
+  function changeStylingOfUBS() {
+    var dropDownElementsForThatSelect;
+      var selectElements = $('div.use-bootstrap-select')
+
+      for (var i=0;i<selectElements.length;i++ ) {
+        dropDownElementsForThatSelect = $(selectElements[i]).find('.dropdown-item');
+        
+        for (var j=0;j<dropDownElementsForThatSelect.length;j++) {
+          var checkboxInput = $("<input />")
+          checkboxInput.attr("type", "checkbox")
+          $(dropDownElementsForThatSelect[j]).prepend(checkboxInput);
+          // debugger;
+        }
+      }
+  }
+
+
+    $(document).ready(function() {
+    $('.trigger-submit-onchange').change(function() {
+      // get values from the select inputs:
+      // iterate over the list of selects and call the method to return the values as a list:
+      
+      // switch the closing symbol and the text so the closing symbol is always shown:
+      var selectedFilterItems = $("div.align-items-center.gap-1.d-inline-flex.py-0");
+      for (var i=0; i < selectedFilterItems.length; i++) {
+        var span = $(selectedFilterItems[i]).find("span");
+        var textNode = selectedFilterItems[i].textContent;
+        $(selectedFilterItems[i]).empty();
+        $(selectedFilterItems[i]).append(span);
+        $(selectedFilterItems[i]).append(textNode);
+        $(selectedFilterItems[i]).addClass("{{ focusBorder }}-font-color")
+      }
+      var listOfSelectedFilters;
+      var retunValueOfSelect;
+      var form = $('#searchBox');
+      var listOfDropdownsOfSelects = $(".use-bootstrap-select")
+      var currentDropDown;
+      var newDivElement;
+      var newCheckbox;
+      for (var i=0;i < listOfUseBootstrapSelects.length;i++) {
+        listOfSelectedFilters = [];
+        returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
+        currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
+        // debugger;
+        if (typeof returnValueOfSelect === "string" ) {
+          listOfSelectedFilters.push(returnValueOfSelect);
+        }
+        else if ($.isArray(returnValueOfSelect)) {
+          listOfSelectedFilters = returnValueOfSelect;
+        }
+        else {
+          listOfSelectedFilters = null;
+        }
+        $("input[name='" + listOfUseBootstrapSelects[i].selectElement.id + "-hidden']").remove();
+        var selectedOptions = "";
+        if (listOfSelectedFilters != null) {
+            // var selectedOptions = "";
+          for (var j=0;j<listOfSelectedFilters.length;j++) {
+            selectedOptions += listOfSelectedFilters[j] + ",";
+          }
+          
+          var hiddenInput = document.createElement("input");
+            hiddenInput.setAttribute("type", "hidden");
+            hiddenInput.setAttribute("name", listOfUseBootstrapSelects[i].selectElement.id  + "-hidden");
+            if (selectedOptions.slice(-1) === ',') {
+              selectedOptions = selectedOptions.slice(0, -1);
+            }
+            hiddenInput.setAttribute("value", selectedOptions);
+            form.append(hiddenInput);
+
+        }
+      }    
+
+        if ($("input[name='filtering']").length == 0) {
+          var hiddenInput = document.createElement("input");
+          hiddenInput.setAttribute("type", "hidden");
+          hiddenInput.setAttribute("name", "filtering");
+          hiddenInput.setAttribute("value", "true");
+          form.append(hiddenInput);
+        }
+        form.submit();
+        
+    });
+
+  })
+  $("span.ms-auto").click(function() {
+  });
+</script>

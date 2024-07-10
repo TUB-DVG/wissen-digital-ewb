@@ -1,0 +1,45 @@
+{% load static %}
+{% load i18n %}
+<style>
+    .columnHeading {
+        color: grey;
+    }
+</style>
+<h6>{{ boxObject.project_name }}</h6>
+<p>
+    <span class="columnHeading">{% translate "Förderkennzeichen" %}:</span> {{ boxObject.funding_label }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Laufzeit" %}:</span> {{ boxObject.funding_label.enargusData.startDate }} - {{ boxObject.funding_label.enargusData.endDate }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Partner" %}:</span> {{ boxObject.partner }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Projektwebseite" %}:</span> {{ boxObject.project_website }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Konsortium" %}:</span>{{ boxObject.consortium }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Weitere" %}:</span>{{ boxObject.further }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Digitale Anwendung(en)" %}:</span>{{ boxObject.digitalApplications }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Ziele" %}:</span>{{ boxObject.goals }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Strategien" %}:</span>{{ boxObject.strategies }}
+</p>
+<p>
+    <span class="columnHeading">{% translate "Relevanz" %}:</span>{{ boxObject.relevance }}
+</p>
+<p>
+    <a href="{% url 'showImage' boxObject.id %}">
+        <img src="{% static boxObject.image %}"
+             style="width: 287px;
+                    height: 203px" />
+    </a>
+</p>

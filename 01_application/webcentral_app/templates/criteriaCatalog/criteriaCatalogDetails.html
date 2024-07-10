@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
-{% load static %}
-{% load format_tags %}
-<!DOCTYPE html>
-<style>
+  {% load static %}
+  {% load format_tags %}
+  <!DOCTYPE html>
+  <style>
 button {
   text-align: left;
 }
@@ -110,1090 +110,186 @@ button {
     left: 0;
     border-left: 10px solid #F5E86A;
 }
-</style>
+  </style>
 
-<!-- **************** MAIN CONTENT START **************** -->
-<main>
-  <!-- Page content START -->
-  <section class="pt-0">
-    <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
-      <!-- Filter bar START -->
-      <div class="row my-4">
-        <a href="/pages/criteriaCatalog" style="color: #E0D674; font-size: 15px;">< Kriterienkatalog Start</a>
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
+    <!-- Page content START -->
+    <section class="pt-0">
+      <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
+        {% include "partials/backLinkInFocusColor.html" %}
+        {% include "partials/_imagesNavBar.html" %}
       </div>
-      <div class="p-2">
-        <div class="row g-4">
-          <div class="col-lg-12 border-legal p-2 my-1 search__container" id="container-criteria-catalog-details">
-            <div class="col-3 col-xl-3 search__icons" title="Suchen in den Anwendungsnamen">
-            {% if "Betriebsoptimierung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory1-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Betriebsoptimierung">
-                <img src="{% static 'assets/images/PurposeCategory1.svg' %}"  class="rounded" alt="icon"> </a> {% endif %} {% if "Profilbildung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory2-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Profilbildung"><img src="{% static 'assets/images/PurposeCategory2.svg' %}"></a>
-            {% endif %}
-            {% if "Verhaltensbeeinflussung" in criteriaCatalog.name %}
-              <img src="{% static 'assets/images/PurposeCategory3-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Verhaltensbeeinflussung"><img src="{% static 'assets/images/PurposeCategory3.svg' %}"></a>
-            {% endif %}
-            {% if "Teilen" in criteriaCatalog.name %} 
-              <img src="{% static 'assets/images/PurposeCategory4-selected.svg' %}"  class="rounded" alt="icon">
-            {% else %}
-              <a href="/criteriaCatalog/Teilen"><img src="{% static 'assets/images/PurposeCategory4.svg' %}"  class="rounded" alt="icon"></a>
-            {% endif %}
+    </div>
+    <!-- </form> -->
+    <div class="p-2">
+      <div class="row g-4">
+        <div class="col-lg-12 border-legal my-4 p-4"
+             id="container-criteria-catalog-details">
+             {% include "partials/descriptionContainer.html" %}
+          <br />
+          <div class="row sticky-top border-bottom"
+               style="top: 115px;
+                      background-color: white;
+                      margin-inline: 0">
+            <div class="mb-3"
+                 style="font-size: 16px;
+                        width: 130px;
+                        margin-left: 0px;
+                        padding-left: 0">Themen</div>
+            <div class="mb-3" style="width: 106px;">
+              <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
             </div>
-            <!-- search Field Schlagwort -->
-            <div class="col-3 form-group d-flex align-items-center search__input">
-              <input type="text" onkeydown="if (event.key === 'Enter') searchFullText(this.value)" class="form-select js-choice border-legal-round" id="searchInputCriteriaCatalog" placeholder="Alles durchsuchen" name='searched' style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;">
+            <div class="mb-3"
+                 id="container-criteria-catalog-details"
+                 style="width: 350px">
+              <div id="requirementsAndRuleExamples"
+                   style="display: none;
+                          font-size: 16px">
+                Anforderungen und Regelbeispiele
+              </div>
             </div>
-            <div class="col-3 form-group d-flex align-items-center search__dropdown">
-              
-              <!-- d-flex align-items-center justify-content-center pe-1 -->
-              <form> 
-                <!-- <input type="text" class="form-control me-1 border-legal rounded-lg" id="search-input-criteriaCatalog" placeholder="Schlagwort" name='searched'> -->
-                <select name="tags" class="form-select js-choice border-legal-round" id="tags" placeholder="Schlagwort" style="color:#E0D674; width: 262px; height: 39px; margin-bottom: 0px;" onchange="handleOptionSelected()"> 
-                <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
-                  {% for tag in tags %}  
-                    <option>{{ tag }}</option>
-                  {% endfor %}
-                </select>
-              </form>
+            <div class="col-lg-3 mb-3"></div>
+            <div class="col-lg-2"
+                 style="margin-left: 30px;
+                        position: absolute;
+                        right: 0;
+                        padding-right: 0"
+                 id="container-criteria-catalog-details">
+              <div style="text-align: right">
+                <button onclick="resetCriteriaCatalog()"
+                        style="border: none;
+                               background: none;
+                               cursor: pointer;
+                               padding: 0px;
+                               margin: 0px"
+                        id="collapseEverythingButton">Alles einklappen</button>
+              </div>
             </div>
           </div>
-          <!-- END search Field Schlagwort -->
-        </div>
-      </div>
-            <!-- </form> -->
-      <div class="p-2">
-        <div class="row g-4">
-          <div class="col-lg-12 border-legal my-4 p-4" id="container-criteria-catalog-details">
-              <p style="margin-bottom: 1px; font-size: 22px;">{{ criteriaCatalog.name }}</p>
-            <div class="row">
-              <div>
-                <p style="font-size: 22px;">Beschreibungstext: {{ criteriaCatalog.text }}</p>
-              </div>
-            </div>
-            <br />
-
-            <div class="row sticky-top border-bottom" style="top: 115px; background-color: white; margin-inline: 0;">
-              <div class="mb-3" style="font-size: 16px; width: 130px; margin-left: 0px; padding-left: 0;">
-                Themen
-              </div>
-              <div class="mb-3" style="width: 106px;">
-                <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
-              </div>
-              <div class="mb-3" id="container-criteria-catalog-details" style="width: 350px;">
-                <div id="requirementsAndRuleExamples" style="display: none; font-size: 16px;">Anforderungen und Regelbeispiele</div>
-              </div>
-              <div class="col-lg-3 mb-3">
-              </div>
-              <div class="col-lg-2" style="margin-left: 30px; position: absolute; right: 0; padding-right: 0;" id="container-criteria-catalog-details">
-                <div style="text-align: right">
-                  <button onclick="resetCriteriaCatalog()" style="border: none; background: none; cursor: pointer; padding: 0px; margin: 0px;" id="collapseEverythingButton">Alles einklappen</button>
-                </div>
-              </div>
-            </div>
-              <div class="row" id="hi" style="margin-inline: 0;">
-                <!-- <ul> -->
-                  {% for tree in trees %}
-                    {% for node in tree %}
-                      {% if node.indent %}
-                        {{ node.indent.depth }}
-                        {% if node.depth == 0 %}
-                          <ul class="border-bottom test" style=" padding-left: 0px; margin-left: 0px; margin-bottom: 2px; padding-right: 0; padding-bottom: 3px;" id="{{ node.depth }}">
-                        {% elif node.depth == 1 %}
-                          <ul class="absolute-horizontal-position-lvl-one" style="display: none; margin-top: 0px; margin-bottom: 0px;" id="{{ node.depth }}">
-                        {% elif node.depth == 2 %}
-                          <ul class="absolute-horizontal-position-lvl-two" style="display: none; :last-child { border-bottom: none; }" id="{{ node.depth }}">
+          <div class="row" id="hi" style="margin-inline: 0;">
+            <!-- <ul> -->
+            {% for tree in trees %}
+              {% for node in tree %}
+                {% if node.indent %}
+                  {{ node.indent.depth }}
+                  {% if node.depth == 0 %}
+                    <ul class="border-bottom test"
+                        style="padding-left: 0px;
+                               margin-left: 0px;
+                               margin-bottom: 2px;
+                               padding-right: 0;
+                               padding-bottom: 3px"
+                        id="{{ node.depth }}">
+                    {% elif node.depth == 1 %}
+                      <ul class="absolute-horizontal-position-lvl-one"
+                          style="display: none;
+                                 margin-top: 0px;
+                                 margin-bottom: 0px"
+                          id="{{ node.depth }}">
+                      {% elif node.depth == 2 %}
+                        <ul class="absolute-horizontal-position-lvl-two"
+                            style="display: none;
+                                   :last-child { border-bottom: none;
+                                   }"
+                            id="{{ node.depth }}">
                         {% else %}
                           <ul style="display: none" id="{{ node.depth }}">
-                        {% endif %}
-                      {% elif node.outdent %}
-                        {% if node.depth == 0 %}
+                          {% endif %}
+                        {% elif node.outdent %}
+                          {% if node.depth == 0 %}
+                          {% else %}
+                            <!-- <div class="hr sticky-third-lvl"
+      style="display: none;
+             height: 2px;
+             background-color: #F5E86A"
+      id="{{ node.depth }}"></div> -->
+                          {% endif %}
+                        </li>
+                      </ul>
+                    {% elif node.content %}
+                      {% if node.content.depth == 0 %}
+                        <li style="font-size: 22px;
+                                   margin: 0px"
+                            topicId="{{ node.content.topic.id }}"
+                            id="{{ node.content.depth }}"
+                            tags="{{ node.content.topic.tag|format_tags }}">
+                          <div class="sticky-third-lvl"
+                               id="{{ node.content.depth }}"
+                               class="wrapper">
+                            <img class="sticky-third-lvl"
+                                 src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}"
+                                 style="width: 20px;
+                                        margin-right: 4px;
+                                        margin-left: 9px;
+                                        padding-top: 10.5px;
+                                        padding-bottom: 10.5px"
+                                 id="0" />
+                            <button class="button-first-level sticky-third-lvl sticky-element-button"
+                                    onclick="showOrHide(event, this)"
+                                    id="{{ node.content.depth }}"
+                                    topicId="{{ node.content.topic.id }}">
+                              {{ node.content.topic.heading }}
+                            </button>
+                          </div>
+                          <p class="paragraph-first-level"
+                             id="0"
+                             topicId="{{ node.content.topic.id }}"
+                             tags="{{ node.content.topic.tag|format_tags }}">
+                            {{ node.content.topic.textLineBreaks }}
+                          </p>
                         {% else %}
-                          <!-- <div class="hr sticky-third-lvl" style="display: none; height: 2px; background-color: #F5E86A;" id="{{ node.depth }}"></div> -->
-                        {% endif %}
-                        </li></ul>
-                      {% elif node.content %}
-                        {% if node.content.depth == 0 %}
-                          <li style="font-size: 22px; margin: 0px;" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div class="sticky-third-lvl" id="{{ node.content.depth }}" class="wrapper">
-                              <img class="sticky-third-lvl" src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}" style="width: 20px; margin-right: 4px; margin-left: 9px; padding-top: 10.5px; padding-bottom: 10.5px;" id="0">
-                              <button class="button-first-level sticky-third-lvl sticky-element-button" onclick="showOrHide(event, this)" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}">
+                          <li class="border-bottom sticky-element-li"
+                              topicId="{{ node.content.topic.id }}"
+                              id="{{ node.content.depth }}"
+                              style="display: none;
+                                     font-size: 22px;
+                                     margin: 0px;
+                                     padding: 0px"
+                              tags="{{ node.content.topic.tag|format_tags }}">
+                            <div id="{{ node.content.depth }}" class="wrapper">
+                              <img style="display: none;
+                                          margin-right: 4px;
+                                          margin-top: 11px;
+                                          padding: 0px"
+                                   src="{% static 'assets/images/arrow_down.svg' %}" />
+                              <button class="sticky-element-button button-deeper-level"
+                                      onclick="showOrHide(event, this)"
+                                      class="button-deeper-level"
+                                      topicId="{{ node.content.topic.id }}"
+                                      id="{{ node.content.depth }}"
+                                      text="{{ node.content.topic.heading }}">
                                 {{ node.content.topic.heading }}
                               </button>
                             </div>
-                          <p class="paragraph-first-level" id="0" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>
-                        {% else %}
-                          <li class="border-bottom sticky-element-li" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" style="display: none; font-size: 22px; margin: 0px; padding: 0px;" tags="{{ node.content.topic.tag|format_tags }}">
-                            <div id="{{ node.content.depth }}" class="wrapper">
-                              <img style="display: none; margin-right: 4px; margin-top: 11px; padding: 0px;"src="{% static 'assets/images/arrow_down.svg' %}">
-                              <button class="sticky-element-button button-deeper-level" onclick="showOrHide(event, this)" class="button-deeper-level" topicId="{{ node.content.topic.id }}" id="{{ node.content.depth }}" text="{{ node.content.topic.heading }}">
-                                {{ node.content.topic.heading }}
-                              </button>
-                            </div>  
-                          <p class="paragraph-deeper-level" tags="{{ node.content.topic.tag|format_tags }}" id="{{ node.content.depth }}" topicId="{{ node.content.topic.id }}" tags="{{ node.content.topic.tag|format_tags }}">{{ node.content.topic.text }}</p>  
+                            <p class="paragraph-deeper-level"
+                               tags="{{ node.content.topic.tag|format_tags }}"
+                               id="{{ node.content.depth }}"
+                               topicId="{{ node.content.topic.id }}"
+                               tags="{{ node.content.topic.tag|format_tags }}">
+                              {{ node.content.topic.textLineBreaks }}
+                            </p>
+                          {% endif %}
                         {% endif %}
-                      {% endif %}
+                      {% endfor %}
                     {% endfor %}
-                  {% endfor %}
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Page content END -->
-</main>
-<!-- **************** MAIN CONTENT END **************** -->
-
-<!--ComparisonFeature-->
-<!-- <script type="text/javascript" src="{% static 'js/toolComparison-feature.js' %}" nonce="{{request.csp_nonce}}"></script> -->
-
-<script>
-  var idOfTopicToBeOpened = "{{ topicIdentifier }}";
-  var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
-  var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
-
-
-
-
-  // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
-  modifyCatalogToBeShownInOneElement();
-  // bringParagraphsInNextLayer();
-  depthFirstWalkForParagraphs();
-  if (idOfTopicToBeOpened != "") {
-    var elementsToBeSearched = document.getElementById("hi").querySelectorAll("button, p");;
-    for (var i = 0; i < elementsToBeSearched.length; i++) {
-      if (elementsToBeSearched[i].getAttribute("topicId").includes(idOfTopicToBeOpened)) {
-        var rootElement = findRootElement(elementsToBeSearched[i]);
-        depthFirstWalk(rootElement, elementsToBeSearched[i]);  
-      }
-    }
-    openHeadingsForLayers();
-  }
-
-  const el = document.querySelector(".sticky-third-lvl")
-const observer = new IntersectionObserver( 
-  ([e]) => e.target.classList.toggle("is-pinned", e.intersectionRatio < 1),
-  { threshold: [1] }
-);
-
-observer.observe(el);
-
-  function isAboveStickyElement(stickyElement) {
-    if (stickyElement.getBoundingClientRect().top > 170) {
-      return true;
-    }
-    return false;
-  }
-  var lastScrollTop = 0;
-
-  window.onscroll = function() {
-
-    var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    var currentStickyThirdLvlElement = document.querySelector('div.sticky-third-lvl');
-    var allStickyThirdLvlElements = document.querySelectorAll('div.sticky-third-lvl');
-    // addOrRemoveBottomBorderClass(allStickyThirdLvlElements);
-    if (isSticky(currentStickyThirdLvlElement)) {
-      // addHorizontalLineBelowButton(currentStickyThirdLvlElement);
-      currentStickyThirdLvlElement.classList.add('border-bottom');
-    }
-    else {
-      if (currentStickyThirdLvlElement.id != "2")
-      currentStickyThirdLvlElement.classList.remove('border-bottom');
-
-    }
-    var stickyElements = findVisibleButtonElementsInViewport();
-    var liParent = undefined;
-    if (lastScrollTop < currentScrollTop) {
-      // on scroll down
-      // var stickyElements = Array.from(stickyElements).sort(function(a, b) {
-      //   return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
-      // });
-      
-      var expandedChildOfStickyElement = findFirstElementWhichIsExpanded(currentStickyThirdLvlElement, stickyElements);
-      if (expandedChildOfStickyElement != undefined && getDistanceBetweenElements(currentStickyThirdLvlElement, expandedChildOfStickyElement) < 20) {
-          currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
-          // currentStickyThirdLvlElement.classList.remove('border-bottom');
-          // if (currenStickyThirdLvlElement.id == "0") {
-          //   currentStickyThirdLvlElement.previousElementSibling.classList.remove('sticky-third-lvl');
-          // }
-          expandedChildOfStickyElement.parentElement.classList.add('sticky-third-lvl');
-          // expandedChildOfStickyElement.parentElement.classList.add('border-bottom');
-      }
-    }
-    else {
-      // on scroll up
-      // set the most upward element as sticky element:
-      
-      // stickyElements[0].parentElement.classList.add('sticky-third-lvl');
-      if (isAboveStickyElement(currentStickyThirdLvlElement)) {
-        
-        // The window is scrolled above the sticky element.
-        // currentStickyThirdLvlElement
-        // find the ul-parent of most upward button:
-        currentStickyThirdLvlElement.classList.remove('sticky-third-lvl');
-        // currentStickyThirdLvlElement.classList.remove('border-bottom');
-        if (stickyElements[0].id == "0") {
-          stickyElements[0].parentElement.classList.add('sticky-third-lvl');
-          // stickyElements[0].parentElement.classList.add('border-bottom');
-        }
-        else {
-          liParent = getFirstParentElementWithTagName(stickyElements[0], "UL").parentElement;
-          liParent.children[0].classList.add('sticky-third-lvl');
-          // liParent.children[0].classList.add('border-bottom');
-        }
-      }   
-    }
-    lastScrollTop = currentScrollTop;
-  };
-
-  function isSticky(stickyElement) {
-    var rect = stickyElement.getBoundingClientRect();
-    if (rect.top == 155) {
-      return true;
-    }
-    return false;
-    // var offsetTop = rect.top + window.scrollY;
-    // return offsetTop === stickyElement.offsetTop;
-  }
-
-  function addOrRemoveBottomBorderClass(divElementList) {
-    for (var i = 0; i < divElementList.length; i++) {
-      if (isSticky(divElementList[i])) {
-        divElementList[i].classList.add('border-bottom');
-      }
-      else {
-        if (divElementList[i].id != "2") {
-          divElementList[i].classList.remove('border-bottom');
-        }
-      }
-    }
-  }
-
-  function getDistanceBetweenElements(element1, element2) {
-      var rect1 = element1.getBoundingClientRect();
-      var rect2 = element2.getBoundingClientRect();
-
-      return Math.abs(rect1.bottom - rect2.top);
-  }
-
-  function isInViewport(element) {
-      var rect = element.getBoundingClientRect();
-      var html = document.documentElement;
-      return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || html.clientHeight) &&
-          rect.right <= (window.innerWidth || html.clientWidth)
-      );
-  }
-
-  function findVisibleButtonElementsInViewport() {
-    var listElements = Array.from(document.querySelectorAll('.sticky-element-button')).filter(function(element) {
-      return window.getComputedStyle(element).display !== 'none' && element.parentElement.parentElement.style.display != "none";
-    });
-      var visibleElements = [];
-      for (var i = 0; i < listElements.length; i++) {
-          if (isInViewport(listElements[i])) {
-              visibleElements.push(listElements[i]);
-          }
-      }
-      return visibleElements;
-  }
-
-  function findFirstElementWhichIsExpanded(stickyElement, listOfVisibleElements) {
-    var stickyElementLayerNumber = Number(stickyElement.id);
-    var directChildOfStickyElement = undefined;
-    
-    for (var i = 1; i < listOfVisibleElements.length; i++) {
-      if (isExpanded(listOfVisibleElements[i])) {
-        return listOfVisibleElements[i];
-      }
-    }
-    return undefined;
-  }
-
-  function isExpanded(element) {
-    if (element.tagName == "BUTTON") {
-      return element.parentElement.nextElementSibling.style.display != "none" && element.parentElement.nextElementSibling.children[0].style.display != "none";
-    }
-  }
-
-
-  function removeLastDivFromUlOfLevelOne () {
-    var ulElements = document.querySelectorAll("#hi ul.\\1");
-    for (var i = 0; i < ulElements.length; i++) {
-      if (ulElements[i].nextElementSibling == undefined) {
-        ulElements[i].children[0].children[1].style.display = "none";
-      }
-    }
-  }
-
-  function findRootElement(element) {
-    var parentElement = element;
-    while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
-          parentElement = parentElement.parentElement;
-        }
-    return parentElement;
-  }
-
-  function getHeadingAndDescription(element, stringToConcatanate) {
-    for (var i = 0; i < element.children.length; i++) {
-      if (element.children[i].tagName == "BUTTON") {
-        stringToConcatanate += "<h6>" + element.children[i].textContent + "</h6>" + "<br>";
-      }
-      if (element.children[i].tagName == "P") {
-        stringToConcatanate += "<p>" + element.children[i].textContent + "</p>" + "<br>";
-      }
-    }
-    return stringToConcatanate;
-  }
-
-  function createDivElement(id){
-    var newDivElement = document.createElement("div");
-    newDivElement.className = "hr";
-    newDivElement.style.display = "none";
-    newDivElement.id = id;
-
-    return newDivElement;
-  }
-
-  function depthFirstSearch(element, func) {
-    var stack = [element];
-
-    while (stack.length > 0) {
-        var currentElement = stack.pop();
-        func(currentElement);
-
-        var children = currentElement.children;
-        for (var i = children.length - 1; i >= 0; i--) {
-            stack.push(children[i]);
-        }
-    }
-  }
-
-  function hideLeftBorder(element) {
-    if (element.tagName == "UL" && element.id == "0") {
-      element.querySelector("li").classList.remove("border-left");
-    }
-  }
-
-
-  function hideElementExceptForFirstLayer(element) {
-    if (element.tagName === "IMG" && element.id !== '0') {
-      showDirectionOfArrow(element, "down");
-    }
-
-    if (element.classList.contains("wrapper")) {
-      return;
-    }
-    if (Number(element.id) > 0) {
-      element.style.display = "none";
-    }
-    hideLeftBorder(element);
-  }
-
-  function depthFirstWalkForParagraphs() {
-    var divContainerOfCriteriaCatalog = document.getElementById("hi");
-    var childElements = divContainerOfCriteriaCatalog.children;
-    var queue = Array.from(childElements);
-    var elementFromQueue = undefined;
-    var firstUlAsChildOfLi = undefined;
-    while (queue.length > 0) {
-      elementFromQueue = queue.shift();
-      // bring child-elements into queue:
-      queue = addElementsToArray(queue, elementFromQueue.children);
-      if (elementFromQueue.tagName == "P" && Number(elementFromQueue.id) < 3) {
-        childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementFromQueue, "UL");
-        if (childUlFromParagraph != "") {
-          newLiElement = document.createElement("li");
-          newLiElement.prepend(elementFromQueue);
-          childUlFromParagraph.prepend(newLiElement);
-          // remove the paragraph from its current position:
-          parentOfParagraph = elementFromQueue.parentElement;
-          parentOfParagraph.removeChild(elementFromQueue);
-        }
-        else {
-          parentOfParagraph = elementFromQueue.parentElement;
-          parentOfParagraph.removeChild(elementFromQueue);
-          
-          elementFromQueue.id = Number(elementFromQueue.id) + 1;
-
-          newUlElement = document.createElement("ul");
-          newUlElement.id = Number(elementFromQueue.id);
-          newUlElement.style.display = "none";
-          if (newUlElement.id == 1) {
-            newUlElement.className = "absolute-horizontal-position-lvl-one";
-          }
-          else if (newUlElement.id == 2) {
-            newUlElement.className = "absolute-horizontal-position-lvl-two";
-          }
-          newLiElement = document.createElement("li");
-          newLiElement.id = Number(elementFromQueue.id);
-
-          prevNewDiv = createDivElement(Number(elementFromQueue.id));
-          nextNewDiv = createDivElement(Number(elementFromQueue.id));
-
-          newLiElement.prepend(prevNewDiv);
-          newLiElement.appendChild(elementFromQueue);
-          newLiElement.appendChild(nextNewDiv);
-          newUlElement.prepend(newLiElement);
-          firstUlAsChildOfLi = returnFirstAppearanceOfElementWithTagName(parentOfParagraph, "UL");
-          if (firstUlAsChildOfLi != "") {
-            parentOfParagraph.insertBefore(newUlElement, firstUlAsChildOfLi);
-          }
-          else {
-          parentOfParagraph.prepend(newUlElement);
-        }
-      }
-    }
-  }
-  }
-
-  function modifyCatalogToBeShownInOneElement() {
-    var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-    for (var i = 0; i < elementsToBeSearched.length; i++) {
-      
-      if (elementsToBeSearched[i].tagName == "UL" && Number(elementsToBeSearched[i].id) >= 2) {
-        var textForCombinedElement = "";
-        var textCombinedConcatenated = "";
-        var aggregatedTags = "";
-        var aggregatedTopicIds = "";
-        var liDescendants = elementsToBeSearched[i].querySelectorAll('li');        
-        // textForCombinedElement = depthFirstWalkForModification(elementsToBeSearched[i]);
-
-        var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
-        window.textForCombinedElement = "";
-        for (var j = 0; j < ulChildElements.length; j++) {
-          if (Number(ulChildElements[j].id) == 3) {
-            textForCombinedElement = ulChildElements[j].textContent
-            depthFirstSearch(ulChildElements[j], aggregateAndStyleText);
-            firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
-            if (firstLiChildren != "") {
-              aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
-              aggregatedTopicIds += "," + firstLiChildren.getAttribute("topicId");
-            }
-
-            textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n\n');
-            textCombinedConcatenated += textForCombinedElement;
-          }
-          if (Number(ulChildElements[j].id) > 3) {
-            ulChildElements[j].remove();
-          }
-        }
-        for (var j = 0; j < liDescendants.length; j++) {
-          // if (Number(liDescendants[j].id) > 2) {
-          //   textForCombinedElement += getHeadingAndDescription(liDescendants[j], textForCombinedElement);
-          // }
-          if (Number(liDescendants[j].id) >= 3) {
-            if (liDescendants[j].getAttribute("aggregatedText") != "true") {
-              liDescendants[j].remove();
-            }
-            
-          }
-          if (Number(liDescendants[j].id) == 2) {
-          
-            paragraphToBeDeleted = liDescendants[j].querySelector("p")
-            if (paragraphToBeDeleted.getAttribute("aggregatedText") != "true") {
-              paragraphToBeDeleted.remove();
-            }
-            // liDescendants[j].querySelectorAll("div")[1].remove();
-          }
-          
-        }
-
-        var newLiElement = document.createElement("li");
-        var newParagraphElement = document.createElement("p");
-        newLiElement.style.display = "none";
-        newParagraphElement.style.whiteSpace = "pre-line";
-        newParagraphElement.setAttribute("aggregatedText", "true")
-        newParagraphElement.innerHTML = window.textForCombinedElement;
-        newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
-        newParagraphElement.setAttribute("tags", aggregatedTags);
-        newLiElement.id = "3";
-        newLiElement.setAttribute("aggregatedText", "true")
-        newParagraphElement.id = "3";
-        newLiElement.appendChild(newParagraphElement);
-        var firstULElement = elementsToBeSearched[i].querySelector('ul')
-        if (firstULElement != null) {
-          firstULElement.id = "3";
-          firstULElement.appendChild(newLiElement);
-          
-        }
-        
-      }
-    }
-  }
-
-  function aggregateAndStyleText(element) {
-    var textContent = "";
-    if (element.tagName == "BUTTON") {
-      if (Number(element.id) > 3) {
-        textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
-      }
-      else {
-        textContent = element.textContent;
-      }
-    }
-    if (element.tagName == "P") {
-      if (Number(element.id) > 3) {
-        textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
-      }
-      else {
-        textContent = element.textContent;
-      }
-    }
-    window.textForCombinedElement += textContent;
-  }
-
-  function showAllElementsUntilRoot(element) {
-    var parentElement = element;
-    while (parentElement.id != "0" || parentElement.tagName != "UL") {
-      showElement(parentElement);
-      parentElement = parentElement.parentElement;
-    }
-  }
-
-  function searchFullText(searchString) {    
-    var elementsToBeSearched = document.querySelectorAll("#hi *");
-    var foundElements = [];
-    foundULelements = [];
-    for (var i = 0; i < elementsToBeSearched.length; i++) {
-      if (elementsToBeSearched[i].textContent.includes(searchString)) {
-        // The search string is contained in the text content of the element
-        if (elementsToBeSearched[i].tagName == "BUTTON" || elementsToBeSearched[i].tagName == "P") {
-          foundElements.push(elementsToBeSearched[i]);
-        }
-      }
-    }
-    if (foundElements.length > 0) {
-      // call a function, which will reset the criteriaCatalog to the original state
-      resetCriteriaCatalog();
-      // show all found elements
-      for (var i = 0; i < foundElements.length; i++) {
-        foundElements[i].innerHTML = foundElements[i].innerHTML.replace(new RegExp(searchString, 'g'), '<mark>$&</mark>');
-        // foundElements[i].style.backgroundColor = "yellow";
-        var rootElement = findRootElement(foundElements[i]);
-        depthFirstWalk(rootElement, foundElements[i]);  
-      }
-    }
-    openHeadingsForLayers();
-  }
-
-  function handleOptionSelected() {
-    // Code to be executed when an option is selected
-    var selectedOption = document.getElementById("tags").value;
-    // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
-    // var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-    var elementsToBeSearched = document.querySelectorAll("#hi *");
-    var foundElements = [];
-    foundULelements = [];
-    for (var i = 0; i < elementsToBeSearched.length; i++) {
-      // if the element has the attribute "tags" and the value of the attribute is not equal to the selected option
-      // if (elements[i].hasAttribute("tags") && !elements[i].getAttribute("tags").includes(selectedOption)) {
-      //   // hide the element
-      //   elements[i].style.display = "none";
-      // }
-      // if the element has the attribute "tags" and the value of the attribute is equal to the selected option
-      if (elementsToBeSearched[i].hasAttribute("tags") && elementsToBeSearched[i].getAttribute("tags").includes(selectedOption)) {
-        // show the element
-        // add the element to the found elements:
-        parentElement = elementsToBeSearched[i];
-        while ((parentElement.id != "0" || parentElement.tagName != "UL")) {
-          parentElement = parentElement.parentElement;
-        }
-        resetCriteriaCatalog();
-        depthFirstWalk(parentElement, elementsToBeSearched[i]);
-      }
-    }
-    var numberOfLayersShown = checkHowManyLayersAreShown();
-    if (numberOfLayersShown >= 1) {
-      document.getElementById("criterias").style.display = "block";
-    }
-    if (numberOfLayersShown >= 2) {
-      document.getElementById("requirementsAndRuleExamples").style.display = "block";
-    }
-  }
-
-function openHeadingsForLayers() {
-  var numberOfLayersShown = checkHowManyLayersAreShown();
-    if (numberOfLayersShown >= 1) {
-      document.getElementById("criterias").style.display = "block";
-    }
-    else {
-      document.getElementById("criterias").style.display = "none";
-    }
-    if (numberOfLayersShown >= 2) {
-      document.getElementById("requirementsAndRuleExamples").style.display = "block";
-    }
-    else {
-      document.getElementById("requirementsAndRuleExamples").style.display = "none";
-    }
-}
-
-function getLiAndUlElements(element) {
-  var array = Array.prototype.slice.call(element.children);
-  var ulAndLiElements = array.filter(function(element) {
-    return element.tagName === 'UL' || element.tagName === 'LI';
-  });
-  return ulAndLiElements;
-}
-
-function addElementsToArray(arrayToBeAddedTo, arrayToAdd) {
-  for (var i = 0; i < arrayToAdd.length; i++) {
-    arrayToBeAddedTo.push(arrayToAdd[i]);
-  }
-  return arrayToBeAddedTo;
-}
-
-function returnFirstAppearanceOfElementWithTagName(element, tagName) {
-  var childElements = element.children;
-  for (var i = 0; i < childElements.length; i++) {
-    if (childElements[i].tagName == tagName) {
-      return childElements[i];
-    }
-  }
-  return "";
-}
-
-function depthFirstWalkForModification(element) {
-
-  var aggregatedString = ""; 
-  var liElement = ""
-  var newUlLiElements = [];
-  var array = Array.prototype.slice.call(element.children);
-  var ulAndLiElements = array.filter(function(element) {
-    return element.tagName === 'UL' || element.tagName === 'LI';
-  });
-  liUlElements = []
-  liUlElements = addElementsToArray(liUlElements, ulAndLiElements)
-  while (liUlElements.length > 0) {
-    
-    liUlElement = liUlElements.pop();
-    if (liUlElement.tagName == "LI" && Number(liUlElement.id) > 2) {
-      liElement = liUlElement;
-      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "BUTTON").textContent + "<br/>"
-      aggregatedString += returnFirstAppearanceOfElementWithTagName(liElement, "P").textContent + "<br/>"
-    }
-    newUlLiElements = getLiAndUlElements(liUlElement);
-    liUlElements = addElementsToArray(liUlElements, newUlLiElements);
-
-    // if (liUlElement.tagName == "UL") {
-    //   liUlElements = addElementsToArray(liUlElements, liUlElement.children);
-    // }
-  }
-  return aggregatedString;
-}
-
-function depthFirstWalk(rootElement, target) {
-  var childElements = rootElement.children;
-  var buttonForLI = undefined;
-  for (var i = 0; i < childElements.length; i++) {
-    var childElement = childElements[i];
-    // Perform your desired operation on the child element here
-    // console.log(childElement);
-    // check if the childElement is a ancestor of target
-    
-    if (checkIfAncestor(childElement, target)) {
-      if (childElement.tagName == "LI") {
-        buttonForLI = childElement.querySelector("button");
-        openChildLayer(buttonForLI);
-      }
-        if (Number(childElement.id) <= Number(target.id)) {
-          openChildLayer(childElement);
-        depthFirstWalk(childElement, target);
-      }
-    }
-    else {
-      openChildLayer(childElement);
-    }
-  }
-}
-
-function checkIfAncestor(element, target) {
-  var childElements = [];
-  childElements.push(element);
-  while (childElements.length > 0) {
-    var childElement = childElements.pop();
-    if (childElement == target) {
-      return true;
-    }
-    else {
-      var grandChildElements = childElement.children;
-      for (var i = 0; i < grandChildElements.length; i++) {
-        childElements.push(grandChildElements[i]);
-      }
-    }
-  }
-  return false;
-}
-
-function showHeading(element){
-  if (element.tagName == "UL") {
-    element.style.display = "block";
-    for (var i = 0; i < element.children.length; i++) {
-      if (element.children[i].tagName == "LI") {
-        element.children[i].style.display = "block";
-        element.children[i].getElementsByTagName("div")[0].style.display = "block";
-        element.children[i].getElementsByTagName("div")[0].style.marginLeft = "0px";
-        // element.children[i].children.getElementsByTagName("hr")[0].style.display = "block";
-      }
-    }
-  }
-  if (element.tagName == "LI") {
-    element.style.display = "block"; 
-    element.children.getElementsByTagName("hr")[0].style.display = "block";
-  }
-  else if (element.tagName == "HR") {
-    element.style.display = "block";
-  }
-  if (element.tagName == "P" && element.id == "0") {
-    element.style.display = "block";
-  }
-}
-
-function showHeadingAndDescription(element) {
-  if (element.tagName == "UL") {
-    element.style.display = "block";
-    for (var i = 0; i < element.children.length; i++) {
-      if (element.children[i].tagName == "LI") {
-        element.children[i].style.display = "block";
-        element.children[i].getElementsByTagName("p")[0].style.display = "block";
-        element.children[i].getElementsByTagName("div")[0].style.display = "block";
-      }
-    }
-  }
-  if (element.tagName == "LI" || element.tagName == "DIV") {
-    element.style.display = "flex";
-    element.getElementsByTagName("p")[0].style.display = "block";
-  }
-}
-
-
-function showFullTextOfHeading(element) {
-  var fullHeading = element.getAttribute("text");
-  element.textContent = fullHeading;
-}
-function showPreviewTextOfHeading(element) {
-  if (element.textContent.length > 80) {
-    element.textContent = element.getAttribute("text").substring(0, 80) + "...";
-  }
-}
-
-function showElement(element) {
-  if (element.tagName == "UL" || element.tagName == "LI" || element.tagName == "DIV") {
-    element.style.display = "block";
-  }
-  else {
-    if (element.tagName != "MARK") {
-      element.style.display = "inline";
-    }
-  }
-}
-
-function checkHowManyLayersAreShown() {
-  // find the li-element with the highest id
-  var elementsToBeSearched = document.getElementById("hi").getElementsByTagName("*");
-  // check the visible UL-elements to check, how many layers are shown:
-  var liElements = Array.from(elementsToBeSearched).filter((element) => {return element.tagName == "LI"})
-  var layersExpanded = 0;
-  for (var i = 0; i < liElements.length; i++) {
-    if ((liElements[i].style.display == "block" || liElements[i].style.display == "") && Number(liElements[i].id) > layersExpanded) {
-      var parentElement = liElements[i];
-      var parentIsNone = false;
-      
-      while (Number(parentElement.parentElement.id) >= 0) {
-
-        if (parentElement.parentElement.style.display == "none") {
-          parentIsNone = true;
-        }
-        parentElement = parentElement.parentElement;
-      }
-      if (!parentIsNone) {
-      layersExpanded += 1;
-      }
-    }
-  }
-  return layersExpanded;
-}
-
-function getFirstParentElementWithTagName(element, tagName) {
-  var parentElement = element;
-  while (parentElement.tagName != tagName) {
-    parentElement = parentElement.parentElement;
-  }
-  return parentElement;
-} 
-
-function getAllChildElementsWithTagName(element, tagName) {
-  var childElements = element.children;
-  var elements = [];
-  for (var i = 0; i < childElements.length; i++) {
-    if (childElements[i].tagName == tagName) {
-      elements.push(childElements[i]);
-    }
-  }
-  return elements;
-}
-
-function removeMarkTagsFromText(element) {
-  if (element.tagName == "BUTTON" || element.tagName == "P") {
-    var textContentOfNode = element.innerHTML;
-    textContentOfNode = textContentOfNode.replace(/<mark>/g, "");
-    textContentOfNode = textContentOfNode.replace(/<\/mark>/g, "");
-    element.innerHTML = textContentOfNode;
-  }
-}
-
-function showDirectionOfArrow(imgElement, direction) {
-  if (direction == "up") {
-    imgElement.src = pathToArrowUpImg;
-  }
-  else {
-    imgElement.src = pathToArrowDownImg;
-  }
-}
-
-function openChildLayer(element) {
-  if (element == null) {
-    return;
-  }
-  if (element.tagName == "BUTTON" && element.id != "0") {
-    showFullTextOfHeading(element);
-    addOrRemoveBottomBorder(element);
-  }
-  showElement(element);
-  var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
-  var childUlElements = [];
-  if (element.id == "2") {
-    if (element.display == "none") {
-      element.style.display = "block";
-    }
-    childUlElements = element.parentElement.parentElement.querySelectorAll("ul ul");
-    if (childUlElements.length == 0) {
-      childUlElements = element.parentElement.parentElement.parentElement.querySelectorAll("ul ul");
-    }
-    if (childUlElements.length > 0) {
-      childUlElements[0].style.display = "block";
-      showElement(childUlElements[0].querySelectorAll("li li")[0]);
-      showElement(childUlElements[0].querySelectorAll("li li")[0].children[0]);
-      showElement(childUlElements[0].querySelectorAll("li li p")[0]);
-      // showElement(childUlElements[0].querySelectorAll("li li")[0].children[0].children[0]);
-      var layerNumberOfClickedElement = Number(element.id);
-      var childElementsOfButton = element.children;
-      if (childElementsOfButton.length > 0) {
-        if (Number(element.id) > 0) {
-        childElementsOfButton[0].src = pathToArrowUpImg;
-        }
-      }
-    }
-  }
-  else {
-    if (parentOfClickedElement.id == "0" && parentOfClickedElement.tagName == "UL") {
-      parentOfClickedElement.children[0].classList.add("border-left");
-    }
-    
-    var layerNumberOfClickedElement = Number(element.id);
-    // element.parentElement.nextElementSibling.style.display = "none";
-    // var childElementsOfButton = element.children;
-    imageInButtonElement = element.previousElementSibling;
-    if (imageInButtonElement != null) {
-      showElement(imageInButtonElement);
-      if (Number(element.id) > 0) {
-      // imageInButtonElement.src = pathToArrowUpImg;
-      // showDirectionOfArrow(imageInButtonElement, "up");
-      }
-    }
-    
-    var nextLayerElementsUL = Array.from(element.parentElement.parentElement.children).filter((element) => {return element.tagName == "UL"});
-    var childOfLi = undefined;
-    var buttonElementInLi = undefined;
-    var paragraphElementInLi = undefined;
-    var divElements; 
-    var imageInButtonElement;
-    for (var i = 0; i < nextLayerElementsUL.length; i++) {
-      nextLayerElementsUL[i].style.display = "block";
-
-      // get the li-elements, which are childs of the ul:
-      var childsOfUL = nextLayerElementsUL[i].children;
-      var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
-        if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
-          return element;
-        } 
-      })
-      
-      for (var j = 0; j < nextLayerElementsLI.length; j++) {
-        showElement(nextLayerElementsLI[j]);
-        childOfLi = nextLayerElementsLI[j].children;
-        
-        buttonElementInLi = Array.from(childOfLi[0].children).filter((element) => {return element.tagName == "BUTTON"})
-        if (buttonElementInLi.length > 0) {
-          showElement(buttonElementInLi[0]);
-          imageInButtonElement = buttonElementInLi[0].previousElementSibling;
-          showElement(imageInButtonElement);
-          // showDirectionOfArrow(imageInButtonElement, "up");
-        }
-        paragraphElementInLi = Array.from(childOfLi).filter((element) => {return element.tagName == "P"})
-        if (paragraphElementInLi.length > 0) {
-          paragraphElementInLi[0].style.display = "block";
-          try {
-          paragraphElementInLi[0].nextElementSibling.style.display = "block";
-          paragraphElementInLi[0].previousElementSibling.style.display = "block";
-          }
-          catch {
-            console.log("Error");
-          
-          }
-        }
-        // nextLayerElementsLI[j].querySelector("button:first-child").style.display = "block";
-        // if (j < nextLayerElementsLI.length - 1) {
-        if (i < nextLayerElementsUL.length - 1) {
-          if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
-            if (nextLayerElementsLI[j].parentElement.nextElementSibling != null && nextLayerElementsLI[j].id != "0") {
-              divElements = getAllChildElementsWithTagName(nextLayerElementsLI[j], "DIV")
-              for (var k = 0; k < divElements.length; k++) {
-                divElements[k].style.display = "block";
-              }
-              // nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
-            }
-            // nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
-          }
-        }
-      }
-    }
-
-  }
-}
-
-function setArrowUpOrDown(element, directionStr) {
-  if (directionStr == "up") {
-    element.src = pathToArrowUpImg;
-  }
-  else {
-    element.src = pathToArrowDownImg;
-  }
-}
-
-function addOrRemoveBottomBorder(buttonElement) {
-  // check if the child-elements of button are hidden
-  // then it will be opened and the border-bottom will be added
-  var liParentElement = getFirstParentElementWithTagName(buttonElement, "LI");
-  var divParent = getFirstParentElementWithTagName(buttonElement, "DIV");
-  var imgElement = divParent.querySelector("img");
-  var firstChildUlElement = liParentElement.querySelector("ul");
-  var firstChildLiElement = firstChildUlElement.querySelector("li");
-  var firstButtonOrParagraphElement = firstChildLiElement.querySelector("button, p");
-  if (firstChildUlElement.style.display == "none" || firstChildLiElement.style.display == "none") {
-    if (divParent.id == "2") {
-      divParent.classList.add("border-bottom");
-    }
-    setArrowUpOrDown(imgElement, "up");
-    showElement(buttonElement)
-  }
-  else {
-    if (divParent.id == "2") {
-      divParent.classList.remove("border-bottom");
-    }
-    setArrowUpOrDown(imgElement, "down");
-  }
-
-}
-
-
-function closeChildLayer(element) {
-  if (element.tagName == "BUTTON" && element.id != "0") {
-    showPreviewTextOfHeading(element);
-    addOrRemoveBottomBorder(element);
-    // flipAppearanceOfBorderBottom(element);
-
-  }
-  var parentOfClickedElement = element.parentElement.parentElement.parentElement;
-  
-  hideLeftBorder(parentOfClickedElement);
-
-  var layerNumberOfClickedElement = Number(element.id);
-  var childElements = element.parentElement.parentElement.children;
-  if (layerNumberOfClickedElement > 0) {
-    element.previousElementSibling.src = pathToArrowDownImg;
-  }
-
-  var nextLayerElementsUL = Array.from(childElements).filter((element) => {return element.tagName == "UL"});
-  for (var i = 0; i < nextLayerElementsUL.length; i++) {
-    nextLayerElementsUL[i].style.display = "none";
-
-    // get the li-elements, which are childs of the ul:
-    var childsOfUL = nextLayerElementsUL[i].children;
-    var nextLayerElementsLI = Array.from(childsOfUL).filter((element, layerNumberOfClickedElement) => {
-      if (Number(element.id) > layerNumberOfClickedElement && element.tagName == "LI") {
-        return element;
-      } 
-    })
-
-    for (var j = 0; j < nextLayerElementsLI.length; j++) {
-      nextLayerElementsLI[j].style.display = "none";
-      if (nextLayerElementsLI[j].getElementsByTagName("div").length > 0) {
-        nextLayerElementsLI[j].getElementsByTagName("div")[0].style.display = "block";
-      }
-    }
-  }
-}
-
-
-function resetCriteriaCatalog() {
-  // search all HTML, which are childs of div-element with id "container-criteria-catalog-details"
-  depthFirstSearch(document.getElementById("hi"), removeMarkTagsFromText);
-  depthFirstSearch(document.getElementById("hi"), hideElementExceptForFirstLayer);
-  document.getElementById("criterias").style.display = "none";
-  document.getElementById("requirementsAndRuleExamples").style.display = "none";
-  // remove all current sticky-elements:
-  var stickyElements = document.querySelectorAll('.sticky-third-lvl');
-  for (var i = 0; i < stickyElements.length; i++) {
-    stickyElements[i].classList.remove('sticky-third-lvl');
-  }
-  var firstLevelDivs = document.getElementById("hi").querySelectorAll('div[id="0"]');
-  for (var i = 0; i < firstLevelDivs.length; i++) {
-    firstLevelDivs[i].classList.add("sticky-third-lvl");
-  }
-}
-
-var numberOfOpenElementsPerLayer = {};
-function showOrHide(event, element) {
-  // check if element if child-elements should be expoanded or collapsed
-  var childElements = element.parentElement.parentElement.children; 
-  var filteredChildElements = Array.from(childElements).filter((element) => {return element.tagName == "UL"}); 
-  if (filteredChildElements.length == 0) {
-    return;
-  }
-  if (filteredChildElements[0].style.display == "none") {
-    openChildLayer(element);
-  }
-  else {
-    closeChildLayer(element);
-  }
-
-  var foundULs = 0;
-  var foundChilds = [];
-  // var filteredChildElements = childElements.filter((element) => {return element.tagName == "UL"});
-  var firstElementSkipped = false;
-  // if the parent of the parent of the clicked element is a div, then the clicked element is
-  // a root element and its text should be displayed in grey.
-  var displayPInGray = false;
-  if (element.parentElement.parentElement.tagName == "DIV") {
-    displayPInGray = true;
-    pElements = element.getElementsByTagName("p");
-  }
-    openHeadingsForLayers();
-    if (event.stopPropagation) {
-      event.stopPropagation();   // W3C model
-    } else {
-      event.cancelBubble = true; // IE model
-    }
-}
-</script>
-<img src="{% static 'assets/images/arrow_up.svg' %}" id="hiddenImage" style="display: none;" />
-{% endblock %}
+        </section>
+        <!-- Page content END -->
+      </main>
+      <!-- **************** MAIN CONTENT END **************** -->
+       <script>
+        // initialization of global variables. These are needed inside criteriaCatalogFunctions.js
+        var idOfTopicToBeOpened = "{{ topicIdentifier }}";
+        var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
+        var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
+       </script>
+      <script src="{% static 'js/criteriaCatalogFunctions.js' %}"></script>
+      <img src="{% static 'assets/images/arrow_up.svg' %}"
+           id="hiddenImage"
+           style="display: none" />
+    {% endblock %}

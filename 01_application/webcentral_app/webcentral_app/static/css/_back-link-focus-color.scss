@@ -1,0 +1,46 @@
+.link-navigator__icon {
+    width: 8px;
+}
+.link-navigator {
+    display: flex;
+    justify-content: space-between;
+}
+.secondaryNavbarLeft a{
+    /* color: #8FDE97; */
+    font-size: 15px;
+}
+.secondaryNavbarRight a{
+    color: #000000;
+    font-size: 15px;
+    border: 2px solid #8FDE97;
+    margin: 6.5px;
+}
+.link-navigator__negative-ecological {
+    /* display: flex; */
+    /* align-items: center; */
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $ecological-color;
+    justify-content: space-between;
+}
+.link-navigator__negative-operational {
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $operational-color;
+}
+
+.link-navigator__negative-legal {
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $legal-color;
+}
+
+.link-navigator__negative-technical {
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $technical-color;
+}

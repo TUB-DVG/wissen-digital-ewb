@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # If it cant convert to int, DEBUG is set to 0, which is converted to false.
 DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-ALLOWED_HOSTS = ["85.214.114.204"]
+ALLOWED_HOSTS = ["134.94.32.53", ".kfa-juelich.de", "85.214.114.204"]
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "modeltranslation",
     "csp",
     "criteriaCatalog.apps.CriteriacatalogConfig",
+    "component_list.apps.ComponentListConfig",
+    "businessModel.apps.BusinessmodelConfig",
     "publications.apps.PublicationsConfig",
     "use_cases.apps.UseCasesConfig",
     "pages.apps.PagesConfig",
@@ -50,6 +52,8 @@ INSTALLED_APPS = [
     "keywords.apps.KeywordsConfig",
     "LastProfile.apps.LastprofileConfig",
     "Datasets.apps.DatasetsConfig",
+    "user_integration.apps.UserIntegrationConfig",
+    "data_sufficiency.apps.DataSufficiencyConfig",
     "django.contrib.humanize",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -85,6 +89,8 @@ CSP_STYLE_SRC = (
     # "'strict-dynamic'",
     "https://fonts.googleapis.com",
     "https://cdn.jsdelivr.net",
+    "https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css",
+    "https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.1.1/dist/use-bootstrap-select.min.css",
 )
 CSP_SCRIPT_SRC = (
     "'self'",
@@ -94,6 +100,11 @@ CSP_SCRIPT_SRC = (
     "https://cdn.plot.ly",
     "https://unpkg.com",
     "https://code.highcharts.com/highcharts.js",
+    "https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js",
+    "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js",
+    "https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js",
+    "https://cdn.jsdelivr.net/npm/use-bootstrap-select@2.1.1/dist/use-bootstrap-select.min.js",
     # "'sha256-jZlsGVOhUAIcH+4PVs7QuGZkthRMgvT2n0ilH6/zTM0=%'",
     "'unsafe-inline'",
     "'unsafe-eval'",
@@ -115,6 +126,7 @@ ROOT_URLCONF = "webcentral_app.urls"
 CSRF_TRUSTED_ORIGINS = [
     "https://wissen-digital-ewb.de",
     "https://www.wissen-digital-ewb.de",
+    "https://134.94.32.53",
     "https://85.214.114.204",
 ]
 
@@ -251,6 +263,7 @@ if os.environ.get("MODE") == "production":
     SECURE_CONTENT_TYPE_NOSNIFF = True
     CSRF_USE_SESSIONS = True
     SECURE_BROWSER_XSS_FILTER = True
+    loggingDir = "/home/webcentraluser/djangoLog"
 else:
     STATIC_ROOT = Path.joinpath(BASE_DIR, "static")
     STATIC_URL = "/static/"
@@ -258,9 +271,29 @@ else:
     # Media folder settings
     MEDIA_ROOT = Path.joinpath(BASE_DIR, "media")
     MEDIA_URL = "/media/"
+    loggingDir = "/webcentral/djangoLog"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": loggingDir,
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "ERROR",
+            "propagate": True,
+        },
+    },
+}
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

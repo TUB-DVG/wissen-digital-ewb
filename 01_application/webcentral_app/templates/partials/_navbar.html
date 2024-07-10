@@ -1,4 +1,5 @@
-{% load static %}  
+{% load static %}
+
 {% load i18n %}
 
 <!-- Header START -->
@@ -10,15 +11,18 @@
       <a class="navbar-brand" href="{% url 'StartSearch' %}">
         <img src="{% static 'assets/images/logo_dummy_new.svg' %}"
              alt="logo"
-             style="width:200px;">
+             style="width:200px" />
       </a>
       <!-- Logo END -->
 
       <!-- Responsive navbar toggler -->
       <button class="navbar-toggler ms-auto"
-              type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-              aria-expanded="false" aria-label="Toggle navigation">
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+              aria-controls="navbarCollapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
         <!-- menu button, when navbar is collapsed -->
         <span class="navbar-toggler-animation">
           <span></span>
@@ -35,63 +39,57 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"
                id="technicalDropdown"
-               role="button" data-bs-toggle="dropdown"
+               role="button"
+               data-bs-toggle="dropdown"
                aria-expanded="false">
               <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
-                   style="width:35px;">
-                 &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
+                   style="width:35px" />
+              &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'tool_list' %}">
+                <a class="dropdown-item" href="{% url 'tool_list' %}">
                   {% translate "Digitale Werkzeuge" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'app_list' %}">
+                <a class="dropdown-item" href="{% url 'app_list' %}">
                   {% translate "Digitale Anwendungen" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'TechnicalStandards' %}">
+                <a class="dropdown-item" href="{% url 'TechnicalStandards' %}">
                   {% translate "Technische Standards" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'weatherdata_list' %}">
+                <a class="dropdown-item" href="{% url 'weatherdata_list' %}">
                   {% translate "Wetterdaten" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'LastProfile' %}">
+                <a class="dropdown-item" href="{% url 'LastProfile' %}">
                   {% translate "Lastprofile" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'dataset_list' %}">
+                <a class="dropdown-item" href="{% url 'dataset_list' %}">
                   {% translate "Datensätze" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&focus={% translate 'technisch' %}">
+                   href="{% url 'publicationPage' %}?searched=&focus={% translate 'technisch' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
               <!-- <li>
-                <a class="dropdown-item"
-                   href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
+                <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
                   {% translate "Anwendungsfälle" %}
                 </a>
               </li> -->
@@ -102,48 +100,39 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle"
                id="operationalDropdown"
-               role="button" data-bs-toggle="dropdown"
+               role="button"
+               data-bs-toggle="dropdown"
                aria-expanded="false">
               <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
                    class="position-absolute start-0 top-50 translate-middle-y"
                    alt=""
-                   style="width:35px;">
+                   style="width:35px" />
               &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'businessModelsPractice' %}">
-                  {% translate "Geschäfts&shy;modell&shy;" %} - good-practice
+                <a class="dropdown-item" href="{% url 'businessModels' %}">
+                  {% translate "Geschäftsmodelle" %}
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'businessModelsChallenge' %}">
+              <!-- <li>
+                <a class="dropdown-item" href="{% url 'businessModelsChallenge' %}">
                   {% translate "Geschäfts&shy;modell&shy;" %} - Herausforderungen
                 </a>
               </li>
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'businessModelApplication' %}">
+                <a class="dropdown-item" href="{% url 'businessModelApplication' %}">
                   {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                 </a>
-              </li>
+              </li> -->
               <li>
-                <a class="dropdown-item"
-                   href="{% url 'userIntegrationPractice' %}">
-                  {% translate "Nutzenden&shy;perspektive" %} - good-practice
+                <a class="dropdown-item" href="{% url 'userEngagement' %}">
+                  {% translate "Nutzendenintegration" %}
                 </a>
               </li>
               <li>
                 <a class="dropdown-item"
-                   href="{% url 'userIntegrationMethod' %}">
-                  {% translate "Nutzenden&shy;perspektive" %} - {% translate "Methoden" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&focus={% translate 'betrieblich' %}">
+                   href="{% url 'publicationPage' %}?searched=&focus={% translate 'betrieblich' %}">
                   {% translate "Publikationen" %}
                 </a>
               </li>
@@ -153,110 +142,106 @@
                 </a>
               </li> -->
             </ul>
-          <!-- Nav operational focus END-->
-          <!-- Nav ecological focus START-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
-               id="ecologicalDropdown"
-               role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px;">
+            <!-- Nav operational focus END-->
+            <!-- Nav ecological focus START-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+                 id="ecologicalDropdown"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">
+                <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt=""
+                     style="width:35px" />
                 &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'environmentalIntegrityNegativ' %}">
-                  {% translate "Negative Umweltwirkungen" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'environmentalIntegrityPositiv' %}">
-                  {% translate "Positive Umweltwirkungen" %} - good-practice
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'benchmarkingChallenges' %}">
-                  {% translate "Herausforderungen" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'dataSufficiency' %}">
-                  {% translate "Datensuffizienz" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&focus={% translate 'ökologisch' %}">
-                  {% translate "Publikationen" %}
-                </a>
-              </li>
-              <!-- <li>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
+                <li>
+                  <a class="dropdown-item"
+                     href="{% url 'environmentalIntegrityNegativ' %}">
+                    {% translate "Negative Umweltwirkungen" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                     href="{% url 'environmentalIntegrityPositiv' %}">
+                    {% translate "Positive Umweltwirkungen" %} - good-practice
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'benchmarkingChallenges' %}">
+                    {% translate "Herausforderungen" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'dataSufficiency' %}">
+                    {% translate "Datensuffizienz" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                     href="{% url 'publicationPage' %}?searched=&focus={% translate 'ökologisch' %}">
+                    {% translate "Publikationen" %}
+                  </a>
+                </li>
+                <!-- <li>
                  <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'ökologisch' %}">
                   {% translate "Anwendungsfälle" %}
                 </a>
               </li> -->
-            </ul>
-          </li>
-          <!-- Nav ecological focus END -->
-          <!-- Nav legal focus START-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
-               id="legalDropdown"
-               role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px;">
+              </ul>
+            </li>
+            <!-- Nav ecological focus END -->
+            <!-- Nav legal focus START-->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+                 id="legalDropdown"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">
+                <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt=""
+                     style="width:35px" />
                 &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="legalDropdown">
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'dataSecurity' %}">
-                  {% translate "Daten&shy;schutz&shy;übersicht" %}
-                </a>
-              </li>
-              <!-- <li>
-                <a class="dropdown-item"
-                   href="{% url 'criteriaCatalog' %}">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="legalDropdown">
+                <li>
+                  <a class="dropdown-item" href="{% url 'dataSecurity' %}">
+                    {% translate "Daten&shy;schutz&shy;übersicht" %}
+                  </a>
+                </li>
+                <!-- <li>
+                <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
                   {% translate "Kriterien&shy;katalog" %}
                 </a>
               </li> -->
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'iconsAndVis' %}">
-                   {% translate "Icons und Visualisierung" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item"
-                href="{%url 'publicationPage' %}?searched=&focus={% translate 'rechtlich' %}">
-                  {% translate "Publikationen" %}
-                </a>
-              </li>
-              <!-- <li>
-                <a class="dropdown-item"
-                   href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'rechtlich' %}">
+                <li>
+                  <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
+                    {% translate "Icons und Visualisierung" %}
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                     href="{% url 'publicationPage' %}?searched=&focus={% translate 'rechtlich' %}">
+                    {% translate "Publikationen" %}
+                  </a>
+                </li>
+                <!-- <li>
+                <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'rechtlich' %}">
                   {% translate "Anwendungsfälle" %}
                 </a>
               </li> -->
-            </ul>
-          </li>
-          <!-- Nav legal focus END -->
-        </ul>
-        <!-- Nav Main menu END -->
-      </div>
-      <!-- Main navbar END -->
+              </ul>
+            </li>
+            <!-- Nav legal focus END -->
+          </ul>
+          <!-- Nav Main menu END -->
+        </div>
+        <!-- Main navbar END -->
 
-  </nav>
-<!-- Logo Nav END -->
-</header>
-<!-- Header END -->
+      </nav>
+      <!-- Logo Nav END -->
+    </header>
+    <!-- Header END -->
