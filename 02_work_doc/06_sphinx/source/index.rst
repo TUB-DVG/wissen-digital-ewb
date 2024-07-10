@@ -14,8 +14,11 @@ If you would like to do some development or host the Wissensplattform, please fi
    :caption: Contents:
 
    quickstart
+   migrations
+   contentSecurityPolicy
+   dataImportDjango
    insertLinksInDatabase
-
+   
 
 Indices and tables
 ==================
