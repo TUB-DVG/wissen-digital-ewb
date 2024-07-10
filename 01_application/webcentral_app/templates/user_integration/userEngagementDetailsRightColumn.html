@@ -1,0 +1,72 @@
+{% load static %}
+{% load i18n %}
+<style>
+    .mainContent {
+        font-size: 22px;
+        display: inline;
+    }
+    .mainContentHeading {
+        font-size: 22px;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .showMore {
+        display: inline;
+        
+        font-size: 22px;
+    }
+    .showMore a {
+        color: #8FDE97;
+    }
+    .blockOfContent{
+        margin-bottom: 54px;
+        display: block;
+    }
+</style>
+<div class="blockOfContent">
+    <div class="mainContent" id="shortDescription">
+        {{ boxObject.description }}
+    </div>
+</div>
+<div class="blockOfContent">
+    <div class="mainContentHeading">{% translate "Ziele" %}</div>
+    <div class="mainContent" id="shortDescription">{{ boxObject.goals|safe }}</div>
+</div>
+<div class="blockOfContent">
+    <div class="mainContentHeading">{% translate "Ablauf" %}</div>
+    <div class="mainContent" id="shortDescription">
+        <ol>
+            {% for procedure in boxObject.procedure.all %}
+                <li>{{ procedure.procedureItem }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+<div class="blockOfContent">
+    <div class="mainContentHeading">{% translate "Literatur" %}</div>
+    <div class="mainContent" id="shortDescription">
+        <ul>
+            {% for literatureElement in boxObject.literature.all %}
+                <li id="{{ literatureElement.linkName }}">
+                    {{ literatureElement.literature|safe }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- <div class="blockOfContent">
+    <div class="mainContentHeading">{% translate "Konkrete Ziele" %}</div>
+    <div class="mainContent" id="shortDescription">
+        {{ boxObject.specificGoals }}
+    </div>
+</div> -->
+<!-- <div class="blockOfContent">
+    <div class="mainContentHeading">{% translate "Konkreter Ablauf" %}</div>
+    <div class="mainContent" id="shortDescription">
+        <ul>
+            {% for specificProcedure in boxObject.specificProcedure.all %}
+                <li>{{ specificProcedure.specificProcedureItem }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div> -->

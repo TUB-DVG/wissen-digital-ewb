@@ -1,5 +1,4 @@
 class Locator(object):
-    
     # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
@@ -16,6 +15,10 @@ class Locator(object):
     linkToOperationalPublications = "//a[@id='linkToOperationalPublications']"
     linkToLegalPublications = "//a[@id='linkToLegalPublications']"
     linkToEcologicalPublications = "//a[@id='linkToEcologicalPublications']"
+    linkToNegativeEnviormentalImpact = "/pages/environmentalIntegrityNegativ"
+    linkToUserEgagement = "pages/userEngagement"
+    linkToOperationalDropdown = "//a[@id='operationalDropdown']"
+    operationalFocusContainer = "//div[@title='Betrieblicher Fokus']"
 
     # locators for all search-pages:
     cardLocator = "//div[@class='card-body pb-0']"
@@ -26,12 +29,11 @@ class Locator(object):
     searchSubmitButton = "//button[@id='search-submit-tools']"
     usageOnDetailPage = "//li[@class='list-inline-item h6 mb-0']"
     accessabilityParagraphTag = "//h5[contains(text(), 'Zugänglichkeit')]/p"
-    
 
     # locators on TechnicalStandards:
     linkToNormsOnTS = "//a[@id='linkToNorms']"
     linkToProtocolsOnTS = "//a[@id='linkToProtocols']"
-    
+
     # locators on NormsPage:
     searchInputNorms = "//input[@id='search-input-norms']"
 
@@ -61,15 +63,15 @@ class Locator(object):
     listInExpandedText = "//li[@class='lead']"
     showLessLink = "//a[@href='#collapseInfoTools']"
     cookieButton = "//button[@class='cookie-btn']"
-    #paginationNextLink = "//a[@id='paginationNextLink']"
-    #paginationNextLink = "//a[@id='paginationNextLink']"
-    #paginationPreviousLink = "//a[@id='paginationPreviousLink']"
-    #paginationFirstLink = "//a[@id='paginationFirstLink']"
-    #paginationLastLink = "//a[@id='paginationLastLink']"
+    # paginationNextLink = "//a[@id='paginationNextLink']"
+    # paginationNextLink = "//a[@id='paginationNextLink']"
+    # paginationPreviousLink = "//a[@id='paginationPreviousLink']"
+    # paginationFirstLink = "//a[@id='paginationFirstLink']"
+    # paginationLastLink = "//a[@id='paginationLastLink']"
 
     # locators in Business Apps:
     businessSearchField = "//input[@id='search-input-tools']"
-    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']" 
+    businessDetailsFurtherInfo = "//a[@id='furtherInfoLink']"
     businessDetailsTags = "//ul[@id='tagsUlElement']/li"
 
     # locators in loginPage
@@ -79,7 +81,8 @@ class Locator(object):
     stromlastApprLink = "//a[@href='/LastProfile/stromlast']"
     heatApproximationLink = "/LastProfile/warmelast"
     weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
-    linkToStandardLoadProdile = "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]"
+    linkToStandardLoadProdile = (
+        "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]")
 
     # locators inside stromlast-app
     selectPlaceholderCurrentApp = "//div[@class='Select-placeholder']"
@@ -108,7 +111,7 @@ class Locator(object):
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
     aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
     aboutPageImgOfTUBerlin = "/html/body/section[2]/div/div[2]/div/a[2]/img"
-    aboutPageImgOfUDK ="//img[@id='udkImage']"
+    aboutPageImgOfUDK = "//img[@id='udkImage']"
     aboutPageImgOfIOEW = "//img[@id='ioewImage']"
 
     # Admin Page locators
@@ -135,9 +138,61 @@ class Locator(object):
     publicationDetailsPageType = "list-inline-item"
 
     # CriteriaCatalog locators
-    criteriaCatalogOverviewCard1 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
-    criteriaCatalogOverviewCard2 = "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    criteriaCatalogOverviewCard1 = (
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
+    criteriaCatalogOverviewCard2 = (
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
     criteriaCatalogDetailsContentContainer = "//div[@id='hi']"
     allHorizontalLineElements = "//hr"
     fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
     collpaseEveryThingButton = "//button[@id='collapseEverythingButton']"
+
+    # locators for negative-environmental-impacts
+    contentDiv = "//div[contains(@class, 'content')]"
+    descriptionHeadingDiv = "//div[contains(@class, 'description-heading')]"
+    descriptionContentDiv = "//div[contains(@class, 'description-content')]"
+    boxesDiv = "//div[contains(@class, 'boxes')]"
+    box1 = "//div[@id='box1']"
+    box2 = "//div[@id='box2']"
+    boxHeading = "//h6[contains(@class, 'boxHeading')]"
+    boxDescription = "//p[@class='boxDescription']"
+    boxImage = "//div[@class='boxImage']"
+    imageInDiv = "//img"
+    linkToComponentsListPage = "/component_list/components"
+    linkToDataProcessingPage = "/component_list/dataProcessing"
+
+    # locators for components_list
+    secondaryNavBar = "secondaryNavbar"
+    descriptionBox = "descriptionBox"
+    descriptionHeading = "description-heading"
+    descriptionText = "description-content"
+    descriptionDownloadLink = "descriptionDownloadLink"
+    descriptionImage = "descriptionImage"
+    searchContainer = "searchContainer"
+    searchInputField = "//input[@id='search-input-']"
+    selectCategory = "//select[@id='select-category']"
+    selectComponent = "//select[@id='select-component']"
+    selectSorting = "//button[@id='dropdownMenuButton']"
+    compareContainer = "//div[@id='compareBox']"
+    selectOverview = "//select[@id='select-overview']"
+    componentListingContainer = "//div[@id='componentListingContainer']"
+    componentListElementContainer = "//div[contains(@class, 'ListElement')]"
+    paginationContainer = "paginationContainer"
+    searchSubmit = "//button[@id='search-submit-']"
+
+    # locators for Footer
+    languageSelectionField = "//select[@name='language']"
+
+    # locators for the comparison page
+    compareResultsContainer = "//div[@id='compareResultsContainer']"
+    compareButton = "//a[@id='comparisonUrlTools']"
+    # firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
+    secondComparisonDiv = "//div[@id='comparisonBarTools']"
+    headingComparisonSite = "//h1"
+    comparisonTableContainer = "//tbody"
+    backButton = "//a[@class='backLink']"
+    startComparisonDiv = "//div[@id='startComparisonButtonTools']"
+    resetComparisonDiv = "//div[@id='cancelButtonTools']"
+
+    # DetailsPage locators
+    linkNavigatorDiv = "//div[contains(@class, 'linkNavigator')]"

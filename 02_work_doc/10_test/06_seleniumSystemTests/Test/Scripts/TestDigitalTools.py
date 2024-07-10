@@ -5,6 +5,7 @@ from the outside/from a enduser perspective using selenium-webdriver.
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -12,9 +13,7 @@ import os
 import random
 
 from selenium import (
-    webdriver,
-
-)
+    webdriver, )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -26,15 +25,85 @@ from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+from Src.PageObject.Pages.SearchPage import SearchPage
+from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+
 
 class TestDigitalToolsPage(WebDriverSetup):
-    """
-    
-    """
-    def testNavigateToDigitalToolsPage(self) -> None:
-        """Navigates from norm list to digital-tools-tab.
+    """ """
 
-        """
+    TECHNICAL_COLOR_CODE = "rgba(175, 197, 255, 1)"
+
+    def _testSearchBar(self, dictOfTranslation):
+        """ """
+
+        searchInput = self.searchPartialObj.getTextInput()
+
+        self.assertEqual(
+            searchInput.get_attribute("placeholder"),
+            dictOfTranslation["searchInput"],
+            "Placeholder in search-input field is not as expected.",
+        )
+        placeholderColor = self.driver.execute_script(
+            """
+        var input = arguments[0];
+        var pseudoElement = '::placeholder';
+        var prop = 'color';
+        return window.getComputedStyle(input, pseudoElement).getPropertyValue(prop);
+        """,
+            searchInput,
+        )
+        self.assertEqual(
+            placeholderColor,
+            self.TECHNICAL_COLOR_CODE,
+            "Placeholder color of the search input field should be technical focus color.",
+        )
+
+        # get all select inputs of the search-bar:
+        surroundingDiv = self.searchPartialObj.getSearchDivContainer()
+        allSelectsInSearchBar = self.searchPartialObj.getDescendantsByTagName(
+            surroundingDiv, "select")
+
+        self.assertEqual(
+            len(allSelectsInSearchBar),
+            3,
+            "The number of select elements in the search bar of the Tools page should be 3.",
+        )
+
+        # check if a radio button is present:
+        listOfRadioButtons = self.searchPartialObj.getRadioButtons()
+        self.assertEqual(
+            len(listOfRadioButtons),
+            1,
+            "The number of radio elements in the search bar of the Tools page should be 1.",
+        )
+
+        # if the radio button is clicked, the compare buttons should appear
+        # check if the radio buttons are not present by default:
+        comparisonPageSecObj = ComparisonPageSection(self.driver)
+        startComapareDiv = comparisonPageSecObj.getStartComparisonDiv()
+        resetComparisonDiv = comparisonPageSecObj.getResetComparisonDiv()
+
+        self.assertTrue(not startComapareDiv.is_displayed())
+        self.assertTrue(not resetComparisonDiv.is_displayed())
+
+        # click the radio button:
+        listOfRadioButtons[0].click()
+
+        self.assertTrue(startComapareDiv.is_displayed())
+        self.assertTrue(resetComparisonDiv.is_displayed())
+
+        # check if the right translation is displayed:
+        descriptionTextForRadio = self.searchPartialObj.getNextSibling(
+            listOfRadioButtons[0])
+        self.assertEqual(
+            descriptionTextForRadio.text,
+            dictOfTranslation["radioDescription"],
+        )
+
+    def testNavigateToDigitalToolsPage(self) -> None:
+        """Navigates from norm list to digital-tools-tab."""
         print(os.environ["siteUnderTest"])
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
 
@@ -43,19 +112,35 @@ class TestDigitalToolsPage(WebDriverSetup):
         toolListItem = navBar.getNavToolList()
         action_chains = ActionChains(self.driver)
         action_chains.move_to_element(techItem).click(toolListItem).perform()
-        
+
         time.sleep(1)
-        
+
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
 
     def testSearchField(self) -> None:
-        """Tests the Search Function in `Digitale Anwendungen`
-        
-        """
-        self.openToolList()
+        """Tests the Search Function in `Digitale Anwendungen`"""
+        # self.openToolList()
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
 
         toolListPage = ToolListPage(self.driver)
+
+        self.searchPartialObj = SearchPage(self.driver)
+
+        # search-input field and 3 select-inputs should be present
+        # furthermore the radio button for the comparison feature should be there.
+        translationDict = {
+            "de": {
+                "searchInput": "Suchbegriff",
+                "radioDescription": "Vergleichsmodus",
+            },
+            "en": {
+                "searchInput": "search term",
+                "radioDescription": "Comparison mode",
+            },
+        }
+        self.checkInGermanAndEnglish(self._testSearchBar, translationDict)
+
         searchFieldElement = toolListPage.getSearchInputElement()
         if searchFieldElement is None:
             self.assertTrue(False)
@@ -77,25 +162,25 @@ class TestDigitalToolsPage(WebDriverSetup):
             1,
             "Number of Tool Items should be one for Search-String 'Ansys'!",
         )
-        
+
         time.sleep(1)
         searchStrBox = toolListPage.getSearchStringButton("Ansys")
         self.assertIsInstance(
-            searchStrBox, 
-            WebElement, 
+            searchStrBox,
+            WebElement,
             "Search-String Button is not present!",
         )
 
         searchStringBoxX = toolListPage.getCloseOnSearchStrButton(searchStrBox)
         self.assertIsInstance(
-            searchStrBox, 
-            WebElement, 
+            searchStrBox,
+            WebElement,
             "Search-String-X Button is not present!",
         )
 
         # breakpoint()
         toolListPage.getXOfSearchFilter().click()
-        
+
         time.sleep(1)
         listToolItemsAfterRmvdSearch = toolListPage.getListOfToolItems()
         self.assertEqual(
@@ -114,7 +199,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             12,
             "After writing 'Bim' into search-field, the number of Tool-items should be decreased!",
         )
-        
+
     def testIfShowMoreExpandsText(self):
         """Tests, if clicking `Zeige mehr` shows the whole text.
 
@@ -152,9 +237,9 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         time.sleep(1)
         showLessLink = toolListPage.getShowLessElement()
-        self.driver.execute_script("arguments[0].click();",showLessLink)
-        #time.sleep(1)
-        #showLessLink.click()
+        self.driver.execute_script("arguments[0].click();", showLessLink)
+        # time.sleep(1)
+        # showLessLink.click()
 
         time.sleep(1)
         self.assertFalse(
@@ -162,11 +247,8 @@ class TestDigitalToolsPage(WebDriverSetup):
             "List is still displayed after clicking 'show less ...'!",
         )
 
-
     def openToolList(self) -> None:
-        """Helper-method, which connects to tool-list page.
-
-        """
+        """Helper-method, which connects to tool-list page."""
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
@@ -182,9 +264,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         digitalToolsItem.click()
 
     def checkPageTitle(self, pageTitle) -> None:
-        """
-
-        """
+        """ """
         try:
             if self.driver.title == pageTitle:
                 print("WebPage loaded successfully")
@@ -196,7 +276,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         """
         This method tests the pagination of tool list
         the first page should have first and last page but no previous page.
-        Also the number of pages displayed on the first page 
+        Also the number of pages displayed on the first page
         matches the number shown on the last page
         """
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
@@ -228,7 +308,10 @@ class TestDigitalToolsPage(WebDriverSetup):
         )
         currentPageNumberElement = toolPageObj.getCurrentSearchResultNumber()
         indexPageEndNumber = currentPageNumberElement.text.split()[-1]
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", listOfLastElement[0])
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            listOfLastElement[0],
+        )
         time.sleep(1)
         listOfLastElement[0].click()
         time.sleep(1)
@@ -239,9 +322,10 @@ class TestDigitalToolsPage(WebDriverSetup):
             lastPageEndNumber,
             "Page numbers on the first and last pages should be the same",
         )
+
     def testIfToolImageErrorTextIsPresent(self):
         """Check if a tool is on the page, which has the 'tool image (if=db)'-error
-      In this test all pages of the digital-tools-tab are gone through and checked if one of the tools shows the image error 'tool image (if=db)'. If so the test is red.
+        In this test all pages of the digital-tools-tab are gone through and checked if one of the tools shows the image error 'tool image (if=db)'. If so the test is red.
         """
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         toolsPageObj = ToolListPage(self.driver)
@@ -254,25 +338,203 @@ class TestDigitalToolsPage(WebDriverSetup):
         } else {
             return null;
         }
-        """ 
+        """
         foundAltText = False
         for currentPageNumber in range(numberOfPages):
             listOfToolItemsOnCurrentPage = toolsPageObj.getListOfToolItems()
             for toolItem in listOfToolItemsOnCurrentPage:
                 try:
-                    imageOfCurrentItem = toolItem.find_element(By.XPATH, ".//img")
+                    imageOfCurrentItem = toolItem.find_element(
+                        By.XPATH, ".//img")
                 except NoSuchElementException:
                     continue
-                altTextPresent = self.driver.execute_script(script, imageOfCurrentItem)
+                altTextPresent = self.driver.execute_script(
+                    script, imageOfCurrentItem)
                 if altTextPresent:
-                    toolName = toolItem.text.split('\n')[0]
-                    print(f"Alt Text is present for Tool {toolName} instead of the image.")                
+                    toolName = toolItem.text.split("\n")[0]
+                    print(
+                        f"Alt Text is present for Tool {toolName} instead of the image."
+                    )
                     foundAltText = True
-            
+
             nextLink = toolsPageObj.getNextElementInList()
             if len(nextLink) > 0:
                 nextLink = toolsPageObj.getNextElementInList()[0]
                 self.scrollElementIntoViewAndClickIt(nextLink)
-            
-        self.assertFalse(foundAltText, "Found Alt-Text for images in Digital-Tools. Check if the image for the tool is present in the media-folder")
-        
+
+        self.assertFalse(
+            foundAltText,
+            "Found Alt-Text for images in Digital-Tools. Check if the image for the tool is present in the media-folder",
+        )
+
+    def testComparison(self):
+        """ """
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+
+        self._setLanguageToGerman()
+
+        toolsPageObj = ToolListPage(self.driver)
+        comparisonPageSection = ComparisonPageSection(self.driver)
+
+        # click the Compare-Button and check if 2 buttons appear and the checkboxes
+        # in each listing element is shown
+        firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
+        compareButton = comparisonPageSection.getDescendantsByTagName(
+            firstComparisonDiv, "h6")[0]
+        self.assertEqual(
+            compareButton.text,
+            "Vergleiche",
+            "The compare-button should be present",
+        )
+        compareButton.click()
+        secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
+        comparisonButtons = comparisonPageSection.getDescendantsByTagName(
+            secondComparisonDiv, "h6")
+        # breakpoint()
+        self.assertEqual(len(comparisonButtons), 2)
+
+        # check if the right text is displayed in the comparison-buttons
+        self.assertEqual(
+            comparisonButtons[0].text,
+            "Vergleiche",
+            "The compare-button should be present",
+        )
+        self.assertEqual(
+            comparisonButtons[1].text,
+            "Zurücksetzen",
+            "The reset-button should be present",
+        )
+
+        # check if the checkboxes are present in the listing elements
+        listOfToolItems = toolsPageObj.getListOfToolItems()
+        for toolItem in listOfToolItems:
+            checkbox = toolItem.find_element(By.XPATH, ".//input")
+            self.assertTrue(checkbox.is_displayed())
+
+        # randomly decide how many tools to compare:
+        numberOfToolsToCompare = random.randint(2, 5)
+        # randomly select the tools to compare
+        toolsToCompare = random.sample(listOfToolItems, numberOfToolsToCompare)
+        for tool in toolsToCompare:
+            tool.find_element(By.XPATH, ".//input").click()
+
+        # click the compare-button and check if the comparison-page is loaded
+        comparisonButtons[0].click()
+
+        comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
+        self.assertEqual(
+            comparisonHeading.text,
+            "Ergebnisse",
+            "The comparison-heading should be present",
+        )
+
+        comparisonTableContainer = (
+            comparisonPageSection.getComparisonTableContainer())
+
+        # check if the comparison tabel has all attributes as rows:
+        shownAttributesStr = [
+            "Attribut",
+            "Einsatzbereich",
+            "Verwendung",
+            "Lebenszyklusphase",
+            "Zielgruppe",
+            "Benutzeroberfläche",
+            "Räumliche Größenordnung der Anwendungsfälle",
+            "Zugänglichkeit",
+            "Programmiersprache (Umsetzung)",
+            "Lizenz",
+            "Entwicklungsstand - 1 : pre-Alpha - 2 : Alpha - 3 : Beta - 4 : Release Canidate - 5 : Released ",
+            "Veröffentlichungsjahr",
+            "Letztes Update",
+        ]
+
+        for attributeStr in shownAttributesStr:
+            self.assertTrue(attributeStr in comparisonTableContainer.text)
+
+        # check if a back button is present:
+        backButton = comparisonPageSection.getBackButton()
+        self.assertEqual(backButton.text, "Zurück zu den digitalen Werkzeugen")
+        # check if the color is the tool-color and the font-size is small:
+        self.assertEqual(
+            backButton.value_of_css_property("color"),
+            self.TECHNICAL_COLOR_CODE,
+            "The color of the back-button should be the technical-focus-color",
+        )
+        self.assertEqual(
+            backButton.value_of_css_property("font-size"),
+            "15px",
+            "The font-size of the back-button should be 14px",
+        )
+        siblingElement = comparisonPageSection.getPreviousSiblingOfTagName(
+            backButton, "img")
+        self.assertIsNotNone(siblingElement)
+        # no alt text should be present, because the image is loaded successfully:
+        self.assertTrue(siblingElement.text == "")
+
+        # check if the back button redirects to the tool-list page:
+        backButton.click()
+
+        self.assertTrue("/tool_list/" in self.driver.current_url)
+
+        # check if all the row-attribute names are translated:
+        self._setLanguageToEnglish()
+
+        comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
+        self.assertEqual(
+            comparisonHeading.text,
+            "Results",
+            "The comparison-heading should be present",
+        )
+
+        shownAttributesStr = [
+            "Attribute",
+            "Area of application",
+            "Usage",
+            "Life cycle phase",
+            "Target group",
+            "User interface",
+            "Spatial Scale of Use Cases",
+            "Accessibility",
+            "Programming language (Implementation)",
+            "License",
+            "Level of development  - 1: pre-Alpha - 2: Alpha - 3: Beta - 4: Release Candidate - 5: Released",
+            "Year of publication",
+            "Last update",
+        ]
+        comparisonTableContainer = (
+            comparisonPageSection.getComparisonTableContainer())
+
+        for attributeStr in shownAttributesStr:
+            self.assertTrue(
+                attributeStr in comparisonTableContainer.text,
+                f"Attribute {attributeStr} is not present in the comparison table",
+            )
+
+        # check if the buttons are translated to english
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+
+        self._setLanguageToEnglish()
+        firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
+        compareButton = comparisonPageSection.getDescendantsByTagName(
+            firstComparisonDiv, "h6")[0]
+        self.assertEqual(
+            compareButton.text,
+            "Compare",
+            "The compare-button should be present",
+        )
+        compareButton.click()
+        secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
+        comparisonButtons = comparisonPageSection.getDescendantsByTagName(
+            secondComparisonDiv, "h6")
+
+        self.assertEqual(len(comparisonButtons), 2)
+        self.assertEqual(
+            comparisonButtons[0].text,
+            "Compare",
+            "The compare-button should be present",
+        )
+        self.assertEqual(
+            comparisonButtons[1].text,
+            "Reset to default",
+            "The reset-button should be present",
+        )

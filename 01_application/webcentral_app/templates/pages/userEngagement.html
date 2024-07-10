@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+    {% translate "Nutzendenintegration" %}
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="content container">
+        <div class="row">{% include "partials/descriptionContainer.html" %}</div>
+        <div class="boxes" id="container-start-focus">
+            {% include "common/fourBoxesContainer.html" %}
+        </div>
+    </div>
+    <!-- Content END -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all <a> tags
+            var links = document.querySelectorAll('a');
+            
+            // Loop through each <a> tag and add the class
+            links.forEach(function(link) {
+                link.classList.add('{{ focusBorder }}-font-color');
+            });
+        });
+    </script>
+{% endblock %}
