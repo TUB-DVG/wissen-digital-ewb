@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über die Use Cases{% endblock %}
-{% block content %}
 {% load i18n %}
+{% block title %}{% translate "Überblick über die Use Cases" %}{% endblock %}
+{% block content %}
 {% load static %}
 {% load plotly_dash %}
 <!DOCTYPE html>
@@ -53,7 +53,7 @@
       <!-- Plotly chart END -->
 
       <!-- Filter bar START -->
-      {% include "common/search-bar.html" %}
+      {% include "partials/search-bar.html" %}
       <!-- Row END -->
       <!-- Filter bar END -->
       <!-- search tags START -->

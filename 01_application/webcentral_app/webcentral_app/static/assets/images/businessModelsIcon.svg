@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icons" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path d="M12.34547,13.50927s3.34694-2.01363,3.7407-2.20541,1.18127-.57532,1.67347,0,.15141,1.22481-.33145,1.68786c0,0-4.59883,3.67225-5.48949,4.23958-.47918,.30523-1.00333,.45827-1.5432,.33464l-3.49436-.60256c-.52012-.08969-1.0552,.03319-1.47942,.33973l-.9644,.69689-2.45731-2.97273,2.73425-2.30974c.85118-.78131,2.00017-1.2219,3.5752-.83835l3.02064,.52433c.63239,.23704,1.24882,.82263,.92742,1.61765-.23316,.57676-.89395,.87399-1.50051,.70106l-3.34245-.51637" style="fill: none; fill-rule: evenodd; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+  <g>
+    <path d="M13.71812,7.98719c-.49404,.62613-1.17365,1.01281-1.92382,1.01281-1.51015,0-2.73438-1.567-2.73438-3.5s1.22422-3.5,2.73438-3.5c.75017,0,1.42978,.38667,1.92382,1.01281" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.1px;"/>
+    <g>
+      <line x1="7.96747" y1="6.61172" x2="11.46747" y2="6.61172" style="fill: #fff; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 1.1px;"/>
+      <line x1="7.96747" y1="4.38828" x2="11.46747" y2="4.38828" style="fill: #fff; stroke: #000; stroke-linecap: round; stroke-miterlimit: 10; stroke-width: 1.1px;"/>
+    </g>
+  </g>
+</svg>

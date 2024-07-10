@@ -6,6 +6,7 @@ https://wissen-digital-ewb.de/tool_list/buisnessApps/.
 
 """
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -13,9 +14,7 @@ import os
 import random
 
 from selenium import (
-    webdriver,
-
-)
+    webdriver, )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -29,30 +28,36 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.BusinessAppPage import BusinessAppPage
+from Src.PageObject.Pages.SearchPage import SearchPage
+
 
 class TestBusinessAppPage(WebDriverSetup):
-    """
-    
-    """
-    def testCardsPresentOnVisit(self):
-        """Test if the number of Business-Apps, shown in Cards is greater than 0.
-        
-        """
+    """ """
 
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+    def testSearchBar(self):
+        """Test if the Search-Bar looks and acts as expected."""
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
+
+        searchBarObj = SearchPage(self.driver)
+
+    def testCardsPresentOnVisit(self):
+        """Test if the number of Business-Apps, shown in Cards is greater than 0."""
+
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         businessAppObj = BusinessAppPage(self.driver)
-        
+
         self.assertGreater(
             len(businessAppObj.getCards()),
             0,
             "The Number of Business-Apps should be greater than 0...",
         )
-    
+
     def testSearchField(self):
-        """Enter 'BIEC' into the searchField and check if 2 or more results are present.
-        
-        """
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        """Enter 'BIEC' into the searchField and check if 2 or more results are present."""
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         businessAppObj = BusinessAppPage(self.driver)
 
         searchInput = businessAppObj.getSearchField()
@@ -66,19 +71,19 @@ class TestBusinessAppPage(WebDriverSetup):
             "The Number of Results for 'BIEC' should be 2...",
         )
 
-
-    
     def testIfDetailSiteIsShown(self):
-        """Test, if on click on a Card, the Detail-Site is displayed.
-        
-        """
+        """Test, if on click on a Card, the Detail-Site is displayed."""
 
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         businessAppObj = BusinessAppPage(self.driver)
 
         randomCard = random.choice(businessAppObj.getCards())
         cardName = randomCard.text.split("\n")[0]
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            randomCard,
+        )
         time.sleep(1)
         randomCard.click()
 
@@ -89,14 +94,16 @@ class TestBusinessAppPage(WebDriverSetup):
         )
 
     def testTagOnDetailPage(self):
-        """
-        
-        """
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/buisnessApps/")
+        """ """
+        self.driver.get(os.environ["siteUnderTest"] +
+                        "/tool_list/buisnessApps/")
         businessAppObj = BusinessAppPage(self.driver)
 
         randomCard = random.choice(businessAppObj.getCards())
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            randomCard,
+        )
 
         time.sleep(2)
         randomCard.click()
@@ -105,13 +112,16 @@ class TestBusinessAppPage(WebDriverSetup):
         for tag in tagElements:
             if tag.text == "":
                 tagElements.remove(tag)
-        
+
         randomTag = random.choice(tagElements)
 
         tagText = randomTag.text
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomTag)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            randomTag,
+        )
         time.sleep(1)
-        
+
         randomTag.click()
 
         time.sleep(1)
