@@ -46,6 +46,7 @@ dependencies = [
     "django-extensions==3.1.5",
     "SQLAlchemy==2.0.10",
     "uwsgi>=2.0.19.1,<2.1",
+    "openpyxl", 
 ]
 
 # root folder of the python/django not found automatically

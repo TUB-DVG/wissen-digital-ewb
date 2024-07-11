@@ -54,9 +54,9 @@ from encodings import utf_8
 import os
 import math
 
-from django.apps import apps
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import Model
+from django.conf import settings
 import numpy as np
 import pandas as pd
 
@@ -1950,6 +1950,18 @@ class Command(BaseCommand):
         data = df.values.tolist()
         return header, data
 
+    def _checkIfInInstalledApps(self, type_of_data):
+        """Check if user given argument `type_of_data` matches 
+        one of the installed apps. If it does, check if a `data_import`-module
+        is present in that app.
+        """
+        installed_django_apps = settings.INSTALLED_APPS
+        app_names = [app.split('.')[0] for app in installed_django_apps]
+        if type_of_data in app_names:
+            if importlib.util.find_spec(type_of_data + ".data_import") is not None:
+                return
+        raise CommandError("specified type_of_data has no corresponding app or has no data_import.py in the app.")
+        
     def handle(
         self,
         *args: tuple,
@@ -1968,6 +1980,8 @@ class Command(BaseCommand):
         Returns:
         None
         """
+        type_of_data = options["type_of_data"][0]
+        self._checkIfInInstalledApps(type_of_data)
 
         pathFile = options["pathCSV"][0]
         if pathFile.endswith(".csv"):
@@ -1975,9 +1989,8 @@ class Command(BaseCommand):
         elif pathFile.endswith(".xlsx"):
             header, data = self.readExcel(pathFile)
         else:
-            CommandError(
+            raise CommandError(
                 "Invalid file format. Please provide a .csv or .xlsx file.")
-            return None
         pathStr, filename = os.path.split(pathFile)
         self.filename = filename
         self.targetFolder = options["targetFolder"][0]
@@ -2012,11 +2025,9 @@ class Command(BaseCommand):
             elif "userIntegration" in filename:
                 self.getOrCreateUserIntegration(row, header)
             else:
-                CommandError(
+                raise CommandError(
                     "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
                 )
-                return None
-        # self.stdout.write(self.style.SUCCESS('Successfully executed command'))
 
     def _processListInput(self, inputStr):
         """Process a cell, which includes a list of elements"""
@@ -2158,5 +2169,7 @@ class Command(BaseCommand):
         Returns:
         None
         """
+        parser.add_argument("type_of_data", nargs="+", type=str)
+
         parser.add_argument("pathCSV", nargs="+", type=str)
         parser.add_argument("targetFolder", nargs="+", type=str)
