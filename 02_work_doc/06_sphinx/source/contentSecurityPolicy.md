@@ -1,5 +1,4 @@
-Content security policy (CSP)
------------------------------
+# Content security policy (CSP)
 The CSP is a security feature that helps prevent cross-site scripting (XSS), clickjacking, and other code injection attacks resulting from execution of malicious content in the trusted web page context.
 One way to implement CSP is to add a Content-Security-Policy HTTP header to your web server responses. The header value is a string that defines the policy. The policy is a set of directives that specify the content sources that the browser should consider acceptable for the web page. The browser will only execute or render resources from those sources.
 For example, the following CSP header specifies that the browser should only load resources from the same origin as the web page, and should not execute inline scripts or styles.
