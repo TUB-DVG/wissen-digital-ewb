@@ -102,5 +102,5 @@ class TestTools(TestCase):
                         "Tools",
                         "TestTools.xlsx"
                     )
-                self.assertIn("Data import into Tools was successfull.", mock_stdout.get_value())
+                self.assertIn("Data import into Tools was successful.", mock_stdout.get_value())
 
