@@ -51,6 +51,7 @@ import csv
 from datetime import datetime, timedelta
 import difflib
 from encodings import utf_8
+import importlib
 import os
 import math
 
@@ -1959,7 +1960,7 @@ class Command(BaseCommand):
         app_names = [app.split('.')[0] for app in installed_django_apps]
         if type_of_data in app_names:
             if importlib.util.find_spec(type_of_data + ".data_import") is not None:
-                return
+                return importlib.import_module(type_of_data + ".data_import")
         raise CommandError("specified type_of_data has no corresponding app or has no data_import.py in the app.")
         
     def handle(
@@ -1980,10 +1981,17 @@ class Command(BaseCommand):
         Returns:
         None
         """
-        type_of_data = options["type_of_data"][0]
-        self._checkIfInInstalledApps(type_of_data)
+        file_path_to_data = options["pathCSV"][0]
 
-        pathFile = options["pathCSV"][0]
+        type_of_data = options["type_of_data"][0]
+        data_import_module = self._checkIfInInstalledApps(type_of_data)
+        
+        # instanciate the app-specific data_import class:
+        app_data_import_obj = data_import_module.DataImportApp(file_path_to_data)
+        
+                
+
+       
         if pathFile.endswith(".csv"):
             header, data = self.readCSV(pathFile)
         elif pathFile.endswith(".xlsx"):
