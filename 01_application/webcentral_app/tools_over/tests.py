@@ -105,11 +105,22 @@ class TestTools(TestCase):
         with NamedTemporaryFile(prefix="TestTools", suffix=".xlsx", delete=True) as tmp:
             df_german.to_excel(tmp.name, sheet_name="German", index=False)
             df_english.to_excel(tmp.name, sheet_name="English", index=False)
-            # with self.assertRaises(CommandError) as context:
+            
             call_command(
                 "data_import",
-                "Tools",
-                "TestTools.xlsx"
+                "tools_over",
+                "TestTools.xlsx",
+                ".",
             )
-                # self.assertIn("Data import into Tools was successful.", mock_stdout.get_value())
+        
+        # check if the tool was imported
+        # english translation should also be imported
+        imported_tool = Tools.objects.get(name_de=df_german["name"])
+        self.assertEqual(
+            imported_tool.shortDescription_de, df_german["shortDescription"], "German version of short description is not as expected."
+        )
+        self.assertEqual(
+            imported_tool.shortDescription_en, df_english["shortDescription"], "English version of short description is not as expected."
+        )
+
 
