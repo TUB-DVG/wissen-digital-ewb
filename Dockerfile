@@ -38,4 +38,4 @@ WORKDIR /webcentral/
 RUN mkdir 01_application
 COPY pyproject.toml README.md .
 
-RUN pip install --upgrade pip && pip install -e "." --no-cache-dir
+RUN pip install --upgrade pip && pip install -e ".[test]" --no-cache-dir
