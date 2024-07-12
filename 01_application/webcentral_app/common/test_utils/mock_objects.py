@@ -1,5 +1,8 @@
 import pandas as pd
 
+from tempfile import NamedTemporaryFile
+
+
 def mock_excel_file():
     data_german = {
         "name": ["Sensormodul"],
@@ -16,7 +19,7 @@ def mock_excel_file():
         "frameworksLibraries": ["TensorFlow, Keras"],
         "databaseSystem": ["MySQL, MongoDB"],
         "classification": ["Sensorik"],
-        "focus": ["Umweltüberwachung"],
+        "focus": ["technisch, betrieblich"],
         "scale": ["Groß"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Online verfügbar"],
@@ -25,10 +28,10 @@ def mock_excel_file():
         "furtherInformation": ["Weitere Details auf der Website"],
         "alternatives": ["Sensormodul B"],
         "specificApplication": ["CO2-Messung"],
-        "released": ["Ja"],
-        "releasedPlanned": ["Nein"],
+        "released": ["1"],
+        "releasedPlanned": ["0"],
         "yearOfRelease": ["2024"],
-        "developmentState": ["Produktiv"],
+        "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
         "technicalStandardsProtocols": ["HTTP, MQTT"],
         "image": ["sensor_image.png"]
@@ -53,7 +56,7 @@ def mock_excel_file():
         "frameworksLibraries": ["TensorFlow, Keras"],
         "databaseSystem": ["MySQL, MongoDB"],
         "classification": ["Sensors"],
-        "focus": ["Environmental Monitoring"],
+        "focus": ["technisch, betrieblich"],
         "scale": ["Large"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Available Online"],
@@ -62,10 +65,10 @@ def mock_excel_file():
         "furtherInformation": ["More details on the website"],
         "alternatives": ["Sensor Module B"],
         "specificApplication": ["CO2 Measurement"],
-        "released": ["Yes"],
-        "releasedPlanned": ["No"],
+        "released": ["1"],
+        "releasedPlanned": ["0"],
         "yearOfRelease": ["2024"],
-        "developmentState": ["Productive"],
+        "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
         "technicalStandardsProtocols": ["HTTP, MQTT"],
         "image": ["sensor_image.png"]
@@ -73,5 +76,11 @@ def mock_excel_file():
 
     # Create DataFrame for English data
     df_english = pd.DataFrame(data_english)
+    
+    tempfileObj = NamedTemporaryFile(prefix="TestTools", suffix=".xlsx", delete=True)
+    with pd.ExcelWriter(tempfileObj.name, engine='xlsxwriter') as writer:
+        df_german.to_excel(writer, sheet_name="German", index=False)
+        df_english.to_excel(writer, sheet_name="English", index=False)   
 
-    return df_german, df_english
+
+    return tempfileObj

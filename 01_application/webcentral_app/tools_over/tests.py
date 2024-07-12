@@ -1,4 +1,3 @@
-from tempfile import NamedTemporaryFile
 from io import StringIO
 
 from django.test import TestCase
@@ -9,109 +8,45 @@ from django.core.management import (
 )
 import pandas as pd
 
+from common.test_utils.mock_objects import mock_excel_file
+from .data_import import DataImportApp
+from .models import Tools
+
+class TestToolsDataImport(TestCase):
+    """
+
+    """
+    
+    def test_import_of_english_translation(self):
+        #create test-data
+        file_obj_excel = mock_excel_file() 
+        data_import_app = DataImportApp(file_obj_excel.name)
+
+        header, data = data_import_app.load()
+        data_import_app.importList(header, data)
+        
+        imported_tools_obj = Tools.objects.get(name=data[0][header.index("name")])
+        
+        # check if the english translation was imported:
+        self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name_en")])
+
+
+
 class TestTools(TestCase):
-#     @classmethod
-#     def setUpClass(cls):
-#         super().setUpClass()
-#         # Perform migrations only once for all tests in this class
-#         call_command(
-#             "migrate",
-#             "tools_over",
-#         )
-#         call_command(
-#             "migrate",
-#         )
-
-
+    
     @patch("sys.stdout", new_callable=StringIO)
     @patch("sys.stderr", new_callable=StringIO)
     def testCallDataImportForTools(self, mock_stderr, mock_stdout):
         """Check if data-import can be called for data of tools
         data-import-functionality.
         """
-        data_german = {
-            "name": ["Sensormodul"],
-            "resources": ["Dokumentation, API"],
-            "shortDescription": ["Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."],
-            "applicationArea": ["Industrie, Umweltüberwachung"],
-            "provider": ["Technologie AG"],
-            "usage": ["Messung und Überwachung"],
-            "lifeCyclePhase": ["Nutzung"],
-            "targetGroup": ["Ingenieure, Wissenschaftler"],
-            "userInterface": ["Webschnittstelle, App"],
-            "userInterfaceNotes": ["Benutzerfreundliche Oberfläche"],
-            "programmingLanguages": ["Python, Java"],
-            "frameworksLibraries": ["TensorFlow, Keras"],
-            "databaseSystem": ["MySQL, MongoDB"],
-            "classification": ["Sensorik"],
-            "focus": ["Umweltüberwachung"],
-            "scale": ["Groß"],
-            "lastUpdate": ["2024-07-11"],
-            "accessibility": ["Online verfügbar"],
-            "license": ["GPLv3"],
-            "licenseNotes": ["Freie Nutzung unter GPLv3"],
-            "furtherInformation": ["Weitere Details auf der Website"],
-            "alternatives": ["Sensormodul B"],
-            "specificApplication": ["CO2-Messung"],
-            "released": ["Ja"],
-            "releasedPlanned": ["Nein"],
-            "yearOfRelease": ["2024"],
-            "developmentState": ["Produktiv"],
-            "technicalStandardsNorms": ["ISO 9001"],
-            "technicalStandardsProtocols": ["HTTP, MQTT"],
-            "image": ["sensor_image.png"]
-        }
-
-        # Create DataFrame for German data
-        df_german = pd.DataFrame(data_german)
-
-        # Define the corresponding data in English
-        data_english = {
-            "name": ["Sensor Module"],
-            "resources": ["Documentation, API"],
-            "shortDescription": ["An advanced sensor module for capturing environmental parameters."],
-            "applicationArea": ["Industry, Environmental Monitoring"],
-            "provider": ["Technology Inc."],
-            "usage": ["Measurement and Monitoring"],
-            "lifeCyclePhase": ["Usage"],
-            "targetGroup": ["Engineers, Scientists"],
-            "userInterface": ["Web Interface, App"],
-            "userInterfaceNotes": ["User-friendly interface"],
-            "programmingLanguages": ["Python, Java"],
-            "frameworksLibraries": ["TensorFlow, Keras"],
-            "databaseSystem": ["MySQL, MongoDB"],
-            "classification": ["Sensors"],
-            "focus": ["Environmental Monitoring"],
-            "scale": ["Large"],
-            "lastUpdate": ["2024-07-11"],
-            "accessibility": ["Available Online"],
-            "license": ["GPLv3"],
-            "licenseNotes": ["Free use under GPLv3"],
-            "furtherInformation": ["More details on the website"],
-            "alternatives": ["Sensor Module B"],
-            "specificApplication": ["CO2 Measurement"],
-            "released": ["Yes"],
-            "releasedPlanned": ["No"],
-            "yearOfRelease": ["2024"],
-            "developmentState": ["Productive"],
-            "technicalStandardsNorms": ["ISO 9001"],
-            "technicalStandardsProtocols": ["HTTP, MQTT"],
-            "image": ["sensor_image.png"]
-        }
-
-        # Create DataFrame for English data
-        df_english = pd.DataFrame(data_english)
-
-        with NamedTemporaryFile(prefix="TestTools", suffix=".xlsx", delete=True) as tmp:
-            df_german.to_excel(tmp.name, sheet_name="German", index=False)
-            df_english.to_excel(tmp.name, sheet_name="English", index=False)
-            
-            call_command(
-                "data_import",
-                "tools_over",
-                "TestTools.xlsx",
-                ".",
-            )
+        test_tool_obj = mock_excel_file()    
+        call_command(
+            "data_import",
+            "tools_over",
+            test_tool_obj.name,
+            ".",
+        )
         
         # check if the tool was imported
         # english translation should also be imported
@@ -122,5 +57,6 @@ class TestTools(TestCase):
         self.assertEqual(
             imported_tool.shortDescription_en, df_english["shortDescription"], "English version of short description is not as expected."
         )
+
 
 

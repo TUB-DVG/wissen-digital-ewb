@@ -1,7 +1,63 @@
+
+from datetime import (
+        datetime,
+        timedelta,
+)
+import pandas as pd
+
 from common.data_import import DataImport
+from .models import (
+    ApplicationArea,
+    Classification,
+    Focus,
+    Usage,
+    TargetGroup,
+    LifeCyclePhase,
+    UserInterface,
+    Accessibility,
+    Scale,
+    Tools,
+)
+from TechnicalStandards.models import (
+        Norm,
+        Protocol,
+)
+from project_listing.models import Subproject
 
 class DataImportApp(DataImport):
     
+    MAPPING_EXCEL_DB_EN = {
+        "name_en": "name_en",
+        "shortDescription_en": "shortDescription_en",
+        # "resources_en": "resources_en",
+        # "applicationArea_en": "applicationArea_en",
+        # "provider_en": "provider_en",
+        # "usage_en": "usage_en",
+        # "lifeCyclePhase_en": "lifeCyclePhase_en",
+        # "targetGroup_en": "targetGroup_en",
+        # "userInterface_en": "userInterface_en",
+        # "userInterfaceNotes_en": "userInterfaceNotes_en",
+        # "programmingLanguages_en": "programmingLanguages_en",
+        # "frameworksLibraries_en": "frameworksLibraries_en",
+        # "databaseSystem_en": "databaseSystem_en",
+        # "classification_en": "classification_en",
+        # "focus_en": "focus_en",
+        # "scale_en": "scale_en",
+        # "lastUpdate_en": "lastUpdate_en",
+        # "accessibility_en": "accessibility_en",
+        # "license_en": "license_en",
+        # "licenseNotes_en": "licenseNotes_en",
+        # "furtherInformation_en": "furtherInformation_en",
+        # "alternatives_en": "alternatives_en",
+        # "specificApplication_en": "specificApplication_en",
+        # "released_en": "released_en",
+        # "releasedPlanned_en": "releasedPlanned_en",
+        # "yearOfRelease_en": "yearOfRelease_en",
+        # "developmentState_en": "developmentState_en",
+        # "technicalStandardsNorms_en": "technicalStandardsNorms_en",
+        # "technicalStandardsProtocols_en": "technicalStandardsProtocols_en",
+        # "image_en": "image_en",
+    }
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -14,6 +70,22 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
 
+
+    def importList(self, header, data) -> None:
+        """Iterate over the list of databases-tuples and call 
+        `getOrCreate()` on each of them.
+
+        header: list
+            list of heaser strings from imported file.
+        data:   list
+            list of database tuples.
+
+        returns:
+            None
+        """
+
+        for row in data:
+            obj, created = self.getOrCreate(row, header)
 
     def getOrCreate(
         self,
@@ -156,7 +228,7 @@ class DataImportApp(DataImport):
         frameworksLibraries = row[header.index("frameworksLibraries")]
         databaseSystem = row[header.index("databaseSystem")]
         resources = row[header.index("resources")]
-
+        # breakpoint()
         focusElements = Focus.objects.filter(focus__in=focusList)
         classificationElements = Classification.objects.filter(
             classification__in=classificationList)
@@ -224,6 +296,8 @@ class DataImportApp(DataImport):
             obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
             obj.technicalStandardsProtocols.add(
                 *technicalStandardsProtocolsElements)
+            for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
+                setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
             obj.save()
 
         return obj, created
