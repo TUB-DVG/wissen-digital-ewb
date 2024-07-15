@@ -17,19 +17,20 @@ release = "0.0.1"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-sys.path.append(
-    "/home/tobias/Aufgaben/07_dockerWithDB/webcentral/01_application/webcentral_app",
-)
+
+# )
 # sys.path.append(
 #     "/home/tobias/Aufgaben/07_dockerWithDB/webcentral/01_application/webcentral_app/webcentral_app/",
 # )
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webcentral_app.settings")
-from django.conf import settings
-import django
-
-django.setup()
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "webcentral_app.settings")
+# from django.conf import settings
+# import django
+#
+# django.setup()
 extensions = [
     # "sphinx.ext.autodoc",
+    "myst_parser",
+    "sphinxcontrib.mermaid",
     "sphinx.ext.napoleon",
 ]
 
