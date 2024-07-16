@@ -18,7 +18,7 @@ If you would like to do some development or host the Wissensplattform, please fi
    contentSecurityPolicy
    dataImportDjango
    insertLinksInDatabase
-   
+   templateStructure
 
 Indices and tables
 ==================
