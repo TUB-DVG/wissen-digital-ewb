@@ -7,15 +7,24 @@ from criteriaCatalog.models import (
 # Create your tests here.
 class AutomaticDataImport(TestCase):
     
-    def testLoadExcelFile(self):
+    # def testLoadExcelFile(self):
+    #     """
+    #     """
+    #     # breakpoint()
+    #     management.call_command('data_import', '../../02_work_doc/01_daten/08_criteriaCatalog/Tabelle_Wissensplattform_criteriaCatalog_Personalisierung.xlsx', "tests/data")
+    #
+    #     self.assertEqual(CriteriaCatalog.objects.count(), 1)
+    #     self.assertTrue(CriteriaCatalog.objects.filter(name="Profilbildung und Personalisierung").exists())
+    #
+    #     self.assertGreater(Topic.objects.count(), 0)
+    #     self.assertTrue(Topic.objects.filter(text="Spezifikation der Datenkategorien").parentId.id == 1)
+    #     self.assertTrue(Topic.objects.filter(text="Personenbezug der Daten").parentId.id == None)
+    #
+    def testLoadBetriebsoptimierung(self):
+        """Test if the import of the `Betrieb and Betriebsoptimierung`-excel file 
+        is working as expected.
         """
-        """
-        # breakpoint()
-        management.call_command('data_import', '../../02_work_doc/01_daten/08_criteriaCatalog/Tabelle_Wissensplattform_criteriaCatalog_Personalisierung.xlsx', "tests/data")
 
-        self.assertEqual(CriteriaCatalog.objects.count(), 1)
-        self.assertTrue(CriteriaCatalog.objects.filter(name="Profilbildung und Personalisierung").exists())
+        management.call_command("data_import", "criteriaCatalog", "../../02_work_doc/01_daten/08_criteriaCatalog/16_07_2024_criteriaCatalog_Betriebsoptimierung.xlsx", "tests/data")
 
-        self.assertGreater(Topic.objects.count(), 0)
-        self.assertTrue(Topic.objects.filter(text="Spezifikation der Datenkategorien").parentId.id == 1)
-        self.assertTrue(Topic.objects.filter(text="Personenbezug der Daten").parentId.id == None)
+        self.assertEqual(len(Topic.objects.filter(criteriaCatalog__name__icontains="Betrieb und Betriebsoptimierung")), 211, f"Number of topics of type Betribsoptimierung should be 210 but is {len(Topic.objects.filter(criteriaCatalog__name__icontains='Betrieb und Betriebsoptimierung'))}")

@@ -10,6 +10,22 @@ class DataImport:
         """
         self.path_to_file = path_to_data_file
 
+    def importList(self, header, data) -> None:
+        """Iterate over the list of databases-tuples and call 
+        `getOrCreate()` on each of them.
+
+        header: list
+            list of heaser strings from imported file.
+        data:   list
+            list of database tuples.
+
+        returns:
+            None
+        """
+
+        for row in data:
+            self.getOrCreate(row, header, data)
+
     def load(self):
         """load csv/excel-file
 
@@ -44,10 +60,12 @@ class DataImport:
         """
         try:
             dfGermanEnglish = pd.read_excel(self.path_to_file, sheet_name=["German", "English"])
+            germanEnglish = True
         except:
             df = pd.read_excel(self.path_to_file)
+            germanEnglish = False
         
-        if dfGermanEnglish is not None:
+        if germanEnglish:
             if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(dfGermanEnglish["German"].columns):
                     if german_column == dfGermanEnglish["English"].columns[index]:
@@ -58,7 +76,9 @@ class DataImport:
                 print("German and english sheets dont have the same number of rows. Only using the german elements and skipping the translation.")
                 df_concatenated = dfGermanEnglish["German"]
 
-        
+        else:
+            df_concatenated = df
+
         df = df_concatenated.fillna("")
         header = list(df.columns)
         data = df.values.tolist()

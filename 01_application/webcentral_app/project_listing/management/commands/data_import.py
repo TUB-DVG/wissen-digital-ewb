@@ -1981,62 +1981,63 @@ class Command(BaseCommand):
         Returns:
         None
         """
-        file_path_to_data = options["pathCSV"][0]
+        filePathToData = options["pathCSV"][0]
 
         type_of_data = options["type_of_data"][0]
         data_import_module = self._checkIfInInstalledApps(type_of_data)
         
         # instanciate the app-specific data_import class:
-        app_data_import_obj = data_import_module.DataImportApp(file_path_to_data)
+        app_data_import_obj = data_import_module.DataImportApp(filePathToData)
         
                 
 
        
-        if pathFile.endswith(".csv"):
-            header, data = self.readCSV(pathFile)
-        elif pathFile.endswith(".xlsx"):
-            header, data = self.readExcel(pathFile)
-        else:
-            raise CommandError(
-                "Invalid file format. Please provide a .csv or .xlsx file.")
-        pathStr, filename = os.path.split(pathFile)
-        self.filename = filename
+
+        # elif filePathToData.endswith(".xlsx"):
+        #     header, data = self.readExcel(filePathToData)
+        # else:
+        #     raise CommandError(
+        #         "Invalid file format. Please provide a .csv or .xlsx file.")
+        # pathStr, filename = os.path.split(filePathToData)
+        # self.filename = filename
         self.targetFolder = options["targetFolder"][0]
 
-        # header, data = self.readCSV(pathCSV)
-        for row in data:
-            if "modulzuordnung" in filename:
-                self.addOrUpdateRowSubproject(row, header, "modul")
-            elif "enargus" in filename:
-                self.addOrUpdateRowSubproject(row, header, "enargus")
-            elif "tool" in filename or "Tool" in filename:
-                self.addOrUpdateRowSubproject(row, header, "tools")
-            elif "schlagwoerter" in filename:
-                self.addOrUpdateRowSubproject(row, header,
-                                              "schlagwortregister")
-            elif "weatherdata" in filename:
-                self.getOrCreateWeatherdata(row, header)
-            elif "publications" in filename:
-                self.getOrCreatePublications(row, header)
-            elif "use_cases" in filename:
-                self.getOrCreateUseCases(row, header)
-            elif "criteriaCatalog" in filename:
-                self.getOrCreateCriteriaCatalog(row, header, data)
-            elif "component" in filename:
-                self.getOrCreateComponent(row, header)
-            elif "environmentalImpact" in filename:
-                self.getOrCreateEnvironmentalImpact(row, header)
-            elif "DataSufficiency" in filename:
-                self.getOrCreateDataSufficiency(row, header)
-            elif "businessModels" in filename:
-                self.getOrCreateBusinessModel(row, header)
-            elif "userIntegration" in filename:
-                self.getOrCreateUserIntegration(row, header)
-            else:
-                raise CommandError(
-                    "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
-                )
 
+        appDataImportObj = data_import_module.DataImportApp(filePathToData)
+        header, data = appDataImportObj.load()
+        appDataImportObj.importList(header, data)
+        #     if "modulzuordnung" in filename:
+        #         self.addOrUpdateRowSubproject(row, header, "modul")
+        #     elif "enargus" in filename:
+        #         self.addOrUpdateRowSubproject(row, header, "enargus")
+        #     elif "tool" in filename or "Tool" in filename:
+        #         self.addOrUpdateRowSubproject(row, header, "tools")
+        #     elif "schlagwoerter" in filename:
+        #         self.addOrUpdateRowSubproject(row, header,
+        #                                       "schlagwortregister")
+        #     elif "weatherdata" in filename:
+        #         self.getOrCreateWeatherdata(row, header)
+        #     elif "publications" in filename:
+        #         self.getOrCreatePublications(row, header)
+        #     elif "use_cases" in filename:
+        #         self.getOrCreateUseCases(row, header)
+        #     elif "criteriaCatalog" in filename:
+        #         self.getOrCreateCriteriaCatalog(row, header, data)
+        #     elif "component" in filename:
+        #         self.getOrCreateComponent(row, header)
+        #     elif "environmentalImpact" in filename:
+        #         self.getOrCreateEnvironmentalImpact(row, header)
+        #     elif "DataSufficiency" in filename:
+        #         self.getOrCreateDataSufficiency(row, header)
+        #     elif "businessModels" in filename:
+        #         self.getOrCreateBusinessModel(row, header)
+        #     elif "userIntegration" in filename:
+        #         self.getOrCreateUserIntegration(row, header)
+        #     else:
+        #         raise CommandError(
+        #             "Cant detect type of data. Please add 'modulzuordnung', 'enargus', 'Tools' or 'weatherdata' to Filename to make detection possible."
+        #         )
+        #
     def _processListInput(self, inputStr):
         """Process a cell, which includes a list of elements"""
         returnList = []
