@@ -43,6 +43,7 @@ coparison mode from within the search-bar. It can be included into a page-wide t
     {% include "partials/search-bar.html" %}
 ```
 After inlcuding the search-bar, the corresponding context needs to be set in the view-function, which renders the page-wide template. For the search-bar, the following key-value pairs need to be set in the context-dictionary:
+    
     - `optionList`: List of dictionaries
         Based on the value of this key, the select-inputs will be created. The list-length specifies the number of select-elements, which will be rendered. Each list-item is a dictionary with the keys `placeholder`, `objects` and `fieldName`. `placeholder` is put as a placeholder on the select-element. `objects` holds a list of elements, which will be shown as items inside the select input. `fieldName` holds the name of the database attribute name.
 
