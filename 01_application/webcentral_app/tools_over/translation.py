@@ -33,7 +33,7 @@ class TargetGroupTranslationOptions(TranslationOptions):
 
 class ToolsTranslationOptions(TranslationOptions):
     fields = (
-        "name",
+        # "name",
         "shortDescription", 
         "userInterfaceNotes",
         "lastUpdate",
