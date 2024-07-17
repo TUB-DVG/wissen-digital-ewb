@@ -66,18 +66,5 @@
   // this function adds events to asynchroniously added checkboxes
   // to keep the comparison feture possible after filtered tools were loaded
   // async
-  const observer = new MutationObserver((mutationsList) => {
-    for (let mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        mutation.addedNodes.forEach((node) => {
-          if (node.tagName === 'INPUT' && node.type === 'checkbox') {
-            node.addEventListener('click', handleCheckboxChange);
-          }
-        });
-      }
-    }
-  });
-  const config = { childList: true, subtree: true };
-  observer.observe(document.getElementById('listing-results'), config);
 
 </script>
