@@ -260,6 +260,7 @@ function putResponseIntoDom(response) {
         $('#norm-listing-results').empty();
         $('#norm-listing-results').append(response);             
       }
+    addClickEventToAllCheckboxes();
     $("div.pagination a").on("click", sendAjaxOnLinkClick);
 }
 function submitAjaxRequest(e) {
@@ -272,7 +273,7 @@ function submitAjaxRequest(e) {
         type: 'GET',
         url: url,
         data: formData,
-        success: putResponseIntoDom,
+        success: putResponseIntoDom, 
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
         }
@@ -299,6 +300,47 @@ function submitSearchInputOnReturn(e) {
     }
 }
 $('#searchBox').on('submit', submitAjaxRequest);
+=======
+});
+function addClickEventToAllCheckboxes() {
+  // get all descendants, which are in listing-results:
+  var checkboxesForComparison = $( "input[class='comparisonInputTools']" )
+  <!--debugger; -->
+  checkboxesForComparison.each(function() {
+    debugger; 
+    // Check if 'click' event is already attached
+    
+    if (!clickEve) {
+      $(this).on('click', addToSessionStorage);
+    }
+  });
+}
+  function addToSeesionStorage () {
+            $('input[type=checkbox]').click(function () {
+                var currentUrl = window.location.href;
+                
+                var id = $(this).parent().parent().attr('id');
+                    
+                var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
+                
+                if ($(this).parent().hasClass('comparison-active')) {
+                    $(this).parent().removeClass('comparison-active');
+                    var index = storedNames.indexOf(id);
+                    if (index !== -1) {
+                        storedNames.splice(index, 1);
+                    }
+                } else {
+                    $(this).parent().addClass('comparison-active');
+                    storedNames.push(id);
+                }
+                
+                sessionStorage.setItem("ids", JSON.stringify(storedNames));
+                console.log(sessionStorage.ids);
+            });
+ 
+  }
+
+>>>>>>> 07221ade (trying to connect click event handler of comparison feature with async added elements)
 $(document).ready(function() {
     
     $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
