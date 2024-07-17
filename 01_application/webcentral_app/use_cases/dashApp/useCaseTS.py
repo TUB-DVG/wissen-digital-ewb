@@ -179,7 +179,7 @@ def update_graph(building, interval, scale):
     # Update layout
     fig.update_layout(
         xaxis_title='Datum Zeit',
-        yaxis_title="Werte (kWh)",
+        yaxis_title="Werte (W)",
         legend_title='Dargestellte Zeitreihen'
     )
 
