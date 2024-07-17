@@ -42,3 +42,5 @@ log
 
 # Javascript
 node_modules
+# packaging setuptools
+*.egg-info
