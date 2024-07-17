@@ -77,8 +77,8 @@ def index(request):
                 "fieldName": "focus",
             },
             {
-                "placeholder": _("Use Case"), 
-                "objects": ["Aggregation"],
+                "placeholder": _("Level der Wirkebene"), 
+                "objects": list(set([element.degreeOfDetail for element in UseCase.objects.all()])),
                 "fieldName": "use",
             },
             {
