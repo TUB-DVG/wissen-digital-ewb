@@ -8,6 +8,7 @@ from tools_over.models import Focus
 from common.views import (
     getFocusObjectFromGetRequest,
     getFocusNameIndependentOfLanguage,
+    createQ,
 )
 
 
@@ -15,45 +16,95 @@ def index(request):
     """Shows the list of all projects including some key features."""
     searched = request.GET.get('searched')
 
-    focus = request.GET.get('focus')
-    focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
-    focusOptions = Focus.objects.all()
-    
-    useCase = UseCase.objects.all() # reads all data from table UseCase
-    filteredBy = [None]*3
-    searched = None
-    if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
-        (request.GET.get("evaluation") != None) |(request.GET.get("searched") != None)):
-        use_case = request.GET.get("use", '')
-        effectevaluation = request.GET.get("evaluation", '')
-        # breakpoint()
-        if effectevaluation == "Positiv" or effectevaluation == "Positive":
+    filtering = bool(request.GET.get("filtering", False))
+
+    focusElements = request.GET.get("focus-hidden", "")
+    focusElementsList = focusElements.split(",")
+
+    useElements = request.GET.get("use-hidden", "")
+    useElementsList = useElements.split(",")
+
+    evaluationElements = request.GET.get("evaluation-hidden", "")
+    evaluationElementsList = evaluationElements.split(",")
+    evalItemsList = []
+    for evalElement in evaluationElementsList:
+        if evalElement == "Positiv" or evalElement == "Positive":
             effectevaluation = '+'
-        elif effectevaluation == "Negativ" or effectevaluation == "Negative":
+        elif evalElement == "Negativ" or evalElement == "Negative":
             effectevaluation = '-'
-        elif effectevaluation == "Neutral":
+        elif evalElement == "Neutral":
             effectevaluation = 'o'
         else:
             effectevaluation = ''
-        searched = request.GET.get('searched', "")
-        
-        # criterionUseCaseOne = Q(levelOfAction__icontains=searched)
-        # criterionUseCaseTwo = Q(degreeOfDetail__icontains=searched)
-        # criterionUseCaseThree = Q(effectName__icontains=searched)
-        criterionUseCaseFour = Q(effectDescription__icontains=searched)
-        if focusObjectFromGetRequest is not None:
-            useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
-                useCase__icontains=use_case,
-                effectEvaluation__icontains=effectevaluation,
-                focus=focusObjectFromGetRequest,
-            )
-        else:
-            useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
-                useCase__icontains=use_case,
-                effectEvaluation__icontains=effectevaluation,
-            )            
-        filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
 
+        evalItemsList.append(effectevaluation)
+
+    listOfFilters = [
+        {
+            "filterValues": focusElementsList,
+            "filterName": "focus__focus__icontains",
+        },
+        {
+            "filterValues": useElementsList,
+            "filterName": "degreeOfDetail__icontains",
+        },
+        {
+            "filterValues":  evalItemsList,
+            "filterName": "effectEvaluation__icontains__icontains",
+        },
+    ]
+    complexCriterion = createQ(listOfFilters)
+    searched = request.GET.get("searched", "")
+    if searched != "":
+        criterionUsageOne = Q(useCase__icontains=searched)
+        criterionUsageTwo = Q(focus__focus__icontains=searched)
+        criterionUsageThree = Q(
+            effectName__icontains=searched)
+        criterionToolsFour = Q(effectDescription__icontains=searched)
+        complexCriterion |= (criterionToolsOne
+                             | criterionToolsTwo
+                             | criterionToolsThree
+                             | criterionToolsFour)
+ 
+    focus = request.GET.get('focus')
+    focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
+    focusOptions = Focus.objects.all()  
+    
+    useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
+    # filteredBy = [None]*3
+    # searched = None
+    # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
+    #     (request.GET.get("evaluation") != None) |(request.GET.get("searched") != None)):
+    #     use_case = request.GET.get("use", '')
+    #     effectevaluation = request.GET.get("evaluation", '')
+    #     # breakpoint()
+    #     if effectevaluation == "Positiv" or effectevaluation == "Positive":
+    #         effectevaluation = '+'
+    #     elif effectevaluation == "Negativ" or effectevaluation == "Negative":
+    #         effectevaluation = '-'
+    #     elif effectevaluation == "Neutral":
+    #         effectevaluation = 'o'
+    #     else:
+    #         effectevaluation = ''
+    #     searched = request.GET.get('searched', "")
+    #
+    #     # criterionUseCaseOne = Q(levelOfAction__icontains=searched)
+    #     # criterionUseCaseTwo = Q(degreeOfDetail__icontains=searched)
+    #     # criterionUseCaseThree = Q(effectName__icontains=searched)
+    #     criterionUseCaseFour = Q(effectDescription__icontains=searched)
+    #     if focusObjectFromGetRequest is not None:
+    #         useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
+    #             useCase__icontains=use_case,
+    #             effectEvaluation__icontains=effectevaluation,
+    #             focus=focusObjectFromGetRequest,
+    #         )
+    #     else:
+    #         useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
+    #             useCase__icontains=use_case,
+    #             effectEvaluation__icontains=effectevaluation,
+    #         )            
+    #     filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
+    #
     useCase = list(sorted(useCase, key=lambda obj:obj.item_code))
 
     for useCaseItem in useCase:
@@ -94,6 +145,10 @@ def index(request):
         'perspective': filteredBy[1],
         'effectevaluation': filteredBy[2]
     }
+    if filtering:
+        return render(request, "use_case/usecase-listings-results.html",
+                      context)
+
 
     return render(request, 'use_cases/usecase-listings.html', context)
 
