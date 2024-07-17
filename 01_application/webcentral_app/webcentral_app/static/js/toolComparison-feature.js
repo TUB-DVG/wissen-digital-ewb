@@ -26,13 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Card Multi Select
             $('input[type=checkbox]').click(function () {
                 var currentUrl = window.location.href;
-                if (currentUrl.includes("component_list/")) {
-                    var id = $(this).parent().parent().attr('id');
-                }
-                else {
-                    var id = $(this).parent().attr('id');
-
-                }
+                
+                var id = $(this).parent().parent().attr('id');
+                    
                 var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
                 
                 if ($(this).parent().hasClass('comparison-active')) {

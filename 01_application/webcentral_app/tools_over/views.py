@@ -195,7 +195,7 @@ def index(request):
     }
 
     if filtering:
-        return render(request, "tools_over/tool-listings-results.html",
+        return render(request, "partials/listing-grid.html",
                       context)
 
     return render(request, "tools_over/tool-listings.html", context)
