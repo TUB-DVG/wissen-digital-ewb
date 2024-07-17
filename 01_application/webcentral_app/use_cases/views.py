@@ -111,13 +111,6 @@ def useCaseView(request, id):
 
     return render(request, 'use_cases/usecase-detail.html', context)
 
-def graph(request):
-    distinctLevelOfDetails = UseCase.objects.all().values("degreeOfDetail").distinct()
-    context = {
-        "levelOfDetailElements": distinctLevelOfDetails,
-    }
-
-    return render(request, 'use_cases/DarstellungAggreagtionenEnergieverbrauchs.html', context)
 
 def _setUseCaseImage(useCaseItem):
     """
