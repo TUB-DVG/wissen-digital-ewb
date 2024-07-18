@@ -26,3 +26,25 @@ The command gets 3 arguments. `app_label` specifies the app-label, which holds t
 `path_to_xlsx_or_csv` specfies the path to a .csv- or .xlsx-file, which holds the structured data. 
 `path_to_diff_file` is the path, where a diff-file is saved. It is only created on collisions and will be explained in detail here (link to execute_db_changes).
 The structure of the implemented python scripts is as follows: In the app `common`, which holds code used across apps. It is placed under `common/data_import.py` and holds a class `DataImport`. This class handles general functionality, which is used by the app-specfic data-import classes like e.g. reading a file. The app-specific data-import classes are located in each app in the file `data_import.py`. Each of theses files holds a class `DataImportApp`, which inherits from the general `DataImport`. 
+```{mermaid}
+classDiagram
+    common_DataImport <|-- use_cases_DataImportApp
+    common_DataImport <|-- tools_over_DataImportApp
+    common_DataImport <|-- component_list_DataImportApp
+
+    common_DataImport: +importList()
+    common_DataImport: +load()
+    common_DataImport: +readExcel()
+    common_DataImport: -_correctReadInValue()
+    common_DataImport: -_selectNearestMatch()
+    class use_cases_DataImportApp{
+      +getOrCreate()
+    }
+    class tools_over_DataImportApp{
+      +getOrCreate()
+    }
+    class component_list_DataImportApp{
+      +getOrCreate()
+    }
+
+```
