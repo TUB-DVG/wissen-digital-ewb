@@ -25,7 +25,7 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
 
-    def getOrCreate(self, row, header):
+    def getOrCreate(self, row: list, header: list, data: list):
         """create a UseCase object from row and header of a Spreadsheet"""
         itemCode = row[header.index("Item-Code")]
         useCase = row[header.index("Use-Case")]
