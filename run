@@ -253,7 +253,10 @@ case $command in
     "update_translation_fields")
         docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py update_translation_fields 
         ;;
-    *)
+    "sync_translation_fields")
+        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py sync_translation_fields 
+        ;;
+      *)
         echo "Unknown command: $command"
         exit 1
         ;;
