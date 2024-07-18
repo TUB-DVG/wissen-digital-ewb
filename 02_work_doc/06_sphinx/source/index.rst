@@ -19,6 +19,7 @@ If you would like to do some development or host the Wissensplattform, please fi
    dataImportDjango
    insertLinksInDatabase
    templateStructure
+   translation
 
 Indices and tables
 ==================
