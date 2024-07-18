@@ -241,9 +241,9 @@ $('#searchBox').on('submit', function(e) {
             // Handle the response here
             // remove all ancestors of the div with the id
             // debugger;
-            if ($("#componentListingContainer").length > 0) {
-              $('#componentListingContainer').empty();
-              $('#componentListingContainer').append(response);
+            if ($("#listing-results").length > 0) {
+              $('#listing-results').empty();
+              $('#listing-results').append(response);
             }
             else if ($('#tool-listing-results').length > 0) {
               $('#tool-listing-results').empty();

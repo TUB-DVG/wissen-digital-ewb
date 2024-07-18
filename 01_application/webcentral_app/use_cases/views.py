@@ -50,7 +50,7 @@ def index(request):
         },
         {
             "filterValues":  evalItemsList,
-            "filterName": "effectEvaluation__icontains__icontains",
+            "filterName": "effectEvaluation__icontains",
         },
     ]
     complexCriterion = createQ(listOfFilters)
@@ -71,6 +71,7 @@ def index(request):
     focusOptions = Focus.objects.all()  
     
     useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
+    breakpoint()
     # filteredBy = [None]*3
     # searched = None
     # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
@@ -114,7 +115,7 @@ def index(request):
     pageNum = request.GET.get('page',None)
     page = useCasePaginator.get_page(pageNum)
     focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
-
+    filteredBy = [None]*3
     
     context = {
         'page': page,
@@ -146,7 +147,7 @@ def index(request):
         'effectevaluation': filteredBy[2]
     }
     if filtering:
-        return render(request, "use_case/usecase-listings-results.html",
+        return render(request, "use_cases/usecase-listings-results.html",
                       context)
 
 
