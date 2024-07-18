@@ -42,7 +42,8 @@ def index(request):
     listOfFilters = [
         {
             "filterValues": focusElementsList,
-            "filterName": "focus__focus__icontains",
+            "filterNameDe": "focus__focus_de__icontains",
+            "filterNameEn": "focus__focus_en__icontains",
         },
         {
             "filterValues": useElementsList,
@@ -71,14 +72,12 @@ def index(request):
     focusOptions = Focus.objects.all()  
     
     useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
-    breakpoint()
     # filteredBy = [None]*3
     # searched = None
     # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
     #     (request.GET.get("evaluation") != None) |(request.GET.get("searched") != None)):
     #     use_case = request.GET.get("use", '')
     #     effectevaluation = request.GET.get("evaluation", '')
-    #     # breakpoint()
     #     if effectevaluation == "Positiv" or effectevaluation == "Positive":
     #         effectevaluation = '+'
     #     elif effectevaluation == "Negativ" or effectevaluation == "Negative":
