@@ -47,11 +47,11 @@ def index(request):
         },
         {
             "filterValues": useElementsList,
-            "filterName": "degreeOfDetail__icontains",
+            "filterName": "degreeOfDetail_de__icontains",
         },
         {
             "filterValues":  evalItemsList,
-            "filterName": "effectEvaluation__icontains",
+            "filterName": "effectEvaluation_de__icontains",
         },
     ]
     complexCriterion = createQ(listOfFilters)
@@ -72,6 +72,7 @@ def index(request):
     focusOptions = Focus.objects.all()  
     
     useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
+    # breakpoint()
     # filteredBy = [None]*3
     # searched = None
     # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
@@ -82,7 +83,7 @@ def index(request):
     #         effectevaluation = '+'
     #     elif effectevaluation == "Negativ" or effectevaluation == "Negative":
     #         effectevaluation = '-'
-    #     elif effectevaluation == "Neutral":
+    #     elif effectevaluation =degreeOfDetail_en__icontainsdegreeOfDetail_en__icontains= "Neutral":
     #         effectevaluation = 'o'
     #     else:
     #         effectevaluation = ''
