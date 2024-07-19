@@ -23,7 +23,7 @@ def index(request):
 
     useElements = request.GET.get("use-hidden", "")
     useElementsList = useElements.split(",")
-
+    
     evaluationElements = request.GET.get("evaluation-hidden", "")
     evaluationElementsList = evaluationElements.split(",")
     evalItemsList = []
@@ -72,6 +72,7 @@ def index(request):
     focusOptions = Focus.objects.all()  
     
     useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
+    # breakpoint()
     # filteredBy = [None]*3
     # searched = None
     # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
@@ -138,7 +139,7 @@ def index(request):
                 "fieldName": "evaluation",
             }, 
         ],
-        "focusBorder": focusName,
+        "focusBorder": "neutral",
         "urlName": "use_cases_list",
         'search':searched,
         'use_case': filteredBy[0],
