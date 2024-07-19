@@ -226,8 +226,38 @@ input[type='text']::placeholder {
           // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
         }
         form.submit();
-   } 
-$('#searchBox').on('submit', function(e) {
+   }
+function sendAjax(url, formData) {
+
+}
+function putResponseIntoDom(response) {
+      if ($("#listing-results").length > 0) {
+        $('#listing-results').empty();
+        $('#listing-results').append(response);
+      }
+      else if ($('#tool-listing-results').length > 0) {
+        $('#tool-listing-results').empty();
+        $('#tool-listing-results').append(response);
+      }
+      else if ($("#dataset-listing-results").length > 0) {
+        $('#dataset-listing-results').empty();
+        $('#dataset-listing-results').append(response);             
+      }
+      else if ($("#weatherdata-listing-results").length > 0) {
+        $('#weatherdata-listing-results').empty();
+        $('#weatherdata-listing-results').append(response);             
+      }
+      else if ($("#protocol-listing-results").length > 0) {
+        $('#protocol-listing-results').empty();
+        $('#protocol-listing-results').append(response);             
+      }
+      else if ($("#norm-listing-results").length > 0) {
+        $('#norm-listing-results').empty();
+        $('#norm-listing-results').append(response);             
+      }
+    $("div.pagination a").on("click", sendAjaxOnLinkClick);
+}
+function submitAjaxRequest(e) {
     e.preventDefault();  // Prevent the form from submitting normally
 
     var url = $(this).attr('action');  // Get the form's action URL
@@ -237,43 +267,37 @@ $('#searchBox').on('submit', function(e) {
         type: 'GET',
         url: url,
         data: formData,
-        success: function(response) {
-            // Handle the response here
-            // remove all ancestors of the div with the id
-            // debugger;
-            if ($("#listing-results").length > 0) {
-              $('#listing-results').empty();
-              $('#listing-results').append(response);
-            }
-            else if ($('#tool-listing-results').length > 0) {
-              $('#tool-listing-results').empty();
-              $('#tool-listing-results').append(response);
-            }
-            else if ($("#dataset-listing-results").length > 0) {
-              $('#dataset-listing-results').empty();
-              $('#dataset-listing-results').append(response);             
-            }
-            else if ($("#weatherdata-listing-results").length > 0) {
-              $('#weatherdata-listing-results').empty();
-              $('#weatherdata-listing-results').append(response);             
-            }
-            else if ($("#protocol-listing-results").length > 0) {
-              $('#protocol-listing-results').empty();
-              $('#protocol-listing-results').append(response);             
-            }
-            else if ($("#norm-listing-results").length > 0) {
-              $('#norm-listing-results').empty();
-              $('#norm-listing-results').append(response);             
-            }
-          },
+        success: putResponseIntoDom,
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
         }
     });
-});
+}
+  function sendAjaxOnLinkClick(e) {
+    e.preventDefault();
+    var linkTarget = $(this).attr("href")
+      $.ajax(
+      {
+        type: "GET",
+        url: linkTarget,
+        success: putResponseIntoDom,
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error here
+        }
+      }
+    )
+  }
+function submitSearchInputOnReturn(e) {
+    if (e.which === 13) {
+        e.preventDefault(); // Prevent the default action of the Enter key
+        $('#searchForm').submit(); // Trigger the form submission
+    }
+}
+$('#searchBox').on('submit', submitAjaxRequest);
 $(document).ready(function() {
     
-
+    $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
+    $("div.pagination a").on("click", sendAjaxOnLinkClick);
 
     // parse the URL for a filter string:
     var urlSearchStr = window.location.search.substring(1)
@@ -291,17 +315,20 @@ $(document).ready(function() {
       }
       else {
         currKey = currKey.split("-hidden")[0];
-        listOfCurrVals = currVals.split(",");
-        for (var i=0; i<listOfUseBootstrapSelects.length; i++) {
-          if (listOfUseBootstrapSelects[i].selectElement.id == currKey) {
-            for (var j=0; j<listOfCurrVals.length; j++) {
-              debugger;
-              listOfUseBootstrapSelects[i].setValue(listOfCurrVals[j]);
+        if (currVals != undefined) {
+          listOfCurrVals = currVals.split(",");
+          for (var k=0; k<listOfUseBootstrapSelects.length; k++) {
+            if (listOfUseBootstrapSelects[k].selectElement.id == currKey) {
+              for (var j=0; j<listOfCurrVals.length; j++) {
+                if (listOfCurrVals[j] != "") {
+                listOfUseBootstrapSelects[k].setValue(decodeURIComponent(listOfCurrVals[j]));
+                }
+              }
+              break;
             }
-            break;
           }
         }
-        <!--debugger;-->
+        
       }
     }  
 
@@ -347,7 +374,6 @@ $(document).ready(function() {
           var checkboxInput = $("<input />")
           checkboxInput.attr("type", "checkbox")
           $(dropDownElementsForThatSelect[j]).prepend(checkboxInput);
-          // debugger;
         }
       }
   }
@@ -379,7 +405,6 @@ $(document).ready(function() {
         listOfSelectedFilters = [];
         returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
         currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
-        // debugger;
         if (typeof returnValueOfSelect === "string" ) {
           listOfSelectedFilters.push(returnValueOfSelect);
         }
