@@ -72,7 +72,6 @@ def index(request):
     focusOptions = Focus.objects.all()  
     
     useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
-    # breakpoint()
     # filteredBy = [None]*3
     # searched = None
     # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
