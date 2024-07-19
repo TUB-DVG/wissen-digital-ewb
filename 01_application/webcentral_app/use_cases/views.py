@@ -62,7 +62,7 @@ def index(request):
         criterionUsageThree = Q(
             effectName__icontains=searched)
         criterionUsageFour = Q(effectDescription__icontains=searched)
-        complexCriterion |= (criterionUsageOne
+        complexCriterion &= (criterionUsageOne
                              | criterionUsageTwo
                              | criterionUsageThree
                              | criterionUsageFour)
