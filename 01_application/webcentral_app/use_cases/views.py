@@ -61,11 +61,11 @@ def index(request):
         criterionUsageTwo = Q(focus__focus__icontains=searched)
         criterionUsageThree = Q(
             effectName__icontains=searched)
-        criterionToolsFour = Q(effectDescription__icontains=searched)
-        complexCriterion |= (criterionToolsOne
-                             | criterionToolsTwo
-                             | criterionToolsThree
-                             | criterionToolsFour)
+        criterionUsageFour = Q(effectDescription__icontains=searched)
+        complexCriterion |= (criterionUsageOne
+                             | criterionUsageTwo
+                             | criterionUsageThree
+                             | criterionUsageFour)
  
     focus = request.GET.get('focus')
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
@@ -127,16 +127,19 @@ def index(request):
                 "placeholder": _("Fokus"), 
                 "objects": focusOptions,
                 "fieldName": "focus",
+                "filtered": focusElements,
             },
             {
                 "placeholder": _("Level der Wirkebene"), 
                 "objects": list(set([element.degreeOfDetail for element in UseCase.objects.all()])),
                 "fieldName": "use",
+                "filtered": useElements,
             },
             {
                 "placeholder": _("Auswirkung der Evaluation"), 
                 "objects": [_("Positiv"), _("Negativ"), _("Neutral")],
                 "fieldName": "evaluation",
+                "filtered": evaluationElements,
             }, 
         ],
         "focusBorder": "neutral",
