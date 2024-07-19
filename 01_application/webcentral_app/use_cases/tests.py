@@ -43,7 +43,7 @@ class TestUseCaseFiltering(TestCase):
         possibleUseCases = [
             "operational", 
             "ecological", 
-            # "legal", 
+            "legal", 
             "technical",
         ]
 
@@ -54,11 +54,11 @@ class TestUseCaseFiltering(TestCase):
             [
                 2, 
                 3, 
-                # 4
+                4,
             ]
         )
 
-        if randomNumberOfSelections == 3:
+        if randomNumberOfSelections == 4:
             selectedFocusElements = possibleUseCases
         else:
             for index in range(randomNumberOfSelections):
@@ -102,6 +102,16 @@ class TestUseCaseFiltering(TestCase):
         """Test the behaviour if multiple use-elements are selected.
 
         """
+        
+        listOfdegreeOfDetailElements = list(set([useCaseObj.degreeOfDetail for useCaseObj in UseCase.objects.all()]))
+
+        numberOfChoices = choice([2, 3, 4])
+        chosenUseElements = []
+        for index in range(numberOfChoices):
+            randomChoice = choice(listOfdegreeOfDetailElements)
+            listOfdegreeOfDetailElements.remove(randomChoice)
+            chosenUseElements.append(randomChoice)
+
         listOfFilters = [
             {
                 "filterValues": [],
@@ -109,7 +119,7 @@ class TestUseCaseFiltering(TestCase):
                 "filterNameEn": "focus__focus_en__icontains",
             },
             {
-                "filterValues": [],
+                "filterValues": chosenUseElements,
                 "filterName": "degreeOfDetail__icontains",
             },
             {
@@ -117,4 +127,14 @@ class TestUseCaseFiltering(TestCase):
                 "filterName": "effectEvaluation__icontains",
             },
         ]
+        complexFilter = createQ(listOfFilters)
+        
+        filteredUseCaseObj = UseCase.objects.filter(complexFilter)
+        
+        for currentChosenElement in chosenUseElements:
+            if len(UseCase.objects.filter(degreeOfDetail__icontains=currentChosenElement)) > 0:
+                self.assertGreater(len(filteredUseCaseObj.filter(degreeOfDetail__icontains=currentChosenElement)), 0)
+
+
+
  

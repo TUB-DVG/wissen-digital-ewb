@@ -274,19 +274,20 @@ $('#searchBox').on('submit', function(e) {
 $(document).ready(function() {
 
     // on the backend load all static-paths for the down arrows:
-    var downArrowTechnical = "{% static '/assets/images/arrowDownTechnical.svg' %}";
-    var downArrowEcological = "{% static '/assets/images/arrowDownEcological.svg' %}";
-    var downArrowOperational = "{% static '/assets/images/arrowDownOperational.svg' %}";
-    var downArrowLegal = "{% static '/assets/images/arrowDownLegal.svg' %}";
-
+    var downArrowTechnical = "{% static '/assets/images/arrow_down_technical.svg' %}";
+    var downArrowEcological = "{% static '/assets/images/arrow_down_ecological.svg' %}";
+    var downArrowOperational = "{% static '/assets/images/arrow_down_operational.svg' %}";
+    var downArrowLegal = "{% static '/assets/images/arrow_down_legal.svg' %}";
+    var downArrowNeutral = "{% static '/assets/images/arrow_down_neutral.svg' %}"
+    
     var focusBorder = "{{ focusBorder }}";
-    focusBorder = focusBorder.charAt(0).toUpperCase() + focusBorder.slice(1);
     var focusArrowToSet = ""
-    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal];
+    var focusArrowToSetLink = ""
+    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal, downArrowNeutral];
     for (var i=0; i < listOfPathToFocusArrow.length; i++) {
       if (listOfPathToFocusArrow[i].includes(focusBorder)) {
-        focusArrowToSet = listOfPathToFocusArrow[i];
-        focusArrowToSet = "url('" + focusArrowToSet + "')"
+        focusArrowToSetLink = listOfPathToFocusArrow[i];
+        focusArrowToSet = "url('" + focusArrowToSetLink + "')"
         break;
       }
     }
@@ -294,10 +295,10 @@ $(document).ready(function() {
 
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
-    $("div.input-wrapper").children("input").css("background-image", focusArrowToSet)
     $("div.dropdown").children("button").addClass("text-input-with-arrow-{{ focusBorder }}")
     // $("input.use-bootstrap-select[type='text']").each(function() {
-      
+    var newImgElement = $(`<img src=${focusArrowToSetLink} class='arrow-icon'>`) 
+    newImgElement.insertAfter($("div.input-wrapper").children("input")) 
     //   $(this).addClass("form-input-{{ focusBorder }}");
     // });
   });
