@@ -182,3 +182,27 @@ class DataImport:
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 
+    def _processListInput(self, inputStr, separator=";"):
+        """Process a cell, which includes a list of elements"""
+        returnList = []
+        for element in inputStr.split(separator):
+            if not self._checkIfOnlyContainsSpaces(element):
+                returnList.append(element)
+
+        return returnList
+
+    def _checkIfOnlyContainsSpaces(self, inputStr):
+        """Check if the inputStr only contains whitespaces.
+
+        This method checks if the inputStr only contains whitespaces.
+        If this is the case, the method returns True, otherwise False.
+
+        Parameters:
+        inputStr:   str
+            String, which should be checked, if it only contains whitespaces.
+
+        Returns:
+        bool
+            True, if the inputStr only contains whitespaces, otherwise False.
+        """
+        return all(x.isspace() for x in inputStr)

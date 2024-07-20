@@ -99,8 +99,7 @@ def userIntegrationMethod(request):
 def userEngagement(request):
     """Call render function for user engagement page."""
 
-    explanationText = """<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration in der Entwicklung digitaler Anwendungen</h6>
-<p>Die Nutzendenintegration beschreibt die <b>direkte oder indirekte Integration von Nutzenden und ihren Perspektiven in die Entwicklung digitaler Anwendungen</b>. Die direkte Beteiligung geschieht über Methoden wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen verfügen.</p>
+    explanationText = """<p>Die Nutzendenintegration beschreibt die <b>direkte oder indirekte Integration von Nutzenden und ihren Perspektiven in die Entwicklung digitaler Anwendungen</b>. Die direkte Beteiligung geschieht über Methoden wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen verfügen.</p>
 <p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</p>
 <p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor der Markteinführung einer digitalen Anwendung sorgen, erhöhen die Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>
 <p>Die Methoden der Nutzendenintegration können nach <b>Methoden der Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der Entwicklung digitaler Anwendungen vor allem um die Exploration von Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für diese Exploration sind qualitative Methoden besonders geeignet. In späteren Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>
@@ -137,7 +136,7 @@ def userEngagement(request):
         "pathToImage":
         "img/componentList/circle-icon.svg",
         "heading":
-        _("Nutzendenintegration"),
+        _("Methoden der Nutzendenintegration"),
         # "showMorePresent":
         # True,
         "explanaitionText":
