@@ -15,11 +15,18 @@ from selenium.webdriver.support import expected_conditions as EC
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
 
+# Create tmp_dir
+temp_dir = "~/_tmp"
+try:
+    os.makedirs(temp_dir)
+except:
+    pass
+os.environ["TMPDIR"] = temp_dir
 
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
-    ECOLOGICAL_COLOR = "rgb(143, 222, 151)"
+    ECOLOGICAL_COLOR = "rgb(143, 171, 247)"
 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.

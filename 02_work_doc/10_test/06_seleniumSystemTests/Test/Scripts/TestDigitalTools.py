@@ -33,7 +33,7 @@ from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 class TestDigitalToolsPage(WebDriverSetup):
     """ """
 
-    TECHNICAL_COLOR_CODE = "rgba(175, 197, 255, 1)"
+    TECHNICAL_COLOR_CODE = "rgb(143, 171, 247)"
 
     def _testSearchBar(self, dictOfTranslation):
         """ """
@@ -101,6 +101,8 @@ class TestDigitalToolsPage(WebDriverSetup):
             descriptionTextForRadio.text,
             dictOfTranslation["radioDescription"],
         )
+
+    # def testFilteringAndPagination(self)
 
     def testNavigateToDigitalToolsPage(self) -> None:
         """Navigates from norm list to digital-tools-tab."""
@@ -375,21 +377,25 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         toolsPageObj = ToolListPage(self.driver)
         comparisonPageSection = ComparisonPageSection(self.driver)
-
+        searchBarObj = SearchPage(self.driver)
         # click the Compare-Button and check if 2 buttons appear and the checkboxes
         # in each listing element is shown
+        compareRadioButtonList = searchBarObj.getRadioButtons()
+
+        # on the tools-page, only one radio button should be in the search-bar
+        self.assertEqual(len(compareRadioButtonList), 1)
+
+        # click the radio button to make the compare buttons and checkboxes appear:
+        compareRadioButtonList[0].click()
+
         firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
-        compareButton = comparisonPageSection.getDescendantsByTagName(
-            firstComparisonDiv, "h6")[0]
-        self.assertEqual(
-            compareButton.text,
-            "Vergleiche",
-            "The compare-button should be present",
+       
+        self.assertTrue(
+            firstComparisonDiv.is_displayed(),
+            "The compare div-section should be displayed after clicking the compare radio button",
         )
-        compareButton.click()
-        secondComparisonDiv = comparisonPageSection.getSecondComparisonDiv()
         comparisonButtons = comparisonPageSection.getDescendantsByTagName(
-            secondComparisonDiv, "h6")
+            firstComparisonDiv, "h6")
         # breakpoint()
         self.assertEqual(len(comparisonButtons), 2)
 
@@ -416,11 +422,15 @@ class TestDigitalToolsPage(WebDriverSetup):
         # randomly select the tools to compare
         toolsToCompare = random.sample(listOfToolItems, numberOfToolsToCompare)
         for tool in toolsToCompare:
-            tool.find_element(By.XPATH, ".//input").click()
+            # breakpoint()
+            self.scrollElementIntoView(tool)
+            toolCheckbox = tool.find_element(By.XPATH, ".//input") 
+            self.scrollElementIntoViewAndClickIt(toolCheckbox)
 
         # click the compare-button and check if the comparison-page is loaded
-        comparisonButtons[0].click()
-
+        self.scrollElementIntoViewAndClickIt(comparisonButtons[0])
+        
+        breakpoint()
         comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
         self.assertEqual(
             comparisonHeading.text,
