@@ -7,15 +7,37 @@
 <!DOCTYPE html>
 
 <style>
-  .plotly > div {
-    padding-bottom: 100% !important;
-  }
-
-  @media screen and (min-width: 600px) {
-    .plotly > div {
-      padding-bottom: 51.7% !important;
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 20px 0;
     }
-  }
+    th, td {
+        border: 2px solid #000; /* Set the border thickness and color */
+        padding: 8px 12px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    caption {
+        caption-side: top;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .notes {
+        margin-top: 10px;
+        font-style: italic;
+    }
+    .plotly > div {
+      padding-bottom: 100% !important;
+    }
+
+    @media screen and (min-width: 600px) {
+      .plotly > div {
+        padding-bottom: 51.7% !important;
+      }
+    }
 
   @media screen and (min-width: 1400px) {
     .plotly > div {
@@ -31,19 +53,12 @@
   <section class="py-4">
     <div class="container">
       <div class="row">
-        <div class="col-12">
-          <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">{% translate "Überblick über die Anwendungsfälle" %}</h2>
-          </div>
-        </div>
+         <div class="descriptionBox">
+            {% include "partials/descriptionContainer.html" %}
+          </div>    
       </div>
     </div>
   </section>
-  <!-- Page Banner END -->
-
-  {% include '../use_cases/explanation.html' %}
-
-  <!-- Page content START -->
   <section class="pt-0">
     <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
       <!-- Plotly chart START -->
@@ -54,66 +69,15 @@
 
       <!-- Filter bar START -->
       {% include "partials/search-bar.html" %}
-      <!-- Row END -->
       <!-- Filter bar END -->
-      <!-- search tags START -->
-      <ul class="list-inline mb-0">
-        {% if search %}
-        <li class="list-inline-item">
-          <div class="btn btn-outline-light btn-sm">
-            <a href="/useCases_list/?searched={{search}}&u=&p=&ev=">
-              Suchbegriff: {{search}}
-            </a>
-          </div>
-        </li>
-        {% endif %} 
-        {% if use_case %}
-        <li class="list-inline-item">
-          <div class="btn btn-outline-light btn-sm">
-            <a href="/useCases_list/?searched=&u={{use_case}}&p=&ev=">{{use_case}}
-              <i class="bi bi-x-lg"></i> 
-            </a>
-          </div>
-        </li>
-        {% endif %} 
-        {% if perspective %}
-        <li class="list-inline-item">
-          <div class="btn btn-outline-light btn-sm">
-            <a href="/useCases_list/?searched=&u=&p={{perspective}}&ev=">{{perspective}}
-              <i class="bi bi-x-lg"></i> 
-            </a> 
-          </div>
-        </li>
-        {% endif %}
-        {% if effectevaluation %}
-        <li class="list-inline-item">
-          <div class="btn btn-outline-light btn-sm">
-            <a href="/useCases_list/?searched=&u=&p=&ev={{effectevaluation}}"> 
-              {% if effectevaluation == "+" %}
-              Positive
-              {% elif effectevaluation == "o" %}
-              Neutral
-              {% else %}
-              Negative
-              {% endif %}
-              <i class="bi bi-x-lg"></i> 
-            </a>
-          </div>
-        </li>
-        {% endif %}
-      </ul>
-      <!-- search tags END -->
       <!-- tools grid row START -->
       <div class="row mt-3">
         <div class="col-12">
         <!-- tools Grid START -->
-          <div class="row g-4" id="useCase-listing-results">
+          <div class="row g-4" id="listing-results">
             {% include '../use_cases/usecase-listings-results.html' %}
           </div>
           <!-- tools Grid END -->
-          <!-- Pagination START -->
-          {% include "common/pagination.html" %}
-          <!-- Pagination END -->
         </div>
       </div>
       <!-- tools grid row START -->
