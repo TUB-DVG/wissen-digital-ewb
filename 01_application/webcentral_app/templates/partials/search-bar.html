@@ -226,8 +226,38 @@ input[type='text']::placeholder {
           // url += filterIdentifer + '=' + encodeURIComponent(selectedOptions) + "&";
         }
         form.submit();
-   } 
-$('#searchBox').on('submit', function(e) {
+   }
+function sendAjax(url, formData) {
+
+}
+function putResponseIntoDom(response) {
+      if ($("#listing-results").length > 0) {
+        $('#listing-results').empty();
+        $('#listing-results').append(response);
+      }
+      else if ($('#tool-listing-results').length > 0) {
+        $('#tool-listing-results').empty();
+        $('#tool-listing-results').append(response);
+      }
+      else if ($("#dataset-listing-results").length > 0) {
+        $('#dataset-listing-results').empty();
+        $('#dataset-listing-results').append(response);             
+      }
+      else if ($("#weatherdata-listing-results").length > 0) {
+        $('#weatherdata-listing-results').empty();
+        $('#weatherdata-listing-results').append(response);             
+      }
+      else if ($("#protocol-listing-results").length > 0) {
+        $('#protocol-listing-results').empty();
+        $('#protocol-listing-results').append(response);             
+      }
+      else if ($("#norm-listing-results").length > 0) {
+        $('#norm-listing-results').empty();
+        $('#norm-listing-results').append(response);             
+      }
+    $("div.pagination a").on("click", sendAjaxOnLinkClick);
+}
+function submitAjaxRequest(e) {
     e.preventDefault();  // Prevent the form from submitting normally
 
     var url = $(this).attr('action');  // Get the form's action URL
@@ -237,56 +267,87 @@ $('#searchBox').on('submit', function(e) {
         type: 'GET',
         url: url,
         data: formData,
-        success: function(response) {
-            // Handle the response here
-            // remove all ancestors of the div with the id
-            // debugger;
-            if ($("#componentListingContainer").length > 0) {
-              $('#componentListingContainer').empty();
-              $('#componentListingContainer').append(response);
-            }
-            else if ($('#tool-listing-results').length > 0) {
-              $('#tool-listing-results').empty();
-              $('#tool-listing-results').append(response);
-            }
-            else if ($("#dataset-listing-results").length > 0) {
-              $('#dataset-listing-results').empty();
-              $('#dataset-listing-results').append(response);             
-            }
-            else if ($("#weatherdata-listing-results").length > 0) {
-              $('#weatherdata-listing-results').empty();
-              $('#weatherdata-listing-results').append(response);             
-            }
-            else if ($("#protocol-listing-results").length > 0) {
-              $('#protocol-listing-results').empty();
-              $('#protocol-listing-results').append(response);             
-            }
-            else if ($("#norm-listing-results").length > 0) {
-              $('#norm-listing-results').empty();
-              $('#norm-listing-results').append(response);             
-            }
-          },
+        success: putResponseIntoDom,
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
         }
     });
-});
+}
+  function sendAjaxOnLinkClick(e) {
+    e.preventDefault();
+    var linkTarget = $(this).attr("href")
+      $.ajax(
+      {
+        type: "GET",
+        url: linkTarget,
+        success: putResponseIntoDom,
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error here
+        }
+      }
+    )
+  }
+function submitSearchInputOnReturn(e) {
+    if (e.which === 13) {
+        e.preventDefault(); // Prevent the default action of the Enter key
+        $('#searchForm').submit(); // Trigger the form submission
+    }
+}
+$('#searchBox').on('submit', submitAjaxRequest);
 $(document).ready(function() {
+    
+    $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
+    $("div.pagination a").on("click", sendAjaxOnLinkClick);
+
+    // parse the URL for a filter string:
+    var urlSearchStr = window.location.search.substring(1)
+    var urlSearchStrList = urlSearchStr.split('&')
+    var splittedCurFilter = [];
+    var currKey = "";
+    var currVals = "";
+    var listOfCurrVals = [];
+    for (var i=0; i<urlSearchStrList.length; i++) {
+      splittedCurFilter = urlSearchStrList[i].split("=");
+      currKey = splittedCurFilter[0];
+      currVals = splittedCurFilter[1];
+      if (currKey == "searched") {
+        $("#search-input-use_cases").val(currVals); 
+      }
+      else {
+        currKey = currKey.split("-hidden")[0];
+        if (currVals != undefined) {
+          listOfCurrVals = currVals.split(",");
+          for (var k=0; k<listOfUseBootstrapSelects.length; k++) {
+            if (listOfUseBootstrapSelects[k].selectElement.id == currKey) {
+              for (var j=0; j<listOfCurrVals.length; j++) {
+                if (listOfCurrVals[j] != "") {
+                listOfUseBootstrapSelects[k].setValue(decodeURIComponent(listOfCurrVals[j]));
+                }
+              }
+              break;
+            }
+          }
+        }
+        
+      }
+    }  
+
 
     // on the backend load all static-paths for the down arrows:
-    var downArrowTechnical = "{% static '/assets/images/arrowDownTechnical.svg' %}";
-    var downArrowEcological = "{% static '/assets/images/arrowDownEcological.svg' %}";
-    var downArrowOperational = "{% static '/assets/images/arrowDownOperational.svg' %}";
-    var downArrowLegal = "{% static '/assets/images/arrowDownLegal.svg' %}";
-
+    var downArrowTechnical = "{% static '/assets/images/arrow_down_technical.svg' %}";
+    var downArrowEcological = "{% static '/assets/images/arrow_down_ecological.svg' %}";
+    var downArrowOperational = "{% static '/assets/images/arrow_down_operational.svg' %}";
+    var downArrowLegal = "{% static '/assets/images/arrow_down_legal.svg' %}";
+    var downArrowNeutral = "{% static '/assets/images/arrow_down_neutral.svg' %}"
+    
     var focusBorder = "{{ focusBorder }}";
-    focusBorder = focusBorder.charAt(0).toUpperCase() + focusBorder.slice(1);
     var focusArrowToSet = ""
-    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal];
+    var focusArrowToSetLink = ""
+    listOfPathToFocusArrow = [downArrowTechnical, downArrowEcological, downArrowOperational, downArrowLegal, downArrowNeutral];
     for (var i=0; i < listOfPathToFocusArrow.length; i++) {
       if (listOfPathToFocusArrow[i].includes(focusBorder)) {
-        focusArrowToSet = listOfPathToFocusArrow[i];
-        focusArrowToSet = "url('" + focusArrowToSet + "')"
+        focusArrowToSetLink = listOfPathToFocusArrow[i];
+        focusArrowToSet = "url('" + focusArrowToSetLink + "')"
         break;
       }
     }
@@ -294,10 +355,10 @@ $(document).ready(function() {
 
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
-    $("div.input-wrapper").children("input").css("background-image", focusArrowToSet)
     $("div.dropdown").children("button").addClass("text-input-with-arrow-{{ focusBorder }}")
     // $("input.use-bootstrap-select[type='text']").each(function() {
-      
+    var newImgElement = $(`<img src=${focusArrowToSetLink} class='arrow-icon'>`) 
+    newImgElement.insertAfter($("div.input-wrapper").children("input")) 
     //   $(this).addClass("form-input-{{ focusBorder }}");
     // });
   });
@@ -313,7 +374,6 @@ $(document).ready(function() {
           var checkboxInput = $("<input />")
           checkboxInput.attr("type", "checkbox")
           $(dropDownElementsForThatSelect[j]).prepend(checkboxInput);
-          // debugger;
         }
       }
   }
@@ -345,7 +405,6 @@ $(document).ready(function() {
         listOfSelectedFilters = [];
         returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
         currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
-        // debugger;
         if (typeof returnValueOfSelect === "string" ) {
           listOfSelectedFilters.push(returnValueOfSelect);
         }

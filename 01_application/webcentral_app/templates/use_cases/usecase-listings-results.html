@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% for useCase in page.object_list %}  
 <!-- Card item START -->
 
@@ -57,9 +58,10 @@
     </a>
   </div>
 </div>
-
 <script>
-  cardColorChange("{{useCase.perspective}}");
+  <!--cardColorChange("{{useCase.perspective}}");-->
 </script>
 <!-- Card item END -->
 {% endfor %}
+{% include "partials/pagination.html" %}
+

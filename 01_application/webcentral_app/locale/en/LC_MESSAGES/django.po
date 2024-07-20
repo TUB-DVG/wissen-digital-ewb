@@ -4425,9 +4425,12 @@ msgid ""
 "          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
 "aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
 "Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr "Displayed are the average consumption in time windows of five seconds, 15 minutes, and one hour, showing both the individual values of the households and the sum of the load profiles (three buildings).\n"
+msgstr 
+"Displayed are the average consumption in time windows of five seconds, 15 minutes, and one hour, showing both the individual values of the households and the sum of the load profiles (three buildings).\n"
 "          The exemplary presentation illustrates how various aggregations (temporal and spatial) affect outcomes. High-frequency measurements make individual effects very visible, which may be lost in other aggregations. This aims to provide users with a quantitative and qualitative understanding of the effects of digitalization and their interactions. For example, resources and energy are required for the creation and operation of measurement technology,\n"
-"          but more precise measurements also enable more individualized feedback to users
+"          but more precise measurements also enable more individualized feedback to users or detection of faults.\n"
+
+"          The goal is to uncover the various effects of digitalization and to demonstrate the interaction of different requirements. In doing so, we address various questions:"
 
 
 #: templates/use_cases/usecase-listings.html:3

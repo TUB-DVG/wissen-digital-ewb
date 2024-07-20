@@ -85,12 +85,21 @@ Finally the created class gets registered with the corresponding model-class:
         )
     translator.register(Tools, ToolsTranslationOptions)
 ```
-"model translation" expects now for each of the provided model-field names additional database attributes for each present language. In case of the Wissensplattform for each specified attribute a "_de" and "_en" attribute is execpted. E.g. besides "shortDescription" there should also be "shortDescription_de" and "shortDescription_en" inside the "Tools" table. Otherwise an database-lookup error is thrown and the App doesnt work. The missing attributes have to be created manually:
+"model translation" expects now for each of the provided model-field names additional database attributes for each present language. In case of the Wissensplattform for each specified attribute a "_de" and "_en" attribute is execpted. E.g. besides "shortDescription" there should also be "shortDescription_de" and "shortDescription_en" inside the "Tools" table. Otherwise an database-lookup error is thrown and the App doesnt work. The missing attributes can be added manually, which would look similar to the following code:
 ```
 ALTER TABLE public.publications_type
 ADD COLUMN "bibtex_types_de" varchar(256);
 ```
-The above example adds the german version of the "bibtex_types"-attribute to the publications_type-table. After the database is set up correctly the default german content needs to be copied into the "_de"-field. E.g. for all rows the content of "shortDescription" has to be copied inside "shortDescription_de". This can be done with a custom django command:
+The above example adds the german version of the "bibtex_types"-attribute to the publications_type-table. 
+Alternativly the `sync_translation_fields` can be used, which is a interactive utility to alter the database table. It can be executed by calling it together with the `manage.py` file:
+```
+    python manage.py sync_translation_fields
+```
+Or the `run`-script can be used:
+```
+    ./run sync_translation_fields 
+```
+After the database is set up correctly the default german content needs to be copied into the "_de"-field. E.g. for all rows the content of "shortDescription" has to be copied inside "shortDescription_de". This can be done with a custom django command:
 ```
    python manage.py update_translation_fields
 ```
