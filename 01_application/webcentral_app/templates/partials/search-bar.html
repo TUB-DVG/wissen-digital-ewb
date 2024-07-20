@@ -299,48 +299,35 @@ function submitSearchInputOnReturn(e) {
         $('#searchForm').submit(); // Trigger the form submission
     }
 }
-$('#searchBox').on('submit', submitAjaxRequest);
-=======
-});
+<!--$('#searchBox').on('submit', submitAjaxRequest);-->
+<!--=======-->
+<!--});-->
 function addClickEventToAllCheckboxes() {
   // get all descendants, which are in listing-results:
   var checkboxesForComparison = $( "input[class='comparisonInputTools']" )
-  <!--debugger; -->
+  var clickEve = -1;
   checkboxesForComparison.each(function() {
-    debugger; 
     // Check if 'click' event is already attached
-    
-    if (!clickEve) {
+    clickEve = $(this).attr("class").indexOf("checkBoxHandler") 
+    if (clickEve == -1) {
       $(this).on('click', addToSessionStorage);
+      $(this).addClass("checkBoxHandler");
     }
   });
 }
-  function addToSeesionStorage () {
-            $('input[type=checkbox]').click(function () {
-                var currentUrl = window.location.href;
-                
-                var id = $(this).parent().parent().attr('id');
+  function addToSessionStorage () {
+              var id = $(this).parent().parent().attr('id');
                     
-                var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
-                
-                if ($(this).parent().hasClass('comparison-active')) {
-                    $(this).parent().removeClass('comparison-active');
-                    var index = storedNames.indexOf(id);
-                    if (index !== -1) {
-                        storedNames.splice(index, 1);
-                    }
-                } else {
-                    $(this).parent().addClass('comparison-active');
-                    storedNames.push(id);
-                }
-                
-                sessionStorage.setItem("ids", JSON.stringify(storedNames));
-                console.log(sessionStorage.ids);
-            });
- 
+              var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
+              if ($(this).prop("checked")) {
+                storedNames.push(id) 
+              }
+              else {
+                storedNames.pop(id)
+              }
+              sessionStorage.setItem("ids", JSON.stringify(storedNames));
+              console.log(sessionStorage.ids);
   }
-
->>>>>>> 07221ade (trying to connect click event handler of comparison feature with async added elements)
 $(document).ready(function() {
     
     $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
@@ -379,7 +366,6 @@ $(document).ready(function() {
       }
     }  
 
-
     // on the backend load all static-paths for the down arrows:
     var downArrowTechnical = "{% static '/assets/images/arrow_down_technical.svg' %}";
     var downArrowEcological = "{% static '/assets/images/arrow_down_ecological.svg' %}";
@@ -398,7 +384,6 @@ $(document).ready(function() {
         break;
       }
     }
-
 
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
@@ -425,6 +410,8 @@ $(document).ready(function() {
       }
   }
 
+
+$('#searchBox').on('submit', submitAjaxRequest);
 
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {

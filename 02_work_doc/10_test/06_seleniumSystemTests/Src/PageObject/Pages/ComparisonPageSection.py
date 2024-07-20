@@ -46,7 +46,7 @@ class ComparisonPageSection(GenericPageObject):
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.firstComparisonDiv,
+                Locator.compareContainer,
             )
         except:
             return None
