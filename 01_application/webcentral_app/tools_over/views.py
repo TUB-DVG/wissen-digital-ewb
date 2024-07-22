@@ -174,19 +174,19 @@ def index(request):
             {
                 "placeholder": "Nutzung",
                 "objects": usageNames,
-                "filter": filteredBy[0],
+                "filtered": request.GET.get("use-hidden", ""),
                 "fieldName": "use",
             },
             {
                 "placeholder": "Zugänglichkeit",
                 "objects": accessibilityNames,
-                "filter": filteredBy[1],
+                "filtered": request.GET.get("accessibility-hidden", ""),
                 "fieldName": "accessibility",
             },
             {
                 "placeholder": "Lebenszyklusphase",
                 "objects": lifeCyclePhaseNames,
-                "filter": filteredBy[2],
+                "filtered": request.GET.get("lifeCyclePhase-hidden", ""),
                 "fieldName": "lifeCyclePhase",
             },
         ],
