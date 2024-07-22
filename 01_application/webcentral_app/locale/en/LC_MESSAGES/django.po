@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 12:30+0000\n"
+"POT-Creation-Date: 2024-07-22 05:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "Time series"
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:112 common/views.py:61 component_list/views.py:225
+#: Datasets/views.py:112 common/views.py:63 component_list/views.py:235
 #: templates/datasets_over/dataset-detail.html:131
 #: templates/weatherdata_over/weatherdata-detail.html:132
 #: weatherdata_over/views.py:79
@@ -467,7 +467,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:267
+#: StartSearch/views.py:267 pages/views.py:347
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
@@ -475,7 +475,7 @@ msgstr "Catalog of criteria"
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:164 component_list/views.py:147
+#: TechnicalStandards/views.py:164 component_list/views.py:157
 #: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
@@ -503,7 +503,7 @@ msgstr "Open-Source-status"
 msgid "Proprietär"
 msgstr "Proprietary"
 
-#: businessModel/views.py:18 pages/views.py:46
+#: businessModel/views.py:18 pages/views.py:47
 #: templates/StartSearch/StartSearch.html:261
 #: templates/partials/_navbar.html:115
 msgid "Geschäftsmodelle"
@@ -537,139 +537,123 @@ msgstr ""
 "which projects of the research initiative Energiewendebauen are confronted "
 "with, have been systematically addressed and are presented here."
 
-#: businessModel/views.py:69 pages/views.py:107
-#: templates/StartSearch/StartSearch.html:273
-#: templates/pages/userEngagement.html:4
-msgid "Nutzendenintegration"
-msgstr "User integration"
-
-#: common/views.py:53 templates/TechnicalStandards/protocol-comparison.html:23
+#: common/views.py:55 templates/TechnicalStandards/protocol-comparison.html:23
 #: templates/component_list/componentComparisonResults.html:12
-#: templates/tools_over/tool-comparison.html:23
 msgid "Ergebnisse"
 msgstr "Results"
 
-#: common/views.py:66 component_list/views.py:205 component_list/views.py:220
+#: common/views.py:68 component_list/views.py:215 component_list/views.py:230
 msgid "Komponente"
 msgstr "Component"
 
-#: common/views.py:71
+#: common/views.py:73
 msgid "Beschreibung"
 msgstr "Description"
 
-#: common/views.py:76 component_list/views.py:153 component_list/views.py:230
+#: common/views.py:78 component_list/views.py:163 component_list/views.py:240
 msgid "Energieverbrauch Nutzung (gesamt; in W)"
 msgstr "Total energy consumption (in W)"
 
-#: common/views.py:81 component_list/views.py:157 component_list/views.py:235
+#: common/views.py:83 component_list/views.py:167 component_list/views.py:245
 msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
 msgstr "Total greenhouse gas potential (in kg CO2-e)"
 
-#: common/views.py:86 component_list/views.py:161 component_list/views.py:240
+#: common/views.py:88 component_list/views.py:171 component_list/views.py:250
 msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
-#: common/views.py:91
+#: common/views.py:93
 #, fuzzy
 #| msgid "Lebensdauer (in Jahren)"
 msgid "Lebensdauer (in Jahre)"
 msgstr "Lifespan (in years)"
 
-#: common/views.py:96 component_list/views.py:169
+#: common/views.py:98 component_list/views.py:179
 msgid "Energieverbrauch Nutzung (aktiv; in W)"
 msgstr "Active energy consumption (in W)"
 
-#: common/views.py:104 component_list/views.py:175
+#: common/views.py:106 component_list/views.py:185
 msgid "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
 msgstr "Passive/standby energy consumption (in W)"
 
-#: common/views.py:110 component_list/views.py:180
+#: common/views.py:112 component_list/views.py:190
 msgid "Treibhauspotenzial (Herstellung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (production; in kg CO2-e)"
 
-#: common/views.py:115 component_list/views.py:184
+#: common/views.py:117 component_list/views.py:194
 msgid "Treibhauspotenzial (Nutzung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (usage; in kg CO2-e)"
 
-#: common/views.py:121 component_list/views.py:189
+#: common/views.py:123 component_list/views.py:199
 msgid "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (disposal; in kg CO2-e)"
 
-#: common/views.py:126 component_list/views.py:143
+#: common/views.py:128 component_list/views.py:153
 #: templates/datasets_over/dataset-detail.html:86
 #: templates/weatherdata_over/weatherdata-detail.html:81
 msgid "Weitere Informationen"
 msgstr "Further information"
 
-#: common/views.py:131
+#: common/views.py:133
 #, fuzzy
 #| msgid "Quelle"
 msgid "Quellen"
 msgstr "Source"
 
-#: common/views.py:134 component_list/views.py:112 pages/views.py:153
+#: common/views.py:136 component_list/views.py:122 pages/views.py:193
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: common/views.py:145 templates/TechnicalStandards/protocol-comparison.html:29
+#: common/views.py:147 templates/TechnicalStandards/protocol-comparison.html:29
 msgid "Attribut"
 msgstr "Attribute"
 
-#: common/views.py:155 templates/tools_over/explanationApps.html:30
+#: common/views.py:157 templates/tools_over/explanationApps.html:30
 #: templates/tools_over/explanationTools.html:30
-#: templates/tools_over/tool-comparison.html:44
 #: templates/tools_over/tool-detail.html:68
 msgid "Einsatzbereich"
 msgstr "Area of application"
 
-#: common/views.py:160 templates/tools_over/tool-comparison.html:56
-#, fuzzy
-#| msgid "Anwendungen"
+#: common/views.py:162
 msgid "Verwendung"
 msgstr "Applications"
 
-#: common/views.py:165 templates/tools_over/explanationApps.html:38
+#: common/views.py:167 templates/tools_over/explanationApps.html:38
 #: templates/tools_over/explanationTools.html:38
-#: templates/tools_over/tool-comparison.html:69
 #: templates/tools_over/tool-detail.html:244
 #: templates/tools_over/tool-listings.html:81
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
-#: common/views.py:170 templates/tools_over/explanationApps.html:46
+#: common/views.py:172 templates/tools_over/explanationApps.html:46
 #: templates/tools_over/explanationTools.html:46
-#: templates/tools_over/tool-comparison.html:80
 #: templates/tools_over/tool-detail.html:79
 msgid "Zielgruppe"
 msgstr "Target group"
 
-#: common/views.py:175 templates/tools_over/tool-comparison.html:91
+#: common/views.py:177
 msgid "Benutzeroberfläche"
 msgstr "User interface"
 
-#: common/views.py:181 templates/tools_over/explanationApps.html:107
+#: common/views.py:183 templates/tools_over/explanationApps.html:107
 #: templates/tools_over/explanationTools.html:107
-#: templates/tools_over/tool-comparison.html:102
 #: templates/tools_over/tool-detail.html:178
 msgid "Räumliche Größenordnung der Anwendungsfälle"
 msgstr "Spatial scale of use cases"
 
-#: common/views.py:186 templates/tools_over/explanationApps.html:56
+#: common/views.py:188 templates/tools_over/explanationApps.html:56
 #: templates/tools_over/explanationTools.html:56
-#: templates/tools_over/tool-comparison.html:113
 #: templates/tools_over/tool-detail.html:83
 #: templates/tools_over/tool-listings.html:70
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
-#: common/views.py:191 templates/tools_over/tool-comparison.html:124
-#: templates/tools_over/tool-detail.html:165
+#: common/views.py:193 templates/tools_over/tool-detail.html:165
 msgid "Programmiersprache (Umsetzung)"
 msgstr "Programming language (implementation)"
 
-#: common/views.py:196 templates/tools_over/explanationApps.html:59
+#: common/views.py:198 templates/tools_over/explanationApps.html:59
 #: templates/tools_over/explanationTools.html:59
-#: templates/tools_over/tool-comparison.html:131
 #: templates/tools_over/tool-detail.html:87
 #: templates/tools_over/tool-detail.html:236
 #: templates/weatherdata_over/explanation.html:29
@@ -678,39 +662,37 @@ msgstr "Programming language (implementation)"
 msgid "Lizenz"
 msgstr "License"
 
-#: common/views.py:204 templates/tools_over/explanationApps.html:88
+#: common/views.py:206 templates/tools_over/explanationApps.html:88
 #: templates/tools_over/explanationTools.html:88
-#: templates/tools_over/tool-comparison.html:138
 #: templates/tools_over/tool-detail.html:155
 msgid "Entwicklungsstand"
 msgstr "Level of development"
 
-#: common/views.py:210 templates/tools_over/tool-comparison.html:151
-#: templates/tools_over/tool-detail.html:130
+#: common/views.py:212 templates/tools_over/tool-detail.html:130
 msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
 
-#: common/views.py:215 templates/tools_over/explanationApps.html:50
+#: common/views.py:217 templates/partials/listing-grid.html:54
+#: templates/tools_over/explanationApps.html:50
 #: templates/tools_over/explanationTools.html:50
-#: templates/tools_over/tool-comparison.html:159
 #: templates/tools_over/tool-listings-results.html:52
 #: templates/weatherdata_over/explanation.html:25
 msgid "Letztes Update"
 msgstr "Last update"
 
-#: common/views.py:222
+#: common/views.py:224
 #, fuzzy
 #| msgid "Digitale Werkzeuge"
 msgid "Zurück zu den digitalen Werkzeugen"
 msgstr "Digital tools"
 
-#: common/views.py:228
+#: common/views.py:230
 #, fuzzy
 #| msgid "Digitale Werkzeuge"
 msgid "Zurück zu den digitalen Anwendungen"
 msgstr "Digital tools"
 
-#: common/views.py:247
+#: common/views.py:249
 #: templates/component_list/componentComparisonResults.html:14
 msgid ""
 "Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum "
@@ -721,22 +703,40 @@ msgid ""
 "doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
 msgstr ""
 
-#: component_list/views.py:83
+#: component_list/views.py:82
 msgid "Ausgeklappt"
 msgstr "Expanded"
 
-#: component_list/views.py:114
+#: component_list/views.py:124
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
+#| "Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
+#| "Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht "
+#| "werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung "
+#| "einer effektiven Nutzung von Daten für die Betriebsoptimierung von "
+#| "Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder "
+#| "weitere – Komponenten zusätzlich für die digitale Anwendung verbaut "
+#| "werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz "
+#| "einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier "
+#| "finden Sie wichtige Komponenten und deren Umweltlasten."
 msgid ""
-"In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
-"Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
-"Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. "
-"Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer "
-"effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und "
-"Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – "
-"Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, "
-"müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
-"sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
-"Komponenten und deren Umweltlasten."
+"Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette "
+"(siehe auch {renderedTemplateObj}) ist immer mit einem materiellen Einsatz "
+"für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-"
+"Wertschöpfungskette können wichtige Komponenten von der Datenerfassung "
+"(Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 "
+"zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden "
+"und Quartieren häufig zur Anwendung kommen (hier Fokus auf "
+"Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten "
+"zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die "
+"entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen "
+"dabei die Emissionen, die bei der Herstellung von der Gewinnung der "
+"Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch "
+"den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis "
+"zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit "
+"der Methode der Ökobilanz erfasst.\n"
+"        "
 msgstr ""
 "In analogy to the data value chain (see 'Expenses for data processing "
 "processes'), important components can be thought of from data acquisition "
@@ -748,43 +748,55 @@ msgstr ""
 "balance sheet. All life cycle phases must be taken into account. Here you "
 "will find important components and their environmental impact."
 
-#: component_list/views.py:165 component_list/views.py:245
+#: component_list/views.py:175 component_list/views.py:255
 msgid "Lebensdauer (in Jahren)"
 msgstr "Lifespan (in years)"
 
-#: component_list/views.py:215
+#: component_list/views.py:225
 msgid "Sortierung"
 msgstr "Sorting"
 
-#: component_list/views.py:266
-#| msgid "Aufwände für Datenverarbeitungsprozsse"
+#: component_list/views.py:272
+msgid ""
+"Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die "
+"zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
+msgstr ""
+
+#: component_list/views.py:279
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:272 component_list/views.py:304 pages/views.py:138
+#: component_list/views.py:285 component_list/views.py:324 pages/views.py:177
 #: templates/StartSearch/StartSearch.html:332
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:168
+#: templates/partials/_navbar.html:163
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: component_list/views.py:285 pages/views.py:178
+#: component_list/views.py:298 pages/views.py:218
 msgid "Die Daten-Wertschöpfungkette"
 msgstr ""
 
-#: component_list/views.py:316
+#: component_list/views.py:336
 #, fuzzy
 #| msgid "Aufwände für verwendete Komponenten"
 msgid "Zu den Aufwänden für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: criteriaCatalog/views.py:129 criteriaCatalog/views.py:193
+#: component_list/views.py:360 pages/views.py:211
+#: templates/partials/dataProcessingLeftColumn.html:3
+#, fuzzy
+#| msgid "Aufwände für Datenverarbeitungsprozsse"
+msgid "Aufwände für Datenverarbeitungsprozesse"
+msgstr "Expenditure for data processing procedures"
+
+#: criteriaCatalog/views.py:137 criteriaCatalog/views.py:203
 #: templates/common/back-button.html:4
 #: templates/datasets_over/dataset-detail.html:45
 msgid "Zurück"
 msgstr "Back"
 
-#: pages/views.py:50
+#: pages/views.py:51
 msgid ""
 "Der Fokus in einem Forschungsprojekt liegt häufig in einem innovativen "
 "Produkt, einer digitalen Anwendung oder auch einer neuen Software. Bei der "
@@ -809,11 +821,11 @@ msgstr ""
 "workshops. In addition, a collection of tools has been created to support "
 "the development from prototype to business model."
 
-#: pages/views.py:62
+#: pages/views.py:63
 msgid "Herausforderungen bei der Entwicklung und Umsetzung"
 msgstr "Challenges in development and implementation"
 
-#: pages/views.py:64
+#: pages/views.py:65
 msgid ""
 "Bei der Umsetzung von Prototypen digitaler Anwendungen in ein "
 "funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese "
@@ -830,11 +842,11 @@ msgstr ""
 "social factors such as difficult financing models. An overview of obstacles "
 "and possible solutions provides assistance in this regard."
 
-#: pages/views.py:77
+#: pages/views.py:78
 msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
 msgstr "Applications for the development of business models"
 
-#: pages/views.py:79
+#: pages/views.py:80
 msgid ""
 "Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die "
 "Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei "
@@ -851,7 +863,16 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
-#: pages/views.py:111 pages/views.py:123
+#: pages/views.py:140 templates/StartSearch/StartSearch.html:273
+#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:130
+msgid "Nutzendenintegration"
+msgstr "User integration"
+
+#: pages/views.py:153
+msgid "Methoden zur Nutzendenintegration"
+msgstr "Methods for user integration"
+
+#: pages/views.py:155
 msgid ""
 "Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
 "deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist "
@@ -869,79 +890,64 @@ msgstr ""
 "individual interviews, group interviews / focus groups, participant "
 "observations, and personas."
 
-#: pages/views.py:121
-msgid "Methoden zur Nutzendenintegration"
-msgstr "Methods for user integration"
-
-#: pages/views.py:142
+#: pages/views.py:181
+#, python-brace-format
 msgid ""
-"Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie "
-"bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch auch "
-"immer mit einem Material- und Ressourcenbedarf verbunden. Um überhaupt "
-"digitale Anwendungen nutzen zu können, müssen die entsprechenden Komponenten "
-"verbaut werden. Wie bei anderen Produkten auch, fallen Emissionen sowohl bei "
-"der Herstellung als auch im Betrieb und zum Lebensende an. Für digitale "
-"Anwendungen muss zudem der materielle und energetische Aufwand für die "
-"involvierten Prozesse zur effektiven Nutzung der Daten bilanziert werden. "
-"Die folgenden Übersichten sollen dabei helfen, einen Überblick über wichtige "
-"Teilaspekte bei der Bilanzierung der Umweltlasten zu erhalten. Dabei dient "
-"die Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale "
-"Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte "
-"können aber auch auf andere digitale Anwendungen übertragen werden."
+"Digitale Anwendungen zeichnen sich oftmals durch {renderedTemplate} aus. Sie "
+"können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. "
+"Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben "
+"sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im "
+"Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler "
+"Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen "
+"werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche "
+"Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur "
+"in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die "
+"Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden "
+"installiert werden. Aus der Summe dieser Aufwände lassen sich so die "
+"Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.\n"
+"        \n"
+"Zur Bestimmung der Umweltlasten sind Hinweise zur Abschätzung daher hier in "
+"die Bereiche „Aufwände für Datenverarbeitungsprozesse“ und „Aufwände für "
+"häufig verwendete Komponenten“ unterteilt."
 msgstr ""
-"Digital applications can contribute to achieving positive environmental "
-"impacts, such as energy savings. However, achieving these goals is always "
-"associated with a need for materials and resources. In order to use digital "
-"applications at all, the corresponding components must be installed. Like "
-"other products, emissions occur during manufacturing, operation, and end-of-"
-"life. For digital applications, the material and energy requirements for the "
-"processes involved in the effective use of data must also be accounted for. "
-"The following overviews are intended to provide an overview of important "
-"aspects in the assessment of environmental impacts. The optimization of "
-"building and district operations serves as an exemplary digital application. "
-"Many of the components and data usage steps depicted can also be applied to "
-"other digital applications."
 
-#: pages/views.py:155 pages/views.py:173
+#: pages/views.py:195
 msgid ""
-"In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
-"Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
-"Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. "
-"Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung einer "
-"effektiven Nutzung von Daten für die Betriebsoptimierung von Gebäuden und "
-"Quartieren notwendig sind. Je nachdem welche dieser – oder weitere – "
-"Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, "
-"müssen die entsprechenden Umweltlasten mit in die Bilanz einfließen. Dabei "
-"sind alle Lebenszyklusphasen mit zu betrachten. Hier finden Sie wichtige "
-"Komponenten und deren Umweltlasten"
+"Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der "
+"Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten "
+"verbunden. Das sind alle Komponenten, die einen zweckmäßigen Betrieb der "
+"digitalen Anwendung sicherstellen. Je nachdem, welche dieser Komponenten "
+"zusätzlich für die digitale Anwendung verbaut werden, müssen die "
+"entsprechenden Umweltlasten mitbilanziert werden (inkl. aller Lebensphasen). "
+"Werden bestehende Komponenten genutzt, können die Lasten durch die anteilige "
+"Nutzung in die Bilanz einfließen. Die hier dargestellte Übersicht zu häufig "
+"verwendeten Komponenten (Fokus Betriebsoptimierung von Gebäuden) soll einen "
+"einfachen Überblick zu den Hardware-bezogenen Umweltlasten bieten."
 msgstr ""
-"In analogy to the data value chain (see \"Efforts for data processing "
-"processes\"), important components can be considered from data acquisition "
-"(sensors) to data utilization (actuators). Figure 2 shows important "
-"components that are necessary for the realization of effective data "
-"utilization for the optimization of building and district operations. "
-"Depending on which of these - or additional - components had to be installed "
-"for the digital application, the corresponding environmental impacts must be "
-"included in the balance sheet. All life cycle phases must be considered. "
-"Here you will find important components and their environmental impacts."
 
-#: pages/views.py:160
+#: pages/views.py:200
 msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
 msgstr ""
 
-#: pages/views.py:171
-#, fuzzy
-#| msgid "Aufwände für Datenverarbeitungsprozsse"
-msgid "Aufwände für Datenverarbeitungsprozesse"
-msgstr "Expenditure for data processing procedures"
+#: pages/views.py:213
+msgid ""
+"Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und "
+"Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, "
+"die sich in der Regel ständig wiederholen. Dadurch kommt es ununterbrochen "
+"zur Generierung von Daten, was mit einem entsprechenden Energie- und "
+"Ressourcenverbrauch verbunden ist. Die Aufwände, die für die Nutzung der "
+"entsprechenden Dateninfrastruktur entstehen, werden hier näher erläutert. "
+"Einfache Abschätzungen anhand des Datenaufkommens werden ebenfalls "
+"vorgenommen."
+msgstr ""
 
-#: pages/views.py:196 pages/views.py:221 pages/views.py:289
+#: pages/views.py:236 pages/views.py:261
 #: templates/StartSearch/StartSearch.html:344
-#: templates/partials/_navbar.html:174
+#: templates/partials/_navbar.html:169
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: pages/views.py:200 pages/views.py:293
+#: pages/views.py:240
 #, fuzzy
 #| msgid ""
 #| "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
@@ -967,29 +973,77 @@ msgstr ""
 "product or service. A number of tools can support business model "
 "development. Some of these are presented here."
 
-#: pages/views.py:241 pages/views.py:264
+#: pages/views.py:279
+msgid ""
+"Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
+"immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
+"verbunden. Der sparsame Umgang mit Daten – die Datensuffizienz – gewinnt "
+"daher zunehmend an Relevanz, um das Datenvolumen insgesamt möglichst klein "
+"zu halten. Die Datensuffizienz schaut dabei auf alle Bereiche der "
+"Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, der Speicherung "
+"bis zur Löschung. Gerade die ökologischen Auswirkungen eines "
+"(in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und "
+"bleiben in der Praxis oftmals unbeachtet.\n"
+"\n"
+"Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem "
+"notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, "
+"wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb "
+"verbunden ist. Gleichzeitig soll bei der Datenerhebung, -übermittlung, -"
+"verarbeitung und -speicherung Hardware mit ressourcenschonendem "
+"Materialeinsatz und ressourcenschonende Übermittlungswege gewählt werden. "
+"Damit sollen die negativen ökologischen Wirkungen, die mit der "
+"Implementierung digitaler Anwendungen einhergehen, möglichst reduziert "
+"werden, während ein möglichst großer Nutzen erzielt werden soll. \n"
+"\n"
+"Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der "
+"Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 "
+"Abs. 1c der Datenschutz-Grundverordnung (DSGVO) für personenbezogene Daten "
+"definiert ist, und darauf abzielt, das Risiko für die Rechte und Freiheiten "
+"natürlicher Personen zu reduzieren. Der Begriff Datenminimierung aus der "
+"DSGVO ersetzt die Begriffe Datensparsamkeit und -vermeidung, die im "
+"Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden.\n"
+"\n"
+"Während die Datenminimierung also Grundrechtsrisiken durch extensive, nicht "
+"erforderliche Datenverarbeitung verhindert, zielt die Datensuffizienz darauf "
+"ab, die ökologischen Wirkungen durch die Erhebung, Verarbeitung und "
+"Speicherung von extensiven, nicht erforderlichen Daten zu minimieren. Um "
+"eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
+"unterschiedliche Begriffe verwendet. \n"
+"\n"
+"Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten "
+"generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen "
+"Zweck sie im weiteren Verlauf erfüllen werden und ob den Erwartungen an eine "
+"Forschungsarbeit auch entsprochen wird. Diese Maxime wissenschaftlichen "
+"Arbeitens soll auch mit diesem Ansatz nicht in Frage gestellt werden, jedoch "
+"sollte Datensuffizienz bei der Entwicklung im Hinblick auf die spätere "
+"Nutzungsphase mitgedacht werden. Denn werden die in Forschungsprojekten "
+"entwickelten digitalen Lösungen auf den Markt gebracht, können bei der "
+"Verbreitung datensparsamer Technologien durch die Mengeneffekte ökologische "
+"Wirkungen erzielt werden.   \n"
+"\n"
+"Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
+"und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen.\n"
+"    "
+msgstr ""
+
+#: pages/views.py:296 pages/views.py:322
 #: templates/StartSearch/StartSearch.html:368
-#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:184
+#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:179
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:243
+#: pages/views.py:351
 msgid ""
-"Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb "
-"immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. "
-"Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher "
-"zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche "
-"der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, Speicherung "
-"bis zur Löschung. Gerade die ökologischen Auswirkungen eines "
-"(in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und "
-"bleiben in der Praxis oftmals unbeachtet."
+"Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum "
+"dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor "
+"invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero "
+"eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, "
+"no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor "
+"sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor "
+"invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero "
+"eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, "
+"no sea takimata sanctus est Lorem ipsum dolor sit amet."
 msgstr ""
-"Sustainable handling of data - data sufficiency - is becoming increasingly "
-"relevant due to the material consumption and energy expenditure associated "
-"with the operation of ever-increasing computing capacities. Data sufficiency "
-"focuses on all areas of data processing: from collection, processing, "
-"storage to deletion. The ecological impacts of (in)sufficient data handling "
-"are currently under-researched and often overlooked in practice."
 
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
@@ -1204,7 +1258,7 @@ msgid "Art des Ergebnisses"
 msgstr "Type of result"
 
 #: templates/StartSearch/ResultSearch.html:78
-#: templates/publications/publications-detail.html:116 use_cases/views.py:75
+#: templates/publications/publications-detail.html:116 use_cases/views.py:226
 msgid "Fokus"
 msgstr "Focus"
 
@@ -1319,8 +1373,8 @@ msgstr "technical"
 #: templates/StartSearch/StartSearch.html:208
 #: templates/StartSearch/StartSearch.html:382
 #: templates/StartSearch/StartSearch.html:471
-#: templates/partials/_navbar.html:88 templates/partials/_navbar.html:141
-#: templates/partials/_navbar.html:190 templates/partials/_navbar.html:233
+#: templates/partials/_navbar.html:88 templates/partials/_navbar.html:136
+#: templates/partials/_navbar.html:185 templates/partials/_navbar.html:228
 msgid "Publikationen"
 msgstr "Publications"
 
@@ -1328,8 +1382,8 @@ msgstr "Publications"
 #: templates/StartSearch/StartSearch.html:283
 #: templates/StartSearch/StartSearch.html:392
 #: templates/StartSearch/StartSearch.html:481
-#: templates/partials/_navbar.html:93 templates/partials/_navbar.html:146
-#: templates/partials/_navbar.html:195 templates/partials/_navbar.html:238
+#: templates/partials/_navbar.html:93 templates/partials/_navbar.html:141
+#: templates/partials/_navbar.html:190 templates/partials/_navbar.html:233
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
@@ -1357,12 +1411,12 @@ msgstr ""
 "users."
 
 #: templates/StartSearch/StartSearch.html:282
-#: templates/partials/_navbar.html:140 templates/partials/_navbar.html:145
+#: templates/partials/_navbar.html:135 templates/partials/_navbar.html:140
 msgid "betrieblich"
 msgstr "operational"
 
 #: templates/StartSearch/StartSearch.html:310
-#: templates/partials/_navbar.html:162
+#: templates/partials/_navbar.html:157
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
@@ -1388,17 +1442,17 @@ msgstr ""
 
 #: templates/StartSearch/StartSearch.html:356
 #: templates/pages/benchmarkingChallenges.html:19
-#: templates/partials/_navbar.html:179
+#: templates/partials/_navbar.html:174
 msgid "Herausforderungen"
 msgstr "Challenges"
 
 #: templates/StartSearch/StartSearch.html:380
-#: templates/partials/_navbar.html:189 templates/partials/_navbar.html:194
+#: templates/partials/_navbar.html:184 templates/partials/_navbar.html:189
 msgid "ökologisch"
 msgstr "ecological"
 
 #: templates/StartSearch/StartSearch.html:414
-#: templates/partials/_navbar.html:212
+#: templates/partials/_navbar.html:207
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
@@ -1423,23 +1477,23 @@ msgstr ""
 "the building sector, offering concrete action recommendations for projects."
 
 #: templates/StartSearch/StartSearch.html:435
-#: templates/partials/_navbar.html:217
+#: templates/partials/_navbar.html:212
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:445
-#: templates/partials/_navbar.html:222
+#: templates/partials/_navbar.html:217
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
 #: templates/StartSearch/StartSearch.html:457
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:227
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:222
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
 #: templates/StartSearch/StartSearch.html:469
 #: templates/StartSearch/StartSearch.html:480
-#: templates/partials/_navbar.html:232 templates/partials/_navbar.html:237
+#: templates/partials/_navbar.html:227 templates/partials/_navbar.html:232
 msgid "rechtlich"
 msgstr "legal"
 
@@ -1585,12 +1639,10 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/explanation.html:158
 #: templates/TechnicalStandards/norm-explanation.html:33
 #: templates/TechnicalStandards/protocol-explanation.html:81
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:35
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:56
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:79
 #: templates/datasets_over/explanation.html:69
-#: templates/pages/dataSufficiencyLeftColumn.html:25
-#: templates/pages/dataSufficiencyLeftColumn.html:35
-#: templates/pages/dataSufficiencyRightColumn.html:34
-#: templates/pages/dataSufficiencyRightColumn.html:52
-#: templates/pages/dataSufficiencyRightColumn.html:70
 #: templates/pages/environmentalIntegrityRightColumn.html:43
 #: templates/pages/environmentalIntegrityRightColumn.html:62
 #: templates/pages/environmentalIntegrityRightColumn.html:81
@@ -1608,12 +1660,10 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/norm-explanation.html:34
 #: templates/TechnicalStandards/protocol-explanation.html:82
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:36
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:57
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:80
 #: templates/datasets_over/explanation.html:70
-#: templates/pages/dataSufficiencyLeftColumn.html:26
-#: templates/pages/dataSufficiencyLeftColumn.html:36
-#: templates/pages/dataSufficiencyRightColumn.html:35
-#: templates/pages/dataSufficiencyRightColumn.html:53
-#: templates/pages/dataSufficiencyRightColumn.html:71
 #: templates/pages/environmentalIntegrityRightColumn.html:44
 #: templates/pages/environmentalIntegrityRightColumn.html:63
 #: templates/pages/environmentalIntegrityRightColumn.html:82
@@ -2147,53 +2197,6 @@ msgstr ""
 msgid "Komponentenliste"
 msgstr "Component list"
 
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:14
-#, fuzzy
-#| msgid "Wärmebedarf"
-msgid "Zeitbedarf"
-msgstr "Heat demand"
-
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:17
-msgid "Gruppengröße"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:20
-msgid "Material"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:23
-msgid "Vorteile"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:27
-msgid "Durchgeführt von"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsLeftColumn.html:30
-msgid "Erfolgsfaktoren für die Umsetzung der Methode"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsRightColumn.html:33
-#: templates/pages/environmentalIntegrityLeftColumn.html:31
-#, fuzzy
-#| msgid "Zielgruppe"
-msgid "Ziele"
-msgstr "Target group"
-
-#: templates/businessModel/userEngagementDetailsRightColumn.html:37
-msgid "Ablauf"
-msgstr ""
-
-#: templates/businessModel/userEngagementDetailsRightColumn.html:47
-#, fuzzy
-#| msgid "Konkrete Anwendungsfälle"
-msgid "Konkrete Ziele"
-msgstr "Specific use cases"
-
-#: templates/businessModel/userEngagementDetailsRightColumn.html:54
-msgid "Konkreter Ablauf"
-msgstr "Concrete process"
-
 #: templates/component_list/componentComparisonResults.html:4
 #, fuzzy
 #| msgid "Komponentenliste"
@@ -2203,20 +2206,22 @@ msgstr "Component list"
 #: templates/component_list/components.html:136
 msgid ""
 "\n"
-"                    In der folgenden Tabelle finden Sie weitergehende "
-"Informationen zu den Treibhausgasemissionen und Energieverbräuchen "
-"(Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als"
+"                    Für häufig verwendete Komponenten, die für die "
+"Realisierung digitaler Anwendungen notwendig sind, wurden beispielhafte "
+"Produkte und deren Emissionen recherchiert oder mittels Lebenszyklusanalyse-"
+"Software modelliert. Die folgende Übersicht listet diese Komponenten, die "
+"entstehenden Emissionen, sowie weitere Informationen rund um die Komponenten "
+"auf. Zudem stehen die Inhalte der Tabelle als Excel-Datei inklusive eines "
+"kleinen Berechnungstools der Gesamt-Treibhausgasemissionen, verursacht durch "
+"alle Komponenten einer digitalen Anwendung, zum Download "
+"bereit:                    \n"
+"                    "
 msgstr ""
-"\n"
-"                    In the following table, you will find detailed "
-"information on the greenhouse gas emissions and energy consumption "
-"(operational phase) of commonly used components. You can download the data as"
 
-#: templates/component_list/components.html:137
-msgid ""
-" oder die Komponenten nach Ihren Vorgaben online darstellen lassen.\n"
-"                                        "
-msgstr "or show the components with their requirements online."
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:42
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:65
+msgid "Good Practice Beispiel"
+msgstr "Good practice example"
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -2978,6 +2983,11 @@ msgstr ""
 "challenges are divided into the following thematic areas: \"Benchmarking,\" "
 "\"Level of Detail – Scope of Application,\" and \"System Boundaries.\""
 
+#: templates/pages/businessModels.html:3
+#: templates/pages/businessModelsPractice.html:19
+msgid "Geschäftsmodelle – good-practice"
+msgstr "Business models – good practice"
+
 #: templates/pages/businessModelsChallenge.html:33
 msgid ""
 "Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
@@ -3008,10 +3018,6 @@ msgstr ""
 "exploitation. The challenges associated with business model development, "
 "which projects of the research initative Energiewendebauen are confronted "
 "with, have been systematically reviewed and will be presented here."
-
-#: templates/pages/businessModelsPractice.html:19
-msgid "Geschäftsmodelle – good-practice"
-msgstr "Business models – good practice"
 
 #: templates/pages/businessModelsPractice.html:32
 msgid ""
@@ -3135,11 +3141,6 @@ msgstr "Efficient data minimization in the building and neighborhood sector"
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guides, literature and court decisions"
 
-#: templates/pages/dataSufficiencyRightColumn.html:39
-#: templates/pages/dataSufficiencyRightColumn.html:57
-msgid "Good Practice Beispiel"
-msgstr "Good practice example"
-
 #: templates/pages/detailsPage.html:4
 msgid "Datenverarbeitung"
 msgstr "Data processing"
@@ -3175,6 +3176,13 @@ msgstr "Site"
 #| msgid "Digitale Anwendungen"
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
+
+#: templates/pages/environmentalIntegrityLeftColumn.html:31
+#: templates/user_integration/userEngagementDetailsRightColumn.html:32
+#, fuzzy
+#| msgid "Zielgruppe"
+msgid "Ziele"
+msgstr "Target group"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:34
 msgid "Strategien"
@@ -3251,7 +3259,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: templates/pages/impressum.html:15 templates/partials/_footer.html:76
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:78
 msgid "Impressum"
 msgstr "Imprint"
 
@@ -3331,7 +3339,6 @@ msgid "Nutzendeneinbindung"
 msgstr "User engangement"
 
 #: templates/pages/userIntegrationMethod.html:19
-#: templates/partials/_navbar.html:135
 msgid "Methoden"
 msgstr "Methods"
 
@@ -3392,15 +3399,19 @@ msgstr "Thermal load profile"
 msgid "Im Entwicklungsprozess"
 msgstr "Under development"
 
-#: templates/partials/_footer.html:28 templates/partials/_footer.html:44
+#: templates/partials/_footer.html:28
 msgid "Sprache wählen"
 msgstr "Select Language"
 
-#: templates/partials/_footer.html:65
+#: templates/partials/_footer.html:57
+msgid "Dokumentation"
+msgstr ""
+
+#: templates/partials/_footer.html:68
 msgid "Über uns"
 msgstr "About us"
 
-#: templates/partials/_footer.html:88
+#: templates/partials/_footer.html:90
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
@@ -3438,10 +3449,6 @@ msgstr "Business model"
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:130 templates/partials/_navbar.html:135
-msgid "Nutzenden&shy;perspektive"
-msgstr "User Engagement"
-
 #: templates/partials/comparison.html:5 templates/partials/comparison.html:13
 msgid "Vergleiche"
 msgstr "Compare"
@@ -3450,28 +3457,197 @@ msgstr "Compare"
 msgid "Zurücksetzen"
 msgstr "Reset to default"
 
-#: templates/partials/dataProcessingLeftColumn.html:3
-msgid "Aufwände für Datenverarbeitungsprozsse"
-msgstr "Expenditure for data processing procedures"
-
-#: templates/partials/dataProcessingRightColumn.html:4
+#: templates/partials/dataProcessingRightColumn.html:28
 msgid ""
 "\n"
-"Bei der Nutzung digitaler Technologien für die Betriebsoptimierung von "
-"Gebäuden und\n"
-"Quartieren werden in der Regel unterschiedliche Datenverarbeitungsprozesse "
-"durchlaufen, die am Ende eine\n"
-"bestmögliche Nutzung der Daten ermöglichen sollen. Einen Überblick über "
-"einige der möglichen\n"
-"Prozessschritte bietet das in Abbildung 1 gezeigten Daten-"
-"Wertschöpfungskette. Hinter jedem\n"
-"Prozessschritt steht eine programmierte Anweisung, die oftmals in Schleifen "
-"ausgeführt wird. Dadurch\n"
-"kommt es fortwährend zur Generierung von Daten, welche auch mit einem "
-"entsprechenden Energieverbrauch\n"
-"verbunden ist. Hier finden Sie Umweltlasten wichtiger "
-"Datenverarbeitungsprozesse."
+" Bei der Nutzung digitaler Technologien in Gebäuden und Quartieren werden "
+"unterschiedliche Datenverarbeitungsprozesse durchlaufen. Einen Überblick "
+"über einige der möglichen Prozessschritte bietet das Schaubild in Abbildung "
+"1. Eingeteilt in fünf Hauptkategorien entlang der Daten-Wertschöpfungskette "
+"finden sich dort viele Prozessschritte wieder, die bei digitalen Anwendungen "
+"im Gebäude- und Quartiersbereich zum Einsatz kommen. Hinter jedem "
+"Datenverarbeitungsprozessschritt steht eine programmierte Anweisung, die "
+"oftmals in Schleifen ausgeführt wird. Dadurch kommt es ununterbrochen zur "
+"Generierung von Daten, welche auch mit einem entsprechenden Energieverbrauch "
+"verbunden ist. Bei der Bilanzierung der durch die digitale Anwendung "
+"verursachten Umweltlasten muss also zu allererst das Datenaufkommen bzw. der "
+"Datenaufwand (z. B. in GB/Jahr) bekannt sein.\n"
+"  "
 msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:39
+msgid ""
+"\n"
+"Während der Nutzungsphase werden die entsprechenden Prozessschritte "
+"ununterbrochen von Komponenten der digitalen Anwendung ausgeführt. Hierbei "
+"ist anzumerken, dass die entstehenden Energieverbräuche im Betrieb, die für "
+"die Realisierung der Daten-Wertschöpfungskette notwendig sind, entsprechend "
+"zugeteilt werden müssen. Ein vereinfachendes Beispiel hierfür ist ein "
+"Temperatursensor im Gebäude, dessen Messwert alle 15 Minuten direkt von "
+"einem Arbeitsrechner im selben Gebäude abgefragt wird. Für diesen "
+"Prozessschritt (Abfrage von Sensordaten) entsteht ein entsprechender "
+"Datenaufwand und ein damit verbundener Energieverbrauch – und zwar beim "
+"Arbeitsrechner. Zusätzlich wird für den Betrieb des Sensors auch noch "
+"Energie verbraucht (z. B. batteriebetriebener kabelloser Sensor). Dieser "
+"Energieverbrauch ist wiederum der Komponente an sich zuzurechnen (siehe <a "
+"class=\"ecological-font-color\" href=\"\">„Aufwände für häufig verwendete "
+"Komponenten“</a>). \n"
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:45
+msgid ""
+"\n"
+"  Nutzende digitaler Anwendungen kennen die Bandbreiten (Datenvolumen/"
+"Zeiteinheit) einzelner Prozessschritte häufig nicht. Für eine einfache "
+"Abschätzung des Ressourcen- und Energieaufwands für die Datenverarbeitung "
+"können die Prozessschritte aggregiert als Gesamtdatenaufwand (GB/a) der "
+"digitalen Anwendung betrachtet werden. Wenn darüber hinaus noch der Standort "
+"der Server/Rechenzentren, die Technologie für den Datentransfer und der "
+"Zweck der Nutzung des Servers/Rechenzentrums bekannt sind, können der "
+"Stromverbrauch, der kumulierte Energieaufwand und die Treibhausgasemissionen "
+"abgeschätzt werden.\n"
+"  "
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:50
+msgid ""
+"\n"
+"  <strong>Energieverbrauch durch die Datenübertragung:</strong> Für den "
+"Transfer der Daten über die Internet-Infrastruktur muss an vielen Stellen "
+"(z. B. Repeater, Verstärker) Energie zum Betrieb der Geräte aufgewandt "
+"werden. Je nach Standort des Rechenzentrums (Länge der Übertragungsstrecke) "
+"ergibt sich für den Datentransfer eine unterschiedliche Anzahl an "
+"beteiligter Infrastruktur und damit ein Energieverbrauch, der i.d.R. mit "
+"Zunahme der Distanz ansteigt. Ebenso unterscheidet sich der Energieaufwand "
+"je nach Datenübertragungstechnologie der Zugangsnetzwerke (z. B. kabellos/"
+"kabelgebunden). In der Literatur variieren die Angaben zum Energieverbrauch "
+"für die Datenübertragung zum Teil deutlich, wobei das Alter der Technologie "
+"sowie die betrachteten Systemgrenzen maßgeblichen Einfluss haben (Coroama et "
+"al. 2015; Gröger et al. 2021; Gröger 2020; Wohlschlager et al. 2022; Wu et "
+"al. 2019; Gährs et al. 2021). \n"
+"Grob unterteilt setzt sich die Datenübertragung bis zum Eingang am "
+"Rechenzentrum aus dem Netzwerkequipment des Senders, dem Zugangsnetzwerk (z."
+"B. 4G-Netzwerk) und dem Kernnetzwerk des Internets zusammen. Gerade der "
+"Energieverbrauch für das Zugangs- und Kernnetzwerk bleiben den Nutzenden "
+"digitaler Anwendungen dabei oftmals verborgen, weshalb diese hier "
+"abgeschätzt werden.\n"
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:56
+msgid ""
+"\n"
+"Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB "
+"angenommen (Gröger 2020; Schien et al. 2015). Als Zugangsnetzwerke wurden "
+"drei Technologien betrachtet: mit den 4G und 5G Netzwerken zwei kabellose "
+"und mit dem VDSL (stellvertretend für die fixed access broadband networks - "
+"FAN) eine kabelgebundene Technologie. Für diese Technologien wurden die von "
+"Wu et al. (2019) projizierten Verbrauchswerte für 2024 verwendet, die sich "
+"zu 40 Wh/GB (4G), 9 Wh/GB (5G) und 10 Wh/GB (FAN) ergeben. Um "
+"unterschiedliche Entfernungen der Server abbilden zu können, wurde basierend "
+"auf Literaturangaben ein Korrekturfaktor berechnet. Der hier als Mark-up-"
+"Faktor bezeichnete Korrekturfaktor spiegelt die zusätzliche "
+"Leistungsaufnahme der Infrastrukturkomponenten in Abhängigkeit des "
+"Serverstandorts wider. Für Serverstandorte in Europa und in den USA ergibt "
+"sich für einen definierten Datenstrom von 1 GB/h eine zusätzliche "
+"Leistungsaufnahme von 0,3 bzw. 1 W, verglichen mit dem Serverstandort "
+"Deutschland (Gröger et al. 2021). Für die Faktorberechnung wurde diese "
+"zusätzliche Leistungsaufnahme ins Verhältnis zu den von Gröger et al. (2021) "
+"ermittelten Leistungsaufnahmen der jeweiligen Datenübertragung mittels VDSL, "
+"4G und 5G gesetzt. Die sich daraus ergebenen Mark-up-Faktoren sind in "
+"Tabelle 1 aufgeschlüsselt. Der Stromverbrauch am jeweiligen Standort kann "
+"daraufhin über die Summe des Verbrauchs des Kern- und Zugangsnetzwerks "
+"multipliziert mit dem jeweiligen Mark-up-Faktor abgeschätzt werden. Die sich "
+"ergebenen Kennwerte sind in Tabelle 2 aufgelistet. Dort sind auch die "
+"resultierenden Treibhausgasemissionen angegeben, die schätzungsweise aus den "
+"Emissionsfaktoren der Standorte berechnet wurden1. Zur genauen Berechnung "
+"des CO2-Fußabdrucks entlang des Übertragungsweges müsste der exakte "
+"Übertragungsweg bekannt sein, um so länderspezifische Emissionsfaktoren in "
+"die Berechnungen einbeziehen zu können.\n"
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:146
+msgid ""
+"\n"
+"  <strong>Energie- und Ressourcenverbrauch im Rechenzentrum (basierend auf "
+"der Studie Green Cloud Computing (Gröger et al. 2021)):</strong> Mit "
+"Dateneingang im Rechenzentrum entsteht ein Energieverbrauch durch den "
+"Betrieb der Hardware im Rechenzentrum (z. B. Server, Klimatisierung, "
+"Netzwerktechnik). Dieser muss anteilig auf die durch die Daten der digitalen "
+"Anwendung beanspruchten Ressourcen angerechnet werden. Da sich Rechenzentren "
+"in ihrer Effizienz unterscheiden, ist daher auch der Energieverbrauch für "
+"ein GB Daten je nach Rechenzentrum verschieden. Weiterhin muss beachtet "
+"werden, dass die Höhe des Energieverbrauchs von den jeweiligen Diensten "
+"abhängig ist, die im Rechenzentrum durchgeführt werden sollen. "
+"Unterschiedliche Dienste beanspruchen die Hardwarekomponenten des "
+"Rechenzentrums (i.e. Speicher, Arbeitsspeicher, Prozessor, Infrastruktur) "
+"verschieden stark. Durch das Dienst-abhängige Bereitstellen der physischen "
+"Ressourcen entsteht folglich ein variierender CO2-Fußabdruck für die "
+"genutzte Hardware des Rechenzentrums. So wird die Hardware beispielsweise "
+"durch das reine Speichern von Daten (Backup) anders genutzt als im Falle von "
+"Online-Anwendungen, die auf den Servern des Rechenzentrums laufen, aber nur "
+"zu bestimmten Zeitpunkten durch die digitale Anwendung abgefragt bzw. "
+"genutzt werden.\n"
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:151
+msgid ""
+"\n"
+"Häufige Dienste, für die digitale Anwendungen in Rechenzentren in "
+"Forschungsprojekten zur Anwendung kommen, sind das reine Speichern/Backup "
+"von Daten (folgend Use-Case „Online-Storage“) und das Bearbeiten (z. B. "
+"mittels Analysealgorithmen), Verwerten und anschließende Speichern von "
+"Daten. Letzterer Anwendungsfall (hier „virtuelle Maschine“) kann grob mit "
+"der Nutzung eines Servers als virtuelle Desktopumgebung verglichen werden. "
+"Während das Speichern von Daten vor allem die Ressource „Speicher“ nutzt und "
+"dies auch physikalisch als Anteil der genutzten Speicherkapazität allokiert "
+"werden kann, werden Nutzenden virtueller Maschinen die physikalischen "
+"Ressourcen nur virtuell zugesichert. Dies führt jedoch nicht zwingend zu "
+"einer physikalischen Belegung, da beispielsweise der Arbeitsspeicher nach "
+"der ausgeführten Datenbearbeitung wieder für andere Prozesse zur Verfügung "
+"steht. Den Use-Case der virtuellen Maschine betrachten die Autoren von Green "
+"Cloud Computing mit der Anzahl an Usern als Nutzen (in der Studie Green "
+"Cloud Computing als Anwendungsfall „Virtuelle Desktop Infrastruktur“). Für "
+"die Forschungsprojekte ist jedoch nicht die Anzahl an Nutzenden von "
+"Interesse, sondern das Aufbereiten und Speichern von Daten mittels der "
+"virtuellen Ressourcen. Daher wird der Nutzen hier ebenso als belegter "
+"Speicherplatz definiert. Das vereinfacht die Abschätzung der entstehenden "
+"Energie- und Ressourcenaufwände. Denn dieses Vorgehen bedeutet, dass der "
+"eingehende Datenaufwand im Rechenzentrum weiterverarbeitet und anschließend "
+"mit der gleichen Größe [GB] wie beim Eingang gespeichert wird. \n"
+msgstr ""
+
+#: templates/partials/dataProcessingRightColumn.html:248
+msgid ""
+"\n"
+"    Die oben genannten Kennwerte dienen der groben Orientierung. Die "
+"tatsächlichen Emissionen können je nach Rechenzentrum (Standort, "
+"Ausstattung, Effizienz, Strommix etc.) und – wie oben ersichtlich wird – vor "
+"allem auch auf Grund des Anwendungsfalls stark variieren. So lässt sich für "
+"die allgemeine Internetnutzung ein weitaus geringerer CO2-Fußabdruck von "
+"0,032 kg CO<sub>2eq</sub>/GB finden (Obringer et al. 2021).  Auch sei darauf "
+"hingewiesen, dass sich Literaturwerte z.T. stark bezüglich des "
+"Energieverbrauchs / der Emissionen unterscheiden. Gerade technologische "
+"Fortschritte / Effizienzgewinne entlang der gesamten "
+"Datenwertschöpfungskette, aber auch unterschiedliche Methoden zur Berechnung "
+"der Umweltlasten führen zu variierenden Werten.  Ebenso wird die Angabe "
+"spezifischer Werte wie kWh/GB durchaus hinterfragt (Kamiya 2020). Unter "
+"anderem bewirken bei solchen Angaben rechnerische Effekte wie ein "
+"proportional stärker ansteigender Datenverkehr, dass die Datenübertragung "
+"scheinbar effizienter wird (Gröger 2020). \n"
+msgstr ""
+
+#: templates/partials/listing-grid.html:26
+#: templates/tools_over/explanationApps.html:42
+#: templates/tools_over/explanationTools.html:42
+#: templates/tools_over/tool-detail.html:72
+#: templates/tools_over/tool-listings-results.html:24
+msgid "Nutzerschnittstelle"
+msgstr "User interface"
+
+#: templates/partials/listing-grid.html:52
+#: templates/tools_over/tool-listings-results.html:50
+msgid "Updates"
+msgstr "Updates"
 
 #: templates/partials/search-bar.html:98 templates/partials/search-bar.html:119
 msgid "Aufsteigend"
@@ -3620,13 +3796,6 @@ msgstr ""
 "In which phase of the product life cycle is the application used? The phases "
 "of preliminary planning, planning, implementation and operation are taken "
 "into account here."
-
-#: templates/tools_over/explanationApps.html:42
-#: templates/tools_over/explanationTools.html:42
-#: templates/tools_over/tool-detail.html:72
-#: templates/tools_over/tool-listings-results.html:24
-msgid "Nutzerschnittstelle"
-msgstr "User interface"
 
 #: templates/tools_over/explanationApps.html:43
 msgid ""
@@ -4239,59 +4408,6 @@ msgstr "Most important libraries (used during implementation)"
 msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 msgstr "Norms/standard (basis/orientation of the tool)"
 
-#: templates/tools_over/tool-listings-results.html:50
-msgid "Updates"
-msgstr "Updates"
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:5
-msgid "Darstellung der Zeitreihen"
-msgstr "Overview of timeseries"
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:20
-msgid ""
-"Auf dieser Seite präsentieren wir eine beispielhafte Darstellung, wie sich "
-"verschiedene Aggregationen (zeitlich und räumlich) auf verschiedene "
-"Anwendungsfälle der Digitalisierung auswirken. \n"
-"            Das Ziel ist es die unterschiedlichen Effekte der "
-"Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen "
-"aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:25
-#: templates/use_cases/explanation.html:91
-msgid ""
-"Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
-"von Effekten aus?"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:26
-#: templates/use_cases/explanation.html:92
-msgid ""
-"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
-"Gebäude) auf die Sichtbarkeit von Effekten aus?"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:27
-#: templates/use_cases/explanation.html:24
-#: templates/use_cases/explanation.html:93
-msgid "Was ist in dem Graph zu sehen?"
-msgstr ""
-
-#: templates/use_cases/DarstellungAggreagtionenEnergieverbrauchs.html:31
-msgid ""
-"Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
-"komplex und vielschichtig. So werden beispielsweise Ressourcen und Energie "
-"für Erstellung und den Betrieb von Messtechnik benötigt, eine genauere "
-"Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder "
-"ein genaues Erkennen von Fehlern.\n"
-"            Hier sollen einige dieser wechselwirkenden Effekte gesammelt und "
-"in ihren Auswirkungen begreifbar gemacht werden. Dazu werden die "
-"entsprechenden ausgewählten Zeitreihen dargestellt."
-msgstr "The impacts of digital applications are complex and multifaceted due to their interactions. For instance, resources and energy are required for the creation and operation of measurement technology."
-"However, more precise measurements also allow for more individualized feedback to users or accurate detection of errors."
-"Here, some of these interacting effects will be collected and their impacts made comprehensible. To this end, the respective selected time series will be displayed."
-
-
 #: templates/use_cases/explanation.html:18
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
@@ -4300,8 +4416,11 @@ msgid ""
 "Digitalisierung aufzudecken und die Inteaktion verschiedener Anforderungen "
 "aufzuzeigen. \n"
 "              Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr "On this page, we present a detailed analysis of various use cases in the context of the Smart Readiness Indicator. \n"
-"              The goal is to uncover the various effects of digitalization and to demonstrate the interaction of different requirements. \n"
+msgstr ""
+"On this page, we present a detailed analysis of various use cases in the "
+"context of the Smart Readiness Indicator. \n"
+"              The goal is to uncover the various effects of digitalization "
+"and to demonstrate the interaction of different requirements. \n"
 "              In doing so, we address various questions:"
 
 #: templates/use_cases/explanation.html:22
@@ -4314,8 +4433,15 @@ msgstr "What do we mean by a use case?"
 msgid "Welche Anwendungsfälle werden diskutiert?"
 msgstr "Which use cases are discussed?"
 
+#: templates/use_cases/explanation.html:24
+#: templates/use_cases/explanation.html:93
+msgid "Was ist in dem Graph zu sehen?"
+msgstr ""
+
 #: templates/use_cases/explanation.html:26
-msgid "Welche Aggregationen sind zu sehen und warum?"
+#, fuzzy
+#| msgid "Welche Aggregationen sind zu sehen und warum?"
+msgid "Welche Aggreationen sind zu sehen und warum?"
 msgstr "What aggregations are visible and why?"
 
 #: templates/use_cases/explanation.html:27
@@ -4337,12 +4463,17 @@ msgid ""
 "          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und "
 "in ihren Auswirkungen begreifbar gemacht werden."
 msgstr ""
-"Does the digital application require numerous measurements that reveal behavioral patterns? \n"
+"Does the digital application require numerous measurements that reveal "
+"behavioral patterns? \n"
 "          Does the application enable energy savings through feedback? \n"
-"          The impacts of digital applications are complex and multifaceted due to their interactions.\n"
-"          For instance, resources and energy are required for the creation and operation of measurement technology, \n"
-"          but more precise measurements also allow for more individualized feedback to users or accurate detection of errors.\n"
-"          Here, some of these interacting effects will be collected and their impacts made comprehensible."
+"          The impacts of digital applications are complex and multifaceted "
+"due to their interactions.\n"
+"          For instance, resources and energy are required for the creation "
+"and operation of measurement technology, \n"
+"          but more precise measurements also allow for more individualized "
+"feedback to users or accurate detection of errors.\n"
+"          Here, some of these interacting effects will be collected and "
+"their impacts made comprehensible."
 
 #: templates/use_cases/explanation.html:42
 msgid ""
@@ -4352,8 +4483,11 @@ msgid ""
 "sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
 "          Dabei werden die folgenden Aspekte betrachtet:"
 msgstr ""
-"The framework of the Smart Readiness Indicator, developed according to EU regulations to assess the intelligence capability of buildings, is used as the basis. \n"
-"          Within this framework, 'Services' are defined, which are considered here as use cases.\n"
+"The framework of the Smart Readiness Indicator, developed according to EU "
+"regulations to assess the intelligence capability of buildings, is used as "
+"the basis. \n"
+"          Within this framework, 'Services' are defined, which are "
+"considered here as use cases.\n"
 "          The following aspects are considered:"
 
 #: templates/use_cases/explanation.html:47
@@ -4361,61 +4495,110 @@ msgid ""
 "Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
 "wordurch die Effekte/Wirkungen hervorgerufen werden."
 msgstr ""
-"Use Case: Describes the specific service being referenced and through which the effects/impacts are generated."
+"Use Case: Describes the specific service being referenced and through which "
+"the effects/impacts are generated."
 
 #: templates/use_cases/explanation.html:48
 msgid ""
 "Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
 "Durchführung bezieht."
-msgstr "Impact Level: The levels to which the use case or action/implementation pertains."
+msgstr ""
+"Impact Level: The levels to which the use case or action/implementation "
+"pertains."
 
 #: templates/use_cases/explanation.html:49
 msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
 msgstr "Level: The gradations in the implementation of the use case."
 
 #: templates/use_cases/explanation.html:70
+#, fuzzy
+#| msgid ""
+#| "Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
+#| "auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
+#| "             aus der Nutzendenperspektive oder der technischen Sichtweite."
 msgid ""
 "Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
 "auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
-"             aus der Nutzendenperspektive oder der technischen Sichtweite."
-msgstr "Perspective: The areas impacted by the implementation of the use case, such as economic, ecological, from the user's perspective, or from a technical viewpoint."
+"             aus der Nutzendenperspektive oder der technischen Sichweite."
+msgstr ""
+"Perspective: The areas impacted by the implementation of the use case, such "
+"as economic, ecological, from the user's perspective, or from a technical "
+"viewpoint."
 
 #: templates/use_cases/explanation.html:73
 msgid ""
 "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
 "Erzielten/intendierten Effekte."
-msgstr "Effect: The outcomes or intended effects associated with the implementation of the use case."
+msgstr ""
+"Effect: The outcomes or intended effects associated with the implementation "
+"of the use case."
 
 #: templates/use_cases/explanation.html:76
 msgid ""
 "Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
 "Services „Reporting information regarding electricity consumption“ statt."
-msgstr "A detailed examination using time series is conducted for the service 'Reporting information regarding electricity consumption.'"
+msgstr ""
+"A detailed examination using time series is conducted for the service "
+"'Reporting information regarding electricity consumption.'"
 
 #: templates/use_cases/explanation.html:78
+#, fuzzy
+#| msgid ""
+#| "Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
+#| "genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus "
+#| "den UK und Schottland enthalten.\n"
+#| "          39 dieser Haushalte sind in einem engmaschigen System "
+#| "gemonitort worden. \n"
+#| "          Für die Darstellung sind die engmaschig gemonitorten Haushalte "
+#| "105, 106 und 62 genutzt worden. "
 msgid ""
 "Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
-"genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus den "
+"genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte aus den "
 "UK und Schottland enthalten.\n"
 "          39 dieser Haushalte sind in einem engmaschigen System gemonitort "
 "worden. \n"
-"          Für die Darstellung sind die engmaschig gemonitorten Haushalte "
-"105, 106 und 62 genutzt worden. "
-msgstr "To illustrate these effects in detail, the IDEAL dataset was used, containing monitoring data for 255 households in the UK and Scotland.\n"
+"          Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, "
+"105 und 106 genutzt worden. Trotz dieses engmaschigen Monitorings ist "
+"ersichtlich, das nicht immer alle Sensoren funktionieren (Haushalt 106). "
+msgstr ""
+"To illustrate these effects in detail, the IDEAL dataset was used, "
+"containing monitoring data for 255 households in the UK and Scotland.\n"
 "          39 of these households were monitored in a close-mesh system.\n"
-"          For the presentation, closely monitored households 105, 106, and 62 were used."
+"          For the presentation, closely monitored households 105, 106, and "
+"62 were used."
 
 #: templates/use_cases/explanation.html:82
+#, fuzzy
+#| msgid ""
+#| "Dargestellt sind der Durchschnittliche Verbrauch in einem Zeitfenster von "
+#| "fünf Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die "
+#| "einzelnen Werte der Haushalte dargestellt und auch die Summe der "
+#| "Lastgänge (three buildings).\n"
+#| "          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
+#| "Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrequenter "
+#| "Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
+#| "Aggregationen untergehen. Damit sollen die Nutzenden \n"
+#| "          ein quantitatives und qualitatives Gefühl für die Effekte der "
+#| "Digitalisierung und deren Wechselwirkungen bekommen. So werden "
+#| "beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
+#| "Messtechnik benötigt, \n"
+#| "          eine genauere Messung ermöglicht aber auch ein individuelleres "
+#| "Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+#| "          <br>\n"
+#| "          Das Ziel ist es die unterschiedlichen Effekte der "
+#| "Digitalisierung aufzudecken und die Interaktion verschiedener "
+#| "Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene "
+#| "Fragestellungen ein:"
 msgid ""
-"Dargestellt sind der Durchschnittliche Verbrauch in einem Zeitfenster von fünf "
+"Dargestellt sind der Durschnittliche Verbrauch in einem Zeitfenster von fünf "
 "Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die einzelnen Werte "
 "der Haushalte dargestellt und auch die Summe der Lastgänge (three "
 "buildings).\n"
 "          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
-"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrequenter "
+"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
 "Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
-"Aggregationen untergehen. Damit sollen die Nutzenden \n"
-"          ein quantitatives und qualitatives Gefühl für die Effekte der "
+"Aggregationen unterhgehen. Damit sollen die Nutzenden \n"
+"          ein quantaitives und qualitatives Gefühl für die eFfekte der "
 "Digitalisierung und deren Wechselwirkungen bekommen. So werden "
 "beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
 "Messtechnik benötigt, \n"
@@ -4425,13 +4608,34 @@ msgid ""
 "          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
 "aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
 "Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr 
-"Displayed are the average consumption in time windows of five seconds, 15 minutes, and one hour, showing both the individual values of the households and the sum of the load profiles (three buildings).\n"
-"          The exemplary presentation illustrates how various aggregations (temporal and spatial) affect outcomes. High-frequency measurements make individual effects very visible, which may be lost in other aggregations. This aims to provide users with a quantitative and qualitative understanding of the effects of digitalization and their interactions. For example, resources and energy are required for the creation and operation of measurement technology,\n"
-"          but more precise measurements also enable more individualized feedback to users or detection of faults.\n"
+msgstr ""
+"Displayed are the average consumption in time windows of five seconds, 15 "
+"minutes, and one hour, showing both the individual values of the households "
+"and the sum of the load profiles (three buildings).\n"
+"          The exemplary presentation illustrates how various aggregations "
+"(temporal and spatial) affect outcomes. High-frequency measurements make "
+"individual effects very visible, which may be lost in other aggregations. "
+"This aims to provide users with a quantitative and qualitative understanding "
+"of the effects of digitalization and their interactions. For example, "
+"resources and energy are required for the creation and operation of "
+"measurement technology,\n"
+"          but more precise measurements also enable more individualized "
+"feedback to users or detection of faults.\n"
+"          The goal is to uncover the various effects of digitalization and "
+"to demonstrate the interaction of different requirements. In doing so, we "
+"address various questions:"
 
-"          The goal is to uncover the various effects of digitalization and to demonstrate the interaction of different requirements. In doing so, we address various questions:"
+#: templates/use_cases/explanation.html:91
+msgid ""
+"Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
+"von Effekten aus?"
+msgstr ""
 
+#: templates/use_cases/explanation.html:92
+msgid ""
+"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
+"Gebäude) auf die Sichtbarkeit von Effekten aus?"
+msgstr ""
 
 #: templates/use_cases/usecase-listings.html:3
 #, fuzzy
@@ -4439,11 +4643,59 @@ msgstr
 msgid "Überblick über die Use Cases"
 msgstr "Overview of norms"
 
-#: templates/use_cases/usecase-listings.html:18
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:36
 #, fuzzy
-#| msgid "Überblick über die Normen"
-msgid "Überblick über die Anwendungsfälle"
-msgstr "Overview of norms"
+#| msgid "Wärmebedarf"
+msgid "Zeitbedarf"
+msgstr "Heat demand"
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:39
+msgid "Gruppengröße"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:42
+msgid "Material"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:45
+msgid "Vorteile"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:53
+msgid "Nachteile"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:62
+#, fuzzy
+#| msgid "Good Practice Beispiel"
+msgid "Good-Practice-Beispiel"
+msgstr "Good practice example"
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:69
+msgid "Durchgeführt von"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsLeftColumn.html:72
+msgid "Erfolgsfaktoren für die Umsetzung der Methode"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsRightColumn.html:36
+msgid "Ablauf"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsRightColumn.html:46
+msgid "Literatur"
+msgstr ""
+
+#: templates/user_integration/userEngagementDetailsRightColumn.html:58
+#, fuzzy
+#| msgid "Konkrete Anwendungsfälle"
+msgid "Konkrete Ziele"
+msgstr "Specific use cases"
+
+#: templates/user_integration/userEngagementDetailsRightColumn.html:64
+msgid "Konkreter Ablauf"
+msgstr "Concrete process"
 
 #: templates/weatherdata_over/data-service-listings.html:22
 msgid "Überblick über Wetterdaten-Services"
@@ -4522,27 +4774,177 @@ msgstr "Link to the dataset"
 msgid "Beispielanwendung"
 msgstr "If applicable, exemplary application."
 
-#: use_cases/views.py:80
-msgid "Use Case"
+#: use_cases/views.py:19
+msgid ""
+"\n"
+"          <ol type=\"1\">\n"
+"            <p>\n"
+"              Auf dieser Seite präsentieren wir eine detaillierte Analyse "
+"verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das "
+"Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken "
+"und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir "
+"auf verschiedene Fragestellungen ein: \n"
+"            </p>\n"
+"            <li>Was verstehen wir unter einem Anwendungsfall?</li>\n"
+"            <li>Welche Anwendungsfälle werden diskutiert?</li>\n"
+"            <li>Was ist in dem Graph zu sehen?\n"
+"              <ol type=\"a\">\n"
+"                <li>Welche Aggreationen sind zu sehen und warum?</li>\n"
+"                <li>Woher kommen die Daten?</li>\n"
+"              </ol>\n"
+"            </li>\n"
+"          </ol>\n"
+"        <p>\n"
+"          Die digitale Anwendung benötigt zahlreiche Messdaten, die "
+"Verhaltensmuster erkennen lassen? \n"
+"          Die Anwendung ermöglicht durch Feedback energetische "
+"Einsparungen? \n"
+"          Die Auswirkungen digitaler Anwendungen sind durch ihre "
+"Wechselwirkungen komplex und vielschichtig.\n"
+"          So werden bepspielweise Ressourcen und Energie für Erstellung und "
+"den Betrieb von Messetechnik benötigt, \n"
+"          eine genauere Messung ermöglicht aber auch ein individuelleres "
+"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+"          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und "
+"in ihren Auswirkungen begreifbar gemacht werden.\n"
+"        </p>\n"
+"        <p>\n"
+"          Als Basis wird das Rahmenwerk des Smart Readiness Indicator "
+"genutzt, der zur Bewertung der Intelligenzfähigkeit von Gebäuden\n"
+"          nach Vorschriften der EU entwickelt wurde. In diesem Rahmenwerk "
+"sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
+"          Dabei werden die folgenden Aspekte betrachtet:\n"
+"        </p>\n"
+"        <ul>\n"
+"          <li>Use-Case: Beschreibt den konkreten Service auf den sich "
+"bezogen wird und wordurch die Effekte/Wirkungen hervorgerufen werden.</li>\n"
+"          <li>Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die "
+"Aktion/Durchführung bezieht.</li>\n"
+"          <li>Level: Die Abstufungen der Durchführung des Use-Casess.</li>\n"
+"          <table >\n"
+"           \n"
+"            <tr>\n"
+"              <td>Smart Readiness Indicator Service</td>\n"
+"              <td>Functionality level 0 (as non-smart default)</td>\n"
+"              <td>Functionality level 1</td>\n"
+"              <td>Functionality level 2</td>\n"
+"              <td>Functionality level 3</td>\n"
+"              <td>Functionality level 4</td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"              <td>Reporting information regarding electricity consumption</"
+"td>\n"
+"              <td>None</td>\n"
+"              <td>Reporting on current electricity consumption on building "
+"level</td>\n"
+"              <td>Real-time feedback or benchmarking on building level</td>\n"
+"              <td>Real-time feedback or benchmarking on appliance level</"
+"td>\n"
+"              <td>Real-time feedback or benchmarking on appliance level with "
+"automated personalized recommendation</td>\n"
+"            </tr>\n"
+"          </table>\n"
+"\n"
+"          <li>Perspektive: Die Bereiche auf denen sich die Durchführung des "
+"Use-Cases auswirkt, beispielsweise Ökonomisch, Ökologisch, aus der "
+"Nutzendenperspektive oder der technischen Sichweite.</li>\n"
+"\n"
+"             <li>Effekt: Die mit der Durchführung des Use-Cases "
+"einhergehenden Wirkungen bzw. Erzielten/intendierten Effekte.</li>\n"
+"        </ul>\n"
+"        <p>\n"
+"          Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand "
+"des Services „Reporting information regarding electricity consumption“ "
+"statt.\n"
+"          <br>\n"
+"          Um diese Effekte detaillierter darzustellen wurde der IDEAL-"
+"Datensatz genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte "
+"aus den UK und Schottland enthalten.\n"
+"          39 dieser Haushalte sind in einem engmaschigen System gemonitort "
+"worden. \n"
+"          Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, "
+"105 und 106 genutzt worden. Trotz dieses engmaschigen Monitorings ist "
+"ersichtlich, das nicht immer alle Sensoren funktionieren (Haushalt 106).\n"
+"          <br>\n"
+"          Dargestellt sind der Durschnittliche Verbrauch in einem "
+"Zeitfenster von fünf Sekunden, 15 Minuten und einer Stunde. Dabei sind "
+"sowohl die einzelnen Werte der Haushalte dargestellt und auch die Summe der "
+"Lastgänge (three buildings).\n"
+"          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
+"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
+"Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
+"Aggregationen unterhgehen. Damit sollen die Nutzenden \n"
+"          ein quantaitives und qualitatives Gefühl für die eFfekte der "
+"Digitalisierung und deren Wechselwirkungen bekommen. So werden "
+"beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
+"Messtechnik benötigt, \n"
+"          eine genauere Messung ermöglicht aber auch ein individuelleres "
+"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+"          <br>\n"
+"          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
+"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
+"Dabei gehen wir auf verschiedene Fragestellungen ein:\n"
+"      </p>\n"
+"      \n"
+"      <ul>\n"
+"          <li>Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf "
+"die Sichtbarkeit von Effekten aus?</li>\n"
+"          <li>Wie wirken sich einzelne Aggregationen (Anlagen, "
+"Gesamtverbrauch, Drei Gebäude) auf die Sichtbarkeit von Effekten aus?</li>\n"
+"          <li>Was ist in dem Graph zu sehen?</li>\n"
+"      </ul> \n"
+"          Weiterführende Informationen:\n"
+"        </p>\n"
+"        <p>\n"
+"          SRI:\n"
+"          <a href=\"https://energy.ec.europa.eu/system/files/2022-06/SRI "
+"training slide deck - Version 2 - Jan 2022 - updated.pdf\">Training "
+"SlTraining Slide Deckide Deck</a>\n"
+"        </p>\n"
+"        <p>\n"
+"          IDEAL Datensatz:\n"
+"          <a href=\"https://pubmed.ncbi.nlm.nih.gov/34050194/\">\n"
+"              Pullinger et al., The IDEAL household energy dataset, "
+"electricity, gas, contextual sensor data and survey data for 255 UK homes, "
+"ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a>\n"
+"        </p>\n"
+"        <br>\n"
+"    "
 msgstr ""
 
-#: use_cases/views.py:85
+#: use_cases/views.py:216
+#, fuzzy
+#| msgid "Überblick über die Normen"
+msgid "Überblick über die Anwendungsfälle"
+msgstr "Overview of norms"
+
+#: use_cases/views.py:232
+msgid "Level der Wirkebene"
+msgstr ""
+
+#: use_cases/views.py:238
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
-#: use_cases/views.py:86
+#: use_cases/views.py:239
 msgid "Positiv"
 msgstr ""
 
-#: use_cases/views.py:86
+#: use_cases/views.py:239
 #, fuzzy
 #| msgid "Alternativen"
 msgid "Negativ"
 msgstr "Alternatives"
 
-#: use_cases/views.py:86
+#: use_cases/views.py:239
 msgid "Neutral"
 msgstr ""
+
+#: user_integration/views.py:33
+#, fuzzy
+#| msgid "Methoden zur Nutzendenintegration"
+msgid "Übersicht Methoden Nutzendenintegration"
+msgstr "Methods for user integration"
 
 #: weatherdata_over/views.py:82
 #, fuzzy
@@ -4557,6 +4959,121 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:94
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie "
+#~ "bspw. Energieeinsparungen zu realisieren. Die Zielerreichung ist jedoch "
+#~ "auch immer mit einem Material- und Ressourcenbedarf verbunden. Um "
+#~ "überhaupt digitale Anwendungen nutzen zu können, müssen die "
+#~ "entsprechenden Komponenten verbaut werden. Wie bei anderen Produkten "
+#~ "auch, fallen Emissionen sowohl bei der Herstellung als auch im Betrieb "
+#~ "und zum Lebensende an. Für digitale Anwendungen muss zudem der materielle "
+#~ "und energetische Aufwand für die involvierten Prozesse zur effektiven "
+#~ "Nutzung der Daten bilanziert werden. Die folgenden Übersichten sollen "
+#~ "dabei helfen, einen Überblick über wichtige Teilaspekte bei der "
+#~ "Bilanzierung der Umweltlasten zu erhalten. Dabei dient die "
+#~ "Betriebsoptimierung von Gebäuden und Quartieren beispielhafte digitale "
+#~ "Anwendung. Viele der dargestellten Komponenten und Datennutzungsschritte "
+#~ "können aber auch auf andere digitale Anwendungen übertragen werden."
+#~ msgstr ""
+#~ "Digital applications can contribute to achieving positive environmental "
+#~ "impacts, such as energy savings. However, achieving these goals is always "
+#~ "associated with a need for materials and resources. In order to use "
+#~ "digital applications at all, the corresponding components must be "
+#~ "installed. Like other products, emissions occur during manufacturing, "
+#~ "operation, and end-of-life. For digital applications, the material and "
+#~ "energy requirements for the processes involved in the effective use of "
+#~ "data must also be accounted for. The following overviews are intended to "
+#~ "provide an overview of important aspects in the assessment of "
+#~ "environmental impacts. The optimization of building and district "
+#~ "operations serves as an exemplary digital application. Many of the "
+#~ "components and data usage steps depicted can also be applied to other "
+#~ "digital applications."
+
+#~ msgid ""
+#~ "In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
+#~ "Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
+#~ "Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht "
+#~ "werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung "
+#~ "einer effektiven Nutzung von Daten für die Betriebsoptimierung von "
+#~ "Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder "
+#~ "weitere – Komponenten zusätzlich für die digitale Anwendung verbaut "
+#~ "werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz "
+#~ "einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier "
+#~ "finden Sie wichtige Komponenten und deren Umweltlasten"
+#~ msgstr ""
+#~ "In analogy to the data value chain (see \"Efforts for data processing "
+#~ "processes\"), important components can be considered from data "
+#~ "acquisition (sensors) to data utilization (actuators). Figure 2 shows "
+#~ "important components that are necessary for the realization of effective "
+#~ "data utilization for the optimization of building and district "
+#~ "operations. Depending on which of these - or additional - components had "
+#~ "to be installed for the digital application, the corresponding "
+#~ "environmental impacts must be included in the balance sheet. All life "
+#~ "cycle phases must be considered. Here you will find important components "
+#~ "and their environmental impacts."
+
+#~ msgid ""
+#~ "Sowohl der Materialverbrauch als auch der Energieaufwand für den Betrieb "
+#~ "immer größer werdender Rechenkapazitäten stellt eine Herausforderung dar. "
+#~ "Der maßhaltige Umgang mit Daten – die Datensuffizienz – gewinnt daher "
+#~ "zunehmend an Relevanz. Die Datensuffizienz schaut dabei auf alle Bereiche "
+#~ "der Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, "
+#~ "Speicherung bis zur Löschung. Gerade die ökologischen Auswirkungen eines "
+#~ "(in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht "
+#~ "und bleiben in der Praxis oftmals unbeachtet."
+#~ msgstr ""
+#~ "Sustainable handling of data - data sufficiency - is becoming "
+#~ "increasingly relevant due to the material consumption and energy "
+#~ "expenditure associated with the operation of ever-increasing computing "
+#~ "capacities. Data sufficiency focuses on all areas of data processing: "
+#~ "from collection, processing, storage to deletion. The ecological impacts "
+#~ "of (in)sufficient data handling are currently under-researched and often "
+#~ "overlooked in practice."
+
+#~ msgid ""
+#~ "\n"
+#~ "                    In der folgenden Tabelle finden Sie weitergehende "
+#~ "Informationen zu den Treibhausgasemissionen und Energieverbräuchen "
+#~ "(Nutzungsphase) häufig verwendeter Komponenten. Sie können die Daten als"
+#~ msgstr ""
+#~ "\n"
+#~ "                    In the following table, you will find detailed "
+#~ "information on the greenhouse gas emissions and energy consumption "
+#~ "(operational phase) of commonly used components. You can download the "
+#~ "data as"
+
+#~ msgid ""
+#~ " oder die Komponenten nach Ihren Vorgaben online darstellen lassen.\n"
+#~ "                                        "
+#~ msgstr "or show the components with their requirements online."
+
+#~ msgid "Nutzenden&shy;perspektive"
+#~ msgstr "User Engagement"
+
+#~ msgid "Aufwände für Datenverarbeitungsprozsse"
+#~ msgstr "Expenditure for data processing procedures"
+
+#~ msgid "Darstellung der Zeitreihen"
+#~ msgstr "Overview of timeseries"
+
+#~ msgid ""
+#~ "Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
+#~ "komplex und vielschichtig. So werden beispielsweise Ressourcen und "
+#~ "Energie für Erstellung und den Betrieb von Messtechnik benötigt, eine "
+#~ "genauere Messung ermöglicht aber auch ein individuelleres Feedback an "
+#~ "Nutzende oder ein genaues Erkennen von Fehlern.\n"
+#~ "            Hier sollen einige dieser wechselwirkenden Effekte gesammelt "
+#~ "und in ihren Auswirkungen begreifbar gemacht werden. Dazu werden die "
+#~ "entsprechenden ausgewählten Zeitreihen dargestellt."
+#~ msgstr ""
+#~ "The impacts of digital applications are complex and multifaceted due to "
+#~ "their interactions. For instance, resources and energy are required for "
+#~ "the creation and operation of measurement technology.However, more "
+#~ "precise measurements also allow for more individualized feedback to users "
+#~ "or accurate detection of errors.Here, some of these interacting effects "
+#~ "will be collected and their impacts made comprehensible. To this end, the "
+#~ "respective selected time series will be displayed."
 
 #~ msgid "Übersicht"
 #~ msgstr "Overview"

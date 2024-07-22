@@ -203,8 +203,8 @@ def comparison(request):
                 "isManyToManyField":
                 False,
                 "displayedStr":
-                _("Entwicklungsstand") + "- 1 : pre-Alpha" + "- 2 : Alpha" +
-                "- 3 : Beta" + "- 4 : Release Canidate" + "- 5 : Released",
+                _("Entwicklungsstand") + " - 1: pre-Alpha" + " - 2: Alpha" +
+                " - 3: Beta" + " - 4: Release Canidate" + " - 5: Released",
             },
             {
                 "dbLocator": "yearOfRelease",

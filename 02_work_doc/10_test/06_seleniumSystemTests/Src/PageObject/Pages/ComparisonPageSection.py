@@ -91,12 +91,21 @@ class ComparisonPageSection(GenericPageObject):
         except:
             return None
 
-    def getStartComparisonDiv(self):
+    def getStartCompareButtonLink(self):
         """ """
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.startComparisonDiv,
+                Locator.compareButton,
+            )
+        except:
+            return None
+    
+    def getResetButtonLink(self):
+        try:
+            return self.driver.find_element(
+                By.XPATH,
+                Locator.resetButton,
             )
         except:
             return None

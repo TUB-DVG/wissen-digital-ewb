@@ -40,7 +40,7 @@
                       {% endfor %}
                     {% endwith %}
                   {% elif attribute.dbLocator == "image" %}
-                    {% if tool.image %}
+                    {% if modelObject.image %}
                       <img src="{{ modelObject.image.url }}"
                          class="card-img-top px-4 pt-4 pb-2 m-auto"
                          style="max-height: 100%;
