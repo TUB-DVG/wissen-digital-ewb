@@ -102,13 +102,10 @@ class ComparisonPageSection(GenericPageObject):
             return None
     
     def getResetButtonLink(self):
-        try:
-            return self.driver.find_element(
-                By.XPATH,
-                Locator.resetButton,
-            )
-        except:
-            return None
+        return self.driver.find_element(
+            By.XPATH,
+            "//div[@id='cancelButtonTools']",
+        )
 
     def getResetComparisonDiv(self):
         """ """

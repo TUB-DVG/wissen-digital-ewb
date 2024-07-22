@@ -4,7 +4,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q, Count
-from django.utils.translation import gettext
+from django.utils.translation import gettext as _
 
 # maybe I need also the other models
 from tools_over.models import (
@@ -326,21 +326,21 @@ def indexApps(request):
         "Tools",
         "optionList": [
             {
-                "placeholder": "Nutzung",
+                "placeholder": _("Nutzung"),
                 "objects": usageNames,
-                "filter": filteredBy[0],
+                "filtered": request.GET.get("use-hidden", ""),
                 "fieldName": "use",
             },
             {
-                "placeholder": "Zugänglichkeit",
+                "placeholder": _("Zugänglichkeit"),
                 "objects": accessibilityNames,
-                "filter": filteredBy[1],
+                "filtered":request.GET.get("accessibility-hidden", "") ,
                 "fieldName": "accessibility",
             },
             {
-                "placeholder": "Lebenszyklusphase",
+                "placeholder": _("Lebenszyklusphase"),
                 "objects": lifeCyclePhaseNames,
-                "filter": filteredBy[2],
+                "filtered":request.GET.get("liefCyclePhase-hidden", "") ,
                 "fieldName": "lifeCyclePhase",
             },
         ],
@@ -348,7 +348,7 @@ def indexApps(request):
         True,
     }
     if filtering:
-        return render(request, "tools_over/tool-listings-results.html",
+        return render(request, "tools_over/listing-grid.html",
                       context)
 
     return render(request, "tools_over/tool-listings.html", context)

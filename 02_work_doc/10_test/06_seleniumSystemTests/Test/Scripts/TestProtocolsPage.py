@@ -23,7 +23,8 @@ from selenium.common.exceptions import MoveTargetOutOfBoundsException
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.ProtocolPage import ProtocolPage
-
+from Src.PageObject.Pages.Pagination import Pagination
+from Src.PageObject.Pages.SearchPage import SearchPage
 
 class TestProtocolsPage(WebDriverSetup):
     """Tests the 'Lastapproximation'-Tab
@@ -42,8 +43,6 @@ class TestProtocolsPage(WebDriverSetup):
         searchInputField.send_keys("dali")
         searchInputField.send_keys(Keys.RETURN)
 
-        time.sleep(3)
-
         cardList = protocolPageObj.getCards() 
 
         self.assertEqual(
@@ -52,9 +51,8 @@ class TestProtocolsPage(WebDriverSetup):
             "Number of Cards should be 1 after searching for 'bisko'!",
         )
 
-        xOfSearchFilter = protocolPageObj.getXOfSearchFilter()
-        xOfSearchFilter.click()
-        time.sleep(1)
+        searchInputField.clear()
+        searchInputField.send_keys(Keys.RETURN)
 
         cardList = protocolPageObj.getCards() 
 
@@ -87,4 +85,36 @@ class TestProtocolsPage(WebDriverSetup):
             randomCardText,
             f"Page Title should be '{randomCardText}', after clicking on the card with the same name!",
         )
+
+    def testFilteringAndPagination(self):
+        """Test if the pagination works, when selecting an filter from one of the select elements
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+        self._setLanguageToGerman()
+
+        searchBarPageObj = SearchPage(self.driver)
+        paginationObj = Pagination(self.driver)
+
+        multiselectInputs = searchBarPageObj.getMultiSelectClickables()
+        chosenSelect = choice(multiselectInputs)
+        chosenSelect.click()
+
+        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[@class, 'dropdown-menu w-100']")
+        dropdownElements = searchBarPageObj.getDescendantsByClass(divOfOpenedDropDown, "dropdown-item")
+        chosenFilterItem = choice(dropdownElements)
+        chosenFilterItem.click()
+        
+        spanForCurrentSite = paginationObj.getPaginationCurrentSiteString()
+        textOfSpan = spanForCurrentSite.text
+        numberOfPages = int(textOfSpan.split("von")[1])
+        
+        # click on next site and check if still the same number of pages are shown:
+        paginationNextLink = paginationObj.getPaginationNextLink()
+        paginationNextLink.click()
+        
+        numberOfPagesOnNextSite = paginationObj.getPaginationCurrentSiteString()
+        textOfSpanOnNewSite = numberOfPagesOnNextSite.text
+        numberOfPagesNewSite = int(textOfSpanOnNewSite.split("von")[1])
+        self.assertEqual(numberOfPages, numberOfPagesNewSite)
+
 
