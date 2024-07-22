@@ -173,3 +173,5 @@ class WebDriverSetup(unittest.TestCase):
             self.assertEqual(translationDict["en"], elementText)
         else:
             self.assertEqual(self.getLanguage(), "en")
+
+
