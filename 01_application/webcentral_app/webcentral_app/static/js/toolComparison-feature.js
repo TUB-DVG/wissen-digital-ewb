@@ -79,10 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // firstComparisonButtonTools.style.display = 'none';
             var inputs = document.getElementsByClassName('comparisonInputTools');
             // for (var i = 0; i < inputs.length; i++) {
-            //     debugger;
             //     inputs[i].style.visibility = "visible";
             // }
-
             const cardTitles = document.getElementsByClassName("card-title")
         
             for (let i = 0; i < cardTitles.length; i++) {

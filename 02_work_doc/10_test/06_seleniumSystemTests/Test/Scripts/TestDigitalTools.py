@@ -27,7 +27,7 @@ from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.SearchPage import SearchPage
-from Src.Pageobject.pages.Pagination import Pagination
+from Src.PageObject.Pages.Pagination import Pagination
 
 class TestDigitalToolsPage(WebDriverSetup):
     """ """
@@ -83,7 +83,6 @@ class TestDigitalToolsPage(WebDriverSetup):
         comparisonPageSecObj = ComparisonPageSection(self.driver)
         startComapareDiv = comparisonPageSecObj.getStartCompareButtonLink()
         resetComparisonDiv = comparisonPageSecObj.getResetButtonLink()
-
         self.assertTrue(not startComapareDiv.is_displayed())
         self.assertTrue(not resetComparisonDiv.is_displayed())
 
@@ -111,12 +110,12 @@ class TestDigitalToolsPage(WebDriverSetup):
         paginationObj = Pagination(self.driver)
 
         multiselectInputs = searchBarPageObj.getMultiSelectClickables()
-        chosenSelect = choice(multiselectInputs)
+        chosenSelect = random.choice(multiselectInputs)
         chosenSelect.click()
 
-        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[@class, 'dropdown-menu w-100']")
-        dropdownElements = searchBarPageObj.getDescendantsByClass(divOfOpenedDropDown, "dropdown-item")
-        chosenFilterItem = choice(dropdownElements)
+        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]")
+        dropdownElements = searchBarPageObj.getDescendantsByTagName(divOfOpenedDropDown, "div")[1:] 
+        chosenFilterItem = random.choice(dropdownElements)
         chosenFilterItem.click()
         
         spanForCurrentSite = paginationObj.getPaginationCurrentSiteString()
@@ -208,7 +207,6 @@ class TestDigitalToolsPage(WebDriverSetup):
             "Search-String-X Button is not present!",
         )
 
-        # breakpoint()
         toolListPage.getXOfSearchFilter().click()
 
         time.sleep(1)
@@ -424,7 +422,6 @@ class TestDigitalToolsPage(WebDriverSetup):
         )
         comparisonButtons = comparisonPageSection.getDescendantsByTagName(
             firstComparisonDiv, "h6")
-        # breakpoint()
         self.assertEqual(len(comparisonButtons), 2)
 
         # check if the right text is displayed in the comparison-buttons
@@ -450,7 +447,6 @@ class TestDigitalToolsPage(WebDriverSetup):
         # randomly select the tools to compare
         toolsToCompare = random.sample(listOfToolItems, numberOfToolsToCompare)
         for tool in toolsToCompare:
-            # breakpoint()
             self.scrollElementIntoView(tool)
             toolCheckbox = tool.find_element(By.XPATH, ".//input") 
             self.scrollElementIntoViewAndClickIt(toolCheckbox)
@@ -459,7 +455,6 @@ class TestDigitalToolsPage(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(comparisonButtons[0])
         
         comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
-        # breakpoint()
         self.assertEqual(
             comparisonHeading.text,
             "Ergebnisse",
@@ -490,7 +485,6 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         for attrIndex, attributeStr in enumerate(shownAttributesStr):
             firstRowElement = comparisonPageSection.getDescendantsByTagName(listOfTableRows[attrIndex], "th")[0]
-            # breakpoint()
             self.assertTrue(attributeStr in firstRowElement.text, f"{firstRowElement.text} should be {attributeStr}...")
 
         # self._setLanguageToEnglish()
@@ -551,7 +545,6 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         for attrIndex, attributeStr in enumerate(shownAttributesStr):
             firstRowElement = comparisonPageSection.getDescendantsByTagName(listOfTableRows[attrIndex], "th")[0]
-            # breakpoint()
             self.assertTrue(attributeStr in firstRowElement.text, f"{firstRowElement.text} should be {attributeStr}...")
 
         # # check if the buttons are translated to english

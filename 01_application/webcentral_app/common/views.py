@@ -7,7 +7,7 @@ from tools_over.models import (
     Tools,
 )
 from component_list.models import Component
-
+from TechnicalStandards.models import Protocol
 
 def getFocusObjectFromGetRequest(focusStr) -> Focus:
     """Get the focus object from the get request."""
@@ -229,6 +229,83 @@ def comparison(request):
             templateName = "tools_over/toolsComparisonResults.html"
             backLinkText = _("Zurück zu den digitalen Anwendungen")
             backLinkPath = "businessModelApplication"
+    elif model == "Protocols":
+        modelObj = Protocol
+        backLinkText = _("Übersicht über Protokolle")
+        imgBackButtonPath = "assets/images/backArrowTechnical.svg"
+        backLinkPath = "TechnicalStandards_protocol_list"
+        focusBorder = "technical"
+        attributesToCompare = [
+            {
+                "dbLocator": "name",
+                "isManyToManyField": False,
+                "displayedStr": _("Attribut"),
+            },
+            {
+                "dbLocator": "image",
+                "isManyToManyField": False,
+                "displayedStr": "",
+            },
+            {
+                "dbLocator": "supportedTransmissionMediuems",
+                "isManyToManyField": True,
+                "displayedStr": _("Unterstützte Übertragungsmedien"),
+            },
+            {
+                "dbLocator": "associatedStandards",
+                "isManyToManyField": False,
+                "displayedStr": _("Zugehörige Standards"),
+            },
+            {
+                "dbLocator": "security",
+                "isManyToManyField": False,
+                "displayedStr": _("Implementierte Sicherheitsmechanismen"),
+            },
+            {
+                "dbLocator": "bandwidth",
+                "isManyToManyField": False,
+                "displayedStr": _("Bandbreite"),
+            },
+            {
+                "dbLocator": "frequency",
+                "isManyToManyField": False,
+                "displayedStr": _("Frequenz"),
+            },
+            {
+                "dbLocator": "range",
+                "isManyToManyField": False,
+                "displayedStr":
+                _("Reichweite"),
+            },
+            {
+                "dbLocator": "dataModelArchitecture",
+                "isManyToManyField": False,
+                "displayedStr": _("Datenmodell Architektur"),
+            },
+            {
+                "dbLocator": "multiMaster",
+                "isManyToManyField": False,
+                "displayedStr": _("Multi Master"),
+            },
+            {
+                "dbLocator": "priorities",
+                "isManyToManyField": False,
+                "displayedStr": _("Priorität"),
+            },
+            {
+                "dbLocator":
+                "osiLayers",
+                "isManyToManyField":
+                False,
+                "displayedStr":
+                _("Implementierte OSI-Schichten"),
+            },
+            {
+                "dbLocator": "buildingAutomationLayer",
+                "isManyToManyField": False,
+                "displayedStr": _("Ebenen der Gebäudeautomation"),
+            },
+        ]   
     else:
         return render(request, "404.html")
 
@@ -246,8 +323,7 @@ def comparison(request):
         "attributesToCompare":
         attributesToCompare,
         "explanaitionText":
-        _("Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem unt rest voles molor se reptur, erum sum autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
-          ),
+        "",
         "backLinkText":
         backLinkText,
         "imageInBackButton":

@@ -109,7 +109,6 @@ Page content START -->
             </div>
             <!-- standards grid END -->
             <!-- Pagination START -->
-            {% include "partials/pagination.html" %}
             <!-- Pagination END -->
           </div>
           <!-- Main content END -->
@@ -120,12 +119,4 @@ Page content START -->
     <!-- =======================
      Page content END -->
   </main>
-
-  <!-- **************** MAIN CONTENT END **************** -->
-
-  <!--ComparisonFeature-->
-  <script type="text/javascript"
-          src="{% static 'js/protocolComparison-feature.js' %}"
-          nonce="{{request.csp_nonce}}"></script>
-
 {% endblock %}
