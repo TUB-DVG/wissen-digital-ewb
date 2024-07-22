@@ -38,6 +38,11 @@
   width: 150px !important;
   /* height: 102px; */
   display: inline-block !important;
+  margin-left: -40px;
+}
+
+.use-bootstrap-select-wrapper:first-of-type {
+  margin-left: 0;
 }
 /* .dropdown-toggle::after {
     display: none;
@@ -85,7 +90,7 @@ input[type='text']::placeholder {
     <div class="col-xl-10">
       <div class="row g-3">
         <!-- Select items -->
-        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px">
+        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px; display: grid; grid-template-columns: auto auto auto;">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
               <select id="{{ optionContent.fieldName }}"
