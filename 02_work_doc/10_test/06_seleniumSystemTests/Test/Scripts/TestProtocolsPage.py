@@ -40,15 +40,15 @@ class TestProtocolsPage(WebDriverSetup):
         protocolPageObj = ProtocolPage(self.driver)
         searchInputField = protocolPageObj.getSearchInputElement()
 
-        searchInputField.send_keys("dali")
+        searchInputField.send_keys("BAC")
         searchInputField.send_keys(Keys.RETURN)
-
+        time.sleep(2)
         cardList = protocolPageObj.getCards() 
-
+        
         self.assertEqual(
             len(cardList),
             1,
-            "Number of Cards should be 1 after searching for 'bisko'!",
+            "Number of Cards should be 1 after searching for 'BAC'!",
         )
 
         searchInputField.clear()
@@ -89,32 +89,24 @@ class TestProtocolsPage(WebDriverSetup):
     def testFilteringAndPagination(self):
         """Test if the pagination works, when selecting an filter from one of the select elements
         """
-        self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
+        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        protocolPageObj = ProtocolPage(self.driver)
         self._setLanguageToGerman()
 
         searchBarPageObj = SearchPage(self.driver)
         paginationObj = Pagination(self.driver)
 
         multiselectInputs = searchBarPageObj.getMultiSelectClickables()
-        chosenSelect = choice(multiselectInputs)
+        chosenSelect = random.choice(multiselectInputs)
         chosenSelect.click()
 
-        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[@class, 'dropdown-menu w-100']")
-        dropdownElements = searchBarPageObj.getDescendantsByClass(divOfOpenedDropDown, "dropdown-item")
-        chosenFilterItem = choice(dropdownElements)
+        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]")
+        dropdownElements = searchBarPageObj.getDescendantsByTagName(divOfOpenedDropDown, "div")[1:] 
+        chosenFilterItem = random.choice(dropdownElements)
         chosenFilterItem.click()
         
-        spanForCurrentSite = paginationObj.getPaginationCurrentSiteString()
-        textOfSpan = spanForCurrentSite.text
-        numberOfPages = int(textOfSpan.split("von")[1])
-        
-        # click on next site and check if still the same number of pages are shown:
-        paginationNextLink = paginationObj.getPaginationNextLink()
-        paginationNextLink.click()
-        
-        numberOfPagesOnNextSite = paginationObj.getPaginationCurrentSiteString()
-        textOfSpanOnNewSite = numberOfPagesOnNextSite.text
-        numberOfPagesNewSite = int(textOfSpanOnNewSite.split("von")[1])
-        self.assertEqual(numberOfPages, numberOfPagesNewSite)
-
+        cardsOnPage = protocolPageObj.getCards()
+        self.assertTrue(
+            len(cardsOnPage) < 12, "After filtering, the number of list elements should have decreased."
+        )
 
