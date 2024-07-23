@@ -482,4 +482,19 @@ $('#searchBox').on('submit', submitAjaxRequest);
   })
   $("span.ms-auto").click(function() {
   });
+    var radioButtonCLicked = false;
+    $("#triggerDetailsView").click('change', function() {
+        if ($(this).is(':checked')) {
+            if (!radioButtonCLicked) {
+                radioButtonCLicked = true;
+                
+                $("[id*='collapseComponent'].collapse").attr("class", "show");
+            }
+            else {
+                radioButtonCLicked = false;
+                this.checked = false;
+                $("[id*='collapseComponent'].show").attr("class", "collapse");
+            }
+        }
+    });
 </script>

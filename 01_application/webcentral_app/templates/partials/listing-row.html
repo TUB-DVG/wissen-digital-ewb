@@ -66,9 +66,10 @@
                    href="#collapseComponent{{ forloop.counter }}"
                    aria-expanded="false"
                    data-target="#collapseComponent{{ forloop.counter }}"
-                   aria-controls="collapseComponent{{ forloop.counter }}"
-                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+                   aria-controls="collapseComponent{{ forloop.counter }}">
+                   <!--data-expanded-text="{% translate 'Zeige weniger ...' %}"-->
+                   <!--data-collapsed-text="{% translate 'Zeige mehr ...' %}"-->
+                   </a>
             </div>
         </div>
 
@@ -76,19 +77,27 @@
 </div>
 <div id="paginationContainer">{% include "partials/pagination.html" %}</div>
 <script>
-    var radioButtonCLicked = false;
-    $("#triggerDetailsView").click('change', function() {
-        if ($(this).is(':checked')) {
-            if (!radioButtonCLicked) {
-                radioButtonCLicked = true;
-                
-                $("[id*='collapseComponent'].collapse").attr("class", "show");
+  var showMoreText = "{% translate 'Zeige mehr ...' %}"
+  var showLessText = "{% translate 'Zeige weniger ...' %}"
+  var showMoreElements = $("a.text-truncation-btn")
+ 	
+  for (var i=0; i<showMoreElements.length; i++) {
+    if ($(showMoreElements[i]).attr("class").indexOf("show") > 0) {
+              $(showMoreElements[i]).text(showLessText)
             }
             else {
-                radioButtonCLicked = false;
-                this.checked = false;
-                $("[id*='collapseComponent'].show").attr("class", "collapse");
+              $(showMoreElements[i]).text(showMoreText)
             }
+  }
+
+$( document ).ready(function(){
+  $("a.text-truncation-btn").on("change", function() {
+      if ($(this).attr("class").indexOf("show") > 0) {
+          $(this).text(showLessText)
         }
-    });
+        else {
+          $(this).text(showMoreText)
+        }     
+  });
+})
 </script>
