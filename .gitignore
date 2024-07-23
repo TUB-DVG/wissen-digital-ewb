@@ -41,6 +41,9 @@ postgres/*.sql
 log
 *.css.map
 
+#Sphinx
+02_work_doc/06_sphinx/build
+
 # Javascript
 node_modules
 # packaging setuptools
