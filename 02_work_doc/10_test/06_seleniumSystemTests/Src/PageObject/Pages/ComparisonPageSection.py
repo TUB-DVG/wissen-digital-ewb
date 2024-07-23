@@ -46,7 +46,7 @@ class ComparisonPageSection(GenericPageObject):
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.firstComparisonDiv,
+                Locator.compareContainer,
             )
         except:
             return None
@@ -91,15 +91,21 @@ class ComparisonPageSection(GenericPageObject):
         except:
             return None
 
-    def getStartComparisonDiv(self):
+    def getStartCompareButtonLink(self):
         """ """
         try:
             return self.driver.find_element(
                 By.XPATH,
-                Locator.startComparisonDiv,
+                Locator.compareButton,
             )
         except:
             return None
+    
+    def getResetButtonLink(self):
+        return self.driver.find_element(
+            By.XPATH,
+            "//div[@id='cancelButtonTools']",
+        )
 
     def getResetComparisonDiv(self):
         """ """

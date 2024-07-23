@@ -186,11 +186,12 @@ class Locator(object):
     # locators for the comparison page
     compareResultsContainer = "//div[@id='compareResultsContainer']"
     compareButton = "//a[@id='comparisonUrlTools']"
+    resetButton = "div//[@id='cancelButtonTools']"
     # firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
-    headingComparisonSite = "//h1"
+    headingComparisonSite = "//p[contains(@class, 'description-heading__paragraph')]"
     comparisonTableContainer = "//tbody"
-    backButton = "//a[@class='backLink']"
+    backButton = "//a[@class='link-navigator__negative-technical']"
     startComparisonDiv = "//div[@id='startComparisonButtonTools']"
     resetComparisonDiv = "//div[@id='cancelButtonTools']"
 

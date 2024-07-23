@@ -286,6 +286,14 @@ class Tools(models.Model):
     classification = models.ManyToManyField(Classification) 
     focus = models.ManyToManyField(Focus)
     
+    @property
+    def imageOrDefault(self):
+        if self.image and hasattr(self.image, "url"):
+            return self.image.url
+        else:
+            return "{% static 'assets/default.jpg' %}"
+
+
     def __str__(self):  
         return self.name
 

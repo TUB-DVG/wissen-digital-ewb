@@ -340,6 +340,8 @@ def protocol(request):
         ],
         "focusBorder":
         "technical",
+        "renderComparisonRadio": True,
+        "model": "Protocols",
     }
     if filtering:
         return render(

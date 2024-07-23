@@ -92,3 +92,9 @@ class SearchPage(GenericPageObject):
         """Get Search-bar surrounding div container"""
         return self.driver.find_element(
             By.XPATH, "//div[contains(@class, 'searchContainer')]")
+    
+    def getMultiSelectClickables(self):
+        """Return list of use-bootstrap-select clickable webdriver elements
+        """
+        return self.driver.find_elements(By.XPATH, "//input[contains(@class, 'text-input-with-arrow')]")
+

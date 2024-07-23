@@ -783,12 +783,6 @@
 .collapseListingRow .collapseInfo.collapsing {
   height: 4rem;
 }
-.collapseListingRow a.text-truncation-btn.collapsed::after {
-  content: attr(data-collapsed-text);
-}
-.collapseListingRow a.text-truncation-btn:not(.collapsed)::after {
-  content: attr(data-expanded-text);
-}
 
 @media (max-width: 991px) {
   .navbar {
