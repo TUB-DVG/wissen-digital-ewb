@@ -149,10 +149,12 @@
                  style="display: none">
                 {% include "partials/comparison.html" %}
             </div>
-            <div id="componentListingContainer">
+            <div id="listing-results">
                 {% include "partials/listing-row.html" %}
             </div>
             
         </div>
-        <script>var modelName = "{{ model }}";</script>
-    {% endblock %}
+        <script>
+          var modelName = "{{ model }}";
+        </script>
+  {% endblock %}

@@ -3,7 +3,7 @@ from selenium import (
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-
+from selenium.webdriver.support.wait import WebDriverWait
 
 class GenericPageObject:
 
@@ -90,3 +90,8 @@ class GenericPageObject:
             By.CLASS_NAME,
             className,
         )
+    def waitUntilElementIsLoaded(self, element):
+        """Poll for the element for 10 seconds until its loaded.
+        """
+        wait = WebDriverWait(self.driver, timeout=10)
+        wait.until(lambda d : element.is_displayed())

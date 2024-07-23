@@ -53,7 +53,7 @@ def index(request):
 
     searched = request.GET.get("searched", "")
     if searched != "":
-        complexCriterion |= Q(nameDataset__icontains=searched)
+        complexCriterion &= Q(nameDataset__icontains=searched)
 
     datasets = collectedDatasets.objects.filter(complexCriterion)
     # filteredBy = [useCaseCategory, categoryDataset, availability]

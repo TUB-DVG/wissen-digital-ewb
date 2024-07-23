@@ -20,7 +20,8 @@ If you would like to do some development or host the Wissensplattform, please fi
    insertLinksInDatabase
    templateStructure
    translation
-
+   listing_pages
+   
 Indices and tables
 ==================
 

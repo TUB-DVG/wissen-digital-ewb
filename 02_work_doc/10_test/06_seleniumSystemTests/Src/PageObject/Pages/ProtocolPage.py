@@ -11,8 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-class ProtocolPage(object):
+class ProtocolPage(GenericPageObject):
     """
     
     """
@@ -34,7 +35,10 @@ class ProtocolPage(object):
         """Get the div-card-elements as list 
         
         """
-        return self.driver.find_elements(By.XPATH, Locator.cardLocator)
+        elements =  self.driver.find_elements(By.XPATH, Locator.cardLocator)
+        if len(elements) > 0:
+            self.waitUntilElementIsLoaded(elements[0])
+        return elements
     
     def getXOfSearchFilter(self):
         """Get the X, link, which removes the searchfilter

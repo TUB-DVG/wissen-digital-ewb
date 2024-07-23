@@ -29,10 +29,9 @@
   .collapseInfo.collapsing {
     height: 4.0rem;
   }
-  a.text-truncation-btn.collapsed::after {
-    content: attr(data-collapsed-text);
-  }
-  a.text-truncation-btn:not(.collapsed)::after {
-    content: attr(data-expanded-text);
-  }
+  //   content: attr(data-collapsed-text);
+  // }
+  // a.text-truncation-btn:not(.collapsed)::after {
+  //   content: attr(data-expanded-text);
+  // }
 }
