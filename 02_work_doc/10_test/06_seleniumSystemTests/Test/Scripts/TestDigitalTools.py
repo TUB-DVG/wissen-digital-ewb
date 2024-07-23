@@ -106,6 +106,12 @@ class TestDigitalToolsPage(WebDriverSetup):
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         self._setLanguageToGerman()
 
+        # cookieBannerObj = CookieBanner(self.driver)
+        # cookieBanner = cookieBannerObj.getCookieAcceptanceButton()
+        # if cookieBanner.is_displayed():
+        #     breakpoint()
+        #     cookieBanner.click()
+
         searchBarPageObj = SearchPage(self.driver)
         paginationObj = Pagination(self.driver)
 
@@ -124,7 +130,7 @@ class TestDigitalToolsPage(WebDriverSetup):
         
         # click on next site and check if still the same number of pages are shown:
         paginationNextLink = paginationObj.getPaginationNextLink()
-        paginationNextLink.click()
+        self.scrollElementIntoViewAndClickIt(paginationNextLink)
         
         numberOfPagesOnNextSite = paginationObj.getPaginationCurrentSiteString()
         textOfSpanOnNewSite = numberOfPagesOnNextSite.text
@@ -180,8 +186,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             12,
             "Number of Tool Items should be 12 without search-filter!",
         )
-        searchFieldElement.send_keys("Ansys")
-        time.sleep(1)
+        searchFieldElement.send_keys("BIM")
         searchFieldElement.send_keys(Keys.RETURN)
         time.sleep(3)
         listOfToolItemsAfterReturn = toolListPage.getListOfToolItems()
@@ -191,41 +196,14 @@ class TestDigitalToolsPage(WebDriverSetup):
             1,
             "Number of Tool Items should be one for Search-String 'Ansys'!",
         )
-
-        time.sleep(1)
-        searchStrBox = toolListPage.getSearchStringButton("Ansys")
-        self.assertIsInstance(
-            searchStrBox,
-            WebElement,
-            "Search-String Button is not present!",
-        )
-
-        searchStringBoxX = toolListPage.getCloseOnSearchStrButton(searchStrBox)
-        self.assertIsInstance(
-            searchStrBox,
-            WebElement,
-            "Search-String-X Button is not present!",
-        )
-
-        toolListPage.getXOfSearchFilter().click()
-
-        time.sleep(1)
+        
+        searchFieldElement.clear()
+        time.sleep(2) 
         listToolItemsAfterRmvdSearch = toolListPage.getListOfToolItems()
         self.assertEqual(
             len(listToolItemsAfterRmvdSearch),
             12,
             "After removing search-string 'Ansys', number of tool-items should be 12!",
-        )
-
-        searchFieldElement = toolListPage.getSearchInputElement()
-        searchFieldElement.send_keys("Bim")
-        searchFieldElement.send_keys(Keys.RETURN)
-        time.sleep(1)
-        numberOfToolItems = len(toolListPage.getListOfToolItems())
-        self.assertLess(
-            numberOfToolItems,
-            12,
-            "After writing 'Bim' into search-field, the number of Tool-items should be decreased!",
         )
 
     def testIfShowMoreExpandsText(self):

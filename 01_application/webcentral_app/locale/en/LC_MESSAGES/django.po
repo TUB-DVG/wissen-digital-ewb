@@ -3665,10 +3665,8 @@ msgid "Detail Ansicht"
 msgstr "Detailed view of the image"
 
 #: templates/partials/search-bar.html:157
-#, fuzzy
-#| msgid "Vergleiche"
 msgid "Vergleichsmodus"
-msgstr "Compare"
+msgstr "Comparison mode"
 
 #: templates/publications/publications-detail.html:60
 msgid "Abstrakt"

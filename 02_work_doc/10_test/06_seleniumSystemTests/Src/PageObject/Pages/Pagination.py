@@ -25,7 +25,7 @@ class Pagination(GenericPageObject):
         """Get the span element, which holds the information on which
         site of the total number of sites the user currently is.
         """
-        element = self.driver(By.XPATH, "//span[@class='current']")
+        element = self.driver.find_element(By.XPATH, "//span[@class='current']")
         self.waitUntilElementIsLoaded(element)
         return element
     
