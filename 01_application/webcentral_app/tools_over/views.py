@@ -96,7 +96,7 @@ def index(request):
         criterionToolsThree = Q(
             classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
-        complexCriterion |= (criterionToolsOne
+        complexCriterion &= (criterionToolsOne
                              | criterionToolsTwo
                              | criterionToolsThree
                              | criterionToolsFour)
@@ -348,7 +348,7 @@ def indexApps(request):
         True,
     }
     if filtering:
-        return render(request, "tools_over/listing-grid.html",
+        return render(request, "partials/listing-grid.html",
                       context)
 
     return render(request, "tools_over/tool-listings.html", context)
