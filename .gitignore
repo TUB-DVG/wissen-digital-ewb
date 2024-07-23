@@ -11,6 +11,7 @@ db.sqlite3
 db.sqlite3-journal
 /media
 venv
+.venv
 02_work_doc/10_test/testingVenv
 /static
 *csv#
