@@ -55,8 +55,8 @@ def businessModels(request):
                 "boxId": 1,
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
-                    "image":
-                    "img/businessModelsOverviewImg.svg",
+                    "imageDe": "img/businessModelsOverviewImg.svg",
+                    "imageEn": "img/businessModelsOverviewImg.svg",
                     "linkToDetailsPage":
                     "businessModelsChallenge",
                     "heading":
@@ -70,8 +70,9 @@ def businessModels(request):
                 "boxId": 2,
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
-                    "image":
-                    "img/componentList/negativeEnvironmentalImpactsBox1.svg",
+                    "imageEn":
+                    "assets/images/anwendungen_en_small.svg",
+                    "imageDe": "assets/images/anwendungen_de_small.svg",
                     "linkToDetailsPage":
                     "businessModelApplication",
                     "heading":
