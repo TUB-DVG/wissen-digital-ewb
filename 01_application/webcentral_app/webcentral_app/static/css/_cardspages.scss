@@ -487,36 +487,36 @@ input[type='checkbox']:checked:before {
 } 
 }
 
-.neutral-cards {
-    .neutral-font-color{
-    color: $neutral-color;
+.global-cards {
+    .global-font-color{
+    color: $global-color;
   }  
-  .border-neutral {
-    @include border-rect($neutral-color);
+  .border-global {
+    @include border-rect($global-color);
   }
-  .border-neutral-round {
-    @include border-round($neutral-color);
+  .border-global-round {
+    @include border-round($global-color);
   }
-  .border-neutral-round-font-color {
-    @include border-round($neutral-color);
-    // color: $neutral-color;
+  .border-global-round-font-color {
+    @include border-round($global-color);
+    // color: $global-color;
   }
-  .btn-neutral {
-    @include btn-search($neutral-color, $third-text-color)
+  .btn-global {
+    @include btn-search($global-color, $third-text-color)
   }
-  .btn-neutral-free-text {
-    @include btn-search-free-text($neutral-color)
+  .btn-global-free-text {
+    @include btn-search-free-text($global-color)
   }
-  .btn-neutral-white-bg {
-    @include btn-search(white, $neutral-color);
-    border: 2px solid $neutral-color;
+  .btn-global-white-bg {
+    @include btn-search(white, $global-color);
+    border: 2px solid $global-color;
   }
-  .text-input-with-arrow-neutral {
-    // background-image: url('/static/assets/images/arrow_down_neutral.svg'); /* Path to your arrow image */
+  .text-input-with-arrow-global {
+    // background-image: url('/static/assets/images/arrow_down_global.svg'); /* Path to your arrow image */
     background-position: right 10px center; /* Position the arrow on the right, with some padding */
     background-repeat: no-repeat; /* Prevent the image from repeating */
     padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
-    color: $neutral-color;
+    color: $global-color;
     font-weight: 500;
     
     max-width: calc(100% - 30px);
@@ -524,19 +524,19 @@ input[type='checkbox']:checked:before {
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Hide overflowed text */ 
   }
-  .text-input-with-arrow-neutral::placeholder{
+  .text-input-with-arrow-global::placeholder{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
   }
   a {
-    color: $neutral-color;
+    color: $global-color;
   }
   input[type='radio'] {
     appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid $neutral-color;
+    border: 2px solid $global-color;
     border-radius: 50%;
     outline: none;
     transition: 0.2s;
@@ -553,26 +553,26 @@ input[type='radio']:before {
 }
 
 input[type='radio']:checked:before {
-    background: $neutral-color;
+    background: $global-color;
 }
 
 input[type='checkbox'] {
   appearance: none;
   width: 30px;
   height: 30px;
-  border: 2px solid $neutral-color;
+  border: 2px solid $global-color;
   outline: none;
   transition: 0.2s;
   margin-right: 10px;
   margin-left: 20px;
 }
 ::placeholder {
-  color: $neutral-color !important;
+  color: $global-color !important;
   opacity: 1;
   font-weight: 400 !important;
 }
 input[type='text'] {
-  color: $neutral-color;
+  color: $global-color;
 }
 input[type='checkbox']:before {
   content: '';
@@ -583,10 +583,10 @@ input[type='checkbox']:before {
 }
 
 input[type='checkbox']:checked:before {
-  background: $neutral-color;
+  background: $global-color;
 }
-.neutral-text-near-radio {
-  color: $neutral-color;
+.global-text-near-radio {
+  color: $global-color;
 }
 }
 /* Optional: Adjust the input field width to leave space for the arrow */

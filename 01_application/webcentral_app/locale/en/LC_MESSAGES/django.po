@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 11:56+0000\n"
+"POT-Creation-Date: 2024-07-31 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -507,7 +507,7 @@ msgstr "Proprietary"
 
 #: businessModel/views.py:18 pages/views.py:47
 #: templates/StartSearch/StartSearch.html:261
-#: templates/partials/_navbar.html:127
+#: templates/partials/_navbar.html:116
 msgid "Geschäftsmodelle"
 msgstr "Business models"
 
@@ -824,7 +824,7 @@ msgstr "Expenditure for data processing procedures"
 #: component_list/views.py:287 component_list/views.py:326 pages/views.py:177
 #: templates/StartSearch/StartSearch.html:332
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:181
+#: templates/partials/_navbar.html:159
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
@@ -999,7 +999,6 @@ msgstr ""
 
 #: pages/views.py:236 pages/views.py:261
 #: templates/StartSearch/StartSearch.html:344
-#: templates/partials/_navbar.html:187
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
@@ -1084,7 +1083,7 @@ msgstr ""
 
 #: pages/views.py:296 pages/views.py:322
 #: templates/StartSearch/StartSearch.html:368
-#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:197
+#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:165
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
@@ -1422,15 +1421,12 @@ msgstr "Datasets"
 
 #: templates/StartSearch/StartSearch.html:206
 #: templates/StartSearch/StartSearch.html:217
-#: templates/partials/_navbar.html:93
 msgid "technisch"
 msgstr "technical"
 
 #: templates/StartSearch/StartSearch.html:208
 #: templates/StartSearch/StartSearch.html:382
 #: templates/StartSearch/StartSearch.html:471
-#: templates/partials/_navbar.html:94 templates/partials/_navbar.html:148
-#: templates/partials/_navbar.html:203 templates/partials/_navbar.html:252
 msgid "Publikationen"
 msgstr "Publications"
 
@@ -1438,13 +1434,12 @@ msgstr "Publications"
 #: templates/StartSearch/StartSearch.html:283
 #: templates/StartSearch/StartSearch.html:392
 #: templates/StartSearch/StartSearch.html:481
-#: templates/partials/_navbar.html:99 templates/partials/_navbar.html:153
-#: templates/partials/_navbar.html:208 templates/partials/_navbar.html:257
+#: templates/partials/_navbar.html:230
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
 #: templates/StartSearch/StartSearch.html:241
-#: templates/partials/_navbar.html:122
+#: templates/partials/_navbar.html:111
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
@@ -1467,17 +1462,16 @@ msgstr ""
 "users."
 
 #: templates/StartSearch/StartSearch.html:273
-#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:142
+#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:131
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
 #: templates/StartSearch/StartSearch.html:282
-#: templates/partials/_navbar.html:147 templates/partials/_navbar.html:152
 msgid "betrieblich"
 msgstr "operational"
 
 #: templates/StartSearch/StartSearch.html:310
-#: templates/partials/_navbar.html:175
+#: templates/partials/_navbar.html:153
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
@@ -1503,17 +1497,15 @@ msgstr ""
 
 #: templates/StartSearch/StartSearch.html:356
 #: templates/pages/benchmarkingChallenges.html:19
-#: templates/partials/_navbar.html:192
 msgid "Herausforderungen"
 msgstr "Challenges"
 
 #: templates/StartSearch/StartSearch.html:380
-#: templates/partials/_navbar.html:202 templates/partials/_navbar.html:207
 msgid "ökologisch"
 msgstr "ecological"
 
 #: templates/StartSearch/StartSearch.html:414
-#: templates/partials/_navbar.html:231
+#: templates/partials/_navbar.html:188
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
@@ -1538,23 +1530,22 @@ msgstr ""
 "the building sector, offering concrete action recommendations for projects."
 
 #: templates/StartSearch/StartSearch.html:435
-#: templates/partials/_navbar.html:236
+#: templates/partials/_navbar.html:193
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:445
-#: templates/partials/_navbar.html:241
+#: templates/partials/_navbar.html:198
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
 #: templates/StartSearch/StartSearch.html:457
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:246
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:203
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
 #: templates/StartSearch/StartSearch.html:469
 #: templates/StartSearch/StartSearch.html:480
-#: templates/partials/_navbar.html:251 templates/partials/_navbar.html:256
 msgid "rechtlich"
 msgstr "legal"
 
@@ -3421,13 +3412,29 @@ msgstr "Digital tools"
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:132
+#: templates/partials/_navbar.html:121
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:137
+#: templates/partials/_navbar.html:126
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
+
+#: templates/partials/_navbar.html:225
+msgid "Global"
+msgstr ""
+
+#: templates/partials/_navbar.html:235
+#, fuzzy
+#| msgid "Icons und Visualisierung"
+msgid "City GML Visualisierung"
+msgstr "Icons and visualization"
+
+#: templates/partials/_navbar.html:240
+#, fuzzy
+#| msgid "Veröffentlichung geplant"
+msgid "Veröffentlichungen"
+msgstr "Publication planned"
 
 #: templates/partials/comparison.html:5 templates/partials/comparison.html:13
 msgid "Vergleiche"
@@ -3678,16 +3685,12 @@ msgid "Kurzbeleg"
 msgstr "Citation"
 
 #: templates/publications/publications-listings.html:4
-#, fuzzy
-#| msgid "Überblick über die Normen"
 msgid "Überblick über die Publikationen"
-msgstr "Overview of norms"
+msgstr "Overview of publications"
 
 #: templates/publications/publications-listings.html:24
-#, fuzzy
-#| msgid "Überblick über die Normen"
 msgid "Überblick über Publikationen"
-msgstr "Overview of norms"
+msgstr "Overview of publications"
 
 #: templates/tools_over/explanationApps.html:9
 msgid ""
@@ -4617,10 +4620,8 @@ msgid ""
 msgstr ""
 
 #: templates/use_cases/usecase-listings.html:3
-#, fuzzy
-#| msgid "Überblick über die Normen"
 msgid "Überblick über die Use Cases"
-msgstr "Overview of norms"
+msgstr "Overview of use cases"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:36
 #, fuzzy
@@ -5248,11 +5249,6 @@ msgstr ""
 
 #~ msgid "und"
 #~ msgstr "and"
-
-#, fuzzy
-#~| msgid "Icons und Visualisierung"
-#~ msgid "Visualisierung"
-#~ msgstr "Icons and visualization"
 
 #, fuzzy
 #~| msgid "Positive Umweltwirkungen"
