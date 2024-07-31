@@ -14,10 +14,17 @@
             </div>
             <div class="row mx-auto mt-auto">
                 <div style="background-color: #EDEDED;" class="px-0">
-                    <img src="{% static boxObject.image %}"
-                         alt="Environment positive"
+                  {% if request.LANGUAGE_CODE == "de" %}
+                    <img src="{% static boxObject.imageDe %}"
+                         alt="Business application image"
                          class="box__image mt-0"
                          style="height: 100%; max-height: 140px;" />
+                  {% else %}
+                    <img src="{% static boxObject.imageEn %}"
+                         alt="Business application image"
+                         class="box__image mt-0"
+                         style="height: 100%; max-height: 140px;" />
+                  {% endif %}
                 </div>
 
             </div>
