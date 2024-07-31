@@ -49,7 +49,7 @@
                      style="width:35px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
-                     alt=""
+                     alt="technical uncolored icon"
                      style="width:35px" />             
               {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
@@ -109,10 +109,16 @@
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px" />
+              {% if focusBorder == "operational" %}
+                <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="operational colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="operational uncolored icon"
+                     style="width:35px" />             
+              {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
@@ -156,10 +162,16 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
+              {% if focusBorder == "ecological" %}
                 <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
                      class="position-absolute start-0 top-50 translate-middle-y"
-                     alt=""
+                     alt="ecological colored icon"
                      style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="ecological uncolored icon"
+                     style="width:35px" />             
+              {% endif %}  
                 &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
@@ -206,10 +218,16 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
+               {% if focusBorder == "legal" %}
                 <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
                      class="position-absolute start-0 top-50 translate-middle-y"
-                     alt=""
+                     alt="legal colored icon"
                      style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="legal uncolored icon"
+                     style="width:35px" />             
+              {% endif %} 
                 &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="legalDropdown">
