@@ -23,6 +23,6 @@ class TestBusinessModelChallenges(WebDriverSetup):
         self.assertEqual(self.driver.title, "Geschäftsmodelle – Herausforderungen")
 
         self._setLanguageToEnglish()
-        self.assertEqual(self.driver.title, "Business models – challenges")
+        self.assertEqual(self.driver.title, "Business models - Challenges")
         self.checkNavBar("operational")
 
