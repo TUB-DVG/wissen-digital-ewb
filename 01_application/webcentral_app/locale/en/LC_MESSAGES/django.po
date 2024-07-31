@@ -3,12 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:15
+#: webcentral_app/static/sphinx/html/translation.html:50
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-22 05:48+0000\n"
+"POT-Creation-Date: 2024-07-31 11:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +44,7 @@ msgstr "Gas Infrastructure"
 #: templates/LastProfile/explanation.html:109
 #: templates/LastProfile/explanation.html:177
 #: templates/StartSearch/StartSearch.html:170
-#: templates/partials/_navbar.html:72
+#: templates/partials/_navbar.html:78
 msgid "Wetterdaten"
 msgstr "Weather data"
 
@@ -58,7 +60,7 @@ msgstr "Time series"
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:112 common/views.py:63 component_list/views.py:235
+#: Datasets/views.py:112 common/views.py:63 component_list/views.py:237
 #: templates/datasets_over/dataset-detail.html:131
 #: templates/weatherdata_over/weatherdata-detail.html:132
 #: weatherdata_over/views.py:79
@@ -471,11 +473,11 @@ msgstr "Protocol"
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
-#: TechnicalStandards/views.py:86
+#: TechnicalStandards/views.py:89
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:164 component_list/views.py:157
+#: TechnicalStandards/views.py:167 component_list/views.py:157
 #: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
@@ -484,33 +486,33 @@ msgstr "Designation"
 msgid "Quelle"
 msgstr "Source"
 
-#: TechnicalStandards/views.py:322 TechnicalStandards/views.py:324
+#: TechnicalStandards/views.py:325 TechnicalStandards/views.py:327
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: TechnicalStandards/views.py:322 TechnicalStandards/views.py:323
+#: TechnicalStandards/views.py:325 TechnicalStandards/views.py:326
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: TechnicalStandards/views.py:332
+#: TechnicalStandards/views.py:335
 #: templates/TechnicalStandards/explanation.html:125
 #: templates/TechnicalStandards/protocol-detail.html:196
 #: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
-#: TechnicalStandards/views.py:335
+#: TechnicalStandards/views.py:338
 msgid "Proprietär"
 msgstr "Proprietary"
 
 #: businessModel/views.py:18 pages/views.py:47
 #: templates/StartSearch/StartSearch.html:261
-#: templates/partials/_navbar.html:115
+#: templates/partials/_navbar.html:127
 msgid "Geschäftsmodelle"
 msgstr "Business models"
 
 #: businessModel/views.py:20 businessModel/views.py:45
-#: templates/pages/businessModelsChallenge.html:20
+#: templates/businessModel/businessModelsChallenges.html:4
 msgid "Geschäftsmodelle – Herausforderungen"
 msgstr "Business models - Challenges"
 
@@ -537,12 +539,12 @@ msgstr ""
 "which projects of the research initiative Energiewendebauen are confronted "
 "with, have been systematically addressed and are presented here."
 
-#: common/views.py:55 templates/TechnicalStandards/protocol-comparison.html:23
+#: common/views.py:55
 #: templates/component_list/componentComparisonResults.html:12
 msgid "Ergebnisse"
 msgstr "Results"
 
-#: common/views.py:68 component_list/views.py:215 component_list/views.py:230
+#: common/views.py:68 component_list/views.py:216 component_list/views.py:232
 msgid "Komponente"
 msgstr "Component"
 
@@ -550,15 +552,15 @@ msgstr "Component"
 msgid "Beschreibung"
 msgstr "Description"
 
-#: common/views.py:78 component_list/views.py:163 component_list/views.py:240
+#: common/views.py:78 component_list/views.py:163 component_list/views.py:242
 msgid "Energieverbrauch Nutzung (gesamt; in W)"
 msgstr "Total energy consumption (in W)"
 
-#: common/views.py:83 component_list/views.py:167 component_list/views.py:245
+#: common/views.py:83 component_list/views.py:167 component_list/views.py:247
 msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
 msgstr "Total greenhouse gas potential (in kg CO2-e)"
 
-#: common/views.py:88 component_list/views.py:171 component_list/views.py:250
+#: common/views.py:88 component_list/views.py:171 component_list/views.py:252
 msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
@@ -604,7 +606,7 @@ msgstr "Source"
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: common/views.py:147 templates/TechnicalStandards/protocol-comparison.html:29
+#: common/views.py:147 common/views.py:242
 msgid "Attribut"
 msgstr "Attribute"
 
@@ -621,7 +623,7 @@ msgstr "Applications"
 #: common/views.py:167 templates/tools_over/explanationApps.html:38
 #: templates/tools_over/explanationTools.html:38
 #: templates/tools_over/tool-detail.html:244
-#: templates/tools_over/tool-listings.html:81
+#: templates/tools_over/tool-listings.html:81 tools_over/views.py:341
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
@@ -644,7 +646,7 @@ msgstr "Spatial scale of use cases"
 #: common/views.py:188 templates/tools_over/explanationApps.html:56
 #: templates/tools_over/explanationTools.html:56
 #: templates/tools_over/tool-detail.html:83
-#: templates/tools_over/tool-listings.html:70
+#: templates/tools_over/tool-listings.html:70 tools_over/views.py:335
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
@@ -692,16 +694,69 @@ msgstr "Digital tools"
 msgid "Zurück zu den digitalen Anwendungen"
 msgstr "Digital tools"
 
-#: common/views.py:249
-#: templates/component_list/componentComparisonResults.html:14
-msgid ""
-"Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum "
-"autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, "
-"volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum "
-"quianihictem unt rest voles molor se reptur, erum sum autaquiae prae "
-"nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es "
-"doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
-msgstr ""
+#: common/views.py:234
+msgid "Übersicht über Protokolle"
+msgstr "Overview of protocols"
+
+#: common/views.py:252 templates/TechnicalStandards/explanation.html:121
+#: templates/TechnicalStandards/protocol-detail.html:69
+#: templates/TechnicalStandards/protocol-explanation.html:44
+msgid "Unterstützte Übertragungsmedien"
+msgstr "Supported transmission media"
+
+#: common/views.py:257 templates/TechnicalStandards/explanation.html:123
+#: templates/TechnicalStandards/protocol-detail.html:73
+#: templates/TechnicalStandards/protocol-explanation.html:46
+msgid "Zugehörige Standards"
+msgstr "Related standards"
+
+#: common/views.py:262 templates/TechnicalStandards/explanation.html:131
+#: templates/TechnicalStandards/protocol-detail.html:79
+#: templates/TechnicalStandards/protocol-explanation.html:54
+msgid "Implementierte Sicherheitsmechanismen"
+msgstr "Implemented security mechanisms"
+
+#: common/views.py:267 templates/TechnicalStandards/explanation.html:133
+#: templates/TechnicalStandards/protocol-detail.html:85
+#: templates/TechnicalStandards/protocol-explanation.html:56
+msgid "Bandbreite"
+msgstr "Bandwidth"
+
+#: common/views.py:272 templates/TechnicalStandards/explanation.html:135
+#: templates/TechnicalStandards/protocol-detail.html:89
+#: templates/TechnicalStandards/protocol-explanation.html:58
+msgid "Frequenz"
+msgstr "Frequency"
+
+#: common/views.py:278 templates/TechnicalStandards/explanation.html:137
+#: templates/TechnicalStandards/protocol-detail.html:95
+#: templates/TechnicalStandards/protocol-explanation.html:60
+msgid "Reichweite"
+msgstr "Range"
+
+#: common/views.py:283 templates/TechnicalStandards/explanation.html:143
+#: templates/TechnicalStandards/protocol-explanation.html:66
+msgid "Datenmodell Architektur"
+msgstr "Data model architecture"
+
+#: common/views.py:288 templates/TechnicalStandards/explanation.html:147
+msgid "Multi Master"
+msgstr "Multi Master"
+
+#: common/views.py:293 templates/TechnicalStandards/explanation.html:149
+#: templates/TechnicalStandards/protocol-explanation.html:72
+msgid "Priorität"
+msgstr "Priority"
+
+#: common/views.py:301 templates/TechnicalStandards/explanation.html:139
+#: templates/TechnicalStandards/protocol-explanation.html:62
+msgid "Implementierte OSI-Schichten"
+msgstr "Implemented OSI-layer"
+
+#: common/views.py:306 templates/TechnicalStandards/explanation.html:141
+#: templates/TechnicalStandards/protocol-explanation.html:64
+msgid "Ebenen der Gebäudeautomation"
+msgstr "Levels of building automation"
 
 #: component_list/views.py:82
 msgid "Ausgeklappt"
@@ -748,42 +803,42 @@ msgstr ""
 "balance sheet. All life cycle phases must be taken into account. Here you "
 "will find important components and their environmental impact."
 
-#: component_list/views.py:175 component_list/views.py:255
+#: component_list/views.py:175 component_list/views.py:257
 msgid "Lebensdauer (in Jahren)"
 msgstr "Lifespan (in years)"
 
-#: component_list/views.py:225
+#: component_list/views.py:227
 msgid "Sortierung"
 msgstr "Sorting"
 
-#: component_list/views.py:272
+#: component_list/views.py:274
 msgid ""
 "Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die "
 "zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
 msgstr ""
 
-#: component_list/views.py:279
+#: component_list/views.py:281
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:285 component_list/views.py:324 pages/views.py:177
+#: component_list/views.py:287 component_list/views.py:326 pages/views.py:177
 #: templates/StartSearch/StartSearch.html:332
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:163
+#: templates/partials/_navbar.html:181
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: component_list/views.py:298 pages/views.py:218
+#: component_list/views.py:300 pages/views.py:218
 msgid "Die Daten-Wertschöpfungkette"
 msgstr ""
 
-#: component_list/views.py:336
+#: component_list/views.py:338
 #, fuzzy
 #| msgid "Aufwände für verwendete Komponenten"
 msgid "Zu den Aufwänden für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: component_list/views.py:360 pages/views.py:211
+#: component_list/views.py:362 pages/views.py:211
 #: templates/partials/dataProcessingLeftColumn.html:3
 #, fuzzy
 #| msgid "Aufwände für Datenverarbeitungsprozsse"
@@ -842,11 +897,11 @@ msgstr ""
 "social factors such as difficult financing models. An overview of obstacles "
 "and possible solutions provides assistance in this regard."
 
-#: pages/views.py:78
+#: pages/views.py:79
 msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
 msgstr "Applications for the development of business models"
 
-#: pages/views.py:80
+#: pages/views.py:81
 msgid ""
 "Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die "
 "Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei "
@@ -863,10 +918,11 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
-#: pages/views.py:140 templates/StartSearch/StartSearch.html:273
-#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:130
-msgid "Nutzendenintegration"
-msgstr "User integration"
+#: pages/views.py:140
+#, fuzzy
+#| msgid "Methoden zur Nutzendenintegration"
+msgid "Methoden der Nutzendenintegration"
+msgstr "Methods for user integration"
 
 #: pages/views.py:153
 msgid "Methoden zur Nutzendenintegration"
@@ -943,7 +999,7 @@ msgstr ""
 
 #: pages/views.py:236 pages/views.py:261
 #: templates/StartSearch/StartSearch.html:344
-#: templates/partials/_navbar.html:169
+#: templates/partials/_navbar.html:187
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
@@ -1028,7 +1084,7 @@ msgstr ""
 
 #: pages/views.py:296 pages/views.py:322
 #: templates/StartSearch/StartSearch.html:368
-#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:179
+#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:197
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
@@ -1068,7 +1124,7 @@ msgstr ""
 
 #: templates/LastProfile/explanation.html:21
 #: templates/StartSearch/StartSearch.html:194
-#: templates/partials/_navbar.html:77
+#: templates/partials/_navbar.html:83
 msgid "Lastprofile"
 msgstr "Load profiles"
 
@@ -1121,7 +1177,7 @@ msgstr ""
 #: templates/LastProfile/explanation.html:59
 #: templates/tools_over/explanationApps.html:34
 #: templates/tools_over/explanationTools.html:34
-#: templates/tools_over/tool-listings.html:58
+#: templates/tools_over/tool-listings.html:58 tools_over/views.py:329
 msgid "Nutzung"
 msgstr "Use type"
 
@@ -1326,7 +1382,7 @@ msgstr ""
 "projects of the Energiewendebauen initiative."
 
 #: templates/StartSearch/StartSearch.html:112
-#: templates/partials/_navbar.html:49
+#: templates/partials/_navbar.html:55
 msgid "Technischer Fokus"
 msgstr "Technical Focus"
 
@@ -1355,26 +1411,26 @@ msgstr "Applications"
 
 #: templates/StartSearch/StartSearch.html:158
 #: templates/TechnicalStandards/explanation.html:14
-#: templates/partials/_navbar.html:66
+#: templates/partials/_navbar.html:72
 msgid "Technische Standards"
 msgstr "Technical Standards"
 
 #: templates/StartSearch/StartSearch.html:182
-#: templates/partials/_navbar.html:82 weatherdata_over/views.py:81
+#: templates/partials/_navbar.html:88 weatherdata_over/views.py:81
 msgid "Datensätze"
 msgstr "Datasets"
 
 #: templates/StartSearch/StartSearch.html:206
 #: templates/StartSearch/StartSearch.html:217
-#: templates/partials/_navbar.html:87 templates/partials/_navbar.html:92
+#: templates/partials/_navbar.html:93
 msgid "technisch"
 msgstr "technical"
 
 #: templates/StartSearch/StartSearch.html:208
 #: templates/StartSearch/StartSearch.html:382
 #: templates/StartSearch/StartSearch.html:471
-#: templates/partials/_navbar.html:88 templates/partials/_navbar.html:136
-#: templates/partials/_navbar.html:185 templates/partials/_navbar.html:228
+#: templates/partials/_navbar.html:94 templates/partials/_navbar.html:148
+#: templates/partials/_navbar.html:203 templates/partials/_navbar.html:252
 msgid "Publikationen"
 msgstr "Publications"
 
@@ -1382,13 +1438,13 @@ msgstr "Publications"
 #: templates/StartSearch/StartSearch.html:283
 #: templates/StartSearch/StartSearch.html:392
 #: templates/StartSearch/StartSearch.html:481
-#: templates/partials/_navbar.html:93 templates/partials/_navbar.html:141
-#: templates/partials/_navbar.html:190 templates/partials/_navbar.html:233
+#: templates/partials/_navbar.html:99 templates/partials/_navbar.html:153
+#: templates/partials/_navbar.html:208 templates/partials/_navbar.html:257
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
 #: templates/StartSearch/StartSearch.html:241
-#: templates/partials/_navbar.html:110
+#: templates/partials/_navbar.html:122
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
@@ -1410,13 +1466,18 @@ msgstr ""
 "applications in business models and the integration of and interaction with "
 "users."
 
+#: templates/StartSearch/StartSearch.html:273
+#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:142
+msgid "Nutzendenintegration"
+msgstr "User integration"
+
 #: templates/StartSearch/StartSearch.html:282
-#: templates/partials/_navbar.html:135 templates/partials/_navbar.html:140
+#: templates/partials/_navbar.html:147 templates/partials/_navbar.html:152
 msgid "betrieblich"
 msgstr "operational"
 
 #: templates/StartSearch/StartSearch.html:310
-#: templates/partials/_navbar.html:157
+#: templates/partials/_navbar.html:175
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
@@ -1442,17 +1503,17 @@ msgstr ""
 
 #: templates/StartSearch/StartSearch.html:356
 #: templates/pages/benchmarkingChallenges.html:19
-#: templates/partials/_navbar.html:174
+#: templates/partials/_navbar.html:192
 msgid "Herausforderungen"
 msgstr "Challenges"
 
 #: templates/StartSearch/StartSearch.html:380
-#: templates/partials/_navbar.html:184 templates/partials/_navbar.html:189
+#: templates/partials/_navbar.html:202 templates/partials/_navbar.html:207
 msgid "ökologisch"
 msgstr "ecological"
 
 #: templates/StartSearch/StartSearch.html:414
-#: templates/partials/_navbar.html:207
+#: templates/partials/_navbar.html:231
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
@@ -1477,29 +1538,29 @@ msgstr ""
 "the building sector, offering concrete action recommendations for projects."
 
 #: templates/StartSearch/StartSearch.html:435
-#: templates/partials/_navbar.html:212
+#: templates/partials/_navbar.html:236
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:445
-#: templates/partials/_navbar.html:217
+#: templates/partials/_navbar.html:241
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
 #: templates/StartSearch/StartSearch.html:457
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:222
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:246
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
 #: templates/StartSearch/StartSearch.html:469
 #: templates/StartSearch/StartSearch.html:480
-#: templates/partials/_navbar.html:227 templates/partials/_navbar.html:232
+#: templates/partials/_navbar.html:251 templates/partials/_navbar.html:256
 msgid "rechtlich"
 msgstr "legal"
 
 #: templates/TechnicalStandards/explanation.html:3
-#: templates/TechnicalStandards/norm-listings.html:23
-#: templates/TechnicalStandards/protocol-listings.html:23
+#: templates/TechnicalStandards/norm-listings.html:24
+#: templates/TechnicalStandards/protocol-listings.html:24
 msgid "Überblick über technische Standards"
 msgstr "Overview of technical standards"
 
@@ -1565,7 +1626,7 @@ msgstr ""
 "building automation."
 
 #: templates/TechnicalStandards/explanation.html:52
-#: templates/TechnicalStandards/norm-listings.html:23
+#: templates/TechnicalStandards/norm-listings.html:24
 msgid "Normen"
 msgstr "Norms"
 
@@ -1648,6 +1709,7 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/pages/environmentalIntegrityRightColumn.html:81
 #: templates/partials/descriptionContainer.html:107
 #: templates/partials/listing-row.html:70
+#: templates/partials/listing-row.html:81
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
@@ -1669,6 +1731,7 @@ msgstr "Show less ..."
 #: templates/pages/environmentalIntegrityRightColumn.html:82
 #: templates/partials/descriptionContainer.html:108
 #: templates/partials/listing-row.html:71
+#: templates/partials/listing-row.html:80
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
@@ -1682,7 +1745,7 @@ msgid "Überblick über die Normen"
 msgstr "Overview of norms"
 
 #: templates/TechnicalStandards/explanation.html:103
-#: templates/TechnicalStandards/protocol-listings.html:23
+#: templates/TechnicalStandards/protocol-listings.html:24
 msgid "Protokolle"
 msgstr "protocols"
 
@@ -1724,23 +1787,9 @@ msgstr ""
 "the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/explanation.html:121
-#: templates/TechnicalStandards/protocol-comparison.html:44
-#: templates/TechnicalStandards/protocol-detail.html:69
-#: templates/TechnicalStandards/protocol-explanation.html:44
-msgid "Unterstützte Übertragungsmedien"
-msgstr "Supported transmission media"
-
-#: templates/TechnicalStandards/explanation.html:121
 #: templates/TechnicalStandards/protocol-explanation.html:44
 msgid "wie werden Signale übertragen?"
 msgstr "how are signals transmitted?"
-
-#: templates/TechnicalStandards/explanation.html:123
-#: templates/TechnicalStandards/protocol-comparison.html:51
-#: templates/TechnicalStandards/protocol-detail.html:73
-#: templates/TechnicalStandards/protocol-explanation.html:46
-msgid "Zugehörige Standards"
-msgstr "Related standards"
 
 #: templates/TechnicalStandards/explanation.html:123
 #: templates/TechnicalStandards/protocol-explanation.html:46
@@ -1780,13 +1829,6 @@ msgstr ""
 "network?"
 
 #: templates/TechnicalStandards/explanation.html:131
-#: templates/TechnicalStandards/protocol-comparison.html:59
-#: templates/TechnicalStandards/protocol-detail.html:79
-#: templates/TechnicalStandards/protocol-explanation.html:54
-msgid "Implementierte Sicherheitsmechanismen"
-msgstr "Implemented security mechanisms"
-
-#: templates/TechnicalStandards/explanation.html:131
 #: templates/TechnicalStandards/protocol-explanation.html:54
 msgid ""
 "ob und welche Mechanismen sind im Protokoll implementiert, um die "
@@ -1794,13 +1836,6 @@ msgid ""
 msgstr ""
 "whether and what mechanisms are implemented in the protocol to ensure data "
 "security?"
-
-#: templates/TechnicalStandards/explanation.html:133
-#: templates/TechnicalStandards/protocol-comparison.html:66
-#: templates/TechnicalStandards/protocol-detail.html:85
-#: templates/TechnicalStandards/protocol-explanation.html:56
-msgid "Bandbreite"
-msgstr "Bandwidth"
 
 #: templates/TechnicalStandards/explanation.html:133
 #: templates/TechnicalStandards/protocol-explanation.html:56
@@ -1812,13 +1847,6 @@ msgstr ""
 "various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:135
-#: templates/TechnicalStandards/protocol-comparison.html:74
-#: templates/TechnicalStandards/protocol-detail.html:89
-#: templates/TechnicalStandards/protocol-explanation.html:58
-msgid "Frequenz"
-msgstr "Frequency"
-
-#: templates/TechnicalStandards/explanation.html:135
 #: templates/TechnicalStandards/protocol-explanation.html:58
 msgid ""
 "die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
@@ -1826,13 +1854,6 @@ msgid ""
 msgstr ""
 "the frequency, wavelength, or carrier frequency used by the wireless "
 "communication devices in the system."
-
-#: templates/TechnicalStandards/explanation.html:137
-#: templates/TechnicalStandards/protocol-comparison.html:82
-#: templates/TechnicalStandards/protocol-detail.html:95
-#: templates/TechnicalStandards/protocol-explanation.html:60
-msgid "Reichweite"
-msgstr "Range"
 
 #: templates/TechnicalStandards/explanation.html:137
 #: templates/TechnicalStandards/protocol-explanation.html:60
@@ -1846,12 +1867,6 @@ msgstr ""
 "becoming too weak."
 
 #: templates/TechnicalStandards/explanation.html:139
-#: templates/TechnicalStandards/protocol-comparison.html:120
-#: templates/TechnicalStandards/protocol-explanation.html:62
-msgid "Implementierte OSI-Schichten"
-msgstr "Implemented OSI-layer"
-
-#: templates/TechnicalStandards/explanation.html:139
 #: templates/TechnicalStandards/protocol-explanation.html:62
 msgid ""
 "die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
@@ -1861,21 +1876,9 @@ msgstr ""
 "between the various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:141
-#: templates/TechnicalStandards/protocol-comparison.html:127
-#: templates/TechnicalStandards/protocol-explanation.html:64
-msgid "Ebenen der Gebäudeautomation"
-msgstr "Levels of building automation"
-
-#: templates/TechnicalStandards/explanation.html:141
 #: templates/TechnicalStandards/protocol-explanation.html:64
 msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
 msgstr "the hierarchical structure of a building automation system."
-
-#: templates/TechnicalStandards/explanation.html:143
-#: templates/TechnicalStandards/protocol-comparison.html:91
-#: templates/TechnicalStandards/protocol-explanation.html:66
-msgid "Datenmodell Architektur"
-msgstr "Data model architecture"
 
 #: templates/TechnicalStandards/explanation.html:143
 #: templates/TechnicalStandards/protocol-explanation.html:66
@@ -1895,19 +1898,9 @@ msgstr ""
 "devices during data transfer?"
 
 #: templates/TechnicalStandards/explanation.html:147
-msgid "Multi Master"
-msgstr "Multi Master"
-
-#: templates/TechnicalStandards/explanation.html:147
 #: templates/TechnicalStandards/protocol-explanation.html:70
 msgid "können mehrere Mastergeräte zeitgleich agieren?"
 msgstr "Can several master devices act at the same time?"
-
-#: templates/TechnicalStandards/explanation.html:149
-#: templates/TechnicalStandards/protocol-comparison.html:113
-#: templates/TechnicalStandards/protocol-explanation.html:72
-msgid "Priorität"
-msgstr "Priority"
 
 #: templates/TechnicalStandards/explanation.html:149
 #: templates/TechnicalStandards/protocol-explanation.html:72
@@ -1976,15 +1969,19 @@ msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
 msgstr ""
 "a link through which the standard can be accessed (possibly purchased)."
 
-#: templates/TechnicalStandards/norm-listings.html:48
-#: templates/TechnicalStandards/norm-listings.html:60
-#: templates/TechnicalStandards/norm-listings.html:72
-#: templates/TechnicalStandards/protocol-listings.html:48
-#: templates/TechnicalStandards/protocol-listings.html:60
-#: templates/TechnicalStandards/protocol-listings.html:72
-#: templates/TechnicalStandards/protocol-listings.html:84
+#: templates/TechnicalStandards/norm-listings.html:3
+msgid "Überblick über technische Standards - Normen"
+msgstr "Overview of technical standards - Norms"
+
+#: templates/TechnicalStandards/norm-listings.html:49
+#: templates/TechnicalStandards/norm-listings.html:61
+#: templates/TechnicalStandards/norm-listings.html:73
+#: templates/TechnicalStandards/protocol-listings.html:49
+#: templates/TechnicalStandards/protocol-listings.html:61
+#: templates/TechnicalStandards/protocol-listings.html:73
+#: templates/TechnicalStandards/protocol-listings.html:85
 #: templates/datasets_over/dataset-listings.html:41
-#: templates/partials/search-bar.html:69
+#: templates/partials/search-bar.html:74
 #: templates/tools_over/tool-listings.html:46
 #: templates/weatherdata_over/data-service-listings.html:49
 msgid "Suchbegriff"
@@ -2157,6 +2154,10 @@ msgstr ""
 "whether the protocol has the “discovery” function to automatically identify "
 "devices during data transfer?"
 
+#: templates/TechnicalStandards/protocol-listings.html:3
+msgid "Überblick über technische Standards - Protokolle"
+msgstr "Overview of technical standards - Protocols"
+
 #: templates/admin/publications/import_bibtex.html:8
 msgid "Home"
 msgstr ""
@@ -2192,15 +2193,24 @@ msgstr ""
 msgid "Add %(name)s"
 msgstr ""
 
-#: templates/businessModel/businessModelsChallenges.html:4
-#: templates/component_list/components.html:4
-msgid "Komponentenliste"
-msgstr "Component list"
-
 #: templates/component_list/componentComparisonResults.html:4
 #, fuzzy
 #| msgid "Komponentenliste"
 msgid "Komponentenliste Vergleich Ergebnisse"
+msgstr "Component list"
+
+#: templates/component_list/componentComparisonResults.html:14
+msgid ""
+"Hier steht ein Platzhaltertext: Con rest voles molor se reptur, erum sum "
+"autaquiae prae nonsequat quas ex exero dolupti dolupta tempossimi, "
+"volestiures es doluptatur santius ulparciis et ad eum aceptiistion cum "
+"quianihictem unt rest voles molor se reptur, erum sum autaquiae prae "
+"nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es "
+"doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
+msgstr ""
+
+#: templates/component_list/components.html:4
+msgid "Komponentenliste"
 msgstr "Component list"
 
 #: templates/component_list/components.html:136
@@ -2985,39 +2995,9 @@ msgstr ""
 
 #: templates/pages/businessModels.html:3
 #: templates/pages/businessModelsPractice.html:19
+#: webcentral_app/static/sphinx/html/_sources/templateStructure.md.txt:18
 msgid "Geschäftsmodelle – good-practice"
 msgstr "Business models – good practice"
-
-#: templates/pages/businessModelsChallenge.html:33
-msgid ""
-"Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
-"          Dem Einsatz als fertigem Produkt steht nichts mehr im Wege und "
-"die\n"
-"          digitale Anwendung kann bald großflächig zum Einsatz kommen? "
-"Oftmals\n"
-"          ist der Weg zu einem funktionierenden Geschäftsmodell lang. Gerade "
-"bei\n"
-"          digitalen Anwendungen treten entlang der "
-"Technologieentwicklungsstufen\n"
-"          immer wieder Herausforderungen auf. So auch beim Übergang von der\n"
-"          technologischen Entwicklung zur wirtschaftlichen Verwertung. Die "
-"mit\n"
-"          der Geschätsmodellentwicklung einhergehenden Herausforderungen, "
-"mit\n"
-"          der sich Projekte der Forschungsinitiative Energiewendebauen\n"
-"          konfrontiert sehen, wurden systematisch aufgearbeitet und sollen "
-"hier\n"
-"          vorgestellt werden."
-msgstr ""
-"The digital application has been successfully tested in a prototype? Nothing "
-"stands in the way of its use as a finished product and the digital "
-"application can soon be used on a large scale? The path to a functioning "
-"business model is often long. Especially with digital applications, "
-"challenges always arise along the technology development stages. This also "
-"applies to the transition from technological development to economic "
-"exploitation. The challenges associated with business model development, "
-"which projects of the research initative Energiewendebauen are confronted "
-"with, have been systematically reviewed and will be presented here."
 
 #: templates/pages/businessModelsPractice.html:32
 msgid ""
@@ -3433,19 +3413,19 @@ msgstr ""
 "with public funds from the Federal Ministry for Economic Affairs and Climate "
 "Protection based on a resolution by the German Bundestag."
 
-#: templates/partials/_navbar.html:54
+#: templates/partials/_navbar.html:60
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
-#: templates/partials/_navbar.html:60
+#: templates/partials/_navbar.html:66
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:120
+#: templates/partials/_navbar.html:132
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:125
+#: templates/partials/_navbar.html:137
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
@@ -3649,22 +3629,23 @@ msgstr "User interface"
 msgid "Updates"
 msgstr "Updates"
 
-#: templates/partials/search-bar.html:98 templates/partials/search-bar.html:119
+#: templates/partials/search-bar.html:103
+#: templates/partials/search-bar.html:124
 msgid "Aufsteigend"
 msgstr "Ascending"
 
-#: templates/partials/search-bar.html:101
-#: templates/partials/search-bar.html:120
+#: templates/partials/search-bar.html:106
+#: templates/partials/search-bar.html:125
 msgid "Absteigend"
 msgstr "Descending"
 
-#: templates/partials/search-bar.html:153
+#: templates/partials/search-bar.html:158
 #, fuzzy
 #| msgid "Detailansicht zum Bild"
 msgid "Detail Ansicht"
 msgstr "Detailed view of the image"
 
-#: templates/partials/search-bar.html:157
+#: templates/partials/search-bar.html:162
 msgid "Vergleichsmodus"
 msgstr "Comparison mode"
 
@@ -4911,8 +4892,6 @@ msgid ""
 msgstr ""
 
 #: use_cases/views.py:216
-#, fuzzy
-#| msgid "Überblick über die Normen"
 msgid "Überblick über die Anwendungsfälle"
 msgstr "Overview of norms"
 
@@ -4957,6 +4936,43 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:94
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:18
+#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:19
+msgid "Hallo"
+msgstr ""
+
+#~ msgid ""
+#~ "Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
+#~ "          Dem Einsatz als fertigem Produkt steht nichts mehr im Wege und "
+#~ "die\n"
+#~ "          digitale Anwendung kann bald großflächig zum Einsatz kommen? "
+#~ "Oftmals\n"
+#~ "          ist der Weg zu einem funktionierenden Geschäftsmodell lang. "
+#~ "Gerade bei\n"
+#~ "          digitalen Anwendungen treten entlang der "
+#~ "Technologieentwicklungsstufen\n"
+#~ "          immer wieder Herausforderungen auf. So auch beim Übergang von "
+#~ "der\n"
+#~ "          technologischen Entwicklung zur wirtschaftlichen Verwertung. "
+#~ "Die mit\n"
+#~ "          der Geschätsmodellentwicklung einhergehenden Herausforderungen, "
+#~ "mit\n"
+#~ "          der sich Projekte der Forschungsinitiative Energiewendebauen\n"
+#~ "          konfrontiert sehen, wurden systematisch aufgearbeitet und "
+#~ "sollen hier\n"
+#~ "          vorgestellt werden."
+#~ msgstr ""
+#~ "The digital application has been successfully tested in a prototype? "
+#~ "Nothing stands in the way of its use as a finished product and the "
+#~ "digital application can soon be used on a large scale? The path to a "
+#~ "functioning business model is often long. Especially with digital "
+#~ "applications, challenges always arise along the technology development "
+#~ "stages. This also applies to the transition from technological "
+#~ "development to economic exploitation. The challenges associated with "
+#~ "business model development, which projects of the research initative "
+#~ "Energiewendebauen are confronted with, have been systematically reviewed "
+#~ "and will be presented here."
 
 #~ msgid ""
 #~ "Digitale Anwendungen können dazu beitragen, positive Umweltwirkungen wie "
@@ -5251,11 +5267,6 @@ msgstr "MIT license"
 #, fuzzy
 #~| msgid "Überblick über die Normen"
 #~ msgid "Überblick über  technische Standards"
-#~ msgstr "Overview of norms"
-
-#, fuzzy
-#~| msgid "Überblick über die Normen"
-#~ msgid "Überblick über die technischen Standards - Normen "
 #~ msgstr "Overview of norms"
 
 #, fuzzy

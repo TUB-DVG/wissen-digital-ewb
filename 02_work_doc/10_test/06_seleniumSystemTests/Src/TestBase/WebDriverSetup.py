@@ -197,3 +197,29 @@ class WebDriverSetup(unittest.TestCase):
             else:
                 self.assertTrue("_no.svg" in srcOfImage)
 
+    def checkPageTitle(self, germanTitle, englishTitle):
+        """Test if the page title on the english and german version of the app is 
+        as expected.
+
+        germanTitle:    str
+            The german title as a string.
+        englishTitle:   str
+            The english title of the page as a string.
+        
+        Returns:
+            None
+        """
+        self._setLanguageToEnglish()
+        self.waitUntilPageIsLoaded()
+        self.assertEqual(self.driver.title, englishTitle)
+        self._setLanguageToGerman()
+        self.waitUntilPageIsLoaded()
+        self.assertEqual(self.driver.title, germanTitle)
+
+    def waitUntilPageIsLoaded(self):
+        """Explicitly wait until page is loaded.
+
+        """
+        revealed = self.driver.find_element(By.XPATH, "//div")
+        wait = WebDriverWait(self.driver, timeout=10)
+        wait.until(lambda d : revealed.is_displayed())
