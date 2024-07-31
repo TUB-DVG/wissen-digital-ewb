@@ -42,10 +42,16 @@
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px" />
+              {% if focusBorder == "technical" %}
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="technical colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt=""
+                     style="width:35px" />             
+              {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">

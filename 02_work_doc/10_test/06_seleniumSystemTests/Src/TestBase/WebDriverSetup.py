@@ -14,6 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
+from Src.PageObject.Pages.NavBar import NavBar
 
 # Create tmp_dir
 temp_dir = "~/_tmp"
@@ -174,4 +175,25 @@ class WebDriverSetup(unittest.TestCase):
         else:
             self.assertEqual(self.getLanguage(), "en")
 
+    def checkNavBar(self, currentFocus=None):
+        """test if on the current page the image icons in the navbar are only colored
+        for the current focus.
+
+        currentFocus: str
+            string representing the current focus color.
+
+        Returns:
+        None
+        """
+
+        navBarObj = NavBar(self.driver)
+        listOfIcons = navBarObj.getIcons()
+        
+        for icon in listOfIcons:
+            self.assertTrue(icon.text == "", "No alt text should be present for icon")
+            srcOfImage =  icon.get_attribute("src")
+            if currentFocus in srcOfImage:
+                self.assertTrue("_no.svg" not in srcOfImage)
+            else:
+                self.assertTrue("_no.svg" in srcOfImage)
 
