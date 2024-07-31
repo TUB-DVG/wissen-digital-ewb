@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="{{ request.LANGUAGE_CODE }}">
       <head>
@@ -65,8 +66,8 @@
                   integrity="sha384-Ay26V7L8bsJTsX9Sxclnvsn+hkdiwRnrjZJXqKmkIDobPgIIWBOVguEcQQLDuhfN"
                   crossorigin="anonymous" />
             <!-- webcentral css -->
-            <link rel="stylesheet" href="{% static 'css/webcentral.css' %}" />
-
+            <!--<link rel="stylesheet" href="{% static 'webpack_bundles/webcentral.f2a4c5ac0040808e7cf6.css' %}" />-->
+            {% render_bundle 'main' 'css' %}
             <!-- Favicons -->
             <link rel="apple-touch-icon"
                   sizes="180x180"
