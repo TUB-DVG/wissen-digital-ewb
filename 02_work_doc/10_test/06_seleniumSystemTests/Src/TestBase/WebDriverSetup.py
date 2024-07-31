@@ -188,7 +188,8 @@ class WebDriverSetup(unittest.TestCase):
 
         navBarObj = NavBar(self.driver)
         listOfIcons = navBarObj.getIcons()
-        
+        if currentFocus is None:
+            currentFocus = "undefined"
         for icon in listOfIcons:
             self.assertTrue(icon.text == "", "No alt text should be present for icon")
             srcOfImage =  icon.get_attribute("src")
