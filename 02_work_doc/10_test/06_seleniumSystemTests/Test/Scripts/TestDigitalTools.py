@@ -152,6 +152,8 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
+        
+        self.checkNavBar("technical")
 
     def testSearchField(self) -> None:
         """Tests the Search Function in `Digitale Anwendungen`"""

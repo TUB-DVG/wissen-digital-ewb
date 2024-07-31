@@ -16,6 +16,15 @@ class TestCriteriaCatalog(WebDriverSetup):
     """Represent the Selenium-Test of the Criteria-Catalog Page 
 
     """
+    
+    def testOverviewPage(self):
+        """Test the design and structure of the criteria-catalog overview page 
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/en/pages/criteriaCatalog/")
+        
+        self.checkPageTitle("Kriterienkatalog - Übersicht", "Catalog of criteria - Overview")
+        self.checkNavBar("legal")
 
     # def testColorOfLines(self):
     #     """Tests if the color of the lines in the Criteria-Catalog is correct.

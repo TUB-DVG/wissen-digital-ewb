@@ -51,7 +51,7 @@ class TestLastProfile(WebDriverSetup):
 
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         language = self.getLanguage()
-        
+        self.checkNavBar("technical") 
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
         self.scrollElementIntoView(linkToHeatApprox)
         linkTextToHeatApprox = linkToHeatApprox.text
@@ -93,7 +93,7 @@ class TestLastProfile(WebDriverSetup):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
-
+        self.checkNavBar("technical")
         lastProfileLink = lastprofilePage.getLinkToStromlastTool()
         self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", lastProfileLink)
         time.sleep(1)
@@ -106,11 +106,12 @@ class TestLastProfile(WebDriverSetup):
         )
 
         currentApproObj = CurrentLoadApproximation(self.driver)
-
-        time.sleep(1)
+        cookieBannerObj = CookieBanner(self.driver)
+        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self._setLanguageToGerman()
         currentApproObj.switchToIFrame()
         headingElement = currentApproObj.getHeadingOfPage()
-
+        
         self.assertEqual(
             headingElement.text,
             "Stromlast Approximation",
@@ -123,7 +124,7 @@ class TestLastProfile(WebDriverSetup):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
-
+        self.checkNavBar("technical")
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
 
         cookieBanner = CookieBanner(self.driver)
@@ -142,18 +143,18 @@ class TestLastProfile(WebDriverSetup):
         time.sleep(1)
         self.driver.save_screenshot("ss.png")
         linkToHeatApprox.click()
-        self.assertEqual(
+        
+        self.checkPageTitle(
             "Waermelastprofil",
-            self.driver.title,
-            "After clicking on Heat-Approximation Link, page should be Heat-Approximation. But its not!",
+            "Thermal load profile",
         )
 
         currentApproObj = HeatApproximation(self.driver)
-        
         time.sleep(1)
+        self._setLanguageToGerman()
         currentApproObj.switchToIFrame()
         headingElement = currentApproObj.getHeadingOfPage()
-
+        
         self.assertEqual(
             headingElement.text,
             "Wärmelast Approximation",
@@ -167,7 +168,8 @@ class TestLastProfile(WebDriverSetup):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
-
+        cookieBannerObj = CookieBanner(self.driver)
+        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
         weatherServiceLink = lastprofilePage.getWeatherServiceLink()
 
         actions = ActionChains(self.driver)

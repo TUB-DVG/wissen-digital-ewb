@@ -23,7 +23,8 @@ from Test.Scripts.TestUserEngagement import TestUserEngagement
 from Test.Scripts.TestNegativeEnvironmentalImpacts import (
     TestNegativeEnvironmentalImpacts, )
 from Test.Scripts.TestBusinessModels import TestBusinessModels
-
+from Test.Scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
+from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
 
@@ -75,6 +76,8 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestUserEngagement),
             testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
             testLoader.loadTestsFromTestCase(TestBusinessModels),
+            testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
+            testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
             # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
 

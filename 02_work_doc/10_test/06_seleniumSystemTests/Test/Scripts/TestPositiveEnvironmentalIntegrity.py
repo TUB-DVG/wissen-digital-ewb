@@ -33,6 +33,8 @@ class TestPositiveEnvironmentalIntegrity(WebDriverSetup):
         # Check the structure of the page
         positiveEnvironmentalIntegrityObj = PositiveEnvironmentalIntegrity(
             self.driver)
+        
+        self.checkNavBar("ecological")
 
         contentDiv = positiveEnvironmentalIntegrityObj.getContentDiv()
         self.assertIsNotNone(contentDiv)
