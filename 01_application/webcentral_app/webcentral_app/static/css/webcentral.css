@@ -573,34 +573,34 @@
   background: #8FABF7;
 }
 
-.neutral-cards .neutral-font-color {
+.global-cards .global-font-color {
   color: #787575;
 }
-.neutral-cards .border-neutral {
+.global-cards .border-global {
   border-radius: 2px;
   border: 2px solid #787575;
 }
-.neutral-cards .border-neutral-round {
+.global-cards .border-global-round {
   border-radius: 20px;
   border: 2px solid #787575;
 }
-.neutral-cards .border-neutral-round-font-color {
+.global-cards .border-global-round-font-color {
   border-radius: 20px;
   border: 2px solid #787575;
 }
-.neutral-cards .btn-neutral {
+.global-cards .btn-global {
   background-color: #787575;
   color: white;
 }
-.neutral-cards .btn-neutral-free-text {
+.global-cards .btn-global-free-text {
   color: #787575;
 }
-.neutral-cards .btn-neutral-white-bg {
+.global-cards .btn-global-white-bg {
   background-color: white;
   color: #787575;
   border: 2px solid #787575;
 }
-.neutral-cards .text-input-with-arrow-neutral {
+.global-cards .text-input-with-arrow-global {
   background-position: right 10px center; /* Position the arrow on the right, with some padding */
   background-repeat: no-repeat; /* Prevent the image from repeating */
   padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
@@ -611,15 +611,15 @@
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide overflowed text */
 }
-.neutral-cards .text-input-with-arrow-neutral::placeholder {
+.global-cards .text-input-with-arrow-global::placeholder {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.neutral-cards a {
+.global-cards a {
   color: #787575;
 }
-.neutral-cards input[type=radio] {
+.global-cards input[type=radio] {
   appearance: none;
   width: 20px;
   height: 20px;
@@ -629,7 +629,7 @@
   transition: 0.2s;
   margin-right: 10px;
 }
-.neutral-cards input[type=radio]:before {
+.global-cards input[type=radio]:before {
   content: "";
   display: block;
   width: 60%;
@@ -637,10 +637,10 @@
   margin: 20% auto;
   border-radius: 50%;
 }
-.neutral-cards input[type=radio]:checked:before {
+.global-cards input[type=radio]:checked:before {
   background: #787575;
 }
-.neutral-cards input[type=checkbox] {
+.global-cards input[type=checkbox] {
   appearance: none;
   width: 30px;
   height: 30px;
@@ -650,25 +650,25 @@
   margin-right: 10px;
   margin-left: 20px;
 }
-.neutral-cards ::placeholder {
+.global-cards ::placeholder {
   color: #787575 !important;
   opacity: 1;
   font-weight: 400 !important;
 }
-.neutral-cards input[type=text] {
+.global-cards input[type=text] {
   color: #787575;
 }
-.neutral-cards input[type=checkbox]:before {
+.global-cards input[type=checkbox]:before {
   content: "";
   display: block;
   width: 60%;
   height: 60%;
   margin: 20% auto;
 }
-.neutral-cards input[type=checkbox]:checked:before {
+.global-cards input[type=checkbox]:checked:before {
   background: #787575;
 }
-.neutral-cards .neutral-text-near-radio {
+.global-cards .global-text-near-radio {
   color: #787575;
 }
 
