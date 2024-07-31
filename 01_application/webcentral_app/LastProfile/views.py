@@ -2,15 +2,23 @@ from django.shortcuts import render
 from django.utils.translation import get_language
 
 def index(request):
-
+    context = {
+        "focusBorder": "technical",
+    }
     request.session['current_language'] = get_language()
-    return render(request, 'LastProfile/explanation.html')
+    return render(request, 'LastProfile/explanation.html', context)
 
 def stromlast(request):
+    context = {
+        "focusBorder": "technical",
+    }   
     request.session['current_language'] = get_language()
-    return render (request, 'pages/stromlast.html')
+    return render (request, 'pages/stromlast.html', context)
 
 
 def warmelast(request):
-    return render (request, 'pages/warmelast.html')
+    context = {
+        "focusBorder": "technical",
+    }   
+    return render (request, 'pages/warmelast.html', context)
 
