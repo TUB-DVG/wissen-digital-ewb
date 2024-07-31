@@ -41,6 +41,8 @@ class TestBusinessModels(WebDriverSetup):
         self.driver.get(
             os.environ["siteUnderTest"] + "/pages/businessModels"
         )  # first test if a heading and a introduction text is present:
+        self.checkNavBar("operational")
+
         self.businessModelObj = BusinessModels(self.driver)
 
         translationDict = {
