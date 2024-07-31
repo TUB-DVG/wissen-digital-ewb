@@ -134,9 +134,16 @@ class NavBar(object):
         """Get the icon image webelements 
 
         """
+        navBarDropdowns = self.getDropDownElements()
         listOfIconsInNavBar = []
-        navBarDropdowns = self.driver.find_elements(By.XPATH, "//li[@class='nav-item dropdown']")
         for dropdown in navBarDropdowns:
             imageDropdown = dropdown.find_element(By.XPATH, ".//img")
             listOfIconsInNavBar.append(imageDropdown)
         return listOfIconsInNavBar
+    
+    def getDropDownElements(self):
+        """
+
+        """
+        return  self.driver.find_elements(By.XPATH, "//li[@class='nav-item dropdown']")
+

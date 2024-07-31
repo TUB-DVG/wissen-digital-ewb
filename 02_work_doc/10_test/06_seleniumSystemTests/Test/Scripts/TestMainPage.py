@@ -408,3 +408,16 @@ class TestMainPage(WebDriverSetup):
                 linkTableElement, "a")
             self.assertEqual(linkElement.text,
                              expectedGermanLinkNames[linkNumber])
+    
+    def testPageStructure(self):
+        """Test if the navBar has 5 focuses and if the 5. focus is present on the page.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+
+        startPAgeObj = StartPage(self.driver)
+        navBarObj = NavBar(self.driver)
+        dropDownElements = navBarObj.getDropDownElements()
+        self.assertEqual(len(dropDownElements), 5, "Number of dropdown-elements in the navbar should be 5.")
+        self.checkNavBar()
+        
