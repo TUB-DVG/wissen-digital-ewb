@@ -55,8 +55,8 @@ def businessModels(request):
                 "boxId": 1,
                 "pathToTemplate": "partials/businessModelsBox.html",
                 "objectToRender": {
-                    "image":
-                    "img/businessModelsOverviewImg.svg",
+                    "imageDe": "img/businessModelsOverviewImg.svg",
+                    "imageEn": "img/businessModelsOverviewImg.svg",
                     "linkToDetailsPage":
                     "businessModelsChallenge",
                     "heading":
