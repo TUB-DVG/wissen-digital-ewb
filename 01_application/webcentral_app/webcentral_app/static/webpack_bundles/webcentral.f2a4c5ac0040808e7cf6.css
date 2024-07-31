@@ -1,3 +1,6 @@
+/*!******************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./01_application/webcentral_app/webcentral_app/static/css/webcentral.scss ***!
+  \******************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*!
  * webcentral css
@@ -103,7 +106,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M10 15l5-5 5 5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat;
+  background: url("data:image/svg+xml;utf8,<svg fill=%27black%27 height=%2724%27 viewBox=%270 0 24 24%27 width=%2724%27 xmlns=%27http://www.w3.org/2000/svg%27><path d=%27M10 15l5-5 5 5z%27/><path d=%27M0 0h24v24H0z%27 fill=%27none%27/></svg>") no-repeat;
   background-position-x: 95%;
   background-position-y: 50%;
   padding-right: 30px; /* space for the icon */
@@ -1004,5 +1007,3 @@ body h5 {
 .criteriaCatalogHeading {
   color: #E4D85C;
 }
-
-/*# sourceMappingURL=webcentral.css.map */

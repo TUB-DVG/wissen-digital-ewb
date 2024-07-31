@@ -44,3 +44,4 @@ log
 node_modules
 # packaging setuptools
 *.egg-info
+webpack-stats.json
