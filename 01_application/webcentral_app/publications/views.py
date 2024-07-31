@@ -66,7 +66,7 @@ def index(request):
                 "fieldName": "focus",
             },
         ],
-        "focusBorder": focusName,
+        "focusBorder": "global",
     }
     if filtering:
         return render(request, 'publications/publications-results.html', context)

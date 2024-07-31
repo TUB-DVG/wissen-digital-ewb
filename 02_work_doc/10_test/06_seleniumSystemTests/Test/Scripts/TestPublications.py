@@ -64,16 +64,12 @@ class TestPublicationPage(WebDriverSetup):
             "The Type of the publication do not match the type of the clicked publication",
         )
 
-    def testAllPublicationPages(self):
-        """Test the publication pages with all focuses
-
-        This testmethod calls the protected method _colorOfBorder for times 
-        with the different focuses.
+    def testPageStructure(self):
+        """ - Test if global navbar item is colored.
+            - test if global focus border is present.
         """
-        focusStringsList = ["technisch", "betrieblich", "ökologisch", "rechtlich"]
-        for focus in focusStringsList:
-            self._colorOfBorder(focus)
-            self.driver.back()
+        self.driver.get(os.environ["siteUnderTest"] + "/publications/")
+        self.checkNavBar("global")
     
     def testRemoveFocusFilter(self):
         """Check if an error occurs when the focus filter is removed
