@@ -4894,7 +4894,7 @@ msgstr ""
 
 #: use_cases/views.py:216
 msgid "Überblick über die Anwendungsfälle"
-msgstr "Overview of norms"
+msgstr "Overview of use cases"
 
 #: use_cases/views.py:232
 msgid "Level der Wirkebene"
@@ -4919,8 +4919,6 @@ msgid "Neutral"
 msgstr ""
 
 #: user_integration/views.py:33
-#, fuzzy
-#| msgid "Methoden zur Nutzendenintegration"
 msgid "Übersicht Methoden Nutzendenintegration"
 msgstr "Methods for user integration"
 
