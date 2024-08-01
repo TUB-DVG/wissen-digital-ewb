@@ -241,7 +241,7 @@ def index(request):
                 "filtered": evaluationElements,
             }, 
         ],
-        "focusBorder": "neutral",
+        "focusBorder": "global",
         "urlName": "use_cases_list",
         'search':searched,
         'use_case': filteredBy[0],

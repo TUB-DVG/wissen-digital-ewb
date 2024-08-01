@@ -28,7 +28,9 @@ class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
     ECOLOGICAL_COLOR = "rgb(143, 171, 247)"
-
+    GLOBAL_COLOR = "rgb(120, 117, 117)"
+    TECHNICAL_COLOR = "rgb(143, 171, 247)" 
+    
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -66,8 +68,11 @@ class WebDriverSetup(unittest.TestCase):
         """Scroll the element into the view of the browser-window."""
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         self.element = element
-        wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
-        wait.until(self._elementIsClickable)
+        try:
+            wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
+            wait.until(self._elementIsClickable)
+        except:
+            pass
 
     def _elementIsClickable(self, driver):
         """Check if the element is clickable."""
@@ -118,11 +123,13 @@ class WebDriverSetup(unittest.TestCase):
         """Remove the cookie-banner from the page"""
         cookieBannerObj = CookieBanner(self.driver)
         cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
-        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
+        if cookieBannerButton.is_displayed():
+            self.scrollElementIntoViewAndClickIt(cookieBannerButton)
 
     def _setLanguageToGerman(self):
         """Set the language of the page to german"""
         # change the language to german and check if the german heading is displayed
+        self._removeCookieBanner()
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
@@ -139,6 +146,7 @@ class WebDriverSetup(unittest.TestCase):
     def _setLanguageToEnglish(self):
         """Set the language of the page to english"""
         # change the language to english and check if the english heading is displayed
+        self._removeCookieBanner()
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
@@ -188,7 +196,8 @@ class WebDriverSetup(unittest.TestCase):
 
         navBarObj = NavBar(self.driver)
         listOfIcons = navBarObj.getIcons()
-        
+        if currentFocus is None:
+            currentFocus = "undefined"
         for icon in listOfIcons:
             self.assertTrue(icon.text == "", "No alt text should be present for icon")
             srcOfImage =  icon.get_attribute("src")
@@ -223,3 +232,4 @@ class WebDriverSetup(unittest.TestCase):
         revealed = self.driver.find_element(By.XPATH, "//div")
         wait = WebDriverWait(self.driver, timeout=10)
         wait.until(lambda d : revealed.is_displayed())
+
