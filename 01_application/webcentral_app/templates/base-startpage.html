@@ -1,4 +1,6 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -26,8 +28,8 @@
   <link id="style-switch" rel="stylesheet" type="text/css"
         href="{% static 'assets/css/style.css' %} ">
   <!-- webcentral css -->
-  <link rel="stylesheet" href="{% static 'css/webcentral.css' %}">
-
+  <!--<link rel="stylesheet" href="{% static 'css/webcentral.css' %}">-->
+  {% render_bundle 'main' %}
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicons/apple-touch-icon.png' %}">
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicons/favicon-32x32.png' %}">

@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     "django_plotly_dash",
     "common.apps.CommonConfig",
     "channels",
+    "webpack_loader",
 ]
 
 MIDDLEWARE = [
@@ -303,3 +304,13 @@ if not useDotENV:
         from webcentral_app.local_settings import *
     except ImportError:
         pass
+print(STATICFILES_DIRS)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/webpack_bundles/',
+        'CACHE': not DEBUG,
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+    }
+}

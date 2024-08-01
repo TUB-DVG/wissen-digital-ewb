@@ -24,3 +24,5 @@ cd webcentral   XXX adapt after restructure
 # install pip requirements
 pip install -e '.'
 ```
+Note: When choosing to install the application nativly on your system, it is maybe needed to install further packages: 
+    - "de_DE.utf8"
