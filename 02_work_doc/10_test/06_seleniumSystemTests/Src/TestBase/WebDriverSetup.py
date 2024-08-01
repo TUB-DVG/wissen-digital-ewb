@@ -28,6 +28,7 @@ class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
     ECOLOGICAL_COLOR = "rgb(143, 171, 247)"
+    GLOBAL_COLOR = "rgb(120, 117, 117)"
 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.

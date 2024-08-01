@@ -34,6 +34,12 @@
   outline: 2px solid #E4D85C;
   outline-offset: -17px;
 }
+#container-start-focus .border-global {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #787575;
+  outline-offset: -17px;
+}
 #container-start-focus a.technical {
   color: #000;
   border-bottom: 2px solid #8FABF7;
@@ -49,6 +55,10 @@
 #container-start-focus a.legal {
   color: #000;
   border-bottom: 2px solid #E4D85C;
+}
+#container-start-focus a.global {
+  color: #000;
+  border-bottom: 2px solid #787575;
 }
 #container-start-focus table td {
   padding: 3px;
