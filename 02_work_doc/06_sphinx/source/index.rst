@@ -15,12 +15,16 @@ If you would like to do some development or host the Wissensplattform, please fi
 
    quickstart
    migrations
+   installtion_basics
+   pyproject_toml
    contentSecurityPolicy
    dataImportDjango
    insertLinksInDatabase
    templateStructure
    translation
    listing_pages
+   testing
+   production
    
 Indices and tables
 ==================
