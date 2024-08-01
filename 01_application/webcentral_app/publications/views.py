@@ -43,6 +43,9 @@ def index(request):
         publications = publications.filter(query_filters).distinct()
 
     publications = list(sorted(publications, key=lambda obj: obj.title))
+    
+    for publication in publications:
+        publication.__setattr__("focus_en", publication.focus.all()[0].focus_en)
 
     paginator = Paginator(publications, 12)
 
@@ -50,8 +53,6 @@ def index(request):
 
     page = paginator.get_page(page_number)
     
-    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
-
     context = {
         'page': page,
         'search': searched,

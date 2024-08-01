@@ -29,7 +29,8 @@ class WebDriverSetup(unittest.TestCase):
 
     ECOLOGICAL_COLOR = "rgb(143, 171, 247)"
     GLOBAL_COLOR = "rgb(120, 117, 117)"
-
+    TECHNICAL_COLOR = "rgb(143, 171, 247)" 
+    
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the

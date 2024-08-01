@@ -22,6 +22,7 @@ from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.PublicationPage import PublicationPage
 from Src.PageObject.Pages.toolListPage import ToolListPage
+from Src.PageObject.Pages.SearchPage import SearchPage
 
 class TestPublicationPage(WebDriverSetup):
     
@@ -70,7 +71,52 @@ class TestPublicationPage(WebDriverSetup):
         """
         self.driver.get(os.environ["siteUnderTest"] + "/publications/")
         self.checkNavBar("global")
-    
+        
+        # iterate over all listing items and check if they have the border color of their focus:
+        publicationPage = PublicationPage(self.driver)
+        listingElements = publicationPage.getListingElements()
+
+        for element in listingElements:
+            fokusStr = publicationPage.getFokusForElement(element) 
+            if "technisch" in fokusStr or "technical" in fokusStr:
+                if "webcentral-cards" not in element.get_attribute("class"):
+                    try:
+                        self.assertTrue(element.value_of_css_property("border-color") == self.TECHNICAL_COLOR)
+                    except:
+                        breakpoint()
+
+
+        # test if one select statement is present and if it has global focus color border
+        searchBarObj = SearchPage(self.driver)
+        selectElements = searchBarObj.getMultiSelectClickables()
+        self.assertEqual(len(selectElements), 1, "Number of select elements on publication site should be 1.")
+        self.assertTrue(selectElements[0].value_of_css_property("border-color") == self.GLOBAL_COLOR)
+
+    def testMultiSelect(self):
+        """Test the multi select element and if it triggers filtering on selection
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/publications/")
+        
+        searchBar = SearchPage(self.driver)
+        publicationPage = PublicationPage(self.driver)
+        selectElements = searchBar.getMultiSelectClickables()
+
+        focusSelect = selectElements[0]
+        focusSelect.click()
+        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]")
+        dropdownElements = searchBar.getDescendantsByTagName(divOfOpenedDropDown, "div")[1:] 
+        chosenFilterItem = random.choice(dropdownElements)
+        textOfChosenFilter = chosenFilterItem.text
+        chosenFilterItem.click()
+        self.waitUntilPageIsLoaded()
+        listingElements = publicationPage.getListingElements()
+        if textOfChosenFilter == "technisch" or textOfChosenFilter == "technical":
+            self.assertEqual(len(listingElements), 7)
+        else:
+            self.assertEqual(len(listingElements), 0)
+
+
     def testRemoveFocusFilter(self):
         """Check if an error occurs when the focus filter is removed
         
