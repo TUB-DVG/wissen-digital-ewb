@@ -115,6 +115,34 @@
 }
 
 /* formating cards */
+.webcentral-cards .border-global {
+  border-radius: 2px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .border-global-round {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .border-global-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .text-input-with-arrow-global {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #787575;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.webcentral-cards .text-input-with-arrow-global::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 .webcentral-cards .border-technical {
   border-radius: 2px;
   border: 2px solid #8FABF7;
