@@ -149,3 +149,6 @@ class StartPage(object):
         """Return the Container for the Operational Focus"""
         return self.driver.find_element(By.XPATH,
                                         Locator.operationalFocusContainer)
+
+ 
+
