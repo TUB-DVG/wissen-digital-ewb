@@ -45,3 +45,4 @@ node_modules
 # packaging setuptools
 *.egg-info
 webpack-stats.json
+/01_application/webcentral_app/webcentral_app/static/webpack_bundles/
