@@ -27,8 +27,9 @@ def businessModelsChallenge(request):
             "pathToTemplate": "businessModel/businessModelBox.html",
             "objectToRender": businessModelObj,
         } for businessModelObj in businessModelObjs],
-        "image":
-        "img/businessModelsOverviewImg.svg",
+        "imageDe":
+        "assets/images/geschaeftsmodelle_de.svg",
+        "imageEn": "assets/images/geschaeftsmodelle_en.svg",
     }
     return render(request, "businessModel/businessModelsChallenges.html",
                   context)
