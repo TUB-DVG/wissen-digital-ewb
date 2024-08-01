@@ -301,14 +301,14 @@ function modifyCatalogToBeShownInOneElement() {
       window.textForCombinedElement = "";
       for (var j = 0; j < ulChildElements.length; j++) {
         if (Number(ulChildElements[j].id) == 3) {
-          textForCombinedElement = ulChildElements[j].textContent
+          textForCombinedElement = ulChildElements[j].innerHTML
           depthFirstSearch(ulChildElements[j], aggregateAndStyleText);
           firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
           if (firstLiChildren != "") {
             aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
             aggregatedTopicIds += "," + firstLiChildren.getAttribute("topicId");
           }
-
+          
           textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n');
           textCombinedConcatenated += textForCombinedElement;
         }
@@ -316,6 +316,7 @@ function modifyCatalogToBeShownInOneElement() {
           ulChildElements[j].remove();
         }
       }
+      //debugger;
       for (var j = 0; j < liDescendants.length; j++) {
         // }
         if (Number(liDescendants[j].id) >= 3) {
@@ -365,7 +366,7 @@ function modifyCatalogToBeShownInOneElement() {
       newLiElement.style.display = "none";
       newParagraphElement.style.whiteSpace = "pre-line";
       newParagraphElement.setAttribute("aggregatedText", "true")
-      newParagraphElement.innerHTML = textCombinedConcatenated;
+      newParagraphElement.innerHTML = window.textForCombinedElement;
       newParagraphElement.style.fontSize = "18px";
       newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
       newParagraphElement.setAttribute("tags", aggregatedTags);
@@ -388,10 +389,10 @@ function aggregateAndStyleText(element) {
   var textContent = "";
   if (element.tagName == "BUTTON") {
     if (Number(element.id) > 3) {
-      textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
+      textContent = "<span style='font-size:22px;'>" + element.textContent + "</span>";
     }
     else {
-      textContent = element.textContent;
+      textContent = "<span style='font-size: 22px;'>" + element.textContent + "</span>";
     }
   }
   if (element.tagName == "P") {
@@ -399,9 +400,10 @@ function aggregateAndStyleText(element) {
       textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
     }
     else {
-      textContent = element.textContent;
+      textContent = element.innerHTML;
     }
   }
+  //debugger;
   window.textForCombinedElement += textContent;
 }
 
