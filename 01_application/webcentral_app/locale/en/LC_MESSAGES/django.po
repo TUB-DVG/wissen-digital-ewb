@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 14:13+0000\n"
+"POT-Creation-Date: 2024-08-01 09:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -506,7 +506,7 @@ msgid "Proprietär"
 msgstr "Proprietary"
 
 #: businessModel/views.py:18 pages/views.py:47
-#: templates/StartSearch/StartSearch.html:261
+#: templates/StartSearch/StartSearch.html:247
 #: templates/partials/_navbar.html:116
 msgid "Geschäftsmodelle"
 msgstr "Business models"
@@ -822,7 +822,7 @@ msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
 #: component_list/views.py:287 component_list/views.py:326 pages/views.py:177
-#: templates/StartSearch/StartSearch.html:332
+#: templates/StartSearch/StartSearch.html:318
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:159
 msgid "Negative Umweltwirkungen"
@@ -998,7 +998,7 @@ msgid ""
 msgstr ""
 
 #: pages/views.py:236 pages/views.py:261
-#: templates/StartSearch/StartSearch.html:344
+#: templates/StartSearch/StartSearch.html:330
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
@@ -1082,7 +1082,7 @@ msgid ""
 msgstr ""
 
 #: pages/views.py:296 pages/views.py:322
-#: templates/StartSearch/StartSearch.html:368
+#: templates/StartSearch/StartSearch.html:354
 #: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:165
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
@@ -1419,31 +1419,24 @@ msgstr "Technical Standards"
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/StartSearch/StartSearch.html:206
-#: templates/StartSearch/StartSearch.html:217
+#: templates/StartSearch/StartSearch.html:203
 msgid "technisch"
 msgstr "technical"
 
-#: templates/StartSearch/StartSearch.html:208
-#: templates/StartSearch/StartSearch.html:382
-#: templates/StartSearch/StartSearch.html:471
-msgid "Publikationen"
-msgstr "Publications"
-
-#: templates/StartSearch/StartSearch.html:218
-#: templates/StartSearch/StartSearch.html:283
-#: templates/StartSearch/StartSearch.html:392
-#: templates/StartSearch/StartSearch.html:481
+#: templates/StartSearch/StartSearch.html:204
+#: templates/StartSearch/StartSearch.html:269
+#: templates/StartSearch/StartSearch.html:364
+#: templates/StartSearch/StartSearch.html:464
 #: templates/partials/_navbar.html:230
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/StartSearch/StartSearch.html:241
+#: templates/StartSearch/StartSearch.html:227
 #: templates/partials/_navbar.html:111
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
-#: templates/StartSearch/StartSearch.html:243
+#: templates/StartSearch/StartSearch.html:229
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -1461,21 +1454,21 @@ msgstr ""
 "applications in business models and the integration of and interaction with "
 "users."
 
-#: templates/StartSearch/StartSearch.html:273
+#: templates/StartSearch/StartSearch.html:259
 #: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:131
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
-#: templates/StartSearch/StartSearch.html:282
+#: templates/StartSearch/StartSearch.html:268
 msgid "betrieblich"
 msgstr "operational"
 
-#: templates/StartSearch/StartSearch.html:310
+#: templates/StartSearch/StartSearch.html:296
 #: templates/partials/_navbar.html:153
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:312
+#: templates/StartSearch/StartSearch.html:298
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -1495,21 +1488,17 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:356
+#: templates/StartSearch/StartSearch.html:342
 #: templates/pages/benchmarkingChallenges.html:19
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:380
-msgid "ökologisch"
-msgstr "ecological"
-
-#: templates/StartSearch/StartSearch.html:414
+#: templates/StartSearch/StartSearch.html:386
 #: templates/partials/_navbar.html:188
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:416
+#: templates/StartSearch/StartSearch.html:388
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -1529,25 +1518,43 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:435
+#: templates/StartSearch/StartSearch.html:407
 #: templates/partials/_navbar.html:193
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:445
+#: templates/StartSearch/StartSearch.html:417
+#: templates/StartSearch/StartSearch.html:474
 #: templates/partials/_navbar.html:198
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
-#: templates/StartSearch/StartSearch.html:457
+#: templates/StartSearch/StartSearch.html:429
 #: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:203
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:469
-#: templates/StartSearch/StartSearch.html:480
-msgid "rechtlich"
-msgstr "legal"
+#: templates/StartSearch/StartSearch.html:449
+msgid "Globaler Fokus"
+msgstr "Global Focus"
+
+#: templates/StartSearch/StartSearch.html:451
+msgid ""
+"Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig "
+"beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, "
+"die eine integrierte Betrachtung erfordern oder in allen Foki auftreten. "
+"Ziel ist eine ganzheitliche Betrachtung der Digitalisierung in der "
+"Energietechnik. "
+msgstr ""
+"Digitalization is a cross-cutting issue that influences many aspects "
+"mutually. Under the global focus, all points are brought together that "
+"require an integrated view or appear in all foci. The goal is a holistic "
+"view of digitalization in energy technology."
+
+#: templates/StartSearch/StartSearch.html:486
+#: templates/partials/_navbar.html:240
+msgid "Veröffentlichungen"
+msgstr "Publications"
 
 #: templates/TechnicalStandards/explanation.html:3
 #: templates/TechnicalStandards/norm-listings.html:24
@@ -3430,12 +3437,6 @@ msgstr ""
 msgid "City GML Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/partials/_navbar.html:240
-#, fuzzy
-#| msgid "Veröffentlichung geplant"
-msgid "Veröffentlichungen"
-msgstr "Publication planned"
-
 #: templates/partials/comparison.html:5 templates/partials/comparison.html:13
 msgid "Vergleiche"
 msgstr "Compare"
@@ -4940,6 +4941,15 @@ msgstr "MIT license"
 #: webcentral_app/static/sphinx/html/_sources/translation.md.txt:19
 msgid "Hallo"
 msgstr ""
+
+#~ msgid "Publikationen"
+#~ msgstr "Publications"
+
+#~ msgid "ökologisch"
+#~ msgstr "ecological"
+
+#~ msgid "rechtlich"
+#~ msgstr "legal"
 
 #~ msgid ""
 #~ "Die digitale Anwendung wurde erfolgreich in einem Prototyp getestet?\n"
