@@ -304,7 +304,6 @@ if not useDotENV:
         from webcentral_app.local_settings import *
     except ImportError:
         pass
-print(STATICFILES_DIRS)
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': '/webpack_bundles/',
