@@ -421,3 +421,20 @@ class TestMainPage(WebDriverSetup):
         self.assertEqual(len(dropDownElements), 5, "Number of dropdown-elements in the navbar should be 5.")
         self.checkNavBar()
         
+        # get elements in the global navbar dropbox:
+        navBarObj = NavBar(self.driver)
+        liElementsOfGlobalDropdown = navBarObj.getGlobalDropdownElements()
+        self.assertTrue(len(liElementsOfGlobalDropdown) >= 2)
+        
+        # test if a container is present, which has te class row-12 and a global 
+        # border
+        globalFocusContainer = self.driver.find_element(By.XPATH, "//div[@id='globalFocusContainer']")
+        self.assertTrue("col-12" in globalFocusContainer.get_attribute("class"))
+        self.assertTrue(globalFocusContainer.value_of_css_property("outline-color") == self.GLOBAL_COLOR)
+
+        # check if the links have black font color and are underlined in the global focus color:
+        linksInGlobalFocusContainer = globalFocusContainer.find_elements(By.XPATH, ".//a")
+        for link in linksInGlobalFocusContainer:
+            self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
+            self.assertTrue(link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR)
+
