@@ -21,10 +21,35 @@ class TestCriteriaCatalog(WebDriverSetup):
         """Test the design and structure of the criteria-catalog overview page 
 
         """
-        self.driver.get(os.environ["siteUnderTest"] + "/en/pages/criteriaCatalog/")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
         
-        self.checkPageTitle("Kriterienkatalog - Übersicht", "Catalog of criteria - Overview")
+        self.checkPageTitle("Betrieb und Betriebsoptimierung", "Betrieb und Betriebsoptimierung")
         self.checkNavBar("legal")
+        
+        # check if info icon is present on the right side of the root layer:
+        detailPageObj = CriteriaCatalogDetailsPage(self.driver)
+        rootDivElements = detailPageObj.getRootLayerElements()
+        
+        for divElement in rootDivElements:
+            imgElementsInDiv = detailPageObj.getDescendantsByTagName(divElement, "img")
+            self.assertEqual(len(imgElementInDiv), 2)
+            self.assertTrue(imgElementInDiv[1].text == "", "No alt-text should be present for info image")
+            self.assertTrue(imgElementInDiv[1].value_of_css_property("float") == "right")
+            self.assertTrue(imgElementInDiv[1].value_of_css_property("margin-top") == "20px")
+            
+            # when the image is clicked, a grey box to the left of the image should be displayed:
+            ## get the div element, which contains the grey box:
+            greyBoxDiv = detailPageObj.getDescendantsByTagName(divElement, "div")
+            self.assertEqual(len(greyBoxDiv), 1)
+            self.assertTrue("show" not in greyBoxDiv[0].get_attribute("class"))
+            self.assertTrue(not greyBoxDiv[0]greyBoxDiv[0].is_displayed())
+
+            # after clicking the info-icon, the grey box should be displayed:
+            imgElementsInDiv[1].click()
+            self.assertTrue("show" in greyBoxDiv[0].get_attribute("class"))
+            self.assertTrue(greyBoxDiv[0]greyBoxDiv[0].is_displayed())
+
+
 
     # def testColorOfLines(self):
     #     """Tests if the color of the lines in the Criteria-Catalog is correct.
