@@ -36,3 +36,8 @@ class AutomaticDataImport(TestCase):
             randomTopicObject.__getattribute__("norms")
         except AttributeError:
             self.fail("Norms is not an attribute of Topic.")
+
+        try:
+            randomTopicObject.__getattribute__("grey")
+        except AttributeError:
+            self.fail("Attribute grey should be a attribute of Topic.")

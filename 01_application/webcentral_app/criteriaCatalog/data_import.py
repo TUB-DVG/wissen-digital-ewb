@@ -28,18 +28,18 @@ class DataImportApp(DataImport):
 
 
         try:
-            if row[header.index("parentId")] == "":
+            if row[header.index("parent_id")] == "":
                 parentTopicOfCurrentTopic = None
             else:
                 for rowToBeSearchedForParent in data:
-                    if rowToBeSearchedForParent[header.index("id")] == row[header.index("parentId")]:
+                    if rowToBeSearchedForParent[header.index("id")] == row[header.index("parent_id")]:
                         parentIdRow = rowToBeSearchedForParent
                         break
                 if parentIdRow is not None:
                     # find also the parent of the parent since Topics can be identical
-                    if parentIdRow[header.index("parentId")] != "":
+                    if parentIdRow[header.index("parent_id")] != "":
                         for rowToBeSearchedForParent in data:
-                            if rowToBeSearchedForParent[header.index("id")] == parentIdRow[header.index("parentId")]:
+                            if rowToBeSearchedForParent[header.index("id")] == parentIdRow[header.index("parent_id")]:
                                 parentOfParentRow = rowToBeSearchedForParent
                                 break
                         parentOfParent = Topic.objects.get(
@@ -69,8 +69,10 @@ class DataImportApp(DataImport):
             text=row[header.index("text")],
             criteriaCatalog=criteriaCatalogForTopic,
             parent=parentTopicOfCurrentTopic,
-            imageFilename=row[header.index("image")],
+            imageFilename=row[header.index("icons")],
             topicHeadingNumber=row[header.index("id2")],
+            norms=row[header.index("relevant_norms")],
+            grey=row[header.index("grey")],
         )
 
         if row[header.index("tags")] != "" or row[header.index("tags")] == " ":
