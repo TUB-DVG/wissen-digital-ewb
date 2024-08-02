@@ -47,6 +47,10 @@ button {
   cursor: pointer;
 }
 
+.close-button {
+  cursor: pointer;
+}
+
 .info_icon_selected {
   display: none;
 }
@@ -217,7 +221,7 @@ button {
                       <b>Relevante DSGVO-Normen</b> 
                     </div>
                     <div class="col-2">
-                      <img src="{% static 'assets/images/close.svg' %}">
+                      <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/close.svg' %}" onclick="toggleNormsBox(this, event)" class="close-button">
                     </div>
                   </div>
                   <div class="row">
