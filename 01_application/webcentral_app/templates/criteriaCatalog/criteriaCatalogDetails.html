@@ -14,13 +14,13 @@ button {
     position: absolute;
     top: 0;
     left: 0; /* Adjust based on the width of the grey box */
-    width: 250px;
+    width: 300px;
     padding: 10px;
-    background-color: grey;
-    color: white;
-    border: 1px solid #ccc;
+    background-color: #E9E9E9;
     box-sizing: border-box;
-    z-index: 100000;
+}
+.heading-grey-container {
+  font-size: 18px;
 }
 .grey-box.show {
     display: block; !important
@@ -36,7 +36,23 @@ button {
     margin-left: 0px;
 }
 
-.info_icon {
+.info_icon{
+  display: none;
+}
+
+.info_icon.show {
+  display: inline;
+  float: right;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.info_icon_selected {
+  display: none;
+}
+
+.info_icon_selected.show {
+  display: inline;
   float: right;
   margin-top: 20px;
   cursor: pointer;
@@ -195,7 +211,22 @@ button {
             {% for tree in trees %}
               {% for node in tree %}
                 {% if node.content.topic.norms != "" %}
-                <div class="grey-box" topicId="{{ node.content.topic.id }}">{{ node.content.topic.norms }}</div>
+                <div class="grey-box" topicId="{{ node.content.topic.id }}">
+                  <div class="row">
+                    <div class="col-10 heading-grey-container">
+                      <b>Relevante DSGVO-Normen</b> 
+                    </div>
+                    <div class="col-2">
+                      <img src="{% static 'assets/images/close.svg' %}">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <br>
+                    <div class="col-12">
+                      {{ node.content.topic.norms }}
+                    </div>
+                  </div>
+                </div>
                 {% endif %}
                 {% if node.indent %}
                   {{ node.indent.depth }}
@@ -258,7 +289,9 @@ button {
                               {{ node.content.topic.heading }}
                             </button>
                             <div class="grey-box">{{ node.content.topic.norms }}</div>
-                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon" onclick="toggleNormsBox(this, event)">
+                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon show" onclick="toggleNormsBox(this, event)">
+                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon_selected.svg' %}" class="info_icon_selected" onclick="toggleNormsBox(this, event)">
+
                           </div>
                           <p class="paragraph-first-level"
                              id="0"
@@ -316,27 +349,31 @@ button {
         var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
         var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
         $( document ).ready(function(){
-          <!--$("div.grey-box").before($("body"))-->
-          debugger;
+          $("div.grey-box").appendTo("html")
         });
 
         function toggleNormsBox(element, event) {
           let topicId = $(element).attr("topicId")
           let normsDiv = $(`div[topicId=${topicId}]`)
           let classListOfNormsDiv = $(normsDiv).attr("class")
+          
           if ($(normsDiv).hasClass("show")) {
             $(normsDiv).removeClass("show");
-            
+            $(`img.info_icon_selected[topicId=${topicId}]`).removeClass("show")
+            $(`img.info_icon[topicId=${topicId}]`).addClass("show")
           }
           else {
             $(normsDiv).addClass("show");
-            $(normsDiv).css("top", event.layerY)
-            $(normsDiv).css("left", event.layerX)
+            $(normsDiv).css("top", event.pageY)
+            $(normsDiv).css("left", event.pageX - 300)
             
             <!--var leftOffset = event.clientX + 600;-->
             <!--var topOffset = event.clientY;-->
             <!--$(normsDiv).css("left", leftOffset - $(normsDiv).offset().left);-->
             <!--$(normsDiv).css("top", topOffset - $(normsDiv).offset().top);-->
+
+            $(`img.info_icon_selected[topicId=${topicId}]`).addClass("show")
+            $(`img.info_icon[topicId=${topicId}]`).removeClass("show")
           }
         }
        </script>
