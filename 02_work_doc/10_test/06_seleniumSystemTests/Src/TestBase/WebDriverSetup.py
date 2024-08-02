@@ -129,7 +129,11 @@ class WebDriverSetup(unittest.TestCase):
     def _setLanguageToGerman(self):
         """Set the language of the page to german"""
         # change the language to german and check if the german heading is displayed
-        self._removeCookieBanner()
+        try:
+            self._removeCookieBanner()
+        except:
+            pass
+
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
@@ -146,7 +150,11 @@ class WebDriverSetup(unittest.TestCase):
     def _setLanguageToEnglish(self):
         """Set the language of the page to english"""
         # change the language to english and check if the english heading is displayed
-        self._removeCookieBanner()
+        try:
+            self._removeCookieBanner()
+        except:
+            pass
+
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options

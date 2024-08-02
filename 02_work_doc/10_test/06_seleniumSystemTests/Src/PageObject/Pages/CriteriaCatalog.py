@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-class CriteriaCatalogOverviewPage(object):
+class CriteriaCatalogOverviewPage(GenericPageObject):
 
     def __init__(self, driver):
         """Constructor of CrteriaCatalogOverviewPage
@@ -76,4 +77,16 @@ class CriteriaCatalogDetailsPage(object):
         return parent.find_elements(
             By.TAG_NAME,
             "button",
-        )            
+        )
+
+    def getRootLayerElements(self):
+        """Return the root-layer elements of each tree(the elements, which are displayed
+        when the catalog is loaded.)
+
+        """
+        rootUlElements = self.driver.find_elements(By.XPATH, "//div[contains(@class, 'descriptionContainer')]/ul")
+        rootLiElements = []
+        for ulElement in rootUlElements:
+            rootLiElements.append(ulElement.find_element(By.XPATH, ".//li/div"))
+
+        return rootLiElements

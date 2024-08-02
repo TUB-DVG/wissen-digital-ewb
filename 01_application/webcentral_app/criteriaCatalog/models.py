@@ -40,7 +40,8 @@ class Topic(models.Model):
     )
     imageFilename = models.CharField(max_length=200, null=True, blank=True)
     tag = models.ManyToManyField("Tag", blank=True)
-
+    norms = models.CharField(max_length=300, null=True, blank=True)
+    
     def __str__(self):
         """Return string representation of an `Topic`-object"""
         return self.heading

@@ -8,6 +8,23 @@
 button {
   text-align: left;
 }
+
+.grey-box {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -200px; /* Adjust based on the width of the grey box */
+    width: 200px;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    z-index: 10;
+}
+.show .grey-box {
+    display: block;
+}
 .sticky-third-lvl {
     position: sticky;
     top: 155px;
@@ -17,6 +34,12 @@ button {
 .absolute-horizontal-position-lvl-one {
     padding-left: 111px;
     margin-left: 0px;
+}
+
+.info_icon {
+  float: right;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .test li .absolute-horizontal-position-lvl-one li .absolute-horizontal-position-lvl-two:last-child > li,
@@ -231,6 +254,8 @@ button {
                                     topicId="{{ node.content.topic.id }}">
                               {{ node.content.topic.heading }}
                             </button>
+                            <div class="grey-box">{{ node.content.topic.norms }}</div>
+                            <img src="{% static 'assets/images/info_icon.svg' %}" class="info_icon">
                           </div>
                           <p class="paragraph-first-level"
                              id="0"
