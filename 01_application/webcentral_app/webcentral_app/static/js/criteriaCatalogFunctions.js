@@ -190,7 +190,7 @@ function depthFirstSearch(element, func) {
   var stack = [element];
 
   while (stack.length > 0) {
-      var currentElement = stack.pop();
+     var currentElement = stack.pop();
       func(currentElement);
 
       var children = currentElement.children;
@@ -388,22 +388,11 @@ function modifyCatalogToBeShownInOneElement() {
 function aggregateAndStyleText(element) {
   var textContent = "";
   if (element.tagName == "BUTTON") {
-    if (Number(element.id) > 3) {
-      textContent = "<span style='font-size:22px;'>" + element.textContent + "</span>";
-    }
-    else {
       textContent = "<span style='font-size: 22px;'>" + element.textContent + "</span>";
-    }
   }
   if (element.tagName == "P") {
-    if (Number(element.id) > 3) {
-      textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
-    }
-    else {
-      textContent = element.innerHTML;
-    }
+      textContent = "<div style='margin-left: 40px;'>" + element.innerHTML + "</div>";
   }
-  //debugger;
   window.textForCombinedElement += textContent;
 }
 
