@@ -13,17 +13,17 @@ button {
     display: none;
     position: absolute;
     top: 0;
-    left: -200px; /* Adjust based on the width of the grey box */
-    width: 200px;
+    left: 0; /* Adjust based on the width of the grey box */
+    width: 250px;
     padding: 10px;
     background-color: grey;
     color: white;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    z-index: 10;
+    z-index: 100000;
 }
-.show .grey-box {
-    display: block;
+.grey-box.show {
+    display: block; !important
 }
 .sticky-third-lvl {
     position: sticky;
@@ -194,6 +194,9 @@ button {
             <!-- <ul> -->
             {% for tree in trees %}
               {% for node in tree %}
+                {% if node.content.topic.norms != "" %}
+                <div class="grey-box" topicId="{{ node.content.topic.id }}">{{ node.content.topic.norms }}</div>
+                {% endif %}
                 {% if node.indent %}
                   {{ node.indent.depth }}
                   {% if node.depth == 0 %}
@@ -255,7 +258,7 @@ button {
                               {{ node.content.topic.heading }}
                             </button>
                             <div class="grey-box">{{ node.content.topic.norms }}</div>
-                            <img src="{% static 'assets/images/info_icon.svg' %}" class="info_icon">
+                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon" onclick="toggleNormsBox(this, event)">
                           </div>
                           <p class="paragraph-first-level"
                              id="0"
@@ -312,6 +315,30 @@ button {
         var idOfTopicToBeOpened = "{{ topicIdentifier }}";
         var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
         var pathToArrowDownImg = "{% static 'assets/images/arrow_down.svg' %}";
+        $( document ).ready(function(){
+          <!--$("div.grey-box").before($("body"))-->
+          debugger;
+        });
+
+        function toggleNormsBox(element, event) {
+          let topicId = $(element).attr("topicId")
+          let normsDiv = $(`div[topicId=${topicId}]`)
+          let classListOfNormsDiv = $(normsDiv).attr("class")
+          if ($(normsDiv).hasClass("show")) {
+            $(normsDiv).removeClass("show");
+            
+          }
+          else {
+            $(normsDiv).addClass("show");
+            $(normsDiv).css("top", event.layerY)
+            $(normsDiv).css("left", event.layerX)
+            
+            <!--var leftOffset = event.clientX + 600;-->
+            <!--var topOffset = event.clientY;-->
+            <!--$(normsDiv).css("left", leftOffset - $(normsDiv).offset().left);-->
+            <!--$(normsDiv).css("top", topOffset - $(normsDiv).offset().top);-->
+          }
+        }
        </script>
       <script src="{% static 'js/criteriaCatalogFunctions.js' %}"></script>
       <img src="{% static 'assets/images/arrow_up.svg' %}"
