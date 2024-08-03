@@ -316,7 +316,6 @@ function modifyCatalogToBeShownInOneElement() {
           ulChildElements[j].remove();
         }
       }
-      //debugger;
       for (var j = 0; j < liDescendants.length; j++) {
         // }
         if (Number(liDescendants[j].id) >= 3) {
@@ -701,6 +700,7 @@ if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
 }
+debugger;
 showElement(element);
 var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
 var childUlElements = [];
