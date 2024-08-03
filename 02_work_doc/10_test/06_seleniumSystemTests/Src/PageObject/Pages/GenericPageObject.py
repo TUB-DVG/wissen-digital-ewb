@@ -27,6 +27,12 @@ class GenericPageObject:
         except:
             return None
 
+    def getFirstAncestorByTagName(self, element, tagName):
+        """Get the first parent, which has the tag `tagName`
+        
+        """
+        return element.find_element(By.XPATH, f"ancestor::{tagName}")
+
     def getDescendantsByClass(self, element, className):
         """Returns the div-element, which wraps the content of the page"""
         try:
