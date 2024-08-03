@@ -234,6 +234,7 @@ function depthFirstWalkForParagraphs() {
     if (elementFromQueue.tagName == "P" && Number(elementFromQueue.id) < 3) {
       childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementFromQueue, "UL");
       if (childUlFromParagraph != "") {
+        
         newLiElement = document.createElement("li");
         newLiElement.prepend(elementFromQueue);
         childUlFromParagraph.prepend(newLiElement);
@@ -242,6 +243,7 @@ function depthFirstWalkForParagraphs() {
         parentOfParagraph.removeChild(elementFromQueue);
       }
       else {
+        
         parentOfParagraph = elementFromQueue.parentElement;
         parentOfParagraph.removeChild(elementFromQueue);
         
@@ -268,10 +270,12 @@ function depthFirstWalkForParagraphs() {
         newUlElement.prepend(newLiElement);
         firstUlAsChildOfLi = returnFirstAppearanceOfElementWithTagName(parentOfParagraph, "UL");
         if (firstUlAsChildOfLi != "") {
+          
           parentOfParagraph.insertBefore(newUlElement, firstUlAsChildOfLi);
         }
         else {
-        parentOfParagraph.prepend(newUlElement);
+          parentOfParagraph.insertBefore(newUlElement, null);
+          //parentOfParagraph.prepend(newUlElement);
       }
     }
   }
@@ -700,7 +704,6 @@ if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
 }
-debugger;
 showElement(element);
 var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
 var childUlElements = [];
@@ -743,6 +746,7 @@ else {
   var paragraphElementInLi = undefined;
   var divElements; 
   var imageInButtonElement;
+  
   for (var i = 0; i < nextLayerElementsUL.length; i++) {
     nextLayerElementsUL[i].style.display = "block";
 
@@ -768,8 +772,8 @@ else {
       if (paragraphElementInLi.length > 0) {
         paragraphElementInLi[0].style.display = "block";
         try {
-        paragraphElementInLi[0].nextElementSibling.style.display = "block";
-        paragraphElementInLi[0].previousElementSibling.style.display = "block";
+          paragraphElementInLi[0].nextElementSibling.style.display = "block";
+          paragraphElementInLi[0].previousElementSibling.style.display = "block";
         }
         catch {
           console.log("Error");

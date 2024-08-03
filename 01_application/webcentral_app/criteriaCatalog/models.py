@@ -10,7 +10,7 @@ class CriteriaCatalog(models.Model):
     """Represent a CriteriaCatalog, which holds Tree-Structures of Topics."""
 
     name = models.CharField(max_length=100)
-    text = models.CharField(max_length=1000, blank=True)
+    text = models.TextField(blank=True, null=True)
     imageIcon = models.CharField(max_length=200, blank=True)
     imageIconSelected = models.CharField(max_length=200, blank=True)
 
