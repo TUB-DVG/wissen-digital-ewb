@@ -42,12 +42,12 @@ class TestCriteriaCatalog(WebDriverSetup):
             greyBoxDiv = detailPageObj.getDescendantsByTagName(divElement, "div")
             self.assertEqual(len(greyBoxDiv), 1)
             self.assertTrue("show" not in greyBoxDiv[0].get_attribute("class"))
-            self.assertTrue(not greyBoxDiv[0]greyBoxDiv[0].is_displayed())
+            self.assertTrue(not greyBoxDiv[0].is_displayed())
 
             # after clicking the info-icon, the grey box should be displayed:
             imgElementsInDiv[1].click()
             self.assertTrue("show" in greyBoxDiv[0].get_attribute("class"))
-            self.assertTrue(greyBoxDiv[0]greyBoxDiv[0].is_displayed())
+            self.assertTrue(greyBoxDiv[0].is_displayed())
 
 
 

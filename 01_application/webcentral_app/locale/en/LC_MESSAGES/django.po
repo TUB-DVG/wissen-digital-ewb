@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-01 09:48+0000\n"
+"POT-Creation-Date: 2024-08-03 07:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,6 +470,7 @@ msgid "Protokoll"
 msgstr "Protocol"
 
 #: StartSearch/views.py:267 pages/views.py:347
+#: templates/partials/_navbar.html:198
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
@@ -511,7 +512,7 @@ msgstr "Proprietary"
 msgid "Geschäftsmodelle"
 msgstr "Business models"
 
-#: businessModel/views.py:20 businessModel/views.py:45
+#: businessModel/views.py:20 businessModel/views.py:46
 #: templates/businessModel/businessModelsChallenges.html:4
 msgid "Geschäftsmodelle – Herausforderungen"
 msgstr "Business models - Challenges"
@@ -1427,7 +1428,7 @@ msgstr "technical"
 #: templates/StartSearch/StartSearch.html:269
 #: templates/StartSearch/StartSearch.html:364
 #: templates/StartSearch/StartSearch.html:464
-#: templates/partials/_navbar.html:230
+#: templates/partials/_navbar.html:229
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
@@ -1525,7 +1526,6 @@ msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:417
 #: templates/StartSearch/StartSearch.html:474
-#: templates/partials/_navbar.html:198
 msgid "Kriterien&shy;katalog"
 msgstr "Catalog of criteria"
 
@@ -1552,7 +1552,7 @@ msgstr ""
 "view of digitalization in energy technology."
 
 #: templates/StartSearch/StartSearch.html:486
-#: templates/partials/_navbar.html:240
+#: templates/partials/_navbar.html:239
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
@@ -3427,11 +3427,11 @@ msgstr "Business model"
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:225
+#: templates/partials/_navbar.html:224
 msgid "Global"
 msgstr ""
 
-#: templates/partials/_navbar.html:235
+#: templates/partials/_navbar.html:234
 #, fuzzy
 #| msgid "Icons und Visualisierung"
 msgid "City GML Visualisierung"

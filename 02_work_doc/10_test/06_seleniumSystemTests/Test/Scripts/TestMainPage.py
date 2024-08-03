@@ -321,28 +321,22 @@ class TestMainPage(WebDriverSetup):
 
         startPAgeObj = StartPage(self.driver)
 
-        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
-
         # set the language to german:
         self._setLanguageToGerman()
-
+        
+        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
         # get the heading in the operational focus container:
         headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h2")[0]
-
-        self.assertEqual(
-            headingText.text,
-            "Betrieblicher Fokus",
-            "Heading should be 'Operationaler Fokus', but its not!",
-        )
+            operationalFocusContainer, "h3")[0]
+        
+        self.assertTrue(headingText.text == "Betrieblicher Fokus" or headingText.text == "Operational focus")
 
         # get the description paragraph in the operational focus container:
         descParagraph = startPAgeObj.getDescendantsByTagName(
             operationalFocusContainer, "p")[0]
-
         self.assertEqual(
             descParagraph.text,
-            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen in Geschäftsmodellen und die Einbindung von und Interaktion mit den Nutzenden.",
+            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen (Geschäftsmodelle) und die Einbindung von und Interaktion mit den Nutzenden.",
             "Description in opertional focus container is not as expected!",
         )
 
@@ -367,14 +361,14 @@ class TestMainPage(WebDriverSetup):
 
         # set the language to english:
         self._setLanguageToEnglish()
-
+        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
         # get the heading in the operational focus container:
         headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h2")[0]
+            operationalFocusContainer, "h3")[0]
 
         self.assertEqual(
             headingText.text,
-            "Operational focus",
+            "Operational Focus",
             "Heading should be 'Operationaler Fokus', but its not!",
         )
 
@@ -425,7 +419,17 @@ class TestMainPage(WebDriverSetup):
         navBarObj = NavBar(self.driver)
         liElementsOfGlobalDropdown = navBarObj.getGlobalDropdownElements()
         self.assertTrue(len(liElementsOfGlobalDropdown) >= 2)
+                    
+              
+        self.checkInGermanAndEnglish(self._checkLegalNavbarCriteriaCatalog, {
+            "de": "Kriterienkatalog",
+            "en": "Catalog of criteria",
+        }) 
         
+        
+        self.driver.quit()
+        self.driver.get(os.environ["siteUnderTest"])
+
         # test if a container is present, which has te class row-12 and a global 
         # border
         globalFocusContainer = self.driver.find_element(By.XPATH, "//div[@id='globalFocusContainer']")
@@ -437,4 +441,27 @@ class TestMainPage(WebDriverSetup):
         for link in linksInGlobalFocusContainer:
             self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
             self.assertTrue(link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR)
+
+
+    def _checkLegalNavbarCriteriaCatalog(self, expectedValue):
+        """
+        check if criteria catalog is inside legal focus navbar dropdown:
+
+        """
+        navBarObj = NavBar(self.driver)
+        liElementsOfLegalFocus = navBarObj.getLegalDropdownElements()
+        legalDopdownLink = navBarObj.getDropdownOfType("legal")
+        legalDopdownLink.click()
+        
+        self.assertTrue(len(liElementsOfLegalFocus) == 3, "The navbar of legal focus should contain 3 elements.")
+        
+        
+        self.assertEqual(liElementsOfLegalFocus[1].text, expectedValue)
+
+        
+        liElementsOfLegalFocus[1].click()
+
+        self.assertTrue("Kriterienkatalog - Übersicht" == self.driver.title or "Catalog of criteria - Overview" == self.driver.title)
+
+
 
