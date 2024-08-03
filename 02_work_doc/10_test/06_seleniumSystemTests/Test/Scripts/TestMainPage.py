@@ -389,7 +389,7 @@ class TestMainPage(WebDriverSetup):
 
         # check the links in the operational focus container:
         linkListElements = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "td")
+            operationalFocusContainer, "a")
 
         self.assertEqual(
             len(linkListElements),
@@ -398,10 +398,14 @@ class TestMainPage(WebDriverSetup):
         )
 
         for linkNumber, linkTableElement in enumerate(linkListElements):
-            linkElement = startPAgeObj.getDescendantsByTagName(
-                linkTableElement, "a")
-            self.assertEqual(linkElement.text,
+            self.assertEqual(linkTableElement.text,
                              expectedGermanLinkNames[linkNumber])
+
+        ## check if the criteria catalog link is present in the legal focus container:
+        legalFocusContainer = startPAgeObj.getLegalFocusContainer()
+        linksInLegalFocusContainer = startPageObj.getDescendantsByTagName(legalFocusContainer, "a")
+        self.assertEqual(len(linksInLegalFocusContainer), 3, "Number of links in legal focus container should be 3.")
+        self.assertTrue(linksInLegalFocusContainer[1].text == "Kriterienkatalog" or linksInLegalFocusContainer[1].text == "Catalog of criteria")
     
     def testPageStructure(self):
         """Test if the navBar has 5 focuses and if the 5. focus is present on the page.

@@ -26,7 +26,7 @@ class CriteriaCatalogOverviewPage(GenericPageObject):
         return [card1, card2]
 
 
-class CriteriaCatalogDetailsPage(object):
+class CriteriaCatalogDetailsPage(GenericPageObject):
 
     def __init__(self, driver):
         """Constructor of CrteriaCatalogOverviewPage
@@ -90,3 +90,9 @@ class CriteriaCatalogDetailsPage(object):
             rootLiElements.append(ulElement.find_element(By.XPATH, ".//li/div"))
 
         return rootLiElements
+
+    def getLiteratureElement(self):
+        """Return the literature button-element from the criteriaCatalog detail page
+
+        """
+        return self.driver.find_element(By.XPATH, "//button[@topicId='1778']")

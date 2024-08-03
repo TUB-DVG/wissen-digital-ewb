@@ -70,6 +70,23 @@ class TestCriteriaCatalog(WebDriverSetup):
         # breakpoint()
         # horizontalLineElements = criteriaCatalogDetails.getGetListOfAllHorizontalLineElements()
 
+    def testLiteratureElement(self):
+        """Test if the description text under literature is shown below the literature button
+        after clicking the literature button.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+
+        criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
+        literatureButton = criteriaCatalogObj.getLiteratureElement()
+        
+        self.scrollElementIntoViewAndClickIt(literatureButton)
+        liParentOfButton = criteriaCatalogObj.getFirstAncestorByTagName(literatureButton, "li")
+
+        # there should be one paragraph object containing the literature list:
+        paragraphChilds = criteriaCatalogObj.getDescendantsByTagName(liParentOfButton, "p")
+        self.assertEqual(len(paragraphChilds), 1)
+
     def testFullTextSearchAndAllCollapseButton(self):
         """Test if a full text search expands the accordion and marks the results and the collapse everything button resets the style
         """
