@@ -96,3 +96,9 @@ class CriteriaCatalogDetailsPage(GenericPageObject):
 
         """
         return self.driver.find_element(By.XPATH, "//button[@topicId='1778']")
+
+    def getNormsInforContainers(self):
+        """
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'grey-box')]")

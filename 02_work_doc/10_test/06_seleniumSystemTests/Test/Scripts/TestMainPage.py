@@ -29,7 +29,10 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.cookieBanner import CookieBanner
-
+from Src.PageObject.Pages.CriteriaCatalog import (
+    CriteriaCatalogOverviewPage,
+    CriteriaCatalogDetailsPage,
+)
 
 class TestMainPage(WebDriverSetup):
     """Testclass for MainPage-Test
@@ -72,6 +75,41 @@ class TestMainPage(WebDriverSetup):
             self._checkForPageError(
                 "After reloading the page, an django-error appears, because the search-string is None"
             )
+
+    
+    def testIfCriteriaCatalogTopicsInResults(self):
+        """Test if Topics of the critera-catalog are in the search results.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+        
+        startPageObj = StartPage(self.driver)
+        searchInput = startPageObj.getSearchInputField()
+
+        searchInput.send_keys("Zweckspezifizierung")
+        searchInput.send_keys(Keys.RETURN)
+
+        self.waitUntilPageIsLoaded("searchResultH2")
+        searchResults = startPageObj.getSearchResults()
+        foundCriteriaCatalogResult = False
+        for result in searchResults:
+            dataHrefAttr = result.get_attribute("data-href")
+            if "criteriaCatalog" in dataHrefAttr:
+                foundCriteriaCatalogResult = True
+                break;
+        self.assertTrue(foundCriteriaCatalogResult, "No result from criteria catalog was displayed!")
+        
+        # click one of the criteria catalog results:
+        result.click()
+       
+        criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
+        greyBoxes = criteriaCatalogObj.getNormsInforContainers()
+        
+        for box in greyBoxes:
+            self.assertTrue(not box.is_displayed())
+        # chck if we are on the criteria catalog:
+        breakpoint()
+        
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site

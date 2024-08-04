@@ -233,11 +233,16 @@ class WebDriverSetup(unittest.TestCase):
         self.waitUntilPageIsLoaded()
         self.assertEqual(self.driver.title, germanTitle)
 
-    def waitUntilPageIsLoaded(self):
+    def waitUntilPageIsLoaded(self, elementId=None):
         """Explicitly wait until page is loaded.
 
         """
-        revealed = self.driver.find_element(By.XPATH, "//div")
+        
         wait = WebDriverWait(self.driver, timeout=10)
-        wait.until(lambda d : revealed.is_displayed())
+        if elementId is None:
+            wait.until(EC.presence_of_element_located((By.XPATH, "//div")))
+
+        else:    
+            wait.until(EC.presence_of_element_located((By.ID, f'{elementId}')))
+        
 

@@ -2,7 +2,7 @@ class Locator(object):
     # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
-    resultElements = "//tr"
+    resultElements = "//tr[@data-href]"
     firstColumnToRow = "//td"
     linkToBuisnessApp = "//a[contains(text(), 'Geschäfts­modell­anwendungen')]"
     linkToTechnicalStandarts = "//a[@id='linkToTechnicalStandarts']"
