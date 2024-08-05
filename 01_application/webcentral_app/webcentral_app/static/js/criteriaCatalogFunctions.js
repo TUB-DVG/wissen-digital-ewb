@@ -706,7 +706,9 @@ if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
 }
+if (!element.classlist.contains("grey-box")) {
 showElement(element);
+}
 var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
 var childUlElements = [];
 if (element.id == "2") {
@@ -738,7 +740,7 @@ else {
   
   var layerNumberOfClickedElement = Number(element.id);
   imageInButtonElement = element.previousElementSibling;
-  if (imageInButtonElement != null) {
+  if (imageInButtonElement != null && !imageInButtonElement.getAttribute("src").includes("info_icon")) {
     showElement(imageInButtonElement);
   }
   

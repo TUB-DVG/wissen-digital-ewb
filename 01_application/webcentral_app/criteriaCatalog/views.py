@@ -202,7 +202,7 @@ def buildingCriteriaCatalogOpenTopic(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
-            "showSelect": True,
+
             "explanaitionText": criteriaCatalogObj.text.replace("\n", "<br>"),
             "heading": criteriaCatalogObj.name,
             # "showSelect": True,
