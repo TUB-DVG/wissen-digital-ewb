@@ -84,7 +84,9 @@ class TestCriteriaCatalog(WebDriverSetup):
 
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
         literatureButton = criteriaCatalogObj.getLiteratureElement()
-        
+            
+        self.assertTrue(literatureButton.value_of_css_property("color") == "rgb(134, 129, 129)", "Literature element should be shown with grey font color")
+
         self.scrollElementIntoViewAndClickIt(literatureButton)
         liParentOfButton = criteriaCatalogObj.getFirstAncestorByTagName(literatureButton, "li")
 
