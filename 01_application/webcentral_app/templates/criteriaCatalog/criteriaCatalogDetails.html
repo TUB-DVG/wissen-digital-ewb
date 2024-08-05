@@ -8,7 +8,9 @@
 button {
   text-align: left;
 }
-
+.grey-font-color {
+  color: #868181;
+}
 .grey-box {
     display: none;
     position: absolute;
@@ -286,7 +288,7 @@ button {
                                         padding-top: 10.5px;
                                         padding-bottom: 10.5px"
                                  id="0" />
-                            <button class="button-first-level sticky-third-lvl sticky-element-button"
+                            <button class="button-first-level sticky-third-lvl sticky-element-button {% if node.content.topic.grey == 'True' %}grey-font-color{% endif %}"
                                     onclick="showOrHide(event, this)"
                                     id="{{ node.content.depth }}"
                                     topicId="{{ node.content.topic.id }}">
