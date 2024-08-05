@@ -32,23 +32,28 @@ class TestCriteriaCatalog(WebDriverSetup):
         
         for divElement in rootDivElements:
             imgElementsInDiv = detailPageObj.getDescendantsByTagName(divElement, "img")
-            self.assertEqual(len(imgElementInDiv), 2)
-            self.assertTrue(imgElementInDiv[1].text == "", "No alt-text should be present for info image")
-            self.assertTrue(imgElementInDiv[1].value_of_css_property("float") == "right")
-            self.assertTrue(imgElementInDiv[1].value_of_css_property("margin-top") == "20px")
+            self.assertEqual(len(imgElementsInDiv), 3)
+            self.assertTrue(imgElementsInDiv[1].text == "", "No alt-text should be present for info image")
+            self.assertTrue(imgElementsInDiv[1].value_of_css_property("float") == "right")
+            self.assertTrue(imgElementsInDiv[1].value_of_css_property("margin-top") == "20px")
             
             # when the image is clicked, a grey box to the left of the image should be displayed:
             ## get the div element, which contains the grey box:
-            greyBoxDiv = detailPageObj.getDescendantsByTagName(divElement, "div")
-            self.assertEqual(len(greyBoxDiv), 1)
-            self.assertTrue("show" not in greyBoxDiv[0].get_attribute("class"))
-            self.assertTrue(not greyBoxDiv[0].is_displayed())
+
+            greyBoxDiv = detailPageObj.getGreyBoxForRootDiv(divElement)
+            self.assertTrue("show" not in greyBoxDiv.get_attribute("class"))
+            self.assertTrue(not greyBoxDiv.is_displayed())
 
             # after clicking the info-icon, the grey box should be displayed:
-            imgElementsInDiv[1].click()
-            self.assertTrue("show" in greyBoxDiv[0].get_attribute("class"))
-            self.assertTrue(greyBoxDiv[0].is_displayed())
-
+            self.scrollElementIntoViewAndClickIt(imgElementsInDiv[1])
+            self.assertTrue("show" in greyBoxDiv.get_attribute("class"))
+            self.assertTrue(greyBoxDiv.is_displayed())
+            
+            # press on the close button of the grey-box:
+            closeButtonGreyBox = detailPageObj.getDescendantsByTagName(greyBoxDiv, "img")
+            self.scrollElementIntoViewAndClickIt(closeButtonGreyBox[0])
+            self.assertTrue("show" not in greyBoxDiv.get_attribute("class"))
+            self.assertTrue(not greyBoxDiv.is_displayed())
 
 
     # def testColorOfLines(self):
@@ -135,4 +140,25 @@ class TestCriteriaCatalog(WebDriverSetup):
             self.assertTrue("info_icon_selected.svg" in imgDescandants[2].get_attribute("src"))
             self.assertTrue(not imgDescandants[2].is_displayed(), "image_icon_selected should not be displayed.")
 
+    def testIfExpansionAndCollapsingWorks(self):
+        """Test if expanding an element is working
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+        criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
+        
+        rootLayerElements = criteriaCatalogDetails.getRootLayerElements()
+        randomRootElement = choice(rootLayerElements)
+        
+        descandantButton = criteriaCatalogDetails.getDescendantsByTagName(randomRootElement, "button")
+        self.scrollElementIntoViewAndClickIt(descandantButton[0])
+
+        ulSiblings = criteriaCatalogDetails.getAllSiblingsOfTagname(randomRootElement, "ul")
+        for ulSibling in ulSiblings:
+            self.assertTrue(ulSibling.is_displayed())
+        
+        # click again on the the root level button and check if the uls are now hidden:
+        self.scrollElementIntoViewAndClickIt(descandantButton[0])
+        for ulSibling in ulSiblings:
+            self.assertTrue(not ulSibling.is_displayed())
 
