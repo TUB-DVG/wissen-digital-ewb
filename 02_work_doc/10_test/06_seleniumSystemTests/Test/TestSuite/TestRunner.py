@@ -69,7 +69,7 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestProtocolsPage),
             testLoader.loadTestsFromTestCase(TestBusinessAppPage),
             testLoader.loadTestsFromTestCase(TestClickThroughSites),
-            testLoader.loadTestsFromTestCase(TestLastprofile),
+            testLoader.loadTestsFromTestCase(TestLastProfile),
             testLoader.loadTestsFromTestCase(TestAboutPage),
             testLoader.loadTestsFromTestCase(TestSearch),
             testLoader.loadTestsFromTestCase(TestPublicationPage),
