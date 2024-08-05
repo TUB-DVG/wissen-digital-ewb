@@ -293,8 +293,8 @@ button {
                               {{ node.content.topic.heading }}
                             </button>
                             <div class="grey-box">{{ node.content.topic.norms }}</div>
-                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon show" onclick="toggleNormsBox(this, event)">
-                            <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon_selected.svg' %}" class="info_icon_selected" onclick="toggleNormsBox(this, event)">
+                            <img id="0" topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon show" onclick="toggleNormsBox(this, event)">
+                            <img id="0" topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon_selected.svg' %}" class="info_icon_selected" onclick="toggleNormsBox(this, event)">
 
                           </div>
                           <p class="paragraph-first-level"

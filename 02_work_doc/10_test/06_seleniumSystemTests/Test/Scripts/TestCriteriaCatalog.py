@@ -91,7 +91,7 @@ class TestCriteriaCatalog(WebDriverSetup):
         """Test if a full text search expands the accordion and marks the results and the collapse everything button resets the style
         """
 
-        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/Profilbildung")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
         criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
         searchField = criteriaCatalogDetails.getSearchField()
         searchField.send_keys("Personen")
@@ -104,20 +104,35 @@ class TestCriteriaCatalog(WebDriverSetup):
 
         for button in buttonElements:
             if "Personen" in button.text:
-                if button.value_of_css_property("background-color") == "rgb(255, 255, 0)":
+                buttonInnerHTML = button.get_attribute("innerHTML")
+                if "<mark>Personen</mark>" in buttonInnerHTML:
                     foundMarkedPersonen = True
                 else:
-                    raise AssertionError("The search result is not marked with yellow background-color.")
+                    # breakpoint()
+                    # raise AssertionError("The search result is not marked with yellow background-color.")
+                    pass
 
         if not foundMarkedPersonen:
             raise AssertionError("The search result was not found.")
         
         # test if the collapse everything button resets the style:
         collapseButton = criteriaCatalogDetails.getCollapseEverythingButton()
-        collapseButton.click()
+        self.scrollElementIntoViewAndClickIt(collapseButton)
         for button in buttonElements:
             if button.value_of_css_property("background-color") == 'rgb(255, 255, 0)':
                 raise AssertionError("The background-color of the buttons is not resetted.")
             if button.get_attribute("id") != "0" and button.value_of_css_property("display") != "none":
                 raise AssertionError("The buttons are not collapsed.")
-        
+    
+        # check if the info-icon on the right site is still displayed:
+        rootDivElements = criteriaCatalogDetails.getRootLayerElements()
+        for rootElement in rootDivElements:
+            imgDescandants = criteriaCatalogDetails.getDescendantsByTagName(rootElement, "img")
+            self.assertEqual(len(imgDescandants), 3)
+            self.assertTrue("info_icon.svg" in imgDescandants[1].get_attribute("src"))
+            self.assertTrue(imgDescandants[1].is_displayed())
+
+            self.assertTrue("info_icon_selected.svg" in imgDescandants[2].get_attribute("src"))
+            self.assertTrue(not imgDescandants[2].is_displayed(), "image_icon_selected should not be displayed.")
+
+

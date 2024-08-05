@@ -211,7 +211,9 @@ function hideElementExceptForFirstLayer(element) {
   if (element.tagName === "IMG" && element.id !== '0') {
     showDirectionOfArrow(element, "down");
   }
-
+  if (element.hasAttribute("src") && element.getAttribute("src").includes("info_icon_selected")) {
+    element.style.display = "none";
+  }
   if (element.classList.contains("wrapper")) {
     return;
   }

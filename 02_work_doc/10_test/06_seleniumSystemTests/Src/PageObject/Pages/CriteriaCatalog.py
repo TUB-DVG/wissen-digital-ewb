@@ -84,12 +84,8 @@ class CriteriaCatalogDetailsPage(GenericPageObject):
         when the catalog is loaded.)
 
         """
-        rootUlElements = self.driver.find_elements(By.XPATH, "//div[contains(@class, 'descriptionContainer')]/ul")
-        rootLiElements = []
-        for ulElement in rootUlElements:
-            rootLiElements.append(ulElement.find_element(By.XPATH, ".//li/div"))
+        return self.driver.find_elements(By.XPATH, "//div[@id='0']")
 
-        return rootLiElements
 
     def getLiteratureElement(self):
         """Return the literature button-element from the criteriaCatalog detail page
