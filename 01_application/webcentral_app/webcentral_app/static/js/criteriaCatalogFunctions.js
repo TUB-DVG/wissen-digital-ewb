@@ -706,7 +706,7 @@ if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
 }
-if (!element.classlist.contains("grey-box")) {
+if (!element.classList.contains("grey-box")) {
 showElement(element);
 }
 var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
@@ -740,7 +740,7 @@ else {
   
   var layerNumberOfClickedElement = Number(element.id);
   imageInButtonElement = element.previousElementSibling;
-  if (imageInButtonElement != null && !imageInButtonElement.getAttribute("src").includes("info_icon")) {
+  if (imageInButtonElement != null && imageInButtonElement.hasAttribute("src") && !imageInButtonElement.getAttribute("src").includes("info_icon")) {
     showElement(imageInButtonElement);
   }
   

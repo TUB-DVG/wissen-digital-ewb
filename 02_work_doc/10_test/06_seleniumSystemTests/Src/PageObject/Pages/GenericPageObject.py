@@ -66,6 +66,15 @@ class GenericPageObject:
         except:
             return None
 
+    def getAllSiblingsOfTagname(self, element, tagname: str):
+        """
+
+        """
+
+        return element.find_elements(By.XPATH, f"following-sibling::{tagname}")
+        
+
+
     def getContentDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
