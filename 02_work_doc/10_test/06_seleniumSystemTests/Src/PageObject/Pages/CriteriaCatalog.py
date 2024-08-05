@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-class CriteriaCatalogOverviewPage(object):
+class CriteriaCatalogOverviewPage(GenericPageObject):
 
     def __init__(self, driver):
         """Constructor of CrteriaCatalogOverviewPage
@@ -25,7 +26,7 @@ class CriteriaCatalogOverviewPage(object):
         return [card1, card2]
 
 
-class CriteriaCatalogDetailsPage(object):
+class CriteriaCatalogDetailsPage(GenericPageObject):
 
     def __init__(self, driver):
         """Constructor of CrteriaCatalogOverviewPage
@@ -76,4 +77,24 @@ class CriteriaCatalogDetailsPage(object):
         return parent.find_elements(
             By.TAG_NAME,
             "button",
-        )            
+        )
+
+    def getRootLayerElements(self):
+        """Return the root-layer elements of each tree(the elements, which are displayed
+        when the catalog is loaded.)
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[@id='0']")
+
+
+    def getLiteratureElement(self):
+        """Return the literature button-element from the criteriaCatalog detail page
+
+        """
+        return self.driver.find_element(By.XPATH, "//button[@topicId='1778']")
+
+    def getNormsInforContainers(self):
+        """
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'grey-box')]")

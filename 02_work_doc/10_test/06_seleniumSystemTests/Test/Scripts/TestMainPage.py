@@ -29,7 +29,10 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AboutPage import AboutPage
 from Src.PageObject.Pages.cookieBanner import CookieBanner
-
+from Src.PageObject.Pages.CriteriaCatalog import (
+    CriteriaCatalogOverviewPage,
+    CriteriaCatalogDetailsPage,
+)
 
 class TestMainPage(WebDriverSetup):
     """Testclass for MainPage-Test
@@ -72,6 +75,41 @@ class TestMainPage(WebDriverSetup):
             self._checkForPageError(
                 "After reloading the page, an django-error appears, because the search-string is None"
             )
+
+    
+    def testIfCriteriaCatalogTopicsInResults(self):
+        """Test if Topics of the critera-catalog are in the search results.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+        
+        startPageObj = StartPage(self.driver)
+        searchInput = startPageObj.getSearchInputField()
+
+        searchInput.send_keys("Zweckspezifizierung")
+        searchInput.send_keys(Keys.RETURN)
+
+        self.waitUntilPageIsLoaded("searchResultH2")
+        searchResults = startPageObj.getSearchResults()
+        foundCriteriaCatalogResult = False
+        for result in searchResults:
+            dataHrefAttr = result.get_attribute("data-href")
+            if "criteriaCatalog" in dataHrefAttr:
+                foundCriteriaCatalogResult = True
+                break;
+        self.assertTrue(foundCriteriaCatalogResult, "No result from criteria catalog was displayed!")
+        
+        # click one of the criteria catalog results:
+        result.click()
+       
+        criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
+        greyBoxes = criteriaCatalogObj.getNormsInforContainers()
+        
+        for box in greyBoxes:
+            self.assertTrue(not box.is_displayed())
+        # chck if we are on the criteria catalog:
+        breakpoint()
+        
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
@@ -321,28 +359,22 @@ class TestMainPage(WebDriverSetup):
 
         startPAgeObj = StartPage(self.driver)
 
-        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
-
         # set the language to german:
         self._setLanguageToGerman()
-
+        
+        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
         # get the heading in the operational focus container:
         headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h2")[0]
-
-        self.assertEqual(
-            headingText.text,
-            "Betrieblicher Fokus",
-            "Heading should be 'Operationaler Fokus', but its not!",
-        )
+            operationalFocusContainer, "h3")[0]
+        
+        self.assertTrue(headingText.text == "Betrieblicher Fokus" or headingText.text == "Operational focus")
 
         # get the description paragraph in the operational focus container:
         descParagraph = startPAgeObj.getDescendantsByTagName(
             operationalFocusContainer, "p")[0]
-
         self.assertEqual(
             descParagraph.text,
-            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen in Geschäftsmodellen und die Einbindung von und Interaktion mit den Nutzenden.",
+            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen (Geschäftsmodelle) und die Einbindung von und Interaktion mit den Nutzenden.",
             "Description in opertional focus container is not as expected!",
         )
 
@@ -367,14 +399,14 @@ class TestMainPage(WebDriverSetup):
 
         # set the language to english:
         self._setLanguageToEnglish()
-
+        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
         # get the heading in the operational focus container:
         headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h2")[0]
+            operationalFocusContainer, "h3")[0]
 
         self.assertEqual(
             headingText.text,
-            "Operational focus",
+            "Operational Focus",
             "Heading should be 'Operationaler Fokus', but its not!",
         )
 
@@ -395,7 +427,7 @@ class TestMainPage(WebDriverSetup):
 
         # check the links in the operational focus container:
         linkListElements = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "td")
+            operationalFocusContainer, "a")
 
         self.assertEqual(
             len(linkListElements),
@@ -404,10 +436,14 @@ class TestMainPage(WebDriverSetup):
         )
 
         for linkNumber, linkTableElement in enumerate(linkListElements):
-            linkElement = startPAgeObj.getDescendantsByTagName(
-                linkTableElement, "a")
-            self.assertEqual(linkElement.text,
+            self.assertEqual(linkTableElement.text,
                              expectedGermanLinkNames[linkNumber])
+
+        ## check if the criteria catalog link is present in the legal focus container:
+        legalFocusContainer = startPAgeObj.getLegalFocusContainer()
+        linksInLegalFocusContainer = startPageObj.getDescendantsByTagName(legalFocusContainer, "a")
+        self.assertEqual(len(linksInLegalFocusContainer), 3, "Number of links in legal focus container should be 3.")
+        self.assertTrue(linksInLegalFocusContainer[1].text == "Kriterienkatalog" or linksInLegalFocusContainer[1].text == "Catalog of criteria")
     
     def testPageStructure(self):
         """Test if the navBar has 5 focuses and if the 5. focus is present on the page.
@@ -425,7 +461,17 @@ class TestMainPage(WebDriverSetup):
         navBarObj = NavBar(self.driver)
         liElementsOfGlobalDropdown = navBarObj.getGlobalDropdownElements()
         self.assertTrue(len(liElementsOfGlobalDropdown) >= 2)
+                    
+              
+        self.checkInGermanAndEnglish(self._checkLegalNavbarCriteriaCatalog, {
+            "de": "Kriterienkatalog",
+            "en": "Catalog of criteria",
+        }) 
         
+        
+        self.driver.quit()
+        self.driver.get(os.environ["siteUnderTest"])
+
         # test if a container is present, which has te class row-12 and a global 
         # border
         globalFocusContainer = self.driver.find_element(By.XPATH, "//div[@id='globalFocusContainer']")
@@ -437,4 +483,27 @@ class TestMainPage(WebDriverSetup):
         for link in linksInGlobalFocusContainer:
             self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
             self.assertTrue(link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR)
+
+
+    def _checkLegalNavbarCriteriaCatalog(self, expectedValue):
+        """
+        check if criteria catalog is inside legal focus navbar dropdown:
+
+        """
+        navBarObj = NavBar(self.driver)
+        liElementsOfLegalFocus = navBarObj.getLegalDropdownElements()
+        legalDopdownLink = navBarObj.getDropdownOfType("legal")
+        legalDopdownLink.click()
+        
+        self.assertTrue(len(liElementsOfLegalFocus) == 3, "The navbar of legal focus should contain 3 elements.")
+        
+        
+        self.assertEqual(liElementsOfLegalFocus[1].text, expectedValue)
+
+        
+        liElementsOfLegalFocus[1].click()
+
+        self.assertTrue("Kriterienkatalog - Übersicht" == self.driver.title or "Catalog of criteria - Overview" == self.driver.title)
+
+
 
