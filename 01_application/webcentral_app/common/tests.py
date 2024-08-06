@@ -27,3 +27,12 @@ class TestDataImport(TestCase):
 
         # no header element should be doubled
         self.assertEqual(len(set(header)), 60)
+
+        # half of the header fields should have the suffix "__en"
+        foundEnglishHeaders = []
+        for headerItem in header:
+            if "__en" in headerItem:
+                foundEnglishHeaders.append(headerItem)
+
+        self.assertEqual(len(foundEnglishHeaders), 30)
+
