@@ -18,15 +18,14 @@ from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
     NegativeEnvironmentalImpacts, )
 from Src.PageObject.Pages.PositiveEnvironmentalIntegrity import (
     PositiveEnvironmentalIntegrity, )
-from Src.PageObject.pages.DetailsPage import DetailsPage
+from Src.PageObject.Pages.DetailsPage import DetailsPage
 
 
-class TestPositiveEnvironmentalIntegrity(WebDriverSetup):
+class TestPositiveEnvironmentalImpact(WebDriverSetup):
 
     def testDetailsPage(self):
         """Test if it is possible to go onto the newly styled"""
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/pages/environmentalIntegrityPositiv")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/environmentalIntegrityPositiv")
 
         time.sleep(1)
 
@@ -43,6 +42,7 @@ class TestPositiveEnvironmentalIntegrity(WebDriverSetup):
         divDescription = (
             positiveEnvironmentalIntegrityObj.getDescendantsByClass(
                 contentDiv, "descriptionContainer"))
+        breakpoint()
         self.assertEqual(len(divDescription), 1)
         divFourCardsContainer = (
             positiveEnvironmentalIntegrityObj.getDescendantsByClass(
