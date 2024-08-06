@@ -30,6 +30,7 @@ class DataImportTest(TestCase):
         self.assertTrue(hasAttr(randomEnvImpactObj, "category__de"))
         self.assertTrue(hasAttr(randomEnvImpactObj, "literature__de"))
         self.assertTrue(hasAttr(randomEnvImpactObj, "literature__en"))
+        
 
 
 
