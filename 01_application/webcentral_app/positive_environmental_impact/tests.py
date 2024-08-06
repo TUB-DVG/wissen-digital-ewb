@@ -28,6 +28,14 @@ class DataImportTest(TestCase):
         randomEnvImpactObj = choice(environmnetalImpactObjects)
         self.assertTrue(hasattr(randomEnvImpactObj, "category_en"))
         self.assertTrue(hasattr(randomEnvImpactObj, "category_de"))
+        self.assertTrue(randomEnvImpactObj.category_de == "Positive Wirkung")
+        self.assertTrue(randomEnvImpactObj.category_en == "Positive impact")
+        
+        # get the EnvironmentalImpact object, which has the 3 literature-elements attached:
+        self.assertTrue(randomEnvImpactObj)
+        environImpactObjLiterature = EnvironmentalImpact.objects.get(project_name__icontains="LLEC - Verwaltungsbau")
+        self.assertEqual(len(environImpactObjLiterature.literature.all()))
+
         # self.assertTrue(hasattr(randomEnvImpactObj, "literature__de"))
         # self.assertTrue(hasattr(randomEnvImpactObj, "literature__en"))
         

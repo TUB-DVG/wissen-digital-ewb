@@ -106,9 +106,16 @@ class DataImportApp(DataImport):
             Subproject.objects.get_or_create(referenceNumber_id=fkzItem)[0]
             for fkzItem in fundingLabelList
         ]
-        # literatureList = self._processListInput(row[header.index("Literatur")],
-        #                                         ";;")
-        # literatureObjsList = []
+        literatureList = self._processListInput(row[header.index("Literatur")],
+                                                ";;")
+        literatureObjsList = []
+        for literature in literatureList:
+            objCreated, created = Literature.objects.get_or_create(
+                literatureString=literature,
+            )
+            literatureObjsList.append(obj)
+        obj.literature.add(*literatureObjsList)
+
         # for literatureElement in literatureList:
         #     splittedLiteratureElement = literatureElement.split("((")
         #     literatureString = splittedLiteratureElement[0]
