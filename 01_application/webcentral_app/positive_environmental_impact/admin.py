@@ -1,5 +1,9 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin
 
 from .models import EnvironmentalImpact
 
-admin.site.register(EnvironmentalImpact)
+class EnvironmentalImpactAdmin(TranslationAdmin):
+    pass
+
+admin.site.register(EnvironmentalImpact, EnvironmentalImpactAdmin)

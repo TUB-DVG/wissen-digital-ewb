@@ -1,6 +1,7 @@
 from django.db import models
 
 from project_listing.models import Subproject
+from user_integration.models import Literature
 
 class EnvironmentalImpact(models.Model):
     category = models.CharField(max_length=255)
@@ -21,6 +22,8 @@ class EnvironmentalImpact(models.Model):
     problem_statement_and_problem_goals = models.TextField()
     implementation_in_the_project = models.TextField()
     evaluation = models.TextField()
+    literature = models.ManyToManyField(Literature, blank=True, null=True)
+
 
     def __str__(self):
         return self.category
