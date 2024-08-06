@@ -69,7 +69,7 @@ class DataImport:
             if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(dfGermanEnglish["German"].columns):
                     if german_column == dfGermanEnglish["English"].columns[index]:
-                        dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "_en"})
+                        dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "__en"})
                 df_concatenated = pd.concat([dfGermanEnglish["English"], dfGermanEnglish["German"]], axis=1, ignore_index=True)
                 df_concatenated.columns = list(dfGermanEnglish["English"].columns) + list(dfGermanEnglish["German"].columns)
             else:
