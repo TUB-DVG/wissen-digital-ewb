@@ -100,6 +100,11 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         else:
             for link in showMoreLink:
                 self.assertTrue("Show more" in link.get_attribute("data-collapsed-text"))
+        
+        # check if literature is present:
+        literatureDiv = detailsPageObj.getDescendantsByClass(divDescription, "literatureHeading")
+        self.assertEqual(len(literatureDiv), 1)
+        self.assertTrue("Weiterführende Literatur und Hinweise" in literatureDiv[0].text)
 
         leftColumn = detailsPageObj.getDescendantsByClass(contentDiv, "column__left")
         # test if the image is clickable and leads to a new page:
@@ -124,3 +129,64 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
                 r"/pages/environmentalIntegrityPositiv/[0-9]+",
                 self.driver.current_url,
             ))
+
+    def testLinksInText(self):
+        """Test if the links in the text of the details page lead to the
+        right location.
+        """
+
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/environmentalIntegrityPositiv")
+        envImpactObj = PositiveEnvironmentalIntegrity(self.driver)
+        
+        # get all boxes:
+        boxesOnEnvImpactOverviewPage = envImpactObj.getBoxes()
+        self._removeCookieBanner()
+        for box in boxesOnEnvImpactOverviewPage:
+            textContent = box.text
+            if "FeBOp-MFH" in textContent:
+                aDescadents = envImpactObj.getDescendantsByClass(box, "box__content")
+                self.scrollElementIntoViewAndClickIt(aDescadents[0])
+                
+                break
+        self.assertTrue("FeBOp-MFH" in self.driver.title, "Didnt find box for FeBOp-MFH-project")
+       
+        detailsPageObj = DetailsPage(self.driver)
+        
+        rightColumn = detailsPageObj.getRightColumn()
+        linksInRightColumn = detailsPageObj.getDescendantsByTagName(rightColumn, "a")
+        self.assertEqual(len(linksInRightColumn), 3)
+        
+        for link in linksInRightColumn:
+            if "evaluation" in link.get_attribute("href"):
+                self.scrollElementIntoViewAndClickIt(link)
+                break
+        
+        evaluationDiv = envImpactObj.getEvaluationDiv()
+        linksInEvaluation = envImpactObj.getDescendantsByTagName(evaluationDiv, "a")
+        
+        breakpoint()
+        # first link should point to components:
+        self.assertTrue("components" in linksInEvaluation[0].get_attribute("href"))
+        self.assertTrue("Hilfestellung" in linksInEvaluation[0].text)
+
+        # first link should point to components:
+        self.assertTrue("dataProcessing" in linksInRightColumn[1].get_attribute("href"))
+        self.assertTrue("Kennwerte" in linksInRightColumn[1].text)
+        
+        self.scrollElementIntoViewAndClickIt(linksInEvaluation[0])
+        self.assertTrue("components" in self.driver.current_url)
+        self.assertTrue("Komponentenliste" in self.driver.title or "Componentent list" in self.driver.title)
+
+        self.driver.back()
+        evaluationDiv = envImpactObj.getEvaluationDiv()
+        linksInEvaluation = envImpactObj.getDescendantsByTagName(evaluationDiv, "a")        
+
+        self.scrollElementIntoViewAndClickIt(linksInEvaluation[1])
+        self.assertTrue("dataProcessing" in self.driver.current_url)
+        self.assertTrue("Aufwände für Datenverarbeitungsprozesse" in self.driver.title or "Expenses for data processing processes" in self.driver.title)
+
+
+
+
+
+

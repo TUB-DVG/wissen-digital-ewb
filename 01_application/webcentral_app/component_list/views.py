@@ -314,6 +314,7 @@ def dataProcessing(request):
         descriptionImage = "datenwertschöpfungskette_en.svg"
 
     context = {
+        "pageTitle": _("Aufwände für Datenverarbeitungsprozesse"),
         "descriptionImage":
         "img/componentList/" + descriptionImage,
         "focusBorder":

@@ -66,10 +66,10 @@
 <div class="blockOfContent">
     <div class="mainContentHeading">{% translate "Evaluation" %}</div>
     <div class="mainContent" id="evaluationFirstContent">
-        {{ boxObject.evaluation|slice:":500" }}
+        {{ boxObject.evaluationRendered|slice:":500" }}
     </div>
     <div class="mainContent collapse" id="evaluation">
-        {{ boxObject.evaluation|slice:"501:" }}
+        {{ boxObject.evaluationRendered|slice:"501:" }}
     </div>
     <div class="showMore collapseInfoContainer">
         <a role="button"
@@ -80,5 +80,11 @@
            aria-controls="evaluation"
            data-expanded-text="{% translate 'Zeige weniger ...' %}"
            data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+    </div>
+</div>
+<div class="blockOfContent">
+    <div class="mainContentHeading literatureHeading">{% translate "Weiterführende Literatur und Hinweise" %}</div>
+    <div class="mainContent" id="literatureFirstContent">
+        {{ boxObject.literatureList }}
     </div>
 </div>
