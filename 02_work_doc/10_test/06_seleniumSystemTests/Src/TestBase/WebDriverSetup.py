@@ -66,13 +66,13 @@ class WebDriverSetup(unittest.TestCase):
 
     def scrollElementIntoViewAndClickIt(self, element):
         """Scroll the element into the view of the browser-window."""
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scrollElementIntoView(element)
         self.element = element
         try:
-            wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
+            wait = WebDriverWait(self.driver, 2)  # waits for 10 seconds
             wait.until(self._elementIsClickable)
         except:
-            pass
+            element.click()
 
     def _elementIsClickable(self, driver):
         """Check if the element is clickable."""

@@ -255,6 +255,7 @@ def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
     environmentalImpactObj = EnvironmentalImpact.objects.get(
         id=idOfEnvironmentalImpactObj)
     context = {
+        "pageTitle": environmentalImpactObj.project_name,
         "imageInBackButton": "img/componentList/caret-left.svg",
         "boxObject": environmentalImpactObj,
         "focusBorder": "ecological",

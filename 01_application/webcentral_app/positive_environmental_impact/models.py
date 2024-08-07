@@ -1,4 +1,5 @@
 from django.db import models
+from django.template import Template, Context
 
 from project_listing.models import Subproject
 from user_integration.models import Literature
@@ -27,4 +28,22 @@ class EnvironmentalImpact(models.Model):
 
     def __str__(self):
         return self.category
+
+    @property
+    def literatureList(self):
+        """The pname property."""
+        
+        combinedText = "<ul>"
+        for literature in self.literature.all():
+            combinedText += "<li>" + literature.literature + "</li>"
+
+        combinedText += "</ul>"
+        templateObj = Template(combinedText)
+        contextObj = Context({})
+        return templateObj.render(contextObj)
+
+    @property
+    def evaluationRendered(self):
+        """The  property."""
+        return Template(self.evaluation).render(Context({}))
 
