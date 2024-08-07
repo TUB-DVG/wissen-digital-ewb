@@ -79,7 +79,7 @@ class DataImportApp(DataImport):
         evaluation = row[header.index("Evaluation")]
         projectName = row[header.index("Project_Name")]
         weiterführendeLiteratur = row[header.index("Weiterführende Literatur")]
-
+        duration = row[header.index("Duration")]
 
 
         obj, created = EnvironmentalImpact.objects.get_or_create(
@@ -99,6 +99,7 @@ class DataImportApp(DataImport):
             problem_statement_and_problem_goals_de=problemStatementAndProblemGoals,
             implementation_in_the_project_de=implementationInTheProject,
             evaluation_de=evaluation,
+            duration=duration,
         )
         fundingLabelList = self._processListInput(row[header.index("Funding_Label")],
                                                ";;")
@@ -106,14 +107,14 @@ class DataImportApp(DataImport):
             Subproject.objects.get_or_create(referenceNumber_id=fkzItem)[0]
             for fkzItem in fundingLabelList
         ]
-        literatureList = self._processListInput(row[header.index("Literatur")],
+        literatureList = self._processListInput(row[header.index("Weiterführende Literatur")],
                                                 ";;")
         literatureObjsList = []
         for literature in literatureList:
             objCreated, created = Literature.objects.get_or_create(
-                literatureString=literature,
+                literature=literature,
             )
-            literatureObjsList.append(obj)
+            literatureObjsList.append(objCreated)
         obj.literature.add(*literatureObjsList)
 
         # for literatureElement in literatureList:
@@ -143,6 +144,7 @@ class DataImportApp(DataImport):
                 setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
             except:
                 breakpoint()
+        environmentalimpactObj.save()
 
 
     def _englishHeadersPresent(self, header: list) -> bool:

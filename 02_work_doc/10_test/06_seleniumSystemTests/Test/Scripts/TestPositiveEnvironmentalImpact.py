@@ -42,21 +42,29 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         divDescription = (
             positiveEnvironmentalIntegrityObj.getDescendantsByClass(
                 contentDiv, "descriptionContainer"))
-        breakpoint()
         self.assertEqual(len(divDescription), 1)
         divFourCardsContainer = (
             positiveEnvironmentalIntegrityObj.getDescendantsByClass(
-                contentDiv, "fourCardsContainer"))
+                contentDiv, "boxes"))
         self.assertEqual(len(divFourCardsContainer), 1)
 
+        boxesInBoxContainer = positiveEnvironmentalIntegrityObj.getDescendantsByClass(divFourCardsContainer[0], "box")
+        self.assertGreaterEqual(len(boxesInBoxContainer), 3)
+        
+        # check if alt-text is present for images:
+        for box in boxesInBoxContainer:
+            logoImage = positiveEnvironmentalIntegrityObj.getDescendantsByTagName(box, "img")
+            self.assertEqual(len(logoImage), 1)
+            self.assertTrue(logoImage[0].text == "")
+
         # click on one of the box containers:
-        randomBox = choice(divFourCardsContainer)
+        randomBox = choice(boxesInBoxContainer)
         randomBox.click()
 
         # check if the user is now on the details page:
         self.assertTrue(
             re.search(
-                r"/pages/environmentalIntegrityPositiv/[0-3]+",
+                r"/pages/environmentalIntegrityPositiv/[0-9]+",
                 self.driver.current_url,
             ))
 
@@ -64,10 +72,10 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         # check if the backlink is present:
         contentDiv = detailsPageObj.getContentDiv()
         self.assertIsNotNone(contentDiv)
+        
 
-        divsInsideContentDiv = detailsPageObj.getDescendantsByTag(
-            contentDiv, "div")
-        self.assertEqual(len(divsInsideContentDiv), 2)
+        divsInsideContentDiv = detailsPageObj.getDescendantsByClass(
+            contentDiv, "secondaryNavbar")
 
         # check if the backlink is present:
         backLink = detailsPageObj.getDescendantsByTagName(
@@ -77,29 +85,27 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
                         backLink[0].get_attribute("href"))
 
         # check if the second-div has the class border-ecological:
-        self.assertTrue("border-ecological" in
-                        divsInsideContentDiv[1].get_attribute("class"))
-
+        detailsContentContainer = positiveEnvironmentalIntegrityObj.getDescendantsByClass(contentDiv, "border-ecological")
+        self.assertEqual(len(detailsContentContainer), 1)
         # check if 2 divs are present in the second div container:
-        divDescription = detailsPageObj.getDescendantsByTag(
-            divsInsideContentDiv[1], "div")
-
-        self.assertEqual(len(divDescription), 2)
+        divDescription = detailsPageObj.getDescendantsByClass(
+            detailsContentContainer[0], "column__right")
 
         # check if the showMore-link is present:
         showMoreLink = detailsPageObj.getDescendantsByTagName(
-            divDescription[1], "a")
+            divDescription[0], "a")
         if self.getLanguage() == "de":
             for link in showMoreLink:
-                self.assertTrue("Zeige mehr" in link.text)
+                self.assertTrue("Zeige mehr" in link.get_attribute("data-collapsed-text"))
         else:
             for link in showMoreLink:
-                self.assertTrue("Show more" in link.text)
+                self.assertTrue("Show more" in link.get_attribute("data-collapsed-text"))
 
+        leftColumn = detailsPageObj.getDescendantsByClass(contentDiv, "column__left")
         # test if the image is clickable and leads to a new page:
-        image = detailsPageObj.getDescendantsByTagName(divDescription[0],
+        image = detailsPageObj.getDescendantsByTagName(leftColumn[0],
                                                        "img")
-        image.click()
+        self.scrollElementIntoViewAndClickIt(image[0])
 
         self.assertTrue(re.search(
             r"/showImage",
@@ -109,12 +115,12 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         # check if a backlink is present and has green color:
         backLink = detailsPageObj.getBackLink()
         colorOfbackLink = backLink.value_of_css_property("color")
-        self.assertTrue("rgb(143, 222, 151)" in colorOfbackLink)
+        self.assertTrue(self.ECOLOGICAL_COLOR in colorOfbackLink)
 
         backLink.click()
         # check if the user is now on the details page:
         self.assertTrue(
             re.search(
-                r"/pages/environmentalIntegrityPositiv/[0-3]+",
+                r"/pages/environmentalIntegrityPositiv/[0-9]+",
                 self.driver.current_url,
             ))

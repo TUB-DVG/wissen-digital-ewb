@@ -191,7 +191,7 @@ class Locator(object):
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
     headingComparisonSite = "//p[contains(@class, 'description-heading__paragraph')]"
     comparisonTableContainer = "//tbody"
-    backButton = "//a[@class='link-navigator__negative-technical']"
+    backButton = "//div[@class='secondaryNavbarLeft']/a"
     startComparisonDiv = "//div[@id='startComparisonButtonTools']"
     resetComparisonDiv = "//div[@id='cancelButtonTools']"
 

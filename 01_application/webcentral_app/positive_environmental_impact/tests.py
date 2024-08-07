@@ -33,9 +33,20 @@ class DataImportTest(TestCase):
         
         # get the EnvironmentalImpact object, which has the 3 literature-elements attached:
         self.assertTrue(randomEnvImpactObj)
-        environImpactObjLiterature = EnvironmentalImpact.objects.get(project_name__icontains="LLEC - Verwaltungsbau")
-        self.assertEqual(len(environImpactObjLiterature.literature.all()))
+        environImpactObjLiterature = EnvironmentalImpact.objects.get(project_name__icontains="LLEC")
+        self.assertEqual(len(environImpactObjLiterature.literature.all()), 3)
+        
+        randomImpactObj = choice(EnvironmentalImpact.objects.all())
+        self.assertTrue(len(randomImpactObj.funding_label.all()) > 0)
+        
+        subprojectsForImpactObj = randomImpactObj.funding_label.all() 
 
+        # get the duration for the project:
+        # for subproject in subprojectsForImpactObj:
+        #     self.assertIsNotNone(subproject.enargusData)
+        #     self.assertIsNotNone(subproject.enargusData.startDate)
+        #     self.assertIsNotNone(subproject.enargusData.endDate)
+        #
         # self.assertTrue(hasattr(randomEnvImpactObj, "literature__de"))
         # self.assertTrue(hasattr(randomEnvImpactObj, "literature__en"))
         
