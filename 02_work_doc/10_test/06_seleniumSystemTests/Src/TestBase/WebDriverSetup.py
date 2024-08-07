@@ -27,10 +27,10 @@ os.environ["TMPDIR"] = temp_dir
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
-    ECOLOGICAL_COLOR = "rgb(143, 171, 247)"
+    ECOLOGICAL_COLOR = "rgb(108, 200, 118)"
     GLOBAL_COLOR = "rgb(120, 117, 117)"
     TECHNICAL_COLOR = "rgb(143, 171, 247)" 
-    
+    OPERATIONAL_COLOR = "rgb(244, 151, 131)" 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -227,10 +227,10 @@ class WebDriverSetup(unittest.TestCase):
             None
         """
         self._setLanguageToEnglish()
-        self.waitUntilPageIsLoaded()
+        # self.waitUntilPageIsLoaded()
         self.assertEqual(self.driver.title, englishTitle)
         self._setLanguageToGerman()
-        self.waitUntilPageIsLoaded()
+        # self.waitUntilPageIsLoaded()
         self.assertEqual(self.driver.title, germanTitle)
 
     def waitUntilPageIsLoaded(self, elementId=None):

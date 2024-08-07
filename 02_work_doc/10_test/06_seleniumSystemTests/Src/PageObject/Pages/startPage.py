@@ -154,3 +154,17 @@ class StartPage(GenericPageObject):
         """Get Div-element of the legal focus container
         """
         return self.driver.find_element(By.XPATH, "//div[@title='Rechtlicher Fokus']")
+    
+    def getFocusContainer(self, focusName: str):
+        """
+
+        """
+        focusTitle = ""
+        if focusName == "legal":
+            focusTitle = "Rechtlicher Fokus"
+        elif focusName == "operational":
+            focusTitle = "Betrieblicher Fokus"
+        elif focusName == "ecological":
+            focusTitle = "Ökologischer Fokus"
+        
+        return self.driver.find_element(By.XPATH, f"//div[@title='{focusTitle}']")
