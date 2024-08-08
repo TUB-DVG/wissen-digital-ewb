@@ -35,4 +35,16 @@ class TestDataImport(TestCase):
                 foundEnglishHeaders.append(headerItem)
 
         self.assertEqual(len(foundEnglishHeaders), 30)
+    
 
+    def testBuildLiteratureName(self):
+        """Test the function `_buildLiteratureName`
+
+        """
+        temp_file_obj = mock_excel_file()
+        data_import_obj = DataImport(temp_file_obj.name)
+        
+        dummyLitStr = "Althaus, Philipp, Florian Redder, Eziama Ubachukwu, Maximilian Mork, André Xhonneux und Dirk Müller (2022)"
+        litLinkName = data_import_obj._buildLiteratureIdentifier(dummyLitStr)
+
+        self.assertEqual(litLinkName, "Althaus,_Philipp,_Florian_2024")

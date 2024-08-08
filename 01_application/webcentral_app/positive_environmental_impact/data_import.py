@@ -111,8 +111,13 @@ class DataImportApp(DataImport):
                                                 ";;")
         literatureObjsList = []
         for literature in literatureList:
+            if literature.startswith("<sup"):
+                litIdentifier = ""
+            else:
+                litIdentifier = self._buildLiteratureIdentifier(literature)
             objCreated, created = Literature.objects.get_or_create(
                 literature=literature,
+                linkName=litIdentifier,
             )
             literatureObjsList.append(objCreated)
         obj.literature.add(*literatureObjsList)
