@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "criteriaCatalog.apps.CriteriacatalogConfig",
     "component_list.apps.ComponentListConfig",
     "businessModel.apps.BusinessmodelConfig",
+    "positive_environmental_impact.apps.PositiveEnvironmentalImpactConfig",
     "publications.apps.PublicationsConfig",
     "use_cases.apps.UseCasesConfig",
     "pages.apps.PagesConfig",

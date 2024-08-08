@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}
-    {% translate "Datenverarbeitung" %}
+  {{ pageTitle }}
 {% endblock title %}
 {% load static %}
 {% block content %}
@@ -62,7 +62,7 @@
     </style>
     <section class="pt-0">
         <!-- ======================= Content START ======================= -->
-        <div class="container {{ focusBorder }}-cards p-4 my-4 z-index-9 position-relative collapseListingRow">
+        <div class="container {{ focusBorder }}-cards p-4 my-4 z-index-9 position-relative collapseListingRow content">
             {% include "partials/backLinkInFocusColor.html" %}
 
             {% if imageQuickLinks == True %}

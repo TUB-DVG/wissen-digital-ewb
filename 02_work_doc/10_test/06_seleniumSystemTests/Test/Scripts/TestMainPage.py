@@ -357,93 +357,51 @@ class TestMainPage(WebDriverSetup):
         """Check if the right links and description is shown in german and english."""
         self.driver.get(os.environ["siteUnderTest"])
 
-        startPAgeObj = StartPage(self.driver)
-
-        # set the language to german:
-        self._setLanguageToGerman()
+        self.startPageObj = StartPage(self.driver)
         
-        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
-        # get the heading in the operational focus container:
-        headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h3")[0]
+        self._checkFocusContainer("operational", {
+            "heading_de": "Betrieblicher Fokus",
+            "heading_en": "Operational Focus",
+            "linkNamesEnglish": [
+                "Business models",
+                "User integration",
+            ],
+            "linkNamesGerman": [
+                "Geschäftsmodelle",
+                "Nutzendenintegration",
+            ],
+            "borderColor": self.OPERATIONAL_COLOR,
+        })
+
+        self._checkFocusContainer("ecological", {
+            "heading_de": "Ökologischer Fokus",
+            "heading_en": "Ecological Focus",
+            "linkNamesEnglish": [
+                "Negative environmental impacts ",
+                "Positive environmental impacts",
+            ],
+            "linkNamesGerman": [
+                "Negative Umweltwirkungen",
+                "Positive Umweltwirkungen - Good-practice",
+            ],
+            "borderColor": self.ECOLOGICAL_COLOR,
+        })
         
-        self.assertTrue(headingText.text == "Betrieblicher Fokus" or headingText.text == "Operational focus")
-
-        # get the description paragraph in the operational focus container:
-        descParagraph = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "p")[0]
-        self.assertEqual(
-            descParagraph.text,
-            "Der betriebliche Fokus bei der Untersuchung der Digitalisierung in der Energieforschung im Gebäudesektor zielt vorrangig auf die Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind dabei der wirtschaftliche Betrieb digitaler Anwendungen (Geschäftsmodelle) und die Einbindung von und Interaktion mit den Nutzenden.",
-            "Description in opertional focus container is not as expected!",
-        )
-
-        expectedGermanLinkNames = [
-            "Geschäftsmodelle",
-            "Nutzendenintegration",
-        ]
-
-        # check the links in the operational focus container:
-        linkListElements = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "a")
-
-        self.assertEqual(
-            len(linkListElements),
-            len(expectedGermanLinkNames),
-            "The number of links in the operational focus box is not as expected!",
-        )
-
-        for linkNumber, linkElement in enumerate(linkListElements):
-            self.assertEqual(linkElement.text,
-                             expectedGermanLinkNames[linkNumber])
-
-        # set the language to english:
-        self._setLanguageToEnglish()
-        operationalFocusContainer = startPAgeObj.getOperationalFocusContainer()
-        # get the heading in the operational focus container:
-        headingText = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "h3")[0]
-
-        self.assertEqual(
-            headingText.text,
-            "Operational Focus",
-            "Heading should be 'Operationaler Fokus', but its not!",
-        )
-
-        # get the description paragraph in the operational focus container:
-        descParagraph = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "p")[0]
-
-        self.assertEqual(
-            descParagraph.text,
-            "The operational focus in studying digitalization in the building sector of energy research is primarily directed at the use phase of digital applications. Important aspects are the economic operation of digital applications in business models and the integration of and interaction with users.",
-            "Description in opertional focus container is not as expected!",
-        )
-
-        expectedGermanLinkNames = [
-            "Business models",
-            "User integration",
-        ]
-
-        # check the links in the operational focus container:
-        linkListElements = startPAgeObj.getDescendantsByTagName(
-            operationalFocusContainer, "a")
-
-        self.assertEqual(
-            len(linkListElements),
-            len(expectedGermanLinkNames),
-            "The number of links in the operational focus box is not as expected!",
-        )
-
-        for linkNumber, linkTableElement in enumerate(linkListElements):
-            self.assertEqual(linkTableElement.text,
-                             expectedGermanLinkNames[linkNumber])
-
-        ## check if the criteria catalog link is present in the legal focus container:
-        legalFocusContainer = startPAgeObj.getLegalFocusContainer()
-        linksInLegalFocusContainer = startPageObj.getDescendantsByTagName(legalFocusContainer, "a")
-        self.assertEqual(len(linksInLegalFocusContainer), 3, "Number of links in legal focus container should be 3.")
-        self.assertTrue(linksInLegalFocusContainer[1].text == "Kriterienkatalog" or linksInLegalFocusContainer[1].text == "Catalog of criteria")
+        self._checkFocusContainer("legal", {
+            "heading_de": "Rechtlicher Fokus",
+            "heading_en": "Legal Focus",
+            "linkNamesEnglish": [
+                "Privacy Overview",
+                "Catalog of criteria",
+                "Icons and visualization",
+            ],
+            "linkNamesGerman": [
+                "Datenschutz-übersicht",
+                "Kriterienkatalog",
+                "Icons und Visualisierung",
+            ],
+            "borderColor": self.LEGAL_COLOR,
+        })
     
     def testPageStructure(self):
         """Test if the navBar has 5 focuses and if the 5. focus is present on the page.
@@ -505,5 +463,55 @@ class TestMainPage(WebDriverSetup):
 
         self.assertTrue("Kriterienkatalog - Übersicht" == self.driver.title or "Catalog of criteria - Overview" == self.driver.title)
 
+    def _checkFocusContainer(self, focusName, dataDict):
+        """
+
+        """
+
+        self.focusContainer = self.startPageObj.getFocusContainer(focusName)
+        self.focusName = focusName
+        
+        self.checkInGermanAndEnglish(self._checkTitle, {"de": dataDict["heading_de"], "en": dataDict["heading_en"]})
+        self.checkInGermanAndEnglish(self._checkBorder, {"de": dataDict["borderColor"], "en": dataDict["borderColor"]})
+        self.checkInGermanAndEnglish(self._checkLinks, {"de": dataDict["linkNamesGerman"], "en": dataDict["linkNamesEnglish"]})
+
+    def _checkTitle(self, expectedValue):
+        """Check the title in german and english
+
+        """
+        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        headingText = self.startPageObj.getDescendantsByTagName(
+            self.focusContainer, "h3")[0]
+        self.assertEqual(
+            headingText.text,
+            expectedValue,
+            f"The heading of the focusContainer should be {expectedValue}, but its {headingText.text}!"
+        )
+
+    def _checkBorder(self, expectedValue):
+        """Check the border of the container on the german and english page.
+
+        """
+        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        self.assertTrue(self.focusContainer.value_of_css_property("outline-color") == expectedValue)
+
+    def _checkLinks(self, expectedValues):
+        """
+        
+        """
+        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        # check the links in the operational focus container:
+        linkListElements = self.startPageObj.getDescendantsByTagName(
+            self.focusContainer, "a")
+
+        self.assertEqual(
+            len(linkListElements),
+            len(expectedValues),
+            "The number of links in the focus box is not as expected!",
+        )
+
+        for linkNumber, linkElement in enumerate(linkListElements):
+            self.assertEqual(linkElement.text,
+                             expectedValues[linkNumber])
 
 
