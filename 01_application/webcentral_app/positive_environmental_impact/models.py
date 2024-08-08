@@ -42,7 +42,6 @@ class EnvironmentalImpact(models.Model):
                 combinedText += f"<li id='{linkName}'>" + literature.literature + "</li>"
 
         combinedText += "</ul>"
-        breakpoint()
         templateObj = Template(combinedText)
         contextObj = Context({})
         return templateObj.render(contextObj)
@@ -52,3 +51,7 @@ class EnvironmentalImpact(models.Model):
         """The  property."""
         return Template(self.evaluation).render(Context({}))
 
+    @property
+    def implementation_in_the_project_rendered(self):
+        """The  property."""
+        return Template(self.implementation_in_the_project).render(Context({}))
