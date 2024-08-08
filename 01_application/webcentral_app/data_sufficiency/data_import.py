@@ -7,7 +7,7 @@ import pandas as pd
 
 from common.data_import import DataImport
 
-from .models import *
+from .models import DataSuffiency
 
 class DataImportApp(DataImport):
     
@@ -82,7 +82,7 @@ class DataImportApp(DataImport):
         duration = row[header.index("Duration")]
 
 
-        obj, created = EnvironmentalImpact.objects.get_or_create(
+        obj, created = DataSuffiency.objects.get_or_create(
             category_de=category,
             description_de=description,
             name_digital_application_de=nameDigitalApplication,
@@ -103,30 +103,13 @@ class DataImportApp(DataImport):
         )
         fundingLabelList = self._processListInput(row[header.index("Funding_Label")],
                                                ";;")
-        fundingLabelObjList = [
-            Subproject.objects.get_or_create(referenceNumber_id=fkzItem)[0]
-            for fkzItem in fundingLabelList
-        ]
-        literatureStr = row[header.index("Weiterführende Literatur")]
+       literatureStr = row[header.index("Weiterführende Literatur")]
         literatureObjsList = self._importLiterature(literatureStr)
         obj.literature.add(*literatureObjsList)
-
-        # for literatureElement in literatureList:
-        #     splittedLiteratureElement = literatureElement.split("((")
-        #     literatureString = splittedLiteratureElement[0]
-        #     literatureIdentifer = splittedLiteratureElement[1].replace(
-        #         "))", "")
-        #     literatureObj, _ = Literature.objects.get_or_create(
-        #         literature=literatureString,
-        #         linkName=literatureIdentifer,
-        #     )
-        #     literatureObjsList.append(literatureObj)
-        obj.funding_label.add(*fundingLabelObjList)
-        # obj.literature.add(*literatureObjsList)
-        
-        if self._englishHeadersPresent(header):
-           self._getOrCreateEnglishTranslation(row, header, data, obj)
-    
+       
+        # if self._englishHeadersPresent(header):
+        #    self._getOrCreateEnglishTranslation(row, header, data, obj)
+        #
     def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
         """
 
@@ -150,4 +133,4 @@ class DataImportApp(DataImport):
             if "__en" in headerItem:
                 return True
         
-        return False
+ 

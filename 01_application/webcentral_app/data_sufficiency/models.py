@@ -4,12 +4,16 @@ from django.template import (
     Context,
 )
 
+from user_integration.models import Literature
+
 class DataSufficiency(models.Model):
     strategyCategory = models.CharField(max_length=255)
     categoryShortDescription = models.TextField()
     categoryLongDescription = models.TextField()
     example1 = models.TextField()
     example2 = models.TextField()
+    literature = models.ManyToManyField(Literature, blank=True, null=True)
+    
 
     @property
     def categoryLongDescriptionRendered(self):
