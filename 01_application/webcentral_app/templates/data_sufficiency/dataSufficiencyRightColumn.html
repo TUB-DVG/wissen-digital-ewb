@@ -19,13 +19,12 @@
 </style>
 <div class="blockOfContent">
   <div class="mainContent" id="shortDescription">
-        {{ boxObject.categoryLongDescription|slice:":400"|safe }}
+        {{ boxObject.categoryLongDescription|slice:":400" }}
   </div>
     <div class="mainContent collapse" id="shortDescriptionRest">
-        {{ boxObject.categoryLongDescriptionRendered|slice:"401:"|safe }}
+        {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}
     </div>
-    {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}
-        <div class="showMore">
+        <div class="showMore collapseInfoContainer">
             <a role="button"
                class="collapsed text-truncation-btn"
                data-toggle="collapse"
@@ -35,7 +34,6 @@
                data-expanded-text="{% translate 'Zeige weniger ...' %}"
                data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
         </div>
-    {% endif %}
 </div>
 {% if boxObject.example1 %}
     <div class="blockOfContent">
