@@ -31,7 +31,7 @@
         {{ boxObject.problem_statement_and_problem_goals|safe|slice:":500" }}
     </div>
     <div class="mainContent collapse" id="problemStatement">
-        {{ boxObject.problem_statement_and_problem_goals|safe|slice:"501:" }}
+        {{ boxObject.problem_statement_and_problem_goals|safe|slice:"500:" }}
     </div>
     <div class="showMore collapseInfoContainer">
         <a role="button"
@@ -47,10 +47,10 @@
 <div class="blockOfContent">
     <div class="mainContentHeading">{% translate "Umsetzung im Projekt" %}</div>
     <div class="mainContent" id="shortDescription">
-        {{ boxObject.implementation_in_the_project|safe|slice:":500" }}
+        {{ boxObject.implementation_in_the_project_rendered|slice:":550" }}
     </div>
     <div class="mainContent collapse" id="implementation">
-        {{ boxObject.implementation_in_the_project|safe|slice:"501:" }}
+        {{ boxObject.implementation_in_the_project_rendered|slice:"550:" }}
     </div>
     <div class="showMore collapseInfoContainer">
         <a role="button"
@@ -69,7 +69,7 @@
         {{ boxObject.evaluationRendered|slice:":500" }}
     </div>
     <div class="mainContent collapse" id="evaluation">
-        {{ boxObject.evaluationRendered|slice:"501:" }}
+        {{ boxObject.evaluationRendered|slice:"500:" }}
     </div>
     <div class="showMore collapseInfoContainer">
         <a role="button"
