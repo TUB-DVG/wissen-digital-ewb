@@ -11,7 +11,9 @@ class DataSufficiency(models.Model):
     categoryShortDescription = models.TextField()
     categoryLongDescription = models.TextField()
     example1 = models.TextField()
+    example1Heading = models.CharField(max_length=200, blank=True, null=True)
     example2 = models.TextField()
+    example1Heading = models.CharField(max_length=200, blank=True, null=True)
     literature = models.ManyToManyField(Literature, blank=True, null=True)
     
 
