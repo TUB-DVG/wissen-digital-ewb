@@ -237,8 +237,7 @@ def environmentalIntegrityPositiv(request):
         "showMorePresent":
         False,
         "explanaitionText":
-        _("Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt."
-          ),
+        _("Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von Gebäuden und Quartieren steht im derzeitigen Fokus der Forschung. Gleichzeitig stellt dieses Ziel nur eine der möglichen positiven Umweltwirkungen dar, die mittels digitaler Anwendungen ermöglicht werden. Auch in Projekten der Forschungsinitiative Energiewendebauen kommen eine Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, mit denen sich positive Umweltwirkungen erzielen lassen. Auch wenn die Effekte oftmals schwer auf andere Gebäude/Quartiere zu übertragen sind, gibt es doch immer Forschungsprojekte an denen die Potenziale bestimmter digitaler Anwendungen gut verdeutlicht werden können. Diese sollen im Folgenden kurz vorgestellt werden. Dazu wird die eingesetzte digitale Anwendung beschrieben und die gefundenen positiven Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das Aufzeigen von derzeitigen Möglichkeiten digitaler Anwendungen, positive Umweltwirkungen zu erzielen. Der dadurch geschaffene Anreiz soll Interessierte animieren, sich eingehender mit den Möglichkeiten digitaler Anwendungen zu beschäftigen, um so für eigene Vorhaben fundierte Entscheidungen treffen zu können."),
         "boxes": [{
             "pathToTemplate": "pages/environmentalIntegrityBox.html",
             "objectToRender": environmentalImpact,
