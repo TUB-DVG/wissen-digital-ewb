@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-03 07:19+0000\n"
+"POT-Creation-Date: 2024-08-07 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -457,20 +457,21 @@ msgstr "For the selected stations exist "
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
-#: StartSearch/views.py:231
+#: StartSearch/views.py:228
 msgid "Forschungsprojekt"
 msgstr "Research project"
 
-#: StartSearch/views.py:245 StartSearch/views.py:257 StartSearch/views.py:268
+#: StartSearch/views.py:242 StartSearch/views.py:254 StartSearch/views.py:265
 msgid "noch nicht hinterlegt"
 msgstr "not yet filed"
 
-#: StartSearch/views.py:256
+#: StartSearch/views.py:253
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:267 pages/views.py:347
-#: templates/partials/_navbar.html:198
+#: StartSearch/views.py:264 pages/views.py:348
+#: templates/StartSearch/StartSearch.html:406
+#: templates/partials/_navbar.html:204
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
@@ -604,6 +605,7 @@ msgid "Quellen"
 msgstr "Source"
 
 #: common/views.py:136 component_list/views.py:122 pages/views.py:193
+#: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
 
@@ -822,8 +824,8 @@ msgstr ""
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:287 component_list/views.py:326 pages/views.py:177
-#: templates/StartSearch/StartSearch.html:318
+#: component_list/views.py:287 component_list/views.py:327 pages/views.py:177
+#: templates/StartSearch/StartSearch.html:308
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:159
 msgid "Negative Umweltwirkungen"
@@ -833,20 +835,18 @@ msgstr "Negative environmental impacts"
 msgid "Die Daten-Wertschöpfungkette"
 msgstr ""
 
-#: component_list/views.py:338
+#: component_list/views.py:317 component_list/views.py:363 pages/views.py:211
+#: templates/partials/dataProcessingLeftColumn.html:3
+msgid "Aufwände für Datenverarbeitungsprozesse"
+msgstr "Expenses for data processing processes"
+
+#: component_list/views.py:339
 #, fuzzy
 #| msgid "Aufwände für verwendete Komponenten"
 msgid "Zu den Aufwänden für verwendete Komponenten"
 msgstr "Effort for used components"
 
-#: component_list/views.py:362 pages/views.py:211
-#: templates/partials/dataProcessingLeftColumn.html:3
-#, fuzzy
-#| msgid "Aufwände für Datenverarbeitungsprozsse"
-msgid "Aufwände für Datenverarbeitungsprozesse"
-msgstr "Expenditure for data processing procedures"
-
-#: criteriaCatalog/views.py:137 criteriaCatalog/views.py:203
+#: criteriaCatalog/views.py:137 criteriaCatalog/views.py:204
 #: templates/common/back-button.html:4
 #: templates/datasets_over/dataset-detail.html:45
 msgid "Zurück"
@@ -998,8 +998,9 @@ msgid ""
 "vorgenommen."
 msgstr ""
 
-#: pages/views.py:236 pages/views.py:261
-#: templates/StartSearch/StartSearch.html:330
+#: pages/views.py:236 pages/views.py:262
+#: templates/StartSearch/StartSearch.html:320
+#: templates/partials/_navbar.html:165
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
@@ -1029,7 +1030,7 @@ msgstr ""
 "product or service. A number of tools can support business model "
 "development. Some of these are presented here."
 
-#: pages/views.py:279
+#: pages/views.py:280
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1082,24 +1083,11 @@ msgid ""
 "    "
 msgstr ""
 
-#: pages/views.py:296 pages/views.py:322
-#: templates/StartSearch/StartSearch.html:354
-#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:165
+#: pages/views.py:297 pages/views.py:323
+#: templates/StartSearch/StartSearch.html:343
+#: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:171
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
-
-#: pages/views.py:351
-msgid ""
-"Text (Generelle Erläuterungen) Hier steht ein Platzhaltertext: Lorem ipsum "
-"dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor "
-"invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero "
-"eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, "
-"no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor "
-"sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor "
-"invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero "
-"eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, "
-"no sea takimata sanctus est Lorem ipsum dolor sit amet."
-msgstr ""
 
 #: publications/admin/orderedmodeladmin.py:115
 msgid "Move"
@@ -1425,10 +1413,9 @@ msgid "technisch"
 msgstr "technical"
 
 #: templates/StartSearch/StartSearch.html:204
-#: templates/StartSearch/StartSearch.html:269
-#: templates/StartSearch/StartSearch.html:364
-#: templates/StartSearch/StartSearch.html:464
-#: templates/partials/_navbar.html:229
+#: templates/StartSearch/StartSearch.html:353
+#: templates/StartSearch/StartSearch.html:453
+#: templates/partials/_navbar.html:235
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
@@ -1460,16 +1447,12 @@ msgstr ""
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
-#: templates/StartSearch/StartSearch.html:268
-msgid "betrieblich"
-msgstr "operational"
-
-#: templates/StartSearch/StartSearch.html:296
+#: templates/StartSearch/StartSearch.html:286
 #: templates/partials/_navbar.html:153
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
-#: templates/StartSearch/StartSearch.html:298
+#: templates/StartSearch/StartSearch.html:288
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -1489,17 +1472,17 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/StartSearch/StartSearch.html:342
+#: templates/StartSearch/StartSearch.html:331
 #: templates/pages/benchmarkingChallenges.html:19
 msgid "Herausforderungen"
 msgstr "Challenges"
 
-#: templates/StartSearch/StartSearch.html:386
-#: templates/partials/_navbar.html:188
+#: templates/StartSearch/StartSearch.html:375
+#: templates/partials/_navbar.html:194
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/StartSearch/StartSearch.html:388
+#: templates/StartSearch/StartSearch.html:377
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -1519,26 +1502,21 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/StartSearch/StartSearch.html:407
-#: templates/partials/_navbar.html:193
+#: templates/StartSearch/StartSearch.html:396
+#: templates/partials/_navbar.html:199
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
-#: templates/StartSearch/StartSearch.html:417
-#: templates/StartSearch/StartSearch.html:474
-msgid "Kriterien&shy;katalog"
-msgstr "Catalog of criteria"
-
-#: templates/StartSearch/StartSearch.html:429
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:203
+#: templates/StartSearch/StartSearch.html:418
+#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:209
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: templates/StartSearch/StartSearch.html:449
+#: templates/StartSearch/StartSearch.html:438
 msgid "Globaler Fokus"
 msgstr "Global Focus"
 
-#: templates/StartSearch/StartSearch.html:451
+#: templates/StartSearch/StartSearch.html:440
 msgid ""
 "Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig "
 "beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, "
@@ -1551,8 +1529,8 @@ msgstr ""
 "require an integrated view or appear in all foci. The goal is a holistic "
 "view of digitalization in energy technology."
 
-#: templates/StartSearch/StartSearch.html:486
-#: templates/partials/_navbar.html:239
+#: templates/StartSearch/StartSearch.html:465
+#: templates/partials/_navbar.html:245
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
@@ -2206,10 +2184,6 @@ msgid ""
 "nonsequat quas ex exero dolupti dolupta tempossimi, volestiures es "
 "doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
 msgstr ""
-
-#: templates/component_list/components.html:4
-msgid "Komponentenliste"
-msgstr "Component list"
 
 #: templates/component_list/components.html:136
 msgid ""
@@ -3119,54 +3093,50 @@ msgstr "Efficient data minimization in the building and neighborhood sector"
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guides, literature and court decisions"
 
-#: templates/pages/detailsPage.html:4
-msgid "Datenverarbeitung"
-msgstr "Data processing"
-
 #: templates/pages/environmentalIntegrityLeftColumn.html:10
 msgid "Förderkennzeichen"
 msgstr "Funding code"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:13
+#: templates/pages/environmentalIntegrityLeftColumn.html:21
 msgid "Laufzeit"
 msgstr "Duration"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:16
+#: templates/pages/environmentalIntegrityLeftColumn.html:24
 msgid "Partner"
 msgstr "Partners"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:19
+#: templates/pages/environmentalIntegrityLeftColumn.html:27
 msgid "Projektwebseite"
 msgstr "Project website"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:22
+#: templates/pages/environmentalIntegrityLeftColumn.html:30
 msgid "Konsortium"
 msgstr "Consortium"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:25
+#: templates/pages/environmentalIntegrityLeftColumn.html:33
 #, fuzzy
 #| msgid "Seite"
 msgid "Weitere"
 msgstr "Site"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:28
+#: templates/pages/environmentalIntegrityLeftColumn.html:36
 #, fuzzy
 #| msgid "Digitale Anwendungen"
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:31
+#: templates/pages/environmentalIntegrityLeftColumn.html:39
 #: templates/user_integration/userEngagementDetailsRightColumn.html:32
 #, fuzzy
 #| msgid "Zielgruppe"
 msgid "Ziele"
 msgstr "Target group"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:34
+#: templates/pages/environmentalIntegrityLeftColumn.html:42
 msgid "Strategien"
 msgstr "Strategies"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:37
+#: templates/pages/environmentalIntegrityLeftColumn.html:45
 msgid "Relevanz"
 msgstr "Relevance"
 
@@ -3181,6 +3151,12 @@ msgstr "Implementation in the project"
 #: templates/pages/environmentalIntegrityRightColumn.html:67
 msgid "Evaluation"
 msgstr "Evaluation"
+
+#: templates/pages/environmentalIntegrityRightColumn.html:86
+#, fuzzy
+#| msgid "Weiterführende Informationen"
+msgid "Weiterführende Literatur und Hinweise"
+msgstr "Additional information"
 
 #: templates/pages/iconsAndVis.html:29
 msgid ""
@@ -3427,11 +3403,11 @@ msgstr "Business model"
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:224
+#: templates/partials/_navbar.html:230
 msgid "Global"
 msgstr ""
 
-#: templates/partials/_navbar.html:234
+#: templates/partials/_navbar.html:240
 #, fuzzy
 #| msgid "Icons und Visualisierung"
 msgid "City GML Visualisierung"
@@ -4941,6 +4917,18 @@ msgstr "MIT license"
 #: webcentral_app/static/sphinx/html/_sources/translation.md.txt:19
 msgid "Hallo"
 msgstr ""
+
+#~ msgid "Komponentenliste"
+#~ msgstr "Component list"
+
+#~ msgid "betrieblich"
+#~ msgstr "operational"
+
+#~ msgid "Kriterien&shy;katalog"
+#~ msgstr "Catalog of criteria"
+
+#~ msgid "Datenverarbeitung"
+#~ msgstr "Data processing"
 
 #~ msgid "Publikationen"
 #~ msgstr "Publications"

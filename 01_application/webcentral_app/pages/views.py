@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.utils.translation import gettext as _
 from django.template import Template, Context
 
-from component_list.models import (
+from positive_environmental_impact.models import (
     EnvironmentalImpact, )
 from data_sufficiency.models import (
     DataSufficiency, )
@@ -255,6 +255,7 @@ def environmentalIntegrityBox(request, idOfEnvironmentalImpactObj):
     environmentalImpactObj = EnvironmentalImpact.objects.get(
         id=idOfEnvironmentalImpactObj)
     context = {
+        "pageTitle": environmentalImpactObj.project_name,
         "imageInBackButton": "img/componentList/caret-left.svg",
         "boxObject": environmentalImpactObj,
         "focusBorder": "ecological",

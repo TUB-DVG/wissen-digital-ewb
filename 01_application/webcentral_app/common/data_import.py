@@ -69,7 +69,7 @@ class DataImport:
             if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(dfGermanEnglish["German"].columns):
                     if german_column == dfGermanEnglish["English"].columns[index]:
-                        dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "_en"})
+                            dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "__en"})
                 df_concatenated = pd.concat([dfGermanEnglish["English"], dfGermanEnglish["German"]], axis=1, ignore_index=True)
                 df_concatenated.columns = list(dfGermanEnglish["English"].columns) + list(dfGermanEnglish["German"].columns)
             else:
@@ -190,6 +190,24 @@ class DataImport:
                 returnList.append(element)
 
         return returnList
+
+    def _buildLiteratureIdentifier(self, literatureElement: str) -> str:
+        """build a identifer of the litrature element, which can be used 
+        in the HTML to point from the literature reference to the literature list 
+        on the end of the page.
+
+        """
+
+        # find the first 3 names and seperate them with a underscore:
+        splitBySpaces = literatureElement.split(" ")
+        identifer = ""
+        for number in range(3):
+            identifer += splitBySpaces[number] + "_"
+
+        # find the year, which is written in brackets:
+        year = literatureElement.split("(")[1].split(")")[0]
+
+        return identifer + year
 
     def _checkIfOnlyContainsSpaces(self, inputStr):
         """Check if the inputStr only contains whitespaces.
