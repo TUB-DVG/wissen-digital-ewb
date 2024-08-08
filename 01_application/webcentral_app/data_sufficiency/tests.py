@@ -18,4 +18,13 @@ class TestDataSufficiencyDataImport(TestCase):
         self.assertEqual(len(DataSufficiency.objects.all()), 3, "3 objects should have been imported.")
         
         randomDataSufficiencyObj = choice(DataSufficiency.objects.all())
-    
+        attributes = [
+            example1Heading,
+            example2Heading,
+            literature,
+        ]
+        for attribute in attributes:
+            self.assertTrue(hasattr(randomDataSufficiencyObj, attribute))
+
+
+
