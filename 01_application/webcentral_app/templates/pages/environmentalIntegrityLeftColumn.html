@@ -26,12 +26,16 @@
 <p>
     <span class="columnHeading">{% translate "Projektwebseite" %}: </span> {{ boxObject.project_website }}
 </p>
+{% if boxObject.consortium %}
 <p>
     <span class="columnHeading">{% translate "Konsortium" %}: </span>{{ boxObject.consortium }}
 </p>
+{% endif %}
+{% if boxObject.consortium %}
 <p>
     <span class="columnHeading">{% translate "Weitere" %}: </span>{{ boxObject.further }}
 </p>
+{% endif %}
 <p>
     <span class="columnHeading">{% translate "Digitale Anwendung(en)" %}: </span>{{ boxObject.digitalApplications }}
 </p>
