@@ -209,6 +209,26 @@ class DataImport:
 
         return identifer + year
 
+    def _importLiterature(self, literatureElements: str):
+        """Import literature elements from csv/excel into `Literature`-
+        model.
+        
+        """
+        literatureList = self._processListInput(literatureElements,
+                                                ";;")
+        literatureObjsList = []
+        for literature in literatureList:
+            if literature.startswith("<sup"):
+                litIdentifier = ""
+            else:
+                litIdentifier = self._buildLiteratureIdentifier(literature)
+            objCreated, created = Literature.objects.get_or_create(
+                literature=literature,
+                linkName=litIdentifier,
+            )
+            literatureObjsList.append(objCreated)
+ 
+
     def _checkIfOnlyContainsSpaces(self, inputStr):
         """Check if the inputStr only contains whitespaces.
 
