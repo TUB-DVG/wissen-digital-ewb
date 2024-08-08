@@ -34,8 +34,11 @@ class DataImportTest(TestCase):
         # get the EnvironmentalImpact object, which has the 3 literature-elements attached:
         self.assertTrue(randomEnvImpactObj)
         environImpactObjLiterature = EnvironmentalImpact.objects.get(project_name__icontains="LLEC")
-        self.assertEqual(len(environImpactObjLiterature.literature.all()), 3)
+        self.assertEqual(len(environImpactObjLiterature.literature.all()), 4)
         
+        for litObj in environImpactObjLiterature.literature.all():
+            self.assertTrue(litObj.linkName != "")
+
         randomImpactObj = choice(EnvironmentalImpact.objects.all())
         self.assertTrue(len(randomImpactObj.funding_label.all()) > 0)
         

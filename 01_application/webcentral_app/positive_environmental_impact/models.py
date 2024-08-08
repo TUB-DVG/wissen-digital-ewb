@@ -35,9 +35,14 @@ class EnvironmentalImpact(models.Model):
         
         combinedText = "<ul>"
         for literature in self.literature.all():
-            combinedText += "<li>" + literature.literature + "</li>"
+            if literature.literature.startswith("<sup"):
+                combinedText += "<li id='footnote1'>" + literature.literature + "</li>"
+            else:
+                linkName = literature.linkName.replace('\n', '')
+                combinedText += f"<li id='{linkName}'>" + literature.literature + "</li>"
 
         combinedText += "</ul>"
+        breakpoint()
         templateObj = Template(combinedText)
         contextObj = Context({})
         return templateObj.render(contextObj)
