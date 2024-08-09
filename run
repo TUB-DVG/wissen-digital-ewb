@@ -198,7 +198,7 @@ case $command in
             fi
         fi
         ;;
-    "build_intial")
+    "build_initial")
         if [ "$2" == "dev" ]; 
           then
             npx webpack --mode=development
