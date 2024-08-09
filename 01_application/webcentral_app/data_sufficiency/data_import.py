@@ -7,7 +7,7 @@ import pandas as pd
 
 from common.data_import import DataImport
 
-from .models import DataSuffiency
+from .models import DataSufficiency
 
 class DataImportApp(DataImport):
     
@@ -75,11 +75,11 @@ class DataImportApp(DataImport):
             example1=example1,
             example2=example2,
             example1Heading=example1Heading,
-            example1Heading=example1Heading,
+            example2Heading=example2Heading,
         )
  
 
-      literatureStr = row[header.index("Weiterführende Literatur")]
+        literatureStr = row[header.index("Literatur")]
         literatureObjsList = self._importLiterature(literatureStr)
         obj.literature.add(*literatureObjsList)
        
