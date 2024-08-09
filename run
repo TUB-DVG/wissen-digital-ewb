@@ -8,7 +8,7 @@ fi
 source .env
 # Set command
 command=$1
-
+PWD=$(pwd)
 # Check if docker-compose or docker compose is available
 if command -v docker-compose &> /dev/null
 then
