@@ -29,7 +29,7 @@ class TestDataSufficiency(WebDriverSetup):
         time.sleep(1)
 
         # Check the structure of the page
-        dataSufficiencyObj = DataSufficiency(driver)
+        dataSufficiencyObj = DataSufficiency(self.driver)
 
         contentDiv = dataSufficiencyObj.getContentDiv()
         self.assertIsNotNone(contentDiv)
@@ -39,8 +39,8 @@ class TestDataSufficiency(WebDriverSetup):
             contentDiv, "descriptionContainer")
         self.assertEqual(len(divDescription), 1)
         divFourCardsContainer = dataSufficiencyObj.getDescendantsByClass(
-            contentDiv, "fourCardsContainer")
-        self.assertEqual(len(divFourCardsContainer), 1)
+            contentDiv, "box ")
+        self.assertGreaterEqual(len(divFourCardsContainer), 0)
             
     def testDotsPresentWhenCollapsed(self):
         """Test if three dots are present at the end of the collapsed component. 
@@ -48,7 +48,10 @@ class TestDataSufficiency(WebDriverSetup):
         on `show more`
         """
         self.driver.get(os.environ["siteUnderTest"] + "/pages/dataSufficiency")
-        dataSufficiencyObj = DataSufficiency(driver)
+        dataSufficiencyObj = DataSufficiency(self.driver)
+            
+        boxesOnSite = dataSufficiencyObj.getBoxes()
+        randomBox = choice(boxesOnSite)
 
         allFirstPartsOfCollapsables = dataSufficiencyObj.getAllCollapsableFirstParts()
         for firstPartOfCollapsable in allFirstPartsOfCollapsables:

@@ -104,3 +104,9 @@ class GenericPageObject:
         """
         wait = WebDriverWait(self.driver, timeout=10)
         wait.until(lambda d : element.is_displayed())
+
+    def getBoxes(self):
+        """Return boxes from the overview-page.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'box ')]")
