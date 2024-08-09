@@ -12,18 +12,19 @@
     }
     .showMore a {
         color: #8FDE97;
+        display: inline-block;
     }
     .blockOfContent{
         margin-bottom: 54px;
+        font-size: 0;
     }
 </style>
 <div class="blockOfContent">
-  <div class="mainContent" id="shortDescription">
-        {{ boxObject.categoryLongDescription|slice:":401" }}
-  </div>
+  <div class="mainContent firstPart" id="shortDescription">
+        {{ boxObject.categoryLongDescription|slice:":401" }}</div>
+    <div class="mainContent dots">...</div>
     <div class="mainContent collapse" id="shortDescriptionRest">
-        {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}
-    </div>
+        {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}</div>
       {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}  
         <div class="showMore collapseInfoContainer">
             <a role="button"
@@ -32,8 +33,8 @@
                href="#shortDescriptionRest"
                aria-expanded="true"
                aria-controls="shortDescriptionRest"
-               data-expanded-text="{% translate 'Zeige weniger ...' %}"
-               data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+               data-expanded-text=" {% translate 'Zeige weniger ...' %}"
+               data-collapsed-text=" {% translate 'Zeige mehr ...' %}"></a>
         </div>
       {% endif %}
 </div>
@@ -41,7 +42,7 @@
     <div class="blockOfContent">
         <div class="mainContent">{{ boxObject.example1Heading }}:</div>
         <div>
-            <div class="mainContent">{{ boxObject.example1|slice:":501" }}</div>
+            <div class="mainContent firstPart">{{ boxObject.example1|slice:":501" }}</div>
             <div class="mainContent collapse" id="example1">
                 {{ boxObject.example1|slice:"501:" }}
             </div>
@@ -64,7 +65,7 @@
   <div class="blockOfContent"> 
     <div class="mainContent">{{ boxObject.example2Heading }}:</div>
     <div>
-        <div class="mainContent">{{ boxObject.example2|slice:":401" }}</div>
+        <div class="mainContent firstPart">{{ boxObject.example2|slice:":401" }}</div>
         <div class="mainContent collapse" id="example2">
             {{ boxObject.example2|slice:"401:" }}
         </div>
@@ -81,8 +82,11 @@
             </div>
         {% endif %}
     </div>
+  </div>
 {% endif %}
   <div class="blockOfContent"> 
-    <div class="mainContent">{% translate "Literatur" %}:</div>
-        <div class="mainContent">{{ boxObject.literatureList }}</div>
+    <div>
+      <div class="mainContent">{% translate "Literatur" %}:</div>
+      <div class="mainContent">{{ boxObject.literatureList }}</div>
+    </div>
   </div>
