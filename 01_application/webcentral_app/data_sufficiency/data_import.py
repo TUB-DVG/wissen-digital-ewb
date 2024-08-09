@@ -7,7 +7,7 @@ import pandas as pd
 
 from common.data_import import DataImport
 
-from .models import *
+from .models import DataSufficiency
 
 class DataImportApp(DataImport):
     
@@ -59,74 +59,33 @@ class DataImportApp(DataImport):
         created:    bool
             Indicates, if the UserIntegration-object was created or not.
         """
-        category = row[header.index("Category")]
-        description = row[header.index("Description")]
-        nameDigitalApplication = row[header.index("Name_Digital_Application")]
-        projectname = row[header.index("Projektname")]
-        fundingLabel = row[header.index("Funding_Label")]
-        duration = row[header.index("Duration")]
-        partner = row[header.index("Partner")]
-        projectWebsite = row[header.index("Project_Website")]
-        consortium = row[header.index("Consortium")]
-        further = row[header.index("Further")]
-        digitalApplications = row[header.index("Digital_applications")]
-        goals = row[header.index("Goals")]
-        strategies = row[header.index("Strategies")]
-        relevance = row[header.index("Relevance")]
-        image = row[header.index("Image")]
-        problemStatementAndProblemGoals = row[header.index("Problem_Statement_and_Problem_Goals")]
-        implementationInTheProject = row[header.index("Implementation_in_the_Project")]
-        evaluation = row[header.index("Evaluation")]
-        projectName = row[header.index("Project_Name")]
-        weiterführendeLiteratur = row[header.index("Weiterführende Literatur")]
-        duration = row[header.index("Duration")]
-
-
-        obj, created = EnvironmentalImpact.objects.get_or_create(
-            category_de=category,
-            description_de=description,
-            name_digital_application_de=nameDigitalApplication,
-            project_name_de=projectname,
-            partner_de=partner,
-            project_website=projectWebsite,
-            consortium_de=consortium,
-            further_de=further,
-            digitalApplications_de=digitalApplications,
-            goals_de=goals,
-            strategies_de=strategies,
-            relevance_de=relevance,
-            image=image,
-            problem_statement_and_problem_goals_de=problemStatementAndProblemGoals,
-            implementation_in_the_project_de=implementationInTheProject,
-            evaluation_de=evaluation,
-            duration=duration,
+        strategyCategory = row[header.index("Strategiekategorie")]
+        categoryShortDescription = row[header.index(
+            "Kategorie_Kurzbeschreibung_Teaser")]
+        categoryLongDescription = row[header.index("Kategorie_Kurzbeschreibung_Lang")]
+        example1 = row[header.index("Beispiel_1")]
+        example2 = row[header.index("Beispiel_2")]
+        example1Heading = row[header.index("Beispiel_1_Überschrift")]  
+        example2Heading = row[header.index("Beispiel_2_Überschrift")]
+        
+        obj, created = DataSufficiency.objects.get_or_create(
+            strategyCategory=strategyCategory,
+            categoryShortDescription=categoryShortDescription,
+            categoryLongDescription_de=categoryLongDescription,
+            example1=example1,
+            example2=example2,
+            example1Heading=example1Heading,
+            example2Heading=example2Heading,
         )
-        fundingLabelList = self._processListInput(row[header.index("Funding_Label")],
-                                               ";;")
-        fundingLabelObjList = [
-            Subproject.objects.get_or_create(referenceNumber_id=fkzItem)[0]
-            for fkzItem in fundingLabelList
-        ]
-        literatureStr = row[header.index("Weiterführende Literatur")]
+ 
+
+        literatureStr = row[header.index("Literatur")]
         literatureObjsList = self._importLiterature(literatureStr)
         obj.literature.add(*literatureObjsList)
-
-        # for literatureElement in literatureList:
-        #     splittedLiteratureElement = literatureElement.split("((")
-        #     literatureString = splittedLiteratureElement[0]
-        #     literatureIdentifer = splittedLiteratureElement[1].replace(
-        #         "))", "")
-        #     literatureObj, _ = Literature.objects.get_or_create(
-        #         literature=literatureString,
-        #         linkName=literatureIdentifer,
-        #     )
-        #     literatureObjsList.append(literatureObj)
-        obj.funding_label.add(*fundingLabelObjList)
-        # obj.literature.add(*literatureObjsList)
-        
-        if self._englishHeadersPresent(header):
-           self._getOrCreateEnglishTranslation(row, header, data, obj)
-    
+       
+        # if self._englishHeadersPresent(header):
+        #    self._getOrCreateEnglishTranslation(row, header, data, obj)
+        #
     def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
         """
 
@@ -150,4 +109,4 @@ class DataImportApp(DataImport):
             if "__en" in headerItem:
                 return True
         
-        return False
+ 
