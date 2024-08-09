@@ -198,6 +198,19 @@ case $command in
             fi
         fi
         ;;
+    "build_intial")
+        if [ "$2" == "dev" ]; 
+          then
+            npx webpack --mode=development
+            $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml build
+        fi
+        if [ "$2" == "prod" ];
+          then
+            echo "Creating css from scss-files:"
+            npx wepback --mode=production
+            $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml build
+        fi
+        ;;
     "up_initial")
         if [ -z "$2" ]
         then
@@ -211,12 +224,11 @@ case $command in
                     exit 1
                 else
 
-                    echo "Starting development environment..."
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up -d
                     sleep 1
                     cat $3 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down
-                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up
+                    $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up -d
                     exit 1
                 fi
             fi
@@ -226,12 +238,13 @@ case $command in
                     echo "Please provide a filename of a .sql database-dunp inside the postgres/ folder."
                     exit 1
                 else
-                    echo "Startin production environment..."
+                    echo "Starting production environment..."
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up -d
-                    sleep 10
+                    sleep 2
                     cat $3 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml down
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up -d
+                    docker cp $PWD/01_application/webcentral_app/media/. webcentral:/home/$WEBCENTRAL_UNPRIVILEGED_USER/webcentral/media/ 
                     exit 1
                 fi
             fi
