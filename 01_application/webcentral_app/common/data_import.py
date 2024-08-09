@@ -3,6 +3,8 @@ import difflib
 import pandas as pd
 from django.db.models import Model
 
+from user_integration.models import Literature
+
 class DataImport:
     def __init__(self, path_to_data_file):
         """Constructor of the Base-DataImport-class.
@@ -208,6 +210,27 @@ class DataImport:
         year = literatureElement.split("(")[1].split(")")[0]
 
         return identifer + year
+
+    def _importLiterature(self, literatureElements: str):
+        """Import literature elements from csv/excel into `Literature`-
+        model.
+        
+        """
+        literatureList = self._processListInput(literatureElements,
+                                                ";;")
+        literatureObjsList = []
+        for literature in literatureList:
+            if literature.startswith("<sup"):
+                litIdentifier = ""
+            else:
+                litIdentifier = self._buildLiteratureIdentifier(literature)
+            objCreated, created = Literature.objects.get_or_create(
+                literature=literature,
+                linkName=litIdentifier,
+            )
+            literatureObjsList.append(objCreated)
+        
+        return literatureObjsList
 
     def _checkIfOnlyContainsSpaces(self, inputStr):
         """Check if the inputStr only contains whitespaces.

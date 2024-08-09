@@ -27,6 +27,7 @@ from Test.Scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
 from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
 from Test.Scripts.TestUseCases import TestUseCases
 from Test.Scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
+from Test.Scripts.TestDataSufficiency import TestDataSufficiency
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
 
@@ -81,7 +82,8 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
             testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
             testLoader.loadTestsFromTestCase(TestUseCases),
-             testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
+            testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
+            testLoader.loadTestsFromTestCase(TestDataSufficiency), 
             # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
 
