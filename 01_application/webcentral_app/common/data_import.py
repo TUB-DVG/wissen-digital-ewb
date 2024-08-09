@@ -3,6 +3,8 @@ import difflib
 import pandas as pd
 from django.db.models import Model
 
+from user_integration.models import Literature
+
 class DataImport:
     def __init__(self, path_to_data_file):
         """Constructor of the Base-DataImport-class.
@@ -227,7 +229,8 @@ class DataImport:
                 linkName=litIdentifier,
             )
             literatureObjsList.append(objCreated)
- 
+        
+        return literatureObjsList
 
     def _checkIfOnlyContainsSpaces(self, inputStr):
         """Check if the inputStr only contains whitespaces.
