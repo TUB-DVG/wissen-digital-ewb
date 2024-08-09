@@ -207,7 +207,7 @@ case $command in
         if [ "$2" == "prod" ];
           then
             echo "Creating css from scss-files:"
-            npx wepback --mode=production
+            npx webpack --mode=production
             $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml build
         fi
         ;;
