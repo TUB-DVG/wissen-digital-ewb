@@ -27,8 +27,14 @@ from project_listing.models import Subproject
 class DataImportApp(DataImport):
     
     MAPPING_EXCEL_DB_EN = {
-        "name_en": "name_en",
-        "shortDescription_en": "shortDescription_en",
+        # "name_en": "name_en",
+        "shortDescription__en": "shortDescription_en",
+        "userInterfaceNotes__en": "userInterfaceNotes_en",
+        "licenseNotes__en": "licenseNotes_en",
+        "furtherInformation__en": "furtherInformation_en",
+        "provider__en": "provider_en",
+        "yearOfRelease__en": "yearOfRelease_en",
+        "lastUpdate__en": "lastUpdate_en",
         # "resources_en": "resources_en",
         # "applicationArea_en": "applicationArea_en",
         # "provider_en": "provider_en",
@@ -70,27 +76,11 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
 
-
-    def importList(self, header, data) -> None:
-        """Iterate over the list of databases-tuples and call 
-        `getOrCreate()` on each of them.
-
-        header: list
-            list of heaser strings from imported file.
-        data:   list
-            list of database tuples.
-
-        returns:
-            None
-        """
-
-        for row in data:
-            obj, created = self.getOrCreate(row, header)
-
     def getOrCreate(
         self,
         row: list,
         header: list,
+        data: list,
     ) -> tuple:
         """Gets or Creates an object of type Tools from row
 
@@ -302,4 +292,4 @@ class DataImportApp(DataImport):
 
         return obj, created
 
-   
+    

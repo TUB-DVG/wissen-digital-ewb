@@ -28,7 +28,52 @@ class TestToolsDataImport(TestCase):
         imported_tools_obj = Tools.objects.get(name=data[0][header.index("name")])
         
         # check if the english translation was imported:
-        self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name_en")])
+        # self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name__en")])
+        
+        self.assertEqual(imported_tools_obj.shortDescription_en, data[0][header.index("shortDescription__en")])
+        self.assertEqual(imported_tools_obj.userInterfaceNotes_en, data[0][header.index("userInterfaceNotes__en")])
+        self.assertEqual(imported_tools_obj.lastUpdate_en, data[0][header.index("lastUpdate__en")])
+        self.assertEqual(imported_tools_obj.furtherInformation_en, data[0][header.index("furtherInformation__en")])
+        self.assertEqual(imported_tools_obj.provider_en, data[0][header.index("provider__en")])
+        self.assertEqual(str(imported_tools_obj.yearOfRelease_en), str(data[0][header.index("yearOfRelease__en")]))
+
+        manyToManyAttrList = [
+            "classification",
+            "applicationArea",
+            "focus",
+            "targetGroup",
+            "usage",
+            "userInterface",
+            "accessibility",
+            "scale",
+        ]
+
+        for manyToManyAttr in manyToManyAttrList:
+            self._checkManyToManyRel(data, header, manyToManyAttr)
+
+    def _checkManyToManyRel(self, data, header, attributeName):
+        """Holds the checking logic fo ManyToManyRelation translation checking.
+
+        """
+        listOfClassificationObj = getattr(imported_tools_obj, attributeName).all()
+        processedClassificationListEn = data_import_app._correctReadInValue(
+            data[0][header.index(f"{attributeName}__en")])
+        processedClassificationList = data_import_app._correctReadInValue(
+            data[0][header.index(attributeName)])
+        self._searchinManyToManyRelation(listOfClassificationObj, processedClassificationList, processedClassificationListEn, attributeName)  
+
+
+
+    def _searchinManyToManyRelation(self, manyToManyElements, listOfExpectedElements, listOfExpectedTranslations, attributeNameStr):
+        """Compare if all expected values are matches with all present elements in a ManyToMany-relation
+
+        """
+        for expectedIndex, expectedGermanElement in enumerate(listOfExpectedElements):
+            for manyToManyElement in manyToManyElements:
+                breakpoint()
+
+                if expectedGermanElement in getattr(manyToManyElement, f"{attributeNameStr}_de"):
+                    self.assertTrue(listOfExpectedTranslations[expectedIndex] in getattr(manyToManyElement, f"{attributeNameStr}_en"))
 
 
 
