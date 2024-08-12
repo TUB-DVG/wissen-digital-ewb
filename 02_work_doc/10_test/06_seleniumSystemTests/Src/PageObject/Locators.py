@@ -175,7 +175,7 @@ class Locator(object):
     selectSorting = "//select[@id='sorting']"
     compareContainer = "//div[@id='compareBox']"
     selectOverview = "//select[@id='select-overview']"
-    componentListingContainer = "//div[@id='componentListingContainer']"
+    componentListingContainer = "//div[@id='listing-results']"
     componentListElementContainer = "//div[contains(@class, 'ListElement')]"
     paginationContainer = "paginationContainer"
     searchSubmit = "//button[@id='search-submit-']"
