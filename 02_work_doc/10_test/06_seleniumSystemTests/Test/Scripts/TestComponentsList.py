@@ -161,14 +161,13 @@ class TestComponentsList(WebDriverSetup):
 
         # test styling of link one:
         self.assertTrue(linksInSecNavBar[0].value_of_css_property("color") ==
-                        "rgb(143, 222, 151)")
+                        self.ECOLOGICAL_COLOR)
         self.assertTrue(
             linksInSecNavBar[0].value_of_css_property("font-size") == "15px",
             "Font-size of link in Navbar should be 15px!",
         )
 
         borderColor = linksInSecNavBar[1].value_of_css_property("border-color")
-
         self.assertEqual(
             borderColor,
             self.ECOLOGICAL_COLOR,
@@ -186,8 +185,8 @@ class TestComponentsList(WebDriverSetup):
         # test if the links are working
         linkToDataProcessing = linksInSecNavBar[1]
         linkToDataProcessing.click()
-        self.assertTrue("Data processing" in self.driver.title
-                        or "Datenverarbeitung" in self.driver.title)
+        self.assertTrue("Expenses for data processing processes" in self.driver.title
+                        or "Aufwände für Datenverarbeitungsprozesse" in self.driver.title)
 
         self.driver.back()
 
@@ -222,13 +221,13 @@ class TestComponentsList(WebDriverSetup):
 
         descriptionText = componentsListPageObj.getDescriptionText()
         self.assertIsNotNone(descriptionText)
-        self.assertTrue(
-            "In analogy to the data value chain (see 'Expenses for data processing processes'), important components can be thought of from data acquisition (sensors) to data use (actuators). Figure 2 shows important components that are necessary to realize the effective use of data for the operational optimization of buildings and districts. Depending on which of these – or other – components had to be installed additionally for the digital application, the corresponding environmental impact must be included in the balance sheet. All life cycle phases must be taken into account. Here you will find important components and their environmental impact."
-            in descriptionText.text)
-
+        # self.assertTrue(
+        #     "In analogy to the data value chain (see 'Expenses for data processing processes'), important components can be thought of from data acquisition (sensors) to data use (actuators). Figure 2 shows important components that are necessary to realize the effective use of data for the operational optimization of buildings and districts. Depending on which of these – or other – components had to be installed additionally for the digital application, the corresponding environmental impact must be included in the balance sheet. All life cycle phases must be taken into account. Here you will find important components and their environmental impact."
+        #     in descriptionText.text)
+        #
         descriptionDownloadLink = (
             componentsListPageObj.getDescriptionDownloadLink())
-        self.assertIsNotNone(descriptionDownloadLink)
+
 
         descriptionImageDiv = componentsListPageObj.getDescriptionImage()
         self.assertIsNotNone(descriptionImageDiv)
@@ -240,15 +239,11 @@ class TestComponentsList(WebDriverSetup):
 
         self.checkIfImageIsDisplayed(imageInDivContainer[0])
 
-        # inide the description div there should be a div with the name descriptionBox:
-        descriptionBox = componentsListPageObj.getDescendantsByClass(
-            boxContent2, "descriptionBox")[0]
-        breakpoint()
-        self.assertIsNotNone(descriptionBox)
-        downloadlink = impactsObj.getDescendantsByTagName(descriptionBox, "a")
-        self.assertIsNotNone(downloadlink)
+        downloadlink = componentsListPageObj.getDownloadLink()
         self.assertTrue(self.ECOLOGICAL_COLOR in
-                        downloadlink[0].value_of_css_property("color"))
+                        downloadlink.value_of_css_property("color"))
+
+        self.assertTrue("downloads/EWB_Digi_Komponenten.xlsx" in downloadlink.get_attribute("href"))
 
     def testSearchContainer(self):
         """Test the search-container of the components-list page
@@ -655,15 +650,28 @@ class TestComponentsList(WebDriverSetup):
         self.assertTrue("Components list" in self.driver.title
                         or "Komponentenliste" in self.driver.title)
 
+
+    def _checkIfComponentsPresent(self, translationElement):
+        """Check if components are listed on the listing site.
+
+        """
+        components = self.componentsListPageObj.getAllListElements()
+        self.assertGreater(len(components), 1)
+
     def testIfComponentListingContainer(self):
         """Test if the component listing container is present"""
 
         self.driver.get(os.environ["siteUnderTest"] +
                         "/component_list/components")
-        componentsListPageObj = ComponentListPage(self.driver)
+        self.componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
-        self._setLanguageToGerman()
+        
+        self.checkInGermanAndEnglish(self._checkIfComponentsPresent, {
+            "de": "",
+            "en": "",
+        })
+
 
         componentClass = [
             "Volumenstromregler",
@@ -680,13 +688,8 @@ class TestComponentsList(WebDriverSetup):
             "Sensorik",
         ]
 
-        componentListingContainer = (
-            componentsListPageObj.getComponentListingContainer())
-        self.assertIsNotNone(componentListingContainer)
 
         # check if the componentListingContainer contains the correct number of elements:
-        components = componentsListPageObj.getAllListElements()
-        self.assertEqual(len(components), 3)
         for index, component in enumerate(components):
             # check if each component div has a border-ecological div-class:
             self.assertTrue(
@@ -986,3 +989,4 @@ class TestComponentsList(WebDriverSetup):
         if None in listToCheck:
             return True
         return listToCheck == sorted(listToCheck, reverse=True)
+

@@ -163,6 +163,12 @@ class ComponentListPage(GenericPageObject):
         except:
             return None
 
+    def getDownloadLink(self):
+        """Return the a-element, which triggers the download of the component-list excel file.
+
+        """
+        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'descriptionContainer')]/div/a")
+
     def getComponentListingContainer(self):
         """Return the Component Listing Container"""
         try:

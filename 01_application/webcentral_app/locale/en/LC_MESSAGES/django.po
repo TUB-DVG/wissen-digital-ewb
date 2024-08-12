@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-07 17:30+0000\n"
+"POT-Creation-Date: 2024-08-12 16:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -469,7 +469,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:264 pages/views.py:348
+#: StartSearch/views.py:264 pages/views.py:347
 #: templates/StartSearch/StartSearch.html:406
 #: templates/partials/_navbar.html:204
 msgid "Kriterienkatalog"
@@ -766,18 +766,7 @@ msgid "Ausgeklappt"
 msgstr "Expanded"
 
 #: component_list/views.py:124
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "In Analogie zur Daten-Wertschöpfungskette (siehe “Aufwände für "
-#| "Datenverarbeitungsprozesse”) können wichtige Komponenten von der "
-#| "Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht "
-#| "werden. Abbildung 2 zeigt wichtige Komponenten, die zur Realisierung "
-#| "einer effektiven Nutzung von Daten für die Betriebsoptimierung von "
-#| "Gebäuden und Quartieren notwendig sind. Je nachdem welche dieser – oder "
-#| "weitere – Komponenten zusätzlich für die digitale Anwendung verbaut "
-#| "werden mussten, müssen die entsprechenden Umweltlasten mit in die Bilanz "
-#| "einfließen. Dabei sind alle Lebenszyklusphasen mit zu betrachten. Hier "
-#| "finden Sie wichtige Komponenten und deren Umweltlasten."
+#, python-brace-format
 msgid ""
 "Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette "
 "(siehe auch {renderedTemplateObj}) ist immer mit einem materiellen Einsatz "
@@ -796,15 +785,21 @@ msgid ""
 "der Methode der Ökobilanz erfasst.\n"
 "        "
 msgstr ""
-"In analogy to the data value chain (see 'Expenses for data processing "
-"processes'), important components can be thought of from data acquisition "
-"(sensors) to data use (actuators). Figure 2 shows important components that "
-"are necessary to realize the effective use of data for the operational "
-"optimization of buildings and districts. Depending on which of these – or "
-"other – components had to be installed additionally for the digital "
-"application, the corresponding environmental impact must be included in the "
-"balance sheet. All life cycle phases must be taken into account. Here you "
-"will find important components and their environmental impact."
+"The execution of process steps along the data value chain (see also "
+"{renderedTemplateObj}) is always associated with a material input for the "
+"components. In analogy to the process steps of the data value chain, key "
+"components can be considered from data collection (sensors) to data usage "
+"(actuators). Figure 2 shows components that are frequently used to implement "
+"digital applications in buildings and districts (here focusing on "
+"operational optimization). Depending on which of these – or additional – "
+"components had to be installed for the digital application, the "
+"corresponding environmental impacts must be considered. The environmental "
+"impacts include the emissions that occur during the manufacturing process, "
+"from raw material extraction to the production of the component, through "
+"emissions caused by the consumption of resources and energy during the "
+"component's usage, to the disposal and recycling of materials. These impacts "
+"were recorded using the life cycle assessment method.\n"
+"        "
 
 #: component_list/views.py:175 component_list/views.py:257
 msgid "Lebensdauer (in Jahren)"
@@ -998,7 +993,7 @@ msgid ""
 "vorgenommen."
 msgstr ""
 
-#: pages/views.py:236 pages/views.py:262
+#: pages/views.py:236 pages/views.py:261
 #: templates/StartSearch/StartSearch.html:320
 #: templates/partials/_navbar.html:165
 msgid "Positive Umweltwirkungen"
@@ -1007,30 +1002,76 @@ msgstr "Positive environmental impacts"
 #: pages/views.py:240
 #, fuzzy
 #| msgid ""
-#| "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
-#| "erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
-#| "Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung "
-#| "als Produkt oder Service einer möglichst breiten Anwenderschaft zur "
-#| "Verfügung gestellt werden kann. Eine Reihe von Tools kann die "
-#| "Geschäftsmodellentwicklung unterstützen. Einige von diesen werden hier "
-#| "vorgestellt."
+#| "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
+#| "Gebäuden\n"
+#| "          und Quartieren steht im derzeitigen Fokus der Forschung. "
+#| "Gleichzeitig\n"
+#| "          stellt dieses Ziel nur eine der möglichen positiven "
+#| "Umweltwirkungen\n"
+#| "          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch "
+#| "in\n"
+#| "          Projekten der Forschungsinitiative Energiewendebauen kommen "
+#| "eine\n"
+#| "          Vielzahl digitaler Anwendungen zum Einsatz oder werden "
+#| "entwickelt, mit\n"
+#| "          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
+#| "die\n"
+#| "          Effekte oftmals schwer auf andere Gebäude/Quartiere zu "
+#| "übertragen\n"
+#| "          sind, gibt es doch immer Forschungsprojekte, an denen die "
+#| "Potenziale\n"
+#| "          bestimmter digitaler Anwendungen gut verdeutlicht werden "
+#| "können. Diese\n"
+#| "          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
+#| "eingesetzte\n"
+#| "          digitale Anwendung beschrieben und die gefundenen positiven\n"
+#| "          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
+#| "Aufzeigen\n"
+#| "          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
+#| "          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz "
+#| "soll\n"
+#| "          Interessierte animieren, sich eingehender mit den "
+#| "Möglichkeiten\n"
+#| "          digitaler Anwendungen zu beschäftigen, um so für eigene "
+#| "Vorhaben\n"
+#| "          fundierte Entscheidungen treffen zu können."
 msgid ""
-"Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
-"erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
-"Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung als "
-"Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung "
-"gestellt werden kann. Eine Reihe von Tools kann die "
-"Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier "
-"vorgestellt."
+"Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
+"Gebäuden und Quartieren steht im derzeitigen Fokus der Forschung. "
+"Gleichzeitig stellt dieses Ziel nur eine der möglichen positiven "
+"Umweltwirkungen dar, die mittels digitaler Anwendungen ermöglicht werden. "
+"Auch in Projekten der Forschungsinitiative Energiewendebauen kommen eine "
+"Vielzahl digitaler Anwendungen zum Einsatz oder werden entwickelt, mit denen "
+"sich positive Umweltwirkungen erzielen lassen. Auch wenn die Effekte oftmals "
+"schwer auf andere Gebäude/Quartiere zu übertragen sind, gibt es doch immer "
+"Forschungsprojekte an denen die Potenziale bestimmter digitaler Anwendungen "
+"gut verdeutlicht werden können. Diese sollen im Folgenden kurz vorgestellt "
+"werden. Dazu wird die eingesetzte digitale Anwendung beschrieben und die "
+"gefundenen positiven Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist "
+"das Aufzeigen von derzeitigen Möglichkeiten digitaler Anwendungen, positive "
+"Umweltwirkungen zu erzielen. Der dadurch geschaffene Anreiz soll "
+"Interessierte animieren, sich eingehender mit den Möglichkeiten digitaler "
+"Anwendungen zu beschäftigen, um so für eigene Vorhaben fundierte "
+"Entscheidungen treffen zu können."
 msgstr ""
-"In addition to the scientific development of digital applications, proven "
-"technologies also need to be implemented economically. For this purpose, "
-"business models are necessary so that the potential of the digital "
-"application can be made available to as wide a user base as possible as a "
-"product or service. A number of tools can support business model "
-"development. Some of these are presented here."
+"Reducing the energy requirements and CO<sub>2</sub> emissions of buildings "
+"and neighborhoods is the current focus of research. At the same time, this "
+"goal represents just one of the possible positive environmental impacts that "
+"are made possible by digital applications. A variety of digital applications "
+"are also being used or developed in projects of the Energy Transition "
+"Building research initiative that can achieve positive environmental "
+"impacts. Even if the effects are often difficult to transfer to other "
+"buildings/districts, there are always research projects that can clearly "
+"demonstrate the potential of certain digital applications. These will be "
+"briefly presented below. The digital application used is described and the "
+"positive environmental effects found are discussed. The aim of this overview "
+"is to show the current possibilities of digital applications to achieve "
+"positive environmental impacts. The incentive created by this is intended to "
+"encourage those interested to take a closer look at the possibilities of "
+"digital applications in order to be able to make well-founded decisions for "
+"their own projects."
 
-#: pages/views.py:280
+#: pages/views.py:279
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1083,7 +1124,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: pages/views.py:297 pages/views.py:323
+#: pages/views.py:296 pages/views.py:322
 #: templates/StartSearch/StartSearch.html:343
 #: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:171
 msgid "Datensuffizienz"
@@ -1676,9 +1717,9 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/explanation.html:158
 #: templates/TechnicalStandards/norm-explanation.html:33
 #: templates/TechnicalStandards/protocol-explanation.html:81
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:35
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:56
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:79
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:36
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:57
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:80
 #: templates/datasets_over/explanation.html:69
 #: templates/pages/environmentalIntegrityRightColumn.html:43
 #: templates/pages/environmentalIntegrityRightColumn.html:62
@@ -1698,9 +1739,9 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/norm-explanation.html:34
 #: templates/TechnicalStandards/protocol-explanation.html:82
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:36
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:57
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:80
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:37
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:58
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:81
 #: templates/datasets_over/explanation.html:70
 #: templates/pages/environmentalIntegrityRightColumn.html:44
 #: templates/pages/environmentalIntegrityRightColumn.html:63
@@ -2185,7 +2226,7 @@ msgid ""
 "doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
 msgstr ""
 
-#: templates/component_list/components.html:136
+#: templates/component_list/components.html:122
 msgid ""
 "\n"
 "                    Für häufig verwendete Komponenten, die für die "
@@ -2199,11 +2240,21 @@ msgid ""
 "bereit:                    \n"
 "                    "
 msgstr ""
+"\n"
+"                    For frequently used components necessary for the "
+"implementation of digital applications, exemplary products and their "
+"emissions were researched or modeled using life cycle analysis software. The "
+"following overview lists these components, the resulting emissions, as well "
+"as additional information about the components. Additionally, the contents "
+"of the table are available as an Excel file, including a small calculation "
+"tool for the total greenhouse gas emissions caused by all components of a "
+"digital application, for download:                    \n"
+"                    "
 
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:42
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:65
-msgid "Good Practice Beispiel"
-msgstr "Good practice example"
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:89
+#: templates/user_integration/userEngagementDetailsRightColumn.html:46
+msgid "Literatur"
+msgstr "Literature"
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -3109,34 +3160,34 @@ msgstr "Partners"
 msgid "Projektwebseite"
 msgstr "Project website"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:30
+#: templates/pages/environmentalIntegrityLeftColumn.html:31
 msgid "Konsortium"
 msgstr "Consortium"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:33
+#: templates/pages/environmentalIntegrityLeftColumn.html:36
 #, fuzzy
 #| msgid "Seite"
 msgid "Weitere"
 msgstr "Site"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:36
+#: templates/pages/environmentalIntegrityLeftColumn.html:40
 #, fuzzy
 #| msgid "Digitale Anwendungen"
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:39
+#: templates/pages/environmentalIntegrityLeftColumn.html:43
 #: templates/user_integration/userEngagementDetailsRightColumn.html:32
 #, fuzzy
 #| msgid "Zielgruppe"
 msgid "Ziele"
 msgstr "Target group"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:42
+#: templates/pages/environmentalIntegrityLeftColumn.html:46
 msgid "Strategien"
 msgstr "Strategies"
 
-#: templates/pages/environmentalIntegrityLeftColumn.html:45
+#: templates/pages/environmentalIntegrityLeftColumn.html:49
 msgid "Relevanz"
 msgstr "Relevance"
 
@@ -4640,10 +4691,6 @@ msgstr ""
 msgid "Ablauf"
 msgstr ""
 
-#: templates/user_integration/userEngagementDetailsRightColumn.html:46
-msgid "Literatur"
-msgstr ""
-
 #: templates/user_integration/userEngagementDetailsRightColumn.html:58
 #, fuzzy
 #| msgid "Konkrete Anwendungsfälle"
@@ -4918,6 +4965,34 @@ msgstr "MIT license"
 msgid "Hallo"
 msgstr ""
 
+#, fuzzy
+#~| msgid ""
+#~| "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
+#~| "erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
+#~| "Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung "
+#~| "als Produkt oder Service einer möglichst breiten Anwenderschaft zur "
+#~| "Verfügung gestellt werden kann. Eine Reihe von Tools kann die "
+#~| "Geschäftsmodellentwicklung unterstützen. Einige von diesen werden hier "
+#~| "vorgestellt."
+#~ msgid ""
+#~ "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen, müssen "
+#~ "erprobte Technologien auch ökonomisch umgesetzt werden. Hierzu sind "
+#~ "Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung "
+#~ "als Produkt oder Service einer möglichst breiten Anwenderschaft zur "
+#~ "Verfügung gestellt werden kann. Eine Reihe von Tools kann die "
+#~ "Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier "
+#~ "vorgestellt."
+#~ msgstr ""
+#~ "In addition to the scientific development of digital applications, proven "
+#~ "technologies also need to be implemented economically. For this purpose, "
+#~ "business models are necessary so that the potential of the digital "
+#~ "application can be made available to as wide a user base as possible as a "
+#~ "product or service. A number of tools can support business model "
+#~ "development. Some of these are presented here."
+
+#~ msgid "Good Practice Beispiel"
+#~ msgstr "Good practice example"
+
 #~ msgid "Komponentenliste"
 #~ msgstr "Component list"
 
@@ -5129,59 +5204,6 @@ msgstr ""
 #~ "and services used, there are negative environmental impacts from the "
 #~ "extraction of raw materials, to the energy consumption in operation, to "
 #~ "the disposal of the technology."
-
-#~ msgid ""
-#~ "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
-#~ "Gebäuden\n"
-#~ "          und Quartieren steht im derzeitigen Fokus der Forschung. "
-#~ "Gleichzeitig\n"
-#~ "          stellt dieses Ziel nur eine der möglichen positiven "
-#~ "Umweltwirkungen\n"
-#~ "          dar, die mittels digitaler Anwendungen ermöglicht werden. Auch "
-#~ "in\n"
-#~ "          Projekten der Forschungsinitiative Energiewendebauen kommen "
-#~ "eine\n"
-#~ "          Vielzahl digitaler Anwendungen zum Einsatz oder werden "
-#~ "entwickelt, mit\n"
-#~ "          denen sich positive Umweltwirkungen erzielen lassen. Auch wenn "
-#~ "die\n"
-#~ "          Effekte oftmals schwer auf andere Gebäude/Quartiere zu "
-#~ "übertragen\n"
-#~ "          sind, gibt es doch immer Forschungsprojekte, an denen die "
-#~ "Potenziale\n"
-#~ "          bestimmter digitaler Anwendungen gut verdeutlicht werden "
-#~ "können. Diese\n"
-#~ "          sollen im Folgenden kurz vorgestellt werden. Dazu wird die "
-#~ "eingesetzte\n"
-#~ "          digitale Anwendung beschrieben und die gefundenen positiven\n"
-#~ "          Umweltwirkungen erörtert. Das Ziel dieser Übersicht ist das "
-#~ "Aufzeigen\n"
-#~ "          von derzeitigen Möglichkeiten digitaler Anwendungen, positive\n"
-#~ "          Umweltwirkungen zu erzielen. Der dadurch geschaffenen Anreiz "
-#~ "soll\n"
-#~ "          Interessierte animieren, sich eingehender mit den "
-#~ "Möglichkeiten\n"
-#~ "          digitaler Anwendungen zu beschäftigen, um so für eigene "
-#~ "Vorhaben\n"
-#~ "          fundierte Entscheidungen treffen zu können."
-#~ msgstr ""
-#~ "Reducing the energy requirements and CO<sub>2</sub> emissions of "
-#~ "buildings and neighborhoods is the current focus of research. At the same "
-#~ "time, this goal represents just one of the possible positive "
-#~ "environmental impacts that are made possible by digital applications. A "
-#~ "variety of digital applications are also being used or developed in "
-#~ "projects of the Energy Transition Building research initiative that can "
-#~ "achieve positive environmental impacts. Even if the effects are often "
-#~ "difficult to transfer to other buildings/districts, there are always "
-#~ "research projects that can clearly demonstrate the potential of certain "
-#~ "digital applications. These will be briefly presented below. The digital "
-#~ "application used is described and the positive environmental effects "
-#~ "found are discussed. The aim of this overview is to show the current "
-#~ "possibilities of digital applications to achieve positive environmental "
-#~ "impacts. The incentive created by this is intended to encourage those "
-#~ "interested to take a closer look at the possibilities of digital "
-#~ "applications in order to be able to make well-founded decisions for their "
-#~ "own projects."
 
 #~ msgid ""
 #~ "Folgend sollen die Umweltlasten für häufig verwendete Komponenten\n"
