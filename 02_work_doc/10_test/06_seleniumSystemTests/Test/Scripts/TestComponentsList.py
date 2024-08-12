@@ -278,9 +278,13 @@ class TestComponentsList(WebDriverSetup):
             componentsListPageObj.getSelectFieldsInSearchContainer())
         self.assertEqual(
             len(selectionFields),
-            4,
+            3,
             "There are not 4 selection-fields present",
         )
+        
+        divDropwdownElements = componentsListPageObj.getOptionsForSelect(selectionFields[0])
+        
+        categoryOptionsSet = [divDropdown.text for divDropdown in divDropwdownElements]
 
         # check if the selection-fields contain the correct data
         categorySet = set([
@@ -289,14 +293,13 @@ class TestComponentsList(WebDriverSetup):
             "Infrastruktur",
             "Sensorik",
         ])
+        # check if the placeholders are correct for german:  
+        inputOfMultiSelects = componentsListPageObj.getInputOfMultiSelects()
+        self.assertEqual(len(inputOfMultiSelects), 3)
 
-        # check if the placeholders are correct for german:
-        self.assertEqual(selectionFields[0].options[0].text, "Kategorie")
-        self.assertEqual(selectionFields[1].options[0].text, "Komponente")
-
-        categoryOptionsSet = set([
-            optionElement.text for optionElement in selectionFields[0].options
-        ])
+        self.assertEqual(inputOfMultiSelects[0].get_attribute("placeholder"), "Kategorie")
+        self.assertEqual(inputOfMultiSelects[1].get_attribute("placeholder"), "Komponente")
+        self.assertEqual(inputOfMultiSelects[2].get_attribute("placeholder"), "Sortierung")
 
         self.assertTrue(categorySet.issubset(categoryOptionsSet))
 
@@ -310,6 +313,9 @@ class TestComponentsList(WebDriverSetup):
         componentClassSelectionField = set([
             optionElement.text for optionElement in selectionFields[1].options
         ])
+        divDropwdownElements = componentsListPageObj.getOptionsForSelect(selectionFields[1])
+        componentClassSelectionField = [divDropdown.text for divDropdown in divDropwdownElements]
+
         self.assertTrue(componentsSet.issubset(componentClassSelectionField))
 
         # check if the selection fields "sorting" and "overview" are present
