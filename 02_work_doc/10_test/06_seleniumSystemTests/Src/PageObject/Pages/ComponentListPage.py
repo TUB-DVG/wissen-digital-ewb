@@ -113,30 +113,35 @@ class ComponentListPage(GenericPageObject):
 
     def getSelectFieldsInSearchContainer(self):
         """Returns the div-element, which wraps the content of the page"""
-        try:
-            return [
-                Select(
-                    self.driver.find_element(
-                        By.XPATH,
-                        Locator.selectCategory,
-                    )),
-                Select(
-                    self.driver.find_element(
-                        By.XPATH,
-                        Locator.selectComponent,
-                    )),
+        return [
                 self.driver.find_element(
                     By.XPATH,
-                    Locator.selectSorting,
+                    Locator.selectCategory,
                 ),
-                Select(
-                    self.driver.find_element(
-                        By.XPATH,
-                        Locator.selectOverview,
-                    )),
-            ]
-        except:
-            return None
+                self.driver.find_element(
+                    By.XPATH,
+                    Locator.selectComponent,
+                ),
+            self.driver.find_element(
+                By.XPATH,
+                Locator.selectSorting,
+            ),
+        ]
+
+    def getInputOfMultiSelects(self):
+        """Return all input fields, which are part of a use-select-bootstrap select.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'input-wrapper')]/input")
+
+    def getOptionsForSelect(self, selectElement):
+        """Return the options as a list of divs of the element `selectElement`
+
+        """
+        divSiblingOfSelect = selectElement.find_element(By.XPATH, "following-sibling::div")
+        
+        return self.getDescendantsByClass(divSiblingOfSelect, "dropdown-item")
+
 
     def getCompareContainer(self):
         """Returns the div-element, which wraps the content of the page"""
