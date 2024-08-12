@@ -26,25 +26,33 @@ from project_listing.models import Subproject
 
 class DataImportApp(DataImport):
     
+    DJANGO_MODEL = "Tools"
+    DJANGO_APP = "tools_over"
     MAPPING_EXCEL_DB_EN = {
-        "name_en": "name_en",
-        "shortDescription_en": "shortDescription_en",
-        # "resources_en": "resources_en",
-        # "applicationArea_en": "applicationArea_en",
-        # "provider_en": "provider_en",
-        # "usage_en": "usage_en",
-        # "lifeCyclePhase_en": "lifeCyclePhase_en",
-        # "targetGroup_en": "targetGroup_en",
-        # "userInterface_en": "userInterface_en",
+        # "name_en": "name_en",
+        "shortDescription__en": "shortDescription_en",
+        "userInterfaceNotes__en": "userInterfaceNotes_en",
+        "licenseNotes__en": "licenseNotes_en",
+        "furtherInformation__en": "furtherInformation_en",
+        "provider__en": "provider_en",
+        "yearOfRelease__en": "yearOfRelease_en",
+        "lastUpdate__en": "lastUpdate_en",
+        "classification__en": "classification_en", 
+        "resources__en": "resources_en",
+        "applicationArea__en": "applicationArea_en",
+        "provider__en": "provider_en",
+        "usage__en": "usage_en",
+        "lifeCyclePhase__en": "lifeCyclePhase_en",
+        "targetGroup__en": "targetGroup_en",
+        "userInterface__en": "userInterface_en",
+        "focus__en": "focus_en",
         # "userInterfaceNotes_en": "userInterfaceNotes_en",
-        # "programmingLanguages_en": "programmingLanguages_en",
-        # "frameworksLibraries_en": "frameworksLibraries_en",
         # "databaseSystem_en": "databaseSystem_en",
         # "classification_en": "classification_en",
         # "focus_en": "focus_en",
-        # "scale_en": "scale_en",
+        "scale__en": "scale_en",
         # "lastUpdate_en": "lastUpdate_en",
-        # "accessibility_en": "accessibility_en",
+        "accessibility_en": "accessibility_en",
         # "license_en": "license_en",
         # "licenseNotes_en": "licenseNotes_en",
         # "furtherInformation_en": "furtherInformation_en",
@@ -70,27 +78,11 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
 
-
-    def importList(self, header, data) -> None:
-        """Iterate over the list of databases-tuples and call 
-        `getOrCreate()` on each of them.
-
-        header: list
-            list of heaser strings from imported file.
-        data:   list
-            list of database tuples.
-
-        returns:
-            None
-        """
-
-        for row in data:
-            obj, created = self.getOrCreate(row, header)
-
     def getOrCreate(
         self,
         row: list,
         header: list,
+        data: list,
     ) -> tuple:
         """Gets or Creates an object of type Tools from row
 
@@ -228,7 +220,6 @@ class DataImportApp(DataImport):
         frameworksLibraries = row[header.index("frameworksLibraries")]
         databaseSystem = row[header.index("databaseSystem")]
         resources = row[header.index("resources")]
-        # breakpoint()
         focusElements = Focus.objects.filter(focus__in=focusList)
         classificationElements = Classification.objects.filter(
             classification__in=classificationList)
@@ -296,10 +287,11 @@ class DataImportApp(DataImport):
             obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
             obj.technicalStandardsProtocols.add(
                 *technicalStandardsProtocolsElements)
-            for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
-                setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
+            # for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
+            #     setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
+            obj = self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN) 
             obj.save()
 
         return obj, created
 
-   
+    
