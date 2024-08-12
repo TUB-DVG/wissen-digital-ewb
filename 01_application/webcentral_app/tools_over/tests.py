@@ -16,17 +16,35 @@ class TestToolsDataImport(TestCase):
     """
 
     """
-    
+    def testNewToolsExcelWithTranslation(self):
+        """import the new tools excel file from May 2024, which also has a sheet "English" with the english translations.
+        Check if the german and the english version is imported.
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../../02_work_doc/01_daten/02_toolUebersicht/2024_05_EWB_newToolsImportWithTranslation.xlsx",
+            ".",
+        )
+
+        # check if nPro is part of the tools:
+        nProTool = Tools.objects.get(name="nPro")
+
+        # check focus and classification:
+        # focusesForNPro = nProTool.classification.all()
+        
+
+
     def test_import_of_english_translation(self):
         #create test-data
         file_obj_excel = mock_excel_file() 
-        data_import_app = DataImportApp(file_obj_excel.name)
-
-        header, data = data_import_app.load()
-        data_import_app.importList(header, data)
+        self.dataImportApp = DataImportApp(file_obj_excel.name)
+    
+        header, data = self.dataImportApp.load()
+        self.dataImportApp.importList(header, data)
         
         imported_tools_obj = Tools.objects.get(name=data[0][header.index("name")])
-        
         # check if the english translation was imported:
         # self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name__en")])
         
@@ -45,20 +63,21 @@ class TestToolsDataImport(TestCase):
             "usage",
             "userInterface",
             "accessibility",
-            "scale",
+            "scale", 
         ]
 
         for manyToManyAttr in manyToManyAttrList:
-            self._checkManyToManyRel(data, header, manyToManyAttr)
+            self._checkManyToManyRel(imported_tools_obj, data, header, manyToManyAttr)
 
-    def _checkManyToManyRel(self, data, header, attributeName):
+    def _checkManyToManyRel(self, importedToolsObj, data, header, attributeName):
         """Holds the checking logic fo ManyToManyRelation translation checking.
 
         """
-        listOfClassificationObj = getattr(imported_tools_obj, attributeName).all()
-        processedClassificationListEn = data_import_app._correctReadInValue(
+        
+        listOfClassificationObj = getattr(importedToolsObj, attributeName).all()
+        processedClassificationListEn = self.dataImportApp._correctReadInValue(
             data[0][header.index(f"{attributeName}__en")])
-        processedClassificationList = data_import_app._correctReadInValue(
+        processedClassificationList = self.dataImportApp._correctReadInValue(
             data[0][header.index(attributeName)])
         self._searchinManyToManyRelation(listOfClassificationObj, processedClassificationList, processedClassificationListEn, attributeName)  
 
@@ -70,12 +89,12 @@ class TestToolsDataImport(TestCase):
         """
         for expectedIndex, expectedGermanElement in enumerate(listOfExpectedElements):
             for manyToManyElement in manyToManyElements:
-                breakpoint()
 
                 if expectedGermanElement in getattr(manyToManyElement, f"{attributeNameStr}_de"):
-                    self.assertTrue(listOfExpectedTranslations[expectedIndex] in getattr(manyToManyElement, f"{attributeNameStr}_en"))
-
-
+                    self.assertEqual(listOfExpectedTranslations[expectedIndex], getattr(manyToManyElement, f"{attributeNameStr}_en"), f"English translation for {attributeNameStr} is not {listOfExpectedTranslations[expectedIndex]}")
+                    # except:
+                    #     breakpoint()
+                    #
 
 class TestTools(TestCase):
     
