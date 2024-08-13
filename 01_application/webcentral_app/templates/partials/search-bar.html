@@ -489,11 +489,18 @@ $('#searchBox').on('submit', submitAjaxRequest);
                 radioButtonCLicked = true;
                 
                 $("[id*='collapseComponent'].collapse").attr("class", "show");
+                $("a.collapsed").each(function() {
+                  $(this).text($(this).attr("data-expanded-text"));
+                }); 
             }
             else {
                 radioButtonCLicked = false;
                 this.checked = false;
                 $("[id*='collapseComponent'].show").attr("class", "collapse");
+
+                $("a.collapsed").each(function() {
+                  $(this).text($(this).attr("data-collapsed-text"));
+                });
             }
         }
     });

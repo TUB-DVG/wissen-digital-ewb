@@ -35,4 +35,35 @@ class Component(models.Model):
     def __str__(self):
         return self.component.componentClass
 
+    @property
+    def energyConsumptionUsePhaseTotalRounded(self):
+        """Processes the FloatField and rounds 
 
+        """
+        stringOfFloat = str(self.energyConsumptionUsePhaseTotal)
+
+
+
+    def _findLastDecimalPlaces(self, elementStr):
+        """Find the 2 last decimal places to the furthet right. Return the decimal position
+        of the most right deimal position.
+        E.g. 
+        1,00020 -> 4 
+        1,00021 -> 5
+        0,21 -> 2
+ 
+
+        """
+        if "." in elementStr:
+            splitted = elementStr.split(".")
+        elif "," in elementStr:
+            splitted = elementStr.split(",")
+        else:
+            return 0
+        
+        decimalPlaces = splitted[1]
+        countedNonZeros = 0
+        for position, place in enumerate(decimalPlaces):
+            if place in "123456789":
+                return position+2
+            
