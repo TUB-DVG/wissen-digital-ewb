@@ -252,14 +252,16 @@ class DataImport:
         """
         modelObj = apps.get_model(self.DJANGO_APP, self.DJANGO_MODEL)
         modelAttrs = [field.name for field in modelObj._meta.get_fields()]
+        breakpoint()
         for mappingKey in mapping.keys():
             englishModelAttr = mapping[mappingKey]
             attrName = englishModelAttr.replace("_en", "")
             modelAttr = modelObj._meta.get_field(attrName)
+            headerAttrName = mappingKey.replace("__en", "")
             if isinstance(modelAttr, models.ManyToManyField):
-                obj = self._importEnglishManyToManyRel(obj, header, row, attrName)
+                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName)
             else:
-                obj = self._importEnglishAttr(obj, header, row, attrName)
+                obj = self._importEnglishAttr(obj, header, row, headerAttrName)
 
         return obj
     
@@ -273,6 +275,7 @@ class DataImport:
             row[header.index(f"{attribute}__en")])
        
         elementsForAttr = getattr(ormObj, attribute).all()
+        breakpoint()
         for ormRelObj in elementsForAttr:
             for indexInGerList, germanyManyToManyElement in enumerate(germanManyToManyStr):
                 if germanyManyToManyElement in str(ormRelObj):
