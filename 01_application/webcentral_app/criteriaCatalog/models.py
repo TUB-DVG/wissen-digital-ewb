@@ -10,7 +10,7 @@ class CriteriaCatalog(models.Model):
     """Represent a CriteriaCatalog, which holds Tree-Structures of Topics."""
 
     name = models.CharField(max_length=100)
-    text = models.CharField(max_length=1000, blank=True)
+    text = models.TextField(blank=True, null=True)
     imageIcon = models.CharField(max_length=200, blank=True)
     imageIconSelected = models.CharField(max_length=200, blank=True)
 
@@ -40,6 +40,8 @@ class Topic(models.Model):
     )
     imageFilename = models.CharField(max_length=200, null=True, blank=True)
     tag = models.ManyToManyField("Tag", blank=True)
+    norms = models.CharField(max_length=300, null=True, blank=True)
+    grey = models.CharField(max_length=10, null=True, blank=True)
 
     def __str__(self):
         """Return string representation of an `Topic`-object"""

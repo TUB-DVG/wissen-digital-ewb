@@ -42,10 +42,16 @@
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px" />
+              {% if focusBorder == "technical" %}
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="technical colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="technical uncolored icon"
+                     style="width:35px" />             
+              {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
@@ -82,17 +88,6 @@
                   {% translate "Datensätze" %}
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'publicationPage' %}?searched=&focus={% translate 'technisch' %}">
-                  {% translate "Publikationen" %}
-                </a>
-              </li>
-              <!-- <li>
-                <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
-                  {% translate "Anwendungsfälle" %}
-                </a>
-              </li> -->
             </ul>
           </li>
           <!-- Nav technical focus END -->
@@ -103,10 +98,16 @@
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false">
-              <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                   class="position-absolute start-0 top-50 translate-middle-y"
-                   alt=""
-                   style="width:35px" />
+              {% if focusBorder == "operational" %}
+                <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="operational colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="operational uncolored icon"
+                     style="width:35px" />             
+              {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
@@ -130,17 +131,6 @@
                   {% translate "Nutzendenintegration" %}
                 </a>
               </li>
-              <li>
-                <a class="dropdown-item"
-                   href="{% url 'publicationPage' %}?searched=&focus={% translate 'betrieblich' %}">
-                  {% translate "Publikationen" %}
-                </a>
-              </li>
-              <!-- <li>
-                <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'betrieblich' %}">
-                  {% translate "Anwendungsfälle" %}
-                </a>
-              </li> -->
             </ul>
             <!-- Nav operational focus END-->
             <!-- Nav ecological focus START-->
@@ -150,10 +140,16 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
+              {% if focusBorder == "ecological" %}
                 <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
                      class="position-absolute start-0 top-50 translate-middle-y"
-                     alt=""
+                     alt="ecological colored icon"
                      style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="ecological uncolored icon"
+                     style="width:35px" />             
+              {% endif %}  
                 &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
@@ -166,30 +162,15 @@
                 <li>
                   <a class="dropdown-item"
                      href="{% url 'environmentalIntegrityPositiv' %}">
-                    {% translate "Positive Umweltwirkungen" %} - good-practice
+                    {% translate "Positive Umweltwirkungen" %} - Good-practice
                   </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'benchmarkingChallenges' %}">
-                    {% translate "Herausforderungen" %}
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'dataSufficiency' %}">
-                    {% translate "Datensuffizienz" %}
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item"
-                     href="{% url 'publicationPage' %}?searched=&focus={% translate 'ökologisch' %}">
-                    {% translate "Publikationen" %}
-                  </a>
-                </li>
-                <!-- <li>
-                 <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'ökologisch' %}">
-                  {% translate "Anwendungsfälle" %}
-                </a>
-              </li> -->
+                <!--</li>-->
+                <!--<li>-->
+                <!--  <a class="dropdown-item" href="{% url 'dataSufficiency' %}">-->
+                <!--    {% translate "Datensuffizienz" %}-->
+                <!--  </a>-->
+                <!--</li>-->
               </ul>
             </li>
             <!-- Nav ecological focus END -->
@@ -200,10 +181,16 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
+               {% if focusBorder == "legal" %}
                 <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
                      class="position-absolute start-0 top-50 translate-middle-y"
-                     alt=""
+                     alt="legal colored icon"
                      style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="legal uncolored icon"
+                     style="width:35px" />             
+              {% endif %} 
                 &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="legalDropdown">
@@ -212,29 +199,54 @@
                     {% translate "Daten&shy;schutz&shy;übersicht" %}
                   </a>
                 </li>
-                <!-- <li>
+                <li>
                 <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
-                  {% translate "Kriterien&shy;katalog" %}
+                  {% translate "Kriterienkatalog" %}
                 </a>
-              </li> -->
+              </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
                     {% translate "Icons und Visualisierung" %}
                   </a>
                 </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+                 id="globalDropdown"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">
+               {% if focusBorder == "global" %}
+                <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="global colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="global uncolored icon"
+                     style="width:35px" />             
+              {% endif %} 
+                &nbsp; &nbsp; &nbsp; {% translate "Global" %}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="globalDropdown">
                 <li>
-                  <a class="dropdown-item"
-                     href="{% url 'publicationPage' %}?searched=&focus={% translate 'rechtlich' %}">
-                    {% translate "Publikationen" %}
+                  <a class="dropdown-item" href="{% url 'use_cases_list' %}">
+                    {% translate "Anwendungsfälle" %}
                   </a>
                 </li>
                 <!-- <li>
-                <a class="dropdown-item" href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'rechtlich' %}">
-                  {% translate "Anwendungsfälle" %}
+                <a class="dropdown-item" href="">
+                  {% translate "City GML Visualisierung" %}
                 </a>
               </li> -->
+                <li>
+                  <a class="dropdown-item" href="{% url 'publicationPage' %}">
+                    {% translate "Veröffentlichungen" %}
+                  </a>
+                </li>
+              </li> 
               </ul>
-            </li>
             <!-- Nav legal focus END -->
           </ul>
           <!-- Nav Main menu END -->

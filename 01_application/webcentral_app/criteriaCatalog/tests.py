@@ -1,3 +1,5 @@
+from random import choice
+
 from django.test import TestCase
 from django.core import management
 from criteriaCatalog.models import (
@@ -27,4 +29,15 @@ class AutomaticDataImport(TestCase):
 
         management.call_command("data_import", "criteriaCatalog", "../../02_work_doc/01_daten/08_criteriaCatalog/16_07_2024_criteriaCatalog_Betriebsoptimierung.xlsx", "tests/data")
 
-        self.assertEqual(len(Topic.objects.filter(criteriaCatalog__name__icontains="Betrieb und Betriebsoptimierung")), 211, f"Number of topics of type Betribsoptimierung should be 210 but is {len(Topic.objects.filter(criteriaCatalog__name__icontains='Betrieb und Betriebsoptimierung'))}")
+        self.assertEqual(len(Topic.objects.filter(criteriaCatalog__name__icontains="Betrieb und Betriebsoptimierung")), 211, f"Number of topics of type Betriebsoptimierung should be 210 but is {len(Topic.objects.filter(criteriaCatalog__name__icontains='Betrieb und Betriebsoptimierung'))}")
+        randomTopicObject = choice(Topic.objects.all())
+
+        try:
+            randomTopicObject.__getattribute__("norms")
+        except AttributeError:
+            self.fail("Norms is not an attribute of Topic.")
+
+        try:
+            randomTopicObject.__getattribute__("grey")
+        except AttributeError:
+            self.fail("Attribute grey should be a attribute of Topic.")

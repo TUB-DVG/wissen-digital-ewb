@@ -15,6 +15,8 @@ If you would like to do some development or host the Wissensplattform, please fi
 
    quickstart
    migrations
+   installtion_basics
+   pyproject_toml
    contentSecurityPolicy
    dataImportDjango
    insertLinksInDatabase
@@ -22,7 +24,11 @@ If you would like to do some development or host the Wissensplattform, please fi
    translation
    loadProfiles
    plotlyApps
-
+   listing_pages
+   testing
+   production
+   
+>>>>>>> 02_work_doc/06_sphinx/source/index.rst
 Indices and tables
 ==================
 

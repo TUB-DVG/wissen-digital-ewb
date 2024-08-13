@@ -135,7 +135,7 @@ def buildCriteriaCatalog(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
-            "showSelect": True,
+            # "showSelect": True,
             "explanaitionText": criteriaCatalogObj.text.replace("\n", "<br>"),
             "heading": criteriaCatalogObj.name,
         },
@@ -188,12 +188,13 @@ def buildingCriteriaCatalogOpenTopic(
         listOfFlattenedTrees.append(
             tree_to_html(listOfTrees[index].dictOfTree,
                          nodeRootElements[index]))
-    # breakpoint()
+    allCriteriaCatalogObjs = CriteriaCatalog.objects.all()# breakpoint()
+    criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
         request,
         "criteriaCatalog/criteriaCatalogDetails.html",
         {
-            "criteriaCatalog": CriteriaCatalog.objects.get(id=id),
+            "criteriaCatalog": criteriaCatalogObj,
             "tags": Tag.objects.all(),
             "trees": listOfFlattenedTrees,
             "topicIdentifier": topicIdentifier,
@@ -201,6 +202,12 @@ def buildingCriteriaCatalogOpenTopic(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
-            "showSelect": True,
+
+            "explanaitionText": criteriaCatalogObj.text.replace("\n", "<br>"),
+            "heading": criteriaCatalogObj.name,
+            # "showSelect": True,
+            "allObjectsForQuickLinks": allCriteriaCatalogObjs,
+            "showInputsInImageQuickLinkBar": True,
+            "quickLinkName": "criteriaCatalog",
         },
     )

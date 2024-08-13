@@ -24,8 +24,8 @@ def components(request):
 
     # get the values of the input-fields:
     searchInputValue = request.GET.get("searched", "")
-    searchInputValues = searchInputValue.split(",")
-    searchInputValues = _removeEmtpyStringsFromList(searchInputValues)
+    # searchInputValues = searchInputValue.split(",")
+    # searchInputValues = _removeEmtpyStringsFromList(searchInputValues)
     categoryValue = request.GET.get("category-hidden", "")
 
     # the values in category are a comma separated list:
@@ -46,18 +46,18 @@ def components(request):
 
     searchQuery = Q()
     searchQueryInput = Q()
-    if len(searchInputValues) > 0:
-        for searchInputValue in searchInputValues:
-            searchQueryInput = searchQueryInput | Q(
-                category__category__icontains=searchInputValue)
-            searchQueryInput = searchQueryInput | Q(
-                component__componentClass__icontains=searchInputValue)
-            searchQueryInput = searchQueryInput | Q(
-                description__icontains=searchInputValue)
-            searchQueryInput = searchQueryInput | Q(
-                furtherInformationNotes__icontains=searchInputValue)
-            searchQueryInput = searchQueryInput | Q(
-                sources__icontains=searchInputValue)
+    # if len(searchInputValues) > 0:
+        # for searchInputValue in searchInputValues:
+    searchQueryInput = searchQueryInput | Q(
+        category__category__icontains=searchInputValue)
+    searchQueryInput = searchQueryInput | Q(
+        component__componentClass__icontains=searchInputValue)
+    searchQueryInput = searchQueryInput | Q(
+        description__icontains=searchInputValue)
+    searchQueryInput = searchQueryInput | Q(
+        furtherInformationNotes__icontains=searchInputValue)
+    searchQueryInput = searchQueryInput | Q(
+        sources__icontains=searchInputValue)
 
     searchQueryCategory = Q()
     if len(categoryValues) > 0:
@@ -203,6 +203,7 @@ def components(request):
             {
                 "placeholder":
                 "Kategorie",
+                "filtered": categoryValue,
                 "objects": [
                     categoryItem.category
                     for categoryItem in Category.objects.all()
@@ -219,6 +220,7 @@ def components(request):
                 ],
                 "fieldName":
                 "component",
+                "filtered": componentValue,
             },
             {
                 "placeholder":
@@ -284,7 +286,7 @@ def components(request):
         "backLinkText":
         _("Negative Umweltwirkungen"),
         "filters": {
-            "searched": searchInputValues,
+            "searched": searchInputValue,
             "category": categoryValues,
             "component": componentValues,
             "sorting": "",
@@ -312,6 +314,7 @@ def dataProcessing(request):
         descriptionImage = "datenwertschöpfungskette_en.svg"
 
     context = {
+        "pageTitle": _("Aufwände für Datenverarbeitungsprozesse"),
         "descriptionImage":
         "img/componentList/" + descriptionImage,
         "focusBorder":

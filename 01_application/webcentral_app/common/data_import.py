@@ -2,6 +2,10 @@ import difflib
 
 import pandas as pd
 from django.db.models import Model
+from django.db import models
+from django.apps import apps
+
+from user_integration.models import Literature
 
 class DataImport:
     def __init__(self, path_to_data_file):
@@ -30,10 +34,7 @@ class DataImport:
         """load csv/excel-file
 
         """
-        
         # if its a excel file, check if 2 sheets are present:
-
-
         if self.path_to_file.endswith(".csv"):
             header, data = self.readCSV(pathFile)
         elif self.path_to_file.endswith(".xlsx"):
@@ -69,7 +70,7 @@ class DataImport:
             if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(dfGermanEnglish["German"].columns):
                     if german_column == dfGermanEnglish["English"].columns[index]:
-                        dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "_en"})
+                            dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "__en"})
                 df_concatenated = pd.concat([dfGermanEnglish["English"], dfGermanEnglish["German"]], axis=1, ignore_index=True)
                 df_concatenated.columns = list(dfGermanEnglish["English"].columns) + list(dfGermanEnglish["German"].columns)
             else:
@@ -82,7 +83,6 @@ class DataImport:
         df = df_concatenated.fillna("")
         header = list(df.columns)
         data = df.values.tolist()
-        # breakpoint()
         return header, data
 
     def _correctReadInValue(self, readInString):
@@ -124,7 +124,7 @@ class DataImport:
         """Return closest match for categoryString in djangoModel
 
         This method returns the closest match for `categoryString` in `djangoModel`
-        by using the difflib.get_close_matches-function. Thereby the cutoff is set
+        by using the difflib.get_close_matcheGs-function. Thereby the cutoff is set
         to 80 %. That means if the closest match is below 80 %, an error message
         is printed and an empty string is returned.
 
@@ -191,6 +191,45 @@ class DataImport:
 
         return returnList
 
+    def _buildLiteratureIdentifier(self, literatureElement: str) -> str:
+        """build a identifer of the litrature element, which can be used 
+        in the HTML to point from the literature reference to the literature list 
+        on the end of the page.
+
+        """
+
+        # find the first 3 names and seperate them with a underscore:
+        splitBySpaces = literatureElement.split(" ")
+        identifer = ""
+        for number in range(3):
+            identifer += splitBySpaces[number] + "_"
+
+        # find the year, which is written in brackets:
+        year = literatureElement.split("(")[1].split(")")[0]
+
+        return identifer + year
+
+    def _importLiterature(self, literatureElements: str):
+        """Import literature elements from csv/excel into `Literature`-
+        model.
+        
+        """
+        literatureList = self._processListInput(literatureElements,
+                                                ";;")
+        literatureObjsList = []
+        for literature in literatureList:
+            if literature.startswith("<sup"):
+                litIdentifier = ""
+            else:
+                litIdentifier = self._buildLiteratureIdentifier(literature)
+            objCreated, created = Literature.objects.get_or_create(
+                literature=literature,
+                linkName=litIdentifier,
+            )
+            literatureObjsList.append(objCreated)
+        
+        return literatureObjsList
+
     def _checkIfOnlyContainsSpaces(self, inputStr):
         """Check if the inputStr only contains whitespaces.
 
@@ -206,3 +245,48 @@ class DataImport:
             True, if the inputStr only contains whitespaces, otherwise False.
         """
         return all(x.isspace() for x in inputStr)
+    
+    def _importEnglishTranslation(self, obj, header, row, mapping: dict):
+        """
+
+        """
+        modelObj = apps.get_model(self.DJANGO_APP, self.DJANGO_MODEL)
+        modelAttrs = [field.name for field in modelObj._meta.get_fields()]
+        for mappingKey in mapping.keys():
+            englishModelAttr = mapping[mappingKey]
+            attrName = englishModelAttr.replace("_en", "")
+            modelAttr = modelObj._meta.get_field(attrName)
+            if isinstance(modelAttr, models.ManyToManyField):
+                obj = self._importEnglishManyToManyRel(obj, header, row, attrName)
+            else:
+                obj = self._importEnglishAttr(obj, header, row, attrName)
+
+        return obj
+    
+    def _importEnglishManyToManyRel(self, ormObj, header, row, attribute):
+        """
+
+        """
+        germanManyToManyStr = self._correctReadInValue(
+            row[header.index(attribute)])
+        englishManyToManyStr = self._correctReadInValue(
+            row[header.index(f"{attribute}__en")])
+       
+        elementsForAttr = getattr(ormObj, attribute).all()
+        for ormRelObj in elementsForAttr:
+            for indexInGerList, germanyManyToManyElement in enumerate(germanManyToManyStr):
+                if germanyManyToManyElement in str(ormRelObj):
+                    if getattr(ormRelObj, f"{attribute}_en") is None:
+                        setattr(ormRelObj, f"{attribute}_en", englishManyToManyStr[indexInGerList])
+                        ormRelObj.save() 
+        return ormObj
+
+    def _importEnglishAttr(self, ormObj, header, row, attribute):
+        """
+
+        """
+        englishTranslation = row[header.index(f"{attribute}__en")]
+        setattr(ormObj, f"{attribute}_en", englishTranslation)
+
+        return ormObj
+

@@ -7,17 +7,17 @@
               font-style: normal">
         <div class="row box__content">
             <div class="col-12">
-                <h6 class="boxHeading mb-4">{{ boxObject.category }}</h6>
+                <h6 class="boxHeading mb-4">{{ boxObject.relevance }}</h6>
             </div>
             <div class="box-content__main">
                 <div class="col-12 content-left">
                     <p class="boxDescription">{{ boxObject.description }}</p>
                 </div>
                 <div class="content-right">
-                    <div>{{ boxObject.name_digital_application }}</div>
-                    <div class="mt-4">{{ boxObject.project_name }}</div>
+                    <div style="color: black;">Projekt:</div>
+                    <div>{{ boxObject.project_name }}</div>
                     <img src="{% static boxObject.image %}"
-                         alt="Environment positive"
+                         alt="Positive impact project image"
                          class="box__image" />
                 </div>
             </div>

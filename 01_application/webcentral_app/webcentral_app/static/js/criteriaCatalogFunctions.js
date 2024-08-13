@@ -190,7 +190,7 @@ function depthFirstSearch(element, func) {
   var stack = [element];
 
   while (stack.length > 0) {
-      var currentElement = stack.pop();
+     var currentElement = stack.pop();
       func(currentElement);
 
       var children = currentElement.children;
@@ -211,7 +211,9 @@ function hideElementExceptForFirstLayer(element) {
   if (element.tagName === "IMG" && element.id !== '0') {
     showDirectionOfArrow(element, "down");
   }
-
+  if (element.hasAttribute("src") && element.getAttribute("src").includes("info_icon_selected")) {
+    element.style.display = "none";
+  }
   if (element.classList.contains("wrapper")) {
     return;
   }
@@ -234,6 +236,7 @@ function depthFirstWalkForParagraphs() {
     if (elementFromQueue.tagName == "P" && Number(elementFromQueue.id) < 3) {
       childUlFromParagraph = returnFirstAppearanceOfElementWithTagName(elementFromQueue, "UL");
       if (childUlFromParagraph != "") {
+        
         newLiElement = document.createElement("li");
         newLiElement.prepend(elementFromQueue);
         childUlFromParagraph.prepend(newLiElement);
@@ -242,6 +245,7 @@ function depthFirstWalkForParagraphs() {
         parentOfParagraph.removeChild(elementFromQueue);
       }
       else {
+        
         parentOfParagraph = elementFromQueue.parentElement;
         parentOfParagraph.removeChild(elementFromQueue);
         
@@ -268,10 +272,12 @@ function depthFirstWalkForParagraphs() {
         newUlElement.prepend(newLiElement);
         firstUlAsChildOfLi = returnFirstAppearanceOfElementWithTagName(parentOfParagraph, "UL");
         if (firstUlAsChildOfLi != "") {
+          
           parentOfParagraph.insertBefore(newUlElement, firstUlAsChildOfLi);
         }
         else {
-        parentOfParagraph.prepend(newUlElement);
+          parentOfParagraph.insertBefore(newUlElement, null);
+          //parentOfParagraph.prepend(newUlElement);
       }
     }
   }
@@ -301,14 +307,14 @@ function modifyCatalogToBeShownInOneElement() {
       window.textForCombinedElement = "";
       for (var j = 0; j < ulChildElements.length; j++) {
         if (Number(ulChildElements[j].id) == 3) {
-          textForCombinedElement = ulChildElements[j].textContent
+          textForCombinedElement = ulChildElements[j].innerHTML
           depthFirstSearch(ulChildElements[j], aggregateAndStyleText);
           firstLiChildren = returnFirstAppearanceOfElementWithTagName(ulChildElements[j], "LI");
           if (firstLiChildren != "") {
             aggregatedTags += ", " + firstLiChildren.getAttribute("tags");
             aggregatedTopicIds += "," + firstLiChildren.getAttribute("topicId");
           }
-
+          
           textForCombinedElement = textForCombinedElement.replace(/(\s*\n)+/g, '\n');
           textCombinedConcatenated += textForCombinedElement;
         }
@@ -365,7 +371,7 @@ function modifyCatalogToBeShownInOneElement() {
       newLiElement.style.display = "none";
       newParagraphElement.style.whiteSpace = "pre-line";
       newParagraphElement.setAttribute("aggregatedText", "true")
-      newParagraphElement.innerHTML = textCombinedConcatenated;
+      newParagraphElement.innerHTML = window.textForCombinedElement;
       newParagraphElement.style.fontSize = "18px";
       newParagraphElement.setAttribute("topicId", aggregatedTopicIds);
       newParagraphElement.setAttribute("tags", aggregatedTags);
@@ -387,20 +393,10 @@ function modifyCatalogToBeShownInOneElement() {
 function aggregateAndStyleText(element) {
   var textContent = "";
   if (element.tagName == "BUTTON") {
-    if (Number(element.id) > 3) {
-      textContent = "<div style='margin-left: 50px;'>" + element.textContent + "</div>";
-    }
-    else {
-      textContent = element.textContent;
-    }
+      textContent = "<span style='font-size: 22px;'>" + element.textContent + "</span>";
   }
   if (element.tagName == "P") {
-    if (Number(element.id) > 3) {
-      textContent = "<div style='margin-left: 50px; font-size: 18px;'>" + element.textContent + "</div>";
-    }
-    else {
-      textContent = element.textContent;
-    }
+      textContent = "<div style='margin-left: 40px;'>" + element.innerHTML + "</div>";
   }
   window.textForCombinedElement += textContent;
 }
@@ -710,7 +706,9 @@ if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
 }
+if (!element.classList.contains("grey-box")) {
 showElement(element);
+}
 var parentOfClickedElement = getFirstParentElementWithTagName(element, "UL")
 var childUlElements = [];
 if (element.id == "2") {
@@ -742,7 +740,7 @@ else {
   
   var layerNumberOfClickedElement = Number(element.id);
   imageInButtonElement = element.previousElementSibling;
-  if (imageInButtonElement != null) {
+  if (imageInButtonElement != null && imageInButtonElement.hasAttribute("src") && !imageInButtonElement.getAttribute("src").includes("info_icon")) {
     showElement(imageInButtonElement);
   }
   
@@ -752,6 +750,7 @@ else {
   var paragraphElementInLi = undefined;
   var divElements; 
   var imageInButtonElement;
+  
   for (var i = 0; i < nextLayerElementsUL.length; i++) {
     nextLayerElementsUL[i].style.display = "block";
 
@@ -777,8 +776,8 @@ else {
       if (paragraphElementInLi.length > 0) {
         paragraphElementInLi[0].style.display = "block";
         try {
-        paragraphElementInLi[0].nextElementSibling.style.display = "block";
-        paragraphElementInLi[0].previousElementSibling.style.display = "block";
+          paragraphElementInLi[0].nextElementSibling.style.display = "block";
+          paragraphElementInLi[0].previousElementSibling.style.display = "block";
         }
         catch {
           console.log("Error");

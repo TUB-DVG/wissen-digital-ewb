@@ -23,6 +23,9 @@
   .border-legal {
     @include border-boxen($legal-color);
   }
+  .border-global {
+    @include border-boxen($global-color);
+  }
   a.technical {
     @include link-boxen($technical-color, $primary-text-color);
   }
@@ -34,6 +37,9 @@
   }
   a.legal {
     @include link-boxen($legal-color, $primary-text-color);
+  }
+  a.global {
+    @include link-boxen($global-color, $primary-text-color);
   }
   table {
     td {

@@ -15,13 +15,17 @@ from common.views import (
 
 
 def index(request):
+    filtering = bool(request.GET.get("filtering", False))
     focus_queryset = Focus.objects.all()
     publications = Publication.objects.all()
     query_filters = Q()
     filteredBy = [None]*3
-    
+    focusValue = request.GET.get("focus-hidden", "")
+    focus = request.GET.get("focus", "")
+    # the values in category are a comma separated list:
+    focusValues = focusValue.split(",")
     searched = request.GET.get('searched')
-    focus = request.GET.get('focus')
+
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
     focusOptions = Focus.objects.all()
     
@@ -30,12 +34,18 @@ def index(request):
         query_filters |= Q(abstract__icontains=searched)
         query_filters |= Q(authors__icontains=searched)
         query_filters |= Q(keywords__icontains=searched)  
-    if focus:
-        query_filters &= Q(focus=focusObjectFromGetRequest)
+    if len(focusValues) > 0:
+        qForFocus = Q()
+        for focus in focusValues:
+            qForFocus |= Q(focus__focus__icontains=focus)
+        query_filters &= qForFocus
     if query_filters:
         publications = publications.filter(query_filters).distinct()
 
     publications = list(sorted(publications, key=lambda obj: obj.title))
+    
+    for publication in publications:
+        publication.__setattr__("focus_en", publication.focus.all()[0].focus_en)
 
     paginator = Paginator(publications, 12)
 
@@ -43,8 +53,6 @@ def index(request):
 
     page = paginator.get_page(page_number)
     
-    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
-
     context = {
         'page': page,
         'search': searched,
@@ -59,9 +67,11 @@ def index(request):
                 "fieldName": "focus",
             },
         ],
-        "focusBorder": focusName,
+        "focusBorder": "global",
     }
-    
+    if filtering:
+        return render(request, 'publications/publications-results.html', context)
+
     return render(request, 'publications/publications-listings.html', context)
 
 

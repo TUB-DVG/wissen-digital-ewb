@@ -22,7 +22,10 @@ class UpdateProperties:
 
 
 def index(request):
-    return render(request, "TechnicalStandards/explanation.html")
+    context = {
+        "focusBorder": "technical",
+    }
+    return render(request, "TechnicalStandards/explanation.html", context)
 
 
 def norm(request):
@@ -340,6 +343,8 @@ def protocol(request):
         ],
         "focusBorder":
         "technical",
+        "renderComparisonRadio": True,
+        "model": "Protocols",
     }
     if filtering:
         return render(

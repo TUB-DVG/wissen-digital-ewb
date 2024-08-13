@@ -15,7 +15,7 @@ from Src.PageObject.Locators import Locator
 from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
 
-class ComponentListPage(GenericPageObject):
+class DataSufficiency(GenericPageObject):
     """ """
 
     def __init__(self, driver):
@@ -31,3 +31,10 @@ class ComponentListPage(GenericPageObject):
             )
         except:
             return None
+
+    def getAllCollapsableFirstParts(self):
+        """Get the div of the collapsables, which include the text,
+        which is shown in collapsed state.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'firstPart')]")

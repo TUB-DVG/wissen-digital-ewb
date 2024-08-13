@@ -38,6 +38,11 @@
   width: 150px !important;
   /* height: 102px; */
   display: inline-block !important;
+  margin-left: -40px;
+}
+
+.use-bootstrap-select-wrapper:first-of-type {
+  margin-left: 0;
 }
 /* .dropdown-toggle::after {
     display: none;
@@ -85,7 +90,7 @@ input[type='text']::placeholder {
     <div class="col-xl-10">
       <div class="row g-3">
         <!-- Select items -->
-        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px">
+        <div class="form-group col-sm-6 col-md-6" style="margin-left: 100px; display: grid; grid-template-columns: auto auto auto;">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
               <select id="{{ optionContent.fieldName }}"
@@ -255,6 +260,7 @@ function putResponseIntoDom(response) {
         $('#norm-listing-results').empty();
         $('#norm-listing-results').append(response);             
       }
+    addClickEventToAllCheckboxes();
     $("div.pagination a").on("click", sendAjaxOnLinkClick);
 }
 function submitAjaxRequest(e) {
@@ -267,7 +273,7 @@ function submitAjaxRequest(e) {
         type: 'GET',
         url: url,
         data: formData,
-        success: putResponseIntoDom,
+        success: putResponseIntoDom, 
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle the error here
         }
@@ -293,7 +299,35 @@ function submitSearchInputOnReturn(e) {
         $('#searchForm').submit(); // Trigger the form submission
     }
 }
-$('#searchBox').on('submit', submitAjaxRequest);
+<!--$('#searchBox').on('submit', submitAjaxRequest);-->
+<!--=======-->
+<!--});-->
+function addClickEventToAllCheckboxes() {
+  // get all descendants, which are in listing-results:
+  var checkboxesForComparison = $( "input[class='comparisonInputTools']" )
+  var clickEve = -1;
+  checkboxesForComparison.each(function() {
+    // Check if 'click' event is already attached
+    clickEve = $(this).attr("class").indexOf("checkBoxHandler") 
+    if (clickEve == -1) {
+      $(this).on('click', addToSessionStorage);
+      $(this).addClass("checkBoxHandler");
+    }
+  });
+}
+  function addToSessionStorage () {
+              var id = $(this).parent().parent().attr('id');
+                    
+              var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
+              if ($(this).prop("checked")) {
+                storedNames.push(id) 
+              }
+              else {
+                storedNames.pop(id)
+              }
+              sessionStorage.setItem("ids", JSON.stringify(storedNames));
+              console.log(sessionStorage.ids);
+  }
 $(document).ready(function() {
     
     $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
@@ -332,13 +366,12 @@ $(document).ready(function() {
       }
     }  
 
-
     // on the backend load all static-paths for the down arrows:
     var downArrowTechnical = "{% static '/assets/images/arrow_down_technical.svg' %}";
     var downArrowEcological = "{% static '/assets/images/arrow_down_ecological.svg' %}";
     var downArrowOperational = "{% static '/assets/images/arrow_down_operational.svg' %}";
     var downArrowLegal = "{% static '/assets/images/arrow_down_legal.svg' %}";
-    var downArrowNeutral = "{% static '/assets/images/arrow_down_neutral.svg' %}"
+    var downArrowNeutral = "{% static '/assets/images/arrow_down_global.svg' %}"
     
     var focusBorder = "{{ focusBorder }}";
     var focusArrowToSet = ""
@@ -351,7 +384,6 @@ $(document).ready(function() {
         break;
       }
     }
-
 
     $("div.input-wrapper").children("input").addClass("form-input-{{ focusBorder }}")
     $("div.input-wrapper").children("input").addClass("text-input-with-arrow-{{ focusBorder }}")
@@ -378,6 +410,8 @@ $(document).ready(function() {
       }
   }
 
+
+$('#searchBox').on('submit', submitAjaxRequest);
 
     $(document).ready(function() {
     $('.trigger-submit-onchange').change(function() {
@@ -448,4 +482,19 @@ $(document).ready(function() {
   })
   $("span.ms-auto").click(function() {
   });
+    var radioButtonCLicked = false;
+    $("#triggerDetailsView").click('change', function() {
+        if ($(this).is(':checked')) {
+            if (!radioButtonCLicked) {
+                radioButtonCLicked = true;
+                
+                $("[id*='collapseComponent'].collapse").attr("class", "show");
+            }
+            else {
+                radioButtonCLicked = false;
+                this.checked = false;
+                $("[id*='collapseComponent'].show").attr("class", "collapse");
+            }
+        }
+    });
 </script>

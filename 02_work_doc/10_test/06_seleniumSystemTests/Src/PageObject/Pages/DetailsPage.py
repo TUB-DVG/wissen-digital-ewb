@@ -51,3 +51,9 @@ class DetailsPage(GenericPageObject):
             )
         except:
             return None
+    
+    def getRightColumn(self):
+        """Return the right column of the details-page
+
+        """
+        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'column__right')]")

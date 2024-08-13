@@ -7,34 +7,46 @@
 </style>
 <h6>{{ boxObject.project_name }}</h6>
 <p>
-    <span class="columnHeading">{% translate "Förderkennzeichen" %}:</span> {{ boxObject.funding_label }}
+<span class="columnHeading">{% translate "Förderkennzeichen" %}: </span>{% if boxObject.funding_label.count > 1 %}
+    {% for fundingLabel in boxObject.funding_label.all %}
+        {{ fundingLabel.referenceNumber_id }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+{% else %}
+    {% for fundingLabel in boxObject.funding_label.all %}
+        {{ fundingLabel.referenceNumber_id }}
+    {% endfor %}
+{% endif %}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Laufzeit" %}:</span> {{ boxObject.funding_label.enargusData.startDate }} - {{ boxObject.funding_label.enargusData.endDate }}
+<span class="columnHeading">{% translate "Laufzeit" %}: </span> {{ boxObject.duration }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Partner" %}:</span> {{ boxObject.partner }}
+    <span class="columnHeading">{% translate "Partner" %}: </span> {{ boxObject.partner }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Projektwebseite" %}:</span> {{ boxObject.project_website }}
+    <span class="columnHeading">{% translate "Projektwebseite" %}: </span> {{ boxObject.project_website }}
+</p>
+{% if boxObject.consortium %}
+<p>
+    <span class="columnHeading">{% translate "Konsortium" %}: </span>{{ boxObject.consortium }}
+</p>
+{% endif %}
+{% if boxObject.consortium %}
+<p>
+    <span class="columnHeading">{% translate "Weitere" %}: </span>{{ boxObject.further }}
+</p>
+{% endif %}
+<p>
+    <span class="columnHeading">{% translate "Digitale Anwendung(en)" %}: </span>{{ boxObject.digitalApplications }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Konsortium" %}:</span>{{ boxObject.consortium }}
+    <span class="columnHeading">{% translate "Ziele" %}: </span>{{ boxObject.goals }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Weitere" %}:</span>{{ boxObject.further }}
+    <span class="columnHeading">{% translate "Strategien" %}: </span>{{ boxObject.strategies }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Digitale Anwendung(en)" %}:</span>{{ boxObject.digitalApplications }}
-</p>
-<p>
-    <span class="columnHeading">{% translate "Ziele" %}:</span>{{ boxObject.goals }}
-</p>
-<p>
-    <span class="columnHeading">{% translate "Strategien" %}:</span>{{ boxObject.strategies }}
-</p>
-<p>
-    <span class="columnHeading">{% translate "Relevanz" %}:</span>{{ boxObject.relevance }}
+    <span class="columnHeading">{% translate "Relevanz" %}: </span>{{ boxObject.relevance }}
 </p>
 <p>
     <a href="{% url 'showImage' boxObject.id %}">
@@ -42,4 +54,4 @@
              style="width: 287px;
                     height: 203px" />
     </a>
-</p>
+</p >

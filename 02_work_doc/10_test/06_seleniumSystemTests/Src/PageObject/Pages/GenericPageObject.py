@@ -3,7 +3,7 @@ from selenium import (
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-
+from selenium.webdriver.support.wait import WebDriverWait
 
 class GenericPageObject:
 
@@ -27,15 +27,15 @@ class GenericPageObject:
         except:
             return None
 
+    def getFirstAncestorByTagName(self, element, tagName):
+        """Get the first parent, which has the tag `tagName`
+        
+        """
+        return element.find_element(By.XPATH, f"ancestor::{tagName}")
+
     def getDescendantsByClass(self, element, className):
         """Returns the div-element, which wraps the content of the page"""
-        try:
-            # breakpoint()
-            return element.find_elements(
-                By.XPATH, f".//[contains(@class, '{className}')]")
-
-        except:
-            return None
+        return element.find_elements(By.CSS_SELECTOR, f".{className}")
 
     def getDirectChildren(self, element):
         """Returns the direct children of the given element"""
@@ -59,6 +59,15 @@ class GenericPageObject:
                                         "following-sibling::" + tagName)
         except:
             return None
+
+    def getAllSiblingsOfTagname(self, element, tagname: str):
+        """
+
+        """
+
+        return element.find_elements(By.XPATH, f"following-sibling::{tagname}")
+        
+
 
     def getContentDiv(self):
         """Returns the div-element, which wraps the content of the page"""
@@ -90,3 +99,14 @@ class GenericPageObject:
             By.CLASS_NAME,
             className,
         )
+    def waitUntilElementIsLoaded(self, element):
+        """Poll for the element for 10 seconds until its loaded.
+        """
+        wait = WebDriverWait(self.driver, timeout=10)
+        wait.until(lambda d : element.is_displayed())
+
+    def getBoxes(self):
+        """Return boxes from the overview-page.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'box ')]")

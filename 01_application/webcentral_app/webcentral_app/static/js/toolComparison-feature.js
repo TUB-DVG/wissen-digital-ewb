@@ -26,13 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Card Multi Select
             $('input[type=checkbox]').click(function () {
                 var currentUrl = window.location.href;
-                if (currentUrl.includes("component_list/")) {
-                    var id = $(this).parent().parent().attr('id');
-                }
-                else {
-                    var id = $(this).parent().attr('id');
-
-                }
+                
+                var id = $(this).parent().parent().attr('id');
+                    
                 var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
                 
                 if ($(this).parent().hasClass('comparison-active')) {
@@ -83,10 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             // firstComparisonButtonTools.style.display = 'none';
             var inputs = document.getElementsByClassName('comparisonInputTools');
             // for (var i = 0; i < inputs.length; i++) {
-            //     debugger;
             //     inputs[i].style.visibility = "visible";
             // }
-
             const cardTitles = document.getElementsByClassName("card-title")
         
             for (let i = 0; i < cardTitles.length; i++) {
