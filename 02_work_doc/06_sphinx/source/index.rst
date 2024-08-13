@@ -21,6 +21,7 @@ If you would like to do some development or host the Wissensplattform, please fi
    templateStructure
    translation
    loadProfiles
+   plotlyApps
 
 Indices and tables
 ==================
