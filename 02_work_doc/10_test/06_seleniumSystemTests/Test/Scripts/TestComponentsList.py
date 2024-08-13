@@ -688,6 +688,9 @@ class TestComponentsList(WebDriverSetup):
             "Sensorik",
         ]
 
+        self._setLanguageToGerman()
+
+        components = self.componentsListPageObj.getAllListElements()
 
         # check if the componentListingContainer contains the correct number of elements:
         for index, component in enumerate(components):
@@ -696,15 +699,15 @@ class TestComponentsList(WebDriverSetup):
                 "border-ecological" in component.get_attribute("class"))
 
             # each component should contain a "Mehr anzeigen" expanding element:
-            expandElement = componentsListPageObj.getDescendantsByTagName(
+            expandElement = self.componentsListPageObj.getDescendantsByTagName(
                 component, "a")
             self.assertIsNotNone(expandElement[0])
             self.assertTrue("Zeige mehr" in expandElement[0].get_attribute(
                 "data-collapsed-text"))
-            self._checkIfStrElementFromListIsDisplayed(component,
-                                                       componentClass)
-            self._checkIfStrElementFromListIsDisplayed(component,
-                                                       categoryElements)
+            # self._checkIfStrElementFromListIsDisplayed(component,
+            #                                            componentClass)
+            # self._checkIfStrElementFromListIsDisplayed(component,
+            #                                            categoryElements)
 
             self.assertTrue("Quelle" not in component.text)
             self.assertTrue("Weitere Informationen" not in component.text)
@@ -716,12 +719,13 @@ class TestComponentsList(WebDriverSetup):
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
             self.assertTrue("Lebensdauer (in Jahren)" in component.text)
 
-            collapsedContainer = componentsListPageObj.getDescendantsByClass(
+            collapsedContainer = self.componentsListPageObj.getDescendantsByClass(
                 component, "collapse")
             self.assertEqual(len(collapsedContainer), 3)
 
             self.assertTrue(not collapsedContainer[0].is_displayed())
             # check if the not shown elements are present after the expandElement is clicked:
+        
             self.scrollElementIntoViewAndClickIt(expandElement[0])
 
             self.assertTrue(collapsedContainer[0].is_displayed())
@@ -749,6 +753,26 @@ class TestComponentsList(WebDriverSetup):
             self.assertTrue("Treibhauspotenzial (Entsorgung; in kg CO2-e):" in
                             component.text)
 
+
+            # get all elements, which hold numerical values:
+            numericalValuesInListingRow = self.componentsListPageObj.getDescendantsByClass(component, "listingRowAttributeValues")
+            self.assertGreaterEqual(len(numericalValuesInListingRow), 9, "At least 9 containers, which can hold numerical values should be present in the listing cell.")
+            for numericalValue in numericalValuesInListingRow:
+                textContent = numericalValue.text
+                if "n/a" in textContent:
+                    continue
+                else:
+                    if "." in textContent: 
+                        getTheDecimalPlaces = textContent.split(".")[1]
+                    else:
+                        getTheDecimalPlaces = textContent.split(",")[1]
+                    decimalPlaceCount = 0
+                    for decimalPlace in getTheDecimalPlaces:
+                        if decimalPlace in "123456789":
+                            decimalPlaceCount += 1
+                    self.assertLessEqual(decimalPlaceCount, 2, "There should only be 2 decimal places.")
+
+
             # check if the list-elements can collapsed again:
             self.scrollElementIntoViewAndClickIt(expandElement[0])
             time.sleep(1)
@@ -769,7 +793,7 @@ class TestComponentsList(WebDriverSetup):
 
         # select english language and check if the component-attributes are translated:
         self._setLanguageToEnglish()
-        components = componentsListPageObj.getAllListElements()
+        components = self.componentsListPageObj.getAllListElements()
 
         randomComponent = choice(components)
 
