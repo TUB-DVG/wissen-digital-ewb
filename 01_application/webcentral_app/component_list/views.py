@@ -160,7 +160,7 @@ def components(request):
         "elementsSecondColumn": [
             {
                 "objectReference": "energyConsumptionUsePhaseTotalRounded",
-                "description": _("Energieverbrauch Nutzung (gesamt; in W)"),
+                "description": _("Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"),
             },
             {
                 "objectReference": "globalWarmingPotentialTotalRounded",
