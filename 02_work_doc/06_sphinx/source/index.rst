@@ -22,6 +22,9 @@ If you would like to do some development or host the Wissensplattform, please fi
    insertLinksInDatabase
    templateStructure
    translation
+   loadProfiles
+   plotlyApps
+   useCases
    listing_pages
    testing
    production

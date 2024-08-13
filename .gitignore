@@ -11,6 +11,7 @@ db.sqlite3
 db.sqlite3-journal
 /media
 venv
+.venv
 02_work_doc/10_test/testingVenv
 /static
 *csv#
@@ -39,6 +40,9 @@ postgres/*.sql
 /02_work_doc/10_test/testingVenv
 log
 *.css.map
+
+#Sphinx
+02_work_doc/06_sphinx/build
 
 # Javascript
 node_modules
