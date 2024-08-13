@@ -24,6 +24,7 @@ If you would like to do some development or host the Wissensplattform, please fi
    translation
    loadProfiles
    plotlyApps
+   useCases
    listing_pages
    testing
    production
