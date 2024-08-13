@@ -29,7 +29,6 @@ If you would like to do some development or host the Wissensplattform, please fi
    testing
    production
    
->>>>>>> 02_work_doc/06_sphinx/source/index.rst
 Indices and tables
 ==================
 
