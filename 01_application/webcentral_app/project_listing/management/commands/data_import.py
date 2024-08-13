@@ -70,9 +70,8 @@ from component_list.models import (
     Component,
     ComponentClass,
     Category,
-    EnvironmentalImpact, 
 )
-
+from positive_environmental_impact.models import EnvironmentalImpact 
 from data_sufficiency.models import (
     DataSufficiency,
 )
@@ -1789,52 +1788,6 @@ class Command(BaseCommand):
 
         pathToFile = os.path.join(self.targetFolder, DBdifferenceFileName)
         currentDBDifferenceObj.writeToYAML(pathToFile)
-
-    def readCSV(
-        self,
-        path: str,
-    ) -> tuple:
-        """This method reads the csv-file, and loads the content into
-        the two variables header and data.
-
-        Parameters:
-        path:   str
-
-        Returns:
-        header: list
-            List of headers from the csv-file.
-        data:   list
-        list, containing the rows from the csv-file.
-        """
-        with open(path, encoding="utf-8") as csv_file:
-            reader = csv.reader(csv_file, delimiter=";")
-            header = next(reader)
-            data = []
-            for row in reader:
-                data.append(row)
-        return header, data
-
-    def readExcel(
-        self,
-        path: str,
-    ) -> tuple:
-        """This method reads the excel-file, and loads the content into
-        the two variables header and data.
-
-        Parameters:
-        path:   str
-
-        Returns:
-        header: list
-            List of headers from the excel-file.
-        data:   list
-            list, containing the rows from the excel-file.
-        """
-        df = pd.read_excel(path)
-        df = df.fillna("")
-        header = list(df.columns)
-        data = df.values.tolist()
-        return header, data
 
     def _checkIfInInstalledApps(self, type_of_data):
         """Check if user given argument `type_of_data` matches 

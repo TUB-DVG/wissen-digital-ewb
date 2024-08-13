@@ -47,6 +47,7 @@ dependencies = [
     "SQLAlchemy==2.0.10",
     "uwsgi>=2.0.19.1,<2.1",
     "openpyxl", 
+    "django-webpack-loader",
 ]
 
 # root folder of the python/django not found automatically

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}
-    {% translate "Datenverarbeitung" %}
+  {{ pageTitle }}
 {% endblock title %}
 {% load static %}
 {% block content %}
@@ -62,7 +62,7 @@
     </style>
     <section class="pt-0">
         <!-- ======================= Content START ======================= -->
-        <div class="container {{ focusBorder }}-cards p-4 my-4 z-index-9 position-relative collapseListingRow">
+        <div class="container {{ focusBorder }}-cards p-4 my-4 z-index-9 position-relative collapseListingRow content">
             {% include "partials/backLinkInFocusColor.html" %}
 
             {% if imageQuickLinks == True %}
@@ -70,9 +70,10 @@
             {% endif %}
             <div class="row columns p-4 my-4 z-index-9 border-{{ focusBorder }} mx-auto">
                 <div class="column__left">{% include leftColumn %}</div>
-                <div class="column__right">{% include rightColumn %}</div>
+                <div class="column__right prevent_overflow">{% include rightColumn %}</div>
             </div>
         </div>
     </section>
     <!-- Content END -->
+    <script src="{% static 'js/detailsPage.js' %}" nonce="{{request.csp_nonce}}"></script>
 {% endblock content %}

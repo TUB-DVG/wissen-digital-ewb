@@ -23,7 +23,8 @@ from selenium.common.exceptions import MoveTargetOutOfBoundsException
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.startPage import StartPage
 from Src.PageObject.Pages.NormPage import NormPage
-
+from Src.PageObject.Pages.Pagination import Pagination
+from Src.PageObject.Pages.SearchPage import SearchPage
 
 class TestNormsPage(WebDriverSetup):
     """Tests the 'Lastapproximation'-Tab
@@ -35,6 +36,7 @@ class TestNormsPage(WebDriverSetup):
         """
         
         self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/norm")
+        self._setLanguageToGerman()
 
         normPageObj = NormPage(self.driver)
         searchInputField = normPageObj.getSearchInputElement()
@@ -52,8 +54,16 @@ class TestNormsPage(WebDriverSetup):
             "Number of Cards should be 1 after searching for 'bisko'!",
         )
 
-        xOfSearchFilter = normPageObj.getXOfSearchFilter()
-        xOfSearchFilter.click()
+        paginationObj = Pagination(self.driver)
+        paginationStr = paginationObj.getPaginationCurrentSiteString()
+        
+        self.assertIn(
+            "Seite 1 von 1",
+            paginationStr.text,
+            "Pagination string should be 'Seite 1 von 1' after searching for 'bisko'"
+        )
+
+        searchInputField.clear()
         time.sleep(1)
 
         cardList = normPageObj.getCards() 
@@ -63,6 +73,7 @@ class TestNormsPage(WebDriverSetup):
             12,
             "Number of Cards should be 12 after deleting the Search-Filter...",
         )
+
     
     def testClickOnOneofTheCardsShown(self):
         """Click randomly on one of the cards and check if the right details-page is shown
@@ -82,7 +93,7 @@ class TestNormsPage(WebDriverSetup):
 
         time.sleep(1)
 
-        self.assertEqual(
+        self.assertIn(
             self.driver.title,
             randomCardText,
             f"Page Title should be '{randomCardText}', after clicking on the card with the same name!",

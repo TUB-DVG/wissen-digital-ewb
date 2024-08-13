@@ -5,8 +5,6 @@ from .models import (
     Component,
     ComponentClass,
     Category,
-    EnvironmentalImpact,
-    DataSufficiency,
 )
 
 
@@ -25,5 +23,3 @@ class CategoryModelAdmin(TranslationAdmin):
 admin.site.register(Component, ComponentModelAdmin)
 admin.site.register(ComponentClass, ComponentClassModelAdmin)
 admin.site.register(Category, CategoryModelAdmin)
-admin.site.register(EnvironmentalImpact)
-admin.site.register(DataSufficiency)

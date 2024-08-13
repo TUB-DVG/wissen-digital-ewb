@@ -129,3 +129,40 @@ class NavBar(object):
             By.XPATH,
             Locator.linkToOperationalDropdown,
         )
+
+    def getIcons(self):
+        """Get the icon image webelements 
+
+        """
+        navBarDropdowns = self.getDropDownElements()
+        listOfIconsInNavBar = []
+        for dropdown in navBarDropdowns:
+            imageDropdown = dropdown.find_element(By.XPATH, ".//img")
+            listOfIconsInNavBar.append(imageDropdown)
+        return listOfIconsInNavBar
+    
+    def getDropDownElements(self):
+        """
+
+        """
+        return  self.driver.find_elements(By.XPATH, "//li[@class='nav-item dropdown']")
+
+    def getGlobalDropdownElements(self):
+        """Return the elements inside the navbar of the global focus
+        """
+        ulOfGlobalDropdown = self.driver.find_element(By.XPATH, "//ul[@aria-labelledby='globalDropdown']")
+        liUnderUl = ulOfGlobalDropdown.find_elements(By.XPATH, ".//li")
+        return liUnderUl
+    
+    def getLegalDropdownElements(self):
+        """Return the elements inside the navbar of the legal focus
+        """
+        ulOfLegalDropdown = self.driver.find_element(By.XPATH, "//ul[@aria-labelledby='legalDropdown']")
+        liUnderUl = ulOfLegalDropdown.find_elements(By.XPATH, ".//li")
+        return liUnderUl
+    
+    def getDropdownOfType(self, type: str):
+        """
+
+        """
+        return self.driver.find_element(By.XPATH, f"//a[@id='{type}Dropdown']")

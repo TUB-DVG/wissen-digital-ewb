@@ -2,7 +2,7 @@ class Locator(object):
     # locators on start-page:
     linkToImpressum = "//a[@id='impressumLink']"
     inputSearchField = "//*[@id='search-input-general']"
-    resultElements = "//tr"
+    resultElements = "//tr[@data-href]"
     firstColumnToRow = "//td"
     linkToBuisnessApp = "//a[contains(text(), 'Geschäfts­modell­anwendungen')]"
     linkToTechnicalStandarts = "//a[@id='linkToTechnicalStandarts']"
@@ -78,11 +78,11 @@ class Locator(object):
     loginButtonElement = "//input[@class='btn login_btn']"
 
     # locators of lastprofile:
-    stromlastApprLink = "//a[@href='/LastProfile/stromlast']"
+    stromlastApprLink = "//a[contains(@href, '/LastProfile/stromlast')]"
     heatApproximationLink = "/LastProfile/warmelast"
-    weatherServiceLink = "//a[contains(text(), 'Wetterdienst')]"
+    weatherServiceLink = "//a[@href='https://github.com/earthobservations/wetterdienst']"
     linkToStandardLoadProdile = (
-        "//a[contains(text(), 'Standard-Lastprofile beim BDEW')]")
+        "//a[@href='https://www.bdew.de/energie/standardlastprofile-strom/']")
 
     # locators inside stromlast-app
     selectPlaceholderCurrentApp = "//div[@class='Select-placeholder']"
@@ -186,11 +186,12 @@ class Locator(object):
     # locators for the comparison page
     compareResultsContainer = "//div[@id='compareResultsContainer']"
     compareButton = "//a[@id='comparisonUrlTools']"
+    resetButton = "div//[@id='cancelButtonTools']"
     # firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
-    headingComparisonSite = "//h1"
+    headingComparisonSite = "//p[contains(@class, 'description-heading__paragraph')]"
     comparisonTableContainer = "//tbody"
-    backButton = "//a[@class='backLink']"
+    backButton = "//div[@class='secondaryNavbarLeft']/a"
     startComparisonDiv = "//div[@id='startComparisonButtonTools']"
     resetComparisonDiv = "//div[@id='cancelButtonTools']"
 

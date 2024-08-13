@@ -23,7 +23,11 @@ from Test.Scripts.TestUserEngagement import TestUserEngagement
 from Test.Scripts.TestNegativeEnvironmentalImpacts import (
     TestNegativeEnvironmentalImpacts, )
 from Test.Scripts.TestBusinessModels import TestBusinessModels
-
+from Test.Scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
+from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
+from Test.Scripts.TestUseCases import TestUseCases
+from Test.Scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
+from Test.Scripts.TestDataSufficiency import TestDataSufficiency
 # from Test.Scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
 
@@ -67,7 +71,7 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestProtocolsPage),
             testLoader.loadTestsFromTestCase(TestBusinessAppPage),
             testLoader.loadTestsFromTestCase(TestClickThroughSites),
-            testLoader.loadTestsFromTestCase(TestLastprofile),
+            testLoader.loadTestsFromTestCase(TestLastProfile),
             testLoader.loadTestsFromTestCase(TestAboutPage),
             testLoader.loadTestsFromTestCase(TestSearch),
             testLoader.loadTestsFromTestCase(TestPublicationPage),
@@ -75,6 +79,11 @@ if __name__ == "__main__":
             testLoader.loadTestsFromTestCase(TestUserEngagement),
             testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
             testLoader.loadTestsFromTestCase(TestBusinessModels),
+            testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
+            testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
+            testLoader.loadTestsFromTestCase(TestUseCases),
+            testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
+            testLoader.loadTestsFromTestCase(TestDataSufficiency), 
             # testLoader.loadTestsFromTestCase(TestAdminPage),
         ))
 

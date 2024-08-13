@@ -14,13 +14,23 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.Footer import Footer
+from Src.PageObject.Pages.NavBar import NavBar
 
+# Create tmp_dir
+temp_dir = "~/_tmp"
+try:
+    os.makedirs(temp_dir)
+except:
+    pass
+os.environ["TMPDIR"] = temp_dir
 
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
-    ECOLOGICAL_COLOR = "rgb(143, 222, 151)"
-
+    ECOLOGICAL_COLOR = "rgb(108, 200, 118)"
+    GLOBAL_COLOR = "rgb(120, 117, 117)"
+    TECHNICAL_COLOR = "rgb(143, 171, 247)" 
+    OPERATIONAL_COLOR = "rgb(244, 151, 131)" 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -56,10 +66,13 @@ class WebDriverSetup(unittest.TestCase):
 
     def scrollElementIntoViewAndClickIt(self, element):
         """Scroll the element into the view of the browser-window."""
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.scrollElementIntoView(element)
         self.element = element
-        wait = WebDriverWait(self.driver, 10)  # waits for 10 seconds
-        wait.until(self._elementIsClickable)
+        try:
+            wait = WebDriverWait(self.driver, 2)  # waits for 10 seconds
+            wait.until(self._elementIsClickable)
+        except:
+            element.click()
 
     def _elementIsClickable(self, driver):
         """Check if the element is clickable."""
@@ -110,11 +123,17 @@ class WebDriverSetup(unittest.TestCase):
         """Remove the cookie-banner from the page"""
         cookieBannerObj = CookieBanner(self.driver)
         cookieBannerButton = cookieBannerObj.getCookieAcceptanceButton()
-        self.scrollElementIntoViewAndClickIt(cookieBannerButton)
+        if cookieBannerButton.is_displayed():
+            self.scrollElementIntoViewAndClickIt(cookieBannerButton)
 
     def _setLanguageToGerman(self):
         """Set the language of the page to german"""
         # change the language to german and check if the german heading is displayed
+        try:
+            self._removeCookieBanner()
+        except:
+            pass
+
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
@@ -131,6 +150,11 @@ class WebDriverSetup(unittest.TestCase):
     def _setLanguageToEnglish(self):
         """Set the language of the page to english"""
         # change the language to english and check if the english heading is displayed
+        try:
+            self._removeCookieBanner()
+        except:
+            pass
+
         footerObj = Footer(self.driver)
         selectionField = footerObj.getLanguageSelectionField()
         options = selectionField.options
@@ -166,3 +190,59 @@ class WebDriverSetup(unittest.TestCase):
             self.assertEqual(translationDict["en"], elementText)
         else:
             self.assertEqual(self.getLanguage(), "en")
+
+    def checkNavBar(self, currentFocus=None):
+        """test if on the current page the image icons in the navbar are only colored
+        for the current focus.
+
+        currentFocus: str
+            string representing the current focus color.
+
+        Returns:
+        None
+        """
+
+        navBarObj = NavBar(self.driver)
+        listOfIcons = navBarObj.getIcons()
+        if currentFocus is None:
+            currentFocus = "undefined"
+        for icon in listOfIcons:
+            self.assertTrue(icon.text == "", "No alt text should be present for icon")
+            srcOfImage =  icon.get_attribute("src")
+            if currentFocus in srcOfImage:
+                self.assertTrue("_no.svg" not in srcOfImage)
+            else:
+                self.assertTrue("_no.svg" in srcOfImage)
+
+    def checkPageTitle(self, germanTitle, englishTitle):
+        """Test if the page title on the english and german version of the app is 
+        as expected.
+
+        germanTitle:    str
+            The german title as a string.
+        englishTitle:   str
+            The english title of the page as a string.
+        
+        Returns:
+            None
+        """
+        self._setLanguageToEnglish()
+        # self.waitUntilPageIsLoaded()
+        self.assertEqual(self.driver.title, englishTitle)
+        self._setLanguageToGerman()
+        # self.waitUntilPageIsLoaded()
+        self.assertEqual(self.driver.title, germanTitle)
+
+    def waitUntilPageIsLoaded(self, elementId=None):
+        """Explicitly wait until page is loaded.
+
+        """
+        
+        wait = WebDriverWait(self.driver, timeout=10)
+        if elementId is None:
+            wait.until(EC.presence_of_element_located((By.XPATH, "//div")))
+
+        else:    
+            wait.until(EC.presence_of_element_located((By.ID, f'{elementId}')))
+        
+

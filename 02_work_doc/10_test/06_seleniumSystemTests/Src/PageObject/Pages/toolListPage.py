@@ -12,10 +12,10 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-class ToolListPage(object):
+class ToolListPage(GenericPageObject):
     """
     
     """
@@ -59,10 +59,12 @@ class ToolListPage(object):
         list-item object in the UI on the `Digitale Werkzeuge`-Tab.
         
         """
-        return self.driver.find_elements(
+        elements =  self.driver.find_elements(
             By.XPATH, 
             Locator.toolItemsIdentifer,
         )
+        self.waitUntilElementIsLoaded(elements[0])
+        return elements
     
     def getSearchStringButton(self, searchStr: str) -> WebElement:
         """Returns the selenium webelement, for Search String Button

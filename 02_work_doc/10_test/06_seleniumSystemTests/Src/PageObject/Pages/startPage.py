@@ -11,9 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
+from Src.PageObject.Pages.GenericPageObject import GenericPageObject
 
-
-class StartPage(object):
+class StartPage(GenericPageObject):
     """ """
 
     def __init__(self, driver):
@@ -149,3 +149,22 @@ class StartPage(object):
         """Return the Container for the Operational Focus"""
         return self.driver.find_element(By.XPATH,
                                         Locator.operationalFocusContainer)
+
+    def getLegalFocusContainer(self):
+        """Get Div-element of the legal focus container
+        """
+        return self.driver.find_element(By.XPATH, "//div[@title='Rechtlicher Fokus']")
+    
+    def getFocusContainer(self, focusName: str):
+        """
+
+        """
+        focusTitle = ""
+        if focusName == "legal":
+            focusTitle = "Rechtlicher Fokus"
+        elif focusName == "operational":
+            focusTitle = "Betrieblicher Fokus"
+        elif focusName == "ecological":
+            focusTitle = "Ökologischer Fokus"
+        
+        return self.driver.find_element(By.XPATH, f"//div[@title='{focusTitle}']")

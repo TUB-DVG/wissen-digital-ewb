@@ -12,13 +12,21 @@ The Web-Application consists of 3 services, which are containerized, each of the
 
 To start the project either in development-mode or in production-mode `docker <https://www.docker.com/>`_  together with `docker compose <https://github.com/docker/compose>`_ are needed on your local system. Depending on your operating system (OS), the installation may differ. Please consult the guide provided by `docker <https://docs.docker.com/engine/install/>`_ for your OS.
 
+Furthermore `node.js` is needed. It can be downloaded from the official website: https://nodejs.org/en/download/package-manager. Please install the latest LTS-version.
+
 After that please clone the repo to a local location of your choice. 
 The application can be executed by doing the following steps:
 1. Create a .env-file from the the .env.example file.
 `
   cp .env.example .env
 `
-2. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
+2. Execute the command `npm install` to install the `node.js`-dependencies these are used to transpile the `scss`-stylesheets into a bundled `css`-stylesheet.
+To build the development environment execute:
+```
+    ./run build_initial dev
+```
+3. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `01_application/webcentral_app/`.
+3. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
 `
   ./run up_initial dev postgres/databaseDump.sql
 `

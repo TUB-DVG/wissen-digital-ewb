@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "criteriaCatalog.apps.CriteriacatalogConfig",
     "component_list.apps.ComponentListConfig",
     "businessModel.apps.BusinessmodelConfig",
+    "positive_environmental_impact.apps.PositiveEnvironmentalImpactConfig",
     "publications.apps.PublicationsConfig",
     "use_cases.apps.UseCasesConfig",
     "pages.apps.PagesConfig",
@@ -65,6 +66,7 @@ INSTALLED_APPS = [
     "django_plotly_dash",
     "common.apps.CommonConfig",
     "channels",
+    "webpack_loader",
 ]
 
 MIDDLEWARE = [
@@ -285,18 +287,13 @@ LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "handlers": {
-        "file": {
-            "level": "ERROR",
-            "class": "logging.FileHandler",
-            "filename": loggingDir,
+        "console": {
+            "class": "logging.StreamHandler",
         },
     },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "ERROR",
-            "propagate": True,
-        },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG",
     },
 }
 
@@ -308,3 +305,12 @@ if not useDotENV:
         from webcentral_app.local_settings import *
     except ImportError:
         pass
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/webpack_bundles/',
+        'CACHE': not DEBUG,
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'IGNORE': [r'.+\.hot-update.js', r'.+\.map'],
+    }
+}

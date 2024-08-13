@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über technische Standards - Normen{% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Überblick über technische Standards - Normen' %}{% endblock %}
 {% block content %}
-  {% load i18n %}
+  
   {% load static %}
   <!DOCTYPE html>
 
@@ -90,7 +91,7 @@ Page content START -->
             </div>
             <!-- standards grid END -->
             <!-- Pagination START -->
-            {% include "partials/pagination.html" %}
+
             <!-- Pagination END -->
           </div>
           <!-- Main content END -->

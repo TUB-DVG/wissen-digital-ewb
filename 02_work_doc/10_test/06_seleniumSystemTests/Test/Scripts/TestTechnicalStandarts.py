@@ -33,7 +33,8 @@ class TestTechnicalStandarts(WebDriverSetup):
         
         """
         self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/")
-
+        self.checkNavBar("technical")
+        
         technicalStandartsPageObj = TechnicalStandartsPage(self.driver)
         linkToNorms = technicalStandartsPageObj.getNormsLink()
 
@@ -42,27 +43,23 @@ class TestTechnicalStandarts(WebDriverSetup):
         linkToNorms.click()
         
         time.sleep(1)
-
-        self.assertEqual(
-            self.driver.title,
-            "Überblick über die technischen Standards - Normen",
-            "Page should be 'Technische Standarts - Normen', after clicking the Link to norms, but its not!",
+        self.checkNavBar("technical")
+        self.checkPageTitle(
+            "Überblick über technische Standards - Normen",
+            "Overview of technical standards - Norms",
         )
-
-        self.driver.back()
+        
+        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/")
         time.sleep(1)
-
         linkToProtocols = technicalStandartsPageObj.getProtocolsLink()
         self.driver.execute_script("arguments[0].scrollIntoView();", linkToProtocols)
         time.sleep(1)
         linkToProtocols.click()
         
         time.sleep(1)
-
-        self.assertEqual(
-            self.driver.title,
-            "Überblick über die technischen Standards - Protokolle",
-            "Page should be 'Technische Standarts - Protokolle', after clicking the Link to protocols, but its not!",
+        self.checkNavBar("technical")
+        self.checkPageTitle(
+            "Überblick über technische Standards - Protokolle",
+            "Overview of technical standards - Protocols",
         )
-
-
+       

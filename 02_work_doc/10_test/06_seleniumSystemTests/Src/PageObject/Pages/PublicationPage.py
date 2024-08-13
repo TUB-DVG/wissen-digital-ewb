@@ -129,3 +129,12 @@ class PublicationPage(object):
 
         """
         return self.driver.find_element(By.CLASS_NAME, Locator.publicationDetailsPageType).text
+
+    def getListingElements(self):
+        """Return all listing results for publications
+        """
+        publicationListingElements = self.driver.find_elements(By.XPATH, "//div[contains(@class, 'card ')]")
+        return publicationListingElements
+    
+    def getFokusForElement(self, element) -> str:
+        return element.find_elements(By.XPATH, ".//p")[2].text
