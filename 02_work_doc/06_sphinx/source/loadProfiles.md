@@ -1,23 +1,12 @@
 # Load Profiles
 
-This page gives a short overview of the content, data and models used for generation of heating, tapwater and electricity load profiles. 
+This page gives a short overview of the content, data and models used for generation of heating, tapwater and electricity load profiles. Data can be displayed and downloaded as csv.
 
 ## Framework 
 
-Factors and the Test Reference Year (TRY) are stored using csv. The data is loaded, and with user input turned into a plotly dash graph. The dash apps are written in [Dash_app](../../../01_application/webcentral_app/LastProfile/Dash_app). The graph is exported and integrated in the HTML frontend with an Iframe: 
+The load profiles are written in dash, where the graph is generated and integrated into the frontend with an iframe. Detailed Descriptions is given in: [02_work_doc\06_sphinx\source\plotlyApps.md] 
 
-```
-<div class= "container" style="height: 100vh ;">
-<iframe src="/django_plotly_dash/app/Stromlast/" style="
-top: 0;
-left: 0;
-width: 100%;
-  height: 100%;
-" sandbox="allow-downloads allow-scripts allow-same-origin" frameborder="0"></iframe>
-</div>
-```
-
-Real weather data is obtained from Deutscher Wetterdienst using the wetterdienst Library. 
+Factors and the Test Reference Year (TRY) are stored using csv. The data is loaded, and with user input turned into a plotly dash graph.Real weather data is obtained from Deutscher Wetterdienst using the wetterdienst Library. 
 
 ## Theoretical Background 
 
