@@ -2,7 +2,7 @@
 
 The Use Cases provide a visualization for interdependencies of digitalization and the research framework. 
 
-The general dash integration is described at [Plotly Apps](02_work_doc\06_sphinx\source\plotlyApps.md).
+The general dash integration is described at [Plotly Apps](./plotlyApps.md).
 
 Besides the dash integration, as Django app is developed. 
 
