@@ -4,7 +4,7 @@ This page gives a short overview of the content, data and models used for genera
 
 ## Framework 
 
-The load profiles are written in dash, where the graph is generated and integrated into the frontend with an iframe. Detailed Descriptions is given in: [02_work_doc\06_sphinx\source\plotlyApps.md] 
+The load profiles are written in dash, where the graph is generated and integrated into the frontend with an iframe. Detailed Descriptions is given in: [Plotly Apps](./plotlyApps.md)
 
 Factors and the Test Reference Year (TRY) are stored using csv. The data is loaded, and with user input turned into a plotly dash graph.Real weather data is obtained from Deutscher Wetterdienst using the wetterdienst Library. 
 

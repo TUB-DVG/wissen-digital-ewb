@@ -4,10 +4,10 @@ To integrate timeseries in an interactive way we use [plotly Dash](https://plotl
 
 Currently, three different dash apps are provided: 
 
-- [Loadprofiles](02_work_doc\06_sphinx\source\loadProfiles.md)
--- Heat and DHW
--- Electricity Demand 
-- [Use Cases](02_work_doc\06_sphinx\source\useCases.md)
+- [Loadprofiles](./loadProfiles.md)
+- Heat and DHW
+- Electricity Demand 
+- [Use Cases](./useCases.md)
 
 In this part of the documentation, the general technical setup and requirements are explained. The apps themself and data are explained in the specific documents. 
 
