@@ -137,7 +137,7 @@ class DataImportApp(DataImport):
             yearOfUsePerYear=yearOfUse,
         )
         
-        if _englishHeadersPresent(header):
+        if self._englishHeadersPresent(header):
             self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
         return obj, created
     
