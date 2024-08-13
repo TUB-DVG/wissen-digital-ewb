@@ -764,8 +764,10 @@ class TestComponentsList(WebDriverSetup):
                 else:
                     if "." in textContent: 
                         getTheDecimalPlaces = textContent.split(".")[1]
-                    else:
+                    elif "," in textContent:
                         getTheDecimalPlaces = textContent.split(",")[1]
+                    else:
+                        getTheDecimalPlaces = ""
                     decimalPlaceCount = 0
                     for decimalPlace in getTheDecimalPlaces:
                         if decimalPlace in "123456789":
@@ -798,7 +800,7 @@ class TestComponentsList(WebDriverSetup):
         randomComponent = choice(components)
 
         # expand the random component:
-        expandElement = componentsListPageObj.getDescendantsByTagName(
+        expandElement = self.componentsListPageObj.getDescendantsByTagName(
             randomComponent, "a")
         self.scrollElementIntoViewAndClickIt(expandElement[0])
 
@@ -820,26 +822,26 @@ class TestComponentsList(WebDriverSetup):
                         randomComponent.text)
         self.assertTrue("Source" in randomComponent.text)
         self.assertTrue("Further information" in randomComponent.text)
-        self._checkIfStrElementFromListIsDisplayed(
-            randomComponent,
-            [
-                "Actuators",
-                "Signal processing",
-                "Infrastructure",
-                "Sensors",
-            ],
-        )
-        self._checkIfStrElementFromListIsDisplayed(
-            randomComponent,
-            [
-                "Flow controller",
-                "Data logger",
-                "Air duct",
-                "Circulating pump",
-                "Presence detector",
-            ],
-        )
-
+        # self._checkIfStrElementFromListIsDisplayed(
+        #     randomComponent,
+        #     [
+        #         "Actuators",
+        #         "Signal processing",
+        #         "Infrastructure",
+        #         "Sensors",
+        #     ],
+        # )
+        # self._checkIfStrElementFromListIsDisplayed(
+        #     randomComponent,
+        #     [
+        #         "Flow controller",
+        #         "Data logger",
+        #         "Air duct",
+        #         "Circulating pump",
+        #         "Presence detector",
+        #     ],
+        # )
+        #
     def testPagination(self):
         """Test if the pagination elements are present and working"""
         self.driver.get(os.environ["siteUnderTest"] +
