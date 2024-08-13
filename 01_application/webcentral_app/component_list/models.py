@@ -41,8 +41,89 @@ class Component(models.Model):
 
         """
         stringOfFloat = str(self.energyConsumptionUsePhaseTotal)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.energyConsumptionUsePhaseTotal is not None:
+            return round(self.energyConsumptionUsePhaseTotal, decimalPosToRound)
 
+    @property
+    def globalWarmingPotentialTotalRounded(self):
+        """Processes the FloatField and rounds 
 
+        """
+        stringOfFloat = str(self.globalWarmingPotentialTotal)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.globalWarmingPotentialTotal is not None:
+            return round(self.globalWarmingPotentialTotal, decimalPosToRound)
+
+    @property
+    def componentWeightRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.componentWeight)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.componentWeight is not None:
+            return round(self.componentWeight, decimalPosToRound)
+
+    @property
+    def specificGlobalWarmingPotentialRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.specificGlobalWarmingPotential)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.specificGlobalWarmingPotential is not None:
+            return round(self.specificGlobalWarmingPotential, decimalPosToRound)
+    
+    @property
+    def energyConsumptionUsePhaseActiveRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.energyConsumptionUsePhaseActive)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.energyConsumptionUsePhaseActive is not None:
+            return round(self.energyConsumptionUsePhaseActive, decimalPosToRound)
+
+    @property
+    def energyConsumptionUsePhasePassiveRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.energyConsumptionUsePhasePassive)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.energyConsumptionUsePhasePassive is not None:
+            return round(self.energyConsumptionUsePhasePassive, decimalPosToRound)
+
+    @property
+    def globalWarmingPotentialProductionRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.globalWarmingPotentialProduction)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.globalWarmingPotentialProduction is not None:
+            return round(self.globalWarmingPotentialProduction, decimalPosToRound)
+    
+    @property
+    def globalWarmingPotentialUsePhaseRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.globalWarmingPotentialUsePhase)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.globalWarmingPotentialUsePhase is not None:
+            return round(self.globalWarmingPotentialUsePhase, decimalPosToRound)
+
+    @property
+    def globalWarmingPotentialEndOfLifeRounded(self):
+        """Processes the FloatField and rounds 
+
+        """
+        stringOfFloat = str(self.globalWarmingPotentialEndOfLife)
+        decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
+        if self.globalWarmingPotentialEndOfLife is not None:
+            return round(self.globalWarmingPotentialEndOfLife, decimalPosToRound)
 
     def _findLastDecimalPlaces(self, elementStr):
         """Find the 2 last decimal places to the furthet right. Return the decimal position
