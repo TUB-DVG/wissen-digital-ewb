@@ -10,7 +10,8 @@ from common.data_import import DataImport
 from .models import *
 
 class DataImportApp(DataImport):
-    
+    DJANGO_APP = "component_list"
+    DJANGO_MODEL = "Component"
     MAPPING_EXCEL_DB_EN = {
         "Kategorie__en": "category_en",
         "Komponente__en": "component_en",
@@ -136,7 +137,7 @@ class DataImportApp(DataImport):
             sources=sources,
             yearOfUsePerYear=yearOfUse,
         )
-        
+        breakpoint() 
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
         return obj, created
