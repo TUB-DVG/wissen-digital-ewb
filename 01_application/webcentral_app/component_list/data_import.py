@@ -12,18 +12,10 @@ from .models import *
 class DataImportApp(DataImport):
     
     MAPPING_EXCEL_DB_EN = {
-        "Category__en": "category_en",
-        "Description__en": "description_en",
-        "Name_Digital_Application__en": "name_digital_application_en",
-        "Project_Name__en": "project_name_en",
-        "Partner__en": "partner_en",
-        "Consortium__en": "consortium_en",
-        # "Additional_Digital_Application(s)__en": "digitalApplications_en",
-        "Strategies__en": "strategies_en",
-        "Relevance__en": "relevance_en",
-        "Problem_Statement_and_Problem_Goals__en": "problem_statement_and_problem_goals_en",
-        "Implementation_in_the_Project__en": "implementation_in_the_project_en",
-        "Evaluation__en": "evaluation_en"
+        "Kategorie__en": "category_en",
+        "Komponente__en": "component_en",
+        "Beschreibung__en": "description_en",
+        "Weitere Informationen / Anmerkungen__en": "furtherInformationNotes_en",
     }
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -144,23 +136,25 @@ class DataImportApp(DataImport):
             sources=sources,
             yearOfUsePerYear=yearOfUse,
         )
-
+        
+        if _englishHeadersPresent(header):
+            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
         return obj, created
     
-    def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
-        """
-
-        """
-        for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
-            # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
-            # if hasattr(obj, attributeNameWithoutEn) 
-            try:
-                setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
-            except:
-                breakpoint()
-        environmentalimpactObj.save()
-
-
+    # def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
+    #     """
+    #
+    #     """
+    #     for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
+    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
+    #         # if hasattr(obj, attributeNameWithoutEn) 
+    #         try:
+    #             setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
+    #         except:
+    #             breakpoint()
+    #     environmentalimpactObj.save()
+    #
+    #
     def _englishHeadersPresent(self, header: list) -> bool:
         """Check if english translation headers are present in the
         list of headers. If yes, then return `True` otherwise `False`

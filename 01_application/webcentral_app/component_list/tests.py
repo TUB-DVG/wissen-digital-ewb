@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.core.management import call_command
 
 from .models import (
     Category,   
@@ -44,4 +45,26 @@ class TestRounding(TestCase):
         exampleFloatFour = 10
         returnValueFloatFour = componentObj._findLastDecimalPlaces(str(exampleFloatFour))
         self.assertEqual(returnValueFloatFour, 0)
+
+class TestDataImport(TestCase):
+    """Class to test the data-import of a component-list-excel-file.
+    
+    """
+    def testImportWholeExcel(self):
+        """Integration test to check if the excel file holding the
+        production data can be imported.
+
+        """
+        
+        call_command("data_import", "component_list", "../../02_work_doc/01_daten/12_component_list/componentList_oneSheet.xlsx", ".")
+
+        importedComponents = Component.objects.all()
+        self.assertGreaterEqual(len(importedComponents), 44, "After import of the production-data file, there should be at least 44 Components in the database.")
+        
+        # check if the english translations were also imported:
+        sensorComponents = Component.objects.filter(category__category_de="Sensorik")
+        self.assertGreaterEqual(ln(sensorComponents), 9)
+
+        self.assertEqual(sensorComponents[0].category.category_en, "Sensor Technology")
+
 
