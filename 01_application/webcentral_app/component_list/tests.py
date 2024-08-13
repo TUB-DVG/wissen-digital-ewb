@@ -63,7 +63,7 @@ class TestDataImport(TestCase):
         
         # check if the english translations were also imported:
         sensorComponents = Component.objects.filter(category__category_de="Sensorik")
-        self.assertGreaterEqual(ln(sensorComponents), 9)
+        self.assertGreaterEqual(len(sensorComponents), 9)
 
         self.assertEqual(sensorComponents[0].category.category_en, "Sensor Technology")
 
