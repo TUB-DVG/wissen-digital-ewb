@@ -110,19 +110,21 @@ def components(request):
     else:
         descriptionImage = "backbone_en.svg"
 
-    linkToDataProcessingProcess = "<a class=\"ecological-font-color\" href=\"{% url 'dataProcessing' %}\">„Aufwände für Datenverarbeitungsprozesse“</a>"
+     
+    explanationFirstPart = _("Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch")
 
-    templateObj = Template(linkToDataProcessingProcess)
-    renderedTemplateObj = templateObj.render(Context({}))
-
+    explanationRaw = "{% load i18n %} <a class=\"ecological-font-color\" href=\"{% url 'dataProcessing' %}\">„{% translate 'Aufwände für Datenverarbeitungsprozesse' %}“</a>) "
+    explanationSecondPart = _("""ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
+        """).replace("\n", "<br>").replace("'", "")
+    templateObj = Template(explanationRaw)
+    explanationText = templateObj.render(Context({}))
+    
     context = {
         "renderDetailsRadio":
         True,
         "heading":
         _("Aufwände für verwendete Komponenten"),
-        "explanaitionText":
-        _(f"""Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch {renderedTemplateObj}) ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
-        """.replace("\n", "<br>")),
+        "explanaitionText": explanationFirstPart + explanationText + explanationSecondPart,
         "focusBorder":
         "ecological",
         "focusName":

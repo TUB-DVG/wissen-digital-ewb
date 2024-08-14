@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-12 16:17+0000\n"
+"POT-Creation-Date: 2024-08-14 15:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "Time series"
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:112 common/views.py:63 component_list/views.py:237
+#: Datasets/views.py:112 common/views.py:63 component_list/views.py:249
 #: templates/datasets_over/dataset-detail.html:131
 #: templates/weatherdata_over/weatherdata-detail.html:132
 #: weatherdata_over/views.py:79
@@ -479,7 +479,7 @@ msgstr "Catalog of criteria"
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:167 component_list/views.py:157
+#: TechnicalStandards/views.py:167 component_list/views.py:159
 #: templates/TechnicalStandards/explanation.html:72
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
@@ -546,7 +546,7 @@ msgstr ""
 msgid "Ergebnisse"
 msgstr "Results"
 
-#: common/views.py:68 component_list/views.py:216 component_list/views.py:232
+#: common/views.py:68 component_list/views.py:228 component_list/views.py:244
 msgid "Komponente"
 msgstr "Component"
 
@@ -554,45 +554,45 @@ msgstr "Component"
 msgid "Beschreibung"
 msgstr "Description"
 
-#: common/views.py:78 component_list/views.py:163 component_list/views.py:242
+#: common/views.py:78 component_list/views.py:254
 msgid "Energieverbrauch Nutzung (gesamt; in W)"
 msgstr "Total energy consumption (in W)"
 
-#: common/views.py:83 component_list/views.py:167 component_list/views.py:247
+#: common/views.py:83 component_list/views.py:174 component_list/views.py:259
 msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
 msgstr "Total greenhouse gas potential (in kg CO2-e)"
 
-#: common/views.py:88 component_list/views.py:171 component_list/views.py:252
+#: common/views.py:88 component_list/views.py:178 component_list/views.py:264
 msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
-#: common/views.py:93
+#: common/views.py:93 component_list/views.py:182
 #, fuzzy
 #| msgid "Lebensdauer (in Jahren)"
 msgid "Lebensdauer (in Jahre)"
 msgstr "Lifespan (in years)"
 
-#: common/views.py:98 component_list/views.py:179
+#: common/views.py:98
 msgid "Energieverbrauch Nutzung (aktiv; in W)"
 msgstr "Active energy consumption (in W)"
 
-#: common/views.py:106 component_list/views.py:185
+#: common/views.py:106
 msgid "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
 msgstr "Passive/standby energy consumption (in W)"
 
-#: common/views.py:112 component_list/views.py:190
+#: common/views.py:112 component_list/views.py:197
 msgid "Treibhauspotenzial (Herstellung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (production; in kg CO2-e)"
 
-#: common/views.py:117 component_list/views.py:194
+#: common/views.py:117 component_list/views.py:201
 msgid "Treibhauspotenzial (Nutzung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (usage; in kg CO2-e)"
 
-#: common/views.py:123 component_list/views.py:199
+#: common/views.py:123 component_list/views.py:206
 msgid "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (disposal; in kg CO2-e)"
 
-#: common/views.py:128 component_list/views.py:153
+#: common/views.py:128 component_list/views.py:155
 #: templates/datasets_over/dataset-detail.html:86
 #: templates/weatherdata_over/weatherdata-detail.html:81
 msgid "Weitere Informationen"
@@ -604,7 +604,7 @@ msgstr "Further information"
 msgid "Quellen"
 msgstr "Source"
 
-#: common/views.py:136 component_list/views.py:122 pages/views.py:193
+#: common/views.py:136 component_list/views.py:126 pages/views.py:193
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -765,81 +765,104 @@ msgstr "Levels of building automation"
 msgid "Ausgeklappt"
 msgstr "Expanded"
 
-#: component_list/views.py:124
-#, python-brace-format
+#: component_list/views.py:114
 msgid ""
 "Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette "
-"(siehe auch {renderedTemplateObj}) ist immer mit einem materiellen Einsatz "
-"für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-"
-"Wertschöpfungskette können wichtige Komponenten von der Datenerfassung "
-"(Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 "
-"zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden "
-"und Quartieren häufig zur Anwendung kommen (hier Fokus auf "
-"Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten "
-"zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die "
-"entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen "
-"dabei die Emissionen, die bei der Herstellung von der Gewinnung der "
-"Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch "
-"den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis "
-"zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit "
-"der Methode der Ökobilanz erfasst.\n"
+"(siehe auch"
+msgstr "The execution of process steps along the data value chain (see also"
+
+#: component_list/views.py:117
+msgid ""
+"ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In "
+"Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können "
+"wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung "
+"(Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur "
+"Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur "
+"Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche "
+"dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung "
+"verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet "
+"werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der "
+"Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente "
+"reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während "
+"der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der "
+"Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.\n"
 "        "
 msgstr ""
-"The execution of process steps along the data value chain (see also "
-"{renderedTemplateObj}) is always associated with a material input for the "
-"components. In analogy to the process steps of the data value chain, key "
-"components can be considered from data collection (sensors) to data usage "
-"(actuators). Figure 2 shows components that are frequently used to implement "
-"digital applications in buildings and districts (here focusing on "
-"operational optimization). Depending on which of these – or additional – "
-"components had to be installed for the digital application, the "
-"corresponding environmental impacts must be considered. The environmental "
-"impacts include the emissions that occur during the manufacturing process, "
-"from raw material extraction to the production of the component, through "
-"emissions caused by the consumption of resources and energy during the "
-"component's usage, to the disposal and recycling of materials. These impacts "
-"were recorded using the life cycle assessment method.\n"
+" is always associated "
+"with a material input for the components. In analogy to the process steps of "
+"the data value chain, key components can be considered from data collection "
+"(sensors) to data usage (actuators). Figure 2 shows components that are "
+"frequently used to implement digital applications in buildings and districts "
+"(here focusing on operational optimization). Depending on which of these – "
+"or additional – components had to be installed for the digital application, "
+"the corresponding environmental impacts must be considered. The "
+"environmental impacts include the emissions that occur during the "
+"manufacturing process, from raw material extraction to the production of the "
+"component, through emissions caused by the consumption of resources and "
+"energy during the component's usage, to the disposal and recycling of "
+"materials. These impacts were recorded using the life cycle assessment "
+"method.\n"
 "        "
 
-#: component_list/views.py:175 component_list/views.py:257
-msgid "Lebensdauer (in Jahren)"
-msgstr "Lifespan (in years)"
+#: component_list/views.py:165
+msgid "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
+msgstr "Energy consumption usage phase (total; in kWh/year)"
 
-#: component_list/views.py:227
+#: component_list/views.py:169
+msgid "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"
+msgstr "Specific global warming potential, total (in kg CO2-e/year)"
+
+#: component_list/views.py:186
+msgid "Leistung Nutzungsphase (akitv; in W)"
+msgstr "Power usage phase (active; in W)"
+
+#: component_list/views.py:192
+msgid "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
+msgstr "Power usage phase (passive/stand-by; in W)"
+
+#: component_list/views.py:211
+msgid "Betriebsdauer (h/Jahr)"
+msgstr "Operating time (h/year)"
+
+#: component_list/views.py:239
 msgid "Sortierung"
 msgstr "Sorting"
 
-#: component_list/views.py:274
+#: component_list/views.py:269
+msgid "Lebensdauer (in Jahren)"
+msgstr "Lifespan (in years)"
+
+#: component_list/views.py:286
 msgid ""
 "Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die "
 "zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
 msgstr ""
+"Figure 2: Important components for the operational optimization example, the "
+"are necessary to realize the data value chain."
 
-#: component_list/views.py:281
+#: component_list/views.py:293
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:287 component_list/views.py:327 pages/views.py:177
+#: component_list/views.py:299 component_list/views.py:339 pages/views.py:177
 #: templates/StartSearch/StartSearch.html:308
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:159
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: component_list/views.py:300 pages/views.py:218
+#: component_list/views.py:312 pages/views.py:218
 msgid "Die Daten-Wertschöpfungkette"
-msgstr ""
+msgstr "The data value chain"
 
-#: component_list/views.py:317 component_list/views.py:363 pages/views.py:211
+#: component_list/views.py:329 component_list/views.py:375 pages/views.py:211
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr "Expenses for data processing processes"
 
-#: component_list/views.py:339
-#, fuzzy
-#| msgid "Aufwände für verwendete Komponenten"
+#: component_list/views.py:351
 msgid "Zu den Aufwänden für verwendete Komponenten"
-msgstr "Effort for used components"
+msgstr "To Effort for used components"
 
 #: criteriaCatalog/views.py:137 criteriaCatalog/views.py:204
 #: templates/common/back-button.html:4
@@ -1726,7 +1749,6 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/pages/environmentalIntegrityRightColumn.html:81
 #: templates/partials/descriptionContainer.html:107
 #: templates/partials/listing-row.html:70
-#: templates/partials/listing-row.html:81
 #: templates/tools_over/explanationApps.html:176
 #: templates/tools_over/explanationBusinessApps.html:21
 #: templates/tools_over/explanationTools.html:177
@@ -1748,7 +1770,6 @@ msgstr "Show less ..."
 #: templates/pages/environmentalIntegrityRightColumn.html:82
 #: templates/partials/descriptionContainer.html:108
 #: templates/partials/listing-row.html:71
-#: templates/partials/listing-row.html:80
 #: templates/tools_over/explanationApps.html:177
 #: templates/tools_over/explanationBusinessApps.html:22
 #: templates/tools_over/explanationTools.html:178
@@ -2226,7 +2247,7 @@ msgid ""
 "doluptatur santius ulparciis et ad eum aceptiistion cum quianihictem."
 msgstr ""
 
-#: templates/component_list/components.html:122
+#: templates/component_list/components.html:120
 msgid ""
 "\n"
 "                    Für häufig verwendete Komponenten, die für die "
@@ -2250,6 +2271,10 @@ msgstr ""
 "tool for the total greenhouse gas emissions caused by all components of a "
 "digital application, for download:                    \n"
 "                    "
+
+#: templates/component_list/components.html:125
+msgid "Excel-Tabelle zum Download"
+msgstr "Excel spreadsheet for download"
 
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:89
 #: templates/user_integration/userEngagementDetailsRightColumn.html:46
@@ -3675,10 +3700,8 @@ msgid "Absteigend"
 msgstr "Descending"
 
 #: templates/partials/search-bar.html:158
-#, fuzzy
-#| msgid "Detailansicht zum Bild"
 msgid "Detail Ansicht"
-msgstr "Detailed view of the image"
+msgstr "Details view"
 
 #: templates/partials/search-bar.html:162
 msgid "Vergleichsmodus"
