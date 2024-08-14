@@ -25,14 +25,19 @@ class Component(models.Model):
     lifetime = models.IntegerField(blank=True, null=True)
     specificGlobalWarmingPotential = models.FloatField(blank=True, null=True)
     energyConsumptionUsePhaseActive = models.FloatField(blank=True, null=True)
+    powerUseCasePhaseActiveSuperscript = models.CharField(max_length=100, blank=True, null=True)
     energyConsumptionUsePhasePassive = models.FloatField(blank=True, null=True)
     globalWarmingPotentialProduction = models.FloatField(blank=True, null=True)
+    globalWarmingPotentialProdSup = models.CharField(max_length=100, blank=True, null=True)
+
     globalWarmingPotentialUsePhase = models.FloatField(blank=True, null=True)
+    globalWarmingPotentialUsePhaseSup = models.CharField(max_length=100, blank=True, null=True)
+
     globalWarmingPotentialEndOfLife = models.FloatField(blank=True, null=True)
     furtherInformationNotes = models.TextField(blank=True)
     sources = models.TextField(blank=True, null=True)
     operationTime = models.IntegerField(blank=True, null=True)
-
+    operationTimeSup = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.componentClass.componentClass
 
