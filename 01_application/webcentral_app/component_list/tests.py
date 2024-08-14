@@ -7,6 +7,8 @@ from .models import (
     ComponentClass,
 )
 
+from component_list.data_import import DataImportApp
+
 # Create your tests here.
 class TestRounding(TestCase):
     """This testclass tests the rounding functionality when 
@@ -65,6 +67,12 @@ class TestDataImport(TestCase):
         sensorComponents = Component.objects.filter(category__category_de="Sensorik")
         self.assertGreaterEqual(len(sensorComponents), 9)
 
+        componentListDataImport = DataImportApp("../../02_work_doc/01_daten/12_component_list/componentList_oneSheet.xlsx")
+        
+        header, data = componentListDataImport.load() 
+
         self.assertEqual(sensorComponents[0].category.category_en, "Sensor Technology")
-        self.assertIsNotNone(sensorComponents[0].description_en)
-        self.assertIsNotNone(sensorComponents[0].furtherInformationNotes_en)
+        for row in data:
+            self.assertGreaterEqual(len(Component.objects.filter(description_en=row[header.index("Beschreibung__en")])), 1)
+            self.assertGreaterEqual(len(Component.objects.filter(furtherInformationNotes_en=row[header.index("Weitere Informationen / Anmerkungen__en")])), 1)
+
