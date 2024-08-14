@@ -149,7 +149,7 @@ def components(request):
                 "description": "",
             },
             {
-                "objectReference": "furtherInformationNotes",
+                "objectReference": "furtherInformationNotesRendered",
                 "description": _("Weitere Informationen"),
             },
             {
@@ -187,7 +187,7 @@ def components(request):
                 "objectReference":
                 "energyConsumptionUsePhasePassiveRounded",
                 "description":
-                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+                _("Leistung Nutzungsphase (passiv/ Stand-by; in W)"),
             },
             {
                 "objectReference": "globalWarmingPotentialProductionRounded",
@@ -203,6 +203,11 @@ def components(request):
                 "description":
                 _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
+            {
+                "objectReference": "operationTime",
+                "description":
+                _("Betriebsdauer (h/Jahr)"),
+            },         
         ],
         "optionList": [
             {

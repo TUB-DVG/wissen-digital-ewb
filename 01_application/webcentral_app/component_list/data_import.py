@@ -135,7 +135,7 @@ class DataImportApp(DataImport):
             globalWarmingPotentialEndOfLife=globalWarmingPotentialEndOfLife,
             furtherInformationNotes=furtherInformationNotes,
             sources=sources,
-            yearOfUsePerYear=yearOfUse,
+            operationTime=yearOfUse, 
         )
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)

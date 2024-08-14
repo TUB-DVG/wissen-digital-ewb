@@ -1,4 +1,5 @@
 from django.db import models
+from django.template import Template, Context
 
 class ComponentClass(models.Model):
     componentClass = models.CharField(max_length=255)
@@ -33,7 +34,7 @@ class Component(models.Model):
     operationTime = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.component.componentClass
+        return self.componentClass.componentClass
 
     @property
     def energyConsumptionUsePhaseTotalRounded(self):
@@ -124,6 +125,11 @@ class Component(models.Model):
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.globalWarmingPotentialEndOfLife is not None:
             return round(self.globalWarmingPotentialEndOfLife, decimalPosToRound)
+
+    @property
+    def furtherInformationNotesRendered(self):
+        return Template(self.furtherInformationNotes.replace("\n", "")).render(Context({}))
+
 
     def _findLastDecimalPlaces(self, elementStr):
         """Find the 2 last decimal places to the furthet right. Return the decimal position
