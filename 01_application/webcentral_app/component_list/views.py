@@ -180,7 +180,7 @@ def components(request):
                 "description": _("Lebensdauer (in Jahre)"),
             },
             {
-                "objectReference": "energyConsumptionUsePhaseActiveRounded",
+                "objectReference": "energyConsumptionUsePhaseActiveRoundedSup",
                 "description": _("Leistung Nutzungsphase (akitv; in W)"),
             },
             {
@@ -190,12 +190,12 @@ def components(request):
                 _("Leistung Nutzungsphase (passiv/ Stand-by; in W)"),
             },
             {
-                "objectReference": "globalWarmingPotentialProductionRounded",
+                "objectReference": "globalWarmingPotentialProductionRoundedSub",
                 "description":
                 _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
             },
             {
-                "objectReference": "globalWarmingPotentialUsePhaseRounded",
+                "objectReference": "globalWarmingPotentialUsePhaseRoundedSub",
                 "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
             },
             {
@@ -204,7 +204,7 @@ def components(request):
                 _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
             {
-                "objectReference": "operationTime",
+                "objectReference": "operationTimeRendered",
                 "description":
                 _("Betriebsdauer (h/Jahr)"),
             },         

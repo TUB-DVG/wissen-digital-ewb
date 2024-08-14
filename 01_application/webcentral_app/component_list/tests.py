@@ -75,4 +75,9 @@ class TestDataImport(TestCase):
         for row in data:
             self.assertGreaterEqual(len(Component.objects.filter(description_en=row[header.index("Beschreibung__en")])), 1)
             self.assertGreaterEqual(len(Component.objects.filter(furtherInformationNotes_en=row[header.index("Weitere Informationen / Anmerkungen__en")])), 1)
+        
+        allComponents = Component.objects.all()
+        for componentObj in allComponents:
+            self.assertIsNotNone(componentObj.globalWarmingPotentialProduction)
+            self.assertIsNotNone(componentObj.operationTime)
 
