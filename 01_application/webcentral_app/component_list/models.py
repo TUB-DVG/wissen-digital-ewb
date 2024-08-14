@@ -30,7 +30,7 @@ class Component(models.Model):
     globalWarmingPotentialEndOfLife = models.FloatField(blank=True, null=True)
     furtherInformationNotes = models.TextField(blank=True)
     sources = models.TextField(blank=True, null=True)
-    yearOfUsePerYear = models.IntegerField(blank=True, null=True)
+    operationTime = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return self.component.componentClass
