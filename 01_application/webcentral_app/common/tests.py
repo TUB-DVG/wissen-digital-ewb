@@ -8,6 +8,11 @@ from tools_over.models import (
     Tools,
     Classification,
 )
+from component_list.models import (
+    Category,
+    Component,
+    ComponentClass,
+)
 
 class TestDataImport(TestCase):
     """Test the Base `DataImport`-Class, which provides general
@@ -109,3 +114,36 @@ class TestDataImport(TestCase):
         # test import of regular attribute:
         toolObj = dataImportObj._importEnglishAttr(toolObj, header, data, "shortDescription")
         self.assertEqual(toolObj.shortDescription_en, data[header.index("shortDescription__en")])
+
+    
+    def testForeignKeyEnglishTranslationImport(self):
+        """
+
+        """
+        temp_file_obj = mock_excel_file()
+        dataImportObj = DataImport(temp_file_obj.name)
+        
+        header = ["Kategorie", "Kategorie__en", "Komponente", "Komponente__en"]
+        data = ["TestKategorie", "Test category", "Testkomponente", "Test component"]
+
+        # create a component obj with the german contnent:
+        categoryObj = Category.objects.get_or_create(
+            category=data[header.index("Kategorie")],
+        )[0]
+        componentClassObj = ComponentClass.objects.get_or_create(
+            componentClass=data[header.index("Komponente")],
+        )[0]
+        componentObj = Component.objects.get_or_create(
+            category=categoryObj,
+            component=componentClassObj,
+        )[0]
+        componentClassField = Component._meta.get_field("component")
+        categoryField = Component._meta.get_field("category")
+
+        componentObjReturned = dataImportObj._importEnglishForeignKeyRel(componentObj, header, data, "Komponente", "component")
+        componentObjReturned = dataImportObj._importEnglishForeignKeyRel(componentObj, header, data, "Kategorie", "category")
+
+        self.assertEqaul(componentObjReturned.category.category_en, data[header.index("Kategorie__en")])
+        self.assertEqaul(componentObjReturned.componentClass.componentClass_en, data[header.index("Komponente__en")])
+
+

@@ -16,7 +16,7 @@ class Category(models.Model):
 
 class Component(models.Model):
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
-    component = models.ForeignKey("ComponentClass", on_delete=models.CASCADE)
+    componentClass = models.ForeignKey("ComponentClass", on_delete=models.CASCADE)
     description = models.TextField(blank=True, null=True)
     energyConsumptionUsePhaseTotal = models.FloatField(blank=True, null=True)
     globalWarmingPotentialTotal = models.FloatField(blank=True, null=True)

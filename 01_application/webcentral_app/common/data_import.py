@@ -252,44 +252,55 @@ class DataImport:
         """
         modelObj = apps.get_model(self.DJANGO_APP, self.DJANGO_MODEL)
         modelAttrs = [field.name for field in modelObj._meta.get_fields()]
-        breakpoint()
         for mappingKey in mapping.keys():
             englishModelAttr = mapping[mappingKey]
             attrName = englishModelAttr.replace("_en", "")
             modelAttr = modelObj._meta.get_field(attrName)
             headerAttrName = mappingKey.replace("__en", "")
+            
+            breakpoint()
             if isinstance(modelAttr, models.ManyToManyField):
-                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName)
+                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName, modelAttr)
+            elif isinstance(modelAttr, models.ForeignKey):
+                obj = self._importEnglishForeignKeyRel(obj, header, row, headerAttrName, modelAttr)
             else:
-                obj = self._importEnglishAttr(obj, header, row, headerAttrName)
+                obj = self._importEnglishAttr(obj, header, row, headerAttrName, modelAttr)
 
         return obj
     
-    def _importEnglishManyToManyRel(self, ormObj, header, row, attribute):
+    def _importEnglishForeignKeyRel(self, ormObj, header, row, headerExcel, dbAttr):
+        """Import a english translation for a attribute, which is a ForeignKey-Relation
+
+        """
+        foreignElement = getattr(ormObj, dbAttr)
+        englishTranslation = row[header.index(headerExcel + "__en")]
+        if getattr(foreignElement, dbAttr + "_en") is None:
+            setattr(foreignElement, dbAttr + "_en", englishTranslation)
+
+    def _importEnglishManyToManyRel(self, ormObj, header, row, headerExcel, dbAttr):
         """
 
         """
         germanManyToManyStr = self._correctReadInValue(
-            row[header.index(attribute)])
+            row[header.index(headerExcel)])
         englishManyToManyStr = self._correctReadInValue(
-            row[header.index(f"{attribute}__en")])
+            row[header.index(f"{headerExcel}__en")])
        
-        elementsForAttr = getattr(ormObj, attribute).all()
-        breakpoint()
+        elementsForAttr = getattr(ormObj, dbAttr).all()
         for ormRelObj in elementsForAttr:
             for indexInGerList, germanyManyToManyElement in enumerate(germanManyToManyStr):
                 if germanyManyToManyElement in str(ormRelObj):
-                    if getattr(ormRelObj, f"{attribute}_en") is None:
-                        setattr(ormRelObj, f"{attribute}_en", englishManyToManyStr[indexInGerList])
+                    if getattr(ormRelObj, f"{dbAttr}_en") is None:
+                        setattr(ormRelObj, f"{dbAttr}_en", englishManyToManyStr[indexInGerList])
                         ormRelObj.save() 
         return ormObj
 
-    def _importEnglishAttr(self, ormObj, header, row, attribute):
+    def _importEnglishAttr(self, ormObj, header, row, headerExcel, dbAttr):
         """
 
         """
-        englishTranslation = row[header.index(f"{attribute}__en")]
-        setattr(ormObj, f"{attribute}_en", englishTranslation)
+        englishTranslation = row[header.index(f"{headerExcel}__en")]
+        setattr(ormObj, f"{dbAttr}_en", englishTranslation)
 
         return ormObj
 
