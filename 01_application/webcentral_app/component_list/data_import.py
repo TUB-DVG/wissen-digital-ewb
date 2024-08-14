@@ -86,27 +86,24 @@ class DataImportApp(DataImport):
         except ValueError:
             lifetime = None
         # lifetime = row[header.index("Lifetime (in years)")]
-        try:
-            energyConsumptionUsePhaseActive = float(row[header.index(
-                "Leistung Nutzungsphase (akitv; in W)")])
-        except ValueError:
-            energyConsumptionUsePhaseActive = None
+        powerConsumptionUsePhaseActiveStr = row[header.index(
+                "Leistung Nutzungsphase (akitv; in W)")]
+        energyConsumptionUsePhaseActive, powerUseActiveSuper = self._processFloatWithCharacter(str(powerConsumptionUsePhaseActiveStr))
+
         try:
             energyConsumptionUsePhasePassive = float(row[header.index(
                 "Leistung Nutzungsphase (passiv/ Stand-by; in W)")])
         except ValueError:
             energyConsumptionUsePhasePassive = None
 
-        try:
-            globalWarmingPotentialProduction = float(row[header.index(
-                "Treibhauspotenzial (Herstellung; in kg CO2-e)")])
-        except ValueError:
-            globalWarmingPotentialProduction = None
-        try:
-            globalWarmingPotentialUsePhase = float(row[header.index(
-                "Treibhauspotenzial (Nutzung; in kg CO2-e)")])
-        except ValueError:
-            globalWarmingPotentialUsePhase = None
+        globalWarmingPotentialProductionStr = row[header.index(
+                "Treibhauspotenzial (Herstellung; in kg CO2-e)")]
+        globalWarmingPotentialProduction, potentialProductionSup = self._processFloatWithCharacter(str(globalWarmingPotentialProductionStr))
+ 
+        globalWarmingPotentialUsePhase = row[header.index(
+                "Treibhauspotenzial (Nutzung; in kg CO2-e)")]
+        globalWarmingPotentialUsePhase, potentialUseSup = self._processFloatWithCharacter(str(globalWarmingPotentialUsePhase))
+
         try:
             globalWarmingPotentialEndOfLife = float(row[header.index(
                 "Treibhauspotenzial (Entsorgung; in kg CO2-e)")])
@@ -115,10 +112,10 @@ class DataImportApp(DataImport):
         furtherInformationNotes = row[header.index(
             "Weitere Informationen / Anmerkungen")]
         sources = row[header.index("Quellen")]
-        try:
-            yearOfUse = int(row[header.index("Betriebsdauer (h/Jahr)")])
-        except:
-            yearOfUse = None
+        
+        operationTimeStr = row[header.index("Betriebsdauer (h/Jahr)")] 
+        yearOfUse, operationSup = self._processFloatWithCharacter(str(globalWarmingPotentialProductionStr))
+
         obj, created = Component.objects.get_or_create(
             category=category,
             componentClass=component,
@@ -126,16 +123,20 @@ class DataImportApp(DataImport):
             energyConsumptionUsePhaseTotal=energyConsumptionUsePhaseTotal,
             globalWarmingPotentialTotal=globalWarmingPotentialTotal,
             specificGlobalWarmingPotential=specificGlobalWarmingPotentialTotal,
+            powerUseCasePhaseActiveSuperscript=powerUseActiveSuper,
             componentWeight=componentWeight,
             lifetime=lifetime,
             energyConsumptionUsePhaseActive=energyConsumptionUsePhaseActive,
             energyConsumptionUsePhasePassive=energyConsumptionUsePhasePassive,
             globalWarmingPotentialProduction=globalWarmingPotentialProduction,
+            globalWarmingPotentialProdSup=potentialProductionSup,
             globalWarmingPotentialUsePhase=globalWarmingPotentialUsePhase,
+            globalWarmingPotentialUsePhaseSup=potentialUseSup,
             globalWarmingPotentialEndOfLife=globalWarmingPotentialEndOfLife,
             furtherInformationNotes=furtherInformationNotes,
             sources=sources,
-            operationTime=yearOfUse, 
+            operationTime=yearOfUse,
+            operationTimeSupscript=operationSup,
         )
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
@@ -165,3 +166,25 @@ class DataImportApp(DataImport):
                 return True
         
         return False
+    
+    def _processFloatWithCharacter(self, strElement):
+        """
+
+        """
+        superscript = None
+        if strElement[-1] in "abcd":
+            superscript = strElement[-1]
+            numElement = strElement[:-1]
+        else:
+            numElement = strElement
+       
+        numElement = numElement.replace(",", ".")
+        try:
+            floatNumElement = float(numElement)
+        except:
+            floatNumElement = None
+            
+
+        return floatNumElement, superscript
+
+

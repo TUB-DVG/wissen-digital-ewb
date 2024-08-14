@@ -37,7 +37,8 @@ class Component(models.Model):
     furtherInformationNotes = models.TextField(blank=True)
     sources = models.TextField(blank=True, null=True)
     operationTime = models.IntegerField(blank=True, null=True)
-    operationTimeSup = models.CharField(max_length=100, blank=True, null=True)
+    operationTimeSupscript = models.CharField(max_length=100, blank=True, null=True)
+    
     def __str__(self):
         return self.componentClass.componentClass
 
@@ -82,14 +83,18 @@ class Component(models.Model):
             return round(self.specificGlobalWarmingPotential, decimalPosToRound)
     
     @property
-    def energyConsumptionUsePhaseActiveRounded(self):
+    def energyConsumptionUsePhaseActiveRoundedSup(self):
         """Processes the FloatField and rounds 
 
         """
         stringOfFloat = str(self.energyConsumptionUsePhaseActive)
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.energyConsumptionUsePhaseActive is not None:
-            return round(self.energyConsumptionUsePhaseActive, decimalPosToRound)
+            roundedNumber = round(self.energyConsumptionUsePhaseActive, decimalPosToRound)
+            if self.powerUseCasePhaseActiveSuperscript is not None:
+                return Template(str(roundedNumber) + f"<sup class='supForNumValues'>{self.powerUseCasePhaseActiveSuperscript}</sup>").render(Context({}))
+            else:
+                return roundedNumber
 
     @property
     def energyConsumptionUsePhasePassiveRounded(self):
@@ -102,25 +107,29 @@ class Component(models.Model):
             return round(self.energyConsumptionUsePhasePassive, decimalPosToRound)
 
     @property
-    def globalWarmingPotentialProductionRounded(self):
+    def globalWarmingPotentialProductionRoundedSub(self):
         """Processes the FloatField and rounds 
 
         """
         stringOfFloat = str(self.globalWarmingPotentialProduction)
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.globalWarmingPotentialProduction is not None:
-            return round(self.globalWarmingPotentialProduction, decimalPosToRound)
+            roundedNumber = round(self.globalWarmingPotentialProduction, decimalPosToRound)
+            if self.globalWarmingPotentialProdSup is not None:
+                return Template(str(roundedNumber) + f"<sup class='supForNumValues'>{self.globalWarmingPotentialProdSup}</sup>").render(Context({}))
     
     @property
-    def globalWarmingPotentialUsePhaseRounded(self):
+    def globalWarmingPotentialUsePhaseRoundedSub(self):
         """Processes the FloatField and rounds 
 
         """
         stringOfFloat = str(self.globalWarmingPotentialUsePhase)
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.globalWarmingPotentialUsePhase is not None:
-            return round(self.globalWarmingPotentialUsePhase, decimalPosToRound)
-
+            roundedNumber = round(self.globalWarmingPotentialUsePhase, decimalPosToRound)
+            if self.globalWarmingPotentialUsePhaseSup is not None:
+                return Template(str(roundedNumber) + f"<sup class='supForNumValues'>{self.globalWarmingPotentialUsePhaseSup}</sup>").render(Context({}))
+  
     @property
     def globalWarmingPotentialEndOfLifeRounded(self):
         """Processes the FloatField and rounds 
@@ -134,6 +143,13 @@ class Component(models.Model):
     @property
     def furtherInformationNotesRendered(self):
         return Template(self.furtherInformationNotes.replace("\n", "")).render(Context({}))
+
+    @property
+    def operationTimeRendered(self):
+        
+        if self.operationTimeSupscript is not None or self.operationTimeSupscript != "":
+            return Template(str(self.operationTime) + f"<sup class='supForNumValues'>{self.operationTimeSupscript}</sup>").render(Context({}))
+
 
 
     def _findLastDecimalPlaces(self, elementStr):
