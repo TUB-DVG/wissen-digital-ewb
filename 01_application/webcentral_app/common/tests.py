@@ -57,7 +57,7 @@ class TestDataImport(TestCase):
         dummyLitStr = "Althaus, Philipp, Florian Redder, Eziama Ubachukwu, Maximilian Mork, André Xhonneux und Dirk Müller (2022)"
         litLinkName = data_import_obj._buildLiteratureIdentifier(dummyLitStr)
 
-        self.assertEqual(litLinkName, "Althaus,_Philipp,_Florian_2024")
+        self.assertEqual(litLinkName, "Althaus,_Philipp,_Florian_2022")
 
     def testImportOfEnglishTranslationForTools(self):
         """
@@ -93,8 +93,8 @@ class TestDataImport(TestCase):
         toolObj.classification.add(classificationObjOne)
         toolObj.classification.add(classificationObjTwo)
         
-        toolAfterEdit = dataImportObj._importEnglishManyToManyRel(toolObj, header, data, "focus")
-        toolAfterEdit = dataImportObj._importEnglishManyToManyRel(toolAfterEdit, header, data, "classification")
+        toolAfterEdit = dataImportObj._importEnglishManyToManyRel(toolObj, header, data, "focus", "focus")
+        toolAfterEdit = dataImportObj._importEnglishManyToManyRel(toolAfterEdit, header, data, "classification", "classification")
  
         toolOperationalAfterEdit = toolAfterEdit.focus.get(focus="betrieblich")
         self.assertEqual(toolOperationalAfterEdit.focus_en, "operational", "Focus operational object should include the english translation")
@@ -112,7 +112,7 @@ class TestDataImport(TestCase):
         # test if import of classification works:
 
         # test import of regular attribute:
-        toolObj = dataImportObj._importEnglishAttr(toolObj, header, data, "shortDescription")
+        toolObj = dataImportObj._importEnglishAttr(toolObj, header, data, "shortDescription", "shortDescription")
         self.assertEqual(toolObj.shortDescription_en, data[header.index("shortDescription__en")])
 
     
@@ -123,8 +123,8 @@ class TestDataImport(TestCase):
         temp_file_obj = mock_excel_file()
         dataImportObj = DataImport(temp_file_obj.name)
         
-        header = ["Kategorie", "Kategorie__en", "Komponente", "Komponente__en"]
-        data = ["TestKategorie", "Test category", "Testkomponente", "Test component"]
+        header = ["Kategorie", "Kategorie__en", "Komponente", "Komponente__en", "Beschreibung", "Beschreibung__en"]
+        data = ["TestKategorie", "Test category", "Testkomponente", "Test component", "Dies ist eine Beschreibung.", "This is a description."]
 
         # create a component obj with the german contnent:
         categoryObj = Category.objects.get_or_create(
@@ -135,15 +135,15 @@ class TestDataImport(TestCase):
         )[0]
         componentObj = Component.objects.get_or_create(
             category=categoryObj,
-            component=componentClassObj,
+            componentClass=componentClassObj,
         )[0]
-        componentClassField = Component._meta.get_field("component")
-        categoryField = Component._meta.get_field("category")
-
-        componentObjReturned = dataImportObj._importEnglishForeignKeyRel(componentObj, header, data, "Komponente", "component")
+        componentObjReturned = dataImportObj._importEnglishForeignKeyRel(componentObj, header, data, "Komponente", "componentClass")
         componentObjReturned = dataImportObj._importEnglishForeignKeyRel(componentObj, header, data, "Kategorie", "category")
 
-        self.assertEqaul(componentObjReturned.category.category_en, data[header.index("Kategorie__en")])
-        self.assertEqaul(componentObjReturned.componentClass.componentClass_en, data[header.index("Komponente__en")])
-
-
+        
+        self.assertEqual(componentObjReturned.category.category_en, data[header.index("Kategorie__en")])
+        self.assertEqual(componentObjReturned.componentClass.componentClass_en, data[header.index("Komponente__en")])
+        
+        componentObjReturned = dataImportObj._importEnglishAttr(componentObjReturned, header, data, "Beschreibung", "description") 
+        self.assertEqual(componentObjReturned.description_en, data[header.index("Beschreibung__en")])
+        

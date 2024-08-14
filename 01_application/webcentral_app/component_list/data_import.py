@@ -14,7 +14,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Component"
     MAPPING_EXCEL_DB_EN = {
         "Kategorie__en": "category_en",
-        "Komponente__en": "component_en",
+        "Komponente__en": "componentClass_en",
         "Beschreibung__en": "description_en",
         "Weitere Informationen / Anmerkungen__en": "furtherInformationNotes_en",
     }
@@ -121,7 +121,7 @@ class DataImportApp(DataImport):
             yearOfUse = None
         obj, created = Component.objects.get_or_create(
             category=category,
-            component=component,
+            componentClass=component,
             description=description,
             energyConsumptionUsePhaseTotal=energyConsumptionUsePhaseTotal,
             globalWarmingPotentialTotal=globalWarmingPotentialTotal,

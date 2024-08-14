@@ -28,7 +28,7 @@ class TestRounding(TestCase):
         exampleFloatOne = 1.00020
         componentObj = Component.objects.create(
             category=categoryObj,
-            component=componentClassObj,
+            componentClass=componentClassObj,
         )
 
         returnValueFloatOne = componentObj._findLastDecimalPlaces(str(exampleFloatOne))
@@ -66,5 +66,5 @@ class TestDataImport(TestCase):
         self.assertGreaterEqual(len(sensorComponents), 9)
 
         self.assertEqual(sensorComponents[0].category.category_en, "Sensor Technology")
-
-
+        self.assertIsNotNone(sensorComponents[0].description_en)
+        self.assertIsNotNone(sensorComponents[0].furtherInformationNotes_en)
