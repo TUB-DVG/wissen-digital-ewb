@@ -51,7 +51,7 @@ def components(request):
     searchQueryInput = searchQueryInput | Q(
         category__category__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
-        component__componentClass__icontains=searchInputValue)
+        componentClass__componentClass__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
         description__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
@@ -69,7 +69,7 @@ def components(request):
     if len(componentValues) > 0:
         for component in componentValues:
             searchQueryComponents = searchQueryComponents | Q(
-                component__componentClass__icontains=component)
+                componentClass__componentClass__icontains=component)
 
         # componentForSelectValue = ComponentClass.objects.filter(
         #     componentClass=componentValues)
@@ -87,14 +87,14 @@ def components(request):
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":
-                firstLevelDropdown = "component__componentClass"
+                firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
                 firstLevelDropdown)
         else:
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":
-                firstLevelDropdown = "component__componentClass"
+                firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
                 f"-{firstLevelDropdown}")
     else:
@@ -137,7 +137,7 @@ def components(request):
         listingShowOrCollapse,
         "elementsFirstColumn": [
             {
-                "objectReference": "component",
+                "objectReference": "componentClass",
                 "description": "",
             },
             {
@@ -163,6 +163,11 @@ def components(request):
                 "description": _("Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"),
             },
             {
+                "objectReference": "specificGlobalWarmingPotentialRounded",
+                "description": _("Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"),
+            },
+ 
+            {
                 "objectReference": "globalWarmingPotentialTotalRounded",
                 "description": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
             },
@@ -172,11 +177,11 @@ def components(request):
             },
             {
                 "objectReference": "lifetime",
-                "description": _("Lebensdauer (in Jahren)"),
+                "description": _("Lebensdauer (in Jahre)"),
             },
             {
                 "objectReference": "energyConsumptionUsePhaseActiveRounded",
-                "description": _("Energieverbrauch Nutzung (aktiv; in W)"),
+                "description": _("Leistung Nutzungsphase (akitv; in W)"),
             },
             {
                 "objectReference":
