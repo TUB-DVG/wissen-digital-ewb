@@ -258,14 +258,14 @@ class DataImport:
             modelAttr = modelObj._meta.get_field(attrName)
             headerAttrName = mappingKey.replace("__en", "")
             
-            breakpoint()
             if isinstance(modelAttr, models.ManyToManyField):
-                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName, modelAttr)
+                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName, attrName)
             elif isinstance(modelAttr, models.ForeignKey):
-                obj = self._importEnglishForeignKeyRel(obj, header, row, headerAttrName, modelAttr)
+                obj = self._importEnglishForeignKeyRel(obj, header, row, headerAttrName, attrName)
             else:
-                obj = self._importEnglishAttr(obj, header, row, headerAttrName, modelAttr)
-
+                obj = self._importEnglishAttr(obj, header, row, headerAttrName, attrName)
+        
+        obj.save()
         return obj
     
     def _importEnglishForeignKeyRel(self, ormObj, header, row, headerExcel, dbAttr):
@@ -276,6 +276,8 @@ class DataImport:
         englishTranslation = row[header.index(headerExcel + "__en")]
         if getattr(foreignElement, dbAttr + "_en") is None:
             setattr(foreignElement, dbAttr + "_en", englishTranslation)
+            foreignElement.save() 
+        return ormObj
 
     def _importEnglishManyToManyRel(self, ormObj, header, row, headerExcel, dbAttr):
         """
