@@ -165,11 +165,18 @@ def userEngagement(request):
 
 def environmentalIntegrityNegativ(request):
     """Call render function for negativ environmental integrity page."""
+    
+    if request.LANGUAGE_CODE == "de":
+        environmentalPositiveLinkText = "positive Umweltwirkungen"
+    else:
+        environmentalPositiveLinkText = "positive environmental impacts"
 
-    linkToDynamicallyRender = '<a class="ecological-font-color" href="{% url \'environmentalIntegrityNegativ\' %}">positive Umweltwirkungen</a>'
+    explanationPartOne = _("Digitale Anwendungen zeichnen sich oftmals durch")
+    linkToDynamicallyRender = ' <a class="ecological-font-color" href="{% url \'environmentalIntegrityPositiv\' %}">'+ environmentalPositiveLinkText + '</a>'
     templateObj = Template(linkToDynamicallyRender)
     renderedTemplate = templateObj.render(Context({}))
-
+    explanationPartTwo = _(""" aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden installiert werden. Aus der Summe dieser Aufwände lassen sich so die Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.
+        \nZur Bestimmung der Umweltlasten sind Hinweise zur Abschätzung daher hier in die Bereiche „Aufwände für Datenverarbeitungsprozesse“ und „Aufwände für häufig verwendete Komponenten“ unterteilt.""").replace("\n", "<br>")
     context = {
         "pathToImage":
         "img/componentList/circle-icon.svg",
@@ -178,9 +185,7 @@ def environmentalIntegrityNegativ(request):
         "showMorePresent":
         False,
         "explanaitionText":
-        _(f"""Digitale Anwendungen zeichnen sich oftmals durch {renderedTemplate} aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services ergeben sich Umweltlasten von der Rohstoffgewinnung, über den Energieverbrauch im Betrieb bis zur Entsorgung der Technologie. Die Umweltlasten digitaler Anwendungen lassen sich dabei grob in zwei Bereiche unterscheiden. Zum einen werden bei der Nutzung digitaler Technologien in Gebäuden unterschiedliche Datenverarbeitungsprozesse durchlaufen und dabei die digitale Infrastruktur in Anspruch genommen (z. B. Rechenzentren). Zum anderen müssen für die Nutzung der Daten oftmals zusätzliche Hardwarekomponenten in den Gebäuden installiert werden. Aus der Summe dieser Aufwände lassen sich so die Umweltlasten, hervorgerufen durch die digitale Anwendung, abschätzen.
-        \nZur Bestimmung der Umweltlasten sind Hinweise zur Abschätzung daher hier in die Bereiche „Aufwände für Datenverarbeitungsprozesse“ und „Aufwände für häufig verwendete Komponenten“ unterteilt."""
-          .replace("\n", "<br>")),
+        explanationPartOne + renderedTemplate + explanationPartTwo,
         "boxes": [
             {
                 "boxId":
