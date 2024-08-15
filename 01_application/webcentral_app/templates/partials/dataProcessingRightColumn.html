@@ -37,10 +37,11 @@
 </div>
 <div>
     {% blocktranslate %}
-Während der Nutzungsphase werden die entsprechenden Prozessschritte ununterbrochen von Komponenten der digitalen Anwendung ausgeführt. Hierbei ist anzumerken, dass die entstehenden Energieverbräuche im Betrieb, die für die Realisierung der Daten-Wertschöpfungskette notwendig sind, entsprechend zugeteilt werden müssen. Ein vereinfachendes Beispiel hierfür ist ein Temperatursensor im Gebäude, dessen Messwert alle 15 Minuten direkt von einem Arbeitsrechner im selben Gebäude abgefragt wird. Für diesen Prozessschritt (Abfrage von Sensordaten) entsteht ein entsprechender Datenaufwand und ein damit verbundener Energieverbrauch – und zwar beim Arbeitsrechner. Zusätzlich wird für den Betrieb des Sensors auch noch Energie verbraucht (z. B. batteriebetriebener kabelloser Sensor). Dieser Energieverbrauch ist wiederum der Komponente an sich zuzurechnen (siehe <a class="ecological-font-color" href="">„Aufwände für häufig verwendete Komponenten“</a>). 
+Während der Nutzungsphase werden die entsprechenden Prozessschritte ununterbrochen von Komponenten der digitalen Anwendung ausgeführt. Hierbei ist anzumerken, dass die entstehenden Energieverbräuche im Betrieb, die für die Realisierung der Daten-Wertschöpfungskette notwendig sind, entsprechend zugeteilt werden müssen. Ein vereinfachendes Beispiel hierfür ist ein Temperatursensor im Gebäude, dessen Messwert alle 15 Minuten direkt von einem Arbeitsrechner im selben Gebäude abgefragt wird. Für diesen Prozessschritt (Abfrage von Sensordaten) entsteht ein entsprechender Datenaufwand und ein damit verbundener Energieverbrauch – und zwar beim Arbeitsrechner. Zusätzlich wird für den Betrieb des Sensors auch noch Energie verbraucht (z. B. batteriebetriebener kabelloser Sensor). Dieser Energieverbrauch ist wiederum der Komponente an sich zuzurechnen (siehe 
 {% endblocktranslate %}
+<a class="ecological-font-color" href="{% url 'components' %}">„{% translate 'Aufwände für häufig verwendete Komponenten' %}“</a>). 
 </div>
-<h6>Abschätzung der Aufwände für die Datenverarbeitung</h6>
+<h6>{% translate 'Abschätzung der Aufwände für die Datenverarbeitung' %}</h6>
 <div>
     {% blocktranslate %}
   Nutzende digitaler Anwendungen kennen die Bandbreiten (Datenvolumen/Zeiteinheit) einzelner Prozessschritte häufig nicht. Für eine einfache Abschätzung des Ressourcen- und Energieaufwands für die Datenverarbeitung können die Prozessschritte aggregiert als Gesamtdatenaufwand (GB/a) der digitalen Anwendung betrachtet werden. Wenn darüber hinaus noch der Standort der Server/Rechenzentren, die Technologie für den Datentransfer und der Zweck der Nutzung des Servers/Rechenzentrums bekannt sind, können der Stromverbrauch, der kumulierte Energieaufwand und die Treibhausgasemissionen abgeschätzt werden.
@@ -59,10 +60,10 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
 </div>
 <div>
     <table style="width: 100%; table-layout: fixed;">
-        <caption>Tabelle 1:Mark-up-Faktoren für längere Übertragungsdistanzen. Gebildet aus dem Verhältnis aus der zusätzlichen Leistungsaufnahme durch längere Distanzen zur technologiespezifischen Leistungsaufnahme aller Komponenten der Zugangs- und Kernnetzwerke am Standort Deutschland. Basierend auf den Werten in (Gröger et al. 2021)</caption>
+      <caption>{% blocktranslate %}Tabelle 1:Mark-up-Faktoren für längere Übertragungsdistanzen. Gebildet aus dem Verhältnis aus der zusätzlichen Leistungsaufnahme durch längere Distanzen zur technologiespezifischen Leistungsaufnahme aller Komponenten der Zugangs- und Kernnetzwerke am Standort Deutschland. Basierend auf den Werten in (Gröger et al. 2021){% endblocktranslate %}</caption>
         <thead>
             <tr>
-                <th>Mark-up-Faktoren für längere Übertragungsdistanzen</th>
+              <th>{% translate "Mark-up-Faktoren für längere Übertragungsdistanzen" %}</th>
                 <th>VDSL</th>
                 <th>4G (LTE)</th>
                 <th>5G</th>
@@ -70,19 +71,19 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
         </thead>
         <tbody>
             <tr>
-                <td>Deutschland</td>
+              <td>{% translate "Deutschland" %}</td>
                 <td>1,00</td>
                 <td>1,00</td>
                 <td>1,00</td>
             </tr>
             <tr>
-                <td>Europa (außer DE)</td>
+              <td>{% translate "Europa (außer DE)" %}</td>
                 <td>1,18</td>
                 <td>1,03</td>
                 <td>1,10</td>
             </tr>
             <tr>
-                <td>USA/Asien</td>
+              <td>{% translate "USA/Asien" %}</td>
                 <td>1,61</td>
                 <td>1,11</td>
                 <td>1,34</td>
@@ -92,12 +93,12 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
 </div>
 <div style="display: flex; justify-content: space-around;">
     <table style="width: 100%; table-layout: fixed;">
-        <caption>Tabelle 2: Übersicht des standortabhängigen Stromverbrauchs und der Treibhausgasemissionen, die die technologieabhängige Übertragung von einem GB verursachen.</caption>
+      <caption>{% blocktranslate %}Tabelle 2: Übersicht des standortabhängigen Stromverbrauchs und der Treibhausgasemissionen, die die technologieabhängige Übertragung von einem GB verursachen.{% endblocktranslate %}</caption>
         <tr>
             <tbody>
                 <td></td>
-                <td colspan="3">Energieverbrauch (Strom) Datenübertragung [kWh/GB]</td>
-                <td colspan="3">Treibhausgasemissionen Datenübertragung [kg CO<sub>2eq</sub>/GB]</td>
+                <td colspan="3">{% translate "Energieverbrauch (Strom) Datenübertragung [kWh/GB]" %}</td>
+                <td colspan="3">{% translate "Treibhausgasemissionen Datenübertragung [kg CO<sub>2eq</sub>/GB]" %}</td>
             </tbody>
         </tr>
         <thead>
@@ -113,7 +114,7 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
         </thead>
         <tbody>
             <tr>
-                <td>Deutschland</td>
+              <td>{% translate "Deutschland" %}</td>
                 <td>0,062</td>
                 <td>0,092</td>
                 <td>0,061</td>
@@ -122,7 +123,7 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
                 <td>0,030</td>
             </tr>
             <tr>
-                <td>Europa (außer DE)</td>
+              <td>{% translate "Europa (außer DE)" %}</td>
                 <td>0,071</td>
                 <td>0,093</td>
                 <td>0,066</td>
@@ -131,7 +132,7 @@ Als Stromverbrauch des Kernnetzes wurde ein Basiswert von 52 Wh/GB angenommen (
                 <td>0,017</td>
             </tr>
             <tr>
-                <td>USA/Asien</td>
+              <td>{% translate "USA/Asien" %}</td>
                 <td>0,094</td>
                 <td>0,097</td>
                 <td>0,079</td>
@@ -153,49 +154,49 @@ Häufige Dienste, für die digitale Anwendungen in Rechenzentren in Forschungspr
 {% endblocktranslate %}
 </div>
 <div>
-    Im Folgenden wird die Berechnung der Kennwerte für die Abschätzung des Energie- und Ressourcenaufwands anhand der Use-Cases beschrieben:
+  {% blocktranslate %}Im Folgenden wird die Berechnung der Kennwerte für die Abschätzung des Energie- und Ressourcenaufwands anhand der Use-Cases beschrieben: {% endblocktranslate %}
     <ol>
         <li>
-          CO2-Fußabruck der Rechenzentren basierend auf den Arbeiten von Gröger et al. 2021: Die Komponenten/Ressourcen von unterschiedlichen Rechenzentren wurden in die Kategorien Server, Speicher, Netzwerk und Infrastruktur aufgeteilt und deren Energieverbrauch quantifiziert. Die Rechenzentren, in denen der jeweilige Use-Case zur Anwendung kommt, unterscheiden sich hinsichtlich ihrer Kennwerte recht stark voneinander. Für den Fall „Online-Storage“ wurden die Werte von vier Testrechenzentren, die in der Studie für den gleichnamigen Anwendungsfall untersucht wurden, gemittelt und auf die mittlere Speicherkapazität aller Rechenzentren bezogen. Für den Use-Case „virtuelle Maschine“ wurden in Anlehnung an den Anwendungsfall „Virtuelle Desktop Infrastruktur“ die Kennwerte zweier Rechenzentren einer Bundesbehörde verwendet. Bei einer virtuellen Desktop Infrastruktur laufen sowohl das Betriebssystem als auch die Softwareanwendungen auf dem Rechenzentrum. Es bedarf damit lediglich eines vergleichbar ressourcenarmen Computers (i.e. es werden keine aufwändigen Prozesse auf dem Computer selbst ausgeführt), der den Zugang zum Rechenzentrum herstellen sowie die Ein- und Ausgaben verarbeiten/anzeigen muss. Für die typischen Anwendungen einer Bundesbehörde berechnen die Autoren von Green Cloud Computing einen jährlichen CO2-Fußabdruck von 59 kg CO<sub>2eq</sub>/user. Zudem gehen die Autoren davon aus, dass die Nutzung der virtuellen Infrastruktur durch die 890 User ca. 9 % der Speicherkapazität bindet, die auch physisch allokiert werden können. Bei einer Gesamtspeicherkapazität von 213,6 TB entfallen somit 19,3 TB auf die Nutzung der virtuellen Infrastruktur bzw. 21,6 GB/User. Geht man davon aus, dass sich alle anderen Prozesse (Server, Infrastruktur, Netzwerk – die Allokationsfaktoren sind in der Studie für alle Anteile ähnlich) proportional mit der Speicherkapazität ändern und das ein Forschungsprojekt einem User gleichkommt, so lässt sich der CO2-Fußabdruck über den Quotienten des Datenaufwands und der GB/User des Use-Cases ausdrücken. Wenn beispielsweise ein Projekt 10 GB/a an Datenaufwand besitzt, ergäbe sich nach dieser Schätzung ein CO2-Fußabdruck von 27,3 kg CO2eq/a (10 GB/a / 21,6 GB/a * 59 kg CO2eq/a).
+          {% blocktranslate %}CO2-Fußabruck der Rechenzentren basierend auf den Arbeiten von Gröger et al. 2021: Die Komponenten/Ressourcen von unterschiedlichen Rechenzentren wurden in die Kategorien Server, Speicher, Netzwerk und Infrastruktur aufgeteilt und deren Energieverbrauch quantifiziert. Die Rechenzentren, in denen der jeweilige Use-Case zur Anwendung kommt, unterscheiden sich hinsichtlich ihrer Kennwerte recht stark voneinander. Für den Fall „Online-Storage“ wurden die Werte von vier Testrechenzentren, die in der Studie für den gleichnamigen Anwendungsfall untersucht wurden, gemittelt und auf die mittlere Speicherkapazität aller Rechenzentren bezogen. Für den Use-Case „virtuelle Maschine“ wurden in Anlehnung an den Anwendungsfall „Virtuelle Desktop Infrastruktur“ die Kennwerte zweier Rechenzentren einer Bundesbehörde verwendet. Bei einer virtuellen Desktop Infrastruktur laufen sowohl das Betriebssystem als auch die Softwareanwendungen auf dem Rechenzentrum. Es bedarf damit lediglich eines vergleichbar ressourcenarmen Computers (i.e. es werden keine aufwändigen Prozesse auf dem Computer selbst ausgeführt), der den Zugang zum Rechenzentrum herstellen sowie die Ein- und Ausgaben verarbeiten/anzeigen muss. Für die typischen Anwendungen einer Bundesbehörde berechnen die Autoren von Green Cloud Computing einen jährlichen CO2-Fußabdruck von 59 kg CO<sub>2eq</sub>/user. Zudem gehen die Autoren davon aus, dass die Nutzung der virtuellen Infrastruktur durch die 890 User ca. 9 % der Speicherkapazität bindet, die auch physisch allokiert werden können. Bei einer Gesamtspeicherkapazität von 213,6 TB entfallen somit 19,3 TB auf die Nutzung der virtuellen Infrastruktur bzw. 21,6 GB/User. Geht man davon aus, dass sich alle anderen Prozesse (Server, Infrastruktur, Netzwerk – die Allokationsfaktoren sind in der Studie für alle Anteile ähnlich) proportional mit der Speicherkapazität ändern und das ein Forschungsprojekt einem User gleichkommt, so lässt sich der CO2-Fußabdruck über den Quotienten des Datenaufwands und der GB/User des Use-Cases ausdrücken. Wenn beispielsweise ein Projekt 10 GB/a an Datenaufwand besitzt, ergäbe sich nach dieser Schätzung ein CO2-Fußabdruck von 27,3 kg CO2eq/a (10 GB/a / 21,6 GB/a * 59 kg CO2eq/a). {% endblocktranslate %}
         </li>
         <li>
-          Berechnung des kumulierten Energiebedarfs (KEA) aus dem CO2-Fußabdruck: Der CO2-Fußabdruck und der KEA sind eng miteinander verbunden. Da in allen Fällen angenommen wird, dass die involvierten Prozesse für die Lebensphasen gleich sind, ist der KEA in einer ersten Näherung über eine Konstante verknüpft. Diese wurde für die in Gröger et al. (2021) untersuchten Rechenzentren bestimmt und somit die unter 1) berechneten CO2-Fußabdrücke umgerechnet. Dabei ist anzumerken, dass die Umrechnung der THG-Emissionen maßgeblich den Emissionsfaktor des Strommixes für die Nutzungsphase enthält. In den hier aufgeführten Kennwerten ist demnach ein höherer, weil älterer Emissionsfaktor für Strom enthalten (0,635 kg CO<sub>2eq</sub>/kWh), weshalb die Angaben als eher konservativ zu betrachten sind. Da sich die Use-Cases in der Green Cloud Computing Studie nur auf einen Standort (Deutschland) der Server beziehen, wurde der kumulierte Energiebedarf an anderen Standorten (EU und USA) aus dem abgeschätzten Stromverbrauch im Rechenzentrum angenähert (siehe Tabelle 3).
+          {% blocktranslate %}Berechnung des kumulierten Energiebedarfs (KEA) aus dem CO2-Fußabdruck: Der CO2-Fußabdruck und der KEA sind eng miteinander verbunden. Da in allen Fällen angenommen wird, dass die involvierten Prozesse für die Lebensphasen gleich sind, ist der KEA in einer ersten Näherung über eine Konstante verknüpft. Diese wurde für die in Gröger et al. (2021) untersuchten Rechenzentren bestimmt und somit die unter 1) berechneten CO2-Fußabdrücke umgerechnet. Dabei ist anzumerken, dass die Umrechnung der THG-Emissionen maßgeblich den Emissionsfaktor des Strommixes für die Nutzungsphase enthält. In den hier aufgeführten Kennwerten ist demnach ein höherer, weil älterer Emissionsfaktor für Strom enthalten (0,635 kg CO<sub>2eq</sub>/kWh), weshalb die Angaben als eher konservativ zu betrachten sind. Da sich die Use-Cases in der Green Cloud Computing Studie nur auf einen Standort (Deutschland) der Server beziehen, wurde der kumulierte Energiebedarf an anderen Standorten (EU und USA) aus dem abgeschätzten Stromverbrauch im Rechenzentrum angenähert (siehe Tabelle 3). {% endblocktranslate %}
         </li>
         <li>
-            Abschätzung des Stromverbrauchs der Rechenzentren während der Nutzungsphase: Aufgeteilt nach Lebenszyklusphase entstammt der Großteil der CO2-Emissionen aus dem Betrieb des Rechenzentrums. Obwohl auch hier anzumerken ist, dass die Verteilung der Emissionen auf Herstellung und Nutzung stark abhängig vom Rechenzentrum ist. Nichtdestotrotz, hat damit der Stromverbrauch und dessen Zusammensetzung nach Energieträger maßgeblichen Einfluss auf den CO2-Fußabdruck. Die Wichtigkeit der Energieeffizienz in Rechenzentren wird daher auch im Energieeffizienzgesetz (EnEfG) berücksichtigt – wenn auch nur für verhältnismäßig große Rechenzentren. Der Stromverbrauch kann aus dem kumulierten Energieverbrauch und dem standortabhängigen Primärenergiefaktor für Strom abgeschätzt werden. Für die Abschätzung des kumulierten Energieverbrauchs an anderen Standorten (EU, USA) wird angenommen, dass der absolute Stromverbrauch unabhängig vom Standort des Rechenzentrums ist (Vernachlässigung von externen Einflüssen wie Wetter).
+          {% blocktranslate %}Abschätzung des Stromverbrauchs der Rechenzentren während der Nutzungsphase: Aufgeteilt nach Lebenszyklusphase entstammt der Großteil der CO2-Emissionen aus dem Betrieb des Rechenzentrums. Obwohl auch hier anzumerken ist, dass die Verteilung der Emissionen auf Herstellung und Nutzung stark abhängig vom Rechenzentrum ist. Nichtdestotrotz, hat damit der Stromverbrauch und dessen Zusammensetzung nach Energieträger maßgeblichen Einfluss auf den CO2-Fußabdruck. Die Wichtigkeit der Energieeffizienz in Rechenzentren wird daher auch im Energieeffizienzgesetz (EnEfG) berücksichtigt – wenn auch nur für verhältnismäßig große Rechenzentren. Der Stromverbrauch kann aus dem kumulierten Energieverbrauch und dem standortabhängigen Primärenergiefaktor für Strom abgeschätzt werden. Für die Abschätzung des kumulierten Energieverbrauchs an anderen Standorten (EU, USA) wird angenommen, dass der absolute Stromverbrauch unabhängig vom Standort des Rechenzentrums ist (Vernachlässigung von externen Einflüssen wie Wetter). {% endblocktranslate %}
         </li>
     </ol>
-    Die sich für die beiden Anwendungsfälle aus der Berechnung ergebenen Kennwerte sind in Tabelle 3 gegenübergestellt.
+    {% blocktranslate %}Die sich für die beiden Anwendungsfälle aus der Berechnung ergebenen Kennwerte sind in Tabelle 3 gegenübergestellt. {% endblocktranslate %}
 </div>
 <div>
     <table style="width: 100%; table-layout: fixed;">
-        <caption>Tabelle 3: Übersicht der standortabhängigen Treibhausgasemissionen, des Kumulierten Energieverbrauchs und des Stromverbrauchs für die Speicherung oder Aufbereitung + Speicherung von einem GB in einem Rechenzentrum. Anmerkung: je nach Rechenzentrum können sich die tatsächlichen Werte stark unterscheiden. Die hier angegeben Werte können daher nur zur Abschätzung verwendet werden. PEF = Primärenergiefaktor.</caption>
+      <caption>{% blocktranslate %}Tabelle 3: Übersicht der standortabhängigen Treibhausgasemissionen, des Kumulierten Energieverbrauchs und des Stromverbrauchs für die Speicherung oder Aufbereitung + Speicherung von einem GB in einem Rechenzentrum. Anmerkung: je nach Rechenzentrum können sich die tatsächlichen Werte stark unterscheiden. Die hier angegeben Werte können daher nur zur Abschätzung verwendet werden. PEF = Primärenergiefaktor.</caption> {% endblocktranslate %}
         <thead>
             <tr>
-                <th>Jährliche Werte für Rechenzentrum Standort Deutschland</th>
+              <th>{% blocktranslate %}Jährliche Werte für Rechenzentrum Standort Deutschland{% endblocktranslate %}</th>
                 <th>Online-Storage / Backup</th>
-                <th>Virtuelle Maschine</th>
-                <th>Anmerkungen</th>
+                <th>{% blocktranslate %}Virtuelle Maschine{% endblocktranslate %}</th>
+                <th>{% blocktranslate %}Anmerkungen{% endblocktranslate %}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-              <td>Jährliche Treibhausgasemissionen Rechenzentrum [kg CO<sub>2eq</sub>/GB]</td>
+              <td>{% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}</td>
                 <td>0,21</td>
                 <td>2,73</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Jährlicher Kumulierter Energieverbrauch Rechenzentrum [kWh_primär/GB]</td>
+              <td>{% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum [kWh_primär/GB]{% endblocktranslate %}</td>
                 <td>0,94</td>
                 <td>12,74</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Jährlicher Stromverbrauch [kWh_el/GB]</td>
+              <td>{% blocktranslate %}Jährlicher Stromverbrauch [kWh_el/GB]{% endblocktranslate %}</td>
                 <td>0,31</td>
                 <td>4,25</td>
-                <td>Angenommener PEF = 3,0</td>
+                <td>{% translate "Angenommener" %} PEF = 3,0</td>
             </tr>
         </tbody>
     </table>
@@ -203,54 +204,54 @@ Häufige Dienste, für die digitale Anwendungen in Rechenzentren in Forschungspr
         <!-- <caption></caption> -->
         <thead>
             <tr>
-                <th>Abgeschätzte Werte für Rechenzentren außerhalb Deutschlands</th>
+              <th>{% translate "Abgeschätzte Werte für Rechenzentren außerhalb Deutschlands" %}</th>
                 <th>Online-Storage / Backup</th>
-                <th>Virtuelle Maschine</th>
-                <th>Anmerkungen</th>
+                <th>{% translate "Virtuelle Maschine" %}</th>
+                <th>{% translate "Anmerkungen" %}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                  Jährliche Treibhausgasemissionen Rechenzentrum EU (außer DE) [kg CO<sub>2eq</sub>/GB]
+                  {% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum EU (außer DE) [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}
                 </td>
                 <td>0,14</td>
                 <td>1,82</td>
                 <td></td>
             </tr>
             <tr>
-              <td>Jährliche Treibhausgasemissionen Rechenzentrum USA [kg CO<sub>2eq</sub>/GB]</td>
+              <td>{% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum USA [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}</td>
                 <td>0,21</td>
                 <td>2,73</td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    Jährlicher Kumulierter Energieverbrauch Rechenzentrum EU (außer DE) [kWh_primär/GB]
+                  {% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum EU (außer DE) [kWh_primär/GB]{% endblocktranslate %}
                 </td>
                 <td>0,63</td>
                 <td>8,49</td>
-                <td>Angenommener PEF = 2,0</td>
+                <td>{% translate "Angenommener" %} PEF = 2,0</td>
             </tr>
             <tr>
                 <td>
-                    Jährlicher Kumulierter Energieverbrauch Rechenzentrum USA [kWh_primär/GB]
+                  {% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum USA [kWh_primär/GB]{% endblocktranslate %}
                 </td>
                 <td>0,94</td>
                 <td>12,74</td>
-                <td>Angenommener PEF = 3,0</td>
+                <td>{% translate "Angenommener" %} PEF = 3,0</td>
             </tr>
         </tbody>
     </table>
 </div>
 <div>
-    <h6>Hinweise zur Nutzung der Kennwerte</h6>
+  <h6>{% translate "Hinweise zur Nutzung der Kennwerte" %}</h6>
     {% blocktranslate %}
     Die oben genannten Kennwerte dienen der groben Orientierung. Die tatsächlichen Emissionen können je nach Rechenzentrum (Standort, Ausstattung, Effizienz, Strommix etc.) und – wie oben ersichtlich wird – vor allem auch auf Grund des Anwendungsfalls stark variieren. So lässt sich für die allgemeine Internetnutzung ein weitaus geringerer CO2-Fußabdruck von 0,032 kg CO<sub>2eq</sub>/GB finden (Obringer et al. 2021).  Auch sei darauf hingewiesen, dass sich Literaturwerte z.T. stark bezüglich des Energieverbrauchs / der Emissionen unterscheiden. Gerade technologische Fortschritte / Effizienzgewinne entlang der gesamten Datenwertschöpfungskette, aber auch unterschiedliche Methoden zur Berechnung der Umweltlasten führen zu variierenden Werten.  Ebenso wird die Angabe spezifischer Werte wie kWh/GB durchaus hinterfragt (Kamiya 2020). Unter anderem bewirken bei solchen Angaben rechnerische Effekte wie ein proportional stärker ansteigender Datenverkehr, dass die Datenübertragung scheinbar effizienter wird (Gröger 2020). 
 {% endblocktranslate %}
 </div>
 <div>
-    <h6>Weiterführende Literatur</h6>
+  <h6>{% translate "Weiterführende Literatur" %}</h6>
     <ul>
         <li>
             Coroama, Vlad C., Daniel Schien, Chris Preist und Lorenz M. Hilty (2015): The Energy Intensity of the Internet: Home and Access Networks. In: ICT Innovations for Sustainability, hg. v. Lorenz M. Hilty und Bernard Aebischer, S. 137–155. Cham.
