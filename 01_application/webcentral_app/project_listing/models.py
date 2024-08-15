@@ -15,7 +15,7 @@ class Subproject(models.Model):
 
     moduleAssignment=models.ForeignKey('ModuleAssignment',null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
     keywordsFirstReview=models.ForeignKey("keywords.KeywordRegisterFirstReview", null=true, on_delete=models.SET_NULL,blank=True) # One to many behaviour
-    questionnaire2021=models.ForeignKey("Questionnaire2021",null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
+    # questionnaire2021=models.ForeignKey("Questionnaire2021",null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
 
     # foerdersumme move to Enargus table, here for testing
     #foerdersumme = models.IntegerField(help_text='Foerdersumme in EUR', null=True)
@@ -25,8 +25,8 @@ class Subproject(models.Model):
     #def en_id(self):
      #   return self.enargus_daten.enargus_id
 
-class Questionnaire2021(models.Model):
-        Questionnaire2021=models.AutoField(primary_key=True ,help_text="auto generiert ID")
+# class Questionnaire2021(models.Model):
+#         Questionnaire2021=models.AutoField(primary_key=True ,help_text="auto generiert ID")
 
 class ModuleAssignment(models.Model):
     moduleAssignment_id=models.AutoField(primary_key=True,help_text="auto generiert ID")
