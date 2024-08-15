@@ -21,10 +21,23 @@ else
     exit 1
 fi
 
+HEADLESS=1
 # Set Docker container ID
 container_id=webcentral
 currentDirInContainer=$(docker exec $container_id pwd)
-
+# Parse options
+while getopts ":ab:c:" opt; do
+  case ${opt} in
+    v )
+      HEADLESS=0
+      ;;
+    \? )
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+shift $((OPTIND -1))
 # Execute different actions based on the command
 case $command in
     "build")
@@ -166,12 +179,12 @@ case $command in
             . ../testingVenv/bin/activate
             if [ -n "$3" ]; then
                 if [ -n "$4" ]; then
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py --test_file $3 --test_method $4
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py --test_file $3 --test_method $4
                 else
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py --test_file $3
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py --test_file $3
                 fi
             else 
-                siteUnderTest=http://127.0.0.1:8000 HEADLESS=1 python Test/TestSuite/TestRunner.py
+                siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py
             fi
             deactivate
             cd ../../../

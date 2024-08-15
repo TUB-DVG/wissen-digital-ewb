@@ -9,6 +9,7 @@ import urllib3
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options as Firefox_Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -43,10 +44,14 @@ class WebDriverSetup(unittest.TestCase):
         firefoxOptions.add_argument("start-maximised")
         # firefoxOptions.add_argument("--width=1920")
         # firefoxOptions.add_argument("--height=1080")
+        
         if os.environ.get("HEADLESS") == "1":
-            firefoxOptions.headless = True
+            # firefoxOptions.headless = True
+            
+            firefoxOptions.add_argument('--headless')
         self.driver = webdriver.Firefox(options=firefoxOptions)
         # self.driver.implicitly_wait(10)
+        # if os.environ.get("HEADLESS") != "1":
         self.driver.maximize_window()
 
     def tearDown(self):
