@@ -114,7 +114,7 @@ class DataImportApp(DataImport):
         sources = row[header.index("Quellen")]
         
         operationTimeStr = row[header.index("Betriebsdauer (h/Jahr)")] 
-        yearOfUse, operationSup = self._processFloatWithCharacter(str(globalWarmingPotentialProductionStr))
+        yearOfUse, operationSup = self._processFloatWithCharacter(str(operationTimeStr))
 
         obj, created = Component.objects.get_or_create(
             category=category,
