@@ -163,40 +163,40 @@ Häufige Dienste, für die digitale Anwendungen in Rechenzentren in Forschungspr
           {% blocktranslate %}Berechnung des kumulierten Energiebedarfs (KEA) aus dem CO2-Fußabdruck: Der CO2-Fußabdruck und der KEA sind eng miteinander verbunden. Da in allen Fällen angenommen wird, dass die involvierten Prozesse für die Lebensphasen gleich sind, ist der KEA in einer ersten Näherung über eine Konstante verknüpft. Diese wurde für die in Gröger et al. (2021) untersuchten Rechenzentren bestimmt und somit die unter 1) berechneten CO2-Fußabdrücke umgerechnet. Dabei ist anzumerken, dass die Umrechnung der THG-Emissionen maßgeblich den Emissionsfaktor des Strommixes für die Nutzungsphase enthält. In den hier aufgeführten Kennwerten ist demnach ein höherer, weil älterer Emissionsfaktor für Strom enthalten (0,635 kg CO<sub>2eq</sub>/kWh), weshalb die Angaben als eher konservativ zu betrachten sind. Da sich die Use-Cases in der Green Cloud Computing Studie nur auf einen Standort (Deutschland) der Server beziehen, wurde der kumulierte Energiebedarf an anderen Standorten (EU und USA) aus dem abgeschätzten Stromverbrauch im Rechenzentrum angenähert (siehe Tabelle 3). {% endblocktranslate %}
         </li>
         <li>
-            Abschätzung des Stromverbrauchs der Rechenzentren während der Nutzungsphase: Aufgeteilt nach Lebenszyklusphase entstammt der Großteil der CO2-Emissionen aus dem Betrieb des Rechenzentrums. Obwohl auch hier anzumerken ist, dass die Verteilung der Emissionen auf Herstellung und Nutzung stark abhängig vom Rechenzentrum ist. Nichtdestotrotz, hat damit der Stromverbrauch und dessen Zusammensetzung nach Energieträger maßgeblichen Einfluss auf den CO2-Fußabdruck. Die Wichtigkeit der Energieeffizienz in Rechenzentren wird daher auch im Energieeffizienzgesetz (EnEfG) berücksichtigt – wenn auch nur für verhältnismäßig große Rechenzentren. Der Stromverbrauch kann aus dem kumulierten Energieverbrauch und dem standortabhängigen Primärenergiefaktor für Strom abgeschätzt werden. Für die Abschätzung des kumulierten Energieverbrauchs an anderen Standorten (EU, USA) wird angenommen, dass der absolute Stromverbrauch unabhängig vom Standort des Rechenzentrums ist (Vernachlässigung von externen Einflüssen wie Wetter).
+          {% blocktranslate %}Abschätzung des Stromverbrauchs der Rechenzentren während der Nutzungsphase: Aufgeteilt nach Lebenszyklusphase entstammt der Großteil der CO2-Emissionen aus dem Betrieb des Rechenzentrums. Obwohl auch hier anzumerken ist, dass die Verteilung der Emissionen auf Herstellung und Nutzung stark abhängig vom Rechenzentrum ist. Nichtdestotrotz, hat damit der Stromverbrauch und dessen Zusammensetzung nach Energieträger maßgeblichen Einfluss auf den CO2-Fußabdruck. Die Wichtigkeit der Energieeffizienz in Rechenzentren wird daher auch im Energieeffizienzgesetz (EnEfG) berücksichtigt – wenn auch nur für verhältnismäßig große Rechenzentren. Der Stromverbrauch kann aus dem kumulierten Energieverbrauch und dem standortabhängigen Primärenergiefaktor für Strom abgeschätzt werden. Für die Abschätzung des kumulierten Energieverbrauchs an anderen Standorten (EU, USA) wird angenommen, dass der absolute Stromverbrauch unabhängig vom Standort des Rechenzentrums ist (Vernachlässigung von externen Einflüssen wie Wetter). {% endblocktranslate %}
         </li>
     </ol>
-    Die sich für die beiden Anwendungsfälle aus der Berechnung ergebenen Kennwerte sind in Tabelle 3 gegenübergestellt.
+    {% blocktranslate %}Die sich für die beiden Anwendungsfälle aus der Berechnung ergebenen Kennwerte sind in Tabelle 3 gegenübergestellt. {% endblocktranslate %}
 </div>
 <div>
     <table style="width: 100%; table-layout: fixed;">
-        <caption>Tabelle 3: Übersicht der standortabhängigen Treibhausgasemissionen, des Kumulierten Energieverbrauchs und des Stromverbrauchs für die Speicherung oder Aufbereitung + Speicherung von einem GB in einem Rechenzentrum. Anmerkung: je nach Rechenzentrum können sich die tatsächlichen Werte stark unterscheiden. Die hier angegeben Werte können daher nur zur Abschätzung verwendet werden. PEF = Primärenergiefaktor.</caption>
+      <caption>{% blocktranslate %}Tabelle 3: Übersicht der standortabhängigen Treibhausgasemissionen, des Kumulierten Energieverbrauchs und des Stromverbrauchs für die Speicherung oder Aufbereitung + Speicherung von einem GB in einem Rechenzentrum. Anmerkung: je nach Rechenzentrum können sich die tatsächlichen Werte stark unterscheiden. Die hier angegeben Werte können daher nur zur Abschätzung verwendet werden. PEF = Primärenergiefaktor.</caption> {% endblocktranslate %}
         <thead>
             <tr>
-                <th>Jährliche Werte für Rechenzentrum Standort Deutschland</th>
+              <th>{% blocktranslate %}Jährliche Werte für Rechenzentrum Standort Deutschland{% endblocktranslate %}</th>
                 <th>Online-Storage / Backup</th>
-                <th>Virtuelle Maschine</th>
-                <th>Anmerkungen</th>
+                <th>{% blocktranslate %}Virtuelle Maschine{% endblocktranslate %}</th>
+                <th>{% blocktranslate %}Anmerkungen{% endblocktranslate %}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-              <td>Jährliche Treibhausgasemissionen Rechenzentrum [kg CO<sub>2eq</sub>/GB]</td>
+              <td>{% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}</td>
                 <td>0,21</td>
                 <td>2,73</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Jährlicher Kumulierter Energieverbrauch Rechenzentrum [kWh_primär/GB]</td>
+              <td>{% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum [kWh_primär/GB]{% endblocktranslate %}</td>
                 <td>0,94</td>
                 <td>12,74</td>
                 <td></td>
             </tr>
             <tr>
-                <td>Jährlicher Stromverbrauch [kWh_el/GB]</td>
+              <td>{% blocktranslate %}Jährlicher Stromverbrauch [kWh_el/GB]{% endblocktranslate %}</td>
                 <td>0,31</td>
                 <td>4,25</td>
-                <td>Angenommener PEF = 3,0</td>
+                <td>{% translate "Angenommener" %} PEF = 3,0</td>
             </tr>
         </tbody>
     </table>
@@ -204,54 +204,54 @@ Häufige Dienste, für die digitale Anwendungen in Rechenzentren in Forschungspr
         <!-- <caption></caption> -->
         <thead>
             <tr>
-                <th>Abgeschätzte Werte für Rechenzentren außerhalb Deutschlands</th>
+              <th>{% translate "Abgeschätzte Werte für Rechenzentren außerhalb Deutschlands" %}</th>
                 <th>Online-Storage / Backup</th>
-                <th>Virtuelle Maschine</th>
-                <th>Anmerkungen</th>
+                <th>{% translate "Virtuelle Maschine" %}</th>
+                <th>{% translate "Anmerkungen" %}</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                  Jährliche Treibhausgasemissionen Rechenzentrum EU (außer DE) [kg CO<sub>2eq</sub>/GB]
+                  {% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum EU (außer DE) [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}
                 </td>
                 <td>0,14</td>
                 <td>1,82</td>
                 <td></td>
             </tr>
             <tr>
-              <td>Jährliche Treibhausgasemissionen Rechenzentrum USA [kg CO<sub>2eq</sub>/GB]</td>
+              <td>{% blocktranslate %}Jährliche Treibhausgasemissionen Rechenzentrum USA [kg CO<sub>2eq</sub>/GB]{% endblocktranslate %}</td>
                 <td>0,21</td>
                 <td>2,73</td>
                 <td></td>
             </tr>
             <tr>
                 <td>
-                    Jährlicher Kumulierter Energieverbrauch Rechenzentrum EU (außer DE) [kWh_primär/GB]
+                  {% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum EU (außer DE) [kWh_primär/GB]{% endblocktranslate %}
                 </td>
                 <td>0,63</td>
                 <td>8,49</td>
-                <td>Angenommener PEF = 2,0</td>
+                <td>{% translate "Angenommener" %} PEF = 2,0</td>
             </tr>
             <tr>
                 <td>
-                    Jährlicher Kumulierter Energieverbrauch Rechenzentrum USA [kWh_primär/GB]
+                  {% blocktranslate %}Jährlicher Kumulierter Energieverbrauch Rechenzentrum USA [kWh_primär/GB]{% endblocktranslate %}
                 </td>
                 <td>0,94</td>
                 <td>12,74</td>
-                <td>Angenommener PEF = 3,0</td>
+                <td>{% translate "Angenommener" %} PEF = 3,0</td>
             </tr>
         </tbody>
     </table>
 </div>
 <div>
-    <h6>Hinweise zur Nutzung der Kennwerte</h6>
+  <h6>{% translate "Hinweise zur Nutzung der Kennwerte" %}</h6>
     {% blocktranslate %}
     Die oben genannten Kennwerte dienen der groben Orientierung. Die tatsächlichen Emissionen können je nach Rechenzentrum (Standort, Ausstattung, Effizienz, Strommix etc.) und – wie oben ersichtlich wird – vor allem auch auf Grund des Anwendungsfalls stark variieren. So lässt sich für die allgemeine Internetnutzung ein weitaus geringerer CO2-Fußabdruck von 0,032 kg CO<sub>2eq</sub>/GB finden (Obringer et al. 2021).  Auch sei darauf hingewiesen, dass sich Literaturwerte z.T. stark bezüglich des Energieverbrauchs / der Emissionen unterscheiden. Gerade technologische Fortschritte / Effizienzgewinne entlang der gesamten Datenwertschöpfungskette, aber auch unterschiedliche Methoden zur Berechnung der Umweltlasten führen zu variierenden Werten.  Ebenso wird die Angabe spezifischer Werte wie kWh/GB durchaus hinterfragt (Kamiya 2020). Unter anderem bewirken bei solchen Angaben rechnerische Effekte wie ein proportional stärker ansteigender Datenverkehr, dass die Datenübertragung scheinbar effizienter wird (Gröger 2020). 
 {% endblocktranslate %}
 </div>
 <div>
-    <h6>Weiterführende Literatur</h6>
+  <h6>{% translate "Weiterführende Literatur" %}</h6>
     <ul>
         <li>
             Coroama, Vlad C., Daniel Schien, Chris Preist und Lorenz M. Hilty (2015): The Energy Intensity of the Internet: Home and Access Networks. In: ICT Innovations for Sustainability, hg. v. Lorenz M. Hilty und Bernard Aebischer, S. 137–155. Cham.
