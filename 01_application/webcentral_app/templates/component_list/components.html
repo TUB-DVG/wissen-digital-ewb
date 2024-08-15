@@ -6,20 +6,6 @@
 {% load static %}
 {% block content %}
     <style>
-    .secondaryNavbar{
-        display: flex;
-        justify-content: space-between;
-    }
-    .secondaryNavbarLeft a{
-        color: #8FDE97;
-        font-size: 15px;
-    }
-    .secondaryNavbarRight a{
-        color: #000000;
-        font-size: 15px;
-        border: 2px solid #8FDE97;
-        margin: 6.5px;
-    }
     .arrowImage{
         width: 5px;
         height: 11px;
@@ -43,8 +29,6 @@
     }
     .collapseListingRow p {
         display: flex;
-        justify-content: space-between; 
-        gap: 16px;
         flex-wrap: wrap;
     }
     .listingRowAttributeName  {
@@ -138,7 +122,7 @@
                     {% endblocktranslate %}
                 </div>
                 <div class="ecological-cards">
-                  <a class="ecological-font-color" style="font-size: 22px;" href="#">Excel-Tabelle zum Download</a>
+                  <a class="ecological-font-color" download style="font-size: 22px;" href="{% static 'downloads/EWB_Digi_Komponenten.xlsx' %}">{% translate 'Excel-Tabelle zum Download' %}</a>
                 </div>
             </div>
             <div class="searchContainer {{ focusBorder }}-cards">

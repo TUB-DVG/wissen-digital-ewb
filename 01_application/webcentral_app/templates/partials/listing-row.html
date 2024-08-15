@@ -53,7 +53,7 @@
                             {% if element.description != "" %}
                                 <span class="listingRowAttributeNames">{{ element.description }}:</span>
                             {% endif %}
-                            <span class="listingRowAttributeValues">{{ object|get_attribute:element.objectReference }}</span>
+                            <span class="listingRowAttributeValues">{% if object|get_attribute:element.objectReference %}{{ object|get_attribute:element.objectReference }}{% else %}n/a{% endif %}</span>
                         </p>
 
                     {% endfor %}
@@ -66,38 +66,13 @@
                    href="#collapseComponent{{ forloop.counter }}"
                    aria-expanded="false"
                    data-target="#collapseComponent{{ forloop.counter }}"
-                   aria-controls="collapseComponent{{ forloop.counter }}">
-                   <!--data-expanded-text="{% translate 'Zeige weniger ...' %}"-->
-                   <!--data-collapsed-text="{% translate 'Zeige mehr ...' %}"-->
+                   aria-controls="collapseComponent{{ forloop.counter }}"
+                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                   data-collapsed-text="{% translate 'Zeige mehr ...' %}">
                    </a>
             </div>
         </div>
 
     {% endfor %}
 </div>
-<div id="paginationContainer">{% include "partials/pagination.html" %}</div>
-<script>
-  var showMoreText = "{% translate 'Zeige mehr ...' %}"
-  var showLessText = "{% translate 'Zeige weniger ...' %}"
-  var showMoreElements = $("a.text-truncation-btn")
- 	
-  for (var i=0; i<showMoreElements.length; i++) {
-    if ($(showMoreElements[i]).attr("class").indexOf("show") > 0) {
-              $(showMoreElements[i]).text(showLessText)
-            }
-            else {
-              $(showMoreElements[i]).text(showMoreText)
-            }
-  }
-
-$( document ).ready(function(){
-  $("a.text-truncation-btn").on("change", function() {
-      if ($(this).attr("class").indexOf("show") > 0) {
-          $(this).text(showLessText)
-        }
-        else {
-          $(this).text(showMoreText)
-        }     
-  });
-})
-</script>
+<div id="paginationContainer" class="{{ focusBorder }}-cards">{% include "partials/pagination.html" %}</div>

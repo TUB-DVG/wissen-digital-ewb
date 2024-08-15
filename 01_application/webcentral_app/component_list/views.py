@@ -51,7 +51,7 @@ def components(request):
     searchQueryInput = searchQueryInput | Q(
         category__category__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
-        component__componentClass__icontains=searchInputValue)
+        componentClass__componentClass__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
         description__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
@@ -69,7 +69,7 @@ def components(request):
     if len(componentValues) > 0:
         for component in componentValues:
             searchQueryComponents = searchQueryComponents | Q(
-                component__componentClass__icontains=component)
+                componentClass__componentClass__icontains=component)
 
         # componentForSelectValue = ComponentClass.objects.filter(
         #     componentClass=componentValues)
@@ -87,14 +87,14 @@ def components(request):
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":
-                firstLevelDropdown = "component__componentClass"
+                firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
                 firstLevelDropdown)
         else:
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":
-                firstLevelDropdown = "component__componentClass"
+                firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
                 f"-{firstLevelDropdown}")
     else:
@@ -110,19 +110,21 @@ def components(request):
     else:
         descriptionImage = "backbone_en.svg"
 
-    linkToDataProcessingProcess = "<a class=\"ecological-font-color\" href=\"{% url 'dataProcessing' %}\">„Aufwände für Datenverarbeitungsprozesse“</a>"
+     
+    explanationFirstPart = _("Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch")
 
-    templateObj = Template(linkToDataProcessingProcess)
-    renderedTemplateObj = templateObj.render(Context({}))
-
+    explanationRaw = "{% load i18n %} <a class=\"ecological-font-color\" href=\"{% url 'dataProcessing' %}\">„{% translate 'Aufwände für Datenverarbeitungsprozesse' %}“</a>) "
+    explanationSecondPart = _("""ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
+        """).replace("\n", "<br>").replace("'", "")
+    templateObj = Template(explanationRaw)
+    explanationText = templateObj.render(Context({}))
+    
     context = {
         "renderDetailsRadio":
         True,
         "heading":
         _("Aufwände für verwendete Komponenten"),
-        "explanaitionText":
-        _(f"""Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch {renderedTemplateObj}) ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
-        """.replace("\n", "<br>")),
+        "explanaitionText": explanationFirstPart + explanationText + explanationSecondPart,
         "focusBorder":
         "ecological",
         "focusName":
@@ -137,7 +139,7 @@ def components(request):
         listingShowOrCollapse,
         "elementsFirstColumn": [
             {
-                "objectReference": "component",
+                "objectReference": "componentClass",
                 "description": "",
             },
             {
@@ -149,7 +151,7 @@ def components(request):
                 "description": "",
             },
             {
-                "objectReference": "furtherInformationNotes",
+                "objectReference": "furtherInformationNotesRendered",
                 "description": _("Weitere Informationen"),
             },
             {
@@ -159,45 +161,55 @@ def components(request):
         ],
         "elementsSecondColumn": [
             {
-                "objectReference": "energyConsumptionUsePhaseTotal",
-                "description": _("Energieverbrauch Nutzung (gesamt; in W)"),
+                "objectReference": "energyConsumptionUsePhaseTotalRounded",
+                "description": _("Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"),
             },
             {
-                "objectReference": "globalWarmingPotentialTotal",
+                "objectReference": "specificGlobalWarmingPotentialRounded",
+                "description": _("Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"),
+            },
+ 
+            {
+                "objectReference": "globalWarmingPotentialTotalRounded",
                 "description": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
             },
             {
-                "objectReference": "componentWeight",
+                "objectReference": "componentWeightRounded",
                 "description": _("Bauteilgewicht (in kg)"),
             },
             {
                 "objectReference": "lifetime",
-                "description": _("Lebensdauer (in Jahren)"),
+                "description": _("Lebensdauer (in Jahre)"),
             },
             {
-                "objectReference": "energyConsumptionUsePhaseActive",
-                "description": _("Energieverbrauch Nutzung (aktiv; in W)"),
+                "objectReference": "energyConsumptionUsePhaseActiveRoundedSup",
+                "description": _("Leistung Nutzungsphase (akitv; in W)"),
             },
             {
                 "objectReference":
-                "energyConsumptionUsePhasePassive",
+                "energyConsumptionUsePhasePassiveRounded",
                 "description":
-                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+                _("Leistung Nutzungsphase (passiv/ Stand-by; in W)"),
             },
             {
-                "objectReference": "globalWarmingPotentialProduction",
+                "objectReference": "globalWarmingPotentialProductionRoundedSub",
                 "description":
                 _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
             },
             {
-                "objectReference": "globalWarmingPotentialUsePhase",
+                "objectReference": "globalWarmingPotentialUsePhaseRoundedSub",
                 "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
             },
             {
-                "objectReference": "globalWarmingPotentialEndOfLife",
+                "objectReference": "globalWarmingPotentialEndOfLifeRounded",
                 "description":
                 _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
+            {
+                "objectReference": "operationTimeRendered",
+                "description":
+                _("Betriebsdauer (h/Jahr)"),
+            },         
         ],
         "optionList": [
             {
