@@ -70,3 +70,8 @@ This repository is licensed under [MIT License](https://mit-license.org/).
 ![Alt text](./img/BMWi_Logo_2021.svg)
 
 We gratefully acknowledge the financial support by the Federal Ministry for Economic Affairs and Climate Action (BMWK), promotional reference: 03EWB004A 
+
+# Contributors
+Falk Cudok, Felix Rehmann, Rita Streblow, Martin Tobias Degner, Siling Chen, Ibukun Odeyemi, Kaifeng Xu, Ngoc Long Nguyen, Johanna Tengler, Marius Bieker
+
+
