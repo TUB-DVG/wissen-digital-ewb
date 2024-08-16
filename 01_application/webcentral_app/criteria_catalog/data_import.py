@@ -6,6 +6,16 @@ from .models import (
 from common.data_import import DataImport
 
 class DataImportApp(DataImport):
+    DJANGO_APP = "criteria_catalog"
+    DJANGO_MODEL = "Topic"
+    MAPPING_EXCEL_DB_EN = {
+        "Kategorie__en": "category_en",
+        "Komponente__en": "componentClass_en",
+        "Beschreibung__en": "description_en",
+        "Weitere Informationen / Anmerkungen__en": "furtherInformationNotes_en",
+    }   
+    
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 

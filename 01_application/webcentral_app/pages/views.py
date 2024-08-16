@@ -8,7 +8,7 @@ from positive_environmental_impact.models import (
 from data_sufficiency.models import (
     DataSufficiency, )
 from user_integration.models import UserEngagement
-from criteriaCatalog.models import CriteriaCatalog
+from criteria_catalog.models import CriteriaCatalog
 
 
 def index(request):

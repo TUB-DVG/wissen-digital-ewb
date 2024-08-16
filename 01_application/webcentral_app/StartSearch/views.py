@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.core.paginator import Paginator
 
-from criteriaCatalog.models import (
+from criteria_catalog.models import (
     CriteriaCatalog,
     Tag, 
     Topic,
