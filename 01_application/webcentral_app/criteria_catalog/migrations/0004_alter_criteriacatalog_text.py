@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('criteriaCatalog', '0003_topic_grey'),
+        ('criteria_catalog', '0003_topic_grey'),
     ]
 
     operations = [
