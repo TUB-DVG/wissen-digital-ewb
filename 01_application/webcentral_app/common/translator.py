@@ -28,11 +28,29 @@ class Translator(DataImport):
             dataTranslated.append(self._translate(header, row, mapping))
 
 
-    def _writeToExcel(self, filename, header, data):
+    def _writeToExcel(self, filename, headerList, data, mapping):
         """Writes the content back to a .xlsx-file
 
         """
+        englishDict = {}
+        germanDict = {}
+        for headerIndex, headerElement in enumerate(headerList):
+            if headerElement in mapping.keys():
+                headerElementInExcel = headerElement.replace("__en", "")
+                englishDict[headerElementInExcel] = []
+                for row in data:
+                    englishDict[headerElementInExcel].append(row[headerIndex])
+            else:
+                germanDict[headerElement] = []
+                for row in data:
+                    germanDict[headerElement].append(row[headerIndex])
+
+        germanDf = pd.DataFrame(data=germanDict)
+        englishDf = pd.DataFrame(data=englishDict)
+            
         with open(filename, "w") a fileHandler:
+            germanDf.to_excel(fileHandler, sheet_name="German")
+            englishnDf.to_excel(fileHandler, sheet_name="English")
 
 
     def _translate(self, header, row, mapping):
