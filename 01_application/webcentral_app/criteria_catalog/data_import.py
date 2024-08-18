@@ -6,6 +6,15 @@ from .models import (
 from common.data_import import DataImport
 
 class DataImportApp(DataImport):
+    DJANGO_APP = "criteria_catalog"
+    DJANGO_MODEL = "Topic"
+    MAPPING_EXCEL_DB_EN = {
+        "ueberschrift__en": "heading_en",
+        "text__en": "text_en",
+        # "tags__en": "tags_en",
+    }   
+    
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -82,4 +91,6 @@ class DataImportApp(DataImport):
                 obj.tag.add(tagObj)
             obj.save()
 
+        if self._englishHeadersPresent(header):
+            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
 

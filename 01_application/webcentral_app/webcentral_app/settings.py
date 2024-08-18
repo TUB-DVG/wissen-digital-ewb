@@ -39,7 +39,7 @@ ALLOWED_HOSTS.extend(
 INSTALLED_APPS = [
     "modeltranslation",
     "csp",
-    "criteriaCatalog.apps.CriteriacatalogConfig",
+    "criteria_catalog.apps.CriteriacatalogConfig",
     "component_list.apps.ComponentListConfig",
     "businessModel.apps.BusinessmodelConfig",
     "positive_environmental_impact.apps.PositiveEnvironmentalImpactConfig",
