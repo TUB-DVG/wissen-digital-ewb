@@ -9,10 +9,9 @@ class DataImportApp(DataImport):
     DJANGO_APP = "criteria_catalog"
     DJANGO_MODEL = "Topic"
     MAPPING_EXCEL_DB_EN = {
-        "Kategorie__en": "category_en",
-        "Komponente__en": "componentClass_en",
-        "Beschreibung__en": "description_en",
-        "Weitere Informationen / Anmerkungen__en": "furtherInformationNotes_en",
+        "ueberschrift__en": "heading_en",
+        "text__en": "text_en",
+        # "tags__en": "tags_en",
     }   
     
 
@@ -92,4 +91,6 @@ class DataImportApp(DataImport):
                 obj.tag.add(tagObj)
             obj.save()
 
+        if self._englishHeadersPresent(header):
+            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
 
