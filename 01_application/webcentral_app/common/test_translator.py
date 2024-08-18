@@ -1,6 +1,7 @@
 import importlib
 import os
 
+from django.core.management import call_command
 from django.test import TestCase
 import pandas as pd
 
@@ -112,4 +113,32 @@ class TestTranslator(TestCase):
         self.assertEqual(len(englishDF.columns), 2)
         self.assertTrue("ueberschrift" in englishDF.columns)
         
-        os.system("rm -f testExcelFile.xlsx") 
+        os.system("rm -f testExcelFile.xlsx")
+
+    def testCommand(self):
+        """Integrationtest for the added custom management command `translate`.
+
+        """
+
+        call_command("translate", "criteria_catalog", "../../02_work_doc/01_daten/08_criteriaCatalog/integrationTestCriteriaCatalog.xlsx", "testResult.xlsx")
+
+        # open the excel file and check the translation
+        dataFrameDict = pd.from_excel("testResult.xlsx", sheet_name=None)
+        self.assertEqual(set(dataFrameDict.keys()), set(("German", "English")))
+
+        germanDF = dataFrameDict["German"]
+        expectedColumns = set(["id", "parent_id", "id2", "ueberschrift", "text", "icons", "relevant_norms", "tags", "grey"])
+
+        for expectedColumn in expectedColumns:
+            self.assertTrue(expectedColumn in germanDF.columns)
+        self.assertGreaterEqual(len(germanDF), 3)
+        
+        englishDF = dataFrameDict["English"]
+        expectedColumns = set(["ueberschrift", "text"])
+
+        for expectedColumn in expectedColumns:
+            self.assertTrue(expectedColumn in englishDF.columns)
+        self.assertGreaterEqual(len(englishDF), 3)
+
+
+

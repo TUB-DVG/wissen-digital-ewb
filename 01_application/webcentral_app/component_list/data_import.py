@@ -156,17 +156,7 @@ class DataImportApp(DataImport):
     #     environmentalimpactObj.save()
     #
     #
-    def _englishHeadersPresent(self, header: list) -> bool:
-        """Check if english translation headers are present in the
-        list of headers. If yes, then return `True` otherwise `False`
-
-        """
-        for headerItem in header:
-            if "__en" in headerItem:
-                return True
-        
-        return False
-    
+   
     def _processFloatWithCharacter(self, strElement):
         """
 

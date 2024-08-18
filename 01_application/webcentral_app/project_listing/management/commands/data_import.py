@@ -61,7 +61,7 @@ from django.conf import settings
 import numpy as np
 import pandas as pd
 
-from criteriaCatalog.models import (
+from criteria_catalog.models import (
     CriteriaCatalog,
     Topic,
     Tag,
@@ -1737,15 +1737,9 @@ class Command(BaseCommand):
         type_of_data = options["type_of_data"][0]
         data_import_module = self._checkIfInInstalledApps(type_of_data)
         
-        # instanciate the app-specific data_import class:
-        app_data_import_obj = data_import_module.DataImportApp(filePathToData)
         
                 
-
        
-
-        # elif filePathToData.endswith(".xlsx"):
-        #     header, data = self.readExcel(filePathToData)
         # else:
         #     raise CommandError(
         #         "Invalid file format. Please provide a .csv or .xlsx file.")
