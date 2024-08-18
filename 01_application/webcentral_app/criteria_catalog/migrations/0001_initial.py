@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Criteria_catalog',
+            name='CriteriaCatalog',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100)),
@@ -37,9 +37,9 @@ class Migration(migrations.Migration):
                 ('text', models.TextField()),
                 ('topicHeadingNumber', models.CharField(blank=True, null=True)),
                 ('imageFilename', models.CharField(blank=True, max_length=200, null=True)),
-                ('criteriaCatalog', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='criteriaCatalog.criteriacatalog')),
-                ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='criteriaCatalog.topic')),
-                ('tag', models.ManyToManyField(blank=True, to='criteriaCatalog.tag')),
+                ('criteriaCatalog', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='criteria_catalog.criteriaCatalog')),
+                ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='criteria_catalog.topic')),
+                ('tag', models.ManyToManyField(blank=True, to='criteria_catalog.tag')),
             ],
         ),
     ]

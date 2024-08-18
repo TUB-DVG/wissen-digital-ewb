@@ -1,6 +1,7 @@
 import os
 
 import deepl
+import pandas as pd
 
 from .data_import import DataImport
 
@@ -26,7 +27,9 @@ class Translator(DataImport):
         dataTranslated = []
         for row in data:
             dataTranslated.append(self._translate(header, row, mapping))
-
+        
+        return dataTranslated
+        
 
     def _writeToExcel(self, filename, headerList, data, mapping):
         """Writes the content back to a .xlsx-file
@@ -48,9 +51,9 @@ class Translator(DataImport):
         germanDf = pd.DataFrame(data=germanDict)
         englishDf = pd.DataFrame(data=englishDict)
             
-        with open(filename, "w") a fileHandler:
+        with pd.ExcelWriter(filename) as fileHandler:
             germanDf.to_excel(fileHandler, sheet_name="German")
-            englishnDf.to_excel(fileHandler, sheet_name="English")
+            englishDf.to_excel(fileHandler, sheet_name="English")
 
 
     def _translate(self, header, row, mapping):
