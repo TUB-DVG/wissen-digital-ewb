@@ -28,19 +28,19 @@
     gap: 8px;
     font-size: 13px;
     font-weight: 500;
-    color: $operational-color;
+    color: $operational-color !important;
 }
 
 .link-navigator__negative-legal {
     gap: 8px;
     font-size: 13px;
     font-weight: 500;
-    color: $legal-color;
+    color: $legal-color !important;
 }
 
 .link-navigator__negative-technical {
     gap: 8px;
     font-size: 13px;
     font-weight: 500;
-    color: $technical-color;
+    color: $technical-color !important;
 }
