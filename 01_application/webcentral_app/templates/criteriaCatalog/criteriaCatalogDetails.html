@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
+{% load i18n %}
   {% load static %}
   {% load format_tags %}
   <!DOCTYPE html>
@@ -181,9 +182,9 @@ button {
                  style="font-size: 16px;
                         width: 130px;
                         margin-left: 0px;
-                        padding-left: 0">Themen</div>
+                        padding-left: 0">{% translate "Themen" %}</div>
             <div class="mb-3" style="width: 106px;">
-              <div id="criterias" style="display: none; font-size: 16px;">Kriterien</div>
+              <div id="criterias" style="display: none; font-size: 16px;">{% translate "Kriterien" %}</div>
             </div>
             <div class="mb-3"
                  id="container-criteria-catalog-details"
@@ -191,7 +192,7 @@ button {
               <div id="requirementsAndRuleExamples"
                    style="display: none;
                           font-size: 16px">
-                Anforderungen und Regelbeispiele
+                {% translate "Anforderungen und Regelbeispiele" %}
               </div>
             </div>
             <div class="col-lg-3 mb-3"></div>
@@ -208,7 +209,7 @@ button {
                                cursor: pointer;
                                padding: 0px;
                                margin: 0px"
-                        id="collapseEverythingButton">Alles einklappen</button>
+                        id="collapseEverythingButton">{% translate "Alles einklappen" %}</button>
               </div>
             </div>
           </div>
@@ -220,7 +221,7 @@ button {
                 <div class="grey-box" topicId="{{ node.content.topic.id }}">
                   <div class="row">
                     <div class="col-10 heading-grey-container">
-                      <b>Relevante DSGVO-Normen</b> 
+                      <b>{% translate "Relevante DSGVO-Normen" %}</b> 
                     </div>
                     <div class="col-2">
                       <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/close.svg' %}" onclick="toggleNormsBox(this, event)" class="close-button">
