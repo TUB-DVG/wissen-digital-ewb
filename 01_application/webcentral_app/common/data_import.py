@@ -1,9 +1,11 @@
 import difflib
+import csv
 
 import pandas as pd
 from django.db.models import Model
 from django.db import models
 from django.apps import apps
+from django.db.models import ForeignKey, OneToOneField, ManyToManyField, ManyToManyRel, ManyToOneRel
 
 from user_integration.models import Literature
 
@@ -13,6 +15,8 @@ class DataImport:
 
         """
         self.path_to_file = path_to_data_file
+        self.diffStr = ""
+        
 
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call 
@@ -36,7 +40,8 @@ class DataImport:
         """
         # if its a excel file, check if 2 sheets are present:
         if self.path_to_file.endswith(".csv"):
-            header, data = self.readCSV(pathFile)
+            header, data = self.readCSV()
+            return header, data
         elif self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
             return header, data
@@ -83,6 +88,18 @@ class DataImport:
         df = df_concatenated.fillna("")
         header = list(df.columns)
         data = df.values.tolist()
+        return header, data
+
+
+    def readCSV(self):
+        """
+
+        """
+        with open(self.path_to_file, "r") as fh:
+            csvReader = csv.reader(fh, delimiter=";")
+            header = next(csvReader)
+            data = [row for row in csvReader]
+    
         return header, data
 
     def _correctReadInValue(self, readInString):
@@ -316,4 +333,29 @@ class DataImport:
                 return True
         
         return False
- 
+
+    def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
+        """Compares 2 django orm objects of same model-type and creates a diff str.
+
+        """
+        
+        diffStr = str(modelType) + ":\n"
+
+        fields = modelType._meta.get_fields()
+        
+        for field in fields:
+            
+            if not isinstance(field, (ForeignKey, OneToOneField, ManyToManyField, ManyToOneRel, ManyToManyRel)):
+                oldValue = getattr(oldObj, field.name)
+                newValue = getattr(newObj, field.name)
+                if oldValue != newValue:
+                    diffStr += f"   {field.name}: {oldValue} -> {newValue}\n"
+            elif isinstance(field, ForeignKey):
+                oldValueReference = getattr(oldObj, field.name)
+                oldValue = getattr(oldValueReference, field.foreign_related_fields[0].name)
+                
+                newValueReference =  getattr(newObj, field.name)
+                newValue = getattr(newValueReference, field.foreign_related_fields[0].name)
+                if oldValue != newValue:
+                    diffStr += f"   {field.name}: {oldValue} -> {newValue}\n"
+        self.diffStr += diffStr
