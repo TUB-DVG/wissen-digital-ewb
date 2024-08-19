@@ -123,7 +123,7 @@ class DataImportApp(DataImport):
         return newGrantRecipientObj, created
 
 
-    def getOrCreateExecutingEntity(self, row, header):
+    def getOrCreateExecutingEntity(self, row, header, oldExecutingEntityObj):
         """Gets or Creates an object of type ExecutingEntity from row
 
         This method feeds the data present in row into the django
@@ -145,13 +145,22 @@ class DataImportApp(DataImport):
         created:    bool
             Indicates, if the ExecutingEntity-object was created or not.
         """
-        objAnsAs, _ = self.getOrCreateAdress(row, header, "as")
+        oldAddressObj = None
+        if oldExecutingEntityObj is not None:
+            oldAddressObj = oldExecutingEntityObj.address
+
+        objAnsAs, _ = self.getOrCreateAdress(row, header, "as", oldAddressObj)
 
         nameFromCSV = row[header.index("Name_AS")]
-        return ExecutingEntity.objects.get_or_create(
+        newExecutingEntityObj, created = ExecutingEntity.objects.get_or_create(
             name=nameFromCSV,
             address=objAnsAs,
         )
+        
+        if oldExecutingEntityObj is not None:
+            self._compareDjangoOrmObj(ExecutingEntity, oldExecutingEntityObj, newExecutingEntityObj)
+
+        return newExecutingEntityObj, created
 
     def getOrCreateSubproject(self, header, row):
         """
@@ -169,6 +178,7 @@ class DataImportApp(DataImport):
         self,
         row: list,
         header: list,
+        oldRandDobj,
     ) -> tuple:
         """Gets or Creates an object of type RAndDPlanningCategory from the data in row
 
@@ -199,12 +209,17 @@ class DataImportApp(DataImport):
             rAndDPlanningCategoryNumber=idFromCSV,
             rAndDPlanningCategoryText=textFromCSV,
         )
+        
+        if oldRandDobj is not None:
+            self._compareDjangoOrmObj(RAndDPlanningCategory, oldRandDobj, obj)
+
         return obj, created
 
     def getOrCreatePerson(
         self,
         row: list,
         header: list,
+        oldPersonObj: Person,
     ) -> tuple:
         """Gets or Creates an object of type Person from the data in row
 
@@ -240,6 +255,9 @@ class DataImportApp(DataImport):
             title=titel,
             email=email,
         )
+        if oldPersonObj is not None:
+            self._compareDjangoOrmObj(Person, oldPersonObj, obj)
+
         return obj, created
 
     def getOrCreateFurtherFundingInformation(
