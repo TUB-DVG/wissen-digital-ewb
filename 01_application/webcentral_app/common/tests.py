@@ -45,7 +45,20 @@ class TestDataImport(TestCase):
                 foundEnglishHeaders.append(headerItem)
 
         self.assertEqual(len(foundEnglishHeaders), 30)
-    
+
+    def testCSVdataImport(self):
+        """Test if the load-data emthod of `common.data_import` returns 
+        headers and data rows as lists.
+
+        """
+        enargusCSVdataFile = "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv"
+        dataImportObj = DataImport(enargusCSVdataFile)
+
+        header, data = dataImportObj.load()
+        
+        self.assertEqual(len(header), 30)
+        self.assertEqual(len(data[0]), 30)
+        self.assertEqual(len(data), 2068)
 
     def testBuildLiteratureName(self):
         """Test the function `_buildLiteratureName`
