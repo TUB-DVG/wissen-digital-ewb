@@ -16,8 +16,8 @@ class DataImport:
         """
         self.path_to_file = path_to_data_file
         self.diffStr = ""
+        self.diffStrDict = {}
         
-
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call 
         `getOrCreate()` on each of them.
@@ -359,3 +359,15 @@ class DataImport:
                 if oldValue != newValue:
                     diffStr += f"   {field.name}: {oldValue} -> {newValue}\n"
         self.diffStr += diffStr
+        self.diffStrDict[self.dictIdentifier] = diffStr
+
+    def _writeDiffStrToDB(self):
+        """
+
+        """
+
+        for diffObj in self.diffStrDict.keys():
+            DBDiff.objects.create(
+                identifer=diffObj,
+                diffStr=self.diffStrDict[diffObj]
+            )
