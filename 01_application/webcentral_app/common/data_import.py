@@ -8,6 +8,7 @@ from django.apps import apps
 from django.db.models import ForeignKey, OneToOneField, ManyToManyField, ManyToManyRel, ManyToOneRel
 
 from user_integration.models import Literature
+from common.models import DbDiff
 
 class DataImport:
     def __init__(self, path_to_data_file):
@@ -367,7 +368,7 @@ class DataImport:
         """
 
         for diffObj in self.diffStrDict.keys():
-            DBDiff.objects.create(
-                identifer=diffObj,
+            DbDiff.objects.create(
+                identifier=diffObj,
                 diffStr=self.diffStrDict[diffObj]
             )

@@ -5,6 +5,7 @@ from django.db.models.functions import TruncDate
 from django.template.response import TemplateResponse
 from django.urls import path
 
+from .models import DbDiff
 # Register your models here.
 
 class AggregatedSessionByDay(admin.ModelAdmin):
@@ -39,4 +40,27 @@ class AggregatedSessionByDay(admin.ModelAdmin):
     #     return response
 
 admin.site.register(Session, AggregatedSessionByDay)
+
+class DbDiffAdmin(admin.ModelAdmin):
+    """Class to modify functionality of admin site for model `DbDiff`
+
+    """
+    list_display = ["identifier", "executed"]
+    ordering = ["executed"]
+    actions = ["finalizeChange"] 
+    list_filter = ["executed", "identifier"]
+    
+    @admin.action(description="Finalize selected changes")
+    def finalizeChange(self, request, queryset):
+        """Parse the `diffStr` and remove the unused object for all referenced tables.
+
+        """
+        filterForNotExecuted = queryset.filter(executed=False)
+        
+        for dbDiff in filterForNotExecuted:
+            diffStr = dbDiff.diffStr
+            splitByTable = diffStr.split("<")
+
+
+admin.site.register(DbDiff, DbDiffAdmin)
 # Define a new admin class for the aggregated session elements

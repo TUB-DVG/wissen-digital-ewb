@@ -4,6 +4,6 @@ class DbDiff(models.Model):
     """
 
     """
-    identifer = models.CharField(max_length=100)
+    identifier = models.CharField(max_length=100)
     diffStr = models.TextField()
     executed = models.BooleanField(default=False)
