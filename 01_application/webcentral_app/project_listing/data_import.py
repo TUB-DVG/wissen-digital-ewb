@@ -30,20 +30,25 @@ class DataImportApp(DataImport):
        
         # get the subproject for the enargus dataset:
 
+        self.dictIdentifier = row[header.index("FKZ")]
         subprojectObj, created = self.getOrCreateSubproject(header, row)
         
+
         enargusObj = None
         if created == False:
-            enargusObj = subprojectObj.enargus
-
-        objGrantRecipient, _ = self.getOrCreateGrantRecipient(row, header, enargusObj)
-        objExecEntity, _ = self.getOrCreateExecutingEntity(row, header)
+            enargusObj = subprojectObj.enargusData
+            self.diffStrDict[subprojectObj.referenceNumber_id] = ""
+        
+        
+        objGrantRecipient, _ = self.getOrCreateGrantRecipient(row, header, getattr(enargusObj, "objGrantRecipient", None))
+        objExecEntity, _ = self.getOrCreateExecutingEntity(row, header, getattr(enargusObj, "executingEntity", None))
         objRAndDPlanning, _ = self.getOrCreateRAndDPlanningCategory(
-            row, header)
-        objPerson, _ = self.getOrCreatePerson(row, header)
+            row, header, getattr(enargusObj, "rAndDPlanningCategory", None))
+        objPerson, _ = self.getOrCreatePerson(row, header, getattr(enargusObj, "projectLead", None))
         objFurtherFunding, _ = self.getOrCreateFurtherFundingInformation(
             row,
             header,
+            getattr(enargusObj, "furtherFundingInformation", None)
         )
 
         durationBegin = row[header.index("Laufzeitbeginn")]
@@ -69,6 +74,10 @@ class DataImportApp(DataImport):
             shortDescriptionEn=shortDescriptionEn,
             database=database,
         )
+        
+        if enargusObj is not None:
+            self._compareDjangoOrmObj(Enargus, enargusObj, obj)
+
         return obj, created
 
     def getOrCreateGrantRecipient(
@@ -166,9 +175,9 @@ class DataImportApp(DataImport):
         """
 
         """
-        referernceNumberId = row[header.index("FZK")]
+        referernceNumberId = row[header.index("FKZ")]
         obj, created = Subproject.objects.get_or_create(
-            referernceNumber_id=referernceNumberId,
+            referenceNumber_id=referernceNumberId,
         )
 
         return obj, created
@@ -264,6 +273,7 @@ class DataImportApp(DataImport):
         self,
         row: list,
         header: list,
+        oldFundingObj: FurtherFundingInformation,
     ) -> tuple:
         """Gets or Creates Research-Object according to row
 
@@ -296,6 +306,10 @@ class DataImportApp(DataImport):
             researchProgram=researchProgram,
             fundingProgram=supportProgram,
         )
+        
+        if oldFundingObj is not None:
+            self._compareDjangoOrmObj(FurtherFundingInformation, oldFundingObj, obj)
+
         return obj, created
 
     def getOrCreateAdress(
