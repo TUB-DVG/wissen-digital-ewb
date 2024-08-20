@@ -3,7 +3,7 @@ from django.core.management import call_command
 from .models import *
 
 from .data_import import DataImportApp
-from common.models import DBDiff
+from common.models import DbDiff
 
 class TestImportEnargusData(TestCase):
     """This TestCase-class tests if the import of the enargus data works as expected.
@@ -393,11 +393,11 @@ class TestImportEnargusData(TestCase):
         
         diffDictStr = {"12345": diffStr}
         importObj = DataImportApp("hallo.csv")
-        importObj.diffDictStr = diffDictStr
+        importObj.diffStrDict = diffDictStr
 
         importObj._writeDiffStrToDB()
 
-        dbDiffObjs = DBDiff.objects.all()
+        dbDiffObjs = DbDiff.objects.all()
         self.assertEqual(len(dbDiffObjs), 1)
         self.assertEqual(dbDiffObjs[0].identifier, "12345")
         self.assertTrue(dbDiffObjs[0].diffStr != "")
