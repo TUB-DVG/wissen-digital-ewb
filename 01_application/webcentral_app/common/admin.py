@@ -1,3 +1,5 @@
+import importlib
+
 from django.contrib import admin
 from django.contrib.sessions.models import Session
 from django.db.models import Count
@@ -60,7 +62,51 @@ class DbDiffAdmin(admin.ModelAdmin):
         for dbDiff in filterForNotExecuted:
             diffStr = dbDiff.diffStr
             splitByTable = diffStr.split("<")
+            for tableDiffStr in splitByTable[1:]:
+                splitByNewline = tableDiffStr.split("\n")
+                tableIdentifier = "<" + splitByNewline[0][:-1]
+                diffAttributes = splitByTable[1:]
+                idName = splitByNewline[1].split(":")[0].replace(" ", "") 
+                oldId = splitByNewline[1].split(":")[1].replace(" ", "").split("->")[0]
+                pyClass = self._getClassFromStr(tableIdentifier)
+                oldObj = pyClass.objects.get(**{idName: int(oldId)}) 
+                if not self._isObjectReferenced(oldObj):
+                    oldObj.delete()
 
+    def _isObjectReferenced(self, obj):
+        """Check if the old object is referenced anywhere and shouldnt be deleted.
+
+        """
+        model = obj.__class__
+        for relatedObject in model._meta.related_objects:
+            relatedModel = relatedObject.related_model
+            fieldName = relatedObject.field.name
+            filterKwargs = {fieldName: obj}
+        
+            if relatedModel.objects.filter(**filterKwargs).exists():
+                return True
+        return False
+
+    def _getClassFromStr(self, classStr):
+        """Return a python class object from its string representation.
+        E.g. 
+
+        classStr:   str
+            Str representation of a python class.
+
+        Returns:
+            class-object
+
+        # Example
+        For "<class 'project_listing.models.FurtherFundingInformation'>" the class 
+        `FurtherFundingInformation` is returned.
+        """
+        modulePath, className = classStr.strip("<>").split("'")[1].rsplit('.', 1)
+    
+        module = importlib.import_module(modulePath)
+    
+        return getattr(module, className)
+    
 
 admin.site.register(DbDiff, DbDiffAdmin)
 # Define a new admin class for the aggregated session elements
