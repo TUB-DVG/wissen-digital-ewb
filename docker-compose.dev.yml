@@ -1,7 +1,7 @@
 services:
     webcentral:
         build:
-            context: ${PWD}
+            context: ${PWD}/webcentral/
             dockerfile: Dockerfile
             target: dev
         command: >
