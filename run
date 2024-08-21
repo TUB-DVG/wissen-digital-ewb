@@ -125,16 +125,6 @@ case $command in
             docker exec -i database pg_dump -U ${POSTGRES_USER} ${POSTGRES_DB} > $2
         fi
         ;;
-    "execute_db_changes")
-        if [ -z "$2" ]
-        then
-            echo "No path to an input-filename is provided. Usage: ./run execute_db_changes path/to/input-filename"
-            exit 1
-        fi
-        # Get current working directory inside the webcentral container
-        currentDirInContainer=$(docker exec $container_id pwd)
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py execute_db_changes ../../$2
-        ;;
     "migrate")
         echo "Running Django migrations..."
         docker exec -it $container_id python 01_application/webcentral_app/manage.py migrate
@@ -282,6 +272,13 @@ case $command in
         ;;
     "sync_translation_fields")
         docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py sync_translation_fields 
+        ;;
+    "pre_enargus")
+        if [ $# -ne 3 ]; then
+          echo "pre_enargus: Execute the preprocessing step to convert xml-enargus data to csv-data\n./run pre_enargus <source-xml-file> <target-csv-file>"
+          exit 1
+        fi
+      docker exec -it 
         ;;
       *)
         echo "Unknown command: $command"
