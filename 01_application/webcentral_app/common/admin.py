@@ -61,17 +61,24 @@ class DbDiffAdmin(admin.ModelAdmin):
         
         for dbDiff in filterForNotExecuted:
             diffStr = dbDiff.diffStr
-            splitByTable = diffStr.split("<")
-            for tableDiffStr in splitByTable[1:]:
+            splitByTable = diffStr.split(";;")
+            for tableDiffStr in splitByTable[:-1]:
                 splitByNewline = tableDiffStr.split("\n")
-                tableIdentifier = "<" + splitByNewline[0][:-1]
+                tableIdentifier = splitByNewline[0][:-1]
                 diffAttributes = splitByTable[1:]
-                idName = splitByNewline[1].split(":")[0].replace(" ", "") 
+                try:
+                    idName = splitByNewline[1].split(":")[0].replace(" ", "") 
+                except:
+                    breakpoint()
                 oldId = splitByNewline[1].split(":")[1].replace(" ", "").split("->")[0]
                 pyClass = self._getClassFromStr(tableIdentifier)
                 oldObj = pyClass.objects.get(**{idName: int(oldId)}) 
                 if not self._isObjectReferenced(oldObj):
                     oldObj.delete()
+            
+            dbDiff.executed = True
+            dbDiff.save()
+
 
     def _isObjectReferenced(self, obj):
         """Check if the old object is referenced anywhere and shouldnt be deleted.

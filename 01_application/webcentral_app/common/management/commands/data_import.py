@@ -1056,7 +1056,7 @@ class Command(BaseCommand):
         #         "Invalid file format. Please provide a .csv or .xlsx file.")
         # pathStr, filename = os.path.split(filePathToData)
         # self.filename = filename
-        self.targetFolder = options["targetFolder"][0]
+        # self.targetFolder = options["targetFolder"][0]
 
 
         appDataImportObj = data_import_module.DataImportApp(filePathToData)
@@ -1206,4 +1206,4 @@ class Command(BaseCommand):
         parser.add_argument("type_of_data", nargs="+", type=str)
 
         parser.add_argument("pathCSV", nargs="+", type=str)
-        parser.add_argument("targetFolder", nargs="+", type=str)
+        # parser.add_argument("targetFolder", nargs="+", type=str)

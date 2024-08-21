@@ -45,6 +45,7 @@ class DataImport:
             return header, data
         elif self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
+            
             return header, data
         else:
             raise CommandError(
@@ -340,8 +341,8 @@ class DataImport:
 
         """
         
-        diffStr = str(modelType) + ":\n"
-
+        diffStrModelName = str(modelType) + ":\n"
+        diffStr = ""
         fields = modelType._meta.get_fields()
         
         for field in fields:
@@ -350,7 +351,14 @@ class DataImport:
                 oldValue = getattr(oldObj, field.name)
                 newValue = getattr(newObj, field.name)
                 if oldValue != newValue:
-                    diffStr += f"   {field.name}: {oldValue} -> {newValue}\n"
+                    if isinstance(oldValue, str):
+                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
+                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                    else:
+                        oldValueWithoutNewLine = oldValue
+                        newValueWithoutNewLine = newValue
+                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+
             elif isinstance(field, ForeignKey):
                 oldValueReference = getattr(oldObj, field.name)
                 oldValue = getattr(oldValueReference, field.foreign_related_fields[0].name)
@@ -358,17 +366,24 @@ class DataImport:
                 newValueReference =  getattr(newObj, field.name)
                 newValue = getattr(newValueReference, field.foreign_related_fields[0].name)
                 if oldValue != newValue:
-                    diffStr += f"   {field.name}: {oldValue} -> {newValue}\n"
-        self.diffStr += diffStr
-        self.diffStrDict[self.dictIdentifier] = diffStr
+                    if isinstance(oldValue, str):
+                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
+                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                    else:
+                        oldValueWithoutNewLine = oldValue
+                        newValueWithoutNewLine = newValue
+                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+       
+        if diffStr != "":
+            diffStr = diffStrModelName + diffStr + ";;"
+        self.diffStrDict[self.dictIdentifier] += diffStr
 
     def _writeDiffStrToDB(self):
         """
 
         """
 
-        for diffObj in self.diffStrDict.keys():
-            DbDiff.objects.create(
-                identifier=diffObj,
-                diffStr=self.diffStrDict[diffObj]
+        DbDiff.objects.create(
+                identifier=self.dictIdentifier,
+                diffStr=self.diffStrDict[self.dictIdentifier]
             )

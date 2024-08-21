@@ -18,11 +18,20 @@ class TestImportEnargusData(TestCase):
         call_command(
             "data_import",
             "project_listing",
-            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv",
-            ".",
+            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv",
         )
 
-    def testGetOrCreateAddress(self):
+        call_command(
+            "data_import",
+            "project_listing",
+            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv",
+
+        )
+
+        dbDiffs = DbDiff.objects.all()
+        self.assertLessEqual(len(dbDiffs), 2069)
+        
+   def testGetOrCreateAddress(self):
         """
         
         """
@@ -339,6 +348,7 @@ class TestImportEnargusData(TestCase):
         )
 
         newEnargusObj = importObj.getOrCreate(row, header, [])
+        breakpoint()
         self.assertTrue("<class 'project_listing.models.Address'>" in importObj.diffStr)
         self.assertTrue("<class 'project_listing.models.ExecutingEntity'>" in importObj.diffStr)
         self.assertTrue("<class 'project_listing.models.RAndDPlanningCategory'>" in importObj.diffStr)

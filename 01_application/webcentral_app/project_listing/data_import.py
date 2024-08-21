@@ -75,8 +75,14 @@ class DataImportApp(DataImport):
             database=database,
         )
         
+        subprojectObj.enargusData = obj
+        subprojectObj.save()
+        
         if enargusObj is not None:
             self._compareDjangoOrmObj(Enargus, enargusObj, obj)
+
+        if enargusObj is not None and self.diffStrDict[self.dictIdentifier] != "":
+            self._writeDiffStrToDB()
 
         return obj, created
 
