@@ -18,8 +18,8 @@ ENV LC_ALL de_DE.UTF-8
 FROM base AS prod
 RUN adduser --home /home/${WEBCENTRAL_UNPRIVILEGED_USER} ${WEBCENTRAL_UNPRIVILEGED_USER} -u 1000
 
-RUN mkdir 01_application
-COPY pyproject.toml README.md .
+# RUN mkdir 01_application
+COPY pyproject.toml ../README.md .
 
 RUN pip install --upgrade pip && pip install -e "." --no-cache-dir
 RUN chown -R ${WEBCENTRAL_UNPRIVILEGED_USER} /usr/local/lib/python3.10/site-packages/
@@ -35,7 +35,7 @@ FROM base AS dev
 RUN apt-get install -y gettext
 WORKDIR /webcentral/
 
-RUN mkdir 01_application
-COPY pyproject.toml README.md .
+# RUN mkdir 01_application
+COPY pyproject.toml ../README.md .
 
 RUN pip install --upgrade pip && pip install -e ".[dev,test]" --no-cache-dir

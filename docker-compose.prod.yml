@@ -13,7 +13,7 @@ services:
         command: chown -R 1000:1000 /tmp/change-ownership
     webcentral:
         build:
-            context: ${PWD}
+            context: ${PWD}/webcentral
             dockerfile: Dockerfile
             target: prod
             args:

@@ -20,7 +20,7 @@ services:
         container_name: database
     webcentral:
         build:
-            context: ${PWD}
+            context: ${PWD}/webcentral/
             dockerfile: Dockerfile
             target: base
             args:

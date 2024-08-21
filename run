@@ -49,12 +49,13 @@ case $command in
             if [ "$2" = "dev" ]; then
                 echo "Building development environment..."
                 $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml build
-                exit 0
+                
+                exit $?
             fi
             if [ "$2" = "prod" ]; then
                 echo "Building production environment..."
                 $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml build
-                exit 0
+                exit $?
             fi
         fi
         ;;

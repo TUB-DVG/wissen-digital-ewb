@@ -54,7 +54,7 @@ dependencies = [
 
 # root folder of the python/django not found automatically
 [tool.setuptools.packages.find]
-where = ["01_application"]
+where = ["."]
 #include = ["pkg*"]  # alternatively: `exclude = ["additional*"]`
 namespaces = false
 
