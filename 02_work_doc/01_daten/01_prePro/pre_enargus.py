@@ -18,14 +18,14 @@ from evaluation import EvaluationUtils
 
 # adapt actual working directory (for fix the relative depenencies)
 os.chdir(
-    '/home/tobias/Aufgaben/07_dockerWithDB/webcentral/02_work_doc/01_daten/01_prePro'
+    '/webcentral/02_work_doc/01_daten/01_prePro'
 )
 
 # load parameter files
 listCol = '02_parameter_files/col_xml2csv.csv'
 xml2csv = '02_parameter_files/col_dict_xml2csv.csv'
 
-pathXML = "../../../../../../Nextcloud/Shared/01_Enargus/Daten_von_Bosch_2023_02_24/2023-02-24_enargus.xml"
+pathXML = "2024-06-06_enargus.xml"
 
 dataframe = EvaluationUtils.readXMLEnargus(pathXML, xml2csv, listCol)
 
