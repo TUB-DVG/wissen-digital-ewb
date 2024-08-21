@@ -1,11 +1,14 @@
 import difflib
+import csv
 
 import pandas as pd
 from django.db.models import Model
 from django.db import models
 from django.apps import apps
+from django.db.models import ForeignKey, OneToOneField, ManyToManyField, ManyToManyRel, ManyToOneRel
 
 from user_integration.models import Literature
+from common.models import DbDiff
 
 class DataImport:
     def __init__(self, path_to_data_file):
@@ -13,7 +16,9 @@ class DataImport:
 
         """
         self.path_to_file = path_to_data_file
-
+        self.diffStr = ""
+        self.diffStrDict = {}
+        
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call 
         `getOrCreate()` on each of them.
@@ -36,9 +41,11 @@ class DataImport:
         """
         # if its a excel file, check if 2 sheets are present:
         if self.path_to_file.endswith(".csv"):
-            header, data = self.readCSV(pathFile)
+            header, data = self.readCSV()
+            return header, data
         elif self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
+            
             return header, data
         else:
             raise CommandError(
@@ -83,6 +90,18 @@ class DataImport:
         df = df_concatenated.fillna("")
         header = list(df.columns)
         data = df.values.tolist()
+        return header, data
+
+
+    def readCSV(self):
+        """
+
+        """
+        with open(self.path_to_file, "r") as fh:
+            csvReader = csv.reader(fh, delimiter=";")
+            header = next(csvReader)
+            data = [row for row in csvReader]
+    
         return header, data
 
     def _correctReadInValue(self, readInString):
@@ -316,4 +335,55 @@ class DataImport:
                 return True
         
         return False
- 
+
+    def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
+        """Compares 2 django orm objects of same model-type and creates a diff str.
+
+        """
+        
+        diffStrModelName = str(modelType) + ":\n"
+        diffStr = ""
+        fields = modelType._meta.get_fields()
+        
+        for field in fields:
+            
+            if not isinstance(field, (ForeignKey, OneToOneField, ManyToManyField, ManyToOneRel, ManyToManyRel)):
+                oldValue = getattr(oldObj, field.name)
+                newValue = getattr(newObj, field.name)
+                if oldValue != newValue:
+                    if isinstance(oldValue, str):
+                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
+                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                    else:
+                        oldValueWithoutNewLine = oldValue
+                        newValueWithoutNewLine = newValue
+                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+
+            elif isinstance(field, ForeignKey):
+                oldValueReference = getattr(oldObj, field.name)
+                oldValue = getattr(oldValueReference, field.foreign_related_fields[0].name)
+                
+                newValueReference =  getattr(newObj, field.name)
+                newValue = getattr(newValueReference, field.foreign_related_fields[0].name)
+                if oldValue != newValue:
+                    if isinstance(oldValue, str):
+                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
+                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                    else:
+                        oldValueWithoutNewLine = oldValue
+                        newValueWithoutNewLine = newValue
+                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+       
+        if diffStr != "":
+            diffStr = diffStrModelName + diffStr + ";;"
+        self.diffStrDict[self.dictIdentifier] += diffStr
+
+    def _writeDiffStrToDB(self):
+        """
+
+        """
+
+        DbDiff.objects.create(
+                identifier=self.dictIdentifier,
+                diffStr=self.diffStrDict[self.dictIdentifier]
+            )
