@@ -169,7 +169,7 @@ case $command in
             set +a
 
             cd webcentral/test/
-            if [-d "testing_venv"]; then
+            if [ -d "testing_venv" ]; then
               . testing_venv/bin/activate
               cd 06_system_test/
             else
@@ -186,6 +186,7 @@ case $command in
             else 
                 siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py
             fi
+            exit $?
             deactivate
             cd ../../../
         fi

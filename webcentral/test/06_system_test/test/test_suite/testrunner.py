@@ -6,29 +6,29 @@ import os
 sys.path.append(sys.path[0] + "/...")
 sys.path.append(os.getcwd())
 
-from Test.Scripts.TestMainPage import TestMainPage
-from Test.Scripts.TestDigitalTools import TestDigitalToolsPage
-from Test.Scripts.TestClickThroughAllSites import TestClickThroughSites
-from Test.Scripts.TestLastProfile import TestLastProfile
-from Test.Scripts.TestAboutPage import TestAboutPage
-from Test.Scripts.TestAdminPage import TestAdminPage
-from Test.Scripts.TestBusinessApp import TestBusinessAppPage
-from Test.Scripts.TestTechnicalStandarts import TestTechnicalStandarts
-from Test.Scripts.TestNormsPage import TestNormsPage
-from Test.Scripts.TestProtocolsPage import TestProtocolsPage
-from Test.Scripts.TestSearch import TestSearch
-from Test.Scripts.TestPublications import TestPublicationPage
-from Test.Scripts.TestComponentsList import TestComponentsList
-from Test.Scripts.TestUserEngagement import TestUserEngagement
-from Test.Scripts.TestNegativeEnvironmentalImpacts import (
+from test.scripts.test_main_page import TestMainPage
+from test.scripts.test_tools import TestDigitalToolsPage
+from test.scripts.test_click_sites import TestClickThroughSites
+from test.scripts.test_lastprofile import TestLastProfile
+from test.scripts.test_about_page import TestAboutPage
+from test.scripts.TestAdminPage import TestAdminPage
+from test.scripts.TestBusinessApp import TestBusinessAppPage
+from test.scripts.TestTechnicalStandarts import TestTechnicalStandarts
+from test.scripts.TestNormsPage import TestNormsPage
+from test.scripts.TestProtocolsPage import TestProtocolsPage
+from test.scripts.TestSearch import TestSearch
+from test.scripts.TestPublications import TestPublicationPage
+from test.scripts.TestComponentsList import TestComponentsList
+from test.scripts.TestUserEngagement import TestUserEngagement
+from test.scripts.TestNegativeEnvironmentalImpacts import (
     TestNegativeEnvironmentalImpacts, )
-from Test.Scripts.TestBusinessModels import TestBusinessModels
-from Test.Scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
-from Test.Scripts.TestCriteriaCatalog import TestCriteriaCatalog
-from Test.Scripts.TestUseCases import TestUseCases
-from Test.Scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
-from Test.Scripts.TestDataSufficiency import TestDataSufficiency
-# from Test.Scripts.TestLastprofile import TestLastprofileTab
+from test.scripts.TestBusinessModels import TestBusinessModels
+from test.scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
+from test.scripts.TestCriteriaCatalog import TestCriteriaCatalog
+from test.scripts.TestUseCases import TestUseCases
+from test.scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
+from test.scripts.TestDataSufficiency import TestDataSufficiency
+# from test.scripts.TestLastprofile import TestLastprofileTab
 import testtools as testtools
 
 if __name__ == "__main__":
