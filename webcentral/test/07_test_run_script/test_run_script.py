@@ -17,14 +17,14 @@ class TestRunScript(TestCase):
         command-line. It should expect 2 arguments.
 
         """
-        result = run(["./run pre_enargus"], stdout=PIPE, stderr=PIPE, text=True, shell=True)
+        result = run(["./run", "pre_enargus"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
         
         # if calling the command without any arguments it should exit with a error message:
         self.assertEqual(result.stdout, "pre_enargus: Execute the preprocessing step to convert xml-enargus data to csv-data\\n./run pre_enargus <source-xml-file> <target-csv-file>\n")
 
         # recall the command and give the rght number of args:
         try:
-            result = run(["/run pre_enargus webcentral/doc/01_data/01_pre_pro/2024-06-06_enargus.xml webcentral/doc/01_data/01_pre_pro/enargus_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=True)
+            result = run(["./run", "pre_enargus", "webcentral/doc/01_data/01_pre_pro/2024-06-06_enargus.xml", "webcentral/doc/01_data/01_pre_pro/enargus_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
 
         except CalledProcessError as e:
             self.fail(e.stderr)
@@ -66,10 +66,18 @@ class TestRunScript(TestCase):
             system("rm -rf webcentral/test/testing_venv")
         try:
             result = run(["./run", "test", "Selenium"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+            breakpoint()
         except CalledProcessError as e:
             self.fail(e.stderr)
         
+    def testStartMainPageSystemTest(self):
+        """Check if only the mainpage-system test can be started from the `run`-script.
 
+        """
+        try:
+            result = run(["./run", "test", "Selenium", "test_main_page"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+        except CalledProcessError as e:
+            self.fail(e.stderr)
         
 
 
