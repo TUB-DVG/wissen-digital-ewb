@@ -153,8 +153,10 @@ case $command in
     "test")
         if [ -z "$2" ]
         then
-            echo "No test-type specified. Possible types are Database, Selenium. Usage: ./run test test-type"   
-            exit 1
+            echo "test-command usage: ./run test <type> <opt1> <opt2>\ntype: Selenium"
+            echo "opt1: Optional parameter specifing which Testclass to execute"
+            echo "opt2: Optional parameter specifing the testmethod to execute"   
+            exit 0
         fi
         if [ "$2" = "Database" ]; then
             # Get current working directory inside the webcentral container
@@ -166,16 +168,23 @@ case $command in
             . ./.env
             set +a
 
-            cd 02_work_doc/10_test/06_seleniumSystemTests/
-            . ../testingVenv/bin/activate
+            cd webcentral/test/
+            if [-d "testing_venv"]; then
+              . testing_venv/bin/activate
+              cd 06_system_test/
+            else
+              python -m venv testing_venv
+              . testing_venv/bin/activate
+              pip install -r requirements_testing.txt 
+            fi
             if [ -n "$3" ]; then
                 if [ -n "$4" ]; then
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py --test_file $3 --test_method $4
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py --test_file $3 --test_method $4
                 else
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py --test_file $3
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py --test_file $3
                 fi
             else 
-                siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python Test/TestSuite/TestRunner.py
+                siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py
             fi
             deactivate
             cd ../../../
