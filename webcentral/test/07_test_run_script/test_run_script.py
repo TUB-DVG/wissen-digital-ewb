@@ -23,10 +23,18 @@ class TestRunScript(TestCase):
         self.assertEqual(result.stdout, "pre_enargus: Execute the preprocessing step to convert xml-enargus data to csv-data\\n./run pre_enargus <source-xml-file> <target-csv-file>\n")
 
         # recall the command and give the rght number of args:
-        # result = subprocess.run(["./run pre_enargus "], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, shell=True)
+        try:
+            result = run(["/run pre_enargus webcentral/doc/01_data/01_pre_pro/2024-06-06_enargus.xml webcentral/doc/01_data/01_pre_pro/enargus_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=True)
 
+        except CalledProcessError as e:
+            self.fail(e.stderr)
+        
+        # test if the csv-file was created:
+        self.assertTrue("enargus_test.csv" in listdir("webcentral/doc/01_data/01_pre_pro"))
+        system("rm -f webcentral/doc/01_data/01_pre_pro/enargus_test.csv")
+        
+        self.assertTrue("enargus_test.csv" not in listdir("webcentral/doc/01_data/01_pre_pro"))
 
-    
     def testBuildDockerCompose(self):
         """test if the docker-compose build from dev and prod works without errors.
 
