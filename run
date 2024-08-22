@@ -171,12 +171,12 @@ case $command in
             cd webcentral/test/
             if [ -d "testing_venv" ]; then
               . testing_venv/bin/activate
-              cd 06_system_test/
             else
               python -m venv testing_venv
               . testing_venv/bin/activate
               pip install -r requirements_testing.txt 
             fi
+            cd 06_system_test/
             if [ -n "$3" ]; then
                 if [ -n "$4" ]; then
                     siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py --test_file $3 --test_method $4
