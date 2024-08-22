@@ -23,13 +23,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.startPage import StartPage
-from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.AboutPage import AboutPage
-from Src.PageObject.Pages.cookieBanner import CookieBanner
-from Src.PageObject.Pages.CriteriaCatalog import (
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.startPage import StartPage
+from src.page_obj.pages.toolListPage import ToolListPage
+from src.page_obj.pages.navbar import NavBar
+from src.page_obj.pages.about_page import AboutPage
+from src.page_obj.pages.cookieBanner import CookieBanner
+from src.page_obj.pages.criteria_catalog import (
     CriteriaCatalogOverviewPage,
     CriteriaCatalogDetailsPage,
 )
