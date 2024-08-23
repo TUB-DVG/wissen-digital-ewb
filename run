@@ -179,12 +179,12 @@ case $command in
             cd 06_system_test/
             if [ -n "$3" ]; then
                 if [ -n "$4" ]; then
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py --test_file $3 --test_method $4
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python testrunner.py --test_file $3 --test_method $4
                 else
-                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py --test_file $3
+                    siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python testrunner.py --test_file $3
                 fi
             else 
-                siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python test/test_suite/testrunner.py
+                siteUnderTest=http://127.0.0.1:8000 HEADLESS=$HEADLESS python testrunner.py
             fi
             exit $?
             deactivate

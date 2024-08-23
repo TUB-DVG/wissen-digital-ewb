@@ -13,9 +13,9 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from src_page_obj.pages.cookieBanner import CookieBanner
-from src_page_obj.pages.Footer import Footer
-from src_page_obj.pages.NavBar import NavBar
+from src.page_obj.pages.cookie_banner import CookieBanner
+from src.page_obj.pages.footer import Footer
+from src.page_obj.pages.navbar import NavBar
 
 # Create tmp_dir
 temp_dir = "~/_tmp"

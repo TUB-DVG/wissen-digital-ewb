@@ -11,7 +11,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
-from Src.PageObject.Locators import Locator
+from src.page_obj.locators import Locator
 
 class Footer(object):
     """

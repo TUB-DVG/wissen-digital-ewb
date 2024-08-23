@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Locators import Locator
-from Src.PageObject.Pages.GenericPageObject import GenericPageObject
+from src.page_obj.locators import Locator
+from src.page_obj.pages.generic_page_obj import GenericPageObject
 
 class CriteriaCatalogOverviewPage(GenericPageObject):
 
