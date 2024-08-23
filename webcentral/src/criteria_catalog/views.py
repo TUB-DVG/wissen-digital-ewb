@@ -122,7 +122,7 @@ def buildCriteriaCatalog(
     criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
         request,
-        "criteriaCatalog/criteriaCatalogDetails.html",
+        "criteria_catalog/criteria_catalog_details.html",
         {
             "idOfSelectedObj": criteriaCatalogId,
             "allObjectsForQuickLinks": allCriteriaCatalogObjs,
@@ -192,7 +192,7 @@ def buildingCriteriaCatalogOpenTopic(
     criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
         request,
-        "criteriaCatalog/criteriaCatalogDetails.html",
+        "criteria_catalog/criteria_catalog_details.html",
         {
             "criteriaCatalog": criteriaCatalogObj,
             "tags": Tag.objects.all(),

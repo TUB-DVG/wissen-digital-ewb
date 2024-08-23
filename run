@@ -93,7 +93,7 @@ case $command in
     "copy_media_files_into_prod")
         echo "This command can be excuted on the server to copy all media-files into the production environment-container."
 
-        docker cp ~/src/01_application/webcentral_app/media/. webcentral:/home/$WEBCENTRAL_UNPRIVILEGED_USER/webcentral/media/
+        docker cp ~/src/media/. webcentral:/home/$WEBCENTRAL_UNPRIVILEGED_USER/webcentral/media/
         ;;
     "down")
         $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down
@@ -108,7 +108,7 @@ case $command in
         then
             # Get current working directory inside the webcentral container
             currentDirInContainer=$(docker exec $container_id pwd)
-            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py data_import ../../$2 ../../postgres/
+            docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py data_import ../../$2
         fi
         ;;
     "delete_db")
@@ -127,15 +127,15 @@ case $command in
         ;;
     "migrate")
         echo "Running Django migrations..."
-        docker exec -it $container_id python 01_application/webcentral_app/manage.py migrate
+        docker exec -it $container_id python src/manage.py migrate
         ;;
     "makemigrations")
         echo "Creating Django migrations..."
-        docker exec -it $container_id python 01_application/webcentral_app/manage.py makemigrations
+        docker exec -it $container_id python src/manage.py makemigrations
         ;;
     "shell")
         echo "Opening Django Shell..."
-        docker exec -it $container_id python 01_application/webcentral_app/manage.py shell
+        docker exec -it $container_id python src/manage.py shell
         ;;
 
     "restore_db")
@@ -160,7 +160,7 @@ case $command in
         fi
         if [ "$2" = "Database" ]; then
             # Get current working directory inside the webcentral container
-            docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py test tests/ testDatabaseFilling.checkDifferencesInDatabase
+            docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py test tests/ testDatabaseFilling.checkDifferencesInDatabase
             exit 1
         fi
         if [ "$2" = "Selenium" ]; then
@@ -272,16 +272,20 @@ case $command in
         docker exec -it $container_id bash         
         ;;
     "makemessages")         
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py makemessages -a       
+        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py makemessages -a       
+        exit $?
         ;;
     "compilemessages")         
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py compilemessages 
+        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py compilemessages 
+        exit $?
         ;;
     "update_translation_fields")
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py update_translation_fields 
+        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py update_translation_fields 
+        exit $?
         ;;
     "sync_translation_fields")
-        docker exec -w $currentDirInContainer/01_application/webcentral_app -it $container_id python manage.py sync_translation_fields 
+        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py sync_translation_fields 
+        exit $?
         ;;
     "pre_enargus")
         if [ $# -ne 3 ]; then

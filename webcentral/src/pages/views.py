@@ -334,7 +334,7 @@ def dataSufficiencyBox(request, idOfObject):
 
 def dataSecurity(request):
     """Call render function for data security page."""
-    return render(request, "pages/dataSecurity.html")
+    return render(request, "pages/data_security.html")
 
 
 def iconsAndVis(request):
@@ -356,14 +356,14 @@ def criteriaCatalog(request):
           "",
         "boxes": [{
             "pathToTemplate":
-            "criteriaCatalog/criteriaCatalogOverviewBox.html",
+            "criteria_catalog/criteria_catalog_overview_box.html",
             "objectToRender": criteriaCatalogObj,
         } for criteriaCatalogObj in criteriaCatalogObjs],
         "focusBorder":
         "legal",
     }
 
-    return render(request, "pages/criteriaCatalog.html", context)
+    return render(request, "pages/criteria_catalog.html", context)
 
 
 def impressum(request):

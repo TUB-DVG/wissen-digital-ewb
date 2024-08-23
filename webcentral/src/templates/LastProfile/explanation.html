@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Überblick über den Lastprofilgenerator{% endblock %}
+{% load i18n %}
+{% block title %}{% translate "Überblick über den Lastprofilgenerator" %}{% endblock %}
 {% block content %}
 {% load static %}
-{% load i18n %}
 <style nonce="{{request.csp_nonce}}">
   img_src {
       float: right;

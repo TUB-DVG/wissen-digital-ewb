@@ -8,6 +8,7 @@ sys.path.append(os.getcwd())
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test.scripts.test_main_page import TestMainPage
+from test.scripts.test_navbar import TestNavbar
 # from test.scripts.test_tools import TestDigitalToolsPage
 # from test.scripts.test_click_sites import TestClickThroughSites
 # from test.scripts.test_lastprofile import TestLastProfile
@@ -67,6 +68,7 @@ if __name__ == "__main__":
         testSuite = TestSuite((
             # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
             testLoader.loadTestsFromTestCase(TestMainPage),
+            testLoader.loadTestsFromTestCase(TestNavbar),
             # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
             # testLoader.loadTestsFromTestCase(TestNormsPage),
             # testLoader.loadTestsFromTestCase(TestProtocolsPage),
