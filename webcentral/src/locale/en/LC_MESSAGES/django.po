@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:31+0000\n"
+"POT-Creation-Date: 2024-08-23 12:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -484,7 +484,6 @@ msgstr "Designation"
 #: templates/TechnicalStandards/norm-detail.html:61
 #: templates/TechnicalStandards/norm-detail.html:116
 #: templates/TechnicalStandards/norm-explanation.html:24
-#: templates/norms_over/explanation.html:24
 msgid "Quelle"
 msgstr "Source"
 
@@ -1051,6 +1050,7 @@ msgstr ""
 
 #: pages/views.py:241 pages/views.py:266
 #: templates/StartSearch/StartSearch.html:320
+#: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:165
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
@@ -1171,6 +1171,10 @@ msgid ""
 "The method move_up() is deprecated and will be removed in the next release. "
 "Please use up() instead!"
 msgstr ""
+
+#: templates/LastProfile/explanation.html:3
+msgid "Überblick über den Lastprofilgenerator"
+msgstr "Overview of the load profile generator"
 
 #: templates/LastProfile/explanation.html:21
 #: templates/StartSearch/StartSearch.html:194
@@ -1709,7 +1713,6 @@ msgstr "Name and full title of the norm"
 #: templates/TechnicalStandards/explanation.html:70
 #: templates/TechnicalStandards/norm-detail.html:57
 #: templates/TechnicalStandards/norm-explanation.html:22
-#: templates/norms_over/explanation.html:22
 #: templates/tools_over/explanationApps.html:27
 #: templates/tools_over/explanationTools.html:27
 #: templates/weatherdata_over/explanation.html:24
@@ -2021,7 +2024,7 @@ msgstr "Overview of technical standards - Norms"
 #: templates/datasets_over/dataset-listings.html:41
 #: templates/partials/search-bar.html:74
 #: templates/tools_over/tool-listings.html:46
-#: templates/weatherdata_over/data-service-listings.html:49
+#: templates/weatherdata_over/data-service-listings.html:50
 msgid "Suchbegriff"
 msgstr "search term"
 
@@ -2276,23 +2279,23 @@ msgstr ""
 msgid "Excel-Tabelle zum Download"
 msgstr "Excel spreadsheet for download"
 
-#: templates/criteriaCatalog/criteriaCatalogDetails.html:185
+#: templates/criteria_catalog/criteriaCatalogDetails.html:185
 msgid "Themen"
 msgstr "Topics"
 
-#: templates/criteriaCatalog/criteriaCatalogDetails.html:187
+#: templates/criteria_catalog/criteriaCatalogDetails.html:187
 msgid "Kriterien"
 msgstr "Criteria"
 
-#: templates/criteriaCatalog/criteriaCatalogDetails.html:195
+#: templates/criteria_catalog/criteriaCatalogDetails.html:195
 msgid "Anforderungen und Regelbeispiele"
 msgstr "Requirements and examples of rules"
 
-#: templates/criteriaCatalog/criteriaCatalogDetails.html:212
+#: templates/criteria_catalog/criteriaCatalogDetails.html:212
 msgid "Alles einklappen"
 msgstr "Collapse everything"
 
-#: templates/criteriaCatalog/criteriaCatalogDetails.html:224
+#: templates/criteria_catalog/criteriaCatalogDetails.html:224
 msgid "Relevante DSGVO-Normen"
 msgstr "Relevant DSGVO norms"
 
@@ -2457,64 +2460,6 @@ msgstr ""
 "The Openenergy Platform aims to make the modeling of the energy system "
 "transparent. For this purpose, information and digital tools on the topic of "
 "energy are collected."
-
-#: templates/norms_over/explanation.html:7
-#, fuzzy
-#| msgid ""
-#| "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
-#| "          die im Herbst 2022 erfasst worden sind. Diese sind durch "
-#| "Recherche in \n"
-#| "          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
-#| "der Energiewendebauen\n"
-#| "          Projekte erfasst worden. Es handelt sich um deutsche, "
-#| "österreichische, \n"
-#| "          europäische oder internationale Standards und Richtlinien für "
-#| "die Planung, \n"
-#| "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
-#| "Warmwasser-, \n"
-#| "          Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
-#| "in Gebäuden. \n"
-#| "          Andere technische Standards, wie Schallschutz, Beleuchtung, und "
-#| "Gasinstallation,\n"
-#| "          sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
-#| "Aspekte\n"
-#| "          erfasst: "
-msgid ""
-"Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
-"          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
-"in \n"
-"          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
-"der Energiewendebauen\n"
-"          Projekte erfasst worden. Es handelt sich um deutsche, "
-"österreichische, \n"
-"          europäische oder internationale Standard und Richtlinien für die "
-"Planung, \n"
-"          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
-"Warmwasser-, \n"
-"          Entwässerungs-, Heizung-, Kühl-, und sonstige Energiesystemen in "
-"Gebäuden. \n"
-"          Anderen technische, wie Schallschutz, Beleuchtung, und "
-"Gasinstallation,\n"
-"          sind ebenfalls enthalten. Für jede Norm wurde die folgenden "
-"Aspekte\n"
-"          erfasst: "
-msgstr ""
-"On this page you will find different technical norms, which were recorded in "
-"autumn 2022. These were recorded through research in software catalogs, "
-"standards databases and in energy transition building research projects. "
-"These are German, Austrian, European or international standards and "
-"guidelines for the planning, construction and/or operation of ventilation, "
-"drinking water, hot water, drainage, heating, cooling and other energy "
-"systems in buildings . Other technical norms, such as soundproofing, "
-"lighting, and gas installation, are also included. The following aspects "
-"were recorded for each norm:"
-
-#: templates/norms_over/explanation.html:22
-#: templates/tools_over/explanationApps.html:28
-#: templates/tools_over/explanationTools.html:28
-#: templates/weatherdata_over/explanation.html:24
-msgid "Um was handelt es sich?"
-msgstr "What is it about?"
 
 #: templates/pages/Datenschutzhinweis.html:17
 #, fuzzy
@@ -4239,6 +4184,12 @@ msgstr ""
 "your projects.<br>When putting together the tools, we took the following "
 "aspects into account:"
 
+#: templates/tools_over/explanationApps.html:28
+#: templates/tools_over/explanationTools.html:28
+#: templates/weatherdata_over/explanation.html:24
+msgid "Um was handelt es sich?"
+msgstr "What is it about?"
+
 #: templates/tools_over/explanationApps.html:31
 msgid ""
 "Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen "
@@ -4932,8 +4883,8 @@ msgstr ""
 "          Does the application enable energy savings through feedback? \n"
 "          The impacts of digital applications are complex and multifaceted "
 "due to their interactions.\n"
-"          For instance, resources and energy are required for the creation "
-"and operation of measurement technology, \n"
+"          Fgoalsce, resources and energy are required for the creation and "
+"operation of measurement technology, \n"
 "          but more precise measurements also allow for more individualized "
 "feedback to users or accurate detection of errors.\n"
 "          Here, some of these interacting effects will be collected and "
@@ -5106,56 +5057,54 @@ msgid "Überblick über die Use Cases"
 msgstr "Overview of use cases"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:36
-#, fuzzy
-#| msgid "Wärmebedarf"
 msgid "Zeitbedarf"
-msgstr "Heat demand"
+msgstr "Time requirement"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:39
 msgid "Gruppengröße"
-msgstr ""
+msgstr "Group size"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:42
 msgid "Material"
-msgstr ""
+msgstr "Materials"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:45
 msgid "Vorteile"
-msgstr ""
+msgstr "Advantages"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:53
 msgid "Nachteile"
-msgstr ""
+msgstr "Disadvantages"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:62
-#, fuzzy
-#| msgid "Good Practice Beispiel"
 msgid "Good-Practice-Beispiel"
 msgstr "Good practice example"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:69
 msgid "Durchgeführt von"
-msgstr ""
+msgstr "Conducted by"
 
 #: templates/user_integration/userEngagementDetailsLeftColumn.html:72
 msgid "Erfolgsfaktoren für die Umsetzung der Methode"
-msgstr ""
+msgstr "Success factors for the implementation of the method"
 
 #: templates/user_integration/userEngagementDetailsRightColumn.html:36
 msgid "Ablauf"
-msgstr ""
+msgstr "Procedure"
 
 #: templates/user_integration/userEngagementDetailsRightColumn.html:58
-#, fuzzy
-#| msgid "Konkrete Anwendungsfälle"
 msgid "Konkrete Ziele"
-msgstr "Specific use cases"
+msgstr "Specific goals"
 
 #: templates/user_integration/userEngagementDetailsRightColumn.html:64
 msgid "Konkreter Ablauf"
 msgstr "Concrete process"
 
-#: templates/weatherdata_over/data-service-listings.html:22
+#: templates/weatherdata_over/data-service-listings.html:3
+msgid "Überblick über Wetterdaten-Dienste"
+msgstr "Overview of weather data services"
+
+#: templates/weatherdata_over/data-service-listings.html:23
 msgid "Überblick über Wetterdaten-Services"
 msgstr "Overview of weather data services"
 
@@ -5418,6 +5367,56 @@ msgstr "MIT license"
 #: webcentral_app/static/sphinx/html/_sources/translation.md.txt:19
 msgid "Hallo"
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+#~| "          die im Herbst 2022 erfasst worden sind. Diese sind durch "
+#~| "Recherche in \n"
+#~| "          Softwarekatalogen, Normendatenbanken und in "
+#~| "Forschungsprojekten der Energiewendebauen\n"
+#~| "          Projekte erfasst worden. Es handelt sich um deutsche, "
+#~| "österreichische, \n"
+#~| "          europäische oder internationale Standards und Richtlinien für "
+#~| "die Planung, \n"
+#~| "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+#~| "Warmwasser-, \n"
+#~| "          Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen "
+#~| "in Gebäuden. \n"
+#~| "          Andere technische Standards, wie Schallschutz, Beleuchtung, "
+#~| "und Gasinstallation,\n"
+#~| "          sind ebenfalls enthalten. Für jede Norm wurden die folgenden "
+#~| "Aspekte\n"
+#~| "          erfasst: "
+#~ msgid ""
+#~ "Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
+#~ "          die im Herbst 2022 erfasst worden sind. Diese sind durch "
+#~ "Recherche in \n"
+#~ "          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
+#~ "der Energiewendebauen\n"
+#~ "          Projekte erfasst worden. Es handelt sich um deutsche, "
+#~ "österreichische, \n"
+#~ "          europäische oder internationale Standard und Richtlinien für "
+#~ "die Planung, \n"
+#~ "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
+#~ "Warmwasser-, \n"
+#~ "          Entwässerungs-, Heizung-, Kühl-, und sonstige Energiesystemen "
+#~ "in Gebäuden. \n"
+#~ "          Anderen technische, wie Schallschutz, Beleuchtung, und "
+#~ "Gasinstallation,\n"
+#~ "          sind ebenfalls enthalten. Für jede Norm wurde die folgenden "
+#~ "Aspekte\n"
+#~ "          erfasst: "
+#~ msgstr ""
+#~ "On this page you will find different technical norms, which were recorded "
+#~ "in autumn 2022. These were recorded through research in software "
+#~ "catalogs, standards databases and in energy transition building research "
+#~ "projects. These are German, Austrian, European or international standards "
+#~ "and guidelines for the planning, construction and/or operation of "
+#~ "ventilation, drinking water, hot water, drainage, heating, cooling and "
+#~ "other energy systems in buildings . Other technical norms, such as "
+#~ "soundproofing, lighting, and gas installation, are also included. The "
+#~ "following aspects were recorded for each norm:"
 
 #, fuzzy
 #~| msgid ""

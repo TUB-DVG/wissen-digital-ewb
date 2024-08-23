@@ -92,11 +92,30 @@ class TestRunScript(TestCase):
         """Check if only the mainpage-system test can be started from the `run`-script.
 
         """
+                
+    
+    def testMakeMessages(self):
+        """Test if `./run makemessages` run successfully.
+
+        """
         try:
-            result = run(["./run", "test", "Selenium", "TestMainPage"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+            result = run(["./run", "makemessages"], check=True, stdout=PIPE, stderr=PIPE, text=True)
         except CalledProcessError as e:
             self.fail(e.stderr)
-        
+
+        self.assertTrue("processing locale en" in result.stdout)
+
+    def testCompileMessages(self):
+        """Test if `./run compilemessages` run successfully.
+
+        """
+        try:
+            result = run(["./run", "compilemessages"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+        except CalledProcessError as e:
+            self.fail(e.stderr)
+
+        self.assertTrue("processing locale en" in result.stdout)
+
 
 
 
