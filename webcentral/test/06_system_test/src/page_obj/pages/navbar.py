@@ -10,7 +10,7 @@ from selenium import (
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Locators import Locator
+from src.page_obj.locators import Locator
 
 
 class NavBar(object):
