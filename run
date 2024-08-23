@@ -287,10 +287,20 @@ case $command in
         if [ $# -ne 3 ]; then
           echo "pre_enargus: Execute the preprocessing step to convert xml-enargus data to csv-data\n./run pre_enargus <source-xml-file> <target-csv-file>"
           exit 0
+        else
+          docker exec -it $container_id python doc/01_data/01_pre_pro/pre_enargus.py $2 $3 
+          exit $?
         fi
-        docker exec -it $container_id python doc/01_data/01_pre_pro/pre_enargus.py $2 $3 
-        exit $?
         ;;
+     "pre_modul")
+        if [ $# -ne 3 ]; then
+          echo "pre_modul: Execute the preprocessing step to convert xlsx-modul data to csv-data\n./run pre_modul <source-xlsx-file> <target-csv-file>"
+          exit 0
+        else
+          docker exec -it $container_id python doc/01_data/01_pre_pro/pre_modul.py $2 $3 
+          exit $?
+        fi
+        ;;     
       *)
         echo "Unknown command: $command"
         exit 1

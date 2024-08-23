@@ -334,7 +334,7 @@ class TestMainPage(WebDriverSetup):
             "Website should be 'Geschäftsmodellanwendungen', but its not!",
         )
 
-    def testLinkToTechnicalSTandarts(self):
+    def testLinkToTechnicalSTandards(self):
         """Test if the Technical Standarts Link is working by clicking on it and
         checking the page-title on the next site
 
@@ -513,5 +513,18 @@ class TestMainPage(WebDriverSetup):
         for linkNumber, linkElement in enumerate(linkListElements):
             self.assertEqual(linkElement.text,
                              expectedValues[linkNumber])
+
+        
+        
+    def _clickLinks(self):
+        """
+
+        """
+        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        # check the links in the operational focus container:
+        linkListElements = self.startPageObj.getDescendantsByTagName(
+            self.focusContainer, "a")
+
+         
 
 

@@ -24,7 +24,7 @@ class TestRunScript(TestCase):
 
         # recall the command and give the rght number of args:
         try:
-            result = run(["./run", "pre_enargus", "webcentral/doc/01_data/01_pre_pro/2024-06-06_enargus.xml", "webcentral/doc/01_data/01_pre_pro/enargus_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
+            result = run(["./run", "pre_enargus", "webcentral/doc/01_data/01_pre_pro/20240610_Verteiler_EWB_Projekte.xlsx", "webcentral/doc/01_data/01_pre_pro/modulzuordnung_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
 
         except CalledProcessError as e:
             self.fail(e.stderr)
@@ -34,6 +34,25 @@ class TestRunScript(TestCase):
         system("rm -f webcentral/doc/01_data/01_pre_pro/enargus_test.csv")
         
         self.assertTrue("enargus_test.csv" not in listdir("webcentral/doc/01_data/01_pre_pro"))
+
+    def testPreModul(self):
+        """test if the `pre_modul`-command of the `run`-script works as expected.
+
+        """
+        result = run(["./run", "pre_modul"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
+     
+        self.assertEqual(result.stdout, "pre_modul: Execute the preprocessing step to convert xlsx-modul data to csv-data\\n./run pre_modul <source-xlsx-file> <target-csv-file>\n")
+        try:
+            result = run(["./run", "pre_modul", "webcentral/doc/01_data/01_pre_pro/20240610_Verteiler_EWB_Projekte.xlsx", "webcentral/doc/01_data/01_pre_pro/modulzuordnung_test.csv"], stdout=PIPE, stderr=PIPE, text=True, shell=False)
+
+        except CalledProcessError as e:
+            self.fail(e.stderr)
+        
+        # test if the csv-file was created:
+        self.assertTrue("modulzuordnung_test.csv" in listdir("webcentral/doc/01_data/01_pre_pro"))
+        system("rm -f webcentral/doc/01_data/01_pre_pro/modulzuordnung_test.csv")
+        
+        self.assertTrue("modulzuordnung_test.csv" not in listdir("webcentral/doc/01_data/01_pre_pro"))
 
     def testBuildDockerCompose(self):
         """test if the docker-compose build from dev and prod works without errors.
@@ -66,7 +85,6 @@ class TestRunScript(TestCase):
             system("rm -rf webcentral/test/testing_venv")
         try:
             result = run(["./run", "test", "Selenium"], check=True, stdout=PIPE, stderr=PIPE, text=True)
-            breakpoint()
         except CalledProcessError as e:
             self.fail(e.stderr)
         
@@ -75,7 +93,7 @@ class TestRunScript(TestCase):
 
         """
         try:
-            result = run(["./run", "test", "Selenium", "test_main_page"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+            result = run(["./run", "test", "Selenium", "TestMainPage"], check=True, stdout=PIPE, stderr=PIPE, text=True)
         except CalledProcessError as e:
             self.fail(e.stderr)
         
