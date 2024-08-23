@@ -14,17 +14,25 @@
 import os
 import sys
 
+relativePathToScript, filenameofScript = os.path.split(sys.argv[0])
+absolutePathToScript = os.getcwd() + "/" + relativePathToScript
+parentDirectory = os.path.dirname(absolutePathToScript)
+sys.path.insert(0, parentDirectory)
+
+
 import pandas as pd
 
 sys.path.insert(0, '..')
 from evaluation import EvaluationUtils
 
-# adapt actual working directory (for fix the relative depenencies)
-os.chdir(
-    '/home/tobias/Aufgaben/07_dockerWithDB/webcentral/02_work_doc/01_daten/01_prePro'
-)
+if len(sys.argv) != 3:
+    print("Preprocessing script for modul data: Usage: python pre_modul.py <source xlsx-file> <target csv-file>")
+    print("Hint: Use the run-script to execute this script.")
+    exit
 
-pathExcel = '../../../../../../Nextcloud/Shared/05_Degner/20230403_Verteiler_EWB_Projekte.xlsx'
+pathExcel = "/" + sys.argv[1]
+targetCsvFile = "/" + sys.argv[2]
+
 dataframeXLSX = pd.read_excel(
     pathExcel, 
     sheet_name='Projektverteiler', 
@@ -73,6 +81,6 @@ dataframeModul['modulzuordnung_ptj_1'] = dataframeModul[
 
 EvaluationUtils.writeDataframe2CSV(
     dataframeModul, 
-    'modulzuordnung_csv_20220829_test.csv', 
+    targetCsvFile, 
     new=True,
 )

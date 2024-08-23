@@ -1,8 +1,0 @@
-data_service;short_description;provider;further_information;data_url;logo_url;applications;last_update;license;category
-DWD Open Data;;Deutscher Wetterdienst;https://www.dwd.de/DE/leistungen/opendata/hilfe.html;https://opendata.dwd.de/;;;laufend;Open Data;Datensätze
-TRY;"The BBSR provides data for test reference years TRY. The TRY provide climate data for the evaluation of thermal behvaviour of buildings. The data can be downloaded for free, but an user account is necessary from this webpage. ";Bundesinstitut für Bau-, Stadt- und Raumforschung;"https://www.bbsr.bund.de/BBSR/DE/forschung/programme/zb/Auftragsforschung/5EnergieKlimaBauen/2013/testreferenzjahre/01-start.html;";;;;;;Datensätze
-Climate Consultant;;DOE;;;;;;;
-CCWorldWeatherGen;CCWorldWeatherGen is an Excel-based tool, that transforms present weather files into files compatible with building perfomance simulation programs.;University of Southampton;https://energy.soton.ac.uk/ccworldweathergen/;;;;;;Anwendung
-Integrated Carbon Observation System (ICOS);ICOS provides high-quality and standardised data on greenhouse gases;ICOS;;https://data.icos-cp.eu/portal/;;;laufend;CC BY 4.0;
-The Central Europe Refined analysis version 1 (CER v1);;TU Berlin - Institut für Ökologie;https://www.klima.tu-berlin.de/index.php?show=daten_cer&lan=de;https://data.klima.tu-berlin.de/CER/;;;05.19, 24.08.21;"Frei ";Datensätze
-Urban Climate Under Change (UC2);;TU Berlin (?);https://dms.klima.tu-berlin.de/;;;;;Open Data;Datensätze

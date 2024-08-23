@@ -23,7 +23,7 @@ from evaluation import EvaluationUtils
 listCol = absolutePathToScript + "/" + '02_parameter_files/col_xml2csv.csv'
 xml2csv = absolutePathToScript + "/" + '02_parameter_files/col_dict_xml2csv.csv'
 
-if len(sys.argv) != 2:
+if len(sys.argv) != 3:
     print("Preprocessing script for enargus data: Usage: python pre_enargus.py <source xml-file> <target csv-file>")
     print("Hint: Use the run-script to execute this script.")
     exit
