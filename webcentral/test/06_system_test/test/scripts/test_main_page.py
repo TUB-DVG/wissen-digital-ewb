@@ -314,45 +314,45 @@ class TestMainPage(WebDriverSetup):
             "Current Page Number should say 'Seite 1'",
         )
 
-    def testIfLinkToBuisnessAppsWorks(self):
-        """Test if one can navigate from Main-Page to buisness-application site"""
-        self.driver.get(os.environ["siteUnderTest"])
-        startPageObj = StartPage(self.driver)
-        linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()
-
-        self.driver.execute_script("arguments[0].scrollIntoView();",
-                                   linkToBuisnessApps)
-
-        time.sleep(1)
-        linkToBuisnessApps.click()
-
-        time.sleep(1)
-
-        self.assertEqual(
-            self.driver.title,
-            "Überblick über die Geschäftsmodellanwendungen",
-            "Website should be 'Geschäftsmodellanwendungen', but its not!",
-        )
-
-    def testLinkToTechnicalSTandards(self):
-        """Test if the Technical Standarts Link is working by clicking on it and
-        checking the page-title on the next site
-
-        """
-        self.driver.get(os.environ["siteUnderTest"])
-
-        startPAgeObj = StartPage(self.driver)
-        linkToTechnicalStandarts = startPAgeObj.getLinkToTechnicalStandarts()
-        self.driver.execute_script("arguments[0].scrollIntoView();",
-                                   linkToTechnicalStandarts)
-        time.sleep(1)
-        linkToTechnicalStandarts.click()
-        self.assertEqual(
-            self.driver.title,
-            "Überblick über die technischen Standards",
-            "Page should be technical-standarts-page after clicking on link on main-page...",
-        )
-
+    # def testIfLinkToBuisnessAppsWorks(self):
+    #     """Test if one can navigate from Main-Page to buisness-application site"""
+    #     self.driver.get(os.environ["siteUnderTest"])
+    #     startPageObj = StartPage(self.driver)
+    #     linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()
+    #
+    #     self.driver.execute_script("arguments[0].scrollIntoView();",
+    #                                linkToBuisnessApps)
+    #
+    #     time.sleep(1)
+    #     linkToBuisnessApps.click()
+    #
+    #     time.sleep(1)
+    #
+    #     self.assertEqual(
+    #         self.driver.title,
+    #         "Überblick über die Geschäftsmodellanwendungen",
+    #         "Website should be 'Geschäftsmodellanwendungen', but its not!",
+    #     )
+    #
+    # def testLinkToTechnicalSTandards(self):
+    #     """Test if the Technical Standarts Link is working by clicking on it and
+    #     checking the page-title on the next site
+    #
+    #     """
+    #     self.driver.get(os.environ["siteUnderTest"])
+    #
+    #     startPAgeObj = StartPage(self.driver)
+    #     linkToTechnicalStandarts = startPAgeObj.getLinkToTechnicalStandarts()
+    #     self.driver.execute_script("arguments[0].scrollIntoView();",
+    #                                linkToTechnicalStandarts)
+    #     time.sleep(1)
+    #     linkToTechnicalStandarts.click()
+    #     self.assertEqual(
+    #         self.driver.title,
+    #         "Überblick über die technischen Standards",
+    #         "Page should be technical-standarts-page after clicking on link on main-page...",
+    #     )
+    #
     def testContainers(self):
         """Check if the right links and description is shown in german and english."""
         self.driver.get(os.environ["siteUnderTest"])
@@ -474,6 +474,8 @@ class TestMainPage(WebDriverSetup):
         self.checkInGermanAndEnglish(self._checkTitle, {"de": dataDict["heading_de"], "en": dataDict["heading_en"]})
         self.checkInGermanAndEnglish(self._checkBorder, {"de": dataDict["borderColor"], "en": dataDict["borderColor"]})
         self.checkInGermanAndEnglish(self._checkLinks, {"de": dataDict["linkNamesGerman"], "en": dataDict["linkNamesEnglish"]})
+        self.checkInGermanAndEnglish(self._clickLinks, {"de": dataDict["linkNamesGerman"], "en": dataDict["linkNamesEnglish"]})
+
 
     def _checkTitle(self, expectedValue):
         """Check the title in german and english
@@ -516,7 +518,7 @@ class TestMainPage(WebDriverSetup):
 
         
         
-    def _clickLinks(self):
+    def _clickLinks(self, expectedValue):
         """
 
         """
@@ -525,6 +527,14 @@ class TestMainPage(WebDriverSetup):
         linkListElements = self.startPageObj.getDescendantsByTagName(
             self.focusContainer, "a")
 
-         
+        for linkIndex, linkElement in enumerate(linkListElements):
+            self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+            linkListElements = self.startPageObj.getDescendantsByTagName(
+            self.focusContainer, "a") 
+            reloadedCurrentLinkElement = linkListElements[linkIndex]
+
+            self.scrollElementIntoViewAndClickIt(reloadedCurrentLinkElement)
+            self.assertTrue("PageError" not in self.driver.title)
+            self.driver.back()
 
 
