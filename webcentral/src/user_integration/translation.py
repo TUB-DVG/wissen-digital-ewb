@@ -36,10 +36,10 @@ class ConArgumentTranslationOptions(TranslationOptions):
 
 translator.register(ConArgument, ConArgumentTranslationOptions)
 
-class LiteratureTranslationOptions(TranslationOptions):
-    fields = ("literature", )
-
-translator.register(Literature, LiteratureTranslationOptions)
+# class LiteratureTranslationOptions(TranslationOptions):
+#     fields = ("literature", )
+#
+# translator.register(Literature, LiteratureTranslationOptions)
 
 class ProcedureTranslationOptions(TranslationOptions):
     fields = ("_procedureItem", )

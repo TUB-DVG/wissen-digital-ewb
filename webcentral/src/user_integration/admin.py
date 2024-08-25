@@ -12,8 +12,8 @@ from .models import (
 class UserEngagementAdmin(TranslationAdmin):
     pass
 
-class LiteratureAdmin(TranslationAdmin):
-    pass
+# class LiteratureAdmin(TranslationAdmin):
+#     pass
 
 class ProcedureItemAdmin(TranslationAdmin):
     pass
@@ -25,7 +25,7 @@ class ConArgumentAdmin(TranslationAdmin):
     pass
 
 admin.site.register(UserEngagement, UserEngagementAdmin)
-admin.site.register(Literature, LiteratureAdmin)
+# admin.site.register(Literature, LiteratureAdmin)
 admin.site.register(ProcedureItem, ProcedureItemAdmin)
 admin.site.register(ProArgument, ProArgumentAdmin)
 admin.site.register(ConArgument, ConArgumentAdmin)
