@@ -12,7 +12,7 @@ from .models import *
 class DataImportApp(DataImport):
     
     MAPPING_EXCEL_DB_EN = {
-        "name_en": "name_en",
+        "Unterkategorie__en": "name_en",
         "shortDescription_en": "shortDescription_en",
         # "resources_en": "resources_en",
         # "applicationArea_en": "applicationArea_en",

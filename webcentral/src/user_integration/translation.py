@@ -1,47 +1,47 @@
-# from modeltranslation.translator import (
-#     translator,
-#     TranslationOptions,
-# )
+from modeltranslation.translator import (
+    translator,
+    TranslationOptions,
+)
 
-# from .models import (
-#     UserEngagement,
-#     ProArgument,
-#     ConArgument,
-#     Literature,
-#     ProcedureItem,
-# )
+from .models import (
+    UserEngagement,
+    ProArgument,
+    ConArgument,
+    Literature,
+    ProcedureItem,
+)
 
-# class UserEngagementTranslationOptions(TranslationOptions):
-#     fields = (
-#         "category",
-#         "categoryShortDescription",
-#         "subCategoryShortDescription",
-#         "timeRequired",
-#         "groupSize",
-#         "material",
-#         "goals",
-#         "procedure",
-#         "goodPracticeExample",
-#     )
+class UserEngagementTranslationOptions(TranslationOptions):
+    fields = (
+        "category",
+        "categoryShortDescription",
+        "subCategoryShortDescription",
+        "timeRequired",
+        "groupSize",
+        "material",
+        "goals",
+        "procedure",
+        "goodPracticeExample",
+    )
 
-# translator.register(UserEngagement, UserEngagementTranslationOptions)
+translator.register(UserEngagement, UserEngagementTranslationOptions)
 
-# class ProArgumentTranslationOptions(TranslationOptions):
-#     fields = ("proArgument", )
+class ProArgumentTranslationOptions(TranslationOptions):
+    fields = ("proArgument", )
 
-# translator.register(ProArgument, ProArgumentTranslationOptions)
+translator.register(ProArgument, ProArgumentTranslationOptions)
 
-# class ConArgumentTranslationOptions(TranslationOptions):
-#     fields = ("conArgument", )
+class ConArgumentTranslationOptions(TranslationOptions):
+    fields = ("conArgument", )
 
-# translator.register(ConArgument, ConArgumentTranslationOptions)
+translator.register(ConArgument, ConArgumentTranslationOptions)
 
-# class LiteratureTranslationOptions(TranslationOptions):
-#     fields = ("literature", )
+class LiteratureTranslationOptions(TranslationOptions):
+    fields = ("literature", )
 
-# translator.register(Literature, LiteratureTranslationOptions)
+translator.register(Literature, LiteratureTranslationOptions)
 
-# class ProcedureTranslationOptions(TranslationOptions):
-#     fields = ("_procedureItem", )
+class ProcedureTranslationOptions(TranslationOptions):
+    fields = ("_procedureItem", )
 
 # translator.register(ProcedureItem, ProcedureTranslationOptions)

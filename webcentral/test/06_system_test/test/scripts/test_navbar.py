@@ -19,7 +19,7 @@ class TestNavbar(WebDriverSetup):
                 "Overview of digital tools",
                 "Overview of digital applications",
                 "Overview of technical standards",
-                "Overview of weatherdata services",
+                "Overview of weather data services",
                 "Overview of the load profile generator",   
                 "Overview of datasets",
             ],
@@ -61,7 +61,7 @@ class TestNavbar(WebDriverSetup):
             ],
             "en": [
                 "Privacy Overview",
-                "Catalog of criteria",
+                "Catalog of criteria - overview",
                 "Icons and visualization",
             ],
         },
@@ -103,27 +103,72 @@ class TestNavbar(WebDriverSetup):
             self._checkFocus(focus)
 
 
+    def testLegalNavbar(self):
+        """This method is moved from `TestMainPage`, maybe it can be extended 
+        to test all navbar focus elements.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+
+        navBarObj = NavBar(self.driver)
+        dropDownElements = navBarObj.getDropDownElements()
+        self.assertEqual(len(dropDownElements), 5, "Number of dropdown-elements in the navbar should be 5.")
+        self.checkNavBar()
+        
+        # get elements in the global navbar dropbox:
+        liElementsOfGlobalDropdown = navBarObj.getGlobalDropdownElements()
+        self.assertTrue(len(liElementsOfGlobalDropdown) >= 2)
+                    
+              
+        self.checkInGermanAndEnglish(self._checkLegalNavbarCriteriaCatalog, {
+            "de": "Kriterienkatalog",
+            "en": "Catalog of criteria",
+        })
+
+    def _checkLegalNavbarCriteriaCatalog(self, expectedValue):
+        """
+        check if criteria catalog is inside legal focus navbar dropdown:
+
+        """
+        navBarObj = NavBar(self.driver)
+        liElementsOfLegalFocus = navBarObj.getLegalDropdownElements()
+        legalDopdownLink = navBarObj.getDropdownOfType("legal")
+        legalDopdownLink.click()
+        
+        self.assertTrue(len(liElementsOfLegalFocus) == 3, "The navbar of legal focus should contain 3 elements.")
+        
+        
+        self.assertEqual(liElementsOfLegalFocus[1].text, expectedValue)
+
+        
+        liElementsOfLegalFocus[1].click()
+
+        self.assertTrue("Kriterienkatalog - Übersicht" == self.driver.title or "Catalog of criteria - Overview" == self.driver.title)
+
+
+
     def _checkFocus(self, focusName: str):
         """Check the technical-focus navbar-item.
 
         """
+        self.focusName = focusName
         focusDopdownLink = self.navbarObj.getDropdownOfType(focusName)
         
-        focusLinkElements = self.navbarObj.getDropdownLiElements(focusName)
+        self.focusLinkElements = self.navbarObj.getDropdownLiElements(focusName)
 
         translationDict = self.TRANSLATION_DICT_OF_PAGE_TITLE[focusName]
 
-        for indexItem, focusLink in enumerate(focusLinkElements):
-            focusDopdownLink = self.navbarObj.getDropdownOfType(focusName)
-            focusDopdownLink.click()
-        
-            focusLinkElements = self.navbarObj.getDropdownLiElements(focusName)
-            self.item = focusLinkElements[indexItem]
-            self.checkInGermanAndEnglish(self._checkNavBarElement, {"en": translationDict["en"][indexItem], "de": translationDict["de"][indexItem]})      
+        for self.indexItem, focusLink in enumerate(self.focusLinkElements):
+            
+            self.checkInGermanAndEnglish(self._checkNavBarElement, {"en": translationDict["en"][self.indexItem], "de": translationDict["de"][self.indexItem]})      
     def _checkNavBarElement(self, expectedValue):
         """
 
         """
-
+        focusDopdownLink = self.navbarObj.getDropdownOfType(self.focusName)
+        focusDopdownLink.click()
+        
+        self.focusLinkElements = self.navbarObj.getDropdownLiElements(self.focusName)
+        self.item = self.focusLinkElements[self.indexItem]
         self.scrollElementIntoViewAndClickIt(self.item)
         self.assertEqual(expectedValue, self.driver.title)

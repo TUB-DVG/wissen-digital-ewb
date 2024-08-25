@@ -410,25 +410,6 @@ class TestMainPage(WebDriverSetup):
         self.driver.get(os.environ["siteUnderTest"])
 
         startPAgeObj = StartPage(self.driver)
-        navBarObj = NavBar(self.driver)
-        dropDownElements = navBarObj.getDropDownElements()
-        self.assertEqual(len(dropDownElements), 5, "Number of dropdown-elements in the navbar should be 5.")
-        self.checkNavBar()
-        
-        # get elements in the global navbar dropbox:
-        navBarObj = NavBar(self.driver)
-        liElementsOfGlobalDropdown = navBarObj.getGlobalDropdownElements()
-        self.assertTrue(len(liElementsOfGlobalDropdown) >= 2)
-                    
-              
-        self.checkInGermanAndEnglish(self._checkLegalNavbarCriteriaCatalog, {
-            "de": "Kriterienkatalog",
-            "en": "Catalog of criteria",
-        }) 
-        
-        
-        self.driver.quit()
-        self.driver.get(os.environ["siteUnderTest"])
 
         # test if a container is present, which has te class row-12 and a global 
         # border
@@ -442,26 +423,6 @@ class TestMainPage(WebDriverSetup):
             self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
             self.assertTrue(link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR)
 
-
-    def _checkLegalNavbarCriteriaCatalog(self, expectedValue):
-        """
-        check if criteria catalog is inside legal focus navbar dropdown:
-
-        """
-        navBarObj = NavBar(self.driver)
-        liElementsOfLegalFocus = navBarObj.getLegalDropdownElements()
-        legalDopdownLink = navBarObj.getDropdownOfType("legal")
-        legalDopdownLink.click()
-        
-        self.assertTrue(len(liElementsOfLegalFocus) == 3, "The navbar of legal focus should contain 3 elements.")
-        
-        
-        self.assertEqual(liElementsOfLegalFocus[1].text, expectedValue)
-
-        
-        liElementsOfLegalFocus[1].click()
-
-        self.assertTrue("Kriterienkatalog - Übersicht" == self.driver.title or "Catalog of criteria - Overview" == self.driver.title)
 
     def _checkFocusContainer(self, focusName, dataDict):
         """
