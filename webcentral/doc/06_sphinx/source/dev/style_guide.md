@@ -1,6 +1,7 @@
 # Style Guide
-This file describes the styling conventions for the project.
+The following section describes the style guide, which is used throughout the project. It is structured by the different languages used.
 ## Python
+In this section the code style in the python source code is described. 
 - Indentation:
   - 1 Tab or 4 Whitespaces
 - Naming of identifiers:

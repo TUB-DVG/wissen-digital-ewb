@@ -100,6 +100,7 @@ class TestNavbar(WebDriverSetup):
             "global",
         ]
         for focus in focuses:
+            self.focus = focus
             self._checkFocus(focus)
 
 
@@ -148,7 +149,16 @@ class TestNavbar(WebDriverSetup):
 
 
     def _checkFocus(self, focusName: str):
-        """Check the technical-focus navbar-item.
+        """Check the dropdown elements of the `focusName`-focus navbar-item.
+
+        Parameters
+        ----------
+        focusName: str
+            name of the current focus. Possible are 'technical', 'operational', 'ecological', 'legal', 'global'
+        
+        Returns
+        -------
+        None
 
         """
         self.focusName = focusName
