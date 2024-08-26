@@ -20,7 +20,6 @@ class UserEngagementTranslationOptions(TranslationOptions):
         "groupSize",
         "material",
         "goals",
-        "procedure",
         "goodPracticeExample",
     )
 
@@ -42,6 +41,6 @@ translator.register(ConArgument, ConArgumentTranslationOptions)
 # translator.register(Literature, LiteratureTranslationOptions)
 
 class ProcedureTranslationOptions(TranslationOptions):
-    fields = ("_procedureItem", )
+    fields = ("procedureItem", )
 
-# translator.register(ProcedureItem, ProcedureTranslationOptions)
+translator.register(ProcedureItem, ProcedureTranslationOptions)

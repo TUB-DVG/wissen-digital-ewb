@@ -72,7 +72,6 @@ class DataImport:
         except:
             df = pd.read_excel(self.path_to_file)
             germanEnglish = False
-        
         if germanEnglish:
             if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(dfGermanEnglish["German"].columns):
@@ -302,17 +301,18 @@ class DataImport:
         """
 
         """
-        germanManyToManyStr = self._correctReadInValue(
-            row[header.index(headerExcel)])
-        englishManyToManyStr = self._correctReadInValue(
-            row[header.index(f"{headerExcel}__en")])
+        germanManyToManyStr = self._processListInput(row[header.index(headerExcel)], ";;")
+        englishManyToManyStr = self._processListInput(row[header.index(f"{headerExcel}__en")], ";;")
        
         elementsForAttr = getattr(ormObj, dbAttr).all()
         for ormRelObj in elementsForAttr:
             for indexInGerList, germanyManyToManyElement in enumerate(germanManyToManyStr):
                 if germanyManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
-                        setattr(ormRelObj, f"{dbAttr}_en", englishManyToManyStr[indexInGerList])
+                        try:
+                            setattr(ormRelObj, f"{dbAttr}_en", englishManyToManyStr[indexInGerList])
+                        except:
+                            breakpoint()
                         ormRelObj.save() 
         return ormObj
 

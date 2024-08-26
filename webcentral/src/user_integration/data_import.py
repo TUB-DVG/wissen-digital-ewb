@@ -10,7 +10,8 @@ from common.data_import import DataImport
 from .models import *
 
 class DataImportApp(DataImport):
-    
+    DJANGO_APP = "user_integration"
+    DJANGO_MODEL = "UserEngagement"
     MAPPING_EXCEL_DB_EN = {
         "Unterkategorie__en": "category_en",
         "Kategorie_Kurzbeschreibung__en": "categoryShortDescription_en",
@@ -20,11 +21,10 @@ class DataImportApp(DataImport):
         "Gruppengröße__en": "groupSize_en",
         "Material__en": "material_en",
         "Ziele__en": "goals_en",
-        "Ablauf__en": "procedure_en",
         "Good-Practice-Beispiel__en": "goodPracticeExample_en",
-        "Vorteile__en":"proArguments_en",
-        "Nachteile__en":"conArguments_en",
-        "Ablauf__en": "procedure_en",
+        "Vorteile__en":"proArgument_en",
+        "Nachteile__en":"conArgument_en",
+        "Ablauf__en": "procedureItem_en",
     }
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -87,7 +87,7 @@ class DataImportApp(DataImport):
         procedureList = self._processListInput(row[header.index("Ablauf")],
                                                ";;")
         procedureObjList = [
-            ProcedureItem.objects.get_or_create(_procedureItem=procedure)[0]
+            ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
             for procedure in procedureList
         ]
         conArgumentsList = self._processListInput(
@@ -115,8 +115,10 @@ class DataImportApp(DataImport):
                 linkName=literatureIdentifer,
             )
             literatureObjsList.append(literatureObj)
-        obj.procedure.add(*procedureObjList)
-        obj.proArguments.add(*proObjsList)
-        obj.conArguments.add(*conObjsList)
+        obj.procedureItem.add(*procedureObjList)
+        obj.proArgument.add(*proObjsList)
+        obj.conArgument.add(*conObjsList)
         obj.literature.add(*literatureObjsList)
+        if self._englishHeadersPresent(header):
+            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
         return obj, created

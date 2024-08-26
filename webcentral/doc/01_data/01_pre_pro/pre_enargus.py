@@ -35,5 +35,6 @@ dataframe = EvaluationUtils.readXMLEnargus(pathXML, xml2csv, listCol)
 EvaluationUtils.writeDataframe2CSV(
     dataframe, 
     targetCsvFile, 
-    new=True,
+    True,
+    True,
 )

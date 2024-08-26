@@ -1,6 +1,7 @@
 from django.db import models
 from django.template import Template, Context
 
+from common.models import Literature
 
 class ProArgument(models.Model):
     proArgument = models.TextField()
@@ -28,23 +29,6 @@ class ConArgument(models.Model):
         return template.render(context)
 
 
-class Literature(models.Model):
-    """ """
-
-    literature = models.TextField()
-    linkName = models.CharField(max_length=255, blank=True, null=True)
-
-    # authors = models.CharField(max_length=500)
-    # publication_year = models.IntegerField(blank=True, null=True)
-    # publication_title = models.CharField(max_length=500)
-    # publisher = models.CharField(max_length=500, blank=True, null=True)
-    # publication_location = models.CharField(max_length=500,
-    #                                         blank=True,
-    #                                         null=True)
-    def __str__(self):
-        return self.literature
-
-
 class UserEngagement(models.Model):
     category = models.CharField(max_length=255, blank=True, null=True)
     categoryShortDescription = models.TextField(blank=True, null=True)
@@ -59,13 +43,13 @@ class UserEngagement(models.Model):
     conductedBy = models.CharField(max_length=255, blank=True, null=True)
     successFactors = models.TextField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)
-    procedure = models.ManyToManyField("ProcedureItem", null=True, blank=True)
+    procedureItem = models.ManyToManyField("ProcedureItem", null=True, blank=True)
     # specificGoals = models.TextField(blank=True, null=True)
     # specificProcedure = models.ManyToManyField("SpecificProcedureItem",
     #    null=True,
     #    blank=True)
-    proArguments = models.ManyToManyField(ProArgument, blank=True, null=True)
-    conArguments = models.ManyToManyField(ConArgument, blank=True, null=True)
+    proArgument = models.ManyToManyField(ProArgument, blank=True, null=True)
+    conArgument = models.ManyToManyField(ConArgument, blank=True, null=True)
     participantObservations = models.CharField(max_length=255,
                                                blank=True,
                                                null=True)
@@ -104,14 +88,12 @@ class UserEngagement(models.Model):
 
 
 class ProcedureItem(models.Model):
-    _procedureItem = models.TextField()
+    procedureItem = models.TextField()
 
-    @property
-    def procedureItem(self):
+    def procedureItemRendered(self):
         """This method should be called, when the procedureItem attribute of a
-        object of type ProcedureItem is called. It renders the text inside the
-        object as a django-template.
-
+            object of type ProcedureItem is called. It renders the text inside the
+            object as a django-template.
         """
         template = Template(self._procedureItem)
         context = Context({})

@@ -1,4 +1,4 @@
-"""Module of Helper-Functions for the Preprocessing of XML-Files to CSV.
+"""iodule of Helper-Functions for the Preprocessing of XML-Files to CSV.
 
 This module provides the `EvaluationUtils`-class, which wraps helper-
 functions for the Conversion between different textformats like 
@@ -22,8 +22,6 @@ import os
 import xml.etree.ElementTree as et
 
 import pandas as pd
-import matplotlib.pyplot as plt
-from nltk import tokenize
 
 class EvaluationUtils:
     """Wrapper for all helper-functions for Evaluation
@@ -91,6 +89,7 @@ class EvaluationUtils:
             dataframe: pd.DataFrame, 
             csvFilename: str, 
             new: bool=False,
+            anon: bool=True,
     ) -> None:
         """Writes pandas DataFrame into .csv-file 
 
@@ -116,6 +115,9 @@ class EvaluationUtils:
         -------
         None
         """
+        if anon:
+            dataframe = EvaluationUtils._anonymizeDataframe(dataframe)
+
         if new:
             dataframe.to_csv(csvFilename, index=False, sep=';')
             print('new file was written: %s' %csvFilename )
@@ -160,6 +162,33 @@ class EvaluationUtils:
                     dict[row[0]]=row[1]
                 lineNumber += 1
         return dict
+    
+    @staticmethod
+    def _anonymizeDataframe(dataframe):
+        """Anonymize read in Dataframe.
+
+        This method anonyimzes the personal data in the read in xml-file 
+        to a default dataset.
+
+        Parameters
+        ----------
+        dataframe: pd.Dataframe
+            the data read in from the xml-file.
+
+        Returns
+        -------
+        pd.Dataframe
+            The Dataframe with the default dataset.
+        """
+        for index, row in dataframe.iterrows():
+            row["Person_pl"] = "Robin Schmidt"
+            row["Titel_pl"] = None
+            row["Vorname_pl"] = "Robin"
+            row["Name_pl"] = "Schmidt"
+            row["Email_pl"] = "Robin.Schmidt@email.de" 
+            
+        return dataframe
+
 
     @staticmethod
     def readGivenColumnsFromCSV(pathToFile: str) -> list:
