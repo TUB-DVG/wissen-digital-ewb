@@ -96,11 +96,11 @@ This repo contains images, which have been created using the open-source [Privay
 
 We gratefully acknowledge the financial support by the Federal Ministry for Economic Affairs and Climate Action (BMWK), promotional reference: 03EWB004A-C.
 
-# Contributors Software (in no particualr order)
+# Contributors Software (in no particular order)
 
 Falk Cudok, Felix Rehmann, Rita Streblow, Martin Tobias Degner, Siling Chen, Ibukun Odeyemi, Kaifeng Xu, Ngoc Long Nguyen, Johanna Tengler, Marius Bieker
 
-# Contributors Content (in no particualr order)
+# Contributors Content (in no particular order)
 
 Astrid Aretz, Swantje Gährs, Jan Kegel, Torsten Grothmann, Valentin Rupp, Max von Grafenstein, Isabel Kiefaber, Falk Cudok, Felix Rehmann, Rita Streblow, Martin Tobias Degner, Siling Chen, Ibukun Odeyemi, Kaifeng Xu, Ngoc Long Nguyen, Johanna Tengler, Marius Bieker
 
