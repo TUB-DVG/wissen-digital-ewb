@@ -4,7 +4,7 @@ from django.template import (
     Context,
 )
 
-from user_integration.models import Literature
+from common.models import Literature
 
 class DataSufficiency(models.Model):
     strategyCategory = models.CharField(max_length=255)

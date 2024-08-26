@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-23 12:06+0000\n"
+"POT-Creation-Date: 2024-08-26 13:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1576,7 +1576,8 @@ msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
 #: templates/StartSearch/StartSearch.html:418
-#: templates/pages/iconsAndVis.html:16 templates/partials/_navbar.html:209
+#: templates/pages/iconsAndVis.html:4 templates/pages/iconsAndVis.html:16
+#: templates/partials/_navbar.html:209
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
@@ -2279,23 +2280,23 @@ msgstr ""
 msgid "Excel-Tabelle zum Download"
 msgstr "Excel spreadsheet for download"
 
-#: templates/criteria_catalog/criteriaCatalogDetails.html:185
+#: templates/criteria_catalog/criteria_catalog_details.html:185
 msgid "Themen"
 msgstr "Topics"
 
-#: templates/criteria_catalog/criteriaCatalogDetails.html:187
+#: templates/criteria_catalog/criteria_catalog_details.html:187
 msgid "Kriterien"
 msgstr "Criteria"
 
-#: templates/criteria_catalog/criteriaCatalogDetails.html:195
+#: templates/criteria_catalog/criteria_catalog_details.html:195
 msgid "Anforderungen und Regelbeispiele"
 msgstr "Requirements and examples of rules"
 
-#: templates/criteria_catalog/criteriaCatalogDetails.html:212
+#: templates/criteria_catalog/criteria_catalog_details.html:212
 msgid "Alles einklappen"
 msgstr "Collapse everything"
 
-#: templates/criteria_catalog/criteriaCatalogDetails.html:224
+#: templates/criteria_catalog/criteria_catalog_details.html:224
 msgid "Relevante DSGVO-Normen"
 msgstr "Relevant DSGVO norms"
 
@@ -3039,23 +3040,23 @@ msgstr ""
 "encourage consideration of business model development as early as possible "
 "in order to support the efficient development of digital applications."
 
-#: templates/pages/criteriaCatalog.html:4
+#: templates/pages/criteria_catalog.html:4
 msgid "Kriterienkatalog - Übersicht"
 msgstr "Catalog of criteria - Overview"
 
-#: templates/pages/criteriaCatalog.html:21
+#: templates/pages/criteria_catalog.html:21
 msgid "Downloade den gesamten Kriterienkatalog als Exceldatei"
 msgstr "Download the full criteria catalog as excel file"
 
-#: templates/pages/criteriaCatalog.html:26
+#: templates/pages/criteria_catalog.html:26
 msgid "Für welchen Zweck möchtest du Daten verarbeiten?"
 msgstr "For what purpose do you want to process data?"
 
-#: templates/pages/dataSecurity.html:17
+#: templates/pages/data_security.html:4 templates/pages/data_security.html:17
 msgid "Datenschutzübersicht"
 msgstr "Privacy Overview"
 
-#: templates/pages/dataSecurity.html:30
+#: templates/pages/data_security.html:30
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -3134,11 +3135,11 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: templates/pages/dataSecurity.html:63
+#: templates/pages/data_security.html:63
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and neighborhood sector"
 
-#: templates/pages/dataSecurity.html:68
+#: templates/pages/data_security.html:68
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guides, literature and court decisions"
 

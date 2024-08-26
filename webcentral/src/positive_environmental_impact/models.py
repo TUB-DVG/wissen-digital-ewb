@@ -2,7 +2,7 @@ from django.db import models
 from django.template import Template, Context
 
 from project_listing.models import Subproject
-from user_integration.models import Literature
+from common.models import Literature
 
 class EnvironmentalImpact(models.Model):
     category = models.CharField(max_length=255)
