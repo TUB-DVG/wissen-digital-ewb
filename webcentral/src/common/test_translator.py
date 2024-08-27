@@ -120,7 +120,7 @@ class TestTranslator(TestCase):
 
         """
 
-        call_command("translate", "criteria_catalog", "../../02_work_doc/01_daten/08_criteriaCatalog/integrationTestCriteriaCatalog.xlsx", "testResult.xlsx")
+        call_command("translate", "criteria_catalog", "../test/08_test_data/test_criteria_catalog.xlsx", "testResult.xlsx")
 
         # open the excel file and check the translation
         dataFrameDict = pd.from_excel("testResult.xlsx", sheet_name=None)
@@ -140,5 +140,14 @@ class TestTranslator(TestCase):
             self.assertTrue(expectedColumn in englishDF.columns)
         self.assertGreaterEqual(len(englishDF), 3)
 
+    def testTranslatePositiveEnvironmentalImpact(self):
+        """
 
+        """
+        call_command("translate", "positive_environmental_impact", "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx", "test_translation.xlsx")
+
+        dataFrameDict = pd.from_excel("test_translation.xlsx", sheet_name=None)
+        englishDF = dataFrameDict["English"]
+        self.assertTrue("Category" in englishDF.columns)
+        self.assertTrue("Description" in englishDF.columns)
 

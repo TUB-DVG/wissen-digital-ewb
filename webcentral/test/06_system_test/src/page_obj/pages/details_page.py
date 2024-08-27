@@ -11,8 +11,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-from Src.PageObject.Locators import Locator
-from Src.PageObject.Pages.GenericPageObject import GenericPageObject
+from src.page_obj.locators import Locator
+from src.page_obj.pages.generic_page_obj import GenericPageObject
 
 
 class DetailsPage(GenericPageObject):
@@ -57,3 +57,9 @@ class DetailsPage(GenericPageObject):
 
         """
         return self.driver.find_element(By.XPATH, "//div[contains(@class, 'column__right')]")
+
+    def getATagsInContentContainer(self):
+        """Get all a-tags in the content container.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'border-operational')]//a")

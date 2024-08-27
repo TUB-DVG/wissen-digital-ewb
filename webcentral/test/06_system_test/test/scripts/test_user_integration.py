@@ -22,7 +22,7 @@ from src.page_obj.pages.navbar import NavBar
 from src.page_obj.pages.comparison_page_section import ComparisonPageSection
 from src.page_obj.pages.user_integration_page import UserIntegrationPage
 from src.page_obj.pages.overview_page_section import OverviewPageSection
-
+from src.page_obj.pages.details_page import DetailsPage
 
 class TestUserIntegration(WebDriverSetup):
     """Represent the Selenium-Test of the Components-List Page"""
@@ -78,7 +78,45 @@ class TestUserIntegration(WebDriverSetup):
         
         self.driver.get(os.environ["siteUnderTest"] + "/pages/userEngagement")
         self.overviewPageSectionObj = OverviewPageSection(self.driver)
+        self.detailsPage = DetailsPage(self.driver)
         self.checkInGermanAndEnglish(self._testHeading, {"de": "Methoden der Nutzendenintegration", "en": "Methods of user integration"})
+        
+        aTagsInOverviewText = self.overviewPageSectionObj.getLinks() 
+        
+        aText = {
+            "de": [
+                    "Teilnehmende Beobachtung",
+                    "Einzel-Interview",
+                    "Gruppen-Interview/Fokusgruppe",
+                    "Personas",
+                    "A/B-Test",
+                    "Prototyping",
+                    "Cognitive Walkthrough",
+                    "Styleguide",
+                    "Lautes Denken",
+                    "Eyetracking",
+                    "Heuristische Evaluation",
+                    "Usability-Befragung",
+            ],
+            "en": [
+                    "Participant observation",
+                    "Individual interview",
+                    "Group interview/focus group",
+                    "Personas",
+                    "A/B testing",
+                    "Prototyping",
+                    "Cognitive Walkthrough",
+                    "Style guide",
+                    "Thinking out loud",
+                    "Eye tracking",
+                    "Heuristic evaluation",
+                    "Usability survey",
+            ]
+        }
+
+        for aTagIndex, aTag in enumerate(aTagsInOverviewText):
+            
+            self.checkInGermanAndEnglish(self._testLinks, {"de": aText["de"][aTagIndex], "en": aText["en"][aTagIndex]})
 
     def _testHeading(self, expectedValue):
         """
@@ -87,3 +125,16 @@ class TestUserIntegration(WebDriverSetup):
         headingOfOverviewSection = self.overviewPageSectionObj.getHeading()
         self.assertEqual(headingOfOverviewSection.text, expectedValue)
 
+    def _testLinks(self, expectedValue):
+        """Test the links in the overview text of user integratio overview site
+
+        """
+        
+        linkToDetailsSite = self.overviewPageSectionObj.getLinkFromText(expectedValue)
+        self.scrollElementIntoViewAndClickIt(linkToDetailsSite)
+        self.assertEqual(self.driver.title, expectedValue)
+        allATagsInContentContainer = self.detailsPage.getATagsInContentContainer()
+        self.scrollElementIntoViewAndClickIt(choice(allATagsInContentContainer))
+        self.assertTrue("Error" not in self.driver.title)
+        self.driver.back()
+        self.driver.back()
