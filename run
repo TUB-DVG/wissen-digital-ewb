@@ -21,20 +21,22 @@ else
     exit 1
 fi
 
-HEADLESS=1
+HEADLESS=${HEADLESS}
+
 # Set Docker container ID
 container_id=webcentral
 currentDirInContainer=$(docker exec $container_id pwd)
+
+print_usage() {
+  printf "run script: -v <command>"
+}
+
 # Parse options
-while getopts ":ab:c:" opt; do
-  case ${opt} in
-    v )
-      HEADLESS=0
-      ;;
-    \? )
-      echo "Invalid option: -$OPTARG" >&2
-      exit 1
-      ;;
+while getopts 'abf:v' flag; do
+  case "${flag}" in
+    v) HEADLESS=0 ;;
+    *) print_usage
+       exit 1 ;;
   esac
 done
 shift $((OPTIND -1))
