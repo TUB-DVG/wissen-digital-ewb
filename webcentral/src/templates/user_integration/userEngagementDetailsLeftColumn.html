@@ -42,20 +42,20 @@
   <span class="columnHeading">{% translate "Material" %}:</span> {{ boxObject.material|safe }}
 </p>
 <p>
-  <span class="columnHeading">{% translate "Vorteile" %}:</span>
-  <ul class="plus-sign-list">
-    {% for proElement in boxObject.proArguments.all %}
-      <li>{{ proElement.proArgumentRendered }}</li>
-    {% endfor %}
-  </ul>
+    <span class="columnHeading">{% translate "Vorteile" %}:</span>
+    <ul class="plus-sign-list">
+        {% for proElement in boxObject.proArgument.all %}
+            <li>{{ proElement.proArgumentRendered }}</li>
+        {% endfor %}
+    </ul>
 </p>
 <p>
-  <span class="columnHeading">{% translate "Nachteile" %}:</span>
-  <ul class="minus-sign-list">
-    {% for conElement in boxObject.conArguments.all %}
-      <li>{{ conElement.conArgumentRendered }}</li>
-    {% endfor %}
-  </ul>
+    <span class="columnHeading">{% translate "Nachteile" %}:</span>
+    <ul class="minus-sign-list">
+        {% for conElement in boxObject.conArgument.all %}
+            <li>{{ conElement.conArgumentRendered }}</li>
+        {% endfor %}
+    </ul>
 </p>
 {% if boxObject.goodPracticeExampleRendered != "" %}
   <p>
@@ -65,9 +65,3 @@
     </ul>
   </p>
 {% endif %}
-<!-- <p>
-    <span class="columnHeading">{% translate "Durchgeführt von" %}:</span> {{ boxObject.conductedBy }}
-</p> -->
-<!-- <p>
-    <span class="columnHeading">{% translate "Erfolgsfaktoren für die Umsetzung der Methode" %}:</span> {{ boxObject.successFactors }}
-</p> -->

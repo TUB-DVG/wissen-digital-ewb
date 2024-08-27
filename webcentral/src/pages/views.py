@@ -107,7 +107,7 @@ def userEngagement(request):
     explanationText = explanationTextParagraphOne + explanationTextParagraphTwo + explanationTextPart3 + explanationPart4 + explanationPart5 + explanationPart6 + f"<ul>"
     explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Teilnehmende Beobachtung' %}\">" + translationObserver + "</a></li>"
     explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Einzel-Interview' %}\">" + translationIndividualInterview + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/Fokusgruppe' %}\">" + _("Gruppen-Interview / Fokusgruppe") + "</a></li>"
+    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/Fokusgruppe' %}\">" + _("Gruppen-Interview/Fokusgruppe") + "</a></li>"
     explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Personas' %}\">" + _("Personas") + "</a></li>"
     explanationText += "</ul>"
     explanationText += "<h6 style=\"font-size: 22px\">" + _("Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der Anwendungsentwicklung") + "</h2>"

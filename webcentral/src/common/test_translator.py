@@ -129,10 +129,11 @@ class TestTranslator(TestCase):
     def testCommand(self):
         """Integrationtest for the added custom management command `translate`."""
 
+
         call_command(
             "translate",
             "criteria_catalog",
-            "../doc/01_data/08_criteria_catalog/integrationTestCriteriaCatalog.xlsx",
+            "../test/08_test_data/test_criteria_catalog.xlsx",
             "testResult.xlsx",
         )
 
@@ -165,3 +166,20 @@ class TestTranslator(TestCase):
         for expectedColumn in expectedColumns:
             self.assertTrue(expectedColumn in englishDF.columns)
         self.assertGreaterEqual(len(englishDF), 3)
+
+    def testTranslatePositiveEnvironmentalImpact(self):
+        """
+
+        """
+        call_command(
+            "translate",
+            "positive_environmental_impact",
+            "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx",
+            "test_translation.xlsx",
+        )
+
+        dataFrameDict = pd.from_excel("test_translation.xlsx", sheet_name=None)
+        englishDF = dataFrameDict["English"]
+        self.assertTrue("Category" in englishDF.columns)
+        self.assertTrue("Description" in englishDF.columns)
+

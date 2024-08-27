@@ -34,13 +34,13 @@
 </div>
 <div class="blockOfContent">
   <div class="mainContentHeading">{% translate "Ablauf" %}</div>
-  <div class="mainContent" id="shortDescription">
-    <ol>
-      {% for procedure in boxObject.procedure.all %}
-        <li>{{ procedure.procedureItem }}</li>
-      {% endfor %}
-    </ol>
-  </div>
+    <div class="mainContent" id="shortDescription">
+        <ol>
+            {% for procedure in boxObject.procedureItem.all %}
+                <li>{{ procedure.procedureItemRendered }}</li>
+            {% endfor %}
+        </ol>
+    </div>
 </div>
 <div class="blockOfContent">
   <div class="mainContentHeading">{% translate "Literatur" %}</div>
@@ -54,19 +54,3 @@
     </ul>
   </div>
 </div>
-<!-- <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Konkrete Ziele" %}</div>
-    <div class="mainContent" id="shortDescription">
-        {{ boxObject.specificGoals }}
-    </div>
-</div> -->
-<!-- <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Konkreter Ablauf" %}</div>
-    <div class="mainContent" id="shortDescription">
-        <ul>
-            {% for specificProcedure in boxObject.specificProcedure.all %}
-                <li>{{ specificProcedure.specificProcedureItem }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-</div> -->
