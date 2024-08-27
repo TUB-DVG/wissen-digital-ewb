@@ -22,7 +22,7 @@ from test.scripts.test_navbar import TestNavbar
 # from test.scripts.TestSearch import TestSearch
 # from test.scripts.TestPublications import TestPublicationPage
 # from test.scripts.TestComponentsList import TestComponentsList
-# from test.scripts.TestUserEngagement import TestUserEngagement
+from test.scripts.test_user_integration import TestUserIntegration
 # from test.scripts.TestNegativeEnvironmentalImpacts import (
 #     TestNegativeEnvironmentalImpacts, )
 # from test.scripts.TestBusinessModels import TestBusinessModels
@@ -69,32 +69,30 @@ if __name__ == "__main__":
         )
     else:
         # Test Suite is used since there are multiple test cases
-        testSuite = TestSuite(
-            (
-                # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
-                testLoader.loadTestsFromTestCase(TestMainPage),
-                testLoader.loadTestsFromTestCase(TestNavbar),
-                # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
-                # testLoader.loadTestsFromTestCase(TestNormsPage),
-                # testLoader.loadTestsFromTestCase(TestProtocolsPage),
-                # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
-                # testLoader.loadTestsFromTestCase(TestClickThroughSites),
-                # testLoader.loadTestsFromTestCase(TestLastProfile),
-                # testLoader.loadTestsFromTestCase(TestAboutPage),
-                # testLoader.loadTestsFromTestCase(TestSearch),
-                # testLoader.loadTestsFromTestCase(TestPublicationPage),
-                # testLoader.loadTestsFromTestCase(TestComponentsList),
-                # testLoader.loadTestsFromTestCase(TestUserEngagement),
-                # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
-                # testLoader.loadTestsFromTestCase(TestBusinessModels),
-                # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
-                # testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
-                # testLoader.loadTestsFromTestCase(TestUseCases),
-                # testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
-                # testLoader.loadTestsFromTestCase(TestDataSufficiency),
-                # # testLoader.loadTestsFromTestCase(TestAdminPage),
-            )
-        )
+        testSuite = TestSuite((
+            # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
+            testLoader.loadTestsFromTestCase(TestMainPage),
+            testLoader.loadTestsFromTestCase(TestNavbar),
+            # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
+            # testLoader.loadTestsFromTestCase(TestNormsPage),
+            # testLoader.loadTestsFromTestCase(TestProtocolsPage),
+            # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
+            # testLoader.loadTestsFromTestCase(TestClickThroughSites),
+            # testLoader.loadTestsFromTestCase(TestLastProfile),
+            # testLoader.loadTestsFromTestCase(TestAboutPage),
+            # testLoader.loadTestsFromTestCase(TestSearch),
+            # testLoader.loadTestsFromTestCase(TestPublicationPage),
+            # testLoader.loadTestsFromTestCase(TestComponentsList),
+            testLoader.loadTestsFromTestCase(TestUserIntegration),
+            # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
+            # testLoader.loadTestsFromTestCase(TestBusinessModels),
+            # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
+            # testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
+            # testLoader.loadTestsFromTestCase(TestUseCases),
+            # testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
+            # testLoader.loadTestsFromTestCase(TestDataSufficiency), 
+            # # testLoader.loadTestsFromTestCase(TestAdminPage),
+        ))
 
     testRunner = TextTestRunner(verbosity=2)
     testRunner.run(testSuite)

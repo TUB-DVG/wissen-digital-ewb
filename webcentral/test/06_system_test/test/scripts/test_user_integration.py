@@ -66,8 +66,7 @@ class TestUserIntegration(WebDriverSetup):
     def testUserEngagementPage(self):
         """Test if a description-container is present"""
 
-        self.driver.get(os.environ["siteUnderTest"] + "/userEngagement")
-        
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/userEngagement")
         self.checkNavBar("operational")
     
     def testOverviewText(self):
@@ -77,9 +76,8 @@ class TestUserIntegration(WebDriverSetup):
 
         """
         
-        self.driver.get(os.environ["siteUnderTest"] + "/userEngagement")
+        self.driver.get(os.environ["siteUnderTest"] + "/pages/userEngagement")
         self.overviewPageSectionObj = OverviewPageSection(self.driver)
-
         self.checkInGermanAndEnglish(self._testHeading, {"de": "Methoden der Nutzendenintegration", "en": "Methods of user integration"})
 
     def _testHeading(self, expectedValue):
@@ -87,5 +85,5 @@ class TestUserIntegration(WebDriverSetup):
 
         """
         headingOfOverviewSection = self.overviewPageSectionObj.getHeading()
-        self.assertEqual(headingOfOverviewSection, expectedValue)
+        self.assertEqual(headingOfOverviewSection.text, expectedValue)
 
