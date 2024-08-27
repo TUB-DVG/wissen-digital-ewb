@@ -3,14 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:15
-#: webcentral_app/static/sphinx/html/translation.html:50
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 13:22+0000\n"
+"POT-Creation-Date: 2024-08-27 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -936,14 +934,12 @@ msgstr ""
 "assistance in this regard."
 
 #: pages/views.py:140
-#, fuzzy
-#| msgid "Methoden zur Nutzendenintegration"
 msgid "Methoden der Nutzendenintegration"
-msgstr "Methods for user integration"
+msgstr "Methods of user integration"
 
 #: pages/views.py:153
 msgid "Methoden zur Nutzendenintegration"
-msgstr "Methods for user integration"
+msgstr "Methods of user integration"
 
 #: pages/views.py:155
 msgid ""
@@ -3009,7 +3005,6 @@ msgstr ""
 
 #: templates/pages/businessModels.html:3
 #: templates/pages/businessModelsPractice.html:19
-#: webcentral_app/static/sphinx/html/_sources/templateStructure.md.txt:18
 msgid "Geschäftsmodelle – good-practice"
 msgstr "Business models – good practice"
 
@@ -5363,11 +5358,6 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:94
 msgid "MIT-Lizenz"
 msgstr "MIT license"
-
-#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:18
-#: webcentral_app/static/sphinx/html/_sources/translation.md.txt:19
-msgid "Hallo"
-msgstr ""
 
 #, fuzzy
 #~| msgid ""
