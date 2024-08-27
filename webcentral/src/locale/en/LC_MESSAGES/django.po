@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-27 11:11+0000\n"
+"POT-Creation-Date: 2024-08-27 12:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -467,7 +467,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:264 pages/views.py:352
+#: StartSearch/views.py:264 pages/views.py:354
 #: templates/StartSearch/StartSearch.html:406
 #: templates/partials/_navbar.html:204
 msgid "Kriterienkatalog"
@@ -601,7 +601,7 @@ msgstr "Further information"
 msgid "Quellen"
 msgstr "Source"
 
-#: common/views.py:136 component_list/views.py:126 pages/views.py:198
+#: common/views.py:136 component_list/views.py:126 pages/views.py:200
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -840,18 +840,18 @@ msgstr ""
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:299 component_list/views.py:339 pages/views.py:184
+#: component_list/views.py:299 component_list/views.py:339 pages/views.py:186
 #: templates/StartSearch/StartSearch.html:308
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:159
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: component_list/views.py:312 pages/views.py:223
+#: component_list/views.py:312 pages/views.py:225
 msgid "Die Daten-Wertschöpfungkette"
 msgstr "The data value chain"
 
-#: component_list/views.py:329 component_list/views.py:375 pages/views.py:216
+#: component_list/views.py:329 component_list/views.py:375 pages/views.py:218
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr "Expenses for data processing processes"
@@ -933,15 +933,148 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
-#: pages/views.py:140
+#: pages/views.py:103
+msgid ""
+"<p>Die Nutzendenintegration beschreibt die <b>direkte oder indirekte "
+"Integration von Nutzenden und ihren Perspektiven in die Entwicklung "
+"digitaler Anwendungen</b>. Die direkte Beteiligung geschieht über Methoden "
+"wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte "
+"Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder "
+"Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden "
+"werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen "
+"verfügen.</p>"
+msgstr ""
+"<p>User integration describes the <b>direct or indirect integration of users "
+"and their perspectives into the development of digital applications</b>. "
+"Direct involvement occurs through methods such as observations, surveys, or "
+"usability tests with users. Indirect user integration takes place using "
+"methods like cognitive walkthrough or heuristic evaluation, where usability "
+"experts are involved who possess extensive knowledge about users of digital "
+"applications.</p>"
+
+#: pages/views.py:104
+msgid ""
+"<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. "
+"Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</"
+"b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den "
+"Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen "
+"generiert. Auf dieser Basis können die digitalen Anwendungen "
+"zielgruppenorientiert (weiter-)entwickelt werden.</p>"
+msgstr ""
+"<p>User integration <b>increases the usability or user-friendliness – in "
+"short, the usability – of digital applications</b> by generatingknowledge "
+"about the suitable target groups of the applications, as well as the needs, "
+"usage habits, and prior knowledge of these target groups.On this basis, the "
+"digital applications can be (further) developed in a targeted manner.</p>"
+
+#: pages/views.py:105
+msgid ""
+"<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor "
+"der Markteinführung einer digitalen Anwendung sorgen, erhöhen die "
+"Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder "
+"Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>"
+msgstr "<p>Measures such as user integration, which ensure good usability before the market launch of a digital application, increase user satisfaction, reduce the effort required for the maintenance or upkeep of the application, and thus save costs significantly.</p>"
+
+#: pages/views.py:106
+msgid ""
+"<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der "
+"Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- "
+"und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative "
+"Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in "
+"früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während "
+"quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen "
+"umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der "
+"Entwicklung digitaler Anwendungen vor allem um die Exploration von "
+"Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für "
+"diese Exploration sind qualitative Methoden besonders geeignet. In späteren "
+"Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut "
+"die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den "
+"Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative "
+"Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>"
+msgstr "<p>The methods of user integration can be distinguished according to <b>methods of the analysis phase, methods of the conceptualization phase, and methods of the implementation and evaluation phase</b>. Here, qualitative methods (e.g., interviews or participant observation) are mainly used in the early phases of digital application development, while quantitative methods (e.g., usability surveys) are implemented more in the later phases. This is because the early phases of digital application development are mainly concerned with exploring the needs, prior knowledge, and usage habits of users. Qualitative methods are particularly suitable for this exploration. In later phases of application development, the focus is on testing how well the developed digital application meets the needs, prior knowledge, and usage habits of users. Quantitative methods have their strengths here, as they allow for representative statements.</p>"
+
+#: pages/views.py:107
+msgid ""
+"<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der "
+"Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie "
+"Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei "
+"Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, "
+"Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber "
+"nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in "
+"anderen Phasen sinnvoll nutzen.</p>"
+msgstr "<p>On this knowledge platform, <b>12 proven methods of user integration</b> are presented, along with their respective objectives, procedures, as well as advantages and disadvantages. They are each assigned to one of the three phases of digital application development (analysis phase, conceptualization phase, and implementation and evaluation phase). However, they are not only applicable in this phase but can often be used just as effectively in other phases.</p>"
+
+#: pages/views.py:108
+msgid ""
+"<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
+"Analysephase vor Beginn der Anwendungsentwicklung</h6>"
+msgstr "User integration methods for the analysis phase before the start of application development"
+
+#: pages/views.py:109
+msgid "Teilnehmende Beobachtung"
+msgstr "Participant observation"
+
+#: pages/views.py:110
+msgid "Einzel-Interview"
+msgstr "Individual interview"
+
+#: pages/views.py:114
+msgid "Gruppen-Interview / Fokusgruppe"
+msgstr "Group interview/focus group"
+
+#: pages/views.py:115
+msgid "Personas"
+msgstr "Personas"
+
+#: pages/views.py:117
+msgid ""
+"Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der "
+"Anwendungsentwicklung"
+msgstr "User integration methods for the analysis phase before the start of application development"
+
+#: pages/views.py:119
+msgid "A/B-Test"
+msgstr "A/B testing"
+
+#: pages/views.py:120
+msgid "Prototyping"
+msgstr "Prototyping"
+
+#: pages/views.py:122
+msgid "Styleguide"
+msgstr "Style guide"
+
+#: pages/views.py:124
+msgid ""
+"Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase "
+"während bzw. nach der Anwendungsentwicklung"
+msgstr "User integration methods for the conceptualization phase at the beginning of application development"
+
+#: pages/views.py:126
+msgid "Lautes Denken"
+msgstr "Thinking out loud"
+
+#: pages/views.py:127
+msgid "Eyetracking"
+msgstr "Eye tracking"
+
+#: pages/views.py:128
+msgid "Heuristische Evaluation"
+msgstr "Heuristic evaluation"
+
+#: pages/views.py:129
+msgid "Usability-Befragung"
+msgstr "Usability survey"
+
+#: pages/views.py:142
 msgid "Methoden der Nutzendenintegration"
 msgstr "Methods of user integration"
 
-#: pages/views.py:153
+#: pages/views.py:155
 msgid "Methoden zur Nutzendenintegration"
 msgstr "Methods of user integration"
 
-#: pages/views.py:155
+#: pages/views.py:157
 msgid ""
 "Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
 "deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist "
@@ -959,11 +1092,11 @@ msgstr ""
 "individual interviews, group interviews / focus groups, participant "
 "observations, and personas."
 
-#: pages/views.py:174
+#: pages/views.py:176
 msgid "Digitale Anwendungen zeichnen sich oftmals durch"
 msgstr "Digital applications often have "
 
-#: pages/views.py:178
+#: pages/views.py:180
 msgid ""
 " aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie "
 "belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services "
@@ -998,7 +1131,7 @@ msgstr ""
 "therefore divided into the areas of \"efforts for data processing\" and "
 "\"efforts for frequently used components.\""
 
-#: pages/views.py:200
+#: pages/views.py:202
 msgid ""
 "Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der "
 "Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten "
@@ -1022,11 +1155,11 @@ msgstr ""
 "focus on building operations optimization) is intended to provide a simple "
 "overview of hardware-related environmental impacts."
 
-#: pages/views.py:205
+#: pages/views.py:207
 msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
 msgstr "Backbone of the data value chain (focus on operational optimization)"
 
-#: pages/views.py:218
+#: pages/views.py:220
 msgid ""
 "Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und "
 "Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, "
@@ -1044,14 +1177,14 @@ msgstr ""
 "use of the corresponding data infrastructure are explained in more detail "
 "here. Simple estimates based on data volume are also made."
 
-#: pages/views.py:241 pages/views.py:266
+#: pages/views.py:243 pages/views.py:268
 #: templates/StartSearch/StartSearch.html:320
 #: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:165
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: pages/views.py:245
+#: pages/views.py:247
 msgid ""
 "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
 "Gebäuden und Quartieren steht im derzeitigen Fokus der Forschung. "
@@ -1088,7 +1221,7 @@ msgstr ""
 "digital applications in order to be able to make well-founded decisions for "
 "their own projects."
 
-#: pages/views.py:284
+#: pages/views.py:286
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1141,7 +1274,7 @@ msgid ""
 "    "
 msgstr ""
 
-#: pages/views.py:301 pages/views.py:327
+#: pages/views.py:303 pages/views.py:329
 #: templates/StartSearch/StartSearch.html:343
 #: templates/pages/dataSufficiency.html:4 templates/partials/_navbar.html:171
 msgid "Datensuffizienz"
@@ -5358,6 +5491,163 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:94
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "<p>Die Nutzendenintegration beschreibt die <b>direkte oder indirekte "
+#~ "Integration von Nutzenden und ihren Perspektiven in die Entwicklung "
+#~ "digitaler Anwendungen</b>. Die direkte Beteiligung geschieht über "
+#~ "Methoden wie Beobachtungen, Befragungen oder Usability-Tests von "
+#~ "Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie "
+#~ "Cognitive Walkthrough oder Heuristische Evaluation statt, in denen "
+#~ "Usability-Expert*innen eingebunden werden, die über fundiertes Wissen "
+#~ "über Nutzende digitaler Anwendungen verfügen.</p>\n"
+#~ "<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. "
+#~ "Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler "
+#~ "Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der "
+#~ "Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem "
+#~ "Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die "
+#~ "digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</"
+#~ "p>\n"
+#~ "<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability "
+#~ "vor der Markteinführung einer digitalen Anwendung sorgen, erhöhen die "
+#~ "Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder "
+#~ "Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</"
+#~ "p>\n"
+#~ "<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der "
+#~ "Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- "
+#~ "und Evaluierungsphase</b> unterschieden werden. Hierbei werden "
+#~ "qualitative Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor "
+#~ "allem in früheren Phasen der Entwicklung digitaler Anwendungen "
+#~ "eingesetzt, während quantitative Methoden (z. B. Usability-Befragung) "
+#~ "eher in späteren Phasen umgesetzt werden. Dies beruht darauf, dass es in "
+#~ "früheren Phasen der Entwicklung digitaler Anwendungen vor allem um die "
+#~ "Exploration von Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von "
+#~ "Nutzenden geht. Für diese Exploration sind qualitative Methoden besonders "
+#~ "geeignet. In späteren Phasen der Anwendungsentwicklung geht es vor allem "
+#~ "um die Testung, wie gut die entwickelte digitale Anwendung den "
+#~ "Bedürfnissen, dem Vorwissen und den Nutzungsgewohnheiten von Nutzenden "
+#~ "entspricht. Hier haben quantitative Methoden ihre Stärken, da sie hierzu "
+#~ "repräsentative Aussagen ermöglichen.</p>\n"
+#~ "<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der "
+#~ "Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen "
+#~ "sowie Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der "
+#~ "drei Phasen der Entwicklung einer digitalen Anwendung zugeordnet "
+#~ "(Analysephase, Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). "
+#~ "Sie sind aber nicht nur in dieser Phase einsetzbar, sondern lassen sich "
+#~ "oft ebenso gut in anderen Phasen sinnvoll nutzen.</p>\n"
+#~ "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
+#~ "Analysephase vor Beginn der Anwendungsentwicklung</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Teilnehmende "
+#~ "Beobachtung' %}\">Teilnehmende Beobachtung</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Einzel-Interview' "
+#~ "%}\">Einzel-Interview</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/"
+#~ "Fokusgruppe' %}\">Gruppen-Interview / Fokusgruppe</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Personas' "
+#~ "%}\">Personas</a></li>\n"
+#~ "</ul>\n"
+#~ "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
+#~ "Konzeptionsphase zu Beginn der Anwendungsentwicklung</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'A/B-Test' %}\">A/B-"
+#~ "Test</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Prototyping' "
+#~ "%}\">Prototyping</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Cognitive "
+#~ "Walkthrough' %}\">Cognitive Walkthrough</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Styleguide' "
+#~ "%}\">Styleguide</a></li>\n"
+#~ "</ul>\n"
+#~ "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
+#~ "Umsetzungs- und Evaluationsphase während bzw. nach der "
+#~ "Anwendungsentwicklung</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Lautes Denken' "
+#~ "%}\">Lautes Denken</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Eyetracking' "
+#~ "%}\">Eyetracking</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Heuristische "
+#~ "Evaluation' %}\">Heuristische Evaluation</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Usability-"
+#~ "Befragung' %}\">Usability-Befragung</a></li>\n"
+#~ "</ul>\n"
+#~ msgstr ""
+#~ "<p>User integration describes the <b>direct or indirect integration of "
+#~ "users and their perspectives into the development of digital "
+#~ "applications</b>. Direct involvement occurs through methods such as "
+#~ "observations, surveys, or usability tests with users. Indirect user "
+#~ "integration takes place using methods like cognitive walkthrough or "
+#~ "heuristic evaluation, where usability experts are involved who possess "
+#~ "extensive knowledge about users of digital applications.</p>\n"
+#~ "<p>User integration <b>increases the usability or user-friendliness – in "
+#~ "short, the usability – of digital applications</b> by generating "
+#~ "knowledge about the suitable target groups of the applications, as well "
+#~ "as the needs, usage habits, and prior knowledge of these target groups. "
+#~ "On this basis, the digital applications can be (further) developed in a "
+#~ "targeted manner.</p>\n"
+#~ "<p>Measures such as user integration, which ensure good usability before "
+#~ "the market launch of a digital application, increase user satisfaction, "
+#~ "reduce the effort required for the maintenance or upkeep of the "
+#~ "application, and thus save costs significantly.</p>\n"
+#~ "<p>The methods of user integration can be distinguished according to "
+#~ "<b>methods of the analysis phase, methods of the conceptualization phase, "
+#~ "and methods of the implementation and evaluation phase</b>. Here, "
+#~ "qualitative methods (e.g., interviews or participant observation) are "
+#~ "mainly used in the early phases of digital application development, while "
+#~ "quantitative methods (e.g., usability surveys) are implemented more in "
+#~ "the later phases. This is because the early phases of digital application "
+#~ "development are mainly concerned with exploring the needs, prior "
+#~ "knowledge, and usage habits of users. Qualitative methods are "
+#~ "particularly suitable for this exploration. In later phases of "
+#~ "application development, the focus is on testing how well the developed "
+#~ "digital application meets the needs, prior knowledge, and usage habits of "
+#~ "users. Quantitative methods have their strengths here, as they allow for "
+#~ "representative statements.</p>\n"
+#~ "<p>On this knowledge platform, <b>12 proven methods of user integration</"
+#~ "b> are presented, along with their respective objectives, procedures, as "
+#~ "well as advantages and disadvantages. They are each assigned to one of "
+#~ "the three phases of digital application development (analysis phase, "
+#~ "conceptualization phase, and implementation and evaluation phase). "
+#~ "However, they are not only applicable in this phase but can often be used "
+#~ "just as effectively in other phases.</p>\n"
+#~ "<h6 style=\"font-size: 22px\">User integration methods for the analysis "
+#~ "phase before the start of application development</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Participant "
+#~ "Observation' %}\">Participant Observation</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Individual "
+#~ "Interview' %}\">Individual Interview</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Group Interview/"
+#~ "Focus Group' %}\">Group Interview / Focus Group</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Personas' "
+#~ "%}\">Personas</a></li>\n"
+#~ "</ul>\n"
+#~ "<h6 style=\"font-size: 22px\">User integration methods for the "
+#~ "conceptualization phase at the beginning of application development</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'A/B Test' %}\">A/B "
+#~ "Test</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Prototyping' "
+#~ "%}\">Prototyping</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Cognitive "
+#~ "Walkthrough' %}\">Cognitive Walkthrough</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Styleguide' "
+#~ "%}\">Styleguide</a></li>\n"
+#~ "</ul>\n"
+#~ "<h6 style=\"font-size: 22px\">User integration methods for the "
+#~ "implementation and evaluation phase during or after application "
+#~ "development</h6>\n"
+#~ "<ul>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Think Aloud' "
+#~ "%}\">Think Aloud</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Eye Tracking' "
+#~ "%}\">Eye Tracking</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Heuristic "
+#~ "Evaluation' %}\">Heuristic Evaluation</a></li>\n"
+#~ "    <li><a href=\"{% url 'userEngagementDetailsTitle' 'Usability Survey' "
+#~ "%}\">Usability Survey</a></li>\n"
+#~ "</ul>\n"
 
 #, fuzzy
 #~| msgid ""
