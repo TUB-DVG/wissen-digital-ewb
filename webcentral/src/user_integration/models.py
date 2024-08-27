@@ -95,7 +95,7 @@ class ProcedureItem(models.Model):
             object of type ProcedureItem is called. It renders the text inside the
             object as a django-template.
         """
-        template = Template(self._procedureItem)
+        template = Template(self.procedureItem)
         context = Context({})
         return template.render(context)
 
