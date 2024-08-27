@@ -23,12 +23,12 @@ jobs:
     
     - name: Analysing the code with pylint
       run: |
-        pylint --rcfile=webcentral/pyproject.toml $(git ls-files '*.py')
+        pylint --rcfile=webcentral/.pylintrc $(git ls-files 'webcentral/**/*.py')
 
     - name: Lint Django templates with djlint
       run: |
-        djlint --config=webcentral/pyproject.toml $(git ls-files '*.html')
+        djlint --config=webcentral/pyproject.toml $(git ls-files 'webcentral/**/*.html')
 
     - name: Format Python code with black
       run: |
-        black --config webcentral/pyproject.toml .
+        black --config webcentral/pyproject.toml webcentral/
