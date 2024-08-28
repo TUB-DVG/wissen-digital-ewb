@@ -1,3 +1,6 @@
+"""Command class for the translate django custom admin command
+
+"""
 import importlib
 
 from django.core.management.base import BaseCommand, CommandError
@@ -7,6 +10,12 @@ from common.translator import Translator
 
 
 class Command(BaseCommand):
+    """Extend the BaseCommand to create an admin comand `translate`,
+    which gets the name of the app, whose data file should be translated,
+    the filepasth the the data excel file and a filepath to the target, where
+    a new excel file with the translated content should be placed.
+
+    """
     help = "Translate a excel file for a specified app"
 
     def add_arguments(self, parser):
@@ -15,7 +24,8 @@ class Command(BaseCommand):
         parser.add_argument("writeToFile", nargs="+", type=str)
 
     def handle(self, *args, **options):
-        """ """
+        """ Method, which is executed when the translate command is called.
+        """
         filePathToData = options["pathFile"][0]
         type_of_data = options["type_of_data"][0]
         writeToFile = options["writeToFile"][0]

@@ -1,3 +1,7 @@
+"""This module defines a custom template tag, which can be used in the
+django HTML-templates.
+
+"""
 from django import template
 
 register = template.Library()

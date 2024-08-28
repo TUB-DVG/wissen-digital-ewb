@@ -1,14 +1,22 @@
-import pandas as pd
+"""module, which creates a mocked excel-file for testing purposes.
+
+"""
 
 from tempfile import NamedTemporaryFile
 
+import pandas as pd
+
+
 
 def mock_excel_file():
+    """Function, which creates a mocked excel file.
+
+    """
     data_german = {
         "name": ["Sensormodul"],
         "resources": ["Dokumentation, API"],
         "shortDescription": [
-            "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
+        "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
         ],
         "applicationArea": ["Industrie, Umweltüberwachung"],
         "provider": ["Technologie AG"],

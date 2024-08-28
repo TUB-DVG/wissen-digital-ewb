@@ -1,3 +1,10 @@
+"""view function, which can be used by all other apps of the project.
+
+This functions need to be put into another script in the future since 
+they are no views functions (view functions get a request object and return 
+a response object.)
+
+"""
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext as _
 from django.db.models import Q
@@ -142,7 +149,7 @@ def comparison(request):
         backLinkPath = "components"
         focusBorder = "ecological"
 
-    elif model == "Tools" or model == "BusinessApps":
+    elif model in ('Tools', 'BusinessApps'):
         modelObj = Tools
         attributesToCompare = [
             {
@@ -315,8 +322,8 @@ def comparison(request):
 
     # Retrieve tools based on the ids
     objectsToCompare = []
-    for id in ids:
-        objectToCompare = get_object_or_404(modelObj, pk=id)
+    for idElement in ids:
+        objectToCompare = get_object_or_404(modelObj, pk=idElement)
         objectsToCompare.append(objectToCompare)
 
     context = {

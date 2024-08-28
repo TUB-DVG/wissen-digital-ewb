@@ -1,3 +1,5 @@
+"""Test the workflow to solve conflicts in data_import 
+"""
 from random import choice
 
 from django.test import TestCase
@@ -6,17 +8,35 @@ from django.contrib.admin.sites import AdminSite
 from django.test import RequestFactory
 from django.core.management import call_command
 
-from project_listing.models import *
+from project_listing.models import (
+    Address,
+    Enargus,
+    ExecutingEntity,
+    FurtherFundingInformation,
+    # GrantRecipient,
+    RAndDPlanningCategory,
+    Subproject,
+    Person,
+    # ModuleAssignment,
+)
+
+from project_listing.data_import import DataImportApp
 from .models import DbDiff
 from .admin import DbDiffAdmin
 from .data_import import DataImport
-from project_listing.data_import import DataImportApp
 
 User = get_user_model()
 
 
 class DbDiffAdminTest(TestCase):
+    """Definition of testclass to test if the db conflicts can be solved 
+    in the django admin panel.
+
+    """
     def setUp(self):
+        """setUp method for all methods of `DbDiffAdminTest`
+
+        """
         # Create test data
 
         self.site = AdminSite()
@@ -29,11 +49,15 @@ class DbDiffAdminTest(TestCase):
         self.factory = RequestFactory()
 
     def testOneTableDiffStr(self):
+        """test if the finalization process works if only one table if only 
+        one table is in the DbDiff object.
+
+        """
         # Create a mock request
         request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
 
-        fundingObj1 = FurtherFundingInformation.objects.create(
+        _ = FurtherFundingInformation.objects.create(
             furtherFundingInformation_id=1,
             fundedBy="BMWK",
             projectManagementAgency="PTJ",
@@ -48,7 +72,7 @@ class DbDiffAdminTest(TestCase):
             fundingProgram="Erneuerbare Energien Programm",
         )
 
-        enargusDataObj = Enargus.objects.create(
+        _ = Enargus.objects.create(
             startDate="2014-01-01",
             endDate="2024-12-31",
             topics="Hallo",
@@ -66,7 +90,8 @@ class DbDiffAdminTest(TestCase):
 
         self.dbDiff1 = DbDiff.objects.create(
             identifier="12345",
-            diffStr="""<class 'project_listing.models.FurtherFundingInformation'>:
+            diffStr="""<class 'project_listing.models.FurtherFundingInformation
+            '>:
    furtherFundingInformation_id: 1 -> 2
    fundedBy: BMWK -> BundXYZ
    projectManagementAgency: PTJ -> Projektträger Jülich
@@ -89,7 +114,7 @@ class DbDiffAdminTest(TestCase):
         request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
 
-        fundingObj1 = FurtherFundingInformation.objects.create(
+        _ = FurtherFundingInformation.objects.create(
             furtherFundingInformation_id=1,
             fundedBy="BMWK",
             projectManagementAgency="PTJ",
@@ -147,7 +172,7 @@ class DbDiffAdminTest(TestCase):
             address="Godesberger Allee 90",
         )
 
-        oldExecutingEntityObj = ExecutingEntity.objects.create(
+        _ = ExecutingEntity.objects.create(
             executingEntity_id=1,
             name="CDE Gmbh",
             address=oldAdress,
@@ -158,21 +183,21 @@ class DbDiffAdminTest(TestCase):
             address=newAdress,
         )
 
-        oldPersonObj, created = Person.objects.get_or_create(
+        _, _ = Person.objects.get_or_create(
             person_id=1,
             surname="Meier",
             firstName="Peter",
             title="",
             email="m.meier@berlin.de",
         )
-        newPersonObj, created = Person.objects.get_or_create(
+        _, _ = Person.objects.get_or_create(
             person_id=2,
             surname="Müller",
             firstName="Johann",
             title="",
             email="johann.mueller@example.com",
         )
-        rAnDObj = RAndDPlanningCategory.objects.create(
+        _ = RAndDPlanningCategory.objects.create(
             rAndDPlanningCategoryNumber="1265",
             rAndDPlanningCategoryText="Qlter Text",
         )
@@ -182,7 +207,7 @@ class DbDiffAdminTest(TestCase):
             rAndDPlanningCategoryText="Erneuerbare Energieentwicklung",
         )
 
-        enargusDataObj = Enargus.objects.create(
+        _ = Enargus.objects.create(
             startDate="2014-01-01",
             endDate="2024-12-31",
             topics="Hallo",
@@ -214,7 +239,7 @@ class DbDiffAdminTest(TestCase):
         self.assertEqual(len(personObjs), 1)
 
     def testFinalizeChangesWithGetOrCreateCall(self):
-        """ """
+        """Integration test for finalization step """
         request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
 
@@ -257,8 +282,8 @@ class DbDiffAdminTest(TestCase):
             "Renewable Energy Research",  # Thema
             "Energy for Future",  # Verbundbezeichung
             "5000000",  # Foerdersumme_EUR
-            "Forschung zur Optimierung erneuerbarer Energiequellen.",  # Kurzbeschreibung_de
-            "Research on optimizing renewable energy sources.",  # Kurzbeschreibung_en
+            "Forschung zur Optimierung erneuerbarer Energiequellen.",
+            "Research on optimizing renewable energy sources.",
             "ForschungDB",  # Datenbank
             "BundXYZ",  # Bundesministerium
             "Projektträger Jülich",  # Projekttraeger
@@ -289,8 +314,8 @@ class DbDiffAdminTest(TestCase):
             "Renewable Energy",  # Thema
             "Energy for Future",  # Verbundbezeichung
             "5000000",  # Foerdersumme_EUR
-            "Forschung zur Optimierung erneuerbarer Energiequellen.",  # Kurzbeschreibung_de
-            "Research on optimizing renewable energy sources.",  # Kurzbeschreibung_en
+            "Forschung zur Optimierung erneuerbarer Energiequellen.",
+            "Research on optimizing renewable energy sources.",
             "ForschungDB",  # Datenbank
             "Hallo",  # Bundesministerium
             "Projektträger Jülich2",  # Projekttraeger
@@ -316,7 +341,7 @@ class DbDiffAdminTest(TestCase):
 
         data = [row, row2]
         importObj = DataImportApp("dummy.csv")
-        enargusDataOne, created = importObj.getOrCreate(row, header, data)
+        enargusDataOne, _ = importObj.getOrCreate(row, header, data)
 
         subprojectForReferenceNumber = Subproject.objects.get(
             referenceNumber_id=row[header.index("FKZ")]
@@ -325,7 +350,7 @@ class DbDiffAdminTest(TestCase):
             subprojectForReferenceNumber.enargusData, enargusDataOne
         )
 
-        enargusDataTwo, created = importObj.getOrCreate(row2, header, data)
+        enargusDataTwo, _ = importObj.getOrCreate(row2, header, data)
         subprojectForReferenceNumber = Subproject.objects.get(
             referenceNumber_id=row[header.index("FKZ")]
         )
@@ -344,9 +369,6 @@ class DbDiffAdminTest(TestCase):
             "project_listing",
             "../../02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv",
         )
-
-        numberOfEnargusDataObjs = len(Enargus.objects.all())
-        numberOfAddresses = len(Address.objects.all())
 
         call_command(
             "data_import",
@@ -458,6 +480,5 @@ class DbDiffAdminTest(TestCase):
         )
 
         newNumberOfEnargusObj = len(Enargus.objects.all())
-        newNumberOfAddresses = len(Address.objects.all())
 
         self.assertLessEqual(newNumberOfEnargusObj, 2100)

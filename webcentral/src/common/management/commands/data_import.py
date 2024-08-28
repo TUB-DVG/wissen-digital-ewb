@@ -47,85 +47,17 @@ deleted. The modified file can then be used as an input for the
 `execute_db_changes` command.
 """
 
-import csv
-from datetime import datetime, timedelta
-import difflib
-from encodings import utf_8
 import importlib
-import os
-import math
 
 from django.core.management.base import BaseCommand, CommandError
-from django.db.models import Model
 from django.conf import settings
-import numpy as np
-import pandas as pd
 
-from criteria_catalog.models import (
-    CriteriaCatalog,
-    Topic,
-    Tag,
-)
-from component_list.models import (
-    Component,
-    ComponentClass,
-    Category,
-)
-from positive_environmental_impact.models import EnvironmentalImpact
-from data_sufficiency.models import (
-    DataSufficiency,
-)
 
-from businessModel.models import (
-    BusinessModel,
-)
-
-from user_integration.models import (
-    ProArgument,
-    ConArgument,
-    Literature,
-    ProcedureItem,
-    UserEngagement,
-)
-
-from project_listing.models import (
-    Subproject,
-    ModuleAssignment,
-    Enargus,
-    Address,
-    GrantRecipient,
-    ExecutingEntity,
-    RAndDPlanningCategory,
-    Person,
-    FurtherFundingInformation,
-)
-from publications.models.publication import Publication
-from publications.models.publication import Type
-
-from django.db import IntegrityError
 from keywords.models import (
     Keyword,
     KeywordRegisterFirstReview,
 )
-from tools_over.models import (
-    Accessibility,
-    ApplicationArea,
-    Classification,
-    Focus,
-    Tools,
-    Usage,
-    TargetGroup,
-    LifeCyclePhase,
-    UserInterface,
-    Scale,
-)
-from TechnicalStandards.models import (
-    Norm,
-    Protocol,
-)
-from use_cases.models import UseCase
 from weatherdata_over.models import Weatherdata
-from project_listing.DatabaseDifference import DatabaseDifference
 
 
 class MultipleFKZDatasets(Exception):
@@ -170,96 +102,6 @@ class Command(BaseCommand):
         super().__init__()
         self.fkzWrittenToYAML = []
 
-    def getOrCreateBusinessModel(self, row: list, header: list) -> tuple:
-        """Gets or Creates an object of type BusinessModel from the data in row
-
-        This method feeds the data present in row into the django
-        get_or_create-function, which returns an Object of Type
-        BusinessModel according to the fed-data. Either this object
-        corresponds to a new created-dataset in the database or
-        the existing dataset is returned.
-
-        Parameters:
-        row:    list
-            A dataset, represented by a list.
-        header: list
-            list of strings, which represent the header-columns.
-
-        Returns:
-        obj:    BusinessModel
-            BusinessModel-object, represent the created or in database
-            present BusinessModel-Dataset with the data from row.
-        created:    bool
-            Indicates, if the BusinessModel-object was created or not.
-        """
-        challenge = row[header.index("Herausfoderung")]
-        shortDescription = row[header.index("Kurzbeschreibung")]
-        property1 = row[header.index("Eigenschaft_1")]
-        property1Text = row[header.index("Eigenschaft_1_Text")]
-        property2 = row[header.index("Eigenschaft_2")]
-        property2Text = row[header.index("Eigenschaft_2_Text")]
-        property3 = row[header.index("Eigenschaft_3")]
-        property3Text = row[header.index("Eigenschaft_3_Text")]
-        property4 = row[header.index("Eigenschaft_4")]
-        property4Text = row[header.index("Eigenschaft_4_Text")]
-        property5 = row[header.index("Eigenschaft_5")]
-        property5Text = row[header.index("Eigenschaft_5_Text")]
-
-        obj, created = BusinessModel.objects.get_or_create(
-            challenge=challenge,
-            shortDescription=shortDescription,
-            property1=property1,
-            property1Text=property1Text,
-            property2=property2,
-            property2Text=property2Text,
-            property3=property3,
-            property3Text=property3Text,
-            property4=property4,
-            property4Text=property4Text,
-            property5=property5,
-            property5Text=property5Text,
-        )
-        return obj, created
-
-    def getOrCreateModuleAssignment(
-        self,
-        row: list,
-        header: list,
-    ) -> tuple:
-        """Gets or Creates an object of type ModuleAssignment from row
-
-        This method feeds the data present in row into the django
-        get_or_create-function, which returns an Object of Type
-        ModuleAssignment according to the fed-data. Either this object
-        corresponds to a new created-dataset in the database or
-        the existing dataset is returned.
-
-        Parameters:
-        row:    list
-            A dataset, represented by a list.
-        header: list
-            list of strings, which represent the header-columns.
-
-        Returns:
-        obj:    ModuleAssignment
-            ModuleAssignment-object, represent the created or in database
-            present ModuleAssignment-Dataset with the data from row.
-        created:    bool
-            Indicates, if the ModuleAssignment-object was created or not.
-        """
-
-        priority1FromCSV = row[header.index("modulzuordnung_ptj_1")]
-        priority2FromCSV = row[header.index("modulzuordnung_ptj_2")]
-        priority3FromCSV = row[header.index("modulzuordnung_ptj_3")]
-        priority4FromCSV = row[header.index("modulzuordnung_ptj_4")]
-        obj, created = ModuleAssignment.objects.get_or_create(
-            priority1=priority1FromCSV,
-            priority2=priority2FromCSV,
-            priority3=priority3FromCSV,
-            priority4=priority4FromCSV,
-        )
-        return obj, created
-
     def getOrCreateWeatherdata(
         self,
         row: list,
@@ -295,7 +137,7 @@ class Command(BaseCommand):
         logoUrl = row[header.index("logo_url")]
         applications = row[header.index("applications")]
         lastUpdate = row[header.index("last_update")]
-        license = row[header.index("license")]
+        licenseStr = row[header.index("license")]
         category = row[header.index("category")]
         longDescription = row[header.index("long_description")]
 
@@ -308,86 +150,87 @@ class Command(BaseCommand):
             logo_url=logoUrl,
             applications=applications,
             last_update=lastUpdate,
-            license=license,
+            license=licenseStr,
             category=category,
             long_description=longDescription,
         )
         return obj, created
 
-    def getOrCreatePublications(self, row, header):
-        """
-        Add entry (Publications) into the table or/and return entry key.
-        """
-        type_ = row[header.index("type")]
-        title = row[header.index("title")]
-        copyright = row[header.index("copyright")]
-        url = row[header.index("url")]
-        abstract = row[header.index("abstract")]
-        institution = row[header.index("institution")]
-        authors = row[header.index("authors")]
-        month = row[header.index("month")]
-        year = row[header.index("year")]
-        doi = row[header.index("doi")]
-        keywords = row[header.index("keywords")]
-        focus = row[header.index("focus")]
-        journal = row[header.index("journal")]
-        volume = row[header.index("volume")]
-        number = row[header.index("number")]
-        pages = row[header.index("pages")]
-        pdf = row[header.index("pdf")]
-        image = row[header.index("image")]
-
-        focusList = row[header.index("focus")].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("focus")]
-        )
-        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
-        focusElements = Focus.objects.filter(focus__in=focusList)
-
-        typeORMObjList = Type.objects.filter(type=type_)
-        if len(typeORMObjList) == 0:
-            Type.objects.create(type=type_)
-
-        typeORMObj = Type.objects.filter(type=type_)[0]
-
-        if number == "":
-            number = None
-
-        if volume == "":
-            volume = None
-
-        if month == "":
-            month = None
-        else:
-            month = int(month)
-
-        if year == "":
-            year = None
-        else:
-            year = int(year)
-
-        obj, created = Publication.objects.get_or_create(
-            type=typeORMObj,
-            title=title,
-            copyright=copyright,
-            url=url,
-            abstract=abstract,
-            institution=institution,
-            authors=authors,
-            month=month,
-            year=year,
-            doi=doi,
-            keywords=keywords,
-            journal=journal,
-            volume=volume,
-            number=number,
-            pages=pages,
-            pdf=pdf,
-            image=image,
-        )
-        obj.focus.add(*focusElements)
-        return obj, created
-
+    # def getOrCreatePublications(self, row, header):
+    #     """
+    #     Add entry (Publications) into the table or/and return entry key.
+    #     """
+    #     type_ = row[header.index("type")]
+    #     title = row[header.index("title")]
+    #     copyright = row[header.index("copyright")]
+    #     url = row[header.index("url")]
+    #     abstract = row[header.index("abstract")]
+    #     institution = row[header.index("institution")]
+    #     authors = row[header.index("authors")]
+    #     month = row[header.index("month")]
+    #     year = row[header.index("year")]
+    #     doi = row[header.index("doi")]
+    #     keywords = row[header.index("keywords")]
+    #     focus = row[header.index("focus")]
+    #     journal = row[header.index("journal")]
+    #     volume = row[header.index("volume")]
+    #     number = row[header.index("number")]
+    #     pages = row[header.index("pages")]
+    #     pdf = row[header.index("pdf")]
+    #     image = row[header.index("image")]
+    #
+    #     focusList = row[header.index("focus")].split(",")
+    #     processedFocusList = self._correctReadInValue(
+    #         row[header.index("focus")]
+    #     )
+    #     focusList = self._iterateThroughListOfStrings(processedFocusList,
+    # Focus)
+    #     focusElements = Focus.objects.filter(focus__in=focusList)
+    #
+    #     typeORMObjList = Type.objects.filter(type=type_)
+    #     if len(typeORMObjList) == 0:
+    #         Type.objects.create(type=type_)
+    #
+    #     typeORMObj = Type.objects.filter(type=type_)[0]
+    #
+    #     if number == "":
+    #         number = None
+    #
+    #     if volume == "":
+    #         volume = None
+    #
+    #     if month == "":
+    #         month = None
+    #     else:
+    #         month = int(month)
+    #
+    #     if year == "":
+    #         year = None
+    #     else:
+    #         year = int(year)
+    #
+    #     obj, created = Publication.objects.get_or_create(
+    #         type=typeORMObj,
+    #         title=title,
+    #         copyright=copyright,
+    #         url=url,
+    #         abstract=abstract,
+    #         institution=institution,
+    #         authors=authors,
+    #         month=month,
+    #         year=year,
+    #         doi=doi,
+    #         keywords=keywords,
+    #         journal=journal,
+    #         volume=volume,
+    #         number=number,
+    #         pages=pages,
+    #         pdf=pdf,
+    #         image=image,
+    #     )
+    #     obj.focus.add(*focusElements)
+    #     return obj, created
+    #
     def getOrCreateKeyword(
         self,
         row: list,
@@ -499,615 +342,6 @@ class Command(BaseCommand):
         )
         return obj, created
 
-    def addOrUpdateRowSubproject(
-        self,
-        row: list,
-        header: list,
-        source: str,
-    ) -> tuple:
-        """Gets or Creates Subproject-object from `row`
-
-        This method adds a Subproject-object to the database, if it is
-        not already present. If it is present, a `IntegrityError` is
-        thrown by Django and is solved by calling `compareForeignTables`-
-        which finds all the differencies in all Tables.
-
-        Parameters:
-        row:    list
-            A dataset, represented by a list.
-        header: list
-            list of strings, which represent the header-columns.
-        source: str
-            String, which specifies the Source of the data. Possible
-            values are 'enargus', 'modul', 'tools' or 'schlagwortregister'.
-
-        Returns:
-        obj:    KeywordRegisterFirstReview
-            KeywordRegisterFirstReview-object, represent
-            the created or in database present Schlagwort-Dataset
-            with the data from row.
-        created:    bool
-            Indicates, if the KeywordRegisterFirstReview-object
-            was created or not.
-        """
-        # fill table enargus or/and get the enargus_id
-        if source == "enargus":
-            obj, created = self.getOrCreateEnargus(row, header)
-            enargus_id = obj.enargus_id
-            fkz = row[header.index("FKZ")]
-            try:
-                if (
-                    len(
-                        Subproject.objects.filter(
-                            referenceNumber_id=fkz, enargusData_id=enargus_id
-                        )
-                    )
-                    == 0
-                ):
-                    Subproject.objects.create(
-                        referenceNumber_id=fkz,
-                        enargusData_id=enargus_id,
-                    )
-                    self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
-            except IntegrityError:
-                currentStateTable = Subproject.objects.filter(
-                    referenceNumber_id=fkz,
-                )[0].enargusData
-                unvisited = []
-                visitedNames = []
-                visitedNames.append("subproject")
-                unvisited.append(
-                    [
-                        "enargusData",
-                        currentStateTable,
-                        obj,
-                        "Subproject",
-                    ]
-                )
-                if currentStateTable is None:
-                    verbundbezeichungStr = None
-                else:
-                    verbundbezeichungStr = (
-                        currentStateTable.collaborativeProject
-                    )
-                self.compareForeignTables(
-                    unvisited,
-                    visitedNames,
-                    {"referenceNumber_id": fkz},
-                    verbundbezeichungStr,
-                )
-
-        elif source == "modul":
-            moduleAssignmentObjNew, created = self.getOrCreateModuleAssignment(
-                row,
-                header,
-            )
-            fkz = row[header.index("FKZ")].strip()
-            try:
-                if (
-                    len(
-                        Subproject.objects.filter(
-                            referenceNumber_id=fkz,
-                            moduleAssignment=moduleAssignmentObjNew,
-                        )
-                    )
-                    == 0
-                ):
-                    Subproject.objects.create(
-                        referenceNumber_id=fkz,
-                        moduleAssignment=moduleAssignmentObjNew,
-                    )
-                    self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
-            except IntegrityError:
-                enargusDataObj = Subproject.objects.filter(
-                    referenceNumber_id=fkz,
-                )[0].enargusData
-
-                ModuleAssignmentObj = Subproject.objects.filter(
-                    referenceNumber_id=fkz,
-                )[0].moduleAssignment
-
-                unvisited = []
-                visitedNames = []
-                visitedNames.append("subproject")
-                unvisited.append(
-                    [
-                        "moduleAssignment",
-                        ModuleAssignmentObj,
-                        moduleAssignmentObjNew,
-                        "Subproject",
-                    ]
-                )
-                if enargusDataObj is None:
-                    collaborativeProjectText = None
-                else:
-                    collaborativeProjectText = (
-                        enargusDataObj.collaborativeProject
-                    )
-                self.compareForeignTables(
-                    unvisited,
-                    visitedNames,
-                    {"referenceNumber_id": fkz},
-                    collaborativeProjectText,
-                )
-        elif source == "schlagwortregister":
-            (
-                keywordRegisterFirstReviewObj,
-                _,
-            ) = self.getOrCreateKeywordRegisterFirstReview(
-                row,
-                header,
-            )
-            fkz = row[header.index("Förderkennzeichen (0010)")]
-            try:
-                if (
-                    len(
-                        Subproject.objects.filter(
-                            referenceNumber_id=fkz,
-                            keywordsFirstReview=keywordRegisterFirstReviewObj,
-                        )
-                    )
-                    == 0
-                ):
-                    Subproject.objects.create(
-                        referenceNumber_id=fkz,
-                        keywordsFirstReview=keywordRegisterFirstReviewObj,
-                    )
-                    self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
-            except IntegrityError:
-                currentPartEnargus = Subproject.objects.filter(
-                    referenceNumber_id=fkz,
-                )[0].enargusData
-
-                currentObjTagRegisterFirstLook = Subproject.objects.filter(
-                    referenceNumber_id=fkz,
-                )[0].keywordsFirstReview
-                unvisited = []
-                visitedNames = []
-                visitedNames.append("teilprojekt")
-                unvisited.append(
-                    [
-                        "keywordsFirstReview",
-                        currentObjTagRegisterFirstLook,
-                        keywordRegisterFirstReviewObj,
-                        "Subproject",
-                    ]
-                )
-                if currentPartEnargus is None:
-                    collaborativeProjectText = None
-                else:
-                    collaborativeProjectText = (
-                        currentPartEnargus.collaborativeProject
-                    )
-
-                self.compareForeignTables(
-                    unvisited,
-                    visitedNames,
-                    {"referenceNumber_id": fkz},
-                    collaborativeProjectText,
-                )
-        elif source == "tools":
-            obj, created = self.getOrCreateTools(row, header)
-            toolsID = obj.id
-            toolsName = obj.name
-            if len(Tools.objects.filter(name=toolsName)) > 1:
-                currentStateTable = Tools.objects.filter(
-                    name=toolsName
-                ).order_by("id")[0]
-                unvisited = []
-                visitedNames = []
-                unvisited.append(
-                    [
-                        "Tools",
-                        currentStateTable,
-                        obj,
-                        "Tools",
-                    ]
-                )
-
-                self.compareForeignTables(
-                    unvisited,
-                    visitedNames,
-                    {"name": obj.name},
-                    obj.name,
-                )
-
-    def compareForeignTables(
-        self,
-        unvisited: list,
-        visitedNames: list,
-        identifer: dict,
-        theme: str,
-    ) -> None:
-        """Finds all Differences for all Datasets, which point to the same fkz
-
-        Starting from a Database-Conflict the method walks through
-        all foreign-tables and compares the values of the two conflicting
-        datasets. If the values are different for a attribute, they
-        are saved inside an instance of the DatabaseDifference-class.
-        At the moment the central table of the database is the
-        `Subproject`-Table. New loaded Datasets can update values
-        of one Subproject-Tuple, which is represented by a
-        `Förderkennzeichen`. If
-
-        unvisited:  list
-            list of tables, which were not visited yet. As a first
-            entry it contains the name of the Foreign-Table-Column,
-            where the datasets are located, which produce a database
-            conflict. The second entry holds the Dataset, which is
-            currently connected to the fkz, the third entry the
-            CSV-state, which is a pending update. The 4th entry
-            contains the Name of the parent table, this is most
-            likly always `Subproject`
-        visitedNames:   list
-            List of Tablename, which should not be visited again
-        identifer:  dict
-            Key-Value-Pair, which identifes the Förderkennzeichen,
-            for which two different foreign-Datasets are present.
-        theme:
-            String, which shortly describes the Förderkennzeichen.
-            The String is taken from `enargus.verbundbezeichnung`
-            and can also be `None`
-
-        Returns:
-        None
-        """
-
-        diffCurrentObjDict = {}
-        diffPendingObjDict = {}
-
-        if identifer in self.fkzWrittenToYAML:
-            raise MultipleFKZDatasets(
-                f"""In the .csv-file are multiple datasets 
-            with the same fkz {identifer} present. That can lead to problems 
-            with tracking the database state and is therefore not supported. 
-            Please find the rows in the .csv-file, and decide manually, which 
-            dataset should be loaded into the database. The other dataset needs 
-            to be deleted from the .csv-file. The data_import script can be 
-            reexecuted after these steps.
-            """
-            )
-        else:
-            self.fkzWrittenToYAML.append(identifer)
-
-        currentDBDifferenceObj = DatabaseDifference(
-            identifer,
-            theme,
-        )
-        while len(unvisited) > 0:
-            currentEntryInUnvisited = unvisited.pop()
-
-            currentForeignTableName = currentEntryInUnvisited[0]
-            currentTableObj = currentEntryInUnvisited[1]
-            pendingTableObj = currentEntryInUnvisited[2]
-            if pendingTableObj is None:
-                continue
-            parentTableName = currentEntryInUnvisited[3]
-            visitedNames.append(f"{parentTableName}.{currentForeignTableName}")
-            if currentTableObj is None:
-                diffCurrentObjDict[currentForeignTableName] = "None"
-                diffPendingObjDict[currentForeignTableName] = ""
-                currentDBDifferenceObj.addTable(
-                    f"{parentTableName}.{currentForeignTableName}",
-                )
-                for columnName in pendingTableObj._meta.get_fields():
-                    currentForeignTableStr = (
-                        columnName.__str__().strip(">").split(".")[-1]
-                    )
-                    if not columnName.is_relation:
-                        penTab = pendingTableObj.__getattribute__(
-                            columnName.name
-                        )
-                        diffPendingObjDict[currentForeignTableName] = (
-                            diffPendingObjDict[currentForeignTableName]
-                            + "|"
-                            + f" {columnName.name}: {str(penTab)}"
-                        )
-
-                        currentDBDifferenceObj.addDifference(
-                            f"{parentTableName}.{currentForeignTableName}",
-                            {currentForeignTableStr: None},
-                            {
-                                currentForeignTableStr: str(
-                                    pendingTableObj.__getattribute__(
-                                        currentForeignTableStr
-                                    )
-                                )
-                            },
-                        )
-                        listOfFieldsInCurrentTable = (
-                            pendingTableObj._meta.get_fields()
-                        )
-                        for teilprojektField in listOfFieldsInCurrentTable:
-                            currentForeignTableStr = (
-                                teilprojektField.__str__()
-                                .strip(">")
-                                .split(".")[-1]
-                            )
-                            if (
-                                teilprojektField.is_relation
-                                and f"{parentTableName}.{currentForeignTableStr}"
-                                not in visitedNames
-                                and not teilprojektField.one_to_many
-                            ):
-                                try:
-                                    pendingField = (
-                                        pendingTableObj.__getattribute__(
-                                            currentForeignTableStr,
-                                        )
-                                    )
-                                except:
-                                    pendingField = None
-                                unvisited.append(
-                                    [
-                                        currentForeignTableStr,
-                                        None,
-                                        pendingField,
-                                        currentForeignTableName,
-                                    ]
-                                )
-
-            else:
-                try:
-                    listOfFieldsInCurrentTable = (
-                        currentTableObj._meta.get_fields()
-                    )
-                except:
-                    if len(currentTableObj) > 0:
-                        listOfFieldsInCurrentTable = currentTableObj[
-                            0
-                        ]._meta.get_fields()
-                    else:
-                        listOfFieldsInCurrentTable = []
-                if (
-                    f"{parentTableName}.{currentForeignTableName}"
-                    not in diffCurrentObjDict.keys()
-                ):
-                    currentDBDifferenceObj.addTable(
-                        f"{parentTableName}.{currentForeignTableName}",
-                    )
-                    diffCurrentObjDict[
-                        f"{parentTableName}.{currentForeignTableName}"
-                    ] = ""
-                    diffPendingObjDict[
-                        f"{parentTableName}.{currentForeignTableName}"
-                    ] = ""
-
-                for teilprojektField in listOfFieldsInCurrentTable:
-                    currentForeignTableStr = (
-                        teilprojektField.__str__().strip(">").split(".")[-1]
-                    )
-
-                    if (
-                        teilprojektField.is_relation
-                        and f"{parentTableName}.{currentForeignTableStr}"
-                        not in visitedNames
-                        and not teilprojektField.one_to_many
-                    ):
-                        if teilprojektField.many_to_many:
-                            if currentForeignTableStr != "tools":
-                                try:
-                                    unvisited.append(
-                                        [
-                                            currentForeignTableStr,
-                                            currentTableObj.__getattribute__(
-                                                currentForeignTableStr
-                                            ).select_related(),
-                                            pendingTableObj.__getattribute__(
-                                                currentForeignTableStr
-                                            ).select_related(),
-                                            teilprojektField.model.__name__,
-                                        ]
-                                    )
-                                except:
-                                    pass
-                        else:
-                            try:
-                                unvisited.append(
-                                    [
-                                        currentForeignTableStr,
-                                        currentTableObj.__getattribute__(
-                                            currentForeignTableStr
-                                        ),
-                                        pendingTableObj.__getattribute__(
-                                            currentForeignTableStr
-                                        ),
-                                        teilprojektField.model.__name__,
-                                    ]
-                                )
-                            except:
-                                pass
-
-                    elif not teilprojektField.is_relation:
-                        foundDifference = False
-                        strDifferencesPending = ""
-                        strDifferencesCurrent = ""
-                        if "QuerySet" in str(type(pendingTableObj)):
-                            strCurrent = f" {currentForeignTableStr}: "
-                            strPending = f" {currentForeignTableStr}: "
-                            try:
-                                pendingTableObj = pendingTableObj.order_by("id")
-                                currentTableObj = currentTableObj.order_by("id")
-                            except:
-                                pendingTableObj = pendingTableObj.order_by(
-                                    "referenceNumber_id"
-                                )
-                                currentTableObj = currentTableObj.order_by(
-                                    "referenceNumber_id"
-                                )
-
-                            if len(currentTableObj) != len(pendingTableObj):
-                                foundDifference = True
-                            else:
-                                for index, currentPendingObj in enumerate(
-                                    pendingTableObj
-                                ):
-                                    foundCurrentObj = False
-                                    if len(currentTableObj) >= index + 1:
-                                        if currentPendingObj.__getattribute__(
-                                            currentForeignTableStr
-                                        ) != currentTableObj[
-                                            index
-                                        ].__getattribute__(
-                                            currentForeignTableStr
-                                        ):
-                                            foundDifference = True
-                                            break
-                                    else:
-                                        foundDifference = True
-                            if foundDifference:
-                                for index, currentPendingObj in enumerate(
-                                    pendingTableObj
-                                ):
-                                    strPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
-                                    strDifferencesPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
-                                for index, currentManyObj in enumerate(
-                                    currentTableObj
-                                ):
-                                    strCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "
-                                    strDifferencesCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "
-
-                                lengthOfStr = np.array(
-                                    [len(strCurrent), len(strPending)]
-                                )
-                                posOfMaxLengthStr = np.argmin(lengthOfStr)
-                                numberOfCharacterDifference = np.abs(
-                                    lengthOfStr[0] - lengthOfStr[1]
-                                )
-                                if posOfMaxLengthStr == 0:
-                                    strCurrent += (
-                                        numberOfCharacterDifference * " "
-                                    )
-                                else:
-                                    strPending += (
-                                        numberOfCharacterDifference * " "
-                                    )
-
-                                diffCurrentObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"
-                                ] = (
-                                    diffCurrentObjDict[
-                                        f"{parentTableName}.{currentForeignTableName}"
-                                    ]
-                                    + "|"
-                                    + strCurrent
-                                )
-                                diffPendingObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"
-                                ] = (
-                                    diffPendingObjDict[
-                                        f"{parentTableName}.{currentForeignTableName}"
-                                    ]
-                                    + "|"
-                                    + strPending
-                                )
-                                currentDBDifferenceObj.addDifference(
-                                    f"{parentTableName}.{currentForeignTableName}",
-                                    {
-                                        currentForeignTableStr: strDifferencesCurrent
-                                    },
-                                    {
-                                        currentForeignTableStr: strDifferencesPending
-                                    },
-                                )
-                        else:
-                            if str(
-                                pendingTableObj.__getattribute__(
-                                    currentForeignTableStr
-                                )
-                            ) != str(
-                                currentTableObj.__getattribute__(
-                                    currentForeignTableStr
-                                )
-                            ):
-                                strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
-                                strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
-                                lengthOfStr = np.array(
-                                    [len(strCurrent), len(strPending)]
-                                )
-                                posOfMaxLengthStr = np.argmin(lengthOfStr)
-                                numberOfCharacterDifference = np.abs(
-                                    lengthOfStr[0] - lengthOfStr[1]
-                                )
-                                if posOfMaxLengthStr == 0:
-                                    strCurrent += (
-                                        numberOfCharacterDifference * " "
-                                    )
-                                else:
-                                    strPending += (
-                                        numberOfCharacterDifference * " "
-                                    )
-
-                                diffCurrentObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"
-                                ] = (
-                                    diffCurrentObjDict[
-                                        f"{parentTableName}.{currentForeignTableName}"
-                                    ]
-                                    + "|"
-                                    + strCurrent
-                                )
-                                diffPendingObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"
-                                ] = (
-                                    diffPendingObjDict[
-                                        f"{parentTableName}.{currentForeignTableName}"
-                                    ]
-                                    + "|"
-                                    + strPending
-                                )
-                                currentDBDifferenceObj.addDifference(
-                                    f"{parentTableName}.{currentForeignTableName}",
-                                    {
-                                        currentForeignTableStr: str(
-                                            currentTableObj.__getattribute__(
-                                                currentForeignTableStr
-                                            )
-                                        )
-                                    },
-                                    {
-                                        currentForeignTableStr: str(
-                                            pendingTableObj.__getattribute__(
-                                                currentForeignTableStr
-                                            )
-                                        )
-                                    },
-                                )
-
-        # remove the file-extension
-        filename = self.filename.split(".")[0]
-
-        now = datetime.now()
-
-        twoMinutesAgo = now - timedelta(minutes=2)
-
-        # Get the list of files in the directory
-        files = os.listdir(self.targetFolder)
-
-        # Initialize the filename variable
-        DBdifferenceFileName = None
-
-        # Iterate over the files
-        for file in files:
-            # Get the full path of the file
-            fullPath = os.path.join(self.targetFolder, file)
-
-            # Get the modification time of the file
-            modTime = datetime.fromtimestamp(os.path.getmtime(fullPath))
-
-            # If the file was modified in the last 2 minutes, set the filename variable
-            if modTime > twoMinutesAgo:
-                DBdifferenceFileName = file
-                break
-
-        # If no file was modified in the last 2 minutes, create a new file
-        if DBdifferenceFileName is None:
-            dateString = now.strftime("%d%m%Y_%H%M%S")
-            DBdifferenceFileName = f"{filename}_{dateString}.yaml"
-
-        pathToFile = os.path.join(self.targetFolder, DBdifferenceFileName)
-        currentDBDifferenceObj.writeToYAML(pathToFile)
-
     def _checkIfInInstalledApps(self, type_of_data):
         """Check if user given argument `type_of_data` matches
         one of the installed apps. If it does, check if a `data_import`-module
@@ -1122,7 +356,8 @@ class Command(BaseCommand):
             ):
                 return importlib.import_module(type_of_data + ".data_import")
         raise CommandError(
-            "specified type_of_data has no corresponding app or has no data_import.py in the app."
+            """specified type_of_data has no corresponding app or has no 
+            data_import.py in the app."""
         )
 
     def handle(
@@ -1158,135 +393,6 @@ class Command(BaseCommand):
         appDataImportObj = data_import_module.DataImportApp(filePathToData)
         header, data = appDataImportObj.load()
         appDataImportObj.importList(header, data)
-
-    def _processListInput(self, inputStr):
-        """Process a cell, which includes a list of elements"""
-        returnList = []
-        for element in inputStr.split(";"):
-            if not self._checkIfOnlyContainsSpaces(element):
-                returnList.append(element)
-
-        return returnList
-
-    def _checkIfOnlyContainsSpaces(self, inputStr):
-        """Check if the inputStr only contains whitespaces.
-
-        This method checks if the inputStr only contains whitespaces.
-        If this is the case, the method returns True, otherwise False.
-
-        Parameters:
-        inputStr:   str
-            String, which should be checked, if it only contains whitespaces.
-
-        Returns:
-        bool
-            True, if the inputStr only contains whitespaces, otherwise False.
-        """
-        return all(x.isspace() for x in inputStr)
-
-    def _correctReadInValue(self, readInString):
-        """Correct the read in value from the csv-file.
-
-        This method corrects the read in value from the csv-file,
-        by removing whitespaces at the beginning and end of the
-        string.
-
-        readInString:   str
-            String, which represents the read in value from the csv-file.
-        """
-
-        if isinstance(readInString, float) and math.isnan(readInString):
-            return ""
-        if readInString == "":
-            return ""
-        splitStringToSeeIfList = readInString.split(",")
-        splitStringToSeeIfList = [
-            item for item in splitStringToSeeIfList if item
-        ]
-        if len(splitStringToSeeIfList) > 0:
-            for index, listElement in enumerate(splitStringToSeeIfList):
-                if listElement[0] == " ":
-                    listElement = listElement[1:]
-                if listElement[-1] == " ":
-                    listElement = listElement[:-1]
-                splitStringToSeeIfList[index] = listElement
-            return splitStringToSeeIfList
-        else:
-            if readInString[0] == " ":
-                readInString = readInString[1:]
-            if readInString[-1] == " ":
-                readInString = readInString[:-1]
-            return readInString
-
-    def _selectNearestMatch(
-        self, categoryString: str, djangoModel: Model
-    ) -> str:
-        """Return closest match for categoryString in djangoModel
-
-        This method returns the closest match for `categoryString` in `djangoModel`
-        by using the difflib.get_close_matches-function. Thereby the cutoff is set
-        to 80 %. That means if the closest match is below 80 %, an error message
-        is printed and an empty string is returned.
-
-        categoryStr:    str
-            String, which represents the category, which should be matched.
-        djangoModel:    Model
-            Django-Model, which represents the table, in which the closest match is searched.
-
-        Returns:
-        str
-            String, which represents the closest match for `categoryString` in `djangoModel`.
-
-        """
-
-        # get names of all djangoModel-objects
-        if djangoModel.__name__ == "Subproject":
-            attributeNameInModel = "referenceNumber_id"
-        elif djangoModel.__name__ == "Norm":
-            attributeNameInModel = "title"
-        else:
-            attributeNameInModel = (
-                djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
-            )
-        allNames = [
-            x.__getattribute__(attributeNameInModel)
-            for x in djangoModel.objects.all()
-        ]
-
-        # get the closest match
-        listOfClosestMatches = difflib.get_close_matches(
-            categoryString, allNames, n=1, cutoff=0.8
-        )
-        if len(listOfClosestMatches) > 0:
-            return listOfClosestMatches[0]
-        else:
-            if (
-                djangoModel.__name__ != "Subproject"
-                and djangoModel.__name__ != "Norm"
-            ):
-                try:
-                    newlyCreatedRow = djangoModel.objects.create(
-                        **{attributeNameInModel: categoryString}
-                    )
-                except:
-                    breakpoint()
-                self.stdout.write(
-                    f"No nearest match for {categoryString} in {djangoModel} was found. {categoryString} is created inside of {djangoModel}",
-                    ending="",
-                )
-                return newlyCreatedRow.__getattribute__(attributeNameInModel)
-
-    def _iterateThroughListOfStrings(
-        self, listOfStrings: list, djangoModel: Model
-    ):
-        """ """
-        listOfModifiedStrings = []
-        for curretnCategoryString in listOfStrings:
-            modifiedStr = self._selectNearestMatch(
-                curretnCategoryString, djangoModel
-            )
-            listOfModifiedStrings.append(modifiedStr)
-        return listOfModifiedStrings
 
     def add_arguments(
         self,

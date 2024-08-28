@@ -1,3 +1,8 @@
+"""This module defines a middleare class, which sets the expiration date 
+of the user session to the end of the day. That ensures that one device is
+only counted once in the page view statistics.
+
+"""
 from datetime import datetime, timedelta
 
 # from django.db import ProgrammingError
@@ -15,6 +20,9 @@ class SessionExpiration:
     """
 
     def __init__(self, get_response):
+        """Constructor of the middleware class.
+        
+        """
         self.get_response = get_response
 
     def __call__(self, request):

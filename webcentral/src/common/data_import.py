@@ -1,7 +1,13 @@
+"""Gneral Dataimport Classholding methods,which are used by the app specific
+data_import classes.
+
+"""
 import difflib
 import csv
+import math
 
 import pandas as pd
+from django.core.management.base import CommandError
 from django.db.models import Model
 from django.db import models
 from django.apps import apps
@@ -18,6 +24,9 @@ from common.models import DbDiff
 
 
 class DataImport:
+    """Definition of the general DataImport class
+
+    """
     def __init__(self, path_to_data_file):
         """Constructor of the Base-DataImport-class."""
         self.path_to_file = path_to_data_file
@@ -46,14 +55,12 @@ class DataImport:
         if self.path_to_file.endswith(".csv"):
             header, data = self.readCSV()
             return header, data
-        elif self.path_to_file.endswith(".xlsx"):
+        if self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
-
             return header, data
-        else:
-            raise CommandError(
+        raise CommandError(
                 "Invalid file format. Please provide a .csv or .xlsx file."
-            )
+        )
 
     def readExcel(
         self,
@@ -70,12 +77,13 @@ class DataImport:
         data:   list
             list, containing the rows from the excel-file.
         """
+        df = None
         try:
             dfGermanEnglish = pd.read_excel(
                 self.path_to_file, sheet_name=["German", "English"]
             )
             germanEnglish = True
-        except:
+        except ValueError:
             df = pd.read_excel(self.path_to_file)
             germanEnglish = False
         if germanEnglish:
@@ -109,7 +117,9 @@ class DataImport:
                 ) + list(dfGermanEnglish["German"].columns)
             else:
                 print(
-                    "German and english sheets dont have the same number of rows. Only using the german elements and skipping the translation."
+                    """German and english sheets dont have the same number of
+                    rows. Only using the german elements and skipping the
+                    translation."""
                 )
                 df_concatenated = dfGermanEnglish["German"]
 
@@ -122,11 +132,14 @@ class DataImport:
         return header, data
 
     def readCSV(self):
-        """ """
+        """Read the provided csv-file and return the header and the data as 
+        2 lists.
+        """
         with open(self.path_to_file, "r") as fh:
             csvReader = csv.reader(fh, delimiter=";")
             header = next(csvReader)
-            data = [row for row in csvReader]
+            # data = [row for row in csvReader]
+            data = list(csvReader)
 
         return header, data
 
@@ -157,31 +170,33 @@ class DataImport:
                     listElement = listElement[:-1]
                 splitStringToSeeIfList[index] = listElement
             return splitStringToSeeIfList
-        else:
-            if readInString[0] == " ":
-                readInString = readInString[1:]
-            if readInString[-1] == " ":
-                readInString = readInString[:-1]
-            return readInString
+        if readInString[0] == " ":
+            readInString = readInString[1:]
+        if readInString[-1] == " ":
+            readInString = readInString[:-1]
+        return readInString
 
     def _selectNearestMatch(
         self, categoryString: str, djangoModel: Model
     ) -> str:
         """Return closest match for categoryString in djangoModel
 
-        This method returns the closest match for `categoryString` in `djangoModel`
-        by using the difflib.get_close_matcheGs-function. Thereby the cutoff is set
-        to 80 %. That means if the closest match is below 80 %, an error message
-        is printed and an empty string is returned.
+        This method returns the closest match for `categoryString` in 
+        `djangoModel` by using the difflib.get_close_matcheGs-function.
+        Thereby the cutoff is set to 80 %. That means if the closest match
+        is below 80 %, an error message is printed and an empty string is
+        returned.
 
         categoryStr:    str
             String, which represents the category, which should be matched.
         djangoModel:    Model
-            Django-Model, which represents the table, in which the closest match is searched.
+            Django-Model, which represents the table, in which the closest
+            match is searched.
 
         Returns:
         str
-            String, which represents the closest match for `categoryString` in `djangoModel`.
+            String, which represents the closest match for `categoryString`
+            in `djangoModel`.
 
         """
 
@@ -195,7 +210,7 @@ class DataImport:
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
             )
         allNames = [
-            x.__getattribute__(attributeNameInModel)
+            getattr(x, attributeNameInModel)
             for x in djangoModel.objects.all()
         ]
 
@@ -205,21 +220,17 @@ class DataImport:
         )
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
-        else:
-            if (
-                djangoModel.__name__ != "Subproject"
-                and djangoModel.__name__ != "Norm"
-            ):
-                try:
-                    newlyCreatedRow = djangoModel.objects.create(
-                        **{attributeNameInModel: categoryString}
-                    )
-                except:
-                    breakpoint()
-                print(
-                    f"No nearest match for {categoryString} in {djangoModel} was found. {categoryString} is created inside of {djangoModel}",
-                )
-                return newlyCreatedRow.__getattribute__(attributeNameInModel)
+
+        if djangoModel.__name__ not in ('Subproject', 'Norm'):
+            newlyCreatedRow = djangoModel.objects.create(
+                    **{attributeNameInModel: categoryString}
+            )
+            print(
+                f"""No nearest match for {categoryString} in {djangoModel}
+                was found. {categoryString} is created inside of
+                {djangoModel}""",
+            )
+            return getattr(newlyCreatedRow, attributeNameInModel)
 
     def _iterateThroughListOfStrings(
         self, listOfStrings: list, djangoModel: Model
@@ -244,8 +255,8 @@ class DataImport:
 
     def _buildLiteratureIdentifier(self, literatureElement: str) -> str:
         """build a identifer of the litrature element, which can be used
-        in the HTML to point from the literature reference to the literature list
-        on the end of the page.
+        in the HTML to point from the literature reference to the literature
+        list on the end of the page.
 
         """
 
@@ -272,7 +283,7 @@ class DataImport:
                 litIdentifier = ""
             else:
                 litIdentifier = self._buildLiteratureIdentifier(literature)
-            objCreated, created = Literature.objects.get_or_create(
+            objCreated, _ = Literature.objects.get_or_create(
                 literature=literature,
                 linkName=litIdentifier,
             )
@@ -299,7 +310,6 @@ class DataImport:
     def _importEnglishTranslation(self, obj, header, row, mapping: dict):
         """ """
         modelObj = apps.get_model(self.DJANGO_APP, self.DJANGO_MODEL)
-        modelAttrs = [field.name for field in modelObj._meta.get_fields()]
         for mappingKey in mapping.keys():
             englishModelAttr = mapping[mappingKey]
             attrName = englishModelAttr.replace("_en", "")
@@ -325,7 +335,8 @@ class DataImport:
     def _importEnglishForeignKeyRel(
         self, ormObj, header, row, headerExcel, dbAttr
     ):
-        """Import a english translation for a attribute, which is a ForeignKey-Relation"""
+        """Import a english translation for a attribute, which is a ForeignKey-
+        Relation"""
         foreignElement = getattr(ormObj, dbAttr)
         englishTranslation = row[header.index(headerExcel + "__en")]
         if getattr(foreignElement, dbAttr + "_en") is None:
@@ -351,14 +362,11 @@ class DataImport:
             ):
                 if germanyManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
-                        try:
-                            setattr(
+                        setattr(
                                 ormRelObj,
                                 f"{dbAttr}_en",
                                 englishManyToManyStr[indexInGerList],
-                            )
-                        except:
-                            breakpoint()
+                        )
                         ormRelObj.save()
         return ormObj
 
@@ -381,7 +389,8 @@ class DataImport:
         return False
 
     def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
-        """Compares 2 django orm objects of same model-type and creates a diff str."""
+        """Compares 2 django orm objects of same model-type and creates a diff
+        str."""
 
         diffStrModelName = str(modelType) + ":\n"
         diffStr = ""
@@ -408,7 +417,8 @@ class DataImport:
                     else:
                         oldValueWithoutNewLine = oldValue
                         newValueWithoutNewLine = newValue
-                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+                    diffStr += f"""   {field.name}: {oldValueWithoutNewLine} ->
+                    {newValueWithoutNewLine}\n"""
 
             elif isinstance(field, ForeignKey):
                 oldValueReference = getattr(oldObj, field.name)
@@ -427,7 +437,8 @@ class DataImport:
                     else:
                         oldValueWithoutNewLine = oldValue
                         newValueWithoutNewLine = newValue
-                    diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
+                    diffStr += f"""   {field.name}: {oldValueWithoutNewLine} ->
+                    {newValueWithoutNewLine}\n"""
 
         if diffStr != "":
             diffStr = diffStrModelName + diffStr + ";;"

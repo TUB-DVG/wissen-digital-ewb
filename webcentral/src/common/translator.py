@@ -1,3 +1,7 @@
+"""Module holding the Translator class, which allows to automatically
+translate app specific data excel files with the deepl API.
+
+"""
 import os
 
 import deepl
@@ -7,12 +11,12 @@ from .data_import import DataImport
 
 
 class Translator(DataImport):
-    """ """
+    """Class definition of the Translator class """
 
     def __init__(self, pathToDataFile):
-        """ """
+        """Constructor of the Translator class """
         super().__init__(pathToDataFile)
-
+        
     def processTranslation(self, header, data, mapping):
         """translate the fields, which are"""
         # header, data = self.load()
