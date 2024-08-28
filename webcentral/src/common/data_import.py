@@ -20,8 +20,7 @@ from django.db.models import (
     ManyToOneRel,
 )
 
-from user_integration.models import Literature
-from common.models import DbDiff
+from common.models import DbDiff, Literature
 
 
 class DataImport:
