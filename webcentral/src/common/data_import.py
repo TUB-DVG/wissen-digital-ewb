@@ -7,8 +7,7 @@ from django.db import models
 from django.apps import apps
 from django.db.models import ForeignKey, OneToOneField, ManyToManyField, ManyToManyRel, ManyToOneRel
 
-from user_integration.models import Literature
-from common.models import DbDiff
+from common.models import DbDiff, Literature
 
 class DataImport:
     def __init__(self, path_to_data_file):
