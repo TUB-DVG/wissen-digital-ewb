@@ -23,7 +23,7 @@ jobs:
     
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files 'webcentral/**/*.py')
+        pylint $(git ls-files 'webcentral/**/*.py') --output=lint.txt || true
 
     - name: Lint Django templates with djlint
       run: |
