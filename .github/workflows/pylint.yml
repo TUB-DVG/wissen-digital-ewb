@@ -27,7 +27,7 @@ jobs:
 
     - name: Lint Django templates with djlint
       run: |
-        djlint --config=webcentral/pyproject.toml $(git ls-files 'webcentral/**/*.html')
+        djlint --configuration=webcentral/pyproject.toml $(git ls-files 'webcentral/**/*.html')
 
     - name: Format Python code with black
       run: |
