@@ -3322,23 +3322,17 @@ msgid "Konsortium"
 msgstr "Consortium"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:36
-#, fuzzy
-#| msgid "Seite"
 msgid "Weitere"
-msgstr "Site"
+msgstr "Further"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:40
-#, fuzzy
-#| msgid "Digitale Anwendungen"
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:43
 #: templates/user_integration/userEngagementDetailsRightColumn.html:32
-#, fuzzy
-#| msgid "Zielgruppe"
 msgid "Ziele"
-msgstr "Target group"
+msgstr "Goals"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:46
 msgid "Strategien"
@@ -3361,10 +3355,8 @@ msgid "Evaluation"
 msgstr "Evaluation"
 
 #: templates/pages/environmentalIntegrityRightColumn.html:86
-#, fuzzy
-#| msgid "Weiterführende Informationen"
 msgid "Weiterführende Literatur und Hinweise"
-msgstr "Additional information"
+msgstr "Further reading and references"
 
 #: templates/pages/iconsAndVis.html:29
 msgid ""
