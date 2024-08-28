@@ -11,6 +11,7 @@ from .models import (
     ProcedureItem,
 )
 
+
 class UserEngagementTranslationOptions(TranslationOptions):
     fields = (
         "category",
@@ -23,15 +24,20 @@ class UserEngagementTranslationOptions(TranslationOptions):
         "goodPracticeExample",
     )
 
+
 translator.register(UserEngagement, UserEngagementTranslationOptions)
 
+
 class ProArgumentTranslationOptions(TranslationOptions):
-    fields = ("proArgument", )
+    fields = ("proArgument",)
+
 
 translator.register(ProArgument, ProArgumentTranslationOptions)
 
+
 class ConArgumentTranslationOptions(TranslationOptions):
-    fields = ("conArgument", )
+    fields = ("conArgument",)
+
 
 translator.register(ConArgument, ConArgumentTranslationOptions)
 
@@ -40,7 +46,9 @@ translator.register(ConArgument, ConArgumentTranslationOptions)
 #
 # translator.register(Literature, LiteratureTranslationOptions)
 
+
 class ProcedureTranslationOptions(TranslationOptions):
-    fields = ("procedureItem", )
+    fields = ("procedureItem",)
+
 
 translator.register(ProcedureItem, ProcedureTranslationOptions)

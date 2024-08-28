@@ -20,10 +20,12 @@ from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
-    NegativeEnvironmentalImpacts, )
+    NegativeEnvironmentalImpacts,
+)
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.UserEngagementPage import UserEngagmentPage
+
 
 class TestUserEngagement(WebDriverSetup):
     """Represent the Selenium-Test of the Components-List Page"""
@@ -41,15 +43,18 @@ class TestUserEngagement(WebDriverSetup):
             # breakpoint()
             if userEngagementLink.get_attribute("class") == "dropdown-item":
                 navbarActivateDropdownButton = (
-                    navbar.getOperationalDropdownButton())
+                    navbar.getOperationalDropdownButton()
+                )
                 navbarActivateDropdownButton.click()
                 # breakpoint()
                 if languageName == "de":
                     self.assertTrue(
-                        "Nutzendenintegration" in userEngagementLink.text)
+                        "Nutzendenintegration" in userEngagementLink.text
+                    )
                 else:
                     self.assertTrue(
-                        "User integration" in userEngagementLink.text)
+                        "User integration" in userEngagementLink.text
+                    )
 
             # userEngagementLink.click()
             # self.assertTrue("User Engagement" in self.driver.title
@@ -58,22 +63,26 @@ class TestUserEngagement(WebDriverSetup):
             # userEngagementLinks = navbar.returnUserEngagementLink()
 
         userEngagementLinks[1].click()
-        self.assertTrue("User integration" in self.driver.title
-                        or "Nutzendenintegration" in self.driver.title)
+        self.assertTrue(
+            "User integration" in self.driver.title
+            or "Nutzendenintegration" in self.driver.title
+        )
         self.driver.back()
         userEngagementLinks = navbar.returnUserEngagementLink()
         navbarActivateDropdownButton = navbar.getOperationalDropdownButton()
         navbarActivateDropdownButton.click()
         userEngagementLinks[0].click()
-        self.assertTrue("User integration" in self.driver.title
-                        or "Nutzendenintegration" in self.driver.title)
+        self.assertTrue(
+            "User integration" in self.driver.title
+            or "Nutzendenintegration" in self.driver.title
+        )
         self.driver.back()
 
     def testUserEngagementPage(self):
         """Test if a description-container is present"""
 
         self.driver.get(os.environ["siteUnderTest"] + "/userEngagement")
-        
+
         self.checkNavBar("operational")
 
         # userEngagementPage = UserEngagmentPage(self.driver)

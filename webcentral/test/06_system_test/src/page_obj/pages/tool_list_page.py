@@ -1,7 +1,9 @@
 """
 
 """
+
 import sys
+
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
@@ -15,32 +17,26 @@ from selenium.webdriver.support.select import Select
 from src.page_obj.locators import Locator
 from src.page_obj.pages.generic_page_obj import GenericPageObject
 
+
 class ToolListPage(GenericPageObject):
-    """
-    
-    """
+    """ """
 
     def __init__(self, driver):
-        """
-        
-        """
+        """ """
         self.driver = driver
         self.toolListLink = Locator.toolListLink
 
-
     def getSearchInputElement(self):
-        """
-        
-        """
+        """ """
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 Locator.toolListSearchInput,
             )
         except NoSuchElementException:
             print("Search input Element couldnt be located on webpage!")
             return None
-    
+
     def getListOfToolItems(self) -> list:
         """Returns a list of tool items, which are present in driver-instance
 
@@ -57,19 +53,17 @@ class ToolListPage(GenericPageObject):
             list
         List of selenium-elements, whereby each element represents a
         list-item object in the UI on the `Digitale Werkzeuge`-Tab.
-        
+
         """
-        elements =  self.driver.find_elements(
-            By.XPATH, 
+        elements = self.driver.find_elements(
+            By.XPATH,
             Locator.toolItemsIdentifer,
         )
         self.waitUntilElementIsLoaded(elements[0])
         return elements
-    
+
     def getSearchStringButton(self, searchStr: str) -> WebElement:
-        """Returns the selenium webelement, for Search String Button
-        
-        """
+        """Returns the selenium webelement, for Search String Button"""
 
         return self.driver.find_element(
             By.XPATH,
@@ -77,15 +71,11 @@ class ToolListPage(GenericPageObject):
         )
 
     def getXOfSearchFilter(self):
-        """Return the X to remove a search filter
-        
-        """
+        """Return the X to remove a search filter"""
         return self.driver.find_element(By.XPATH, Locator.searchStrBoxX)
 
     def getCloseOnSearchStrButton(self, searchStrBox: WebElement) -> WebElement:
-        """Returns the WebElement, which reprents the X in Search-String-Box
-        
-        """
+        """Returns the WebElement, which reprents the X in Search-String-Box"""
         try:
             return searchStrBox.find_element(
                 By.XPATH,
@@ -95,95 +85,82 @@ class ToolListPage(GenericPageObject):
             print("The x is not present on a search filter. Test failed!")
 
     def getSearchCategorySelect(self) -> WebElement:
-        """Returns Categorie-Select from Search Tab
-        
-        """
+        """Returns Categorie-Select from Search Tab"""
 
-        return Select(self.driver.find_element(
-            By.XPATH, 
-            Locator.searchCategorieSelect,
-        ))
+        return Select(
+            self.driver.find_element(
+                By.XPATH,
+                Locator.searchCategorieSelect,
+            )
+        )
 
     def getSearchLicenceSelect(self) -> WebElement:
-        """Returns Licence-Select from Search Tab
-        
-        """
+        """Returns Licence-Select from Search Tab"""
 
-        return Select(self.driver.find_element(
-            By.XPATH, 
-            Locator.searchLicenceSelect,
-        ))
+        return Select(
+            self.driver.find_element(
+                By.XPATH,
+                Locator.searchLicenceSelect,
+            )
+        )
 
     def getSearchLifecycleSelect(self) -> WebElement:
-        """Returns Licence-Select from Search Tab
-        
-        """
+        """Returns Licence-Select from Search Tab"""
 
-        return Select(self.driver.find_element(
-            By.XPATH, 
-            Locator.searchLifecycleSelect,
-        ))
+        return Select(
+            self.driver.find_element(
+                By.XPATH,
+                Locator.searchLifecycleSelect,
+            )
+        )
 
     def getMagniferButton(self):
-        """Returns the magnitfer-button in the search-bar.
-        
-        """
+        """Returns the magnitfer-button in the search-bar."""
 
         return self.driver.find_element(
-            By.XPATH, 
+            By.XPATH,
             Locator.searchMagniferButton,
         )
 
     def getListOfCurrentlyActiveSearchFilter(self):
-        """Returns list of currently active search filter.
-        
-        """
+        """Returns list of currently active search filter."""
         return self.driver.find_elements(
-            By.XPATH, 
+            By.XPATH,
             Locator.activeSearchFilter,
         )
-    
+
     def getResetButton(self):
-        """Returns the Search-Reset Button.
-        """
+        """Returns the Search-Reset Button."""
         return self.driver.find_element(
             By.XPATH,
             Locator.searchResetButton,
         )
-    
+
     def getShowMoreElement(self):
-        """Returns the `Zeige mehr`-link element on tool-list page.
-        
-        """
+        """Returns the `Zeige mehr`-link element on tool-list page."""
         return self.driver.find_element(
-            By.XPATH, 
+            By.XPATH,
             Locator.showMoreLink,
         )
-    
+
     def getListInExpandedText(self):
-        """Returns list of list-elements in expanded Text.
-        
-        """
-        return self.driver.find_elements(
-            By.XPATH,
-            Locator.listInExpandedText
-        )
+        """Returns list of list-elements in expanded Text."""
+        return self.driver.find_elements(By.XPATH, Locator.listInExpandedText)
 
     def getShowLessElement(self):
-        """Returns the `Zeige weniger ...`-element
-        
-        """
+        """Returns the `Zeige weniger ...`-element"""
         return self.driver.find_element(
-            By.XPATH, 
+            By.XPATH,
             Locator.showLessLink,
         )
+
     def getNextElementInList(self) -> list:
         """Return List of webelements, containing next-element of pagination
 
         The Element is returned as list, to check if is present on page
 
         Returns:
-        List(Webelement):   
+        List(Webelement):
         """
 
         return self.driver.find_elements(By.XPATH, Locator.paginationNextLink)
@@ -194,10 +171,12 @@ class ToolListPage(GenericPageObject):
         The Element is returned as list, to check if is present on page
 
         Returns:
-        List(Webelement):   
+        List(Webelement):
         """
 
-        return self.driver.find_elements(By.XPATH, Locator.paginationPreviousLink)
+        return self.driver.find_elements(
+            By.XPATH, Locator.paginationPreviousLink
+        )
 
     def getLastElementInList(self) -> list:
         """Return List of webelements, containing Last-element of pagination
@@ -205,7 +184,7 @@ class ToolListPage(GenericPageObject):
         The Element is returned as list, to check if is present on page
 
         Returns:
-        List(Webelement):   
+        List(Webelement):
         """
 
         return self.driver.find_elements(By.XPATH, Locator.paginationLastLink)
@@ -216,18 +195,11 @@ class ToolListPage(GenericPageObject):
         The Element is returned as list, to check if is present on page
 
         Returns:
-        List(Webelement):   
+        List(Webelement):
         """
 
         return self.driver.find_elements(By.XPATH, Locator.paginationFirstLink)
 
-
-
     def getCurrentSearchResultNumber(self):
-        """Return the span element, which holds the current Search result page number
-        
-        """
+        """Return the span element, which holds the current Search result page number"""
         return self.driver.find_element(By.XPATH, Locator.paginationCurrentSite)
-
-
-    

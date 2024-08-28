@@ -47,29 +47,34 @@ def components(request):
     searchQuery = Q()
     searchQueryInput = Q()
     # if len(searchInputValues) > 0:
-        # for searchInputValue in searchInputValues:
+    # for searchInputValue in searchInputValues:
     searchQueryInput = searchQueryInput | Q(
-        category__category__icontains=searchInputValue)
+        category__category__icontains=searchInputValue
+    )
     searchQueryInput = searchQueryInput | Q(
-        componentClass__componentClass__icontains=searchInputValue)
+        componentClass__componentClass__icontains=searchInputValue
+    )
     searchQueryInput = searchQueryInput | Q(
-        description__icontains=searchInputValue)
+        description__icontains=searchInputValue
+    )
     searchQueryInput = searchQueryInput | Q(
-        furtherInformationNotes__icontains=searchInputValue)
-    searchQueryInput = searchQueryInput | Q(
-        sources__icontains=searchInputValue)
+        furtherInformationNotes__icontains=searchInputValue
+    )
+    searchQueryInput = searchQueryInput | Q(sources__icontains=searchInputValue)
 
     searchQueryCategory = Q()
     if len(categoryValues) > 0:
         for category in categoryValues:
             searchQueryCategory = searchQueryCategory | Q(
-                category__category__icontains=category)
+                category__category__icontains=category
+            )
 
     searchQueryComponents = Q()
     if len(componentValues) > 0:
         for component in componentValues:
             searchQueryComponents = searchQueryComponents | Q(
-                componentClass__componentClass__icontains=component)
+                componentClass__componentClass__icontains=component
+            )
 
         # componentForSelectValue = ComponentClass.objects.filter(
         #     componentClass=componentValues)
@@ -89,14 +94,16 @@ def components(request):
             elif firstLevelDropdown == "component":
                 firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
-                firstLevelDropdown)
+                firstLevelDropdown
+            )
         else:
             if firstLevelDropdown == "category":
                 firstLevelDropdown = "category__category"
             elif firstLevelDropdown == "component":
                 firstLevelDropdown = "componentClass__componentClass"
             componentsObj = Component.objects.filter(searchQuery).order_by(
-                f"-{firstLevelDropdown}")
+                f"-{firstLevelDropdown}"
+            )
     else:
         componentsObj = Component.objects.filter(searchQuery)
 
@@ -110,33 +117,34 @@ def components(request):
     else:
         descriptionImage = "backbone_en.svg"
 
-     
-    explanationFirstPart = _("Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch")
+    explanationFirstPart = _(
+        "Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette (siehe auch"
+    )
 
     explanationRaw = "{% load i18n %} <a class=\"ecological-font-color\" href=\"{% url 'dataProcessing' %}\">„{% translate 'Aufwände für Datenverarbeitungsprozesse' %}“</a>) "
-    explanationSecondPart = _("""ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
-        """).replace("\n", "<br>").replace("'", "")
+    explanationSecondPart = (
+        _(
+            """ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können wichtige Komponenten von der Datenerfassung (Sensoren) bis zur Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die digitale Anwendung verbaut werden mussten, müssen die entsprechenden Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis zur Fertigung der Komponente reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.
+        """
+        )
+        .replace("\n", "<br>")
+        .replace("'", "")
+    )
     templateObj = Template(explanationRaw)
     explanationText = templateObj.render(Context({}))
-    
+
     context = {
-        "renderDetailsRadio":
-        True,
-        "heading":
-        _("Aufwände für verwendete Komponenten"),
-        "explanaitionText": explanationFirstPart + explanationText + explanationSecondPart,
-        "focusBorder":
-        "ecological",
-        "focusName":
-        "ecological",
-        "urlName":
-        "components",
-        "page":
-        page,
-        "model":
-        "Component",
-        "listElementsShowOrCollapse":
-        listingShowOrCollapse,
+        "renderDetailsRadio": True,
+        "heading": _("Aufwände für verwendete Komponenten"),
+        "explanaitionText": explanationFirstPart
+        + explanationText
+        + explanationSecondPart,
+        "focusBorder": "ecological",
+        "focusName": "ecological",
+        "urlName": "components",
+        "page": page,
+        "model": "Component",
+        "listElementsShowOrCollapse": listingShowOrCollapse,
         "elementsFirstColumn": [
             {
                 "objectReference": "componentClass",
@@ -162,13 +170,16 @@ def components(request):
         "elementsSecondColumn": [
             {
                 "objectReference": "energyConsumptionUsePhaseTotalRounded",
-                "description": _("Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"),
+                "description": _(
+                    "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
+                ),
             },
             {
                 "objectReference": "specificGlobalWarmingPotentialRounded",
-                "description": _("Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"),
+                "description": _(
+                    "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"
+                ),
             },
- 
             {
                 "objectReference": "globalWarmingPotentialTotalRounded",
                 "description": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
@@ -186,15 +197,16 @@ def components(request):
                 "description": _("Leistung Nutzungsphase (akitv; in W)"),
             },
             {
-                "objectReference":
-                "energyConsumptionUsePhasePassiveRounded",
-                "description":
-                _("Leistung Nutzungsphase (passiv/ Stand-by; in W)"),
+                "objectReference": "energyConsumptionUsePhasePassiveRounded",
+                "description": _(
+                    "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
+                ),
             },
             {
                 "objectReference": "globalWarmingPotentialProductionRoundedSub",
-                "description":
-                _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
+                "description": _(
+                    "Treibhauspotenzial (Herstellung; in kg CO2-e)"
+                ),
             },
             {
                 "objectReference": "globalWarmingPotentialUsePhaseRoundedSub",
@@ -202,43 +214,37 @@ def components(request):
             },
             {
                 "objectReference": "globalWarmingPotentialEndOfLifeRounded",
-                "description":
-                _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
+                "description": _(
+                    "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
+                ),
             },
             {
                 "objectReference": "operationTimeRendered",
-                "description":
-                _("Betriebsdauer (h/Jahr)"),
-            },         
+                "description": _("Betriebsdauer (h/Jahr)"),
+            },
         ],
         "optionList": [
             {
-                "placeholder":
-                "Kategorie",
+                "placeholder": "Kategorie",
                 "filtered": categoryValue,
                 "objects": [
                     categoryItem.category
                     for categoryItem in Category.objects.all()
                 ],
-                "fieldName":
-                "category",
+                "fieldName": "category",
             },
             {
-                "placeholder":
-                _("Komponente"),
+                "placeholder": _("Komponente"),
                 "objects": [
                     componentItem.componentClass
                     for componentItem in ComponentClass.objects.all()
                 ],
-                "fieldName":
-                "component",
+                "fieldName": "component",
                 "filtered": componentValue,
             },
             {
-                "placeholder":
-                _("Sortierung"),
-                "multiDimensional":
-                True,
+                "placeholder": _("Sortierung"),
+                "multiDimensional": True,
                 "objects": [
                     {
                         "shown": _("Komponente"),
@@ -271,8 +277,7 @@ def components(request):
                         "type": "numeric",
                     },
                 ],
-                "fieldName":
-                "sorting",
+                "fieldName": "sorting",
             },
         ],
         # "radioButtons": [
@@ -280,23 +285,18 @@ def components(request):
         #         "description":
         #     }
         # ],
-        "image":
-        f"img/componentList/{descriptionImage}",
-        "caption":
-        _("Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
-          ),
-        "linkOnRightSiteBool":
-        True,
-        "linkOnRightSiteName":
-        "dataProcessing",
-        "linkOnRightSiteDescription":
-        _("Zu den Aufwänden für Datenverarbeitungsprozesse"),
-        "imageInBackButton":
-        "img/componentList/caret-left.svg",
-        "backLink":
-        "environmentalIntegrityNegativ",
-        "backLinkText":
-        _("Negative Umweltwirkungen"),
+        "image": f"img/componentList/{descriptionImage}",
+        "caption": _(
+            "Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
+        ),
+        "linkOnRightSiteBool": True,
+        "linkOnRightSiteName": "dataProcessing",
+        "linkOnRightSiteDescription": _(
+            "Zu den Aufwänden für Datenverarbeitungsprozesse"
+        ),
+        "imageInBackButton": "img/componentList/caret-left.svg",
+        "backLink": "environmentalIntegrityNegativ",
+        "backLinkText": _("Negative Umweltwirkungen"),
         "filters": {
             "searched": searchInputValue,
             "category": categoryValues,
@@ -304,12 +304,9 @@ def components(request):
             "sorting": "",
             "overview": overviewValue,
         },
-        "pathToArrow":
-        "assets/images/arrowDownEcological.svg",
-        "renderComparisonRadio":
-        True,
-        "headerOfImage":
-        _("Die Daten-Wertschöpfungkette"),
+        "pathToArrow": "assets/images/arrowDownEcological.svg",
+        "renderComparisonRadio": True,
+        "headerOfImage": _("Die Daten-Wertschöpfungkette"),
         # "assets/images/arrow.svg",
     }
     if filtering:
@@ -327,31 +324,21 @@ def dataProcessing(request):
 
     context = {
         "pageTitle": _("Aufwände für Datenverarbeitungsprozesse"),
-        "descriptionImage":
-        "img/componentList/" + descriptionImage,
-        "focusBorder":
-        "ecological",
-        "focusName":
-        "ecological",
-        "urlName":
-        "dataProcessing",
-        "backLinkText":
-        _("Negative Umweltwirkungen"),
-        "backLink":
-        "environmentalIntegrityNegativ",
-        "leftColumn":
-        "partials/dataProcessingLeftColumn.html",
-        "rightColumn":
-        "partials/dataProcessingRightColumn.html",
-        "linkOnRightSiteBool":
-        True,
-        "linkOnRightSiteName":
-        "components",
-        "linkOnRightSiteDescription":
-        _("Zu den Aufwänden für verwendete Komponenten"),
-        "imageInBackButton":
-        "img/componentList/caret-left.svg",
-   }
+        "descriptionImage": "img/componentList/" + descriptionImage,
+        "focusBorder": "ecological",
+        "focusName": "ecological",
+        "urlName": "dataProcessing",
+        "backLinkText": _("Negative Umweltwirkungen"),
+        "backLink": "environmentalIntegrityNegativ",
+        "leftColumn": "partials/dataProcessingLeftColumn.html",
+        "rightColumn": "partials/dataProcessingRightColumn.html",
+        "linkOnRightSiteBool": True,
+        "linkOnRightSiteName": "components",
+        "linkOnRightSiteDescription": _(
+            "Zu den Aufwänden für verwendete Komponenten"
+        ),
+        "imageInBackButton": "img/componentList/caret-left.svg",
+    }
     return render(request, "pages/detailsPage.html", context)
 
 
@@ -362,17 +349,18 @@ def _removeEmtpyStringsFromList(listOfStrings):
             listOfStrings.remove(string)
     return listOfStrings
 
+
 def showImage(request, pathToImage: str):
     """
     show image detail-page with the image, from which the image-path is provided
     """
-    
+
     context = {
         "imageName": pathToImage,
         "focusBorder": "ecological",
         "backLink": "dataProcessing",
         "imageInBackButton": "img/componentList/caret-left.svg",
-        "backLinkText": _("Aufwände für Datenverarbeitungsprozesse"),   
+        "backLinkText": _("Aufwände für Datenverarbeitungsprozesse"),
     }
 
     return render(request, "pages/showImage.html", context)

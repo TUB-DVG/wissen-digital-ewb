@@ -5,6 +5,7 @@ It tests the first page, which is accessed when browsing to
 https://wissen-digital-ewb.de.
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/...")
@@ -14,7 +15,8 @@ import os
 import random
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -33,6 +35,7 @@ from src.page_obj.pages.criteria_catalog import (
     CriteriaCatalogOverviewPage,
     CriteriaCatalogDetailsPage,
 )
+
 
 class TestMainPage(WebDriverSetup):
     """Testclass for MainPage-Test
@@ -65,24 +68,22 @@ class TestMainPage(WebDriverSetup):
         searchInputField.send_keys(Keys.RETURN)
 
         WebDriverWait(self.driver, 5).until(
-            EC.visibility_of_element_located((By.ID, "searchResultH2")))
+            EC.visibility_of_element_located((By.ID, "searchResultH2"))
+        )
         self.driver.get(os.environ["siteUnderTest"] + "/ResultSearch")
         try:
             WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located(
-                    (By.XPATH, "inputSearchField")))
+                EC.visibility_of_element_located((By.XPATH, "inputSearchField"))
+            )
         except TimeoutException:
             self._checkForPageError(
                 "After reloading the page, an django-error appears, because the search-string is None"
             )
 
-    
     def testIfCriteriaCatalogTopicsInResults(self):
-        """Test if Topics of the critera-catalog are in the search results.
-
-        """
+        """Test if Topics of the critera-catalog are in the search results."""
         self.driver.get(os.environ["siteUnderTest"])
-        
+
         startPageObj = StartPage(self.driver)
         searchInput = startPageObj.getSearchInputField()
 
@@ -96,20 +97,22 @@ class TestMainPage(WebDriverSetup):
             dataHrefAttr = result.get_attribute("data-href")
             if "criteriaCatalog" in dataHrefAttr:
                 foundCriteriaCatalogResult = True
-                break;
-        self.assertTrue(foundCriteriaCatalogResult, "No result from criteria catalog was displayed!")
-        
+                break
+        self.assertTrue(
+            foundCriteriaCatalogResult,
+            "No result from criteria catalog was displayed!",
+        )
+
         # click one of the criteria catalog results:
         result.click()
-       
+
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
         greyBoxes = criteriaCatalogObj.getNormsInforContainers()
-        
+
         for box in greyBoxes:
             self.assertTrue(not box.is_displayed())
         # chck if we are on the criteria catalog:
         breakpoint()
-        
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
@@ -122,8 +125,9 @@ class TestMainPage(WebDriverSetup):
         impressumLinkElement = startPageObj.getImpressumLink()
         # self.driver.implicitly_wait(10)
         # ActionChains(self.driver).move_to_element(impressumLinkElement).perform()
-        self.driver.execute_script("arguments[0].scrollIntoView();",
-                                   impressumLinkElement)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView();", impressumLinkElement
+        )
         # WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(impressumLinkElement)).click()
         time.sleep(1)
         impressumLinkElement.click()
@@ -156,7 +160,8 @@ class TestMainPage(WebDriverSetup):
         searchInputField.send_keys(Keys.RETURN)
         try:
             WebDriverWait(self.driver, 5).until(
-                EC.visibility_of_element_located((By.ID, "searchResultH2")))
+                EC.visibility_of_element_located((By.ID, "searchResultH2"))
+            )
         except TimeoutException:
             self._checkForPageError(
                 "The start-search produced a ValueError. This could be because of wrong format of the 'lastUpdate'-row. Check the database!"
@@ -214,8 +219,9 @@ class TestMainPage(WebDriverSetup):
             rowElement = listOfRowsInResultsTable[indexTable]
             if rowElement.text.find("Forschungsprojekt") >= 0:
                 checkedScientificProjects += 1
-                self.driver.execute_script("arguments[0].scrollIntoView();",
-                                           rowElement)
+                self.driver.execute_script(
+                    "arguments[0].scrollIntoView();", rowElement
+                )
                 childRowElement = startPageObj.getChildEbElement(rowElement)
                 self.driver.execute_script(
                     "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));",
@@ -263,7 +269,8 @@ class TestMainPage(WebDriverSetup):
         )
         cookieBannerObj = CookieBanner(self.driver)
         self.scrollElementIntoViewAndClickIt(
-            cookieBannerObj.getCookieAcceptanceButton())
+            cookieBannerObj.getCookieAcceptanceButton()
+        )
         self.scrollElementIntoViewAndClickIt(listOfNextElement[0])
         resultsOnNextSite = startPageObj.getSearchResults()
         self.assertNotEqual(
@@ -358,114 +365,152 @@ class TestMainPage(WebDriverSetup):
         self.driver.get(os.environ["siteUnderTest"])
 
         self.startPageObj = StartPage(self.driver)
-        
-        self._checkFocusContainer("operational", {
-            "heading_de": "Betrieblicher Fokus",
-            "heading_en": "Operational Focus",
-            "linkNamesEnglish": [
-                "Business models",
-                "User integration",
-            ],
-            "linkNamesGerman": [
-                "Geschäftsmodelle",
-                "Nutzendenintegration",
-            ],
-            "borderColor": self.OPERATIONAL_COLOR,
-        })
 
-        self._checkFocusContainer("ecological", {
-            "heading_de": "Ökologischer Fokus",
-            "heading_en": "Ecological Focus",
-            "linkNamesEnglish": [
-                "Negative environmental impacts ",
-                "Positive environmental impacts",
-            ],
-            "linkNamesGerman": [
-                "Negative Umweltwirkungen",
-                "Positive Umweltwirkungen - Good-practice",
-            ],
-            "borderColor": self.ECOLOGICAL_COLOR,
-        })
-        
-        self._checkFocusContainer("legal", {
-            "heading_de": "Rechtlicher Fokus",
-            "heading_en": "Legal Focus",
-            "linkNamesEnglish": [
-                "Privacy Overview",
-                "Catalog of criteria",
-                "Icons and visualization",
-            ],
-            "linkNamesGerman": [
-                "Datenschutz-übersicht",
-                "Kriterienkatalog",
-                "Icons und Visualisierung",
-            ],
-            "borderColor": self.LEGAL_COLOR,
-        })
-    
+        self._checkFocusContainer(
+            "operational",
+            {
+                "heading_de": "Betrieblicher Fokus",
+                "heading_en": "Operational Focus",
+                "linkNamesEnglish": [
+                    "Business models",
+                    "User integration",
+                ],
+                "linkNamesGerman": [
+                    "Geschäftsmodelle",
+                    "Nutzendenintegration",
+                ],
+                "borderColor": self.OPERATIONAL_COLOR,
+            },
+        )
+
+        self._checkFocusContainer(
+            "ecological",
+            {
+                "heading_de": "Ökologischer Fokus",
+                "heading_en": "Ecological Focus",
+                "linkNamesEnglish": [
+                    "Negative environmental impacts ",
+                    "Positive environmental impacts",
+                ],
+                "linkNamesGerman": [
+                    "Negative Umweltwirkungen",
+                    "Positive Umweltwirkungen - Good-practice",
+                ],
+                "borderColor": self.ECOLOGICAL_COLOR,
+            },
+        )
+
+        self._checkFocusContainer(
+            "legal",
+            {
+                "heading_de": "Rechtlicher Fokus",
+                "heading_en": "Legal Focus",
+                "linkNamesEnglish": [
+                    "Privacy Overview",
+                    "Catalog of criteria",
+                    "Icons and visualization",
+                ],
+                "linkNamesGerman": [
+                    "Datenschutz-übersicht",
+                    "Kriterienkatalog",
+                    "Icons und Visualisierung",
+                ],
+                "borderColor": self.LEGAL_COLOR,
+            },
+        )
+
     def testPageStructure(self):
-        """Test if the navBar has 5 focuses and if the 5. focus is present on the page.
-
-        """
+        """Test if the navBar has 5 focuses and if the 5. focus is present on the page."""
         self.driver.get(os.environ["siteUnderTest"])
 
         startPAgeObj = StartPage(self.driver)
 
-        # test if a container is present, which has te class row-12 and a global 
+        # test if a container is present, which has te class row-12 and a global
         # border
-        globalFocusContainer = self.driver.find_element(By.XPATH, "//div[@id='globalFocusContainer']")
+        globalFocusContainer = self.driver.find_element(
+            By.XPATH, "//div[@id='globalFocusContainer']"
+        )
         self.assertTrue("col-12" in globalFocusContainer.get_attribute("class"))
-        self.assertTrue(globalFocusContainer.value_of_css_property("outline-color") == self.GLOBAL_COLOR)
+        self.assertTrue(
+            globalFocusContainer.value_of_css_property("outline-color")
+            == self.GLOBAL_COLOR
+        )
 
         # check if the links have black font color and are underlined in the global focus color:
-        linksInGlobalFocusContainer = globalFocusContainer.find_elements(By.XPATH, ".//a")
+        linksInGlobalFocusContainer = globalFocusContainer.find_elements(
+            By.XPATH, ".//a"
+        )
         for link in linksInGlobalFocusContainer:
-            self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
-            self.assertTrue(link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR)
-
+            self.assertTrue(
+                link.value_of_css_property("color") == "rgb(0, 0, 0)"
+            )
+            self.assertTrue(
+                link.value_of_css_property("border-bottom-color")
+                == self.GLOBAL_COLOR
+            )
 
     def _checkFocusContainer(self, focusName, dataDict):
-        """
-
-        """
+        """ """
 
         self.focusContainer = self.startPageObj.getFocusContainer(focusName)
         self.focusName = focusName
-        
-        self.checkInGermanAndEnglish(self._checkTitle, {"de": dataDict["heading_de"], "en": dataDict["heading_en"]})
-        self.checkInGermanAndEnglish(self._checkBorder, {"de": dataDict["borderColor"], "en": dataDict["borderColor"]})
-        self.checkInGermanAndEnglish(self._checkLinks, {"de": dataDict["linkNamesGerman"], "en": dataDict["linkNamesEnglish"]})
-        self.checkInGermanAndEnglish(self._clickLinks, {"de": dataDict["linkNamesGerman"], "en": dataDict["linkNamesEnglish"]})
 
+        self.checkInGermanAndEnglish(
+            self._checkTitle,
+            {"de": dataDict["heading_de"], "en": dataDict["heading_en"]},
+        )
+        self.checkInGermanAndEnglish(
+            self._checkBorder,
+            {"de": dataDict["borderColor"], "en": dataDict["borderColor"]},
+        )
+        self.checkInGermanAndEnglish(
+            self._checkLinks,
+            {
+                "de": dataDict["linkNamesGerman"],
+                "en": dataDict["linkNamesEnglish"],
+            },
+        )
+        self.checkInGermanAndEnglish(
+            self._clickLinks,
+            {
+                "de": dataDict["linkNamesGerman"],
+                "en": dataDict["linkNamesEnglish"],
+            },
+        )
 
     def _checkTitle(self, expectedValue):
-        """Check the title in german and english
-
-        """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        """Check the title in german and english"""
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         headingText = self.startPageObj.getDescendantsByTagName(
-            self.focusContainer, "h3")[0]
+            self.focusContainer, "h3"
+        )[0]
         self.assertEqual(
             headingText.text,
             expectedValue,
-            f"The heading of the focusContainer should be {expectedValue}, but its {headingText.text}!"
+            f"The heading of the focusContainer should be {expectedValue}, but its {headingText.text}!",
         )
 
     def _checkBorder(self, expectedValue):
-        """Check the border of the container on the german and english page.
-
-        """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
-        self.assertTrue(self.focusContainer.value_of_css_property("outline-color") == expectedValue)
+        """Check the border of the container on the german and english page."""
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
+        self.assertTrue(
+            self.focusContainer.value_of_css_property("outline-color")
+            == expectedValue
+        )
 
     def _checkLinks(self, expectedValues):
-        """
-        
-        """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        """ """
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         # check the links in the operational focus container:
         linkListElements = self.startPageObj.getDescendantsByTagName(
-            self.focusContainer, "a")
+            self.focusContainer, "a"
+        )
 
         self.assertEqual(
             len(linkListElements),
@@ -474,28 +519,27 @@ class TestMainPage(WebDriverSetup):
         )
 
         for linkNumber, linkElement in enumerate(linkListElements):
-            self.assertEqual(linkElement.text,
-                             expectedValues[linkNumber])
+            self.assertEqual(linkElement.text, expectedValues[linkNumber])
 
-        
-        
     def _clickLinks(self, expectedValue):
-        """
-
-        """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        """ """
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         # check the links in the operational focus container:
         linkListElements = self.startPageObj.getDescendantsByTagName(
-            self.focusContainer, "a")
+            self.focusContainer, "a"
+        )
 
         for linkIndex, linkElement in enumerate(linkListElements):
-            self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+            self.focusContainer = self.startPageObj.getFocusContainer(
+                self.focusName
+            )
             linkListElements = self.startPageObj.getDescendantsByTagName(
-            self.focusContainer, "a") 
+                self.focusContainer, "a"
+            )
             reloadedCurrentLinkElement = linkListElements[linkIndex]
 
             self.scrollElementIntoViewAndClickIt(reloadedCurrentLinkElement)
             self.assertTrue("PageError" not in self.driver.title)
             self.driver.back()
-
-

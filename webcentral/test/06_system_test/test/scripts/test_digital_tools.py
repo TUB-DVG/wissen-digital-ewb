@@ -4,6 +4,7 @@ This module acts as system test of the digital tools tab. It is tested
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/...")
@@ -13,7 +14,8 @@ import os
 import random
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -28,6 +30,7 @@ from Src.PageObject.Pages.cookieBanner import CookieBanner
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.SearchPage import SearchPage
 from Src.PageObject.Pages.Pagination import Pagination
+
 
 class TestDigitalToolsPage(WebDriverSetup):
     """ """
@@ -62,7 +65,8 @@ class TestDigitalToolsPage(WebDriverSetup):
         # get all select inputs of the search-bar:
         surroundingDiv = self.searchPartialObj.getSearchDivContainer()
         allSelectsInSearchBar = self.searchPartialObj.getDescendantsByTagName(
-            surroundingDiv, "select")
+            surroundingDiv, "select"
+        )
 
         self.assertEqual(
             len(allSelectsInSearchBar),
@@ -94,15 +98,15 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         # check if the right translation is displayed:
         descriptionTextForRadio = self.searchPartialObj.getNextSibling(
-            listOfRadioButtons[0])
+            listOfRadioButtons[0]
+        )
         self.assertEqual(
             descriptionTextForRadio.text,
             dictOfTranslation["radioDescription"],
         )
 
     def testFilteringAndPagination(self):
-        """Test if the pagination works, when selecting an filter from one of the select elements
-        """
+        """Test if the pagination works, when selecting an filter from one of the select elements"""
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
         self._setLanguageToGerman()
 
@@ -119,19 +123,23 @@ class TestDigitalToolsPage(WebDriverSetup):
         chosenSelect = random.choice(multiselectInputs)
         chosenSelect.click()
 
-        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]")
-        dropdownElements = searchBarPageObj.getDescendantsByTagName(divOfOpenedDropDown, "div")[1:] 
+        divOfOpenedDropDown = self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]"
+        )
+        dropdownElements = searchBarPageObj.getDescendantsByTagName(
+            divOfOpenedDropDown, "div"
+        )[1:]
         chosenFilterItem = random.choice(dropdownElements)
         chosenFilterItem.click()
-        
+
         spanForCurrentSite = paginationObj.getPaginationCurrentSiteString()
         textOfSpan = spanForCurrentSite.text
         numberOfPages = int(textOfSpan.split("von")[1])
-        
+
         # click on next site and check if still the same number of pages are shown:
         paginationNextLink = paginationObj.getPaginationNextLink()
         self.scrollElementIntoViewAndClickIt(paginationNextLink)
-        
+
         numberOfPagesOnNextSite = paginationObj.getPaginationCurrentSiteString()
         textOfSpanOnNewSite = numberOfPagesOnNextSite.text
         numberOfPagesNewSite = int(textOfSpanOnNewSite.split("von")[1])
@@ -152,7 +160,7 @@ class TestDigitalToolsPage(WebDriverSetup):
 
         titleAfterClickLink = "Überblick über die Anwendungen"
         self.checkPageTitle(titleAfterClickLink)
-        
+
         self.checkNavBar("technical")
 
     def testSearchField(self) -> None:
@@ -198,9 +206,9 @@ class TestDigitalToolsPage(WebDriverSetup):
             1,
             "Number of Tool Items should be one for Search-String 'Ansys'!",
         )
-        
+
         searchFieldElement.clear()
-        time.sleep(2) 
+        time.sleep(2)
         listToolItemsAfterRmvdSearch = toolListPage.getListOfToolItems()
         self.assertEqual(
             len(listToolItemsAfterRmvdSearch),
@@ -353,11 +361,13 @@ class TestDigitalToolsPage(WebDriverSetup):
             for toolItem in listOfToolItemsOnCurrentPage:
                 try:
                     imageOfCurrentItem = toolItem.find_element(
-                        By.XPATH, ".//img")
+                        By.XPATH, ".//img"
+                    )
                 except NoSuchElementException:
                     continue
                 altTextPresent = self.driver.execute_script(
-                    script, imageOfCurrentItem)
+                    script, imageOfCurrentItem
+                )
                 if altTextPresent:
                     toolName = toolItem.text.split("\n")[0]
                     print(
@@ -395,13 +405,14 @@ class TestDigitalToolsPage(WebDriverSetup):
         compareRadioButtonList[0].click()
 
         firstComparisonDiv = comparisonPageSection.getFirstComparisonDiv()
-       
+
         self.assertTrue(
             firstComparisonDiv.is_displayed(),
             "The compare div-section should be displayed after clicking the compare radio button",
         )
         comparisonButtons = comparisonPageSection.getDescendantsByTagName(
-            firstComparisonDiv, "h6")
+            firstComparisonDiv, "h6"
+        )
         self.assertEqual(len(comparisonButtons), 2)
 
         # check if the right text is displayed in the comparison-buttons
@@ -428,12 +439,12 @@ class TestDigitalToolsPage(WebDriverSetup):
         toolsToCompare = random.sample(listOfToolItems, numberOfToolsToCompare)
         for tool in toolsToCompare:
             self.scrollElementIntoView(tool)
-            toolCheckbox = tool.find_element(By.XPATH, ".//input") 
+            toolCheckbox = tool.find_element(By.XPATH, ".//input")
             self.scrollElementIntoViewAndClickIt(toolCheckbox)
 
         # click the compare-button and check if the comparison-page is loaded
         self.scrollElementIntoViewAndClickIt(comparisonButtons[0])
-        
+
         comparisonHeading = comparisonPageSection.getHeadingComparisonSite()
         self.assertEqual(
             comparisonHeading.text,
@@ -442,9 +453,12 @@ class TestDigitalToolsPage(WebDriverSetup):
         )
 
         comparisonTableContainer = (
-            comparisonPageSection.getComparisonTableContainer())
-        
-        listOfTableRows = comparisonPageSection.getDescendantsByTagName(comparisonTableContainer, "tr")
+            comparisonPageSection.getComparisonTableContainer()
+        )
+
+        listOfTableRows = comparisonPageSection.getDescendantsByTagName(
+            comparisonTableContainer, "tr"
+        )
         # check if the comparison tabel has all attributes as rows:
         shownAttributesStr = [
             "Attribut",
@@ -464,8 +478,13 @@ class TestDigitalToolsPage(WebDriverSetup):
         ]
 
         for attrIndex, attributeStr in enumerate(shownAttributesStr):
-            firstRowElement = comparisonPageSection.getDescendantsByTagName(listOfTableRows[attrIndex], "th")[0]
-            self.assertTrue(attributeStr in firstRowElement.text, f"{firstRowElement.text} should be {attributeStr}...")
+            firstRowElement = comparisonPageSection.getDescendantsByTagName(
+                listOfTableRows[attrIndex], "th"
+            )[0]
+            self.assertTrue(
+                attributeStr in firstRowElement.text,
+                f"{firstRowElement.text} should be {attributeStr}...",
+            )
 
         # self._setLanguageToEnglish()
         # check if a back button is present:
@@ -483,7 +502,8 @@ class TestDigitalToolsPage(WebDriverSetup):
             "The font-size of the back-button should be 14px",
         )
         siblingElement = comparisonPageSection.getDescendantsByTagName(
-            backButton, "img")[0]
+            backButton, "img"
+        )[0]
         self.assertIsNotNone(siblingElement)
         # no alt text should be present, because the image is loaded successfully:
         self.assertTrue(siblingElement.text == "")
@@ -520,12 +540,20 @@ class TestDigitalToolsPage(WebDriverSetup):
             "Last update",
         ]
         comparisonTableContainer = (
-            comparisonPageSection.getComparisonTableContainer())
-        listOfTableRows = comparisonPageSection.getDescendantsByTagName(comparisonTableContainer, "tr")
+            comparisonPageSection.getComparisonTableContainer()
+        )
+        listOfTableRows = comparisonPageSection.getDescendantsByTagName(
+            comparisonTableContainer, "tr"
+        )
 
         for attrIndex, attributeStr in enumerate(shownAttributesStr):
-            firstRowElement = comparisonPageSection.getDescendantsByTagName(listOfTableRows[attrIndex], "th")[0]
-            self.assertTrue(attributeStr in firstRowElement.text, f"{firstRowElement.text} should be {attributeStr}...")
+            firstRowElement = comparisonPageSection.getDescendantsByTagName(
+                listOfTableRows[attrIndex], "th"
+            )[0]
+            self.assertTrue(
+                attributeStr in firstRowElement.text,
+                f"{firstRowElement.text} should be {attributeStr}...",
+            )
 
         # # check if the buttons are translated to english
         # self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")

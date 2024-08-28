@@ -6,28 +6,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0007_remove_component_globalwarmingpotentialprodsup_and_more'),
+        (
+            "component_list",
+            "0007_remove_component_globalwarmingpotentialprodsup_and_more",
+        ),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='component',
-            name='globalWarmingPotentialProdSup',
+            model_name="component",
+            name="globalWarmingPotentialProdSup",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='component',
-            name='globalWarmingPotentialUsePhaseSup',
+            model_name="component",
+            name="globalWarmingPotentialUsePhaseSup",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='component',
-            name='operationTimeSupscript',
+            model_name="component",
+            name="operationTimeSupscript",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='component',
-            name='powerUseCasePhaseActiveSuperscript',
+            model_name="component",
+            name="powerUseCasePhaseActiveSuperscript",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
     ]

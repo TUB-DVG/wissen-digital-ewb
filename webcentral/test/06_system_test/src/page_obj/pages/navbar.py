@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
@@ -131,46 +133,44 @@ class NavBar(object):
         )
 
     def getIcons(self):
-        """Get the icon image webelements 
-
-        """
+        """Get the icon image webelements"""
         navBarDropdowns = self.getDropDownElements()
         listOfIconsInNavBar = []
         for dropdown in navBarDropdowns:
             imageDropdown = dropdown.find_element(By.XPATH, ".//img")
             listOfIconsInNavBar.append(imageDropdown)
         return listOfIconsInNavBar
-    
-    def getDropDownElements(self):
-        """
 
-        """
-        return  self.driver.find_elements(By.XPATH, "//li[@class='nav-item dropdown']")
+    def getDropDownElements(self):
+        """ """
+        return self.driver.find_elements(
+            By.XPATH, "//li[@class='nav-item dropdown']"
+        )
 
     def getGlobalDropdownElements(self):
-        """Return the elements inside the navbar of the global focus
-        """
-        ulOfGlobalDropdown = self.driver.find_element(By.XPATH, "//ul[@aria-labelledby='globalDropdown']")
+        """Return the elements inside the navbar of the global focus"""
+        ulOfGlobalDropdown = self.driver.find_element(
+            By.XPATH, "//ul[@aria-labelledby='globalDropdown']"
+        )
         liUnderUl = ulOfGlobalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
-    
+
     def getLegalDropdownElements(self):
-        """Return the elements inside the navbar of the legal focus
-        """
-        ulOfLegalDropdown = self.driver.find_element(By.XPATH, "//ul[@aria-labelledby='legalDropdown']")
+        """Return the elements inside the navbar of the legal focus"""
+        ulOfLegalDropdown = self.driver.find_element(
+            By.XPATH, "//ul[@aria-labelledby='legalDropdown']"
+        )
         liUnderUl = ulOfLegalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
 
     def getDropdownLiElements(self, focusType: str):
-        """Return the elements inside the navbar of the legal focus
-        """
-        ulOfLegalDropdown = self.driver.find_element(By.XPATH, f"//ul[@aria-labelledby='{focusType}Dropdown']")
+        """Return the elements inside the navbar of the legal focus"""
+        ulOfLegalDropdown = self.driver.find_element(
+            By.XPATH, f"//ul[@aria-labelledby='{focusType}Dropdown']"
+        )
         liUnderUl = ulOfLegalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
- 
 
     def getDropdownOfType(self, type: str):
-        """
-
-        """
+        """ """
         return self.driver.find_element(By.XPATH, f"//a[@id='{type}Dropdown']")

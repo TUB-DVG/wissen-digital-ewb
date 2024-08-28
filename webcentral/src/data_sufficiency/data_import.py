@@ -1,7 +1,6 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
@@ -9,8 +8,9 @@ from common.data_import import DataImport
 
 from .models import DataSufficiency
 
+
 class DataImportApp(DataImport):
-    
+
     MAPPING_EXCEL_DB_EN = {
         "Category__en": "category_en",
         "Description__en": "description_en",
@@ -23,8 +23,9 @@ class DataImportApp(DataImport):
         "Relevance__en": "relevance_en",
         "Problem_Statement_and_Problem_Goals__en": "problem_statement_and_problem_goals_en",
         "Implementation_in_the_Project__en": "implementation_in_the_project_en",
-        "Evaluation__en": "evaluation_en"
+        "Evaluation__en": "evaluation_en",
     }
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -60,14 +61,17 @@ class DataImportApp(DataImport):
             Indicates, if the UserIntegration-object was created or not.
         """
         strategyCategory = row[header.index("Strategiekategorie")]
-        categoryShortDescription = row[header.index(
-            "Kategorie_Kurzbeschreibung_Teaser")]
-        categoryLongDescription = row[header.index("Kategorie_Kurzbeschreibung_Lang")]
+        categoryShortDescription = row[
+            header.index("Kategorie_Kurzbeschreibung_Teaser")
+        ]
+        categoryLongDescription = row[
+            header.index("Kategorie_Kurzbeschreibung_Lang")
+        ]
         example1 = row[header.index("Beispiel_1")]
         example2 = row[header.index("Beispiel_2")]
-        example1Heading = row[header.index("Beispiel_1_Überschrift")]  
+        example1Heading = row[header.index("Beispiel_1_Überschrift")]
         example2Heading = row[header.index("Beispiel_2_Überschrift")]
-        
+
         obj, created = DataSufficiency.objects.get_or_create(
             strategyCategory=strategyCategory,
             categoryShortDescription=categoryShortDescription,
@@ -77,28 +81,31 @@ class DataImportApp(DataImport):
             example1Heading=example1Heading,
             example2Heading=example2Heading,
         )
- 
 
         literatureStr = row[header.index("Literatur")]
         literatureObjsList = self._importLiterature(literatureStr)
         obj.literature.add(*literatureObjsList)
-       
+
         # if self._englishHeadersPresent(header):
         #    self._getOrCreateEnglishTranslation(row, header, data, obj)
         #
-    def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
-        """
 
-        """
+    def _getOrCreateEnglishTranslation(
+        self, row: list, header: list, data: list, environmentalimpactObj
+    ):
+        """ """
         for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
-            # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
-            # if hasattr(obj, attributeNameWithoutEn) 
+            # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en")
+            # if hasattr(obj, attributeNameWithoutEn)
             try:
-                setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
+                setattr(
+                    environmentalimpactObj,
+                    self.MAPPING_EXCEL_DB_EN[mappingKey],
+                    row[header.index(mappingKey)],
+                )
             except:
                 breakpoint()
         environmentalimpactObj.save()
-
 
     def _englishHeadersPresent(self, header: list) -> bool:
         """Check if english translation headers are present in the
@@ -108,5 +115,3 @@ class DataImportApp(DataImport):
         for headerItem in header:
             if "__en" in headerItem:
                 return True
-        
- 

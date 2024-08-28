@@ -71,7 +71,7 @@ from component_list.models import (
     ComponentClass,
     Category,
 )
-from positive_environmental_impact.models import EnvironmentalImpact 
+from positive_environmental_impact.models import EnvironmentalImpact
 from data_sufficiency.models import (
     DataSufficiency,
 )
@@ -339,9 +339,9 @@ class Command(BaseCommand):
 
         focusList = row[header.index("focus")].split(",")
         processedFocusList = self._correctReadInValue(
-            row[header.index("focus")])
-        focusList = self._iterateThroughListOfStrings(processedFocusList,
-                                                      Focus)
+            row[header.index("focus")]
+        )
+        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
         focusElements = Focus.objects.filter(focus__in=focusList)
 
         typeORMObjList = Type.objects.filter(type=type_)
@@ -417,7 +417,9 @@ class Command(BaseCommand):
         """
         # content = row[number of the columns of the row]
         keywordFromCSV = row[header.index(catchphraseKey)]
-        obj, created = Keyword.objects.get_or_create(keyword=keywordFromCSV, )
+        obj, created = Keyword.objects.get_or_create(
+            keyword=keywordFromCSV,
+        )
         return obj, created
 
     def getOrCreateKeywordRegisterFirstReview(
@@ -534,10 +536,14 @@ class Command(BaseCommand):
             enargus_id = obj.enargus_id
             fkz = row[header.index("FKZ")]
             try:
-                if (len(
+                if (
+                    len(
                         Subproject.objects.filter(
-                            referenceNumber_id=fkz,
-                            enargusData_id=enargus_id)) == 0):
+                            referenceNumber_id=fkz, enargusData_id=enargus_id
+                        )
+                    )
+                    == 0
+                ):
                     Subproject.objects.create(
                         referenceNumber_id=fkz,
                         enargusData_id=enargus_id,
@@ -545,21 +551,25 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
             except IntegrityError:
                 currentStateTable = Subproject.objects.filter(
-                    referenceNumber_id=fkz, )[0].enargusData
+                    referenceNumber_id=fkz,
+                )[0].enargusData
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("subproject")
-                unvisited.append([
-                    "enargusData",
-                    currentStateTable,
-                    obj,
-                    "Subproject",
-                ])
+                unvisited.append(
+                    [
+                        "enargusData",
+                        currentStateTable,
+                        obj,
+                        "Subproject",
+                    ]
+                )
                 if currentStateTable is None:
                     verbundbezeichungStr = None
                 else:
                     verbundbezeichungStr = (
-                        currentStateTable.collaborativeProject)
+                        currentStateTable.collaborativeProject
+                    )
                 self.compareForeignTables(
                     unvisited,
                     visitedNames,
@@ -574,11 +584,15 @@ class Command(BaseCommand):
             )
             fkz = row[header.index("FKZ")].strip()
             try:
-                if (len(
+                if (
+                    len(
                         Subproject.objects.filter(
                             referenceNumber_id=fkz,
                             moduleAssignment=moduleAssignmentObjNew,
-                        )) == 0):
+                        )
+                    )
+                    == 0
+                ):
                     Subproject.objects.create(
                         referenceNumber_id=fkz,
                         moduleAssignment=moduleAssignmentObjNew,
@@ -586,25 +600,30 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
             except IntegrityError:
                 enargusDataObj = Subproject.objects.filter(
-                    referenceNumber_id=fkz, )[0].enargusData
+                    referenceNumber_id=fkz,
+                )[0].enargusData
 
                 ModuleAssignmentObj = Subproject.objects.filter(
-                    referenceNumber_id=fkz, )[0].moduleAssignment
+                    referenceNumber_id=fkz,
+                )[0].moduleAssignment
 
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("subproject")
-                unvisited.append([
-                    "moduleAssignment",
-                    ModuleAssignmentObj,
-                    moduleAssignmentObjNew,
-                    "Subproject",
-                ])
+                unvisited.append(
+                    [
+                        "moduleAssignment",
+                        ModuleAssignmentObj,
+                        moduleAssignmentObjNew,
+                        "Subproject",
+                    ]
+                )
                 if enargusDataObj is None:
                     collaborativeProjectText = None
                 else:
                     collaborativeProjectText = (
-                        enargusDataObj.collaborativeProject)
+                        enargusDataObj.collaborativeProject
+                    )
                 self.compareForeignTables(
                     unvisited,
                     visitedNames,
@@ -621,11 +640,15 @@ class Command(BaseCommand):
             )
             fkz = row[header.index("Förderkennzeichen (0010)")]
             try:
-                if (len(
+                if (
+                    len(
                         Subproject.objects.filter(
                             referenceNumber_id=fkz,
                             keywordsFirstReview=keywordRegisterFirstReviewObj,
-                        )) == 0):
+                        )
+                    )
+                    == 0
+                ):
                     Subproject.objects.create(
                         referenceNumber_id=fkz,
                         keywordsFirstReview=keywordRegisterFirstReviewObj,
@@ -633,24 +656,29 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS("added: %s" % fkz))
             except IntegrityError:
                 currentPartEnargus = Subproject.objects.filter(
-                    referenceNumber_id=fkz, )[0].enargusData
+                    referenceNumber_id=fkz,
+                )[0].enargusData
 
                 currentObjTagRegisterFirstLook = Subproject.objects.filter(
-                    referenceNumber_id=fkz, )[0].keywordsFirstReview
+                    referenceNumber_id=fkz,
+                )[0].keywordsFirstReview
                 unvisited = []
                 visitedNames = []
                 visitedNames.append("teilprojekt")
-                unvisited.append([
-                    "keywordsFirstReview",
-                    currentObjTagRegisterFirstLook,
-                    keywordRegisterFirstReviewObj,
-                    "Subproject",
-                ])
+                unvisited.append(
+                    [
+                        "keywordsFirstReview",
+                        currentObjTagRegisterFirstLook,
+                        keywordRegisterFirstReviewObj,
+                        "Subproject",
+                    ]
+                )
                 if currentPartEnargus is None:
                     collaborativeProjectText = None
                 else:
                     collaborativeProjectText = (
-                        currentPartEnargus.collaborativeProject)
+                        currentPartEnargus.collaborativeProject
+                    )
 
                 self.compareForeignTables(
                     unvisited,
@@ -664,15 +692,18 @@ class Command(BaseCommand):
             toolsName = obj.name
             if len(Tools.objects.filter(name=toolsName)) > 1:
                 currentStateTable = Tools.objects.filter(
-                    name=toolsName).order_by("id")[0]
+                    name=toolsName
+                ).order_by("id")[0]
                 unvisited = []
                 visitedNames = []
-                unvisited.append([
-                    "Tools",
-                    currentStateTable,
-                    obj,
-                    "Tools",
-                ])
+                unvisited.append(
+                    [
+                        "Tools",
+                        currentStateTable,
+                        obj,
+                        "Tools",
+                    ]
+                )
 
                 self.compareForeignTables(
                     unvisited,
@@ -734,7 +765,8 @@ class Command(BaseCommand):
             dataset should be loaded into the database. The other dataset needs 
             to be deleted from the .csv-file. The data_import script can be 
             reexecuted after these steps.
-            """)
+            """
+            )
         else:
             self.fkzWrittenToYAML.append(identifer)
 
@@ -756,101 +788,133 @@ class Command(BaseCommand):
                 diffCurrentObjDict[currentForeignTableName] = "None"
                 diffPendingObjDict[currentForeignTableName] = ""
                 currentDBDifferenceObj.addTable(
-                    f"{parentTableName}.{currentForeignTableName}", )
+                    f"{parentTableName}.{currentForeignTableName}",
+                )
                 for columnName in pendingTableObj._meta.get_fields():
                     currentForeignTableStr = (
-                        columnName.__str__().strip(">").split(".")[-1])
+                        columnName.__str__().strip(">").split(".")[-1]
+                    )
                     if not columnName.is_relation:
                         penTab = pendingTableObj.__getattribute__(
-                            columnName.name)
+                            columnName.name
+                        )
                         diffPendingObjDict[currentForeignTableName] = (
-                            diffPendingObjDict[currentForeignTableName] + "|" +
-                            f" {columnName.name}: {str(penTab)}")
+                            diffPendingObjDict[currentForeignTableName]
+                            + "|"
+                            + f" {columnName.name}: {str(penTab)}"
+                        )
 
                         currentDBDifferenceObj.addDifference(
                             f"{parentTableName}.{currentForeignTableName}",
                             {currentForeignTableStr: None},
                             {
-                                currentForeignTableStr:
-                                str(
+                                currentForeignTableStr: str(
                                     pendingTableObj.__getattribute__(
-                                        currentForeignTableStr))
+                                        currentForeignTableStr
+                                    )
+                                )
                             },
                         )
                         listOfFieldsInCurrentTable = (
-                            pendingTableObj._meta.get_fields())
+                            pendingTableObj._meta.get_fields()
+                        )
                         for teilprojektField in listOfFieldsInCurrentTable:
-                            currentForeignTableStr = (teilprojektField.__str__(
-                            ).strip(">").split(".")[-1])
-                            if (teilprojektField.is_relation and
-                                    f"{parentTableName}.{currentForeignTableStr}"
-                                    not in visitedNames
-                                    and not teilprojektField.one_to_many):
+                            currentForeignTableStr = (
+                                teilprojektField.__str__()
+                                .strip(">")
+                                .split(".")[-1]
+                            )
+                            if (
+                                teilprojektField.is_relation
+                                and f"{parentTableName}.{currentForeignTableStr}"
+                                not in visitedNames
+                                and not teilprojektField.one_to_many
+                            ):
                                 try:
                                     pendingField = (
                                         pendingTableObj.__getattribute__(
-                                            currentForeignTableStr, ))
+                                            currentForeignTableStr,
+                                        )
+                                    )
                                 except:
                                     pendingField = None
-                                unvisited.append([
-                                    currentForeignTableStr,
-                                    None,
-                                    pendingField,
-                                    currentForeignTableName,
-                                ])
+                                unvisited.append(
+                                    [
+                                        currentForeignTableStr,
+                                        None,
+                                        pendingField,
+                                        currentForeignTableName,
+                                    ]
+                                )
 
             else:
                 try:
                     listOfFieldsInCurrentTable = (
-                        currentTableObj._meta.get_fields())
+                        currentTableObj._meta.get_fields()
+                    )
                 except:
                     if len(currentTableObj) > 0:
                         listOfFieldsInCurrentTable = currentTableObj[
-                            0]._meta.get_fields()
+                            0
+                        ]._meta.get_fields()
                     else:
                         listOfFieldsInCurrentTable = []
-                if (f"{parentTableName}.{currentForeignTableName}"
-                        not in diffCurrentObjDict.keys()):
+                if (
+                    f"{parentTableName}.{currentForeignTableName}"
+                    not in diffCurrentObjDict.keys()
+                ):
                     currentDBDifferenceObj.addTable(
-                        f"{parentTableName}.{currentForeignTableName}", )
+                        f"{parentTableName}.{currentForeignTableName}",
+                    )
                     diffCurrentObjDict[
-                        f"{parentTableName}.{currentForeignTableName}"] = ""
+                        f"{parentTableName}.{currentForeignTableName}"
+                    ] = ""
                     diffPendingObjDict[
-                        f"{parentTableName}.{currentForeignTableName}"] = ""
+                        f"{parentTableName}.{currentForeignTableName}"
+                    ] = ""
 
                 for teilprojektField in listOfFieldsInCurrentTable:
                     currentForeignTableStr = (
-                        teilprojektField.__str__().strip(">").split(".")[-1])
+                        teilprojektField.__str__().strip(">").split(".")[-1]
+                    )
 
-                    if (teilprojektField.is_relation
-                            and f"{parentTableName}.{currentForeignTableStr}"
-                            not in visitedNames
-                            and not teilprojektField.one_to_many):
+                    if (
+                        teilprojektField.is_relation
+                        and f"{parentTableName}.{currentForeignTableStr}"
+                        not in visitedNames
+                        and not teilprojektField.one_to_many
+                    ):
                         if teilprojektField.many_to_many:
                             if currentForeignTableStr != "tools":
                                 try:
-                                    unvisited.append([
-                                        currentForeignTableStr,
-                                        currentTableObj.__getattribute__(
-                                            currentForeignTableStr).
-                                        select_related(),
-                                        pendingTableObj.__getattribute__(
-                                            currentForeignTableStr).
-                                        select_related(),
-                                        teilprojektField.model.__name__,
-                                    ])
+                                    unvisited.append(
+                                        [
+                                            currentForeignTableStr,
+                                            currentTableObj.__getattribute__(
+                                                currentForeignTableStr
+                                            ).select_related(),
+                                            pendingTableObj.__getattribute__(
+                                                currentForeignTableStr
+                                            ).select_related(),
+                                            teilprojektField.model.__name__,
+                                        ]
+                                    )
                                 except:
                                     pass
                         else:
                             try:
-                                unvisited.append([
-                                    currentForeignTableStr,
-                                    currentTableObj.__getattribute__(
-                                        currentForeignTableStr),
-                                    pendingTableObj.__getattribute__(
-                                        currentForeignTableStr),
-                                    teilprojektField.model.__name__,
-                                ])
+                                unvisited.append(
+                                    [
+                                        currentForeignTableStr,
+                                        currentTableObj.__getattribute__(
+                                            currentForeignTableStr
+                                        ),
+                                        pendingTableObj.__getattribute__(
+                                            currentForeignTableStr
+                                        ),
+                                        teilprojektField.model.__name__,
+                                    ]
+                                )
                             except:
                                 pass
 
@@ -862,120 +926,151 @@ class Command(BaseCommand):
                             strCurrent = f" {currentForeignTableStr}: "
                             strPending = f" {currentForeignTableStr}: "
                             try:
-                                pendingTableObj = pendingTableObj.order_by(
-                                    "id")
-                                currentTableObj = currentTableObj.order_by(
-                                    "id")
+                                pendingTableObj = pendingTableObj.order_by("id")
+                                currentTableObj = currentTableObj.order_by("id")
                             except:
                                 pendingTableObj = pendingTableObj.order_by(
-                                    "referenceNumber_id")
+                                    "referenceNumber_id"
+                                )
                                 currentTableObj = currentTableObj.order_by(
-                                    "referenceNumber_id")
+                                    "referenceNumber_id"
+                                )
 
                             if len(currentTableObj) != len(pendingTableObj):
                                 foundDifference = True
                             else:
                                 for index, currentPendingObj in enumerate(
-                                        pendingTableObj):
+                                    pendingTableObj
+                                ):
                                     foundCurrentObj = False
                                     if len(currentTableObj) >= index + 1:
                                         if currentPendingObj.__getattribute__(
-                                                currentForeignTableStr
+                                            currentForeignTableStr
                                         ) != currentTableObj[
-                                                index].__getattribute__(
-                                                    currentForeignTableStr):
+                                            index
+                                        ].__getattribute__(
+                                            currentForeignTableStr
+                                        ):
                                             foundDifference = True
                                             break
                                     else:
                                         foundDifference = True
                             if foundDifference:
                                 for index, currentPendingObj in enumerate(
-                                        pendingTableObj):
+                                    pendingTableObj
+                                ):
                                     strPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
                                     strDifferencesPending += f"{currentPendingObj.__getattribute__(currentForeignTableStr)}, "
                                 for index, currentManyObj in enumerate(
-                                        currentTableObj):
+                                    currentTableObj
+                                ):
                                     strCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "
                                     strDifferencesCurrent += f"{currentManyObj.__getattribute__(currentForeignTableStr)}, "
 
                                 lengthOfStr = np.array(
-                                    [len(strCurrent),
-                                     len(strPending)])
+                                    [len(strCurrent), len(strPending)]
+                                )
                                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                                 numberOfCharacterDifference = np.abs(
-                                    lengthOfStr[0] - lengthOfStr[1])
+                                    lengthOfStr[0] - lengthOfStr[1]
+                                )
                                 if posOfMaxLengthStr == 0:
                                     strCurrent += (
-                                        numberOfCharacterDifference * " ")
+                                        numberOfCharacterDifference * " "
+                                    )
                                 else:
                                     strPending += (
-                                        numberOfCharacterDifference * " ")
+                                        numberOfCharacterDifference * " "
+                                    )
 
                                 diffCurrentObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"] = (
-                                        diffCurrentObjDict[
-                                            f"{parentTableName}.{currentForeignTableName}"]
-                                        + "|" + strCurrent)
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (
+                                    diffCurrentObjDict[
+                                        f"{parentTableName}.{currentForeignTableName}"
+                                    ]
+                                    + "|"
+                                    + strCurrent
+                                )
                                 diffPendingObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"] = (
-                                        diffPendingObjDict[
-                                            f"{parentTableName}.{currentForeignTableName}"]
-                                        + "|" + strPending)
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (
+                                    diffPendingObjDict[
+                                        f"{parentTableName}.{currentForeignTableName}"
+                                    ]
+                                    + "|"
+                                    + strPending
+                                )
                                 currentDBDifferenceObj.addDifference(
                                     f"{parentTableName}.{currentForeignTableName}",
                                     {
-                                        currentForeignTableStr:
-                                        strDifferencesCurrent
+                                        currentForeignTableStr: strDifferencesCurrent
                                     },
                                     {
-                                        currentForeignTableStr:
-                                        strDifferencesPending
+                                        currentForeignTableStr: strDifferencesPending
                                     },
                                 )
                         else:
                             if str(
-                                    pendingTableObj.__getattribute__(
-                                        currentForeignTableStr)) != str(
-                                            currentTableObj.__getattribute__(
-                                                currentForeignTableStr)):
+                                pendingTableObj.__getattribute__(
+                                    currentForeignTableStr
+                                )
+                            ) != str(
+                                currentTableObj.__getattribute__(
+                                    currentForeignTableStr
+                                )
+                            ):
                                 strCurrent = f" {currentForeignTableStr}: {str(currentTableObj.__getattribute__(currentForeignTableStr))}"
                                 strPending = f" {currentForeignTableStr}: {str(pendingTableObj.__getattribute__(currentForeignTableStr))}"
                                 lengthOfStr = np.array(
-                                    [len(strCurrent),
-                                     len(strPending)])
+                                    [len(strCurrent), len(strPending)]
+                                )
                                 posOfMaxLengthStr = np.argmin(lengthOfStr)
                                 numberOfCharacterDifference = np.abs(
-                                    lengthOfStr[0] - lengthOfStr[1])
+                                    lengthOfStr[0] - lengthOfStr[1]
+                                )
                                 if posOfMaxLengthStr == 0:
                                     strCurrent += (
-                                        numberOfCharacterDifference * " ")
+                                        numberOfCharacterDifference * " "
+                                    )
                                 else:
                                     strPending += (
-                                        numberOfCharacterDifference * " ")
+                                        numberOfCharacterDifference * " "
+                                    )
 
                                 diffCurrentObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"] = (
-                                        diffCurrentObjDict[
-                                            f"{parentTableName}.{currentForeignTableName}"]
-                                        + "|" + strCurrent)
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (
+                                    diffCurrentObjDict[
+                                        f"{parentTableName}.{currentForeignTableName}"
+                                    ]
+                                    + "|"
+                                    + strCurrent
+                                )
                                 diffPendingObjDict[
-                                    f"{parentTableName}.{currentForeignTableName}"] = (
-                                        diffPendingObjDict[
-                                            f"{parentTableName}.{currentForeignTableName}"]
-                                        + "|" + strPending)
+                                    f"{parentTableName}.{currentForeignTableName}"
+                                ] = (
+                                    diffPendingObjDict[
+                                        f"{parentTableName}.{currentForeignTableName}"
+                                    ]
+                                    + "|"
+                                    + strPending
+                                )
                                 currentDBDifferenceObj.addDifference(
                                     f"{parentTableName}.{currentForeignTableName}",
                                     {
-                                        currentForeignTableStr:
-                                        str(
+                                        currentForeignTableStr: str(
                                             currentTableObj.__getattribute__(
-                                                currentForeignTableStr))
+                                                currentForeignTableStr
+                                            )
+                                        )
                                     },
                                     {
-                                        currentForeignTableStr:
-                                        str(
+                                        currentForeignTableStr: str(
                                             pendingTableObj.__getattribute__(
-                                                currentForeignTableStr))
+                                                currentForeignTableStr
+                                            )
+                                        )
                                     },
                                 )
 
@@ -1014,17 +1109,22 @@ class Command(BaseCommand):
         currentDBDifferenceObj.writeToYAML(pathToFile)
 
     def _checkIfInInstalledApps(self, type_of_data):
-        """Check if user given argument `type_of_data` matches 
+        """Check if user given argument `type_of_data` matches
         one of the installed apps. If it does, check if a `data_import`-module
         is present in that app.
         """
         installed_django_apps = settings.INSTALLED_APPS
-        app_names = [app.split('.')[0] for app in installed_django_apps]
+        app_names = [app.split(".")[0] for app in installed_django_apps]
         if type_of_data in app_names:
-            if importlib.util.find_spec(type_of_data + ".data_import") is not None:
+            if (
+                importlib.util.find_spec(type_of_data + ".data_import")
+                is not None
+            ):
                 return importlib.import_module(type_of_data + ".data_import")
-        raise CommandError("specified type_of_data has no corresponding app or has no data_import.py in the app.")
-        
+        raise CommandError(
+            "specified type_of_data has no corresponding app or has no data_import.py in the app."
+        )
+
     def handle(
         self,
         *args: tuple,
@@ -1047,10 +1147,7 @@ class Command(BaseCommand):
 
         type_of_data = options["type_of_data"][0]
         data_import_module = self._checkIfInInstalledApps(type_of_data)
-        
-        
-                
-       
+
         # else:
         #     raise CommandError(
         #         "Invalid file format. Please provide a .csv or .xlsx file.")
@@ -1058,11 +1155,10 @@ class Command(BaseCommand):
         # self.filename = filename
         # self.targetFolder = options["targetFolder"][0]
 
-
         appDataImportObj = data_import_module.DataImportApp(filePathToData)
         header, data = appDataImportObj.load()
         appDataImportObj.importList(header, data)
-   
+
     def _processListInput(self, inputStr):
         """Process a cell, which includes a list of elements"""
         returnList = []
@@ -1122,8 +1218,9 @@ class Command(BaseCommand):
                 readInString = readInString[:-1]
             return readInString
 
-    def _selectNearestMatch(self, categoryString: str,
-                            djangoModel: Model) -> str:
+    def _selectNearestMatch(
+        self, categoryString: str, djangoModel: Model
+    ) -> str:
         """Return closest match for categoryString in djangoModel
 
         This method returns the closest match for `categoryString` in `djangoModel`
@@ -1148,26 +1245,29 @@ class Command(BaseCommand):
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
         else:
-            attributeNameInModel = (djangoModel.__name__[0].lower() +
-                                    djangoModel.__name__[1:])
+            attributeNameInModel = (
+                djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
+            )
         allNames = [
             x.__getattribute__(attributeNameInModel)
             for x in djangoModel.objects.all()
         ]
 
         # get the closest match
-        listOfClosestMatches = difflib.get_close_matches(categoryString,
-                                                         allNames,
-                                                         n=1,
-                                                         cutoff=0.8)
+        listOfClosestMatches = difflib.get_close_matches(
+            categoryString, allNames, n=1, cutoff=0.8
+        )
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
         else:
-            if (djangoModel.__name__ != "Subproject"
-                    and djangoModel.__name__ != "Norm"):
+            if (
+                djangoModel.__name__ != "Subproject"
+                and djangoModel.__name__ != "Norm"
+            ):
                 try:
                     newlyCreatedRow = djangoModel.objects.create(
-                        **{attributeNameInModel: categoryString})
+                        **{attributeNameInModel: categoryString}
+                    )
                 except:
                     breakpoint()
                 self.stdout.write(
@@ -1176,13 +1276,15 @@ class Command(BaseCommand):
                 )
                 return newlyCreatedRow.__getattribute__(attributeNameInModel)
 
-    def _iterateThroughListOfStrings(self, listOfStrings: list,
-                                     djangoModel: Model):
+    def _iterateThroughListOfStrings(
+        self, listOfStrings: list, djangoModel: Model
+    ):
         """ """
         listOfModifiedStrings = []
         for curretnCategoryString in listOfStrings:
-            modifiedStr = self._selectNearestMatch(curretnCategoryString,
-                                                   djangoModel)
+            modifiedStr = self._selectNearestMatch(
+                curretnCategoryString, djangoModel
+            )
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 

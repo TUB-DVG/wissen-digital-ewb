@@ -5,16 +5,16 @@ from .models import *
 from .data_import import DataImportApp
 from common.models import DbDiff
 
+
 class TestImportEnargusData(TestCase):
-    """This TestCase-class tests if the import of the enargus data works as expected.
-    """
+    """This TestCase-class tests if the import of the enargus data works as expected."""
 
     def testImportEnargusCSV(self):
         """import the newest enargus-data csv-version and check the
         database afterwards
 
         """
-        
+
         call_command(
             "data_import",
             "project_listing",
@@ -25,16 +25,13 @@ class TestImportEnargusData(TestCase):
             "data_import",
             "project_listing",
             "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv",
-
         )
 
         dbDiffs = DbDiff.objects.all()
         self.assertLessEqual(len(dbDiffs), 2069)
-        
-   def testGetOrCreateAddress(self):
-        """
-        
-        """
+
+    def testGetOrCreateAddress(self):
+        """ """
 
         importObj = DataImportApp("hallo.csv")
 
@@ -47,30 +44,45 @@ class TestImportEnargusData(TestCase):
 
         # create a enargusObj
         oldGrantRecipientObj = GrantRecipient.objects.create(
-            name="TUB DVG",
-            address=oldAdress
+            name="TUB DVG", address=oldAdress
         )
- 
+
         header = ["PLZ_ZWE", "Ort_ZWE", "Land_ZWE", "Adress_ZWE", "Name_ZWE"]
-        row = ["10777", "Berlin", "Deutschland", "FasanenStr. 13", "Max Muster", ]
-        importObj.dictIdentifier = "1" 
- 
-        newAddressObj, created = importObj.getOrCreateAdress(row, header, "zwe", oldAdress)
-        
+        row = [
+            "10777",
+            "Berlin",
+            "Deutschland",
+            "FasanenStr. 13",
+            "Max Muster",
+        ]
+        importObj.dictIdentifier = "1"
+
+        newAddressObj, created = importObj.getOrCreateAdress(
+            row, header, "zwe", oldAdress
+        )
+
         expectedDiffStr = f"{Address}:\n"
-        expectedDiffStr +=  "   address_id: 1 -> 2\n"
+        expectedDiffStr += "   address_id: 1 -> 2\n"
         expectedDiffStr += "    plz: 10123 -> 10777\n"
-        expectedDiffStr += "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        expectedDiffStr += (
+            "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        )
 
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
-    
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
+
     def testGetOrCreateGrantRecipient(self):
-        """
-
-        """
+        """ """
         importObj = DataImportApp("hallo.csv")
         header = ["PLZ_ZWE", "Ort_ZWE", "Land_ZWE", "Adress_ZWE", "Name_ZWE"]
-        row = ["10777", "Berlin", "Deutschland", "FasanenStr. 13", "Max Muster", ]
+        row = [
+            "10777",
+            "Berlin",
+            "Deutschland",
+            "FasanenStr. 13",
+            "Max Muster",
+        ]
 
         oldAdress = Address.objects.create(
             plz="10123",
@@ -84,65 +96,78 @@ class TestImportEnargusData(TestCase):
             name="Maxime Muster",
             address=oldAdress,
         )
-        importObj.dictIdentifier = "1" 
+        importObj.dictIdentifier = "1"
 
-        newGrantRecipientObj, created = importObj.getOrCreateGrantRecipient(row, header, oldGrantRecipientObj)
+        newGrantRecipientObj, created = importObj.getOrCreateGrantRecipient(
+            row, header, oldGrantRecipientObj
+        )
         expectedDiffStr = f"{Address}:\n"
-        expectedDiffStr +=  "   address_id: 1 -> 2\n"
+        expectedDiffStr += "   address_id: 1 -> 2\n"
         expectedDiffStr += "    plz: 10123 -> 10777\n"
-        expectedDiffStr += "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        expectedDiffStr += (
+            "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        )
 
-       
         expectedDiffStr += f"{GrantRecipient}:\n"
         expectedDiffStr += f"grantRecipient_id: {oldGrantRecipientObj.grantRecipient_id} -> {newGrantRecipientObj.grantRecipient_id}\n"
         expectedDiffStr += f"name: {oldGrantRecipientObj.name} -> {newGrantRecipientObj.name}\n"
         expectedDiffStr += f"address: {oldGrantRecipientObj.address.address_id} -> {newGrantRecipientObj.address.address_id}\n"
-        
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
- 
-    def testgetOrCreateExecutingEntity(self):
-        """
 
-        """
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
+
+    def testgetOrCreateExecutingEntity(self):
+        """ """
         importObj = DataImportApp("hallo.csv")
 
         header = ["PLZ_AS", "Ort_AS", "Land_AS", "Adress_AS", "Name_AS"]
-        row = ["12345", "Brandenburg", "Deutschland", "Mecklenburgische Str. 12a", "ABC Gmbh"]
-        
+        row = [
+            "12345",
+            "Brandenburg",
+            "Deutschland",
+            "Mecklenburgische Str. 12a",
+            "ABC Gmbh",
+        ]
+
         oldAdress = Address.objects.create(
             plz="10123",
             location="Berlin",
             state="Deutschland",
             address="Müller-Breslau-Str. 11",
         )
-        
 
         oldExecutingEntityObj = ExecutingEntity.objects.create(
             name="CDE Gmbh",
             address=oldAdress,
         )
-        importObj.dictIdentifier = "1" 
+        importObj.dictIdentifier = "1"
 
-        newExecutingEntityObj, created = importObj.getOrCreateExecutingEntity(row, header, oldExecutingEntityObj)
+        newExecutingEntityObj, created = importObj.getOrCreateExecutingEntity(
+            row, header, oldExecutingEntityObj
+        )
         newAddress = newExecutingEntityObj.address
         expectedDiffStr = f"{Address}:\n"
         expectedDiffStr += f"   address_id: {oldAdress.address_id} -> {newAddress.address_id}\n"
         expectedDiffStr += f"    plz: {oldAdress.plz} -> {newAddress.plz}\n"
-        expectedDiffStr += f"   location: {oldAdress.location} -> {newAddress.location}\n"
-        expectedDiffStr += f"    address: {oldAdress.address} -> {newAddress.address}\n"
+        expectedDiffStr += (
+            f"   location: {oldAdress.location} -> {newAddress.location}\n"
+        )
+        expectedDiffStr += (
+            f"    address: {oldAdress.address} -> {newAddress.address}\n"
+        )
 
-       
         expectedDiffStr += f"{ExecutingEntity}:\n"
         expectedDiffStr += f"executingEntity_id: {oldExecutingEntityObj.executingEntity_id} -> {newExecutingEntityObj.executingEntity_id}\n"
         expectedDiffStr += f"name: {oldExecutingEntityObj.name} -> {newExecutingEntityObj.name}\n"
         expectedDiffStr += f"address: {oldExecutingEntityObj.address.address_id} -> {newExecutingEntityObj.address.address_id}\n"
-        
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
+
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
 
     def testGetOrCreateRAndDPlanningCategory(self):
-        """
-
-        """
+        """ """
         importObj = DataImportApp("hallo.csv")
 
         header = ["Leistungsplan_Sys_Text", "Leistungsplan_Sys_Nr"]
@@ -152,20 +177,21 @@ class TestImportEnargusData(TestCase):
             rAndDPlanningCategoryNumber="1265g",
             rAndDPlanningCategoryText="Qlter Text",
         )
-        importObj.dictIdentifier = "1" 
+        importObj.dictIdentifier = "1"
 
-        newRandDObj, created = importObj.getOrCreateRAndDPlanningCategory(row, header, rAnDObj)
+        newRandDObj, created = importObj.getOrCreateRAndDPlanningCategory(
+            row, header, rAnDObj
+        )
         expectedDiffStr = f"{RAndDPlanningCategory}:\n"
-        expectedDiffStr += f"   rAndDPlanningCategoryNumber: {rAnDObj.rAndDPlanningCategoryNumber} -> {newRandDObj.rAndDPlanningCategoryNumber}\n" 
-        expectedDiffStr += f"   rAndDPlanningCategoryText: {rAnDObj.rAndDPlanningCategoryText} -> {newRandDObj.rAndDPlanningCategoryText}\n" 
+        expectedDiffStr += f"   rAndDPlanningCategoryNumber: {rAnDObj.rAndDPlanningCategoryNumber} -> {newRandDObj.rAndDPlanningCategoryNumber}\n"
+        expectedDiffStr += f"   rAndDPlanningCategoryText: {rAnDObj.rAndDPlanningCategoryText} -> {newRandDObj.rAndDPlanningCategoryText}\n"
 
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
-
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
 
     def testGetOrCreatePerson(self):
-        """
-
-        """
+        """ """
         importObj = DataImportApp("hallo.csv")
 
         header = ["Name_pl", "Vorname_pl", "Titel_pl", "Email_pl"]
@@ -177,26 +203,38 @@ class TestImportEnargusData(TestCase):
             title="",
             email="m.meier@berlin.de",
         )
-        importObj.dictIdentifier = "1" 
+        importObj.dictIdentifier = "1"
 
-        newPersonObj, created = importObj.getOrCreatePerson(row, header, oldPersonObj)
+        newPersonObj, created = importObj.getOrCreatePerson(
+            row, header, oldPersonObj
+        )
         expectedDiffStr = f"{Person}:\n"
-        expectedDiffStr += f"   person_id: {oldPersonObj.person_id} -> {newPersonObj.person_id}\n" 
-        expectedDiffStr += f"   surname: {oldPersonObj.surname} -> {newPersonObj.surname}\n" 
-        expectedDiffStr += f"   firstName: {oldPersonObj.firstName} -> {newPersonObj.firstName}\n" 
-        expectedDiffStr += f"   title: {oldPersonObj.title} -> {newPersonObj.title}\n" 
-        expectedDiffStr += f"   email: {oldPersonObj.email} -> {newPersonObj.email}\n" 
+        expectedDiffStr += f"   person_id: {oldPersonObj.person_id} -> {newPersonObj.person_id}\n"
+        expectedDiffStr += (
+            f"   surname: {oldPersonObj.surname} -> {newPersonObj.surname}\n"
+        )
+        expectedDiffStr += f"   firstName: {oldPersonObj.firstName} -> {newPersonObj.firstName}\n"
+        expectedDiffStr += (
+            f"   title: {oldPersonObj.title} -> {newPersonObj.title}\n"
+        )
+        expectedDiffStr += (
+            f"   email: {oldPersonObj.email} -> {newPersonObj.email}\n"
+        )
 
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
 
-    
     def testGetOrCreateFurtherFundingInformation(self):
-        """
-
-        """
+        """ """
         importObj = DataImportApp("hallo.csv")
 
-        header = ["Bundesministerium", "Projekttraeger", "Foerderprogramm", "Forschungsprogramm"]
+        header = [
+            "Bundesministerium",
+            "Projekttraeger",
+            "Foerderprogramm",
+            "Forschungsprogramm",
+        ]
         row = ["BMWK", "PTJ", "EWB", "New Test Project"]
 
         oldTestObj, created = FurtherFundingInformation.objects.get_or_create(
@@ -205,47 +243,50 @@ class TestImportEnargusData(TestCase):
             researchProgram="EnergieWEndeBauen",
             fundingProgram="Test-Project",
         )
-        importObj.dictIdentifier = "1" 
-        newFundingObj, created = importObj.getOrCreateFurtherFundingInformation(row, header, oldTestObj)
+        importObj.dictIdentifier = "1"
+        newFundingObj, created = importObj.getOrCreateFurtherFundingInformation(
+            row, header, oldTestObj
+        )
         expectedDiffStr = f"{FurtherFundingInformation}:\n"
-        expectedDiffStr += f"   furtherFundingInformation_id: {oldTestObj.furtherFundingInformation_id} -> {newFundingObj.furtherFundingInformation_id}\n" 
-        expectedDiffStr += f"   researchProgram: {oldTestObj.researchProgram} -> {newFundingObj.researchProgram}\n" 
-        expectedDiffStr += f"   fundingProgram: {oldTestObj.fundingProgram} -> {newFundingObj.fundingProgram}\n" 
+        expectedDiffStr += f"   furtherFundingInformation_id: {oldTestObj.furtherFundingInformation_id} -> {newFundingObj.furtherFundingInformation_id}\n"
+        expectedDiffStr += f"   researchProgram: {oldTestObj.researchProgram} -> {newFundingObj.researchProgram}\n"
+        expectedDiffStr += f"   fundingProgram: {oldTestObj.fundingProgram} -> {newFundingObj.fundingProgram}\n"
 
-        self.assertEqual(importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", ""))
+        self.assertEqual(
+            importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
+        )
 
     def testGetOrCreate(self):
-        """Test if a difference string is created, which includes all connected tables.
-        """
+        """Test if a difference string is created, which includes all connected tables."""
         header = [
             "FKZ",
-            "Laufzeitbeginn", 
-            "Laufzeitende", 
-            "Thema", 
-            "Verbundbezeichung", 
-            "Foerdersumme_EUR", 
+            "Laufzeitbeginn",
+            "Laufzeitende",
+            "Thema",
+            "Verbundbezeichung",
+            "Foerdersumme_EUR",
             "Kurzbeschreibung_de",
             "Kurzbeschreibung_en",
             "Datenbank",
-            "Bundesministerium", 
-            "Projekttraeger", 
-            "Foerderprogramm", 
+            "Bundesministerium",
+            "Projekttraeger",
+            "Foerderprogramm",
             "Forschungsprogramm",
-            "Name_pl", 
-            "Vorname_pl", 
-            "Titel_pl", 
+            "Name_pl",
+            "Vorname_pl",
+            "Titel_pl",
             "Email_pl",
-            "Leistungsplan_Sys_Text", 
+            "Leistungsplan_Sys_Text",
             "Leistungsplan_Sys_Nr",
-            "PLZ_AS", 
-            "Ort_AS", 
-            "Land_AS", 
-            "Adress_AS", 
+            "PLZ_AS",
+            "Ort_AS",
+            "Land_AS",
+            "Adress_AS",
             "Name_AS",
-            "PLZ_ZWE", 
-            "Ort_ZWE", 
-            "Land_ZWE", 
-            "Adress_ZWE", 
+            "PLZ_ZWE",
+            "Ort_ZWE",
+            "Land_ZWE",
+            "Adress_ZWE",
             "Name_ZWE",
         ]
 
@@ -274,13 +315,13 @@ class TestImportEnargusData(TestCase):
             "Deutschland",  # Land_AS
             "Godesberger Allee 90",  # Adress_AS
             "Energie Institut",  # Name_AS
-            "10777", 
-            "Berlin", 
-            "Deutschland", 
-            "FasanenStr. 13", 
+            "10777",
+            "Berlin",
+            "Deutschland",
+            "FasanenStr. 13",
             "Max Muster",
         ]
-        
+
         importObj = DataImportApp("test.xlsx")
 
         rAnDObj = RAndDPlanningCategory.objects.create(
@@ -288,11 +329,13 @@ class TestImportEnargusData(TestCase):
             rAndDPlanningCategoryText="Qlter Text",
         )
 
-        oldFurtherFundingObj, created = FurtherFundingInformation.objects.get_or_create(
-            fundedBy="BMWK",
-            projectManagementAgency="PTJ",
-            researchProgram="EnergieWEndeBauen",
-            fundingProgram="Test-Project",
+        oldFurtherFundingObj, created = (
+            FurtherFundingInformation.objects.get_or_create(
+                fundedBy="BMWK",
+                projectManagementAgency="PTJ",
+                researchProgram="EnergieWEndeBauen",
+                fundingProgram="Test-Project",
+            )
         )
         oldPersonObj, created = Person.objects.get_or_create(
             surname="Meier",
@@ -309,17 +352,15 @@ class TestImportEnargusData(TestCase):
 
         # create a enargusObj
         oldGrantRecipientObj = GrantRecipient.objects.create(
-            name="TUB DVG",
-            address=oldAdress
+            name="TUB DVG", address=oldAdress
         )
-        
+
         oldAdressExecutingEntity = Address.objects.create(
             plz="10123",
             location="Berlin",
             state="Deutschland",
             address="Müller-Breslau-Str. 11",
         )
-        
 
         oldExecutingEntityObj = ExecutingEntity.objects.create(
             name="CDE Gmbh",
@@ -344,20 +385,25 @@ class TestImportEnargusData(TestCase):
 
         subproject = Subproject.objects.create(
             referenceNumber_id=row[header.index("FKZ")],
-            enargusData=oldEnargusObj
+            enargusData=oldEnargusObj,
         )
 
         newEnargusObj = importObj.getOrCreate(row, header, [])
         breakpoint()
-        self.assertTrue("<class 'project_listing.models.Address'>" in importObj.diffStr)
-        self.assertTrue("<class 'project_listing.models.ExecutingEntity'>" in importObj.diffStr)
-        self.assertTrue("<class 'project_listing.models.RAndDPlanningCategory'>" in importObj.diffStr)
-       
-    
-    def testWriteDiffStr(self):
-        """Test if a created diffStr is correctly written to the database.
+        self.assertTrue(
+            "<class 'project_listing.models.Address'>" in importObj.diffStr
+        )
+        self.assertTrue(
+            "<class 'project_listing.models.ExecutingEntity'>"
+            in importObj.diffStr
+        )
+        self.assertTrue(
+            "<class 'project_listing.models.RAndDPlanningCategory'>"
+            in importObj.diffStr
+        )
 
-        """
+    def testWriteDiffStr(self):
+        """Test if a created diffStr is correctly written to the database."""
 
         diffStr = """
 <class 'project_listing.models.Address'>:
@@ -400,7 +446,7 @@ class TestImportEnargusData(TestCase):
    executingEntity: 1 -> 2
    appropriatedBudget: 100000.00 -> 5000000.0
         """
-        
+
         diffDictStr = {"12345": diffStr}
         importObj = DataImportApp("hallo.csv")
         importObj.diffStrDict = diffDictStr

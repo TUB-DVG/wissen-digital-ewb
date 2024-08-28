@@ -1,6 +1,7 @@
 """
 
 """
+
 import time
 import os
 import unittest
@@ -25,13 +26,15 @@ except:
     pass
 os.environ["TMPDIR"] = temp_dir
 
+
 class WebDriverSetup(unittest.TestCase):
     PATH_TO_TRANSLATION_FILE = "../../../01_application/webcentral_app/locale/"
 
     ECOLOGICAL_COLOR = "rgb(108, 200, 118)"
     GLOBAL_COLOR = "rgb(120, 117, 117)"
-    TECHNICAL_COLOR = "rgb(143, 171, 247)" 
-    OPERATIONAL_COLOR = "rgb(244, 151, 131)" 
+    TECHNICAL_COLOR = "rgb(143, 171, 247)"
+    OPERATIONAL_COLOR = "rgb(244, 151, 131)"
+
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
         The headles browser instance is a firefox-instance and has the
@@ -44,11 +47,11 @@ class WebDriverSetup(unittest.TestCase):
         firefoxOptions.add_argument("start-maximised")
         # firefoxOptions.add_argument("--width=1920")
         # firefoxOptions.add_argument("--height=1080")
-        
+
         if os.environ.get("HEADLESS") == "1":
             # firefoxOptions.headless = True
-            
-            firefoxOptions.add_argument('--headless')
+
+            firefoxOptions.add_argument("--headless")
         self.driver = webdriver.Firefox(options=firefoxOptions)
         # self.driver.implicitly_wait(10)
         # if os.environ.get("HEADLESS") != "1":
@@ -65,8 +68,7 @@ class WebDriverSetup(unittest.TestCase):
         """Scroll the element into the view of the browser-window."""
         window_height = self.driver.execute_script("return window.innerHeight")
         middle_y_coordinate = element.location["y"] - (window_height / 2)
-        self.driver.execute_script(
-            f"window.scrollTo(0, {middle_y_coordinate})")
+        self.driver.execute_script(f"window.scrollTo(0, {middle_y_coordinate})")
         time.sleep(1)
 
     def scrollElementIntoViewAndClickIt(self, element):
@@ -102,15 +104,17 @@ class WebDriverSetup(unittest.TestCase):
     def getLanguage(self):
         """Get the language of the page."""
 
-        element = self.driver.find_element(By.XPATH,
-                                           "//select[@name='language']")
+        element = self.driver.find_element(
+            By.XPATH, "//select[@name='language']"
+        )
         return element.get_attribute("value")
 
     def checkIfImageIsDisplayed(self, image):
         """Check if the image is displayed."""
         naturalWidth = image.get_attribute("naturalWidth")
-        self.assertNotEqual(naturalWidth, "0",
-                            "Image is not displayed, only alt-text is shown")
+        self.assertNotEqual(
+            naturalWidth, "0", "Image is not displayed, only alt-text is shown"
+        )
 
     def checkIfSvgIsDisplayed(self, svgElement):
         try:
@@ -182,8 +186,9 @@ class WebDriverSetup(unittest.TestCase):
         self._setLanguageToEnglish()
         funcHandler(translationsDict["en"])
 
-    def checkIfElementIsTranslated(self, language, elementText,
-                                   translationDict):
+    def checkIfElementIsTranslated(
+        self, language, elementText, translationDict
+    ):
         """Change the language of the page and check if the language is changed."""
         if language == "en":
             self._setLanguageToGerman()
@@ -212,22 +217,24 @@ class WebDriverSetup(unittest.TestCase):
         if currentFocus is None:
             currentFocus = "undefined"
         for icon in listOfIcons:
-            self.assertTrue(icon.text == "", "No alt text should be present for icon")
-            srcOfImage =  icon.get_attribute("src")
+            self.assertTrue(
+                icon.text == "", "No alt text should be present for icon"
+            )
+            srcOfImage = icon.get_attribute("src")
             if currentFocus in srcOfImage:
                 self.assertTrue("_no.svg" not in srcOfImage)
             else:
                 self.assertTrue("_no.svg" in srcOfImage)
 
     def checkPageTitle(self, germanTitle, englishTitle):
-        """Test if the page title on the english and german version of the app is 
+        """Test if the page title on the english and german version of the app is
         as expected.
 
         germanTitle:    str
             The german title as a string.
         englishTitle:   str
             The english title of the page as a string.
-        
+
         Returns:
             None
         """
@@ -239,15 +246,11 @@ class WebDriverSetup(unittest.TestCase):
         self.assertEqual(self.driver.title, germanTitle)
 
     def waitUntilPageIsLoaded(self, elementId=None):
-        """Explicitly wait until page is loaded.
+        """Explicitly wait until page is loaded."""
 
-        """
-        
         wait = WebDriverWait(self.driver, timeout=10)
         if elementId is None:
             wait.until(EC.presence_of_element_located((By.XPATH, "//div")))
 
-        else:    
-            wait.until(EC.presence_of_element_located((By.ID, f'{elementId}')))
-        
-
+        else:
+            wait.until(EC.presence_of_element_located((By.ID, f"{elementId}")))

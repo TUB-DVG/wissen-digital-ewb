@@ -23,8 +23,9 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    weatherdata = (Weatherdata.objects.all()
-                   )  # reads all data from table Teilprojekt
+    weatherdata = (
+        Weatherdata.objects.all()
+    )  # reads all data from table Teilprojekt
     filtered_by = [None] * 2
     searched = None
 
@@ -62,18 +63,14 @@ def index(request):
     page = weatherdata_paginator.get_page(pageNum)
 
     context = {
-        "page":
-        page,
-        "search":
-        searched,
+        "page": page,
+        "search": searched,
         # "kategorie":
         # filtered_by[0],
         # "lizenz":
         # filtered_by[1],
-        "nameOfTemplate":
-        "weatherdata",
-        "urlName":
-        "publicationPage",
+        "nameOfTemplate": "weatherdata",
+        "urlName": "publicationPage",
         "optionList": [
             {
                 "placeholder": _("Kategorie"),
@@ -85,22 +82,18 @@ def index(request):
                 "filter": filtered_by[0],
             },
             {
-                "placeholder":
-                _("Lizenz"),
+                "placeholder": _("Lizenz"),
                 "objects": [
                     _("Frei nutzbar"),
                     "Open Data",
                     "CC BY 4.0",
                     _("MIT-Lizenz"),
                 ],
-                "fieldName":
-                "license",
-                "filter":
-                filtered_by[1],
+                "fieldName": "license",
+                "filter": filtered_by[1],
             },
         ],
-        "focusBorder":
-        "technical",
+        "focusBorder": "technical",
     }
     if filtering:
         return render(
@@ -108,8 +101,9 @@ def index(request):
             "weatherdata_over/weatherdata-listings-results.html",
             context,
         )
-    return render(request, "weatherdata_over/data-service-listings.html",
-                  context)
+    return render(
+        request, "weatherdata_over/data-service-listings.html", context
+    )
 
 
 def weatherdata_view(request, id):
@@ -127,10 +121,12 @@ def weatherdata_view(request, id):
 
     weatherdata = get_object_or_404(Weatherdata, pk=id)
 
-    letztes_update = UpdateProperties("bi bi-patch-exclamation-fill",
-                                      "letztes Update", "text-danger")
-    laufende_updates = UpdateProperties("fas fa-sync", "Updates",
-                                        "text-success")
+    letztes_update = UpdateProperties(
+        "bi bi-patch-exclamation-fill", "letztes Update", "text-danger"
+    )
+    laufende_updates = UpdateProperties(
+        "fas fa-sync", "Updates", "text-success"
+    )
 
     # changing labels and icon
     update_properties = letztes_update

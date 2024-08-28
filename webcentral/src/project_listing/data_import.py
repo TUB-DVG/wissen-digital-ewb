@@ -1,6 +1,7 @@
 from .models import *
 from common.data_import import DataImport
 
+
 class DataImportApp(DataImport):
     DJANGO_APP = "project_listing"
     DJANGO_MODEL = "Subproject"
@@ -8,8 +9,7 @@ class DataImportApp(DataImport):
         # "ueberschrift__en": "heading_en",
         # "text__en": "text_en",
         # "tags__en": "tags_en",
-    }   
-    
+    }
 
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -22,33 +22,36 @@ class DataImportApp(DataImport):
             Represents the file-path to the Data-File (xlsx or csv).
         """
         super().__init__(path_to_data_file)
-    
+
     def getOrCreate(self, row: list, header: list, data: list) -> None:
         """
         Add entry Subproject into the table or/and return entry key.
         """
-       
+
         # get the subproject for the enargus dataset:
 
         self.dictIdentifier = row[header.index("FKZ")]
         subprojectObj, created = self.getOrCreateSubproject(header, row)
-        
 
         enargusObj = None
         if created == False:
             enargusObj = subprojectObj.enargusData
             self.diffStrDict[subprojectObj.referenceNumber_id] = ""
-        
-        
-        objGrantRecipient, _ = self.getOrCreateGrantRecipient(row, header, getattr(enargusObj, "objGrantRecipient", None))
-        objExecEntity, _ = self.getOrCreateExecutingEntity(row, header, getattr(enargusObj, "executingEntity", None))
+
+        objGrantRecipient, _ = self.getOrCreateGrantRecipient(
+            row, header, getattr(enargusObj, "objGrantRecipient", None)
+        )
+        objExecEntity, _ = self.getOrCreateExecutingEntity(
+            row, header, getattr(enargusObj, "executingEntity", None)
+        )
         objRAndDPlanning, _ = self.getOrCreateRAndDPlanningCategory(
-            row, header, getattr(enargusObj, "rAndDPlanningCategory", None))
-        objPerson, _ = self.getOrCreatePerson(row, header, getattr(enargusObj, "projectLead", None))
+            row, header, getattr(enargusObj, "rAndDPlanningCategory", None)
+        )
+        objPerson, _ = self.getOrCreatePerson(
+            row, header, getattr(enargusObj, "projectLead", None)
+        )
         objFurtherFunding, _ = self.getOrCreateFurtherFundingInformation(
-            row,
-            header,
-            getattr(enargusObj, "furtherFundingInformation", None)
+            row, header, getattr(enargusObj, "furtherFundingInformation", None)
         )
 
         durationBegin = row[header.index("Laufzeitbeginn")]
@@ -74,14 +77,17 @@ class DataImportApp(DataImport):
             shortDescriptionEn=shortDescriptionEn,
             database=database,
         )
-        
+
         subprojectObj.enargusData = obj
         subprojectObj.save()
-        
+
         if enargusObj is not None:
             self._compareDjangoOrmObj(Enargus, enargusObj, obj)
 
-        if enargusObj is not None and self.diffStrDict[self.dictIdentifier] != "":
+        if (
+            enargusObj is not None
+            and self.diffStrDict[self.dictIdentifier] != ""
+        ):
             self._writeDiffStrToDB()
 
         return obj, created
@@ -131,12 +137,13 @@ class DataImportApp(DataImport):
             name=nameFromCSV,
             address=objAnsZwe,
         )
-        
-        if oldRecipientObj is not None:
-            self._compareDjangoOrmObj(GrantRecipient, oldRecipientObj, newGrantRecipientObj)
-        
-        return newGrantRecipientObj, created
 
+        if oldRecipientObj is not None:
+            self._compareDjangoOrmObj(
+                GrantRecipient, oldRecipientObj, newGrantRecipientObj
+            )
+
+        return newGrantRecipientObj, created
 
     def getOrCreateExecutingEntity(self, row, header, oldExecutingEntityObj):
         """Gets or Creates an object of type ExecutingEntity from row
@@ -171,23 +178,22 @@ class DataImportApp(DataImport):
             name=nameFromCSV,
             address=objAnsAs,
         )
-        
+
         if oldExecutingEntityObj is not None:
-            self._compareDjangoOrmObj(ExecutingEntity, oldExecutingEntityObj, newExecutingEntityObj)
+            self._compareDjangoOrmObj(
+                ExecutingEntity, oldExecutingEntityObj, newExecutingEntityObj
+            )
 
         return newExecutingEntityObj, created
 
     def getOrCreateSubproject(self, header, row):
-        """
-
-        """
+        """ """
         referernceNumberId = row[header.index("FKZ")]
         obj, created = Subproject.objects.get_or_create(
             referenceNumber_id=referernceNumberId,
         )
 
         return obj, created
-
 
     def getOrCreateRAndDPlanningCategory(
         self,
@@ -224,7 +230,7 @@ class DataImportApp(DataImport):
             rAndDPlanningCategoryNumber=idFromCSV,
             rAndDPlanningCategoryText=textFromCSV,
         )
-        
+
         if oldRandDobj is not None:
             self._compareDjangoOrmObj(RAndDPlanningCategory, oldRandDobj, obj)
 
@@ -312,9 +318,11 @@ class DataImportApp(DataImport):
             researchProgram=researchProgram,
             fundingProgram=supportProgram,
         )
-        
+
         if oldFundingObj is not None:
-            self._compareDjangoOrmObj(FurtherFundingInformation, oldFundingObj, obj)
+            self._compareDjangoOrmObj(
+                FurtherFundingInformation, oldFundingObj, obj
+            )
 
         return obj, created
 
@@ -367,10 +375,8 @@ class DataImportApp(DataImport):
             state=country,
             address=adress,
         )
-        
+
         if oldObj is not None:
             self._compareDjangoOrmObj(Address, oldObj, obj)
 
         return obj, created
-
-

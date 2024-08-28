@@ -24,8 +24,9 @@ class SessionExpiration:
         now = datetime.now()
 
         # Calculate the end of the day
-        end_of_day = datetime.combine(now.date() + timedelta(days=1),
-                                      datetime.min.time())
+        end_of_day = datetime.combine(
+            now.date() + timedelta(days=1), datetime.min.time()
+        )
 
         # Calculate the number of seconds until the end of the day
         seconds_until_end_of_day = (end_of_day - now).total_seconds()

@@ -33,7 +33,6 @@ def _defineContextForView():
         "backLinkText": _("Übersicht Methoden Nutzendenintegration"),
         "backLink": "userEngagement",
         "leftColumn": "user_integration/userEngagementDetailsLeftColumn.html",
-        "rightColumn":
-        "user_integration/userEngagementDetailsRightColumn.html",
+        "rightColumn": "user_integration/userEngagementDetailsRightColumn.html",
         "imageQuickLinks": False,
     }

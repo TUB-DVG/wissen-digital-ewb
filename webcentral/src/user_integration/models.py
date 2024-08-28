@@ -3,6 +3,7 @@ from django.template import Template, Context
 
 from common.models import Literature
 
+
 class ProArgument(models.Model):
     proArgument = models.TextField()
 
@@ -43,16 +44,18 @@ class UserEngagement(models.Model):
     conductedBy = models.CharField(max_length=255, blank=True, null=True)
     successFactors = models.TextField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)
-    procedureItem = models.ManyToManyField("ProcedureItem", null=True, blank=True)
+    procedureItem = models.ManyToManyField(
+        "ProcedureItem", null=True, blank=True
+    )
     # specificGoals = models.TextField(blank=True, null=True)
     # specificProcedure = models.ManyToManyField("SpecificProcedureItem",
     #    null=True,
     #    blank=True)
     proArgument = models.ManyToManyField(ProArgument, blank=True, null=True)
     conArgument = models.ManyToManyField(ConArgument, blank=True, null=True)
-    participantObservations = models.CharField(max_length=255,
-                                               blank=True,
-                                               null=True)
+    participantObservations = models.CharField(
+        max_length=255, blank=True, null=True
+    )
     persons = models.CharField(max_length=255, blank=True, null=True)
     imageIcon = models.CharField(max_length=255, blank=True, null=True)
     imageIconSelected = models.CharField(max_length=255, blank=True, null=True)
@@ -92,8 +95,8 @@ class ProcedureItem(models.Model):
 
     def procedureItemRendered(self):
         """This method should be called, when the procedureItem attribute of a
-            object of type ProcedureItem is called. It renders the text inside the
-            object as a django-template.
+        object of type ProcedureItem is called. It renders the text inside the
+        object as a django-template.
         """
         template = Template(self._procedureItem)
         context = Context({})

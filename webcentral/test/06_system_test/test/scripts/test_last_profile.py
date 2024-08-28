@@ -2,6 +2,7 @@
 from the outside/from a enduser perspective using selenium-webdriver.
 
 """
+
 import datetime
 import gettext
 import glob
@@ -15,7 +16,6 @@ sys.path.append(sys.path[0] + "/...")
 
 from selenium import (
     webdriver,
-
 )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
@@ -37,26 +37,25 @@ from Src.PageObject.Pages.CurrentLoadApproximation import (
 from Src.PageObject.Pages.HeatApproximation import HeatApproximation
 from Src.PageObject.Pages.cookieBanner import CookieBanner
 
-class TestLastProfile(WebDriverSetup):
-    """Tests the 'Lastapproximation'-Tab
-    
-    """
-    
-    def testTranslationOfHeatLoadApp(self):
-        """Test if the Heat-Load-Approximation is translated correctly
 
-        """
+class TestLastProfile(WebDriverSetup):
+    """Tests the 'Lastapproximation'-Tab"""
+
+    def testTranslationOfHeatLoadApp(self):
+        """Test if the Heat-Load-Approximation is translated correctly"""
 
         lastprofilePage = Lastprofile(self.driver)
 
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         language = self.getLanguage()
-        self.checkNavBar("technical") 
+        self.checkNavBar("technical")
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
         self.scrollElementIntoView(linkToHeatApprox)
         linkTextToHeatApprox = linkToHeatApprox.text
-        
-        translationObj = gettext.translation("django", self.PATH_TO_TRANSLATION_FILE, ["de", "en"])
+
+        translationObj = gettext.translation(
+            "django", self.PATH_TO_TRANSLATION_FILE, ["de", "en"]
+        )
         translatedString = translationObj.gettext(linkTextToHeatApprox)
         self.assertEqual(
             translatedString,
@@ -69,7 +68,7 @@ class TestLastProfile(WebDriverSetup):
         currentAproxObj = HeatApproximation(self.driver)
 
         currentAproxObj.switchToIFrame()
-        
+
         # here an explicit sleeping time is needed, since the translation needs some time.
         time.sleep(1)
         headingElement = currentAproxObj.getHeadingOfPage()
@@ -88,14 +87,15 @@ class TestLastProfile(WebDriverSetup):
             )
 
     def testLastprofileApprox(self):
-        """Clicks on 'Approximation der Stromlast' and tests the tool
-        
-        """
+        """Clicks on 'Approximation der Stromlast' and tests the tool"""
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
         self.checkNavBar("technical")
         lastProfileLink = lastprofilePage.getLinkToStromlastTool()
-        self.driver.execute_script("var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));", lastProfileLink)
+        self.driver.execute_script(
+            "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));",
+            lastProfileLink,
+        )
         time.sleep(1)
         lastProfileLink.click()
 
@@ -107,28 +107,28 @@ class TestLastProfile(WebDriverSetup):
 
         currentApproObj = CurrentLoadApproximation(self.driver)
         cookieBannerObj = CookieBanner(self.driver)
-        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self.scrollElementIntoViewAndClickIt(
+            cookieBannerObj.getCookieAcceptanceButton()
+        )
         self._setLanguageToGerman()
         currentApproObj.switchToIFrame()
         headingElement = currentApproObj.getHeadingOfPage()
-        
+
         self.assertEqual(
             headingElement.text,
             "Stromlast Approximation",
             "Heading Title should be Stromlast Approximation, but its not!",
         )
-        
+
     def testHeatApproximation(self):
-        """Tests if 'Heat Approximation' is reachable
-        
-        """
+        """Tests if 'Heat Approximation' is reachable"""
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
         self.checkNavBar("technical")
         linkToHeatApprox = lastprofilePage.getLinkForHeatApproxTool()
 
         cookieBanner = CookieBanner(self.driver)
-        cookieBannerButn = cookieBanner.getCookieAcceptanceButton()  
+        cookieBannerButn = cookieBanner.getCookieAcceptanceButton()
         time.sleep(2)
         cookieBannerButn.click()
 
@@ -136,14 +136,17 @@ class TestLastProfile(WebDriverSetup):
         try:
             actions.move_to_element(linkToHeatApprox).perform()
         except MoveTargetOutOfBoundsException as e:
-            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", linkToHeatApprox)
+            self.driver.execute_script(
+                "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+                linkToHeatApprox,
+            )
         time.sleep(1)
         # cookieBannerObj = CookieBanner(self.driver)
         # cookieBannerObj.getCookieAcceptanceButton().click()
         time.sleep(1)
         self.driver.save_screenshot("ss.png")
         linkToHeatApprox.click()
-        
+
         self.checkPageTitle(
             "Waermelastprofil",
             "Thermal load profile",
@@ -154,31 +157,32 @@ class TestLastProfile(WebDriverSetup):
         self._setLanguageToGerman()
         currentApproObj.switchToIFrame()
         headingElement = currentApproObj.getHeadingOfPage()
-        
+
         self.assertEqual(
             headingElement.text,
             "Wärmelast Approximation",
             "Heading Title should be Wärmelast Approximation, but its not!",
         )
 
-    
     def testLinksOnSite(self):
-        """Tests, if the links present on the website lead to the right websites.
-        
-        """
+        """Tests, if the links present on the website lead to the right websites."""
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/")
         lastprofilePage = Lastprofile(self.driver)
         cookieBannerObj = CookieBanner(self.driver)
-        self.scrollElementIntoViewAndClickIt(cookieBannerObj.getCookieAcceptanceButton())
+        self.scrollElementIntoViewAndClickIt(
+            cookieBannerObj.getCookieAcceptanceButton()
+        )
         weatherServiceLink = lastprofilePage.getWeatherServiceLink()
 
         actions = ActionChains(self.driver)
         try:
             actions.move_to_element(weatherServiceLink).perform()
         except MoveTargetOutOfBoundsException as e:
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", weatherServiceLink)
+            self.driver.execute_script(
+                "arguments[0].scrollIntoView(true);", weatherServiceLink
+            )
         time.sleep(1)
-        
+
         weatherServiceLink.click()
         time.sleep(3)
         self.driver.switch_to.window(self.driver.window_handles[-1])
@@ -201,9 +205,7 @@ class TestLastProfile(WebDriverSetup):
         )
 
     def testDataLoadsOnStromlast(self):
-        """Test the Stromlast App, if a graph is loaded.
-        
-        """
+        """Test the Stromlast App, if a graph is loaded."""
         self.driver.get(os.environ["siteUnderTest"] + "/LastProfile/stromlast")
         lastprofilePage = Lastprofile(self.driver)
 
@@ -211,21 +213,29 @@ class TestLastProfile(WebDriverSetup):
         iframeElement = lastprofilePage.getPlotlyIFrame()
         self.driver.switch_to.frame(iframeElement)
 
-        selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
+        selectPlaceholderToHoverOver = (
+            lastprofilePage.getReactSelectPlaceholder()
+        )
         actions = ActionChains(self.driver)
         actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
 
         openedSelectElement = lastprofilePage.getOpenedReactSelect()
-        getElementToBeSelected = random.choice(openedSelectElement.text.split("\n")[1:])
+        getElementToBeSelected = random.choice(
+            openedSelectElement.text.split("\n")[1:]
+        )
 
-        optionToClick = lastprofilePage.getReactOptionFromText(selectPlaceholderToHoverOver, getElementToBeSelected)
+        optionToClick = lastprofilePage.getReactOptionFromText(
+            selectPlaceholderToHoverOver, getElementToBeSelected
+        )
         optionToClick.click()
 
         listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
         radioElementToClick = random.choice(listOfRadioButtons)
         radioElementToClick.click()
 
-        inputFieldPowerRequirement = lastprofilePage.getInputFieldPowerRequirement()
+        inputFieldPowerRequirement = (
+            lastprofilePage.getInputFieldPowerRequirement()
+        )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
         time.sleep(3)
@@ -249,7 +259,7 @@ class TestLastProfile(WebDriverSetup):
 
         # files.sort(key=lambda x: os.path.getmtime(x))
         # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
-        
+
         # lastModified = os.path.getmtime(files[-1])
-        
+
         # self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")

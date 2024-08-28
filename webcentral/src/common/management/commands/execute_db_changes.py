@@ -32,6 +32,7 @@ connected to the fkz is deleted (keepCurrent = false) and the
 foreign-key of the CSV-Dataset is set for the fkz 
 (keepPending = true).
 """
+
 import yaml
 from encodings import utf_8
 
@@ -43,34 +44,31 @@ from tools_over.models import Tools
 class Command(BaseCommand):
     """Defines Django user-defined Command.
 
-    This Class defines a user-defined Django-Admin Command, which can 
-    be executed with the Django `manage.py`. On execution, the 
-    `manage.py` calls the `handle`-method of this class and passes 
-    the as argument specified path to the .yaml-file inside the 
+    This Class defines a user-defined Django-Admin Command, which can
+    be executed with the Django `manage.py`. On execution, the
+    `manage.py` calls the `handle`-method of this class and passes
+    the as argument specified path to the .yaml-file inside the
     options-dict into the method.
-    Inside the .yaml-file serialiazed python objects of type 
+    Inside the .yaml-file serialiazed python objects of type
     `DatabaseDifference` are located. The pyyaml-package constructs
     a list of `DatabaseDifference`-objects from the yaml-file.
     On each object, the executeAction-method is called, which executes
-    the user-specified action on the database-conflict, if it is 
+    the user-specified action on the database-conflict, if it is
     consitent.
     """
 
     def __init__(self):
-        """
-        
-        """
+        """ """
         self.listOfToBeDeletedObjs = []
 
-
     def handle(
-            self, 
-            *args: tuple, 
-            **options: dict,
-        ) -> None:
+        self,
+        *args: tuple,
+        **options: dict,
+    ) -> None:
         """Called from Django, when executing Class as Django-Command.
 
-        This method gets called by the manage.py, when executing the 
+        This method gets called by the manage.py, when executing the
         Django-Admin-Command:
         ```
             python3 manage.py execute_db_changes pathToYAMLFile.yaml
@@ -78,10 +76,10 @@ class Command(BaseCommand):
 
         Parameters: tuple
         *args:   tuple of optional parameters, which is unpacked with
-            * operator.     
+            * operator.
         **options:  dict
             optional parameters in key:value format.
-        
+
         Returns:
         None
         """
@@ -89,11 +87,12 @@ class Command(BaseCommand):
         listOfParsedConflicts = self.parseFile(pathDiffFile)
         for databaseDiffObj in listOfParsedConflicts:
             if databaseDiffObj.checkIfUserInputIsValid():
-                tupleOrNone = databaseDiffObj.checkIfConflictIsConsistentWithDatabase()
+                tupleOrNone = (
+                    databaseDiffObj.checkIfConflictIsConsistentWithDatabase()
+                )
                 if tupleOrNone is not None:
                     self.executeAction(
-                        tupleOrNone, 
-                        databaseDiffObj.differencesSortedByTable
+                        tupleOrNone, databaseDiffObj.differencesSortedByTable
                     )
 
         for objToBeDeleted in self.listOfToBeDeletedObjs:
@@ -113,63 +112,61 @@ class Command(BaseCommand):
             else:
                 pdb.set_trace()
 
-
     def add_arguments(
-            self, 
-            parser,
-        ) -> None:
-        """Called by Django, when parsing the CLI-Call 
+        self,
+        parser,
+    ) -> None:
+        """Called by Django, when parsing the CLI-Call
 
         This method gets called by Django, when it parses the command-
-        line-execution of the user-defined Django-Admin-Command and 
-        additional arguments are present. The additional argument 
+        line-execution of the user-defined Django-Admin-Command and
+        additional arguments are present. The additional argument
         is then parsed to string and given to the options-parameter
         in the handle-method.
 
         Parameters:
         parser: django-obj
-            object, which parses the CLI-Input. 
-        
+            object, which parses the CLI-Input.
+
         Returns:
         None
         """
-        parser.add_argument('pathDiffFile', nargs='+', type=str) 
+        parser.add_argument("pathDiffFile", nargs="+", type=str)
 
-    
     def executeAction(
-            self, 
-            listOfDatabaseObjs: list,
-            diffDataStructure: dict,
-        ) -> None:
+        self,
+        listOfDatabaseObjs: list,
+        diffDataStructure: dict,
+    ) -> None:
         """Executes the user-specified Action for a Dataset-Conflict.
-        
-        This method executes an valid user-specified Action from 
+
+        This method executes an valid user-specified Action from
         the database Difference Logfile. Therefore it gets a list with
-        all needed objects, which where extracted by the parseConflict 
-        method. Depending on the specified action the current state is 
-        kept and the pending state deleted from the database 
-        (optionCurrent == 1) or the pending state is set as the new 
-        dataset, while the old dataset is deleted from the database 
-        (else-branch). 
-        For the Schlagwortregister-Case special-code has to be 
+        all needed objects, which where extracted by the parseConflict
+        method. Depending on the specified action the current state is
+        kept and the pending state deleted from the database
+        (optionCurrent == 1) or the pending state is set as the new
+        dataset, while the old dataset is deleted from the database
+        (else-branch).
+        For the Schlagwortregister-Case special-code has to be
         executed, to check if the `Keyword` is used by another
         tuple of type `KeywordRegisterFirstReview`.
 
         Parameters:
         listOfDatabaseObj:  list(obj)
-            list of different objects, which are needed to solve the 
+            list of different objects, which are needed to solve the
             database conflict.
         diffDataStructure:  dict
-            Nested Dictionary containing all Differences, sorted 
+            Nested Dictionary containing all Differences, sorted
             by Table.
-        
+
         Returns:
         None
         """
-        
-        optionCurrent = listOfDatabaseObjs[0]  
+
+        optionCurrent = listOfDatabaseObjs[0]
         currentStateObj = listOfDatabaseObjs[1]
-        pendingObj = listOfDatabaseObjs[2]   
+        pendingObj = listOfDatabaseObjs[2]
         currentStateRow = listOfDatabaseObjs[3]
         nameOfFieldRelatesToTable = listOfDatabaseObjs[4]
         if optionCurrent:
@@ -188,42 +185,66 @@ class Command(BaseCommand):
                                 pass
 
                 self.listOfToBeDeletedObjs.append(pendingObj)
-        
+
         else:
             if isinstance(currentStateObj, Tools):
                 currentStateObj.name = pendingObj.name
                 currentStateObj.shortDescription = pendingObj.shortDescription
-                currentStateObj.applicationArea.set(pendingObj.applicationArea.select_related())
+                currentStateObj.applicationArea.set(
+                    pendingObj.applicationArea.select_related()
+                )
                 currentStateObj.usage.set(pendingObj.usage.select_related())
-                currentStateObj.lifeCyclePhase.set(pendingObj.lifeCyclePhase.select_related())
-                currentStateObj.userInterface.set(pendingObj.userInterface.select_related())
-                currentStateObj.targetGroup.set(pendingObj.targetGroup.select_related())
+                currentStateObj.lifeCyclePhase.set(
+                    pendingObj.lifeCyclePhase.select_related()
+                )
+                currentStateObj.userInterface.set(
+                    pendingObj.userInterface.select_related()
+                )
+                currentStateObj.targetGroup.set(
+                    pendingObj.targetGroup.select_related()
+                )
                 currentStateObj.lastUpdate = pendingObj.lastUpdate
                 currentStateObj.license = pendingObj.license
                 currentStateObj.licenseNotes = pendingObj.licenseNotes
-                currentStateObj.furtherInformation = pendingObj.furtherInformation
+                currentStateObj.furtherInformation = (
+                    pendingObj.furtherInformation
+                )
                 currentStateObj.alternatives = pendingObj.alternatives
-                currentStateObj.specificApplication.set(pendingObj.specificApplication.select_related())
+                currentStateObj.specificApplication.set(
+                    pendingObj.specificApplication.select_related()
+                )
                 currentStateObj.released = pendingObj.released
                 currentStateObj.releasedPlanned = pendingObj.releasedPlanned
                 currentStateObj.yearOfRelease = pendingObj.yearOfRelease
                 currentStateObj.resources = pendingObj.resources
                 currentStateObj.developmentState = pendingObj.developmentState
-                currentStateObj.programmingLanguages = pendingObj.programmingLanguages
-                currentStateObj.frameworksLibraries = pendingObj.frameworksLibraries
+                currentStateObj.programmingLanguages = (
+                    pendingObj.programmingLanguages
+                )
+                currentStateObj.frameworksLibraries = (
+                    pendingObj.frameworksLibraries
+                )
                 currentStateObj.databaseSystem = pendingObj.databaseSystem
                 currentStateObj.scale.set(pendingObj.scale.select_related())
-                currentStateObj.technicalStandardsNorms.set(pendingObj.technicalStandardsNorms.select_related())
-                currentStateObj.technicalStandardsProtocols.set(pendingObj.technicalStandardsProtocols.select_related())
+                currentStateObj.technicalStandardsNorms.set(
+                    pendingObj.technicalStandardsNorms.select_related()
+                )
+                currentStateObj.technicalStandardsProtocols.set(
+                    pendingObj.technicalStandardsProtocols.select_related()
+                )
                 currentStateObj.provider = pendingObj.provider
-                currentStateObj.userInterfaceNotes = pendingObj.userInterfaceNotes
+                currentStateObj.userInterfaceNotes = (
+                    pendingObj.userInterfaceNotes
+                )
                 currentStateObj.focus.set(pendingObj.focus.select_related())
-                currentStateObj.classification.set(pendingObj.classification.select_related())
+                currentStateObj.classification.set(
+                    pendingObj.classification.select_related()
+                )
                 currentStateObj.save()
                 pendingObj.delete()
             else:
                 currentStateObj.__setattr__(
-                    nameOfFieldRelatesToTable.name, 
+                    nameOfFieldRelatesToTable.name,
                     pendingObj,
                 )
                 currentStateObj.save()
@@ -239,11 +260,10 @@ class Command(BaseCommand):
                         if parent == "KeywordRegisterFirstReview":
                             pass
 
-
     def parseFile(
-            self, 
-            filename: str,
-        ) -> list:
+        self,
+        filename: str,
+    ) -> list:
         """Parses the given .YAML-file to a list of DatabaseDifference-objects.
 
         Parameters:
@@ -252,26 +272,16 @@ class Command(BaseCommand):
 
         Returns:
         listOfParsedConflicts:  list
-            List of parsed Database-Conflicts, represented as 
+            List of parsed Database-Conflicts, represented as
             database-Difference Objects.
-        
+
         """
         listOfParsedConflicts = []
         with open(filename, "r") as stream:
-            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                stream, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.postprocessAfterReadIn()
                 listOfParsedConflicts.append(databaseDifferenceObj)
 
         return listOfParsedConflicts
-
-
-
-
-
-
-
-
-
-
-
-

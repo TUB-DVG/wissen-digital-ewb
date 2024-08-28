@@ -5,22 +5,27 @@ import pandas as pd
 from django.db.models import Model
 from django.db import models
 from django.apps import apps
-from django.db.models import ForeignKey, OneToOneField, ManyToManyField, ManyToManyRel, ManyToOneRel
+from django.db.models import (
+    ForeignKey,
+    OneToOneField,
+    ManyToManyField,
+    ManyToManyRel,
+    ManyToOneRel,
+)
 
 from user_integration.models import Literature
 from common.models import DbDiff
 
+
 class DataImport:
     def __init__(self, path_to_data_file):
-        """Constructor of the Base-DataImport-class.
-
-        """
+        """Constructor of the Base-DataImport-class."""
         self.path_to_file = path_to_data_file
         self.diffStr = ""
         self.diffStrDict = {}
-        
+
     def importList(self, header, data) -> None:
-        """Iterate over the list of databases-tuples and call 
+        """Iterate over the list of databases-tuples and call
         `getOrCreate()` on each of them.
 
         header: list
@@ -36,24 +41,23 @@ class DataImport:
             self.getOrCreate(row, header, data)
 
     def load(self):
-        """load csv/excel-file
-
-        """
+        """load csv/excel-file"""
         # if its a excel file, check if 2 sheets are present:
         if self.path_to_file.endswith(".csv"):
             header, data = self.readCSV()
             return header, data
         elif self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
-            
+
             return header, data
         else:
             raise CommandError(
-                "Invalid file format. Please provide a .csv or .xlsx file.")
+                "Invalid file format. Please provide a .csv or .xlsx file."
+            )
 
     def readExcel(
-            self,
-        ) -> tuple:
+        self,
+    ) -> tuple:
         """This method reads the excel-file, and loads the content into
         the two variables header and data.
 
@@ -67,20 +71,46 @@ class DataImport:
             list, containing the rows from the excel-file.
         """
         try:
-            dfGermanEnglish = pd.read_excel(self.path_to_file, sheet_name=["German", "English"])
+            dfGermanEnglish = pd.read_excel(
+                self.path_to_file, sheet_name=["German", "English"]
+            )
             germanEnglish = True
         except:
             df = pd.read_excel(self.path_to_file)
             germanEnglish = False
         if germanEnglish:
-            if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
-                for index, german_column in enumerate(dfGermanEnglish["German"].columns):
-                    if german_column == dfGermanEnglish["English"].columns[index]:
-                            dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(columns={dfGermanEnglish["English"].columns[index]: dfGermanEnglish["English"].columns[index] + "__en"})
-                df_concatenated = pd.concat([dfGermanEnglish["English"], dfGermanEnglish["German"]], axis=1, ignore_index=True)
-                df_concatenated.columns = list(dfGermanEnglish["English"].columns) + list(dfGermanEnglish["German"].columns)
+            if len(
+                dfGermanEnglish["English"] == len(dfGermanEnglish["German"])
+            ):
+                for index, german_column in enumerate(
+                    dfGermanEnglish["German"].columns
+                ):
+                    if (
+                        german_column
+                        == dfGermanEnglish["English"].columns[index]
+                    ):
+                        dfGermanEnglish["English"] = dfGermanEnglish[
+                            "English"
+                        ].rename(
+                            columns={
+                                dfGermanEnglish["English"]
+                                .columns[index]: dfGermanEnglish["English"]
+                                .columns[index]
+                                + "__en"
+                            }
+                        )
+                df_concatenated = pd.concat(
+                    [dfGermanEnglish["English"], dfGermanEnglish["German"]],
+                    axis=1,
+                    ignore_index=True,
+                )
+                df_concatenated.columns = list(
+                    dfGermanEnglish["English"].columns
+                ) + list(dfGermanEnglish["German"].columns)
             else:
-                print("German and english sheets dont have the same number of rows. Only using the german elements and skipping the translation.")
+                print(
+                    "German and english sheets dont have the same number of rows. Only using the german elements and skipping the translation."
+                )
                 df_concatenated = dfGermanEnglish["German"]
 
         else:
@@ -91,16 +121,13 @@ class DataImport:
         data = df.values.tolist()
         return header, data
 
-
     def readCSV(self):
-        """
-
-        """
+        """ """
         with open(self.path_to_file, "r") as fh:
             csvReader = csv.reader(fh, delimiter=";")
             header = next(csvReader)
             data = [row for row in csvReader]
-    
+
         return header, data
 
     def _correctReadInValue(self, readInString):
@@ -137,8 +164,9 @@ class DataImport:
                 readInString = readInString[:-1]
             return readInString
 
-    def _selectNearestMatch(self, categoryString: str,
-                            djangoModel: Model) -> str:
+    def _selectNearestMatch(
+        self, categoryString: str, djangoModel: Model
+    ) -> str:
         """Return closest match for categoryString in djangoModel
 
         This method returns the closest match for `categoryString` in `djangoModel`
@@ -163,26 +191,29 @@ class DataImport:
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
         else:
-            attributeNameInModel = (djangoModel.__name__[0].lower() +
-                                    djangoModel.__name__[1:])
+            attributeNameInModel = (
+                djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
+            )
         allNames = [
             x.__getattribute__(attributeNameInModel)
             for x in djangoModel.objects.all()
         ]
 
         # get the closest match
-        listOfClosestMatches = difflib.get_close_matches(categoryString,
-                                                         allNames,
-                                                         n=1,
-                                                         cutoff=0.8)
+        listOfClosestMatches = difflib.get_close_matches(
+            categoryString, allNames, n=1, cutoff=0.8
+        )
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
         else:
-            if (djangoModel.__name__ != "Subproject"
-                    and djangoModel.__name__ != "Norm"):
+            if (
+                djangoModel.__name__ != "Subproject"
+                and djangoModel.__name__ != "Norm"
+            ):
                 try:
                     newlyCreatedRow = djangoModel.objects.create(
-                        **{attributeNameInModel: categoryString})
+                        **{attributeNameInModel: categoryString}
+                    )
                 except:
                     breakpoint()
                 print(
@@ -190,13 +221,15 @@ class DataImport:
                 )
                 return newlyCreatedRow.__getattribute__(attributeNameInModel)
 
-    def _iterateThroughListOfStrings(self, listOfStrings: list,
-                                     djangoModel: Model):
+    def _iterateThroughListOfStrings(
+        self, listOfStrings: list, djangoModel: Model
+    ):
         """ """
         listOfModifiedStrings = []
         for curretnCategoryString in listOfStrings:
-            modifiedStr = self._selectNearestMatch(curretnCategoryString,
-                                                   djangoModel)
+            modifiedStr = self._selectNearestMatch(
+                curretnCategoryString, djangoModel
+            )
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 
@@ -210,8 +243,8 @@ class DataImport:
         return returnList
 
     def _buildLiteratureIdentifier(self, literatureElement: str) -> str:
-        """build a identifer of the litrature element, which can be used 
-        in the HTML to point from the literature reference to the literature list 
+        """build a identifer of the litrature element, which can be used
+        in the HTML to point from the literature reference to the literature list
         on the end of the page.
 
         """
@@ -230,10 +263,9 @@ class DataImport:
     def _importLiterature(self, literatureElements: str):
         """Import literature elements from csv/excel into `Literature`-
         model.
-        
+
         """
-        literatureList = self._processListInput(literatureElements,
-                                                ";;")
+        literatureList = self._processListInput(literatureElements, ";;")
         literatureObjsList = []
         for literature in literatureList:
             if literature.startswith("<sup"):
@@ -245,7 +277,7 @@ class DataImport:
                 linkName=litIdentifier,
             )
             literatureObjsList.append(objCreated)
-        
+
         return literatureObjsList
 
     def _checkIfOnlyContainsSpaces(self, inputStr):
@@ -263,11 +295,9 @@ class DataImport:
             True, if the inputStr only contains whitespaces, otherwise False.
         """
         return all(x.isspace() for x in inputStr)
-    
-    def _importEnglishTranslation(self, obj, header, row, mapping: dict):
-        """
 
-        """
+    def _importEnglishTranslation(self, obj, header, row, mapping: dict):
+        """ """
         modelObj = apps.get_model(self.DJANGO_APP, self.DJANGO_MODEL)
         modelAttrs = [field.name for field in modelObj._meta.get_fields()]
         for mappingKey in mapping.keys():
@@ -275,51 +305,65 @@ class DataImport:
             attrName = englishModelAttr.replace("_en", "")
             modelAttr = modelObj._meta.get_field(attrName)
             headerAttrName = mappingKey.replace("__en", "")
-            
+
             if isinstance(modelAttr, models.ManyToManyField):
-                obj = self._importEnglishManyToManyRel(obj, header, row, headerAttrName, attrName)
+                obj = self._importEnglishManyToManyRel(
+                    obj, header, row, headerAttrName, attrName
+                )
             elif isinstance(modelAttr, models.ForeignKey):
-                obj = self._importEnglishForeignKeyRel(obj, header, row, headerAttrName, attrName)
+                obj = self._importEnglishForeignKeyRel(
+                    obj, header, row, headerAttrName, attrName
+                )
             else:
-                obj = self._importEnglishAttr(obj, header, row, headerAttrName, attrName)
-        
+                obj = self._importEnglishAttr(
+                    obj, header, row, headerAttrName, attrName
+                )
+
         obj.save()
         return obj
-    
-    def _importEnglishForeignKeyRel(self, ormObj, header, row, headerExcel, dbAttr):
-        """Import a english translation for a attribute, which is a ForeignKey-Relation
 
-        """
+    def _importEnglishForeignKeyRel(
+        self, ormObj, header, row, headerExcel, dbAttr
+    ):
+        """Import a english translation for a attribute, which is a ForeignKey-Relation"""
         foreignElement = getattr(ormObj, dbAttr)
         englishTranslation = row[header.index(headerExcel + "__en")]
         if getattr(foreignElement, dbAttr + "_en") is None:
             setattr(foreignElement, dbAttr + "_en", englishTranslation)
-            foreignElement.save() 
+            foreignElement.save()
         return ormObj
 
-    def _importEnglishManyToManyRel(self, ormObj, header, row, headerExcel, dbAttr):
-        """
+    def _importEnglishManyToManyRel(
+        self, ormObj, header, row, headerExcel, dbAttr
+    ):
+        """ """
+        germanManyToManyStr = self._processListInput(
+            row[header.index(headerExcel)], ";;"
+        )
+        englishManyToManyStr = self._processListInput(
+            row[header.index(f"{headerExcel}__en")], ";;"
+        )
 
-        """
-        germanManyToManyStr = self._processListInput(row[header.index(headerExcel)], ";;")
-        englishManyToManyStr = self._processListInput(row[header.index(f"{headerExcel}__en")], ";;")
-       
         elementsForAttr = getattr(ormObj, dbAttr).all()
         for ormRelObj in elementsForAttr:
-            for indexInGerList, germanyManyToManyElement in enumerate(germanManyToManyStr):
+            for indexInGerList, germanyManyToManyElement in enumerate(
+                germanManyToManyStr
+            ):
                 if germanyManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
                         try:
-                            setattr(ormRelObj, f"{dbAttr}_en", englishManyToManyStr[indexInGerList])
+                            setattr(
+                                ormRelObj,
+                                f"{dbAttr}_en",
+                                englishManyToManyStr[indexInGerList],
+                            )
                         except:
                             breakpoint()
-                        ormRelObj.save() 
+                        ormRelObj.save()
         return ormObj
 
     def _importEnglishAttr(self, ormObj, header, row, headerExcel, dbAttr):
-        """
-
-        """
+        """ """
         englishTranslation = row[header.index(f"{headerExcel}__en")]
         setattr(ormObj, f"{dbAttr}_en", englishTranslation)
 
@@ -333,27 +377,34 @@ class DataImport:
         for headerItem in header:
             if "__en" in headerItem:
                 return True
-        
+
         return False
 
     def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
-        """Compares 2 django orm objects of same model-type and creates a diff str.
+        """Compares 2 django orm objects of same model-type and creates a diff str."""
 
-        """
-        
         diffStrModelName = str(modelType) + ":\n"
         diffStr = ""
         fields = modelType._meta.get_fields()
-        
+
         for field in fields:
-            
-            if not isinstance(field, (ForeignKey, OneToOneField, ManyToManyField, ManyToOneRel, ManyToManyRel)):
+
+            if not isinstance(
+                field,
+                (
+                    ForeignKey,
+                    OneToOneField,
+                    ManyToManyField,
+                    ManyToOneRel,
+                    ManyToManyRel,
+                ),
+            ):
                 oldValue = getattr(oldObj, field.name)
                 newValue = getattr(newObj, field.name)
                 if oldValue != newValue:
                     if isinstance(oldValue, str):
-                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
-                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                        oldValueWithoutNewLine = oldValue.replace("\n", "<br>")
+                        newValueWithoutNewLine = newValue.replace("\n", "<br>")
                     else:
                         oldValueWithoutNewLine = oldValue
                         newValueWithoutNewLine = newValue
@@ -361,29 +412,31 @@ class DataImport:
 
             elif isinstance(field, ForeignKey):
                 oldValueReference = getattr(oldObj, field.name)
-                oldValue = getattr(oldValueReference, field.foreign_related_fields[0].name)
-                
-                newValueReference =  getattr(newObj, field.name)
-                newValue = getattr(newValueReference, field.foreign_related_fields[0].name)
+                oldValue = getattr(
+                    oldValueReference, field.foreign_related_fields[0].name
+                )
+
+                newValueReference = getattr(newObj, field.name)
+                newValue = getattr(
+                    newValueReference, field.foreign_related_fields[0].name
+                )
                 if oldValue != newValue:
                     if isinstance(oldValue, str):
-                        oldValueWithoutNewLine = oldValue.replace('\n', '<br>')
-                        newValueWithoutNewLine = newValue.replace('\n', '<br>')
+                        oldValueWithoutNewLine = oldValue.replace("\n", "<br>")
+                        newValueWithoutNewLine = newValue.replace("\n", "<br>")
                     else:
                         oldValueWithoutNewLine = oldValue
                         newValueWithoutNewLine = newValue
                     diffStr += f"   {field.name}: {oldValueWithoutNewLine} -> {newValueWithoutNewLine}\n"
-       
+
         if diffStr != "":
             diffStr = diffStrModelName + diffStr + ";;"
         self.diffStrDict[self.dictIdentifier] += diffStr
 
     def _writeDiffStrToDB(self):
-        """
-
-        """
+        """ """
 
         DbDiff.objects.create(
-                identifier=self.dictIdentifier,
-                diffStr=self.diffStrDict[self.dictIdentifier]
-            )
+            identifier=self.dictIdentifier,
+            diffStr=self.diffStrDict[self.dictIdentifier],
+        )

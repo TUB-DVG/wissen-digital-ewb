@@ -9,6 +9,7 @@ from tools_over.models import (
 from component_list.models import Component
 from TechnicalStandards.models import Protocol
 
+
 def getFocusObjectFromGetRequest(focusStr) -> Focus:
     """Get the focus object from the get request."""
     englishFocus = Focus.objects.filter(focus_en=focusStr)
@@ -40,7 +41,9 @@ def createQ(filterElements):
         for filterValue in filterElement["filterValues"]:
             for key in list(filterElement.keys()):
                 if "filterName" in key:
-                    searchFilterForOneFilter |= Q(**{filterElement[key]: filterValue})
+                    searchFilterForOneFilter |= Q(
+                        **{filterElement[key]: filterValue}
+                    )
         # breakpoint()
         complexSearchFilter &= searchFilterForOneFilter
     return complexSearchFilter
@@ -98,18 +101,18 @@ def comparison(request):
                 "displayedStr": _("Energieverbrauch Nutzung (aktiv; in W)"),
             },
             {
-                "dbLocator":
-                "energyConsumptionUsePhasePassive",
-                "isManyToManyField":
-                False,
-                "displayedStr":
-                _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
+                "dbLocator": "energyConsumptionUsePhasePassive",
+                "isManyToManyField": False,
+                "displayedStr": _(
+                    "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
+                ),
             },
             {
                 "dbLocator": "globalWarmingPotentialProduction",
                 "isManyToManyField": False,
-                "displayedStr":
-                _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
+                "displayedStr": _(
+                    "Treibhauspotenzial (Herstellung; in kg CO2-e)"
+                ),
             },
             {
                 "dbLocator": "globalWarmingPotentialUsePhase",
@@ -119,8 +122,9 @@ def comparison(request):
             {
                 "dbLocator": "globalWarmingPotentialEndOfLife",
                 "isManyToManyField": False,
-                "displayedStr":
-                _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
+                "displayedStr": _(
+                    "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
+                ),
             },
             {
                 "dbLocator": "furtherInformationNotes",
@@ -179,8 +183,9 @@ def comparison(request):
             {
                 "dbLocator": "scale",
                 "isManyToManyField": True,
-                "displayedStr":
-                _("Räumliche Größenordnung der Anwendungsfälle"),
+                "displayedStr": _(
+                    "Räumliche Größenordnung der Anwendungsfälle"
+                ),
             },
             {
                 "dbLocator": "accessibility",
@@ -198,13 +203,14 @@ def comparison(request):
                 "displayedStr": _("Lizenz"),
             },
             {
-                "dbLocator":
-                "developmentState",
-                "isManyToManyField":
-                False,
-                "displayedStr":
-                _("Entwicklungsstand") + " - 1: pre-Alpha" + " - 2: Alpha" +
-                " - 3: Beta" + " - 4: Release Canidate" + " - 5: Released",
+                "dbLocator": "developmentState",
+                "isManyToManyField": False,
+                "displayedStr": _("Entwicklungsstand")
+                + " - 1: pre-Alpha"
+                + " - 2: Alpha"
+                + " - 3: Beta"
+                + " - 4: Release Canidate"
+                + " - 5: Released",
             },
             {
                 "dbLocator": "yearOfRelease",
@@ -274,8 +280,7 @@ def comparison(request):
             {
                 "dbLocator": "range",
                 "isManyToManyField": False,
-                "displayedStr":
-                _("Reichweite"),
+                "displayedStr": _("Reichweite"),
             },
             {
                 "dbLocator": "dataModelArchitecture",
@@ -293,19 +298,16 @@ def comparison(request):
                 "displayedStr": _("Priorität"),
             },
             {
-                "dbLocator":
-                "osiLayers",
-                "isManyToManyField":
-                False,
-                "displayedStr":
-                _("Implementierte OSI-Schichten"),
+                "dbLocator": "osiLayers",
+                "isManyToManyField": False,
+                "displayedStr": _("Implementierte OSI-Schichten"),
             },
             {
                 "dbLocator": "buildingAutomationLayer",
                 "isManyToManyField": False,
                 "displayedStr": _("Ebenen der Gebäudeautomation"),
             },
-        ]   
+        ]
     else:
         return render(request, "404.html")
 
@@ -318,24 +320,16 @@ def comparison(request):
         objectsToCompare.append(objectToCompare)
 
     context = {
-        "objectsToCompare":
-        objectsToCompare,
-        "attributesToCompare":
-        attributesToCompare,
-        "explanaitionText":
-        "",
-        "backLinkText":
-        backLinkText,
-        "imageInBackButton":
-        imgBackButtonPath,
+        "objectsToCompare": objectsToCompare,
+        "attributesToCompare": attributesToCompare,
+        "explanaitionText": "",
+        "backLinkText": backLinkText,
+        "imageInBackButton": imgBackButtonPath,
         # "backLinkColor":
         # backLinkColor,
-        "backLink":
-        backLinkPath,
-        "focusBorder":
-        focusBorder,
-        "heading":
-        headingOfSite,
+        "backLink": backLinkPath,
+        "focusBorder": focusBorder,
+        "heading": headingOfSite,
     }
     templateName = "common/comparisonResults.html"
     return render(request, templateName, context)

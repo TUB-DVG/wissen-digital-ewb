@@ -6,12 +6,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0005_component_globalwarmingpotentialprodsup_and_more'),
+        (
+            "component_list",
+            "0005_component_globalwarmingpotentialprodsup_and_more",
+        ),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='component',
-            name='operationTimeSup',
+            model_name="component",
+            name="operationTimeSup",
         ),
     ]

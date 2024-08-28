@@ -1,5 +1,5 @@
 from modeltranslation.translator import (
-    translator, 
+    translator,
     TranslationOptions,
 )
 
@@ -16,25 +16,31 @@ from .models import (
     UserInterface,
 )
 
+
 class ApplicationAreaTranslationOptions(TranslationOptions):
     fields = ("applicationArea",)
+
 
 class ClassificationTranslationOptions(TranslationOptions):
     fields = ("classification",)
 
+
 class FocusTranslationOptions(TranslationOptions):
     fields = ("focus",)
+
 
 class UsageTranslationOptions(TranslationOptions):
     fields = ("usage",)
 
+
 class TargetGroupTranslationOptions(TranslationOptions):
     fields = ("targetGroup",)
+
 
 class ToolsTranslationOptions(TranslationOptions):
     fields = (
         # "name",
-        "shortDescription", 
+        "shortDescription",
         "userInterfaceNotes",
         "lastUpdate",
         "licenseNotes",
@@ -43,17 +49,22 @@ class ToolsTranslationOptions(TranslationOptions):
         "yearOfRelease",
     )
 
+
 class LifeCyclePhaseTranslationOptions(TranslationOptions):
     fields = ("lifeCyclePhase",)
+
 
 class UserInterfaceTranslationOptions(TranslationOptions):
     fields = ("userInterface",)
 
+
 class AccessibilityTranslationOptions(TranslationOptions):
     fields = ("accessibility",)
 
+
 class ScaleTranslationOptions(TranslationOptions):
     fields = ("scale",)
+
 
 translator.register(Accessibility, AccessibilityTranslationOptions)
 translator.register(ApplicationArea, ApplicationAreaTranslationOptions)

@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -100,7 +102,7 @@ class ComparisonPageSection(GenericPageObject):
             )
         except:
             return None
-    
+
     def getResetButtonLink(self):
         return self.driver.find_element(
             By.XPATH,

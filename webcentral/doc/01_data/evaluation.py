@@ -23,24 +23,26 @@ import xml.etree.ElementTree as et
 
 import pandas as pd
 
+
 class EvaluationUtils:
     """Wrapper for all helper-functions for Evaluation
 
-    This class acts as a wrapper for helper-functions needed in the 
+    This class acts as a wrapper for helper-functions needed in the
     `pre_module.py` and `pre_enargus.py`.
-    
+
     """
+
     @staticmethod
     def readCSV2Dataframe(
-            filePath: str, 
-            seperator: str=',',
+        filePath: str,
+        seperator: str = ",",
     ) -> pd.DataFrame:
         """Reads CSV-File into Pandas-Dataframe.
 
         This Method reads a CSV-file into a Pandas-Dataframe by calling
         the pandas `read_csv`-method. As arguments, it 2 string-
-        variables: The variable `filePath` specifies the path to the 
-        csv-file, while `seperator` specifies the delimiter inside the 
+        variables: The variable `filePath` specifies the path to the
+        csv-file, while `seperator` specifies the delimiter inside the
         csv-file.
 
         Parameters
@@ -50,7 +52,7 @@ class EvaluationUtils:
         seperator:  str
             String, holdinf the delimiter character inside the csv-
             file.
-        
+
         Returns
         -------
         pd.Dataframe
@@ -61,13 +63,13 @@ class EvaluationUtils:
 
     @staticmethod
     def readXLSX(
-            filePath: str, 
-            sheet: str="Sheet1",
+        filePath: str,
+        sheet: str = "Sheet1",
     ) -> pd.DataFrame:
         """Reads spreadsheet into pandas-Dataframe Object.
 
-        This Method reads from a .xlsx-file, which the the path 
-        and filename specified in `filePath` the sheet with the 
+        This Method reads from a .xlsx-file, which the the path
+        and filename specified in `filePath` the sheet with the
         name `sheet` into a pandas-Dataframe object and returns it.
 
         Parameters
@@ -77,26 +79,26 @@ class EvaluationUtils:
         sheet:  str
             String, which specifies the Name of the sheet, to
             be exported.
-        
+
         Returns
         -------
         pd.DataFrame
         """
-        return pd.read_excel(filePath, sheet_name=sheet, engine='openpyxl')
+        return pd.read_excel(filePath, sheet_name=sheet, engine="openpyxl")
 
     @staticmethod
     def writeDataframe2CSV(
-            dataframe: pd.DataFrame, 
-            csvFilename: str, 
-            new: bool=False,
-            anon: bool=True,
+        dataframe: pd.DataFrame,
+        csvFilename: str,
+        new: bool = False,
+        anon: bool = True,
     ) -> None:
-        """Writes pandas DataFrame into .csv-file 
+        """Writes pandas DataFrame into .csv-file
 
         This method writes a pandas DataFrame `dataframe` to a csv-file
-        which name is specified in `csvFilename`. The parameter `new` 
-        controls if a new .csv-file is creted or the data is appended 
-        to the existing file `csvFilename`. 
+        which name is specified in `csvFilename`. The parameter `new`
+        controls if a new .csv-file is creted or the data is appended
+        to the existing file `csvFilename`.
         The delimiter in the .csv is set as `;`
 
         Parameters
@@ -104,12 +106,12 @@ class EvaluationUtils:
         dataframe:  pd.DataFrame
             pandas Dataframe, which is written to `csvFilename`.
         csvFilename:    str
-            String, which olds the name of the .csv-file to which 
+            String, which olds the name of the .csv-file to which
             `dataframe` is written.
         new:    bool
             Optional parameter, which specifies if a new file `csvFilename`
             is created or if `csvFilename` is appended to an existing
-            file. 
+            file.
 
         Returns
         -------
@@ -119,17 +121,17 @@ class EvaluationUtils:
             dataframe = EvaluationUtils._anonymizeDataframe(dataframe)
 
         if new:
-            dataframe.to_csv(csvFilename, index=False, sep=';')
-            print('new file was written: %s' %csvFilename )
+            dataframe.to_csv(csvFilename, index=False, sep=";")
+            print("new file was written: %s" % csvFilename)
         else:
             dataframe.to_csv(
-                csvFilename, 
-                index=False, 
-                sep=';', 
-                header=False, 
-                mode='a',
+                csvFilename,
+                index=False,
+                sep=";",
+                header=False,
+                mode="a",
             )
-            print('data was attached to: %s' %csvFilename )
+            print("data was attached to: %s" % csvFilename)
 
     @staticmethod
     def readDictXML2CSV(pathToFile: str) -> dict:
@@ -138,11 +140,11 @@ class EvaluationUtils:
         This method reads in the parameter file `pathToFile`, which holds
         the mapping betwwen the .csv-columns names and the EnArgus.xml-
         file.
-        
+
         Parameters
         ----------
         pathToFile: str
-            path with filename of the parameter-file, which holds the 
+            path with filename of the parameter-file, which holds the
             mapping.
 
         Returns
@@ -151,7 +153,7 @@ class EvaluationUtils:
         dict, which contains the mapping between the csv.-columns and
         the enargus.xml.
         """
-        with open(pathToFile, newline='') as f:
+        with open(pathToFile, newline="") as f:
             reader = csv.reader(f)
             dict = {}
             lineNumber = 0
@@ -159,15 +161,15 @@ class EvaluationUtils:
                 if lineNumber == 0:
                     pass
                 else:
-                    dict[row[0]]=row[1]
+                    dict[row[0]] = row[1]
                 lineNumber += 1
         return dict
-    
+
     @staticmethod
     def _anonymizeDataframe(dataframe):
         """Anonymize read in Dataframe.
 
-        This method anonyimzes the personal data in the read in xml-file 
+        This method anonyimzes the personal data in the read in xml-file
         to a default dataset.
 
         Parameters
@@ -185,30 +187,29 @@ class EvaluationUtils:
             row["Titel_pl"] = None
             row["Vorname_pl"] = "Robin"
             row["Name_pl"] = "Schmidt"
-            row["Email_pl"] = "Robin.Schmidt@email.de" 
-            
-        return dataframe
+            row["Email_pl"] = "Robin.Schmidt@email.de"
 
+        return dataframe
 
     @staticmethod
     def readGivenColumnsFromCSV(pathToFile: str) -> list:
         """Reads columns from `pathToFile` csv-file.
 
-        This method reads in the columns-names from `pathToFile` csv-file 
+        This method reads in the columns-names from `pathToFile` csv-file
         and returns them as a list of strings.
-        
+
         Parameters
         ----------
         pathToFile: str
             path, including the filename, to the csv-file whose column-
             names should be read into a list.
-         
+
         Returns
         -------
             list
             list of column-names of `pathToFile` csv-file.
         """
-        with open(pathToFile, newline='') as f:
+        with open(pathToFile, newline="") as f:
             reader = csv.reader(f)
             liste = []
             for row in reader:
@@ -217,11 +218,11 @@ class EvaluationUtils:
 
     @staticmethod
     def readXML(
-            pathToFile: str, 
-            columnDict: dict, 
-            columns: list, 
-            namespaces: dict = None,
-        ) -> pd.DataFrame:
+        pathToFile: str,
+        columnDict: dict,
+        columns: list,
+        namespaces: dict = None,
+    ) -> pd.DataFrame:
         """Reads xml-file into pandas DataFrame
 
         This method reads the `pathToFile` xml-file into a pandas
@@ -233,7 +234,7 @@ class EvaluationUtils:
         Parameters
         ----------
         pathToFile: str
-            path and filename of the .xml-file, which should be imported 
+            path and filename of the .xml-file, which should be imported
             as pandas DataFrame.
         columnDict: dict
             Dictionary, which holds the mapping between the columns names
@@ -242,7 +243,7 @@ class EvaluationUtils:
             list of the column-names. has to match, with `columnDict`.
         namesspaces:    dict
             Dictionary, which holds the xml-Namespaces.
-        
+
         Returns
         -------
             pd.DataFrame
@@ -268,9 +269,9 @@ class EvaluationUtils:
 
     @staticmethod
     def readXMLEnargus(
-            path2xml: str, 
-            pathDictXML2CSV: dict, 
-            pathListColumns: list,
+        path2xml: str,
+        pathDictXML2CSV: dict,
+        pathListColumns: list,
     ) -> pd.DataFrame:
         """Reads xml-file into pandas DataFrame
 
@@ -279,7 +280,7 @@ class EvaluationUtils:
         dictionary, which holds the mapping from xml-elements to csv-
         column names and the `pathListColumns`, which holds the column-
         names of the csv-file.
-        
+
         Parameters
         ----------
         path2xml:   str
@@ -295,14 +296,14 @@ class EvaluationUtils:
             pd.DataFrame
         """
         namenspacesEnargus = {
-                '' : "http://www.enargus.de/elements/0.1/begleitforschung/", 
-                'bscw' : "http://bscw.de/bscw/elements/0.1/",
-            }
+            "": "http://www.enargus.de/elements/0.1/begleitforschung/",
+            "bscw": "http://bscw.de/bscw/elements/0.1/",
+        }
         dictXML2CSV = EvaluationUtils.readDictXML2CSV(pathDictXML2CSV)
         listColumns = EvaluationUtils.readGivenColumnsFromCSV(pathListColumns)
         return EvaluationUtils.readXML(
-            path2xml, 
-            dictXML2CSV, 
-            listColumns, 
+            path2xml,
+            dictXML2CSV,
+            listColumns,
             namespaces=namenspacesEnargus,
         )

@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class DataSufficiencyConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'data_sufficiency'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "data_sufficiency"

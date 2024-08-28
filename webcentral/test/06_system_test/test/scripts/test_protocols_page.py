@@ -1,7 +1,9 @@
 """Test the Technical Standarts page
 
 """
+
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -10,7 +12,6 @@ import random
 
 from selenium import (
     webdriver,
-
 )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
@@ -26,16 +27,16 @@ from Src.PageObject.Pages.ProtocolPage import ProtocolPage
 from Src.PageObject.Pages.Pagination import Pagination
 from Src.PageObject.Pages.SearchPage import SearchPage
 
+
 class TestProtocolsPage(WebDriverSetup):
-    """Tests the 'Lastapproximation'-Tab
-    
-    """
+    """Tests the 'Lastapproximation'-Tab"""
+
     def testProtocolsSearchBar(self):
-        """Test the Norm-Search-Input Field 
-        
-        """
-        
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        """Test the Norm-Search-Input Field"""
+
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
 
         protocolPageObj = ProtocolPage(self.driver)
         searchInputField = protocolPageObj.getSearchInputElement()
@@ -43,8 +44,8 @@ class TestProtocolsPage(WebDriverSetup):
         searchInputField.send_keys("BAC")
         searchInputField.send_keys(Keys.RETURN)
         time.sleep(2)
-        cardList = protocolPageObj.getCards() 
-        
+        cardList = protocolPageObj.getCards()
+
         self.assertEqual(
             len(cardList),
             1,
@@ -54,27 +55,30 @@ class TestProtocolsPage(WebDriverSetup):
         searchInputField.clear()
         searchInputField.send_keys(Keys.RETURN)
 
-        cardList = protocolPageObj.getCards() 
+        cardList = protocolPageObj.getCards()
 
         self.assertEqual(
             len(cardList),
             12,
             "Number of Cards should be 12 after deleting the Search-Filter...",
         )
-    
+
     def testClickOnOneofTheCardsShown(self):
-        """Click randomly on one of the cards and check if the right details-page is shown
-        
-        """
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        """Click randomly on one of the cards and check if the right details-page is shown"""
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
         protocolPageObj = ProtocolPage(self.driver)
         cardsOnPage = protocolPageObj.getCards()
 
         randomCard = random.choice(cardsOnPage)
-        
+
         randomCardText = randomCard.text
 
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            randomCard,
+        )
         time.sleep(1)
         randomCard.click()
 
@@ -87,9 +91,10 @@ class TestProtocolsPage(WebDriverSetup):
         )
 
     def testFilteringAndPagination(self):
-        """Test if the pagination works, when selecting an filter from one of the select elements
-        """
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        """Test if the pagination works, when selecting an filter from one of the select elements"""
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
         protocolPageObj = ProtocolPage(self.driver)
         self._setLanguageToGerman()
 
@@ -100,13 +105,17 @@ class TestProtocolsPage(WebDriverSetup):
         chosenSelect = random.choice(multiselectInputs)
         chosenSelect.click()
 
-        divOfOpenedDropDown = self.driver.find_element(By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]")
-        dropdownElements = searchBarPageObj.getDescendantsByTagName(divOfOpenedDropDown, "div")[1:] 
+        divOfOpenedDropDown = self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'dropdown-menu w-100 show')]"
+        )
+        dropdownElements = searchBarPageObj.getDescendantsByTagName(
+            divOfOpenedDropDown, "div"
+        )[1:]
         chosenFilterItem = random.choice(dropdownElements)
         chosenFilterItem.click()
-        
+
         cardsOnPage = protocolPageObj.getCards()
         self.assertTrue(
-            len(cardsOnPage) < 12, "After filtering, the number of list elements should have decreased."
+            len(cardsOnPage) < 12,
+            "After filtering, the number of list elements should have decreased.",
         )
-
