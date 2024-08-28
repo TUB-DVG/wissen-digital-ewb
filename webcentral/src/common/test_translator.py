@@ -144,10 +144,38 @@ class TestTranslator(TestCase):
         """
 
         """
-        call_command("translate", "positive_environmental_impact", "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx", "test_translation.xlsx")
+        call_command("translate", "positive_environmental_impact", "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx", "test_translation_environmental_impact.xlsx")
 
         dataFrameDict = pd.from_excel("test_translation.xlsx", sheet_name=None)
         englishDF = dataFrameDict["English"]
-        self.assertTrue("Category" in englishDF.columns)
-        self.assertTrue("Description" in englishDF.columns)
+        gemanDF = dataFrameDict["German"]
+        
+        fieldsInEnvironImpact = [
+            "Category",
+            "Description",
+            "Name_Digital_Application",
+            "Projektname",
+            "Funding_Label",
+            "Duration",
+            "Partner",
+            "Project_Website",
+            "Consortium",
+            "Further",
+            "Digital_applications",
+            "Goals",
+            "Strategies",
+            "Relevance",
+            "Image",
+            "Problem_Statement_and_Problem_Goals",
+            "Implementation_in_the_Project",
+            "Evaluation",
+            "Project_Name",
+            "Weiterführende Literatur",
+        ]
+        for field in fieldsInEnvironImpact:
+
+            self.assertTrue(field in englishDF.columns)
+            self.assertTrue(field in germanDF.columns)
+    
+        self.assertEqual(len(germanDF.columns), len(englishDF.columns))
 
