@@ -69,6 +69,10 @@ test = [
     "xlsxwriter",
 ]
 
+[tool.pylint]
+ignore-patterns = ["000*"]
+disable = ["R0903"]
+
 [tool.pylint.format]
 max-line-length = 80
 

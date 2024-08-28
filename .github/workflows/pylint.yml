@@ -23,7 +23,7 @@ jobs:
     
     - name: Analysing the code with pylint
       run: |
-        pylint --rcfile=webcentral/.pylintrc $(git ls-files 'webcentral/**/*.py')
+        pylint $(git ls-files 'webcentral/**/*.py')
 
     - name: Lint Django templates with djlint
       run: |
