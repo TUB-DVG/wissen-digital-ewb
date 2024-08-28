@@ -1,22 +1,19 @@
+# Standard library imports
 import os
 import pathlib
 
+# Third-party imports
 import pandas as pd
 import plotly.graph_objects as go
-from project_listing.models import *
-from django_plotly_dash import DjangoDash
+from dash import dcc, html, Input, Output, State
 from dash.exceptions import PreventUpdate
-from django.utils.translation import gettext as _
 from django.contrib.sessions.models import Session
-import dash
-from dash import (
-    dcc,
-    html,
-    Input,
-    Output,
-    State,
-)  # pip install dash (version 2.0.0 or higher)
+from django.utils.translation import gettext as _
+from django_plotly_dash import DjangoDash
+from plotly.subplots import make_subplots
 
+# Local imports
+from project_listing.models import *
 from .Stromlastapproximation_Csv import currentApproximation
 
 PATH = pathlib.Path(__file__).parent.resolve()
@@ -183,15 +180,23 @@ def updatePowerGraph(
     displayMonth: str,
     powerRequirement: int,
     application: str,
-):
+) -> go.Figure:
+    """
+    Update the power graph based on user inputs.
 
-    # breakpoint()
-    if application != None:
+    Args:
+        click (int): Number of clicks on the approximation start button.
+        displayMonth (str): Selected month to display or 'All' for all months.
+        powerRequirement (int): Annual power requirement in kWh/year.
+        application (str): Selected application type.
+
+    Returns:
+        go.Figure: Updated Plotly figure object containing the power graph.
+    """
+    if application is not None:
         WW = currentApproximation(int(application), powerRequirement)
         days = DF_MAIN["Datum/ Uhrzeit"]
-        global data
-        data = {"Time": days[0:8760], "Last": WW}
-        data = pd.DataFrame(data)
+        data = pd.DataFrame({"Time": days[0:8760], "Last": WW})
         data["Time"] = pd.to_datetime(data["Time"], errors="coerce")
         if displayMonth == "All":
             result = data
@@ -208,7 +213,6 @@ def updatePowerGraph(
                     )
                 )["Time"],
             }
-        from plotly.subplots import make_subplots
 
         fig = make_subplots()
         fig.add_trace(
@@ -226,7 +230,7 @@ def updatePowerGraph(
         )
 
         fig.update_yaxes(title_text=_("Stromlastgang in kW"), title_standoff=25)
-        return fig
+        return fig, data.to_dict()  # Store data as a dictionary
     else:
         return {}
 
@@ -241,7 +245,8 @@ def updatePowerGraph(
     State("application", "options"),
     prevent_initial_call=True,
 )
-def downloadAsCsv(nClicks, application: str, powerRequirement: int, state):
+def download_as_csv(nClicks, application: str, powerRequirement: int, state):
+    """Handle CSV download for the power graph data."""
     if not nClicks:
         raise PreventUpdate
     else:
