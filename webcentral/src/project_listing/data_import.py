@@ -1,14 +1,27 @@
-from .models import *
+"""App specific dataImport class for the app `prject_listing`
+
+"""
 from common.data_import import DataImport
+from .models import (
+    Address,
+    Enargus,
+    ExecutingEntity,
+    FurtherFundingInformation,
+    GrantRecipient,
+    RAndDPlanningCategory,
+    Subproject,
+    Person,
+)
 
 
 class DataImportApp(DataImport):
+    """Class definition of App specific data import class `DataImportApp`.
+    Inherits from general data import class `DataImport`.
+
+    """
     DJANGO_APP = "project_listing"
     DJANGO_MODEL = "Subproject"
     MAPPING_EXCEL_DB_EN = {
-        # "ueberschrift__en": "heading_en",
-        # "text__en": "text_en",
-        # "tags__en": "tags_en",
     }
 
     def __init__(self, path_to_data_file):
@@ -22,6 +35,8 @@ class DataImportApp(DataImport):
             Represents the file-path to the Data-File (xlsx or csv).
         """
         super().__init__(path_to_data_file)
+        self.dictIdentifier = None
+
 
     def getOrCreate(self, row: list, header: list, data: list) -> None:
         """
@@ -34,7 +49,7 @@ class DataImportApp(DataImport):
         subprojectObj, created = self.getOrCreateSubproject(header, row)
 
         enargusObj = None
-        if created == False:
+        if created is False:
             enargusObj = subprojectObj.enargusData
             self.diffStrDict[subprojectObj.referenceNumber_id] = ""
 
@@ -187,7 +202,9 @@ class DataImportApp(DataImport):
         return newExecutingEntityObj, created
 
     def getOrCreateSubproject(self, header, row):
-        """ """
+        """Get the `Subproject` ORM-object for a `referernceNumberId`.
+
+        """
         referernceNumberId = row[header.index("FKZ")]
         obj, created = Subproject.objects.get_or_create(
             referenceNumber_id=referernceNumberId,
@@ -201,7 +218,8 @@ class DataImportApp(DataImport):
         header: list,
         oldRandDobj,
     ) -> tuple:
-        """Gets or Creates an object of type RAndDPlanningCategory from the data in row
+        """Gets or Creates an object of type RAndDPlanningCategory from the 
+        data in row.
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
@@ -303,10 +321,12 @@ class DataImportApp(DataImport):
 
         Returns:
         obj:    FurtherFundingInformation
-            FurtherFundingInformation-object, represent the created or in database
-            present FurtherFundingInformation-Dataset with the data from row.
+            FurtherFundingInformation-object, represent the created or in 
+            database present FurtherFundingInformation-Dataset with the data 
+            from row.
         created:    bool
-            Indicates, if the FurtherFundingInformation-object was created or not.
+            Indicates, if the FurtherFundingInformation-object was created or 
+            not.
         """
         federalMinistry = row[header.index("Bundesministerium")]
         projectBody = row[header.index("Projekttraeger")]
@@ -368,6 +388,11 @@ class DataImportApp(DataImport):
             location = row[header.index("Ort_AS")]
             country = row[header.index("Land_AS")]
             adress = row[header.index("Adress_AS")]
+        else:
+            postalCode = ""
+            location = ""
+            country = ""
+            adress = ""
 
         obj, created = Address.objects.get_or_create(
             plz=postalCode,

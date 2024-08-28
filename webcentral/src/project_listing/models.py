@@ -1,13 +1,21 @@
+"""This module creates the Django ORM-models for the `Subproject` and 
+subsequent models.
+
+"""
+
 from django.db import models
-from .models import *
 from sqlalchemy import null, true
 
 
 class Subproject(models.Model):
+    """ORM-Model Defintion for the Subproject model
+
+    """
     referenceNumber_id = models.CharField(
         max_length=10,
         primary_key=True,
-        help_text="Funding code (numerical sequence of 9 to 10 characters), fkz - Förderkennzeichen",
+        help_text="""Funding code (numerical sequence of 9 to 10 characters),
+            fkz - Förderkennzeichen""",
     )
     # when  there is a problem try related_name
     enargusData = models.OneToOneField(
@@ -24,25 +32,23 @@ class Subproject(models.Model):
         on_delete=models.SET_NULL,
         blank=True,
     )  # One to many behaviour
-    # questionnaire2021=models.ForeignKey("Questionnaire2021",null=true,on_delete=models.SET_NULL,blank=True) # One to many behaviour
 
-    # foerdersumme move to Enargus table, here for testing
-    # foerdersumme = models.IntegerField(help_text='Foerdersumme in EUR', null=True)
-    # return as name, when class is called, eg. tables in admin page
     def __str__(self):
         return (
-            self.referenceNumber_id
+            str(self.referenceNumber_id)
         )  # maybe change to the shortname of the project
 
     # def en_id(self):
     #   return self.enargus_daten.enargus_id
 
 
-# class Questionnaire2021(models.Model):
-#         Questionnaire2021=models.AutoField(primary_key=True ,help_text="auto generiert ID")
 
 
 class ModuleAssignment(models.Model):
+    """ORM-Model Defintion for the moduleAssignment model
+
+
+    """
     moduleAssignment_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -50,29 +56,37 @@ class ModuleAssignment(models.Model):
         max_length=2,
         null=True,
         blank=True,
-        help_text="Project allocation with priority 1 (main contact partner) e.g. M2, M1, ag: ausgelaufen",
+        help_text="""Project allocation with priority 1 (main contact partner)
+            e.g. M2, M1, ag: ausgelaufen""",
     )
     priority2 = models.CharField(
         max_length=2,
         null=True,
         blank=True,
-        help_text="Project allocation with priority 2 (main contact partner) e.g. M2, M1, ag: ausgelaufen",
+        help_text="""Project allocation with priority 2 (main contact partner)
+            e.g. M2, M1, ag: ausgelaufen""",
     )
     priority3 = models.CharField(
         max_length=2,
         null=True,
         blank=True,
-        help_text="Project allocation with priority 3 (main contact partner) e.g. M2, M1, ag: ausgelaufen",
+        help_text="""Project allocation with priority 3 (main contact partner)
+            e.g. M2, M1, ag: ausgelaufen""",
     )
     priority4 = models.CharField(
         max_length=2,
-        help_text="Project allocation with priority 4 (main contact partner) e.g. M2, M1, ag: ausgelaufen",
+        help_text="""Project allocation with priority 4 (main contact partner)
+            e.g. M2, M1, ag: ausgelaufen""",
         null=True,
         blank=True,
     )
 
 
 class Enargus(models.Model):
+    """ORM-Model Defintion for the Enargus model
+
+
+    """
     enargus_id = models.AutoField(primary_key=True)
     startDate = models.DateField(blank=True, null=True)
     endDate = models.DateField(blank=True, null=True)
@@ -118,7 +132,8 @@ class Enargus(models.Model):
     )
     rAndDPlanningCategory = models.ForeignKey(
         "RAndDPlanningCategory",
-        help_text="number of the systematic performance plan ('leistungsplan systematik')",
+        help_text="""number of the systematic performance plan ('leistungsplan
+            systematik')""",
         null=True,
         on_delete=models.SET_NULL,
         blank=True,
@@ -148,11 +163,15 @@ class Enargus(models.Model):
     # return as name, when class is called, eg. tables in admin page
     def __str__(self):
         return (
-            self.collaborativeProject
+            str(self.collaborativeProject)
         )  # maybe change to the shortname of the project
 
 
 class FurtherFundingInformation(models.Model):
+    """ORM-Model Defintion for the FurtherFundingInformation model
+
+
+    """
     furtherFundingInformation_id = models.AutoField(
         primary_key=True, help_text="Auto.generiert ID"
     )
@@ -183,10 +202,14 @@ class FurtherFundingInformation(models.Model):
 
 
 class RAndDPlanningCategory(models.Model):
+    """ORM-Model Defintion for the RAndDplanningCategory model
+
+    """
     rAndDPlanningCategoryNumber = models.CharField(
         primary_key=True,
         max_length=6,
-        help_text="identifier number of the performance plan systematic - 'Leistungsplansystematiknummer'",
+        help_text="""identifier number of the performance plan systematic -
+            'Leistungsplansystematiknummer'""",
     )
     rAndDPlanningCategoryText = models.CharField(max_length=150)
     # def __str__(self):
@@ -194,6 +217,9 @@ class RAndDPlanningCategory(models.Model):
 
 
 class ExecutingEntity(models.Model):
+    """ORM-Model Defintion for the Executing-Entity model
+
+    """
     executingEntity_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -204,6 +230,9 @@ class ExecutingEntity(models.Model):
 
 
 class GrantRecipient(models.Model):
+    """ORM-Model Defintion for the Grant-Recipient model
+
+    """
     grantRecipient_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -214,6 +243,9 @@ class GrantRecipient(models.Model):
 
 
 class Person(models.Model):
+    """ORM-Model Defintion for the Person model
+
+    """
     person_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -228,6 +260,9 @@ class Person(models.Model):
 
 
 class Address(models.Model):
+    """ORM-Model Defintion for the Address model
+
+    """
     address_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )

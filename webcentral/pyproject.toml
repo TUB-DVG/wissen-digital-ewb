@@ -9,7 +9,7 @@ authors = [
     {name = "falk cudok"},
     {name = "felix rehmann"},
     {name = "rita streblow"},
-    {name = "tobias degner"},
+    {name = "martin tobias degner"},
     {name = "siling chen"},
     {name = "ibukun odeyemi"},
     {name = "kaifeng xu"},
@@ -70,8 +70,17 @@ test = [
 ]
 
 [tool.pylint]
-ignore-patterns = ["000*"]
-disable = ["R0903"]
+ignore-patterns = [
+  "000*",
+  "manage.py",
+]
+disable = [
+  "E1101", # class has no object ... error 
+  "W0613", # ignore unused argument error
+  "R0903", 
+  "invalid-name", # no error for snakeCase is shown 
+  "R0914", # no error for too many local variables is shon
+]
 
 [tool.pylint.format]
 max-line-length = 80
@@ -79,6 +88,7 @@ max-line-length = 80
 [tool.pylint.basic]
 variable-naming-style = "camelCase"
 function-naming-style = "camelCase"
+method-naming-style = "camelCase"
 
 [tool.djlint]
 profile = "django"
