@@ -73,8 +73,10 @@ test = [
 ignore-patterns = [
   "000*",
   "manage.py",
+  "__init__.py",
 ]
 disable = [
+  "W0212", # warning of access to class protected method
   "E1101", # class has no object ... error 
   "W0613", # ignore unused argument error
   "R0903", 

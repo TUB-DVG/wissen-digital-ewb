@@ -1,3 +1,6 @@
+"""Views for app `project_listing`
+
+"""
 from django.shortcuts import render, get_object_or_404
 
 from .models import Subproject  # maybe I need also the other models
