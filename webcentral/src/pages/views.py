@@ -326,7 +326,49 @@ def dataSecurity(request):
 
 def iconsAndVis(request):
     """Call render function for icons and Visualization page."""
-    return render(request, "pages/iconsAndVis.html")
+    
+    explanationText = _("""Icons können auch im Gebäude- und Quartiersbereich die grafische
+          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl für
+          die Informationsvermittlung an professionelle, wie auch fachfremde
+          Adressat*innenkreise genutzt werden. Im Modul 4 der Begleitforschung,
+          in Zusammenarbeit mit dem Projekt “Privacy Icons” der Forschungsgruppe
+          Digitale Selbstbestimmung, wurde zu diesem Zweck ein Open-Source
+          Iconset entwickelt, das zur freien Nutzung und Abänderung freigegeben
+          wurde. Das Iconset richtet sich an unterschiedlichste Akteure.
+          Einerseits können datenschutzrechtliche Informationspflichten mithilfe
+          der Icons effektiv umgesetzt werden und damit dem Transparenzprinzip
+          Rechnung tragen. Darüber hinaus ist eine Nutzung der Icons zur
+          Visualisierung verschiedenster Sachverhalte im Gebäude- und Quartiers
+          Bereich denkbar, etwa zur verständlichen Aufbereitung von
+          Forschungsergebnissen oder Erklärung digitaler Anwendungen. Das
+          Iconset besteht aus über 150 Icons verschiedener Kategorien (z.B. Data
+          and Identifiers, Purposes, Actors and Technical Means). Es wird
+          ergänzt durch ein Set von Gebäudegrafiken und anderen
+          Visualisierungskomponenten, die gemeinsam einen Baukasten ergeben, der
+          eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie
+          technischer Perspektive erlaubt und von der Visualisierung eines
+          ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem
+          User-Interface verwendet werden kann.""")
+    explanTextToRender = """<p>
+            <a href="https://github.com/Privacy-Icons/Privacy-Icons">Icons</a>
+          </p>
+          <div class="row">
+        <div class="col-lg-9">
+          {% load static%}<img src="{% static 'img/iconsOverview.png' %}" alt="image_icons">
+          </div>
+        </div>
+      """
+    
+    explanationText += Template(explanTextToRender).render(Context({}))
+
+    context = {
+        "focusBorder": "legal",
+        "pathToImage": "img/componentList/circle-icon.svg",
+        "heading": _("Icons und Visualisierung"),
+        "explanaitionText": explanationText.replace("\n", ""),
+    }
+
+    return render(request, "pages/overview_page.html", context)
 
 
 def criteriaCatalog(request):
