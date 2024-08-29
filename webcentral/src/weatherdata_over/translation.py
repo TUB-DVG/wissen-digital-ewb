@@ -1,5 +1,5 @@
 from modeltranslation.translator import (
-    translator, 
+    translator,
     TranslationOptions,
 )
 
@@ -7,11 +7,12 @@ from .models import (
     Weatherdata,
 )
 
+
 class WeatherdataTranslationOptions(TranslationOptions):
     fields = (
-        "data_service", 
-        "short_description", 
-        "provider", 
+        "data_service",
+        "short_description",
+        "provider",
         "further_information",
         "applications",
         "last_update",

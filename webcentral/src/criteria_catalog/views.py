@@ -74,7 +74,8 @@ def buildCriteriaCatalog(
 
     # return a nested dictionary, which contains the hierarchical data
     topicForSelectedUseCase = Topic.objects.filter(
-        criteriaCatalog__id=criteriaCatalogId)
+        criteriaCatalog__id=criteriaCatalogId
+    )
 
     dictOfElements = {}
     rootElements = topicForSelectedUseCase.filter(parent=None)
@@ -86,8 +87,8 @@ def buildCriteriaCatalog(
     # order the root elements lexicographically:
 
     rootElements = rootElements.annotate(
-        topicHeadingNumber_as_int=Cast("topicHeadingNumber", IntegerField()
-                                       )).order_by("topicHeadingNumber_as_int")
+        topicHeadingNumber_as_int=Cast("topicHeadingNumber", IntegerField())
+    ).order_by("topicHeadingNumber_as_int")
     for index, element in enumerate(rootElements):
         nodeRootElement = Node(element)
         nodeRootElements.append(nodeRootElement)
@@ -103,9 +104,11 @@ def buildCriteriaCatalog(
         while len(queueBreathFirstSearch) > 0:
             currentNode = queueBreathFirstSearch.pop()
             childsOfCurrentElement = topicsWithoutChilds.filter(
-                parent=currentNode.topic).order_by("id")
+                parent=currentNode.topic
+            ).order_by("id")
             topicsWithoutChilds = topicsWithoutChilds.exclude(
-                parent=currentNode.topic)
+                parent=currentNode.topic
+            )
             childNodes = []
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
@@ -116,8 +119,8 @@ def buildCriteriaCatalog(
             childNodes.sort(key=lambda x: x.topic.id)
             currentTree.addToDict(currentNode, childNodes)
         listOfFlattenedTrees.append(
-            tree_to_html(listOfTrees[index].dictOfTree,
-                         nodeRootElements[index]))
+            tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index])
+        )
     allCriteriaCatalogObjs = CriteriaCatalog.objects.all()
     criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
@@ -151,7 +154,8 @@ def buildingCriteriaCatalogOpenTopic(
     # id = CriteriaCatalog.objects.filter(
     #     name__icontains=criteriaCatalogIdentifier)[0].id
     topicForSelectedUseCase = Topic.objects.filter(
-        criteriaCatalog__id=criteriaCatalogId)
+        criteriaCatalog__id=criteriaCatalogId
+    )
 
     dictOfElements = {}
     rootElements = topicForSelectedUseCase.filter(parent=None)
@@ -174,9 +178,11 @@ def buildingCriteriaCatalogOpenTopic(
         while len(queueBreathFirstSearch) > 0:
             currentNode = queueBreathFirstSearch.pop()
             childsOfCurrentElement = topicsWithoutChilds.filter(
-                parent=currentNode.topic)
+                parent=currentNode.topic
+            )
             topicsWithoutChilds = topicsWithoutChilds.exclude(
-                parent=currentNode.topic)
+                parent=currentNode.topic
+            )
             childNodes = []
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
@@ -186,9 +192,9 @@ def buildingCriteriaCatalogOpenTopic(
                 queueBreathFirstSearch.append(childNode)
             currentTree.addToDict(currentNode, childNodes)
         listOfFlattenedTrees.append(
-            tree_to_html(listOfTrees[index].dictOfTree,
-                         nodeRootElements[index]))
-    allCriteriaCatalogObjs = CriteriaCatalog.objects.all()# breakpoint()
+            tree_to_html(listOfTrees[index].dictOfTree, nodeRootElements[index])
+        )
+    allCriteriaCatalogObjs = CriteriaCatalog.objects.all()  # breakpoint()
     criteriaCatalogObj = CriteriaCatalog.objects.get(id=criteriaCatalogId)
     return render(
         request,
@@ -202,7 +208,6 @@ def buildingCriteriaCatalogOpenTopic(
             "backLink": "criteriaCatalog",
             "imageInBackButton": "assets/images/backArrowLegal.svg",
             "backLinkText": _("Zurück"),
-
             "explanaitionText": criteriaCatalogObj.text.replace("\n", "<br>"),
             "heading": criteriaCatalogObj.name,
             # "showSelect": True,

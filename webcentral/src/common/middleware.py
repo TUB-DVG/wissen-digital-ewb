@@ -1,3 +1,9 @@
+"""This module defines a middleare class, which sets the expiration date 
+of the user session to the end of the day. That ensures that one device is
+only counted once in the page view statistics.
+
+"""
+
 from datetime import datetime, timedelta
 
 # from django.db import ProgrammingError
@@ -15,6 +21,7 @@ class SessionExpiration:
     """
 
     def __init__(self, get_response):
+        """Constructor of the middleware class."""
         self.get_response = get_response
 
     def __call__(self, request):
@@ -24,8 +31,9 @@ class SessionExpiration:
         now = datetime.now()
 
         # Calculate the end of the day
-        end_of_day = datetime.combine(now.date() + timedelta(days=1),
-                                      datetime.min.time())
+        end_of_day = datetime.combine(
+            now.date() + timedelta(days=1), datetime.min.time()
+        )
 
         # Calculate the number of seconds until the end of the day
         seconds_until_end_of_day = (end_of_day - now).total_seconds()

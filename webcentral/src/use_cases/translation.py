@@ -1,9 +1,10 @@
 from modeltranslation.translator import (
-    translator, 
+    translator,
     TranslationOptions,
 )
 
 from .models import UseCase
+
 
 class UseCaseTranslationOptions(TranslationOptions):
     fields = (
@@ -17,5 +18,6 @@ class UseCaseTranslationOptions(TranslationOptions):
         "effectDescription",
         "furtherInformation",
     )
+
 
 translator.register(UseCase, UseCaseTranslationOptions)

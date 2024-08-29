@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0006_remove_component_operationtimesup'),
+        ("component_list", "0006_remove_component_operationtimesup"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='component',
-            name='globalWarmingPotentialProdSup',
+            model_name="component",
+            name="globalWarmingPotentialProdSup",
         ),
         migrations.RemoveField(
-            model_name='component',
-            name='globalWarmingPotentialUsePhaseSup',
+            model_name="component",
+            name="globalWarmingPotentialUsePhaseSup",
         ),
         migrations.RemoveField(
-            model_name='component',
-            name='powerUseCasePhaseActiveSuperscript',
+            model_name="component",
+            name="powerUseCasePhaseActiveSuperscript",
         ),
     ]

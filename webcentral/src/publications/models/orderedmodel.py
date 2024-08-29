@@ -32,6 +32,7 @@ from django.db import models
 from django.db.models import Max, Min, F
 from django.utils.translation import gettext as _
 
+
 class OrderedModel(models.Model):
     """
     An abstract model that allows objects to be ordered relative to each other.
@@ -43,14 +44,15 @@ class OrderedModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('order',)
+        ordering = ("order",)
 
     def _get_order_with_respect_to(self):
         return getattr(self, self.order_with_respect_to)
 
     def _valid_ordering_reference(self, reference):
         return self.order_with_respect_to is None or (
-            self._get_order_with_respect_to() == reference._get_order_with_respect_to()
+            self._get_order_with_respect_to()
+            == reference._get_order_with_respect_to()
         )
 
     def get_ordering_queryset(self, qs=None):
@@ -63,7 +65,11 @@ class OrderedModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            c = self.get_ordering_queryset().aggregate(Max('order')).get('order__max')
+            c = (
+                self.get_ordering_queryset()
+                .aggregate(Max("order"))
+                .get("order__max")
+            )
             self.order = 0 if c is None else c + 1
         super(OrderedModel, self).save(*args, **kwargs)
 
@@ -71,7 +77,7 @@ class OrderedModel(models.Model):
         qs = self.get_ordering_queryset(qs)
 
         if up:
-            qs = qs.order_by('-order').filter(order__lt=self.order)
+            qs = qs.order_by("-order").filter(order__lt=self.order)
         else:
             qs = qs.filter(order__gt=self.order)
         try:
@@ -85,10 +91,12 @@ class OrderedModel(models.Model):
 
     def move(self, direction, qs=None):
         warnings.warn(
-            _("The method move() is deprecated and will be removed in the next release."),
-            DeprecationWarning
+            _(
+                "The method move() is deprecated and will be removed in the next release."
+            ),
+            DeprecationWarning,
         )
-        if direction == 'up':
+        if direction == "up":
             self.up()
         else:
             self.down()
@@ -98,8 +106,10 @@ class OrderedModel(models.Model):
         Move this object down one position.
         """
         warnings.warn(
-            _("The method move_down() is deprecated and will be removed in the next release. Please use down() instead!"),
-            DeprecationWarning
+            _(
+                "The method move_down() is deprecated and will be removed in the next release. Please use down() instead!"
+            ),
+            DeprecationWarning,
         )
         return self.down()
 
@@ -108,8 +118,10 @@ class OrderedModel(models.Model):
         Move this object up one position.
         """
         warnings.warn(
-            _("The method move_up() is deprecated and will be removed in the next release. Please use up() instead!"),
-            DeprecationWarning
+            _(
+                "The method move_up() is deprecated and will be removed in the next release. Please use up() instead!"
+            ),
+            DeprecationWarning,
         )
         return self.up()
 
@@ -124,9 +136,12 @@ class OrderedModel(models.Model):
             return
         if not self._valid_ordering_reference(replacement):
             raise ValueError(
-                "%r can only be swapped with instances of %r which %s equals %r." % (
-                    self, self.__class__, self.order_with_respect_to,
-                    self._get_order_with_respect_to()
+                "%r can only be swapped with instances of %r which %s equals %r."
+                % (
+                    self,
+                    self.__class__,
+                    self.order_with_respect_to,
+                    self._get_order_with_respect_to(),
                 )
             )
         self.order, replacement.order = replacement.order, self.order
@@ -137,7 +152,11 @@ class OrderedModel(models.Model):
         """
         Move this object up one position.
         """
-        self.swap(self.get_ordering_queryset().filter(order__lt=self.order).order_by('-order'))
+        self.swap(
+            self.get_ordering_queryset()
+            .filter(order__lt=self.order)
+            .order_by("-order")
+        )
 
     def down(self):
         """
@@ -154,9 +173,13 @@ class OrderedModel(models.Model):
             return
         qs = self.get_ordering_queryset()
         if self.order > order:
-            qs.filter(order__lt=self.order, order__gte=order).update(order=F('order') + 1)
+            qs.filter(order__lt=self.order, order__gte=order).update(
+                order=F("order") + 1
+            )
         else:
-            qs.filter(order__gt=self.order, order__lte=order).update(order=F('order') - 1)
+            qs.filter(order__gt=self.order, order__lte=order).update(
+                order=F("order") - 1
+            )
         self.order = order
         self.save()
 
@@ -166,9 +189,12 @@ class OrderedModel(models.Model):
         """
         if not self._valid_ordering_reference(ref):
             raise ValueError(
-                "%r can only be moved above instances of %r which %s equals %r." % (
-                    self, self.__class__, self.order_with_respect_to,
-                    self._get_order_with_respect_to()
+                "%r can only be moved above instances of %r which %s equals %r."
+                % (
+                    self,
+                    self.__class__,
+                    self.order_with_respect_to,
+                    self._get_order_with_respect_to(),
                 )
             )
         if self.order == ref.order:
@@ -176,7 +202,13 @@ class OrderedModel(models.Model):
         if self.order > ref.order:
             o = ref.order
         else:
-            o = self.get_ordering_queryset().filter(order__lt=ref.order).aggregate(Max('order')).get('order__max') or 0
+            o = (
+                self.get_ordering_queryset()
+                .filter(order__lt=ref.order)
+                .aggregate(Max("order"))
+                .get("order__max")
+                or 0
+            )
         self.to(o)
 
     def below(self, ref):
@@ -185,15 +217,24 @@ class OrderedModel(models.Model):
         """
         if not self._valid_ordering_reference(ref):
             raise ValueError(
-                "%r can only be moved below instances of %r which %s equals %r." % (
-                    self, self.__class__, self.order_with_respect_to,
-                    self._get_order_with_respect_to()
+                "%r can only be moved below instances of %r which %s equals %r."
+                % (
+                    self,
+                    self.__class__,
+                    self.order_with_respect_to,
+                    self._get_order_with_respect_to(),
                 )
             )
         if self.order == ref.order:
             return
         if self.order > ref.order:
-            o = self.get_ordering_queryset().filter(order__gt=ref.order).aggregate(Min('order')).get('order__min') or 0
+            o = (
+                self.get_ordering_queryset()
+                .filter(order__gt=ref.order)
+                .aggregate(Min("order"))
+                .get("order__min")
+                or 0
+            )
         else:
             o = ref.order
         self.to(o)
@@ -202,12 +243,20 @@ class OrderedModel(models.Model):
         """
         Move this object to the top of the ordered stack.
         """
-        o = self.get_ordering_queryset().aggregate(Min('order')).get('order__min')
+        o = (
+            self.get_ordering_queryset()
+            .aggregate(Min("order"))
+            .get("order__min")
+        )
         self.to(o)
 
     def bottom(self):
         """
         Move this object to the bottom of the ordered stack.
         """
-        o = self.get_ordering_queryset().aggregate(Max('order')).get('order__max')
+        o = (
+            self.get_ordering_queryset()
+            .aggregate(Max("order"))
+            .get("order__max")
+        )
         self.to(o)

@@ -33,10 +33,12 @@ def setLanguageForLastUpdate(request):
     else:
         lastUpdateText = "last Update"
 
-    lastUpdate = UpdateProperties("bi bi-patch-exclamation-fill",
-                                  lastUpdateText, "text-danger")
-    continuousUpdates = UpdateProperties("fas fa-sync", "Updates",
-                                         "text-success")
+    lastUpdate = UpdateProperties(
+        "bi bi-patch-exclamation-fill", lastUpdateText, "text-danger"
+    )
+    continuousUpdates = UpdateProperties(
+        "fas fa-sync", "Updates", "text-success"
+    )
 
     return lastUpdate, continuousUpdates
 
@@ -94,14 +96,18 @@ def index(request):
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(
-            classification__classification__icontains=searched)
+            classification__classification__icontains=searched
+        )
         criterionToolsFour = Q(name__icontains=searched)
-        complexCriterion &= (criterionToolsOne
-                             | criterionToolsTwo
-                             | criterionToolsThree
-                             | criterionToolsFour)
+        complexCriterion &= (
+            criterionToolsOne
+            | criterionToolsTwo
+            | criterionToolsThree
+            | criterionToolsFour
+        )
     tools = (
-        Tools.objects.filter(complexCriterion).filter(
+        Tools.objects.filter(complexCriterion)
+        .filter(
             name__icontains=searched,
             classification__classification_de__in=[
                 "digitales Werkzeug",
@@ -110,7 +116,8 @@ def index(request):
                 "Framework/Bibliothek",
             ],
             focus__focus_de="technisch",
-        ).distinct()
+        )
+        .distinct()
     )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
     # having distinct removes the duplicates,
     # but filters out e.g., solely open-source tools!
@@ -142,34 +149,20 @@ def index(request):
         headingText = "Overview of digital tools"
 
     context = {
-        "accessibility":
-        filteredBy[1],
-        "focusBorder":
-        "technical",
-        "typeOfTool":
-        "Tools",
-        "page":
-        page,
-        "search":
-        searched,
-        "usage":
-        filteredBy[0],
-        "lifeCyclePhase":
-        filteredBy[2],
-        "usageFields":
-        usageNames,
-        "accessibilityFields":
-        accessibilityNames,
-        "lifeCyclePhaseFields":
-        lifeCyclePhaseNames,
-        "heading":
-        headingText,
-        "nameOfTemplate":
-        "tools",
-        "urlName":
-        "tool_list",
-        "model":
-        "Tools",
+        "accessibility": filteredBy[1],
+        "focusBorder": "technical",
+        "typeOfTool": "Tools",
+        "page": page,
+        "search": searched,
+        "usage": filteredBy[0],
+        "lifeCyclePhase": filteredBy[2],
+        "usageFields": usageNames,
+        "accessibilityFields": accessibilityNames,
+        "lifeCyclePhaseFields": lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "model": "Tools",
         "optionList": [
             {
                 "placeholder": "Nutzung",
@@ -190,13 +183,11 @@ def index(request):
                 "fieldName": "lifeCyclePhase",
             },
         ],
-        "renderComparisonRadio":
-        True,
+        "renderComparisonRadio": True,
     }
 
     if filtering:
-        return render(request, "partials/listing-grid.html",
-                      context)
+        return render(request, "partials/listing-grid.html", context)
 
     return render(request, "tools_over/tool-listings.html", context)
 
@@ -247,14 +238,18 @@ def indexApps(request):
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(
-            classification__classification__icontains=searched)
+            classification__classification__icontains=searched
+        )
         criterionToolsFour = Q(name__icontains=searched)
-        complexCriterion |= (criterionToolsOne
-                             | criterionToolsTwo
-                             | criterionToolsThree
-                             | criterionToolsFour)
+        complexCriterion |= (
+            criterionToolsOne
+            | criterionToolsTwo
+            | criterionToolsThree
+            | criterionToolsFour
+        )
     tools = (
-        Tools.objects.filter(complexCriterion).filter(
+        Tools.objects.filter(complexCriterion)
+        .filter(
             name__icontains=searched,
             # usage__usage__icontains=usage,
             # lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
@@ -264,7 +259,8 @@ def indexApps(request):
                 "digitale Anwendung",
                 "Plattform",
             ],
-        ).distinct()
+        )
+        .distinct()
     )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
     # having distinct removes the duplicates,
     # but filters out e.g., solely open-source tools!
@@ -296,34 +292,23 @@ def indexApps(request):
         headingText = "Overview of digital applications"
 
     context = {
-        "accessibilityFields":
-        accessibilityNames,
-        "focusBorder":
-        "technical",
-        "typeOfTool":
-        "Apps",
-        "page":
-        page,
-        "search":
-        searched,
+        "accessibilityFields": accessibilityNames,
+        "focusBorder": "technical",
+        "typeOfTool": "Apps",
+        "page": page,
+        "search": searched,
         # "usage":
         # filteredBy[0],
         # "accessibility":
         # filteredBy[1],
         # "lifeCyclePhase":
         # filteredBy[2],
-        "usageFields":
-        usageNames,
-        "lifeCyclePhaseFields":
-        lifeCyclePhaseNames,
-        "heading":
-        headingText,
-        "nameOfTemplate":
-        "tools",
-        "urlName":
-        "tool_list",
-        "model":
-        "Tools",
+        "usageFields": usageNames,
+        "lifeCyclePhaseFields": lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "tool_list",
+        "model": "Tools",
         "optionList": [
             {
                 "placeholder": _("Nutzung"),
@@ -334,22 +319,20 @@ def indexApps(request):
             {
                 "placeholder": _("Zugänglichkeit"),
                 "objects": accessibilityNames,
-                "filtered":request.GET.get("accessibility-hidden", "") ,
+                "filtered": request.GET.get("accessibility-hidden", ""),
                 "fieldName": "accessibility",
             },
             {
                 "placeholder": _("Lebenszyklusphase"),
                 "objects": lifeCyclePhaseNames,
-                "filtered":request.GET.get("liefCyclePhase-hidden", "") ,
+                "filtered": request.GET.get("liefCyclePhase-hidden", ""),
                 "fieldName": "lifeCyclePhase",
             },
         ],
-        "renderComparisonRadio":
-        True,
+        "renderComparisonRadio": True,
     }
     if filtering:
-        return render(request, "partials/listing-grid.html",
-                      context)
+        return render(request, "partials/listing-grid.html", context)
 
     return render(request, "tools_over/tool-listings.html", context)
 
@@ -358,7 +341,8 @@ def indexBusinessApplication(request):
     """serves a request for digital applications search"""
     applications = Tools.objects.filter(
         # classification__classification="Digitale Anwendung",
-        focus__focus_de="betrieblich")
+        focus__focus_de="betrieblich"
+    )
 
     filteredBy = [None] * 3
     searched = None
@@ -401,14 +385,18 @@ def indexBusinessApplication(request):
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
         criterionToolsThree = Q(
-            classification__classification__icontains=searched)
+            classification__classification__icontains=searched
+        )
         criterionToolsFour = Q(name__icontains=searched)
-        complexCriterion |= (criterionToolsOne
-                             | criterionToolsTwo
-                             | criterionToolsThree
-                             | criterionToolsFour)
+        complexCriterion |= (
+            criterionToolsOne
+            | criterionToolsTwo
+            | criterionToolsThree
+            | criterionToolsFour
+        )
     applications = (
-        Tools.objects.filter(complexCriterion).filter(
+        Tools.objects.filter(complexCriterion)
+        .filter(
             name__icontains=searched,
             # usage__usage__icontains=usage,
             # lifeCyclePhase__lifeCyclePhase__icontains=lifeCyclePhase,
@@ -416,7 +404,8 @@ def indexBusinessApplication(request):
             focus__focus_de="betrieblich",
             # classification__classification__icontains=searched,
             # classification__classification="Digitales Werkzeug",
-        ).distinct()
+        )
+        .distinct()
     )  # .annotate(num_features=Count('id'))#.filter(num_features__gt=1)
     # having distinct removes the duplicates,
     # but filters out e.g., solely open-source tools!
@@ -447,34 +436,23 @@ def indexBusinessApplication(request):
         headingText = "Overview of Business Applications"
 
     context = {
-        "accessibilityFields":
-        accessibilityNames,
-        "focusBorder":
-        "operational",
-        "typeOfTool":
-        "BusinessApps",
-        "page":
-        page,
-        "search":
-        searched,
+        "accessibilityFields": accessibilityNames,
+        "focusBorder": "operational",
+        "typeOfTool": "BusinessApps",
+        "page": page,
+        "search": searched,
         # "usage":
         # filteredBy[0],
         # "licence":
         # filteredBy[1],
         # "lifeCyclePhase":
         # filteredBy[2],
-        "usageFields":
-        usageNames,
-        "lifeCyclePhaseFields":
-        lifeCyclePhaseNames,
-        "heading":
-        headingText,
-        "nameOfTemplate":
-        "tools",
-        "urlName":
-        "businessModelApplication",
-        "model":
-        "BusinessApps",
+        "usageFields": usageNames,
+        "lifeCyclePhaseFields": lifeCyclePhaseNames,
+        "heading": headingText,
+        "nameOfTemplate": "tools",
+        "urlName": "businessModelApplication",
+        "model": "BusinessApps",
         "optionList": [
             {
                 "placeholder": "Nutzung",
@@ -495,12 +473,10 @@ def indexBusinessApplication(request):
                 "fieldName": "lifeCyclePhase",
             },
         ],
-        "renderComparisonRadio":
-        True,
+        "renderComparisonRadio": True,
     }
     if filtering:
-        return render(request, "tools_over/tool-listings-results.html",
-                      context)
+        return render(request, "tools_over/tool-listings-results.html", context)
     return render(request, "tools_over/tool-listings.html", context)
 
 
@@ -531,48 +507,39 @@ def businessApplicationView(request, id):
         updateProperties = continuousUpdates
 
     context = {
-        "tool":
-        tool,
-        "applicationAreas":
-        ", ".join([a.applicationArea for a in applicationAreas]),
-        "usages":
-        ", ".join([a.usage for a in usages]),
-        "targetGroups":
-        ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases":
-        ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
-        "userInterfaces":
-        ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities":
-        ", ".join([a.accessibility for a in accessibilities]),
-        "specificApplications":
-        [str(a.referenceNumber_id)
-         for a in specificApplications],  # specificApplications, #
-        "scales":
-        ", ".join([a.scale for a in scales]),
-        "technicalStandardsNorms":
-        ", ".join([a.technicalStandardsNorms
-                   for a in technicalStandardsNorms]),
-        "technicalStandardsProtocols":
-        ", ".join([
-            a.technicalStandardsProtocols for a in technicalStandardsProtocols
-        ]),
-        "classifications":
-        ", ".join([a.classification for a in classifications]),
-        "focus":
-        ", ".join([a.focus for a in focus]),
-        "focusBorder":
-        "operational",
-        "resources":
-        resources,
-        "lastUpdate":
-        updateProperties,
-        "lastUpdateClass":
-        updateProperties.className,
-        "lastUpdateColor":
-        updateProperties.colorClass,
-        "lastUpdateLabel":
-        updateProperties.label,
+        "tool": tool,
+        "applicationAreas": ", ".join(
+            [a.applicationArea for a in applicationAreas]
+        ),
+        "usages": ", ".join([a.usage for a in usages]),
+        "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
+        "lifeCyclePhases": ", ".join(
+            [a.lifeCyclePhase for a in lifeCyclePhases]
+        ),
+        "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
+        "accessibilities": ", ".join(
+            [a.accessibility for a in accessibilities]
+        ),
+        "specificApplications": [
+            str(a.referenceNumber_id) for a in specificApplications
+        ],  # specificApplications, #
+        "scales": ", ".join([a.scale for a in scales]),
+        "technicalStandardsNorms": ", ".join(
+            [a.technicalStandardsNorms for a in technicalStandardsNorms]
+        ),
+        "technicalStandardsProtocols": ", ".join(
+            [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
+        ),
+        "classifications": ", ".join(
+            [a.classification for a in classifications]
+        ),
+        "focus": ", ".join([a.focus for a in focus]),
+        "focusBorder": "operational",
+        "resources": resources,
+        "lastUpdate": updateProperties,
+        "lastUpdateClass": updateProperties.className,
+        "lastUpdateColor": updateProperties.colorClass,
+        "lastUpdateLabel": updateProperties.label,
     }
     return render(request, "tools_over/tool-detail.html", context)
 
@@ -604,48 +571,39 @@ def toolView(request, id):
         updateProperties = continuousUpdates
 
     context = {
-        "tool":
-        tool,
-        "applicationAreas":
-        ", ".join([a.applicationArea for a in applicationAreas]),
-        "usages":
-        ", ".join([a.usage for a in usages]),
-        "targetGroups":
-        ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases":
-        ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
-        "userInterfaces":
-        ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities":
-        ", ".join([a.accessibility for a in accessibilities]),
-        "specificApplications":
-        [str(a.referenceNumber_id)
-         for a in specificApplications],  # specificApplications, #
-        "scales":
-        ", ".join([a.scale for a in scales]),
-        "technicalStandardsNorms":
-        ", ".join([a.technicalStandardsNorms
-                   for a in technicalStandardsNorms]),
-        "technicalStandardsProtocols":
-        ", ".join([
-            a.technicalStandardsProtocols for a in technicalStandardsProtocols
-        ]),
-        "classifications":
-        ", ".join([a.classification for a in classifications]),
-        "focus":
-        ", ".join([a.focus for a in focus]),
-        "focusBorder":
-        "technical",
-        "resources":
-        resources,
-        "lastUpdate":
-        updateProperties,
-        "lastUpdateClass":
-        updateProperties.className,
-        "lastUpdateColor":
-        updateProperties.colorClass,
-        "lastUpdateLabel":
-        updateProperties.label,
+        "tool": tool,
+        "applicationAreas": ", ".join(
+            [a.applicationArea for a in applicationAreas]
+        ),
+        "usages": ", ".join([a.usage for a in usages]),
+        "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
+        "lifeCyclePhases": ", ".join(
+            [a.lifeCyclePhase for a in lifeCyclePhases]
+        ),
+        "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
+        "accessibilities": ", ".join(
+            [a.accessibility for a in accessibilities]
+        ),
+        "specificApplications": [
+            str(a.referenceNumber_id) for a in specificApplications
+        ],  # specificApplications, #
+        "scales": ", ".join([a.scale for a in scales]),
+        "technicalStandardsNorms": ", ".join(
+            [a.technicalStandardsNorms for a in technicalStandardsNorms]
+        ),
+        "technicalStandardsProtocols": ", ".join(
+            [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
+        ),
+        "classifications": ", ".join(
+            [a.classification for a in classifications]
+        ),
+        "focus": ", ".join([a.focus for a in focus]),
+        "focusBorder": "technical",
+        "resources": resources,
+        "lastUpdate": updateProperties,
+        "lastUpdateClass": updateProperties.className,
+        "lastUpdateColor": updateProperties.colorClass,
+        "lastUpdateLabel": updateProperties.label,
     }
 
     return render(request, "tools_over/tool-detail.html", context)
@@ -678,48 +636,39 @@ def AppView(request, id):
         updateProperties = continuousUpdates
 
     context = {
-        "tool":
-        tool,
-        "applicationAreas":
-        ", ".join([a.applicationArea for a in applicationAreas]),
-        "usages":
-        ", ".join([a.usage for a in usages]),
-        "targetGroups":
-        ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases":
-        ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
-        "userInterfaces":
-        ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities":
-        ", ".join([a.accessibility for a in accessibilities]),
-        "specificApplications":
-        [str(a.referenceNumber_id)
-         for a in specificApplications],  # specificApplications, #
-        "scales":
-        ", ".join([a.scale for a in scales]),
-        "technicalStandardsNorms":
-        ", ".join([a.technicalStandardsNorms
-                   for a in technicalStandardsNorms]),
-        "technicalStandardsProtocols":
-        ", ".join([
-            a.technicalStandardsProtocols for a in technicalStandardsProtocols
-        ]),
-        "classifications":
-        ", ".join([a.classification for a in classifications]),
-        "focus":
-        ", ".join([a.focus for a in focus]),
-        "focusBorder":
-        "technical",
-        "resources":
-        resources,
-        "lastUpdate":
-        updateProperties,
-        "lastUpdateClass":
-        updateProperties.className,
-        "lastUpdateColor":
-        updateProperties.colorClass,
-        "lastUpdateLabel":
-        updateProperties.label,
+        "tool": tool,
+        "applicationAreas": ", ".join(
+            [a.applicationArea for a in applicationAreas]
+        ),
+        "usages": ", ".join([a.usage for a in usages]),
+        "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
+        "lifeCyclePhases": ", ".join(
+            [a.lifeCyclePhase for a in lifeCyclePhases]
+        ),
+        "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
+        "accessibilities": ", ".join(
+            [a.accessibility for a in accessibilities]
+        ),
+        "specificApplications": [
+            str(a.referenceNumber_id) for a in specificApplications
+        ],  # specificApplications, #
+        "scales": ", ".join([a.scale for a in scales]),
+        "technicalStandardsNorms": ", ".join(
+            [a.technicalStandardsNorms for a in technicalStandardsNorms]
+        ),
+        "technicalStandardsProtocols": ", ".join(
+            [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
+        ),
+        "classifications": ", ".join(
+            [a.classification for a in classifications]
+        ),
+        "focus": ", ".join([a.focus for a in focus]),
+        "focusBorder": "technical",
+        "resources": resources,
+        "lastUpdate": updateProperties,
+        "lastUpdateClass": updateProperties.className,
+        "lastUpdateColor": updateProperties.colorClass,
+        "lastUpdateLabel": updateProperties.label,
     }
 
     return render(request, "tools_over/tool-detail.html", context)

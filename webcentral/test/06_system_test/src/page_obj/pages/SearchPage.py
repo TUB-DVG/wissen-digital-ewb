@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
@@ -91,10 +93,11 @@ class SearchPage(GenericPageObject):
     def getSearchDivContainer(self):
         """Get Search-bar surrounding div container"""
         return self.driver.find_element(
-            By.XPATH, "//div[contains(@class, 'searchContainer')]")
-    
-    def getMultiSelectClickables(self):
-        """Return list of use-bootstrap-select clickable webdriver elements
-        """
-        return self.driver.find_elements(By.XPATH, "//input[contains(@class, 'text-input-with-arrow')]")
+            By.XPATH, "//div[contains(@class, 'searchContainer')]"
+        )
 
+    def getMultiSelectClickables(self):
+        """Return list of use-bootstrap-select clickable webdriver elements"""
+        return self.driver.find_elements(
+            By.XPATH, "//input[contains(@class, 'text-input-with-arrow')]"
+        )

@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -37,4 +39,6 @@ class DataSufficiency(GenericPageObject):
         which is shown in collapsed state.
 
         """
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'firstPart')]")
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'firstPart')]"
+        )

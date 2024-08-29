@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tools_over', '0002_tools_name_de_tools_name_en'),
+        ("tools_over", "0002_tools_name_de_tools_name_en"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='tools',
-            name='name_de',
+            model_name="tools",
+            name="name_de",
         ),
         migrations.RemoveField(
-            model_name='tools',
-            name='name_en',
+            model_name="tools",
+            name="name_en",
         ),
     ]

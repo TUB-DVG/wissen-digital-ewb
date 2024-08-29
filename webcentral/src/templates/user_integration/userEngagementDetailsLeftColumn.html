@@ -33,41 +33,35 @@
 </style>
 <div style="font-size: 22px;">{{ boxObject.category }}</div>
 <p>
-    <span class="columnHeading">{% translate "Zeitbedarf" %}:</span> {{ boxObject.timeRequired|safe }}
+  <span class="columnHeading">{% translate "Zeitbedarf" %}:</span> {{ boxObject.timeRequired|safe }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Gruppengröße" %}:</span> {{ boxObject.groupSizeRendered|safe }}
+  <span class="columnHeading">{% translate "Gruppengröße" %}:</span> {{ boxObject.groupSizeRendered|safe }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Material" %}:</span> {{ boxObject.material|safe }}
+  <span class="columnHeading">{% translate "Material" %}:</span> {{ boxObject.material|safe }}
 </p>
 <p>
-    <span class="columnHeading">{% translate "Vorteile" %}:</span>
-    <ul class="plus-sign-list">
-        {% for proElement in boxObject.proArgument.all %}
-            <li>{{ proElement.proArgumentRendered }}</li>
-        {% endfor %}
-    </ul>
+  <span class="columnHeading">{% translate "Vorteile" %}:</span>
+  <ul class="plus-sign-list">
+    {% for proElement in boxObject.proArgument.all %}
+      <li>{{ proElement.proArgumentRendered }}</li>
+    {% endfor %}
+  </ul>
 </p>
 <p>
-    <span class="columnHeading">{% translate "Nachteile" %}:</span>
-    <ul class="minus-sign-list">
-        {% for conElement in boxObject.conArgument.all %}
-            <li>{{ conElement.conArgumentRendered }}</li>
-        {% endfor %}
-    </ul>
+  <span class="columnHeading">{% translate "Nachteile" %}:</span>
+  <ul class="minus-sign-list">
+    {% for conElement in boxObject.conArgument.all %}
+      <li>{{ conElement.conArgumentRendered }}</li>
+    {% endfor %}
+  </ul>
 </p>
 {% if boxObject.goodPracticeExampleRendered != "" %}
-    <p>
-        <span class="columnHeading">{% translate "Good-Practice-Beispiel" %}:</span>
-        <ul class="minus-sign-list">
-            {{ boxObject.goodPracticeExampleRendered }}
-        </ul>
-    </p>
+  <p>
+    <span class="columnHeading">{% translate "Good-Practice-Beispiel" %}:</span>
+    <ul class="minus-sign-list">
+      {{ boxObject.goodPracticeExampleRendered }}
+    </ul>
+  </p>
 {% endif %}
-<!-- <p>
-    <span class="columnHeading">{% translate "Durchgeführt von" %}:</span> {{ boxObject.conductedBy }}
-</p> -->
-<!-- <p>
-    <span class="columnHeading">{% translate "Erfolgsfaktoren für die Umsetzung der Methode" %}:</span> {{ boxObject.successFactors }}
-</p> -->

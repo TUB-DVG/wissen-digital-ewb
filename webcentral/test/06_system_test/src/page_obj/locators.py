@@ -80,9 +80,12 @@ class Locator(object):
     # locators of lastprofile:
     stromlastApprLink = "//a[contains(@href, '/LastProfile/stromlast')]"
     heatApproximationLink = "/LastProfile/warmelast"
-    weatherServiceLink = "//a[@href='https://github.com/earthobservations/wetterdienst']"
+    weatherServiceLink = (
+        "//a[@href='https://github.com/earthobservations/wetterdienst']"
+    )
     linkToStandardLoadProdile = (
-        "//a[@href='https://www.bdew.de/energie/standardlastprofile-strom/']")
+        "//a[@href='https://www.bdew.de/energie/standardlastprofile-strom/']"
+    )
 
     # locators inside stromlast-app
     selectPlaceholderCurrentApp = "//div[@class='Select-placeholder']"
@@ -139,9 +142,11 @@ class Locator(object):
 
     # CriteriaCatalog locators
     criteriaCatalogOverviewCard1 = (
-        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    )
     criteriaCatalogOverviewCard2 = (
-        "//div[@title='Planung, Betrieb und Betriebsoptimierung']")
+        "//div[@title='Planung, Betrieb und Betriebsoptimierung']"
+    )
     criteriaCatalogDetailsContentContainer = "//div[@id='hi']"
     allHorizontalLineElements = "//hr"
     fullTextSearchField = "//input[@id='searchInputCriteriaCatalog']"
@@ -189,7 +194,9 @@ class Locator(object):
     resetButton = "div//[@id='cancelButtonTools']"
     # firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
-    headingComparisonSite = "//p[contains(@class, 'description-heading__paragraph')]"
+    headingComparisonSite = (
+        "//p[contains(@class, 'description-heading__paragraph')]"
+    )
     comparisonTableContainer = "//tbody"
     backButton = "//div[@class='secondaryNavbarLeft']/a"
     startComparisonDiv = "//div[@id='startComparisonButtonTools']"
@@ -198,4 +205,6 @@ class Locator(object):
     # DetailsPage locators
     linkNavigatorDiv = "//div[contains(@class, 'linkNavigator')]"
 
-    overviewPageHeading = "//p[contains(@class, 'description-heading__paragraph')]"
+    overviewPageHeading = (
+        "//p[contains(@class, 'description-heading__paragraph')]"
+    )

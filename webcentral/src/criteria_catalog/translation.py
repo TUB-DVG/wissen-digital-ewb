@@ -15,7 +15,8 @@ class TopicTranslationOptions(TranslationOptions):
 
 
 class TagTranslationOptions(TranslationOptions):
-    fields = ("name", )
+    fields = ("name",)
+
 
 class CriteriaCatalogTranslationOptions(TranslationOptions):
     fields = ("name", "text")

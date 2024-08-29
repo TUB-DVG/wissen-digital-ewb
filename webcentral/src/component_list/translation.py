@@ -11,11 +11,11 @@ from .models import (
 
 
 class ComponentClassTranslationOptions(TranslationOptions):
-    fields = ("componentClass", )
+    fields = ("componentClass",)
 
 
 class CategoryTranslationOptions(TranslationOptions):
-    fields = ("category", )
+    fields = ("category",)
 
 
 class ComponentTranslationOptions(TranslationOptions):

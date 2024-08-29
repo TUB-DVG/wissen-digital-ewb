@@ -1,7 +1,6 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
@@ -9,16 +8,17 @@ from common.data_import import DataImport
 
 from .models import *
 
+
 class DataImportApp(DataImport):
     DJANGO_MODEL = "EnvironmentalImpact"
-    DJANGO_APP = "positive_environmental_impact" 
+    DJANGO_APP = "positive_environmental_impact"
     MAPPING_EXCEL_DB_EN = {
         "Category__en": "category_en",
         "Description__en": "description_en",
         "Name_Digital_Application__en": "name_digital_application_en",
         "Projektname__en": "project_name_en",
         "Goals__en": "goals_en",
-        "Digital_applications__en": "digitalApplications_en", 
+        "Digital_applications__en": "digitalApplications_en",
         "Partner__en": "partner_en",
         "Consortium__en": "consortium_en",
         # "Additional_Digital_Application(s)__en": "digitalApplications_en",
@@ -26,8 +26,9 @@ class DataImportApp(DataImport):
         "Relevance__en": "relevance_en",
         "Problem_Statement_and_Problem_Goals__en": "problem_statement_and_problem_goals_en",
         "Implementation_in_the_Project__en": "implementation_in_the_project_en",
-        "Evaluation__en": "evaluation_en"
+        "Evaluation__en": "evaluation_en",
     }
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -77,13 +78,16 @@ class DataImportApp(DataImport):
         strategies = row[header.index("Strategies")]
         relevance = row[header.index("Relevance")]
         image = row[header.index("Image")]
-        problemStatementAndProblemGoals = row[header.index("Problem_Statement_and_Problem_Goals")]
-        implementationInTheProject = row[header.index("Implementation_in_the_Project")]
+        problemStatementAndProblemGoals = row[
+            header.index("Problem_Statement_and_Problem_Goals")
+        ]
+        implementationInTheProject = row[
+            header.index("Implementation_in_the_Project")
+        ]
         evaluation = row[header.index("Evaluation")]
         projectName = row[header.index("Project_Name")]
         weiterführendeLiteratur = row[header.index("Weiterführende Literatur")]
         duration = row[header.index("Duration")]
-
 
         obj, created = EnvironmentalImpact.objects.get_or_create(
             category_de=category,
@@ -104,8 +108,9 @@ class DataImportApp(DataImport):
             evaluation_de=evaluation,
             duration=duration,
         )
-        fundingLabelList = self._processListInput(row[header.index("Funding_Label")],
-                                               ";;")
+        fundingLabelList = self._processListInput(
+            row[header.index("Funding_Label")], ";;"
+        )
         fundingLabelObjList = [
             Subproject.objects.get_or_create(referenceNumber_id=fkzItem)[0]
             for fkzItem in fundingLabelList
@@ -126,18 +131,40 @@ class DataImportApp(DataImport):
         #     literatureObjsList.append(literatureObj)
         obj.funding_label.add(*fundingLabelObjList)
         # obj.literature.add(*literatureObjsList)
-        
+
         if self._englishHeadersPresent(header):
-            obj = self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN) 
+            self._getOrCreateEnglishTranslation(row, header, data, obj)
+
+    def _getOrCreateEnglishTranslation(
+        self, row: list, header: list, data: list, environmentalimpactObj
+    ):
+        """ """
+        for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
+            # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en")
+            # if hasattr(obj, attributeNameWithoutEn)
+            try:
+                setattr(
+                    environmentalimpactObj,
+                    self.MAPPING_EXCEL_DB_EN[mappingKey],
+                    row[header.index(mappingKey)],
+                )
+            except:
+                breakpoint()
+        environmentalimpactObj.save()
+
+        if self._englishHeadersPresent(header):
+            obj = self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         obj.save()
-    
+
     # def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
     #     """
     #
     #     """
     #     for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
-    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
-    #         # if hasattr(obj, attributeNameWithoutEn) 
+    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en")
+    #         # if hasattr(obj, attributeNameWithoutEn)
     #         try:
     #             setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
     #         except:
@@ -153,5 +180,5 @@ class DataImportApp(DataImport):
         for headerItem in header:
             if "__en" in headerItem:
                 return True
-        
+
         return False

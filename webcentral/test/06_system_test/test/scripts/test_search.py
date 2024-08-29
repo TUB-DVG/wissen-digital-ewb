@@ -4,6 +4,7 @@
 It is used to reduce redundancy in the businessApps and Tools-test scripts,
 since the search in buisnessApps and Tools work the same way.
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/...")
@@ -13,7 +14,8 @@ import os
 from random import choice
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -41,8 +43,9 @@ class TestSearch(WebDriverSetup):
     def testStructureOfSearchBar(self):
         """The Search Bar should contain a text-input, selection-inputs and a radio-button"""
 
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/component_list/components/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components/"
+        )
 
     def testUsageDropDown(self):
         """Test if the usage dropdown works.
@@ -54,8 +57,9 @@ class TestSearch(WebDriverSetup):
         """
 
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         self.usageDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
@@ -64,8 +68,9 @@ class TestSearch(WebDriverSetup):
     def testAccessabilityDropdown(self):
         """ """
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         self.accessibilityDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
@@ -74,8 +79,9 @@ class TestSearch(WebDriverSetup):
     def testLifeCyclePhaseDropdown(self):
         """ """
         self.searchPageObj = SearchPage(self.driver)
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         self.lifeCyclePhaseDropdown()
 
         self.driver.get(os.environ["siteUnderTest"] + "/tool_list/")
@@ -101,8 +107,7 @@ class TestSearch(WebDriverSetup):
         if len(searchResultElements) > 0:
             randomResult = choice(searchResultElements)
             self.scrollElementIntoViewAndClick(randomResult)
-            usageOnDetailPage = self.searchPageObj.getUsageForToolOnDetailPage(
-            )
+            usageOnDetailPage = self.searchPageObj.getUsageForToolOnDetailPage()
             self.assertTrue(randomUsageValue in usageOnDetailPage.text)
 
     def scrollElementIntoViewAndClick(self, webelement) -> None:
@@ -127,7 +132,8 @@ class TestSearch(WebDriverSetup):
     def accessibilityDropdown(self):
         """ """
         accessibilityDropdownoptions = (
-            self.searchPageObj.getAccessabilityDropdown())
+            self.searchPageObj.getAccessabilityDropdown()
+        )
 
         # exclude Nutzung from list:
         for index, currentOption in enumerate(accessibilityDropdownoptions):
@@ -148,7 +154,9 @@ class TestSearch(WebDriverSetup):
             try:
                 accessabilityOnDetailPage = (
                     self.searchPageObj.getAccessabilityParagraph(
-                        accessabilityElementValue))
+                        accessabilityElementValue
+                    )
+                )
             except:
                 self.assertTrue(
                     False,
@@ -158,7 +166,8 @@ class TestSearch(WebDriverSetup):
     def lifeCyclePhaseDropdown(self):
         """ """
         lifeCyclePhaseDropdownoptions = (
-            self.searchPageObj.getLifeCyclePhaseDropdown())
+            self.searchPageObj.getLifeCyclePhaseDropdown()
+        )
 
         # exclude Nutzung from list:
         for index, currentOption in enumerate(lifeCyclePhaseDropdownoptions):
@@ -179,7 +188,9 @@ class TestSearch(WebDriverSetup):
             try:
                 lifeCyclePhaseOnDetailPage = (
                     self.searchPageObj.getLifeCyclePhaseSpan(
-                        randomLifeCyclePhaseValue))
+                        randomLifeCyclePhaseValue
+                    )
+                )
             except:
                 self.assertTrue(
                     False,

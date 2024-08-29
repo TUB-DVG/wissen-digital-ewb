@@ -6,9 +6,9 @@ from .views import (
 )
 
 urlpatterns = [
-    path("challenges/",
-         businessModelsChallenge,
-         name="businessModelsChallenge"),
+    path(
+        "challenges/", businessModelsChallenge, name="businessModelsChallenge"
+    ),
     path(
         "challenges/<int:challengeId>/",
         businessModelsChallengeDetails,

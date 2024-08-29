@@ -1,5 +1,5 @@
 from modeltranslation.translator import (
-    translator, 
+    translator,
     TranslationOptions,
 )
 
@@ -7,11 +7,12 @@ from .models import (
     collectedDatasets,
 )
 
+
 class collectedDatasetsTranslationOptions(TranslationOptions):
     fields = (
-        "nameDataset", 
-        "useCaseCategory", 
-        "categoryDataset", 
+        "nameDataset",
+        "useCaseCategory",
+        "categoryDataset",
         "reference",
         "availability",
         "coverage",

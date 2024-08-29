@@ -9,6 +9,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from test.scripts.test_main_page import TestMainPage
 from test.scripts.test_navbar import TestNavbar
+
 # from test.scripts.test_tools import TestDigitalToolsPage
 # from test.scripts.test_click_sites import TestClickThroughSites
 # from test.scripts.test_lastprofile import TestLastProfile
@@ -22,6 +23,7 @@ from test.scripts.test_navbar import TestNavbar
 # from test.scripts.TestPublications import TestPublicationPage
 # from test.scripts.TestComponentsList import TestComponentsList
 from test.scripts.test_user_integration import TestUserIntegration
+
 # from test.scripts.TestNegativeEnvironmentalImpacts import (
 #     TestNegativeEnvironmentalImpacts, )
 # from test.scripts.TestBusinessModels import TestBusinessModels
@@ -38,10 +40,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # Add an optional argument for the test file and test method
-    parser.add_argument("--test_file",
-                        help="add a Test-file, which should be executed.")
-    parser.add_argument("--test_method",
-                        help="add a Test-method, which should be executed.")
+    parser.add_argument(
+        "--test_file", help="add a Test-file, which should be executed."
+    )
+    parser.add_argument(
+        "--test_method", help="add a Test-method, which should be executed."
+    )
 
     # Parse the command line arguments
     args = parser.parse_args()
@@ -55,45 +59,49 @@ if __name__ == "__main__":
     if testFileName is not None and testMethodName is not None:
         # Load the specific test method from the test file
         # breakpoint()
-        testSuite = testLoader.loadTestsFromName(testMethodName,
-                                                 module=getattr(
-                                                     sys.modules[__name__],
-                                                     testFileName))
+        testSuite = testLoader.loadTestsFromName(
+            testMethodName, module=getattr(sys.modules[__name__], testFileName)
+        )
     elif testFileName is not None:
         # Load all test methods from the test file
         testClass = getattr(sys.modules[__name__], testFileName)
-        testSuite = TestSuite((testLoader.loadTestsFromTestCase(testClass)), )
+        testSuite = TestSuite(
+            (testLoader.loadTestsFromTestCase(testClass)),
+        )
     else:
         # Test Suite is used since there are multiple test cases
-        testSuite = TestSuite((
-            # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
-            testLoader.loadTestsFromTestCase(TestMainPage),
-            testLoader.loadTestsFromTestCase(TestNavbar),
-            # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
-            # testLoader.loadTestsFromTestCase(TestNormsPage),
-            # testLoader.loadTestsFromTestCase(TestProtocolsPage),
-            # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
-            # testLoader.loadTestsFromTestCase(TestClickThroughSites),
-            # testLoader.loadTestsFromTestCase(TestLastProfile),
-            # testLoader.loadTestsFromTestCase(TestAboutPage),
-            # testLoader.loadTestsFromTestCase(TestSearch),
-            # testLoader.loadTestsFromTestCase(TestPublicationPage),
-            # testLoader.loadTestsFromTestCase(TestComponentsList),
-            testLoader.loadTestsFromTestCase(TestUserIntegration),
-            # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
-            # testLoader.loadTestsFromTestCase(TestBusinessModels),
-            # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
-            # testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
-            # testLoader.loadTestsFromTestCase(TestUseCases),
-            # testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
-            # testLoader.loadTestsFromTestCase(TestDataSufficiency), 
-            # # testLoader.loadTestsFromTestCase(TestAdminPage),
-        ))
+        testSuite = TestSuite(
+            (
+                # testLoader.loadTestsFromTestCase(TestDigitalToolsPage),
+                testLoader.loadTestsFromTestCase(TestMainPage),
+                testLoader.loadTestsFromTestCase(TestNavbar),
+                # testLoader.loadTestsFromTestCase(TestTechnicalStandarts),
+                # testLoader.loadTestsFromTestCase(TestNormsPage),
+                # testLoader.loadTestsFromTestCase(TestProtocolsPage),
+                # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
+                # testLoader.loadTestsFromTestCase(TestClickThroughSites),
+                # testLoader.loadTestsFromTestCase(TestLastProfile),
+                # testLoader.loadTestsFromTestCase(TestAboutPage),
+                # testLoader.loadTestsFromTestCase(TestSearch),
+                # testLoader.loadTestsFromTestCase(TestPublicationPage),
+                # testLoader.loadTestsFromTestCase(TestComponentsList),
+                testLoader.loadTestsFromTestCase(TestUserIntegration),
+                # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
+                # testLoader.loadTestsFromTestCase(TestBusinessModels),
+                # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
+                # testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
+                # testLoader.loadTestsFromTestCase(TestUseCases),
+                # testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
+                # testLoader.loadTestsFromTestCase(TestDataSufficiency),
+                # # testLoader.loadTestsFromTestCase(TestAdminPage),
+            )
+        )
 
     testRunner = TextTestRunner(verbosity=2)
     testRunner.run(testSuite)
 
     # Refer https://testtools.readthedocs.io/en/latest/api.html for more information
     parallelSuite = testtools.ConcurrentStreamTestSuite(
-        lambda: ((case, None) for case in testSuite))
+        lambda: ((case, None) for case in testSuite)
+    )
     parallelSuite.run(testtools.StreamResult())

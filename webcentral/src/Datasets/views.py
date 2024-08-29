@@ -20,8 +20,9 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    datasets = (collectedDatasets.objects.all()
-                )  # reads all data from table Teilprojekt
+    datasets = (
+        collectedDatasets.objects.all()
+    )  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
 
@@ -67,26 +68,20 @@ def index(request):
     page = datasetsPaginator.get_page(pageNum)
 
     context = {
-        "page":
-        page,
-        "search":
-        searched,
+        "page": page,
+        "search": searched,
         # "useCaseCategory":
         # filteredBy[0],
         # "categoryDataset":
         # filteredBy[1],
         # "availability":
         # filteredBy[2],
-        "nameOfTemplate":
-        "datasets",
-        "urlName":
-        "dataset_list",
-        "focusBorder":
-        "technical",
+        "nameOfTemplate": "datasets",
+        "urlName": "dataset_list",
+        "focusBorder": "technical",
         "optionList": [
             {
-                "placeholder":
-                _("Anwendungsfall"),
+                "placeholder": _("Anwendungsfall"),
                 "objects": [
                     _("Potential Erneuerbare Energie"),
                     _("Standardlastprofile"),
@@ -102,14 +97,11 @@ def index(request):
                     _("Sonstiges"),
                     "Other",
                 ],
-                "fieldName":
-                "applicationArea",
-                "filter":
-                filteredBy[0],
+                "fieldName": "applicationArea",
+                "filter": filteredBy[0],
             },
             {
-                "placeholder":
-                _("Kategorie"),
+                "placeholder": _("Kategorie"),
                 "objects": [
                     _("Übertragungsnetzentwicklungspläne"),
                     _("Gebäudebestandsentwicklung"),
@@ -132,14 +124,11 @@ def index(request):
                     "LCA",
                     _("Andere"),
                 ],
-                "filter":
-                filteredBy[1],
-                "fieldName":
-                "category",
+                "filter": filteredBy[1],
+                "fieldName": "category",
             },
             {
-                "placeholder":
-                _("Verfügbarkeit"),
+                "placeholder": _("Verfügbarkeit"),
                 "objects": [
                     "Open/commercial:remote calculation and published report",
                     "Open Data Commons Open Database License 1.0",
@@ -149,16 +138,15 @@ def index(request):
                     "Commercial",
                     "Open",
                 ],
-                "filter":
-                filteredBy[2],
-                "fieldName":
-                "availability",
+                "filter": filteredBy[2],
+                "fieldName": "availability",
             },
         ],
     }
     if filtering:
-        return render(request, "datasets_over/dataset-listings-results.html",
-                      context)
+        return render(
+            request, "datasets_over/dataset-listings-results.html", context
+        )
     return render(request, "datasets_over/dataset-listings.html", context)
 
 

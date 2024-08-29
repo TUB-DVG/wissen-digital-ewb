@@ -18,9 +18,13 @@ def userEngagementDetails(request, engagementId):
 
 def userEngagementDetailsTitle(request, engagmentTitle):
     try:
-        userEngagementObj = UserEngagement.objects.get(category_de=engagmentTitle)
+        userEngagementObj = UserEngagement.objects.get(
+            category_de=engagmentTitle
+        )
     except:
-        userEngagementObj = UserEngagement.objects.get(category_en=engagmentTitle)
+        userEngagementObj = UserEngagement.objects.get(
+            category_en=engagmentTitle
+        )
 
     engagementId = userEngagementObj.id
     context = _defineContextForView()
@@ -38,7 +42,6 @@ def _defineContextForView():
         "backLinkText": _("Übersicht Methoden Nutzendenintegration"),
         "backLink": "userEngagement",
         "leftColumn": "user_integration/userEngagementDetailsLeftColumn.html",
-        "rightColumn":
-        "user_integration/userEngagementDetailsRightColumn.html",
+        "rightColumn": "user_integration/userEngagementDetailsRightColumn.html",
         "imageQuickLinks": False,
     }

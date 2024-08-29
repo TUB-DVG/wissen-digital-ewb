@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
-{% load i18n %}
+  {% load i18n %}
   {% load static %}
   {% load format_tags %}
   <!DOCTYPE html>
@@ -172,7 +172,7 @@ button {
       <div class="row g-4">
         <div class="col-lg-12 border-legal my-4 p-4"
              id="container-criteria-catalog-details">
-             {% include "partials/descriptionContainer.html" %}
+          {% include "partials/descriptionContainer.html" %}
           <br />
           <div class="row sticky-top border-bottom"
                style="top: 115px;
@@ -184,7 +184,9 @@ button {
                         margin-left: 0px;
                         padding-left: 0">{% translate "Themen" %}</div>
             <div class="mb-3" style="width: 106px;">
-              <div id="criterias" style="display: none; font-size: 16px;">{% translate "Kriterien" %}</div>
+              <div id="criterias" style="display: none; font-size: 16px;">
+                {% translate "Kriterien" %}
+              </div>
             </div>
             <div class="mb-3"
                  id="container-criteria-catalog-details"
@@ -209,7 +211,9 @@ button {
                                cursor: pointer;
                                padding: 0px;
                                margin: 0px"
-                        id="collapseEverythingButton">{% translate "Alles einklappen" %}</button>
+                        id="collapseEverythingButton">
+                  {% translate "Alles einklappen" %}
+                </button>
               </div>
             </div>
           </div>
@@ -218,22 +222,23 @@ button {
             {% for tree in trees %}
               {% for node in tree %}
                 {% if node.content.topic.norms != "" %}
-                <div class="grey-box" topicId="{{ node.content.topic.id }}">
-                  <div class="row">
-                    <div class="col-10 heading-grey-container">
-                      <b>{% translate "Relevante DSGVO-Normen" %}</b> 
+                  <div class="grey-box" topicId="{{ node.content.topic.id }}">
+                    <div class="row">
+                      <div class="col-10 heading-grey-container">
+                        <b>{% translate "Relevante DSGVO-Normen" %}</b>
+                      </div>
+                      <div class="col-2">
+                        <img topicId="{{ node.content.topic.id }}"
+                             src="{% static 'assets/images/close.svg' %}"
+                             onclick="toggleNormsBox(this, event)"
+                             class="close-button" />
+                      </div>
                     </div>
-                    <div class="col-2">
-                      <img topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/close.svg' %}" onclick="toggleNormsBox(this, event)" class="close-button">
+                    <div class="row">
+                      <br />
+                      <div class="col-12">{{ node.content.topic.norms }}</div>
                     </div>
                   </div>
-                  <div class="row">
-                    <br>
-                    <div class="col-12">
-                      {{ node.content.topic.norms }}
-                    </div>
-                  </div>
-                </div>
                 {% endif %}
                 {% if node.indent %}
                   {{ node.indent.depth }}
@@ -296,8 +301,16 @@ button {
                               {{ node.content.topic.heading }}
                             </button>
                             <div class="grey-box">{{ node.content.topic.norms }}</div>
-                            <img id="0" topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon.svg' %}" class="info_icon show" onclick="toggleNormsBox(this, event)">
-                            <img id="0" topicId="{{ node.content.topic.id }}" src="{% static 'assets/images/info_icon_selected.svg' %}" class="info_icon_selected" onclick="toggleNormsBox(this, event)">
+                            <img id="0"
+                                 topicId="{{ node.content.topic.id }}"
+                                 src="{% static 'assets/images/info_icon.svg' %}"
+                                 class="info_icon show"
+                                 onclick="toggleNormsBox(this, event)" />
+                            <img id="0"
+                                 topicId="{{ node.content.topic.id }}"
+                                 src="{% static 'assets/images/info_icon_selected.svg' %}"
+                                 class="info_icon_selected"
+                                 onclick="toggleNormsBox(this, event)" />
 
                           </div>
                           <p class="paragraph-first-level"
@@ -350,7 +363,7 @@ button {
         <!-- Page content END -->
       </main>
       <!-- **************** MAIN CONTENT END **************** -->
-       <script>
+      <script>
         // initialization of global variables. These are needed inside criteriaCatalogFunctions.js
         var idOfTopicToBeOpened = "{{ topicIdentifier }}";
         var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
@@ -383,7 +396,7 @@ button {
             $(`img.info_icon[topicId=${topicId}]`).removeClass("show")
           }
         }
-       </script>
+      </script>
       <script src="{% static 'js/criteriaCatalogFunctions.js' %}"></script>
       <img src="{% static 'assets/images/arrow_up.svg' %}"
            id="hiddenImage"

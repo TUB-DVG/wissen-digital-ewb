@@ -1,5 +1,6 @@
 import pdb
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -8,7 +9,6 @@ import random
 
 from selenium import (
     webdriver,
-
 )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
@@ -21,12 +21,11 @@ from Src.PageObject.Pages.toolListPage import ToolListPage
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.AdminPage import AdminPage
 
+
 class TestAdminPage(WebDriverSetup):
 
     def testLoginAsAdmin(self):
-        """Login as Admin with the credentials from .env
-        
-        """
+        """Login as Admin with the credentials from .env"""
 
         self.driver.get(os.environ["siteUnderTest"] + "/admin")
 
@@ -53,6 +52,3 @@ class TestAdminPage(WebDriverSetup):
             self.driver.title,
             "Page Title should be 'Site administration | Django site admin', but its not!",
         )
-        
-
-

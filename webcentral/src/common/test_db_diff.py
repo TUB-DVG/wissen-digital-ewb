@@ -1,3 +1,6 @@
+"""Test the workflow to solve conflicts in data_import 
+"""
+
 from random import choice
 
 from django.test import TestCase
@@ -6,31 +9,55 @@ from django.contrib.admin.sites import AdminSite
 from django.test import RequestFactory
 from django.core.management import call_command
 
-from project_listing.models import *
+from project_listing.models import (
+    Address,
+    Enargus,
+    ExecutingEntity,
+    FurtherFundingInformation,
+    # GrantRecipient,
+    RAndDPlanningCategory,
+    Subproject,
+    Person,
+    # ModuleAssignment,
+)
+
+from project_listing.data_import import DataImportApp
 from .models import DbDiff
 from .admin import DbDiffAdmin
 from .data_import import DataImport
-from project_listing.data_import import DataImportApp
 
 User = get_user_model()
 
+
 class DbDiffAdminTest(TestCase):
+    """Definition of testclass to test if the db conflicts can be solved
+    in the django admin panel.
+
+    """
+
     def setUp(self):
+        """setUp method for all methods of `DbDiffAdminTest`"""
         # Create test data
-        
+
         self.site = AdminSite()
         self.dbDiffAdmin = DbDiffAdmin(DbDiff, self.site)
 
         # Create a test user and request factory
-        self.user = User.objects.create_superuser(username='admin', password='password', email='admin@example.com')
+        self.user = User.objects.create_superuser(
+            username="admin", password="password", email="admin@example.com"
+        )
         self.factory = RequestFactory()
 
     def testOneTableDiffStr(self):
+        """test if the finalization process works if only one table if only
+        one table is in the DbDiff object.
+
+        """
         # Create a mock request
-        request = self.factory.post('/admin/common/dbdiff/')
+        request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
-    
-        fundingObj1 = FurtherFundingInformation.objects.create(
+
+        _ = FurtherFundingInformation.objects.create(
             furtherFundingInformation_id=1,
             fundedBy="BMWK",
             projectManagementAgency="PTJ",
@@ -44,8 +71,8 @@ class DbDiffAdminTest(TestCase):
             researchProgram="Klima und Energie",
             fundingProgram="Erneuerbare Energien Programm",
         )
-        
-        enargusDataObj = Enargus.objects.create(
+
+        _ = Enargus.objects.create(
             startDate="2014-01-01",
             endDate="2024-12-31",
             topics="Hallo",
@@ -61,17 +88,21 @@ class DbDiffAdminTest(TestCase):
             database="Database",
         )
 
-        self.dbDiff1 = DbDiff.objects.create(identifier="12345", diffStr="""<class 'project_listing.models.FurtherFundingInformation'>:
+        self.dbDiff1 = DbDiff.objects.create(
+            identifier="12345",
+            diffStr="""<class 'project_listing.models.FurtherFundingInformation
+            '>:
    furtherFundingInformation_id: 1 -> 2
    fundedBy: BMWK -> BundXYZ
    projectManagementAgency: PTJ -> Projektträger Jülich
    researchProgram: EnergieWEndeBauen -> Klima und Energie
-   fundingProgram: Test-Project -> Erneuerbare Energien Programm""")
-    
+   fundingProgram: Test-Project -> Erneuerbare Energien Programm""",
+        )
+
         # Simulate selecting books and calling the action
         queryset = DbDiff.objects.all()
         self.dbDiffAdmin.finalizeChange(request, queryset)
-        
+
         fundingObjs = FurtherFundingInformation.objects.all()
         self.assertEqual(len(fundingObjs), 1)
 
@@ -80,10 +111,10 @@ class DbDiffAdminTest(TestCase):
         contains multiple tables.
 
         """
-        request = self.factory.post('/admin/common/dbdiff/')
+        request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
-    
-        fundingObj1 = FurtherFundingInformation.objects.create(
+
+        _ = FurtherFundingInformation.objects.create(
             furtherFundingInformation_id=1,
             fundedBy="BMWK",
             projectManagementAgency="PTJ",
@@ -97,11 +128,10 @@ class DbDiffAdminTest(TestCase):
             researchProgram="Klima und Energie",
             fundingProgram="Erneuerbare Energien Programm",
         )
-        
-        
-        
-        
-        self.dbDiff1 = DbDiff.objects.create(identifier="12345", diffStr="""<class 'project_listing.models.Address'>:
+
+        self.dbDiff1 = DbDiff.objects.create(
+            identifier="12345",
+            diffStr="""<class 'project_listing.models.Address'>:
    address_id: 2 -> 4
    plz: 10123 -> 53113
    location: Berlin -> Bonn
@@ -125,7 +155,8 @@ class DbDiffAdminTest(TestCase):
    projectManagementAgency: PTJ -> Projektträger Jülich
    researchProgram: EnergieWEndeBauen -> Klima und Energie
    fundingProgram: Test-Project -> Erneuerbare Energien Programm
-        """)
+        """,
+        )
         oldAdress = Address.objects.create(
             address_id=2,
             plz="10123",
@@ -140,8 +171,8 @@ class DbDiffAdminTest(TestCase):
             state="Deutschland",
             address="Godesberger Allee 90",
         )
- 
-        oldExecutingEntityObj = ExecutingEntity.objects.create(
+
+        _ = ExecutingEntity.objects.create(
             executingEntity_id=1,
             name="CDE Gmbh",
             address=oldAdress,
@@ -152,33 +183,31 @@ class DbDiffAdminTest(TestCase):
             address=newAdress,
         )
 
-        oldPersonObj, created = Person.objects.get_or_create(
+        _, _ = Person.objects.get_or_create(
             person_id=1,
             surname="Meier",
             firstName="Peter",
             title="",
             email="m.meier@berlin.de",
         )
-        newPersonObj, created = Person.objects.get_or_create(
+        _, _ = Person.objects.get_or_create(
             person_id=2,
             surname="Müller",
             firstName="Johann",
             title="",
             email="johann.mueller@example.com",
         )
-        rAnDObj = RAndDPlanningCategory.objects.create(
-            
+        _ = RAndDPlanningCategory.objects.create(
             rAndDPlanningCategoryNumber="1265",
             rAndDPlanningCategoryText="Qlter Text",
         )
-        
+
         rAnDObjNew = RAndDPlanningCategory.objects.create(
-            
             rAndDPlanningCategoryNumber="EN-20",
             rAndDPlanningCategoryText="Erneuerbare Energieentwicklung",
         )
-                
-        enargusDataObj = Enargus.objects.create(
+
+        _ = Enargus.objects.create(
             startDate="2014-01-01",
             endDate="2024-12-31",
             topics="Hallo",
@@ -196,55 +225,53 @@ class DbDiffAdminTest(TestCase):
 
         queryset = DbDiff.objects.all()
         self.dbDiffAdmin.finalizeChange(request, queryset)
-        
+
         fundingObjs = FurtherFundingInformation.objects.all()
         self.assertEqual(len(fundingObjs), 1)
 
         rAndDObjects = RAndDPlanningCategory.objects.all()
         self.assertEqual(len(rAndDObjects), 1)
-       
+
         executingEntities = ExecutingEntity.objects.all()
         self.assertEqual(len(executingEntities), 1)
-        
+
         personObjs = Person.objects.all()
         self.assertEqual(len(personObjs), 1)
 
     def testFinalizeChangesWithGetOrCreateCall(self):
-        """
-        
-        """
-        request = self.factory.post('/admin/common/dbdiff/')
+        """Integration test for finalization step"""
+        request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
 
         header = [
             "FKZ",
-            "Laufzeitbeginn", 
-            "Laufzeitende", 
-            "Thema", 
-            "Verbundbezeichung", 
-            "Foerdersumme_EUR", 
+            "Laufzeitbeginn",
+            "Laufzeitende",
+            "Thema",
+            "Verbundbezeichung",
+            "Foerdersumme_EUR",
             "Kurzbeschreibung_de",
             "Kurzbeschreibung_en",
             "Datenbank",
-            "Bundesministerium", 
-            "Projekttraeger", 
-            "Foerderprogramm", 
+            "Bundesministerium",
+            "Projekttraeger",
+            "Foerderprogramm",
             "Forschungsprogramm",
-            "Name_pl", 
-            "Vorname_pl", 
-            "Titel_pl", 
+            "Name_pl",
+            "Vorname_pl",
+            "Titel_pl",
             "Email_pl",
-            "Leistungsplan_Sys_Text", 
+            "Leistungsplan_Sys_Text",
             "Leistungsplan_Sys_Nr",
-            "PLZ_AS", 
-            "Ort_AS", 
-            "Land_AS", 
-            "Adress_AS", 
+            "PLZ_AS",
+            "Ort_AS",
+            "Land_AS",
+            "Adress_AS",
             "Name_AS",
-            "PLZ_ZWE", 
-            "Ort_ZWE", 
-            "Land_ZWE", 
-            "Adress_ZWE", 
+            "PLZ_ZWE",
+            "Ort_ZWE",
+            "Land_ZWE",
+            "Adress_ZWE",
             "Name_ZWE",
         ]
 
@@ -255,8 +282,8 @@ class DbDiffAdminTest(TestCase):
             "Renewable Energy Research",  # Thema
             "Energy for Future",  # Verbundbezeichung
             "5000000",  # Foerdersumme_EUR
-            "Forschung zur Optimierung erneuerbarer Energiequellen.",  # Kurzbeschreibung_de
-            "Research on optimizing renewable energy sources.",  # Kurzbeschreibung_en
+            "Forschung zur Optimierung erneuerbarer Energiequellen.",
+            "Research on optimizing renewable energy sources.",
             "ForschungDB",  # Datenbank
             "BundXYZ",  # Bundesministerium
             "Projektträger Jülich",  # Projekttraeger
@@ -273,13 +300,13 @@ class DbDiffAdminTest(TestCase):
             "Deutschland",  # Land_AS
             "Godesberger Allee 90",  # Adress_AS
             "Energie Institut",  # Name_AS
-            "10777", 
-            "Berlin", 
-            "Deutschland", 
-            "FasanenStr. 13", 
+            "10777",
+            "Berlin",
+            "Deutschland",
+            "FasanenStr. 13",
             "Max Muster",
         ]
-        
+
         row2 = [
             "03EWR002A",
             "2024-01-02",  # Laufzeitbeginn
@@ -287,8 +314,8 @@ class DbDiffAdminTest(TestCase):
             "Renewable Energy",  # Thema
             "Energy for Future",  # Verbundbezeichung
             "5000000",  # Foerdersumme_EUR
-            "Forschung zur Optimierung erneuerbarer Energiequellen.",  # Kurzbeschreibung_de
-            "Research on optimizing renewable energy sources.",  # Kurzbeschreibung_en
+            "Forschung zur Optimierung erneuerbarer Energiequellen.",
+            "Research on optimizing renewable energy sources.",
             "ForschungDB",  # Datenbank
             "Hallo",  # Bundesministerium
             "Projektträger Jülich2",  # Projekttraeger
@@ -305,24 +332,31 @@ class DbDiffAdminTest(TestCase):
             "Deutschland",  # Land_AS
             "Godesberger Allee 91",  # Adress_AS
             "Energie Institut",  # Name_AS
-            "10777", 
-            "Berlin", 
-            "Deutschland", 
-            "FasanenStr. 12", 
+            "10777",
+            "Berlin",
+            "Deutschland",
+            "FasanenStr. 12",
             "Max Muster",
         ]
- 
+
         data = [row, row2]
         importObj = DataImportApp("dummy.csv")
-        enargusDataOne, created = importObj.getOrCreate(row, header, data)
-        
-        subprojectForReferenceNumber = Subproject.objects.get(referenceNumber_id=row[header.index("FKZ")])
-        self.assertEqual(subprojectForReferenceNumber.enargusData, enargusDataOne)
+        enargusDataOne, _ = importObj.getOrCreate(row, header, data)
 
-        enargusDataTwo, created = importObj.getOrCreate(row2, header, data)
-        subprojectForReferenceNumber = Subproject.objects.get(referenceNumber_id=row[header.index("FKZ")])
-        self.assertEqual(subprojectForReferenceNumber.enargusData, enargusDataTwo)
+        subprojectForReferenceNumber = Subproject.objects.get(
+            referenceNumber_id=row[header.index("FKZ")]
+        )
+        self.assertEqual(
+            subprojectForReferenceNumber.enargusData, enargusDataOne
+        )
 
+        enargusDataTwo, _ = importObj.getOrCreate(row2, header, data)
+        subprojectForReferenceNumber = Subproject.objects.get(
+            referenceNumber_id=row[header.index("FKZ")]
+        )
+        self.assertEqual(
+            subprojectForReferenceNumber.enargusData, enargusDataTwo
+        )
 
     def testForAllEnargusData(self):
         """Import 2 snapshots of the enargus data and execute the
@@ -335,65 +369,116 @@ class DbDiffAdminTest(TestCase):
             "project_listing",
             "../../02_work_doc/01_daten/01_prePro/enargus_csv_20230403.csv",
         )
-        
-        numberOfEnargusDataObjs = len(Enargus.objects.all())
-        numberOfAddresses = len(Address.objects.all())
 
         call_command(
             "data_import",
             "project_listing",
             "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv",
-
         )
 
-        request = self.factory.post('/admin/common/dbdiff/')
+        request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
- 
+
         dbDiffs = DbDiff.objects.all()
         self.dbDiffAdmin.finalizeChange(request, dbDiffs)
-    
+
         # import the enargus dataset, and check a random row:
-        dataImportObj = DataImport("../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv")
+        dataImportObj = DataImport(
+            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv"
+        )
         header, data = dataImportObj.load()
 
         randomRow = choice(data)
-        correspondingSubproject = Subproject.objects.get(referenceNumber_id=randomRow[header.index("FKZ")])
+        correspondingSubproject = Subproject.objects.get(
+            referenceNumber_id=randomRow[header.index("FKZ")]
+        )
         enargusDataObj = correspondingSubproject.enargusData
-        
-        self.assertEqual(randomRow[header.index("Laufzeitbeginn")], str(enargusDataObj.startDate))
-        self.assertEqual(randomRow[header.index("Laufzeitende")], str(enargusDataObj.endDate))
-        self.assertEqual(randomRow[header.index("Thema")], enargusDataObj.topics)
-        self.assertEqual(randomRow[header.index("Verbundbezeichung")], enargusDataObj.collaborativeProject)
-        self.assertEqual(randomRow[header.index("Kurzbeschreibung_de")], enargusDataObj.shortDescriptionDe)
-        self.assertEqual(randomRow[header.index("Kurzbeschreibung_en")], enargusDataObj.shortDescriptionEn)
-        self.assertEqual(randomRow[header.index("Datenbank")], enargusDataObj.database)
-        self.assertEqual(randomRow[header.index("Foerdersumme_EUR")], str(enargusDataObj.appropriatedBudget))
- 
+
+        self.assertEqual(
+            randomRow[header.index("Laufzeitbeginn")],
+            str(enargusDataObj.startDate),
+        )
+        self.assertEqual(
+            randomRow[header.index("Laufzeitende")], str(enargusDataObj.endDate)
+        )
+        self.assertEqual(
+            randomRow[header.index("Thema")], enargusDataObj.topics
+        )
+        self.assertEqual(
+            randomRow[header.index("Verbundbezeichung")],
+            enargusDataObj.collaborativeProject,
+        )
+        self.assertEqual(
+            randomRow[header.index("Kurzbeschreibung_de")],
+            enargusDataObj.shortDescriptionDe,
+        )
+        self.assertEqual(
+            randomRow[header.index("Kurzbeschreibung_en")],
+            enargusDataObj.shortDescriptionEn,
+        )
+        self.assertEqual(
+            randomRow[header.index("Datenbank")], enargusDataObj.database
+        )
+        self.assertEqual(
+            randomRow[header.index("Foerdersumme_EUR")],
+            str(enargusDataObj.appropriatedBudget),
+        )
+
         personObj = enargusDataObj.projectLead
         self.assertEqual(randomRow[header.index("Name_pl")], personObj.surname)
-        self.assertEqual(randomRow[header.index("Vorname_pl")], personObj.firstName)
+        self.assertEqual(
+            randomRow[header.index("Vorname_pl")], personObj.firstName
+        )
         self.assertEqual(randomRow[header.index("Titel_pl")], personObj.title)
         self.assertEqual(randomRow[header.index("Email_pl")], personObj.email)
- 
+
         furtherFundingInformationObj = enargusDataObj.furtherFundingInformation
-        self.assertEqual(randomRow[header.index("Bundesministerium")], furtherFundingInformationObj.fundedBy)
-        self.assertEqual(randomRow[header.index("Projekttraeger")], furtherFundingInformationObj.projectManagementAgency)
-        self.assertEqual(randomRow[header.index("Foerderprogramm")], furtherFundingInformationObj.fundingProgram)
-        self.assertEqual(randomRow[header.index("Forschungsprogramm")], furtherFundingInformationObj.researchProgram)
+        self.assertEqual(
+            randomRow[header.index("Bundesministerium")],
+            furtherFundingInformationObj.fundedBy,
+        )
+        self.assertEqual(
+            randomRow[header.index("Projekttraeger")],
+            furtherFundingInformationObj.projectManagementAgency,
+        )
+        self.assertEqual(
+            randomRow[header.index("Foerderprogramm")],
+            furtherFundingInformationObj.fundingProgram,
+        )
+        self.assertEqual(
+            randomRow[header.index("Forschungsprogramm")],
+            furtherFundingInformationObj.researchProgram,
+        )
 
         rAndDObj = enargusDataObj.rAndDPlanningCategory
-        self.assertEqual(randomRow[header.index("Leistungsplan_Sys_Nr")], rAndDObj.rAndDPlanningCategoryNumber)
-        self.assertEqual(randomRow[header.index("Leistungsplan_Sys_Text")], rAndDObj.rAndDPlanningCategoryText)
+        self.assertEqual(
+            randomRow[header.index("Leistungsplan_Sys_Nr")],
+            rAndDObj.rAndDPlanningCategoryNumber,
+        )
+        self.assertEqual(
+            randomRow[header.index("Leistungsplan_Sys_Text")],
+            rAndDObj.rAndDPlanningCategoryText,
+        )
 
         grantRecipientObj = enargusDataObj.grantRecipient
-        self.assertEqual(randomRow[header.index("Name_ZWE")], grantRecipientObj.name)
-        self.assertEqual(randomRow[header.index("PLZ_ZWE")], grantRecipientObj.address.plz)
-        self.assertEqual(randomRow[header.index("Ort_ZWE")], grantRecipientObj.address.location)
-        self.assertEqual(randomRow[header.index("Land_ZWE")], grantRecipientObj.address.state)
-        self.assertEqual(randomRow[header.index("Adress_ZWE")], grantRecipientObj.address.address)
- 
-        newNumberOfEnargusObj = len(Enargus.objects.all())
-        newNumberOfAddresses = len(Address.objects.all())
-        
-        self.assertLessEqual(newNumberOfEnargusObj, 2100)
+        self.assertEqual(
+            randomRow[header.index("Name_ZWE")], grantRecipientObj.name
+        )
+        self.assertEqual(
+            randomRow[header.index("PLZ_ZWE")], grantRecipientObj.address.plz
+        )
+        self.assertEqual(
+            randomRow[header.index("Ort_ZWE")],
+            grantRecipientObj.address.location,
+        )
+        self.assertEqual(
+            randomRow[header.index("Land_ZWE")], grantRecipientObj.address.state
+        )
+        self.assertEqual(
+            randomRow[header.index("Adress_ZWE")],
+            grantRecipientObj.address.address,
+        )
 
+        newNumberOfEnargusObj = len(Enargus.objects.all())
+
+        self.assertLessEqual(newNumberOfEnargusObj, 2100)

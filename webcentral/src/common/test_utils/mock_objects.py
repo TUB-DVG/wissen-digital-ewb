@@ -1,13 +1,20 @@
-import pandas as pd
+"""module, which creates a mocked excel-file for testing purposes.
+
+"""
 
 from tempfile import NamedTemporaryFile
 
+import pandas as pd
+
 
 def mock_excel_file():
+    """Function, which creates a mocked excel file."""
     data_german = {
         "name": ["Sensormodul"],
         "resources": ["Dokumentation, API"],
-        "shortDescription": ["Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."],
+        "shortDescription": [
+            "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
+        ],
         "applicationArea": ["Industrie, Umweltüberwachung"],
         "provider": ["Technologie AG"],
         "usage": ["Messung und Überwachung"],
@@ -34,7 +41,7 @@ def mock_excel_file():
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
         "technicalStandardsProtocols": ["HTTP, MQTT"],
-        "image": ["sensor_image.png"]
+        "image": ["sensor_image.png"],
     }
 
     # Create DataFrame for German data
@@ -44,7 +51,9 @@ def mock_excel_file():
     data_english = {
         "name": ["Sensor Module"],
         "resources": ["Documentation, API"],
-        "shortDescription": ["An advanced sensor module for capturing environmental parameters."],
+        "shortDescription": [
+            "An advanced sensor module for capturing environmental parameters."
+        ],
         "applicationArea": ["Industry, Environmental Monitoring"],
         "provider": ["Technology Inc."],
         "usage": ["Measurement and Monitoring"],
@@ -71,16 +80,17 @@ def mock_excel_file():
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
         "technicalStandardsProtocols": ["HTTP, MQTT"],
-        "image": ["sensor_image.png"]
+        "image": ["sensor_image.png"],
     }
 
     # Create DataFrame for English data
     df_english = pd.DataFrame(data_english)
-    
-    tempfileObj = NamedTemporaryFile(prefix="TestTools", suffix=".xlsx", delete=True)
-    with pd.ExcelWriter(tempfileObj.name, engine='xlsxwriter') as writer:
-        df_german.to_excel(writer, sheet_name="German", index=False)
-        df_english.to_excel(writer, sheet_name="English", index=False)   
 
+    tempfileObj = NamedTemporaryFile(
+        prefix="TestTools", suffix=".xlsx", delete=True
+    )
+    with pd.ExcelWriter(tempfileObj.name, engine="xlsxwriter") as writer:
+        df_german.to_excel(writer, sheet_name="German", index=False)
+        df_english.to_excel(writer, sheet_name="English", index=False)
 
     return tempfileObj

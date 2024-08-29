@@ -1,7 +1,6 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
@@ -19,13 +18,14 @@ from .models import (
     Tools,
 )
 from TechnicalStandards.models import (
-        Norm,
-        Protocol,
+    Norm,
+    Protocol,
 )
 from project_listing.models import Subproject
 
+
 class DataImportApp(DataImport):
-    
+
     DJANGO_MODEL = "Tools"
     DJANGO_APP = "tools_over"
     MAPPING_EXCEL_DB_EN = {
@@ -37,7 +37,7 @@ class DataImportApp(DataImport):
         "provider__en": "provider_en",
         "yearOfRelease__en": "yearOfRelease_en",
         "lastUpdate__en": "lastUpdate_en",
-        "classification__en": "classification_en", 
+        "classification__en": "classification_en",
         "resources__en": "resources_en",
         "applicationArea__en": "applicationArea_en",
         "provider__en": "provider_en",
@@ -66,6 +66,7 @@ class DataImportApp(DataImport):
         # "technicalStandardsProtocols_en": "technicalStandardsProtocols_en",
         # "image_en": "image_en",
     }
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -106,34 +107,44 @@ class DataImportApp(DataImport):
         shortDescription = row[header.index("shortDescription")]
 
         processedApplicationAreaList = self._correctReadInValue(
-            row[header.index("applicationArea")])
+            row[header.index("applicationArea")]
+        )
         applicationAreaList = self._iterateThroughListOfStrings(
-            processedApplicationAreaList, ApplicationArea)
+            processedApplicationAreaList, ApplicationArea
+        )
 
         processedUsageList = self._correctReadInValue(
-            row[header.index("usage")])
-        usageList = self._iterateThroughListOfStrings(processedUsageList,
-                                                      Usage)
+            row[header.index("usage")]
+        )
+        usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
 
         processedTargetGroup = self._correctReadInValue(
-            row[header.index("targetGroup")])
+            row[header.index("targetGroup")]
+        )
         targetGroupList = self._iterateThroughListOfStrings(
-            processedTargetGroup, TargetGroup)
+            processedTargetGroup, TargetGroup
+        )
 
         processedAccessibilityList = self._correctReadInValue(
-            row[header.index("accessibility")])
+            row[header.index("accessibility")]
+        )
         accessibilityList = self._iterateThroughListOfStrings(
-            processedAccessibilityList, Accessibility)
+            processedAccessibilityList, Accessibility
+        )
 
         processedlifeCyclePhase = self._correctReadInValue(
-            row[header.index("lifeCyclePhase")])
+            row[header.index("lifeCyclePhase")]
+        )
         lifeCyclePhaseList = self._iterateThroughListOfStrings(
-            processedlifeCyclePhase, LifeCyclePhase)
+            processedlifeCyclePhase, LifeCyclePhase
+        )
 
         processedUserInterface = self._correctReadInValue(
-            row[header.index("userInterface")])
+            row[header.index("userInterface")]
+        )
         userInterfaceList = self._iterateThroughListOfStrings(
-            processedUserInterface, UserInterface)
+            processedUserInterface, UserInterface
+        )
 
         lastUpdate = row[header.index("lastUpdate")]
 
@@ -142,7 +153,8 @@ class DataImportApp(DataImport):
             lastUpdate = "unbekannt"
         if lastUpdate not in correctLastUpdateValues:
             if isinstance(lastUpdate, pd.Timestamp) or isinstance(
-                    lastUpdate, datetime):
+                lastUpdate, datetime
+            ):
                 date = lastUpdate.date()
             else:
                 try:
@@ -166,17 +178,19 @@ class DataImportApp(DataImport):
         furtherInfos = row[header.index("furtherInformation")]
         alternatives = row[header.index("alternatives")]
         processedSpecificApplicationList = self._correctReadInValue(
-            row[header.index("specificApplication")])
+            row[header.index("specificApplication")]
+        )
         specificApplicationList = self._iterateThroughListOfStrings(
-            processedSpecificApplicationList, Subproject)
+            processedSpecificApplicationList, Subproject
+        )
 
         provider = row[header.index("provider")]
         imageName = row[header.index("image")]
         processedScaleList = self._correctReadInValue(
-            row[header.index("scale")])
+            row[header.index("scale")]
+        )
 
-        scaleList = self._iterateThroughListOfStrings(processedScaleList,
-                                                      Scale)
+        scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
         released = row[header.index("released")]
         if released == "":
             released = None
@@ -200,21 +214,26 @@ class DataImportApp(DataImport):
             developmentState = int(developmentState)
 
         processedTechnicalStandardsNorms = self._correctReadInValue(
-            row[header.index("technicalStandardsNorms")])
+            row[header.index("technicalStandardsNorms")]
+        )
         technicalStandardsNormsList = self._iterateThroughListOfStrings(
-            processedTechnicalStandardsNorms, Norm)
+            processedTechnicalStandardsNorms, Norm
+        )
 
-        technicalStandardsProtocolsList = row[header.index(
-            "technicalStandardsProtocols")].split(",")
+        technicalStandardsProtocolsList = row[
+            header.index("technicalStandardsProtocols")
+        ].split(",")
         processedFocusList = self._correctReadInValue(
-            row[header.index("focus")])
-        focusList = self._iterateThroughListOfStrings(processedFocusList,
-                                                      Focus)
+            row[header.index("focus")]
+        )
+        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
 
         processedClassificationList = self._correctReadInValue(
-            row[header.index("classification")])
+            row[header.index("classification")]
+        )
         classificationList = self._iterateThroughListOfStrings(
-            processedClassificationList, Classification)
+            processedClassificationList, Classification
+        )
         userInterfaceNotes = row[header.index("userInterfaceNotes")]
         programmingLanguages = row[header.index("programmingLanguages")]
         frameworksLibraries = row[header.index("frameworksLibraries")]
@@ -222,25 +241,34 @@ class DataImportApp(DataImport):
         resources = row[header.index("resources")]
         focusElements = Focus.objects.filter(focus__in=focusList)
         classificationElements = Classification.objects.filter(
-            classification__in=classificationList)
+            classification__in=classificationList
+        )
         applicationAreaElements = ApplicationArea.objects.filter(
-            applicationArea__in=applicationAreaList)
+            applicationArea__in=applicationAreaList
+        )
         usageElements = Usage.objects.filter(usage__in=usageList)
         lifeCyclePhaseElements = LifeCyclePhase.objects.filter(
-            lifeCyclePhase__in=lifeCyclePhaseList)
+            lifeCyclePhase__in=lifeCyclePhaseList
+        )
         userInterfaceElements = UserInterface.objects.filter(
-            userInterface__in=userInterfaceList)
+            userInterface__in=userInterfaceList
+        )
         targetGroupElements = TargetGroup.objects.filter(
-            targetGroup__in=targetGroupList)
+            targetGroup__in=targetGroupList
+        )
         scaleElements = Scale.objects.filter(scale__in=scaleList)
         accessibilityElements = Accessibility.objects.filter(
-            accessibility__in=accessibilityList)
+            accessibility__in=accessibilityList
+        )
         specificApplicationElements = Subproject.objects.filter(
-            referenceNumber_id__in=specificApplicationList)
+            referenceNumber_id__in=specificApplicationList
+        )
         technicalStandardsNormsElements = Norm.objects.filter(
-            name__in=technicalStandardsNormsList)
+            name__in=technicalStandardsNormsList
+        )
         technicalStandardsProtocolsElements = Protocol.objects.filter(
-            name__in=technicalStandardsProtocolsList)
+            name__in=technicalStandardsProtocolsList
+        )
         obj, created = Tools.objects.get_or_create(
             name=name,
             shortDescription=shortDescription,
@@ -286,12 +314,13 @@ class DataImportApp(DataImport):
             obj.specificApplication.add(*specificApplicationElements)
             obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
             obj.technicalStandardsProtocols.add(
-                *technicalStandardsProtocolsElements)
+                *technicalStandardsProtocolsElements
+            )
             # for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
             #     setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
-            obj = self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN) 
+            obj = self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
             obj.save()
 
         return obj, created
-
-    

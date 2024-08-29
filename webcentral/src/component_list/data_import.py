@@ -1,13 +1,13 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
 from common.data_import import DataImport
 
 from .models import *
+
 
 class DataImportApp(DataImport):
     DJANGO_APP = "component_list"
@@ -18,6 +18,7 @@ class DataImportApp(DataImport):
         "Beschreibung__en": "description_en",
         "Weitere Informationen / Anmerkungen__en": "furtherInformationNotes_en",
     }
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -62,23 +63,33 @@ class DataImportApp(DataImport):
         component = ComponentClass.objects.get(componentClass=componentStr)
         description = row[header.index("Beschreibung")]
         try:
-            energyConsumptionUsePhaseTotal = float(row[header.index(
-                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)")])
+            energyConsumptionUsePhaseTotal = float(
+                row[
+                    header.index(
+                        "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
+                    )
+                ]
+            )
         except ValueError:
             energyConsumptionUsePhaseTotal = None
         try:
-            specificGlobalWarmingPotentialTotal = float(row[header.index(
-                "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)")])
+            specificGlobalWarmingPotentialTotal = float(
+                row[
+                    header.index(
+                        "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"
+                    )
+                ]
+            )
         except ValueError:
             specificGlobalWarmingPotentialTotal = None
         try:
-            globalWarmingPotentialTotal = float(row[header.index(
-                "Treibhauspotenzial (gesamt; in kg CO2-e)")])
+            globalWarmingPotentialTotal = float(
+                row[header.index("Treibhauspotenzial (gesamt; in kg CO2-e)")]
+            )
         except ValueError:
-            globalWarmingPotentialTotal = None       
+            globalWarmingPotentialTotal = None
         try:
-            componentWeight = float(
-                row[header.index("Bauteilgewicht (in kg)")])
+            componentWeight = float(row[header.index("Bauteilgewicht (in kg)")])
         except ValueError:
             componentWeight = None
         try:
@@ -86,35 +97,59 @@ class DataImportApp(DataImport):
         except ValueError:
             lifetime = None
         # lifetime = row[header.index("Lifetime (in years)")]
-        powerConsumptionUsePhaseActiveStr = row[header.index(
-                "Leistung Nutzungsphase (akitv; in W)")]
-        energyConsumptionUsePhaseActive, powerUseActiveSuper = self._processFloatWithCharacter(str(powerConsumptionUsePhaseActiveStr))
+        powerConsumptionUsePhaseActiveStr = row[
+            header.index("Leistung Nutzungsphase (akitv; in W)")
+        ]
+        energyConsumptionUsePhaseActive, powerUseActiveSuper = (
+            self._processFloatWithCharacter(
+                str(powerConsumptionUsePhaseActiveStr)
+            )
+        )
 
         try:
-            energyConsumptionUsePhasePassive = float(row[header.index(
-                "Leistung Nutzungsphase (passiv/ Stand-by; in W)")])
+            energyConsumptionUsePhasePassive = float(
+                row[
+                    header.index(
+                        "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
+                    )
+                ]
+            )
         except ValueError:
             energyConsumptionUsePhasePassive = None
 
-        globalWarmingPotentialProductionStr = row[header.index(
-                "Treibhauspotenzial (Herstellung; in kg CO2-e)")]
-        globalWarmingPotentialProduction, potentialProductionSup = self._processFloatWithCharacter(str(globalWarmingPotentialProductionStr))
- 
-        globalWarmingPotentialUsePhase = row[header.index(
-                "Treibhauspotenzial (Nutzung; in kg CO2-e)")]
-        globalWarmingPotentialUsePhase, potentialUseSup = self._processFloatWithCharacter(str(globalWarmingPotentialUsePhase))
+        globalWarmingPotentialProductionStr = row[
+            header.index("Treibhauspotenzial (Herstellung; in kg CO2-e)")
+        ]
+        globalWarmingPotentialProduction, potentialProductionSup = (
+            self._processFloatWithCharacter(
+                str(globalWarmingPotentialProductionStr)
+            )
+        )
+
+        globalWarmingPotentialUsePhase = row[
+            header.index("Treibhauspotenzial (Nutzung; in kg CO2-e)")
+        ]
+        globalWarmingPotentialUsePhase, potentialUseSup = (
+            self._processFloatWithCharacter(str(globalWarmingPotentialUsePhase))
+        )
 
         try:
-            globalWarmingPotentialEndOfLife = float(row[header.index(
-                "Treibhauspotenzial (Entsorgung; in kg CO2-e)")])
+            globalWarmingPotentialEndOfLife = float(
+                row[
+                    header.index("Treibhauspotenzial (Entsorgung; in kg CO2-e)")
+                ]
+            )
         except ValueError:
             globalWarmingPotentialEndOfLife = None
-        furtherInformationNotes = row[header.index(
-            "Weitere Informationen / Anmerkungen")]
+        furtherInformationNotes = row[
+            header.index("Weitere Informationen / Anmerkungen")
+        ]
         sources = row[header.index("Quellen")]
-        
-        operationTimeStr = row[header.index("Betriebsdauer (h/Jahr)")] 
-        yearOfUse, operationSup = self._processFloatWithCharacter(str(operationTimeStr))
+
+        operationTimeStr = row[header.index("Betriebsdauer (h/Jahr)")]
+        yearOfUse, operationSup = self._processFloatWithCharacter(
+            str(operationTimeStr)
+        )
 
         obj, created = Component.objects.get_or_create(
             category=category,
@@ -139,16 +174,18 @@ class DataImportApp(DataImport):
             operationTimeSupscript=operationSup,
         )
         if self._englishHeadersPresent(header):
-            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
+            self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         return obj, created
-    
+
     # def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
     #     """
     #
     #     """
     #     for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
-    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
-    #         # if hasattr(obj, attributeNameWithoutEn) 
+    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en")
+    #         # if hasattr(obj, attributeNameWithoutEn)
     #         try:
     #             setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
     #         except:
@@ -156,25 +193,20 @@ class DataImportApp(DataImport):
     #     environmentalimpactObj.save()
     #
     #
-   
-    def _processFloatWithCharacter(self, strElement):
-        """
 
-        """
+    def _processFloatWithCharacter(self, strElement):
+        """ """
         superscript = None
         if strElement[-1] in "abcd":
             superscript = strElement[-1]
             numElement = strElement[:-1]
         else:
             numElement = strElement
-       
+
         numElement = numElement.replace(",", ".")
         try:
             floatNumElement = float(numElement)
         except:
             floatNumElement = None
-            
 
         return floatNumElement, superscript
-
-

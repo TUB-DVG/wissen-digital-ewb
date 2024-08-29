@@ -1,4 +1,5 @@
 """View functions for start page and start page search."""
+
 from itertools import chain
 from datetime import date
 
@@ -8,7 +9,7 @@ from django.core.paginator import Paginator
 
 from criteria_catalog.models import (
     CriteriaCatalog,
-    Tag, 
+    Tag,
     Topic,
 )
 from tools_over.models import Tools
@@ -21,6 +22,7 @@ from django.core.paginator import Paginator
 from django.db.models import Prefetch
 from django.contrib.postgres.aggregates import StringAgg
 from django.utils.translation import gettext as _
+
 # from django.db.models.functions import StringAgg
 
 from tools_over.models import (
@@ -29,20 +31,22 @@ from tools_over.models import (
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import (
-    Norm, 
+    Norm,
     Protocol,
 )
+
+
 def findPicturesForFocus(searchResultObj, tool=False):
-    """Return the path to the picture, showing the Focus. 
-    
+    """Return the path to the picture, showing the Focus.
+
     searchResultObj:    obj
         search-result-object, for which the symbol-path should be found
-    
+
     Returns:
     str
         String, which specifies the path to the symbol-image.
     tool:   bool
-        This flag is a temporary argument, as long as "project", "norm" and "standards" 
+        This flag is a temporary argument, as long as "project", "norm" and "standards"
         have no focus
     """
     if tool:
@@ -54,7 +58,7 @@ def findPicturesForFocus(searchResultObj, tool=False):
         focusStrList = ["technisch"]
         if searchResultObj["kindOfItem"] == "Kriterienkatalog":
             focusStrList = ["rechtlich"]
-        
+
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
         focusStr = focusStrList[0]
@@ -84,27 +88,36 @@ def findPicturesForFocus(searchResultObj, tool=False):
         else:
             pass
     elif len(focusStrList) == 3:
-        if ("betrieblich" in focusStrList 
-            and "technisch" in focusStrList 
-            and "ökologisch" in focusStrList):
+        if (
+            "betrieblich" in focusStrList
+            and "technisch" in focusStrList
+            and "ökologisch" in focusStrList
+        ):
             pathStr += "symbol_technical_operational_ecological_focus.svg"
-        elif ("betrieblich" in focusStrList 
+        elif (
+            "betrieblich" in focusStrList
             and "ökologisch" in focusStrList
-            and "rechtlich" in focusStrList):
-            pathStr += "symbol_operational_ecological_legal_focus.svg"
-        elif ("technisch" in focusStrList
-            and "ökologisch" in focusStrList
-            and "rechtlich" in focusStrList):
-            pathStr += "symbol_technical_ecological_legal_focus.svg"
-        elif ("technisch" in focusStrList
             and "rechtlich" in focusStrList
-            and "betrieblich" in focusStrList):
+        ):
+            pathStr += "symbol_operational_ecological_legal_focus.svg"
+        elif (
+            "technisch" in focusStrList
+            and "ökologisch" in focusStrList
+            and "rechtlich" in focusStrList
+        ):
+            pathStr += "symbol_technical_ecological_legal_focus.svg"
+        elif (
+            "technisch" in focusStrList
+            and "rechtlich" in focusStrList
+            and "betrieblich" in focusStrList
+        ):
             pathStr += "symbol_technical_operational_legal_focus.svg"
         else:
             pass
     elif len(focusStrList) == 4:
         pathStr += "symbol_technical_operational_ecological_legal_focus.svg"
     return pathStr
+
 
 def startSearch(request):
     """View function of the start page including central search function."""
@@ -117,7 +130,7 @@ def resultSearch(request):
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
         if searchInput is None:
-          return render(request, "StartSearch/StartSearch.html")
+            return render(request, "StartSearch/StartSearch.html")
         sortBy = request.GET.get("sortBy", "virtDate")
         direction = request.GET.get("direction", None)
     elif request.method == "POST":
@@ -131,55 +144,64 @@ def resultSearch(request):
     criterionToolsTwo = Q(shortDescription__icontains=searchInput)
 
     if request.LANGUAGE_CODE == "de":
-        classificationQueryExpression = 'classification__classification_de'
+        classificationQueryExpression = "classification__classification_de"
     else:
-        classificationQueryExpression = 'classification__classification_en'
-    
-    filteredTools = Tools.objects.annotate(classificationAgg=StringAgg(classificationQueryExpression, delimiter=', ')).values("id", "name", "shortDescription", "lastUpdate", "classificationAgg").filter(criterionToolsOne | criterionToolsTwo)
+        classificationQueryExpression = "classification__classification_en"
+
+    filteredTools = (
+        Tools.objects.annotate(
+            classificationAgg=StringAgg(
+                classificationQueryExpression, delimiter=", "
+            )
+        )
+        .values(
+            "id", "name", "shortDescription", "lastUpdate", "classificationAgg"
+        )
+        .filter(criterionToolsOne | criterionToolsTwo)
+    )
     # filtered projects
     criterionProjectsOne = Q(
-        enargusData__collaborativeProject__icontains=searchInput)
+        enargusData__collaborativeProject__icontains=searchInput
+    )
     criterionProejctsTwo = Q(
-        enargusData__shortDescriptionDe__icontains=searchInput)
-    filteredProjects = Subproject.objects.values("referenceNumber_id",
-                                                  "enargusData__collaborativeProject",
-                                                  "enargusData__shortDescriptionDe",
-                                                  "enargusData__topics",
-                                                  "enargusData__startDate",
-                                                  "referenceNumber_id"
-                                                  ).filter(
-                                                      criterionProjectsOne |
-                                                      criterionProejctsTwo)
+        enargusData__shortDescriptionDe__icontains=searchInput
+    )
+    filteredProjects = Subproject.objects.values(
+        "referenceNumber_id",
+        "enargusData__collaborativeProject",
+        "enargusData__shortDescriptionDe",
+        "enargusData__topics",
+        "enargusData__startDate",
+        "referenceNumber_id",
+    ).filter(criterionProjectsOne | criterionProejctsTwo)
     # filtered norms
     criterionNormsOne = Q(name__icontains=searchInput)
     criterionNormsTwo = Q(shortDescription__icontains=searchInput)
-    filteredNorms = Norm.objects.values("id",
-                                        "name",
-                                        "shortDescription"
-                                        ).filter(
-                                            criterionNormsOne |
-                                            criterionNormsTwo
-                                        )
+    filteredNorms = Norm.objects.values(
+        "id", "name", "shortDescription"
+    ).filter(criterionNormsOne | criterionNormsTwo)
 
     # filtered protocols
     criterionProtocolsOne = Q(name__icontains=searchInput)
     # because there is no short Description until now
     # > use buildingAutomationLayer
     criterionProtocolsTwo = Q(buildingAutomationLayer__icontains=searchInput)
-    filteredProtocols = Protocol.objects.values("id",
-                                                "name",
-                                                "buildingAutomationLayer",
-                                                ).filter(
-                                                    criterionProtocolsOne |
-                                                    criterionProtocolsTwo
-                                                    )
+    filteredProtocols = Protocol.objects.values(
+        "id",
+        "name",
+        "buildingAutomationLayer",
+    ).filter(criterionProtocolsOne | criterionProtocolsTwo)
 
-    criterionCriteriaCatalog = Q(heading__icontains=searchInput) | Q(text__icontains=searchInput)
+    criterionCriteriaCatalog = Q(heading__icontains=searchInput) | Q(
+        text__icontains=searchInput
+    )
     # get topics for tags:
-    filteredTopicsOfCriteriaCatalog = Topic.objects.filter(criterionCriteriaCatalog).values("id", "heading", "text", "criteriaCatalog")
+    filteredTopicsOfCriteriaCatalog = Topic.objects.filter(
+        criterionCriteriaCatalog
+    ).values("id", "heading", "text", "criteriaCatalog")
     # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
-    #     "id", 
-    #     "heading", 
+    #     "id",
+    #     "heading",
     #     "criteriaCatalog",
     # ).filter(criterionCriteriaCatalog)
 
@@ -212,7 +234,7 @@ def resultSearch(request):
         tool["date"] = toolDate
         tool["virtDate"] = toolVirtDate
         tool["pathToFocusImage"] = findPicturesForFocus(tool, tool=True)
-        
+
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     for project in filteredProjects:
         projecName = project.pop("enargusData__collaborativeProject")
@@ -222,7 +244,9 @@ def resultSearch(request):
             projecName = projecName[:40] + " ... "
         referenceNumber = project.get("referenceNumber_id")
         referenceNumberLastCharacters = referenceNumber[-3:]
-        project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
+        project["name"] = (
+            projecName + " [..." + referenceNumberLastCharacters + "]"
+        )
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
         project["classificationAgg"] = _("Forschungsprojekt")
@@ -254,7 +278,7 @@ def resultSearch(request):
         protocol["date"] = _("noch nicht hinterlegt")
         protocol["virtDate"] = date.fromisoformat("2049-09-09")
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
-    
+
     for criteriaCatalog in filteredTopicsOfCriteriaCatalog:
         headingName = criteriaCatalog["heading"]
         if len(headingName) > 40:
@@ -264,34 +288,47 @@ def resultSearch(request):
         criteriaCatalog["classificationAgg"] = _("Kriterienkatalog")
         criteriaCatalog["date"] = _("noch nicht hinterlegt")
         criteriaCatalog["virtDate"] = date.fromisoformat("2049-09-09")
-        criteriaCatalog["pathToFocusImage"] = findPicturesForFocus(criteriaCatalog)
+        criteriaCatalog["pathToFocusImage"] = findPicturesForFocus(
+            criteriaCatalog
+        )
         criteriaCatalog["criteriaCatalogPath"] = ""
-        criteriaCatalogName = CriteriaCatalog.objects.filter(id=criteriaCatalog["criteriaCatalog"])[0].name
-        criteriaCatalog["criteriaCatalogPath"] = criteriaCatalog["criteriaCatalog"]
-    
+        criteriaCatalogName = CriteriaCatalog.objects.filter(
+            id=criteriaCatalog["criteriaCatalog"]
+        )[0].name
+        criteriaCatalog["criteriaCatalogPath"] = criteriaCatalog[
+            "criteriaCatalog"
+        ]
+
     # concat the prepared querySets to one QuerySet
-    filteredData = list(chain(filteredTools, filteredProjects,
-                              filteredNorms, filteredProtocols, filteredTopicsOfCriteriaCatalog))
+    filteredData = list(
+        chain(
+            filteredTools,
+            filteredProjects,
+            filteredNorms,
+            filteredProtocols,
+            filteredTopicsOfCriteriaCatalog,
+        )
+    )
     # sort data list by name/kindOfItem and so on
     if sortBy and direction:
         if direction == "desc":
             # descending
-            filteredData = sorted(filteredData, key=lambda obj: obj[sortBy],
-                                  reverse=True)
+            filteredData = sorted(
+                filteredData, key=lambda obj: obj[sortBy], reverse=True
+            )
         elif direction == "asc":
             # ascending
             filteredData = sorted(filteredData, key=lambda obj: obj[sortBy])
     else:
         # virtual date with descending order
-        filteredData = sorted(filteredData, key=lambda obj: obj["virtDate"],
-                              reverse=True)
+        filteredData = sorted(
+            filteredData, key=lambda obj: obj["virtDate"], reverse=True
+        )
 
     # setup paginator for the table
     filterDataPaginator = Paginator(filteredData, 12)
     pageNumber = request.GET.get("page", None)
-    dataPerPage = filterDataPaginator.get_page(
-        pageNumber
-    )
+    dataPerPage = filterDataPaginator.get_page(pageNumber)
 
     context = {
         "searchInput": searchInput,

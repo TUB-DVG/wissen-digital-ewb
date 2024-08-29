@@ -17,24 +17,38 @@ from .models import (
 
 class ClassificationAdmin(TranslationAdmin):
     pass
+
+
 admin.site.register(Classification, ClassificationAdmin)
+
 
 class FocusAdmin(TranslationAdmin):
     pass
+
+
 admin.site.register(Focus, FocusAdmin)
+
 
 class ApplicationAreaAdmin(TranslationAdmin):
     pass
 
+
 admin.site.register(ApplicationArea, ApplicationAreaAdmin)
+
 
 class UsageAdmin(TranslationAdmin):
     pass
+
+
 admin.site.register(Usage, UsageAdmin)
+
 
 class TargetGroupAdmin(TranslationAdmin):
     pass
+
+
 admin.site.register(TargetGroup, TargetGroupAdmin)
+
 
 class ToolsAdmin(TranslationAdmin):
     # class Media:
@@ -47,20 +61,28 @@ class ToolsAdmin(TranslationAdmin):
     #         'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
     #     }
     pass
+
+
 admin.site.register(Tools, ToolsAdmin)
+
 
 class LifeCyclePhaseAdmin(TranslationAdmin):
     pass
 
+
 admin.site.register(LifeCyclePhase, LifeCyclePhaseAdmin)
+
 
 class UserInterfaceAdmin(TranslationAdmin):
     pass
 
+
 admin.site.register(UserInterface, UserInterfaceAdmin)
+
 
 class AccessibilityAdmin(TranslationAdmin):
     pass
+
 
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
