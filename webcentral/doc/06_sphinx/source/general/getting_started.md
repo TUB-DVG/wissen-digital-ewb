@@ -27,7 +27,7 @@ To build the development environment execute:
 ```
 3. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `01_application/webcentral_app/`.
 3. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
-`
+```
   ./run up_initial dev postgres/databaseDump.sql
-`
+```
 For simplicity it was asumed that a database dump is located in the postgres/ folder inside the root-folder of the webcentral-repository. That command will populate the database with the data present in the database dump and will start the web-application in development mode afterwards. It can the be visited on a browser of choice by going to the link `http://127.0.0.1:8000`.

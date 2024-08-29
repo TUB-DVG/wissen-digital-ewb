@@ -16,16 +16,31 @@ A web interface with database system conatins project infromation of and from th
 The Web-Application consists of three services, which are containerized, with each running in a seperate container. In the backend, the python based `Django`-Framework is used. Data is stored in a relational-database, wtih `PostgreSQL` chosen as the DBMS. A `nginx`-instance is used as a reverse-proxy to redirect HTTP-requests to the `Django`-Backend, using the `uwsgi`-protocol. Static-content is directly served by `nginx` as it has access to a `Docker`-Volume, which is shared with the `Django`-application.
 ![Structure of the Project](./img/dockerComposeDeploymentStructure.png)
 
-To start all needed services, networks, and volumes Docker-compose can be used. Thereby it is possible to start it in development- or production-mode. As a prerequesite, the `.env.example`-file needs to be reviewed. It contains the secrets of the application. Please change the values of the environmental-variables inside there. E.g. the `DJANGO_SUPERUSER_USERNAME` contains the username, which can be used to access the admin-panel and `DJANGO_SUPERUSER_PASSWORD` is the corresponding password. With the `POSTGRES_*`-variables a database with the name `POSTGRES_DB` together with a database-user `POSTGRES_USER` is created on the first startup of the Application. The created database lives in the volume `pgdata`. When changing the values of the `POSTGRES_*`-variables after database creation, it wont be possible for the web-application to access the database. 
-As a first step a `.env`-file needs to be created from the `.env.example`-file. On linux, that can be done with the `cp`-command. From within the project-folder execute the following command in a shell:
+# How to use 
+
+To start all needed services, networks, and volumes Docker-compose can be used. Is is possible to use the app in development- or production-mode. As a prerequesite, the `.env.example`-file needs to be reviewed. It contains the secrets of the application. Please change the values of the environmental-variables inside there. E.g. the `DJANGO_SUPERUSER_USERNAME` contains the username, which can be used to access the admin-panel and `DJANGO_SUPERUSER_PASSWORD` is the corresponding password. With the `POSTGRES_*`-variables a database with the name `POSTGRES_DB` together with a database-user `POSTGRES_USER` is created on the first startup of the Application. The created database lives in the volume `pgdata`. When changing the values of the `POSTGRES_*`-variables after database creation, it wont be possible for the web-application to access the database.
+
+1. As a first step a `.env`-file needs to be created from the `.env.example`-file. On linux, that can be done with the `cp`-command. From within the project-folder execute the following command in a shell:
 
 ```
    cp .env.example .env
-   
 ```
-
+1. Execute the command `npm install` to install the `node.js`-dependencies these are used to transpile the `scss`-stylesheets into a bundled `css`-stylesheet.
+1. To build the development environment execute:
+```
+    ./run build_initial dev
+```
+1. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/`.
+1. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
+```
+  ./run up_initial dev postgres/databaseDump.sql
+```
 If the app should is to be started in production-mode, SSL-certificates need to be provided to the `nginx`-instance. The files need to be put into the `proxy/conf/`-folder. If the `conf/`-folder does not exist, it needs to be created. The filename of the SSL-Certificate and the SSL-Certificate Key need to be placed inside the `NGINX_SSL_CERTIFICATE_FILENAME` and `NGINX_SSL_CERTIFICATE_KEY_FILENAME` respectivly. 
-After that, the `run`-script can be used to start the project. For the development-mode use:
+
+1. After that, the `run`-script can be used to start the project.
+
+For the development-mode use:
+
 
 ```
    ./run up dev
