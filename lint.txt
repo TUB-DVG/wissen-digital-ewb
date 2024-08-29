@@ -1884,11 +1884,14 @@ webcentral/src/pages/views.py:305:32: C0103: Argument name "idOfObject" doesn't 
 webcentral/src/pages/views.py:307:4: C0103: Variable name "dataSufficiencyObj" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:322:0: C0103: Function name "dataSecurity" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:327:0: C0103: Function name "iconsAndVis" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:332:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:334:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:358:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:358:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:360:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:330:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:354:4: C0103: Variable name "explanTextToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:364:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:376:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:378:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:402:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:402:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:404:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
 ************* Module positive_environmental_impact.admin
 webcentral/src/positive_environmental_impact/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/src/positive_environmental_impact/admin.py:1:0: E0401: Unable to import 'django.contrib' (import-error)
@@ -2530,7 +2533,7 @@ webcentral/src/publications/views.py:8:0: C0412: Imports from package django are
 webcentral/src/publications/views.py:3:0: W0611: Unused HttpResponse imported from django.http (unused-import)
 webcentral/src/publications/views.py:6:0: W0611: Unused messages imported from django.contrib (unused-import)
 webcentral/src/publications/views.py:13:0: W0611: Unused getFocusNameIndependentOfLanguage imported from common.views (unused-import)
-************* Module testDatabaseFilling
+************* Module tests.testDatabaseFilling
 webcentral/src/tests/testDatabaseFilling.py:85:0: C0301: Line too long (108/100) (line-too-long)
 webcentral/src/tests/testDatabaseFilling.py:125:0: C0301: Line too long (115/100) (line-too-long)
 webcentral/src/tests/testDatabaseFilling.py:280:0: C0301: Line too long (111/100) (line-too-long)
@@ -2811,7 +2814,7 @@ webcentral/src/tests/testDatabaseFilling.py:23:0: W0611: Unused IntegrityError i
 webcentral/src/tests/testDatabaseFilling.py:27:0: W0611: Unused Subproject imported from project_listing.models (unused-import)
 webcentral/src/tests/testDatabaseFilling.py:32:0: W0611: Unused Keyword imported from keywords.models (unused-import)
 webcentral/src/tests/testDatabaseFilling.py:44:0: W0611: Unused Command imported from project_listing.management.commands.data_import (unused-import)
-************* Module testRunScript
+************* Module tests.testRunScript
 webcentral/src/tests/testRunScript.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/src/tests/testRunScript.py:1:0: C0103: Module name "testRunScript" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/tests/testRunScript.py:5:0: C0115: Missing class docstring (missing-class-docstring)
@@ -3654,7 +3657,7 @@ webcentral/test/02_docker/testDockerCompose.py:85:4: C0103: Method name "testRun
 webcentral/test/02_docker/testDockerCompose.py:15:0: W0611: Unused import time (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused run imported from subprocess (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused PIPE imported from subprocess (unused-import)
-************* Module 05_testEvaluationPreprocessing.testPrePro
+************* Module testPrePro
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:55:0: C0301: Line too long (113/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:56:0: C0301: Line too long (127/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:132:0: C0301: Line too long (119/100) (line-too-long)
@@ -5997,7 +6000,7 @@ webcentral/test/06_system_test/testrunner.py:11:0: E0611: No name 'scripts' in m
 webcentral/test/06_system_test/testrunner.py:35:0: C0414: Import alias does not rename original package (useless-import-alias)
 webcentral/test/06_system_test/testrunner.py:35:0: E0401: Unable to import 'testtools' (import-error)
 webcentral/test/06_system_test/testrunner.py:35:0: C0413: Import "import testtools as testtools" should be placed at the top of the module (wrong-import-position)
-************* Module 07_test_run_script.test_run_script
+************* Module test_run_script
 webcentral/test/07_test_run_script/test_run_script.py:30:0: C0301: Line too long (156/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:74:0: C0301: Line too long (152/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:136:0: C0301: Line too long (210/100) (line-too-long)
@@ -6055,6 +6058,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         self.assertIsNotNone(descriptionHeadingDiv)
 
         boxesDiv = impactsObj.getBoxesDiv()
+
         self.assertIsNotNone(boxesDiv)
 
         boxes1and2 = impactsObj.getBox1and2()
@@ -6136,8 +6140,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             or "Datenverarbeitung" in self.driver.title
         )
 
-        # check structure of the data-processing page:
-        # there should be a conten container present: (duplicate-code)
+    def testComponentListPage(self):
+        """Test the structure of the sub-page of the negative environmental impacts page""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[245:309]
 ==project_listing.tests:[299:363]
@@ -6207,50 +6211,49 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==01_pre_pro.pre_modul:[40:84]
-==05_testEvaluationPreprocessing.testPrePro:[323:366]
-    sheet_name="Projektverteiler",
-    dtype="str",
-)
+==testPrePro:[323:366]
+            sheet_name="Projektverteiler",
+            dtype="str",
+        )
 
-dataframeModul = dataframeXLSX[
-    [
-        "Förderkenz. (0010)",
-        "Modulzuordnung PtJ - 1 aktuell",
-        "Modulzuordnung PtJ - 2 aktuell",
-        "Modulzuordnung PtJ - 3 aktuell",
-        "Modulzuordnung PtJ - 4 aktuell",
-    ]
-]
-dataframeModul = dataframeModul.rename(
-    columns={
-        "Förderkenz. (0010)": "FKZ",
-        "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
-        "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
-        "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
-        "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
-    }
-)
+        dataframeModul = dataframeXLSX[
+            [
+                "Förderkenz. (0010)",
+                "Modulzuordnung PtJ - 1 aktuell",
+                "Modulzuordnung PtJ - 2 aktuell",
+                "Modulzuordnung PtJ - 3 aktuell",
+                "Modulzuordnung PtJ - 4 aktuell",
+            ]
+        ]
+        dataframeModul = dataframeModul.rename(
+            columns={
+                "Förderkenz. (0010)": "FKZ",
+                "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
+                "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
+                "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
+                "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
+            }
+        )
 
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
-    "modulzuordnung_ptj_3"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
-    "modulzuordnung_ptj_4"
-].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
+            "modulzuordnung_ptj_3"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
+            "modulzuordnung_ptj_4"
+        ].str.lstrip()
 
-
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.replace("M2 BF", "M2")
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.replace("ausgelaufen", "ag")
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.replace("M2 BF", "M2")
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.replace("ausgelaufen", "ag")
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[134:242]
@@ -6277,92 +6280,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
    fundedBy: BMWK -> BundXYZ
    projectManagementAgency: PTJ -> Projektträger Jülich
    researchProgram: EnergieWEndeBauen -> Klima und Energie
-   fundingProgram: Test-Project -> Erneuerbare Energien Programm
-        """,
-        )
-        oldAdress = Address.objects.create(
-            address_id=2,
-            plz="10123",
-            location="Berlin",
-            state="Deutschland",
-            address="Müller-Breslau-Str. 11",
-        )
-        newAdress = Address.objects.create(
-            address_id=4,
-            plz="53113",
-            location="Bonn",
-            state="Deutschland",
-            address="Godesberger Allee 90",
-        )
-
-        _ = ExecutingEntity.objects.create(
-            executingEntity_id=1,
-            name="CDE Gmbh",
-            address=oldAdress,
-        )
-        newExecutingEntityObjNew = ExecutingEntity.objects.create(
-            executingEntity_id=2,
-            name="Energie Institut",
-            address=newAdress,
-        )
-
-        _, _ = Person.objects.get_or_create(
-            person_id=1,
-            surname="Meier",
-            firstName="Peter",
-            title="",
-            email="m.meier@berlin.de",
-        )
-        _, _ = Person.objects.get_or_create(
-            person_id=2,
-            surname="Müller",
-            firstName="Johann",
-            title="",
-            email="johann.mueller@example.com",
-        )
-        _ = RAndDPlanningCategory.objects.create(
-            rAndDPlanningCategoryNumber="1265",
-            rAndDPlanningCategoryText="Qlter Text",
-        )
-
-        rAnDObjNew = RAndDPlanningCategory.objects.create(
-            rAndDPlanningCategoryNumber="EN-20",
-            rAndDPlanningCategoryText="Erneuerbare Energieentwicklung",
-        )
-
-        _ = Enargus.objects.create(
-            startDate="2014-01-01",
-            endDate="2024-12-31",
-            topics="Hallo",
-            projectLead=None,
-            furtherFundingInformation=fundingObj2,
-            rAndDPlanningCategory=rAnDObjNew,
-            grantRecipient=None,
-            executingEntity=newExecutingEntityObjNew,
-            collaborativeProject="Kluser",
-            appropriatedBudget="1000",
-            shortDescriptionDe="Description",
-            shortDescriptionEn="Description2",
-            database="Database",
-        )
-
-        queryset = DbDiff.objects.all()
-        self.dbDiffAdmin.finalizeChange(request, queryset)
-
-        fundingObjs = FurtherFundingInformation.objects.all()
-        self.assertEqual(len(fundingObjs), 1)
-
-        rAndDObjects = RAndDPlanningCategory.objects.all()
-        self.assertEqual(len(rAndDObjects), 1)
-
-        executingEntities = ExecutingEntity.objects.all()
-        self.assertEqual(len(executingEntities), 1)
-
-        personObjs = Person.objects.all()
-        self.assertEqual(len(personObjs), 1)
-
-    def testFinalizeChangesWithGetOrCreateCall(self):
-        """Integration test for finalization step""" (duplicate-code)
+   fundingProgram: Test-Project -> Erneuerbare Energien Programm (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.models:[34:52]
 ==positive_environmental_impact.models:[37:57]
@@ -6383,7 +6301,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         contextObj = Context({})
         return templateObj.render(contextObj)
 
-    def __str__(self): (duplicate-code)
+    @property
+    def evaluationRendered(self):
+        """The  property.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.data_import:[11:62]
 ==positive_environmental_impact.data_import:[11:62]
@@ -6523,7 +6443,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         """
         for headerItem in header:
             if "__en" in headerItem:
-                return True (duplicate-code)
+                return True
+ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0001_initial:[17:30]
 ==positive_environmental_impact.migrations.0001_initial:[20:33]
@@ -6575,18 +6496,18 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==publications.migrations.0001_initial:[137:149]
 ==publications.models.publication:[33:45]
-        (1, "January"),
-        (2, "February"),
-        (3, "March"),
-        (4, "April"),
-        (5, "May"),
-        (6, "June"),
-        (7, "July"),
-        (8, "August"),
-        (9, "September"),
-        (10, "October"),
-        (11, "November"),
-        (12, "December"), (duplicate-code)
+                            (1, "January"),
+                            (2, "February"),
+                            (3, "March"),
+                            (4, "April"),
+                            (5, "May"),
+                            (6, "June"),
+                            (7, "July"),
+                            (8, "August"),
+                            (9, "September"),
+                            (10, "October"),
+                            (11, "November"),
+                            (12, "December"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[24:41]
 ==NegativeEnvironmentalImpacts:[24:41]
@@ -6602,7 +6523,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavbar(self):
+    def getBoxesDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -6920,8 +6841,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxesDiv(self):
-        """Returns the div-element, which wraps the content of the page""" (duplicate-code)
+    def getBoxes(self):
+        """Return the boxes, which link to the EnvironmentalImpact-Detailspage.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[24:38]
 ==DataSufficiency:[24:41]
@@ -6969,25 +6890,25 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[135:143]
 ==LastProfile.Dash_app.Warmelast:[176:184]
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"}, (duplicate-code)
+        {"label": _("Januar"), "value": "1"},
+        {"label": _("Februar"), "value": "2"},
+        {"label": _("März"), "value": "3"},
+        {"label": _("April"), "value": "4"},
+        {"label": _("Mai"), "value": "5"},
+        {"label": _("Juni"), "value": "6"},
+        {"label": _("Juli"), "value": "7"},
+        {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[63:71]
 ==LastProfile.Dash_app.Warmelast:[309:317]
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"}, (duplicate-code)
+            {"label": _("Januar"), "value": "1"},
+            {"label": _("Februar"), "value": "2"},
+            {"label": _("März"), "value": "3"},
+            {"label": _("April"), "value": "4"},
+            {"label": _("Mai"), "value": "5"},
+            {"label": _("Juni"), "value": "6"},
+            {"label": _("Juli"), "value": "7"},
+            {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==start_page:[110:153]
 ==tool_list_page:[165:205]
@@ -7040,7 +6961,10 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 Locator.backButton,
             )
         except:
-            return None (duplicate-code)
+            return None
+
+    def getStartCompareButtonLink(self):
+        """ """ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.migrations.0001_initial:[5:15]
 ==user_integration.migrations.0001_initial:[5:15]
@@ -7093,8 +7017,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionHeadingDiv(self):
-        """Returns the div-element, which wraps the description-heading"""
+    def getNavToolList(self) -> None:
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7117,8 +7041,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavBar(self):
-        """Returns the secondary navigation bar"""
+    def getSearchSubmitButton(self):
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7129,8 +7052,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBackLink(self):
-        """Returns the back link"""
+    def getPaginationContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7141,8 +7064,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSearchInputField(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getStartCompareButtonLink(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7177,8 +7100,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getComparisonTableContainer(self):
-        """ """
+    def getDescriptionDownloadLink(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7213,8 +7136,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavbar(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getSecondComparisonDiv(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7226,8 +7149,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             "Deutschland",
             "FasanenStr. 13",
             "Max Muster",
-        ]
- (duplicate-code)
+        ] (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_click_through_all_sites:[57:63]
 ==06_system_test.test.scripts.test_digital_tools:[271:277]
@@ -7240,11 +7162,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-                            (1, "pre-alpha"),
-                            (2, "alpha"),
-                            (3, "beta"),
-                            (4, "release candidate"),
-                            (5, "release"), (duplicate-code)
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7303,9 +7225,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 h_sum
                 * (Q_average / h_average)
                 * F (duplicate-code)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
 
 -----------------------------------
 Your code has been rated at 0.73/10

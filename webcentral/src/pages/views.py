@@ -326,8 +326,9 @@ def dataSecurity(request):
 
 def iconsAndVis(request):
     """Call render function for icons and Visualization page."""
-    
-    explanationText = _("""Icons können auch im Gebäude- und Quartiersbereich die grafische
+
+    explanationText = _(
+        """Icons können auch im Gebäude- und Quartiersbereich die grafische
           Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl für
           die Informationsvermittlung an professionelle, wie auch fachfremde
           Adressat*innenkreise genutzt werden. Im Modul 4 der Begleitforschung,
@@ -348,7 +349,8 @@ def iconsAndVis(request):
           eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie
           technischer Perspektive erlaubt und von der Visualisierung eines
           ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem
-          User-Interface verwendet werden kann.""")
+          User-Interface verwendet werden kann."""
+    )
     explanTextToRender = """<p>
             <a href="https://github.com/Privacy-Icons/Privacy-Icons">Icons</a>
           </p>
@@ -358,7 +360,7 @@ def iconsAndVis(request):
           </div>
         </div>
       """
-    
+
     explanationText += Template(explanTextToRender).render(Context({}))
 
     context = {
