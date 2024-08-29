@@ -35,11 +35,11 @@ jobs:
       - name: Format Python code with black
         run: |
           black --config webcentral/pyproject.toml webcentral/
-     
-      - name: Git Auto Commit
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-          
+              
       - name: Analysing the code with pylint
         run: |
           pylint $(git ls-files 'webcentral/**/*.py') --output=lint.txt || true
 
+      - name: Git Auto Commit
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+ 
