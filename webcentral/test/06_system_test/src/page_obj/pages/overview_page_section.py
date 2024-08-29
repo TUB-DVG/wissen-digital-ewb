@@ -11,19 +11,17 @@ class OverviewPageSection(object):
         self.driver = driver
 
     def getHeading(self):
-        """Return the heading from the overview page section.
-
-        """
+        """Return the heading from the overview page section."""
         return self.driver.find_element(By.XPATH, Locator.overviewPageHeading)
 
     def getLinkFromText(self, linkText: str):
-        """Get link from displayed text.
-
-        """
-        return self.driver.find_element(By.XPATH, f"//a[contains(text(), '{linkText}')]")
+        """Get link from displayed text."""
+        return self.driver.find_element(
+            By.XPATH, f"//a[contains(text(), '{linkText}')]"
+        )
 
     def getLinks(self):
-        """Get all links in overview text.
-
-        """
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'description-content')]//a")
+        """Get all links in overview text."""
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'description-content')]//a"
+        )

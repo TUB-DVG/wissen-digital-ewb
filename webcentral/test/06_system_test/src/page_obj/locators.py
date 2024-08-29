@@ -205,4 +205,6 @@ class Locator(object):
     # DetailsPage locators
     linkNavigatorDiv = "//div[contains(@class, 'linkNavigator')]"
 
-    overviewPageHeading = "//p[contains(@class, 'description-heading__paragraph')]"
+    overviewPageHeading = (
+        "//p[contains(@class, 'description-heading__paragraph')]"
+    )

@@ -97,32 +97,110 @@ def userIntegrationMethod(request):
 
 def userEngagement(request):
     """Call render function for user engagement page."""
-    explanationTextParagraphTwo = _("<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</p>")
-    explanationTextPart3 = _("<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor der Markteinführung einer digitalen Anwendung sorgen, erhöhen die Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>") 
-    explanationPart4 = _("<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der Entwicklung digitaler Anwendungen vor allem um die Exploration von Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für diese Exploration sind qualitative Methoden besonders geeignet. In späteren Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>")
-    explanationPart5 = _("<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in anderen Phasen sinnvoll nutzen.</p>")
-    explanationPart6 = _("<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die Analysephase vor Beginn der Anwendungsentwicklung</h6>")
+    explanationTextParagraphTwo = _(
+        "<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</p>"
+    )
+    explanationTextPart3 = _(
+        "<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor der Markteinführung einer digitalen Anwendung sorgen, erhöhen die Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>"
+    )
+    explanationPart4 = _(
+        "<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der Entwicklung digitaler Anwendungen vor allem um die Exploration von Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für diese Exploration sind qualitative Methoden besonders geeignet. In späteren Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>"
+    )
+    explanationPart5 = _(
+        "<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in anderen Phasen sinnvoll nutzen.</p>"
+    )
+    explanationPart6 = _(
+        '<h6 style="font-size: 22px">Methoden der Nutzendenintegration für die Analysephase vor Beginn der Anwendungsentwicklung</h6>'
+    )
     translationObserver = _("Teilnehmende Beobachtung")
     translationIndividualInterview = _("Einzel-Interview")
-    explanationText = explanationTextParagraphOne + explanationTextParagraphTwo + explanationTextPart3 + explanationPart4 + explanationPart5 + explanationPart6 + f"<ul>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Teilnehmende Beobachtung' %}\">" + translationObserver + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Einzel-Interview' %}\">" + translationIndividualInterview + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/Fokusgruppe' %}\">" + _("Gruppen-Interview/Fokusgruppe") + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Personas' %}\">" + _("Personas") + "</a></li>"
+    explanationText = (
+        explanationTextParagraphOne
+        + explanationTextParagraphTwo
+        + explanationTextPart3
+        + explanationPart4
+        + explanationPart5
+        + explanationPart6
+        + f"<ul>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Teilnehmende Beobachtung' %}\">"
+        + translationObserver
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Einzel-Interview' %}\">"
+        + translationIndividualInterview
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Gruppen-Interview/Fokusgruppe' %}\">"
+        + _("Gruppen-Interview/Fokusgruppe")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Personas' %}\">"
+        + _("Personas")
+        + "</a></li>"
+    )
     explanationText += "</ul>"
-    explanationText += "<h6 style=\"font-size: 22px\">" + _("Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der Anwendungsentwicklung") + "</h2>"
+    explanationText += (
+        '<h6 style="font-size: 22px">'
+        + _(
+            "Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der Anwendungsentwicklung"
+        )
+        + "</h2>"
+    )
     explanationText += "<ul>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'A/B-Test' %}\">" + _("A/B-Test") + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Prototyping' %}\">" + _("Prototyping") + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Cognitive Walkthrough' %}\">" + "Cognitive Walkthrough" + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Styleguide' %}\">" + _("Styleguide") + "</a></li>"
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'A/B-Test' %}\">"
+        + _("A/B-Test")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Prototyping' %}\">"
+        + _("Prototyping")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Cognitive Walkthrough' %}\">"
+        + "Cognitive Walkthrough"
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Styleguide' %}\">"
+        + _("Styleguide")
+        + "</a></li>"
+    )
     explanationText += "</ul>"
-    explanationText += "<h6 style=\"font-size: 22px\">" + _("Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase während bzw. nach der Anwendungsentwicklung") + "</h6>"
+    explanationText += (
+        '<h6 style="font-size: 22px">'
+        + _(
+            "Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase während bzw. nach der Anwendungsentwicklung"
+        )
+        + "</h6>"
+    )
     explanationText += "<ul>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Lautes Denken' %}\">" + _("Lautes Denken") + "</a></li>"
-    explanationText +="<li><a href=\"{% url 'userEngagementDetailsTitle' 'Eyetracking' %}\">" + _("Eyetracking") + "</a></li>"
-    explanationText += "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Heuristische Evaluation' %}\">" + _("Heuristische Evaluation") + "</a></li>"
-    explanationText +="<li><a href=\"{% url 'userEngagementDetailsTitle' 'Usability-Befragung' %}\">" + _("Usability-Befragung") + "</a></li>"
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Lautes Denken' %}\">"
+        + _("Lautes Denken")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Eyetracking' %}\">"
+        + _("Eyetracking")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Heuristische Evaluation' %}\">"
+        + _("Heuristische Evaluation")
+        + "</a></li>"
+    )
+    explanationText += (
+        "<li><a href=\"{% url 'userEngagementDetailsTitle' 'Usability-Befragung' %}\">"
+        + _("Usability-Befragung")
+        + "</a></li>"
+    )
     explanationText += "</ul>"
     explanationText.replace("\n", "")
     templateObj = Template(explanationText)

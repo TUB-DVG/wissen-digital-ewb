@@ -34,13 +34,13 @@
 </div>
 <div class="blockOfContent">
   <div class="mainContentHeading">{% translate "Ablauf" %}</div>
-    <div class="mainContent" id="shortDescription">
-        <ol>
-            {% for procedure in boxObject.procedureItem.all %}
-                <li>{{ procedure.procedureItemRendered }}</li>
-            {% endfor %}
-        </ol>
-    </div>
+  <div class="mainContent" id="shortDescription">
+    <ol>
+      {% for procedure in boxObject.procedureItem.all %}
+        <li>{{ procedure.procedureItemRendered }}</li>
+      {% endfor %}
+    </ol>
+  </div>
 </div>
 <div class="blockOfContent">
   <div class="mainContentHeading">{% translate "Literatur" %}</div>

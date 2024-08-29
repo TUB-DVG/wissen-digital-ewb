@@ -11,14 +11,14 @@ from .models import *
 
 class DataImportApp(DataImport):
     DJANGO_MODEL = "EnvironmentalImpact"
-    DJANGO_APP = "positive_environmental_impact" 
+    DJANGO_APP = "positive_environmental_impact"
     MAPPING_EXCEL_DB_EN = {
         "Category__en": "category_en",
         "Description__en": "description_en",
         "Name_Digital_Application__en": "name_digital_application_en",
         "Projektname__en": "project_name_en",
         "Goals__en": "goals_en",
-        "Digital_applications__en": "digitalApplications_en", 
+        "Digital_applications__en": "digitalApplications_en",
         "Partner__en": "partner_en",
         "Consortium__en": "consortium_en",
         # "Additional_Digital_Application(s)__en": "digitalApplications_en",
@@ -151,18 +151,20 @@ class DataImportApp(DataImport):
             except:
                 breakpoint()
         environmentalimpactObj.save()
-        
+
         if self._englishHeadersPresent(header):
-            obj = self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN) 
+            obj = self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         obj.save()
-    
+
     # def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):
     #     """
     #
     #     """
     #     for mappingKey in self.MAPPING_EXCEL_DB_EN.keys():
-    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en") 
-    #         # if hasattr(obj, attributeNameWithoutEn) 
+    #         # attributeNameWithoutEn = self.MAPPING_EXCEL_DB_EN[mappingKey].remove("__en")
+    #         # if hasattr(obj, attributeNameWithoutEn)
     #         try:
     #             setattr(environmentalimpactObj, self.MAPPING_EXCEL_DB_EN[mappingKey], row[header.index(mappingKey)])
     #         except:

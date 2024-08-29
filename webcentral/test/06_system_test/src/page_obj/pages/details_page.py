@@ -56,10 +56,12 @@ class DetailsPage(GenericPageObject):
 
     def getRightColumn(self):
         """Return the right column of the details-page"""
-        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'column__right')]")
+        return self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'column__right')]"
+        )
 
     def getATagsInContentContainer(self):
-        """Get all a-tags in the content container.
-
-        """
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'border-operational')]//a")
+        """Get all a-tags in the content container."""
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'border-operational')]//a"
+        )

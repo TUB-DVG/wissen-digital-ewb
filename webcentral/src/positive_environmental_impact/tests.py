@@ -20,7 +20,7 @@ class DataImportTest(TestCase):
         and `English`.
         The data is imported into an empty database, so no collision with existing data can occur.
         """
-        
+
         call_command(
             "data_import",
             "positive_environmental_impact",
@@ -56,13 +56,15 @@ class DataImportTest(TestCase):
 
         subprojectsForImpactObj = randomImpactObj.funding_label.all()
 
-
         dataImportAppObj = DataImportApp("hi.xlsx")
         mapping = dataImportAppObj.MAPPING_EXCEL_DB_EN
 
         for mappingKey in mapping.keys():
             # mappingKeyWithoutEn = mappingKey.replace("__en", "")
-            self.assertTrue(getattr(randomEnvImpactObj, mapping[mappingKey]) != "" or getattr(randomEnvImpactObj, mapping[mappingKey]) != None)
+            self.assertTrue(
+                getattr(randomEnvImpactObj, mapping[mappingKey]) != ""
+                or getattr(randomEnvImpactObj, mapping[mappingKey]) != None
+            )
         # get the duration for the project:
         # for subproject in subprojectsForImpactObj:
         #     self.assertIsNotNone(subproject.enargusData)
