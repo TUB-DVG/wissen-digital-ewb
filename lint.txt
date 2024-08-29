@@ -3674,7 +3674,7 @@ webcentral/src/webcentral_app/wsgi.py:13:0: E0401: Unable to import 'django.core
 webcentral/src/webcentral_app/wsgi.py:14:0: E0401: Unable to import 'django.contrib.auth' (import-error)
 webcentral/src/webcentral_app/wsgi.py:28:0: C0103: Constant name "correctSuperuserIsPresent" doesn't conform to UPPER_CASE naming style (invalid-name)
 webcentral/src/webcentral_app/wsgi.py:37:8: C0103: Constant name "correctSuperuserIsPresent" doesn't conform to UPPER_CASE naming style (invalid-name)
-************* Module 01_import_export_web.test_web_import
+************* Module test_web_import
 webcentral/test/01_import_export_web/test_web_import.py:64:0: C0301: Line too long (104/100) (line-too-long)
 webcentral/test/01_import_export_web/test_web_import.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/test/01_import_export_web/test_web_import.py:3:0: E0401: Unable to import 'pandas' (import-error)
@@ -4401,12 +4401,12 @@ webcentral/test/06_system_test/src/page_obj/pages/navbar.py:9:0: W0611: Unused w
 ************* Module overview_page_section
 webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:1:0: E0401: Unable to import 'selenium.webdriver.common.by' (import-error)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:3:0: E0401: Unable to import 'src.page_obj.locators' (import-error)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:6:0: R0205: Class 'OverviewPageSection' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:13:4: C0103: Method name "getHeading" doesn't conform to snake_case naming style (invalid-name)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:17:4: C0103: Method name "getLinkFromText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:17:30: C0103: Argument name "linkText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:23:4: C0103: Method name "getLinks" doesn't conform to snake_case naming style (invalid-name)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:2:0: E0401: Unable to import 'src.page_obj.locators' (import-error)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:5:0: R0205: Class 'OverviewPageSection' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:12:4: C0103: Method name "getHeading" doesn't conform to snake_case naming style (invalid-name)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:16:4: C0103: Method name "getLinkFromText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:16:30: C0103: Argument name "linkText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/test/06_system_test/src/page_obj/pages/overview_page_section.py:22:4: C0103: Method name "getLinks" doesn't conform to snake_case naming style (invalid-name)
 ************* Module start_page
 webcentral/test/06_system_test/src/page_obj/pages/start_page.py:1:0: C0112: Empty module docstring (empty-docstring)
 webcentral/test/06_system_test/src/page_obj/pages/start_page.py:9:0: E0401: Unable to import 'selenium' (import-error)
@@ -4491,11 +4491,11 @@ webcentral/test/06_system_test/src/page_obj/pages/tool_list_page.py:9:0: W0611: 
 ************* Module user_integration_page
 webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:1:0: E0401: Unable to import 'selenium.webdriver.common.by' (import-error)
-webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:3:0: E0401: Unable to import 'src.page_obj.locators' (import-error)
-webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:6:0: R0205: Class 'UserIntegrationPage' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
-webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:6:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:2:0: E0401: Unable to import 'src.page_obj.locators' (import-error)
+webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:5:0: R0205: Class 'UserIntegrationPage' inherits from object, can be safely removed from bases in python3 (useless-object-inheritance)
+webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:5:0: R0903: Too few public methods (0/2) (too-few-public-methods)
 webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:1:0: W0611: Unused By imported from selenium.webdriver.common.by (unused-import)
-webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:3:0: W0611: Unused Locator imported from src.page_obj.locators (unused-import)
+webcentral/test/06_system_test/src/page_obj/pages/user_integration_page.py:2:0: W0611: Unused Locator imported from src.page_obj.locators (unused-import)
 ************* Module webdriver_setup
 webcentral/test/06_system_test/src/test_base/webdriver_setup.py:96:0: C0301: Line too long (110/100) (line-too-long)
 webcentral/test/06_system_test/src/test_base/webdriver_setup.py:1:0: C0112: Empty module docstring (empty-docstring)
@@ -6254,48 +6254,49 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==01_pre_pro.pre_modul:[40:84]
 ==testPrePro:[323:366]
-            sheet_name="Projektverteiler",
-            dtype="str",
-        )
+    sheet_name="Projektverteiler",
+    dtype="str",
+)
 
-        dataframeModul = dataframeXLSX[
-            [
-                "Förderkenz. (0010)",
-                "Modulzuordnung PtJ - 1 aktuell",
-                "Modulzuordnung PtJ - 2 aktuell",
-                "Modulzuordnung PtJ - 3 aktuell",
-                "Modulzuordnung PtJ - 4 aktuell",
-            ]
-        ]
-        dataframeModul = dataframeModul.rename(
-            columns={
-                "Förderkenz. (0010)": "FKZ",
-                "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
-                "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
-                "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
-                "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
-            }
-        )
+dataframeModul = dataframeXLSX[
+    [
+        "Förderkenz. (0010)",
+        "Modulzuordnung PtJ - 1 aktuell",
+        "Modulzuordnung PtJ - 2 aktuell",
+        "Modulzuordnung PtJ - 3 aktuell",
+        "Modulzuordnung PtJ - 4 aktuell",
+    ]
+]
+dataframeModul = dataframeModul.rename(
+    columns={
+        "Förderkenz. (0010)": "FKZ",
+        "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
+        "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
+        "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
+        "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
+    }
+)
 
-        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-            "modulzuordnung_ptj_1"
-        ].str.lstrip()
-        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-            "modulzuordnung_ptj_2"
-        ].str.lstrip()
-        dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
-            "modulzuordnung_ptj_3"
-        ].str.lstrip()
-        dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
-            "modulzuordnung_ptj_4"
-        ].str.lstrip()
+dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+    "modulzuordnung_ptj_1"
+].str.lstrip()
+dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+    "modulzuordnung_ptj_2"
+].str.lstrip()
+dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
+    "modulzuordnung_ptj_3"
+].str.lstrip()
+dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
+    "modulzuordnung_ptj_4"
+].str.lstrip()
 
-        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-            "modulzuordnung_ptj_2"
-        ].str.replace("M2 BF", "M2")
-        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-            "modulzuordnung_ptj_1"
-        ].str.replace("ausgelaufen", "ag")
+
+dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+    "modulzuordnung_ptj_2"
+].str.replace("M2 BF", "M2")
+dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+    "modulzuordnung_ptj_1"
+].str.replace("ausgelaufen", "ag")
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[134:242]
@@ -6367,6 +6368,12 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 ==06_system_test.test.scripts.test_digital_tools:[110:134]
 ==06_system_test.test.scripts.test_protocols_page:[98:116]
         self._setLanguageToGerman()
+
+        # cookieBannerObj = CookieBanner(self.driver)
+        # cookieBanner = cookieBannerObj.getCookieAcceptanceButton()
+        # if cookieBanner.is_displayed():
+        #     breakpoint()
+        #     cookieBanner.click()
 
         searchBarPageObj = SearchPage(self.driver)
         paginationObj = Pagination(self.driver)
@@ -6750,11 +6757,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getAllCollapsableFirstParts(self):
-        """Get the div of the collapsables, which include the text,
-        which is shown in collapsed state.
-
-        """
+    def getBoxes(self):
+        """Return the boxes, which link to the EnvironmentalImpact-Detailspage."""
         return self.driver.find_elements( (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.data_import:[18:62]
@@ -6814,7 +6818,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 is not None
             ):
                 return importlib.import_module(type_of_data + ".data_import")
-        raise CommandError( (duplicate-code)
+        raise CommandError(
+            """specified type_of_data has no corresponding app or has no
+            data_import.py in the app.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_norms_page:[85:96]
 ==06_system_test.test.scripts.test_protocols_page:[73:84]
@@ -6844,8 +6850,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxesDiv(self):
-        """Returns the div-element, which wraps the content of the page""" (duplicate-code)
+    def getBoxes(self):
+        """Return the boxes, which link to the EnvironmentalImpact-Detailspage.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[148:161]
 ==comparison_page_section:[47:60]
@@ -6896,14 +6902,14 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[135:143]
 ==LastProfile.Dash_app.Warmelast:[176:184]
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"}, (duplicate-code)
+        {"label": _("Januar"), "value": "1"},
+        {"label": _("Februar"), "value": "2"},
+        {"label": _("März"), "value": "3"},
+        {"label": _("April"), "value": "4"},
+        {"label": _("Mai"), "value": "5"},
+        {"label": _("Juni"), "value": "6"},
+        {"label": _("Juli"), "value": "7"},
+        {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[63:71]
 ==LastProfile.Dash_app.Warmelast:[309:317]
@@ -7050,7 +7056,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSearchSubmitButton(self):
+    def getHeadingComparisonSite(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7061,8 +7068,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getComparisonTableContainer(self):
-        """ """
+    def getPaginationContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7085,8 +7092,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSearchContainer(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getSecondComparisonDiv(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7097,8 +7104,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionImage(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getLinkToDataProcessing(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7109,8 +7116,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionDownloadLink(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getLinkToComponentList(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7121,8 +7128,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionText(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getDescriptionContentDiv(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7145,8 +7152,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionHeadingDiv(self):
-        """Returns the div-element, which wraps the description-heading"""
+    def getSecondaryNavbar(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7158,7 +7165,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             "Deutschland",
             "FasanenStr. 13",
             "Max Muster",
-        ] (duplicate-code)
+        ]
+ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_click_through_all_sites:[57:63]
 ==06_system_test.test.scripts.test_digital_tools:[271:277]
@@ -7171,11 +7179,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-                            (1, "pre-alpha"),
-                            (2, "alpha"),
-                            (3, "beta"),
-                            (4, "release candidate"),
-                            (5, "release"), (duplicate-code)
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7234,8 +7242,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 h_sum
                 * (Q_average / h_average)
                 * F (duplicate-code)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
 
 -----------------------------------
