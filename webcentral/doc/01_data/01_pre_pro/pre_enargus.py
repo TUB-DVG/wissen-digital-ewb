@@ -1,4 +1,4 @@
-'''
+"""
     File name: pre_enargus.py
     Author: Falk Cudok
     Date created: 2022-02-16
@@ -9,7 +9,8 @@
                  load into the data base of webcentral.
    Virtual Env: data preprocessing, see requirement_pre.txt
    Use own lib: dvg_lib/ProjektListe
-'''
+"""
+
 import os
 import sys
 
@@ -20,11 +21,13 @@ sys.path.insert(0, parentDirectory)
 
 from evaluation import EvaluationUtils
 
-listCol = absolutePathToScript + "/" + '02_parameter_files/col_xml2csv.csv'
-xml2csv = absolutePathToScript + "/" + '02_parameter_files/col_dict_xml2csv.csv'
+listCol = absolutePathToScript + "/" + "02_parameter_files/col_xml2csv.csv"
+xml2csv = absolutePathToScript + "/" + "02_parameter_files/col_dict_xml2csv.csv"
 
 if len(sys.argv) != 3:
-    print("Preprocessing script for enargus data: Usage: python pre_enargus.py <source xml-file> <target csv-file>")
+    print(
+        "Preprocessing script for enargus data: Usage: python pre_enargus.py <source xml-file> <target csv-file>"
+    )
     print("Hint: Use the run-script to execute this script.")
     exit
 
@@ -33,8 +36,8 @@ targetCsvFile = "/" + sys.argv[2]
 dataframe = EvaluationUtils.readXMLEnargus(pathXML, xml2csv, listCol)
 
 EvaluationUtils.writeDataframe2CSV(
-    dataframe, 
-    targetCsvFile, 
+    dataframe,
+    targetCsvFile,
     True,
     True,
 )

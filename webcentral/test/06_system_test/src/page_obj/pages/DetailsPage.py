@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -51,9 +53,9 @@ class DetailsPage(GenericPageObject):
             )
         except:
             return None
-    
-    def getRightColumn(self):
-        """Return the right column of the details-page
 
-        """
-        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'column__right')]")
+    def getRightColumn(self):
+        """Return the right column of the details-page"""
+        return self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'column__right')]"
+        )

@@ -6,13 +6,13 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0003_rename_component_component_componentclass'),
+        ("component_list", "0003_rename_component_component_componentclass"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='component',
-            old_name='yearOfUsePerYear',
-            new_name='operationTime',
+            model_name="component",
+            old_name="yearOfUsePerYear",
+            new_name="operationTime",
         ),
     ]

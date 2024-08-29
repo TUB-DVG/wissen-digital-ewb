@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('criteria_catalog', '0003_topic_grey'),
+        ("criteria_catalog", "0003_topic_grey"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='criteriacatalog',
-            name='text',
+            model_name="criteriacatalog",
+            name="text",
             field=models.TextField(blank=True, null=True),
         ),
     ]

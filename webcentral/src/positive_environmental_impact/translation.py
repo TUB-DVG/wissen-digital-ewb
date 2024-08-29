@@ -4,7 +4,8 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    EnvironmentalImpact, )
+    EnvironmentalImpact,
+)
 
 
 class EnvironmentalImpactTranslationOptions(TranslationOptions):
@@ -21,7 +22,9 @@ class EnvironmentalImpactTranslationOptions(TranslationOptions):
         "strategies",
         "relevance",
         "problem_statement_and_problem_goals",
-       "implementation_in_the_project",
+        "implementation_in_the_project",
         "evaluation",
     )
+
+
 translator.register(EnvironmentalImpact, EnvironmentalImpactTranslationOptions)

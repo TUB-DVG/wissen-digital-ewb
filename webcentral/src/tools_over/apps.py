@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class ToolsOverConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'tools_over'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "tools_over"

@@ -1,7 +1,9 @@
 """
 
 """
+
 import sys
+
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
@@ -12,26 +14,21 @@ from selenium.webdriver.common.by import By
 
 from Src.PageObject.Locators import Locator
 
+
 class LoginPage(object):
-    """
-    
-    """
+    """ """
 
     def __init__(self, driver):
-        """
-        
-        """
+        """ """
         self.driver = driver
         self.loginButtonElement = Locator.loginButtonElement
 
     def getLoginButton(self):
-        """Returns the Login-Button Element, if it is present.
-        
-        """
+        """Returns the Login-Button Element, if it is present."""
 
         try:
             return self.driver.find_element(
-                By.XPATH, 
+                By.XPATH,
                 self.loginButtonElement,
             )
         except NoSuchElementException:

@@ -1,4 +1,5 @@
 """Include url conneced to view functions."""
+
 from django.urls import path
 
 # from django.shortcuts import redirect

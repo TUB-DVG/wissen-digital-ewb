@@ -6,14 +6,14 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0001_initial'),
+        ("component_list", "0001_initial"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='DataSufficiency',
+            name="DataSufficiency",
         ),
         migrations.DeleteModel(
-            name='EnvironmentalImpact',
+            name="EnvironmentalImpact",
         ),
     ]

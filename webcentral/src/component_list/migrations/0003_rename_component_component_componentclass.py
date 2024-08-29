@@ -6,13 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('component_list', '0002_delete_datasufficiency_delete_environmentalimpact'),
+        (
+            "component_list",
+            "0002_delete_datasufficiency_delete_environmentalimpact",
+        ),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='component',
-            old_name='component',
-            new_name='componentClass',
+            model_name="component",
+            old_name="component",
+            new_name="componentClass",
         ),
     ]

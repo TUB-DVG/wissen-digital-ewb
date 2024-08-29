@@ -1,5 +1,5 @@
 from modeltranslation.translator import (
-    translator, 
+    translator,
     TranslationOptions,
 )
 
@@ -8,22 +8,25 @@ from .models.publication import (
     Type,
 )
 
+
 class PublicationTranslationOptions(TranslationOptions):
     fields = (
-        "title", 
-        "journal", 
-        "institution", 
+        "title",
+        "journal",
+        "institution",
         "keywords",
         "abstract",
         "copyright",
     )
 
+
 class TypeTranslationOptions(TranslationOptions):
     fields = (
-        "type", 
-        "description", 
+        "type",
+        "description",
         "bibtex_types",
     )
+
 
 translator.register(Publication, PublicationTranslationOptions)
 translator.register(Type, TypeTranslationOptions)

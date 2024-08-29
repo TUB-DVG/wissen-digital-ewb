@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 
@@ -24,10 +26,12 @@ class BusinessModels(GenericPageObject):
         """Get the heading container containing icon and heading"""
 
         return self.driver.find_element(
-            By.XPATH, "//div[contains(@class, 'description-heading')]")
+            By.XPATH, "//div[contains(@class, 'description-heading')]"
+        )
 
     def getDescriptionContainer(self):
         """Get the heading container containing icon and heading"""
 
         return self.driver.find_element(
-            By.XPATH, "//div[contains(@class, 'description-content')]")
+            By.XPATH, "//div[contains(@class, 'description-content')]"
+        )

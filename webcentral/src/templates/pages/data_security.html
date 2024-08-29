@@ -1,33 +1,35 @@
 {% extends 'base.html' %}
 
 {% load i18n %}
-{% block title %} {% translate "Datenschutzübersicht" %} {% endblock %}
+{% block title %}
+  {% translate "Datenschutzübersicht" %}
+{% endblock %}
 
 {% load static %}
 
-{% block content%}
+{% block content %}
 
   <!-- =======================
 Page Banner START -->
-<section class="py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="p-2 text-left rounded-3">
-          <h2 class="m-0">{% translate "Datenschutzübersicht" %}</h2>
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="p-2 text-left rounded-3">
+            <h2 class="m-0">{% translate "Datenschutzübersicht" %}</h2>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Page Banner END -->
-<!-- Content START -->
-<section id="about" class=" pt-4 py-lg-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-9">
-        <p>
-          {% blocktranslate %}Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
+  </section>
+  <!-- Page Banner END -->
+  <!-- Content START -->
+  <section id="about" class=" pt-4 py-lg-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <p>
+            {% blocktranslate %}Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
           lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder
           bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von
           Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf
@@ -57,20 +59,20 @@ Page Banner START -->
           hier erklärt wann Datenschutzrisiken entstehen und wie diese durch den
           richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen
           kontrolliert werden müssen.{% endblocktranslate %}
-        </p>
-        <p>
-          <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">
-            {% translate "Effiziente Datenminimierung im Gebäude- und Quartierssektor" %}
-          </a>
-        </p>
-        <p>
-          <a href="{% url 'coming' %}">
-            {% translate "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen" %}
-          </a>
-        </p>
+          </p>
+          <p>
+            <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">
+              {% translate "Effiziente Datenminimierung im Gebäude- und Quartierssektor" %}
+            </a>
+          </p>
+          <p>
+            <a href="{% url 'coming' %}">
+              {% translate "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen" %}
+            </a>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Content END -->
+  </section>
+  <!-- Content END -->
 {% endblock %}

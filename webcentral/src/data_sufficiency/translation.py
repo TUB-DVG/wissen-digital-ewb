@@ -4,7 +4,8 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    DataSufficiency, )
+    DataSufficiency,
+)
 
 
 class DataSufficiencyTranslationOptions(TranslationOptions):
@@ -15,4 +16,6 @@ class DataSufficiencyTranslationOptions(TranslationOptions):
         "example1",
         "example2",
     )
+
+
 translator.register(DataSufficiency, DataSufficiencyTranslationOptions)

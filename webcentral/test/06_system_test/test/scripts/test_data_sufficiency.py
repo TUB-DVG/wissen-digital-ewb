@@ -15,7 +15,8 @@ from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
-    NegativeEnvironmentalImpacts, )
+    NegativeEnvironmentalImpacts,
+)
 from Src.PageObject.Pages.DataSufficiency import DataSufficiency
 
 
@@ -36,32 +37,45 @@ class TestDataSufficiency(WebDriverSetup):
 
         # check if 2 divs are present in the content container
         divDescription = dataSufficiencyObj.getDescendantsByClass(
-            contentDiv, "descriptionContainer")
+            contentDiv, "descriptionContainer"
+        )
         self.assertEqual(len(divDescription), 1)
         divFourCardsContainer = dataSufficiencyObj.getDescendantsByClass(
-            contentDiv, "box ")
+            contentDiv, "box "
+        )
         self.assertGreaterEqual(len(divFourCardsContainer), 0)
-            
+
     def testDotsPresentWhenCollapsed(self):
-        """Test if three dots are present at the end of the collapsed component. 
+        """Test if three dots are present at the end of the collapsed component.
         The three dots indicate, that there is more text to be shown when clicking
         on `show more`
         """
         self.driver.get(os.environ["siteUnderTest"] + "/pages/dataSufficiency")
         dataSufficiencyObj = DataSufficiency(self.driver)
-            
+
         boxesOnSite = dataSufficiencyObj.getBoxes()
         randomBox = choice(boxesOnSite)
 
-        allFirstPartsOfCollapsables = dataSufficiencyObj.getAllCollapsableFirstParts()
+        allFirstPartsOfCollapsables = (
+            dataSufficiencyObj.getAllCollapsableFirstParts()
+        )
         for firstPartOfCollapsable in allFirstPartsOfCollapsables:
-            parentDiv = dataSufficiencyObj.getFirstAncestorByTagName(firstPartOfCollapsable, "div")
+            parentDiv = dataSufficiencyObj.getFirstAncestorByTagName(
+                firstPartOfCollapsable, "div"
+            )
             if "Show more" in parentDiv.text or "Zeige mehr" in parentDiv.text:
-                nextSibling = dataSufficiencyObj.getFollowingSiblingOfTagName(firstPartOfCollapsable, "div")
+                nextSibling = dataSufficiencyObj.getFollowingSiblingOfTagName(
+                    firstPartOfCollapsable, "div"
+                )
                 if "collapse" in nexSibling.get_attribute("class"):
-                    self.assertEqual(firstPartOfCollapsable.text[-3:], "...", "The last 3 characters should be dots, when the element is collapsed.")
+                    self.assertEqual(
+                        firstPartOfCollapsable.text[-3:],
+                        "...",
+                        "The last 3 characters should be dots, when the element is collapsed.",
+                    )
                 elif "show" in nextSibling.get_attribute("class"):
-                    self.assertNotEqual(firstPartOfCollapsable.text[-3:], "...", "The last 3 characters should be dots, when the element is collapsed.")
-
-
-
+                    self.assertNotEqual(
+                        firstPartOfCollapsable.text[-3:],
+                        "...",
+                        "The last 3 characters should be dots, when the element is collapsed.",
+                    )

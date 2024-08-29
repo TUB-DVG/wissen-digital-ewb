@@ -8,140 +8,653 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('project_listing', '0001_initial'),
-        ('TechnicalStandards', '0001_initial'),
+        ("project_listing", "0001_initial"),
+        ("TechnicalStandards", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Accessibility',
+            name="Accessibility",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('accessibility', models.CharField(blank=True, help_text='userInterface', max_length=300)),
-                ('accessibility_de', models.CharField(blank=True, help_text='userInterface', max_length=300, null=True)),
-                ('accessibility_en', models.CharField(blank=True, help_text='userInterface', max_length=300, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "accessibility",
+                    models.CharField(
+                        blank=True, help_text="userInterface", max_length=300
+                    ),
+                ),
+                (
+                    "accessibility_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
+                (
+                    "accessibility_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ApplicationArea',
+            name="ApplicationArea",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('applicationArea', models.CharField(blank=True, help_text='application area', max_length=1000)),
-                ('applicationArea_de', models.CharField(blank=True, help_text='application area', max_length=1000, null=True)),
-                ('applicationArea_en', models.CharField(blank=True, help_text='application area', max_length=1000, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "applicationArea",
+                    models.CharField(
+                        blank=True,
+                        help_text="application area",
+                        max_length=1000,
+                    ),
+                ),
+                (
+                    "applicationArea_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="application area",
+                        max_length=1000,
+                        null=True,
+                    ),
+                ),
+                (
+                    "applicationArea_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="application area",
+                        max_length=1000,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Classification',
+            name="Classification",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('classification', models.CharField(help_text='Classification Category', max_length=100)),
-                ('classification_de', models.CharField(help_text='Classification Category', max_length=100, null=True)),
-                ('classification_en', models.CharField(help_text='Classification Category', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "classification",
+                    models.CharField(
+                        help_text="Classification Category", max_length=100
+                    ),
+                ),
+                (
+                    "classification_de",
+                    models.CharField(
+                        help_text="Classification Category",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "classification_en",
+                    models.CharField(
+                        help_text="Classification Category",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Focus',
+            name="Focus",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('focus', models.CharField(help_text='Focus of the Tool', max_length=100)),
-                ('focus_de', models.CharField(help_text='Focus of the Tool', max_length=100, null=True)),
-                ('focus_en', models.CharField(help_text='Focus of the Tool', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "focus",
+                    models.CharField(
+                        help_text="Focus of the Tool", max_length=100
+                    ),
+                ),
+                (
+                    "focus_de",
+                    models.CharField(
+                        help_text="Focus of the Tool", max_length=100, null=True
+                    ),
+                ),
+                (
+                    "focus_en",
+                    models.CharField(
+                        help_text="Focus of the Tool", max_length=100, null=True
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='LifeCyclePhase',
+            name="LifeCyclePhase",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('lifeCyclePhase', models.CharField(blank=True, help_text='Life cycle phase of buildings where the application is used', max_length=100)),
-                ('lifeCyclePhase_de', models.CharField(blank=True, help_text='Life cycle phase of buildings where the application is used', max_length=100, null=True)),
-                ('lifeCyclePhase_en', models.CharField(blank=True, help_text='Life cycle phase of buildings where the application is used', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "lifeCyclePhase",
+                    models.CharField(
+                        blank=True,
+                        help_text="Life cycle phase of buildings where the application is used",
+                        max_length=100,
+                    ),
+                ),
+                (
+                    "lifeCyclePhase_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="Life cycle phase of buildings where the application is used",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "lifeCyclePhase_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="Life cycle phase of buildings where the application is used",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Scale',
+            name="Scale",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('scale', models.CharField(blank=True, help_text='spatial scope of consideration', max_length=100)),
-                ('scale_de', models.CharField(blank=True, help_text='spatial scope of consideration', max_length=100, null=True)),
-                ('scale_en', models.CharField(blank=True, help_text='spatial scope of consideration', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "scale",
+                    models.CharField(
+                        blank=True,
+                        help_text="spatial scope of consideration",
+                        max_length=100,
+                    ),
+                ),
+                (
+                    "scale_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="spatial scope of consideration",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "scale_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="spatial scope of consideration",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='TargetGroup',
+            name="TargetGroup",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('targetGroup', models.CharField(blank=True, help_text='Which group of people is the tool targeted at?', max_length=300)),
-                ('targetGroup_de', models.CharField(blank=True, help_text='Which group of people is the tool targeted at?', max_length=300, null=True)),
-                ('targetGroup_en', models.CharField(blank=True, help_text='Which group of people is the tool targeted at?', max_length=300, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "targetGroup",
+                    models.CharField(
+                        blank=True,
+                        help_text="Which group of people is the tool targeted at?",
+                        max_length=300,
+                    ),
+                ),
+                (
+                    "targetGroup_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="Which group of people is the tool targeted at?",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
+                (
+                    "targetGroup_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="Which group of people is the tool targeted at?",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Usage',
+            name="Usage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('usage', models.CharField(blank=True, help_text='usage', max_length=100)),
-                ('usage_de', models.CharField(blank=True, help_text='usage', max_length=100, null=True)),
-                ('usage_en', models.CharField(blank=True, help_text='usage', max_length=100, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "usage",
+                    models.CharField(
+                        blank=True, help_text="usage", max_length=100
+                    ),
+                ),
+                (
+                    "usage_de",
+                    models.CharField(
+                        blank=True, help_text="usage", max_length=100, null=True
+                    ),
+                ),
+                (
+                    "usage_en",
+                    models.CharField(
+                        blank=True, help_text="usage", max_length=100, null=True
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='UserInterface',
+            name="UserInterface",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('userInterface', models.CharField(blank=True, help_text='userInterface', max_length=300)),
-                ('userInterface_de', models.CharField(blank=True, help_text='userInterface', max_length=300, null=True)),
-                ('userInterface_en', models.CharField(blank=True, help_text='userInterface', max_length=300, null=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "userInterface",
+                    models.CharField(
+                        blank=True, help_text="userInterface", max_length=300
+                    ),
+                ),
+                (
+                    "userInterface_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
+                (
+                    "userInterface_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Tools',
+            name="Tools",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(blank=True, help_text='name', max_length=150)),
-                ('shortDescription', models.CharField(blank=True, help_text='short description', max_length=1000)),
-                ('shortDescription_de', models.CharField(blank=True, help_text='short description', max_length=1000, null=True)),
-                ('shortDescription_en', models.CharField(blank=True, help_text='short description', max_length=1000, null=True)),
-                ('userInterfaceNotes', models.CharField(blank=True, help_text='additional notes for userInterface', max_length=300)),
-                ('userInterfaceNotes_de', models.CharField(blank=True, help_text='additional notes for userInterface', max_length=300, null=True)),
-                ('userInterfaceNotes_en', models.CharField(blank=True, help_text='additional notes for userInterface', max_length=300, null=True)),
-                ('lastUpdate', models.CharField(blank=True, help_text='time (year/month/date) of the last update', max_length=100)),
-                ('lastUpdate_de', models.CharField(blank=True, help_text='time (year/month/date) of the last update', max_length=100, null=True)),
-                ('lastUpdate_en', models.CharField(blank=True, help_text='time (year/month/date) of the last update', max_length=100, null=True)),
-                ('license', models.CharField(blank=True, help_text='license', max_length=500)),
-                ('licenseNotes', models.CharField(blank=True, help_text='license notes', max_length=500)),
-                ('licenseNotes_de', models.CharField(blank=True, help_text='license notes', max_length=500, null=True)),
-                ('licenseNotes_en', models.CharField(blank=True, help_text='license notes', max_length=500, null=True)),
-                ('furtherInformation', models.CharField(blank=True, help_text='further information', max_length=500)),
-                ('furtherInformation_de', models.CharField(blank=True, help_text='further information', max_length=500, null=True)),
-                ('furtherInformation_en', models.CharField(blank=True, help_text='further information', max_length=500, null=True)),
-                ('alternatives', models.CharField(blank=True, help_text='similar tool(s) that can serve as alternatives', max_length=300)),
-                ('provider', models.CharField(blank=True, max_length=300)),
-                ('provider_de', models.CharField(blank=True, max_length=300, null=True)),
-                ('provider_en', models.CharField(blank=True, max_length=300, null=True)),
-                ('released', models.BooleanField(blank=True, help_text='whether the tool is released or not', null=True)),
-                ('releasedPlanned', models.BooleanField(blank=True, help_text='whether publication is planned', null=True)),
-                ('yearOfRelease', models.CharField(blank=True, help_text='year of software release (planned or conducted)', max_length=100)),
-                ('yearOfRelease_de', models.CharField(blank=True, help_text='year of software release (planned or conducted)', max_length=100, null=True)),
-                ('yearOfRelease_en', models.CharField(blank=True, help_text='year of software release (planned or conducted)', max_length=100, null=True)),
-                ('resources', models.CharField(blank=True, help_text='documentation, literature, git-Repos, etc.', max_length=1000)),
-                ('developmentState', models.IntegerField(blank=True, choices=[(1, 'pre-alpha'), (2, 'alpha'), (3, 'beta'), (4, 'release candidate'), (5, 'release')], null=True)),
-                ('programmingLanguages', models.CharField(blank=True, max_length=500)),
-                ('frameworksLibraries', models.CharField(blank=True, max_length=500)),
-                ('databaseSystem', models.CharField(blank=True, max_length=500)),
-                ('image', models.ImageField(blank=True, null=True, upload_to='')),
-                ('accessibility', models.ManyToManyField(to='tools_over.accessibility')),
-                ('applicationArea', models.ManyToManyField(to='tools_over.applicationarea')),
-                ('classification', models.ManyToManyField(to='tools_over.classification')),
-                ('focus', models.ManyToManyField(to='tools_over.focus')),
-                ('lifeCyclePhase', models.ManyToManyField(to='tools_over.lifecyclephase')),
-                ('scale', models.ManyToManyField(blank=True, null=True, to='tools_over.scale')),
-                ('specificApplication', models.ManyToManyField(blank=True, help_text='specific application of the tool in EWB projects (project name + fkz)', null=True, to='project_listing.subproject')),
-                ('targetGroup', models.ManyToManyField(blank=True, null=True, to='tools_over.targetgroup')),
-                ('technicalStandardsNorms', models.ManyToManyField(blank=True, null=True, to='TechnicalStandards.norm')),
-                ('technicalStandardsProtocols', models.ManyToManyField(blank=True, null=True, to='TechnicalStandards.protocol')),
-                ('usage', models.ManyToManyField(to='tools_over.usage')),
-                ('userInterface', models.ManyToManyField(blank=True, null=True, to='tools_over.userinterface')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        blank=True, help_text="name", max_length=150
+                    ),
+                ),
+                (
+                    "shortDescription",
+                    models.CharField(
+                        blank=True,
+                        help_text="short description",
+                        max_length=1000,
+                    ),
+                ),
+                (
+                    "shortDescription_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="short description",
+                        max_length=1000,
+                        null=True,
+                    ),
+                ),
+                (
+                    "shortDescription_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="short description",
+                        max_length=1000,
+                        null=True,
+                    ),
+                ),
+                (
+                    "userInterfaceNotes",
+                    models.CharField(
+                        blank=True,
+                        help_text="additional notes for userInterface",
+                        max_length=300,
+                    ),
+                ),
+                (
+                    "userInterfaceNotes_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="additional notes for userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
+                (
+                    "userInterfaceNotes_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="additional notes for userInterface",
+                        max_length=300,
+                        null=True,
+                    ),
+                ),
+                (
+                    "lastUpdate",
+                    models.CharField(
+                        blank=True,
+                        help_text="time (year/month/date) of the last update",
+                        max_length=100,
+                    ),
+                ),
+                (
+                    "lastUpdate_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="time (year/month/date) of the last update",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "lastUpdate_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="time (year/month/date) of the last update",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "license",
+                    models.CharField(
+                        blank=True, help_text="license", max_length=500
+                    ),
+                ),
+                (
+                    "licenseNotes",
+                    models.CharField(
+                        blank=True, help_text="license notes", max_length=500
+                    ),
+                ),
+                (
+                    "licenseNotes_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="license notes",
+                        max_length=500,
+                        null=True,
+                    ),
+                ),
+                (
+                    "licenseNotes_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="license notes",
+                        max_length=500,
+                        null=True,
+                    ),
+                ),
+                (
+                    "furtherInformation",
+                    models.CharField(
+                        blank=True,
+                        help_text="further information",
+                        max_length=500,
+                    ),
+                ),
+                (
+                    "furtherInformation_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="further information",
+                        max_length=500,
+                        null=True,
+                    ),
+                ),
+                (
+                    "furtherInformation_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="further information",
+                        max_length=500,
+                        null=True,
+                    ),
+                ),
+                (
+                    "alternatives",
+                    models.CharField(
+                        blank=True,
+                        help_text="similar tool(s) that can serve as alternatives",
+                        max_length=300,
+                    ),
+                ),
+                ("provider", models.CharField(blank=True, max_length=300)),
+                (
+                    "provider_de",
+                    models.CharField(blank=True, max_length=300, null=True),
+                ),
+                (
+                    "provider_en",
+                    models.CharField(blank=True, max_length=300, null=True),
+                ),
+                (
+                    "released",
+                    models.BooleanField(
+                        blank=True,
+                        help_text="whether the tool is released or not",
+                        null=True,
+                    ),
+                ),
+                (
+                    "releasedPlanned",
+                    models.BooleanField(
+                        blank=True,
+                        help_text="whether publication is planned",
+                        null=True,
+                    ),
+                ),
+                (
+                    "yearOfRelease",
+                    models.CharField(
+                        blank=True,
+                        help_text="year of software release (planned or conducted)",
+                        max_length=100,
+                    ),
+                ),
+                (
+                    "yearOfRelease_de",
+                    models.CharField(
+                        blank=True,
+                        help_text="year of software release (planned or conducted)",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "yearOfRelease_en",
+                    models.CharField(
+                        blank=True,
+                        help_text="year of software release (planned or conducted)",
+                        max_length=100,
+                        null=True,
+                    ),
+                ),
+                (
+                    "resources",
+                    models.CharField(
+                        blank=True,
+                        help_text="documentation, literature, git-Repos, etc.",
+                        max_length=1000,
+                    ),
+                ),
+                (
+                    "developmentState",
+                    models.IntegerField(
+                        blank=True,
+                        choices=[
+                            (1, "pre-alpha"),
+                            (2, "alpha"),
+                            (3, "beta"),
+                            (4, "release candidate"),
+                            (5, "release"),
+                        ],
+                        null=True,
+                    ),
+                ),
+                (
+                    "programmingLanguages",
+                    models.CharField(blank=True, max_length=500),
+                ),
+                (
+                    "frameworksLibraries",
+                    models.CharField(blank=True, max_length=500),
+                ),
+                (
+                    "databaseSystem",
+                    models.CharField(blank=True, max_length=500),
+                ),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to=""),
+                ),
+                (
+                    "accessibility",
+                    models.ManyToManyField(to="tools_over.accessibility"),
+                ),
+                (
+                    "applicationArea",
+                    models.ManyToManyField(to="tools_over.applicationarea"),
+                ),
+                (
+                    "classification",
+                    models.ManyToManyField(to="tools_over.classification"),
+                ),
+                ("focus", models.ManyToManyField(to="tools_over.focus")),
+                (
+                    "lifeCyclePhase",
+                    models.ManyToManyField(to="tools_over.lifecyclephase"),
+                ),
+                (
+                    "scale",
+                    models.ManyToManyField(
+                        blank=True, null=True, to="tools_over.scale"
+                    ),
+                ),
+                (
+                    "specificApplication",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="specific application of the tool in EWB projects (project name + fkz)",
+                        null=True,
+                        to="project_listing.subproject",
+                    ),
+                ),
+                (
+                    "targetGroup",
+                    models.ManyToManyField(
+                        blank=True, null=True, to="tools_over.targetgroup"
+                    ),
+                ),
+                (
+                    "technicalStandardsNorms",
+                    models.ManyToManyField(
+                        blank=True, null=True, to="TechnicalStandards.norm"
+                    ),
+                ),
+                (
+                    "technicalStandardsProtocols",
+                    models.ManyToManyField(
+                        blank=True, null=True, to="TechnicalStandards.protocol"
+                    ),
+                ),
+                ("usage", models.ManyToManyField(to="tools_over.usage")),
+                (
+                    "userInterface",
+                    models.ManyToManyField(
+                        blank=True, null=True, to="tools_over.userinterface"
+                    ),
+                ),
             ],
         ),
     ]

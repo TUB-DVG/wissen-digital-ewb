@@ -34,6 +34,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
 from django.contrib import admin
+
 try:
     from django.contrib.admin.utils import unquote
 except ImportError:
@@ -43,19 +44,22 @@ from django.contrib.admin.views.main import ChangeList
 from django.db.models.options import Options
 
 # Django <= 1.6
-if not getattr(Options, 'model_name', False):
+if not getattr(Options, "model_name", False):
     Options.model_name = lambda self: self.module_name.lower()
-if not getattr(ChangeList, 'get_queryset', False):
+if not getattr(ChangeList, "get_queryset", False):
     ChangeList.get_queryset = ChangeList.get_query_set
+
 
 class OrderedModelAdmin(TranslationAdmin):
 
     def get_model_info(self):
-        return dict(app=self.model._meta.app_label,
-                    model=self.model._meta.model_name)
+        return dict(
+            app=self.model._meta.app_label, model=self.model._meta.model_name
+        )
 
     def get_urls(self):
         from django.urls import include, re_path
+
         # try:
         #     from django.conf.urls import url
         # except ImportError:
@@ -64,32 +68,52 @@ class OrderedModelAdmin(TranslationAdmin):
         def wrap(view):
             def wrapper(*args, **kwargs):
                 return self.admin_site.admin_view(view)(*args, **kwargs)
+
             return update_wrapper(wrapper, view)
+
         return [
-            re_path(r'^(.+)/move-(up)/$', wrap(self.move_view),
-                name='{app}_{model}_order_up'.format(**self.get_model_info())),
-            re_path(r'^(.+)/move-(down)/$', wrap(self.move_view),
-                name='{app}_{model}_order_down'.format(**self.get_model_info())),
+            re_path(
+                r"^(.+)/move-(up)/$",
+                wrap(self.move_view),
+                name="{app}_{model}_order_up".format(**self.get_model_info()),
+            ),
+            re_path(
+                r"^(.+)/move-(down)/$",
+                wrap(self.move_view),
+                name="{app}_{model}_order_down".format(**self.get_model_info()),
+            ),
         ] + super(OrderedModelAdmin, self).get_urls()
 
     def _get_changelist(self, request):
         list_display = self.get_list_display(request)
         list_display_links = self.get_list_display_links(request, list_display)
 
-        cl = ChangeList(request, self.model, list_display,
-                        list_display_links, self.list_filter, self.date_hierarchy,
-                        self.search_fields, self.list_select_related,
-                        self.list_per_page, self.list_max_show_all, self.list_editable,
-                        self, sortable_by=self.list_display)
+        cl = ChangeList(
+            request,
+            self.model,
+            list_display,
+            list_display_links,
+            self.list_filter,
+            self.date_hierarchy,
+            self.search_fields,
+            self.list_select_related,
+            self.list_per_page,
+            self.list_max_show_all,
+            self.list_editable,
+            self,
+            sortable_by=self.list_display,
+        )
 
         return cl
 
-    request_query_string = ''
+    request_query_string = ""
 
     def changelist_view(self, request, extra_context=None):
         cl = self._get_changelist(request)
         self.request_query_string = cl.get_query_string()
-        return super(OrderedModelAdmin, self).changelist_view(request, extra_context)
+        return super(OrderedModelAdmin, self).changelist_view(
+            request, extra_context
+        )
 
     def move_view(self, request, object_id, direction):
         cl = self._get_changelist(request)
@@ -98,18 +122,32 @@ class OrderedModelAdmin(TranslationAdmin):
         obj = get_object_or_404(self.model, pk=unquote(object_id))
         obj.move(direction, qs)
 
-        return HttpResponseRedirect('../../%s' % self.request_query_string)
+        return HttpResponseRedirect("../../%s" % self.request_query_string)
 
     def move_up_down_links(self, obj):
-        return render_to_string("admin/publications/order_controls.html", {
-            'app_label': self.model._meta.app_label,
-            'module_name': self.model._meta.model_name,
-            'object_id': obj.id,
-            'urls': {
-                'up': reverse("admin:{app}_{model}_order_up".format(**self.get_model_info()), args=[obj.id, 'up']),
-                'down': reverse("admin:{app}_{model}_order_down".format(**self.get_model_info()), args=[obj.id, 'down']),
+        return render_to_string(
+            "admin/publications/order_controls.html",
+            {
+                "app_label": self.model._meta.app_label,
+                "module_name": self.model._meta.model_name,
+                "object_id": obj.id,
+                "urls": {
+                    "up": reverse(
+                        "admin:{app}_{model}_order_up".format(
+                            **self.get_model_info()
+                        ),
+                        args=[obj.id, "up"],
+                    ),
+                    "down": reverse(
+                        "admin:{app}_{model}_order_down".format(
+                            **self.get_model_info()
+                        ),
+                        args=[obj.id, "down"],
+                    ),
+                },
+                "query_string": self.request_query_string,
             },
-            'query_string': self.request_query_string
-        })
+        )
+
     move_up_down_links.allow_tags = True
-    move_up_down_links.short_description = _(u'Move')
+    move_up_down_links.short_description = _("Move")

@@ -24,35 +24,35 @@
     }
 </style>
 <div class="blockOfContent">
-    <div class="mainContent" id="shortDescription">
-        {{ boxObject.description }}
-    </div>
+  <div class="mainContent" id="shortDescription">
+    {{ boxObject.description }}
+  </div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Ziele" %}</div>
-    <div class="mainContent" id="shortDescription">{{ boxObject.goals|safe }}</div>
+  <div class="mainContentHeading">{% translate "Ziele" %}</div>
+  <div class="mainContent" id="shortDescription">{{ boxObject.goals|safe }}</div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Ablauf" %}</div>
-    <div class="mainContent" id="shortDescription">
-        <ol>
-            {% for procedure in boxObject.procedure.all %}
-                <li>{{ procedure.procedureItem }}</li>
-            {% endfor %}
-        </ol>
-    </div>
+  <div class="mainContentHeading">{% translate "Ablauf" %}</div>
+  <div class="mainContent" id="shortDescription">
+    <ol>
+      {% for procedure in boxObject.procedure.all %}
+        <li>{{ procedure.procedureItem }}</li>
+      {% endfor %}
+    </ol>
+  </div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Literatur" %}</div>
-    <div class="mainContent" id="shortDescription">
-        <ul>
-            {% for literatureElement in boxObject.literature.all %}
-                <li id="{{ literatureElement.linkName }}">
-                    {{ literatureElement.literature|safe }}
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+  <div class="mainContentHeading">{% translate "Literatur" %}</div>
+  <div class="mainContent" id="shortDescription">
+    <ul>
+      {% for literatureElement in boxObject.literature.all %}
+        <li id="{{ literatureElement.linkName }}">
+          {{ literatureElement.literature|safe }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 <!-- <div class="blockOfContent">
     <div class="mainContentHeading">{% translate "Konkrete Ziele" %}</div>

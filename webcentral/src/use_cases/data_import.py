@@ -1,7 +1,6 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
@@ -11,8 +10,9 @@ from .models import (
     UseCase,
 )
 
+
 class DataImportApp(DataImport):
-    
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -33,21 +33,24 @@ class DataImportApp(DataImport):
         levelOfAction = row[header.index("Wirkebene")]
         detail = row[header.index("Detailgrad")]
         # focus = row[header.index('Perspektive')]
-        effects = row[header.index(
-            "Lfd Nr. Effekte dieser Perspektive bei dem jeweiligen Detailgrad"
-        )]
+        effects = row[
+            header.index(
+                "Lfd Nr. Effekte dieser Perspektive bei dem jeweiligen Detailgrad"
+            )
+        ]
         ratingOfEffect = row[header.index("Wertung des Effektes")]
         nameOfEffect = row[header.index("Name des Effekts")]
-        shortDescriptionOfEffect = row[header.index(
-            "Kurzbeschreibung der Wirkung")]
+        shortDescriptionOfEffect = row[
+            header.index("Kurzbeschreibung der Wirkung")
+        ]
         source = row[header.index("Quelle / Hinweise")]
         icon = row[header.index("ICON")]
 
         focusList = row[header.index("Perspektive")].split(",")
         processedFocusList = self._correctReadInValue(
-            row[header.index("Perspektive")])
-        focusList = self._iterateThroughListOfStrings(processedFocusList,
-                                                      Focus)
+            row[header.index("Perspektive")]
+        )
+        focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
         focusElements = Focus.objects.filter(focus__in=focusList)
 
         obj, created = UseCase.objects.get_or_create(

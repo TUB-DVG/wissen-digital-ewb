@@ -8,38 +8,86 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='CriteriaCatalog',
+            name="CriteriaCatalog",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('text', models.CharField(blank=True, max_length=1000)),
-                ('imageIcon', models.CharField(blank=True, max_length=200)),
-                ('imageIconSelected', models.CharField(blank=True, max_length=200)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("text", models.CharField(blank=True, max_length=1000)),
+                ("imageIcon", models.CharField(blank=True, max_length=200)),
+                (
+                    "imageIconSelected",
+                    models.CharField(blank=True, max_length=200),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
-            name='Topic',
+            name="Topic",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('heading', models.TextField(blank=True, null=True)),
-                ('text', models.TextField()),
-                ('topicHeadingNumber', models.CharField(blank=True, null=True)),
-                ('imageFilename', models.CharField(blank=True, max_length=200, null=True)),
-                ('criteriaCatalog', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='criteria_catalog.criteriaCatalog')),
-                ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='criteria_catalog.topic')),
-                ('tag', models.ManyToManyField(blank=True, to='criteria_catalog.tag')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("heading", models.TextField(blank=True, null=True)),
+                ("text", models.TextField()),
+                ("topicHeadingNumber", models.CharField(blank=True, null=True)),
+                (
+                    "imageFilename",
+                    models.CharField(blank=True, max_length=200, null=True),
+                ),
+                (
+                    "criteriaCatalog",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="criteria_catalog.criteriaCatalog",
+                    ),
+                ),
+                (
+                    "parent",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="criteria_catalog.topic",
+                    ),
+                ),
+                (
+                    "tag",
+                    models.ManyToManyField(
+                        blank=True, to="criteria_catalog.tag"
+                    ),
+                ),
             ],
         ),
     ]

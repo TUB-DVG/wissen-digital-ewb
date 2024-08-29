@@ -15,7 +15,8 @@ from Src.PageObject.Pages.Footer import Footer
 from Src.TestBase.WebDriverSetup import WebDriverSetup
 from Src.PageObject.Pages.NavBar import NavBar
 from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
-    NegativeEnvironmentalImpacts, )
+    NegativeEnvironmentalImpacts,
+)
 from Src.PageObject.Pages.ComponentListPage import ComponentListPage
 from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
 from Src.PageObject.Pages.DetailsPage import DetailsPage
@@ -26,18 +27,23 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
 
     def TestNegativeEnvironmentalImpactsLinks(self):
         """Test if the Components-List Page exists and is accessible via url and navbar"""
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/pages/environmentalIntegrityNegativ")
-        self.assertTrue("Negative environmental impacts" in self.driver.title
-                        or "Negative Umweltwirkungen" in self.driver.title)
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ"
+        )
+        self.assertTrue(
+            "Negative environmental impacts" in self.driver.title
+            or "Negative Umweltwirkungen" in self.driver.title
+        )
 
         self.driver.get(os.environ["siteUnderTest"])
         navBar = NavBar(self.driver)
         linkToPage = navBar.returnNegativeEnvironmentalImpactLink()
         self.scrollElementIntoView(linkToPage[1])
         linkToPage[1].click()
-        self.assertTrue("Negative environmental impacts" in self.driver.title
-                        or "Negative Umweltwirkungen" in self.driver.title)
+        self.assertTrue(
+            "Negative environmental impacts" in self.driver.title
+            or "Negative Umweltwirkungen" in self.driver.title
+        )
 
     def testStructureOfPage(self):
         """Test if a div-element is present, in which the content is wraped
@@ -48,8 +54,9 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
         text. In the bottom part of the page, there should be 2 boxes, which further contents.
         """
 
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/pages/environmentalIntegrityNegativ")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ"
+        )
         impactsObj = NegativeEnvironmentalImpacts(self.driver)
         contentDiv = impactsObj.getContentDiv()
 
@@ -119,21 +126,26 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
 
     def testLinksFromOverviewPage(self):
         """Test if the links from the negative environmental impacts page leads to a working page."""
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/pages/environmentalIntegrityNegativ")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ"
+        )
         impactsObj = NegativeEnvironmentalImpacts(self.driver)
         boxes1and2 = impactsObj.getBox1and2()
         # click the box since the <a> cant be clicked directly by selenium
         linkToComponentList = boxes1and2[0]
         linkToComponentList.click()
-        self.assertTrue("Components list" in self.driver.title
-                        or "Komponentenliste" in self.driver.title)
+        self.assertTrue(
+            "Components list" in self.driver.title
+            or "Komponentenliste" in self.driver.title
+        )
         self.driver.back()
 
         linkToDataProcessing = boxes1and2 = impactsObj.getBox1and2()[1]
         linkToDataProcessing.click()
-        self.assertTrue("Data processing" in self.driver.title
-                        or "Datenverarbeitung" in self.driver.title)
+        self.assertTrue(
+            "Data processing" in self.driver.title
+            or "Datenverarbeitung" in self.driver.title
+        )
 
         # check structure of the data-processing page:
         # there should be a conten container present:
@@ -146,17 +158,20 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
 
         # he secondary navbar should contain to divs:
         divsInSecondaryNavBar = detailsPageObj.getDescendantsByTagName(
-            secondaryNavBar, "div")
+            secondaryNavBar, "div"
+        )
         self.assertEqual(len(divsInSecondaryNavBar), 2)
 
         # the first div should contain a a-tag and the arrow image:
         imgInLeftSecondaryNavBar = detailsPageObj.getDescendantsByTagName(
-            divsInSecondaryNavBar[0], "img")
+            divsInSecondaryNavBar[0], "img"
+        )
         self.assertEqual(len(imgInLeftSecondaryNavBar), 1)
 
         # the img should be shown and no alt-text should be present:
         imgNaturalWidth = imgInLeftSecondaryNavBar[0].get_attribute(
-            "naturalWidth")
+            "naturalWidth"
+        )
         self.assertNotEqual(
             imgNaturalWidth,
             "0",
@@ -164,7 +179,8 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
         )
 
         aTagInFirstSecondaryNavBarDiv = detailsPageObj.getDescendantsByTagName(
-            divsInSecondaryNavBar[0], "a")
+            divsInSecondaryNavBar[0], "a"
+        )
         self.assertEqual(len(aTagInFirstSecondaryNavBarDiv), 1)
 
         # the a-tag should contain a link to the components list page:
@@ -186,20 +202,21 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
 
         # the second div should contain a a-tag and the arrow image:
         imgInRightSecondaryNavBar = detailsPageObj.getDescendantsByTagName(
-            divsInSecondaryNavBar[1], "img")
+            divsInSecondaryNavBar[1], "img"
+        )
         self.assertEqual(len(imgInRightSecondaryNavBar), 1)
 
         # the img should be shown and no alt-text should be present:
         self.assertTrue("" == imgInRightSecondaryNavBar.text)
 
         aTagInSecondSecondaryNavBarDiv = detailsPageObj.getDescendantsByTagName(
-            divsInSecondaryNavBar[1], "a")
+            divsInSecondaryNavBar[1], "a"
+        )
 
         # the a-tag should contain a link to the data processing page:
         href = aTagInSecondSecondaryNavBarDiv[0].get_attribute("href")
         self.assertTrue(re.search(r"/data_processing$", href))
 
         # the text of the a-tag should be black color and should have a green border:
-        color = aTagInSecondSecondaryNavBarDiv[0].value_of_css_property(
-            "color")
+        color = aTagInSecondSecondaryNavBarDiv[0].value_of_css_property("color")
         self.assertEqual(color, "rgb(0, 0, 0)")

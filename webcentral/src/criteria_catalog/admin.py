@@ -7,14 +7,18 @@ from .models import (
     Tag,
 )
 
+
 class TagModelAdmin(TranslationAdmin):
     pass
+
 
 class TopicModelAdmin(TranslationAdmin):
     pass
 
+
 class CriteriaCatalogAdmin(TranslationAdmin):
     pass
+
 
 admin.site.register(Tag, TagModelAdmin)
 admin.site.register(Topic, TopicModelAdmin)

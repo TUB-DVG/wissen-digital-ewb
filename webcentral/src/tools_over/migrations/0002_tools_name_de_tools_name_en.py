@@ -6,18 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('tools_over', '0001_initial'),
+        ("tools_over", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='tools',
-            name='name_de',
-            field=models.CharField(blank=True, help_text='name', max_length=150, null=True),
+            model_name="tools",
+            name="name_de",
+            field=models.CharField(
+                blank=True, help_text="name", max_length=150, null=True
+            ),
         ),
         migrations.AddField(
-            model_name='tools',
-            name='name_en',
-            field=models.CharField(blank=True, help_text='name', max_length=150, null=True),
+            model_name="tools",
+            name="name_en",
+            field=models.CharField(
+                blank=True, help_text="name", max_length=150, null=True
+            ),
         ),
     ]

@@ -5,6 +5,7 @@ It tests the Business-Application-Page, which is accessed when browsing to
 https://wissen-digital-ewb.de/tool_list/buisnessApps/.
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/...")
@@ -14,7 +15,8 @@ import os
 import random
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -36,16 +38,18 @@ class TestBusinessAppPage(WebDriverSetup):
 
     def testSearchBar(self):
         """Test if the Search-Bar looks and acts as expected."""
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
 
         searchBarObj = SearchPage(self.driver)
 
     def testCardsPresentOnVisit(self):
         """Test if the number of Business-Apps, shown in Cards is greater than 0."""
 
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         businessAppObj = BusinessAppPage(self.driver)
 
         self.assertGreater(
@@ -56,8 +60,9 @@ class TestBusinessAppPage(WebDriverSetup):
 
     def testSearchField(self):
         """Enter 'BIEC' into the searchField and check if 2 or more results are present."""
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         businessAppObj = BusinessAppPage(self.driver)
 
         searchInput = businessAppObj.getSearchField()
@@ -74,8 +79,9 @@ class TestBusinessAppPage(WebDriverSetup):
     def testIfDetailSiteIsShown(self):
         """Test, if on click on a Card, the Detail-Site is displayed."""
 
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         businessAppObj = BusinessAppPage(self.driver)
 
         randomCard = random.choice(businessAppObj.getCards())
@@ -95,8 +101,9 @@ class TestBusinessAppPage(WebDriverSetup):
 
     def testTagOnDetailPage(self):
         """ """
-        self.driver.get(os.environ["siteUnderTest"] +
-                        "/tool_list/buisnessApps/")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/tool_list/buisnessApps/"
+        )
         businessAppObj = BusinessAppPage(self.driver)
 
         randomCard = random.choice(businessAppObj.getCards())

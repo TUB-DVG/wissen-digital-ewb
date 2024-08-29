@@ -10,23 +10,25 @@ activation, the tests can be started via:
 ```
 If it outputs 'Ok', all tests passed.
 """
+
 from os import system
 import time
 from unittest import (
     TestCase,
     main,
-    )
+)
 from subprocess import (
     run,
     PIPE,
 )
+
 # import docker
 
 
 class TestDockerComposeEnvironments(TestCase):
     """Test-Class for Testing if the Docker-Compose-project executes
 
-    This Class inherits from `unittest.TestCase`. It runs the 
+    This Class inherits from `unittest.TestCase`. It runs the
     Docker-compose Production-Env and the Docker-compose Development-
     Env and checks if any errors occur.
     """
@@ -34,7 +36,7 @@ class TestDockerComposeEnvironments(TestCase):
     # def setUpClass() -> None:
     #     """Stops all running containers before test-execution.
     #
-    #     This static-class-method is executed before the 
+    #     This static-class-method is executed before the
     #     instanciation of `TestDockerComposeEnvionemnts`. It ensures,
     #     that all running containers are stoped before the test
     #     execution starts.
@@ -81,8 +83,7 @@ class TestDockerComposeEnvironments(TestCase):
     #     self.dockerInstance.close()
     #
     def testRunScriptDevBuild(self):
-        """Test if the call of './run build dev' runs without errors
-        """
+        """Test if the call of './run build dev' runs without errors"""
         result = system("./run build dev")
         self.assertTrue(result == 0)
 
@@ -90,7 +91,7 @@ class TestDockerComposeEnvironments(TestCase):
     #     """Tests if the production-environment can be run without errors.
     #
     #     This method automatically runs the docker-compose production
-    #     envirionment and checks if all needed containers are running 
+    #     envirionment and checks if all needed containers are running
     #     and all needed volumes were created.
     #
     #     Parameters
@@ -152,7 +153,7 @@ class TestDockerComposeEnvironments(TestCase):
     #
     #     This method tests if the docker-compose development-
     #     environment rus without errors. Therefore it starts the envionment
-    #     and checks if the number of running container is 2 and the number 
+    #     and checks if the number of running container is 2 and the number
     #     of volumes with the name `pgdata` is one.
     #
     #     Parameters
@@ -203,6 +204,7 @@ class TestDockerComposeEnvironments(TestCase):
     #         "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down --volumes",
     #     )
     #     time.sleep(1)
+
 
 if __name__ == "__main__":
     main()

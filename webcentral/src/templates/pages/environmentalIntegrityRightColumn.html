@@ -24,67 +24,69 @@
     }
 </style>
 <div class="blockOfContent">
-    <div class="mainContentHeading">
-        {% translate "Problemstellung und Problemziele" %}
-    </div>
-    <div class="mainContent" id="shortDescription">
-        {{ boxObject.problem_statement_and_problem_goals|safe|slice:":500" }}
-    </div>
-    <div class="mainContent collapse" id="problemStatement">
-        {{ boxObject.problem_statement_and_problem_goals|safe|slice:"500:" }}
-    </div>
-    <div class="showMore collapseInfoContainer">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#problemStatement"
-           aria-expanded="true"
-           aria-controls="problemStatement"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-    </div>
+  <div class="mainContentHeading">
+    {% translate "Problemstellung und Problemziele" %}
+  </div>
+  <div class="mainContent" id="shortDescription">
+    {{ boxObject.problem_statement_and_problem_goals|safe|slice:":500" }}
+  </div>
+  <div class="mainContent collapse" id="problemStatement">
+    {{ boxObject.problem_statement_and_problem_goals|safe|slice:"500:" }}
+  </div>
+  <div class="showMore collapseInfoContainer">
+    <a role="button"
+       class="collapsed text-truncation-btn"
+       data-toggle="collapse"
+       href="#problemStatement"
+       aria-expanded="true"
+       aria-controls="problemStatement"
+       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+  </div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Umsetzung im Projekt" %}</div>
-    <div class="mainContent" id="shortDescription">
-        {{ boxObject.implementation_in_the_project_rendered|slice:":550" }}
-    </div>
-    <div class="mainContent collapse" id="implementation">
-        {{ boxObject.implementation_in_the_project_rendered|slice:"550:" }}
-    </div>
-    <div class="showMore collapseInfoContainer">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#implementation"
-           aria-expanded="true"
-           aria-controls="implementation"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-    </div>
+  <div class="mainContentHeading">{% translate "Umsetzung im Projekt" %}</div>
+  <div class="mainContent" id="shortDescription">
+    {{ boxObject.implementation_in_the_project_rendered|slice:":550" }}
+  </div>
+  <div class="mainContent collapse" id="implementation">
+    {{ boxObject.implementation_in_the_project_rendered|slice:"550:" }}
+  </div>
+  <div class="showMore collapseInfoContainer">
+    <a role="button"
+       class="collapsed text-truncation-btn"
+       data-toggle="collapse"
+       href="#implementation"
+       aria-expanded="true"
+       aria-controls="implementation"
+       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+  </div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading">{% translate "Evaluation" %}</div>
-    <div class="mainContent" id="evaluationFirstContent">
-        {{ boxObject.evaluationRendered|slice:":500" }}
-    </div>
-    <div class="mainContent collapse" id="evaluation">
-        {{ boxObject.evaluationRendered|slice:"500:" }}
-    </div>
-    <div class="showMore collapseInfoContainer">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#evaluation"
-           aria-expanded="true"
-           aria-controls="evaluation"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-    </div>
+  <div class="mainContentHeading">{% translate "Evaluation" %}</div>
+  <div class="mainContent" id="evaluationFirstContent">
+    {{ boxObject.evaluationRendered|slice:":500" }}
+  </div>
+  <div class="mainContent collapse" id="evaluation">
+    {{ boxObject.evaluationRendered|slice:"500:" }}
+  </div>
+  <div class="showMore collapseInfoContainer">
+    <a role="button"
+       class="collapsed text-truncation-btn"
+       data-toggle="collapse"
+       href="#evaluation"
+       aria-expanded="true"
+       aria-controls="evaluation"
+       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+  </div>
 </div>
 <div class="blockOfContent">
-    <div class="mainContentHeading literatureHeading">{% translate "Weiterführende Literatur und Hinweise" %}</div>
-    <div class="mainContent" id="literatureFirstContent">
-        {{ boxObject.literatureList }}
-    </div>
+  <div class="mainContentHeading literatureHeading">
+    {% translate "Weiterführende Literatur und Hinweise" %}
+  </div>
+  <div class="mainContent" id="literatureFirstContent">
+    {{ boxObject.literatureList }}
+  </div>
 </div>

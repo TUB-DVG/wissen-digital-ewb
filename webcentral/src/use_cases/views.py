@@ -15,8 +15,9 @@ from common.views import (
 
 def index(request):
     """Shows the list of all projects including some key features."""
-    
-    explanationText = _("""
+
+    explanationText = _(
+        """
           <ol type="1">
             <p>
               Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein: 
@@ -103,12 +104,13 @@ def index(request):
               Pullinger et al., The IDEAL household energy dataset, electricity, gas, contextual sensor data and survey data for 255 UK homes, ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a>
         </p>
         <br>
-    """).replace("\n", "")
+    """
+    ).replace("\n", "")
     explanationTemplate = Template(explanationText)
     contextObj = Context({})
     explanationText = explanationTemplate.render(contextObj)
 
-    searched = request.GET.get('searched')
+    searched = request.GET.get("searched")
 
     filtering = bool(request.GET.get("filtering", False))
 
@@ -117,19 +119,19 @@ def index(request):
 
     useElements = request.GET.get("use-hidden", "")
     useElementsList = useElements.split(",")
-    
+
     evaluationElements = request.GET.get("evaluation-hidden", "")
     evaluationElementsList = evaluationElements.split(",")
     evalItemsList = []
     for evalElement in evaluationElementsList:
         if evalElement == "Positiv" or evalElement == "Positive":
-            effectevaluation = '+'
+            effectevaluation = "+"
         elif evalElement == "Negativ" or evalElement == "Negative":
-            effectevaluation = '-'
+            effectevaluation = "-"
         elif evalElement == "Neutral":
-            effectevaluation = 'o'
+            effectevaluation = "o"
         else:
-            effectevaluation = ''
+            effectevaluation = ""
 
         evalItemsList.append(effectevaluation)
 
@@ -144,7 +146,7 @@ def index(request):
             "filterName": "degreeOfDetail_de__icontains",
         },
         {
-            "filterValues":  evalItemsList,
+            "filterValues": evalItemsList,
             "filterName": "effectEvaluation_de__icontains",
         },
     ]
@@ -153,23 +155,26 @@ def index(request):
     if searched != "":
         criterionUsageOne = Q(useCase__icontains=searched)
         criterionUsageTwo = Q(focus__focus__icontains=searched)
-        criterionUsageThree = Q(
-            effectName__icontains=searched)
+        criterionUsageThree = Q(effectName__icontains=searched)
         criterionUsageFour = Q(effectDescription__icontains=searched)
-        complexCriterion &= (criterionUsageOne
-                             | criterionUsageTwo
-                             | criterionUsageThree
-                             | criterionUsageFour)
- 
-    focus = request.GET.get('focus')
+        complexCriterion &= (
+            criterionUsageOne
+            | criterionUsageTwo
+            | criterionUsageThree
+            | criterionUsageFour
+        )
+
+    focus = request.GET.get("focus")
     focusObjectFromGetRequest = getFocusObjectFromGetRequest(focus)
-    focusOptions = Focus.objects.all()  
-    
-    useCase = UseCase.objects.filter(complexCriterion) # reads all data from table UseCase
+    focusOptions = Focus.objects.all()
+
+    useCase = UseCase.objects.filter(
+        complexCriterion
+    )  # reads all data from table UseCase
     # breakpoint()
     # filteredBy = [None]*3
     # searched = None
-    # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) | 
+    # if ((request.GET.get("use") != None) | (focusObjectFromGetRequest is not None) |
     #     (request.GET.get("evaluation") != None) |(request.GET.get("searched") != None)):
     #     use_case = request.GET.get("use", '')
     #     effectevaluation = request.GET.get("evaluation", '')
@@ -197,83 +202,89 @@ def index(request):
     #         useCase = UseCase.objects.filter(criterionUseCaseFour).filter(
     #             useCase__icontains=use_case,
     #             effectEvaluation__icontains=effectevaluation,
-    #         )            
+    #         )
     #     filteredBy = [use_case, focusObjectFromGetRequest, effectevaluation]
     #
-    useCase = list(sorted(useCase, key=lambda obj:obj.item_code))
+    useCase = list(sorted(useCase, key=lambda obj: obj.item_code))
 
     for useCaseItem in useCase:
         _setUseCaseImage(useCaseItem)
 
-    useCasePaginator = Paginator(useCase,12)
-    pageNum = request.GET.get('page',None)
+    useCasePaginator = Paginator(useCase, 12)
+    pageNum = request.GET.get("page", None)
     page = useCasePaginator.get_page(pageNum)
-    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
-    filteredBy = [None]*3
-    
+    focusName = getFocusNameIndependentOfLanguage(
+        focus, focusObjectFromGetRequest
+    )
+    filteredBy = [None] * 3
+
     context = {
         # descriptionContainer input:
         "heading": _("Überblick über die Anwendungsfälle"),
         "explanaitionText": explanationText,
         "showMorePresent": True,
         "charNumberToShowCollapsed": 323,
-        'page': page,
-        'focus': focus,
-        'focus_options': focusOptions,
-        "nameOfTemplate": "use_cases",    
+        "page": page,
+        "focus": focus,
+        "focus_options": focusOptions,
+        "nameOfTemplate": "use_cases",
         "optionList": [
             {
-                "placeholder": _("Fokus"), 
+                "placeholder": _("Fokus"),
                 "objects": focusOptions,
                 "fieldName": "focus",
                 "filtered": focusElements,
             },
             {
-                "placeholder": _("Level der Wirkebene"), 
-                "objects": list(set([element.degreeOfDetail for element in UseCase.objects.all()])),
+                "placeholder": _("Level der Wirkebene"),
+                "objects": list(
+                    set(
+                        [
+                            element.degreeOfDetail
+                            for element in UseCase.objects.all()
+                        ]
+                    )
+                ),
                 "fieldName": "use",
                 "filtered": useElements,
             },
             {
-                "placeholder": _("Auswirkung der Evaluation"), 
+                "placeholder": _("Auswirkung der Evaluation"),
                 "objects": [_("Positiv"), _("Negativ"), _("Neutral")],
                 "fieldName": "evaluation",
                 "filtered": evaluationElements,
-            }, 
+            },
         ],
         "focusBorder": "global",
         "urlName": "use_cases_list",
-        'search':searched,
-        'use_case': filteredBy[0],
-        'perspective': filteredBy[1],
-        'effectevaluation': filteredBy[2]
+        "search": searched,
+        "use_case": filteredBy[0],
+        "perspective": filteredBy[1],
+        "effectevaluation": filteredBy[2],
     }
     if filtering:
-        return render(request, "use_cases/usecase-listings-results.html",
-                      context)
+        return render(
+            request, "use_cases/usecase-listings-results.html", context
+        )
 
-
-    return render(request, 'use_cases/usecase-listings.html', context)
+    return render(request, "use_cases/usecase-listings.html", context)
 
 
 def useCaseView(request, id):
     """Shows of the key features one project"""
-    useCase = get_object_or_404(UseCase, pk = id)
-    
+    useCase = get_object_or_404(UseCase, pk=id)
+
     _setUseCaseImage(useCase)
 
     context = {
-        'useCase': useCase,
-         
+        "useCase": useCase,
     }
 
-    return render(request, 'use_cases/usecase-detail.html', context)
+    return render(request, "use_cases/usecase-detail.html", context)
 
 
 def _setUseCaseImage(useCaseItem):
-    """
-
-    """
+    """ """
     if "Monat" in useCaseItem.degreeOfDetail:
         useCaseItem.icon = "/assets/images/constructionAgeClass.svg"
     elif "1 h" in useCaseItem.degreeOfDetail:
@@ -282,7 +293,10 @@ def _setUseCaseImage(useCaseItem):
         useCaseItem.icon = "/assets/images/dataVisulization.svg"
     elif "Gebäude" == useCaseItem.degreeOfDetail:
         useCaseItem.icon = "/assets/images/Klimatisierungsdaten.svg"
-    elif "3 Gebäude" == useCaseItem.degreeOfDetail or "4 Gebäude" in useCaseItem.degreeOfDetail:
+    elif (
+        "3 Gebäude" == useCaseItem.degreeOfDetail
+        or "4 Gebäude" in useCaseItem.degreeOfDetail
+    ):
         useCaseItem.icon = "/assets/images/Gebäudetyp.svg"
     elif "Anlagen" in useCaseItem.degreeOfDetail:
         useCaseItem.icon = "/assets/images/Klimatisierungsverhalten.svg"
@@ -290,4 +304,3 @@ def _setUseCaseImage(useCaseItem):
         useCaseItem.icon = "/assets/images/Geräte.svg"
     else:
         useCaseItem.icon = None
-

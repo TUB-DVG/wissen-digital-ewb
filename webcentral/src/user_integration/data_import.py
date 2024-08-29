@@ -1,13 +1,13 @@
-
 from datetime import (
-        datetime,
-        timedelta,
+    datetime,
+    timedelta,
 )
 import pandas as pd
 
 from common.data_import import DataImport
 
 from .models import *
+
 
 class DataImportApp(DataImport):
     DJANGO_APP = "user_integration"
@@ -22,10 +22,11 @@ class DataImportApp(DataImport):
         "Material__en": "material_en",
         "Ziele__en": "goals_en",
         "Good-Practice-Beispiel__en": "goodPracticeExample_en",
-        "Vorteile__en":"proArgument_en",
-        "Nachteile__en":"conArgument_en",
+        "Vorteile__en": "proArgument_en",
+        "Nachteile__en": "conArgument_en",
         "Ablauf__en": "procedureItem_en",
     }
+
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
 
@@ -61,11 +62,13 @@ class DataImportApp(DataImport):
             Indicates, if the UserIntegration-object was created or not.
         """
         category = row[header.index("Kategorie")]
-        categoryShortDescription = row[header.index(
-            "Kategorie_Kurzbeschreibung")]
+        categoryShortDescription = row[
+            header.index("Kategorie_Kurzbeschreibung")
+        ]
         subCategory = row[header.index("Unterkategorie")]
-        subCategoryShortDescription = row[header.index(
-            "Unterkategorie_Kurzbeschreibung")]
+        subCategoryShortDescription = row[
+            header.index("Unterkategorie_Kurzbeschreibung")
+        ]
         subtitle = row[header.index("Untertitel")]
         timeRequired = row[header.index("Zeitbedarf")]
         groupSize = row[header.index("Gruppengröße")]
@@ -84,32 +87,35 @@ class DataImportApp(DataImport):
             goals=goals,
             goodPracticeExample=goodPracticeExample,
         )
-        procedureList = self._processListInput(row[header.index("Ablauf")],
-                                               ";;")
+        procedureList = self._processListInput(
+            row[header.index("Ablauf")], ";;"
+        )
         procedureObjList = [
             ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
             for procedure in procedureList
         ]
         conArgumentsList = self._processListInput(
-            row[header.index("Nachteile")], ";;")
+            row[header.index("Nachteile")], ";;"
+        )
         conObjsList = [
             ConArgument.objects.get_or_create(conArgument=conArgElement)[0]
             for conArgElement in conArgumentsList
         ]
         proArgumentsList = self._processListInput(
-            row[header.index("Vorteile")], ";;")
+            row[header.index("Vorteile")], ";;"
+        )
         proObjsList = [
             ProArgument.objects.get_or_create(proArgument=proArgElement)[0]
             for proArgElement in proArgumentsList
         ]
-        literatureList = self._processListInput(row[header.index("Literatur")],
-                                                ";;")
+        literatureList = self._processListInput(
+            row[header.index("Literatur")], ";;"
+        )
         literatureObjsList = []
         for literatureElement in literatureList:
             splittedLiteratureElement = literatureElement.split("((")
             literatureString = splittedLiteratureElement[0]
-            literatureIdentifer = splittedLiteratureElement[1].replace(
-                "))", "")
+            literatureIdentifer = splittedLiteratureElement[1].replace("))", "")
             literatureObj, _ = Literature.objects.get_or_create(
                 literature=literatureString,
                 linkName=literatureIdentifer,
@@ -120,5 +126,7 @@ class DataImportApp(DataImport):
         obj.conArgument.add(*conObjsList)
         obj.literature.add(*literatureObjsList)
         if self._englishHeadersPresent(header):
-            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
+            self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         return obj, created

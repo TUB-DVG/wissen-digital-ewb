@@ -1,7 +1,9 @@
 """Test the Technical Standarts page
 
 """
+
 import sys
+
 sys.path.append(sys.path[0] + "/...")
 
 import time
@@ -10,7 +12,6 @@ import random
 
 from selenium import (
     webdriver,
-
 )
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
@@ -26,16 +27,16 @@ from Src.PageObject.Pages.NormPage import NormPage
 from Src.PageObject.Pages.Pagination import Pagination
 from Src.PageObject.Pages.SearchPage import SearchPage
 
+
 class TestNormsPage(WebDriverSetup):
-    """Tests the 'Lastapproximation'-Tab
-    
-    """
+    """Tests the 'Lastapproximation'-Tab"""
+
     def testNormSearchBar(self):
-        """Test the Norm-Search-Input Field 
-        
-        """
-        
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/norm")
+        """Test the Norm-Search-Input Field"""
+
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/norm"
+        )
         self._setLanguageToGerman()
 
         normPageObj = NormPage(self.driver)
@@ -46,7 +47,7 @@ class TestNormsPage(WebDriverSetup):
 
         time.sleep(1)
 
-        cardList = normPageObj.getCards() 
+        cardList = normPageObj.getCards()
 
         self.assertEqual(
             len(cardList),
@@ -56,17 +57,17 @@ class TestNormsPage(WebDriverSetup):
 
         paginationObj = Pagination(self.driver)
         paginationStr = paginationObj.getPaginationCurrentSiteString()
-        
+
         self.assertIn(
             "Seite 1 von 1",
             paginationStr.text,
-            "Pagination string should be 'Seite 1 von 1' after searching for 'bisko'"
+            "Pagination string should be 'Seite 1 von 1' after searching for 'bisko'",
         )
 
         searchInputField.clear()
         time.sleep(1)
 
-        cardList = normPageObj.getCards() 
+        cardList = normPageObj.getCards()
 
         self.assertEqual(
             len(cardList),
@@ -74,20 +75,22 @@ class TestNormsPage(WebDriverSetup):
             "Number of Cards should be 12 after deleting the Search-Filter...",
         )
 
-    
     def testClickOnOneofTheCardsShown(self):
-        """Click randomly on one of the cards and check if the right details-page is shown
-        
-        """
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/norm")
+        """Click randomly on one of the cards and check if the right details-page is shown"""
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/norm"
+        )
         normPageObj = NormPage(self.driver)
         cardsOnPage = normPageObj.getCards()
 
         randomCard = random.choice(cardsOnPage)
-        
+
         randomCardText = randomCard.text
 
-        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", randomCard)
+        self.driver.execute_script(
+            "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
+            randomCard,
+        )
         time.sleep(1)
         randomCard.click()
 
@@ -98,4 +101,3 @@ class TestNormsPage(WebDriverSetup):
             randomCardText,
             f"Page Title should be '{randomCardText}', after clicking on the card with the same name!",
         )
-

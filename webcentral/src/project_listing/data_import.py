@@ -1,15 +1,29 @@
-from .models import *
+"""App specific dataImport class for the app `prject_listing`
+
+"""
+
 from common.data_import import DataImport
+from .models import (
+    Address,
+    Enargus,
+    ExecutingEntity,
+    FurtherFundingInformation,
+    GrantRecipient,
+    RAndDPlanningCategory,
+    Subproject,
+    Person,
+)
+
 
 class DataImportApp(DataImport):
+    """Class definition of App specific data import class `DataImportApp`.
+    Inherits from general data import class `DataImport`.
+
+    """
+
     DJANGO_APP = "project_listing"
     DJANGO_MODEL = "Subproject"
-    MAPPING_EXCEL_DB_EN = {
-        # "ueberschrift__en": "heading_en",
-        # "text__en": "text_en",
-        # "tags__en": "tags_en",
-    }   
-    
+    MAPPING_EXCEL_DB_EN = {}
 
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -22,33 +36,37 @@ class DataImportApp(DataImport):
             Represents the file-path to the Data-File (xlsx or csv).
         """
         super().__init__(path_to_data_file)
-    
+        self.dictIdentifier = None
+
     def getOrCreate(self, row: list, header: list, data: list) -> None:
         """
         Add entry Subproject into the table or/and return entry key.
         """
-       
+
         # get the subproject for the enargus dataset:
 
         self.dictIdentifier = row[header.index("FKZ")]
         subprojectObj, created = self.getOrCreateSubproject(header, row)
-        
 
         enargusObj = None
-        if created == False:
+        if created is False:
             enargusObj = subprojectObj.enargusData
             self.diffStrDict[subprojectObj.referenceNumber_id] = ""
-        
-        
-        objGrantRecipient, _ = self.getOrCreateGrantRecipient(row, header, getattr(enargusObj, "objGrantRecipient", None))
-        objExecEntity, _ = self.getOrCreateExecutingEntity(row, header, getattr(enargusObj, "executingEntity", None))
+
+        objGrantRecipient, _ = self.getOrCreateGrantRecipient(
+            row, header, getattr(enargusObj, "objGrantRecipient", None)
+        )
+        objExecEntity, _ = self.getOrCreateExecutingEntity(
+            row, header, getattr(enargusObj, "executingEntity", None)
+        )
         objRAndDPlanning, _ = self.getOrCreateRAndDPlanningCategory(
-            row, header, getattr(enargusObj, "rAndDPlanningCategory", None))
-        objPerson, _ = self.getOrCreatePerson(row, header, getattr(enargusObj, "projectLead", None))
+            row, header, getattr(enargusObj, "rAndDPlanningCategory", None)
+        )
+        objPerson, _ = self.getOrCreatePerson(
+            row, header, getattr(enargusObj, "projectLead", None)
+        )
         objFurtherFunding, _ = self.getOrCreateFurtherFundingInformation(
-            row,
-            header,
-            getattr(enargusObj, "furtherFundingInformation", None)
+            row, header, getattr(enargusObj, "furtherFundingInformation", None)
         )
 
         durationBegin = row[header.index("Laufzeitbeginn")]
@@ -74,14 +92,17 @@ class DataImportApp(DataImport):
             shortDescriptionEn=shortDescriptionEn,
             database=database,
         )
-        
+
         subprojectObj.enargusData = obj
         subprojectObj.save()
-        
+
         if enargusObj is not None:
             self._compareDjangoOrmObj(Enargus, enargusObj, obj)
 
-        if enargusObj is not None and self.diffStrDict[self.dictIdentifier] != "":
+        if (
+            enargusObj is not None
+            and self.diffStrDict[self.dictIdentifier] != ""
+        ):
             self._writeDiffStrToDB()
 
         return obj, created
@@ -131,12 +152,13 @@ class DataImportApp(DataImport):
             name=nameFromCSV,
             address=objAnsZwe,
         )
-        
-        if oldRecipientObj is not None:
-            self._compareDjangoOrmObj(GrantRecipient, oldRecipientObj, newGrantRecipientObj)
-        
-        return newGrantRecipientObj, created
 
+        if oldRecipientObj is not None:
+            self._compareDjangoOrmObj(
+                GrantRecipient, oldRecipientObj, newGrantRecipientObj
+            )
+
+        return newGrantRecipientObj, created
 
     def getOrCreateExecutingEntity(self, row, header, oldExecutingEntityObj):
         """Gets or Creates an object of type ExecutingEntity from row
@@ -171,16 +193,16 @@ class DataImportApp(DataImport):
             name=nameFromCSV,
             address=objAnsAs,
         )
-        
+
         if oldExecutingEntityObj is not None:
-            self._compareDjangoOrmObj(ExecutingEntity, oldExecutingEntityObj, newExecutingEntityObj)
+            self._compareDjangoOrmObj(
+                ExecutingEntity, oldExecutingEntityObj, newExecutingEntityObj
+            )
 
         return newExecutingEntityObj, created
 
     def getOrCreateSubproject(self, header, row):
-        """
-
-        """
+        """Get the `Subproject` ORM-object for a `referernceNumberId`."""
         referernceNumberId = row[header.index("FKZ")]
         obj, created = Subproject.objects.get_or_create(
             referenceNumber_id=referernceNumberId,
@@ -188,14 +210,14 @@ class DataImportApp(DataImport):
 
         return obj, created
 
-
     def getOrCreateRAndDPlanningCategory(
         self,
         row: list,
         header: list,
         oldRandDobj,
     ) -> tuple:
-        """Gets or Creates an object of type RAndDPlanningCategory from the data in row
+        """Gets or Creates an object of type RAndDPlanningCategory from the
+        data in row.
 
         This method feeds the data present in row into the django
         get_or_create-function, which returns an Object of Type
@@ -224,7 +246,7 @@ class DataImportApp(DataImport):
             rAndDPlanningCategoryNumber=idFromCSV,
             rAndDPlanningCategoryText=textFromCSV,
         )
-        
+
         if oldRandDobj is not None:
             self._compareDjangoOrmObj(RAndDPlanningCategory, oldRandDobj, obj)
 
@@ -297,10 +319,12 @@ class DataImportApp(DataImport):
 
         Returns:
         obj:    FurtherFundingInformation
-            FurtherFundingInformation-object, represent the created or in database
-            present FurtherFundingInformation-Dataset with the data from row.
+            FurtherFundingInformation-object, represent the created or in
+            database present FurtherFundingInformation-Dataset with the data
+            from row.
         created:    bool
-            Indicates, if the FurtherFundingInformation-object was created or not.
+            Indicates, if the FurtherFundingInformation-object was created or
+            not.
         """
         federalMinistry = row[header.index("Bundesministerium")]
         projectBody = row[header.index("Projekttraeger")]
@@ -312,9 +336,11 @@ class DataImportApp(DataImport):
             researchProgram=researchProgram,
             fundingProgram=supportProgram,
         )
-        
+
         if oldFundingObj is not None:
-            self._compareDjangoOrmObj(FurtherFundingInformation, oldFundingObj, obj)
+            self._compareDjangoOrmObj(
+                FurtherFundingInformation, oldFundingObj, obj
+            )
 
         return obj, created
 
@@ -360,6 +386,11 @@ class DataImportApp(DataImport):
             location = row[header.index("Ort_AS")]
             country = row[header.index("Land_AS")]
             adress = row[header.index("Adress_AS")]
+        else:
+            postalCode = ""
+            location = ""
+            country = ""
+            adress = ""
 
         obj, created = Address.objects.get_or_create(
             plz=postalCode,
@@ -367,10 +398,8 @@ class DataImportApp(DataImport):
             state=country,
             address=adress,
         )
-        
+
         if oldObj is not None:
             self._compareDjangoOrmObj(Address, oldObj, obj)
 
         return obj, created
-
-

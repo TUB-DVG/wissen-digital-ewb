@@ -1,50 +1,58 @@
 {% load static %}
-{% for weatherdata in page.object_list %}	
-<!-- Card item START -->
-<div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-    <a href="{%url 'weatherdata_view' weatherdata.id %}">
-        <div class="card border-technical h-100">
-            <div class="card-header text-right">
-                <p class="card-header-text mb-2 text-truncate-2">
-                {{ weatherdata.category }}
-                {% if weatherdata.category == 'Anwendung' %}
-                <i class="bi bi-terminal fa-lg ml-2"></i>
-                {% elif weatherdata.category == 'Datensätze' %}
-                <i class="fas fa-database ml-2"></i>
-                {% else %}
-                <i class="fas fa-bars ml-2"></i>
-                {% endif %}
-                </p>
-            </div>
-            <!-- Card body -->
-            <div class="card-body pb-0">
-                <!-- Title -->
-                <h3 class="card-title"> {{ weatherdata.data_service   }}</h3>
-                <p class="card-text mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
-            </div>
-            <!-- Image -->
-            <div class="image-container d-flex" style="height: 150px;">
-                {%if weatherdata.image %}
-                <img src="{{ weatherdata.image.url }}" class="card-img-top px-4 pb-2 m-auto" style="max-height: 100%; width: auto; display: block;" alt="weatherdata image (if=db)">
-                {% endif %}
-            </div>
-            <!-- Card footer -->
-            <div class="card-footer pt-0 pb-3">
-                {% if weatherdata.last_update %}
-                <hr>
-                <div class="d-flex justify-content-between">
-                    <span class="h6 fw-light mb-0">
-                        {% if weatherdata.last_update == 'laufend' %}
-                        <i class="fas fa-sync me-2"></i>Updates: {{ weatherdata.last_update }}
-                        {% else %}
-                        <i class="far fa-clock me-2"></i>Letztes Update: {{ weatherdata.last_update }}
-                        {% endif %}
-                    </span> 
-                </div>
-                {% endif %}
-            </div>
+{% for weatherdata in page.object_list %}
+
+  <!-- Card item START -->
+  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+    <a href="{% url 'weatherdata_view' weatherdata.id %}">
+      <div class="card border-technical h-100">
+        <div class="card-header text-right">
+          <p class="card-header-text mb-2 text-truncate-2">
+            {{ weatherdata.category }}
+            {% if weatherdata.category == 'Anwendung' %}
+              <i class="bi bi-terminal fa-lg ml-2"></i>
+            {% elif weatherdata.category == 'Datensätze' %}
+              <i class="fas fa-database ml-2"></i>
+            {% else %}
+              <i class="fas fa-bars ml-2"></i>
+            {% endif %}
+          </p>
         </div>
+        <!-- Card body -->
+        <div class="card-body pb-0">
+          <!-- Title -->
+          <h3 class="card-title">{{ weatherdata.data_service }}</h3>
+          <p class="card-text mb-2 text-truncate-2">
+            Provider: {{ weatherdata.provider }}
+          </p>
+        </div>
+        <!-- Image -->
+        <div class="image-container d-flex" style="height: 150px;">
+          {% if weatherdata.image %}
+            <img src="{{ weatherdata.image.url }}"
+                 class="card-img-top px-4 pb-2 m-auto"
+                 style="max-height: 100%;
+                        width: auto;
+                        display: block"
+                 alt="weatherdata image (if=db)" />
+          {% endif %}
+        </div>
+        <!-- Card footer -->
+        <div class="card-footer pt-0 pb-3">
+          {% if weatherdata.last_update %}
+            <hr />
+            <div class="d-flex justify-content-between">
+              <span class="h6 fw-light mb-0">
+                {% if weatherdata.last_update == 'laufend' %}
+                  <i class="fas fa-sync me-2"></i>Updates: {{ weatherdata.last_update }}
+                {% else %}
+                  <i class="far fa-clock me-2"></i>Letztes Update: {{ weatherdata.last_update }}
+                {% endif %}
+              </span>
+            </div>
+          {% endif %}
+        </div>
+      </div>
     </a>
-</div>
-<!-- Card item END -->
+  </div>
+  <!-- Card item END -->
 {% endfor %}

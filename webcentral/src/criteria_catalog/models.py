@@ -28,8 +28,9 @@ class Topic(models.Model):
 
     heading = models.TextField(null=True, blank=True)
     text = models.TextField()
-    criteriaCatalog = models.ForeignKey("CriteriaCatalog",
-                                        on_delete=models.CASCADE)
+    criteriaCatalog = models.ForeignKey(
+        "CriteriaCatalog", on_delete=models.CASCADE
+    )
     topicHeadingNumber = models.CharField(blank=True, null=True)
     # useCase = models.OneToOneField("UseCase", on_delete=models.PROTECT)
     parent = models.ForeignKey(
@@ -56,6 +57,7 @@ class Topic(models.Model):
 
         contextObj = Context({})
         return templateObj.render(contextObj)
+
 
 class Tag(models.Model):
     """Represent a Tag, which can be assigned to a Topic."""

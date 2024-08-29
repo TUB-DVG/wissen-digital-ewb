@@ -1,12 +1,14 @@
 """
 
 """
+
 import sys
 
 sys.path.append(sys.path[0] + "/....")
 
 from selenium import (
-    webdriver, )
+    webdriver,
+)
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -46,8 +48,8 @@ class ComponentListPage(GenericPageObject):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
-                By.XPATH,
-                f"//div[contains(@class, '{Locator.descriptionBox}')]")
+                By.XPATH, f"//div[contains(@class, '{Locator.descriptionBox}')]"
+            )
         except:
             return None
 
@@ -114,14 +116,14 @@ class ComponentListPage(GenericPageObject):
     def getSelectFieldsInSearchContainer(self):
         """Returns the div-element, which wraps the content of the page"""
         return [
-                self.driver.find_element(
-                    By.XPATH,
-                    Locator.selectCategory,
-                ),
-                self.driver.find_element(
-                    By.XPATH,
-                    Locator.selectComponent,
-                ),
+            self.driver.find_element(
+                By.XPATH,
+                Locator.selectCategory,
+            ),
+            self.driver.find_element(
+                By.XPATH,
+                Locator.selectComponent,
+            ),
             self.driver.find_element(
                 By.XPATH,
                 Locator.selectSorting,
@@ -129,19 +131,18 @@ class ComponentListPage(GenericPageObject):
         ]
 
     def getInputOfMultiSelects(self):
-        """Return all input fields, which are part of a use-select-bootstrap select.
-
-        """
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'input-wrapper')]/input")
+        """Return all input fields, which are part of a use-select-bootstrap select."""
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'input-wrapper')]/input"
+        )
 
     def getOptionsForSelect(self, selectElement):
-        """Return the options as a list of divs of the element `selectElement`
+        """Return the options as a list of divs of the element `selectElement`"""
+        divSiblingOfSelect = selectElement.find_element(
+            By.XPATH, "following-sibling::div"
+        )
 
-        """
-        divSiblingOfSelect = selectElement.find_element(By.XPATH, "following-sibling::div")
-        
         return self.getDescendantsByClass(divSiblingOfSelect, "dropdown-item")
-
 
     def getCompareContainer(self):
         """Returns the div-element, which wraps the content of the page"""
@@ -164,10 +165,10 @@ class ComponentListPage(GenericPageObject):
             return None
 
     def getDownloadLink(self):
-        """Return the a-element, which triggers the download of the component-list excel file.
-
-        """
-        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'descriptionContainer')]/div/a")
+        """Return the a-element, which triggers the download of the component-list excel file."""
+        return self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'descriptionContainer')]/div/a"
+        )
 
     def getComponentListingContainer(self):
         """Return the Component Listing Container"""
@@ -203,7 +204,8 @@ class ComponentListPage(GenericPageObject):
         """ """
         try:
             return element.find_elements(
-                By.XPATH, f".//*[contains(@class, '{className}')]")
+                By.XPATH, f".//*[contains(@class, '{className}')]"
+            )
         except:
             return None
 

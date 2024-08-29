@@ -69,24 +69,18 @@ def norm(request):
     isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
 
     context = {
-        "page":
-        page,
-        "search":
-        searched,
+        "page": page,
+        "search": searched,
         # "name":
         # filteredBy[0],
         # "source":
         # filteredBy[1],
-        "nameOfTemplate":
-        "norms",
-        "focusBorder":
-        "technical",
-        "urlName":
-        "TechnicalStandards_norm_list",
+        "nameOfTemplate": "norms",
+        "focusBorder": "technical",
+        "urlName": "TechnicalStandards_norm_list",
         "optionList": [
             {
-                "placeholder":
-                _("Bezeichnung"),
+                "placeholder": _("Bezeichnung"),
                 "objects": [
                     "ANSI / ASHRAE Standard 140-2017 - Standard Method of Test for the Evaluation of Building Energy Analysis Computer Programs",
                     "Arbeitsstättenrichtllinie ASR A4.1",
@@ -159,20 +153,17 @@ def norm(request):
                 ],
                 # "filter":
                 # filteredBy[0],
-                "fieldName":
-                "name",
+                "fieldName": "name",
             },
             {
-                "placeholder":
-                _("Quelle"),
+                "placeholder": _("Quelle"),
                 "objects": [
                     "https://ghgprotocol.org/",
                     "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
                     "ENEKA - Energiekartenkartografie",
                     "Hottgenroth Software Katalog",
                 ],
-                "fieldName":
-                "source",
+                "fieldName": "source",
                 # "filter":
                 # filteredBy[1],
             },
@@ -265,10 +256,12 @@ def protocol(request):
         criterionProtocolsTwo = Q(networkTopology__icontains=searched)
         criterionProtocolsThree = Q(security__icontains=searched)
         criterionProtocolsFour = Q(name__icontains=searched)
-        complexCriterion &= (criterionProtocolsOne
-                             | criterionProtocolsTwo
-                             | criterionProtocolsThree
-                             | criterionProtocolsFour)
+        complexCriterion &= (
+            criterionProtocolsOne
+            | criterionProtocolsTwo
+            | criterionProtocolsThree
+            | criterionProtocolsFour
+        )
     protocols = Protocol.objects.filter(complexCriterion)
     # breakpoint()
     # filteredBy = [name,communicationMediumCategory,openSourceStatus]
@@ -281,24 +274,16 @@ def protocol(request):
     page = protocolsPaginator.get_page(pageNum)
 
     context = {
-        "page":
-        page,
-        "search":
-        searched,
-        "name":
-        filteredBy[0],
-        "communicationMediumCategory":
-        filteredBy[1],
-        "openSourceStatus":
-        filteredBy[2],
-        "nameOfTemplate":
-        "protocols",
-        "urlName":
-        "TechnicalStandards_protocol_list",
+        "page": page,
+        "search": searched,
+        "name": filteredBy[0],
+        "communicationMediumCategory": filteredBy[1],
+        "openSourceStatus": filteredBy[2],
+        "nameOfTemplate": "protocols",
+        "urlName": "TechnicalStandards_protocol_list",
         "optionList": [
             {
-                "placeholder":
-                "Name",
+                "placeholder": "Name",
                 "objects": [
                     "BACnet",
                     "KNX",
@@ -313,23 +298,18 @@ def protocol(request):
                     "m-Bus",
                     "profibus",
                 ],
-                "filter":
-                filteredBy[0],
-                "fieldName":
-                "name",
+                "filter": filteredBy[0],
+                "fieldName": "name",
             },
             {
-                "placeholder":
-                "Übertragungsmethoden",
+                "placeholder": "Übertragungsmethoden",
                 "objects": [
                     _("Verkabelt") + " & " + _("Drahtlos"),
                     _("Drahtlos"),
                     _("Verkabelt"),
                 ],
-                "filter":
-                filteredBy[1],
-                "fieldName":
-                "transmission",
+                "filter": filteredBy[1],
+                "fieldName": "transmission",
             },
             {
                 "placeholder": _("Open-Source-Status"),
@@ -341,8 +321,7 @@ def protocol(request):
                 "fieldName": "oss",
             },
         ],
-        "focusBorder":
-        "technical",
+        "focusBorder": "technical",
         "renderComparisonRadio": True,
         "model": "Protocols",
     }
@@ -360,8 +339,7 @@ def protocol(request):
         dataDict = {"html_from_view": html}
         return JsonResponse(data=dataDict, safe=False)
 
-    return render(request, "TechnicalStandards/protocol-listings.html",
-                  context)
+    return render(request, "TechnicalStandards/protocol-listings.html", context)
 
 
 def protocolDetailView(request, id):
@@ -431,5 +409,6 @@ def protocolComparison(request):
         "focusBorder": "technical",
     }
 
-    return render(request, "TechnicalStandards/protocol-comparison.html",
-                  context)
+    return render(
+        request, "TechnicalStandards/protocol-comparison.html", context
+    )

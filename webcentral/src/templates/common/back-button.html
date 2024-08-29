@@ -1,11 +1,11 @@
 {% load i18n %}
 
 <div class="row" style="margin-top: 16px;">
-    <a href="#" id="backButton">{% translate "Zurück" %}</a>
-      <script nonce="{{request.csp_nonce}}">
+  <a href="#" id="backButton">{% translate "Zurück" %}</a>
+  <script nonce="{{request.csp_nonce}}">
         document.getElementById('backButton').addEventListener('click', function(event) {
           event.preventDefault();
           window.history.back();
         });
-      </script>
-  </div>
+  </script>
+</div>

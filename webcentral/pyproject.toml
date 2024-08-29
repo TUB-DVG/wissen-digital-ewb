@@ -9,7 +9,7 @@ authors = [
     {name = "falk cudok"},
     {name = "felix rehmann"},
     {name = "rita streblow"},
-    {name = "tobias degner"},
+    {name = "martin tobias degner"},
     {name = "siling chen"},
     {name = "ibukun odeyemi"},
     {name = "kaifeng xu"},
@@ -69,12 +69,36 @@ test = [
     "xlsxwriter",
 ]
 
+[tool.pylint]
+ignore-patterns = [
+  "000*",
+  "manage.py",
+  "__init__.py",
+  "test*",
+  "src/pages/views.py",
+]
+disable = [
+  "W0212", # warning of access to class protected method
+  "E1101", # class has no object ... error 
+  "W0613", # ignore unused argument error
+  "R0903", 
+  "invalid-name", # no error for snakeCase is shown 
+  "R0914", # no error for too many local variables is shon
+  "W0201", # attribute definied outside of __init__
+  "W1514", # using open without specifying encoding
+  "R0913", # too many arguments (if more then 5 arguements)
+  "R1710", # all return statements should return the same type
+  "W0246", # Useless parent or super() delegation in method '__init__' (useless-parent-delegation)
+  "E0401", # unable to import module xy
+]
+
 [tool.pylint.format]
 max-line-length = 80
 
 [tool.pylint.basic]
 variable-naming-style = "camelCase"
 function-naming-style = "camelCase"
+method-naming-style = "camelCase"
 
 [tool.djlint]
 profile = "django"
