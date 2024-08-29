@@ -12,14 +12,14 @@
           <a href="{% url 'businessAppView' tool.id %}">
           {% endif %}
           <!-- Card body -->
-        <div class="card-body pb-0" id="{{ tool.id }}">
+          <div class="card-body pb-0" id="{{ tool.id }}">
             <!-- Title -->
             <h3 class="card-title">
               <input type="checkbox"
-                style="display: none;
-                margin-left: 0px;
-                vertical-align: middle;"
-                class="comparisonInputTools" />
+                     style="display: none;
+                            margin-left: 0px;
+                            vertical-align: middle"
+                     class="comparisonInputTools" />
               {{ tool.name }}
             </h3>
             <p class="card-text mb-2 text-truncate-2">
@@ -61,11 +61,11 @@
       </div>
     </div>
     <!-- Card item END -->
-{% endfor %}
-{% include "partials/pagination.html" %}
-<script>
+  {% endfor %}
+  {% include "partials/pagination.html" %}
+  <script>
   // this function adds events to asynchroniously added checkboxes
   // to keep the comparison feture possible after filtered tools were loaded
   // async
 
-</script>
+  </script>

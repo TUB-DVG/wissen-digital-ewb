@@ -48,9 +48,10 @@
                      alt="technical colored icon"
                      style="width:35px" />
               {% else %}
-                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
                      alt="technical uncolored icon"
-                     style="width:35px" />             
+                     style="width:35px" />
               {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
             </a>
@@ -104,9 +105,10 @@
                      alt="operational colored icon"
                      style="width:35px" />
               {% else %}
-                <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
+                <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
                      alt="operational uncolored icon"
-                     style="width:35px" />             
+                     style="width:35px" />
               {% endif %}
               &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
@@ -140,16 +142,18 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
-              {% if focusBorder == "ecological" %}
-                <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="ecological colored icon"
-                     style="width:35px" />
-              {% else %}
-                <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="ecological uncolored icon"
-                     style="width:35px" />             
-              {% endif %}  
+                {% if focusBorder == "ecological" %}
+                  <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="ecological colored icon"
+                       style="width:35px" />
+                {% else %}
+                  <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="ecological uncolored icon"
+                       style="width:35px" />
+                {% endif %}
+
                 &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
@@ -181,16 +185,18 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
-               {% if focusBorder == "legal" %}
-                <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="legal colored icon"
-                     style="width:35px" />
-              {% else %}
-                <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="legal uncolored icon"
-                     style="width:35px" />             
-              {% endif %} 
+                {% if focusBorder == "legal" %}
+                  <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="legal colored icon"
+                       style="width:35px" />
+                {% else %}
+                  <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="legal uncolored icon"
+                       style="width:35px" />
+                {% endif %}
+
                 &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="legalDropdown">
@@ -200,10 +206,10 @@
                   </a>
                 </li>
                 <li>
-                <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
-                  {% translate "Kriterienkatalog" %}
-                </a>
-              </li>
+                  <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
+                    {% translate "Kriterienkatalog" %}
+                  </a>
+                </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
                     {% translate "Icons und Visualisierung" %}
@@ -217,16 +223,18 @@
                  role="button"
                  data-bs-toggle="dropdown"
                  aria-expanded="false">
-               {% if focusBorder == "global" %}
-                <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="global colored icon"
-                     style="width:35px" />
-              {% else %}
-                <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}" class="position-absolute start-0 top-50 translate-middle-y"
-                     alt="global uncolored icon"
-                     style="width:35px" />             
-              {% endif %} 
+                {% if focusBorder == "global" %}
+                  <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="global colored icon"
+                       style="width:35px" />
+                {% else %}
+                  <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
+                       class="position-absolute start-0 top-50 translate-middle-y"
+                       alt="global uncolored icon"
+                       style="width:35px" />
+                {% endif %}
+
                 &nbsp; &nbsp; &nbsp; {% translate "Global" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="globalDropdown">
@@ -245,8 +253,8 @@
                     {% translate "Veröffentlichungen" %}
                   </a>
                 </li>
-              </li> 
-              </ul>
+              </li>
+            </ul>
             <!-- Nav legal focus END -->
           </ul>
           <!-- Nav Main menu END -->

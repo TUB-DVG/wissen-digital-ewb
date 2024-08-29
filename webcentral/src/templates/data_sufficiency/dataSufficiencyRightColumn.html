@@ -21,72 +21,75 @@
 </style>
 <div class="blockOfContent">
   <div class="mainContent firstPart" id="shortDescription">
-        {{ boxObject.categoryLongDescription|slice:":401" }}</div>
-    <div class="mainContent dots">...</div>
-    <div class="mainContent collapse" id="shortDescriptionRest">
-        {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}</div>
-      {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}  
-        <div class="showMore collapseInfoContainer">
-            <a role="button"
-               class="collapsed text-truncation-btn"
-               data-toggle="collapse"
-               href="#shortDescriptionRest"
-               aria-expanded="true"
-               aria-controls="shortDescriptionRest"
-               data-expanded-text=" {% translate 'Zeige weniger ...' %}"
-               data-collapsed-text=" {% translate 'Zeige mehr ...' %}"></a>
-        </div>
-      {% endif %}
+    {{ boxObject.categoryLongDescription|slice:":401" }}
+  </div>
+  <div class="mainContent dots">...</div>
+  <div class="mainContent collapse" id="shortDescriptionRest">
+    {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}
+  </div>
+  {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}
+
+    <div class="showMore collapseInfoContainer">
+      <a role="button"
+         class="collapsed text-truncation-btn"
+         data-toggle="collapse"
+         href="#shortDescriptionRest"
+         aria-expanded="true"
+         aria-controls="shortDescriptionRest"
+         data-expanded-text=" {% translate 'Zeige weniger ...' %}"
+         data-collapsed-text=" {% translate 'Zeige mehr ...' %}"></a>
+    </div>
+  {% endif %}
 </div>
 {% if boxObject.example1 %}
-    <div class="blockOfContent">
-        <div class="mainContent">{{ boxObject.example1Heading }}:</div>
-        <div>
-            <div class="mainContent firstPart">{{ boxObject.example1|slice:":501" }}</div>
-            <div class="mainContent collapse" id="example1">
-                {{ boxObject.example1|slice:"501:" }}
-            </div>
-            {% if boxObject.example1|slice:"501:" %}
-                <div class="showMore collapseInfoContainer">
-                    <a role="button"
-                       class="collapsed text-truncation-btn"
-                       data-toggle="collapse"
-                       href="#example1"
-                       aria-expanded="true"
-                       aria-controls="example1"
-                       data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-                </div>
-            {% endif %}
+  <div class="blockOfContent">
+    <div class="mainContent">{{ boxObject.example1Heading }}:</div>
+    <div>
+      <div class="mainContent firstPart">{{ boxObject.example1|slice:":501" }}</div>
+      <div class="mainContent collapse" id="example1">
+        {{ boxObject.example1|slice:"501:" }}
+      </div>
+      {% if boxObject.example1|slice:"501:" %}
+        <div class="showMore collapseInfoContainer">
+          <a role="button"
+             class="collapsed text-truncation-btn"
+             data-toggle="collapse"
+             href="#example1"
+             aria-expanded="true"
+             aria-controls="example1"
+             data-expanded-text="{% translate 'Zeige weniger ...' %}"
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
         </div>
+      {% endif %}
     </div>
+  </div>
 {% endif %}
 {% if boxObject.example2 %}
-  <div class="blockOfContent"> 
+  <div class="blockOfContent">
     <div class="mainContent">{{ boxObject.example2Heading }}:</div>
     <div>
-        <div class="mainContent firstPart">{{ boxObject.example2|slice:":401" }}</div>
-        <div class="mainContent collapse" id="example2">
-            {{ boxObject.example2|slice:"401:" }}
+      <div class="mainContent firstPart">{{ boxObject.example2|slice:":401" }}</div>
+      <div class="mainContent collapse" id="example2">
+        {{ boxObject.example2|slice:"401:" }}
+      </div>
+      {% if boxObject.example2|slice:"401:" %}
+        <div class="showMore collapseInfoContainer">
+          <a role="button"
+             class="collapsed text-truncation-btn"
+             data-toggle="collapse"
+             href="#example2"
+             aria-expanded="true"
+             aria-controls="example2"
+             data-expanded-text="{% translate 'Zeige weniger ...' %}"
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
         </div>
-        {% if boxObject.example2|slice:"401:" %}
-            <div class="showMore collapseInfoContainer">
-                <a role="button"
-                   class="collapsed text-truncation-btn"
-                   data-toggle="collapse"
-                   href="#example2"
-                   aria-expanded="true"
-                   aria-controls="example2"
-                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-            </div>
-        {% endif %}
+      {% endif %}
     </div>
   </div>
 {% endif %}
-  <div class="blockOfContent"> 
-    <div>
-      <div class="mainContent">{% translate "Literatur" %}:</div>
-      <div class="mainContent">{{ boxObject.literatureList }}</div>
-    </div>
+<div class="blockOfContent">
+  <div>
+    <div class="mainContent">{% translate "Literatur" %}:</div>
+    <div class="mainContent">{{ boxObject.literatureList }}</div>
   </div>
+</div>

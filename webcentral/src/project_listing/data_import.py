@@ -1,6 +1,7 @@
 """App specific dataImport class for the app `prject_listing`
 
 """
+
 from common.data_import import DataImport
 from .models import (
     Address,
@@ -19,10 +20,10 @@ class DataImportApp(DataImport):
     Inherits from general data import class `DataImport`.
 
     """
+
     DJANGO_APP = "project_listing"
     DJANGO_MODEL = "Subproject"
-    MAPPING_EXCEL_DB_EN = {
-    }
+    MAPPING_EXCEL_DB_EN = {}
 
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -36,7 +37,6 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
         self.dictIdentifier = None
-
 
     def getOrCreate(self, row: list, header: list, data: list) -> None:
         """
@@ -202,9 +202,7 @@ class DataImportApp(DataImport):
         return newExecutingEntityObj, created
 
     def getOrCreateSubproject(self, header, row):
-        """Get the `Subproject` ORM-object for a `referernceNumberId`.
-
-        """
+        """Get the `Subproject` ORM-object for a `referernceNumberId`."""
         referernceNumberId = row[header.index("FKZ")]
         obj, created = Subproject.objects.get_or_create(
             referenceNumber_id=referernceNumberId,
@@ -218,7 +216,7 @@ class DataImportApp(DataImport):
         header: list,
         oldRandDobj,
     ) -> tuple:
-        """Gets or Creates an object of type RAndDPlanningCategory from the 
+        """Gets or Creates an object of type RAndDPlanningCategory from the
         data in row.
 
         This method feeds the data present in row into the django
@@ -321,11 +319,11 @@ class DataImportApp(DataImport):
 
         Returns:
         obj:    FurtherFundingInformation
-            FurtherFundingInformation-object, represent the created or in 
-            database present FurtherFundingInformation-Dataset with the data 
+            FurtherFundingInformation-object, represent the created or in
+            database present FurtherFundingInformation-Dataset with the data
             from row.
         created:    bool
-            Indicates, if the FurtherFundingInformation-object was created or 
+            Indicates, if the FurtherFundingInformation-object was created or
             not.
         """
         federalMinistry = row[header.index("Bundesministerium")]

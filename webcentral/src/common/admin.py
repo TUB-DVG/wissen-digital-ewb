@@ -7,6 +7,7 @@ The second class `DbDifAdmin` creates a finalize action, which finalizes
 DbDiff conflicts.
 
 """
+
 import importlib
 
 from django.contrib import admin
@@ -20,14 +21,13 @@ from .models import DbDiff
 
 
 class AggregatedSessionByDay(admin.ModelAdmin):
-    """Class Definition for admin class based view for the aggregated views 
+    """Class Definition for admin class based view for the aggregated views
     per day.
 
     """
-    def get_urls(self):
-        """Add a url siteVisits/ to the admin panel.
 
-        """
+    def get_urls(self):
+        """Add a url siteVisits/ to the admin panel."""
         urls = super().get_urls()
         my_urls = [
             path(
@@ -38,9 +38,7 @@ class AggregatedSessionByDay(admin.ModelAdmin):
         return my_urls + urls
 
     def adminViewAggregatedSessions(self, request):
-        """Aggregate the sessions by day and render the aggregatedVisits.html
-        
-        """
+        """Aggregate the sessions by day and render the aggregatedVisits.html"""
         dates, visitsPerDate = self.get_queryset(request)
         context = dict(
             self.admin_site.each_context(request),
@@ -53,9 +51,7 @@ class AggregatedSessionByDay(admin.ModelAdmin):
         )
 
     def get_queryset(self, request):
-        """Get the sessions for an expiration date.
-
-        """
+        """Get the sessions for an expiration date."""
         queryset = super().get_queryset(request)
         queryset = (
             queryset.annotate(date=TruncDate("expire_date"))
@@ -71,7 +67,6 @@ class AggregatedSessionByDay(admin.ModelAdmin):
         return dates, visitsPerDate
 
 
-
 admin.site.register(Session, AggregatedSessionByDay)
 
 
@@ -85,7 +80,7 @@ class DbDiffAdmin(admin.ModelAdmin):
 
     @admin.action(description="Finalize selected changes")
     def finalizeChange(self, request, queryset):
-        """Parse the `diffStr` and remove the unused object for all 
+        """Parse the `diffStr` and remove the unused object for all
         referenced tables.
         """
         filterForNotExecuted = queryset.filter(executed=False)
@@ -112,7 +107,7 @@ class DbDiffAdmin(admin.ModelAdmin):
             dbDiff.save()
 
     def _isObjectReferenced(self, obj):
-        """Check if the old object is referenced anywhere and shouldnt be 
+        """Check if the old object is referenced anywhere and shouldnt be
         deleted.
         """
         model = obj.__class__
@@ -136,7 +131,7 @@ class DbDiffAdmin(admin.ModelAdmin):
             class-object
 
         # Example
-        For "<class 'project_listing.models.FurtherFundingInformation'>" the 
+        For "<class 'project_listing.models.FurtherFundingInformation'>" the
         class `FurtherFundingInformation` is returned.
         """
         modulePath, className = (

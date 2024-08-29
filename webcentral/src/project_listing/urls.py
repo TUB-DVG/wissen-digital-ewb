@@ -1,6 +1,7 @@
 """Defiition of app specific urls. 
 
 """
+
 from django.urls import path
 
 from . import views

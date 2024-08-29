@@ -7,71 +7,71 @@
 }
 </style>
 <div class="p-2 mt-4">
-    <div class="row g-4">
-        <div class="col-lg-12 border-{{ focusBorder }} p-2 my-1 search__container"
-             id="container-criteria-catalog-details">
-            <div class="col-3 col-xl-3 search__icons"
-                 title="Suchen in den Anwendungsnamen"
-                 style="display: inline">
-                {% for iconObj in allObjectsForQuickLinks %}
-                    {% if iconObj.id == idOfSelectedObj %}
-                        <img src="{% static iconObj.imageIconSelected %}"
-                             class="rounded"
-                             alt="icon" />
-                    {% else %}
-                        <a href="/{{ quickLinkName }}/{{ iconObj.id }}">
-                            <img src="{% static iconObj.imageIcon %}" class="rounded" alt="icon" />
-                        </a>
-                    {% endif %}
-                {% endfor %}
-            </div>
-            <!-- search Field Schlagwort -->
-            {% if showInputsInImageQuickLinkBar %}
-                <div class="col-3 form-group align-items-center search__input"
-                     style="display: inline;
-                            float: right">
-                    <input type="text"
-                           onkeydown="if (event.key === 'Enter') searchFullText(this.value)"
-                           class="form-select js-choice border-legal-round"
-                           id="searchInputCriteriaCatalog"
-                           placeholder="{% translate 'Alles durchsuchen' %}"
-                           name='searched'
-                           style="color:#E0D674;
-                                  width: 262px;
-                                  height: 39px;
-                                  margin-bottom: 0px;
-                                  display: inline" />
-                </div>
-            {% endif %}
-            {% if showSelect %}
-                <div class="col-3 form-group align-items-center search__dropdown"
-                     style="display: inline;
-                            float: right">
+  <div class="row g-4">
+    <div class="col-lg-12 border-{{ focusBorder }} p-2 my-1 search__container"
+         id="container-criteria-catalog-details">
+      <div class="col-3 col-xl-3 search__icons"
+           title="Suchen in den Anwendungsnamen"
+           style="display: inline">
+        {% for iconObj in allObjectsForQuickLinks %}
+          {% if iconObj.id == idOfSelectedObj %}
+            <img src="{% static iconObj.imageIconSelected %}"
+                 class="rounded"
+                 alt="icon" />
+          {% else %}
+            <a href="/{{ quickLinkName }}/{{ iconObj.id }}">
+              <img src="{% static iconObj.imageIcon %}" class="rounded" alt="icon" />
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <!-- search Field Schlagwort -->
+      {% if showInputsInImageQuickLinkBar %}
+        <div class="col-3 form-group align-items-center search__input"
+             style="display: inline;
+                    float: right">
+          <input type="text"
+                 onkeydown="if (event.key === 'Enter') searchFullText(this.value)"
+                 class="form-select js-choice border-legal-round"
+                 id="searchInputCriteriaCatalog"
+                 placeholder="{% translate 'Alles durchsuchen' %}"
+                 name='searched'
+                 style="color:#E0D674;
+                        width: 262px;
+                        height: 39px;
+                        margin-bottom: 0px;
+                        display: inline" />
+        </div>
+      {% endif %}
+      {% if showSelect %}
+        <div class="col-3 form-group align-items-center search__dropdown"
+             style="display: inline;
+                    float: right">
 
-                    <!-- d-flex align-items-center justify-content-center pe-1 -->
-                    <form style="display: inline;">
-                        <!-- <input type="text"
+          <!-- d-flex align-items-center justify-content-center pe-1 -->
+          <form style="display: inline;">
+            <!-- <input type="text"
         class="form-control me-1 border-legal rounded-lg"
         id="search-input-criteriaCatalog"
         placeholder="Schlagwort"
         name='searched' /> -->
 
-                        <select name="tags"
-                                class="form-select js-choice border-{{ focusBorder }}-round-font-color"
-                                id="tags"
-                                placeholder="Schlagwort"
-                                style="width: 262px;
-                                       height: 39px;
-                                       margin-bottom: 0px;
-                                       display: inline"
-                                onchange="handleOptionSelected()">
-                            <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
-                            {% for tag in tags %}<option>{{ tag }}</option>{% endfor %}
-                        </select>
-                    </form>
-                </div>
-            {% endif %}
+            <select name="tags"
+                    class="form-select js-choice border-{{ focusBorder }}-round-font-color"
+                    id="tags"
+                    placeholder="Schlagwort"
+                    style="width: 262px;
+                           height: 39px;
+                           margin-bottom: 0px;
+                           display: inline"
+                    onchange="handleOptionSelected()">
+              <!-- style="height: 30px; width: 200px; border-radius: 15px; border: 2px solid #F5E86A; color: #F5E86A"> -->
+              {% for tag in tags %}<option>{{ tag }}</option>{% endfor %}
+            </select>
+          </form>
         </div>
-        {% if javascriptFilePath %}
-            <script src="{% static javascriptFilePath %}" nonce="{{request.csp_nonce}}"></script>
-        {% endif %}
+      {% endif %}
+    </div>
+    {% if javascriptFilePath %}
+      <script src="{% static javascriptFilePath %}" nonce="{{request.csp_nonce}}"></script>
+    {% endif %}

@@ -2,6 +2,7 @@
 data_import classes.
 
 """
+
 import difflib
 import csv
 import math
@@ -24,9 +25,8 @@ from common.models import DbDiff
 
 
 class DataImport:
-    """Definition of the general DataImport class
+    """Definition of the general DataImport class"""
 
-    """
     def __init__(self, path_to_data_file):
         """Constructor of the Base-DataImport-class."""
         self.path_to_file = path_to_data_file
@@ -59,7 +59,7 @@ class DataImport:
             header, data = self.readExcel()
             return header, data
         raise CommandError(
-                "Invalid file format. Please provide a .csv or .xlsx file."
+            "Invalid file format. Please provide a .csv or .xlsx file."
         )
 
     def readExcel(
@@ -132,7 +132,7 @@ class DataImport:
         return header, data
 
     def readCSV(self):
-        """Read the provided csv-file and return the header and the data as 
+        """Read the provided csv-file and return the header and the data as
         2 lists.
         """
         with open(self.path_to_file, "r") as fh:
@@ -181,7 +181,7 @@ class DataImport:
     ) -> str:
         """Return closest match for categoryString in djangoModel
 
-        This method returns the closest match for `categoryString` in 
+        This method returns the closest match for `categoryString` in
         `djangoModel` by using the difflib.get_close_matcheGs-function.
         Thereby the cutoff is set to 80 %. That means if the closest match
         is below 80 %, an error message is printed and an empty string is
@@ -210,8 +210,7 @@ class DataImport:
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
             )
         allNames = [
-            getattr(x, attributeNameInModel)
-            for x in djangoModel.objects.all()
+            getattr(x, attributeNameInModel) for x in djangoModel.objects.all()
         ]
 
         # get the closest match
@@ -221,9 +220,9 @@ class DataImport:
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
 
-        if djangoModel.__name__ not in ('Subproject', 'Norm'):
+        if djangoModel.__name__ not in ("Subproject", "Norm"):
             newlyCreatedRow = djangoModel.objects.create(
-                    **{attributeNameInModel: categoryString}
+                **{attributeNameInModel: categoryString}
             )
             print(
                 f"""No nearest match for {categoryString} in {djangoModel}
@@ -363,9 +362,9 @@ class DataImport:
                 if germanyManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
                         setattr(
-                                ormRelObj,
-                                f"{dbAttr}_en",
-                                englishManyToManyStr[indexInGerList],
+                            ormRelObj,
+                            f"{dbAttr}_en",
+                            englishManyToManyStr[indexInGerList],
                         )
                         ormRelObj.save()
         return ormObj

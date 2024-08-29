@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} Projekt View {% endblock %}
+{% block title %}Projekt View{% endblock %}
 
 {% load static %}
 
@@ -14,7 +14,8 @@
         <div class="col-md-12">
           <h1 class="display-4">{{ projekt.fkz }}</h1>
           <p class="lead">
-            <i class="fas fa-map-marker"></i>{{ projekt.enargus_daten.laufzeitbeginn }}</p>
+            <i class="fas fa-map-marker"></i>{{ projekt.enargus_daten.laufzeitbeginn }}
+          </p>
         </div>
       </div>
     </div>
@@ -44,37 +45,39 @@
       <div class="row">
         <div class="col-md-9">
           <!-- Home Main Image -->
-          <img src="assets/img/homes/home-1.jpg" alt="" class="img-main img-fluid mb-3">
+          <img src="assets/img/homes/home-1.jpg"
+               alt=""
+               class="img-main img-fluid mb-3" />
           <!-- Thumbnails -->
           <div class="row mb-5 thumbs">
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-1.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-1.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-1.jpg" alt="" class="img-fluid" />
               </a>
             </div>
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-2.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-2.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-2.jpg" alt="" class="img-fluid" />
               </a>
             </div>
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-3.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-3.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-3.jpg" alt="" class="img-fluid" />
               </a>
             </div>
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-4.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-4.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-4.jpg" alt="" class="img-fluid" />
               </a>
             </div>
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-5.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-5.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-5.jpg" alt="" class="img-fluid" />
               </a>
             </div>
             <div class="col-md-2">
               <a href="assets/img/homes/home-inside-6.jpg" data-lightbox="home-images">
-                <img src="assets/img/homes/home-inside-6.jpg" alt="" class="img-fluid">
+                <img src="assets/img/homes/home-inside-6.jpg" alt="" class="img-fluid" />
               </a>
             </div>
           </div>
@@ -96,8 +99,7 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-car"></i> Garage:
-                  <span class="float-right">2
-                  </span>
+                  <span class="float-right">2</span>
                 </li>
               </ul>
             </div>
@@ -109,8 +111,7 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-square"></i> Lot Size:
-                  <span class="float-right">2.5 Acres
-                  </span>
+                  <span class="float-right">2.5 Acres</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-calendar"></i> Listing Date:
@@ -118,10 +119,8 @@
                 </li>
                 <li class="list-group-item text-secondary">
                   <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">Kyle Brown
-                  </span>
+                  <span class="float-right">Kyle Brown</span>
                 </li>
-
 
               </ul>
             </div>
@@ -138,13 +137,17 @@
         </div>
         <div class="col-md-3">
           <div class="card mb-3">
-            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Seller of the month">
+            <img class="card-img-top"
+                 src="assets/img/realtors/kyle.jpg"
+                 alt="Seller of the month" />
             <div class="card-body">
               <h5 class="card-title">Property Realtor</h5>
               <h6 class="text-secondary">Kyle Brown</h6>
             </div>
           </div>
-          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An Inquiry</button>
+          <button class="btn-primary btn-block btn-lg"
+                  data-toggle="modal"
+                  data-target="#inquiryModal">Make An Inquiry</button>
         </div>
       </div>
     </div>
@@ -164,31 +167,34 @@
           <form>
             <div class="form-group">
               <label for="property_name" class="col-form-label">Property:</label>
-              <input type="text" name="listing" class="form-control" value="45 Drivewood Cirlce" disabled>
+              <input type="text"
+                     name="listing"
+                     class="form-control"
+                     value="45 Drivewood Cirlce"
+                     disabled />
             </div>
             <div class="form-group">
               <label for="name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" required>
+              <input type="text" name="name" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input type="email" name="email" class="form-control" required>
+              <input type="email" name="email" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="phone" class="col-form-label">Phone:</label>
-              <input type="text" name="phone" class="form-control">
+              <input type="text" name="phone" class="form-control" />
             </div>
             <div class="form-group">
               <label for="message" class="col-form-label">Message:</label>
               <textarea name="message" class="form-control"></textarea>
             </div>
-            <hr>
-            <input type="submit" value="Send" class="btn btn-block btn-secondary">
+            <hr />
+            <input type="submit" value="Send" class="btn btn-block btn-secondary" />
           </form>
         </div>
       </div>
     </div>
   </div>
-
 
 {% endblock %}

@@ -1,5 +1,6 @@
 """Test the workflow to solve conflicts in data_import 
 """
+
 from random import choice
 
 from django.test import TestCase
@@ -29,14 +30,13 @@ User = get_user_model()
 
 
 class DbDiffAdminTest(TestCase):
-    """Definition of testclass to test if the db conflicts can be solved 
+    """Definition of testclass to test if the db conflicts can be solved
     in the django admin panel.
 
     """
-    def setUp(self):
-        """setUp method for all methods of `DbDiffAdminTest`
 
-        """
+    def setUp(self):
+        """setUp method for all methods of `DbDiffAdminTest`"""
         # Create test data
 
         self.site = AdminSite()
@@ -49,7 +49,7 @@ class DbDiffAdminTest(TestCase):
         self.factory = RequestFactory()
 
     def testOneTableDiffStr(self):
-        """test if the finalization process works if only one table if only 
+        """test if the finalization process works if only one table if only
         one table is in the DbDiff object.
 
         """
@@ -239,7 +239,7 @@ class DbDiffAdminTest(TestCase):
         self.assertEqual(len(personObjs), 1)
 
     def testFinalizeChangesWithGetOrCreateCall(self):
-        """Integration test for finalization step """
+        """Integration test for finalization step"""
         request = self.factory.post("/admin/common/dbdiff/")
         request.user = self.user
 

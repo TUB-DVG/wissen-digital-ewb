@@ -1,13 +1,14 @@
 """Models, which can be used in all other apps of the projects.
 
 """
+
 from django.db import models
 
 
 class DbDiff(models.Model):
-    """ORM-model definition of the `DBDiff`, which is instanciated if 
+    """ORM-model definition of the `DBDiff`, which is instanciated if
     data conflicts appear in the data_import-process.
-    
+
     """
 
     identifier = models.CharField(max_length=100)

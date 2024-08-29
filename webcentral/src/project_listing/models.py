@@ -8,9 +8,8 @@ from sqlalchemy import null, true
 
 
 class Subproject(models.Model):
-    """ORM-Model Defintion for the Subproject model
+    """ORM-Model Defintion for the Subproject model"""
 
-    """
     referenceNumber_id = models.CharField(
         max_length=10,
         primary_key=True,
@@ -34,21 +33,17 @@ class Subproject(models.Model):
     )  # One to many behaviour
 
     def __str__(self):
-        return (
-            str(self.referenceNumber_id)
+        return str(
+            self.referenceNumber_id
         )  # maybe change to the shortname of the project
 
     # def en_id(self):
     #   return self.enargus_daten.enargus_id
 
 
-
-
 class ModuleAssignment(models.Model):
-    """ORM-Model Defintion for the moduleAssignment model
+    """ORM-Model Defintion for the moduleAssignment model"""
 
-
-    """
     moduleAssignment_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -83,10 +78,8 @@ class ModuleAssignment(models.Model):
 
 
 class Enargus(models.Model):
-    """ORM-Model Defintion for the Enargus model
+    """ORM-Model Defintion for the Enargus model"""
 
-
-    """
     enargus_id = models.AutoField(primary_key=True)
     startDate = models.DateField(blank=True, null=True)
     endDate = models.DateField(blank=True, null=True)
@@ -162,16 +155,14 @@ class Enargus(models.Model):
 
     # return as name, when class is called, eg. tables in admin page
     def __str__(self):
-        return (
-            str(self.collaborativeProject)
+        return str(
+            self.collaborativeProject
         )  # maybe change to the shortname of the project
 
 
 class FurtherFundingInformation(models.Model):
-    """ORM-Model Defintion for the FurtherFundingInformation model
+    """ORM-Model Defintion for the FurtherFundingInformation model"""
 
-
-    """
     furtherFundingInformation_id = models.AutoField(
         primary_key=True, help_text="Auto.generiert ID"
     )
@@ -202,9 +193,8 @@ class FurtherFundingInformation(models.Model):
 
 
 class RAndDPlanningCategory(models.Model):
-    """ORM-Model Defintion for the RAndDplanningCategory model
+    """ORM-Model Defintion for the RAndDplanningCategory model"""
 
-    """
     rAndDPlanningCategoryNumber = models.CharField(
         primary_key=True,
         max_length=6,
@@ -217,9 +207,8 @@ class RAndDPlanningCategory(models.Model):
 
 
 class ExecutingEntity(models.Model):
-    """ORM-Model Defintion for the Executing-Entity model
+    """ORM-Model Defintion for the Executing-Entity model"""
 
-    """
     executingEntity_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -230,9 +219,8 @@ class ExecutingEntity(models.Model):
 
 
 class GrantRecipient(models.Model):
-    """ORM-Model Defintion for the Grant-Recipient model
+    """ORM-Model Defintion for the Grant-Recipient model"""
 
-    """
     grantRecipient_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -243,9 +231,8 @@ class GrantRecipient(models.Model):
 
 
 class Person(models.Model):
-    """ORM-Model Defintion for the Person model
+    """ORM-Model Defintion for the Person model"""
 
-    """
     person_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )
@@ -260,9 +247,8 @@ class Person(models.Model):
 
 
 class Address(models.Model):
-    """ORM-Model Defintion for the Address model
+    """ORM-Model Defintion for the Address model"""
 
-    """
     address_id = models.AutoField(
         primary_key=True, help_text="auto generiert ID"
     )

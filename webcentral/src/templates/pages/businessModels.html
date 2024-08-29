@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% translate "Geschäftsmodelle – good-practice" %}{% endblock %}
+{% block title %}
+  {% translate "Geschäftsmodelle – good-practice" %}
+{% endblock %}
 
 {% load static %}
 {% block content %}
-    <div class="content container">
-        <div class="row">{% include "partials/descriptionContainer.html" %}</div>
-        <div class="boxes" id="container-start-focus">
-            {% include "common/fourBoxesContainer.html" %}
-        </div>
-{% endblock %}
+  <div class="content container">
+    <div class="row">{% include "partials/descriptionContainer.html" %}</div>
+    <div class="boxes" id="container-start-focus">
+      {% include "common/fourBoxesContainer.html" %}
+    </div>
+  {% endblock %}

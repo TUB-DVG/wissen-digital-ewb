@@ -42,12 +42,12 @@
                   {% elif attribute.dbLocator == "image" %}
                     {% if modelObject.image %}
                       <img src="{{ modelObject.image.url }}"
-                         class="card-img-top px-4 pt-4 pb-2 m-auto"
-                         style="max-height: 100%;
-                                width: auto;
-                                display: block"
-                         alt="tool image (if=db)" />
-                      {% endif %}
+                           class="card-img-top px-4 pt-4 pb-2 m-auto"
+                           style="max-height: 100%;
+                                  width: auto;
+                                  display: block"
+                           alt="tool image (if=db)" />
+                    {% endif %}
                   {% else %}
                     {{ modelObject|get_attribute:attribute.dbLocator }}
                   {% endif %}

@@ -1,6 +1,7 @@
 """test for the translator class works as expected.
 
 """
+
 import os
 
 from django.core.management import call_command
@@ -11,14 +12,14 @@ from .translator import Translator
 
 
 class TestTranslator(TestCase):
-    """Class defintion of TestTranslator """
+    """Class defintion of TestTranslator"""
 
     def setUp(self):
         """Setup method, is called before every testcase."""
         self.translator = Translator("test_excel.xlsx")
 
     def testTranslate(self):
-        """unit-test to test the _translate method """
+        """unit-test to test the _translate method"""
 
         header = ["ueberschrift", "ueberschrift__en"]
         row = ["Dies ist eine Überschrift", ""]
@@ -126,13 +127,12 @@ class TestTranslator(TestCase):
         os.system("rm -f testExcelFile.xlsx")
 
     def testCommand(self):
-        """Integrationtest for the added custom management command `translate`.
-        """
+        """Integrationtest for the added custom management command `translate`."""
 
         call_command(
             "translate",
             "criteria_catalog",
-    "../doc/01_data/08_criteria_catalog/integrationTestCriteriaCatalog.xlsx",
+            "../doc/01_data/08_criteria_catalog/integrationTestCriteriaCatalog.xlsx",
             "testResult.xlsx",
         )
 

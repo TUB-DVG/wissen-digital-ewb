@@ -5,6 +5,7 @@ they are no views functions (view functions get a request object and return
 a response object.)
 
 """
+
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext as _
 from django.db.models import Q
@@ -149,7 +150,7 @@ def comparison(request):
         backLinkPath = "components"
         focusBorder = "ecological"
 
-    elif model in ('Tools', 'BusinessApps'):
+    elif model in ("Tools", "BusinessApps"):
         modelObj = Tools
         attributesToCompare = [
             {
