@@ -3709,7 +3709,7 @@ webcentral/test/02_docker/testDockerCompose.py:85:4: C0103: Method name "testRun
 webcentral/test/02_docker/testDockerCompose.py:15:0: W0611: Unused import time (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused run imported from subprocess (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused PIPE imported from subprocess (unused-import)
-************* Module 05_testEvaluationPreprocessing.testPrePro
+************* Module testPrePro
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:55:0: C0301: Line too long (113/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:56:0: C0301: Line too long (127/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:132:0: C0301: Line too long (119/100) (line-too-long)
@@ -6038,6 +6038,13 @@ webcentral/test/06_system_test/testrunner.py:10:0: E0611: No name 'scripts' in m
 webcentral/test/06_system_test/testrunner.py:11:0: E0401: Unable to import 'test.scripts.test_navbar' (import-error)
 webcentral/test/06_system_test/testrunner.py:11:0: C0413: Import "from test.scripts.test_navbar import TestNavbar" should be placed at the top of the module (wrong-import-position)
 webcentral/test/06_system_test/testrunner.py:11:0: E0611: No name 'scripts' in module 'test' (no-name-in-module)
+webcentral/test/06_system_test/testrunner.py:25:0: E0401: Unable to import 'test.scripts.test_user_integration' (import-error)
+webcentral/test/06_system_test/testrunner.py:25:0: C0413: Import "from test.scripts.test_user_integration import TestUserIntegration" should be placed at the top of the module (wrong-import-position)
+webcentral/test/06_system_test/testrunner.py:25:0: E0611: No name 'scripts' in module 'test' (no-name-in-module)
+webcentral/test/06_system_test/testrunner.py:36:0: C0414: Import alias does not rename original package (useless-import-alias)
+webcentral/test/06_system_test/testrunner.py:36:0: E0401: Unable to import 'testtools' (import-error)
+webcentral/test/06_system_test/testrunner.py:36:0: C0413: Import "import testtools as testtools" should be placed at the top of the module (wrong-import-position)
+************* Module 07_test_run_script.test_run_script
 webcentral/test/07_test_run_script/test_run_script.py:30:0: C0301: Line too long (156/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:74:0: C0301: Line too long (152/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:136:0: C0301: Line too long (210/100) (line-too-long)
@@ -6095,6 +6102,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         self.assertIsNotNone(descriptionHeadingDiv)
 
         boxesDiv = impactsObj.getBoxesDiv()
+
         self.assertIsNotNone(boxesDiv)
 
         boxes1and2 = impactsObj.getBox1and2()
@@ -6176,8 +6184,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             or "Datenverarbeitung" in self.driver.title
         )
 
-        # check structure of the data-processing page:
-        # there should be a conten container present: (duplicate-code)
+    def testComponentListPage(self):
+        """Test the structure of the sub-page of the negative environmental impacts page""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[245:309]
 ==project_listing.tests:[299:363]
@@ -6246,8 +6254,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         ]
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
-==05_testEvaluationPreprocessing.testPrePro:[323:366]
 ==pre_modul:[40:84]
+==testPrePro:[323:366]
             sheet_name="Projektverteiler",
             dtype="str",
         )
@@ -6422,8 +6430,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         contextObj = Context({})
         return templateObj.render(contextObj)
 
-    def __str__(self): (duplicate-code)
-
+    @property
+    def evaluationRendered(self):
+        """The  property.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0005_component_globalwarmingpotentialprodsup_and_more:[11:27]
 ==component_list.migrations.0008_component_globalwarmingpotentialprodsup_and_more:[11:27]
@@ -6448,6 +6457,12 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 ==06_system_test.test.scripts.test_protocols_page:[98:116]
         self._setLanguageToGerman()
 
+        # cookieBannerObj = CookieBanner(self.driver)
+        # cookieBanner = cookieBannerObj.getCookieAcceptanceButton()
+        # if cookieBanner.is_displayed():
+        #     breakpoint()
+        #     cookieBanner.click()
+
         searchBarPageObj = SearchPage(self.driver)
         paginationObj = Pagination(self.driver)
 
@@ -6465,7 +6480,6 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         chosenFilterItem.click()
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
-
 ==component_list.migrations.0001_initial:[17:30]
 ==positive_environmental_impact.migrations.0001_initial:[20:33]
             fields=[
@@ -6543,7 +6557,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavbar(self):
+    def getBoxesDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -6724,7 +6738,12 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             except:
                 breakpoint()
         environmentalimpactObj.save()
- (duplicate-code)
+
+    def _englishHeadersPresent(self, header: list) -> bool:
+        """Check if english translation headers are present in the
+        list of headers. If yes, then return `True` otherwise `False`
+
+        """ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0001_initial:[112:122]
 ==data_sufficiency.migrations.0001_initial:[16:26]
@@ -6892,7 +6911,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 is not None
             ):
                 return importlib.import_module(type_of_data + ".data_import")
-        raise CommandError( (duplicate-code)
+        raise CommandError(
+            """specified type_of_data has no corresponding app or has no
+            data_import.py in the app.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_norms_page:[85:96]
 ==06_system_test.test.scripts.test_protocols_page:[73:84]
@@ -6935,8 +6956,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getPaginationContainer(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getHeadingComparisonSite(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7035,7 +7056,10 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 
     def getCurrentSearchResultNumber(self):
         """Return the span element, which holds the current Search result page number"""
-        return self.driver.find_element(By.XPATH, Locator.paginationCurrentSite) (duplicate-code)
+        return self.driver.find_element(By.XPATH, Locator.paginationCurrentSite)
+
+    def getOperationalFocusContainer(self):
+        """Return the Container for the Operational Focus""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==back_links_details_page:[28:35]
 ==comparison_page_section:[87:97]
@@ -7045,10 +7069,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 Locator.backButton,
             )
         except:
-            return None
-
-    def getStartCompareButtonLink(self):
-        """ """ (duplicate-code)
+            return None (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.migrations.0001_initial:[5:15]
 ==user_integration.migrations.0001_initial:[5:15]
@@ -7101,7 +7122,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-
+    def getNavToolList(self) -> None:
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7112,7 +7134,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-
+    def getCompareResultsContainer(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7135,6 +7158,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
+    def getPaginationContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7157,6 +7182,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
+    def getSecondComparisonDiv(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7179,7 +7206,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-
+    def getDescriptionDownloadLink(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7190,8 +7218,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getHeadingComparisonSite(self):
-        """ """
+    def getDescriptionText(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7202,7 +7230,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionHeading(self):
+    def getBoxesDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -7214,8 +7242,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondComparisonDiv(self):
-        """ """
+    def getDescriptionHeadingDiv(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7240,11 +7268,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-                            (1, "pre-alpha"),
-                            (2, "alpha"),
-                            (3, "beta"),
-                            (4, "release candidate"),
-                            (5, "release"), (duplicate-code)
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7303,8 +7331,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             h_sum
             * (Q_average / h_average)
             * F (duplicate-code)
-
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
 
 -----------------------------------
 Your code has been rated at 0.71/10
