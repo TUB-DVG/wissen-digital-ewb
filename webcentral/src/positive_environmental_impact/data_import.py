@@ -10,9 +10,6 @@ from .models import *
 
 
 class DataImportApp(DataImport):
-<<<<<<< HEAD
-
-=======
     DJANGO_MODEL = "EnvironmentalImpact"
     DJANGO_APP = "positive_environmental_impact" 
     MAPPING_EXCEL_DB_EN = {
