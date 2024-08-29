@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +8,20 @@
 	<meta name="author" content="Webestica.com">
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
 
 	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/font-awesome/css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
 
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/doc.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/prism.css' %}">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/doc.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/prism.css">
 
 </head>
 
@@ -34,8 +33,8 @@
 <div class="navbar-top bg-dark px-3 px-sm-4 px-md-5">
 	<div class="d-flex justify-content-between align-items-center">
 		<!-- Logo START -->
-			<a class="navbar-brand py-3" href="{% url 'index' %}">
-				<img class="navbar-brand-item h-30px" src="{% static 'images/logo.svg' %}" alt="logo">			
+			<a class="navbar-brand py-3" href="index.html">
+				<img class="navbar-brand-item h-30px" src="assets/images/logo.svg" alt="logo">			
 			</a>
 			<!-- Logo END -->
 
@@ -64,36 +63,36 @@
 					<div class="content h-100vh">
 						 <div class="list-group list-group-borderless p-3 p-md-4">
 							<b class="text-dark text-uppercase mb-2">Getting Started</b>
-								<a class="list-group-item" href="{% url 'index' %}">Introduction</a>
-								<a class="list-group-item" href="{% url 'gulp' %}">Gulp</a>
-								<a class="list-group-item" href="{% url 'customization' %}">Customization</a>
-				        <a class="list-group-item" href="{% url 'color_scheme' %}">Color Scheme</a>
-								<a class="list-group-item" href="{% url 'logo_settings' %}">Logo Settings</a>
-								<a class="list-group-item" href="{% url 'page_loading' %}">Page Loading</a>
-								<a class="list-group-item" href="{% url 'fonts' %}">Fonts</a>
-								<a class="list-group-item" href="{% url 'dark_mode' %}">Dark mode</a>
-								<a class="list-group-item" href="{% url 'rtl' %}">RTL Version</a>
-				        <a class="list-group-item" href="{% url 'sources_and_credits' %}">Sources and Credits</a>
-				        <a class="list-group-item" href="{% url 'changelog' %}">Changelog</a>
-				        <a class="list-group-item" href="{% url 'updates' %}">Updates</a>
-				        <a class="list-group-item" href="{% url 'support' %}">Support</a>
+								<a class="list-group-item" href="index.html">Introduction</a>
+								<a class="list-group-item" href="gulp.html">Gulp</a>
+								<a class="list-group-item" href="customization.html">Customization</a>
+				        <a class="list-group-item" href="color-scheme.html">Color Scheme</a>
+								<a class="list-group-item" href="logo-settings.html">Logo Settings</a>
+								<a class="list-group-item" href="page-loading.html">Page Loading</a>
+								<a class="list-group-item" href="fonts.html">Fonts</a>
+								<a class="list-group-item" href="dark-mode.html">Dark mode</a>
+								<a class="list-group-item" href="rtl.html">RTL Version</a>
+				        <a class="list-group-item" href="sources-and-credits.html">Sources and Credits</a>
+				        <a class="list-group-item" href="changelog.html">Changelog</a>
+				        <a class="list-group-item" href="updates.html">Updates</a>
+				        <a class="list-group-item" href="support.html">Support</a>
 							<b class="text-dark text-uppercase mt-3 mb-2">Components</b>
-								<a class="list-group-item" href="{% url 'alerts' %}">Alerts</a>
-								<a class="list-group-item" href="{% url 'avatar' %}">Avatar</a>
-								<a class="list-group-item" href="{% url 'badges' %}">Badges</a>
-								<a class="list-group-item" href="{% url 'breadcrumb' %}">Breadcrumb</a>
-								<a class="list-group-item" href="{% url 'buttons' %}">Buttons</a>
-								<a class="list-group-item" href="{% url 'card' %}">Card</a>
-								<a class="list-group-item" href="{% url 'font_icons' %}">Font icons</a>
-								<a class="list-group-item" href="{% url 'google_map' %}">Google Map</a>
-								<a class="list-group-item" href="{% url 'nav_and_tabs' %}">Nav and Tabs</a>
-								<a class="list-group-item" href="{% url 'pagination' %}">Pagination</a>
-								<a class="list-group-item" href="{% url 'progress' %}">Progress</a>
-								<a class="list-group-item" href="{% url 'sticky_element' %}">Sticky element</a>
-								<a class="list-group-item" href="{% url 'utility_classes' %}">Utility classes</a>
+								<a class="list-group-item" href="alerts.html">Alerts</a>
+								<a class="list-group-item" href="avatar.html">Avatar</a>
+								<a class="list-group-item" href="badges.html">Badges</a>
+								<a class="list-group-item" href="breadcrumb.html">Breadcrumb</a>
+								<a class="list-group-item" href="buttons.html">Buttons</a>
+								<a class="list-group-item" href="card.html">Card</a>
+								<a class="list-group-item" href="font-icons.html">Font icons</a>
+								<a class="list-group-item" href="google-map.html">Google Map</a>
+								<a class="list-group-item" href="nav-and-tabs.html">Nav and Tabs</a>
+								<a class="list-group-item" href="pagination.html">Pagination</a>
+								<a class="list-group-item" href="progress.html">Progress</a>
+								<a class="list-group-item" href="sticky-element.html">Sticky element</a>
+								<a class="list-group-item" href="utility-classes.html">Utility classes</a>
 							<b class="text-dark text-uppercase mt-3 mb-2">Plugins</b>
-								<a class="list-group-item" href="{% url 'tiny_slider' %}">Tiny Slider</a>
-								<a class="list-group-item" href="{% url 'video_player' %}">Video player</a>
+								<a class="list-group-item" href="tiny-slider.html">Tiny Slider</a>
+								<a class="list-group-item" href="video-player.html">Video player</a>
 						</div>
 					</div>
 				</div>
@@ -331,7 +330,7 @@
 		<div class="alert alert-success alert-dismissible fade show mt-2 mb-0 rounded-3" role="alert">
 			<!-- Avatar -->
 			<div class="avatar avatar-xs me-2">
-				<img class="avatar-img rounded-circle" src="{% static 'images/avatar/09.jpg' %}" alt="avatar">
+				<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
 			</div>
 			<!-- Info -->
 			The personality development class starts at 2:00 pm, click on <a href="#" class="text-reset btn-link mb-0 fw-bold">Join Now</a>
@@ -345,7 +344,7 @@
 <code class="language-markup" data-lang="html">&lt;div class="alert alert-success alert-dismissible fade show mt-2 mb-0 rounded-3" role="alert"&gt;
 	&lt;!-- Avatar --&gt;
 	&lt;div class="avatar avatar-xs me-2"&gt;
-		&lt;img class="avatar-img rounded-circle" src="{% static 'images/avatar/09.jpg' %}" alt="avatar"&gt;
+		&lt;img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar"&gt;
 	&lt;/div&gt;
 	&lt;!-- Info --&gt;
 	The personality development class starts at 2:00 pm, click on &lt;a href="#" class="text-reset btn-link mb-0 fw-bold"&gt;Join Now&lt;/a&gt;
@@ -375,14 +374,14 @@
 JavaScripts -->
 
 <!-- Bootstrap JS -->
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="{% static 'js/simple-scrollbar.min.js' %}"></script>
-<script src="{% static 'js/prism.js' %}"></script>
-<script src="{% static 'js/clipboard.min.js' %}"></script>
+<script src="assets/js/simple-scrollbar.min.js"></script>
+<script src="assets/js/prism.js"></script>
+<script src="assets/js/clipboard.min.js"></script>
  
 <!-- Template Functions -->
-<script src="{% static 'js/functions.js' %}"></script>
+<script src="assets/js/functions.js"></script>
 
 </body>
 </html>
