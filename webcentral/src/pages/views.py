@@ -321,8 +321,9 @@ def dataSufficiencyBox(request, idOfObject):
 
 def dataSecurity(request):
     """Call render function for data security page."""
-    
-    explanText = _("""
+
+    explanText = _(
+        """
     Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
           lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder
           bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von
@@ -353,7 +354,8 @@ def dataSecurity(request):
           hier erklärt wann Datenschutzrisiken entstehen und wie diese durch den
           richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen
           kontrolliert werden müssen.
-    """)
+    """
+    )
     explanToRender = """<p>
             <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">
               {% load i18n %}{% translate "Effiziente Datenminimierung im Gebäude- und Quartierssektor" %}
@@ -365,12 +367,12 @@ def dataSecurity(request):
             </a>
           </p>"""
     explanRendered = Template(explanToRender).render(Context({}))
-    explanText += explanRendered 
+    explanText += explanRendered
     context = {
         "focusBorder": "legal",
         "heading": _("Datenschutzübersicht"),
         "explanaitionText": explanText.replace("\n", ""),
-        "pathToImage": "img/componentList/circle-icon.svg", 
+        "pathToImage": "img/componentList/circle-icon.svg",
     }
 
     return render(request, "pages/overview_page.html", context)
