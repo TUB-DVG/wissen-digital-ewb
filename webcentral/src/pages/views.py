@@ -97,7 +97,9 @@ def userIntegrationMethod(request):
 
 def userEngagement(request):
     """Call render function for user engagement page."""
-    explanationTextParagraphOne = _("<p>Die Nutzendenintegration beschreibt die direkte oder indirekte Integration von Nutzenden und ihren Perspektiven in die Entwicklung digitaler Anwendungen. Die direkte Beteiligung geschieht über Methoden wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen verfügen.</p>") 
+    explanationTextParagraphOne = _(
+        "<p>Die Nutzendenintegration beschreibt die direkte oder indirekte Integration von Nutzenden und ihren Perspektiven in die Entwicklung digitaler Anwendungen. Die direkte Beteiligung geschieht über Methoden wie Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen verfügen.</p>"
+    )
     explanationTextParagraphTwo = _(
         "<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen generiert. Auf dieser Basis können die digitalen Anwendungen zielgruppenorientiert (weiter-)entwickelt werden.</p>"
     )

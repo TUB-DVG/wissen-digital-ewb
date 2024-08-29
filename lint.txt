@@ -1,8 +1,8 @@
-************* Module 01_pre_pro.pre_enargus
+************* Module pre_enargus
 webcentral/doc/01_data/01_pre_pro/pre_enargus.py:29:0: C0301: Line too long (113/100) (line-too-long)
 webcentral/doc/01_data/01_pre_pro/pre_enargus.py:22:0: C0413: Import "from evaluation import EvaluationUtils" should be placed at the top of the module (wrong-import-position)
 webcentral/doc/01_data/01_pre_pro/pre_enargus.py:32:4: W0104: Statement seems to have no effect (pointless-statement)
-************* Module 01_pre_pro.pre_modul
+************* Module pre_modul
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:31:0: C0301: Line too long (110/100) (line-too-long)
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:24:0: E0401: Unable to import 'pandas' (import-error)
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:24:0: C0413: Import "import pandas as pd" should be placed at the top of the module (wrong-import-position)
@@ -1846,26 +1846,27 @@ webcentral/src/pages/urls.py:3:0: E0401: Unable to import 'django.urls' (import-
 webcentral/src/pages/views.py:50:0: C0301: Line too long (787/100) (line-too-long)
 webcentral/src/pages/views.py:64:0: C0301: Line too long (466/100) (line-too-long)
 webcentral/src/pages/views.py:79:0: C0301: Line too long (461/100) (line-too-long)
-webcentral/src/pages/views.py:101:0: C0301: Line too long (417/100) (line-too-long)
-webcentral/src/pages/views.py:104:0: C0301: Line too long (299/100) (line-too-long)
-webcentral/src/pages/views.py:107:0: C0301: Line too long (1030/100) (line-too-long)
-webcentral/src/pages/views.py:110:0: C0301: Line too long (484/100) (line-too-long)
-webcentral/src/pages/views.py:113:0: C0301: Line too long (134/100) (line-too-long)
-webcentral/src/pages/views.py:150:0: C0301: Line too long (108/100) (line-too-long)
-webcentral/src/pages/views.py:179:0: C0301: Line too long (132/100) (line-too-long)
-webcentral/src/pages/views.py:224:0: C0301: Line too long (532/100) (line-too-long)
-webcentral/src/pages/views.py:253:0: C0301: Line too long (826/100) (line-too-long)
-webcentral/src/pages/views.py:254:0: C0301: Line too long (204/100) (line-too-long)
-webcentral/src/pages/views.py:254:0: C0301: Line too long (204/100) (line-too-long)
-webcentral/src/pages/views.py:270:0: C0301: Line too long (755/100) (line-too-long)
-webcentral/src/pages/views.py:283:0: C0301: Line too long (538/100) (line-too-long)
-webcentral/src/pages/views.py:304:0: C0301: Line too long (1206/100) (line-too-long)
-webcentral/src/pages/views.py:347:0: C0301: Line too long (627/100) (line-too-long)
-webcentral/src/pages/views.py:349:0: C0301: Line too long (631/100) (line-too-long)
-webcentral/src/pages/views.py:351:0: C0301: Line too long (488/100) (line-too-long)
-webcentral/src/pages/views.py:353:0: C0301: Line too long (399/100) (line-too-long)
-webcentral/src/pages/views.py:355:0: C0301: Line too long (687/100) (line-too-long)
-webcentral/src/pages/views.py:357:0: C0301: Line too long (146/100) (line-too-long)
+webcentral/src/pages/views.py:101:0: C0301: Line too long (523/100) (line-too-long)
+webcentral/src/pages/views.py:104:0: C0301: Line too long (417/100) (line-too-long)
+webcentral/src/pages/views.py:107:0: C0301: Line too long (299/100) (line-too-long)
+webcentral/src/pages/views.py:110:0: C0301: Line too long (1030/100) (line-too-long)
+webcentral/src/pages/views.py:113:0: C0301: Line too long (484/100) (line-too-long)
+webcentral/src/pages/views.py:116:0: C0301: Line too long (134/100) (line-too-long)
+webcentral/src/pages/views.py:153:0: C0301: Line too long (108/100) (line-too-long)
+webcentral/src/pages/views.py:182:0: C0301: Line too long (132/100) (line-too-long)
+webcentral/src/pages/views.py:227:0: C0301: Line too long (532/100) (line-too-long)
+webcentral/src/pages/views.py:256:0: C0301: Line too long (826/100) (line-too-long)
+webcentral/src/pages/views.py:257:0: C0301: Line too long (204/100) (line-too-long)
+webcentral/src/pages/views.py:257:0: C0301: Line too long (204/100) (line-too-long)
+webcentral/src/pages/views.py:273:0: C0301: Line too long (755/100) (line-too-long)
+webcentral/src/pages/views.py:286:0: C0301: Line too long (538/100) (line-too-long)
+webcentral/src/pages/views.py:307:0: C0301: Line too long (1206/100) (line-too-long)
+webcentral/src/pages/views.py:350:0: C0301: Line too long (627/100) (line-too-long)
+webcentral/src/pages/views.py:352:0: C0301: Line too long (631/100) (line-too-long)
+webcentral/src/pages/views.py:354:0: C0301: Line too long (488/100) (line-too-long)
+webcentral/src/pages/views.py:356:0: C0301: Line too long (399/100) (line-too-long)
+webcentral/src/pages/views.py:358:0: C0301: Line too long (687/100) (line-too-long)
+webcentral/src/pages/views.py:360:0: C0301: Line too long (146/100) (line-too-long)
 webcentral/src/pages/views.py:3:0: E0401: Unable to import 'django.shortcuts' (import-error)
 webcentral/src/pages/views.py:4:0: E0401: Unable to import 'django.utils.translation' (import-error)
 webcentral/src/pages/views.py:5:0: E0401: Unable to import 'django.template' (import-error)
@@ -1875,65 +1876,65 @@ webcentral/src/pages/views.py:42:0: C0103: Function name "businessModels" doesn'
 webcentral/src/pages/views.py:88:0: C0103: Function name "userIntegrationPractice" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:93:0: C0103: Function name "userIntegrationMethod" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:98:0: C0103: Function name "userEngagement" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:100:4: C0103: Variable name "explanationTextParagraphTwo" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:103:4: C0103: Variable name "explanationTextPart3" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:106:4: C0103: Variable name "explanationPart4" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:109:4: C0103: Variable name "explanationPart5" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:112:4: C0103: Variable name "explanationPart6" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:115:4: C0103: Variable name "translationObserver" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:116:4: C0103: Variable name "translationIndividualInterview" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:117:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:118:8: E0602: Undefined variable 'explanationTextParagraphOne' (undefined-variable)
-webcentral/src/pages/views.py:124:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
-webcentral/src/pages/views.py:126:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:131:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:136:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:141:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:146:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:147:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:154:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:155:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:160:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:165:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:170:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:175:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:176:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:183:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:184:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:189:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:194:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:199:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:204:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:206:4: C0103: Variable name "templateObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:207:4: C0103: Variable name "contextObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:209:4: C0103: Variable name "userEngagementObjs" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:236:0: C0103: Function name "environmentalIntegrityNegativ" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:240:8: C0103: Variable name "environmentalPositiveLinkText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:242:8: C0103: Variable name "environmentalPositiveLinkText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:244:4: C0103: Variable name "explanationPartOne" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:245:4: C0103: Variable name "linkToDynamicallyRender" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:250:4: C0103: Variable name "templateObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:251:4: C0103: Variable name "renderedTemplate" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:252:4: C0103: Variable name "explanationPartTwo" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:294:0: C0103: Function name "environmentalIntegrityPositiv" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:298:4: C0103: Variable name "environmentalImpacts" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:319:0: C0103: Function name "environmentalIntegrityBox" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:319:39: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:321:4: C0103: Variable name "environmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:337:0: C0103: Function name "benchmarkingChallenges" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:342:0: C0103: Function name "dataSufficiency" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:344:4: C0103: Variable name "dataSufficiencyObjs" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:346:4: C0103: Variable name "dataSufficencyIntroductionText" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:381:0: C0103: Function name "dataSufficiencyBox" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:381:32: C0103: Argument name "idOfObject" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:383:4: C0103: Variable name "dataSufficiencyObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:398:0: C0103: Function name "dataSecurity" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:403:0: C0103: Function name "iconsAndVis" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:408:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:410:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:434:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:434:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:436:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:100:4: C0103: Variable name "explanationTextParagraphOne" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:103:4: C0103: Variable name "explanationTextParagraphTwo" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:106:4: C0103: Variable name "explanationTextPart3" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:109:4: C0103: Variable name "explanationPart4" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:112:4: C0103: Variable name "explanationPart5" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:115:4: C0103: Variable name "explanationPart6" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:118:4: C0103: Variable name "translationObserver" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:119:4: C0103: Variable name "translationIndividualInterview" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:120:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:127:10: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+webcentral/src/pages/views.py:129:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:134:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:139:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:144:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:149:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:150:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:157:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:158:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:163:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:168:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:173:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:178:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:179:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:186:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:187:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:192:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:197:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:202:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:207:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:209:4: C0103: Variable name "templateObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:210:4: C0103: Variable name "contextObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:212:4: C0103: Variable name "userEngagementObjs" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:239:0: C0103: Function name "environmentalIntegrityNegativ" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:243:8: C0103: Variable name "environmentalPositiveLinkText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:245:8: C0103: Variable name "environmentalPositiveLinkText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:247:4: C0103: Variable name "explanationPartOne" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:248:4: C0103: Variable name "linkToDynamicallyRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:253:4: C0103: Variable name "templateObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:254:4: C0103: Variable name "renderedTemplate" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:255:4: C0103: Variable name "explanationPartTwo" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:297:0: C0103: Function name "environmentalIntegrityPositiv" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:301:4: C0103: Variable name "environmentalImpacts" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:322:0: C0103: Function name "environmentalIntegrityBox" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:322:39: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:324:4: C0103: Variable name "environmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:340:0: C0103: Function name "benchmarkingChallenges" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:345:0: C0103: Function name "dataSufficiency" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:347:4: C0103: Variable name "dataSufficiencyObjs" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:349:4: C0103: Variable name "dataSufficencyIntroductionText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:384:0: C0103: Function name "dataSufficiencyBox" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:384:32: C0103: Argument name "idOfObject" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:386:4: C0103: Variable name "dataSufficiencyObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:401:0: C0103: Function name "dataSecurity" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:406:0: C0103: Function name "iconsAndVis" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:411:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:413:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:437:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:437:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:439:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
 ************* Module positive_environmental_impact.admin
 webcentral/src/positive_environmental_impact/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/src/positive_environmental_impact/admin.py:1:0: E0401: Unable to import 'django.contrib' (import-error)
@@ -2582,7 +2583,7 @@ webcentral/src/publications/views.py:8:0: C0412: Imports from package django are
 webcentral/src/publications/views.py:3:0: W0611: Unused HttpResponse imported from django.http (unused-import)
 webcentral/src/publications/views.py:6:0: W0611: Unused messages imported from django.contrib (unused-import)
 webcentral/src/publications/views.py:13:0: W0611: Unused getFocusNameIndependentOfLanguage imported from common.views (unused-import)
-************* Module tests.testDatabaseFilling
+************* Module testDatabaseFilling
 webcentral/src/tests/testDatabaseFilling.py:85:0: C0301: Line too long (108/100) (line-too-long)
 webcentral/src/tests/testDatabaseFilling.py:125:0: C0301: Line too long (115/100) (line-too-long)
 webcentral/src/tests/testDatabaseFilling.py:280:0: C0301: Line too long (111/100) (line-too-long)
@@ -2863,7 +2864,7 @@ webcentral/src/tests/testDatabaseFilling.py:23:0: W0611: Unused IntegrityError i
 webcentral/src/tests/testDatabaseFilling.py:27:0: W0611: Unused Subproject imported from project_listing.models (unused-import)
 webcentral/src/tests/testDatabaseFilling.py:32:0: W0611: Unused Keyword imported from keywords.models (unused-import)
 webcentral/src/tests/testDatabaseFilling.py:44:0: W0611: Unused Command imported from project_listing.management.commands.data_import (unused-import)
-************* Module tests.testRunScript
+************* Module testRunScript
 webcentral/src/tests/testRunScript.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/src/tests/testRunScript.py:1:0: C0103: Module name "testRunScript" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/tests/testRunScript.py:5:0: C0115: Missing class docstring (missing-class-docstring)
@@ -3696,7 +3697,7 @@ webcentral/test/01_import_export_web/test_web_import.py:172:4: C0103: Constant n
 webcentral/test/01_import_export_web/test_web_import.py:174:4: C0103: Constant name "xlsx_Foerdersumme" doesn't conform to UPPER_CASE naming style (invalid-name)
 webcentral/test/01_import_export_web/test_web_import.py:178:12: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
 webcentral/test/01_import_export_web/test_web_import.py:185:12: C0209: Formatting a regular string which could be an f-string (consider-using-f-string)
-************* Module testDockerCompose
+************* Module 02_docker.testDockerCompose
 webcentral/test/02_docker/testDockerCompose.py:52:0: C0301: Line too long (107/100) (line-too-long)
 webcentral/test/02_docker/testDockerCompose.py:53:0: C0301: Line too long (108/100) (line-too-long)
 webcentral/test/02_docker/testDockerCompose.py:130:0: C0301: Line too long (113/100) (line-too-long)
@@ -3708,7 +3709,7 @@ webcentral/test/02_docker/testDockerCompose.py:85:4: C0103: Method name "testRun
 webcentral/test/02_docker/testDockerCompose.py:15:0: W0611: Unused import time (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused run imported from subprocess (unused-import)
 webcentral/test/02_docker/testDockerCompose.py:20:0: W0611: Unused PIPE imported from subprocess (unused-import)
-************* Module testPrePro
+************* Module 05_testEvaluationPreprocessing.testPrePro
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:55:0: C0301: Line too long (113/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:56:0: C0301: Line too long (127/100) (line-too-long)
 webcentral/test/05_testEvaluationPreprocessing/testPrePro.py:132:0: C0301: Line too long (119/100) (line-too-long)
@@ -6043,7 +6044,7 @@ webcentral/test/06_system_test/testrunner.py:25:0: E0611: No name 'scripts' in m
 webcentral/test/06_system_test/testrunner.py:36:0: C0414: Import alias does not rename original package (useless-import-alias)
 webcentral/test/06_system_test/testrunner.py:36:0: E0401: Unable to import 'testtools' (import-error)
 webcentral/test/06_system_test/testrunner.py:36:0: C0413: Import "import testtools as testtools" should be placed at the top of the module (wrong-import-position)
-************* Module test_run_script
+************* Module 07_test_run_script.test_run_script
 webcentral/test/07_test_run_script/test_run_script.py:30:0: C0301: Line too long (156/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:74:0: C0301: Line too long (152/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:136:0: C0301: Line too long (210/100) (line-too-long)
@@ -6252,51 +6253,50 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         ]
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
-==01_pre_pro.pre_modul:[40:84]
-==testPrePro:[323:366]
-    sheet_name="Projektverteiler",
-    dtype="str",
-)
+==05_testEvaluationPreprocessing.testPrePro:[323:366]
+==pre_modul:[40:84]
+            sheet_name="Projektverteiler",
+            dtype="str",
+        )
 
-dataframeModul = dataframeXLSX[
-    [
-        "Förderkenz. (0010)",
-        "Modulzuordnung PtJ - 1 aktuell",
-        "Modulzuordnung PtJ - 2 aktuell",
-        "Modulzuordnung PtJ - 3 aktuell",
-        "Modulzuordnung PtJ - 4 aktuell",
-    ]
-]
-dataframeModul = dataframeModul.rename(
-    columns={
-        "Förderkenz. (0010)": "FKZ",
-        "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
-        "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
-        "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
-        "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
-    }
-)
+        dataframeModul = dataframeXLSX[
+            [
+                "Förderkenz. (0010)",
+                "Modulzuordnung PtJ - 1 aktuell",
+                "Modulzuordnung PtJ - 2 aktuell",
+                "Modulzuordnung PtJ - 3 aktuell",
+                "Modulzuordnung PtJ - 4 aktuell",
+            ]
+        ]
+        dataframeModul = dataframeModul.rename(
+            columns={
+                "Förderkenz. (0010)": "FKZ",
+                "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
+                "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
+                "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
+                "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
+            }
+        )
 
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
-    "modulzuordnung_ptj_3"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
-    "modulzuordnung_ptj_4"
-].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
+            "modulzuordnung_ptj_3"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
+            "modulzuordnung_ptj_4"
+        ].str.lstrip()
 
-
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.replace("M2 BF", "M2")
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.replace("ausgelaufen", "ag")
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.replace("M2 BF", "M2")
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.replace("ausgelaufen", "ag")
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[134:242]
@@ -6323,7 +6323,92 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
    fundedBy: BMWK -> BundXYZ
    projectManagementAgency: PTJ -> Projektträger Jülich
    researchProgram: EnergieWEndeBauen -> Klima und Energie
-   fundingProgram: Test-Project -> Erneuerbare Energien Programm (duplicate-code)
+   fundingProgram: Test-Project -> Erneuerbare Energien Programm
+        """,
+        )
+        oldAdress = Address.objects.create(
+            address_id=2,
+            plz="10123",
+            location="Berlin",
+            state="Deutschland",
+            address="Müller-Breslau-Str. 11",
+        )
+        newAdress = Address.objects.create(
+            address_id=4,
+            plz="53113",
+            location="Bonn",
+            state="Deutschland",
+            address="Godesberger Allee 90",
+        )
+
+        _ = ExecutingEntity.objects.create(
+            executingEntity_id=1,
+            name="CDE Gmbh",
+            address=oldAdress,
+        )
+        newExecutingEntityObjNew = ExecutingEntity.objects.create(
+            executingEntity_id=2,
+            name="Energie Institut",
+            address=newAdress,
+        )
+
+        _, _ = Person.objects.get_or_create(
+            person_id=1,
+            surname="Meier",
+            firstName="Peter",
+            title="",
+            email="m.meier@berlin.de",
+        )
+        _, _ = Person.objects.get_or_create(
+            person_id=2,
+            surname="Müller",
+            firstName="Johann",
+            title="",
+            email="johann.mueller@example.com",
+        )
+        _ = RAndDPlanningCategory.objects.create(
+            rAndDPlanningCategoryNumber="1265",
+            rAndDPlanningCategoryText="Qlter Text",
+        )
+
+        rAnDObjNew = RAndDPlanningCategory.objects.create(
+            rAndDPlanningCategoryNumber="EN-20",
+            rAndDPlanningCategoryText="Erneuerbare Energieentwicklung",
+        )
+
+        _ = Enargus.objects.create(
+            startDate="2014-01-01",
+            endDate="2024-12-31",
+            topics="Hallo",
+            projectLead=None,
+            furtherFundingInformation=fundingObj2,
+            rAndDPlanningCategory=rAnDObjNew,
+            grantRecipient=None,
+            executingEntity=newExecutingEntityObjNew,
+            collaborativeProject="Kluser",
+            appropriatedBudget="1000",
+            shortDescriptionDe="Description",
+            shortDescriptionEn="Description2",
+            database="Database",
+        )
+
+        queryset = DbDiff.objects.all()
+        self.dbDiffAdmin.finalizeChange(request, queryset)
+
+        fundingObjs = FurtherFundingInformation.objects.all()
+        self.assertEqual(len(fundingObjs), 1)
+
+        rAndDObjects = RAndDPlanningCategory.objects.all()
+        self.assertEqual(len(rAndDObjects), 1)
+
+        executingEntities = ExecutingEntity.objects.all()
+        self.assertEqual(len(executingEntities), 1)
+
+        personObjs = Person.objects.all()
+        self.assertEqual(len(personObjs), 1)
+
+    def testFinalizeChangesWithGetOrCreateCall(self):
+        """Integration test for finalization step""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.models:[34:52]
 ==positive_environmental_impact.models:[37:57]
@@ -6368,12 +6453,6 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 ==06_system_test.test.scripts.test_digital_tools:[110:134]
 ==06_system_test.test.scripts.test_protocols_page:[98:116]
         self._setLanguageToGerman()
-
-        # cookieBannerObj = CookieBanner(self.driver)
-        # cookieBanner = cookieBannerObj.getCookieAcceptanceButton()
-        # if cookieBanner.is_displayed():
-        #     breakpoint()
-        #     cookieBanner.click()
 
         searchBarPageObj = SearchPage(self.driver)
         paginationObj = Pagination(self.driver)
@@ -6442,18 +6521,18 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==publications.migrations.0001_initial:[137:149]
 ==publications.models.publication:[33:45]
-        (1, "January"),
-        (2, "February"),
-        (3, "March"),
-        (4, "April"),
-        (5, "May"),
-        (6, "June"),
-        (7, "July"),
-        (8, "August"),
-        (9, "September"),
-        (10, "October"),
-        (11, "November"),
-        (12, "December"), (duplicate-code)
+                            (1, "January"),
+                            (2, "February"),
+                            (3, "March"),
+                            (4, "April"),
+                            (5, "May"),
+                            (6, "June"),
+                            (7, "July"),
+                            (8, "August"),
+                            (9, "September"),
+                            (10, "October"),
+                            (11, "November"),
+                            (12, "December"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[24:41]
 ==NegativeEnvironmentalImpacts:[24:41]
@@ -6757,8 +6836,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxes(self):
-        """Return the boxes, which link to the EnvironmentalImpact-Detailspage."""
+    def getAllCollapsableFirstParts(self):
+        """Get the div of the collapsables, which include the text,
+        which is shown in collapsed state.
+
+        """
         return self.driver.find_elements( (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.data_import:[18:62]
@@ -6818,9 +6900,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 is not None
             ):
                 return importlib.import_module(type_of_data + ".data_import")
-        raise CommandError(
-            """specified type_of_data has no corresponding app or has no
-            data_import.py in the app.""" (duplicate-code)
+        raise CommandError( (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_norms_page:[85:96]
 ==06_system_test.test.scripts.test_protocols_page:[73:84]
@@ -6902,14 +6982,14 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[135:143]
 ==LastProfile.Dash_app.Warmelast:[176:184]
-        {"label": _("Januar"), "value": "1"},
-        {"label": _("Februar"), "value": "2"},
-        {"label": _("März"), "value": "3"},
-        {"label": _("April"), "value": "4"},
-        {"label": _("Mai"), "value": "5"},
-        {"label": _("Juni"), "value": "6"},
-        {"label": _("Juli"), "value": "7"},
-        {"label": _("August"), "value": "8"}, (duplicate-code)
+                {"label": _("Januar"), "value": "1"},
+                {"label": _("Februar"), "value": "2"},
+                {"label": _("März"), "value": "3"},
+                {"label": _("April"), "value": "4"},
+                {"label": _("Mai"), "value": "5"},
+                {"label": _("Juni"), "value": "6"},
+                {"label": _("Juli"), "value": "7"},
+                {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[63:71]
 ==LastProfile.Dash_app.Warmelast:[309:317]
@@ -7032,7 +7112,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getNavToolList(self) -> None:
+    def getBackButton(self):
         """ """
         try:
             return self.driver.find_element(
@@ -7068,8 +7148,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getPaginationContainer(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getComparisonTableContainer(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7104,8 +7184,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getLinkToDataProcessing(self):
-        """Returns the div-element, which wraps the description-heading"""
+    def getDescriptionImage(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7128,8 +7208,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionContentDiv(self):
-        """Returns the div-element, which wraps the description-heading"""
+    def getDescriptionText(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7140,7 +7220,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxesDiv(self):
+    def getDescriptionHeading(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -7165,8 +7245,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             "Deutschland",
             "FasanenStr. 13",
             "Max Muster",
-        ]
- (duplicate-code)
+        ] (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_click_through_all_sites:[57:63]
 ==06_system_test.test.scripts.test_digital_tools:[271:277]
@@ -7179,11 +7258,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-        (1, "pre-alpha"),
-        (2, "alpha"),
-        (3, "beta"),
-        (4, "release candidate"),
-        (5, "release"), (duplicate-code)
+                            (1, "pre-alpha"),
+                            (2, "alpha"),
+                            (3, "beta"),
+                            (4, "release candidate"),
+                            (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7236,14 +7315,14 @@ class Migration(migrations.Migration):
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Warmelastapproximation_CorrectedStundenFaktor_NoDurationLimit:[253:259]
 ==LastProfile.Dash_app.Warmelastapproximation_csv:[207:213]
-        try:
-
-            Q.append(
-                h_sum
-                * (Q_average / h_average)
-                * F (duplicate-code)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
+    try:
+        # print(h_average)
+        Q.append(
+            h_sum
+            * (Q_average / h_average)
+            * F (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
 
 -----------------------------------
