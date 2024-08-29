@@ -25,6 +25,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'webcentral.[contenthash].css',
     }),
-    new BundleTracker({ path: `${__dirname}/webcentral/src/webcentral_app/`, filename: 'webpack-stats.json' })
+    new BundleTracker({ path: `${__dirname}/webcentral/src/`, filename: 'webpack-stats.json' })
   ],
 };
