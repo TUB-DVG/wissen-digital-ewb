@@ -321,7 +321,59 @@ def dataSufficiencyBox(request, idOfObject):
 
 def dataSecurity(request):
     """Call render function for data security page."""
-    return render(request, "pages/data_security.html")
+    
+    explanText = _("""
+    Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
+          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder
+          bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von
+          Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf
+          eine identifizierte oder identifizierbare Person, findet das nationale
+          bzw. europäische Datenschutzrecht Anwendung und mit ihm die gesamte
+          Bandbreite rechtlicher Verpflichtungen für den Verantwortlichen der
+          Datenverarbeitung. Ziel des Datenschutzrechts ist es dabei, die
+          Betroffenen vor Risiken zu schützen, die durch die Datenverarbeitung
+          verursacht werden und ihnen damit grundsätzlich die Entscheidung über
+          das Maß und den Umgang mit diesen Risiken zu gewähren. Schon die
+          Frage, ob eine Datenverarbeitung überhaupt in den Anwendungsbereich
+          des Datenschutzrechts fällt, kann aber zur Herausforderung werden. Das
+          dafür zentrale europäische Regelwerk - die Datenschutz-Grundverordnung
+          (DSGVO) - ist nämlich an den sehr unbestimmten Begriff der
+          personenbezogenen Daten geknüpft. Der Anwendungsbereich wurde dabei
+          durch den Gesetzgeber bewusst weit gefasst und wird durch die Gerichte
+          weit ausgelegt, um einen möglichst umfassenden Schutz der Betroffenen
+          vor den Risiken verschiedener Datenverarbeitungen zu gewährleisten.
+          Das liegt daran, dass sogar vermeintlich rein technische Daten wie
+          Maschinen-Daten, Geo-Daten oder Gebäude-Daten Rückschlüsse über
+          Personen zulassen können, wenn sie mit anderen Datensätzen verknüpft
+          werden. Zur Erläuterung, wie Datenschutzrisiken bei der Verarbeitung
+          von gebäudebezogenen Daten entstehen können und wann dadurch der
+          Anwendungsbereich der DSGVO eröffnet wird, ist im Rahmen von Modul 4
+          der Wissenschaftlichen Begleitforschung Energiewendebauen eine
+          Datenschutzübersicht entstanden. Anhand verschiedener Use-Cases wird
+          hier erklärt wann Datenschutzrisiken entstehen und wie diese durch den
+          richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen
+          kontrolliert werden müssen.
+    """)
+    explanToRender = """<p>
+            <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">
+              {% load i18n %}{% translate "Effiziente Datenminimierung im Gebäude- und Quartierssektor" %}
+            </a>
+          </p>
+          <p>
+            <a href="{% url 'coming' %}">
+              {% translate "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen" %}
+            </a>
+          </p>"""
+    explanRendered = Template(explanToRender).render(Context({}))
+    explanText += explanRendered 
+    context = {
+        "focusBorder": "legal",
+        "heading": _("Datenschutzübersicht"),
+        "explanaitionText": explanText.replace("\n", ""),
+        "pathToImage": "img/componentList/circle-icon.svg", 
+    }
+
+    return render(request, "pages/overview_page.html", context)
 
 
 def iconsAndVis(request):
