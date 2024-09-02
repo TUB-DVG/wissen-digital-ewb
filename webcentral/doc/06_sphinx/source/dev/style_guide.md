@@ -85,3 +85,43 @@ class car:
     ```
     - 5. paragraph: literature
     - 6 paragraph: Examples
+
+### Docstrings
+Docstrings should be present for each module, class- and method-definition.
+Each Docstring concists of multiple parts, whereby each part is seperated by a
+empty line. Here are the different parts:
+ - 1. Short description of the function/class/module: one line description of
+ the described element.
+ - 2 Long description: This part is the long description, which can go over multiple lines.
+ - 3. Input parameters. Here are the input parameters described. Each argument
+ ```
+Parameters
+----------
+x : type
+    Description of parameter `x`.
+y
+    Description of parameter `y` (with type not specified).
+
+```
+At the first position the name of the parameter is specified, followed by a `:` and the type of the parameter.
+After a linebreak and a indention, a description of the parameter follows.
+ - 4. Description of return statements: Descibes the return vales and its types in the following structure:
+```
+Returns
+-------
+int
+    Description of anonymous integer return value.
+```
+  - 5. Examples: As a optional part, examples can be added to describe how the descibed entity can be used:
+```
+Examples
+--------
+
+np.add(1, 2)
+3
+
+Comment explaining the second example.
+
+np.add([1, 2], [3, 4])
+array([4, 6])
+```
