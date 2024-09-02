@@ -92,8 +92,8 @@ Each Docstring concists of multiple parts, whereby each part is seperated by a
 empty line. Here are the different parts:
  - 1. Short description of the function/class/module: one line description of
  the described element.
- - 2 Long description: This part is the long description, which can go over multiple lines.
- - 3. Input parameters. Here are the input parameters described. Each argument
+ - 2. Long description: This part is the long description, which can go over multiple lines.
+ - 3. Input parameters: Here are the input parameters described. Each argument
  ```
 Parameters
 ----------
