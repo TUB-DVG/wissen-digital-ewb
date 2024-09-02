@@ -121,7 +121,7 @@ def findPicturesForFocus(searchResultObj, tool=False):
 
 def startSearch(request):
     """View function of the start page including central search function."""
-    return render(request, "StartSearch/StartSearch.html")
+    return render(request, "start_search/start_search.html")
 
 
 def resultSearch(request):
@@ -130,7 +130,7 @@ def resultSearch(request):
     if request.method == "GET":
         searchInput = request.GET.get("searchValue", None)
         if searchInput is None:
-            return render(request, "StartSearch/StartSearch.html")
+            return render(request, "start_search/start_search.html")
         sortBy = request.GET.get("sortBy", "virtDate")
         direction = request.GET.get("direction", None)
     elif request.method == "POST":
@@ -336,4 +336,4 @@ def resultSearch(request):
         "sortBy": sortBy,
         "direction": direction,
     }
-    return render(request, "StartSearch/ResultSearch.html", context)
+    return render(request, "start_search/result_search.html", context)

@@ -8,7 +8,7 @@ webcentral/doc/01_data/01_pre_pro/pre_modul.py:24:0: E0401: Unable to import 'pa
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:24:0: C0413: Import "import pandas as pd" should be placed at the top of the module (wrong-import-position)
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:27:0: C0413: Import "from evaluation import EvaluationUtils" should be placed at the top of the module (wrong-import-position)
 webcentral/doc/01_data/01_pre_pro/pre_modul.py:34:4: W0104: Statement seems to have no effect (pointless-statement)
-************* Module schlagwoerter_skript
+************* Module 04_schlagwoerter.schlagwoerter_skript
 webcentral/doc/01_data/04_schlagwoerter/schlagwoerter_skript.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/doc/01_data/04_schlagwoerter/schlagwoerter_skript.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
 webcentral/doc/01_data/04_schlagwoerter/schlagwoerter_skript.py:11:8: W0621: Redefining name 'header' from outer scope (line 72) (redefined-outer-name)
@@ -1849,6 +1849,7 @@ webcentral/src/pages/views.py:275:0: C0301: Line too long (488/100) (line-too-lo
 webcentral/src/pages/views.py:277:0: C0301: Line too long (399/100) (line-too-long)
 webcentral/src/pages/views.py:279:0: C0301: Line too long (687/100) (line-too-long)
 webcentral/src/pages/views.py:281:0: C0301: Line too long (146/100) (line-too-long)
+webcentral/src/pages/views.py:359:0: C0301: Line too long (229/100) (line-too-long)
 webcentral/src/pages/views.py:3:0: E0401: Unable to import 'django.shortcuts' (import-error)
 webcentral/src/pages/views.py:4:0: E0401: Unable to import 'django.utils.translation' (import-error)
 webcentral/src/pages/views.py:5:0: E0401: Unable to import 'django.template' (import-error)
@@ -1883,12 +1884,23 @@ webcentral/src/pages/views.py:305:0: C0103: Function name "dataSufficiencyBox" d
 webcentral/src/pages/views.py:305:32: C0103: Argument name "idOfObject" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:307:4: C0103: Variable name "dataSufficiencyObj" doesn't conform to snake_case naming style (invalid-name)
 webcentral/src/pages/views.py:322:0: C0103: Function name "dataSecurity" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:327:0: C0103: Function name "iconsAndVis" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:332:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:334:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:358:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:358:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
-webcentral/src/pages/views.py:360:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:325:4: C0103: Variable name "explanText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:358:4: C0103: Variable name "explanToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:360:4: C0103: Variable name "explanToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:363:4: C0103: Variable name "explanToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:368:4: C0103: Variable name "explanToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:371:4: C0103: Variable name "explanToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:372:4: C0103: Variable name "explanRendered" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:373:4: C0103: Variable name "explanText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:384:0: C0103: Function name "iconsAndVis" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:387:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:411:4: C0103: Variable name "explanTextToRender" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:421:4: C0103: Variable name "explanationText" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:433:0: C0103: Function name "criteriaCatalog" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:435:4: C0103: Variable name "criteriaCatalogObjs" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:459:0: C0103: Function name "showImage" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:459:23: C0103: Argument name "idOfEnvironmentalImpactObj" doesn't conform to snake_case naming style (invalid-name)
+webcentral/src/pages/views.py:461:4: C0103: Variable name "environmentalObjToReturn" doesn't conform to snake_case naming style (invalid-name)
 ************* Module positive_environmental_impact.admin
 webcentral/src/positive_environmental_impact/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
 webcentral/src/positive_environmental_impact/admin.py:1:0: E0401: Unable to import 'django.contrib' (import-error)
@@ -5997,7 +6009,7 @@ webcentral/test/06_system_test/testrunner.py:11:0: E0611: No name 'scripts' in m
 webcentral/test/06_system_test/testrunner.py:35:0: C0414: Import alias does not rename original package (useless-import-alias)
 webcentral/test/06_system_test/testrunner.py:35:0: E0401: Unable to import 'testtools' (import-error)
 webcentral/test/06_system_test/testrunner.py:35:0: C0413: Import "import testtools as testtools" should be placed at the top of the module (wrong-import-position)
-************* Module test_run_script
+************* Module 07_test_run_script.test_run_script
 webcentral/test/07_test_run_script/test_run_script.py:30:0: C0301: Line too long (156/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:74:0: C0301: Line too long (152/100) (line-too-long)
 webcentral/test/07_test_run_script/test_run_script.py:136:0: C0301: Line too long (210/100) (line-too-long)
@@ -6444,8 +6456,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         """
         for headerItem in header:
             if "__en" in headerItem:
-                return True
- (duplicate-code)
+                return True (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0001_initial:[17:30]
 ==positive_environmental_impact.migrations.0001_initial:[20:33]
@@ -6524,7 +6535,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavbar(self):
+    def getBoxesDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -6842,8 +6853,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxesDiv(self):
-        """Returns the div-element, which wraps the content of the page""" (duplicate-code)
+    def getBoxes(self):
+        """Return the boxes, which link to the EnvironmentalImpact-Detailspage.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[24:38]
 ==DataSufficiency:[24:41]
@@ -6894,25 +6905,25 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[135:143]
 ==LastProfile.Dash_app.Warmelast:[176:184]
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"}, (duplicate-code)
+        {"label": _("Januar"), "value": "1"},
+        {"label": _("Februar"), "value": "2"},
+        {"label": _("März"), "value": "3"},
+        {"label": _("April"), "value": "4"},
+        {"label": _("Mai"), "value": "5"},
+        {"label": _("Juni"), "value": "6"},
+        {"label": _("Juli"), "value": "7"},
+        {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[63:71]
 ==LastProfile.Dash_app.Warmelast:[309:317]
-                {"label": _("Januar"), "value": "1"},
-                {"label": _("Februar"), "value": "2"},
-                {"label": _("März"), "value": "3"},
-                {"label": _("April"), "value": "4"},
-                {"label": _("Mai"), "value": "5"},
-                {"label": _("Juni"), "value": "6"},
-                {"label": _("Juli"), "value": "7"},
-                {"label": _("August"), "value": "8"}, (duplicate-code)
+            {"label": _("Januar"), "value": "1"},
+            {"label": _("Februar"), "value": "2"},
+            {"label": _("März"), "value": "3"},
+            {"label": _("April"), "value": "4"},
+            {"label": _("Mai"), "value": "5"},
+            {"label": _("Juni"), "value": "6"},
+            {"label": _("Juli"), "value": "7"},
+            {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==start_page:[110:153]
 ==tool_list_page:[165:205]
@@ -7057,8 +7068,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getPaginationContainer(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getBackLink(self):
+        """Returns the back link"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7069,8 +7080,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSearchInputField(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getStartCompareButtonLink(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7117,8 +7128,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getHeadingComparisonSite(self):
-        """ """
+    def getDescriptionText(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7129,8 +7140,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionHeading(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getFirstComparisonDiv(self):
+        """ """
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7141,8 +7152,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondComparisonDiv(self):
-        """ """
+    def getSecondaryNavbar(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7167,11 +7178,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-                            (1, "pre-alpha"),
-                            (2, "alpha"),
-                            (3, "beta"),
-                            (4, "release candidate"),
-                            (5, "release"), (duplicate-code)
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7224,12 +7235,12 @@ class Migration(migrations.Migration):
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Warmelastapproximation_CorrectedStundenFaktor_NoDurationLimit:[253:259]
 ==LastProfile.Dash_app.Warmelastapproximation_csv:[207:213]
-    try:
-        # print(h_average)
-        Q.append(
-            h_sum
-            * (Q_average / h_average)
-            * F (duplicate-code)
+        try:
+
+            Q.append(
+                h_sum
+                * (Q_average / h_average)
+                * F (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)

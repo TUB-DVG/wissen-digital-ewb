@@ -321,12 +321,113 @@ def dataSufficiencyBox(request, idOfObject):
 
 def dataSecurity(request):
     """Call render function for data security page."""
-    return render(request, "pages/data_security.html")
+
+    explanText = _(
+        """Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor
+          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder
+          bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von
+          Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf
+          eine identifizierte oder identifizierbare Person, findet das nationale
+          bzw. europäische Datenschutzrecht Anwendung und mit ihm die gesamte
+          Bandbreite rechtlicher Verpflichtungen für den Verantwortlichen der
+          Datenverarbeitung. Ziel des Datenschutzrechts ist es dabei, die
+          Betroffenen vor Risiken zu schützen, die durch die Datenverarbeitung
+          verursacht werden und ihnen damit grundsätzlich die Entscheidung über
+          das Maß und den Umgang mit diesen Risiken zu gewähren. Schon die
+          Frage, ob eine Datenverarbeitung überhaupt in den Anwendungsbereich
+          des Datenschutzrechts fällt, kann aber zur Herausforderung werden. Das
+          dafür zentrale europäische Regelwerk - die Datenschutz-Grundverordnung
+          (DSGVO) - ist nämlich an den sehr unbestimmten Begriff der
+          personenbezogenen Daten geknüpft. Der Anwendungsbereich wurde dabei
+          durch den Gesetzgeber bewusst weit gefasst und wird durch die Gerichte
+          weit ausgelegt, um einen möglichst umfassenden Schutz der Betroffenen
+          vor den Risiken verschiedener Datenverarbeitungen zu gewährleisten.
+          Das liegt daran, dass sogar vermeintlich rein technische Daten wie
+          Maschinen-Daten, Geo-Daten oder Gebäude-Daten Rückschlüsse über
+          Personen zulassen können, wenn sie mit anderen Datensätzen verknüpft
+          werden. Zur Erläuterung, wie Datenschutzrisiken bei der Verarbeitung
+          von gebäudebezogenen Daten entstehen können und wann dadurch der
+          Anwendungsbereich der DSGVO eröffnet wird, ist im Rahmen von Modul 4
+          der Wissenschaftlichen Begleitforschung Energiewendebauen eine
+          Datenschutzübersicht entstanden. Anhand verschiedener Use-Cases wird
+          hier erklärt wann Datenschutzrisiken entstehen und wie diese durch den
+          richtigen Einsatz technisch-organisatorischer Schutzmaßnahmen
+          kontrolliert werden müssen.
+    """
+    ).replace("\n", "")
+    explanToRender = """<p>
+            <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">"""
+    explanToRender += _(
+        "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
+    )
+    explanToRender += """</a>
+          </p>
+          <p>
+            <a href="{% url 'coming' %}">"""
+
+    explanToRender += _(
+        "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
+    )
+    explanToRender += "</a></p>"
+    explanRendered = Template(explanToRender).render(Context({}))
+    explanText += explanRendered
+    context = {
+        "focusBorder": "legal",
+        "heading": _("Datenschutzübersicht"),
+        "explanaitionText": explanText.replace("\n", ""),
+        "pathToImage": "img/componentList/circle-icon.svg",
+    }
+
+    return render(request, "pages/overview_page.html", context)
 
 
 def iconsAndVis(request):
     """Call render function for icons and Visualization page."""
-    return render(request, "pages/iconsAndVis.html")
+
+    explanationText = _(
+        """Icons können auch im Gebäude- und Quartiersbereich die grafische
+          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl für
+          die Informationsvermittlung an professionelle, wie auch fachfremde
+          Adressat*innenkreise genutzt werden. Im Modul 4 der Begleitforschung,
+          in Zusammenarbeit mit dem Projekt “Privacy Icons” der Forschungsgruppe
+          Digitale Selbstbestimmung, wurde zu diesem Zweck ein Open-Source
+          Iconset entwickelt, das zur freien Nutzung und Abänderung freigegeben
+          wurde. Das Iconset richtet sich an unterschiedlichste Akteure.
+          Einerseits können datenschutzrechtliche Informationspflichten mithilfe
+          der Icons effektiv umgesetzt werden und damit dem Transparenzprinzip
+          Rechnung tragen. Darüber hinaus ist eine Nutzung der Icons zur
+          Visualisierung verschiedenster Sachverhalte im Gebäude- und Quartiers
+          Bereich denkbar, etwa zur verständlichen Aufbereitung von
+          Forschungsergebnissen oder Erklärung digitaler Anwendungen. Das
+          Iconset besteht aus über 150 Icons verschiedener Kategorien (z.B. Data
+          and Identifiers, Purposes, Actors and Technical Means). Es wird
+          ergänzt durch ein Set von Gebäudegrafiken und anderen
+          Visualisierungskomponenten, die gemeinsam einen Baukasten ergeben, der
+          eine Betrachtung aus rechtlicher, ökonomisch-ökologischer sowie
+          technischer Perspektive erlaubt und von der Visualisierung eines
+          ganzen Projekts bis hin zur konkreten Anwendung, etwa auf einem
+          User-Interface verwendet werden kann."""
+    )
+    explanTextToRender = """<p>
+            <a href="https://github.com/Privacy-Icons/Privacy-Icons">Icons</a>
+          </p>
+          <div class="row">
+        <div class="col-lg-9">
+          {% load static%}<img src="{% static 'img/iconsOverview.png' %}" alt="image_icons">
+          </div>
+        </div>
+      """
+
+    explanationText += Template(explanTextToRender).render(Context({}))
+
+    context = {
+        "focusBorder": "legal",
+        "pathToImage": "img/componentList/circle-icon.svg",
+        "heading": _("Icons und Visualisierung"),
+        "explanaitionText": explanationText.replace("\n", ""),
+    }
+
+    return render(request, "pages/overview_page.html", context)
 
 
 def criteriaCatalog(request):
