@@ -132,7 +132,7 @@ class TestTranslator(TestCase):
         call_command(
             "translate",
             "criteria_catalog",
-            "../doc/01_data/08_criteria_catalog/integrationTestCriteriaCatalog.xlsx",
+            "../test/08_test_data/test_criteria_catalog.xlsx",
             "testResult.xlsx",
         )
 
@@ -165,3 +165,45 @@ class TestTranslator(TestCase):
         for expectedColumn in expectedColumns:
             self.assertTrue(expectedColumn in englishDF.columns)
         self.assertGreaterEqual(len(englishDF), 3)
+
+    def testTranslatePositiveEnvironmentalImpact(self):
+        """ """
+        call_command(
+            "translate",
+            "positive_environmental_impact",
+            "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx",
+            "test_translation_environmental_impact.xlsx",
+        )
+
+        dataFrameDict = pd.from_excel("test_translation.xlsx", sheet_name=None)
+        englishDF = dataFrameDict["English"]
+        gemanDF = dataFrameDict["German"]
+
+        fieldsInEnvironImpact = [
+            "Category",
+            "Description",
+            "Name_Digital_Application",
+            "Projektname",
+            "Funding_Label",
+            "Duration",
+            "Partner",
+            "Project_Website",
+            "Consortium",
+            "Further",
+            "Digital_applications",
+            "Goals",
+            "Strategies",
+            "Relevance",
+            "Image",
+            "Problem_Statement_and_Problem_Goals",
+            "Implementation_in_the_Project",
+            "Evaluation",
+            "Project_Name",
+            "Weiterführende Literatur",
+        ]
+        for field in fieldsInEnvironImpact:
+
+            self.assertTrue(field in englishDF.columns)
+            self.assertTrue(field in germanDF.columns)
+
+        self.assertEqual(len(germanDF.columns), len(englishDF.columns))

@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.core.management import call_command
 
 from .models import EnvironmentalImpact
+from .data_import import DataImportApp
 
 
 class DataImportTest(TestCase):
@@ -23,8 +24,7 @@ class DataImportTest(TestCase):
         call_command(
             "data_import",
             "positive_environmental_impact",
-            "../../02_work_doc/01_daten/16_positive_environmental_impact/Vorlage_Datenmodel_environmentalImpact_08204.xlsx",
-            ".",
+            "../doc/01_data/16_positive_environmental_impact/positive_environmental_impact_202408.xlsx",
         )
 
         environmnetalImpactObjects = EnvironmentalImpact.objects.all()
@@ -56,6 +56,15 @@ class DataImportTest(TestCase):
 
         subprojectsForImpactObj = randomImpactObj.funding_label.all()
 
+        dataImportAppObj = DataImportApp("hi.xlsx")
+        mapping = dataImportAppObj.MAPPING_EXCEL_DB_EN
+
+        for mappingKey in mapping.keys():
+            # mappingKeyWithoutEn = mappingKey.replace("__en", "")
+            self.assertTrue(
+                getattr(randomEnvImpactObj, mapping[mappingKey]) != ""
+                or getattr(randomEnvImpactObj, mapping[mappingKey]) != None
+            )
         # get the duration for the project:
         # for subproject in subprojectsForImpactObj:
         #     self.assertIsNotNone(subproject.enargusData)

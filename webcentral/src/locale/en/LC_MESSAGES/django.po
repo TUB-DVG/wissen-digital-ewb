@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:53+0000\n"
+"POT-Creation-Date: 2024-09-02 11:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -467,7 +467,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:288 pages/views.py:432
+#: StartSearch/views.py:288 pages/views.py:517
 #: templates/partials/_navbar.html:210
 #: templates/start_search/start_search.html:380
 msgid "Kriterienkatalog"
@@ -601,7 +601,7 @@ msgstr "Further information"
 msgid "Quellen"
 msgstr "Source"
 
-#: common/views.py:148 component_list/views.py:138 pages/views.py:192
+#: common/views.py:148 component_list/views.py:138 pages/views.py:271
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -840,18 +840,18 @@ msgstr ""
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:299 component_list/views.py:331 pages/views.py:182
+#: component_list/views.py:299 component_list/views.py:331 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:163
 #: templates/start_search/start_search.html:314
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
 
-#: component_list/views.py:309 pages/views.py:210
+#: component_list/views.py:309 pages/views.py:289
 msgid "Die Daten-Wertschöpfungkette"
 msgstr "The data value chain"
 
-#: component_list/views.py:326 component_list/views.py:363 pages/views.py:205
+#: component_list/views.py:326 component_list/views.py:363 pages/views.py:284
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr "Expenses for data processing processes"
@@ -933,17 +933,144 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
-#: pages/views.py:137
-#, fuzzy
-#| msgid "Methoden zur Nutzendenintegration"
+#: pages/views.py:101
+msgid ""
+"<p>Die Nutzendenintegration beschreibt die direkte oder indirekte "
+"Integration von Nutzenden und ihren Perspektiven in die Entwicklung "
+"digitaler Anwendungen. Die direkte Beteiligung geschieht über Methoden wie "
+"Beobachtungen, Befragungen oder Usability-Tests von Nutzenden. Indirekte "
+"Nutzendenintegration findet mit Methoden wie Cognitive Walkthrough oder "
+"Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden "
+"werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen "
+"verfügen.</p>"
+msgstr "<p>User integration describes the direct or indirect integration of users and their perspectives in the development of digital applications. Direct participation takes place via methods such as observations, surveys or usability tests of users. Indirect user integration takes place using methods such as cognitive walkthrough or heuristic evaluation, in which usability experts are involved who have in-depth knowledge of the users of digital applications.</p>"
+
+#: pages/views.py:104
+msgid ""
+"<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. "
+"Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</"
+"b>, indem sie Wissen zu geeigneten Zielgruppen der Anwendungen sowie zu den "
+"Bedürfnissen, Nutzungsgewohnheiten und dem Vorwissen von diesen Zielgruppen "
+"generiert. Auf dieser Basis können die digitalen Anwendungen "
+"zielgruppenorientiert (weiter-)entwickelt werden.</p>"
+msgstr ""
+"<p>User integration <b>increases the usability and user-friendliness – or in short: the usability – of digital applications</"
+"b> by generating knowledge about the appropriate target groups of the applications as well as the needs, usage habits, and prior knowledge of these target groups. Based on this, the digital applications can be (further) developed in a target-group-oriented manner.</p>"
+
+#: pages/views.py:107
+msgid ""
+"<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor "
+"der Markteinführung einer digitalen Anwendung sorgen, erhöhen die "
+"Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder "
+"Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>"
+msgstr ""
+"<p>Measures such as user integration, which ensure good usability before the market launch of a digital application, increase user satisfaction, reduce the effort required for maintenance or upkeep of the application, and thereby save costs to a significant extent.</p>"
+
+#: pages/views.py:110
+msgid ""
+"<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der "
+"Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- "
+"und Evaluierungsphase</b> unterschieden werden. Hierbei werden qualitative "
+"Methoden (z. B. Interviews oder teilnehmende Beobachtung) vor allem in "
+"früheren Phasen der Entwicklung digitaler Anwendungen eingesetzt, während "
+"quantitative Methoden (z. B. Usability-Befragung) eher in späteren Phasen "
+"umgesetzt werden. Dies beruht darauf, dass es in früheren Phasen der "
+"Entwicklung digitaler Anwendungen vor allem um die Exploration von "
+"Bedürfnissen, Vorwissen und Nutzungsgewohnheiten von Nutzenden geht. Für "
+"diese Exploration sind qualitative Methoden besonders geeignet. In späteren "
+"Phasen der Anwendungsentwicklung geht es vor allem um die Testung, wie gut "
+"die entwickelte digitale Anwendung den Bedürfnissen, dem Vorwissen und den "
+"Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative "
+"Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>"
+msgstr ""
+"<p>The methods of user integration can be distinguished into <b>methods of the analysis phase, methods of the conceptualization phase, and methods of the implementation and evaluation phase</b>. Qualitative methods (e.g., interviews or participant observation) are primarily used in the early phases of digital application development, while quantitative methods (e.g., usability surveys) are typically applied in later phases. This is because, in the early phases of digital application development, the focus is mainly on exploring the needs, prior knowledge, and usage habits of users. Qualitative methods are particularly suitable for this exploration. In the later phases of application development, the focus is primarily on testing how well the developed digital application meets the needs, prior knowledge, and usage habits of users. Here, quantitative methods excel, as they allow for representative statements to be made.</p>"
+
+#: pages/views.py:113
+msgid ""
+"<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der "
+"Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie "
+"Vor- und Nachteilen dargestellt. Dabei werden sie jeweils einer der drei "
+"Phasen der Entwicklung einer digitalen Anwendung zugeordnet (Analysephase, "
+"Konzeptionsphase sowie Umsetzungs- und Evaluationsphase). Sie sind aber "
+"nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in "
+"anderen Phasen sinnvoll nutzen.</p>"
+msgstr ""
+"<p>This knowledge platform presents <b>12 proven methods of user integration</b> along with their respective objectives, procedures, and advantages and disadvantages. These methods are each assigned to one of the three phases of digital application development (analysis phase, conceptualization phase, and implementation and evaluation phase). However, they are not only applicable in these phases but can often be effectively used in other phases as well.</p>"
+
+#: pages/views.py:116
+msgid ""
+"<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
+"Analysephase vor Beginn der Anwendungsentwicklung</h6>"
+msgstr ""
+"<h6 style=\"font-size: 22px\">Methods of User Integration for the Analysis Phase Before the Start of Application Development</h6>"
+
+#: pages/views.py:118
+msgid "Teilnehmende Beobachtung"
+msgstr "Participant Observation"
+
+#: pages/views.py:119
+msgid "Einzel-Interview"
+msgstr "Individual Interview"
+
+#: pages/views.py:141
+msgid "Gruppen-Interview/Fokusgruppe"
+msgstr "Group Interview/Focus Group"
+
+#: pages/views.py:146
+msgid "Personas"
+msgstr "Personas"
+
+#: pages/views.py:153
+msgid ""
+"Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der "
+"Anwendungsentwicklung"
+msgstr ""
+"Methods of User Integration for the Conceptualization Phase at the Start of Application Development"
+
+#: pages/views.py:160
+msgid "A/B-Test"
+msgstr "A/B Test"
+
+#: pages/views.py:165
+msgid "Prototyping"
+msgstr "Prototyping"
+
+#: pages/views.py:175
+msgid "Styleguide"
+msgstr "Style Guide"
+
+#: pages/views.py:182
+msgid ""
+"Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase "
+"während bzw. nach der Anwendungsentwicklung"
+msgstr ""
+"Methods of User Integration for the Implementation and Evaluation Phase During and After Application Development"
+
+#: pages/views.py:189
+msgid "Lautes Denken"
+msgstr "Think-Aloud"
+
+#: pages/views.py:194
+msgid "Eyetracking"
+msgstr "Eye Tracking"
+
+#: pages/views.py:199
+msgid "Heuristische Evaluation"
+msgstr "Heuristic Evaluation"
+
+#: pages/views.py:204
+msgid "Usability-Befragung"
+msgstr "Usability Survey"
+
+#: pages/views.py:216
 msgid "Methoden der Nutzendenintegration"
 msgstr "Methods for user integration"
 
-#: pages/views.py:146
+#: pages/views.py:225
 msgid "Methoden zur Nutzendenintegration"
 msgstr "Methods for user integration"
 
-#: pages/views.py:148
+#: pages/views.py:227
 msgid ""
 "Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
 "deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist "
@@ -961,11 +1088,11 @@ msgstr ""
 "individual interviews, group interviews / focus groups, participant "
 "observations, and personas."
 
-#: pages/views.py:168
+#: pages/views.py:247
 msgid "Digitale Anwendungen zeichnen sich oftmals durch"
 msgstr "Digital applications often have "
 
-#: pages/views.py:177
+#: pages/views.py:256
 msgid ""
 " aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie "
 "belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services "
@@ -1000,7 +1127,7 @@ msgstr ""
 "therefore divided into the areas of \"efforts for data processing\" and "
 "\"efforts for frequently used components.\""
 
-#: pages/views.py:194
+#: pages/views.py:273
 msgid ""
 "Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der "
 "Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten "
@@ -1024,11 +1151,11 @@ msgstr ""
 "focus on building operations optimization) is intended to provide a simple "
 "overview of hardware-related environmental impacts."
 
-#: pages/views.py:198
+#: pages/views.py:277
 msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
 msgstr "Backbone of the data value chain (focus on operational optimization)"
 
-#: pages/views.py:207
+#: pages/views.py:286
 msgid ""
 "Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und "
 "Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, "
@@ -1046,14 +1173,14 @@ msgstr ""
 "use of the corresponding data infrastructure are explained in more detail "
 "here. Simple estimates based on data volume are also made."
 
-#: pages/views.py:225 pages/views.py:253
+#: pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:169
 #: templates/start_search/start_search.html:326
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: pages/views.py:228
+#: pages/views.py:307
 msgid ""
 "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
 "Gebäuden und Quartieren steht im derzeitigen Fokus der Forschung. "
@@ -1090,7 +1217,7 @@ msgstr ""
 "digital applications in order to be able to make well-founded decisions for "
 "their own projects."
 
-#: pages/views.py:271
+#: pages/views.py:350
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1143,12 +1270,12 @@ msgid ""
 "    "
 msgstr ""
 
-#: pages/views.py:289 pages/views.py:314 templates/pages/dataSufficiency.html:4
+#: pages/views.py:368 pages/views.py:393 templates/pages/dataSufficiency.html:4
 #: templates/partials/_navbar.html:175
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:325
+#: pages/views.py:405
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1228,20 +1355,19 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:358
+#: pages/views.py:440
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:364
+#: pages/views.py:448
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-
-#: pages/views.py:370
+#: pages/views.py:455
 msgid "Datenschutzübersicht"
 msgstr "Privacy Overview"
 
-#: pages/views.py:382
+#: pages/views.py:467
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1296,7 +1422,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:420 templates/partials/_navbar.html:215
+#: pages/views.py:505 templates/partials/_navbar.html:215
 #: templates/start_search/start_search.html:392
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
@@ -3232,23 +3358,17 @@ msgid "Konsortium"
 msgstr "Consortium"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:38
-#, fuzzy
-#| msgid "Seite"
 msgid "Weitere"
-msgstr "Site"
+msgstr "Further"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:42
-#, fuzzy
-#| msgid "Digitale Anwendungen"
 msgid "Digitale Anwendung(en)"
 msgstr "Digital applications"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:45
 #: templates/user_integration/userEngagementDetailsRightColumn.html:32
-#, fuzzy
-#| msgid "Zielgruppe"
 msgid "Ziele"
-msgstr "Target group"
+msgstr "Goals"
 
 #: templates/pages/environmentalIntegrityLeftColumn.html:48
 msgid "Strategien"
@@ -3271,10 +3391,8 @@ msgid "Evaluation"
 msgstr "Evaluation"
 
 #: templates/pages/environmentalIntegrityRightColumn.html:87
-#, fuzzy
-#| msgid "Weiterführende Informationen"
 msgid "Weiterführende Literatur und Hinweise"
-msgstr "Additional information"
+msgstr "Further Reading and References"
 
 #: templates/pages/impressum.html:15 templates/partials/_footer.html:78
 msgid "Impressum"
@@ -5549,25 +5667,9 @@ msgstr "Disadvantages"
 msgid "Good-Practice-Beispiel"
 msgstr "Good practice example"
 
-#: templates/user_integration/userEngagementDetailsLeftColumn.html:69
-msgid "Durchgeführt von"
-msgstr "Conducted by"
-
-#: templates/user_integration/userEngagementDetailsLeftColumn.html:72
-msgid "Erfolgsfaktoren für die Umsetzung der Methode"
-msgstr "Success factors for the implementation of the method"
-
 #: templates/user_integration/userEngagementDetailsRightColumn.html:36
 msgid "Ablauf"
 msgstr "Procedure"
-
-#: templates/user_integration/userEngagementDetailsRightColumn.html:58
-msgid "Konkrete Ziele"
-msgstr "Specific goals"
-
-#: templates/user_integration/userEngagementDetailsRightColumn.html:64
-msgid "Konkreter Ablauf"
-msgstr "Concrete process"
 
 #: templates/weatherdata_over/data-service-listings.html:4
 msgid "Überblick über Wetterdaten-Dienste"
@@ -5814,7 +5916,7 @@ msgstr "Alternatives"
 msgid "Neutral"
 msgstr ""
 
-#: user_integration/views.py:33
+#: user_integration/views.py:42
 msgid "Übersicht Methoden Nutzendenintegration"
 msgstr "Methods for user integration"
 
@@ -5831,3 +5933,15 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:90
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid "Durchgeführt von"
+#~ msgstr "Conducted by"
+
+#~ msgid "Erfolgsfaktoren für die Umsetzung der Methode"
+#~ msgstr "Success factors for the implementation of the method"
+
+#~ msgid "Konkrete Ziele"
+#~ msgstr "Specific goals"
+
+#~ msgid "Konkreter Ablauf"
+#~ msgstr "Concrete process"

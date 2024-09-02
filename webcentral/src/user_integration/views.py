@@ -17,11 +17,20 @@ def userEngagementDetails(request, engagementId):
 
 
 def userEngagementDetailsTitle(request, engagmentTitle):
-    userEngagementObj = UserEngagement.objects.get(category=engagmentTitle)
+    try:
+        userEngagementObj = UserEngagement.objects.get(
+            category_de=engagmentTitle
+        )
+    except:
+        userEngagementObj = UserEngagement.objects.get(
+            category_en=engagmentTitle
+        )
+
     engagementId = userEngagementObj.id
     context = _defineContextForView()
     context["boxObject"] = userEngagementObj
     context["idOfSelectedObj"] = engagementId
+    context["pageTitle"] = userEngagementObj.category
     return render(request, "pages/detailsPage.html", context)
 
 

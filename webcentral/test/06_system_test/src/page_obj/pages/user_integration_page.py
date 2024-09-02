@@ -1,9 +1,8 @@
 from selenium.webdriver.common.by import By
+from src.page_obj.locators import Locator
 
-from Src.PageObject.Locators import Locator
 
-
-class UserEngagmentPage(object):
+class UserIntegrationPage(object):
     """Class, which represents the About-Page-FrontEnd."""
 
     def __init__(self, driver):

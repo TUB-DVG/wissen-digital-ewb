@@ -22,7 +22,8 @@ from test.scripts.test_navbar import TestNavbar
 # from test.scripts.TestSearch import TestSearch
 # from test.scripts.TestPublications import TestPublicationPage
 # from test.scripts.TestComponentsList import TestComponentsList
-# from test.scripts.TestUserEngagement import TestUserEngagement
+from test.scripts.test_user_integration import TestUserIntegration
+
 # from test.scripts.TestNegativeEnvironmentalImpacts import (
 #     TestNegativeEnvironmentalImpacts, )
 # from test.scripts.TestBusinessModels import TestBusinessModels
@@ -84,7 +85,7 @@ if __name__ == "__main__":
                 # testLoader.loadTestsFromTestCase(TestSearch),
                 # testLoader.loadTestsFromTestCase(TestPublicationPage),
                 # testLoader.loadTestsFromTestCase(TestComponentsList),
-                # testLoader.loadTestsFromTestCase(TestUserEngagement),
+                testLoader.loadTestsFromTestCase(TestUserIntegration),
                 # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
                 # testLoader.loadTestsFromTestCase(TestBusinessModels),
                 # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),

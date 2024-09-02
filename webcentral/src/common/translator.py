@@ -34,7 +34,7 @@ class Translator(DataImport):
         englishDict = {}
         germanDict = {}
         for headerIndex, headerElement in enumerate(headerList):
-            if headerElement in mapping.keys():
+            if "__en" in headerElement:
                 headerElementInExcel = headerElement.replace("__en", "")
                 englishDict[headerElementInExcel] = []
                 for row in data:
