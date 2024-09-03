@@ -33,8 +33,8 @@ services:
             - ALLOWED_HOSTS
             - MODE=production
         command: >
-            bash -c "python /home/$WEBCENTRAL_UNPRIVILEGED_USER/01_application/webcentral_app/manage.py collectstatic --noinput && \
-            uwsgi --socket :$UWSGI_LISTEN_PORT --chdir=/home/$WEBCENTRAL_UNPRIVILEGED_USER/01_application/webcentral_app --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid $WEBCENTRAL_UNPRIVILEGED_USER --gid $WEBCENTRAL_UNPRIVILEGED_USER"
+            bash -c "python /home/$WEBCENTRAL_UNPRIVILEGED_USER/src/manage.py collectstatic --noinput && \
+            uwsgi --socket :$UWSGI_LISTEN_PORT --chdir=/home/$WEBCENTRAL_UNPRIVILEGED_USER/src --master --processes 4 --threads 2 --module=webcentral_app.wsgi:application --uid $WEBCENTRAL_UNPRIVILEGED_USER --gid $WEBCENTRAL_UNPRIVILEGED_USER"
     proxy:
         container_name: proxy
         build:

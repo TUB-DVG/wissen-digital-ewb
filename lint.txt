@@ -6281,49 +6281,48 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==pre_modul:[40:84]
 ==testPrePro:[323:366]
-    sheet_name="Projektverteiler",
-    dtype="str",
-)
+            sheet_name="Projektverteiler",
+            dtype="str",
+        )
 
-dataframeModul = dataframeXLSX[
-    [
-        "Förderkenz. (0010)",
-        "Modulzuordnung PtJ - 1 aktuell",
-        "Modulzuordnung PtJ - 2 aktuell",
-        "Modulzuordnung PtJ - 3 aktuell",
-        "Modulzuordnung PtJ - 4 aktuell",
-    ]
-]
-dataframeModul = dataframeModul.rename(
-    columns={
-        "Förderkenz. (0010)": "FKZ",
-        "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
-        "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
-        "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
-        "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
-    }
-)
+        dataframeModul = dataframeXLSX[
+            [
+                "Förderkenz. (0010)",
+                "Modulzuordnung PtJ - 1 aktuell",
+                "Modulzuordnung PtJ - 2 aktuell",
+                "Modulzuordnung PtJ - 3 aktuell",
+                "Modulzuordnung PtJ - 4 aktuell",
+            ]
+        ]
+        dataframeModul = dataframeModul.rename(
+            columns={
+                "Förderkenz. (0010)": "FKZ",
+                "Modulzuordnung PtJ - 1 aktuell": "modulzuordnung_ptj_1",
+                "Modulzuordnung PtJ - 2 aktuell": "modulzuordnung_ptj_2",
+                "Modulzuordnung PtJ - 3 aktuell": "modulzuordnung_ptj_3",
+                "Modulzuordnung PtJ - 4 aktuell": "modulzuordnung_ptj_4",
+            }
+        )
 
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
-    "modulzuordnung_ptj_3"
-].str.lstrip()
-dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
-    "modulzuordnung_ptj_4"
-].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_3"] = dataframeModul[
+            "modulzuordnung_ptj_3"
+        ].str.lstrip()
+        dataframeModul["modulzuordnung_ptj_4"] = dataframeModul[
+            "modulzuordnung_ptj_4"
+        ].str.lstrip()
 
-
-dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
-    "modulzuordnung_ptj_2"
-].str.replace("M2 BF", "M2")
-dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
-    "modulzuordnung_ptj_1"
-].str.replace("ausgelaufen", "ag")
+        dataframeModul["modulzuordnung_ptj_2"] = dataframeModul[
+            "modulzuordnung_ptj_2"
+        ].str.replace("M2 BF", "M2")
+        dataframeModul["modulzuordnung_ptj_1"] = dataframeModul[
+            "modulzuordnung_ptj_1"
+        ].str.replace("ausgelaufen", "ag")
  (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==common.test_db_diff:[134:242]
@@ -6371,7 +6370,9 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         contextObj = Context({})
         return templateObj.render(contextObj)
 
-    def __str__(self): (duplicate-code)
+    @property
+    def evaluationRendered(self):
+        """The  property.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0005_component_globalwarmingpotentialprodsup_and_more:[11:27]
 ==component_list.migrations.0008_component_globalwarmingpotentialprodsup_and_more:[11:27]
@@ -6490,7 +6491,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondaryNavbar(self):
+    def getBoxesDiv(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
@@ -6671,7 +6672,12 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             except:
                 breakpoint()
         environmentalimpactObj.save()
- (duplicate-code)
+
+    def _englishHeadersPresent(self, header: list) -> bool:
+        """Check if english translation headers are present in the
+        list of headers. If yes, then return `True` otherwise `False`
+
+        """ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0001_initial:[112:122]
 ==data_sufficiency.migrations.0001_initial:[16:26]
@@ -6778,8 +6784,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxes(self):
-        """Return the boxes, which link to the EnvironmentalImpact-Detailspage."""
+    def getAllCollapsableFirstParts(self):
+        """Get the div of the collapsables, which include the text,
+        which is shown in collapsed state.
+
+        """
         return self.driver.find_elements( (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==data_sufficiency.data_import:[18:62]
@@ -6839,9 +6848,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
                 is not None
             ):
                 return importlib.import_module(type_of_data + ".data_import")
-        raise CommandError(
-            """specified type_of_data has no corresponding app or has no
-            data_import.py in the app.""" (duplicate-code)
+        raise CommandError( (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_norms_page:[85:96]
 ==06_system_test.test.scripts.test_protocols_page:[73:84]
@@ -6871,8 +6878,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getBoxesDiv(self):
-        """Returns the div-element, which wraps the content of the page""" (duplicate-code)
+    def getBoxes(self):
+        """Return the boxes, which link to the EnvironmentalImpact-Detailspage.""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==ComponentListPage:[148:161]
 ==comparison_page_section:[47:60]
@@ -6884,8 +6891,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getHeadingComparisonSite(self):
-        """ """
+    def getPaginationContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -6904,11 +6911,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getAllCollapsableFirstParts(self):
-        """Get the div of the collapsables, which include the text,
-        which is shown in collapsed state.
-
-        """ (duplicate-code)
+    def getSecondaryNavbar(self):
+        """Returns the div-element, which wraps the content of the page""" (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==component_list.migrations.0005_component_globalwarmingpotentialprodsup_and_more:[28:36]
 ==component_list.migrations.0008_component_globalwarmingpotentialprodsup_and_more:[28:36]
@@ -6923,14 +6927,14 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[135:143]
 ==LastProfile.Dash_app.Warmelast:[176:184]
-        {"label": _("Januar"), "value": "1"},
-        {"label": _("Februar"), "value": "2"},
-        {"label": _("März"), "value": "3"},
-        {"label": _("April"), "value": "4"},
-        {"label": _("Mai"), "value": "5"},
-        {"label": _("Juni"), "value": "6"},
-        {"label": _("Juli"), "value": "7"},
-        {"label": _("August"), "value": "8"}, (duplicate-code)
+                {"label": _("Januar"), "value": "1"},
+                {"label": _("Februar"), "value": "2"},
+                {"label": _("März"), "value": "3"},
+                {"label": _("April"), "value": "4"},
+                {"label": _("Mai"), "value": "5"},
+                {"label": _("Juni"), "value": "6"},
+                {"label": _("Juli"), "value": "7"},
+                {"label": _("August"), "value": "8"}, (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Stromlast:[63:71]
 ==LastProfile.Dash_app.Warmelast:[309:317]
@@ -7065,8 +7069,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getCompareResultsContainer(self):
-        """ """
+    def getNavStart(self):
+        """Returns the TU-Logo from left upper side of page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7077,8 +7081,7 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getHeadingComparisonSite(self):
-        """ """
+    def getSearchSubmitButton(self):
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7113,8 +7116,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getSecondComparisonDiv(self):
-        """ """
+    def getSearchContainer(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7125,8 +7128,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionImage(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getLinkToDataProcessing(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7137,8 +7140,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getLinkToComponentList(self):
-        """Returns the div-element, which wraps the description-heading"""
+    def getDescriptionDownloadLink(self):
+        """Returns the div-element, which wraps the content of the page"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7149,8 +7152,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
         except:
             return None
 
-    def getDescriptionText(self):
-        """Returns the div-element, which wraps the content of the page"""
+    def getDescriptionContentDiv(self):
+        """Returns the div-element, which wraps the description-heading"""
         try:
             return self.driver.find_element(
                 By.XPATH, (duplicate-code)
@@ -7186,7 +7189,8 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
             "Deutschland",
             "FasanenStr. 13",
             "Max Muster",
-        ] (duplicate-code)
+        ]
+ (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==06_system_test.test.scripts.test_click_through_all_sites:[57:63]
 ==06_system_test.test.scripts.test_digital_tools:[271:277]
@@ -7199,11 +7203,11 @@ webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines 
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==tools_over.migrations.0001_initial:[575:580]
 ==tools_over.models:[255:260]
-                            (1, "pre-alpha"),
-                            (2, "alpha"),
-                            (3, "beta"),
-                            (4, "release candidate"),
-                            (5, "release"), (duplicate-code)
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"), (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==keywords.migrations.0001_initial:[7:15]
 ==weatherdata_over.migrations.0001_initial:[5:13]
@@ -7256,15 +7260,15 @@ class Migration(migrations.Migration):
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0801: Similar lines in 2 files
 ==LastProfile.Dash_app.Warmelastapproximation_CorrectedStundenFaktor_NoDurationLimit:[253:259]
 ==LastProfile.Dash_app.Warmelastapproximation_csv:[207:213]
-        try:
-
-            Q.append(
-                h_sum
-                * (Q_average / h_average)
-                * F (duplicate-code)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
-webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
+    try:
+        # print(h_average)
+        Q.append(
+            h_sum
+            * (Q_average / h_average)
+            * F (duplicate-code)
 webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.publication) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customfile) (cyclic-import)
+webcentral/test/07_test_run_script/test_run_script.py:1:0: R0401: Cyclic import (publications.models -> publications.models.customlink) (cyclic-import)
 
 -----------------------------------
 Your code has been rated at 0.70/10
