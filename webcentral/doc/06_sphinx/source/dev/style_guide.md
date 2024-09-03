@@ -88,7 +88,7 @@ class car:
 
 ### Docstrings
 Docstrings should be present for each module, class- and method-definition.
-Each Docstring concists of multiple parts, whereby each part is seperated by a
+Each Docstring concists of multiple parts, whereby each part is seperated by an
 empty line. Here are the different parts:
  - 1. Short description of the function/class/module: one line description of
  the described element.
