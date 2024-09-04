@@ -409,4 +409,6 @@ def protocolComparison(request):
         "focusBorder": "technical",
     }
 
-    return render(request, "TechnicalStandards/protocol-comparison.html", context)
+    return render(
+        request, "TechnicalStandards/protocol-comparison.html", context
+    )

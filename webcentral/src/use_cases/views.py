@@ -213,7 +213,9 @@ def index(request):
     useCasePaginator = Paginator(useCase, 12)
     pageNum = request.GET.get("page", None)
     page = useCasePaginator.get_page(pageNum)
-    focusName = getFocusNameIndependentOfLanguage(focus, focusObjectFromGetRequest)
+    focusName = getFocusNameIndependentOfLanguage(
+        focus, focusObjectFromGetRequest
+    )
     filteredBy = [None] * 3
 
     context = {
@@ -236,7 +238,12 @@ def index(request):
             {
                 "placeholder": _("Level der Wirkebene"),
                 "objects": list(
-                    set([element.degreeOfDetail for element in UseCase.objects.all()])
+                    set(
+                        [
+                            element.degreeOfDetail
+                            for element in UseCase.objects.all()
+                        ]
+                    )
                 ),
                 "fieldName": "use",
                 "filtered": useElements,
@@ -256,7 +263,9 @@ def index(request):
         "effectevaluation": filteredBy[2],
     }
     if filtering:
-        return render(request, "use_cases/usecase-listings-results.html", context)
+        return render(
+            request, "use_cases/usecase-listings-results.html", context
+        )
 
     return render(request, "use_cases/usecase-listings.html", context)
 

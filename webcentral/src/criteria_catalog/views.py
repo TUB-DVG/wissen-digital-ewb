@@ -106,7 +106,9 @@ def buildCriteriaCatalog(
             childsOfCurrentElement = topicsWithoutChilds.filter(
                 parent=currentNode.topic
             ).order_by("id")
-            topicsWithoutChilds = topicsWithoutChilds.exclude(parent=currentNode.topic)
+            topicsWithoutChilds = topicsWithoutChilds.exclude(
+                parent=currentNode.topic
+            )
             childNodes = []
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)
@@ -178,7 +180,9 @@ def buildingCriteriaCatalogOpenTopic(
             childsOfCurrentElement = topicsWithoutChilds.filter(
                 parent=currentNode.topic
             )
-            topicsWithoutChilds = topicsWithoutChilds.exclude(parent=currentNode.topic)
+            topicsWithoutChilds = topicsWithoutChilds.exclude(
+                parent=currentNode.topic
+            )
             childNodes = []
             for childElement in childsOfCurrentElement:
                 childNode = Node(childElement)

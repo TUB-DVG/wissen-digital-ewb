@@ -60,4 +60,6 @@ class TestBusinessModels(WebDriverSetup):
             },
         }
 
-        self.checkInGermanAndEnglish(self._checkTranslationOfHeading, translationDict)
+        self.checkInGermanAndEnglish(
+            self._checkTranslationOfHeading, translationDict
+        )

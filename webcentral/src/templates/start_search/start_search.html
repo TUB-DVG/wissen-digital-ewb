@@ -1,277 +1,277 @@
 {% extends 'base-startpage.html' %}
 {% load i18n %}
 {% block title %}
-    {% translate "Wissensplattform - Digitalisierung Energiewendebauen" %}
+  {% translate "Wissensplattform - Digitalisierung Energiewendebauen" %}
 {% endblock %}
 {% load static %}
 {% block content %}
-    <!-- Page Banner START -->
-    <section class="py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {% if request.LANGUAGE_CODE == "de" %}
-                        <img src="{% static 'assets/images/StartPage_figure.svg' %}"
-                             class="rounded"
-                             alt="overview_figure"
-                             style="width: 800px vertical-align: middle"
-                             nonce="{{ request.csp_nonce }}" />
-                    {% else %}
-                        <img src="{% static 'assets/images/StartPage_figure_en.svg' %}"
-                             class="rounded"
-                             alt="overview_figure"
-                             style="width: 800px vertical-align: middle"
-                             nonce="{{ request.csp_nonce }}" />
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-12 col-lg-10">
-                    <p class="lead">
-                        {% blocktranslate %}Die wissenschaftliche Begleitforschung der Forschungsinitiative
+  <!-- Page Banner START -->
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {% if request.LANGUAGE_CODE == "de" %}
+            <img src="{% static 'assets/images/StartPage_figure.svg' %}"
+                 class="rounded"
+                 alt="overview_figure"
+                 style="width: 800px vertical-align: middle"
+                 nonce="{{ request.csp_nonce }}" />
+          {% else %}
+            <img src="{% static 'assets/images/StartPage_figure_en.svg' %}"
+                 class="rounded"
+                 alt="overview_figure"
+                 style="width: 800px vertical-align: middle"
+                 nonce="{{ request.csp_nonce }}" />
+          {% endif %}
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-10">
+          <p class="lead">
+            {% blocktranslate %}Die wissenschaftliche Begleitforschung der Forschungsinitiative
           Energiewendebauen stellt mit der Wissensplattform - Digitalisierung
           Energiewendebauen einen Zugang zu den Forschungsergebnissen und den
           erstellten Hilfsmitteln aus den Forschungsprojekten im Bereich
           Digitalisierung im Bausektor dar. Diese Plattform richtet sich an die
           interessierte Fachallgemeinheit und auch an die Forschungsprojekte der
           Forschungsinitative Energiewendebauen.{% endblocktranslate %}
-                    </p>
-                </div>
-                <div class="col-12 col-lg-2">
-                    {% if request.LANGUAGE_CODE == "de" %}
-                        <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
-                             class="img-side-column"
-                             style="height: 200px"
-                             alt="Logo_BMWK" />
-                    {% else %}
-                        <img src="{% static '/img/bmwk_en_2023.png' %}"
-                             class="img-side-column"
-                             alt="Logo_BMWK" />
-                    {% endif %}
-                </div>
-            </div>
+          </p>
         </div>
-    </section>
-    <!-- Page Banner END -->
-    <!-- Content START -->
-    <!-- Page content START -->
-    <section class="pt-0">
-        <div class="container start-search">
-            <!-- Filter bar START -->
-            <!-- Row START -->
-            <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
-                  method="POST"
-                  action="ResultSearch"
-                  id="search-form">
-                {% csrf_token %}
-                <!-- Input -->
-                <div class="row g-3">
-                    <!-- general search Input (text) -->
-                    <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
-                        <input id="search-input-general"
-                               class="form-control me-1"
-                               type="search"
-                               placeholder="{% translate 'Durchsuche die Plattform!' %}"
-                               name="searchValue"
-                               style="border: None"
-                               nonce="{{ request.csp_nonce }}" />
-                    </div>
-                    <div class="col-1 col-sm-1 col-xl-1 position-relative"
-                         title="Allgemeine Suche">
-                        <img src="{% static 'assets/images/searchStartpage.svg' %}"
-                             style="width: 30px"
-                             class="position-absolute translate-middle-y top-50 end-50"
-                             alt="icon"
-                             nonce="{{ request.csp_nonce }}" />
-                    </div>
-                </div>
-            </form>
-            <!-- Row END -->
+        <div class="col-12 col-lg-2">
+          {% if request.LANGUAGE_CODE == "de" %}
+            <img src="{% static '/img/BMWK_Fz_2017_WebSVG_de.svg' %}"
+                 class="img-side-column"
+                 style="height: 200px"
+                 alt="Logo_BMWK" />
+          {% else %}
+            <img src="{% static '/img/bmwk_en_2023.png' %}"
+                 class="img-side-column"
+                 alt="Logo_BMWK" />
+          {% endif %}
         </div>
-        <!-- Filter bar END -->
-        <div class="container" id="container-start-focus">
-            <!-- Row START -->
+      </div>
+    </div>
+  </section>
+  <!-- Page Banner END -->
+  <!-- Content START -->
+  <!-- Page content START -->
+  <section class="pt-0">
+    <div class="container start-search">
+      <!-- Filter bar START -->
+      <!-- Row START -->
+      <form class="bg-white border-startsearch p-3 my-4 z-index-9 position-relative"
+            method="POST"
+            action="ResultSearch"
+            id="search-form">
+        {% csrf_token %}
+        <!-- Input -->
+        <div class="row g-3">
+          <!-- general search Input (text) -->
+          <div class="col-11 col-sm-11 col-xl-11" title="Allgemeine Suche">
+            <input id="search-input-general"
+                   class="form-control me-1"
+                   type="search"
+                   placeholder="{% translate 'Durchsuche die Plattform!' %}"
+                   name="searchValue"
+                   style="border: None"
+                   nonce="{{ request.csp_nonce }}" />
+          </div>
+          <div class="col-1 col-sm-1 col-xl-1 position-relative"
+               title="Allgemeine Suche">
+            <img src="{% static 'assets/images/searchStartpage.svg' %}"
+                 style="width: 30px"
+                 class="position-absolute translate-middle-y top-50 end-50"
+                 alt="icon"
+                 nonce="{{ request.csp_nonce }}" />
+          </div>
+        </div>
+      </form>
+      <!-- Row END -->
+    </div>
+    <!-- Filter bar END -->
+    <div class="container" id="container-start-focus">
+      <!-- Row START -->
+      <div class="row">
+        <!-- Block START -->
+        <div class="col-12 col-lg-6 p-3 border-technical"
+             title="Technischer Fokus">
+          <div class="p-4 position-relative">
+            <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                 class="position-absolute start-0 translate-middle"
+                 style="top: 30px"
+                 alt="icon"
+                 nonce="{{ request.csp_nonce }}" />
             <div class="row">
-                <!-- Block START -->
-                <div class="col-12 col-lg-6 p-3 border-technical"
-                     title="Technischer Fokus">
-                    <div class="p-4 position-relative">
-                        <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                             class="position-absolute start-0 translate-middle"
-                             style="top: 30px"
-                             alt="icon"
-                             nonce="{{ request.csp_nonce }}" />
-                        <div class="row">
-                            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
-                                 style="margin-top: -6px"
-                                 title="Erläuterungstext">
-                                <h3>{% translate "Technischer Fokus" %}</h3>
-                                <p>
-                                    {% blocktranslate %}Der technische Fokus bei der Untersuchung der Digitalisierung in
+              <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
+                   style="margin-top: -6px"
+                   title="Erläuterungstext">
+                <h3>{% translate "Technischer Fokus" %}</h3>
+                <p>
+                  {% blocktranslate %}Der technische Fokus bei der Untersuchung der Digitalisierung in
                 der Energieforschung im Gebäudesektor zielt vorrangig auf
                 Hilfsmittel für die technische Planung und die technische
                 Betriebsdurchführung bzw. -optimierung ab. Dies umfasst
                 Datensätze, digitale Werkzeuge bzw. Anwendungen und weitere
                 Forschungsergebnisse.{% endblocktranslate %}
-                                </p>
-                            </div>
-                            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/tools.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical" href="{% url 'tool_list' %}">{% translate "Werkzeuge" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/applications.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical" href="{% url 'app_list' %}">{% translate "Anwendungen" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/standards.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical"
-                                               href="{% url 'TechnicalStandards' %}"
-                                               id="linkToTechnicalStandarts">{% translate "Technische Standards" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/data.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical" href="{% url 'weatherdata_list' %}">{% translate "Wetterdaten" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/data.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical" href="{% url 'dataset_list' %}">{% translate "Datensätze" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/diagram_with_graph.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical" href="{% url 'LastProfile' %}">{% translate "Lastprofile" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/standards.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="technical"
-                                               href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
-                                                {% translate "Anwendungsfälle" %}
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Block END -->
-                <!-- Block START -->
-                <div class="col-12 col-lg-6 p-3 border-operational"
-                     title="Betrieblicher Fokus">
-                    <div class="p-4 position-relative">
-                        <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                             class="position-absolute start-0 translate-middle"
-                             style="top: 30px"
-                             nonce="{{ request.csp_nonce }}"
-                             alt="icon" />
-                        <div class="row">
-                            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
-                                 style="margin-top: -6px"
-                                 title="Erläuterungstext">
-                                <h3>{% translate "Betrieblicher Fokus" %}</h3>
-                                <p>
-                                    {% blocktranslate %}Der betriebliche Fokus bei der Untersuchung der Digitalisierung
+                </p>
+              </div>
+              <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
+                <table>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/tools.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical" href="{% url 'tool_list' %}">{% translate "Werkzeuge" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/applications.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical" href="{% url 'app_list' %}">{% translate "Anwendungen" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/standards.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical"
+                         href="{% url 'TechnicalStandards' %}"
+                         id="linkToTechnicalStandarts">{% translate "Technische Standards" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/data.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical" href="{% url 'weatherdata_list' %}">{% translate "Wetterdaten" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/data.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical" href="{% url 'dataset_list' %}">{% translate "Datensätze" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/diagram_with_graph.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical" href="{% url 'LastProfile' %}">{% translate "Lastprofile" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/standards.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="technical"
+                         href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
+                        {% translate "Anwendungsfälle" %}
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Block END -->
+        <!-- Block START -->
+        <div class="col-12 col-lg-6 p-3 border-operational"
+             title="Betrieblicher Fokus">
+          <div class="p-4 position-relative">
+            <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
+                 class="position-absolute start-0 translate-middle"
+                 style="top: 30px"
+                 nonce="{{ request.csp_nonce }}"
+                 alt="icon" />
+            <div class="row">
+              <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
+                   style="margin-top: -6px"
+                   title="Erläuterungstext">
+                <h3>{% translate "Betrieblicher Fokus" %}</h3>
+                <p>
+                  {% blocktranslate %}Der betriebliche Fokus bei der Untersuchung der Digitalisierung
                 in der Energieforschung im Gebäudesektor zielt vorrangig auf die
                 Nutzungsphase digitaler Anwendungen ab. Wichtige Aspekte sind
                 dabei der wirtschaftliche Betrieb digitaler Anwendungen
                 (Geschäftsmodelle) und die Einbindung von und Interaktion mit
                 den Nutzenden.{% endblocktranslate %}
-                                </p>
-                            </div>
-                            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/businessModelsIcon.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="operational" href="{% url 'businessModels' %}">{% translate "Geschäftsmodelle" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/applications.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="operational"
-                                               href="{% url 'userEngagement' %}"
-                                               style="word-wrap: break-word;
-                                                      hyphens: auto">{% translate "Nutzendenintegration" %}</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Block END -->
+                </p>
+              </div>
+              <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
+                <table>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/businessModelsIcon.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="operational" href="{% url 'businessModels' %}">{% translate "Geschäftsmodelle" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/applications.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="operational"
+                         href="{% url 'userEngagement' %}"
+                         style="word-wrap: break-word;
+                                hyphens: auto">{% translate "Nutzendenintegration" %}</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </div>
-            <!-- Row END -->
-            <!-- Row START -->
+          </div>
+        </div>
+        <!-- Block END -->
+      </div>
+      <!-- Row END -->
+      <!-- Row START -->
+      <div class="row">
+        <!-- Block START -->
+        <div class="col-12 col-lg-6 p-3 border-ecological"
+             title="Ökologischer Fokus">
+          <div class="p-4 position-relative">
+            <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+                 class="position-absolute start-0 translate-middle"
+                 style="top: 30px"
+                 nonce="{{ request.csp_nonce }}"
+                 alt="icon" />
             <div class="row">
-                <!-- Block START -->
-                <div class="col-12 col-lg-6 p-3 border-ecological"
-                     title="Ökologischer Fokus">
-                    <div class="p-4 position-relative">
-                        <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                             class="position-absolute start-0 translate-middle"
-                             style="top: 30px"
-                             nonce="{{ request.csp_nonce }}"
-                             alt="icon" />
-                        <div class="row">
-                            <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
-                                 style="margin-top: -6px"
-                                 title="Erläuterungstext">
-                                <h3>{% translate "Ökologischer Fokus" %}</h3>
-                                <p>
-                                    {% blocktranslate %}Der ökologische Fokus bei der Untersuchung der Digitalisierung
+              <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
+                   style="margin-top: -6px"
+                   title="Erläuterungstext">
+                <h3>{% translate "Ökologischer Fokus" %}</h3>
+                <p>
+                  {% blocktranslate %}Der ökologische Fokus bei der Untersuchung der Digitalisierung
                 in der Energieforschung im Gebäudesektor zielt auf das
                 Evaluieren von Umwelteffekten durch den Einsatz digitaler
                 Anwendungen ab. Neben positiven Wirkungen wie
@@ -279,147 +279,147 @@
                 erhöhter Materialverbrauch durch digitale Anwendungen
                 aufgezeigt. In diesem Kontext wird auch ein suffizienter Umgang
                 mit Daten sowie dessen Auswirkungen thematisiert.{% endblocktranslate %}
-                                </p>
-                            </div>
-                            <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/standards.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="ecological" href="{% url 'environmentalIntegrityNegativ' %}">{% translate "Negative Umweltwirkungen" %}</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{% static 'assets/images/standards.svg' %}"
-                                                 class="rounded"
-                                                 alt="icon" />
-                                        </td>
-                                        <td>
-                                            <a class="ecological" href="{% url 'environmentalIntegrityPositiv' %}">
-                                                {% translate "Positive Umweltwirkungen" %} - Good-practice
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Block END -->
-                    <!-- Block -->
-                    <div class="col-12 col-lg-6 p-3 border-legal" title="Rechtlicher Fokus">
-                        <div class="p-4 position-relative">
-                            <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                                 class="position-absolute start-0 translate-middle"
-                                 style="top: 30px"
-                                 nonce="{{ request.csp_nonce }}"
-                                 alt="icon" />
-                            <div class="row">
-                                <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
-                                     style="margin-top: -6px"
-                                     title="Erläuterungstext">
-                                    <h3>{% translate "Rechtlicher Fokus" %}</h3>
-                                    <p>
-                                        {% blocktranslate %}Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des
+                </p>
+              </div>
+              <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
+                <table>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/standards.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="ecological" href="{% url 'environmentalIntegrityNegativ' %}">{% translate "Negative Umweltwirkungen" %}</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img src="{% static 'assets/images/standards.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="ecological" href="{% url 'environmentalIntegrityPositiv' %}">
+                        {% translate "Positive Umweltwirkungen" %} - Good-practice
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Block END -->
+          <!-- Block -->
+          <div class="col-12 col-lg-6 p-3 border-legal" title="Rechtlicher Fokus">
+            <div class="p-4 position-relative">
+              <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+                   class="position-absolute start-0 translate-middle"
+                   style="top: 30px"
+                   nonce="{{ request.csp_nonce }}"
+                   alt="icon" />
+              <div class="row">
+                <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
+                     style="margin-top: -6px"
+                     title="Erläuterungstext">
+                  <h3>{% translate "Rechtlicher Fokus" %}</h3>
+                  <p>
+                    {% blocktranslate %}Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des
                 Datenschutzes für die Digitalisierung im Gebäudesektor. Hier
                 wird einerseits aufgezeigt, wie Datenschutzrisiken entstehen und
                 wie sie sich innovationshemmend auswirken können. Andererseits
                 wird für verschiedenste Anwendungsfälle im Gebäudesektor das
                 Datenschutzrecht konkretisiert und in konkrete
                 Handlungsempfehlungen für Projekte übersetzt.{% endblocktranslate %}
-                                    </p>
-                                </div>
-                                <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <img src="{% static 'assets/images/buildings.svg' %}"
-                                                     class="rounded"
-                                                     alt="icon" />
-                                            </td>
-                                            <td>
-                                                <a class="legal" href="{% url 'dataSecurity' %}">{% translate "Daten&shy;schutz&shy;übersicht" %}</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="{% static 'assets/images/standards.svg' %}"
-                                                     class="rounded"
-                                                     alt="icon" />
-                                            </td>
-                                            <td>
-                                                <a class="legal" href="{% url 'criteriaCatalog' %}">{% translate "Kriterienkatalog" %}</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="{% static 'assets/images/data.svg' %}"
-                                                     class="rounded"
-                                                     alt="icon" />
-                                            </td>
-                                            <td>
-                                                <a class="legal" href="{% url 'iconsAndVis' %}">{% translate "Icons und Visualisierung" %}</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 p-3 border-global"
-                         title="Globaler Fokus"
-                         id="globalFocusContainer">
-                        <div class="p-4 position-relative">
-                            <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
-                                 class="position-absolute start-0 translate-middle"
-                                 style="top: 30px"
-                                 nonce="{{ request.csp_nonce }}"
-                                 alt="icon" />
-                            <div class="row">
-                                <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
-                                     style="margin-top: -6px"
-                                     title="Erläuterungstext">
-                                    <h3>{% translate "Globaler Fokus" %}</h3>
-                                    <p>
-                                        {% blocktranslate %}Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, die eine integrierte Betrachtung erfordern oder in allen Foki auftreten. Ziel ist eine ganzheitliche Betrachtung der Digitalisierung in der Energietechnik. {% endblocktranslate %}
-                                    </p>
-                                </div>
-                                <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <img src="{% static 'assets/images/buildings.svg' %}"
-                                                     class="rounded"
-                                                     alt="icon" />
-                                            </td>
-                                            <td>
-                                                <a class="global" href="{% url 'use_cases_list' %}">{% translate "Anwendungsfälle" %}</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="{% static 'assets/images/data.svg' %}"
-                                                     class="rounded"
-                                                     alt="icon" />
-                                            </td>
-                                            <td>
-                                                <a class="global" href="{% url 'publicationPage' %}">{% translate "Veröffentlichungen" %}</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </p>
                 </div>
-                <!-- Block END -->
+                <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
+                  <table>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/buildings.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="legal" href="{% url 'dataSecurity' %}">{% translate "Daten&shy;schutz&shy;übersicht" %}</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/standards.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="legal" href="{% url 'criteriaCatalog' %}">{% translate "Kriterienkatalog" %}</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/data.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="legal" href="{% url 'iconsAndVis' %}">{% translate "Icons und Visualisierung" %}</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
-            <!-- Row END -->
+          </div>
+          <div class="col-12 p-3 border-global"
+               title="Globaler Fokus"
+               id="globalFocusContainer">
+            <div class="p-4 position-relative">
+              <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
+                   class="position-absolute start-0 translate-middle"
+                   style="top: 30px"
+                   nonce="{{ request.csp_nonce }}"
+                   alt="icon" />
+              <div class="row">
+                <div class="col-7 col-sm-8 col-md-7 col-lg-7 col-xl-8 p-3 pt-0"
+                     style="margin-top: -6px"
+                     title="Erläuterungstext">
+                  <h3>{% translate "Globaler Fokus" %}</h3>
+                  <p>
+                    {% blocktranslate %}Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, die eine integrierte Betrachtung erfordern oder in allen Foki auftreten. Ziel ist eine ganzheitliche Betrachtung der Digitalisierung in der Energietechnik. {% endblocktranslate %}
+                  </p>
+                </div>
+                <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
+                  <table>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/buildings.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="global" href="{% url 'use_cases_list' %}">{% translate "Anwendungsfälle" %}</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/data.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="global" href="{% url 'publicationPage' %}">{% translate "Veröffentlichungen" %}</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-    <!-- Content END -->
+        <!-- Block END -->
+      </div>
+      <!-- Row END -->
+    </div>
+  </section>
+  <!-- Content END -->
 {% endblock %}

@@ -55,7 +55,8 @@ class TestRunScript(TestCase):
         system("rm -f webcentral/doc/01_data/01_pre_pro/enargus_test.csv")
 
         self.assertTrue(
-            "enargus_test.csv" not in listdir("webcentral/doc/01_data/01_pre_pro")
+            "enargus_test.csv"
+            not in listdir("webcentral/doc/01_data/01_pre_pro")
         )
 
     def testPreModul(self):
@@ -91,9 +92,12 @@ class TestRunScript(TestCase):
 
         # test if the csv-file was created:
         self.assertTrue(
-            "modulzuordnung_test.csv" in listdir("webcentral/doc/01_data/01_pre_pro")
+            "modulzuordnung_test.csv"
+            in listdir("webcentral/doc/01_data/01_pre_pro")
         )
-        system("rm -f webcentral/doc/01_data/01_pre_pro/modulzuordnung_test.csv")
+        system(
+            "rm -f webcentral/doc/01_data/01_pre_pro/modulzuordnung_test.csv"
+        )
 
         self.assertTrue(
             "modulzuordnung_test.csv"
@@ -124,7 +128,9 @@ class TestRunScript(TestCase):
     #
     def testStartSystemTest(self):
         """Test if the selenium system test can be started by the run-script."""
-        result = run(["./run", "test"], check=True, stdout=PIPE, stderr=PIPE, text=True)
+        result = run(
+            ["./run", "test"], check=True, stdout=PIPE, stderr=PIPE, text=True
+        )
         self.assertEqual(
             result.stdout,
             "test-command usage: ./run test <type> <opt1> <opt2>\\ntype: Selenium\nopt1: Optional parameter specifing which Testclass to execute\nopt2: Optional parameter specifing the testmethod to execute\n",

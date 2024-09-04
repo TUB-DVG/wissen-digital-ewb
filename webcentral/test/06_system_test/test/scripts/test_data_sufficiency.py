@@ -56,7 +56,9 @@ class TestDataSufficiency(WebDriverSetup):
         boxesOnSite = dataSufficiencyObj.getBoxes()
         randomBox = choice(boxesOnSite)
 
-        allFirstPartsOfCollapsables = dataSufficiencyObj.getAllCollapsableFirstParts()
+        allFirstPartsOfCollapsables = (
+            dataSufficiencyObj.getAllCollapsableFirstParts()
+        )
         for firstPartOfCollapsable in allFirstPartsOfCollapsables:
             parentDiv = dataSufficiencyObj.getFirstAncestorByTagName(
                 firstPartOfCollapsable, "div"

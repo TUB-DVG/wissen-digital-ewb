@@ -169,7 +169,9 @@ class TestNegativeEnvironmentalImpacts(WebDriverSetup):
         self.assertEqual(len(imgInLeftSecondaryNavBar), 1)
 
         # the img should be shown and no alt-text should be present:
-        imgNaturalWidth = imgInLeftSecondaryNavBar[0].get_attribute("naturalWidth")
+        imgNaturalWidth = imgInLeftSecondaryNavBar[0].get_attribute(
+            "naturalWidth"
+        )
         self.assertNotEqual(
             imgNaturalWidth,
             "0",

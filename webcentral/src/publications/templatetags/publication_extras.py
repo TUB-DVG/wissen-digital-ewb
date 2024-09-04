@@ -45,7 +45,9 @@ def get_publications(context, template="publications/publications.html"):
     # load custom links and files
     populate(publications)
 
-    return render_template(template, context["request"], {"publications": publications})
+    return render_template(
+        template, context["request"], {"publications": publications}
+    )
 
 
 def get_publication(context, id):
@@ -68,7 +70,9 @@ def get_publication(context, id):
     )
 
 
-def get_publication_list(context, list, template="publications/publications.html"):
+def get_publication_list(
+    context, list, template="publications/publications.html"
+):
     """
     Get a publication list.
     """

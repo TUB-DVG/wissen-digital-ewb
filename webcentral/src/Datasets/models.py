@@ -16,7 +16,9 @@ class collectedDatasets(models.Model):
     comment = models.CharField(max_length=200, null=True, blank=True)
     dataSources = models.CharField(max_length=500, null=True, blank=True)
     shortDescriptionDe = models.CharField(max_length=300, null=True, blank=True)
-    includesNonResidential = models.CharField(max_length=200, null=True, blank=True)
+    includesNonResidential = models.CharField(
+        max_length=200, null=True, blank=True
+    )
 
     def __str__(self):
         return self.nameDataset

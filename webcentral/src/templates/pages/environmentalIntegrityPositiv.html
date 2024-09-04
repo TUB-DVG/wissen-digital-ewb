@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-    {% translate "Positive Umweltwirkungen" %}
+  {% translate "Positive Umweltwirkungen" %}
 {% endblock title %}
 {% load static %}
 {% block content %}
-    <style>
+  <style>
     .description-heading {
       display: flex;
       align-items: center;
@@ -66,11 +66,13 @@
         flex-basis: 30%;
       }
     } 
-    </style>
-    <!-- ======================= Page Banner START ======================= -->
-    <div class="content container">
-        <div class="row">{% include "partials/descriptionContainer.html" %}</div>
-        <div class="boxes" id="container-start-focus">{% include "common/fourBoxesContainer.html" %}</div>
+  </style>
+  <!-- ======================= Page Banner START ======================= -->
+  <div class="content container">
+    <div class="row">{% include "partials/descriptionContainer.html" %}</div>
+    <div class="boxes" id="container-start-focus">
+      {% include "common/fourBoxesContainer.html" %}
     </div>
-    <!-- Content END -->
+  </div>
+  <!-- Content END -->
 {% endblock %}

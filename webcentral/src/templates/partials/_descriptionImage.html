@@ -5,26 +5,26 @@
             align-items: center;
             display: flex;
             padding: 35px">
-    {% if request.LANGUAGE_CODE == "de" %}
-        {% if imageDe %}
-            <img src="{% static imageDe %}"
-                 alt="Description Component Image"
-                 style="width: 923px" />
-        {% else %}
-            <img src="{% static image %}"
-                 alt="Description Component Image"
-                 style="width: 923px" />
-        {% endif %}
+  {% if request.LANGUAGE_CODE == "de" %}
+    {% if imageDe %}
+      <img src="{% static imageDe %}"
+           alt="Description Component Image"
+           style="width: 923px" />
     {% else %}
-        {% if imageEn %}
-            <img src="{% static imageEn %}"
-                 alt="Description Component Image"
-                 style="width: 923px" />
-        {% else %}
-            <img src="{% static image %}"
-                 alt="Description Component Image"
-                 style="width: 923px" />
-        {% endif %}
+      <img src="{% static image %}"
+           alt="Description Component Image"
+           style="width: 923px" />
     {% endif %}
+  {% else %}
+    {% if imageEn %}
+      <img src="{% static imageEn %}"
+           alt="Description Component Image"
+           style="width: 923px" />
+    {% else %}
+      <img src="{% static image %}"
+           alt="Description Component Image"
+           style="width: 923px" />
+    {% endif %}
+  {% endif %}
 </div>
 <div style="margin-bottom: 20px;">{{ caption }}</div>

@@ -86,7 +86,9 @@ def mock_excel_file():
     # Create DataFrame for English data
     df_english = pd.DataFrame(data_english)
 
-    tempfileObj = NamedTemporaryFile(prefix="TestTools", suffix=".xlsx", delete=True)
+    tempfileObj = NamedTemporaryFile(
+        prefix="TestTools", suffix=".xlsx", delete=True
+    )
     with pd.ExcelWriter(tempfileObj.name, engine="xlsxwriter") as writer:
         df_german.to_excel(writer, sheet_name="German", index=False)
         df_english.to_excel(writer, sheet_name="English", index=False)

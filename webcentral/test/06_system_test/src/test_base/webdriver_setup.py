@@ -104,7 +104,9 @@ class WebDriverSetup(unittest.TestCase):
     def getLanguage(self):
         """Get the language of the page."""
 
-        element = self.driver.find_element(By.XPATH, "//select[@name='language']")
+        element = self.driver.find_element(
+            By.XPATH, "//select[@name='language']"
+        )
         return element.get_attribute("value")
 
     def checkIfImageIsDisplayed(self, image):
@@ -184,7 +186,9 @@ class WebDriverSetup(unittest.TestCase):
         self._setLanguageToEnglish()
         funcHandler(translationsDict["en"])
 
-    def checkIfElementIsTranslated(self, language, elementText, translationDict):
+    def checkIfElementIsTranslated(
+        self, language, elementText, translationDict
+    ):
         """Change the language of the page and check if the language is changed."""
         if language == "en":
             self._setLanguageToGerman()
@@ -213,7 +217,9 @@ class WebDriverSetup(unittest.TestCase):
         if currentFocus is None:
             currentFocus = "undefined"
         for icon in listOfIcons:
-            self.assertTrue(icon.text == "", "No alt text should be present for icon")
+            self.assertTrue(
+                icon.text == "", "No alt text should be present for icon"
+            )
             srcOfImage = icon.get_attribute("src")
             if currentFocus in srcOfImage:
                 self.assertTrue("_no.svg" not in srcOfImage)

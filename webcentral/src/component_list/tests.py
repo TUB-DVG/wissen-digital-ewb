@@ -33,11 +33,15 @@ class TestRounding(TestCase):
             componentClass=componentClassObj,
         )
 
-        returnValueFloatOne = componentObj._findLastDecimalPlaces(str(exampleFloatOne))
+        returnValueFloatOne = componentObj._findLastDecimalPlaces(
+            str(exampleFloatOne)
+        )
         self.assertEqual(returnValueFloatOne, 5)
 
         exampleFloatTwo = 1.00021
-        returnValueFloatTwo = componentObj._findLastDecimalPlaces(str(exampleFloatTwo))
+        returnValueFloatTwo = componentObj._findLastDecimalPlaces(
+            str(exampleFloatTwo)
+        )
         self.assertEqual(returnValueFloatTwo, 5)
 
         exampleFloatThree = 1.8396
@@ -77,7 +81,9 @@ class TestDataImport(TestCase):
         )
 
         # check if the english translations were also imported:
-        sensorComponents = Component.objects.filter(category__category_de="Sensorik")
+        sensorComponents = Component.objects.filter(
+            category__category_de="Sensorik"
+        )
         self.assertGreaterEqual(len(sensorComponents), 9)
 
         componentListDataImport = DataImportApp(
@@ -86,7 +92,9 @@ class TestDataImport(TestCase):
 
         header, data = componentListDataImport.load()
 
-        self.assertEqual(sensorComponents[0].category.category_en, "Sensor Technology")
+        self.assertEqual(
+            sensorComponents[0].category.category_en, "Sensor Technology"
+        )
         for row in data:
             self.assertGreaterEqual(
                 len(
@@ -100,7 +108,9 @@ class TestDataImport(TestCase):
                 len(
                     Component.objects.filter(
                         furtherInformationNotes_en=row[
-                            header.index("Weitere Informationen / Anmerkungen__en")
+                            header.index(
+                                "Weitere Informationen / Anmerkungen__en"
+                            )
                         ]
                     )
                 ),

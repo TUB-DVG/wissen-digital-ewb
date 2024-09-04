@@ -350,7 +350,10 @@ class Command(BaseCommand):
         installed_django_apps = settings.INSTALLED_APPS
         app_names = [app.split(".")[0] for app in installed_django_apps]
         if type_of_data in app_names:
-            if importlib.util.find_spec(type_of_data + ".data_import") is not None:
+            if (
+                importlib.util.find_spec(type_of_data + ".data_import")
+                is not None
+            ):
                 return importlib.import_module(type_of_data + ".data_import")
         raise CommandError(
             """specified type_of_data has no corresponding app or has no 

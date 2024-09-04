@@ -152,7 +152,9 @@ class TestComponentsList(WebDriverSetup):
 
     def testComponentListPage(self):
         """Test the structure of the sub-page of the negative environmental impacts page"""
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
 
         componentsListPageObj = ComponentListPage(self.driver)
         divContent = componentsListPageObj.getContentDiv()
@@ -173,7 +175,8 @@ class TestComponentsList(WebDriverSetup):
 
         # test styling of link one:
         self.assertTrue(
-            linksInSecNavBar[0].value_of_css_property("color") == self.ECOLOGICAL_COLOR
+            linksInSecNavBar[0].value_of_css_property("color")
+            == self.ECOLOGICAL_COLOR
         )
         self.assertTrue(
             linksInSecNavBar[0].value_of_css_property("font-size") == "15px",
@@ -208,9 +211,11 @@ class TestComponentsList(WebDriverSetup):
         self.driver.back()
 
         secondaryNavbarDiv = componentsListPageObj.getSecondaryNavbar()
-        linkToEnvironmentalImpacts = componentsListPageObj.getDescendantsByTagName(
-            secondaryNavbarDiv, "a"
-        )[0]
+        linkToEnvironmentalImpacts = (
+            componentsListPageObj.getDescendantsByTagName(
+                secondaryNavbarDiv, "a"
+            )[0]
+        )
         linkToEnvironmentalImpacts.click()
         self.assertTrue(
             "Negative environmental impacts" in self.driver.title
@@ -246,7 +251,9 @@ class TestComponentsList(WebDriverSetup):
         #     "In analogy to the data value chain (see 'Expenses for data processing processes'), important components can be thought of from data acquisition (sensors) to data use (actuators). Figure 2 shows important components that are necessary to realize the effective use of data for the operational optimization of buildings and districts. Depending on which of these – or other – components had to be installed additionally for the digital application, the corresponding environmental impact must be included in the balance sheet. All life cycle phases must be taken into account. Here you will find important components and their environmental impact."
         #     in descriptionText.text)
         #
-        descriptionDownloadLink = componentsListPageObj.getDescriptionDownloadLink()
+        descriptionDownloadLink = (
+            componentsListPageObj.getDescriptionDownloadLink()
+        )
 
         descriptionImageDiv = componentsListPageObj.getDescriptionImage()
         self.assertIsNotNone(descriptionImageDiv)
@@ -265,7 +272,8 @@ class TestComponentsList(WebDriverSetup):
         )
 
         self.assertTrue(
-            "downloads/EWB_Digi_Komponenten.xlsx" in downloadlink.get_attribute("href")
+            "downloads/EWB_Digi_Komponenten.xlsx"
+            in downloadlink.get_attribute("href")
         )
 
     def testSearchContainer(self):
@@ -274,7 +282,9 @@ class TestComponentsList(WebDriverSetup):
         This includes the full-text-search and the selection-fields
 
         """
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
@@ -291,7 +301,9 @@ class TestComponentsList(WebDriverSetup):
 
         # check if 2 selection-fields are present and if they contain the
         # data for Category and ComponentClass
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
         self.assertEqual(
             len(selectionFields),
             3,
@@ -302,7 +314,9 @@ class TestComponentsList(WebDriverSetup):
             selectionFields[0]
         )
 
-        categoryOptionsSet = [divDropdown.text for divDropdown in divDropwdownElements]
+        categoryOptionsSet = [
+            divDropdown.text for divDropdown in divDropwdownElements
+        ]
 
         # check if the selection-fields contain the correct data
         categorySet = set(
@@ -353,7 +367,9 @@ class TestComponentsList(WebDriverSetup):
         # check if the selection fields "sorting" and "overview" are present
         sortingDropdownField = selectionFields[2]
         self.scrollElementIntoViewAndClickIt(sortingDropdownField)
-        sortingOptions = componentsListPageObj.getDropdownElements(sortingDropdownField)
+        sortingOptions = componentsListPageObj.getDropdownElements(
+            sortingDropdownField
+        )
 
         # check if the sorting-dropdown contains the correct elements:
         sortingList = [
@@ -377,7 +393,9 @@ class TestComponentsList(WebDriverSetup):
                 break
         self.assertTrue(foundMatch)
 
-        parentOfChosenElement = componentsListPageObj.getParentElement(chosenElement)
+        parentOfChosenElement = componentsListPageObj.getParentElement(
+            chosenElement
+        )
         chosenElement.click()
         nestedDropdownItems = componentsListPageObj.getNestedDropdownElements(
             parentOfChosenElement
@@ -396,7 +414,9 @@ class TestComponentsList(WebDriverSetup):
             chosenElementText, chosenNestedItemText, componentsListPageObj
         )
         # check if the elements are now ordered in the specified way
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
 
         self._setLanguageToEnglish()
 
@@ -419,7 +439,9 @@ class TestComponentsList(WebDriverSetup):
             ]
         )
 
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
 
         # check if the placeholders are correct for english:
         self.assertEqual(selectionFields[0].options[0].text, "Category")
@@ -450,18 +472,30 @@ class TestComponentsList(WebDriverSetup):
         for component in searchResultsComponents:
             self.assertTrue("Volumenstromregler" in component.text)
 
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
         # test the functionality of the category-selection field:
         categorySelectionField = selectionFields[0]
-        self._checkIfSelectFieldsWorks(categorySelectionField, componentsListPageObj)
+        self._checkIfSelectFieldsWorks(
+            categorySelectionField, componentsListPageObj
+        )
 
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
 
-        self._checkIfSelectFieldsWorks(selectionFields[1], componentsListPageObj)
+        self._checkIfSelectFieldsWorks(
+            selectionFields[1], componentsListPageObj
+        )
 
         # test the functionality of the overview selection field:
-        selectionFields = componentsListPageObj.getSelectFieldsInSearchContainer()
-        self._checkIfSelectFieldsWorks(selectionFields[3], componentsListPageObj, True)
+        selectionFields = (
+            componentsListPageObj.getSelectFieldsInSearchContainer()
+        )
+        self._checkIfSelectFieldsWorks(
+            selectionFields[3], componentsListPageObj, True
+        )
 
         # check if 2 radio-buttons are present in the search bar:
         radioButtons = searchBarObj.getRadioButtons()
@@ -475,7 +509,8 @@ class TestComponentsList(WebDriverSetup):
         for radioindex, radioButton in enumerate(radioButtons):
             self.assertTrue(radioButton.is_displayed())
             self.assertTrue(
-                radioButton.get_css_value("border-color") == self.ECOLOGICAL_COLOR
+                radioButton.get_css_value("border-color")
+                == self.ECOLOGICAL_COLOR
             )
             descriptionTextOfRadio = searchBarObj.getNextSibling(radioButton)
             self.assertTrue(descriptionTextOfRadio.tag_name == "span")
@@ -484,7 +519,8 @@ class TestComponentsList(WebDriverSetup):
                 == textOfRadioButtons[self.getLanguage()][radioindex]
             )
             self.assertTrue(
-                descriptionTextOfRadio.get_css_value("color") == self.ECOLOGICAL_COLOR,
+                descriptionTextOfRadio.get_css_value("color")
+                == self.ECOLOGICAL_COLOR,
                 "Color of the SPan element shpuld be ecological color!",
             )
 
@@ -504,16 +540,23 @@ class TestComponentsList(WebDriverSetup):
         radioButtons[0].click()
         for card in cardsList:
             # in each card should be 2 showed containers
-            self.assertEqual(len(searchBarObj.getDescendantsByClass(card, "show")), 2)
+            self.assertEqual(
+                len(searchBarObj.getDescendantsByClass(card, "show")), 2
+            )
 
         # check functionallity of second radio button:
         radioButtons[1].click()
         # check if checkboxes in each card are present
         for card in cardsList:
-            checkboxForCar = searchBarObj.getDescendantsByTagName(card, "input")[0]
-            self.assertTrue(checkboxForCar.get_css_value("visibility") == "visible")
+            checkboxForCar = searchBarObj.getDescendantsByTagName(
+                card, "input"
+            )[0]
             self.assertTrue(
-                checkboxForCar.get_css_value("border-color") == self.ECOLOGICAL_COLOR
+                checkboxForCar.get_css_value("visibility") == "visible"
+            )
+            self.assertTrue(
+                checkboxForCar.get_css_value("border-color")
+                == self.ECOLOGICAL_COLOR
             )
         # check if the start compare and reset button are shown:
 
@@ -525,28 +568,35 @@ class TestComponentsList(WebDriverSetup):
         startCompareDiv = compareSectionObj.getStartComparisonDiv()
         self.assertTrue(startCompareDiv.is_displayed())
         self.assertTrue(
-            startCompareDiv.get_css_value("background-color") == self.ECOLOGICAL_COLOR
+            startCompareDiv.get_css_value("background-color")
+            == self.ECOLOGICAL_COLOR
         )
         self.assertTrue(
-            "Vergleiche" in startCompareDiv.text or "Compare" in startCompareDiv.text
+            "Vergleiche" in startCompareDiv.text
+            or "Compare" in startCompareDiv.text
         )
 
         # check if the Reset button exists
         resetCompareDiv = compareSectionObj.getResetComparisonDiv()
         self.assertTrue(resetCompareDiv.is_displayed())
         self.assertTrue(
-            resetCompareDiv.get_css_value("background-color") == "rgb(255, 255, 255)"
+            resetCompareDiv.get_css_value("background-color")
+            == "rgb(255, 255, 255)"
         )
         self.assertTrue(
-            resetCompareDiv.get_css_value("border-color") == self.ECOLOGICAL_COLOR
+            resetCompareDiv.get_css_value("border-color")
+            == self.ECOLOGICAL_COLOR
         )
         self.assertTrue(
-            "Zurücksetzen" in resetCompareDiv.text or "Reset" in resetCompareDiv.text
+            "Zurücksetzen" in resetCompareDiv.text
+            or "Reset" in resetCompareDiv.text
         )
 
     def testDifferentFiltersInSearch(self):
         """Test if Adding and Removing search-filters works as expected."""
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
@@ -564,12 +614,15 @@ class TestComponentsList(WebDriverSetup):
 
         self.assertTrue("Institut Bauen und Umwelt" in searchFilters[0].text)
         self.assertTrue(
-            searchFilters[0].get_css_value("background-color") == self.ECOLOGICAL_COLOR
+            searchFilters[0].get_css_value("background-color")
+            == self.ECOLOGICAL_COLOR
         )
 
     def testIfCompareSectionIsPresent(self):
         """test if the compare section below the search container is present"""
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
@@ -578,7 +631,9 @@ class TestComponentsList(WebDriverSetup):
         compareDiv = componentsListPageObj.getCompareContainer()
         self.assertIsNotNone(compareDiv)
 
-        compareButtons = componentsListPageObj.getDescendantsByTagName(compareDiv, "h6")
+        compareButtons = componentsListPageObj.getDescendantsByTagName(
+            compareDiv, "h6"
+        )
         activeCompareElements = []
         for element in compareButtons:
             if element.is_displayed():
@@ -603,7 +658,9 @@ class TestComponentsList(WebDriverSetup):
         # check if checkboxes appear in each component div, if the compareButton[0] is clicked:
         components = componentsListPageObj.getAllListElements()
         for component in components:
-            checkbox = componentsListPageObj.getDescendantsByTagName(component, "input")
+            checkbox = componentsListPageObj.getDescendantsByTagName(
+                component, "input"
+            )
             self.assertIsNotNone(checkbox)
             self.assertEqual(checkbox[0].get_attribute("type"), "checkbox")
 
@@ -613,11 +670,15 @@ class TestComponentsList(WebDriverSetup):
         component2 = choice(components)
 
         self.scrollElementIntoViewAndClickIt(
-            componentsListPageObj.getDescendantsByTagName(component1, "input")[0]
+            componentsListPageObj.getDescendantsByTagName(component1, "input")[
+                0
+            ]
         )
 
         self.scrollElementIntoViewAndClickIt(
-            componentsListPageObj.getDescendantsByTagName(component2, "input")[0]
+            componentsListPageObj.getDescendantsByTagName(component2, "input")[
+                0
+            ]
         )
 
         self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
@@ -635,7 +696,9 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(len(compareResults), 2)
 
         compareResultsExplanationContainer = (
-            componentsListPageObj.getDescendantsByTagName(compareResults[0], "a")
+            componentsListPageObj.getDescendantsByTagName(
+                compareResults[0], "a"
+            )
         )
         self.assertEqual(len(compareResultsExplanationContainer), 1)
 
@@ -646,7 +709,9 @@ class TestComponentsList(WebDriverSetup):
         )
 
         # test if link is styled:
-        self.assertTrue(compareResultsExplanationContainer[0].get_attribute("style"))
+        self.assertTrue(
+            compareResultsExplanationContainer[0].get_attribute("style")
+        )
 
         siblingElement = compareSectionObj.getPreviousSiblingOfTagName(
             compareResultsExplanationContainer[0], "img"
@@ -659,7 +724,9 @@ class TestComponentsList(WebDriverSetup):
             == "rgb(143, 222, 151)"
         )
         self.assertTrue(
-            compareResultsExplanationContainer[0].value_of_css_property("font-size")
+            compareResultsExplanationContainer[0].value_of_css_property(
+                "font-size"
+            )
             == "15px"
         )
 
@@ -671,7 +738,9 @@ class TestComponentsList(WebDriverSetup):
         self.assertEqual(len(compareResults), 2)
 
         self.assertEqual(compareResults[0].text, "Ergebnisse")
-        self.assertTrue(compareResults[0].value_of_css_property("font-size") == "22px")
+        self.assertTrue(
+            compareResults[0].value_of_css_property("font-size") == "22px"
+        )
         self.assertTrue(
             compareResults[0].value_of_css_property("padding-top") == "26px"
         )
@@ -695,7 +764,9 @@ class TestComponentsList(WebDriverSetup):
     def testIfComponentListingContainer(self):
         """Test if the component listing container is present"""
 
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
         self.componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
@@ -730,7 +801,9 @@ class TestComponentsList(WebDriverSetup):
         # check if the componentListingContainer contains the correct number of elements:
         for index, component in enumerate(components):
             # check if each component div has a border-ecological div-class:
-            self.assertTrue("border-ecological" in component.get_attribute("class"))
+            self.assertTrue(
+                "border-ecological" in component.get_attribute("class")
+            )
 
             # each component should contain a "Mehr anzeigen" expanding element:
             expandElement = self.componentsListPageObj.getDescendantsByTagName(
@@ -738,7 +811,8 @@ class TestComponentsList(WebDriverSetup):
             )
             self.assertIsNotNone(expandElement[0])
             self.assertTrue(
-                "Zeige mehr" in expandElement[0].get_attribute("data-collapsed-text")
+                "Zeige mehr"
+                in expandElement[0].get_attribute("data-collapsed-text")
             )
             # self._checkIfStrElementFromListIsDisplayed(component,
             #                                            componentClass)
@@ -757,8 +831,10 @@ class TestComponentsList(WebDriverSetup):
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
             self.assertTrue("Lebensdauer (in Jahren)" in component.text)
 
-            collapsedContainer = self.componentsListPageObj.getDescendantsByClass(
-                component, "collapse"
+            collapsedContainer = (
+                self.componentsListPageObj.getDescendantsByClass(
+                    component, "collapse"
+                )
             )
             self.assertEqual(len(collapsedContainer), 3)
 
@@ -782,18 +858,23 @@ class TestComponentsList(WebDriverSetup):
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
             self.assertTrue("Lebensdauer (in Jahren)" in component.text)
 
-            self.assertTrue("Energieverbrauch Nutzung (aktiv; in W)" in component.text)
             self.assertTrue(
-                "Energieverbrauch Nutzung (passiv/ Stand-by; in W):" in component.text
+                "Energieverbrauch Nutzung (aktiv; in W)" in component.text
             )
             self.assertTrue(
-                "Treibhauspotenzial (Herstellung; in kg CO2-e):" in component.text
+                "Energieverbrauch Nutzung (passiv/ Stand-by; in W):"
+                in component.text
+            )
+            self.assertTrue(
+                "Treibhauspotenzial (Herstellung; in kg CO2-e):"
+                in component.text
             )
             self.assertTrue(
                 "Treibhauspotenzial (Nutzung; in kg CO2-e):" in component.text
             )
             self.assertTrue(
-                "Treibhauspotenzial (Entsorgung; in kg CO2-e):" in component.text
+                "Treibhauspotenzial (Entsorgung; in kg CO2-e):"
+                in component.text
             )
 
             # get all elements, which hold numerical values:
@@ -842,13 +923,16 @@ class TestComponentsList(WebDriverSetup):
                 not in component.text
             )
             self.assertTrue(
-                "Treibhauspotenzial (Herstellung; in kg CO2-e):" not in component.text
+                "Treibhauspotenzial (Herstellung; in kg CO2-e):"
+                not in component.text
             )
             self.assertTrue(
-                "Treibhauspotenzial (Nutzung; in kg CO2-e):" not in component.text
+                "Treibhauspotenzial (Nutzung; in kg CO2-e):"
+                not in component.text
             )
             self.assertTrue(
-                "Treibhauspotenzial (Entsorgung; in kg CO2-e):" not in component.text
+                "Treibhauspotenzial (Entsorgung; in kg CO2-e):"
+                not in component.text
             )
 
         # select english language and check if the component-attributes are translated:
@@ -863,24 +947,32 @@ class TestComponentsList(WebDriverSetup):
         )
         self.scrollElementIntoViewAndClickIt(expandElement[0])
 
-        self.assertTrue("Total energy consumption (in W)" in randomComponent.text)
         self.assertTrue(
-            "Total greenhouse gas potential (in kg CO2-e)" in randomComponent.text
+            "Total energy consumption (in W)" in randomComponent.text
+        )
+        self.assertTrue(
+            "Total greenhouse gas potential (in kg CO2-e)"
+            in randomComponent.text
         )
         self.assertTrue("Component weight (in kg):" in randomComponent.text)
         self.assertTrue("Lifespan (in years)" in randomComponent.text)
-        self.assertTrue("Active energy consumption (in W)" in randomComponent.text)
+        self.assertTrue(
+            "Active energy consumption (in W)" in randomComponent.text
+        )
         self.assertTrue(
             "Passive/standby energy consumption (in W)" in randomComponent.text
         )
         self.assertTrue(
-            "Greenhouse gas potential (production; in kg CO2-e)" in randomComponent.text
+            "Greenhouse gas potential (production; in kg CO2-e)"
+            in randomComponent.text
         )
         self.assertTrue(
-            "Greenhouse gas potential (usage; in kg CO2-e)" in randomComponent.text
+            "Greenhouse gas potential (usage; in kg CO2-e)"
+            in randomComponent.text
         )
         self.assertTrue(
-            "Greenhouse gas potential (disposal; in kg CO2-e)" in randomComponent.text
+            "Greenhouse gas potential (disposal; in kg CO2-e)"
+            in randomComponent.text
         )
         self.assertTrue("Source" in randomComponent.text)
         self.assertTrue("Further information" in randomComponent.text)
@@ -907,7 +999,9 @@ class TestComponentsList(WebDriverSetup):
 
     def testPagination(self):
         """Test if the pagination elements are present and working"""
-        self.driver.get(os.environ["siteUnderTest"] + "/component_list/components")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/component_list/components"
+        )
         componentsListPageObj = ComponentListPage(self.driver)
 
         self._removeCookieBanner()
@@ -953,7 +1047,9 @@ class TestComponentsList(WebDriverSetup):
             else:
                 for component in searchResultsComponents:
                     self.assertTrue("Quelle" not in component.text)
-                    self.assertTrue("Weitere Informationen" not in component.text)
+                    self.assertTrue(
+                        "Weitere Informationen" not in component.text
+                    )
             return
         # in each result, the search-string should be present:
         for component in searchResultsComponents:
@@ -967,7 +1063,9 @@ class TestComponentsList(WebDriverSetup):
     ):
         """Check if the ordering is like specified in the nested dropdown"""
 
-        allPresentComponentContainers = componentsListPageObj.getAllListElements()
+        allPresentComponentContainers = (
+            componentsListPageObj.getAllListElements()
+        )
 
         attributesSortedAlphabetically = {
             "de": [
@@ -1004,9 +1102,9 @@ class TestComponentsList(WebDriverSetup):
             for component in allPresentComponentContainers:
                 # check if the elements are sorted alphabetically:
                 extractedAttributeForComponents.append(
-                    componentsListPageObj.getDescendantsByTagName(component, "h3")[
-                        0
-                    ].text
+                    componentsListPageObj.getDescendantsByTagName(
+                        component, "h3"
+                    )[0].text
                 )
         elif (
             clickedAttributeElement == "Komponente"
@@ -1023,8 +1121,10 @@ class TestComponentsList(WebDriverSetup):
             for component in allPresentComponentContainers:
                 # before extracting the information, the container has to be
                 # extended, so that the information is present:
-                collapsedContainerList = componentsListPageObj.getDescendantsByClass(
-                    component, "collapse"
+                collapsedContainerList = (
+                    componentsListPageObj.getDescendantsByClass(
+                        component, "collapse"
+                    )
                 )
                 self.driver.execute_script(
                     "arguments[0].setAttribute('class', 'show')",
@@ -1055,7 +1155,9 @@ class TestComponentsList(WebDriverSetup):
             ):
                 self.assertTrue(self._isSorted(extractedAttributeForComponents))
             else:
-                self.assertTrue(self._isSortedReverse(extractedAttributeForComponents))
+                self.assertTrue(
+                    self._isSortedReverse(extractedAttributeForComponents)
+                )
         # check if the elements are sorted numerically:
         else:
             if (
@@ -1064,7 +1166,9 @@ class TestComponentsList(WebDriverSetup):
             ):
                 self.assertTrue(self._isSorted(extractedAttributeForComponents))
             else:
-                self.assertTrue(self._isSortedReverse(extractedAttributeForComponents))
+                self.assertTrue(
+                    self._isSortedReverse(extractedAttributeForComponents)
+                )
 
     def _findNextFloat(self, text, substring):
         pattern = re.escape(substring) + r"\s*([\d\.]+)"

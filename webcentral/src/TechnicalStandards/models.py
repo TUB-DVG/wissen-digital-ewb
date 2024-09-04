@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 
 class TechnicalStandard(models.Model):
     isNorm = models.BooleanField(default=True)
-    name = models.CharField(max_length=150, help_text="name of the norm", blank=True)
+    name = models.CharField(
+        max_length=150, help_text="name of the norm", blank=True
+    )
     link = models.CharField(max_length=150, help_text="link", blank=True)
 
     class Meta:
@@ -15,8 +17,12 @@ class TechnicalStandard(models.Model):
 
 
 class Norm(TechnicalStandard):
-    title = models.CharField(max_length=250, help_text="title of the norm", blank=True)
-    shortDescription = models.TextField(max_length=600, help_text="short description")
+    title = models.CharField(
+        max_length=250, help_text="title of the norm", blank=True
+    )
+    shortDescription = models.TextField(
+        max_length=600, help_text="short description"
+    )
     source = models.CharField(max_length=100, help_text="source", blank=True)
 
     def __str__(self):
@@ -57,8 +63,12 @@ class Protocol(TechnicalStandard):
         help_text="Implementierte Sicherheitmechanismen",
         blank=True,
     )
-    bandwidth = models.CharField(max_length=150, help_text="Bandbreite", blank=True)
-    frequency = models.CharField(max_length=100, help_text="Frequenz", blank=True)
+    bandwidth = models.CharField(
+        max_length=150, help_text="Bandbreite", blank=True
+    )
+    frequency = models.CharField(
+        max_length=100, help_text="Frequenz", blank=True
+    )
     range = models.CharField(max_length=150, help_text="Reichweite", blank=True)
     numberOfConnectedDevices = models.CharField(
         max_length=5,

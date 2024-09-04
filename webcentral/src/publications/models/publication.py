@@ -81,7 +81,9 @@ class Publication(models.Model):
     publisher = models.CharField(max_length=256, blank=True)
     institution = models.CharField(max_length=256, blank=True)
     volume = models.IntegerField(blank=True, null=True)
-    number = models.IntegerField(blank=True, null=True, verbose_name="Issue number")
+    number = models.IntegerField(
+        blank=True, null=True, verbose_name="Issue number"
+    )
     pages = PagesField(max_length=32, blank=True)
     note = models.CharField(max_length=256, blank=True)
     keywords = models.CharField(
@@ -96,7 +98,9 @@ class Publication(models.Model):
     pdf = models.FileField(
         upload_to="publications/", verbose_name="PDF", blank=True, null=True
     )
-    image = models.ImageField(upload_to="publications/images/", blank=True, null=True)
+    image = models.ImageField(
+        upload_to="publications/images/", blank=True, null=True
+    )
     thumbnail = models.ImageField(
         upload_to="publications/thumbnails/", blank=True, null=True
     )
@@ -140,7 +144,9 @@ class Publication(models.Model):
         self.authors = self.authors.replace(";", ",")
 
         # list of authors
-        self.authors_list = [author.strip() for author in self.authors.split(",")]
+        self.authors_list = [
+            author.strip() for author in self.authors.split(",")
+        ]
 
         # simplified representation of author names
         self.authors_list_simple = []
@@ -185,7 +191,9 @@ class Publication(models.Model):
                 continue
 
             names = author.split(" ")
-            names = [names[-1]] + names[:-1]  # Move the last name to the beginning
+            names = [names[-1]] + names[
+                :-1
+            ]  # Move the last name to the beginning
 
             # check if last string contains initials
             if (
@@ -225,10 +233,14 @@ class Publication(models.Model):
                 # create simplified/normalized representation of author name
                 if len(names) > 1:
                     for name in names[1].split("-"):
-                        name_simple = self.simplify_name(" ".join([name, names[0]]))
+                        name_simple = self.simplify_name(
+                            " ".join([name, names[0]])
+                        )
                         self.authors_list_simple.append(name_simple)
                 else:
-                    self.authors_list_simple.append(self.simplify_name(names[0]))
+                    self.authors_list_simple.append(
+                        self.simplify_name(names[0])
+                    )
 
                 # number of prepositions
                 num_prepositions = 0
@@ -277,7 +289,8 @@ class Publication(models.Model):
 
     def authors_escaped(self):
         return [
-            (author, author.lower().replace(" ", "+")) for author in self.authors_list
+            (author, author.lower().replace(" ", "+"))
+            for author in self.authors_list
         ]
 
     def key(self):
@@ -373,7 +386,9 @@ class Publication(models.Model):
                 contextObj.append("rft.issue={0}".format(self.number))
 
         if self.month:
-            contextObj.append("rft.date={0}-{1}-1".format(self.year, self.month))
+            contextObj.append(
+                "rft.date={0}-{1}-1".format(self.year, self.month)
+            )
         else:
             contextObj.append("rft.date={0}".format(self.year))
 

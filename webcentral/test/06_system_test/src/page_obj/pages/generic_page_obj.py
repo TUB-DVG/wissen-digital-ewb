@@ -47,14 +47,18 @@ class GenericPageObject:
     def getPreviousSiblingOfTagName(self, element, tagName):
         """Returns the previous sibling of the given element"""
         try:
-            return element.find_element(By.XPATH, "preceding-sibling::" + tagName)
+            return element.find_element(
+                By.XPATH, "preceding-sibling::" + tagName
+            )
         except:
             return None
 
     def getFollowingSiblingOfTagName(self, element, tagName):
         """Returns the following sibling of the given element"""
         try:
-            return element.find_element(By.XPATH, "following-sibling::" + tagName)
+            return element.find_element(
+                By.XPATH, "following-sibling::" + tagName
+            )
         except:
             return None
 
@@ -101,4 +105,6 @@ class GenericPageObject:
 
     def getBoxes(self):
         """Return boxes from the overview-page."""
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'box ')]")
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'box ')]"
+        )

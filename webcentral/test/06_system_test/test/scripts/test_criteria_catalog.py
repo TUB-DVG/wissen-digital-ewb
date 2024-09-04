@@ -31,7 +31,9 @@ class TestCriteriaCatalog(WebDriverSetup):
         rootDivElements = detailPageObj.getRootLayerElements()
 
         for divElement in rootDivElements:
-            imgElementsInDiv = detailPageObj.getDescendantsByTagName(divElement, "img")
+            imgElementsInDiv = detailPageObj.getDescendantsByTagName(
+                divElement, "img"
+            )
             self.assertEqual(len(imgElementsInDiv), 3)
             self.assertTrue(
                 imgElementsInDiv[1].text == "",
@@ -41,7 +43,8 @@ class TestCriteriaCatalog(WebDriverSetup):
                 imgElementsInDiv[1].value_of_css_property("float") == "right"
             )
             self.assertTrue(
-                imgElementsInDiv[1].value_of_css_property("margin-top") == "20px"
+                imgElementsInDiv[1].value_of_css_property("margin-top")
+                == "20px"
             )
 
             # when the image is clicked, a grey box to the left of the image should be displayed:
@@ -94,7 +97,8 @@ class TestCriteriaCatalog(WebDriverSetup):
         literatureButton = criteriaCatalogObj.getLiteratureElement()
 
         self.assertTrue(
-            literatureButton.value_of_css_property("color") == "rgb(134, 129, 129)",
+            literatureButton.value_of_css_property("color")
+            == "rgb(134, 129, 129)",
             "Literature element should be shown with grey font color",
         )
 
@@ -119,7 +123,9 @@ class TestCriteriaCatalog(WebDriverSetup):
         searchField.send_keys(Keys.RETURN)
 
         # test if the accordion is expanded:
-        detailsContentContainer = criteriaCatalogDetails.getDetailsContentContainer()
+        detailsContentContainer = (
+            criteriaCatalogDetails.getDetailsContentContainer()
+        )
         buttonElements = criteriaCatalogDetails.getAllButtonElements(
             detailsContentContainer
         )
@@ -142,7 +148,10 @@ class TestCriteriaCatalog(WebDriverSetup):
         collapseButton = criteriaCatalogDetails.getCollapseEverythingButton()
         self.scrollElementIntoViewAndClickIt(collapseButton)
         for button in buttonElements:
-            if button.value_of_css_property("background-color") == "rgb(255, 255, 0)":
+            if (
+                button.value_of_css_property("background-color")
+                == "rgb(255, 255, 0)"
+            ):
                 raise AssertionError(
                     "The background-color of the buttons is not resetted."
                 )
@@ -159,11 +168,14 @@ class TestCriteriaCatalog(WebDriverSetup):
                 rootElement, "img"
             )
             self.assertEqual(len(imgDescandants), 3)
-            self.assertTrue("info_icon.svg" in imgDescandants[1].get_attribute("src"))
+            self.assertTrue(
+                "info_icon.svg" in imgDescandants[1].get_attribute("src")
+            )
             self.assertTrue(imgDescandants[1].is_displayed())
 
             self.assertTrue(
-                "info_icon_selected.svg" in imgDescandants[2].get_attribute("src")
+                "info_icon_selected.svg"
+                in imgDescandants[2].get_attribute("src")
             )
             self.assertTrue(
                 not imgDescandants[2].is_displayed(),

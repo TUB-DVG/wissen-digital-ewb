@@ -49,7 +49,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "link",
-                    models.CharField(blank=True, help_text="link", max_length=150),
+                    models.CharField(
+                        blank=True, help_text="link", max_length=150
+                    ),
                 ),
                 (
                     "title",
@@ -79,7 +81,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "shortDescription",
-                    models.TextField(help_text="short description", max_length=600),
+                    models.TextField(
+                        help_text="short description", max_length=600
+                    ),
                 ),
                 (
                     "shortDescription_de",
@@ -95,7 +99,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "source",
-                    models.CharField(blank=True, help_text="source", max_length=100),
+                    models.CharField(
+                        blank=True, help_text="source", max_length=100
+                    ),
                 ),
                 (
                     "source_de",
@@ -141,7 +147,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "link",
-                    models.CharField(blank=True, help_text="link", max_length=150),
+                    models.CharField(
+                        blank=True, help_text="link", max_length=150
+                    ),
                 ),
                 (
                     "communicationMediumCategory",
@@ -333,7 +341,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "frequency",
-                    models.CharField(blank=True, help_text="Frequenz", max_length=100),
+                    models.CharField(
+                        blank=True, help_text="Frequenz", max_length=100
+                    ),
                 ),
                 (
                     "frequency_de",

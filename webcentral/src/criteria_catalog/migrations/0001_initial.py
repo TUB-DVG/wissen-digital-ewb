@@ -84,7 +84,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "tag",
-                    models.ManyToManyField(blank=True, to="criteria_catalog.tag"),
+                    models.ManyToManyField(
+                        blank=True, to="criteria_catalog.tag"
+                    ),
                 ),
             ],
         ),

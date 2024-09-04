@@ -64,7 +64,9 @@ class DataImportApp(DataImport):
         categoryShortDescription = row[
             header.index("Kategorie_Kurzbeschreibung_Teaser")
         ]
-        categoryLongDescription = row[header.index("Kategorie_Kurzbeschreibung_Lang")]
+        categoryLongDescription = row[
+            header.index("Kategorie_Kurzbeschreibung_Lang")
+        ]
         example1 = row[header.index("Beispiel_1")]
         example2 = row[header.index("Beispiel_2")]
         example1Heading = row[header.index("Beispiel_1_Überschrift")]

@@ -3,276 +3,286 @@
 {% block title %}{{ tool.name }}{% endblock %}
 {% load static %}
 {% block content %}
-    <!-- Page intro START -->
-    <section class="py-0 py-sm-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Title -->
-                    <h2>{{ tool.name }}</h2>
-                    <!-- Content -->
-                    <ul class="list-inline mb-0">
-                        {% if tool.lastUpdate %}
-                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                                <i class="{{ lastUpdateClass }} me-2">
-                                </i>
-                                {{ tool.lastUpdate }}
-                            </li>
-                        {% endif %}
-                        {% if tool.licence %}
-                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                                <i class="fas fa-bars fa-book-open me-2">
-                                </i>{{ tool.licence }}
-                            </li>
-                        {% endif %}
-                        {% if lifeCyclePhases %}
-                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                                <i class="fas fa-bars fa-history me-2">
-                                </i>
-                                {{ lifeCyclePhases }}
-                            </li>
-                        {% endif %}
-                        <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                            <i class="fas fa-user-alt me-2"></i>{{ targetGroups }}
-                        </li>
-                        <li class="list-inline-item h6 mb-0">
-                            <i class="fas fa-bars me-2">
-                            </i>{{ usages }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            {% include "common/back-button.html" %}
+  <!-- Page intro START -->
+  <section class="py-0 py-sm-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Title -->
+          <h2>{{ tool.name }}</h2>
+          <!-- Content -->
+          <ul class="list-inline mb-0">
+            {% if tool.lastUpdate %}
+              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                <i class="{{ lastUpdateClass }} me-2">
+                </i>
+                {{ tool.lastUpdate }}
+              </li>
+            {% endif %}
+            {% if tool.licence %}
+              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                <i class="fas fa-bars fa-book-open me-2">
+                </i>{{ tool.licence }}
+              </li>
+            {% endif %}
+            {% if lifeCyclePhases %}
+              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                <i class="fas fa-bars fa-history me-2">
+                </i>
+                {{ lifeCyclePhases }}
+              </li>
+            {% endif %}
+            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+              <i class="fas fa-user-alt me-2"></i>{{ targetGroups }}
+            </li>
+            <li class="list-inline-item h6 mb-0">
+              <i class="fas fa-bars me-2">
+              </i>{{ usages }}
+            </li>
+          </ul>
         </div>
-    </section>
-    <!-- Page intro END -->
-    <!-- Page content START -->
-    <section class="pb-0 pt-4 py-lg-5">
-        <div class="container {{ focusBorder }}-cards">
-            <div class="row">
-                <!-- Main content START -->
-                <div class="col-lg-8">
-                    <div class="card border-{{ focusBorder }} p-0">
-                        <div class="tab-content card-body p-4 detail-card-body">
-                            <!-- tool detail START -->
-                            <div class="tab-pane container active" id="course-pills-1">
-                                {% if tool.name %}
-                                    <h5 class="mb-3">{% translate "Was ist" %} {{ tool.name }}?</h5>
-                                    <p class="mb-0">{{ tool.shortDescription }}</p>
-                                {% endif %}
-                                {% if applicationAreas %}
-                                    <h5 class="mt-4">{% translate "Einsatzbereich" %}</h5>
-                                    <p class="mb-0">{{ applicationAreas }}</p>
-                                {% endif %}
-                                {% if userInterfaces %}
-                                    <h5 class="mt-4">{% translate "Nutzerschnittstelle" %}</h5>
-                                    <p class="mb-0">{{ userInterfaces }}</p>
-                                    {% if tool.userInterfaceNotes %}<p class="mb-0">{{ tool.userInterfaceNotes }}</p>{% endif %}
-                                {% endif %}
-                                {% if targetGroups %}
-                                    <h5 class="mt-4">{% translate "Zielgruppe" %}</h5>
-                                    <p class="mb-0">{{ targetGroups }}</p>
-                                {% endif %}
-                                {% if accessibilities %}
-                                    <h5 class="mt-4">{% translate "Zugänglichkeit" %}</h5>
-                                    <p class="mb-0">{{ accessibilities }}</p>
-                                {% endif %}
-                                {% if tool.licence %}
-                                    <h5 class="mt-4">{% translate "Lizenz" %}</h5>
-                                    <p class="mb-0">{{ tool.licence }}</p>
-                                    {% if tool.licenceNotes %}<p class="mb-0">{{ tool.licenceNotes }}</p>{% endif %}
-                                {% endif %}
-                                {% if tool.furtherInformation %}
-                                    <h5 class="mt-4">{% translate "weitere Informationen" %}</h5>
-                                    <p class="mb-0">{{ tool.furtherInformation }}</p>
-                                {% endif %}
-                                {% if tool.alternatives %}
-                                    <h5 class="mt-4">{% translate "Alternativen" %}</h5>
-                                    <p class="mb-0">{{ tool.alternatives }}</p>
-                                {% endif %}
-                                {% if specificApplications %}
-                                    <h5 class="mt-4">{% translate "konkrete Anwendungsfälle" %}</h5>
-                                    <p class="mb-0">
-                                        {% for referenceNumber_id in specificApplications %}
-                                            <a href="https://ewb.innoecos.com/Group/{{ referenceNumber_id }}/Informationen/Start/Blog"
-                                               target="_blank">{{ referenceNumber_id }}
-                                                <br />
-                                            </a>
-                                        {% endfor %}
-                                    </p>
-                                {% endif %}
-                                {% if tool.provider %}
-                                    <h5 class="mt-4">{% translate "Entwickler/ Maintainer" %}</h5>
-                                    <p class="mb-0">{{ tool.provider }}</p>
-                                {% endif %}
-                                {% if classifications %}
-                                    <h5 class="mt-4">{% translate "generelle Art des Werkzeugs" %}</h5>
-                                    <p class="mb-0">{{ classifications }}</p>
-                                {% endif %}
-                                {% if focus %}
-                                    <h5 class="mt-4">{% translate "Fokus der Anwendung" %}</h5>
-                                    <p class="mb-0">{{ focus }}</p>
-                                {% endif %}
-                                {% if tool.released %}
-                                    <h5 class="mt-4">{% translate "Ist das Tool veröffentlicht?" %}</h5>
-                                    {% if tool.released == True %}
-                                        <p class="mb-0">{% translate "Ja" %}</p>
-                                        {% if tool.yearOfRelease %}
-                                            <h5 class="mt-4">{% translate "Veröffentlichungsjahr" %}</h5>
-                                            <p class="mb-0">{{ tool.yearOfRelease }}</p>
-                                        {% endif %}
-                                    {% else %}
-                                        <p class="mb-0">Nein</p>
-                                        {% if tool.releasedPlanned %}
-                                            <h5 class="mt-4">{% translate "Ist eine Veröffentlichung geplant?" %}</h5>
-                                            {% if tool.releasedPlanned == True %}
-                                                <p class="mb-0">Ja</p>
-                                            {% else %}
-                                                <p class="mb-0">Nein</p>
-                                            {% endif %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endif %}
-                                {% if resources %}
-                                    <h5 class="mt-4">{% translate "Informationsquellen" %}</h5>
-                                    <p class="mb-0">
-                                        {% for link in resources %}
-                                            <a href="{{ link }}" target="_blank">{{ link }}</a>
-                                        </p>
-                                    {% endfor %}
-                                {% endif %}
-                                {% if tool.developmentState %}
-                                    <h5 class="mt-4">
-                                        {% translate "Entwicklungsstand" %}
-                                        - 1 : pre-Alpha
-                                        - 2 : Alpha
-                                        - 3 : Beta
-                                        - 4 : Release Canditate
-                                        - 5 : Release
-                                    </h5>
-                                    <p class="mb-0">{{ tool.developmentState }}</p>
-                                {% endif %}
-                                {% if tool.programmingLanguages %}
-                                    <h5 class="mt-4">{% translate "Programmiersprache (Umsetzung)" %}</h5>
-                                    <p class="mb-0">{{ tool.programmingLanguages }}</p>
-                                {% endif %}
-                                {% if tool.frameworksLibraries %}
-                                    <h5 class="mt-4">{% translate "Wichtigste Bibliotheken (bei Umsetzung genutzt)" %}</h5>
-                                    <p class="mb-0">{{ tool.frameworksLibraries }}</p>
-                                {% endif %}
-                                {% if tool.databaseSystem %}
-                                    <h5 class="mt-4">{% translate "Datenbanksystem" %}</h5>
-                                    <p class="mb-0">{{ tool.databaseSystem }}</p>
-                                {% endif %}
-                                {% if scales %}
-                                    <h5 class="mt-4">{% translate "Räumliche Größenordnung der Anwendungsfälle" %}</h5>
-                                    <p class="mb-0">{{ scales }}</p>
-                                {% endif %}
-                                {% if technicalStandardsNorms or technicalStandardsProtocols %}
-                                    <h5 class="mt-4">{% translate "Normen/ Standard (Basis/Orientierung des Tools)" %}</h5>
-                                    <p class="mb-0">{{ technicalStandardsNorms }}</p>
-                                    <p class="mb-0">{{ technicalStandardsProtocols }}</p>
-                                {% endif %}
-                            </div>
-                            <!-- tool detail END -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Main content END -->
-                <!-- Right sidebar START -->
-                <div class="col-lg-4">
-                    <div class="row mb-5 mb-lg-0">
-                        <div class="col-md-6 col-lg-12">
-                            <!-- Image Tool START -->
-                            <div class="card border-{{ focusBorder }} p-2 mb-4 z-index-9">
-                                <div class="overflow-hidden text-center">
-                                    {% if tool.image %}
-                                        <img src=" {{ tool.image.url }}"
-                                             class=""
-                                             style="max-height: 150px"
-                                             alt="tool image" />
-                                    {% else %}
-                                        <img src=" {% static 'img/Default.webp' %}"
-                                             class=""
-                                             style="max-height: 150px"
-                                             alt="tool image (else)" />
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <!-- Image Tool END -->
-                            <!-- "Kurzinformationen" START -->
-                            <div class="card card-body border-{{ focusBorder }} p-4 mb-4">
-                                <!-- Title -->
-                                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
-                                <ul class="list-group border-0">
-                                    {% if tool.lastUpdate %}
-                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                            <span class="h6 fw-light mb-0">
-                                                <i class="{{ lastUpdateClass }} fa-fw">
-                                                </i>
-                                                {{ lastUpdateLabel }}
-                                            </span>
-                                            <span>{{ tool.lastUpdate }}</span>
-                                        </li>
-                                    {% endif %}
-                                    {% if tool.licence %}
-                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                            <span class="h6 fw-light mb-0">
-                                                <i class="fas fa-fw fa-book-open"></i>
-                                                {% translate "Lizenz" %}
-                                            </span>
-                                            <span>{{ tool.licence }}</span>
-                                        </li>
-                                    {% endif %}
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                        <span class="h6 fw-light mb-0">
-                                            <i class="fas fa-fw fa-history"></i>
-                                            {% translate "Lebenszyklusphase" %}
-                                        </span>
-                                        <span>{{ lifeCyclePhases }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- "Kurzinformationen" END -->
-                            <!-- Tags START -->
-                            <div class="card card-body border-{{ focusBorder }} p-4">
-                                <h4 class="mb-3">Tags</h4>
-                                <ul class="list-inline mb-0">
-                                    {% for usage in tool.usage.all %}
-                                        <li class="list-inline-item">
-                                            <a class="btn btn-outline-light btn-sm break-words"
-                                               href="/tool_list/?searched=&u={{ usage.usage }}&l=&lcp=">
-                                                {{ usage.usage }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                    {% if tool.licence %}
-                                        <li class="list-inline-item">
-                                            <a class="btn btn-outline-light btn-sm break-words"
-                                               href="/tool_list/?searched=&u=&l={{ tool.licence }}&lcp=">
-                                                {{ tool.licence }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                    {% for lifeCyclePhase in tool.lifeCyclePhase.all %}
-                                        <li class="list-inline-item">
-                                            <a class="btn btn-outline-light btn-sm break-words"
-                                               href="/tool_list/?searched=&u=&l=&lcp={{ lifeCyclePhase.lifeCyclePhase }}">
-                                                {{ lifeCyclePhase.lifeCyclePhase }}
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <!-- Tags END -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Right sidebar END -->
+      </div>
+      {% include "common/back-button.html" %}
+    </div>
+  </section>
+  <!-- Page intro END -->
+  <!-- Page content START -->
+  <section class="pb-0 pt-4 py-lg-5">
+    <div class="container {{ focusBorder }}-cards">
+      <div class="row">
+        <!-- Main content START -->
+        <div class="col-lg-8">
+          <div class="card border-{{ focusBorder }} p-0">
+            <div class="tab-content card-body p-4 detail-card-body">
+              <!-- tool detail START -->
+              <div class="tab-pane container active" id="course-pills-1">
+                {% if tool.name %}
+                  <h5 class="mb-3">{% translate "Was ist" %} {{ tool.name }}?</h5>
+                  <p class="mb-0">{{ tool.shortDescription }}</p>
+                {% endif %}
+                {% if applicationAreas %}
+                  <h5 class="mt-4">{% translate "Einsatzbereich" %}</h5>
+                  <p class="mb-0">{{ applicationAreas }}</p>
+                {% endif %}
+                {% if userInterfaces %}
+                  <h5 class="mt-4">{% translate "Nutzerschnittstelle" %}</h5>
+                  <p class="mb-0">{{ userInterfaces }}</p>
+                  {% if tool.userInterfaceNotes %}
+                    <p class="mb-0">{{ tool.userInterfaceNotes }}</p>
+                  {% endif %}
+                {% endif %}
+                {% if targetGroups %}
+                  <h5 class="mt-4">{% translate "Zielgruppe" %}</h5>
+                  <p class="mb-0">{{ targetGroups }}</p>
+                {% endif %}
+                {% if accessibilities %}
+                  <h5 class="mt-4">{% translate "Zugänglichkeit" %}</h5>
+                  <p class="mb-0">{{ accessibilities }}</p>
+                {% endif %}
+                {% if tool.licence %}
+                  <h5 class="mt-4">{% translate "Lizenz" %}</h5>
+                  <p class="mb-0">{{ tool.licence }}</p>
+                  {% if tool.licenceNotes %}
+                    <p class="mb-0">{{ tool.licenceNotes }}</p>
+                  {% endif %}
+                {% endif %}
+                {% if tool.furtherInformation %}
+                  <h5 class="mt-4">{% translate "weitere Informationen" %}</h5>
+                  <p class="mb-0">{{ tool.furtherInformation }}</p>
+                {% endif %}
+                {% if tool.alternatives %}
+                  <h5 class="mt-4">{% translate "Alternativen" %}</h5>
+                  <p class="mb-0">{{ tool.alternatives }}</p>
+                {% endif %}
+                {% if specificApplications %}
+                  <h5 class="mt-4">{% translate "konkrete Anwendungsfälle" %}</h5>
+                  <p class="mb-0">
+                    {% for referenceNumber_id in specificApplications %}
+                      <a href="https://ewb.innoecos.com/Group/{{ referenceNumber_id }}/Informationen/Start/Blog"
+                         target="_blank">{{ referenceNumber_id }}
+                        <br />
+                      </a>
+                    {% endfor %}
+                  </p>
+                {% endif %}
+                {% if tool.provider %}
+                  <h5 class="mt-4">{% translate "Entwickler/ Maintainer" %}</h5>
+                  <p class="mb-0">{{ tool.provider }}</p>
+                {% endif %}
+                {% if classifications %}
+                  <h5 class="mt-4">{% translate "generelle Art des Werkzeugs" %}</h5>
+                  <p class="mb-0">{{ classifications }}</p>
+                {% endif %}
+                {% if focus %}
+                  <h5 class="mt-4">{% translate "Fokus der Anwendung" %}</h5>
+                  <p class="mb-0">{{ focus }}</p>
+                {% endif %}
+                {% if tool.released %}
+                  <h5 class="mt-4">{% translate "Ist das Tool veröffentlicht?" %}</h5>
+                  {% if tool.released == True %}
+                    <p class="mb-0">{% translate "Ja" %}</p>
+                    {% if tool.yearOfRelease %}
+                      <h5 class="mt-4">{% translate "Veröffentlichungsjahr" %}</h5>
+                      <p class="mb-0">{{ tool.yearOfRelease }}</p>
+                    {% endif %}
+                  {% else %}
+                    <p class="mb-0">Nein</p>
+                    {% if tool.releasedPlanned %}
+                      <h5 class="mt-4">{% translate "Ist eine Veröffentlichung geplant?" %}</h5>
+                      {% if tool.releasedPlanned == True %}
+                        <p class="mb-0">Ja</p>
+                      {% else %}
+                        <p class="mb-0">Nein</p>
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+                {% if resources %}
+                  <h5 class="mt-4">{% translate "Informationsquellen" %}</h5>
+                  <p class="mb-0">
+                    {% for link in resources %}
+                      <a href="{{ link }}" target="_blank">{{ link }}</a>
+                    </p>
+                  {% endfor %}
+                {% endif %}
+                {% if tool.developmentState %}
+                  <h5 class="mt-4">
+                    {% translate "Entwicklungsstand" %}
+                    - 1 : pre-Alpha
+                    - 2 : Alpha
+                    - 3 : Beta
+                    - 4 : Release Canditate
+                    - 5 : Release
+                  </h5>
+                  <p class="mb-0">{{ tool.developmentState }}</p>
+                {% endif %}
+                {% if tool.programmingLanguages %}
+                  <h5 class="mt-4">{% translate "Programmiersprache (Umsetzung)" %}</h5>
+                  <p class="mb-0">{{ tool.programmingLanguages }}</p>
+                {% endif %}
+                {% if tool.frameworksLibraries %}
+                  <h5 class="mt-4">
+                    {% translate "Wichtigste Bibliotheken (bei Umsetzung genutzt)" %}
+                  </h5>
+                  <p class="mb-0">{{ tool.frameworksLibraries }}</p>
+                {% endif %}
+                {% if tool.databaseSystem %}
+                  <h5 class="mt-4">{% translate "Datenbanksystem" %}</h5>
+                  <p class="mb-0">{{ tool.databaseSystem }}</p>
+                {% endif %}
+                {% if scales %}
+                  <h5 class="mt-4">
+                    {% translate "Räumliche Größenordnung der Anwendungsfälle" %}
+                  </h5>
+                  <p class="mb-0">{{ scales }}</p>
+                {% endif %}
+                {% if technicalStandardsNorms or technicalStandardsProtocols %}
+                  <h5 class="mt-4">
+                    {% translate "Normen/ Standard (Basis/Orientierung des Tools)" %}
+                  </h5>
+                  <p class="mb-0">{{ technicalStandardsNorms }}</p>
+                  <p class="mb-0">{{ technicalStandardsProtocols }}</p>
+                {% endif %}
+              </div>
+              <!-- tool detail END -->
             </div>
-            <!-- Row End -->
+          </div>
         </div>
-    </section>
-    <!-- =======================
+        <!-- Main content END -->
+        <!-- Right sidebar START -->
+        <div class="col-lg-4">
+          <div class="row mb-5 mb-lg-0">
+            <div class="col-md-6 col-lg-12">
+              <!-- Image Tool START -->
+              <div class="card border-{{ focusBorder }} p-2 mb-4 z-index-9">
+                <div class="overflow-hidden text-center">
+                  {% if tool.image %}
+                    <img src=" {{ tool.image.url }}"
+                         class=""
+                         style="max-height: 150px"
+                         alt="tool image" />
+                  {% else %}
+                    <img src=" {% static 'img/Default.webp' %}"
+                         class=""
+                         style="max-height: 150px"
+                         alt="tool image (else)" />
+                  {% endif %}
+                </div>
+              </div>
+              <!-- Image Tool END -->
+              <!-- "Kurzinformationen" START -->
+              <div class="card card-body border-{{ focusBorder }} p-4 mb-4">
+                <!-- Title -->
+                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
+                <ul class="list-group border-0">
+                  {% if tool.lastUpdate %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                      <span class="h6 fw-light mb-0">
+                        <i class="{{ lastUpdateClass }} fa-fw">
+                        </i>
+                        {{ lastUpdateLabel }}
+                      </span>
+                      <span>{{ tool.lastUpdate }}</span>
+                    </li>
+                  {% endif %}
+                  {% if tool.licence %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                      <span class="h6 fw-light mb-0">
+                        <i class="fas fa-fw fa-book-open"></i>
+                        {% translate "Lizenz" %}
+                      </span>
+                      <span>{{ tool.licence }}</span>
+                    </li>
+                  {% endif %}
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                    <span class="h6 fw-light mb-0">
+                      <i class="fas fa-fw fa-history"></i>
+                      {% translate "Lebenszyklusphase" %}
+                    </span>
+                    <span>{{ lifeCyclePhases }}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- "Kurzinformationen" END -->
+              <!-- Tags START -->
+              <div class="card card-body border-{{ focusBorder }} p-4">
+                <h4 class="mb-3">Tags</h4>
+                <ul class="list-inline mb-0">
+                  {% for usage in tool.usage.all %}
+                    <li class="list-inline-item">
+                      <a class="btn btn-outline-light btn-sm break-words"
+                         href="/tool_list/?searched=&u={{ usage.usage }}&l=&lcp=">
+                        {{ usage.usage }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                  {% if tool.licence %}
+                    <li class="list-inline-item">
+                      <a class="btn btn-outline-light btn-sm break-words"
+                         href="/tool_list/?searched=&u=&l={{ tool.licence }}&lcp=">
+                        {{ tool.licence }}
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% for lifeCyclePhase in tool.lifeCyclePhase.all %}
+                    <li class="list-inline-item">
+                      <a class="btn btn-outline-light btn-sm break-words"
+                         href="/tool_list/?searched=&u=&l=&lcp={{ lifeCyclePhase.lifeCyclePhase }}">
+                        {{ lifeCyclePhase.lifeCyclePhase }}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- Tags END -->
+            </div>
+          </div>
+        </div>
+        <!-- Right sidebar END -->
+      </div>
+      <!-- Row End -->
+    </div>
+  </section>
+  <!-- =======================
 Page content END -->
 {% endblock %}

@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-    {% translate "Kriterienkatalog - Übersicht" %}
+  {% translate "Kriterienkatalog - Übersicht" %}
 {% endblock %}
 {% load static %}
 {% block content %}
-    <!-- =======================
+  <!-- =======================
 Page Banner START -->
-    <section class="py-4">
-        <div class="content container">
-            {% include "partials/descriptionContainer.html" %}
-            <p>
-                <a href="{% static 'downloads/criteria_catalog.xlsx' %}"
-                   download
-                   style="color: black;
-                          text-decoration: underline;
-                          font-size: 16px">{% translate "Downloade den gesamten Kriterienkatalog als Exceldatei" %}</a>
-                <div class="row">
-                    <h2 class="criteriaCatalogHeading"
-                        style="color: #E4D75C;
-                               font-size: 30px">
-                        {% blocktranslate %}Für welchen Zweck möchtest du Daten verarbeiten?{% endblocktranslate %}
-                    </h2>
-                </div>
-                <!-- Block START -->
-                <div class="boxes row" id="container-start-focus">
-                    {% for boxObject in boxes %}
-                        {% include boxObject.pathToTemplate with boxObject=boxObject.objectToRender %}
-                    {% endfor %}
-                </div>
-            {% endblock %}
+  <section class="py-4">
+    <div class="content container">
+      {% include "partials/descriptionContainer.html" %}
+      <p>
+        <a href="{% static 'downloads/criteria_catalog.xlsx' %}"
+           download
+           style="color: black;
+                  text-decoration: underline;
+                  font-size: 16px">{% translate "Downloade den gesamten Kriterienkatalog als Exceldatei" %}</a>
+        <div class="row">
+          <h2 class="criteriaCatalogHeading"
+              style="color: #E4D75C;
+                     font-size: 30px">
+            {% blocktranslate %}Für welchen Zweck möchtest du Daten verarbeiten?{% endblocktranslate %}
+          </h2>
+        </div>
+        <!-- Block START -->
+        <div class="boxes row" id="container-start-focus">
+          {% for boxObject in boxes %}
+            {% include boxObject.pathToTemplate with boxObject=boxObject.objectToRender %}
+          {% endfor %}
+        </div>
+      {% endblock %}

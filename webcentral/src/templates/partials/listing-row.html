@@ -16,60 +16,66 @@
     }
 </style>
 <div class="{{ focusName }}-cards ">
-    {% for object in page.object_list %}
-        <div class="row border-{{ focusName }} collapseListingRow ListElement"
-             style="margin-top: 24px">
-            <div class="col-6 p-3" id="{{ object.id }}">
-                {% for element in elementsFirstColumn %}
-                    {% if forloop.counter == 4 %}
-                        <div class="{{ listElementsShowOrCollapse }}"
-                             id="collapseComponent{{ forloop.parentloop.counter }}">
-                        {% endif %}
-                        {% if element.description != "" %}<span class="listingRowAttributeNames">{{ element.description }}:</span>{% endif %}
-                        {% if forloop.first %}
-                            <div class="headingInListingContainer1">
-                                <input type="checkbox" style="display: none;" class="comparisonInputTools" />
-                                {{ object|get_attribute:element.objectReference }}
-                            </div>
-                        {% elif forloop.counter == 2 %}
-                            <p class="subHeading">{{ object|get_attribute:element.objectReference }}</p>
-                        {% else %}
-                            <p>{{ object|get_attribute:element.objectReference }}</p>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-6 listing-right">
-                {% for element in elementsSecondColumn %}
-                    {% if forloop.counter == 5 %}
-                        <div class="{{ listElementsShowOrCollapse }}"
-                             id="collapseComponent{{ forloop.parentloop.counter }}">
-                        {% endif %}
-                        <p>
-                            {% if element.description != "" %}<span class="listingRowAttributeNames">{{ element.description }}:</span>{% endif %}
-                            <span class="listingRowAttributeValues">
-                                {% if object|get_attribute:element.objectReference %}
-                                    {{ object|get_attribute:element.objectReference }}
-                                {% else %}
-                                    n/a
-                                {% endif %}
-                            </span>
-                        </p>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-lg-12 lead mt-3">
-                <a role="button"
-                   class="collapsed text-truncation-btn"
-                   data-toggle="collapse"
-                   href="#collapseComponent{{ forloop.counter }}"
-                   aria-expanded="false"
-                   data-target="#collapseComponent{{ forloop.counter }}"
-                   aria-controls="collapseComponent{{ forloop.counter }}"
-                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-            </div>
+  {% for object in page.object_list %}
+    <div class="row border-{{ focusName }} collapseListingRow ListElement"
+         style="margin-top: 24px">
+      <div class="col-6 p-3" id="{{ object.id }}">
+        {% for element in elementsFirstColumn %}
+          {% if forloop.counter == 4 %}
+            <div class="{{ listElementsShowOrCollapse }}"
+                 id="collapseComponent{{ forloop.parentloop.counter }}">
+            {% endif %}
+            {% if element.description != "" %}
+              <span class="listingRowAttributeNames">{{ element.description }}:</span>
+            {% endif %}
+            {% if forloop.first %}
+              <div class="headingInListingContainer1">
+                <input type="checkbox" style="display: none;" class="comparisonInputTools" />
+                {{ object|get_attribute:element.objectReference }}
+              </div>
+            {% elif forloop.counter == 2 %}
+              <p class="subHeading">{{ object|get_attribute:element.objectReference }}</p>
+            {% else %}
+              <p>{{ object|get_attribute:element.objectReference }}</p>
+            {% endif %}
+          {% endfor %}
         </div>
-    {% endfor %}
+      </div>
+      <div class="col-6 listing-right">
+        {% for element in elementsSecondColumn %}
+          {% if forloop.counter == 5 %}
+            <div class="{{ listElementsShowOrCollapse }}"
+                 id="collapseComponent{{ forloop.parentloop.counter }}">
+            {% endif %}
+            <p>
+              {% if element.description != "" %}
+                <span class="listingRowAttributeNames">{{ element.description }}:</span>
+              {% endif %}
+              <span class="listingRowAttributeValues">
+                {% if object|get_attribute:element.objectReference %}
+                  {{ object|get_attribute:element.objectReference }}
+                {% else %}
+                  n/a
+                {% endif %}
+              </span>
+            </p>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-12 lead mt-3">
+        <a role="button"
+           class="collapsed text-truncation-btn"
+           data-toggle="collapse"
+           href="#collapseComponent{{ forloop.counter }}"
+           aria-expanded="false"
+           data-target="#collapseComponent{{ forloop.counter }}"
+           aria-controls="collapseComponent{{ forloop.counter }}"
+           data-expanded-text="{% translate 'Zeige weniger ...' %}"
+           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+      </div>
+    </div>
+  {% endfor %}
 </div>
-<div id="paginationContainer" class="{{ focusBorder }}-cards">{% include "partials/pagination.html" %}</div>
+<div id="paginationContainer" class="{{ focusBorder }}-cards">
+  {% include "partials/pagination.html" %}
+</div>

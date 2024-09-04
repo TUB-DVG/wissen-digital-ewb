@@ -58,10 +58,14 @@ class DataImportApp(DataImport):
                                 parentOfParentRow = rowToBeSearchedForParent
                                 break
                         parentOfParent = Topic.objects.get(
-                            heading=parentOfParentRow[header.index("ueberschrift")],
+                            heading=parentOfParentRow[
+                                header.index("ueberschrift")
+                            ],
                             text=parentOfParentRow[header.index("text")],
                             criteriaCatalog=criteriaCatalogForTopic,
-                            topicHeadingNumber=parentOfParentRow[header.index("id2")],
+                            topicHeadingNumber=parentOfParentRow[
+                                header.index("id2")
+                            ],
                         )
 
                     else:
@@ -98,4 +102,6 @@ class DataImportApp(DataImport):
             obj.save()
 
         if self._englishHeadersPresent(header):
-            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
+            self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )

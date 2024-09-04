@@ -213,12 +213,16 @@ class TestLastProfile(WebDriverSetup):
         iframeElement = lastprofilePage.getPlotlyIFrame()
         self.driver.switch_to.frame(iframeElement)
 
-        selectPlaceholderToHoverOver = lastprofilePage.getReactSelectPlaceholder()
+        selectPlaceholderToHoverOver = (
+            lastprofilePage.getReactSelectPlaceholder()
+        )
         actions = ActionChains(self.driver)
         actions.move_to_element(selectPlaceholderToHoverOver).click().perform()
 
         openedSelectElement = lastprofilePage.getOpenedReactSelect()
-        getElementToBeSelected = random.choice(openedSelectElement.text.split("\n")[1:])
+        getElementToBeSelected = random.choice(
+            openedSelectElement.text.split("\n")[1:]
+        )
 
         optionToClick = lastprofilePage.getReactOptionFromText(
             selectPlaceholderToHoverOver, getElementToBeSelected
@@ -229,7 +233,9 @@ class TestLastProfile(WebDriverSetup):
         radioElementToClick = random.choice(listOfRadioButtons)
         radioElementToClick.click()
 
-        inputFieldPowerRequirement = lastprofilePage.getInputFieldPowerRequirement()
+        inputFieldPowerRequirement = (
+            lastprofilePage.getInputFieldPowerRequirement()
+        )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
         time.sleep(3)

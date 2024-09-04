@@ -136,10 +136,14 @@ class TestUserIntegration(WebDriverSetup):
     def _testLinks(self, expectedValue):
         """Test the links in the overview text of user integratio overview site"""
 
-        linkToDetailsSite = self.overviewPageSectionObj.getLinkFromText(expectedValue)
+        linkToDetailsSite = self.overviewPageSectionObj.getLinkFromText(
+            expectedValue
+        )
         self.scrollElementIntoViewAndClickIt(linkToDetailsSite)
         self.assertEqual(self.driver.title, expectedValue)
-        allATagsInContentContainer = self.detailsPage.getATagsInContentContainer()
+        allATagsInContentContainer = (
+            self.detailsPage.getATagsInContentContainer()
+        )
         self.scrollElementIntoViewAndClickIt(choice(allATagsInContentContainer))
         self.assertTrue("Error" not in self.driver.title)
         self.driver.back()

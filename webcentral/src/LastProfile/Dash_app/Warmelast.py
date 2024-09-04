@@ -46,7 +46,9 @@ try:
     polledStationNames = stations.all().df["state"].unique()
 except ValueError:
     polledStationNames = []
-    placeholderState = "Weatherdata-API is not available. Please try again later."
+    placeholderState = (
+        "Weatherdata-API is not available. Please try again later."
+    )
 
 # App layout
 app.layout = html.Div(
@@ -61,7 +63,9 @@ app.layout = html.Div(
         html.Div(
             [
                 html.P(
-                    _("Als Testrefenzjahr haben wir die folgenden Werte gewählt:"),
+                    _(
+                        "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
+                    ),
                     id="container1",
                 ),
                 # html.Br(),
@@ -74,16 +78,24 @@ app.layout = html.Div(
                 # html.Br(),
                 html.P(_("Hochwert          : 2848500 Meter"), id="container4"),
                 # html.Br(),
-                html.P(_("Höhenlage        : 36 Meter über NN"), id="container5"),
+                html.P(
+                    _("Höhenlage        : 36 Meter über NN"), id="container5"
+                ),
                 # html.Br(),
-                html.P(_("Erstellung des Datensatzes im Mai 2016"), id="container6"),
+                html.P(
+                    _("Erstellung des Datensatzes im Mai 2016"), id="container6"
+                ),
                 # html.Br(),
-                html.P(_("Art des TRY       : mittleres Jahr"), id="container7"),
+                html.P(
+                    _("Art des TRY       : mittleres Jahr"), id="container7"
+                ),
                 # html.Br(),
                 html.P(_("Bezugszeitraum    : 1995-2012"), id="container8"),
                 # html.Br(),
                 html.P(
-                    _("Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"),
+                    _(
+                        "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
+                    ),
                     id="container9",
                 ),
             ],
@@ -107,7 +119,9 @@ app.layout = html.Div(
                     polledStationNames, placeholder=placeholderState, id="state"
                 ),
                 # Dropdown for the available wetterdienst stations in the chosen State
-                dcc.Dropdown(placeholder=_("Auswahl der Station"), id="station"),
+                dcc.Dropdown(
+                    placeholder=_("Auswahl der Station"), id="station"
+                ),
             ],
             id="hideElements",
             style={"display": "block"},
@@ -131,7 +145,9 @@ app.layout = html.Div(
                     "value": "14",
                 },
                 {
-                    "label": _("Summenlastprofil Gewerbe, Handel, Dienstleistung"),
+                    "label": _(
+                        "Summenlastprofil Gewerbe, Handel, Dienstleistung"
+                    ),
                     "value": "15",
                 },
             ],
@@ -306,7 +322,10 @@ def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
             {"label": _("Alle"), "value": "All"},
         ]
     Months = (
-        pd.date_range(startDate, endDate, freq="W").strftime("%B").unique().tolist()
+        pd.date_range(startDate, endDate, freq="W")
+        .strftime("%B")
+        .unique()
+        .tolist()
     )
     # Setting the months in the right format for plotly dash
     displayMonths = [
@@ -324,7 +343,9 @@ def displayMonths(endDate: str, dataOnLoad, startDate: str) -> list:
 # Warme Approximation
 @app.callback(
     Output(component_id="heatGraph", component_property="figure"),
-    Output(component_id="containerParagraphAtBottom", component_property="children"),
+    Output(
+        component_id="containerParagraphAtBottom", component_property="children"
+    ),
     Output(component_id="heat_approximationStoring", component_property="data"),
     Input("on-load", "data"),
     Input(component_id="approximationStart", component_property="n_clicks"),
@@ -428,11 +449,15 @@ def updateHeatGraph(
         secondary_y=True,
     )
 
-    fig.update_xaxes(tickangle=90, title_text=_("Datum"), title_font={"size": 20})
+    fig.update_xaxes(
+        tickangle=90, title_text=_("Datum"), title_font={"size": 20}
+    )
 
     fig.update_yaxes(title_text=_("Wärmelastgang in kW"), title_standoff=25)
 
-    fig.update_yaxes(title_text=_("Trinkwarmwasser-Lastgang in kW"), secondary_y=True)
+    fig.update_yaxes(
+        title_text=_("Trinkwarmwasser-Lastgang in kW"), secondary_y=True
+    )
 
     return (
         fig,
@@ -476,10 +501,16 @@ def downloadAsCsv(
     changed_id = [p["prop_id"] for p in dash.callback_context.triggered][0]
     if "btn-download-csv" in changed_id:
         if referenceYear == "off":
-            heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
-            labelStation = [x["label"] for x in labelsStation if x["value"] == station]
+            heatApproximation = pd.DataFrame.from_dict(
+                jsonifiedHeatApproximation
+            )
+            labelStation = [
+                x["label"] for x in labelsStation if x["value"] == station
+            ]
             labelsApplication = [
-                x["label"] for x in labelsApplication if x["value"] == application
+                x["label"]
+                for x in labelsApplication
+                if x["value"] == application
             ]
             heatApproximation.columns = [
                 [
@@ -505,7 +536,9 @@ def downloadAsCsv(
                 ],
             ]
         if referenceYear == "on":
-            heatApproximation = pd.DataFrame.from_dict(jsonifiedHeatApproximation)
+            heatApproximation = pd.DataFrame.from_dict(
+                jsonifiedHeatApproximation
+            )
         return dcc.send_data_frame(
             heatApproximation.to_csv,
             "WarmeData.csv",

@@ -34,7 +34,9 @@ class TestProtocolsPage(WebDriverSetup):
     def testProtocolsSearchBar(self):
         """Test the Norm-Search-Input Field"""
 
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
 
         protocolPageObj = ProtocolPage(self.driver)
         searchInputField = protocolPageObj.getSearchInputElement()
@@ -63,7 +65,9 @@ class TestProtocolsPage(WebDriverSetup):
 
     def testClickOnOneofTheCardsShown(self):
         """Click randomly on one of the cards and check if the right details-page is shown"""
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
         protocolPageObj = ProtocolPage(self.driver)
         cardsOnPage = protocolPageObj.getCards()
 
@@ -88,7 +92,9 @@ class TestProtocolsPage(WebDriverSetup):
 
     def testFilteringAndPagination(self):
         """Test if the pagination works, when selecting an filter from one of the select elements"""
-        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/protocol")
+        self.driver.get(
+            os.environ["siteUnderTest"] + "/TechnicalStandards/protocol"
+        )
         protocolPageObj = ProtocolPage(self.driver)
         self._setLanguageToGerman()
 

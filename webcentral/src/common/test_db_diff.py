@@ -346,13 +346,17 @@ class DbDiffAdminTest(TestCase):
         subprojectForReferenceNumber = Subproject.objects.get(
             referenceNumber_id=row[header.index("FKZ")]
         )
-        self.assertEqual(subprojectForReferenceNumber.enargusData, enargusDataOne)
+        self.assertEqual(
+            subprojectForReferenceNumber.enargusData, enargusDataOne
+        )
 
         enargusDataTwo, _ = importObj.getOrCreate(row2, header, data)
         subprojectForReferenceNumber = Subproject.objects.get(
             referenceNumber_id=row[header.index("FKZ")]
         )
-        self.assertEqual(subprojectForReferenceNumber.enargusData, enargusDataTwo)
+        self.assertEqual(
+            subprojectForReferenceNumber.enargusData, enargusDataTwo
+        )
 
     def testForAllEnargusData(self):
         """Import 2 snapshots of the enargus data and execute the
@@ -397,7 +401,9 @@ class DbDiffAdminTest(TestCase):
         self.assertEqual(
             randomRow[header.index("Laufzeitende")], str(enargusDataObj.endDate)
         )
-        self.assertEqual(randomRow[header.index("Thema")], enargusDataObj.topics)
+        self.assertEqual(
+            randomRow[header.index("Thema")], enargusDataObj.topics
+        )
         self.assertEqual(
             randomRow[header.index("Verbundbezeichung")],
             enargusDataObj.collaborativeProject,
@@ -410,7 +416,9 @@ class DbDiffAdminTest(TestCase):
             randomRow[header.index("Kurzbeschreibung_en")],
             enargusDataObj.shortDescriptionEn,
         )
-        self.assertEqual(randomRow[header.index("Datenbank")], enargusDataObj.database)
+        self.assertEqual(
+            randomRow[header.index("Datenbank")], enargusDataObj.database
+        )
         self.assertEqual(
             randomRow[header.index("Foerdersumme_EUR")],
             str(enargusDataObj.appropriatedBudget),
@@ -418,7 +426,9 @@ class DbDiffAdminTest(TestCase):
 
         personObj = enargusDataObj.projectLead
         self.assertEqual(randomRow[header.index("Name_pl")], personObj.surname)
-        self.assertEqual(randomRow[header.index("Vorname_pl")], personObj.firstName)
+        self.assertEqual(
+            randomRow[header.index("Vorname_pl")], personObj.firstName
+        )
         self.assertEqual(randomRow[header.index("Titel_pl")], personObj.title)
         self.assertEqual(randomRow[header.index("Email_pl")], personObj.email)
 
@@ -451,7 +461,9 @@ class DbDiffAdminTest(TestCase):
         )
 
         grantRecipientObj = enargusDataObj.grantRecipient
-        self.assertEqual(randomRow[header.index("Name_ZWE")], grantRecipientObj.name)
+        self.assertEqual(
+            randomRow[header.index("Name_ZWE")], grantRecipientObj.name
+        )
         self.assertEqual(
             randomRow[header.index("PLZ_ZWE")], grantRecipientObj.address.plz
         )

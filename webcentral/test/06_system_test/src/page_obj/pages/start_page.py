@@ -74,7 +74,9 @@ class StartPage(GenericPageObject):
 
     def getLinkToTechnicalStandarts(self):
         """Return Link to Technical Standarts Page"""
-        return self.driver.find_element(By.XPATH, Locator.linkToTechnicalStandarts)
+        return self.driver.find_element(
+            By.XPATH, Locator.linkToTechnicalStandarts
+        )
 
     def getLinkToPublications(self, focus: str):
         """Return the Link to the Technical Publications Page,
@@ -117,7 +119,9 @@ class StartPage(GenericPageObject):
         List(Webelement):
         """
 
-        return self.driver.find_elements(By.XPATH, Locator.paginationPreviousLink)
+        return self.driver.find_elements(
+            By.XPATH, Locator.paginationPreviousLink
+        )
 
     def getLastElementInList(self) -> list:
         """Return List of webelements, containing Last-element of pagination
@@ -147,11 +151,15 @@ class StartPage(GenericPageObject):
 
     def getOperationalFocusContainer(self):
         """Return the Container for the Operational Focus"""
-        return self.driver.find_element(By.XPATH, Locator.operationalFocusContainer)
+        return self.driver.find_element(
+            By.XPATH, Locator.operationalFocusContainer
+        )
 
     def getLegalFocusContainer(self):
         """Get Div-element of the legal focus container"""
-        return self.driver.find_element(By.XPATH, "//div[@title='Rechtlicher Fokus']")
+        return self.driver.find_element(
+            By.XPATH, "//div[@title='Rechtlicher Fokus']"
+        )
 
     def getFocusContainer(self, focusName: str):
         """ """
@@ -163,4 +171,6 @@ class StartPage(GenericPageObject):
         elif focusName == "ecological":
             focusTitle = "Ökologischer Fokus"
 
-        return self.driver.find_element(By.XPATH, f"//div[@title='{focusTitle}']")
+        return self.driver.find_element(
+            By.XPATH, f"//div[@title='{focusTitle}']"
+        )

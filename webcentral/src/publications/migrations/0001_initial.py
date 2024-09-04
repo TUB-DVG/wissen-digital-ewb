@@ -219,7 +219,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "code",
-                    models.URLField(blank=True, help_text="Link to page with code."),
+                    models.URLField(
+                        blank=True, help_text="Link to page with code."
+                    ),
                 ),
                 (
                     "pdf",
@@ -246,7 +248,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "doi",
-                    models.CharField(blank=True, max_length=128, verbose_name="DOI"),
+                    models.CharField(
+                        blank=True, max_length=128, verbose_name="DOI"
+                    ),
                 ),
                 (
                     "external",

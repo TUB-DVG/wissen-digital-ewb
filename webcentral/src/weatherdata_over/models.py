@@ -23,7 +23,9 @@ class Weatherdata(models.Model):
     data_url = models.CharField(
         max_length=300, help_text="Url zum Datensatz", blank=True
     )
-    logo_url = models.CharField(max_length=300, help_text="Url zum Logo", blank=True)
+    logo_url = models.CharField(
+        max_length=300, help_text="Url zum Logo", blank=True
+    )
     applications = models.CharField(
         max_length=500,
         help_text="konkrete Anwendung der Datensätze bzw. der Werkzeuge",
@@ -43,7 +45,9 @@ class Weatherdata(models.Model):
     long_description = models.CharField(
         max_length=10000, help_text="Beschreibung des DatenService", blank=True
     )
-    image = models.ImageField(null=True, blank=True)  # You need to install pillow
+    image = models.ImageField(
+        null=True, blank=True
+    )  # You need to install pillow
 
     def __str__(self):
         return self.data_service

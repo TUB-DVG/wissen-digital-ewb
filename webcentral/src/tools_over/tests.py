@@ -42,7 +42,9 @@ class TestToolsDataImport(TestCase):
         header, data = self.dataImportApp.load()
         self.dataImportApp.importList(header, data)
 
-        imported_tools_obj = Tools.objects.get(name=data[0][header.index("name")])
+        imported_tools_obj = Tools.objects.get(
+            name=data[0][header.index("name")]
+        )
         # check if the english translation was imported:
         # self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name__en")])
 
@@ -83,9 +85,13 @@ class TestToolsDataImport(TestCase):
         ]
 
         for manyToManyAttr in manyToManyAttrList:
-            self._checkManyToManyRel(imported_tools_obj, data, header, manyToManyAttr)
+            self._checkManyToManyRel(
+                imported_tools_obj, data, header, manyToManyAttr
+            )
 
-    def _checkManyToManyRel(self, importedToolsObj, data, header, attributeName):
+    def _checkManyToManyRel(
+        self, importedToolsObj, data, header, attributeName
+    ):
         """Holds the checking logic fo ManyToManyRelation translation checking."""
 
         listOfClassificationObj = getattr(importedToolsObj, attributeName).all()
@@ -110,7 +116,9 @@ class TestToolsDataImport(TestCase):
         attributeNameStr,
     ):
         """Compare if all expected values are matches with all present elements in a ManyToMany-relation"""
-        for expectedIndex, expectedGermanElement in enumerate(listOfExpectedElements):
+        for expectedIndex, expectedGermanElement in enumerate(
+            listOfExpectedElements
+        ):
             for manyToManyElement in manyToManyElements:
 
                 if expectedGermanElement in getattr(

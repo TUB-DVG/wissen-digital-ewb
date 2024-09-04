@@ -62,7 +62,9 @@ class DataImportApp(DataImport):
             Indicates, if the UserIntegration-object was created or not.
         """
         category = row[header.index("Kategorie")]
-        categoryShortDescription = row[header.index("Kategorie_Kurzbeschreibung")]
+        categoryShortDescription = row[
+            header.index("Kategorie_Kurzbeschreibung")
+        ]
         subCategory = row[header.index("Unterkategorie")]
         subCategoryShortDescription = row[
             header.index("Unterkategorie_Kurzbeschreibung")
@@ -85,22 +87,30 @@ class DataImportApp(DataImport):
             goals=goals,
             goodPracticeExample=goodPracticeExample,
         )
-        procedureList = self._processListInput(row[header.index("Ablauf")], ";;")
+        procedureList = self._processListInput(
+            row[header.index("Ablauf")], ";;"
+        )
         procedureObjList = [
             ProcedureItem.objects.get_or_create(procedureItem=procedure)[0]
             for procedure in procedureList
         ]
-        conArgumentsList = self._processListInput(row[header.index("Nachteile")], ";;")
+        conArgumentsList = self._processListInput(
+            row[header.index("Nachteile")], ";;"
+        )
         conObjsList = [
             ConArgument.objects.get_or_create(conArgument=conArgElement)[0]
             for conArgElement in conArgumentsList
         ]
-        proArgumentsList = self._processListInput(row[header.index("Vorteile")], ";;")
+        proArgumentsList = self._processListInput(
+            row[header.index("Vorteile")], ";;"
+        )
         proObjsList = [
             ProArgument.objects.get_or_create(proArgument=proArgElement)[0]
             for proArgElement in proArgumentsList
         ]
-        literatureList = self._processListInput(row[header.index("Literatur")], ";;")
+        literatureList = self._processListInput(
+            row[header.index("Literatur")], ";;"
+        )
         literatureObjsList = []
         for literatureElement in literatureList:
             splittedLiteratureElement = literatureElement.split("((")
@@ -116,5 +126,7 @@ class DataImportApp(DataImport):
         obj.conArgument.add(*conObjsList)
         obj.literature.add(*literatureObjsList)
         if self._englishHeadersPresent(header):
-            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
+            self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         return obj, created

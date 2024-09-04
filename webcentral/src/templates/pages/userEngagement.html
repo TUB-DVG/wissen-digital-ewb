@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-    {% translate "Nutzendenintegration" %}
+  {% translate "Nutzendenintegration" %}
 {% endblock %}
 {% load static %}
 {% block content %}
-    <div class="content container">
-        <div class="row">{% include "partials/descriptionContainer.html" %}</div>
-    </div>
-    <!-- Content END -->
-    <script>
+  <div class="content container">
+    <div class="row">{% include "partials/descriptionContainer.html" %}</div>
+  </div>
+  <!-- Content END -->
+  <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Select all <a> tags
             var links = document.querySelectorAll('a');
@@ -19,5 +19,5 @@
                 link.classList.add('{{ focusBorder }}-font-color');
             });
         });
-    </script>
+  </script>
 {% endblock %}

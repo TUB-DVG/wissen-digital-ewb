@@ -219,7 +219,9 @@ class TestMainPage(WebDriverSetup):
             rowElement = listOfRowsInResultsTable[indexTable]
             if rowElement.text.find("Forschungsprojekt") >= 0:
                 checkedScientificProjects += 1
-                self.driver.execute_script("arguments[0].scrollIntoView();", rowElement)
+                self.driver.execute_script(
+                    "arguments[0].scrollIntoView();", rowElement
+                )
                 childRowElement = startPageObj.getChildEbElement(rowElement)
                 self.driver.execute_script(
                     "var viewPortHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); var elementTop = arguments[0].getBoundingClientRect().top; window.scrollBy(0, elementTop-(viewPortHeight/2));",
@@ -439,9 +441,12 @@ class TestMainPage(WebDriverSetup):
             By.XPATH, ".//a"
         )
         for link in linksInGlobalFocusContainer:
-            self.assertTrue(link.value_of_css_property("color") == "rgb(0, 0, 0)")
             self.assertTrue(
-                link.value_of_css_property("border-bottom-color") == self.GLOBAL_COLOR
+                link.value_of_css_property("color") == "rgb(0, 0, 0)"
+            )
+            self.assertTrue(
+                link.value_of_css_property("border-bottom-color")
+                == self.GLOBAL_COLOR
             )
 
     def _checkFocusContainer(self, focusName, dataDict):
@@ -475,7 +480,9 @@ class TestMainPage(WebDriverSetup):
 
     def _checkTitle(self, expectedValue):
         """Check the title in german and english"""
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         headingText = self.startPageObj.getDescendantsByTagName(
             self.focusContainer, "h3"
         )[0]
@@ -487,14 +494,19 @@ class TestMainPage(WebDriverSetup):
 
     def _checkBorder(self, expectedValue):
         """Check the border of the container on the german and english page."""
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         self.assertTrue(
-            self.focusContainer.value_of_css_property("outline-color") == expectedValue
+            self.focusContainer.value_of_css_property("outline-color")
+            == expectedValue
         )
 
     def _checkLinks(self, expectedValues):
         """ """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         # check the links in the operational focus container:
         linkListElements = self.startPageObj.getDescendantsByTagName(
             self.focusContainer, "a"
@@ -511,14 +523,18 @@ class TestMainPage(WebDriverSetup):
 
     def _clickLinks(self, expectedValue):
         """ """
-        self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+        self.focusContainer = self.startPageObj.getFocusContainer(
+            self.focusName
+        )
         # check the links in the operational focus container:
         linkListElements = self.startPageObj.getDescendantsByTagName(
             self.focusContainer, "a"
         )
 
         for linkIndex, linkElement in enumerate(linkListElements):
-            self.focusContainer = self.startPageObj.getFocusContainer(self.focusName)
+            self.focusContainer = self.startPageObj.getFocusContainer(
+                self.focusName
+            )
             linkListElements = self.startPageObj.getDescendantsByTagName(
                 self.focusContainer, "a"
             )

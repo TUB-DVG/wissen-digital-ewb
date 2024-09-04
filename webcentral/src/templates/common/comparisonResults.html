@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-    {% load static %}
-    {% load template_tags %}
-    <style>
+  {% load static %}
+  {% load template_tags %}
+  <style>
     table {
       width: 100%;
       border-collapse: collapse;
@@ -19,45 +19,45 @@
     .backLink {
       font-size: 15px;
     }
-    </style>
-    <div class="content container" id="compareResultsContainer">
-        <div class="row">
-            {% include "partials/backLinkInFocusColor.html" %}
-            {% include "partials/descriptionContainer.html" %}
-            <div class="comparisonContent">
-                <table style="display: block; overflow-x: auto;">
-                    <!-- Table Header -->
-                    {% for attribute in attributesToCompare %}
-                        <tr>
-                            <th>{{ attribute.displayedStr }}</th>
-                            {% for modelObject in objectsToCompare %}
-                                <td>
-                                    {% if attribute.isManyToManyField %}
-                                        {% with objectOfAttribute=modelObject|get_attribute:attribute.dbLocator %}
-                                            {% for manyToManyObj in objectOfAttribute.all %}
-                                                {{ manyToManyObj|get_attribute:attribute.dbLocator }}
-                                                {% if not forloop.last %},{% endif %}
-                                            {% endfor %}
-                                        {% endwith %}
-                                    {% elif attribute.dbLocator == "image" %}
-                                        {% if modelObject.image %}
-                                            <img src="{{ modelObject.image.url }}"
-                                                 class="card-img-top px-4 pt-4 pb-2 m-auto"
-                                                 style="max-height: 100%;
-                                                        width: auto;
-                                                        display: block"
-                                                 alt="tool image (if=db)" />
-                                        {% endif %}
-                                    {% else %}
-                                        {{ modelObject|get_attribute:attribute.dbLocator }}
-                                    {% endif %}
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
+  </style>
+  <div class="content container" id="compareResultsContainer">
+    <div class="row">
+      {% include "partials/backLinkInFocusColor.html" %}
+      {% include "partials/descriptionContainer.html" %}
+      <div class="comparisonContent">
+        <table style="display: block; overflow-x: auto;">
+          <!-- Table Header -->
+          {% for attribute in attributesToCompare %}
+            <tr>
+              <th>{{ attribute.displayedStr }}</th>
+              {% for modelObject in objectsToCompare %}
+                <td>
+                  {% if attribute.isManyToManyField %}
+                    {% with objectOfAttribute=modelObject|get_attribute:attribute.dbLocator %}
+                      {% for manyToManyObj in objectOfAttribute.all %}
+                        {{ manyToManyObj|get_attribute:attribute.dbLocator }}
+                        {% if not forloop.last %},{% endif %}
+                      {% endfor %}
+                    {% endwith %}
+                  {% elif attribute.dbLocator == "image" %}
+                    {% if modelObject.image %}
+                      <img src="{{ modelObject.image.url }}"
+                           class="card-img-top px-4 pt-4 pb-2 m-auto"
+                           style="max-height: 100%;
+                                  width: auto;
+                                  display: block"
+                           alt="tool image (if=db)" />
+                    {% endif %}
+                  {% else %}
+                    {{ modelObject|get_attribute:attribute.dbLocator }}
+                  {% endif %}
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
     </div>
+  </div>
 </div>
 {% endblock %}

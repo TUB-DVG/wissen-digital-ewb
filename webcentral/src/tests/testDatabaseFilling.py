@@ -119,7 +119,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestFilePath = self._getNewestYAML()
         head, newestFileName = os.path.split(newestFilePath)
-        if newestFileName == "" or self._checkIfFileIsOlderThan2Minutes(newestFilePath):
+        if newestFileName == "" or self._checkIfFileIsOlderThan2Minutes(
+            newestFilePath
+        ):
             fileNameModifiedTestData = "../../02_work_doc/10_test/04_testData/enargus_testDatabaseFileModified.csv"
             management.call_command(
                 "data_import",
@@ -132,7 +134,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         listOfDBDifferenceObjs = []
 
         with open(newestFilePath, "r") as file:
-            for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                file, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.postprocessAfterReadIn()
                 listOfDBDifferenceObjs.append(databaseDifferenceObj)
 
@@ -161,9 +165,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFilePath = self._getNewestYAML()
         head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
-        updateDatasetInDB = (
-            "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        )
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if newestYAMLFileName == "" or self._checkIfFileIsOlderThan2Minutes(
             newestYAMLFilePath
         ):
@@ -181,7 +183,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         )
 
         with open(newestYAMLFilePath, "r") as file:
-            for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                file, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.postprocessAfterReadIn()
 
                 databaseDifferenceObj.keepCurrentState = True
@@ -196,7 +200,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(nameYAMLFileAfterUserInput, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -219,9 +225,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFilePath = self._getNewestYAML()
         head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
-        updateDatasetInDB = (
-            "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
-        )
+        updateDatasetInDB = "../../02_work_doc/10_test/04_testData/enargus_testExecuteDBchanges.csv"
         if newestYAMLFileName == "" or self._checkIfFileIsOlderThan2Minutes(
             newestYAMLFilePath
         ):
@@ -238,7 +242,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
             newestYAMLFileName[0:-5] + "CSV.yml",
         )
         with open(newestYAMLFilePath, "r") as file:
-            for databaseDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                file, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.postprocessAfterReadIn()
 
                 databaseDifferenceObj.keepCurrentState = False
@@ -253,7 +259,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(nameYAMLFileAfterUserInput, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -269,9 +277,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         choiceKeepDBOrCSV = [(True, False), (False, True)]
         choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
-        simpleModulzurodnungDatasets = (
-            "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleLoading.csv"
-        )
+        simpleModulzurodnungDatasets = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleLoading.csv"
         management.call_command(
             "data_import",
             simpleModulzurodnungDatasets,
@@ -280,9 +286,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         newestYAMLFilePath = self._getNewestYAML()
         head, newestYAMLFileName = os.path.split(newestYAMLFilePath)
-        simpleModulzurodnungDatasetsModified = (
-            "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
-        )
+        simpleModulzurodnungDatasetsModified = "../../02_work_doc/10_test/04_testData/modulzuordnung_simpleEdits.csv"
         if newestYAMLFileName == "" or self._checkIfFileIsOlderThan2Minutes(
             newestYAMLFilePath
         ):
@@ -301,7 +305,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -318,7 +324,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(nameYAMLFileAfterUserInput, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -338,7 +346,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         """
 
-        simpleToolsDataset = "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        simpleToolsDataset = (
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        )
         management.call_command(
             "data_import",
             simpleToolsDataset,
@@ -352,9 +362,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         readToolTestfile = readToolTestfile.fillna("")
         toolAsDict = readToolTestfile.to_dict()
         # breakpoint()
-        acceptMissionToolInDB = list(Tools.objects.filter(name=toolAsDict["name"][0]))[
-            -1
-        ]
+        acceptMissionToolInDB = list(
+            Tools.objects.filter(name=toolAsDict["name"][0])
+        )[-1]
         for key in toolAsDict.keys():
             if key != "name":
                 # check if attribute is a ManyToMany-relation:
@@ -390,7 +400,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         of the loaded test_tools_data.xlsx is changed and the data_import command is called again.
 
         """
-        simpleToolsDataset = "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        simpleToolsDataset = (
+            "../../02_work_doc/10_test/04_testData/test_data_tool.xlsx"
+        )
         management.call_command(
             "data_import",
             simpleToolsDataset,
@@ -456,7 +468,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         listOfParsedConflicts = []
 
         with open(filePattern, "r") as stream:
-            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                stream, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.postprocessAfterReadIn()
                 databaseDifferenceObj.keepCurrentState = False
                 databaseDifferenceObj.keepPendingState = True
@@ -464,14 +478,18 @@ class checkDifferencesInDatabase(TransactionTestCase):
 
         self.assertEqual(len(listOfParsedConflicts), 1)
 
-        for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
-            for attributeKey in listOfParsedConflicts[0].differencesSortedByTable[
-                tableKey
-            ]["pendingState"]:
+        for tableKey in listOfParsedConflicts[
+            0
+        ].differencesSortedByTable.keys():
+            for attributeKey in listOfParsedConflicts[
+                0
+            ].differencesSortedByTable[tableKey]["pendingState"]:
                 if attributeKey != "id":
-                    pendingObj = listOfParsedConflicts[0].differencesSortedByTable[
-                        tableKey
-                    ]["pendingState"][attributeKey]
+                    pendingObj = listOfParsedConflicts[
+                        0
+                    ].differencesSortedByTable[tableKey]["pendingState"][
+                        attributeKey
+                    ]
                     if pendingObj[-1] == ",":
                         pendingObj = pendingObj[:-1]
                     self.assertEqual(
@@ -480,7 +498,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     )
         listOfParsedConflictsForOutput = []
         with open(filePattern, "r") as stream:
-            for databaseDifferenceObj in yaml.load_all(stream, Loader=yaml.Loader):
+            for databaseDifferenceObj in yaml.load_all(
+                stream, Loader=yaml.Loader
+            ):
                 databaseDifferenceObj.keepCurrentState = False
                 databaseDifferenceObj.keepPendingState = True
                 listOfParsedConflictsForOutput.append(databaseDifferenceObj)
@@ -495,14 +515,19 @@ class checkDifferencesInDatabase(TransactionTestCase):
         )
 
         # check if there is still only one tool with the name "AcceptMission" in the database
-        self.assertEqual(len(Tools.objects.filter(name=toolAsDict["name"][0])), 1)
+        self.assertEqual(
+            len(Tools.objects.filter(name=toolAsDict["name"][0])), 1
+        )
 
         # check if the tool in the database has the same values as the tool in the modified_test_data_tool.xlsx
         toolInDB = Tools.objects.filter(name=toolAsDict["name"][0])[0]
         for key in toolAsDict.keys():
             if key != "name":
                 # check if attribute is a ManyToMany-relation:
-                if getattr(toolInDB, key).__class__.__name__ == "ManyRelatedManager":
+                if (
+                    getattr(toolInDB, key).__class__.__name__
+                    == "ManyRelatedManager"
+                ):
                     manyToManyValues = getattr(toolInDB, key).all()
                     manyToManyString = ""
                     for index, value in enumerate(manyToManyValues):
@@ -519,7 +544,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     if getattr(toolInDB, key) is None:
                         self.assertEqual("", toolAsDict[key][0])
                     else:
-                        self.assertEqual(getattr(toolInDB, key), toolAsDict[key][0])
+                        self.assertEqual(
+                            getattr(toolInDB, key), toolAsDict[key][0]
+                        )
 
         # breakpoint()
         # for tableKey in listOfParsedConflicts[0].differencesSortedByTable.keys():
@@ -555,9 +582,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         It should import the tool "lastUpdateTest1" and `lastUpdate` should be "unbekannt".
 
         """
-        testDatasetFilePath = (
-            "../../02_work_doc/10_test/04_testData/test_data_tool_lastUpdate_empty.xlsx"
-        )
+        testDatasetFilePath = "../../02_work_doc/10_test/04_testData/test_data_tool_lastUpdate_empty.xlsx"
         management.call_command(
             "data_import",
             testDatasetFilePath,
@@ -583,7 +608,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
             testDatasetFilePath,
             "tests/data/",
         )
-        self.assertEqual(len(Tools.objects.filter(name="TestToolWithDateTime")), 1)
+        self.assertEqual(
+            len(Tools.objects.filter(name="TestToolWithDateTime")), 1
+        )
         self.assertEqual(
             Tools.objects.filter(name="TestToolWithDateTime")[0].lastUpdate,
             "2023-09-14",
@@ -634,7 +661,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     )
                 else:
                     if getattr(publicationInDB, key) is None:
-                        self.assertEqual("", publicationAsDict[key][keyInFileDict])
+                        self.assertEqual(
+                            "", publicationAsDict[key][keyInFileDict]
+                        )
                     else:
                         try:
                             self.assertEqual(
@@ -653,7 +682,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         endDate = datetime.now()
 
         randomDate = startDate + timedelta(
-            seconds=random.randint(0, int((endDate - startDate).total_seconds())),
+            seconds=random.randint(
+                0, int((endDate - startDate).total_seconds())
+            ),
         )
 
         formattedRandomDate = randomDate.strftime("%Y-%m-%d")
@@ -685,9 +716,7 @@ class checkDifferencesInDatabase(TransactionTestCase):
         choiceKeepDBOrCSV = [(True, False), (False, True)]
         choiceToBeKept = random.choice(choiceKeepDBOrCSV)
 
-        simpleTagsDatasets = (
-            "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestData.csv"
-        )
+        simpleTagsDatasets = "../../02_work_doc/10_test/04_testData/schlagwoerter_simpleTestData.csv"
         management.call_command(
             "data_import",
             simpleTagsDatasets,
@@ -711,7 +740,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -727,7 +758,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(newestYAMLFilePath, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 currentDifferenceObj.keepCurrentState = choiceToBeKept[0]
                 currentDifferenceObj.keepPendingState = choiceToBeKept[1]
                 currentDifferenceObj.writeToYAML(exportFileKeepCurrent)
@@ -737,7 +770,9 @@ class checkDifferencesInDatabase(TransactionTestCase):
         with open(exportFileKeepCurrent, "r") as file:
             for currentDifferenceObj in yaml.load_all(file, Loader=yaml.Loader):
                 currentDifferenceObj.postprocessAfterReadIn()
-                differencesStruct = currentDifferenceObj.differencesSortedByTable
+                differencesStruct = (
+                    currentDifferenceObj.differencesSortedByTable
+                )
                 self._checkIfDifferencesFromYAMLAreInDB(
                     differencesStruct,
                     self._getTablesFromDiffDataStructure(differencesStruct),
@@ -867,9 +902,16 @@ class checkDifferencesInDatabase(TransactionTestCase):
                     )
                     if len(schlagwortregisterQuery) > 0:
                         schlagwortregisterObj = schlagwortregisterQuery[0]
-                        if len(schlagwortregisterObj.teilprojekt_set.all()) == 0:
+                        if (
+                            len(schlagwortregisterObj.teilprojekt_set.all())
+                            == 0
+                        ):
                             self.assertTrue(
-                                len(currentTableModel.objects.filter(**stateDict))
+                                len(
+                                    currentTableModel.objects.filter(
+                                        **stateDict
+                                    )
+                                )
                                 == lengthOfQuerySet,
                                 assertationMessage,
                             )
@@ -882,7 +924,11 @@ class checkDifferencesInDatabase(TransactionTestCase):
                         modulObj = moduleQuery[0]
                         if len(modulObj.subproject_set.all()) == 0:
                             self.assertTrue(
-                                len(currentTableModel.objects.filter(**stateDict))
+                                len(
+                                    currentTableModel.objects.filter(
+                                        **stateDict
+                                    )
+                                )
                                 == lengthOfQuerySet,
                                 assertationMessage,
                             )
@@ -896,14 +942,17 @@ class checkDifferencesInDatabase(TransactionTestCase):
             elif (
                 (
                     "Keyword" in str(currentTableModel)
-                    and not "KeywordRegisterFirstReview" in str(currentTableModel)
+                    and not "KeywordRegisterFirstReview"
+                    in str(currentTableModel)
                 )
                 and lengthOfQuerySet == 0
                 and schlagwortregisterIDcurrent is not None
             ):
                 tagToBeChecked = stateDict["schlagwort_id"]
                 for numberPosition in range(1, 7):
-                    dictCurrTagNum = {f"schlagwort_{numberPosition}_id": tagToBeChecked}
+                    dictCurrTagNum = {
+                        f"schlagwort_{numberPosition}_id": tagToBeChecked
+                    }
                     queryForCurrTag = KeywordRegisterFirstReview.objects.filter(
                         **dictCurrTagNum
                     )
@@ -1069,7 +1118,9 @@ class TestDatabaseConcistency(TransactionTestCase):
         listOfModuleTuplesTrash = []
         listOfEnargusTupleTrash = []
 
-        queryOfAllSchlagwoertregisterTuples = KeywordRegisterFirstReview.objects.all()
+        queryOfAllSchlagwoertregisterTuples = (
+            KeywordRegisterFirstReview.objects.all()
+        )
         for schlagwortregisterTuple in queryOfAllSchlagwoertregisterTuples:
             if len(schlagwortregisterTuple.subproject_set.all()) == 0:
                 listOfSchlagwoerterTuplesTrash.append(schlagwortregisterTuple)

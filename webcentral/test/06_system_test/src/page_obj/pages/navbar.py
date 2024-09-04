@@ -143,7 +143,9 @@ class NavBar(object):
 
     def getDropDownElements(self):
         """ """
-        return self.driver.find_elements(By.XPATH, "//li[@class='nav-item dropdown']")
+        return self.driver.find_elements(
+            By.XPATH, "//li[@class='nav-item dropdown']"
+        )
 
     def getGlobalDropdownElements(self):
         """Return the elements inside the navbar of the global focus"""

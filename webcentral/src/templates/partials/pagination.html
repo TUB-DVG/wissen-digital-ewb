@@ -1,29 +1,29 @@
 {% load i18n %}
 <div class="pagination">
-    <span class="step-links">
-        {% if page.has_previous %}
-            <a class="{{ focusBorder }}-font-color"
-               href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page=1"
-               id="paginationFirstSite">&laquo; {% translate "erste" %}</a>
-            &nbsp &nbsp
-            <a class="{{ focusBorder }}-font-color"
-               href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.previous_page_number }}"
-               id="paginationPreviousLink">{% translate "vorherige" %}</a>
-        {% endif %}
-        &nbsp &nbsp
-        <span class="current">
-            {% translate "Seite" %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
-        </span>
-        &nbsp &nbsp
-        {% if page.has_next %}
-            <a class="{{ focusBorder }}-font-color"
-               href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.next_page_number }}"
-               id="paginationNextLink">{% translate "nächste" %}</a>
-            &nbsp &nbsp
-            <a class="{{ focusBorder }}-font-color"
-               href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.paginator.num_pages }}"
-               id="paginationLastSite">{% translate "letzte" %} &raquo;</a>
-            &nbsp &nbsp
-        {% endif %}
+  <span class="step-links">
+    {% if page.has_previous %}
+      <a class="{{ focusBorder }}-font-color"
+         href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page=1"
+         id="paginationFirstSite">&laquo; {% translate "erste" %}</a>
+      &nbsp &nbsp
+      <a class="{{ focusBorder }}-font-color"
+         href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.previous_page_number }}"
+         id="paginationPreviousLink">{% translate "vorherige" %}</a>
+    {% endif %}
+    &nbsp &nbsp
+    <span class="current">
+      {% translate "Seite" %} {{ page.number }} {% translate "von" %} {{ page.paginator.num_pages }}
     </span>
+    &nbsp &nbsp
+    {% if page.has_next %}
+      <a class="{{ focusBorder }}-font-color"
+         href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.next_page_number }}"
+         id="paginationNextLink">{% translate "nächste" %}</a>
+      &nbsp &nbsp
+      <a class="{{ focusBorder }}-font-color"
+         href="{% url urlName %}?searched={% if search %}{{ search }}{% endif %}{% for option in optionList %}&{{ option.fieldName }}-hidden={{ option.filtered }}{% endfor %}&filtering=true&page={{ page.paginator.num_pages }}"
+         id="paginationLastSite">{% translate "letzte" %} &raquo;</a>
+      &nbsp &nbsp
+    {% endif %}
+  </span>
 </div>

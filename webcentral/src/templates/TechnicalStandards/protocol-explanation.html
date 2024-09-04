@@ -1,15 +1,15 @@
 {% load static %}
 {% load i18n %}
 <section class="py-4">
-    <div class="container">
-        <div class="row collapseInfoContainer" id="collapseInfoContainerProtocols">
-            <div class="col-lg-12 collapse lead collapseInfo"
-                 id="collapseInfoProtocols">
-                <p>
-                    <b>{% blocktranslate %}Was ist Gebäudeautomation (GA; Building Automation)? {% endblocktranslate %}</b>
-                </p>
-                <p>
-                    {% blocktranslate %}Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude betrieben,
+  <div class="container">
+    <div class="row collapseInfoContainer" id="collapseInfoContainerProtocols">
+      <div class="col-lg-12 collapse lead collapseInfo"
+           id="collapseInfoProtocols">
+        <p>
+          <b>{% blocktranslate %}Was ist Gebäudeautomation (GA; Building Automation)? {% endblocktranslate %}</b>
+        </p>
+        <p>
+          {% blocktranslate %}Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude betrieben,
           gesteuert und überwacht werden. Sie ist ein fortschrittliches System, das moderne 
           Technologie nutzt, um die Effizienz, den Komfort und die Sicherheit von Gebäuden 
           zu optimieren. Es integriert verschiedene Systeme wie HLK (Heizung, Lüftung, 
@@ -19,95 +19,95 @@
           und vereinfachte Wartung. Ein GA besteht in der Regel aus drei logischen Ebenen: 
           der Feldebene (Sensoren und Aktoren), der Automatisierungsebene (Steuerungen) 
           und der Managementebene (Überwachungssoftware).{% endblocktranslate %}
-                </p>
-                <p>
-                    <b>
-                        {% blocktranslate %}Warum brauchen wir Protokolle in der Gebäudeautomation?{% endblocktranslate %}</b>
-                    </p>
-                    <p>
-                        {% blocktranslate %}Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine nahtlose
+        </p>
+        <p>
+          <b>
+            {% blocktranslate %}Warum brauchen wir Protokolle in der Gebäudeautomation?{% endblocktranslate %}</b>
+          </p>
+          <p>
+            {% blocktranslate %}Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine nahtlose
           Kommunikation zwischen verschiedenen Geräten und Systemen innerhalb des Gebäudes 
           ermöglichen. In der Gebäudeautomation kommen oft Produkte verschiedener Hersteller 
           zum Einsatz, die möglicherweise proprietäre Kommunikationsmethoden verwenden. 
           Protokolle dienen als gemeinsame Sprache, die Interoperabilität gewährleistet 
           und Datensilos vermeidet. Gerade der umfängliche Datenaustausch in Echtzeit ermöglicht
           schnelle Reaktionen auf veränderte Bedingungen und kann damit die Gesamteffizienz des Systems verbessern.{% endblocktranslate %}
-                    </p>
-                    <p>
-                        {% blocktranslate %}Auf dieser Seite sind verschiedenen Protokolle,
+          </p>
+          <p>
+            {% blocktranslate %}Auf dieser Seite sind verschiedenen Protokolle,
           die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. Diese sind durch Recherche in der entsprechenden Fachliteratur, in
           Dokumentationen von Hard- und Software, und in Unterlagen aus den Forschungsprojekten der Energiewendebauen
            zusammengetragen worden. Wir haben 12 häufig verwendete und moderne Protokolle ausgewählt und für diese die
            folgenden Eigenschaften zusammengefasst:{% endblocktranslate %}
-                    </p>
-                    <ul>
-                        <li class="lead">
-                            <b>Name des Protokolls</b>
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Übertragungsmethoden" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Daten zwischen den
+          </p>
+          <ul>
+            <li class="lead">
+              <b>Name des Protokolls</b>
+            </li>
+            <li class="lead">
+              <b>{% translate "Übertragungsmethoden" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Daten zwischen den
               verschiedenen Komponenten und Geräten innerhalb des Systems übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Unterstützte Übertragungsmedien" %}</b>&nbsp;&ndash; {% translate "wie werden Signale übertragen?" %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Zugehörige Standards" %}</b>&nbsp;&ndash; {% blocktranslate %}spezifische Standards, denen jedes Protokoll zugeordnet werden kann.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Open-Source-Status" %}</b>&nbsp;&ndash; {% blocktranslate %}ist das Protokoll öffentlich und frei verfügbar?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Lizenzgebühr" %}</b>&nbsp;&ndash; {% blocktranslate %}ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die Zertifizierung fällig?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Netzwerktopologie" %}</b>&nbsp;&ndash; {% blocktranslate %}was ist die physische und logische Anordnung von Geräten und Komponenten in einem Netzwerk?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Implementierte Sicherheitsmechanismen" %}</b>&nbsp;&ndash; {% blocktranslate %}ob und welche Mechanismen sind im Protokoll implementiert, um die Datensicherheit zu gewährleisten?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Bandbreite" %}</b>&nbsp;&ndash; {% blocktranslate %}die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen Komponenten des Systems zu übertragen.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Frequenz" %}</b>&nbsp;&ndash; {% blocktranslate %}die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den drahtlosen Kommunikationsgeräten im System verwendet wird.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Reichweite" %}</b>&nbsp;&ndash; {% blocktranslate %}die maximale Entfernung, über die die Kommunikation zwischen den verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden kann, ohne dass die Signalstärke zu schwach wird.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Implementierte OSI-Schichten" %}</b>&nbsp;&ndash; {% blocktranslate %}die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation zwischen den verschiedenen Komponenten des Systems.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Ebenen der Gebäudeautomation" %}</b>&nbsp;&ndash; {% blocktranslate %}die hierarchische Struktur eines Gebäudeautomation Systems.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Datenmodell Architektur" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>Discovery</b>&nbsp;&ndash; {% blocktranslate %}ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der Datenübertragungautomatisch zu identifizieren?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>Multi Master</b>&nbsp;&ndash; {% blocktranslate %}können mehrere Mastergeräte zeitgleich agieren?{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Priorität" %}</b>&nbsp;&ndash; {% blocktranslate %}Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.{% endblocktranslate %}
-                        </li>
-                        <li class="lead">
-                            <b>{% translate "Typische Anwendung" %}</b>&nbsp;&ndash; {% blocktranslate %}ggf. Beispielhafte Anwendung.{% endblocktranslate %}
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-12 lead mt-3">
-                    <a role="button"
-                       class="collapsed text-truncation-btn"
-                       data-toggle="collapse"
-                       href="#collapseInfoProtocols"
-                       aria-expanded="false"
-                       aria-controls="collapseInfo"
-                       data-expanded-text="{% translate 'Zeige weniger ...' %}"
-                       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-                </div>
-            </div>
+            </li>
+            <li class="lead">
+              <b>{% translate "Unterstützte Übertragungsmedien" %}</b>&nbsp;&ndash; {% translate "wie werden Signale übertragen?" %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Zugehörige Standards" %}</b>&nbsp;&ndash; {% blocktranslate %}spezifische Standards, denen jedes Protokoll zugeordnet werden kann.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Open-Source-Status" %}</b>&nbsp;&ndash; {% blocktranslate %}ist das Protokoll öffentlich und frei verfügbar?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Lizenzgebühr" %}</b>&nbsp;&ndash; {% blocktranslate %}ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die Zertifizierung fällig?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Netzwerktopologie" %}</b>&nbsp;&ndash; {% blocktranslate %}was ist die physische und logische Anordnung von Geräten und Komponenten in einem Netzwerk?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Implementierte Sicherheitsmechanismen" %}</b>&nbsp;&ndash; {% blocktranslate %}ob und welche Mechanismen sind im Protokoll implementiert, um die Datensicherheit zu gewährleisten?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Bandbreite" %}</b>&nbsp;&ndash; {% blocktranslate %}die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen Komponenten des Systems zu übertragen.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Frequenz" %}</b>&nbsp;&ndash; {% blocktranslate %}die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den drahtlosen Kommunikationsgeräten im System verwendet wird.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Reichweite" %}</b>&nbsp;&ndash; {% blocktranslate %}die maximale Entfernung, über die die Kommunikation zwischen den verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden kann, ohne dass die Signalstärke zu schwach wird.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Implementierte OSI-Schichten" %}</b>&nbsp;&ndash; {% blocktranslate %}die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation zwischen den verschiedenen Komponenten des Systems.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Ebenen der Gebäudeautomation" %}</b>&nbsp;&ndash; {% blocktranslate %}die hierarchische Struktur eines Gebäudeautomation Systems.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Datenmodell Architektur" %}</b>&nbsp;&ndash; {% blocktranslate %}wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>Discovery</b>&nbsp;&ndash; {% blocktranslate %}ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der Datenübertragungautomatisch zu identifizieren?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>Multi Master</b>&nbsp;&ndash; {% blocktranslate %}können mehrere Mastergeräte zeitgleich agieren?{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Priorität" %}</b>&nbsp;&ndash; {% blocktranslate %}Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden.{% endblocktranslate %}
+            </li>
+            <li class="lead">
+              <b>{% translate "Typische Anwendung" %}</b>&nbsp;&ndash; {% blocktranslate %}ggf. Beispielhafte Anwendung.{% endblocktranslate %}
+            </li>
+          </ul>
         </div>
-    </section>
+        <div class="col-lg-12 lead mt-3">
+          <a role="button"
+             class="collapsed text-truncation-btn"
+             data-toggle="collapse"
+             href="#collapseInfoProtocols"
+             aria-expanded="false"
+             aria-controls="collapseInfo"
+             data-expanded-text="{% translate 'Zeige weniger ...' %}"
+             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+        </div>
+      </div>
+    </div>
+  </section>

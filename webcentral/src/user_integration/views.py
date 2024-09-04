@@ -18,9 +18,13 @@ def userEngagementDetails(request, engagementId):
 
 def userEngagementDetailsTitle(request, engagmentTitle):
     try:
-        userEngagementObj = UserEngagement.objects.get(category_de=engagmentTitle)
+        userEngagementObj = UserEngagement.objects.get(
+            category_de=engagmentTitle
+        )
     except:
-        userEngagementObj = UserEngagement.objects.get(category_en=engagmentTitle)
+        userEngagementObj = UserEngagement.objects.get(
+            category_en=engagmentTitle
+        )
 
     engagementId = userEngagementObj.id
     context = _defineContextForView()

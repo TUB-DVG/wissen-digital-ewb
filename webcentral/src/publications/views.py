@@ -72,7 +72,9 @@ def index(request):
         "focusBorder": "global",
     }
     if filtering:
-        return render(request, "publications/publications-results.html", context)
+        return render(
+            request, "publications/publications-results.html", context
+        )
 
     return render(request, "publications/publications-listings.html", context)
 

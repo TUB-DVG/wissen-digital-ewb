@@ -96,9 +96,13 @@ def import_bibtex(request):
                     entry["number"] = entry.get("number", None)
 
                     if isinstance(entry["volume"], six.text_type):
-                        entry["volume"] = int(re.sub("[^0-9]", "", entry["volume"]))
+                        entry["volume"] = int(
+                            re.sub("[^0-9]", "", entry["volume"])
+                        )
                     if isinstance(entry["number"], six.text_type):
-                        entry["number"] = int(re.sub("[^0-9]", "", entry["number"]))
+                        entry["number"] = int(
+                            re.sub("[^0-9]", "", entry["number"])
+                        )
 
                     # remove whitespace characters (likely due to line breaks)
                     entry["url"] = re.sub(r"\s", "", entry["url"])
@@ -112,7 +116,9 @@ def import_bibtex(request):
                             break
 
                     if type_id is None:
-                        errors["bibliography"] = 'Type "' + entry["type"] + '" unknown.'
+                        errors["bibliography"] = (
+                            'Type "' + entry["type"] + '" unknown.'
+                        )
                         break
 
                     # add publication
@@ -177,7 +183,9 @@ def import_bibtex(request):
                     )
                 else:
                     msg = (
-                        "Successfully added " + str(len(publications)) + " publication."
+                        "Successfully added "
+                        + str(len(publications))
+                        + " publication."
                     )
 
             # show message
@@ -185,7 +193,9 @@ def import_bibtex(request):
 
             # redirect to publication listing
             if len(publications) == 1:
-                return HttpResponseRedirect("../%s/change/" % publications[0].id)
+                return HttpResponseRedirect(
+                    "../%s/change/" % publications[0].id
+                )
             else:
                 return HttpResponseRedirect("../")
     else:

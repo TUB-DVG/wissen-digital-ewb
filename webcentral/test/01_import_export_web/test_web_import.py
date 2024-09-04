@@ -5,7 +5,9 @@ from sqlalchemy import create_engine
 
 # read data from the xlsx file
 path_to_xlsx = "enargus_csv_20220902_test1.xlsx"
-df_xlsx = pd.read_excel(path_to_xlsx, converters={"PLZ_ZWE": lambda x: f"{x:04}"})
+df_xlsx = pd.read_excel(
+    path_to_xlsx, converters={"PLZ_ZWE": lambda x: f"{x:04}"}
+)
 # print(df_xlxs)
 
 fkz_test = ["03EWR010K", "03EWR002P", "03EWR008L", "03EWR008I"]
@@ -92,11 +94,13 @@ for fkz in fkz_test:
     print("Vergleich für Projekt {}".format(fkz))
     # comparison "Laufzeitbeginn" (date format)
     db_laufzeitbeginn = df_db[df_db["fkz"] == fkz]["laufzeitbeginn"]
-    db_laufzeitbeginn = pd.to_datetime(db_laufzeitbeginn.values[0]).strftime("%Y-%m-%d")
-    xlsx_laufzeitbeginn = df_xlsx[df_xlsx["fkz"] == str(fkz)]["Laufzeitbeginn"]
-    xlsx_laufzeitbeginn = pd.to_datetime(xlsx_laufzeitbeginn.values[0]).strftime(
+    db_laufzeitbeginn = pd.to_datetime(db_laufzeitbeginn.values[0]).strftime(
         "%Y-%m-%d"
     )
+    xlsx_laufzeitbeginn = df_xlsx[df_xlsx["fkz"] == str(fkz)]["Laufzeitbeginn"]
+    xlsx_laufzeitbeginn = pd.to_datetime(
+        xlsx_laufzeitbeginn.values[0]
+    ).strftime("%Y-%m-%d")
 
     print("## Vergleich Laufzeitbeginn bzw. date-feature")
     if str(db_laufzeitbeginn) == str(xlsx_laufzeitbeginn):
@@ -119,7 +123,9 @@ for fkz in fkz_test:
     # comparison "Kurzbeschreibung" (character format)
     db_kurzbeschreibung = df_db[df_db["fkz"] == fkz]["kurzbeschreibung_de"]
     db_kurzbeschreibung = db_kurzbeschreibung.values[0]
-    xlsx_kurzbeschreibung = df_xlsx[df_xlsx["fkz"] == str(fkz)]["Kurzbeschreibung_de"]
+    xlsx_kurzbeschreibung = df_xlsx[df_xlsx["fkz"] == str(fkz)][
+        "Kurzbeschreibung_de"
+    ]
     xlsx_kurzbeschreibung = xlsx_kurzbeschreibung.values[0]
     if db_kurzbeschreibung == xlsx_kurzbeschreibung:
         print("Die Angaben zum Kurzbeschreibung_de sind gleich.")
@@ -136,7 +142,9 @@ for fkz in fkz_test:
             )
         )
 
-    print("## Vergleich PLZ_zwe bzw. character format, oft fehlt die erste Null")
+    print(
+        "## Vergleich PLZ_zwe bzw. character format, oft fehlt die erste Null"
+    )
     # comparison "PLZ_zwe" (character format, often first zero removed)
     db_PLZ_ZWE = df_db[df_db["fkz"] == fkz]["zwe_plz"]
     db_PLZ_ZWE = str(db_PLZ_ZWE.values[0])
@@ -146,12 +154,16 @@ for fkz in fkz_test:
     if db_PLZ_ZWE == xlsx_PLZ_ZWE:
         print("Die Angaben zum PLZ_zwe sind gleich.")
         print(
-            " -- Datenbank: {}   \n --      xlxs: {}".format(db_PLZ_ZWE, xlsx_PLZ_ZWE)
+            " -- Datenbank: {}   \n --      xlxs: {}".format(
+                db_PLZ_ZWE, xlsx_PLZ_ZWE
+            )
         )
     else:
         print("Die Angaben zum PLZ_zwe_de sind NICHT gleich.")
         print(
-            " -- Datenbank: {}   \n --      xlxs: {}".format(db_PLZ_ZWE, xlsx_PLZ_ZWE)
+            " -- Datenbank: {}   \n --      xlxs: {}".format(
+                db_PLZ_ZWE, xlsx_PLZ_ZWE
+            )
         )
 
     print("## Vergleich Foerdersumme bzw. decimal format")

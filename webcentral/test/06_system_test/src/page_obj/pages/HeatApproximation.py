@@ -23,7 +23,9 @@ class HeatApproximation(object):
         """Switches to the Iframe in which the react app is located."""
         wait = WebDriverWait(self.driver, timeout=2)
         iframeObj = wait.until(
-            EC.presence_of_element_located((By.XPATH, Locator.currentLoadIFrame))
+            EC.presence_of_element_located(
+                (By.XPATH, Locator.currentLoadIFrame)
+            )
         )
 
         self.driver.switch_to.frame(iframeObj)

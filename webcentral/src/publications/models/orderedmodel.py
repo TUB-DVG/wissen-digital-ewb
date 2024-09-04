@@ -51,7 +51,8 @@ class OrderedModel(models.Model):
 
     def _valid_ordering_reference(self, reference):
         return self.order_with_respect_to is None or (
-            self._get_order_with_respect_to() == reference._get_order_with_respect_to()
+            self._get_order_with_respect_to()
+            == reference._get_order_with_respect_to()
         )
 
     def get_ordering_queryset(self, qs=None):
@@ -64,7 +65,11 @@ class OrderedModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            c = self.get_ordering_queryset().aggregate(Max("order")).get("order__max")
+            c = (
+                self.get_ordering_queryset()
+                .aggregate(Max("order"))
+                .get("order__max")
+            )
             self.order = 0 if c is None else c + 1
         super(OrderedModel, self).save(*args, **kwargs)
 
@@ -148,7 +153,9 @@ class OrderedModel(models.Model):
         Move this object up one position.
         """
         self.swap(
-            self.get_ordering_queryset().filter(order__lt=self.order).order_by("-order")
+            self.get_ordering_queryset()
+            .filter(order__lt=self.order)
+            .order_by("-order")
         )
 
     def down(self):
@@ -236,12 +243,20 @@ class OrderedModel(models.Model):
         """
         Move this object to the top of the ordered stack.
         """
-        o = self.get_ordering_queryset().aggregate(Min("order")).get("order__min")
+        o = (
+            self.get_ordering_queryset()
+            .aggregate(Min("order"))
+            .get("order__min")
+        )
         self.to(o)
 
     def bottom(self):
         """
         Move this object to the bottom of the ordered stack.
         """
-        o = self.get_ordering_queryset().aggregate(Max("order")).get("order__max")
+        o = (
+            self.get_ordering_queryset()
+            .aggregate(Max("order"))
+            .get("order__max")
+        )
         self.to(o)

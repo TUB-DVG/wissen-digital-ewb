@@ -109,7 +109,12 @@ class TestUseCaseFiltering(TestCase):
         """Test the behaviour if multiple use-elements are selected."""
 
         listOfdegreeOfDetailElements = list(
-            set([useCaseObj.degreeOfDetail for useCaseObj in UseCase.objects.all()])
+            set(
+                [
+                    useCaseObj.degreeOfDetail
+                    for useCaseObj in UseCase.objects.all()
+                ]
+            )
         )
 
         numberOfChoices = choice([2, 3, 4])

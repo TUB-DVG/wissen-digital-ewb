@@ -3,34 +3,36 @@
 {% block title %}Server Error{% endblock %}
 {% load static %}
 {% block content %}
-    <section class="py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    {% if request.LANGUAGE_CODE == "de" %}
-                        <img src="{% static 'assets/images/StartPage_figure.svg' %}"
-                             class="rounded"
-                             alt="overview_figure"
-                             style="width: 800px vertical-align: middle"
-                             nonce="{{ request.csp_nonce }}" />
-                    {% else %}
-                        <img src="{% static 'assets/images/StartPage_figure_en.svg' %}"
-                             class="rounded"
-                             alt="overview_figure"
-                             style="width: 800px vertical-align: middle"
-                             nonce="{{ request.csp_nonce }}" />
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="bg-light p-4 text-center rounded-3">
-                        <h1 class="m-0">403 - Permission Denied</h1>
-                        <p class="lead">Sorry, you do not have permission to access this page. Please contact the site administrator.</p>
-                        <a href="/" class="btn btn-primary">Return to home page</a>
-                    </div>
-                </div>
-            </div>
+  <section class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          {% if request.LANGUAGE_CODE == "de" %}
+            <img src="{% static 'assets/images/StartPage_figure.svg' %}"
+                 class="rounded"
+                 alt="overview_figure"
+                 style="width: 800px vertical-align: middle"
+                 nonce="{{ request.csp_nonce }}" />
+          {% else %}
+            <img src="{% static 'assets/images/StartPage_figure_en.svg' %}"
+                 class="rounded"
+                 alt="overview_figure"
+                 style="width: 800px vertical-align: middle"
+                 nonce="{{ request.csp_nonce }}" />
+          {% endif %}
         </div>
-    </section>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-light p-4 text-center rounded-3">
+            <h1 class="m-0">403 - Permission Denied</h1>
+            <p class="lead">
+              Sorry, you do not have permission to access this page. Please contact the site administrator.
+            </p>
+            <a href="/" class="btn btn-primary">Return to home page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}

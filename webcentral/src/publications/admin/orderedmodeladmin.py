@@ -53,7 +53,9 @@ if not getattr(ChangeList, "get_queryset", False):
 class OrderedModelAdmin(TranslationAdmin):
 
     def get_model_info(self):
-        return dict(app=self.model._meta.app_label, model=self.model._meta.model_name)
+        return dict(
+            app=self.model._meta.app_label, model=self.model._meta.model_name
+        )
 
     def get_urls(self):
         from django.urls import include, re_path
@@ -109,7 +111,9 @@ class OrderedModelAdmin(TranslationAdmin):
     def changelist_view(self, request, extra_context=None):
         cl = self._get_changelist(request)
         self.request_query_string = cl.get_query_string()
-        return super(OrderedModelAdmin, self).changelist_view(request, extra_context)
+        return super(OrderedModelAdmin, self).changelist_view(
+            request, extra_context
+        )
 
     def move_view(self, request, object_id, direction):
         cl = self._get_changelist(request)
@@ -129,7 +133,9 @@ class OrderedModelAdmin(TranslationAdmin):
                 "object_id": obj.id,
                 "urls": {
                     "up": reverse(
-                        "admin:{app}_{model}_order_up".format(**self.get_model_info()),
+                        "admin:{app}_{model}_order_up".format(
+                            **self.get_model_info()
+                        ),
                         args=[obj.id, "up"],
                     ),
                     "down": reverse(

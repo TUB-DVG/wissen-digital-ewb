@@ -119,7 +119,10 @@ class MovedModule(_LazyDescr):
         #
         # First, if possible, avoid loading the module just to look at __file__,
         # __name__, or __path__.
-        if attr in ("__file__", "__name__", "__path__") and self.mod not in sys.modules:
+        if (
+            attr in ("__file__", "__name__", "__path__")
+            and self.mod not in sys.modules
+        ):
             raise AttributeError(attr)
         try:
             _module = self._resolve()
@@ -201,7 +204,9 @@ _moved_attributes = [
     MovedModule("html_entities", "htmlentitydefs", "html.entities"),
     MovedModule("html_parser", "HTMLParser", "html.parser"),
     MovedModule("http_client", "httplib", "http.client"),
-    MovedModule("email_mime_multipart", "email.MIMEMultipart", "email.mime.multipart"),
+    MovedModule(
+        "email_mime_multipart", "email.MIMEMultipart", "email.mime.multipart"
+    ),
     MovedModule("email_mime_text", "email.MIMEText", "email.mime.text"),
     MovedModule("email_mime_base", "email.MIMEBase", "email.mime.base"),
     MovedModule("BaseHTTPServer", "BaseHTTPServer", "http.server"),
@@ -221,15 +226,27 @@ _moved_attributes = [
     MovedModule("tkinter_ttk", "ttk", "tkinter.ttk"),
     MovedModule("tkinter_constants", "Tkconstants", "tkinter.constants"),
     MovedModule("tkinter_dnd", "Tkdnd", "tkinter.dnd"),
-    MovedModule("tkinter_colorchooser", "tkColorChooser", "tkinter.colorchooser"),
-    MovedModule("tkinter_commondialog", "tkCommonDialog", "tkinter.commondialog"),
+    MovedModule(
+        "tkinter_colorchooser", "tkColorChooser", "tkinter.colorchooser"
+    ),
+    MovedModule(
+        "tkinter_commondialog", "tkCommonDialog", "tkinter.commondialog"
+    ),
     MovedModule("tkinter_tkfiledialog", "tkFileDialog", "tkinter.filedialog"),
     MovedModule("tkinter_font", "tkFont", "tkinter.font"),
     MovedModule("tkinter_messagebox", "tkMessageBox", "tkinter.messagebox"),
-    MovedModule("tkinter_tksimpledialog", "tkSimpleDialog", "tkinter.simpledialog"),
-    MovedModule("urllib_parse", __name__ + ".moves.urllib_parse", "urllib.parse"),
-    MovedModule("urllib_error", __name__ + ".moves.urllib_error", "urllib.error"),
-    MovedModule("urllib", __name__ + ".moves.urllib", __name__ + ".moves.urllib"),
+    MovedModule(
+        "tkinter_tksimpledialog", "tkSimpleDialog", "tkinter.simpledialog"
+    ),
+    MovedModule(
+        "urllib_parse", __name__ + ".moves.urllib_parse", "urllib.parse"
+    ),
+    MovedModule(
+        "urllib_error", __name__ + ".moves.urllib_error", "urllib.error"
+    ),
+    MovedModule(
+        "urllib", __name__ + ".moves.urllib", __name__ + ".moves.urllib"
+    ),
     MovedModule("urllib_robotparser", "robotparser", "urllib.robotparser"),
     MovedModule("xmlrpc_client", "xmlrpclib", "xmlrpc.client"),
     MovedModule("xmlrpc_server", "xmlrpclib", "xmlrpc.server"),
@@ -318,7 +335,9 @@ _urllib_request_moved_attributes = [
     MovedAttribute("ProxyHandler", "urllib2", "urllib.request"),
     MovedAttribute("BaseHandler", "urllib2", "urllib.request"),
     MovedAttribute("HTTPPasswordMgr", "urllib2", "urllib.request"),
-    MovedAttribute("HTTPPasswordMgrWithDefaultRealm", "urllib2", "urllib.request"),
+    MovedAttribute(
+        "HTTPPasswordMgrWithDefaultRealm", "urllib2", "urllib.request"
+    ),
     MovedAttribute("AbstractBasicAuthHandler", "urllib2", "urllib.request"),
     MovedAttribute("HTTPBasicAuthHandler", "urllib2", "urllib.request"),
     MovedAttribute("ProxyBasicAuthHandler", "urllib2", "urllib.request"),
@@ -342,7 +361,9 @@ for attr in _urllib_request_moved_attributes:
     setattr(Module_six_moves_urllib_request, attr.name, attr)
 del attr
 
-Module_six_moves_urllib_request._moved_attributes = _urllib_request_moved_attributes
+Module_six_moves_urllib_request._moved_attributes = (
+    _urllib_request_moved_attributes
+)
 
 sys.modules[__name__ + ".moves.urllib_request"] = sys.modules[
     __name__ + ".moves.urllib.request"
@@ -363,7 +384,9 @@ for attr in _urllib_response_moved_attributes:
     setattr(Module_six_moves_urllib_response, attr.name, attr)
 del attr
 
-Module_six_moves_urllib_response._moved_attributes = _urllib_response_moved_attributes
+Module_six_moves_urllib_response._moved_attributes = (
+    _urllib_response_moved_attributes
+)
 
 sys.modules[__name__ + ".moves.urllib_response"] = sys.modules[
     __name__ + ".moves.urllib.response"

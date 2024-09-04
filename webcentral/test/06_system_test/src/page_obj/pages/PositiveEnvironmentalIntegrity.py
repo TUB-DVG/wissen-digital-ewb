@@ -36,7 +36,9 @@ class PositiveEnvironmentalIntegrity(GenericPageObject):
 
     def getBoxes(self):
         """Return the boxes, which link to the EnvironmentalImpact-Detailspage."""
-        return self.driver.find_elements(By.XPATH, "//div[contains(@class, 'box ')]")
+        return self.driver.find_elements(
+            By.XPATH, "//div[contains(@class, 'box ')]"
+        )
 
     def getEvaluationDiv(self):
         """ """

@@ -4,67 +4,69 @@
 {% url 'set_language' as set_language_url %}
 <!-- Footer START -->
 <footer class="pt-5 bg-white">
-    <div class="container">
-        <!-- Bottom footer -->
-        <div class="py-3">
-            <div class="container px-0" id="footer">
-                <div class="row">
-                    <!-- mailto START -->
-                    <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-                        <span>
-                            <i class="fas fa-envelope-open pr-1"></i>
-                            <a href="mailto:info@dvg.tu-berlin.de">info@dvg.tu-berlin.de</a>
-                        </span>
-                    </div>
-                    <div class="col-md-3 d-md-flex align-items-center py-3 text-center text-md-left">
-                        {% translate "Sprache wählen" %}:&nbsp;
-                        <form style="display: inline" action="{{ set_language_url }}" method="post">
-                            {% csrf_token %}
-                            <select name="language"
-                                    onchange="this.form.submit()"
-                                    style="background-color: transparent;
-                                           outline: none;
-                                           border: none">
-                                {% get_available_languages as LANGUAGES %}
-                                {% for code, name in LANGUAGES %}
-                                    <option value="{{ code }}" {% if LANGUAGE_CODE == code %}selected{% endif %}>{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                    </div>
-                    <!--<div class="col-md-2 d-md-flex justify-content-between align-items-center">-->
-                    <!--    <span>-->
-                    <!--        <a href="/static/static/sphinx/html/index.html">{% translate "Dokumentation" %}</a>-->
-                    <!--    </span>-->
-                    <!---->
-                    <!--</div>-->
-                    <!---->
-                    <!-- mailto END -->
-                    <!-- offical links START -->
-                    <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left ">
-                        <!-- ueber uns END -->
-                        <span>
-                            <a href="{% url 'about' %}">{% translate "Über uns" %}</a>
-                        </span>
-                    </div>
-                    <!-- ueber uns END -->
-                    <!-- Impressumg uns START -->
-                    <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-                        <span>
-                            <a href="{% url 'impressum' %}" id="impressumLink">{% translate "Impressum" %}</a>
-                        </span>
-                    </div>
-                    <!-- Impressum END -->
-                    <!-- Datenschutzhinweis START -->
-                    <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-                        <span>
-                            <a href="{% url 'Datenschutzhinweis' %}">{% translate "Datenschutz&shy;hinweis" %}</a>
-                        </span>
-                    </div>
-                    <!-- Datenschutzhinweis END -->
-                </div>
-            </div>
+  <div class="container">
+    <!-- Bottom footer -->
+    <div class="py-3">
+      <div class="container px-0" id="footer">
+        <div class="row">
+          <!-- mailto START -->
+          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+            <span>
+              <i class="fas fa-envelope-open pr-1"></i>
+              <a href="mailto:info@dvg.tu-berlin.de">info@dvg.tu-berlin.de</a>
+            </span>
+          </div>
+          <div class="col-md-3 d-md-flex align-items-center py-3 text-center text-md-left">
+            {% translate "Sprache wählen" %}:&nbsp;
+            <form style="display: inline" action="{{ set_language_url }}" method="post">
+              {% csrf_token %}
+              <select name="language"
+                      onchange="this.form.submit()"
+                      style="background-color: transparent;
+                             outline: none;
+                             border: none">
+                {% get_available_languages as LANGUAGES %}
+                {% for code, name in LANGUAGES %}
+                  <option value="{{ code }}" {% if LANGUAGE_CODE == code %}selected{% endif %}>
+                    {{ name }}
+                  </option>
+                {% endfor %}
+              </select>
+            </form>
+          </div>
+          <!--<div class="col-md-2 d-md-flex justify-content-between align-items-center">-->
+          <!--    <span>-->
+          <!--        <a href="/static/static/sphinx/html/index.html">{% translate "Dokumentation" %}</a>-->
+          <!--    </span>-->
+          <!---->
+          <!--</div>-->
+          <!---->
+          <!-- mailto END -->
+          <!-- offical links START -->
+          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left ">
+            <!-- ueber uns END -->
+            <span>
+              <a href="{% url 'about' %}">{% translate "Über uns" %}</a>
+            </span>
+          </div>
+          <!-- ueber uns END -->
+          <!-- Impressumg uns START -->
+          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+            <span>
+              <a href="{% url 'impressum' %}" id="impressumLink">{% translate "Impressum" %}</a>
+            </span>
+          </div>
+          <!-- Impressum END -->
+          <!-- Datenschutzhinweis START -->
+          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+            <span>
+              <a href="{% url 'Datenschutzhinweis' %}">{% translate "Datenschutz&shy;hinweis" %}</a>
+            </span>
+          </div>
+          <!-- Datenschutzhinweis END -->
         </div>
+      </div>
     </div>
+  </div>
 </footer>
 <!-- Footer END -->

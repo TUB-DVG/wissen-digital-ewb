@@ -79,7 +79,9 @@ app.layout = html.Div(
             id="displayMonth",
             inline=True,
         ),
-        html.Button(_("Approximation starten"), id="approximation_start", n_clicks=0),
+        html.Button(
+            _("Approximation starten"), id="approximation_start", n_clicks=0
+        ),
         # Download data as csv
         html.Button(_("Download als csv"), id="btnDownloadCsv"),
         dcc.Download(id="downloadCsv"),
@@ -200,12 +202,16 @@ def updatePowerGraph(
             result = data
         else:
             result = {
-                "Last": (data.groupby(data.Time.dt.month).get_group(int(displayMonth)))[
-                    "Last"
-                ],
-                "Time": (data.groupby(data.Time.dt.month).get_group(int(displayMonth)))[
-                    "Time"
-                ],
+                "Last": (
+                    data.groupby(data.Time.dt.month).get_group(
+                        int(displayMonth)
+                    )
+                )["Last"],
+                "Time": (
+                    data.groupby(data.Time.dt.month).get_group(
+                        int(displayMonth)
+                    )
+                )["Time"],
             }
 
         fig = make_subplots()
@@ -219,7 +225,9 @@ def updatePowerGraph(
             )
         )
 
-        fig.update_xaxes(tickangle=90, title_text=_("Datum"), title_font={"size": 20})
+        fig.update_xaxes(
+            tickangle=90, title_text=_("Datum"), title_font={"size": 20}
+        )
 
         fig.update_yaxes(title_text=_("Stromlastgang in kW"), title_standoff=25)
         return fig, data.to_dict()  # Store data as a dictionary
@@ -249,7 +257,9 @@ def download_as_csv(nClicks, application: str, powerRequirement: int, state):
             ["", ""],
             [_("Datum"), _("Last")],
         ]
-        return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv", index=False)
+        return dcc.send_data_frame(
+            data.to_csv, "Stromlastgang.csv", index=False
+        )
 
 
 # ------------------------------------------------------------------------------

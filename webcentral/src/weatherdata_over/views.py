@@ -23,7 +23,9 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    weatherdata = Weatherdata.objects.all()  # reads all data from table Teilprojekt
+    weatherdata = (
+        Weatherdata.objects.all()
+    )  # reads all data from table Teilprojekt
     filtered_by = [None] * 2
     searched = None
 
@@ -99,7 +101,9 @@ def index(request):
             "weatherdata_over/weatherdata-listings-results.html",
             context,
         )
-    return render(request, "weatherdata_over/data-service-listings.html", context)
+    return render(
+        request, "weatherdata_over/data-service-listings.html", context
+    )
 
 
 def weatherdata_view(request, id):
@@ -120,7 +124,9 @@ def weatherdata_view(request, id):
     letztes_update = UpdateProperties(
         "bi bi-patch-exclamation-fill", "letztes Update", "text-danger"
     )
-    laufende_updates = UpdateProperties("fas fa-sync", "Updates", "text-success")
+    laufende_updates = UpdateProperties(
+        "fas fa-sync", "Updates", "text-success"
+    )
 
     # changing labels and icon
     update_properties = letztes_update

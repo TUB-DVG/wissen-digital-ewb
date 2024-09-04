@@ -22,7 +22,9 @@ class DataSufficiency(models.Model):
         """Getter method for the long-description.
         HTML is rendered by the django-Template engine.
         """
-        templateObj = Template(self.categoryLongDescription.replace("<br>", "<br><br>"))
+        templateObj = Template(
+            self.categoryLongDescription.replace("<br>", "<br><br>")
+        )
         contextObj = Context({})
         return templateObj.render(contextObj)
 
@@ -33,7 +35,9 @@ class DataSufficiency(models.Model):
         combinedText = "<ul>"
         for literature in self.literature.all():
             if literature.literature.startswith("<sup"):
-                combinedText += "<li id='footnote1'>" + literature.literature + "</li>"
+                combinedText += (
+                    "<li id='footnote1'>" + literature.literature + "</li>"
+                )
             else:
                 linkName = literature.linkName.replace("\n", "")
                 combinedText += (

@@ -77,7 +77,9 @@ class TestImportEnargusData(TestCase):
         expectedDiffStr = f"{Address}:\n"
         expectedDiffStr += "   address_id: 1 -> 2\n"
         expectedDiffStr += "    plz: 10123 -> 10777\n"
-        expectedDiffStr += "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        expectedDiffStr += (
+            "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        )
 
         self.assertEqual(
             importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
@@ -115,7 +117,9 @@ class TestImportEnargusData(TestCase):
         expectedDiffStr = f"{Address}:\n"
         expectedDiffStr += "   address_id: 1 -> 2\n"
         expectedDiffStr += "    plz: 10123 -> 10777\n"
-        expectedDiffStr += "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        expectedDiffStr += (
+            "    address: Müller-Breslau-Str. 11 -> FasanenStr. 13\n"
+        )
 
         expectedDiffStr += f"{GrantRecipient}:\n"
         expectedDiffStr += f"""grantRecipient_id:
@@ -168,7 +172,9 @@ class TestImportEnargusData(TestCase):
         expectedDiffStr += (
             f"   location: {oldAdress.location} -> {newAddress.location}\n"
         )
-        expectedDiffStr += f"    address: {oldAdress.address} -> {newAddress.address}\n"
+        expectedDiffStr += (
+            f"    address: {oldAdress.address} -> {newAddress.address}\n"
+        )
 
         expectedDiffStr += f"{ExecutingEntity}:\n"
         expectedDiffStr += f"""executingEntity_id:
@@ -236,8 +242,12 @@ class TestImportEnargusData(TestCase):
         )
         expectedDiffStr += f"""
         firstName: {oldPersonObj.firstName} -> {newPersonObj.firstName}\n"""
-        expectedDiffStr += f"   title: {oldPersonObj.title} -> {newPersonObj.title}\n"
-        expectedDiffStr += f"   email: {oldPersonObj.email} -> {newPersonObj.email}\n"
+        expectedDiffStr += (
+            f"   title: {oldPersonObj.title} -> {newPersonObj.title}\n"
+        )
+        expectedDiffStr += (
+            f"   email: {oldPersonObj.email} -> {newPersonObj.email}\n"
+        )
 
         self.assertEqual(
             importObj.diffStr.replace(" ", ""), expectedDiffStr.replace(" ", "")
@@ -358,11 +368,13 @@ class TestImportEnargusData(TestCase):
             rAndDPlanningCategoryText="Qlter Text",
         )
 
-        oldFurtherFundingObj, _ = FurtherFundingInformation.objects.get_or_create(
-            fundedBy="BMWK",
-            projectManagementAgency="PTJ",
-            researchProgram="EnergieWEndeBauen",
-            fundingProgram="Test-Project",
+        oldFurtherFundingObj, _ = (
+            FurtherFundingInformation.objects.get_or_create(
+                fundedBy="BMWK",
+                projectManagementAgency="PTJ",
+                researchProgram="EnergieWEndeBauen",
+                fundingProgram="Test-Project",
+            )
         )
         oldPersonObj, _ = Person.objects.get_or_create(
             surname="Meier",
@@ -416,9 +428,12 @@ class TestImportEnargusData(TestCase):
         )
 
         _ = importObj.getOrCreate(row, header, [])
-        self.assertTrue("<class 'project_listing.models.Address'>" in importObj.diffStr)
         self.assertTrue(
-            "<class 'project_listing.models.ExecutingEntity'>" in importObj.diffStr
+            "<class 'project_listing.models.Address'>" in importObj.diffStr
+        )
+        self.assertTrue(
+            "<class 'project_listing.models.ExecutingEntity'>"
+            in importObj.diffStr
         )
         self.assertTrue(
             "<class 'project_listing.models.RAndDPlanningCategory'>"

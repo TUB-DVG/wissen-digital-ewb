@@ -150,14 +150,22 @@ def resultSearch(request):
 
     filteredTools = (
         Tools.objects.annotate(
-            classificationAgg=StringAgg(classificationQueryExpression, delimiter=", ")
+            classificationAgg=StringAgg(
+                classificationQueryExpression, delimiter=", "
+            )
         )
-        .values("id", "name", "shortDescription", "lastUpdate", "classificationAgg")
+        .values(
+            "id", "name", "shortDescription", "lastUpdate", "classificationAgg"
+        )
         .filter(criterionToolsOne | criterionToolsTwo)
     )
     # filtered projects
-    criterionProjectsOne = Q(enargusData__collaborativeProject__icontains=searchInput)
-    criterionProejctsTwo = Q(enargusData__shortDescriptionDe__icontains=searchInput)
+    criterionProjectsOne = Q(
+        enargusData__collaborativeProject__icontains=searchInput
+    )
+    criterionProejctsTwo = Q(
+        enargusData__shortDescriptionDe__icontains=searchInput
+    )
     filteredProjects = Subproject.objects.values(
         "referenceNumber_id",
         "enargusData__collaborativeProject",
@@ -169,9 +177,9 @@ def resultSearch(request):
     # filtered norms
     criterionNormsOne = Q(name__icontains=searchInput)
     criterionNormsTwo = Q(shortDescription__icontains=searchInput)
-    filteredNorms = Norm.objects.values("id", "name", "shortDescription").filter(
-        criterionNormsOne | criterionNormsTwo
-    )
+    filteredNorms = Norm.objects.values(
+        "id", "name", "shortDescription"
+    ).filter(criterionNormsOne | criterionNormsTwo)
 
     # filtered protocols
     criterionProtocolsOne = Q(name__icontains=searchInput)
@@ -236,7 +244,9 @@ def resultSearch(request):
             projecName = projecName[:40] + " ... "
         referenceNumber = project.get("referenceNumber_id")
         referenceNumberLastCharacters = referenceNumber[-3:]
-        project["name"] = projecName + " [..." + referenceNumberLastCharacters + "]"
+        project["name"] = (
+            projecName + " [..." + referenceNumberLastCharacters + "]"
+        )
         project["description"] = project.pop("enargusData__shortDescriptionDe")
         project["kindOfItem"] = "Forschungsprojekt"
         project["classificationAgg"] = _("Forschungsprojekt")
@@ -278,12 +288,16 @@ def resultSearch(request):
         criteriaCatalog["classificationAgg"] = _("Kriterienkatalog")
         criteriaCatalog["date"] = _("noch nicht hinterlegt")
         criteriaCatalog["virtDate"] = date.fromisoformat("2049-09-09")
-        criteriaCatalog["pathToFocusImage"] = findPicturesForFocus(criteriaCatalog)
+        criteriaCatalog["pathToFocusImage"] = findPicturesForFocus(
+            criteriaCatalog
+        )
         criteriaCatalog["criteriaCatalogPath"] = ""
         criteriaCatalogName = CriteriaCatalog.objects.filter(
             id=criteriaCatalog["criteriaCatalog"]
         )[0].name
-        criteriaCatalog["criteriaCatalogPath"] = criteriaCatalog["criteriaCatalog"]
+        criteriaCatalog["criteriaCatalogPath"] = criteriaCatalog[
+            "criteriaCatalog"
+        ]
 
     # concat the prepared querySets to one QuerySet
     filteredData = list(

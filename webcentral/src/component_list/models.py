@@ -18,7 +18,9 @@ class Category(models.Model):
 
 class Component(models.Model):
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
-    componentClass = models.ForeignKey("ComponentClass", on_delete=models.CASCADE)
+    componentClass = models.ForeignKey(
+        "ComponentClass", on_delete=models.CASCADE
+    )
     description = models.TextField(blank=True, null=True)
     energyConsumptionUsePhaseTotal = models.FloatField(blank=True, null=True)
     globalWarmingPotentialTotal = models.FloatField(blank=True, null=True)
@@ -44,7 +46,9 @@ class Component(models.Model):
     furtherInformationNotes = models.TextField(blank=True)
     sources = models.TextField(blank=True, null=True)
     operationTime = models.IntegerField(blank=True, null=True)
-    operationTimeSupscript = models.CharField(max_length=100, blank=True, null=True)
+    operationTimeSupscript = models.CharField(
+        max_length=100, blank=True, null=True
+    )
 
     def __str__(self):
         return self.componentClass.componentClass
@@ -104,7 +108,9 @@ class Component(models.Model):
         stringOfFloat = str(self.energyConsumptionUsePhasePassive)
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.energyConsumptionUsePhasePassive is not None:
-            return round(self.energyConsumptionUsePhasePassive, decimalPosToRound)
+            return round(
+                self.energyConsumptionUsePhasePassive, decimalPosToRound
+            )
 
     @property
     def globalWarmingPotentialProductionRoundedSub(self):
@@ -142,7 +148,9 @@ class Component(models.Model):
         stringOfFloat = str(self.globalWarmingPotentialEndOfLife)
         decimalPosToRound = self._findLastDecimalPlaces(stringOfFloat)
         if self.globalWarmingPotentialEndOfLife is not None:
-            return round(self.globalWarmingPotentialEndOfLife, decimalPosToRound)
+            return round(
+                self.globalWarmingPotentialEndOfLife, decimalPosToRound
+            )
 
     @property
     def furtherInformationNotesRendered(self):
@@ -153,7 +161,10 @@ class Component(models.Model):
     @property
     def operationTimeRendered(self):
 
-        if self.operationTimeSupscript is not None or self.operationTimeSupscript != "":
+        if (
+            self.operationTimeSupscript is not None
+            or self.operationTimeSupscript != ""
+        ):
             return Template(
                 str(self.operationTime)
                 + f"<sup class='supForNumValues'>{self.operationTimeSupscript}</sup>"

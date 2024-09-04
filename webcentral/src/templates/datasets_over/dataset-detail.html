@@ -3,161 +3,161 @@
 {% load i18n %}
 {% load static %}
 {% block content %}
-    <!-- =======================
+  <!-- =======================
 Page intro START -->
-    <section class="py-0 py-sm-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Title -->
-                    <h2>{{ dataset.nameDataset }}</h2>
-                    <!-- Content -->
-                    <ul class="list-inline mb-0">
-                        {% if dataset.availability %}
-                            <li class="list-inline-item h6 mb-0">
-                                <i class="{{ category_icon }} text-info me-2">
-                                </i>{{ dataset.availability }}
-                            </li>
-                        {% endif %}
-                        {% if dataset.categoryDataset %}
-                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                                <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
-                                </i>{{ dataset.categoryDataset }}
-                            </li>
-                        {% endif %}
-                        {% if dataset.coverage %}
-                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                                <i class="fas fa-bars fa-book-open me-2">
-                                </i>{{ dataset.coverage }}
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 16px;">
-                <a href="javascript:window.history.back();">{% translate "Zurück" %}</a>
-            </div>
+  <section class="py-0 py-sm-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Title -->
+          <h2>{{ dataset.nameDataset }}</h2>
+          <!-- Content -->
+          <ul class="list-inline mb-0">
+            {% if dataset.availability %}
+              <li class="list-inline-item h6 mb-0">
+                <i class="{{ category_icon }} text-info me-2">
+                </i>{{ dataset.availability }}
+              </li>
+            {% endif %}
+            {% if dataset.categoryDataset %}
+              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
+                </i>{{ dataset.categoryDataset }}
+              </li>
+            {% endif %}
+            {% if dataset.coverage %}
+              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                <i class="fas fa-bars fa-book-open me-2">
+                </i>{{ dataset.coverage }}
+              </li>
+            {% endif %}
+          </ul>
         </div>
-    </section>
-    <!-- =======================  Page intro END -->
-    <!-- ======================= Page content START -->
-    <section class="pb-0 pt-4 py-lg-5">
-        <div class="container technical-cards">
-            <div class="row">
-                <!-- Main content START -->
-                <div class="col-lg-8 mb-4">
-                    <div class="card border-technical p-0">
-                        <!-- Tab contents START -->
-                        <div class="tab-content card-body p-4 detail-card-body">
-                            <!-- Content START -->
-                            <div class="tab-pane container active" id="course-pills-1">
-                                <!-- Course detail START -->
-                                {% if dataset.shortDescriptionDE %}
-                                    <h5 class="mb-3">{% translate "Was ist" %} {{ dataset.resolution }}?</h5>
-                                    <p class="mb-1">{{ shortDescriptionDE.shortDescriptionDEn }}.</p>
-                                {% endif %}
-                                {% if dataset.useCaseCategory %}
-                                    <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
-                                    <p class="mb-0">{{ dataset.useCaseCategory }}</p>
-                                {% endif %}
-                                {% if dataset.coverage %}
-                                    <h5 class="mt-4">{% translate "Geographische Abdeckung" %}</h5>
-                                    <p class="mb-0">{{ dataset.coverage }}</p>
-                                {% endif %}
-                                {% if dataset.resolution %}
-                                    <h5 class="mt-4">{% translate "Auflösung" %}</h5>
-                                    <p class="mb-0">{{ dataset.resolution }}</p>
-                                {% endif %}
-                                {% if dataset.availability %}
-                                    <h5 class="mt-4">{% translate "Verfügbarkeit" %}</h5>
-                                    <p class="mb-0">{{ dataset.availability }}</p>
-                                {% endif %}
-                                {% if dataset.referenceLink %}
-                                    <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
-                                    <p class="mb-0">
-                                        <a href="{{ dataset.referenceLink }}" target="_blank">{{ dataset.referenceLink }}</a>
-                                    </p>
-                                {% endif %}
-                            </div>
-                            <!-- Content END -->
-                        </div>
-                        <!-- Tab contents END -->
-                    </div>
+      </div>
+      <div class="row" style="margin-top: 16px;">
+        <a href="javascript:window.history.back();">{% translate "Zurück" %}</a>
+      </div>
+    </div>
+  </section>
+  <!-- =======================  Page intro END -->
+  <!-- ======================= Page content START -->
+  <section class="pb-0 pt-4 py-lg-5">
+    <div class="container technical-cards">
+      <div class="row">
+        <!-- Main content START -->
+        <div class="col-lg-8 mb-4">
+          <div class="card border-technical p-0">
+            <!-- Tab contents START -->
+            <div class="tab-content card-body p-4 detail-card-body">
+              <!-- Content START -->
+              <div class="tab-pane container active" id="course-pills-1">
+                <!-- Course detail START -->
+                {% if dataset.shortDescriptionDE %}
+                  <h5 class="mb-3">{% translate "Was ist" %} {{ dataset.resolution }}?</h5>
+                  <p class="mb-1">{{ shortDescriptionDE.shortDescriptionDEn }}.</p>
+                {% endif %}
+                {% if dataset.useCaseCategory %}
+                  <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
+                  <p class="mb-0">{{ dataset.useCaseCategory }}</p>
+                {% endif %}
+                {% if dataset.coverage %}
+                  <h5 class="mt-4">{% translate "Geographische Abdeckung" %}</h5>
+                  <p class="mb-0">{{ dataset.coverage }}</p>
+                {% endif %}
+                {% if dataset.resolution %}
+                  <h5 class="mt-4">{% translate "Auflösung" %}</h5>
+                  <p class="mb-0">{{ dataset.resolution }}</p>
+                {% endif %}
+                {% if dataset.availability %}
+                  <h5 class="mt-4">{% translate "Verfügbarkeit" %}</h5>
+                  <p class="mb-0">{{ dataset.availability }}</p>
+                {% endif %}
+                {% if dataset.referenceLink %}
+                  <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
+                  <p class="mb-0">
+                    <a href="{{ dataset.referenceLink }}" target="_blank">{{ dataset.referenceLink }}</a>
+                  </p>
+                {% endif %}
+              </div>
+              <!-- Content END -->
+            </div>
+            <!-- Tab contents END -->
+          </div>
+        </div>
+        <!-- Main content END -->
+        <!-- Right sidebar START -->
+        <div class="col-lg-4">
+          <div class="row mb-5 mb-lg-0">
+            <div class="col-md-6 col-lg-12">
+              <!-- Video START -->
+              <div class="card border-technical p-2 mb-4 z-index-9">
+                <div class="overflow-hidden rounded-3 text-center">
+                  {% if dataset.image %}
+                    <img src=" {{ dataset.image.url }}"
+                         class="p-4"
+                         style="max-height: 200px"
+                         alt="weatherdata image" />
+                  {% else %}
+                    <img src=" {% static 'img/Default.webp' %}"
+                         class="p-4"
+                         style="max-height: 200px"
+                         alt="weatherdata image (else)" />
+                  {% endif %}
+                  <!-- Overlay -->
                 </div>
-                <!-- Main content END -->
-                <!-- Right sidebar START -->
-                <div class="col-lg-4">
-                    <div class="row mb-5 mb-lg-0">
-                        <div class="col-md-6 col-lg-12">
-                            <!-- Video START -->
-                            <div class="card border-technical p-2 mb-4 z-index-9">
-                                <div class="overflow-hidden rounded-3 text-center">
-                                    {% if dataset.image %}
-                                        <img src=" {{ dataset.image.url }}"
-                                             class="p-4"
-                                             style="max-height: 200px"
-                                             alt="weatherdata image" />
-                                    {% else %}
-                                        <img src=" {% static 'img/Default.webp' %}"
-                                             class="p-4"
-                                             style="max-height: 200px"
-                                             alt="weatherdata image (else)" />
-                                    {% endif %}
-                                    <!-- Overlay -->
-                                </div>
-                            </div>
-                            <!-- Video END -->
-                            <!-- Course info START -->
-                            <div class="card card-body border-technical p-4 mb-4">
-                                <!-- Title -->
-                                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
-                                <ul class="list-group border-0">
-                                    {% if dataset.useCaseCategory %}
-                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                            <span class="h6 fw-light mb-0">
-                                                <i class="fas fa-fw fa-book-open">
-                                                </i>
-                                                {% translate "Kategorie" %}
-                                            </span>
-                                            <span>{{ dataset.useCaseCategory }}</span>
-                                        </li>
-                                    {% endif %}
-                                    {% if dataset.categoryDataset %}
-                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                            <span class="h6 fw-light mb-0">
-                                                <i class="{{ category_icon }}">
-                                                </i>
-                                                {% translate "Datensatz" %}
-                                            </span>
-                                            <span>{{ dataset.categoryDataset }}</span>
-                                        </li>
-                                    {% endif %}
-                                    {% if dataset.availability %}
-                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                            <span class="h6 fw-light mb-0">
-                                                <i class="{{ letztes_update_class }} fa-fw">
-                                                </i>
-                                                {% translate "Verfügbarkeit" %}
-                                            </span>
-                                            <span>{{ dataset.availability }}</span>
-                                        </li>
-                                    {% endif %}
-                                </ul>
-                            </div>
-                            <!-- Course info END -->
-                        </div>
-                        <div class="col-md-6 col-lg-12">
-                            <!-- Ta --
+              </div>
+              <!-- Video END -->
+              <!-- Course info START -->
+              <div class="card card-body border-technical p-4 mb-4">
+                <!-- Title -->
+                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
+                <ul class="list-group border-0">
+                  {% if dataset.useCaseCategory %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                      <span class="h6 fw-light mb-0">
+                        <i class="fas fa-fw fa-book-open">
+                        </i>
+                        {% translate "Kategorie" %}
+                      </span>
+                      <span>{{ dataset.useCaseCategory }}</span>
+                    </li>
+                  {% endif %}
+                  {% if dataset.categoryDataset %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                      <span class="h6 fw-light mb-0">
+                        <i class="{{ category_icon }}">
+                        </i>
+                        {% translate "Datensatz" %}
+                      </span>
+                      <span>{{ dataset.categoryDataset }}</span>
+                    </li>
+                  {% endif %}
+                  {% if dataset.availability %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                      <span class="h6 fw-light mb-0">
+                        <i class="{{ letztes_update_class }} fa-fw">
+                        </i>
+                        {% translate "Verfügbarkeit" %}
+                      </span>
+                      <span>{{ dataset.availability }}</span>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+              <!-- Course info END -->
+            </div>
+            <div class="col-md-6 col-lg-12">
+              <!-- Ta --
               -- gs E --
 -- ND -->
-                        </div>
-                    </div>
-                    <!-- Row End -->
-                </div>
-                <!-- Right sidebar END -->
             </div>
-            <!-- Row END -->
+          </div>
+          <!-- Row End -->
         </div>
-    </section>
-    <!--Page content END -->
+        <!-- Right sidebar END -->
+      </div>
+      <!-- Row END -->
+    </div>
+  </section>
+  <!--Page content END -->
 {% endblock %}

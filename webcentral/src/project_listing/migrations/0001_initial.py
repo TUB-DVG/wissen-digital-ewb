@@ -215,7 +215,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "firstName",
-                    models.CharField(help_text="name", max_length=50, null=True),
+                    models.CharField(
+                        help_text="name", max_length=50, null=True
+                    ),
                 ),
                 (
                     "title",

@@ -1,35 +1,35 @@
 {% load static %}
 {% for technicalStandards in page.object_list %}
-    <!-- Card item START -->
-    <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-        <div class="card border-technical h-100" id="{{ technicalStandards.id }}">
-            <!-- Card body -->
-            <a href="{% url 'TechnicalStandards_protocol_details' technicalStandards.id %}">
-                <div class="card-body pb-0" id={{ technicalStandards.id }}>
-                    <!-- Title -->
-                    <h3 class="card-title">
-                        <input type="checkbox"
-                               style="display: none;
-                                      margin-left: 0px;
-                                      vertical-align: middle"
-                               class="comparisonInputTools" />
-                        {{ technicalStandards.name }}
-                    </h3>
-                </div>
-                <!-- Image -->
-                <div class="image-container d-flex" style="height: 150px;">
-                    {% if technicalStandards.image %}
-                        <img src="{{ technicalStandards.image.url }}"
-                             class="card-img-top px-4 pt-4 pb-2 m-auto"
-                             style="max-height: 100%;
-                                    width: auto;
-                                    display: block"
-                             alt="technicalStandards image (if=db)" />
-                    {% endif %}
-                </div>
-            </a>
+  <!-- Card item START -->
+  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+    <div class="card border-technical h-100" id="{{ technicalStandards.id }}">
+      <!-- Card body -->
+      <a href="{% url 'TechnicalStandards_protocol_details' technicalStandards.id %}">
+        <div class="card-body pb-0" id={{ technicalStandards.id }}>
+          <!-- Title -->
+          <h3 class="card-title">
+            <input type="checkbox"
+                   style="display: none;
+                          margin-left: 0px;
+                          vertical-align: middle"
+                   class="comparisonInputTools" />
+            {{ technicalStandards.name }}
+          </h3>
         </div>
+        <!-- Image -->
+        <div class="image-container d-flex" style="height: 150px;">
+          {% if technicalStandards.image %}
+            <img src="{{ technicalStandards.image.url }}"
+                 class="card-img-top px-4 pt-4 pb-2 m-auto"
+                 style="max-height: 100%;
+                        width: auto;
+                        display: block"
+                 alt="technicalStandards image (if=db)" />
+          {% endif %}
+        </div>
+      </a>
     </div>
-    <!-- Card item END -->
+  </div>
+  <!-- Card item END -->
 {% endfor %}
 {% include "partials/pagination.html" %}
