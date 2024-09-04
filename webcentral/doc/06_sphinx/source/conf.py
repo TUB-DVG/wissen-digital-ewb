@@ -29,10 +29,10 @@ release = "0.0.1"
 # django.setup()
 extensions = [
     # "sphinx.ext.autodoc",
+    'sphinx.ext.githubpages',
     "myst_parser",
     "sphinxcontrib.mermaid",
     "sphinx.ext.napoleon",
-    "sphinx.ext.githubpages",
 ]
 
 templates_path = ["_templates"]
