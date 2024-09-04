@@ -9,26 +9,50 @@ Welcome to webcentral's documentation!
 Here you can find the documentation of the page source. The source code can be found on Github (insert link).
 If you would like to do some development or host the Wissensplattform, please find information on the get started (insert link) page
 
+End user guide
+==============
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   quickstart
-   migrations
+   general/getting_started
+   general/data_import
+   general/migrations
+   general/production
+
+Develop guide
+=============
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   dev/style_guide
+   dev/static_code_analysis
+   dev/pyproject_toml
+   dev/testing
+   dev/load_profiles
+   dev/plotly_apps
+   dev/csp
+   dev/use_cases
+   dev/save_page_views
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
    installtion_basics
-   pyproject_toml
-   contentSecurityPolicy
    dataImportDjango
    insertLinksInDatabase
    templateStructure
    translation
-   loadProfiles
-   plotlyApps
-   useCases
    listing_pages
    testing
-   production
+
+
    
+
 Indices and tables
 ==================
 
