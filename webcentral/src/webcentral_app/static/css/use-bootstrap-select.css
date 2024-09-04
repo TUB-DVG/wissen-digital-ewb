@@ -1,7 +1,0 @@
-
-.green-tick::after {
-  content: '✔'; /* Unicode check mark */
-  color: green;
-  font-size: 1em; /* Adjust size as needed */
-  margin-left: 5px; /* Space between text and tick */
-}

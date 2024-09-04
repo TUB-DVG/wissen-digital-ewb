@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data-Import &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="data-import">
+<h1>Data-Import<a class="headerlink" href="#data-import" title="Link to this heading">¶</a></h1>
+<p>This document describes the different ways to import data into the webcentral-database.
+In general, data can be imported using the following ways:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Using the django-admin panel.
+- Using the custom django `data_import` command.
+- Using a SQL-dump.
+</pre></div>
+</div>
+<p>In the following sections these methods are described in detail.</p>
+<section id="data-import-using-the-django-admin-panel">
+<h2>Data-import using the django admin panel<a class="headerlink" href="#data-import-using-the-django-admin-panel" title="Link to this heading">¶</a></h2>
+<p>This approach can be considered straight forward. If only small chunks of data need to be imported this method is apropriate. For that method to work, the django superuser-credentials are needed, which can be found in the <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file in the root project folder.
+The admin panel can be entered by either opening your locally hosted version or the server hosted production version. For your local version enter the following link in your browser of choice:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">admin</span>
+</pre></div>
+</div>
+<p>On the opened site, enter username and password from the <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file. You should then be able to create, modify or delete</p>
+</section>
+<section id="data-import-using-the-data-import-command">
+<h2>Data-import using the data_import command<a class="headerlink" href="#data-import-using-the-data-import-command" title="Link to this heading">¶</a></h2>
+<p>To import greater numbers of structured data of a specific type, python-scripts has been written. These are accessible through a django custom-command <code class="docutils literal notranslate"><span class="pre">data_import</span></code>. The command can be started using the django <code class="docutils literal notranslate"><span class="pre">manage.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">data_import</span> <span class="o">&lt;</span><span class="n">app_label</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">path_to_xlsx_or_csv</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">path_to_diff_file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The command gets 3 arguments. <code class="docutils literal notranslate"><span class="pre">app_label</span></code> specifies the app-label, which holds the model into which the data should be imported. the app-label is the name of the folder in which the corrsponding model lies. Please notethat the data import is only working, if a <code class="docutils literal notranslate"><span class="pre">data_import.py</span></code> is present in the specified app folder. Please note further, that the structured data needs to have the right structure for a successfull data import. That means, that the columns in the excel need to have the name, which is used in the app-specific data-import-script. Please consult the data-folder to inspect the needed structure of the execl file.
+<code class="docutils literal notranslate"><span class="pre">path_to_xlsx_or_csv</span></code> specfies the path to a .csv- or .xlsx-file, which holds the structured data.
+<code class="docutils literal notranslate"><span class="pre">path_to_diff_file</span></code> is the path, where a diff-file is saved. It is only created on collisions and will be explained in detail here (link to execute_db_changes).
+The structure of the implemented python scripts is as follows: In the app <code class="docutils literal notranslate"><span class="pre">common</span></code>, which holds code used across apps. It is placed under <code class="docutils literal notranslate"><span class="pre">common/data_import.py</span></code> and holds a class <code class="docutils literal notranslate"><span class="pre">DataImport</span></code>. This class handles general functionality, which is used by the app-specfic data-import classes like e.g. reading a file. The app-specific data-import classes are located in each app in the file <code class="docutils literal notranslate"><span class="pre">data_import.py</span></code>. Each of theses files holds a class <code class="docutils literal notranslate"><span class="pre">DataImportApp</span></code>, which inherits from the general <code class="docutils literal notranslate"><span class="pre">DataImport</span></code>.</p>
+<div class="mermaid">
+            classDiagram
+    common_DataImport &lt;|-- use_cases_DataImportApp
+    common_DataImport &lt;|-- tools_over_DataImportApp
+    common_DataImport &lt;|-- component_list_DataImportApp
+
+    common_DataImport: +importList()
+    common_DataImport: +load()
+    common_DataImport: +readExcel()
+    common_DataImport: -_correctReadInValue()
+    common_DataImport: -_selectNearestMatch()
+    class use_cases_DataImportApp{
+      +getOrCreate()
+    }
+    class tools_over_DataImportApp{
+      +getOrCreate()
+    }
+    class component_list_DataImportApp{
+      +getOrCreate()
+    }
+
+        </div><section id="tools-import">
+<h3>Tools import<a class="headerlink" href="#tools-import" title="Link to this heading">¶</a></h3>
+<p>To import digital tools and digital applications into the database, a excel-file can be used as shown in <code class="docutils literal notranslate"><span class="pre">/02_work_doc/01_daten/02_toolUebersicht/2024_05_EWB_newToolsImportWithTranslation.xlsx</span></code>. The file holds, besides others, the sheets <code class="docutils literal notranslate"><span class="pre">German</span></code> and <code class="docutils literal notranslate"><span class="pre">English</span></code>. The import script scans for these 2 specific sheets and imports the content of the sheet <code class="docutils literal notranslate"><span class="pre">German</span></code> into the fields with the suffices <code class="docutils literal notranslate"><span class="pre">_de</span></code>, while it imports the content of the sheet <code class="docutils literal notranslate"><span class="pre">English</span></code> to the fields with the suffice <code class="docutils literal notranslate"><span class="pre">_en</span></code>. If the two sheets <code class="docutils literal notranslate"><span class="pre">German</span></code> and <code class="docutils literal notranslate"><span class="pre">English</span></code> are not present, it will import the first sheet (the sheet most left, when the file is opened in Excel) into the german fields of the <code class="docutils literal notranslate"><span class="pre">Tools</span></code>. It will not import any present english translations.</p>
+<p>To map the english translation from the sheet <code class="docutils literal notranslate"><span class="pre">English</span></code> onto the model fields the same header names are used as in the sheet <code class="docutils literal notranslate"><span class="pre">German</span></code>. When the data is imported, the 2 sheets ge merged into one list datastructure. To differantiate between german and english fields, the header names of the english fields get the suffice <code class="docutils literal notranslate"><span class="pre">__en</span></code>.
+inside the <code class="docutils literal notranslate"><span class="pre">data_import.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">tools_over</span></code>-app a dictionary <code class="docutils literal notranslate"><span class="pre">MAPPING_EXCEL_DB_EN</span></code> is defined as a class-attribute. That datastructure holds the name of the imported english header as key and the corresponding name of the ORM-model-field as value. For <code class="docutils literal notranslate"><span class="pre">Tools</span></code> that feels redundant at the moment since each key-value-field differs only in one <code class="docutils literal notranslate"><span class="pre">_</span></code>, but it can be used in other model-import-scripts if the headername differs from the ORM field name.</p>
+</section>
+</section>
+</section>
+<section id="tracking-differences-after-data-import">
+<h1>Tracking differences after data-import<a class="headerlink" href="#tracking-differences-after-data-import" title="Link to this heading">¶</a></h1>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../_sources/general/data_import.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

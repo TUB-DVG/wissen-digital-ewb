@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Template structure &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Translation of Content" href="translation.html" />
+    <link rel="prev" title="Content security policy (CSP)" href="contentSecurityPolicy.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="template-structure">
+<h1>Template structure<a class="headerlink" href="#template-structure" title="Link to this heading">¶</a></h1>
+<p>This document describes the HTML-template structure. This structure follows the idea of small completed components, which compose a website together. This approach helps to minimize the amount of needed HTML-code and therefore decreases the complexitiy and increases the readibility of the code. Furthermore, code-changes can be easily deployed to all sites of the website without rhe need for repetitive work.</p>
+<p>In general, there are 2 types of HTML-templates:
+- page
+- partial-templates
+The page templates are the entrypoint for the django-render-process. On these templates the django <code class="docutils literal notranslate"><span class="pre">render()</span></code>-function is called at the end of a django view function. An example for a view-function, which refers to one of the page-wide templates can be found inside the <code class="docutils literal notranslate"><span class="pre">pages/</span></code> folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Datenschutzhinweis</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Call render function for datenschutzhinweis page.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">&quot;pages/Datenschutzhinweis.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The function <code class="docutils literal notranslate"><span class="pre">Datenschutzhinweis(request)</span></code> calls the <code class="docutils literal notranslate"><span class="pre">render()</span></code> function, with the argument <code class="docutils literal notranslate"><span class="pre">pages/Datenschutzhinweis.html</span></code>, which is a page-wide template.
+The following code shows an example for a page-wide template:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">%</span> <span class="n">extends</span> <span class="s1">&#39;base.html&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">i18n</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">title</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">translate</span> <span class="s2">&quot;Geschäftsmodelle – good-practice&quot;</span> <span class="o">%</span><span class="p">}{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+
+<span class="p">{</span><span class="o">%</span> <span class="n">load</span> <span class="n">static</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">block</span> <span class="n">content</span> <span class="o">%</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;content container&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="o">&gt;</span><span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s2">&quot;partials/descriptionContainer.html&quot;</span> <span class="o">%</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;boxes&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;container-start-focus&quot;</span><span class="o">&gt;</span>
+            <span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s2">&quot;common/fourBoxesContainer.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+        <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endblock</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This template includes two partial templates: The <code class="docutils literal notranslate"><span class="pre">descriptionContainer.html</span></code> and the <code class="docutils literal notranslate"><span class="pre">fourBoxesContainer.html</span></code>-template. With the <code class="docutils literal notranslate"><span class="pre">descriptionContainer.html</span></code>, a partial consisting of a heading and a description text can be included into a page. The text-content needs to be provided by the django-view. When calling the render-function with a page-wide template, a context-dictionary needs to be provided. That collection of key-value pairs need to have the following keys to render the <code class="docutils literal notranslate"><span class="pre">descriptionContainer.html</span></code> properly:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- `focusBorder`: Can take one of the following string values: `ecological`, `operational`, `legal`, `technical`. With that key, the link-color of links inside the description text can be set to the focus-color.
+- pathToImage (optional key-value pair): Specifies a path to a image-icon, which will be displayed left to the heading.
+- `heading`: The heading of the description container.
+- `showMorePresent` (optional key-value pair): Key, which gets a boolean value to determine if the description text should be cut off after a number of character and a expandable box should be present to make the whole text visinble after clicking &quot;show more&quot;. If `showMorePresent` is set to `True` the key `charNumberToShowCollapsed` needs to be present with a integer value, representing the number of character, which should be shown in the collapsed state of the collapsable-container.
+- `explanaitionText`: holds the text-content below the heading.
+</pre></div>
+</div>
+<section id="search-bar-template-documentation">
+<h2>Search Bar Template Documentation<a class="headerlink" href="#search-bar-template-documentation" title="Link to this heading">¶</a></h2>
+<p>The Search-Bar HTML-Template is used as a partial on all pages where a search through a collection of elements should be possible.
+It makes it possible to search the elements through a text search and by different categories of filters. Furthermore it is possible to trigger the
+coparison mode from within the search-bar. It can be included into a page-wide template by adding the following Django-template tag into a page-wide template at the position, where the search-bar should be shown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s2">&quot;partials/search-bar.html&quot;</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>After inlcuding the search-bar, the corresponding context needs to be set in the view-function, which renders the page-wide template. For the search-bar, the following key-value pairs need to be set in the context-dictionary:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- `optionList`: List of dictionaries
+    Based on the value of this key, the select-inputs will be created. The list-length specifies the number of select-elements, which will be rendered. Each list-item is a dictionary with the keys `placeholder`, `objects` and `fieldName`. `placeholder` is put as a placeholder on the select-element. `objects` holds a list of elements, which will be shown as items inside the select input. `fieldName` holds the name of the database attribute name.
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Template structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#search-bar-template-documentation">Search Bar Template Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="contentSecurityPolicy.html" title="previous chapter">Content security policy (CSP)</a></li>
+      <li>Next: <a href="translation.html" title="next chapter">Translation of Content</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/templateStructure.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

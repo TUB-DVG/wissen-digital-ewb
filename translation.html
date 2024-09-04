@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Translation of Content &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Load Profiles" href="loadProfiles.html" />
+    <link rel="prev" title="Template structure" href="templateStructure.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="translation-of-content">
+<h1>Translation of Content<a class="headerlink" href="#translation-of-content" title="Link to this heading">¶</a></h1>
+<p>This document describes how the content of the website can be translated to english.
+For the static content the django-internationalization middleware is used, which is called “i18n” internally.
+For the translation of the database-content the python-package “model-translation” is used.
+In the following sections the procedutre to translate the static content and of the dynamic content is summarized.</p>
+<section id="translation-of-static-content">
+<h2>Translation of Static content<a class="headerlink" href="#translation-of-static-content" title="Link to this heading">¶</a></h2>
+<p>(Source: https://docs.djangoproject.com/en/4.2/topics/i18n/)
+To translate static content the django internationalization middleware is used. The process is composed of
+an internationalization step and an translation step. Thereby means internationalization the step of marking all strings that should be translated inside the
+source code, while localization is the step of actually providing translations.</p>
+<section id="internationalization">
+<h3>Internationalization<a class="headerlink" href="#internationalization" title="Link to this heading">¶</a></h3>
+<p>German content, which should be shown in english, needs to be tagged explictily. In a template that can be done using the
+{% translate %} or the {% blocktranslate %}{% endblocktranslate %} tags.
+E.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span><span class="o">%</span> <span class="n">translate</span> <span class="s2">&quot;Hallo&quot;</span> <span class="o">%</span><span class="p">}</span>
+   <span class="p">{</span><span class="o">%</span> <span class="n">blocktranslate</span> <span class="o">%</span><span class="p">}</span><span class="n">Hallo</span><span class="p">{</span><span class="o">%</span> <span class="n">endblocktranslate</span> <span class="o">%</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>both would mark the string “Hallo” as a translation string.
+Note: These django-tags can be used after the tags are loaded with the the tag {% load i18n %}.
+This tag needs to be specified in each template, in which {% translate %} or {% blocktranslate %} is used.</p>
+<p>When strings inside python-code should be translated, the string is given to the django <code class="docutils literal notranslate"><span class="pre">gettext</span></code>-method.
+In the django-documentation it is imported as a underscore <code class="docutils literal notranslate"><span class="pre">_</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="kn">from</span> <span class="nn">django.utils.translation</span> <span class="kn">import</span> <span class="n">gettext</span> <span class="k">as</span> <span class="n">_</span>
+</pre></div>
+</div>
+<p>So the following python-statement would mark <code class="docutils literal notranslate"><span class="pre">Hallo</span></code> to be translated:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">greetings</span> <span class="o">=</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Hallo&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After marking all strings, which should be translated, in the HTML-templates and in the python-code a language file can be created
+in which the mapping between the string inside the source code and the translation together with the location inside the source code</p>
+</section>
+<section id="localization">
+<h3>Localization<a class="headerlink" href="#localization" title="Link to this heading">¶</a></h3>
+<p>The translation for the marked trings is provided inside a language-file. This file can be created using the Django <code class="docutils literal notranslate"><span class="pre">makemessages</span></code> command.
+To go through all source-code files and finding all marked strings the following command canbe executed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemessages</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>Since this command has to be specfied inside the container, at first a webcentral-container shell has to be opened. Alternativly the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script can be
+used to directly execute the <code class="docutils literal notranslate"><span class="pre">makemessages</span></code>-command from the host-terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="o">./</span><span class="n">run</span> <span class="n">makemessages</span>
+</pre></div>
+</div>
+<p>This command creates an up-to-date text-version of a language file. It is located in <code class="docutils literal notranslate"><span class="pre">/01_application/webcentral_app/locale/en/LC_MESSAGES/django.po</span></code>. It is composed of different blocks, whereby for each marked translation string in the source code one block in the language-file is created. An block looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#: StartSearch/views.py:231</span>
+    <span class="n">msgid</span> <span class="s2">&quot;Forschungsprojekt&quot;</span>
+    <span class="n">msgstr</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The first line marks the location inside the source-code, where the translation-string was marked. The second line represents the marked translation-string and the third line shows the english-translation. To translate the marked string a translation has to be entered into the quotes. An translated block could look as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#: StartSearch/views.py:231</span>
+    <span class="n">msgid</span> <span class="s2">&quot;Forschungsprojekt&quot;</span>
+    <span class="n">msgstr</span> <span class="s2">&quot;Research project&quot;</span>
+</pre></div>
+</div>
+<p>After every block has been translated, the file needs to be compiled to a binary state. In that way  the look-up will be much faster. To do that, the following django-command needs to be executed inside the docker-webcentral-container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">compilemessages</span>
+</pre></div>
+</div>
+<p>Alternativly the run script can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">compilemessages</span>
+</pre></div>
+</div>
+<p>After that, wehen seleting the english-website the english-string should be shwon instead of the german version.</p>
+</section>
+</section>
+<section id="translation-of-database-content">
+<h2>Translation of database-content<a class="headerlink" href="#translation-of-database-content" title="Link to this heading">¶</a></h2>
+<p>For the translation of the database-content the python-package “model-translation” is used, which is installed as dependency inside the webcentral-container.
+That packet uses additional database attributes to store different translations for a database-attribute. First, all django-model-fields which should be translated, have to be marked for translation. This is done by adding a additional python script called <code class="docutils literal notranslate"><span class="pre">translation.py</span></code> to the django-app, which model-fields should be translated. For each model-class inside the apps <code class="docutils literal notranslate"><span class="pre">models.py</span></code> a class is created which inherits from <code class="docutils literal notranslate"><span class="pre">TranslationOptions</span></code>. It has a fields attribute in which the names of all model-fields are provided, which should be translated.
+Finally the created class gets registered with the corresponding model-class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">class</span> <span class="nc">ToolsTranslationOptions</span><span class="p">(</span><span class="n">TranslationOptions</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;shortDescription&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;userInterfaceNotes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lastUpdate&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;licenseNotes&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;furtherInformation&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;provider&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;yearOfRelease&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">translator</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Tools</span><span class="p">,</span> <span class="n">ToolsTranslationOptions</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>“model translation” expects now for each of the provided model-field names additional database attributes for each present language. In case of the Wissensplattform for each specified attribute a “_de” and “_en” attribute is execpted. E.g. besides “shortDescription” there should also be “shortDescription_de” and “shortDescription_en” inside the “Tools” table. Otherwise an database-lookup error is thrown and the App doesnt work. The missing attributes can be added manually, which would look similar to the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">TABLE</span> <span class="n">public</span><span class="o">.</span><span class="n">publications_type</span>
+<span class="n">ADD</span> <span class="n">COLUMN</span> <span class="s2">&quot;bibtex_types_de&quot;</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The above example adds the german version of the “bibtex_types”-attribute to the publications_type-table.
+Alternativly the <code class="docutils literal notranslate"><span class="pre">sync_translation_fields</span></code> can be used, which is a interactive utility to alter the database table. It can be executed by calling it together with the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">sync_translation_fields</span>
+</pre></div>
+</div>
+<p>Or the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span> <span class="n">sync_translation_fields</span> 
+</pre></div>
+</div>
+<p>After the database is set up correctly the default german content needs to be copied into the “_de”-field. E.g. for all rows the content of “shortDescription” has to be copied inside “shortDescription_de”. This can be done with a custom django command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">update_translation_fields</span>
+</pre></div>
+</div>
+<p>After that only the english attribute needs to be filled with content. A convenient way is via the django-admin panel.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templateStructure.html">Template structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Translation of Content</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#translation-of-static-content">Translation of Static content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translation-of-database-content">Translation of database-content</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="templateStructure.html" title="previous chapter">Template structure</a></li>
+      <li>Next: <a href="loadProfiles.html" title="next chapter">Load Profiles</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/translation.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

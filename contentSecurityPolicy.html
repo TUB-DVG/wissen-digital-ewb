@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Content security policy (CSP) &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Template structure" href="templateStructure.html" />
+    <link rel="prev" title="Django - Migrations" href="migrations.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="content-security-policy-csp">
+<h1>Content security policy (CSP)<a class="headerlink" href="#content-security-policy-csp" title="Link to this heading">¶</a></h1>
+<p>The CSP is a security feature that helps prevent cross-site scripting (XSS), clickjacking, and other code injection attacks resulting from execution of malicious content in the trusted web page context.
+One way to implement CSP is to add a Content-Security-Policy HTTP header to your web server responses. The header value is a string that defines the policy. The policy is a set of directives that specify the content sources that the browser should consider acceptable for the web page. The browser will only execute or render resources from those sources.
+For example, the following CSP header specifies that the browser should only load resources from the same origin as the web page, and should not execute inline scripts or styles.
+When the browser receives this header, it will enforce the policy by blocking any resources that do not comply with the specified directives.
+When ressources from other origins are needed, the links to these ressources have to be mentioned explicitly.
+For Django, a package called django-csp is available to help you implement CSP in your Django project. To add a link, which is considered as a trusted source, it has to be added to the <code class="docutils literal notranslate"><span class="pre">01_application/webcentral_app/webcentral_app/settings.py</span></code> file in the <code class="docutils literal notranslate"><span class="pre">CSP_SCRIPT_SRC</span></code> and <code class="docutils literal notranslate"><span class="pre">CSP_STYLE_SRC</span></code> lists.
+The following code shows trusted sources for scripts and styles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CSP_SCRIPT_SRC</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://ajax.googleapis.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdnjs.cloudflare.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://maxcdn.bootstrapcdn.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdn.plot.ly&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://unpkg.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://code.highcharts.com/highcharts.js&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.jquery.min.js&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">CSP_STYLE_SRC</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;&#39;self&#39;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://maxcdn.bootstrapcdn.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdnjs.cloudflare.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdn.plot.ly&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://unpkg.com&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://cdn.jsdelivr.net/gh/harvesthq/chosen@1.8.7/chosen.min.css&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="migrations.html" title="previous chapter">Django - Migrations</a></li>
+      <li>Next: <a href="templateStructure.html" title="next chapter">Template structure</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/contentSecurityPolicy.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

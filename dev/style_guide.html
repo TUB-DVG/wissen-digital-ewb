@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Style Guide &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=12dfc556" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="style-guide">
+<h1>Style Guide<a class="headerlink" href="#style-guide" title="Link to this heading">¶</a></h1>
+<p>The following section describes the style guide, which is used throughout the project. It is structured by the different languages used.</p>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Link to this heading">¶</a></h2>
+<p>In this section the code style in the python source code is described.</p>
+<ul class="simple">
+<li><p>Indentation:</p>
+<ul>
+<li><p>1 Tab or 4 Whitespaces</p></li>
+</ul>
+</li>
+<li><p>Naming of identifiers:</p>
+<ul>
+<li><p>camelCase for variables, functions and methods, numbers should be written out as characters</p></li>
+<li><p>Classes should be named in PascalCase</p></li>
+<li><p>Constants SNAKE_CASE in upper letters</p></li>
+<li><p>general:</p>
+<ul>
+<li><p>trailing underscore for names, which have the same naming like Python-Keywords</p></li>
+<li><p>identifier and filenames in english language</p></li>
+<li><p>content is written in german. German identifiers should be translated in the docstring</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Maximum line-length is 80 characters</p></li>
+<li><p>Maximum line-length in docstring is 72 characters</p></li>
+<li><p>Generally one space before and after an binary operator (+, -, *, /, &lt;, &gt;, …)</p>
+<ul>
+<li><p>an exception of that rule are nestings of binary operators. E.g. <code class="docutils literal notranslate"><span class="pre">hypo</span> <span class="pre">=</span> <span class="pre">x*x</span> <span class="pre">+</span> <span class="pre">y*y</span></code>. Only the operators with lowest priority should have a space before and after the binary operator.</p></li>
+</ul>
+</li>
+<li><p>no space before a double dot, comma, … e.g. <code class="docutils literal notranslate"><span class="pre">{&quot;numberOfStudents&quot;:</span> <span class="pre">2}</span></code></p></li>
+<li><p>no space before and after brackets</p></li>
+<li><p>no spaces for default values in parameter list: <code class="docutils literal notranslate"><span class="pre">func(r=3,</span> <span class="pre">i=2)</span></code></p></li>
+<li><p>for statements going over multiple lines redundant brackets and a trailing comma should be set:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;c&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Continuation lines:</p>
+<ul>
+<li><p>if line exeeds the 80 characters limit or if more than 3 function parameters are used</p></li>
+<li><p>indentation one tab after the tab-level of the line below</p></li>
+<li><p>opening bracket behind function call/definition</p></li>
+<li><p>closing bracket onto new line on tablevel of function-call line</p></li>
+<li><p>return-type and types of parameters should be specified <code class="docutils literal notranslate"><span class="pre">func(argOne:</span> <span class="pre">str,</span> <span class="pre">argTwo:</span> <span class="pre">inf)</span> <span class="pre">-&gt;</span> <span class="pre">str</span></code></p></li>
+</ul>
+</li>
+<li><p>if binary operation exceeds the 80 character linelength a line break is added. The linebreak is added before the binary-operator:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">income</span> <span class="o">=</span> <span class="p">(</span><span class="n">grossWages</span>
+            <span class="o">+</span> <span class="p">(</span><span class="n">dividends</span> <span class="o">-</span> <span class="n">qualifiedDividends</span><span class="p">)</span>
+            <span class="o">-</span> <span class="n">iraDeduction</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Imports:</p>
+<ul>
+<li><p>only at the start of a module</p></li>
+<li><p>no * imports</p></li>
+<li><p>whole libraries should only be imported if more than 10 classes/functions are used</p></li>
+<li><p>redundant brackets are used, when multiple elements are imported e.g.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="kn">from</span> <span class="nn">foolib</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">foo1</span><span class="p">,</span>
+    <span class="n">foo2</span><span class="p">,</span>
+  <span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>the import-section should be split into 3 parts: First the python standard-libraries are imported, then third-party-libraries and then self-written modules at the end. Each section is separated by a blank line.</p></li>
+<li><p>classes:</p>
+<ul>
+<li><p>all attributes should be private/protected.</p>
+<ul>
+<li><p>when an attribute is used outside the object an getter-function, with the <code class="docutils literal notranslate"><span class="pre">property</span></code>-decorator should be written</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">car</span><span class="p">:</span>
+  
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brandName</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__brandName</span> <span class="o">=</span> <span class="n">brandName</span>
+  
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">brandName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__brandName</span>
+
+</pre></div>
+</div>
+<ul>
+<li><p>Documentation/Comments</p>
+<ul>
+<li><p>docstrings should be used for documentation</p></li>
+<li><p>each module should have a docstring which is surrounded by three double quotation marks</p></li>
+<li><p>each definition has another docstring (methods/functions, classes)</p></li>
+<li><p>numpy-formatting should be used:</p>
+<ul class="simple">
+<li><p>docstring is composed of paragraphs. Each paragraph is separated by an empty line</p></li>
+<li><p>first line is a one-line summary of the functionality</p></li>
+<li><p>second line is a detailed description</p></li>
+<li><p>third paragraph holds the description of the parameters</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">parameterName</span><span class="p">:</span>  <span class="n">parameterTyp</span>
+    <span class="n">Description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">parameter</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple" start="4">
+<li><p>paragraph return-values:</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nb">type</span>
+    <span class="n">description</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple" start="5">
+<li><p>paragraph: literature</p></li>
+</ol>
+</li>
+<li><p>6 paragraph: Examples</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../_sources/dev/style_guide.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

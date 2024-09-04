@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Use Cases &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Listing pages" href="listing_pages.html" />
+    <link rel="prev" title="Plotly Apps" href="plotlyApps.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">¶</a></h1>
+<p>The Use Cases provide a visualization for interdependencies of digitalization and the research framework.</p>
+<p>The general dash integration is described at <a class="reference internal" href="plotlyApps.html"><span class="std std-doc">Plotly Apps</span></a>.</p>
+<p>Besides the dash integration, as Django app is developed.</p>
+</section>
+<section id="usecase-model-documentation">
+<h1><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation<a class="headerlink" href="#usecase-model-documentation" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">UseCase</span></code> model in this Django application represents a django app.</p>
+<section id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">item_code</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=25</span></code>):<br />
+A unique code representing the item or service. Is used as an item identifier.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">useCase</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=50</span></code>):<br />
+Describes the specific service or scenario that is being referenced. In our case SRI Service E-12: Reporting information regarding electricity consumption.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">sriLevel</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=255</span></code>, <code class="docutils literal notranslate"><span class="pre">verbose_name=&quot;SRI-Zuordnung&quot;</span></code>):<br />
+Indicates the Smart Readiness Indicator (SRI) level associated with the use case. This classification provides insights into the smart readiness and functionality level of the service. In our case:</p>
+<p>– Functionality level 0 (as non-smart default) : None,
+– Functionality level 1 	: Reporting on current electricity consumption on building level,
+– Functionality level 2 	: Real-time feedback or benchmarking on building level,
+– Functionality level 3 	: Real-time feedback or benchmarking on appliance level,
+– Functionality level 4  : Real-time feedback or benchmarking on appliance level with automated personalized recommendation.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">levelOfAction</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=100</span></code>):</p>
+<p>Defines the level at which the use case is examined. In our case:</p>
+<ul class="simple">
+<li><p>spatial,</p></li>
+<li><p>temporal.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">degreeOfDetail</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=100</span></code>):</p>
+<p>Specifies the granularity or detail level of the level of action:</p>
+<ul class="simple">
+<li><p>spatial,
+– euqipment,
+– one building,
+– three buildings,</p></li>
+<li><p>temporal,
+– 5 seconds,
+– 1 hour,
+– 1 month.</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">focus</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">ManyToManyField</span></code> to <code class="docutils literal notranslate"><span class="pre">Focus</span></code> model):</p>
+<p>Represents the focus areas impacted by the use case. In our cse:</p>
+<p>– economic,
+–ecological,
+– user perspective,
+–or technical aspects.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">idPerspectiveforDetail</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">PositiveIntegerField</span></code>):<br />
+A reference to the perspective or detail level for further classification. This integer represents specific perspectives on the effects or impacts.</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">effectEvaluation</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=1</span></code>, <code class="docutils literal notranslate"><span class="pre">choices=[('+',</span> <span class="pre">'Positive'),</span> <span class="pre">('-',</span> <span class="pre">'Negative'),</span> <span class="pre">('o',</span> <span class="pre">'Neutrale')]</span></code>):</p>
+<p>Categorizes the effect of the use case as positive, negative, or neutral. This provides a quick overview of the intended or achieved outcome by repsective focus.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">effectName</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">CharField</span></code>, <code class="docutils literal notranslate"><span class="pre">max_length=255</span></code>):</p>
+<p>Name for the specific effect or impact resulting from the use case.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">effectDescription</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">TextField</span></code>):</p>
+<p>Provides a detailed description of the effect or impact of the use case.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">furtherInformation</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">TextField</span></code>, <code class="docutils literal notranslate"><span class="pre">blank=True</span></code>, <code class="docutils literal notranslate"><span class="pre">null=True</span></code>):</p>
+<p>Offers additional details or context regarding the use case that are not covered in other fields. This is an optional field.</p>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">icon</span></code></strong> (<code class="docutils literal notranslate"><span class="pre">TextField</span></code>, <code class="docutils literal notranslate"><span class="pre">blank=True</span></code>, <code class="docutils literal notranslate"><span class="pre">null=True</span></code>):</p>
+<p>Contains a text-based icon representation related to the use case. This could be used for visual representation in user interfaces.</p>
+</li>
+</ul>
+</section>
+</section>
+<section id="use-cases-plotly-documentation">
+<h1>Use Cases plotly documentation<a class="headerlink" href="#use-cases-plotly-documentation" title="Link to this heading">¶</a></h1>
+<p>The IDEAL dataset was used to illustrate these effects in more detail. This dataset contains monitoring data for 255 households from the UK and Scotland. Of these, 39 households were monitored within a closely-meshed system. For the purpose of illustration, the closely-monitored households 62, 105, and 106 were utilized. Despite this close monitoring, it is evident that not all sensors function properly at all times (as seen in household 106). Due to the size of the data, only one day is displayed.</p>
+<p>The data presented includes the average consumption over time intervals of five seconds, 15 minutes, and one hour. Both the individual values of the households and the sum of the load profiles (three buildings) are shown. The exemplary representation demonstrates how different aggregations (temporal and spatial) affect the visibility of certain effects. Through high-frequency measurements, individual effects can be observed clearly, which may be lost in other aggregations. The aim is to provide users with a quantitative and qualitative understanding of the effects of digitalization and their interactions. For example, resources and energy are required for the creation and operation of measurement technology; however, more precise measurements also enable more individualized feedback to users or more accurate detection of faults.</p>
+<p>The goal is to uncover the different effects of digitalization and to highlight the interaction of various requirements. In doing so, we address several key questions:</p>
+<ul class="simple">
+<li><p>How does the frequency (5 seconds, 15 minutes, 1 hour) affect the visibility of effects?</p></li>
+<li><p>How do individual aggregations (appliances, total consumption, three buildings) affect the visibility of effects?</p></li>
+<li><p>What can be observed in the graph?</p></li>
+</ul>
+</section>
+<section id="further-information">
+<h1>Further Information<a class="headerlink" href="#further-information" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficient-buildings/smart-readiness-indicator/implementation-tools_en">Smart Readiness Indicator</a></p>
+<p><a class="reference external" href="https://www.nature.com/articles/s41597-021-00921-y">IDEAL Data: Pullinger et al., The IDEAL household energy dataset, electricity, gas, contextual sensor data and survey data for 255 UK homes, ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a></p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="plotlyApps.html" title="previous chapter">Plotly Apps</a></li>
+      <li>Next: <a href="listing_pages.html" title="next chapter">Listing pages</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/useCases.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

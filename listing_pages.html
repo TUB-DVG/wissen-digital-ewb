@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Listing pages &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Running the app in production" href="production.html" />
+    <link rel="prev" title="Use Cases" href="useCases.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="listing-pages">
+<h1>Listing pages<a class="headerlink" href="#listing-pages" title="Link to this heading">¶</a></h1>
+<p>The listing pages are an integral part of the Wissensplattform-application. They show collections of elements of different type and allow a filtering and comparison of elements. Like all parts of the website, also these pages are composed of different HTML-components. These components are</p>
+<ul class="simple">
+<li><p>descriptionContainer.html</p></li>
+<li><p>search-bar.html:</p></li>
+<li><p>comparison.html</p></li>
+<li><p>pagination.html</p></li>
+</ul>
+<p>On specific listing sites it is possible to show a comparison of different elements.</p>
+<p>In the following section the implementation of these pages is described in detail.</p>
+<section id="technical-implementation">
+<h2>Technical implementation<a class="headerlink" href="#technical-implementation" title="Link to this heading">¶</a></h2>
+<p>The listing-sites have a features implemented, which are described in that section. These features are the asynchronious loading of filtered elements and the comparison-feature.</p>
+<section id="asynchronious-loading-of-filtered-elements">
+<h3>Asynchronious loading of filtered elements<a class="headerlink" href="#asynchronious-loading-of-filtered-elements" title="Link to this heading">¶</a></h3>
+<p>When selecting filters or entering a search string into the search-bar, a asynchronious javascript and XML (ajax)-request is sent from the browser to the django-backend to retrive the filtered listing items:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$(&#39;#searchBox&#39;).on(&#39;submit&#39;, function(e) {
+    e.preventDefault();  // Prevent the form from submitting normally
+
+    var url = $(this).attr(&#39;action&#39;);  // Get the form&#39;s action URL
+    var formData = $(this).serialize();  // Serialize the form data
+
+    $.ajax({
+        type: &#39;GET&#39;,
+        url: url,
+        data: formData,
+        success: function(response) {
+            // Handle the response here
+            // remove all ancestors of the div with the id
+            if ($(&quot;#componentListingContainer&quot;).length &gt; 0) {
+              $(&#39;#componentListingContainer&#39;).empty();
+              $(&#39;#componentListingContainer&#39;).append(response);
+            }
+            else if ($(&#39;#tool-listing-results&#39;).length &gt; 0) {
+              $(&#39;#tool-listing-results&#39;).empty();
+              $(&#39;#tool-listing-results&#39;).append(response);
+            }
+            else if ($(&quot;#dataset-listing-results&quot;).length &gt; 0) {
+              $(&#39;#dataset-listing-results&#39;).empty();
+              $(&#39;#dataset-listing-results&#39;).append(response);             
+            }
+            else if ($(&quot;#weatherdata-listing-results&quot;).length &gt; 0) {
+              $(&#39;#weatherdata-listing-results&#39;).empty();
+              $(&#39;#weatherdata-listing-results&#39;).append(response);             
+            }
+            else if ($(&quot;#protocol-listing-results&quot;).length &gt; 0) {
+              $(&#39;#protocol-listing-results&#39;).empty();
+              $(&#39;#protocol-listing-results&#39;).append(response);             
+            }
+            else if ($(&quot;#norm-listing-results&quot;).length &gt; 0) {
+              $(&#39;#norm-listing-results&#39;).empty();
+              $(&#39;#norm-listing-results&#39;).append(response);             
+            }
+          },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Handle the error here
+        }
+    });
+});
+</pre></div>
+</div>
+<p>(From search-bar.html)
+In the above javascript code, a ajax GET-request is performed, whereby the filter from-data is put into the request and sent to the backend, where the filtering is performed. As a response a HTML partial is returned, which is put at the position in the DOM, where the listed elements shuld be present.</p>
+</section>
+<section id="comparison-feature">
+<h3>Comparison feature<a class="headerlink" href="#comparison-feature" title="Link to this heading">¶</a></h3>
+<p>The implementation of the comparison feature is descibed in the following.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Listing pages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#technical-implementation">Technical implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="useCases.html" title="previous chapter">Use Cases</a></li>
+      <li>Next: <a href="production.html" title="next chapter">Running the app in production</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/listing_pages.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

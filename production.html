@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Running the app in production &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Listing pages" href="listing_pages.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="running-the-app-in-production">
+<h1>Running the app in production<a class="headerlink" href="#running-the-app-in-production" title="Link to this heading">¶</a></h1>
+<p>The following sections address topics, which come up when running the Application in production.</p>
+<section id="cache-busting-techniques">
+<h2>Cache busting techniques<a class="headerlink" href="#cache-busting-techniques" title="Link to this heading">¶</a></h2>
+<p>When developing the application in an agile manner lots of changes will be introduced to the web application when its already running publicly. Because of that problems can arise. One problem has to do with the client browser caches static files (javascript/stylesheet-files) to reduce loading time. This can lead to websites look broken for clients re-visiting the website since the still use the old cached versions.
+To address that problem a static files bundler <code class="docutils literal notranslate"><span class="pre">webpack</span></code> is used. It transpiles the <code class="docutils literal notranslate"><span class="pre">scss</span></code>-files into one <code class="docutils literal notranslate"><span class="pre">css</span></code>-file. A hash-value is also put into the filename. The also installed package <code class="docutils literal notranslate"><span class="pre">wepback-bundler-tracker</span></code> creates a file <code class="docutils literal notranslate"><span class="pre">weback-stats.json</span></code> where the location of the created css-files is stored. The stats file is then used by the package <code class="docutils literal notranslate"><span class="pre">django-weback-loader</span></code> to insert the most up-to-date file in stylesheet link tag in the django templates.</p>
+<p>The configuration of <code class="docutils literal notranslate"><span class="pre">django-weback-loader</span></code> is done in the <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>-file. There, the following lines were added:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">WEBPACK_LOADER</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DEFAULT&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;BUNDLE_DIR_NAME&#39;</span><span class="p">:</span> <span class="s1">&#39;/webpack_bundles/&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;CACHE&#39;</span><span class="p">:</span> <span class="ow">not</span> <span class="n">DEBUG</span><span class="p">,</span>
+        <span class="s1">&#39;STATS_FILE&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s1">&#39;webpack-stats.json&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;POLL_INTERVAL&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="s1">&#39;IGNORE&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">r</span><span class="s1">&#39;.+\.hot-update.js&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;.+\.map&#39;</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The location of the transpiled bundles are specified in the <code class="docutils literal notranslate"><span class="pre">BUNDLE_DIR_NAME</span></code> constant. The location specified must be reachable from within the location specified in the <code class="docutils literal notranslate"><span class="pre">STATICFILES_DIR</span></code> constant.
+The location of the <code class="docutils literal notranslate"><span class="pre">webpack-bundler-loader</span></code> stats-file is specfied in <code class="docutils literal notranslate"><span class="pre">STATS_FILE</span></code>. A absolute path is taken as input. Furthermore the intervall in which changes in the stats file are checked can be set via <code class="docutils literal notranslate"><span class="pre">POLL_INTERVAL</span></code> in seconds. Polling is only activated if the django <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>-flag is set to true. <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> beeing <code class="docutils literal notranslate"><span class="pre">True</span></code> typically means that django is executed in a development environment, and <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> equals <code class="docutils literal notranslate"><span class="pre">False</span></code> is set on a production instance.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contentSecurityPolicy.html">Content security policy (CSP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loadProfiles.html">Load Profiles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html">Plotly Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotlyApps.html#framework">Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html">Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#usecase-model-documentation"><code class="docutils literal notranslate"><span class="pre">UseCase</span></code> Model Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#use-cases-plotly-documentation">Use Cases plotly documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="useCases.html#further-information">Further Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="listing_pages.html">Listing pages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running the app in production</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cache-busting-techniques">Cache busting techniques</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="listing_pages.html" title="previous chapter">Listing pages</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/production.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
