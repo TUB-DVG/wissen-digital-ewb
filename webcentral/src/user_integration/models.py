@@ -44,18 +44,14 @@ class UserEngagement(models.Model):
     conductedBy = models.CharField(max_length=255, blank=True, null=True)
     successFactors = models.TextField(blank=True, null=True)
     goals = models.TextField(blank=True, null=True)
-    procedureItem = models.ManyToManyField(
-        "ProcedureItem", null=True, blank=True
-    )
+    procedureItem = models.ManyToManyField("ProcedureItem", null=True, blank=True)
     # specificGoals = models.TextField(blank=True, null=True)
     # specificProcedure = models.ManyToManyField("SpecificProcedureItem",
     #    null=True,
     #    blank=True)
     proArgument = models.ManyToManyField(ProArgument, blank=True, null=True)
     conArgument = models.ManyToManyField(ConArgument, blank=True, null=True)
-    participantObservations = models.CharField(
-        max_length=255, blank=True, null=True
-    )
+    participantObservations = models.CharField(max_length=255, blank=True, null=True)
     persons = models.CharField(max_length=255, blank=True, null=True)
     imageIcon = models.CharField(max_length=255, blank=True, null=True)
     imageIconSelected = models.CharField(max_length=255, blank=True, null=True)

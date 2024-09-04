@@ -141,9 +141,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "focus",
-                    models.CharField(
-                        help_text="Focus of the Tool", max_length=100
-                    ),
+                    models.CharField(help_text="Focus of the Tool", max_length=100),
                 ),
                 (
                     "focus_de",
@@ -293,9 +291,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "usage",
-                    models.CharField(
-                        blank=True, help_text="usage", max_length=100
-                    ),
+                    models.CharField(blank=True, help_text="usage", max_length=100),
                 ),
                 (
                     "usage_de",
@@ -363,9 +359,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "name",
-                    models.CharField(
-                        blank=True, help_text="name", max_length=150
-                    ),
+                    models.CharField(blank=True, help_text="name", max_length=150),
                 ),
                 (
                     "shortDescription",
@@ -447,9 +441,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "license",
-                    models.CharField(
-                        blank=True, help_text="license", max_length=500
-                    ),
+                    models.CharField(blank=True, help_text="license", max_length=500),
                 ),
                 (
                     "licenseNotes",

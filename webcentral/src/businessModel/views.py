@@ -27,9 +27,7 @@ def businessModelsChallenge(request):
         "imageDe": "assets/images/geschaeftsmodelle_de.svg",
         "imageEn": "assets/images/geschaeftsmodelle_en.svg",
     }
-    return render(
-        request, "businessModel/businessModelsChallenges.html", context
-    )
+    return render(request, "businessModel/businessModelsChallenges.html", context)
 
 
 def businessModelsChallengeDetails(request, challengeId):

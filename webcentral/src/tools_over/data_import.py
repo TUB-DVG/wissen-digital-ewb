@@ -113,9 +113,7 @@ class DataImportApp(DataImport):
             processedApplicationAreaList, ApplicationArea
         )
 
-        processedUsageList = self._correctReadInValue(
-            row[header.index("usage")]
-        )
+        processedUsageList = self._correctReadInValue(row[header.index("usage")])
         usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
 
         processedTargetGroup = self._correctReadInValue(
@@ -152,9 +150,7 @@ class DataImportApp(DataImport):
         if lastUpdate == "":
             lastUpdate = "unbekannt"
         if lastUpdate not in correctLastUpdateValues:
-            if isinstance(lastUpdate, pd.Timestamp) or isinstance(
-                lastUpdate, datetime
-            ):
+            if isinstance(lastUpdate, pd.Timestamp) or isinstance(lastUpdate, datetime):
                 date = lastUpdate.date()
             else:
                 try:
@@ -186,9 +182,7 @@ class DataImportApp(DataImport):
 
         provider = row[header.index("provider")]
         imageName = row[header.index("image")]
-        processedScaleList = self._correctReadInValue(
-            row[header.index("scale")]
-        )
+        processedScaleList = self._correctReadInValue(row[header.index("scale")])
 
         scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
         released = row[header.index("released")]
@@ -223,9 +217,7 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsList = row[
             header.index("technicalStandardsProtocols")
         ].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("focus")]
-        )
+        processedFocusList = self._correctReadInValue(row[header.index("focus")])
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
 
         processedClassificationList = self._correctReadInValue(
@@ -313,9 +305,7 @@ class DataImportApp(DataImport):
             obj.targetGroup.add(*targetGroupElements)
             obj.specificApplication.add(*specificApplicationElements)
             obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
-            obj.technicalStandardsProtocols.add(
-                *technicalStandardsProtocolsElements
-            )
+            obj.technicalStandardsProtocols.add(*technicalStandardsProtocolsElements)
             # for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
             #     setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
             obj = self._importEnglishTranslation(

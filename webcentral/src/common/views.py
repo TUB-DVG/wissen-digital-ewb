@@ -49,9 +49,7 @@ def createQ(filterElements):
         for filterValue in filterElement["filterValues"]:
             for key in list(filterElement.keys()):
                 if "filterName" in key:
-                    searchFilterForOneFilter |= Q(
-                        **{filterElement[key]: filterValue}
-                    )
+                    searchFilterForOneFilter |= Q(**{filterElement[key]: filterValue})
         # breakpoint()
         complexSearchFilter &= searchFilterForOneFilter
     return complexSearchFilter
@@ -111,16 +109,12 @@ def comparison(request):
             {
                 "dbLocator": "energyConsumptionUsePhasePassive",
                 "isManyToManyField": False,
-                "displayedStr": _(
-                    "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
-                ),
+                "displayedStr": _("Energieverbrauch Nutzung (passiv/ Stand-by; in W)"),
             },
             {
                 "dbLocator": "globalWarmingPotentialProduction",
                 "isManyToManyField": False,
-                "displayedStr": _(
-                    "Treibhauspotenzial (Herstellung; in kg CO2-e)"
-                ),
+                "displayedStr": _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
             },
             {
                 "dbLocator": "globalWarmingPotentialUsePhase",
@@ -130,9 +124,7 @@ def comparison(request):
             {
                 "dbLocator": "globalWarmingPotentialEndOfLife",
                 "isManyToManyField": False,
-                "displayedStr": _(
-                    "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
-                ),
+                "displayedStr": _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
             {
                 "dbLocator": "furtherInformationNotes",
@@ -191,9 +183,7 @@ def comparison(request):
             {
                 "dbLocator": "scale",
                 "isManyToManyField": True,
-                "displayedStr": _(
-                    "Räumliche Größenordnung der Anwendungsfälle"
-                ),
+                "displayedStr": _("Räumliche Größenordnung der Anwendungsfälle"),
             },
             {
                 "dbLocator": "accessibility",

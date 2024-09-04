@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}{{ criteriaCatalog.name }}{% endblock %}
 {% block content %}
-  {% load i18n %}
-  {% load static %}
-  {% load format_tags %}
-  <!DOCTYPE html>
-  <style>
+    {% load i18n %}
+    {% load static %}
+    {% load format_tags %}
+    <!DOCTYPE html>
+    <style>
 button {
   text-align: left;
 }
@@ -156,214 +156,206 @@ button {
     left: 0;
     border-left: 10px solid #F5E86A;
 }
-  </style>
-
-  <!-- **************** MAIN CONTENT START **************** -->
-  <main>
-    <!-- Page content START -->
-    <section class="pt-0">
-      <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
-        {% include "partials/backLinkInFocusColor.html" %}
-        {% include "partials/_imagesNavBar.html" %}
-      </div>
-    </div>
-    <!-- </form> -->
-    <div class="p-2">
-      <div class="row g-4">
-        <div class="col-lg-12 border-legal my-4 p-4"
-             id="container-criteria-catalog-details">
-          {% include "partials/descriptionContainer.html" %}
-          <br />
-          <div class="row sticky-top border-bottom"
-               style="top: 115px;
-                      background-color: white;
-                      margin-inline: 0">
-            <div class="mb-3"
-                 style="font-size: 16px;
-                        width: 130px;
-                        margin-left: 0px;
-                        padding-left: 0">{% translate "Themen" %}</div>
-            <div class="mb-3" style="width: 106px;">
-              <div id="criterias" style="display: none; font-size: 16px;">
-                {% translate "Kriterien" %}
-              </div>
+    </style>
+    <!-- **************** MAIN CONTENT START **************** -->
+    <main>
+        <!-- Page content START -->
+        <section class="pt-0">
+            <div class="container legal-cards p-4 my-4 z-index-9 position-relative">
+                {% include "partials/backLinkInFocusColor.html" %}
+                {% include "partials/_imagesNavBar.html" %}
             </div>
-            <div class="mb-3"
-                 id="container-criteria-catalog-details"
-                 style="width: 350px">
-              <div id="requirementsAndRuleExamples"
-                   style="display: none;
-                          font-size: 16px">
-                {% translate "Anforderungen und Regelbeispiele" %}
-              </div>
-            </div>
-            <div class="col-lg-3 mb-3"></div>
-            <div class="col-lg-2"
-                 style="margin-left: 30px;
-                        position: absolute;
-                        right: 0;
-                        padding-right: 0"
-                 id="container-criteria-catalog-details">
-              <div style="text-align: right">
-                <button onclick="resetCriteriaCatalog()"
-                        style="border: none;
-                               background: none;
-                               cursor: pointer;
-                               padding: 0px;
-                               margin: 0px"
-                        id="collapseEverythingButton">
-                  {% translate "Alles einklappen" %}
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="row" id="hi" style="margin-inline: 0;">
-            <!-- <ul> -->
-            {% for tree in trees %}
-              {% for node in tree %}
-                {% if node.content.topic.norms != "" %}
-                  <div class="grey-box" topicId="{{ node.content.topic.id }}">
-                    <div class="row">
-                      <div class="col-10 heading-grey-container">
-                        <b>{% translate "Relevante DSGVO-Normen" %}</b>
-                      </div>
-                      <div class="col-2">
-                        <img topicId="{{ node.content.topic.id }}"
-                             src="{% static 'assets/images/close.svg' %}"
-                             onclick="toggleNormsBox(this, event)"
-                             class="close-button" />
-                      </div>
+        </div>
+        <!-- </form> -->
+        <div class="p-2">
+            <div class="row g-4">
+                <div class="col-lg-12 border-legal my-4 p-4"
+                     id="container-criteria-catalog-details">
+                    {% include "partials/descriptionContainer.html" %}
+                    <br />
+                    <div class="row sticky-top border-bottom"
+                         style="top: 115px;
+                                background-color: white;
+                                margin-inline: 0">
+                        <div class="mb-3"
+                             style="font-size: 16px;
+                                    width: 130px;
+                                    margin-left: 0px;
+                                    padding-left: 0">{% translate "Themen" %}</div>
+                        <div class="mb-3" style="width: 106px;">
+                            <div id="criterias" style="display: none; font-size: 16px;">{% translate "Kriterien" %}</div>
+                        </div>
+                        <div class="mb-3"
+                             id="container-criteria-catalog-details"
+                             style="width: 350px">
+                            <div id="requirementsAndRuleExamples"
+                                 style="display: none;
+                                        font-size: 16px">{% translate "Anforderungen und Regelbeispiele" %}</div>
+                        </div>
+                        <div class="col-lg-3 mb-3"></div>
+                        <div class="col-lg-2"
+                             style="margin-left: 30px;
+                                    position: absolute;
+                                    right: 0;
+                                    padding-right: 0"
+                             id="container-criteria-catalog-details">
+                            <div style="text-align: right">
+                                <button onclick="resetCriteriaCatalog()"
+                                        style="border: none;
+                                               background: none;
+                                               cursor: pointer;
+                                               padding: 0px;
+                                               margin: 0px"
+                                        id="collapseEverythingButton">{% translate "Alles einklappen" %}</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                      <br />
-                      <div class="col-12">{{ node.content.topic.norms }}</div>
-                    </div>
-                  </div>
-                {% endif %}
-                {% if node.indent %}
-                  {{ node.indent.depth }}
-                  {% if node.depth == 0 %}
-                    <ul class="border-bottom test"
-                        style="padding-left: 0px;
-                               margin-left: 0px;
-                               margin-bottom: 2px;
-                               padding-right: 0;
-                               padding-bottom: 3px"
-                        id="{{ node.depth }}">
-                    {% elif node.depth == 1 %}
-                      <ul class="absolute-horizontal-position-lvl-one"
-                          style="display: none;
-                                 margin-top: 0px;
-                                 margin-bottom: 0px"
-                          id="{{ node.depth }}">
-                      {% elif node.depth == 2 %}
-                        <ul class="absolute-horizontal-position-lvl-two"
-                            style="display: none;
-                                   :last-child { border-bottom: none;
-                                   }"
-                            id="{{ node.depth }}">
-                        {% else %}
-                          <ul style="display: none" id="{{ node.depth }}">
-                          {% endif %}
-                        {% elif node.outdent %}
-                          {% if node.depth == 0 %}
-                          {% else %}
-                            <!-- <div class="hr sticky-third-lvl"
+                    <div class="row" id="hi" style="margin-inline: 0;">
+                        <!-- <ul> -->
+                        {% for tree in trees %}
+                            {% for node in tree %}
+                                {% if node.content.topic.norms != "" %}
+                                    <div class="grey-box" topicId="{{ node.content.topic.id }}">
+                                        <div class="row">
+                                            <div class="col-10 heading-grey-container">
+                                                <b>{% translate "Relevante DSGVO-Normen" %}</b>
+                                            </div>
+                                            <div class="col-2">
+                                                <img topicId="{{ node.content.topic.id }}"
+                                                     src="{% static 'assets/images/close.svg' %}"
+                                                     onclick="toggleNormsBox(this, event)"
+                                                     class="close-button" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <br />
+                                            <div class="col-12">{{ node.content.topic.norms }}</div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if node.indent %}
+                                    {{ node.indent.depth }}
+                                    {% if node.depth == 0 %}
+                                        <ul class="border-bottom test"
+                                            style="padding-left: 0px;
+                                                   margin-left: 0px;
+                                                   margin-bottom: 2px;
+                                                   padding-right: 0;
+                                                   padding-bottom: 3px"
+                                            id="{{ node.depth }}">
+                                        {% elif node.depth == 1 %}
+                                            <ul class="absolute-horizontal-position-lvl-one"
+                                                style="display: none;
+                                                       margin-top: 0px;
+                                                       margin-bottom: 0px"
+                                                id="{{ node.depth }}">
+                                            {% elif node.depth == 2 %}
+                                                <ul class="absolute-horizontal-position-lvl-two"
+                                                    style="display: none;
+                                                           :last-child { border-bottom: none;
+                                                           }"
+                                                    id="{{ node.depth }}">
+                                                {% else %}
+                                                    <ul style="display: none" id="{{ node.depth }}">
+                                                    {% endif %}
+                                                {% elif node.outdent %}
+                                                    {% if node.depth == 0 %}
+                                                    {% else %}
+                                                        <!-- <div class="hr sticky-third-lvl"
       style="display: none;
              height: 2px;
              background-color: #F5E86A"
       id="{{ node.depth }}"></div> -->
-                          {% endif %}
-                        </li>
-                      </ul>
-                    {% elif node.content %}
-                      {% if node.content.depth == 0 %}
-                        <li style="font-size: 22px;
-                                   margin: 0px"
-                            topicId="{{ node.content.topic.id }}"
-                            id="{{ node.content.depth }}"
-                            tags="{{ node.content.topic.tag|format_tags }}">
-                          <div class="sticky-third-lvl"
-                               id="{{ node.content.depth }}"
-                               class="wrapper">
-                            <img class="sticky-third-lvl"
-                                 src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}"
-                                 style="width: 20px;
-                                        margin-right: 4px;
-                                        margin-left: 9px;
-                                        padding-top: 10.5px;
-                                        padding-bottom: 10.5px"
-                                 id="0" />
-                            <button class="button-first-level sticky-third-lvl sticky-element-button {% if node.content.topic.grey == 'True' %}grey-font-color{% endif %}"
-                                    onclick="showOrHide(event, this)"
-                                    id="{{ node.content.depth }}"
-                                    topicId="{{ node.content.topic.id }}">
-                              {{ node.content.topic.heading }}
-                            </button>
-                            <div class="grey-box">{{ node.content.topic.norms }}</div>
-                            <img id="0"
-                                 topicId="{{ node.content.topic.id }}"
-                                 src="{% static 'assets/images/info_icon.svg' %}"
-                                 class="info_icon show"
-                                 onclick="toggleNormsBox(this, event)" />
-                            <img id="0"
-                                 topicId="{{ node.content.topic.id }}"
-                                 src="{% static 'assets/images/info_icon_selected.svg' %}"
-                                 class="info_icon_selected"
-                                 onclick="toggleNormsBox(this, event)" />
-
-                          </div>
-                          <p class="paragraph-first-level"
-                             id="0"
-                             topicId="{{ node.content.topic.id }}"
-                             tags="{{ node.content.topic.tag|format_tags }}">
-                            {{ node.content.topic.textLineBreaks }}
-                          </p>
-                        {% else %}
-                          <li class="border-bottom sticky-element-li"
-                              topicId="{{ node.content.topic.id }}"
-                              id="{{ node.content.depth }}"
-                              style="display: none;
-                                     font-size: 22px;
-                                     margin: 0px;
-                                     padding: 0px"
-                              tags="{{ node.content.topic.tag|format_tags }}">
-                            <div id="{{ node.content.depth }}" class="wrapper">
-                              <img style="display: none;
-                                          margin-right: 4px;
-                                          margin-top: 11px;
-                                          padding: 0px"
-                                   src="{% static 'assets/images/arrow_down.svg' %}" />
-                              <button class="sticky-element-button button-deeper-level"
-                                      onclick="showOrHide(event, this)"
-                                      class="button-deeper-level"
-                                      topicId="{{ node.content.topic.id }}"
-                                      id="{{ node.content.depth }}"
-                                      text="{{ node.content.topic.heading }}">
-                                {{ node.content.topic.heading }}
-                              </button>
+                                                    {% endif %}
+                                                </li>
+                                            </ul>
+                                        {% elif node.content %}
+                                            {% if node.content.depth == 0 %}
+                                                <li style="font-size: 22px;
+                                                           margin: 0px"
+                                                    topicId="{{ node.content.topic.id }}"
+                                                    id="{{ node.content.depth }}"
+                                                    tags="{{ node.content.topic.tag|format_tags }}">
+                                                    <div class="sticky-third-lvl"
+                                                         id="{{ node.content.depth }}"
+                                                         class="wrapper">
+                                                        <img class="sticky-third-lvl"
+                                                             src="{% static 'assets/images/'|add:node.content.topic.imageFilename %}"
+                                                             style="width: 20px;
+                                                                    margin-right: 4px;
+                                                                    margin-left: 9px;
+                                                                    padding-top: 10.5px;
+                                                                    padding-bottom: 10.5px"
+                                                             id="0" />
+                                                        <button class="button-first-level sticky-third-lvl sticky-element-button {% if node.content.topic.grey == 'True' %}grey-font-color{% endif %}"
+                                                                onclick="showOrHide(event, this)"
+                                                                id="{{ node.content.depth }}"
+                                                                topicId="{{ node.content.topic.id }}">
+                                                            {{ node.content.topic.heading }}
+                                                        </button>
+                                                        <div class="grey-box">{{ node.content.topic.norms }}</div>
+                                                        <img id="0"
+                                                             topicId="{{ node.content.topic.id }}"
+                                                             src="{% static 'assets/images/info_icon.svg' %}"
+                                                             class="info_icon show"
+                                                             onclick="toggleNormsBox(this, event)" />
+                                                        <img id="0"
+                                                             topicId="{{ node.content.topic.id }}"
+                                                             src="{% static 'assets/images/info_icon_selected.svg' %}"
+                                                             class="info_icon_selected"
+                                                             onclick="toggleNormsBox(this, event)" />
+                                                    </div>
+                                                    <p class="paragraph-first-level"
+                                                       id="0"
+                                                       topicId="{{ node.content.topic.id }}"
+                                                       tags="{{ node.content.topic.tag|format_tags }}">
+                                                        {{ node.content.topic.textLineBreaks }}
+                                                    </p>
+                                                {% else %}
+                                                    <li class="border-bottom sticky-element-li"
+                                                        topicId="{{ node.content.topic.id }}"
+                                                        id="{{ node.content.depth }}"
+                                                        style="display: none;
+                                                               font-size: 22px;
+                                                               margin: 0px;
+                                                               padding: 0px"
+                                                        tags="{{ node.content.topic.tag|format_tags }}">
+                                                        <div id="{{ node.content.depth }}" class="wrapper">
+                                                            <img style="display: none;
+                                                                        margin-right: 4px;
+                                                                        margin-top: 11px;
+                                                                        padding: 0px"
+                                                                 src="{% static 'assets/images/arrow_down.svg' %}" />
+                                                            <button class="sticky-element-button button-deeper-level"
+                                                                    onclick="showOrHide(event, this)"
+                                                                    class="button-deeper-level"
+                                                                    topicId="{{ node.content.topic.id }}"
+                                                                    id="{{ node.content.depth }}"
+                                                                    text="{{ node.content.topic.heading }}">
+                                                                {{ node.content.topic.heading }}
+                                                            </button>
+                                                        </div>
+                                                        <p class="paragraph-deeper-level"
+                                                           tags="{{ node.content.topic.tag|format_tags }}"
+                                                           id="{{ node.content.depth }}"
+                                                           topicId="{{ node.content.topic.id }}"
+                                                           tags="{{ node.content.topic.tag|format_tags }}">
+                                                            {{ node.content.topic.textLineBreaks }}
+                                                        </p>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             </div>
-                            <p class="paragraph-deeper-level"
-                               tags="{{ node.content.topic.tag|format_tags }}"
-                               id="{{ node.content.depth }}"
-                               topicId="{{ node.content.topic.id }}"
-                               tags="{{ node.content.topic.tag|format_tags }}">
-                              {{ node.content.topic.textLineBreaks }}
-                            </p>
-                          {% endif %}
-                        {% endif %}
-                      {% endfor %}
-                    {% endfor %}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Page content END -->
-      </main>
-      <!-- **************** MAIN CONTENT END **************** -->
-      <script>
+                        </div>
+                    </div>
+                </section>
+                <!-- Page content END -->
+            </main>
+            <!-- **************** MAIN CONTENT END **************** -->
+            <script>
         // initialization of global variables. These are needed inside criteriaCatalogFunctions.js
         var idOfTopicToBeOpened = "{{ topicIdentifier }}";
         var pathToArrowUpImg = "{% static 'assets/images/arrow_up.svg' %}";
@@ -396,9 +388,9 @@ button {
             $(`img.info_icon[topicId=${topicId}]`).removeClass("show")
           }
         }
-      </script>
-      <script src="{% static 'js/criteriaCatalogFunctions.js' %}"></script>
-      <img src="{% static 'assets/images/arrow_up.svg' %}"
-           id="hiddenImage"
-           style="display: none" />
-    {% endblock %}
+            </script>
+            <script src="{% static 'js/criteriaCatalogFunctions.js' %}"></script>
+            <img src="{% static 'assets/images/arrow_up.svg' %}"
+                 id="hiddenImage"
+                 style="display: none" />
+        {% endblock %}

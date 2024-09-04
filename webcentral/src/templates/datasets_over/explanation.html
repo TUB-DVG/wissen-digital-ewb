@@ -1,76 +1,71 @@
 {% load static %}
 {% load i18n %}
 <section class="py-4">
-  <div class="container">
-    <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
-
-      <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoTools">
-        <p>
-
-          <br />
-
-          {% blocktranslate %}Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
+    <div class="container">
+        <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
+            <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoTools">
+                <p>
+                    <br />
+                    {% blocktranslate %}Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
           Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch die Bereitstellung von offenen Daten tragen
           Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei.{% endblocktranslate %}
-          {% blocktranslate %}Diese hilft dabei fundierte Entscheidungen treffen und innovative Lösungen entwickeln. Beispielhaft hierfür
+                    {% blocktranslate %}Diese hilft dabei fundierte Entscheidungen treffen und innovative Lösungen entwickeln. Beispielhaft hierfür
           ist die Nutzung von Gebäudealter und Sanierungsjahren zur Berechnung des Energiebedarfs in Gebäuden.
           Somit hilft die Offenlegung von Daten beispielsweise dabei, erneuerbare Energie in Strom- und Wärmenetze zu
           integrieren.
           Durch die Kombination von offenen Energie- und Wetterdaten können bspw. Prognosemodelle für die erneuerbare
           Energieerzeugung verbessert und die Stabilität des Netzes erhöht werden.{% endblocktranslate %}
-          {% blocktranslate %}Die hier dargestellten Datensätze sind durch die Begleitforschung durch verschiedene Maßnahmen erfasst worden,
+                    {% blocktranslate %}Die hier dargestellten Datensätze sind durch die Begleitforschung durch verschiedene Maßnahmen erfasst worden,
           unter anderem dem Fragebogen 2021, Interviews mit Projekten oder eigene Recherchen.{% endblocktranslate %}
-          {% blocktranslate %}Eine Einordnung unsererseits erfolgt zunächst über öffentlich zugängliche Informationen.{% endblocktranslate %}
-
-          {% blocktranslate %}Dabei berücksichtigen wir die folgenden Aspekte:{% endblocktranslate %}
-        </p>
-        <ul>
-          <li class="lead">
-            <b>{% translate "Kategorie Anwendungsfall" %}</b>&nbsp;&ndash; {% blocktranslate %}Welcher Kategorie kann das Datenset zugeordnet
+                    {% blocktranslate %}Eine Einordnung unsererseits erfolgt zunächst über öffentlich zugängliche Informationen.{% endblocktranslate %}
+                    {% blocktranslate %}Dabei berücksichtigen wir die folgenden Aspekte:{% endblocktranslate %}
+                </p>
+                <ul>
+                    <li class="lead">
+                        <b>{% translate "Kategorie Anwendungsfall" %}</b>&nbsp;&ndash; {% blocktranslate %}Welcher Kategorie kann das Datenset zugeordnet
             werden.{% endblocktranslate %}
-          </li>
-          <li class="lead">
-            <b>{% translate "Anwendungsbereich" %}</b>&nbsp;&ndash; {% blocktranslate %}Typischer Anwendungsbereich bei dem das Datenset zum
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Anwendungsbereich" %}</b>&nbsp;&ndash; {% blocktranslate %}Typischer Anwendungsbereich bei dem das Datenset zum
             Einsatz kommt. Ein Anwendungsbereich beschreibt alle möglichen Methoden und Datensätze mit denen ein
             bestimmter Zweck erreicht werden kann.{% endblocktranslate %}
-          </li>
-          <li class="lead">
-            <b>{% translate "Verfügbarkeit" %}</b>&nbsp;&ndash; {% blocktranslate %}Unter welcher Lizenz sind die Daten verfügbar? Sind diese
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Verfügbarkeit" %}</b>&nbsp;&ndash; {% blocktranslate %}Unter welcher Lizenz sind die Daten verfügbar? Sind diese
             kostenlos oder kostenpflichtig?{% endblocktranslate %}
-          </li>
-        </ul>
-        <p>{% translate "Weiterführende Informationen" %}:</p>
-        <p>
-          <a href="https://data.open-power-system-data.org" target="_blank">Open Power System Data</a>
-        </br />
-        {% blocktranslate %}Die Plattform bietet umfangreiche Daten zu Stromerzeugung, -verbrauch und -übertragung in verschiedenen
+                    </li>
+                </ul>
+                <p>{% translate "Weiterführende Informationen" %}:</p>
+                <p>
+                    <a href="https://data.open-power-system-data.org" target="_blank">Open Power System Data</a>
+                </br />
+                {% blocktranslate %}Die Plattform bietet umfangreiche Daten zu Stromerzeugung, -verbrauch und -übertragung in verschiedenen
           Ländern.{% endblocktranslate %}
-      </p>
-      <p>
-        <a href="https://openei.org/" target="_blank">OpenEI</a>
-      </br />
-      {% blocktranslate %}OpenEI ist eine Plattform, die umfassende Informationen zu erneuerbaren Energien weltweit bereitstellt.
+            </p>
+            <p>
+                <a href="https://openei.org/" target="_blank">OpenEI</a>
+            </br />
+            {% blocktranslate %}OpenEI ist eine Plattform, die umfassende Informationen zu erneuerbaren Energien weltweit bereitstellt.
           Forschende können auf Daten zu erneuerbaren Energieressourcen, Technologien, politischen Rahmenbedingungen und
           Marktdaten zugreifen, um ihre Forschung und Analyse zu unterstützen.{% endblocktranslate %}
-    </p>
-    <p>
-      <a href="https://openenergy-platform.org/" target="_blank">OpenEnergy Platform</a>
-    </br />
-    {% blocktranslate %}Die Openenergy Platform hat zum Ziel die Modellierung des Energiesystems
+        </p>
+        <p>
+            <a href="https://openenergy-platform.org/" target="_blank">OpenEnergy Platform</a>
+        </br />
+        {% blocktranslate %}Die Openenergy Platform hat zum Ziel die Modellierung des Energiesystems
           transparent zu machen. Hierzu werden Informationen und digitale Werkzeuge rund um das
           Thema Energie gesammelt.{% endblocktranslate %}
-  </p>
-
+    </p>
 </div>
 <div class="col-lg-12 lead mt-3">
-  <a role="button"
-     class="collapsed text-truncation-btn"
-     data-toggle="collapse"
-     href="#collapseInfoTools"
-     aria-expanded="false"
-     aria-controls="collapseInfoTools"
-     data-expanded-text="{% translate 'Zeige weniger ...' %}"
-     data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+    <a role="button"
+       class="collapsed text-truncation-btn"
+       data-toggle="collapse"
+       href="#collapseInfoTools"
+       aria-expanded="false"
+       aria-controls="collapseInfoTools"
+       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
 </div>
 </div>
 </div>

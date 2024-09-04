@@ -37,9 +37,7 @@ class TestTechnicalStandarts(WebDriverSetup):
         technicalStandartsPageObj = TechnicalStandartsPage(self.driver)
         linkToNorms = technicalStandartsPageObj.getNormsLink()
 
-        self.driver.execute_script(
-            "arguments[0].scrollIntoView();", linkToNorms
-        )
+        self.driver.execute_script("arguments[0].scrollIntoView();", linkToNorms)
         time.sleep(1)
         linkToNorms.click()
 
@@ -53,9 +51,7 @@ class TestTechnicalStandarts(WebDriverSetup):
         self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/")
         time.sleep(1)
         linkToProtocols = technicalStandartsPageObj.getProtocolsLink()
-        self.driver.execute_script(
-            "arguments[0].scrollIntoView();", linkToProtocols
-        )
+        self.driver.execute_script("arguments[0].scrollIntoView();", linkToProtocols)
         time.sleep(1)
         linkToProtocols.click()
 

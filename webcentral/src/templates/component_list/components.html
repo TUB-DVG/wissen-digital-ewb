@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-  {% translate "Aufwände für verwendete Komponenten" %}
+    {% translate "Aufwände für verwendete Komponenten" %}
 {% endblock %}
 {% load static %}
 {% block content %}
-  <style>
+    <style>
     .arrowImage{
         width: 5px;
         height: 11px;
@@ -108,34 +108,30 @@
     /* #componentListingContainer{ 
         padding-inline: 16px;
     } */
-  </style>
-  <div class="content container">
-    {% include "partials/backLinkInFocusColor.html" %}
-    <div class="row">
-      <div class="descriptionBox">
-        {% include "partials/descriptionContainer.html" %}
-
-        {% include "partials/_descriptionImage.html" %}
-        <div class="descriptionDownloadLink">
-          {% blocktranslate %}
+    </style>
+    <div class="content container">
+        {% include "partials/backLinkInFocusColor.html" %}
+        <div class="row">
+            <div class="descriptionBox">
+                {% include "partials/descriptionContainer.html" %}
+                {% include "partials/_descriptionImage.html" %}
+                <div class="descriptionDownloadLink">
+                    {% blocktranslate %}
                     Für häufig verwendete Komponenten, die für die Realisierung digitaler Anwendungen notwendig sind, wurden beispielhafte Produkte und deren Emissionen recherchiert oder mittels Lebenszyklusanalyse-Software modelliert. Die folgende Übersicht listet diese Komponenten, die entstehenden Emissionen, sowie weitere Informationen rund um die Komponenten auf. Zudem stehen die Inhalte der Tabelle als Excel-Datei inklusive eines kleinen Berechnungstools der Gesamt-Treibhausgasemissionen, verursacht durch alle Komponenten einer digitalen Anwendung, zum Download bereit:                    
                     {% endblocktranslate %}
+                </div>
+                <div class="ecological-cards">
+                    <a class="ecological-font-color"
+                       download
+                       style="font-size: 22px"
+                       href="{% static 'downloads/EWB_Digi_Komponenten.xlsx' %}">{% translate 'Excel-Tabelle zum Download' %}</a>
+                </div>
+            </div>
+            <div class="searchContainer {{ focusBorder }}-cards">{% include "partials/search-bar.html" %}</div>
+            <div class="compareBox {{ focusBorder }}-cards"
+                 id="compareBox"
+                 style="display: none">{% include "partials/comparison.html" %}</div>
+            <div id="listing-results">{% include "partials/listing-row.html" %}</div>
         </div>
-        <div class="ecological-cards">
-          <a class="ecological-font-color"
-             download
-             style="font-size: 22px"
-             href="{% static 'downloads/EWB_Digi_Komponenten.xlsx' %}">{% translate 'Excel-Tabelle zum Download' %}</a>
-        </div>
-      </div>
-      <div class="searchContainer {{ focusBorder }}-cards">
-        {% include "partials/search-bar.html" %}
-      </div>
-      <div class="compareBox {{ focusBorder }}-cards"
-           id="compareBox"
-           style="display: none">{% include "partials/comparison.html" %}</div>
-      <div id="listing-results">{% include "partials/listing-row.html" %}</div>
-
-    </div>
-    <script>var modelName = "{{ model }}";</script>
-  {% endblock %}
+        <script>var modelName = "{{ model }}";</script>
+    {% endblock %}

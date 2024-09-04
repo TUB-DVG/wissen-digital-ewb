@@ -30,9 +30,7 @@ class Migration(migrations.Migration):
                 ("useCase_en", models.CharField(max_length=50, null=True)),
                 (
                     "sriLevel",
-                    models.CharField(
-                        max_length=255, verbose_name="SRI-Zuordnung"
-                    ),
+                    models.CharField(max_length=255, verbose_name="SRI-Zuordnung"),
                 ),
                 (
                     "sriLevel_de",

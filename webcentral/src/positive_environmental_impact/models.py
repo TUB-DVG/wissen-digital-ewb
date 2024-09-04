@@ -21,9 +21,7 @@ class EnvironmentalImpact(models.Model):
     strategies = models.TextField(blank=True, null=True)
     relevance = models.TextField(blank=True, null=True)
     image = models.CharField(max_length=300, blank=True, null=True)
-    problem_statement_and_problem_goals = models.TextField(
-        blank=True, null=True
-    )
+    problem_statement_and_problem_goals = models.TextField(blank=True, null=True)
     implementation_in_the_project = models.TextField(blank=True, null=True)
     evaluation = models.TextField(blank=True, null=True)
     literature = models.ManyToManyField(Literature, blank=True, null=True)
@@ -38,9 +36,7 @@ class EnvironmentalImpact(models.Model):
         combinedText = "<ul>"
         for literature in self.literature.all():
             if literature.literature.startswith("<sup"):
-                combinedText += (
-                    "<li id='footnote1'>" + literature.literature + "</li>"
-                )
+                combinedText += "<li id='footnote1'>" + literature.literature + "</li>"
             else:
                 linkName = literature.linkName.replace("\n", "")
                 combinedText += (

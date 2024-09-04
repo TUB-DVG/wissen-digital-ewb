@@ -1,28 +1,27 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-  {% translate "Überblick über den Lastprofilgenerator" %}
+    {% translate "Überblick über den Lastprofilgenerator" %}
 {% endblock %}
 {% block content %}
-  {% load static %}
-  <style nonce="{{request.csp_nonce}}">
+    {% load static %}
+    <style nonce="{{request.csp_nonce}}">
   img_src {
       float: right;
 
       margin: 0px 0px 15px 20px;
   }
-  </style>
-
-  <!-- =======================
+    </style>
+    <!-- =======================
 Page Banner START -->
-  <section class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">{% translate "Lastprofile" %}</h2>
-            <p class="lead">
-              {% blocktranslate %}Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="p-2 text-left rounded-3">
+                        <h2 class="m-0">{% translate "Lastprofile" %}</h2>
+                        <p class="lead">
+                            {% blocktranslate %}Auf dieser Seite haben Sie Zugang zu einem Lastprofilgenerator für
               Wärmeverbrauch und einem Lastprofilgenerator für Stromverbrauch.
               Die Lastprofile werden als Zeitreihen dargestellt. 
 
@@ -33,164 +32,157 @@ Page Banner START -->
               
               <br />
               Die jeweiligen Lastprofile können auch heruntergeladen werden.{% endblocktranslate %}
-            </p>
-          </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- =======================
+    </section>
+    <!-- =======================
 Page Banner END -->
-
-  <section class="py-4">
-    <div class="container">
-      <!-- row electric profil START -->
-      <div class="row " id="collapseInfoContainerWeatherdata">
-        <!-- text electric profil START -->
-        <div class="col-lg-5">
-          <h3>{% translate "Stromlast" %}</h3>
-          <p class="lead">
-            {% blocktranslate %}Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den
+    <section class="py-4">
+        <div class="container">
+            <!-- row electric profil START -->
+            <div class="row " id="collapseInfoContainerWeatherdata">
+                <!-- text electric profil START -->
+                <div class="col-lg-5">
+                    <h3>{% translate "Stromlast" %}</h3>
+                    <p class="lead">
+                        {% blocktranslate %}Der Stromlastprofil-Generator erstellt eine Zeitreihe, die den
           typischen Verlauf des Stromverbrauchs über der Zeit in Abhängigkeit
           der (Gebäude-)Nutzung und des Jahresstrombedarfs darstellt. Des weiteren
           kann der Berechnungszeitraum angegeben werden:{% endblocktranslate %}
-            <br />
-          </p>
-          <ul>
-            <li class="lead">
-              <b>({% translate "Gebäude" %}-){% translate "Nutzung" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl der Nutzung des Stroms{% endblocktranslate %}
-            </li>
-            <li class="lead">
-              <b>{% translate "Jahresstrombedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Jahresstrombedarfs
+                        <br />
+                    </p>
+                    <ul>
+                        <li class="lead">
+                            <b>({% translate "Gebäude" %}-){% translate "Nutzung" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl der Nutzung des Stroms{% endblocktranslate %}
+                        </li>
+                        <li class="lead">
+                            <b>{% translate "Jahresstrombedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Jahresstrombedarfs
             in kWh/a{% endblocktranslate %}
-            </li>
-            <li class="lead">
-              <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des
+                        </li>
+                        <li class="lead">
+                            <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des
             Berechnungszeitraums{% endblocktranslate %}
-            </li>
-          </ul>
-        </div>
-        <!-- text electric profil END -->
-        <!-- image electric profil START -->
-        <div class="col-lg-7">
-          {% if request.LANGUAGE_CODE == "de" %}
-            <img src="{% static '/img/Lastprofil/stromlast_sketch.png' %}" alt="" />
-          {% else %}
-            <img src="{% static '/img/Lastprofil/electricload_sketch.png' %}" alt="" />
-          {% endif %}
-
-        </div>
-        <!-- image electric profil END -->
-        <!-- row electric profil END -->
-      </div>
-      <!-- row electric link START -->
-      <div class="row py-5">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-10">
-          <a href="{% url 'LastProfile_strom_display' %}">
-            <img src="{% static '/img/Lastprofil/strom.jpg' %}"
-                 style="max-height:30px" />
-            {% blocktranslate %}Approximation der Stromlast{% endblocktranslate %}
-          </a>
-        </div>
-      </div>
-      <!-- link electric profil END -->
-      <!-- row heat profil START -->
-      <div class="row">
-        <!-- text heat profil START -->
-        <div class="col-lg-5">
-          <h3>{% translate "Wärmelast" %}</h3>
-          <p class="lead">
-
-            {% blocktranslate %}Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den
+                        </li>
+                    </ul>
+                </div>
+                <!-- text electric profil END -->
+                <!-- image electric profil START -->
+                <div class="col-lg-7">
+                    {% if request.LANGUAGE_CODE == "de" %}
+                        <img src="{% static '/img/Lastprofil/stromlast_sketch.png' %}" alt="" />
+                    {% else %}
+                        <img src="{% static '/img/Lastprofil/electricload_sketch.png' %}" alt="" />
+                    {% endif %}
+                </div>
+                <!-- image electric profil END -->
+                <!-- row electric profil END -->
+            </div>
+            <!-- row electric link START -->
+            <div class="row py-5">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-10">
+                    <a href="{% url 'LastProfile_strom_display' %}">
+                        <img src="{% static '/img/Lastprofil/strom.jpg' %}"
+                             style="max-height:30px" />
+                        {% blocktranslate %}Approximation der Stromlast{% endblocktranslate %}
+                    </a>
+                </div>
+            </div>
+            <!-- link electric profil END -->
+            <!-- row heat profil START -->
+            <div class="row">
+                <!-- text heat profil START -->
+                <div class="col-lg-5">
+                    <h3>{% translate "Wärmelast" %}</h3>
+                    <p class="lead">
+                        {% blocktranslate %}Der Wärmelastprofil-Generator erstellt eine Zeitreihe, die den
           typischen Verlauf der Wärmelast über der Zeit in Abhängigkeit der
           Wetterdaten, des Jahreswärmebedarfs und des Gebäudetyps darstellt.
           Desweiteren kann der Berechnungszeitraum angegeben werden:{% endblocktranslate %}
-            <ul>
-              <li class="lead">
-                <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Hier kann das Testreferenzjahr
+                        <ul>
+                            <li class="lead">
+                                <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Hier kann das Testreferenzjahr
               (TRJ) oder eine spezifische Wetterstation gewählt werden{% endblocktranslate %}
-              </li>
-              <li class="lead">
-                <b>{% translate "Gebäudetyp" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des Gebäudetyps{% endblocktranslate %}
-              </li>
-              <li class="lead">
-                <b>{% translate "Jahreswärmebedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des
+                            </li>
+                            <li class="lead">
+                                <b>{% translate "Gebäudetyp" %}</b>&nbsp;&ndash; {% blocktranslate %}Auswahl des Gebäudetyps{% endblocktranslate %}
+                            </li>
+                            <li class="lead">
+                                <b>{% translate "Jahreswärmebedarf" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des
               Jahreswärmebedarfs in kWh/a{% endblocktranslate %}
-              </li>
-            </li>
-            <li class="lead">
-              <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Berechnungszeitraums{% endblocktranslate %}
-            </li>
-          </ul>
-        </p>
-      </div>
-      <!-- text heat profil END -->
-      <!-- image heat profil START -->
-      <div class="col-lg-7">
-        {% if request.LANGUAGE_CODE == "de" %}
-          <img src="{% static '/img/Lastprofil/waermelast_sketch.png' %}"
-               alt="Bild Waermelast" />
-        {% else %}
-          <img src="{% static '/img/Lastprofil/heatload_sketch.png' %}"
-               alt="Image heat load" />
-        {% endif %}
-      </div>
-      <!-- image heat profil END -->
-    </div>
-    <!-- row heat profil END -->
-    <!-- row heat link START -->
-    <div class="row py-5">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-10">
-        <a href="{% url 'LastProfile_warme_display' %}">
-          <img src="{% static '/img/Lastprofil/heat.png' %}" style="max-height:30px" />
-          {% if messages %}
-            <ul class="messages">
-              {% for message in messages %}
-                <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>
-                  {{ message }}
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-          {% blocktranslate %}Approximation der Wärmelast{% endblocktranslate %}
-        </a>
-      </div>
-    </div>
-    <!-- link heat profil END -->
-    <!-- row notes START -->
-    <div class="row py-5">
-      <div class="col-lg-12">
-        <h3>{% translate "Anmerkungen" %}</h3>
-        <ul>
-          <p class="lead">
-            {% blocktranslate %}Die Generatoren basieren auf Berechnungsvorschriften, Daten und
+                            </li>
+                        </li>
+                        <li class="lead">
+                            <b>{% translate "Berechnungszeitraum" %}</b>&nbsp;&ndash; {% blocktranslate %}Eingabe des Berechnungszeitraums{% endblocktranslate %}
+                        </li>
+                    </ul>
+                </p>
+            </div>
+            <!-- text heat profil END -->
+            <!-- image heat profil START -->
+            <div class="col-lg-7">
+                {% if request.LANGUAGE_CODE == "de" %}
+                    <img src="{% static '/img/Lastprofil/waermelast_sketch.png' %}"
+                         alt="Bild Waermelast" />
+                {% else %}
+                    <img src="{% static '/img/Lastprofil/heatload_sketch.png' %}"
+                         alt="Image heat load" />
+                {% endif %}
+            </div>
+            <!-- image heat profil END -->
+        </div>
+        <!-- row heat profil END -->
+        <!-- row heat link START -->
+        <div class="row py-5">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+                <a href="{% url 'LastProfile_warme_display' %}">
+                    <img src="{% static '/img/Lastprofil/heat.png' %}" style="max-height:30px" />
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% blocktranslate %}Approximation der Wärmelast{% endblocktranslate %}
+                </a>
+            </div>
+        </div>
+        <!-- link heat profil END -->
+        <!-- row notes START -->
+        <div class="row py-5">
+            <div class="col-lg-12">
+                <h3>{% translate "Anmerkungen" %}</h3>
+                <ul>
+                    <p class="lead">
+                        {% blocktranslate %}Die Generatoren basieren auf Berechnungsvorschriften, Daten und
             Annahmen der folgenden Quellen:{% endblocktranslate %}
-          </p>
-          <li class="lead">
-            <b>{% translate "Wärmelast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Dissertation von Marcus
+                    </p>
+                    <li class="lead">
+                        <b>{% translate "Wärmelast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Dissertation von Marcus
             Hellwig, 2003, "Entwicklung und Anwendung parametrisierter
             Standard-Lastprofile"{% endblocktranslate %}
-          </li>
-          <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf"
-             target="_blank">{% translate "Download der Disseration" %}.</a>
-          <li class="lead">
-            <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Wetterdienst Bibliothek{% endblocktranslate %}
-          </li>
-          <a href="https://github.com/earthobservations/wetterdienst"
-             target="_blank">{% translate "Wetterdienst" %}</a>
-          <li class="lead">
-            <b>{% translate "Stromlast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Standard-Lastprofile{% endblocktranslate %}
-          </li>
-          <a href="https://www.bdew.de/energie/standardlastprofile-strom/"
-             target="_blank">{% blocktranslate %}Standard-Lastprofile beim BDEW{% endblocktranslate %}
-          </a>
-        </ul>
-      </div>
+                    </li>
+                    <a href="https://mediatum.ub.tum.de/download/601557/601557.pdf"
+                       target="_blank">{% translate "Download der Disseration" %}.</a>
+                    <li class="lead">
+                        <b>{% translate "Wetterdaten" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Wetterdienst Bibliothek{% endblocktranslate %}
+                    </li>
+                    <a href="https://github.com/earthobservations/wetterdienst"
+                       target="_blank">{% translate "Wetterdienst" %}</a>
+                    <li class="lead">
+                        <b>{% translate "Stromlast" %}</b>&nbsp;&ndash; {% blocktranslate %}Nutzung der Standard-Lastprofile{% endblocktranslate %}
+                    </li>
+                    <a href="https://www.bdew.de/energie/standardlastprofile-strom/"
+                       target="_blank">{% blocktranslate %}Standard-Lastprofile beim BDEW{% endblocktranslate %}</a>
+                </ul>
+            </div>
+        </div>
+        <!-- row notes END -->
     </div>
-    <!-- row notes END -->
-  </div>
 </section>
-
 {% endblock %}

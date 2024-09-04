@@ -46,9 +46,7 @@ class AggregatedSessionByDay(admin.ModelAdmin):
 
         context["dates"] = dates
         context["visitsPerDate"] = visitsPerDate
-        return TemplateResponse(
-            request, "common/aggregatedVisits.html", context
-        )
+        return TemplateResponse(request, "common/aggregatedVisits.html", context)
 
     def get_queryset(self, request):
         """Get the sessions for an expiration date."""
@@ -92,12 +90,7 @@ class DbDiffAdmin(admin.ModelAdmin):
                 splitByNewline = tableDiffStr.split("\n")
                 tableIdentifier = splitByNewline[0][:-1]
                 idName = splitByNewline[1].split(":")[0].replace(" ", "")
-                oldId = (
-                    splitByNewline[1]
-                    .split(":")[1]
-                    .replace(" ", "")
-                    .split("->")[0]
-                )
+                oldId = splitByNewline[1].split(":")[1].replace(" ", "").split("->")[0]
                 pyClass = self._getClassFromStr(tableIdentifier)
                 oldObj = pyClass.objects.get(**{idName: int(oldId)})
                 if not self._isObjectReferenced(oldObj):
@@ -134,9 +127,7 @@ class DbDiffAdmin(admin.ModelAdmin):
         For "<class 'project_listing.models.FurtherFundingInformation'>" the
         class `FurtherFundingInformation` is returned.
         """
-        modulePath, className = (
-            classStr.strip("<>").split("'")[1].rsplit(".", 1)
-        )
+        modulePath, className = classStr.strip("<>").split("'")[1].rsplit(".", 1)
 
         module = importlib.import_module(modulePath)
 

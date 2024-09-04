@@ -63,9 +63,7 @@ class KeywordRegisterFirstReview(models.Model):
 
 
 class Keyword(models.Model):
-    keyword_id = models.AutoField(
-        primary_key=True, help_text="Auto.generiert ID"
-    )
+    keyword_id = models.AutoField(primary_key=True, help_text="Auto.generiert ID")
     keyword = models.CharField(max_length=200, help_text="keyword", blank=True)
     keywordDefiniton = models.CharField(
         max_length=1500, help_text="Definition of the keyword", blank=True

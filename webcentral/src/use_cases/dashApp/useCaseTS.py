@@ -18,9 +18,7 @@ file_list = [file for file in file_list if file.endswith(".csv")]
 
 
 def load_data(file):
-    df = pd.read_csv(
-        os.path.join(data_directory, file), parse_dates=["datetime"]
-    )
+    df = pd.read_csv(os.path.join(data_directory, file), parse_dates=["datetime"])
     df.set_index("datetime", inplace=True)
     return df
 
@@ -93,9 +91,7 @@ app.layout = html.Div(
                 ),
                 dcc.Loading(
                     id="loading",
-                    children=[
-                        html.Div([dcc.Graph(id="time-series-chart", figure={})])
-                    ],
+                    children=[html.Div([dcc.Graph(id="time-series-chart", figure={})])],
                     type="circle",
                     fullscreen=False,
                 ),
@@ -157,13 +153,9 @@ def update_graph(building, interval, scale):
         for i in intervals:
             data = data_store[b][i]
             if scale == "all" or scale == "equipment":
-                if any(
-                    re.match(r"Wasserkocher.*", col) for col in data.columns
-                ):
+                if any(re.match(r"Wasserkocher.*", col) for col in data.columns):
                     for col in [
-                        col
-                        for col in data.columns
-                        if re.match(r"Wasserkocher.*", col)
+                        col for col in data.columns if re.match(r"Wasserkocher.*", col)
                     ]:
                         fig.add_trace(
                             go.Scatter(
@@ -173,13 +165,9 @@ def update_graph(building, interval, scale):
                                 name=f"{b} {i} Wasserkocher",
                             )
                         )
-                if any(
-                    re.match(r"Waschmaschine.*", col) for col in data.columns
-                ):
+                if any(re.match(r"Waschmaschine.*", col) for col in data.columns):
                     for col in [
-                        col
-                        for col in data.columns
-                        if re.match(r"Waschmaschine.*", col)
+                        col for col in data.columns if re.match(r"Waschmaschine.*", col)
                     ]:
                         fig.add_trace(
                             go.Scatter(
@@ -190,8 +178,7 @@ def update_graph(building, interval, scale):
                             )
                         )
                 if any(
-                    re.match(r"Kühl-_und_Gefrierschrank.*", col)
-                    for col in data.columns
+                    re.match(r"Kühl-_und_Gefrierschrank.*", col) for col in data.columns
                 ):
                     for col in [
                         col
@@ -206,10 +193,7 @@ def update_graph(building, interval, scale):
                                 name=f"{b} {i} Kühl- und Gefrierschrank",
                             )
                         )
-                if any(
-                    re.match(r"Durchlauferhitzer.*", col)
-                    for col in data.columns
-                ):
+                if any(re.match(r"Durchlauferhitzer.*", col) for col in data.columns):
                     for col in [
                         col
                         for col in data.columns
@@ -226,8 +210,7 @@ def update_graph(building, interval, scale):
 
             if scale == "all" or scale == "full_building":
                 if any(
-                    re.match(r"Elektrisch-Kombiniert.*", col)
-                    for col in data.columns
+                    re.match(r"Elektrisch-Kombiniert.*", col) for col in data.columns
                 ):
                     for col in [
                         col

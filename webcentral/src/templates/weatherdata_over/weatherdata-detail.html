@@ -1,311 +1,194 @@
 {% extends 'base.html' %}
-
 {% block title %}{{ weatherdata.data_service }}{% endblock %}
-
 {% load static %}
 {% load i18n %}
-
 {% block content %}
-
-  <!-- =======================
+    <!-- =======================
 Page intro START -->
-
-  <section class="py-0 py-sm-5">
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-12">
-          <!-- Title -->
-
-          <h2>{{ weatherdata.data_service }}</h2>
-          <!-- Content -->
-
-          <ul class="list-inline mb-0">
-
-            {% if weatherdata.category %}
-
-              <li class="list-inline-item h6 mb-0">
-                <i class="{{ category_icon }} text-info me-2">
-                </i>{{ weatherdata.category }}
-              </li>
-
-            {% endif %}
-
-            {% if weatherdata.last_update %}
-
-              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
-                </i>
-                {{ weatherdata.last_update }}
-              </li>
-
-            {% endif %}
-
-            {% if weatherdata.license %}
-
-              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                <i class="fas fa-bars fa-book-open me-2">
-                </i>{{ weatherdata.license }}
-              </li>
-
-            {% endif %}
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      {% include "common/back-button.html" %}
-
-    </div>
-  </section>
-  <!-- =======================
-Page intro END -->
-
-  <!-- =======================
-Page content START -->
-  <section class="pb-0 pt-4 py-lg-5">
-
-    <div class="container  {{ focusBorder }}-cards">
-
-      <div class="row">
-        <!-- Main content START -->
-
-        <div class="col-lg-8 mb-4">
-
-          <div class="card border-technical p-0">
-            <!-- Tab contents START -->
-
-            <div class="tab-content card-body p-4 detail-card-body">
-
-              <!-- Content START -->
-
-              <div class="tab-pane container active" id="course-pills-1">
-                <!-- Course detail START -->
-
-                {% if weatherdata.short_description %}
-
-                  {% if weatherdata.category == 'Anwendung' or weatherdata.category == 'Application' %}
-
-                    <h5 class="mb-3">{% translate "Was ist" %} {{ weatherdata.data_service }}?</h5>
-
-                  {% elif weatherdata.category == 'Datensätze' or weatherdata.category == 'Datasets' %}
-
-                    <h5 class="mb-3">
-                      {% translate "Welche Daten bietet" %} {{ weatherdata.data_service }}?
-                    </h5>
-
-                  {% endif %}
-
-                  <p class="mb-1">{{ weatherdata.short_description }}.</p>
-
-                  <p class="mb-0">{{ weatherdata.long_description }}</p>
-
-                {% endif %}
-
-                {% if weatherdata.provider %}
-
-                  <h5 class="mt-4">Provider</h5>
-
-                  <p class="mb-0">{{ weatherdata.provider }}</p>
-
-                {% endif %}
-
-                {% if weatherdata.provider %}
-
-                  <h5 class="mt-4">{% translate "Anwendungen" %}</h5>
-
-                  <p class="mb-0">{{ weatherdata.applications }}</p>
-
-                {% endif %}
-
-                {% if weatherdata.further_information %}
-
-                  <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
-
-                  <p class="mb-0">
-                    <a href="{{ weatherdata.further_information }}" target="_blank">{{ weatherdata.further_information }}</a>
-                  </p>
-
-                {% endif %}
-
-                {% if weatherdata.data_url %}
-
-                  <h5 class="mt-4">{% translate "Link zum Datensatz" %}</h5>
-
-                  <p class="mb-0">
-                    <a href="{{ weatherdata.data_url }}">{{ weatherdata.data_url }}</a>
-                  </p>
-
-                {% endif %}
-                <!-- Course detail END -->
-
-                {% if weatherdata.data_service == 'Wetterdienst' %}
-
-                  <h5 class="mt-4">
-                    <a href="{% url 'wetterdienstBeispiel' %}">{% translate "Beispielanwendung" %}</a>
-                  </h5>
-
-                {% endif %}
-
-              </div>
-              <!-- Content END -->
-
-            </div>
-            <!-- Tab contents END -->
-
-          </div>
-
-        </div>
-        <!-- Main content END -->
-
-        <!-- Right sidebar START -->
-
-        <div class="col-lg-4">
-
-          <div class="row mb-5 mb-lg-0">
-
-            <div class="col-md-6 col-lg-12">
-              <!-- Video START -->
-
-              <div class="card border-technical p-2 mb-4 z-index-9">
-
-                <div class="overflow-hidden rounded-3 text-center">
-
-                  {% if weatherdata.image %}
-
-                    <img src=" {{ weatherdata.image.url }}"
-                         class="p-4"
-                         style="max-height: 200px"
-                         alt="weatherdata image" />
-
-                  {% else %}
-
-                    <img src=" {% static 'img/Default.webp' %}"
-                         class="p-4"
-                         style="max-height: 200px"
-                         alt="weatherdata image (else)" />
-
-                  {% endif %}
-                  <!-- Overlay -->
-
+    <section class="py-0 py-sm-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Title -->
+                    <h2>{{ weatherdata.data_service }}</h2>
+                    <!-- Content -->
+                    <ul class="list-inline mb-0">
+                        {% if weatherdata.category %}
+                            <li class="list-inline-item h6 mb-0">
+                                <i class="{{ category_icon }} text-info me-2">
+                                </i>{{ weatherdata.category }}
+                            </li>
+                        {% endif %}
+                        {% if weatherdata.last_update %}
+                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                                <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
+                                </i>
+                                {{ weatherdata.last_update }}
+                            </li>
+                        {% endif %}
+                        {% if weatherdata.license %}
+                            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+                                <i class="fas fa-bars fa-book-open me-2">
+                                </i>{{ weatherdata.license }}
+                            </li>
+                        {% endif %}
+                    </ul>
                 </div>
-
-              </div>
-              <!-- Video END -->
-
-              <!-- Course info START -->
-
-              <div class="card card-body border-technical p-4 mb-4">
-                <!-- Title -->
-
-                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
-
-                <ul class="list-group border-0">
-
-                  {% if weatherdata.category %}
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                      <span class="h6 fw-light mb-0">
-                        <i class="{{ category_icon }}">
-                        </i>
-                        {% translate "Kategorie" %}
-                      </span>
-                      <span>{{ weatherdata.category }}</span>
-
-                    </li>
-
-                  {% endif %}
-
-                  {% if weatherdata.license %}
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                      <span class="h6 fw-light mb-0">
-                        <i class="fas fa-fw fa-book-open">
-                        </i>
-                        {% translate "Lizenz" %}
-                      </span>
-                      <span>{{ weatherdata.license }}</span>
-
-                    </li>
-
-                  {% endif %}
-
-                  {% if weatherdata.last_update %}
-
-                    <li class="list-group-item d-flex justify-content-between align-items-center border-0">
-                      <span class="h6 fw-light mb-0">
-                        <i class="{{ letztes_update_class }} fa-fw">
-                        </i>
-                        {{ letztes_update_label }}
-                      </span>
-                      <span>{{ weatherdata.last_update }}</span>
-
-                    </li>
-
-                  {% endif %}
-
-                </ul>
-
-              </div>
-              <!-- Course info END -->
-
             </div>
-
-            <div class="col-md-6 col-lg-12">
-
-              <!-- Tags START -->
-
-              <div class="card card-body border-technical p-4">
-
-                <h4 class="mb-3">Tags</h4>
-
-                <ul class="list-inline mb-0">
-
-                  {% if weatherdata.category %}
-
-                    <li class="list-inline-item">
-                      <a class="btn btn-outline-light btn-sm"
-                         href="/weatherdata_list/?searched=&1={{ weatherdata.category }}&2=">
-                        {{ weatherdata.category }}
-                      </a>
-                    </li>
-
-                  {% endif %}
-
-                  {% if weatherdata.license %}
-
-                    <li class="list-inline-item">
-                      <a class="btn btn-outline-light btn-sm"
-                         href="/weatherdata_list/?searched=&1=&2={{ weatherdata.license }}">
-                        {{ weatherdata.license }}
-                      </a>
-                    </li>
-
-                  {% endif %}
-
-                </ul>
-
-              </div>
-              <!-- Tags END -->
-
-            </div>
-
-          </div>
-          <!-- Row End -->
-
+            {% include "common/back-button.html" %}
         </div>
-        <!-- Right sidebar END -->
-
-      </div>
-      <!-- Row END -->
-
-    </div>
-  </section>
-  <!-- =======================
+    </section>
+    <!-- =======================
+Page intro END -->
+    <!-- =======================
+Page content START -->
+    <section class="pb-0 pt-4 py-lg-5">
+        <div class="container  {{ focusBorder }}-cards">
+            <div class="row">
+                <!-- Main content START -->
+                <div class="col-lg-8 mb-4">
+                    <div class="card border-technical p-0">
+                        <!-- Tab contents START -->
+                        <div class="tab-content card-body p-4 detail-card-body">
+                            <!-- Content START -->
+                            <div class="tab-pane container active" id="course-pills-1">
+                                <!-- Course detail START -->
+                                {% if weatherdata.short_description %}
+                                    {% if weatherdata.category == 'Anwendung' or weatherdata.category == 'Application' %}
+                                        <h5 class="mb-3">{% translate "Was ist" %} {{ weatherdata.data_service }}?</h5>
+                                    {% elif weatherdata.category == 'Datensätze' or weatherdata.category == 'Datasets' %}
+                                        <h5 class="mb-3">{% translate "Welche Daten bietet" %} {{ weatherdata.data_service }}?</h5>
+                                    {% endif %}
+                                    <p class="mb-1">{{ weatherdata.short_description }}.</p>
+                                    <p class="mb-0">{{ weatherdata.long_description }}</p>
+                                {% endif %}
+                                {% if weatherdata.provider %}
+                                    <h5 class="mt-4">Provider</h5>
+                                    <p class="mb-0">{{ weatherdata.provider }}</p>
+                                {% endif %}
+                                {% if weatherdata.provider %}
+                                    <h5 class="mt-4">{% translate "Anwendungen" %}</h5>
+                                    <p class="mb-0">{{ weatherdata.applications }}</p>
+                                {% endif %}
+                                {% if weatherdata.further_information %}
+                                    <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
+                                    <p class="mb-0">
+                                        <a href="{{ weatherdata.further_information }}" target="_blank">{{ weatherdata.further_information }}</a>
+                                    </p>
+                                {% endif %}
+                                {% if weatherdata.data_url %}
+                                    <h5 class="mt-4">{% translate "Link zum Datensatz" %}</h5>
+                                    <p class="mb-0">
+                                        <a href="{{ weatherdata.data_url }}">{{ weatherdata.data_url }}</a>
+                                    </p>
+                                {% endif %}
+                                <!-- Course detail END -->
+                                {% if weatherdata.data_service == 'Wetterdienst' %}
+                                    <h5 class="mt-4">
+                                        <a href="{% url 'wetterdienstBeispiel' %}">{% translate "Beispielanwendung" %}</a>
+                                    </h5>
+                                {% endif %}
+                            </div>
+                            <!-- Content END -->
+                        </div>
+                        <!-- Tab contents END -->
+                    </div>
+                </div>
+                <!-- Main content END -->
+                <!-- Right sidebar START -->
+                <div class="col-lg-4">
+                    <div class="row mb-5 mb-lg-0">
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Video START -->
+                            <div class="card border-technical p-2 mb-4 z-index-9">
+                                <div class="overflow-hidden rounded-3 text-center">
+                                    {% if weatherdata.image %}
+                                        <img src=" {{ weatherdata.image.url }}"
+                                             class="p-4"
+                                             style="max-height: 200px"
+                                             alt="weatherdata image" />
+                                    {% else %}
+                                        <img src=" {% static 'img/Default.webp' %}"
+                                             class="p-4"
+                                             style="max-height: 200px"
+                                             alt="weatherdata image (else)" />
+                                    {% endif %}
+                                    <!-- Overlay -->
+                                </div>
+                            </div>
+                            <!-- Video END -->
+                            <!-- Course info START -->
+                            <div class="card card-body border-technical p-4 mb-4">
+                                <!-- Title -->
+                                <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
+                                <ul class="list-group border-0">
+                                    {% if weatherdata.category %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                            <span class="h6 fw-light mb-0">
+                                                <i class="{{ category_icon }}">
+                                                </i>
+                                                {% translate "Kategorie" %}
+                                            </span>
+                                            <span>{{ weatherdata.category }}</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if weatherdata.license %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                            <span class="h6 fw-light mb-0">
+                                                <i class="fas fa-fw fa-book-open">
+                                                </i>
+                                                {% translate "Lizenz" %}
+                                            </span>
+                                            <span>{{ weatherdata.license }}</span>
+                                        </li>
+                                    {% endif %}
+                                    {% if weatherdata.last_update %}
+                                        <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                            <span class="h6 fw-light mb-0">
+                                                <i class="{{ letztes_update_class }} fa-fw">
+                                                </i>
+                                                {{ letztes_update_label }}
+                                            </span>
+                                            <span>{{ weatherdata.last_update }}</span>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- Course info END -->
+                        </div>
+                        <div class="col-md-6 col-lg-12">
+                            <!-- Tags START -->
+                            <div class="card card-body border-technical p-4">
+                                <h4 class="mb-3">Tags</h4>
+                                <ul class="list-inline mb-0">
+                                    {% if weatherdata.category %}
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-outline-light btn-sm"
+                                               href="/weatherdata_list/?searched=&1={{ weatherdata.category }}&2=">
+                                                {{ weatherdata.category }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if weatherdata.license %}
+                                        <li class="list-inline-item">
+                                            <a class="btn btn-outline-light btn-sm"
+                                               href="/weatherdata_list/?searched=&1=&2={{ weatherdata.license }}">
+                                                {{ weatherdata.license }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <!-- Tags END -->
+                        </div>
+                    </div>
+                    <!-- Row End -->
+                </div>
+                <!-- Right sidebar END -->
+            </div>
+            <!-- Row END -->
+        </div>
+    </section>
+    <!-- =======================
 Page content END -->
-
 {% endblock %}

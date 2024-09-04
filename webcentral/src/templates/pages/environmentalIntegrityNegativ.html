@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-  {% translate "Negative Umweltwirkungen" %}
+    {% translate "Negative Umweltwirkungen" %}
 {% endblock %}
 {% load static %}
 {% block content %}
-  <style>
+    <style>
     .description-heading {
       display: flex;
       align-items: center;
@@ -35,16 +35,16 @@
     .boxDescription {
       font-size: 16px;
     }
-  </style>
-  <!-- =======================
+    </style>
+    <!-- =======================
  Content START -->
-  <div class="content container">
-    {% include "partials/descriptionContainer.html" %}
-    <div class="boxes row overview-box-site">
-      {% for boxObject in boxes %}
-        {% include boxObject.pathToTemplate with boxObject=boxObject %}
-      {% endfor %}
+    <div class="content container">
+        {% include "partials/descriptionContainer.html" %}
+        <div class="boxes row overview-box-site">
+            {% for boxObject in boxes %}
+                {% include boxObject.pathToTemplate with boxObject=boxObject %}
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <!-- Content END -->
+    <!-- Content END -->
 {% endblock %}

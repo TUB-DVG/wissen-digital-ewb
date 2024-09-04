@@ -31,9 +31,9 @@ class CriteriaCatalogDetailsPage(GenericPageObject):
 
     def getGreyBoxForRootDiv(self, rootElement):
         """Return greyBox for the specified `rootElement`"""
-        topicIdOfRootElement = self.getDescendantsByTagName(
-            rootElement, "button"
-        )[0].get_attribute("topicId")
+        topicIdOfRootElement = self.getDescendantsByTagName(rootElement, "button")[
+            0
+        ].get_attribute("topicId")
         return self.driver.find_element(
             By.XPATH,
             f"//div[contains(@class, 'grey-box') and @topicId='{topicIdOfRootElement}']",

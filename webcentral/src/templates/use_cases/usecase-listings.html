@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block title %}
-  {% translate "Überblick über die Use Cases" %}
+    {% translate "Überblick über die Use Cases" %}
 {% endblock %}
 {% block content %}
-  {% load static %}
-  {% load plotly_dash %}
-  <!DOCTYPE html>
-
-  <style>
+    {% load static %}
+    {% load plotly_dash %}
+    <!DOCTYPE html>
+    <style>
     table {
         width: 50%;
         border-collapse: collapse;
@@ -46,45 +45,37 @@
       padding-bottom: 45.2% !important;
     }
   }
-  </style>
-
-  <!-- **************** MAIN CONTENT START **************** -->
-  <main>
-
-    <!-- Page Banner START -->
-    <section class="py-4">
-      <div class="container">
-        <div class="row">
-          <div class="descriptionBox">
-            {% include "partials/descriptionContainer.html" %}
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="pt-0">
-      <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
-        <!-- Plotly chart START -->
-        <div class="plotly">{% plotly_app name='useCaseTS' ratio=10 %}</div>
-        <!-- Plotly chart END -->
-
-        <!-- Filter bar START -->
-        {% include "partials/search-bar.html" %}
-        <!-- Filter bar END -->
-        <!-- tools grid row START -->
-        <div class="row mt-3">
-          <div class="col-12">
-            <!-- tools Grid START -->
-            <div class="row g-4" id="listing-results">
-              {% include '../use_cases/usecase-listings-results.html' %}
+    </style>
+    <!-- **************** MAIN CONTENT START **************** -->
+    <main>
+        <!-- Page Banner START -->
+        <section class="py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="descriptionBox">{% include "partials/descriptionContainer.html" %}</div>
+                </div>
             </div>
-            <!-- tools Grid END -->
-          </div>
-        </div>
-        <!-- tools grid row START -->
-      </div>
-    </section>
-    <!-- Page content END -->
-  </main>
-  <!-- **************** MAIN CONTENT END **************** -->
-
+        </section>
+        <section class="pt-0">
+            <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
+                <!-- Plotly chart START -->
+                <div class="plotly">{% plotly_app name='useCaseTS' ratio=10 %}</div>
+                <!-- Plotly chart END -->
+                <!-- Filter bar START -->
+                {% include "partials/search-bar.html" %}
+                <!-- Filter bar END -->
+                <!-- tools grid row START -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <!-- tools Grid START -->
+                        <div class="row g-4" id="listing-results">{% include '../use_cases/usecase-listings-results.html' %}</div>
+                        <!-- tools Grid END -->
+                    </div>
+                </div>
+                <!-- tools grid row START -->
+            </div>
+        </section>
+        <!-- Page content END -->
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->
 {% endblock %}

@@ -20,9 +20,7 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    datasets = (
-        collectedDatasets.objects.all()
-    )  # reads all data from table Teilprojekt
+    datasets = collectedDatasets.objects.all()  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
 
@@ -144,9 +142,7 @@ def index(request):
         ],
     }
     if filtering:
-        return render(
-            request, "datasets_over/dataset-listings-results.html", context
-        )
+        return render(request, "datasets_over/dataset-listings-results.html", context)
     return render(request, "datasets_over/dataset-listings.html", context)
 
 

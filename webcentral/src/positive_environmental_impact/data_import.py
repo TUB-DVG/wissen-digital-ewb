@@ -81,9 +81,7 @@ class DataImportApp(DataImport):
         problemStatementAndProblemGoals = row[
             header.index("Problem_Statement_and_Problem_Goals")
         ]
-        implementationInTheProject = row[
-            header.index("Implementation_in_the_Project")
-        ]
+        implementationInTheProject = row[header.index("Implementation_in_the_Project")]
         evaluation = row[header.index("Evaluation")]
         projectName = row[header.index("Project_Name")]
         weiterführendeLiteratur = row[header.index("Weiterführende Literatur")]

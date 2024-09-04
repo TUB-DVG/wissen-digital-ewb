@@ -36,9 +36,7 @@ def setLanguageForLastUpdate(request):
     lastUpdate = UpdateProperties(
         "bi bi-patch-exclamation-fill", lastUpdateText, "text-danger"
     )
-    continuousUpdates = UpdateProperties(
-        "fas fa-sync", "Updates", "text-success"
-    )
+    continuousUpdates = UpdateProperties("fas fa-sync", "Updates", "text-success")
 
     return lastUpdate, continuousUpdates
 
@@ -95,9 +93,7 @@ def index(request):
     if searched != "":
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
-        criterionToolsThree = Q(
-            classification__classification__icontains=searched
-        )
+        criterionToolsThree = Q(classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
         complexCriterion &= (
             criterionToolsOne
@@ -237,9 +233,7 @@ def indexApps(request):
     if searched != "":
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
-        criterionToolsThree = Q(
-            classification__classification__icontains=searched
-        )
+        criterionToolsThree = Q(classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
         complexCriterion |= (
             criterionToolsOne
@@ -384,9 +378,7 @@ def indexBusinessApplication(request):
     if searched != "":
         criterionToolsOne = Q(programmingLanguages__icontains=searched)
         criterionToolsTwo = Q(scale__scale__icontains=searched)
-        criterionToolsThree = Q(
-            classification__classification__icontains=searched
-        )
+        criterionToolsThree = Q(classification__classification__icontains=searched)
         criterionToolsFour = Q(name__icontains=searched)
         complexCriterion |= (
             criterionToolsOne
@@ -508,18 +500,12 @@ def businessApplicationView(request, id):
 
     context = {
         "tool": tool,
-        "applicationAreas": ", ".join(
-            [a.applicationArea for a in applicationAreas]
-        ),
+        "applicationAreas": ", ".join([a.applicationArea for a in applicationAreas]),
         "usages": ", ".join([a.usage for a in usages]),
         "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases": ", ".join(
-            [a.lifeCyclePhase for a in lifeCyclePhases]
-        ),
+        "lifeCyclePhases": ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
         "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities": ", ".join(
-            [a.accessibility for a in accessibilities]
-        ),
+        "accessibilities": ", ".join([a.accessibility for a in accessibilities]),
         "specificApplications": [
             str(a.referenceNumber_id) for a in specificApplications
         ],  # specificApplications, #
@@ -530,9 +516,7 @@ def businessApplicationView(request, id):
         "technicalStandardsProtocols": ", ".join(
             [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
         ),
-        "classifications": ", ".join(
-            [a.classification for a in classifications]
-        ),
+        "classifications": ", ".join([a.classification for a in classifications]),
         "focus": ", ".join([a.focus for a in focus]),
         "focusBorder": "operational",
         "resources": resources,
@@ -572,18 +556,12 @@ def toolView(request, id):
 
     context = {
         "tool": tool,
-        "applicationAreas": ", ".join(
-            [a.applicationArea for a in applicationAreas]
-        ),
+        "applicationAreas": ", ".join([a.applicationArea for a in applicationAreas]),
         "usages": ", ".join([a.usage for a in usages]),
         "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases": ", ".join(
-            [a.lifeCyclePhase for a in lifeCyclePhases]
-        ),
+        "lifeCyclePhases": ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
         "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities": ", ".join(
-            [a.accessibility for a in accessibilities]
-        ),
+        "accessibilities": ", ".join([a.accessibility for a in accessibilities]),
         "specificApplications": [
             str(a.referenceNumber_id) for a in specificApplications
         ],  # specificApplications, #
@@ -594,9 +572,7 @@ def toolView(request, id):
         "technicalStandardsProtocols": ", ".join(
             [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
         ),
-        "classifications": ", ".join(
-            [a.classification for a in classifications]
-        ),
+        "classifications": ", ".join([a.classification for a in classifications]),
         "focus": ", ".join([a.focus for a in focus]),
         "focusBorder": "technical",
         "resources": resources,
@@ -637,18 +613,12 @@ def AppView(request, id):
 
     context = {
         "tool": tool,
-        "applicationAreas": ", ".join(
-            [a.applicationArea for a in applicationAreas]
-        ),
+        "applicationAreas": ", ".join([a.applicationArea for a in applicationAreas]),
         "usages": ", ".join([a.usage for a in usages]),
         "targetGroups": ", ".join([a.targetGroup for a in targetGroups]),
-        "lifeCyclePhases": ", ".join(
-            [a.lifeCyclePhase for a in lifeCyclePhases]
-        ),
+        "lifeCyclePhases": ", ".join([a.lifeCyclePhase for a in lifeCyclePhases]),
         "userInterfaces": ", ".join([a.userInterface for a in userInterfaces]),
-        "accessibilities": ", ".join(
-            [a.accessibility for a in accessibilities]
-        ),
+        "accessibilities": ", ".join([a.accessibility for a in accessibilities]),
         "specificApplications": [
             str(a.referenceNumber_id) for a in specificApplications
         ],  # specificApplications, #
@@ -659,9 +629,7 @@ def AppView(request, id):
         "technicalStandardsProtocols": ", ".join(
             [a.technicalStandardsProtocols for a in technicalStandardsProtocols]
         ),
-        "classifications": ", ".join(
-            [a.classification for a in classifications]
-        ),
+        "classifications": ", ".join([a.classification for a in classifications]),
         "focus": ", ".join([a.focus for a in focus]),
         "focusBorder": "technical",
         "resources": resources,

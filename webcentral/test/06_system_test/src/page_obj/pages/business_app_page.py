@@ -32,9 +32,7 @@ class BusinessAppPage(object):
 
     def getFurtherInfoOnDetailsPage(self):
         """Return the a-Webelement to the FurtherInfo-Site"""
-        return self.driver.find_element(
-            By.XPATH, Locator.businessDetailsFurtherInfo
-        )
+        return self.driver.find_element(By.XPATH, Locator.businessDetailsFurtherInfo)
 
     def getTagsOnDetailPage(self):
         """Return the list of Tags on the Details-Page of an BusinessApp"""

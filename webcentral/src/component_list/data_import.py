@@ -65,9 +65,7 @@ class DataImportApp(DataImport):
         try:
             energyConsumptionUsePhaseTotal = float(
                 row[
-                    header.index(
-                        "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
-                    )
+                    header.index("Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)")
                 ]
             )
         except ValueError:
@@ -101,18 +99,12 @@ class DataImportApp(DataImport):
             header.index("Leistung Nutzungsphase (akitv; in W)")
         ]
         energyConsumptionUsePhaseActive, powerUseActiveSuper = (
-            self._processFloatWithCharacter(
-                str(powerConsumptionUsePhaseActiveStr)
-            )
+            self._processFloatWithCharacter(str(powerConsumptionUsePhaseActiveStr))
         )
 
         try:
             energyConsumptionUsePhasePassive = float(
-                row[
-                    header.index(
-                        "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
-                    )
-                ]
+                row[header.index("Leistung Nutzungsphase (passiv/ Stand-by; in W)")]
             )
         except ValueError:
             energyConsumptionUsePhasePassive = None
@@ -121,9 +113,7 @@ class DataImportApp(DataImport):
             header.index("Treibhauspotenzial (Herstellung; in kg CO2-e)")
         ]
         globalWarmingPotentialProduction, potentialProductionSup = (
-            self._processFloatWithCharacter(
-                str(globalWarmingPotentialProductionStr)
-            )
+            self._processFloatWithCharacter(str(globalWarmingPotentialProductionStr))
         )
 
         globalWarmingPotentialUsePhase = row[
@@ -135,9 +125,7 @@ class DataImportApp(DataImport):
 
         try:
             globalWarmingPotentialEndOfLife = float(
-                row[
-                    header.index("Treibhauspotenzial (Entsorgung; in kg CO2-e)")
-                ]
+                row[header.index("Treibhauspotenzial (Entsorgung; in kg CO2-e)")]
             )
         except ValueError:
             globalWarmingPotentialEndOfLife = None
@@ -147,9 +135,7 @@ class DataImportApp(DataImport):
         sources = row[header.index("Quellen")]
 
         operationTimeStr = row[header.index("Betriebsdauer (h/Jahr)")]
-        yearOfUse, operationSup = self._processFloatWithCharacter(
-            str(operationTimeStr)
-        )
+        yearOfUse, operationSup = self._processFloatWithCharacter(str(operationTimeStr))
 
         obj, created = Component.objects.get_or_create(
             category=category,
@@ -174,9 +160,7 @@ class DataImportApp(DataImport):
             operationTimeSupscript=operationSup,
         )
         if self._englishHeadersPresent(header):
-            self._importEnglishTranslation(
-                obj, header, row, self.MAPPING_EXCEL_DB_EN
-            )
+            self._importEnglishTranslation(obj, header, row, self.MAPPING_EXCEL_DB_EN)
         return obj, created
 
     # def _getOrCreateEnglishTranslation(self, row: list, header: list, data: list, environmentalimpactObj):

@@ -34,9 +34,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         time.sleep(1)
 
         # Check the structure of the page
-        positiveEnvironmentalIntegrityObj = PositiveEnvironmentalIntegrity(
-            self.driver
-        )
+        positiveEnvironmentalIntegrityObj = PositiveEnvironmentalIntegrity(self.driver)
 
         self.checkNavBar("ecological")
 
@@ -44,32 +42,24 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         self.assertIsNotNone(contentDiv)
 
         # check if 2 divs are present in the content container
-        divDescription = (
-            positiveEnvironmentalIntegrityObj.getDescendantsByClass(
-                contentDiv, "descriptionContainer"
-            )
+        divDescription = positiveEnvironmentalIntegrityObj.getDescendantsByClass(
+            contentDiv, "descriptionContainer"
         )
         self.assertEqual(len(divDescription), 1)
-        divFourCardsContainer = (
-            positiveEnvironmentalIntegrityObj.getDescendantsByClass(
-                contentDiv, "boxes"
-            )
+        divFourCardsContainer = positiveEnvironmentalIntegrityObj.getDescendantsByClass(
+            contentDiv, "boxes"
         )
         self.assertEqual(len(divFourCardsContainer), 1)
 
-        boxesInBoxContainer = (
-            positiveEnvironmentalIntegrityObj.getDescendantsByClass(
-                divFourCardsContainer[0], "box"
-            )
+        boxesInBoxContainer = positiveEnvironmentalIntegrityObj.getDescendantsByClass(
+            divFourCardsContainer[0], "box"
         )
         self.assertGreaterEqual(len(boxesInBoxContainer), 3)
 
         # check if alt-text is present for images:
         for box in boxesInBoxContainer:
-            logoImage = (
-                positiveEnvironmentalIntegrityObj.getDescendantsByTagName(
-                    box, "img"
-                )
+            logoImage = positiveEnvironmentalIntegrityObj.getDescendantsByTagName(
+                box, "img"
             )
             self.assertEqual(len(logoImage), 1)
             self.assertTrue(logoImage[0].text == "")
@@ -96,13 +86,10 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         )
 
         # check if the backlink is present:
-        backLink = detailsPageObj.getDescendantsByTagName(
-            divsInsideContentDiv[0], "a"
-        )
+        backLink = detailsPageObj.getDescendantsByTagName(divsInsideContentDiv[0], "a")
 
         self.assertTrue(
-            "/pages/environmentalIntegrityPositiv"
-            in backLink[0].get_attribute("href")
+            "/pages/environmentalIntegrityPositiv" in backLink[0].get_attribute("href")
         )
 
         # check if the second-div has the class border-ecological:
@@ -118,9 +105,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         )
 
         # check if the showMore-link is present:
-        showMoreLink = detailsPageObj.getDescendantsByTagName(
-            divDescription[0], "a"
-        )
+        showMoreLink = detailsPageObj.getDescendantsByTagName(divDescription[0], "a")
         if self.getLanguage() == "de":
             for link in showMoreLink:
                 self.assertTrue(
@@ -141,9 +126,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
             "Weiterführende Literatur und Hinweise" in literatureDiv[0].text
         )
 
-        leftColumn = detailsPageObj.getDescendantsByClass(
-            contentDiv, "column__left"
-        )
+        leftColumn = detailsPageObj.getDescendantsByClass(contentDiv, "column__left")
         # test if the image is clickable and leads to a new page:
         image = detailsPageObj.getDescendantsByTagName(leftColumn[0], "img")
         self.scrollElementIntoViewAndClickIt(image[0])
@@ -185,9 +168,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         for box in boxesOnEnvImpactOverviewPage:
             textContent = box.text
             if "FeBOp-MFH" in textContent:
-                aDescadents = envImpactObj.getDescendantsByClass(
-                    box, "box__content"
-                )
+                aDescadents = envImpactObj.getDescendantsByClass(box, "box__content")
                 self.scrollElementIntoViewAndClickIt(aDescadents[0])
 
                 break
@@ -199,9 +180,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
         detailsPageObj = DetailsPage(self.driver)
 
         rightColumn = detailsPageObj.getRightColumn()
-        linksInRightColumn = detailsPageObj.getDescendantsByTagName(
-            rightColumn, "a"
-        )
+        linksInRightColumn = detailsPageObj.getDescendantsByTagName(rightColumn, "a")
         self.assertEqual(len(linksInRightColumn), 3)
 
         for link in linksInRightColumn:
@@ -210,21 +189,15 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
                 break
 
         evaluationDiv = envImpactObj.getEvaluationDiv()
-        linksInEvaluation = envImpactObj.getDescendantsByTagName(
-            evaluationDiv, "a"
-        )
+        linksInEvaluation = envImpactObj.getDescendantsByTagName(evaluationDiv, "a")
 
         breakpoint()
         # first link should point to components:
-        self.assertTrue(
-            "components" in linksInEvaluation[0].get_attribute("href")
-        )
+        self.assertTrue("components" in linksInEvaluation[0].get_attribute("href"))
         self.assertTrue("Hilfestellung" in linksInEvaluation[0].text)
 
         # first link should point to components:
-        self.assertTrue(
-            "dataProcessing" in linksInRightColumn[1].get_attribute("href")
-        )
+        self.assertTrue("dataProcessing" in linksInRightColumn[1].get_attribute("href"))
         self.assertTrue("Kennwerte" in linksInRightColumn[1].text)
 
         self.scrollElementIntoViewAndClickIt(linksInEvaluation[0])
@@ -236,9 +209,7 @@ class TestPositiveEnvironmentalImpact(WebDriverSetup):
 
         self.driver.back()
         evaluationDiv = envImpactObj.getEvaluationDiv()
-        linksInEvaluation = envImpactObj.getDescendantsByTagName(
-            evaluationDiv, "a"
-        )
+        linksInEvaluation = envImpactObj.getDescendantsByTagName(evaluationDiv, "a")
 
         self.scrollElementIntoViewAndClickIt(linksInEvaluation[1])
         self.assertTrue("dataProcessing" in self.driver.current_url)

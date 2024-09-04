@@ -57,9 +57,7 @@ def businessModels(request):
                     "imageDe": "assets/images/geschaeftsmodelle_de_small.svg",
                     "imageEn": "assets/images/geschaeftsmodelle_en_small.svg",
                     "linkToDetailsPage": "businessModelsChallenge",
-                    "heading": _(
-                        "Herausforderungen bei der Entwicklung und Umsetzung"
-                    ),
+                    "heading": _("Herausforderungen bei der Entwicklung und Umsetzung"),
                     "description": _(
                         "Bei der Umsetzung von Prototypen digitaler Anwendungen in ein funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese ergeben sich durch strukturelle Faktoren wie die Förderbedingungen, durch technische oder organisatorische Faktoren wie die Übertragbarkeit sowie durch ökonomische und soziale Faktoren wie schwierige Finanzierungsmodelle. Ein Überblick über Hürden und mögliche Lösungen bietet hier eine Hilfestellung."
                     ),
@@ -72,9 +70,7 @@ def businessModels(request):
                     "imageEn": "assets/images/anwendungen_en_small.svg",
                     "imageDe": "assets/images/anwendungen_de_small.svg",
                     "linkToDetailsPage": "businessModelApplication",
-                    "heading": _(
-                        "Anwendungen zur Entwicklung von Geschäftsmodellen"
-                    ),
+                    "heading": _("Anwendungen zur Entwicklung von Geschäftsmodellen"),
                     "description": _(
                         "Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei kann es hilfreich sein, sich mithilfe eines Leitfadens oder einer Struktur alle Faktoren vorzunehmen, die für eine erfolgreiche Umsetzung berücksichtigt werden sollten. Ein Überblick über unterstützende Tools bei der Entwicklung oder Verbesserung von Geschäftsmodellen bietet hier eine Hilfestellung."
                     ),
@@ -260,9 +256,7 @@ def environmentalIntegrityNegativ(request):
         "pathToImage": "img/componentList/circle-icon.svg",
         "heading": _("Negative Umweltwirkungen"),
         "showMorePresent": False,
-        "explanaitionText": explanationPartOne
-        + renderedTemplate
-        + explanationPartTwo,
+        "explanaitionText": explanationPartOne + renderedTemplate + explanationPartTwo,
         "boxes": [
             {
                 "boxId": 1,
@@ -436,17 +430,13 @@ def dataSecurity(request):
     ).replace("\n", "")
     explanToRender = """<p>
             <a href="https://www.energiewendebauen.de/lw_resource/datapool/systemfiles/agent/ewbpublications/E529BF584385483EE0537E695E86DD55/live/document/Effiziente_Datenminimierung_im_Geb%C3%A4ude-_und_Quartierssektor.pdf">"""
-    explanToRender += _(
-        "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
-    )
+    explanToRender += _("Effiziente Datenminimierung im Gebäude- und Quartierssektor")
     explanToRender += """</a>
           </p>
           <p>
             <a href="{% url 'coming' %}">"""
 
-    explanToRender += _(
-        "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
-    )
+    explanToRender += _("Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen")
     explanToRender += "</a></p>"
     explanRendered = Template(explanToRender).render(Context({}))
     explanText += explanRendered

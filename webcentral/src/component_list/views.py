@@ -54,9 +54,7 @@ def components(request):
     searchQueryInput = searchQueryInput | Q(
         componentClass__componentClass__icontains=searchInputValue
     )
-    searchQueryInput = searchQueryInput | Q(
-        description__icontains=searchInputValue
-    )
+    searchQueryInput = searchQueryInput | Q(description__icontains=searchInputValue)
     searchQueryInput = searchQueryInput | Q(
         furtherInformationNotes__icontains=searchInputValue
     )
@@ -198,15 +196,11 @@ def components(request):
             },
             {
                 "objectReference": "energyConsumptionUsePhasePassiveRounded",
-                "description": _(
-                    "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
-                ),
+                "description": _("Leistung Nutzungsphase (passiv/ Stand-by; in W)"),
             },
             {
                 "objectReference": "globalWarmingPotentialProductionRoundedSub",
-                "description": _(
-                    "Treibhauspotenzial (Herstellung; in kg CO2-e)"
-                ),
+                "description": _("Treibhauspotenzial (Herstellung; in kg CO2-e)"),
             },
             {
                 "objectReference": "globalWarmingPotentialUsePhaseRoundedSub",
@@ -214,9 +208,7 @@ def components(request):
             },
             {
                 "objectReference": "globalWarmingPotentialEndOfLifeRounded",
-                "description": _(
-                    "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
-                ),
+                "description": _("Treibhauspotenzial (Entsorgung; in kg CO2-e)"),
             },
             {
                 "objectReference": "operationTimeRendered",
@@ -228,8 +220,7 @@ def components(request):
                 "placeholder": "Kategorie",
                 "filtered": categoryValue,
                 "objects": [
-                    categoryItem.category
-                    for categoryItem in Category.objects.all()
+                    categoryItem.category for categoryItem in Category.objects.all()
                 ],
                 "fieldName": "category",
             },
@@ -334,9 +325,7 @@ def dataProcessing(request):
         "rightColumn": "partials/dataProcessingRightColumn.html",
         "linkOnRightSiteBool": True,
         "linkOnRightSiteName": "components",
-        "linkOnRightSiteDescription": _(
-            "Zu den Aufwänden für verwendete Komponenten"
-        ),
+        "linkOnRightSiteDescription": _("Zu den Aufwänden für verwendete Komponenten"),
         "imageInBackButton": "img/componentList/caret-left.svg",
     }
     return render(request, "pages/detailsPage.html", context)

@@ -63,59 +63,54 @@ input[type='text']::placeholder {
       id="searchBox"
       method="GET"
       action="">
-
-  <div class="row g-3">
-    <!-- Input -->
-    <div class="col-xl-2" title="Suchen in den ">
-      <div class="input-group">
-        <input id="search-input-{{ nameOfTemplate }}"
-               class="form-control border-{{ focusBorder }} trigger-submit-onchange"
-               type="search"
-               placeholder="{% translate 'Suchbegriff' %}"
-               name='searched' />
-        <div class="input-group-append">
-          <button type="submit"
-                  class="btn btn-{{ focusBorder }}-free-text"
-                  id="search-submit-{{ nameOfTemplate }}"
-                  style="position: absolute;
-                         right: 10px"
-                  href="">
-            <i class="fas fa-search">
-            </i>
-          </button>
+    <div class="row g-3">
+        <!-- Input -->
+        <div class="col-xl-2" title="Suchen in den ">
+            <div class="input-group">
+                <input id="search-input-{{ nameOfTemplate }}"
+                       class="form-control border-{{ focusBorder }} trigger-submit-onchange"
+                       type="search"
+                       placeholder="{% translate 'Suchbegriff' %}"
+                       name='searched' />
+                <div class="input-group-append">
+                    <button type="submit"
+                            class="btn btn-{{ focusBorder }}-free-text"
+                            id="search-submit-{{ nameOfTemplate }}"
+                            style="position: absolute;
+                                   right: 10px"
+                            href="">
+                        <i class="fas fa-search">
+                        </i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- Select item -->
-    <div class="col-xl-10">
-      <div class="row g-3">
-        <!-- Select items -->
-        <div class="form-group col-sm-6 col-md-6"
-             style="margin-left: 100px;
-                    display: grid;
-                    grid-template-columns: auto auto auto">
-          {% for optionContent in optionList %}
-            {% if optionContent.multiDimensional %}
-              <select id="{{ optionContent.fieldName }}"
-                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange">
-                <option value="">{{ optionContent.placeholder }}</option>
-                {% for option in optionContent.objects %}
-                  <optgroup label="{{ option.shown }}">
-                    {% if option.type == "numeric" %}
-                      <option value="{{ option.name }}_Ascending">
-                        {% translate "Aufsteigend" %}
-                      </option>
-                      <option value="{{ option.name }}_Descending">
-                        {% translate "Absteigend" %}
-                      </option>
-                    {% else %}
-                      <option value="{{ option.name }}_Ascending">A...Z</option>
-                      <option value="{{ option.name }}_Descending">Z...A</option>
-                    {% endif %}
-                  </optgroup>
-                {% endfor %}
-              </select>
-              <!-- <div class="dropdown" style="display: inline;">
+        <!-- Select item -->
+        <div class="col-xl-10">
+            <div class="row g-3">
+                <!-- Select items -->
+                <div class="form-group col-sm-6 col-md-6"
+                     style="margin-left: 100px;
+                            display: grid;
+                            grid-template-columns: auto auto auto">
+                    {% for optionContent in optionList %}
+                        {% if optionContent.multiDimensional %}
+                            <select id="{{ optionContent.fieldName }}"
+                                    class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange">
+                                <option value="">{{ optionContent.placeholder }}</option>
+                                {% for option in optionContent.objects %}
+                                    <optgroup label="{{ option.shown }}">
+                                        {% if option.type == "numeric" %}
+                                            <option value="{{ option.name }}_Ascending">{% translate "Aufsteigend" %}</option>
+                                            <option value="{{ option.name }}_Descending">{% translate "Absteigend" %}</option>
+                                        {% else %}
+                                            <option value="{{ option.name }}_Ascending">A...Z</option>
+                                            <option value="{{ option.name }}_Descending">Z...A</option>
+                                        {% endif %}
+                                    </optgroup>
+                                {% endfor %}
+                            </select>
+                            <!-- <div class="dropdown" style="display: inline;">
                     <button class="btn border-{{ focusBorder }} border-{{ focusBorder }}-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-bottom: 0px; width: 150px; height: 21px; padding-top: 3px; padding-bottom: 25px; text-align: left">
                       {{ optionContent.placeholder }}
                     </button>
@@ -131,55 +126,53 @@ input[type='text']::placeholder {
                       {% endfor %}
                     </div>
 </div> -->
-
-            {% else %}
-              <select id="{{ optionContent.fieldName }}"
-                      class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
-                      multiple>
-                <!-- </select> -->
-                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                        {% else %}
+                            <select id="{{ optionContent.fieldName }}"
+                                    class="form-select-sm js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
+                                    multiple>
+                                <!-- </select> -->
+                                <!-- <select class="selectpicker form-select js-choice border-{{ focusBorder }}-round-font-color trigger-submit-onchange"
          aria-label=".form-select-sm example"
          name="{{ optionContent.fieldName }}"
          id="{{ optionContent.fieldName }}"
          style="background: url('{% static pathToArrow %}') no-repeat;
                 background-position: 90% 50%"> -->
-                <option value="">{% translate optionContent.placeholder %}</option>
-                {% for option in optionContent.objects %}
-                  <option value="{{ option }}"
-                          {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
-                    {{ option }}
-                  </option>
-                {% endfor %}
-              </select>
-              <!-- </div> -->
-            {% endif %}
-          {% endfor %}
+                                <option value="">{% translate optionContent.placeholder %}</option>
+                                {% for option in optionContent.objects %}
+                                    <option value="{{ option }}"
+                                            {% if option.filter == option.id|stringformat:"s" %} selected="selected" {% endif %}>
+                                        {{ option }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <!-- </div> -->
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+                    {% if renderDetailsRadio %}
+                        <input type="radio" id="triggerDetailsView" />
+                        <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+                    {% endif %}
+                    {% if renderComparisonRadio %}
+                        <input type="radio" id="triggerComparisonMode" />
+                        <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
-          {% if renderDetailsRadio %}
-            <input type="radio" id="triggerDetailsView" />
-            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
-          {% endif %}
-          {% if renderComparisonRadio %}
-            <input type="radio" id="triggerComparisonMode" />
-            <span class="{{ focusBorder }}-text-near-radio">{% translate "Vergleichsmodus" %}</span>
-          {% endif %}
-        </div>
-      </div>
     </div>
-
-  </div>
 </form>
 <div style="margin-bottom: 24px;">
-  {% for key, value in filters.items %}
-    {% for selectedItem in value %}
-      <span class="filter {{ key }}">{{ selectedItem }}
-        <button class="closeFilter">
-          <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
-        </button>
-      </span>
+    {% for key, value in filters.items %}
+        {% for selectedItem in value %}
+            <span class="filter {{ key }}">{{ selectedItem }}
+                <button class="closeFilter">
+                    <img src="{% static 'assets/images/closeSymbol.svg' %}" alt="closeSymbol" />
+                </button>
+            </span>
+        {% endfor %}
     {% endfor %}
-  {% endfor %}
 </div>
 <script>
   var listOfUseBootstrapSelects = [];

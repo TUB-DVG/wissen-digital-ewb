@@ -40,16 +40,12 @@ class DataImportApp(DataImport):
         ]
         ratingOfEffect = row[header.index("Wertung des Effektes")]
         nameOfEffect = row[header.index("Name des Effekts")]
-        shortDescriptionOfEffect = row[
-            header.index("Kurzbeschreibung der Wirkung")
-        ]
+        shortDescriptionOfEffect = row[header.index("Kurzbeschreibung der Wirkung")]
         source = row[header.index("Quelle / Hinweise")]
         icon = row[header.index("ICON")]
 
         focusList = row[header.index("Perspektive")].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("Perspektive")]
-        )
+        processedFocusList = self._correctReadInValue(row[header.index("Perspektive")])
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
         focusElements = Focus.objects.filter(focus__in=focusList)
 

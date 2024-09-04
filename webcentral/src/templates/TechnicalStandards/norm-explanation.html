@@ -1,12 +1,11 @@
 {% load static %}
-
 {% load i18n %}
 <section class="py-4">
-  <div class="container">
-    <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
-      <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoNorms">
-        <p>
-          {% blocktranslate %}Auf dieser Seite befinden sich unterschiedlichen technische Normen,
+    <div class="container">
+        <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
+            <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoNorms">
+                <p>
+                    {% blocktranslate %}Auf dieser Seite befinden sich unterschiedlichen technische Normen,
           die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in 
           Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen
           Projekte erfasst worden. Es handelt sich um deutsche, österreichische, 
@@ -16,32 +15,32 @@
           Andere technische Standards, wie Schallschutz, Beleuchtung, und Gasinstallation,
           sind ebenfalls enthalten. Für jede Norm wurden die folgenden Aspekte
           erfasst: {% endblocktranslate %}
-        </p>
-        <ul>
-          <li class="lead">
-            <b>{% blocktranslate %}Name und vollständiger Titel der Norm{% endblocktranslate %}</b>
-          </li>
-          <li class="lead">
-            <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% translate "um was handelt es sich?" %}
-          </li>
-          <li class="lead">
-            <b>{% translate "Quelle" %}</b>&nbsp;&ndash; {% translate "woher kann die Norm bezogen werden?" %}
-          </li>
-          <li class="lead">
-            <b>Link</b>&nbsp;&ndash; {% translate "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann." %}
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-12 lead mt-3">
-        <a role="button"
-           class="collapsed text-truncation-btn collapseInfoContainer"
-           data-toggle="collapse"
-           href="#collapseInfoNorms"
-           aria-expanded="false"
-           aria-controls="collapseInfoNorms"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-      </div>
+                </p>
+                <ul>
+                    <li class="lead">
+                        <b>{% blocktranslate %}Name und vollständiger Titel der Norm{% endblocktranslate %}</b>
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% translate "um was handelt es sich?" %}
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Quelle" %}</b>&nbsp;&ndash; {% translate "woher kann die Norm bezogen werden?" %}
+                    </li>
+                    <li class="lead">
+                        <b>Link</b>&nbsp;&ndash; {% translate "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann." %}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12 lead mt-3">
+                <a role="button"
+                   class="collapsed text-truncation-btn collapseInfoContainer"
+                   data-toggle="collapse"
+                   href="#collapseInfoNorms"
+                   aria-expanded="false"
+                   aria-controls="collapseInfoNorms"
+                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

@@ -15,9 +15,5 @@
     }
 </style>
 <div class="strategyCategory">{{ boxObject.strategyCategory }}</div>
-{% if boxObject.example1 %}
-  <div class="exampleHeading">{{ boxObject.example1Heading }}</div>
-{% endif %}
-{% if boxObject.example2 %}
-  <div class="exampleHeading">{{ boxObject.example2Heading }}</div>
-{% endif %}
+{% if boxObject.example1 %}<div class="exampleHeading">{{ boxObject.example1Heading }}</div>{% endif %}
+{% if boxObject.example2 %}<div class="exampleHeading">{{ boxObject.example2Heading }}</div>{% endif %}

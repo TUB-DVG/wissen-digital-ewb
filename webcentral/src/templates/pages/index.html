@@ -2,95 +2,65 @@
 {% load i18n %}
 {% load static %}
 {% block title %}
-  {% translate "Wissensplattform - Digitalisierung Energiewendebauen" %}
+    {% translate "Wissensplattform - Digitalisierung Energiewendebauen" %}
 {% endblock %}
-
 {% block content %}
-
-  <!-- =======================
+    <!-- =======================
 Page Banner START -->
-  <section class="py-4">
-
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-12">
-
-          <div class="bg-light p-4 text-center rounded-3">
-
-            <h1 class="m-0">Wissensplattform</h1>
-
-            <h3 class="m-0">Digitalisierung Energiewendebauen</h3>
-
-          </div>
-
-        </div>
-
-        <!--<div class="col-md-12 text-center mx-auto position-relative">
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bg-light p-4 text-center rounded-3">
+                        <h1 class="m-0">Wissensplattform</h1>
+                        <h3 class="m-0">Digitalisierung Energiewendebauen</h3>
+                    </div>
+                </div>
+                <!--<div class="col-md-12 text-center mx-auto position-relative">
 				<h1 class="position-relative fs-2">Wissensplattform</h1>
 				<h3>Digitalisierung Energiewendebauen</h3>
 </div>-->
-
-      </div>
-
-    </div>
-  </section>
-  <!-- =======================
+            </div>
+        </div>
+    </section>
+    <!-- =======================
 Page Banner END -->
-
-  <!--Page content START  -->
-
-  <section id="home" class="pb-0 pt-4 py-lg-5">
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-12">
-
-          <p class="lead">
-            Die wissenschaftliche Begleitforschung der Forschungsinitiative Energiewendebauen
-            stellt mit der Wissensplattform - Digitalisierung Energiewendebauen einen
-            Zugang zu den Forschungsergebnissen und den erstellten Hilfsmitteln aus den
-            Forschungsprojekten im Bereich Digitalisierung im Bausektor dar.
-          </br />
-          Diese Plattform richtet sich an die interessierte Fachallgemeinheit
-          und auch an die Forschungsprojekte der Forschungsinitative Energiewendebauen.
-        </p>
-
-      </div>
-
-    </div>
-
-    <div class="row my-lg-4">
-
-      <div class="col-lg-12">
-        <!--<img src="{% static '/img/Schema_Wissensplattform.png' %}"
+    <!--Page content START  -->
+    <section id="home" class="pb-0 pt-4 py-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="lead">
+                        Die wissenschaftliche Begleitforschung der Forschungsinitiative Energiewendebauen
+                        stellt mit der Wissensplattform - Digitalisierung Energiewendebauen einen
+                        Zugang zu den Forschungsergebnissen und den erstellten Hilfsmitteln aus den
+                        Forschungsprojekten im Bereich Digitalisierung im Bausektor dar.
+                    </br />
+                    Diese Plattform richtet sich an die interessierte Fachallgemeinheit
+                    und auch an die Forschungsprojekte der Forschungsinitative Energiewendebauen.
+                </p>
+            </div>
+        </div>
+        <div class="row my-lg-4">
+            <div class="col-lg-12">
+                <!--<img src="{% static '/img/Schema_Wissensplattform.png' %}"
      class="mx-auto d-block img-fluid"
      style="max-width: 90%" />-->
-
-        <div id="upvideo396671"
-             data-videourl="https://www.youtube.com/embed/N_WP7Llytis?controls=0?rel=0&amp;showinfo=0&amp;autoplay=1"
-             style="margin-top:50px;
-                    text-align: center">
-
-          <img class="video-home"
-               src="{% static '/img/Video_Image.png' %}"
-               style="max-height:480px" />
-
-        </div>
-
-        <div class="mx-auto video-text">
-
-          <p class="text-center">
-
-            Bitte beachten Sie: Sobald Sie sich das Video ansehen, werden Informationen darüber an Youtube/Google übermittelt. Weitere Informationen
-            dazu finden Sie unter <a target="_blank" href="https://policies.google.com/privacy?hl=de">Google Privacy</a>.
-
-          </p>
-
-        </div>
-        <script>
+                <div id="upvideo396671"
+                     data-videourl="https://www.youtube.com/embed/N_WP7Llytis?controls=0?rel=0&amp;showinfo=0&amp;autoplay=1"
+                     style="margin-top:50px;
+                            text-align: center">
+                    <img class="video-home"
+                         src="{% static '/img/Video_Image.png' %}"
+                         style="max-height:480px" />
+                </div>
+                <div class="mx-auto video-text">
+                    <p class="text-center">
+                        Bitte beachten Sie: Sobald Sie sich das Video ansehen, werden Informationen darüber an Youtube/Google übermittelt. Weitere Informationen
+                        dazu finden Sie unter <a target="_blank" href="https://policies.google.com/privacy?hl=de">Google Privacy</a>.
+                    </p>
+                </div>
+                <script>
 					upvideo396671 = document.getElementById("upvideo396671");
 					upvideo396671.addEventListener("click", function () {
 					var iframe396671 = document.createElement("iframe");
@@ -129,14 +99,11 @@ Page Banner END -->
 					});
 
 				
-        </script>
-
-      </div>
-
+                </script>
+            </div>
+        </div>
+        {% include '../partials/_gefoerdert_bmwk.html' %}
     </div>
-
-    {% include '../partials/_gefoerdert_bmwk.html' %}
-  </div>
 </div>
 </section>
 {% endblock %}

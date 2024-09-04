@@ -174,9 +174,7 @@ class ToolListPage(GenericPageObject):
         List(Webelement):
         """
 
-        return self.driver.find_elements(
-            By.XPATH, Locator.paginationPreviousLink
-        )
+        return self.driver.find_elements(By.XPATH, Locator.paginationPreviousLink)
 
     def getLastElementInList(self) -> list:
         """Return List of webelements, containing Last-element of pagination

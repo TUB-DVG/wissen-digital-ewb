@@ -83,35 +83,35 @@
 </style>
 <div class="col-12 descriptionContainer {{ focusBorder }}-cards"
      style="margin-top: 24px">
-  <div class="description-heading mb-3">
-    {% if pathToImage %}
-      <img src="{% static pathToImage %}"
-           alt="Circle icon"
-           class="description-heading__icon" />
-    {% endif %}
-    <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
-  </div>
-  <div class="description-content">
-    <div class="blockOfContent">
-      {% if showMorePresent %}
-        <p class="mainContent" id="mainContent"></p>
-        <div class="mainContent collapse col-lg-12 lead collapseInfo"
-             id="explanationText"></div>
-        <div class="showMore">
-          <a role="button"
-             class="collapsed text-truncation-btn {{ focusBorder }}-font-color"
-             data-toggle="collapse"
-             href="#explanationText"
-             aria-expanded="false"
-             aria-controls="collapseInfoTools"
-             data-expanded-text="{% translate 'Zeige weniger ...' %}"
-             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-        </div>
-      </div>
-    {% else %}
-      <p class="mainContent" id="mainContent"></p>
-    {% endif %}
-  </div>
+    <div class="description-heading mb-3">
+        {% if pathToImage %}
+            <img src="{% static pathToImage %}"
+                 alt="Circle icon"
+                 class="description-heading__icon" />
+        {% endif %}
+        <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
+    </div>
+    <div class="description-content">
+        <div class="blockOfContent">
+            {% if showMorePresent %}
+                <p class="mainContent" id="mainContent"></p>
+                <div class="mainContent collapse col-lg-12 lead collapseInfo"
+                     id="explanationText"></div>
+                <div class="showMore">
+                    <a role="button"
+                       class="collapsed text-truncation-btn {{ focusBorder }}-font-color"
+                       data-toggle="collapse"
+                       href="#explanationText"
+                       aria-expanded="false"
+                       aria-controls="collapseInfoTools"
+                       data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                       data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+                </div>
+            </div>
+        {% else %}
+            <p class="mainContent" id="mainContent"></p>
+        {% endif %}
+    </div>
 </div>
 <script>
   $(document).ready(function() {

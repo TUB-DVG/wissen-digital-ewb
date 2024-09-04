@@ -57,9 +57,7 @@ class DataImport:
         if self.path_to_file.endswith(".xlsx"):
             header, data = self.readExcel()
             return header, data
-        raise CommandError(
-            "Invalid file format. Please provide a .csv or .xlsx file."
-        )
+        raise CommandError("Invalid file format. Please provide a .csv or .xlsx file.")
 
     def readExcel(
         self,
@@ -86,19 +84,12 @@ class DataImport:
             df = pd.read_excel(self.path_to_file)
             germanEnglish = False
         if germanEnglish:
-            if len(
-                dfGermanEnglish["English"] == len(dfGermanEnglish["German"])
-            ):
+            if len(dfGermanEnglish["English"] == len(dfGermanEnglish["German"])):
                 for index, german_column in enumerate(
                     dfGermanEnglish["German"].columns
                 ):
-                    if (
-                        german_column
-                        == dfGermanEnglish["English"].columns[index]
-                    ):
-                        dfGermanEnglish["English"] = dfGermanEnglish[
-                            "English"
-                        ].rename(
+                    if german_column == dfGermanEnglish["English"].columns[index]:
+                        dfGermanEnglish["English"] = dfGermanEnglish["English"].rename(
                             columns={
                                 dfGermanEnglish["English"]
                                 .columns[index]: dfGermanEnglish["English"]
@@ -158,9 +149,7 @@ class DataImport:
         if readInString == "":
             return ""
         splitStringToSeeIfList = readInString.split(",")
-        splitStringToSeeIfList = [
-            item for item in splitStringToSeeIfList if item
-        ]
+        splitStringToSeeIfList = [item for item in splitStringToSeeIfList if item]
         if len(splitStringToSeeIfList) > 0:
             for index, listElement in enumerate(splitStringToSeeIfList):
                 if listElement[0] == " ":
@@ -175,9 +164,7 @@ class DataImport:
             readInString = readInString[:-1]
         return readInString
 
-    def _selectNearestMatch(
-        self, categoryString: str, djangoModel: Model
-    ) -> str:
+    def _selectNearestMatch(self, categoryString: str, djangoModel: Model) -> str:
         """Return closest match for categoryString in djangoModel
 
         This method returns the closest match for `categoryString` in
@@ -208,9 +195,7 @@ class DataImport:
             attributeNameInModel = (
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
             )
-        allNames = [
-            getattr(x, attributeNameInModel) for x in djangoModel.objects.all()
-        ]
+        allNames = [getattr(x, attributeNameInModel) for x in djangoModel.objects.all()]
 
         # get the closest match
         listOfClosestMatches = difflib.get_close_matches(
@@ -230,15 +215,11 @@ class DataImport:
             )
             return getattr(newlyCreatedRow, attributeNameInModel)
 
-    def _iterateThroughListOfStrings(
-        self, listOfStrings: list, djangoModel: Model
-    ):
+    def _iterateThroughListOfStrings(self, listOfStrings: list, djangoModel: Model):
         """ """
         listOfModifiedStrings = []
         for curretnCategoryString in listOfStrings:
-            modifiedStr = self._selectNearestMatch(
-                curretnCategoryString, djangoModel
-            )
+            modifiedStr = self._selectNearestMatch(curretnCategoryString, djangoModel)
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 
@@ -330,9 +311,7 @@ class DataImport:
         obj.save()
         return obj
 
-    def _importEnglishForeignKeyRel(
-        self, ormObj, header, row, headerExcel, dbAttr
-    ):
+    def _importEnglishForeignKeyRel(self, ormObj, header, row, headerExcel, dbAttr):
         """Import a english translation for a attribute, which is a ForeignKey-
         Relation"""
         foreignElement = getattr(ormObj, dbAttr)
@@ -342,9 +321,7 @@ class DataImport:
             foreignElement.save()
         return ormObj
 
-    def _importEnglishManyToManyRel(
-        self, ormObj, header, row, headerExcel, dbAttr
-    ):
+    def _importEnglishManyToManyRel(self, ormObj, header, row, headerExcel, dbAttr):
         """ """
         germanManyToManyStr = self._processListInput(
             row[header.index(headerExcel)], ";;"

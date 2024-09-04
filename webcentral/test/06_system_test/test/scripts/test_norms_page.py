@@ -34,9 +34,7 @@ class TestNormsPage(WebDriverSetup):
     def testNormSearchBar(self):
         """Test the Norm-Search-Input Field"""
 
-        self.driver.get(
-            os.environ["siteUnderTest"] + "/TechnicalStandards/norm"
-        )
+        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/norm")
         self._setLanguageToGerman()
 
         normPageObj = NormPage(self.driver)
@@ -77,9 +75,7 @@ class TestNormsPage(WebDriverSetup):
 
     def testClickOnOneofTheCardsShown(self):
         """Click randomly on one of the cards and check if the right details-page is shown"""
-        self.driver.get(
-            os.environ["siteUnderTest"] + "/TechnicalStandards/norm"
-        )
+        self.driver.get(os.environ["siteUnderTest"] + "/TechnicalStandards/norm")
         normPageObj = NormPage(self.driver)
         cardsOnPage = normPageObj.getCards()
 

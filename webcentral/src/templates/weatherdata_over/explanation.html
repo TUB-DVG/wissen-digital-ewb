@@ -1,55 +1,52 @@
 {% load static %}
 {% load i18n %}
-
 <section class="py-4">
-
-  <div class="container">
-    <div class="row collapseInfoContainer"
-         id="collapseInfoContainerWeatherdata">
-
-      <div class="col-lg-12 collapse lead collapseInfo"
-           id="collapseInfoWeatherdata">
-        <p>
-          {% blocktranslate %}Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit Wetterdaten
+    <div class="container">
+        <div class="row collapseInfoContainer"
+             id="collapseInfoContainerWeatherdata">
+            <div class="col-lg-12 collapse lead collapseInfo"
+                 id="collapseInfoWeatherdata">
+                <p>
+                    {% blocktranslate %}Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit Wetterdaten
                     sind in einer ersten Recherche durch das Modul Digitalisierung der
                     wissenschaftliche Begleitforschung der Forschungsinitiative Energiewendebauen
                     entstanden. Der Fokus der Recherche lag auf der Region Deutschland.{% endblocktranslate %}
-        </p>
-        <p>
-          {% blocktranslate %}Wir möchten Sie ermutigen uns auf weitere Datenquellen, digitale Werkzeuge oder
+                </p>
+                <p>
+                    {% blocktranslate %}Wir möchten Sie ermutigen uns auf weitere Datenquellen, digitale Werkzeuge oder
                     auch konkrete Anwendungen von Wetterdaten aufmerksam zu machen, um diese ihren
                     Kollegenschaft aus der Forschung aber auch aus der Praxis zugänglich zu machen.{% endblocktranslate %}
-        </p>
-        <p>
-          {% blocktranslate %}Im Rahmen der ersten Recherche haben wir folgende Aspekte zu den Wetterdaten
+                </p>
+                <p>
+                    {% blocktranslate %}Im Rahmen der ersten Recherche haben wir folgende Aspekte zu den Wetterdaten
                     bzw. deren Anwendungen zusammengetragen:{% endblocktranslate %}
-        </p>
-        <ul>
-          <li class="lead">
-            <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% blocktranslate %}Um was handelt es sich?{% endblocktranslate %}
-          </li>
-          <li class="lead">
-            <b>{% translate "Letztes Update" %}</b>&nbsp;&ndash; {% blocktranslate %}Wann ist das letzte Update erfolgt. Insbesondere bei
+                </p>
+                <ul>
+                    <li class="lead">
+                        <b>{% translate "Kurzbeschreibung" %}</b>&nbsp;&ndash; {% blocktranslate %}Um was handelt es sich?{% endblocktranslate %}
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Letztes Update" %}</b>&nbsp;&ndash; {% blocktranslate %}Wann ist das letzte Update erfolgt. Insbesondere bei
                         Anwendungen, welche im Rahmen von Forschungsprojekten entwickelt werden, kann
                         nach Abschluss des Projektes die Weiterentwicklung bzw. die Wartung eingestellt
                         werden. {% endblocktranslate %}
-          </li>
-          <li class="lead">
-            <b>{% translate "Lizenz" %}</b>&nbsp;&ndash; {% blocktranslate %}Unter welcher Lizenz wurde die Anwendung veröffentlicht und
+                    </li>
+                    <li class="lead">
+                        <b>{% translate "Lizenz" %}</b>&nbsp;&ndash; {% blocktranslate %}Unter welcher Lizenz wurde die Anwendung veröffentlicht und
                         entstehen Kosten durch die Verwendung?{% endblocktranslate %}
-          </li>
-        </ul>
-      </div>
-      <div class="col-lg-12 lead mt-3">
-        <a role="button"
-           class="collapsed text-truncation-btn"
-           data-toggle="collapse"
-           href="#collapseInfoWeatherdata"
-           aria-expanded="false"
-           aria-controls="collapseInfoWeatherdata"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-      </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-12 lead mt-3">
+                <a role="button"
+                   class="collapsed text-truncation-btn"
+                   data-toggle="collapse"
+                   href="#collapseInfoWeatherdata"
+                   aria-expanded="false"
+                   aria-controls="collapseInfoWeatherdata"
+                   data-expanded-text="{% translate 'Zeige weniger ...' %}"
+                   data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

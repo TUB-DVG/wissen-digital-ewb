@@ -25,9 +25,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "keyword",
-                    models.CharField(
-                        blank=True, help_text="keyword", max_length=200
-                    ),
+                    models.CharField(blank=True, help_text="keyword", max_length=200),
                 ),
                 (
                     "keywordDefiniton",

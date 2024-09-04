@@ -1,13 +1,11 @@
 {% load static %}
 {% load i18n %}
 {% for dataset in page.object_list %}
-  <!-- Card item START -->
-
-  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-    <a href="{% url 'dataset_view' dataset.id %}">
-      <div class="card border-technical h-100">
-        <!-- Image at top discarded for NOW
-
+    <!-- Card item START -->
+    <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+        <a href="{% url 'dataset_view' dataset.id %}">
+            <div class="card border-technical h-100">
+                <!-- Image at top discarded for NOW
         <div class="card-header text-right">
             <p class="mb-2 text-truncate-2">
             {{ weatherdata.category }}
@@ -22,46 +20,39 @@
         </div>
 
         -->
-        <!-- Card body -->
-
-        <div class="card-body pb-0">
-
-          <!-- Title -->
-          <h3 class="card-title">{{ dataset.nameDataset }}</h3>
-          <!--
+                <!-- Card body -->
+                <div class="card-body pb-0">
+                    <!-- Title -->
+                    <h3 class="card-title">{{ dataset.nameDataset }}</h3>
+                    <!--
             <p class="mb-2 text-truncate-2">Provider: {{ weatherdata.provider }}</p>
 -->
-
-        </div>
-        <!-- Image -->
-
-        <div class="image-container d-flex" style="height: 150px;">
-          {% if dataset.image %}
-            <img src="{{ dataset.image.url }}"
-                 class="card-img-top px-4 pb-2 m-auto"
-                 style="max-height: 100%;
-                        width: auto;
-                        display: block"
-                 alt="weatherdata image (if=db)" />
-          {% endif %}
-        </div>
-
-        <!-- Card footer -->
-        <div class="card-footer pt-0 pb-3">
-          {% if dataset.coverage %}
-            <hr />
-            <div class="d-flex justify-content-between">
-              <span class="h6 fw-light mb-0">
-                <i class="fas fa-sync me-2"></i>{% translate "Abdeckung" %}: {{ dataset.coverage }}
-              </span>
-
+                </div>
+                <!-- Image -->
+                <div class="image-container d-flex" style="height: 150px;">
+                    {% if dataset.image %}
+                        <img src="{{ dataset.image.url }}"
+                             class="card-img-top px-4 pb-2 m-auto"
+                             style="max-height: 100%;
+                                    width: auto;
+                                    display: block"
+                             alt="weatherdata image (if=db)" />
+                    {% endif %}
+                </div>
+                <!-- Card footer -->
+                <div class="card-footer pt-0 pb-3">
+                    {% if dataset.coverage %}
+                        <hr />
+                        <div class="d-flex justify-content-between">
+                            <span class="h6 fw-light mb-0">
+                                <i class="fas fa-sync me-2"></i>{% translate "Abdeckung" %}: {{ dataset.coverage }}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-          {% endif %}
-        </div>
-      </div>
-    </a>
-  </div>
-
-  <!-- Card item END -->
+        </a>
+    </div>
+    <!-- Card item END -->
 {% endfor %}
 {% include "partials/pagination.html" %}

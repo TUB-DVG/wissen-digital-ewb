@@ -18,9 +18,7 @@ class TestBusinessModelChallenges(WebDriverSetup):
         )  # first test if a heading and a introduction text is present:
 
         self._setLanguageToGerman()
-        self.assertEqual(
-            self.driver.title, "Geschäftsmodelle – Herausforderungen"
-        )
+        self.assertEqual(self.driver.title, "Geschäftsmodelle – Herausforderungen")
 
         self._setLanguageToEnglish()
         self.assertEqual(self.driver.title, "Business models - Challenges")

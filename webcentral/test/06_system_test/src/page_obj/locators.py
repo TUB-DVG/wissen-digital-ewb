@@ -109,7 +109,9 @@ class Locator(object):
     aboutPageTopHeading = "//h2"
     aboutPageSubHeading = "//h3"
     aboutPageEWBImage = "//img[@id='ewbImage']"
-    aboutPageEinsteinCenterLink = "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
+    aboutPageEinsteinCenterLink = (
+        "//a[@href='https://ewb.innoecos.com/Group/Einstein.Center.Digital.Future']"
+    )
     aboutPageUDKLink = "//a[@href='https://ewb.innoecos.com/Group/Berlin.Career.College.Zentralinstitut.fuer.Weiterbildung.ZIW']"
     aboutPageLinkToIOeW = "//a[@href='https://ewb.innoecos.com/Group/IOeW/']"
     aboutPageImgOfEinsteinCenter = "//img[@id='ecdfImage']"
@@ -194,9 +196,7 @@ class Locator(object):
     resetButton = "div//[@id='cancelButtonTools']"
     # firstComparisonDiv = "//div[@id='firstComparisonButtonTools']"
     secondComparisonDiv = "//div[@id='comparisonBarTools']"
-    headingComparisonSite = (
-        "//p[contains(@class, 'description-heading__paragraph')]"
-    )
+    headingComparisonSite = "//p[contains(@class, 'description-heading__paragraph')]"
     comparisonTableContainer = "//tbody"
     backButton = "//div[@class='secondaryNavbarLeft']/a"
     startComparisonDiv = "//div[@id='startComparisonButtonTools']"
@@ -205,6 +205,4 @@ class Locator(object):
     # DetailsPage locators
     linkNavigatorDiv = "//div[contains(@class, 'linkNavigator')]"
 
-    overviewPageHeading = (
-        "//p[contains(@class, 'description-heading__paragraph')]"
-    )
+    overviewPageHeading = "//p[contains(@class, 'description-heading__paragraph')]"

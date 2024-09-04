@@ -61,10 +61,8 @@ class Translator(DataImport):
             # get the german text:
             germanText = row[header.index(headerValue)]
             if germanText != "":
-                row[header.index(headerValueEn)] = (
-                    deeplTranslator.translate_text(
-                        germanText, target_lang="EN-US"
-                    )
+                row[header.index(headerValueEn)] = deeplTranslator.translate_text(
+                    germanText, target_lang="EN-US"
                 )
             else:
                 row[header.index(headerValueEn)] = ""

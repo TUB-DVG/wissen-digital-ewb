@@ -185,9 +185,7 @@ class TestNavbar(WebDriverSetup):
         focusDopdownLink = self.navbarObj.getDropdownOfType(self.focusName)
         focusDopdownLink.click()
 
-        self.focusLinkElements = self.navbarObj.getDropdownLiElements(
-            self.focusName
-        )
+        self.focusLinkElements = self.navbarObj.getDropdownLiElements(self.focusName)
         self.item = self.focusLinkElements[self.indexItem]
         self.scrollElementIntoViewAndClickIt(self.item)
         self.assertEqual(expectedValue, self.driver.title)

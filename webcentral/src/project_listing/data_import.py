@@ -99,10 +99,7 @@ class DataImportApp(DataImport):
         if enargusObj is not None:
             self._compareDjangoOrmObj(Enargus, enargusObj, obj)
 
-        if (
-            enargusObj is not None
-            and self.diffStrDict[self.dictIdentifier] != ""
-        ):
+        if enargusObj is not None and self.diffStrDict[self.dictIdentifier] != "":
             self._writeDiffStrToDB()
 
         return obj, created
@@ -338,9 +335,7 @@ class DataImportApp(DataImport):
         )
 
         if oldFundingObj is not None:
-            self._compareDjangoOrmObj(
-                FurtherFundingInformation, oldFundingObj, obj
-            )
+            self._compareDjangoOrmObj(FurtherFundingInformation, oldFundingObj, obj)
 
         return obj, created
 

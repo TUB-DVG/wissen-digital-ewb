@@ -1,44 +1,34 @@
 {% load static %}
 {% for publication in page.object_list %}
-
-  <!-- Card item START -->
-  <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
-    <a href="{% url 'publicationDetails' publication.id %}">
-      <div class="card border-{{ publication.focus_en }} h-100">
-        <!-- Card body -->
-        <div class="card-body pb-0">
-          <!-- Title -->
-          <h3 class="card-title">{{ publication.title }}</h3>
-          <p class="card-text mb-2 text-truncate-2">
-            Autoren: {{ publication.authors }}
-          </p>
-          <p class="card-text mb-2 text-truncate-2">Typ: {{ publication.type }}</p>
-          <p class="card-text mb-2 text-truncate-2">
-            Fokus:
-            {% for focus in publication.focus.all %}
-              {{ focus.focus }}
-              {% if not forloop.last %},{% endif %}
-            {% endfor %}
-          </p>
+    <!-- Card item START -->
+    <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
+        <a href="{% url 'publicationDetails' publication.id %}">
+            <div class="card border-{{ publication.focus_en }} h-100">
+                <!-- Card body -->
+                <div class="card-body pb-0">
+                    <!-- Title -->
+                    <h3 class="card-title">{{ publication.title }}</h3>
+                    <p class="card-text mb-2 text-truncate-2">Autoren: {{ publication.authors }}</p>
+                    <p class="card-text mb-2 text-truncate-2">Typ: {{ publication.type }}</p>
+                    <p class="card-text mb-2 text-truncate-2">
+                        Fokus:
+                        {% for focus in publication.focus.all %}
+                            {{ focus.focus }}
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                <!-- Card footer -->
+                <div class="card-footer pt-0 pb-3">
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <span class="h6 fw-light mb-0">
+                            Jahr: {{ publication.year }}
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
-
-        <!-- Card footer -->
-
-        <div class="card-footer pt-0 pb-3">
-
-          <hr />
-          <div class="d-flex justify-content-between">
-            <span class="h6 fw-light mb-0">
-
-              Jahr: {{ publication.year }}
-
-            </div>
-
-          </div>
-
-        </div>
-      </a>
-    </div>
-    <!-- Card item END -->
-  {% endfor %}
-  {% include "partials/pagination.html" %}
+        <!-- Card item END -->
+    {% endfor %}
+    {% include "partials/pagination.html" %}

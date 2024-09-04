@@ -1,44 +1,40 @@
 {% extends 'base.html' %}
-
 {% block title %}Herausforderungen{% endblock %}
-
 {% load static %}
 {% load i18n %}
 {% block content %}
-
-  <!-- general text for "coming soon" -->
-  {% include 'partials/_coming.html' %}
-
-  <!-- =======================
+    <!-- general text for "coming soon" -->
+    {% include 'partials/_coming.html' %}
+    <!-- =======================
 Page Banner START -->
-  <section class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="p-2 text-left rounded-3">
-            <h2 class="m-0">{% translate "Herausforderungen" %}</h2>
-          </div>
+    <section class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="p-2 text-left rounded-3">
+                        <h2 class="m-0">{% translate "Herausforderungen" %}</h2>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- Page Banner END -->
-  <!-- Content START -->
-  <section id="about" class=" pt-4 py-lg-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-9">
-          <p>
-            {% blocktranslate %}Die Bewertung der positiven und negativen Umweltwirkungen ist nicht
+    </section>
+    <!-- Page Banner END -->
+    <!-- Content START -->
+    <section id="about" class=" pt-4 py-lg-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <p>
+                        {% blocktranslate %}Die Bewertung der positiven und negativen Umweltwirkungen ist nicht
           immer einfach. Hier soll auf Herausforderungen bei der ökologischen
           Bewertung digitaler Anwendungen hingewiesen werden, die sich häufig in
           der Praxis ergeben. Dazu sind Erfahrungen hinsichtlich der
           Herausforderungen im Folgenden in die Themenbereiche „Benchmarking“,
           „Detailtiefe – Anwendungsbereich“ und „Systemgrenzen“ untergliedert.{% endblocktranslate %}
-          </p>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- Content END -->
+    </section>
+    <!-- Content END -->
 {% endblock %}

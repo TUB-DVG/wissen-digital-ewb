@@ -60,9 +60,7 @@ class TestTranslator(TestCase):
             "text__en": "text_en",
         }
 
-        dataTranslated = self.translator.processTranslation(
-            header, data, mapping
-        )
+        dataTranslated = self.translator.processTranslation(header, data, mapping)
 
         self.assertEqual(len(dataTranslated), 2)
         self.assertEqual(len(dataTranslated[0]), 5)
@@ -107,9 +105,7 @@ class TestTranslator(TestCase):
         mapping = {
             "ueberschrift__en": "heading_en",
         }
-        self.translator._writeToExcel(
-            "testExcelFile.xlsx", header, data, mapping
-        )
+        self.translator._writeToExcel("testExcelFile.xlsx", header, data, mapping)
 
         # open the created excel file and check if it contains 2 sheets
         excelDict = pd.read_excel("testExcelFile.xlsx", sheet_name=None)

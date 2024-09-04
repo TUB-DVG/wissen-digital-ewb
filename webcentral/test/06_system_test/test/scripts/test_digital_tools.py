@@ -360,14 +360,10 @@ class TestDigitalToolsPage(WebDriverSetup):
             listOfToolItemsOnCurrentPage = toolsPageObj.getListOfToolItems()
             for toolItem in listOfToolItemsOnCurrentPage:
                 try:
-                    imageOfCurrentItem = toolItem.find_element(
-                        By.XPATH, ".//img"
-                    )
+                    imageOfCurrentItem = toolItem.find_element(By.XPATH, ".//img")
                 except NoSuchElementException:
                     continue
-                altTextPresent = self.driver.execute_script(
-                    script, imageOfCurrentItem
-                )
+                altTextPresent = self.driver.execute_script(script, imageOfCurrentItem)
                 if altTextPresent:
                     toolName = toolItem.text.split("\n")[0]
                     print(
@@ -452,9 +448,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             "The comparison-heading should be present",
         )
 
-        comparisonTableContainer = (
-            comparisonPageSection.getComparisonTableContainer()
-        )
+        comparisonTableContainer = comparisonPageSection.getComparisonTableContainer()
 
         listOfTableRows = comparisonPageSection.getDescendantsByTagName(
             comparisonTableContainer, "tr"
@@ -539,9 +533,7 @@ class TestDigitalToolsPage(WebDriverSetup):
             "Year of publication",
             "Last update",
         ]
-        comparisonTableContainer = (
-            comparisonPageSection.getComparisonTableContainer()
-        )
+        comparisonTableContainer = comparisonPageSection.getComparisonTableContainer()
         listOfTableRows = comparisonPageSection.getDescendantsByTagName(
             comparisonTableContainer, "tr"
         )

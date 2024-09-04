@@ -233,25 +233,17 @@ class GrantRecipient(models.Model):
 class Person(models.Model):
     """ORM-Model Defintion for the Person model"""
 
-    person_id = models.AutoField(
-        primary_key=True, help_text="auto generiert ID"
-    )
-    surname = models.CharField(
-        max_length=100, help_text="family name", null=True
-    )
+    person_id = models.AutoField(primary_key=True, help_text="auto generiert ID")
+    surname = models.CharField(max_length=100, help_text="family name", null=True)
     firstName = models.CharField(max_length=50, help_text="name", null=True)
-    title = models.CharField(
-        max_length=50, help_text="title of the person", null=True
-    )
+    title = models.CharField(max_length=50, help_text="title of the person", null=True)
     email = models.EmailField(help_text="Email Address", null=True)
 
 
 class Address(models.Model):
     """ORM-Model Defintion for the Address model"""
 
-    address_id = models.AutoField(
-        primary_key=True, help_text="auto generiert ID"
-    )
+    address_id = models.AutoField(primary_key=True, help_text="auto generiert ID")
     plz = models.CharField(max_length=5, null=True)
     location = models.CharField(max_length=50, null=True)
     state = models.CharField(max_length=50, null=True)
