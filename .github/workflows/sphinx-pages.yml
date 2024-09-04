@@ -16,7 +16,7 @@ jobs:
           pip install sphinx sphinx_rtd_theme myst_parser sphinxcontrib-mermaid
       - name: Sphinx build
         run: |
-          sphinx-build webcentral/doc/06_sphinx _build      
+          sphinx-build webcentral/doc/06_sphinx/source build      
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
