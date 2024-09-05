@@ -1,6 +1,7 @@
 """Tests for the `project_listing`-app
 
 """
+
 from csv import writer
 from tempfile import NamedTemporaryFile
 
@@ -33,61 +34,56 @@ class TestImportEnargusData(TestCase):
 
         """
 
-
         call_command(
             "data_import",
             "project_listing",
             "../doc/01_data/01_pre_pro/enargus_csv_20240606.csv",
         )
-        
+
         personObjects = Person.objects.all()
         for personObj in personObjects:
             self.assertEqual(personObj.surname, "Schmidt")
             self.assertEqual(personObj.firstName, "Robin")
             self.assertEqual(personObj.email, "Robin.Schmidt@email.de")
             self.assertEqual(personObj.title, "")
-    
-    def testKeepPersonalData(self):
-        """
 
-        """
+    def testKeepPersonalData(self):
+        """ """
 
         with NamedTemporaryFile(
-            mode='w+',
-            newline='',
-            suffix='.csv',
-            delete=True) as tempCsv:
-            writerObj = writer(tempCsv, delimiter=';')
+            mode="w+", newline="", suffix=".csv", delete=True
+        ) as tempCsv:
+            writerObj = writer(tempCsv, delimiter=";")
             headerRow = [
-                "FKZ", 
-                "Laufzeitbeginn", 
-                "Laufzeitende", 
-                "Datenbank", 
-                "Thema", 
-                "Foerdersumme_EUR", 
-                "Verbundbezeichung", 
-                "Leistungsplan_Sys_Nr", 
-                "Leistungsplan_Sys_Text", 
-                "Name_ZWE", 
-                "PLZ_ZWE", 
-                "Ort_ZWE", 
-                "Adress_ZWE", 
-                "Land_ZWE", 
-                "Bundesministerium", 
-                "Projekttraeger", 
-                "Forschungsprogramm", 
-                "Foerderprogramm", 
-                "Kurzbeschreibung_de", 
-                "Kurzbeschreibung_en", 
-                "Person_pl", 
-                "Titel_pl", 
-                "Vorname_pl", 
-                "Name_pl", 
-                "Email_pl", 
-                "Name_AS", 
-                "PLZ_AS", 
-                "Ort_AS", 
-                "Adress_AS", 
+                "FKZ",
+                "Laufzeitbeginn",
+                "Laufzeitende",
+                "Datenbank",
+                "Thema",
+                "Foerdersumme_EUR",
+                "Verbundbezeichung",
+                "Leistungsplan_Sys_Nr",
+                "Leistungsplan_Sys_Text",
+                "Name_ZWE",
+                "PLZ_ZWE",
+                "Ort_ZWE",
+                "Adress_ZWE",
+                "Land_ZWE",
+                "Bundesministerium",
+                "Projekttraeger",
+                "Forschungsprogramm",
+                "Foerderprogramm",
+                "Kurzbeschreibung_de",
+                "Kurzbeschreibung_en",
+                "Person_pl",
+                "Titel_pl",
+                "Vorname_pl",
+                "Name_pl",
+                "Email_pl",
+                "Name_AS",
+                "PLZ_AS",
+                "Ort_AS",
+                "Adress_AS",
                 "Land_AS",
             ]
 
@@ -121,13 +117,13 @@ class TestImportEnargusData(TestCase):
                 "64287",
                 "Darmstadt",
                 "Franziska-Braun-Str. 3",
-                "Hessen"
+                "Hessen",
             ]
             writerObj.writerow(headerRow)
             writerObj.writerow(dataRow)
             # Flush the file to ensure it's written
             tempCsv.flush()
-            
+
             # Rewind the file pointer to the beginning of the file
             tempCsv.seek(0)
             call_command(
@@ -582,9 +578,9 @@ class TestImportEnargusData(TestCase):
 #    furtherFundingInformation: 1 -> 2
 #    projectLead: 1 -> 2
 #    database: Enargus -> ForschungDB
-#    shortDescriptionDe: Dieses Projekt erstellt Testfälle -> 
+#    shortDescriptionDe: Dieses Projekt erstellt Testfälle ->
 #    Forschung zur Optimierung erneuerbarer Energiequellen.
-#    shortDescriptionEn: This project creates testcases -> 
+#    shortDescriptionEn: This project creates testcases ->
 #    Research on optimizing renewable energy sources.
 #    rAndDPlanningCategory: 1265 -> EN-20
 #    grantRecipient: 1 -> 2
