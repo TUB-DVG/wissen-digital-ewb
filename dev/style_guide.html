@@ -171,6 +171,68 @@
 </ul>
 </li>
 </ul>
+<section id="docstrings">
+<h3>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">¶</a></h3>
+<p>Docstrings should be present for each module, class- and method-definition.
+Each Docstring concists of multiple parts, whereby each part is seperated by an
+empty line. Here are the different parts:</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>Short description of the function/class/module: one line description of
+the described element.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Long description: This part is the long description, which can go over multiple lines.</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>Input parameters: Here are the input parameters described. Each argument</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Parameters
+----------
+x : type
+   Description of parameter `x`.
+y
+   Description of parameter `y` (with type not specified).
+
+</pre></div>
+</div>
+<p>At the first position the name of the parameter is specified, followed by a <code class="docutils literal notranslate"><span class="pre">:</span></code> and the type of the parameter.
+After a linebreak and a indention, a description of the parameter follows.</p>
+<ul class="simple">
+<li><ol class="arabic simple" start="4">
+<li><p>Description of return statements: Descibes the return vales and its types in the following structure:</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Returns</span>
+<span class="o">-------</span>
+<span class="nb">int</span>
+    <span class="n">Description</span> <span class="n">of</span> <span class="n">anonymous</span> <span class="n">integer</span> <span class="k">return</span> <span class="n">value</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><ol class="arabic simple" start="5">
+<li><p>Examples: As a optional part, examples can be added to describe how the descibed entity can be used:</p></li>
+</ol>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Examples</span>
+<span class="o">--------</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="mi">3</span>
+
+<span class="n">Comment</span> <span class="n">explaining</span> <span class="n">the</span> <span class="n">second</span> <span class="n">example</span><span class="o">.</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
