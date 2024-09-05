@@ -359,18 +359,6 @@
                   <table>
                     <tr>
                       <td>
-                        <img src="{% static 'assets/images/buildings.svg' %}"
-                             class="rounded"
-                             alt="icon" />
-                      </td>
-                      <td>
-                        <a class="legal" href="{% url 'dataSecurity' %}">
-                          {% translate "Daten&shy;schutz&shy;übersicht" %}
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
                         <img src="{% static 'assets/images/standards.svg' %}"
                              class="rounded"
                              alt="icon" />
@@ -381,6 +369,19 @@
                         </a>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <img src="{% static 'assets/images/buildings.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="legal" href="{% url 'dataSecurity' %}">
+                          {% translate "Daten&shy;schutz&shy;übersicht" %}
+                        </a>
+                      </td>
+                    </tr>
+
                     <tr>
                       <td>
                         <img src="{% static 'assets/images/data.svg' %}"
