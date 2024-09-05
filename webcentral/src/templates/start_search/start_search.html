@@ -357,6 +357,18 @@
                 </div>
                 <div class="col-5 col-sm-4 col-md-5 col-lg-5 col-xl-4 p-3" title="Links">
                   <table>
+                   <tr>
+                      <td>
+                        <img src="{% static 'assets/images/standards.svg' %}"
+                             class="rounded"
+                             alt="icon" />
+                      </td>
+                      <td>
+                        <a class="legal" href="{% url 'criteriaCatalog' %}">
+                          {% translate "Kriterienkatalog" %}
+                        </a>
+                      </td>
+                    </tr>
                     <tr>
                       <td>
                         <img src="{% static 'assets/images/buildings.svg' %}"
@@ -369,18 +381,7 @@
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                        <img src="{% static 'assets/images/standards.svg' %}"
-                             class="rounded"
-                             alt="icon" />
-                      </td>
-                      <td>
-                        <a class="legal" href="{% url 'criteriaCatalog' %}">
-                          {% translate "Kriterienkatalog" %}
-                        </a>
-                      </td>
-                    </tr>
+                    
                     <tr>
                       <td>
                         <img src="{% static 'assets/images/data.svg' %}"
