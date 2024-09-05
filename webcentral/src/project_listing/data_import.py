@@ -37,6 +37,7 @@ class DataImportApp(DataImport):
         """
         super().__init__(path_to_data_file)
         self.dictIdentifier = None
+        self.personalDataFlag = False
 
     def getOrCreate(self, row: list, header: list, data: list) -> None:
         """
@@ -286,12 +287,20 @@ class DataImportApp(DataImport):
         firstNameFromCSV = row[header.index("Vorname_pl")]
         titel = row[header.index("Titel_pl")]
         email = row[header.index("Email_pl")]
-        obj, created = Person.objects.get_or_create(
-            surname=name,
-            firstName=firstNameFromCSV,
-            title=titel,
-            email=email,
-        )
+        if self.personalDataFlag:
+            obj, created = Person.objects.get_or_create(
+                surname=name,
+                firstName=firstNameFromCSV,
+                title=titel,
+                email=email,
+            )
+        else:
+            obj, created = Person.objects.get_or_create(
+                surname="Schmidt",
+                firstName="Robin",
+                title="",
+                email="Robin.Schmidt@email.de",
+            )
         if oldPersonObj is not None:
             self._compareDjangoOrmObj(Person, oldPersonObj, obj)
 
@@ -391,7 +400,6 @@ class DataImportApp(DataImport):
             location = ""
             country = ""
             adress = ""
-
         obj, created = Address.objects.get_or_create(
             plz=postalCode,
             location=location,

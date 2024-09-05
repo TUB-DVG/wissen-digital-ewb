@@ -54,5 +54,32 @@ To import digital tools and digital applications into the database, a excel-file
 To map the english translation from the sheet `English` onto the model fields the same header names are used as in the sheet `German`. When the data is imported, the 2 sheets ge merged into one list datastructure. To differantiate between german and english fields, the header names of the english fields get the suffice `__en`.
 inside the `data_import.py` in the `tools_over`-app a dictionary `MAPPING_EXCEL_DB_EN` is defined as a class-attribute. That datastructure holds the name of the imported english header as key and the corresponding name of the ORM-model-field as value. For `Tools` that feels redundant at the moment since each key-value-field differs only in one `_`, but it can be used in other model-import-scripts if the headername differs from the ORM field name.
 
-# Tracking differences after data-import
+### Enargus data import
+The data from the enargus database can be imported via the `data_import` custom django management command. Since the data is given as a XML-file but the `data_import` command only allows tabular input as CSV or excel-file, a preprocessing step has to be done. This step can be started using the `run`-script:
+```
+    ./run pre_enargus <path-to-xml-file> <target-csv-file>
+```
+This step saves a csv-file in the filepath specified in `<target-csv-file>`.
+In a next step the csv-data can be imported into the database using the django custom management command. To accomplish that, the app needs to be started in `dev` or `prod`-mode:
+```
+    ./run up dev
+```
+While the application is running in one terminal, open a seperat terminal and switch into the django-container:
+```
+    ./run webcentral_shell
+```
+Inside the django container shell change directory into the django project folder (Folder where the `manage.py`-file is located):
+```
+    cd src/
+```
+Then execute the `data_import`-command, whereby the app-name needs to be spcified, in which the ORM-model for the enargus data is located (the folder name is called `project_listing`):
+```
+    python manage.py data_import project_listing ../doc/01_data/01_pre_pro/enargus_csv_20240606.csv
+```
+Here the example enargus file has been taken from the `webcentral/doc/01_data/01_prePro/` folder.
+If no further argument is specified, the data is imported and the personal data is anonymized with dummy personal data. If the personal data should be kept and also imported into the database, the additional flag `--personalData` needs to be provided:
+```
+    python manage.py data_import project_listing ../doc/01_data/01_pre_pro/enargus_csv_20240606.csv --personalData
+```
+
 
