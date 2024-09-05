@@ -90,10 +90,36 @@ The structure of the implemented python scripts is as follows: In the app <code 
 <p>To map the english translation from the sheet <code class="docutils literal notranslate"><span class="pre">English</span></code> onto the model fields the same header names are used as in the sheet <code class="docutils literal notranslate"><span class="pre">German</span></code>. When the data is imported, the 2 sheets ge merged into one list datastructure. To differantiate between german and english fields, the header names of the english fields get the suffice <code class="docutils literal notranslate"><span class="pre">__en</span></code>.
 inside the <code class="docutils literal notranslate"><span class="pre">data_import.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">tools_over</span></code>-app a dictionary <code class="docutils literal notranslate"><span class="pre">MAPPING_EXCEL_DB_EN</span></code> is defined as a class-attribute. That datastructure holds the name of the imported english header as key and the corresponding name of the ORM-model-field as value. For <code class="docutils literal notranslate"><span class="pre">Tools</span></code> that feels redundant at the moment since each key-value-field differs only in one <code class="docutils literal notranslate"><span class="pre">_</span></code>, but it can be used in other model-import-scripts if the headername differs from the ORM field name.</p>
 </section>
+<section id="enargus-data-import">
+<h3>Enargus data import<a class="headerlink" href="#enargus-data-import" title="Link to this heading">¶</a></h3>
+<p>The data from the enargus database can be imported via the <code class="docutils literal notranslate"><span class="pre">data_import</span></code> custom django management command. Since the data is given as a XML-file but the <code class="docutils literal notranslate"><span class="pre">data_import</span></code> command only allows tabular input as CSV or excel-file, a preprocessing step has to be done. This step can be started using the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span> <span class="n">pre_enargus</span> <span class="o">&lt;</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">xml</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This step saves a csv-file in the filepath specified in <code class="docutils literal notranslate"><span class="pre">&lt;target-csv-file&gt;</span></code>.
+In a next step the csv-data can be imported into the database using the django custom management command. To accomplish that, the app needs to be started in <code class="docutils literal notranslate"><span class="pre">dev</span></code> or <code class="docutils literal notranslate"><span class="pre">prod</span></code>-mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span> <span class="n">up</span> <span class="n">dev</span>
+</pre></div>
+</div>
+<p>While the application is running in one terminal, open a seperat terminal and switch into the django-container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">./</span><span class="n">run</span> <span class="n">webcentral_shell</span>
+</pre></div>
+</div>
+<p>Inside the django container shell change directory into the django project folder (Folder where the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code>-file is located):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">cd</span> <span class="n">src</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Then execute the <code class="docutils literal notranslate"><span class="pre">data_import</span></code>-command, whereby the app-name needs to be spcified, in which the ORM-model for the enargus data is located (the folder name is called <code class="docutils literal notranslate"><span class="pre">project_listing</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">data_import</span> <span class="n">project_listing</span> <span class="o">../</span><span class="n">doc</span><span class="o">/</span><span class="mi">01</span><span class="n">_data</span><span class="o">/</span><span class="mi">01</span><span class="n">_pre_pro</span><span class="o">/</span><span class="n">enargus_csv_20240606</span><span class="o">.</span><span class="n">csv</span>
+</pre></div>
+</div>
+<p>Here the example enargus file has been taken from the <code class="docutils literal notranslate"><span class="pre">webcentral/doc/01_data/01_prePro/</span></code> folder.
+If no further argument is specified, the data is imported and the personal data is anonymized with dummy personal data. If the personal data should be kept and also imported into the database, the additional flag <code class="docutils literal notranslate"><span class="pre">--personalData</span></code> needs to be provided:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">data_import</span> <span class="n">project_listing</span> <span class="o">../</span><span class="n">doc</span><span class="o">/</span><span class="mi">01</span><span class="n">_data</span><span class="o">/</span><span class="mi">01</span><span class="n">_pre_pro</span><span class="o">/</span><span class="n">enargus_csv_20240606</span><span class="o">.</span><span class="n">csv</span> <span class="o">--</span><span class="n">personalData</span>
+</pre></div>
+</div>
 </section>
 </section>
-<section id="tracking-differences-after-data-import">
-<h1>Tracking differences after data-import<a class="headerlink" href="#tracking-differences-after-data-import" title="Link to this heading">¶</a></h1>
 </section>
 
 
@@ -121,7 +147,6 @@ inside the <code class="docutils literal notranslate"><span class="pre">data_imp
 <li class="toctree-l2"><a class="reference internal" href="#data-import-using-the-data-import-command">Data-import using the data_import command</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#tracking-differences-after-data-import">Tracking differences after data-import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
 </ul>
