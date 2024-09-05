@@ -53,6 +53,7 @@ For the production-mode use:
 ```
 
 Now that the app is running it is possible to eighter import dummy-data or start with an empty database.
+Please consult the [documentation](https://tub-dvg.github.io/wissen-digital-ewb/) for further details.
 
 ## Importing Dummy-Data
 
