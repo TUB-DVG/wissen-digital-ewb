@@ -497,8 +497,8 @@ class TestMainPage(WebDriverSetup):
             if "Social Factors" in result.text:
                 self.assertTrue("Business Models" in result.text
                                 or "Geschäftsmodelle" in result.text)
-                breakpoint()
-                self.scrollElementIntoViewAndClickIt(result)
+                
+                self.scrollElementIntoViewAndClickIt(result.find_element(By.XPATH, "./td"))
                 self.titleEnDe = [
                     "Business models - Social Factors",
                     "Geschäftsmodelle - Soziale Faktoren"]

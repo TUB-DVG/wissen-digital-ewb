@@ -104,7 +104,6 @@
                       <tr data-href="{% url 'userEngagementDetails' dataSet.id %}">
                     {% elif dataSet.kindOfItem == "Geschäftsmodelle" %}
                       <tr data-href="{% url 'businessModelsChallengeDetails' dataSet.id %}">
- 
                     {% endif %}
                             <!-- Table data -->
                             <!-- Name of item -->
@@ -133,7 +132,7 @@
                               </td>
                               <!-- Table data -->
                             </tr>
-                          {% endfor %}
+                    {% endfor %}
                         </tbody>
                         <!-- Table body END -->
                       </table>
