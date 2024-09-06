@@ -449,6 +449,23 @@ class TestMainPage(WebDriverSetup):
                 == self.GLOBAL_COLOR
             )
 
+    def testUserIntegrationInResults(self):
+        """Test if user_integration elements are on the search results-page.
+
+        """
+        self.driver.get(os.environ["siteUnderTest"])
+        startPAgeObj = StartPage(self.driver)
+        
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Participant Observation")
+        searchInputField.send_keys(Keys.RETURN)
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            breakpoint()
+
+
     def _checkFocusContainer(self, focusName, dataDict):
         """ """
 
