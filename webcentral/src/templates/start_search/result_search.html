@@ -94,89 +94,89 @@
                     <tr data-href="https://ewb.innoecos.com/Group/{{ dataSet.referenceNumber_id }}/Informationen/Start/Blog">
                     {% elif dataSet.kindOfItem == "digitales Werkzeug" %}
                       <tr data-href="{% url 'tool_view' dataSet.id %}">
-                    {% elif dataSet.kindOfItem == "Norm" %}
-                      <tr data-href="{% url 'TechnicalStandards_norm_details' dataSet.id %}">
-                    {% elif dataSet.kindOfItem == "Protokoll" %}
-                      <tr data-href="{% url 'TechnicalStandards_protocol_details' dataSet.id %}">
-                    {% elif dataSet.kindOfItem == "Kriterienkatalog" %}
-                      <tr data-href="{% url 'criteriaCatalogOpenTopic' dataSet.criteriaCatalogPath dataSet.id %}">
-                    {% elif dataSet.kindOfItem == "Nutzendenintegration" %}
-                      <tr data-href="{% url 'userEngagementDetails' dataSet.id %}">
-                    {% endif %}
-                            <!-- Table data -->
-                            <!-- Name of item -->
-                            <td>
-                              <div class="d-flex align-items-center mb-3">
-                                <div class="ms-2">
-                                  <h6 class="mb-0 fw-light">{{ dataSet.name }}</h6>
+                      {% elif dataSet.kindOfItem == "Norm" %}
+                        <tr data-href="{% url 'TechnicalStandards_norm_details' dataSet.id %}">
+                        {% elif dataSet.kindOfItem == "Protokoll" %}
+                          <tr data-href="{% url 'TechnicalStandards_protocol_details' dataSet.id %}">
+                          {% elif dataSet.kindOfItem == "Kriterienkatalog" %}
+                            <tr data-href="{% url 'criteriaCatalogOpenTopic' dataSet.criteriaCatalogPath dataSet.id %}">
+                            {% elif dataSet.kindOfItem == "Nutzendenintegration" %}
+                              <tr data-href="{% url 'userEngagementDetails' dataSet.id %}">
+                              {% endif %}
+                              <!-- Table data -->
+                              <!-- Name of item -->
+                              <td>
+                                <div class="d-flex align-items-center mb-3">
+                                  <div class="ms-2">
+                                    <h6 class="mb-0 fw-light">{{ dataSet.name }}</h6>
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <!-- Table data -->
-                            <!-- Name of item -->
-                            <td>
-                              <div class="ms-2">
-                                <h6 class="mb-0 fw-light">{{ dataSet.classificationAgg|title }}</h6>
-                              </div>
-                            </td>
+                              </td>
+                              <!-- Table data -->
+                              <!-- Name of item -->
+                              <td>
+                                <div class="ms-2">
+                                  <h6 class="mb-0 fw-light">{{ dataSet.classificationAgg|title }}</h6>
+                                </div>
+                              </td>
 
-                            <!-- Table data -->
-                            <td>
-                              <img src="{% static '' %}{{ dataSet.pathToFocusImage }}" alt="icon" />
-                            </td>
-                            <td>
-                              <div class="ms-2">
-                                <h6 class="mb-0 fw-light">{{ dataSet.date }}</h6>
-                              </div>
-                            </td>
-                            <!-- Table data -->
-                          </tr>
-                        {% endfor %}
-                      </tbody>
-                      <!-- Table body END -->
-                    </table>
-                    <!-- Table END -->
+                              <!-- Table data -->
+                              <td>
+                                <img src="{% static '' %}{{ dataSet.pathToFocusImage }}" alt="icon" />
+                              </td>
+                              <td>
+                                <div class="ms-2">
+                                  <h6 class="mb-0 fw-light">{{ dataSet.date }}</h6>
+                                </div>
+                              </td>
+                              <!-- Table data -->
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                        <!-- Table body END -->
+                      </table>
+                      <!-- Table END -->
+                    </div>
+                    <!-- Course table END -->
                   </div>
-                  <!-- Course table END -->
-                </div>
-                <!-- Card body END -->
-                <!-- Paginator START -->
-                <div class="pagination">
-                  <span class="step-links">
-                    {% if data.has_previous %}
-                      <a href="?searchValue={{ searchInput }}&page=1&sortBy={{ sortBy }}&direction={{ direction }}"
-                         id="paginationFirstSite">
-                        &laquo; {% translate "erste" %}
-                      </a>
+                  <!-- Card body END -->
+                  <!-- Paginator START -->
+                  <div class="pagination">
+                    <span class="step-links">
+                      {% if data.has_previous %}
+                        <a href="?searchValue={{ searchInput }}&page=1&sortBy={{ sortBy }}&direction={{ direction }}"
+                           id="paginationFirstSite">
+                          &laquo; {% translate "erste" %}
+                        </a>
+                        &nbsp &nbsp
+                        <a href="?searchValue={{ searchInput }}&page={{ data.previous_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
+                           id="paginationPreviousLink">
+                          {% translate "vorherige" %}
+                        </a>
+                      {% endif %}
                       &nbsp &nbsp
-                      <a href="?searchValue={{ searchInput }}&page={{ data.previous_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
-                         id="paginationPreviousLink">
-                        {% translate "vorherige" %}
-                      </a>
-                    {% endif %}
-                    &nbsp &nbsp
-                    <span class="current">
-                      {% translate "Seite" %} {{ data.number }} {% translate "von" %} {{ data.paginator.num_pages }}
+                      <span class="current">
+                        {% translate "Seite" %} {{ data.number }} {% translate "von" %} {{ data.paginator.num_pages }}
+                      </span>
+                      &nbsp &nbsp
+                      {% if data.has_next %}
+                        <a href="?searchValue={{ searchInput }}&page={{ data.next_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
+                           id="paginationNextLink">{% translate "nächste" %}</a>
+                        &nbsp &nbsp
+                        <a href="?searchValue={{ searchInput }}&page={{ data.paginator.num_pages }}&sortBy={{ sortBy }}&direction={{ direction }}"
+                           id="paginationLastSite">
+                          {% translate "letzte" %} &raquo;
+                        </a>
+                        &nbsp &nbsp
+                      {% endif %}
                     </span>
-                    &nbsp &nbsp
-                    {% if data.has_next %}
-                      <a href="?searchValue={{ searchInput }}&page={{ data.next_page_number }}&sortBy={{ sortBy }}&direction={{ direction }}"
-                         id="paginationNextLink">{% translate "nächste" %}</a>
-                      &nbsp &nbsp
-                      <a href="?searchValue={{ searchInput }}&page={{ data.paginator.num_pages }}&sortBy={{ sortBy }}&direction={{ direction }}"
-                         id="paginationLastSite">
-                        {% translate "letzte" %} &raquo;
-                      </a>
-                      &nbsp &nbsp
-                    {% endif %}
-                  </span>
-                </div>
-                <!-- Paginator END -->
-              {% else %}
-                <p>{% translate "Die Suche hat keine Ergebnisse ergeben." %}</p>
-              {% endif %}
-            </div>
-          </section>
+                  </div>
+                  <!-- Paginator END -->
+                {% else %}
+                  <p>{% translate "Die Suche hat keine Ergebnisse ergeben." %}</p>
+                {% endif %}
+              </div>
+            </section>
 
-          <!-- Content END -->
-        {% endblock %}
+            <!-- Content END -->
+          {% endblock %}

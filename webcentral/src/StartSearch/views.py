@@ -33,6 +33,7 @@ from TechnicalStandards.models import (
 )
 from user_integration.models import UserEngagement
 
+
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
 
@@ -166,9 +167,7 @@ def resultSearch(request):
         enargusData__shortDescriptionDe__icontains=searchInput
     )
 
-    criterionUserIntegrationOne = Q(
-        category__icontains=searchInput
-    )
+    criterionUserIntegrationOne = Q(category__icontains=searchInput)
     criterionUserIntegrationTwo = Q(
         subCategoryShortDescription__icontains=searchInput
     )
