@@ -94,13 +94,15 @@
                     <tr data-href="https://ewb.innoecos.com/Group/{{ dataSet.referenceNumber_id }}/Informationen/Start/Blog">
                     {% elif dataSet.kindOfItem == "digitales Werkzeug" %}
                       <tr data-href="{% url 'tool_view' dataSet.id %}">
-                      {% elif dataSet.kindOfItem == "Norm" %}
-                        <tr data-href="{% url 'TechnicalStandards_norm_details' dataSet.id %}">
-                        {% elif dataSet.kindOfItem == "Protokoll" %}
-                          <tr data-href="{% url 'TechnicalStandards_protocol_details' dataSet.id %}">
-                          {% elif dataSet.kindOfItem == "Kriterienkatalog" %}
-                            <tr data-href="{% url 'criteriaCatalogOpenTopic' dataSet.criteriaCatalogPath dataSet.id %}">
-                            {% endif %}
+                    {% elif dataSet.kindOfItem == "Norm" %}
+                      <tr data-href="{% url 'TechnicalStandards_norm_details' dataSet.id %}">
+                    {% elif dataSet.kindOfItem == "Protokoll" %}
+                      <tr data-href="{% url 'TechnicalStandards_protocol_details' dataSet.id %}">
+                    {% elif dataSet.kindOfItem == "Kriterienkatalog" %}
+                      <tr data-href="{% url 'criteriaCatalogOpenTopic' dataSet.criteriaCatalogPath dataSet.id %}">
+                    {% elif dataSet.kindOfItem == "Nutzendenintegration" %}
+                      <tr data-href="{% url 'userEngagementDetails' dataSet.id %}">
+                    {% endif %}
                             <!-- Table data -->
                             <!-- Name of item -->
                             <td>

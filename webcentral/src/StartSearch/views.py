@@ -12,9 +12,6 @@ from criteria_catalog.models import (
     Tag,
     Topic,
 )
-from tools_over.models import Tools
-from project_listing.models import Subproject
-from TechnicalStandards.models import Norm, Protocol
 
 from django.shortcuts import render
 from django.db.models import Q
@@ -34,7 +31,7 @@ from TechnicalStandards.models import (
     Norm,
     Protocol,
 )
-
+from user_integration.models import UserEngagement
 
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
@@ -58,6 +55,8 @@ def findPicturesForFocus(searchResultObj, tool=False):
         focusStrList = ["technisch"]
         if searchResultObj["kindOfItem"] == "Kriterienkatalog":
             focusStrList = ["rechtlich"]
+        if searchResultObj["kindOfItem"] == "Nutzendenintegration":
+            focusStrList = ["betrieblich"]
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -166,6 +165,19 @@ def resultSearch(request):
     criterionProejctsTwo = Q(
         enargusData__shortDescriptionDe__icontains=searchInput
     )
+
+    criterionUserIntegrationOne = Q(
+        category__icontains=searchInput
+    )
+    criterionUserIntegrationTwo = Q(
+        subCategoryShortDescription__icontains=searchInput
+    )
+    filteredUserIntegration = UserEngagement.objects.values(
+        "id",
+        "category",
+        "subCategoryShortDescription",
+    ).filter(criterionUserIntegrationOne | criterionUserIntegrationTwo)
+
     filteredProjects = Subproject.objects.values(
         "referenceNumber_id",
         "enargusData__collaborativeProject",
@@ -299,6 +311,16 @@ def resultSearch(request):
             "criteriaCatalog"
         ]
 
+    for userIntegration in filteredUserIntegration:
+        userIntegration["name"] = userIntegration["category"]
+        userIntegration["kindOfItem"] = "Nutzendenintegration"
+        userIntegration["classificationAgg"] = _("Nutzendenintegration")
+        userIntegration["date"] = _("2024-07-01")
+        userIntegration["virtDate"] = date.fromisoformat("2049-09-09")
+        userIntegration["pathToFocusImage"] = findPicturesForFocus(
+            userIntegration
+        )
+
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -307,6 +329,7 @@ def resultSearch(request):
             filteredNorms,
             filteredProtocols,
             filteredTopicsOfCriteriaCatalog,
+            filteredUserIntegration,
         )
     )
     # sort data list by name/kindOfItem and so on
