@@ -6,16 +6,16 @@ build-backend = "setuptools.build_meta"
 name = 'wissenplattEWB'
 version = '0.1'
 authors = [
-    {name = "falk cudok"},
-    {name = "felix rehmann"},
-    {name = "rita streblow"},
-    {name = "martin tobias degner"},
-    {name = "siling chen"},
-    {name = "ibukun odeyemi"},
-    {name = "kaifeng xu"},
-    {name = "ngoc long nguyen"},
-    {name = "johanna tengler"},
-    {name = "marius bieker"},
+    {name = "Falk Cudok"},
+    {name = "Felix Rehmann"},
+    {name = "Rita Streblow"},
+    {name = "Martin Tobias Degner"},
+    {name = "Siling Chen"},
+    {name = "Ibukun Odeyemi"},
+    {name = "Kaifeng Xu"},
+    {name = "Ngoc Long Nguyen"},
+    {name = "Johanna Tengler"},
+    {name = "Marius bieker"},
 
 ]
 description = "WenDE - Wissensplattform: is a platform providing knowledge about tool and data for the researcher community of the EnergieWendeBauen."
