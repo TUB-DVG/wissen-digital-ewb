@@ -86,8 +86,11 @@ class TestMainPage(WebDriverSetup):
 
         startPageObj = StartPage(self.driver)
         searchInput = startPageObj.getSearchInputField()
+        if self.getLanguage() == "en":
+            searchInput.send_keys("Purpose specification")
+        else:
+            searchInput.send_keys("Zweckspezifizierung")
 
-        searchInput.send_keys("Zweckspezifizierung")
         searchInput.send_keys(Keys.RETURN)
 
         self.waitUntilPageIsLoaded("searchResultH2")
@@ -104,7 +107,7 @@ class TestMainPage(WebDriverSetup):
         )
 
         # click one of the criteria catalog results:
-        result.click()
+        self.scrollElementIntoViewAndClickIt(result)
 
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
         greyBoxes = criteriaCatalogObj.getNormsInforContainers()
@@ -112,7 +115,6 @@ class TestMainPage(WebDriverSetup):
         for box in greyBoxes:
             self.assertTrue(not box.is_displayed())
         # chck if we are on the criteria catalog:
-        breakpoint()
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
@@ -303,10 +305,10 @@ class TestMainPage(WebDriverSetup):
             "last-search-results-page should be present, but it is not!",
         )
         currentPageNumberElement = startPageObj.getCurrentSearchResultNumber()
-        self.assertIn(
-            "Seite 2",
-            currentPageNumberElement.text,
-            "Current Page Number should say 'Seite 2'",
+        self.assertTrue(
+            ("Seite 2" in currentPageNumberElement.text 
+            or "Site 2" in currentPageNumberElement.text), 
+            "Current Page Number should say 'Seite 2' or 'site 2'",
         )
         self.driver.execute_script(
             "arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})",
@@ -315,9 +317,9 @@ class TestMainPage(WebDriverSetup):
         time.sleep(1)
         listOfPreviousElement[0].click()
         currentPageNumberElement = startPageObj.getCurrentSearchResultNumber()
-        self.assertIn(
-            "Seite 1",
-            currentPageNumberElement.text,
+        self.assertTrue(
+            ("Seite 1" in currentPageNumberElement.text 
+             or "Site 1" in currentPageNumberElement.text),
             "Current Page Number should say 'Seite 1'",
         )
 
@@ -389,8 +391,8 @@ class TestMainPage(WebDriverSetup):
                 "heading_de": "Ökologischer Fokus",
                 "heading_en": "Ecological Focus",
                 "linkNamesEnglish": [
-                    "Negative environmental impacts ",
-                    "Positive environmental impacts",
+                    "Negative environmental impacts",
+                    "Positive environmental impacts - Good-practice",
                 ],
                 "linkNamesGerman": [
                     "Negative Umweltwirkungen",
@@ -406,13 +408,13 @@ class TestMainPage(WebDriverSetup):
                 "heading_de": "Rechtlicher Fokus",
                 "heading_en": "Legal Focus",
                 "linkNamesEnglish": [
-                    "Privacy Overview",
                     "Catalog of criteria",
+                    "Privacy Overview",
                     "Icons and visualization",
                 ],
                 "linkNamesGerman": [
-                    "Datenschutz-übersicht",
                     "Kriterienkatalog",
+                    "Daten­schutz­übersicht",
                     "Icons und Visualisierung",
                 ],
                 "borderColor": self.LEGAL_COLOR,
@@ -452,16 +454,72 @@ class TestMainPage(WebDriverSetup):
     def testUserIntegrationInResults(self):
         """Test if user_integration elements are on the search results-page."""
         self.driver.get(os.environ["siteUnderTest"])
-        startPAgeObj = StartPage(self.driver)
+        startPageObj = StartPage(self.driver)
 
         searchInputField = startPageObj.getSearchInputField()
         searchInputField.send_keys("Participant Observation")
         searchInputField.send_keys(Keys.RETURN)
 
+                # wait until results page is loaded:
+        self.waitUntilConditionIsMet(lambda d: self.driver.title == "Search results"
+            or self.driver.title == "Suchergebnisse")
+
         listOfRowsInResultsTable = startPageObj.getSearchResults()
+
         self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
         for result in listOfRowsInResultsTable:
-            breakpoint()
+            if "Participant Observation" in result.text:
+                self.assertTrue("User integration" in result.text
+                                or "Nutzendenintegration" in result.text)
+                result.click()
+                self.titleEnDe = [
+                    "User integration - Style guide",
+                    "Nutzendenintegration - Styleguide"]
+                self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
+     
+    def testBusinessModelsInResults(self):
+        """Test if user_integration elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Social Factors")
+        searchInputField.send_keys(Keys.RETURN)
+
+                # wait until results page is loaded:
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded
+            )
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Social Factors" in result.text:
+                self.assertTrue("Business Models" in result.text
+                                or "Geschäftsmodelle" in result.text)
+                breakpoint()
+                self.scrollElementIntoViewAndClickIt(result)
+                self.titleEnDe = [
+                    "Business models - Social Factors",
+                    "Geschäftsmodelle - Soziale Faktoren"]
+                self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
+   
+
+    def _checkIfResultsPageIsLoaded(self, secondArg):
+        """
+
+        """
+        return (self.driver.title == "Search results"
+            or self.driver.title == "Suchergebnisse")
+
+    def _checkIfResultsPageIsLoadedByTitle(self, titleEnDe):
+        """
+
+        """
+        return (self.driver.title == self.titleEnDe[1]
+            or self.driver.title == self.titleEnDe[0])
+
+
 
     def _checkFocusContainer(self, focusName, dataDict):
         """ """

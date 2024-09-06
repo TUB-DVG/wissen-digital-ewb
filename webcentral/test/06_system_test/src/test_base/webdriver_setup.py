@@ -34,6 +34,7 @@ class WebDriverSetup(unittest.TestCase):
     GLOBAL_COLOR = "rgb(120, 117, 117)"
     TECHNICAL_COLOR = "rgb(143, 171, 247)"
     OPERATIONAL_COLOR = "rgb(244, 151, 131)"
+    LEGAL_COLOR = "rgb(228, 216, 92)" 
 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
@@ -254,3 +255,20 @@ class WebDriverSetup(unittest.TestCase):
 
         else:
             wait.until(EC.presence_of_element_located((By.ID, f"{elementId}")))
+
+    def waitUntilConditionIsMet(self, functionHandler):
+        """Wait until the condition `condition` is met, before sricpt execution
+        is continued
+
+        Parameters
+        ==========
+        condition : bool
+            condition, which must be met before continuation.
+
+        Returns
+        =======
+        None
+        """
+        wait = WebDriverWait(self.driver, timeout=10)
+        wait.until(functionHandler)
+

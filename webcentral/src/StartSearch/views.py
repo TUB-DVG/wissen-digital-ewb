@@ -32,6 +32,7 @@ from TechnicalStandards.models import (
     Protocol,
 )
 from user_integration.models import UserEngagement
+from businessModel.models import BusinessModel 
 
 
 def findPicturesForFocus(searchResultObj, tool=False):
@@ -58,6 +59,9 @@ def findPicturesForFocus(searchResultObj, tool=False):
             focusStrList = ["rechtlich"]
         if searchResultObj["kindOfItem"] == "Nutzendenintegration":
             focusStrList = ["betrieblich"]
+        if searchResultObj["kindOfItem"] == "Geschäftsmodelle":
+            focusStrList = ["betrieblich"]
+
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -176,6 +180,18 @@ def resultSearch(request):
         "category",
         "subCategoryShortDescription",
     ).filter(criterionUserIntegrationOne | criterionUserIntegrationTwo)
+
+    criterionBusinessModelOne = Q(
+        challenge__icontains=searchInput
+    )
+    criterionBusinessModelTwo = Q(
+        shortDescription__icontains=searchInput
+    )
+    filteredBusinessModels = BusinessModel.objects.values(
+        "id",
+        "challenge",
+        "shortDescription",
+    ).filter(criterionBusinessModelOne | criterionBusinessModelTwo)
 
     filteredProjects = Subproject.objects.values(
         "referenceNumber_id",
@@ -319,7 +335,16 @@ def resultSearch(request):
         userIntegration["pathToFocusImage"] = findPicturesForFocus(
             userIntegration
         )
-
+    
+    for businessModel in filteredBusinessModels:
+        businessModel["name"] = businessModel["challenge"]
+        businessModel["kindOfItem"] = "Geschäftsmodelle"
+        businessModel["classificationAgg"] = _("Geschäftsmodelle")
+        businessModel["date"] = _("2024-07-01")
+        businessModel["virtDate"] = date.fromisoformat("2049-09-09")
+        businessModel["pathToFocusImage"] = findPicturesForFocus(
+            businessModel
+        )
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -329,6 +354,7 @@ def resultSearch(request):
             filteredProtocols,
             filteredTopicsOfCriteriaCatalog,
             filteredUserIntegration,
+            filteredBusinessModels,
         )
     )
     # sort data list by name/kindOfItem and so on
