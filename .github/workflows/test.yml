@@ -31,4 +31,4 @@ jobs:
         run: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
 
       - name: Execute first test
-          run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
+        run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
