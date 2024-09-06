@@ -1,0 +1,34 @@
+
+name: Django tests
+
+on: [push]
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Create .env-file
+        run: cp .env.example .env
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Execute build_initial command
+        run: ./run build_initial dev 
+
+      - name: Run dev-environment
+        run: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+
+      - name: Execute first test
+        run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
