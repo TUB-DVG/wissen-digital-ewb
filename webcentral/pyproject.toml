@@ -15,7 +15,15 @@ authors = [
     {name = "Kaifeng Xu"},
     {name = "Ngoc Long Nguyen"},
     {name = "Johanna Tengler"},
-    {name = "Marius bieker"},
+    {name = "Marius Bieker"},
+    {name = "Sarah Wutz"},
+    {name = "Torsten Grothmann"},
+    {name = "Jan Kegel"},
+    {name = "Swantje Gährs"},
+    {name = "Astrid Aretz"},
+    {name = "Isabel Kiefaber"},
+    {name = "Valentin Rupp"},
+    {name = "Max von Grafenstein"},
 
 ]
 description = "WenDE - Wissensplattform: is a platform providing knowledge about tool and data for the researcher community of the EnergieWendeBauen."
