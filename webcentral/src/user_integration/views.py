@@ -10,7 +10,9 @@ def userEngagementDetails(request, engagementId):
     """Serve the user engagement details page."""
     userEngagementObj = UserEngagement.objects.get(id=engagementId)
     context = _defineContextForView()
-    context["pageTitle"] = _("Nutzendenintegration") + " - " + userEngagementObj.category
+    context["pageTitle"] = (
+        _("Nutzendenintegration") + " - " + userEngagementObj.category
+    )
 
     context["boxObject"] = userEngagementObj
     context["idOfSelectedObj"] = engagementId
@@ -30,7 +32,9 @@ def userEngagementDetailsTitle(request, engagmentTitle):
 
     engagementId = userEngagementObj.id
     context = _defineContextForView()
-    context["pageTitle"] =  _("Nutzendenintegration") + " - " + userEngagementObj.category
+    context["pageTitle"] = (
+        _("Nutzendenintegration") + " - " + userEngagementObj.category
+    )
     context["boxObject"] = userEngagementObj
     context["idOfSelectedObj"] = engagementId
     context["pageTitle"] = userEngagementObj.category

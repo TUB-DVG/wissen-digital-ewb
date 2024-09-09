@@ -22,6 +22,7 @@ from src.page_obj.pages.navbar import NavBar
 from src.page_obj.pages.comparison_page_section import ComparisonPageSection
 from src.page_obj.pages.user_integration_page import UserIntegrationPage
 from src.page_obj.pages.overview_page_section import OverviewPageSection
+
 # from src.page_obj.pages.details_page import DetailsPage
 
 

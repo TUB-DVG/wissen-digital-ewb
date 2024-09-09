@@ -34,7 +34,7 @@ class WebDriverSetup(unittest.TestCase):
     GLOBAL_COLOR = "rgb(120, 117, 117)"
     TECHNICAL_COLOR = "rgb(143, 171, 247)"
     OPERATIONAL_COLOR = "rgb(244, 151, 131)"
-    LEGAL_COLOR = "rgb(228, 216, 92)" 
+    LEGAL_COLOR = "rgb(228, 216, 92)"
 
     def setUp(self):
         """Start a webdriver-instance for every test in headless-mode.
@@ -271,4 +271,3 @@ class WebDriverSetup(unittest.TestCase):
         """
         wait = WebDriverWait(self.driver, timeout=10)
         wait.until(functionHandler)
-

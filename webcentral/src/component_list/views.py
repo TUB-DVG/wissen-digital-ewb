@@ -11,6 +11,7 @@ from .models import (
     ComponentClass,
 )
 
+
 def componentsOpenId(request, componentId):
     """Render component-objects and open details for specified componentId
 
