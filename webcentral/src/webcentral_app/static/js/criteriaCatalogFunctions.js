@@ -1,7 +1,6 @@
 
 
 
-
 // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
 modifyCatalogToBeShownInOneElement();
 depthFirstWalkForParagraphs();
@@ -294,6 +293,14 @@ function modifyCatalogToBeShownInOneElement() {
       var aggregatedTags = "";
       var aggregatedTopicIds = "";
       var liDescendants = elementsToBeSearched[i].querySelectorAll('li');                
+      try {
+        
+        textForCombinedElement = elementsToBeSearched[i].children[0].children[1].textContent 
+        textCombinedConcatenated = elementsToBeSearched[i].children[0].children[1].textContent  
+      }
+      catch {
+
+      }
       // first add the content of the element itself:
        
        if (liDescendants[0] != undefined) {
@@ -304,7 +311,13 @@ function modifyCatalogToBeShownInOneElement() {
        }
 
       var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
-      window.textForCombinedElement = "";
+      
+      if (textForCombinedElement.replace(/\s+/g, '') == "") {
+        window.textForCombinedElement = "";
+      }
+      else {
+        window.textForCombinedElement = textForCombinedElement;
+      }
       for (var j = 0; j < ulChildElements.length; j++) {
         if (Number(ulChildElements[j].id) == 3) {
           textForCombinedElement = ulChildElements[j].innerHTML
