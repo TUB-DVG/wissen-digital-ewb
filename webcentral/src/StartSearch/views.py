@@ -280,7 +280,7 @@ def resultSearch(request):
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
 
     for criteriaCatalog in filteredTopicsOfCriteriaCatalog:
-        
+
         parentId = criteriaCatalog["parent"]
         if parentId is not None:
             parent = Topic.objects.get(id=parentId)
