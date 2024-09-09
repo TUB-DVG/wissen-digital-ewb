@@ -33,7 +33,8 @@ from TechnicalStandards.models import (
 )
 from user_integration.models import UserEngagement
 from businessModel.models import BusinessModel 
-
+from positive_environmental_impact.models import EnvironmentalImpact 
+from component_list.models import Component
 
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
@@ -61,7 +62,11 @@ def findPicturesForFocus(searchResultObj, tool=False):
             focusStrList = ["betrieblich"]
         if searchResultObj["kindOfItem"] == "Geschäftsmodelle":
             focusStrList = ["betrieblich"]
-
+        if searchResultObj["kindOfItem"] == "Positive Umweltwirkungen":
+            focusStrList = ["ökologisch"]
+        if searchResultObj["kindOfItem"] == "Negative Umweltwirkungen":
+            focusStrList = ["ökologisch"]
+        
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -181,6 +186,16 @@ def resultSearch(request):
         "subCategoryShortDescription",
     ).filter(criterionUserIntegrationOne | criterionUserIntegrationTwo)
 
+    criterionPositiveEnvironmentalImpactOne = Q(relevance__icontains=searchInput)
+    criterionPositiveEnvironmentalImpactTwo = Q(
+        description__icontains=searchInput
+    )
+    filteredPosEnvImpact = EnvironmentalImpact.objects.values(
+        "id",
+        "relevance",
+        "description",
+    ).filter(criterionPositiveEnvironmentalImpactOne | criterionPositiveEnvironmentalImpactTwo)
+
     criterionBusinessModelOne = Q(
         challenge__icontains=searchInput
     )
@@ -192,6 +207,22 @@ def resultSearch(request):
         "challenge",
         "shortDescription",
     ).filter(criterionBusinessModelOne | criterionBusinessModelTwo)
+    
+    criterionComponentListOne = Q(
+        category__category__icontains=searchInput
+    )
+    criterionComponentListTwo = Q(
+        componentClass__componentClass__icontains=searchInput
+    )
+    criterionComponentListThree = Q(
+        category__category__icontains=searchInput
+    )
+    filteredComponents = Component.objects.values(
+        "id",
+        "category__category",
+        "componentClass__componentClass",
+        "description",
+    ).filter(criterionComponentListOne | criterionComponentListTwo | criterionComponentListThree)
 
     filteredProjects = Subproject.objects.values(
         "referenceNumber_id",
@@ -345,6 +376,25 @@ def resultSearch(request):
         businessModel["pathToFocusImage"] = findPicturesForFocus(
             businessModel
         )
+    for posEnvImpact in filteredPosEnvImpact:
+        posEnvImpact["name"] = posEnvImpact["relevance"]
+        posEnvImpact["kindOfItem"] = "Positive Umweltwirkungen"
+        posEnvImpact["classificationAgg"] = _("Positive Umweltwirkungen")
+        posEnvImpact["date"] = _("2024-07-01")
+        posEnvImpact["virtDate"] = date.fromisoformat("2049-09-09")
+        posEnvImpact["pathToFocusImage"] = findPicturesForFocus(
+            posEnvImpact
+        )   
+    for component in filteredComponents:
+        component["name"] = component["category__category"] + " - " + component["componentClass__componentClass"]
+        component["kindOfItem"] = "Negative Umweltwirkungen"
+        component["classificationAgg"] = _("Negative Umweltwirkungen")
+        component["date"] = _("2024-07-01")
+        component["virtDate"] = date.fromisoformat("2049-09-09")
+        component["pathToFocusImage"] = findPicturesForFocus(
+            component
+        )   
+ 
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -355,6 +405,8 @@ def resultSearch(request):
             filteredTopicsOfCriteriaCatalog,
             filteredUserIntegration,
             filteredBusinessModels,
+            filteredPosEnvImpact,
+            filteredComponents,
         )
     )
     # sort data list by name/kindOfItem and so on

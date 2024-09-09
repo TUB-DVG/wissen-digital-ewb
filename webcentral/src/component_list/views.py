@@ -11,6 +11,16 @@ from .models import (
     ComponentClass,
 )
 
+def componentsOpenId(request, componentId):
+    """Render component-objects and open details for specified componentId
+
+    Parameters
+    ==========
+    componentId : int
+        Id of the component, whose details view should be opened.
+    """
+    pass
+
 
 def components(request):
     """Load the Component Modeldata and render the components-template"""

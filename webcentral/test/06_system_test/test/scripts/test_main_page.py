@@ -107,14 +107,22 @@ class TestMainPage(WebDriverSetup):
         )
 
         # click one of the criteria catalog results:
-        self.scrollElementIntoViewAndClickIt(result)
+        self.titleEnDe = [
+                    "Operations and operational optimization",
+                    "Betrieb und Betriebsoptimierung"]
+        self.waitUntilConditionIsMet(lambda d: self.driver.title == "Search results"
+            or self.driver.title == "Suchergebnisse")       
+        result.find_element(By.XPATH, "./td").click()
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
 
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
-        greyBoxes = criteriaCatalogObj.getNormsInforContainers()
+        greyBoxes = criteriaCatalogObj.getNormsInfoContainers()
 
         for box in greyBoxes:
             self.assertTrue(not box.is_displayed())
-        # chck if we are on the criteria catalog:
+
+        # test if it is directly jumped to the searched element:
+
 
     def testImpressum(self):
         """Test if on click of Impressum link on the bottom of the site
@@ -503,7 +511,65 @@ class TestMainPage(WebDriverSetup):
                     "Business models - Social Factors",
                     "Geschäftsmodelle - Soziale Faktoren"]
                 self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
-   
+
+    def testPosEnvImpactInResults(self):
+        """Test if positive_environemntal_impact elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        
+        self._setLanguageToGerman()
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Verbrauchsreduktion in komplexe")
+        searchInputField.send_keys(Keys.RETURN)
+
+                # wait until results page is loaded:
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded
+            )
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Verbrauchsreduktion in komplexe" in result.text:
+                self.assertTrue("Positive environmental impact" in result.text
+                                or "Positive Umweltwirkungen" in result.text)
+                
+                self.scrollElementIntoViewAndClickIt(result.find_element(By.XPATH, "./td"))
+                self.titleEnDe = [
+                    "LLEC - Administration building: Climate-neutral administration building as an active part of the Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
+                    "LLEC – Verwaltungsbau: Klimaneutraler Verwaltungsbau als aktiver Teil des Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
+                    ]
+                self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
+ 
+    def testNegEnvImpactInResults(self):
+        """Test if positive_environemntal_impact elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        
+        self._setLanguageToGerman()
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Verbrauchsreduktion in komplexe")
+        searchInputField.send_keys(Keys.RETURN)
+
+                # wait until results page is loaded:
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded
+            )
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Verbrauchsreduktion in komplexe" in result.text:
+                self.assertTrue("Positive environmental impact" in result.text
+                                or "Positive Umweltwirkungen" in result.text)
+                
+                self.scrollElementIntoViewAndClickIt(result.find_element(By.XPATH, "./td"))
+                self.titleEnDe = [
+                    "LLEC - Administration building: Climate-neutral administration building as an active part of the Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
+                    "LLEC – Verwaltungsbau: Klimaneutraler Verwaltungsbau als aktiver Teil des Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
+                    ]
+                self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
+ 
 
     def _checkIfResultsPageIsLoaded(self, secondArg):
         """

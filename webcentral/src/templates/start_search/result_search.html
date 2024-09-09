@@ -104,6 +104,8 @@
                       <tr data-href="{% url 'userEngagementDetails' dataSet.id %}">
                     {% elif dataSet.kindOfItem == "Geschäftsmodelle" %}
                       <tr data-href="{% url 'businessModelsChallengeDetails' dataSet.id %}">
+                    {% elif dataSet.kindOfItem == "Positive Umweltwirkungen" %}
+                      <tr data-href="{% url 'environmentalIntegrityBox' dataSet.id %}">
                     {% endif %}
                             <!-- Table data -->
                             <!-- Name of item -->
