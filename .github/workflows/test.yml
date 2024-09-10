@@ -41,7 +41,9 @@ jobs:
           python -m venv webcentral/test/testing_venv
           source webcentral/test/testing_venv/bin/activate
           pip install -r webcentral/test/requirements_testing.txt
+          set -o allexport
           source .env
+          set +o allexport
           cd webcentral/test/06_system_test
           HEADLESS=1 python testrunner.py --test_file TestMainPage
           

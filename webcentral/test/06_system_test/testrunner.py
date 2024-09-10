@@ -98,10 +98,12 @@ if __name__ == "__main__":
         )
 
     testRunner = TextTestRunner(verbosity=2)
-    testRunner.run(testSuite)
+    result = testRunner.run(testSuite)
 
     # Refer https://testtools.readthedocs.io/en/latest/api.html for more information
     parallelSuite = testtools.ConcurrentStreamTestSuite(
         lambda: ((case, None) for case in testSuite)
     )
     parallelSuite.run(testtools.StreamResult())
+
+    sys.exit(not result.wasSuccessful())
