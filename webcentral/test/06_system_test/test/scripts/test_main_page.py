@@ -502,7 +502,7 @@ class TestMainPage(WebDriverSetup):
         """Test if user_integration elements are on the search results-page."""
         self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
-        
+
         self._setLanguageToEnglish()
         searchInputField = startPageObj.getSearchInputField()
         searchInputField.send_keys("Social Factors")
@@ -600,7 +600,7 @@ class TestMainPage(WebDriverSetup):
                     self._checkIfResultsPageIsLoadedByTitle
                 )
                 break
-    
+
     def testUseCasesInResults(self):
         """Test if positive_environemntal_impact elements are on the search results-page."""
         self.driver.get(os.environ["siteUnderTest"])
@@ -608,7 +608,9 @@ class TestMainPage(WebDriverSetup):
 
         self._setLanguageToGerman()
         searchInputField = startPageObj.getSearchInputField()
-        searchInputField.send_keys("Keine Anwendung der Datenschutz-Grundverordnung")
+        searchInputField.send_keys(
+            "Keine Anwendung der Datenschutz-Grundverordnung"
+        )
         searchInputField.send_keys(Keys.RETURN)
 
         # wait until results page is loaded:
@@ -619,8 +621,7 @@ class TestMainPage(WebDriverSetup):
         for result in listOfRowsInResultsTable:
             if "Keine Anwendung der Datenschutz-Grundverordnung" in result.text:
                 self.assertTrue(
-                    "Use case" in result.text
-                    or "Anwendungsfall" in result.text
+                    "Use case" in result.text or "Anwendungsfall" in result.text
                 )
 
                 self.scrollElementIntoViewAndClickIt(
@@ -639,7 +640,7 @@ class TestMainPage(WebDriverSetup):
         """Test if positive_environemntal_impact elements are on the search results-page."""
         self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
-        
+
         self._setLanguageToGerman()
         searchInputField = startPageObj.getSearchInputField()
         searchInputField.send_keys("Bim im gebäude")
@@ -668,8 +669,6 @@ class TestMainPage(WebDriverSetup):
                 self.waitUntilConditionIsMet(
                     self._checkIfResultsPageIsLoadedByTitle
                 )
-
-
 
     def _checkIfResultsPageIsLoaded(self, secondArg):
         """ """

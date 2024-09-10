@@ -14,9 +14,7 @@ from .models import (
 
 
 class ComponentListView(View):
-    """
-
-    """
+    """ """
 
     def get(self, request, componentId=None):
         """Render component-objects and open details for specified componentId
@@ -26,7 +24,6 @@ class ComponentListView(View):
         componentId : int
             Id of the component, whose details view should be opened.
         """
-        
 
         listingShowOrCollapse = "collapse"
 
@@ -72,7 +69,9 @@ class ComponentListView(View):
         searchQueryInput = searchQueryInput | Q(
             furtherInformationNotes__icontains=searchInputValue
         )
-        searchQueryInput = searchQueryInput | Q(sources__icontains=searchInputValue)
+        searchQueryInput = searchQueryInput | Q(
+            sources__icontains=searchInputValue
+        )
 
         searchQueryCategory = Q()
         if len(categoryValues) > 0:
@@ -93,14 +92,19 @@ class ComponentListView(View):
             # if len(componentForSelectValue) == 1:
             #     searchQuery = searchQuery | Q(component=componentForSelectValue[0])
 
-        searchQuery = searchQueryInput & searchQueryCategory & searchQueryComponents
+        searchQuery = (
+            searchQueryInput & searchQueryCategory & searchQueryComponents
+        )
 
         if overviewValue:
             if overviewValue == _("Ausgeklappt"):
                 listingShowOrCollapse = "show"
 
         if firstLevelDropdown and secondLevelDropdown:
-            if secondLevelDropdown == "Ascending" or secondLevelDropdown == "A...Z":
+            if (
+                secondLevelDropdown == "Ascending"
+                or secondLevelDropdown == "A...Z"
+            ):
                 if firstLevelDropdown == "category":
                     firstLevelDropdown = "category__category"
                 elif firstLevelDropdown == "component":
@@ -194,7 +198,9 @@ class ComponentListView(View):
                 },
                 {
                     "objectReference": "globalWarmingPotentialTotalRounded",
-                    "description": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
+                    "description": _(
+                        "Treibhauspotenzial (gesamt; in kg CO2-e)"
+                    ),
                 },
                 {
                     "objectReference": "componentWeightRounded",
@@ -222,7 +228,9 @@ class ComponentListView(View):
                 },
                 {
                     "objectReference": "globalWarmingPotentialUsePhaseRoundedSub",
-                    "description": _("Treibhauspotenzial (Nutzung; in kg CO2-e)"),
+                    "description": _(
+                        "Treibhauspotenzial (Nutzung; in kg CO2-e)"
+                    ),
                 },
                 {
                     "objectReference": "globalWarmingPotentialEndOfLifeRounded",
@@ -269,12 +277,16 @@ class ComponentListView(View):
                             "type": "alphabetic",
                         },
                         {
-                            "shown": _("Energieverbrauch Nutzung (gesamt; in W)"),
+                            "shown": _(
+                                "Energieverbrauch Nutzung (gesamt; in W)"
+                            ),
                             "name": "energyConsumptionUsePhaseTotal",
                             "type": "numeric",
                         },
                         {
-                            "shown": _("Treibhauspotenzial (gesamt; in kg CO2-e)"),
+                            "shown": _(
+                                "Treibhauspotenzial (gesamt; in kg CO2-e)"
+                            ),
                             "name": "globalWarmingPotentialTotal",
                             "type": "numeric",
                         },
@@ -325,17 +337,17 @@ class ComponentListView(View):
             componentShowDetails = Component.objects.get(id=componentId)
             context["componentDetails"] = componentShowDetails
             context["componentDetailsId"] = componentShowDetails.id
-            for pageNumber in range(1, page.paginator.num_pages+1):
+            for pageNumber in range(1, page.paginator.num_pages + 1):
                 for componentObj in page.paginator.page(pageNumber).object_list:
                     if componentObj == componentShowDetails:
                         context["componentDetailsPage"] = pageNumber
-                        # set the current page of the paginator to the page 
+                        # set the current page of the paginator to the page
                         # were the search component was found.
                         page = page.paginator.get_page(pageNumber)
                         found = True  # Set flag to True
                         break
                 if found:
-                    break 
+                    break
         if filtering:
             # context["page"] = page_to_dict(context["page"])
             return render(request, "partials/listing-row.html", context)

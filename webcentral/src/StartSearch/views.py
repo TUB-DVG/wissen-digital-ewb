@@ -35,8 +35,9 @@ from user_integration.models import UserEngagement
 from businessModel.models import BusinessModel
 from positive_environmental_impact.models import EnvironmentalImpact
 from component_list.models import Component
-from use_cases.models import UseCase 
+from use_cases.models import UseCase
 from publications.models.publication import Publication
+
 
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
@@ -266,20 +267,24 @@ def resultSearch(request):
     filteredTopicsOfCriteriaCatalog = Topic.objects.filter(
         criterionCriteriaCatalog
     ).values("id", "heading", "text", "criteriaCatalog")
-    
+
     criterionUseCaseOne = Q(effectName__icontains=searchInput)
     criterionUseCaseTwo = Q(effectDescription__icontains=searchInput)
     # get topics for tags:
     filteredUseCases = UseCase.objects.filter(
-        criterionUseCaseOne | criterionUseCaseTwo 
-    ).values("id", "useCase", "effectDescription", "effectName", "degreeOfDetail")
-   
+        criterionUseCaseOne | criterionUseCaseTwo
+    ).values(
+        "id", "useCase", "effectDescription", "effectName", "degreeOfDetail"
+    )
+
     criterionPublicationOne = Q(title__icontains=searchInput)
     criterionPublicationTwo = Q(authors__icontains=searchInput)
     criterionPublicationThree = Q(abstract__icontains=searchInput)
     # get topics for tags:
     filteredPublications = Publication.objects.filter(
-        criterionPublicationOne | criterionPublicationTwo | criterionPublicationThree 
+        criterionPublicationOne
+        | criterionPublicationTwo
+        | criterionPublicationThree
     ).values("id", "title", "authors", "abstract")
     # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
     #     "id",
@@ -292,15 +297,16 @@ def resultSearch(request):
     # rename fields in queryset list-dicts
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     # and extend list by needed fields like kindOfItems
-    
+
     for publicationObj in filteredPublications:
         publicationObj["name"] = publicationObj["title"]
         publicationObj["kindOfItem"] = "Veröffentlichung"
         publicationObj["classificationAgg"] = _("Veröffentlichung")
         publicationObj["date"] = "2024-07-01"
         publicationObj["virtDate"] = date.fromisoformat("2049-09-09")
-        publicationObj["pathToFocusImage"] = findPicturesForFocus(publicationObj)
-
+        publicationObj["pathToFocusImage"] = findPicturesForFocus(
+            publicationObj
+        )
 
     for tool in filteredTools:
         tool["name"] = tool.pop("name")
@@ -428,7 +434,9 @@ def resultSearch(request):
         component["pathToFocusImage"] = findPicturesForFocus(component)
 
     for useCaseObj in filteredUseCases:
-        useCaseObj["name"] =  useCaseObj["effectName"] + " - " + useCaseObj["degreeOfDetail"]
+        useCaseObj["name"] = (
+            useCaseObj["effectName"] + " - " + useCaseObj["degreeOfDetail"]
+        )
         useCaseObj["kindOfItem"] = "Anwendungsfall"
         useCaseObj["classificationAgg"] = _("Anwendungsfall")
         useCaseObj["date"] = _("2024-07-01")
