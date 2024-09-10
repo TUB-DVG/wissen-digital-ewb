@@ -31,7 +31,7 @@ To start all needed services, networks, and volumes Docker-compose can be used. 
     ./run build_initial dev
 ```
 1. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/`.
-1. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
+1. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file. A example database dump file can be found at `https://tubcloud.tu-berlin.de/s/9i3NSdoQ6xYnHdM`. The downloaded sql-file should be put into the `postgres/`-folder. E.g. when naming the sql-file `databaseDump.sql` the command to setup the Wissensplattform in development mode is as follows:
 ```
   ./run up_initial dev postgres/databaseDump.sql
 ```
