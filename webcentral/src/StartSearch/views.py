@@ -428,7 +428,7 @@ def resultSearch(request):
         component["pathToFocusImage"] = findPicturesForFocus(component)
 
     for useCaseObj in filteredUseCases:
-        useCaseObj["name"] = useCaseObj["degreeOfDetail"] + " - " + useCaseObj["effectName"]
+        useCaseObj["name"] =  useCaseObj["effectName"] + " - " + useCaseObj["degreeOfDetail"]
         useCaseObj["kindOfItem"] = "Anwendungsfall"
         useCaseObj["classificationAgg"] = _("Anwendungsfall")
         useCaseObj["date"] = _("2024-07-01")

@@ -608,17 +608,16 @@ class TestMainPage(WebDriverSetup):
 
         self._setLanguageToGerman()
         searchInputField = startPageObj.getSearchInputField()
-        searchInputField.send_keys("Anwendung der Datenschutz-Grundverordnung")
+        searchInputField.send_keys("Keine Anwendung der Datenschutz-Grundverordnung")
         searchInputField.send_keys(Keys.RETURN)
 
         # wait until results page is loaded:
         self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded)
 
         listOfRowsInResultsTable = startPageObj.getSearchResults()
-
         self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
         for result in listOfRowsInResultsTable:
-            if "Anwendung der Datenschutz-Grundverordnung" in result.text:
+            if "Keine Anwendung der Datenschutz-Grundverordnung" in result.text:
                 self.assertTrue(
                     "Use case" in result.text
                     or "Anwendungsfall" in result.text
@@ -628,12 +627,13 @@ class TestMainPage(WebDriverSetup):
                     result.find_element(By.XPATH, "./td")
                 )
                 self.titleEnDe = [
-                    "Anwendung der Datenschutz-Grundverordnung",
-                    "Anwendung der Datenschutz-Grundverordnung",
+                    "Keine Anwendung der Datenschutz-Grundverordnung",
+                    "Keine Anwendung der Datenschutz-Grundverordnung",
                 ]
                 self.waitUntilConditionIsMet(
                     self._checkIfResultsPageIsLoadedByTitle
                 )
+                break
 
     def testPublicationsInResults(self):
         """Test if positive_environemntal_impact elements are on the search results-page."""
