@@ -41,7 +41,8 @@ jobs:
           python -m venv webcentral/test/testing_venv
           source webcentral/test/testing_venv/bin/activate
           pip install -r webcentral/test/requirements_testing.txt
-
-      - name: Run selenium test
-        run: ./run test Selenium TestMainPage
+          source .env
+          cd webcentral/test/06_system_test
+          python testrunner.py --test_file TestMainPage
+          
 
