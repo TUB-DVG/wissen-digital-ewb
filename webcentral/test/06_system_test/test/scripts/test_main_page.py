@@ -502,7 +502,8 @@ class TestMainPage(WebDriverSetup):
         """Test if user_integration elements are on the search results-page."""
         self.driver.get(os.environ["siteUnderTest"])
         startPageObj = StartPage(self.driver)
-
+        
+        self._setLanguageToEnglish()
         searchInputField = startPageObj.getSearchInputField()
         searchInputField.send_keys("Social Factors")
         searchInputField.send_keys(Keys.RETURN)
@@ -572,7 +573,7 @@ class TestMainPage(WebDriverSetup):
 
         self._setLanguageToGerman()
         searchInputField = startPageObj.getSearchInputField()
-        searchInputField.send_keys("Verbrauchsreduktion in komplexe")
+        searchInputField.send_keys("Sensor")
         searchInputField.send_keys(Keys.RETURN)
 
         # wait until results page is loaded:
@@ -582,22 +583,93 @@ class TestMainPage(WebDriverSetup):
 
         self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
         for result in listOfRowsInResultsTable:
-            if "Verbrauchsreduktion in komplexe" in result.text:
+            if "Sensor" in result.text or "Sensorik" in result.text:
                 self.assertTrue(
-                    "Positive environmental impact" in result.text
-                    or "Positive Umweltwirkungen" in result.text
+                    "Negative environmental impact" in result.text
+                    or "Negative Umweltwirkungen" in result.text
                 )
 
                 self.scrollElementIntoViewAndClickIt(
                     result.find_element(By.XPATH, "./td")
                 )
                 self.titleEnDe = [
-                    "LLEC - Administration building: Climate-neutral administration building as an active part of the Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
-                    "LLEC – Verwaltungsbau: Klimaneutraler Verwaltungsbau als aktiver Teil des Living Lab Energy Campus; EnOB: LLEC: Living Lab Energy Campus",
+                    "Effort for used components",
+                    "Aufwände für verwendete Komponenten",
                 ]
                 self.waitUntilConditionIsMet(
                     self._checkIfResultsPageIsLoadedByTitle
                 )
+                break
+    
+    def testUseCasesInResults(self):
+        """Test if positive_environemntal_impact elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+
+        self._setLanguageToGerman()
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Anwendung der Datenschutz-Grundverordnung")
+        searchInputField.send_keys(Keys.RETURN)
+
+        # wait until results page is loaded:
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded)
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Anwendung der Datenschutz-Grundverordnung" in result.text:
+                self.assertTrue(
+                    "Use case" in result.text
+                    or "Anwendungsfall" in result.text
+                )
+
+                self.scrollElementIntoViewAndClickIt(
+                    result.find_element(By.XPATH, "./td")
+                )
+                self.titleEnDe = [
+                    "Anwendung der Datenschutz-Grundverordnung",
+                    "Anwendung der Datenschutz-Grundverordnung",
+                ]
+                self.waitUntilConditionIsMet(
+                    self._checkIfResultsPageIsLoadedByTitle
+                )
+
+    def testPublicationsInResults(self):
+        """Test if positive_environemntal_impact elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        
+        self._setLanguageToGerman()
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Bim im gebäude")
+        searchInputField.send_keys(Keys.RETURN)
+
+        # wait until results page is loaded:
+        self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoaded)
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Bim im gebäude" in result.text:
+                self.assertTrue(
+                    "Veröffentlichung" in result.text
+                    or "Publication" in result.text
+                )
+
+                self.scrollElementIntoViewAndClickIt(
+                    result.find_element(By.XPATH, "./td")
+                )
+                self.titleEnDe = [
+                    "BIM in existing buildings – challenges in renovation",
+                    "BIM im Gebäudebestand – Herausforderungen in der Sanierung",
+                ]
+                self.waitUntilConditionIsMet(
+                    self._checkIfResultsPageIsLoadedByTitle
+                )
+
+
 
     def _checkIfResultsPageIsLoaded(self, secondArg):
         """ """

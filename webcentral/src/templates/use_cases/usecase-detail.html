@@ -31,11 +31,11 @@
 <!-- Page intro END -->
 <!-- Page content START -->
 <section class="pb-0 pt-4 py-lg-5">
-  <div class="container neutral-cards">
+  <div class="container {{ useCase.focus.all.first.focus_en }}-cards">
     <div class="row">
       <!-- Main content START -->
       <div class="col-lg-8">
-        <div class="card border-neutral p-0">
+        <div class="card border-{{ useCase.focus.all.first.focus_en }} p-0">
           <div class="tab-content card-body p-4 detail-card-body">
             <!-- tool detail START -->
             <div class="tab-pane container active" id="course-pills-1">
@@ -68,11 +68,10 @@
           <div class="col-md-6 col-lg-12">
             <!-- Image Tool START -->
             <div class="card border-neutral p-2 mb-4 z-index-9">
-              <div class="overflow-hidden text-center">
+              <div class="overflow-hidden">
                 {% if useCase.icon %}
-                  <img src=" {{ useCase.icon }}"
+                  <img src="{% static useCase.icon %}"
                        class=""
-                       style="max-height: 150px"
                        alt="useCase icon" />
                 {% else %}
                   <img src=" {% static 'img/Default.webp' %}"

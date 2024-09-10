@@ -87,14 +87,14 @@ def publicationView(request, id):
     keywords = publication.keywords.split(",") if publication.keywords else []
     focus_options = Focus.objects.all()
 
-    firstElementOfPublicationFocus = publication.focus.first().focus
+    firstElementOfPublicationFocus = publication.focus.first().focus_en
     context = {
         "publication": publication,
         "title": title,
         "type": type,
         "keywords": keywords,
         "focus_options": focus_options,
-        "focusBorder": _translateFocusStr(firstElementOfPublicationFocus),
+        "focusBorder": firstElementOfPublicationFocus,
     }
 
     return render(request, "publications/publications-detail.html", context)

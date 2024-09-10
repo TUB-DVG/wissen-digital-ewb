@@ -35,7 +35,8 @@ from user_integration.models import UserEngagement
 from businessModel.models import BusinessModel
 from positive_environmental_impact.models import EnvironmentalImpact
 from component_list.models import Component
-
+from use_cases.models import UseCase 
+from publications.models.publication import Publication
 
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
@@ -53,6 +54,7 @@ def findPicturesForFocus(searchResultObj, tool=False):
     if tool:
         toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
         focusStrList = toolObj.focus.all().values_list("focus_de", flat=True)
+
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
@@ -67,6 +69,12 @@ def findPicturesForFocus(searchResultObj, tool=False):
             focusStrList = ["ökologisch"]
         if searchResultObj["kindOfItem"] == "Negative Umweltwirkungen":
             focusStrList = ["ökologisch"]
+        if searchResultObj["kindOfItem"] == "Anwendungsfall":
+            obj = UseCase.objects.get(id=searchResultObj["id"])
+            focusStrList = obj.focus.all().values_list("focus_de", flat=True)
+        if searchResultObj["kindOfItem"] == "Veröffentlichung":
+            obj = Publication.objects.get(id=searchResultObj["id"])
+            focusStrList = obj.focus.all().values_list("focus_de", flat=True)
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -258,6 +266,21 @@ def resultSearch(request):
     filteredTopicsOfCriteriaCatalog = Topic.objects.filter(
         criterionCriteriaCatalog
     ).values("id", "heading", "text", "criteriaCatalog")
+    
+    criterionUseCaseOne = Q(effectName__icontains=searchInput)
+    criterionUseCaseTwo = Q(effectDescription__icontains=searchInput)
+    # get topics for tags:
+    filteredUseCases = UseCase.objects.filter(
+        criterionUseCaseOne | criterionUseCaseTwo 
+    ).values("id", "useCase", "effectDescription", "effectName", "degreeOfDetail")
+   
+    criterionPublicationOne = Q(title__icontains=searchInput)
+    criterionPublicationTwo = Q(authors__icontains=searchInput)
+    criterionPublicationThree = Q(abstract__icontains=searchInput)
+    # get topics for tags:
+    filteredPublications = Publication.objects.filter(
+        criterionPublicationOne | criterionPublicationTwo | criterionPublicationThree 
+    ).values("id", "title", "authors", "abstract")
     # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
     #     "id",
     #     "heading",
@@ -269,6 +292,16 @@ def resultSearch(request):
     # rename fields in queryset list-dicts
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     # and extend list by needed fields like kindOfItems
+    
+    for publicationObj in filteredPublications:
+        publicationObj["name"] = publicationObj["title"]
+        publicationObj["kindOfItem"] = "Veröffentlichung"
+        publicationObj["classificationAgg"] = _("Veröffentlichung")
+        publicationObj["date"] = "2024-07-01"
+        publicationObj["virtDate"] = date.fromisoformat("2049-09-09")
+        publicationObj["pathToFocusImage"] = findPicturesForFocus(publicationObj)
+
+
     for tool in filteredTools:
         tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
@@ -394,6 +427,13 @@ def resultSearch(request):
         component["virtDate"] = date.fromisoformat("2049-09-09")
         component["pathToFocusImage"] = findPicturesForFocus(component)
 
+    for useCaseObj in filteredUseCases:
+        useCaseObj["name"] = useCaseObj["degreeOfDetail"] + " - " + useCaseObj["effectName"]
+        useCaseObj["kindOfItem"] = "Anwendungsfall"
+        useCaseObj["classificationAgg"] = _("Anwendungsfall")
+        useCaseObj["date"] = _("2024-07-01")
+        useCaseObj["virtDate"] = date.fromisoformat("2049-09-09")
+        useCaseObj["pathToFocusImage"] = findPicturesForFocus(useCaseObj)
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -406,6 +446,8 @@ def resultSearch(request):
             filteredBusinessModels,
             filteredPosEnvImpact,
             filteredComponents,
+            filteredUseCases,
+            filteredPublications,
         )
     )
     # sort data list by name/kindOfItem and so on

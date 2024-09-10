@@ -108,7 +108,11 @@
                                   <tr data-href="{% url 'environmentalIntegrityBox' dataSet.id %}">
                                  {% elif dataSet.kindOfItem == "Negative Umweltwirkungen" %}
                                   <tr data-href="{% url 'componentsOpenId' dataSet.id %}"> 
-                                  {% endif %}
+                                  {% elif dataSet.kindOfItem == "Anwendungsfall" %}
+                                  <tr data-href="{% url 'use_cases_view' dataSet.id %}"> 
+                                  {% elif dataSet.kindOfItem == "Veröffentlichung" %}
+                                  <tr data-href="{% url 'publicationDetails' dataSet.id %}"> 
+                                    {% endif %}
                                   <!-- Table data -->
                                   <!-- Name of item -->
                                   <td>
