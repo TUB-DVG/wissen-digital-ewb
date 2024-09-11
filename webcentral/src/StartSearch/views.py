@@ -266,8 +266,7 @@ def resultSearch(request):
     # get topics for tags:
     filteredTopicsOfCriteriaCatalog = Topic.objects.filter(
         criterionCriteriaCatalog
-    ).values("id", "heading", "text", "criteriaCatalog")
-
+    ).values("id", "heading", "text", "criteriaCatalog", "parent")
     criterionUseCaseOne = Q(effectName__icontains=searchInput)
     criterionUseCaseTwo = Q(effectDescription__icontains=searchInput)
     # get topics for tags:
@@ -378,10 +377,20 @@ def resultSearch(request):
         protocol["pathToFocusImage"] = findPicturesForFocus(protocol)
 
     for criteriaCatalog in filteredTopicsOfCriteriaCatalog:
+        parent = None
+        parentId = criteriaCatalog["parent"]
+        if parentId is not None:
+            parent = Topic.objects.get(id=parentId)
+            while parent.parent != None:
+                parent = parent.parent
+
         headingName = criteriaCatalog["heading"]
         if len(headingName) > 40:
             headingName = headingName[:40] + " ... "
-        criteriaCatalog["name"] = headingName
+        if parent is not None:
+            criteriaCatalog["name"] = parent.heading + " - " + headingName
+        else:
+            criteriaCatalog["name"] = headingName
         criteriaCatalog["kindOfItem"] = "Kriterienkatalog"
         criteriaCatalog["classificationAgg"] = _("Kriterienkatalog")
         criteriaCatalog["date"] = _("noch nicht hinterlegt")

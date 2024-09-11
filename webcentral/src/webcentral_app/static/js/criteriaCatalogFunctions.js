@@ -312,6 +312,14 @@ function modifyCatalogToBeShownInOneElement() {
       var aggregatedTags = "";
       var aggregatedTopicIds = "";
       var liDescendants = elementsToBeSearched[i].querySelectorAll('li');                
+      try {
+        
+        textForCombinedElement = elementsToBeSearched[i].children[0].children[1].textContent 
+        textCombinedConcatenated = elementsToBeSearched[i].children[0].children[1].textContent  
+      }
+      catch (error) { // Handle the error here, e.g., log it or display a message 
+        console.error("An error occurred:", error); 
+      }
       // first add the content of the element itself:
        
        if (liDescendants[0] != undefined) {
@@ -322,7 +330,13 @@ function modifyCatalogToBeShownInOneElement() {
        }
 
       var ulChildElements = elementsToBeSearched[i].querySelectorAll('ul');
-      window.textForCombinedElement = "";
+      
+      if (textForCombinedElement.replace(/\s+/g, '') == "") {
+        window.textForCombinedElement = "";
+      }
+      else {
+        window.textForCombinedElement = textForCombinedElement;
+      }
       for (var j = 0; j < ulChildElements.length; j++) {
         if (Number(ulChildElements[j].id) == 3) {
           textForCombinedElement = ulChildElements[j].innerHTML
@@ -720,6 +734,10 @@ function openChildLayer(element) {
 if (element == null) {
   return;
 }
+  if (element.getAttribute("src") != null && element.getAttribute("src").includes("info_icon_selected.svg")) {
+    return;
+  }
+
 if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
