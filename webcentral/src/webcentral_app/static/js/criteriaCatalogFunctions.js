@@ -317,8 +317,8 @@ function modifyCatalogToBeShownInOneElement() {
         textForCombinedElement = elementsToBeSearched[i].children[0].children[1].textContent 
         textCombinedConcatenated = elementsToBeSearched[i].children[0].children[1].textContent  
       }
-      catch {
-
+      catch (error) { // Handle the error here, e.g., log it or display a message 
+        console.error("An error occurred:", error); 
       }
       // first add the content of the element itself:
        
