@@ -33,7 +33,7 @@ To start all needed services, networks, and volumes Docker-compose can be used. 
 1. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/`.
 1. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
 ```
-  ./run up_initial dev postgres/databaseDump.sql
+  ./run up_initial dev postgres/webcentral_db_20240910_rm_session_data.sql
 ```
 If the app should is to be started in production-mode, SSL-certificates need to be provided to the `nginx`-instance. The files need to be put into the `proxy/conf/`-folder. If the `conf/`-folder does not exist, it needs to be created. The filename of the SSL-Certificate and the SSL-Certificate Key need to be placed inside the `NGINX_SSL_CERTIFICATE_FILENAME` and `NGINX_SSL_CERTIFICATE_KEY_FILENAME` respectivly. 
 

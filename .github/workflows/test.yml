@@ -29,11 +29,9 @@ jobs:
       - name: Execute build_initial command
         run: ./run build_initial dev 
 
-      - name: Download db dump
-        run: curl -o dump.sql https://tubcloud.tu-berlin.de/s/9i3NSdoQ6xYnHdM/download
 
       - name: Run dev-environment
-        run: ./run up_initial dev dump.sql
+        run: ./run up_initial dev postgres/webcentral_db_20240910_rm_session_data.sql
 
       - name: Execute first test
         run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
