@@ -37,6 +37,7 @@ def businessModelsChallengeDetails(request, challengeId):
     businessModelObj = BusinessModel.objects.get(id=challengeId)
     allBusinessModellObjs = BusinessModel.objects.all()
     context = {
+        "pageTitle": _("Geschäftsmodelle") + " - " + businessModelObj.challenge,
         "imageInBackButton": "assets/images/backArrowOperational.svg",
         "boxObject": businessModelObj,
         "focusBorder": "operational",

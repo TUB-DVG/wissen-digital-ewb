@@ -245,7 +245,8 @@ case $command in
                     cat $3 | docker exec -i database psql -U ${POSTGRES_USER} -d ${POSTGRES_DB}
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml down
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.dev.yml up -d
-                    exit 1
+                    echo "Exit code: $?"
+                    exit $?
                 fi
             fi
             if [ "$2" = "prod" ]; then
@@ -261,7 +262,8 @@ case $command in
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml down
                     $COMPOSE_COMMAND -f docker-compose.yml -f docker-compose.prod.yml up -d
                     docker cp $PWD/01_application/webcentral_app/media/. webcentral:/home/$WEBCENTRAL_UNPRIVILEGED_USER/webcentral/media/ 
-                    exit 1
+                    echo "Exit code: $?"
+                    exit $?
                 fi
             fi
         fi

@@ -1,5 +1,4 @@
-
-name: Django tests
+name: Django tests and Selenium tests
 
 on: [push]
 
@@ -8,10 +7,13 @@ jobs:
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
+    services:
+      selenium:
+        image: selenium/standalone-firefox
+        options: --shm-size=2gb
+
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Create .env-file
         run: cp .env.example .env
@@ -27,8 +29,22 @@ jobs:
       - name: Execute build_initial command
         run: ./run build_initial dev 
 
+      - name: Download db dump
+        run: curl -o dump.sql https://tubcloud.tu-berlin.de/s/9i3NSdoQ6xYnHdM/download
+
       - name: Run dev-environment
-        run: docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+        run: ./run up_initial dev dump.sql
 
       - name: Execute first test
         run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
+
+      - name: Setup selenium dev-environment
+        run: |
+          python -m venv webcentral/test/testing_venv
+          source webcentral/test/testing_venv/bin/activate
+          pip install -r webcentral/test/requirements_testing.txt
+          set -o allexport
+          source .env
+          set +o allexport
+          cd webcentral/test/06_system_test
+          HEADLESS=1 python testrunner.py --test_file TestMainPage
