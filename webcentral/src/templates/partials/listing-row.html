@@ -83,3 +83,17 @@
 <div id="paginationContainer" class="{{ focusBorder }}-cards">
   {% include "partials/pagination.html" %}
 </div>
+<script>
+  // get the id of the object, which should be scrolled into view after page 
+  // has been fully loaded.
+  var componentForDetailsShow = "{{ componentDetailsId }}";
+  componentObjToShow = $("#" + componentForDetailsShow);
+  $(componentObjToShow).parent().find("a").click()
+  
+  if (componentObjToShow != undefined) {
+    componentObjToShow[0].scrollIntoView({ 
+          behavior: 'smooth'
+        });
+    }
+
+</script>

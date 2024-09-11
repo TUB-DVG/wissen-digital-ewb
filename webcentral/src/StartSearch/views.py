@@ -12,9 +12,6 @@ from criteria_catalog.models import (
     Tag,
     Topic,
 )
-from tools_over.models import Tools
-from project_listing.models import Subproject
-from TechnicalStandards.models import Norm, Protocol
 
 from django.shortcuts import render
 from django.db.models import Q
@@ -34,6 +31,12 @@ from TechnicalStandards.models import (
     Norm,
     Protocol,
 )
+from user_integration.models import UserEngagement
+from businessModel.models import BusinessModel
+from positive_environmental_impact.models import EnvironmentalImpact
+from component_list.models import Component
+from use_cases.models import UseCase
+from publications.models.publication import Publication
 
 
 def findPicturesForFocus(searchResultObj, tool=False):
@@ -52,12 +55,27 @@ def findPicturesForFocus(searchResultObj, tool=False):
     if tool:
         toolObj = Tools.objects.filter(id=searchResultObj["id"])[0]
         focusStrList = toolObj.focus.all().values_list("focus_de", flat=True)
+
     else:
         # for other Objects, than Tools set the default-value "Technisch"
         # this needs to be adapted later
         focusStrList = ["technisch"]
         if searchResultObj["kindOfItem"] == "Kriterienkatalog":
             focusStrList = ["rechtlich"]
+        if searchResultObj["kindOfItem"] == "Nutzendenintegration":
+            focusStrList = ["betrieblich"]
+        if searchResultObj["kindOfItem"] == "Geschäftsmodelle":
+            focusStrList = ["betrieblich"]
+        if searchResultObj["kindOfItem"] == "Positive Umweltwirkungen":
+            focusStrList = ["ökologisch"]
+        if searchResultObj["kindOfItem"] == "Negative Umweltwirkungen":
+            focusStrList = ["ökologisch"]
+        if searchResultObj["kindOfItem"] == "Anwendungsfall":
+            obj = UseCase.objects.get(id=searchResultObj["id"])
+            focusStrList = obj.focus.all().values_list("focus_de", flat=True)
+        if searchResultObj["kindOfItem"] == "Veröffentlichung":
+            obj = Publication.objects.get(id=searchResultObj["id"])
+            focusStrList = obj.focus.all().values_list("focus_de", flat=True)
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -166,6 +184,56 @@ def resultSearch(request):
     criterionProejctsTwo = Q(
         enargusData__shortDescriptionDe__icontains=searchInput
     )
+
+    criterionUserIntegrationOne = Q(category__icontains=searchInput)
+    criterionUserIntegrationTwo = Q(
+        subCategoryShortDescription__icontains=searchInput
+    )
+    filteredUserIntegration = UserEngagement.objects.values(
+        "id",
+        "category",
+        "subCategoryShortDescription",
+    ).filter(criterionUserIntegrationOne | criterionUserIntegrationTwo)
+
+    criterionPositiveEnvironmentalImpactOne = Q(
+        relevance__icontains=searchInput
+    )
+    criterionPositiveEnvironmentalImpactTwo = Q(
+        description__icontains=searchInput
+    )
+    filteredPosEnvImpact = EnvironmentalImpact.objects.values(
+        "id",
+        "relevance",
+        "description",
+    ).filter(
+        criterionPositiveEnvironmentalImpactOne
+        | criterionPositiveEnvironmentalImpactTwo
+    )
+
+    criterionBusinessModelOne = Q(challenge__icontains=searchInput)
+    criterionBusinessModelTwo = Q(shortDescription__icontains=searchInput)
+    filteredBusinessModels = BusinessModel.objects.values(
+        "id",
+        "challenge",
+        "shortDescription",
+    ).filter(criterionBusinessModelOne | criterionBusinessModelTwo)
+
+    criterionComponentListOne = Q(category__category__icontains=searchInput)
+    criterionComponentListTwo = Q(
+        componentClass__componentClass__icontains=searchInput
+    )
+    criterionComponentListThree = Q(category__category__icontains=searchInput)
+    filteredComponents = Component.objects.values(
+        "id",
+        "category__category",
+        "componentClass__componentClass",
+        "description",
+    ).filter(
+        criterionComponentListOne
+        | criterionComponentListTwo
+        | criterionComponentListThree
+    )
+
     filteredProjects = Subproject.objects.values(
         "referenceNumber_id",
         "enargusData__collaborativeProject",
@@ -199,6 +267,24 @@ def resultSearch(request):
     filteredTopicsOfCriteriaCatalog = Topic.objects.filter(
         criterionCriteriaCatalog
     ).values("id", "heading", "text", "criteriaCatalog", "parent")
+    criterionUseCaseOne = Q(effectName__icontains=searchInput)
+    criterionUseCaseTwo = Q(effectDescription__icontains=searchInput)
+    # get topics for tags:
+    filteredUseCases = UseCase.objects.filter(
+        criterionUseCaseOne | criterionUseCaseTwo
+    ).values(
+        "id", "useCase", "effectDescription", "effectName", "degreeOfDetail"
+    )
+
+    criterionPublicationOne = Q(title__icontains=searchInput)
+    criterionPublicationTwo = Q(authors__icontains=searchInput)
+    criterionPublicationThree = Q(abstract__icontains=searchInput)
+    # get topics for tags:
+    filteredPublications = Publication.objects.filter(
+        criterionPublicationOne
+        | criterionPublicationTwo
+        | criterionPublicationThree
+    ).values("id", "title", "authors", "abstract")
     # filteredTopicsOfCriteriaCatalog = Topic.objects.values(
     #     "id",
     #     "heading",
@@ -210,6 +296,17 @@ def resultSearch(request):
     # rename fields in queryset list-dicts
     # for filteredTools (bezeichung > name, kurzbeschreibung > description )
     # and extend list by needed fields like kindOfItems
+
+    for publicationObj in filteredPublications:
+        publicationObj["name"] = publicationObj["title"]
+        publicationObj["kindOfItem"] = "Veröffentlichung"
+        publicationObj["classificationAgg"] = _("Veröffentlichung")
+        publicationObj["date"] = "2024-07-01"
+        publicationObj["virtDate"] = date.fromisoformat("2049-09-09")
+        publicationObj["pathToFocusImage"] = findPicturesForFocus(
+            publicationObj
+        )
+
     for tool in filteredTools:
         tool["name"] = tool.pop("name")
         if len(tool["name"]) > 40:
@@ -309,6 +406,51 @@ def resultSearch(request):
             "criteriaCatalog"
         ]
 
+    for userIntegration in filteredUserIntegration:
+        userIntegration["name"] = userIntegration["category"]
+        userIntegration["kindOfItem"] = "Nutzendenintegration"
+        userIntegration["classificationAgg"] = _("Nutzendenintegration")
+        userIntegration["date"] = _("2024-07-01")
+        userIntegration["virtDate"] = date.fromisoformat("2049-09-09")
+        userIntegration["pathToFocusImage"] = findPicturesForFocus(
+            userIntegration
+        )
+
+    for businessModel in filteredBusinessModels:
+        businessModel["name"] = businessModel["challenge"]
+        businessModel["kindOfItem"] = "Geschäftsmodelle"
+        businessModel["classificationAgg"] = _("Geschäftsmodelle")
+        businessModel["date"] = _("2024-07-01")
+        businessModel["virtDate"] = date.fromisoformat("2049-09-09")
+        businessModel["pathToFocusImage"] = findPicturesForFocus(businessModel)
+    for posEnvImpact in filteredPosEnvImpact:
+        posEnvImpact["name"] = posEnvImpact["relevance"]
+        posEnvImpact["kindOfItem"] = "Positive Umweltwirkungen"
+        posEnvImpact["classificationAgg"] = _("Positive Umweltwirkungen")
+        posEnvImpact["date"] = _("2024-07-01")
+        posEnvImpact["virtDate"] = date.fromisoformat("2049-09-09")
+        posEnvImpact["pathToFocusImage"] = findPicturesForFocus(posEnvImpact)
+    for component in filteredComponents:
+        component["name"] = (
+            component["category__category"]
+            + " - "
+            + component["componentClass__componentClass"]
+        )
+        component["kindOfItem"] = "Negative Umweltwirkungen"
+        component["classificationAgg"] = _("Negative Umweltwirkungen")
+        component["date"] = _("2024-07-01")
+        component["virtDate"] = date.fromisoformat("2049-09-09")
+        component["pathToFocusImage"] = findPicturesForFocus(component)
+
+    for useCaseObj in filteredUseCases:
+        useCaseObj["name"] = (
+            useCaseObj["effectName"] + " - " + useCaseObj["degreeOfDetail"]
+        )
+        useCaseObj["kindOfItem"] = "Anwendungsfall"
+        useCaseObj["classificationAgg"] = _("Anwendungsfall")
+        useCaseObj["date"] = _("2024-07-01")
+        useCaseObj["virtDate"] = date.fromisoformat("2049-09-09")
+        useCaseObj["pathToFocusImage"] = findPicturesForFocus(useCaseObj)
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -317,6 +459,12 @@ def resultSearch(request):
             filteredNorms,
             filteredProtocols,
             filteredTopicsOfCriteriaCatalog,
+            filteredUserIntegration,
+            filteredBusinessModels,
+            filteredPosEnvImpact,
+            filteredComponents,
+            filteredUseCases,
+            filteredPublications,
         )
     )
     # sort data list by name/kindOfItem and so on

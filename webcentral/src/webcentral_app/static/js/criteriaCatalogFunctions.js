@@ -1,13 +1,32 @@
 
 
 
+$(window).on('load', function(element) {
+    // Your code here will execute after the entire page has fully loaded
+    console.log('Page fully loaded, including all resources.');
+
+    // Example: Scroll to an element with the attribute topicId="221"
+     
+    if (searchedElementToJumpTo != undefined) {
+      searchedElementToJumpTo.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+    }
+});
 // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
 modifyCatalogToBeShownInOneElement();
 depthFirstWalkForParagraphs();
+jumpToSearchedElement = false;
+var searchedElementToJumpTo = undefined
 if (idOfTopicToBeOpened != "") {
   var elementsToBeSearched = document.getElementById("hi").querySelectorAll("button, p");;
   for (var i = 0; i < elementsToBeSearched.length; i++) {
     if (elementsToBeSearched[i].getAttribute("topicId").includes(idOfTopicToBeOpened)) {
+      if (jumpToSearchedElement == false) {
+        searchedElementToJumpTo = elementsToBeSearched[i];
+        jumpToSearchedElement = true;
+      }
       var rootElement = findRootElement(elementsToBeSearched[i]);
       depthFirstWalk(rootElement, elementsToBeSearched[i]);  
     }
