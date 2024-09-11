@@ -94,6 +94,7 @@ class TestMainPage(WebDriverSetup):
         searchInput.send_keys(Keys.RETURN)
 
         self.waitUntilPageIsLoaded("searchResultH2")
+        
         searchResults = startPageObj.getSearchResults()
         foundCriteriaCatalogResult = False
         for result in searchResults:
@@ -117,12 +118,18 @@ class TestMainPage(WebDriverSetup):
         )
         result.find_element(By.XPATH, "./td").click()
         self.waitUntilConditionIsMet(self._checkIfResultsPageIsLoadedByTitle)
+        
 
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
         greyBoxes = criteriaCatalogObj.getNormsInfoContainers()
 
         for box in greyBoxes:
             self.assertTrue(not box.is_displayed())
+        
+        # get all selected icons:
+        selectedIcons = self.driver.find_elements(By.XPATH, "//img[contains(@src, 'info_icon_selected.svg')]")
+        for selectedIcon in selectedIcons:
+            self.assertTrue(not selectedIcon.is_displayed())
 
         # test if it is directly jumped to the searched element:
 

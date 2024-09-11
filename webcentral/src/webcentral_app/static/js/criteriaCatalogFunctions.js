@@ -734,6 +734,10 @@ function openChildLayer(element) {
 if (element == null) {
   return;
 }
+  if (element.getAttribute("src") != null && element.getAttribute("src").includes("info_icon_selected.svg")) {
+    return;
+  }
+
 if (element.tagName == "BUTTON" && element.id != "0") {
   showFullTextOfHeading(element);
   addOrRemoveBottomBorder(element);
