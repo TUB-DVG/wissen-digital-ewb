@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Run dev-environment
-        run: ./run up_initial dev postgres/webcentral_db_20240910_rm_session_data.sql
+        run: ./run up_initial dev postgres/webcentral_db_20240912_updated_criteria_catalog.sql
 
       - name: Execute first test
         run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
