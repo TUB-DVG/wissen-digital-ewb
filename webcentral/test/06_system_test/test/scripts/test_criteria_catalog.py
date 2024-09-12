@@ -68,7 +68,6 @@ class TestCriteriaCatalog(WebDriverSetup):
             self.assertTrue("show" not in greyBoxDiv.get_attribute("class"))
             self.assertTrue(not greyBoxDiv.is_displayed())
 
-
     def testLiteratureElement(self):
         """Test if the description text under literature is shown below the literature button
         after clicking the literature button.
