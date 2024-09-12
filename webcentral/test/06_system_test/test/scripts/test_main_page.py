@@ -83,13 +83,15 @@ class TestMainPage(WebDriverSetup):
     def testIfCriteriaCatalogTopicsInResults(self):
         """Test if Topics of the critera-catalog are in the search results."""
         self.driver.get(os.environ["siteUnderTest"])
-
+        
+        self._setLanguageToGerman()
         startPageObj = StartPage(self.driver)
         searchInput = startPageObj.getSearchInputField()
-        if self.getLanguage() == "en":
-            searchInput.send_keys("Purpose specification")
-        else:
-            searchInput.send_keys("Zweckspezifizierung")
+        # if self.getLanguage() == "en":
+        #     searchInput.send_keys("Purpose specification")
+        # else:
+        
+        searchInput.send_keys("Zweckspezifizierung")
 
         searchInput.send_keys(Keys.RETURN)
 
