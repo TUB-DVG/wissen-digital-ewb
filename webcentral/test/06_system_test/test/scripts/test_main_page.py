@@ -87,7 +87,7 @@ class TestMainPage(WebDriverSetup):
         self._setLanguageToGerman()
         startPageObj = StartPage(self.driver)
         searchInput = startPageObj.getSearchInputField()
-        
+
         searchInput.send_keys("Zweckspezifizierung")
 
         searchInput.send_keys(Keys.RETURN)
