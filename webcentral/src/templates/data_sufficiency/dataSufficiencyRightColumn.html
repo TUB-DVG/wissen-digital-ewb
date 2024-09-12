@@ -87,9 +87,11 @@
     </div>
   </div>
 {% endif %}
+{% if boxObject.literatureList != '<ul></ul>' %}
 <div class="blockOfContent">
   <div>
     <div class="mainContent">{% translate "Literatur" %}:</div>
     <div class="mainContent">{{ boxObject.literatureList }}</div>
   </div>
 </div>
+{% endif %}
