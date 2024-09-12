@@ -68,24 +68,6 @@ class TestCriteriaCatalog(WebDriverSetup):
             self.assertTrue("show" not in greyBoxDiv.get_attribute("class"))
             self.assertTrue(not greyBoxDiv.is_displayed())
 
-    # def testColorOfLines(self):
-    #     """Tests if the color of the lines in the Criteria-Catalog is correct.
-
-    #     """
-
-    # # click one of the cards of the criteriaCatalog-overview page:
-    # # at the moment only the upper 2 cards lead to a functioning page
-    # self.driver.get(os.environ["siteUnderTest"] + "pages/criteriaCatalog")
-    # criteriaCatalogOverview = CriteriaCatalogOverviewPage(self.driver)
-    # implementedCriteriaCards = criteriaCatalogOverview.getImplementedCriteriaCards()
-    # chosenCard = choice(implementedCriteriaCards)
-    # chosenCard.click()
-
-    # # test if the horizontal lines have the same color like the box-border:
-    # criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
-    # detailsContentContainer = criteriaCatalogDetails.getDetailsContentContainer()
-    # breakpoint()
-    # horizontalLineElements = criteriaCatalogDetails.getGetListOfAllHorizontalLineElements()
 
     def testLiteratureElement(self):
         """Test if the description text under literature is shown below the literature button
@@ -143,8 +125,6 @@ class TestCriteriaCatalog(WebDriverSetup):
                 if "<mark>Personen</mark>" in buttonInnerHTML:
                     foundMarkedPersonen = True
                 else:
-                    # breakpoint()
-                    # raise AssertionError("The search result is not marked with yellow background-color.")
                     pass
 
         if not foundMarkedPersonen:

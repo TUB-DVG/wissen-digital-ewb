@@ -145,12 +145,9 @@ class TestMainPage(WebDriverSetup):
 
         startPageObj = StartPage(self.driver)
         impressumLinkElement = startPageObj.getImpressumLink()
-        # self.driver.implicitly_wait(10)
-        # ActionChains(self.driver).move_to_element(impressumLinkElement).perform()
         self.driver.execute_script(
             "arguments[0].scrollIntoView();", impressumLinkElement
         )
-        # WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(impressumLinkElement)).click()
         time.sleep(1)
         impressumLinkElement.click()
         time.sleep(1)
@@ -222,9 +219,6 @@ class TestMainPage(WebDriverSetup):
                     self.driver.title,
                     "After clicking of the search result, which contains 'EnOB: AluPV', Page-Title should be 'Energiewendebauen | 03EN1050B', but its not...",
                 )
-                # self.driver.close()
-                # self.driver.switch_to.window(self.driver.window_handles[0])
-                #
                 break
 
         self.assertTrue(
@@ -347,45 +341,6 @@ class TestMainPage(WebDriverSetup):
             "Current Page Number should say 'Seite 1'",
         )
 
-    # def testIfLinkToBuisnessAppsWorks(self):
-    #     """Test if one can navigate from Main-Page to buisness-application site"""
-    #     self.driver.get(os.environ["siteUnderTest"])
-    #     startPageObj = StartPage(self.driver)
-    #     linkToBuisnessApps = startPageObj.getLinkToBuisnessApps()
-    #
-    #     self.driver.execute_script("arguments[0].scrollIntoView();",
-    #                                linkToBuisnessApps)
-    #
-    #     time.sleep(1)
-    #     linkToBuisnessApps.click()
-    #
-    #     time.sleep(1)
-    #
-    #     self.assertEqual(
-    #         self.driver.title,
-    #         "Überblick über die Geschäftsmodellanwendungen",
-    #         "Website should be 'Geschäftsmodellanwendungen', but its not!",
-    #     )
-    #
-    # def testLinkToTechnicalSTandards(self):
-    #     """Test if the Technical Standarts Link is working by clicking on it and
-    #     checking the page-title on the next site
-    #
-    #     """
-    #     self.driver.get(os.environ["siteUnderTest"])
-    #
-    #     startPAgeObj = StartPage(self.driver)
-    #     linkToTechnicalStandarts = startPAgeObj.getLinkToTechnicalStandarts()
-    #     self.driver.execute_script("arguments[0].scrollIntoView();",
-    #                                linkToTechnicalStandarts)
-    #     time.sleep(1)
-    #     linkToTechnicalStandarts.click()
-    #     self.assertEqual(
-    #         self.driver.title,
-    #         "Überblick über die technischen Standards",
-    #         "Page should be technical-standarts-page after clicking on link on main-page...",
-    #     )
-    #
     def testContainers(self):
         """Check if the right links and description is shown in german and english."""
         self.driver.get(os.environ["siteUnderTest"])
