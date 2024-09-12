@@ -685,7 +685,6 @@ class TestMainPage(WebDriverSetup):
             or self.driver.title == "Suchergebnisse"
         )
 
-
     def _checkFocusContainer(self, focusName, dataDict):
         """ """
 

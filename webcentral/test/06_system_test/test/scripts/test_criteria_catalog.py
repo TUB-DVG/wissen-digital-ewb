@@ -102,8 +102,10 @@ class TestCriteriaCatalog(WebDriverSetup):
             == "rgb(134, 129, 129)",
             "Literature element should be shown with grey font color",
         )
-        
-        iconElement = criteriaCatalogObj.getPreviousSiblingOfTagName(literatureButton, "img")
+
+        iconElement = criteriaCatalogObj.getPreviousSiblingOfTagName(
+            literatureButton, "img"
+        )
         self.checkIfImageIsDisplayed(iconElement)
 
         self.scrollElementIntoViewAndClickIt(literatureButton)
@@ -179,7 +181,7 @@ class TestCriteriaCatalog(WebDriverSetup):
 
             self.assertTrue(
                 "info_icon_selected.svg"
-        in imgDescandants[2].get_attribute("src")
+                in imgDescandants[2].get_attribute("src")
             )
             self.assertTrue(
                 not imgDescandants[2].is_displayed(),
@@ -211,15 +213,19 @@ class TestCriteriaCatalog(WebDriverSetup):
             self.assertTrue(not ulSibling.is_displayed())
 
     def testLinkInHeadings(self):
-        """Test if the HTML links inside the headings of topcis are working
-
-        """
+        """Test if the HTML links inside the headings of topcis are working"""
         self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
         criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
-        
-        rootTopicButton = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Datentransfer in Drittstaaten')]")
+
+        rootTopicButton = self.driver.find_element(
+            By.XPATH,
+            "//button[contains(text(), 'Datentransfer in Drittstaaten')]",
+        )
         self.scrollElementIntoViewAndClickIt(rootTopicButton)
-        linkInHeading = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Ausnahmen für bestimmte Fälle')]/a")
+        linkInHeading = self.driver.find_element(
+            By.XPATH,
+            "//button[contains(text(), 'Ausnahmen für bestimmte Fälle')]/a",
+        )
         self.scrollElementIntoViewAndClickIt(linkInHeading)
 
         self.titleEnDe = [
@@ -227,5 +233,3 @@ class TestCriteriaCatalog(WebDriverSetup):
             "Art. 49 DSGVO – Ausnahmen für bestimmte Fälle",
         ]
         self._checkIfResultsPageIsLoadedByTitle(self.titleEnDe)
-
-     

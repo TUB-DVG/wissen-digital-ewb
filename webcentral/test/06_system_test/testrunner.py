@@ -29,6 +29,7 @@ from test.scripts.test_user_integration import TestUserIntegration
 # from test.scripts.TestBusinessModels import TestBusinessModels
 # from test.scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
 from test.scripts.test_criteria_catalog import TestCriteriaCatalog
+
 # from test.scripts.TestUseCases import TestUseCases
 # from test.scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
 # from test.scripts.TestDataSufficiency import TestDataSufficiency
