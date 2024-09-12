@@ -83,7 +83,9 @@ class CriteriaCatalogDetailsPage(GenericPageObject):
 
     def getLiteratureElement(self):
         """Return the literature button-element from the criteriaCatalog detail page"""
-        return self.driver.find_element(By.XPATH, "//button[@topicId='1778']")
+        return self.driver.find_element(
+            By.XPATH, "//button[contains(text(), 'Literatur')]"
+        )
 
     def getNormsInfoContainers(self):
         """ """

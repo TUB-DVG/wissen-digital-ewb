@@ -28,7 +28,8 @@ from test.scripts.test_user_integration import TestUserIntegration
 #     TestNegativeEnvironmentalImpacts, )
 # from test.scripts.TestBusinessModels import TestBusinessModels
 # from test.scripts.TestBusinessModelChallenges import TestBusinessModelChallenges
-# from test.scripts.TestCriteriaCatalog import TestCriteriaCatalog
+from test.scripts.test_criteria_catalog import TestCriteriaCatalog
+
 # from test.scripts.TestUseCases import TestUseCases
 # from test.scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
 # from test.scripts.TestDataSufficiency import TestDataSufficiency
@@ -89,7 +90,7 @@ if __name__ == "__main__":
                 # testLoader.loadTestsFromTestCase(TestNegativeEnvironmentalImpacts),
                 # testLoader.loadTestsFromTestCase(TestBusinessModels),
                 # testLoader.loadTestsFromTestCase(TestBusinessModelChallenges),
-                # testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
+                testLoader.loadTestsFromTestCase(TestCriteriaCatalog),
                 # testLoader.loadTestsFromTestCase(TestUseCases),
                 # testLoader.loadTestsFromTestCase(TestPositiveEnvironmentalImpact),
                 # testLoader.loadTestsFromTestCase(TestDataSufficiency),
