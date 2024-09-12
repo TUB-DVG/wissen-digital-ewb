@@ -6,9 +6,10 @@ sys.path.append(sys.path[0] + "/...")
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.CriteriaCatalog import (
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.criteria_catalog import (
     CriteriaCatalogOverviewPage,
     CriteriaCatalogDetailsPage,
 )
@@ -19,7 +20,7 @@ class TestCriteriaCatalog(WebDriverSetup):
 
     def testOverviewPage(self):
         """Test the design and structure of the criteria-catalog overview page"""
-        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
 
         self.checkPageTitle(
             "Betrieb und Betriebsoptimierung", "Betrieb und Betriebsoptimierung"
@@ -91,7 +92,7 @@ class TestCriteriaCatalog(WebDriverSetup):
         after clicking the literature button.
 
         """
-        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
 
         criteriaCatalogObj = CriteriaCatalogDetailsPage(self.driver)
         literatureButton = criteriaCatalogObj.getLiteratureElement()
@@ -101,6 +102,9 @@ class TestCriteriaCatalog(WebDriverSetup):
             == "rgb(134, 129, 129)",
             "Literature element should be shown with grey font color",
         )
+        
+        iconElement = criteriaCatalogObj.getPreviousSiblingOfTagName(literatureButton, "img")
+        self.checkIfImageIsDisplayed(iconElement)
 
         self.scrollElementIntoViewAndClickIt(literatureButton)
         liParentOfButton = criteriaCatalogObj.getFirstAncestorByTagName(
@@ -116,7 +120,7 @@ class TestCriteriaCatalog(WebDriverSetup):
     def testFullTextSearchAndAllCollapseButton(self):
         """Test if a full text search expands the accordion and marks the results and the collapse everything button resets the style"""
 
-        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
         criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
         searchField = criteriaCatalogDetails.getSearchField()
         searchField.send_keys("Personen")
@@ -175,7 +179,7 @@ class TestCriteriaCatalog(WebDriverSetup):
 
             self.assertTrue(
                 "info_icon_selected.svg"
-                in imgDescandants[2].get_attribute("src")
+        in imgDescandants[2].get_attribute("src")
             )
             self.assertTrue(
                 not imgDescandants[2].is_displayed(),
@@ -184,7 +188,7 @@ class TestCriteriaCatalog(WebDriverSetup):
 
     def testIfExpansionAndCollapsingWorks(self):
         """Test if expanding an element is working"""
-        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/4")
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
         criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
 
         rootLayerElements = criteriaCatalogDetails.getRootLayerElements()
@@ -205,3 +209,23 @@ class TestCriteriaCatalog(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(descandantButton[0])
         for ulSibling in ulSiblings:
             self.assertTrue(not ulSibling.is_displayed())
+
+    def testLinkInHeadings(self):
+        """Test if the HTML links inside the headings of topcis are working
+
+        """
+        self.driver.get(os.environ["siteUnderTest"] + "/criteriaCatalog/1")
+        criteriaCatalogDetails = CriteriaCatalogDetailsPage(self.driver)
+        
+        rootTopicButton = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Datentransfer in Drittstaaten')]")
+        self.scrollElementIntoViewAndClickIt(rootTopicButton)
+        linkInHeading = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Ausnahmen für bestimmte Fälle')]/a")
+        self.scrollElementIntoViewAndClickIt(linkInHeading)
+
+        self.titleEnDe = [
+            "Art. 49 DSGVO – Ausnahmen für bestimmte Fälle",
+            "Art. 49 DSGVO – Ausnahmen für bestimmte Fälle",
+        ]
+        self._checkIfResultsPageIsLoadedByTitle(self.titleEnDe)
+
+     

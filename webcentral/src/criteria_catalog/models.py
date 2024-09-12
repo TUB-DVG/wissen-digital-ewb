@@ -46,7 +46,11 @@ class Topic(models.Model):
 
     def __str__(self):
         """Return string representation of an `Topic`-object"""
-        return self.heading
+        return Template(self.heading).render(Context({}))
+
+    def headingRendered(self):
+        """Return string representation of an `Topic`-object"""
+        return Template(self.heading).render(Context({}))
 
     @property
     def textLineBreaks(self):

@@ -46,3 +46,4 @@ jobs:
           set +o allexport
           cd webcentral/test/06_system_test
           HEADLESS=1 python testrunner.py --test_file TestMainPage
+          HEADLESS=1 python testrunner.py --test_file TestCriteriaCatalog

@@ -298,7 +298,7 @@ button {
                                     onclick="showOrHide(event, this)"
                                     id="{{ node.content.depth }}"
                                     topicId="{{ node.content.topic.id }}">
-                              {{ node.content.topic.heading }}
+                              {{ node.content.topic.headingRendered }}
                             </button>
                             <div class="grey-box">{{ node.content.topic.norms }}</div>
                             <img id="0"
@@ -340,7 +340,7 @@ button {
                                       topicId="{{ node.content.topic.id }}"
                                       id="{{ node.content.depth }}"
                                       text="{{ node.content.topic.heading }}">
-                                {{ node.content.topic.heading }}
+                                {{ node.content.topic.headingRendered }}
                               </button>
                             </div>
                             <p class="paragraph-deeper-level"

@@ -685,12 +685,6 @@ class TestMainPage(WebDriverSetup):
             or self.driver.title == "Suchergebnisse"
         )
 
-    def _checkIfResultsPageIsLoadedByTitle(self, titleEnDe):
-        """ """
-        return (
-            self.driver.title == self.titleEnDe[1]
-            or self.driver.title == self.titleEnDe[0]
-        )
 
     def _checkFocusContainer(self, focusName, dataDict):
         """ """

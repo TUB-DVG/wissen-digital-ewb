@@ -80,8 +80,10 @@ class WebDriverSetup(unittest.TestCase):
             wait = WebDriverWait(self.driver, 2)  # waits for 10 seconds
             wait.until(self._elementIsClickable)
         except:
-            element.click()
-
+            pass
+        
+        
+    
     def _elementIsClickable(self, driver):
         """Check if the element is clickable."""
         try:
@@ -271,3 +273,10 @@ class WebDriverSetup(unittest.TestCase):
         """
         wait = WebDriverWait(self.driver, timeout=10)
         wait.until(functionHandler)
+    
+    def _checkIfResultsPageIsLoadedByTitle(self, titleEnDe):
+        """ """
+        return (
+            self.driver.title == self.titleEnDe[1]
+            or self.driver.title == self.titleEnDe[0]
+        )

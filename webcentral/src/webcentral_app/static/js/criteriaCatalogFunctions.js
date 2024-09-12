@@ -312,8 +312,7 @@ function modifyCatalogToBeShownInOneElement() {
       var aggregatedTags = "";
       var aggregatedTopicIds = "";
       var liDescendants = elementsToBeSearched[i].querySelectorAll('li');                
-      try {
-        
+      try { 
         textForCombinedElement = elementsToBeSearched[i].children[0].children[1].textContent 
         textCombinedConcatenated = elementsToBeSearched[i].children[0].children[1].textContent  
       }
@@ -648,11 +647,11 @@ if (element.tagName == "LI" || element.tagName == "DIV") {
 
 function showFullTextOfHeading(element) {
 var fullHeading = element.getAttribute("text");
-element.textContent = fullHeading;
+  element.innerHTML = fullHeading;
 }
 function showPreviewTextOfHeading(element) {
 if (element.textContent.length > 80) {
-  element.textContent = element.getAttribute("text").substring(0, 80) + "...";
+  element.innerHTML = element.getAttribute("text").substring(0, 80) + "...";
 }
 }
 
