@@ -45,7 +45,9 @@
   <div class="blockOfContent">
     <div class="mainContent">{{ boxObject.example1Heading }}:</div>
     <div>
-      <div class="mainContent firstPart">{{ boxObject.example1Rendered|slice:":501" }}</div>
+      <div class="mainContent firstPart">
+        {{ boxObject.example1Rendered|slice:":501" }}
+      </div>
       <div class="mainContent collapse" id="example1">
         {{ boxObject.example1Rendered|safe|slice:"501:" }}
       </div>
@@ -68,7 +70,9 @@
   <div class="blockOfContent">
     <div class="mainContent">{{ boxObject.example2Heading }}:</div>
     <div>
-      <div class="mainContent firstPart">{{ boxObject.example2Rendered|slice:":401" }}</div>
+      <div class="mainContent firstPart">
+        {{ boxObject.example2Rendered|slice:":401" }}
+      </div>
       <div class="mainContent collapse" id="example2">
         {{ boxObject.example2Rendered|safe|slice:"401:" }}
       </div>

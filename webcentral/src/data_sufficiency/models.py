@@ -22,9 +22,7 @@ class DataSufficiency(models.Model):
         """Getter method for the long-description.
         HTML is rendered by the django-Template engine.
         """
-        templateObj = Template(
-            self.categoryLongDescription
-        )
+        templateObj = Template(self.categoryLongDescription)
         contextObj = Context({})
         return templateObj.render(contextObj)
 
@@ -33,24 +31,18 @@ class DataSufficiency(models.Model):
         """Getter method for the long-description.
         HTML is rendered by the django-Template engine.
         """
-        templateObj = Template(
-            self.example1.replace("\n", "<br>")
-        )
+        templateObj = Template(self.example1.replace("\n", "<br>"))
         contextObj = Context({})
         return templateObj.render(contextObj)
-    
+
     @property
     def example2Rendered(self):
         """Getter method for the long-description.
         HTML is rendered by the django-Template engine.
         """
-        templateObj = Template(
-            self.example2
-        )
+        templateObj = Template(self.example2)
         contextObj = Context({})
         return templateObj.render(contextObj)
-
-
 
     @property
     def literatureList(self):
