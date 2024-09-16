@@ -1,35 +1,39 @@
 {% load static %}
 {% load i18n %}
 <style>
-  p {
+  .textPrivacyOverview {
     font-size: 16px;
   }
-
-  span {
+  .headingPrivacyOverview {
     font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .imgPrivacyOverview {
+    margin-top: 44px;
+    margin-bottom: 44px;
   }
 </style>
 <div>
-  <span>{% translate 'Warum ist Datenschutz in Gebäuden wichtig?' %}</span>
-  <p>
+  <span class="headingPrivacyOverview">{% translate 'Warum ist Datenschutz in Gebäuden wichtig?' %}</span>
+  <p class="textPrivacyOverview" style="margin-top: 20px;">
     {% blocktranslate %}Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch oder bloße Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf eine identifizierte oder identifizierbare Person, findet das nationale bzw. europäische Datenschutzrecht Anwendung und mit ihm die gesamte Bandbreite rechtlicher Verpflichtungen für den Verantwortlichen der Datenverarbeitung. {% endblocktranslate %} 
   </p>
-  <p>
+  <p class="textPrivacyOverview">
     {% blocktranslate %}Ziel des Datenschutzrechts ist es dabei, die Betroffenen vor Risiken zu schützen, die durch die Datenverarbeitung verursacht werden und ihnen damit grundsätzlich die Entscheidung über das Maß und den Umgang mit diesen Risiken zu gewähren. {% endblocktranslate %} 
   </p>
   <div>
-  <img src="{% static 'assets/images/privacy_overview.png' %}" alt="Privacy overview">
-</div>
-  <span>{% translate 'Was bedeutet das für den Einsatz digitaler Technologien im Gebäude- und Quartierssektor?' %}</span>
-  <p>
+    <img class="imgPrivacyOverview" src="{% static 'assets/images/privacy_overview.png' %}" alt="Privacy overview">
+  </div>
+  <span class="headingPrivacyOverview">{% translate 'Was bedeutet das für den Einsatz digitaler Technologien im Gebäude- und Quartierssektor?' %}</span>
+  <p class="textPrivacyOverview" style="margin-top: 20px;">
     Für rechtlich Verantwortliche dieser Datenverarbeitungen kann schon die Frage, ob eine Datenverarbeitung überhaupt in den Anwendungsbereich des Datenschutzrechts fällt zur Herausforderung werden. Das dafür zentrale europäische Regelwerk - die Datenschutz-Grundverordnung (DSGVO) - ist nämlich an den sehr unbestimmten Begriff der personenbezogenen Daten geknüpft. Der Anwendungsbereich wurde dabei durch den Gesetzgeber bewusst weit gefasst und wird durch die Gerichte weit ausgelegt, um einen möglichst umfassenden Schutz der Betroffenen vor den Risiken verschiedener Datenverarbeitungen zu gewährleisten. 
   </p>
-  <p>
+  <p class="textPrivacyOverview">
     Das liegt daran, dass sogar vermeintlich rein technische Daten wie Maschinendaten, Geodaten oder Gebäudedaten Rückschlüsse über das Verhalten Personen zulassen können, wenn sie mit anderen Datensätzen verknüpft werden. 
   </p>
-  <p>
+  <p class="textPrivacyOverview">
     In der folgenden Datenschutzübersicht wird anhand verschiedener Beispiele erläutert, wie Datenschutzrisiken bei der Verarbeitung gebäudebezogener Daten entstehen können und wann dadurch der Anwendungsbereich der DSGVO eröffnet wird. Zudem wird beispielhaft beschrieben, wie diese Risiken durch den Einsatz technisch-organisatorischer Schutzmaßnahmen kontrolliert werden kann.
   </p>
-  <embed src="{% static 'pdfs/Effiziente_Datenminimierung_im_Gebäude-_und_Quartierssektor.pdf' %}" type="application/pdf" width="100%" height="600px" />
+  <embed style="margin-top: 30px;" src="{% static 'pdfs/Effiziente_Datenminimierung_im_Gebäude-_und_Quartierssektor.pdf' %}" type="application/pdf" width="100%" height="600px" />
 </div>
 
