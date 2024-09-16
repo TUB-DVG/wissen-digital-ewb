@@ -459,9 +459,11 @@ def dataSecurity(request):
         "heading": _("Datenschutzübersicht"),
         "explanaitionText": explanText.replace("\n", ""),
         "pathToImage": "img/componentList/circle-icon.svg",
+        "leftColumn": "partials/privacy_overview_left_column.html",
+        "rightColumn": "partials/privacy_overview_right_column.html",
     }
 
-    return render(request, "pages/overview_page.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def iconsAndVis(request):
@@ -508,9 +510,11 @@ def iconsAndVis(request):
         "pathToImage": "img/componentList/circle-icon.svg",
         "heading": _("Icons und Visualisierung"),
         "explanaitionText": explanationText.replace("\n", ""),
+        "leftColumn": "partials/icons_left_column.html",
+        "rightColumn": "partials/icons_right_column.html",
     }
 
-    return render(request, "pages/overview_page.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def criteriaCatalog(request):

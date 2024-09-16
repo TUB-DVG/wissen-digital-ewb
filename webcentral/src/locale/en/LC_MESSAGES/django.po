@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-02 11:55+0000\n"
+"POT-Creation-Date: 2024-09-16 09:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Datasets/views.py:84
+#: Datasets/views.py:84 StartSearch/views.py:450
 msgid "Anwendungsfall"
 msgstr "Use case"
 
@@ -58,7 +58,7 @@ msgstr "Time series"
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:104 common/views.py:74 component_list/views.py:255
+#: Datasets/views.py:104 common/views.py:74 component_list/views.py:275
 #: templates/datasets_over/dataset-detail.html:135
 #: templates/weatherdata_over/weatherdata-detail.html:215
 #: weatherdata_over/views.py:76
@@ -455,29 +455,68 @@ msgstr "For the selected stations exist "
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
-#: StartSearch/views.py:252
+#: StartSearch/views.py:303
+#, fuzzy
+#| msgid "Veröffentlichungen"
+msgid "Veröffentlichung"
+msgstr "Publications"
+
+#: StartSearch/views.py:349
 msgid "Forschungsprojekt"
 msgstr "Research project"
 
-#: StartSearch/views.py:266 StartSearch/views.py:278 StartSearch/views.py:289
+#: StartSearch/views.py:363 StartSearch/views.py:375 StartSearch/views.py:396
 msgid "noch nicht hinterlegt"
 msgstr "not yet filed"
 
-#: StartSearch/views.py:277
+#: StartSearch/views.py:374
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:288 pages/views.py:517
-#: templates/partials/_navbar.html:210
-#: templates/start_search/start_search.html:380
+#: StartSearch/views.py:395 pages/views.py:521
+#: templates/partials/_navbar.html:205
+#: templates/start_search/start_search.html:368
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
+
+#: StartSearch/views.py:412 templates/pages/userEngagement.html:4
+#: templates/partials/_navbar.html:133
+#: templates/start_search/start_search.html:265 user_integration/views.py:14
+#: user_integration/views.py:36
+msgid "Nutzendenintegration"
+msgstr "User integration"
+
+#: StartSearch/views.py:413 StartSearch/views.py:423 StartSearch/views.py:430
+#: StartSearch/views.py:441 StartSearch/views.py:451
+msgid "2024-07-01"
+msgstr ""
+
+#: StartSearch/views.py:422 businessModel/views.py:14 businessModel/views.py:40
+#: pages/views.py:47 templates/partials/_navbar.html:118
+#: templates/start_search/start_search.html:250
+msgid "Geschäftsmodelle"
+msgstr "Business models"
+
+#: StartSearch/views.py:429 pages/views.py:304 pages/views.py:332
+#: templates/pages/environmentalIntegrityPositiv.html:4
+#: templates/partials/_navbar.html:169
+#: templates/start_search/start_search.html:326
+msgid "Positive Umweltwirkungen"
+msgstr "Positive environmental impacts"
+
+#: StartSearch/views.py:440 component_list/views.py:323
+#: component_list/views.py:370 pages/views.py:261
+#: templates/pages/environmentalIntegrityNegativ.html:4
+#: templates/partials/_navbar.html:163
+#: templates/start_search/start_search.html:314
+msgid "Negative Umweltwirkungen"
+msgstr "Negative environmental impacts"
 
 #: TechnicalStandards/views.py:83
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:159 component_list/views.py:167
+#: TechnicalStandards/views.py:159 component_list/views.py:183
 #: templates/TechnicalStandards/explanation.html:79
 #: templates/TechnicalStandards/norm-detail.html:67
 #: templates/TechnicalStandards/norm-detail.html:145
@@ -504,13 +543,7 @@ msgstr "Open-Source-status"
 msgid "Proprietär"
 msgstr "Proprietary"
 
-#: businessModel/views.py:14 pages/views.py:47
-#: templates/partials/_navbar.html:118
-#: templates/start_search/start_search.html:250
-msgid "Geschäftsmodelle"
-msgstr "Business models"
-
-#: businessModel/views.py:15 businessModel/views.py:43
+#: businessModel/views.py:15 businessModel/views.py:44
 #: templates/businessModel/businessModelsChallenges.html:4
 msgid "Geschäftsmodelle – Herausforderungen"
 msgstr "Business models - Challenges"
@@ -543,7 +576,7 @@ msgstr ""
 msgid "Ergebnisse"
 msgstr "Results"
 
-#: common/views.py:79 component_list/views.py:237 component_list/views.py:250
+#: common/views.py:79 component_list/views.py:257 component_list/views.py:270
 msgid "Komponente"
 msgstr "Component"
 
@@ -551,19 +584,19 @@ msgstr "Component"
 msgid "Beschreibung"
 msgstr "Description"
 
-#: common/views.py:89 component_list/views.py:260
+#: common/views.py:89 component_list/views.py:281
 msgid "Energieverbrauch Nutzung (gesamt; in W)"
 msgstr "Total energy consumption (in W)"
 
-#: common/views.py:94 component_list/views.py:185 component_list/views.py:265
+#: common/views.py:94 component_list/views.py:202 component_list/views.py:288
 msgid "Treibhauspotenzial (gesamt; in kg CO2-e)"
 msgstr "Total greenhouse gas potential (in kg CO2-e)"
 
-#: common/views.py:99 component_list/views.py:189 component_list/views.py:270
+#: common/views.py:99 component_list/views.py:207 component_list/views.py:294
 msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
-#: common/views.py:104 component_list/views.py:193
+#: common/views.py:104 component_list/views.py:211
 #, fuzzy
 #| msgid "Lebensdauer (in Jahren)"
 msgid "Lebensdauer (in Jahre)"
@@ -577,19 +610,19 @@ msgstr "Active energy consumption (in W)"
 msgid "Energieverbrauch Nutzung (passiv/ Stand-by; in W)"
 msgstr "Passive/standby energy consumption (in W)"
 
-#: common/views.py:122 component_list/views.py:208
+#: common/views.py:122 component_list/views.py:226
 msgid "Treibhauspotenzial (Herstellung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (production; in kg CO2-e)"
 
-#: common/views.py:128 component_list/views.py:213
+#: common/views.py:128 component_list/views.py:232
 msgid "Treibhauspotenzial (Nutzung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (usage; in kg CO2-e)"
 
-#: common/views.py:134 component_list/views.py:218
+#: common/views.py:134 component_list/views.py:238
 msgid "Treibhauspotenzial (Entsorgung; in kg CO2-e)"
 msgstr "Greenhouse gas potential (disposal; in kg CO2-e)"
 
-#: common/views.py:140 component_list/views.py:163
+#: common/views.py:140 component_list/views.py:179
 #: templates/datasets_over/dataset-detail.html:86
 #: templates/weatherdata_over/weatherdata-detail.html:127
 msgid "Weitere Informationen"
@@ -601,7 +634,7 @@ msgstr "Further information"
 msgid "Quellen"
 msgstr "Source"
 
-#: common/views.py:148 component_list/views.py:138 pages/views.py:271
+#: common/views.py:148 component_list/views.py:154 pages/views.py:271
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -758,17 +791,34 @@ msgstr "Implemented OSI-layer"
 msgid "Ebenen der Gebäudeautomation"
 msgstr "Levels of building automation"
 
-#: component_list/views.py:87
+#: component_list/views.py:100
 msgid "Ausgeklappt"
 msgstr "Expanded"
 
-#: component_list/views.py:121
+#: component_list/views.py:137
 msgid ""
 "Die Durchführung der Prozessschritte entlang der Daten-Wertschöpfungskette "
 "(siehe auch"
 msgstr "The execution of process steps along the data value chain (see also"
 
-#: component_list/views.py:127
+#: component_list/views.py:143
+#, fuzzy
+#| msgid ""
+#| "ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In "
+#| "Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können "
+#| "wichtige Komponenten von der Datenerfassung (Sensoren) bis zur "
+#| "Datennutzung (Aktuatoren) gedacht werden. Abbildung 2 zeigt Komponenten, "
+#| "die zur Realisierung digitaler Anwendungen in Gebäuden und Quartieren "
+#| "häufig zur Anwendung kommen (hier Fokus auf Betriebsoptimierung). Je "
+#| "nachdem, welche dieser – oder weitere – Komponenten zusätzlich für die "
+#| "digitale Anwendung verbaut werden mussten, müssen die entsprechenden "
+#| "Umweltlasten mitbetrachtet werden. Die Umweltlasten umfassen dabei die "
+#| "Emissionen, die bei der Herstellung von der Gewinnung der Rohstoffe bis "
+#| "zur Fertigung der Komponente reichen, über Emissionen durch den "
+#| "Ressourcen- und Energieverbrauch während der Nutzung der Komponente, bis "
+#| "zur Entsorgung und dem Recycling der Materialien. Diese Wirkungen wurden "
+#| "mit der Methode der Ökobilanz erfasst.\n"
+#| "        "
 msgid ""
 "ist immer mit einem materiellen Einsatz für die Komponenten verbunden. In "
 "Analogie zu den Prozessschritten der Daten-Wertschöpfungskette können "
@@ -783,7 +833,7 @@ msgid ""
 "reichen, über Emissionen durch den Ressourcen- und Energieverbrauch während "
 "der Nutzung der Komponente, bis zur Entsorgung und dem Recycling der "
 "Materialien. Diese Wirkungen wurden mit der Methode der Ökobilanz erfasst.\n"
-"        "
+"            "
 msgstr ""
 " is always associated with a material input for the components. In analogy "
 "to the process steps of the data value chain, key components can be "
@@ -800,35 +850,35 @@ msgstr ""
 "assessment method.\n"
 "        "
 
-#: component_list/views.py:174
+#: component_list/views.py:190
 msgid "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr)"
 msgstr "Energy consumption usage phase (total; in kWh/year)"
 
-#: component_list/views.py:180
+#: component_list/views.py:196
 msgid "Spezifisches Teibhauspotential Gesamt  (in kg CO2-e/Jahr)"
 msgstr "Specific global warming potential, total (in kg CO2-e/year)"
 
-#: component_list/views.py:197
+#: component_list/views.py:215
 msgid "Leistung Nutzungsphase (akitv; in W)"
 msgstr "Power usage phase (active; in W)"
 
-#: component_list/views.py:202
+#: component_list/views.py:220
 msgid "Leistung Nutzungsphase (passiv/ Stand-by; in W)"
 msgstr "Power usage phase (passive/stand-by; in W)"
 
-#: component_list/views.py:223
+#: component_list/views.py:243
 msgid "Betriebsdauer (h/Jahr)"
 msgstr "Operating time (h/year)"
 
-#: component_list/views.py:246
+#: component_list/views.py:266
 msgid "Sortierung"
 msgstr "Sorting"
 
-#: component_list/views.py:275
+#: component_list/views.py:299
 msgid "Lebensdauer (in Jahren)"
 msgstr "Lifespan (in years)"
 
-#: component_list/views.py:290
+#: component_list/views.py:314
 msgid ""
 "Abbildung 2: Wichtige Komponenten für das Beispiel Betriebsoptimierung, die "
 "zur Realisierung der Daten-Wertschöpfungskette notwendig sind."
@@ -836,27 +886,20 @@ msgstr ""
 "Figure 2: Important components for the operational optimization example, the "
 "are necessary to realize the data value chain."
 
-#: component_list/views.py:295
+#: component_list/views.py:319
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:299 component_list/views.py:331 pages/views.py:261
-#: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:163
-#: templates/start_search/start_search.html:314
-msgid "Negative Umweltwirkungen"
-msgstr "Negative environmental impacts"
-
-#: component_list/views.py:309 pages/views.py:289
+#: component_list/views.py:333 pages/views.py:289
 msgid "Die Daten-Wertschöpfungkette"
 msgstr "The data value chain"
 
-#: component_list/views.py:326 component_list/views.py:363 pages/views.py:284
+#: component_list/views.py:365 component_list/views.py:402 pages/views.py:284
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr "Expenses for data processing processes"
 
-#: component_list/views.py:338
+#: component_list/views.py:377
 msgid "Zu den Aufwänden für verwendete Komponenten"
 msgstr "To Effort for used components"
 
@@ -943,7 +986,14 @@ msgid ""
 "Heuristische Evaluation statt, in denen Usability-Expert*innen eingebunden "
 "werden, die über fundiertes Wissen über Nutzende digitaler Anwendungen "
 "verfügen.</p>"
-msgstr "<p>User integration describes the direct or indirect integration of users and their perspectives in the development of digital applications. Direct participation takes place via methods such as observations, surveys or usability tests of users. Indirect user integration takes place using methods such as cognitive walkthrough or heuristic evaluation, in which usability experts are involved who have in-depth knowledge of the users of digital applications.</p>"
+msgstr ""
+"<p>User integration describes the direct or indirect integration of users "
+"and their perspectives in the development of digital applications. Direct "
+"participation takes place via methods such as observations, surveys or "
+"usability tests of users. Indirect user integration takes place using "
+"methods such as cognitive walkthrough or heuristic evaluation, in which "
+"usability experts are involved who have in-depth knowledge of the users of "
+"digital applications.</p>"
 
 #: pages/views.py:104
 msgid ""
@@ -954,8 +1004,12 @@ msgid ""
 "generiert. Auf dieser Basis können die digitalen Anwendungen "
 "zielgruppenorientiert (weiter-)entwickelt werden.</p>"
 msgstr ""
-"<p>User integration <b>increases the usability and user-friendliness – or in short: the usability – of digital applications</"
-"b> by generating knowledge about the appropriate target groups of the applications as well as the needs, usage habits, and prior knowledge of these target groups. Based on this, the digital applications can be (further) developed in a target-group-oriented manner.</p>"
+"<p>User integration <b>increases the usability and user-friendliness – or in "
+"short: the usability – of digital applications</b> by generating knowledge "
+"about the appropriate target groups of the applications as well as the "
+"needs, usage habits, and prior knowledge of these target groups. Based on "
+"this, the digital applications can be (further) developed in a target-group-"
+"oriented manner.</p>"
 
 #: pages/views.py:107
 msgid ""
@@ -964,7 +1018,10 @@ msgid ""
 "Zufriedenheit der Nutzenden, reduzieren den Aufwand für die Pflege oder "
 "Instandhaltung der Anwendung und sparen so Kosten in erheblichem Ausmaß.</p>"
 msgstr ""
-"<p>Measures such as user integration, which ensure good usability before the market launch of a digital application, increase user satisfaction, reduce the effort required for maintenance or upkeep of the application, and thereby save costs to a significant extent.</p>"
+"<p>Measures such as user integration, which ensure good usability before the "
+"market launch of a digital application, increase user satisfaction, reduce "
+"the effort required for maintenance or upkeep of the application, and "
+"thereby save costs to a significant extent.</p>"
 
 #: pages/views.py:110
 msgid ""
@@ -983,7 +1040,19 @@ msgid ""
 "Nutzungsgewohnheiten von Nutzenden entspricht. Hier haben quantitative "
 "Methoden ihre Stärken, da sie hierzu repräsentative Aussagen ermöglichen.</p>"
 msgstr ""
-"<p>The methods of user integration can be distinguished into <b>methods of the analysis phase, methods of the conceptualization phase, and methods of the implementation and evaluation phase</b>. Qualitative methods (e.g., interviews or participant observation) are primarily used in the early phases of digital application development, while quantitative methods (e.g., usability surveys) are typically applied in later phases. This is because, in the early phases of digital application development, the focus is mainly on exploring the needs, prior knowledge, and usage habits of users. Qualitative methods are particularly suitable for this exploration. In the later phases of application development, the focus is primarily on testing how well the developed digital application meets the needs, prior knowledge, and usage habits of users. Here, quantitative methods excel, as they allow for representative statements to be made.</p>"
+"<p>The methods of user integration can be distinguished into <b>methods of "
+"the analysis phase, methods of the conceptualization phase, and methods of "
+"the implementation and evaluation phase</b>. Qualitative methods (e.g., "
+"interviews or participant observation) are primarily used in the early "
+"phases of digital application development, while quantitative methods (e.g., "
+"usability surveys) are typically applied in later phases. This is because, "
+"in the early phases of digital application development, the focus is mainly "
+"on exploring the needs, prior knowledge, and usage habits of users. "
+"Qualitative methods are particularly suitable for this exploration. In the "
+"later phases of application development, the focus is primarily on testing "
+"how well the developed digital application meets the needs, prior knowledge, "
+"and usage habits of users. Here, quantitative methods excel, as they allow "
+"for representative statements to be made.</p>"
 
 #: pages/views.py:113
 msgid ""
@@ -995,14 +1064,21 @@ msgid ""
 "nicht nur in dieser Phase einsetzbar, sondern lassen sich oft ebenso gut in "
 "anderen Phasen sinnvoll nutzen.</p>"
 msgstr ""
-"<p>This knowledge platform presents <b>12 proven methods of user integration</b> along with their respective objectives, procedures, and advantages and disadvantages. These methods are each assigned to one of the three phases of digital application development (analysis phase, conceptualization phase, and implementation and evaluation phase). However, they are not only applicable in these phases but can often be effectively used in other phases as well.</p>"
+"<p>This knowledge platform presents <b>12 proven methods of user "
+"integration</b> along with their respective objectives, procedures, and "
+"advantages and disadvantages. These methods are each assigned to one of the "
+"three phases of digital application development (analysis phase, "
+"conceptualization phase, and implementation and evaluation phase). However, "
+"they are not only applicable in these phases but can often be effectively "
+"used in other phases as well.</p>"
 
 #: pages/views.py:116
 msgid ""
 "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
 "Analysephase vor Beginn der Anwendungsentwicklung</h6>"
 msgstr ""
-"<h6 style=\"font-size: 22px\">Methods of User Integration for the Analysis Phase Before the Start of Application Development</h6>"
+"<h6 style=\"font-size: 22px\">Methods of User Integration for the Analysis "
+"Phase Before the Start of Application Development</h6>"
 
 #: pages/views.py:118
 msgid "Teilnehmende Beobachtung"
@@ -1025,7 +1101,8 @@ msgid ""
 "Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der "
 "Anwendungsentwicklung"
 msgstr ""
-"Methods of User Integration for the Conceptualization Phase at the Start of Application Development"
+"Methods of User Integration for the Conceptualization Phase at the Start of "
+"Application Development"
 
 #: pages/views.py:160
 msgid "A/B-Test"
@@ -1044,7 +1121,8 @@ msgid ""
 "Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase "
 "während bzw. nach der Anwendungsentwicklung"
 msgstr ""
-"Methods of User Integration for the Implementation and Evaluation Phase During and After Application Development"
+"Methods of User Integration for the Implementation and Evaluation Phase "
+"During and After Application Development"
 
 #: pages/views.py:189
 msgid "Lautes Denken"
@@ -1172,13 +1250,6 @@ msgstr ""
 "corresponding energy and resource consumption. The efforts required for the "
 "use of the corresponding data infrastructure are explained in more detail "
 "here. Simple estimates based on data volume are also made."
-
-#: pages/views.py:304 pages/views.py:332
-#: templates/pages/environmentalIntegrityPositiv.html:4
-#: templates/partials/_navbar.html:169
-#: templates/start_search/start_search.html:326
-msgid "Positive Umweltwirkungen"
-msgstr "Positive environmental impacts"
 
 #: pages/views.py:307
 msgid ""
@@ -1363,11 +1434,11 @@ msgstr "Efficient data minimization in the building and district sector"
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:455
+#: pages/views.py:455 templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy Overview"
 
-#: pages/views.py:467
+#: pages/views.py:469
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1422,8 +1493,9 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:505 templates/partials/_navbar.html:215
-#: templates/start_search/start_search.html:392
+#: pages/views.py:507 templates/partials/_navbar.html:215
+#: templates/partials/icons_left_column.html:3
+#: templates/start_search/start_search.html:393
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
@@ -3472,11 +3544,6 @@ msgstr "Detailed view of the image"
 msgid "Stromlastprofil"
 msgstr "Standard load profiles"
 
-#: templates/pages/userEngagement.html:4 templates/partials/_navbar.html:133
-#: templates/start_search/start_search.html:265
-msgid "Nutzendenintegration"
-msgstr "User integration"
-
 #: templates/pages/userIntegrationMethod.html:20
 #: templates/pages/userIntegrationPractice.html:19
 msgid "Nutzendeneinbindung"
@@ -3633,8 +3700,8 @@ msgstr "Ecological Focus"
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
-#: templates/partials/_navbar.html:205
-#: templates/start_search/start_search.html:368
+#: templates/partials/_navbar.html:210
+#: templates/start_search/start_search.html:380
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
@@ -3644,7 +3711,7 @@ msgstr ""
 
 #: templates/partials/_navbar.html:243
 #: templates/start_search/start_search.html:207
-#: templates/start_search/start_search.html:429
+#: templates/start_search/start_search.html:430
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
@@ -3655,7 +3722,7 @@ msgid "City GML Visualisierung"
 msgstr "Icons and visualization"
 
 #: templates/partials/_navbar.html:253
-#: templates/start_search/start_search.html:441
+#: templates/start_search/start_search.html:442
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
@@ -4253,6 +4320,70 @@ msgstr ""
 msgid "Weiterführende Literatur"
 msgstr "Further reading"
 
+#: templates/partials/icons_left_column.html:6
+msgid "Downloade die Open-Source Icons-Datenbank!"
+msgstr "Download the open-source icons database!"
+
+
+#: templates/partials/icons_right_column.html:5
+msgid ""
+"Icons können auch im Gebäude- und Quartiersbereich die grafische "
+"Aufbereitung komplexer Sachverhalte unterstützen. In Zusammenarbeit mit dem "
+"Projekt <u>“Privacy Icons”</u> der Forschungsgruppe Digitale "
+"Selbstbestimmung wurden zu diesem Zweck Open-Source Icons entwickelt und zur "
+"freien Nutzung und Änderung freigegeben. "
+msgstr ""
+"Icons can also support the graphical presentation of complex issues in the "
+"building and neighborhood areas. In collaboration with the project "
+"<u>“Privacy Icons”</u> of the research group Digital Self-Determination, "
+"open-source icons were developed for this purpose and released for free use "
+"and modification."
+
+#: templates/partials/icons_right_column.html:8
+msgid ""
+"Das Set besteht aktuell aus über 150 individuelle Icons und dient dabei "
+"insbesondere:"
+msgstr ""
+"The set currently consists of over 150 individual icons and serves "
+"particularly:"
+
+#: templates/partials/icons_right_column.html:12
+msgid ""
+"der effektiven Umsetzung datenschutzrechtlicher Transparenz- und "
+"Informationspflichten gegenüber betroffenen Personen (z.B. in "
+"Datenschutzhinweisen),"
+msgstr ""
+"the effective implementation of data protection transparency and information "
+"obligations towards affected individuals (e.g., in privacy notices),"
+
+#: templates/partials/icons_right_column.html:15
+msgid ""
+"der Visualisierung der Funktionsweise digitaler Anwendungen im Gebäude- und "
+"Quartiers-Bereich - gegenüber Kunden sowie Fachpublikum (siehe z.B. "
+"Beispiele in der Datenschutzübersicht)"
+msgstr ""
+"the visualization of how digital applications work in the building and "
+"neighborhood sectors - for customers as well as professionals (see, for "
+"example, examples in the privacy overview)"
+
+#: templates/partials/icons_right_column.html:18
+msgid ""
+"der Wissenskommunikation und verständlichen Aufbereitung von "
+"Forschungsergebnissen. "
+msgstr ""
+"the communication of knowledge and clear presentation of research findings."
+
+#: templates/partials/icons_right_column.html:22
+msgid ""
+"Geplant ist zusätzlich die Veröffentlichung eines Sets von Gebäudegrafiken "
+"und anderer Visualisierungskomponenten, um den Nutzenden einen “Baukasten” "
+"zur Visualisierung eines Projekts oder einer individuellen Anwendung "
+"bereitzustellen."
+msgstr ""
+"In addition, the release of a set of building graphics and other "
+"visualization components is planned to provide users with a 'toolkit' for "
+"visualizing a project or an individual application."
+
 #: templates/partials/listing-grid.html:26
 #: templates/tools_over/explanationApps.html:47
 #: templates/tools_over/explanationTools.html:47
@@ -4267,34 +4398,125 @@ msgid "Updates"
 msgstr "Updates"
 
 #: templates/partials/pagination.html:8
-#: templates/start_search/result_search.html:147
+#: templates/start_search/result_search.html:158
 msgid "erste"
 msgstr "first"
 
 #: templates/partials/pagination.html:12
-#: templates/start_search/result_search.html:152
+#: templates/start_search/result_search.html:163
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:157
+#: templates/start_search/result_search.html:168
 msgid "Seite"
 msgstr "Site"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:157
+#: templates/start_search/result_search.html:168
 msgid "von"
 msgstr "from"
 
 #: templates/partials/pagination.html:22
-#: templates/start_search/result_search.html:162
+#: templates/start_search/result_search.html:173
 msgid "nächste"
 msgstr "next"
 
 #: templates/partials/pagination.html:26
-#: templates/start_search/result_search.html:166
+#: templates/start_search/result_search.html:177
 msgid "letzte"
 msgstr "last"
+
+#: templates/partials/privacy_overview_left_column.html:7
+msgid "Downloade die gesamte Datenschutzübersicht!"
+msgstr "Download the complete privacy overview!"
+
+#: templates/partials/privacy_overview_right_column.html:17
+msgid "Warum ist Datenschutz in Gebäuden wichtig?"
+msgstr "Why is data protection important in buildings?"
+
+#: templates/partials/privacy_overview_right_column.html:19
+msgid ""
+"Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor lassen "
+"verschiedene Datenquellen zum Raumklima, Energieverbrauch oder bloße "
+"Gebäudeinformationen häufig Rückschlüsse auf das Verhalten von "
+"Einzelpersonen oder Personengruppen zu. Beziehen sich diese Daten auf eine "
+"identifizierte oder identifizierbare Person, findet das nationale bzw. "
+"europäische Datenschutzrecht Anwendung und mit ihm die gesamte Bandbreite "
+"rechtlicher Verpflichtungen für den Verantwortlichen der Datenverarbeitung. "
+msgstr ""
+"When using digital applications in the building and neighborhood sectors, "
+"various data sources related to indoor climate, energy consumption, or even "
+"basic building information often allow conclusions to be drawn about the "
+"behavior of individuals or groups of people. If this data relates to an "
+"identified or identifiable person, national or European data protection laws "
+"apply, along with the full range of legal obligations for the data "
+"controller."
+
+#: templates/partials/privacy_overview_right_column.html:22
+msgid ""
+"Ziel des Datenschutzrechts ist es dabei, die Betroffenen vor Risiken zu "
+"schützen, die durch die Datenverarbeitung verursacht werden und ihnen damit "
+"grundsätzlich die Entscheidung über das Maß und den Umgang mit diesen "
+"Risiken zu gewähren."
+msgstr ""
+"The aim of data protection law is to protect individuals from risks caused "
+"by data processing and thereby grant them the fundamental right to decide on "
+"the extent and management of these risks."
+
+#: templates/partials/privacy_overview_right_column.html:29
+msgid ""
+"Was bedeutet das für den Einsatz digitaler Technologien im Gebäude- und "
+"Quartierssektor?"
+msgstr ""
+"What does this mean for the use of digital technologies in the building and "
+"neighborhood sectors?"
+
+#: templates/partials/privacy_overview_right_column.html:31
+msgid ""
+"Für rechtlich Verantwortliche dieser Datenverarbeitungen kann schon die "
+"Frage, ob eine Datenverarbeitung überhaupt in den Anwendungsbereich des "
+"Datenschutzrechts fällt zur Herausforderung werden. Das dafür zentrale "
+"europäische Regelwerk - die Datenschutz-Grundverordnung (DSGVO) - ist "
+"nämlich an den sehr unbestimmten Begriff der personenbezogenen Daten "
+"geknüpft. Der Anwendungsbereich wurde dabei durch den Gesetzgeber bewusst "
+"weit gefasst und wird durch die Gerichte weit ausgelegt, um einen möglichst "
+"umfassenden Schutz der Betroffenen vor den Risiken verschiedener "
+"Datenverarbeitungen zu gewährleisten."
+msgstr ""
+"For those legally responsible for data processing, even the question of "
+"whether data processing falls under the scope of data protection law can "
+"become a challenge. The central European regulation - the General Data "
+"Protection Regulation (GDPR) - is linked to the very vague concept of "
+"personal data. The scope was deliberately defined broadly by the legislator "
+"and is interpreted widely by the courts to ensure the most comprehensive "
+"protection of individuals against the risks of various data processing "
+"activities."
+
+#: templates/partials/privacy_overview_right_column.html:34
+msgid ""
+"Das liegt daran, dass sogar vermeintlich rein technische Daten wie "
+"Maschinendaten, Geodaten oder Gebäudedaten Rückschlüsse über das Verhalten "
+"Personen zulassen können, wenn sie mit anderen Datensätzen verknüpft werden."
+msgstr ""
+"This is because even seemingly purely technical data such as machine data, "
+"geodata, or building data can provide insights into individuals' behavior "
+"when linked with other datasets."
+
+#: templates/partials/privacy_overview_right_column.html:37
+msgid ""
+" In der folgenden Datenschutzübersicht wird anhand verschiedener Beispiele "
+"erläutert, wie Datenschutzrisiken bei der Verarbeitung gebäudebezogener "
+"Daten entstehen können und wann dadurch der Anwendungsbereich der DSGVO "
+"eröffnet wird. Zudem wird beispielhaft beschrieben, wie diese Risiken durch "
+"den Einsatz technisch-organisatorischer Schutzmaßnahmen kontrolliert werden "
+"kann"
+msgstr ""
+"The following privacy overview explains, with various examples, how data "
+"protection risks can arise from processing building-related data and when "
+"the scope of the GDPR is triggered. It also illustrates how these risks can "
+"be controlled through the implementation of technical and organizational "
+"protective measures."
 
 #: templates/partials/search-bar.html:106
 #: templates/partials/search-bar.html:127
@@ -4373,7 +4595,7 @@ msgstr "Type of result"
 msgid "Aktualität"
 msgstr "Actuality"
 
-#: templates/start_search/result_search.html:174
+#: templates/start_search/result_search.html:185
 msgid "Die Suche hat keine Ergebnisse ergeben."
 msgstr "The search returned no results."
 
@@ -4483,11 +4705,11 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/start_search/start_search.html:414
+#: templates/start_search/start_search.html:415
 msgid "Globaler Fokus"
 msgstr "Global Focus"
 
-#: templates/start_search/start_search.html:416
+#: templates/start_search/start_search.html:417
 msgid ""
 "Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig "
 "beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, "
@@ -5916,7 +6138,7 @@ msgstr "Alternatives"
 msgid "Neutral"
 msgstr ""
 
-#: user_integration/views.py:42
+#: user_integration/views.py:49
 msgid "Übersicht Methoden Nutzendenintegration"
 msgstr "Methods for user integration"
 
