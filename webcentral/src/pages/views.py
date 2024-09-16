@@ -455,9 +455,11 @@ def dataSecurity(request):
         "heading": _("Datenschutzübersicht"),
         "explanaitionText": explanText.replace("\n", ""),
         "pathToImage": "img/componentList/circle-icon.svg",
+        "leftColumn": "partials/privacy_overview_left_column.html",
+        "rightColumn": "partials/privacy_overview_right_column.html",
     }
 
-    return render(request, "pages/overview_page.html", context)
+    return render(request, "pages/detailsPage.html", context)
 
 
 def iconsAndVis(request):
