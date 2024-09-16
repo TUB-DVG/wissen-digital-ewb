@@ -7,18 +7,26 @@
 {% load static %}
 
 {% block content %}
-
+  <style>
+  .boxDescription  {
+    front-size: 16px;
+    color: #868181;
+  }
+  .listElementsCCBox {
+    color: #868181;
+  }
+  </style>
   <!-- =======================
 Page Banner START -->
   <section class="py-4">
     <div class="content container">
       {% include "partials/descriptionContainer.html" %}
       <p>
-        <a href="{% static 'downloads/criteria_catalog.xlsx' %}"
-           download
-           style="color: black;
-                  text-decoration: underline;
-                  font-size: 16px">{% translate "Downloade den gesamten Kriterienkatalog als Exceldatei" %}</a>
+        <!--<a href="{% static 'downloads/criteria_catalog.xlsx' %}"-->
+        <!--   download-->
+        <!--   style="color: black;-->
+        <!--          text-decoration: underline;-->
+        <!--          font-size: 16px">{% translate "Downloade den gesamten Kriterienkatalog als Exceldatei" %}</a>-->
         <div class="row">
           <h2 class="criteriaCatalogHeading"
               style="color: #E4D75C;
