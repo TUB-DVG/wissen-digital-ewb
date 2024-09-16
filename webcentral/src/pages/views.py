@@ -516,12 +516,12 @@ def iconsAndVis(request):
 def criteriaCatalog(request):
     """Call render function for criteria catalog page."""
     criteriaCatalogObjs = CriteriaCatalog.objects.all()
-    explanText = "Worum geht es?<br><br>"
-    explanText += "Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.<br><br>"
-    explanText += "Wie funktioniert das?<br><br>"
-    explanText += "Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in Form von “Kriterien” und “Anforderungen”, die für die jeweilige Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das Suchfeld gezielt durchsuchen."
-    explanText += "<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</li><li>Andererseits können die “Anforderungen” als Checkliste begriffen werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten beachten sollten.</li></ul><br><br>"
-    explanText += "Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen. "
+    explanText = _("Worum geht es?<br><br>")
+    explanText += _("Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.<br><br>")
+    explanText += _("Wie funktioniert das?<br><br>")
+    explanText += _("<p>Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in Form von “Kriterien” und “Anforderungen”, die für die jeweilige Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das Suchfeld gezielt durchsuchen.</p>")
+    explanText += _("<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</li><li>Andererseits können die “Anforderungen” als Checkliste begriffen werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten beachten sollten.</li></ul><br>")
+    explanText += _("<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen.</p>")
     explanTextRendered = Template(explanText).render(Context({}))
     context = {
         "pathToImage": "img/componentList/circle-icon.svg",

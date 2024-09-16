@@ -19,7 +19,7 @@ class TagTranslationOptions(TranslationOptions):
 
 
 class CriteriaCatalogTranslationOptions(TranslationOptions):
-    fields = ("name", "text")
+    fields = ("name", "text", "textOverviewBox")
 
 
 translator.register(Topic, TopicTranslationOptions)
