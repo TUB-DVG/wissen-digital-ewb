@@ -20,6 +20,11 @@ $( document ).ready(function(){
       var difFirstPart = $(divBlockOfContent).find(".firstPart");
       var collapseDiv = $(divBlockOfContent).find(".collapse");
       var dotsDiv = $(divBlockOfContent).find("div.dots");
+      var textOfFirstPart = $(divBlockOfContent).find(".firstPart")[0].textContent;
+      while (textOfFirstPart[textOfFirstPart.length-1] == " ") {
+        textOfFirstPart = textOfFirstPart.slice(0, -1);
+      }
+      difFirstPart[0].textContent = textOfFirstPart.trimEnd();
       if (collapseDiv.hasClass("show")) {
          $(dotsDiv).css("display", "inline");
        
