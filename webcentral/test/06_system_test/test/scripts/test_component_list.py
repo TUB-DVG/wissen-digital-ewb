@@ -10,21 +10,21 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Pages.cookieBanner import CookieBanner
-from Src.PageObject.Pages.Footer import Footer
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.SearchPage import SearchPage
-from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
-from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
+from src.page_obj.pages.cookie_banner import CookieBanner
+from src.page_obj.pages.footer import Footer
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.navbar import NavBar
+from src.page_obj.pages.search_page import SearchPage
+from src.page_obj.pages.comparison_page_section import ComparisonPageSection
+from src.page_obj.pages.negative_environmental_impacts import (
     NegativeEnvironmentalImpacts,
 )
-from Src.PageObject.Pages.ComponentListPage import ComponentListPage
+from src.page_obj.pages.component_list_page import ComponentListPage
 
-# from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
+# from src.page_obj.pages.ComparisonPageSection import ComparisonPageSection
 
 
-class TestComponentsList(WebDriverSetup):
+class TestComponentList(WebDriverSetup):
     """Represent the Selenium-Test of the Components-List Page"""
 
     def testComponentPageExists(self):
@@ -605,16 +605,19 @@ class TestComponentsList(WebDriverSetup):
         # use free tect search:
         searchInputField = componentsListPageObj.getSearchInputField()
 
-        searchInputField.send_keys("Institut Bauen und Umwelt")
+        searchInputField.send_keys("Schneider Electric")
         searchInputField.send_keys(Keys.RETURN)
 
         time.sleep(1)
-        searchFilters = searchBarObj.getAllElementsOfClass("filter")
-        self.assertTrue(len(searchFilters) == 1)
-
-        self.assertTrue("Institut Bauen und Umwelt" in searchFilters[0].text)
+        
+        showMoreObjs = componentsListPageObj.getShowMoreElements()
+        self.assertGreaterEqual(len(showMoreObjs), 1)
+        # self.assertGreaterEqual(len(searchFilters), 1)
+        
+        searchInput = self.driver.find_element(By.ID, "search-input-")
+        self.assertTrue("Schneider Electric" in searchInput.get_attribute("value"))
         self.assertTrue(
-            searchFilters[0].get_css_value("background-color")
+            searchInput.value_of_css_property("border-color")
             == self.ECOLOGICAL_COLOR
         )
 

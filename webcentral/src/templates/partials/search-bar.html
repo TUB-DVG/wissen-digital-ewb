@@ -242,6 +242,13 @@ function putResponseIntoDom(response) {
       if ($("#listing-results").length > 0) {
         $('#listing-results').empty();
         $('#listing-results').append(response);
+        var showMoreElements = $("a.collapsed.text-truncation-btn");
+        var currentElement = undefined;
+        for (var i=0;i<showMoreElements.length;i++) {
+          if ($(showMoreElements[i]).text() == "") {
+            $(showMoreElements[i]).text($(showMoreElements[i]).attr("data-collapsed-text"));
+          }
+        }
       }
       else if ($('#tool-listing-results').length > 0) {
         $('#tool-listing-results').empty();

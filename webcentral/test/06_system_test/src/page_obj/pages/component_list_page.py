@@ -13,8 +13,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-from Src.PageObject.Locators import Locator
-from Src.PageObject.Pages.GenericPageObject import GenericPageObject
+from src.page_obj.locators import Locator
+from src.page_obj.pages.generic_page_obj import GenericPageObject
 
 
 class ComponentListPage(GenericPageObject):
@@ -238,3 +238,10 @@ class ComponentListPage(GenericPageObject):
             By.XPATH,
             "./..",
         )
+    
+    def getShowMoreElements(self):
+        """Return all instances of the `Show more`-expansion buttons currently
+        shown on the page.
+
+        """
+        return self.driver.find_elements(By.XPATH, "//a[contains(@href, '#collapseComponent')]")

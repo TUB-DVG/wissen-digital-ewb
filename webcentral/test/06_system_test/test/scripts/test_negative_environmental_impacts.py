@@ -10,16 +10,16 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Pages.cookieBanner import CookieBanner
-from Src.PageObject.Pages.Footer import Footer
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.NegativeEnvironmentalImpacts import (
+from src.page_obj.pages.cookie_banner import CookieBanner
+from src.page_obj.pages.footer import Footer
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.navbar import NavBar
+from src.page_obj.pages.negative_environmental_impacts import (
     NegativeEnvironmentalImpacts,
 )
-from Src.PageObject.Pages.ComponentListPage import ComponentListPage
-from Src.PageObject.Pages.ComparisonPageSection import ComparisonPageSection
-from Src.PageObject.Pages.DetailsPage import DetailsPage
+from src.page_obj.pages.component_list_page import ComponentListPage
+from src.page_obj.pages.comparison_page_section import ComparisonPageSection
+from src.page_obj.pages.details_page import DetailsPage
 
 
 class TestNegativeEnvironmentalImpacts(WebDriverSetup):
