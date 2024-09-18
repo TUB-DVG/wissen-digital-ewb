@@ -26,4 +26,6 @@ class DetailsPage(GenericPageObject):
 
     def getATagsInContentContainer(self):
         """Returns a tag in the content container"""
-        return self.driver.find_element(By.XPATH, "//div[contains(@class, 'container')]").find_elements(By.XPATH, ".//a") 
+        return self.driver.find_element(
+            By.XPATH, "//div[contains(@class, 'container')]"
+        ).find_elements(By.XPATH, ".//a")

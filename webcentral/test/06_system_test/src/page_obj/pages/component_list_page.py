@@ -242,10 +242,12 @@ class ComponentListPage(GenericPageObject):
             By.XPATH,
             "./..",
         )
-    
+
     def getShowMoreElements(self):
         """Return all instances of the `Show more`-expansion buttons currently
         shown on the page.
 
         """
-        return self.driver.find_elements(By.XPATH, "//a[contains(@href, '#collapseComponent')]")
+        return self.driver.find_elements(
+            By.XPATH, "//a[contains(@href, '#collapseComponent')]"
+        )

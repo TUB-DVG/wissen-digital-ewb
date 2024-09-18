@@ -273,7 +273,7 @@ class TestComponentList(WebDriverSetup):
         self.assertTrue(
             "downloads/EWB_Digi_Komponenten.xlsx"
             in downloadlink.get_attribute("href")
-        ) 
+        )
 
     def testDifferentFiltersInSearch(self):
         """Test if Adding and Removing search-filters works as expected."""
@@ -292,13 +292,15 @@ class TestComponentList(WebDriverSetup):
         searchInputField.send_keys(Keys.RETURN)
 
         time.sleep(1)
-        
+
         showMoreObjs = componentsListPageObj.getShowMoreElements()
         self.assertGreaterEqual(len(showMoreObjs), 1)
         # self.assertGreaterEqual(len(searchFilters), 1)
-        
+
         searchInput = self.driver.find_element(By.ID, "search-input-")
-        self.assertTrue("Schneider Electric" in searchInput.get_attribute("value"))
+        self.assertTrue(
+            "Schneider Electric" in searchInput.get_attribute("value")
+        )
         self.assertTrue(
             searchInput.value_of_css_property("border-color")
             == self.ECOLOGICAL_COLOR
@@ -327,7 +329,6 @@ class TestComponentList(WebDriverSetup):
 
         self.assertEqual(len(activeCompareElements), 0)
 
-        
         triggerComparisonMode = componentsListPageObj.getCompareRadio()
 
         # check if 2 other buttons appear, if the compareButton[0] is clicked:
@@ -341,7 +342,7 @@ class TestComponentList(WebDriverSetup):
         self.assertEqual(len(activeCompareElements), 2)
         self.assertEqual(activeCompareElements[0].text, "Vergleiche")
         self.assertEqual(activeCompareElements[1].text, "Zurücksetzen")
-        
+
         # check if checkboxes appear in each component div, if the compareButton[0] is clicked:
         components = componentsListPageObj.getAllListElements()
         for component in components:
@@ -371,14 +372,17 @@ class TestComponentList(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
 
         compareSectionObj = ComparisonPageSection(self.driver)
-        
+
         # the content container should contain 2 sections, which are represented by 2 divs:
-        columnsInFirstRow = self.driver.find_element(By.XPATH, "//tr").find_elements(By.XPATH, "./td")
+        columnsInFirstRow = self.driver.find_element(
+            By.XPATH, "//tr"
+        ).find_elements(By.XPATH, "./td")
 
         self.assertEqual(len(columnsInFirstRow), 2)
-        
-        backLink = self.driver.find_element(By.XPATH, "//a[contains(@href, '/component_list/components')]")
 
+        backLink = self.driver.find_element(
+            By.XPATH, "//a[contains(@href, '/component_list/components')]"
+        )
 
         siblingElement = compareSectionObj.getDescendantsByTagName(
             backLink, "img"
@@ -386,15 +390,9 @@ class TestComponentList(WebDriverSetup):
         # no alt text should be present, because the image is loaded successfully:
         self.assertTrue(siblingElement.text == "")
         self.assertTrue(
-            backLink.value_of_css_property("color")
-            == self.ECOLOGICAL_COLOR
+            backLink.value_of_css_property("color") == self.ECOLOGICAL_COLOR
         )
-        self.assertTrue(
-            backLink.value_of_css_property(
-                "font-size"
-            )
-            == "15px"
-        )
+        self.assertTrue(backLink.value_of_css_property("font-size") == "15px")
 
         # test if the back-button points back to components-listing page:
         backLink.click()
@@ -403,18 +401,16 @@ class TestComponentList(WebDriverSetup):
             lambda d: self.driver.title == "Effort for used components"
             or self.driver.title == "Aufwände für verwendete Komponenten"
         )
-        
+
         triggerComparisonMode = componentsListPageObj.getCompareRadio()
         self.scrollElementIntoViewAndClickIt(triggerComparisonMode)
-        
-        checkboxes = self.driver.find_elements(By.XPATH, "//input[@type='checkbox']")
-        for checkbox in checkboxes:
-            
-            self.assertFalse(checkbox.is_selected())
-        
-        
-        
 
+        checkboxes = self.driver.find_elements(
+            By.XPATH, "//input[@type='checkbox']"
+        )
+        for checkbox in checkboxes:
+
+            self.assertFalse(checkbox.is_selected())
 
     def _checkIfComponentsPresent(self, translationElement):
         """Check if components are listed on the listing site."""
@@ -486,7 +482,8 @@ class TestComponentList(WebDriverSetup):
             self.assertTrue("Weitere Informationen" not in component.text)
 
             self.assertTrue(
-                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):" in component.text
+                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):"
+                in component.text
             )
             self.assertTrue(
                 "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text
@@ -513,7 +510,8 @@ class TestComponentList(WebDriverSetup):
             self.assertTrue("Weitere Informationen" in component.text)
 
             self.assertTrue(
-                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):" in component.text
+                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):"
+                in component.text
             )
             self.assertTrue(
                 "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text
@@ -611,7 +609,8 @@ class TestComponentList(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(expandElement[0])
 
         self.assertTrue(
-            "Energy consumption usage phase (total; in kWh/year):" in randomComponent.text
+            "Energy consumption usage phase (total; in kWh/year):"
+            in randomComponent.text
         )
         self.assertTrue(
             "Total greenhouse gas potential (in kg CO2-e)"
@@ -623,7 +622,8 @@ class TestComponentList(WebDriverSetup):
             "Power usage phase (active; in W):" in randomComponent.text
         )
         self.assertTrue(
-            "Power usage phase (passive/stand-by; in W):" in randomComponent.text
+            "Power usage phase (passive/stand-by; in W):"
+            in randomComponent.text
         )
         self.assertTrue(
             "Greenhouse gas potential (production; in kg CO2-e)"

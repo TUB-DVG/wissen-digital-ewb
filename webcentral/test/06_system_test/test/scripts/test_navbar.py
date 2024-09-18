@@ -58,8 +58,8 @@ class TestNavbar(WebDriverSetup):
                 "Icons und Visualisierung",
             ],
             "en": [
-               "Catalog of criteria - Overview",
-                "Privacy Overview", 
+                "Catalog of criteria - Overview",
+                "Privacy Overview",
                 "Icons and visualization",
             ],
         },
