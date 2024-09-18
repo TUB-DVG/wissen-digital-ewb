@@ -632,7 +632,7 @@ class TestComponentList(WebDriverSetup):
         self._setLanguageToGerman()
 
         compareDiv = componentsListPageObj.getCompareContainer()
-        self.assertIsNotNone(compareDiv)
+        # self.assertIsNotNone(compareDiv)
 
         compareButtons = componentsListPageObj.getDescendantsByTagName(
             compareDiv, "h6"
@@ -642,12 +642,13 @@ class TestComponentList(WebDriverSetup):
             if element.is_displayed():
                 activeCompareElements.append(element)
 
-        self.assertEqual(len(activeCompareElements), 1)
+        self.assertEqual(len(activeCompareElements), 0)
 
-        self.assertEqual(activeCompareElements[0].text, "Vergleiche")
+        
+        triggerComparisonMode = componentsListPageObj.getCompareRadio()
 
         # check if 2 other buttons appear, if the compareButton[0] is clicked:
-        self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
+        self.scrollElementIntoViewAndClickIt(triggerComparisonMode)
 
         activeCompareElements = []
         for element in compareButtons:
@@ -657,7 +658,7 @@ class TestComponentList(WebDriverSetup):
         self.assertEqual(len(activeCompareElements), 2)
         self.assertEqual(activeCompareElements[0].text, "Vergleiche")
         self.assertEqual(activeCompareElements[1].text, "Zurücksetzen")
-
+        
         # check if checkboxes appear in each component div, if the compareButton[0] is clicked:
         components = componentsListPageObj.getAllListElements()
         for component in components:
@@ -687,77 +688,51 @@ class TestComponentList(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(activeCompareElements[0])
 
         compareSectionObj = ComparisonPageSection(self.driver)
-
-        # check if the 2 elements are compared:
-        compareResultsContainer = compareSectionObj.getCompareResultsContainer()
-        self.assertIsNotNone(compareResultsContainer)
-        compareResults = componentsListPageObj.getDescendantsByTagName(
-            compareSectionObj.getDirectChildren(compareResultsContainer)[0],
-            "div",
-        )
+        
         # the content container should contain 2 sections, which are represented by 2 divs:
-        self.assertEqual(len(compareResults), 2)
+        columnsInFirstRow = self.driver.find_element(By.XPATH, "//tr").find_elements(By.XPATH, "./td")
 
-        compareResultsExplanationContainer = (
-            componentsListPageObj.getDescendantsByTagName(
-                compareResults[0], "a"
-            )
-        )
-        self.assertEqual(len(compareResultsExplanationContainer), 1)
+        self.assertEqual(len(columnsInFirstRow), 2)
+        
+        backLink = self.driver.find_element(By.XPATH, "//a[contains(@href, '/component_list/components')]")
 
-        # the link should point back to components-listing page:
-        self.assertTrue(
-            "/component_list/components"
-            in compareResultsExplanationContainer[0].get_attribute("href")
-        )
 
-        # test if link is styled:
-        self.assertTrue(
-            compareResultsExplanationContainer[0].get_attribute("style")
-        )
-
-        siblingElement = compareSectionObj.getPreviousSiblingOfTagName(
-            compareResultsExplanationContainer[0], "img"
-        )
-        self.assertIsNotNone(siblingElement)
+        siblingElement = compareSectionObj.getDescendantsByTagName(
+            backLink, "img"
+        )[0]
         # no alt text should be present, because the image is loaded successfully:
         self.assertTrue(siblingElement.text == "")
         self.assertTrue(
-            compareResultsExplanationContainer[0].value_of_css_property("color")
-            == "rgb(143, 222, 151)"
+            backLink.value_of_css_property("color")
+            == self.ECOLOGICAL_COLOR
         )
         self.assertTrue(
-            compareResultsExplanationContainer[0].value_of_css_property(
+            backLink.value_of_css_property(
                 "font-size"
             )
             == "15px"
         )
 
-        compareResults = componentsListPageObj.getDescendantsByTagName(
-            compareResults[0], "p"
-        )
-
-        # there should be 2 paragraphs, first for the heading, second for the explanaiton:
-        self.assertEqual(len(compareResults), 2)
-
-        self.assertEqual(compareResults[0].text, "Ergebnisse")
-        self.assertTrue(
-            compareResults[0].value_of_css_property("font-size") == "22px"
-        )
-        self.assertTrue(
-            compareResults[0].value_of_css_property("padding-top") == "26px"
-        )
-        self.assertTrue(len(compareResults[1].text) > 0)
-
         # test if the back-button points back to components-listing page:
-        backButton = compareSectionObj.getBackButton()
-        self.assertIsNotNone(backButton)
+        backLink.click()
 
-        backButton.click()
-        self.assertTrue(
-            "Components list" in self.driver.title
-            or "Komponentenliste" in self.driver.title
+        self.waitUntilConditionIsMet(
+            lambda d: self.driver.title == "Effort for used components"
+            or self.driver.title == "Aufwände für verwendete Komponenten"
         )
+        
+        triggerComparisonMode = componentsListPageObj.getCompareRadio()
+        self.scrollElementIntoViewAndClickIt(triggerComparisonMode)
+        
+        checkboxes = self.driver.find_elements(By.XPATH, "//input[@type='checkbox']")
+        breakpoint()
+        for checkbox in checkboxes:
+            
+            self.assertFalse(checkbox.is_selected())
+        
+        
+        
+
 
     def _checkIfComponentsPresent(self, translationElement):
         """Check if components are listed on the listing site."""

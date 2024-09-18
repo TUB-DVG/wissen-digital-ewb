@@ -16,6 +16,32 @@ $("#triggerComparisonMode").click(function() {
   else {
     $("#compareBox").css("display", "none");
   }
+
+//var checkboxes = $(":checkbox");
+//var idOfCheckedElement = undefined;
+//var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
+//var elementInSessionStorage = undefined;
+//// Loop through each checkbox
+//  for (var i = 0; i < checkboxes.length; i++) {
+//      idOfCheckedElement = $($($($(":checkbox")[i]).parent()).parent()).attr("id");
+//      elementInSessionStorage = false;
+//        // Check if the element is stored in sessionStorage
+//        for (var j = 0; j < storedNames.length; j++) {
+//          if (storedNames[j] == idOfCheckedElement) {
+//                elementInSessionStorage = true;
+//                break;
+//            }
+//        }
+//
+//        // Uncheck the checkbox if it's not in sessionStorage
+//        if (!elementInSessionStorage) {
+//          checkboxes[i].checked = false;
+//        }
+//        else {
+//          checkboxes[i].checked = true;
+//        }
+//}
+
 });
 
 
@@ -39,7 +65,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } else {
                     $(this).parent().addClass('comparison-active');
-                    storedNames.push(id);
+                    if (!storedNames.includes(id)) {
+                      storedNames.push(id);
+                    }
+                    
                 }
                 
                 sessionStorage.setItem("ids", JSON.stringify(storedNames));
@@ -62,12 +91,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 comparisonButtonHandlingTools();
             }
             var ids = values.slice(0, -1); // Remove trailing comma
+            
             for (let i = 0; i < ids.length; i++) {
                 try {
                     var comparisonBar = document.getElementById(ids[i]);
                     var inputNode = comparisonBar.getElementsByClassName('comparisonInputTools')[0];
                     comparisonBar.classList.add("comparison-active");
-                    inputNode.checked = true;
+                    //inputNode.checked = true;
                 } catch (e) {
                     continue;
                 }
@@ -95,6 +125,10 @@ document.addEventListener('DOMContentLoaded', function () {
             sessionStorage.clear();
             comparisonButtonHandlingTools();
             sessionStorage.setItem("comparisonTools", "True");
+          //var siteData = sessionStorage.getItem("site");
+          //if (siteDate == undefined) {
+          //
+          //}
         });
 
         // Define event listener for the second comparison button for tools
@@ -142,3 +176,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
+//$("#triggerComparisonMode").click("click", function(){
+//      var checkboxes = $(":checkbox");
+//    var idOfCheckedElement = undefined;
+//    var storedNames = JSON.parse(sessionStorage.getItem("ids")) || [];
+//    var elementInSessionStorage = undefined;
+//    // Loop through each checkbox
+//    for (var i = 0; i < checkboxes.length; i++) {
+//
+//      if ($(checkboxes[i]).is(":checked")) {  // Check if the checkbox is checked
+//            idOfCheckedElement = $($($($(":checkbox")[i]).parent()).parent()).attr("id");
+//            elementInSessionStorage = false;
+//            // Check if the element is stored in sessionStorage
+//            for (var j = 0; j < storedNames.length; j++) {
+//              if (storedNames[j] == idOfCheckedElement) {
+//                    elementInSessionStorage = true;
+//                    break;
+//                }
+//            }
+//
+//            // Uncheck the checkbox if it's not in sessionStorage
+//            if (!elementInSessionStorage) {
+//              checkboxes[i].checked = false;
+//            }
+//        }
+//    }
+//})

@@ -154,6 +154,10 @@ class ComponentListPage(GenericPageObject):
         except:
             return None
 
+    def getCompareRadio(self):
+        """Returns the radio-element, which triggers comparison view"""
+        return self.driver.find_element(By.ID, "triggerComparisonMode")
+
     def getPaginationContainer(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
