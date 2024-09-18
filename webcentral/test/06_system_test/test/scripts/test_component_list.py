@@ -145,7 +145,8 @@ class TestComponentList(WebDriverSetup):
         linkToDataProcessing = boxes1and2 = impactsObj.getBox1and2()[1]
         linkToDataProcessing.click()
         self.waitUntilConditionIsMet(
-            lambda d: self.driver.title == "Aufwände für Datenverarbeitungsprozesse"
+            lambda d: self.driver.title
+            == "Aufwände für Datenverarbeitungsprozesse"
             or self.driver.title == "Expenses for data processing processes"
         )
 
