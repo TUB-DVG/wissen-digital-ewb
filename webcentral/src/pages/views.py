@@ -534,12 +534,12 @@ def criteriaCatalog(request):
     explanText += _(
         "<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen.</p>"
     )
-    explanTextRendered = Template(explanText).render(Context({}))
+    # explanTextRendered = Template(explanText).render(Context({}))
     context = {
         "pathToImage": "img/componentList/circle-icon.svg",
         "heading": _("Kriterienkatalog"),
         "showMorePresent": False,
-        "explanaitionText": explanTextRendered,
+        "explanaitionText": explanText,
         "boxes": [
             {
                 "pathToTemplate": "criteria_catalog/criteria_catalog_overview_box.html",
@@ -548,6 +548,7 @@ def criteriaCatalog(request):
             for criteriaCatalogObj in criteriaCatalogObjs
         ],
         "focusBorder": "legal",
+        "showMorePresent": True,
     }
 
     return render(request, "pages/criteria_catalog.html", context)
