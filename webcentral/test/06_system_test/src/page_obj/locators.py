@@ -161,7 +161,7 @@ class Locator(object):
     box2 = "//div[@id='box2']"
     boxHeading = "//h6[contains(@class, 'boxHeading')]"
     boxDescription = "//p[@class='boxDescription']"
-    boxImage = "//div[@class='boxImage']"
+    boxImage = "//div[@class='grey-box-container']"
     imageInDiv = "//img"
     linkToComponentsListPage = "/component_list/components"
     linkToDataProcessingPage = "/component_list/dataProcessing"

@@ -456,6 +456,7 @@ def dataSecurity(request):
     explanText += explanRendered
     context = {
         "focusBorder": "legal",
+        "pageTitle": _("Datenschutzübersicht"),
         "heading": _("Datenschutzübersicht"),
         "explanaitionText": explanText.replace("\n", ""),
         "pathToImage": "img/componentList/circle-icon.svg",
@@ -509,6 +510,7 @@ def iconsAndVis(request):
         "focusBorder": "legal",
         "pathToImage": "img/componentList/circle-icon.svg",
         "heading": _("Icons und Visualisierung"),
+        "pageTitle": _("Icons und Visualisierung"),
         "explanaitionText": explanationText.replace("\n", ""),
         "leftColumn": "partials/icons_left_column.html",
         "rightColumn": "partials/icons_right_column.html",

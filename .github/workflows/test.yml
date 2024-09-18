@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   docker:
-    timeout-minutes: 10
+    timeout-minutes: 20
     runs-on: ubuntu-latest
 
     services:
@@ -45,5 +45,4 @@ jobs:
           source .env
           set +o allexport
           cd webcentral/test/06_system_test
-          HEADLESS=1 python testrunner.py --test_file TestMainPage
-          HEADLESS=1 python testrunner.py --test_file TestCriteriaCatalog
+          HEADLESS=1 python testrunner.py

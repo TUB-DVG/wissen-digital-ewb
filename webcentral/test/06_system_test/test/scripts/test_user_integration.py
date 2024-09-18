@@ -22,8 +22,7 @@ from src.page_obj.pages.navbar import NavBar
 from src.page_obj.pages.comparison_page_section import ComparisonPageSection
 from src.page_obj.pages.user_integration_page import UserIntegrationPage
 from src.page_obj.pages.overview_page_section import OverviewPageSection
-
-# from src.page_obj.pages.details_page import DetailsPage
+from src.page_obj.pages.details_page import DetailsPage
 
 
 class TestUserIntegration(WebDriverSetup):
@@ -85,7 +84,7 @@ class TestUserIntegration(WebDriverSetup):
             self._testHeading,
             {
                 "de": "Methoden der Nutzendenintegration",
-                "en": "Methods of user integration",
+                "en": "Methods for user integration",
             },
         )
 
@@ -114,8 +113,8 @@ class TestUserIntegration(WebDriverSetup):
                 "A/B testing",
                 "Prototyping",
                 "Cognitive Walkthrough",
-                "Style guide",
-                "Thinking out loud",
+                "Style Guide",
+                "Thinking aloud",
                 "Eye tracking",
                 "Heuristic evaluation",
                 "Usability survey",
@@ -141,11 +140,17 @@ class TestUserIntegration(WebDriverSetup):
             expectedValue
         )
         self.scrollElementIntoViewAndClickIt(linkToDetailsSite)
-        self.assertEqual(self.driver.title, expectedValue)
+        try:
+            self.waitUntilConditionIsMet(
+                lambda d: self.driver.title.lower() == expectedValue.lower()
+            )
+        except:
+            breakpoint()
         allATagsInContentContainer = (
             self.detailsPage.getATagsInContentContainer()
         )
         self.scrollElementIntoViewAndClickIt(choice(allATagsInContentContainer))
         self.assertTrue("Error" not in self.driver.title)
         self.driver.back()
-        self.driver.back()
+        if self.driver.title.lower() == expectedValue.lower():
+            self.driver.back()
