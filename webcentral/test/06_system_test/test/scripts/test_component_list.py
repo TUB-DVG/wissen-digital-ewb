@@ -136,17 +136,17 @@ class TestComponentList(WebDriverSetup):
         # click the box since the <a> cant be clicked directly by selenium
         linkToComponentList = boxes1and2[0]
         linkToComponentList.click()
-        self.assertTrue(
-            "Effort for used components" in self.driver.title
-            or "Aufwände für verwendete Komponenten" in self.driver.title
+        self.waitUntilConditionIsMet(
+            lambda d: self.driver.title == "Effort for used components"
+            or self.driver.title == "Aufwände für verwendete Komponenten"
         )
         self.driver.back()
 
         linkToDataProcessing = boxes1and2 = impactsObj.getBox1and2()[1]
         linkToDataProcessing.click()
-        self.assertTrue(
-            "Aufwände für Datenverarbeitungsprozesse" in self.driver.title
-            or "Expenses for data processing processes" in self.driver.title
+        self.waitUntilConditionIsMet(
+            lambda d: self.driver.title == "Aufwände für Datenverarbeitungsprozesse"
+            or self.driver.title == "Expenses for data processing processes"
         )
 
     def testComponentListPage(self):
