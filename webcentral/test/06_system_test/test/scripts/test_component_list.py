@@ -792,6 +792,9 @@ class TestComponentList(WebDriverSetup):
                 "Zeige mehr"
                 in expandElement[0].get_attribute("data-collapsed-text")
             )
+            # self.scrollElementIntoViewAndClickIt(
+            #         component.find_element(By.XPATH, ".//a")
+            # )
             # self._checkIfStrElementFromListIsDisplayed(component,
             #                                            componentClass)
             # self._checkIfStrElementFromListIsDisplayed(component,
@@ -801,13 +804,13 @@ class TestComponentList(WebDriverSetup):
             self.assertTrue("Weitere Informationen" not in component.text)
 
             self.assertTrue(
-                "Energieverbrauch Nutzung (gesamt; in W):" in component.text
+                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):" in component.text
             )
             self.assertTrue(
                 "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text
             )
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
-            self.assertTrue("Lebensdauer (in Jahren)" in component.text)
+            self.assertTrue("Lebensdauer (in Jahre):" not in component.text)
 
             collapsedContainer = (
                 self.componentsListPageObj.getDescendantsByClass(
@@ -828,19 +831,19 @@ class TestComponentList(WebDriverSetup):
             self.assertTrue("Weitere Informationen" in component.text)
 
             self.assertTrue(
-                "Energieverbrauch Nutzung (gesamt; in W):" in component.text
+                "Energieverbrauch Nutzungsphase (gesamt; in kWh/Jahr):" in component.text
             )
             self.assertTrue(
                 "Treibhauspotenzial (gesamt; in kg CO2-e):" in component.text
             )
             self.assertTrue("Bauteilgewicht (in kg):" in component.text)
-            self.assertTrue("Lebensdauer (in Jahren)" in component.text)
+            self.assertTrue("Lebensdauer (in Jahre)" in component.text)
 
             self.assertTrue(
-                "Energieverbrauch Nutzung (aktiv; in W)" in component.text
+                "Leistung Nutzungsphase (akitv; in W):" in component.text
             )
             self.assertTrue(
-                "Energieverbrauch Nutzung (passiv/ Stand-by; in W):"
+                "Leistung Nutzungsphase (passiv/ Stand-by; in W):"
                 in component.text
             )
             self.assertTrue(
@@ -926,7 +929,7 @@ class TestComponentList(WebDriverSetup):
         self.scrollElementIntoViewAndClickIt(expandElement[0])
 
         self.assertTrue(
-            "Total energy consumption (in W)" in randomComponent.text
+            "Energy consumption usage phase (total; in kWh/year):" in randomComponent.text
         )
         self.assertTrue(
             "Total greenhouse gas potential (in kg CO2-e)"
@@ -935,10 +938,10 @@ class TestComponentList(WebDriverSetup):
         self.assertTrue("Component weight (in kg):" in randomComponent.text)
         self.assertTrue("Lifespan (in years)" in randomComponent.text)
         self.assertTrue(
-            "Active energy consumption (in W)" in randomComponent.text
+            "Power usage phase (active; in W):" in randomComponent.text
         )
         self.assertTrue(
-            "Passive/standby energy consumption (in W)" in randomComponent.text
+            "Power usage phase (passive/stand-by; in W):" in randomComponent.text
         )
         self.assertTrue(
             "Greenhouse gas potential (production; in kg CO2-e)"

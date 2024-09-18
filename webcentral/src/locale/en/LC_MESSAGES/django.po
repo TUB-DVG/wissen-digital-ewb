@@ -597,8 +597,6 @@ msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
 #: common/views.py:104 component_list/views.py:211
-#, fuzzy
-#| msgid "Lebensdauer (in Jahren)"
 msgid "Lebensdauer (in Jahre)"
 msgstr "Lifespan (in years)"
 
