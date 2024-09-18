@@ -43,20 +43,11 @@
     <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
   </div>
   <div class="description-content">
-      <p class="mainContent">Die Datenschutz-Grundverordnung (DSGVO) verpflichtet datenverarbeitende Akteure auch im Gebäude- und Quartierskontext zur Einhaltung von Datenschutzanforderungen (wie dem Erfordernis einer Rechtsgrundlage, Transparenzpflichten oder Datenminimierung). Dieser Kriterienkatalog führt dich Schritt für Schritt durch die Anforderungen der DSGVO, wenn du Daten für einen der folgenden Zweck-Kategorien verarbeiten möchtest.</p>
-       <div class="row">   
-         <div class="col-lg-12">
-          <div class="collapse collapseInfo" id="explanationText">
-            <p class="headingShowMore">Worum geht es?</p><br>
-            <p class="textShowMore"> Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.</p>
-            <p class="headingShowMore">Wie funktioniert das?</p><br>
-            <p class="textShowMore">Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in Form von “Kriterien” und “Anforderungen”, die für die jeweilige Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das Suchfeld gezielt durchsuchen.</p>
-            <ul>
-              <li class="textShowMore">Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</li>
-              <li class="textShowMore">Andererseits können die “Anforderungen” als Checkliste begriffen werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten beachten sollten.</li>
-            </ul>
-          </div>
-      </div>
+    <div class="mainContent col-lg-12">
+      <p>Die Datenschutz-Grundverordnung (DSGVO) verpflichtet datenverarbeitende Akteure auch im Gebäude- und Quartierskontext zur Einhaltung von Datenschutzanforderungen (wie dem Erfordernis einer Rechtsgrundlage, Transparenzpflichten oder Datenminimierung). Dieser Kriterienkatalog führt dich Schritt für Schritt durch die Anforderungen der DSGVO, wenn du Daten für einen der folgenden Zweck-Kategorien verarbeiten möchtest.</p>
+    </div>   
+    <div class="row">   
+         <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
           <div class="showMore">
             <a role="button"
              class="collapsed text-truncation-btn showMoreCriteriaCatalog"
@@ -65,9 +56,23 @@
              aria-expanded="false"
              aria-controls="collapseInfoTools"
              style="color: black;">
-              <img src="{% static 'assets/images/plus.svg' %}">Erfahre mehr über den Hintergrund dieses Themas
+              <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}"><span id="textInExpansionButton">Erfahre mehr über den Hintergrund dieses Themas</span>
             </a>
           </div>
+           <div class="collapse card-body" id="explanationText">
+            <p class="headingShowMore">Worum geht es?</p>
+            <p class="textShowMore"> Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.</p>
+            <p class="headingShowMore">Wie funktioniert das?</p>
+            <p class="textShowMore">Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in Form von “Kriterien” und “Anforderungen”, die für die jeweilige Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das Suchfeld gezielt durchsuchen.</p>
+            <ul>
+              <li class="textShowMore">Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</li>
+              <li class="textShowMore">Andererseits können die “Anforderungen” als Checkliste begriffen werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten beachten sollten.</li>
+            </ul>
+            <p class="headingShowMore">Anmerkung</p>
+            <p class="textShowMore">Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen.</p>
+          </div>
+      </div>
+          
         </div>
       </div>
 </div>
@@ -103,4 +108,32 @@
         }, 350); // Adjust timeout duration if necessary
     });
   });
+  // Select the div element to observe
+var targetNode = document.getElementById("explanationText");
+
+// Create a mutation observer instance
+var observer = new MutationObserver(function(mutationsList, observer) {
+    mutationsList.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+            // Class list has changed, run your logic
+            if ($("#explanationText").hasClass("show")) {
+                $("#explanationText").parent().css("background", "#F9F6DA");
+              $("#textInExpansionButton").text("");
+                $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/minus.svg' %}");
+                
+
+            } else {
+                $("#explanationText").parent().css("background", "none");
+                $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/plus.svg' %}");
+                $("#textInExpansionButton").text("Erfahre mehr über den Hintergrund dieses Themas");
+            }
+        }
+    });
+});
+
+// Define the config object for the observer
+var config = { attributes: true }; // Only observe attribute changes
+
+// Start observing the target element for attribute changes (including class changes)
+observer.observe(targetNode, config);
 </script>
