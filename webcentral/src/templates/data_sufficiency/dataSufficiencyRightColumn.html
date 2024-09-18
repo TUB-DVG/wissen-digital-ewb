@@ -21,13 +21,13 @@
 </style>
 <div class="blockOfContent">
   <div class="mainContent firstPart" id="shortDescription">
-    {{ boxObject.categoryLongDescription|slice:":401" }}
+    {{ boxObject.categoryLongDescription|safe|slice:":401" }}
   </div>
   <div class="mainContent dots">...</div>
   <div class="mainContent collapse" id="shortDescriptionRest">
-    {{ boxObject.categoryLongDescriptionRendered|slice:"401:" }}
+    {{ boxObject.categoryLongDescription|safe|slice:"401:" }}
   </div>
-  {% if boxObject.categoryLongDescriptionRendered|slice:"401:" %}
+  {% if boxObject.categoryLongDescription|safe|slice:"401:" %}
 
     <div class="showMore collapseInfoContainer">
       <a role="button"
@@ -45,11 +45,13 @@
   <div class="blockOfContent">
     <div class="mainContent">{{ boxObject.example1Heading }}:</div>
     <div>
-      <div class="mainContent firstPart">{{ boxObject.example1|slice:":501" }}</div>
-      <div class="mainContent collapse" id="example1">
-        {{ boxObject.example1|slice:"501:" }}
+      <div class="mainContent firstPart">
+        {{ boxObject.example1Rendered|slice:":501" }}
       </div>
-      {% if boxObject.example1|slice:"501:" %}
+      <div class="mainContent collapse" id="example1">
+        {{ boxObject.example1Rendered|safe|slice:"501:" }}
+      </div>
+      {% if boxObject.example1Rendered|safe|slice:"501:" %}
         <div class="showMore collapseInfoContainer">
           <a role="button"
              class="collapsed text-truncation-btn"
@@ -68,11 +70,13 @@
   <div class="blockOfContent">
     <div class="mainContent">{{ boxObject.example2Heading }}:</div>
     <div>
-      <div class="mainContent firstPart">{{ boxObject.example2|slice:":401" }}</div>
-      <div class="mainContent collapse" id="example2">
-        {{ boxObject.example2|slice:"401:" }}
+      <div class="mainContent firstPart">
+        {{ boxObject.example2Rendered|slice:":401" }}
       </div>
-      {% if boxObject.example2|slice:"401:" %}
+      <div class="mainContent collapse" id="example2">
+        {{ boxObject.example2Rendered|safe|slice:"401:" }}
+      </div>
+      {% if boxObject.example2Rendered|safe|slice:"401:" %}
         <div class="showMore collapseInfoContainer">
           <a role="button"
              class="collapsed text-truncation-btn"
