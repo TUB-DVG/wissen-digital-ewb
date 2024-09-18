@@ -39,7 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 } else {
                     $(this).parent().addClass('comparison-active');
-                    storedNames.push(id);
+                    if (!storedNames.includes(id)) {
+                      storedNames.push(id);
+                    }
+                    
                 }
                 
                 sessionStorage.setItem("ids", JSON.stringify(storedNames));
@@ -62,12 +65,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 comparisonButtonHandlingTools();
             }
             var ids = values.slice(0, -1); // Remove trailing comma
+            
             for (let i = 0; i < ids.length; i++) {
                 try {
                     var comparisonBar = document.getElementById(ids[i]);
                     var inputNode = comparisonBar.getElementsByClassName('comparisonInputTools')[0];
                     comparisonBar.classList.add("comparison-active");
-                    inputNode.checked = true;
+                    //inputNode.checked = true;
                 } catch (e) {
                     continue;
                 }
@@ -95,6 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
             sessionStorage.clear();
             comparisonButtonHandlingTools();
             sessionStorage.setItem("comparisonTools", "True");
+          //var siteData = sessionStorage.getItem("site");
+          //if (siteDate == undefined) {
+          //
+          //}
         });
 
         // Define event listener for the second comparison button for tools

@@ -597,8 +597,6 @@ msgid "Bauteilgewicht (in kg)"
 msgstr "Component weight (in kg)"
 
 #: common/views.py:104 component_list/views.py:211
-#, fuzzy
-#| msgid "Lebensdauer (in Jahren)"
 msgid "Lebensdauer (in Jahre)"
 msgstr "Lifespan (in years)"
 
@@ -1082,15 +1080,15 @@ msgstr ""
 
 #: pages/views.py:118
 msgid "Teilnehmende Beobachtung"
-msgstr "Participant Observation"
+msgstr "Participant observation"
 
 #: pages/views.py:119
 msgid "Einzel-Interview"
-msgstr "Individual Interview"
+msgstr "Individual interview"
 
 #: pages/views.py:141
 msgid "Gruppen-Interview/Fokusgruppe"
-msgstr "Group Interview/Focus Group"
+msgstr "Group interview/focus group"
 
 #: pages/views.py:146
 msgid "Personas"
@@ -1106,7 +1104,7 @@ msgstr ""
 
 #: pages/views.py:160
 msgid "A/B-Test"
-msgstr "A/B Test"
+msgstr "A/B testing"
 
 #: pages/views.py:165
 msgid "Prototyping"
@@ -1126,19 +1124,19 @@ msgstr ""
 
 #: pages/views.py:189
 msgid "Lautes Denken"
-msgstr "Think-Aloud"
+msgstr "Thinking aloud"
 
 #: pages/views.py:194
 msgid "Eyetracking"
-msgstr "Eye Tracking"
+msgstr "Eye tracking"
 
 #: pages/views.py:199
 msgid "Heuristische Evaluation"
-msgstr "Heuristic Evaluation"
+msgstr "Heuristic evaluation"
 
 #: pages/views.py:204
 msgid "Usability-Befragung"
-msgstr "Usability Survey"
+msgstr "Usability survey"
 
 #: pages/views.py:216
 msgid "Methoden der Nutzendenintegration"

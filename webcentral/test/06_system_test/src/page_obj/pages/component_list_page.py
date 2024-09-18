@@ -13,8 +13,8 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
-from Src.PageObject.Locators import Locator
-from Src.PageObject.Pages.GenericPageObject import GenericPageObject
+from src.page_obj.locators import Locator
+from src.page_obj.pages.generic_page_obj import GenericPageObject
 
 
 class ComponentListPage(GenericPageObject):
@@ -154,6 +154,10 @@ class ComponentListPage(GenericPageObject):
         except:
             return None
 
+    def getCompareRadio(self):
+        """Returns the radio-element, which triggers comparison view"""
+        return self.driver.find_element(By.ID, "triggerComparisonMode")
+
     def getPaginationContainer(self):
         """Returns the div-element, which wraps the content of the page"""
         try:
@@ -237,4 +241,13 @@ class ComponentListPage(GenericPageObject):
         return element.find_element(
             By.XPATH,
             "./..",
+        )
+
+    def getShowMoreElements(self):
+        """Return all instances of the `Show more`-expansion buttons currently
+        shown on the page.
+
+        """
+        return self.driver.find_elements(
+            By.XPATH, "//a[contains(@href, '#collapseComponent')]"
         )

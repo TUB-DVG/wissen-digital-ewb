@@ -74,7 +74,7 @@ def comparison(request):
                 "displayedStr": _("Kategorie"),
             },
             {
-                "dbLocator": "component",
+                "dbLocator": "componentClass",
                 "isManyToManyField": False,
                 "displayedStr": _("Komponente"),
             },

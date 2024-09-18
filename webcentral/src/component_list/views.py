@@ -70,7 +70,7 @@ class ComponentListView(View):
             furtherInformationNotes__icontains=searchInputValue
         )
         searchQueryInput = searchQueryInput | Q(
-            sources__icontains=searchInputValue
+            sources_de__icontains=searchInputValue
         )
 
         searchQueryCategory = Q()
