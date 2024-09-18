@@ -17,6 +17,9 @@ $(window).on('load', function(element) {
 // the criteria catalog is modified, so that the layer deeper than the 2. layer is shown in one element
 modifyCatalogToBeShownInOneElement();
 depthFirstWalkForParagraphs();
+
+makeLinksOpenInNewTap();
+
 jumpToSearchedElement = false;
 var searchedElementToJumpTo = undefined
 if (idOfTopicToBeOpened != "") {
@@ -41,6 +44,14 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(el);
+
+// this function adds the target="_blank" attribute on each a-tag in the 
+// criteria catalog. That leads to all links in the crteria catalog being 
+// openend in a new tap.
+function makeLinksOpenInNewTap() {
+  $("#hi").find("a").attr("target", "_blank")
+}
+
 
 function isAboveStickyElement(stickyElement) {
   if (stickyElement.getBoundingClientRect().top > 170) {
