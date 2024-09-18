@@ -8,13 +8,13 @@
       <div class="row">
         <div class="col-12">
           {% if request.LANGUAGE_CODE == "de" %}
-            <img src="{% static 'assets/images/StartPage_figure.svg' %}"
+            <img src="{% static 'assets/images/start_page_de.svg' %}"
                  class="rounded"
                  alt="overview_figure"
                  style="width: 800px vertical-align: middle"
                  nonce="{{ request.csp_nonce }}" />
           {% else %}
-            <img src="{% static 'assets/images/StartPage_figure_en.svg' %}"
+            <img src="{% static 'assets/images/start_page_en.svg' %}"
                  class="rounded"
                  alt="overview_figure"
                  style="width: 800px vertical-align: middle"
