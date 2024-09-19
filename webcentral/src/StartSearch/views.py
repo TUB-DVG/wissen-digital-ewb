@@ -39,6 +39,7 @@ from use_cases.models import UseCase
 from publications.models.publication import Publication
 from data_sufficiency.models import DataSufficiency
 
+
 def findPicturesForFocus(searchResultObj, tool=False):
     """Return the path to the picture, showing the Focus.
 
@@ -235,12 +236,14 @@ def resultSearch(request):
         | criterionComponentListTwo
         | criterionComponentListThree
     )
-    
+
     criterionDataSufficiencyOne = Q(strategyCategory__icontains=searchInput)
     criterionDataSufficiencyTwo = Q(
         categoryShortDescription__icontains=searchInput
     )
-    criterionDataSufficiencyThree = Q(categoryLongDescription__icontains=searchInput)
+    criterionDataSufficiencyThree = Q(
+        categoryLongDescription__icontains=searchInput
+    )
     filteredDataSufficiency = DataSufficiency.objects.values(
         "id",
         "strategyCategory",
@@ -469,14 +472,16 @@ def resultSearch(request):
         useCaseObj["date"] = _("2024-07-01")
         useCaseObj["virtDate"] = date.fromisoformat("2049-09-09")
         useCaseObj["pathToFocusImage"] = findPicturesForFocus(useCaseObj)
-    
+
     for dataSufficiencyObj in filteredDataSufficiency:
         dataSufficiencyObj["name"] = dataSufficiencyObj["strategyCategory"]
         dataSufficiencyObj["kindOfItem"] = "Datensuffizenz"
         dataSufficiencyObj["classificationAgg"] = _("Datensuffizenz")
         dataSufficiencyObj["date"] = _("2024-09-01")
         dataSufficiencyObj["virtDate"] = date.fromisoformat("2049-09-09")
-        dataSufficiencyObj["pathToFocusImage"] = findPicturesForFocus(dataSufficiencyObj)
+        dataSufficiencyObj["pathToFocusImage"] = findPicturesForFocus(
+            dataSufficiencyObj
+        )
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
