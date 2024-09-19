@@ -369,10 +369,12 @@ class TestMainPage(WebDriverSetup):
                 "linkNamesEnglish": [
                     "Negative environmental impacts",
                     "Positive environmental impacts - Good-practice",
+                    "Data sufficiency",
                 ],
                 "linkNamesGerman": [
                     "Negative Umweltwirkungen",
                     "Positive Umweltwirkungen - Good-practice",
+                    "Datensuffizenz",
                 ],
                 "borderColor": self.ECOLOGICAL_COLOR,
             },

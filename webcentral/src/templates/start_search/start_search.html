@@ -195,19 +195,19 @@
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <img src="{% static 'assets/images/standards.svg' %}"
-                           class="rounded"
-                           alt="icon" />
-                    </td>
-                    <td>
-                      <a class="technical"
-                         href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">
-                        {% translate "Anwendungsfälle" %}
-                      </a>
-                    </td>
-                  </tr>
+                  <!--<tr>-->
+                  <!--  <td>-->
+                  <!--    <img src="{% static 'assets/images/standards.svg' %}"-->
+                  <!--         class="rounded"-->
+                  <!--         alt="icon" />-->
+                  <!--  </td>-->
+                  <!--  <td>-->
+                  <!--    <a class="technical"-->
+                  <!--       href="{% url 'use_cases_list' %}?searched=&Fokus={% translate 'technisch' %}">-->
+                  <!--      {% translate "Anwendungsfälle" %}-->
+                  <!--    </a>-->
+                  <!--  </td>-->
+                  <!--</tr>-->
                 </table>
               </div>
             </div>
@@ -326,6 +326,18 @@
                         {% translate "Positive Umweltwirkungen" %} - Good-practice
                       </td>
                     </tr>
+                    <tr>
+                    <td>
+                      <img src="{% static 'assets/images/standards.svg' %}"
+                           class="rounded"
+                           alt="icon" />
+                    </td>
+                    <td>
+                      <a class="ecological" href="{% url 'dataSufficiency' %}">
+                        {% translate "Datensuffizenz" %}
+                      </td>
+                    </tr>
+                  
                   </table>
                 </div>
               </div>
