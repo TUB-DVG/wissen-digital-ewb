@@ -112,7 +112,9 @@
                                       <tr data-href="{% url 'use_cases_view' dataSet.id %}">
                                       {% elif dataSet.kindOfItem == "Veröffentlichung" %}
                                         <tr data-href="{% url 'publicationDetails' dataSet.id %}">
-                                        {% endif %}
+                                      {% elif dataSet.kindOfItem == "Datensuffizenz" %}
+                                        <tr data-href="{% url 'dataSufficiencyBox' dataSet.id %}">  
+                                      {% endif %}
                                         <!-- Table data -->
                                         <!-- Name of item -->
                                         <td>
