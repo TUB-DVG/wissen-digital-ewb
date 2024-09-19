@@ -37,6 +37,7 @@ from positive_environmental_impact.models import EnvironmentalImpact
 from component_list.models import Component
 from use_cases.models import UseCase
 from publications.models.publication import Publication
+from data_sufficiency.models import DataSufficiency
 
 
 def findPicturesForFocus(searchResultObj, tool=False):
@@ -76,6 +77,8 @@ def findPicturesForFocus(searchResultObj, tool=False):
         if searchResultObj["kindOfItem"] == "Veröffentlichung":
             obj = Publication.objects.get(id=searchResultObj["id"])
             focusStrList = obj.focus.all().values_list("focus_de", flat=True)
+        if searchResultObj["kindOfItem"] == "Datensuffizenz":
+            focusStrList = ["ökologisch"]
 
     pathStr = "assets/images/"
     if len(focusStrList) == 1:
@@ -232,6 +235,24 @@ def resultSearch(request):
         criterionComponentListOne
         | criterionComponentListTwo
         | criterionComponentListThree
+    )
+
+    criterionDataSufficiencyOne = Q(strategyCategory__icontains=searchInput)
+    criterionDataSufficiencyTwo = Q(
+        categoryShortDescription__icontains=searchInput
+    )
+    criterionDataSufficiencyThree = Q(
+        categoryLongDescription__icontains=searchInput
+    )
+    filteredDataSufficiency = DataSufficiency.objects.values(
+        "id",
+        "strategyCategory",
+        "categoryShortDescription",
+        "categoryLongDescription",
+    ).filter(
+        criterionDataSufficiencyOne
+        | criterionDataSufficiencyTwo
+        | criterionDataSufficiencyThree
     )
 
     filteredProjects = Subproject.objects.values(
@@ -451,6 +472,16 @@ def resultSearch(request):
         useCaseObj["date"] = _("2024-07-01")
         useCaseObj["virtDate"] = date.fromisoformat("2049-09-09")
         useCaseObj["pathToFocusImage"] = findPicturesForFocus(useCaseObj)
+
+    for dataSufficiencyObj in filteredDataSufficiency:
+        dataSufficiencyObj["name"] = dataSufficiencyObj["strategyCategory"]
+        dataSufficiencyObj["kindOfItem"] = "Datensuffizenz"
+        dataSufficiencyObj["classificationAgg"] = _("Datensuffizenz")
+        dataSufficiencyObj["date"] = _("2024-09-01")
+        dataSufficiencyObj["virtDate"] = date.fromisoformat("2049-09-09")
+        dataSufficiencyObj["pathToFocusImage"] = findPicturesForFocus(
+            dataSufficiencyObj
+        )
     # concat the prepared querySets to one QuerySet
     filteredData = list(
         chain(
@@ -465,6 +496,7 @@ def resultSearch(request):
             filteredComponents,
             filteredUseCases,
             filteredPublications,
+            filteredDataSufficiency,
         )
     )
     # sort data list by name/kindOfItem and so on

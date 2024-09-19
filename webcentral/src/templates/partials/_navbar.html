@@ -169,99 +169,99 @@
                     {% translate "Positive Umweltwirkungen" %} - Good-practice
                   </a>
                 </li>
-                <!--</li>-->
-                <!--<li>-->
-                <!--  <a class="dropdown-item" href="{% url 'dataSufficiency' %}">-->
-                <!--    {% translate "Datensuffizienz" %}-->
-                <!--  </a>-->
-                <!--</li>-->
-              </ul>
-            </li>
-            <!-- Nav ecological focus END -->
-            <!-- Nav legal focus START-->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"
-                 id="legalDropdown"
-                 role="button"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false">
-                {% if focusBorder == "legal" %}
-                  <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="legal colored icon"
-                       style="width:35px" />
-                {% else %}
-                  <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="legal uncolored icon"
-                       style="width:35px" />
-                {% endif %}
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'dataSufficiency' %}">
+                  {% translate "Datensuffizienz" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- Nav ecological focus END -->
+          <!-- Nav legal focus START-->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="legalDropdown"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+              {% if focusBorder == "legal" %}
+                <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="legal colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="legal uncolored icon"
+                     style="width:35px" />
+              {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="legalDropdown">
-                <li>
-                  <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
-                    {% translate "Kriterienkatalog" %}
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'dataSecurity' %}">
-                    {% translate "Daten&shy;schutz&shy;übersicht" %}
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
-                    {% translate "Icons und Visualisierung" %}
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"
-                 id="globalDropdown"
-                 role="button"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false">
-                {% if focusBorder == "global" %}
-                  <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="global colored icon"
-                       style="width:35px" />
-                {% else %}
-                  <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="global uncolored icon"
-                       style="width:35px" />
-                {% endif %}
+              &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="legalDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
+                  {% translate "Kriterienkatalog" %}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'dataSecurity' %}">
+                  {% translate "Daten&shy;schutz&shy;übersicht" %}
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
+                  {% translate "Icons und Visualisierung" %}
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"
+               id="globalDropdown"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+              {% if focusBorder == "global" %}
+                <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="global colored icon"
+                     style="width:35px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
+                     class="position-absolute start-0 top-50 translate-middle-y"
+                     alt="global uncolored icon"
+                     style="width:35px" />
+              {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Global" %}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="globalDropdown">
-                <li>
-                  <a class="dropdown-item" href="{% url 'use_cases_list' %}">
-                    {% translate "Anwendungsfälle" %}
-                  </a>
-                </li>
-                <!-- <li>
+              &nbsp; &nbsp; &nbsp; {% translate "Global" %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="globalDropdown">
+              <li>
+                <a class="dropdown-item" href="{% url 'use_cases_list' %}">
+                  {% translate "Anwendungsfälle" %}
+                </a>
+              </li>
+              <!-- <li>
                 <a class="dropdown-item" href="">
                   {% translate "City GML Visualisierung" %}
                 </a>
               </li> -->
-                <li>
-                  <a class="dropdown-item" href="{% url 'publicationPage' %}">
-                    {% translate "Veröffentlichungen" %}
-                  </a>
-                </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'publicationPage' %}">
+                  {% translate "Veröffentlichungen" %}
+                </a>
               </li>
-            </ul>
-            <!-- Nav legal focus END -->
+            </li>
           </ul>
-          <!-- Nav Main menu END -->
-        </div>
-        <!-- Main navbar END -->
+          <!-- Nav legal focus END -->
+        </ul>
+        <!-- Nav Main menu END -->
+      </div>
+      <!-- Main navbar END -->
 
-      </nav>
-      <!-- Logo Nav END -->
-    </header>
-    <!-- Header END -->
+    </nav>
+    <!-- Logo Nav END -->
+  </header>
+  <!-- Header END -->

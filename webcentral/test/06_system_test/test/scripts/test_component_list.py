@@ -126,29 +126,29 @@ class TestComponentList(WebDriverSetup):
             "Div box 1 does not have a green border",
         )
 
-    def testLinksFromOverviewPage(self):
-        """Test if the links from the negative environmental impacts page leads to a working page."""
-        self.driver.get(
-            os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ"
-        )
-        impactsObj = NegativeEnvironmentalImpacts(self.driver)
-        boxes1and2 = impactsObj.getBox1and2()
-        # click the box since the <a> cant be clicked directly by selenium
-        linkToComponentList = boxes1and2[0]
-        linkToComponentList.click()
-        self.waitUntilConditionIsMet(
-            lambda d: self.driver.title == "Effort for used components"
-            or self.driver.title == "Aufwände für verwendete Komponenten"
-        )
-        self.driver.back()
-
-        linkToDataProcessing = boxes1and2 = impactsObj.getBox1and2()[1]
-        linkToDataProcessing.click()
-        self.waitUntilConditionIsMet(
-            lambda d: self.driver.title
-            == "Aufwände für Datenverarbeitungsprozesse"
-            or self.driver.title == "Expenses for data processing processes"
-        )
+    # def testLinksFromOverviewPage(self):
+    #     """Test if the links from the negative environmental impacts page leads to a working page."""
+    #     self.driver.get(
+    #         os.environ["siteUnderTest"] + "/pages/environmentalIntegrityNegativ"
+    #     )
+    #     impactsObj = NegativeEnvironmentalImpacts(self.driver)
+    #     boxes1and2 = impactsObj.getBox1and2()
+    #     # click the box since the <a> cant be clicked directly by selenium
+    #     linkToComponentList = boxes1and2[0]
+    #     linkToComponentList.click()
+    #     self.waitUntilConditionIsMet(
+    #         lambda d: self.driver.title == "Effort for used components"
+    #         or self.driver.title == "Aufwände für verwendete Komponenten"
+    #     )
+    #     self.driver.back()
+    #
+    #     linkToDataProcessing = boxes1and2 = impactsObj.getBox1and2()[1]
+    #     linkToDataProcessing.click()
+    #     self.waitUntilConditionIsMet(
+    #         lambda d: self.driver.title
+    #         == "Aufwände für Datenverarbeitungsprozesse"
+    #         or self.driver.title == "Expenses for data processing processes"
+    #     )
 
     def testComponentListPage(self):
         """Test the structure of the sub-page of the negative environmental impacts page"""

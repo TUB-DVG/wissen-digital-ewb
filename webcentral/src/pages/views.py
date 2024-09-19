@@ -389,6 +389,7 @@ def dataSufficiencyBox(request, idOfObject):
     """Call render function for data sufficiency box page."""
     dataSufficiencyObj = DataSufficiency.objects.get(id=idOfObject)
     context = {
+        "pageTitle": dataSufficiencyObj.strategyCategory,
         "imageInBackButton": "img/componentList/caret-left.svg",
         "boxObject": dataSufficiencyObj,
         "focusBorder": "ecological",

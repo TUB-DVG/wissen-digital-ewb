@@ -369,10 +369,12 @@ class TestMainPage(WebDriverSetup):
                 "linkNamesEnglish": [
                     "Negative environmental impacts",
                     "Positive environmental impacts - Good-practice",
+                    "Data sufficiency",
                 ],
                 "linkNamesGerman": [
                     "Negative Umweltwirkungen",
                     "Positive Umweltwirkungen - Good-practice",
+                    "Datensuffizenz",
                 ],
                 "borderColor": self.ECOLOGICAL_COLOR,
             },
@@ -455,6 +457,40 @@ class TestMainPage(WebDriverSetup):
                 self.titleEnDe = [
                     "User integration - Style guide",
                     "Nutzendenintegration - Styleguide",
+                ]
+                self.waitUntilConditionIsMet(
+                    self._checkIfResultsPageIsLoadedByTitle
+                )
+
+    def testDataSufficiencyInResults(self):
+        """Test if user_integration elements are on the search results-page."""
+        self.driver.get(os.environ["siteUnderTest"])
+        startPageObj = StartPage(self.driver)
+        self._setLanguageToGerman()
+        searchInputField = startPageObj.getSearchInputField()
+        searchInputField.send_keys("Zustandsbeobachter")
+        searchInputField.send_keys(Keys.RETURN)
+
+        # wait until results page is loaded:
+        self.waitUntilConditionIsMet(
+            lambda d: self.driver.title == "Search results"
+            or self.driver.title == "Suchergebnisse"
+        )
+
+        listOfRowsInResultsTable = startPageObj.getSearchResults()
+        self.assertGreaterEqual(len(listOfRowsInResultsTable), 1)
+        for result in listOfRowsInResultsTable:
+            if "Zustandsbeobachter" in result.text:
+                self.assertTrue(
+                    "Data sufficiency" in result.text
+                    or "Datensuffizenz" in result.text
+                )
+                self.scrollElementIntoViewAndClickIt(
+                    result.find_element(By.XPATH, "./td")
+                )
+                self.titleEnDe = [
+                    "Zustandsbeobachter",
+                    "Zustandsbeobachter",
                 ]
                 self.waitUntilConditionIsMet(
                     self._checkIfResultsPageIsLoadedByTitle
