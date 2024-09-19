@@ -522,7 +522,7 @@ def iconsAndVis(request):
 
 def criteriaCatalog(request):
     """Call render function for criteria catalog page."""
-    criteriaCatalogObjs = CriteriaCatalog.objects.all()
+    criteriaCatalogObjs = CriteriaCatalog.objects.all().order_by("id")
     explanText = _("Worum geht es?<br><br>")
     explanText += _(
         "Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.<br><br>"
@@ -537,12 +537,12 @@ def criteriaCatalog(request):
     explanText += _(
         "<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen.</p>"
     )
-    explanTextRendered = Template(explanText).render(Context({}))
+    # explanTextRendered = Template(explanText).render(Context({}))
     context = {
         "pathToImage": "img/componentList/circle-icon.svg",
         "heading": _("Kriterienkatalog"),
         "showMorePresent": False,
-        "explanaitionText": explanTextRendered,
+        "explanaitionText": explanText,
         "boxes": [
             {
                 "pathToTemplate": "criteria_catalog/criteria_catalog_overview_box.html",
@@ -551,6 +551,7 @@ def criteriaCatalog(request):
             for criteriaCatalogObj in criteriaCatalogObjs
         ],
         "focusBorder": "legal",
+        "showMorePresent": True,
     }
 
     return render(request, "pages/criteria_catalog.html", context)

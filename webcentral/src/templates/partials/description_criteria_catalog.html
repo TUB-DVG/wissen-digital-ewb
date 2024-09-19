@@ -1,0 +1,152 @@
+{% load i18n %}
+{% load static %}
+<style>
+  .mainContent {
+      font-size: 22px;
+      display: inline;
+  }
+  .showMore {
+      display: inline;
+      
+      font-size: 22px;
+  }
+  .blockOfContent {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .showMoreCriteriaCatalog {
+    color: black;
+  }
+  .showMoreCriteriaCatalog img {
+    margin-left: 20px;
+  }
+  .headingShowMore {
+    font-size: 22px;
+  }
+  .textShowMore {
+    font-size: 16px;
+  }
+  #explanationText {
+    margin-left: 140px;
+    margin-bottom: 100px;
+    margin-top: 20px;
+  }
+</style>
+<div class="col-12 descriptionContainer {{ focusBorder }}-cards"
+     style="margin-top: 24px">
+  <div class="description-heading mb-3">
+    {% if pathToImage %}
+      <img src="{% static pathToImage %}"
+           alt="Circle icon"
+           class="description-heading__icon" />
+    {% endif %}
+    <p class="mb-0 description-heading__paragraph">{{ heading }}</p>
+  </div>
+  <div class="description-content">
+    <div class="mainContent col-lg-12">
+      <p>
+        Die Datenschutz-Grundverordnung (DSGVO) verpflichtet datenverarbeitende Akteure auch im Gebäude- und Quartierskontext zur Einhaltung von Datenschutzanforderungen (wie dem Erfordernis einer Rechtsgrundlage, Transparenzpflichten oder Datenminimierung). Dieser Kriterienkatalog führt dich Schritt für Schritt durch die Anforderungen der DSGVO, wenn du Daten für einen der folgenden Zweck-Kategorien verarbeiten möchtest.
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
+        <div class="showMore">
+          <a role="button"
+             class="collapsed text-truncation-btn showMoreCriteriaCatalog"
+             data-toggle="collapse"
+             href="#explanationText"
+             aria-expanded="false"
+             aria-controls="collapseInfoTools"
+             style="color: black">
+            <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}" />
+            <span id="textInExpansionButton">Erfahre mehr über den Hintergrund dieses Themas</span>
+          </a>
+        </div>
+        <div class="collapse card-body" id="explanationText">
+          <p class="headingShowMore">Worum geht es?</p>
+          <p class="textShowMore">
+            Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche Erfordernis einer Rechtsgrundlage.
+          </p>
+          <p class="headingShowMore">Wie funktioniert das?</p>
+          <p class="textShowMore">
+            Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in Form von “Kriterien” und “Anforderungen”, die für die jeweilige Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das Suchfeld gezielt durchsuchen.
+          </p>
+          <ul>
+            <li class="textShowMore">
+              Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.
+            </li>
+            <li class="textShowMore">
+              Andererseits können die “Anforderungen” als Checkliste begriffen werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten beachten sollten.
+            </li>
+          </ul>
+          <p class="headingShowMore">Anmerkung</p>
+          <p class="textShowMore">
+            Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+      var showMorePresent = '{{ showMorePresent }}'
+      var explanationText = '{{ explanaitionText|safe }}'
+      var numberOfInitialShownIntro = '{{ charNumberToShowCollapsed }}';
+      var numberOfInitialShownIntro = parseFloat(numberOfInitialShownIntro);
+      //debugger;
+      <!--if (showMorePresent == "True") {-->
+      <!--  // split the explanationText into 2 parts-->
+      <!--  var collapsedText = explanationText.slice(0, numberOfInitialShownIntro)-->
+      <!--  var restOfText = explanationText.slice(numberOfInitialShownIntro)-->
+      <!---->
+      <!--  $("#mainContent").html(collapsedText);-->
+      <!--  $("#explanationText").html(restOfText);-->
+      <!--  debugger;-->
+      <!--}-->
+      <!--else {-->
+      <!--  $("#mainContent").html('{{ explanaitionText|safe }}');-->
+      <!--}-->
+      var $collapseButton = $('.text-truncation-btn');
+    var isExpanded = $collapseButton.attr('aria-expanded') === 'true';
+    $collapseButton.text(isExpanded ? $collapseButton.data('expanded-text') : $collapseButton.data('collapsed-text'));
+
+    // Change button text on click based on the collapse state
+    $collapseButton.click(function() {
+        var $this = $(this);
+        setTimeout(function() { // Use setTimeout to wait for the collapse action to complete
+            var isExpanded = $this.attr('aria-expanded') === 'true';
+            $this.text(isExpanded ? $this.data('expanded-text') : $this.data('collapsed-text'));
+        }, 350); // Adjust timeout duration if necessary
+    });
+  });
+  // Select the div element to observe
+var targetNode = document.getElementById("explanationText");
+
+// Create a mutation observer instance
+var observer = new MutationObserver(function(mutationsList, observer) {
+    mutationsList.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+            // Class list has changed, run your logic
+            if ($("#explanationText").hasClass("show")) {
+                $("#explanationText").parent().css("background", "#F9F6DA");
+              $("#textInExpansionButton").text("");
+                $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/minus.svg' %}");
+                
+
+            } else {
+                $("#explanationText").parent().css("background", "none");
+                $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/plus.svg' %}");
+                $("#textInExpansionButton").text("Erfahre mehr über den Hintergrund dieses Themas");
+            }
+        }
+    });
+});
+
+// Define the config object for the observer
+var config = { attributes: true }; // Only observe attribute changes
+
+// Start observing the target element for attribute changes (including class changes)
+observer.observe(targetNode, config);
+</script>
