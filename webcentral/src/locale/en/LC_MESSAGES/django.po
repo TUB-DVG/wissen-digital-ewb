@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-16 09:15+0000\n"
+"POT-Creation-Date: 2024-09-19 08:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Datasets/views.py:84 StartSearch/views.py:450
+#: Datasets/views.py:84 StartSearch/views.py:471
 msgid "Anwendungsfall"
 msgstr "Use case"
 
@@ -455,62 +455,71 @@ msgstr "For the selected stations exist "
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
-#: StartSearch/views.py:303
+#: StartSearch/views.py:324
 #, fuzzy
 #| msgid "Veröffentlichungen"
 msgid "Veröffentlichung"
 msgstr "Publications"
 
-#: StartSearch/views.py:349
+#: StartSearch/views.py:370
 msgid "Forschungsprojekt"
 msgstr "Research project"
 
-#: StartSearch/views.py:363 StartSearch/views.py:375 StartSearch/views.py:396
+#: StartSearch/views.py:384 StartSearch/views.py:396 StartSearch/views.py:417
 msgid "noch nicht hinterlegt"
 msgstr "not yet filed"
 
-#: StartSearch/views.py:374
+#: StartSearch/views.py:395
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:395 pages/views.py:521
+#: StartSearch/views.py:416 pages/views.py:543
 #: templates/partials/_navbar.html:205
-#: templates/start_search/start_search.html:368
+#: templates/start_search/start_search.html:345
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
-#: StartSearch/views.py:412 templates/pages/userEngagement.html:4
+#: StartSearch/views.py:433 templates/pages/userEngagement.html:4
 #: templates/partials/_navbar.html:133
-#: templates/start_search/start_search.html:265 user_integration/views.py:14
+#: templates/start_search/start_search.html:251 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
-#: StartSearch/views.py:413 StartSearch/views.py:423 StartSearch/views.py:430
-#: StartSearch/views.py:441 StartSearch/views.py:451
+#: StartSearch/views.py:434 StartSearch/views.py:444 StartSearch/views.py:451
+#: StartSearch/views.py:462 StartSearch/views.py:472
 msgid "2024-07-01"
 msgstr ""
 
-#: StartSearch/views.py:422 businessModel/views.py:14 businessModel/views.py:40
+#: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
 #: pages/views.py:47 templates/partials/_navbar.html:118
-#: templates/start_search/start_search.html:250
+#: templates/start_search/start_search.html:241
 msgid "Geschäftsmodelle"
 msgstr "Business models"
 
-#: StartSearch/views.py:429 pages/views.py:304 pages/views.py:332
+#: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
 #: templates/partials/_navbar.html:169
-#: templates/start_search/start_search.html:326
+#: templates/start_search/start_search.html:301
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
-#: StartSearch/views.py:440 component_list/views.py:323
+#: StartSearch/views.py:461 component_list/views.py:323
 #: component_list/views.py:370 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
 #: templates/partials/_navbar.html:163
-#: templates/start_search/start_search.html:314
+#: templates/start_search/start_search.html:291
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
+
+#: StartSearch/views.py:479 templates/pages/dataSufficiency.html:4
+#: templates/start_search/start_search.html:310
+msgid "Datensuffizenz"
+msgstr "Data sufficiency"
+
+#: StartSearch/views.py:480
+msgid "2024-09-01"
+msgstr ""
 
 #: TechnicalStandards/views.py:83
 msgid "Bezeichnung"
@@ -1301,12 +1310,14 @@ msgid ""
 "Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem "
 "notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, "
 "wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb "
-"verbunden ist. Gleichzeitig soll bei der Datenerhebung, -übermittlung, -"
-"verarbeitung und -speicherung Hardware mit ressourcenschonendem "
-"Materialeinsatz und ressourcenschonende Übermittlungswege gewählt werden. "
-"Damit sollen die negativen ökologischen Wirkungen, die mit der "
-"Implementierung digitaler Anwendungen einhergehen, möglichst reduziert "
-"werden, während ein möglichst großer Nutzen erzielt werden soll. \n"
+"verbunden ist. Dieser Begriff ordnet unter sich unter „Software-Suffizienz“ "
+"ein als Teil der Digitalen Suffizienz aus Santarius et al. (2023). "
+"Gleichzeitig soll bei der Datenerhebung, -übermittlung, -verarbeitung und -"
+"speicherung Hardware mit ressourcenschonendem Materialeinsatz und "
+"ressourcenschonende Übermittlungswege gewählt werden. Damit sollen die "
+"negativen ökologischen Wirkungen, die mit der Implementierung digitaler "
+"Anwendungen einhergehen, möglichst reduziert werden, während ein möglichst "
+"großer Nutzen erzielt werden soll.  \n"
 "\n"
 "Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der "
 "Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 "
@@ -1321,7 +1332,7 @@ msgid ""
 "ab, die ökologischen Wirkungen durch die Erhebung, Verarbeitung und "
 "Speicherung von extensiven, nicht erforderlichen Daten zu minimieren. Um "
 "eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
-"unterschiedliche Begriffe verwendet. \n"
+"unterschiedliche Begriffe verwendet.\n"
 "\n"
 "Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten "
 "generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen "
@@ -1336,15 +1347,22 @@ msgid ""
 "\n"
 "Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
 "und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen.\n"
+"\n"
+"Literatur\n"
+"\n"
+"Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, Gossen, "
+"Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, Friederike, Lange, "
+"Steffen (2023): Digitale Suffizienz: konzeptionelle Überlegungen für IKT auf "
+"einem endlichen Planeten. Annals of Telekommunikation. 78, 277–295 (2023). "
+"https://doi.org/10.1007/s12243-022-00914-x\n"
 "    "
 msgstr ""
 
-#: pages/views.py:368 pages/views.py:393 templates/pages/dataSufficiency.html:4
-#: templates/partials/_navbar.html:175
+#: pages/views.py:372 pages/views.py:398 templates/partials/_navbar.html:175
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:405
+#: pages/views.py:410
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1424,19 +1442,20 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:440
+#: pages/views.py:445
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:448
+#: pages/views.py:453
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:455 templates/partials/privacy_overview_left_column.html:4
+#: pages/views.py:460 pages/views.py:461
+#: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy Overview"
 
-#: pages/views.py:469
+#: pages/views.py:475
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1491,11 +1510,56 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:507 templates/partials/_navbar.html:215
+#: pages/views.py:513 pages/views.py:514 templates/partials/_navbar.html:215
 #: templates/partials/icons_left_column.html:3
-#: templates/start_search/start_search.html:393
+#: templates/start_search/start_search.html:366
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
+
+#: pages/views.py:526
+msgid "Worum geht es?<br><br>"
+msgstr ""
+
+#: pages/views.py:528
+msgid ""
+"Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
+"Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
+"personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht "
+"die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die "
+"Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere "
+"Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche "
+"Erfordernis einer Rechtsgrundlage.<br><br>"
+msgstr ""
+
+#: pages/views.py:530
+msgid "Wie funktioniert das?<br><br>"
+msgstr ""
+
+#: pages/views.py:532
+msgid ""
+"<p>Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO "
+"in Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
+"Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der "
+"DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das "
+"Suchfeld gezielt durchsuchen.</p>"
+msgstr ""
+
+#: pages/views.py:535
+msgid ""
+"<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter "
+"liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</"
+"li><li>Andererseits können die “Anforderungen” als Checkliste begriffen "
+"werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten "
+"beachten sollten.</li></ul><br>"
+msgstr ""
+
+#: pages/views.py:538
+msgid ""
+"<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und "
+"bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, "
+"die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden "
+"müssen.</p>"
+msgstr ""
 
 #: publications/admin/orderedmodeladmin.py:153
 msgid "Move"
@@ -1882,13 +1946,13 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/TechnicalStandards/norm-explanation.html:42
 #: templates/TechnicalStandards/protocol-explanation.html:109
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:39
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:60
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:83
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:62
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:87
 #: templates/datasets_over/explanation.html:72
 #: templates/pages/environmentalIntegrityRightColumn.html:43
 #: templates/pages/environmentalIntegrityRightColumn.html:62
 #: templates/pages/environmentalIntegrityRightColumn.html:81
-#: templates/partials/descriptionContainer.html:107
+#: templates/partials/descriptionContainer.html:44
 #: templates/partials/listing-row.html:76
 #: templates/tools_over/explanationApps.html:203
 #: templates/tools_over/explanationBusinessApps.html:23
@@ -1903,13 +1967,13 @@ msgstr "Show less ..."
 #: templates/TechnicalStandards/norm-explanation.html:43
 #: templates/TechnicalStandards/protocol-explanation.html:110
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:40
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:61
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:84
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:63
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:88
 #: templates/datasets_over/explanation.html:73
 #: templates/pages/environmentalIntegrityRightColumn.html:44
 #: templates/pages/environmentalIntegrityRightColumn.html:63
 #: templates/pages/environmentalIntegrityRightColumn.html:82
-#: templates/partials/descriptionContainer.html:108
+#: templates/partials/descriptionContainer.html:45
 #: templates/partials/listing-row.html:77
 #: templates/tools_over/explanationApps.html:204
 #: templates/tools_over/explanationBusinessApps.html:24
@@ -2484,7 +2548,7 @@ msgstr "Collapse everything"
 msgid "Relevante DSGVO-Normen"
 msgstr "Relevant DSGVO norms"
 
-#: templates/data_sufficiency/dataSufficiencyRightColumn.html:92
+#: templates/data_sufficiency/dataSufficiencyRightColumn.html:97
 #: templates/user_integration/userEngagementDetailsRightColumn.html:46
 msgid "Literatur"
 msgstr "Literature"
@@ -3399,11 +3463,11 @@ msgstr ""
 msgid "Kriterienkatalog - Übersicht"
 msgstr "Catalog of criteria - Overview"
 
-#: templates/pages/criteria_catalog.html:21
+#: templates/pages/criteria_catalog.html:29
 msgid "Downloade den gesamten Kriterienkatalog als Exceldatei"
 msgstr "Download the full criteria catalog as excel file"
 
-#: templates/pages/criteria_catalog.html:26
+#: templates/pages/criteria_catalog.html:34
 msgid "Für welchen Zweck möchtest du Daten verarbeiten?"
 msgstr "For what purpose do you want to process data?"
 
@@ -3676,7 +3740,7 @@ msgid "Datensätze"
 msgstr "Datasets"
 
 #: templates/partials/_navbar.html:113
-#: templates/start_search/start_search.html:230
+#: templates/start_search/start_search.html:223
 msgid "Betrieblicher Fokus"
 msgstr "Operational Focus"
 
@@ -3689,17 +3753,17 @@ msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
 #: templates/partials/_navbar.html:157
-#: templates/start_search/start_search.html:292
+#: templates/start_search/start_search.html:271
 msgid "Ökologischer Fokus"
 msgstr "Ecological Focus"
 
 #: templates/partials/_navbar.html:200
-#: templates/start_search/start_search.html:347
+#: templates/start_search/start_search.html:326
 msgid "Rechtlicher Fokus"
 msgstr "Legal Focus"
 
 #: templates/partials/_navbar.html:210
-#: templates/start_search/start_search.html:380
+#: templates/start_search/start_search.html:355
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy Overview"
 
@@ -3709,7 +3773,7 @@ msgstr ""
 
 #: templates/partials/_navbar.html:243
 #: templates/start_search/start_search.html:207
-#: templates/start_search/start_search.html:430
+#: templates/start_search/start_search.html:393
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
@@ -3720,7 +3784,7 @@ msgid "City GML Visualisierung"
 msgstr "Icons and visualization"
 
 #: templates/partials/_navbar.html:253
-#: templates/start_search/start_search.html:442
+#: templates/start_search/start_search.html:403
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
@@ -4322,7 +4386,6 @@ msgstr "Further reading"
 msgid "Downloade die Open-Source Icons-Datenbank!"
 msgstr "Download the open-source icons database!"
 
-
 #: templates/partials/icons_right_column.html:5
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische "
@@ -4396,32 +4459,32 @@ msgid "Updates"
 msgstr "Updates"
 
 #: templates/partials/pagination.html:8
-#: templates/start_search/result_search.html:158
+#: templates/start_search/result_search.html:160
 msgid "erste"
 msgstr "first"
 
 #: templates/partials/pagination.html:12
-#: templates/start_search/result_search.html:163
+#: templates/start_search/result_search.html:165
 msgid "vorherige"
 msgstr "previous"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:168
+#: templates/start_search/result_search.html:170
 msgid "Seite"
 msgstr "Site"
 
 #: templates/partials/pagination.html:16
-#: templates/start_search/result_search.html:168
+#: templates/start_search/result_search.html:170
 msgid "von"
 msgstr "from"
 
 #: templates/partials/pagination.html:22
-#: templates/start_search/result_search.html:173
+#: templates/start_search/result_search.html:175
 msgid "nächste"
 msgstr "next"
 
 #: templates/partials/pagination.html:26
-#: templates/start_search/result_search.html:177
+#: templates/start_search/result_search.html:179
 msgid "letzte"
 msgstr "last"
 
@@ -4593,7 +4656,7 @@ msgstr "Type of result"
 msgid "Aktualität"
 msgstr "Actuality"
 
-#: templates/start_search/result_search.html:185
+#: templates/start_search/result_search.html:187
 msgid "Die Suche hat keine Ergebnisse ergeben."
 msgstr "The search returned no results."
 
@@ -4645,7 +4708,7 @@ msgstr "Applications"
 msgid "technisch"
 msgstr "technical"
 
-#: templates/start_search/start_search.html:232
+#: templates/start_search/start_search.html:225
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt vorrangig auf "
@@ -4663,7 +4726,7 @@ msgstr ""
 "applications in business models and the integration of and interaction with "
 "users."
 
-#: templates/start_search/start_search.html:294
+#: templates/start_search/start_search.html:273
 msgid ""
 "Der ökologische Fokus bei der Untersuchung der Digitalisierung\n"
 "                in der Energieforschung im Gebäudesektor zielt auf das\n"
@@ -4683,7 +4746,7 @@ msgstr ""
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
 
-#: templates/start_search/start_search.html:349
+#: templates/start_search/start_search.html:328
 msgid ""
 "Der rechtliche Fokus beleuchtet vorrangig die Bedeutung des\n"
 "                Datenschutzes für die Digitalisierung im Gebäudesektor. "
@@ -4703,11 +4766,11 @@ msgstr ""
 "Concurrently, it clarifiesdata protection laws for various applications in "
 "the building sector, offering concrete action recommendations for projects."
 
-#: templates/start_search/start_search.html:415
+#: templates/start_search/start_search.html:380
 msgid "Globaler Fokus"
 msgstr "Global Focus"
 
-#: templates/start_search/start_search.html:417
+#: templates/start_search/start_search.html:382
 msgid ""
 "Digitalisierung ist ein Querschnittsthema, das viele Aspekte gegenseitig "
 "beeinflusst. Unter dem globalem Fokus werden alle Punkte zusammengeführt, "
