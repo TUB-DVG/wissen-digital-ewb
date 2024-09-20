@@ -5,13 +5,13 @@
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
   <!-- Logo Nav START -->
-<style>
+  <style>
 
 #searchIconLi{
   display: flex;
   justify-content: flex-end;
 }
-</style>
+  </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <!-- Logo START -->
@@ -262,25 +262,25 @@
               </li>
             </li>
           </ul>
-          <li id="searchIconLi">  
-            <form method="POST"
-                  action="{% url 'ResultSearch' %}"
-            id="search-form">
-        {% csrf_token %}
+          <li id="searchIconLi">
+            <form method="POST" action="{% url 'ResultSearch' %}" id="search-form">
+              {% csrf_token %}
               <input id="searchText"
-                   class="form-control me-1"
-                   type="search"
-                   placeholder="{% translate 'Durchsuche die Plattform!' %}"
-                   name="searchValue"
-                   style="display: none; width: 900px;"
-                   nonce="{{ request.csp_nonce }}" />
+                     class="form-control me-1"
+                     type="search"
+                     placeholder="{% translate 'Durchsuche die Plattform!' %}"
+                     name="searchValue"
+                     style="display: none;
+                            width: 900px"
+                     nonce="{{ request.csp_nonce }}" />
               <button type="submit" style="border: none; background: none; padding: 0;">
-                <img id="searchIcon" src="{% static 'assets/images/search_icon_navbar.svg' %}">
+                <img id="searchIcon"
+                     src="{% static 'assets/images/search_icon_navbar.svg' %}" />
               </button>
             </form>
           </li>
         </ul>
-            
+
         <!-- Nav Main menu END -->
       </div>
       <!-- Main navbar END -->
