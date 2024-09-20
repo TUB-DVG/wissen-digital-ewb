@@ -5,6 +5,13 @@
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
   <!-- Logo Nav START -->
+<style>
+
+#searchIconLi{
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <!-- Logo START -->
@@ -53,7 +60,7 @@
                      alt="technical uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Technisch" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
@@ -110,7 +117,7 @@
                      alt="operational uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Betrieblich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
@@ -154,7 +161,7 @@
                        style="width:35px" />
                 {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
+                &nbsp; &nbsp; &nbsp; {% translate "Ökologisch" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
                 <li>
@@ -197,7 +204,7 @@
                      style="width:35px" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Rechtlich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
@@ -255,8 +262,25 @@
               </li>
             </li>
           </ul>
-          <!-- Nav legal focus END -->
+          <li id="searchIconLi">  
+            <form method="POST"
+                  action="{% url 'ResultSearch' %}"
+            id="search-form">
+        {% csrf_token %}
+              <input id="searchText"
+                   class="form-control me-1"
+                   type="search"
+                   placeholder="{% translate 'Durchsuche die Plattform!' %}"
+                   name="searchValue"
+                   style="display: none; width: 900px;"
+                   nonce="{{ request.csp_nonce }}" />
+              <button type="submit" style="border: none; background: none; padding: 0;">
+                <img id="searchIcon" src="{% static 'assets/images/search_icon_navbar.svg' %}">
+              </button>
+            </form>
+          </li>
         </ul>
+            
         <!-- Nav Main menu END -->
       </div>
       <!-- Main navbar END -->
@@ -265,3 +289,16 @@
     <!-- Logo Nav END -->
   </header>
   <!-- Header END -->
+  <script>
+    $("#searchIconLi").on("mouseenter", function (){
+      $("li.nav-item").css({
+        display: "none"
+      })
+      $("#searchText").css({display: "inline"})
+    }).on("mouseleave", function () {
+      $("li.nav-item").css({
+        display: "block"
+      })
+      $("#searchText").css({display: "none"})
+    })
+  </script>
