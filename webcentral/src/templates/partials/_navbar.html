@@ -276,7 +276,10 @@
             </li>
           </ul>
           <li class="flex-lg-grow-1" id="searchIconLi">
-            <form method="POST" class="d-flex" action="{% url 'ResultSearch' %}" id="search-form">
+            <form method="POST"
+                  class="d-flex"
+                  action="{% url 'ResultSearch' %}"
+                  id="search-form">
               {% csrf_token %}
               <input id="searchText"
                      class="form-control me-1 flex-lg-grow-1"
@@ -284,7 +287,7 @@
                      placeholder="{% translate 'Durchsuche die Plattform!' %}"
                      name="searchValue"
                      style="display: none;
-                            width:975px;"
+                            width:975px"
                      nonce="{{ request.csp_nonce }}" />
               <button type="submit" style="border: none; background: none; padding: 0;">
                 <img id="searchIcon"
