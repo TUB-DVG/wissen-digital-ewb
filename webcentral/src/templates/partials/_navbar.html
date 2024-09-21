@@ -7,9 +7,22 @@
   <!-- Logo Nav START -->
   <style>
 
-#searchIconLi{
+#search-form{
   display: flex;
   justify-content: flex-end;
+}
+#navbarCllapse{
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-item {
+  padding: 5px 5px;
+}
+#searchText {
+    display: block;         /* Ensures it behaves as a block element */
+    width: 100%;            /* Takes up all available width */
+    max-width: 100%;        /* Prevents overflow */
+    box-sizing: border-box; /* Ensures padding is included in the width */
 }
   </style>
   <nav class="navbar navbar-expand-lg">
@@ -60,7 +73,7 @@
                      alt="technical uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Technisch" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Technisch Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
@@ -117,7 +130,7 @@
                      alt="operational uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Betrieblich" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
@@ -161,7 +174,7 @@
                        style="width:35px" />
                 {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Ökologisch" %}
+                &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
                 <li>
@@ -204,7 +217,7 @@
                      style="width:35px" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Rechtlich" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
@@ -262,16 +275,16 @@
               </li>
             </li>
           </ul>
-          <li id="searchIconLi">
-            <form method="POST" action="{% url 'ResultSearch' %}" id="search-form">
+          <li class="flex-lg-grow-1" id="searchIconLi">
+            <form method="POST" class="d-flex" action="{% url 'ResultSearch' %}" id="search-form">
               {% csrf_token %}
               <input id="searchText"
-                     class="form-control me-1"
+                     class="form-control me-1 flex-lg-grow-1"
                      type="search"
                      placeholder="{% translate 'Durchsuche die Plattform!' %}"
                      name="searchValue"
                      style="display: none;
-                            width: 900px"
+                            width:955px;"
                      nonce="{{ request.csp_nonce }}" />
               <button type="submit" style="border: none; background: none; padding: 0;">
                 <img id="searchIcon"
