@@ -519,7 +519,6 @@ def resultSearch(request):
     filterDataPaginator = Paginator(filteredData, 12)
     pageNumber = request.GET.get("page", None)
     dataPerPage = filterDataPaginator.get_page(pageNumber)
-
     context = {
         "searchInput": searchInput,
         "data": dataPerPage,
