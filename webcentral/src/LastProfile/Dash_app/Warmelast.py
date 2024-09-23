@@ -51,14 +51,20 @@ except ValueError:
     polledStationNames = []
     api_error = True
     error_message = "Error accessing station data from Wetterdienst API. Please try again later."
-    
+
 # App layout
 app.layout = html.Div(
-    
-    [   # api warning
-        html.Div(id='api-error-message', children=[
-        html.P(error_message)
-        ], style={'display': 'block' if api_error else 'none', 'color': 'red', 'background': '#FFD2D2', 'padding': '10px'}),
+    [  # api warning
+        html.Div(
+            id="api-error-message",
+            children=[html.P(error_message)],
+            style={
+                "display": "block" if api_error else "none",
+                "color": "red",
+                "background": "#FFD2D2",
+                "padding": "10px",
+            },
+        ),
         # Title
         dcc.Store(id="on-load", data="loaded"),
         html.H1(
@@ -122,7 +128,9 @@ app.layout = html.Div(
             [
                 # Dropdown for State options for the Wetterdienst station choice
                 dcc.Dropdown(
-                    polledStationNames.to_pandas(), placeholder=placeholderState, id="state"
+                    polledStationNames.to_pandas(),
+                    placeholder=placeholderState,
+                    id="state",
                 ),
                 # Dropdown for the available wetterdienst stations in the chosen State
                 dcc.Dropdown(
@@ -276,7 +284,8 @@ def showHideElement(visibility_state):
 def stationSelection(state: str) -> list:
     return [
         {"label": row["name"], "value": row["station_id"]}
-        for index, row in stations.all().df.to_pandas().iterrows() if row['state'] == state
+        for index, row in stations.all().df.to_pandas().iterrows()
+        if row["state"] == state
         if row["state"] == state
     ]
 
