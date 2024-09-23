@@ -17,11 +17,20 @@ def index(request):
     """Shows the list of all projects including some key features."""
 
     explanationText = _(
-        """
-          <ol type="1">
-            <p>
-              Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein: 
-            </p>
+    """
+        <p>
+            Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle
+            im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte
+            der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. 
+        </p>
+
+        <h2>
+            Worum geht es?
+        </h2>
+        <p>
+            Wir gehen hier auf verschiedene Fragestellungen ein:
+        </p>
+        <ul>
             <li>Was verstehen wir unter einem Anwendungsfall?</li>
             <li>Welche Anwendungsfälle werden diskutiert?</li>
             <li>Was ist in dem Graph zu sehen?
@@ -30,15 +39,14 @@ def index(request):
                 <li>Woher kommen die Daten?</li>
               </ol>
             </li>
-          </ol>
+        </ul>
         <p>
-          Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster erkennen lassen? 
-          Die Anwendung ermöglicht durch Feedback energetische Einsparungen? 
-          Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen komplex und vielschichtig.
-          So werden bepspielweise Ressourcen und Energie für Erstellung und den Betrieb von Messetechnik benötigt, 
-          eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder ein genaues Erkennen von Fehlern.
-          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und in ihren Auswirkungen begreifbar gemacht werden.
+            Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster erkennen lassen? Die Anwendung ermöglicht durch Feedback energetische Einsparungen? Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen komplex und vielschichtig. So werden bepspielweise Ressourcen und Energie für Erstellung und den Betrieb von Messetechnik benötigt, eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder ein genaues Erkennen von Fehlern. Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und in ihren Auswirkungen begreifbar gemacht werden.
         </p>
+
+        <h2>
+            Der Smart Readiness Indicator
+        </h2>
         <p>
           Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur Bewertung der Intelligenzfähigkeit von Gebäuden
           nach Vorschriften der EU entwickelt wurde. In diesem Rahmenwerk sind “Services” definiert, welche hier als Use-Cases betrachtet werden.
@@ -48,10 +56,15 @@ def index(request):
           <li>Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und wordurch die Effekte/Wirkungen hervorgerufen werden.</li>
           <li>Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/Durchführung bezieht.</li>
           <li>Level: Die Abstufungen der Durchführung des Use-Casess.</li>
-          <table >
-           
+          <li>Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases auswirkt, beispielsweise Ökonomisch, Ökologisch, aus der Nutzendenperspektive oder der technischen Sichweite.</li>
+          <li>Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. Erzielten/intendierten Effekte.</li>
+        </ul>
+
+        <br />
+
+        <table >
             <tr>
-              <td>Smart Readiness Indicator Service</td>
+              <td class="table-header__bold">Smart Readiness Indicator Service</td>
               <td>Functionality level 0 (as non-smart default)</td>
               <td>Functionality level 1</td>
               <td>Functionality level 2</td>
@@ -59,19 +72,20 @@ def index(request):
               <td>Functionality level 4</td>
             </tr>
             <tr>
-              <td>Reporting information regarding electricity consumption</td>
+              <td class="table-header__bold">Reporting information regarding electricity consumption</td>
               <td>None</td>
               <td>Reporting on current electricity consumption on building level</td>
               <td>Real-time feedback or benchmarking on building level</td>
               <td>Real-time feedback or benchmarking on appliance level</td>
               <td>Real-time feedback or benchmarking on appliance level with automated personalized recommendation</td>
             </tr>
-          </table>
+        </table>
 
-          <li>Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases auswirkt, beispielsweise Ökonomisch, Ökologisch, aus der Nutzendenperspektive oder der technischen Sichweite.</li>
+        <br />
 
-             <li>Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. Erzielten/intendierten Effekte.</li>
-        </ul>
+        <h2>
+            „Reporting information regarding electricity consumption“
+        </h2>
         <p>
           Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des Services „Reporting information regarding electricity consumption“ statt.
           <br>
@@ -86,24 +100,26 @@ def index(request):
           <br>
           Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene Fragestellungen ein:
       </p>
-      
       <ul>
           <li>Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit von Effekten aus?</li>
           <li>Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei Gebäude) auf die Sichtbarkeit von Effekten aus?</li>
           <li>Was ist in dem Graph zu sehen?</li>
       </ul> 
+
+      <br />
+    
+      <h2>
           Weiterführende Informationen:
-        </p>
-        <p>
-          SRI:
-          <a href="https://energy.ec.europa.eu/system/files/2022-06/SRI training slide deck - Version 2 - Jan 2022 - updated.pdf">Training SlTraining Slide Deckide Deck</a>
-        </p>
-        <p>
-          IDEAL Datensatz:
-          <a href="https://pubmed.ncbi.nlm.nih.gov/34050194/">
-              Pullinger et al., The IDEAL household energy dataset, electricity, gas, contextual sensor data and survey data for 255 UK homes, ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a>
-        </p>
-        <br>
+      </h2>
+      <p>
+        SRI:
+        <a href="https://energy.ec.europa.eu/system/files/2022-06/SRI training slide deck - Version 2 - Jan 2022 - updated.pdf">Training SlTraining Slide Deckide Deck</a>
+      </p>
+      <p>
+        IDEAL Datensatz:
+        <a href="https://pubmed.ncbi.nlm.nih.gov/34050194/">
+            Pullinger et al., The IDEAL household energy dataset, electricity, gas, contextual sensor data and survey data for 255 UK homes, ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a>
+      </p>
     """
     ).replace("\n", "")
     explanationTemplate = Template(explanationText)

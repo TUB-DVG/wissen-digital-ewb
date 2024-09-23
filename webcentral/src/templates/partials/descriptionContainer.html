@@ -3,12 +3,14 @@
 <style>
   .mainContent {
       font-size: 22px;
-      display: inline;
+      display: block;
   }
   .showMore {
-      display: inline;
-      
+      display: block; 
+      width: 100%;
+      padding: 24px;
       font-size: 22px;
+      background-color: #F2F2F2;
   }
   .showMore a {
       color: #8FDE97;
@@ -16,6 +18,55 @@
   .blockOfContent{
     display: block;
     margin-bottom: 20px;
+  }
+
+  #explanationText h2 {
+    font-size: 22px;
+  }
+
+  #explanationText p, li {
+    font-size: 16px !important;
+  }
+
+  #explanationText {
+    margin-top: -80px;
+    padding: 80px;
+    background-color: #F2F2F2;;
+  }
+
+  table {
+    width: 100%;
+    font-size: 16px;
+    background-color: #f1d8cf;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #000000;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .table-header__bold {
+    font-weight: 600;
+  }
+
+  #textInExpansionButton {
+    opacity: 0;
+    color: #000000;
+    transition: all 0.2s;
+  }
+
+  .collapsed #textInExpansionButton {
+    opacity: 1;
+  }
+
+  .text-truncation-btn {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
   }
 </style>
 <div class="col-12 descriptionContainer {{ focusBorder }}-cards"
@@ -32,8 +83,6 @@
     <div class="blockOfContent">
       {% if showMorePresent %}
         <p class="mainContent" id="mainContent"></p>
-        <div class="mainContent collapse col-lg-12 lead collapseInfo"
-             id="explanationText"></div>
         <div class="showMore">
           <a role="button"
              class="collapsed text-truncation-btn {{ focusBorder }}-font-color"
@@ -41,9 +90,13 @@
              href="#explanationText"
              aria-expanded="false"
              aria-controls="collapseInfoTools"
-             data-expanded-text="{% translate 'Zeige weniger ...' %}"
-             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+          >
+            <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}" />
+            <span id="textInExpansionButton">Erfahre mehr über den Hintergrund dieses Themas</span>
+          </a>
         </div>
+        <div class="mainContent collapse col-lg-12 lead collapseInfo"
+             id="explanationText"></div>
       </div>
     {% else %}
       <p class="mainContent" id="mainContent"></p>
@@ -76,8 +129,15 @@
     // Change button text on click based on the collapse state
     $collapseButton.click(function() {
         var $this = $(this);
+        var isExpanded = $this.attr('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/plus.svg' %}");
+        } else {
+          $("#plusOrMinusIcon").attr("src", "{% static 'assets/images/minus.svg' %}");
+        }
+
         setTimeout(function() { // Use setTimeout to wait for the collapse action to complete
-            var isExpanded = $this.attr('aria-expanded') === 'true';
             $this.text(isExpanded ? $this.data('expanded-text') : $this.data('collapsed-text'));
         }, 350); // Adjust timeout duration if necessary
     });
