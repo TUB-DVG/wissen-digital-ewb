@@ -15,7 +15,6 @@ def currentApproximation(application: int, powerRequirement: int):
     except (KeyError, IndexError, ValueError):
         sum_value = 0
 
-
     loadGear = []
     for i in range(3, 8763):
         try:
@@ -25,11 +24,9 @@ def currentApproximation(application: int, powerRequirement: int):
         except (KeyError, IndexError, ValueError):
             loadGear.append(0)
 
-
     sum_loadGear = math.fsum(loadGear)
     loadGear2 = []
     for value in loadGear:
         loadGear2.append(value * (powerRequirement / sum_loadGear))
-
 
     return loadGear2

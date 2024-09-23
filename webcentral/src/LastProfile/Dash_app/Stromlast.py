@@ -11,6 +11,7 @@ from django.contrib.sessions.models import Session
 from django.utils.translation import gettext as _
 from django_plotly_dash import DjangoDash
 from plotly.subplots import make_subplots
+
 # Local imports
 from project_listing.models import *
 from .Stromlastapproximation_Csv import currentApproximation
@@ -233,7 +234,8 @@ def updatePowerGraph(
         return fig
         # , data.to_dict()  # Store data as a dictionary
     else:
-        return {}   
+        return {}
+
 
 # The download csv Funcionality
 @app.callback(
@@ -261,9 +263,7 @@ def download_as_csv(nClicks, application: str, powerRequirement: int, state):
         #     ["", ""],
         #     [_("Datum"), _("Last")],
         # ]
-        return dcc.send_data_frame(
-            data.to_csv, "Stromlastgang.csv"
-        )
+        return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
 
 
 # ------------------------------------------------------------------------------
