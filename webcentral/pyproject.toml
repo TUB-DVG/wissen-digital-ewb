@@ -45,10 +45,10 @@ dependencies = [
     "numpy==1.24.3",
     "pandas==1.5.3",
     "plotly==5.14.1",
-    "Pillow==9.5.0",
+    "Pillow==10.3.0",
     "psycopg2-binary==2.9.6",
     "PyYAML==6.0",
-    "wetterdienst==0.55.1",
+    "wetterdienst==0.88.0",
     "django-modeltranslation",
     "django-csp",
     "django-extensions==3.1.5",
@@ -56,6 +56,7 @@ dependencies = [
     "uwsgi>=2.0.19.1,<2.1",
     "openpyxl", 
     "django-webpack-loader",
+    "regex"
 ]
 
 # root folder of the python/django not found automatically
