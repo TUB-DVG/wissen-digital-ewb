@@ -157,7 +157,7 @@ def index(request):
         criterionUsageTwo = Q(focus__focus__icontains=searched)
         criterionUsageThree = Q(effectName__icontains=searched)
         criterionUsageFour = Q(effectDescription__icontains=searched)
-        complexCriterion &= (
+        complexCriterion = (
             criterionUsageOne
             | criterionUsageTwo
             | criterionUsageThree
@@ -171,6 +171,7 @@ def index(request):
     useCase = UseCase.objects.filter(
         complexCriterion
     )  # reads all data from table UseCase
+    
     # breakpoint()
     # filteredBy = [None]*3
     # searched = None
