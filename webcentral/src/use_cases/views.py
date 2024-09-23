@@ -171,7 +171,7 @@ def index(request):
     useCase = UseCase.objects.filter(
         complexCriterion
     )  # reads all data from table UseCase
-    
+
     # breakpoint()
     # filteredBy = [None]*3
     # searched = None
