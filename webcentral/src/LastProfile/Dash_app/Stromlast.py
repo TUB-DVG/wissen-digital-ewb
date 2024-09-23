@@ -168,10 +168,10 @@ def update_layout(hi):
     # Output('application', 'children'),
     # Output('application', 'children'),
     Input("approximation_start", "n_clicks"),
-    Input("displayMonth", "value"),
-    Input("powerRequirement", "value"),
-    Input("application", "value"),
-    allow_duplicate=True,
+    State("displayMonth", "value"),
+    State("powerRequirement", "value"),
+    State("application", "value"),
+    allow_duplicate=False,
     # Input('url', 'pathname'),
     # prevent_initial_call=True
 )
@@ -193,7 +193,8 @@ def updatePowerGraph(
     Returns:
         go.Figure: Updated Plotly figure object containing the power graph.
     """
-    if application is not None:
+    if application is not None and powerRequirement is not None:
+
         WW = currentApproximation(int(application), powerRequirement)
         days = DF_MAIN["Datum/ Uhrzeit"]
         data = pd.DataFrame({"Time": days[0:8760], "Last": WW})
@@ -230,7 +231,8 @@ def updatePowerGraph(
         )
 
         fig.update_yaxes(title_text=_("Stromlastgang in kW"), title_standoff=25)
-        return fig, data.to_dict()  # Store data as a dictionary
+        return fig
+        # , data.to_dict()  # Store data as a dictionary
     else:
         return {}
 
@@ -251,15 +253,17 @@ def download_as_csv(nClicks, application: str, powerRequirement: int, state):
         raise PreventUpdate
     else:
         label = [x["label"] for x in state if x["value"] == application]
-        data.columns = [
-            [_("Jahresstrombedarf in KWh/a :") + str(powerRequirement), ""],
-            [_("Anwendung: ") + label[0], ""],
-            ["", ""],
-            [_("Datum"), _("Last")],
-        ]
-        return dcc.send_data_frame(
-            data.to_csv, "Stromlastgang.csv", index=False
-        )
+        WW = currentApproximation(int(application), powerRequirement)
+        days = DF_MAIN["Datum/ Uhrzeit"]
+        data = pd.DataFrame({"Time": days[0:8760], "Last": WW})
+        data["Time"] = pd.to_datetime(data["Time"], errors="coerce")
+        # data.columns = [
+        #     [_("Jahresstrombedarf in KWh/a :") + str(powerRequirement), ""],
+        #     [_("Anwendung: ") + label[0], ""],
+        #     ["", ""],
+        #     [_("Datum"), _("Last")],
+        # ]
+        return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
 
 
 # ------------------------------------------------------------------------------
