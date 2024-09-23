@@ -17,7 +17,7 @@ def index(request):
     """Shows the list of all projects including some key features."""
 
     explanationText = _(
-    """
+        """
         <p>
             Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle
             im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte
