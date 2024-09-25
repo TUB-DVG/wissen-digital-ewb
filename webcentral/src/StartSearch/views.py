@@ -431,7 +431,7 @@ def resultSearch(request):
         userIntegration["name"] = userIntegration["category"]
         userIntegration["kindOfItem"] = "Nutzendenintegration"
         userIntegration["classificationAgg"] = _("Nutzendenintegration")
-        userIntegration["date"] = _("2024-07-01")
+        userIntegration["date"] = "2024-07-01"
         userIntegration["virtDate"] = date.fromisoformat("2049-09-09")
         userIntegration["pathToFocusImage"] = findPicturesForFocus(
             userIntegration

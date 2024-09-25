@@ -14,7 +14,9 @@ class DataSufficiencyTranslationOptions(TranslationOptions):
         "categoryShortDescription",
         "categoryLongDescription",
         "example1",
+        "example1Heading",
         "example2",
+        "example2Heading",
     )
 
 
