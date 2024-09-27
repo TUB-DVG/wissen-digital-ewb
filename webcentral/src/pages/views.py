@@ -362,9 +362,8 @@ Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt un
 Literatur
 
 Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, Gossen, Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, Friederike, Lange, Steffen (2023): Digitale Suffizienz: konzeptionelle Überlegungen für IKT auf einem endlichen Planeten. Annals of Telekommunikation. 78, 277–295 (2023). https://doi.org/10.1007/s12243-022-00914-x
-    """).replace(
-            "\n", "<br>"
-        )
+    """
+    ).replace("\n", "<br>")
 
     context = {
         "pathToImage": "img/componentList/circle-icon.svg",

@@ -13,11 +13,9 @@ from common.translator import Translator
 
 class TestTranslatorUseCases(TestCase):
     """Class defintion of TestTranslator"""
-    
-    def testStructureOfCreatedTransFile(self):
-        """
 
-        """
+    def testStructureOfCreatedTransFile(self):
+        """ """
         call_command(
             "translate",
             "use_cases",
@@ -25,10 +23,12 @@ class TestTranslatorUseCases(TestCase):
             "test_translation_use_cases.xlsx",
         )
 
-        df = pd.read_excel("test_translation_use_cases.xlsx", sheet_name=["German", "English"])
+        df = pd.read_excel(
+            "test_translation_use_cases.xlsx", sheet_name=["German", "English"]
+        )
 
         self.assertEqual(
-            set(df["English"].columns), 
+            set(df["English"].columns),
             set(
                 [
                     "Item-Code",
@@ -42,12 +42,12 @@ class TestTranslatorUseCases(TestCase):
                     "Name des Effekts",
                     "Kurzbeschreibung der Wirkung",
                     "Quelle / Hinweise",
-                    "ICON"
+                    "ICON",
                 ]
-            )
+            ),
         )
         self.assertEqual(
-            set(df["German"].columns), 
+            set(df["German"].columns),
             set(
                 [
                     "Item-Code",
@@ -61,7 +61,7 @@ class TestTranslatorUseCases(TestCase):
                     "Name des Effekts",
                     "Kurzbeschreibung der Wirkung",
                     "Quelle / Hinweise",
-                    "ICON"
+                    "ICON",
                 ]
-            )
+            ),
         )

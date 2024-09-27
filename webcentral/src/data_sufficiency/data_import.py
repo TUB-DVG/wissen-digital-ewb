@@ -18,7 +18,7 @@ class DataImportApp(DataImport):
         "Beispiel_1__en": "example1_en",
         "Beispiel_1_Überschrift__en": "example1Heading_en",
         "Beispiel_2__en": "example2_en",
-        "Beispiel_2_Überschrift__en": "example2Heading_en", 
+        "Beispiel_2_Überschrift__en": "example2Heading_en",
     }
 
     def __init__(self, path_to_data_file):
@@ -82,7 +82,7 @@ class DataImportApp(DataImport):
         obj.literature.add(*literatureObjsList)
 
         if self._englishHeadersPresent(header):
-           self._getOrCreateEnglishTranslation(row, header, data, obj)
+            self._getOrCreateEnglishTranslation(row, header, data, obj)
         #
 
     def _getOrCreateEnglishTranslation(

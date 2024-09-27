@@ -1,19 +1,16 @@
 import importlib
 
 from django.core.management.base import BaseCommand, CommandError
-from django.db.models import ManyToManyField, ForeignKey 
+from django.db.models import ManyToManyField, ForeignKey
 from django.conf import settings
 from docx import Document
 
 
 class Command(BaseCommand):
-    """
+    """ """
 
-    """
     def __init__(self):
-        """
-
-        """
+        """ """
         super().__init__()
         self.document = Document()
 
@@ -25,10 +22,7 @@ class Command(BaseCommand):
         installed_django_apps = settings.INSTALLED_APPS
         app_names = [app.split(".")[0] for app in installed_django_apps]
         if type_of_data in app_names:
-            if (
-                importlib.util.find_spec(type_of_data + ".models")
-                is not None
-            ):
+            if importlib.util.find_spec(type_of_data + ".models") is not None:
                 return importlib.import_module(type_of_data + ".models")
         raise CommandError(
             """specified type_of_data has no corresponding app or has no 
@@ -36,11 +30,8 @@ class Command(BaseCommand):
         )
 
     def _checkIfTranslationConfFile(self, typeOfData):
-        """
-        
-        """
-        return  importlib.import_module(typeOfData + ".translation")
-
+        """ """
+        return importlib.import_module(typeOfData + ".translation")
 
     def handle(
         self,
@@ -66,48 +57,51 @@ class Command(BaseCommand):
         nameOfModel = options["nameOfModel"][0]
 
         dataImportModule = self._checkIfInInstalledApps(type_of_data)
-        translationModule = self._checkIfTranslationConfFile(type_of_data) 
-        
-        allinstancesOfModel = self._getAllInstancesOfModel(dataImportModule, nameOfModel)
+        translationModule = self._checkIfTranslationConfFile(type_of_data)
+
+        allinstancesOfModel = self._getAllInstancesOfModel(
+            dataImportModule, nameOfModel
+        )
         modelClass = self._getModelClass(dataImportModule, nameOfModel)
 
-        translationFieldList = self._getTranslationFields(translationModule, modelClass) 
+        translationFieldList = self._getTranslationFields(
+            translationModule, modelClass
+        )
 
         for modelObj in allinstancesOfModel:
             self._checkForTranslationAttributes(modelObj, translationFieldList)
             # self.document.add_page_break()
-        
+
         self.document.save(nameOfModel + ".docx")
 
     def _getModelClass(self, dataImportModule, nameOfModel):
         return getattr(dataImportModule, nameOfModel)
-    
+
     def _getAllInstancesOfModel(self, dataImportModule, nameOfModel):
-        """
-        
-        """
+        """ """
         return self._getModelClass(dataImportModule, nameOfModel).objects.all()
-        
 
     def _getTranslationFields(self, translationModule, modelClassObj):
-        """
-
-        """
-        return translationModule.translator.get_options_for_model(modelClassObj).fields
-    
+        """ """
+        return translationModule.translator.get_options_for_model(
+            modelClassObj
+        ).fields
 
     def _checkForTranslationAttributes(self, modelObj, translationFieldList):
-        """
-        
-        """
+        """ """
         self.document.add_heading(modelObj.__str__(), level=1)
         for translationField in translationFieldList:
             englishAttrForField = getattr(modelObj, translationField + "_en")
             if englishAttrForField != "" and englishAttrForField is not None:
-                self.document.add_paragraph(getattr(modelObj, translationField + "_de"), style='List Bullet')
+                self.document.add_paragraph(
+                    getattr(modelObj, translationField + "_de"),
+                    style="List Bullet",
+                )
 
-                self.document.add_paragraph(englishAttrForField, style='List Bullet')
-                  
+                self.document.add_paragraph(
+                    englishAttrForField, style="List Bullet"
+                )
+
         modelFields = modelObj._meta.get_fields()
 
         for modelField in modelFields:
@@ -117,26 +111,39 @@ class Command(BaseCommand):
                 continue
             if isinstance(modelField, ForeignKey):
 
-                try:       
-                    self.document.add_paragraph(getattr(relatedObj, modelField.name + "_de"), style='List Bullet')
-                    self.document.add_paragraph(getattr(relatedObj, modelField.name + "_en"), style='List Bullet')
+                try:
+                    self.document.add_paragraph(
+                        getattr(relatedObj, modelField.name + "_de"),
+                        style="List Bullet",
+                    )
+                    self.document.add_paragraph(
+                        getattr(relatedObj, modelField.name + "_en"),
+                        style="List Bullet",
+                    )
                 except:
                     pass
             elif isinstance(modelField, ManyToManyField):
                 try:
-                    germanManyToManyValues = getattr(relatedObj, modelField.name + "_de").all()
+                    germanManyToManyValues = getattr(
+                        relatedObj, modelField.name + "_de"
+                    ).all()
                     germanValues = ""
                     for germanValue in germanManyToManyValues:
                         germanValues += germanValue + ", "
-                    englishManyToManyValues = getattr(relatedObj, modelField.name + "_en").all()
+                    englishManyToManyValues = getattr(
+                        relatedObj, modelField.name + "_en"
+                    ).all()
                     englishValues = ""
                     for englishValue in englishManyToManyValues:
                         englishValues += englishValue + ", "
-                    self.document.add_paragraph(germanValues, style='List Bullet')
-                    self.document.add_paragraph(englishValues, style='List Bullet')
+                    self.document.add_paragraph(
+                        germanValues, style="List Bullet"
+                    )
+                    self.document.add_paragraph(
+                        englishValues, style="List Bullet"
+                    )
                 except:
                     pass
-
 
         # else:
         #     raise CommandError(
@@ -177,5 +184,3 @@ class Command(BaseCommand):
         #     action="store_true",
         #     help="save personal data in the database",
         # )
-
-
