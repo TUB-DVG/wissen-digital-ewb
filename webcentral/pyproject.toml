@@ -41,7 +41,7 @@ dependencies = [
     "channels==4.0.0",
     "dash==2.9.3",
     "Django==4.2.1",
-    "django-plotly-dash==2.2.2",
+    "django-plotly-dash==2.3.1",
     "numpy==1.24.3",
     "pandas==1.5.3",
     "plotly==5.14.1",

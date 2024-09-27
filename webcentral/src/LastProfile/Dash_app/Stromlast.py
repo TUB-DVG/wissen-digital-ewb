@@ -1,6 +1,7 @@
 # Standard library imports
 import os
 import pathlib
+import io
 
 # Third-party imports
 import pandas as pd
@@ -240,21 +241,23 @@ def updatePowerGraph(
 # The download csv Funcionality
 @app.callback(
     Output("downloadCsv", "data"),
-    Output("application", "children"),
+    # Output("application", "children"),
     Input("btnDownloadCsv", "n_clicks"),
     Input("application", "value"),
     Input("powerRequirement", "value"),
     State("application", "options"),
     prevent_initial_call=True,
 )
-def download_as_csv(nClicks, application: str, powerRequirement: int, state):
+def download_as_csv(n_clicks, application: str, powerRequirement: int, state):
     """Handle CSV download for the power graph data."""
-    if not nClicks:
+    if not n_clicks:
+        # breakpoint()
         raise PreventUpdate
     else:
         label = [x["label"] for x in state if x["value"] == application]
         WW = currentApproximation(int(application), powerRequirement)
         days = DF_MAIN["Datum/ Uhrzeit"]
+        # breakpoint()
         data = pd.DataFrame({"Time": days[0:8760], "Last": WW})
         data["Time"] = pd.to_datetime(data["Time"], errors="coerce")
         # data.columns = [
@@ -264,6 +267,7 @@ def download_as_csv(nClicks, application: str, powerRequirement: int, state):
         #     [_("Datum"), _("Last")],
         # ]
         return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
+    # return dict(content="Hi", filename="Stromlastgang.csv")
 
 
 # ------------------------------------------------------------------------------
