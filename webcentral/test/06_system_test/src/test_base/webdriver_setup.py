@@ -46,6 +46,10 @@ class WebDriverSetup(unittest.TestCase):
         firefoxOptions = Firefox_Options()
         firefoxOptions.add_argument("--window-size=1920,1080")
         firefoxOptions.add_argument("start-maximised")
+        firefoxProfile.set_preference("browser.download.folderList", 2) 
+        self.downloadDir =  os.getcwd()
+        firefoxProfile.set_preference("browser.download.dir", self.downloadDir)
+        firefoxProfile.set_preference("browser.helperApps.neverAsk.saveToDisk", "application/octet-stream")
         # firefoxOptions.add_argument("--width=1920")
         # firefoxOptions.add_argument("--height=1080")
 

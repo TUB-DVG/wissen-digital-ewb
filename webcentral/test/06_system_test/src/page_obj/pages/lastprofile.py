@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Locators import Locator
+from src.page_obj.locators import Locator
 
 
 class Lastprofile(object):

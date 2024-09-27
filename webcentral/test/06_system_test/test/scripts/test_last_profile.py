@@ -26,16 +26,16 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.startPage import StartPage
-from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.lastprofile import Lastprofile
-from Src.PageObject.Pages.CurrentLoadApproximation import (
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.start_page import StartPage
+# from src.page_obj.pages.tool_list_page import ToolListPage
+from src.page_obj.pages.navbar import NavBar
+from src.page_obj.pages.lastprofile import Lastprofile
+from src.page_obj.pages.current_load_approximation import (
     CurrentLoadApproximation,
 )
-from Src.PageObject.Pages.HeatApproximation import HeatApproximation
-from Src.PageObject.Pages.cookieBanner import CookieBanner
+from src.page_obj.pages.heat_approximation import HeatApproximation
+from src.page_obj.pages.cookie_banner import CookieBanner
 
 
 class TestLastProfile(WebDriverSetup):
@@ -238,6 +238,9 @@ class TestLastProfile(WebDriverSetup):
         )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
+        
+        self.driver.find_element(By.ID, "approximation_start").click()
+        
         time.sleep(3)
         lineObj = lastprofilePage.getLinePloty()
         self.assertGreater(
@@ -246,20 +249,15 @@ class TestLastProfile(WebDriverSetup):
             "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
         )
 
+
         # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
 
         # test if the data can be downloaded
-        # buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
+        buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
         # time.sleep(1)
-        # buttonCSVDownload.click()
-        # time.sleep(1)
-        # buttonCSVDownload.click()
-        # time.sleep(3)
-        # files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
+        buttonCSVDownload.click()
+        time.sleep(5)
+        filePath = os.path.join(self.downloadDir, fileName)
 
-        # files.sort(key=lambda x: os.path.getmtime(x))
-        # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
-
-        # lastModified = os.path.getmtime(files[-1])
-
-        # self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
+        # Check if the file is downloaded
+        self.assertTrue(os.path.isfile(filePath))
