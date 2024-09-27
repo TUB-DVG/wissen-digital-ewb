@@ -163,20 +163,30 @@ class TestLastProfile(WebDriverSetup):
         selectPlaceholderToHoverOver = (
             lastProfilePage.getReactSelectPlaceholder()
         )
-        inputOfDropdown = self.driver.find_element(By.ID, "application").find_element(By.XPATH, ".//input")
+        inputOfDropdown = self.driver.find_element(
+            By.ID, "application"
+        ).find_element(By.XPATH, ".//input")
         inputOfDropdown.send_keys("Einfamilienhaus")
-        inputOfDropdown.send_keys(Keys.RETURN) 
-        
+        inputOfDropdown.send_keys(Keys.RETURN)
+
         inputFieldPowerRequirement = (
             lastprofilePage.getInputFieldHeatRequirement()
         )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
-        
-        self.driver.find_element(By.XPATH, "//input[@aria-label='Start Datum']").send_keys(" 03/01/2021")
-        self.driver.find_element(By.XPATH, "//input[@aria-label='Start Datum']").send_keys(Keys.RETURN)
-        self.driver.find_element(By.XPATH, "//input[@aria-label='End Datum']").send_keys(" 21/01/2021")
-        self.driver.find_element(By.XPATH, "//input[@aria-label='End Datum']").send_keys(Keys.RETURN)
+
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='Start Datum']"
+        ).send_keys(" 03/01/2021")
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='Start Datum']"
+        ).send_keys(Keys.RETURN)
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='End Datum']"
+        ).send_keys(" 21/01/2021")
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='End Datum']"
+        ).send_keys(Keys.RETURN)
 
         inputFieldPowerRequirement.click()
         listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
@@ -184,7 +194,7 @@ class TestLastProfile(WebDriverSetup):
         radioElementToClick.click()
 
         self.driver.find_element(By.ID, "approximationStart").click()
-        
+
         time.sleep(3)
         lineObj = lastprofilePage.getLinePloty()
         self.assertGreater(
@@ -192,7 +202,6 @@ class TestLastProfile(WebDriverSetup):
             20,
             "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
         )
-
 
     def testLinksOnSite(self):
         """Tests, if the links present on the website lead to the right websites."""

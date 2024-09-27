@@ -64,14 +64,13 @@ class Lastprofile(object):
             Locator.radioButtonElements,
         )
 
-    
     def getInputFieldHeatRequirement(self):
         """Return the Input Field, where the powerRequirement should be stated."""
         return self.driver.find_element(
             By.ID,
             "heatRequirement",
         )
-    
+
     def getInputFieldPowerRequirement(self):
         """Return the Input Field, where the powerRequirement should be stated."""
         return self.driver.find_element(
