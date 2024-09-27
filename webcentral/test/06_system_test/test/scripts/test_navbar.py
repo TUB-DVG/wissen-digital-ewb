@@ -45,7 +45,7 @@ class TestNavbar(WebDriverSetup):
             "en": [
                 "Negative environmental impacts",
                 "Positive environmental impacts",
-                "Data sufficency",
+                "Data sufficiency",
             ],
             "de": [
                 "Negative Umweltwirkungen",
