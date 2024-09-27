@@ -266,12 +266,7 @@ def download_as_csv(n_clicks, application: str, powerRequirement: int, state):
         #     ["", ""],
         #     [_("Datum"), _("Last")],
         # ]
-        # print()
-        # buffer = io.StringIO()
-        # data.to_csv(buffer, index=False)
-        # buffer.seek(0)
-        # return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
-        return dcc.send_data_frame(data.to_csv, "mydf.csv")
+        return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
     # return dict(content="Hi", filename="Stromlastgang.csv")
 
 
