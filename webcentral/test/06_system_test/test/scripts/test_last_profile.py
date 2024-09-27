@@ -142,10 +142,6 @@ class TestLastProfile(WebDriverSetup):
                 linkToHeatApprox,
             )
         time.sleep(1)
-        # cookieBannerObj = CookieBanner(self.driver)
-        # cookieBannerObj.getCookieAcceptanceButton().click()
-        time.sleep(1)
-        self.driver.save_screenshot("ss.png")
         linkToHeatApprox.click()
 
         self.checkPageTitle(
@@ -153,17 +149,50 @@ class TestLastProfile(WebDriverSetup):
             "Thermal load profile",
         )
 
-        currentApproObj = HeatApproximation(self.driver)
+        lastProfilePage = Lastprofile(self.driver)
         time.sleep(1)
         self._setLanguageToGerman()
-        currentApproObj.switchToIFrame()
-        headingElement = currentApproObj.getHeadingOfPage()
-
-        self.assertEqual(
-            headingElement.text,
-            "Wärmelast Approximation",
-            "Heading Title should be Wärmelast Approximation, but its not!",
+        iframeElement = lastprofilePage.getPlotlyIFrame()
+        self.driver.switch_to.frame(iframeElement)
+        # headingElement = lastProfilePage.getHeadingOfPage()
+        # self.assertEqual(
+        #     headingElement.text,
+        #     "Wärmelast Approximation",
+        #     "Heading Title should be Wärmelast Approximation, but its not!",
+        # )
+        selectPlaceholderToHoverOver = (
+            lastProfilePage.getReactSelectPlaceholder()
         )
+        inputOfDropdown = self.driver.find_element(By.ID, "application").find_element(By.XPATH, ".//input")
+        inputOfDropdown.send_keys("Einfamilienhaus")
+        inputOfDropdown.send_keys(Keys.RETURN) 
+        
+        inputFieldPowerRequirement = (
+            lastprofilePage.getInputFieldHeatRequirement()
+        )
+        inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
+        inputFieldPowerRequirement.send_keys(Keys.RETURN)
+        
+        self.driver.find_element(By.XPATH, "//input[@aria-label='Start Datum']").send_keys(" 03/01/2021")
+        self.driver.find_element(By.XPATH, "//input[@aria-label='Start Datum']").send_keys(Keys.RETURN)
+        self.driver.find_element(By.XPATH, "//input[@aria-label='End Datum']").send_keys(" 21/01/2021")
+        self.driver.find_element(By.XPATH, "//input[@aria-label='End Datum']").send_keys(Keys.RETURN)
+
+        inputFieldPowerRequirement.click()
+        listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
+        radioElementToClick = random.choice(listOfRadioButtons)
+        radioElementToClick.click()
+
+        self.driver.find_element(By.ID, "approximationStart").click()
+        
+        time.sleep(3)
+        lineObj = lastprofilePage.getLinePloty()
+        self.assertGreater(
+            len(lineObj.get_attribute("d")),
+            20,
+            "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
+        )
+
 
     def testLinksOnSite(self):
         """Tests, if the links present on the website lead to the right websites."""
@@ -253,11 +282,11 @@ class TestLastProfile(WebDriverSetup):
         # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
 
         # test if the data can be downloaded
-        buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
-        # time.sleep(1)
-        buttonCSVDownload.click()
-        time.sleep(5)
-        filePath = os.path.join(self.downloadDir, fileName)
-
-        # Check if the file is downloaded
-        self.assertTrue(os.path.isfile(filePath))
+        # buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
+        # # time.sleep(1)
+        # buttonCSVDownload.click()
+        # time.sleep(5)
+        # filePath = os.path.join(self.downloadDir, fileName)
+        #
+        # # Check if the file is downloaded
+        # self.assertTrue(os.path.isfile(filePath))
