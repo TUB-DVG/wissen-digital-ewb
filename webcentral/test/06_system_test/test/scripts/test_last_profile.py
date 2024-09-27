@@ -28,6 +28,7 @@ from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 from src.test_base.webdriver_setup import WebDriverSetup
 from src.page_obj.pages.start_page import StartPage
+
 # from src.page_obj.pages.tool_list_page import ToolListPage
 from src.page_obj.pages.navbar import NavBar
 from src.page_obj.pages.lastprofile import Lastprofile
@@ -238,9 +239,9 @@ class TestLastProfile(WebDriverSetup):
         )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
-        
+
         self.driver.find_element(By.ID, "approximation_start").click()
-        
+
         time.sleep(3)
         lineObj = lastprofilePage.getLinePloty()
         self.assertGreater(
@@ -248,7 +249,6 @@ class TestLastProfile(WebDriverSetup):
             20,
             "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
         )
-
 
         # start a watchDog-Session, which looks in Downloads if Stromlastgang.csv is created
 

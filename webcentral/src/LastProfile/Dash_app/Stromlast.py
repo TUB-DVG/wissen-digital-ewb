@@ -273,5 +273,7 @@ def download_as_csv(n_clicks, application: str, powerRequirement: int, state):
         # return dcc.send_data_frame(data.to_csv, "Stromlastgang.csv")
         return dcc.send_data_frame(data.to_csv, "mydf.csv")
     # return dict(content="Hi", filename="Stromlastgang.csv")
+
+
 # ------------------------------------------------------------------------------
 # Connect the Plotly powerGraphs with Dash Components
