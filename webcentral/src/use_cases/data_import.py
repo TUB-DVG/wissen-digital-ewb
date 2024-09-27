@@ -12,6 +12,15 @@ from .models import (
 
 
 class DataImportApp(DataImport):
+    DJANGO_MODEL = "UseCase"
+    DJANGO_APP = "use_cases"
+    MAPPING_EXCEL_DB_EN = {
+        "Wirkebene__en": "levelOfAction_en",
+        "Detailgrad__en": "degreeOfDetail_en",
+        "Name des Effekts__en": "effectName_en",
+        "Kurzbeschreibung der Wirkung__en": "effectDescription_en",
+        "Quelle / Hinweise__en": "furtherInformation_en",
+    }
 
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -68,4 +77,8 @@ class DataImportApp(DataImport):
         )
 
         obj.focus.add(*focusElements)
+        if self._englishHeadersPresent(header):
+            self._importEnglishTranslation(
+                obj, header, row, self.MAPPING_EXCEL_DB_EN
+            )
         return obj, created

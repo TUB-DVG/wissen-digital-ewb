@@ -48,8 +48,8 @@ class Translator(DataImport):
         englishDf = pd.DataFrame(data=englishDict)
 
         with pd.ExcelWriter(filename) as fileHandler:
-            germanDf.to_excel(fileHandler, sheet_name="German")
-            englishDf.to_excel(fileHandler, sheet_name="English")
+            germanDf.to_excel(fileHandler, sheet_name="German", index=False)
+            englishDf.to_excel(fileHandler, sheet_name="English", index=False)
 
     def _translate(self, header, row, mapping):
         """ """

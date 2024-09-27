@@ -56,6 +56,7 @@ dependencies = [
     "uwsgi>=2.0.19.1,<2.1",
     "openpyxl", 
     "django-webpack-loader",
+    "python-docx",
 ]
 
 # root folder of the python/django not found automatically
