@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-24 13:21+0000\n"
+"POT-Creation-Date: 2024-09-27 05:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -456,7 +456,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:543
+#: StartSearch/views.py:416 pages/views.py:542
 #: templates/partials/_navbar.html:225
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
@@ -469,16 +469,16 @@ msgstr "Catalog of criteria"
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
-#: StartSearch/views.py:434 StartSearch/views.py:444 StartSearch/views.py:451
-#: StartSearch/views.py:462 StartSearch/views.py:472
-msgid "2024-07-01"
-msgstr ""
-
 #: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
 #: pages/views.py:47 templates/partials/_navbar.html:138
 #: templates/start_search/start_search.html:242
 msgid "Geschäftsmodelle"
 msgstr "Business models"
+
+#: StartSearch/views.py:444 StartSearch/views.py:451 StartSearch/views.py:462
+#: StartSearch/views.py:472
+msgid "2024-07-01"
+msgstr ""
 
 #: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
@@ -619,10 +619,8 @@ msgid "Weitere Informationen"
 msgstr "Further information"
 
 #: common/views.py:145
-#, fuzzy
-#| msgid "Quelle"
 msgid "Quellen"
-msgstr "Source"
+msgstr "Sources"
 
 #: common/views.py:148 component_list/views.py:154 pages/views.py:271
 #: templates/component_list/components.html:4
@@ -706,16 +704,12 @@ msgid "Letztes Update"
 msgstr "Last update"
 
 #: common/views.py:238
-#, fuzzy
-#| msgid "Digitale Werkzeuge"
 msgid "Zurück zu den digitalen Werkzeugen"
-msgstr "Digital tools"
+msgstr "Back to digital tools"
 
 #: common/views.py:244
-#, fuzzy
-#| msgid "Digitale Werkzeuge"
 msgid "Zurück zu den digitalen Anwendungen"
-msgstr "Digital tools"
+msgstr "Back to digital applications"
 
 #: common/views.py:248
 msgid "Übersicht über Protokolle"
@@ -1323,14 +1317,14 @@ msgid ""
 "https://doi.org/10.1007/s12243-022-00914-x\n"
 "    "
 msgstr ""
-"Both the materialization and the energy required for the operation of "
-"ever-growing computing capacities are associated with negative environmental "
+"Both the materialization and the energy required for the operation of ever-"
+"growing computing capacities are associated with negative environmental "
 "impacts. The efficient use of data – data sufficiency – is therefore "
 "becoming increasingly important in order to keep the overall data volume as "
-"small as possible. Data sufficiency encompasses all areas of data processing: "
-"from collection, further processing, storage, to deletion. The ecological "
-"impacts of (in)sufficient data usage, in particular, have so far been little "
-"studied and are often overlooked in practice.\n"
+"small as possible. Data sufficiency encompasses all areas of data "
+"processing: from collection, further processing, storage, to deletion. The "
+"ecological impacts of (in)sufficient data usage, in particular, have so far "
+"been little studied and are often overlooked in practice.\n"
 "\n"
 "Under the principle of “data sufficiency,” we understand that data is "
 "collected, transmitted, processed, and stored only to the extent necessary "
@@ -1343,26 +1337,27 @@ msgstr ""
 "implementation of digital applications while maximizing their benefit.\n"
 "\n"
 "Data sufficiency thus differs from the legal concept of data minimization. "
-"Data minimization is a principle of data protection, defined in Article 5(1c) "
-"of the General Data Protection Regulation (GDPR), which aims to reduce the "
-"risk to the rights and freedoms of natural persons. The term data minimization "
-"from the GDPR replaces the terms data economy and avoidance used in the "
-"Federal Data Protection Act (§3a BDSG).\n"
+"Data minimization is a principle of data protection, defined in Article "
+"5(1c) of the General Data Protection Regulation (GDPR), which aims to reduce "
+"the risk to the rights and freedoms of natural persons. The term data "
+"minimization from the GDPR replaces the terms data economy and avoidance "
+"used in the Federal Data Protection Act (§3a BDSG).\n"
 "\n"
 "While data minimization prevents fundamental rights risks from extensive, "
-"unnecessary data processing, data sufficiency aims to minimize the ecological "
-"effects of the collection, processing, and storage of extensive, unnecessary "
-"data. To clarify the distinction from the legal term, different terminology "
-"is used.\n"
+"unnecessary data processing, data sufficiency aims to minimize the "
+"ecological effects of the collection, processing, and storage of extensive, "
+"unnecessary data. To clarify the distinction from the legal term, different "
+"terminology is used.\n"
 "\n"
-"Research projects are naturally designed in such a way that data is initially "
-"generated, the purpose of which cannot always be predicted in advance, nor "
-"whether the expectations of the research project will be met. This principle "
-"of scientific work is not called into question by this approach. However, "
-"data sufficiency should be considered during development with regard to the "
-"subsequent usage phase. When the digital solutions developed in research "
-"projects are brought to market, ecological effects can be achieved through "
-"the widespread adoption of data-efficient technologies due to scaling effects.\n"
+"Research projects are naturally designed in such a way that data is "
+"initially generated, the purpose of which cannot always be predicted in "
+"advance, nor whether the expectations of the research project will be met. "
+"This principle of scientific work is not called into question by this "
+"approach. However, data sufficiency should be considered during development "
+"with regard to the subsequent usage phase. When the digital solutions "
+"developed in research projects are brought to market, ecological effects can "
+"be achieved through the widespread adoption of data-efficient technologies "
+"due to scaling effects.\n"
 "\n"
 "The following presents strategies for sufficient data management and "
 "highlights the ecological effects of handling data.\n"
@@ -1372,15 +1367,15 @@ msgstr ""
 "Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, Gossen, "
 "Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, Friederike, Lange, "
 "Steffen (2023): Digital Sufficiency: Conceptual Considerations for ICT on a "
-"Finite Planet. Annals of Telecommunications. 78, 277–295 (2023). "
-"https://doi.org/10.1007/s12243-022-00914-x\n"
+"Finite Planet. Annals of Telecommunications. 78, 277–295 (2023). https://doi."
+"org/10.1007/s12243-022-00914-x\n"
 "    "
 
-#: pages/views.py:372 pages/views.py:398 templates/partials/_navbar.html:195
+#: pages/views.py:371 pages/views.py:397 templates/partials/_navbar.html:195
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:410
+#: pages/views.py:409
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1460,20 +1455,20 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:445
+#: pages/views.py:444
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:453
+#: pages/views.py:452
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:460 pages/views.py:461
+#: pages/views.py:459 pages/views.py:460
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy Overview"
 
-#: pages/views.py:475
+#: pages/views.py:474
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1528,17 +1523,17 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:513 pages/views.py:514 templates/partials/_navbar.html:235
+#: pages/views.py:512 pages/views.py:513 templates/partials/_navbar.html:235
 #: templates/partials/icons_left_column.html:3
 #: templates/start_search/start_search.html:367
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: pages/views.py:526
+#: pages/views.py:525
 msgid "Worum geht es?<br><br>"
 msgstr ""
 
-#: pages/views.py:528
+#: pages/views.py:527
 msgid ""
 "Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
 "Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
@@ -1549,11 +1544,11 @@ msgid ""
 "Erfordernis einer Rechtsgrundlage.<br><br>"
 msgstr ""
 
-#: pages/views.py:530
+#: pages/views.py:529
 msgid "Wie funktioniert das?<br><br>"
 msgstr ""
 
-#: pages/views.py:532
+#: pages/views.py:531
 msgid ""
 "<p>Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO "
 "in Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
@@ -1562,7 +1557,7 @@ msgid ""
 "Suchfeld gezielt durchsuchen.</p>"
 msgstr ""
 
-#: pages/views.py:535
+#: pages/views.py:534
 msgid ""
 "<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter "
 "liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</"
@@ -1571,7 +1566,7 @@ msgid ""
 "beachten sollten.</li></ul><br>"
 msgstr ""
 
-#: pages/views.py:538
+#: pages/views.py:537
 msgid ""
 "<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und "
 "bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, "
@@ -2006,11 +2001,6 @@ msgid "Übertragungsmethoden"
 msgstr "transmission media"
 
 #: templates/TechnicalStandards/explanation.html:134
-#, fuzzy
-#| msgid ""
-#| "wie werden Daten zwischen den \n"
-#| "          verschiedenen Komponenten und Geräten innerhalb des Systems "
-#| "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgid ""
 "wie werden Daten zwischen den\n"
 "          verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -2291,27 +2281,6 @@ msgid "Was ist Gebäudeautomation (GA; Building Automation)? "
 msgstr "What is building automation (GA; Building Automation)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:13
-#, fuzzy
-#| msgid ""
-#| "Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude "
-#| "betrieben, \n"
-#| "          gesteuert und überwacht werden. Sie ist ein fortschrittliches "
-#| "System, das moderne \n"
-#| "          Technologie nutzt, um die Effizienz, den Komfort und die "
-#| "Sicherheit von Gebäuden \n"
-#| "          zu optimieren. Es integriert verschiedene Systeme wie HLK "
-#| "(Heizung, Lüftung, \n"
-#| "          Klimatechnik), Beleuchtung, Sicherheitstechnik und mehr in eine "
-#| "zentrale Plattform zur \n"
-#| "          effizienten Steuerung und Überwachung. Die Hauptvorteile von GA "
-#| "sind verbesserte \n"
-#| "          Energieeffizienz, geringere Betriebskosten, erhöhter Komfort "
-#| "für die Bewohner \n"
-#| "          und vereinfachte Wartung. Ein GA besteht in der Regel aus drei "
-#| "logischen Ebenen: \n"
-#| "          der Feldebene (Sensoren und Aktoren), der Automatisierungsebene "
-#| "(Steuerungen) \n"
-#| "          und der Managementebene (Überwachungssoftware)."
 msgid ""
 "Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude "
 "betrieben,\n"
@@ -2349,22 +2318,6 @@ msgid "Warum brauchen wir Protokolle in der Gebäudeautomation?"
 msgstr "Why do we need protocols in building automation?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:29
-#, fuzzy
-#| msgid ""
-#| "Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
-#| "nahtlose \n"
-#| "          Kommunikation zwischen verschiedenen Geräten und Systemen "
-#| "innerhalb des Gebäudes \n"
-#| "          ermöglichen. In der Gebäudeautomation kommen oft Produkte "
-#| "verschiedener Hersteller \n"
-#| "          zum Einsatz, die möglicherweise proprietäre "
-#| "Kommunikationsmethoden verwenden. \n"
-#| "          Protokolle dienen als gemeinsame Sprache, die Interoperabilität "
-#| "gewährleistet \n"
-#| "          und Datensilos vermeidet. Gerade der umfängliche Datenaustausch "
-#| "in Echtzeit ermöglicht\n"
-#| "          schnelle Reaktionen auf veränderte Bedingungen und kann damit "
-#| "die Gesamteffizienz des Systems verbessern."
 msgid ""
 "Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
 "nahtlose\n"
@@ -2408,18 +2361,14 @@ msgstr ""
 "them:"
 
 #: templates/TechnicalStandards/protocol-explanation.html:49
-#, fuzzy
-#| msgid ""
-#| "wie werden Daten zwischen den \n"
-#| "              verschiedenen Komponenten und Geräten innerhalb des Systems "
-#| "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgid ""
 "wie werden Daten zwischen den\n"
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
 "übertragen (verkabelt, drahtlos oder verkabelt & drahtlos)?"
 msgstr ""
-"How is data transferred between the various components and devices within "
-"the system (wired, wireless or wired & wireless)?"
+"how are data transmitted between the\n"
+"              different components and devices within the system (wired, "
+"wireless, or both wired & wireless)?"
 
 #: templates/TechnicalStandards/protocol-explanation.html:89
 msgid ""
@@ -2469,10 +2418,8 @@ msgid "Add %(name)s"
 msgstr ""
 
 #: templates/component_list/componentComparisonResults.html:4
-#, fuzzy
-#| msgid "Komponentenliste"
 msgid "Komponentenliste Vergleich Ergebnisse"
-msgstr "Component list"
+msgstr "Component list comparison results"
 
 #: templates/component_list/componentComparisonResults.html:14
 msgid ""
@@ -2694,21 +2641,10 @@ msgstr ""
 "energy are collected."
 
 #: templates/pages/Datenschutzhinweis.html:17
-#, fuzzy
-#| msgid "Datenschutz&shy;hinweis"
 msgid "Datenschutzhinweis"
 msgstr "Data protection notice"
 
 #: templates/pages/Datenschutzhinweis.html:31
-#, fuzzy
-#| msgid ""
-#| "Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
-#| "persönlichen Daten von Besucher*innen unserer \n"
-#| "          Webseiten ist uns sehr wichtig. Deshalb möchten wir Sie hier "
-#| "über den Datenschutz dieses Webangebots unter wissen-digital-ewb.de\n"
-#| "          informieren. Die Website wird durch das Institut für Digitale "
-#| "Vernetzung von Gebäuden, Energieversorgungsanlagen und Nutzenden \n"
-#| "          an der TU Berlin betrieben. Im folgenden mit DVG abgekürzt."
 msgid ""
 "Vielen Dank für Ihr Interesse an der Wissensplattform. Der Schutz der "
 "persönlichen Daten von Besucher*innen unserer\n"
@@ -2730,16 +2666,6 @@ msgid "Gegenstand des Datenschutzes"
 msgstr "Subject of data protection"
 
 #: templates/pages/Datenschutzhinweis.html:39
-#, fuzzy
-#| msgid ""
-#| "Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
-#| "Artikel 4 Nr. 1 der Europäischen \n"
-#| "          Datenschutzgrundverordnung (EU-DSGVO) alle Informationen, die "
-#| "sich auf eine identifizierte oder identifizierbare natürliche \n"
-#| "          Person beziehen, also alle Informationen, die dazu genutzt "
-#| "werden können, Sie zu identifizieren. Hierunter fallen z.B. \n"
-#| "          Angaben wie Name, Privat-Adresse, E-Mail-Adresse oder "
-#| "Telefonnummer, aber auch Nutzungsdaten wie Ihre IP-Adresse."
 msgid ""
 "Der Datenschutz befasst sich mit personenbezogenen Daten. Diese sind nach "
 "Artikel 4 Nr. 1 der Europäischen\n"
@@ -2758,11 +2684,6 @@ msgstr ""
 "telephone number, but also usage data such as your IP address."
 
 #: templates/pages/Datenschutzhinweis.html:45
-#, fuzzy
-#| msgid ""
-#| "Selbstverständlich beachtet die Technische Universität Berlin die "
-#| "gesetzlichen Bestimmungen zum Datenschutz und \n"
-#| "          andere rechtliche Bestimmungen und Vorgaben."
 msgid ""
 "Selbstverständlich beachtet die Technische Universität Berlin die "
 "gesetzlichen Bestimmungen zum Datenschutz und\n"
@@ -2772,13 +2693,6 @@ msgstr ""
 "on data protection and other legal regulations and requirements."
 
 #: templates/pages/Datenschutzhinweis.html:49
-#, fuzzy
-#| msgid ""
-#| "Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten "
-#| "vertrauen können. So erfolgt die Übertragung \n"
-#| "          personenbezogener und sensibler Daten verschlüsselt. Zusätzlich "
-#| "sind unsere Webseiten durch technische Maßnahmen gegen \n"
-#| "          Beschädigungen oder unberechtigten Zugriff geschützt."
 msgid ""
 "Wir tun alles dafür, dass Sie uns bezüglich Ihrer persönlichen Daten "
 "vertrauen können. So erfolgt die Übertragung\n"
@@ -2796,11 +2710,6 @@ msgid "Allgemeiner Datenschutzhinweis"
 msgstr "General data protection notice"
 
 #: templates/pages/Datenschutzhinweis.html:58
-#, fuzzy
-#| msgid ""
-#| "Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
-#| "herunterladen, werden Informationen hierüber in einer Logdatei \n"
-#| "              mit folgendem Inhalt gespeichert:"
 msgid ""
 "Wenn Sie Webseiten der TU Berlin aufrufen oder Daten dieser Seiten "
 "herunterladen, werden Informationen hierüber in einer Logdatei\n"
@@ -2841,18 +2750,6 @@ msgstr ""
 "and the status message as to whether the access or retrieval was successful."
 
 #: templates/pages/Datenschutzhinweis.html:95
-#, fuzzy
-#| msgid ""
-#| "Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch "
-#| "gelöscht, nicht archiviert und ausschließlich zu nicht \n"
-#| "              kommerziellen Zwecken genutzt. Sie werden nur im "
-#| "Bedarfsfall manuell eingesehen und zur Fehleranalyse, Optimierung oder \n"
-#| "              Untersuchung von Missbrauchsfällen oder Performance-"
-#| "Engpässen benötigt. Dies stellt ein berechtigtes Interesse im Sinne von "
-#| "Art. \n"
-#| "              6 Abs. 1 lit. f EU-DSGVO dar. Ein Widerspruchsrecht nach "
-#| "Art. 21 EU-DSGVO ist nicht möglich aufgrund fehlender technischer \n"
-#| "              Realisierbarkeit."
 msgid ""
 "Diese nicht anonymisierten Logdaten werden nach zwei Wochen automatisch "
 "gelöscht, nicht archiviert und ausschließlich zu nicht\n"
@@ -2873,18 +2770,6 @@ msgstr ""
 "GDPR is not possible due to a lack of technical feasibility."
 
 #: templates/pages/Datenschutzhinweis.html:104
-#, fuzzy
-#| msgid ""
-#| "Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für "
-#| "jegliche Übertragung von Daten SSL-Verschlüsselung. Sie \n"
-#| "              erkennen derart verschlüsselte Verbindungen an dem Präfix "
-#| "“https://“ im Seitenlink in der Adresszeile bzw. durch das \n"
-#| "              grüne/geschlossene Schlosssymbol Ihres Browsers. "
-#| "Unverschlüsselte Seite sind durch “http://“ oder ein offenes bzw. \n"
-#| "              rotes Schlosssymbol gekennzeichnet. Sämtliche Daten, welche "
-#| "Sie an diese Website übermitteln – etwa bei Anfragen oder \n"
-#| "              Logins – können dank SSL-Verschlüsselung nicht von Dritten "
-#| "gelesen werden."
 msgid ""
 "Um Ihre übermittelten Daten bestmöglich zu schützen, nutzen wir für jegliche "
 "Übertragung von Daten SSL-Verschlüsselung. Sie\n"
@@ -2914,21 +2799,6 @@ msgid "Social-Media-Links"
 msgstr "Social media links"
 
 #: templates/pages/Datenschutzhinweis.html:116
-#, fuzzy
-#| msgid ""
-#| "Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen "
-#| "bzw. Profile von sozialen Netzwerken der nachstehend \n"
-#| "          aufgeführten Drittanbieter bzw. bieten die Möglichkeit zum "
-#| "Teilen unseres Webangebotes in den sozialen Netzwerken der nachstehend \n"
-#| "          aufgeführten Drittanbieter. Die Einbindung erfolgt dabei über "
-#| "eine verlinkte Grafik des jeweiligen Netzwerks, wodurch verhindert \n"
-#| "          wird, dass es beim Aufruf unserer Webseiten mit einem solchen "
-#| "Social-Media-Inhalt automatisch zu einem Verbindungsaufbau zum \n"
-#| "          jeweiligen Server des sozialen Netzwerks kommt, um z.B. einen "
-#| "Beitrag des jeweiligen Netzwerkes selbst darzustellen. Erst durch \n"
-#| "          Ihren aktiven Klick auf die entsprechende Grafik werden Sie zu "
-#| "dem Dienst des jeweiligen sozialen Netzwerks geleitet. Die \n"
-#| "          Rechtsgrundlage bildet Art. 6 Abs. 1 lit. a EU-DSGVO."
 msgid ""
 "Wir verweisen in unseren Webseiten auf TU Berlin-spezifische Präsenzen bzw. "
 "Profile von sozialen Netzwerken der nachstehend\n"
@@ -2957,25 +2827,6 @@ msgstr ""
 "EU GDPR."
 
 #: templates/pages/Datenschutzhinweis.html:125
-#, fuzzy
-#| msgid ""
-#| "Hierbei werden dann durch das jeweilige Netzwerk Informationen über die "
-#| "Sie erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres \n"
-#| "          Endgeräts, Datum, Uhrzeit und besuchte Seite. Es kann nicht "
-#| "ausgeschlossen werden, dass eine Verarbeitung der so erhobenen Daten in \n"
-#| "          den USA stattfindet. Sind Sie währenddessen mit Ihrem "
-#| "Benutzerkonto des jeweiligen Netzwerks eingeloggt, kann der Netzwerk-"
-#| "Betreiber \n"
-#| "          ggf. die gesammelten Informationen Ihres konkreten Besuchs "
-#| "Ihrem persönlichen Account zuordnen. Interagierten Sie über einen \n"
-#| "          „Teilen“-Button des jeweiligen Netzwerks, können diese "
-#| "Informationen in Ihrem Benutzerkonto gespeichert und ggf. "
-#| "veröffentlicht \n"
-#| "          werden. Wollen Sie verhindern, dass die gesammelten "
-#| "Informationen unmittelbar Ihrem Benutzerkonto zugeordnet werden, müssen "
-#| "Sie \n"
-#| "          sich vor dem Anklicken der Grafik ausloggen. Zudem besteht die "
-#| "Möglichkeit, Ihre Benutzerkonten entsprechend zu konfigurieren."
 msgid ""
 "Hierbei werden dann durch das jeweilige Netzwerk Informationen über die Sie "
 "erfasst. Dies sind zunächst Daten wie IP-Adresse Ihres\n"
@@ -3006,11 +2857,6 @@ msgstr ""
 "graphic. It is also possible to configure your user accounts accordingly."
 
 #: templates/pages/Datenschutzhinweis.html:135
-#, fuzzy
-#| msgid ""
-#| "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, "
-#| "ein Tochterunternehmen der Google LLC, 1600 Amphitheatre \n"
-#| "          Parkway, Mountain View, CA 94043 USA"
 msgid ""
 "Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein "
 "Tochterunternehmen der Google LLC, 1600 Amphitheatre\n"
@@ -3025,22 +2871,6 @@ msgid "Datenschutzerklärung:"
 msgstr "Data protection:"
 
 #: templates/pages/Datenschutzhinweis.html:142
-#, fuzzy
-#| msgid ""
-#| "Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem "
-#| "ein Plugin zur Einbindung von YouTube-Videos. \n"
-#| "          Anbieter des Videoportals ist die YouTube, LLC, 901 Cherry "
-#| "Ave., San Bruno, CA 94066, USA.\n"
-#| "          Beim Aufruf einer Seite mit integriertem YouTube-Plugin wird "
-#| "nicht sofort eine Verbindung zu den Servern von YouTube hergestellt. \n"
-#| "          Statt dessen wird ein lokales Bild (\"Thumbnail\") zur "
-#| "Ankündigung des Videos geladen und auf YouTube als Drittanbieter "
-#| "hingewiesen. \n"
-#| "          Nutzer*innen müssen aktiv das YouTube-Video starten. Erst dann "
-#| "erfährt hierbei YouTube die IP-Adresse Ihres Endgerätes und die Seite "
-#| "mit \n"
-#| "          YouTube-Video, die Sie gerade aufgerufen haben, selbst wenn Sie "
-#| "nicht beim Videoportal eingeloggt sind oder dort kein Konto besitzen."
 msgid ""
 "Für die Darstellung von Videoinhalten nutzt unsere Website unter anderem ein "
 "Plugin zur Einbindung von YouTube-Videos.\n"
@@ -3097,20 +2927,6 @@ msgid "Ort der Speicherung und zweckgebundene Datenverwendung"
 msgstr "Location of storage and intended use of data"
 
 #: templates/pages/Datenschutzhinweis.html:164
-#, fuzzy
-#| msgid ""
-#| "Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten "
-#| "ausschließlich intern (i.d.R. auf eigenen Servern) nur für den \n"
-#| "          Zweck, für den Sie sie uns mitgeteilt haben und beachten damit "
-#| "den Grundsatz der zweckgebundenen Datenverwendung. Es erfolgt ohne \n"
-#| "          Ihre ausdrückliche Einwilligung keine Weitergabe Ihrer "
-#| "persönlichen Daten an Dritte, sofern dies nicht zur Erbringung der \n"
-#| "          Dienstleistung oder zur Vertragsdurchführung notwendig ist. "
-#| "Auch die Übermittlung an auskunftsverlangende staatliche Institutionen \n"
-#| "          und Behörden erfolgt nur im Rahmen der gesetzlichen "
-#| "Auskunftspflichten bzw. wenn wir durch eine gerichtliche Entscheidung "
-#| "zur \n"
-#| "          Auskunft verpflichtet werden."
 msgid ""
 "Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten "
 "ausschließlich intern (i.d.R. auf eigenen Servern) nur für den\n"
@@ -3134,14 +2950,6 @@ msgstr ""
 "obligations or if we are obliged to provide information by a court decision."
 
 #: templates/pages/Datenschutzhinweis.html:172
-#, fuzzy
-#| msgid ""
-#| "Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere "
-#| "Mitarbeiter und Mitarbeiterinnen sowie die von uns \n"
-#| "          beauftragten Dienstleistungsunternehmen sind von uns zur "
-#| "Verschwiegenheit und zur Einhaltung der datenschutzrechtlichen "
-#| "Bestimmungen \n"
-#| "          verpflichtet."
 msgid ""
 "Wir nehmen auch den Universitäts-internen Datenschutz sehr ernst. Unsere "
 "Mitarbeiter und Mitarbeiterinnen sowie die von uns\n"
@@ -3160,14 +2968,6 @@ msgid "Auskunftsrecht"
 msgstr "Right of information"
 
 #: templates/pages/Datenschutzhinweis.html:179
-#, fuzzy
-#| msgid ""
-#| "Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über "
-#| "Ihre bei uns gespeicherten Daten. Hierzu \n"
-#| "          wenden Sie sich bitte an die im Impressum angegebene "
-#| "Kontaktadresse. Gerne stehen wir Ihnen für weitergehende Fragen zu "
-#| "unseren \n"
-#| "          Datenschutzhinweisen zur Verfügung."
 msgid ""
 "Sie erhalten jederzeit ohne Angabe von Gründen kostenfrei Auskunft über Ihre "
 "bei uns gespeicherten Daten. Hierzu\n"
@@ -3189,17 +2989,6 @@ msgstr ""
 "your data."
 
 #: templates/pages/Datenschutzhinweis.html:187
-#, fuzzy
-#| msgid ""
-#| "Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
-#| "betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs. \n"
-#| "          1 Buchstabe e und f EU-DSGVO erfolgt, Widerspruch einzulegen. "
-#| "Die fachverantwortliche Stelle darf danach die Sie betreffenden \n"
-#| "          personenbezogenen Daten nicht mehr verarbeiten, es sei denn, "
-#| "diese kann zwingende schutzwürdige Gründe für die Verarbeitung \n"
-#| "          nachweisen, die Ihren Interessen, Rechte und Freiheiten "
-#| "überwiegen, oder die Verarbeitung der Geltendmachung, Ausübung oder \n"
-#| "          Verteidigung von Rechtsansprüchen dient."
 msgid ""
 "Sie haben auch das Recht jederzeit gegen die Verarbeitung der Sie "
 "betreffenden personenbezogenen Daten, die aufgrund von Art. 6 Abs.\n"
@@ -3224,12 +3013,6 @@ msgid "Beschwerderecht"
 msgstr "Right of appeal"
 
 #: templates/pages/Datenschutzhinweis.html:196
-#, fuzzy
-#| msgid ""
-#| "Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
-#| "datenschutzgerecht umgehen, können Sie sich jederzeit an das \n"
-#| "          Team Datenschutz der Technischen Universität Berlin oder an die "
-#| "Aufsichtsbehörde wenden."
 msgid ""
 "Sollten Sie Anhaltspunkte dafür erkennen, dass wir mit Ihren Daten nicht "
 "datenschutzgerecht umgehen, können Sie sich jederzeit an das\n"
@@ -3265,12 +3048,6 @@ msgid "Abschließende Hinweise"
 msgstr "Final Notes"
 
 #: templates/pages/Datenschutzhinweis.html:218
-#, fuzzy
-#| msgid ""
-#| "Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
-#| "Datenschutz laufend ändern können, so dass es erforderlich ist, \n"
-#| "          sich über Veränderungen der gesetzlichen Bestimmungen und der "
-#| "Praxis von Unternehmen fortlaufend zu informieren."
 msgid ""
 "Beachten Sie, dass sich Datenschutzbestimmungen und Handhabungen zum "
 "Datenschutz laufend ändern können, so dass es erforderlich ist,\n"
@@ -3539,6 +3316,10 @@ msgstr ""
 msgid "Haftungsausschluss"
 msgstr "Disclaimer"
 
+#: templates/pages/impressum.html:44
+msgid "Inhalt der eigenen Seiten"
+msgstr "Content of own pages"
+
 #: templates/pages/impressum.html:45
 msgid ""
 "Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
@@ -3575,6 +3356,13 @@ msgstr ""
 "is outside our area of responsibility and we have no influence on its future "
 "design."
 
+#: templates/pages/impressum.html:51
+msgid ""
+"Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend "
+"entfernen."
+msgstr ""
+"When we become aware of legal violations, we will promptly remove such links."
+
 #: templates/pages/index.html:5 templates/start_search/start_search.html:4
 msgid "Wissensplattform - Digitalisierung Energiewendebauen"
 msgstr "Knowledge platform - building digitalization of the energy transition"
@@ -3584,10 +3372,8 @@ msgid "Detailansicht zum Bild"
 msgstr "Detailed view of the image"
 
 #: templates/pages/stromlast.html:4
-#, fuzzy
-#| msgid "Standardlastprofile"
 msgid "Stromlastprofil"
-msgstr "Standard load profiles"
+msgstr "Current load profiles"
 
 #: templates/pages/userIntegrationMethod.html:20
 #: templates/pages/userIntegrationPractice.html:19
@@ -3672,17 +3458,6 @@ msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
 #: templates/partials/_gefoerdert_bmwk.html:7
-#, fuzzy
-#| msgid ""
-#| "Die Wissensplattform - Digitalisierung Energiewendebauen entsteht im\n"
-#| "        Rahmen des Forschungsprojektes „BF2020 Begleitforschung\n"
-#| "        Energiewendebauen - Modul Digitalisierung; Teilvorhaben: TU "
-#| "Berlin:\n"
-#| "        Wissensplattform“ (FKZ: 03EWB004A).</br>\n"
-#| "        Dieses Projekt wurde aufgrund\n"
-#| "        eines Beschlusses des Deutschen Bundestages mit öffentlichen "
-#| "Mitteln des\n"
-#| "        Bundesministeriums für Wirtschaft und Klimaschutz gefördert."
 msgid ""
 "Die Wissensplattform - Digitalisierung Energiewendebauen entsteht im\n"
 "        Rahmen des Forschungsprojektes „BF2020 Begleitforschung\n"
@@ -3766,10 +3541,8 @@ msgid "Veröffentlichungen"
 msgstr "Publications"
 
 #: templates/partials/_navbar.html:273
-#, fuzzy
-#| msgid "Icons und Visualisierung"
 msgid "City GML Visualisierung"
-msgstr "Icons and visualization"
+msgstr "City GML visualization"
 
 #: templates/partials/_navbar.html:287
 #: templates/start_search/result_search.html:38
@@ -4371,6 +4144,107 @@ msgstr ""
 msgid "Weiterführende Literatur"
 msgstr "Further reading"
 
+#: templates/partials/description_criteria_catalog.html:48
+msgid ""
+"Die Datenschutz-Grundverordnung (DSGVO) verpflichtet datenverarbeitende "
+"Akteure auch im Gebäude- und Quartierskontext zur Einhaltung von "
+"Datenschutzanforderungen (wie dem Erfordernis einer Rechtsgrundlage, "
+"Transparenzpflichten oder Datenminimierung). Dieser Kriterienkatalog führt "
+"dich Schritt für Schritt durch die Anforderungen der DSGVO, wenn du Daten "
+"für einen der folgenden Zweck-Kategorien verarbeiten möchtest. "
+msgstr ""
+"The General Data Protection Regulation (GDPR) also obliges data-processing "
+"actors in the context of buildings and neighborhoods to comply with data "
+"protection requirements (such as the necessity of a legal basis, "
+"transparency obligations, or data minimization). This criteria catalog "
+"guides you step by step through the GDPR requirements if you wish to process "
+"data for one of the following purpose categories."
+
+#: templates/partials/description_criteria_catalog.html:62
+msgid "Erfahre mehr über den Hintergrund dieses Themas"
+msgstr "Learn more about the background of this topic"
+
+#: templates/partials/description_criteria_catalog.html:66
+msgid "Worum geht es?"
+msgstr "What is it about?"
+
+#: templates/partials/description_criteria_catalog.html:68
+msgid ""
+"Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
+"Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
+"personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht "
+"die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die "
+"Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere "
+"Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche "
+"Erfordernis einer Rechtsgrundlage."
+msgstr ""
+"Due to the close connection between buildings and their users, "
+"digitalization processes often go hand in hand with the processing of "
+"personal data. The General Data Protection Regulation (GDPR) sets strict "
+"requirements for the processing of personal data, which those responsible "
+"for processing must comply with. These include, in particular, transparency "
+"and accountability obligations, as well as the fundamental requirement of a "
+"legal basis."
+
+#: templates/partials/description_criteria_catalog.html:70
+msgid "Wie funktioniert das?"
+msgstr "How does it work?"
+
+#: templates/partials/description_criteria_catalog.html:72
+msgid ""
+"Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in "
+"Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
+"Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der "
+"DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das "
+"Suchfeld gezielt durchsuchen."
+msgstr ""
+"The following criteria catalog includes all obligations from the GDPR in the "
+"form of 'criteria' and 'requirements,' which are specified for each purpose "
+"category. The catalog divides the GDPR requirements into 14 'topics' and can "
+"be specifically searched using a dropdown system and a search field."
+
+#: templates/partials/description_criteria_catalog.html:76
+msgid ""
+"Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele "
+"und Wertungen für die LeserInnen verständlich zu machen."
+msgstr ""
+"It serves, on the one hand, to make data protection law and the underlying "
+"goals and values understandable to the readers."
+
+#: templates/partials/description_criteria_catalog.html:79
+msgid ""
+"Andererseits können die “Anforderungen” als Checkliste begriffen werden, die "
+"Verantwortliche vor der Verarbeitung personenbezogener Daten beachten "
+"sollten."
+msgstr ""
+"On the other hand, the 'requirements' can be understood as a checklist that "
+"those responsible should follow before processing personal data."
+
+#: templates/partials/description_criteria_catalog.html:82
+msgid ""
+"Die Anforderungen aus diesem Kriterienkatalog werden zum Projektende in ein "
+"Zertifizierungsprogramm überführt. Verantwortliche sollen sich zukünftig mit "
+"einem EU-Datenschutzsiegel gemäß Art. 42 DSGVO zertifizieren können. "
+msgstr ""
+"The requirements from this criteria catalog will be transferred into a "
+"certification program by the end of the project. In the future, those "
+"responsible should be able to obtain an EU data protection seal in "
+"accordance with Article 42 of the GDPR."
+
+#: templates/partials/description_criteria_catalog.html:85
+msgid "Anmerkung"
+msgstr "Note"
+
+#: templates/partials/description_criteria_catalog.html:87
+msgid ""
+"Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei "
+"allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte "
+"des konkreten Anwendungsfalls betrachtet und umgesetzt werden müssen."
+msgstr ""
+"The criteria catalog is currently being continuously updated and revised. "
+"All recommendations are typified examples that must be considered and "
+"implemented in light of the specific use case."
+
 #: templates/partials/icons_left_column.html:6
 msgid "Downloade die Open-Source Icons-Datenbank!"
 msgstr "Download the open-source icons database!"
@@ -4615,9 +4489,21 @@ msgid "Kurzbeleg"
 msgstr "Citation"
 
 #: templates/publications/publications-detail.html:144
-#: templates/start_search/result_search.html:83 use_cases/views.py:234
+#: templates/start_search/result_search.html:83 use_cases/views.py:239
 msgid "Fokus"
 msgstr "Focus"
+
+#: templates/publications/publications-explanation.html:8
+msgid ""
+"Hier dargestellt sind die Publikationen, welche im Rahmen der "
+"Projektlaufzeit durch die Begleitforschung\n"
+"          Energiewendebauen Modul Digitalisierung entstanden sind. Die "
+"jeweiligen Publikationen stehen zum Download zur Verfügung.\n"
+"        "
+msgstr ""
+"The publications presented here were created during the project period as "
+"part of the accompanying research for the Energiewendebauen Digitalization "
+"Module. The respective publications are available for download."
 
 #: templates/publications/publications-listings.html:4
 msgid "Überblick über die Publikationen"
@@ -5422,7 +5308,7 @@ msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
 #: templates/tools_over/explanationTools.html:140
-#: templates/use_cases/explanation.html:120
+#: templates/use_cases/explanation.html:120 use_cases/views.py:106
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
@@ -5467,14 +5353,6 @@ msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 msgstr "Norms/standard (basis/orientation of the tool)"
 
 #: templates/use_cases/explanation.html:17
-#, fuzzy
-#| msgid ""
-#| "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
-#| "Anwendungsfälle im Kontext des Smart Readiness Indicator. \n"
-#| "              Das Ziel ist es die unterschiedlichen Effekte der "
-#| "Digitalisierung aufzudecken und die Inteaktion verschiedener "
-#| "Anforderungen aufzuzeigen. \n"
-#| "              Dabei gehen wir auf verschiedene Fragestellungen ein:"
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
 "Anwendungsfälle im Kontext des Smart Readiness Indicator.\n"
@@ -5489,46 +5367,29 @@ msgstr ""
 "and to demonstrate the interaction of different requirements. \n"
 "              In doing so, we address various questions:"
 
-#: templates/use_cases/explanation.html:22
-#, fuzzy
-#| msgid "Kategorie Anwendungsfall"
+#: templates/use_cases/explanation.html:22 use_cases/views.py:23
 msgid "Was verstehen wir unter einem Anwendungsfall?"
 msgstr "What do we mean by a use case?"
 
-#: templates/use_cases/explanation.html:25
+#: templates/use_cases/explanation.html:25 use_cases/views.py:26
 msgid "Welche Anwendungsfälle werden diskutiert?"
 msgstr "Which use cases are discussed?"
 
 #: templates/use_cases/explanation.html:28
-#: templates/use_cases/explanation.html:116
+#: templates/use_cases/explanation.html:116 use_cases/views.py:29
+#: use_cases/views.py:104
 msgid "Was ist in dem Graph zu sehen?"
 msgstr ""
 
 #: templates/use_cases/explanation.html:31
-#, fuzzy
-#| msgid "Welche Aggregationen sind zu sehen und warum?"
 msgid "Welche Aggreationen sind zu sehen und warum?"
 msgstr "What aggregations are visible and why?"
 
-#: templates/use_cases/explanation.html:33
+#: templates/use_cases/explanation.html:33 use_cases/views.py:35
 msgid "Woher kommen die Daten?"
 msgstr "Where do the data come from?"
 
 #: templates/use_cases/explanation.html:40
-#, fuzzy
-#| msgid ""
-#| "Die digitale Anwendung benötigt zahlreiche Messdaten, die "
-#| "Verhaltensmuster erkennen lassen? \n"
-#| "          Die Anwendung ermöglicht durch Feedback energetische "
-#| "Einsparungen? \n"
-#| "          Die Auswirkungen digitaler Anwendungen sind durch ihre "
-#| "Wechselwirkungen komplex und vielschichtig.\n"
-#| "          So werden bepspielweise Ressourcen und Energie für Erstellung "
-#| "und den Betrieb von Messetechnik benötigt, \n"
-#| "          eine genauere Messung ermöglicht aber auch ein individuelleres "
-#| "Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
-#| "          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt "
-#| "und in ihren Auswirkungen begreifbar gemacht werden."
 msgid ""
 "Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
 "erkennen lassen?\n"
@@ -5608,7 +5469,7 @@ msgstr ""
 "Effect: The outcomes or intended effects associated with the implementation "
 "of the use case."
 
-#: templates/use_cases/explanation.html:94
+#: templates/use_cases/explanation.html:94 use_cases/views.py:82
 msgid ""
 "Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
 "Services „Reporting information regarding electricity consumption“ statt."
@@ -5675,12 +5536,16 @@ msgid ""
 "Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
 "von Effekten aus?"
 msgstr ""
+"How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
+"effects?"
 
 #: templates/use_cases/explanation.html:113
 msgid ""
 "Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
 "Gebäude) auf die Sichtbarkeit von Effekten aus?"
 msgstr ""
+"How do individual aggregations (facilities, total consumption, three "
+"buildings) affect the visibility of effects?"
 
 #: templates/use_cases/usecase-listings.html:4
 msgid "Überblick über die Use Cases"
@@ -5795,163 +5660,268 @@ msgstr "Example application"
 
 #: use_cases/views.py:20
 msgid ""
-"\n"
-"          <ol type=\"1\">\n"
-"            <p>\n"
-"              Auf dieser Seite präsentieren wir eine detaillierte Analyse "
-"verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das "
-"Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken "
-"und die Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir "
-"auf verschiedene Fragestellungen ein: \n"
-"            </p>\n"
-"            <li>Was verstehen wir unter einem Anwendungsfall?</li>\n"
-"            <li>Welche Anwendungsfälle werden diskutiert?</li>\n"
-"            <li>Was ist in dem Graph zu sehen?\n"
-"              <ol type=\"a\">\n"
-"                <li>Welche Aggreationen sind zu sehen und warum?</li>\n"
-"                <li>Woher kommen die Daten?</li>\n"
-"              </ol>\n"
-"            </li>\n"
-"          </ol>\n"
-"        <p>\n"
-"          Die digitale Anwendung benötigt zahlreiche Messdaten, die "
-"Verhaltensmuster erkennen lassen? \n"
-"          Die Anwendung ermöglicht durch Feedback energetische "
-"Einsparungen? \n"
-"          Die Auswirkungen digitaler Anwendungen sind durch ihre "
-"Wechselwirkungen komplex und vielschichtig.\n"
-"          So werden bepspielweise Ressourcen und Energie für Erstellung und "
-"den Betrieb von Messetechnik benötigt, \n"
-"          eine genauere Messung ermöglicht aber auch ein individuelleres "
-"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
-"          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und "
-"in ihren Auswirkungen begreifbar gemacht werden.\n"
-"        </p>\n"
-"        <p>\n"
-"          Als Basis wird das Rahmenwerk des Smart Readiness Indicator "
-"genutzt, der zur Bewertung der Intelligenzfähigkeit von Gebäuden\n"
-"          nach Vorschriften der EU entwickelt wurde. In diesem Rahmenwerk "
-"sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
-"          Dabei werden die folgenden Aspekte betrachtet:\n"
-"        </p>\n"
-"        <ul>\n"
-"          <li>Use-Case: Beschreibt den konkreten Service auf den sich "
-"bezogen wird und wordurch die Effekte/Wirkungen hervorgerufen werden.</li>\n"
-"          <li>Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die "
-"Aktion/Durchführung bezieht.</li>\n"
-"          <li>Level: Die Abstufungen der Durchführung des Use-Casess.</li>\n"
-"          <table >\n"
-"           \n"
-"            <tr>\n"
-"              <td>Smart Readiness Indicator Service</td>\n"
-"              <td>Functionality level 0 (as non-smart default)</td>\n"
-"              <td>Functionality level 1</td>\n"
-"              <td>Functionality level 2</td>\n"
-"              <td>Functionality level 3</td>\n"
-"              <td>Functionality level 4</td>\n"
-"            </tr>\n"
-"            <tr>\n"
-"              <td>Reporting information regarding electricity consumption</"
-"td>\n"
-"              <td>None</td>\n"
-"              <td>Reporting on current electricity consumption on building "
-"level</td>\n"
-"              <td>Real-time feedback or benchmarking on building level</td>\n"
-"              <td>Real-time feedback or benchmarking on appliance level</"
-"td>\n"
-"              <td>Real-time feedback or benchmarking on appliance level with "
-"automated personalized recommendation</td>\n"
-"            </tr>\n"
-"          </table>\n"
-"\n"
-"          <li>Perspektive: Die Bereiche auf denen sich die Durchführung des "
-"Use-Cases auswirkt, beispielsweise Ökonomisch, Ökologisch, aus der "
-"Nutzendenperspektive oder der technischen Sichweite.</li>\n"
-"\n"
-"             <li>Effekt: Die mit der Durchführung des Use-Cases "
-"einhergehenden Wirkungen bzw. Erzielten/intendierten Effekte.</li>\n"
-"        </ul>\n"
-"        <p>\n"
-"          Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand "
-"des Services „Reporting information regarding electricity consumption“ "
-"statt.\n"
-"          <br>\n"
-"          Um diese Effekte detaillierter darzustellen wurde der IDEAL-"
-"Datensatz genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte "
-"aus den UK und Schottland enthalten.\n"
-"          39 dieser Haushalte sind in einem engmaschigen System gemonitort "
-"worden. \n"
-"          Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, "
-"105 und 106 genutzt worden. Trotz dieses engmaschigen Monitorings ist "
-"ersichtlich, das nicht immer alle Sensoren funktionieren (Haushalt 106).\n"
-"          <br>\n"
-"          Dargestellt sind der Durschnittliche Verbrauch in einem "
-"Zeitfenster von fünf Sekunden, 15 Minuten und einer Stunde. Dabei sind "
-"sowohl die einzelnen Werte der Haushalte dargestellt und auch die Summe der "
-"Lastgänge (three buildings).\n"
-"          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
-"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
-"Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
-"Aggregationen unterhgehen. Damit sollen die Nutzenden \n"
-"          ein quantaitives und qualitatives Gefühl für die eFfekte der "
-"Digitalisierung und deren Wechselwirkungen bekommen. So werden "
-"beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
-"Messtechnik benötigt, \n"
-"          eine genauere Messung ermöglicht aber auch ein individuelleres "
-"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
-"          <br>\n"
-"          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
-"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
-"Dabei gehen wir auf verschiedene Fragestellungen ein:\n"
-"      </p>\n"
-"      \n"
-"      <ul>\n"
-"          <li>Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf "
-"die Sichtbarkeit von Effekten aus?</li>\n"
-"          <li>Wie wirken sich einzelne Aggregationen (Anlagen, "
-"Gesamtverbrauch, Drei Gebäude) auf die Sichtbarkeit von Effekten aus?</li>\n"
-"          <li>Was ist in dem Graph zu sehen?</li>\n"
-"      </ul> \n"
-"          Weiterführende Informationen:\n"
-"        </p>\n"
-"        <p>\n"
-"          SRI:\n"
-"          <a href=\"https://energy.ec.europa.eu/system/files/2022-06/SRI "
-"training slide deck - Version 2 - Jan 2022 - updated.pdf\">Training "
-"SlTraining Slide Deckide Deck</a>\n"
-"        </p>\n"
-"        <p>\n"
-"          IDEAL Datensatz:\n"
-"          <a href=\"https://pubmed.ncbi.nlm.nih.gov/34050194/\">\n"
-"              Pullinger et al., The IDEAL household energy dataset, "
-"electricity, gas, contextual sensor data and survey data for 255 UK homes, "
-"ci Data 2021 May 28;8(1):146. doi: 10.1038/s41597-021-00921-y.</a>\n"
-"        </p>\n"
-"        <br>\n"
-"    "
+"Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
+"Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es "
+"die unterschiedlichen Effekte der Digitalisierung aufzudecken und die "
+"Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf "
+"verschiedene Fragestellungen ein:"
 msgstr ""
+"On this page, we present a detailed analysis of various use cases in the context "
+"of the Smart Readiness Indicator. The goal is to uncover the different effects of "
+"digitalization and highlight the interaction of various requirements. In doing so, "
+"we address several key questions:"
 
-#: use_cases/views.py:224
+#: use_cases/views.py:33
+msgid "Welche Aggregationen sind zu sehen und warum?"
+msgstr "Which aggregations are visible and why?"
+
+#: use_cases/views.py:37
+msgid ""
+"Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
+"erkennen lassen?"
+msgstr "The digital application requires numerous measurement data that reveal behavioral patterns?"
+
+#: use_cases/views.py:38
+msgid "Die Anwendung ermöglicht durch Feedback energetische Einsparungen?"
+msgstr "Does the application enable energy savings through feedback?"
+
+#: use_cases/views.py:39
+msgid ""
+"Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
+"komplex und vielschichtig."
+msgstr "The effects of digital applications are complex and multifaceted due to their interactions."
+
+#: use_cases/views.py:40 use_cases/views.py:94
+msgid ""
+"So werden beispielsweise Ressourcen und Energie für Erstellung und den "
+"Betrieb von Messtechnik benötigt, "
+msgstr "For example, resources and energy are required for the creation and operation of measurement technology, "
+
+#: use_cases/views.py:41 use_cases/views.py:95
+msgid ""
+"eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an "
+"Nutzende oder ein genaues Erkennen von Fehlern."
+msgstr "A more accurate measurement also allows for more personalized feedback to users or precise detection of errors."
+
+#: use_cases/views.py:42
+msgid ""
+"Hier sollen einige dieser wechselwirkenden Effekte gesammelt und in ihren "
+"Auswirkungen begreifbar gemacht werden."
+msgstr "Here, some of these interactive effects are to be collected and made comprehensible in their impacts."
+
+#: use_cases/views.py:44
+msgid ""
+"Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur "
+"Bewertung der Intelligenzfähigkeit von Gebäuden nach Vorschriften der EU "
+"entwickelt wurde."
+msgstr ""
+"The framework of the Smart Readiness Indicator is used as a basis, which was developed for the evaluation of the intelligence capabilities of buildings according to EU regulations."
+
+#: use_cases/views.py:45
+msgid ""
+"In diesem Rahmenwerk sind „Services“ definiert, welche hier als Use-Cases "
+"betrachtet werden."
+msgstr "In this framework, 'services' are defined, which are considered as use cases here."
+
+#: use_cases/views.py:46
+msgid "Dabei werden die folgenden Aspekte betrachtet:"
+msgstr "The following aspects are considered:"
+
+#: use_cases/views.py:48
+msgid ""
+"Use-Case: Beschreibt den konkreten Service, auf den sich bezogen wird und "
+"wodurch die Effekte/Wirkungen hervorgerufen werden."
+msgstr ""
+"Use case: Describes the specific service being referred to and through which the effects/impacts are triggered."
+
+#: use_cases/views.py:50
+msgid ""
+"Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. die Aktion/"
+"Durchführung bezieht."
+msgstr ""
+"Effect level: The levels to which the use case or the action/implementation refers."
+
+#: use_cases/views.py:52
+msgid "Level: Die Abstufungen der Durchführung des Use-Cases."
+msgstr "Level: The gradations of implementing the use case."
+
+#: use_cases/views.py:54
+msgid "Smart Readiness Indicator Service"
+msgstr "Smart Readiness Indicator Service"
+
+#: use_cases/views.py:56
+msgid "Functionality level 0 (as non-smart default)"
+msgstr "Functionality level 0 (as non-smart default)"
+
+#: use_cases/views.py:58
+msgid "Functionality level 1"
+msgstr "Functionality level 1"
+
+#: use_cases/views.py:60
+msgid "Functionality level 2"
+msgstr "Functionality level 2"
+
+#: use_cases/views.py:62
+msgid "Functionality level 3"
+msgstr "Functionality level 3"
+
+#: use_cases/views.py:64
+msgid "Functionality level 4"
+msgstr "Functionality level 4"
+
+#: use_cases/views.py:66
+msgid "Reporting information regarding electricity consumption"
+msgstr "Reporting information regarding electricity consumption"
+
+#: use_cases/views.py:68
+msgid "None"
+msgstr "None"
+
+#: use_cases/views.py:70
+msgid "Reporting on current electricity consumption on building level"
+msgstr "Reporting on current electricity consumption on building level"
+
+#: use_cases/views.py:72
+msgid "Real-time feedback or benchmarking on building level"
+msgstr "Real-time feedback or benchmarking on building level"
+
+#: use_cases/views.py:74
+msgid "Real-time feedback or benchmarking on appliance level"
+msgstr "Real-time feedback or benchmarking on appliance level"
+
+#: use_cases/views.py:76
+msgid ""
+"Real-time feedback or benchmarking on appliance level with automated "
+"personalized recommendation"
+msgstr "Real-time feedback or benchmarking on appliance level with automated "
+"personalized recommendation"
+
+#: use_cases/views.py:78
+msgid ""
+"Perspektive: Die Bereiche, auf denen sich die Durchführung des Use-Cases "
+"auswirkt, beispielsweise ökonomisch, ökologisch, aus der "
+"Nutzendenperspektive oder der technischen Sichtweite."
+msgstr "Perspective: The areas affected by the implementation of the use case, such as economically, ecologically, from the user perspective, or the technical viewpoint."
+
+#: use_cases/views.py:80
+msgid ""
+"Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
+"erzielten/intendierten Effekte."
+msgstr ""
+"Effect: The impacts or achieved/intended effects associated with the implementation of the use case."
+
+#: use_cases/views.py:84
+msgid ""
+"Um diese Effekte detaillierter darzustellen, wurde der IDEAL-Datensatz "
+"genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus den "
+"UK und Schottland enthalten."
+msgstr "To present these effects in more detail, the IDEAL dataset was used. This dataset contains monitoring data for 255 households from the UK and Scotland."
+
+#: use_cases/views.py:85
+msgid ""
+"39 dieser Haushalte sind in einem engmaschigen System gemonitort worden."
+msgstr "39 of these households have been monitored in a closely-knit system."
+
+#: use_cases/views.py:86
+msgid ""
+"Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, 105 und "
+"106 genutzt worden."
+msgstr "For the presentation, the closely monitored households 62, 105, and 106 have been used."
+
+#: use_cases/views.py:87
+msgid ""
+"Trotz dieses engmaschigen Monitorings ist ersichtlich, dass nicht immer alle "
+"Sensoren funktionieren (Haushalt 106)."
+msgstr "Despite this close monitoring, it is evident that not all sensors are functioning properly (household 106)."
+
+#: use_cases/views.py:89
+msgid ""
+"Dargestellt sind der durchschnittliche Verbrauch in einem Zeitfenster von "
+"fünf Sekunden, 15 Minuten und einer Stunde."
+msgstr "The average consumption is presented over time windows of five seconds, 15 minutes, and one hour."
+
+#: use_cases/views.py:90
+msgid ""
+"Dabei sind sowohl die einzelnen Werte der Haushalte dargestellt als auch die "
+"Summe der Lastgänge (three buildings)."
+msgstr "This includes both the individual values of the households as well as the sum of the load profiles (three buildings)."
+
+#: use_cases/views.py:91
+msgid ""
+"Die beispielhafte Darstellung zeigt, wie sich verschiedene Aggregationen "
+"(zeitlich und räumlich) auswirken."
+msgstr "The example representation shows how different aggregations (temporal and spatial) have an impact."
+
+#: use_cases/views.py:92
+msgid ""
+"Mittels hochfrequenter Messungen sind einzelne Effekte sehr gut zu sehen, "
+"welche in anderen Aggregationen untergehen."
+msgstr "Using high-frequency measurements, individual effects can be clearly seen, which may be lost in other aggregations."
+
+#: use_cases/views.py:93
+msgid ""
+"Damit sollen die Nutzenden ein quantitatives und qualitatives Gefühl für die "
+"Effekte der Digitalisierung und deren Wechselwirkungen bekommen."
+msgstr "This is intended to give users a quantitative and qualitative understanding of the effects of digitalization and their interactions."
+
+#: use_cases/views.py:97
+msgid ""
+"Das Ziel ist es, die unterschiedlichen Effekte der Digitalisierung "
+"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."
+msgstr "The goal is to uncover the different effects of digitalization and to illustrate the interaction of various requirements."
+
+#: use_cases/views.py:98
+msgid "Dabei gehen wir auf verschiedene Fragestellungen ein:"
+msgstr "We will address various questions:"
+
+#: use_cases/views.py:100
+msgid ""
+"Wie wirkt sich die Frequenz (5s, 15-minütig, 1-stündig) auf die Sichtbarkeit "
+"von Effekten aus?"
+msgstr "How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of effects?"
+
+#: use_cases/views.py:102
+msgid ""
+"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, drei "
+"Gebäude) auf die Sichtbarkeit von Effekten aus?"
+msgstr ""
+"How do individual aggregations (systems, total consumption, three buildings) affect the visibility of effects?"
+
+#: use_cases/views.py:109
+msgid "Training Slide Deck"
+msgstr "Training Slide Deck"
+
+#: use_cases/views.py:111
+msgid ""
+"Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
+"contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
+"28;8(1):146. doi: 10.1038/s41597-021-00921-y."
+msgstr "Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
+"contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
+"28;8(1):146. doi: 10.1038/s41597-021-00921-y."
+
+
+#: use_cases/views.py:229
 msgid "Überblick über die Anwendungsfälle"
 msgstr "Overview of use cases"
 
-#: use_cases/views.py:240
+#: use_cases/views.py:245
 msgid "Level der Wirkebene"
-msgstr ""
+msgstr "Level of Effect Level"
 
-#: use_cases/views.py:253
+#: use_cases/views.py:258
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
-#: use_cases/views.py:254
+#: use_cases/views.py:259
 msgid "Positiv"
 msgstr "Positive"
 
-#: use_cases/views.py:254
+#: use_cases/views.py:259
 msgid "Negativ"
 msgstr "Negative"
 
-#: use_cases/views.py:254
+#: use_cases/views.py:259
 msgid "Neutral"
 msgstr "Neutral"
 
@@ -5970,24 +5940,3 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:90
 msgid "MIT-Lizenz"
 msgstr "MIT license"
-
-#~ msgid "Jahresstrombedarf in KWh/a :"
-#~ msgstr "Annual electricity requirement in KWh/a"
-
-#~ msgid "Anwendung: "
-#~ msgstr "Applications: "
-
-#~ msgid "Last"
-#~ msgstr "Load"
-
-#~ msgid "Durchgeführt von"
-#~ msgstr "Conducted by"
-
-#~ msgid "Erfolgsfaktoren für die Umsetzung der Methode"
-#~ msgstr "Success factors for the implementation of the method"
-
-#~ msgid "Konkrete Ziele"
-#~ msgstr "Specific goals"
-
-#~ msgid "Konkreter Ablauf"
-#~ msgstr "Concrete process"

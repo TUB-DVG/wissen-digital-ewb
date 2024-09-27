@@ -12,8 +12,8 @@ from .models import (
 
 
 class DataImportApp(DataImport):
-    DJANGO_MODEL = "UseCase"
-    DJANGO_APP = "use_cases"
+    DJANGO_MODEL = "Publication"
+    DJANGO_APP = "publications"
     MAPPING_EXCEL_DB_EN = {
         "Wirkebene__en": "levelOfAction_en",
         "Detailgrad__en": "degreeOfDetail_en",

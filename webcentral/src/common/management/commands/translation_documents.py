@@ -75,7 +75,7 @@ class Command(BaseCommand):
 
         for modelObj in allinstancesOfModel:
             self._checkForTranslationAttributes(modelObj, translationFieldList)
-            self.document.add_page_break()
+            # self.document.add_page_break()
         
         self.document.save(nameOfModel + ".docx")
 
@@ -111,7 +111,10 @@ class Command(BaseCommand):
         modelFields = modelObj._meta.get_fields()
 
         for modelField in modelFields:
-            relatedObj = getattr(modelObj, modelField.name)
+            try:
+                relatedObj = getattr(modelObj, modelField.name)
+            except:
+                continue
             if isinstance(modelField, ForeignKey):
 
                 try:       

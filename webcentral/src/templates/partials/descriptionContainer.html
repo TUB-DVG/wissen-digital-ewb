@@ -53,7 +53,7 @@
 <script>
   $(document).ready(function() {
       var showMorePresent = '{{ showMorePresent }}'
-      var explanationText = '{{ explanaitionText|safe }}'
+      var explanationText = '{{ explanaitionText|safe|escapejs }}'
       var numberOfInitialShownIntro = '{{ charNumberToShowCollapsed }}';
       var numberOfInitialShownIntro = parseFloat(numberOfInitialShownIntro);
       //debugger;
@@ -67,7 +67,7 @@
         //debugger;
       }
       else {
-        $("#mainContent").html('{{ explanaitionText|safe }}');
+        $("#mainContent").html('{{ explanaitionText|safe|escapejs }}');
       }
       var $collapseButton = $('.text-truncation-btn');
     var isExpanded = $collapseButton.attr('aria-expanded') === 'true';

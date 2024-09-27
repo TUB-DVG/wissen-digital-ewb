@@ -12,18 +12,13 @@ from .models import DataSufficiency
 class DataImportApp(DataImport):
 
     MAPPING_EXCEL_DB_EN = {
-        "Category__en": "category_en",
-        "Description__en": "description_en",
-        "Name_Digital_Application__en": "name_digital_application_en",
-        "Project_Name__en": "project_name_en",
-        "Partner__en": "partner_en",
-        "Consortium__en": "consortium_en",
-        # "Additional_Digital_Application(s)__en": "digitalApplications_en",
-        "Strategies__en": "strategies_en",
-        "Relevance__en": "relevance_en",
-        "Problem_Statement_and_Problem_Goals__en": "problem_statement_and_problem_goals_en",
-        "Implementation_in_the_Project__en": "implementation_in_the_project_en",
-        "Evaluation__en": "evaluation_en",
+        "Strategiekategorie__en": "strategyCategory_en",
+        "Kategorie_Kurzbeschreibung_Teaser__en": "categoryShortDescription_en",
+        "Kategorie_Kurzbeschreibung_Lang__en": "categoryLongDescription_en",
+        "Beispiel_1__en": "example1_en",
+        "Beispiel_1_Überschrift__en": "example1Heading_en",
+        "Beispiel_2__en": "example2_en",
+        "Beispiel_2_Überschrift__en": "example2Heading_en", 
     }
 
     def __init__(self, path_to_data_file):
@@ -86,8 +81,8 @@ class DataImportApp(DataImport):
         literatureObjsList = self._importLiterature(literatureStr)
         obj.literature.add(*literatureObjsList)
 
-        # if self._englishHeadersPresent(header):
-        #    self._getOrCreateEnglishTranslation(row, header, data, obj)
+        if self._englishHeadersPresent(header):
+           self._getOrCreateEnglishTranslation(row, header, data, obj)
         #
 
     def _getOrCreateEnglishTranslation(
