@@ -1,5 +1,38 @@
 {% load static %}
 {% load i18n %}
+<style>
+  .row {
+    flex-direction: column-reverse;
+  }
+  .collapse,
+  .collapse + div,
+  .collapse + div .showMore {
+    transition: background-color 0.2s;
+  }
+  .collapse.show,
+  .collapse.show + div,
+  .collapse.show + div .showMore {
+    background-color: #E3EAFD !important;
+  }
+  .collapse.show + div {
+    #textInExpansionButton {
+      display: none;
+    }
+  }
+  .showMore {
+      display: flex; 
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      padding: 24px;
+      font-size: 22px;
+      background-color: #F2F2F2;
+  }
+  .collapseInfo {
+    padding: 80px;
+    padding-top: 24px;
+  }
+</style>
 <section class="py-4">
 
   <div class="container">
@@ -195,13 +228,16 @@
 </div>
 <div class="col-lg-12 lead mt-3">
   <a role="button"
-     class="collapsed text-truncation-btn"
+     class="collapsed text-truncation-btn showMore"
      data-toggle="collapse"
      href="#collapseInfoTools"
      aria-expanded="false"
      aria-controls="collapseInfoTools"
-     data-expanded-text="{% translate 'Zeige weniger ...' %}"
-     data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
+     style="color: black;"
+  >
+    <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}" />
+    <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
+</a>
 </div>
 </div>
 </div>
