@@ -24,7 +24,9 @@ authors = [
     {name = "Isabel Kiefaber"},
     {name = "Valentin Rupp"},
     {name = "Max von Grafenstein"},
-
+    {name = "Julie Heumüller"},
+    {name = "Otto Kolless"},
+    {name = "Frido Uebachs"},
 ]
 description = "WenDE - Wissensplattform: is a platform providing knowledge about tool and data for the researcher community of the EnergieWendeBauen."
 readme = "README.md"
