@@ -65,7 +65,6 @@ app.layout = html.Div(
                 "padding": "10px",
             },
         ),
-        
         # Title
         dcc.Store(id="on-load", data="loaded"),
         html.H1(
@@ -304,7 +303,7 @@ def dateRangePicker(referenceYear: str, stationId: int) -> Tuple[str, str]:
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
     else:
         data = stations.filter_by_station_id(station_id=stationId)
-        stationData = data.values.all().df#.to_pandas()
+        stationData = data.values.all().df  # .to_pandas()
         minDate = (min(stationData["date"])).date()
         maxDate = (max(stationData["date"])).date()
     return minDate, maxDate
