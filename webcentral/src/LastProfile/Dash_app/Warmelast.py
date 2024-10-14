@@ -65,6 +65,7 @@ app.layout = html.Div(
                 "padding": "10px",
             },
         ),
+        
         # Title
         dcc.Store(id="on-load", data="loaded"),
         html.H1(
@@ -286,7 +287,6 @@ def stationSelection(state: str) -> list:
         {"label": row["name"], "value": row["station_id"]}
         for index, row in stations.all().df.to_pandas().iterrows()
         if row["state"] == state
-        if row["state"] == state
     ]
 
 
@@ -304,7 +304,10 @@ def dateRangePicker(referenceYear: str, stationId: int) -> Tuple[str, str]:
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
     else:
         data = stations.filter_by_station_id(station_id=stationId)
-        stationData = data.values.all().df.to_pandas()
+        print(data)
+        print(data.values)
+        print(data.values.all())
+        stationData = data.values.all().df#.to_pandas()
         minDate = (min(stationData["date"])).date()
         maxDate = (max(stationData["date"])).date()
     return minDate, maxDate
@@ -387,8 +390,9 @@ def updateHeatGraph(
 ):
 
     if n_clicks == 0 or n_clicks is None:
+        fig = go.Figure()
         return (
-            _("Es gibt keine Eingabe"),
+            fig,
             _("Es gibt keine Eingabe"),
             pd.DataFrame.to_dict(pd.DataFrame()),
         )
