@@ -304,9 +304,6 @@ def dateRangePicker(referenceYear: str, stationId: int) -> Tuple[str, str]:
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
     else:
         data = stations.filter_by_station_id(station_id=stationId)
-        print(data)
-        print(data.values)
-        print(data.values.all())
         stationData = data.values.all().df#.to_pandas()
         minDate = (min(stationData["date"])).date()
         maxDate = (max(stationData["date"])).date()

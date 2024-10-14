@@ -59,7 +59,8 @@ dependencies = [
     "openpyxl", 
     "django-webpack-loader",
     "python-docx",
-    "regex"
+    "regex",
+    "polars==0.20.25"
 ]
 
 # root folder of the python/django not found automatically
