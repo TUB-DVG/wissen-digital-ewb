@@ -24,6 +24,7 @@
     max-width: 100%;        /* Prevents overflow */
     box-sizing: border-box; /* Ensures padding is included in the width */
 }
+
   </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -73,39 +74,39 @@
                      alt="technical uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Technisch" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
-                <a class="dropdown-item" href="{% url 'tool_list' %}">
+                <a class="dropdown-item technical" href="{% url 'tool_list' %}">
                   {% translate "Digitale Werkzeuge" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="{% url 'app_list' %}">
+                <a class="dropdown-item technical" href="{% url 'app_list' %}">
                   {% translate "Digitale Anwendungen" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="{% url 'TechnicalStandards' %}">
+                <a class="dropdown-item technical" href="{% url 'TechnicalStandards' %}">
                   {% translate "Technische Standards" %}
                 </a>
               </li>
 
               <li>
-                <a class="dropdown-item" href="{% url 'weatherdata_list' %}">
+                <a class="dropdown-item technical" href="{% url 'weatherdata_list' %}">
                   {% translate "Wetterdaten" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'LastProfile' %}">
+                <a class="dropdown-item technical" href="{% url 'LastProfile' %}">
                   {% translate "Lastprofile" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'dataset_list' %}">
+                <a class="dropdown-item technical technical-bottom" href="{% url 'dataset_list' %}">
                   {% translate "Datensätze" %}
                 </a>
               </li>
@@ -130,11 +131,11 @@
                      alt="operational uncolored icon"
                      style="width:35px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Betrieblich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
-                <a class="dropdown-item" href="{% url 'businessModels' %}">
+                <a class="dropdown-item operational" href="{% url 'businessModels' %}">
                   {% translate "Geschäftsmodelle" %}
                 </a>
               </li>
@@ -149,7 +150,7 @@
                 </a>
               </li> -->
               <li>
-                <a class="dropdown-item" href="{% url 'userEngagement' %}">
+                <a class="dropdown-item operational operational-bottom" href="{% url 'userEngagement' %}">
                   {% translate "Nutzendenintegration" %}
                 </a>
               </li>
@@ -174,24 +175,24 @@
                        style="width:35px" />
                 {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
+                &nbsp; &nbsp; &nbsp; {% translate "Ökologisch" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
                 <li>
-                  <a class="dropdown-item"
+                  <a class="dropdown-item ecological"
                      href="{% url 'environmentalIntegrityNegativ' %}">
                     {% translate "Negative Umweltwirkungen" %}
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item"
+                  <a class="dropdown-item ecological"
                      href="{% url 'environmentalIntegrityPositiv' %}">
                     {% translate "Positive Umweltwirkungen" %} - Good-practice
                   </a>
                 </li>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'dataSufficiency' %}">
+                <a class="dropdown-item ecological ecological-bottom" href="{% url 'dataSufficiency' %}">
                   {% translate "Datensuffizienz" %}
                 </a>
               </li>
@@ -217,21 +218,21 @@
                      style="width:35px" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
+              &nbsp; &nbsp; &nbsp; {% translate "Rechtlich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
-                <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
+                <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
                   {% translate "Kriterienkatalog" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'dataSecurity' %}">
+                <a class="dropdown-item legal" href="{% url 'dataSecurity' %}">
                   {% translate "Daten&shy;schutz&shy;übersicht" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
+                <a class="dropdown-item legal legal-bottom" href="{% url 'iconsAndVis' %}">
                   {% translate "Icons und Visualisierung" %}
                 </a>
               </li>
@@ -259,17 +260,17 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="globalDropdown">
               <li>
-                <a class="dropdown-item" href="{% url 'use_cases_list' %}">
+                <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
                   {% translate "Anwendungsfälle" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="{% url 'publicationPage' %}">
+                <a class="dropdown-item global" href="{% url 'publicationPage' %}">
                   {% translate "Veröffentlichungen" %}
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="/cesium">
+                <a class="dropdown-item global" href="/cesium">
                   {% translate "City GML Visualisierung" %}
                 </a>
               </li>

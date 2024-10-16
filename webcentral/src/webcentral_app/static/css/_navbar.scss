@@ -22,3 +22,70 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+
+.technical {
+  border-top: 1px solid $technical-color;
+  color: black;
+}
+.technical-bottom {
+  border-bottom: 1px solid $technical-color;
+}
+.technical:hover {
+  background-color: $technical-light-color;
+  color: black;
+
+}
+
+.operational {
+  border-top: 1px solid $operational-color;
+  color: black;
+}
+.operational-bottom {
+  border-bottom: 1px solid $operational-color;
+}
+.operational:hover {
+  background-color: $operational-light-color;
+ color: black;
+ 
+}
+
+.ecological {
+  border-top: 1px solid $ecological-color;
+  color: black;
+  
+}
+.ecological-bottom {
+  border-bottom: 1px solid $ecological-color;
+}
+
+.ecological:hover {
+  background-color: $ecological-light-color;
+  color: black;
+ 
+}
+
+.legal {
+  border-top: 1px solid $legal-color;
+  color: black;
+}
+
+.legal-bottom {
+  border-bottom: 1px solid $legal-color;
+}
+
+.legal:hover {
+  background-color: $legal-light-color;
+ color: black;
+ 
+}
+
+.global {
+  border-top: 1px solid $global-color;
+  color: black;
+}
+
+.global:hover {
+  background-color: $global-light-color;
+ color: black;
+ 
+}
