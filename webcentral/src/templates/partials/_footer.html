@@ -2,6 +2,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_language_info for LANGUAGE_CODE as lang %}
 
+{% load static %}
 {% url 'set_language' as set_language_url %}
 <!-- Footer START -->
 <footer class="pt-5 bg-white">
@@ -24,7 +25,7 @@
 
           </div>
 
-          <div class="col-md-2 d-md-flex align-items-center py-3 text-center text-md-left">
+          <div class="col-md-3 d-md-flex align-items-center py-3 text-center text-md-left">
             {% translate "Sprache wählen" %}:&nbsp;
 
             <form style="display: inline" action="{{ set_language_url }}" method="post">
@@ -56,13 +57,20 @@
             <span>
               <a href="https://tub-dvg.github.io/wissen-digital-ewb/">{% translate "Dokumentation" %}</a>
             </span>
-
           </div>
-
+          
+          <div class="col-md-1 d-md-flex justify-content-between align-items-center">
+            
+            <a href="https://github.com/TUB-DVG/wissen-digital-ewb">
+              <img style="width: 20px;" src="{% static 'assets/images/github-mark.svg' %}">
+              Github
+            </a>
+            
+          </div>
           <!-- mailto END -->
           <!-- offical links START -->
 
-          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left ">
+          <div class="col-md-1 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left ">
             <!-- ueber uns END -->
             <span>
               <a href="{% url 'about' %}">{% translate "Über uns" %}</a>
@@ -72,7 +80,7 @@
           <!-- ueber uns END -->
           <!-- Impressumg uns START -->
 
-          <div class="col-md-2 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
+          <div class="col-md-1 d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
             <span>
               <a href="{% url 'impressum' %}" id="impressumLink">
                 {% translate "Impressum" %}
