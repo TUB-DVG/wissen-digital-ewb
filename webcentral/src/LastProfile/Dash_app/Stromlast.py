@@ -166,15 +166,11 @@ def update_layout(hi):
 # Stromapproximation
 @app.callback(
     Output("powerGraph", "figure"),
-    # Output('application', 'children'),
-    # Output('application', 'children'),
     Input("approximation_start", "n_clicks"),
     State("displayMonth", "value"),
     State("powerRequirement", "value"),
     State("application", "value"),
     allow_duplicate=False,
-    # Input('url', 'pathname'),
-    # prevent_initial_call=True
 )
 def updatePowerGraph(
     click: int,
@@ -233,7 +229,6 @@ def updatePowerGraph(
 
         fig.update_yaxes(title_text=_("Stromlastgang in kW"), title_standoff=25)
         return fig
-        # , data.to_dict()  # Store data as a dictionary
     else:
         return {}
 
@@ -241,7 +236,6 @@ def updatePowerGraph(
 # The download csv Funcionality
 @app.callback(
     Output("downloadCsv", "data"),
-    # Output("application", "children"),
     Input("btnDownloadCsv", "n_clicks"),
     Input("application", "value"),
     Input("powerRequirement", "value"),
