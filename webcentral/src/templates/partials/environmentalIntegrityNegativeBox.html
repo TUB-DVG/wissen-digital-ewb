@@ -13,9 +13,11 @@
       <div class="col-12" style="margin-bottom: auto;">
         <p class="boxDescription">{{ boxObject.description }}</p>
       </div>
-      <div class="grey-box-container mt-4">
-        <span class="imageHeading">{{ boxObject.headingOfImage }}</span>
-        <img src="{% static boxObject.image %}" alt="box1" />
+      <div class="col-12 mt-4">
+        <div class="grey-box-container">
+          <span class="imageHeading">{{ boxObject.headingOfImage }}</span>
+          <img src="{% static boxObject.image %}" alt="box1" />
+        </div>
       </div>
     </div>
   </a>
