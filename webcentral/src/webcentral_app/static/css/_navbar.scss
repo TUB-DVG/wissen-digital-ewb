@@ -89,3 +89,13 @@
  color: black;
  
 }
+.dropdown-toggle:hover {
+  color: black;
+  font-size: 15px;
+}
+.dropdown-toggle:active {
+  color: black;
+}
+.dropdown-toggle::after {
+    display: none !important;
+}
