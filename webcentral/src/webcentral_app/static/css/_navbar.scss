@@ -83,7 +83,9 @@
   border-top: 1px solid $global-color;
   color: black;
 }
-
+.global-bottom {
+  border-bottom: 1px solid $global-color;
+}
 .global:hover {
   background-color: $global-light-color;
  color: black;

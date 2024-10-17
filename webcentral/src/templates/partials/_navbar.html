@@ -34,9 +34,12 @@
     margin-top: -25px; /* Fine-tune vertical alignment, adjust as needed */
 }
 
-/* Optional: You can also add custom styles to the dropdown-item to better control spacing */
-.navbar-nav .dropdown-item {
-    padding-right: 20px; /* Adjust padding as needed */
+.dropdown-menu {
+  width: 160px;
+}
+.dropdown-item {
+  width: 160px; /* Makes the dropdown items match the width of the parent dropdown */
+  box-sizing: border-box;
 }
   </style>
   <nav class="navbar navbar-expand-lg">
@@ -94,25 +97,25 @@
               {% translate "Technisch" %}
             </a>
             <div class="dropdown-menu w-100 dropdown-menu-right position-absolute p-0" style="margin-top: -25px;" aria-labelledby="technicalDropdown">
-                <a class="dropdown-item technical w-100" href="{% url 'tool_list' %}">
+                <a class="dropdown-item technical mx-4" href="{% url 'tool_list' %}">
                   {% translate "Digitale Werkzeuge" %}
                 </a>
 
-                <a class="dropdown-item technical mt-0" href="{% url 'app_list' %}">
+                <a class="dropdown-item technical mx-4" href="{% url 'app_list' %}">
                   {% translate "Digitale Anwendungen" %}
                 </a>
 
-                <a class="dropdown-item technical" href="{% url 'TechnicalStandards' %}">
+                <a class="dropdown-item technical mx-4" href="{% url 'TechnicalStandards' %}">
                   {% translate "Technische Standards" %}
                 </a>
 
-                <a class="dropdown-item technical" href="{% url 'weatherdata_list' %}">
+                <a class="dropdown-item technical mx-4" href="{% url 'weatherdata_list' %}">
                   {% translate "Wetterdaten" %}
                 </a>
-                <a class="dropdown-item technical" href="{% url 'LastProfile' %}">
+                <a class="dropdown-item technical mx-4" href="{% url 'LastProfile' %}">
                   {% translate "Lastprofile" %}
                 </a>
-                <a class="dropdown-item technical technical-bottom"
+                <a class="dropdown-item technical mx-4 technical-bottom"
                    href="{% url 'dataset_list' %}">
                   {% translate "Datensätze" %}
                 </a>
@@ -145,7 +148,7 @@
               {% translate "Betrieblich" %}
             </a>
             <div class="dropdown-menu dropdown-menu-right p-0" style="margin-top: -25px;" aria-labelledby="operationalDropdown">
-                <a class="dropdown-item operational" href="{% url 'businessModels' %}">
+                <a class="dropdown-item operational mx-4" href="{% url 'businessModels' %}">
                   {% translate "Geschäftsmodelle" %}
                 </a>
               <!-- <li>
@@ -158,7 +161,7 @@
                   {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                 </a>
               </li> -->
-                <a class="dropdown-item operational operational-bottom"
+                <a class="dropdown-item operational operational-bottom mx-4"
                    href="{% url 'userEngagement' %}">
                   {% translate "Nutzendenintegration" %}
                 </a>
@@ -191,15 +194,15 @@
                 {% translate "Ökologisch" %}
               </a>
               <div class="dropdown-menu p-0" style="margin-top: -25px;" aria-labelledby="ecologicalDropdown">
-                  <a class="dropdown-item ecological"
+                  <a class="dropdown-item ecological mx-4"
                      href="{% url 'environmentalIntegrityNegativ' %}">
                     {% translate "Negative Umweltwirkungen" %}
                   </a>
-                  <a class="dropdown-item ecological"
+                  <a class="dropdown-item ecological mx-4"
                      href="{% url 'environmentalIntegrityPositiv' %}">
                     {% translate "Positive Umweltwirkungen" %} - Good-practice
                   </a>
-                <a class="dropdown-item ecological ecological-bottom"
+                <a class="dropdown-item ecological ecological-bottom mx-4"
                    href="{% url 'dataSufficiency' %}">
                   {% translate "Datensuffizienz" %}
                 </a>
@@ -232,13 +235,13 @@
               {% translate "Rechtlich" %}
             </a>
             <div class="dropdown-menu w-100 p-0" style="margin-top: -25px;" aria-labelledby="legalDropdown">
-                <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
+                <a class="dropdown-item legal mx-4" href="{% url 'criteriaCatalog' %}">
                   {% translate "Kriterienkatalog" %}
                 </a>
-                <a class="dropdown-item legal" href="{% url 'dataSecurity' %}">
+                <a class="dropdown-item legal mx-4" href="{% url 'dataSecurity' %}">
                   {% translate "Daten&shy;schutz&shy;übersicht" %}
                 </a>
-                <a class="dropdown-item legal legal-bottom"
+                <a class="dropdown-item legal legal-bottom mx-4"
                    href="{% url 'iconsAndVis' %}">
                   {% translate "Icons und Visualisierung" %}
                 </a>
@@ -269,13 +272,13 @@
               {% translate "Global" %}
             </a>
             <div class="dropdown-menu p-0"  style="margin-top: -25px;" aria-labelledby="globalDropdown">
-                <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
+                <a class="dropdown-item global mx-4" href="{% url 'use_cases_list' %}">
                   {% translate "Anwendungsfälle" %}
                 </a>
-                <a class="dropdown-item global" href="{% url 'publicationPage' %}">
+                <a class="dropdown-item global mx-4" href="{% url 'publicationPage' %}">
                   {% translate "Veröffentlichungen" %}
                 </a>
-                <a class="dropdown-item global" href="/cesium">
+                <a class="dropdown-item global global-bottom mx-4" href="/cesium">
                   {% translate "City GML Visualisierung" %}
                 </a>
             </div>
