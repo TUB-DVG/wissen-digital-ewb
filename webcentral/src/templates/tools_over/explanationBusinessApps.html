@@ -14,6 +14,15 @@
   .collapse.show + div .showMore {
     background-color: #FDEAE6 !important;
   }
+  .minus__icon {
+    display: none;
+  }
+  .collapse.show + div .minus__icon {
+    display: block;
+  }
+  .collapse.show + div #plusOrMinusIcon {
+    display: none;
+  }
   .collapse.show + div {
     #textInExpansionButton {
       display: none;
@@ -54,6 +63,7 @@
            aria-expanded="false"
            aria-controls="collapseInfoTools"
            style="color: black">
+          <img class="minus__icon" src="{% static 'assets/images/minus.svg' %}" />
           <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}" />
           <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
         </a>
