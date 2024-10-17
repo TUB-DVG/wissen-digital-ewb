@@ -55,26 +55,26 @@
       <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
         <!-- Nav Main menu START -->
         <!-- Nav item 4 Component-->
-        <ul class="navbar-nav navbar-nav-scroll mx-auto">
+        <ul class="navbar-nav navbar-nav-scroll w-100 d-flex">
           <!-- Nav technical focus START-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle d-flex"
                id="technicalDropdown"
                role="button"
                data-bs-toggle="dropdown"
                aria-expanded="false">
               {% if focusBorder == "technical" %}
                 <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="technical colored icon"
-                     style="width:35px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="technical uncolored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Technisch" %}
+              &nbsp; {% translate "Technisch" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
@@ -114,7 +114,7 @@
           </li>
           <!-- Nav technical focus END -->
           <!-- Nav operational focus START-->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-3">
             <a class="nav-link dropdown-toggle"
                id="operationalDropdown"
                role="button"
@@ -122,16 +122,16 @@
                aria-expanded="false">
               {% if focusBorder == "operational" %}
                 <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="operational colored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="operational uncolored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Betrieblich" %}
+              &nbsp; {% translate "Betrieblich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
@@ -157,7 +157,7 @@
             </ul>
             <!-- Nav operational focus END-->
             <!-- Nav ecological focus START-->
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown mx-3">
               <a class="nav-link dropdown-toggle"
                  id="ecologicalDropdown"
                  role="button"
@@ -165,17 +165,17 @@
                  aria-expanded="false">
                 {% if focusBorder == "ecological" %}
                   <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
+                       class=""
                        alt="ecological colored icon"
-                       style="width:35px" />
+                       style="width:22px" />
                 {% else %}
                   <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
+                       class=""
                        alt="ecological uncolored icon"
-                       style="width:35px" />
+                       style="width:22px" />
                 {% endif %}
 
-                &nbsp; &nbsp; &nbsp; {% translate "Ökologisch" %}
+                &nbsp; {% translate "Ökologisch" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
                 <li>
@@ -200,7 +200,7 @@
           </li>
           <!-- Nav ecological focus END -->
           <!-- Nav legal focus START-->
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-3">
             <a class="nav-link dropdown-toggle"
                id="legalDropdown"
                role="button"
@@ -208,17 +208,17 @@
                aria-expanded="false">
               {% if focusBorder == "legal" %}
                 <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="legal colored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="legal uncolored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Rechtlich" %}
+              &nbsp; {% translate "Rechtlich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
@@ -238,7 +238,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown mx-3">
             <a class="nav-link dropdown-toggle"
                id="globalDropdown"
                role="button"
@@ -246,17 +246,17 @@
                aria-expanded="false">
               {% if focusBorder == "global" %}
                 <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="global colored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="global uncolored icon"
-                     style="width:35px" />
+                     style="width:22px" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Global" %}
+              &nbsp; {% translate "Global" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="globalDropdown">
               <li>
@@ -276,7 +276,7 @@
               </li>
             </li>
           </ul>
-          <li class="flex-lg-grow-1" id="searchIconLi">
+          <li class="flex-lg-grow-1 ms-auto" id="searchIconLi">
             <form method="POST"
                   class="d-flex"
                   action="{% url 'ResultSearch' %}"
