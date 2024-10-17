@@ -62,7 +62,7 @@
                id="technicalDropdown"
                role="button"
                data-bs-toggle="dropdown"
-               aria-expanded="false">
+               aria-expanded="false" style="font-size:15px;">
               {% if focusBorder == "technical" %}
                 <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
                      class=""
@@ -72,9 +72,9 @@
                 <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
                      class=""
                      alt="technical uncolored icon"
-                     style="width:22px" />
+                     style="width:20px; margin-right: 6px;" />
               {% endif %}
-              &nbsp; {% translate "Technisch" %}
+              {% translate "Technisch" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
               <li>
@@ -120,19 +120,20 @@
                id="operationalDropdown"
                role="button"
                data-bs-toggle="dropdown"
-               aria-expanded="false">
+               aria-expanded="false"
+               style="font-size: 15px;">
               {% if focusBorder == "operational" %}
                 <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
                      class=""
                      alt="operational colored icon"
-                     style="width:22px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}"
                      class=""
                      alt="operational uncolored icon"
-                     style="width:22px" />
+                     style="width:20px" />
               {% endif %}
-              &nbsp; {% translate "Betrieblich" %}
+              {% translate "Betrieblich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
               <li>
@@ -169,15 +170,15 @@
                   <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
                        class=""
                        alt="ecological colored icon"
-                       style="width:22px" />
+                       style="width:20px;" />
                 {% else %}
                   <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}"
                        class=""
                        alt="ecological uncolored icon"
-                       style="width:22px" />
+                       style="width:20px;" />
                 {% endif %}
 
-                &nbsp; {% translate "Ökologisch" %}
+                {% translate "Ökologisch" %}
               </a>
               <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
                 <li>
@@ -213,15 +214,15 @@
                 <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
                      class=""
                      alt="legal colored icon"
-                     style="width:22px" />
+                     style="width:20px;" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
                      class=""
                      alt="legal uncolored icon"
-                     style="width:22px" />
+                     style="width:20px;" />
               {% endif %}
 
-              &nbsp; {% translate "Rechtlich" %}
+              {% translate "Rechtlich" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="legalDropdown">
               <li>
@@ -252,15 +253,15 @@
                 <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
                      class=""
                      alt="global colored icon"
-                     style="width:22px" />
+                     style="width:20px;" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
                      class=""
                      alt="global uncolored icon"
-                     style="width:22px" />
+                     style="width:20px;" />
               {% endif %}
 
-              &nbsp; {% translate "Global" %}
+              {% translate "Global" %}
             </a>
             <ul class="dropdown-menu" aria-labelledby="globalDropdown">
               <li>
