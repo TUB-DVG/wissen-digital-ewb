@@ -144,13 +144,13 @@ class NavBar(object):
     def getDropDownElements(self):
         """ """
         return self.driver.find_elements(
-            By.XPATH, "//li[@class='nav-item dropdown']"
+            By.XPATH, "//a[@class='nav-item dropdown']"
         )
 
     def getGlobalDropdownElements(self):
         """Return the elements inside the navbar of the global focus"""
         ulOfGlobalDropdown = self.driver.find_element(
-            By.XPATH, "//ul[@aria-labelledby='globalDropdown']"
+            By.XPATH, "//div[@aria-labelledby='globalDropdown']"
         )
         liUnderUl = ulOfGlobalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
@@ -158,7 +158,7 @@ class NavBar(object):
     def getLegalDropdownElements(self):
         """Return the elements inside the navbar of the legal focus"""
         ulOfLegalDropdown = self.driver.find_element(
-            By.XPATH, "//ul[@aria-labelledby='legalDropdown']"
+            By.XPATH, "//div[@aria-labelledby='legalDropdown']"
         )
         liUnderUl = ulOfLegalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
@@ -166,7 +166,7 @@ class NavBar(object):
     def getDropdownLiElements(self, focusType: str):
         """Return the elements inside the navbar of the legal focus"""
         ulOfLegalDropdown = self.driver.find_element(
-            By.XPATH, f"//ul[@aria-labelledby='{focusType}Dropdown']"
+            By.XPATH, f"//div[@aria-labelledby='{focusType}Dropdown']"
         )
         liUnderUl = ulOfLegalDropdown.find_elements(By.XPATH, ".//li")
         return liUnderUl
