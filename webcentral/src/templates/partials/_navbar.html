@@ -347,8 +347,19 @@
       $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "none");
 
     }, (e) => {
-      $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "");
-      $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "none");
+      const firstTryLocateImage = $($(e.target).prev()[0]).children(".uncoloredImage")
+      if (firstTryLocateImage.length > 0) {
+        $(firstTryLocateImage).css("display", "");
+        $($($(e.target).prev()[0]).children(".coloredImage")).css("display", "none");
+
+      }
+      else {
+        $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "");
+        $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "none");
+
+      }
+
+          
     })
       
     $("#searchIconLi").on("mouseenter", function (){
