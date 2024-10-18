@@ -12,9 +12,7 @@
   </div>
   <div class="description-content">
     <div class="mainContent col-lg-12">
-      <p>
-        {{ introductionText }} 
-      </p>
+      <p>{{ introductionText }}</p>
     </div>
     <div class="row">
       <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
@@ -30,8 +28,10 @@
             <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
           </a>
         </div>
-        <div class="{{ focusBorder }}Collapse collapse card-body" id="explanationText">
-          {% include "use_cases/explanation.html" %} 
+        <div class="{{ focusBorder }}Collapse collapse card-body"
+             id="explanationText">
+          {% include "use_cases/explanation.html" %}
+
         </div>
       </div>
 

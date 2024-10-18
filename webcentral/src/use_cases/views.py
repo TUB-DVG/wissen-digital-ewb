@@ -303,7 +303,9 @@ def index(request):
         "focus": focus,
         "focus_options": focusOptions,
         "nameOfTemplate": "use_cases",
-        "introductionText": _("Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."),
+        "introductionText": _(
+            "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."
+        ),
         "pathToExplanationTemplate": "uses_cases/explanation.html",
         "optionList": [
             {
