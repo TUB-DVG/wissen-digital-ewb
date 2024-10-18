@@ -276,7 +276,7 @@ case $command in
         docker exec -it $container_id bash         
         ;;
     "makemessages")         
-        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py makemessages -a       
+        docker exec -w $currentDirInContainer/src/ -it $container_id python manage.py makemessages -l en       
         exit $?
         ;;
     "compilemessages")         
