@@ -152,6 +152,11 @@ def index(request):
         "accessibility": filteredBy[1],
         "focusBorder": "technical",
         "typeOfTool": "Tools",
+        "introductionText": _("""Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die im Rahmen der Auswertung
+          des Fragebogens der wissenschaftlichen Begleitforschung der Forschungsinitiative Energiewendebauen von 
+          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden dementsprechend von Projekten eingesetzt, 
+          entwickelt oder weiterentwickelt, die im Rahmen der Forschungsinitiative Energiewendebauen gefördert werden."""),
+        "pathToExplanationTemplate": "tools_over/explanationTools.html",
         "page": page,
         "search": searched,
         "usage": filteredBy[0],
