@@ -24,6 +24,23 @@
     max-width: 100%;        /* Prevents overflow */
     box-sizing: border-box; /* Ensures padding is included in the width */
 }
+.li {
+  width: 150px;
+}
+.navbar-nav .dropdown-menu {
+    width: 100%; /* Make dropdown menu width match its toggle */
+    left: 0;     /* Align the dropdown menu horizontally with the toggle */
+    right: auto; /* Reset any right alignment */
+    margin-top: -25px; /* Fine-tune vertical alignment, adjust as needed */
+}
+
+.dropdown-menu {
+  width: 160px;
+}
+.dropdown-item {
+  width: 160px; /* Makes the dropdown items match the width of the parent dropdown */
+  box-sizing: border-box;
+}
   </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -54,90 +71,98 @@
       <div class="navbar-collapse w-100 collapse" id="navbarCollapse">
         <!-- Nav Main menu START -->
         <!-- Nav item 4 Component-->
-        <ul class="navbar-nav navbar-nav-scroll mx-auto">
+        <div class="navbar-nav navbar-nav-scroll w-100 d-flex">
           <!-- Nav technical focus START-->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"
+          <div class="nav-item dropdown position-relative mx-4">
+            <a class="nav-link dropdown-toggle d-flex"
                id="technicalDropdown"
                role="button"
-               data-bs-toggle="dropdown"
-               aria-expanded="false">
+               data-toggle="dropdown"
+               aria-expanded="false"
+               style="font-size:15px">
               {% if focusBorder == "technical" %}
                 <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="technical colored icon"
-                     style="width:35px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class="uncoloredImage"
                      alt="technical uncolored icon"
-                     style="width:35px" />
+                     style="width:20px;
+                            margin-right: 3px" />
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class="coloredImage"
+                     alt="technical colored icon"
+                     style="width:20px;
+                            display: none;
+                            margin-right: 3px" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Technischer Fokus" %}
+              {% translate "Technisch" %}
             </a>
-            <ul class="dropdown-menu" aria-labelledby="technicalDropdown">
-              <li>
-                <a class="dropdown-item" href="{% url 'tool_list' %}">
-                  {% translate "Digitale Werkzeuge" %}
-                </a>
-              </li>
+            <div class="dropdown-menu w-100 dropdown-menu-right position-absolute p-0"
+                 style="margin-top: -25px"
+                 aria-labelledby="technicalDropdown">
+              <a class="dropdown-item technical mx-4" href="{% url 'tool_list' %}">
+                {% translate "Digitale Werkzeuge" %}
+              </a>
 
-              <li>
-                <a class="dropdown-item" href="{% url 'app_list' %}">
-                  {% translate "Digitale Anwendungen" %}
-                </a>
-              </li>
+              <a class="dropdown-item technical mx-4" href="{% url 'app_list' %}">
+                {% translate "Digitale Anwendungen" %}
+              </a>
 
-              <li>
-                <a class="dropdown-item" href="{% url 'TechnicalStandards' %}">
-                  {% translate "Technische Standards" %}
-                </a>
-              </li>
+              <a class="dropdown-item technical mx-4"
+                 href="{% url 'TechnicalStandards' %}">
+                {% translate "Technische Standards" %}
+              </a>
 
-              <li>
-                <a class="dropdown-item" href="{% url 'weatherdata_list' %}">
-                  {% translate "Wetterdaten" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'LastProfile' %}">
-                  {% translate "Lastprofile" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'dataset_list' %}">
-                  {% translate "Datensätze" %}
-                </a>
-              </li>
-            </ul>
-          </li>
+              <a class="dropdown-item technical mx-4"
+                 href="{% url 'weatherdata_list' %}">
+                {% translate "Wetterdaten" %}
+              </a>
+              <a class="dropdown-item technical mx-4" href="{% url 'LastProfile' %}">
+                {% translate "Lastprofile" %}
+              </a>
+              <a class="dropdown-item technical mx-4 technical-bottom"
+                 href="{% url 'dataset_list' %}">
+                {% translate "Datensätze" %}
+              </a>
+            </div>
+          </div>
           <!-- Nav technical focus END -->
           <!-- Nav operational focus START-->
-          <li class="nav-item dropdown">
+          <div class="nav-item dropdown mx-4">
             <a class="nav-link dropdown-toggle"
                id="operationalDropdown"
                role="button"
                data-bs-toggle="dropdown"
-               aria-expanded="false">
+               aria-expanded="false"
+               style="font-size: 15px">
               {% if focusBorder == "operational" %}
                 <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="operational colored icon"
-                     style="width:35px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_operational_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class="uncoloredImage"
                      alt="operational uncolored icon"
-                     style="width:35px" />
+                     style="width:20px" />
+                <img src="{% static 'assets/images/symbol_operational_focus.svg' %}"
+                     class="coloredImage"
+                     alt="operational colored icon"
+                     style="width:20px;
+                            display: none" />
               {% endif %}
-              &nbsp; &nbsp; &nbsp; {% translate "Betrieblicher Fokus" %}
+              {% translate "Betrieblich" %}
             </a>
-            <ul class="dropdown-menu" aria-labelledby="operationalDropdown">
-              <li>
-                <a class="dropdown-item" href="{% url 'businessModels' %}">
-                  {% translate "Geschäftsmodelle" %}
-                </a>
-              </li>
+            <div class="dropdown-menu dropdown-menu-right p-0"
+                 style="margin-top: -25px"
+                 aria-labelledby="operationalDropdown">
+              <a class="dropdown-item operational mx-4"
+                 href="{% url 'businessModels' %}">
+                {% translate "Geschäftsmodelle" %}
+              </a>
               <!-- <li>
                 <a class="dropdown-item" href="{% url 'businessModelsChallenge' %}">
                   {% translate "Geschäfts&shy;modell&shy;" %} - Herausforderungen
@@ -148,58 +173,59 @@
                   {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                 </a>
               </li> -->
-              <li>
-                <a class="dropdown-item" href="{% url 'userEngagement' %}">
-                  {% translate "Nutzendenintegration" %}
-                </a>
-              </li>
-            </ul>
-            <!-- Nav operational focus END-->
-            <!-- Nav ecological focus START-->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle"
-                 id="ecologicalDropdown"
-                 role="button"
-                 data-bs-toggle="dropdown"
-                 aria-expanded="false">
-                {% if focusBorder == "ecological" %}
-                  <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="ecological colored icon"
-                       style="width:35px" />
-                {% else %}
-                  <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}"
-                       class="position-absolute start-0 top-50 translate-middle-y"
-                       alt="ecological uncolored icon"
-                       style="width:35px" />
-                {% endif %}
-
-                &nbsp; &nbsp; &nbsp; {% translate "Ökologischer Fokus" %}
+              <a class="dropdown-item operational operational-bottom mx-4"
+                 href="{% url 'userEngagement' %}">
+                {% translate "Nutzendenintegration" %}
               </a>
-              <ul class="dropdown-menu" aria-labelledby="ecologicalDropdown">
-                <li>
-                  <a class="dropdown-item"
-                     href="{% url 'environmentalIntegrityNegativ' %}">
-                    {% translate "Negative Umweltwirkungen" %}
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item"
-                     href="{% url 'environmentalIntegrityPositiv' %}">
-                    {% translate "Positive Umweltwirkungen" %} - Good-practice
-                  </a>
-                </li>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'dataSufficiency' %}">
-                  {% translate "Datensuffizienz" %}
-                </a>
-              </li>
-            </ul>
-          </li>
+            </div>
+          </div>
+          <!-- Nav operational focus END-->
+          <!-- Nav ecological focus START-->
+          <div class="nav-item dropdown mx-4">
+            <a class="nav-link dropdown-toggle"
+               id="ecologicalDropdown"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+              {% if focusBorder == "ecological" %}
+                <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+                     class=""
+                     alt="ecological colored icon"
+                     style="width:20px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_ecological_focus_no.svg' %}"
+                     class="uncoloredImage"
+                     alt="ecological uncolored icon"
+                     style="width:20px" />
+                <img src="{% static 'assets/images/symbol_ecological_focus.svg' %}"
+                     class="coloredImage"
+                     alt="ecological colored icon"
+                     style="width:20px;
+                            display: none" />
+              {% endif %}
+
+              {% translate "Ökologisch" %}
+            </a>
+            <div class="dropdown-menu p-0"
+                 style="margin-top: -25px"
+                 aria-labelledby="ecologicalDropdown">
+              <a class="dropdown-item ecological mx-4"
+                 href="{% url 'environmentalIntegrityNegativ' %}">
+                {% translate "Negative Umweltwirkungen" %}
+              </a>
+              <a class="dropdown-item ecological mx-4"
+                 href="{% url 'environmentalIntegrityPositiv' %}">
+                {% translate "Positive Umweltwirkungen" %} - Good-practice
+              </a>
+              <a class="dropdown-item ecological ecological-bottom mx-4"
+                 href="{% url 'dataSufficiency' %}">
+                {% translate "Datensuffizienz" %}
+              </a>
+            </div>
+          </div>
           <!-- Nav ecological focus END -->
           <!-- Nav legal focus START-->
-          <li class="nav-item dropdown">
+          <div class="nav-item dropdown mx-4">
             <a class="nav-link dropdown-toggle"
                id="legalDropdown"
                role="button"
@@ -207,37 +233,39 @@
                aria-expanded="false">
               {% if focusBorder == "legal" %}
                 <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="legal colored icon"
-                     style="width:35px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_legal_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class="uncoloredImage"
                      alt="legal uncolored icon"
-                     style="width:35px" />
+                     style="width:20px" />
+                <img src="{% static 'assets/images/symbol_legal_focus.svg' %}"
+                     class="coloredImage"
+                     alt="legal colored icon"
+                     style="width:20px;
+                            display: none" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Rechtlicher Fokus" %}
+              {% translate "Rechtlich" %}
             </a>
-            <ul class="dropdown-menu" aria-labelledby="legalDropdown">
-              <li>
-                <a class="dropdown-item" href="{% url 'criteriaCatalog' %}">
-                  {% translate "Kriterienkatalog" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'dataSecurity' %}">
-                  {% translate "Daten&shy;schutz&shy;übersicht" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'iconsAndVis' %}">
-                  {% translate "Icons und Visualisierung" %}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
+            <div class="dropdown-menu w-100 p-0"
+                 style="margin-top: -25px"
+                 aria-labelledby="legalDropdown">
+              <a class="dropdown-item legal mx-4" href="{% url 'criteriaCatalog' %}">
+                {% translate "Kriterienkatalog" %}
+              </a>
+              <a class="dropdown-item legal mx-4" href="{% url 'dataSecurity' %}">
+                {% translate "Daten&shy;schutz&shy;übersicht" %}
+              </a>
+              <a class="dropdown-item legal legal-bottom mx-4"
+                 href="{% url 'iconsAndVis' %}">
+                {% translate "Icons und Visualisierung" %}
+              </a>
+            </div>
+          </div>
+          <div class="nav-item dropdown mx-4">
             <a class="nav-link dropdown-toggle"
                id="globalDropdown"
                role="button"
@@ -245,37 +273,38 @@
                aria-expanded="false">
               {% if focusBorder == "global" %}
                 <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="global colored icon"
-                     style="width:35px" />
+                     style="width:20px" />
               {% else %}
                 <img src="{% static 'assets/images/symbol_global_focus_no.svg' %}"
-                     class="position-absolute start-0 top-50 translate-middle-y"
+                     class=""
                      alt="global uncolored icon"
-                     style="width:35px" />
+                     style="width:20px" />
+                <img src="{% static 'assets/images/symbol_global_focus.svg' %}"
+                     class=""
+                     alt="global colored icon"
+                     style="width:20px;
+                            display: none" />
               {% endif %}
 
-              &nbsp; &nbsp; &nbsp; {% translate "Global" %}
+              {% translate "Global" %}
             </a>
-            <ul class="dropdown-menu" aria-labelledby="globalDropdown">
-              <li>
-                <a class="dropdown-item" href="{% url 'use_cases_list' %}">
-                  {% translate "Anwendungsfälle" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'publicationPage' %}">
-                  {% translate "Veröffentlichungen" %}
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="/cesium">
-                  {% translate "City GML Visualisierung" %}
-                </a>
-              </li>
-            </li>
-          </ul>
-          <li class="flex-lg-grow-1" id="searchIconLi">
+            <div class="dropdown-menu p-0"
+                 style="margin-top: -25px"
+                 aria-labelledby="globalDropdown">
+              <a class="dropdown-item global mx-4" href="{% url 'use_cases_list' %}">
+                {% translate "Anwendungsfälle" %}
+              </a>
+              <a class="dropdown-item global mx-4" href="{% url 'publicationPage' %}">
+                {% translate "Veröffentlichungen" %}
+              </a>
+              <a class="dropdown-item global global-bottom mx-4" href="/cesium">
+                {% translate "City GML Visualisierung" %}
+              </a>
+            </div>
+          </div>
+          <div class="flex-lg-grow-1 ms-auto" id="searchIconLi">
             <form method="POST"
                   class="d-flex"
                   action="{% url 'ResultSearch' %}"
@@ -294,8 +323,8 @@
                      src="{% static 'assets/images/search_icon_navbar.svg' %}" />
               </button>
             </form>
-          </li>
-        </ul>
+          </div>
+        </div>
 
         <!-- Nav Main menu END -->
       </div>
@@ -306,13 +335,40 @@
   </header>
   <!-- Header END -->
   <script>
+    $(".dropdown-toggle").hover( (e) => {
+        $($(e.target).children(".uncoloredImage")).css("display", "none");
+        $($(e.target).children(".coloredImage")).css("display", "");
+    }, (e) => {
+        $($(e.target).children(".coloredImage")).css("display", "none");
+        $($(e.target).children(".uncoloredImage")).css("display", "");
+    })
+    $(".dropdown-menu").hover((e) => {
+      $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "");
+      $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "none");
+
+    }, (e) => {
+      const firstTryLocateImage = $($(e.target).prev()[0]).children(".uncoloredImage")
+      if (firstTryLocateImage.length > 0) {
+        $(firstTryLocateImage).css("display", "");
+        $($($(e.target).prev()[0]).children(".coloredImage")).css("display", "none");
+
+      }
+      else {
+        $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "");
+        $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "none");
+
+      }
+
+          
+    })
+      
     $("#searchIconLi").on("mouseenter", function (){
-      $("li.nav-item").css({
+      $("div.nav-item").css({
         display: "none"
       })
       $("#searchText").css({display: "inline"})
     }).on("mouseleave", function () {
-      $("li.nav-item").css({
+      $("div.nav-item").css({
         display: "block"
       })
       $("#searchText").css({display: "none"})
