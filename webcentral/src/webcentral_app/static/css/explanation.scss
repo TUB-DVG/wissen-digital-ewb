@@ -1,0 +1,14 @@
+
+.row.collapseInfoContainer {
+    flex-direction: column-reverse;
+  }
+  .globalCollapse,
+  .globalCollapse + div,
+  .globalCollapse + div .showMore {
+    transition: background-color 0.2s;
+  }
+  .globalCollapse.show,
+  .globcalCollapse.show + div,
+  .globcalCollapse.show + div .showMore {
+    background-color: $global-color !important;
+  }

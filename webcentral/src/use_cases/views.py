@@ -299,7 +299,6 @@ def index(request):
         "heading": _("Überblick über die Anwendungsfälle"),
         "explanaitionText": explanationText,
         "showMorePresent": True,
-        "charNumberToShowCollapsed": 323,
         "page": page,
         "focus": focus,
         "focus_options": focusOptions,
