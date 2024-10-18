@@ -27,7 +27,7 @@ Develop guide
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   dev/template_strucuture
    dev/style_guide
    dev/static_code_analysis
    dev/pyproject_toml
