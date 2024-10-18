@@ -62,7 +62,8 @@
       </div>
     </section>
     <section class="pt-0">
-      <div class="container {{ focusBorder }}-cards" id="useCaseContainer">
+      <div class="{{ focusBorder }}-cards">
+        <div class="container border-{{ focusBorder }} " id="useCaseContainer">
         <!-- Plotly chart START -->
         <div class="plotly">{% plotly_app name='useCaseTS' ratio=10 %}</div>
         <!-- Plotly chart END -->
@@ -80,7 +81,9 @@
             <!-- tools Grid END -->
           </div>
         </div>
-        <!-- tools grid row START -->
+        
+          <!-- tools grid row START -->
+      </div>
       </div>
     </section>
     <!-- Page content END -->
