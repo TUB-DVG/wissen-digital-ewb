@@ -1,49 +1,7 @@
 {% load static %}
 {% load i18n %}
-<style>
-  .row.collapseInfoContainer {
-    flex-direction: column-reverse;
-  }
-  .collapse,
-  .collapse + div,
-  .collapse + div .showMore {
-    transition: background-color 0.2s;
-  }
-  .collapse.show,
-  .collapse.show + div,
-  .collapse.show + div .showMore {
-    background-color: #E3EAFD !important;
-  }
-  .minus__icon {
-    display: none;
-  }
-  .collapse.show + div .minus__icon {
-    display: block;
-  }
-  .collapse.show + div #plusOrMinusIcon {
-    display: none;
-  }
-  .collapse.show + div {
-    #textInExpansionButton {
-      display: none;
-    }
-  }
-  .showMore {
-      display: flex; 
-      align-items: center;
-      gap: 16px;
-      width: 100%;
-      padding: 24px;
-      font-size: 22px;
-      background-color: #F2F2F2;
-  }
-  .collapseInfo {
-    padding: 80px;
-    padding-top: 24px;
-  }
-</style>
         <p>
-          {% blocktranslate %}Generell wird hier  zwischen digitalen Werkzeugen und digitalen Anwendungen unterschieden <br />
+          {% blocktranslate %}Generell wird hier zwischen digitalen Werkzeugen und digitalen Anwendungen unterschieden. <br />
           Ein digitales Werkzeug ist ein Stück Software, das in Verbindung mit anderen Werkzeugen von Entwicklern oder Ingenieuren verwendet wird, 
           um Produkte mit bestimmten Funktionalitäten zu erstellen. Frameworks, Bibliotheken, Programmiersprachen und Standards sind ebenfalls unter Werkzeuge aufgeführt. <br />
           Eine digitale Anwendung hingegen ist ein Stück Software, das einen bestimmten Anwendungsfall allein abdeckt. 

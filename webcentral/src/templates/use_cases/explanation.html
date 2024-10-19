@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
-<span class="explanationSubHeading">Worum geht es?</span>
-<p>Wir gehen hier auf verschiedene Fragestellungen ein:</p>
+<span class="explanationSubHeading">{% translate "Worum geht es?" %}</span>
+<p>{% translate "Wir gehen hier auf verschiedene Fragestellungen ein" %}:</p>
 <ul type='1'>
   <li>
     {% blocktranslate %}Was verstehen wir unter einem Anwendungsfall?{% endblocktranslate %}
@@ -25,6 +25,7 @@
 <img class="imgExplanation"
      src="{% static 'assets/images/use_case_explanation_image.png' %}"
      style="width: 90%" />
+<br />
 <span class="explanationSubHeading">
   {% blocktranslate %}Der Smart Readiness Indicator{% endblocktranslate %}
 </span>
