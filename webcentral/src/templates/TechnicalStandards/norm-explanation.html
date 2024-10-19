@@ -1,15 +1,8 @@
 {% load static %}
 
 {% load i18n %}
-<section class="py-4">
-  <div class="container">
-    <div class="row collapseInfoContainer" id="collapseInfoContainerTools">
-      <div class="col-lg-12 collapse lead collapseInfo" id="collapseInfoNorms">
         <p>
-          {% blocktranslate %}Auf dieser Seite befinden sich unterschiedlichen technische Normen,
-          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in 
-          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen
-          Projekte erfasst worden. Es handelt sich um deutsche, österreichische, 
+          {% blocktranslate %} Es handelt sich um deutsche, österreichische, 
           europäische oder internationale Standards und Richtlinien für die Planung, 
           den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, Warmwasser-, 
           Entwässerungs-, Heizungs-, Kühl-, und sonstige Energiesystemen in Gebäuden. 
@@ -31,17 +24,4 @@
             <b>Link</b>&nbsp;&ndash; {% translate "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann." %}
           </li>
         </ul>
-      </div>
-      <div class="col-lg-12 lead mt-3">
-        <a role="button"
-           class="collapsed text-truncation-btn collapseInfoContainer"
-           data-toggle="collapse"
-           href="#collapseInfoNorms"
-           aria-expanded="false"
-           aria-controls="collapseInfoNorms"
-           data-expanded-text="{% translate 'Zeige weniger ...' %}"
-           data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-      </div>
-    </div>
-  </div>
-</section>
+      

@@ -14,6 +14,7 @@
     <div class="mainContent col-lg-12">
       <p>{{ introductionText }}</p>
     </div>
+    {% if not dontShowMore %}
     <div class="row">
       <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
         <div class="{{ focusBorder }}ShowMore">
@@ -24,7 +25,8 @@
              aria-expanded="false"
              aria-controls="collapseInfoTools"
              style="color: black">
-            <img id="plusOrMinusIcon" src="{% static 'assets/images/plus.svg' %}" />
+            <img id="plusIcon" src="{% static 'assets/images/plus.svg' %}" />
+            <img id="minusIcon" style="display: none;" src="{% static 'assets/images/minus.svg' %}" />
             <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
           </a>
         </div>
@@ -34,7 +36,36 @@
 
         </div>
       </div>
-
+      {% endif %}
     </div>
   </div>
 </div>
+<script>
+var targetNode = document.getElementById("explanationText");
+
+// Create a mutation observer instance
+var observer = new MutationObserver(function(mutationsList, observer) {
+    mutationsList.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+            // Class list has changed, run your logic
+            if ($("#explanationText").hasClass("show")) {
+               $("#plusIcon").css("display", "none");
+               $("#minusIcon").css("display", "")
+               $("#textInExpansionButton").css("display", "none");
+
+            } else {
+                $("#plusIcon").css("display", "");
+                $("#minusIcon").css("display", "none")
+                $("#textInExpansionButton").css("display", "");
+
+            }
+        }
+    });
+});
+
+// Define the config object for the observer
+var config = { attributes: true }; // Only observe attribute changes
+
+// Start observing the target element for attribute changes (including class changes)
+observer.observe(targetNode, config);
+</script>

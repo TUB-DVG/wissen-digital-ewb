@@ -17,24 +17,31 @@
 
     <!-- =======================
 Page Banner START -->
+    <!--<section class="py-4">-->
+    <!--  <div class="container">-->
+    <!--    <div class="row">-->
+    <!--      <div class="col-12">-->
+    <!--        <div class="p-2 text-left rounded-3">-->
+    <!--          <h2 class="m-0">-->
+    <!--            {% blocktranslate %}Überblick über technische Standards{% endblocktranslate %} - {% translate "Normen" %}-->
+    <!--          </h2>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</section>-->
+    <!-- =======================
+Page Banner END -->
+
     <section class="py-4">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="p-2 text-left rounded-3">
-              <h2 class="m-0">
-                {% blocktranslate %}Überblick über technische Standards{% endblocktranslate %} - {% translate "Normen" %}
-              </h2>
-            </div>
+          <div class="descriptionBox">
+            {% include "partials/explanation_show_more.html" %}
           </div>
         </div>
       </div>
     </section>
-    <!-- =======================
-Page Banner END -->
-
-    {% include './norm-explanation.html' %}
-
     <!-- =======================
 Page content START -->
     <section class="pt-0">

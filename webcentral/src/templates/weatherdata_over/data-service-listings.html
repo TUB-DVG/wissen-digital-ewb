@@ -17,21 +17,29 @@
 
     <!-- =======================
 Page Banner START -->
+    <!--<section class="py-4">-->
+    <!--  <div class="container">-->
+    <!--    <div class="row">-->
+    <!--      <div class="col-12">-->
+    <!--        <div class="p-2 text-left rounded-3">-->
+    <!--          <h2 class="m-0">{% translate "Überblick über Wetterdaten-Services" %}</h2>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</section>-->
+    <!-- =======================
+Page Banner END -->
+
     <section class="py-4">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="p-2 text-left rounded-3">
-              <h2 class="m-0">{% translate "Überblick über Wetterdaten-Services" %}</h2>
-            </div>
+          <div class="descriptionBox">
+            {% include "partials/explanation_show_more.html" %}
           </div>
         </div>
       </div>
     </section>
-    <!-- =======================
-Page Banner END -->
-
-    {% include '../weatherdata_over/explanation.html' %}
 
     <!-- =======================
 Page content START -->

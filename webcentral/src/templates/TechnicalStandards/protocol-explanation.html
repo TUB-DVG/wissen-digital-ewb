@@ -1,11 +1,6 @@
 {% load static %}
 
 {% load i18n %}
-<section class="py-4">
-  <div class="container">
-    <div class="row collapseInfoContainer" id="collapseInfoContainerProtocols">
-      <div class="col-lg-12 collapse lead collapseInfo"
-           id="collapseInfoProtocols">
         <p>
           <b>{% blocktranslate %}Was ist Gebäudeautomation (GA; Building Automation)? {% endblocktranslate %}</b>
         </p>
@@ -98,17 +93,4 @@
               <b>{% translate "Typische Anwendung" %}</b>&nbsp;&ndash; {% blocktranslate %}ggf. Beispielhafte Anwendung.{% endblocktranslate %}
             </li>
           </ul>
-        </div>
-        <div class="col-lg-12 lead mt-3">
-          <a role="button"
-             class="collapsed text-truncation-btn"
-             data-toggle="collapse"
-             href="#collapseInfoProtocols"
-             aria-expanded="false"
-             aria-controls="collapseInfo"
-             data-expanded-text="{% translate 'Zeige weniger ...' %}"
-             data-collapsed-text="{% translate 'Zeige mehr ...' %}"></a>
-        </div>
-      </div>
-    </div>
-  </section>
+
