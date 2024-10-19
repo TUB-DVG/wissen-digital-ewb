@@ -17,7 +17,7 @@
     {% if not dontShowMore %}
     <div class="row">
       <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
-        <div class="{{ focusBorder }}ShowMore">
+        <div class="{{ focusBorder }}ShowMoreButton" id="divShowMoreButton">
           <a role="button"
              class="collapsed text-truncation-btn showMoreCriteriaCatalog"
              data-toggle="collapse"
@@ -52,12 +52,14 @@ var observer = new MutationObserver(function(mutationsList, observer) {
                $("#plusIcon").css("display", "none");
                $("#minusIcon").css("display", "")
                $("#textInExpansionButton").css("display", "none");
-
+               $("#divShowMoreButton").addClass("{{ focusBorder }}ShowMore")
+               $("#divShowMoreButton").removeClass("{{ focusBorder }}ShowMoreButton")
             } else {
                 $("#plusIcon").css("display", "");
                 $("#minusIcon").css("display", "none")
                 $("#textInExpansionButton").css("display", "");
-
+                $("#divShowMoreButton").removeClass("{{ focusBorder }}ShowMore")
+                $("#divShowMoreButton").addClass("{{ focusBorder }}ShowMoreButton")
             }
         }
     });

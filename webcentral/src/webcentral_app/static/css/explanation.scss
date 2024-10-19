@@ -32,6 +32,15 @@
   .technicalCollapse.show + div .globalShowMore {
     background-color: $technical-light-color !important;
   }
+  .technicalShowMoreButton {
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
   .technicalShowMore {
     background-color: $technical-light-color;
     width: 100%;
