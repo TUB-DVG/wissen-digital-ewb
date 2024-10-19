@@ -75,10 +75,11 @@ def norm(request):
         # filteredBy[0],
         # "source":
         # filteredBy[1],
-
         "heading": _("Überblick über technische Standards - Normen"),
-        "introductionText": _("""Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen Projekte erfasst worden."""),
-        "pathToExplanationTemplate": "TechnicalStandards/norm-explanation.html", 
+        "introductionText": _(
+            """Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen Projekte erfasst worden."""
+        ),
+        "pathToExplanationTemplate": "TechnicalStandards/norm-explanation.html",
         "nameOfTemplate": "norms",
         "focusBorder": "technical",
         "urlName": "TechnicalStandards_norm_list",
@@ -285,9 +286,13 @@ def protocol(request):
         "openSourceStatus": filteredBy[2],
         "nameOfTemplate": "protocols",
         "urlName": "TechnicalStandards_protocol_list",
-        "heading": _("Überblick über technische Standards") + " - " + _("Protokolle"),
-        "introductionText": _("""Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 erfasst worden sind."""),
-        "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html", 
+        "heading": _("Überblick über technische Standards")
+        + " - "
+        + _("Protokolle"),
+        "introductionText": _(
+            """Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 erfasst worden sind."""
+        ),
+        "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html",
         "optionList": [
             {
                 "placeholder": "Name",

@@ -15,27 +15,29 @@
       <p>{{ introductionText }}</p>
     </div>
     {% if not dontShowMore %}
-    <div class="row">
-      <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
-        <div class="{{ focusBorder }}ShowMoreButton" id="divShowMoreButton">
-          <a role="button"
-             class="collapsed text-truncation-btn showMoreCriteriaCatalog"
-             data-toggle="collapse"
-             href="#explanationText"
-             aria-expanded="false"
-             aria-controls="collapseInfoTools"
-             style="color: black">
-            <img id="plusIcon" src="{% static 'assets/images/plus.svg' %}" />
-            <img id="minusIcon" style="display: none;" src="{% static 'assets/images/minus.svg' %}" />
-            <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
-          </a>
-        </div>
-        <div class="{{ focusBorder }}Collapse collapse card-body"
-             id="explanationText">
-          {% include pathToExplanationTemplate %}
+      <div class="row">
+        <div class="col-lg-12" style="margin-top: 20px; margin-bottom: 36px;">
+          <div class="{{ focusBorder }}ShowMoreButton" id="divShowMoreButton">
+            <a role="button"
+               class="collapsed text-truncation-btn showMoreCriteriaCatalog"
+               data-toggle="collapse"
+               href="#explanationText"
+               aria-expanded="false"
+               aria-controls="collapseInfoTools"
+               style="color: black">
+              <img id="plusIcon" src="{% static 'assets/images/plus.svg' %}" />
+              <img id="minusIcon"
+                   style="display: none"
+                   src="{% static 'assets/images/minus.svg' %}" />
+              <span id="textInExpansionButton">{% blocktranslate %}Erfahre mehr über den Hintergrund dieses Themas{% endblocktranslate %}</span>
+            </a>
+          </div>
+          <div class="{{ focusBorder }}Collapse collapse card-body"
+               id="explanationText">
+            {% include pathToExplanationTemplate %}
 
+          </div>
         </div>
-      </div>
       {% endif %}
     </div>
   </div>

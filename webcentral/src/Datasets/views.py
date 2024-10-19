@@ -77,9 +77,11 @@ def index(request):
         # "availability":
         # filteredBy[2],
         "heading": _(""),
-        "introductionText": _("""Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
+        "introductionText": _(
+            """Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
           Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch die Bereitstellung von offenen Daten tragen
-          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."""),
+          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."""
+        ),
         "pathToExplanationTemplate": "datasets_over/explanation.html",
         "nameOfTemplate": "datasets",
         "urlName": "dataset_list",
