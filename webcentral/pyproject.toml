@@ -42,7 +42,7 @@ classifiers = [
 dependencies = [
     "channels==4.0.0",
     "dash==2.9.3",
-    "Django==4.2.1",
+    "Django==5.0.6",
     "django-plotly-dash==2.3.1",
     "numpy==1.24.3",
     "pandas==2.2.2",
