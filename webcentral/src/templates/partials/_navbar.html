@@ -24,23 +24,12 @@
     max-width: 100%;        /* Prevents overflow */
     box-sizing: border-box; /* Ensures padding is included in the width */
 }
-.li {
-  width: 150px;
-}
 .navbar-nav .dropdown-menu {
-    width: 100%; /* Make dropdown menu width match its toggle */
-    left: 0;     /* Align the dropdown menu horizontally with the toggle */
-    right: auto; /* Reset any right alignment */
     margin-top: -25px; /* Fine-tune vertical alignment, adjust as needed */
 }
 
-.dropdown-menu {
-  width: 160px;
-}
-.dropdown-item {
-  width: 160px; /* Makes the dropdown items match the width of the parent dropdown */
-  box-sizing: border-box;
-}
+
+
   </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
@@ -73,8 +62,8 @@
         <!-- Nav item 4 Component-->
         <div class="navbar-nav navbar-nav-scroll w-100 d-flex">
           <!-- Nav technical focus START-->
-          <div class="nav-item dropdown position-relative mx-4">
-            <a class="nav-link dropdown-toggle d-flex"
+          <div class="nav-item dropdown mx-4">
+            <a class="nav-link dropdown-toggle"
                id="technicalDropdown"
                role="button"
                data-toggle="dropdown"
@@ -100,33 +89,42 @@
               {% endif %}
               {% translate "Technisch" %}
             </a>
-            <div class="dropdown-menu w-100 dropdown-menu-right position-absolute p-0"
+            <div class="dropdown-menu p-0 mx-4"
                  style="margin-top: -25px"
                  aria-labelledby="technicalDropdown">
-              <a class="dropdown-item technical mx-4" href="{% url 'tool_list' %}">
-                {% translate "Digitale Werkzeuge" %}
-              </a>
-
-              <a class="dropdown-item technical mx-4" href="{% url 'app_list' %}">
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item technical" href="{% url 'tool_list' %}">
+                  {% translate "Digitale Werkzeuge" %}
+                </a>
+              </div>
+               <div class="dropdown-item-bg"> 
+              <a class="dropdown-item technical" href="{% url 'app_list' %}">
                 {% translate "Digitale Anwendungen" %}
               </a>
-
-              <a class="dropdown-item technical mx-4"
+              </div>
+              <div class="dropdown-item-bg">
+              <a class="dropdown-item technical"
                  href="{% url 'TechnicalStandards' %}">
                 {% translate "Technische Standards" %}
               </a>
-
-              <a class="dropdown-item technical mx-4"
+              </div>
+             <div class="dropdown-item-bg"> 
+              <a class="dropdown-item technical"
                  href="{% url 'weatherdata_list' %}">
                 {% translate "Wetterdaten" %}
               </a>
-              <a class="dropdown-item technical mx-4" href="{% url 'LastProfile' %}">
+             </div>
+              <div class="dropdown-item-bg">
+              <a class="dropdown-item technical" href="{% url 'LastProfile' %}">
                 {% translate "Lastprofile" %}
               </a>
-              <a class="dropdown-item technical mx-4 technical-bottom"
+              </div>
+              <div class="dropdown-item-bg">
+              <a class="dropdown-item technical technical-bottom"
                  href="{% url 'dataset_list' %}">
                 {% translate "Datensätze" %}
               </a>
+              </div>
             </div>
           </div>
           <!-- Nav technical focus END -->

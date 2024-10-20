@@ -16,11 +16,23 @@
 }
 
 .dropdown-menu {
-  padding-left: 10px;
-  padding-right: 10px;
   z-index: 1100;
   -webkit-box-shadow: none;
           box-shadow: none;
+  background-color: transparent;
+  width: 160px !important;
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+.dropdown-item-bg {
+  background-color: white;
+  width: 180px;
+}
+
+.dropdown-item {
+  width: 180px; /* Makes the dropdown items match the width of the parent dropdown */
 }
 
 .technical {
