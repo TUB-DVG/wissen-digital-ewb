@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 05:55+0000\n"
+"POT-Creation-Date: 2024-10-21 11:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr "Gas Infrastructure"
 #: Datasets/views.py:90 Datasets/views.py:117
 #: templates/LastProfile/explanation.html:111
 #: templates/LastProfile/explanation.html:179
-#: templates/partials/_navbar.html:99
+#: templates/partials/_navbar.html:121
 #: templates/start_search/start_search.html:171
 msgid "Wetterdaten"
 msgstr "Weather data"
@@ -456,21 +456,21 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:542
-#: templates/partials/_navbar.html:225
+#: StartSearch/views.py:416 pages/views.py:541
+#: templates/partials/_navbar.html:257
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
 #: StartSearch/views.py:433 templates/pages/userEngagement.html:4
-#: templates/partials/_navbar.html:153
+#: templates/partials/_navbar.html:178
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
 #: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
-#: pages/views.py:47 templates/partials/_navbar.html:138
+#: pages/views.py:47 templates/partials/_navbar.html:164
 #: templates/start_search/start_search.html:242
 msgid "Geschäftsmodelle"
 msgstr "Business models"
@@ -482,7 +482,7 @@ msgstr ""
 
 #: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
-#: templates/partials/_navbar.html:189
+#: templates/partials/_navbar.html:218
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
@@ -490,7 +490,7 @@ msgstr "Positive environmental impacts"
 #: StartSearch/views.py:461 component_list/views.py:323
 #: component_list/views.py:370 pages/views.py:261
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:183
+#: templates/partials/_navbar.html:214
 #: templates/start_search/start_search.html:292
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
@@ -1371,11 +1371,11 @@ msgstr ""
 "org/10.1007/s12243-022-00914-x\n"
 "    "
 
-#: pages/views.py:371 pages/views.py:397 templates/partials/_navbar.html:195
+#: pages/views.py:370 pages/views.py:396 templates/partials/_navbar.html:222
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:409
+#: pages/views.py:408
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1455,20 +1455,20 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:444
+#: pages/views.py:443
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:452
+#: pages/views.py:451
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:459 pages/views.py:460
+#: pages/views.py:458 pages/views.py:459
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy overview"
 
-#: pages/views.py:474
+#: pages/views.py:473
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1523,17 +1523,17 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:512 pages/views.py:513 templates/partials/_navbar.html:235
+#: pages/views.py:511 pages/views.py:512 templates/partials/_navbar.html:264
 #: templates/partials/icons_left_column.html:3
 #: templates/start_search/start_search.html:367
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
 
-#: pages/views.py:525
+#: pages/views.py:524
 msgid "Worum geht es?<br><br>"
 msgstr ""
 
-#: pages/views.py:527
+#: pages/views.py:526
 msgid ""
 "Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
 "Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
@@ -1544,11 +1544,11 @@ msgid ""
 "Erfordernis einer Rechtsgrundlage.<br><br>"
 msgstr ""
 
-#: pages/views.py:529
+#: pages/views.py:528
 msgid "Wie funktioniert das?<br><br>"
 msgstr ""
 
-#: pages/views.py:531
+#: pages/views.py:530
 msgid ""
 "<p>Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO "
 "in Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
@@ -1557,7 +1557,7 @@ msgid ""
 "Suchfeld gezielt durchsuchen.</p>"
 msgstr ""
 
-#: pages/views.py:534
+#: pages/views.py:533
 msgid ""
 "<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter "
 "liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</"
@@ -1566,7 +1566,7 @@ msgid ""
 "beachten sollten.</li></ul><br>"
 msgstr ""
 
-#: pages/views.py:537
+#: pages/views.py:536
 msgid ""
 "<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und "
 "bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, "
@@ -1600,7 +1600,7 @@ msgid "Überblick über den Lastprofilgenerator"
 msgstr "Overview of the load profile generator"
 
 #: templates/LastProfile/explanation.html:23
-#: templates/partials/_navbar.html:104
+#: templates/partials/_navbar.html:124
 #: templates/start_search/start_search.html:195
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -1785,7 +1785,7 @@ msgid "Überblick über technische Standards"
 msgstr "Overview of technical standards"
 
 #: templates/TechnicalStandards/explanation.html:16
-#: templates/partials/_navbar.html:93
+#: templates/partials/_navbar.html:116
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
 msgstr "Technical standards"
@@ -1937,7 +1937,6 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 #: templates/tools_over/explanationApps.html:203
 #: templates/tools_over/explanationBusinessApps.html:23
 #: templates/tools_over/explanationTools.html:206
-#: templates/use_cases/explanation.html:141
 #: templates/weatherdata_over/explanation.html:50
 msgid "Zeige weniger ..."
 msgstr "Show less ..."
@@ -1958,7 +1957,6 @@ msgstr "Show less ..."
 #: templates/tools_over/explanationApps.html:204
 #: templates/tools_over/explanationBusinessApps.html:24
 #: templates/tools_over/explanationTools.html:207
-#: templates/use_cases/explanation.html:142
 #: templates/weatherdata_over/explanation.html:51
 msgid "Zeige mehr ..."
 msgstr "Show more ..."
@@ -2505,7 +2503,6 @@ msgid "Auflösung"
 msgstr "Resolution"
 
 #: templates/datasets_over/dataset-detail.html:145
-#: templates/use_cases/explanation.html:127
 msgid "Datensatz"
 msgstr "Dataset"
 
@@ -3320,7 +3317,7 @@ msgstr "Disclaimer"
 msgid "Inhalt der eigenen Seiten"
 msgstr "Content of own pages"
 
-#: templates/pages/impressum.html:45
+#: templates/pages/impressum.html:46
 msgid ""
 "Wir haben die Web-Seiten der Wissensplattform (wissen-digital-ewb.de) "
 "sorgfältig zusammengestellt. Allerdings übernehmen wir keine Gewähr oder "
@@ -3331,11 +3328,11 @@ msgstr ""
 "digital-ewb.de). However, we assume no liability or guarantee that the "
 "information provided is always up-to-date, complete and correct."
 
-#: templates/pages/impressum.html:47
+#: templates/pages/impressum.html:48
 msgid "Links auf externe Web-Seiten"
 msgstr "Links to external websites"
 
-#: templates/pages/impressum.html:49
+#: templates/pages/impressum.html:50
 msgid ""
 "Die Web-Seiten der Wissensplattform enthalten Links auf die Web-Seiten "
 "Dritter. Diese Links auf die Web-Seiten Dritter stellen keine Zustimmung zu "
@@ -3356,7 +3353,7 @@ msgstr ""
 "is outside our area of responsibility and we have no influence on its future "
 "design."
 
-#: templates/pages/impressum.html:51
+#: templates/pages/impressum.html:52
 msgid ""
 "Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend "
 "entfernen."
@@ -3479,72 +3476,68 @@ msgstr ""
 msgid "Alles durchsuchen"
 msgstr "Search topics"
 
-#: templates/partials/_navbar.html:76
-#: templates/start_search/start_search.html:113
-msgid "Technischer Fokus"
-msgstr "Technical focus"
+#: templates/partials/_navbar.html:101
+msgid "Technisch"
+msgstr "Technical"
 
-#: templates/partials/_navbar.html:81
+#: templates/partials/_navbar.html:107
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
-#: templates/partials/_navbar.html:87
+#: templates/partials/_navbar.html:111
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:109
+#: templates/partials/_navbar.html:128
 #: templates/start_search/start_search.html:183 weatherdata_over/views.py:78
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/partials/_navbar.html:133
-#: templates/start_search/start_search.html:224
-msgid "Betrieblicher Fokus"
-msgstr "Operational focus"
+#: templates/partials/_navbar.html:157
+msgid "Betrieblich"
+msgstr "Operational"
 
-#: templates/partials/_navbar.html:143
+#: templates/partials/_navbar.html:168
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:148
+#: templates/partials/_navbar.html:173
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:177
-#: templates/start_search/start_search.html:272
-msgid "Ökologischer Fokus"
-msgstr "Ecological focus"
+#: templates/partials/_navbar.html:207
+msgid "Ökologisch"
+msgstr "Ecological"
 
-#: templates/partials/_navbar.html:220
-#: templates/start_search/start_search.html:327
-msgid "Rechtlicher Fokus"
-msgstr "Legal focus"
+#: templates/partials/_navbar.html:251
+msgid "Rechtlich"
+msgstr "Legal"
 
-#: templates/partials/_navbar.html:230
+#: templates/partials/_navbar.html:260
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy overview"
 
-#: templates/partials/_navbar.html:258
+#: templates/partials/_navbar.html:291
 msgid "Global"
 msgstr ""
 
-#: templates/partials/_navbar.html:263
+#: templates/partials/_navbar.html:297
 #: templates/start_search/start_search.html:208
 #: templates/start_search/start_search.html:394
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/partials/_navbar.html:268
+#: templates/partials/_navbar.html:300
 #: templates/start_search/start_search.html:404
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
-#: templates/partials/_navbar.html:273
+#: templates/partials/_navbar.html:303
 msgid "City GML Visualisierung"
 msgstr "City GML visualization"
 
-#: templates/partials/_navbar.html:287
+#: templates/partials/_navbar.html:316
 #: templates/start_search/result_search.html:38
 #: templates/start_search/start_search.html:78
 msgid "Durchsuche die Plattform!"
@@ -4164,11 +4157,11 @@ msgstr ""
 msgid "Erfahre mehr über den Hintergrund dieses Themas"
 msgstr "Learn more about the background of this topic"
 
-#: templates/partials/description_criteria_catalog.html:66
+#: templates/partials/description_criteria_catalog.html:67
 msgid "Worum geht es?"
 msgstr "What is it about?"
 
-#: templates/partials/description_criteria_catalog.html:68
+#: templates/partials/description_criteria_catalog.html:70
 msgid ""
 "Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
 "Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
@@ -4186,11 +4179,11 @@ msgstr ""
 "and accountability obligations, as well as the fundamental requirement of a "
 "legal basis."
 
-#: templates/partials/description_criteria_catalog.html:70
+#: templates/partials/description_criteria_catalog.html:73
 msgid "Wie funktioniert das?"
 msgstr "How does it work?"
 
-#: templates/partials/description_criteria_catalog.html:72
+#: templates/partials/description_criteria_catalog.html:76
 msgid ""
 "Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO in "
 "Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
@@ -4203,7 +4196,7 @@ msgstr ""
 "category. The catalog divides the GDPR requirements into 14 'topics' and can "
 "be specifically searched using a dropdown system and a search field."
 
-#: templates/partials/description_criteria_catalog.html:76
+#: templates/partials/description_criteria_catalog.html:80
 msgid ""
 "Er dient einerseits dazu, Datenschutzrecht und die dahinter liegenden Ziele "
 "und Wertungen für die LeserInnen verständlich zu machen."
@@ -4211,7 +4204,7 @@ msgstr ""
 "It serves, on the one hand, to make data protection law and the underlying "
 "goals and values understandable to the readers."
 
-#: templates/partials/description_criteria_catalog.html:79
+#: templates/partials/description_criteria_catalog.html:83
 msgid ""
 "Andererseits können die “Anforderungen” als Checkliste begriffen werden, die "
 "Verantwortliche vor der Verarbeitung personenbezogener Daten beachten "
@@ -4220,7 +4213,7 @@ msgstr ""
 "On the other hand, the 'requirements' can be understood as a checklist that "
 "those responsible should follow before processing personal data."
 
-#: templates/partials/description_criteria_catalog.html:82
+#: templates/partials/description_criteria_catalog.html:86
 msgid ""
 "Die Anforderungen aus diesem Kriterienkatalog werden zum Projektende in ein "
 "Zertifizierungsprogramm überführt. Verantwortliche sollen sich zukünftig mit "
@@ -4231,11 +4224,11 @@ msgstr ""
 "responsible should be able to obtain an EU data protection seal in "
 "accordance with Article 42 of the GDPR."
 
-#: templates/partials/description_criteria_catalog.html:85
+#: templates/partials/description_criteria_catalog.html:90
 msgid "Anmerkung"
 msgstr "Note"
 
-#: templates/partials/description_criteria_catalog.html:87
+#: templates/partials/description_criteria_catalog.html:93
 msgid ""
 "Der Kriterienkatalog wird aktuell noch laufend ergänzt und bearbeitet. Bei "
 "allen Empfehlungen handelt es sich um typisierte Beispiele, die im Lichte "
@@ -4489,7 +4482,7 @@ msgid "Kurzbeleg"
 msgstr "Citation"
 
 #: templates/publications/publications-detail.html:144
-#: templates/start_search/result_search.html:83 use_cases/views.py:239
+#: templates/start_search/result_search.html:83 use_cases/views.py:309
 msgid "Fokus"
 msgstr "Focus"
 
@@ -4551,6 +4544,10 @@ msgstr ""
 "community interested in such research and also supports the research "
 "projects of the Energiewendebauen initiative."
 
+#: templates/start_search/start_search.html:113
+msgid "Technischer Fokus"
+msgstr "Technical focus"
+
 #: templates/start_search/start_search.html:115
 msgid ""
 "Der technische Fokus bei der Untersuchung der Digitalisierung in\n"
@@ -4578,6 +4575,10 @@ msgstr "Applications"
 msgid "technisch"
 msgstr "technical"
 
+#: templates/start_search/start_search.html:224
+msgid "Betrieblicher Fokus"
+msgstr "Operational focus"
+
 #: templates/start_search/start_search.html:226
 msgid ""
 "Der betriebliche Fokus bei der Untersuchung der Digitalisierung\n"
@@ -4595,6 +4596,10 @@ msgstr ""
 "applications. Important aspects are the economic operation of digital "
 "applications in business models and the integration of and interaction with "
 "users."
+
+#: templates/start_search/start_search.html:272
+msgid "Ökologischer Fokus"
+msgstr "Ecological focus"
 
 #: templates/start_search/start_search.html:274
 msgid ""
@@ -4615,6 +4620,10 @@ msgstr ""
 "such as energy savings,and potential negative effects, like increased "
 "material consumption.Adequate data handling and its implications are also "
 "discussed in this context."
+
+#: templates/start_search/start_search.html:327
+msgid "Rechtlicher Fokus"
+msgstr "Legal focus"
 
 #: templates/start_search/start_search.html:329
 msgid ""
@@ -5307,8 +5316,7 @@ msgid ""
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
-#: templates/tools_over/explanationTools.html:140
-#: templates/use_cases/explanation.html:120 use_cases/views.py:106
+#: templates/tools_over/explanationTools.html:140 use_cases/views.py:174
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
@@ -5351,201 +5359,6 @@ msgstr "Most important libraries (used during implementation)"
 #: templates/tools_over/tool-detail.html:192
 msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 msgstr "Norms/standard (basis/orientation of the tool)"
-
-#: templates/use_cases/explanation.html:17
-msgid ""
-"Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
-"Anwendungsfälle im Kontext des Smart Readiness Indicator.\n"
-"              Das Ziel ist es die unterschiedlichen Effekte der "
-"Digitalisierung aufzudecken und die Inteaktion verschiedener Anforderungen "
-"aufzuzeigen. \n"
-"              Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr ""
-"On this page, we present a detailed analysis of various use cases in the "
-"context of the Smart Readiness Indicator. \n"
-"              The goal is to uncover the various effects of digitalization "
-"and to demonstrate the interaction of different requirements. \n"
-"              In doing so, we address various questions:"
-
-#: templates/use_cases/explanation.html:22 use_cases/views.py:23
-msgid "Was verstehen wir unter einem Anwendungsfall?"
-msgstr "What do we mean by a use case?"
-
-#: templates/use_cases/explanation.html:25 use_cases/views.py:26
-msgid "Welche Anwendungsfälle werden diskutiert?"
-msgstr "Which use cases are discussed?"
-
-#: templates/use_cases/explanation.html:28
-#: templates/use_cases/explanation.html:116 use_cases/views.py:29
-#: use_cases/views.py:104
-msgid "Was ist in dem Graph zu sehen?"
-msgstr ""
-
-#: templates/use_cases/explanation.html:31
-msgid "Welche Aggreationen sind zu sehen und warum?"
-msgstr "What aggregations are visible and why?"
-
-#: templates/use_cases/explanation.html:33 use_cases/views.py:35
-msgid "Woher kommen die Daten?"
-msgstr "Where do the data come from?"
-
-#: templates/use_cases/explanation.html:40
-msgid ""
-"Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
-"erkennen lassen?\n"
-"          Die Anwendung ermöglicht durch Feedback energetische "
-"Einsparungen? \n"
-"          Die Auswirkungen digitaler Anwendungen sind durch ihre "
-"Wechselwirkungen komplex und vielschichtig.\n"
-"          So werden bepspielweise Ressourcen und Energie für Erstellung und "
-"den Betrieb von Messetechnik benötigt, \n"
-"          eine genauere Messung ermöglicht aber auch ein individuelleres "
-"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
-"          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt und "
-"in ihren Auswirkungen begreifbar gemacht werden."
-msgstr ""
-"Does the digital application require numerous measurements that reveal "
-"behavioral patterns? \n"
-"          Does the application enable energy savings through feedback? \n"
-"          The impacts of digital applications are complex and multifaceted "
-"due to their interactions.\n"
-"          Fgoalsce, resources and energy are required for the creation and "
-"operation of measurement technology, \n"
-"          but more precise measurements also allow for more individualized "
-"feedback to users or accurate detection of errors.\n"
-"          Here, some of these interacting effects will be collected and "
-"their impacts made comprehensible."
-
-#: templates/use_cases/explanation.html:48
-msgid ""
-"Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur "
-"Bewertung der Intelligenzfähigkeit von Gebäuden\n"
-"          nach Vorschriften der EU entwickelt wurde. In diesem Rahmenwerk "
-"sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
-"          Dabei werden die folgenden Aspekte betrachtet:"
-msgstr ""
-"The framework of the Smart Readiness Indicator, developed according to EU "
-"regulations to assess the intelligence capability of buildings, is used as "
-"the basis. \n"
-"          Within this framework, 'Services' are defined, which are "
-"considered here as use cases.\n"
-"          The following aspects are considered:"
-
-#: templates/use_cases/explanation.html:54
-msgid ""
-"Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
-"wordurch die Effekte/Wirkungen hervorgerufen werden."
-msgstr ""
-"Use Case: Describes the specific service being referenced and through which "
-"the effects/impacts are generated."
-
-#: templates/use_cases/explanation.html:57
-msgid ""
-"Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
-"Durchführung bezieht."
-msgstr ""
-"Impact Level: The levels to which the use case or action/implementation "
-"pertains."
-
-#: templates/use_cases/explanation.html:60
-msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
-msgstr "Level: The gradations in the implementation of the use case."
-
-#: templates/use_cases/explanation.html:85
-msgid ""
-"Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
-"auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
-"             aus der Nutzendenperspektive oder der technischen Sichweite."
-msgstr ""
-"Perspective: The areas impacted by the implementation of the use case, such "
-"as economic, ecological, from the user's perspective, or from a technical "
-"viewpoint."
-
-#: templates/use_cases/explanation.html:90
-msgid ""
-"Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
-"Erzielten/intendierten Effekte."
-msgstr ""
-"Effect: The outcomes or intended effects associated with the implementation "
-"of the use case."
-
-#: templates/use_cases/explanation.html:94 use_cases/views.py:82
-msgid ""
-"Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
-"Services „Reporting information regarding electricity consumption“ statt."
-msgstr ""
-"A detailed examination using time series is conducted for the service "
-"'Reporting information regarding electricity consumption.'"
-
-#: templates/use_cases/explanation.html:96
-msgid ""
-"Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
-"genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte aus den "
-"UK und Schottland enthalten.\n"
-"          39 dieser Haushalte sind in einem engmaschigen System gemonitort "
-"worden. \n"
-"          Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, "
-"105 und 106 genutzt worden. Trotz dieses engmaschigen Monitorings ist "
-"ersichtlich, das nicht immer alle Sensoren funktionieren (Haushalt 106). "
-msgstr ""
-"To illustrate these effects in detail, the IDEAL dataset was used, "
-"containing monitoring data for 255 households in the UK and Scotland.\n"
-"          39 of these households were monitored in a close-mesh system.\n"
-"          For the presentation, closely monitored households 105, 106, and "
-"62 were used."
-
-#: templates/use_cases/explanation.html:100
-msgid ""
-"Dargestellt sind der Durschnittliche Verbrauch in einem Zeitfenster von fünf "
-"Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die einzelnen Werte "
-"der Haushalte dargestellt und auch die Summe der Lastgänge (three "
-"buildings).\n"
-"          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
-"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
-"Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
-"Aggregationen unterhgehen. Damit sollen die Nutzenden \n"
-"          ein quantaitives und qualitatives Gefühl für die eFfekte der "
-"Digitalisierung und deren Wechselwirkungen bekommen. So werden "
-"beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
-"Messtechnik benötigt, \n"
-"          eine genauere Messung ermöglicht aber auch ein individuelleres "
-"Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
-"          <br />\n"
-"          Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
-"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
-"Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr ""
-"Displayed are the average consumption in time windows of five seconds, 15 "
-"minutes, and one hour, showing both the individual values of the households "
-"and the sum of the load profiles (three buildings).\n"
-"          The exemplary presentation illustrates how various aggregations "
-"(temporal and spatial) affect outcomes. High-frequency measurements make "
-"individual effects very visible, which may be lost in other aggregations. "
-"This aims to provide users with a quantitative and qualitative understanding "
-"of the effects of digitalization and their interactions. For example, "
-"resources and energy are required for the creation and operation of "
-"measurement technology,\n"
-"          but more precise measurements also enable more individualized "
-"feedback to users or detection of faults.\n"
-"          The goal is to uncover the various effects of digitalization and "
-"to demonstrate the interaction of different requirements. In doing so, we "
-"address various questions:"
-
-#: templates/use_cases/explanation.html:110
-msgid ""
-"Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
-"von Effekten aus?"
-msgstr ""
-"How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
-"effects?"
-
-#: templates/use_cases/explanation.html:113
-msgid ""
-"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
-"Gebäude) auf die Sichtbarkeit von Effekten aus?"
-msgstr ""
-"How do individual aggregations (facilities, total consumption, three "
-"buildings) affect the visibility of effects?"
 
 #: templates/use_cases/usecase-listings.html:4
 msgid "Überblick über die Use Cases"
@@ -5658,7 +5471,7 @@ msgstr "Link to the dataset"
 msgid "Beispielanwendung"
 msgstr "Example application"
 
-#: use_cases/views.py:20
+#: use_cases/views.py:21
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
 "Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es "
@@ -5666,262 +5479,328 @@ msgid ""
 "Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf "
 "verschiedene Fragestellungen ein:"
 msgstr ""
-"On this page, we present a detailed analysis of various use cases in the context "
-"of the Smart Readiness Indicator. The goal is to uncover the different effects of "
-"digitalization and highlight the interaction of various requirements. In doing so, "
-"we address several key questions:"
+"On this page, we present a detailed analysis of various use cases in the "
+"context of the Smart Readiness Indicator. The goal is to uncover the "
+"different effects of digitalization and highlight the interaction of various "
+"requirements. In doing so, we address several key questions:"
 
-#: use_cases/views.py:33
+#: use_cases/views.py:25
+msgid "Was verstehen wir unter einem Anwendungsfall?"
+msgstr "What do we mean by a use case?"
+
+#: use_cases/views.py:28
+msgid "Welche Anwendungsfälle werden diskutiert?"
+msgstr "Which use cases are discussed?"
+
+#: use_cases/views.py:31 use_cases/views.py:172
+msgid "Was ist in dem Graph zu sehen?"
+msgstr ""
+
+#: use_cases/views.py:35
 msgid "Welche Aggregationen sind zu sehen und warum?"
 msgstr "Which aggregations are visible and why?"
 
 #: use_cases/views.py:37
+msgid "Woher kommen die Daten?"
+msgstr "Where do the data come from?"
+
+#: use_cases/views.py:40
 msgid ""
 "Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
 "erkennen lassen?"
-msgstr "The digital application requires numerous measurement data that reveal behavioral patterns?"
+msgstr ""
+"The digital application requires numerous measurement data that reveal "
+"behavioral patterns?"
 
-#: use_cases/views.py:38
+#: use_cases/views.py:43
 msgid "Die Anwendung ermöglicht durch Feedback energetische Einsparungen?"
 msgstr "Does the application enable energy savings through feedback?"
 
-#: use_cases/views.py:39
+#: use_cases/views.py:46
 msgid ""
 "Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
 "komplex und vielschichtig."
-msgstr "The effects of digital applications are complex and multifaceted due to their interactions."
+msgstr ""
+"The effects of digital applications are complex and multifaceted due to "
+"their interactions."
 
-#: use_cases/views.py:40 use_cases/views.py:94
+#: use_cases/views.py:49 use_cases/views.py:151
 msgid ""
 "So werden beispielsweise Ressourcen und Energie für Erstellung und den "
 "Betrieb von Messtechnik benötigt, "
-msgstr "For example, resources and energy are required for the creation and operation of measurement technology, "
+msgstr ""
+"For example, resources and energy are required for the creation and "
+"operation of measurement technology, "
 
-#: use_cases/views.py:41 use_cases/views.py:95
+#: use_cases/views.py:52 use_cases/views.py:154
 msgid ""
 "eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an "
 "Nutzende oder ein genaues Erkennen von Fehlern."
-msgstr "A more accurate measurement also allows for more personalized feedback to users or precise detection of errors."
+msgstr ""
+"A more accurate measurement also allows for more personalized feedback to "
+"users or precise detection of errors."
 
-#: use_cases/views.py:42
+#: use_cases/views.py:55
 msgid ""
 "Hier sollen einige dieser wechselwirkenden Effekte gesammelt und in ihren "
 "Auswirkungen begreifbar gemacht werden."
-msgstr "Here, some of these interactive effects are to be collected and made comprehensible in their impacts."
+msgstr ""
+"Here, some of these interactive effects are to be collected and made "
+"comprehensible in their impacts."
 
-#: use_cases/views.py:44
+#: use_cases/views.py:59
 msgid ""
 "Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur "
 "Bewertung der Intelligenzfähigkeit von Gebäuden nach Vorschriften der EU "
 "entwickelt wurde."
 msgstr ""
-"The framework of the Smart Readiness Indicator is used as a basis, which was developed for the evaluation of the intelligence capabilities of buildings according to EU regulations."
+"The framework of the Smart Readiness Indicator is used as a basis, which was "
+"developed for the evaluation of the intelligence capabilities of buildings "
+"according to EU regulations."
 
-#: use_cases/views.py:45
+#: use_cases/views.py:62
 msgid ""
 "In diesem Rahmenwerk sind „Services“ definiert, welche hier als Use-Cases "
 "betrachtet werden."
-msgstr "In this framework, 'services' are defined, which are considered as use cases here."
+msgstr ""
+"In this framework, 'services' are defined, which are considered as use cases "
+"here."
 
-#: use_cases/views.py:46
+#: use_cases/views.py:64
 msgid "Dabei werden die folgenden Aspekte betrachtet:"
 msgstr "The following aspects are considered:"
 
-#: use_cases/views.py:48
+#: use_cases/views.py:67
 msgid ""
 "Use-Case: Beschreibt den konkreten Service, auf den sich bezogen wird und "
 "wodurch die Effekte/Wirkungen hervorgerufen werden."
 msgstr ""
-"Use case: Describes the specific service being referred to and through which the effects/impacts are triggered."
+"Use case: Describes the specific service being referred to and through which "
+"the effects/impacts are triggered."
 
-#: use_cases/views.py:50
+#: use_cases/views.py:71
 msgid ""
 "Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. die Aktion/"
 "Durchführung bezieht."
 msgstr ""
-"Effect level: The levels to which the use case or the action/implementation refers."
+"Effect level: The levels to which the use case or the action/implementation "
+"refers."
 
-#: use_cases/views.py:52
+#: use_cases/views.py:75
 msgid "Level: Die Abstufungen der Durchführung des Use-Cases."
 msgstr "Level: The gradations of implementing the use case."
 
-#: use_cases/views.py:54
+#: use_cases/views.py:78
 msgid "Smart Readiness Indicator Service"
 msgstr "Smart Readiness Indicator Service"
 
-#: use_cases/views.py:56
+#: use_cases/views.py:80
 msgid "Functionality level 0 (as non-smart default)"
 msgstr "Functionality level 0 (as non-smart default)"
 
-#: use_cases/views.py:58
+#: use_cases/views.py:82
 msgid "Functionality level 1"
 msgstr "Functionality level 1"
 
-#: use_cases/views.py:60
+#: use_cases/views.py:84
 msgid "Functionality level 2"
 msgstr "Functionality level 2"
 
-#: use_cases/views.py:62
+#: use_cases/views.py:86
 msgid "Functionality level 3"
 msgstr "Functionality level 3"
 
-#: use_cases/views.py:64
+#: use_cases/views.py:88
 msgid "Functionality level 4"
 msgstr "Functionality level 4"
 
-#: use_cases/views.py:66
+#: use_cases/views.py:91
 msgid "Reporting information regarding electricity consumption"
 msgstr "Reporting information regarding electricity consumption"
 
-#: use_cases/views.py:68
+#: use_cases/views.py:94
 msgid "None"
 msgstr "None"
 
-#: use_cases/views.py:70
+#: use_cases/views.py:97
 msgid "Reporting on current electricity consumption on building level"
 msgstr "Reporting on current electricity consumption on building level"
 
-#: use_cases/views.py:72
+#: use_cases/views.py:100
 msgid "Real-time feedback or benchmarking on building level"
 msgstr "Real-time feedback or benchmarking on building level"
 
-#: use_cases/views.py:74
+#: use_cases/views.py:103
 msgid "Real-time feedback or benchmarking on appliance level"
 msgstr "Real-time feedback or benchmarking on appliance level"
 
-#: use_cases/views.py:76
+#: use_cases/views.py:107
 msgid ""
 "Real-time feedback or benchmarking on appliance level with automated "
 "personalized recommendation"
-msgstr "Real-time feedback or benchmarking on appliance level with automated "
+msgstr ""
+"Real-time feedback or benchmarking on appliance level with automated "
 "personalized recommendation"
 
-#: use_cases/views.py:78
+#: use_cases/views.py:111
 msgid ""
 "Perspektive: Die Bereiche, auf denen sich die Durchführung des Use-Cases "
 "auswirkt, beispielsweise ökonomisch, ökologisch, aus der "
 "Nutzendenperspektive oder der technischen Sichtweite."
-msgstr "Perspective: The areas affected by the implementation of the use case, such as economically, ecologically, from the user perspective, or the technical viewpoint."
+msgstr ""
+"Perspective: The areas affected by the implementation of the use case, such "
+"as economically, ecologically, from the user perspective, or the technical "
+"viewpoint."
 
-#: use_cases/views.py:80
+#: use_cases/views.py:115
 msgid ""
 "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
 "erzielten/intendierten Effekte."
 msgstr ""
-"Effect: The impacts or achieved/intended effects associated with the implementation of the use case."
+"Effect: The impacts or achieved/intended effects associated with the "
+"implementation of the use case."
 
-#: use_cases/views.py:84
+#: use_cases/views.py:119
+msgid ""
+"Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
+"Services „Reporting information regarding electricity consumption“ statt."
+msgstr ""
+"A detailed examination using time series is conducted for the service "
+"'Reporting information regarding electricity consumption.'"
+
+#: use_cases/views.py:123
 msgid ""
 "Um diese Effekte detaillierter darzustellen, wurde der IDEAL-Datensatz "
 "genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus den "
 "UK und Schottland enthalten."
-msgstr "To present these effects in more detail, the IDEAL dataset was used. This dataset contains monitoring data for 255 households from the UK and Scotland."
+msgstr ""
+"To present these effects in more detail, the IDEAL dataset was used. This "
+"dataset contains monitoring data for 255 households from the UK and Scotland."
 
-#: use_cases/views.py:85
+#: use_cases/views.py:126
 msgid ""
 "39 dieser Haushalte sind in einem engmaschigen System gemonitort worden."
 msgstr "39 of these households have been monitored in a closely-knit system."
 
-#: use_cases/views.py:86
+#: use_cases/views.py:129
 msgid ""
 "Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, 105 und "
 "106 genutzt worden."
-msgstr "For the presentation, the closely monitored households 62, 105, and 106 have been used."
+msgstr ""
+"For the presentation, the closely monitored households 62, 105, and 106 have "
+"been used."
 
-#: use_cases/views.py:87
+#: use_cases/views.py:132
 msgid ""
 "Trotz dieses engmaschigen Monitorings ist ersichtlich, dass nicht immer alle "
 "Sensoren funktionieren (Haushalt 106)."
-msgstr "Despite this close monitoring, it is evident that not all sensors are functioning properly (household 106)."
+msgstr ""
+"Despite this close monitoring, it is evident that not all sensors are "
+"functioning properly (household 106)."
 
-#: use_cases/views.py:89
+#: use_cases/views.py:136
 msgid ""
 "Dargestellt sind der durchschnittliche Verbrauch in einem Zeitfenster von "
 "fünf Sekunden, 15 Minuten und einer Stunde."
-msgstr "The average consumption is presented over time windows of five seconds, 15 minutes, and one hour."
+msgstr ""
+"The average consumption is presented over time windows of five seconds, 15 "
+"minutes, and one hour."
 
-#: use_cases/views.py:90
+#: use_cases/views.py:139
 msgid ""
 "Dabei sind sowohl die einzelnen Werte der Haushalte dargestellt als auch die "
 "Summe der Lastgänge (three buildings)."
-msgstr "This includes both the individual values of the households as well as the sum of the load profiles (three buildings)."
+msgstr ""
+"This includes both the individual values of the households as well as the "
+"sum of the load profiles (three buildings)."
 
-#: use_cases/views.py:91
+#: use_cases/views.py:142
 msgid ""
 "Die beispielhafte Darstellung zeigt, wie sich verschiedene Aggregationen "
 "(zeitlich und räumlich) auswirken."
-msgstr "The example representation shows how different aggregations (temporal and spatial) have an impact."
+msgstr ""
+"The example representation shows how different aggregations (temporal and "
+"spatial) have an impact."
 
-#: use_cases/views.py:92
+#: use_cases/views.py:145
 msgid ""
 "Mittels hochfrequenter Messungen sind einzelne Effekte sehr gut zu sehen, "
 "welche in anderen Aggregationen untergehen."
-msgstr "Using high-frequency measurements, individual effects can be clearly seen, which may be lost in other aggregations."
+msgstr ""
+"Using high-frequency measurements, individual effects can be clearly seen, "
+"which may be lost in other aggregations."
 
-#: use_cases/views.py:93
+#: use_cases/views.py:148
 msgid ""
 "Damit sollen die Nutzenden ein quantitatives und qualitatives Gefühl für die "
 "Effekte der Digitalisierung und deren Wechselwirkungen bekommen."
-msgstr "This is intended to give users a quantitative and qualitative understanding of the effects of digitalization and their interactions."
+msgstr ""
+"This is intended to give users a quantitative and qualitative understanding "
+"of the effects of digitalization and their interactions."
 
-#: use_cases/views.py:97
+#: use_cases/views.py:158
 msgid ""
 "Das Ziel ist es, die unterschiedlichen Effekte der Digitalisierung "
 "aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."
-msgstr "The goal is to uncover the different effects of digitalization and to illustrate the interaction of various requirements."
+msgstr ""
+"The goal is to uncover the different effects of digitalization and to "
+"illustrate the interaction of various requirements."
 
-#: use_cases/views.py:98
+#: use_cases/views.py:161
 msgid "Dabei gehen wir auf verschiedene Fragestellungen ein:"
 msgstr "We will address various questions:"
 
-#: use_cases/views.py:100
+#: use_cases/views.py:165
 msgid ""
 "Wie wirkt sich die Frequenz (5s, 15-minütig, 1-stündig) auf die Sichtbarkeit "
 "von Effekten aus?"
-msgstr "How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of effects?"
+msgstr ""
+"How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
+"effects?"
 
-#: use_cases/views.py:102
+#: use_cases/views.py:169
 msgid ""
 "Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, drei "
 "Gebäude) auf die Sichtbarkeit von Effekten aus?"
 msgstr ""
-"How do individual aggregations (systems, total consumption, three buildings) affect the visibility of effects?"
+"How do individual aggregations (systems, total consumption, three buildings) "
+"affect the visibility of effects?"
 
-#: use_cases/views.py:109
+#: use_cases/views.py:177
 msgid "Training Slide Deck"
 msgstr "Training Slide Deck"
 
-#: use_cases/views.py:111
+#: use_cases/views.py:180
 msgid ""
 "Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
 "contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
 "28;8(1):146. doi: 10.1038/s41597-021-00921-y."
-msgstr "Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
+msgstr ""
+"Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
 "contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
 "28;8(1):146. doi: 10.1038/s41597-021-00921-y."
 
-
-#: use_cases/views.py:229
+#: use_cases/views.py:299
 msgid "Überblick über die Anwendungsfälle"
 msgstr "Overview of use cases"
 
-#: use_cases/views.py:245
+#: use_cases/views.py:315
 msgid "Level der Wirkebene"
 msgstr "Level of Effect Level"
 
-#: use_cases/views.py:258
+#: use_cases/views.py:328
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
-#: use_cases/views.py:259
+#: use_cases/views.py:329
 msgid "Positiv"
 msgstr "Positive"
 
-#: use_cases/views.py:259
+#: use_cases/views.py:329
 msgid "Negativ"
 msgstr "Negative"
 
-#: use_cases/views.py:259
+#: use_cases/views.py:329
 msgid "Neutral"
 msgstr "Neutral"
 
@@ -5940,3 +5819,161 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:90
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
+#~ "Anwendungsfälle im Kontext des Smart Readiness Indicator.\n"
+#~ "              Das Ziel ist es die unterschiedlichen Effekte der "
+#~ "Digitalisierung aufzudecken und die Inteaktion verschiedener "
+#~ "Anforderungen aufzuzeigen. \n"
+#~ "              Dabei gehen wir auf verschiedene Fragestellungen ein:"
+#~ msgstr ""
+#~ "On this page, we present a detailed analysis of various use cases in the "
+#~ "context of the Smart Readiness Indicator. \n"
+#~ "              The goal is to uncover the various effects of "
+#~ "digitalization and to demonstrate the interaction of different "
+#~ "requirements. \n"
+#~ "              In doing so, we address various questions:"
+
+#~ msgid "Welche Aggreationen sind zu sehen und warum?"
+#~ msgstr "What aggregations are visible and why?"
+
+#~ msgid ""
+#~ "Die digitale Anwendung benötigt zahlreiche Messdaten, die "
+#~ "Verhaltensmuster erkennen lassen?\n"
+#~ "          Die Anwendung ermöglicht durch Feedback energetische "
+#~ "Einsparungen? \n"
+#~ "          Die Auswirkungen digitaler Anwendungen sind durch ihre "
+#~ "Wechselwirkungen komplex und vielschichtig.\n"
+#~ "          So werden bepspielweise Ressourcen und Energie für Erstellung "
+#~ "und den Betrieb von Messetechnik benötigt, \n"
+#~ "          eine genauere Messung ermöglicht aber auch ein individuelleres "
+#~ "Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+#~ "          Hier sollen einige dieser wechselwirkenenden Effekte gesammelt "
+#~ "und in ihren Auswirkungen begreifbar gemacht werden."
+#~ msgstr ""
+#~ "Does the digital application require numerous measurements that reveal "
+#~ "behavioral patterns? \n"
+#~ "          Does the application enable energy savings through feedback? \n"
+#~ "          The impacts of digital applications are complex and "
+#~ "multifaceted due to their interactions.\n"
+#~ "          Fgoalsce, resources and energy are required for the creation "
+#~ "and operation of measurement technology, \n"
+#~ "          but more precise measurements also allow for more "
+#~ "individualized feedback to users or accurate detection of errors.\n"
+#~ "          Here, some of these interacting effects will be collected and "
+#~ "their impacts made comprehensible."
+
+#~ msgid ""
+#~ "Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der "
+#~ "zur Bewertung der Intelligenzfähigkeit von Gebäuden\n"
+#~ "          nach Vorschriften der EU entwickelt wurde. In diesem Rahmenwerk "
+#~ "sind “Services” definiert, welche hier als Use-Cases betrachtet werden.\n"
+#~ "          Dabei werden die folgenden Aspekte betrachtet:"
+#~ msgstr ""
+#~ "The framework of the Smart Readiness Indicator, developed according to EU "
+#~ "regulations to assess the intelligence capability of buildings, is used "
+#~ "as the basis. \n"
+#~ "          Within this framework, 'Services' are defined, which are "
+#~ "considered here as use cases.\n"
+#~ "          The following aspects are considered:"
+
+#~ msgid ""
+#~ "Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
+#~ "wordurch die Effekte/Wirkungen hervorgerufen werden."
+#~ msgstr ""
+#~ "Use Case: Describes the specific service being referenced and through "
+#~ "which the effects/impacts are generated."
+
+#~ msgid ""
+#~ "Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
+#~ "Durchführung bezieht."
+#~ msgstr ""
+#~ "Impact Level: The levels to which the use case or action/implementation "
+#~ "pertains."
+
+#~ msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
+#~ msgstr "Level: The gradations in the implementation of the use case."
+
+#~ msgid ""
+#~ "Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
+#~ "auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
+#~ "             aus der Nutzendenperspektive oder der technischen Sichweite."
+#~ msgstr ""
+#~ "Perspective: The areas impacted by the implementation of the use case, "
+#~ "such as economic, ecological, from the user's perspective, or from a "
+#~ "technical viewpoint."
+
+#~ msgid ""
+#~ "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen "
+#~ "bzw. Erzielten/intendierten Effekte."
+#~ msgstr ""
+#~ "Effect: The outcomes or intended effects associated with the "
+#~ "implementation of the use case."
+
+#~ msgid ""
+#~ "Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
+#~ "genutzt. In diesem Datensatz sind Montoringdaten für 255 Haushalte aus "
+#~ "den UK und Schottland enthalten.\n"
+#~ "          39 dieser Haushalte sind in einem engmaschigen System "
+#~ "gemonitort worden. \n"
+#~ "          Für die Darstellung sind die engmaschig gemonitorten Haushalte "
+#~ "62, 105 und 106 genutzt worden. Trotz dieses engmaschigen Monitorings ist "
+#~ "ersichtlich, das nicht immer alle Sensoren funktionieren (Haushalt 106). "
+#~ msgstr ""
+#~ "To illustrate these effects in detail, the IDEAL dataset was used, "
+#~ "containing monitoring data for 255 households in the UK and Scotland.\n"
+#~ "          39 of these households were monitored in a close-mesh system.\n"
+#~ "          For the presentation, closely monitored households 105, 106, "
+#~ "and 62 were used."
+
+#~ msgid ""
+#~ "Dargestellt sind der Durschnittliche Verbrauch in einem Zeitfenster von "
+#~ "fünf Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die "
+#~ "einzelnen Werte der Haushalte dargestellt und auch die Summe der "
+#~ "Lastgänge (three buildings).\n"
+#~ "          Die beispielhafte Darstellung zeigt, wie sich verschiedene "
+#~ "Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
+#~ "Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
+#~ "Aggregationen unterhgehen. Damit sollen die Nutzenden \n"
+#~ "          ein quantaitives und qualitatives Gefühl für die eFfekte der "
+#~ "Digitalisierung und deren Wechselwirkungen bekommen. So werden "
+#~ "beispielsweise Ressourcen und Energie für Erstellung und den Betrieb von "
+#~ "Messtechnik benötigt, \n"
+#~ "          eine genauere Messung ermöglicht aber auch ein individuelleres "
+#~ "Feedback an Nutzende oder ein genaues Erkennen von Fehlern.\n"
+#~ "          <br />\n"
+#~ "          Das Ziel ist es die unterschiedlichen Effekte der "
+#~ "Digitalisierung aufzudecken und die Interaktion verschiedener "
+#~ "Anforderungen aufzuzeigen. Dabei gehen wir auf verschiedene "
+#~ "Fragestellungen ein:"
+#~ msgstr ""
+#~ "Displayed are the average consumption in time windows of five seconds, 15 "
+#~ "minutes, and one hour, showing both the individual values of the "
+#~ "households and the sum of the load profiles (three buildings).\n"
+#~ "          The exemplary presentation illustrates how various aggregations "
+#~ "(temporal and spatial) affect outcomes. High-frequency measurements make "
+#~ "individual effects very visible, which may be lost in other aggregations. "
+#~ "This aims to provide users with a quantitative and qualitative "
+#~ "understanding of the effects of digitalization and their interactions. "
+#~ "For example, resources and energy are required for the creation and "
+#~ "operation of measurement technology,\n"
+#~ "          but more precise measurements also enable more individualized "
+#~ "feedback to users or detection of faults.\n"
+#~ "          The goal is to uncover the various effects of digitalization "
+#~ "and to demonstrate the interaction of different requirements. In doing "
+#~ "so, we address various questions:"
+
+#~ msgid ""
+#~ "Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die "
+#~ "Sichtbarkeit von Effekten aus?"
+#~ msgstr ""
+#~ "How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
+#~ "effects?"
+
+#~ msgid ""
+#~ "Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
+#~ "Gebäude) auf die Sichtbarkeit von Effekten aus?"
+#~ msgstr ""
+#~ "How do individual aggregations (facilities, total consumption, three "
+#~ "buildings) affect the visibility of effects?"

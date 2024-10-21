@@ -29,11 +29,15 @@
 }
 .technical-bottom {
   border-bottom: 1px solid $technical-color;
+  color: black;
+}
+.technical-bottom:hover {
+  background-color: $technical-light-color;
+  color: black;
 }
 .technical:hover {
   background-color: $technical-light-color;
   color: black;
-
 }
 
 .operational {
@@ -42,6 +46,12 @@
 }
 .operational-bottom {
   border-bottom: 1px solid $operational-color;
+  color: black;
+}
+.operational-bottom:hover {
+  background-color: $operational-light-color;
+ color: black;
+ 
 }
 .operational:hover {
   background-color: $operational-light-color;
@@ -56,8 +66,13 @@
 }
 .ecological-bottom {
   border-bottom: 1px solid $ecological-color;
+  color: black;
 }
-
+.ecological-bottom:hover {
+  background-color: $ecological-light-color;
+  color: black;
+ 
+}
 .ecological:hover {
   background-color: $ecological-light-color;
   color: black;
@@ -71,8 +86,12 @@
 
 .legal-bottom {
   border-bottom: 1px solid $legal-color;
+  color: black;
 }
-
+.legal-bottom:hover {
+  background-color: $legal-light-color;
+ color: black;
+}
 .legal:hover {
   background-color: $legal-light-color;
  color: black;
@@ -85,10 +104,16 @@
 }
 .global-bottom {
   border-bottom: 1px solid $global-color;
+  color: black;
+}
+
+.global-bottom:hover {
+  background-color: $global-light-color;
+  color: black;
 }
 .global:hover {
   background-color: $global-light-color;
- color: black;
+  color: black;
  
 }
 .dropdown-toggle:hover {
