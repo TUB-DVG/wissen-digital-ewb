@@ -348,7 +348,7 @@ class TestMainPage(WebDriverSetup):
             "operational",
             {
                 "heading_de": "Betrieblicher Fokus",
-                "heading_en": "Operational Focus",
+                "heading_en": "Operational focus",
                 "linkNamesEnglish": [
                     "Business models",
                     "User integration",
@@ -365,7 +365,7 @@ class TestMainPage(WebDriverSetup):
             "ecological",
             {
                 "heading_de": "Ökologischer Fokus",
-                "heading_en": "Ecological Focus",
+                "heading_en": "Ecological focus",
                 "linkNamesEnglish": [
                     "Negative environmental impacts",
                     "Positive environmental impacts - Good-practice",
@@ -384,7 +384,7 @@ class TestMainPage(WebDriverSetup):
             "legal",
             {
                 "heading_de": "Rechtlicher Fokus",
-                "heading_en": "Legal Focus",
+                "heading_en": "Legal focus",
                 "linkNamesEnglish": [
                     "Catalog of criteria",
                     "Privacy overview",
