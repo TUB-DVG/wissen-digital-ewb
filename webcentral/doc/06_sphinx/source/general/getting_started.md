@@ -1,33 +1,34 @@
 # Getting started
-In this document a short summary of the project goal is given. Afterwards it is described how the setup in a development and production environment can be done.
+This document describes the basic setup process for the development environment of the EWB-Wissensplattform. It is intended to acclimatize the user with the project. Please consult the developer documentation for a more in-depth view.
 
-## WenDE – Wissensplattform
-The shift from a traditional supply infrastructure to a regenerative, decentralized energy system introduces increased complexity and necessitates the integration of previously independent sectors. The efficient operation of these systems relies on modern IT communication and control technologies. This transition poses significant changes and new challenges for all stakeholders, alongside a substantial need for research.
-Research, development, and innovation projects in the field of Energiewende construction, as well as real-world energy transition laboratories, focus on various aspects of this multifaceted topic. They conduct in-depth analyses of the economic, political, and user-specific requirements and challenges.
-A key objective of the WeNDE project is to simplify and disseminate the findings from these projects. The EWB knowledge platform is being developed as a central element of this initiative. It serves as a repository where knowledge is aggregated and tailored for different user groups. The platform emphasizes the visual presentation of data, examines the impacts of varying conditions, and facilitates the application of technological advancements. It also involves the verification of digital tools and supports the testing and development of new methodologies.
-web interface with data base system of project infromation of the "Begleitforschung Energiewendebauen 2020" (focus modul digitalization).
+To start the EWB-Wissensplattform the tools docker and docker-compose are needed. Please read the installation manual on the `docker website <https://docs.docker.com/engine/install/>`_ for your operating system. Furthermore `node.js` is needed. It can be downloaded from the official website: https://nodejs.org/en/download/package-manager. Please install the latest LTS-version.
 
-## Main concept
-The Web-Application consists of 3 services, which are containerized, each of them living in a seperate container. In the backend the python based Django-Framework is used. Data is stored in a relational-database, whereby as a DBMS PostgreSQL is chosen. A nginx-instance is used as reverse-proxy to redirect HTTP-requests to the Django-Backend, using the uwsgi-protocol. Static-content is directly served by nginx, since it has access to a Docker-Volume, which is shared with the Django-application.
-
-To start the project either in development-mode or in production-mode `docker <https://www.docker.com/>`_  together with `docker compose <https://github.com/docker/compose>`_ are needed on your local system. Depending on your operating system (OS), the installation may differ. Please consult the guide provided by `docker <https://docs.docker.com/engine/install/>`_ for your OS.
-
-Furthermore `node.js` is needed. It can be downloaded from the official website: https://nodejs.org/en/download/package-manager. Please install the latest LTS-version.
-
-After that please clone the repo to a local location of your choice. 
-The application can be executed by doing the following steps:
-1. Create a .env-file from the the .env.example file.
+```{note}
+    We have tested the web application on linux, macOS and windows. However if you are not working on linux you need to install the `Bash`-shell, since bash-scripts are used as utilities and as a entry-point to the application. One way to install Bash is when installing `git under windows <https://gitforwindows.org/>`. In the following guide, linux commands are used. Please execute these commands in your installed Bash-shell. 
+```
+1. Please clone the repository to a local location of your choice. 
+2. Create a .env-file from the the .env.example file.
 `
   cp .env.example .env
 `
-2. Execute the command `npm install` to install the `node.js`-dependencies these are used to transpile the `scss`-stylesheets into a bundled `css`-stylesheet.
-To build the development environment execute:
+3. Execute the command `npm install` to install the `node.js`-dependencies these are used to transpile the `scss`-stylesheets into a bundled `css`-stylesheet.
+4. Build the development environment execute:
 ```
     ./run build_initial dev
 ```
-3. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `01_application/webcentral_app/`.
-3. Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
+To interact with the web application a bash script with the name `run` is used. This script is used to interact with the application.  
+4. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/media/`.
+5. In a last step the database needs to be populated with data. For that a database dump is located inside the repository under `postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql`.
+```{warning}
+    Please note that the filename of the database dump may change. Please look for the latest file with the extension `.sql` in the `postgres/`-folder.
 ```
-  ./run up_initial dev postgres/databaseDump.sql
+
+Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
 ```
-For simplicity it was asumed that a database dump is located in the postgres/ folder inside the root-folder of the webcentral-repository. That command will populate the database with the data present in the database dump and will start the web-application in development mode afterwards. It can the be visited on a browser of choice by going to the link `http://127.0.0.1:8000`.
+  ./run up_initial dev postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql
+```
+After the data has been imported into the database, the web-application should restart and run in the terminal. You can now access the web-application via your favorite web browser via `http://127.0.0.1:8000`. 
+```{note}
+    Please note that you are running the development version of the application. That version is sufficent to run on your local machine and is optimized for development. If you wish to deploy the application in a server environment please read [production](production) site. 
+```
+
