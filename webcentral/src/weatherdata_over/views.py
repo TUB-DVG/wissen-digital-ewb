@@ -69,8 +69,16 @@ def index(request):
         # filtered_by[0],
         # "lizenz":
         # filtered_by[1],
+        "heading": _("Überblick über Wetterdaten-Services"),
         "nameOfTemplate": "weatherdata",
         "urlName": "publicationPage",
+        "introductionText": _(
+            """Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit Wetterdaten
+                    sind in einer ersten Recherche durch das Modul Digitalisierung der
+                    wissenschaftliche Begleitforschung der Forschungsinitiative Energiewendebauen
+                    entstanden. Der Fokus der Recherche lag auf der Region Deutschland."""
+        ),
+        "pathToExplanationTemplate": "weatherdata_over/explanation.html",
         "optionList": [
             {
                 "placeholder": _("Kategorie"),

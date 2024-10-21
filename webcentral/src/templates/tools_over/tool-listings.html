@@ -9,25 +9,16 @@
   <main>
 
     <!-- Page Banner START -->
+    <!-- Page Banner END -->
     <section class="py-4">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <div class="p-2 text-left rounded-3">
-              <h2 class="m-0">{{ heading }}</h2>
-            </div>
+          <div class="descriptionBox">
+            {% include "partials/explanation_show_more.html" %}
           </div>
         </div>
       </div>
     </section>
-    <!-- Page Banner END -->
-    {% if typeOfTool == "Tools" %}
-      {% include 'tools_over/explanationTools.html' %}
-    {% elif typeOfTool == "Apps" %}
-      {% include 'tools_over/explanationApps.html' %}
-    {% else %}
-      {% include 'tools_over/explanationBusinessApps.html' %}
-    {% endif %}
     <!-- Page content START -->
     <section class="pt-0">
       <div class="container {{ focusBorder }}-cards">
@@ -94,7 +85,6 @@
              style="display: none">
           {% include "partials/comparison.html" %}
         </div>
-        <br />
         <!-- Comparison button END -->
         <!-- tools grid row START -->
         <div class="row mt-3">
