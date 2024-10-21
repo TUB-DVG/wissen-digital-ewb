@@ -32,7 +32,7 @@ def heatLoad(
             parameter=PARAMETER, resolution=RESOLUTION, period=PERIOD
         )
         data = stations.filter_by_station_id(station_id=station)
-        stationData = data.values.all().df
+        stationData = data.values.all().df.to_pandas()
 
         # Input from the server is Im Kelvin converted to celsius
         stationData["value"] = stationData["value"].apply(lambda x: x - 273.15)
