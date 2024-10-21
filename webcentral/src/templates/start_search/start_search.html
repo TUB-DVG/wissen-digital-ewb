@@ -129,7 +129,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical" href="{% url 'tool_list' %}">
+                      <a class="technical-bottom" href="{% url 'tool_list' %}">
                         {% translate "Werkzeuge" %}
                       </a>
                     </td>
@@ -141,7 +141,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical" href="{% url 'app_list' %}">
+                      <a class="technical-bottom" href="{% url 'app_list' %}">
                         {% translate "Anwendungen" %}
                       </a>
                     </td>
@@ -153,7 +153,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical"
+                      <a class="technical-bottom"
                          href="{% url 'TechnicalStandards' %}"
                          id="linkToTechnicalStandarts">
                         {% translate "Technische Standards" %}
@@ -167,7 +167,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical" href="{% url 'weatherdata_list' %}">
+                      <a class="technical-bottom" href="{% url 'weatherdata_list' %}">
                         {% translate "Wetterdaten" %}
                       </a>
                     </td>
@@ -179,7 +179,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical" href="{% url 'dataset_list' %}">
+                      <a class="technical-bottom" href="{% url 'dataset_list' %}">
                         {% translate "Datensätze" %}
                       </a>
                     </td>
@@ -191,7 +191,7 @@
                            alt="icon" />
                     </td>
                     <td>
-                      <a class="technical" href="{% url 'LastProfile' %}">
+                      <a class="technical-bottom" href="{% url 'LastProfile' %}">
                         {% translate "Lastprofile" %}
                       </a>
                     </td>
@@ -238,7 +238,7 @@
 <img src="{% static 'assets/images/businessModelsIcon.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="operational" href="{% url 'businessModels' %}">
+<a class="operational-bottom" href="{% url 'businessModels' %}">
 {% translate "Geschäftsmodelle" %}
 </a>
 </td>
@@ -248,7 +248,7 @@
 <img src="{% static 'assets/images/applications.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="operational" href="{% url 'userEngagement' %}" style="word-wrap: break-word; hyphens: auto">
+<a class="operational-bottom" href="{% url 'userEngagement' %}" style="word-wrap: break-word; hyphens: auto">
 {% translate "Nutzendenintegration" %}
 </a>
 </td>
@@ -288,7 +288,7 @@
 <img src="{% static 'assets/images/standards.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="ecological" href="{% url 'environmentalIntegrityNegativ' %}">
+<a class="ecological-bottom" href="{% url 'environmentalIntegrityNegativ' %}">
 {% translate "Negative Umweltwirkungen" %}
 </a>
 </td>
@@ -298,7 +298,7 @@
 <img src="{% static 'assets/images/standards.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="ecological" href="{% url 'environmentalIntegrityPositiv' %}">
+<a class="ecological-bottom" href="{% url 'environmentalIntegrityPositiv' %}">
 {% translate "Positive Umweltwirkungen" %} - Good-practice
 </td>
 </tr>
@@ -307,7 +307,7 @@
 <img src="{% static 'assets/images/standards.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="ecological" href="{% url 'dataSufficiency' %}">
+<a class="ecological-bottom" href="{% url 'dataSufficiency' %}">
 {% translate "Datensuffizenz" %}
 </td>
 </tr>
@@ -342,7 +342,7 @@
 <img src="{% static 'assets/images/standards.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="legal" href="{% url 'criteriaCatalog' %}">
+<a class="legal-bottom" href="{% url 'criteriaCatalog' %}">
 {% translate "Kriterienkatalog" %}
 </a>
 </td>
@@ -352,7 +352,7 @@
 <img src="{% static 'assets/images/buildings.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="legal" href="{% url 'dataSecurity' %}">
+<a class="legal-bottom" href="{% url 'dataSecurity' %}">
 {% translate "Daten&shy;schutz&shy;übersicht" %}
 </a>
 </td>
@@ -363,7 +363,7 @@
 <img src="{% static 'assets/images/data.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="legal" href="{% url 'iconsAndVis' %}">
+<a class="legal-bottom" href="{% url 'iconsAndVis' %}">
 {% translate "Icons und Visualisierung" %}
 </a>
 </td>
@@ -390,7 +390,7 @@
 <img src="{% static 'assets/images/buildings.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="global" href="{% url 'use_cases_list' %}">
+<a class="global-bottom" href="{% url 'use_cases_list' %}">
 {% translate "Anwendungsfälle" %}
 </a>
 </td>
@@ -400,7 +400,7 @@
 <img src="{% static 'assets/images/data.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="global" href="{% url 'publicationPage' %}">
+<a class="global-bottom" href="{% url 'publicationPage' %}">
 {% translate "Veröffentlichungen" %}
 </a>
 </td>
@@ -410,7 +410,7 @@
 <img src="{% static 'assets/images/data.svg' %}" class="rounded" alt="icon" />
 </td>
 <td>
-<a class="global" href="/cesium">{% translate "CityGML Visualisierung" %}</a>
+<a class="global-bottom" href="/cesium">{% translate "CityGML Visualisierung" %}</a>
 </td>
 </tr>
 </table>
