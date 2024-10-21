@@ -1466,7 +1466,7 @@ msgstr "Collection of guidelines, literature and court decisions"
 #: pages/views.py:459 pages/views.py:460
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
-msgstr "Privacy Overview"
+msgstr "Privacy overview"
 
 #: pages/views.py:474
 msgid ""
@@ -1788,7 +1788,7 @@ msgstr "Overview of technical standards"
 #: templates/partials/_navbar.html:93
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
-msgstr "Technical Standards"
+msgstr "Technical standards"
 
 #: templates/TechnicalStandards/explanation.html:30
 msgid ""
@@ -3482,7 +3482,7 @@ msgstr "Search topics"
 #: templates/partials/_navbar.html:76
 #: templates/start_search/start_search.html:113
 msgid "Technischer Fokus"
-msgstr "Technical Focus"
+msgstr "Technical focus"
 
 #: templates/partials/_navbar.html:81
 msgid "Digitale Werkzeuge"
@@ -3500,7 +3500,7 @@ msgstr "Datasets"
 #: templates/partials/_navbar.html:133
 #: templates/start_search/start_search.html:224
 msgid "Betrieblicher Fokus"
-msgstr "Operational Focus"
+msgstr "Operational focus"
 
 #: templates/partials/_navbar.html:143
 msgid "Geschäfts&shy;modell&shy;"
@@ -3513,17 +3513,17 @@ msgstr "Business model applications"
 #: templates/partials/_navbar.html:177
 #: templates/start_search/start_search.html:272
 msgid "Ökologischer Fokus"
-msgstr "Ecological Focus"
+msgstr "Ecological focus"
 
 #: templates/partials/_navbar.html:220
 #: templates/start_search/start_search.html:327
 msgid "Rechtlicher Fokus"
-msgstr "Legal Focus"
+msgstr "Legal focus"
 
 #: templates/partials/_navbar.html:230
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
-msgstr "Privacy Overview"
+msgstr "Privacy overview"
 
 #: templates/partials/_navbar.html:258
 msgid "Global"

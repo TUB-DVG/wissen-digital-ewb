@@ -387,7 +387,7 @@ class TestMainPage(WebDriverSetup):
                 "heading_en": "Legal Focus",
                 "linkNamesEnglish": [
                     "Catalog of criteria",
-                    "Privacy Overview",
+                    "Privacy overview",
                     "Icons and visualization",
                 ],
                 "linkNamesGerman": [
