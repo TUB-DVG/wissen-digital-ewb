@@ -1,0 +1,139 @@
+name: "Protocolls Data Contribution"
+description: "Template for submitting data about protocols"
+title: "[Protocol Name]: Feature Request"
+labels: ["Protocol Contribution"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Template for Protocols Data Contribution
+
+  - type: input
+    id: protocol_name
+    attributes:
+      label: "Name des Protokolls"
+      description: "Please provide the name of the protocol."
+      placeholder: "e.g., BACnet"
+
+  - type: input
+    id: transmission_media
+    attributes:
+      label: "Transmission Media"
+      description: "How are data transmitted between the different components and devices within the system (wired, wireless, or both)?"
+      placeholder: "e.g., Wired, Wireless"
+
+  - type: input
+    id: supported_transmission_media
+    attributes:
+      label: "Supported Transmission Media"
+      description: "How are signals transmitted (e.g., radio waves, electrical, fiber optics)?"
+      placeholder: "e.g., Fiber optics"
+
+  - type: input
+    id: related_standards
+    attributes:
+      label: "Related Standards"
+      description: "Specify the standards to which the protocol adheres (e.g., IEEE, ISO)."
+      placeholder: "e.g., IEEE 802.3"
+
+  - type: checkboxes
+    id: open_source_status
+    attributes:
+      label: "Open-Source Status"
+      description: "Is the protocol public and freely available?"
+      options:
+        - label: "Yes"
+        - label: "No"
+
+  - type: checkboxes
+    id: license_fee
+    attributes:
+      label: "License Fee"
+      description: "Is there a fee for using the protocol or certification?"
+      options:
+        - label: "Yes"
+        - label: "No"
+
+  - type: textarea
+    id: network_topology
+    attributes:
+      label: "Network Topology"
+      description: "What is the physical and logical arrangement of devices in the network?"
+
+  - type: textarea
+    id: implemented_security_mechanisms
+    attributes:
+      label: "Implemented Security Mechanisms"
+      description: "What security mechanisms are implemented to ensure data security?"
+
+  - type: input
+    id: bandwidth
+    attributes:
+      label: "Bandwidth"
+      description: "What is the communication channel capacity (bandwidth) for transmitting data?"
+      placeholder: "e.g., 100 Mbps"
+
+  - type: input
+    id: frequency
+    attributes:
+      label: "Frequency"
+      description: "What frequency or wavelength is used for communication (in wireless systems)?"
+      placeholder: "e.g., 2.4 GHz"
+
+  - type: input
+    id: range
+    attributes:
+      label: "Range"
+      description: "What is the maximum distance over which communication can be maintained without signal degradation?"
+      placeholder: "e.g., 50 meters"
+
+  - type: input
+    id: implemented_osi_layer
+    attributes:
+      label: "Implemented OSI-layer"
+      description: "Which OSI reference model layers are applied for communication in the protocol?"
+      placeholder: "e.g., Layer 3 (Network Layer)"
+
+  - type: textarea
+    id: levels_of_building_automation
+    attributes:
+      label: "Levels of Building Automation"
+      description: "Describe the hierarchical structure for building automation where the protocol is applied."
+
+  - type: textarea
+    id: data_model_architecture
+    attributes:
+      label: "Data Model Architecture"
+      description: "How is information or attributes added to an object in the system?"
+
+  - type: checkboxes
+    id: discovery
+    attributes:
+      label: "Discovery"
+      description: "Does the protocol support device discovery to automatically identify devices during data transfer?"
+      options:
+        - label: "Yes"
+        - label: "No"
+
+  - type: checkboxes
+    id: multi_master
+    attributes:
+      label: "Multi Master"
+      description: "Can multiple master devices operate simultaneously?"
+      options:
+        - label: "Yes"
+        - label: "No"
+
+  - type: input
+    id: priority
+    attributes:
+      label: "Priority"
+      description: "How are changes or updates managed within the protocol (priority handling)?"
+      placeholder: "e.g., Priority-based scheduling"
+
+  - type: textarea
+    id: typical_application
+    attributes:
+      label: "Typical Application"
+      description: "If applicable, provide an example of how the protocol is used in a real-world scenario."
+      placeholder: "e.g., Used in building management systems"
