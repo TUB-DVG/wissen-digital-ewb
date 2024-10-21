@@ -1,12 +1,12 @@
 name: "Tools/Application's Data Contribution"
 description: "Template for submitting data about tools/applications"
-title: "[Tool Name]: Feature Request"
-labels: ["Tools Contribution"]
+title: "[ContributionTools]: <title>"
+labels: ["Tools Contribution", "Contribution", "Data"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## Feature Template for Tools/Application's Data Contribution
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
 
   - type: input
     id: tool_name
@@ -19,130 +19,145 @@ body:
     id: short_description
     attributes:
       label: "Short Description"
-      description: "Briefly describe the application (2-3 sentences)."
+      description: "What is it about? Briefly describe the application (2-3 sentences."
       placeholder: "e.g., A tool that simulates weather conditions for planning purposes."
-
-  - type: input
-    id: resources
-    attributes:
-      label: "Resources (Documentation, Literature, Git Repositories, etc.)"
-      description: "List relevant resources such as documentation, literature, or Git repositories associated with the application."
-      placeholder: "e.g., https://github.com/tool-repo, Documentation PDF"
-
+  
   - type: checkboxes
     id: application_area
     attributes:
       label: "Application Area"
-      description: "Select the relevant application area(s). Multiple choices allowed."
+      description: "What do the developers describe as the area of application of their digital tool? Multiple choices allowed."
       options:
         - label: "Administration"
         - label: "Research/Teaching"
         - label: "Industry"
         - label: "Services"
 
-  - type: input
-    id: provider
-    attributes:
-      label: "Provider (Vendor)"
-      description: "Name of the tool provider or company."
-      placeholder: "e.g., Highsoft"
-
   - type: checkboxes
-    id: usage_type
+    id: use_type
     attributes:
-      label: "Usage Type"
-      description: "Describe how the tool is used (e.g., monitoring, optimization, planning)."
+      label: "Use Type"
+      description: "What purpose is the tool used for? Multiple choices allowed."
       options:
-        - label: "Simulation"
-        - label: "Monitoring"
-        - label: "Optimization"
-        - label: "Planning"
-        - label: "Control"
+        - label: "simulation"
+        - label: "monitoring"
+        - label: "optimization"
+        - label: "planning"
+        - label: "control"
+        - label: "advanced control"
+        - label: "miscellaneous"
+        - label: "visualization"
+
+  - type: input
+    id: use_type_notes
+    attributes:
+      label: "Use Type Notes"
+      description: "If the use type is not listed in the options above, please fill it here."
+      placeholder: "Any specific notes about the UI"
 
   - type: checkboxes
     id: lifecycle_phase
     attributes:
       label: "Lifecycle Phase"
-      description: "Which phases of a project does this tool apply to? Multiple choices allowed."
+      description: "In which phase(s) of a product life cycle does this tool apply to? Multiple choices allowed."
       options:
-        - label: "Pre-planning"
-        - label: "Planning"
-        - label: "Implementation"
-        - label: "Operation"
+        - label: "preliminary planning"
+        - label: "planning"
+        - label: "implementation"
+        - label: "operation"
+
+  - type: checkboxes
+    id: user_interface
+    attributes:
+      label: "User Interface"
+      description: "How can users operate the digital tool? Does it require an independent installation, is there a web-based interface or, for example, via the command line? "
+      options:
+        - label: "graphical user interface"
+        - label: "web-based user interface"
+        - label: "command-line user interface"
+
+  - type: textarea
+    id: user_interface_notes
+    attributes:
+      label: "User Interface Notes"
+      description: "Provide any additional notes about the user interface, if the options above are not included."
+      placeholder: "Any specific notes about the UI"
 
   - type: checkboxes
     id: target_group
     attributes:
       label: "Target Group"
-      description: "Specify the main user group(s) for the tool."
+      description: "Specify the main user group(s) for the tool. Who do you say the digital tool is aimed at? As a rule, digital tools can be used by everyone. Multiple choices allowed."
       options:
         - label: "Construction professionals"
         - label: "Engineers"
         - label: "IT professionals/Software developers"
         - label: "End users"
 
-  - type: checkboxes
-    id: user_interface
+  - type: input
+    id: last_update
     attributes:
-      label: "User Interface"
-      description: "Describe the user interface of the tool."
-      options:
-        - label: "web-based UI"
-        - label: "graphical UI"
-        - label: "command-line interface"
+      label: "Last Update"
+      description: "When was the last update done? Particularly in the case of digital tools that are developed as part of research projects, further development or maintenance can be stopped after the project has been completed. "
+      placeholder: "e.g., 2024-10-21 or ongoing"
 
+  - type: checkboxes
+    id: accessibility
+    attributes:
+      label: "Accessibility"
+      description: "Indicate the accessibility of the tool (e.g., paid, open-source, freeware). Multiple choices allowed."
+      options:
+        - label: "unknown"
+        - label: "chargeable"
+        - label: "open-source"
+        - label: "freeware"
+
+  - type: input
+    id: license
+    attributes:
+      label: "License"
+      description: " Under what license was the digital tool published and are there any costs associated with using the digital tool? (e.g., MIT, GNU, Apache License 2.0)"
+      placeholder: "e.g., MIT, GNU, Apache License 2.0, ..."
 
   - type: textarea
-    id: user_interface_notes
+    id: license_notes
     attributes:
-      label: "User Interface Notes"
-      description: "Provide any additional notes about the user interface."
-      placeholder: "Any specific notes about the UI"
+      label: "License Notes"
+      description: "Provide any additional notes regarding the license."
+      
+  - type: input
+    id: alternatives
+    attributes:
+      label: "Alternatives"
+      description: "Identification of concrete examples of the use of tools in the construction sector/energy transition construction (e.g. funding indicators). "
+      placeholder: "e.g. R to Python"
+
+  - type: input
+    id: specific_use_cases
+    attributes:
+      label: "Specific use cases"
+      description: "Identification of concrete examples of the use of tools in the construction sector/energy transition (e.g. project number). "
+      placeholder: "e.g., 03EN1011, ..."
+
+  - type: input
+    id: Developers_maintainers
+    attributes:
+      label: "Developers/maintainers"
+      description: "Name of the tool provider or company. Who is responsible for the development and maintenance of the tool? "
+      placeholder: "e.g., Highsoft"     
 
   - type: checkboxes
-    id: programming_languages
+    id: General_type
     attributes:
-      label: "Programming Languages"
-      description: "List the programming languages used by the tool. Multiple choices allowed."
-      options:
-        - label: "Python"
-        - label: "Matlab"
-        - label: "R"
-        - label: "C"
-        - label: "C++"
-        - label: "Java"
-
-  - type: checkboxes
-    id: frameworks_libraries
-    attributes:
-      label: "Frameworks/Libraries"
-      description: "Mention any frameworks or libraries the tool depends on. Multiple choices allowed."
-      options:
-        - label: "Django"
-        - label: "React"
-        - label: "Flask"
-        - label: "Angular"
-
-  - type: checkboxes
-    id: database_systems
-    attributes:
-      label: "Database Systems"
-      description: "List any database systems the tool interacts with. Multiple choices allowed."
-      options:
-        - label: "MySQL"
-        - label: "PostgreSQL"
-        - label: "MongoDB"
-
-  - type: checkboxes
-    id: type_of_application
-    attributes:
-      label: "Type of Application"
-      description: "Classify the tool (e.g., digital application, digital tool, framework, platform). Multiple choices allowed."
+      label: "General type of tool"
+      description: "Classify the tool. What type is the tool? Is it a digital tool, a framework/library, a programming language, a standard or even an application?  Multiple choices allowed."
       options:
         - label: "Digital Application"
         - label: "Digital Tool"
         - label: "Framework/Library"
         - label: "Platform"
+        - label: "programming language"
+        - label: "standard"
 
   - type: checkboxes
     id: focus
@@ -155,102 +170,88 @@ body:
         - label: "Ecological"
         - label: "Legal"
 
-  - type: checkboxes
-    id: scale
+  - type: dropdown
+    id: published
     attributes:
-      label: "Scale"
-      description: "Describe the scale at which the tool is applied. Multiple choices allowed."
+      label: "Published"
+      description: "Has the tool been officially released or published?"
       options:
-        - label: "Component"
-        - label: "System"
-        - label: "Building"
-        - label: "District/Networks"
-        - label: "Region/Country"
+        - unknown
+        - 'Yes'
+        - 'No'
 
   - type: input
-    id: last_update
+    id: year_of_publication
     attributes:
-      label: "Last Update"
-      description: "Provide the date of the latest update for this tool."
-      placeholder: "e.g., 2024-10-21"
+      label: "Year of Publication"
+      description: " If the tool is published, in what year was it released?"
+      placeholder: "e.g., 2009"       
 
-  - type: checkboxes
-    id: accessibility
+  - type: dropdown
+    id: publication_planned
     attributes:
-      label: "Accessibility"
-      description: "Indicate the accessibility of the tool (e.g., paid, open-source, freeware)."
+      label: "Publication planned"
+      description: "Is a release/publication planned but not yet completed?"
       options:
-        - label: "Paid"
-        - label: "Open-source"
-        - label: "Freeware"
-
-  - type: input
-    id: license
-    attributes:
-      label: "License"
-      description: "Specify the license under which the tool is distributed."
-      placeholder: "e.g., MIT, GNU, Apache License 2.0"
-
-  - type: textarea
-    id: license_notes
-    attributes:
-      label: "License Notes"
-      description: "Provide any additional notes regarding the license."
+        - unknown
+        - 'Yes'
+        - 'No'
 
   - type: textarea
     id: further_information
     attributes:
-      label: "Further Information"
-      description: "Any further relevant details or references about the tool."
+      label: "Sources of information (Documentation, Literature, Git Repositories, etc.)"
+      description: "List relevant resources for further information about the tool,such as documentation, literature, or Git repositories associated with the application."
+      placeholder: "e.g., https://github.com/tool-repo, Documentation PDF, ..."
 
-  - type: input
-    id: alternatives
-    attributes:
-      label: "Alternatives"
-      description: "List any alternative tools."
-      placeholder: "e.g., D3.js, Chart.js"
-
-  - type: input
-    id: specific_application_in_projects
-    attributes:
-      label: "Specific Application in Projects"
-      description: "If used in specific projects, provide a reference or ID."
-      placeholder: "e.g., 03EN1011"
-
-  - type: input
-    id: year_of_release
-    attributes:
-      label: "Year of Release"
-      description: "Indicate the release year of the tool."
-      placeholder: "e.g., 2009"
-
-  - type: input
+  - type: dropdown
     id: development_state
     attributes:
-      label: "Development State (1-5)"
-      description: "Rate the development state of the tool (1-5)."
-      placeholder: "e.g., 4"
+      label: "Level of development"
+      description: "What is the current development status? (1-5)."
+      options:
+        - unknown 
+        - 1. first draft (pre-alpha)
+        - 2. essential functions (alpha)
+        - 3. not yet fully tested (beta)
+        - 4. All functions preserved, possibly containing errors (Release Candidate - RC)
+        - 5. ready for productive use (released)
+
+  - type: input
+    id: programming_language
+    attributes:
+      label: "Programming Language"
+      description: "Which programming language is mainly used to implement the tool? "
+      placeholder: "e.g., Python, Matlab, R, C, C++, JAVA, ..."
+
+  - type: input
+    id: frameworks_libraries
+    attributes:
+      label: "Most important framework/libraries"
+      description: "What are the most important frameworks or libraries for implementation?"
+      placeholder: "e.g., Django, React, Flask, Angular, ..."
+
+  - type: input
+    id: database_system
+    attributes:
+      label: "Database System"
+      description: "Which database system does the tool use? "
+      placeholder: "e.g., MySQL, PostgreSQL, MongoDB, ..."
+
+  - type: checkboxes
+    id: scale
+    attributes:
+      label: "Spatial scale of use cases"
+      description: "On what scale is the tool used? Does the tool find in a component, a system, a building, or in a district/network or a region/country? Multiple choices allowed."
+      options:
+        - label: "Component"
+        - label: "System"
+        - label: "Building"
+        - label: "District/Network"
+        - label: "Region/Country"
 
   - type: textarea
     id: technical_standards
     attributes:
-      label: "Technical Standards"
-      description: "Mention any technical standards or protocols the tool follows."
-
-  - type: checkboxes
-    id: released
-    attributes:
-      label: "Released (Boolean - 1/0)"
-      description: "Has the tool been officially released?"
-      options:
-        - label: "Yes"
-        - label: "No"
-
-  - type: checkboxes
-    id: planned_release
-    attributes:
-      label: "Planned Release (Boolean - 1/0)"
-      description: "Is a release planned but not yet completed?"
-      options:
-        - label: "Yes"
-        - label: "No"
+      label: "Norms/Standards"
+      description: "Which norms or standards serve as the basis or orientation for the tool? "

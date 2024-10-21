@@ -1,0 +1,66 @@
+name: "Datasets Contribution"
+description: "Template for submitting data of Datasets"
+title: "[ContributionDatasets]: <title>"
+labels: ["Datasets Contribution", "Contribution", "Data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
+
+  - type: input
+    id: dataset_name
+    attributes:
+      label: "Name of the Datasets"
+      description: "Please provide the name of Datasets."
+      placeholder: "e.g., Global Weather Data"
+
+  - type: input
+    id: use_case_category
+    attributes:
+      label: "Use Case Category"
+      description: "Which category can the data set be assigned to?"
+      placeholder: "e.g., Climate Research"
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: "Scope"
+      description: "Typical application area in which the data set is used. An application area describes all possible methods and data sets that can be used to achieve a specific purpose."
+      placeholder: "e.g., Environmental monitoring, city planning"
+
+  - type: input
+    id: geographic_coverage
+    attributes:
+      label: "Geographic Coverage"
+      description: "Specify the geographic area that the dataset covers."
+      placeholder: "e.g., Global, Europe, Asia"
+
+  - type: input
+    id: resolution
+    attributes:
+      label: "Resolution"
+      description: "Specify the resolution of the dataset (e.g., temporal or spatial)."
+      placeholder: "e.g., 1km spatial resolution, daily time resolution"
+
+  - type: input
+    id: last_update
+    attributes:
+      label: "Last Update"
+      description: "Provide the date of the latest update for this dataset."
+      placeholder: "e.g., 2024-10-21"
+
+  - type: input
+    id: availability
+    attributes:
+      label: "Availability"
+      description: "Under what license is the data available? Are these free or paid?"
+      placeholder: "e.g., Open Data, Paid License"
+
+  - type: textarea
+    id: further_information
+    attributes:
+      label: "Further Information"
+      description: "Any further relevant details or references about the dataset."
+      placeholder: "e.g., Link to documentation or additional resources"
+

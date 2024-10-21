@@ -1,40 +1,43 @@
-name: "Protocolls Data Contribution"
+name: "Protocols Data Contribution"
 description: "Template for submitting data about protocols"
-title: "[Protocol Name]: Feature Request"
-labels: ["Protocol Contribution"]
+title: "[ContributionProtocol]: <title>"
+labels: ["Protocol Contribution", "Contribution", "Data"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## Feature Template for Protocols Data Contribution
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
 
   - type: input
     id: protocol_name
     attributes:
-      label: "Name des Protokolls"
+      label: "Name of the Protocol"
       description: "Please provide the name of the protocol."
       placeholder: "e.g., BACnet"
 
-  - type: input
+  - type: dropdown
     id: transmission_media
     attributes:
       label: "Transmission Media"
       description: "How are data transmitted between the different components and devices within the system (wired, wireless, or both)?"
-      placeholder: "e.g., Wired, Wireless"
+      options:
+        - wired
+        - wireless
+        - wired & wireless
 
   - type: input
     id: supported_transmission_media
     attributes:
       label: "Supported Transmission Media"
-      description: "How are signals transmitted (e.g., radio waves, electrical, fiber optics)?"
-      placeholder: "e.g., Fiber optics"
+      description: "How are signals transmitted (e.g., Twisted pair, fiber optics, Wireless mesh)?"
+      placeholder: "e.g., Fiber optics, ..."
 
-  - type: input
+  - type: textarea
     id: related_standards
     attributes:
       label: "Related Standards"
-      description: "Specify the standards to which the protocol adheres (e.g., IEEE, ISO)."
-      placeholder: "e.g., IEEE 802.3"
+      description: "Specify the standards to which the protocol can be assigned (e.g., IEEE, ISO)."
+      placeholder: "e.g., ISO-16484-6, ..."
 
   - type: checkboxes
     id: open_source_status
@@ -42,23 +45,25 @@ body:
       label: "Open-Source Status"
       description: "Is the protocol public and freely available?"
       options:
-        - label: "Yes"
-        - label: "No"
+        - label: "Open Source"
+        - label: "Proprietary"
 
-  - type: checkboxes
+  - type: dropdown
     id: license_fee
     attributes:
       label: "License Fee"
       description: "Is there a fee for using the protocol or certification?"
       options:
-        - label: "Yes"
-        - label: "No"
+        - unknown
+        - Fee required
+        - No fee required
 
-  - type: textarea
+  - type: input
     id: network_topology
     attributes:
       label: "Network Topology"
       description: "What is the physical and logical arrangement of devices in the network?"
+      placeholder: "e.g., star, ..."
 
   - type: textarea
     id: implemented_security_mechanisms
@@ -70,7 +75,7 @@ body:
     id: bandwidth
     attributes:
       label: "Bandwidth"
-      description: "What is the communication channel capacity (bandwidth) for transmitting data?"
+      description: "What is the communication channel capacity (bandwidth) for transmitting data between the various components of the system?"
       placeholder: "e.g., 100 Mbps"
 
   - type: input
@@ -78,53 +83,64 @@ body:
     attributes:
       label: "Frequency"
       description: "What frequency or wavelength is used for communication (in wireless systems)?"
-      placeholder: "e.g., 2.4 GHz"
+      placeholder: "e.g., 2.4 GHz or Not applicable"
 
   - type: input
     id: range
     attributes:
       label: "Range"
-      description: "What is the maximum distance over which communication can be maintained without signal degradation?"
+      description: "the maximum distance over which communication can be maintained between the various devices and components of the system without the signal strength becoming too weak."
       placeholder: "e.g., 50 meters"
 
-  - type: input
+  - type: checkboxes
     id: implemented_osi_layer
     attributes:
       label: "Implemented OSI-layer"
-      description: "Which OSI reference model layers are applied for communication in the protocol?"
-      placeholder: "e.g., Layer 3 (Network Layer)"
+      description: "Which OSI reference model layers are applied for communication between the various components of the system in the protocol? Multiple choices allowed."
+      options: 
+        - label: "Application layer"
+        - label: "Presentation layer"
+        - label: "Session layer"
+        - label: "Transport layer"
+        - label: "Network/Packet layer"
+        - label: "Data Link layer"
+        - label: "Physical layer"
 
-  - type: textarea
+  - type: checkboxes
     id: levels_of_building_automation
     attributes:
       label: "Levels of Building Automation"
-      description: "Describe the hierarchical structure for building automation where the protocol is applied."
+      description: "Describe the hierarchical structure for building automation system where the protocol is applied. Multiple choices allowed."
+      options: 
+        - label: "field level"
+        - label: "automation level"
+        - label: "management level"
 
-  - type: textarea
+  - type: input
     id: data_model_architecture
     attributes:
       label: "Data Model Architecture"
       description: "How is information or attributes added to an object in the system?"
 
-  - type: checkboxes
+  - type: dropdown
     id: discovery
     attributes:
       label: "Discovery"
-      description: "Does the protocol support device discovery to automatically identify devices during data transfer?"
+      description: "Does the protocol has the “discovery” function to automatically identify devices during data transfer?"
       options:
-        - label: "Yes"
-        - label: "No"
+        - 'Yes'
+        - 'No'
 
-  - type: checkboxes
+  - type: dropdown
     id: multi_master
     attributes:
       label: "Multi Master"
       description: "Can multiple master devices operate simultaneously?"
       options:
-        - label: "Yes"
-        - label: "No"
+        - 'Yes'
+        - 'No'
 
-  - type: input
+  - type: textarea
     id: priority
     attributes:
       label: "Priority"
@@ -137,3 +153,9 @@ body:
       label: "Typical Application"
       description: "If applicable, provide an example of how the protocol is used in a real-world scenario."
       placeholder: "e.g., Used in building management systems"
+
+  - type: textarea
+    id: link
+    attributes:
+      label: "Link"
+      description: "Please provide a link for further information about the protocol."
