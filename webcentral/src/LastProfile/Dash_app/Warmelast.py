@@ -38,6 +38,9 @@ parameter = "TEMPERATURE_AIR_MEAN_200"
 data = []
 period = "RECENT"
 # Acquiring all the stations that provide data according to selected filters
+api_error = False
+error_message = ""
+
 stations = DwdObservationRequest(
     parameter=parameter, resolution=resolution, period=period
 )
@@ -46,13 +49,22 @@ try:
     polledStationNames = stations.all().df["state"].unique()
 except ValueError:
     polledStationNames = []
-    placeholderState = (
-        "Weatherdata-API is not available. Please try again later."
-    )
+    api_error = True
+    error_message = "Error accessing station data from Wetterdienst API. Please try again later."
 
 # App layout
 app.layout = html.Div(
-    [
+    [  # api warning
+        html.Div(
+            id="api-error-message",
+            children=[html.P(error_message)],
+            style={
+                "display": "block" if api_error else "none",
+                "color": "red",
+                "background": "#FFD2D2",
+                "padding": "10px",
+            },
+        ),
         # Title
         dcc.Store(id="on-load", data="loaded"),
         html.H1(
@@ -116,7 +128,9 @@ app.layout = html.Div(
             [
                 # Dropdown for State options for the Wetterdienst station choice
                 dcc.Dropdown(
-                    polledStationNames, placeholder=placeholderState, id="state"
+                    polledStationNames.to_pandas(),
+                    placeholder=placeholderState,
+                    id="state",
                 ),
                 # Dropdown for the available wetterdienst stations in the chosen State
                 dcc.Dropdown(
@@ -270,7 +284,7 @@ def showHideElement(visibility_state):
 def stationSelection(state: str) -> list:
     return [
         {"label": row["name"], "value": row["station_id"]}
-        for index, row in stations.all().df.iterrows()
+        for index, row in stations.all().df.to_pandas().iterrows()
         if row["state"] == state
     ]
 
@@ -289,7 +303,7 @@ def dateRangePicker(referenceYear: str, stationId: int) -> Tuple[str, str]:
         maxDate = datetime.datetime.strptime("12/31/2021", "%m/%d/%Y")
     else:
         data = stations.filter_by_station_id(station_id=stationId)
-        stationData = data.values.all().df
+        stationData = data.values.all().df  # .to_pandas()
         minDate = (min(stationData["date"])).date()
         maxDate = (max(stationData["date"])).date()
     return minDate, maxDate
@@ -372,8 +386,9 @@ def updateHeatGraph(
 ):
 
     if n_clicks == 0 or n_clicks is None:
+        fig = go.Figure()
         return (
-            _("Es gibt keine Eingabe"),
+            fig,
             _("Es gibt keine Eingabe"),
             pd.DataFrame.to_dict(pd.DataFrame()),
         )
