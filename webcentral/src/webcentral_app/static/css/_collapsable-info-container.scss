@@ -2,7 +2,7 @@
 .collapseInfoContainer {
   .collapseInfo.collapse:not(.show) {
     display: block;
-    height: 3.2rem;
+    height: 0rem;
     overflow: hidden;
   }
   .collapseInfo.collapsing {

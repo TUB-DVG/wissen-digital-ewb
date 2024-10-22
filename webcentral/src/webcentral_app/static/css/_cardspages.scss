@@ -647,12 +647,40 @@ input[type='checkbox']:checked:before {
 /* card_hover: allows the item display cards to grow on hover
  * to show user selection : Added 06/20/2023
 */
-.card_hover{
+.card_hover > * {
   transition: all .2s ease-in-out;
 }
 .card_hover:hover {
-  transform: scale(1.1);
+  .border-technical {
+    background-color: #E3EAFD;
+  }
+  .border-legal {
+    background-color: #F9F6DA;
+  }
+  .border-ecological {
+    background-color: #DFF3E1;
+  }
+  .border-operational {
+    background-color: #FDEAE6;
+  }
 }
+
+.box {
+  transition: background-color 0.2s;
+}
+.box.border-technical:hover {
+  background-color: #E3EAFD;
+} 
+.box.border-ecological:hover {
+  background-color: #DFF3E1;
+}
+.box.border-legal:hover {
+  background-color: #F9F6DA;
+}
+.box.border-operational:hover {
+  background-color: #FDEAE6; 
+}
+
 
 /* .break-words：change row while reach maxwidth，added 29.01.2024 */
 .break-words {

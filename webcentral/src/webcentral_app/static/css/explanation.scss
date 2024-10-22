@@ -1,0 +1,83 @@
+
+.row.collapseInfoContainer {
+    flex-direction: column-reverse;
+  }
+  .globalCollapse,
+  .globalCollapse + div,
+  .globalCollapse + div .showMore {
+    transition: background-color 0.2s;
+  }
+  .globalCollapse.show,
+  .globcalCollapse.show + div,
+  .globcalCollapse.show + div .globalShowMore {
+    background-color: $global-light-color !important;
+  }
+  .globalShowMore {
+    background-color: $global-light-color;
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+  .technicalCollapse,
+  .technicalCollapse + div,
+  .technicalCollapse + div .showMore {
+    transition: background-color 0.2s;
+  }
+  .technicalCollapse.show,
+  .technicalCollapse.show + div,
+  .technicalCollapse.show + div .globalShowMore {
+    background-color: $technical-light-color !important;
+  }
+  .technicalShowMoreButton {
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+.globalShowMoreButton {
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+  .technicalShowMore {
+    background-color: $technical-light-color;
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+
+  .explanationSubHeading {
+    font-size: 22px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+
+  li {
+    font-size: 16px;
+  }
+  
+  .imgExplanation {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .row.collapseInfoContainer {
+    flex-direction: column-reverse;
+  }
+

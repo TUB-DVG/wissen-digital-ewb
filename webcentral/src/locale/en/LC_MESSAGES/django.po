@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: Datasets/views.py:79
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-21 11:13+0000\n"
+"POT-Creation-Date: 2024-10-22 15:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,128 +19,141 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: Datasets/views.py:84 StartSearch/views.py:471
+#: Datasets/views.py:81
+msgid ""
+"Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie "
+"den Zugang zu Informationen und die\n"
+"          Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch "
+"die Bereitstellung von offenen Daten tragen\n"
+"          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."
+msgstr ""
+"Open data plays a crucial role in the energy transition as it enables access "
+"to information and collaboration between different actors. By providing open "
+"data, companies, researchers and administration also contribute to "
+"transparency."
+
+#: Datasets/views.py:91 StartSearch/views.py:471
 msgid "Anwendungsfall"
 msgstr "Use case"
 
-#: Datasets/views.py:86
+#: Datasets/views.py:93
 msgid "Potential Erneuerbare Energie"
 msgstr "Renewable energy potential"
 
-#: Datasets/views.py:87
+#: Datasets/views.py:94
 msgid "Standardlastprofile"
 msgstr "Standard load profiles"
 
-#: Datasets/views.py:88
+#: Datasets/views.py:95
 msgid "Energiesystemmodell"
 msgstr "Energy system model"
 
-#: Datasets/views.py:89
+#: Datasets/views.py:96
 msgid "Infrastruktur Gas"
 msgstr "Gas Infrastructure"
 
-#: Datasets/views.py:90 Datasets/views.py:117
+#: Datasets/views.py:97 Datasets/views.py:124
 #: templates/LastProfile/explanation.html:111
 #: templates/LastProfile/explanation.html:179
-#: templates/partials/_navbar.html:121
+#: templates/partials/_navbar.html:112
 #: templates/start_search/start_search.html:171
 msgid "Wetterdaten"
 msgstr "Weather data"
 
-#: Datasets/views.py:91
+#: Datasets/views.py:98
 msgid "Wärmebedarf"
 msgstr "Heat demand"
 
-#: Datasets/views.py:92 Datasets/views.py:113
+#: Datasets/views.py:99 Datasets/views.py:120
 msgid "Zeitreihen"
 msgstr "Time series"
 
-#: Datasets/views.py:97
+#: Datasets/views.py:104
 msgid "Sonstiges"
 msgstr "Miscellaneous"
 
-#: Datasets/views.py:104 common/views.py:74 component_list/views.py:275
+#: Datasets/views.py:111 common/views.py:74 component_list/views.py:275
 #: templates/datasets_over/dataset-detail.html:135
 #: templates/weatherdata_over/weatherdata-detail.html:215
-#: weatherdata_over/views.py:76
+#: weatherdata_over/views.py:84
 msgid "Kategorie"
 msgstr "Category"
 
-#: Datasets/views.py:106
+#: Datasets/views.py:113
 msgid "Übertragungsnetzentwicklungspläne"
 msgstr "Transmission network development plans"
 
-#: Datasets/views.py:107
+#: Datasets/views.py:114
 msgid "Gebäudebestandsentwicklung"
 msgstr "Building stock development"
 
-#: Datasets/views.py:108
+#: Datasets/views.py:115
 msgid "Standardlastprofile für Strom"
 msgstr "Standard load profiles for electricity"
 
-#: Datasets/views.py:109
+#: Datasets/views.py:116
 msgid "Digitales Geländemodell"
 msgstr "Digital terrain model"
 
-#: Datasets/views.py:110
+#: Datasets/views.py:117
 msgid "Gebäudegrundrisse"
 msgstr "Building floor plans"
 
-#: Datasets/views.py:111 templates/LastProfile/explanation.html:61
+#: Datasets/views.py:118 templates/LastProfile/explanation.html:61
 msgid "Gebäude"
 msgstr "Building"
 
-#: Datasets/views.py:111
+#: Datasets/views.py:118
 msgid "Modell"
 msgstr "Model"
 
-#: Datasets/views.py:112
+#: Datasets/views.py:119
 msgid "Gebäudetypologie"
 msgstr "Building typology"
 
-#: Datasets/views.py:114
+#: Datasets/views.py:121
 msgid "Gebäudebestand"
 msgstr "Building stock"
 
-#: Datasets/views.py:115
+#: Datasets/views.py:122
 msgid "Infrastruktur"
 msgstr "Infrastructure"
 
-#: Datasets/views.py:116
+#: Datasets/views.py:123
 msgid "Bedarfsdaten"
 msgstr "Demand data"
 
-#: Datasets/views.py:118
+#: Datasets/views.py:125
 msgid "Daten"
 msgstr "Data"
 
-#: Datasets/views.py:119
+#: Datasets/views.py:126
 msgid "Statistiken"
 msgstr "Statistics"
 
-#: Datasets/views.py:120
+#: Datasets/views.py:127
 msgid "Landnutzung"
 msgstr "land use"
 
-#: Datasets/views.py:121
+#: Datasets/views.py:128
 msgid "Datenbasis"
 msgstr "Database"
 
-#: Datasets/views.py:122
+#: Datasets/views.py:129
 msgid "Potential"
 msgstr "Potential"
 
-#: Datasets/views.py:123
+#: Datasets/views.py:130
 msgid "Löser"
 msgstr "Solver"
 
-#: Datasets/views.py:125
+#: Datasets/views.py:132
 msgid "Andere"
 msgstr "Others"
 
-#: Datasets/views.py:131 templates/datasets_over/dataset-detail.html:82
+#: Datasets/views.py:138 templates/datasets_over/dataset-detail.html:82
 #: templates/datasets_over/dataset-detail.html:155
-#: templates/datasets_over/explanation.html:38
+#: templates/datasets_over/explanation.html:28
 msgid "Verfügbarkeit"
 msgstr "Availability"
 
@@ -196,42 +210,42 @@ msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
 #: LastProfile/Dash_app/Stromlast.py:64 LastProfile/Dash_app/Stromlast.py:136
-#: LastProfile/Dash_app/Warmelast.py:177 LastProfile/Dash_app/Warmelast.py:310
+#: LastProfile/Dash_app/Warmelast.py:191 LastProfile/Dash_app/Warmelast.py:324
 msgid "Januar"
 msgstr "January"
 
 #: LastProfile/Dash_app/Stromlast.py:65 LastProfile/Dash_app/Stromlast.py:137
-#: LastProfile/Dash_app/Warmelast.py:178 LastProfile/Dash_app/Warmelast.py:311
+#: LastProfile/Dash_app/Warmelast.py:192 LastProfile/Dash_app/Warmelast.py:325
 msgid "Februar"
 msgstr "February"
 
 #: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Stromlast.py:138
-#: LastProfile/Dash_app/Warmelast.py:179 LastProfile/Dash_app/Warmelast.py:312
+#: LastProfile/Dash_app/Warmelast.py:193 LastProfile/Dash_app/Warmelast.py:326
 msgid "März"
 msgstr "March"
 
 #: LastProfile/Dash_app/Stromlast.py:67 LastProfile/Dash_app/Stromlast.py:139
-#: LastProfile/Dash_app/Warmelast.py:180 LastProfile/Dash_app/Warmelast.py:313
+#: LastProfile/Dash_app/Warmelast.py:194 LastProfile/Dash_app/Warmelast.py:327
 msgid "April"
 msgstr "April"
 
 #: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Stromlast.py:140
-#: LastProfile/Dash_app/Warmelast.py:181 LastProfile/Dash_app/Warmelast.py:314
+#: LastProfile/Dash_app/Warmelast.py:195 LastProfile/Dash_app/Warmelast.py:328
 msgid "Mai"
 msgstr "May"
 
 #: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:141
-#: LastProfile/Dash_app/Warmelast.py:182 LastProfile/Dash_app/Warmelast.py:315
+#: LastProfile/Dash_app/Warmelast.py:196 LastProfile/Dash_app/Warmelast.py:329
 msgid "Juni"
 msgstr "June"
 
 #: LastProfile/Dash_app/Stromlast.py:70 LastProfile/Dash_app/Stromlast.py:142
-#: LastProfile/Dash_app/Warmelast.py:183 LastProfile/Dash_app/Warmelast.py:316
+#: LastProfile/Dash_app/Warmelast.py:197 LastProfile/Dash_app/Warmelast.py:330
 msgid "Juli"
 msgstr "July"
 
 #: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:143
-#: LastProfile/Dash_app/Warmelast.py:184 LastProfile/Dash_app/Warmelast.py:317
+#: LastProfile/Dash_app/Warmelast.py:198 LastProfile/Dash_app/Warmelast.py:331
 msgid "August"
 msgstr "August"
 
@@ -240,31 +254,31 @@ msgid "September"
 msgstr "September"
 
 #: LastProfile/Dash_app/Stromlast.py:73 LastProfile/Dash_app/Stromlast.py:145
-#: LastProfile/Dash_app/Warmelast.py:186 LastProfile/Dash_app/Warmelast.py:319
+#: LastProfile/Dash_app/Warmelast.py:200 LastProfile/Dash_app/Warmelast.py:333
 msgid "Oktober"
 msgstr "October"
 
 #: LastProfile/Dash_app/Stromlast.py:74 LastProfile/Dash_app/Stromlast.py:146
-#: LastProfile/Dash_app/Warmelast.py:187 LastProfile/Dash_app/Warmelast.py:320
+#: LastProfile/Dash_app/Warmelast.py:201 LastProfile/Dash_app/Warmelast.py:334
 msgid "November"
 msgstr "November"
 
 #: LastProfile/Dash_app/Stromlast.py:75 LastProfile/Dash_app/Stromlast.py:147
-#: LastProfile/Dash_app/Warmelast.py:188 LastProfile/Dash_app/Warmelast.py:321
+#: LastProfile/Dash_app/Warmelast.py:202 LastProfile/Dash_app/Warmelast.py:335
 msgid "Dezember"
 msgstr "December"
 
 #: LastProfile/Dash_app/Stromlast.py:83 LastProfile/Dash_app/Stromlast.py:150
-#: LastProfile/Dash_app/Warmelast.py:195 LastProfile/Dash_app/Warmelast.py:625
+#: LastProfile/Dash_app/Warmelast.py:209 LastProfile/Dash_app/Warmelast.py:640
 msgid "Approximation starten"
 msgstr "Start approximation"
 
 #: LastProfile/Dash_app/Stromlast.py:86 LastProfile/Dash_app/Stromlast.py:151
-#: LastProfile/Dash_app/Warmelast.py:197 LastProfile/Dash_app/Warmelast.py:626
+#: LastProfile/Dash_app/Warmelast.py:211 LastProfile/Dash_app/Warmelast.py:641
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:230 LastProfile/Dash_app/Warmelast.py:453
+#: LastProfile/Dash_app/Stromlast.py:230 LastProfile/Dash_app/Warmelast.py:468
 msgid "Datum"
 msgstr "Date"
 
@@ -272,171 +286,171 @@ msgstr "Date"
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:44
+#: LastProfile/Dash_app/Warmelast.py:47
 msgid "Auswahl des Bundesland"
 msgstr "Selection of the state"
 
-#: LastProfile/Dash_app/Warmelast.py:59 LastProfile/Dash_app/Warmelast.py:579
+#: LastProfile/Dash_app/Warmelast.py:71 LastProfile/Dash_app/Warmelast.py:594
 msgid "Wärmelast Approximation"
 msgstr "Heat load approximation"
 
-#: LastProfile/Dash_app/Warmelast.py:67 LastProfile/Dash_app/Warmelast.py:581
+#: LastProfile/Dash_app/Warmelast.py:79 LastProfile/Dash_app/Warmelast.py:596
 msgid "Als Testrefenzjahr haben wir die folgenden Werte gewählt:"
 msgstr "We chose the following values as the test reference year:"
 
-#: LastProfile/Dash_app/Warmelast.py:73 LastProfile/Dash_app/Warmelast.py:583
+#: LastProfile/Dash_app/Warmelast.py:85 LastProfile/Dash_app/Warmelast.py:598
 msgid "Koordinatensystem : Lambert konform konisch"
 msgstr "Coordinate System : Lambert compliant conical"
 
-#: LastProfile/Dash_app/Warmelast.py:77 LastProfile/Dash_app/Warmelast.py:584
+#: LastProfile/Dash_app/Warmelast.py:89 LastProfile/Dash_app/Warmelast.py:599
 msgid "Rechtswert        : 4201500 Meter"
 msgstr "Easting value: 4201500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:79 LastProfile/Dash_app/Warmelast.py:585
+#: LastProfile/Dash_app/Warmelast.py:91 LastProfile/Dash_app/Warmelast.py:600
 msgid "Hochwert          : 2848500 Meter"
 msgstr "High value: 2848500 meters"
 
-#: LastProfile/Dash_app/Warmelast.py:82 LastProfile/Dash_app/Warmelast.py:586
+#: LastProfile/Dash_app/Warmelast.py:94 LastProfile/Dash_app/Warmelast.py:601
 msgid "Höhenlage        : 36 Meter über NN"
 msgstr "Altitude: 36 meters above sea level"
 
-#: LastProfile/Dash_app/Warmelast.py:86 LastProfile/Dash_app/Warmelast.py:587
+#: LastProfile/Dash_app/Warmelast.py:98 LastProfile/Dash_app/Warmelast.py:602
 msgid "Erstellung des Datensatzes im Mai 2016"
 msgstr "The data set was created in May 2016"
 
-#: LastProfile/Dash_app/Warmelast.py:90 LastProfile/Dash_app/Warmelast.py:588
+#: LastProfile/Dash_app/Warmelast.py:102 LastProfile/Dash_app/Warmelast.py:603
 msgid "Art des TRY       : mittleres Jahr"
 msgstr "Type of TRY: middle year"
 
-#: LastProfile/Dash_app/Warmelast.py:93 LastProfile/Dash_app/Warmelast.py:589
+#: LastProfile/Dash_app/Warmelast.py:105 LastProfile/Dash_app/Warmelast.py:604
 msgid "Bezugszeitraum    : 1995-2012"
 msgstr "Reference period    : 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:97 LastProfile/Dash_app/Warmelast.py:591
+#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:606
 msgid "Datenbasis        : Beobachtungsdaten Zeitraum 1995-2012"
 msgstr "Database: observation data period 1995-2012"
 
-#: LastProfile/Dash_app/Warmelast.py:108 LastProfile/Dash_app/Warmelast.py:594
+#: LastProfile/Dash_app/Warmelast.py:120 LastProfile/Dash_app/Warmelast.py:609
 msgid "Testreferenzjahr"
 msgstr "Test reference year"
 
-#: LastProfile/Dash_app/Warmelast.py:109 LastProfile/Dash_app/Warmelast.py:595
+#: LastProfile/Dash_app/Warmelast.py:121 LastProfile/Dash_app/Warmelast.py:610
 msgid "Wetterstation"
 msgstr "Weather station"
 
-#: LastProfile/Dash_app/Warmelast.py:111 LastProfile/Dash_app/Warmelast.py:597
+#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:612
 msgid "Berechnungstyp"
 msgstr "Calculation type"
 
-#: LastProfile/Dash_app/Warmelast.py:123 LastProfile/Dash_app/Warmelast.py:598
-#: LastProfile/Dash_app/Warmelast.py:627
+#: LastProfile/Dash_app/Warmelast.py:137 LastProfile/Dash_app/Warmelast.py:613
+#: LastProfile/Dash_app/Warmelast.py:642
 msgid "Auswahl der Station"
 msgstr "Selection of station"
 
-#: LastProfile/Dash_app/Warmelast.py:131 LastProfile/Dash_app/Warmelast.py:600
+#: LastProfile/Dash_app/Warmelast.py:145 LastProfile/Dash_app/Warmelast.py:615
 msgid "Einfamilienhaus"
 msgstr "Single Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:132 LastProfile/Dash_app/Warmelast.py:601
+#: LastProfile/Dash_app/Warmelast.py:146 LastProfile/Dash_app/Warmelast.py:616
 msgid "Mehrfamilienhaus"
 msgstr "Multi Family House"
 
-#: LastProfile/Dash_app/Warmelast.py:133 LastProfile/Dash_app/Warmelast.py:602
+#: LastProfile/Dash_app/Warmelast.py:147 LastProfile/Dash_app/Warmelast.py:617
 msgid "Gebietskörperschaft"
 msgstr "Local authority"
 
-#: LastProfile/Dash_app/Warmelast.py:134 LastProfile/Dash_app/Warmelast.py:603
+#: LastProfile/Dash_app/Warmelast.py:148 LastProfile/Dash_app/Warmelast.py:618
 msgid "Einzelhandel, Großhandel"
 msgstr "Retail, Wholesale"
 
-#: LastProfile/Dash_app/Warmelast.py:135 LastProfile/Dash_app/Warmelast.py:604
+#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:619
 msgid "Metall, Kfz"
 msgstr "Metal, Automotive"
 
-#: LastProfile/Dash_app/Warmelast.py:136 LastProfile/Dash_app/Warmelast.py:605
+#: LastProfile/Dash_app/Warmelast.py:150 LastProfile/Dash_app/Warmelast.py:620
 msgid "sonst. betr. Dienstleistungen"
 msgstr "Other operational services"
 
-#: LastProfile/Dash_app/Warmelast.py:137 LastProfile/Dash_app/Warmelast.py:606
+#: LastProfile/Dash_app/Warmelast.py:151 LastProfile/Dash_app/Warmelast.py:621
 msgid "Gaststätten"
 msgstr "Restaurants"
 
-#: LastProfile/Dash_app/Warmelast.py:138 LastProfile/Dash_app/Warmelast.py:607
+#: LastProfile/Dash_app/Warmelast.py:152 LastProfile/Dash_app/Warmelast.py:622
 msgid "Beherbergung"
 msgstr "Accommodation"
 
-#: LastProfile/Dash_app/Warmelast.py:139 LastProfile/Dash_app/Warmelast.py:608
+#: LastProfile/Dash_app/Warmelast.py:153 LastProfile/Dash_app/Warmelast.py:623
 msgid "Bäckereien"
 msgstr "Bakeries"
 
-#: LastProfile/Dash_app/Warmelast.py:140 LastProfile/Dash_app/Warmelast.py:609
+#: LastProfile/Dash_app/Warmelast.py:154 LastProfile/Dash_app/Warmelast.py:624
 msgid "Wäschereien"
 msgstr "Laundries"
 
-#: LastProfile/Dash_app/Warmelast.py:141 LastProfile/Dash_app/Warmelast.py:610
+#: LastProfile/Dash_app/Warmelast.py:155 LastProfile/Dash_app/Warmelast.py:625
 msgid "Gartenbau"
 msgstr "horticulture"
 
-#: LastProfile/Dash_app/Warmelast.py:142 LastProfile/Dash_app/Warmelast.py:611
+#: LastProfile/Dash_app/Warmelast.py:156 LastProfile/Dash_app/Warmelast.py:626
 msgid "Papier und Druck"
 msgstr "Paper and printing"
 
-#: LastProfile/Dash_app/Warmelast.py:144 LastProfile/Dash_app/Warmelast.py:612
+#: LastProfile/Dash_app/Warmelast.py:158 LastProfile/Dash_app/Warmelast.py:627
 msgid "haushaltsähnliche Gewerbebetriebe"
 msgstr "Household-like businesses"
 
-#: LastProfile/Dash_app/Warmelast.py:149 LastProfile/Dash_app/Warmelast.py:614
+#: LastProfile/Dash_app/Warmelast.py:163 LastProfile/Dash_app/Warmelast.py:629
 msgid "Summenlastprofil Gewerbe, Handel, Dienstleistung"
 msgstr "Total load profile for trade, commerce, services"
 
-#: LastProfile/Dash_app/Warmelast.py:154 LastProfile/Dash_app/Warmelast.py:618
+#: LastProfile/Dash_app/Warmelast.py:168 LastProfile/Dash_app/Warmelast.py:633
 #: templates/LastProfile/explanation.html:115
 msgid "Auswahl des Gebäudetyps"
 msgstr "Selection of building typ"
 
-#: LastProfile/Dash_app/Warmelast.py:162 LastProfile/Dash_app/Warmelast.py:619
+#: LastProfile/Dash_app/Warmelast.py:176 LastProfile/Dash_app/Warmelast.py:634
 msgid "Jahreswärmebedarf in kWh/a"
 msgstr "Annual heat requirement in kWh/a"
 
-#: LastProfile/Dash_app/Warmelast.py:170 LastProfile/Dash_app/Warmelast.py:620
+#: LastProfile/Dash_app/Warmelast.py:184 LastProfile/Dash_app/Warmelast.py:635
 msgid "Start Datum"
 msgstr "Start date"
 
-#: LastProfile/Dash_app/Warmelast.py:171 LastProfile/Dash_app/Warmelast.py:621
+#: LastProfile/Dash_app/Warmelast.py:185 LastProfile/Dash_app/Warmelast.py:636
 msgid "End Datum"
 msgstr "End date"
 
-#: LastProfile/Dash_app/Warmelast.py:185 LastProfile/Dash_app/Warmelast.py:318
+#: LastProfile/Dash_app/Warmelast.py:199 LastProfile/Dash_app/Warmelast.py:332
 msgid "Sepember"
 msgstr "September"
 
-#: LastProfile/Dash_app/Warmelast.py:189 LastProfile/Dash_app/Warmelast.py:322
-#: LastProfile/Dash_app/Warmelast.py:338
+#: LastProfile/Dash_app/Warmelast.py:203 LastProfile/Dash_app/Warmelast.py:336
+#: LastProfile/Dash_app/Warmelast.py:352
 msgid "Alle"
 msgstr "All"
 
-#: LastProfile/Dash_app/Warmelast.py:207 LastProfile/Dash_app/Warmelast.py:376
-#: LastProfile/Dash_app/Warmelast.py:377 LastProfile/Dash_app/Warmelast.py:623
+#: LastProfile/Dash_app/Warmelast.py:221 LastProfile/Dash_app/Warmelast.py:392
+#: LastProfile/Dash_app/Warmelast.py:638
 msgid "Es gibt keine Eingabe"
 msgstr "There is no input"
 
-#: LastProfile/Dash_app/Warmelast.py:423 LastProfile/Dash_app/Warmelast.py:456
+#: LastProfile/Dash_app/Warmelast.py:438 LastProfile/Dash_app/Warmelast.py:471
 msgid "Wärmelastgang in kW"
 msgstr "Heat load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:433
+#: LastProfile/Dash_app/Warmelast.py:448
 msgid "Fehlende Angaben"
 msgstr "Missing values"
 
-#: LastProfile/Dash_app/Warmelast.py:443 LastProfile/Dash_app/Warmelast.py:459
+#: LastProfile/Dash_app/Warmelast.py:458 LastProfile/Dash_app/Warmelast.py:474
 msgid "Trinkwarmwasser-Lastgang in kW"
 msgstr "Domestic hot water load profile in kW"
 
-#: LastProfile/Dash_app/Warmelast.py:464
+#: LastProfile/Dash_app/Warmelast.py:479
 msgid "Für die ausgewählte Station gibt es "
 msgstr "For the selected stations exist "
 
-#: LastProfile/Dash_app/Warmelast.py:466
+#: LastProfile/Dash_app/Warmelast.py:481
 msgid " fehlende Werte, die in der Grafik rot markiert sind. "
 msgstr " missing values, which are marked in red in the plot. "
 
@@ -456,21 +470,21 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:541
-#: templates/partials/_navbar.html:257
+#: StartSearch/views.py:416 pages/views.py:528
+#: templates/partials/_navbar.html:263
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
 #: StartSearch/views.py:433 templates/pages/userEngagement.html:4
-#: templates/partials/_navbar.html:178
+#: templates/partials/_navbar.html:176
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
 #: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
-#: pages/views.py:47 templates/partials/_navbar.html:164
+#: pages/views.py:47 templates/partials/_navbar.html:160
 #: templates/start_search/start_search.html:242
 msgid "Geschäftsmodelle"
 msgstr "Business models"
@@ -482,7 +496,7 @@ msgstr ""
 
 #: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
 #: templates/pages/environmentalIntegrityPositiv.html:4
-#: templates/partials/_navbar.html:218
+#: templates/partials/_navbar.html:220
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
@@ -504,34 +518,70 @@ msgstr "Data sufficiency"
 msgid "2024-09-01"
 msgstr ""
 
-#: TechnicalStandards/views.py:83
+#: TechnicalStandards/views.py:78
+#: templates/TechnicalStandards/norm-listings.html:4
+msgid "Überblick über technische Standards - Normen"
+msgstr "Overview of technical standards - Norms"
+
+#: TechnicalStandards/views.py:79
+msgid ""
+"Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im "
+"Herbst 2022 erfasst worden sind. Diese sind durch Recherche in "
+"Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der "
+"Energiewendebauen Projekte erfasst worden."
+msgstr ""
+"On this page, there are various technical standards that were recorded in "
+"the fall of 2022. These were collected through research in software "
+"catalogs, standards databases, and in research projects of the "
+"Energiewendebauen projects."
+
+#: TechnicalStandards/views.py:87
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:159 component_list/views.py:183
+#: TechnicalStandards/views.py:163 component_list/views.py:183
 #: templates/TechnicalStandards/explanation.html:79
 #: templates/TechnicalStandards/norm-detail.html:67
 #: templates/TechnicalStandards/norm-detail.html:145
-#: templates/TechnicalStandards/norm-explanation.html:28
+#: templates/TechnicalStandards/norm-explanation.html:21
 msgid "Quelle"
 msgstr "Source"
 
-#: TechnicalStandards/views.py:307 TechnicalStandards/views.py:309
+#: TechnicalStandards/views.py:288
+#: templates/TechnicalStandards/explanation.html:4
+#: templates/TechnicalStandards/norm-listings.html:26
+msgid "Überblick über technische Standards"
+msgstr "Overview of technical standards"
+
+#: TechnicalStandards/views.py:290
+#: templates/TechnicalStandards/explanation.html:116
+msgid "Protokolle"
+msgstr "protocols"
+
+#: TechnicalStandards/views.py:292
+msgid ""
+"Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die "
+"im Sommer 2023 erfasst worden sind."
+msgstr ""
+"On this page, you will find various technical protocols that were recorded "
+"in the summer of 2023."
+
+#: TechnicalStandards/views.py:318 TechnicalStandards/views.py:320
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: TechnicalStandards/views.py:307 TechnicalStandards/views.py:308
+#: TechnicalStandards/views.py:318 TechnicalStandards/views.py:319
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: TechnicalStandards/views.py:315
+#: TechnicalStandards/views.py:326
 #: templates/TechnicalStandards/explanation.html:144
 #: templates/TechnicalStandards/protocol-detail.html:273
-#: templates/TechnicalStandards/protocol-explanation.html:59
+#: templates/TechnicalStandards/protocol-explanation.html:54
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
-#: TechnicalStandards/views.py:318
+#: TechnicalStandards/views.py:329
 msgid "Proprietär"
 msgstr "Proprietary"
 
@@ -631,8 +681,8 @@ msgstr "Effort for used components"
 msgid "Attribut"
 msgstr "Attribute"
 
-#: common/views.py:169 templates/tools_over/explanationApps.html:32
-#: templates/tools_over/explanationTools.html:32
+#: common/views.py:169 templates/tools_over/explanationApps.html:27
+#: templates/tools_over/explanationTools.html:23
 #: templates/tools_over/tool-detail.html:68
 msgid "Einsatzbereich"
 msgstr "Area of application"
@@ -641,15 +691,15 @@ msgstr "Area of application"
 msgid "Verwendung"
 msgstr "Applications"
 
-#: common/views.py:179 templates/tools_over/explanationApps.html:42
-#: templates/tools_over/explanationTools.html:42
+#: common/views.py:179 templates/tools_over/explanationApps.html:37
+#: templates/tools_over/explanationTools.html:33
 #: templates/tools_over/tool-detail.html:252
-#: templates/tools_over/tool-listings.html:81 tools_over/views.py:326
+#: templates/tools_over/tool-listings.html:72 tools_over/views.py:339
 msgid "Lebenszyklusphase"
 msgstr "Life cycle phase"
 
-#: common/views.py:184 templates/tools_over/explanationApps.html:52
-#: templates/tools_over/explanationTools.html:52
+#: common/views.py:184 templates/tools_over/explanationApps.html:47
+#: templates/tools_over/explanationTools.html:43
 #: templates/tools_over/tool-detail.html:79
 msgid "Zielgruppe"
 msgstr "Target group"
@@ -658,16 +708,16 @@ msgstr "Target group"
 msgid "Benutzeroberfläche"
 msgstr "User interface"
 
-#: common/views.py:195 templates/tools_over/explanationApps.html:129
-#: templates/tools_over/explanationTools.html:131
+#: common/views.py:195 templates/tools_over/explanationApps.html:124
+#: templates/tools_over/explanationTools.html:122
 #: templates/tools_over/tool-detail.html:185
 msgid "Räumliche Größenordnung der Anwendungsfälle"
 msgstr "Spatial scale of use cases"
 
-#: common/views.py:201 templates/tools_over/explanationApps.html:64
-#: templates/tools_over/explanationTools.html:64
+#: common/views.py:201 templates/tools_over/explanationApps.html:59
+#: templates/tools_over/explanationTools.html:55
 #: templates/tools_over/tool-detail.html:83
-#: templates/tools_over/tool-listings.html:70 tools_over/views.py:320
+#: templates/tools_over/tool-listings.html:61 tools_over/views.py:333
 msgid "Zugänglichkeit"
 msgstr "Accessibility"
 
@@ -675,18 +725,18 @@ msgstr "Accessibility"
 msgid "Programmiersprache (Umsetzung)"
 msgstr "Programming language (implementation)"
 
-#: common/views.py:211 templates/tools_over/explanationApps.html:68
-#: templates/tools_over/explanationTools.html:68
+#: common/views.py:211 templates/tools_over/explanationApps.html:63
+#: templates/tools_over/explanationTools.html:59
 #: templates/tools_over/tool-detail.html:87
 #: templates/tools_over/tool-detail.html:244
-#: templates/weatherdata_over/explanation.html:38
+#: templates/weatherdata_over/explanation.html:24
 #: templates/weatherdata_over/weatherdata-detail.html:229
-#: weatherdata_over/views.py:85
+#: weatherdata_over/views.py:93
 msgid "Lizenz"
 msgstr "License"
 
-#: common/views.py:216 templates/tools_over/explanationApps.html:106
-#: templates/tools_over/explanationTools.html:106
+#: common/views.py:216 templates/tools_over/explanationApps.html:101
+#: templates/tools_over/explanationTools.html:97
 #: templates/tools_over/tool-detail.html:159
 msgid "Entwicklungsstand"
 msgstr "Level of development"
@@ -696,10 +746,10 @@ msgid "Veröffentlichungsjahr"
 msgstr "Year of publication"
 
 #: common/views.py:231 templates/partials/listing-grid.html:54
-#: templates/tools_over/explanationApps.html:57
-#: templates/tools_over/explanationTools.html:57
+#: templates/tools_over/explanationApps.html:52
+#: templates/tools_over/explanationTools.html:48
 #: templates/tools_over/tool-listings-results.html:52
-#: templates/weatherdata_over/explanation.html:32
+#: templates/weatherdata_over/explanation.html:18
 msgid "Letztes Update"
 msgstr "Last update"
 
@@ -717,42 +767,42 @@ msgstr "Overview of protocols"
 
 #: common/views.py:266 templates/TechnicalStandards/explanation.html:138
 #: templates/TechnicalStandards/protocol-detail.html:71
-#: templates/TechnicalStandards/protocol-explanation.html:53
+#: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "Unterstützte Übertragungsmedien"
 msgstr "Supported transmission media"
 
 #: common/views.py:271 templates/TechnicalStandards/explanation.html:141
 #: templates/TechnicalStandards/protocol-detail.html:80
-#: templates/TechnicalStandards/protocol-explanation.html:56
+#: templates/TechnicalStandards/protocol-explanation.html:51
 msgid "Zugehörige Standards"
 msgstr "Related standards"
 
 #: common/views.py:276 templates/TechnicalStandards/explanation.html:153
 #: templates/TechnicalStandards/protocol-detail.html:87
-#: templates/TechnicalStandards/protocol-explanation.html:68
+#: templates/TechnicalStandards/protocol-explanation.html:63
 msgid "Implementierte Sicherheitsmechanismen"
 msgstr "Implemented security mechanisms"
 
 #: common/views.py:281 templates/TechnicalStandards/explanation.html:156
 #: templates/TechnicalStandards/protocol-detail.html:95
-#: templates/TechnicalStandards/protocol-explanation.html:71
+#: templates/TechnicalStandards/protocol-explanation.html:66
 msgid "Bandbreite"
 msgstr "Bandwidth"
 
 #: common/views.py:286 templates/TechnicalStandards/explanation.html:159
 #: templates/TechnicalStandards/protocol-detail.html:103
-#: templates/TechnicalStandards/protocol-explanation.html:74
+#: templates/TechnicalStandards/protocol-explanation.html:69
 msgid "Frequenz"
 msgstr "Frequency"
 
 #: common/views.py:291 templates/TechnicalStandards/explanation.html:162
 #: templates/TechnicalStandards/protocol-detail.html:109
-#: templates/TechnicalStandards/protocol-explanation.html:77
+#: templates/TechnicalStandards/protocol-explanation.html:72
 msgid "Reichweite"
 msgstr "Range"
 
 #: common/views.py:296 templates/TechnicalStandards/explanation.html:171
-#: templates/TechnicalStandards/protocol-explanation.html:86
+#: templates/TechnicalStandards/protocol-explanation.html:81
 msgid "Datenmodell Architektur"
 msgstr "Data model architecture"
 
@@ -761,17 +811,17 @@ msgid "Multi Master"
 msgstr "Multi Master"
 
 #: common/views.py:306 templates/TechnicalStandards/explanation.html:180
-#: templates/TechnicalStandards/protocol-explanation.html:95
+#: templates/TechnicalStandards/protocol-explanation.html:90
 msgid "Priorität"
 msgstr "Priority"
 
 #: common/views.py:311 templates/TechnicalStandards/explanation.html:165
-#: templates/TechnicalStandards/protocol-explanation.html:80
+#: templates/TechnicalStandards/protocol-explanation.html:75
 msgid "Implementierte OSI-Schichten"
 msgstr "Implemented OSI-layer"
 
 #: common/views.py:316 templates/TechnicalStandards/explanation.html:168
-#: templates/TechnicalStandards/protocol-explanation.html:83
+#: templates/TechnicalStandards/protocol-explanation.html:78
 msgid "Ebenen der Gebäudeautomation"
 msgstr "Levels of building automation"
 
@@ -1371,7 +1421,7 @@ msgstr ""
 "org/10.1007/s12243-022-00914-x\n"
 "    "
 
-#: pages/views.py:370 pages/views.py:396 templates/partials/_navbar.html:222
+#: pages/views.py:370 pages/views.py:396 templates/partials/_navbar.html:226
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
@@ -1523,56 +1573,11 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:511 pages/views.py:512 templates/partials/_navbar.html:264
+#: pages/views.py:511 pages/views.py:512 templates/partials/_navbar.html:274
 #: templates/partials/icons_left_column.html:3
 #: templates/start_search/start_search.html:367
 msgid "Icons und Visualisierung"
 msgstr "Icons and visualization"
-
-#: pages/views.py:524
-msgid "Worum geht es?<br><br>"
-msgstr ""
-
-#: pages/views.py:526
-msgid ""
-"Aufgrund der engen Verknüpfung von Gebäude und Gebäudenutzenden gehen "
-"Digitalisierungsprozesse oft Hand in Hand mit der Verarbeitung "
-"personenbezogener Daten. Für die Verarbeitung personenbezogener Daten sieht "
-"die Datenschutzgrundverordnung (DSGVO) strenge Vorgaben vor, die für die "
-"Verarbeitung Verantwortliche zu beachten haben. Darunter fallen insbesondere "
-"Transparenz- und Rechenschaftspflichten, sowie das grundsätzliche "
-"Erfordernis einer Rechtsgrundlage.<br><br>"
-msgstr ""
-
-#: pages/views.py:528
-msgid "Wie funktioniert das?<br><br>"
-msgstr ""
-
-#: pages/views.py:530
-msgid ""
-"<p>Der folgende Kriterienkatalog umfasst sämtliche Pflichten aus der DSGVO "
-"in Form von “Kriterien” und “Anforderungen”, die für die jeweilige "
-"Zweckkategorie konkretisiert werden. Der Katalog teilt die Anforderungen der "
-"DSGVO in 14 “Themen” auf und lässt sich über ein Klappsystem sowie über das "
-"Suchfeld gezielt durchsuchen.</p>"
-msgstr ""
-
-#: pages/views.py:533
-msgid ""
-"<ul><li>Er dient einerseits dazu, Datenschutzrecht und die dahinter "
-"liegenden Ziele und Wertungen für die LeserInnen verständlich zu machen.</"
-"li><li>Andererseits können die “Anforderungen” als Checkliste begriffen "
-"werden, die Verantwortliche vor der Verarbeitung personenbezogener Daten "
-"beachten sollten.</li></ul><br>"
-msgstr ""
-
-#: pages/views.py:536
-msgid ""
-"<p>Anmerkung: Der Kriterienkatalog wird aktuell noch laufend ergänzt und "
-"bearbeitet. Bei allen Empfehlungen handelt es sich um typisierte Beispiele, "
-"die im Lichte des konkreten Anwendungsfalls betrachtet und umgesetzt werden "
-"müssen.</p>"
-msgstr ""
 
 #: publications/admin/orderedmodeladmin.py:153
 msgid "Move"
@@ -1600,7 +1605,7 @@ msgid "Überblick über den Lastprofilgenerator"
 msgstr "Overview of the load profile generator"
 
 #: templates/LastProfile/explanation.html:23
-#: templates/partials/_navbar.html:124
+#: templates/partials/_navbar.html:117
 #: templates/start_search/start_search.html:195
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -1652,9 +1657,9 @@ msgstr ""
 "specified:"
 
 #: templates/LastProfile/explanation.html:61
-#: templates/tools_over/explanationApps.html:37
-#: templates/tools_over/explanationTools.html:37
-#: templates/tools_over/tool-listings.html:58 tools_over/views.py:314
+#: templates/tools_over/explanationApps.html:32
+#: templates/tools_over/explanationTools.html:28
+#: templates/tools_over/tool-listings.html:49 tools_over/views.py:327
 msgid "Nutzung"
 msgstr "Use type"
 
@@ -1778,14 +1783,8 @@ msgstr "Use of standard load profiles"
 msgid "Standard-Lastprofile beim BDEW"
 msgstr "Standard load profiles at BDEW"
 
-#: templates/TechnicalStandards/explanation.html:4
-#: templates/TechnicalStandards/norm-listings.html:26
-#: templates/TechnicalStandards/protocol-listings.html:26
-msgid "Überblick über technische Standards"
-msgstr "Overview of technical standards"
-
 #: templates/TechnicalStandards/explanation.html:16
-#: templates/partials/_navbar.html:116
+#: templates/partials/_navbar.html:107
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
 msgstr "Technical standards"
@@ -1888,26 +1887,26 @@ msgstr ""
 "were recorded for each norm:"
 
 #: templates/TechnicalStandards/explanation.html:73
-#: templates/TechnicalStandards/norm-explanation.html:22
+#: templates/TechnicalStandards/norm-explanation.html:15
 msgid "Name und vollständiger Titel der Norm"
 msgstr "Name and full title of the norm"
 
 #: templates/TechnicalStandards/explanation.html:76
 #: templates/TechnicalStandards/norm-detail.html:59
-#: templates/TechnicalStandards/norm-explanation.html:25
-#: templates/tools_over/explanationApps.html:28
-#: templates/tools_over/explanationTools.html:28
-#: templates/weatherdata_over/explanation.html:29
+#: templates/TechnicalStandards/norm-explanation.html:18
+#: templates/tools_over/explanationApps.html:23
+#: templates/tools_over/explanationTools.html:19
+#: templates/weatherdata_over/explanation.html:15
 msgid "Kurzbeschreibung"
 msgstr "Short description"
 
 #: templates/TechnicalStandards/explanation.html:76
-#: templates/TechnicalStandards/norm-explanation.html:25
+#: templates/TechnicalStandards/norm-explanation.html:18
 msgid "um was handelt es sich?"
 msgstr "What is it about?"
 
 #: templates/TechnicalStandards/explanation.html:79
-#: templates/TechnicalStandards/norm-explanation.html:28
+#: templates/TechnicalStandards/norm-explanation.html:21
 msgid "woher kann die Norm bezogen werden?"
 msgstr "where can the standard be obtained from?"
 
@@ -1923,52 +1922,33 @@ msgstr "a link through which the norm can be accessed (possibly purchased)."
 
 #: templates/TechnicalStandards/explanation.html:94
 #: templates/TechnicalStandards/explanation.html:194
-#: templates/TechnicalStandards/norm-explanation.html:42
-#: templates/TechnicalStandards/protocol-explanation.html:109
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:39
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:62
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:87
-#: templates/datasets_over/explanation.html:72
 #: templates/pages/environmentalIntegrityRightColumn.html:43
 #: templates/pages/environmentalIntegrityRightColumn.html:62
 #: templates/pages/environmentalIntegrityRightColumn.html:81
 #: templates/partials/descriptionContainer.html:44
 #: templates/partials/listing-row.html:76
-#: templates/tools_over/explanationApps.html:203
-#: templates/tools_over/explanationBusinessApps.html:23
-#: templates/tools_over/explanationTools.html:206
-#: templates/weatherdata_over/explanation.html:50
 msgid "Zeige weniger ..."
 msgstr "Show less ..."
 
 #: templates/TechnicalStandards/explanation.html:95
 #: templates/TechnicalStandards/explanation.html:195
-#: templates/TechnicalStandards/norm-explanation.html:43
-#: templates/TechnicalStandards/protocol-explanation.html:110
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:40
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:63
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:88
-#: templates/datasets_over/explanation.html:73
 #: templates/pages/environmentalIntegrityRightColumn.html:44
 #: templates/pages/environmentalIntegrityRightColumn.html:63
 #: templates/pages/environmentalIntegrityRightColumn.html:82
 #: templates/partials/descriptionContainer.html:45
 #: templates/partials/listing-row.html:77
-#: templates/tools_over/explanationApps.html:204
-#: templates/tools_over/explanationBusinessApps.html:24
-#: templates/tools_over/explanationTools.html:207
-#: templates/weatherdata_over/explanation.html:51
 msgid "Zeige mehr ..."
 msgstr "Show more ..."
 
 #: templates/TechnicalStandards/explanation.html:108
 msgid "Überblick über die Normen"
 msgstr "Overview of norms"
-
-#: templates/TechnicalStandards/explanation.html:116
-#: templates/TechnicalStandards/protocol-listings.html:26
-msgid "Protokolle"
-msgstr "protocols"
 
 #: templates/TechnicalStandards/explanation.html:122
 msgid ""
@@ -1994,7 +1974,7 @@ msgid "Name des Protokolls"
 msgstr "Name of the protocol"
 
 #: templates/TechnicalStandards/explanation.html:134
-#: templates/TechnicalStandards/protocol-explanation.html:49
+#: templates/TechnicalStandards/protocol-explanation.html:44
 msgid "Übertragungsmethoden"
 msgstr "transmission media"
 
@@ -2008,27 +1988,27 @@ msgstr ""
 "the system (wired, wireless or wired & wireless)?"
 
 #: templates/TechnicalStandards/explanation.html:138
-#: templates/TechnicalStandards/protocol-explanation.html:53
+#: templates/TechnicalStandards/protocol-explanation.html:48
 msgid "wie werden Signale übertragen?"
 msgstr "how are signals transmitted?"
 
 #: templates/TechnicalStandards/explanation.html:141
-#: templates/TechnicalStandards/protocol-explanation.html:56
+#: templates/TechnicalStandards/protocol-explanation.html:51
 msgid "spezifische Standards, denen jedes Protokoll zugeordnet werden kann."
 msgstr "specific standards to which each protocol can be assigned."
 
 #: templates/TechnicalStandards/explanation.html:144
-#: templates/TechnicalStandards/protocol-explanation.html:59
+#: templates/TechnicalStandards/protocol-explanation.html:54
 msgid "ist das Protokoll öffentlich und frei verfügbar?"
 msgstr "is the protocol public and freely available?"
 
 #: templates/TechnicalStandards/explanation.html:147
-#: templates/TechnicalStandards/protocol-explanation.html:62
+#: templates/TechnicalStandards/protocol-explanation.html:57
 msgid "Lizenzgebühr"
 msgstr "License fee"
 
 #: templates/TechnicalStandards/explanation.html:147
-#: templates/TechnicalStandards/protocol-explanation.html:62
+#: templates/TechnicalStandards/protocol-explanation.html:57
 msgid ""
 "ist eine Gebühr zur Abdeckung der Kosten für die Nutzung und/oder die "
 "Zertifizierung fällig?"
@@ -2036,12 +2016,12 @@ msgstr "Is there a fee to cover the costs of use and/or certification?"
 
 #: templates/TechnicalStandards/explanation.html:150
 #: templates/TechnicalStandards/protocol-detail.html:300
-#: templates/TechnicalStandards/protocol-explanation.html:65
+#: templates/TechnicalStandards/protocol-explanation.html:60
 msgid "Netzwerktopologie"
 msgstr "network topology"
 
 #: templates/TechnicalStandards/explanation.html:150
-#: templates/TechnicalStandards/protocol-explanation.html:65
+#: templates/TechnicalStandards/protocol-explanation.html:60
 msgid ""
 "was ist die physische und logische Anordnung von Geräten und Komponenten in "
 "einem Netzwerk?"
@@ -2050,7 +2030,7 @@ msgstr ""
 "network?"
 
 #: templates/TechnicalStandards/explanation.html:153
-#: templates/TechnicalStandards/protocol-explanation.html:68
+#: templates/TechnicalStandards/protocol-explanation.html:63
 msgid ""
 "ob und welche Mechanismen sind im Protokoll implementiert, um die "
 "Datensicherheit zu gewährleisten?"
@@ -2059,7 +2039,7 @@ msgstr ""
 "security?"
 
 #: templates/TechnicalStandards/explanation.html:156
-#: templates/TechnicalStandards/protocol-explanation.html:71
+#: templates/TechnicalStandards/protocol-explanation.html:66
 msgid ""
 "die Kapazität des Kommunikationskanals, Daten zwischen den verschiedenen "
 "Komponenten des Systems zu übertragen."
@@ -2068,7 +2048,7 @@ msgstr ""
 "various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:159
-#: templates/TechnicalStandards/protocol-explanation.html:74
+#: templates/TechnicalStandards/protocol-explanation.html:69
 msgid ""
 "die Frequenz, die Wellenlänge oder die Trägerfrequenz, die von den "
 "drahtlosen Kommunikationsgeräten im System verwendet wird."
@@ -2077,7 +2057,7 @@ msgstr ""
 "communication devices in the system."
 
 #: templates/TechnicalStandards/explanation.html:162
-#: templates/TechnicalStandards/protocol-explanation.html:77
+#: templates/TechnicalStandards/protocol-explanation.html:72
 msgid ""
 "die maximale Entfernung, über die die Kommunikation zwischen den "
 "verschiedenen Geräten und Komponenten des Systems aufrechterhalten werden "
@@ -2088,7 +2068,7 @@ msgstr ""
 "becoming too weak."
 
 #: templates/TechnicalStandards/explanation.html:165
-#: templates/TechnicalStandards/protocol-explanation.html:80
+#: templates/TechnicalStandards/protocol-explanation.html:75
 msgid ""
 "die Anwendung der Schichten des OSI-Referenzmodells für die Kommunikation "
 "zwischen den verschiedenen Komponenten des Systems."
@@ -2097,12 +2077,12 @@ msgstr ""
 "between the various components of the system."
 
 #: templates/TechnicalStandards/explanation.html:168
-#: templates/TechnicalStandards/protocol-explanation.html:83
+#: templates/TechnicalStandards/protocol-explanation.html:78
 msgid "die hierarchische Struktur eines Gebäudeautomation Systems."
 msgstr "the hierarchical structure of a building automation system."
 
 #: templates/TechnicalStandards/explanation.html:171
-#: templates/TechnicalStandards/protocol-explanation.html:86
+#: templates/TechnicalStandards/protocol-explanation.html:81
 msgid "wie werden Informationen oder Attribute zu einem Objekt hinzugefügt?"
 msgstr "how do you add information or attributes to an object?"
 
@@ -2119,22 +2099,22 @@ msgstr ""
 "devices during data transfer?"
 
 #: templates/TechnicalStandards/explanation.html:177
-#: templates/TechnicalStandards/protocol-explanation.html:92
+#: templates/TechnicalStandards/protocol-explanation.html:87
 msgid "können mehrere Mastergeräte zeitgleich agieren?"
 msgstr "Can several master devices act at the same time?"
 
 #: templates/TechnicalStandards/explanation.html:180
-#: templates/TechnicalStandards/protocol-explanation.html:95
+#: templates/TechnicalStandards/protocol-explanation.html:90
 msgid "Vorgehen, wie die Änderungen oder Aktualisierungen vorgenommen werden."
 msgstr "Procedure for how the changes or updates are made."
 
 #: templates/TechnicalStandards/explanation.html:183
-#: templates/TechnicalStandards/protocol-explanation.html:98
+#: templates/TechnicalStandards/protocol-explanation.html:93
 msgid "Typische Anwendung"
 msgstr "Typical application"
 
 #: templates/TechnicalStandards/explanation.html:183
-#: templates/TechnicalStandards/protocol-explanation.html:98
+#: templates/TechnicalStandards/protocol-explanation.html:93
 msgid "ggf. Beispielhafte Anwendung."
 msgstr "If applicable, exemplary application."
 
@@ -2154,15 +2134,9 @@ msgstr "Title"
 msgid "Kurzinformationen"
 msgstr "Quick information"
 
-#: templates/TechnicalStandards/norm-explanation.html:9
+#: templates/TechnicalStandards/norm-explanation.html:5
 msgid ""
-"Auf dieser Seite befinden sich unterschiedlichen technische Normen,\n"
-"          die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche "
-"in \n"
-"          Softwarekatalogen, Normendatenbanken und in Forschungsprojekten "
-"der Energiewendebauen\n"
-"          Projekte erfasst worden. Es handelt sich um deutsche, "
-"österreichische, \n"
+" Es handelt sich um deutsche, österreichische,\n"
 "          europäische oder internationale Standards und Richtlinien für die "
 "Planung, \n"
 "          den Bau, und/oder den Betrieb von Lüftungs-, Trinkwasser-, "
@@ -2175,9 +2149,6 @@ msgid ""
 "Aspekte\n"
 "          erfasst: "
 msgstr ""
-"On this page you will find different technical norms, which were recorded in "
-"autumn 2022. These were recorded through research in software catalogs, "
-"standards databases and in energy transition building research projects. "
 "These are German, Austrian, European or international standards and "
 "guidelines for the planning, construction and/or operation of ventilation, "
 "drinking water, hot water, drainage, heating, cooling and other energy "
@@ -2185,26 +2156,22 @@ msgstr ""
 "lighting, and gas installation, are also included. The following aspects "
 "were recorded for each norm:"
 
-#: templates/TechnicalStandards/norm-explanation.html:31
+#: templates/TechnicalStandards/norm-explanation.html:24
 msgid "ein Link, über den die Norm abgerufen (ggf. gekauft) werden kann."
 msgstr ""
 "a link through which the standard can be accessed (possibly purchased)."
 
-#: templates/TechnicalStandards/norm-listings.html:4
-msgid "Überblick über technische Standards - Normen"
-msgstr "Overview of technical standards - Norms"
-
-#: templates/TechnicalStandards/norm-listings.html:51
-#: templates/TechnicalStandards/norm-listings.html:63
-#: templates/TechnicalStandards/norm-listings.html:75
-#: templates/TechnicalStandards/protocol-listings.html:51
-#: templates/TechnicalStandards/protocol-listings.html:63
-#: templates/TechnicalStandards/protocol-listings.html:75
-#: templates/TechnicalStandards/protocol-listings.html:87
-#: templates/datasets_over/dataset-listings.html:41
+#: templates/TechnicalStandards/norm-listings.html:58
+#: templates/TechnicalStandards/norm-listings.html:70
+#: templates/TechnicalStandards/norm-listings.html:82
+#: templates/TechnicalStandards/protocol-listings.html:38
+#: templates/TechnicalStandards/protocol-listings.html:50
+#: templates/TechnicalStandards/protocol-listings.html:62
+#: templates/TechnicalStandards/protocol-listings.html:74
+#: templates/datasets_over/dataset-listings.html:49
 #: templates/partials/search-bar.html:74
-#: templates/tools_over/tool-listings.html:46
-#: templates/weatherdata_over/data-service-listings.html:52
+#: templates/tools_over/tool-listings.html:37
+#: templates/weatherdata_over/data-service-listings.html:60
 msgid "Suchbegriff"
 msgstr "search term"
 
@@ -2274,11 +2241,11 @@ msgstr ""
 msgid "Übertragung"
 msgstr "Transmission"
 
-#: templates/TechnicalStandards/protocol-explanation.html:10
+#: templates/TechnicalStandards/protocol-explanation.html:5
 msgid "Was ist Gebäudeautomation (GA; Building Automation)? "
 msgstr "What is building automation (GA; Building Automation)?"
 
-#: templates/TechnicalStandards/protocol-explanation.html:13
+#: templates/TechnicalStandards/protocol-explanation.html:8
 msgid ""
 "Die Gebäudeautomation revolutioniert die Art und Weise, wie Gebäude "
 "betrieben,\n"
@@ -2311,11 +2278,11 @@ msgstr ""
 "levels: the field level (sensors and actuators), the automation level "
 "(controllers) and the management level (monitoring software)."
 
-#: templates/TechnicalStandards/protocol-explanation.html:26
+#: templates/TechnicalStandards/protocol-explanation.html:21
 msgid "Warum brauchen wir Protokolle in der Gebäudeautomation?"
 msgstr "Why do we need protocols in building automation?"
 
-#: templates/TechnicalStandards/protocol-explanation.html:29
+#: templates/TechnicalStandards/protocol-explanation.html:24
 msgid ""
 "Protokolle sind in der Gebäudeautomation unverzichtbar, da sie eine "
 "nahtlose\n"
@@ -2340,7 +2307,7 @@ msgstr ""
 "exchange in real time in particular enables rapid reactions to changing "
 "conditions and can therefore Improve overall system efficiency."
 
-#: templates/TechnicalStandards/protocol-explanation.html:38
+#: templates/TechnicalStandards/protocol-explanation.html:33
 msgid ""
 "Auf dieser Seite sind verschiedenen Protokolle,\n"
 "          die im Sommer 2023 erfasst worden sind, ausführlich beschrieben. "
@@ -2358,7 +2325,7 @@ msgstr ""
 "used and modern protocols and summarized the following characteristics for "
 "them:"
 
-#: templates/TechnicalStandards/protocol-explanation.html:49
+#: templates/TechnicalStandards/protocol-explanation.html:44
 msgid ""
 "wie werden Daten zwischen den\n"
 "              verschiedenen Komponenten und Geräten innerhalb des Systems "
@@ -2368,7 +2335,7 @@ msgstr ""
 "              different components and devices within the system (wired, "
 "wireless, or both wired & wireless)?"
 
-#: templates/TechnicalStandards/protocol-explanation.html:89
+#: templates/TechnicalStandards/protocol-explanation.html:84
 msgid ""
 "ob das Protokoll die „Discovery“ Funktion verfügt, um Geräte bei der "
 "Datenübertragungautomatisch zu identifizieren?"
@@ -2458,23 +2425,23 @@ msgstr ""
 msgid "Excel-Tabelle zum Download"
 msgstr "Excel spreadsheet for download"
 
-#: templates/criteria_catalog/criteria_catalog_details.html:185
+#: templates/criteria_catalog/criteria_catalog_details.html:186
 msgid "Themen"
 msgstr "Topics"
 
-#: templates/criteria_catalog/criteria_catalog_details.html:188
+#: templates/criteria_catalog/criteria_catalog_details.html:189
 msgid "Kriterien"
 msgstr "Criteria"
 
-#: templates/criteria_catalog/criteria_catalog_details.html:197
+#: templates/criteria_catalog/criteria_catalog_details.html:198
 msgid "Anforderungen und Regelbeispiele"
 msgstr "Requirements and examples of rules"
 
-#: templates/criteria_catalog/criteria_catalog_details.html:215
+#: templates/criteria_catalog/criteria_catalog_details.html:216
 msgid "Alles einklappen"
 msgstr "Collapse everything"
 
-#: templates/criteria_catalog/criteria_catalog_details.html:228
+#: templates/criteria_catalog/criteria_catalog_details.html:229
 msgid "Relevante DSGVO-Normen"
 msgstr "Relevant DSGVO norms"
 
@@ -2490,7 +2457,7 @@ msgid "Was ist"
 msgstr "What is"
 
 #: templates/datasets_over/dataset-detail.html:70
-#: templates/datasets_over/explanation.html:33
+#: templates/datasets_over/explanation.html:23
 msgid "Anwendungsbereich"
 msgstr "Scope"
 
@@ -2515,20 +2482,7 @@ msgstr "Covering"
 msgid "Überblick über Datensätze"
 msgstr "Overview of datasets"
 
-#: templates/datasets_over/explanation.html:12
-msgid ""
-"Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie "
-"den Zugang zu Informationen und die\n"
-"          Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch "
-"die Bereitstellung von offenen Daten tragen\n"
-"          Unternehmen, Forschende sowie Verwaltung zudem zu Transparenz bei."
-msgstr ""
-"Open data plays a crucial role in the energy transition as it enables access "
-"to information and collaboration between different actors. By providing open "
-"data, companies, researchers and administration also contribute to "
-"transparency."
-
-#: templates/datasets_over/explanation.html:15
+#: templates/datasets_over/explanation.html:5
 msgid ""
 "Diese hilft dabei fundierte Entscheidungen treffen und innovative Lösungen "
 "entwickeln. Beispielhaft hierfür\n"
@@ -2550,7 +2504,7 @@ msgstr ""
 "renewable energy production can be improved and the stability of the network "
 "can be increased."
 
-#: templates/datasets_over/explanation.html:21
+#: templates/datasets_over/explanation.html:11
 msgid ""
 "Die hier dargestellten Datensätze sind durch die Begleitforschung durch "
 "verschiedene Maßnahmen erfasst worden,\n"
@@ -2561,28 +2515,28 @@ msgstr ""
 "using various measures, including the 2021 questionnaire, interviews with "
 "projects or our own research."
 
-#: templates/datasets_over/explanation.html:23
+#: templates/datasets_over/explanation.html:13
 msgid ""
 "Eine Einordnung unsererseits erfolgt zunächst über öffentlich zugängliche "
 "Informationen."
 msgstr ""
 "Our classification is initially based on publicly available information."
 
-#: templates/datasets_over/explanation.html:25
+#: templates/datasets_over/explanation.html:15
 msgid "Dabei berücksichtigen wir die folgenden Aspekte:"
 msgstr "We take the following aspects into account:"
 
-#: templates/datasets_over/explanation.html:29
+#: templates/datasets_over/explanation.html:19
 msgid "Kategorie Anwendungsfall"
 msgstr "Use case category"
 
-#: templates/datasets_over/explanation.html:29
+#: templates/datasets_over/explanation.html:19
 msgid ""
 "Welcher Kategorie kann das Datenset zugeordnet\n"
 "            werden."
 msgstr "Which category can the data set be assigned to?"
 
-#: templates/datasets_over/explanation.html:33
+#: templates/datasets_over/explanation.html:23
 msgid ""
 "Typischer Anwendungsbereich bei dem das Datenset zum\n"
 "            Einsatz kommt. Ein Anwendungsbereich beschreibt alle möglichen "
@@ -2593,17 +2547,17 @@ msgstr ""
 "describes all possible methods and data sets that can be used to achieve a "
 "specific purpose."
 
-#: templates/datasets_over/explanation.html:38
+#: templates/datasets_over/explanation.html:28
 msgid ""
 "Unter welcher Lizenz sind die Daten verfügbar? Sind diese\n"
 "            kostenlos oder kostenpflichtig?"
 msgstr "Under what license is the data available? Are these free or paid?"
 
-#: templates/datasets_over/explanation.html:42
+#: templates/datasets_over/explanation.html:32
 msgid "Weiterführende Informationen"
 msgstr "Additional information"
 
-#: templates/datasets_over/explanation.html:46
+#: templates/datasets_over/explanation.html:36
 msgid ""
 "Die Plattform bietet umfangreiche Daten zu Stromerzeugung, -verbrauch und -"
 "übertragung in verschiedenen\n"
@@ -2612,7 +2566,7 @@ msgstr ""
 "The platform provides extensive data on electricity generation, consumption "
 "and transmission in different countries."
 
-#: templates/datasets_over/explanation.html:52
+#: templates/datasets_over/explanation.html:42
 msgid ""
 "OpenEI ist eine Plattform, die umfassende Informationen zu erneuerbaren "
 "Energien weltweit bereitstellt.\n"
@@ -2626,7 +2580,7 @@ msgstr ""
 "technologies, policy frameworks and market data to support their research "
 "and analysis."
 
-#: templates/datasets_over/explanation.html:59
+#: templates/datasets_over/explanation.html:49
 msgid ""
 "Die Openenergy Platform hat zum Ziel die Modellierung des Energiesystems\n"
 "          transparent zu machen. Hierzu werden Informationen und digitale "
@@ -3285,7 +3239,7 @@ msgstr "Evaluation"
 msgid "Weiterführende Literatur und Hinweise"
 msgstr "Further Reading and References"
 
-#: templates/pages/impressum.html:15 templates/partials/_footer.html:78
+#: templates/pages/impressum.html:15 templates/partials/_footer.html:87
 msgid "Impressum"
 msgstr "Imprint"
 
@@ -3438,19 +3392,19 @@ msgstr "Thermal load profile"
 msgid "Im Entwicklungsprozess"
 msgstr "Under development"
 
-#: templates/partials/_footer.html:28
+#: templates/partials/_footer.html:29
 msgid "Sprache wählen"
 msgstr "Select Language"
 
-#: templates/partials/_footer.html:57
+#: templates/partials/_footer.html:58
 msgid "Dokumentation"
 msgstr "Documentation"
 
-#: templates/partials/_footer.html:68
+#: templates/partials/_footer.html:77
 msgid "Über uns"
 msgstr "About us"
 
-#: templates/partials/_footer.html:90
+#: templates/partials/_footer.html:99
 msgid "Datenschutz&shy;hinweis"
 msgstr "Data protection notice"
 
@@ -3472,72 +3426,73 @@ msgstr ""
 "with public funds from the Federal Ministry for Economic Affairs and Climate "
 "Protection based on a resolution by the German Bundestag."
 
-#: templates/partials/_imagesNavBar.html:37
+#: templates/partials/_imagesNavBar.html:47
 msgid "Alles durchsuchen"
 msgstr "Search topics"
 
-#: templates/partials/_navbar.html:101
+#: templates/partials/_navbar.html:90
 msgid "Technisch"
 msgstr "Technical"
 
-#: templates/partials/_navbar.html:107
+#: templates/partials/_navbar.html:97
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
-#: templates/partials/_navbar.html:111
+#: templates/partials/_navbar.html:102
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:128
-#: templates/start_search/start_search.html:183 weatherdata_over/views.py:78
+#: templates/partials/_navbar.html:123
+#: templates/start_search/start_search.html:183 weatherdata_over/views.py:86
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/partials/_navbar.html:157
+#: templates/partials/_navbar.html:153
 msgid "Betrieblich"
 msgstr "Operational"
 
-#: templates/partials/_navbar.html:168
+#: templates/partials/_navbar.html:165
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:173
+#: templates/partials/_navbar.html:170
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:207
+#: templates/partials/_navbar.html:206
 msgid "Ökologisch"
 msgstr "Ecological"
 
-#: templates/partials/_navbar.html:251
+#: templates/partials/_navbar.html:256
 msgid "Rechtlich"
 msgstr "Legal"
 
-#: templates/partials/_navbar.html:260
+#: templates/partials/_navbar.html:268
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy overview"
 
-#: templates/partials/_navbar.html:291
+#: templates/partials/_navbar.html:302
 msgid "Global"
 msgstr ""
 
-#: templates/partials/_navbar.html:297
+#: templates/partials/_navbar.html:309
 #: templates/start_search/start_search.html:208
 #: templates/start_search/start_search.html:394
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/partials/_navbar.html:300
+#: templates/partials/_navbar.html:314
 #: templates/start_search/start_search.html:404
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
-#: templates/partials/_navbar.html:303
-msgid "City GML Visualisierung"
-msgstr "City GML visualization"
+#: templates/partials/_navbar.html:319
+#: templates/start_search/start_search.html:413
+msgid "CityGML Visualisierung"
+msgstr "CityGML visualization"
 
-#: templates/partials/_navbar.html:316
+#: templates/partials/_navbar.html:333
 #: templates/start_search/result_search.html:38
 #: templates/start_search/start_search.html:78
 msgid "Durchsuche die Plattform!"
@@ -4154,10 +4109,12 @@ msgstr ""
 "data for one of the following purpose categories."
 
 #: templates/partials/description_criteria_catalog.html:62
+#: templates/partials/explanation_show_more.html:32
 msgid "Erfahre mehr über den Hintergrund dieses Themas"
 msgstr "Learn more about the background of this topic"
 
 #: templates/partials/description_criteria_catalog.html:67
+#: templates/use_cases/explanation.html:3
 msgid "Worum geht es?"
 msgstr "What is it about?"
 
@@ -4302,8 +4259,8 @@ msgstr ""
 "visualizing a project or an individual application."
 
 #: templates/partials/listing-grid.html:26
-#: templates/tools_over/explanationApps.html:47
-#: templates/tools_over/explanationTools.html:47
+#: templates/tools_over/explanationApps.html:42
+#: templates/tools_over/explanationTools.html:38
 #: templates/tools_over/tool-detail.html:72
 #: templates/tools_over/tool-listings-results.html:24
 msgid "Nutzerschnittstelle"
@@ -4435,21 +4392,21 @@ msgstr ""
 "be controlled through the implementation of technical and organizational "
 "protective measures."
 
-#: templates/partials/search-bar.html:106
-#: templates/partials/search-bar.html:127
+#: templates/partials/search-bar.html:111
+#: templates/partials/search-bar.html:132
 msgid "Aufsteigend"
 msgstr "Ascending"
 
-#: templates/partials/search-bar.html:109
-#: templates/partials/search-bar.html:128
+#: templates/partials/search-bar.html:114
+#: templates/partials/search-bar.html:133
 msgid "Absteigend"
 msgstr "Descending"
 
-#: templates/partials/search-bar.html:161
+#: templates/partials/search-bar.html:167
 msgid "Detail Ansicht"
 msgstr "Details view"
 
-#: templates/partials/search-bar.html:165
+#: templates/partials/search-bar.html:171
 msgid "Vergleichsmodus"
 msgstr "Comparison mode"
 
@@ -4482,7 +4439,7 @@ msgid "Kurzbeleg"
 msgstr "Citation"
 
 #: templates/publications/publications-detail.html:144
-#: templates/start_search/result_search.html:83 use_cases/views.py:309
+#: templates/start_search/result_search.html:83 use_cases/views.py:115
 msgid "Fokus"
 msgstr "Focus"
 
@@ -4662,11 +4619,7 @@ msgstr ""
 "require an integrated view or appear in all foci. The goal is a holistic "
 "view of digitalization in energy technology."
 
-#: templates/start_search/start_search.html:413
-msgid "CityGML Visualisierung"
-msgstr "CityGML Visualization"
-
-#: templates/tools_over/explanationApps.html:9
+#: templates/tools_over/explanationApps.html:4
 msgid ""
 "Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, "
 "die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen\n"
@@ -4723,13 +4676,13 @@ msgstr ""
 "your projects.<br>When putting together the tools, we took the following "
 "aspects into account:"
 
-#: templates/tools_over/explanationApps.html:29
-#: templates/tools_over/explanationTools.html:29
-#: templates/weatherdata_over/explanation.html:29
+#: templates/tools_over/explanationApps.html:24
+#: templates/tools_over/explanationTools.html:20
+#: templates/weatherdata_over/explanation.html:15
 msgid "Um was handelt es sich?"
 msgstr "What is it about?"
 
-#: templates/tools_over/explanationApps.html:33
+#: templates/tools_over/explanationApps.html:28
 msgid ""
 "Was beschreiben die Entwicklenden als Einsatzsbereich ihrer digitalen "
 "Anwendung?\n"
@@ -4740,7 +4693,7 @@ msgstr ""
 "application? Options include administration, research/teaching, industry, "
 "and service."
 
-#: templates/tools_over/explanationApps.html:38
+#: templates/tools_over/explanationApps.html:33
 msgid ""
 "Zu welchem Zweck wird die Anwendung eingesetzt?\n"
 "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
@@ -4749,7 +4702,7 @@ msgstr ""
 "What purpose is the application used for? Options include simulation, "
 "monitoring, optimization, planning, control, advanced control."
 
-#: templates/tools_over/explanationApps.html:43
+#: templates/tools_over/explanationApps.html:38
 msgid ""
 "In welcher Phase des Produktlebenszyklus wird die Anwendung eingesetzt?\n"
 "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
@@ -4759,7 +4712,7 @@ msgstr ""
 "of preliminary planning, planning, implementation and operation are taken "
 "into account here."
 
-#: templates/tools_over/explanationApps.html:48
+#: templates/tools_over/explanationApps.html:43
 msgid ""
 "Wie können Nutzende die digitale Anwendung bedienen?\n"
 "            Benötigt es eine eigenständige Installation, gibt es eine "
@@ -4769,7 +4722,7 @@ msgstr ""
 "independent installation, is there a web-based interface or, for example, "
 "via the command line?"
 
-#: templates/tools_over/explanationApps.html:53
+#: templates/tools_over/explanationApps.html:48
 msgid ""
 "An wen richtet sich die digitale Anwendung laut eigener Aussage?\n"
 "            In der Regel können digitale Anwendungen von allen genutzt "
@@ -4778,7 +4731,7 @@ msgstr ""
 "Who do you say the digital application is aimed at? As a rule, digital "
 "applications can be used by everyone."
 
-#: templates/tools_over/explanationApps.html:58
+#: templates/tools_over/explanationApps.html:53
 msgid ""
 "Wann ist das letzte Update erfolgt.\n"
 "            Insbesondere bei digitalen Anwendungen, \n"
@@ -4791,14 +4744,14 @@ msgstr ""
 "development or maintenance can be stopped after the project has been "
 "completed."
 
-#: templates/tools_over/explanationApps.html:65
+#: templates/tools_over/explanationApps.html:60
 msgid ""
 "Wie zugänglich ist die Anwendung? Ist es kostenpflichtig, open-source oder "
 "freeware?"
 msgstr ""
 "How accessible is the application? Is it paid, open source or freeware?"
 
-#: templates/tools_over/explanationApps.html:69
+#: templates/tools_over/explanationApps.html:64
 msgid ""
 "Unter welcher Lizenz wurde die digitale Anwendung veröffentlicht und "
 "entstehen Kosten\n"
@@ -4807,25 +4760,25 @@ msgstr ""
 "Under what license was the digital application published and are there any "
 "costs associated with using the digital application?"
 
-#: templates/tools_over/explanationApps.html:73
-#: templates/tools_over/explanationTools.html:73
+#: templates/tools_over/explanationApps.html:68
+#: templates/tools_over/explanationTools.html:64
 #: templates/tools_over/tool-detail.html:98
 msgid "Alternativen"
 msgstr "Alternatives"
 
-#: templates/tools_over/explanationApps.html:74
+#: templates/tools_over/explanationApps.html:69
 msgid ""
 "Welche Welche anderen digitalen Anwendungen können einenähnlichen Nutzen "
 "ermöglichen (wenn vorhanden)?"
 msgstr ""
 "Which other digital applications can provide similar benefits (if any)?"
 
-#: templates/tools_over/explanationApps.html:77
-#: templates/tools_over/explanationTools.html:77
+#: templates/tools_over/explanationApps.html:72
+#: templates/tools_over/explanationTools.html:68
 msgid "Konkrete Anwendungsfälle"
 msgstr "Specific use cases"
 
-#: templates/tools_over/explanationApps.html:78
+#: templates/tools_over/explanationApps.html:73
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Anwendungen im "
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
@@ -4833,21 +4786,21 @@ msgstr ""
 "Identification of concrete examples of the use of applications in the "
 "construction sector/energy transition construction (e.g. funding indicators)."
 
-#: templates/tools_over/explanationApps.html:81
-#: templates/tools_over/explanationTools.html:81
+#: templates/tools_over/explanationApps.html:76
+#: templates/tools_over/explanationTools.html:72
 msgid "Entwicklende / Maintainer"
 msgstr "Developers/maintainers"
 
-#: templates/tools_over/explanationApps.html:82
+#: templates/tools_over/explanationApps.html:77
 msgid "Wer ist für die Entwicklung und Wartung der Anwendung verantwortlich?"
 msgstr ""
 "Who is responsible for the development and maintenance of the application?"
 
-#: templates/tools_over/explanationApps.html:85
+#: templates/tools_over/explanationApps.html:80
 msgid "Generelle Art der Anwendung"
 msgstr "General type of application"
 
-#: templates/tools_over/explanationApps.html:86
+#: templates/tools_over/explanationApps.html:81
 msgid ""
 "Welcher Art ist die Anwendung?\n"
 "            Wird es nur als Anwendung/Plattform oder sowohl als Anwendung "
@@ -4856,48 +4809,48 @@ msgstr ""
 "What type is the application? Is it classified as just an application/"
 "platform or both an application and a tool?"
 
-#: templates/tools_over/explanationApps.html:90
-#: templates/tools_over/explanationTools.html:90
+#: templates/tools_over/explanationApps.html:85
+#: templates/tools_over/explanationTools.html:81
 msgid "Veröffentlicht"
 msgstr "Published"
 
-#: templates/tools_over/explanationApps.html:91
+#: templates/tools_over/explanationApps.html:86
 msgid "Ist das Werkzeug bereits veröffentlicht?"
 msgstr "Is the tool published?"
 
-#: templates/tools_over/explanationApps.html:94
-#: templates/tools_over/explanationTools.html:94
+#: templates/tools_over/explanationApps.html:89
+#: templates/tools_over/explanationTools.html:85
 msgid "Veröffentlichung geplant"
 msgstr "Publication planned"
 
-#: templates/tools_over/explanationApps.html:95
-#: templates/tools_over/explanationTools.html:91
+#: templates/tools_over/explanationApps.html:90
+#: templates/tools_over/explanationTools.html:82
 msgid "Ist eine Veröffentlichung geplant? (falls noch nicht erfolgt)"
 msgstr "Is a publication planned? (if not already done)"
 
-#: templates/tools_over/explanationApps.html:98
-#: templates/tools_over/explanationTools.html:98
+#: templates/tools_over/explanationApps.html:93
+#: templates/tools_over/explanationTools.html:89
 msgid "Jahr der Veröffentlichung"
 msgstr "Year of publication"
 
-#: templates/tools_over/explanationApps.html:99
+#: templates/tools_over/explanationApps.html:94
 msgid "In welchem Jahr wurde es veröffentlicht? (falls schon erfolgt)"
 msgstr "Is a publication planned? (if not already done)"
 
-#: templates/tools_over/explanationApps.html:102
-#: templates/tools_over/explanationTools.html:102
+#: templates/tools_over/explanationApps.html:97
+#: templates/tools_over/explanationTools.html:93
 #: templates/tools_over/tool-detail.html:149
 msgid "Informationsquellen"
 msgstr "Sources of information"
 
-#: templates/tools_over/explanationApps.html:103
+#: templates/tools_over/explanationApps.html:98
 msgid ""
 "Quelle für weitere Information zur Anwendung, z.B. git-Repo, Projektwebseite."
 msgstr ""
 "Source for further information about the application, e.g. git repo, project "
 "website."
 
-#: templates/tools_over/explanationApps.html:107
+#: templates/tools_over/explanationApps.html:102
 msgid ""
 "Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen "
 "möglich:\n"
@@ -4917,41 +4870,41 @@ msgstr ""
 "- RC)</li>\n"
 " <li>ready for productive use (released)</li>"
 
-#: templates/tools_over/explanationApps.html:117
-#: templates/tools_over/explanationTools.html:119
+#: templates/tools_over/explanationApps.html:112
+#: templates/tools_over/explanationTools.html:110
 msgid "Programmiersprache"
 msgstr "Programming language"
 
-#: templates/tools_over/explanationApps.html:118
+#: templates/tools_over/explanationApps.html:113
 msgid ""
 "Welche Programmiersprache ist bei der Umsetzung der Anwendung hauptsächlich "
 "genutzt?"
 msgstr ""
 "Which programming language is mainly used to implement the application?"
 
-#: templates/tools_over/explanationApps.html:121
-#: templates/tools_over/explanationTools.html:123
+#: templates/tools_over/explanationApps.html:116
+#: templates/tools_over/explanationTools.html:114
 msgid "Wichtigste Framework / Bibliotheken"
 msgstr "Most important framework/libraries"
 
-#: templates/tools_over/explanationApps.html:122
-#: templates/tools_over/explanationTools.html:124
+#: templates/tools_over/explanationApps.html:117
+#: templates/tools_over/explanationTools.html:115
 msgid ""
 "Was sind die wichtigsten Frameworks oder Bibliotheken bei der Umsetzung?"
 msgstr ""
 "What are the most important frameworks or libraries for implementation?"
 
-#: templates/tools_over/explanationApps.html:125
-#: templates/tools_over/explanationTools.html:127
+#: templates/tools_over/explanationApps.html:120
+#: templates/tools_over/explanationTools.html:118
 #: templates/tools_over/tool-detail.html:179
 msgid "Datenbanksystem"
 msgstr "Database system"
 
-#: templates/tools_over/explanationApps.html:126
+#: templates/tools_over/explanationApps.html:121
 msgid "Welches Datenbanksystem verwendet die Anwendung?"
 msgstr "Which database system does the application use?"
 
-#: templates/tools_over/explanationApps.html:130
+#: templates/tools_over/explanationApps.html:125
 msgid ""
 "In welcher Größenordnung wird die Anwendung angewendet? Findet die Anwendung "
 "in einer Komponente,\n"
@@ -4962,12 +4915,12 @@ msgstr ""
 "component, a system, a building, or in a district/network or a region/"
 "country?"
 
-#: templates/tools_over/explanationApps.html:133
-#: templates/tools_over/explanationTools.html:136
+#: templates/tools_over/explanationApps.html:128
+#: templates/tools_over/explanationTools.html:127
 msgid "Normen/Standards"
 msgstr "Norms/Standards"
 
-#: templates/tools_over/explanationApps.html:134
+#: templates/tools_over/explanationApps.html:129
 msgid ""
 "Welche Normen oder Standards dienen als Basis bzw. Orientierung für die "
 "Anwendung?"
@@ -4975,8 +4928,8 @@ msgstr ""
 "Which norms or standards serve as the basis or orientation for the "
 "application?"
 
-#: templates/tools_over/explanationApps.html:141
-#: templates/tools_over/explanationTools.html:144
+#: templates/tools_over/explanationApps.html:136
+#: templates/tools_over/explanationTools.html:135
 msgid ""
 "Im Projekt Simquality wurden Informationen und Daten rund um das Thema "
 "Qualitätssicherung und Standardisierung von Simulationsverfahren gesammelt.\n"
@@ -4992,8 +4945,8 @@ msgstr ""
 "ICE,EDSL-TAS, NANDRAD, ETU Simulation, THERAKLES, TRNSYS and AixLib can be "
 "found on the website mentioned above."
 
-#: templates/tools_over/explanationApps.html:151
-#: templates/tools_over/explanationTools.html:154
+#: templates/tools_over/explanationApps.html:146
+#: templates/tools_over/explanationTools.html:145
 msgid ""
 "Das Projekt Open Sustainable Technology sammelt offene,\n"
 "          nachhaltige und aktive Projekte, welche zum Ziel haben eine\n"
@@ -5006,8 +4959,8 @@ msgstr ""
 "transition.It encompasses standards, data, and programs without further "
 "classification."
 
-#: templates/tools_over/explanationApps.html:162
-#: templates/tools_over/explanationTools.html:165
+#: templates/tools_over/explanationApps.html:156
+#: templates/tools_over/explanationTools.html:155
 msgid ""
 "Die Website baulinks sammelt Informationen über Software mit dem Fokus "
 "Architektur und Handwerk. Neben CAD-Werkzeugen,\n"
@@ -5020,8 +4973,8 @@ msgstr ""
 "planning, information on digital timesheets or digital tools for calculating "
 "quantities is also collected."
 
-#: templates/tools_over/explanationApps.html:170
-#: templates/tools_over/explanationTools.html:173
+#: templates/tools_over/explanationApps.html:164
+#: templates/tools_over/explanationTools.html:163
 msgid ""
 "Die Openenergy Plattform hat zum Ziel die Modellierung von Energiesystemen "
 "transparent zu machen.\n"
@@ -5032,8 +4985,8 @@ msgstr ""
 "transparent. For this purpose, information and digital tools on the topic of "
 "energy are collected."
 
-#: templates/tools_over/explanationApps.html:179
-#: templates/tools_over/explanationTools.html:182
+#: templates/tools_over/explanationApps.html:173
+#: templates/tools_over/explanationTools.html:172
 msgid ""
 "Andere Seiten wie bspw. die durch das Office of Energy Efficiency &\n"
 "          Renewable Energy der Vereinigten Staaten von Amerika betriebene\n"
@@ -5048,8 +5001,8 @@ msgstr ""
 "addition, clear information is provided through further information such as "
 "a blog."
 
-#: templates/tools_over/explanationApps.html:192
-#: templates/tools_over/explanationTools.html:195
+#: templates/tools_over/explanationApps.html:186
+#: templates/tools_over/explanationTools.html:185
 msgid ""
 "Das Gebäudeforum Klimaneutral stellt eine Übersicht zu digitalen Werkzeugen "
 "zur Verfügung.\n"
@@ -5059,7 +5012,7 @@ msgstr ""
 "The Climate Neutral Building Forum provides an overview of digital tools. "
 "These are aimed particularly at people who work in accounting and consulting."
 
-#: templates/tools_over/explanationBusinessApps.html:9
+#: templates/tools_over/explanationBusinessApps.html:4 tools_over/views.py:464
 msgid ""
 "Neben der wissenschaftlichen Entwicklung digitaler Anwendungen,\n"
 "          müssen erprobte Technologien auch ökonomisch umgesetzt werden. \n"
@@ -5078,18 +5031,10 @@ msgstr ""
 "number of tools can support business model development. Some of these are "
 "presented here."
 
-#: templates/tools_over/explanationTools.html:9
+#: templates/tools_over/explanationTools.html:4
 msgid ""
-"Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die "
-"im Rahmen der Auswertung\n"
-"          des Fragebogens der wissenschaftlichen Begleitforschung der "
-"Forschungsinitiative Energiewendebauen von \n"
-"          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden "
-"dementsprechend von Projekten eingesetzt, \n"
-"          entwickelt oder weiterentwickelt, die im Rahmen der "
-"Forschungsinitiative Energiewendebauen gefördert werden. <br />\n"
-"          Generell wird hier  zwischen digitalen Werkzeugen und digitalen "
-"Anwendungen unterschieden <br />\n"
+"Generell wird hier zwischen digitalen Werkzeugen und digitalen Anwendungen "
+"unterschieden. <br />\n"
 "          Ein digitales Werkzeug ist ein Stück Software, das in Verbindung "
 "mit anderen Werkzeugen von Entwicklern oder Ingenieuren verwendet wird, \n"
 "          um Produkte mit bestimmten Funktionalitäten zu erstellen. "
@@ -5113,29 +5058,23 @@ msgid ""
 "          Bei der Zusammenstellung der Werkzeuge haben wir folgende Aspekte "
 "berücksichtigt:"
 msgstr ""
-"The digital applications presented here correspond to the applications that "
-"were recorded as part of the evaluation of the questionnaire of the "
-"scientific accompanying research of the research initiative "
-"Energiewendebauen from 2021 and 2023. All digital tools are accordingly "
-"used, developed or further developed by projects that are funded as part of "
-"the respective initiative. A general distinction is made here between "
-"digital tools and digital applications. A digital tool is a piece of "
-"software used in conjunction with other tools by developers or engineers, to "
-"create products with specific functionalities. Frameworks, libraries, "
-"programming languages and standards are also listed under tools. A digital "
-"application, on the other hand, is a standalone piece of software designed "
-"for a specific use case. Typically, a digital application is consists of a "
-"chain of tools with possible direct interaction with the end user. Platforms "
-"are also listed under Applications. It is entirely possible to have a tool "
-"that can also be classified as an application. In a first step, we collect "
-"these digital tools and applications and make them available to you as an "
-"overview and inspiration. A detailed compilation of the tools and "
-"applications can only be done together with the users, so please feel free "
-"to contact us. We look forward to hearing your application examples from "
-"your projects.<br>When putting together the tools, we took the following "
-"aspects into account:"
+"A general distinction is made here between digital tools and digital "
+"applications. A digital tool is a piece of software used in conjunction with "
+"other tools by developers or engineers, to create products with specific "
+"functionalities. Frameworks, libraries, programming languages and standards "
+"are also listed under tools. A digital application, on the other hand, is a "
+"standalone piece of software designed for a specific use case. Typically, a "
+"digital application is consists of a chain of tools with possible direct "
+"interaction with the end user. Platforms are also listed under Applications. "
+"It is entirely possible to have a tool that can also be classified as an "
+"application. In a first step, we collect these digital tools and "
+"applications and make them available to you as an overview and inspiration. "
+"A detailed compilation of the tools and applications can only be done "
+"together with the users, so please feel free to contact us. We look forward "
+"to hearing your application examples from your projects.<br>When putting "
+"together the tools, we took the following aspects into account:"
 
-#: templates/tools_over/explanationTools.html:33
+#: templates/tools_over/explanationTools.html:24
 msgid ""
 "Was beschreiben die Entwicklenden als Einsatzsbereich ihres digitalen "
 "Werkzeugs?\n"
@@ -5146,7 +5085,7 @@ msgstr ""
 "tool? Optionen sind Verwaltung, Forschung/Lehre, Industrie, und "
 "Dienstleistung."
 
-#: templates/tools_over/explanationTools.html:38
+#: templates/tools_over/explanationTools.html:29
 msgid ""
 "Zu welchem Zweck wird das Werkzeug eingesetzt?\n"
 "            Optionen sind Simulation, Monitoring, Optimierung, Planung, "
@@ -5155,7 +5094,7 @@ msgstr ""
 "What purpose is the tool used for? Options include simulation, monitoring, "
 "optimization, planning, control, advanced control."
 
-#: templates/tools_over/explanationTools.html:43
+#: templates/tools_over/explanationTools.html:34
 msgid ""
 "In welcher Phase des Produktlebenszyklus wird das Werkzeug eingesetzt?\n"
 "            Hier sind die Phasen Vorplanung, Planung, Umsetzung und Betrieb "
@@ -5165,7 +5104,7 @@ msgstr ""
 "preliminary planning, planning, implementation and operation are taken into "
 "account here."
 
-#: templates/tools_over/explanationTools.html:48
+#: templates/tools_over/explanationTools.html:39
 msgid ""
 "Wie können Nutzende das digitale Werkzeug bedienen?\n"
 "            Benötigt es eine eigenständige Installation, gibt es eine "
@@ -5175,7 +5114,7 @@ msgstr ""
 "installation, is there a web-based interface or, for example, via the "
 "command line?"
 
-#: templates/tools_over/explanationTools.html:53
+#: templates/tools_over/explanationTools.html:44
 msgid ""
 "An wen richtet sich das digitale Werkzeug laut eigener Aussage?\n"
 "            In der Regel können digitale Werkzeuge von allen genutzt werden."
@@ -5183,7 +5122,7 @@ msgstr ""
 "Who do you say the digital tool is aimed at? As a rule, digital tools can be "
 "used by everyone."
 
-#: templates/tools_over/explanationTools.html:58
+#: templates/tools_over/explanationTools.html:49
 msgid ""
 "Wann ist das letzte Update erfolgt.\n"
 "            Insbesondere bei digitalen Werkzeugen, \n"
@@ -5195,13 +5134,13 @@ msgstr ""
 "that are developed as part of research projects, further development or "
 "maintenance can be stopped after the project has been completed."
 
-#: templates/tools_over/explanationTools.html:65
+#: templates/tools_over/explanationTools.html:56
 msgid ""
 "Wie zugänglich ist das Werkzeug? Ist es kostenpflichtig, open-source oder "
 "freeware?"
 msgstr "How accessible is the tool? Is it paid, open source or freeware?"
 
-#: templates/tools_over/explanationTools.html:69
+#: templates/tools_over/explanationTools.html:60
 msgid ""
 "Unter welcher Lizenz wurde das digitale Werkzeug veröffentlicht und "
 "entstehen Kosten\n"
@@ -5210,7 +5149,7 @@ msgstr ""
 "Under what license was the digital tool published and are there any costs "
 "associated with using the digital tool?"
 
-#: templates/tools_over/explanationTools.html:74
+#: templates/tools_over/explanationTools.html:65
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
 "Bausektor/Energiewendebauen (bspw. Förderkennzeichen)."
@@ -5218,7 +5157,7 @@ msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
 "sector/energy transition construction (e.g. funding indicators)."
 
-#: templates/tools_over/explanationTools.html:78
+#: templates/tools_over/explanationTools.html:69
 msgid ""
 "Benennung von konkreten Beispielen für den Einsatz von Werkzeugen im "
 "Bausektor/Energiewendebauen (bspw. Projekt Nummer)."
@@ -5226,15 +5165,15 @@ msgstr ""
 "Identification of concrete examples of the use of tools in the construction "
 "sector/energy transition (e.g. project number)."
 
-#: templates/tools_over/explanationTools.html:82
+#: templates/tools_over/explanationTools.html:73
 msgid "Wer ist für die Entwicklung und Wartung des Werkzeugs verantwortlich?"
 msgstr "Who is responsible for the development and maintenance of the tool?"
 
-#: templates/tools_over/explanationTools.html:85
+#: templates/tools_over/explanationTools.html:76
 msgid "Generelle Art des Werkzeugs"
 msgstr "General type of tool"
 
-#: templates/tools_over/explanationTools.html:86
+#: templates/tools_over/explanationTools.html:77
 msgid ""
 "Welcher Art ist das Werkzeug?\n"
 "            Handelt es sich um ein digitales Werkzeug, ein Framework/eine "
@@ -5243,63 +5182,63 @@ msgstr ""
 "What type is the tool? Is it a digital tool, a framework/library, a "
 "programming language, a standard or even an application?"
 
-#: templates/tools_over/explanationTools.html:95
+#: templates/tools_over/explanationTools.html:86
 msgid ""
 "Falls das Werkzeug noch nicht veröffentlicht ist, ist eine Veröffentlichung "
 "geplant?"
 msgstr "If the tool is not yet published, is there plans to release it?"
 
-#: templates/tools_over/explanationTools.html:99
+#: templates/tools_over/explanationTools.html:90
 msgid ""
 "Falls das Werkzeug veröffentlicht ist, in welchem Jahr wurde es "
 "veröffentlicht?"
 msgstr "If the tool is published, in what year was it released?"
 
-#: templates/tools_over/explanationTools.html:103
+#: templates/tools_over/explanationTools.html:94
 msgid ""
 "Quelle für weitere Information zum Werkzeug, z.B. git-Repo, Projektwebseite."
 msgstr ""
 "Source for further information about the tool, e.g. git repo, project "
 "website."
 
-#: templates/tools_over/explanationTools.html:107
+#: templates/tools_over/explanationTools.html:98
 msgid ""
 "Was ist der aktuelle Entwicklungsstand? Dabei sind folgende Optionen möglich:"
 msgstr ""
 "What is the current development status? The following options are possible:"
 
-#: templates/tools_over/explanationTools.html:109
+#: templates/tools_over/explanationTools.html:100
 msgid "erster Entwurf (pre-Alpha)"
 msgstr "first draft (pre-alpha)"
 
-#: templates/tools_over/explanationTools.html:110
+#: templates/tools_over/explanationTools.html:101
 msgid "wesentliche Funktionen (Alpha)"
 msgstr "essential functions (alpha)"
 
-#: templates/tools_over/explanationTools.html:111
+#: templates/tools_over/explanationTools.html:102
 msgid "noch nicht vollständig gestetet (Beta)"
 msgstr "not yet fully tested (beta)"
 
-#: templates/tools_over/explanationTools.html:113
+#: templates/tools_over/explanationTools.html:104
 msgid "alle Funktion erhalten, evtl. Fehler enthalten (Release Canditate - RC)"
 msgstr ""
 "All functions preserved, possibly containing errors (Release Candidate - RC)"
 
-#: templates/tools_over/explanationTools.html:115
+#: templates/tools_over/explanationTools.html:106
 msgid "bereit für den produktiven Einsatz (Released)"
 msgstr "ready for productive use (released)"
 
-#: templates/tools_over/explanationTools.html:120
+#: templates/tools_over/explanationTools.html:111
 msgid ""
 "Welche Programmiersprache ist bei der Umsetzung des Werkzeugss hauptsächlich "
 "genutzt?"
 msgstr "Which programming language is mainly used to implement the tool?"
 
-#: templates/tools_over/explanationTools.html:128
+#: templates/tools_over/explanationTools.html:119
 msgid "Welches Datenbanksystem verwendet das Werkzeug?"
 msgstr "Which database system does the tool use?"
 
-#: templates/tools_over/explanationTools.html:132
+#: templates/tools_over/explanationTools.html:123
 msgid ""
 "In welcher Größenordnung wird das Werkzeug angewendet? Findet das Werkzeug "
 "in\n"
@@ -5309,14 +5248,15 @@ msgstr ""
 "On what scale is the tool used? Does the tool find in a component, a system, "
 "a building, or in a district/network or a region/country?"
 
-#: templates/tools_over/explanationTools.html:137
+#: templates/tools_over/explanationTools.html:128
 msgid ""
 "Welche Normen oder Standards dienen als Basis bzw. Orientierung für das "
 "Werkzeug?"
 msgstr ""
 "Which norms or standards serve as the basis or orientation for the tool?"
 
-#: templates/tools_over/explanationTools.html:140 use_cases/views.py:174
+#: templates/tools_over/explanationTools.html:131
+#: templates/use_cases/explanation.html:74
 msgid "Weiterführende Informationen:"
 msgstr "Additional information:"
 
@@ -5360,6 +5300,170 @@ msgstr "Most important libraries (used during implementation)"
 msgid "Normen/ Standard (Basis/Orientierung des Tools)"
 msgstr "Norms/standard (basis/orientation of the tool)"
 
+#: templates/use_cases/explanation.html:4
+msgid "Wir gehen hier auf verschiedene Fragestellungen ein"
+msgstr "We will address various questions"
+
+#: templates/use_cases/explanation.html:7
+msgid "Was verstehen wir unter einem Anwendungsfall?"
+msgstr "What do we mean by a use case?"
+
+#: templates/use_cases/explanation.html:10
+msgid "Welche Anwendungsfälle werden diskutiert?"
+msgstr "Which use cases are discussed?"
+
+#: templates/use_cases/explanation.html:13
+#: templates/use_cases/explanation.html:69
+msgid "Was ist in dem Graph zu sehen?"
+msgstr "What can be seen in the graph?"
+
+#: templates/use_cases/explanation.html:18
+msgid "Welche Aggregationen sind zu sehen und warum"
+msgstr "Which aggregations are visible and why"
+
+#: templates/use_cases/explanation.html:20
+msgid "Woher kommen die Daten"
+msgstr "Where do the data come from"
+
+#: templates/use_cases/explanation.html:23
+msgid ""
+"Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
+"erkennen lassen? Die Anwendung ermöglicht durch Feedback energetische "
+"Einsparungen? Die Auswirkungen digitaler Anwendungen sind durch ihre "
+"Wechselwirkungen komplex und vielschichtig. So werden bepspielweise "
+"Ressourcen und Energie für Erstellung und den Betrieb von Messetechnik "
+"benötigt, eine genauere Messung ermöglicht aber auch ein individuelleres "
+"Feedback an Nutzende oder ein genaues Erkennen von Fehlern. Hier sollen "
+"einige dieser wechselwirkenenden Effekte gesammelt und in ihren Auswirkungen "
+"begreifbar gemacht werden."
+msgstr ""
+"The digital application requires numerous measurement data that reveal "
+"behavior patterns? The application enables energy savings through feedback? "
+"The impacts of digital applications are complex and multifaceted due to "
+"their interactions. For example, resources and energy are needed to create "
+"and operate measurement technology, but more accurate measurement also "
+"allows for more personalized feedback to users or the precise detection of "
+"errors. Here, some of these interacting effects are to be collected and made "
+"understandable in terms of their impacts."
+
+#: templates/use_cases/explanation.html:30
+#, fuzzy
+#| msgid "Smart Readiness Indicator Service"
+msgid "Der Smart Readiness Indicator"
+msgstr "Smart Readiness Indicator Service"
+
+#: templates/use_cases/explanation.html:33
+msgid ""
+"Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur "
+"Bewertung der Intelligenzfähigkeit von Gebäuden nach Vorschriften der EU "
+"entwickelt wurde. In diesem Rahmenwerk sind “Services” definiert, welche "
+"hier als Use-Cases betrachtet werden. Dabei werden die folgenden Aspekte "
+"betrachtet:"
+msgstr ""
+"The framework of the Smart Readiness Indicator, developed according to EU "
+"regulations to assess the intelligence capability of buildings, is used as "
+"the basis. \n"
+"          Within this framework, 'Services' are defined, which are "
+"considered here as use cases.\n"
+"          The following aspects are considered:"
+
+#: templates/use_cases/explanation.html:37
+msgid ""
+"Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
+"wordurch die Effekte/Wirkungen hervorgerufen werden."
+msgstr ""
+"Use Case: Describes the specific service being referenced and through which "
+"the effects/impacts are generated."
+
+#: templates/use_cases/explanation.html:40
+msgid ""
+"Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
+"Durchführung bezieht."
+msgstr ""
+"Impact Level: The levels to which the use case or action/implementation "
+"pertains."
+
+#: templates/use_cases/explanation.html:43
+msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
+msgstr "Level: The gradations in the implementation of the use case."
+
+#: templates/use_cases/explanation.html:46
+msgid ""
+"Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
+"auswirkt, beispielsweise Ökonomisch, Ökologisch, aus der "
+"Nutzendenperspektive oder der technischen Sichweite."
+msgstr ""
+"Perspective: The areas affected by the implementation of the use case, such "
+"as economically, ecologically, from the user perspective, or the technical "
+"viewpoint."
+
+#: templates/use_cases/explanation.html:49
+msgid ""
+"Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
+"Erzielten/intendierten Effekte."
+msgstr ""
+"Effect: The outcomes or intended effects associated with the implementation "
+"of the use case."
+
+#: templates/use_cases/explanation.html:57
+msgid ""
+"Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
+"Services „Reporting information regarding electricity consumption“ statt. Um "
+"diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz genutzt. "
+"In diesem Datensatz sind Montoringdaten für 255 Haushalte aus den UK und "
+"Schottland enthalten. 39 dieser Haushalte sind in einem engmaschigen System "
+"gemonitort worden. Für die Darstellung sind die engmaschig gemonitorten "
+"Haushalte 62, 105 und 106 genutzt worden. Trotz dieses engmaschigen "
+"Monitorings ist ersichtlich, das nicht immer alle Sensoren funktionieren "
+"(Haushalt 106).\n"
+"Dargestellt sind der Durschnittliche Verbrauch in einem Zeitfenster von fünf "
+"Sekunden, 15 Minuten und einer Stunde. Dabei sind sowohl die einzelnen Werte "
+"der Haushalte dargestellt und auch die Summe der Lastgänge (three "
+"buildings). Die beispielhafte Darstellung zeigt, wie sich verschiedene "
+"Aggregationen (zeitlich und räumlich) auswirken. Mittels hochfrquenter "
+"Messungen sind einzelne Effekte sehr gut zu sehen, welche in anderen "
+"Aggregationen unterhgehen. Damit sollen die Nutzenden ein quantaitives und "
+"qualitatives Gefühl für die Effekte der Digitalisierung und deren "
+"Wechselwirkungen bekommen. So werden beispielsweise Ressourcen und Energie "
+"für Erstellung und den Betrieb von Messtechnik benötigt, eine genauere "
+"Messung ermöglicht aber auch ein individuelleres Feedback an Nutzende oder "
+"ein genaues Erkennen von Fehlern.\n"
+"Das Ziel ist es die unterschiedlichen Effekte der Digitalisierung "
+"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen. "
+"Dabei gehen wir auf verschiedene Fragestellungen ein:"
+msgstr ""
+"Displayed are the average consumption in time windows of five seconds, 15 "
+"minutes, and one hour, showing both the individual values of the households "
+"and the sum of the load profiles (three buildings).\n"
+"          The exemplary presentation illustrates how various aggregations "
+"(temporal and spatial) affect outcomes. High-frequency measurements make "
+"individual effects very visible, which may be lost in other aggregations. "
+"This aims to provide users with a quantitative and qualitative understanding "
+"of the effects of digitalization and their interactions. For example, "
+"resources and energy are required for the creation and operation of "
+"measurement technology,\n"
+"          but more precise measurements also enable more individualized "
+"feedback to users or detection of faults.\n"
+"          The goal is to uncover the various effects of digitalization and "
+"to demonstrate the interaction of different requirements. In doing so, we "
+"address various questions:"
+
+#: templates/use_cases/explanation.html:63
+msgid ""
+"Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die Sichtbarkeit "
+"von Effekten aus?"
+msgstr ""
+"How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
+"effects?"
+
+#: templates/use_cases/explanation.html:66
+msgid ""
+"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
+"Gebäude) auf die Sichtbarkeit von Effekten aus?"
+msgstr ""
+"How do individual aggregations (facilities, total consumption, three "
+"buildings) affect the visibility of effects?"
+
 #: templates/use_cases/usecase-listings.html:4
 msgid "Überblick über die Use Cases"
 msgstr "Overview of use cases"
@@ -5397,26 +5501,11 @@ msgid "Überblick über Wetterdaten-Dienste"
 msgstr "Overview of weather data services"
 
 #: templates/weatherdata_over/data-service-listings.html:25
+#: weatherdata_over/views.py:72
 msgid "Überblick über Wetterdaten-Services"
 msgstr "Overview of weather data services"
 
-#: templates/weatherdata_over/explanation.html:13
-msgid ""
-"Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit "
-"Wetterdaten\n"
-"                    sind in einer ersten Recherche durch das Modul "
-"Digitalisierung der\n"
-"                    wissenschaftliche Begleitforschung der "
-"Forschungsinitiative Energiewendebauen\n"
-"                    entstanden. Der Fokus der Recherche lag auf der Region "
-"Deutschland."
-msgstr ""
-"The weather data and applications for dealing with weather data presented "
-"here were created in initial research by the digitalization module of the "
-"scientific accompanying research of the research initiative "
-"Energiewendebauen. Research in Germany is the main focus."
-
-#: templates/weatherdata_over/explanation.html:19
+#: templates/weatherdata_over/explanation.html:5
 msgid ""
 "Wir möchten Sie ermutigen uns auf weitere Datenquellen, digitale Werkzeuge "
 "oder\n"
@@ -5429,7 +5518,7 @@ msgstr ""
 "digital tools or concrete applications of weather data in order to make "
 "these accessible to your colleagues from research and practice."
 
-#: templates/weatherdata_over/explanation.html:24
+#: templates/weatherdata_over/explanation.html:10
 msgid ""
 "Im Rahmen der ersten Recherche haben wir folgende Aspekte zu den "
 "Wetterdaten\n"
@@ -5438,7 +5527,7 @@ msgstr ""
 "As part of our initial research, we examined the following aspects for "
 "weather data and their applications compiled:"
 
-#: templates/weatherdata_over/explanation.html:32
+#: templates/weatherdata_over/explanation.html:18
 msgid ""
 "Wann ist das letzte Update erfolgt. Insbesondere bei\n"
 "                        Anwendungen, welche im Rahmen von "
@@ -5451,7 +5540,7 @@ msgstr ""
 "applications developed as part of research projects, further development or "
 "maintenance may be discontinued once the project is completed"
 
-#: templates/weatherdata_over/explanation.html:38
+#: templates/weatherdata_over/explanation.html:24
 msgid ""
 "Unter welcher Lizenz wurde die Anwendung veröffentlicht und\n"
 "                        entstehen Kosten durch die Verwendung?"
@@ -5471,336 +5560,77 @@ msgstr "Link to the dataset"
 msgid "Beispielanwendung"
 msgstr "Example application"
 
-#: use_cases/views.py:21
+#: tools_over/views.py:156
+msgid ""
+"Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die "
+"im Rahmen der Auswertung\n"
+"          des Fragebogens der wissenschaftlichen Begleitforschung der "
+"Forschungsinitiative Energiewendebauen von \n"
+"          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden "
+"dementsprechend von Projekten eingesetzt, \n"
+"          entwickelt oder weiterentwickelt, die im Rahmen der "
+"Forschungsinitiative Energiewendebauen gefördert werden."
+msgstr ""
+"The digital tools presented here correspond to the tools that were recorded "
+"as part of the evaluation\n"
+"          of the questionnaire from the scientific accompanying research of "
+"the research initiative Energiewendebauen\n"
+"          in 2021 and 2023. Accordingly, all digital tools are used, "
+"developed, or further developed by projects\n"
+"          funded under the Energiewendebauen research initiative."
+
+#: tools_over/views.py:320
+msgid ""
+"Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, "
+"die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen "
+"Begleitforschung der Forschungsinitiative Energiewendebauen von 2021 und "
+"2023 erfasst wurden. \n"
+"          Alle digitalen Anwendungen werden dementsprechend von Projekten, "
+"die im Rahmen der \n"
+"          Forschungsinitiative Energiewendebauen gefördert werden, "
+"eingesetzt, entwickelt oder weiterentwickelt."
+msgstr ""
+"The digital applications presented here correspond to the applications that "
+"were recorded as part of the analysis of the questionnaire from the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen in 2021 and 2023. \n"
+"          Accordingly, all digital applications are used, developed, or "
+"further developed by projects funded under the \n"
+"          Energiewendebauen research initiative."
+
+#: use_cases/views.py:102
+msgid "Überblick über die Anwendungsfälle"
+msgstr "Overview of use cases"
+
+#: use_cases/views.py:110
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
 "Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es "
 "die unterschiedlichen Effekte der Digitalisierung aufzudecken und die "
-"Interaktion verschiedener Anforderungen aufzuzeigen. Dabei gehen wir auf "
-"verschiedene Fragestellungen ein:"
+"Interaktion verschiedener Anforderungen aufzuzeigen."
 msgstr ""
 "On this page, we present a detailed analysis of various use cases in the "
 "context of the Smart Readiness Indicator. The goal is to uncover the "
 "different effects of digitalization and highlight the interaction of various "
 "requirements. In doing so, we address several key questions:"
 
-#: use_cases/views.py:25
-msgid "Was verstehen wir unter einem Anwendungsfall?"
-msgstr "What do we mean by a use case?"
-
-#: use_cases/views.py:28
-msgid "Welche Anwendungsfälle werden diskutiert?"
-msgstr "Which use cases are discussed?"
-
-#: use_cases/views.py:31 use_cases/views.py:172
-msgid "Was ist in dem Graph zu sehen?"
-msgstr ""
-
-#: use_cases/views.py:35
-msgid "Welche Aggregationen sind zu sehen und warum?"
-msgstr "Which aggregations are visible and why?"
-
-#: use_cases/views.py:37
-msgid "Woher kommen die Daten?"
-msgstr "Where do the data come from?"
-
-#: use_cases/views.py:40
-msgid ""
-"Die digitale Anwendung benötigt zahlreiche Messdaten, die Verhaltensmuster "
-"erkennen lassen?"
-msgstr ""
-"The digital application requires numerous measurement data that reveal "
-"behavioral patterns?"
-
-#: use_cases/views.py:43
-msgid "Die Anwendung ermöglicht durch Feedback energetische Einsparungen?"
-msgstr "Does the application enable energy savings through feedback?"
-
-#: use_cases/views.py:46
-msgid ""
-"Die Auswirkungen digitaler Anwendungen sind durch ihre Wechselwirkungen "
-"komplex und vielschichtig."
-msgstr ""
-"The effects of digital applications are complex and multifaceted due to "
-"their interactions."
-
-#: use_cases/views.py:49 use_cases/views.py:151
-msgid ""
-"So werden beispielsweise Ressourcen und Energie für Erstellung und den "
-"Betrieb von Messtechnik benötigt, "
-msgstr ""
-"For example, resources and energy are required for the creation and "
-"operation of measurement technology, "
-
-#: use_cases/views.py:52 use_cases/views.py:154
-msgid ""
-"eine genauere Messung ermöglicht aber auch ein individuelleres Feedback an "
-"Nutzende oder ein genaues Erkennen von Fehlern."
-msgstr ""
-"A more accurate measurement also allows for more personalized feedback to "
-"users or precise detection of errors."
-
-#: use_cases/views.py:55
-msgid ""
-"Hier sollen einige dieser wechselwirkenden Effekte gesammelt und in ihren "
-"Auswirkungen begreifbar gemacht werden."
-msgstr ""
-"Here, some of these interactive effects are to be collected and made "
-"comprehensible in their impacts."
-
-#: use_cases/views.py:59
-msgid ""
-"Als Basis wird das Rahmenwerk des Smart Readiness Indicator genutzt, der zur "
-"Bewertung der Intelligenzfähigkeit von Gebäuden nach Vorschriften der EU "
-"entwickelt wurde."
-msgstr ""
-"The framework of the Smart Readiness Indicator is used as a basis, which was "
-"developed for the evaluation of the intelligence capabilities of buildings "
-"according to EU regulations."
-
-#: use_cases/views.py:62
-msgid ""
-"In diesem Rahmenwerk sind „Services“ definiert, welche hier als Use-Cases "
-"betrachtet werden."
-msgstr ""
-"In this framework, 'services' are defined, which are considered as use cases "
-"here."
-
-#: use_cases/views.py:64
-msgid "Dabei werden die folgenden Aspekte betrachtet:"
-msgstr "The following aspects are considered:"
-
-#: use_cases/views.py:67
-msgid ""
-"Use-Case: Beschreibt den konkreten Service, auf den sich bezogen wird und "
-"wodurch die Effekte/Wirkungen hervorgerufen werden."
-msgstr ""
-"Use case: Describes the specific service being referred to and through which "
-"the effects/impacts are triggered."
-
-#: use_cases/views.py:71
-msgid ""
-"Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. die Aktion/"
-"Durchführung bezieht."
-msgstr ""
-"Effect level: The levels to which the use case or the action/implementation "
-"refers."
-
-#: use_cases/views.py:75
-msgid "Level: Die Abstufungen der Durchführung des Use-Cases."
-msgstr "Level: The gradations of implementing the use case."
-
-#: use_cases/views.py:78
-msgid "Smart Readiness Indicator Service"
-msgstr "Smart Readiness Indicator Service"
-
-#: use_cases/views.py:80
-msgid "Functionality level 0 (as non-smart default)"
-msgstr "Functionality level 0 (as non-smart default)"
-
-#: use_cases/views.py:82
-msgid "Functionality level 1"
-msgstr "Functionality level 1"
-
-#: use_cases/views.py:84
-msgid "Functionality level 2"
-msgstr "Functionality level 2"
-
-#: use_cases/views.py:86
-msgid "Functionality level 3"
-msgstr "Functionality level 3"
-
-#: use_cases/views.py:88
-msgid "Functionality level 4"
-msgstr "Functionality level 4"
-
-#: use_cases/views.py:91
-msgid "Reporting information regarding electricity consumption"
-msgstr "Reporting information regarding electricity consumption"
-
-#: use_cases/views.py:94
-msgid "None"
-msgstr "None"
-
-#: use_cases/views.py:97
-msgid "Reporting on current electricity consumption on building level"
-msgstr "Reporting on current electricity consumption on building level"
-
-#: use_cases/views.py:100
-msgid "Real-time feedback or benchmarking on building level"
-msgstr "Real-time feedback or benchmarking on building level"
-
-#: use_cases/views.py:103
-msgid "Real-time feedback or benchmarking on appliance level"
-msgstr "Real-time feedback or benchmarking on appliance level"
-
-#: use_cases/views.py:107
-msgid ""
-"Real-time feedback or benchmarking on appliance level with automated "
-"personalized recommendation"
-msgstr ""
-"Real-time feedback or benchmarking on appliance level with automated "
-"personalized recommendation"
-
-#: use_cases/views.py:111
-msgid ""
-"Perspektive: Die Bereiche, auf denen sich die Durchführung des Use-Cases "
-"auswirkt, beispielsweise ökonomisch, ökologisch, aus der "
-"Nutzendenperspektive oder der technischen Sichtweite."
-msgstr ""
-"Perspective: The areas affected by the implementation of the use case, such "
-"as economically, ecologically, from the user perspective, or the technical "
-"viewpoint."
-
-#: use_cases/views.py:115
-msgid ""
-"Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen bzw. "
-"erzielten/intendierten Effekte."
-msgstr ""
-"Effect: The impacts or achieved/intended effects associated with the "
-"implementation of the use case."
-
-#: use_cases/views.py:119
-msgid ""
-"Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
-"Services „Reporting information regarding electricity consumption“ statt."
-msgstr ""
-"A detailed examination using time series is conducted for the service "
-"'Reporting information regarding electricity consumption.'"
-
-#: use_cases/views.py:123
-msgid ""
-"Um diese Effekte detaillierter darzustellen, wurde der IDEAL-Datensatz "
-"genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus den "
-"UK und Schottland enthalten."
-msgstr ""
-"To present these effects in more detail, the IDEAL dataset was used. This "
-"dataset contains monitoring data for 255 households from the UK and Scotland."
-
-#: use_cases/views.py:126
-msgid ""
-"39 dieser Haushalte sind in einem engmaschigen System gemonitort worden."
-msgstr "39 of these households have been monitored in a closely-knit system."
-
-#: use_cases/views.py:129
-msgid ""
-"Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, 105 und "
-"106 genutzt worden."
-msgstr ""
-"For the presentation, the closely monitored households 62, 105, and 106 have "
-"been used."
-
-#: use_cases/views.py:132
-msgid ""
-"Trotz dieses engmaschigen Monitorings ist ersichtlich, dass nicht immer alle "
-"Sensoren funktionieren (Haushalt 106)."
-msgstr ""
-"Despite this close monitoring, it is evident that not all sensors are "
-"functioning properly (household 106)."
-
-#: use_cases/views.py:136
-msgid ""
-"Dargestellt sind der durchschnittliche Verbrauch in einem Zeitfenster von "
-"fünf Sekunden, 15 Minuten und einer Stunde."
-msgstr ""
-"The average consumption is presented over time windows of five seconds, 15 "
-"minutes, and one hour."
-
-#: use_cases/views.py:139
-msgid ""
-"Dabei sind sowohl die einzelnen Werte der Haushalte dargestellt als auch die "
-"Summe der Lastgänge (three buildings)."
-msgstr ""
-"This includes both the individual values of the households as well as the "
-"sum of the load profiles (three buildings)."
-
-#: use_cases/views.py:142
-msgid ""
-"Die beispielhafte Darstellung zeigt, wie sich verschiedene Aggregationen "
-"(zeitlich und räumlich) auswirken."
-msgstr ""
-"The example representation shows how different aggregations (temporal and "
-"spatial) have an impact."
-
-#: use_cases/views.py:145
-msgid ""
-"Mittels hochfrequenter Messungen sind einzelne Effekte sehr gut zu sehen, "
-"welche in anderen Aggregationen untergehen."
-msgstr ""
-"Using high-frequency measurements, individual effects can be clearly seen, "
-"which may be lost in other aggregations."
-
-#: use_cases/views.py:148
-msgid ""
-"Damit sollen die Nutzenden ein quantitatives und qualitatives Gefühl für die "
-"Effekte der Digitalisierung und deren Wechselwirkungen bekommen."
-msgstr ""
-"This is intended to give users a quantitative and qualitative understanding "
-"of the effects of digitalization and their interactions."
-
-#: use_cases/views.py:158
-msgid ""
-"Das Ziel ist es, die unterschiedlichen Effekte der Digitalisierung "
-"aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."
-msgstr ""
-"The goal is to uncover the different effects of digitalization and to "
-"illustrate the interaction of various requirements."
-
-#: use_cases/views.py:161
-msgid "Dabei gehen wir auf verschiedene Fragestellungen ein:"
-msgstr "We will address various questions:"
-
-#: use_cases/views.py:165
-msgid ""
-"Wie wirkt sich die Frequenz (5s, 15-minütig, 1-stündig) auf die Sichtbarkeit "
-"von Effekten aus?"
-msgstr ""
-"How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
-"effects?"
-
-#: use_cases/views.py:169
-msgid ""
-"Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, drei "
-"Gebäude) auf die Sichtbarkeit von Effekten aus?"
-msgstr ""
-"How do individual aggregations (systems, total consumption, three buildings) "
-"affect the visibility of effects?"
-
-#: use_cases/views.py:177
-msgid "Training Slide Deck"
-msgstr "Training Slide Deck"
-
-#: use_cases/views.py:180
-msgid ""
-"Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
-"contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
-"28;8(1):146. doi: 10.1038/s41597-021-00921-y."
-msgstr ""
-"Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
-"contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
-"28;8(1):146. doi: 10.1038/s41597-021-00921-y."
-
-#: use_cases/views.py:299
-msgid "Überblick über die Anwendungsfälle"
-msgstr "Overview of use cases"
-
-#: use_cases/views.py:315
+#: use_cases/views.py:121
 msgid "Level der Wirkebene"
 msgstr "Level of Effect Level"
 
-#: use_cases/views.py:328
+#: use_cases/views.py:134
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
-#: use_cases/views.py:329
+#: use_cases/views.py:135
 msgid "Positiv"
 msgstr "Positive"
 
-#: use_cases/views.py:329
+#: use_cases/views.py:135
 msgid "Negativ"
 msgstr "Negative"
 
-#: use_cases/views.py:329
+#: use_cases/views.py:135
 msgid "Neutral"
 msgstr "Neutral"
 
@@ -5808,17 +5638,192 @@ msgstr "Neutral"
 msgid "Übersicht Methoden Nutzendenintegration"
 msgstr "Methods for user integration"
 
-#: weatherdata_over/views.py:79
+#: weatherdata_over/views.py:76
+msgid ""
+"Die hier vorgestellten Wetterdaten bzw. Anwendungen zum Umgang mit "
+"Wetterdaten\n"
+"                    sind in einer ersten Recherche durch das Modul "
+"Digitalisierung der\n"
+"                    wissenschaftliche Begleitforschung der "
+"Forschungsinitiative Energiewendebauen\n"
+"                    entstanden. Der Fokus der Recherche lag auf der Region "
+"Deutschland."
+msgstr ""
+"The weather data and applications for dealing with weather data presented "
+"here were created in initial research by the digitalization module of the "
+"scientific accompanying research of the research initiative "
+"Energiewendebauen. Research in Germany is the main focus."
+
+#: weatherdata_over/views.py:87
 msgid "Anwendung"
 msgstr "Application"
 
-#: weatherdata_over/views.py:87
+#: weatherdata_over/views.py:95
 msgid "Frei nutzbar"
 msgstr "Free to use"
 
-#: weatherdata_over/views.py:90
+#: weatherdata_over/views.py:98
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid "Functionality level 0 (as non-smart default)"
+#~ msgstr "Functionality level 0 (as non-smart default)"
+
+#~ msgid "Functionality level 1"
+#~ msgstr "Functionality level 1"
+
+#~ msgid "Functionality level 2"
+#~ msgstr "Functionality level 2"
+
+#~ msgid "Functionality level 3"
+#~ msgstr "Functionality level 3"
+
+#~ msgid "Functionality level 4"
+#~ msgstr "Functionality level 4"
+
+#~ msgid "Reporting information regarding electricity consumption"
+#~ msgstr "Reporting information regarding electricity consumption"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "Reporting on current electricity consumption on building level"
+#~ msgstr "Reporting on current electricity consumption on building level"
+
+#~ msgid "Real-time feedback or benchmarking on building level"
+#~ msgstr "Real-time feedback or benchmarking on building level"
+
+#~ msgid "Real-time feedback or benchmarking on appliance level"
+#~ msgstr "Real-time feedback or benchmarking on appliance level"
+
+#~ msgid ""
+#~ "Real-time feedback or benchmarking on appliance level with automated "
+#~ "personalized recommendation"
+#~ msgstr ""
+#~ "Real-time feedback or benchmarking on appliance level with automated "
+#~ "personalized recommendation"
+
+#~ msgid ""
+#~ "Perspektive: Die Bereiche, auf denen sich die Durchführung des Use-Cases "
+#~ "auswirkt, beispielsweise ökonomisch, ökologisch, aus der "
+#~ "Nutzendenperspektive oder der technischen Sichtweite."
+#~ msgstr ""
+#~ "Perspective: The areas affected by the implementation of the use case, "
+#~ "such as economically, ecologically, from the user perspective, or the "
+#~ "technical viewpoint."
+
+#~ msgid ""
+#~ "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen "
+#~ "bzw. erzielten/intendierten Effekte."
+#~ msgstr ""
+#~ "Effect: The impacts or achieved/intended effects associated with the "
+#~ "implementation of the use case."
+
+#~ msgid ""
+#~ "Eine detaillierte Betrachtung anhand von Zeitreihen findet anhand des "
+#~ "Services „Reporting information regarding electricity consumption“ statt."
+#~ msgstr ""
+#~ "A detailed examination using time series is conducted for the service "
+#~ "'Reporting information regarding electricity consumption.'"
+
+#~ msgid ""
+#~ "Um diese Effekte detaillierter darzustellen, wurde der IDEAL-Datensatz "
+#~ "genutzt. In diesem Datensatz sind Monitoringdaten für 255 Haushalte aus "
+#~ "den UK und Schottland enthalten."
+#~ msgstr ""
+#~ "To present these effects in more detail, the IDEAL dataset was used. This "
+#~ "dataset contains monitoring data for 255 households from the UK and "
+#~ "Scotland."
+
+#~ msgid ""
+#~ "39 dieser Haushalte sind in einem engmaschigen System gemonitort worden."
+#~ msgstr ""
+#~ "39 of these households have been monitored in a closely-knit system."
+
+#~ msgid ""
+#~ "Für die Darstellung sind die engmaschig gemonitorten Haushalte 62, 105 "
+#~ "und 106 genutzt worden."
+#~ msgstr ""
+#~ "For the presentation, the closely monitored households 62, 105, and 106 "
+#~ "have been used."
+
+#~ msgid ""
+#~ "Trotz dieses engmaschigen Monitorings ist ersichtlich, dass nicht immer "
+#~ "alle Sensoren funktionieren (Haushalt 106)."
+#~ msgstr ""
+#~ "Despite this close monitoring, it is evident that not all sensors are "
+#~ "functioning properly (household 106)."
+
+#~ msgid ""
+#~ "Dargestellt sind der durchschnittliche Verbrauch in einem Zeitfenster von "
+#~ "fünf Sekunden, 15 Minuten und einer Stunde."
+#~ msgstr ""
+#~ "The average consumption is presented over time windows of five seconds, "
+#~ "15 minutes, and one hour."
+
+#~ msgid ""
+#~ "Dabei sind sowohl die einzelnen Werte der Haushalte dargestellt als auch "
+#~ "die Summe der Lastgänge (three buildings)."
+#~ msgstr ""
+#~ "This includes both the individual values of the households as well as the "
+#~ "sum of the load profiles (three buildings)."
+
+#~ msgid ""
+#~ "Die beispielhafte Darstellung zeigt, wie sich verschiedene Aggregationen "
+#~ "(zeitlich und räumlich) auswirken."
+#~ msgstr ""
+#~ "The example representation shows how different aggregations (temporal and "
+#~ "spatial) have an impact."
+
+#~ msgid ""
+#~ "Mittels hochfrequenter Messungen sind einzelne Effekte sehr gut zu sehen, "
+#~ "welche in anderen Aggregationen untergehen."
+#~ msgstr ""
+#~ "Using high-frequency measurements, individual effects can be clearly "
+#~ "seen, which may be lost in other aggregations."
+
+#~ msgid ""
+#~ "Damit sollen die Nutzenden ein quantitatives und qualitatives Gefühl für "
+#~ "die Effekte der Digitalisierung und deren Wechselwirkungen bekommen."
+#~ msgstr ""
+#~ "This is intended to give users a quantitative and qualitative "
+#~ "understanding of the effects of digitalization and their interactions."
+
+#~ msgid ""
+#~ "Das Ziel ist es, die unterschiedlichen Effekte der Digitalisierung "
+#~ "aufzudecken und die Interaktion verschiedener Anforderungen aufzuzeigen."
+#~ msgstr ""
+#~ "The goal is to uncover the different effects of digitalization and to "
+#~ "illustrate the interaction of various requirements."
+
+#~ msgid "Dabei gehen wir auf verschiedene Fragestellungen ein:"
+#~ msgstr "We will address various questions:"
+
+#~ msgid ""
+#~ "Wie wirkt sich die Frequenz (5s, 15-minütig, 1-stündig) auf die "
+#~ "Sichtbarkeit von Effekten aus?"
+#~ msgstr ""
+#~ "How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
+#~ "effects?"
+
+#~ msgid ""
+#~ "Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, drei "
+#~ "Gebäude) auf die Sichtbarkeit von Effekten aus?"
+#~ msgstr ""
+#~ "How do individual aggregations (systems, total consumption, three "
+#~ "buildings) affect the visibility of effects?"
+
+#~ msgid "Training Slide Deck"
+#~ msgstr "Training Slide Deck"
+
+#~ msgid ""
+#~ "Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
+#~ "contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
+#~ "28;8(1):146. doi: 10.1038/s41597-021-00921-y."
+#~ msgstr ""
+#~ "Pullinger et al., The IDEAL household energy dataset, electricity, gas, "
+#~ "contextual sensor data and survey data for 255 UK homes, ci Data 2021 May "
+#~ "28;8(1):146. doi: 10.1038/s41597-021-00921-y."
 
 #~ msgid ""
 #~ "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
@@ -5879,23 +5884,6 @@ msgstr "MIT license"
 #~ "          The following aspects are considered:"
 
 #~ msgid ""
-#~ "Use-Case: Beschreibt den konkreten Service auf den sich bezogen wird und "
-#~ "wordurch die Effekte/Wirkungen hervorgerufen werden."
-#~ msgstr ""
-#~ "Use Case: Describes the specific service being referenced and through "
-#~ "which the effects/impacts are generated."
-
-#~ msgid ""
-#~ "Wirkebene: Die Ebenen, auf die sich der Use-Case bzw. Die Aktion/"
-#~ "Durchführung bezieht."
-#~ msgstr ""
-#~ "Impact Level: The levels to which the use case or action/implementation "
-#~ "pertains."
-
-#~ msgid "Level: Die Abstufungen der Durchführung des Use-Casess."
-#~ msgstr "Level: The gradations in the implementation of the use case."
-
-#~ msgid ""
 #~ "Perspektive: Die Bereiche auf denen sich die Durchführung des Use-Cases "
 #~ "auswirkt, beispielsweise Ökonomisch, Ökologisch,\n"
 #~ "             aus der Nutzendenperspektive oder der technischen Sichweite."
@@ -5903,13 +5891,6 @@ msgstr "MIT license"
 #~ "Perspective: The areas impacted by the implementation of the use case, "
 #~ "such as economic, ecological, from the user's perspective, or from a "
 #~ "technical viewpoint."
-
-#~ msgid ""
-#~ "Effekt: Die mit der Durchführung des Use-Cases einhergehenden Wirkungen "
-#~ "bzw. Erzielten/intendierten Effekte."
-#~ msgstr ""
-#~ "Effect: The outcomes or intended effects associated with the "
-#~ "implementation of the use case."
 
 #~ msgid ""
 #~ "Um diese Effekte detaillierter darzustellen wurde der IDEAL-Datensatz "
@@ -5963,17 +5944,3 @@ msgstr "MIT license"
 #~ "          The goal is to uncover the various effects of digitalization "
 #~ "and to demonstrate the interaction of different requirements. In doing "
 #~ "so, we address various questions:"
-
-#~ msgid ""
-#~ "Wie wirkt sich die Frequenz (5s, 15 minütig, 1-stündig) auf die "
-#~ "Sichtbarkeit von Effekten aus?"
-#~ msgstr ""
-#~ "How does the frequency (5s, 15 minutes, 1 hour) affect the visibility of "
-#~ "effects?"
-
-#~ msgid ""
-#~ "Wie wirken sich einzelne Aggregationen (Anlagen, Gesamtverbrauch, Drei "
-#~ "Gebäude) auf die Sichtbarkeit von Effekten aus?"
-#~ msgstr ""
-#~ "How do individual aggregations (facilities, total consumption, three "
-#~ "buildings) affect the visibility of effects?"

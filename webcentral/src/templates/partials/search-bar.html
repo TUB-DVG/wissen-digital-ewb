@@ -35,15 +35,9 @@
     /* Add any other properties you want to change */
 }
 .use-bootstrap-select-wrapper {
-  width: 150px !important;
-  /* height: 102px; */
-  display: inline-block !important;
-  margin-left: -40px;
+  width: fit-content !important;
 }
 
-.use-bootstrap-select-wrapper:first-of-type {
-  margin-left: 0;
-}
 /* .dropdown-toggle::after {
     display: none;
 } */
@@ -58,11 +52,17 @@ input[type='text']::placeholder {
   font-weight: bold;
 }
 
+@media only screen and (min-width: 1200px) {
+  .col-xl-10 {
+    justify-content: flex-end;
+  }
+}
 </style>
-<form class="border-{{ focusBorder }} p-2 my-4 z-index-9 position-relative"
+<form class="border-{{ focusBorder }} p-2 mt-4 z-index-9 position-relative"
       id="searchBox"
       method="GET"
-      action="">
+      action=""
+      style="margin-bottom: 1.5rem">
 
   <div class="row g-3">
     <!-- Input -->
@@ -78,7 +78,11 @@ input[type='text']::placeholder {
                   class="btn btn-{{ focusBorder }}-free-text"
                   id="search-submit-{{ nameOfTemplate }}"
                   style="position: absolute;
-                         right: 10px"
+                         right: 0;
+                         display: flex;
+                         align-items: center;
+                         height: 100%;
+                         font-size: 20px"
                   href="">
             <i class="fas fa-search">
             </i>
@@ -87,13 +91,14 @@ input[type='text']::placeholder {
       </div>
     </div>
     <!-- Select item -->
-    <div class="col-xl-10">
-      <div class="row g-3">
+    <div class="col-xl-10" style="display: flex; align-items: center;">
+      <div class="row g-3" style="display: flex; width: fit-content;">
         <!-- Select items -->
         <div class="form-group col-sm-6 col-md-6"
-             style="margin-left: 100px;
-                    display: grid;
-                    grid-template-columns: auto auto auto">
+             style="display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    width: fit-content">
           {% for optionContent in optionList %}
             {% if optionContent.multiDimensional %}
               <select id="{{ optionContent.fieldName }}"
@@ -155,10 +160,11 @@ input[type='text']::placeholder {
             {% endif %}
           {% endfor %}
         </div>
-        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center">
+        <div class="form-group col-sm-2 col-md-4 d-flex align-items-center"
+             style="width: fit-content">
           {% if renderDetailsRadio %}
             <input type="radio" id="triggerDetailsView" />
-            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 20px;">{% translate "Detail Ansicht" %}</span>
+            <span class="{{ focusBorder }}-text-near-radio" style="margin-right: 16px;">{% translate "Detail Ansicht" %}</span>
           {% endif %}
           {% if renderComparisonRadio %}
             <input type="radio" id="triggerComparisonMode" />
@@ -170,7 +176,7 @@ input[type='text']::placeholder {
 
   </div>
 </form>
-<div style="margin-bottom: 24px;">
+<div>
   {% for key, value in filters.items %}
     {% for selectedItem in value %}
       <span class="filter {{ key }}">{{ selectedItem }}
@@ -339,7 +345,12 @@ function addClickEventToAllCheckboxes() {
               console.log(sessionStorage.ids);
   }
 $(document).ready(function() {
-    
+   
+    var selectElements = $('div.use-bootstrap-select')
+    for (var i=0;i < selectElements.length; i++) {
+      $(selectElements[i]).find(".dropdown-menu").css("background-color", "white");
+    }
+
     $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
     $("div.pagination a").on("click", sendAjaxOnLinkClick);
 
@@ -411,7 +422,6 @@ $(document).ready(function() {
 
       for (var i=0;i<selectElements.length;i++ ) {
         dropDownElementsForThatSelect = $(selectElements[i]).find('.dropdown-item');
-        
         for (var j=0;j<dropDownElementsForThatSelect.length;j++) {
           var checkboxInput = $("<input />")
           checkboxInput.attr("type", "checkbox")
@@ -449,6 +459,7 @@ $('#searchBox').on('submit', submitAjaxRequest);
         listOfSelectedFilters = [];
         returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
         currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
+        
         if (typeof returnValueOfSelect === "string" ) {
           listOfSelectedFilters.push(returnValueOfSelect);
         }

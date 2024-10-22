@@ -152,6 +152,13 @@ def index(request):
         "accessibility": filteredBy[1],
         "focusBorder": "technical",
         "typeOfTool": "Tools",
+        "introductionText": _(
+            """Die hier vorgestellten digitalen Werkzeuge entsprechen den Werkzeugen, die im Rahmen der Auswertung
+          des Fragebogens der wissenschaftlichen Begleitforschung der Forschungsinitiative Energiewendebauen von 
+          2021 und 2023 erfasst wurden. Alle digitalen Werkzeuge werden dementsprechend von Projekten eingesetzt, 
+          entwickelt oder weiterentwickelt, die im Rahmen der Forschungsinitiative Energiewendebauen gefördert werden."""
+        ),
+        "pathToExplanationTemplate": "tools_over/explanationTools.html",
         "page": page,
         "search": searched,
         "usage": filteredBy[0],
@@ -309,6 +316,12 @@ def indexApps(request):
         "nameOfTemplate": "tools",
         "urlName": "tool_list",
         "model": "Tools",
+        "introductionText": _(
+            """Die hier vorgestellten digitalen Anwendungen entsprechen den Anwendungen, die im Rahmen der Auswertung des Fragebogens der wissenschaftlichen Begleitforschung der Forschungsinitiative Energiewendebauen von 2021 und 2023 erfasst wurden. 
+          Alle digitalen Anwendungen werden dementsprechend von Projekten, die im Rahmen der 
+          Forschungsinitiative Energiewendebauen gefördert werden, eingesetzt, entwickelt oder weiterentwickelt."""
+        ),
+        "pathToExplanationTemplate": "tools_over/explanationApps.html",
         "optionList": [
             {
                 "placeholder": _("Nutzung"),
@@ -447,6 +460,15 @@ def indexBusinessApplication(request):
         # filteredBy[1],
         # "lifeCyclePhase":
         # filteredBy[2],
+        "introductionText": _(
+            """Neben der wissenschaftlichen Entwicklung digitaler Anwendungen,
+          müssen erprobte Technologien auch ökonomisch umgesetzt werden. 
+          Hierzu sind Geschäftsmodelle notwendig, sodass das Potenzial der digitalen Anwendung 
+          als Produkt oder Service einer möglichst breiten Anwenderschaft zur Verfügung gestellt werden kann. 
+          Eine Reihe von Tools kann die Geschäftsmodellentwicklungunterstützen. Einige von diesen werden hier vorgestellt."""
+        ),
+        "pathToExplanationTemplate": "tools_over/explanationBusinessApps.html",
+        "dontShowMore": True,
         "usageFields": usageNames,
         "lifeCyclePhaseFields": lifeCyclePhaseNames,
         "heading": headingText,
