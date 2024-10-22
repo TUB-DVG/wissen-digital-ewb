@@ -152,13 +152,15 @@
               {% endif %}
               {% translate "Betrieblich" %}
             </a>
-            <div class="dropdown-menu dropdown-menu-right p-0"
+            <div class="dropdown-menu mx-4 p-0"
                  style="margin-top: -25px"
                  aria-labelledby="operationalDropdown">
-              <a class="dropdown-item operational mx-4"
-                 href="{% url 'businessModels' %}">
-                {% translate "Geschäftsmodelle" %}
-              </a>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item operational"
+                   href="{% url 'businessModels' %}">
+                  {% translate "Geschäftsmodelle" %}
+                </a>
+              </div>
               <!-- <li>
                 <a class="dropdown-item" href="{% url 'businessModelsChallenge' %}">
                   {% translate "Geschäfts&shy;modell&shy;" %} - Herausforderungen
@@ -169,10 +171,12 @@
                   {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
                 </a>
               </li> -->
-              <a class="dropdown-item operational operational-bottom mx-4"
-                 href="{% url 'userEngagement' %}">
-                {% translate "Nutzendenintegration" %}
-              </a>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item operational operational-bottom"
+                   href="{% url 'userEngagement' %}">
+                  {% translate "Nutzendenintegration" %}
+                </a>
+              </div>
             </div>
           </div>
           <!-- Nav operational focus END-->
@@ -202,21 +206,27 @@
 
               {% translate "Ökologisch" %}
             </a>
-            <div class="dropdown-menu p-0"
+            <div class="dropdown-menu p-0 mx-4"
                  style="margin-top: -25px"
                  aria-labelledby="ecologicalDropdown">
+              <div class="dropdown-item-bg">    
               <a class="dropdown-item ecological mx-4"
                  href="{% url 'environmentalIntegrityNegativ' %}">
                 {% translate "Negative Umweltwirkungen" %}
               </a>
-              <a class="dropdown-item ecological mx-4"
+              </div>
+             <div class="dropdown-item-bg"> 
+              <a class="dropdown-item ecological"
                  href="{% url 'environmentalIntegrityPositiv' %}">
                 {% translate "Positive Umweltwirkungen" %} - Good-practice
               </a>
-              <a class="dropdown-item ecological ecological-bottom mx-4"
+             </div>
+             <div class="dropdown-item-bg">
+              <a class="dropdown-item ecological ecological-bottom"
                  href="{% url 'dataSufficiency' %}">
                 {% translate "Datensuffizienz" %}
               </a>
+             </div>
             </div>
           </div>
           <!-- Nav ecological focus END -->
@@ -246,19 +256,25 @@
 
               {% translate "Rechtlich" %}
             </a>
-            <div class="dropdown-menu w-100 p-0"
+            <div class="dropdown-menu mx-4 p-0"
                  style="margin-top: -25px"
                  aria-labelledby="legalDropdown">
-              <a class="dropdown-item legal mx-4" href="{% url 'criteriaCatalog' %}">
-                {% translate "Kriterienkatalog" %}
-              </a>
-              <a class="dropdown-item legal mx-4" href="{% url 'dataSecurity' %}">
-                {% translate "Daten&shy;schutz&shy;übersicht" %}
-              </a>
-              <a class="dropdown-item legal legal-bottom mx-4"
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
+                  {% translate "Kriterienkatalog" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal" href="{% url 'dataSecurity' %}">
+                  {% translate "Daten&shy;schutz&shy;übersicht" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal legal-bottom"
                  href="{% url 'iconsAndVis' %}">
-                {% translate "Icons und Visualisierung" %}
-              </a>
+                  {% translate "Icons und Visualisierung" %}
+                </a>
+              </div>
             </div>
           </div>
           <div class="nav-item dropdown mx-4">
@@ -286,18 +302,24 @@
 
               {% translate "Global" %}
             </a>
-            <div class="dropdown-menu p-0"
+            <div class="dropdown-menu p-0 mx-4"
                  style="margin-top: -25px"
                  aria-labelledby="globalDropdown">
-              <a class="dropdown-item global mx-4" href="{% url 'use_cases_list' %}">
-                {% translate "Anwendungsfälle" %}
-              </a>
-              <a class="dropdown-item global mx-4" href="{% url 'publicationPage' %}">
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
+                  {% translate "Anwendungsfälle" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item global" href="{% url 'publicationPage' %}">
                 {% translate "Veröffentlichungen" %}
-              </a>
-              <a class="dropdown-item global global-bottom mx-4" href="/cesium">
-                {% translate "CityGML Visualisierung" %}
-              </a>
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item global global-bottom" href="/cesium">
+                  {% translate "CityGML Visualisierung" %}
+                </a>
+              </div>
             </div>
           </div>
           <div class="flex-lg-grow-1 ms-auto" id="searchIconLi">
