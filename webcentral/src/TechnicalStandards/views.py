@@ -76,7 +76,8 @@ def norm(request):
         # "source":
         # filteredBy[1],
         "heading": _("Überblick über technische Standards - Normen"),
-        "introductionText": _("""Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen Projekte erfasst worden."""
+        "introductionText": _(
+            """Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im Herbst 2022 erfasst worden sind. Diese sind durch Recherche in Softwarekatalogen, Normendatenbanken und in Forschungsprojekten der Energiewendebauen Projekte erfasst worden."""
         ),
         "pathToExplanationTemplate": "TechnicalStandards/norm-explanation.html",
         "nameOfTemplate": "norms",

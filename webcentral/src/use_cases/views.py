@@ -16,8 +16,6 @@ from common.views import (
 def index(request):
     """Shows the list of all projects including some key features."""
 
-   
-
     # explanationTemplate = Template(explanationText)
     # contextObj = Context({})
     # explanationText = explanationTemplate.render(contextObj)
