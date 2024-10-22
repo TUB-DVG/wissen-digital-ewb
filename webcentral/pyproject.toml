@@ -60,7 +60,7 @@ dependencies = [
     "django-webpack-loader",
     "python-docx",
     "regex",
-    "polars==0.20.25"
+    "polars-lts-cpu"
 ]
 
 # root folder of the python/django not found automatically
