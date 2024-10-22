@@ -345,7 +345,12 @@ function addClickEventToAllCheckboxes() {
               console.log(sessionStorage.ids);
   }
 $(document).ready(function() {
-    
+   
+    var selectElements = $('div.use-bootstrap-select')
+    for (var i=0;i < selectElements.length; i++) {
+      $(selectElements[i]).find(".dropdown-menu").css("background-color", "white");
+    }
+
     $("#search-input-use_cases").on("keypress", submitSearchInputOnReturn)
     $("div.pagination a").on("click", sendAjaxOnLinkClick);
 
@@ -417,7 +422,6 @@ $(document).ready(function() {
 
       for (var i=0;i<selectElements.length;i++ ) {
         dropDownElementsForThatSelect = $(selectElements[i]).find('.dropdown-item');
-        
         for (var j=0;j<dropDownElementsForThatSelect.length;j++) {
           var checkboxInput = $("<input />")
           checkboxInput.attr("type", "checkbox")
@@ -455,6 +459,7 @@ $('#searchBox').on('submit', submitAjaxRequest);
         listOfSelectedFilters = [];
         returnValueOfSelect = listOfUseBootstrapSelects[i].getValue()
         currentDropDown = $(listOfDropdownsOfSelects[i]).find(".dropdown-menu")
+        
         if (typeof returnValueOfSelect === "string" ) {
           listOfSelectedFilters.push(returnValueOfSelect);
         }
