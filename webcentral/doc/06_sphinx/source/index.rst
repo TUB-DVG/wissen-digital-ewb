@@ -28,6 +28,7 @@ End user guide
 
    general/getting_started
    general/basic_structure
+   general/interacting_with_the_app
    general/data_import
    general/migrations
    general/production

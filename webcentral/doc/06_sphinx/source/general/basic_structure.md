@@ -43,3 +43,53 @@ flowchart TD
     Django -->|SQL| Postgresql
 ```
 In the above diagram the components of the `cityGML visulizations` web application were included. The structure of the application is different from the EWB Wissensplattform. Here the application has a frontend and a backend part. CesiumJs acts as a frontend while a django instance acts as a backend. The cesium frontend can make API-calls to request data, while the API can also called directly. Behind the `djangoCityGML`-backend the 3DCityDB-database is connected.
+
+## Docker container structure
+After showing the structure of the EWB Wissensplattform on a high abstraction level, a more fine granual description is given.
+Mostly all components of the described structure in the last section are not installed nativly but are placed inside a container. This allows to ship the components together with its dependencies, making it easy to deploy the application and allowing to developer across mutliple operating systems.
+```{mermaid}
+flowchart TD
+    Client[Client]
+
+    subgraph Nginx_Container [Docker: Django Container]
+        django_webserver[django_webserver]
+        django
+    end
+    
+    subgraph Postgresql_Container [Docker: Postgresql Container]
+        Postgresql[Postgresql]
+    end
+
+
+    Client -->|HTTP| django_webserver
+    django_webserver --> django
+    django -->|SQL| Postgresql
+```
+The above figure shows the container structure of the development mode of the application.
+
+## Docker container and volumes structure
+When working with docker containers, a few additional information need to be considered: Docker containers are stateless by design. That means that all data and files, which were saved in the container filesystem are gone after a container restart. That makes it easy to restore a container to a known state but it also introduces the need for a additional mechanism to store persistent data. For that purpose `docker volumes` are used. Here persistent data is stored across container restarts.
+```{mermaid}
+flowchart TD
+    Client[Client]
+
+    subgraph Django_Container [Docker: Django Container]
+        django_webserver[django_webserver]
+        django[Django Application]
+    end
+    
+    subgraph Postgresql_Container [Docker: Postgresql Container]
+        Postgresql[Postgresql]
+    end
+
+    subgraph Data_Volume [Docker Volume: Postgresql Data Volume]
+        pg_data[(Data Volume)]
+    end
+
+    %% Connections
+    Client -->|HTTP| django_webserver
+    django_webserver --> django
+    django -->|SQL| Postgresql
+    Postgresql -->|Writes to| pg_data
+```
+In the development environment the volume `pg_data` is used to store the database.
