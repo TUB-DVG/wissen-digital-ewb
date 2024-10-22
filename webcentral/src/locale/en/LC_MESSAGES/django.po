@@ -3507,8 +3507,8 @@ msgid "Veröffentlichungen"
 msgstr "Publications"
 
 #: templates/partials/_navbar.html:303
-msgid "City GML Visualisierung"
-msgstr "City GML visualization"
+msgid "CityGML Visualisierung"
+msgstr "CityGML visualization"
 
 #: templates/partials/_navbar.html:316
 #: templates/start_search/result_search.html:38
