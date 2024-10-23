@@ -1,5 +1,21 @@
 # Running the app in production
 The following sections address topics, which come up when running the Application in production.
+Since the `Wissensplattform` and the `CityGML Visulizations` app were developed independently, there are different deployment possiblities. Both apps can be indipendently or together. In the following sections the different deployment strategies are described.
+
+## Running Wissensplattform without CityGML visulizations
+At first, the deployment of the `Wissensplattform` without the `CityGML visulizations` app is discussed. 
+In general, the production mode of the application can be seen as a security hardend version of the development mode. This includes the security on the container level or web security features like HTTPS and CSP.
+
+### HTTPS
+Using the HTTPS protocol allows to encrypt the HTTP pakets going through the unsecure internet. Since many browsers today have implemented a HTTPS-only mode and using HTTP is generally flagged unsecure, the production mode of the `Wissensplattform` implements a HTTPS only mode. That means that only connections using HTTPS can be established. To enable the `nginx`-webserver to encrypt and decrypt traffic a SSL-certificate and a private key needs to be given. These 2 files need to be stored in `nginx/conf/`-folder. Furthermore the filenames have to be provided inside the `.env`-file. The following code listing shows an example on how to add the filenames of the certificate and key file to the `.env`-file:
+```
+NGINX_SSL_CERTIFICATE_FILENAME=ssl_certificate.crt
+NGINX_SSL_CERTIFICATE_KEY_FILENAME=private_key.key
+```
+
+
+## Encryption
+Web applications today should use HTTPS to comunicate with a client web browser. To make the encryption work, a certificate file and a private key file needs to be present. The paths to these files need to be specfied in the `nginx` configuration.  
 
 ## Cache busting techniques
 When developing the application in an agile manner lots of changes will be introduced to the web application when its already running publicly. Because of that problems can arise. One problem has to do with the client browser caches static files (javascript/stylesheet-files) to reduce loading time. This can lead to websites look broken for clients re-visiting the website since the still use the old cached versions. 

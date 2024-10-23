@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Structure of the EWB Wissensplattform &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Interacting with the EWB Wissensplattform" href="interacting_with_the_app.html" />
+    <link rel="prev" title="Getting started" href="getting_started.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="structure-of-the-ewb-wissensplattform">
+<h1>Structure of the EWB Wissensplattform<a class="headerlink" href="#structure-of-the-ewb-wissensplattform" title="Link to this heading">¶</a></h1>
+<p>In the following section the structure of the application is described.</p>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client] --&gt;|HTTP| Webserver
+    Webserver --&gt; Application
+    Application --&gt; Database
+    </pre><p>The above figure shows a high-level overview of the EWB Wissensplattform. The client comunicates
+via HTTP-requests with a webserver. the webserver parses the request and redirects it to the application layer,
+where the request is processed. That processing may include fetching data from the database layer.
+The application layer returns data to the webserver, which sends a HTTP response to the client.</p>
+<p>The EWB Wissensplattform comes with 2 operation modes: Development and production. The structure of the 2 operation modes is shown in the two following pictures:</p>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client] --&gt;|HTTP| Django_dev_webserver
+    Django_dev_webserver --&gt; Django
+    Django --&gt; Postgresql
+    </pre><p>The above picture shows a high-level overview of the development version of the EWB Wissensplattform. It consists of the python full-stack framework <code class="docutils literal notranslate"><span class="pre">django</span></code> and the open-source database management system (DBMS) <code class="docutils literal notranslate"><span class="pre">postgresql</span></code>. <code class="docutils literal notranslate"><span class="pre">Django</span></code> comes with a development webserver, which can be used locally to view changes made in development.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note, that the development version of the EWB Wissensplattform should not be used in production, since it is not considered secure. Use the production version instead.</p>
+</div>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client] --&gt;|HTTP| nginx
+    nginx --&gt;|uwsgi| uwsgi
+    uwsgi ---&gt; Django
+    Django --&gt;|SQL| Postgresql
+    </pre><p>The above figure shows an high-level overview of the production version of the EWB Wissensplattform. As a webserver <code class="docutils literal notranslate"><span class="pre">nginx</span></code> is used. It is used in the reverse-proxy mode. That means, that it forwards reuqests to the underlying application layer. Furthermore it deals with encryption, if HTTPS is used. It decrypts incomming HTTPS-requests, parses the HTTP-pakets and encodes the information in the uwsgi-protocol. These pakets are then send to the uwsgi-interpreter and from there to the django application.
+Since a second web application is also part of the EWB Wissensplattform a complete high-level overview of the application is shown in the following figure:</p>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client] --&gt;|HTTP| nginx
+    nginx --&gt;|uwsgi| uwsgi
+    nginx --&gt;|HTTP| cesiumJs
+    cesiumJs --&gt;|HTTP| DjangoCityGML
+    nginx --&gt;|HTTP| DjangoCityGML
+    DjangoCityGML --&gt;|SQL| 3dCityDB
+    uwsgi --&gt; Django
+    Django --&gt;|SQL| Postgresql
+    </pre><p>In the above diagram the components of the <code class="docutils literal notranslate"><span class="pre">cityGML</span> <span class="pre">visulizations</span></code> web application were included. The structure of the application is different from the EWB Wissensplattform. Here the application has a frontend and a backend part. CesiumJs acts as a frontend while a django instance acts as a backend. The cesium frontend can make API-calls to request data, while the API can also called directly. Behind the <code class="docutils literal notranslate"><span class="pre">djangoCityGML</span></code>-backend the 3DCityDB-database is connected.</p>
+<section id="docker-container-structure">
+<h2>Docker container structure<a class="headerlink" href="#docker-container-structure" title="Link to this heading">¶</a></h2>
+<p>After showing the structure of the EWB Wissensplattform on a high abstraction level, a more fine granual description is given.
+Mostly all components of the described structure in the last section are not installed nativly but are placed inside a container. This allows to ship the components together with its dependencies, making it easy to deploy the application and allowing to developer across mutliple operating systems.</p>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client]
+
+    subgraph Nginx_Container [Docker: Django Container]
+        django_webserver[django_webserver]
+        django
+    end
+    
+    subgraph Postgresql_Container [Docker: Postgresql Container]
+        Postgresql[Postgresql]
+    end
+
+
+    Client --&gt;|HTTP| django_webserver
+    django_webserver --&gt; django
+    django --&gt;|SQL| Postgresql
+    </pre><p>The above figure shows the container structure of the development mode of the application.</p>
+</section>
+<section id="docker-container-and-volumes-structure">
+<h2>Docker container and volumes structure<a class="headerlink" href="#docker-container-and-volumes-structure" title="Link to this heading">¶</a></h2>
+<p>When working with docker containers, a few additional information need to be considered: Docker containers are stateless by design. That means that all data and files, which were saved in the container filesystem are gone after a container restart. That makes it easy to restore a container to a known state but it also introduces the need for a additional mechanism to store persistent data. For that purpose <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volumes</span></code> are used. Here persistent data is stored across container restarts.</p>
+<pre  class="mermaid">
+        flowchart TD
+    Client[Client]
+
+    subgraph Django_Container [Docker: Django Container]
+        django_webserver[django_webserver]
+        django[Django Application]
+    end
+    
+    subgraph Postgresql_Container [Docker: Postgresql Container]
+        Postgresql[Postgresql]
+    end
+
+    subgraph Data_Volume [Docker Volume: Postgresql Data Volume]
+        pg_data[(Data Volume)]
+    end
+
+    %% Connections
+    Client --&gt;|HTTP| django_webserver
+    django_webserver --&gt; django
+    django --&gt;|SQL| Postgresql
+    Postgresql --&gt;|Writes to| pg_data
+    </pre><p>In the development environment the volume <code class="docutils literal notranslate"><span class="pre">pg_data</span></code> is used to store the database.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Structure of the EWB Wissensplattform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker-container-structure">Docker container structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-container-and-volumes-structure">Docker container and volumes structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_env_file.html">Configuration using .env file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../listing_pages.html">Listing pages</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="getting_started.html" title="previous chapter">Getting started</a></li>
+      <li>Next: <a href="interacting_with_the_app.html" title="next chapter">Interacting with the EWB Wissensplattform</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/general/basic_structure.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

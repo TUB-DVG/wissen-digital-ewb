@@ -35,7 +35,25 @@
             
   <section id="running-the-app-in-production">
 <h1>Running the app in production<a class="headerlink" href="#running-the-app-in-production" title="Link to this heading">¶</a></h1>
-<p>The following sections address topics, which come up when running the Application in production.</p>
+<p>The following sections address topics, which come up when running the Application in production.
+Since the <code class="docutils literal notranslate"><span class="pre">Wissensplattform</span></code> and the <code class="docutils literal notranslate"><span class="pre">CityGML</span> <span class="pre">Visulizations</span></code> app were developed independently, there are different deployment possiblities. Both apps can be indipendently or together. In the following sections the different deployment strategies are described.</p>
+<section id="running-wissensplattform-without-citygml-visulizations">
+<h2>Running Wissensplattform without CityGML visulizations<a class="headerlink" href="#running-wissensplattform-without-citygml-visulizations" title="Link to this heading">¶</a></h2>
+<p>At first, the deployment of the <code class="docutils literal notranslate"><span class="pre">Wissensplattform</span></code> without the <code class="docutils literal notranslate"><span class="pre">CityGML</span> <span class="pre">visulizations</span></code> app is discussed.
+In general, the production mode of the application can be seen as a security hardend version of the development mode. This includes the security on the container level or web security features like HTTPS and CSP.</p>
+<section id="https">
+<h3>HTTPS<a class="headerlink" href="#https" title="Link to this heading">¶</a></h3>
+<p>Using the HTTPS protocol allows to encrypt the HTTP pakets going through the unsecure internet. Since many browsers today have implemented a HTTPS-only mode and using HTTP is generally flagged unsecure, the production mode of the <code class="docutils literal notranslate"><span class="pre">Wissensplattform</span></code> implements a HTTPS only mode. That means that only connections using HTTPS can be established. To enable the <code class="docutils literal notranslate"><span class="pre">nginx</span></code>-webserver to encrypt and decrypt traffic a SSL-certificate and a private key needs to be given. These 2 files need to be stored in <code class="docutils literal notranslate"><span class="pre">nginx/conf/</span></code>-folder. Furthermore the filenames have to be provided inside the <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file. The following code listing shows an example on how to add the filenames of the certificate and key file to the <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NGINX_SSL_CERTIFICATE_FILENAME</span><span class="o">=</span><span class="n">ssl_certificate</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">NGINX_SSL_CERTIFICATE_KEY_FILENAME</span><span class="o">=</span><span class="n">private_key</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="encryption">
+<h2>Encryption<a class="headerlink" href="#encryption" title="Link to this heading">¶</a></h2>
+<p>Web applications today should use HTTPS to comunicate with a client web browser. To make the encryption work, a certificate file and a private key file needs to be present. The paths to these files need to be specfied in the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> configuration.</p>
+</section>
 <section id="cache-busting-techniques">
 <h2>Cache busting techniques<a class="headerlink" href="#cache-busting-techniques" title="Link to this heading">¶</a></h2>
 <p>When developing the application in an agile manner lots of changes will be introduced to the web application when its already running publicly. Because of that problems can arise. One problem has to do with the client browser caches static files (javascript/stylesheet-files) to reduce loading time. This can lead to websites look broken for clients re-visiting the website since the still use the old cached versions.
@@ -86,9 +104,14 @@ The location of the <code class="docutils literal notranslate"><span class="pre"
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_structure.html">Structure of the EWB Wissensplattform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_env_file.html">Configuration using .env file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running the app in production</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-wissensplattform-without-citygml-visulizations">Running Wissensplattform without CityGML visulizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encryption">Encryption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cache-busting-techniques">Cache busting techniques</a></li>
 </ul>
 </li>

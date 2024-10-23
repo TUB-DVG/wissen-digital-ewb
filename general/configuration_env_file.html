@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Configuration using .env file &#8212; webcentral 0.0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data-Import" href="data_import.html" />
+    <link rel="prev" title="Interacting with the EWB Wissensplattform" href="interacting_with_the_app.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="configuration-using-env-file">
+<h1>Configuration using .env file<a class="headerlink" href="#configuration-using-env-file" title="Link to this heading">¶</a></h1>
+<p>One location to do global configuration for the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code> is a <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file. With this file environmental variables and secrets can be loaded into the application. In that way a central place for configuration is used. Furthermore secrets are not hardcoded in the source code and could be potentially be visual publicly on github.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A .env needs to be present in the root of the project repository, since values from the file are directy used inside the application.</p>
+</div>
+<section id="create-a-env-file">
+<h2>Create a .env-file<a class="headerlink" href="#create-a-env-file" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">.env</span></code>-file can be created from the example simple <code class="docutils literal notranslate"><span class="pre">.env.example</span></code>. This can be done using the shell:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+</pre></div>
+</div>
+</section>
+<section id="description-of-used-environmental-variables">
+<h2>Description of used environmental variables<a class="headerlink" href="#description-of-used-environmental-variables" title="Link to this heading">¶</a></h2>
+<p>In the following section a description of the used environmental variables is presented:</p>
+<section id="django-superuser-credentials">
+<h3>Django superuser credentials:<a class="headerlink" href="#django-superuser-credentials" title="Link to this heading">¶</a></h3>
+<p>The following environmental variables specify the credentials for a <code class="docutils literal notranslate"><span class="pre">django</span></code> superuser account.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DJANGO_SUPERUSER_PASSWORD</span><span class="o">=</span><span class="n">adminPassword</span>
+<span class="n">DJANGO_SUPERUSER_USERNAME</span><span class="o">=</span><span class="n">admin</span>
+<span class="n">DJANGO_SUPERUSER_EMAIL</span><span class="o">=</span><span class="n">example</span><span class="nd">@hallo</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>These credentials allow the login into the admin panel. In local development the panel can be reached via <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000/admin</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An update of the superuser credentials in the .env-file results in the deletion of the user account with the old credentials and creates a
+superuser with the new credentials.</p>
+</div>
+</section>
+<section id="database-credentials">
+<h3>Database credentials<a class="headerlink" href="#database-credentials" title="Link to this heading">¶</a></h3>
+<p>The database credentials can be set using the following variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POSTGRES_USER</span><span class="o">=</span><span class="n">postgresUser</span>
+<span class="n">POSTGRES_PASSWORD</span><span class="o">=</span><span class="n">password</span>
+<span class="n">POSTGRES_DB</span><span class="o">=</span><span class="n">DatabaseName</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On first start-up of the app, a database is created inside the <code class="docutils literal notranslate"><span class="pre">database</span></code> container. These credentials are also used by the <code class="docutils literal notranslate"><span class="pre">django</span></code> container to connect to the database. Changing the credentials after the intialization of the database leads to the app beeing in a failure state since <code class="docutils literal notranslate"><span class="pre">django</span></code> is not able to connect to the database. To create a new database, the old one needs to be deleted following the <a class="reference internal" href="interacting_with_the_app.html"><span class="std std-doc">interacting with the web app</span></a> page.</p>
+</div>
+</section>
+<section id="filename-of-ssl-certificate-and-private-key-production">
+<h3>Filename of SSl certificate and private key (Production)<a class="headerlink" href="#filename-of-ssl-certificate-and-private-key-production" title="Link to this heading">¶</a></h3>
+<p>The filenames of the SSL-certificate and the private key inside the <code class="docutils literal notranslate"><span class="pre">nginx/conf/</span></code>-folder need to be set in the following way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NGINX_SSL_CERTIFICATE_FILENAME</span><span class="o">=</span><span class="n">certificateName</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">NGINX_SSL_CERTIFICATE_KEY_FILENAME</span><span class="o">=</span><span class="n">privateKeyName</span><span class="o">.</span><span class="n">key</span>
+</pre></div>
+</div>
+<div class="highlight-[note] notranslate"><div class="highlight"><pre><span></span>These variables onyl need to be set when configuring the production version of the `EWB Wissensplattform`.
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">webcentral</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_structure.html">Structure of the EWB Wissensplattform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration using .env file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-env-file">Create a .env-file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description-of-used-environmental-variables">Description of used environmental variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templateStructure.html">Template structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Translation of Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../listing_pages.html">Listing pages</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="interacting_with_the_app.html" title="previous chapter">Interacting with the EWB Wissensplattform</a></li>
+      <li>Next: <a href="data_import.html" title="next chapter">Data-Import</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2023, DVG.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/general/configuration_env_file.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

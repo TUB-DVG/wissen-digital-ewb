@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; webcentral 0.0.1 documentation</title>
+    <title>EWB Wissensplattform &#8212; webcentral 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -31,7 +31,18 @@
 
           <div class="body" role="main">
             
-  
+  <section id="ewb-wissensplattform">
+<h1>EWB Wissensplattform<a class="headerlink" href="#ewb-wissensplattform" title="Link to this heading">¶</a></h1>
+<p>The shift from a traditional supply infrastructure to a regenerative, decentralized energy system introduces increased complexity and necessitates the integration of previously independent sectors. The efficient operation of these systems relies on modern IT communication and control technologies. This transition poses significant changes and new challenges for all stakeholders, alongside a substantial need for research.
+Research, development, and innovation projects in the field of [Energiewendebauen](https://www.energiewendebauen.de/, as well as real-world energy transition laboratories, focus on various aspects of this multifaceted topic. They conduct in-depth analyses of the economic, political, and user-specific requirements and challenges.
+A key objective of the WeNDE project is to simplify and disseminate the findings from these projects. The EWB knowledge platform is being developed as a central element of this initiative. It serves as a repository where knowledge is aggregated and tailored for different user groups. The platform emphasizes the visual presentation of data, examines the impacts of varying conditions, and facilitates the application of technological advancements. It also involves the verification of digital tools and supports the testing and development of new methodologies.
+web interface with data base system of project infromation of the “Begleitforschung Energiewendebauen 2020” (focus modul digitalization).</p>
+<section id="main-concept">
+<h2>Main concept<a class="headerlink" href="#main-concept" title="Link to this heading">¶</a></h2>
+<p>The Web-Application consists of three services, which are containerized, each of them living in a seperate container. In the backend the python based Django-Framework is used. Data is stored in a relational-database, whereby as a DBMS PostgreSQL is chosen. A nginx-instance is used as reverse-proxy to redirect HTTP-requests to the Django-Backend, using the uwsgi-protocol. Static-content is directly served by nginx, since it has access to a Docker-Volume, which is shared with the Django-application.</p>
+</section>
+</section>
+
 
           </div>
           
@@ -102,7 +113,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/general/index.rst.txt"
+      <a href="../_sources/general/introduction.md.txt"
           rel="nofollow">Page source</a>
     </div>
 
