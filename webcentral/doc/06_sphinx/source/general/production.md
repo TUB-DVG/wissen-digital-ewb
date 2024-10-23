@@ -1,5 +1,13 @@
 # Running the app in production
 The following sections address topics, which come up when running the Application in production.
+Since the `Wissensplattform` and the `CityGML Visulizations` app were developed independently, there are different deployment possiblities. Both apps can be indipendently or together. In the following sections the different deployment strategies are described.
+
+## Running Wissensplattform without CityGML visulizations
+At first, the deployment of the `Wissensplattform` without the `CityGML visulizations` app is discussed. 
+In general, the production mode of the application can be seen as a security hardend version of the development mode. This includes the security on the container level or web security features like HTTPS and CSP.
+
+## Encryption
+Web applications today should use HTTPS to comunicate with a client web browser. To make the encryption work, a certificate file and a private key file needs to be present. The paths to these files need to be specfied in the `nginx` configuration.  
 
 ## Cache busting techniques
 When developing the application in an agile manner lots of changes will be introduced to the web application when its already running publicly. Because of that problems can arise. One problem has to do with the client browser caches static files (javascript/stylesheet-files) to reduce loading time. This can lead to websites look broken for clients re-visiting the website since the still use the old cached versions. 
