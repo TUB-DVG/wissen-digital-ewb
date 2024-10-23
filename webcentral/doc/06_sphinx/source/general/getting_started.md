@@ -20,14 +20,14 @@ To interact with the web application a bash script with the name `run` is used. 
 
 4. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/media/`.
 
-5. In a last step the database needs to be populated with data. For that a database dump is located inside the repository under `postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql`.
+5. In a last step the database needs to be populated with data. For that a database dump is located inside the repository under `postgres/` with the extension `.sql`.
 ```{warning}
 Please note that the filename of the database dump may change. Please look for the latest file with the extension `.sql` in the `postgres/`-folder.
 ```
 
 Start the setup process by calling the run script with the argument `up_initial` and providing a database dump file.
 ```
-  ./run up_initial dev postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql
+  ./run up_initial dev postgres/filename.sql
 ```
 After the data has been imported into the database, the web-application should restart and run in the terminal. You can now access the web-application via your favorite web browser via `http://127.0.0.1:8000`. 
 ```{note}
