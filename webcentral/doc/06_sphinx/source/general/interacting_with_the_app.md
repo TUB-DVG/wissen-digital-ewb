@@ -141,4 +141,11 @@ To further simplify the database dump import process the `run` script provides a
 ```bash
     ./run up_initial dev postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql 
 ```
-This starts the development mode and loads the database dump located in the `postgres/`-folder with the specified name. 
+This starts the development mode and loads the database dump located in the `postgres/`-folder with the specified name.
+
+## Creating a new dump from the database
+To create a new dump, which contains the full database as a plain text file, the following command can be used when in the root folder of the project repository.
+```bash
+./run dump_db postgres/postgres_dump.sql 
+```
+This saves the dump in the file `postgres_dump.sql` in the `postgres/` folder.
