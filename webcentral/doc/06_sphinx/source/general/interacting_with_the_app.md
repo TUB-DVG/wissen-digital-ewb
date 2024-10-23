@@ -188,3 +188,14 @@ cd src/
 python manage.py migrate
 ```
 These commands create a container shell-session, change directory into the `src/`-folder and execute the `manage.py`-script with the `migrate` attribute.
+## Django shell
+The `django` python shell can be entered with the following command:
+```bash
+./run shell
+```
+This is equivalent to the following commands:
+```bash
+docker exec -it webcentral bash
+cd src/
+python manage.py shell
+```
