@@ -30,6 +30,7 @@ End user guide
    general/basic_structure
    general/interacting_with_the_app
    general/configuration_env_file
+   general/structure_project_repo
    general/data_import
    general/migrations
    general/production

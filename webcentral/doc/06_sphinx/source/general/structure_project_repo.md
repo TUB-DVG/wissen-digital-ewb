@@ -8,4 +8,4 @@ This folder contains the content relevant for the `django` application container
 The `src/`-folder holds the source code of the django-application. The `doc/`-folder contains the collected data, which was imported into the database in spreadsheet files.
 
 ### Structure of the src-folder
-Below the `src/`-folder lies a typical `django`-project structure (For more information, visit [django-documentation](https://docs.djangoproject.com/en/5.1/)). In that folder also the general `django` management-script `manage.py` is located, which can be used to interact with the `django` project. 
+Below the `src/`-folder lies a typical `django`-project structure (For more information, visit [django-documentation](https://docs.djangoproject.com/en/5.1/)). In that folder also the `django` management-script `manage.py` is located, which can be used to interact with the `django` project. 
