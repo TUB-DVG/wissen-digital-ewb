@@ -248,7 +248,7 @@ def indexApps(request):
             classification__classification__icontains=searched
         )
         criterionToolsFour = Q(name__icontains=searched)
-        complexCriterion |= (
+        complexCriterion &= (
             criterionToolsOne
             | criterionToolsTwo
             | criterionToolsThree
