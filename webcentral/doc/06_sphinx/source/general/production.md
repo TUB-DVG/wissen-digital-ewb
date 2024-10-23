@@ -6,6 +6,10 @@ Since the `Wissensplattform` and the `CityGML Visulizations` app were developed 
 At first, the deployment of the `Wissensplattform` without the `CityGML visulizations` app is discussed. 
 In general, the production mode of the application can be seen as a security hardend version of the development mode. This includes the security on the container level or web security features like HTTPS and CSP.
 
+### HTTPS
+Using the HTTPS protocol allows to encrypt the HTTP pakets going through the unsecure internet. Since many browsers today have implemented a HTTPS-only mode and using HTTP is gernally flagged unsecure, the production mode of the `Wissensplattform` implements a HTTPS only mode. That means that only connections using HTTPS can be established.
+
+
 ## Encryption
 Web applications today should use HTTPS to comunicate with a client web browser. To make the encryption work, a certificate file and a private key file needs to be present. The paths to these files need to be specfied in the `nginx` configuration.  
 
