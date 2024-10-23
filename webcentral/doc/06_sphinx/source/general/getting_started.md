@@ -17,7 +17,9 @@ We have tested the web application on linux, macOS and windows. However if you a
     ./run build_initial dev
 ```
 To interact with the web application a bash script with the name `run` is used. This script is used to interact with the application.  
+
 4. In the `Wissensplattform` images like logos of in the database included tools, are not located in the repository. These files have to be downloaded from the following link `https://tubcloud.tu-berlin.de/f/3546499069`. The `media`-folder has to be copied to `webcentral/src/media/`.
+
 5. In a last step the database needs to be populated with data. For that a database dump is located inside the repository under `postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql`.
 ```{warning}
 Please note that the filename of the database dump may change. Please look for the latest file with the extension `.sql` in the `postgres/`-folder.
