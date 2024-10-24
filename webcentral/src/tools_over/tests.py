@@ -32,7 +32,7 @@ class TestToolsDataImport(TestCase):
 
         # check if nPro is part of the tools:
         nProTool = Tools.objects.get(name="nPro")
-        
+
         # check focus and classification:
         # focusesForNPro = nProTool.classification.all()
 
@@ -135,11 +135,10 @@ class TestToolsDataImport(TestCase):
                     #     breakpoint()
                     #
 
-class TestExportClass(TestCase):
-    """Test the `DataExport` class inside tools_over.data_export module. 
 
-    """
-    
+class TestExportClass(TestCase):
+    """Test the `DataExport` class inside tools_over.data_export module."""
+
     def testSortIntoGermanEnglishDS(self):
         """Test if the sorting into the two dictionaries representanting the english
         and german table are working as expected.
@@ -149,13 +148,14 @@ class TestExportClass(TestCase):
             "data_import",
             "tools_over",
             "../doc/01_data/02_tool_over/2024_05_EWB_newToolsImportWithTranslation.xlsx",
-        )       
-
+        )
 
         exportObj = DataExport("hi")
         bimTools = Tools.objects.filter(name__icontains="nPro")
-        
-        germanData, englishData = exportObj._sortObjectsIntoGermanAndEnglishDs(bimTools)
+
+        germanData, englishData = exportObj._sortObjectsIntoGermanAndEnglishDs(
+            bimTools
+        )
         self.assertTrue(
             set(germanData.keys()),
             set(
@@ -191,7 +191,7 @@ class TestExportClass(TestCase):
                     "technicalStandardsProtocols",
                     "image",
                 )
-            )
+            ),
         )
 
         self.assertTrue(
@@ -229,12 +229,12 @@ class TestExportClass(TestCase):
                     "technicalStandardsProtocols",
                     "image",
                 )
-            )
+            ),
         )
 
         exportObjTwo = DataExport("testTools.xlsx")
         exportObjTwo.exportToXlsx()
-        
+
         self.assertTrue(os.path.exists("testTools.xlsx"))
         os.remove("testTools.xlsx")
 

@@ -105,9 +105,11 @@ class DataImportApp(DataImport):
         obj:    ToolsSubproject the Tools-object was created or not.
         """
 
-        # check if there is already a tool with the same name present in the 
+        # check if there is already a tool with the same name present in the
         # database:
-        toolObjsFilteredByName = Tools.objects.filter(name=row[header.index("name")]) 
+        toolObjsFilteredByName = Tools.objects.filter(
+            name=row[header.index("name")]
+        )
         presentToolWithSameName = None
         if len(toolObjsFilteredByName) > 0:
             presentToolWithSameName = toolObjsFilteredByName[0]
@@ -326,13 +328,13 @@ class DataImportApp(DataImport):
             obj.technicalStandardsProtocols.add(
                 *technicalStandardsProtocolsElements
             )
-            
+
             if presentToolWithSameName is not None:
                 self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
 
             if (
-            presentToolWithSameName is not None
-            and self.diffStrDict[self.dictIdentifier] != ""
+                presentToolWithSameName is not None
+                and self.diffStrDict[self.dictIdentifier] != ""
             ):
                 self._writeDiffStrToDB()
 
