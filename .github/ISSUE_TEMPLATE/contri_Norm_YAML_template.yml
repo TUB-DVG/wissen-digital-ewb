@@ -55,7 +55,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## You have finished all the questions! Thank you so much for the data contribution!
+        ## You have finished all the questions! Thank you for the data contribution!
 
   - type: markdown
     attributes:
