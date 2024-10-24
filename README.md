@@ -94,7 +94,30 @@ After that, restart the app from the first terminal by pressing `CTRL+C` and run
 
 ## Style Guide
 
-The Style guide for the project can be viewed [here](./styleGuide.md).
+The Style guide for the project can be viewed [here](./styleGuide.md).   
+
+# How to Contribute:   
+
+We welcome data contributions to our database system! To ensure consistency and ease of use, we have created specific templates for various types of data contributions. By following the instructions and using the appropriate template, you help us maintain high-quality data for everyone. Below are the steps to contribute your data, as well as the different types of contributions we accept.   
+
+1. **Select the Appropriate Template**:  
+   We have prepared several templates depending on the type of data you wish to contribute:   
+
+   - **Datasets Contribution**: For contributing datasets related to environmental, climate, or any other scientific data. For further information, please visit our website of [Datasets](https://wissen-digital-ewb.de/en/dataset_list/).
+   - **Norm Data Contribution**: For contributing information about standards and norms. For further information, please visit our website of [Norms](https://wissen-digital-ewb.de/en/TechnicalStandards/norm).
+   - **Protocol Data Contribution**: For contributing details on communication protocols used in systems. For further information, please visit our website of [Protocols](https://wissen-digital-ewb.de/en/TechnicalStandards/protocol).
+   - **Weather Data Contribution**: For contributing weather-related datasets or applications. For further information, please visit our website of [Weather Data](https://wissen-digital-ewb.de/en/weatherdata_list/).
+   - **Tools/Application Data Contribution**: For contributing information about applications and tools that are used in data processing or analysis. For further information, please visit our website of [Digital Tools](https://wissen-digital-ewb.de/en/tool_list/) and [Digital Applications](https://wissen-digital-ewb.de/en/tool_list/technicalApps/).   
+   
+   Each template can be found under the "Issues" section of this repository.   
+
+1. **Fill in the Template**:  
+   Click on ["New Issue"](https://github.com/TUB-DVG/wissen-digital-ewb/issues/new/choose) under the "Issues" section, and select the appropriate template for your data contribution. Each template is designed with specific questions and required fields. Please provide as much detail as possible and ensure that your data is accurate and up-to-date..
+
+1. **Submit Your Contribution**:  
+   Once you have filled out the template, click "Submit" to send your contribution for review. Our team will review the submission and contact you if any additional information is needed.   
+
+Thank you for helping us build a robust and comprehensive database system! If you have any questions regarding the contribution process, feel free to [open an issue](https://github.com/TUB-DVG/wissen-digital-ewb/issues/new/choose).      
 
 # Hosted 
 
