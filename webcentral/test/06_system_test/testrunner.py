@@ -33,7 +33,7 @@ from test.scripts.test_criteria_catalog import TestCriteriaCatalog
 # from test.scripts.TestUseCases import TestUseCases
 # from test.scripts.TestPositiveEnvironmentalImpact import TestPositiveEnvironmentalImpact
 # from test.scripts.TestDataSufficiency import TestDataSufficiency
-# # from test.scripts.TestLastprofile import TestLastprofileTab
+from test.scripts.test_last_profile import TestLastProfile
 import testtools as testtools
 
 if __name__ == "__main__":
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 # testLoader.loadTestsFromTestCase(TestProtocolsPage),
                 # testLoader.loadTestsFromTestCase(TestBusinessAppPage),
                 # testLoader.loadTestsFromTestCase(TestClickThroughSites),
-                # testLoader.loadTestsFromTestCase(TestLastProfile),
+                testLoader.loadTestsFromTestCase(TestLastProfile),
                 # testLoader.loadTestsFromTestCase(TestAboutPage),
                 # testLoader.loadTestsFromTestCase(TestSearch),
                 # testLoader.loadTestsFromTestCase(TestPublicationPage),

@@ -26,16 +26,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import MoveTargetOutOfBoundsException
 
 
-from Src.TestBase.WebDriverSetup import WebDriverSetup
-from Src.PageObject.Pages.startPage import StartPage
-from Src.PageObject.Pages.toolListPage import ToolListPage
-from Src.PageObject.Pages.NavBar import NavBar
-from Src.PageObject.Pages.lastprofile import Lastprofile
-from Src.PageObject.Pages.CurrentLoadApproximation import (
+from src.test_base.webdriver_setup import WebDriverSetup
+from src.page_obj.pages.start_page import StartPage
+
+# from src.page_obj.pages.tool_list_page import ToolListPage
+from src.page_obj.pages.navbar import NavBar
+from src.page_obj.pages.lastprofile import Lastprofile
+from src.page_obj.pages.current_load_approximation import (
     CurrentLoadApproximation,
 )
-from Src.PageObject.Pages.HeatApproximation import HeatApproximation
-from Src.PageObject.Pages.cookieBanner import CookieBanner
+from src.page_obj.pages.heat_approximation import HeatApproximation
+from src.page_obj.pages.cookie_banner import CookieBanner
 
 
 class TestLastProfile(WebDriverSetup):
@@ -141,10 +142,6 @@ class TestLastProfile(WebDriverSetup):
                 linkToHeatApprox,
             )
         time.sleep(1)
-        # cookieBannerObj = CookieBanner(self.driver)
-        # cookieBannerObj.getCookieAcceptanceButton().click()
-        time.sleep(1)
-        self.driver.save_screenshot("ss.png")
         linkToHeatApprox.click()
 
         self.checkPageTitle(
@@ -152,16 +149,58 @@ class TestLastProfile(WebDriverSetup):
             "Thermal load profile",
         )
 
-        currentApproObj = HeatApproximation(self.driver)
+        lastProfilePage = Lastprofile(self.driver)
         time.sleep(1)
         self._setLanguageToGerman()
-        currentApproObj.switchToIFrame()
-        headingElement = currentApproObj.getHeadingOfPage()
+        iframeElement = lastprofilePage.getPlotlyIFrame()
+        self.driver.switch_to.frame(iframeElement)
+        # headingElement = lastProfilePage.getHeadingOfPage()
+        # self.assertEqual(
+        #     headingElement.text,
+        #     "Wärmelast Approximation",
+        #     "Heading Title should be Wärmelast Approximation, but its not!",
+        # )
+        selectPlaceholderToHoverOver = (
+            lastProfilePage.getReactSelectPlaceholder()
+        )
+        inputOfDropdown = self.driver.find_element(
+            By.ID, "application"
+        ).find_element(By.XPATH, ".//input")
+        inputOfDropdown.send_keys("Einfamilienhaus")
+        inputOfDropdown.send_keys(Keys.RETURN)
 
-        self.assertEqual(
-            headingElement.text,
-            "Wärmelast Approximation",
-            "Heading Title should be Wärmelast Approximation, but its not!",
+        inputFieldPowerRequirement = (
+            lastprofilePage.getInputFieldHeatRequirement()
+        )
+        inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
+        inputFieldPowerRequirement.send_keys(Keys.RETURN)
+
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='Start Datum']"
+        ).send_keys(" 03/01/2021")
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='Start Datum']"
+        ).send_keys(Keys.RETURN)
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='End Datum']"
+        ).send_keys(" 21/01/2021")
+        self.driver.find_element(
+            By.XPATH, "//input[@aria-label='End Datum']"
+        ).send_keys(Keys.RETURN)
+
+        inputFieldPowerRequirement.click()
+        listOfRadioButtons = lastprofilePage.getListOfRadioMonth()
+        radioElementToClick = random.choice(listOfRadioButtons)
+        radioElementToClick.click()
+
+        self.driver.find_element(By.ID, "approximationStart").click()
+
+        time.sleep(3)
+        lineObj = lastprofilePage.getLinePloty()
+        self.assertGreater(
+            len(lineObj.get_attribute("d")),
+            20,
+            "The Line-Plot should at least contain 20 Datapoints, but it doesnt! Is the plot even loaded?",
         )
 
     def testLinksOnSite(self):
@@ -238,6 +277,9 @@ class TestLastProfile(WebDriverSetup):
         )
         inputFieldPowerRequirement.send_keys(random.randrange(1, 100000, 1))
         inputFieldPowerRequirement.send_keys(Keys.RETURN)
+
+        self.driver.find_element(By.ID, "approximation_start").click()
+
         time.sleep(3)
         lineObj = lastprofilePage.getLinePloty()
         self.assertGreater(
@@ -250,16 +292,10 @@ class TestLastProfile(WebDriverSetup):
 
         # test if the data can be downloaded
         # buttonCSVDownload = lastprofilePage.getCsvDownloadButton()
-        # time.sleep(1)
+        # # time.sleep(1)
         # buttonCSVDownload.click()
-        # time.sleep(1)
-        # buttonCSVDownload.click()
-        # time.sleep(3)
-        # files = list(filter(os.path.isfile, glob.glob(str(Path.home()) + "/Downloads/" + "*")))
-
-        # files.sort(key=lambda x: os.path.getmtime(x))
-        # self.assertTrue("Stromlastgang" in files[-1], "Stromlastgang File wasnt the last modified file in downloads!")
-
-        # lastModified = os.path.getmtime(files[-1])
-
-        # self.assertTrue(lastModified > (datetime.datetime.now()-datetime.timedelta(seconds=20)).timestamp(), "Das Änderungsdatum ist älter als 20 Sekunden alt!")
+        # time.sleep(5)
+        # filePath = os.path.join(self.downloadDir, fileName)
+        #
+        # # Check if the file is downloaded
+        # self.assertTrue(os.path.isfile(filePath))

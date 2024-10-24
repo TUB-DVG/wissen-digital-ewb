@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from Src.PageObject.Locators import Locator
+from src.page_obj.locators import Locator
 
 
 class Lastprofile(object):
@@ -62,6 +62,13 @@ class Lastprofile(object):
         return self.driver.find_elements(
             By.XPATH,
             Locator.radioButtonElements,
+        )
+
+    def getInputFieldHeatRequirement(self):
+        """Return the Input Field, where the powerRequirement should be stated."""
+        return self.driver.find_element(
+            By.ID,
+            "heatRequirement",
         )
 
     def getInputFieldPowerRequirement(self):

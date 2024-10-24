@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
 
-from Src.PageObject.Locators import Locator
+from src.page_obj.locators import Locator
 
 
 class HeatApproximation(object):
