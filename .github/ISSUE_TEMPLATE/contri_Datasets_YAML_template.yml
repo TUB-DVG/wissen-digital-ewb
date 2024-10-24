@@ -1,0 +1,117 @@
+name: "Datasets Contribution"
+description: "Template for submitting data of Datasets"
+title: "[ContributionDatasets]: <title>"
+labels: ["Datasets Contribution", "Contribution", "Data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
+
+  - type: textarea
+    id: dataset_name
+    attributes:
+      label: "1. Name of the Datasets"
+      description: "Please provide the name of Datasets."
+      placeholder: "e.g., AlphaBuilding - Synthetischer Gebäudebetriebsdatensatz"
+    validations:
+      required: true
+
+  - type: input
+    id: use_case_category
+    attributes:
+      label: "2. Use Case Category (Scope)"
+      description: "What kind of use cases(application area) are the data applied to?"
+      placeholder: "e.g., Time Series Data or Geodata"
+
+  - type: input
+    id: data_category
+    attributes:
+      label: "3. Category Data (Dataset)"
+      description: "Further refinement of data, describing data format. Not always applicable."
+      placeholder: "e.g., Demand or synthetic data"
+
+  - type: input
+    id: availability
+    attributes:
+      label: "4. Availability"
+      description: "Under what license is the data available?"
+      placeholder: "e.g., Open"
+
+  - type: input
+    id: geographic_coverage
+    attributes:
+      label: "5. Geographic Coverage"
+      description: "Which geographic areas are covered? Not always applicable."
+      placeholder: "e.g., Global, Europe, Asia, Germany"
+
+  - type: textarea
+    id: resolution
+    attributes:
+      label: "6. Resolution"
+      description: "Which spatial or temporal resolution is applied for the dataset?"
+      placeholder: "e.g., 1km spatial resolution, daily time resolution"
+
+  - type: input
+    id: data_source
+    attributes:
+      label: "7. Data Source"
+      description: "Is the dataset part of a larger collection? If so, which?"
+      placeholder: "e.g., SMARD"
+  
+  - type: input
+    id: reference
+    attributes:
+      label: "8. Reference"
+      description: "Where does the dataset originate from?"
+      placeholder: "e.g., DOI"
+  
+  - type: input
+    id: short_description
+    attributes:
+      label: "9. Short Description"
+      description: "Briefly describe the dataset (2-3 sentences)."
+      placeholder: "e.g., Contains information about typical consumption of DHW in residential buildings in Germany."
+
+  - type: dropdown
+    id: includesNonResidential
+    attributes:
+      label: "10. IncludesNonResidential"
+      description: "Is information about non-residential buildings included?"
+      options:
+        - 'Unknown'
+        - 'Yes'
+        - 'No'
+      default: 0
+
+  - type: input
+    id: last_update
+    attributes:
+      label: "11. Last Update"
+      description: "Provide the date of the latest update for this dataset."
+      placeholder: "e.g., 2024-10-21 or ongoing"
+
+  - type: textarea
+    id: further_information
+    attributes:
+      label: "12. Further Information"
+      description: "Any further relevant details or references about the dataset."
+      placeholder: "e.g., Link to documentation or additional resources"
+
+  - type: textarea
+    id: Suggestion
+    attributes:
+      label: "13. Suggestion about this questionnaire"
+      description: "Please feel free to write any suggestion about this questionaire if be confused about questions."
+      placeholder: "e.g., Do not understand the question of [], ..."
+
+  - type: markdown
+    attributes:
+      value: |
+        ## You have finished all the questions! Thank you for the data contribution!
+
+  - type: markdown
+    attributes:
+      value: "**Note:** Please ensure that the data is correctly formatted before submission."
+  
+

@@ -1,0 +1,88 @@
+name: "Weather Data Contribution"
+description: "Template for submitting Weather Data"
+title: "[ContributionWeather]: <title>"
+labels: ["Weather Contribution", "Contribution", "Data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
+
+  - type: input
+    id: dataset_or_application_name
+    attributes:
+      label: "1. Name of the Datasets/Application"
+      description: "Please provide the name of the Datasets or Application."
+      placeholder: "e.g., Global Weather Data"
+    validations:
+      required: true
+
+  - type: textarea
+    id: short_description
+    attributes:
+      label: "2. Short Description"
+      description: "Briefly describe the dataset or application (2-3 sentences)."
+      placeholder: "e.g., A dataset providing historical global weather data for climate analysis."
+
+  - type: dropdown
+    id: type_of_datasets_or_application
+    attributes:
+      label: "3. Type of Datasets/Application"
+      description: "Classify the tool (Datasets or Application)."
+      options:
+        - Unknown
+        - Datasets
+        - Application
+        - other
+      default: 0
+
+  - type: input
+    id: related_application
+    attributes:
+      label: "4. Related Application"
+      description: "If this is a dataset, specify the related application."
+      placeholder: "e.g., WeatherSim"
+
+  - type: input
+    id: provider
+    attributes:
+      label: "5. Provider (Vendor)"
+      description: "Name of the tool provider or company."
+      placeholder: "e.g., WeatherSoft Inc."
+
+  - type: input
+    id: last_update
+    attributes:
+      label: "6. Last Update"
+      description: "Please provide the date of the latest update for this tool."
+      placeholder: "e.g., 2024-10-21 or ongoing"
+
+  - type: input
+    id: license
+    attributes:
+      label: "7. License"
+      description: "Please specify the license under which the tool is distributed."
+      placeholder: "e.g., MIT, GNU, Apache License 2.0, open data, free to use, ..."
+
+  - type: textarea
+    id: further_information
+    attributes:
+      label: "8. Further Information"
+      description: "Any further relevant details or references about the tool."
+      placeholder: "e.g., Link to documentation or additional resources"
+
+  - type: textarea
+    id: Suggestion
+    attributes:
+      label: "9. Suggestion about this questionnaire"
+      description: "Please feel free to write any suggestion about this questionaire if be confused about questions."
+      placeholder: "e.g., Do not understand the question of [], ..."
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## You have finished all the questions! Thank you so much for the data contribution!
+
+  - type: markdown
+    attributes:
+      value: "**Note:** Please ensure that the data is correctly formatted before submission."
