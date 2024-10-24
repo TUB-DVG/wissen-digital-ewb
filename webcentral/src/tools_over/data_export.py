@@ -1,4 +1,5 @@
 import pandas as pd
+from django.db import models
 
 from tools_over.models import Tools
 
@@ -78,16 +79,19 @@ class DataExport:
             for mappingNameORM in self.MAPPING_ORM_TO_XLSX.keys():
                 if hasattr(ormObj, mappingNameORM + "_en"):
                     englishData = self._checkIfKeyExistsAndAppendData(englishData, mappingNameORM)
-                    englishData[mappingNameORM].append(getattr(ormObj, mappingNameORM + "_en"))
+                    englishData = self._apppendToDs(englishData, mappingNameORM, ormObj, "_en")
 
                     germanData = self._checkIfKeyExistsAndAppendData(germanData, mappingNameORM)
-                    germanData[mappingNameORM].append(getattr(ormObj, mappingNameORM + "_de"))
+                    germanData = self._apppendToDs(germanData, mappingNameORM, ormObj, "_de")
+
                 else:
                     englishData = self._checkIfKeyExistsAndAppendData(englishData, mappingNameORM)
-                    englishData[mappingNameORM].append(getattr(ormObj, mappingNameORM))
+                    englishData = self._apppendToDs(englishData, mappingNameORM, ormObj, "_en")
+
 
                     germanData = self._checkIfKeyExistsAndAppendData(germanData, mappingNameORM)
-                    germanData[mappingNameORM].append(getattr(ormObj, mappingNameORM))
+                    germanData = self._apppendToDs(germanData, mappingNameORM, ormObj, "_de")
+
 
         return (germanData, englishData)
 
@@ -107,6 +111,24 @@ class DataExport:
             return dataDict
        
         dataDict[keyName] = []
+        return dataDict
+
+    def _apppendToDs(self, dataDict, mappingNameORM, ormObj, languageSuffix):
+        """
+
+        """
+        if isinstance(ormObj._meta.get_field(mappingNameORM), models.ManyToManyField):
+            concatenatedMTMStr = ormObj.getManyToManyAttrAsStr(mappingNameORM, languageSuffix)
+            dataDict[mappingNameORM].append(concatenatedMTMStr)
+        elif isinstance(ormObj._meta.get_field(mappingNameORM), models.BooleanField):
+            valueOfBooleanField = getattr(ormObj, mappingNameORM)
+            if valueOfBooleanField == "" or valueOfBooleanField is None:
+                dataDict[mappingNameORM].append("")
+            else:
+                dataDict[mappingNameORM].append(int(getattr(ormObj, mappingNameORM)))
+        else:
+            dataDict[mappingNameORM].append(getattr(ormObj, mappingNameORM))
+        
         return dataDict
 
     def _writeDictsToXlsx(self, germanData, englishData):
