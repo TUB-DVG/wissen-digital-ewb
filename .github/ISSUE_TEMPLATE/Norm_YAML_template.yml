@@ -1,0 +1,62 @@
+name: "Norm Data Contribution"
+description: "Template for submitting Norm Data"
+title: "[ContributionNorm]: <title>"
+labels: ["Norm Contribution", "Contribution", "Data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for taking the time to fill out this data contribution questionnaire!
+
+  - type: input
+    id: norm_name
+    attributes:
+      label: "1. Name of the Norm"
+      description: "Please provide the name of the norm."
+      placeholder: "e.g., ISO 9001"
+    validations:
+      required: true
+
+  - type: input
+    id: full_title_of_norm
+    attributes:
+      label: "2. Full Title of the Norm"
+      description: "Please provide the full title of the norm."
+      placeholder: "e.g., Quality Management Systems - Requirements"
+
+  - type: textarea
+    id: short_description
+    attributes:
+      label: "3. Short Description"
+      description: "What is this norm about? Briefly describe the norm (2-3 sentences)."
+      placeholder: "e.g., This norm specifies the requirements for a quality management system that demonstrates the ability to consistently provide products and services that meet customer and regulatory requirements."
+
+  - type: input
+    id: source
+    attributes:
+      label: "4. Source"
+      description: "Where can the standard be obtained from?"
+      placeholder: "e.g., ISO website, National Standards Organization"
+
+  - type: input
+    id: link
+    attributes:
+      label: "5. Link"
+      description: "A link through which the standard can be accessed (possibly purchased)."
+      placeholder: "e.g., https://www.iso.org/standard/62085.html"
+
+  - type: textarea
+    id: Suggestion
+    attributes:
+      label: "6. Suggestion about this questionnaire"
+      description: "Please feel free to write any suggestion about this questionaire if be confused about questions."
+      placeholder: "e.g., Do not understand the question of [], ..."
+
+  - type: markdown
+    attributes:
+      value: |
+        ## You have finished all the questions! Thank you so much for the data contribution!
+
+  - type: markdown
+    attributes:
+      value: "**Note:** Please ensure that the data is correctly formatted before submission."

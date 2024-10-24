@@ -11,38 +11,42 @@ body:
   - type: input
     id: protocol_name
     attributes:
-      label: "Name of the Protocol"
+      label: "1. Name of the Protocol"
       description: "Please provide the name of the protocol."
       placeholder: "e.g., BACnet"
+    validations:
+      required: true
 
   - type: dropdown
     id: transmission_media
     attributes:
-      label: "Transmission Media"
+      label: "2. Transmission Media"
       description: "How are data transmitted between the different components and devices within the system (wired, wireless, or both)?"
       options:
-        - wired
-        - wireless
-        - wired & wireless
+        - 'Unknown'
+        - 'wired'
+        - 'wireless'
+        - 'wired & wireless'
+      default: 0
 
   - type: input
     id: supported_transmission_media
     attributes:
-      label: "Supported Transmission Media"
+      label: "3. Supported Transmission Media"
       description: "How are signals transmitted (e.g., Twisted pair, fiber optics, Wireless mesh)?"
       placeholder: "e.g., Fiber optics, ..."
 
   - type: textarea
     id: related_standards
     attributes:
-      label: "Related Standards"
+      label: "4. Related Standards"
       description: "Specify the standards to which the protocol can be assigned (e.g., IEEE, ISO)."
       placeholder: "e.g., ISO-16484-6, ..."
 
   - type: checkboxes
     id: open_source_status
     attributes:
-      label: "Open-Source Status"
+      label: "5. Open-Source Status"
       description: "Is the protocol public and freely available?"
       options:
         - label: "Open Source"
@@ -51,51 +55,52 @@ body:
   - type: dropdown
     id: license_fee
     attributes:
-      label: "License Fee"
+      label: "6. License Fee"
       description: "Is there a fee for using the protocol or certification?"
       options:
         - unknown
         - Fee required
         - No fee required
-
+      default: 0
+      
   - type: input
     id: network_topology
     attributes:
-      label: "Network Topology"
+      label: "7. Network Topology"
       description: "What is the physical and logical arrangement of devices in the network?"
       placeholder: "e.g., star, ..."
 
   - type: textarea
     id: implemented_security_mechanisms
     attributes:
-      label: "Implemented Security Mechanisms"
+      label: "8. Implemented Security Mechanisms"
       description: "What security mechanisms are implemented to ensure data security?"
 
   - type: input
     id: bandwidth
     attributes:
-      label: "Bandwidth"
+      label: "9. Bandwidth"
       description: "What is the communication channel capacity (bandwidth) for transmitting data between the various components of the system?"
       placeholder: "e.g., 100 Mbps"
 
   - type: input
     id: frequency
     attributes:
-      label: "Frequency"
+      label: "10. Frequency"
       description: "What frequency or wavelength is used for communication (in wireless systems)?"
       placeholder: "e.g., 2.4 GHz or Not applicable"
 
   - type: input
     id: range
     attributes:
-      label: "Range"
+      label: "11. Range"
       description: "the maximum distance over which communication can be maintained between the various devices and components of the system without the signal strength becoming too weak."
       placeholder: "e.g., 50 meters"
 
   - type: checkboxes
     id: implemented_osi_layer
     attributes:
-      label: "Implemented OSI-layer"
+      label: "12. Implemented OSI-layer"
       description: "Which OSI reference model layers are applied for communication between the various components of the system in the protocol? Multiple choices allowed."
       options: 
         - label: "Application layer"
@@ -109,7 +114,7 @@ body:
   - type: checkboxes
     id: levels_of_building_automation
     attributes:
-      label: "Levels of Building Automation"
+      label: "13. Levels of Building Automation"
       description: "Describe the hierarchical structure for building automation system where the protocol is applied. Multiple choices allowed."
       options: 
         - label: "field level"
@@ -119,43 +124,63 @@ body:
   - type: input
     id: data_model_architecture
     attributes:
-      label: "Data Model Architecture"
+      label: "14. Data Model Architecture"
       description: "How is information or attributes added to an object in the system?"
 
   - type: dropdown
     id: discovery
     attributes:
-      label: "Discovery"
+      label: "15. Discovery"
       description: "Does the protocol has the “discovery” function to automatically identify devices during data transfer?"
       options:
+        - 'Unknown'
         - 'Yes'
         - 'No'
+      default: 0
 
   - type: dropdown
     id: multi_master
     attributes:
-      label: "Multi Master"
+      label: "16. Multi Master"
       description: "Can multiple master devices operate simultaneously?"
       options:
+        - 'Unknown'
         - 'Yes'
         - 'No'
+      default: 0
 
   - type: textarea
     id: priority
     attributes:
-      label: "Priority"
+      label: "17. Priority"
       description: "How are changes or updates managed within the protocol (priority handling)?"
       placeholder: "e.g., Priority-based scheduling"
 
   - type: textarea
     id: typical_application
     attributes:
-      label: "Typical Application"
+      label: "18. Typical Application"
       description: "If applicable, provide an example of how the protocol is used in a real-world scenario."
       placeholder: "e.g., Used in building management systems"
 
   - type: textarea
     id: link
     attributes:
-      label: "Link"
+      label: "19. Link"
       description: "Please provide a link for further information about the protocol."
+
+  - type: textarea
+    id: Suggestion
+    attributes:
+      label: "20. Suggestion about this questionnaire"
+      description: "Please feel free to write any suggestion about this questionaire if be confused about questions."
+      placeholder: "e.g., Do not understand the question of [], ..."
+
+  - type: markdown
+    attributes:
+      value: |
+        ## You have finished all the questions! Thank you so much for the data contribution!
+
+  - type: markdown
+    attributes:
+      value: "**Note:** Please ensure that the data is correctly formatted before submission."
