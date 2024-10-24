@@ -52,6 +52,15 @@ Developer guide
    dev/use_cases
    dev/save_page_views
 
+HowTo Guides
+============
+.. toctree::
+   :maxdepth: 2
+   :caption: HowTo:
+   HowTo/create_dump_for_repo
+
+Old to be refactored
+====================
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
