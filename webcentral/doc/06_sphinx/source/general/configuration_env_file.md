@@ -37,12 +37,14 @@ POSTGRES_DB=DatabaseName
 On first start-up of the app, a database is created inside the `database` container. These credentials are also used by the `django` container to connect to the database. Changing the credentials after the intialization of the database leads to the app beeing in a failure state since `django` is not able to connect to the database. To create a new database, the old one needs to be deleted following the [interacting with the web app](./interacting_with_the_app.md) page.
 ```
 
-### Filename of SSl certificate and private key (Production)
+### Filename of SSL certificate and private key (Production)
 The filenames of the SSL-certificate and the private key inside the `nginx/conf/`-folder need to be set in the following way:
 ```
 NGINX_SSL_CERTIFICATE_FILENAME=certificateName.crt
 NGINX_SSL_CERTIFICATE_KEY_FILENAME=privateKeyName.key
 ```
-```[note]
-These variables onyl need to be set when configuring the production version of the `EWB Wissensplattform`.
+
+```{note}
+These variables only need to be set when configuring the production version of the `EWB Wissensplattform`.
 ```
+

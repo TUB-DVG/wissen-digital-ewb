@@ -3,9 +3,9 @@
 This document describes the different ways to import data into the webcentral-database.
 In general, data can be imported using the following ways:
     
-    - Using the django-admin panel.
-    - Using the custom django `data_import` command.
-    - Using a SQL-dump.
+- Using the django-admin panel.
+- Using the custom django `data_import` command.
+- Using a SQL-dump.
 
 In the following sections these methods are described in detail.
 
