@@ -12,10 +12,8 @@ class Command(BaseCommand):
         parser.add_argument("filename", nargs="+", type=str)
 
     def handle(self, *args, **options):
-        """
+        """ """
 
-        """
-        
         filename = options["filename"][0]
 
         type_of_data = options["type_of_data"][0]

@@ -302,12 +302,12 @@ class Tools(models.Model):
     focus = models.ManyToManyField(Focus)
 
     def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
-        """
-        
-        """
+        """ """
         querysetOfManyToManyElements = getattr(self, manyToManyAttr).all()
         if len(querysetOfManyToManyElements) > 0:
-            fieldsOfManyToManyModel = querysetOfManyToManyElements[0]._meta.get_fields()
+            fieldsOfManyToManyModel = querysetOfManyToManyElements[
+                0
+            ]._meta.get_fields()
             fieldNames = [field.name for field in fieldsOfManyToManyModel]
             suffixInFieldNames = False
             for field in fieldNames:
@@ -320,9 +320,8 @@ class Tools(models.Model):
             if suffixInFieldNames:
                 returnStr += getattr(element, field) + ", "
             else:
-                returnStr += element.__str__() + ", " 
+                returnStr += element.__str__() + ", "
         return returnStr[:-2]
-        
 
     @property
     def imageOrDefault(self):
