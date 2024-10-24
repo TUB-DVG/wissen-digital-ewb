@@ -301,6 +301,29 @@ class Tools(models.Model):
     classification = models.ManyToManyField(Classification)
     focus = models.ManyToManyField(Focus)
 
+    def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
+        """
+        
+        """
+        querysetOfManyToManyElements = getattr(self, manyToManyAttr).all()
+        if len(querysetOfManyToManyElements) > 0:
+            fieldsOfManyToManyModel = querysetOfManyToManyElements[0]._meta.get_fields()
+            fieldNames = [field.name for field in fieldsOfManyToManyModel]
+            suffixInFieldNames = False
+            for field in fieldNames:
+                if languageSuffix in field:
+                    suffixInFieldNames = True
+                    break
+
+        returnStr = ""
+        for element in querysetOfManyToManyElements:
+            if suffixInFieldNames:
+                returnStr += getattr(element, field) + ", "
+            else:
+                returnStr += element.__str__() + ", " 
+        return returnStr[:-2]
+        
+
     @property
     def imageOrDefault(self):
         if self.image and hasattr(self.image, "url"):
