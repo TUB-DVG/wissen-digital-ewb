@@ -1,4 +1,5 @@
 from io import StringIO
+import os
 
 from django.test import TestCase
 from unittest.mock import patch
@@ -9,6 +10,7 @@ from django.core.management import (
 import pandas as pd
 
 from common.test_utils.mock_objects import mock_excel_file
+from .data_export import DataExport
 from .data_import import DataImportApp
 from .models import Tools
 
@@ -30,7 +32,7 @@ class TestToolsDataImport(TestCase):
 
         # check if nPro is part of the tools:
         nProTool = Tools.objects.get(name="nPro")
-
+        
         # check focus and classification:
         # focusesForNPro = nProTool.classification.all()
 
@@ -132,6 +134,109 @@ class TestToolsDataImport(TestCase):
                     # except:
                     #     breakpoint()
                     #
+
+class TestExportClass(TestCase):
+    """Test the `DataExport` class inside tools_over.data_export module. 
+
+    """
+    
+    def testSortIntoGermanEnglishDS(self):
+        """Test if the sorting into the two dictionaries representanting the english
+        and german table are working as expected.
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_05_EWB_newToolsImportWithTranslation.xlsx",
+        )       
+
+
+        exportObj = DataExport("hi")
+        bimTools = Tools.objects.filter(name__icontains="nPro")
+        
+        germanData, englishData = exportObj._sortObjectsIntoGermanAndEnglishDs(bimTools)
+        self.assertTrue(
+            set(germanData.keys()),
+            set(
+                (
+                    "name",
+                    "resources",
+                    "shortDescription",
+                    "applicationArea",
+                    "provider",
+                    "usage",
+                    "lifeCyclePhase",
+                    "targetGroup",
+                    "userInterface",
+                    "userInterfaceNotes",
+                    "programmingLanguages",
+                    "frameworksLibraries",
+                    "databaseSystem",
+                    "classification",
+                    "focus",
+                    "scale",
+                    "lastUpdate",
+                    "accessibility",
+                    "license",
+                    "licenseNotes",
+                    "furtherInformation",
+                    "alternatives",
+                    "specificApplication",
+                    "released",
+                    "releasedPlanned",
+                    "yearOfRelease",
+                    "developmentState",
+                    "technicalStandardsNorms",
+                    "technicalStandardsProtocols",
+                    "image",
+                )
+            )
+        )
+
+        self.assertTrue(
+            set(englishData.keys()),
+            set(
+                (
+                    "name",
+                    "resources",
+                    "shortDescription",
+                    "applicationArea",
+                    "provider",
+                    "usage",
+                    "lifeCyclePhase",
+                    "targetGroup",
+                    "userInterface",
+                    "userInterfaceNotes",
+                    "programmingLanguages",
+                    "frameworksLibraries",
+                    "databaseSystem",
+                    "classification",
+                    "focus",
+                    "scale",
+                    "lastUpdate",
+                    "accessibility",
+                    "license",
+                    "licenseNotes",
+                    "furtherInformation",
+                    "alternatives",
+                    "specificApplication",
+                    "released",
+                    "releasedPlanned",
+                    "yearOfRelease",
+                    "developmentState",
+                    "technicalStandardsNorms",
+                    "technicalStandardsProtocols",
+                    "image",
+                )
+            )
+        )
+
+        exportObjTwo = DataExport("testTools.xlsx")
+        exportObjTwo.exportToXlsx()
+        
+        self.assertTrue(os.path.exists("testTools.xlsx"))
+        os.remove("testTools.xlsx")
 
 
 class TestTools(TestCase):

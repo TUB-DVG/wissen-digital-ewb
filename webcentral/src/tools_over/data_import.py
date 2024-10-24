@@ -52,7 +52,7 @@ class DataImportApp(DataImport):
         # "focus_en": "focus_en",
         "scale__en": "scale_en",
         # "lastUpdate_en": "lastUpdate_en",
-        "accessibility_en": "accessibility_en",
+        "accessibility__en": "accessibility_en",
         # "license_en": "license_en",
         # "licenseNotes_en": "licenseNotes_en",
         # "furtherInformation_en": "furtherInformation_en",
@@ -104,6 +104,14 @@ class DataImportApp(DataImport):
         Returns:
         obj:    ToolsSubproject the Tools-object was created or not.
         """
+
+        # check if there is already a tool with the same name present in the 
+        # database:
+        toolObjsFilteredByName = Tools.objects.filter(name=row[header.index("name")]) 
+        presentToolWithSameName = None
+        if len(toolObjsFilteredByName) > 0:
+            presentToolWithSameName = toolObjsFilteredByName[0]
+            self.diffStrDict[row[hader.index("name")]] = ""
 
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
@@ -318,8 +326,16 @@ class DataImportApp(DataImport):
             obj.technicalStandardsProtocols.add(
                 *technicalStandardsProtocolsElements
             )
-            # for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
-            #     setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
+            
+            if presentToolWithSameName is not None:
+                self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
+
+            if (
+            presentToolWithSameName is not None
+            and self.diffStrDict[self.dictIdentifier] != ""
+            ):
+                self._writeDiffStrToDB()
+
             obj = self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
