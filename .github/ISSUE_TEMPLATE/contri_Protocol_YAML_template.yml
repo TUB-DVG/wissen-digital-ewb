@@ -117,9 +117,9 @@ body:
       label: "13. Levels of Building Automation"
       description: "Describe the hierarchical structure for building automation system where the protocol is applied. Multiple choices allowed."
       options: 
-        - label: "field level"
-        - label: "automation level"
-        - label: "management level"
+        - label: "Field level"
+        - label: "Automation level"
+        - label: "Management level"
 
   - type: input
     id: data_model_architecture
@@ -179,7 +179,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## You have finished all the questions! Thank you so much for the data contribution!
+        ## You have finished all the questions! Thank you for the data contribution!
 
   - type: markdown
     attributes:
