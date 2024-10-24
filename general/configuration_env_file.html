@@ -14,7 +14,7 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data-Import" href="data_import.html" />
+    <link rel="next" title="Project repository structure" href="structure_project_repo.html" />
     <link rel="prev" title="Interacting with the EWB Wissensplattform" href="interacting_with_the_app.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -79,14 +79,15 @@ superuser with the new credentials.</p>
 </div>
 </section>
 <section id="filename-of-ssl-certificate-and-private-key-production">
-<h3>Filename of SSl certificate and private key (Production)<a class="headerlink" href="#filename-of-ssl-certificate-and-private-key-production" title="Link to this heading">¶</a></h3>
+<h3>Filename of SSL certificate and private key (Production)<a class="headerlink" href="#filename-of-ssl-certificate-and-private-key-production" title="Link to this heading">¶</a></h3>
 <p>The filenames of the SSL-certificate and the private key inside the <code class="docutils literal notranslate"><span class="pre">nginx/conf/</span></code>-folder need to be set in the following way:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NGINX_SSL_CERTIFICATE_FILENAME</span><span class="o">=</span><span class="n">certificateName</span><span class="o">.</span><span class="n">crt</span>
 <span class="n">NGINX_SSL_CERTIFICATE_KEY_FILENAME</span><span class="o">=</span><span class="n">privateKeyName</span><span class="o">.</span><span class="n">key</span>
 </pre></div>
 </div>
-<div class="highlight-[note] notranslate"><div class="highlight"><pre><span></span>These variables onyl need to be set when configuring the production version of the `EWB Wissensplattform`.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These variables only need to be set when configuring the production version of the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code>.</p>
 </div>
 </section>
 </section>
@@ -128,6 +129,7 @@ superuser with the new credentials.</p>
 <li class="toctree-l2"><a class="reference internal" href="#description-of-used-environmental-variables">Description of used environmental variables</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="structure_project_repo.html">Project repository structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
@@ -144,7 +146,7 @@ superuser with the new credentials.</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="interacting_with_the_app.html" title="previous chapter">Interacting with the EWB Wissensplattform</a></li>
-      <li>Next: <a href="data_import.html" title="next chapter">Data-Import</a></li>
+      <li>Next: <a href="structure_project_repo.html" title="next chapter">Project repository structure</a></li>
   </ul></li>
 </ul>
 </div>

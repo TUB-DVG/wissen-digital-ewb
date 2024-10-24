@@ -141,4 +141,61 @@ To further simplify the database dump import process the `run` script provides a
 ```bash
     ./run up_initial dev postgres/webcentral_db_20240927_translation_use_cases_data_sufficiency.sql 
 ```
-This starts the development mode and loads the database dump located in the `postgres/`-folder with the specified name. 
+This starts the development mode and loads the database dump located in the `postgres/`-folder with the specified name.
+
+## Creating a new dump from the database
+To create a new dump, which contains the full database as a plain text file, the following command can be used when in the root folder of the project repository.
+```bash
+./run dump_db postgres/postgres_dump.sql 
+```
+This saves the dump in the file `postgres_dump.sql` in the `postgres/` folder.
+## Switching into the container-shell
+Sometimes it is necessary to attach a shell to a container and work in the container filesystem. This can be the case when it is needed to interact with the django application using the `manage.py` file inside the `webcentral`-container. The run-script provides a command to switch into the container shell:
+```
+./run webcentral_shell
+```
+This will open a shell instance inside the container and shell commands can be executed in the container. To exit the container shell `CTRL+C` can be used.
+The same can be done using the docker API:
+```
+docker exec -it webcentral bash
+```
+This command attaches a interactive bash-session to the docker container with the name `webcentral`.
+
+## Django makemigrations-command
+To execute the django management command `makemigrations` the run script can be used:
+```
+./run makemigrations
+```
+The equivalent docker and linux commands are described below:
+```
+docker exec -it webcentral bash
+cd src/
+python manage.py makemigrations
+```
+These commands create a container shell-session, change directory into the `src/`-folder and execute the `manage.py`-script with the `makemigrations` attribute.
+```{note}
+The `makemigrations` command creates `django` migration files, which are located in the app-specific `migrations/`-folder. When running the `Wissensplattform` in developement mode these files will also appear in the host filesystem. However, when in production mode, the migration files are not visible to the host filestytem and need to be copied manually.
+```
+## Django migrate-command
+To execute the `django` `migrate` command the run script can be used:
+```bash
+./run migrate
+```
+This is equivalent to the following docker and linux commands:
+```
+docker exec -it webcentral bash
+cd src/
+python manage.py migrate
+```
+These commands create a container shell-session, change directory into the `src/`-folder and execute the `manage.py`-script with the `migrate` attribute.
+## Django shell
+The `django` python shell can be entered with the following command:
+```bash
+./run shell
+```
+This is equivalent to the following commands:
+```bash
+docker exec -it webcentral bash
+cd src/
+python manage.py shell
+```

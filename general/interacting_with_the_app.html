@@ -184,6 +184,72 @@ To further simplify the database dump import process the <code class="docutils l
 </div>
 <p>This starts the development mode and loads the database dump located in the <code class="docutils literal notranslate"><span class="pre">postgres/</span></code>-folder with the specified name.</p>
 </section>
+<section id="creating-a-new-dump-from-the-database">
+<h2>Creating a new dump from the database<a class="headerlink" href="#creating-a-new-dump-from-the-database" title="Link to this heading">¶</a></h2>
+<p>To create a new dump, which contains the full database as a plain text file, the following command can be used when in the root folder of the project repository.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run<span class="w"> </span>dump_db<span class="w"> </span>postgres/postgres_dump.sql<span class="w"> </span>
+</pre></div>
+</div>
+<p>This saves the dump in the file <code class="docutils literal notranslate"><span class="pre">postgres_dump.sql</span></code> in the <code class="docutils literal notranslate"><span class="pre">postgres/</span></code> folder.</p>
+</section>
+<section id="switching-into-the-container-shell">
+<h2>Switching into the container-shell<a class="headerlink" href="#switching-into-the-container-shell" title="Link to this heading">¶</a></h2>
+<p>Sometimes it is necessary to attach a shell to a container and work in the container filesystem. This can be the case when it is needed to interact with the django application using the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> file inside the <code class="docutils literal notranslate"><span class="pre">webcentral</span></code>-container. The run-script provides a command to switch into the container shell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">webcentral_shell</span>
+</pre></div>
+</div>
+<p>This will open a shell instance inside the container and shell commands can be executed in the container. To exit the container shell <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code> can be used.
+The same can be done using the docker API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">webcentral</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<p>This command attaches a interactive bash-session to the docker container with the name <code class="docutils literal notranslate"><span class="pre">webcentral</span></code>.</p>
+</section>
+<section id="django-makemigrations-command">
+<h2>Django makemigrations-command<a class="headerlink" href="#django-makemigrations-command" title="Link to this heading">¶</a></h2>
+<p>To execute the django management command <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> the run script can be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">makemigrations</span>
+</pre></div>
+</div>
+<p>The equivalent docker and linux commands are described below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">webcentral</span> <span class="n">bash</span>
+<span class="n">cd</span> <span class="n">src</span><span class="o">/</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">makemigrations</span>
+</pre></div>
+</div>
+<p>These commands create a container shell-session, change directory into the <code class="docutils literal notranslate"><span class="pre">src/</span></code>-folder and execute the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code>-script with the <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> attribute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">makemigrations</span></code> command creates <code class="docutils literal notranslate"><span class="pre">django</span></code> migration files, which are located in the app-specific <code class="docutils literal notranslate"><span class="pre">migrations/</span></code>-folder. When running the <code class="docutils literal notranslate"><span class="pre">Wissensplattform</span></code> in developement mode these files will also appear in the host filesystem. However, when in production mode, the migration files are not visible to the host filestytem and need to be copied manually.</p>
+</div>
+</section>
+<section id="django-migrate-command">
+<h2>Django migrate-command<a class="headerlink" href="#django-migrate-command" title="Link to this heading">¶</a></h2>
+<p>To execute the <code class="docutils literal notranslate"><span class="pre">django</span></code> <code class="docutils literal notranslate"><span class="pre">migrate</span></code> command the run script can be used:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run<span class="w"> </span>migrate
+</pre></div>
+</div>
+<p>This is equivalent to the following docker and linux commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">exec</span> <span class="o">-</span><span class="n">it</span> <span class="n">webcentral</span> <span class="n">bash</span>
+<span class="n">cd</span> <span class="n">src</span><span class="o">/</span>
+<span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>
+</pre></div>
+</div>
+<p>These commands create a container shell-session, change directory into the <code class="docutils literal notranslate"><span class="pre">src/</span></code>-folder and execute the <code class="docutils literal notranslate"><span class="pre">manage.py</span></code>-script with the <code class="docutils literal notranslate"><span class="pre">migrate</span></code> attribute.</p>
+</section>
+<section id="django-shell">
+<h2>Django shell<a class="headerlink" href="#django-shell" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">django</span></code> python shell can be entered with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./run<span class="w"> </span>shell
+</pre></div>
+</div>
+<p>This is equivalent to the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>webcentral<span class="w"> </span>bash
+<span class="nb">cd</span><span class="w"> </span>src/
+python<span class="w"> </span>manage.py<span class="w"> </span>shell
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -222,9 +288,15 @@ To further simplify the database dump import process the <code class="docutils l
 <li class="toctree-l2"><a class="reference internal" href="#stoping-the-application">Stoping the application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#removing-the-content-of-the-database">Removing the content of the database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#loading-a-dump-into-the-database">Loading a dump into the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-dump-from-the-database">Creating a new dump from the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switching-into-the-container-shell">Switching into the container-shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#django-makemigrations-command">Django makemigrations-command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#django-migrate-command">Django migrate-command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#django-shell">Django shell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_env_file.html">Configuration using .env file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure_project_repo.html">Project repository structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>

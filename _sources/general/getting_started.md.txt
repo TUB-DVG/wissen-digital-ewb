@@ -1,10 +1,10 @@
 # Getting started
 This document describes the basic setup process for the development environment of the EWB-Wissensplattform. It is intended to acclimatize the user with the project. Please consult the developer documentation for a more in-depth view.
 
-To start the EWB-Wissensplattform the tools docker and docker-compose are needed. Please read the installation manual on the `docker website <https://docs.docker.com/engine/install/>`_ for your operating system. Furthermore `node.js` is needed. It can be downloaded from the official website: https://nodejs.org/en/download/package-manager. Please install the latest LTS-version.
+To start the EWB-Wissensplattform the tools docker and docker-compose are needed. Please read the installation manual on the [docker website](https://docs.docker.com/engine/install/) for your operating system. Furthermore `node.js` is needed. It can be downloaded from the official website: https://nodejs.org/en/download/package-manager. Please install the latest LTS-version.
 
 ```{note}
-We have tested the web application on linux, macOS and windows. However if you are not working on linux you need to install the `Bash`-shell, since bash-scripts are used as utilities and as a entry-point to the application. One way to install Bash is when installing `git under windows <https://gitforwindows.org/>`. In the following guide, linux commands are used. Please execute these commands in your installed Bash-shell. 
+We have tested the web application on linux, macOS and windows. However if you are not working on linux you need to install the `Bash`-shell, since bash-scripts are used as utilities and as a entry-point to the application. One way to install Bash is when installing [git under windows](https://gitforwindows.org/). In the following guide, linux commands are used. Please execute these commands in your installed Bash-shell. 
 ```
 1. Please clone the repository to a local location of your choice. 
 2. Create a .env-file from the the .env.example file.

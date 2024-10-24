@@ -49,10 +49,66 @@ In general, the production mode of the application can be seen as a security har
 </pre></div>
 </div>
 </section>
+<section id="general-procedure">
+<h3>General procedure<a class="headerlink" href="#general-procedure" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Copy the certificate and private key file, like shown in the previous section.</p></li>
+<li><p>Build the app: This needs to be done, since the certificate- and private key file needs to be copied into the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> docker image:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">build_initial</span> <span class="n">prod</span>
+</pre></div>
+</div>
+<p>If on the computer you are deploying the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code> a deployment has already be made, there should be a database already present inside a docker volume.</p>
+<section id="already-present-database">
+<h4>Already present database<a class="headerlink" href="#already-present-database" title="Link to this heading">¶</a></h4>
+<p>If this is the case you can just start the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code> in the forground of the terminal you are using or in the background using <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span></code> together with the <code class="docutils literal notranslate"><span class="pre">-d</span></code> flag:
+3. You can use the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">up</span> <span class="n">prod</span>
+</pre></div>
+</div>
+<p>This starts the application in production mode in the foreground of the terminal.
+Or you can use the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span></code> syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">prod</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The docker compose command is not fully equivalent to the run-script command since the -d flag is added, which detaches the compose command from the current terminal. If you like to keep the execution in the foreground of the current terminal you can skip the -d flag.</p>
+</div>
 </section>
-<section id="encryption">
-<h2>Encryption<a class="headerlink" href="#encryption" title="Link to this heading">¶</a></h2>
-<p>Web applications today should use HTTPS to comunicate with a client web browser. To make the encryption work, a certificate file and a private key file needs to be present. The paths to these files need to be specfied in the <code class="docutils literal notranslate"><span class="pre">nginx</span></code> configuration.</p>
+<section id="newly-created-database">
+<h4>Newly created database<a class="headerlink" href="#newly-created-database" title="Link to this heading">¶</a></h4>
+<p>If there was is no database present the following steps need to be taken:
+3. Use the present dump in the <code class="docutils literal notranslate"><span class="pre">postgres/</span></code>-folder or a dump which was created in the past. You can either use the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script with the <code class="docutils literal notranslate"><span class="pre">up_initial</span></code> command or a series of run-script commands, which will be described in tthe following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">up_initial</span> <span class="n">prod</span> <span class="n">postgres</span><span class="o">/</span><span class="n">dump_filename</span><span class="o">.</span><span class="n">sql</span> 
+</pre></div>
+</div>
+<p>The above command is one convience command, starting the application, importing the dump with the name <code class="docutils literal notranslate"><span class="pre">dump_filename.sql</span></code> from the <code class="docutils literal notranslate"><span class="pre">postgres/</span></code> folder and restarting it bring the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code> into a healthy state.
+Alternativly all the steps to import the dump can be done manually:
+3. Start the application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">up</span> <span class="n">prod</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Open a second terminal and navigate to the root-folder of the project.
+Executing the following command will load the dump with the filename <code class="docutils literal notranslate"><span class="pre">dump_filename.sql</span></code> from the <code class="docutils literal notranslate"><span class="pre">postgres/</span></code>-folder:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">restore_db</span> <span class="n">postgres</span><span class="o">/</span><span class="n">dump_filename</span><span class="o">.</span><span class="n">sql</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>After the import process has been completed, the web application needs to be restarted. To do that please switch back to the terminal where the <code class="docutils literal notranslate"><span class="pre">EWB</span> <span class="pre">Wissensplattform</span></code> is running and stop it using <code class="docutils literal notranslate"><span class="pre">CTRL+C</span></code>. After that restart it using:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">run</span> <span class="n">up</span> <span class="n">prod</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">compose</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">f</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">prod</span><span class="o">.</span><span class="n">yml</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>to start it in detached mode in the background.</p>
+</section>
+</section>
 </section>
 <section id="cache-busting-techniques">
 <h2>Cache busting techniques<a class="headerlink" href="#cache-busting-techniques" title="Link to this heading">¶</a></h2>
@@ -107,11 +163,11 @@ The location of the <code class="docutils literal notranslate"><span class="pre"
 <li class="toctree-l1"><a class="reference internal" href="basic_structure.html">Structure of the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_env_file.html">Configuration using .env file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure_project_repo.html">Project repository structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running the app in production</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#running-wissensplattform-without-citygml-visulizations">Running Wissensplattform without CityGML visulizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#encryption">Encryption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cache-busting-techniques">Cache busting techniques</a></li>
 </ul>
 </li>

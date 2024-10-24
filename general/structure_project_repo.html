@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; webcentral 0.0.1 documentation</title>
+    <title>Project repository structure &#8212; webcentral 0.0.1 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
@@ -14,6 +14,8 @@
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data-Import" href="data_import.html" />
+    <link rel="prev" title="Configuration using .env file" href="configuration_env_file.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -31,7 +33,21 @@
 
           <div class="body" role="main">
             
-  
+  <section id="project-repository-structure">
+<h1>Project repository structure<a class="headerlink" href="#project-repository-structure" title="Link to this heading">¶</a></h1>
+<p>On this page the structure of the project repository is described.</p>
+<p>The root folder of the project contains global configuration files, text files for the interested github user and the <code class="docutils literal notranslate"><span class="pre">run</span></code>-script as a way to interact with the application. Furthermore 3 folders are present, namly <code class="docutils literal notranslate"><span class="pre">webcentral/</span></code>, <code class="docutils literal notranslate"><span class="pre">postgres/</span></code> and <code class="docutils literal notranslate"><span class="pre">nginx/</span></code>, which correspond to the basic docker containers of the application. These folders contain the files, which are relevant to the specfic containers. Their content is summarized briefly in the following sections.</p>
+<section id="webcentral-folder">
+<h2>webcentral-folder<a class="headerlink" href="#webcentral-folder" title="Link to this heading">¶</a></h2>
+<p>This folder contains the content relevant for the <code class="docutils literal notranslate"><span class="pre">django</span></code> application container. Inside <code class="docutils literal notranslate"><span class="pre">webcentral/</span></code> are 3 folders: <code class="docutils literal notranslate"><span class="pre">src/</span></code>, <code class="docutils literal notranslate"><span class="pre">doc/</span></code>, <code class="docutils literal notranslate"><span class="pre">test/</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">src/</span></code>-folder holds the source code of the django-application. The <code class="docutils literal notranslate"><span class="pre">doc/</span></code>-folder contains the collected data, which was imported into the database in spreadsheet files.</p>
+<section id="structure-of-the-src-folder">
+<h3>Structure of the src-folder<a class="headerlink" href="#structure-of-the-src-folder" title="Link to this heading">¶</a></h3>
+<p>Below the <code class="docutils literal notranslate"><span class="pre">src/</span></code>-folder lies a typical <code class="docutils literal notranslate"><span class="pre">django</span></code>-project structure (For more information, visit <a class="reference external" href="https://docs.djangoproject.com/en/5.1/">django-documentation</a>). In that folder also the <code class="docutils literal notranslate"><span class="pre">django</span></code> management-script <code class="docutils literal notranslate"><span class="pre">manage.py</span></code> is located, which can be used to interact with the <code class="docutils literal notranslate"><span class="pre">django</span></code> project.</p>
+</section>
+</section>
+</section>
+
 
           </div>
           
@@ -59,12 +75,15 @@
 </search>
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basic_structure.html">Structure of the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration_env_file.html">Configuration using .env file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="structure_project_repo.html">Project repository structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project repository structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#webcentral-folder">webcentral-folder</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="production.html">Running the app in production</a></li>
@@ -80,6 +99,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="configuration_env_file.html" title="previous chapter">Configuration using .env file</a></li>
+      <li>Next: <a href="data_import.html" title="next chapter">Data-Import</a></li>
   </ul></li>
 </ul>
 </div>
@@ -103,7 +124,7 @@
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
       |
-      <a href="../_sources/general/index.rst.txt"
+      <a href="../_sources/general/structure_project_repo.md.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -37,7 +37,7 @@
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>The shift from a traditional supply infrastructure to a regenerative, decentralized energy system increased complexity and necessitates the integration of previously independent sectors. The efficient operation of these systems relies on modern IT communication and control technologies. This transition poses significant changes and new challenges for all stakeholders, alongside a substantial need for research.
-Research, development, and innovation projects in the field of [Energiewendebauen](<a class="reference external" href="https://www.energiewendebauen.de/">https://www.energiewendebauen.de/</a>), as well as real-world energy transition laboratories, focus on various aspects of this multifaceted topic. They conduct in-depth analyses of the economic, political, and user-specific requirements and challenges.
+Research, development, and innovation projects in the field of <a class="reference external" href="https://www.energiewendebauen.de/">Energiewendebauen</a>, as well as real-world energy transition laboratories, focus on various aspects of this multifaceted topic. They conduct in-depth analyses of the economic, political, and user-specific requirements and challenges.
 A key objective of the EWB Wissensplattform is to simplify and disseminate the findings from these projects.  It serves as a repository where knowledge is aggregated and tailored for different user groups. The platform emphasizes the visual presentation of data, examines the impacts of varying conditions, and facilitates the application of technological advancements. It also involves the verification of digital tools and supports the testing and development of new methodologies.
 web interface with data base system of project infromation of the “Begleitforschung Energiewendebauen 2020” (focus modul digitalization).</p>
 </section>
@@ -64,11 +64,20 @@ web interface with data base system of project infromation of the “Begleitfors
 <li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#stoping-the-application">Stoping the application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#removing-the-content-of-the-database">Removing the content of the database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#loading-a-dump-into-the-database">Loading a dump into the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#creating-a-new-dump-from-the-database">Creating a new dump from the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#switching-into-the-container-shell">Switching into the container-shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#django-makemigrations-command">Django makemigrations-command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#django-migrate-command">Django migrate-command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="general/interacting_with_the_app.html#django-shell">Django shell</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="general/configuration_env_file.html">Configuration using .env file</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="general/configuration_env_file.html#create-a-env-file">Create a .env-file</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/configuration_env_file.html#description-of-used-environmental-variables">Description of used environmental variables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="general/structure_project_repo.html">Project repository structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="general/structure_project_repo.html#webcentral-folder">webcentral-folder</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="general/data_import.html">Data-Import</a><ul>
@@ -79,7 +88,6 @@ web interface with data base system of project infromation of the “Begleitfors
 <li class="toctree-l1"><a class="reference internal" href="general/migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/production.html">Running the app in production</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="general/production.html#running-wissensplattform-without-citygml-visulizations">Running Wissensplattform without CityGML visulizations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="general/production.html#encryption">Encryption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="general/production.html#cache-busting-techniques">Cache busting techniques</a></li>
 </ul>
 </li>
@@ -88,6 +96,12 @@ web interface with data base system of project infromation of the “Begleitfors
 </section>
 <section id="developer-guide">
 <h1>Developer guide<a class="headerlink" href="#developer-guide" title="Link to this heading">¶</a></h1>
+</section>
+<section id="howto-guides">
+<h1>HowTo Guides<a class="headerlink" href="#howto-guides" title="Link to this heading">¶</a></h1>
+</section>
+<section id="old-to-be-refactored">
+<h1>Old to be refactored<a class="headerlink" href="#old-to-be-refactored" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -148,6 +162,7 @@ web interface with data base system of project infromation of the “Begleitfors
 <li class="toctree-l1"><a class="reference internal" href="general/basic_structure.html">Structure of the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/interacting_with_the_app.html">Interacting with the EWB Wissensplattform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/configuration_env_file.html">Configuration using .env file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="general/structure_project_repo.html">Project repository structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/data_import.html">Data-Import</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/migrations.html">Django - Migrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/production.html">Running the app in production</a></li>
