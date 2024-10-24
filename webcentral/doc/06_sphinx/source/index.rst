@@ -36,11 +36,12 @@ End user guide
    general/production
 
 Developer guide
-=============
+===============
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
    dev/template_strucuture
    dev/style_guide
    dev/static_code_analysis
@@ -57,6 +58,7 @@ HowTo Guides
 .. toctree::
    :maxdepth: 2
    :caption: HowTo:
+   
    HowTo/create_dump_for_repo
 
 Old to be refactored
