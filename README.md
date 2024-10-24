@@ -103,11 +103,11 @@ We welcome data contributions to our database system! To ensure consistency and 
 1. **Select the Appropriate Template**:  
    We have prepared several templates depending on the type of data you wish to contribute:   
 
-   - **Datasets Contribution**: For contributing datasets related to environmental, climate, or any other scientific data. For further information, please visit our website of [Datasets](https://wissen-digital-ewb.de/en/dataset_list/).
-   - **Norm Data Contribution**: For contributing information about standards and norms. For further information, please visit our website of [Norms](https://wissen-digital-ewb.de/en/TechnicalStandards/norm).
-   - **Protocol Data Contribution**: For contributing details on communication protocols used in systems. For further information, please visit our website of [Protocols](https://wissen-digital-ewb.de/en/TechnicalStandards/protocol).
+   - **Datasets Contribution**: For contributing datasets related to environmental, energy, or any other scientific data. For further information, please visit our website of [Datasets](https://wissen-digital-ewb.de/en/dataset_list/).
+   - **Norm Data Contribution**: For contributing information about technical standards and norms. For further information, please visit our website of [Norms](https://wissen-digital-ewb.de/en/TechnicalStandards/norm).
+   - **Protocol Data Contribution**: For contributing details on technical protocols used in systems. For further information, please visit our website of [Protocols](https://wissen-digital-ewb.de/en/TechnicalStandards/protocol).
    - **Weather Data Contribution**: For contributing weather-related datasets or applications. For further information, please visit our website of [Weather Data](https://wissen-digital-ewb.de/en/weatherdata_list/).
-   - **Tools/Application Data Contribution**: For contributing information about applications and tools that are used in data processing or analysis. For further information, please visit our website of [Digital Tools](https://wissen-digital-ewb.de/en/tool_list/) and [Digital Applications](https://wissen-digital-ewb.de/en/tool_list/technicalApps/).   
+   - **Tools/Application Data Contribution**: For contributing information about digital applications and digital tools that are used, developed or further developed. For further information, please visit our website of [Digital Tools](https://wissen-digital-ewb.de/en/tool_list/) and [Digital Applications](https://wissen-digital-ewb.de/en/tool_list/technicalApps/).   
    
    Each template can be found under the "Issues" section of this repository.   
 
