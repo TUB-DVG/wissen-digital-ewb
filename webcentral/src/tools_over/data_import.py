@@ -78,6 +78,8 @@ class DataImportApp(DataImport):
             Represents the file-path to the Data-File (xlsx or csv).
         """
         super().__init__(path_to_data_file)
+        self.dictIdentifier = None
+        self.personalDataFlag = False
 
     def getOrCreate(
         self,
