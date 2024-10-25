@@ -30,24 +30,21 @@ class TestToolsDataImport(TestCase):
             "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
 
-        
         # test if the english translation was imported:
         technicalFocus = Focus.objects.get(focus_en="technical")
-        
+
         self.assertEqual(
             len(
                 Tools.objects.filter(
                     name__icontains="nPro",
                     focus=technicalFocus,
                 )
-            ), 
+            ),
             1,
         )
 
     def testDuplicateImport(self):
-        """Test if a DbDiff-object is created when importing a dataset for a tool, which is already present in the database.
-
-        """
+        """Test if a DbDiff-object is created when importing a dataset for a tool, which is already present in the database."""
         call_command(
             "data_import",
             "tools_over",
@@ -63,9 +60,6 @@ class TestToolsDataImport(TestCase):
         self.assertEqual(len(DbDiff.objects.all()), 1)
         self.assertTrue("operational" in DbDiff.objects.all()[0].diffStr)
         self.assertTrue("betrieblich" in DbDiff.objects.all()[0].diffStr)
-
-        
-    
 
     def test_import_of_english_translation(self):
         # create test-data
