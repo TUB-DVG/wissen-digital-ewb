@@ -41,7 +41,16 @@
     display: flex;
     padding: 24px;
   }
-.globalShowMoreButton {
+  .ecologicalShowMoreButton {
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+  .globalShowMoreButton {
     width: 100%;
     gap: 16px;
     font-size: 22px;
@@ -59,6 +68,26 @@
     align-items: center;
     display: flex;
     padding: 24px;
+  }
+  .ecologicalShowMore {
+    background-color: $ecological-light-color;
+    width: 100%;
+    gap: 16px;
+    font-size: 22px;
+    gap: 16px;
+    align-items: center;
+    display: flex;
+    padding: 24px;
+  }
+  .ecologicalCollapse,
+  .ecologicalCollapse + div,
+  .ecologicalCollapse + div .showMore {
+    transition: background-color 0.2s;
+  }
+  .ecologicalCollapse.show,
+  .ecologicalCollapse.show + div,
+  .ecologicalCollapse.show + div .globalShowMore {
+    background-color: $ecological-light-color !important;
   }
 
   .explanationSubHeading {

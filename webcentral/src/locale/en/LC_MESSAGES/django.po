@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-22 15:22+0000\n"
+"POT-Creation-Date: 2024-10-25 19:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,132 +157,132 @@ msgstr "Others"
 msgid "Verfügbarkeit"
 msgstr "Availability"
 
-#: LastProfile/Dash_app/Stromlast.py:30 LastProfile/Dash_app/Stromlast.py:152
+#: LastProfile/Dash_app/Stromlast.py:31 LastProfile/Dash_app/Stromlast.py:153
 msgid "Stromlast Approximation"
 msgstr "Current load approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:37 LastProfile/Dash_app/Stromlast.py:123
+#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:124
 msgid "Gewerbe allgemein "
 msgstr "Business in general"
 
-#: LastProfile/Dash_app/Stromlast.py:38 LastProfile/Dash_app/Stromlast.py:124
+#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:125
 msgid "Gewerbe werktags 8-18 "
 msgstr "Business weekdays 8 a.m. to 6 p.m"
 
-#: LastProfile/Dash_app/Stromlast.py:39 LastProfile/Dash_app/Stromlast.py:125
+#: LastProfile/Dash_app/Stromlast.py:40 LastProfile/Dash_app/Stromlast.py:126
 msgid "Gewerbe Verbrauch Abend"
 msgstr "Commercial consumption evening"
 
-#: LastProfile/Dash_app/Stromlast.py:40 LastProfile/Dash_app/Stromlast.py:126
+#: LastProfile/Dash_app/Stromlast.py:41 LastProfile/Dash_app/Stromlast.py:127
 msgid "Gewerbe durchlaufend"
 msgstr "Business continuous"
 
-#: LastProfile/Dash_app/Stromlast.py:41 LastProfile/Dash_app/Stromlast.py:127
+#: LastProfile/Dash_app/Stromlast.py:42 LastProfile/Dash_app/Stromlast.py:128
 msgid "Laden Friseur  "
 msgstr "Shop hairdresser"
 
-#: LastProfile/Dash_app/Stromlast.py:42 LastProfile/Dash_app/Stromlast.py:128
+#: LastProfile/Dash_app/Stromlast.py:43 LastProfile/Dash_app/Stromlast.py:129
 msgid "Bäckerei mit Backstube "
 msgstr "Bakery with bakehouse"
 
-#: LastProfile/Dash_app/Stromlast.py:43 LastProfile/Dash_app/Stromlast.py:129
+#: LastProfile/Dash_app/Stromlast.py:44 LastProfile/Dash_app/Stromlast.py:130
 msgid "Wochenendbetrieb "
 msgstr "Weekend operation"
 
-#: LastProfile/Dash_app/Stromlast.py:44 LastProfile/Dash_app/Stromlast.py:130
+#: LastProfile/Dash_app/Stromlast.py:45 LastProfile/Dash_app/Stromlast.py:131
 msgid "Haushaltskunden "
 msgstr "Household customers"
 
-#: LastProfile/Dash_app/Stromlast.py:45 LastProfile/Dash_app/Stromlast.py:131
+#: LastProfile/Dash_app/Stromlast.py:46 LastProfile/Dash_app/Stromlast.py:132
 msgid "Landwirtschaftsbetriebe "
 msgstr "Farming operations"
 
-#: LastProfile/Dash_app/Stromlast.py:47 LastProfile/Dash_app/Stromlast.py:132
+#: LastProfile/Dash_app/Stromlast.py:48 LastProfile/Dash_app/Stromlast.py:133
 msgid "Landwirts. mit Milchwirts Tierzucht "
 msgstr "Farming operations with dairy farming"
 
-#: LastProfile/Dash_app/Stromlast.py:50 LastProfile/Dash_app/Stromlast.py:133
+#: LastProfile/Dash_app/Stromlast.py:51 LastProfile/Dash_app/Stromlast.py:134
 msgid "Übrige Landwirtschaftsbe "
 msgstr "Other agricultural businesses"
 
-#: LastProfile/Dash_app/Stromlast.py:58 LastProfile/Dash_app/Stromlast.py:153
+#: LastProfile/Dash_app/Stromlast.py:59 LastProfile/Dash_app/Stromlast.py:154
 msgid "Jahresstrombedarf in kWh/a"
 msgstr "Annual electricity requirement in KWh/a"
 
-#: LastProfile/Dash_app/Stromlast.py:64 LastProfile/Dash_app/Stromlast.py:136
+#: LastProfile/Dash_app/Stromlast.py:65 LastProfile/Dash_app/Stromlast.py:137
 #: LastProfile/Dash_app/Warmelast.py:191 LastProfile/Dash_app/Warmelast.py:324
 msgid "Januar"
 msgstr "January"
 
-#: LastProfile/Dash_app/Stromlast.py:65 LastProfile/Dash_app/Stromlast.py:137
+#: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Stromlast.py:138
 #: LastProfile/Dash_app/Warmelast.py:192 LastProfile/Dash_app/Warmelast.py:325
 msgid "Februar"
 msgstr "February"
 
-#: LastProfile/Dash_app/Stromlast.py:66 LastProfile/Dash_app/Stromlast.py:138
+#: LastProfile/Dash_app/Stromlast.py:67 LastProfile/Dash_app/Stromlast.py:139
 #: LastProfile/Dash_app/Warmelast.py:193 LastProfile/Dash_app/Warmelast.py:326
 msgid "März"
 msgstr "March"
 
-#: LastProfile/Dash_app/Stromlast.py:67 LastProfile/Dash_app/Stromlast.py:139
+#: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Stromlast.py:140
 #: LastProfile/Dash_app/Warmelast.py:194 LastProfile/Dash_app/Warmelast.py:327
 msgid "April"
 msgstr "April"
 
-#: LastProfile/Dash_app/Stromlast.py:68 LastProfile/Dash_app/Stromlast.py:140
+#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:141
 #: LastProfile/Dash_app/Warmelast.py:195 LastProfile/Dash_app/Warmelast.py:328
 msgid "Mai"
 msgstr "May"
 
-#: LastProfile/Dash_app/Stromlast.py:69 LastProfile/Dash_app/Stromlast.py:141
+#: LastProfile/Dash_app/Stromlast.py:70 LastProfile/Dash_app/Stromlast.py:142
 #: LastProfile/Dash_app/Warmelast.py:196 LastProfile/Dash_app/Warmelast.py:329
 msgid "Juni"
 msgstr "June"
 
-#: LastProfile/Dash_app/Stromlast.py:70 LastProfile/Dash_app/Stromlast.py:142
+#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:143
 #: LastProfile/Dash_app/Warmelast.py:197 LastProfile/Dash_app/Warmelast.py:330
 msgid "Juli"
 msgstr "July"
 
-#: LastProfile/Dash_app/Stromlast.py:71 LastProfile/Dash_app/Stromlast.py:143
+#: LastProfile/Dash_app/Stromlast.py:72 LastProfile/Dash_app/Stromlast.py:144
 #: LastProfile/Dash_app/Warmelast.py:198 LastProfile/Dash_app/Warmelast.py:331
 msgid "August"
 msgstr "August"
 
-#: LastProfile/Dash_app/Stromlast.py:72 LastProfile/Dash_app/Stromlast.py:144
+#: LastProfile/Dash_app/Stromlast.py:73 LastProfile/Dash_app/Stromlast.py:145
 msgid "September"
 msgstr "September"
 
-#: LastProfile/Dash_app/Stromlast.py:73 LastProfile/Dash_app/Stromlast.py:145
+#: LastProfile/Dash_app/Stromlast.py:74 LastProfile/Dash_app/Stromlast.py:146
 #: LastProfile/Dash_app/Warmelast.py:200 LastProfile/Dash_app/Warmelast.py:333
 msgid "Oktober"
 msgstr "October"
 
-#: LastProfile/Dash_app/Stromlast.py:74 LastProfile/Dash_app/Stromlast.py:146
+#: LastProfile/Dash_app/Stromlast.py:75 LastProfile/Dash_app/Stromlast.py:147
 #: LastProfile/Dash_app/Warmelast.py:201 LastProfile/Dash_app/Warmelast.py:334
 msgid "November"
 msgstr "November"
 
-#: LastProfile/Dash_app/Stromlast.py:75 LastProfile/Dash_app/Stromlast.py:147
+#: LastProfile/Dash_app/Stromlast.py:76 LastProfile/Dash_app/Stromlast.py:148
 #: LastProfile/Dash_app/Warmelast.py:202 LastProfile/Dash_app/Warmelast.py:335
 msgid "Dezember"
 msgstr "December"
 
-#: LastProfile/Dash_app/Stromlast.py:83 LastProfile/Dash_app/Stromlast.py:150
+#: LastProfile/Dash_app/Stromlast.py:84 LastProfile/Dash_app/Stromlast.py:151
 #: LastProfile/Dash_app/Warmelast.py:209 LastProfile/Dash_app/Warmelast.py:640
 msgid "Approximation starten"
 msgstr "Start approximation"
 
-#: LastProfile/Dash_app/Stromlast.py:86 LastProfile/Dash_app/Stromlast.py:151
+#: LastProfile/Dash_app/Stromlast.py:87 LastProfile/Dash_app/Stromlast.py:152
 #: LastProfile/Dash_app/Warmelast.py:211 LastProfile/Dash_app/Warmelast.py:641
 msgid "Download als csv"
 msgstr "Download as csv"
 
-#: LastProfile/Dash_app/Stromlast.py:230 LastProfile/Dash_app/Warmelast.py:468
+#: LastProfile/Dash_app/Stromlast.py:227 LastProfile/Dash_app/Warmelast.py:468
 msgid "Datum"
 msgstr "Date"
 
-#: LastProfile/Dash_app/Stromlast.py:233
+#: LastProfile/Dash_app/Stromlast.py:230
 msgid "Stromlastgang in kW"
 msgstr "Current load profile in kW"
 
@@ -470,7 +470,7 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:528
+#: StartSearch/views.py:416 pages/views.py:512
 #: templates/partials/_navbar.html:263
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Überblick über technische Standards - Normen"
 msgstr "Overview of technical standards - Norms"
 
-#: TechnicalStandards/views.py:79
+#: TechnicalStandards/views.py:80
 msgid ""
 "Auf dieser Seite befinden sich unterschiedlichen technische Normen, die im "
 "Herbst 2022 erfasst worden sind. Diese sind durch Recherche in "
@@ -535,11 +535,11 @@ msgstr ""
 "catalogs, standards databases, and in research projects of the "
 "Energiewendebauen projects."
 
-#: TechnicalStandards/views.py:87
+#: TechnicalStandards/views.py:88
 msgid "Bezeichnung"
 msgstr "Designation"
 
-#: TechnicalStandards/views.py:163 component_list/views.py:183
+#: TechnicalStandards/views.py:164 component_list/views.py:183
 #: templates/TechnicalStandards/explanation.html:79
 #: templates/TechnicalStandards/norm-detail.html:67
 #: templates/TechnicalStandards/norm-detail.html:145
@@ -547,18 +547,18 @@ msgstr "Designation"
 msgid "Quelle"
 msgstr "Source"
 
-#: TechnicalStandards/views.py:288
+#: TechnicalStandards/views.py:289
 #: templates/TechnicalStandards/explanation.html:4
 #: templates/TechnicalStandards/norm-listings.html:26
 msgid "Überblick über technische Standards"
 msgstr "Overview of technical standards"
 
-#: TechnicalStandards/views.py:290
+#: TechnicalStandards/views.py:291
 #: templates/TechnicalStandards/explanation.html:116
 msgid "Protokolle"
 msgstr "protocols"
 
-#: TechnicalStandards/views.py:292
+#: TechnicalStandards/views.py:293
 msgid ""
 "Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die "
 "im Sommer 2023 erfasst worden sind."
@@ -566,22 +566,22 @@ msgstr ""
 "On this page, you will find various technical protocols that were recorded "
 "in the summer of 2023."
 
-#: TechnicalStandards/views.py:318 TechnicalStandards/views.py:320
+#: TechnicalStandards/views.py:319 TechnicalStandards/views.py:321
 msgid "Verkabelt"
 msgstr "Wired"
 
-#: TechnicalStandards/views.py:318 TechnicalStandards/views.py:319
+#: TechnicalStandards/views.py:319 TechnicalStandards/views.py:320
 msgid "Drahtlos"
 msgstr "Wireless"
 
-#: TechnicalStandards/views.py:326
+#: TechnicalStandards/views.py:327
 #: templates/TechnicalStandards/explanation.html:144
 #: templates/TechnicalStandards/protocol-detail.html:273
 #: templates/TechnicalStandards/protocol-explanation.html:54
 msgid "Open-Source-Status"
 msgstr "Open-Source-status"
 
-#: TechnicalStandards/views.py:329
+#: TechnicalStandards/views.py:330
 msgid "Proprietär"
 msgstr "Proprietary"
 
@@ -1305,7 +1305,11 @@ msgstr ""
 "digital applications in order to be able to make well-founded decisions for "
 "their own projects."
 
-#: pages/views.py:350
+#: pages/views.py:351 pages/views.py:380 templates/partials/_navbar.html:226
+msgid "Datensuffizienz"
+msgstr "Data sufficiency"
+
+#: pages/views.py:353
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1315,117 +1319,18 @@ msgid ""
 "Datenverarbeitung: von der Erhebung, der Weiterverarbeitung, der Speicherung "
 "bis zur Löschung. Gerade die ökologischen Auswirkungen eines "
 "(in-)suffizienten Umgangs mit Daten sind derzeit noch wenig untersucht und "
-"bleiben in der Praxis oftmals unbeachtet.\n"
-"\n"
-"Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem "
-"notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, "
-"wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb "
-"verbunden ist. Dieser Begriff ordnet unter sich unter „Software-Suffizienz“ "
-"ein als Teil der Digitalen Suffizienz aus Santarius et al. (2023). "
-"Gleichzeitig soll bei der Datenerhebung, -übermittlung, -verarbeitung und -"
-"speicherung Hardware mit ressourcenschonendem Materialeinsatz und "
-"ressourcenschonende Übermittlungswege gewählt werden. Damit sollen die "
-"negativen ökologischen Wirkungen, die mit der Implementierung digitaler "
-"Anwendungen einhergehen, möglichst reduziert werden, während ein möglichst "
-"großer Nutzen erzielt werden soll.  \n"
-"\n"
-"Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der "
-"Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 "
-"Abs. 1c der Datenschutz-Grundverordnung (DSGVO) für personenbezogene Daten "
-"definiert ist, und darauf abzielt, das Risiko für die Rechte und Freiheiten "
-"natürlicher Personen zu reduzieren. Der Begriff Datenminimierung aus der "
-"DSGVO ersetzt die Begriffe Datensparsamkeit und -vermeidung, die im "
-"Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden.\n"
-"\n"
-"Während die Datenminimierung also Grundrechtsrisiken durch extensive, nicht "
-"erforderliche Datenverarbeitung verhindert, zielt die Datensuffizienz darauf "
-"ab, die ökologischen Wirkungen durch die Erhebung, Verarbeitung und "
-"Speicherung von extensiven, nicht erforderlichen Daten zu minimieren. Um "
-"eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
-"unterschiedliche Begriffe verwendet.\n"
-"\n"
-"Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten "
-"generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen "
-"Zweck sie im weiteren Verlauf erfüllen werden und ob den Erwartungen an eine "
-"Forschungsarbeit auch entsprochen wird. Diese Maxime wissenschaftlichen "
-"Arbeitens soll auch mit diesem Ansatz nicht in Frage gestellt werden, jedoch "
-"sollte Datensuffizienz bei der Entwicklung im Hinblick auf die spätere "
-"Nutzungsphase mitgedacht werden. Denn werden die in Forschungsprojekten "
-"entwickelten digitalen Lösungen auf den Markt gebracht, können bei der "
-"Verbreitung datensparsamer Technologien durch die Mengeneffekte ökologische "
-"Wirkungen erzielt werden.   \n"
-"\n"
-"Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
-"und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen.\n"
-"\n"
-"Literatur\n"
-"\n"
-"Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, Gossen, "
-"Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, Friederike, Lange, "
-"Steffen (2023): Digitale Suffizienz: konzeptionelle Überlegungen für IKT auf "
-"einem endlichen Planeten. Annals of Telekommunikation. 78, 277–295 (2023). "
-"https://doi.org/10.1007/s12243-022-00914-x\n"
-"    "
+"bleiben in der Praxis oftmals unbeachtet."
 msgstr ""
-"Both the materialization and the energy required for the operation of ever-"
-"growing computing capacities are associated with negative environmental "
-"impacts. The efficient use of data – data sufficiency – is therefore "
-"becoming increasingly important in order to keep the overall data volume as "
-"small as possible. Data sufficiency encompasses all areas of data "
-"processing: from collection, further processing, storage, to deletion. The "
-"ecological impacts of (in)sufficient data usage, in particular, have so far "
-"been little studied and are often overlooked in practice.\n"
-"\n"
-"Under the principle of “data sufficiency,” we understand that data is "
-"collected, transmitted, processed, and stored only to the extent necessary "
-"to achieve a benefit for energy-efficient and energy-saving operation. This "
-"concept is subsumed under “software sufficiency” as part of digital "
-"sufficiency, following Santarius et al. (2023). At the same time, resource-"
-"efficient materials and resource-saving transmission methods should be "
-"selected for data collection, transmission, processing, and storage. The aim "
-"is to reduce the negative ecological effects associated with the "
-"implementation of digital applications while maximizing their benefit.\n"
-"\n"
-"Data sufficiency thus differs from the legal concept of data minimization. "
-"Data minimization is a principle of data protection, defined in Article "
-"5(1c) of the General Data Protection Regulation (GDPR), which aims to reduce "
-"the risk to the rights and freedoms of natural persons. The term data "
-"minimization from the GDPR replaces the terms data economy and avoidance "
-"used in the Federal Data Protection Act (§3a BDSG).\n"
-"\n"
-"While data minimization prevents fundamental rights risks from extensive, "
-"unnecessary data processing, data sufficiency aims to minimize the "
-"ecological effects of the collection, processing, and storage of extensive, "
-"unnecessary data. To clarify the distinction from the legal term, different "
-"terminology is used.\n"
-"\n"
-"Research projects are naturally designed in such a way that data is "
-"initially generated, the purpose of which cannot always be predicted in "
-"advance, nor whether the expectations of the research project will be met. "
-"This principle of scientific work is not called into question by this "
-"approach. However, data sufficiency should be considered during development "
-"with regard to the subsequent usage phase. When the digital solutions "
-"developed in research projects are brought to market, ecological effects can "
-"be achieved through the widespread adoption of data-efficient technologies "
-"due to scaling effects.\n"
-"\n"
-"The following presents strategies for sufficient data management and "
-"highlights the ecological effects of handling data.\n"
-"\n"
-"Literature\n"
-"\n"
-"Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, Gossen, "
-"Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, Friederike, Lange, "
-"Steffen (2023): Digital Sufficiency: Conceptual Considerations for ICT on a "
-"Finite Planet. Annals of Telecommunications. 78, 277–295 (2023). https://doi."
-"org/10.1007/s12243-022-00914-x\n"
-"    "
+"Both the materialization and the energy consumption required to operate ever-"
+"increasing computing capacities are associated with negative environmental "
+"impacts. Therefore, the careful handling of data—data sufficiency—is gaining "
+"relevance in order to keep the overall data volume as small as possible. "
+"Data sufficiency considers all areas of data processing: from collection, "
+"further processing, storage, to deletion. In particular, the ecological "
+"impacts of (in-)sufficient data handling are still under-researched and "
+"often remain overlooked in practice."
 
-#: pages/views.py:370 pages/views.py:396 templates/partials/_navbar.html:226
-msgid "Datensuffizienz"
-msgstr "Data sufficiency"
-
-#: pages/views.py:408
+#: pages/views.py:392
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1505,20 +1410,20 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:443
+#: pages/views.py:427
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:451
+#: pages/views.py:435
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:458 pages/views.py:459
+#: pages/views.py:442 pages/views.py:443
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy overview"
 
-#: pages/views.py:473
+#: pages/views.py:457
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1573,7 +1478,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:511 pages/views.py:512 templates/partials/_navbar.html:274
+#: pages/views.py:495 pages/views.py:496 templates/partials/_navbar.html:274
 #: templates/partials/icons_left_column.html:3
 #: templates/start_search/start_search.html:367
 msgid "Icons und Visualisierung"
@@ -2446,9 +2351,95 @@ msgid "Relevante DSGVO-Normen"
 msgstr "Relevant DSGVO norms"
 
 #: templates/data_sufficiency/dataSufficiencyRightColumn.html:97
+#: templates/data_sufficiency/explanation.html:18
 #: templates/user_integration/userEngagementDetailsRightColumn.html:46
 msgid "Literatur"
 msgstr "Literature"
+
+#: templates/data_sufficiency/explanation.html:3
+msgid ""
+"Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in dem "
+"notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert werden, "
+"wie damit ein Nutzen für einen energieeffizienten und -sparsamen Betrieb "
+"verbunden ist. Dieser Begriff ordnet unter sich unter „Software-Suffizienz“ "
+"ein als Teil der Digitalen Suffizienz aus Santarius et al. (2023). "
+"Gleichzeitig soll bei der Datenerhebung, -übermittlung, -verarbeitung und -"
+"speicherung Hardware mit ressourcenschonendem Materialeinsatz und "
+"ressourcenschonende Übermittlungswege gewählt werden. Damit sollen die "
+"negativen ökologischen Wirkungen, die mit der Implementierung digitaler "
+"Anwendungen einhergehen, möglichst reduziert werden, während ein möglichst "
+"großer Nutzen erzielt werden soll."
+msgstr ""
+"Under the principle of 'data sufficiency,' we understand that data is only "
+"collected, transmitted, processed, and stored to the extent necessary to "
+"achieve an energy-efficient and economical operation. This concept is "
+"categorized under 'software sufficiency' as part of digital sufficiency, "
+"according to Santarius et al. (2023). At the same time, resource-saving "
+"materials and transmission methods should be selected for data collection, "
+"transmission, processing, and storage. This approach aims to minimize the "
+"negative ecological impacts associated with the implementation of digital "
+"applications, while maximizing the benefit."
+
+#: templates/data_sufficiency/explanation.html:6
+msgid ""
+"Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der "
+"Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 "
+"Abs. 1c der Datenschutz-Grundverordnung (DSGVO) für personenbezogene Daten "
+"definiert ist, und darauf abzielt, das Risiko für die Rechte und Freiheiten "
+"natürlicher Personen zu reduzieren. Der Begriff Datenminimierung aus der "
+"DSGVO ersetzt die Begriffe Datensparsamkeit und -vermeidung, die im "
+"Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden."
+msgstr ""
+"This distinguishes data sufficiency from the legal concept of data minimization. "
+"The latter is a data protection principle defined in Article 5, Section 1(c) of "
+"the General Data Protection Regulation (GDPR) for personal data and aims to "
+"reduce the risk to the rights and freedoms of natural persons. The term data "
+"minimization from the GDPR replaces the terms data economy and data avoidance "
+"previously used in the Federal Data Protection Act (§3a BDSG)."
+
+#: templates/data_sufficiency/explanation.html:9
+msgid ""
+"Während die Datenminimierung also Grundrechtsrisiken durch extensive, nicht "
+"erforderliche Datenverarbeitung verhindert, zielt die Datensuffizienz darauf "
+"ab, die ökologischen Wirkungen durch die Erhebung, Verarbeitung und "
+"Speicherung von extensiven, nicht erforderlichen Daten zu minimieren. Um "
+"eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
+"unterschiedliche Begriffe verwendet."
+msgstr ""
+"While data minimization prevents risks to fundamental rights caused by extensive, "
+"unnecessary data processing, data sufficiency aims to minimize the ecological "
+"impacts of collecting, processing, and storing extensive, unnecessary data. "
+"To clarify the distinction from the legal term, different terminology is used."
+
+#: templates/data_sufficiency/explanation.html:12
+msgid ""
+"Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten "
+"generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen "
+"Zweck sie im weiteren Verlauf erfüllen werden und ob den Erwartungen an eine "
+"Forschungsarbeit auch entsprochen wird. Diese Maxime wissenschaftlichen "
+"Arbeitens soll auch mit diesem Ansatz nicht in Frage gestellt werden, jedoch "
+"sollte Datensuffizienz bei der Entwicklung im Hinblick auf die spätere "
+"Nutzungsphase mitgedacht werden. Denn werden die in Forschungsprojekten "
+"entwickelten digitalen Lösungen auf den Markt gebracht, können bei der "
+"Verbreitung datensparsamer Technologien durch die Mengeneffekte ökologische "
+"Wirkungen erzielt werden."
+msgstr ""
+"Research projects are inherently designed to initially generate data, the "
+"purpose of which is not always foreseeable in advance, nor is it certain "
+"that they will meet the expectations of the research. This principle of "
+"scientific work is not to be questioned by this approach; however, data "
+"sufficiency should be considered during development with a view to the later "
+"usage phase. When digital solutions developed in research projects are brought "
+"to market, the dissemination of data-efficient technologies can create ecological "
+"benefits through economies of scale."
+
+#: templates/data_sufficiency/explanation.html:15
+msgid ""
+"Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
+"und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen."
+msgstr ""
+"The following presents strategies for sufficient data handling and highlights "
+"the ecological impacts of data management."
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -4439,7 +4430,7 @@ msgid "Kurzbeleg"
 msgstr "Citation"
 
 #: templates/publications/publications-detail.html:144
-#: templates/start_search/result_search.html:83 use_cases/views.py:115
+#: templates/start_search/result_search.html:83 use_cases/views.py:113
 msgid "Fokus"
 msgstr "Focus"
 
@@ -5598,11 +5589,11 @@ msgstr ""
 "further developed by projects funded under the \n"
 "          Energiewendebauen research initiative."
 
-#: use_cases/views.py:102
+#: use_cases/views.py:100
 msgid "Überblick über die Anwendungsfälle"
 msgstr "Overview of use cases"
 
-#: use_cases/views.py:110
+#: use_cases/views.py:108
 msgid ""
 "Auf dieser Seite präsentieren wir eine detaillierte Analyse verschiedener "
 "Anwendungsfälle im Kontext des Smart Readiness Indicator. Das Ziel ist es "
@@ -5614,23 +5605,23 @@ msgstr ""
 "different effects of digitalization and highlight the interaction of various "
 "requirements. In doing so, we address several key questions:"
 
-#: use_cases/views.py:121
+#: use_cases/views.py:119
 msgid "Level der Wirkebene"
 msgstr "Level of Effect Level"
 
-#: use_cases/views.py:134
+#: use_cases/views.py:132
 msgid "Auswirkung der Evaluation"
 msgstr "Selection of station"
 
-#: use_cases/views.py:135
+#: use_cases/views.py:133
 msgid "Positiv"
 msgstr "Positive"
 
-#: use_cases/views.py:135
+#: use_cases/views.py:133
 msgid "Negativ"
 msgstr "Negative"
 
-#: use_cases/views.py:135
+#: use_cases/views.py:133
 msgid "Neutral"
 msgstr "Neutral"
 
@@ -5665,6 +5656,127 @@ msgstr "Free to use"
 #: weatherdata_over/views.py:98
 msgid "MIT-Lizenz"
 msgstr "MIT license"
+
+#~ msgid ""
+#~ "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
+#~ "immer größer werdender Rechenkapazitäten sind mit negativen "
+#~ "Umweltwirkungen verbunden. Der sparsame Umgang mit Daten – die "
+#~ "Datensuffizienz – gewinnt daher zunehmend an Relevanz, um das "
+#~ "Datenvolumen insgesamt möglichst klein zu halten. Die Datensuffizienz "
+#~ "schaut dabei auf alle Bereiche der Datenverarbeitung: von der Erhebung, "
+#~ "der Weiterverarbeitung, der Speicherung bis zur Löschung. Gerade die "
+#~ "ökologischen Auswirkungen eines (in-)suffizienten Umgangs mit Daten sind "
+#~ "derzeit noch wenig untersucht und bleiben in der Praxis oftmals "
+#~ "unbeachtet.\n"
+#~ "\n"
+#~ "Unter dem Grundsatz „Datensuffizienz“ verstehen wir, dass Daten nur in "
+#~ "dem notwendigen Maße erhoben, übermittelt, verarbeitet und gespeichert "
+#~ "werden, wie damit ein Nutzen für einen energieeffizienten und -sparsamen "
+#~ "Betrieb verbunden ist. Dieser Begriff ordnet unter sich unter „Software-"
+#~ "Suffizienz“ ein als Teil der Digitalen Suffizienz aus Santarius et al. "
+#~ "(2023). Gleichzeitig soll bei der Datenerhebung, -übermittlung, -"
+#~ "verarbeitung und -speicherung Hardware mit ressourcenschonendem "
+#~ "Materialeinsatz und ressourcenschonende Übermittlungswege gewählt werden. "
+#~ "Damit sollen die negativen ökologischen Wirkungen, die mit der "
+#~ "Implementierung digitaler Anwendungen einhergehen, möglichst reduziert "
+#~ "werden, während ein möglichst großer Nutzen erzielt werden soll.  \n"
+#~ "\n"
+#~ "Damit grenzt sich die Datensuffizienz von dem juristischen Begriff der "
+#~ "Datenminimierung ab. Dieser ist ein Datenschutz-Grundsatz, der in Art. 5 "
+#~ "Abs. 1c der Datenschutz-Grundverordnung (DSGVO) für personenbezogene "
+#~ "Daten definiert ist, und darauf abzielt, das Risiko für die Rechte und "
+#~ "Freiheiten natürlicher Personen zu reduzieren. Der Begriff "
+#~ "Datenminimierung aus der DSGVO ersetzt die Begriffe Datensparsamkeit und -"
+#~ "vermeidung, die im Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden.\n"
+#~ "\n"
+#~ "Während die Datenminimierung also Grundrechtsrisiken durch extensive, "
+#~ "nicht erforderliche Datenverarbeitung verhindert, zielt die "
+#~ "Datensuffizienz darauf ab, die ökologischen Wirkungen durch die Erhebung, "
+#~ "Verarbeitung und Speicherung von extensiven, nicht erforderlichen Daten "
+#~ "zu minimieren. Um eine Abgrenzung zu dem juristischen Begriff zu "
+#~ "verdeutlichen, werden unterschiedliche Begriffe verwendet.\n"
+#~ "\n"
+#~ "Forschungsprojekte sind von Natur aus so konzipiert, dass zunächst Daten "
+#~ "generiert werden, von denen im Vorfeld nicht immer absehbar ist, welchen "
+#~ "Zweck sie im weiteren Verlauf erfüllen werden und ob den Erwartungen an "
+#~ "eine Forschungsarbeit auch entsprochen wird. Diese Maxime "
+#~ "wissenschaftlichen Arbeitens soll auch mit diesem Ansatz nicht in Frage "
+#~ "gestellt werden, jedoch sollte Datensuffizienz bei der Entwicklung im "
+#~ "Hinblick auf die spätere Nutzungsphase mitgedacht werden. Denn werden die "
+#~ "in Forschungsprojekten entwickelten digitalen Lösungen auf den Markt "
+#~ "gebracht, können bei der Verbreitung datensparsamer Technologien durch "
+#~ "die Mengeneffekte ökologische Wirkungen erzielt werden.   \n"
+#~ "\n"
+#~ "Im Folgenden werden Strategien für einen suffizienten Umgang mit "
+#~ "vorgestellt und auf die ökologischen Wirkungen beim Umgang mit Daten "
+#~ "hingewiesen.\n"
+#~ "\n"
+#~ "Literatur\n"
+#~ "\n"
+#~ "Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, "
+#~ "Gossen, Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, "
+#~ "Friederike, Lange, Steffen (2023): Digitale Suffizienz: konzeptionelle "
+#~ "Überlegungen für IKT auf einem endlichen Planeten. Annals of "
+#~ "Telekommunikation. 78, 277–295 (2023). https://doi.org/10.1007/"
+#~ "s12243-022-00914-x\n"
+#~ "    "
+#~ msgstr ""
+#~ "Both the materialization and the energy required for the operation of "
+#~ "ever-growing computing capacities are associated with negative "
+#~ "environmental impacts. The efficient use of data – data sufficiency – is "
+#~ "therefore becoming increasingly important in order to keep the overall "
+#~ "data volume as small as possible. Data sufficiency encompasses all areas "
+#~ "of data processing: from collection, further processing, storage, to "
+#~ "deletion. The ecological impacts of (in)sufficient data usage, in "
+#~ "particular, have so far been little studied and are often overlooked in "
+#~ "practice.\n"
+#~ "\n"
+#~ "Under the principle of “data sufficiency,” we understand that data is "
+#~ "collected, transmitted, processed, and stored only to the extent "
+#~ "necessary to achieve a benefit for energy-efficient and energy-saving "
+#~ "operation. This concept is subsumed under “software sufficiency” as part "
+#~ "of digital sufficiency, following Santarius et al. (2023). At the same "
+#~ "time, resource-efficient materials and resource-saving transmission "
+#~ "methods should be selected for data collection, transmission, processing, "
+#~ "and storage. The aim is to reduce the negative ecological effects "
+#~ "associated with the implementation of digital applications while "
+#~ "maximizing their benefit.\n"
+#~ "\n"
+#~ "Data sufficiency thus differs from the legal concept of data "
+#~ "minimization. Data minimization is a principle of data protection, "
+#~ "defined in Article 5(1c) of the General Data Protection Regulation "
+#~ "(GDPR), which aims to reduce the risk to the rights and freedoms of "
+#~ "natural persons. The term data minimization from the GDPR replaces the "
+#~ "terms data economy and avoidance used in the Federal Data Protection Act "
+#~ "(§3a BDSG).\n"
+#~ "\n"
+#~ "While data minimization prevents fundamental rights risks from extensive, "
+#~ "unnecessary data processing, data sufficiency aims to minimize the "
+#~ "ecological effects of the collection, processing, and storage of "
+#~ "extensive, unnecessary data. To clarify the distinction from the legal "
+#~ "term, different terminology is used.\n"
+#~ "\n"
+#~ "Research projects are naturally designed in such a way that data is "
+#~ "initially generated, the purpose of which cannot always be predicted in "
+#~ "advance, nor whether the expectations of the research project will be "
+#~ "met. This principle of scientific work is not called into question by "
+#~ "this approach. However, data sufficiency should be considered during "
+#~ "development with regard to the subsequent usage phase. When the digital "
+#~ "solutions developed in research projects are brought to market, "
+#~ "ecological effects can be achieved through the widespread adoption of "
+#~ "data-efficient technologies due to scaling effects.\n"
+#~ "\n"
+#~ "The following presents strategies for sufficient data management and "
+#~ "highlights the ecological effects of handling data.\n"
+#~ "\n"
+#~ "Literature\n"
+#~ "\n"
+#~ "Santarius, Tilman, Bieser, Jan C.T., Frick, Vivian, Höjer, Mattias, "
+#~ "Gossen, Maike, Hilty, Lorenz M., Kern, Eva, Pohl, Johanna, Rohde, "
+#~ "Friederike, Lange, Steffen (2023): Digital Sufficiency: Conceptual "
+#~ "Considerations for ICT on a Finite Planet. Annals of Telecommunications. "
+#~ "78, 277–295 (2023). https://doi.org/10.1007/s12243-022-00914-x\n"
+#~ "    "
 
 #~ msgid "Functionality level 0 (as non-smart default)"
 #~ msgstr "Functionality level 0 (as non-smart default)"

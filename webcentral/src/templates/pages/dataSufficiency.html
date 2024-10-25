@@ -71,8 +71,16 @@
   <!-- =======================
 Page Banner START -->
   <div class="content container">
-    <div class="row">{% include "partials/descriptionContainer.html" %}</div>
-    <div class="boxes" id="container-start-focus">
+      <section class="py-4">
+        <div class="container">
+          <div class="row">
+            <div class="descriptionBox">
+              {% include "partials/explanation_show_more.html" %}
+            </div>
+          </div>
+        </div>
+      </section>    
+      <div class="boxes" id="container-start-focus">
       {% include "common/fourBoxesContainer.html" %}
     </div>
   {% endblock %}
