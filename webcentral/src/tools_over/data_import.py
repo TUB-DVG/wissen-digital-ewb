@@ -113,8 +113,8 @@ class DataImportApp(DataImport):
         presentToolWithSameName = None
         if len(toolObjsFilteredByName) > 0:
             presentToolWithSameName = toolObjsFilteredByName[0]
-            self.diffStrDict[row[hader.index("name")]] = ""
-
+            self.diffStrDict[row[header.index("name")]] = ""
+            self.dictIdentifier = row[header.index("name")]
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
 

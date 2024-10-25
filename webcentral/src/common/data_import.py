@@ -410,8 +410,10 @@ class DataImport:
                 newValue = getattr(newObj, field.name)
                 if oldValue != newValue:
                     if isinstance(oldValue, str):
+                        
                         oldValueWithoutNewLine = oldValue.replace("\n", "<br>")
-                        newValueWithoutNewLine = newValue.replace("\n", "<br>")
+                        if isinstance(newValue, str):
+                            newValueWithoutNewLine = newValue.replace("\n", "<br>")
                     else:
                         oldValueWithoutNewLine = oldValue
                         newValueWithoutNewLine = newValue
@@ -437,6 +439,20 @@ class DataImport:
                         newValueWithoutNewLine = newValue
                     diffStr += f"""   {field.name}: {oldValueWithoutNewLine} ->
                     {newValueWithoutNewLine}\n"""
+
+            elif isinstance(field, ManyToManyField):
+                fieldName = field.name 
+                oldValueDe = oldObj.getManyToManyAttrAsStr(fieldName, "_de")
+                oldValueEn = oldObj.getManyToManyAttrAsStr(fieldName, "_en")
+                
+                newValueDe = newObj.getManyToManyAttrAsStr(fieldName, "_de")
+                newValueEn = newObj.getManyToManyAttrAsStr(fieldName, "_en")
+                
+                oldStr = f"German: {oldValueDe}, English: {oldValueEn}"
+                newStr = f"German: {newValueDe}, English: {newValueEn}"
+                
+                if oldStr != newStr:
+                    diffStr += f"""   {field.name}: {oldStr} -> {newStr}\n"""
 
         if diffStr != "":
             diffStr = diffStrModelName + diffStr + ";;"

@@ -10,9 +10,10 @@ from django.core.management import (
 import pandas as pd
 
 from common.test_utils.mock_objects import mock_excel_file
+from common.models import DbDiff
 from .data_export import DataExport
 from .data_import import DataImportApp
-from .models import Tools
+from .models import Tools, Focus
 
 
 class TestToolsDataImport(TestCase):
@@ -26,15 +27,45 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../../02_work_doc/01_daten/02_toolUebersicht/2024_05_EWB_newToolsImportWithTranslation.xlsx",
-            ".",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
 
-        # check if nPro is part of the tools:
-        nProTool = Tools.objects.get(name="nPro")
+        
+        # test if the english translation was imported:
+        technicalFocus = Focus.objects.get(focus_en="technical")
+        
+        self.assertEqual(
+            len(
+                Tools.objects.filter(
+                    name__icontains="nPro",
+                    focus=technicalFocus,
+                )
+            ), 
+            1,
+        )
 
-        # check focus and classification:
-        # focusesForNPro = nProTool.classification.all()
+    def testDuplicateImport(self):
+        """Test if a DbDiff-object is created when importing a dataset for a tool, which is already present in the database.
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+        )
+
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/test_data/test_data_testing_update_wufi.xlsx",
+        )
+
+        self.assertEqual(len(DbDiff.objects.all()), 1)
+        self.assertTrue("operational" in DbDiff.objects.all()[0].diffStr)
+        self.assertTrue("betrieblich" in DbDiff.objects.all()[0].diffStr)
+
+        
+    
 
     def test_import_of_english_translation(self):
         # create test-data
@@ -147,7 +178,7 @@ class TestExportClass(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_newToolsImportWithTranslation.xlsx",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
 
         exportObj = DataExport("hi")

@@ -318,7 +318,8 @@ class Tools(models.Model):
         returnStr = ""
         for element in querysetOfManyToManyElements:
             if suffixInFieldNames:
-                returnStr += getattr(element, field) + ", "
+                if getattr(element, field) is not None:
+                    returnStr += getattr(element, field) + ", "
             else:
                 returnStr += element.__str__() + ", "
         return returnStr[:-2]
