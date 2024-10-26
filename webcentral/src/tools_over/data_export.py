@@ -145,7 +145,10 @@ class DataExport:
                     int(getattr(ormObj, mappingNameORM))
                 )
         else:
-            dataDict[mappingNameORM].append(getattr(ormObj, mappingNameORM))
+            try:
+                dataDict[mappingNameORM].append(getattr(ormObj, mappingNameORM + languageSuffix))
+            except AttributeError:
+                dataDict[mappingNameORM].append(getattr(ormObj, mappingNameORM))
 
         return dataDict
 
