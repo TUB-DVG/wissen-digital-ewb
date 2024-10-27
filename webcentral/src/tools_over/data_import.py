@@ -117,7 +117,7 @@ class DataImportApp(DataImport):
         if len(toolObjsFilteredByName) > 0:
             newHistoryObj = History(
                 identifer=row[header.index("name")],
-                stringifiedObj=serialize("json", toolObjsFilteredByName)
+                stringifiedObj=serialize("json", toolObjsFilteredByName),
             )
             newHistoryObj.save()
             idOfOldIstance = toolObjsFilteredByName[0].id
@@ -125,7 +125,7 @@ class DataImportApp(DataImport):
             # presentToolWithSameName = toolObjsFilteredByName[0]
             # self.diffStrDict[row[header.index("name")]] = ""
             # self.dictIdentifier = row[header.index("name")]
-            
+
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
 
@@ -300,65 +300,65 @@ class DataImportApp(DataImport):
                 usage__in=usageElements,
                 lifeCyclePhase__in=lifeCyclePhaseElements,
                 userInterface__in=userInterfaceElements,
-            userInterfaceNotes=userInterfaceNotes,
-            programmingLanguages=programmingLanguages,
-            frameworksLibraries=frameworksLibraries,
-            databaseSystem=databaseSystem,
-            scale__in=scaleElements,
-            accessibility__in=accessibilityElements,
-            targetGroup__in=targetGroupElements,
-            lastUpdate=lastUpdate,
-            license=license,
-            licenseNotes=licenseNotes,
-            furtherInformation=furtherInfos,
-            alternatives=alternatives,
-            specificApplication__in=specificApplicationElements,
-            focus__in=focusElements,
-            classification__in=classificationElements,
-            provider=provider,
-            image=imageName,
-            released=released,
-            releasedPlanned=releasedPlanned,
-            resources=resources,
-            yearOfRelease=yearOfRelease,
-            developmentState=developmentState,
-            technicalStandardsNorms__in=technicalStandardsNormsElements,
-            technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
-        )
+                userInterfaceNotes=userInterfaceNotes,
+                programmingLanguages=programmingLanguages,
+                frameworksLibraries=frameworksLibraries,
+                databaseSystem=databaseSystem,
+                scale__in=scaleElements,
+                accessibility__in=accessibilityElements,
+                targetGroup__in=targetGroupElements,
+                lastUpdate=lastUpdate,
+                license=license,
+                licenseNotes=licenseNotes,
+                furtherInformation=furtherInfos,
+                alternatives=alternatives,
+                specificApplication__in=specificApplicationElements,
+                focus__in=focusElements,
+                classification__in=classificationElements,
+                provider=provider,
+                image=imageName,
+                released=released,
+                releasedPlanned=releasedPlanned,
+                resources=resources,
+                yearOfRelease=yearOfRelease,
+                developmentState=developmentState,
+                technicalStandardsNorms__in=technicalStandardsNormsElements,
+                technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+            )
         else:
             obj, created = Tools.objects.get_or_create(
                 id=idOfOldIstance,
                 name=name,
-            shortDescription=shortDescription,
-            applicationArea__in=applicationAreaElements,
-            usage__in=usageElements,
-            lifeCyclePhase__in=lifeCyclePhaseElements,
-            userInterface__in=userInterfaceElements,
-            userInterfaceNotes=userInterfaceNotes,
-            programmingLanguages=programmingLanguages,
-            frameworksLibraries=frameworksLibraries,
-            databaseSystem=databaseSystem,
-            scale__in=scaleElements,
-            accessibility__in=accessibilityElements,
-            targetGroup__in=targetGroupElements,
-            lastUpdate=lastUpdate,
-            license=license,
-            licenseNotes=licenseNotes,
-            furtherInformation=furtherInfos,
-            alternatives=alternatives,
-            specificApplication__in=specificApplicationElements,
-            focus__in=focusElements,
-            classification__in=classificationElements,
-            provider=provider,
-            image=imageName,
-            released=released,
-            releasedPlanned=releasedPlanned,
-            resources=resources,
-            yearOfRelease=yearOfRelease,
-            developmentState=developmentState,
-            technicalStandardsNorms__in=technicalStandardsNormsElements,
-            technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
-        )
+                shortDescription=shortDescription,
+                applicationArea__in=applicationAreaElements,
+                usage__in=usageElements,
+                lifeCyclePhase__in=lifeCyclePhaseElements,
+                userInterface__in=userInterfaceElements,
+                userInterfaceNotes=userInterfaceNotes,
+                programmingLanguages=programmingLanguages,
+                frameworksLibraries=frameworksLibraries,
+                databaseSystem=databaseSystem,
+                scale__in=scaleElements,
+                accessibility__in=accessibilityElements,
+                targetGroup__in=targetGroupElements,
+                lastUpdate=lastUpdate,
+                license=license,
+                licenseNotes=licenseNotes,
+                furtherInformation=furtherInfos,
+                alternatives=alternatives,
+                specificApplication__in=specificApplicationElements,
+                focus__in=focusElements,
+                classification__in=classificationElements,
+                provider=provider,
+                image=imageName,
+                released=released,
+                releasedPlanned=releasedPlanned,
+                resources=resources,
+                yearOfRelease=yearOfRelease,
+                developmentState=developmentState,
+                technicalStandardsNorms__in=technicalStandardsNormsElements,
+                technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+            )
 
         if created:
             obj.focus.add(*focusElements)
@@ -379,12 +379,9 @@ class DataImportApp(DataImport):
             if presentToolWithSameName is not None:
                 self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
 
-            
-
             obj = self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
-            
 
             obj.save()
 
