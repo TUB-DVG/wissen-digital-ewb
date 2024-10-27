@@ -3,6 +3,7 @@ from datetime import (
     timedelta,
 )
 import pandas as pd
+from django.core.serializers import serialize
 
 from common.data_import import DataImport
 from .models import (
@@ -16,6 +17,7 @@ from .models import (
     Accessibility,
     Scale,
     Tools,
+    History,
 )
 from TechnicalStandards.models import (
     Norm,
@@ -111,10 +113,19 @@ class DataImportApp(DataImport):
             name=row[header.index("name")]
         )
         presentToolWithSameName = None
+        idOfOldIstance = None
         if len(toolObjsFilteredByName) > 0:
-            presentToolWithSameName = toolObjsFilteredByName[0]
-            self.diffStrDict[row[header.index("name")]] = ""
-            self.dictIdentifier = row[header.index("name")]
+            newHistoryObj = History(
+                identifer=row[header.index("name")],
+                stringifiedObj=serialize("json", toolObjsFilteredByName)
+            )
+            newHistoryObj.save()
+            idOfOldIstance = toolObjsFilteredByName[0].id
+            toolObjsFilteredByName[0].delete()
+            # presentToolWithSameName = toolObjsFilteredByName[0]
+            # self.diffStrDict[row[header.index("name")]] = ""
+            # self.dictIdentifier = row[header.index("name")]
+            
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
 
@@ -281,8 +292,43 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsElements = Protocol.objects.filter(
             name__in=technicalStandardsProtocolsList
         )
-        obj, created = Tools.objects.get_or_create(
-            name=name,
+        if idOfOldIstance is None:
+            obj, created = Tools.objects.get_or_create(
+                name=name,
+                shortDescription=shortDescription,
+                applicationArea__in=applicationAreaElements,
+                usage__in=usageElements,
+                lifeCyclePhase__in=lifeCyclePhaseElements,
+                userInterface__in=userInterfaceElements,
+            userInterfaceNotes=userInterfaceNotes,
+            programmingLanguages=programmingLanguages,
+            frameworksLibraries=frameworksLibraries,
+            databaseSystem=databaseSystem,
+            scale__in=scaleElements,
+            accessibility__in=accessibilityElements,
+            targetGroup__in=targetGroupElements,
+            lastUpdate=lastUpdate,
+            license=license,
+            licenseNotes=licenseNotes,
+            furtherInformation=furtherInfos,
+            alternatives=alternatives,
+            specificApplication__in=specificApplicationElements,
+            focus__in=focusElements,
+            classification__in=classificationElements,
+            provider=provider,
+            image=imageName,
+            released=released,
+            releasedPlanned=releasedPlanned,
+            resources=resources,
+            yearOfRelease=yearOfRelease,
+            developmentState=developmentState,
+            technicalStandardsNorms__in=technicalStandardsNormsElements,
+            technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+        )
+        else:
+            obj, created = Tools.objects.get_or_create(
+                id=idOfOldIstance,
+                name=name,
             shortDescription=shortDescription,
             applicationArea__in=applicationAreaElements,
             usage__in=usageElements,
@@ -313,6 +359,7 @@ class DataImportApp(DataImport):
             technicalStandardsNorms__in=technicalStandardsNormsElements,
             technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
+
         if created:
             obj.focus.add(*focusElements)
             obj.classification.add(*classificationElements)
@@ -332,15 +379,13 @@ class DataImportApp(DataImport):
             if presentToolWithSameName is not None:
                 self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
 
-            if (
-                presentToolWithSameName is not None
-                and self.diffStrDict[self.dictIdentifier] != ""
-            ):
-                self._writeDiffStrToDB()
+            
 
             obj = self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
             )
+            
+
             obj.save()
 
         return obj, created

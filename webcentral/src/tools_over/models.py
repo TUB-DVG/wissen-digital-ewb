@@ -336,3 +336,12 @@ class Tools(models.Model):
 
     class Meta:
         app_label = "tools_over"
+
+class History(models.Model):
+    """model class to store updates of the Tools model
+
+    """
+    
+    identifer = models.CharField(max_length=300)
+    stringifiedObj = models.TextField()
+    loaded = models.BooleanField(default=False)

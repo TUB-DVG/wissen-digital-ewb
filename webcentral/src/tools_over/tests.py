@@ -13,7 +13,7 @@ from common.test_utils.mock_objects import mock_excel_file
 from common.models import DbDiff
 from .data_export import DataExport
 from .data_import import DataImportApp
-from .models import Tools, Focus
+from .models import Tools, Focus, History
 
 
 class TestToolsDataImport(TestCase):
@@ -156,10 +156,6 @@ class TestToolsDataImport(TestCase):
                         getattr(manyToManyElement, f"{attributeNameStr}_en"),
                         f"English translation for {attributeNameStr} is not {listOfExpectedTranslations[expectedIndex]}",
                     )
-                    # except:
-                    #     breakpoint()
-                    #
-
 
 class TestExportClass(TestCase):
     """Test the `DataExport` class inside tools_over.data_export module."""
@@ -175,6 +171,11 @@ class TestExportClass(TestCase):
             "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
 
+        # test if the english translation was imported:
+        wufiToolsQS = Tools.objects.filter(name__icontains="Wufi")
+        self.assertEqual(len(wufiToolsQS), 1)
+        self.assertEqual(wufiToolsQS[0].shortDescription_en, "WUFI (Wärme Und Feuchte Instationär) is a software family for the realistic transient calculation of heat and moisture transport in multi-layer components and buildings under natural climatic conditions.")
+        
         exportObj = DataExport("hi")
         bimTools = Tools.objects.filter(name__icontains="nPro")
 
@@ -262,6 +263,47 @@ class TestExportClass(TestCase):
 
         self.assertTrue(os.path.exists("testTools.xlsx"))
         os.remove("testTools.xlsx")
+
+class TestUpdate(TestCase):
+    """Testclass for the update process of data for the `tools_over`-app.
+
+    """
+
+    def testUpdateOfNewDataWorks(self):
+        """Test if starting the update-process and finalizing with the updated 
+        dataset works.
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+        )
+        
+        idOfWufiTool = Tools.objects.get(name__icontains="Wufi").id
+
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/test_data/test_data_testing_update_wufi.xlsx",
+        )
+
+        # one History object should be present:
+        historyObjs = History.objects.all()
+        self.assertEqual(len(historyObjs), 1)
+        
+        wufiTool = Tools.objects.filter(name__icontains="Wufi")
+        self.assertEqual(len(wufiTool), 1)
+        
+        self.assertTrue(
+            "Dies ist ein Test" in wufiTool[0].shortDescription_de,
+            "Update string is not present in german version of shortDescription after applying update of Wufi-tool!"
+        )
+
+        self.assertTrue(
+            "This is a Test" in wufiTool[0].shortDescription_en,
+            "Update string is not present in english version of shortDescription after applying update of Wufi-tool!"
+        )
 
 
 class TestTools(TestCase):

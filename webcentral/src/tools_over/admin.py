@@ -12,6 +12,7 @@ from .models import (
     UserInterface,
     Accessibility,
     Scale,
+    History,
 )
 
 
@@ -86,3 +87,4 @@ class AccessibilityAdmin(TranslationAdmin):
 
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
+admin.site.register(History)
