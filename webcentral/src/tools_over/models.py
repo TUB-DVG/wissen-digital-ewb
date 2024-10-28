@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Now
 
 from project_listing.models import Subproject
 from TechnicalStandards.models import (
@@ -300,6 +301,10 @@ class Tools(models.Model):
 
     classification = models.ManyToManyField(Classification)
     focus = models.ManyToManyField(Focus)
+    
+    def get_fields(self):
+        """Returns a list of field names and values for use in templates."""
+        return [(field.name, getattr(self, field.name)) for field in self._meta.get_fields()]
 
     def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
         """ """
@@ -344,3 +349,8 @@ class History(models.Model):
     identifer = models.CharField(max_length=300)
     stringifiedObj = models.TextField()
     loaded = models.BooleanField(default=False)
+    updateDate = models.DateTimeField(db_default=Now())
+
+    def get_fields(self):
+        """Returns a list of field names and values for use in templates."""
+        return [(field.name, getattr(self, field.name)) for field in self._meta.get_field]
