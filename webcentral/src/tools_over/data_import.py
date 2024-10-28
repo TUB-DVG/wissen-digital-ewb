@@ -109,20 +109,20 @@ class DataImportApp(DataImport):
 
         # check if there is already a tool with the same name present in the
         # database:
-        toolObjsFilteredByName = Tools.objects.filter(
-            name=row[header.index("name")]
-        )
-        presentToolWithSameName = None
-        idOfOldIstance = None
-        if len(toolObjsFilteredByName) > 0:
-            newHistoryObj = History(
-                identifer=row[header.index("name")],
-                stringifiedObj=serialize("json", toolObjsFilteredByName),
-            )
-            newHistoryObj.save()
-            idOfOldIstance = toolObjsFilteredByName[0].id
-            toolObjsFilteredByName[0].delete()
-            # presentToolWithSameName = toolObjsFilteredByName[0]
+        # toolObjsFilteredByName = Tools.objects.filter(
+        #     name=row[header.index("name")]
+        # )
+        # presentToolWithSameName = None
+        # idOfOldIstance = None
+        # if len(toolObjsFilteredByName) > 0:
+        #     newHistoryObj = History(
+        #         identifer=row[header.index("name")],
+        #         stringifiedObj=serialize("json", toolObjsFilteredByName),
+        #     )
+        #     newHistoryObj.save()
+        #     idOfOldIstance = toolObjsFilteredByName[0].id
+        #     toolObjsFilteredByName[0].delete()
+        #     # presentToolWithSameName = toolObjsFilteredByName[0]
             # self.diffStrDict[row[header.index("name")]] = ""
             # self.dictIdentifier = row[header.index("name")]
 
@@ -292,29 +292,28 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsElements = Protocol.objects.filter(
             name__in=technicalStandardsProtocolsList
         )
-        if idOfOldIstance is None:
-            obj, created = Tools.objects.get_or_create(
+        obj = Tools(
                 name=name,
                 shortDescription=shortDescription,
-                applicationArea__in=applicationAreaElements,
-                usage__in=usageElements,
-                lifeCyclePhase__in=lifeCyclePhaseElements,
-                userInterface__in=userInterfaceElements,
+                # applicationArea__in=applicationAreaElements,
+                # usage__in=usageElements,
+                # lifeCyclePhase__in=lifeCyclePhaseElements,
+                # userInterface__in=userInterfaceElements,
                 userInterfaceNotes=userInterfaceNotes,
                 programmingLanguages=programmingLanguages,
                 frameworksLibraries=frameworksLibraries,
                 databaseSystem=databaseSystem,
-                scale__in=scaleElements,
-                accessibility__in=accessibilityElements,
-                targetGroup__in=targetGroupElements,
+                # scale__in=scaleElements,
+                # accessibility__in=accessibilityElements,
+                # targetGroup__in=targetGroupElements,
                 lastUpdate=lastUpdate,
                 license=license,
                 licenseNotes=licenseNotes,
                 furtherInformation=furtherInfos,
                 alternatives=alternatives,
-                specificApplication__in=specificApplicationElements,
-                focus__in=focusElements,
-                classification__in=classificationElements,
+                # specificApplication__in=specificApplicationElements,
+                # focus__in=focusElements,
+                # classification__in=classificationElements,
                 provider=provider,
                 image=imageName,
                 released=released,
@@ -322,67 +321,91 @@ class DataImportApp(DataImport):
                 resources=resources,
                 yearOfRelease=yearOfRelease,
                 developmentState=developmentState,
-                technicalStandardsNorms__in=technicalStandardsNormsElements,
-                technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+                # technicalStandardsNorms__in=technicalStandardsNormsElements,
+                # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
             )
-        else:
-            obj, created = Tools.objects.get_or_create(
-                id=idOfOldIstance,
-                name=name,
-                shortDescription=shortDescription,
-                applicationArea__in=applicationAreaElements,
-                usage__in=usageElements,
-                lifeCyclePhase__in=lifeCyclePhaseElements,
-                userInterface__in=userInterfaceElements,
-                userInterfaceNotes=userInterfaceNotes,
-                programmingLanguages=programmingLanguages,
-                frameworksLibraries=frameworksLibraries,
-                databaseSystem=databaseSystem,
-                scale__in=scaleElements,
-                accessibility__in=accessibilityElements,
-                targetGroup__in=targetGroupElements,
-                lastUpdate=lastUpdate,
-                license=license,
-                licenseNotes=licenseNotes,
-                furtherInformation=furtherInfos,
-                alternatives=alternatives,
-                specificApplication__in=specificApplicationElements,
-                focus__in=focusElements,
-                classification__in=classificationElements,
-                provider=provider,
-                image=imageName,
-                released=released,
-                releasedPlanned=releasedPlanned,
-                resources=resources,
-                yearOfRelease=yearOfRelease,
-                developmentState=developmentState,
-                technicalStandardsNorms__in=technicalStandardsNormsElements,
-                technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
-            )
+        # else:
+        #     obj, created = Tools.objects.get_or_create(
+        #         id=idOfOldIstance,
+        #         name=name,
+        #         shortDescription=shortDescription,
+        #         applicationArea__in=applicationAreaElements,
+        #         usage__in=usageElements,
+        #         lifeCyclePhase__in=lifeCyclePhaseElements,
+        #         userInterface__in=userInterfaceElements,
+        #         userInterfaceNotes=userInterfaceNotes,
+        #         programmingLanguages=programmingLanguages,
+        #         frameworksLibraries=frameworksLibraries,
+        #         databaseSystem=databaseSystem,
+        #         scale__in=scaleElements,
+        #         accessibility__in=accessibilityElements,
+        #         targetGroup__in=targetGroupElements,
+        #         lastUpdate=lastUpdate,
+        #         license=license,
+        #         licenseNotes=licenseNotes,
+        #         furtherInformation=furtherInfos,
+        #         alternatives=alternatives,
+        #         specificApplication__in=specificApplicationElements,
+        #         focus__in=focusElements,
+        #         classification__in=classificationElements,
+        #         provider=provider,
+        #         image=imageName,
+        #         released=released,
+        #         releasedPlanned=releasedPlanned,
+        #         resources=resources,
+        #         yearOfRelease=yearOfRelease,
+        #         developmentState=developmentState,
+        #         technicalStandardsNorms__in=technicalStandardsNormsElements,
+        #         technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+        #     )
 
-        if created:
-            obj.focus.add(*focusElements)
-            obj.classification.add(*classificationElements)
-            obj.applicationArea.add(*applicationAreaElements)
-            obj.usage.add(*usageElements)
-            obj.lifeCyclePhase.add(*lifeCyclePhaseElements)
-            obj.userInterface.add(*userInterfaceElements)
-            obj.scale.add(*scaleElements)
-            obj.accessibility.add(*accessibilityElements)
-            obj.targetGroup.add(*targetGroupElements)
-            obj.specificApplication.add(*specificApplicationElements)
-            obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
-            obj.technicalStandardsProtocols.add(
-                *technicalStandardsProtocolsElements
-            )
+        # if created:
+        
 
-            if presentToolWithSameName is not None:
-                self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
+        # if presentToolWithSameName is not None:
+        #     self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
 
-            obj = self._importEnglishTranslation(
-                obj, header, row, self.MAPPING_EXCEL_DB_EN
-            )
+        
 
+        # obj.save()
+        try:
+            toolInDb = Tools.objects.get(name=row[header.index("name")])
+        except ValueError:
             obj.save()
+            return obj, True
+        
 
-        return obj, created
+        obj.save()
+        # obj.id = toolInDb.id
+        obj.focus.set(focusElements)
+        obj.classification.set(classificationElements)
+        obj.applicationArea.set(applicationAreaElements)
+        obj.usage.set(usageElements)
+        obj.lifeCyclePhase.set(lifeCyclePhaseElements)
+        obj.userInterface.set(userInterfaceElements)
+        obj.scale.set(scaleElements)
+        obj.accessibility.set(accessibilityElements)
+        obj.targetGroup.set(targetGroupElements)
+        obj.specificApplication.set(specificApplicationElements)
+        obj.technicalStandardsNorms.set(technicalStandardsNormsElements)
+        obj.technicalStandardsProtocols.set(
+            technicalStandardsProtocolsElements
+        )
+        obj = self._importEnglishTranslation(
+            obj, header, row, self.MAPPING_EXCEL_DB_EN
+        )
+        objsEqual = toolInDb.isEqual(obj) 
+        if not objsEqual:
+            newHistoryObj = History(
+                identifer=row[header.index("name")],
+                stringifiedObj=serialize("json", [toolInDb]),
+            )
+            newHistoryObj.save()
+            breakpoint()
+            obj.id = toolInDb.id
+            toolInDb.delete()
+            obj.save() 
+        else:
+            obj.delete()
+
+        return obj, False

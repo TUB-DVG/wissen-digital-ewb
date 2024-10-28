@@ -371,6 +371,8 @@ class DataImport:
     def _importEnglishAttr(self, ormObj, header, row, headerExcel, dbAttr):
         """ """
         englishTranslation = row[header.index(f"{headerExcel}__en")]
+        if englishTranslation is None:
+            englishTranslation = ""
         setattr(ormObj, f"{dbAttr}_en", englishTranslation)
 
         return ormObj
