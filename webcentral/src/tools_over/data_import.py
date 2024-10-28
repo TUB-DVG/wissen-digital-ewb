@@ -368,32 +368,28 @@ class DataImportApp(DataImport):
         
 
         # obj.save()
-        try:
-            toolInDb = Tools.objects.get(name=row[header.index("name")])
-        except ValueError:
-            obj.save()
-            return obj, True
-        
-
+        toolsInDb = Tools.objects.filter(name=row[header.index("name")])
+        toolInDb = toolsInDb[0]
         obj.save()
         # obj.id = toolInDb.id
-        obj.focus.set(focusElements)
-        obj.classification.set(classificationElements)
-        obj.applicationArea.set(applicationAreaElements)
-        obj.usage.set(usageElements)
-        obj.lifeCyclePhase.set(lifeCyclePhaseElements)
-        obj.userInterface.set(userInterfaceElements)
-        obj.scale.set(scaleElements)
-        obj.accessibility.set(accessibilityElements)
-        obj.targetGroup.set(targetGroupElements)
-        obj.specificApplication.set(specificApplicationElements)
-        obj.technicalStandardsNorms.set(technicalStandardsNormsElements)
-        obj.technicalStandardsProtocols.set(
-            technicalStandardsProtocolsElements
+        obj.focus.add(*focusElements)
+        obj.classification.add(*classificationElements)
+        obj.applicationArea.add(*applicationAreaElements)
+        obj.usage.add(*usageElements)
+        obj.lifeCyclePhase.add(*lifeCyclePhaseElements)
+        obj.userInterface.add(*userInterfaceElements)
+        obj.scale.add(*scaleElements)
+        obj.accessibility.add(*accessibilityElements)
+        obj.targetGroup.add(*targetGroupElements)
+        obj.specificApplication.add(*specificApplicationElements)
+        obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
+        obj.technicalStandardsProtocols.add(
+            *technicalStandardsProtocolsElements
         )
         obj = self._importEnglishTranslation(
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
+        obj.save()
         objsEqual = toolInDb.isEqual(obj) 
         if not objsEqual:
             newHistoryObj = History(
@@ -401,7 +397,6 @@ class DataImportApp(DataImport):
                 stringifiedObj=serialize("json", [toolInDb]),
             )
             newHistoryObj.save()
-            breakpoint()
             obj.id = toolInDb.id
             toolInDb.delete()
             obj.save() 

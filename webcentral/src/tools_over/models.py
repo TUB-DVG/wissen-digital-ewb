@@ -344,7 +344,7 @@ class Tools(models.Model):
             if "_en" in field.name or "_de" in field.name:
                 germanAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
                 englishAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_en")
-                return germandAttrs + ", " + englishAttrs
+                return germanAttrs + ", " + englishAttrs
         
         return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
 

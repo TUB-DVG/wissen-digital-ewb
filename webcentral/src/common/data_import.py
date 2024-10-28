@@ -360,6 +360,8 @@ class DataImport:
             ):
                 if germanyManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
+                        if englishManyToManyStr[indexInGerList] is None:
+                            englishManyToManyStr[indexInGerList] = ""
                         setattr(
                             ormRelObj,
                             f"{dbAttr}_en",
