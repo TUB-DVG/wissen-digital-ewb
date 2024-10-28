@@ -2,7 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      162-protect-deployment-to-github-pages
+      main
 permissions:
   id-token: write  # Add this line to allow OIDC token access
   pages: write
