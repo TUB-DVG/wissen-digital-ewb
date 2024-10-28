@@ -89,14 +89,25 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
+
 class HistoryAdmin(admin.ModelAdmin):
     def change_view(self, request, object_id, form_url="", extra_context=None):
         extra_context = extra_context or {}
 
-        deserializedStringyfiedObj = serializers.deserialize("json", self.model.objects.get(id=int(object_id)).stringifiedObj)
+        deserializedStringyfiedObj = serializers.deserialize(
+            "json", self.model.objects.get(id=int(object_id)).stringifiedObj
+        )
         oldTool = list(deserializedStringyfiedObj)[0].object
-        extra_context["oldTool"] = oldTool 
-        extra_context["currentTool"] = Tools.objects.filter(name=oldTool.name)[0]
-        return super().change_view(request, object_id, form_url, extra_context=extra_context,)
+        extra_context["oldTool"] = oldTool
+        extra_context["currentTool"] = Tools.objects.filter(name=oldTool.name)[
+            0
+        ]
+        return super().change_view(
+            request,
+            object_id,
+            form_url,
+            extra_context=extra_context,
+        )
+
 
 admin.site.register(History, HistoryAdmin)
