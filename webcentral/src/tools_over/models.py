@@ -305,7 +305,7 @@ class Tools(models.Model):
     def get_fields(self):
         """Returns a list of field names and values for use in templates."""
         return [
-            (field.name, getattr(self, field.name))
+            field.name
             for field in self._meta.get_fields()
         ]
 
