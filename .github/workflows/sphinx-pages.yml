@@ -10,6 +10,7 @@ jobs:
     # Specify runner +  build & upload the static files as an artifact
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
       - name: Install dependencies
         run: |
