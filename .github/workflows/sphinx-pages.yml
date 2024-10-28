@@ -5,7 +5,7 @@ on:
       162-protect-deployment-to-github-pages
 permissions:
   id-token: write  # Add this line to allow OIDC token access
-
+  pages: write
 jobs:
   build:
     # Specify runner +  build & upload the static files as an artifact
