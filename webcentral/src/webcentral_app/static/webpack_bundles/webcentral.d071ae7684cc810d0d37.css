@@ -1,0 +1,1095 @@
+/*!***************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./webcentral/src/webcentral_app/static/css/webcentral.scss ***!
+  \***************************************************************************************************************************************************/
+@charset "UTF-8";
+/*!
+ * webcentral css
+ * use webcentral.SCSS to style the webcentral project
+ * this file contains the styles and css formats that are custom to webcentral
+*/
+/* formating the startpage */
+.start-search .border-startsearch {
+  border-radius: 2px;
+  border: 2px solid #CCC;
+}
+
+#container-start-focus .border-technical {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #8FABF7;
+  outline-offset: -17px;
+}
+#container-start-focus .border-operational {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #F49783;
+  outline-offset: -17px;
+}
+#container-start-focus .border-ecological {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #6CC876;
+  outline-offset: -17px;
+}
+#container-start-focus .border-legal {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #E4D85C;
+  outline-offset: -17px;
+}
+#container-start-focus .border-global {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #787575;
+  outline-offset: -17px;
+}
+#container-start-focus a.technical {
+  color: #000;
+  border-bottom: 2px solid #8FABF7;
+}
+#container-start-focus a.operational {
+  color: #000;
+  border-bottom: 2px solid #F49783;
+}
+#container-start-focus a.ecological {
+  color: #000;
+  border-bottom: 2px solid #6CC876;
+}
+#container-start-focus a.legal {
+  color: #000;
+  border-bottom: 2px solid #E4D85C;
+}
+#container-start-focus a.global {
+  color: #000;
+  border-bottom: 2px solid #787575;
+}
+#container-start-focus table td {
+  padding: 3px;
+  min-width: 40px;
+}
+#container-start-focus img {
+  height: 35px;
+  min-height: 30px;
+  flex-shrink: 0;
+}
+
+#container-criteria-catalog-landing-page .border-legal {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #E4D85C;
+  outline-offset: -17px;
+}
+#container-criteria-catalog-landing-page p, #container-criteria-catalog-landing-page li {
+  color: #868181;
+  font-size: 12px;
+}
+#container-criteria-catalog-landing-page h2 {
+  font-size: 25px;
+}
+
+#container-criteria-catalog-details .border-legal {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #E4D85C;
+  outline-offset: -17px;
+}
+#container-criteria-catalog-details hr {
+  background-color: #E4D85C;
+  height: 3px;
+  border: 0;
+}
+#container-criteria-catalog-details li {
+  list-style-type: none;
+}
+
+.select-style {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url("data:image/svg+xml;utf8,<svg fill=%27black%27 height=%2724%27 viewBox=%270 0 24 24%27 width=%2724%27 xmlns=%27http://www.w3.org/2000/svg%27><path d=%27M10 15l5-5 5 5z%27/><path d=%27M0 0h24v24H0z%27 fill=%27none%27/></svg>") no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  padding-right: 30px; /* space for the icon */
+}
+
+.same-horizontal-position-lvl-1 {
+  position: relative; /* or absolute, depending on your layout */
+  left: 50px; /* or any value you want */
+}
+
+/* formating cards */
+.webcentral-cards .border-global {
+  border-radius: 2px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .border-global-round {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .border-global-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.webcentral-cards .text-input-with-arrow-global {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #787575;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.webcentral-cards .text-input-with-arrow-global::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.webcentral-cards .border-technical {
+  border-radius: 2px;
+  border: 2px solid #8FABF7;
+}
+.webcentral-cards .border-technical-round {
+  border-radius: 20px;
+  border: 2px solid #8FABF7;
+}
+.webcentral-cards .border-technical-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
+}
+.webcentral-cards .btn-technical {
+  background-color: #8FABF7;
+  color: white;
+}
+.webcentral-cards .border-operational {
+  border-radius: 2px;
+  border: 2px solid #F49783;
+}
+.webcentral-cards .border-operational-round {
+  border-radius: 20px;
+  border: 2px solid #F49783;
+}
+.webcentral-cards .border-operational-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #F49783;
+  color: #F49783;
+}
+.webcentral-cards .btn-operational {
+  background-color: #F49783;
+  color: white;
+}
+.webcentral-cards .border-ecological {
+  border-radius: 2px;
+  border: 2px solid #6CC876;
+}
+.webcentral-cards .border-ecological-round {
+  border-radius: 20px;
+  border: 2px solid #6CC876;
+}
+.webcentral-cards .btn-ecological {
+  background-color: #6CC876;
+  color: white;
+}
+.webcentral-cards .border-legal {
+  border-radius: 2px;
+  border: 2px solid #E4D85C;
+}
+.webcentral-cards .border-legal-round {
+  border-radius: 20px;
+  border: 2px solid #E4D85C;
+}
+.webcentral-cards .btn-legal-white-bg {
+  background-color: white;
+  color: #E4D85C;
+  border: 2px solid #E4D85C;
+}
+.webcentral-cards .btn-legal {
+  background-color: #E4D85C;
+  color: white;
+}
+
+.border-operational .operational-font-color {
+  color: #F49783;
+}
+
+.ecological-cards .ecological-font-color {
+  color: #6CC876;
+}
+.ecological-cards .border-ecological {
+  border-radius: 2px;
+  border: 2px solid #6CC876;
+}
+.ecological-cards .border-ecological-round {
+  border-radius: 20px;
+  border: 2px solid #6CC876;
+}
+.ecological-cards .border-ecological-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #6CC876;
+  color: #6CC876;
+}
+.ecological-cards .btn-ecological {
+  background-color: #6CC876;
+  color: white;
+}
+.ecological-cards .btn-ecological-white-bg {
+  background-color: white;
+  color: #6CC876;
+  border: 2px solid #6CC876;
+}
+.ecological-cards .btn-ecological-free-text {
+  color: #6CC876;
+}
+.ecological-cards .text-input-with-arrow-ecological {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.ecological-cards .text-input-with-arrow-ecological::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ecological-cards a {
+  color: #6CC876;
+}
+.ecological-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6CC876;
+  border-radius: 50%;
+  outline: none;
+  /* box-shadow: 0 0 5px #999; */
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.ecological-cards ::placeholder {
+  color: #6CC876 !important;
+  opacity: 1;
+  font-weight: 400 !important;
+}
+.ecological-cards input[type=text] {
+  color: #6CC876;
+}
+.ecological-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.ecological-cards input[type=radio]:checked:before {
+  background: #6CC876;
+}
+.ecological-cards input[type=checkbox] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #6CC876;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.ecological-cards input[type=checkbox]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+}
+.ecological-cards input[type=checkbox]:checked:before {
+  background: #6CC876;
+}
+.ecological-cards .form-input-ecological {
+  color: #6CC876;
+}
+.ecological-cards .ecological-text-near-radio {
+  color: #6CC876;
+}
+
+.legal-cards .legal-font-color {
+  color: #E4D85C;
+}
+.legal-cards .border-legal {
+  border-radius: 2px;
+  border: 2px solid #E4D85C;
+}
+.legal-cards .border-legal-round {
+  border-radius: 20px;
+  border: 2px solid #E4D85C;
+}
+.legal-cards .border-legal-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #E4D85C;
+  color: #E4D85C;
+}
+.legal-cards .btn-legal {
+  background-color: #E4D85C;
+  color: white;
+}
+.legal-cards .btn-legal-free-text {
+  color: #E4D85C;
+}
+.legal-cards .btn-legal-white-bg {
+  background-color: white;
+  color: #E4D85C;
+  border: 2px solid #E4D85C;
+}
+.legal-cards .text-input-with-arrow-legal {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #E4D85C;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.legal-cards .text-input-with-arrow-legal::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.legal-cards a {
+  color: #E4D85C;
+}
+.legal-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #E4D85C;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.legal-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.legal-cards ::placeholder {
+  color: #E4D85C;
+  opacity: 1;
+  font-weight: 400 !important;
+}
+.legal-cards input[type=radio]:checked:before {
+  background: #35495e;
+}
+.legal-cards input[type=checkbox] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #E4D85C;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.legal-cards input[type=checkbox]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+}
+.legal-cards input[type=checkbox]:checked:before {
+  background: #E4D85C;
+}
+.legal-cards .legal-text-near-radio {
+  color: #E4D85C;
+}
+
+.operational-cards .operational-font-color {
+  color: #F49783;
+}
+.operational-cards .border-operational {
+  border-radius: 2px;
+  border: 2px solid #F49783;
+}
+.operational-cards .border-operational-round {
+  border-radius: 20px;
+  border: 2px solid #F49783;
+}
+.operational-cards .border-operational-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #F49783;
+}
+.operational-cards .btn-operational {
+  background-color: #F49783;
+  color: white;
+}
+.operational-cards .btn-operational-free-text {
+  color: #F49783;
+}
+.operational-cards .btn-operational-white-bg {
+  background-color: white;
+  color: #F49783;
+  border: 2px solid #F49783;
+}
+.operational-cards .text-input-with-arrow-operational {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #F49783;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.operational-cards .text-input-with-arrow-operational::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.operational-cards a {
+  color: #F49783;
+}
+.operational-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #F49783;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.operational-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.operational-cards input[type=radio]:checked:before {
+  background: #F49783;
+}
+.operational-cards input[type=checkbox] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #F49783;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.operational-cards ::placeholder {
+  color: #F49783 !important;
+  opacity: 1;
+  font-weight: 400 !important;
+}
+.operational-cards input[type=text] {
+  color: #F49783;
+}
+.operational-cards input[type=checkbox]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+}
+.operational-cards input[type=checkbox]:checked:before {
+  background: #F49783;
+}
+.operational-cards .operational-text-near-radio {
+  color: #F49783;
+}
+
+.technical-cards .technical-font-color {
+  color: #8FABF7;
+}
+.technical-cards .border-technical {
+  border-radius: 2px;
+  border: 2px solid #8FABF7;
+}
+.technical-cards .border-technical-round {
+  border-radius: 20px;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
+}
+.technical-cards .btn-technical-white-bg {
+  background-color: white;
+  color: #8FABF7;
+  border: 2px solid #8FABF7;
+}
+.technical-cards .border-technical-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #8FABF7;
+  color: #8FABF7;
+}
+.technical-cards .text-input-with-arrow-technical {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #8FABF7;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.technical-cards .text-input-with-arrow-technical::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.technical-cards .btn-technical {
+  background-color: #8FABF7;
+  color: white;
+}
+.technical-cards .btn-technical-free-text {
+  color: #8FABF7;
+}
+.technical-cards a {
+  color: #8FABF7;
+}
+.technical-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #8FABF7;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.technical-cards input[type=text] {
+  color: #8FABF7;
+}
+.technical-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.technical-cards input[type=radio]:checked:before {
+  background: #8FABF7;
+}
+.technical-cards .technical-text-near-radio {
+  color: #8FABF7;
+}
+.technical-cards input[type=checkbox] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8FABF7;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.technical-cards ::placeholder {
+  color: #8FABF7 !important;
+  opacity: 1;
+  font-weight: 400 !important;
+}
+.technical-cards input[type=checkbox]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+}
+.technical-cards input[type=checkbox]:checked:before {
+  background: #8FABF7;
+}
+
+.global-cards .global-font-color {
+  color: #787575;
+}
+.global-cards .border-global {
+  border-radius: 2px;
+  border: 2px solid #787575;
+}
+.global-cards .border-global-round {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.global-cards .border-global-round-font-color {
+  border-radius: 20px;
+  border: 2px solid #787575;
+}
+.global-cards .btn-global {
+  background-color: #787575;
+  color: white;
+}
+.global-cards .btn-global-free-text {
+  color: #787575;
+}
+.global-cards .btn-global-white-bg {
+  background-color: white;
+  color: #787575;
+  border: 2px solid #787575;
+}
+.global-cards .text-input-with-arrow-global {
+  background-position: right 10px center; /* Position the arrow on the right, with some padding */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  padding-right: 30px; /* Adjust padding to prevent text from overlapping the arrow */
+  color: #787575;
+  font-weight: 500;
+  max-width: calc(100% - 30px);
+  text-overflow: ellipsis; /* Add ellipsis when text overflows */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+}
+.global-cards .text-input-with-arrow-global::placeholder {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.global-cards a {
+  color: #787575;
+}
+.global-cards input[type=radio] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #787575;
+  border-radius: 50%;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+}
+.global-cards input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+.global-cards input[type=radio]:checked:before {
+  background: #787575;
+}
+.global-cards input[type=checkbox] {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #787575;
+  outline: none;
+  transition: 0.2s;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+.global-cards ::placeholder {
+  color: #787575 !important;
+  opacity: 1;
+  font-weight: 400 !important;
+}
+.global-cards input[type=text] {
+  color: #787575;
+}
+.global-cards input[type=checkbox]:before {
+  content: "";
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+}
+.global-cards input[type=checkbox]:checked:before {
+  background: #787575;
+}
+.global-cards .global-text-near-radio {
+  color: #787575;
+}
+
+/* Optional: Adjust the input field width to leave space for the arrow */
+.text-input-container {
+  position: relative;
+}
+
+.text-input-container input {
+  padding-right: 30px; /* Adjust padding to leave space for the arrow */
+  width: calc(100% - 40px); /* Adjust the width to leave space for the arrow and padding */
+}
+
+.arrow-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Make sure the arrow doesn't block input field interactions */
+}
+
+.card-text {
+  color: rgb(116, 117, 121);
+}
+
+.card-header-text {
+  color: #000;
+}
+
+/* card_hover: allows the item display cards to grow on hover
+ * to show user selection : Added 06/20/2023
+*/
+.card_hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.card_hover:hover {
+  transform: scale(1.1);
+}
+
+/* .break-words：change row while reach maxwidth，added 29.01.2024 */
+.break-words {
+  max-width: 300px;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow: visible;
+}
+
+/* format logos about page */
+@media (max-width: 991px) {
+  .about-logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+  .about-logos a {
+    padding: 2em;
+  }
+  .about-logos img {
+    max-height: 120px;
+  }
+  .img-side-column {
+    margin-top: 2em;
+  }
+}
+@media (min-width: 992px) {
+  .about-logos {
+    height: 120px;
+  }
+  .about-logos img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+.about-logos img {
+  min-width: 95px;
+}
+
+.img-side-column {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* define collapsable info container */
+.collapseInfoContainer .collapseInfo.collapse:not(.show) {
+  display: block;
+  height: 3.2rem;
+  overflow: hidden;
+}
+.collapseInfoContainer .collapseInfo.collapsing {
+  height: 3.2rem;
+}
+.collapseInfoContainer a.text-truncation-btn.collapsed::after {
+  content: attr(data-collapsed-text);
+}
+.collapseInfoContainer a.text-truncation-btn:not(.collapsed)::after {
+  content: attr(data-expanded-text);
+}
+
+.close-icon::before {
+  vertical-align: -0.2em;
+}
+
+.collapseListingRow .collapseInfo.collapse:not(.show) {
+  display: block;
+  height: 4rem;
+  overflow: hidden;
+}
+.collapseListingRow .collapseInfo.collapsing {
+  height: 4rem;
+}
+.collapseListingRow a.text-truncation-btn.collapsed {
+  content: attr(data-collapsed-text);
+}
+.collapseListingRow a.text-truncation-btn:not(.collapsed) {
+  content: attr(data-expanded-text);
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    padding: 0 1em;
+  }
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
+.navbar-light .navbar-nav .nav-link a {
+  color: #000;
+}
+
+.dropdown-menu {
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 1100;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+@media (max-width: 854px) {
+  .video-home {
+    width: 100%;
+  }
+  .video-text {
+    width: 100%;
+  }
+}
+@media (min-width: 855px) {
+  .video-home {
+    width: 854px;
+  }
+  .video-text {
+    width: 854px;
+  }
+}
+@media (max-width: 991px) {
+  .detail-card-body .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.video__wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.cookie-container {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background: #2f3640;
+  color: #f5f6fa;
+  padding: 0 20px;
+  box-shadow: 0 -2px 10px rgba(47, 54, 64, 0.39);
+  z-index: 999;
+  transition: 400ms;
+}
+
+.cookie-container.active {
+  bottom: 0;
+}
+
+.cookie-container a {
+  color: #f5f6fa;
+}
+
+.cookie-btn {
+  background: #e84118;
+  border: 0;
+  color: #f5f6fa;
+  padding: 12px 48px;
+  font-size: 18px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+tr[data-href] {
+  cursor: pointer;
+}
+
+/* formating footer */
+#footer a {
+  color: #000;
+}
+
+.link-navigator__icon {
+  width: 8px;
+}
+
+.link-navigator {
+  display: flex;
+  justify-content: space-between;
+}
+
+.secondaryNavbarLeft a {
+  color: #6CC876;
+  font-size: 15px;
+}
+
+.secondaryNavbarRight a {
+  color: #000000;
+  font-size: 15px;
+  border: 2px solid #6CC876;
+  margin: 6.5px;
+}
+
+.link-navigator__negative-ecological {
+  /* display: flex; */
+  /* align-items: center; */
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6CC876;
+  justify-content: space-between;
+}
+
+.link-navigator__negative-operational {
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #F49783 !important;
+}
+
+.link-navigator__negative-legal {
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #E4D85C !important;
+}
+
+.link-navigator__negative-technical {
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8FABF7 !important;
+}
+
+.overview-box-site .border-ecological {
+  border-radius: 2px;
+  border: None;
+  outline: 2px solid #6CC876;
+  outline-offset: -17px;
+}
+.overview-box-site .grey-box-container {
+  padding: 16px;
+  margin-top: auto;
+  background-color: #F0F0F0;
+}
+.overview-box-site .imageHeading {
+  font-weight: 500;
+  font-size: 15px;
+  padding-bottom: 16px;
+}
+
+.prevent_overflow {
+  overflow: hidden;
+}
+
+.collapseListingRow sup {
+  top: 0rem;
+  left: -0.2rem;
+}
+
+div.listing-right p {
+  justify-content: space-between;
+}
+
+.supForNumValues {
+  top: -0.5rem !important;
+  left: 0rem !important;
+}
+
+.description-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+}
+
+.description-heading__icon {
+  font-size: 24px;
+}
+
+.description-heading__paragraph {
+  font-size: 28px;
+}
+
+.box {
+  padding: 40px;
+}
+
+.box__content {
+  flex-direction: column;
+  height: 100%;
+}
+
+.boxHeading {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.box-content__main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.content-right {
+  display: flex;
+  flex-direction: column;
+  color: #787575;
+}
+
+.box__image {
+  width: 100% !important;
+  margin-top: 28px;
+  object-fit: contain;
+  object-position: top;
+}
+
+@media only screen and (min-width: 480px) {
+  .box-content__main {
+    flex-direction: row;
+  }
+  .boxDescription {
+    margin-bottom: 0;
+  }
+  .content-left {
+    flex-basis: 70%;
+  }
+  .content-right {
+    flex-basis: 30%;
+  }
+}
+body {
+  color: #000;
+}
+body h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 32px;
+}
+body h3 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+body h5 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 15px;
+  text-decoration: underline;
+}
+
+.criteriaCatalogHeading {
+  color: #E4D85C;
+}
