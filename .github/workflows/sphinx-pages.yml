@@ -3,8 +3,6 @@ on:
   push:
     branches:
       162-protect-deployment-to-github-pages
-permissions:
-  contents: write
 jobs:
   build:
     # Specify runner +  build & upload the static files as an artifact
