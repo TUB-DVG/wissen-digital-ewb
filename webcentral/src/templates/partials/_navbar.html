@@ -25,12 +25,14 @@
     box-sizing: border-box; /* Ensures padding is included in the width */
 }
 .navbar-nav .dropdown-menu {
-    margin-top: -25px; /* Fine-tune vertical alignment, adjust as needed */
+  top: 3rem !important;
 }
 
+.nav-link:hover {
+  color: unset !important;
+}
+</style>
 
-
-  </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <!-- Logo START -->
@@ -90,7 +92,6 @@
               {% translate "Technisch" %}
             </a>
             <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
                  aria-labelledby="technicalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item technical" href="{% url 'tool_list' %}">
@@ -153,7 +154,6 @@
               {% translate "Betrieblich" %}
             </a>
             <div class="dropdown-menu mx-4 p-0"
-                 style="margin-top: -25px"
                  aria-labelledby="operationalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item operational" href="{% url 'businessModels' %}">
@@ -206,7 +206,6 @@
               {% translate "Ökologisch" %}
             </a>
             <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
                  aria-labelledby="ecologicalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item ecological"
@@ -256,7 +255,6 @@
               {% translate "Rechtlich" %}
             </a>
             <div class="dropdown-menu mx-4 p-0"
-                 style="margin-top: -25px"
                  aria-labelledby="legalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
@@ -302,7 +300,6 @@
               {% translate "Global" %}
             </a>
             <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
                  aria-labelledby="globalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
