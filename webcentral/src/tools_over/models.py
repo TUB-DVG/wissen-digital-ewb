@@ -303,14 +303,12 @@ class Tools(models.Model):
     focus = models.ManyToManyField(Focus)
 
     def isEqual(self, other):
-        """Check equality of two instances of `Tools`
-
-        """
+        """Check equality of two instances of `Tools`"""
 
         for field in self._meta.get_fields():
             if isinstance(field, models.ManyToManyField):
                 firstObjAttr = self.getManyToManyWithTranslation(field.name)
-                secondObjAttr = other.getManyToManyWithTranslation(field.name)    
+                secondObjAttr = other.getManyToManyWithTranslation(field.name)
                 if firstObjAttr != secondObjAttr:
                     return False
             else:
@@ -319,33 +317,34 @@ class Tools(models.Model):
                     secondObjAttr = getattr(other, field.name)
                     if firstObjAttr != secondObjAttr:
                         return False
-        
+
         return True
 
     def get_fields(self):
         """Returns a list of field names and values for use in templates."""
         return [field.name for field in self._meta.get_fields()]
 
-
     def getManyToManyWithTranslation(self, manyToManyAttr) -> str:
-        """Wrapper around `getManyToManyAttrAsStr()` to return german and english version in one call. 
-        If german ang english translation are present in the conacnted ManyToMany-model 
+        """Wrapper around `getManyToManyAttrAsStr()` to return german and english version in one call.
+        If german ang english translation are present in the conacnted ManyToMany-model
         both versions are returned. Otherwise only the german version is fetched.
 
         Arguments:
-        manyToManyAttr: str 
-            attribute name of the ManyToMany attribute    
-        
+        manyToManyAttr: str
+            attribute name of the ManyToMany attribute
+
         Returns:
-            str: concatenated string of many to many attributes from connected model.   
+            str: concatenated string of many to many attributes from connected model.
         """
         fields = self._meta.get_fields()
         for field in fields:
             if "_en" in field.name or "_de" in field.name:
                 germanAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
-                englishAttrs = self.getManyToManyAttrAsStr(manyToManyAttr, "_en")
+                englishAttrs = self.getManyToManyAttrAsStr(
+                    manyToManyAttr, "_en"
+                )
                 return germanAttrs + ", " + englishAttrs
-        
+
         return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
 
     def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):

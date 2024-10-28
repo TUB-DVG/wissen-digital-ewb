@@ -123,8 +123,8 @@ class DataImportApp(DataImport):
         #     idOfOldIstance = toolObjsFilteredByName[0].id
         #     toolObjsFilteredByName[0].delete()
         #     # presentToolWithSameName = toolObjsFilteredByName[0]
-            # self.diffStrDict[row[header.index("name")]] = ""
-            # self.dictIdentifier = row[header.index("name")]
+        # self.diffStrDict[row[header.index("name")]] = ""
+        # self.dictIdentifier = row[header.index("name")]
 
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
@@ -293,37 +293,37 @@ class DataImportApp(DataImport):
             name__in=technicalStandardsProtocolsList
         )
         obj = Tools(
-                name=name,
-                shortDescription=shortDescription,
-                # applicationArea__in=applicationAreaElements,
-                # usage__in=usageElements,
-                # lifeCyclePhase__in=lifeCyclePhaseElements,
-                # userInterface__in=userInterfaceElements,
-                userInterfaceNotes=userInterfaceNotes,
-                programmingLanguages=programmingLanguages,
-                frameworksLibraries=frameworksLibraries,
-                databaseSystem=databaseSystem,
-                # scale__in=scaleElements,
-                # accessibility__in=accessibilityElements,
-                # targetGroup__in=targetGroupElements,
-                lastUpdate=lastUpdate,
-                license=license,
-                licenseNotes=licenseNotes,
-                furtherInformation=furtherInfos,
-                alternatives=alternatives,
-                # specificApplication__in=specificApplicationElements,
-                # focus__in=focusElements,
-                # classification__in=classificationElements,
-                provider=provider,
-                image=imageName,
-                released=released,
-                releasedPlanned=releasedPlanned,
-                resources=resources,
-                yearOfRelease=yearOfRelease,
-                developmentState=developmentState,
-                # technicalStandardsNorms__in=technicalStandardsNormsElements,
-                # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
-            )
+            name=name,
+            shortDescription=shortDescription,
+            # applicationArea__in=applicationAreaElements,
+            # usage__in=usageElements,
+            # lifeCyclePhase__in=lifeCyclePhaseElements,
+            # userInterface__in=userInterfaceElements,
+            userInterfaceNotes=userInterfaceNotes,
+            programmingLanguages=programmingLanguages,
+            frameworksLibraries=frameworksLibraries,
+            databaseSystem=databaseSystem,
+            # scale__in=scaleElements,
+            # accessibility__in=accessibilityElements,
+            # targetGroup__in=targetGroupElements,
+            lastUpdate=lastUpdate,
+            license=license,
+            licenseNotes=licenseNotes,
+            furtherInformation=furtherInfos,
+            alternatives=alternatives,
+            # specificApplication__in=specificApplicationElements,
+            # focus__in=focusElements,
+            # classification__in=classificationElements,
+            provider=provider,
+            image=imageName,
+            released=released,
+            releasedPlanned=releasedPlanned,
+            resources=resources,
+            yearOfRelease=yearOfRelease,
+            developmentState=developmentState,
+            # technicalStandardsNorms__in=technicalStandardsNormsElements,
+            # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+        )
         # else:
         #     obj, created = Tools.objects.get_or_create(
         #         id=idOfOldIstance,
@@ -360,12 +360,9 @@ class DataImportApp(DataImport):
         #     )
 
         # if created:
-        
 
         # if presentToolWithSameName is not None:
         #     self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
-
-        
 
         # obj.save()
         toolsInDb = Tools.objects.filter(name=row[header.index("name")])
@@ -390,7 +387,7 @@ class DataImportApp(DataImport):
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
         obj.save()
-        objsEqual = toolInDb.isEqual(obj) 
+        objsEqual = toolInDb.isEqual(obj)
         if not objsEqual:
             newHistoryObj = History(
                 identifer=row[header.index("name")],
@@ -399,7 +396,7 @@ class DataImportApp(DataImport):
             newHistoryObj.save()
             obj.id = toolInDb.id
             toolInDb.delete()
-            obj.save() 
+            obj.save()
         else:
             obj.delete()
 
