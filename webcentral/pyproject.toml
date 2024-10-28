@@ -50,6 +50,8 @@ dependencies = [
     "Pillow==10.3.0",
     "psycopg2-binary==2.9.6",
     "PyYAML==6.0",
+    "polars-lts-cpu==0.20.25",
+    #"polars==0.20.25",
     "wetterdienst==0.95.1",
     "django-modeltranslation",
     "django-csp",
@@ -60,7 +62,7 @@ dependencies = [
     "django-webpack-loader",
     "python-docx",
     "regex",
-    "polars-lts-cpu"
+
 ]
 
 # root folder of the python/django not found automatically
