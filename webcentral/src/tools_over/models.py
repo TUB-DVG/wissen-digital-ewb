@@ -304,10 +304,7 @@ class Tools(models.Model):
 
     def get_fields(self):
         """Returns a list of field names and values for use in templates."""
-        return [
-            field.name
-            for field in self._meta.get_fields()
-        ]
+        return [field.name for field in self._meta.get_fields()]
 
     def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
         """ """
