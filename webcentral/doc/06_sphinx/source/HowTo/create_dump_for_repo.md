@@ -25,4 +25,3 @@ The following command creates a SQL-dump and puts the file into the `postgres/`-
 ./run dump_db postgres/new_dump.sql
 ```
 This dump can now be included into the git repository.
-This is a test. Another test
