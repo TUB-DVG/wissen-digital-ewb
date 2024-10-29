@@ -31,6 +31,25 @@
 .nav-link:hover {
   color: unset !important;
 }
+.dropdown-toggle:hover .coloredImage {
+  display: inline !important;
+}
+.dropdown-toggle:hover .uncoloredImage {
+  display: none !important;
+}
+.dropdown-menu:hover + a .coloredImage {
+  display: inline !important;
+}
+.dropdown-menu:hover + a .uncoloredImage {
+  display: none !important;
+}
+
+@media (max-width: 991.98px) {
+  .nav-item {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
   </style>
 
   <nav class="navbar navbar-expand-lg">
@@ -65,32 +84,6 @@
         <div class="navbar-nav navbar-nav-scroll w-100 d-flex">
           <!-- Nav technical focus START-->
           <div class="nav-item dropdown mx-4">
-            <a class="nav-link dropdown-toggle"
-               id="technicalDropdown"
-               role="button"
-               data-toggle="dropdown"
-               aria-expanded="false"
-               style="font-size:15px">
-              {% if focusBorder == "technical" %}
-                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class=""
-                     alt="technical colored icon"
-                     style="width:20px" />
-              {% else %}
-                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
-                     class="uncoloredImage"
-                     alt="technical uncolored icon"
-                     style="width:20px;
-                            margin-right: 3px" />
-                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class="coloredImage"
-                     alt="technical colored icon"
-                     style="width:20px;
-                            display: none;
-                            margin-right: 3px" />
-              {% endif %}
-              {% translate "Technisch" %}
-            </a>
             <div class="dropdown-menu p-0 mx-4" aria-labelledby="technicalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item technical" href="{% url 'tool_list' %}">
@@ -124,6 +117,32 @@
                 </a>
               </div>
             </div>
+            <a class="nav-link dropdown-toggle"
+               id="technicalDropdown"
+               role="button"
+               data-toggle="dropdown"
+               aria-expanded="false"
+               style="font-size:15px">
+              {% if focusBorder == "technical" %}
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class=""
+                     alt="technical colored icon"
+                     style="width:20px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
+                     class="uncoloredImage"
+                     alt="technical uncolored icon"
+                     style="width:20px;
+                            margin-right: 3px" />
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class="coloredImage"
+                     alt="technical colored icon"
+                     style="width:20px;
+                            display: none;
+                            margin-right: 3px" />
+              {% endif %}
+              {% translate "Technisch" %}
+            </a>
           </div>
           <!-- Nav technical focus END -->
           <!-- Nav operational focus START-->
@@ -344,33 +363,6 @@
   </header>
   <!-- Header END -->
   <script>
-    $(".dropdown-toggle").hover( (e) => {
-        $($(e.target).children(".uncoloredImage")).css("display", "none");
-        $($(e.target).children(".coloredImage")).css("display", "");
-    }, (e) => {
-        $($(e.target).children(".coloredImage")).css("display", "none");
-        $($(e.target).children(".uncoloredImage")).css("display", "");
-    })
-    $(".dropdown-menu").hover((e) => {
-      $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "");
-      $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "none");
-
-    }, (e) => {
-      const firstTryLocateImage = $($(e.target).prev()[0]).children(".uncoloredImage")
-      if (firstTryLocateImage.length > 0) {
-        $(firstTryLocateImage).css("display", "");
-        $($($(e.target).prev()[0]).children(".coloredImage")).css("display", "none");
-
-      }
-      else {
-        $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "");
-        $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "none");
-
-      }
-
-          
-    })
-      
     $("#searchIconLi").on("mouseenter", function (){
       $("div.nav-item").css({
         display: "none"
