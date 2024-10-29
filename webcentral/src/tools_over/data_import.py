@@ -325,8 +325,7 @@ class DataImportApp(DataImport):
             # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
         # else:
-        #     obj, created = Tools.objects.get_or_create(
-        #         id=idOfOldIstance,
+        # obj, created = Tools.objects.get_or_create(
         #         name=name,
         #         shortDescription=shortDescription,
         #         applicationArea__in=applicationAreaElements,
@@ -366,7 +365,8 @@ class DataImportApp(DataImport):
 
         # obj.save()
         toolsInDb = Tools.objects.filter(name=row[header.index("name")])
-        toolInDb = toolsInDb[0]
+        if len(toolsInDb) > 0:
+            toolInDb = toolsInDb[0]
         obj.save()
         # obj.id = toolInDb.id
         obj.focus.add(*focusElements)
@@ -383,21 +383,26 @@ class DataImportApp(DataImport):
         obj.technicalStandardsProtocols.add(
             *technicalStandardsProtocolsElements
         )
+        obj.save()
         obj = self._importEnglishTranslation(
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
         obj.save()
+        
+        if len(toolsInDb) == 0:
+            return obj, True
+
         objsEqual = toolInDb.isEqual(obj)
         if not objsEqual:
             newHistoryObj = History(
                 identifer=row[header.index("name")],
-                stringifiedObj=serialize("json", [toolInDb]),
+                stringifiedObj=serialize("json", [toolInDb], use_natural_foreign_keys=True),
             )
             newHistoryObj.save()
             obj.id = toolInDb.id
             toolInDb.delete()
             obj.save()
+            return obj, True
         else:
             obj.delete()
-
-        return obj, False
+            return toolInDb, False

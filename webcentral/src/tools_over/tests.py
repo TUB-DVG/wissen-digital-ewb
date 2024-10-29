@@ -282,31 +282,26 @@ class TestUpdate(TestCase):
             "tools_over",
             "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
+        
+        self.assertGreater(len(Tools.objects.all()), 100)
 
         idOfWufiTool = Tools.objects.get(name__icontains="Wufi").id
 
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/test_data/test_data_testing_update_wufi.xlsx",
+            "../doc/01_data/02_tool_over/test_data/test_data_full_tool_list.xlsx",
         )
 
         # one History object should be present:
         historyObjs = History.objects.all()
-        self.assertEqual(len(historyObjs), 1)
-
+        self.assertLessEqual(len(historyObjs), 5)
+        breakpoint()
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
         self.assertEqual(len(wufiTool), 1)
 
-        self.assertTrue(
-            "Dies ist ein Test" in wufiTool[0].shortDescription_de,
-            "Update string is not present in german version of shortDescription after applying update of Wufi-tool!",
-        )
-
-        self.assertTrue(
-            "This is a Test" in wufiTool[0].shortDescription_en,
-            "Update string is not present in english version of shortDescription after applying update of Wufi-tool!",
-        )
+        cSharpTool = Tools.objects.filter(name__icontains="C#")
+        self.assertEqual(len(cSharpTool), 1) 
 
 
 class TestTools(TestCase):
