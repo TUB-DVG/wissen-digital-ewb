@@ -388,7 +388,7 @@ class DataImportApp(DataImport):
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
         obj.save()
-        
+
         if len(toolsInDb) == 0:
             return obj, True
 
@@ -396,7 +396,9 @@ class DataImportApp(DataImport):
         if not objsEqual:
             newHistoryObj = History(
                 identifer=row[header.index("name")],
-                stringifiedObj=serialize("json", [toolInDb], use_natural_foreign_keys=True),
+                stringifiedObj=serialize(
+                    "json", [toolInDb], use_natural_foreign_keys=True
+                ),
             )
             newHistoryObj.save()
             obj.id = toolInDb.id

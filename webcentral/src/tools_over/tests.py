@@ -282,7 +282,7 @@ class TestUpdate(TestCase):
             "tools_over",
             "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
         )
-        
+
         self.assertGreater(len(Tools.objects.all()), 100)
 
         idOfWufiTool = Tools.objects.get(name__icontains="Wufi").id
@@ -301,7 +301,7 @@ class TestUpdate(TestCase):
         self.assertEqual(len(wufiTool), 1)
 
         cSharpTool = Tools.objects.filter(name__icontains="C#")
-        self.assertEqual(len(cSharpTool), 1) 
+        self.assertEqual(len(cSharpTool), 1)
 
 
 class TestTools(TestCase):

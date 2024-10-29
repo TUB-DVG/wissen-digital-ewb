@@ -21,12 +21,10 @@ class Classification(models.Model):
 
     def natural_key(self):
         return (self.classification_de, self.classification_en)
-    
+
     class Meta:
 
         app_label = "tools_over"
-
-    
 
 
 class Focus(models.Model):
@@ -42,10 +40,10 @@ class Focus(models.Model):
 
     def __str__(self):
         return self.focus
-    
+
     def natural_key(self):
         return (self.focus_de, self.focus_en)
-  
+
     class Meta:
 
         app_label = "tools_over"
@@ -62,6 +60,7 @@ class ApplicationArea(models.Model):
         help_text="application area",
         blank=True,
     )
+
     def natural_key(self):
         return (self.applicationArea_de, self.applicationArea_en)
 
@@ -83,7 +82,7 @@ class Usage(models.Model):
         help_text="usage",
         blank=True,
     )
-    
+
     def natural_key(self):
         return (self.usage_de, self.usage_en)
 
@@ -106,7 +105,7 @@ class TargetGroup(models.Model):
         help_text="Which group of people is the tool targeted at?",
         blank=True,
     )
-    
+
     def natural_key(self):
         return (self.targetGroup_de, self.targetGroup_en)
 
@@ -129,10 +128,10 @@ class LifeCyclePhase(models.Model):
         help_text="Life cycle phase of buildings where the application is used",
         blank=True,
     )
-    
+
     def natural_key(self):
         return (self.lifeCyclePhase_de, self.lifeCyclePhase_en)
-    
+
     def __str__(self):
         return self.lifeCyclePhase
 
@@ -152,10 +151,10 @@ class UserInterface(models.Model):
         help_text="userInterface",
         blank=True,
     )
-        
+
     def natural_key(self):
         return (self.userInterface_de, self.userInterface_en)
-    
+
     def __str__(self):
         return self.userInterface
 
