@@ -101,7 +101,8 @@ class TestLastProfile(WebDriverSetup):
         lastProfileLink.click()
 
         self.assertTrue(
-            "Stromlastprofil" == self.driver.title or "Current load profiles" == self.driver.title,
+            "Stromlastprofil" == self.driver.title
+            or "Current load profiles" == self.driver.title,
             "Page title should be 'Stromlastprofile' or 'Current load profiles'",
         )
 
