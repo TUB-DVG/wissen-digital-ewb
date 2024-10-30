@@ -24,7 +24,7 @@ def heatLoad(
         # Setting up the resolution for data filtering
         RESOLUTION = "HOURLY"
         # Parameter variable selection
-        PARAMETER = "TEMPERATURE_AIR_MEAN_200"
+        PARAMETER = "TEMPERATURE_AIR_MEAN_2M"
         # Setting up the Period
         PERIOD = "RECENT"
         # Acquiring all the stations that provide data according to selected filters

@@ -100,10 +100,10 @@ class TestLastProfile(WebDriverSetup):
         time.sleep(1)
         lastProfileLink.click()
 
-        self.assertEqual(
-            "Stromlastprofil",
-            self.driver.title,
-            "Page should be 'Stromlastprofile', but its not!",
+        self.assertTrue(
+            "Stromlastprofil" == self.driver.title
+            or "Current load profiles" == self.driver.title,
+            "Page title should be 'Stromlastprofile' or 'Current load profiles'",
         )
 
         currentApproObj = CurrentLoadApproximation(self.driver)

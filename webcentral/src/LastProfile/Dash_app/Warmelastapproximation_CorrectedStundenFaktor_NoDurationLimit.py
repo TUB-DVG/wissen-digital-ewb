@@ -22,7 +22,7 @@ Resolution = "HOURLY"
 Dataset = "AIR_TEMPERATURE"
 # Parameter variable selection
 
-Parameter = "TEMPERATURE_AIR_MEAN_200"
+Parameter = "TEMPERATURE_AIR_MEAN_2M"
 # Setting up the Period
 
 Period = "RECENT"
