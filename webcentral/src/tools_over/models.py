@@ -425,3 +425,10 @@ class History(models.Model):
             (field.name, getattr(self, field.name))
             for field in self._meta.get_field
         ]
+    
+    def __str__(self):
+        """
+
+        """
+        showedName = str(self.identifer) + " " + str(self.updateDate)
+        return showedName
