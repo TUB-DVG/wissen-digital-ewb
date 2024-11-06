@@ -410,15 +410,15 @@ class DataImportApp(DataImport):
             return toolInDb, False
 
     def _update(self, oldObj, newObj):
-        """Set all fields of the new ORM object into the old object.
-
-        """
+        """Set all fields of the new ORM object into the old object."""
 
         for field in newObj._meta.get_fields():
             if field.name != "id":
                 if isinstance(field, models.ManyToManyField):
-                    getattr(oldObj, field.name).set(getattr(newObj, field.name).all())
-                else: 
+                    getattr(oldObj, field.name).set(
+                        getattr(newObj, field.name).all()
+                    )
+                else:
                     setattr(oldObj, field.name, getattr(newObj, field.name))
 
         oldObj.save()
