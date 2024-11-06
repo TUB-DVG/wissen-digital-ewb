@@ -7,6 +7,10 @@ from TechnicalStandards.models import (
     Protocol,
 )
 
+class ClassificationManager(models.Manager):
+    def get_by_natural_key(self, classification_de, classification_en):
+        return self.get(classification_de=classification_de, classification_en=classification_en)
+
 
 class Classification(models.Model):
     """Model for"""
@@ -15,6 +19,8 @@ class Classification(models.Model):
         max_length=100,
         help_text="Classification Category",
     )
+
+    objects = ClassificationManager()
 
     def __str__(self):
         return self.classification
@@ -26,6 +32,9 @@ class Classification(models.Model):
 
         app_label = "tools_over"
 
+class FocusManager(models.Manager):
+    def get_by_natural_key(self, focus_de, focus_en):
+        return self.get(focus_de=focus_de, focus_en=focus_en)
 
 class Focus(models.Model):
     """Focus of the Tool-Items
@@ -38,6 +47,8 @@ class Focus(models.Model):
         help_text="Focus of the Tool",
     )
 
+    objects = FocusManager()
+
     def __str__(self):
         return self.focus
 
@@ -48,6 +59,10 @@ class Focus(models.Model):
 
         app_label = "tools_over"
 
+
+class ApplicationAreaManager(models.Manager):
+    def get_by_natural_key(self, applicationArea_de, applicationArea_en):
+        return self.get(applicationArea_de=applicationArea_de, applicationArea_en=applicationArea_en)
 
 class ApplicationArea(models.Model):
     """ApplicationArea of the Tool-Items
@@ -60,6 +75,7 @@ class ApplicationArea(models.Model):
         help_text="application area",
         blank=True,
     )
+    objects = ApplicationAreaManager()
 
     def natural_key(self):
         return (self.applicationArea_de, self.applicationArea_en)
@@ -70,6 +86,9 @@ class ApplicationArea(models.Model):
     class Meta:
         app_label = "tools_over"
 
+class UsageManager(models.Manager):
+    def get_by_natural_key(self, usage_de, usage_en):
+        return self.get(usage_de=usage_de, usage_en=usage_en)
 
 class Usage(models.Model):
     """Usage of the Tool-Items
@@ -83,6 +102,8 @@ class Usage(models.Model):
         blank=True,
     )
 
+    objects = UsageManager()
+
     def natural_key(self):
         return (self.usage_de, self.usage_en)
 
@@ -93,6 +114,9 @@ class Usage(models.Model):
 
         app_label = "tools_over"
 
+class TargetGroupManager(models.Manager):
+    def get_by_natural_key(self, targetGroup_de, targetGroup_en):
+        return self.get(targetGroup_de=targetGroup_de, targetGroup_en=targetGroup_en)
 
 class TargetGroup(models.Model):
     """TargetGroup of the Tool-Items
@@ -106,6 +130,8 @@ class TargetGroup(models.Model):
         blank=True,
     )
 
+    objects = TargetGroupManager()
+
     def natural_key(self):
         return (self.targetGroup_de, self.targetGroup_en)
 
@@ -113,8 +139,12 @@ class TargetGroup(models.Model):
         return self.targetGroup
 
     class Meta:
-
         app_label = "tools_over"
+
+
+class LifeCyclePhaseManager(models.Manager):
+    def get_by_natural_key(self, lifeCyclePhase_de, lifeCyclePhase_en):
+        return self.get(lifeCyclePhase_de=lifeCyclePhase_de, lifeCyclePhase_en=lifeCyclePhase_en)
 
 
 class LifeCyclePhase(models.Model):
@@ -129,6 +159,8 @@ class LifeCyclePhase(models.Model):
         blank=True,
     )
 
+    objects = LifeCyclePhaseManager()
+
     def natural_key(self):
         return (self.lifeCyclePhase_de, self.lifeCyclePhase_en)
 
@@ -139,6 +171,10 @@ class LifeCyclePhase(models.Model):
 
         app_label = "tools_over"
 
+
+class UserInterfaceManager(models.Manager):
+    def get_by_natural_key(self, userInterface_de, userInterface_en):
+        return self.get(userInterface_de=userInterface_de, userInterface_en=userInterface_en)
 
 class UserInterface(models.Model):
     """LifeCyclePhase of the Tool-Items
@@ -151,6 +187,8 @@ class UserInterface(models.Model):
         help_text="userInterface",
         blank=True,
     )
+    
+    objects = UserInterfaceManager()
 
     def natural_key(self):
         return (self.userInterface_de, self.userInterface_en)
@@ -160,6 +198,10 @@ class UserInterface(models.Model):
 
     class Meta:
         app_label = "tools_over"
+
+class AccessibilityManager(models.Manager):
+    def get_by_natural_key(self, accessibility_de, accessibility_en):
+        return self.get(accessibility_de=accessibility_de, accessibility_en=accessibility_en)
 
 
 class Accessibility(models.Model):
@@ -173,6 +215,8 @@ class Accessibility(models.Model):
         help_text="userInterface",
         blank=True,
     )
+    
+    objects = AccessibilityManager()
 
     def __str__(self):
         return self.accessibility
@@ -184,6 +228,9 @@ class Accessibility(models.Model):
 
         app_label = "tools_over"
 
+class ScaleManager(models.Manager):
+    def get_by_natural_key(self, scale_de, scale_en):
+        return self.get(scale_de=scale_de, scale_en=scale_en)
 
 class Scale(models.Model):
     """Scale of the Tool-Items
@@ -196,6 +243,8 @@ class Scale(models.Model):
         help_text="spatial scope of consideration",
         blank=True,
     )
+
+    objects = ScaleManager()
 
     def natural_key(self):
         return (self.scale_de, self.scale_en)
@@ -342,6 +391,8 @@ class Tools(models.Model):
                 if not field.name == "id":
                     firstObjAttr = getattr(self, field.name)
                     secondObjAttr = getattr(other, field.name)
+                    if (firstObjAttr is None and secondObjAttr == "") or (secondObjAttr is None and firstObjAttr == ""):
+                        continue
                     if firstObjAttr != secondObjAttr:
                         return False
 
@@ -376,7 +427,12 @@ class Tools(models.Model):
 
     def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
         """ """
-        querysetOfManyToManyElements = getattr(self, manyToManyAttr).all()
+        if manyToManyAttr == "specificApplication":
+            querysetOfManyToManyElements = getattr(self, manyToManyAttr).all().order_by("referenceNumber_id")
+        elif manyToManyAttr == "technicalStandardsNorms" or manyToManyAttr == "technicalStandardsProtocols":
+            querysetOfManyToManyElements = getattr(self, manyToManyAttr).all().order_by("name")
+        else:
+            querysetOfManyToManyElements = getattr(self, manyToManyAttr).all().order_by(manyToManyAttr)
         if len(querysetOfManyToManyElements) > 0:
             fieldsOfManyToManyModel = querysetOfManyToManyElements[
                 0

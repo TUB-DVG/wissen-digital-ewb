@@ -296,12 +296,34 @@ class TestUpdate(TestCase):
         # one History object should be present:
         historyObjs = History.objects.all()
         self.assertLessEqual(len(historyObjs), 5)
-        breakpoint()
+        
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
+        
         self.assertEqual(len(wufiTool), 1)
 
         cSharpTool = Tools.objects.filter(name__icontains="C#")
         self.assertEqual(len(cSharpTool), 1)
+
+    def testUpdateWithSameData(self):
+        """Loading the same data 2 times should create no History objects
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+        )
+        
+        numberOfTools = len(Tools.objects.all())
+
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+        )
+
+        self.assertEqual(len(History.objects.all()), 0)
+        self.assertEqual(numberOfTools, len(Tools.objects.all()))        
 
 
 class TestTools(TestCase):

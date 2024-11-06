@@ -4,6 +4,7 @@ from datetime import (
 )
 import pandas as pd
 from django.core.serializers import serialize
+from django.db import models
 
 from common.data_import import DataImport
 from .models import (
@@ -388,7 +389,8 @@ class DataImportApp(DataImport):
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
         obj.save()
-
+        # if obj.name == "WUFI Plus":
+        #     breakpoint()
         if len(toolsInDb) == 0:
             return obj, True
 
@@ -401,10 +403,23 @@ class DataImportApp(DataImport):
                 ),
             )
             newHistoryObj.save()
-            obj.id = toolInDb.id
-            toolInDb.delete()
-            obj.save()
+            self._update(toolInDb, obj)
             return obj, True
         else:
             obj.delete()
             return toolInDb, False
+
+    def _update(self, oldObj, newObj):
+        """Set all fields of the new ORM object into the old object.
+
+        """
+
+        for field in newObj._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    getattr(oldObj, field.name).set(getattr(newObj, field.name).all())
+                else: 
+                    setattr(oldObj, field.name, getattr(newObj, field.name))
+
+        oldObj.save()
+        newObj.delete()
