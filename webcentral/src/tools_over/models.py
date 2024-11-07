@@ -506,6 +506,20 @@ class Tools(models.Model):
     class Meta:
         app_label = "tools_over"
 
+    
+    def _update(self, newState):
+        """Set all fields of the new ORM object into the old object.
+
+        """
+
+        for field in self._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    getattr(self, field.name).set(getattr(newState, field.name).all())
+                else: 
+                    setattr(self, field.name, getattr(newState, field.name))
+        
+        self.save()
 
 class History(models.Model):
     """model class to store updates of the Tools model"""

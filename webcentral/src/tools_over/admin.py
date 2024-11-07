@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.forms import ModelForm
+
 from django.core import serializers
 from modeltranslation.admin import TranslationAdmin
 
@@ -89,8 +91,28 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
-
+# class HistoryForm(ModelForm):
+#     model = History
+#     def clean(self):
+#         return self.cleaned_data
+#
 class HistoryAdmin(admin.ModelAdmin):
+    actions = ["rollbackHistory"]
+
+    @admin.action(description="Rollback selected change")
+    def rollbackHistory(self, request, queryset):
+        """Rolls back to the state selected by `queryset`
+
+        """
+        for historyObj in queryset:
+            deserializedStringyfiedObj = serializers.deserialize(
+                "json", historyObj.stringifiedObj
+            )
+            rollbackToolState = list(deserializedStringyfiedObj)[0].object
+            toolStateInDB = Tools.objects.filter(name=rollbackToolState.name)[0]
+            toolStateInDB._update(rollbackToolState)
+            historyObj.delete()
+
     def change_view(self, request, object_id, form_url="", extra_context=None):
         extra_context = extra_context or {}
 
@@ -110,5 +132,22 @@ class HistoryAdmin(admin.ModelAdmin):
             extra_context=extra_context,
         )
 
-
+    # def save_model(self, request, obj, form, change):
+    #     """Rollback Tools object to state saved in History object
+    #
+    #     """
+    #     deserializedStringyfiedObj = serializers.deserialize(
+    #         "json", self.model.objects.get(id=int(obj)).stringifiedObj
+    #     )
+    #     rolbackState = list(deserializedStringyfiedObj)[0].object
+    #
+    #     currentState = Tools.objects.filter(name=oldTool.name)[0]
+    #     breakpoint()
+    #
+    # def response_change(self, request, obj):
+    #
+    #     breakpoint()
+    #
+    # def response_add(self, request, obj, post_url_continue=None):
+    #     breakpoint()
 admin.site.register(History, HistoryAdmin)
