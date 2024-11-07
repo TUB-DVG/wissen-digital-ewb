@@ -110,7 +110,7 @@ class HistoryAdmin(admin.ModelAdmin):
             )
             rollbackToolState = list(deserializedStringyfiedObj)[0].object
             toolStateInDB = Tools.objects.filter(name=rollbackToolState.name)[0]
-            toolStateInDB._update(rollbackToolState)
+            toolStateInDB._update(rollbackToolState, historyObj)
             historyObj.delete()
 
     def change_view(self, request, object_id, form_url="", extra_context=None):

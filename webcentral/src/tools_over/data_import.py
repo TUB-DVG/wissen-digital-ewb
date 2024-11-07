@@ -2,6 +2,8 @@ from datetime import (
     datetime,
     timedelta,
 )
+import json
+
 import pandas as pd
 from django.core.serializers import serialize
 from django.db import models
@@ -130,41 +132,42 @@ class DataImportApp(DataImport):
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
 
-        processedApplicationAreaList = self._correctReadInValue(
-            row[header.index("applicationArea")]
-        )
+        # processedApplicationAreaList = self._correctReadInValue(
+        #     row[header.index("applicationArea")]
+        # )
+        processedApplicationAreaList = self._processListInput(row[header.index("applicationArea")], separator=";;")
+
         applicationAreaList = self._iterateThroughListOfStrings(
             processedApplicationAreaList, ApplicationArea
         )
-
-        processedUsageList = self._correctReadInValue(
-            row[header.index("usage")]
+        processedUsageList = self._processListInput(
+            row[header.index("usage")], separator=";;"
         )
         usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
 
-        processedTargetGroup = self._correctReadInValue(
-            row[header.index("targetGroup")]
+        processedTargetGroup = self._processListInput(
+            row[header.index("targetGroup")], separator=";;"
         )
         targetGroupList = self._iterateThroughListOfStrings(
             processedTargetGroup, TargetGroup
         )
 
-        processedAccessibilityList = self._correctReadInValue(
-            row[header.index("accessibility")]
+        processedAccessibilityList = self._processListInput(
+            row[header.index("accessibility")], separator=";;"
         )
         accessibilityList = self._iterateThroughListOfStrings(
             processedAccessibilityList, Accessibility
         )
 
-        processedlifeCyclePhase = self._correctReadInValue(
-            row[header.index("lifeCyclePhase")]
+        processedlifeCyclePhase = self._processListInput(
+            row[header.index("lifeCyclePhase")], separator=";;"
         )
         lifeCyclePhaseList = self._iterateThroughListOfStrings(
             processedlifeCyclePhase, LifeCyclePhase
         )
 
-        processedUserInterface = self._correctReadInValue(
-            row[header.index("userInterface")]
+        processedUserInterface = self._processListInput(
+            row[header.index("userInterface")], separator=";;"
         )
         userInterfaceList = self._iterateThroughListOfStrings(
             processedUserInterface, UserInterface
@@ -366,8 +369,11 @@ class DataImportApp(DataImport):
 
         # obj.save()
         toolsInDb = Tools.objects.filter(name=row[header.index("name")])
+        # if "WUFI" in row[header.index("name")]:
+            
         if len(toolsInDb) > 0:
             toolInDb = toolsInDb[0]
+            idOfAlreadyPresentTool = toolInDb.id
         obj.save()
         # obj.id = toolInDb.id
         obj.focus.add(*focusElements)
@@ -393,16 +399,23 @@ class DataImportApp(DataImport):
         #     breakpoint()
         if len(toolsInDb) == 0:
             return obj, True
-
+        toolsInDb = Tools.objects.get(id=idOfAlreadyPresentTool)
         objsEqual = toolInDb.isEqual(obj)
         if not objsEqual:
+            
+            # toolInDBWithNewId = toolInDb
+            # toolInDBWithNewId.id = obj.id
             newHistoryObj = History(
                 identifer=row[header.index("name")],
                 stringifiedObj=serialize(
                     "json", [toolInDb], use_natural_foreign_keys=True
                 ),
             )
+            # parsedJson = json.loads(newHistoryObj.stringifiedObj)
+            # parsedJson[0]["pk"] = obj.pk
+            # newHistoryObj.stringifiedObj = json.dumps(parsedJson)
             newHistoryObj.save()
+
             self._update(toolInDb, obj)
             return obj, True
         else:
@@ -411,7 +424,7 @@ class DataImportApp(DataImport):
 
     def _update(self, oldObj, newObj):
         """Set all fields of the new ORM object into the old object."""
-
+        
         for field in newObj._meta.get_fields():
             if field.name != "id":
                 if isinstance(field, models.ManyToManyField):

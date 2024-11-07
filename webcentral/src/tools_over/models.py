@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 from django.db.models.functions import Now
 
@@ -454,7 +456,7 @@ class Tools(models.Model):
 
         return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
 
-    def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix):
+    def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix, separator=","):
         """ """
         if manyToManyAttr == "specificApplication":
             querysetOfManyToManyElements = (
@@ -488,10 +490,10 @@ class Tools(models.Model):
         for element in querysetOfManyToManyElements:
             if suffixInFieldNames:
                 if getattr(element, field) is not None:
-                    returnStr += getattr(element, field) + ", "
+                    returnStr += getattr(element, field) + separator
             else:
-                returnStr += element.__str__() + ", "
-        return returnStr[:-2]
+                returnStr += element.__str__() + separator
+        return returnStr[:-len(separator)]
 
     @property
     def imageOrDefault(self):
@@ -507,15 +509,20 @@ class Tools(models.Model):
         app_label = "tools_over"
 
     
-    def _update(self, newState):
+    def _update(self, newState, historyObj):
         """Set all fields of the new ORM object into the old object.
 
         """
+        stringifiedObj = json.loads(historyObj.stringifiedObj)
 
         for field in self._meta.get_fields():
             if field.name != "id":
                 if isinstance(field, models.ManyToManyField):
-                    getattr(self, field.name).set(getattr(newState, field.name).all())
+                    listOfM2Mobjs = []
+                    for naturalKeyTuple in stringifiedObj[0]["fields"][field.name]:
+                        listOfM2Mobjs.append(getattr(self, field.name).model.objects.get_by_natural_key(naturalKeyTuple[0], naturalKeyTuple[1]))
+                    getattr(self, field.name).set(listOfM2Mobjs)
+                    
                 else: 
                     setattr(self, field.name, getattr(newState, field.name))
         

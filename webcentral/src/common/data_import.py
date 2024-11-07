@@ -349,10 +349,8 @@ class DataImport:
         germanManyToManyStr = self._processListInput(
             row[header.index(headerExcel)], ";;"
         )
-        englishManyToManyStr = self._processListInput(
-            row[header.index(f"{headerExcel}__en")], ";;"
-        )
 
+        englishManyToManyStr = self._processListInput(row[header.index(f"{headerExcel}__en")], ";;")
         elementsForAttr = getattr(ormObj, dbAttr).all()
         for ormRelObj in elementsForAttr:
             for indexInGerList, germanyManyToManyElement in enumerate(

@@ -6,7 +6,7 @@ from tools_over.models import Tools
 
 class DataExport:
     """ """
-
+    SEPARATOR_M2M = ";;"
     MAPPING_ORM_TO_XLSX = {
         "name": "name",
         "resources": "resources",
@@ -131,7 +131,7 @@ class DataExport:
             ormObj._meta.get_field(mappingNameORM), models.ManyToManyField
         ):
             concatenatedMTMStr = ormObj.getManyToManyAttrAsStr(
-                mappingNameORM, languageSuffix
+                mappingNameORM, languageSuffix, separator=";;"
             )
             dataDict[mappingNameORM].append(concatenatedMTMStr)
         elif isinstance(
