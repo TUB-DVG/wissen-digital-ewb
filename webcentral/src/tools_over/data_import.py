@@ -204,8 +204,8 @@ class DataImportApp(DataImport):
         licenseNotes = row[header.index("licenseNotes")]
         furtherInfos = row[header.index("furtherInformation")]
         alternatives = row[header.index("alternatives")]
-        processedSpecificApplicationList = self._correctReadInValue(
-            row[header.index("specificApplication")]
+        processedSpecificApplicationList = self._processListInput(
+            row[header.index("specificApplication")], separator=";;"
         )
         specificApplicationList = self._iterateThroughListOfStrings(
             processedSpecificApplicationList, Subproject
@@ -213,8 +213,8 @@ class DataImportApp(DataImport):
 
         provider = row[header.index("provider")]
         imageName = row[header.index("image")]
-        processedScaleList = self._correctReadInValue(
-            row[header.index("scale")]
+        processedScaleList = self._processListInput(
+            row[header.index("scale")], separator=";;"
         )
 
         scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
@@ -240,8 +240,8 @@ class DataImportApp(DataImport):
         else:
             developmentState = int(developmentState)
 
-        processedTechnicalStandardsNorms = self._correctReadInValue(
-            row[header.index("technicalStandardsNorms")]
+        processedTechnicalStandardsNorms = self._processListInput(
+            row[header.index("technicalStandardsNorms")], separator=";;"
         )
         technicalStandardsNormsList = self._iterateThroughListOfStrings(
             processedTechnicalStandardsNorms, Norm
@@ -250,13 +250,13 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsList = row[
             header.index("technicalStandardsProtocols")
         ].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("focus")]
+        processedFocusList = self._processListInput(
+            row[header.index("focus")], separator=";;"
         )
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
 
-        processedClassificationList = self._correctReadInValue(
-            row[header.index("classification")]
+        processedClassificationList = self._processListInput(
+            row[header.index("classification")], separator=";;"
         )
         classificationList = self._iterateThroughListOfStrings(
             processedClassificationList, Classification

@@ -1,6 +1,7 @@
 from io import StringIO
 import os
 
+from django.db import models
 from django.test import TestCase
 from unittest.mock import patch
 from django.core.management import (
@@ -56,6 +57,20 @@ class TestToolsDataImport(TestCase):
         self.assertEqual(len(firstTool.applicationArea.all()), 3)
         for applicationAreaObj in firstTool.applicationArea.all():
             self.assertTrue(applicationAreaObj.applicationArea_en is not None)
+        
+        allFields = Tools._meta.get_fields()
+        allTools = Tools.objects.all()
+        for tool in allTools:
+            for field in allFields:
+                if isinstance(field, models.ManyToManyField):
+                    allM2Mobjs = getattr(tool, field.name).all()
+                    for m2mObj in allM2Mobjs:
+                        fieldsInM2Mtable = m2mObj._meta.get_fields()
+                        for m2mField in fieldsInM2Mtable:
+                            if "_de" in m2mField.name or "_en" in m2mField.name:
+                                self.assertTrue(getattr(m2mObj, m2mField.name) != None or getattr(m2mObj, m2mField.name) != "")
+            
+
         self.assertEqual(
             len(
                 Tools.objects.filter(
@@ -319,9 +334,19 @@ class TestUpdate(TestCase):
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
+        self.assertTrue("Test" in wufiTool[0].shortDescription_de)
+
 
         cSharpTool = Tools.objects.filter(name__icontains="C#")
         self.assertEqual(len(cSharpTool), 1)
+        self.assertEqual(cSharpTool[0].yearOfRelease, "2001")
+       
+        vsaTool = Tools.objects.filter(name__icontains="VSA")
+        self.assertEqual(len(vsaTool), 1)
+        self.assertEqual(len(vsaTool[0].usage.all()), 5)
+        self.assertEqual(vsaTool[0].usage.all().filter(usage_de="Test")[0].usage_en, "Test")
+
+
 
     def testUpdateWithSameData(self):
         """Loading the same data 2 times should create no History objects"""
