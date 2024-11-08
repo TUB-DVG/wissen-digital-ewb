@@ -135,7 +135,9 @@ class DataImportApp(DataImport):
         # processedApplicationAreaList = self._correctReadInValue(
         #     row[header.index("applicationArea")]
         # )
-        processedApplicationAreaList = self._processListInput(row[header.index("applicationArea")], separator=";;")
+        processedApplicationAreaList = self._processListInput(
+            row[header.index("applicationArea")], separator=";;"
+        )
 
         applicationAreaList = self._iterateThroughListOfStrings(
             processedApplicationAreaList, ApplicationArea
@@ -370,7 +372,7 @@ class DataImportApp(DataImport):
         # obj.save()
         toolsInDb = Tools.objects.filter(name=row[header.index("name")])
         # if "WUFI" in row[header.index("name")]:
-            
+
         if len(toolsInDb) > 0:
             toolInDb = toolsInDb[0]
             idOfAlreadyPresentTool = toolInDb.id
@@ -402,7 +404,7 @@ class DataImportApp(DataImport):
         toolsInDb = Tools.objects.get(id=idOfAlreadyPresentTool)
         objsEqual = toolInDb.isEqual(obj)
         if not objsEqual:
-            
+
             # toolInDBWithNewId = toolInDb
             # toolInDBWithNewId.id = obj.id
             newHistoryObj = History(
@@ -424,7 +426,7 @@ class DataImportApp(DataImport):
 
     def _update(self, oldObj, newObj):
         """Set all fields of the new ORM object into the old object."""
-        
+
         for field in newObj._meta.get_fields():
             if field.name != "id":
                 if isinstance(field, models.ManyToManyField):

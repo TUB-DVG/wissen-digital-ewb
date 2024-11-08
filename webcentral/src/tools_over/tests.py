@@ -27,9 +27,7 @@ class TestToolsDataImport(TestCase):
     """ """
 
     def addM2MThroughExcel(self):
-        """
-
-        """
+        """ """
         call_command(
             "data_import",
             "tools_over",
@@ -38,7 +36,6 @@ class TestToolsDataImport(TestCase):
 
         # test if a new focus object ("kulturell", "cultural") was imported
         self.assertGreater(len(Focus.objects.filter(focus_de="kulturell")), 0)
-
 
     def testNewToolsExcelWithTranslation(self):
         """import the new tools excel file from May 2024, which also has a sheet "English" with the english translations.
@@ -57,7 +54,7 @@ class TestToolsDataImport(TestCase):
         self.assertEqual(len(firstTool.applicationArea.all()), 3)
         for applicationAreaObj in firstTool.applicationArea.all():
             self.assertTrue(applicationAreaObj.applicationArea_en is not None)
-        
+
         allFields = Tools._meta.get_fields()
         allTools = Tools.objects.all()
         for tool in allTools:
@@ -68,8 +65,10 @@ class TestToolsDataImport(TestCase):
                         fieldsInM2Mtable = m2mObj._meta.get_fields()
                         for m2mField in fieldsInM2Mtable:
                             if "_de" in m2mField.name or "_en" in m2mField.name:
-                                self.assertTrue(getattr(m2mObj, m2mField.name) != None or getattr(m2mObj, m2mField.name) != "")
-            
+                                self.assertTrue(
+                                    getattr(m2mObj, m2mField.name) != None
+                                    or getattr(m2mObj, m2mField.name) != ""
+                                )
 
         self.assertEqual(
             len(
@@ -291,7 +290,7 @@ class TestExportClass(TestCase):
 
 class TestUpdate(TestCase):
     """Testclass for the update process of data for the `tools_over`-app."""
-    
+
     def setUpAdmin(self):
         """setUp method for all methods of `DbDiffAdminTest`"""
         # Create test data
@@ -304,7 +303,6 @@ class TestUpdate(TestCase):
             username="admin", password="password", email="admin@example.com"
         )
         self.factory = RequestFactory()
-
 
     def testUpdateOfNewDataWorks(self):
         """Test if starting the update-process and finalizing with the updated
@@ -336,17 +334,16 @@ class TestUpdate(TestCase):
         self.assertEqual(len(wufiTool), 1)
         self.assertTrue("Test" in wufiTool[0].shortDescription_de)
 
-
         cSharpTool = Tools.objects.filter(name__icontains="C#")
         self.assertEqual(len(cSharpTool), 1)
         self.assertEqual(cSharpTool[0].yearOfRelease, "2001")
-       
+
         vsaTool = Tools.objects.filter(name__icontains="VSA")
         self.assertEqual(len(vsaTool), 1)
         self.assertEqual(len(vsaTool[0].usage.all()), 5)
-        self.assertEqual(vsaTool[0].usage.all().filter(usage_de="Test")[0].usage_en, "Test")
-
-
+        self.assertEqual(
+            vsaTool[0].usage.all().filter(usage_de="Test")[0].usage_en, "Test"
+        )
 
     def testUpdateWithSameData(self):
         """Loading the same data 2 times should create no History objects"""
@@ -368,9 +365,7 @@ class TestUpdate(TestCase):
         self.assertEqual(numberOfTools, len(Tools.objects.all()))
 
     def testUpdateM2M(self):
-        """Test if it is pssible to update a Many2Many-Relation.
-
-        """
+        """Test if it is pssible to update a Many2Many-Relation."""
         self.setUpAdmin()
         call_command(
             "data_import",
@@ -385,11 +380,17 @@ class TestUpdate(TestCase):
         )
 
         wufiTool = Tools.objects.get(name__icontains="WUFI")
-        
-        self.assertEqual(len(Tools.objects.filter(name__icontains="WUFI", focus__focus_de="kulturell")), 1)
+
+        self.assertEqual(
+            len(
+                Tools.objects.filter(
+                    name__icontains="WUFI", focus__focus_de="kulturell"
+                )
+            ),
+            1,
+        )
         self.assertEqual(len(History.objects.all()), 1)
 
-        
         request = self.factory.post("/admin/tools_over/history/")
         request.user = self.user
 

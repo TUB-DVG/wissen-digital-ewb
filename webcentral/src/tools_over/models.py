@@ -456,7 +456,9 @@ class Tools(models.Model):
 
         return self.getManyToManyAttrAsStr(manyToManyAttr, "_de")
 
-    def getManyToManyAttrAsStr(self, manyToManyAttr, languageSuffix, separator=","):
+    def getManyToManyAttrAsStr(
+        self, manyToManyAttr, languageSuffix, separator=","
+    ):
         """ """
         if manyToManyAttr == "specificApplication":
             querysetOfManyToManyElements = (
@@ -493,7 +495,7 @@ class Tools(models.Model):
                     returnStr += getattr(element, field) + separator
             else:
                 returnStr += element.__str__() + separator
-        return returnStr[:-len(separator)]
+        return returnStr[: -len(separator)]
 
     @property
     def imageOrDefault(self):
@@ -508,25 +510,31 @@ class Tools(models.Model):
     class Meta:
         app_label = "tools_over"
 
-    
     def _update(self, newState, historyObj):
-        """Set all fields of the new ORM object into the old object.
-
-        """
+        """Set all fields of the new ORM object into the old object."""
         stringifiedObj = json.loads(historyObj.stringifiedObj)
 
         for field in self._meta.get_fields():
             if field.name != "id":
                 if isinstance(field, models.ManyToManyField):
                     listOfM2Mobjs = []
-                    for naturalKeyTuple in stringifiedObj[0]["fields"][field.name]:
-                        listOfM2Mobjs.append(getattr(self, field.name).model.objects.get_by_natural_key(naturalKeyTuple[0], naturalKeyTuple[1]))
+                    for naturalKeyTuple in stringifiedObj[0]["fields"][
+                        field.name
+                    ]:
+                        listOfM2Mobjs.append(
+                            getattr(
+                                self, field.name
+                            ).model.objects.get_by_natural_key(
+                                naturalKeyTuple[0], naturalKeyTuple[1]
+                            )
+                        )
                     getattr(self, field.name).set(listOfM2Mobjs)
-                    
-                else: 
+
+                else:
                     setattr(self, field.name, getattr(newState, field.name))
-        
+
         self.save()
+
 
 class History(models.Model):
     """model class to store updates of the Tools model"""

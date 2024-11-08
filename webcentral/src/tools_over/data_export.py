@@ -6,6 +6,7 @@ from tools_over.models import Tools
 
 class DataExport:
     """ """
+
     SEPARATOR_M2M = ";;"
     MAPPING_ORM_TO_XLSX = {
         "name": "name",

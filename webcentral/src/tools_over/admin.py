@@ -91,6 +91,7 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
+
 # class HistoryForm(ModelForm):
 #     model = History
 #     def clean(self):
@@ -101,9 +102,7 @@ class HistoryAdmin(admin.ModelAdmin):
 
     @admin.action(description="Rollback selected change")
     def rollbackHistory(self, request, queryset):
-        """Rolls back to the state selected by `queryset`
-
-        """
+        """Rolls back to the state selected by `queryset`"""
         for historyObj in queryset:
             deserializedStringyfiedObj = serializers.deserialize(
                 "json", historyObj.stringifiedObj
@@ -150,4 +149,6 @@ class HistoryAdmin(admin.ModelAdmin):
     #
     # def response_add(self, request, obj, post_url_continue=None):
     #     breakpoint()
+
+
 admin.site.register(History, HistoryAdmin)
