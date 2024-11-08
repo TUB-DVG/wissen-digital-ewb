@@ -60,6 +60,8 @@ HowTo Guides
    :caption: HowTo:
    
    HowTo/create_dump_for_repo
+   HowTo/rollback_tool
+
 
 Old to be refactored
 ====================
