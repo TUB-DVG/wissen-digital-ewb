@@ -530,10 +530,18 @@ class Tools(models.Model):
                                 )
                             )
                         else:
-                            specificApplicationElements = stringifiedObj[0]["fields"][field.name]
+                            specificApplicationElements = stringifiedObj[0][
+                                "fields"
+                            ][field.name]
                             listOfM2Mobjs = []
-                            for enargusprojectNumber in specificApplicationElements:
-                                listOfM2Mobjs.append(Subproject.objects.get(referenceNumber_id=enargusprojectNumber))
+                            for (
+                                enargusprojectNumber
+                            ) in specificApplicationElements:
+                                listOfM2Mobjs.append(
+                                    Subproject.objects.get(
+                                        referenceNumber_id=enargusprojectNumber
+                                    )
+                                )
                     getattr(self, field.name).set(listOfM2Mobjs)
 
                 else:
