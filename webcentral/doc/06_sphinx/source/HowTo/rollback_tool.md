@@ -29,6 +29,8 @@ In that object the old state of the tool is saved as a stringified JSON object. 
 6. Find the `History`-tab on the left side of the admin panel inside the `tools_over`-menu.
  ![Image of the tools_over tab](../img/tools_over_tab.png)
 Click on the history-element to be redirected to the history object listing page. There all history objects are shown, whereby each object is named after the tool or digtal application its state it is saving and the timestamp at which the update for the tool was done. When clicking on one of the history object a details page should open, which should look like the following:
-![Image of the tools_over tab](../details_tools_comparison.png)
-On the left side the current state of the tool `PostgresSQL` is shown. On the right side the state is show to which the tool potentially could be rollbacked. The lines with the yellow background show, where attributes differ between the current state and the rollback state.
-
+![Image of the tools_over tab](../img/details_tools_comparison.png)
+On the left side the current state of the tool `BESMod` is shown. On the right side the state is show to which the tool potentially could be rollbacked. The lines with the yellow background show, where attributes differ between the current state and the rollback state. To rollback the tool-state the user needs to go back to the history listing page and select the tool states, which should be rolled back:
+![Image of the tools_over tab](../img/select_rollback.png)
+After selecting the tools, which should rollback, select from the actions dropdown menu `Rollback selected change` and press apply.
+The history object should then disappear and the state of the selected tools should be rollbacked.
