@@ -521,13 +521,19 @@ class Tools(models.Model):
                     for naturalKeyTuple in stringifiedObj[0]["fields"][
                         field.name
                     ]:
-                        listOfM2Mobjs.append(
-                            getattr(
-                                self, field.name
-                            ).model.objects.get_by_natural_key(
-                                naturalKeyTuple[0], naturalKeyTuple[1]
+                        if field.name != "specificApplication":
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name
+                                ).model.objects.get_by_natural_key(
+                                    naturalKeyTuple[0], naturalKeyTuple[1]
+                                )
                             )
-                        )
+                        else:
+                            specificApplicationElements = stringifiedObj[0]["fields"][field.name]
+                            listOfM2Mobjs = []
+                            for enargusprojectNumber in specificApplicationElements:
+                                listOfM2Mobjs.append(Subproject.objects.get(referenceNumber_id=enargusprojectNumber))
                     getattr(self, field.name).set(listOfM2Mobjs)
 
                 else:

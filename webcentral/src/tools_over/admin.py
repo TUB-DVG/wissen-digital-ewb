@@ -1,9 +1,12 @@
+import json
+
 from django.contrib import admin
 from django.forms import ModelForm
 
 from django.core import serializers
 from modeltranslation.admin import TranslationAdmin
 
+from project_listing.models import Subproject
 from .models import (
     Tools,
     Classification,
@@ -119,7 +122,13 @@ class HistoryAdmin(admin.ModelAdmin):
             "json", self.model.objects.get(id=int(object_id)).stringifiedObj
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
+        
+        currentToolState = Tools.objects.filter(name=oldTool.name)
+
         extra_context["oldTool"] = oldTool
+        extra_context["rollbackStateStringified"] = json.loads(self.model.objects.get(id=int(object_id)).stringifiedObj)[0]["fields"]
+        extra_context["currentStateStringified"] = json.loads(serializers.serialize("json", currentToolState, use_natural_foreign_keys=True))[0]["fields"]
+
         extra_context["currentTool"] = Tools.objects.filter(name=oldTool.name)[
             0
         ]
