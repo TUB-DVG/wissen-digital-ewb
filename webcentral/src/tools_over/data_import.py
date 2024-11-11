@@ -2,7 +2,11 @@ from datetime import (
     datetime,
     timedelta,
 )
+import json
+
 import pandas as pd
+from django.core.serializers import serialize
+from django.db import models
 
 from common.data_import import DataImport
 from .models import (
@@ -16,6 +20,7 @@ from .models import (
     Accessibility,
     Scale,
     Tools,
+    History,
 )
 from TechnicalStandards.models import (
     Norm,
@@ -52,7 +57,7 @@ class DataImportApp(DataImport):
         # "focus_en": "focus_en",
         "scale__en": "scale_en",
         # "lastUpdate_en": "lastUpdate_en",
-        "accessibility_en": "accessibility_en",
+        "accessibility__en": "accessibility_en",
         # "license_en": "license_en",
         # "licenseNotes_en": "licenseNotes_en",
         # "furtherInformation_en": "furtherInformation_en",
@@ -78,6 +83,8 @@ class DataImportApp(DataImport):
             Represents the file-path to the Data-File (xlsx or csv).
         """
         super().__init__(path_to_data_file)
+        self.dictIdentifier = None
+        self.personalDataFlag = False
 
     def getOrCreate(
         self,
@@ -103,44 +110,66 @@ class DataImportApp(DataImport):
         obj:    ToolsSubproject the Tools-object was created or not.
         """
 
+        # check if there is already a tool with the same name present in the
+        # database:
+        # toolObjsFilteredByName = Tools.objects.filter(
+        #     name=row[header.index("name")]
+        # )
+        # presentToolWithSameName = None
+        # idOfOldIstance = None
+        # if len(toolObjsFilteredByName) > 0:
+        #     newHistoryObj = History(
+        #         identifer=row[header.index("name")],
+        #         stringifiedObj=serialize("json", toolObjsFilteredByName),
+        #     )
+        #     newHistoryObj.save()
+        #     idOfOldIstance = toolObjsFilteredByName[0].id
+        #     toolObjsFilteredByName[0].delete()
+        #     # presentToolWithSameName = toolObjsFilteredByName[0]
+        # self.diffStrDict[row[header.index("name")]] = ""
+        # self.dictIdentifier = row[header.index("name")]
+
         name = row[header.index("name")]
         shortDescription = row[header.index("shortDescription")]
 
-        processedApplicationAreaList = self._correctReadInValue(
-            row[header.index("applicationArea")]
+        # processedApplicationAreaList = self._correctReadInValue(
+        #     row[header.index("applicationArea")]
+        # )
+        processedApplicationAreaList = self._processListInput(
+            row[header.index("applicationArea")], separator=";;"
         )
+
         applicationAreaList = self._iterateThroughListOfStrings(
             processedApplicationAreaList, ApplicationArea
         )
-
-        processedUsageList = self._correctReadInValue(
-            row[header.index("usage")]
+        processedUsageList = self._processListInput(
+            row[header.index("usage")], separator=";;"
         )
         usageList = self._iterateThroughListOfStrings(processedUsageList, Usage)
 
-        processedTargetGroup = self._correctReadInValue(
-            row[header.index("targetGroup")]
+        processedTargetGroup = self._processListInput(
+            row[header.index("targetGroup")], separator=";;"
         )
         targetGroupList = self._iterateThroughListOfStrings(
             processedTargetGroup, TargetGroup
         )
 
-        processedAccessibilityList = self._correctReadInValue(
-            row[header.index("accessibility")]
+        processedAccessibilityList = self._processListInput(
+            row[header.index("accessibility")], separator=";;"
         )
         accessibilityList = self._iterateThroughListOfStrings(
             processedAccessibilityList, Accessibility
         )
 
-        processedlifeCyclePhase = self._correctReadInValue(
-            row[header.index("lifeCyclePhase")]
+        processedlifeCyclePhase = self._processListInput(
+            row[header.index("lifeCyclePhase")], separator=";;"
         )
         lifeCyclePhaseList = self._iterateThroughListOfStrings(
             processedlifeCyclePhase, LifeCyclePhase
         )
 
-        processedUserInterface = self._correctReadInValue(
-            row[header.index("userInterface")]
+        processedUserInterface = self._processListInput(
+            row[header.index("userInterface")], separator=";;"
         )
         userInterfaceList = self._iterateThroughListOfStrings(
             processedUserInterface, UserInterface
@@ -177,8 +206,8 @@ class DataImportApp(DataImport):
         licenseNotes = row[header.index("licenseNotes")]
         furtherInfos = row[header.index("furtherInformation")]
         alternatives = row[header.index("alternatives")]
-        processedSpecificApplicationList = self._correctReadInValue(
-            row[header.index("specificApplication")]
+        processedSpecificApplicationList = self._processListInput(
+            row[header.index("specificApplication")], separator=";;"
         )
         specificApplicationList = self._iterateThroughListOfStrings(
             processedSpecificApplicationList, Subproject
@@ -186,8 +215,8 @@ class DataImportApp(DataImport):
 
         provider = row[header.index("provider")]
         imageName = row[header.index("image")]
-        processedScaleList = self._correctReadInValue(
-            row[header.index("scale")]
+        processedScaleList = self._processListInput(
+            row[header.index("scale")], separator=";;"
         )
 
         scaleList = self._iterateThroughListOfStrings(processedScaleList, Scale)
@@ -213,8 +242,8 @@ class DataImportApp(DataImport):
         else:
             developmentState = int(developmentState)
 
-        processedTechnicalStandardsNorms = self._correctReadInValue(
-            row[header.index("technicalStandardsNorms")]
+        processedTechnicalStandardsNorms = self._processListInput(
+            row[header.index("technicalStandardsNorms")], separator=";;"
         )
         technicalStandardsNormsList = self._iterateThroughListOfStrings(
             processedTechnicalStandardsNorms, Norm
@@ -223,13 +252,13 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsList = row[
             header.index("technicalStandardsProtocols")
         ].split(",")
-        processedFocusList = self._correctReadInValue(
-            row[header.index("focus")]
+        processedFocusList = self._processListInput(
+            row[header.index("focus")], separator=";;"
         )
         focusList = self._iterateThroughListOfStrings(processedFocusList, Focus)
 
-        processedClassificationList = self._correctReadInValue(
-            row[header.index("classification")]
+        processedClassificationList = self._processListInput(
+            row[header.index("classification")], separator=";;"
         )
         classificationList = self._iterateThroughListOfStrings(
             processedClassificationList, Classification
@@ -269,28 +298,28 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsElements = Protocol.objects.filter(
             name__in=technicalStandardsProtocolsList
         )
-        obj, created = Tools.objects.get_or_create(
+        obj = Tools(
             name=name,
             shortDescription=shortDescription,
-            applicationArea__in=applicationAreaElements,
-            usage__in=usageElements,
-            lifeCyclePhase__in=lifeCyclePhaseElements,
-            userInterface__in=userInterfaceElements,
+            # applicationArea__in=applicationAreaElements,
+            # usage__in=usageElements,
+            # lifeCyclePhase__in=lifeCyclePhaseElements,
+            # userInterface__in=userInterfaceElements,
             userInterfaceNotes=userInterfaceNotes,
             programmingLanguages=programmingLanguages,
             frameworksLibraries=frameworksLibraries,
             databaseSystem=databaseSystem,
-            scale__in=scaleElements,
-            accessibility__in=accessibilityElements,
-            targetGroup__in=targetGroupElements,
+            # scale__in=scaleElements,
+            # accessibility__in=accessibilityElements,
+            # targetGroup__in=targetGroupElements,
             lastUpdate=lastUpdate,
             license=license,
             licenseNotes=licenseNotes,
             furtherInformation=furtherInfos,
             alternatives=alternatives,
-            specificApplication__in=specificApplicationElements,
-            focus__in=focusElements,
-            classification__in=classificationElements,
+            # specificApplication__in=specificApplicationElements,
+            # focus__in=focusElements,
+            # classification__in=classificationElements,
             provider=provider,
             image=imageName,
             released=released,
@@ -298,29 +327,114 @@ class DataImportApp(DataImport):
             resources=resources,
             yearOfRelease=yearOfRelease,
             developmentState=developmentState,
-            technicalStandardsNorms__in=technicalStandardsNormsElements,
-            technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+            # technicalStandardsNorms__in=technicalStandardsNormsElements,
+            # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
-        if created:
-            obj.focus.add(*focusElements)
-            obj.classification.add(*classificationElements)
-            obj.applicationArea.add(*applicationAreaElements)
-            obj.usage.add(*usageElements)
-            obj.lifeCyclePhase.add(*lifeCyclePhaseElements)
-            obj.userInterface.add(*userInterfaceElements)
-            obj.scale.add(*scaleElements)
-            obj.accessibility.add(*accessibilityElements)
-            obj.targetGroup.add(*targetGroupElements)
-            obj.specificApplication.add(*specificApplicationElements)
-            obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
-            obj.technicalStandardsProtocols.add(
-                *technicalStandardsProtocolsElements
-            )
-            # for column_identifer in list(self.MAPPING_EXCEL_DB_EN.keys()):
-            #     setattr(obj, self.MAPPING_EXCEL_DB_EN[column_identifer], row[header.index(column_identifer)])
-            obj = self._importEnglishTranslation(
-                obj, header, row, self.MAPPING_EXCEL_DB_EN
-            )
-            obj.save()
+        # else:
+        # obj, created = Tools.objects.get_or_create(
+        #         name=name,
+        #         shortDescription=shortDescription,
+        #         applicationArea__in=applicationAreaElements,
+        #         usage__in=usageElements,
+        #         lifeCyclePhase__in=lifeCyclePhaseElements,
+        #         userInterface__in=userInterfaceElements,
+        #         userInterfaceNotes=userInterfaceNotes,
+        #         programmingLanguages=programmingLanguages,
+        #         frameworksLibraries=frameworksLibraries,
+        #         databaseSystem=databaseSystem,
+        #         scale__in=scaleElements,
+        #         accessibility__in=accessibilityElements,
+        #         targetGroup__in=targetGroupElements,
+        #         lastUpdate=lastUpdate,
+        #         license=license,
+        #         licenseNotes=licenseNotes,
+        #         furtherInformation=furtherInfos,
+        #         alternatives=alternatives,
+        #         specificApplication__in=specificApplicationElements,
+        #         focus__in=focusElements,
+        #         classification__in=classificationElements,
+        #         provider=provider,
+        #         image=imageName,
+        #         released=released,
+        #         releasedPlanned=releasedPlanned,
+        #         resources=resources,
+        #         yearOfRelease=yearOfRelease,
+        #         developmentState=developmentState,
+        #         technicalStandardsNorms__in=technicalStandardsNormsElements,
+        #         technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
+        #     )
 
-        return obj, created
+        # if created:
+
+        # if presentToolWithSameName is not None:
+        #     self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
+
+        # obj.save()
+        toolsInDb = Tools.objects.filter(name=row[header.index("name")])
+        # if "WUFI" in row[header.index("name")]:
+
+        if len(toolsInDb) > 0:
+            toolInDb = toolsInDb[0]
+            idOfAlreadyPresentTool = toolInDb.id
+        obj.save()
+        # obj.id = toolInDb.id
+        obj.focus.add(*focusElements)
+        obj.classification.add(*classificationElements)
+        obj.applicationArea.add(*applicationAreaElements)
+        obj.usage.add(*usageElements)
+        obj.lifeCyclePhase.add(*lifeCyclePhaseElements)
+        obj.userInterface.add(*userInterfaceElements)
+        obj.scale.add(*scaleElements)
+        obj.accessibility.add(*accessibilityElements)
+        obj.targetGroup.add(*targetGroupElements)
+        obj.specificApplication.add(*specificApplicationElements)
+        obj.technicalStandardsNorms.add(*technicalStandardsNormsElements)
+        obj.technicalStandardsProtocols.add(
+            *technicalStandardsProtocolsElements
+        )
+        obj.save()
+        obj = self._importEnglishTranslation(
+            obj, header, row, self.MAPPING_EXCEL_DB_EN
+        )
+        obj.save()
+        # if obj.name == "WUFI Plus":
+        #     breakpoint()
+        if len(toolsInDb) == 0:
+            return obj, True
+        toolsInDb = Tools.objects.get(id=idOfAlreadyPresentTool)
+        objsEqual = toolInDb.isEqual(obj)
+        if not objsEqual:
+
+            # toolInDBWithNewId = toolInDb
+            # toolInDBWithNewId.id = obj.id
+            newHistoryObj = History(
+                identifer=row[header.index("name")],
+                stringifiedObj=serialize(
+                    "json", [toolInDb], use_natural_foreign_keys=True
+                ),
+            )
+            # parsedJson = json.loads(newHistoryObj.stringifiedObj)
+            # parsedJson[0]["pk"] = obj.pk
+            # newHistoryObj.stringifiedObj = json.dumps(parsedJson)
+            newHistoryObj.save()
+
+            self._update(toolInDb, obj)
+            return obj, True
+        else:
+            obj.delete()
+            return toolInDb, False
+
+    def _update(self, oldObj, newObj):
+        """Set all fields of the new ORM object into the old object."""
+
+        for field in newObj._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    getattr(oldObj, field.name).set(
+                        getattr(newObj, field.name).all()
+                    )
+                else:
+                    setattr(oldObj, field.name, getattr(newObj, field.name))
+
+        oldObj.save()
+        newObj.delete()

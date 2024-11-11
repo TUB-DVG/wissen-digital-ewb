@@ -52,6 +52,8 @@ Developer guide
    dev/csp
    dev/use_cases
    dev/save_page_views
+   dev/data_import
+
 
 HowTo Guides
 ============
@@ -60,6 +62,8 @@ HowTo Guides
    :caption: HowTo:
    
    HowTo/create_dump_for_repo
+   HowTo/rollback_tool
+
 
 Old to be refactored
 ====================
