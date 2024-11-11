@@ -9,36 +9,18 @@ class DataExport:
 
     SEPARATOR_M2M = ";;"
     MAPPING_ORM_TO_XLSX = {
-        "name": "name",
-        "resources": "resources",
-        "shortDescription": "shortDescription",
-        "applicationArea": "applicationArea",
-        "provider": "provider",
-        "usage": "usage",
-        "lifeCyclePhase": "lifeCyclePhase",
-        "targetGroup": "targetGroup",
-        "userInterface": "userInterface",
-        "userInterfaceNotes": "userInterfaceNotes",
-        "programmingLanguages": "programmingLanguages",
-        "frameworksLibraries": "frameworksLibraries",
-        "databaseSystem": "databaseSystem",
-        "classification": "classification",
-        "focus": "focus",
-        "scale": "scale",
-        "lastUpdate": "lastUpdate",
-        "accessibility": "accessibility",
-        "license": "license",
-        "licenseNotes": "licenseNotes",
-        "furtherInformation": "furtherInformation",
-        "alternatives": "alternatives",
-        "specificApplication": "specificApplication",
-        "released": "released",
-        "releasedPlanned": "releasedPlanned",
-        "yearOfRelease": "yearOfRelease",
-        "developmentState": "developmentState",
-        "technicalStandardsNorms": "technicalStandardsNorms",
-        "technicalStandardsProtocols": "technicalStandardsProtocols",
-        "image": "image",
+        "nameDataset": "nameDataset",
+        "useCaseCategory": "useCaseCategory",
+        "categoryDataset": "categoryDataset",
+        "reference": "reference",
+        "referenceLink": "referenceLink",
+        "availability": "availability",
+        "coverage": "coverage",
+        "resolution": "resolution",
+        "comment": "comment",
+        "dataSources": "dataSources",
+        "shortDescriptionDe": "shortDescriptionDe",
+        "includesNonResidential": "includesNonResidential",
     }
 
     DATA_APP_DIR = "02_tool_over"
@@ -51,10 +33,10 @@ class DataExport:
     def exportToXlsx(self):
         """ """
 
-        allTools = Tools.objects.all()
+        allObjs = self.EXPORT_MODEL.objects.all()
 
         germanData, englishData = self._sortObjectsIntoGermanAndEnglishDs(
-            allTools
+            allObjs
         )
 
         self._writeDictsToXlsx(germanData, englishData)
