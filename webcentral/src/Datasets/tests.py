@@ -1,6 +1,12 @@
+import os
+
 from django.test import TestCase
-from django.core.manangement import call_command
+from django.core.management import (
+    call_command,
+)
 import pandas as pd
+
+from .models import collectedDatasets
 
 class TestDataImport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_import`
@@ -12,10 +18,16 @@ class TestDataImport(TestCase):
         
         """
         call_command(
-            "import_data",
+            "data_import",
             "Datasets",
             "../doc/01_data/17_datasets/20230623_datasets.xlsx",
         )
+        self.assertGreater(len(collectedDatasets.objects.all()), 48)
+        
+
+        solverBenchmarkDataset = collectedDatasets.objects.get(nameDataset__icontains="Solver-Benchmark")
+        self.assertTrue(solverBenchmarkDataset.includesNonResidential_de == "Benchmark für lineare Solver.")
+        self.assertTrue(solverBenchmarkDataset.includesNonResidential_en == "Benchmark for linear solvers.")
 
 
 class TestDataExport(TestCase):
