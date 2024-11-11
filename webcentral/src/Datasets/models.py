@@ -1,11 +1,11 @@
 from django.db import models
 
 from tools_over.models import (
-        ApplicationArea,
-        Focus,
-        LifeCyclePhase,
-        Scale,
-        TargetGroup,
+    ApplicationArea,
+    Focus,
+    LifeCyclePhase,
+    Scale,
+    TargetGroup,
 )
 from common.models import License
 from project_listing.models import Subproject
@@ -31,9 +31,17 @@ class collectedDatasets(models.Model):
         null=True,
         db_comment="General type of dataset - Which category does the data set belong to?",
     )
-    lifeCyclePhase = models.ManyToManyField(LifeCyclePhase, db_comment="In which phase of the product life cycle is the tool used?")
-    scale = models.ManyToManyField(Scale, db_comment="Spatial scale of the use cases - On what scale is the dataset used?")
-    targetGroup = models.ManyToManyField(TargetGroup, db_comment="Which user group the dataset is aimed for.")
+    lifeCyclePhase = models.ManyToManyField(
+        LifeCyclePhase,
+        db_comment="In which phase of the product life cycle is the tool used?",
+    )
+    scale = models.ManyToManyField(
+        Scale,
+        db_comment="Spatial scale of the use cases - On what scale is the dataset used?",
+    )
+    targetGroup = models.ManyToManyField(
+        TargetGroup, db_comment="Which user group the dataset is aimed for."
+    )
     alternatives = models.CharField(
         max_length=300,
         db_comment="Identification of concrete examples of the use of datasets in the construction sector/energy transition construction (e.g. funding indicators)",
@@ -58,7 +66,9 @@ class collectedDatasets(models.Model):
         blank=True,
         db_comment="Sources of information - sources for further information about the dataset e.g. git repo, project website, ...",
     )
-    availability = models.CharField(max_length=200, null=True, db_comment="How accessible is the dataset?")
+    availability = models.CharField(
+        max_length=200, null=True, db_comment="How accessible is the dataset?"
+    )
     coverage = models.CharField(
         max_length=200,
         null=True,
@@ -85,11 +95,11 @@ class collectedDatasets(models.Model):
         blank=True,
         db_comment="information of miscellaneous subjects",
     )
-    
+
     # includesNonResidential = models.CharField(
     #     max_length=200, null=True, blank=True
     # )
-    
+
     license = models.ManyToManyField(
         License,
         db_comment="under which license was the dataset published and are there any costs associated with using the dataset?",
@@ -100,7 +110,6 @@ class collectedDatasets(models.Model):
         blank=True,
         db_comment="",
     )
-
 
     image = models.ImageField(
         null=True,
@@ -126,14 +135,13 @@ class collectedDatasets(models.Model):
         max_length=100,
         help_text="year of software release (planned or conducted)",
     )
-    
+
     specificApplication = models.ManyToManyField(
         Subproject,
         help_text="specific application of the dataset in EWB projects (fkz)",
         blank=True,
         null=True,
-    ) 
-
+    )
 
     def __str__(self):
         return self.name
