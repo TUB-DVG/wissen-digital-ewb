@@ -1,7 +1,12 @@
+from django.db import models
+
 from common.data_import import DataImport
-
 from .models import collectedDatasets
-
+from tools_over.models import (
+    ApplicationArea,
+    Classification,
+    Focus,
+)
 
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
@@ -14,15 +19,16 @@ class DataImportApp(DataImport):
 
     """
 
-    DJANGO_MODEL = "collectedDatasets"
+    DJANGO_MODEL = collectedDatasets
     DJANGO_APP = "Datasets"
 
     MAPPING_EXCEL_DB = {
-        "nameDataset": ("nameDataset", False),
-        "useCaseCategory": ("useCaseCategory", False),
-        "categoryDataset": ("categoryDataset", False),
-        "reference": ("reference", False),
-        "referenceLink": ("referenceLink", False),
+        "name": ("nameDataset", None),
+        "applicationArea": ("applicationArea", ApplicationArea),
+        "classification": ("classification", Classification),
+        "focus": ("focus", Focus),
+        "provider": ("provider", None),
+        "resources": ("resources", False),
         "availability": ("availability", False),
         "coverage": ("coverage", False),
         "resolution": ("resolution", False),
@@ -81,8 +87,8 @@ class DataImportApp(DataImport):
         readInValues = {}
         readInValuesM2M = {}
         for tableTuple in self.MAPPING_EXCEL_DB:
-            (tableKey, isM2MField) = self.MAPPING_EXCEL_DB[tableTuple]
-            if isM2MField:
+            (tableKey, m2MModel) = self.MAPPING_EXCEL_DB[tableTuple]
+            if isinstance(m2MModel, models.Model):
                 readInValuesM2M[tableKey] = self._processListInput(
                     row[header.index(tableKey)],
                     ";;",
@@ -90,7 +96,7 @@ class DataImportApp(DataImport):
             else:
                 readInValues[tableKey] = row[header.index(tableKey)]
 
-        obj, created = collectedDatasets.objects.get_or_create(**readInValues)
+        obj, created = self.DJANGO_MODEL.objects.get_or_create(**readInValues)
 
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
