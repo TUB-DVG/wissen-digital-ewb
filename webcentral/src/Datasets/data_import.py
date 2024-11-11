@@ -2,21 +2,21 @@ from common.data_import import DataImport
 
 from .models import collectedDatasets
 
+
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
 
 
     Attributes:
         MAPPING_EXCEL_DB: dict
-            Describes the mapping from a column in the xlsx-file to a attribute 
+            Describes the mapping from a column in the xlsx-file to a attribute
             of the `collectedDatasets` data-class.
 
     """
 
     DJANGO_MODEL = "collectedDatasets"
     DJANGO_APP = "Datasets"
-    
-    
+
     MAPPING_EXCEL_DB = {
         "nameDataset": ("nameDataset", False),
         "useCaseCategory": ("useCaseCategory", False),
@@ -32,7 +32,6 @@ class DataImportApp(DataImport):
         "includesNonResidential": ("includesNonResidential", False),
     }
 
-
     MAPPING_EXCEL_DB_EN = {
         "nameDataset__en": "nameDataset_en",
         "useCaseCategory__en": "useCaseCategory_en",
@@ -43,7 +42,7 @@ class DataImportApp(DataImport):
         "resolution__en": "resolution_en",
         "comment__en": "comment_en",
         "includesNonResidential__en": "includesNonResidential_en",
-    }       
+    }
 
     def __init__(self, path_to_data_file):
         """Constructor of the app-specific data_import
@@ -85,16 +84,14 @@ class DataImportApp(DataImport):
             (tableKey, isM2MField) = self.MAPPING_EXCEL_DB[tableTuple]
             if isM2MField:
                 readInValuesM2M[tableKey] = self._processListInput(
-                        row[header.index(tableKey)],
-                        ";;",
+                    row[header.index(tableKey)],
+                    ";;",
                 )
-            else: 
+            else:
                 readInValues[tableKey] = row[header.index(tableKey)]
 
-        obj, created = collectedDatasets.objects.get_or_create(
-            **readInValues
-        )
-       
+        obj, created = collectedDatasets.objects.get_or_create(**readInValues)
+
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
