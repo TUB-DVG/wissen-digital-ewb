@@ -52,6 +52,8 @@ Developer guide
    dev/csp
    dev/use_cases
    dev/save_page_views
+   dev/data_import
+
 
 HowTo Guides
 ============
