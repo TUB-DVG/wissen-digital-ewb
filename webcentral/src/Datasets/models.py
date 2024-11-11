@@ -5,9 +5,9 @@ from django.db import models
 
 class collectedDatasets(models.Model):
 
-    nameDataset = models.CharField(max_length=200)
-    useCaseCategory = models.CharField(max_length=200, null=True)
-    categoryDataset = models.CharField(max_length=200, null=True)
+    name = models.CharField(max_length=200, db_comment="Name of the dataset")
+    applicationArea = models.CharField(max_length=200, null=True, db_comment="Typical application area in which the dataset is used. An application area describes all possible methods and datasets, that can be used to achieve a specific purpose.")
+    classification = models.CharField(max_length=200, null=True, db_comment="General type of dataset - Which category does the data set belong to?")
     reference = models.CharField(max_length=200, null=True, blank=True)
     referenceLink = models.CharField(max_length=200, null=True, blank=True)
     availability = models.CharField(max_length=200, null=True)
@@ -21,4 +21,4 @@ class collectedDatasets(models.Model):
     )
 
     def __str__(self):
-        return self.nameDataset
+        return self.name

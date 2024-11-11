@@ -10,8 +10,8 @@ from .models import (
 
 class collectedDatasetsTranslationOptions(TranslationOptions):
     fields = (
-        "nameDataset",
-        "useCaseCategory",
+        "name",
+        "applicationArea",
         "categoryDataset",
         "reference",
         "availability",

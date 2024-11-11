@@ -185,7 +185,7 @@ class Tools(models.Model):
     shortDescription = models.CharField(
         max_length=1000, help_text="short description", blank=True
     )
-    applicationArea = models.ManyToManyField(ApplicationArea)
+    applicationArea = models.ManyToManyField(ApplicationArea, db_comment="What do the developers describe as the area of application of their digital tool")
     usage = models.ManyToManyField(Usage)
     targetGroup = models.ManyToManyField(
         TargetGroup,
