@@ -33,3 +33,10 @@ class Literature(models.Model):
     #                                         null=True)
     def __str__(self):
         return str(self.literature)
+
+class License(models.Model):
+    """ORM-class containing license information of tools, datasets, norms and protocols
+
+    """
+
+    license = models.CharField(max_length=300)
