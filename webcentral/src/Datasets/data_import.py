@@ -1,7 +1,6 @@
 from django.db import models
 
 from common.data_import import DataImport
-from .models import collectedDatasets
 from tools_over.models import (
     ApplicationArea,
     Classification,
@@ -13,7 +12,7 @@ from tools_over.models import (
 )
 from project_listing.models import Subproject
 from common.models import License
-
+from Datasets.models import Dataset
 
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
@@ -26,11 +25,12 @@ class DataImportApp(DataImport):
 
     """
 
-    DJANGO_MODEL = collectedDatasets
+    DJANGO_MODEL = "Dataset"
+    DJANGO_MODEL_OBJ = Dataset
     DJANGO_APP = "Datasets"
 
     MAPPING_EXCEL_DB = {
-        "name": ("nameDataset", None),
+        "name": ("name", None),
         "applicationArea": ("applicationArea", ApplicationArea),
         "classification": ("classification", Classification),
         "focus": ("focus", Focus),
@@ -38,12 +38,11 @@ class DataImportApp(DataImport):
         "scale": ("lifeCyclePhase", Scale),
         "targetGroup": ("targetGroup", TargetGroup),
         "provider": ("provider", None),
-        "resources": ("resources", False),
-        "availability": ("availability", False),
-        "coverage": ("coverage", False),
-        "resolution": ("resolution", False),
+        "resources": ("resources", None),
+        "coverage": ("coverage", None),
+        "resolution": ("resolution", None),
         # "comment": ("comment", False),
-        "shortDescriptionDe": ("shortDescriptionDe", False),
+        "description": ("description", None),
         "availability": ("availability", None),
         "alternatives": ("alternatives", Subproject),
         "developmentState": ("developmentState", None),
@@ -60,7 +59,7 @@ class DataImportApp(DataImport):
     }
 
     MAPPING_EXCEL_DB_EN = {
-        "name__en": "nameDataset_en",
+        "name__en": "name_en",
         "applicationArea__en": "applicationArea_en",
         "classification__en": "classification_en",
         "focus__en": "focus_en",
@@ -76,7 +75,8 @@ class DataImportApp(DataImport):
         "lastUpdate__en": "lastUpdate_en",
         "license__en": "license_en",
         "licenseNotes__en": "licenseNotes_en",
-        "accessibility__en": "accessibility_en", 
+        "accessibility__en": "accessibility_en",
+        "description__en": "description_en",
     }
 
     def __init__(self, path_to_data_file):
@@ -123,9 +123,29 @@ class DataImportApp(DataImport):
                     ";;",
                 )
             else:
-                readInValues[tableKey] = row[header.index(tableKey)]
+                if row[header.index(tableKey)] == "":                
+                    readInValues[tableKey] = None
+                else:
+                    readInValues[tableKey] = row[header.index(tableKey)]
+        
+        
+        obj, created = self.DJANGO_MODEL_OBJ.objects.get_or_create(
+            name=readInValues["name"],
+            provider=readInValues["provider"],
+            resources=readInValues["resources"],
+            coverage=readInValues["coverage"],
+            description=readInValues["description"],
+            availability=readInValues["availability"],
+            developmentState=readInValues["developmentState"],
+            furtherInformation=readInValues["furtherInformation"],
+            image=readInValues["image"],
+            lastUpdate=readInValues["lastUpdate"],
+            licenseNotes=readInValues["licenseNotes"],
+            yearOfRelease=readInValues["yearOfRelease"],
+            released=readInValues["released"],
+            releasedPlanned=readInValues["releasedPlanned"],
+        )
 
-        obj, created = self.DJANGO_MODEL.objects.get_or_create(**readInValues)
 
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(

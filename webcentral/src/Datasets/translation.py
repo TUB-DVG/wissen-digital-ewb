@@ -8,18 +8,15 @@ from .models import (
 )
 
 
-class collectedDatasetsTranslationOptions(TranslationOptions):
+class DatasetsTranslationOptions(TranslationOptions):
     fields = (
         "name",
-        # "applicationArea",
-        # "categoryDataset",
         "provider",
         "availability",
         "coverage",
         "furtherInformation",
-        "shortDescriptionDe",
-        # "comment",
-        "dataSources",
+        "description",
+        # "dataSources",
         "resolution",
         "lastUpdate",
         "licenseNotes",
@@ -27,6 +24,6 @@ class collectedDatasetsTranslationOptions(TranslationOptions):
 
 
 translator.register(
-    collectedDatasets,
-    collectedDatasetsTranslationOptions,
+    Dataset,
+    DatasetsTranslationOptions,
 )

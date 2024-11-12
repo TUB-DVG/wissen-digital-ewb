@@ -7,6 +7,7 @@ from tools_over.models import (
     Scale,
     TargetGroup,
     Accessibility,
+    Classification,
 )
 from common.models import License
 from project_listing.models import Subproject
@@ -27,8 +28,8 @@ class Dataset(models.Model):
         null=True,
         db_comment="Typical application area in which the dataset is used. An application area describes all possible methods and datasets, that can be used to achieve a specific purpose.",
     )
-    classification = models.CharField(
-        max_length=200,
+    classification = models.ManyToManyField(
+        Classification,
         null=True,
         db_comment="General type of dataset - Which category does the data set belong to?",
     )
@@ -70,7 +71,10 @@ class Dataset(models.Model):
         db_comment="Sources of information - sources for further information about the dataset e.g. git repo, project website, ...",
     )
     availability = models.CharField(
-        max_length=200, null=True, db_comment="How accessible is the dataset?"
+        max_length=200,
+        null=True,
+        db_comment="How accessible is the dataset?",
+        blank=True,
     )
     coverage = models.CharField(
         max_length=200,
@@ -121,6 +125,7 @@ class Dataset(models.Model):
         max_length=100,
         help_text="time (year/month/date) of the last update",
         blank=True,
+        null=True,
     )
     released = models.BooleanField(
         blank=True,
@@ -136,6 +141,7 @@ class Dataset(models.Model):
         blank=True,
         max_length=100,
         help_text="year of software release (planned or conducted)",
+        null=True,
     )
 
 

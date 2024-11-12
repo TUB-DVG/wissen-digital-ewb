@@ -6,7 +6,7 @@ from django.core.management import (
 )
 import pandas as pd
 
-from .models import collectedDatasets
+from .models import Dataset
 
 
 class TestDataImport(TestCase):
@@ -22,10 +22,14 @@ class TestDataImport(TestCase):
             "Datasets",
             "../doc/01_data/17_datasets/20230623_datasets.xlsx",
         )
-        self.assertGreater(len(collectedDatasets.objects.all()), 48)
+        self.assertGreater(len(Dataset.objects.all()), 48)
+        
+        classificationObjForDatasets = Classification.objects.get(classification_de__icontains="Gebäudegrundrisse")
+        
+        self.assertGreater(len(Dataset.objects.filter(classification=classificationObjForDatasets)), 0)
 
-        solverBenchmarkDataset = collectedDatasets.objects.get(
-            nameDataset__icontains="Solver-Benchmark"
+        solverBenchmarkDataset = Dataset.objects.get(
+            name__icontains="Solver-Benchmark"
         )
         self.assertTrue(
             solverBenchmarkDataset.includesNonResidential_de

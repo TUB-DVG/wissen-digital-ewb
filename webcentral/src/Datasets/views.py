@@ -4,7 +4,7 @@ from django.utils.translation import gettext as _
 from django.db.models import Q
 
 # from .models import collectedDatasets  # maybe I need also the other models
-
+from .models import Dataset
 from common.views import createQ
 
 
@@ -21,7 +21,7 @@ def index(request):
     shows the list of all projects including some key features
     """
     datasets = (
-        collectedDatasets.objects.all()
+        Dataset.objects.all()
     )  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
@@ -39,11 +39,11 @@ def index(request):
     listOfFilters = [
         {
             "filterValues": applicationAreaElementsList,
-            "filterName": "useCaseCategory__icontains",
+            "filterName": "applicationArea__applicationArea__icontains",
         },
         {
             "filterValues": categoryElementsList,
-            "filterName": "categoryDataset__icontains",
+            "filterName": "classification__classification__icontains",
         },
         {
             "filterValues": availabilityElementsList,
@@ -54,11 +54,10 @@ def index(request):
 
     searched = request.GET.get("searched", "")
     if searched != "":
-        complexCriterion &= Q(nameDataset__icontains=searched)
+        complexCriterion &= Q(name__icontains=searched)
 
-    # datasets = collectedDatasets.objects.filter(complexCriterion)
+    datasets = Dataset.objects.filter(complexCriterion)
     # filteredBy = [useCaseCategory, categoryDataset, availability]
-    datasets = []
     datasets = list((datasets))
     # datasets_paginator to datasetsPaginator
 
