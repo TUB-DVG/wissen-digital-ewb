@@ -20,9 +20,7 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    datasets = (
-        Dataset.objects.all()
-    )  # reads all data from table Teilprojekt
+    datasets = Dataset.objects.all()  # reads all data from table Teilprojekt
     filteredBy = [None] * 3
     searched = None
 

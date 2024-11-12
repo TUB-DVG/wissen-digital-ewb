@@ -14,6 +14,7 @@ from project_listing.models import Subproject
 from common.models import License
 from Datasets.models import Dataset
 
+
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
 
@@ -123,12 +124,11 @@ class DataImportApp(DataImport):
                     ";;",
                 )
             else:
-                if row[header.index(tableKey)] == "":                
+                if row[header.index(tableKey)] == "":
                     readInValues[tableKey] = None
                 else:
                     readInValues[tableKey] = row[header.index(tableKey)]
-        
-        
+
         obj, created = self.DJANGO_MODEL_OBJ.objects.get_or_create(
             name=readInValues["name"],
             provider=readInValues["provider"],
@@ -145,7 +145,6 @@ class DataImportApp(DataImport):
             released=readInValues["released"],
             releasedPlanned=readInValues["releasedPlanned"],
         )
-
 
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(

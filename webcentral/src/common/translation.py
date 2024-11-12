@@ -9,9 +9,7 @@ from .models import (
 
 
 class LicenseTranslationOptions(TranslationOptions):
-    fields = (
-        "license",
-    )
+    fields = ("license",)
 
 
 translator.register(

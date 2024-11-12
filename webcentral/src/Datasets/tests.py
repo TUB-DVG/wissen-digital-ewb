@@ -23,10 +23,19 @@ class TestDataImport(TestCase):
             "../doc/01_data/17_datasets/20230623_datasets.xlsx",
         )
         self.assertGreater(len(Dataset.objects.all()), 48)
-        
-        classificationObjForDatasets = Classification.objects.get(classification_de__icontains="Gebäudegrundrisse")
-        
-        self.assertGreater(len(Dataset.objects.filter(classification=classificationObjForDatasets)), 0)
+
+        classificationObjForDatasets = Classification.objects.get(
+            classification_de__icontains="Gebäudegrundrisse"
+        )
+
+        self.assertGreater(
+            len(
+                Dataset.objects.filter(
+                    classification=classificationObjForDatasets
+                )
+            ),
+            0,
+        )
 
         solverBenchmarkDataset = Dataset.objects.get(
             name__icontains="Solver-Benchmark"

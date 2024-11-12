@@ -82,7 +82,9 @@ class Dataset(models.Model):
         blank=True,
         db_comment="Geographical coverage - regions covered by the dataset",
     )
-    accessibility = models.ManyToManyField(Accessibility, db_comment="How accessable is the dataset?")
+    accessibility = models.ManyToManyField(
+        Accessibility, db_comment="How accessable is the dataset?"
+    )
     resolution = models.CharField(
         max_length=500,
         null=True,
@@ -143,8 +145,6 @@ class Dataset(models.Model):
         help_text="year of software release (planned or conducted)",
         null=True,
     )
-
-
 
     def __str__(self):
         return self.name
