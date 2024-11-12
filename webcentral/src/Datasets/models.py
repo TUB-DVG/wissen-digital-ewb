@@ -6,12 +6,13 @@ from tools_over.models import (
     LifeCyclePhase,
     Scale,
     TargetGroup,
+    Accessibility,
 )
 from common.models import License
 from project_listing.models import Subproject
 
 
-class collectedDatasets(models.Model):
+class Dataset(models.Model):
 
     name = models.CharField(max_length=200, db_comment="Name of the dataset")
     applicationArea = models.ManyToManyField(
@@ -42,8 +43,10 @@ class collectedDatasets(models.Model):
     targetGroup = models.ManyToManyField(
         TargetGroup, db_comment="Which user group the dataset is aimed for."
     )
-    alternatives = models.CharField(
-        max_length=300,
+    alternatives = models.ManyToManyField(
+        Subproject,
+        blank=True,
+        null=True,
         db_comment="Identification of concrete examples of the use of datasets in the construction sector/energy transition construction (e.g. funding indicators)",
     )
     choices = [
@@ -75,14 +78,13 @@ class collectedDatasets(models.Model):
         blank=True,
         db_comment="Geographical coverage - regions covered by the dataset",
     )
+    accessibility = models.ManyToManyField(Accessibility, db_comment="How accessable is the dataset?")
     resolution = models.CharField(
         max_length=500,
         null=True,
         blank=True,
         db_comment="Spatial resolution - spatial detail level of the data",
     )
-    # comment = models.CharField(max_length=200, null=True, blank=True)
-    # dataSources = models.CharField(max_length=500, null=True, blank=True)
     description = models.CharField(
         max_length=300,
         null=True,
@@ -136,12 +138,7 @@ class collectedDatasets(models.Model):
         help_text="year of software release (planned or conducted)",
     )
 
-    specificApplication = models.ManyToManyField(
-        Subproject,
-        help_text="specific application of the dataset in EWB projects (fkz)",
-        blank=True,
-        null=True,
-    )
+
 
     def __str__(self):
         return self.name

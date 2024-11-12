@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
 from django.db.models import Q
 
-from .models import collectedDatasets  # maybe I need also the other models
+# from .models import collectedDatasets  # maybe I need also the other models
 
 from common.views import createQ
 
@@ -56,9 +56,9 @@ def index(request):
     if searched != "":
         complexCriterion &= Q(nameDataset__icontains=searched)
 
-    datasets = collectedDatasets.objects.filter(complexCriterion)
+    # datasets = collectedDatasets.objects.filter(complexCriterion)
     # filteredBy = [useCaseCategory, categoryDataset, availability]
-
+    datasets = []
     datasets = list((datasets))
     # datasets_paginator to datasetsPaginator
 

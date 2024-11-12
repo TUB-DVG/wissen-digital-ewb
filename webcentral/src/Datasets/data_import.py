@@ -6,7 +6,13 @@ from tools_over.models import (
     ApplicationArea,
     Classification,
     Focus,
+    LifeCyclePhase,
+    Scale,
+    TargetGroup,
+    Accessibility,
 )
+from project_listing.models import Subproject
+from common.models import License
 
 
 class DataImportApp(DataImport):
@@ -28,27 +34,49 @@ class DataImportApp(DataImport):
         "applicationArea": ("applicationArea", ApplicationArea),
         "classification": ("classification", Classification),
         "focus": ("focus", Focus),
+        "lifeCyclePhase": ("lifeCyclePhase", LifeCyclePhase),
+        "scale": ("lifeCyclePhase", Scale),
+        "targetGroup": ("targetGroup", TargetGroup),
         "provider": ("provider", None),
         "resources": ("resources", False),
         "availability": ("availability", False),
         "coverage": ("coverage", False),
         "resolution": ("resolution", False),
-        "comment": ("comment", False),
-        "dataSources": ("dataSources", False),
+        # "comment": ("comment", False),
         "shortDescriptionDe": ("shortDescriptionDe", False),
-        "includesNonResidential": ("includesNonResidential", False),
+        "availability": ("availability", None),
+        "alternatives": ("alternatives", Subproject),
+        "developmentState": ("developmentState", None),
+        "description": ("description", None),
+        "furtherInformation": ("furtherInformation", None),
+        "image": ("image", None),
+        "lastUpdate": ("lastUpdate", None),
+        "license": ("license", License),
+        "licenseNotes": ("licenseNotes", None),
+        "accessibility": ("accessibility", Accessibility),
+        "yearOfRelease": ("yearOfRelease", None),
+        "released": ("released", None),
+        "releasedPlanned": ("releasedPlanned", None),
     }
 
     MAPPING_EXCEL_DB_EN = {
-        "nameDataset__en": "nameDataset_en",
-        "useCaseCategory__en": "useCaseCategory_en",
-        "categoryDataset__en": "categoryDataset_en",
-        "reference__en": "reference_en",
+        "name__en": "nameDataset_en",
+        "applicationArea__en": "applicationArea_en",
+        "classification__en": "classification_en",
+        "focus__en": "focus_en",
+        "lifeCyclePhase__en": "lifeCyclePhase_en",
+        "scale__en": "scale_en",
+        "targetGroup__en": "targetGroup_en",
+        "provider__en": "provider_en",
         "availability__en": "availability_en",
         "coverage__en": "coverage_en",
         "resolution__en": "resolution_en",
-        "comment__en": "comment_en",
-        "includesNonResidential__en": "includesNonResidential_en",
+        # "comment__en": "comment_en",
+        "furtherInformation__en": "furtherInformation_en",
+        "lastUpdate__en": "lastUpdate_en",
+        "license__en": "license_en",
+        "licenseNotes__en": "licenseNotes_en",
+        "accessibility__en": "accessibility_en", 
     }
 
     def __init__(self, path_to_data_file):

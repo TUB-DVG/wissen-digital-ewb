@@ -4,23 +4,25 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    collectedDatasets,
+    Dataset,
 )
 
 
 class collectedDatasetsTranslationOptions(TranslationOptions):
     fields = (
         "name",
-        "applicationArea",
-        "categoryDataset",
-        "reference",
+        # "applicationArea",
+        # "categoryDataset",
+        "provider",
         "availability",
         "coverage",
-        "includesNonResidential",
+        "furtherInformation",
         "shortDescriptionDe",
-        "comment",
+        # "comment",
         "dataSources",
         "resolution",
+        "lastUpdate",
+        "licenseNotes",
     )
 
 
