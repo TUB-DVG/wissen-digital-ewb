@@ -79,6 +79,19 @@ class TestToolsDataImport(TestCase):
             ),
             1,
         )
+    def testImportOfNewToolsTable(self):
+        """Test the import of the new tools table, espacially `lastUpdate`-attribute
+
+        """
+        call_command(
+            "data_import",
+            "tools_over",
+            "../doc/01_data/02_tool_over/2024_11_13_tools_new_logos.xlsx",
+        )
+        geoTool = Tools.objects.get(name="GEO-HANDlight")
+        self.assertEqual(geoTool.lastUpdate_de, "2024-10-17")
+        self.assertEqual(Tools.objects.get(name="MonKey").lastUpdate_de, "unbekannt")
+        self.assertEqual(Tools.objects.get(name="MonKey").lastUpdate_en, "unknown")
 
     def test_import_of_english_translation(self):
         # create test-data
@@ -176,7 +189,23 @@ class TestToolsDataImport(TestCase):
                         f"English translation for {attributeNameStr} is not {listOfExpectedTranslations[expectedIndex]}",
                     )
 
+    def testLastUpdateProcessing(self):
+        """Test if the processing of `lastUpdate`-field works
 
+        """
+        file_obj_excel = mock_excel_file()
+        dataImportApp = DataImportApp(file_obj_excel.name)
+        
+        self.assertEqual(dataImportApp._processDate("2024-11-15"), "2024-11-15")
+        self.assertEqual(dataImportApp._processDate(" 2024-11-15"), "2024-11-15")
+        self.assertEqual(dataImportApp._processDate("2024.11.15"), "2024-11-15")
+        self.assertEqual(dataImportApp._processDate(" 2024.11.15"), "2024-11-15")
+        self.assertEqual(dataImportApp._processDate("'2024-11-15"), "2024-11-15")
+        
+        self.assertEqual(dataImportApp._processDate("'2024.11.15"), "2024-11-15")
+        self.assertEqual(dataImportApp._processDate("laufend"), "laufend")
+        self.assertEqual(dataImportApp._processDate("unbekannt"), "unbekannt")
+ 
 class TestExportClass(TestCase):
     """Test the `DataExport` class inside tools_over.data_export module."""
 
