@@ -7,13 +7,14 @@ from tools_over.models import (
     Focus,
     Tools,
     Classification,
+    ApplicationArea,
 )
 from component_list.models import (
     Category,
     Component,
     ComponentClass,
 )
-
+from project_listing.models import Subproject
 
 class TestDataImport(TestCase):
     """Test the Base `DataImport`-Class, which provides general
@@ -166,6 +167,54 @@ class TestDataImport(TestCase):
             toolObj.shortDescription_en,
             data[header.index("shortDescription__en")],
         )
+
+    def testGetMany2ManyElements(self):
+        """Test `getM2MelementsQueryset` returns a list of objects, which corresponds to `listOfStrings` for the provided `djangoModel` 
+
+        """
+
+        temp_file_obj = mock_excel_file()
+
+        dataImportObj = DataImport(temp_file_obj.name)
+
+        # check if 2 Focus objects are created, when calling the method:
+        listOfStringsOne = [
+            "technisch",
+            "betrieblich",
+        ]
+        
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(listOfStringsOne, Focus)
+        self.assertEqual(len(returnedQueryset), 2)
+        self.assertTrue(returnedQueryset[0].focus_de == "technisch" or returnedQueryset[0].focus_de == "betrieblich")
+        self.assertTrue(returnedQueryset[1].focus_de == "technisch" or returnedQueryset[1].focus_de == "betrieblich")
+        
+        # one of the elements is already present in the database the other is not
+        listOfStringsTwo = [
+            "technisch",
+            "ökologisch",
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(listOfStringsTwo, Focus)
+        self.assertEqual(len(returnedQueryset), 2)
+        self.assertTrue(returnedQueryset[0].focus_de == "technisch" or returnedQueryset[0].focus_de == "ökologisch")
+        self.assertTrue(returnedQueryset[1].focus_de == "technisch" or returnedQueryset[1].focus_de == "ökologisch")
+        
+        listOfAppArea = [
+            "Gebäude",
+            "Sprache",
+            "Forschung",
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(listOfAppArea, ApplicationArea)
+        self.assertEqual(len(returnedQueryset), 3)
+        
+        stringOfM2Mobj = [obj.applicationArea_de for obj in returnedQueryset]
+        self.assertEqual(set(listOfAppArea), set(stringOfM2Mobj))
+    
+        listOfSpecificApplications = [
+            "03EWR020N",
+            "03EWR0201",    
+        ]
+        returnedQueryset = dataImportObj.getM2MelementsQueryset(listOfSpecificApplications, Subproject)
+        self.assertEqual(len(returnedQueryset), 2) 
 
     def testForeignKeyEnglishTranslationImport(self):
         """ """

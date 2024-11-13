@@ -45,7 +45,7 @@ class DataImportApp(DataImport):
         # "comment": ("comment", False),
         "description": ("description", None),
         "availability": ("availability", None),
-        "alternatives": ("alternatives", Subproject),
+        "alternatives": ("alternatives", None),
         "developmentState": ("developmentState", None),
         "description": ("description", None),
         "furtherInformation": ("furtherInformation", None),
@@ -118,11 +118,13 @@ class DataImportApp(DataImport):
         readInValuesM2M = {}
         for tableTuple in self.MAPPING_EXCEL_DB:
             (tableKey, m2MModel) = self.MAPPING_EXCEL_DB[tableTuple]
-            if isinstance(m2MModel, models.Model):
-                readInValuesM2M[tableKey] = self._processListInput(
+            if isinstance(m2MModel, type) and issubclass(m2MModel, models.Model):
+                m2mList = self._processListInput(
                     row[header.index(tableKey)],
-                    ";;",
+                    separator=";;",
                 )
+                m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
+                readInValuesM2M[tableKey] = self.getM2MelementsQueryset(m2mList, m2MModel)
             else:
                 if row[header.index(tableKey)] == "":
                     readInValues[tableKey] = None
@@ -145,6 +147,12 @@ class DataImportApp(DataImport):
             released=readInValues["released"],
             releasedPlanned=readInValues["releasedPlanned"],
         )
+        
+        for readInM2MKey in readInValuesM2M.keys():
+            try:
+                getattr(obj, readInM2MKey).set(readInValuesM2M[readInM2MKey])
+            except:
+                breakpoint()
 
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(

@@ -7,7 +7,10 @@ from django.core.management import (
 import pandas as pd
 
 from .models import Dataset
-
+from tools_over.models import (
+        Classification,
+        ApplicationArea,
+)
 
 class TestDataImport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_import`"""
@@ -27,27 +30,45 @@ class TestDataImport(TestCase):
         classificationObjForDatasets = Classification.objects.get(
             classification_de__icontains="Gebäudegrundrisse"
         )
+        self.assertEqual(
+                classificationObjForDatasets.classification_en,
+                "Building floor plans",
+        )
+        appAreaObjForDatasets = ApplicationArea.objects.get(
+            applicationArea_de__icontains="Benchmark"
+        )
+        self.assertEqual(
+                appAreaObjForDatasets.applicationArea_en,
+                "Benchmark",
+        ) 
+
 
         self.assertGreater(
             len(
                 Dataset.objects.filter(
-                    classification=classificationObjForDatasets
+                    applicationArea=appAreaObjForDatasets
                 )
             ),
             0,
         )
-
+    
         solverBenchmarkDataset = Dataset.objects.get(
             name__icontains="Solver-Benchmark"
         )
         self.assertTrue(
-            solverBenchmarkDataset.includesNonResidential_de
+            solverBenchmarkDataset.furtherInformation_de
             == "Benchmark für lineare Solver."
         )
         self.assertTrue(
-            solverBenchmarkDataset.includesNonResidential_en
+            solverBenchmarkDataset.furtherInformation_en
             == "Benchmark for linear solvers."
         )
+
+class TestDataUpdate(TestCase):
+    """
+
+    """
+    def 
 
 
 class TestDataExport(TestCase):

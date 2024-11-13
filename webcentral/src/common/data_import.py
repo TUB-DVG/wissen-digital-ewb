@@ -19,6 +19,7 @@ from django.db.models import (
     ManyToManyRel,
     ManyToOneRel,
 )
+from django.db.models.query import QuerySet
 
 from common.models import DbDiff, Literature
 
@@ -241,6 +242,28 @@ class DataImport:
             )
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
+
+    def getM2MelementsQueryset(self, listOfStrings: list, djangoModel: Model) -> list:
+        """Get queryset of m2m-elements, which corresponds to the string elements of `listOfStrings`
+        
+        Arguments:
+        djangoModel: models.Model
+            Django model ORM class of a ManyToManyField
+        listOfStrings: list
+            List of strings, whereby each string represents a ManyToMany-object of `djangoModel`
+
+        Returns:
+            queryset containing the `djangoModel`-objects
+        """
+        if djangoModel._meta.model_name == "subproject":  
+            attrWithDe = "referenceNumber_id"
+        else:
+            attrNamesOfModel = [attr.name for attr in djangoModel._meta.get_fields()]
+            attrWithDe = next((attr for attr in attrNamesOfModel if "_de" in attr), None)
+        listOfM2Mobjs = []
+        for objString in listOfStrings:
+            listOfM2Mobjs.append(djangoModel.objects.get_or_create(**{attrWithDe: objString})[0])
+        return listOfM2Mobjs
 
     def _processListInput(self, inputStr, separator=";"):
         """Process a cell, which includes a list of elements"""
