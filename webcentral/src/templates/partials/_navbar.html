@@ -5,32 +5,6 @@
 <!-- Header START -->
 <header class="navbar-light navbar-sticky sticky-top">
   <!-- Logo Nav START -->
-  <style>
-
-#search-form1{
-  display: flex;
-  justify-content: flex-end;
-}
-#navbarCllapse{
-  display: flex;
-  justify-content: flex-end;
-}
-.nav-item {
-  padding: 5px 5px;
-}
-#searchText {
-    display: block;         /* Ensures it behaves as a block element */
-    width: 100%;            /* Takes up all available width */
-    max-width: 100%;        /* Prevents overflow */
-    box-sizing: border-box; /* Ensures padding is included in the width */
-}
-.navbar-nav .dropdown-menu {
-    margin-top: -25px; /* Fine-tune vertical alignment, adjust as needed */
-}
-
-
-
-  </style>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <!-- Logo START -->
@@ -63,35 +37,7 @@
         <div class="navbar-nav navbar-nav-scroll w-100 d-flex">
           <!-- Nav technical focus START-->
           <div class="nav-item dropdown mx-4">
-            <a class="nav-link dropdown-toggle"
-               id="technicalDropdown"
-               role="button"
-               data-toggle="dropdown"
-               aria-expanded="false"
-               style="font-size:15px">
-              {% if focusBorder == "technical" %}
-                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class=""
-                     alt="technical colored icon"
-                     style="width:20px" />
-              {% else %}
-                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
-                     class="uncoloredImage"
-                     alt="technical uncolored icon"
-                     style="width:20px;
-                            margin-right: 3px" />
-                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
-                     class="coloredImage"
-                     alt="technical colored icon"
-                     style="width:20px;
-                            display: none;
-                            margin-right: 3px" />
-              {% endif %}
-              {% translate "Technisch" %}
-            </a>
-            <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
-                 aria-labelledby="technicalDropdown">
+            <div class="dropdown-menu p-0 mx-4" aria-labelledby="technicalDropdown">
               <div class="dropdown-item-bg">
                 <a class="dropdown-item technical" href="{% url 'tool_list' %}">
                   {% translate "Digitale Werkzeuge" %}
@@ -124,10 +70,59 @@
                 </a>
               </div>
             </div>
+            <a class="nav-link dropdown-toggle"
+               id="technicalDropdown"
+               role="button"
+               data-toggle="dropdown"
+               aria-expanded="false"
+               style="font-size:15px">
+              {% if focusBorder == "technical" %}
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class=""
+                     alt="technical colored icon"
+                     style="width:20px" />
+              {% else %}
+                <img src="{% static 'assets/images/symbol_technical_focus_no.svg' %}"
+                     class="uncoloredImage"
+                     alt="technical uncolored icon"
+                     style="width:20px;
+                            margin-right: 3px" />
+                <img src="{% static 'assets/images/symbol_technical_focus.svg' %}"
+                     class="coloredImage"
+                     alt="technical colored icon"
+                     style="width:20px;
+                            display: none;
+                            margin-right: 3px" />
+              {% endif %}
+              {% translate "Technisch" %}
+            </a>
           </div>
           <!-- Nav technical focus END -->
           <!-- Nav operational focus START-->
           <div class="nav-item dropdown mx-4">
+            <div class="dropdown-menu mx-4 p-0" aria-labelledby="operationalDropdown">
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item operational" href="{% url 'businessModels' %}">
+                  {% translate "Geschäftsmodelle" %}
+                </a>
+              </div>
+              <!-- <li>
+                <a class="dropdown-item" href="{% url 'businessModelsChallenge' %}">
+                  {% translate "Geschäfts&shy;modell&shy;" %} - Herausforderungen
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'businessModelApplication' %}">
+                  {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
+                </a>
+              </li> -->
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item operational operational-bottom"
+                   href="{% url 'userEngagement' %}">
+                  {% translate "Nutzendenintegration" %}
+                </a>
+              </div>
+            </div>
             <a class="nav-link dropdown-toggle"
                id="operationalDropdown"
                role="button"
@@ -152,35 +147,30 @@
               {% endif %}
               {% translate "Betrieblich" %}
             </a>
-            <div class="dropdown-menu mx-4 p-0"
-                 style="margin-top: -25px"
-                 aria-labelledby="operationalDropdown">
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item operational" href="{% url 'businessModels' %}">
-                  {% translate "Geschäftsmodelle" %}
-                </a>
-              </div>
-              <!-- <li>
-                <a class="dropdown-item" href="{% url 'businessModelsChallenge' %}">
-                  {% translate "Geschäfts&shy;modell&shy;" %} - Herausforderungen
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{% url 'businessModelApplication' %}">
-                  {% translate "Geschäfts&shy;modell&shy;anwendungen" %}
-                </a>
-              </li> -->
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item operational operational-bottom"
-                   href="{% url 'userEngagement' %}">
-                  {% translate "Nutzendenintegration" %}
-                </a>
-              </div>
-            </div>
           </div>
           <!-- Nav operational focus END-->
           <!-- Nav ecological focus START-->
           <div class="nav-item dropdown mx-4">
+            <div class="dropdown-menu p-0 mx-4" aria-labelledby="ecologicalDropdown">
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item ecological"
+                   href="{% url 'environmentalIntegrityNegativ' %}">
+                  {% translate "Negative Umweltwirkungen" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item ecological"
+                   href="{% url 'environmentalIntegrityPositiv' %}">
+                  {% translate "Positive Umweltwirkungen" %} - Good-practice
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item ecological ecological-bottom"
+                   href="{% url 'dataSufficiency' %}">
+                  {% translate "Datensuffizienz" %}
+                </a>
+              </div>
+            </div>
             <a class="nav-link dropdown-toggle"
                id="ecologicalDropdown"
                role="button"
@@ -205,32 +195,28 @@
 
               {% translate "Ökologisch" %}
             </a>
-            <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
-                 aria-labelledby="ecologicalDropdown">
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item ecological"
-                   href="{% url 'environmentalIntegrityNegativ' %}">
-                  {% translate "Negative Umweltwirkungen" %}
-                </a>
-              </div>
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item ecological"
-                   href="{% url 'environmentalIntegrityPositiv' %}">
-                  {% translate "Positive Umweltwirkungen" %} - Good-practice
-                </a>
-              </div>
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item ecological ecological-bottom"
-                   href="{% url 'dataSufficiency' %}">
-                  {% translate "Datensuffizienz" %}
-                </a>
-              </div>
-            </div>
           </div>
           <!-- Nav ecological focus END -->
           <!-- Nav legal focus START-->
           <div class="nav-item dropdown mx-4">
+            <div class="dropdown-menu mx-4 p-0" aria-labelledby="legalDropdown">
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
+                  {% translate "Kriterienkatalog" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal" href="{% url 'dataSecurity' %}">
+                  {% translate "Daten&shy;schutz&shy;übersicht" %}
+                </a>
+              </div>
+              <div class="dropdown-item-bg">
+                <a class="dropdown-item legal legal-bottom"
+                   href="{% url 'iconsAndVis' %}">
+                  {% translate "Icons und Visualisierung" %}
+                </a>
+              </div>
+            </div>
             <a class="nav-link dropdown-toggle"
                id="legalDropdown"
                role="button"
@@ -255,28 +241,25 @@
 
               {% translate "Rechtlich" %}
             </a>
-            <div class="dropdown-menu mx-4 p-0"
-                 style="margin-top: -25px"
-                 aria-labelledby="legalDropdown">
+          </div>
+          <div class="nav-item dropdown mx-4">
+            <div class="dropdown-menu p-0 mx-4" aria-labelledby="globalDropdown">
               <div class="dropdown-item-bg">
-                <a class="dropdown-item legal" href="{% url 'criteriaCatalog' %}">
-                  {% translate "Kriterienkatalog" %}
+                <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
+                  {% translate "Anwendungsfälle" %}
                 </a>
               </div>
               <div class="dropdown-item-bg">
-                <a class="dropdown-item legal" href="{% url 'dataSecurity' %}">
-                  {% translate "Daten&shy;schutz&shy;übersicht" %}
+                <a class="dropdown-item global" href="{% url 'publicationPage' %}">
+                  {% translate "Veröffentlichungen" %}
                 </a>
               </div>
               <div class="dropdown-item-bg">
-                <a class="dropdown-item legal legal-bottom"
-                   href="{% url 'iconsAndVis' %}">
-                  {% translate "Icons und Visualisierung" %}
+                <a class="dropdown-item global global-bottom" href="/cesium">
+                  {% translate "CityGML Visualisierung" %}
                 </a>
               </div>
             </div>
-          </div>
-          <div class="nav-item dropdown mx-4">
             <a class="nav-link dropdown-toggle"
                id="globalDropdown"
                role="button"
@@ -301,25 +284,6 @@
 
               {% translate "Global" %}
             </a>
-            <div class="dropdown-menu p-0 mx-4"
-                 style="margin-top: -25px"
-                 aria-labelledby="globalDropdown">
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item global" href="{% url 'use_cases_list' %}">
-                  {% translate "Anwendungsfälle" %}
-                </a>
-              </div>
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item global" href="{% url 'publicationPage' %}">
-                  {% translate "Veröffentlichungen" %}
-                </a>
-              </div>
-              <div class="dropdown-item-bg">
-                <a class="dropdown-item global global-bottom" href="/cesium">
-                  {% translate "CityGML Visualisierung" %}
-                </a>
-              </div>
-            </div>
           </div>
           <div class="flex-lg-grow-1 ms-auto" id="searchIconLi">
             <form method="POST"
@@ -352,33 +316,6 @@
   </header>
   <!-- Header END -->
   <script>
-    $(".dropdown-toggle").hover( (e) => {
-        $($(e.target).children(".uncoloredImage")).css("display", "none");
-        $($(e.target).children(".coloredImage")).css("display", "");
-    }, (e) => {
-        $($(e.target).children(".coloredImage")).css("display", "none");
-        $($(e.target).children(".uncoloredImage")).css("display", "");
-    })
-    $(".dropdown-menu").hover((e) => {
-      $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "");
-      $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "none");
-
-    }, (e) => {
-      const firstTryLocateImage = $($(e.target).prev()[0]).children(".uncoloredImage")
-      if (firstTryLocateImage.length > 0) {
-        $(firstTryLocateImage).css("display", "");
-        $($($(e.target).prev()[0]).children(".coloredImage")).css("display", "none");
-
-      }
-      else {
-        $($($($(e.target).parent()[0]).prev()[0]).children(".uncoloredImage")).css("display", "");
-        $($($($(e.target).parent()[0]).prev()[0]).children(".coloredImage")).css("display", "none");
-
-      }
-
-          
-    })
-      
     $("#searchIconLi").on("mouseenter", function (){
       $("div.nav-item").css({
         display: "none"
