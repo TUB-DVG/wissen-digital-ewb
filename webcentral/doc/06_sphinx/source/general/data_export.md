@@ -9,7 +9,7 @@ python manage.py data_export app-name spreadsheet-filename.xlsx
 ```
 This command starts the `data_export` for one of the `django` apps inside the `webcentral/src/` folder with the name `app-name` and exports a spreadsheet file `spreadsheet-filename.xlsx` into the  `webcentral/src/` folder. 
 ```{note}
-The spreadsheet file will only be visible on the host system when using the development mode of the `EWB Wissensplattform`. If you are using the production mode of the application u need to copy the created .xlsx file manually to the host filesystem.
+The spreadsheet file will only be visible on the host system when using the development mode of the `EWB Wissensplattform`. If you are using the production mode of the application you need to copy the created .xlsx file manually to the host filesystem.
 ```
 ```{note}
 It can happen, that it is not possible to open the spreadsheet on the host-system because of insuficient rights. If on a linux-system you can use the `chown` utility to change the file owner to the current OS-user. 

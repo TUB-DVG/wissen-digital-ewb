@@ -11,7 +11,7 @@ def mock_excel_file():
     """Function, which creates a mocked excel file."""
     data_german = {
         "name": ["Sensormodul"],
-        "resources": ["Dokumentation, API"],
+        "resources": ["Dokumentation API"],
         "shortDescription": [
             "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
         ],
@@ -26,7 +26,7 @@ def mock_excel_file():
         "frameworksLibraries": ["TensorFlow;;Keras"],
         "databaseSystem": ["MySQL, MongoDB"],
         "classification": ["Sensorik"],
-        "focus": ["technisch, betrieblich"],
+        "focus": ["technisch;;betrieblich"],
         "scale": ["Groß"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Online verfügbar"],
@@ -50,7 +50,7 @@ def mock_excel_file():
     # Define the corresponding data in English
     data_english = {
         "name": ["Sensor Module"],
-        "resources": ["Documentation, API"],
+        "resources": ["Documentation API"],
         "shortDescription": [
             "An advanced sensor module for capturing environmental parameters."
         ],
@@ -79,7 +79,7 @@ def mock_excel_file():
         "yearOfRelease": ["2024"],
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
-        "technicalStandardsProtocols": ["HTTP, MQTT"],
+        "technicalStandardsProtocols": ["HTTP;;MQTT"],
         "image": ["sensor_image.png"],
     }
 
