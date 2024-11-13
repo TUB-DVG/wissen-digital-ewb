@@ -401,9 +401,7 @@ class DataImportApp(DataImport):
             return toolInDb, False
 
     def _processDate(self, lastUpdate: str):
-        """Process a string value into a datetime object. 
-
-        """
+        """Process a string value into a datetime object."""
         reForDotDate = re.compile("[0-9]{4,4}\.[0-9]{2,2}\.[0-9]{2,2}")
         reMinusDate = re.compile("[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}")
         correctLastUpdateValues = ["unbekannt", "laufend"]
@@ -421,19 +419,22 @@ class DataImportApp(DataImport):
                     breakpoint()
                 if reForDotDate.search(lastUpdate) is not None:
                     spanOfMatch = reForDotDate.search(lastUpdate).span()
-                    date = datetime.strptime(lastUpdate[spanOfMatch[0]:spanOfMatch[1]], "%Y.%m.%d")
-                    lastUpdate = date.strftime("%Y-%m-%d") 
-                     
+                    date = datetime.strptime(
+                        lastUpdate[spanOfMatch[0] : spanOfMatch[1]], "%Y.%m.%d"
+                    )
+                    lastUpdate = date.strftime("%Y-%m-%d")
+
                 elif reMinusDate.search(lastUpdate) is not None:
                     spanOfMatch = reMinusDate.search(lastUpdate).span()
-                    date = datetime.strptime(lastUpdate[spanOfMatch[0]:spanOfMatch[1]], "%Y-%m-%d")
-                    lastUpdate = date.strftime("%Y-%m-%d") 
+                    date = datetime.strptime(
+                        lastUpdate[spanOfMatch[0] : spanOfMatch[1]], "%Y-%m-%d"
+                    )
+                    lastUpdate = date.strftime("%Y-%m-%d")
                 else:
-                    
+
                     lastUpdate = "unbekannt"
 
         return lastUpdate
-
 
     def _update(self, oldObj, newObj):
         """Set all fields of the new ORM object into the old object."""
