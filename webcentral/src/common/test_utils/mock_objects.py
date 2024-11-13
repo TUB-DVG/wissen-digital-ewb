@@ -11,22 +11,22 @@ def mock_excel_file():
     """Function, which creates a mocked excel file."""
     data_german = {
         "name": ["Sensormodul"],
-        "resources": ["Dokumentation, API"],
+        "resources": ["Dokumentation API"],
         "shortDescription": [
             "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
         ],
-        "applicationArea": ["Industrie, Umweltüberwachung"],
+        "applicationArea": ["Industrie;;Umweltüberwachung"],
         "provider": ["Technologie AG"],
         "usage": ["Messung und Überwachung"],
         "lifeCyclePhase": ["Nutzung"],
-        "targetGroup": ["Ingenieure, Wissenschaftler"],
-        "userInterface": ["Webschnittstelle, App"],
+        "targetGroup": ["Ingenieure;;Wissenschaftler"],
+        "userInterface": ["Webschnittstelle;;App"],
         "userInterfaceNotes": ["Benutzerfreundliche Oberfläche"],
-        "programmingLanguages": ["Python, Java"],
-        "frameworksLibraries": ["TensorFlow, Keras"],
+        "programmingLanguages": ["Python;;Java"],
+        "frameworksLibraries": ["TensorFlow;;Keras"],
         "databaseSystem": ["MySQL, MongoDB"],
         "classification": ["Sensorik"],
-        "focus": ["technisch, betrieblich"],
+        "focus": ["technisch;;betrieblich"],
         "scale": ["Groß"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Online verfügbar"],
@@ -40,7 +40,7 @@ def mock_excel_file():
         "yearOfRelease": ["2024"],
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
-        "technicalStandardsProtocols": ["HTTP, MQTT"],
+        "technicalStandardsProtocols": ["HTTP;;MQTT"],
         "image": ["sensor_image.png"],
     }
 
@@ -50,22 +50,22 @@ def mock_excel_file():
     # Define the corresponding data in English
     data_english = {
         "name": ["Sensor Module"],
-        "resources": ["Documentation, API"],
+        "resources": ["Documentation API"],
         "shortDescription": [
             "An advanced sensor module for capturing environmental parameters."
         ],
-        "applicationArea": ["Industry, Environmental Monitoring"],
+        "applicationArea": ["Industry;;Environmental Monitoring"],
         "provider": ["Technology Inc."],
         "usage": ["Measurement and Monitoring"],
         "lifeCyclePhase": ["Usage"],
-        "targetGroup": ["Engineers, Scientists"],
-        "userInterface": ["Web Interface, App"],
+        "targetGroup": ["Engineers;;Scientists"],
+        "userInterface": ["Web Interface;;App"],
         "userInterfaceNotes": ["User-friendly interface"],
-        "programmingLanguages": ["Python, Java"],
-        "frameworksLibraries": ["TensorFlow, Keras"],
-        "databaseSystem": ["MySQL, MongoDB"],
+        "programmingLanguages": ["Python;;Java"],
+        "frameworksLibraries": ["TensorFlow;;Keras"],
+        "databaseSystem": ["MySQL;;MongoDB"],
         "classification": ["Sensors"],
-        "focus": ["technisch, betrieblich"],
+        "focus": ["technisch;;betrieblich"],
         "scale": ["Large"],
         "lastUpdate": ["2024-07-11"],
         "accessibility": ["Available Online"],
@@ -79,7 +79,7 @@ def mock_excel_file():
         "yearOfRelease": ["2024"],
         "developmentState": ["1"],
         "technicalStandardsNorms": ["ISO 9001"],
-        "technicalStandardsProtocols": ["HTTP, MQTT"],
+        "technicalStandardsProtocols": ["HTTP;;MQTT"],
         "image": ["sensor_image.png"],
     }
 
