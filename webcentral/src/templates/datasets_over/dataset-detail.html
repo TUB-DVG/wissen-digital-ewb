@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ dataset.resolution }}{% endblock %}
+{% block title %}{{ dataset.name }}{% endblock %}
 {% load i18n %}
 {% load static %}
 
@@ -14,7 +14,7 @@ Page intro START -->
       <div class="row">
         <div class="col-lg-12">
           <!-- Title -->
-          <h2>{{ dataset.nameDataset }}</h2>
+          <h2>{{ dataset.name }}</h2>
           <!-- Content -->
           <ul class="list-inline mb-0">
             {% if dataset.availability %}
@@ -24,13 +24,12 @@ Page intro START -->
                 </i>{{ dataset.availability }}
               </li>
             {% endif %}
-            {% if dataset.categoryDataset %}
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                <i class="{{ letztes_update_class }} {{ letztes_update_color }} me-2">
+                {% for item in dataset.classification.all %}
+                  {{ item }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
 
-                </i>{{ dataset.categoryDataset }}
               </li>
-            {% endif %}
             {% if dataset.coverage %}
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
                 <i class="fas fa-bars fa-book-open me-2">
@@ -62,14 +61,16 @@ Page intro START -->
               <!-- Content START -->
               <div class="tab-pane container active" id="course-pills-1">
                 <!-- Course detail START -->
-                {% if dataset.shortDescriptionDE %}
-                  <h5 class="mb-3">{% translate "Was ist" %} {{ dataset.resolution }}?</h5>
-                  <p class="mb-1">{{ shortDescriptionDE.shortDescriptionDEn }}.</p>
+                {% if dataset.description %}
+                  <h5 class="mb-3">{% translate "Was ist" %} {{ dataset.name }}?</h5>
+                  <p class="mb-1">{{ dataset.description }}.</p>
                 {% endif %}
-                {% if dataset.useCaseCategory %}
                   <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
-                  <p class="mb-0">{{ dataset.useCaseCategory }}</p>
-                {% endif %}
+                  <p class="mb-0">
+                    {% for item in dataset.applicationArea.all %}
+                      {{ item }}{% if not forloop.last %}, {% endif %} 
+                    {% endfor %}
+                  </p>
                 {% if dataset.coverage %}
                   <h5 class="mt-4">{% translate "Geographische Abdeckung" %}</h5>
                   <p class="mb-0">{{ dataset.coverage }}</p>
@@ -82,10 +83,10 @@ Page intro START -->
                   <h5 class="mt-4">{% translate "Verfügbarkeit" %}</h5>
                   <p class="mb-0">{{ dataset.availability }}</p>
                 {% endif %}
-                {% if dataset.referenceLink %}
+                {% if dataset.resources %}
                   <h5 class="mt-4">{% translate "Weitere Informationen" %}</h5>
                   <p class="mb-0">
-                    <a href="{{ dataset.referenceLink }}" target="_blank">{{ dataset.referenceLink }}</a>
+                    <a href="{{ dataset.resources }}" target="_blank">{{ dataset.resources }}</a>
                   </p>
                 {% endif %}
 
@@ -127,24 +128,28 @@ Page intro START -->
                 <!-- Title -->
                 <h4 class="mb-3">{% translate "Kurzinformationen" %}</h4>
                 <ul class="list-group border-0">
-                  {% if dataset.useCaseCategory %}
+                  {% if dataset.applicationArea.all.count %}
                     <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                       <span class="h6 fw-light mb-0">
                         <i class="fas fa-fw fa-book-open">
                         </i>
                         {% translate "Kategorie" %}
                       </span>
-                      <span>{{ dataset.useCaseCategory }}</span>
+                      <span>{% for item in dataset.applicationArea.all %}
+                      {{ item }}{% if not forloop.last %}, {% endif %} 
+                    {% endfor %}</span>
                     </li>
                   {% endif %}
-                  {% if dataset.categoryDataset %}
+                  {% if dataset.classification %}
                     <li class="list-group-item d-flex justify-content-between align-items-center border-0">
                       <span class="h6 fw-light mb-0">
                         <i class="{{ category_icon }}">
                         </i>
                         {% translate "Datensatz" %}
                       </span>
-                      <span>{{ dataset.categoryDataset }}</span>
+                      <span>{% for item in dataset.applicationArea.all %}
+                      {{ item }}{% if not forloop.last %}, {% endif %} 
+                    {% endfor %}</span>
                     </li>
                   {% endif %}
                   {% if dataset.availability %}

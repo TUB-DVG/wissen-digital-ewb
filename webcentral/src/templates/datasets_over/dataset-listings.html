@@ -42,52 +42,6 @@
         {% include "partials/search-bar.html" %}
         <!-- Filter bar END -->
 
-        <!-- <ul class="list-inline mb-0">
-          {% if search %}
-            <li class="list-inline-item">
-              <div class="btn btn-outline-light btn-sm">
-                <a href="/dataset_list/?searched={{ search }}&k=&l=&lzp=">{% translate "Suchbegriff" %}: {{ search }}
-                </a>
-                <a href="/dataset_list/?searched=&k={% if useCaseCategory %}{{ useCaseCategory }}{% endif %}&l={% if categoryDataset %}{{ categoryDataset }}{% endif %}&lzp=">
-                  <i class="bi bi-x-lg"></i>
-                </a>
-              </div>
-            </li>
-          {% endif %}
-          {% if useCaseCategory %}
-            <li class="list-inline-item">
-              <div class="btn btn-outline-light btn-sm">
-                <a href="/dataset_list/?searched=&k={{ useCaseCategory }}&l=&lzp=">{{ useCaseCategory }}
-                </a>
-                <a href="/dataset_list/?searched={% if search %}{{ search }}{% endif %}&k=&l={% if categoryDataset %}{{ categoryDataset }}{% endif %}&lzp=">
-                  <i class="bi bi-x-lg"></i>
-                </a>
-              </div>
-            </li>
-          {% endif %}
-          {% if categoryDataset %}
-            <li class="list-inline-item">
-              <div class="btn btn-outline-light btn-sm">
-                <a href="/dataset_list/?searched=&k=&l={{ categoryDataset }}&lzp=">{{ categoryDataset }}
-                </a>
-                <a href="/dataset_list/?searched={% if search %}{{ search }}{% endif %}&k={% if useCaseCategory %}{{ useCaseCategory }}{% endif %}&l=&lzp=">
-                  <i class="bi bi-x-lg"></i>
-                </a>
-              </div>
-            </li>
-          {% endif %}
-          {% if availability %}
-            <li class="list-inline-item">
-              <div class="btn btn-outline-light btn-sm">
-                <a href="/dataset_list/?searched=&k=&l=&lzp={{ availability }}">{{ availability }}
-                </a>
-                <a href="/dataset_list/?searched={% if search %}{{ search }}{% endif %}&k={% if useCaseCategory %}{{ useCaseCategory }}{% endif %}&l=&lzp=">
-                  <i class="bi bi-x-lg"></i>
-                </a>
-              </div>
-            </li>
-          {% endif %}
-        </ul> -->
         <div class="row mt-3">
           <!-- Main content START -->
           <div class="col-12">

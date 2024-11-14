@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.core import serializers
+
 from .models import Dataset, HistoryDataset
 
 admin.site.register(Dataset)
@@ -29,7 +31,7 @@ class HistoryAdmin(admin.ModelAdmin):
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
 
-        currentToolState = Tools.objects.filter(name=oldTool.name)
+        currentToolState = Dataset.objects.filter(name=oldTool.name)
 
         extra_context["oldTool"] = oldTool
         extra_context["rollbackStateStringified"] = json.loads(

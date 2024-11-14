@@ -83,6 +83,7 @@ def index(request):
         "nameOfTemplate": "datasets",
         "urlName": "dataset_list",
         "focusBorder": "technical",
+        "urlDetailsPage": "dataset_view",
         "optionList": [
             {
                 "placeholder": _("Anwendungsfall"),
@@ -158,17 +159,17 @@ def dataset_view(request, id):
     """
     shows of the key features one project
     """
-    dataset = get_object_or_404(collectedDatasets, pk=id)
-    nameDataset = dataset.nameDataset.split(", ")
-    useCaseCategory = dataset.useCaseCategory.split(", ")
-    categoryDataset = dataset.categoryDataset.split(", ")
-    print(useCaseCategory)
-    print(categoryDataset)
+    dataset = get_object_or_404(Dataset, pk=id)
+    nameDataset = dataset.name.split(", ")
+    # useCaseCategory = dataset.useCaseCategory.split(", ")
+    # categoryDataset = dataset.categoryDataset.split(", ")
+    # print(useCaseCategory)
+    # print(categoryDataset)
 
     context = {
         "dataset": dataset,
-        "useCaseCategory": useCaseCategory,
-        "categoryDataset": categoryDataset,
+        # "useCaseCategory": useCaseCategory,
+        # "categoryDataset": categoryDataset,
         "name": nameDataset,
     }
 
