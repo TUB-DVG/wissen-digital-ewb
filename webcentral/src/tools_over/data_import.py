@@ -3,6 +3,7 @@ from datetime import (
     timedelta,
 )
 import json
+import re
 
 import pandas as pd
 from django.core.serializers import serialize
@@ -175,32 +176,7 @@ class DataImportApp(DataImport):
             processedUserInterface, UserInterface
         )
 
-        lastUpdate = row[header.index("lastUpdate")]
-
-        correctLastUpdateValues = ["unbekannt", "laufend"]
-        if lastUpdate == "":
-            lastUpdate = "unbekannt"
-        if lastUpdate not in correctLastUpdateValues:
-            if isinstance(lastUpdate, pd.Timestamp) or isinstance(
-                lastUpdate, datetime
-            ):
-                date = lastUpdate.date()
-            else:
-                try:
-                    # Try to parse the string as a date with time
-                    date = datetime.strptime(lastUpdate, "%Y-%m-%d %H:%M:%S")
-                except ValueError:
-                    try:
-                        # If that fails, try to parse it as a date without time
-                        date = datetime.strptime(lastUpdate, "%Y-%m-%d")
-                    except ValueError:
-                        # If that also fails, return None
-                        raise ValueError(
-                            f"The tool {name} could not be imported, because the lastUpdate-Value is {lastUpdate}. Only 'unbekannt', 'laufend' or a date in the format 'YYYY-MM-DD' is allowed."
-                        )
-
-            # Return the date part of the datetime object as a string
-            lastUpdate = date.strftime("%Y-%m-%d")
+        lastUpdate = self._processDate(row[header.index("lastUpdate")])
 
         license = row[header.index("license")]
         licenseNotes = row[header.index("licenseNotes")]
@@ -423,6 +399,42 @@ class DataImportApp(DataImport):
         else:
             obj.delete()
             return toolInDb, False
+
+    def _processDate(self, lastUpdate: str):
+        """Process a string value into a datetime object."""
+        reForDotDate = re.compile("[0-9]{4,4}\.[0-9]{2,2}\.[0-9]{2,2}")
+        reMinusDate = re.compile("[0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}")
+        correctLastUpdateValues = ["unbekannt", "laufend"]
+        if lastUpdate == "":
+            lastUpdate = "unbekannt"
+        if lastUpdate not in correctLastUpdateValues:
+            if isinstance(lastUpdate, pd.Timestamp) or isinstance(
+                lastUpdate, datetime
+            ):
+                date = lastUpdate.date()
+            else:
+                try:
+                    lastUpdate = lastUpdate.replace(" ", "")
+                except:
+                    breakpoint()
+                if reForDotDate.search(lastUpdate) is not None:
+                    spanOfMatch = reForDotDate.search(lastUpdate).span()
+                    date = datetime.strptime(
+                        lastUpdate[spanOfMatch[0] : spanOfMatch[1]], "%Y.%m.%d"
+                    )
+                    lastUpdate = date.strftime("%Y-%m-%d")
+
+                elif reMinusDate.search(lastUpdate) is not None:
+                    spanOfMatch = reMinusDate.search(lastUpdate).span()
+                    date = datetime.strptime(
+                        lastUpdate[spanOfMatch[0] : spanOfMatch[1]], "%Y-%m-%d"
+                    )
+                    lastUpdate = date.strftime("%Y-%m-%d")
+                else:
+
+                    lastUpdate = "unbekannt"
+
+        return lastUpdate
 
     def _update(self, oldObj, newObj):
         """Set all fields of the new ORM object into the old object."""
