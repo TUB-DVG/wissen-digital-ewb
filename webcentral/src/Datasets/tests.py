@@ -68,8 +68,28 @@ class TestDataUpdate(TestCase):
     """
 
     """
-    def 
+    def testUpdate(self):
+        """Check if update with rollback feature is implemented
 
+        """
+        call_command(
+            "data_import",
+            "Datasets",
+            "../doc/01_data/17_datasets/20230623_datasets.xlsx",
+        )
+
+        call_command(
+            "data_import",
+            "Datasets",
+            "../doc/01_data/17_datasets/test_data/update_dataset.xlsx",
+        )
+
+        self.assertEqual(len(HistoryDataset.objects.all()), 1)
+        updatedDataset = Dataset.objects.get(name="Prozessorientierte Basisdaten für Umweltmanagementsysteme")
+
+        self.assertEqual(len(updatedDataset.focus.all()), 2)
+        self.assertEqual(updatedDataset.lastUpdate_de, "laufend")
+        self.assertEqual(updatedDataset.lastUpdate_en, "ongoing")
 
 class TestDataExport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_export`"""

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Now
 
 from tools_over.models import (
     ApplicationArea,
@@ -165,3 +166,12 @@ class Dataset(models.Model):
 
     def __str__(self):
         return self.name
+
+class HistoryDataset(models.Model):
+    """History model for the Dataset model. Implements a rollback feature for `Dataset`-model
+
+    """
+    identifer = models.CharField(max_length=300)
+    stringifiedObj = models.TextField()
+    loaded = models.BooleanField(default=False)
+    updateDate = models.DateTimeField(db_default=Now())
