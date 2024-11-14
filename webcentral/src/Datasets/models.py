@@ -43,7 +43,8 @@ class Dataset(models.Model):
         db_comment="Spatial scale of the use cases - On what scale is the dataset used?",
     )
     targetGroup = models.ManyToManyField(
-        TargetGroup, db_comment="Target group - Who do you say the digital item is aimed at?"
+        TargetGroup,
+        db_comment="Target group - Who do you say the digital item is aimed at?",
     )
     alternatives = models.CharField(
         max_length=300,
@@ -90,7 +91,8 @@ class Dataset(models.Model):
         db_comment="Geographical coverage - regions covered by the dataset",
     )
     accessibility = models.ManyToManyField(
-        Accessibility, db_comment="Accessibility - How accessible is the dataset?"
+        Accessibility,
+        db_comment="Accessibility - How accessible is the dataset?",
     )
     resolution = models.CharField(
         max_length=500,
@@ -149,7 +151,7 @@ class Dataset(models.Model):
         db_comment="Year of publication - If the item is published, in which year was it released?",
         null=True,
     )
-    
+
     programmingLanguages = models.CharField(
         max_length=500,
         blank=True,
@@ -160,9 +162,8 @@ class Dataset(models.Model):
         Subproject,
         blank=True,
         null=True,
-        db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)"
+        db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
     )
-
 
     def __str__(self):
         return self.name
@@ -187,8 +188,8 @@ class Dataset(models.Model):
                     if firstObjAttr != secondObjAttr:
                         return False
 
-        return True 
-    
+        return True
+
     def get_fields(self):
         """Returns a list of field names and values for use in templates."""
         return [field.name for field in self._meta.get_fields()]
@@ -259,9 +260,8 @@ class Dataset(models.Model):
 
 
 class HistoryDataset(models.Model):
-    """History model for the Dataset model. Implements a rollback feature for `Dataset`-model
+    """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""
 
-    """
     identifer = models.CharField(max_length=300)
     stringifiedObj = models.TextField()
     loaded = models.BooleanField(default=False)

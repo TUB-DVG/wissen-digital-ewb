@@ -29,7 +29,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Dataset"
     DJANGO_MODEL_OBJ = Dataset
     DJANGO_APP = "Datasets"
-    APP_HISTORY_MODEL_OBJ = HistoryDataset 
+    APP_HISTORY_MODEL_OBJ = HistoryDataset
 
     MAPPING_EXCEL_DB = {
         "name": ("name", None),
@@ -119,13 +119,17 @@ class DataImportApp(DataImport):
         readInValuesM2M = {}
         for tableTuple in self.MAPPING_EXCEL_DB:
             (tableKey, m2MModel) = self.MAPPING_EXCEL_DB[tableTuple]
-            if isinstance(m2MModel, type) and issubclass(m2MModel, models.Model):
+            if isinstance(m2MModel, type) and issubclass(
+                m2MModel, models.Model
+            ):
                 m2mList = self._processListInput(
                     row[header.index(tableKey)],
                     separator=";;",
                 )
                 m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
-                readInValuesM2M[tableKey] = self.getM2MelementsQueryset(m2mList, m2MModel)
+                readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
+                    m2mList, m2MModel
+                )
             else:
                 if row[header.index(tableKey)] == "":
                     readInValues[tableKey] = None
@@ -148,7 +152,7 @@ class DataImportApp(DataImport):
             released=readInValues["released"],
             releasedPlanned=readInValues["releasedPlanned"],
         )
-        
+
         # check if the database already holds a dataset with the name already
         tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
         obj.save()
@@ -161,10 +165,10 @@ class DataImportApp(DataImport):
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
-            ) 
+            )
         obj.save()
-        
+
         if tupleOrNone is None:
             return obj, True
-        
+
         return self._checkIfEqualAndUpdate(obj, tupleOrNone[1])

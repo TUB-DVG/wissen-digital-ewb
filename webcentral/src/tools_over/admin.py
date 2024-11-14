@@ -94,6 +94,7 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
+
 class HistoryAdmin(admin.ModelAdmin):
     actions = ["rollbackHistory"]
 
@@ -139,5 +140,6 @@ class HistoryAdmin(admin.ModelAdmin):
             form_url,
             extra_context=extra_context,
         )
+
 
 admin.site.register(History, HistoryAdmin)

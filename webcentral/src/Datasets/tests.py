@@ -8,9 +8,10 @@ import pandas as pd
 
 from .models import Dataset, HistoryDataset
 from tools_over.models import (
-        Classification,
-        ApplicationArea,
+    Classification,
+    ApplicationArea,
 )
+
 
 class TestDataImport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_import`"""
@@ -31,27 +32,22 @@ class TestDataImport(TestCase):
             classification_de__icontains="Gebäudegrundrisse"
         )
         self.assertEqual(
-                classificationObjForDatasets.classification_en,
-                "Building floor plans",
+            classificationObjForDatasets.classification_en,
+            "Building floor plans",
         )
         appAreaObjForDatasets = ApplicationArea.objects.get(
             applicationArea_de__icontains="Benchmark"
         )
         self.assertEqual(
-                appAreaObjForDatasets.applicationArea_en,
-                "Benchmark",
-        ) 
-
+            appAreaObjForDatasets.applicationArea_en,
+            "Benchmark",
+        )
 
         self.assertGreater(
-            len(
-                Dataset.objects.filter(
-                    applicationArea=appAreaObjForDatasets
-                )
-            ),
+            len(Dataset.objects.filter(applicationArea=appAreaObjForDatasets)),
             0,
         )
-    
+
         solverBenchmarkDataset = Dataset.objects.get(
             name__icontains="Solver-Benchmark"
         )
@@ -64,14 +60,12 @@ class TestDataImport(TestCase):
             == "Benchmark for linear solvers."
         )
 
+
 class TestDataUpdate(TestCase):
-    """
+    """ """
 
-    """
     def testUpdate(self):
-        """Check if update with rollback feature is implemented
-
-        """
+        """Check if update with rollback feature is implemented"""
         call_command(
             "data_import",
             "Datasets",
@@ -85,11 +79,14 @@ class TestDataUpdate(TestCase):
         )
 
         self.assertEqual(len(HistoryDataset.objects.all()), 1)
-        updatedDataset = Dataset.objects.get(name="Prozessorientierte Basisdaten für Umweltmanagementsysteme")
+        updatedDataset = Dataset.objects.get(
+            name="Prozessorientierte Basisdaten für Umweltmanagementsysteme"
+        )
 
         self.assertEqual(len(updatedDataset.focus.all()), 2)
         self.assertEqual(updatedDataset.lastUpdate_de, "laufend")
         self.assertEqual(updatedDataset.lastUpdate_en, "ongoing")
+
 
 class TestDataExport(TestCase):
     """Class, which wraps a TestCase for the Datasets `data_export`"""

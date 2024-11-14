@@ -244,9 +244,11 @@ class DataImport:
             listOfModifiedStrings.append(modifiedStr)
         return listOfModifiedStrings
 
-    def getM2MelementsQueryset(self, listOfStrings: list, djangoModel: Model) -> list:
+    def getM2MelementsQueryset(
+        self, listOfStrings: list, djangoModel: Model
+    ) -> list:
         """Get queryset of m2m-elements, which corresponds to the string elements of `listOfStrings`
-        
+
         Arguments:
         djangoModel: models.Model
             Django model ORM class of a ManyToManyField
@@ -256,14 +258,20 @@ class DataImport:
         Returns:
             queryset containing the `djangoModel`-objects
         """
-        if djangoModel._meta.model_name == "subproject":  
+        if djangoModel._meta.model_name == "subproject":
             attrWithDe = "referenceNumber_id"
         else:
-            attrNamesOfModel = [attr.name for attr in djangoModel._meta.get_fields()]
-            attrWithDe = next((attr for attr in attrNamesOfModel if "_de" in attr), None)
+            attrNamesOfModel = [
+                attr.name for attr in djangoModel._meta.get_fields()
+            ]
+            attrWithDe = next(
+                (attr for attr in attrNamesOfModel if "_de" in attr), None
+            )
         listOfM2Mobjs = []
         for objString in listOfStrings:
-            listOfM2Mobjs.append(djangoModel.objects.get_or_create(**{attrWithDe: objString})[0])
+            listOfM2Mobjs.append(
+                djangoModel.objects.get_or_create(**{attrWithDe: objString})[0]
+            )
         return listOfM2Mobjs
 
     def _processListInput(self, inputStr, separator=";"):
@@ -415,9 +423,7 @@ class DataImport:
         return False
 
     def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
-        """Check if `djangoModel` holds a item with the name `itemName`
-        
-        """
+        """Check if `djangoModel` holds a item with the name `itemName`"""
         itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
         if len(itemsWithName) > 0:
             return itemsWithName[0].id, itemsWithName[0]
@@ -497,9 +503,7 @@ class DataImport:
         self.diffStrDict[self.dictIdentifier] += diffStr
 
     def _checkIfEqualAndUpdate(self, newObj, oldObj):
-        """
-
-        """
+        """ """
         objsEqual = oldObj.isEqual(newObj)
         if not objsEqual:
 

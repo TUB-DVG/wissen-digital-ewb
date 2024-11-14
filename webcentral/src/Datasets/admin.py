@@ -3,6 +3,7 @@ from .models import Dataset, HistoryDataset
 
 admin.site.register(Dataset)
 
+
 class HistoryAdmin(admin.ModelAdmin):
     actions = ["rollbackHistory"]
 
@@ -14,7 +15,9 @@ class HistoryAdmin(admin.ModelAdmin):
                 "json", historyObj.stringifiedObj
             )
             rollbackToolState = list(deserializedStringyfiedObj)[0].object
-            toolStateInDB = Dataset.objects.filter(name=rollbackToolState.name)[0]
+            toolStateInDB = Dataset.objects.filter(name=rollbackToolState.name)[
+                0
+            ]
             toolStateInDB._update(rollbackToolState, historyObj)
             historyObj.delete()
 
@@ -38,9 +41,9 @@ class HistoryAdmin(admin.ModelAdmin):
             )
         )[0]["fields"]
 
-        extra_context["currentTool"] = Dataset.objects.filter(name=oldTool.name)[
-            0
-        ]
+        extra_context["currentTool"] = Dataset.objects.filter(
+            name=oldTool.name
+        )[0]
         # breakpoint()
         return super().change_view(
             request,
@@ -48,5 +51,6 @@ class HistoryAdmin(admin.ModelAdmin):
             form_url,
             extra_context=extra_context,
         )
+
 
 admin.site.register(HistoryDataset, HistoryAdmin)

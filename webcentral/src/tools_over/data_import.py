@@ -33,7 +33,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Tools"
     DJANGO_MODEL_OBJ = Tools
     DJANGO_APP = "tools_over"
-    APP_HISTORY_MODEL_OBJ = History 
+    APP_HISTORY_MODEL_OBJ = History
     MAPPING_EXCEL_DB_EN = {
         # "name_en": "name_en",
         "shortDescription__en": "shortDescription_en",
@@ -331,9 +331,9 @@ class DataImportApp(DataImport):
             # technicalStandardsNorms__in=technicalStandardsNormsElements,
             # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
-                
+
         tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
-        
+
         obj.save()
         # obj.id = toolInDb.id
         obj.focus.add(*focusElements)
@@ -360,5 +360,4 @@ class DataImportApp(DataImport):
         if tupleOrNone is None:
             return obj, True
         idOfAlreadyPresentTool = tupleOrNone[0]
-        return self._checkIfEqualAndUpdate(obj, tupleOrNone[1]) 
-
+        return self._checkIfEqualAndUpdate(obj, tupleOrNone[1])
