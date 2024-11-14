@@ -24,12 +24,13 @@ Page intro START -->
                 </i>{{ dataset.availability }}
               </li>
             {% endif %}
-              <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
-                {% for item in dataset.classification.all %}
-                  {{ item }}{% if not forloop.last %}, {% endif %}
-                {% endfor %}
+            <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
+              {% for item in dataset.classification.all %}
+                {{ item }}
+                {% if not forloop.last %},{% endif %}
+              {% endfor %}
 
-              </li>
+            </li>
             {% if dataset.coverage %}
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
                 <i class="fas fa-bars fa-book-open me-2">
@@ -65,12 +66,14 @@ Page intro START -->
                   <h5 class="mb-3">{% translate "Was ist" %} {{ dataset.name }}?</h5>
                   <p class="mb-1">{{ dataset.description }}.</p>
                 {% endif %}
-                  <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
-                  <p class="mb-0">
-                    {% for item in dataset.applicationArea.all %}
-                      {{ item }}{% if not forloop.last %}, {% endif %} 
-                    {% endfor %}
-                  </p>
+                <h5 class="mt-4">{% translate "Anwendungsbereich" %}</h5>
+                <p class="mb-0">
+                  {% for item in dataset.applicationArea.all %}
+                    {{ item }}
+                    {% if not forloop.last %},{% endif %}
+
+                  {% endfor %}
+                </p>
                 {% if dataset.coverage %}
                   <h5 class="mt-4">{% translate "Geographische Abdeckung" %}</h5>
                   <p class="mb-0">{{ dataset.coverage }}</p>
@@ -135,9 +138,13 @@ Page intro START -->
                         </i>
                         {% translate "Kategorie" %}
                       </span>
-                      <span>{% for item in dataset.applicationArea.all %}
-                      {{ item }}{% if not forloop.last %}, {% endif %} 
-                    {% endfor %}</span>
+                      <span>
+                        {% for item in dataset.applicationArea.all %}
+                          {{ item }}
+                          {% if not forloop.last %},{% endif %}
+
+                        {% endfor %}
+                      </span>
                     </li>
                   {% endif %}
                   {% if dataset.classification %}
@@ -147,9 +154,13 @@ Page intro START -->
                         </i>
                         {% translate "Datensatz" %}
                       </span>
-                      <span>{% for item in dataset.applicationArea.all %}
-                      {{ item }}{% if not forloop.last %}, {% endif %} 
-                    {% endfor %}</span>
+                      <span>
+                        {% for item in dataset.applicationArea.all %}
+                          {{ item }}
+                          {% if not forloop.last %},{% endif %}
+
+                        {% endfor %}
+                      </span>
                     </li>
                   {% endif %}
                   {% if dataset.availability %}

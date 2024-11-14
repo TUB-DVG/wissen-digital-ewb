@@ -2,7 +2,7 @@
 {% load i18n %}
 {% for ormObj in page.object_list %}
   <!-- Card item START -->
-<style>
+  <style>
  .card-title {
     font-size: 16px;
     font-family: Roboto, sans-serif;
@@ -33,8 +33,7 @@
     margin-top: auto;             /* Pushes the footer to the bottom */
 }
 
-</style>
-
+  </style>
 
   <div class="col-sm-6 col-lg-4 col-xl-3 card_hover">
     <a href="{% url urlDetailsPage ormObj.id %}">
@@ -43,28 +42,33 @@
         <div class="card-body pb-0">
 
           <!-- Title -->
-          <div class="card-title" style="font-size: 16px; font-familiy: Roboto; color: black;">{{ ormObj.name }}</div>
-        <!-- Image -->
-        <div class="card-subtitle mt-2" style="color: black;"><span style="color: #8FABF7; padding-right: 6px;">{% translate 'Anbieter' %}:</span>{{ ormObj.provider }}</div>
-        <div class="image-container d-flex" style="height: 150px;">
-          {% if ormObj.image %}
-            <img src="{{ ormObj.image.url }}"
-                 class="card-img-top px-4 pb-2 m-auto"
-                 style="max-height: 100%;
-                        width: auto;
-                        display: block"
-                 alt="weatherdata image (if=db)" />
-          {% endif %}
-        </div>
+          <div class="card-title"
+               style="font-size: 16px;
+                      font-familiy: Roboto;
+                      color: black">{{ ormObj.name }}</div>
+          <!-- Image -->
+          <div class="card-subtitle mt-2" style="color: black;">
+            <span style="color: #8FABF7; padding-right: 6px;">{% translate 'Anbieter' %}:</span>{{ ormObj.provider }}
+          </div>
+          <div class="image-container d-flex" style="height: 150px;">
+            {% if ormObj.image %}
+              <img src="{{ ormObj.image.url }}"
+                   class="card-img-top px-4 pb-2 m-auto"
+                   style="max-height: 100%;
+                          width: auto;
+                          display: block"
+                   alt="weatherdata image (if=db)" />
+            {% endif %}
+          </div>
 
-        <!-- Card footer -->
-        <div class="card-subtitle" style="color: black;" >
-          {% if ormObj.coverage %}
-            <span style="color: #8FABF7; padding-right: 6px;">{% translate "Abdeckung" %}:</span>{{ ormObj.coverage }}
-          {% endif %}
+          <!-- Card footer -->
+          <div class="card-subtitle" style="color: black;">
+            {% if ormObj.coverage %}
+              <span style="color: #8FABF7; padding-right: 6px;">{% translate "Abdeckung" %}:</span>{{ ormObj.coverage }}
+            {% endif %}
+          </div>
         </div>
-        </div>
-        </div>
+      </div>
     </a>
   </div>
 
