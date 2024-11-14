@@ -94,12 +94,6 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
-
-# class HistoryForm(ModelForm):
-#     model = History
-#     def clean(self):
-#         return self.cleaned_data
-#
 class HistoryAdmin(admin.ModelAdmin):
     actions = ["rollbackHistory"]
 
@@ -145,25 +139,5 @@ class HistoryAdmin(admin.ModelAdmin):
             form_url,
             extra_context=extra_context,
         )
-
-    # def save_model(self, request, obj, form, change):
-    #     """Rollback Tools object to state saved in History object
-    #
-    #     """
-    #     deserializedStringyfiedObj = serializers.deserialize(
-    #         "json", self.model.objects.get(id=int(obj)).stringifiedObj
-    #     )
-    #     rolbackState = list(deserializedStringyfiedObj)[0].object
-    #
-    #     currentState = Tools.objects.filter(name=oldTool.name)[0]
-    #     breakpoint()
-    #
-    # def response_change(self, request, obj):
-    #
-    #     breakpoint()
-    #
-    # def response_add(self, request, obj, post_url_continue=None):
-    #     breakpoint()
-
 
 admin.site.register(History, HistoryAdmin)

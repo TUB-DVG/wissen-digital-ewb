@@ -2,7 +2,7 @@ import pandas as pd
 from django.db import models
 
 from tools_over.models import Tools
-from .models import collectedDatasets
+from .models import Dataset
 
 
 class DataExport:
@@ -10,22 +10,36 @@ class DataExport:
 
     SEPARATOR_M2M = ";;"
     MAPPING_ORM_TO_XLSX = {
-        "nameDataset": "nameDataset",
-        "useCaseCategory": "useCaseCategory",
-        "categoryDataset": "categoryDataset",
-        "reference": "reference",
-        "referenceLink": "referenceLink",
+        "name": "name",
+        "applicationArea": "applicationArea",
+        "focus": "focus",
+        "classification": "classification",
+        "lifeCyclePhase": "lifeCyclePhase",
+        "scale": "scale",
+        "targetGroup": "targetGroup",
+        "alternatives": "alternatives",
+        "developmentState": "developmentState",
+        "provider": "provider",
+        "resources": "resources",
         "availability": "availability",
         "coverage": "coverage",
+        "accessibility": "accessibility",
         "resolution": "resolution",
-        "comment": "comment",
-        "dataSources": "dataSources",
-        "shortDescriptionDe": "shortDescriptionDe",
-        "includesNonResidential": "includesNonResidential",
+        "description": "description",
+        "furtherInformation": "furtherInformation",
+        "license": "license",
+        "licenseNotes": "licenseNotes",
+        "image": "image",
+        "lastUpdate": "lastUpdate",
+        "released": "released",
+        "releasedPlanned": "releasedPlanned",
+        "yearOfRelease": "yearOfRelease",
+        "programmingLanguages": "programmingLanguages",
+        "specificApplication": "specificApplication",
     }
 
     DATA_APP_DIR = "02_tool_over"
-    EXPORT_MODEL = collectedDatasets
+    EXPORT_MODEL = Dataset
 
     def __init__(self, filename):
         """ """

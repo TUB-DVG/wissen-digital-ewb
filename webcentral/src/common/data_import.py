@@ -20,6 +20,7 @@ from django.db.models import (
     ManyToOneRel,
 )
 from django.db.models.query import QuerySet
+from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 
@@ -413,6 +414,14 @@ class DataImport:
 
         return False
 
+    def _checkIfItemExistsInDB(self, itemName: str) -> tuple:
+        """Check if `djangoModel` holds a item with the name `itemName`
+        
+        """
+        itemsWithName = self.DJANGO_MODEL_OBJ.objects.filter(name=itemName)
+        if len(itemsWithName) > 0:
+            return itemsWithName[0].id, itemsWithName[0]
+
     def _compareDjangoOrmObj(self, modelType, oldObj, newObj):
         """Compares 2 django orm objects of same model-type and creates a diff
         str."""
@@ -486,6 +495,45 @@ class DataImport:
         if diffStr != "":
             diffStr = diffStrModelName + diffStr + ";;"
         self.diffStrDict[self.dictIdentifier] += diffStr
+
+    def _checkIfEqualAndUpdate(self, newObj, oldObj):
+        """
+
+        """
+        objsEqual = oldObj.isEqual(newObj)
+        if not objsEqual:
+
+            newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
+                identifer=oldObj.name,
+                stringifiedObj=serialize(
+                    "json", [oldObj], use_natural_foreign_keys=True
+                ),
+            )
+            # parsedJson = json.loads(newHistoryObj.stringifiedObj)
+            # parsedJson[0]["pk"] = obj.pk
+            # newHistoryObj.stringifiedObj = json.dumps(parsedJson)
+            newHistoryObj.save()
+
+            self._update(oldObj, newObj)
+            return newObj, True
+        else:
+            newObj.delete()
+            return oldObj, False
+
+    def _update(self, oldObj, newObj):
+        """Set all fields of the new ORM object into the old object."""
+
+        for field in newObj._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    getattr(oldObj, field.name).set(
+                        getattr(newObj, field.name).all()
+                    )
+                else:
+                    setattr(oldObj, field.name, getattr(newObj, field.name))
+
+        oldObj.save()
+        newObj.delete()
 
     def _writeDiffStrToDB(self):
         """ """

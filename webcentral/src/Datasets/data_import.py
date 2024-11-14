@@ -12,7 +12,7 @@ from tools_over.models import (
 )
 from project_listing.models import Subproject
 from common.models import License
-from Datasets.models import Dataset
+from Datasets.models import Dataset, HistoryDataset
 
 
 class DataImportApp(DataImport):
@@ -29,6 +29,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Dataset"
     DJANGO_MODEL_OBJ = Dataset
     DJANGO_APP = "Datasets"
+    APP_HISTORY_MODEL_OBJ = HistoryDataset 
 
     MAPPING_EXCEL_DB = {
         "name": ("name", None),
@@ -131,7 +132,7 @@ class DataImportApp(DataImport):
                 else:
                     readInValues[tableKey] = row[header.index(tableKey)]
 
-        obj, created = self.DJANGO_MODEL_OBJ.objects.get_or_create(
+        obj = self.DJANGO_MODEL_OBJ(
             name=readInValues["name"],
             provider=readInValues["provider"],
             resources=readInValues["resources"],
@@ -148,6 +149,9 @@ class DataImportApp(DataImport):
             releasedPlanned=readInValues["releasedPlanned"],
         )
         
+        # check if the database already holds a dataset with the name already
+        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
+        obj.save()
         for readInM2MKey in readInValuesM2M.keys():
             try:
                 getattr(obj, readInM2MKey).set(readInValuesM2M[readInM2MKey])
@@ -157,5 +161,10 @@ class DataImportApp(DataImport):
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN
-            )
-        return obj, created
+            ) 
+        obj.save()
+        
+        if tupleOrNone is None:
+            return obj, True
+        
+        return self._checkIfEqualAndUpdate(obj, tupleOrNone[1])

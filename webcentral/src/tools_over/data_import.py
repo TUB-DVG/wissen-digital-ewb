@@ -5,7 +5,6 @@ from datetime import (
 import json
 
 import pandas as pd
-from django.core.serializers import serialize
 from django.db import models
 
 from common.data_import import DataImport
@@ -32,7 +31,9 @@ from project_listing.models import Subproject
 class DataImportApp(DataImport):
 
     DJANGO_MODEL = "Tools"
+    DJANGO_MODEL_OBJ = Tools
     DJANGO_APP = "tools_over"
+    APP_HISTORY_MODEL_OBJ = History 
     MAPPING_EXCEL_DB_EN = {
         # "name_en": "name_en",
         "shortDescription__en": "shortDescription_en",
@@ -330,52 +331,9 @@ class DataImportApp(DataImport):
             # technicalStandardsNorms__in=technicalStandardsNormsElements,
             # technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
         )
-        # else:
-        # obj, created = Tools.objects.get_or_create(
-        #         name=name,
-        #         shortDescription=shortDescription,
-        #         applicationArea__in=applicationAreaElements,
-        #         usage__in=usageElements,
-        #         lifeCyclePhase__in=lifeCyclePhaseElements,
-        #         userInterface__in=userInterfaceElements,
-        #         userInterfaceNotes=userInterfaceNotes,
-        #         programmingLanguages=programmingLanguages,
-        #         frameworksLibraries=frameworksLibraries,
-        #         databaseSystem=databaseSystem,
-        #         scale__in=scaleElements,
-        #         accessibility__in=accessibilityElements,
-        #         targetGroup__in=targetGroupElements,
-        #         lastUpdate=lastUpdate,
-        #         license=license,
-        #         licenseNotes=licenseNotes,
-        #         furtherInformation=furtherInfos,
-        #         alternatives=alternatives,
-        #         specificApplication__in=specificApplicationElements,
-        #         focus__in=focusElements,
-        #         classification__in=classificationElements,
-        #         provider=provider,
-        #         image=imageName,
-        #         released=released,
-        #         releasedPlanned=releasedPlanned,
-        #         resources=resources,
-        #         yearOfRelease=yearOfRelease,
-        #         developmentState=developmentState,
-        #         technicalStandardsNorms__in=technicalStandardsNormsElements,
-        #         technicalStandardsProtocols__in=technicalStandardsProtocolsElements,
-        #     )
-
-        # if created:
-
-        # if presentToolWithSameName is not None:
-        #     self._compareDjangoOrmObj(Tools, presentToolWithSameName, obj)
-
-        # obj.save()
-        toolsInDb = Tools.objects.filter(name=row[header.index("name")])
-        # if "WUFI" in row[header.index("name")]:
-
-        if len(toolsInDb) > 0:
-            toolInDb = toolsInDb[0]
-            idOfAlreadyPresentTool = toolInDb.id
+                
+        tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])
+        
         obj.save()
         # obj.id = toolInDb.id
         obj.focus.add(*focusElements)
@@ -399,42 +357,8 @@ class DataImportApp(DataImport):
         obj.save()
         # if obj.name == "WUFI Plus":
         #     breakpoint()
-        if len(toolsInDb) == 0:
+        if tupleOrNone is None:
             return obj, True
-        toolsInDb = Tools.objects.get(id=idOfAlreadyPresentTool)
-        objsEqual = toolInDb.isEqual(obj)
-        if not objsEqual:
+        idOfAlreadyPresentTool = tupleOrNone[0]
+        return self._checkIfEqualAndUpdate(obj, tupleOrNone[1]) 
 
-            # toolInDBWithNewId = toolInDb
-            # toolInDBWithNewId.id = obj.id
-            newHistoryObj = History(
-                identifer=row[header.index("name")],
-                stringifiedObj=serialize(
-                    "json", [toolInDb], use_natural_foreign_keys=True
-                ),
-            )
-            # parsedJson = json.loads(newHistoryObj.stringifiedObj)
-            # parsedJson[0]["pk"] = obj.pk
-            # newHistoryObj.stringifiedObj = json.dumps(parsedJson)
-            newHistoryObj.save()
-
-            self._update(toolInDb, obj)
-            return obj, True
-        else:
-            obj.delete()
-            return toolInDb, False
-
-    def _update(self, oldObj, newObj):
-        """Set all fields of the new ORM object into the old object."""
-
-        for field in newObj._meta.get_fields():
-            if field.name != "id":
-                if isinstance(field, models.ManyToManyField):
-                    getattr(oldObj, field.name).set(
-                        getattr(newObj, field.name).all()
-                    )
-                else:
-                    setattr(oldObj, field.name, getattr(newObj, field.name))
-
-        oldObj.save()
-        newObj.delete()

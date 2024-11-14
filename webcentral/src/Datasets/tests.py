@@ -6,7 +6,7 @@ from django.core.management import (
 )
 import pandas as pd
 
-from .models import Dataset
+from .models import Dataset, HistoryDataset
 from tools_over.models import (
         Classification,
         ApplicationArea,
@@ -106,3 +106,4 @@ class TestDataExport(TestCase):
         excelFile = pd.ExcelFile("test.xlsx")
         excelSheetNames = excelFile.sheet_names
         self.assertEqual(set(excelSheetNames), set(["German", "English"]))
+        breakpoint()
