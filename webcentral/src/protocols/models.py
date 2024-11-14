@@ -14,6 +14,7 @@ from common.models import License
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
 
+
 class Protocol(models.Model):
     name = models.CharField(
         max_length=150, help_text="name of the norm", blank=True
@@ -28,7 +29,7 @@ class Protocol(models.Model):
         Classification,
         null=True,
         db_comment="General type of protocol - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
-    )  
+    )
     lifeCyclePhase = models.ManyToManyField(
         LifeCyclePhase,
         db_comment="Life cycle phase - In which phase of the product life cycle is the tool used?",
@@ -59,7 +60,7 @@ class Protocol(models.Model):
         null=True,
         blank=True,
         db_comment="Level of development - What is the curent development status",
-    ) 
+    )
     furtherInformation = models.CharField(
         max_length=1200,
         null=True,
@@ -70,7 +71,7 @@ class Protocol(models.Model):
         blank=True,
         null=True,
         db_comment="Released - Is the publication done?",
-    )    
+    )
     provider = models.CharField(
         max_length=300,
         null=True,
@@ -82,7 +83,7 @@ class Protocol(models.Model):
         null=True,
         blank=True,
         db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
-    ) 
+    )
     license = models.ManyToManyField(
         License,
         db_comment="under which license was the protocol published and are there any costs associated with using the protocol?",
@@ -90,13 +91,13 @@ class Protocol(models.Model):
     accessibility = models.ManyToManyField(
         Accessibility,
         db_comment="Accessibility - How accessible is the dataset?",
-    ) 
+    )
     programmingLanguages = models.CharField(
         max_length=500,
         blank=True,
         null=True,
         db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-    ) 
+    )
     description = models.CharField(
         max_length=300,
         null=True,
@@ -113,7 +114,7 @@ class Protocol(models.Model):
         Norm,
         blank=True,
         null=True,
-        db_comment="Norms - Which norms serve as the basis or orientation for the item?"
+        db_comment="Norms - Which norms serve as the basis or orientation for the item?",
     )
     yearOfRelease = models.CharField(
         blank=True,
@@ -121,30 +122,30 @@ class Protocol(models.Model):
         help_text="year of software release (planned or conducted)",
         db_comment="Year of publication - If the item is published, in which year was it released?",
         null=True,
-    ) 
+    )
     usage = models.ManyToManyField(
         Usage,
-        db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)"
+        db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",
     )
-    tools = models.ManyToManyField(Tools, db_comment="Relation to tools") 
+    tools = models.ManyToManyField(Tools, db_comment="Relation to tools")
     communicationMediumCategory = models.CharField(
         max_length=150,
         help_text="Übertragungsmethoden (verkabelt, drahtlos oder verkabelt und drahtlos)",
         blank=True,
-        db_comment="Transmission category - How is data transfered between the various components and devices within the system (wired, wireless or wired & wireless)"
+        db_comment="Transmission category - How is data transfered between the various components and devices within the system (wired, wireless or wired & wireless)",
     )
     supportedTransmissionMediuems = models.CharField(
         max_length=150,
         help_text="Unterstützte Übertragungsmedien",
         blank=True,
-        db_comment="Supported transmission media - how are signals transmitted?"
+        db_comment="Supported transmission media - how are signals transmitted?",
     )
     associatedStandards = models.CharField(
         max_length=200,
         help_text="Zugehörige Standards (Spezifische Standards, denen jedes Protokoll entspricht)",
         blank=True,
     )
-    
+
     networkTopology = models.CharField(
         max_length=150,
         help_text="Netzwerktopologie (Physische und logische Anordnung von Geräten in einem Netzwerk)",
@@ -155,13 +156,13 @@ class Protocol(models.Model):
         max_length=150,
         help_text="Implementierte Sicherheitmechanismen",
         blank=True,
-        db_comment="Implemented security mechanisms - whether and what mechanisms are implemented in the protocol to ensure data security?"
+        db_comment="Implemented security mechanisms - whether and what mechanisms are implemented in the protocol to ensure data security?",
     )
     bandwidth = models.CharField(
         max_length=150,
         help_text="Bandbreite",
         blank=True,
-        db_comment="Bandwidth - The capacity of the communication channel to transmit data between the various components of the system."
+        db_comment="Bandwidth - The capacity of the communication channel to transmit data between the various components of the system.",
     )
     frequency = models.CharField(
         max_length=100, help_text="Frequenz", blank=True
@@ -221,7 +222,7 @@ class Protocol(models.Model):
         max_length=150,
         help_text="Ebenen der Gebäudeautomation (Feldebene, Automationsebene, Managementebene)",
         blank=True,
-        db_comment="Levels of building automation - the hierachical structure of building automation system."
+        db_comment="Levels of building automation - the hierachical structure of building automation system.",
     )
     exampleProject = models.CharField(
         max_length=250,
@@ -232,4 +233,3 @@ class Protocol(models.Model):
 
     def __str__(self):
         return self.name
-

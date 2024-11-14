@@ -3,12 +3,13 @@ from django.db import models
 
 from protocols.models import Protocol
 
+
 class DataExport:
     """ """
 
     SEPARATOR_M2M = ";;"
     MAPPING_ORM_TO_XLSX = {
-        "name": "name",    
+        "name": "name",
     }
 
     DATA_APP_DIR = "18_protocols"
