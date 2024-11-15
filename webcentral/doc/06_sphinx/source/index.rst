@@ -53,7 +53,7 @@ Developer guide
    dev/use_cases
    dev/save_page_views
    dev/data_import
-
+   dev/data_export
 
 HowTo Guides
 ============
