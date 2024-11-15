@@ -15,4 +15,4 @@ class ProtocolAdmin(TranslationAdmin):
     pass
 
 
-admin.site.register(Protocol, ProtocolAdmin)
+# admin.site.register(Protocol, ProtocolAdmin)

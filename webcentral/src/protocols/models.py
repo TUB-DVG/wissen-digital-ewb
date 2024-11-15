@@ -1,18 +1,17 @@
 from django.db import models
 from django.db.models.functions import Now
 
-from tools_over.models import (
-    Tools,
+from common.models import (
+    Accessibility, 
+    ApplicationArea,
     Classification,
     Focus,
-    ApplicationArea,
-    LifeCyclePhase,
-    Scale,
-    TargetGroup,
-    Accessibility,
     Usage,
+    Scale,
+    LifeCyclePhase,
+    TargetGroup,
+    License, 
 )
-from common.models import License
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
 
@@ -129,7 +128,7 @@ class Protocol(models.Model):
         Usage,
         db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",
     )
-    associatedTools = models.ManyToManyField(Tools, db_comment="Relation to tools")
+    # associatedTools = models.ManyToManyField(Tools, db_comment="Relation to tools")
     communicationMediumCategory = models.CharField(
         max_length=150,
         help_text="Übertragungsmethoden (verkabelt, drahtlos oder verkabelt und drahtlos)",

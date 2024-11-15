@@ -268,6 +268,8 @@ class DataImport:
                         license=objString[0],
                         openSourceStatus=objString[1],
                         licensingFeeRequirement=objString[2],     
+                        openSourceStatus_en=objString[3],
+                        licensingFeeRequirement_en=objString[4], 
                     )[0]
                 )
             return listOfM2Mobjs     

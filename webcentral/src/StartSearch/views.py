@@ -22,15 +22,17 @@ from django.utils.translation import gettext as _
 
 # from django.db.models.functions import StringAgg
 
+from common.models import Classification
 from tools_over.models import (
     Tools,
-    Classification,
+    # Classification,
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import (
     Norm,
-    Protocol,
+    # Protocol,
 )
+from protocols.models import Protocol
 from user_integration.models import UserEngagement
 from businessModel.models import BusinessModel
 from positive_environmental_impact.models import EnvironmentalImpact

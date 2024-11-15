@@ -9,8 +9,9 @@ from common.views import createQ
 from .models import (
     TechnicalStandard,
     Norm,
-    Protocol,
+    # Protocol,
 )
+from protocols.models import Protocol
 
 
 class UpdateProperties:

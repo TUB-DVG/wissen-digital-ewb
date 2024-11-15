@@ -3,7 +3,7 @@ from itertools import zip_longest
 from django.db import models
 
 from common.data_import import DataImport
-from tools_over.models import (
+from common.models import (
     ApplicationArea,
     Classification,
     Focus,
@@ -106,8 +106,8 @@ class DataImportApp(DataImport):
         "exampleProject": "exampleProject", 
         "communicationMediumCategory__en": "communicationMediumCategory_en", 
         "supportedTransmissionMediuems__en": "supportedTransmissionMediuems_en",
-        "openSourceStatus__en": "openSourceStatus_en",
-        "licensingFeeRequirement__en": "licensingFeeRequirement_en",
+        # "openSourceStatus__en": "openSourceStatus_en",
+        # "licensingFeeRequirement__en": "licensingFeeRequirement_en",
         "networkTopology__en": "networkTopology_en",
         "security__en": "security_en",
         "bandwidth__en": "bandwidth_en",
@@ -171,11 +171,26 @@ class DataImportApp(DataImport):
                         row[header.index("openSourceStatus")],
                         separator=";;",
                     ) 
+                    m2mListOpenSourceStatusEn = self._processListInput(
+                        row[header.index("openSourceStatus__en")],
+                        separator=";;",
+                    ) 
                     m2mListFeeRequired = self._processListInput(
                         row[header.index("licensingFeeRequirement")],
                         separator=";;",
                     )
-                    m2mList = list(zip_longest(m2mListLicense, m2mListOpenSourceStatus, m2mListFeeRequired, fillvalue=None))
+                    m2mListFeeRequiredEn = self._processListInput(
+                        row[header.index("licensingFeeRequirement__en")],
+                        separator=";;",
+                    )  
+                    m2mList = list(zip_longest(
+                        m2mListLicense,
+                        m2mListOpenSourceStatus,
+                        m2mListFeeRequired,
+                        m2mListOpenSourceStatusEn,
+                        m2mListFeeRequiredEn,
+                        fillvalue=None
+                    ))
 
                 else:
                     m2mList = self._processListInput(
