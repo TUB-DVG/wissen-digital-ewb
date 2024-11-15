@@ -260,6 +260,17 @@ class DataImport:
         """
         if djangoModel._meta.model_name == "subproject":
             attrWithDe = "referenceNumber_id"
+        elif djangoModel._meta.model_name == "license":
+            listOfM2Mobjs = []
+            for objString in listOfStrings:
+                listOfM2Mobjs.append(
+                    djangoModel.objects.get_or_create(
+                        license=objString[0],
+                        openSourceStatus=objString[1],
+                        licensingFeeRequirement=objString[2],     
+                    )[0]
+                )
+            return listOfM2Mobjs     
         else:
             attrNamesOfModel = [
                 attr.name for attr in djangoModel._meta.get_fields()

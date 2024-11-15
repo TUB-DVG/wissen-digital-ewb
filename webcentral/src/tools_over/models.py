@@ -377,6 +377,7 @@ class Tools(models.Model):
     programmingLanguages = models.CharField(
         max_length=500,
         blank=True,
+       db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
     )
     frameworksLibraries = models.CharField(
         max_length=500,

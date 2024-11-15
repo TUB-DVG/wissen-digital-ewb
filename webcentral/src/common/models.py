@@ -38,14 +38,16 @@ class Literature(models.Model):
 class License(models.Model):
     """ORM-class containing license information of tools, datasets, norms and protocols"""
 
-    license = models.CharField(max_length=300)
+    license = models.CharField(max_length=300, null=True, blank=True)
     openSourceStatus = models.CharField(
         max_length=50,
         help_text="Open-Source-Status (Ob Spezifikationen öffentlich und frei verfügbar sind oder nicht)",
         blank=True,
+        null=True,
     )
     licensingFeeRequirement = models.CharField(
         max_length=150,
         help_text="Lizenzgebühr (Gebühr zur Abdeckung der Kosten für Tests und Zertifizierung)",
         blank=True,
+        null=True,
     )

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.functions import Now
 
 from tools_over.models import (
     Tools,
@@ -9,6 +10,7 @@ from tools_over.models import (
     Scale,
     TargetGroup,
     Accessibility,
+    Usage,
 )
 from common.models import License
 from project_listing.models import Subproject
@@ -127,7 +129,7 @@ class Protocol(models.Model):
         Usage,
         db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",
     )
-    tools = models.ManyToManyField(Tools, db_comment="Relation to tools")
+    associatedTools = models.ManyToManyField(Tools, db_comment="Relation to tools")
     communicationMediumCategory = models.CharField(
         max_length=150,
         help_text="Übertragungsmethoden (verkabelt, drahtlos oder verkabelt und drahtlos)",
@@ -178,6 +180,7 @@ class Protocol(models.Model):
         help_text="Geräte (maximale Anzahl an Geräten, die vernetzt werden können)",
         blank=True,
         db_comment="Maximum devices - maximum number of simultaneous connected devices.",
+        null=True,
     )
     dataModelArchitecture = models.CharField(
         max_length=150,
@@ -200,6 +203,7 @@ class Protocol(models.Model):
         max_length=10,
         help_text="Paketgröße (Datenpaketgröße, die nach Maximum Transmission Unit übertragen werden können)",
         blank=True,
+        null=True,
     )
     priorities = models.CharField(
         max_length=300,
@@ -211,6 +215,7 @@ class Protocol(models.Model):
         max_length=150,
         help_text="Kosten, um Hardwareuntersützung für weitere Protokolle zu ermöglichen (Gering, Durchschnittlich, Hoch)",
         blank=True,
+        null=True,
     )
     osiLayers = models.CharField(
         max_length=150,
@@ -228,8 +233,23 @@ class Protocol(models.Model):
         max_length=250,
         help_text="Typische Anwendung (Beispielhafte Anwendung)",
         blank=True,
+        null=True,
     )
     image = models.ImageField(null=True, blank=True)
+    programmingLanguages = models.CharField(
+        max_length=500,
+        blank=True,
+        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+        null=True, 
+    ) 
 
     def __str__(self):
         return self.name
+
+class History(models.Model):
+    """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""
+
+    identifer = models.CharField(max_length=300)
+    stringifiedObj = models.TextField()
+    loaded = models.BooleanField(default=False)
+    updateDate = models.DateTimeField(db_default=Now())
