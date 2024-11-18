@@ -23,12 +23,10 @@ class Protocol(models.Model):
     focus = models.ManyToManyField(
         Focus,
         max_length=200,
-        null=True,
         db_comment="Focus identifier - Selected focus (Definied by Wissensplattform)",
     )
     classification = models.ManyToManyField(
         Classification,
-        null=True,
         db_comment="General type of protocol - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
     )
     lifeCyclePhase = models.ManyToManyField(
@@ -108,13 +106,11 @@ class Protocol(models.Model):
     specificApplication = models.ManyToManyField(
         Subproject,
         blank=True,
-        null=True,
         db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
     )
     technicalStandardsNorms = models.ManyToManyField(
         Norm,
         blank=True,
-        null=True,
         db_comment="Norms - Which norms serve as the basis or orientation for the item?",
     )
     yearOfRelease = models.CharField(

@@ -42,7 +42,6 @@ def protocol(request):
         },
     ]
     complexCriterion = createQ(listOfFilters)
-    breakpoint()
     # communicationMediumCategory	openSourceStatus
     # if ((request.GET.get("name") != None)| (request.GET.get("transmission") != None) |(request.GET.get("oss") != None) |(request.GET.get("searched") != None)):
     #     name=request.GET.get('name', "")

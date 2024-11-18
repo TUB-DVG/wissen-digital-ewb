@@ -23,8 +23,8 @@ from .models import (
 )
 from TechnicalStandards.models import (
     Norm,
-    Protocol,
 )
+from protocols.models import Protocol
 from project_listing.models import Subproject
 
 
