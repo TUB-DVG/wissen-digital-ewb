@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.functions import Now
 
-from tools_over.models import (
+from common.models import (
     ApplicationArea,
     Focus,
     LifeCyclePhase,
@@ -19,19 +19,15 @@ class Dataset(models.Model):
     name = models.CharField(max_length=200, db_comment="Name of the dataset")
     applicationArea = models.ManyToManyField(
         ApplicationArea,
-        max_length=200,
-        null=True,
         db_comment="Typical application area in which the dataset is used.",
     )
     focus = models.ManyToManyField(
         Focus,
         max_length=200,
-        null=True,
         db_comment="Focus identifier - Selected focus (Definied by Wissensplattform)",
     )
     classification = models.ManyToManyField(
         Classification,
-        null=True,
         db_comment="General type of dataset - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
     )
     lifeCyclePhase = models.ManyToManyField(
@@ -161,7 +157,6 @@ class Dataset(models.Model):
     specificApplication = models.ManyToManyField(
         Subproject,
         blank=True,
-        null=True,
         db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
     )
 

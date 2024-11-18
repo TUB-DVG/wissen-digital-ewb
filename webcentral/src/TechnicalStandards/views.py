@@ -7,9 +7,7 @@ from django.utils.translation import gettext as _
 
 from common.views import createQ
 from .models import (
-    TechnicalStandard,
     Norm,
-    # Protocol,
 )
 from protocols.models import Protocol
 

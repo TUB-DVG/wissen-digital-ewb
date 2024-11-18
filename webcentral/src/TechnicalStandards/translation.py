@@ -4,9 +4,7 @@ from modeltranslation.translator import (
 )
 
 from .models import (
-    TechnicalStandard,
     Norm,
-    # Protocol,
 )
 
 
@@ -14,7 +12,7 @@ class NormTranslationOptions(TranslationOptions):
     fields = (
         "title",
         "name",
-        "shortDescription",
+        # "shortDescription",
         "source",
     )
 

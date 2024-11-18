@@ -85,6 +85,8 @@ def protocol(request):
             """Auf dieser Seite befinden sich unterschiedliche technische Protokolle, die im Sommer 2023 erfasst worden sind."""
         ),
         "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html",
+        "listingSubHeadingOneKey": _("Reichweite"),
+        "listingSubHeadingOneValue": "range", 
         "optionList": [
             {
                 "placeholder": "Name",
