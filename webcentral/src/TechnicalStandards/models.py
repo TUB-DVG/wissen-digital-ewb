@@ -147,6 +147,7 @@ class Norm(models.Model):
     def __str__(self):
         return self.name
 
+
 class History(models.Model):
     """model class to store updates of the Tools model"""
 
