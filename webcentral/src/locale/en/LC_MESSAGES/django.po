@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-25 19:36+0000\n"
+"POT-Creation-Date: 2024-11-18 14:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Gas Infrastructure"
 #: Datasets/views.py:97 Datasets/views.py:124
 #: templates/LastProfile/explanation.html:111
 #: templates/LastProfile/explanation.html:179
-#: templates/partials/_navbar.html:112
+#: templates/partials/_navbar.html:58
 #: templates/start_search/start_search.html:171
 msgid "Wetterdaten"
 msgstr "Weather data"
@@ -470,21 +470,21 @@ msgstr "not yet filed"
 msgid "Protokoll"
 msgstr "Protocol"
 
-#: StartSearch/views.py:416 pages/views.py:512
-#: templates/partials/_navbar.html:263
+#: StartSearch/views.py:416 pages/views.py:517
+#: templates/partials/_navbar.html:205
 #: templates/start_search/start_search.html:346
 msgid "Kriterienkatalog"
 msgstr "Catalog of criteria"
 
 #: StartSearch/views.py:433 templates/pages/userEngagement.html:4
-#: templates/partials/_navbar.html:176
+#: templates/partials/_navbar.html:122
 #: templates/start_search/start_search.html:252 user_integration/views.py:14
 #: user_integration/views.py:36
 msgid "Nutzendenintegration"
 msgstr "User integration"
 
 #: StartSearch/views.py:443 businessModel/views.py:14 businessModel/views.py:40
-#: pages/views.py:47 templates/partials/_navbar.html:160
+#: pages/views.py:52 templates/partials/_navbar.html:106
 #: templates/start_search/start_search.html:242
 msgid "Geschäftsmodelle"
 msgstr "Business models"
@@ -494,17 +494,17 @@ msgstr "Business models"
 msgid "2024-07-01"
 msgstr ""
 
-#: StartSearch/views.py:450 pages/views.py:304 pages/views.py:332
+#: StartSearch/views.py:450 pages/views.py:309 pages/views.py:337
 #: templates/pages/environmentalIntegrityPositiv.html:4
-#: templates/partials/_navbar.html:220
+#: templates/partials/_navbar.html:164
 #: templates/start_search/start_search.html:302
 msgid "Positive Umweltwirkungen"
 msgstr "Positive environmental impacts"
 
 #: StartSearch/views.py:461 component_list/views.py:323
-#: component_list/views.py:370 pages/views.py:261
+#: component_list/views.py:370 pages/views.py:266
 #: templates/pages/environmentalIntegrityNegativ.html:4
-#: templates/partials/_navbar.html:214
+#: templates/partials/_navbar.html:158
 #: templates/start_search/start_search.html:292
 msgid "Negative Umweltwirkungen"
 msgstr "Negative environmental impacts"
@@ -672,7 +672,7 @@ msgstr "Further information"
 msgid "Quellen"
 msgstr "Sources"
 
-#: common/views.py:148 component_list/views.py:154 pages/views.py:271
+#: common/views.py:148 component_list/views.py:154 pages/views.py:276
 #: templates/component_list/components.html:4
 msgid "Aufwände für verwendete Komponenten"
 msgstr "Effort for used components"
@@ -907,11 +907,11 @@ msgstr ""
 msgid "Zu den Aufwänden für Datenverarbeitungsprozesse"
 msgstr "Expenditure for data processing procedures"
 
-#: component_list/views.py:333 pages/views.py:289
+#: component_list/views.py:333 pages/views.py:294
 msgid "Die Daten-Wertschöpfungkette"
 msgstr "The data value chain"
 
-#: component_list/views.py:365 component_list/views.py:402 pages/views.py:284
+#: component_list/views.py:365 component_list/views.py:402 pages/views.py:289
 #: templates/partials/dataProcessingLeftColumn.html:3
 msgid "Aufwände für Datenverarbeitungsprozesse"
 msgstr "Expenses for data processing processes"
@@ -926,7 +926,7 @@ msgstr "To Effort for used components"
 msgid "Zurück"
 msgstr "Back"
 
-#: pages/views.py:50
+#: pages/views.py:55
 msgid ""
 "Der Fokus in einem Forschungsprojekt liegt häufig in einem innovativen "
 "Produkt, einer digitalen Anwendung oder auch einer neuen Software. Bei der "
@@ -951,11 +951,11 @@ msgstr ""
 "workshops. In addition, a collection of tools has been created to support "
 "the development from prototype to business model."
 
-#: pages/views.py:61
+#: pages/views.py:66
 msgid "Herausforderungen bei der Entwicklung und Umsetzung"
 msgstr "Challenges in development and implementation"
 
-#: pages/views.py:64
+#: pages/views.py:69
 msgid ""
 "Bei der Umsetzung von Prototypen digitaler Anwendungen in ein "
 "funktionierendes Geschäftsmodell gibt es zahlreiche Herausforderungen. Diese "
@@ -972,11 +972,11 @@ msgstr ""
 "social factors such as difficult financing models. An overview of obstacles "
 "and possible solutions provides assistance in this regard."
 
-#: pages/views.py:76
+#: pages/views.py:81
 msgid "Anwendungen zur Entwicklung von Geschäftsmodellen"
 msgstr "Applications for the development of business models"
 
-#: pages/views.py:79
+#: pages/views.py:84
 msgid ""
 "Die Entwicklung erfolgreicher Geschäftsmodelle erfordert die "
 "Berücksichtigung einer Vielzahl von Akteuren und Rahmenbedingungen. Dabei "
@@ -993,7 +993,7 @@ msgstr ""
 "tools for the development or improvement of business models provides "
 "assistance in this regard."
 
-#: pages/views.py:101
+#: pages/views.py:106
 msgid ""
 "<p>Die Nutzendenintegration beschreibt die direkte oder indirekte "
 "Integration von Nutzenden und ihren Perspektiven in die Entwicklung "
@@ -1012,7 +1012,7 @@ msgstr ""
 "usability experts are involved who have in-depth knowledge of the users of "
 "digital applications.</p>"
 
-#: pages/views.py:104
+#: pages/views.py:109
 msgid ""
 "<p>Nutzendenintegration <b>erhöht die Gebrauchstauglichkeit bzw. "
 "Nutzendenfreundlichkeit – oder kurz: die Usability – digitaler Anwendungen</"
@@ -1028,7 +1028,7 @@ msgstr ""
 "this, the digital applications can be (further) developed in a target-group-"
 "oriented manner.</p>"
 
-#: pages/views.py:107
+#: pages/views.py:112
 msgid ""
 "<p>Maßnahmen wie die Nutzendenintegration, die für eine gute Usability vor "
 "der Markteinführung einer digitalen Anwendung sorgen, erhöhen die "
@@ -1040,7 +1040,7 @@ msgstr ""
 "the effort required for maintenance or upkeep of the application, and "
 "thereby save costs to a significant extent.</p>"
 
-#: pages/views.py:110
+#: pages/views.py:115
 msgid ""
 "<p>Die Methoden der Nutzendenintegration können nach <b>Methoden der "
 "Analysephase, Methoden der Konzeptionsphase sowie Methoden der Umsetzung- "
@@ -1071,7 +1071,7 @@ msgstr ""
 "and usage habits of users. Here, quantitative methods excel, as they allow "
 "for representative statements to be made.</p>"
 
-#: pages/views.py:113
+#: pages/views.py:118
 msgid ""
 "<p>Auf dieser Wissensplattform werden <b>12 bewährte Methoden der "
 "Nutzendenintegration</b> mit ihren jeweiligen Zielstellungen, Abläufen sowie "
@@ -1089,7 +1089,7 @@ msgstr ""
 "they are not only applicable in these phases but can often be effectively "
 "used in other phases as well.</p>"
 
-#: pages/views.py:116
+#: pages/views.py:121
 msgid ""
 "<h6 style=\"font-size: 22px\">Methoden der Nutzendenintegration für die "
 "Analysephase vor Beginn der Anwendungsentwicklung</h6>"
@@ -1097,23 +1097,23 @@ msgstr ""
 "<h6 style=\"font-size: 22px\">Methods of User Integration for the Analysis "
 "Phase Before the Start of Application Development</h6>"
 
-#: pages/views.py:118
+#: pages/views.py:123
 msgid "Teilnehmende Beobachtung"
 msgstr "Participant observation"
 
-#: pages/views.py:119
+#: pages/views.py:124
 msgid "Einzel-Interview"
 msgstr "Individual interview"
 
-#: pages/views.py:141
+#: pages/views.py:146
 msgid "Gruppen-Interview/Fokusgruppe"
 msgstr "Group interview/focus group"
 
-#: pages/views.py:146
+#: pages/views.py:151
 msgid "Personas"
 msgstr "Personas"
 
-#: pages/views.py:153
+#: pages/views.py:158
 msgid ""
 "Methoden der Nutzendenintegration für die Konzeptionsphase zu Beginn der "
 "Anwendungsentwicklung"
@@ -1121,19 +1121,19 @@ msgstr ""
 "Methods of User Integration for the Conceptualization Phase at the Start of "
 "Application Development"
 
-#: pages/views.py:160
+#: pages/views.py:165
 msgid "A/B-Test"
 msgstr "A/B testing"
 
-#: pages/views.py:165
+#: pages/views.py:170
 msgid "Prototyping"
 msgstr "Prototyping"
 
-#: pages/views.py:175
+#: pages/views.py:180
 msgid "Styleguide"
 msgstr "Style Guide"
 
-#: pages/views.py:182
+#: pages/views.py:187
 msgid ""
 "Methoden der Nutzendenintegration für die Umsetzungs- und Evaluationsphase "
 "während bzw. nach der Anwendungsentwicklung"
@@ -1141,31 +1141,31 @@ msgstr ""
 "Methods of User Integration for the Implementation and Evaluation Phase "
 "During and After Application Development"
 
-#: pages/views.py:189
+#: pages/views.py:194
 msgid "Lautes Denken"
 msgstr "Thinking aloud"
 
-#: pages/views.py:194
+#: pages/views.py:199
 msgid "Eyetracking"
 msgstr "Eye tracking"
 
-#: pages/views.py:199
+#: pages/views.py:204
 msgid "Heuristische Evaluation"
 msgstr "Heuristic evaluation"
 
-#: pages/views.py:204
+#: pages/views.py:209
 msgid "Usability-Befragung"
 msgstr "Usability survey"
 
-#: pages/views.py:216
+#: pages/views.py:221
 msgid "Methoden der Nutzendenintegration"
 msgstr "Methods for user integration"
 
-#: pages/views.py:225
+#: pages/views.py:230
 msgid "Methoden zur Nutzendenintegration"
 msgstr "Methods for user integration"
 
-#: pages/views.py:227
+#: pages/views.py:232
 msgid ""
 "Entscheidender Erfolgsfaktor für Nutzen und Nutzung digitaler Produkte ist "
 "deren Usability. Um diese sicherzustellen beziehungsweise zu erhöhen, ist "
@@ -1183,11 +1183,11 @@ msgstr ""
 "individual interviews, group interviews / focus groups, participant "
 "observations, and personas."
 
-#: pages/views.py:247
+#: pages/views.py:252
 msgid "Digitale Anwendungen zeichnen sich oftmals durch"
 msgstr "Digital applications often have "
 
-#: pages/views.py:256
+#: pages/views.py:261
 msgid ""
 " aus. Sie können sich jedoch auch negativ auf die Umwelt auswirken bzw. sie "
 "belasten. Ausgehend vom Lebenszyklus der verwendeten Produkte und Services "
@@ -1222,7 +1222,7 @@ msgstr ""
 "therefore divided into the areas of \"efforts for data processing\" and "
 "\"efforts for frequently used components.\""
 
-#: pages/views.py:273
+#: pages/views.py:278
 msgid ""
 "Die Implementierung einer digitalen Anwendung in bspw. Gebäuden ist in der "
 "Regel mit einem Energie- und Ressourcenaufwand für die Hardwarekomponenten "
@@ -1246,11 +1246,11 @@ msgstr ""
 "focus on building operations optimization) is intended to provide a simple "
 "overview of hardware-related environmental impacts."
 
-#: pages/views.py:277
+#: pages/views.py:282
 msgid "Backbone der Daten-Wertschöpfungskette (Fokus Betriebsoptimierung)"
 msgstr "Backbone of the data value chain (focus on operational optimization)"
 
-#: pages/views.py:286
+#: pages/views.py:291
 msgid ""
 "Bei der Nutzung digitaler Technologien für den Einsatz in Gebäuden und "
 "Quartieren werden unterschiedliche Datenverarbeitungsprozesse durchlaufen, "
@@ -1268,7 +1268,7 @@ msgstr ""
 "use of the corresponding data infrastructure are explained in more detail "
 "here. Simple estimates based on data volume are also made."
 
-#: pages/views.py:307
+#: pages/views.py:312
 msgid ""
 "Die Reduktion des Energiebedarfs und der CO<sub>2</sub>-Emissionen von "
 "Gebäuden und Quartieren steht im derzeitigen Fokus der Forschung. "
@@ -1305,11 +1305,11 @@ msgstr ""
 "digital applications in order to be able to make well-founded decisions for "
 "their own projects."
 
-#: pages/views.py:351 pages/views.py:380 templates/partials/_navbar.html:226
+#: pages/views.py:356 pages/views.py:385 templates/partials/_navbar.html:170
 msgid "Datensuffizienz"
 msgstr "Data sufficiency"
 
-#: pages/views.py:353
+#: pages/views.py:358
 msgid ""
 "Sowohl die Materialisierung als auch der Energieaufwand für den Betrieb "
 "immer größer werdender Rechenkapazitäten sind mit negativen Umweltwirkungen "
@@ -1330,7 +1330,7 @@ msgstr ""
 "impacts of (in-)sufficient data handling are still under-researched and "
 "often remain overlooked in practice."
 
-#: pages/views.py:392
+#: pages/views.py:397
 msgid ""
 "Beim Einsatz digitaler Anwendungen im Gebäude- und Quartierssektor\n"
 "          lassen verschiedene Datenquellen zum Raumklima, Energieverbrauch "
@@ -1410,20 +1410,20 @@ msgstr ""
 "how they must be controlled through the correct use of technical and "
 "organizational protective measures."
 
-#: pages/views.py:427
+#: pages/views.py:432
 msgid "Effiziente Datenminimierung im Gebäude- und Quartierssektor"
 msgstr "Efficient data minimization in the building and district sector"
 
-#: pages/views.py:435
+#: pages/views.py:440
 msgid "Sammlung von Leitfäden, Literatur und Gerichtsentscheidungen"
 msgstr "Collection of guidelines, literature and court decisions"
 
-#: pages/views.py:442 pages/views.py:443
+#: pages/views.py:447 pages/views.py:448
 #: templates/partials/privacy_overview_left_column.html:4
 msgid "Datenschutzübersicht"
 msgstr "Privacy overview"
 
-#: pages/views.py:457
+#: pages/views.py:462
 msgid ""
 "Icons können auch im Gebäude- und Quartiersbereich die grafische\n"
 "          Aufbereitung komplexer Sachverhalte unterstützen und dabei sowohl "
@@ -1478,7 +1478,7 @@ msgstr ""
 "and from the visualization of an entire project to a concrete application, "
 "for example on a user interface can be used."
 
-#: pages/views.py:495 pages/views.py:496 templates/partials/_navbar.html:274
+#: pages/views.py:500 pages/views.py:501 templates/partials/_navbar.html:216
 #: templates/partials/icons_left_column.html:3
 #: templates/start_search/start_search.html:367
 msgid "Icons und Visualisierung"
@@ -1509,8 +1509,7 @@ msgstr ""
 msgid "Überblick über den Lastprofilgenerator"
 msgstr "Overview of the load profile generator"
 
-#: templates/LastProfile/explanation.html:23
-#: templates/partials/_navbar.html:117
+#: templates/LastProfile/explanation.html:23 templates/partials/_navbar.html:63
 #: templates/start_search/start_search.html:195
 msgid "Lastprofile"
 msgstr "Load profiles"
@@ -1689,7 +1688,7 @@ msgid "Standard-Lastprofile beim BDEW"
 msgstr "Standard load profiles at BDEW"
 
 #: templates/TechnicalStandards/explanation.html:16
-#: templates/partials/_navbar.html:107
+#: templates/partials/_navbar.html:53
 #: templates/start_search/start_search.html:159
 msgid "Technische Standards"
 msgstr "Technical standards"
@@ -2253,6 +2252,7 @@ msgid "Überblick über technische Standards - Protokolle"
 msgstr "Overview of technical standards - Protocols"
 
 #: templates/admin/publications/import_bibtex.html:14
+#: templates/admin/tools_over/history/change_form.html:30
 msgid "Home"
 msgstr ""
 
@@ -2283,9 +2283,20 @@ msgid "Import"
 msgstr ""
 
 #: templates/admin/publications/publication_change_list.html:15
+#: templates/admin/tools_over/history/change_form.html:40
 #, python-format
 msgid "Add %(name)s"
 msgstr ""
+
+#: templates/admin/tools_over/history/change_form.html:6
+msgid "Error:"
+msgstr ""
+
+#: templates/admin/tools_over/history/change_form.html:81
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/component_list/componentComparisonResults.html:4
 msgid "Komponentenliste Vergleich Ergebnisse"
@@ -2390,12 +2401,13 @@ msgid ""
 "DSGVO ersetzt die Begriffe Datensparsamkeit und -vermeidung, die im "
 "Bundesdatenschutzgesetz (§3a BDSG) verwendet wurden."
 msgstr ""
-"This distinguishes data sufficiency from the legal concept of data minimization. "
-"The latter is a data protection principle defined in Article 5, Section 1(c) of "
-"the General Data Protection Regulation (GDPR) for personal data and aims to "
-"reduce the risk to the rights and freedoms of natural persons. The term data "
-"minimization from the GDPR replaces the terms data economy and data avoidance "
-"previously used in the Federal Data Protection Act (§3a BDSG)."
+"This distinguishes data sufficiency from the legal concept of data "
+"minimization. The latter is a data protection principle defined in Article "
+"5, Section 1(c) of the General Data Protection Regulation (GDPR) for "
+"personal data and aims to reduce the risk to the rights and freedoms of "
+"natural persons. The term data minimization from the GDPR replaces the terms "
+"data economy and data avoidance previously used in the Federal Data "
+"Protection Act (§3a BDSG)."
 
 #: templates/data_sufficiency/explanation.html:9
 msgid ""
@@ -2406,10 +2418,11 @@ msgid ""
 "eine Abgrenzung zu dem juristischen Begriff zu verdeutlichen, werden "
 "unterschiedliche Begriffe verwendet."
 msgstr ""
-"While data minimization prevents risks to fundamental rights caused by extensive, "
-"unnecessary data processing, data sufficiency aims to minimize the ecological "
-"impacts of collecting, processing, and storing extensive, unnecessary data. "
-"To clarify the distinction from the legal term, different terminology is used."
+"While data minimization prevents risks to fundamental rights caused by "
+"extensive, unnecessary data processing, data sufficiency aims to minimize "
+"the ecological impacts of collecting, processing, and storing extensive, "
+"unnecessary data. To clarify the distinction from the legal term, different "
+"terminology is used."
 
 #: templates/data_sufficiency/explanation.html:12
 msgid ""
@@ -2429,17 +2442,17 @@ msgstr ""
 "that they will meet the expectations of the research. This principle of "
 "scientific work is not to be questioned by this approach; however, data "
 "sufficiency should be considered during development with a view to the later "
-"usage phase. When digital solutions developed in research projects are brought "
-"to market, the dissemination of data-efficient technologies can create ecological "
-"benefits through economies of scale."
+"usage phase. When digital solutions developed in research projects are "
+"brought to market, the dissemination of data-efficient technologies can "
+"create ecological benefits through economies of scale."
 
 #: templates/data_sufficiency/explanation.html:15
 msgid ""
 "Im Folgenden werden Strategien für einen suffizienten Umgang mit vorgestellt "
 "und auf die ökologischen Wirkungen beim Umgang mit Daten hingewiesen."
 msgstr ""
-"The following presents strategies for sufficient data handling and highlights "
-"the ecological impacts of data management."
+"The following presents strategies for sufficient data handling and "
+"highlights the ecological impacts of data management."
 
 #: templates/datasets_over/dataset-detail.html:66
 #: templates/tools_over/tool-detail.html:64
@@ -3161,6 +3174,50 @@ msgstr ""
 "encourage consideration of business model development as early as possible "
 "in order to support the efficient development of digital applications."
 
+#: templates/pages/copyright.html:31
+msgid ""
+"\n"
+"              Der Herausgeber ist bestrebt, in allen Publikationen die "
+"Urheberrechte der verwendeten Bilder, Grafiken, Ton- und Videodokumente "
+"sowie Texte zu beachten, von ihm selbst erstellte Bilder, Grafiken, Ton- und "
+"Videodokumente sowie Texte zu nutzen oder auf lizenzfreie Grafiken, Ton- und "
+"Videodokumente sowie Texte zurückzugreifen.\n"
+"            "
+msgstr ""
+"\n"
+"The publisher endeavors to observe the copyrights of the images, graphics, sound and video documents, and texts used in all publications; to use images, graphics, sound and video documents, and texts created by the publisher; or to use license-free graphics, sound and video documents, and texts."
+
+#: templates/pages/copyright.html:36
+msgid ""
+"\n"
+"              Alle innerhalb des Internetangebotes genannten und ggf. durch "
+"Dritte geschützten Marken- und Warenzeichen unterliegen uneingeschränkt den "
+"Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten "
+"der jeweiligen eingetragenen Eigentümer. Allein aufgrund der bloßen Nennung "
+"ist nicht der Schluss zu ziehen, dass Markenzeichen nicht durch Rechte "
+"Dritter geschützt sind!\n"
+"            "
+msgstr ""
+"\n"
+"All brands and trademarks mentioned within the website and possibly protected by third parties are subject without restriction to the provisions of the applicable trademark law and the ownership rights of the respective registered owners. The fact alone that a trademark appears within a text does not imply that it is not protected by the rights of third parties!"
+
+#: templates/pages/copyright.html:41
+msgid ""
+"\n"
+"              Das Copyright für veröffentlichte, vom Herausgeber selbst "
+"erstellte Inhalte und Objekte bleibt allein beim Herausgeber der Seiten. "
+"Eine Vervielfältigung, Verarbeitung, Einspeicherung oder Verwendung solcher "
+"Grafiken, Ton- und Videodokumente sowie Texte in anderen elektronischen oder "
+"gedruckten Publikationen ist ohne ausdrückliche Zustimmung des Autors nicht "
+"gestattet. Unberührt davon bleibt das Kopieren und Herunterladen für den "
+"privaten, wissenschaftlichen und nicht kommerziellen Gebrauch. Wir erlauben "
+"ausdrücklich und begrüßen das Zitieren unserer Dokumente und Webseiten sowie "
+"das Setzen von Links auf unsere Website.\n"
+"            "
+msgstr ""
+"\n"
+"The copyright for published content and objects created by the publisher themselves remains solely with the publisher of the pages. Any duplication, processing, storage or use of objects such as diagrams, sound and video documents, or texts in other electronic or printed publications is not permitted without the author's agreement. This does not apply to copying and downloading for private, scientific and non-commercial use. We expressly permit and welcome the citing of our documents and web pages as well as the linking to our website."
+
 #: templates/pages/criteria_catalog.html:4
 msgid "Kriterienkatalog - Übersicht"
 msgstr "Catalog of criteria - Overview"
@@ -3421,69 +3478,69 @@ msgstr ""
 msgid "Alles durchsuchen"
 msgstr "Search topics"
 
-#: templates/partials/_navbar.html:90
-msgid "Technisch"
-msgstr "Technical"
-
-#: templates/partials/_navbar.html:97
+#: templates/partials/_navbar.html:43
 msgid "Digitale Werkzeuge"
 msgstr "Digital tools"
 
-#: templates/partials/_navbar.html:102
+#: templates/partials/_navbar.html:48
 msgid "Digitale Anwendungen"
 msgstr "Digital applications"
 
-#: templates/partials/_navbar.html:123
+#: templates/partials/_navbar.html:69
 #: templates/start_search/start_search.html:183 weatherdata_over/views.py:86
 msgid "Datensätze"
 msgstr "Datasets"
 
-#: templates/partials/_navbar.html:153
-msgid "Betrieblich"
-msgstr "Operational"
+#: templates/partials/_navbar.html:97
+msgid "Technisch"
+msgstr "Technical"
 
-#: templates/partials/_navbar.html:165
+#: templates/partials/_navbar.html:111
 msgid "Geschäfts&shy;modell&shy;"
 msgstr "Business model"
 
-#: templates/partials/_navbar.html:170
+#: templates/partials/_navbar.html:116
 msgid "Geschäfts&shy;modell&shy;anwendungen"
 msgstr "Business model applications"
 
-#: templates/partials/_navbar.html:206
+#: templates/partials/_navbar.html:148
+msgid "Betrieblich"
+msgstr "Operational"
+
+#: templates/partials/_navbar.html:196
 msgid "Ökologisch"
 msgstr "Ecological"
 
-#: templates/partials/_navbar.html:256
-msgid "Rechtlich"
-msgstr "Legal"
-
-#: templates/partials/_navbar.html:268
+#: templates/partials/_navbar.html:210
 #: templates/start_search/start_search.html:356
 msgid "Daten&shy;schutz&shy;übersicht"
 msgstr "Privacy overview"
 
-#: templates/partials/_navbar.html:302
-msgid "Global"
-msgstr ""
+#: templates/partials/_navbar.html:242
+msgid "Rechtlich"
+msgstr "Legal"
 
-#: templates/partials/_navbar.html:309
+#: templates/partials/_navbar.html:249
 #: templates/start_search/start_search.html:208
 #: templates/start_search/start_search.html:394
 msgid "Anwendungsfälle"
 msgstr "Use cases"
 
-#: templates/partials/_navbar.html:314
+#: templates/partials/_navbar.html:254
 #: templates/start_search/start_search.html:404
 msgid "Veröffentlichungen"
 msgstr "Publications"
 
-#: templates/partials/_navbar.html:319
+#: templates/partials/_navbar.html:259
 #: templates/start_search/start_search.html:413
 msgid "CityGML Visualisierung"
 msgstr "CityGML visualization"
 
-#: templates/partials/_navbar.html:333
+#: templates/partials/_navbar.html:285
+msgid "Global"
+msgstr ""
+
+#: templates/partials/_navbar.html:297
 #: templates/start_search/result_search.html:38
 #: templates/start_search/start_search.html:78
 msgid "Durchsuche die Plattform!"
