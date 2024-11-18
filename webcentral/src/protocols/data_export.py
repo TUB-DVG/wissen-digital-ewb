@@ -48,7 +48,7 @@ class DataExport:
         "osiLayers": "osiLayers",
         "buildingAutomationLayer": "buildingAutomationLayer",
         "exampleProject": "exampleProject",
-        "image": "image"
+        "image": "image",
         "programmingLanguages": "programmingLanguages",         
     }
 
