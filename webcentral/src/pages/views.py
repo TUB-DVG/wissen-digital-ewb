@@ -23,6 +23,9 @@ def Datenschutzhinweis(request):
     """Call render function for datenschutzhinweis page."""
     return render(request, "pages/Datenschutzhinweis.html")
 
+def copyright(request):
+    """Call render function for copyright page."""
+    return render(request, "pages/copyright.html")
 
 def about(request):
     """Call render function for about page."""

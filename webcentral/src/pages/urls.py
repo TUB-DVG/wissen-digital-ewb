@@ -10,6 +10,7 @@ urlpatterns = [
     path("impressum", views.impressum, name="impressum"),
     path("about", views.about, name="about"),
     path("coming", views.coming, name="coming"),
+    path("copyright", views.copyright, name="copyright"),
     path(
         "Datenschutzhinweis",
         views.Datenschutzhinweis,
