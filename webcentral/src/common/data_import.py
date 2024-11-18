@@ -267,12 +267,12 @@ class DataImport:
                     djangoModel.objects.get_or_create(
                         license=objString[0],
                         openSourceStatus=objString[1],
-                        licensingFeeRequirement=objString[2],     
+                        licensingFeeRequirement=objString[2],
                         openSourceStatus_en=objString[3],
-                        licensingFeeRequirement_en=objString[4], 
+                        licensingFeeRequirement_en=objString[4],
                     )[0]
                 )
-            return listOfM2Mobjs     
+            return listOfM2Mobjs
         else:
             attrNamesOfModel = [
                 attr.name for attr in djangoModel._meta.get_fields()

@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 
 from .models import Protocol
 
+
 def protocol(request):
     """
     shows the list of all PROTOCOLS including some key features
@@ -86,7 +87,7 @@ def protocol(request):
         ),
         "pathToExplanationTemplate": "TechnicalStandards/protocol-explanation.html",
         "listingSubHeadingOneKey": _("Reichweite"),
-        "listingSubHeadingOneValue": "range", 
+        "listingSubHeadingOneValue": "range",
         "optionList": [
             {
                 "placeholder": "Name",
@@ -159,13 +160,13 @@ def protocolDetailView(request, id):
     communicationMediumCategory = protocols.communicationMediumCategory
     supportedTransmissionMediuems = protocols.supportedTransmissionMediuems
     associatedStandards = protocols.associatedStandards
-    
+
     licensesForProtocol = protocols.license.all()
     # openSourceStatusStr = ""
     # licensingFeeRequirementStr = ""
     # for license in licensesForProtocol:
     #     openSourceStatusStr += license.openSourceStatus + ", "
-    #     licensingFeeRequirementStr += license.licensingFeeRequirement + ", "     
+    #     licensingFeeRequirementStr += license.licensingFeeRequirement + ", "
     #
     openSourceStatus = protocols.license.all()
     licensingFeeRequirement = protocols.license.all()
@@ -209,5 +210,3 @@ def protocolDetailView(request, id):
         "focusBorder": "technical",
     }
     return render(request, "TechnicalStandards/protocol-detail.html", context)
-
-

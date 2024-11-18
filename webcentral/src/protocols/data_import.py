@@ -16,7 +16,8 @@ from common.models import (
 from project_listing.models import Subproject
 from common.models import License
 from protocols.models import Protocol, History
-from TechnicalStandards.models import Norm 
+from TechnicalStandards.models import Norm
+
 
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
@@ -64,7 +65,10 @@ class DataImportApp(DataImport):
         "usage": ("usage", Usage),
         # "associatedTools": ("associatedTools", Tools),
         "communicationMediumCategory": ("communicationMediumCategory", None),
-        "supportedTransmissionMediuems": ("supportedTransmissionMediuems", None),
+        "supportedTransmissionMediuems": (
+            "supportedTransmissionMediuems",
+            None,
+        ),
         "associatedStandards": ("associatedStandards", None),
         "networkTopology": ("networkTopology", None),
         "security": ("security", None),
@@ -86,7 +90,7 @@ class DataImportApp(DataImport):
     }
 
     MAPPING_EXCEL_DB_EN = {
-    #     "name__en": "name_en",
+        #     "name__en": "name_en",
         # "applicationArea__en": "applicationArea_en",
         "alternatives__en": "alternatives_en",
         "classification__en": "classification_en",
@@ -102,8 +106,8 @@ class DataImportApp(DataImport):
         "license__en": "license_en",
         "accessibility__en": "accessibility_en",
         "description__en": "description_en",
-        "exampleProject": "exampleProject", 
-        "communicationMediumCategory__en": "communicationMediumCategory_en", 
+        "exampleProject": "exampleProject",
+        "communicationMediumCategory__en": "communicationMediumCategory_en",
         "supportedTransmissionMediuems__en": "supportedTransmissionMediuems_en",
         # "openSourceStatus__en": "openSourceStatus_en",
         # "licensingFeeRequirement__en": "licensingFeeRequirement_en",
@@ -117,7 +121,6 @@ class DataImportApp(DataImport):
         "priorities__en": "priorities_en",
         "osiLayers__en": "osiLayers_en",
         "buildingAutomationLayer__en": "buildingAutomationLayer_en",
-
     }
 
     def __init__(self, path_to_data_file):
@@ -169,11 +172,11 @@ class DataImportApp(DataImport):
                     m2mListOpenSourceStatus = self._processListInput(
                         row[header.index("openSourceStatus")],
                         separator=";;",
-                    ) 
+                    )
                     m2mListOpenSourceStatusEn = self._processListInput(
                         row[header.index("openSourceStatus__en")],
                         separator=";;",
-                    ) 
+                    )
                     m2mListFeeRequired = self._processListInput(
                         row[header.index("licensingFeeRequirement")],
                         separator=";;",
@@ -181,23 +184,26 @@ class DataImportApp(DataImport):
                     m2mListFeeRequiredEn = self._processListInput(
                         row[header.index("licensingFeeRequirement__en")],
                         separator=";;",
-                    )  
-                    m2mList = list(zip_longest(
-                        m2mListLicense,
-                        m2mListOpenSourceStatus,
-                        m2mListFeeRequired,
-                        m2mListOpenSourceStatusEn,
-                        m2mListFeeRequiredEn,
-                        fillvalue=None
-                    ))
+                    )
+                    m2mList = list(
+                        zip_longest(
+                            m2mListLicense,
+                            m2mListOpenSourceStatus,
+                            m2mListFeeRequired,
+                            m2mListOpenSourceStatusEn,
+                            m2mListFeeRequiredEn,
+                            fillvalue=None,
+                        )
+                    )
 
                 else:
                     m2mList = self._processListInput(
                         row[header.index(tableKey)],
                         separator=";;",
                     )
-                    m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
-                
+                    m2mList = self._iterateThroughListOfStrings(
+                        m2mList, m2MModel
+                    )
 
                 readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
                     m2mList, m2MModel
@@ -208,9 +214,7 @@ class DataImportApp(DataImport):
                 else:
                     readInValues[tableKey] = row[header.index(tableKey)]
 
-        obj = self.DJANGO_MODEL_OBJ(
-            **readInValues
-        )
+        obj = self.DJANGO_MODEL_OBJ(**readInValues)
 
         # check if the database already holds a dataset with the name already
         tupleOrNone = self._checkIfItemExistsInDB(row[header.index("name")])

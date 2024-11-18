@@ -8,7 +8,6 @@ from .models import (
 )
 
 
-
 class ToolsTranslationOptions(TranslationOptions):
     fields = (
         # "name",
@@ -22,6 +21,4 @@ class ToolsTranslationOptions(TranslationOptions):
     )
 
 
-
 translator.register(Tools, ToolsTranslationOptions)
-

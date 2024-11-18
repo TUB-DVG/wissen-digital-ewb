@@ -49,7 +49,7 @@ class DataExport:
         "buildingAutomationLayer": "buildingAutomationLayer",
         "exampleProject": "exampleProject",
         "image": "image",
-        "programmingLanguages": "programmingLanguages",         
+        "programmingLanguages": "programmingLanguages",
     }
 
     DATA_APP_DIR = "18_protocols"

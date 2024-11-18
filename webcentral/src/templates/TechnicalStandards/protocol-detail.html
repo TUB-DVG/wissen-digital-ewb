@@ -23,7 +23,7 @@ Page intro START -->
                 </i>
 
                 {% for item in technicalStandards.license.all %}
-                  {{item.openSourceStatus}}
+                  {{ item.openSourceStatus }}
                 {% endfor %}
               </li>
             {% endif %}
@@ -31,10 +31,10 @@ Page intro START -->
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
                 <i class="fas fa-bars fa-book-open me-2">
                 </i>
-                  {% for item in technicalStandards.license.all %}
-                    {{item.licensingFeeRequirement}}
-                  {% endfor %}
- 
+                {% for item in technicalStandards.license.all %}
+                  {{ item.licensingFeeRequirement }}
+                {% endfor %}
+
               </li>
             {% endif %}
             {% if technicalStandards.communicationMediumCategory %}

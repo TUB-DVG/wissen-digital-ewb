@@ -52,6 +52,7 @@ class License(models.Model):
         null=True,
     )
 
+
 class ClassificationManager(models.Manager):
     def get_by_natural_key(self, classification_de, classification_en):
         return self.get(
@@ -326,5 +327,3 @@ class Scale(models.Model):
     class Meta:
 
         app_label = "tools_over"
-
-

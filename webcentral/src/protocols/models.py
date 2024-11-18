@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.functions import Now
 
 from common.models import (
-    Accessibility, 
+    Accessibility,
     ApplicationArea,
     Classification,
     Focus,
@@ -10,7 +10,7 @@ from common.models import (
     Scale,
     LifeCyclePhase,
     TargetGroup,
-    License, 
+    License,
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
@@ -239,11 +239,12 @@ class Protocol(models.Model):
         max_length=500,
         blank=True,
         db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-        null=True, 
-    ) 
+        null=True,
+    )
 
     def __str__(self):
         return self.name
+
 
 class History(models.Model):
     """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""

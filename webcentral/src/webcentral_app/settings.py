@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     "use_cases.apps.UseCasesConfig",
     "pages.apps.PagesConfig",
     "TechnicalStandards.apps.TechnicalStandardsConfig",
-    "protocols.apps.ProtocolsConfig", 
+    "protocols.apps.ProtocolsConfig",
     "project_listing.apps.ProjectListingConfig",
     "tools_over.apps.ToolsOverConfig",
     "weatherdata_over.apps.WeatherdataOverConfig",

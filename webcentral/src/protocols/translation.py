@@ -7,6 +7,7 @@ from protocols.models import (
     Protocol,
 )
 
+
 class ProtocolTranslationOptions(TranslationOptions):
     fields = (
         "description",
@@ -33,5 +34,5 @@ class ProtocolTranslationOptions(TranslationOptions):
         "buildingAutomationLayer",
     )
 
-translator.register(Protocol, ProtocolTranslationOptions)
 
+translator.register(Protocol, ProtocolTranslationOptions)

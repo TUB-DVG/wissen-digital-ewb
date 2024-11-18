@@ -214,7 +214,6 @@ def normDetailView(request, id):
     return render(request, "TechnicalStandards/norm-detail.html", context)
 
 
-
 def protocolComparison(request):
     ids = request.GET.getlist("id")  # Retrieve list of ids from GET parameters
     protocols = []

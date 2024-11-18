@@ -4,7 +4,7 @@ from modeltranslation.translator import (
 )
 from .models import (
     License,
-    Accessibility, 
+    Accessibility,
     ApplicationArea,
     Classification,
     Focus,
@@ -14,6 +14,7 @@ from .models import (
     TargetGroup,
     UserInterface,
 )
+
 
 class ApplicationAreaTranslationOptions(TranslationOptions):
     fields = ("applicationArea",)
@@ -35,13 +36,13 @@ class TargetGroupTranslationOptions(TranslationOptions):
     fields = ("targetGroup",)
 
 
-
 class LicenseTranslationOptions(TranslationOptions):
     fields = (
         "license",
         "openSourceStatus",
         "licensingFeeRequirement",
     )
+
 
 class LifeCyclePhaseTranslationOptions(TranslationOptions):
     fields = ("lifeCyclePhase",)

@@ -11,7 +11,7 @@ class DataExport:
     MAPPING_ORM_TO_XLSX = {
         "name": "name",
         # "isNorm": "isNorm",
-        "title": "title", 
+        "title": "title",
         # "image": "image",
         "link": "link",
         "shortDescription": "shortDescription",

@@ -10,9 +10,10 @@ from common.models import (
     Accessibility,
     Classification,
     License,
-    Usage, 
+    Usage,
 )
-from project_listing.models import Subproject 
+from project_listing.models import Subproject
+
 
 class Norm(models.Model):
     # isNorm = models.BooleanField(default=True)
@@ -20,15 +21,15 @@ class Norm(models.Model):
         max_length=150,
         help_text="name of the norm",
         blank=True,
-        db_comment="Name of the item", 
+        db_comment="Name of the item",
     )
     resources = models.CharField(
         max_length=1000,
         help_text="link",
         blank=True,
-        db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",  
+        db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
     )
- 
+
     title = models.CharField(
         max_length=250,
         help_text="title of the norm",
@@ -69,14 +70,14 @@ class Norm(models.Model):
     targetGroup = models.ManyToManyField(
         TargetGroup,
         db_comment="Target group - Who do you say the digital item is aimed at?",
-    ) 
+    )
     alternatives = models.CharField(
         max_length=300,
         help_text="Alternatives - Items with equal or likewise use case.",
         blank=True,
         null=True,
         db_comment="Alternatives - items with equal or likewise use case.",
-    )  
+    )
     choices = [
         (1, "pre-alpha"),
         (2, "alpha"),
@@ -95,7 +96,7 @@ class Norm(models.Model):
         null=True,
         blank=True,
         db_comment="Further information - Information of miscellaneous subjects",
-    )    
+    )
     image = models.ImageField(
         null=True,
         blank=True,
@@ -105,21 +106,21 @@ class Norm(models.Model):
         blank=True,
         null=True,
         db_comment="Released - Is the publication done?",
-    )    
+    )
     license = models.ManyToManyField(
         License,
         db_comment="under which license was the dataset published and are there any costs associated with using the dataset?",
-    )  
+    )
     accessibility = models.ManyToManyField(
         Accessibility,
         db_comment="Accessibility - How accessible is the dataset?",
-    ) 
+    )
     programmingLanguages = models.CharField(
         max_length=500,
         blank=True,
         null=True,
         db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-    ) 
+    )
     provider = models.CharField(
         max_length=300,
         null=True,
@@ -137,10 +138,11 @@ class Norm(models.Model):
         help_text="year of software release (planned or conducted)",
         db_comment="Year of publication - If the item is published, in which year was it released?",
         null=True,
-    ) 
+    )
     usage = models.ManyToManyField(
         Usage,
         db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",
-    )  
+    )
+
     def __str__(self):
         return self.name
