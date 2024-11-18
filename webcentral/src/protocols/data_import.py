@@ -12,7 +12,6 @@ from common.models import (
     TargetGroup,
     Accessibility,
     Usage,
-    Tools,
 )
 from project_listing.models import Subproject
 from common.models import License
@@ -63,7 +62,7 @@ class DataImportApp(DataImport):
         "specificApplication": ("specificApplication", Subproject),
         "technicalStandardsNorms": ("technicalStandardsNorms", Norm),
         "usage": ("usage", Usage),
-        "associatedTools": ("associatedTools", Tools),
+        # "associatedTools": ("associatedTools", Tools),
         "communicationMediumCategory": ("communicationMediumCategory", None),
         "supportedTransmissionMediuems": ("supportedTransmissionMediuems", None),
         "associatedStandards": ("associatedStandards", None),

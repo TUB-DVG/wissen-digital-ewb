@@ -17,17 +17,24 @@ Page intro START -->
           <h2>{{ technicalStandards.name }}</h2>
           <!-- Content -->
           <ul class="list-inline mb-0">
-            {% if technicalStandards.openSourceStatus %}
+            {% if technicalStandards.license.all.count %}
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
                 <i class="fas fa-bars fa-code">
                 </i>
-                {{ technicalStandards.openSourceStatus }}
+
+                {% for item in technicalStandards.license.all %}
+                  {{item.openSourceStatus}}
+                {% endfor %}
               </li>
             {% endif %}
-            {% if technicalStandards.licensingFeeRequirement %}
+            {% if technicalStandards.license.all.count %}
               <li class="list-inline-item h6 me-3 mb-1 mb-sm-0">
                 <i class="fas fa-bars fa-book-open me-2">
-                </i>{{ technicalStandards.licensingFeeRequirement }}
+                </i>
+                  {% for item in technicalStandards.license.all %}
+                    {{item.licensingFeeRequirement}}
+                  {% endfor %}
+ 
               </li>
             {% endif %}
             {% if technicalStandards.communicationMediumCategory %}
