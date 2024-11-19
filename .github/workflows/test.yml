@@ -44,6 +44,9 @@ jobs:
       
       - name: Execute unittest for protocols app
         run: docker exec -w /webcentral/src webcentral python manage.py test protocols 
+
+      - name: Execute unittest for datasets app
+        run: docker exec -w /webcentral/src webcentral python manage.py test Datasets
       
       - name: Setup selenium dev-environment
         run: |
