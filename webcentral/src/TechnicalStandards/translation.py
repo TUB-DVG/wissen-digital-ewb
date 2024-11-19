@@ -12,8 +12,11 @@ class NormTranslationOptions(TranslationOptions):
     fields = (
         "title",
         "name",
-        # "shortDescription",
-        "source",
+        "description",
+        "provider",
+        "furtherInformation",
+        "alternatives",
+        "yearOfRelease",
     )
 
 

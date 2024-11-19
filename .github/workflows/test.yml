@@ -38,7 +38,13 @@ jobs:
       
       - name: Execute unittest for tools_over app
         run: docker exec -w /webcentral/src webcentral python manage.py test tools_over
-
+      
+      - name: Execute unittest for TechnicalStandards app
+        run: docker exec -w /webcentral/src webcentral python manage.py test TechnicalStandards
+      
+      - name: Execute unittest for protocols app
+        run: docker exec -w /webcentral/src webcentral python manage.py test protocols 
+      
       - name: Setup selenium dev-environment
         run: |
           python -m venv webcentral/test/testing_venv

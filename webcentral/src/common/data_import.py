@@ -23,7 +23,7 @@ from django.db.models.query import QuerySet
 from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
-
+from protocols.models import Protocol
 
 class DataImport:
     """Definition of the general DataImport class"""
@@ -206,6 +206,8 @@ class DataImport:
             attributeNameInModel = "referenceNumber_id"
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
+        elif djangoModel.__name__ == "Protocol":
+            attributeNameInModel = "name" 
         else:
             attributeNameInModel = (
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
@@ -221,16 +223,21 @@ class DataImport:
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
 
-        if djangoModel.__name__ not in ("Subproject", "Norm"):
+        if djangoModel == Protocol: 
+            newlyCreatedRow = djangoModel.objects.create(
+                **{"name": categoryString}
+            ) 
+            return getattr(newlyCreatedRow, "name") 
+        else:
             newlyCreatedRow = djangoModel.objects.create(
                 **{attributeNameInModel: categoryString}
             )
-            print(
-                f"""No nearest match for {categoryString} in {djangoModel}
-                was found. {categoryString} is created inside of
-                {djangoModel}""",
-            )
-            return getattr(newlyCreatedRow, attributeNameInModel)
+        print(
+            f"""No nearest match for {categoryString} in {djangoModel}
+            was found. {categoryString} is created inside of
+            {djangoModel}""",
+        )
+        return getattr(newlyCreatedRow, attributeNameInModel)
 
     def _iterateThroughListOfStrings(
         self, listOfStrings: list, djangoModel: Model

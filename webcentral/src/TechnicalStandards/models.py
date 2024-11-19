@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.functions import Now
 
 from common.models import (
     ApplicationArea,
@@ -16,7 +17,6 @@ from project_listing.models import Subproject
 
 
 class Norm(models.Model):
-    # isNorm = models.BooleanField(default=True)
     name = models.CharField(
         max_length=150,
         help_text="name of the norm",
@@ -27,6 +27,7 @@ class Norm(models.Model):
         max_length=1000,
         help_text="link",
         blank=True,
+        null=True,
         db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
     )
 
@@ -44,7 +45,7 @@ class Norm(models.Model):
         null=True,
         db_comment="Description of the item.",
     )
-    source = models.CharField(max_length=100, help_text="source", blank=True)
+    # source = models.CharField(max_length=100, help_text="source", blank=True)
 
     applicationArea = models.ManyToManyField(
         ApplicationArea,
