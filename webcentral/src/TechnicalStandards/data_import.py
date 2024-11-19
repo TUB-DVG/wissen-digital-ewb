@@ -18,6 +18,7 @@ from common.models import License
 from TechnicalStandards.models import Norm, History
 from protocols.models import Protocol
 
+
 class DataImportApp(DataImport):
     """App specfific data-import class for the `Datasets`-app.
 
@@ -35,7 +36,6 @@ class DataImportApp(DataImport):
     APP_HISTORY_MODEL_OBJ = History
 
     MAPPING_EXCEL_DB = {
-
         "name": ("name", None),
         "title": ("title", None),
         "accessibility": ("accessibility", Accessibility),
@@ -61,7 +61,10 @@ class DataImportApp(DataImport):
         "yearOfRelease": ("yearOfRelease", None),
         "released": ("released", None),
         "specificApplication": ("specificApplication", Subproject),
-        "technicalStandardsProtocols": ("technicalStandardsProtocols", Protocol),
+        "technicalStandardsProtocols": (
+            "technicalStandardsProtocols",
+            Protocol,
+        ),
         "usage": ("usage", Usage),
         "programmingLanguages": ("programmingLanguages", None),
     }
@@ -73,7 +76,7 @@ class DataImportApp(DataImport):
         "applicationArea__en": "applicationArea_en",
         "classification__en": "classification_en",
         "focus__en": "focus_en",
-        "lifeCyclePhase__en": "lifeCyclePhase_en",  
+        "lifeCyclePhase__en": "lifeCyclePhase_en",
         "scale__en": "scale_en",
         "targetGroup__en": "targetGroup_en",
         "alternatives__en": "alternatives_en",
@@ -133,11 +136,11 @@ class DataImportApp(DataImport):
                         row[header.index(tableKey)],
                         separator=";;",
                     )
-                    m2mListOpenSourceStatus = [None]  
+                    m2mListOpenSourceStatus = [None]
                     m2mListOpenSourceStatusEn = [None]
                     m2mListFeeRequired = [None]
-                    m2mListFeeRequiredEn = [None] 
-                    
+                    m2mListFeeRequiredEn = [None]
+
                     m2mList = list(
                         zip_longest(
                             m2mListLicense,
@@ -156,9 +159,12 @@ class DataImportApp(DataImport):
                     m2mList = self._iterateThroughListOfStrings(
                         m2mList, m2MModel
                     )
-                    connectedProtocols = [Protocol.objects.get_or_create(name=protocolName)[0] for protocolName in m2mList]
-                    readInValuesM2M["protocol_set"] = connectedProtocols 
-                    continue 
+                    connectedProtocols = [
+                        Protocol.objects.get_or_create(name=protocolName)[0]
+                        for protocolName in m2mList
+                    ]
+                    readInValuesM2M["protocol_set"] = connectedProtocols
+                    continue
                 else:
                     m2mList = self._processListInput(
                         row[header.index(tableKey)],
@@ -173,12 +179,12 @@ class DataImportApp(DataImport):
                     m2mList, m2MModel
                 )
             else:
-                
+
                 typeOfAttr = self.DJANGO_MODEL_OBJ._meta.get_field(tableKey)
                 if row[header.index(tableKey)] == "":
                     readInValues[tableKey] = None
-                elif isinstance(typeOfAttr, models.IntegerField): 
-                    readInValues[tableKey] = int(row[header.index(tableKey)])  
+                elif isinstance(typeOfAttr, models.IntegerField):
+                    readInValues[tableKey] = int(row[header.index(tableKey)])
                 else:
                     readInValues[tableKey] = row[header.index(tableKey)]
 

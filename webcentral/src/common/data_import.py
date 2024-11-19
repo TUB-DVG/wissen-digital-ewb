@@ -25,6 +25,7 @@ from django.core.serializers import serialize
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
 
+
 class DataImport:
     """Definition of the general DataImport class"""
 
@@ -207,7 +208,7 @@ class DataImport:
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
         elif djangoModel.__name__ == "Protocol":
-            attributeNameInModel = "name" 
+            attributeNameInModel = "name"
         else:
             attributeNameInModel = (
                 djangoModel.__name__[0].lower() + djangoModel.__name__[1:]
@@ -223,11 +224,11 @@ class DataImport:
         if len(listOfClosestMatches) > 0:
             return listOfClosestMatches[0]
 
-        if djangoModel == Protocol: 
+        if djangoModel == Protocol:
             newlyCreatedRow = djangoModel.objects.create(
                 **{"name": categoryString}
-            ) 
-            return getattr(newlyCreatedRow, "name") 
+            )
+            return getattr(newlyCreatedRow, "name")
         else:
             newlyCreatedRow = djangoModel.objects.create(
                 **{attributeNameInModel: categoryString}
