@@ -14,7 +14,7 @@ from django.test import RequestFactory
 import pandas as pd
 
 from common.test_utils.mock_objects import mock_excel_file
-from common.models import DbDiff
+from common.models import DbDiff, License
 from .data_export import DataExport
 from .data_import import DataImportApp
 from .models import Tools, Focus, History
@@ -45,7 +45,7 @@ class TestToolsDataImport(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
@@ -79,6 +79,8 @@ class TestToolsDataImport(TestCase):
             ),
             1,
         )
+
+        self.assertGreater(len(License.objects.all()), 32)
 
     def test_import_of_english_translation(self):
         # create test-data

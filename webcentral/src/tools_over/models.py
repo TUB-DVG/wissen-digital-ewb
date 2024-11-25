@@ -18,6 +18,7 @@ from common.models import (
     LifeCyclePhase,
     TargetGroup,
     UserInterface,
+    License,
 )
 
 
@@ -53,7 +54,8 @@ class Tools(models.Model):
         help_text="time (year/month/date) of the last update",
         blank=True,
     )
-    license = models.CharField(max_length=500, help_text="license", blank=True)
+    # license = models.CharField(max_length=500, help_text="license", blank=True)
+    license = models.ManyToManyField(License) 
     licenseNotes = models.CharField(
         max_length=500, help_text="license notes", blank=True
     )

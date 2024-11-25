@@ -9,6 +9,10 @@ from django.db import models
 
 from common.data_import import DataImport
 from .models import (
+    Tools,
+    History,
+)
+from common.models import (
     ApplicationArea,
     Classification,
     Focus,
@@ -17,9 +21,8 @@ from .models import (
     LifeCyclePhase,
     UserInterface,
     Accessibility,
-    Scale,
-    Tools,
-    History,
+    Scale, 
+    License,
 )
 from TechnicalStandards.models import (
     Norm,
@@ -203,7 +206,12 @@ class DataImportApp(DataImport):
             # Return the date part of the datetime object as a string
             lastUpdate = date.strftime("%Y-%m-%d")
 
-        license = row[header.index("license")]
+        processedLicenseList = self._processListInput(
+            row[header.index("license")], separator=";;"
+        )
+        licenseList = self._iterateThroughListOfStrings(
+            processedLicenseList, License
+        )        
         licenseNotes = row[header.index("licenseNotes")]
         furtherInfos = row[header.index("furtherInformation")]
         alternatives = row[header.index("alternatives")]
@@ -299,6 +307,10 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsElements = Protocol.objects.filter(
             name__in=technicalStandardsProtocolsList
         )
+        licenseElements = License.objects.filter(
+            license__in=licenseList
+        )         
+
         obj = Tools(
             name=name,
             shortDescription=shortDescription,
@@ -314,7 +326,7 @@ class DataImportApp(DataImport):
             # accessibility__in=accessibilityElements,
             # targetGroup__in=targetGroupElements,
             lastUpdate=lastUpdate,
-            license=license,
+            # license=license,
             licenseNotes=licenseNotes,
             furtherInformation=furtherInfos,
             alternatives=alternatives,
@@ -336,6 +348,7 @@ class DataImportApp(DataImport):
 
         obj.save()
         # obj.id = toolInDb.id
+        obj.license.add(*licenseElements)
         obj.focus.add(*focusElements)
         obj.classification.add(*classificationElements)
         obj.applicationArea.add(*applicationAreaElements)

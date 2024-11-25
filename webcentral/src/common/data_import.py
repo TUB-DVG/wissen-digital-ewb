@@ -216,8 +216,7 @@ class DataImport:
         allNames = [
             getattr(x, attributeNameInModel) for x in djangoModel.objects.all()
         ]
-
-        # get the closest match
+        allNames = [element for element in allNames if element is not None] 
         listOfClosestMatches = difflib.get_close_matches(
             categoryString, allNames, n=1, cutoff=0.8
         )

@@ -6,7 +6,9 @@ from django.core.paginator import Paginator
 from django.utils.translation import gettext as _
 from django.db.models import Q
 
-from .models import Weatherdata
+from Datasets.models import Dataset
+from tools_over.models import Tools
+from common.models import Classification 
 from common.views import createQ
 
 
@@ -23,9 +25,12 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    weatherdata = (
-        Weatherdata.objects.all()
-    )  # reads all data from table Teilprojekt
+    classificationWeatherdata = Classification.objects.get(classification_de="Wetterdaten")
+    weatherdata = list(
+        Dataset.objects.filter(classification=classificationWeatherdata)
+    )
+    weatherdata += list(Tools.objects.filter(classification=classificationWeatherdata))
+    
     filtered_by = [None] * 2
     searched = None
 
@@ -40,22 +45,21 @@ def index(request):
     listOfFilters = [
         {
             "filterValues": categoryElementsList,
-            "filterName": "category__icontains",
+            "filterName": "classification__classification__icontains",
         },
         {
             "filterValues": licenseElementsList,
-            "filterName": "license__icontains",
+            "filterName": "license__license__icontains",
         },
     ]
     complexCriterion = createQ(listOfFilters)
 
     searched = request.GET.get("searched", "")
     if searched != "":
-        complexCriterion &= Q(data_service__icontains=searched)
-    weatherdata = Weatherdata.objects.filter(complexCriterion)
-    # filtered_by = [category, license]
-
-    weatherdata = list(sorted(weatherdata, key=lambda obj: obj.data_service))
+        complexCriterion &= Q(name__icontains=searched)
+    weatherdata = list(Dataset.objects.filter(complexCriterion))
+    weatherdata += list(Tools.objects.filter(complexCriterion))
+    weatherdata = list(sorted(weatherdata, key=lambda obj: obj.name))
 
     weatherdata_paginator = Paginator(weatherdata, 12)
 

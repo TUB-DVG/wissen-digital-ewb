@@ -97,7 +97,7 @@ class Dataset(models.Model):
         db_comment="Spatial resolution - spatial detail level of the data",
     )
     description = models.CharField(
-        max_length=300,
+        max_length=1100,
         null=True,
         blank=True,
         db_comment="Description of the dataset",

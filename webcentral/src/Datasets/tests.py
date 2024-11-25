@@ -24,9 +24,9 @@ class TestDataImport(TestCase):
         call_command(
             "data_import",
             "Datasets",
-            "../doc/01_data/17_datasets/20230623_datasets.xlsx",
+            "../doc/01_data/17_datasets/datasets_with_weatherdata.xlsx",
         )
-        self.assertGreater(len(Dataset.objects.all()), 48)
+        self.assertGreater(len(Dataset.objects.all()), 53)
 
         classificationObjForDatasets = Classification.objects.get(
             classification_de__icontains="Gebäudegrundrisse"
@@ -60,6 +60,12 @@ class TestDataImport(TestCase):
             == "Benchmark for linear solvers."
         )
 
+        weatherdataCategory = Classification.objects.filter(classification_de="Wetterdaten")
+        self.assertEqual(len(weatherdataCategory), 1)
+        self.assertEqual(weatherdataCategory[0].classification_en, "Weatherdata")
+
+        datasetsWeatherdata = Dataset.objects.filter(classification=weatherdataCategory)
+        self.assertGreater(len(datasetsWeatherdata), 4)
 
 class TestDataUpdate(TestCase):
     """ """
