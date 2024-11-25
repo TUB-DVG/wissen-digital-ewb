@@ -11,115 +11,116 @@ from common.models import (
     LifeCyclePhase,
     TargetGroup,
     License,
+    AbstractTechnicalFocus, 
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
 
 
-class Protocol(models.Model):
-    name = models.CharField(
-        max_length=150, help_text="name of the norm", blank=True
-    )
-    focus = models.ManyToManyField(
-        Focus,
-        max_length=200,
-        db_comment="Focus identifier - Selected focus (Definied by Wissensplattform)",
-    )
-    classification = models.ManyToManyField(
-        Classification,
-        db_comment="General type of protocol - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
-    )
-    lifeCyclePhase = models.ManyToManyField(
-        LifeCyclePhase,
-        db_comment="Life cycle phase - In which phase of the product life cycle is the tool used?",
-    )
-    scale = models.ManyToManyField(
-        Scale,
-        db_comment="Spatial scale of the use cases - On what scale is the dataset used?",
-    )
-    targetGroup = models.ManyToManyField(
-        TargetGroup,
-        db_comment="Target group - Who do you say the digital item is aimed at?",
-    )
-    alternatives = models.CharField(
-        max_length=300,
-        help_text="Alternatives - Items with equal or likewise use case.",
-        blank=True,
-        null=True,
-    )
-    choices = [
-        (1, "pre-alpha"),
-        (2, "alpha"),
-        (3, "beta"),
-        (4, "release candidate"),
-        (5, "release"),
-    ]
-    developmentState = models.IntegerField(
-        choices=choices,
-        null=True,
-        blank=True,
-        db_comment="Level of development - What is the curent development status",
-    )
-    furtherInformation = models.CharField(
-        max_length=1200,
-        null=True,
-        blank=True,
-        db_comment="Further information - Information of miscellaneous subjects",
-    )
-    released = models.BooleanField(
-        blank=True,
-        null=True,
-        db_comment="Released - Is the publication done?",
-    )
-    provider = models.CharField(
-        max_length=300,
-        null=True,
-        blank=True,
-        db_comment="Developers/maintainers/provider - Person or organisation responsible for the development of the item.",
-    )
-    resources = models.CharField(
-        max_length=1000,
-        null=True,
-        blank=True,
-        db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
-    )
-    license = models.ManyToManyField(
-        License,
-        db_comment="under which license was the protocol published and are there any costs associated with using the protocol?",
-    )
-    accessibility = models.ManyToManyField(
-        Accessibility,
-        db_comment="Accessibility - How accessible is the dataset?",
-    )
-    programmingLanguages = models.CharField(
-        max_length=500,
-        blank=True,
-        null=True,
-        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-    )
-    description = models.CharField(
-        max_length=300,
-        null=True,
-        blank=True,
-        db_comment="Description of the item",
-    )
-    specificApplication = models.ManyToManyField(
-        Subproject,
-        blank=True,
-        db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
-    )
+class Protocol(AbstractTechnicalFocus):
+    # name = models.CharField(
+    #     max_length=150, help_text="name of the norm", blank=True
+    # )
+    # focus = models.ManyToManyField(
+    #     Focus,
+    #     max_length=200,
+    #     db_comment="Focus identifier - Selected focus (Definied by Wissensplattform)",
+    # )
+    # classification = models.ManyToManyField(
+    #     Classification,
+    #     db_comment="General type of protocol - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
+    # )
+    # lifeCyclePhase = models.ManyToManyField(
+    #     LifeCyclePhase,
+    #     db_comment="Life cycle phase - In which phase of the product life cycle is the tool used?",
+    # )
+    # scale = models.ManyToManyField(
+    #     Scale,
+    #     db_comment="Spatial scale of the use cases - On what scale is the dataset used?",
+    # )
+    # targetGroup = models.ManyToManyField(
+    #     TargetGroup,
+    #     db_comment="Target group - Who do you say the digital item is aimed at?",
+    # )
+    # alternatives = models.CharField(
+    #     max_length=300,
+    #     help_text="Alternatives - Items with equal or likewise use case.",
+    #     blank=True,
+    #     null=True,
+    # )
+    # choices = [
+    #     (1, "pre-alpha"),
+    #     (2, "alpha"),
+    #     (3, "beta"),
+    #     (4, "release candidate"),
+    #     (5, "release"),
+    # ]
+    # developmentState = models.IntegerField(
+    #     choices=choices,
+    #     null=True,
+    #     blank=True,
+    #     db_comment="Level of development - What is the curent development status",
+    # )
+    # furtherInformation = models.CharField(
+    #     max_length=1200,
+    #     null=True,
+    #     blank=True,
+    #     db_comment="Further information - Information of miscellaneous subjects",
+    # )
+    # released = models.BooleanField(
+    #     blank=True,
+    #     null=True,
+    #     db_comment="Released - Is the publication done?",
+    # )
+    # provider = models.CharField(
+    #     max_length=300,
+    #     null=True,
+    #     blank=True,
+    #     db_comment="Developers/maintainers/provider - Person or organisation responsible for the development of the item.",
+    # )
+    # resources = models.CharField(
+    #     max_length=1000,
+    #     null=True,
+    #     blank=True,
+    #     db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
+    # )
+    # license = models.ManyToManyField(
+    #     License,
+    #     db_comment="under which license was the protocol published and are there any costs associated with using the protocol?",
+    # )
+    # accessibility = models.ManyToManyField(
+    #     Accessibility,
+    #     db_comment="Accessibility - How accessible is the dataset?",
+    # )
+    # programmingLanguages = models.CharField(
+    #     max_length=500,
+    #     blank=True,
+    #     null=True,
+    #     db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+    # )
+    # description = models.CharField(
+    #     max_length=300,
+    #     null=True,
+    #     blank=True,
+    #     db_comment="Description of the item",
+    # )
+    # specificApplication = models.ManyToManyField(
+    #     Subproject,
+    #     blank=True,
+    #     db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
+    # )
     technicalStandardsNorms = models.ManyToManyField(
         Norm,
         blank=True,
         db_comment="Norms - Which norms serve as the basis or orientation for the item?",
     )
-    yearOfRelease = models.CharField(
-        blank=True,
-        max_length=100,
-        help_text="year of software release (planned or conducted)",
-        db_comment="Year of publication - If the item is published, in which year was it released?",
-        null=True,
-    )
+    # yearOfRelease = models.CharField(
+    #     blank=True,
+    #     max_length=100,
+    #     help_text="year of software release (planned or conducted)",
+    #     db_comment="Year of publication - If the item is published, in which year was it released?",
+    #     null=True,
+    # )
     usage = models.ManyToManyField(
         Usage,
         db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",
@@ -230,13 +231,13 @@ class Protocol(models.Model):
         blank=True,
         null=True,
     )
-    image = models.ImageField(null=True, blank=True)
-    programmingLanguages = models.CharField(
-        max_length=500,
-        blank=True,
-        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-        null=True,
-    )
+    # image = models.ImageField(null=True, blank=True)
+    # programmingLanguages = models.CharField(
+    #     max_length=500,
+    #     blank=True,
+    #     db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+    #     null=True,
+    # )
 
     def __str__(self):
         return self.name

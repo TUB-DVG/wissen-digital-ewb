@@ -1,0 +1,103 @@
+{% if boxObject.name %}
+  <h5 class="mb-3">{% translate "Was ist" %} {{ boxObject.name }}?</h5>
+  <p class="mb-0">{{ boxObject.description }}</p>
+{% endif %}
+              {% if applicationAreas %}
+                <h5 class="mt-4">{% translate "Einsatzbereich" %}</h5>
+                <p class="mb-0">{{ applicationAreas }}</p>
+              {% endif %}
+              
+              {% if targetGroups %}
+                <h5 class="mt-4">{% translate "Zielgruppe" %}</h5>
+                <p class="mb-0">{{ targetGroups }}</p>
+              {% endif %}
+              {% if accessibilities %}
+                <h5 class="mt-4">{% translate "Zugänglichkeit" %}</h5>
+                <p class="mb-0">{{ accessibilities }}</p>
+              {% endif %}
+              {% if tool.licence %}
+                <h5 class="mt-4">{% translate "Lizenz" %}</h5>
+                <p class="mb-0">{{ tool.licence }}</p>
+                {% if tool.licenceNotes %}
+                  <p class="mb-0">{{ tool.licenceNotes }}</p>
+                {% endif %}
+              {% endif %}
+              {% if tool.furtherInformation %}
+                <h5 class="mt-4">{% translate "weitere Informationen" %}</h5>
+                <p class="mb-0">{{ tool.furtherInformation }}</p>
+              {% endif %}
+              {% if tool.alternatives %}
+                <h5 class="mt-4">{% translate "Alternativen" %}</h5>
+                <p class="mb-0">{{ tool.alternatives }}</p>
+              {% endif %}
+
+              {% if specificApplications %}
+                <h5 class="mt-4">{% translate "konkrete Anwendungsfälle" %}</h5>
+                <p class="mb-0">
+                  {% for referenceNumber_id in specificApplications %}
+
+                    <a href="https://ewb.innoecos.com/Group/{{ referenceNumber_id }}/Informationen/Start/Blog"
+                       target="_blank">{{ referenceNumber_id }}
+                      <br />
+                    </a>
+
+                  {% endfor %}
+                </p>
+              {% endif %}
+
+              {% if tool.provider %}
+                <h5 class="mt-4">{% translate "Entwickler/ Maintainer" %}</h5>
+                <p class="mb-0">{{ tool.provider }}</p>
+              {% endif %}
+              {% if classifications %}
+                <h5 class="mt-4">{% translate "generelle Art des Werkzeugs" %}</h5>
+                <p class="mb-0">{{ classifications }}</p>
+              {% endif %}
+              {% if focus %}
+                <h5 class="mt-4">{% translate "Fokus der Anwendung" %}</h5>
+                <p class="mb-0">{{ focus }}</p>
+              {% endif %}
+              {% if tool.released %}
+                <h5 class="mt-4">{% translate "Ist das Tool veröffentlicht?" %}</h5>
+                {% if tool.released == True %}
+                  <p class="mb-0">{% translate "Ja" %}</p>
+                  {% if tool.yearOfRelease %}
+                    <h5 class="mt-4">{% translate "Veröffentlichungsjahr" %}</h5>
+                    <p class="mb-0">{{ tool.yearOfRelease }}</p>
+                  {% endif %}
+                {% else %}
+                  <p class="mb-0">Nein</p>
+                  {% if tool.releasedPlanned %}
+                    <h5 class="mt-4">{% translate "Ist eine Veröffentlichung geplant?" %}</h5>
+                    {% if tool.releasedPlanned == True %}
+                      <p class="mb-0">Ja</p>
+                    {% else %}
+                      <p class="mb-0">Nein</p>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+              {% if resources %}
+                <h5 class="mt-4">{% translate "Informationsquellen" %}</h5>
+                <p class="mb-0">
+                  {% for link in resources %}
+
+                    <a href="{{ link }}" target="_blank">{{ link }}</a>
+                  </p>
+                {% endfor %}
+              {% endif %}
+              {% if tool.developmentState %}
+                <h5 class="mt-4">
+                  {% translate "Entwicklungsstand" %}
+                  - 1 : pre-Alpha
+                  - 2 : Alpha
+                  - 3 : Beta
+                  - 4 : Release Canditate
+                  - 5 : Release
+                </h5>
+                <p class="mb-0">{{ tool.developmentState }}</p>
+              {% endif %}
+              {% if tool.programmingLanguages %}
+                <h5 class="mt-4">{% translate "Programmiersprache (Umsetzung)" %}</h5>
+                <p class="mb-0">{{ tool.programmingLanguages }}</p>
+              {% endif %}

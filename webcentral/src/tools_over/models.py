@@ -19,25 +19,25 @@ from common.models import (
     TargetGroup,
     UserInterface,
     License,
+    AbstractTechnicalFocus,
 )
 
 
-class Tools(models.Model):
-    name = models.CharField(max_length=150, help_text="name", blank=True)
-    shortDescription = models.CharField(
-        max_length=1000, help_text="short description", blank=True
-    )
+class Tools(AbstractTechnicalFocus):
+    # shortDescription = models.CharField(
+    #     max_length=1000, help_text="short description", blank=True
+    # )
     applicationArea = models.ManyToManyField(
         ApplicationArea,
         db_comment="What do the developers describe as the area of application of their digital tool",
     )
     usage = models.ManyToManyField(Usage)
-    targetGroup = models.ManyToManyField(
-        TargetGroup,
-        blank=True,
-        null=True,
-    )
-    lifeCyclePhase = models.ManyToManyField(LifeCyclePhase)
+    # targetGroup = models.ManyToManyField(
+    #     TargetGroup,
+    #     blank=True,
+    #     null=True,
+    # )
+    # lifeCyclePhase = models.ManyToManyField(LifeCyclePhase)
     userInterface = models.ManyToManyField(
         UserInterface,
         blank=True,
@@ -48,74 +48,74 @@ class Tools(models.Model):
         help_text="additional notes for userInterface",
         blank=True,
     )
-    accessibility = models.ManyToManyField(Accessibility)
+    # accessibility = models.ManyToManyField(Accessibility)
     lastUpdate = models.CharField(
         max_length=100,
         help_text="time (year/month/date) of the last update",
         blank=True,
     )
     # license = models.CharField(max_length=500, help_text="license", blank=True)
-    license = models.ManyToManyField(License) 
+    # license = models.ManyToManyField(License) 
     licenseNotes = models.CharField(
         max_length=500, help_text="license notes", blank=True
     )
-    furtherInformation = models.CharField(
-        max_length=500, help_text="further information", blank=True
-    )
-    alternatives = models.CharField(
-        max_length=300,
-        help_text="similar tool(s) that can serve as alternatives",
-        blank=True,
-    )
-    specificApplication = models.ManyToManyField(
-        Subproject,
-        help_text="specific application of the tool in EWB projects (project name + fkz)",
-        blank=True,
-        null=True,
-    )
-
-    provider = models.CharField(
-        max_length=300,
-        blank=True,
-    )
-    released = models.BooleanField(
-        blank=True,
-        null=True,
-        help_text="whether the tool is released or not",
-    )
+    # furtherInformation = models.CharField(
+    #     max_length=500, help_text="further information", blank=True
+    # )
+    # alternatives = models.CharField(
+    #     max_length=300,
+    #     help_text="similar tool(s) that can serve as alternatives",
+    #     blank=True,
+    # )
+    # specificApplication = models.ManyToManyField(
+    #     Subproject,
+    #     help_text="specific application of the tool in EWB projects (project name + fkz)",
+    #     blank=True,
+    #     null=True,
+    # )
+    #
+    # provider = models.CharField(
+    #     max_length=300,
+    #     blank=True,
+    # )
+    # released = models.BooleanField(
+    #     blank=True,
+    #     null=True,
+    #     help_text="whether the tool is released or not",
+    # )
     releasedPlanned = models.BooleanField(
         blank=True,
         null=True,
         help_text="whether publication is planned",
     )
-    yearOfRelease = models.CharField(
-        blank=True,
-        max_length=100,
-        help_text="year of software release (planned or conducted)",
-    )
-    resources = models.CharField(
-        max_length=1000,
-        blank=True,
-        help_text="documentation, literature, git-Repos, etc.",
-    )
-    choices = [
-        (1, "pre-alpha"),
-        (2, "alpha"),
-        (3, "beta"),
-        (4, "release candidate"),
-        (5, "release"),
-    ]
-    developmentState = models.IntegerField(
-        choices=choices,
-        null=True,
-        blank=True,
-    )
+    # yearOfRelease = models.CharField(
+    #     blank=True,
+    #     max_length=100,
+    #     help_text="year of software release (planned or conducted)",
+    # )
+    # resources = models.CharField(
+    #     max_length=1000,
+    #     blank=True,
+    #     help_text="documentation, literature, git-Repos, etc.",
+    # )
+    # choices = [
+    #     (1, "pre-alpha"),
+    #     (2, "alpha"),
+    #     (3, "beta"),
+    #     (4, "release candidate"),
+    #     (5, "release"),
+    # ]
+    # developmentState = models.IntegerField(
+    #     choices=choices,
+    #     null=True,
+    #     blank=True,
+    # )
 
-    programmingLanguages = models.CharField(
-        max_length=500,
-        blank=True,
-        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
-    )
+    # programmingLanguages = models.CharField(
+    #     max_length=500,
+    #     blank=True,
+    #     db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+    # )
     frameworksLibraries = models.CharField(
         max_length=500,
         blank=True,
@@ -124,11 +124,11 @@ class Tools(models.Model):
         max_length=500,
         blank=True,
     )
-    scale = models.ManyToManyField(
-        Scale,
-        blank=True,
-        null=True,
-    )
+    # scale = models.ManyToManyField(
+    #     Scale,
+    #     blank=True,
+    #     null=True,
+    # )
 
     technicalStandardsNorms = models.ManyToManyField(
         Norm,
@@ -140,14 +140,14 @@ class Tools(models.Model):
         blank=True,
         null=True,
     )
-    image = models.ImageField(
-        null=True,
-        blank=True,
-    )
+    # image = models.ImageField(
+    #     null=True,
+    #     blank=True,
+    # )
 
-    classification = models.ManyToManyField(Classification)
-    focus = models.ManyToManyField(Focus)
-
+    # classification = models.ManyToManyField(Classification)
+    # focus = models.ManyToManyField(Focus)
+    #
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
 

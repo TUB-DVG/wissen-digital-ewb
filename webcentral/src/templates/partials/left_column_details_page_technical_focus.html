@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load template_tags %}
+{% load static %}
+<h6>{{ boxObject.name }}</h6>
+<p>
+  <a href="{% url 'showImage' boxObject.id %}">
+    <img src="{% static boxObject.image %}"
+         style="width: 287px;
+                height: 203px" />
+  </a>
+</p>
+<p>
+  Updates: {{ boxObject.lastUpdate }}
+</p>
+<p>
+  {% translate 'Fokus' %}: {{ boxObject|get_m2m_or_attr:"focus__focus" }}
+</p>
+<p>
+  {% translate 'Klassifikation' %}: {{ boxObject|get_m2m_or_attr:"classification__classification" }}
+</p>
+<p>
+  {% translate 'Anwendungsfall' %}: {{ boxObject|get_m2m_or_attr:"applicationArea__applicationArea" }}
+</p>
+

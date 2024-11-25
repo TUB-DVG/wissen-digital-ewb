@@ -3,6 +3,8 @@
 """
 
 from django.db import models
+from project_listing.models import Subproject
+from django.db.models.functions import Now
 
 
 class DbDiff(models.Model):
@@ -14,6 +16,7 @@ class DbDiff(models.Model):
     identifier = models.CharField(max_length=100)
     diffStr = models.TextField()
     executed = models.BooleanField(default=False)
+
 
 
 class Literature(models.Model):
@@ -327,3 +330,126 @@ class Scale(models.Model):
     class Meta:
 
         app_label = "tools_over"
+
+class History(models.Model):
+    """Abstract model class for the history models in each app.
+
+    """
+    identifer = models.CharField(max_length=300)
+    stringifiedObj = models.TextField()
+    loaded = models.BooleanField(default=False)
+    updateDate = models.DateTimeField(db_default=Now())
+    
+    class Meta:
+        abstract = True
+
+class AbstractTechnicalFocus(models.Model):
+    """Abstract model, which holds the attributes, which are all present in the
+    models Tools, Protocol, Dataset and Norm
+
+    """
+    name = models.CharField(max_length=200, db_comment="Name of the item")
+    focus = models.ManyToManyField(
+        Focus,
+        max_length=200,
+        db_comment="Focus identifier - Selected focus (Definied by Wissensplattform)",
+    )
+    classification = models.ManyToManyField(
+        Classification,
+        db_comment="General type of dataset - Which type or of to which typ belongs the dataset. E.g. framework, programming language, ...",
+    )
+    lifeCyclePhase = models.ManyToManyField(
+        LifeCyclePhase,
+        db_comment="Life cycle phase - In which phase of the product life cycle is the tool used?",
+    )
+    scale = models.ManyToManyField(
+        Scale,
+        db_comment="Spatial scale of the use cases - On what scale is the dataset used?",
+    )
+    targetGroup = models.ManyToManyField(
+        TargetGroup,
+        db_comment="Target group - Who do you say the digital item is aimed at?",
+    ) 
+    alternatives = models.CharField(
+        max_length=300,
+        help_text="Alternatives - Items with equal or likewise use case.",
+        blank=True,
+        null=True,
+    )
+    choices = [
+        (1, "pre-alpha"),
+        (2, "alpha"),
+        (3, "beta"),
+        (4, "release candidate"),
+        (5, "release"),
+    ]
+    developmentState = models.IntegerField(
+        choices=choices,
+        null=True,
+        blank=True,
+        db_comment="Level of development - What is the curent development status",
+    ) 
+    furtherInformation = models.CharField(
+        max_length=1200,
+        null=True,
+        blank=True,
+        db_comment="Further information - Information of miscellaneous subjects",
+    )
+
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        db_comment="File name of image file. Located in media-folder.",
+    )
+    released = models.BooleanField(
+        blank=True,
+        null=True,
+        db_comment="Released - Is the publication done?",
+    )
+    license = models.ManyToManyField(
+        License,
+        db_comment="under which license was the item published and are there any costs associated with using the dataset?",
+    ) 
+    accessibility = models.ManyToManyField(
+        Accessibility,
+        db_comment="Accessibility - How accessible is the dataset?",
+    )
+    programmingLanguages = models.CharField(
+        max_length=500,
+        blank=True,
+        null=True,
+        db_comment="Programming languages - Which programming languages are mainly used to implment the item.",
+    )
+    provider = models.CharField(
+        max_length=300,
+        null=True,
+        blank=True,
+        db_comment="Developers/maintainers/provider - Person or organisation responsible for the development of the item.",
+    )  
+    resources = models.CharField(
+        max_length=1000,
+        null=True,
+        blank=True,
+        db_comment="Sources of information - sources for further information about the item e.g. git repo, project website, ...",
+    )  
+    description = models.CharField(
+        max_length=1100,
+        null=True,
+        blank=True,
+        db_comment="Description of the item",
+    ) 
+    specificApplication = models.ManyToManyField(
+        Subproject,
+        blank=True,
+        db_comment="Specific use cases - Identification of concrete examples of the use of the item in the construction sector/energy transition (equals project number)",
+    ) 
+    yearOfRelease = models.CharField(
+        blank=True,
+        max_length=100,
+        help_text="year of software release (planned or conducted)",
+        db_comment="Year of publication - If the item is published, in which year was it released?",
+        null=True,
+    ) 
+    
+    class Meta:
+        abstract = True

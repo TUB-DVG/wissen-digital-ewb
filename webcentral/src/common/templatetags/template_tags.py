@@ -31,6 +31,8 @@ def get_m2m_or_attr(djangoModelObj, argStr):
                 attributeInReferencedTable, str
             ):
                 returnStr = ""
+                if len(getattr(djangoModelObj, m2mAttr).all()) == 0:
+                    returnStr = "n/a "
                 for connectedObj in getattr(djangoModelObj, m2mAttr).all():
                     returnStr += (
                         getattr(connectedObj, attributeInReferencedTable) + ", "
@@ -41,7 +43,7 @@ def get_m2m_or_attr(djangoModelObj, argStr):
                     "Only one __ should be present in the argument string."
                 )
         except:
-            pass
+            return "n/a"
 
     else:
         return get_attribute(djangoModelObj, argStr)

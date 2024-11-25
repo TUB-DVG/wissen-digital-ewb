@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.core import serializers
 
-from .models import Dataset, HistoryDataset
+from .models import Dataset, History
 
 admin.site.register(Dataset)
 
@@ -55,4 +55,4 @@ class HistoryAdmin(admin.ModelAdmin):
         )
 
 
-admin.site.register(HistoryDataset, HistoryAdmin)
+admin.site.register(History, HistoryAdmin)

@@ -11,7 +11,7 @@ from .models import (
 class ToolsTranslationOptions(TranslationOptions):
     fields = (
         # "name",
-        "shortDescription",
+        "description",
         "userInterfaceNotes",
         "lastUpdate",
         "licenseNotes",

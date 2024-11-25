@@ -30,7 +30,7 @@ def index(request):
         Dataset.objects.filter(classification=classificationWeatherdata)
     )
     weatherdata += list(Tools.objects.filter(classification=classificationWeatherdata))
-    
+        
     filtered_by = [None] * 2
     searched = None
 
@@ -57,8 +57,11 @@ def index(request):
     searched = request.GET.get("searched", "")
     if searched != "":
         complexCriterion &= Q(name__icontains=searched)
-    weatherdata = list(Dataset.objects.filter(complexCriterion))
-    weatherdata += list(Tools.objects.filter(complexCriterion))
+    complexCriterion &= Q(classification=classificationWeatherdata) 
+    weatherdataDatasets = Dataset.objects.filter(complexCriterion)
+    weatherdataTools = Tools.objects.filter(complexCriterion)  
+    weatherdata = list(weatherdataDatasets)
+    weatherdata += list(weatherdataTools)
     weatherdata = list(sorted(weatherdata, key=lambda obj: obj.name))
 
     weatherdata_paginator = Paginator(weatherdata, 12)
@@ -131,7 +134,10 @@ def weatherdata_view(request, id):
         "focusBorder": "technical",
     }
 
-    weatherdata = get_object_or_404(Weatherdata, pk=id)
+    try:
+        weatherdata = Dataset.objects.get(pk=id)
+    except:
+        weatherdata = get_object_or_404(Tools, pk=id)
 
     letztes_update = UpdateProperties(
         "bi bi-patch-exclamation-fill", "letztes Update", "text-danger"
@@ -141,25 +147,27 @@ def weatherdata_view(request, id):
     )
 
     # changing labels and icon
-    update_properties = letztes_update
-    if weatherdata.last_update == "laufend":
-        update_properties = laufende_updates
-
-    category_icon = category_icons["default"]
-    if weatherdata.category in category_icons:
-        category_icon = category_icons[weatherdata.category]
-
+    # update_properties = letztes_update
+    # if weatherdata.lastUpdate == "laufend":
+    #     update_properties = laufende_updates
+    #
+    # category_icon = category_icons["default"]
+    # if weatherdata.classification in category_icons:
+    #     category_icon = category_icons[weatherdata.category]
+    #
     context = {
-        "weatherdata": weatherdata,
-        "letztes_update": update_properties,
-        "letztes_update_class": update_properties.class_name,
-        "letztes_update_color": update_properties.color_class,
-        "letztes_update_label": update_properties.label,
-        "category_icon": category_icon,
+        # "weatherdata": weatherdata,
+        # "letztes_update": update_properties,
+        # "letztes_update_class": update_properties.class_name,
+        # "letztes_update_color": update_properties.color_class,
+        # "letztes_update_label": update_properties.label,
+        # "category_icon": category_icon,
         "focusBorder": "technical",
     }
-
-    return render(request, "weatherdata_over/weatherdata-detail.html", context)
+    context["boxObject"] = weatherdata
+    context["leftColumn"] = "partials/left_column_details_page_technical_focus.html" 
+    context["rightColumn"] = "weatherdata_over/details_right_column.html" 
+    return render(request, "pages/detailsPage.html", context)
 
 
 def wetterdienst(request):
