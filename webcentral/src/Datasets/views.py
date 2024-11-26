@@ -148,14 +148,12 @@ def index(request):
             },
         ],
         "subHeading1": _("Anbieter"),
-        "subHeadingAttr1": "provider", 
+        "subHeadingAttr1": "provider",
         "subHeading2": _("Abdeckung"),
-        "subHeadingAttr2": _("coverage"), 
+        "subHeadingAttr2": _("coverage"),
     }
     if filtering:
-        return render(
-            request, "partials/listing_results.html", context
-        )
+        return render(request, "partials/listing_results.html", context)
     return render(request, "pages/grid_listing.html", context)
 
 
@@ -175,13 +173,15 @@ def dataset_view(request, id):
         # "useCaseCategory": useCaseCategory,
         # "categoryDataset": categoryDataset,
         "name": nameDataset,
-        "imageInBackButton": "assets/images/backArrowTechnical.svg",  
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Datensätze"),
-        "backLink": "dataset_list",  
-        "focusBorder": "technical", 
+        "backLink": "dataset_list",
+        "focusBorder": "technical",
     }
     context["boxObject"] = dataset
-    context["leftColumn"] = "partials/left_column_details_page_technical_focus.html" 
-    context["rightColumn"] = "datasets_over/details_right_column.html" 
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "datasets_over/details_right_column.html"
     return render(request, "pages/detailsPage.html", context)
     # return render(request, "datasets_over/dataset-detail.html", context)

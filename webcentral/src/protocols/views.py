@@ -132,9 +132,9 @@ def protocol(request):
         "model": "Protocols",
         "urlDetailsPage": "TechnicalStandards_protocol_details",
         "subHeading1": _("Sicherheit"),
-        "subHeadingAttr1": "security", 
+        "subHeadingAttr1": "security",
         "subHeading2": _("Medium"),
-        "subHeadingAttr2": _("supportedTransmissionMediuems"), 
+        "subHeadingAttr2": _("supportedTransmissionMediuems"),
     }
     if filtering:
         return render(
@@ -214,6 +214,8 @@ def protocolDetailView(request, id):
         "focusBorder": "technical",
     }
     context["boxObject"] = protocols
-    context["leftColumn"] = "partials/left_column_details_page_technical_focus.html" 
-    context["rightColumn"] = "protocols/details_right_column.html" 
-    return render(request, "pages/detailsPage.html", context)  
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "protocols/details_right_column.html"
+    return render(request, "pages/detailsPage.html", context)

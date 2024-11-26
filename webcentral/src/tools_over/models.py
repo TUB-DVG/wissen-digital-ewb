@@ -55,7 +55,7 @@ class Tools(AbstractTechnicalFocus):
         blank=True,
     )
     # license = models.CharField(max_length=500, help_text="license", blank=True)
-    # license = models.ManyToManyField(License) 
+    # license = models.ManyToManyField(License)
     licenseNotes = models.CharField(
         max_length=500, help_text="license notes", blank=True
     )

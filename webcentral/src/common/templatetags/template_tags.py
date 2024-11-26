@@ -38,8 +38,8 @@ def get_m2m_or_attr(djangoModelObj, argStr):
                 if len(getattr(djangoModelObj, m2mAttr).all()) == 0:
                     returnStr = "n/a  "
                 for connectedObj in getattr(djangoModelObj, m2mAttr).all():
-                    returnStr += (
-                       _processM2MToStr(connectedObj, attributeInReferencedTable)   
+                    returnStr += _processM2MToStr(
+                        connectedObj, attributeInReferencedTable
                     )
                 return returnStr[:-2]
             else:
@@ -54,11 +54,9 @@ def get_m2m_or_attr(djangoModelObj, argStr):
 
 
 def _processM2MToStr(connectedObj, attributeInReferencedTable):
-    """Process the M2M 
-
-    """
+    """Process the M2M"""
     if isinstance(connectedObj, Subproject):
-        refNumb = getattr(connectedObj, attributeInReferencedTable) 
-        return f"<a href='https://ewb.innoecos.com/Group/{refNumb}' target='_blank'>{refNumb}<br /></a>" 
-    
-    return getattr(connectedObj, attributeInReferencedTable) + ", " 
+        refNumb = getattr(connectedObj, attributeInReferencedTable)
+        return f"<a href='https://ewb.innoecos.com/Group/{refNumb}' target='_blank'>{refNumb}<br /></a>"
+
+    return getattr(connectedObj, attributeInReferencedTable) + ", "

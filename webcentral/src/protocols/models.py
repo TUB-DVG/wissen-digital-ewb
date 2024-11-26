@@ -11,7 +11,7 @@ from common.models import (
     LifeCyclePhase,
     TargetGroup,
     License,
-    AbstractTechnicalFocus, 
+    AbstractTechnicalFocus,
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm

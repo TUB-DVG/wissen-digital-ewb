@@ -12,12 +12,14 @@ from common.models import (
     Classification,
     License,
     Usage,
-    AbstractTechnicalFocus, 
+    AbstractTechnicalFocus,
 )
 from project_listing.models import Subproject
 
 
-class Norm(AbstractTechnicalFocus,):
+class Norm(
+    AbstractTechnicalFocus,
+):
     # name = models.CharField(
     #     max_length=150,
     #     help_text="name of the norm",

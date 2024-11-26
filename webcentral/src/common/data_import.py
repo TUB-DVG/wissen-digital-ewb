@@ -216,7 +216,7 @@ class DataImport:
         allNames = [
             getattr(x, attributeNameInModel) for x in djangoModel.objects.all()
         ]
-        allNames = [element for element in allNames if element is not None] 
+        allNames = [element for element in allNames if element is not None]
         listOfClosestMatches = difflib.get_close_matches(
             categoryString, allNames, n=1, cutoff=0.8
         )
@@ -281,11 +281,11 @@ class DataImport:
                         )[0]
                     )
                 else:
-                   listOfM2Mobjs.append(
+                    listOfM2Mobjs.append(
                         djangoModel.objects.get_or_create(
                             license=objString,
                         )[0]
-                    ) 
+                    )
             return listOfM2Mobjs
         else:
             attrNamesOfModel = [

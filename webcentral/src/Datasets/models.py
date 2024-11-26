@@ -14,14 +14,14 @@ from common.models import (
     History,
 )
 
+
 class Dataset(AbstractTechnicalFocus):
 
-    
     applicationArea = models.ManyToManyField(
         ApplicationArea,
         db_comment="Typical application area in which the dataset is used.",
     )
-    
+
     availability = models.CharField(
         max_length=200,
         null=True,
@@ -34,35 +34,34 @@ class Dataset(AbstractTechnicalFocus):
         blank=True,
         db_comment="Geographical coverage - regions covered by the dataset",
     )
-    
+
     resolution = models.CharField(
         max_length=500,
         null=True,
         blank=True,
         db_comment="Spatial resolution - spatial detail level of the data",
     )
-    
+
     licenseNotes = models.CharField(
         max_length=500,
         null=True,
         blank=True,
         db_comment="Further information regarding the used license.",
     )
-    
+
     lastUpdate = models.CharField(
         max_length=100,
         db_comment="Last update - When was the last update done?",
         blank=True,
         null=True,
     )
-    
+
     releasedPlanned = models.BooleanField(
         blank=True,
         null=True,
         help_text="whether publication is planned",
         db_comment="Publication planned - If the item is not yet published, are there plans to publish it?",
     )
-    
 
     def __str__(self):
         return self.name
@@ -160,5 +159,3 @@ class Dataset(AbstractTechnicalFocus):
 
 class History(History):
     """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""
-
-

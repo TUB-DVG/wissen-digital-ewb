@@ -8,7 +8,7 @@ from django.db.models import Q
 
 from Datasets.models import Dataset
 from tools_over.models import Tools
-from common.models import Classification 
+from common.models import Classification
 from common.views import createQ
 
 
@@ -25,12 +25,16 @@ def index(request):
     """
     shows the list of all projects including some key features
     """
-    classificationWeatherdata = Classification.objects.get(classification_de="Wetterdaten")
+    classificationWeatherdata = Classification.objects.get(
+        classification_de="Wetterdaten"
+    )
     weatherdata = list(
         Dataset.objects.filter(classification=classificationWeatherdata)
     )
-    weatherdata += list(Tools.objects.filter(classification=classificationWeatherdata))
-        
+    weatherdata += list(
+        Tools.objects.filter(classification=classificationWeatherdata)
+    )
+
     filtered_by = [None] * 2
     searched = None
 
@@ -57,9 +61,9 @@ def index(request):
     searched = request.GET.get("searched", "")
     if searched != "":
         complexCriterion &= Q(name__icontains=searched)
-    complexCriterion &= Q(classification=classificationWeatherdata) 
+    complexCriterion &= Q(classification=classificationWeatherdata)
     weatherdataDatasets = Dataset.objects.filter(complexCriterion)
-    weatherdataTools = Tools.objects.filter(complexCriterion)  
+    weatherdataTools = Tools.objects.filter(complexCriterion)
     weatherdata = list(weatherdataDatasets)
     weatherdata += list(weatherdataTools)
     weatherdata = list(sorted(weatherdata, key=lambda obj: obj.name))
@@ -76,7 +80,6 @@ def index(request):
         # filtered_by[0],
         # "lizenz":
         # filtered_by[1],
-          
         "heading": _("Überblick über Wetterdaten-Services"),
         "nameOfTemplate": "weatherdata",
         "urlName": "publicationPage",
@@ -112,10 +115,9 @@ def index(request):
         "focusBorder": "technical",
         "urlDetailsPage": "weatherdata_view",
         "subHeading1": _("Anbieter"),
-        "subHeadingAttr1": "provider", 
+        "subHeadingAttr1": "provider",
         "subHeading2": _("Lizenz"),
         "subHeadingAttr2": _("license__license"),
- 
     }
     if filtering:
         return render(
@@ -123,9 +125,7 @@ def index(request):
             "partials/listing_results.html",
             context,
         )
-    return render(
-        request, "pages/grid_listing.html", context
-    )
+    return render(request, "pages/grid_listing.html", context)
 
 
 def weatherdata_view(request, id):
@@ -169,14 +169,16 @@ def weatherdata_view(request, id):
         # "letztes_update_color": update_properties.color_class,
         # "letztes_update_label": update_properties.label,
         # "category_icon": category_icon,
-        "imageInBackButton": "assets/images/backArrowTechnical.svg",  
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Wetterdaten"),
-        "backLink": "weatherdata_list",  
+        "backLink": "weatherdata_list",
         "focusBorder": "technical",
     }
     context["boxObject"] = weatherdata
-    context["leftColumn"] = "partials/left_column_details_page_technical_focus.html" 
-    context["rightColumn"] = "weatherdata_over/details_right_column.html" 
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "weatherdata_over/details_right_column.html"
     return render(request, "pages/detailsPage.html", context)
 
 

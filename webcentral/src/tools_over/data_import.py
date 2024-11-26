@@ -21,7 +21,7 @@ from common.models import (
     LifeCyclePhase,
     UserInterface,
     Accessibility,
-    Scale, 
+    Scale,
     License,
 )
 from TechnicalStandards.models import (
@@ -211,7 +211,7 @@ class DataImportApp(DataImport):
         )
         licenseList = self._iterateThroughListOfStrings(
             processedLicenseList, License
-        )        
+        )
         licenseNotes = row[header.index("licenseNotes")]
         furtherInfos = row[header.index("furtherInformation")]
         alternatives = row[header.index("alternatives")]
@@ -307,9 +307,7 @@ class DataImportApp(DataImport):
         technicalStandardsProtocolsElements = Protocol.objects.filter(
             name__in=technicalStandardsProtocolsList
         )
-        licenseElements = License.objects.filter(
-            license__in=licenseList
-        )         
+        licenseElements = License.objects.filter(license__in=licenseList)
 
         obj = Tools(
             name=name,

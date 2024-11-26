@@ -60,25 +60,38 @@ class TestDataImport(TestCase):
             == "Benchmark for linear solvers."
         )
 
-        weatherdataCategory = Classification.objects.filter(classification_de="Wetterdaten")
+        weatherdataCategory = Classification.objects.filter(
+            classification_de="Wetterdaten"
+        )
         self.assertEqual(len(weatherdataCategory), 1)
-        self.assertEqual(weatherdataCategory[0].classification_en, "Weather data")
+        self.assertEqual(
+            weatherdataCategory[0].classification_en, "Weather data"
+        )
 
-        datasetsWeatherdata = Dataset.objects.filter(classification=weatherdataCategory[0])
+        datasetsWeatherdata = Dataset.objects.filter(
+            classification=weatherdataCategory[0]
+        )
         self.assertGreater(len(datasetsWeatherdata), 4)
-        
+
         openDataDwd = Dataset.objects.get(name="Open Data DWD")
         licensesOfOpenDwd = openDataDwd.license.all()
         self.assertEqual(len(licensesOfOpenDwd), 1)
         self.assertEqual(licensesOfOpenDwd[0].license_de, "Open Data")
         self.assertEqual(licensesOfOpenDwd[0].license_en, "Open Data")
 
-        centralEuropeRefinedWD = Dataset.objects.get(name="The Central Europe Refined analysis version 1 (CER v1)")
+        centralEuropeRefinedWD = Dataset.objects.get(
+            name="The Central Europe Refined analysis version 1 (CER v1)"
+        )
         licensesOfCentralEuropeRefined = centralEuropeRefinedWD.license.all()
-        
+
         self.assertEqual(len(licensesOfCentralEuropeRefined), 1)
-        self.assertEqual(licensesOfCentralEuropeRefined[0].license_de, "Frei nutzbar")
-        self.assertEqual(licensesOfCentralEuropeRefined[0].license_en, "Free to use")
+        self.assertEqual(
+            licensesOfCentralEuropeRefined[0].license_de, "Frei nutzbar"
+        )
+        self.assertEqual(
+            licensesOfCentralEuropeRefined[0].license_en, "Free to use"
+        )
+
 
 class TestDataUpdate(TestCase):
     """ """

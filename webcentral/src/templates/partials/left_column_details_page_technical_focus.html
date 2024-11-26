@@ -3,14 +3,14 @@
 {% load static %}
 <div class="nameHeading">{{ boxObject.name }}</div>
 {% if boxObject.image %}
-<p>
-  <a href="{% url 'showImage' boxObject.id %}">
-                    <img src=" {{ boxObject.image.url }}"
-                         class=""
-                         style="max-height: 300px"
-                         alt="tool image" />
-  </a>
-</p>
+  <p>
+    <a href="{% url 'showImage' boxObject.id %}">
+      <img src=" {{ boxObject.image.url }}"
+           class=""
+           style="max-height: 300px"
+           alt="tool image" />
+    </a>
+  </p>
 {% endif %}
 <p>
   <span class="columnHeading">Updates:</span> {{ boxObject.lastUpdate }}
