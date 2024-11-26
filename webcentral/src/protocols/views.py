@@ -212,6 +212,9 @@ def protocolDetailView(request, id):
         "osiLayers": osiLayers,
         "buildingAutomationLayer": buildingAutomationLayer,
         "focusBorder": "technical",
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Protokolle"),
+        "backLink": "TechnicalStandards_protocol_list", 
     }
     context["boxObject"] = protocols
     context["leftColumn"] = (

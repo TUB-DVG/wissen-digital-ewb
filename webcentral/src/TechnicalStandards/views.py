@@ -176,7 +176,7 @@ def norm(request):
     if filtering:
         return render(
             request,
-            "TechnicalStandards/norm-listings-results.html",
+            "partials/listing_results.html",
             context,
         )
     if isAjaxRequest:
@@ -188,7 +188,7 @@ def norm(request):
         dataDict = {"html_from_view": html}
         return JsonResponse(data=dataDict, safe=False)
 
-    return render(request, "TechnicalStandards/norm-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def normDetailView(request, id):
@@ -200,18 +200,23 @@ def normDetailView(request, id):
     name = norms.name  # .split(", ") ### to check if split is needed
     title = norms.title
     shortDescription = norms.shortDescription
-    source = norms.source  # .split(", ")
+    # source = norms.source  # .split(", ")
     link = norms.link
     context = {
         "technicalStandards": norms,
         "name": name,
         "shortDescription": shortDescription,
         "title": title,
-        "source": source,
+        # "source": source,
         "link": link,
         "focusBorder": "technical",
     }
-    return render(request, "TechnicalStandards/norm-detail.html", context)
+    context["boxObject"] = norms
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "TechnicalStandards/details_right_column.html"
+    return render(request, "pages/detailsPage.html", context)  
 
 
 def protocolComparison(request):
