@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+  {% translate "Überblick über Wetterdaten-Dienste" %}
+{% endblock %}
+{% block content %}
+  {% load static %}
+
+  <!DOCTYPE html>
+
+</head>
+
+<body>
+
+  <!-- **************** MAIN CONTENT START **************** -->
+  <main>
+
+    <section class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="descriptionBox">
+            {% include "partials/explanation_show_more.html" %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================
+Page content START -->
+    <section class="pt-0">
+      <div class="container {{ focusBorder }}-cards">
+        <!-- Filter bar START -->
+
+        {% include "partials/search-bar.html" %}
+        <div class="row mt-3">
+          <!-- Main content START -->
+
+          <div class="col-12">
+
+            <!-- Course Grid START -->
+
+            <div class="row g-4"  id="listing-results">
+
+              {% include 'partials/listing_results.html' %}
+
+            </div>
+            <!-- Course Grid END -->
+            <!-- Pagination START -->
+
+            <!-- Pagination END -->
+
+          </div>
+          <!-- Main content END -->
+        </div>
+        <!-- Container END -->
+      </section>
+      <!-- =======================
+Page content END -->
+
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->
+
+  {% endblock %}

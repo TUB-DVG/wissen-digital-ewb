@@ -17,7 +17,10 @@ from django.db.models.functions import TruncDate
 from django.template.response import TemplateResponse
 from django.urls import path
 
-from .models import DbDiff
+from .models import (
+    DbDiff,
+    License,
+)
 
 
 class AggregatedSessionByDay(admin.ModelAdmin):
@@ -144,4 +147,5 @@ class DbDiffAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DbDiff, DbDiffAdmin)
+admin.site.register(License)
 # Define a new admin class for the aggregated session elements

@@ -5,7 +5,7 @@
 from django.db import models
 from project_listing.models import Subproject
 from django.db.models.functions import Now
-
+from django.utils.translation import gettext as _
 
 class DbDiff(models.Model):
     """ORM-model definition of the `DBDiff`, which is instanciated if
@@ -54,7 +54,8 @@ class License(models.Model):
         blank=True,
         null=True,
     )
-
+    def __str__(self):
+        return str(self.license)
 
 class ClassificationManager(models.Manager):
     def get_by_natural_key(self, classification_de, classification_en):
@@ -451,5 +452,27 @@ class AbstractTechnicalFocus(models.Model):
         null=True,
     ) 
     
+    @property
+    def devStateStr(self):
+        """Return the string, which is meant by the number in the database
+
+            1 : pre-Alpha
+            2 : Alpha
+            3 : Beta
+            4 : Release Canditate
+            5 : Release 
+        """
+        mappingDict = {
+            1: "pre-Alpha",
+            2: "Alpha",
+            3: "Beta",
+            4: _("Veröffentlichungskandidat"),
+            5: _("Veröffentlicht"),
+        }
+
+        if self.developmentState is None:
+            return "n/a"
+        return mappingDict[self.developmentState]
+
     class Meta:
         abstract = True

@@ -130,22 +130,27 @@ def protocol(request):
         "focusBorder": "technical",
         "renderComparisonRadio": True,
         "model": "Protocols",
+        "urlDetailsPage": "TechnicalStandards_protocol_details",
+        "subHeading1": _("Sicherheit"),
+        "subHeadingAttr1": "security", 
+        "subHeading2": _("Medium"),
+        "subHeadingAttr2": _("supportedTransmissionMediuems"), 
     }
     if filtering:
         return render(
             request,
-            "TechnicalStandards/protocol-listings-results.html",
+            "partials/listing_results.html",
             context,
         )
     isAjaxRequest = request.headers.get("x-requested-with") == "XMLHttpRequest"
     if isAjaxRequest:
         html = render_to_string(
-            template_name="TechnicalStandards/protocol-listings-results.html",
+            template_name="partials/listing_results.html",
         )
         dataDict = {"html_from_view": html}
         return JsonResponse(data=dataDict, safe=False)
 
-    return render(request, "TechnicalStandards/protocol-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def protocolDetailView(request, id):
@@ -208,4 +213,7 @@ def protocolDetailView(request, id):
         "buildingAutomationLayer": buildingAutomationLayer,
         "focusBorder": "technical",
     }
-    return render(request, "TechnicalStandards/protocol-detail.html", context)
+    context["boxObject"] = protocols
+    context["leftColumn"] = "partials/left_column_details_page_technical_focus.html" 
+    context["rightColumn"] = "protocols/details_right_column.html" 
+    return render(request, "pages/detailsPage.html", context)  

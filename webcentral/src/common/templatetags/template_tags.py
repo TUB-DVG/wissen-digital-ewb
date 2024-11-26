@@ -5,12 +5,16 @@ django HTML-templates.
 
 from django import template
 
+from project_listing.models import Subproject
+
 register = template.Library()
 
 
 @register.filter
 def get_attribute(value, arg):
     """Gets an attribute of an object dynamically from a string name"""
+    if getattr(value, arg) is None or getattr(value, arg) == "":
+        return "n/a"
     return getattr(value, arg)
 
 
@@ -32,12 +36,12 @@ def get_m2m_or_attr(djangoModelObj, argStr):
             ):
                 returnStr = ""
                 if len(getattr(djangoModelObj, m2mAttr).all()) == 0:
-                    returnStr = "n/a "
+                    returnStr = "n/a  "
                 for connectedObj in getattr(djangoModelObj, m2mAttr).all():
                     returnStr += (
-                        getattr(connectedObj, attributeInReferencedTable) + ", "
+                       _processM2MToStr(connectedObj, attributeInReferencedTable)   
                     )
-                return returnStr[:-1]
+                return returnStr[:-2]
             else:
                 raise TypeError(
                     "Only one __ should be present in the argument string."
@@ -47,3 +51,14 @@ def get_m2m_or_attr(djangoModelObj, argStr):
 
     else:
         return get_attribute(djangoModelObj, argStr)
+
+
+def _processM2MToStr(connectedObj, attributeInReferencedTable):
+    """Process the M2M 
+
+    """
+    if isinstance(connectedObj, Subproject):
+        refNumb = getattr(connectedObj, attributeInReferencedTable) 
+        return f"<a href='https://ewb.innoecos.com/Group/{refNumb}' target='_blank'>{refNumb}<br /></a>" 
+    
+    return getattr(connectedObj, attributeInReferencedTable) + ", " 

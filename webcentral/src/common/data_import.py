@@ -270,15 +270,22 @@ class DataImport:
         elif djangoModel._meta.model_name == "license":
             listOfM2Mobjs = []
             for objString in listOfStrings:
-                listOfM2Mobjs.append(
-                    djangoModel.objects.get_or_create(
-                        license=objString[0],
-                        openSourceStatus=objString[1],
-                        licensingFeeRequirement=objString[2],
-                        openSourceStatus_en=objString[3],
-                        licensingFeeRequirement_en=objString[4],
-                    )[0]
-                )
+                if isinstance(objString, tuple):
+                    listOfM2Mobjs.append(
+                        djangoModel.objects.get_or_create(
+                            license=objString,
+                            openSourceStatus=objString[1],
+                            licensingFeeRequirement=objString[2],
+                            openSourceStatus_en=objString[3],
+                            licensingFeeRequirement_en=objString[4],
+                        )[0]
+                    )
+                else:
+                   listOfM2Mobjs.append(
+                        djangoModel.objects.get_or_create(
+                            license=objString,
+                        )[0]
+                    ) 
             return listOfM2Mobjs
         else:
             attrNamesOfModel = [

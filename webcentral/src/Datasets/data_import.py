@@ -12,7 +12,7 @@ from tools_over.models import (
 )
 from project_listing.models import Subproject
 from common.models import License
-from Datasets.models import Dataset, HistoryDataset
+from Datasets.models import Dataset, History
 
 
 class DataImportApp(DataImport):
@@ -29,7 +29,7 @@ class DataImportApp(DataImport):
     DJANGO_MODEL = "Dataset"
     DJANGO_MODEL_OBJ = Dataset
     DJANGO_APP = "Datasets"
-    APP_HISTORY_MODEL_OBJ = HistoryDataset
+    APP_HISTORY_MODEL_OBJ = History
 
     MAPPING_EXCEL_DB = {
         "name": ("name", None),

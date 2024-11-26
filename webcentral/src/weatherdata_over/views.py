@@ -76,6 +76,7 @@ def index(request):
         # filtered_by[0],
         # "lizenz":
         # filtered_by[1],
+          
         "heading": _("Überblick über Wetterdaten-Services"),
         "nameOfTemplate": "weatherdata",
         "urlName": "publicationPage",
@@ -109,15 +110,21 @@ def index(request):
             },
         ],
         "focusBorder": "technical",
+        "urlDetailsPage": "weatherdata_view",
+        "subHeading1": _("Anbieter"),
+        "subHeadingAttr1": "provider", 
+        "subHeading2": _("Lizenz"),
+        "subHeadingAttr2": _("license__license"),
+ 
     }
     if filtering:
         return render(
             request,
-            "weatherdata_over/weatherdata-listings-results.html",
+            "partials/listing_results.html",
             context,
         )
     return render(
-        request, "weatherdata_over/data-service-listings.html", context
+        request, "pages/grid_listing.html", context
     )
 
 
@@ -162,6 +169,9 @@ def weatherdata_view(request, id):
         # "letztes_update_color": update_properties.color_class,
         # "letztes_update_label": update_properties.label,
         # "category_icon": category_icon,
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",  
+        "backLinkText": _("Wetterdaten"),
+        "backLink": "weatherdata_list",  
         "focusBorder": "technical",
     }
     context["boxObject"] = weatherdata
