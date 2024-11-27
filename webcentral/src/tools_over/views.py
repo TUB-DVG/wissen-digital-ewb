@@ -195,7 +195,7 @@ def index(request):
         "subHeading1": _("Nutzerschnittstelle"),
         "subHeadingAttr1": "userInterface__userInterface",
         "subHeading2": _("Updates"),
-        "subHeadingAttr2": _("lastUpdate"), 
+        "subHeadingAttr2": _("lastUpdate"),
     }
 
     if filtering:
@@ -633,8 +633,7 @@ def toolView(request, id):
         "lastUpdateLabel": updateProperties.label,
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Werkzeuge"),
-        "backLink": "TechnicalStandards_norm_list", 
-
+        "backLink": "TechnicalStandards_norm_list",
     }
     context["boxObject"] = tool
     context["leftColumn"] = (

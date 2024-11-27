@@ -29,7 +29,7 @@ class Tools(AbstractTechnicalFocus):
         db_comment="What do the developers describe as the area of application of their digital tool",
     )
     usage = models.ManyToManyField(Usage)
-    
+
     userInterface = models.ManyToManyField(
         UserInterface,
         blank=True,
@@ -45,17 +45,17 @@ class Tools(AbstractTechnicalFocus):
         help_text="time (year/month/date) of the last update",
         blank=True,
     )
-    
+
     licenseNotes = models.CharField(
         max_length=500, help_text="license notes", blank=True
     )
-    
+
     releasedPlanned = models.BooleanField(
         blank=True,
         null=True,
         help_text="whether publication is planned",
     )
-    
+
     frameworksLibraries = models.CharField(
         max_length=500,
         blank=True,
@@ -75,7 +75,7 @@ class Tools(AbstractTechnicalFocus):
         blank=True,
         null=True,
     )
-    
+
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
 
