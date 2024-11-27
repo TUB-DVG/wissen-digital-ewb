@@ -57,6 +57,6 @@ def _processM2MToStr(connectedObj, attributeInReferencedTable):
     """Process the M2M"""
     if isinstance(connectedObj, Subproject):
         refNumb = getattr(connectedObj, attributeInReferencedTable)
-        return f"<a href='https://ewb.innoecos.com/Group/{refNumb}' target='_blank'>{refNumb}<br /></a>"
+        return f"<a href='https://www.enargus.de/search/?q={refNumb}' target='_blank'>{refNumb}</a>  "
 
     return getattr(connectedObj, attributeInReferencedTable) + ", "

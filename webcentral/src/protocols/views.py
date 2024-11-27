@@ -221,4 +221,4 @@ def protocolDetailView(request, id):
         "partials/left_column_details_page_technical_focus.html"
     )
     context["rightColumn"] = "protocols/details_right_column.html"
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)

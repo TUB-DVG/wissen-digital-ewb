@@ -31,3 +31,31 @@ The image above shows where the context variables are rendered.
 
 ### Context for search_bar.html
 
+
+### Context for listing_results.html
+`page`: Contains a django pagination object, which is instanciated inside the view function. That object contains all ORM-objects, which should be listed on the gird listing.
+`urlDetailsPage`: Contains the name of the route to the details page corresponding to the current listing page. The route name can be found in the app specific `urls.py` file.
+Below listing shows an example of the route definition of the tools details page inside the `tools_over/urls.py` file. The name of the route can be found as the `name`-attribute inside the call of the `path()`-function:
+```
+path("<str:id>", views.toolView, name="tool_view"),
+```
+`subHeading1`: Sub heading name inside a listing
+`subHeadingAttr1`: Shown attribute from the underlying django ORM-model. When the elements from a Many2Many-Field should be shown please use the double underscore `__` append the attribute in the referenced model, e.g. `lifeCyclePhase__name` displays the elements connected via the `lifeCyclePhase` attribute, whereby the connected objects have a attribute `name`.The `name` attributes of the conneted elements are concatenated and separated by ",".
+`subHeading2`: Name of the shown attribute below the image in a listing element.
+`subHeadingAttr2`: To be show attribute of the ORM-object. Please read the description of `subHeadingAttr1` to understand how to render Many2Many attributes.
+
+## Details page structure
+Each listing element links to a details page, on which all attributes of the data-object are shown. The template structure of the details page is shown in the following figure:
+```{mermaid}
+graph TD;
+    pages/details_page.html --> partials/back_link_focus_color.html;
+    pages/details_page.html --> partials/images_navbar.html;
+    pages/details_page.html --> partials/left_column_details_page_technical_focus.html;
+    pages/listing_grid.html --> tools_over/details_right_column.html;
+```
+It shows one example of the composition of a details page, here for the `tools_over/` app. On top of the page are two optional widgets. The first one includes a back link to the coresponding listing site. Below that widget a optional nav-bar like widget is available, which allows to fast click through all elements of the same kind via clicking a icon. 
+Below that, the main content container is present. it is composed of 2 columns. For these 2 columns, depending on the app, different templates can be used. The path to the left column template is given via the context variable `leftColumn` while the path to the right is given via the context variable `rightColumn`. The structure can be seen in the following picture:
+![Structure of the details page template](../img/structure_details_page.png)
+
+### Context for details_page.html
+

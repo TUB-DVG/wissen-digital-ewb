@@ -192,6 +192,10 @@ def index(request):
         ],
         "renderComparisonRadio": True,
         "urlDetailsPage": "tool_view",
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"), 
     }
 
     if filtering:
@@ -627,9 +631,17 @@ def toolView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
-    }
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Werkzeuge"),
+        "backLink": "TechnicalStandards_norm_list", 
 
-    return render(request, "tools_over/tool-detail.html", context)
+    }
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 
 def AppView(request, id):

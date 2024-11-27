@@ -64,10 +64,10 @@
     <!-- ======================= Content START ======================= -->
     <div class="container {{ focusBorder }}-cards p-4 my-4 z-index-9 position-relative collapseListingRow content">
       {% if backLink %}
-        {% include "partials/backLinkInFocusColor.html" %}
+        {% include "partials/back_link_focus_color.html" %}
       {% endif %}
       {% if imageQuickLinks == True %}
-        {% include "partials/_imagesNavBar.html" %}
+        {% include "partials/images_navbar.html" %}
       {% endif %}
       <div class="row columns p-4 my-4 z-index-9 border-{{ focusBorder }} mx-auto">
         <div class="column__left">{% include leftColumn %}</div>

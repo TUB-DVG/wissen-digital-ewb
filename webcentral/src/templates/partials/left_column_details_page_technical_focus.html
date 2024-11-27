@@ -19,6 +19,9 @@
   <span class="columnHeading">{% translate 'Fokus' %}:</span> {{ boxObject|get_m2m_or_attr:"focus__focus" }}
 </p>
 <p>
+  <span class="columnHeading">{% translate 'Zielgruppe' %}:</span> {{ boxObject|get_m2m_or_attr:"targetGroup__targetGroup" }}
+</p>
+<p>
   <span class="columnHeading">{% translate 'Entwickler/ Maintainer' %}:</span> {{ boxObject|get_m2m_or_attr:"provider" }}
 </p>
 <p>
@@ -46,7 +49,7 @@
   <span class="columnHeading">{% translate 'Programmiersprachen' %}:</span> {{ boxObject|get_m2m_or_attr:"programmingLanguages" }}
 </p>
 <p>
-  <span class="columnHeading">{% translate 'konkrete Anwendungsfälle' %}:</span> {{ boxObject|get_m2m_or_attr:"specificApplication__referenceNumber_id" }}
+  <span class="columnHeading">{% translate 'konkrete Anwendungsfälle' %}:</span> {{ boxObject|get_m2m_or_attr:"specificApplication__referenceNumber_id"|safe }}
 </p>
 <p>
   <span class="columnHeading">{% translate 'Zugänglichkeit' %}:</span> {{ boxObject|get_m2m_or_attr:"accessibility__accessibility" }}

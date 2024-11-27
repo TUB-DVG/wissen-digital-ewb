@@ -378,7 +378,7 @@ def dataProcessing(request):
         ),
         "imageInBackButton": "img/componentList/caret-left.svg",
     }
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
 
 
 def _removeEmtpyStringsFromList(listOfStrings):

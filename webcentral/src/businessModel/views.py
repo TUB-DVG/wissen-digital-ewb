@@ -51,4 +51,4 @@ def businessModelsChallengeDetails(request, challengeId):
         "showInputsInImageQuickLinkBar": False,
         "quickLinkName": "businessModels/challenges",
     }
-    return render(request, "pages/detailsPage.html", context)
+    return render(request, "pages/details_page.html", context)
