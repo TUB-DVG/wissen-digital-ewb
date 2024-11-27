@@ -348,11 +348,16 @@ def indexApps(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "app_view", 
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"), 
     }
     if filtering:
-        return render(request, "partials/listing-grid.html", context)
+        return render(request, "partials/listing_results.html", context)
 
-    return render(request, "tools_over/tool-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def indexBusinessApplication(request):
@@ -501,10 +506,15 @@ def indexBusinessApplication(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "businessAppView", 
+        "subHeading1": _("Nutzerschnittstelle"),
+        "subHeadingAttr1": "userInterface__userInterface",
+        "subHeading2": _("Updates"),
+        "subHeadingAttr2": _("lastUpdate"), 
     }
     if filtering:
-        return render(request, "tools_over/tool-listings-results.html", context)
-    return render(request, "tools_over/tool-listings.html", context)
+        return render(request, "partials/listing_results.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def businessApplicationView(request, id):
