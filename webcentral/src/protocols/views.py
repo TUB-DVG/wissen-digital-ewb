@@ -78,7 +78,7 @@ def protocol(request):
         "openSourceStatus": filteredBy[2],
         "nameOfTemplate": "protocols",
         "urlName": "TechnicalStandards_protocol_list",
-        "heading": _("Überblick über technische Standards")
+        "title": _("Überblick über technische Standards")
         + " - "
         + _("Protokolle"),
         "introductionText": _(

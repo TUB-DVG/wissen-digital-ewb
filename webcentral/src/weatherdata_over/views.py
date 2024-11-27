@@ -80,7 +80,7 @@ def index(request):
         # filtered_by[0],
         # "lizenz":
         # filtered_by[1],
-        "heading": _("Überblick über Wetterdaten-Services"),
+        "title": _("Überblick über Wetterdaten-Services"),
         "nameOfTemplate": "weatherdata",
         "urlName": "publicationPage",
         "introductionText": _(

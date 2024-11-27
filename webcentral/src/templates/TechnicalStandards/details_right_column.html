@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load template_tags %}
+                  <h5 class="mt-4">{% translate "Titel" %}</h5>
+
+                  <p class="mb-0">{{ boxObject|get_m2m_or_attr:"title" }}</p>
+
+                  <h5 class="mt-4">{% translate "Kurzbeschreibung" %}</h5>
+
+                  <p class="mb-0">{{ boxObject|get_m2m_or_attr:"description" }}</p>
+
+                  <h5 class="mt-4">Link</h5>
+
+                  <p class="mb-0">
+                    {% if boxObject|get_m2m_or_attr:"resources" == "n/a" %}
+                      {{ boxObject|get_m2m_or_attr:"resources" }}
+                      {% else %}
+                        <a href="{{ boxObject.resources }}" target="_blank">{{ boxObject.resources }}
+                        </a>
+                      {% endif %}
+                  </p>

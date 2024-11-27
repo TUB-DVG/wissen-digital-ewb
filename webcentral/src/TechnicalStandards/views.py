@@ -47,10 +47,10 @@ def norm(request):
             "filterValues": nameElementsList,
             "filterName": "name__icontains",
         },
-        {
-            "filterValues": sourceElementsList,
-            "filterName": "source__icontains",
-        },
+        # {
+        #     "filterValues": sourceElementsList,
+        #     "filterName": "source__icontains",
+        # },
     ]
     complexCriterion = createQ(listOfFilters)
     searched = request.GET.get("searched", "")
@@ -159,19 +159,24 @@ def norm(request):
                 # filteredBy[0],
                 "fieldName": "name",
             },
-            {
-                "placeholder": _("Quelle"),
-                "objects": [
-                    "https://ghgprotocol.org/",
-                    "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
-                    "ENEKA - Energiekartenkartografie",
-                    "Hottgenroth Software Katalog",
-                ],
-                "fieldName": "source",
-                # "filter":
-                # filteredBy[1],
-            },
+            # {
+            #     "placeholder": _("Quelle"),
+            #     "objects": [
+            #         "https://ghgprotocol.org/",
+            #         "Leitfaden Trinkwassererwärmung - Bundesverband Wärmepumpe",
+            #         "ENEKA - Energiekartenkartografie",
+            #         "Hottgenroth Software Katalog",
+            #     ],
+            #     "fieldName": "source",
+            #     # "filter":
+            #     # filteredBy[1],
+            # },
         ],
+        "urlDetailsPage": "TechnicalStandards_norm_details",
+        "subHeading1": _("Anbieter"),
+        "subHeadingAttr1": "provider",
+        "subHeading2": _("Lizenz"),
+        "subHeadingAttr2": _("license__license"),
     }
     if filtering:
         return render(
@@ -199,17 +204,21 @@ def normDetailView(request, id):
     # bezeichnung (DIN etc), titel, kurzbeschreibung,quelle, link
     name = norms.name  # .split(", ") ### to check if split is needed
     title = norms.title
-    shortDescription = norms.shortDescription
+    # shortDescription = norms.shortDescription
     # source = norms.source  # .split(", ")
-    link = norms.link
+    # link = norms.link
     context = {
         "technicalStandards": norms,
         "name": name,
-        "shortDescription": shortDescription,
+        # "shortDescription": shortDescription,
         "title": title,
         # "source": source,
-        "link": link,
+        # "link": link,
         "focusBorder": "technical",
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Normen"),
+        "backLink": "TechnicalStandards_norm_list", 
+
     }
     context["boxObject"] = norms
     context["leftColumn"] = (

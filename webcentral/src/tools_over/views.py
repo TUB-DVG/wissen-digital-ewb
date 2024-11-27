@@ -166,7 +166,7 @@ def index(request):
         "usageFields": usageNames,
         "accessibilityFields": accessibilityNames,
         "lifeCyclePhaseFields": lifeCyclePhaseNames,
-        "heading": headingText,
+        "title": headingText,
         "nameOfTemplate": "tools",
         "urlName": "tool_list",
         "model": "Tools",
@@ -191,12 +191,13 @@ def index(request):
             },
         ],
         "renderComparisonRadio": True,
+        "urlDetailsPage": "tool_view",  
     }
 
     if filtering:
-        return render(request, "partials/listing-grid.html", context)
+        return render(request, "partials/listing_results.html", context)
 
-    return render(request, "tools_over/tool-listings.html", context)
+    return render(request, "pages/grid_listing.html", context)
 
 
 def indexApps(request):
