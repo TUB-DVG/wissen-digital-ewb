@@ -30,7 +30,7 @@ class Norm(
         ApplicationArea,
         db_comment="Typical application area in which the item is used.",
     )
-    
+
     usage = models.ManyToManyField(
         Usage,
         db_comment="Use type - What purpose is the item used for? (Simulation, monitoring, optimization, planning, control advanced control)",

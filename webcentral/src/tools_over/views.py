@@ -191,7 +191,7 @@ def index(request):
             },
         ],
         "renderComparisonRadio": True,
-        "urlDetailsPage": "tool_view",  
+        "urlDetailsPage": "tool_view",
     }
 
     if filtering:

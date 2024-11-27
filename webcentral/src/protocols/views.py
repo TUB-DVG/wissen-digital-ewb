@@ -214,7 +214,7 @@ def protocolDetailView(request, id):
         "focusBorder": "technical",
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Protokolle"),
-        "backLink": "TechnicalStandards_protocol_list", 
+        "backLink": "TechnicalStandards_protocol_list",
     }
     context["boxObject"] = protocols
     context["leftColumn"] = (

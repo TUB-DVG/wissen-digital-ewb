@@ -217,15 +217,14 @@ def normDetailView(request, id):
         "focusBorder": "technical",
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Normen"),
-        "backLink": "TechnicalStandards_norm_list", 
-
+        "backLink": "TechnicalStandards_norm_list",
     }
     context["boxObject"] = norms
     context["leftColumn"] = (
         "partials/left_column_details_page_technical_focus.html"
     )
     context["rightColumn"] = "TechnicalStandards/details_right_column.html"
-    return render(request, "pages/detailsPage.html", context)  
+    return render(request, "pages/detailsPage.html", context)
 
 
 def protocolComparison(request):
