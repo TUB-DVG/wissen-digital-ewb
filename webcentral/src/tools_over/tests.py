@@ -97,8 +97,8 @@ class TestToolsDataImport(TestCase):
         # self.assertEqual(imported_tools_obj.name_en, data[0][header.index("name__en")])
 
         self.assertEqual(
-            imported_tools_obj.shortDescription_en,
-            data[0][header.index("shortDescription__en")],
+            imported_tools_obj.description_en,
+            data[0][header.index("description__en")],
         )
         self.assertEqual(
             imported_tools_obj.userInterfaceNotes_en,
@@ -190,14 +190,14 @@ class TestExportClass(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         # test if the english translation was imported:
         wufiToolsQS = Tools.objects.filter(name__icontains="Wufi")
         self.assertEqual(len(wufiToolsQS), 1)
         self.assertEqual(
-            wufiToolsQS[0].shortDescription_en,
+            wufiToolsQS[0].description_en,
             "WUFI (Wärme Und Feuchte Instationär) is a software family for the realistic transient calculation of heat and moisture transport in multi-layer components and buildings under natural climatic conditions.",
         )
 
@@ -213,7 +213,7 @@ class TestExportClass(TestCase):
                 (
                     "name",
                     "resources",
-                    "shortDescription",
+                    "description",
                     "applicationArea",
                     "provider",
                     "usage",
@@ -251,7 +251,7 @@ class TestExportClass(TestCase):
                 (
                     "name",
                     "resources",
-                    "shortDescription",
+                    "description",
                     "applicationArea",
                     "provider",
                     "usage",
@@ -314,7 +314,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         self.assertGreater(len(Tools.objects.all()), 100)
@@ -334,7 +334,7 @@ class TestUpdate(TestCase):
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
-        self.assertTrue("Test" in wufiTool[0].shortDescription_de)
+        self.assertTrue("Test" in wufiTool[0].description_de)
 
         cSharpTool = Tools.objects.filter(name__icontains="C#")
         self.assertEqual(len(cSharpTool), 1)
@@ -352,7 +352,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         numberOfTools = len(Tools.objects.all())
@@ -360,7 +360,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         self.assertEqual(len(History.objects.all()), 0)
@@ -372,7 +372,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/2024_05_EWB_tools_with_english_translation.xlsx",
+            "../doc/01_data/02_tool_over/tools_with_weatherdata.xlsx",
         )
 
         call_command(

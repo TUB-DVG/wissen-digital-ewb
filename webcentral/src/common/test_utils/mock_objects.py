@@ -12,7 +12,7 @@ def mock_excel_file():
     data_german = {
         "name": ["Sensormodul"],
         "resources": ["Dokumentation, API"],
-        "shortDescription": [
+        "description": [
             "Ein fortschrittliches Sensormodul zur Erfassung von Umweltparametern."
         ],
         "applicationArea": ["Industrie;;Umweltüberwachung"],
@@ -51,7 +51,7 @@ def mock_excel_file():
     data_english = {
         "name": ["Sensor Module"],
         "resources": ["Documentation, API"],
-        "shortDescription": [
+        "description": [
             "An advanced sensor module for capturing environmental parameters."
         ],
         "applicationArea": ["Industry;;Environmental Monitoring"],

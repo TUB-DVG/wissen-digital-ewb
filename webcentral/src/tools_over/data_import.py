@@ -39,7 +39,7 @@ class DataImportApp(DataImport):
     APP_HISTORY_MODEL_OBJ = History
     MAPPING_EXCEL_DB_EN = {
         # "name_en": "name_en",
-        "shortDescription__en": "shortDescription_en",
+        "description__en": "description_en",
         "userInterfaceNotes__en": "userInterfaceNotes_en",
         "licenseNotes__en": "licenseNotes_en",
         "furtherInformation__en": "furtherInformation_en",
@@ -114,27 +114,8 @@ class DataImportApp(DataImport):
         obj:    ToolsSubproject the Tools-object was created or not.
         """
 
-        # check if there is already a tool with the same name present in the
-        # database:
-        # toolObjsFilteredByName = Tools.objects.filter(
-        #     name=row[header.index("name")]
-        # )
-        # presentToolWithSameName = None
-        # idOfOldIstance = None
-        # if len(toolObjsFilteredByName) > 0:
-        #     newHistoryObj = History(
-        #         identifer=row[header.index("name")],
-        #         stringifiedObj=serialize("json", toolObjsFilteredByName),
-        #     )
-        #     newHistoryObj.save()
-        #     idOfOldIstance = toolObjsFilteredByName[0].id
-        #     toolObjsFilteredByName[0].delete()
-        #     # presentToolWithSameName = toolObjsFilteredByName[0]
-        # self.diffStrDict[row[header.index("name")]] = ""
-        # self.dictIdentifier = row[header.index("name")]
-
         name = row[header.index("name")]
-        shortDescription = row[header.index("shortDescription")]
+        shortDescription = row[header.index("description")]
 
         # processedApplicationAreaList = self._correctReadInValue(
         #     row[header.index("applicationArea")]
@@ -311,7 +292,7 @@ class DataImportApp(DataImport):
 
         obj = Tools(
             name=name,
-            shortDescription=shortDescription,
+            description=shortDescription,
             # applicationArea__in=applicationAreaElements,
             # usage__in=usageElements,
             # lifeCyclePhase__in=lifeCyclePhaseElements,
