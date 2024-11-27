@@ -348,11 +348,11 @@ def indexApps(request):
             },
         ],
         "renderComparisonRadio": True,
-        "urlDetailsPage": "app_view", 
+        "urlDetailsPage": "app_view",
         "subHeading1": _("Nutzerschnittstelle"),
         "subHeadingAttr1": "userInterface__userInterface",
         "subHeading2": _("Updates"),
-        "subHeadingAttr2": _("lastUpdate"), 
+        "subHeadingAttr2": _("lastUpdate"),
     }
     if filtering:
         return render(request, "partials/listing_results.html", context)
@@ -506,11 +506,11 @@ def indexBusinessApplication(request):
             },
         ],
         "renderComparisonRadio": True,
-        "urlDetailsPage": "businessAppView", 
+        "urlDetailsPage": "businessAppView",
         "subHeading1": _("Nutzerschnittstelle"),
         "subHeadingAttr1": "userInterface__userInterface",
         "subHeading2": _("Updates"),
-        "subHeadingAttr2": _("lastUpdate"), 
+        "subHeadingAttr2": _("lastUpdate"),
     }
     if filtering:
         return render(request, "partials/listing_results.html", context)
