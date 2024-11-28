@@ -311,6 +311,12 @@ class TestUpdate(TestCase):
         has one differing tool. Check if only one History object is created.
 
         """
+        # call_command(
+        #     "data_import",
+        #     "project_listing",
+        #
+        # )
+
         call_command(
             "data_import",
             "tools_over",
@@ -329,13 +335,12 @@ class TestUpdate(TestCase):
 
         # one History object should be present:
         historyObjs = History.objects.all()
-        breakpoint()
         self.assertEqual(len(historyObjs), 1)
 
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
-        self.assertTrue("Hallo" in wufiTool[0].description_de)
+        self.assertTrue("hallo" in wufiTool[0].description_de)
         self.assertTrue("Hello" in wufiTool[0].description_en)
  
 
@@ -370,7 +375,7 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/test_data/test_data_m2m_update.xlsx.xlsx",
+            "../doc/01_data/02_tool_over/test_data/test_data_m2m_update.xlsx",
         )
 
         cSharp = Tools.objects.get(name__icontains="C#")

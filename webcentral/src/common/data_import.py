@@ -205,6 +205,10 @@ class DataImport:
         # get names of all djangoModel-objects
         if djangoModel.__name__ == "Subproject":
             attributeNameInModel = "referenceNumber_id"
+            return djangoModel.objects.get_or_create(
+               referenceNumber_id=categoryString     
+            )[0]
+
         elif djangoModel.__name__ == "Norm":
             attributeNameInModel = "title"
         elif djangoModel.__name__ == "Protocol":
@@ -302,7 +306,7 @@ class DataImport:
         return listOfM2Mobjs
 
     def _processListInput(self, inputStr, separator=";"):
-        """Process a cell, which includes a list of elements"""
+        """Process a cell, which includes a list of elements and separate the string by the `separator` and return a list"""
         returnList = []
         for element in inputStr.split(separator):
             if not self._checkIfOnlyContainsSpaces(element):

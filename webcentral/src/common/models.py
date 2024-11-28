@@ -484,7 +484,6 @@ class AbstractTechnicalFocus(models.Model):
                 firstObjAttr = self.getManyToManyWithTranslation(field.name)
                 secondObjAttr = other.getManyToManyWithTranslation(field.name)
                 if firstObjAttr != secondObjAttr:
-                    breakpoint()
                     return False
             else:
                 if not field.name == "id":
@@ -494,8 +493,7 @@ class AbstractTechnicalFocus(models.Model):
                         secondObjAttr is None and firstObjAttr == ""
                     ):
                         continue
-                    if firstObjAttr != secondObjAttr:
-                        breakpoint()
+                    if str(firstObjAttr) != str(secondObjAttr):
                         return False
 
         return True

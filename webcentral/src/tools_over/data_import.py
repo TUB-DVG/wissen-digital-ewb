@@ -347,8 +347,6 @@ class DataImportApp(DataImport):
             obj, header, row, self.MAPPING_EXCEL_DB_EN
         )
         obj.save()
-        # if obj.name == "WUFI Plus":
-        #     breakpoint()
         if tupleOrNone is None:
             return obj, True
         idOfAlreadyPresentTool = tupleOrNone[0]
