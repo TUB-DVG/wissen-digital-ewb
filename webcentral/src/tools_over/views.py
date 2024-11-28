@@ -723,7 +723,7 @@ def AppView(request, id):
         "lastUpdateLabel": updateProperties.label,
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Anwendungen"),
-        "backLink": "app_list", 
+        "backLink": "app_list",
     }
 
     context["boxObject"] = tool
