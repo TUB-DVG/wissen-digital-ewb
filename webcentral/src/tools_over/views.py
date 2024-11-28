@@ -651,7 +651,7 @@ def toolView(request, id):
         "lastUpdateLabel": updateProperties.label,
         "imageInBackButton": "assets/images/backArrowTechnical.svg",
         "backLinkText": _("Werkzeuge"),
-        "backLink": "TechnicalStandards_norm_list",
+        "backLink": "tool_list",
     }
     context["boxObject"] = tool
     context["leftColumn"] = (
@@ -721,6 +721,9 @@ def AppView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
+        "imageInBackButton": "assets/images/backArrowTechnical.svg",
+        "backLinkText": _("Anwendungen"),
+        "backLink": "app_list", 
     }
 
     context["boxObject"] = tool
