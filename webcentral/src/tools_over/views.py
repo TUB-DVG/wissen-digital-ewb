@@ -577,9 +577,9 @@ def businessApplicationView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
-        "imageInBackButton": "assets/images/backArrowOperational.svg", 
+        "imageInBackButton": "assets/images/backArrowOperational.svg",
         "backLinkText": _("Geschäftsmodellanwendungen"),
-        "backLink": "businessModelApplication",  
+        "backLink": "businessModelApplication",
     }
     context["boxObject"] = tool
     context["leftColumn"] = (
@@ -587,6 +587,7 @@ def businessApplicationView(request, id):
     )
     context["rightColumn"] = "tools_over/details_right_column.html"
     return render(request, "pages/details_page.html", context)
+
 
 def toolView(request, id):
     """Shows of the key features one project"""
@@ -728,6 +729,7 @@ def AppView(request, id):
     )
     context["rightColumn"] = "tools_over/details_right_column.html"
     return render(request, "pages/details_page.html", context)
+
 
 def toolComparison(request):
     ids = request.GET.getlist("id")

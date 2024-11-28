@@ -477,6 +477,7 @@ class AbstractTechnicalFocus(models.Model):
         if self.developmentState is None:
             return "n/a"
         return mappingDict[self.developmentState]
+
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
         for field in self._meta.get_fields():
@@ -530,7 +531,7 @@ class AbstractTechnicalFocus(models.Model):
     ):
         """ """
         if manyToManyAttr == "specificApplication":
-            
+
             querysetOfManyToManyElements = (
                 getattr(self, manyToManyAttr)
                 .all()
@@ -567,6 +568,5 @@ class AbstractTechnicalFocus(models.Model):
                 returnStr += element.__str__() + separator
         return returnStr[: -len(separator)]
 
- 
     class Meta:
         abstract = True

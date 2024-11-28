@@ -206,7 +206,7 @@ class DataImport:
         if djangoModel.__name__ == "Subproject":
             attributeNameInModel = "referenceNumber_id"
             return djangoModel.objects.get_or_create(
-               referenceNumber_id=categoryString     
+                referenceNumber_id=categoryString
             )[0]
 
         elif djangoModel.__name__ == "Norm":
@@ -417,7 +417,7 @@ class DataImport:
             row[header.index(f"{headerExcel}__en")], ";;"
         )
         elementsForAttr = getattr(ormObj, dbAttr).all()
-        
+
         for ormRelObj in elementsForAttr:
             for indexInGerList, germanManyToManyElement in enumerate(
                 germanManyToManyList

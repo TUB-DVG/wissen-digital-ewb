@@ -76,17 +76,13 @@ class TestDataImport(TestCase):
         self.assertEqual(litLinkName, "Althaus,_Philipp,_Florian_2022")
 
     def testImportSpecificApplications(self):
-        """Test if a Subproject object is created from a reference number string and holds the right reference number string. 
-
-        """
+        """Test if a Subproject object is created from a reference number string and holds the right reference number string."""
         dataImportObj = DataImport("test.csv")
 
         header = [
             "specificApplication",
         ]
-        data = [
-            "03EGB0021H;;03EN3018A"
-        ]
+        data = ["03EGB0021H;;03EN3018A"]
 
         processedSpecificApplicationList = dataImportObj._processListInput(
             data[header.index("specificApplication")], separator=";;"
@@ -97,9 +93,16 @@ class TestDataImport(TestCase):
         allSubprojects = Subproject.objects.all()
         self.assertEqual(len(allSubprojects), 2)
 
-        listOfSubprojectIds = data[header.index("specificApplication")].split(";;")
+        listOfSubprojectIds = data[header.index("specificApplication")].split(
+            ";;"
+        )
         for referenceIdStr in listOfSubprojectIds:
-            self.assertEqual(len(Subproject.objects.filter(referenceNumber_id=referenceIdStr)), 1)
+            self.assertEqual(
+                len(
+                    Subproject.objects.filter(referenceNumber_id=referenceIdStr)
+                ),
+                1,
+            )
 
     def testImportOfEnglishTranslationForTools(self):
         """ """

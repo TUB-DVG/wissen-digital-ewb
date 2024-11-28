@@ -1,4 +1,4 @@
-# """Test the workflow to solve conflicts in data_import 
+# """Test the workflow to solve conflicts in data_import
 # """
 #
 # from random import choice

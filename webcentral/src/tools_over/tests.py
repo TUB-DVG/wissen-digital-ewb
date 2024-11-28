@@ -342,7 +342,6 @@ class TestUpdate(TestCase):
         self.assertEqual(len(wufiTool), 1)
         self.assertTrue("hallo" in wufiTool[0].description_de)
         self.assertTrue("Hello" in wufiTool[0].description_en)
- 
 
     def testUpdateWithSameData(self):
         """Loading the same data 2 times should create no History objects"""
@@ -383,7 +382,8 @@ class TestUpdate(TestCase):
         self.assertEqual(
             len(
                 Tools.objects.filter(
-                    name__icontains="C#", applicationArea__applicationArea_de="Test-Kategorie"
+                    name__icontains="C#",
+                    applicationArea__applicationArea_de="Test-Kategorie",
                 )
             ),
             1,
