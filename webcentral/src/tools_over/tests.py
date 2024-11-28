@@ -307,8 +307,8 @@ class TestUpdate(TestCase):
         self.factory = RequestFactory()
 
     def testUpdateOfNewDataWorks(self):
-        """Test if starting the update-process and finalizing with the updated
-        dataset works.
+        """Load the full tools list and update it with the full tool list, which
+        has one differing tool. Check if only one History object is created.
 
         """
         call_command(
@@ -329,23 +329,15 @@ class TestUpdate(TestCase):
 
         # one History object should be present:
         historyObjs = History.objects.all()
-        self.assertLessEqual(len(historyObjs), 5)
+        breakpoint()
+        self.assertEqual(len(historyObjs), 1)
 
         wufiTool = Tools.objects.filter(name__icontains="Wufi")
 
         self.assertEqual(len(wufiTool), 1)
-        self.assertTrue("Test" in wufiTool[0].description_de)
-
-        cSharpTool = Tools.objects.filter(name__icontains="C#")
-        self.assertEqual(len(cSharpTool), 1)
-        self.assertEqual(cSharpTool[0].yearOfRelease, "2001")
-
-        vsaTool = Tools.objects.filter(name__icontains="VSA")
-        self.assertEqual(len(vsaTool), 1)
-        self.assertEqual(len(vsaTool[0].usage.all()), 5)
-        self.assertEqual(
-            vsaTool[0].usage.all().filter(usage_de="Test")[0].usage_en, "Test"
-        )
+        self.assertTrue("Hallo" in wufiTool[0].description_de)
+        self.assertTrue("Hello" in wufiTool[0].description_en)
+ 
 
     def testUpdateWithSameData(self):
         """Loading the same data 2 times should create no History objects"""
@@ -378,15 +370,15 @@ class TestUpdate(TestCase):
         call_command(
             "data_import",
             "tools_over",
-            "../doc/01_data/02_tool_over/test_data/test_data_testing_update_wufi.xlsx",
+            "../doc/01_data/02_tool_over/test_data/test_data_m2m_update.xlsx.xlsx",
         )
 
-        wufiTool = Tools.objects.get(name__icontains="WUFI")
+        cSharp = Tools.objects.get(name__icontains="C#")
 
         self.assertEqual(
             len(
                 Tools.objects.filter(
-                    name__icontains="WUFI", focus__focus_de="kulturell"
+                    name__icontains="C#", applicationArea__applicationArea_de="Test-Kategorie"
                 )
             ),
             1,
@@ -399,9 +391,9 @@ class TestUpdate(TestCase):
         # execute the History object rollback
 
         self.historyAdmin.rollbackHistory(request, History.objects.all())
-        wufiTool = Tools.objects.get(name__icontains="WUFI")
-        self.assertEqual(len(wufiTool.focus.all()), 1)
-        self.assertEqual(wufiTool.focus.all()[0].focus_de, "technisch")
+        cSharp = Tools.objects.get(name__icontains="C#")
+        self.assertEqual(len(cSharp.applicationArea.all()), 2)
+        # self.assertEqual(wufiTool.focus.all()[0].focus_de, "technisch")
 
 
 # class TestTools(TestCase):

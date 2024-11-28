@@ -55,7 +55,7 @@ class TestDataImport(TestCase):
 
         """
         enargusCSVdataFile = (
-            "../../02_work_doc/01_daten/01_prePro/enargus_csv_20240606.csv"
+            "../doc/01_data/01_pre_pro/enargus_csv_20240606.csv"
         )
         dataImportObj = DataImport(enargusCSVdataFile)
 
@@ -82,8 +82,8 @@ class TestDataImport(TestCase):
         dataImportObj = DataImport(temp_file_obj.name)
 
         header = [
-            "shortDescription",
-            "shortDescription__en",
+            "description",
+            "description__en",
             "focus",
             "focus__en",
             "classification",
@@ -92,10 +92,10 @@ class TestDataImport(TestCase):
         data = [
             "Dies ist ein Test",
             "This is a test",
-            "betrieblich, rechtlich",
-            "operational, legal",
-            "Werkzeug, Digitale Anwendung",
-            "Tool, digital application",
+            "betrieblich;;rechtlich",
+            "operational;;legal",
+            "Werkzeug;;Digitale Anwendung",
+            "Tool;;digital application",
         ]
 
         focusOperational = Focus.objects.get_or_create(focus="betrieblich")[0]
@@ -110,7 +110,7 @@ class TestDataImport(TestCase):
 
         toolObj = Tools.objects.get_or_create(
             name="TestTool",
-            shortDescription="Dies ist ein Test",
+            description="Dies ist ein Test",
         )[0]
 
         toolObj.focus.add(focusOperational)
@@ -162,11 +162,11 @@ class TestDataImport(TestCase):
 
         # test import of regular attribute:
         toolObj = dataImportObj._importEnglishAttr(
-            toolObj, header, data, "shortDescription", "shortDescription"
+            toolObj, header, data, "description", "description"
         )
         self.assertEqual(
-            toolObj.shortDescription_en,
-            data[header.index("shortDescription__en")],
+            toolObj.description_en,
+            data[header.index("description__en")],
         )
 
     def testGetMany2ManyElements(self):

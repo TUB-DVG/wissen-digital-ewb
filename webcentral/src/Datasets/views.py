@@ -73,7 +73,7 @@ def index(request):
         # filteredBy[1],
         # "availability":
         # filteredBy[2],
-        "title": _("Überblick über Datensätze"),
+        "heading": _("Überblick über Datensätze"),
         "introductionText": _(
             """Offene Daten spielen eine entscheidende Rolle für die Energiewende, da sie den Zugang zu Informationen und die
           Zusammenarbeit zwischen verschiedenen Akteuren ermöglichen. Durch die Bereitstellung von offenen Daten tragen

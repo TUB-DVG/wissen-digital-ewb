@@ -33,6 +33,9 @@ jobs:
       - name: Run dev-environment
         run: ./run up_initial dev postgres/webcentral_db_20241023_fixed_translation_error_in_usage.sql
 
+      - name: Execute unittest for common app
+        run: docker exec -w /webcentral/src webcentral python manage.py test common 
+
       - name: Execute unittest for project_listing app
         run: docker exec -w /webcentral/src webcentral python manage.py test project_listing
       

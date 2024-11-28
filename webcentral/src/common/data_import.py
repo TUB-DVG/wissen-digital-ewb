@@ -405,26 +405,27 @@ class DataImport:
         self, ormObj, header, row, headerExcel, dbAttr
     ):
         """ """
-        germanManyToManyStr = self._processListInput(
+        germanManyToManyList = self._processListInput(
             row[header.index(headerExcel)], ";;"
         )
 
-        englishManyToManyStr = self._processListInput(
+        englishManyToManyList = self._processListInput(
             row[header.index(f"{headerExcel}__en")], ";;"
         )
         elementsForAttr = getattr(ormObj, dbAttr).all()
+        
         for ormRelObj in elementsForAttr:
-            for indexInGerList, germanyManyToManyElement in enumerate(
-                germanManyToManyStr
+            for indexInGerList, germanManyToManyElement in enumerate(
+                germanManyToManyList
             ):
-                if germanyManyToManyElement in str(ormRelObj):
+                if germanManyToManyElement in str(ormRelObj):
                     if getattr(ormRelObj, f"{dbAttr}_en") is None:
-                        if englishManyToManyStr[indexInGerList] is None:
-                            englishManyToManyStr[indexInGerList] = ""
+                        if englishManyToManyList[indexInGerList] is None:
+                            englishManyToManyList[indexInGerList] = ""
                         setattr(
                             ormRelObj,
                             f"{dbAttr}_en",
-                            englishManyToManyStr[indexInGerList],
+                            englishManyToManyList[indexInGerList],
                         )
                         ormRelObj.save()
         return ormObj
@@ -533,7 +534,6 @@ class DataImport:
         """ """
         objsEqual = oldObj.isEqual(newObj)
         if not objsEqual:
-
             newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
                 identifer=oldObj.name,
                 stringifiedObj=serialize(

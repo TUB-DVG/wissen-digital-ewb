@@ -166,7 +166,7 @@ def index(request):
         "usageFields": usageNames,
         "accessibilityFields": accessibilityNames,
         "lifeCyclePhaseFields": lifeCyclePhaseNames,
-        "title": headingText,
+        "heading": headingText,
         "nameOfTemplate": "tools",
         "urlName": "tool_list",
         "model": "Tools",
@@ -577,9 +577,16 @@ def businessApplicationView(request, id):
         "lastUpdateClass": updateProperties.className,
         "lastUpdateColor": updateProperties.colorClass,
         "lastUpdateLabel": updateProperties.label,
+        "imageInBackButton": "assets/images/backArrowOperational.svg", 
+        "backLinkText": _("Geschäftsmodellanwendungen"),
+        "backLink": "businessModelApplication",  
     }
-    return render(request, "tools_over/tool-detail.html", context)
-
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 def toolView(request, id):
     """Shows of the key features one project"""
@@ -715,8 +722,12 @@ def AppView(request, id):
         "lastUpdateLabel": updateProperties.label,
     }
 
-    return render(request, "tools_over/tool-detail.html", context)
-
+    context["boxObject"] = tool
+    context["leftColumn"] = (
+        "partials/left_column_details_page_technical_focus.html"
+    )
+    context["rightColumn"] = "tools_over/details_right_column.html"
+    return render(request, "pages/details_page.html", context)
 
 def toolComparison(request):
     ids = request.GET.getlist("id")
