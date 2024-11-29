@@ -6,6 +6,7 @@ from django.db import DEFAULT_DB_ALIAS, models
 from django.core.serializers import base
 from django.core.serializers.base import DeserializationError
 
+
 class Serializer(DefaultSerializer):
     """This class extends the json-serializer from the django core. It is needed
     since the default Json serializer does not include the backward reference of
@@ -14,6 +15,7 @@ class Serializer(DefaultSerializer):
     appears in another model as for e.g. a `ManyToManyField`.
 
     """
+
     def serialize(
         self,
         queryset,
@@ -27,7 +29,7 @@ class Serializer(DefaultSerializer):
         **options,
     ):
         """
-        Override the serialize method from the serializer base class and add 
+        Override the serialize method from the serializer base class and add
         logic to handle backward references.
         """
         self.options = options
@@ -51,7 +53,9 @@ class Serializer(DefaultSerializer):
             if self.use_natural_primary_keys:
                 pk = concrete_model._meta.pk
                 pk_parent = (
-                    pk if pk.remote_field and pk.remote_field.parent_link else None
+                    pk
+                    if pk.remote_field and pk.remote_field.parent_link
+                    else None
                 )
             else:
                 pk_parent = None
@@ -88,11 +92,9 @@ class Serializer(DefaultSerializer):
             self.first = self.first and False
         self.end_serialization()
         return self.getvalue()
-    
-    def handle_backward_m2m_field(self, obj, field):
-        """handle the backward referenced field
 
-        """
+    def handle_backward_m2m_field(self, obj, field):
+        """handle the backward referenced field"""
         # breakpoint()
         # if field.remote_field.through._meta.auto_created:
         if self.use_natural_foreign_keys and hasattr(
@@ -124,7 +126,10 @@ class Serializer(DefaultSerializer):
         )
         self._current[field.name] = [m2m_value(related) for related in m2m_iter]
 
-def PythonDeserializer(object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent=False, **options):
+
+def PythonDeserializer(
+    object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent=False, **options
+):
     handle_forward_references = options.pop("handle_forward_references", False)
     field_names_cache = {}  # Model: <list of field_names>
     for d in object_list:
@@ -132,16 +137,18 @@ def PythonDeserializer(object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent
         try:
             Model = _get_model(d["model"])
         except base.DeserializationError:
-            
+
             if ignorenonexistent:
                 continue
             else:
                 raise
-            
+
         data = {}
         if "pk" in d:
             try:
-                data[Model._meta.pk.attname] = Model._meta.pk.to_python(d.get("pk"))
+                data[Model._meta.pk.attname] = Model._meta.pk.to_python(
+                    d.get("pk")
+                )
             except Exception as e:
                 raise base.DeserializationError.WithData(
                     e, d["model"], d.get("pk"), None
@@ -150,7 +157,9 @@ def PythonDeserializer(object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent
         deferred_fields = {}
 
         if Model not in field_names_cache:
-            field_names_cache[Model] = {f.name for f in Model._meta.get_fields()}
+            field_names_cache[Model] = {
+                f.name for f in Model._meta.get_fields()
+            }
         field_names = field_names_cache[Model]
 
         # Handle each field
@@ -208,6 +217,7 @@ def PythonDeserializer(object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent
         obj = base.build_instance(Model, data, using)
         yield base.DeserializedObject(obj, m2m_data, deferred_fields)
 
+
 def Deserializer(stream_or_string, **options):
     """
     Deserialize simple Python objects back into Django ORM instances.
@@ -225,8 +235,9 @@ def Deserializer(stream_or_string, **options):
     except (GeneratorExit, DeserializationError):
         raise
     except Exception as exc:
-        raise DeserializationError() from exc   
-    
+        raise DeserializationError() from exc
+
+
 def _get_model(model_identifier):
     """Look up a model from an "app_label.model_name" string."""
     try:

@@ -4,14 +4,18 @@ from modeltranslation.admin import TranslationAdmin
 from .models import *
 from common.admin import HistoryAdmin
 
+
 class NormAdmin(TranslationAdmin):
     pass
 
+
 admin.site.register(Norm, NormAdmin)
 
+
 class HistoryAdminApp(HistoryAdmin):
-    """
-    
-    """
+    """ """
+
     modelInstance = Norm
+
+
 admin.site.register(History, HistoryAdminApp)

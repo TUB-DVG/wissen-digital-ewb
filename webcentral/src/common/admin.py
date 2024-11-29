@@ -30,7 +30,7 @@ from .models import (
     Scale,
     AbstractHistory,
     DbDiff,
-    License, 
+    License,
 )
 
 
@@ -162,7 +162,6 @@ admin.site.register(License)
 # Define a new admin class for the aggregated session elements
 
 
-
 class ClassificationAdmin(TranslationAdmin):
     pass
 
@@ -197,6 +196,7 @@ class TargetGroupAdmin(TranslationAdmin):
 
 admin.site.register(TargetGroup, TargetGroupAdmin)
 
+
 class LifeCyclePhaseAdmin(TranslationAdmin):
     pass
 
@@ -218,10 +218,11 @@ class AccessibilityAdmin(TranslationAdmin):
 admin.site.register(Accessibility, AccessibilityAdmin)
 admin.site.register(Scale)
 
+
 class HistoryAdmin(admin.ModelAdmin):
 
     actions = ["rollbackHistory"]
-    
+
     @admin.action(description="Rollback selected change")
     def rollbackHistory(self, request, queryset):
         """Rolls back to the state selected by `queryset`"""
@@ -230,7 +231,9 @@ class HistoryAdmin(admin.ModelAdmin):
                 "custom_json", historyObj.stringifiedObj
             )
             rollbackToolState = list(deserializedStringyfiedObj)[0].object
-            toolStateInDB = self.modelInstance.objects.filter(name=rollbackToolState.name)[0]
+            toolStateInDB = self.modelInstance.objects.filter(
+                name=rollbackToolState.name
+            )[0]
             toolStateInDB._update(rollbackToolState, historyObj)
             historyObj.delete()
 
@@ -238,7 +241,8 @@ class HistoryAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
 
         deserializedStringyfiedObj = serializers.deserialize(
-            "custom_json", self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
+            "custom_json",
+            self.modelInstance.objects.get(id=int(object_id)).stringifiedObj,
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
 
@@ -254,9 +258,9 @@ class HistoryAdmin(admin.ModelAdmin):
             )
         )[0]["fields"]
 
-        extra_context["currentTool"] = self.modelInstance.objects.filter(name=oldTool.name)[
-            0
-        ]
+        extra_context["currentTool"] = self.modelInstance.objects.filter(
+            name=oldTool.name
+        )[0]
         # breakpoint()
         return super().change_view(
             request,
@@ -264,4 +268,3 @@ class HistoryAdmin(admin.ModelAdmin):
             form_url,
             extra_context=extra_context,
         )
-

@@ -13,7 +13,7 @@ from common.models import (
     License,
     Usage,
     AbstractTechnicalFocus,
-    AbstractHistory, 
+    AbstractHistory,
 )
 from project_listing.models import Subproject
 

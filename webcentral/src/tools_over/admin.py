@@ -10,15 +10,18 @@ from project_listing.models import Subproject
 from common.admin import HistoryAdmin
 from .models import Tools, History
 
+
 class ToolsAdmin(TranslationAdmin):
-   pass
+    pass
+
 
 admin.site.register(Tools, ToolsAdmin)
 
+
 class HistoryAdminApp(HistoryAdmin):
-    """
-    
-    """
+    """ """
+
     modelInstance = Tools
+
 
 admin.site.register(History, HistoryAdminApp)

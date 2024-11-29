@@ -1,6 +1,7 @@
 """Models, which can be used in all other apps of the projects.
 
 """
+
 import json
 
 from django.db import models
@@ -338,6 +339,7 @@ class Scale(models.Model):
 
 class AbstractHistory(models.Model):
     """Abstract model class for the history models in each app."""
+
     identifer = models.CharField(max_length=300)
     stringifiedObj = models.TextField()
     loaded = models.BooleanField(default=False)
@@ -353,8 +355,8 @@ class AbstractHistory(models.Model):
     def __str__(self):
         """ """
         showedName = str(self.identifer) + " " + str(self.updateDate)
-        return showedName    
-    
+        return showedName
+
     class Meta:
         abstract = True
 
@@ -493,7 +495,9 @@ class AbstractTechnicalFocus(models.Model):
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
         for field in self._meta.get_fields():
-            if isinstance(field, models.ManyToManyField) or isinstance(field, models.ManyToManyRel):
+            if isinstance(field, models.ManyToManyField) or isinstance(
+                field, models.ManyToManyRel
+            ):
                 firstObjAttr = self.getManyToManyWithTranslation(field.name)
                 secondObjAttr = other.getManyToManyWithTranslation(field.name)
                 if firstObjAttr != secondObjAttr:
@@ -619,21 +623,23 @@ class AbstractTechnicalFocus(models.Model):
                     getattr(self, field.name).set(listOfM2Mobjs)
 
                 elif isinstance(field, models.ManyToManyRel):
-                    if field.name in stringifiedObj[0]["fields"].keys():  
-                        listOfM2Mobjs = [] 
-                        for many2manyRel in stringifiedObj[0]["fields"][field.name]:
+                    if field.name in stringifiedObj[0]["fields"].keys():
+                        listOfM2Mobjs = []
+                        for many2manyRel in stringifiedObj[0]["fields"][
+                            field.name
+                        ]:
                             listOfM2Mobjs.append(
                                 getattr(
                                     self, field.name
                                 ).model.objects.get_by_natural_key(
                                     naturalKeyTuple[0], naturalKeyTuple[1]
                                 )
-                            ) 
+                            )
                         breakpoint()
                 else:
                     setattr(self, field.name, getattr(newState, field.name))
 
-        self.save() 
+        self.save()
 
     class Meta:
         abstract = True

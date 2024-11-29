@@ -198,7 +198,7 @@ class DataImportApp(DataImport):
                 getattr(obj, readInM2MKey).set(readInValuesM2M[readInM2MKey])
             except:
                 breakpoint()
-            
+
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN

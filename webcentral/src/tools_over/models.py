@@ -23,6 +23,7 @@ from common.models import (
     AbstractHistory,
 )
 
+
 class ToolManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(
@@ -95,7 +96,7 @@ class Tools(AbstractTechnicalFocus):
 
     def natural_key(self):
         return self.name
-    
+
     objects = ToolManager()
 
     class Meta:
@@ -104,5 +105,3 @@ class Tools(AbstractTechnicalFocus):
 
 class History(AbstractHistory):
     """model class to store updates of the Tools model"""
-
-    

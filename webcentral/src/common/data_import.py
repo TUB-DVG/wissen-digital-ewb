@@ -24,7 +24,9 @@ from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
-# from .serializers import BackReferenceSerializer   
+
+# from .serializers import BackReferenceSerializer
+
 
 class DataImport:
     """Definition of the general DataImport class"""
@@ -34,7 +36,7 @@ class DataImport:
         self.path_to_file = path_to_data_file
         self.diffStr = ""
         self.diffStrDict = {}
-        # register_serializer("custom_json", BackReferenceSerializer) 
+        # register_serializer("custom_json", BackReferenceSerializer)
 
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call
@@ -568,7 +570,7 @@ class DataImport:
                 elif isinstance(field, models.ManyToManyRel):
                     getattr(oldObj, f"{field.name}_set").set(
                         getattr(newObj, f"{field.name}_set").all()
-                    ) 
+                    )
                 else:
                     setattr(oldObj, field.name, getattr(newObj, field.name))
 
