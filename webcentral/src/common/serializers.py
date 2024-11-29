@@ -1,4 +1,10 @@
+import json
+
+from django.apps import apps
 from django.core.serializers.json import Serializer as DefaultSerializer
+from django.db import DEFAULT_DB_ALIAS, models
+from django.core.serializers import base
+from django.core.serializers.base import DeserializationError
 
 class Serializer(DefaultSerializer):
     """This class extends the json-serializer from the django core. It is needed
@@ -117,3 +123,115 @@ class Serializer(DefaultSerializer):
             queryset_iterator(obj, field),
         )
         self._current[field.name] = [m2m_value(related) for related in m2m_iter]
+
+def PythonDeserializer(object_list, *, using=DEFAULT_DB_ALIAS, ignorenonexistent=False, **options):
+    handle_forward_references = options.pop("handle_forward_references", False)
+    field_names_cache = {}  # Model: <list of field_names>
+    for d in object_list:
+        # Look up the model and starting build a dict of data for it.
+        try:
+            Model = _get_model(d["model"])
+        except base.DeserializationError:
+            
+            if ignorenonexistent:
+                continue
+            else:
+                raise
+            
+        data = {}
+        if "pk" in d:
+            try:
+                data[Model._meta.pk.attname] = Model._meta.pk.to_python(d.get("pk"))
+            except Exception as e:
+                raise base.DeserializationError.WithData(
+                    e, d["model"], d.get("pk"), None
+                )
+        m2m_data = {}
+        deferred_fields = {}
+
+        if Model not in field_names_cache:
+            field_names_cache[Model] = {f.name for f in Model._meta.get_fields()}
+        field_names = field_names_cache[Model]
+
+        # Handle each field
+        for field_name, field_value in d["fields"].items():
+            if ignorenonexistent and field_name not in field_names:
+                # skip fields no longer on model
+                continue
+
+            field = Model._meta.get_field(field_name)
+
+            # Handle M2M relations
+            if field.remote_field and isinstance(
+                field.remote_field, models.ManyToManyRel
+            ):
+                try:
+                    values = base.deserialize_m2m_values(
+                        field, field_value, using, handle_forward_references
+                    )
+                except base.M2MDeserializationError as e:
+                    raise base.DeserializationError.WithData(
+                        e.original_exc, d["model"], d.get("pk"), e.pk
+                    )
+                if values == base.DEFER_FIELD:
+                    deferred_fields[field] = field_value
+                else:
+                    m2m_data[field.name] = values
+            # Handle FK fields
+            elif field.remote_field and isinstance(
+                field.remote_field, models.ManyToOneRel
+            ):
+                try:
+                    value = base.deserialize_fk_value(
+                        field, field_value, using, handle_forward_references
+                    )
+                except Exception as e:
+                    raise base.DeserializationError.WithData(
+                        e, d["model"], d.get("pk"), field_value
+                    )
+                if value == base.DEFER_FIELD:
+                    deferred_fields[field] = field_value
+                else:
+                    data[field.attname] = value
+            # Handle all other fields
+            elif isinstance(field, models.ManyToManyRel):
+                if field.name in data.keys():
+                    breakpoint()
+            else:
+                try:
+                    data[field.name] = field.to_python(field_value)
+                except Exception as e:
+                    raise base.DeserializationError.WithData(
+                        e, d["model"], d.get("pk"), field_value
+                    )
+
+        obj = base.build_instance(Model, data, using)
+        yield base.DeserializedObject(obj, m2m_data, deferred_fields)
+
+def Deserializer(stream_or_string, **options):
+    """
+    Deserialize simple Python objects back into Django ORM instances.
+
+    It's expected that you pass the Python objects themselves (instead of a
+    stream or a string) to the constructor
+    """
+    if not isinstance(stream_or_string, (bytes, str)):
+        stream_or_string = stream_or_string.read()
+    if isinstance(stream_or_string, bytes):
+        stream_or_string = stream_or_string.decode()
+    try:
+        objects = json.loads(stream_or_string)
+        yield from PythonDeserializer(objects, **options)
+    except (GeneratorExit, DeserializationError):
+        raise
+    except Exception as exc:
+        raise DeserializationError() from exc   
+    
+def _get_model(model_identifier):
+    """Look up a model from an "app_label.model_name" string."""
+    try:
+        return apps.get_model(model_identifier)
+    except (LookupError, TypeError):
+        raise base.DeserializationError(
+            "Invalid model identifier: '%s'" % model_identifier
+        )

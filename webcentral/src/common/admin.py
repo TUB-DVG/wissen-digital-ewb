@@ -227,7 +227,7 @@ class HistoryAdmin(admin.ModelAdmin):
         """Rolls back to the state selected by `queryset`"""
         for historyObj in queryset:
             deserializedStringyfiedObj = serializers.deserialize(
-                "json", historyObj.stringifiedObj
+                "custom_json", historyObj.stringifiedObj
             )
             rollbackToolState = list(deserializedStringyfiedObj)[0].object
             toolStateInDB = self.modelInstance.objects.filter(name=rollbackToolState.name)[0]
@@ -238,7 +238,7 @@ class HistoryAdmin(admin.ModelAdmin):
         extra_context = extra_context or {}
 
         deserializedStringyfiedObj = serializers.deserialize(
-            "json", self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
+            "custom_json", self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
         )
         oldTool = list(deserializedStringyfiedObj)[0].object
 

@@ -619,7 +619,16 @@ class AbstractTechnicalFocus(models.Model):
                     getattr(self, field.name).set(listOfM2Mobjs)
 
                 elif isinstance(field, models.ManyToManyRel):
-                    if field.name == "protocol":
+                    if field.name in stringifiedObj[0]["fields"].keys():  
+                        listOfM2Mobjs = [] 
+                        for many2manyRel in stringifiedObj[0]["fields"][field.name]:
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name
+                                ).model.objects.get_by_natural_key(
+                                    naturalKeyTuple[0], naturalKeyTuple[1]
+                                )
+                            ) 
                         breakpoint()
                 else:
                     setattr(self, field.name, getattr(newState, field.name))

@@ -255,5 +255,27 @@ class TestUpdate(TransactionTestCase):
         self.assertTrue("Hallo" not in biskoNorm[0].description_de)
         self.assertTrue("Hello" not in biskoNorm[0].description_en)
 
-        self.assertEqual(len(biskoNorm.lifeCyclePhase.all()), 0)
-        self.assertEqual(len(biskoNorm.protocol_set.all()), 0) 
+        self.assertEqual(len(biskoNorm[0].lifeCyclePhase.all()), 0)
+        self.assertEqual(len(biskoNorm[0].protocol_set.all()), 0)
+
+    def testUpdateJsonManyToManyRel(self):
+        """When updating from a norms state, which included a protocol in the backward reference of the
+        ManyToMany-Relation to protocols, the conected protocols should be included in the stringified old 
+        state of the Norm and should be possible to be rollbacked. This is tested, with the following test method.
+
+        """
+        call_command(
+            "data_import",
+            "TechnicalStandards",
+            "../doc/01_data/05_technical_standards/test_data/all_norms_with_one_diff.xlsx",
+        )
+        call_command(
+            "data_import",
+            "TechnicalStandards",
+            "../doc/01_data/05_technical_standards/norms.xlsx",
+        )
+
+        allHistoryObjs = History.objects.all()
+        self.assertEqual(len(allHistoryObjs), 1)
+        jsonObj = json.loads(allHistoryObjs[0].stringifiedObj)
+        self.assertEqual(jsonObj[0]["fields"]["protocol"][0], "HTTP")
