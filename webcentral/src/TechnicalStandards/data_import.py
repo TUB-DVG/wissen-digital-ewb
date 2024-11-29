@@ -61,7 +61,7 @@ class DataImportApp(DataImport):
         "yearOfRelease": ("yearOfRelease", None),
         "released": ("released", None),
         "specificApplication": ("specificApplication", Subproject),
-        "technicalStandardsProtocols": (
+        "protocol_set": (
             "technicalStandardsProtocols",
             Protocol,
         ),
@@ -131,27 +131,27 @@ class DataImportApp(DataImport):
             if isinstance(m2MModel, type) and issubclass(
                 m2MModel, models.Model
             ):
-                if m2MModel == License:
-                    m2mListLicense = self._processListInput(
-                        row[header.index(tableKey)],
-                        separator=";;",
-                    )
-                    m2mListOpenSourceStatus = [None]
-                    m2mListOpenSourceStatusEn = [None]
-                    m2mListFeeRequired = [None]
-                    m2mListFeeRequiredEn = [None]
-
-                    m2mList = list(
-                        zip_longest(
-                            m2mListLicense,
-                            m2mListOpenSourceStatus,
-                            m2mListFeeRequired,
-                            m2mListOpenSourceStatusEn,
-                            m2mListFeeRequiredEn,
-                            fillvalue=None,
-                        )
-                    )
-                elif m2MModel == Protocol:
+                # if m2MModel == License:
+                #     m2mListLicense = self._processListInput(
+                #         row[header.index(tableKey)],
+                #         separator=";;",
+                #     )
+                #     m2mListOpenSourceStatus = [None]
+                #     m2mListOpenSourceStatusEn = [None]
+                #     m2mListFeeRequired = [None]
+                #     m2mListFeeRequiredEn = [None]
+                #
+                #     m2mList = list(
+                #         zip_longest(
+                #             m2mListLicense,
+                #             m2mListOpenSourceStatus,
+                #             m2mListFeeRequired,
+                #             m2mListOpenSourceStatusEn,
+                #             m2mListFeeRequiredEn,
+                #             fillvalue=None,
+                #         )
+                #     )
+                if m2MModel == Protocol:
                     m2mList = self._processListInput(
                         row[header.index(tableKey)],
                         separator=";;",
@@ -198,7 +198,7 @@ class DataImportApp(DataImport):
                 getattr(obj, readInM2MKey).set(readInValuesM2M[readInM2MKey])
             except:
                 breakpoint()
-
+            
         if self._englishHeadersPresent(header):
             self._importEnglishTranslation(
                 obj, header, row, self.MAPPING_EXCEL_DB_EN

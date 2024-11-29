@@ -1,6 +1,7 @@
 """Models, which can be used in all other apps of the projects.
 
 """
+import json
 
 from django.db import models
 from project_listing.models import Subproject
@@ -335,14 +336,25 @@ class Scale(models.Model):
         app_label = "tools_over"
 
 
-class History(models.Model):
+class AbstractHistory(models.Model):
     """Abstract model class for the history models in each app."""
-
     identifer = models.CharField(max_length=300)
     stringifiedObj = models.TextField()
     loaded = models.BooleanField(default=False)
     updateDate = models.DateTimeField(db_default=Now())
 
+    def get_fields(self):
+        """Returns a list of field names and values for use in templates."""
+        return [
+            (field.name, getattr(self, field.name))
+            for field in self._meta.get_field
+        ]
+
+    def __str__(self):
+        """ """
+        showedName = str(self.identifer) + " " + str(self.updateDate)
+        return showedName    
+    
     class Meta:
         abstract = True
 
@@ -481,7 +493,7 @@ class AbstractTechnicalFocus(models.Model):
     def isEqual(self, other):
         """Check equality of two instances of `Tools`"""
         for field in self._meta.get_fields():
-            if isinstance(field, models.ManyToManyField):
+            if isinstance(field, models.ManyToManyField) or isinstance(field, models.ManyToManyRel):
                 firstObjAttr = self.getManyToManyWithTranslation(field.name)
                 secondObjAttr = other.getManyToManyWithTranslation(field.name)
                 if firstObjAttr != secondObjAttr:
@@ -505,7 +517,7 @@ class AbstractTechnicalFocus(models.Model):
 
     def getManyToManyWithTranslation(self, manyToManyAttr) -> str:
         """Wrapper around `getManyToManyAttrAsStr()` to return german and english version in one call.
-        If german ang english translation are present in the conacnted ManyToMany-model
+        If german and english translation are present in the concatened ManyToMany-model,
         both versions are returned. Otherwise only the german version is fetched.
 
         Arguments:
@@ -544,6 +556,10 @@ class AbstractTechnicalFocus(models.Model):
             querysetOfManyToManyElements = (
                 getattr(self, manyToManyAttr).all().order_by("name")
             )
+        elif manyToManyAttr == "protocol" or manyToManyAttr == "tools":
+            querysetOfManyToManyElements = (
+                getattr(self, f"{manyToManyAttr}_set").all().order_by("name")
+            )
         else:
             querysetOfManyToManyElements = (
                 getattr(self, manyToManyAttr).all().order_by(manyToManyAttr)
@@ -567,6 +583,48 @@ class AbstractTechnicalFocus(models.Model):
             else:
                 returnStr += element.__str__() + separator
         return returnStr[: -len(separator)]
+
+    def _update(self, newState, historyObj):
+        """Set all fields of the new ORM object into the old object."""
+        stringifiedObj = json.loads(historyObj.stringifiedObj)
+
+        for field in self._meta.get_fields():
+            if field.name != "id":
+                if isinstance(field, models.ManyToManyField):
+                    listOfM2Mobjs = []
+                    for naturalKeyTuple in stringifiedObj[0]["fields"][
+                        field.name
+                    ]:
+                        if field.name != "specificApplication":
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name
+                                ).model.objects.get_by_natural_key(
+                                    naturalKeyTuple[0], naturalKeyTuple[1]
+                                )
+                            )
+                        else:
+                            specificApplicationElements = stringifiedObj[0][
+                                "fields"
+                            ][field.name]
+                            listOfM2Mobjs = []
+                            for (
+                                enargusprojectNumber
+                            ) in specificApplicationElements:
+                                listOfM2Mobjs.append(
+                                    Subproject.objects.get(
+                                        referenceNumber_id=enargusprojectNumber
+                                    )
+                                )
+                    getattr(self, field.name).set(listOfM2Mobjs)
+
+                elif isinstance(field, models.ManyToManyRel):
+                    if field.name == "protocol":
+                        breakpoint()
+                else:
+                    setattr(self, field.name, getattr(newState, field.name))
+
+        self.save() 
 
     class Meta:
         abstract = True

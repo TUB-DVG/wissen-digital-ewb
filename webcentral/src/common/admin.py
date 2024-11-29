@@ -10,16 +10,27 @@ DbDiff conflicts.
 
 import importlib
 
+from modeltranslation.admin import TranslationAdmin
 from django.contrib import admin
 from django.contrib.sessions.models import Session
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from django.template.response import TemplateResponse
 from django.urls import path
-
+from django.core import serializers
 from .models import (
+    Classification,
+    Focus,
+    ApplicationArea,
+    Usage,
+    TargetGroup,
+    LifeCyclePhase,
+    UserInterface,
+    Accessibility,
+    Scale,
+    AbstractHistory,
     DbDiff,
-    License,
+    License, 
 )
 
 
@@ -149,3 +160,108 @@ class DbDiffAdmin(admin.ModelAdmin):
 admin.site.register(DbDiff, DbDiffAdmin)
 admin.site.register(License)
 # Define a new admin class for the aggregated session elements
+
+
+
+class ClassificationAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Classification, ClassificationAdmin)
+
+
+class FocusAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Focus, FocusAdmin)
+
+
+class ApplicationAreaAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(ApplicationArea, ApplicationAreaAdmin)
+
+
+class UsageAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Usage, UsageAdmin)
+
+
+class TargetGroupAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(TargetGroup, TargetGroupAdmin)
+
+class LifeCyclePhaseAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(LifeCyclePhase, LifeCyclePhaseAdmin)
+
+
+class UserInterfaceAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(UserInterface, UserInterfaceAdmin)
+
+
+class AccessibilityAdmin(TranslationAdmin):
+    pass
+
+
+admin.site.register(Accessibility, AccessibilityAdmin)
+admin.site.register(Scale)
+
+class HistoryAdmin(admin.ModelAdmin):
+
+    actions = ["rollbackHistory"]
+    
+    @admin.action(description="Rollback selected change")
+    def rollbackHistory(self, request, queryset):
+        """Rolls back to the state selected by `queryset`"""
+        for historyObj in queryset:
+            deserializedStringyfiedObj = serializers.deserialize(
+                "json", historyObj.stringifiedObj
+            )
+            rollbackToolState = list(deserializedStringyfiedObj)[0].object
+            toolStateInDB = self.modelInstance.objects.filter(name=rollbackToolState.name)[0]
+            toolStateInDB._update(rollbackToolState, historyObj)
+            historyObj.delete()
+
+    def change_view(self, request, object_id, form_url="", extra_context=None):
+        extra_context = extra_context or {}
+
+        deserializedStringyfiedObj = serializers.deserialize(
+            "json", self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
+        )
+        oldTool = list(deserializedStringyfiedObj)[0].object
+
+        currentToolState = self.modelInstance.objects.filter(name=oldTool.name)
+
+        extra_context["oldTool"] = oldTool
+        extra_context["rollbackStateStringified"] = json.loads(
+            self.modelInstance.objects.get(id=int(object_id)).stringifiedObj
+        )[0]["fields"]
+        extra_context["currentStateStringified"] = json.loads(
+            serializers.serialize(
+                "json", currentToolState, use_natural_foreign_keys=True
+            )
+        )[0]["fields"]
+
+        extra_context["currentTool"] = self.modelInstance.objects.filter(name=oldTool.name)[
+            0
+        ]
+        # breakpoint()
+        return super().change_view(
+            request,
+            object_id,
+            form_url,
+            extra_context=extra_context,
+        )
+

@@ -295,7 +295,6 @@ class TestUpdate(TestCase):
 
     def setUpAdmin(self):
         """setUp method for all methods of `DbDiffAdminTest`"""
-        # Create test data
 
         self.site = AdminSite()
         self.historyAdmin = HistoryAdmin(History, self.site)

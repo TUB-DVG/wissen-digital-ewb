@@ -1,8 +1,15 @@
+import json
+
 from django.test import TransactionTestCase
+from django.test import RequestFactory
+from django.contrib.admin.sites import AdminSite
 from django.core.management import call_command
+from django.contrib.auth import get_user_model
 
-from .models import Norm
+from .models import Norm, History
+from .admin import HistoryAdminApp 
 
+User = get_user_model()
 
 class TestDataImport(TransactionTestCase):
     """TestCase for all tests regarding the data-import of the structured
@@ -75,6 +82,7 @@ class TestDataImport(TransactionTestCase):
         )
 
         licenseObjs = self._checkMany2ManyObjs(allNorms[0], "license", 2)
+        
         self._checkElementsOfM2MObjs(
             licenseObjs, "license", ["MPL", "ITS"], None
         )
@@ -151,7 +159,9 @@ class TestDataImport(TransactionTestCase):
                     **{f"{fieldName}_de": germanName}
                 )
             except:
+                
                 querysetResult = m2mObjs.filter(**{f"{fieldName}": germanName})
+            
             self.assertEqual(len(querysetResult), 1)
 
             if englishStrList is not None:
@@ -174,3 +184,76 @@ class TestDataImport(TransactionTestCase):
             self.assertEqual(
                 getattr(obj, attributeName + "_en"), expectedValueEn
             )
+
+class TestUpdate(TransactionTestCase):
+    """Test if the update process works for `Norm`
+
+    """
+    def setUp(self):
+        """setUp method for all methods of `DbDiffAdminTest`"""
+
+        self.site = AdminSite()
+        self.historyAdmin = HistoryAdminApp(History, self.site)
+
+        # Create a test user and request factory
+        self.user = User.objects.create_superuser(
+            username="admin", password="password", email="admin@example.com"
+        )
+        self.factory = RequestFactory() 
+    
+    def testUpdate(self):
+        """Test if only one History object is created, if one row is changed.
+
+        """
+        call_command(
+            "data_import",
+            "TechnicalStandards",
+            "../doc/01_data/05_technical_standards/norms.xlsx",
+        )
+
+        call_command(
+            "data_import",
+            "TechnicalStandards",
+            "../doc/01_data/05_technical_standards/test_data/all_norms_with_one_diff.xlsx",
+        )
+        
+        # only one History object, should have been created, since the 2 excel 
+        # files only differ in one row.
+        self.assertEqual(len(History.objects.all()), 1)
+
+        # the norm "BISKO" has updated values in the excel file test_data/all_norms_with_one_diff.xlsx
+        # it should be tested, if these changes have been loaded into the database
+        # and if the old state can be rollbackd.
+        biskoNorm = Norm.objects.filter(name="BISKO")
+        self.assertEqual(len(biskoNorm), 1)
+
+        self.assertTrue("Hallo" in biskoNorm[0].description_de)
+        self.assertTrue("Hello" in biskoNorm[0].description_en)
+        
+        connectedLiceCyclePhaseToBisko = biskoNorm[0].lifeCyclePhase.all() 
+        self.assertEqual(len(connectedLiceCyclePhaseToBisko), 2)
+        needsAnalysis = connectedLiceCyclePhaseToBisko.filter(lifeCyclePhase_de="Bedarfsanalyse") 
+        self.assertTrue(len(needsAnalysis), 1)
+        self.assertEqual(needsAnalysis[0].lifeCyclePhase_en, "Needs analysis")
+
+        prePlanning = connectedLiceCyclePhaseToBisko.filter(lifeCyclePhase_de="Vorplanung") 
+        self.assertTrue(len(prePlanning), 1)
+        self.assertEqual(prePlanning[0].lifeCyclePhase_en, "Pre-planning")
+        
+        # test if protocols are connected to norm:
+        protocolsForBisko = biskoNorm[0].protocol_set.all()
+        self.assertEqual(len(protocolsForBisko), 1)
+        self.assertEqual(protocolsForBisko[0].name, "HTTP")
+        
+        # rollback to the old state:
+        request = self.factory.post("/admin/TechnicalStandards/history/")
+        request.user = self.user
+
+        self.historyAdmin.rollbackHistory(request, History.objects.all())
+        
+        biskoNorm = Norm.objects.filter(name="BISKO")
+        self.assertTrue("Hallo" not in biskoNorm[0].description_de)
+        self.assertTrue("Hello" not in biskoNorm[0].description_en)
+
+        self.assertEqual(len(biskoNorm.lifeCyclePhase.all()), 0)
+        self.assertEqual(len(biskoNorm.protocol_set.all()), 0) 

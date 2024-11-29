@@ -24,7 +24,7 @@ from django.core.serializers import serialize
 
 from common.models import DbDiff, Literature
 from protocols.models import Protocol
-
+# from .serializers import BackReferenceSerializer   
 
 class DataImport:
     """Definition of the general DataImport class"""
@@ -34,6 +34,7 @@ class DataImport:
         self.path_to_file = path_to_data_file
         self.diffStr = ""
         self.diffStrDict = {}
+        # register_serializer("custom_json", BackReferenceSerializer) 
 
     def importList(self, header, data) -> None:
         """Iterate over the list of databases-tuples and call
@@ -541,7 +542,7 @@ class DataImport:
             newHistoryObj = self.APP_HISTORY_MODEL_OBJ(
                 identifer=oldObj.name,
                 stringifiedObj=serialize(
-                    "json", [oldObj], use_natural_foreign_keys=True
+                    "custom_json", [oldObj], use_natural_foreign_keys=True
                 ),
             )
             # parsedJson = json.loads(newHistoryObj.stringifiedObj)
@@ -564,6 +565,10 @@ class DataImport:
                     getattr(oldObj, field.name).set(
                         getattr(newObj, field.name).all()
                     )
+                elif isinstance(field, models.ManyToManyRel):
+                    getattr(oldObj, f"{field.name}_set").set(
+                        getattr(newObj, f"{field.name}_set").all()
+                    ) 
                 else:
                     setattr(oldObj, field.name, getattr(newObj, field.name))
 

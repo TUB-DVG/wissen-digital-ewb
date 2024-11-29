@@ -11,7 +11,7 @@ from common.models import (
     Classification,
     AbstractTechnicalFocus,
     License,
-    History,
+    AbstractHistory,
 )
 
 
@@ -157,5 +157,5 @@ class Dataset(AbstractTechnicalFocus):
         return returnStr[: -len(separator)]
 
 
-class History(History):
+class History(AbstractHistory):
     """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""

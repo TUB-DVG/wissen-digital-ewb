@@ -16,6 +16,11 @@ from common.models import (
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
 
+class ProtocolManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(
+            name=name,
+        )
 
 class Protocol(AbstractTechnicalFocus):
 
@@ -151,6 +156,11 @@ class Protocol(AbstractTechnicalFocus):
 
     def __str__(self):
         return self.name
+    
+    def natural_key(self):
+        return self.name
+
+    objects = ProtocolManager() 
 
 
 class History(models.Model):

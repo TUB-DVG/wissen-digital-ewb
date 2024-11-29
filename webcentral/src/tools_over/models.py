@@ -20,7 +20,14 @@ from common.models import (
     UserInterface,
     License,
     AbstractTechnicalFocus,
+    AbstractHistory,
 )
+
+class ToolManager(models.Manager):
+    def get_by_natural_key(self, name):
+        return self.get(
+            name=name,
+        )
 
 
 class Tools(AbstractTechnicalFocus):
@@ -86,65 +93,16 @@ class Tools(AbstractTechnicalFocus):
     def __str__(self):
         return self.name
 
+    def natural_key(self):
+        return self.name
+    
+    objects = ToolManager()
+
     class Meta:
         app_label = "tools_over"
 
-    def _update(self, newState, historyObj):
-        """Set all fields of the new ORM object into the old object."""
-        stringifiedObj = json.loads(historyObj.stringifiedObj)
 
-        for field in self._meta.get_fields():
-            if field.name != "id":
-                if isinstance(field, models.ManyToManyField):
-                    listOfM2Mobjs = []
-                    for naturalKeyTuple in stringifiedObj[0]["fields"][
-                        field.name
-                    ]:
-                        if field.name != "specificApplication":
-                            listOfM2Mobjs.append(
-                                getattr(
-                                    self, field.name
-                                ).model.objects.get_by_natural_key(
-                                    naturalKeyTuple[0], naturalKeyTuple[1]
-                                )
-                            )
-                        else:
-                            specificApplicationElements = stringifiedObj[0][
-                                "fields"
-                            ][field.name]
-                            listOfM2Mobjs = []
-                            for (
-                                enargusprojectNumber
-                            ) in specificApplicationElements:
-                                listOfM2Mobjs.append(
-                                    Subproject.objects.get(
-                                        referenceNumber_id=enargusprojectNumber
-                                    )
-                                )
-                    getattr(self, field.name).set(listOfM2Mobjs)
-
-                else:
-                    setattr(self, field.name, getattr(newState, field.name))
-
-        self.save()
-
-
-class History(models.Model):
+class History(AbstractHistory):
     """model class to store updates of the Tools model"""
 
-    identifer = models.CharField(max_length=300)
-    stringifiedObj = models.TextField()
-    loaded = models.BooleanField(default=False)
-    updateDate = models.DateTimeField(db_default=Now())
-
-    def get_fields(self):
-        """Returns a list of field names and values for use in templates."""
-        return [
-            (field.name, getattr(self, field.name))
-            for field in self._meta.get_field
-        ]
-
-    def __str__(self):
-        """ """
-        showedName = str(self.identifer) + " " + str(self.updateDate)
-        return showedName
+    

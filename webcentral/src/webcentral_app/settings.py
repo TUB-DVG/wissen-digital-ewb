@@ -86,6 +86,9 @@ MIDDLEWARE = [
     "django_plotly_dash.middleware.BaseMiddleware",
 ]
 
+SERIALIZATION_MODULES = {
+    "custom_json": "common.serializers",
+}
 # Content Security Policy
 CSP_IMG_SRC = ("'self'", "data:image/webp*")
 CSP_STYLE_SRC = (
