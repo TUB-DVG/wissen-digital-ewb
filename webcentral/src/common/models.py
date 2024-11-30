@@ -630,12 +630,12 @@ class AbstractTechnicalFocus(models.Model):
                         ]:
                             listOfM2Mobjs.append(
                                 getattr(
-                                    self, field.name
+                                    self, field.name + "_set"
                                 ).model.objects.get_by_natural_key(
-                                    naturalKeyTuple[0], naturalKeyTuple[1]
+                                    many2manyRel
                                 )
                             )
-                        breakpoint()
+                        getattr(self, field.name + "_set").set(listOfM2Mobjs) 
                 else:
                     setattr(self, field.name, getattr(newState, field.name))
 

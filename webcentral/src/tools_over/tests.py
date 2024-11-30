@@ -18,7 +18,7 @@ from common.models import DbDiff, License
 from .data_export import DataExport
 from .data_import import DataImportApp
 from .models import Tools, Focus, History
-from .admin import HistoryAdmin
+from .admin import HistoryAdminApp
 
 User = get_user_model()
 
@@ -297,7 +297,7 @@ class TestUpdate(TestCase):
         """setUp method for all methods of `DbDiffAdminTest`"""
 
         self.site = AdminSite()
-        self.historyAdmin = HistoryAdmin(History, self.site)
+        self.historyAdmin = HistoryAdminApp(History, self.site)
 
         # Create a test user and request factory
         self.user = User.objects.create_superuser(

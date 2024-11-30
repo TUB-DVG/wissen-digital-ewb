@@ -249,10 +249,7 @@ class TestUpdate(TransactionTestCase):
         self.assertEqual(protocolsForBisko[0].name, "HTTP")
 
         # rollback to the old state:
-        request = self.factory.post("/admin/TechnicalStandards/history/")
-        request.user = self.user
-
-        self.historyAdmin.rollbackHistory(request, History.objects.all())
+        self._rollbackAllChanges() 
 
         biskoNorm = Norm.objects.filter(name="BISKO")
         self.assertTrue("Hallo" not in biskoNorm[0].description_de)
@@ -282,3 +279,22 @@ class TestUpdate(TransactionTestCase):
         self.assertEqual(len(allHistoryObjs), 1)
         jsonObj = json.loads(allHistoryObjs[0].stringifiedObj)
         self.assertEqual(jsonObj[0]["fields"]["protocol"][0], "HTTP")
+        
+        biskoNormQuery = Norm.objects.filter(name="BISKO")
+        self.assertEqual(len(biskoNormQuery), 1)
+        self.assertEqual(len(biskoNormQuery[0].protocol_set.all()), 0)
+        
+        # check if the state with the backward reference to protocol can be rollbacked:
+        self._rollbackAllChanges() 
+
+        biskoNormQuery = Norm.objects.filter(name="BISKO")
+        self.assertEqual(len(biskoNormQuery[0].protocol_set.all()), 1)
+        self.assertEqual(biskoNormQuery[0].protocol_set.all()[0].name, "HTTP")  
+
+    def _rollbackAllChanges(self):
+        """Wraps the call of the rollback into a function:
+        """
+        request = self.factory.post("/admin/TechnicalStandards/history/")
+        request.user = self.user
+
+        self.historyAdmin.rollbackHistory(request, History.objects.all())
