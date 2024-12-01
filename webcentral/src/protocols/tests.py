@@ -23,7 +23,7 @@ class TestDataImport(TestCase):
             self.assertEqual(len(protocol.focus.all()), 1)
             self.assertEqual(protocol.focus.all()[0].focus_de, "technisch")
             self.assertEqual(protocol.focus.all()[0].focus_en, "technical")
-
+            
             self.assertEqual(len(protocol.license.all()), 1)
             self.assertNotEqual(
                 protocol.license.all()[0].openSourceStatus_en, None
@@ -77,3 +77,8 @@ class TestDataImport(TestCase):
                 testTuple[4],
                 returnedListOfLicenseObjs[index].licensingFeeRequirement_en,
             )
+
+    class TestUpdate(TestCase):
+        """Class to group together all the tests for the update process.
+        """
+        pass

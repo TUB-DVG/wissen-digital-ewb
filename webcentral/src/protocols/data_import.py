@@ -164,43 +164,43 @@ class DataImportApp(DataImport):
             if isinstance(m2MModel, type) and issubclass(
                 m2MModel, models.Model
             ):
-                # if m2MModel == License:
-                #     m2mListLicense = self._processListInput(
-                #         row[header.index(tableKey)],
-                #         separator=";;",
-                #     )
-                #     m2mListOpenSourceStatus = self._processListInput(
-                #         row[header.index("openSourceStatus")],
-                #         separator=";;",
-                #     )
-                #     m2mListOpenSourceStatusEn = self._processListInput(
-                #         row[header.index("openSourceStatus__en")],
-                #         separator=";;",
-                #     )
-                #     m2mListFeeRequired = self._processListInput(
-                #         row[header.index("licensingFeeRequirement")],
-                #         separator=";;",
-                #     )
-                #     m2mListFeeRequiredEn = self._processListInput(
-                #         row[header.index("licensingFeeRequirement__en")],
-                #         separator=";;",
-                #     )
-                #     m2mList = list(
-                #         zip_longest(
-                #             m2mListLicense,
-                #             m2mListOpenSourceStatus,
-                #             m2mListFeeRequired,
-                #             m2mListOpenSourceStatusEn,
-                #             m2mListFeeRequiredEn,
-                #             fillvalue=None,
-                #         )
-                #     )
-                #
-                # else:
-                m2mList = self._processListInput(
-                    row[header.index(tableKey)],
-                    separator=";;",
-                )
+                if m2MModel == License:
+                    m2mListLicense = self._processListInput(
+                        row[header.index(tableKey)],
+                        separator=";;",
+                    )
+                    m2mListOpenSourceStatus = self._processListInput(
+                        row[header.index("openSourceStatus")],
+                        separator=";;",
+                    )
+                    m2mListOpenSourceStatusEn = self._processListInput(
+                        row[header.index("openSourceStatus__en")],
+                        separator=";;",
+                    )
+                    m2mListFeeRequired = self._processListInput(
+                        row[header.index("licensingFeeRequirement")],
+                        separator=";;",
+                    )
+                    m2mListFeeRequiredEn = self._processListInput(
+                        row[header.index("licensingFeeRequirement__en")],
+                        separator=";;",
+                    )
+                    m2mList = list(
+                        zip_longest(
+                            m2mListLicense,
+                            m2mListOpenSourceStatus,
+                            m2mListFeeRequired,
+                            m2mListOpenSourceStatusEn,
+                            m2mListFeeRequiredEn,
+                            fillvalue=None,
+                        )
+                    )
+
+                else:
+                    m2mList = self._processListInput(
+                        row[header.index(tableKey)],
+                        separator=";;",
+                    )
                 m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
                 readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
                     m2mList, m2MModel
