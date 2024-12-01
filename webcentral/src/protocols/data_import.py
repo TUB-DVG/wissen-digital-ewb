@@ -201,9 +201,7 @@ class DataImportApp(DataImport):
                     row[header.index(tableKey)],
                     separator=";;",
                 )
-                m2mList = self._iterateThroughListOfStrings(
-                    m2mList, m2MModel
-                )
+                m2mList = self._iterateThroughListOfStrings(m2mList, m2MModel)
                 readInValuesM2M[tableKey] = self.getM2MelementsQueryset(
                     m2mList, m2MModel
                 )
