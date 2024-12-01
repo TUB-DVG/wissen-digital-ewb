@@ -41,10 +41,11 @@ class Literature(models.Model):
 
 
 class LicenseManager(models.Manager):
-    def get_by_natural_key(self, license_de, openSourceStatus_de):
+    def get_by_natural_key(self, license_de, openSourceStatus_de, licensingFeeRequirement):
         return self.get(
             license_de=license_de,
             openSourceStatus_de=openSourceStatus_de,
+            licensingFeeRequirement=licensingFeeRequirement,  
         )
 
 class License(models.Model):
@@ -65,6 +66,9 @@ class License(models.Model):
     )
 
     objects = LicenseManager()  
+    
+    def natural_key(self):
+        return (self.license_de, self.openSourceStatus_de, self.licensingFeeRequirement)  
     
     def __str__(self):
         return str(self.license)
@@ -610,16 +614,14 @@ class AbstractTechnicalFocus(models.Model):
                         field.name
                     ]:
                         if field.name != "specificApplication":
-                            try:
-                                listOfM2Mobjs.append(
-                                    getattr(
-                                        self, field.name
-                                    ).model.objects.get_by_natural_key(
-                                        naturalKeyTuple[0], naturalKeyTuple[1]
-                                    )
+                            
+                            listOfM2Mobjs.append(
+                                getattr(
+                                    self, field.name
+                                ).model.objects.get_by_natural_key(
+                                    *naturalKeyTuple
                                 )
-                            except:
-                                breakpoint()
+                            )
                         else:
                             specificApplicationElements = stringifiedObj[0][
                                 "fields"

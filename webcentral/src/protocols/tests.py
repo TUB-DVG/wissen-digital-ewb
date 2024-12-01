@@ -127,7 +127,6 @@ class TestUpdate(AbstractTestUpdate):
         # check if the Dali protocol is updated to the data in ``test_update_dali.xlsx
         daliObj = Protocol.objects.get(name="DALI")
         self.assertEqual(daliObj.communicationMediumCategory_de, "Verkabelt, Drahtlos & getestet")
-
         # test if the old state of the protocol can be restored
         request = self.factory.post("/admin/protocols/history/")
         request.user = self.user
