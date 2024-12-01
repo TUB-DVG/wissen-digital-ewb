@@ -280,7 +280,7 @@ class DataImport:
                 if isinstance(objString, tuple):
                     listOfM2Mobjs.append(
                         djangoModel.objects.get_or_create(
-                            license=objString,
+                            license=objString[0],
                             openSourceStatus=objString[1],
                             licensingFeeRequirement=objString[2],
                             openSourceStatus_en=objString[3],
