@@ -14,6 +14,7 @@ from django.test import RequestFactory
 import pandas as pd
 
 from common.test_utils.mock_objects import mock_excel_file
+from common.test_update import AbstractTestUpdate
 from common.models import DbDiff, License
 from .data_export import DataExport
 from .data_import import DataImportApp
@@ -290,21 +291,23 @@ class TestExportClass(TestCase):
         os.remove("testTools.xlsx")
 
 
-class TestUpdate(TestCase):
+class TestUpdate(AbstractTestUpdate):
     """Testclass for the update process of data for the `tools_over`-app."""
 
-    def setUpAdmin(self):
-        """setUp method for all methods of `DbDiffAdminTest`"""
-
-        self.site = AdminSite()
-        self.historyAdmin = HistoryAdminApp(History, self.site)
-
-        # Create a test user and request factory
-        self.user = User.objects.create_superuser(
-            username="admin", password="password", email="admin@example.com"
-        )
-        self.factory = RequestFactory()
-
+    # def setUpAdmin(self):
+    #     """setUp method for all methods of `DbDiffAdminTest`"""
+    #
+    #     self.site = AdminSite()
+    #     self.historyAdmin = HistoryAdminApp(History, self.site)
+    #
+    #     # Create a test user and request factory
+    #     self.user = User.objects.create_superuser(
+    #         username="admin", password="password", email="admin@example.com"
+    #     )
+    #     self.factory = RequestFactory()
+    historyAdminAppCls = HistoryAdminApp 
+    historyModelCls = History 
+    
     def testUpdateOfNewDataWorks(self):
         """Load the full tools list and update it with the full tool list, which
         has one differing tool. Check if only one History object is created.
@@ -363,7 +366,7 @@ class TestUpdate(TestCase):
 
     def testUpdateM2M(self):
         """Test if it is pssible to update a Many2Many-Relation."""
-        self.setUpAdmin()
+        
         call_command(
             "data_import",
             "tools_over",

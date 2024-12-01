@@ -12,6 +12,7 @@ from common.models import (
     TargetGroup,
     License,
     AbstractTechnicalFocus,
+    AbstractHistory,
 )
 from project_listing.models import Subproject
 from TechnicalStandards.models import Norm
@@ -165,10 +166,7 @@ class Protocol(AbstractTechnicalFocus):
     objects = ProtocolManager()
 
 
-class History(models.Model):
-    """History model for the Dataset model. Implements a rollback feature for `Dataset`-model"""
+class History(AbstractHistory):
+    """History model for the Protocols model. Implements a rollback feature for `Dataset`-model"""
 
-    identifer = models.CharField(max_length=300)
-    stringifiedObj = models.TextField()
-    loaded = models.BooleanField(default=False)
-    updateDate = models.DateTimeField(db_default=Now())
+    
